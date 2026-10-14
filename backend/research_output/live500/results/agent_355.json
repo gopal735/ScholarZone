@@ -1,0 +1,242 @@
+{
+  "agent": "agent_355",
+  "records": [
+    {
+      "id": 84,
+      "official": {
+        "official_source_urls": [
+          "https://you.ubc.ca/financial-planning/scholarships-awards-international-students",
+          "https://you.ubc.ca/applying-ubc/dates-deadlines/",
+          "https://you.ubc.ca/applying-ubc/requirements/english-language-competency/"
+        ],
+        "application_link": "https://myapplication.ubc.ca/apply",
+        "catalogue_url": "https://you.ubc.ca/financial-planning/scholarships-awards-international-students",
+        "official_updates_url": "https://you.ubc.ca/applying-ubc/dates-deadlines/",
+        "deadline_central": "2027-01-15",
+        "deadline_central_display": "15 January 2027",
+        "deadline_note": "The IMES has no separate deadline: eligibility requires applying to UBC by the admissions deadline, which is January 15, 2027 at 11:59 p.m. PST for Winter Session (September 2027 to April 2028).",
+        "application_cycle": "Winter Session September 2027 to April 2028; the online application opened in early October 2026 and the published IMES figures are labelled for the 2026/2027 academic year.",
+        "status": "OPEN",
+        "status_note": "UBC's dates and deadlines page shows the Winter Session (September 2027 to April 2028) application opened in early October 2026, with applications due January 15, 2027 at 11:59 p.m. PST.",
+        "tuition_coverage_note": "UBC publishes no statement that IMES funds are applied to tuition. The page states these merit-based awards 'do not cover the full cost of education' and that financial need cannot be considered.",
+        "funding_amount": 10000,
+        "funding_currency": "CAD",
+        "funding_period": "per year",
+        "tuition_coverage": false,
+        "living_cost_coverage": null,
+        "travel_coverage": null,
+        "fully_funded": false,
+        "benefits": [
+          "For the 2026/2027 academic year, IMES awards will be valued at $10,000 - $25,000/year.",
+          "Renewable for up to three additional years of study.",
+          "Automatic consideration: applying to UBC by the admissions deadline enters you into both IMES and Outstanding International Student Award consideration with no separate application."
+        ],
+        "eligibility": [
+          "Be new to UBC, entering directly from secondary school.",
+          "Be an international student who will be studying at UBC on a Canadian study permit (student visa); changes to your citizenship status will affect your IMES eligibility.",
+          "Demonstrate exceptional academic achievement and intellectual promise, as well as impressive extracurricular and community involvement.",
+          "Not be nominated for a need-and-merit-based International Scholars award.",
+          "Apply to UBC by the admissions deadline."
+        ],
+        "requirements": [
+          "Submit the UBC undergraduate application by the admissions deadline: January 15, 2027 at 11:59 p.m. PST for Winter Session.",
+          "Meet UBC's English Language Admission Standard (ELAS) for direct entry; ELAS documents are due February 15."
+        ],
+        "documents": [
+          "UBC undergraduate application submitted online, including the personal profile and academic history.",
+          "Secondary school documents: high school applicants from outside Canada must submit required documents to UBC by March 15, 2027.",
+          "Proof of English proficiency meeting the ELAS by February 15, 2027; for the 2027/2028 Winter Session, test scores must be from January 1, 2025 onwards."
+        ],
+        "selection_criteria": [
+          "Consideration is based on demonstrated academic achievement and extracurricular involvement.",
+          "Merit-based awards are evaluated on the applicant's academic and personal profile; admissions decisions and award evaluations are two separate processes.",
+          "All international undergraduate applicants are considered for OIS and IMES awards, so the award evaluation process is highly competitive."
+        ],
+        "coverage": [
+          "IMES awards valued at $10,000 - $25,000/year for the 2026/2027 academic year.",
+          "Renewable for up to three additional years of study.",
+          "UBC states IMES and OIS are merit-based awards that do not cover the full cost of education and that financial need cannot be considered."
+        ],
+        "application_method": [
+          "Apply to UBC online at myapplication.ubc.ca by the admissions deadline.",
+          "No separate IMES application is required; consideration is automatic.",
+          "Scholarship decisions are made between mid-February and the end of April; recipients receive the award offer in advance of the admission acceptance deadline (most students: May 1), and award offers are final."
+        ],
+        "application_route": "Submit the UBC undergraduate application online by January 15, 2027 (11:59 p.m. PST); IMES consideration is automatic with no separate form.",
+        "study_mode": null,
+        "citizenship_residency": "Must be an international student who will be studying at UBC on a Canadian study permit (student visa); changes to citizenship status affect IMES eligibility.",
+        "international_eligibility": "Yes - the IMES is specifically for international students studying at UBC on a Canadian study permit.",
+        "subject_or_agency_requirement": null,
+        "research_requirement": null,
+        "duration": "Awarded in the first year of study; renewable for up to three additional years",
+        "description": "International Major Entrance Scholarships (IMES) are awarded to exceptional international students entering undergraduate programs at UBC. Students receive their IMES when they enter their first year at UBC, and the scholarships are renewable for up to three additional years of study. The number and level of these scholarships awarded each year vary, depending on available funding.",
+        "region": "Canada (Vancouver and Okanagan campuses)",
+        "program_type": "Merit-based entrance scholarship for international undergraduate students, considered automatically with the UBC application.",
+        "english_requirement": "Must meet UBC's English Language Admission Standard (ELAS) for direct entry, e.g. IELTS Academic 6.5 with no part less than 6.0; TOEFL iBT overall 90 (Reading 22, Listening 22, Writing 21, Speaking 21); PTE Academic 65; Duolingo English Test 125; CAEL 70; Cambridge B2 First/C1 Advanced/C2 Proficiency 180. ELAS documents are due February 15, and for the 2027/2028 Winter Session test scores must be from January 1, 2025 onwards."
+      },
+      "verification": {
+        "source_citations": [
+          "https://you.ubc.ca/financial-planning/scholarships-awards-international-students",
+          "https://you.ubc.ca/applying-ubc/dates-deadlines/",
+          "https://you.ubc.ca/applying-ubc/requirements/english-language-competency/"
+        ],
+        "last_verified_date": "2026-10-10",
+        "verification_status": "confirmed",
+        "confidence": "high",
+        "not_confirmed": [
+          "living_cost_coverage and travel_coverage: the official page does not state what IMES funds are applied toward, only that the awards do not cover the full cost of education",
+          "study_mode: not stated on the IMES page",
+          "renewal conditions for the IMES beyond 'up to three additional years of study' (no published academic-standing requirement)",
+          "the IMES value for the 2027/2028 cycle: the page publishes figures for the 2026/2027 academic year"
+        ],
+        "notes": "Award range, eligibility, automatic-consideration wording and the 'not full cost of education' statement confirmed on UBC's international scholarships page; the January 15, 2027 (11:59 p.m. PST) Winter Session deadline confirmed on UBC's dates and deadlines page; ELAS minimum scores and February 15 document deadline confirmed on UBC's English language competency page."
+      },
+      "applicant_utility": {
+        "summary": "There is no IMES form to file: your only lever is the UBC undergraduate application, which must be submitted by January 15, 2027 at 11:59 p.m. PST for September 2027 entry. Because consideration is automatic but only successful recipients are contacted between mid-February and the end of April, treat the IMES as a bonus rather than a funding plan - UBC states these merit awards do not cover the full cost of education and does not consider financial need. Build the rest of your budget with UBC's own first-year cost estimator before the May 1 acceptance deadline forces a commitment.",
+        "best_fit": "High-achieving international secondary-school leavers with a sustained, well-documented record of extracurricular and community involvement who can fund most of a UBC degree themselves.",
+        "application_readiness_checklist": [
+          "Submit the UBC application well before January 15, 2027 (11:59 p.m. PST) - the deadline is the eligibility rule, not a soft target.",
+          "Give the personal profile real weight: name specific roles, durations and impact, since evaluation explicitly weighs extracurricular and community involvement alongside academics.",
+          "Prove English proficiency early: ELAS documents are due February 15, 2027, and test scores must be from January 1, 2025 onwards for the 2027/2028 Winter Session, taken in a single sitting.",
+          "Keep your citizenship status unchanged until you study at UBC, and verify you have not been nominated for a need-and-merit International Scholars award, which excludes IMES consideration.",
+          "Run UBC's first-year cost estimator and line up the unfunded portion before offers arrive."
+        ],
+        "common_rejection_risks": [
+          "Missing the January 15, 2027 admissions deadline - automatic consideration simply does not happen.",
+          "A thin personal profile: grades alone are not enough because evaluation explicitly weighs extracurricular and community involvement.",
+          "Being nominated for the need-and-merit International Scholars award, which rules out IMES consideration.",
+          "Late or invalid English evidence (scores older than January 1, 2025, or component minimums not met in a single sitting), which stalls admission assessment entirely.",
+          "Assuming the award will fund the degree - UBC explicitly states these awards do not cover the full cost of education."
+        ],
+        "estimated_uncovered_costs": "International tuition plus housing, food, U-Pass and health insurance for the full degree; UBC publishes no IMES-specific figure for the remainder, so use UBC's first-year cost estimator and treat the $10,000-$25,000/year as partial support only.",
+        "document_audit": [
+          "Out-of-country high school documents are due March 15, 2027 - earlier than many applicants expect and required to confirm the offer.",
+          "English test scores must come from a single sitting of an accepted test; IELTS General, IELTS Indicator and IELTS One Skill Retake are not accepted.",
+          "The personal profile lives inside the UBC application itself - there is no separate award dossier to upload, so nothing extra can rescue a weak application."
+        ],
+        "alerts": [
+          "Only successful recipients are notified and award offers are final - there is no negotiation or appeal window.",
+          "The published dollar range is labelled for the 2026/2027 academic year while the current admissions cycle is for September 2027 entry, and the number and level of awards vary each year with available funding.",
+          "The IMES is renewable for up to three additional years, but UBC publishes no academic-standing renewal condition - do not assume renewal is guaranteed."
+        ],
+        "submission_workflow": "One submission does everything: the UBC undergraduate application via myapplication.ubc.ca is both the admission application and the automatic IMES/OIS entry; award offers arrive before the admission acceptance deadline, usually May 1."
+      }
+    },
+    {
+      "id": 87,
+      "official": {
+        "official_source_urls": [
+          "https://future.mcmaster.ca/internationalawards",
+          "https://future.mcmaster.ca/apply/requirements/english-proficiency/"
+        ],
+        "application_link": "https://mcmaster.awardspring.ca/signin",
+        "catalogue_url": "https://future.mcmaster.ca/internationalawards",
+        "official_updates_url": "https://future.mcmaster.ca/internationalawards",
+        "deadline_central": "2027-02-19",
+        "deadline_central_display": "19 February 2027",
+        "deadline_note": "Application window for the 2027 entry cycle: opens November 1, 2026 and closes February 19, 2027 at 11:59 p.m. ET. Note the same page prints a stale 'February 19, 2026' deadline under the Faculty of Engineering Global Dean's Excellence Award.",
+        "application_cycle": "2027 entry (Fall) cycle; applications open November 1, 2026",
+        "status": "OPENING SOON",
+        "status_note": "The official page states application opens November 1st, 2026 and the application deadline is February 19, 2027 at 11:59 p.m. ET (verified October 10, 2026).",
+        "tuition_coverage_note": "Renewal requires students to continue to pay international student tuition fees, so the award does not replace tuition; the page does not state that any part of the award is applied to tuition, living costs or travel.",
+        "funding_amount": 200000,
+        "funding_currency": "CAD",
+        "funding_period": "over four years",
+        "tuition_coverage": false,
+        "living_cost_coverage": null,
+        "travel_coverage": null,
+        "fully_funded": false,
+        "benefits": [
+          "Award value: up to $200,000 over four years.",
+          "Renewable each year in Level 2-4 for a total of four years.",
+          "Presented as McMaster's prestigious entrance award, sitting alongside a variety of faculty-specific international awards."
+        ],
+        "eligibility": [
+          "Be an international student paying international tuition fees.",
+          "Enter one of the eligible faculties: Business, Engineering, Humanities, Science and Social Sciences.",
+          "Have a strong history of academic excellence, demonstrate a commitment to community excellence, show great potential as a student scholar, and exemplify McMaster University's values of excellence, engagement, and personal growth.",
+          "To renew: be enrolled in the faculty to which they were originally admitted, maintain full-time enrolment status and continue to pay international student tuition fees."
+        ],
+        "requirements": [
+          "Applicants must apply through AwardSpring (McMaster English Language Development (MELD) applicants must apply through the McMaster University Award of Excellence Form for MELD).",
+          "Meet McMaster's published English language proficiency requirement for direct-entry undergraduate admission."
+        ],
+        "documents": [
+          "Completed application submitted through AwardSpring at mcmaster.awardspring.ca, demonstrating the three published evaluation criteria.",
+          "For MELD applicants: the McMaster University Award of Excellence Form for MELD instead of the AwardSpring application."
+        ],
+        "selection_criteria": [
+          "Personal Growth and Achievement: a meaningful learning experience and what was gained.",
+          "Community Engagement and Contribution: positive impact through helping others.",
+          "Self-Reflection: insight into personal values, choices, or goals."
+        ],
+        "coverage": [
+          "Valued up to $200,000 in support over four years.",
+          "Award amounts are determined by the Faculty and are based on the student's enrolled course load as required by their program; the final value will be confirmed following enrolment.",
+          "The award does not cover international tuition fees, which recipients continue to pay as a renewal condition."
+        ],
+        "application_method": [
+          "Submit the application through AwardSpring at mcmaster.awardspring.ca/signin.",
+          "MELD applicants submit the McMaster University Award of Excellence Form for MELD.",
+          "Respond to the three published evaluation criteria in the application."
+        ],
+        "application_route": "Apply through AwardSpring between November 1, 2026 and February 19, 2027 at 11:59 p.m. ET (MELD applicants use the separate McMaster University Award of Excellence Form for MELD).",
+        "study_mode": "Full-time enrolment status required to renew",
+        "citizenship_residency": "Open to international students who pay international tuition fees.",
+        "international_eligibility": "Yes - the award is specifically for international fee-paying students.",
+        "subject_or_agency_requirement": "Must enter one of the eligible faculties: Business, Engineering, Humanities, Science or Social Sciences.",
+        "research_requirement": null,
+        "duration": "Up to four years: renewable each year in Levels 2-4",
+        "description": "The McMaster University Award of Excellence is McMaster's prestigious entrance award, valued up to $200,000 in support for international fee-paying students who have excelled in the classroom, contributed to their communities and grown through their experiences. It sits alongside a variety of faculty-specific international awards in Business, Engineering, Humanities, Science, Social Sciences and the MELD program.",
+        "region": "Canada (Hamilton, Ontario)",
+        "program_type": "Prestigious entrance award for international fee-paying undergraduates, renewable across Levels 2 to 4.",
+        "english_requirement": "McMaster's published direct-entry undergraduate standard: IELTS Academic 6.5 overall with a minimum of 6.0 in each component (TOEFL iBT 86 overall with 20 in each section for tests written before January 21, 2026, or 4.5 overall for tests on or after that date; Duolingo English Test 120 overall; CAEL 70; PTE Academic 60; Cambridge C1 Advanced/C2 Proficiency 180). Results must be sent directly from the testing centre (IELTS organization ID 114599; TOEFL institution code 0936). Exemptions are possible after at least four years of full-time English-medium study; MELD and STEP pathways exist for near-miss scores."
+      },
+      "verification": {
+        "source_citations": [
+          "https://future.mcmaster.ca/internationalawards",
+          "https://future.mcmaster.ca/apply/requirements/english-proficiency/"
+        ],
+        "last_verified_date": "2026-10-10",
+        "verification_status": "confirmed",
+        "confidence": "high",
+        "not_confirmed": [
+          "living_cost_coverage and travel_coverage: the award page does not state that the award covers living or travel costs",
+          "a specific list of required documents beyond the AwardSpring application itself and the MELD form",
+          "the actual award value for an individual student: set by the Faculty from the enrolled course load and confirmed following enrolment"
+        ],
+        "notes": "Award value (up to $200,000 over four years), 2027 cycle dates (open November 1, 2026; close February 19, 2027 at 11:59 p.m. ET), AwardSpring route, three evaluation criteria and renewal conditions confirmed on McMaster's International Undergraduate Student Entrance Awards page; English proficiency minimums confirmed on McMaster's English Proficiency page."
+      },
+      "applicant_utility": {
+        "summary": "This is the only award on McMaster's international page with its own application: you file through AwardSpring between November 1, 2026 and February 19, 2027 at 11:59 p.m. ET, separately from your OUAC admission application. Assessment is reflective rather than numeric - Personal Growth and Achievement, Community Engagement and Contribution, and Self-Reflection - so the quality of your writing carries as much weight as your transcript. The headline 'up to $200,000 over four years' is a cap: the Faculty sets your actual value from your course load and confirms it only after you enrol, and renewal depends on staying in your original faculty, staying full-time, and continuing to pay international fees.",
+        "best_fit": "International fee-paying undergraduates entering Business, Engineering, Humanities, Science or Social Sciences who can evidence genuine personal growth and community contribution, not just top grades.",
+        "application_readiness_checklist": [
+          "Create your AwardSpring account as soon as the window opens on November 1, 2026 and leave real time to write three substantive responses.",
+          "Confirm your target faculty is one of the five eligible ones (Business, Engineering, Humanities, Science, Social Sciences) before investing in the application.",
+          "If you are a MELD applicant, use the separate McMaster University Award of Excellence Form for MELD - the AwardSpring route does not apply to you.",
+          "Have English test scores sent directly from the testing centre (TOEFL institution code 0936; IELTS organization ID 114599) so admission and award review are not held up.",
+          "Plan your finances against the international tuition bill you will keep paying - the award does not replace it."
+        ],
+        "common_rejection_risks": [
+          "Treating the application as a grades form: generic responses that do not evidence all three criteria with specific stories will not distinguish you.",
+          "Missing the February 19, 2027 11:59 p.m. ET cutoff after the November 1 opening - no late window is advertised.",
+          "Confusing the umbrella deadline with the stale 'February 19, 2026' date printed under the Faculty of Engineering's Global Dean's Excellence Award on the same page.",
+          "Switching programs after admission: renewal requires remaining in the faculty you were originally admitted to.",
+          "Dropping below full-time enrolment or losing international fee status, which breaks the renewal terms."
+        ],
+        "estimated_uncovered_costs": "International tuition fees, which recipients continue to pay under the renewal terms, plus Hamilton living costs; because the final value is set by the Faculty from your course load and confirmed after enrolment, plan as if the full $200,000 will not arrive.",
+        "document_audit": [
+          "The AwardSpring application itself is the only published submission - the page lists no separate document set, so keep transcripts and English score reports ready in case the Faculty requests them.",
+          "MELD applicants must use the Microsoft Form, not AwardSpring; filing through the wrong portal means the application is never assessed.",
+          "English results must arrive electronically from the testing centre - scores carried by the applicant are not the published route."
+        ],
+        "alerts": [
+          "The award value is course-load dependent: light or unusual course loads can pull the amount below the headline figure.",
+          "Renewal is conditional on remaining in the originally admitted faculty, full-time enrolment status, and continued payment of international student tuition fees.",
+          "The same page mixes 2026 and 2027 cycle dates across different awards; anchor on the Award of Excellence block itself (application deadline February 19, 2027)."
+        ],
+        "submission_workflow": "File through mcmaster.awardspring.ca during the November 1, 2026 - February 19, 2027 window (MELD applicants use the McMaster Microsoft Form); the Faculty sets the final value after enrolment."
+      }
+    }
+  ]
+}

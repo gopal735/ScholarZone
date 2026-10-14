@@ -1,0 +1,230 @@
+{
+  "agent": "agent_467",
+  "records": [
+    {
+      "id": 213,
+      "official": {
+        "official_source_urls": [
+          "https://uic.yonsei.ac.kr/admission.php?mid=m04_03",
+          "https://uic.yonsei.ac.kr/admission.php?mid=m04_02_02"
+        ],
+        "application_link": "https://uic.yonsei.ac.kr/admission.php?mid=m04_02_02",
+        "catalogue_url": null,
+        "official_updates_url": "https://uic.yonsei.ac.kr/news.php?mid=m07_01_01",
+        "deadline_central": null,
+        "deadline_central_display": null,
+        "deadline_note": "No separate scholarship deadline. The 1st Round for Spring 2027 entry closed (online application 26 Aug - 22 Sep 2026; document arrival deadline 2 Oct 2026; notification 18 Dec 2026). The 2nd Round for Fall 2027 entry is published only as 'March, 2027' (TBD), with interview and notification in June 2027.",
+        "application_cycle": "Spring 2027 (1st round, closed) / Fall 2027 (2nd round, March 2027 TBD)",
+        "status": "UPCOMING",
+        "status_note": "The 1st Round for Spring 2027 entry has closed; the next round is the 2nd Round for Fall 2027 entry with the online application in 'March, 2027' (marked TBD).",
+        "tuition_coverage_note": "Admissions Scholarship 'Types: full tuition for 4 years'. UIC publishes the 2026 International Students Track tuition as 8,202,000 KRW per semester (first semester 8,416,000 KRW), plus miscellaneous fees of 56,000 KRW (61,000 KRW first semester).",
+        "funding_amount": 8202000,
+        "funding_currency": "KRW",
+        "funding_period": "per semester (tuition fee)",
+        "tuition_coverage": true,
+        "living_cost_coverage": false,
+        "travel_coverage": false,
+        "fully_funded": false,
+        "benefits": [
+          "Full tuition for 4 years",
+          "Automatic consideration: 'International students applying for UIC will be automatically considered as scholarship candidates'",
+          "Scholarship offer letter enclosed in the admission packet and sent individually",
+          "Recipients must maintain a certain level of GPA each semester to stay eligible for the following semester"
+        ],
+        "eligibility": [
+          "Newly-admitted international students to UIC",
+          "Hold or expect to hold a high school diploma or certificate of high school equivalency before matriculating at UIC (GED, home schooling and cyber schooling are not accepted)",
+          "Non-Korean with non-Korean parents under the Nationality Act; any Korean dual citizenship of the student or a parent disqualifies the International Students Track",
+          "Must maintain a certain level of GPA each semester to stay eligible for the scholarship in the following semester"
+        ],
+        "requirements": [
+          "Scholarship recipients are selected from admitted applicants according to their academic credentials",
+          "Maintain the required GPA each semester to retain the scholarship in the following semester"
+        ],
+        "documents": [
+          "Printed copy of the online application form (UIC website or Common App)",
+          "Letter of Consent & Verification from the UIC website",
+          "Apostille or Korean Consulate-authenticated official transcripts from all high schools attended",
+          "Apostille or Korean Consulate-authenticated certificate of graduation or expected graduation",
+          "English proficiency documents (from the 2027 intake, required): recognized test score report (TOEFL PBT/CBT/iBT, IELTS, CEFR certification, IB DP English A, AP English Language and Composition or AP English Literature - no minimum scores), OR a high school diploma from a country where English is the sole official language (US, Canada excluding Quebec, UK, Australia, New Zealand), OR a Medium of Instruction certificate",
+          "Copies of the applicant's and parents' passports or ID cards",
+          "Notarized birth certificate or legal documentation verifying the parent relationship (Chinese nationals: notarized kinship certificate and household register)",
+          "Receipt of the application fee payment (KRW 150,000 or USD 150; no fee waiver offered)"
+        ],
+        "selection_criteria": [
+          "Document review on a 200-point scale covering academic achievements and non-academic accomplishments",
+          "Interview on a 100-point scale (online), with a total of 300 points determining the decision",
+          "Scholarship recipients are selected from admitted applicants according to their academic credentials"
+        ],
+        "coverage": [
+          "Full tuition for 4 years (International Students Track tuition: 8,202,000 KRW per semester, 2026 academic year; first semester 8,416,000 KRW)",
+          "Miscellaneous fees (56,000 KRW per semester; 61,000 KRW first semester) are not part of the tuition waiver"
+        ],
+        "application_method": [
+          "Choose Option 1 (direct application via the UIC online application) or Option 2 (Common App) and pay the application fee",
+          "Post the printed application form and all required documents so they physically arrive at the UIC Office by the document submission deadline",
+          "Sit the online interview if shortlisted (verification and interview calls are made before the interview date)",
+          "If admitted with a scholarship, the offer letter arrives in the admission packet"
+        ],
+        "application_route": "Apply for UIC undergraduate admission online (UIC site or Common App) and post documents to the UIC Office; scholarship consideration is automatic for admitted international students.",
+        "study_mode": "Full-time",
+        "citizenship_residency": "Non-Korean with non-Korean parents; any Korean dual citizenship of the applicant or a parent blocks the International Students Track; foreigners residing in Korea must also submit Alien Registration certificates",
+        "international_eligibility": "Yes - the scholarship is for newly admitted international students to UIC",
+        "subject_or_agency_requirement": null,
+        "research_requirement": null,
+        "duration": "Four years (8 semesters) of full tuition",
+        "description": "UIC awards its Admissions Scholarship to newly-admitted international students, covering full tuition for 4 years; international applicants are automatically considered as scholarship candidates and selected from admitted applicants according to academic credentials, with the offer letter enclosed in the admission packet.",
+        "region": "Asia",
+        "program_type": "Undergraduate admission merit scholarship (automatic consideration at application)",
+        "english_requirement": "From the 2027 intake, proof of English proficiency is required: an official score report for a recognized test (TOEFL PBT/CBT/iBT, IELTS, CEFR English certification, IB DP English A: Language and Literature or English A: Literature, AP English Language and Composition, AP English Literature and Composition - no minimum scores), OR a high school diploma from a country where English is the sole official language (US, Canada excluding Quebec, UK, Australia, New Zealand), OR a Medium of Instruction certificate for applicants who completed the entire high school curriculum in English (except native language/history courses)."
+      },
+      "verification": {
+        "source_citations": [
+          "https://uic.yonsei.ac.kr/admission.php?mid=m04_03",
+          "https://uic.yonsei.ac.kr/admission.php?mid=m04_02_02"
+        ],
+        "last_verified_date": "2026-10-10",
+        "verification_status": "confirmed",
+        "confidence": "high",
+        "not_confirmed": [
+          "deadline_date: the 2nd Round (Fall 2027 entry) is published only as 'March, 2027' (TBD)",
+          "living_cost_coverage and travel_coverage: the scholarship covers tuition only; no living or travel benefit is published"
+        ],
+        "notes": "Verified the scholarship type ('full tuition for 4 years', automatic consideration, GPA maintenance, offer letter in admission packet) and the 2026 International Students Track tuition of 8,202,000 KRW per semester on the official Tuition fee & Scholarship page; verified the Spring 2027 application schedule, required documents, 2027 English-proficiency rule and application fee on the official First Year Students (International) page."
+      },
+      "applicant_utility": {
+        "summary": "This is a full-tuition-for-four-years award attached to UIC admission, not a separate competition: submit the undergraduate application and admitted international students are considered automatically, with the offer letter arriving inside the admission packet. The waived amount equals the International Students Track tuition of 8,202,000 KRW per semester (2026), so you still need funds for miscellaneous fees (about 56,000-61,000 KRW per semester), housing, food and personal costs. The one continuing condition is your semester GPA - the scholarship is re-checked each semester and lapses in the following semester if you fall below the required level.",
+        "best_fit": "Non-Korean high-school graduates (with non-Korean parents) seeking an English-medium liberal-arts and STEM bachelor's in Seoul who can keep a strong GPA and can fund living costs on top of tuition.",
+        "application_readiness_checklist": [
+          "Start apostille or Korean consulate authentication of transcripts and graduation certificates months ahead - hard copies must physically arrive at the UIC Office by the deadline, not just be posted",
+          "From the 2027 intake, line up English proof early: a recognized test report, a diploma from an English-official-language country, or a school Medium of Instruction certificate",
+          "Prepare the Letter of Consent & Verification plus passport copies for you and both parents",
+          "Budget the KRW 150,000 (USD 150) application fee - UIC offers no fee waiver",
+          "Diarise the online interview window (11-12 December 2026 for the Spring 2027 round) and keep the phone reachable for verification calls"
+        ],
+        "common_rejection_risks": [
+          "Documents arriving after the physical submission deadline - UIC states the deadline will not be extended under any circumstances and failure to submit any required document disqualifies",
+          "Any Korean dual citizenship in the family (student or parent), which removes International Students Track eligibility entirely",
+          "GED, home-schooled or cyber-schooled certificates, which UIC does not treat as a high school diploma",
+          "Failing to maintain the required GPA after admission, which costs the scholarship in the following semester",
+          "Un-notarized kinship or parent-relationship documents, especially for applicants with Chinese nationality"
+        ],
+        "estimated_uncovered_costs": "Miscellaneous fees of 56,000 KRW per semester (61,000 KRW in the first semester), plus housing, food, transport, insurance and personal expenses in Seoul - the award waives tuition only.",
+        "document_audit": [
+          "All documents must be in English or accompanied by a notarized English translation",
+          "Transcripts and graduation certificates need Apostille (Hague Convention countries) or Korean consulate authentication; documents from Chinese high schools need a CSHI report or the specified certificate set",
+          "Standardized scores (Duolingo, IELTS, TOEFL, SAT, AP) reported directly to Yonsei must also be flagged to uicadm@yonsei.ac.kr with your English name and test date, and a hard copy posted"
+        ],
+        "alerts": [
+          "The 2nd Round (Fall 2027 entry) date is only 'March, 2027 (TBD)' - check UIC announcements rather than assuming last year's calendar",
+          "Spring-entry students receive visa, tuition and enrolment emails in late December; fall-entry in late June",
+          "The scholarship is conditional on GPA every single semester, not just at entry"
+        ],
+        "submission_workflow": "Online application (UIC site or Common App) plus physical delivery of the full document pack to the UIC Office, then an online interview; the scholarship decision rides on the admission decision with no extra form."
+      }
+    },
+    {
+      "id": 214,
+      "official": {
+        "official_source_urls": [
+          "https://graduate.yonsei.ac.kr/graduate_en/academic/scholarship02.do"
+        ],
+        "application_link": "https://graduate.yonsei.ac.kr/graduate_en/academic/scholarship02.do",
+        "catalogue_url": "https://graduate.yonsei.ac.kr/graduate_en/academic/scholarship.do",
+        "official_updates_url": "https://graduate.yonsei.ac.kr/graduate_en/board/notice.do",
+        "deadline_central": null,
+        "deadline_central_display": null,
+        "deadline_note": "No application deadline exists for this scholarship: it is awarded to international-track students already enrolled in regular semesters, and eligibility is assessed per semester rather than through an application window.",
+        "application_cycle": "Assessed each regular semester of enrolment",
+        "status": "OPEN",
+        "status_note": "The Graduate School publishes the Foreigner Special Scholarship table listing the Yonsei International Companion Scholarship as an automatic award for eligible full-time international students in regular semesters; there is no application round to wait for.",
+        "tuition_coverage_note": null,
+        "funding_amount": 2000000,
+        "funding_currency": "KRW",
+        "funding_period": "per semester (Master's)",
+        "tuition_coverage": false,
+        "living_cost_coverage": null,
+        "travel_coverage": null,
+        "fully_funded": false,
+        "benefits": [
+          "Master's Program: KRW 2,000,000 per semester",
+          "Doctoral Program: KRW 3,000,000 per semester",
+          "Integrated master's and PhD Program: KRW 2,000,000 per semester",
+          "Automatic award - no separate application to submit"
+        ],
+        "eligibility": [
+          "Full-time international students enrolled in regular semesters through the international student admission track at the Graduate School",
+          "Ineligible: students receiving full tuition scholarships (from Graduate School) for regular semesters",
+          "Ineligible: students in the College of Medicine, College of Dentistry, or College of Nursing",
+          "Ineligible: students in contract-based programs",
+          "Ineligible: Graduate School students at Mirae Campus"
+        ],
+        "requirements": [
+          "Enrolment in regular semesters through the international student admission track",
+          "Support is paid for regular semesters only"
+        ],
+        "selection_criteria": [
+          "Eligibility is assessed against the published table (track, enrolment status and the listed exclusions); no competitive selection criteria are published"
+        ],
+        "coverage": [
+          "Master's Programme: KRW 2,000,000 per semester",
+          "Doctoral Programme: KRW 3,000,000 per semester",
+          "Integrated Programme: KRW 2,000,000 per semester",
+          "Regular semesters only: 4 semesters for master's and PhD, 6 semesters for the integrated master's and PhD programme"
+        ],
+        "application_method": [
+          "No application is required - the award is administered by the Graduate School for eligible enrolled students"
+        ],
+        "application_route": "No application route: eligible international-track students in regular semesters receive the award automatically.",
+        "study_mode": "Full-time",
+        "citizenship_residency": "For full-time international students who entered through the international student admission track",
+        "international_eligibility": "Yes - the award exists specifically for international students at the Yonsei Graduate School",
+        "subject_or_agency_requirement": "Not open to students of the College of Medicine, College of Dentistry or College of Nursing, contract-based programmes, or Mirae Campus",
+        "research_requirement": null,
+        "duration": "Regular semesters: 4 semesters for master's and PhD programmes, 6 semesters for the integrated master's and PhD programme",
+        "description": "The Yonsei Graduate School publishes the Yonsei International Companion Scholarship in its Foreigner Special Scholarship table as an automatic per-semester award for full-time international students enrolled in regular semesters through the international student admission track, paying KRW 2,000,000 per semester for master's, KRW 3,000,000 for doctoral and KRW 2,000,000 for integrated students, subject to published exclusions.",
+        "region": "Asia",
+        "program_type": "Graduate School internal scholarship for international students (no separate application)",
+        "english_requirement": null
+      },
+      "verification": {
+        "source_citations": [
+          "https://graduate.yonsei.ac.kr/graduate_en/academic/scholarship02.do"
+        ],
+        "last_verified_date": "2026-10-10",
+        "verification_status": "confirmed",
+        "confidence": "high",
+        "not_confirmed": [
+          "living_cost_coverage and travel_coverage: the official table lists scholarship amounts without stating which expenses they cover",
+          "english_requirement: not stated on this scholarship page"
+        ],
+        "notes": "Verified the Yonsei International Companion Scholarship row on the official Foreigner Special Scholarship page of the Yonsei Graduate School (amounts per semester by programme, regular-semester duration, and the four exclusion categories)."
+      },
+      "applicant_utility": {
+        "summary": "This is an automatic per-semester top-up, not something you apply for: enrol full-time on the international track in regular semesters and the Graduate School pays KRW 2,000,000 per semester for a master's, KRW 3,000,000 for a PhD and KRW 2,000,000 for the integrated programme, over 4 semesters (6 for the integrated track). It stacks nothing with a full Graduate School tuition scholarship - if you hold one, you are excluded - so the Companion Scholarship is most valuable to students paying tuition who need a stipend on top. Medicine, Dentistry, Nursing, contract-based programmes and Mirae Campus students are excluded, so check your college before counting on it.",
+        "best_fit": "Full-time international-track master's, PhD and integrated students at Yonsei's Seoul campus who do not hold a full tuition scholarship and are outside the excluded medical and contract programmes.",
+        "application_readiness_checklist": [
+          "Confirm you are enrolled through the international student admission track, not another category",
+          "Verify your college is not Medicine, Dentistry or Nursing and your programme is not contract-based",
+          "Keep enrolment in regular semesters (avoid leave of absence, which breaks the regular-semester basis of the award)",
+          "Budget the stipend as per-semester income across the standard 4-semester (6-semester integrated) support period"
+        ],
+        "common_rejection_risks": [
+          "Holding a full Graduate School tuition scholarship, which excludes you from this award",
+          "Enrolment at Mirae Campus or in a contract-based programme",
+          "Non-regular-semester status (for example extended or non-standard registration)",
+          "Studying Medicine, Dentistry or Nursing"
+        ],
+        "estimated_uncovered_costs": "The award is a fixed per-semester scholarship amount; tuition (unless separately waived), housing, insurance and all other living costs sit outside it.",
+        "document_audit": [
+          "No documents are submitted for this award - but your international-track admission paperwork is what proves eligibility, so keep it accessible"
+        ],
+        "alerts": [
+          "The award stops at 4 regular semesters for master's and PhD students (6 for integrated) - plan funding for the remainder of your programme",
+          "Taking a leave of absence or moving to a non-regular semester status interrupts eligibility"
+        ],
+        "submission_workflow": "Nothing to submit: the Graduate School assesses enrolled international-track students against the published table each regular semester."
+      }
+    }
+  ]
+}

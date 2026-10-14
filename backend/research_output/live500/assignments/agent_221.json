@@ -1,0 +1,84 @@
+{
+ "agent": "agent_221",
+ "assignment_count": 1,
+ "scholarships": [
+  {
+   "id": 559,
+   "title": "HBKU Graduate Tuition Waiver and Stipend",
+   "country": "Qatar",
+   "degree": "Master's, PhD",
+   "funding_label": "Tuition Fee Waiver",
+   "status": "open",
+   "official_source": "Hamad Bin Khalifa University (HBKU), a member of Qatar Foundation for Education, Science, and Community Development",
+   "official_source_url": "https://www.hbku.edu.qa/en/scholarship",
+   "application_link": "https://www.hbku.edu.qa/en/scholarship",
+   "catalogue_url": "https://catalog.hbku.edu.qa",
+   "official_updates_url": "https://www.hbku.edu.qa/en/newsroom",
+   "existing": {
+    "funding_amount": null,
+    "funding_currency": "QAR",
+    "funding_period": null,
+    "tuition_coverage": 1,
+    "living_cost_coverage": null,
+    "travel_coverage": 1,
+    "fully_funded": 0,
+    "description": "HBKU graduate scholarships may include a tuition waiver applied to reduce tuition costs and a stipend paid directly to the student, and HBKU states that graduate students receiving a stipend would generally also be provided with a tuition waiver. Tuition waivers are standardised across HBKU and range from 100% for PhD STEM and PhD SHAPE and S.J.D. programmes down to 0% for LL.M. programmes, MS Economics and certificate programmes. Stipends are awarded to selected graduate students, with published monthly and annual rates for Qatari, international and local PhD and Master's students, over durations of 45 months for PhD and 21 months for Master's. Awards depend on the availability of funds, are not guaranteed, and are made on a merit or need basis only.",
+    "eligibility": [
+     "Admitted or applying HBKU graduate student, considered for scholarships during the admissions process",
+     "Awards depend on the availability of funds and are made on a merit or need basis only",
+     "For stipends: full-time graduate students serving at the university as research assistants and/or teaching assistants, depending on the availability of funds",
+     "Full-time working professionals and part-time workers who exceed 40% of full-time hours are not eligible for stipends",
+     "Students must maintain good academic standing as specified in the scholarship agreement"
+    ],
+    "eligibility_summary": "Tuition waivers and stipend awards at HBKU depend on the availability of funds, are not guaranteed, and are awarded only on a merit or need basis; stipends are awarded to full-time graduate students serving as research assistants and/or teaching assistants.",
+    "benefits": [
+     "Stipend holders may serve as Teaching Assistants for 10 hours per week at an hourly rate of 50 QAR for the duration of the semester in which they are assigned to teach",
+     "Stipend holders are eligible for paid employment through the Student Employment Program for up to 10 additional hours per week"
+    ],
+    "coverage": [
+     "Tuition waiver applied to reduce tuition costs, at a programme-specific percentage",
+     "Monthly stipend paid directly to the student",
+     "Single round-trip airfare for international students during their candidature, consisting of one inbound ticket upon starting the academic program and one outbound ticket upon graduation"
+    ],
+    "requirements": [
+     "Apply through the HBKU graduate admissions process; no separate scholarship application is needed",
+     "Serve as a research assistant with the primary supervisor for 10 hours per week while receiving a stipend",
+     "Observe a maximum of 20 hours per week of work in total, i.e. 10 hours beyond the RA commitment",
+     "Maintain good academic standing as specified in the scholarship agreement, since scholarships are reviewed annually and depend on academic progress and available funds"
+    ],
+    "documents": [
+     "HBKU graduate admission application and supporting documents as required by the admissions process"
+    ],
+    "english_requirement": null,
+    "application_method": [
+     "Create a user account through the HBKU Apply Now portal",
+     "Submit an application by choosing the desired college and program, with up to two applications permitted per academic year",
+     "After submission, log back into the account using the confirmation email instructions to submit supplementary documents and provide contact details for references",
+     "The HBKU admissions team checks the application for completion and eligibility before forwarding it to the relevant college for assessment",
+     "Await the college's decision and offer letter",
+     "Scholarships are considered as part of the admissions process; no separate scholarship application is required"
+    ],
+    "selection_notes": "There is a preliminary application review by the HBKU admissions team for completeness and eligibility, followed by assessment by the relevant college. Scholarships are not awarded automatically to admitted students: HBKU states they are offered based on merit or financial need and available funds, and they are reviewed annually depending on academic progress and available funds.",
+    "best_fit": "Graduate applicants to HBKU colleges (College of Science and Engineering, College of Health and Life Sciences, College of Islamic Studies, College of Humanities and Social Sciences, College of Law, College of Public Policy and the School of Economics and Management) who are seeking a tuition waiver and stipend, including international students who can serve as research assistants.",
+    "notes": "Students are responsible for covering the cost of their housing, whether in Qatar Foundation dormitory facilities or external accommodation; this expense is paid from the monthly stipend or personal funds, and HBKU does not provide direct payment for student housing. Meal plans are not separately included; the stipend is a fixed amount meant to cover general living expenses including meals. Stipend awards do not depend on the student's marital status or the number of family dependents. Stipends for local students are limited. Stipends funded from external sources, including research grants, are excluded from the published rates. Self-sponsored graduate students are only eligible for a discounted tuition rate of 2,000 QAR per credit hour based on financial need, and these scholarship guidelines do not apply to students funded by external sources. Receipt of external funding may affect eligibility. Deferral of admission may affect scholarship eligibility. LL.M. programmes, MS Economics and certificate programmes carry a 0% tuition waiver.",
+    "duration": "Stipend duration of 45 months for PhD programmes and 21 months for Master's programmes",
+    "application_period": "Online applications open to the public on 1 October 2026 and close on 1 February 2027 for international graduate applicants. Qatari and resident applicants who wish to apply for funding have a later deadline of 15 March 2027. No separate scholarship application is needed; candidates are considered during the admissions process.",
+    "deadline_display": "Online graduate admission application opens to the public 1 October 2026; admission application deadline for international graduate applicants 1 February 2027; admission application deadline for Qatari and resident applicants who wish to apply for funding 15 March 2027",
+    "deadline_date": "2027-02-01",
+    "region": "Middle East",
+    "program_type": "University scholarship",
+    "applicant_utility": null,
+    "official_details": null
+   },
+   "missing_fields": [
+    "funding_amount",
+    "funding_period",
+    "living_cost_coverage",
+    "english_requirement",
+    "applicant_utility",
+    "official_details"
+   ]
+  }
+ ],
+ "result_file": "C:\\Users\\GopaL\\Desktop\\Projects folder\\ScholarZone\\backend\\research_output\\live500\\results\\agent_221.json"
+}

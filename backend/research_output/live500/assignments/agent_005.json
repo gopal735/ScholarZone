@@ -1,0 +1,153 @@
+{
+ "agent": "agent_005",
+ "assignment_count": 2,
+ "scholarships": [
+  {
+   "id": 33,
+   "title": "Chinese Government Scholarship (CSC)",
+   "country": "China",
+   "degree": "Bachelor's, Master's, PhD, Language courses",
+   "funding_label": "Fully Funded",
+   "status": "open",
+   "official_source": null,
+   "official_source_url": "https://www.campuschina.org",
+   "application_link": "https://www.campuschina.org",
+   "catalogue_url": null,
+   "official_updates_url": null,
+   "existing": {
+    "funding_amount": null,
+    "funding_currency": null,
+    "funding_period": null,
+    "tuition_coverage": null,
+    "living_cost_coverage": null,
+    "travel_coverage": null,
+    "fully_funded": 0,
+    "description": null,
+    "eligibility": [],
+    "eligibility_summary": "Non-Chinese citizen, healthy, Bachelor's for Master's applicants, Master's for PhD applicants",
+    "benefits": [
+     "Full tuition",
+     "Accommodation",
+     "Monthly stipend CNY 2,500-3,500",
+     "Medical insurance"
+    ],
+    "coverage": [
+     "Full tuition",
+     "Accommodation",
+     "Monthly stipend CNY 2,500-3,500",
+     "Medical insurance"
+    ],
+    "requirements": [],
+    "documents": [
+     "CSC online application",
+     "Transcripts",
+     "Recommendation letters x2",
+     "Physical exam",
+     "HSK score (if required by university)"
+    ],
+    "english_requirement": "English or Chinese depending on programme",
+    "application_method": [],
+    "selection_notes": null,
+    "best_fit": "Students comfortable studying in Chinese or English medium",
+    "notes": null,
+    "duration": null,
+    "application_period": null,
+    "deadline_display": "Typically March-April each year",
+    "deadline_date": null,
+    "region": "Asia",
+    "program_type": null,
+    "applicant_utility": null,
+    "official_details": null
+   },
+   "missing_fields": [
+    "funding_amount",
+    "funding_currency",
+    "funding_period",
+    "tuition_coverage",
+    "living_cost_coverage",
+    "travel_coverage",
+    "description",
+    "eligibility",
+    "requirements",
+    "application_method",
+    "selection_notes",
+    "notes",
+    "duration",
+    "application_period",
+    "deadline_date",
+    "program_type",
+    "applicant_utility",
+    "official_details"
+   ]
+  },
+  {
+   "id": 36,
+   "title": "MAECI Italian Government Scholarship",
+   "country": "Italy",
+   "degree": "Bachelor's, Master's, PhD, Research, Language courses",
+   "funding_label": "Partially Funded",
+   "status": "upcoming",
+   "official_source": "Ministry of Foreign Affairs and International Cooperation (MAECI), Government of Italy",
+   "official_source_url": "https://www.esteri.it/en/opportunita/borse-di-studio",
+   "application_link": "https://www.esteri.it/en/opportunita/borse-di-studio",
+   "catalogue_url": "https://studyinitaly.esteri.it/ListaBandi",
+   "official_updates_url": "https://www.esteri.it/en/servizi-opportunita/opportunita/borse-di-studio/per-cittadini-stranieri/borsestudio_stranieri",
+   "existing": {
+    "funding_amount": null,
+    "funding_currency": null,
+    "funding_period": null,
+    "tuition_coverage": 0,
+    "living_cost_coverage": null,
+    "travel_coverage": null,
+    "fully_funded": 0,
+    "description": "The Italian Ministry of Foreign Affairs and International Cooperation awards scholarships to foreign students and Italian citizens resident abroad (IRE) under Italian law 288/55, to foster cultural, scientific and technological cooperation and to promote Italian language and culture. Scholarships are available only for academic courses taught on Italian territory, and the call sets out separate categories for degree study, research grants and shorter language or training courses. For academic year 2026-2027 applications were accepted exclusively through the Study in Italy portal and had to be received by 2 p.m. CET on 26 March 2026, so that cycle is closed. The ministry publishes the annual call, the English version and a list of eligible countries as PDF documents for each academic year.",
+    "eligibility": [],
+    "eligibility_summary": "Under 28 for study grants, under 35 for research, valid passport, good academic standing",
+    "benefits": [
+     "Monthly allowance EUR 900",
+     "Exemption from university fees at public universities"
+    ],
+    "coverage": [
+     "Monthly allowance EUR 900",
+     "Exemption from university fees at public universities"
+    ],
+    "requirements": [],
+    "documents": [
+     "Online application via Universitaly portal",
+     "Transcripts",
+     "Motivation letter",
+     "Passport",
+     "Language certificate"
+    ],
+    "english_requirement": "Italian or English depending on programme",
+    "application_method": [],
+    "selection_notes": null,
+    "best_fit": "Students interested in Italian universities and culture",
+    "notes": "Do not confuse this grant with the Invest Your Talent in Italy programme, which is a separate MAECI special-project scholarship run with the Italian Trade Agency and Uni-Italia, and with scholarships offered directly by Italian universities. Coverage amounts are set inside the annual call (Bando), not on the ministry's HTML page.",
+    "duration": "9 months from 1 November 2026 to 31 July 2027 for the main grant categories; 3-month grants run from 1 January 2027 and must end by 30 September 2027",
+    "application_period": "Annual call. For 2026-2027 the deadline was 26 March 2026 at 2 p.m. CET, with grants running from 1 November 2026",
+    "deadline_display": "Typically April-May each year",
+    "deadline_date": null,
+    "region": "Europe",
+    "program_type": "Government scholarship of the Italian Republic (legal basis Law 288/55)",
+    "applicant_utility": null,
+    "official_details": null
+   },
+   "missing_fields": [
+    "funding_amount",
+    "funding_currency",
+    "funding_period",
+    "living_cost_coverage",
+    "travel_coverage",
+    "eligibility",
+    "requirements",
+    "application_method",
+    "selection_notes",
+    "deadline_date",
+    "applicant_utility",
+    "official_details"
+   ]
+  }
+ ],
+ "result_file": "C:\\Users\\GopaL\\Desktop\\Projects folder\\ScholarZone\\backend\\research_output\\live500\\results\\agent_005.json"
+}

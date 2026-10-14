@@ -1,0 +1,81 @@
+{
+ "base": "https://scholarzone-fwzj.vercel.app",
+ "records": [
+  {
+   "id": 140,
+   "heading": "University of Turin — Talent 4 UniTo",
+   "expects_review": true,
+   "render_error": false,
+   "verified": false,
+   "confirm": true,
+   "needs_review": true,
+   "chars": 3603
+  },
+  {
+   "id": 113,
+   "heading": "UGC Junior Research Fellowship (JRF) & Research Associateship (RA) for Foreign Nationals",
+   "expects_review": true,
+   "render_error": false,
+   "verified": false,
+   "confirm": true,
+   "needs_review": true,
+   "chars": 3811
+  },
+  {
+   "id": 79,
+   "heading": "Edinburgh Global Research Scholarship",
+   "expects_review": true,
+   "render_error": false,
+   "verified": false,
+   "confirm": true,
+   "needs_review": true,
+   "chars": 1770
+  },
+  {
+   "id": 134,
+   "heading": "University of Bologna — International Talents @Unibo",
+   "expects_review": true,
+   "render_error": false,
+   "verified": false,
+   "confirm": true,
+   "needs_review": true,
+   "chars": 2664
+  },
+  {
+   "id": 16,
+   "heading": "Marie Skłodowska-Curie Actions (MSCA) Postdoctoral Fellowships",
+   "expects_review": false,
+   "render_error": false,
+   "verified": true,
+   "confirm": false,
+   "needs_review": false,
+   "chars": 8078
+  },
+  {
+   "id": 1,
+   "heading": "Erasmus Mundus Joint Masters (EMJM)",
+   "expects_review": false,
+   "render_error": false,
+   "verified": true,
+   "confirm": false,
+   "needs_review": false,
+   "chars": 5467
+  },
+  {
+   "id": 2,
+   "heading": "Lata Mangeshkar Dance & Music Scholarship Scheme (ICCR)",
+   "expects_review": false,
+   "render_error": false,
+   "verified": true,
+   "confirm": false,
+   "needs_review": false,
+   "chars": 5138
+  }
+ ],
+ "directory_card_badges": {
+  "confirm_with_provider": 1,
+  "verified_official_source": 11
+ },
+ "failures": [],
+ "console_errors": []
+}

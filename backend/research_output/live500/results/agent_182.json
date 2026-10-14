@@ -1,0 +1,153 @@
+{
+  "agent": "agent_182",
+  "records": [
+    {
+      "id": 481,
+      "official": {
+        "official_source_urls": [
+          "https://finaid.yale.edu/apply/prospective",
+          "https://finaid.yale.edu/affordability",
+          "https://finaid.yale.edu/policies",
+          "https://finaid.yale.edu/faq",
+          "https://finaid.yale.edu/typesofaid",
+          "https://admissions.yale.edu/affordability",
+          "https://admissions.yale.edu/international",
+          "https://admissions.yale.edu/timelines"
+        ],
+        "application_link": "https://finaid.yale.edu/apply/prospective",
+        "catalogue_url": "https://finaid.yale.edu/typesofaid",
+        "official_updates_url": "https://finaid.yale.edu/faq",
+        "deadline_central": "2027-02-15",
+        "deadline_central_display": "15 February 2027",
+        "deadline_note": "Aid priority deadlines for the 2027-28 academic year: QuestBridge 1 November 2026; Single-Choice Early Action 1 November 2026 for US citizens and permanent residents and 1 December 2026 for international citizens; Regular Decision 15 February 2027; transfer and Eli Whitney 1 April 2027. Admission application deadlines fall earlier (Early Action and QuestBridge 1 November 2026, Regular Decision 2 January 2027). Applications that are incomplete when decisions are released remain eligible and offers are not reduced because of late submission.",
+        "application_cycle": "2027-28 academic year, applied for in the 2026-27 admissions cycle for fall 2027 entry; 2025 income documentation is required",
+        "status": "OPEN",
+        "status_note": "For the 2027-28 Academic Year, Yale requires 2025 income documentation, and priority deadlines are published for QuestBridge, Early Action, Regular Decision and transfer applicants.",
+        "tuition_coverage_note": "Yale publishes that a zero parent share offer covers the full cost of tuition and fees, housing, food, and travel with a Yale Scholarship, and that families with incomes below $200,000 and typical assets qualify for a need-based scholarship that covers at least the cost of tuition.",
+        "funding_amount": 75220,
+        "funding_currency": "USD",
+        "funding_period": "per year",
+        "tuition_coverage": true,
+        "living_cost_coverage": true,
+        "travel_coverage": true,
+        "fully_funded": false,
+        "benefits": [
+          "$75,220 average annual need-based scholarship",
+          "Aid offers meet 100% of demonstrated need without loans; Yale awards no merit or athletic scholarships",
+          "Zero parent share awards for families with incomes below $100,000 and typical assets cover tuition and fees, housing, food and travel, plus hospitalization insurance coverage and a $2,000 start-up grant in the first year",
+          "Families with incomes below $200,000 and typical assets receive a scholarship that covers at least the cost of tuition",
+          "International students apply for aid only once at admission and the award is renewed in later years provided the number of children enrolled in an undergraduate degree program does not change",
+          "A one-time computer or technology purchase of up to $2,500 is permitted where outside resources exceed the standard $3,700 student share, and extra grants exist for winter clothing, summer experiences abroad and unexpected financial hardship"
+        ],
+        "eligibility": [
+          "Financial aid is awarded solely on the basis of demonstrated need, regardless of citizenship or immigration status",
+          "Yale is need-blind for all applicants, including international applicants, so interest in aid does not affect the admission decision",
+          "International applicants must indicate interest in financial aid on the admissions application (Common App, Coalition App on SCOIR, or QuestBridge)",
+          "Families with a wide range of incomes qualify for need-based Yale Scholarship aid",
+          "US citizens and permanent residents must reapply each academic year; international students do not"
+        ],
+        "requirements": [
+          "CSS Profile (Yale College code 3987), required for all financial aid applicants",
+          "FAFSA (Yale College code 001426), required for all applicants who are US citizens or permanent residents",
+          "Parent and student tax returns (Form 1040) with W-2s and Schedules 1, 2, 3 and Schedules A, B, C, D, E, F as applicable; a Non-Tax Filer's Statement if no federal return was filed",
+          "Business tax returns (Form 1065, 1120-S or 1120) and Schedule K-1 where applicable",
+          "Noncustodial parent financial information unless a CSS Profile waiver request is approved by the financial aid committee",
+          "2025 income documentation for the 2027-28 academic year"
+        ],
+        "documents": [
+          "CSS Profile submission",
+          "FAFSA submission for US citizens and permanent residents",
+          "Parent and student Form 1040 tax returns and W-2s",
+          "Form 1040 Schedules and, where applicable, business tax returns and Schedule K-1",
+          "Non-Tax Filer's Statement for parents or students who filed no federal return",
+          "CSS Profile Waiver Request for the Noncustodial Parent form, and IDOC uploads, which are Yale's preferred submission method"
+        ],
+        "selection_criteria": [
+          "Holistic review of family circumstances including taxed and untaxed income, assets, family size, number of children in college and special circumstances",
+          "Vertical and horizontal equity: families with different financial resources should expect different costs, and families with similar resources should expect similar costs",
+          "Demonstrated need is the only basis for a Yale Scholarship; the process evaluates a family's ability to pay, not its willingness to contribute"
+        ],
+        "coverage": [
+          "Tuition and student activity fee",
+          "Housing and food",
+          "Books, course materials, supplies and equipment",
+          "Personal expenses",
+          "Travel, estimated as two round trips between the permanent residence and New Haven",
+          "Hospitalization insurance coverage for highest-need students and international citizens"
+        ],
+        "application_method": [
+          "Indicate interest in applying for financial aid when completing the admissions application",
+          "Complete the CSS Profile online, and the FAFSA for US citizens and permanent residents",
+          "Submit all other required documents through IDOC, Yale's preferred submission method",
+          "Monitor the personalized checklist on the Yale Admissions Status Portal, since new documents may be added during review"
+        ],
+        "application_route": "Apply for admission through the Common App, Coalition App on SCOIR, or the QuestBridge application, indicate financial aid interest on that application, then file the CSS Profile (and FAFSA if a US citizen or permanent resident) and upload all supporting documents through IDOC.",
+        "study_mode": "Full-time",
+        "citizenship_residency": "No citizenship or residency requirement: aid is offered regardless of citizenship or immigration status, and admissions is need-blind for applicants anywhere in the world.",
+        "international_eligibility": "Yes. International students are eligible for the same need-based aid as domestic applicants, are reviewed in the same need-blind process, receive offers that include allowances for housing, meals and travel to and from campus twice each year, and are not required to reapply annually. Yale does not accept the ISFAA in place of its own forms, and international applicants do not submit the CSS Profile unless the office requests it.",
+        "subject_or_agency_requirement": null,
+        "research_requirement": null,
+        "duration": "4 years, renewable; international students apply once at admission and do not reapply annually",
+        "description": "Yale awards every dollar of undergraduate financial aid on the basis of demonstrated need as Yale Scholarship grants that never have to be repaid, meeting 100% of demonstrated need regardless of citizenship or immigration status and without requiring loans.",
+        "region": "North America (New Haven, Connecticut, United States)",
+        "program_type": "Need-based undergraduate financial aid (Yale Scholarship grant)",
+        "english_requirement": "Non-native English speakers who have not taken at least two years of secondary education where English was the medium of instruction must submit results from TOEFL, IELTS, Cambridge English Qualifications, DET or InitialView; Yale publishes no minimum score."
+      },
+      "verification": {
+        "source_citations": [
+          "https://finaid.yale.edu/affordability",
+          "https://admissions.yale.edu/affordability",
+          "https://finaid.yale.edu/apply/prospective",
+          "https://finaid.yale.edu/policies",
+          "https://admissions.yale.edu/international"
+        ],
+        "last_verified_date": "2026-10-10",
+        "verification_status": "confirmed",
+        "confidence": "high",
+        "not_confirmed": [
+          "A 2027-28 cost of attendance table (only the 2026-27 figures are published)",
+          "Any fixed, minimum or maximum award amount per student, since offers are set individually after need analysis",
+          "A minimum required English proficiency score",
+          "Whether the 2027-28 cycle changes the income thresholds"
+        ],
+        "notes": "Amount, coverage, eligibility and deadlines were read directly from finaid.yale.edu and admissions.yale.edu on 2026-10-10; the $75,220 figure is the published average annual need-based scholarship, not a guaranteed award, and the fully funded flag is left false because complete coverage is income-qualified rather than universal."
+      },
+      "applicant_utility": {
+        "summary": "Yale aid is not a separate competition you enter months later; it is triggered by ticking the financial aid interest box on the Common App, Coalition App on SCOIR, or QuestBridge application, and then proven with tax paperwork. The published average award is $75,220 a year, families with incomes below $100,000 and typical assets pay nothing at all, and families below $200,000 receive at least full tuition. Because every dollar is need-based and Yale is need-blind for applicants in every country, asking for aid does not dent your admission chances, but the documents you file decide the size of the offer.",
+        "best_fit": "Strong applicants from any country whose families cannot fund a US undergraduate degree, especially households with typical assets and income under $100,000 who will land in the zero parent share tier.",
+        "application_readiness_checklist": [
+          "Tick the financial aid interest box before submitting the admission application; international applicants can later email undergrad.fa@yale.edu to add the interest, but do not rely on that route",
+          "Gather 2025 income records now, since the 2027-28 aid year is judged on 2025 income, including every country's returns if the family is a US-citizen household living abroad",
+          "Ask both divorced or separated parents for their financial information up front, or file the noncustodial CSS Profile waiver request early because the committee reviews requests in the order received",
+          "Run Yale's Instant Net Price Estimator or the MyinTuition Quick Cost Estimator before applying so the final offer is not a shock",
+          "Line up the CSS Profile fee position in advance: US applicants from families earning up to $100,000 get an automatic waiver, while international applicants are contacted from mid-November with instructions"
+        ],
+        "common_rejection_risks": [
+          "Missing the earlier admission deadline while focusing on the later aid deadline; a perfect aid file cannot rescue a late application",
+          "Leaving the financial aid interest box blank, which for international applicants means the aid file never opens at all",
+          "Sending the ISFAA or self-translated documents, both of which Yale refuses to accept",
+          "Stalling halfway through IDOC, since unmatched checklist items linger and the waiver committee only clears them when it gets to the request",
+          "Domestic families letting aid lapse after year one because US citizens and permanent residents must reapply every year, unlike international students",
+          "Reporting an outside scholarship late, because above the $3,700 standard student share it replaces Yale Scholarship dollar for dollar"
+        ],
+        "estimated_uncovered_costs": "Above the thresholds a family contribution remains: Yale publishes typical payments of about $10,000 at $150,000 income, $20,000 at $200,000, $43,000 at $250,000 and $53,000 at $300,000, plus anything beyond the cost of attendance such as Yale Summer Session tuition, which Undergraduate Financial Aid does not fund with scholarship aid, and any travel budgeted above the standardized estimate.",
+        "document_audit": [
+          "Financial information is required from both parents when they are divorced or separated, and a pending waiver keeps noncustodial items in missing status until the committee rules",
+          "Business-owning families must supply Form 1065, 1120-S or 1120 returns and Schedule K-1, not only personal 1040s",
+          "Non-filers need the Non-Tax Filer's Statement in place of a tax return, and a US-citizen family abroad needs tax and income documents from every applicable country",
+          "Foreign-language transcripts and recommendation letters need certified translations; the office will not accept documents translated by the applicant",
+          "The IDOC checklist and the Yale checklist differ, and the Yale Admissions Status Portal checklist is the one that governs",
+          "Foreign documents in a language other than English trigger the certified translation rule, which is the most common quiet delay for international files"
+        ],
+        "alerts": [
+          "Aid deadlines sit after the admission deadlines: Regular Decision applications close 2 January 2027 while aid documents are due 15 February 2027, so file both.",
+          "Late aid files are still eligible and offers are not reduced, but only a complete file guarantees an offer before the 1 May reply date",
+          "International students apply once, yet automatic renewal depends on no change in the number of children enrolled in an undergraduate degree program; reapply through the continuing-student process if income collapses",
+          "The published cost of attendance is still the 2026-27 table (tuition $72,500), and Yale commits to matching any future increase with aid, so do not budget on an outdated total",
+          "Travel is not reimbursed as a separate payment: it is built into the cost of attendance and reaches you as Yale Scholarship credited to YalePay"
+        ],
+        "submission_workflow": "Submit one admission application with the aid interest box ticked, file the CSS Profile (and FAFSA if domestic), upload everything through IDOC, then refresh the Admissions Status Portal checklist until Yale releases the offer alongside the admission decision."
+      }
+    }
+  ]
+}

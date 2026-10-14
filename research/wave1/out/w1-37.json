@@ -1,0 +1,174 @@
+{
+  "agent_id": "w1_37",
+  "shard": "w1-37",
+  "today": "2026-10-04",
+  "records": [
+    {
+      "target_id": 362,
+      "outcome": "refreshed",
+      "confirm": true,
+      "confirmation_evidence": "Research Ireland's live programme page for the Government of Ireland Postgraduate Scholarship Programme states it is 'Closed' for the 2026 call, with an applicant deadline of '23rd October 2025, 16:00 Irish local time', a duration of '1-4 years', and a value of 'up to a maximum of \u20ac34,000 per annum in any approved year'.",
+      "new_scholarship": {
+        "name": "Government of Ireland Postgraduate Scholarship Programme",
+        "legacy_titles": ["Government of Ireland Postgraduate Scholarship Programme 2027"],
+        "country": "Ireland",
+        "degree_levels": "Master's by Research, PhD",
+        "funding_type": "Fully Funded",
+        "official_source": "Research Ireland",
+        "official_source_url": "https://www.researchireland.ie/funding/government-ireland-postgraduate",
+        "status": "upcoming",
+        "is_verified": true,
+        "last_verified_date": "2026-10-04",
+        "description": "The Government of Ireland Postgraduate Scholarship Programme provides individual, prestigious awards for excellent research in the name of the applicant at an eligible higher education institution in Ireland. It funds all disciplines from archaeology to zoology and supports bottom-up, non-directed research, except for awards funded by strategic funding partners. Research Ireland reports an average success rate of 18% over the past five years. The 2026 call closed on 23 October 2025 with a stated value of up to EUR 34,000 per annum."
+      },
+      "programme_detail_official": {
+        "official_source_urls": ["https://www.researchireland.ie/funding/government-ireland-postgraduate"],
+        "application_link": "https://www.researchireland.ie/funding/government-ireland-postgraduate",
+        "official_updates_url": "https://www.researchireland.ie/funding/",
+        "catalogue_url": null,
+        "application_cycle": "2026 call (closed); next cycle expected September 2027 following the annual cycle",
+        "deadline_central": "2025-10-23T16:00",
+        "deadline_central_display": "23rd October 2025, 16:00 Irish local time",
+        "deadline_central_timezone": "Europe/Dublin",
+        "deadline_note": "The page lists the 2026 applicant deadline as 23rd October 2025, 16:00 Irish local time, alongside an FAQ deadline of 16th October 2025, a supervisor/mentor deadline of 6th November 2025 and a research office endorsement deadline of 13th November 2025, all shown as achieved. The programme runs on an annual call cycle but no 2027 date has been published, so the deadline_date is null.",
+        "status": "UPCOMING",
+        "status_note": "The Research Ireland page shows the 2026 call as 'Closed' with call outcome at end of April 2026 and an award start date of 1st September 2026. The programme operates as an annual national initiative, so the next call is expected to open around September 2027, but no 2027 date has been published.",
+        "funding_amount": 34000,
+        "funding_currency": "EUR",
+        "funding_period": "per annum",
+        "funding_duration": "1-4 years",
+        "tuition_coverage": true,
+        "tuition_coverage_note": "The page states the award consists of a stipend of EUR 25,000 per annum, 'a contribution to fees, including non-EU fees, up to a maximum of EUR 5,750 per annum', and 'eligible direct costs of EUR 3,250 per annum'. Non-EU recipients may request an additional EUR 4,000 per annum over and above the standard fee contribution, with any remaining differential paid by the recipient and/or the research body.",
+        "living_cost_coverage": true,
+        "travel_coverage": null,
+        "fully_funded": true,
+        "funding_label": "Up to EUR 34,000 per annum: EUR 25,000 stipend, up to EUR 5,750 fee contribution (plus EUR 4,000 for non-EU), and EUR 3,250 eligible direct costs",
+        "benefits": [
+          "Stipend of EUR 25,000 per annum",
+          "Fee contribution including non-EU fees up to EUR 5,750 per annum",
+          "Eligible direct research costs of EUR 3,250 per annum",
+          "Individual awards for excellent research in the name of the applicant"
+        ],
+        "eligibility": [
+          "New entrants to a Master's or PhD programme, or registered students in the first year of the degree for which funding is sought (effective from the 2026 call)",
+          "Applicants at an eligible higher education institution in Ireland"
+        ],
+        "citizenship_residency": "Open to applicants of all nationalities applying through an eligible Irish research body",
+        "international_eligibility": "Open to all nationalities, including non-EU applicants, who are hosted at an eligible Irish higher education institution",
+        "degree_levels": ["Master's by Research", "PhD"],
+        "study_mode": "Full-time research degree at an eligible higher education institution in Ireland",
+        "research_requirement": "Applicants propose their own bottom-up, non-directed research project; pioneering proposals addressing new and emerging fields and interdisciplinary proposals are encouraged",
+        "subject_or_agency_requirement": "Funding across all disciplines, from archaeology to zoology; awards for bottom-up, non-directed research, with the exception of those funded by strategic funding partners",
+        "application_method": "Online application through the Research Ireland grants management system, submitted by the applicant, with supervisor, mentor and research office endorsement forms submitted separately",
+        "application_route": "Research Ireland online funding system",
+        "requirements": [
+          "Indicative applicant application form",
+          "Primary supervisor endorsement",
+          "Mentor nomination (where applicable)",
+          "Research office endorsement of the host institution"
+        ],
+        "documents": [
+          "Completed online application form",
+          "Supervisor form",
+          "Mentor form (where applicable)",
+          "Research office endorsement form"
+        ],
+        "english_requirement": null,
+        "english_requirement_note": "The programme page does not state an English language test requirement; applicants should confirm requirements with the host research body.",
+        "selection_criteria": [
+          "Excellent research potential, assessed by international, independent expert peer review",
+          "Objective selection process using international peer review"
+        ],
+        "selection_weighting": "Selection is by international, independent expert peer review; the page notes an average success rate of 18% over the past five years",
+        "duration": "1-4 years",
+        "award_holder_conditions": [
+          "Award is held for the research project named in the application",
+          "Awardees are recognised as demonstrating world-class potential as future research leaders"
+        ],
+        "supplements_or_initiatives": [
+          "Strategic funding partners for 2026: Environmental Protection Agency, Department of Children Equality Disability Integration and Youth, Department of Foreign Affairs, and Met Eireann"
+        ],
+        "official_contacts": {"email": "postgrad@researchireland.ie", "general": "Research Ireland, +353 1 607 3200"},
+        "description": "An established national initiative funded by the Department of Further and Higher Education, Research, Innovation and Science and managed by Research Ireland, offering individual awards for bottom-up, non-directed research across all disciplines.",
+        "program_type": "Individual postgraduate research award supporting bottom-up, non-directed research",
+        "region": "Europe",
+        "coverage": "Stipend, fees contribution and eligible direct research costs",
+        "last_verified_date": "2026-10-04"
+      },
+      "programme_detail_applicant_utility": {
+        "application_readiness_checklist": [
+          "Confirm you are either a new entrant to a Master's or PhD programme or a registered first-year student (2026 call rule)",
+          "Identify a supervisor who can act as primary supervisor for no more than one applicant",
+          "Prepare the indicative application form and the research proposal for a bottom-up, non-directed project",
+          "Plan for the FAQ deadline of 16th October, which falls before the applicant deadline",
+          "Allow the research office time to endorse before the endorsement deadline"
+        ],
+        "common_rejection_risks": [
+          "Applying as a continuing student beyond the first year of the degree",
+          "Submitting after the intermediate supervisor or research office deadlines have passed",
+          "Proposing directed research that belongs to a strategic funding partner strand"
+        ],
+        "estimated_uncovered_costs": [
+          "Any fee differential beyond the fee contribution for non-EU recipients",
+          "Costs not classed as eligible direct costs"
+        ],
+        "document_audit": [
+          "Indicative application form",
+          "Primary supervisor form",
+          "Research office endorsement",
+          "Mentor form where applicable"
+        ],
+        "alerts": [
+          {"trigger": "Applications closed", "message": "The 2026 call closed on 23rd October 2025. The programme runs annually, so monitor Research Ireland for the next call opening."}
+        ],
+        "submission_workflow": [
+          "Applicant completes the online application before the applicant deadline",
+          "Supervisor and mentor submit their forms by their deadline",
+          "Research office endorses the application",
+          "International expert peer review assesses the application",
+          "Call outcome announced at end of April"
+        ]
+      },
+      "programme_detail_verification": {
+        "cycle_verified": "2026 call (closed), verified 2026-10-04",
+        "verification_confidence": 0.95,
+        "official_fields_confirmed": ["status", "deadline_central", "funding_amount", "funding_currency", "funding_period", "duration", "degree_levels", "official_source", "contact_email"],
+        "institution_check_required": ["Host institution eligibility", "Supervisor restriction details"],
+        "unverified_or_removed_claims": [
+          "No 2027 call dates have been published, so the next cycle deadline is null",
+          "The stored record gave a 2025-10-31 deadline date and '23rd October 2025' display; the official page states 23rd October 2025, 16:00 Irish local time",
+          "The stored record had no funding amount; the page states up to EUR 34,000 per annum"
+        ],
+        "source_citations": ["https://www.researchireland.ie/funding/government-ireland-postgraduate"],
+        "researched_by": "w1_37"
+      },
+      "logo_override": {
+        "url": "https://www.researchireland.ie/_next/static/media/logo.e13154fc.svg",
+        "page_url": "https://www.researchireland.ie/funding/government-ireland-postgraduate",
+        "official_host": true,
+        "alt_text": "Research Ireland",
+        "validation_result": "verified",
+        "validation_detail": "svg 11496B, dark green wordmark (#112B19) on transparent, no white-on-transparent fill",
+        "image_kind": "official_logo",
+        "image_format": "svg",
+        "verified_at": "2026-10-04T00:00:00+00:00",
+        "host_evidence": "same_registrable_domain",
+        "_award": "Government of Ireland Postgraduate Scholarship Programme"
+      },
+      "research_notes": {
+        "logo": "The site footer marks the logo as 'Research Ireland Logo' at /_next/static/media/logo.e13154fc.svg. Probed: HTTP 200, image/svg+xml, 11496 bytes. The SVG paths use fill #112B19 (dark green) on transparent background, so it is not a white-on-transparent wordmark.",
+        "unverified": ["2027 call dates", "English language requirement", "Exact host institution list"],
+        "substitution": null,
+        "official_pages_read": ["https://www.researchireland.ie/funding/government-ireland-postgraduate"],
+        "degree_level_confirmed": "The page describes awards for a Master's or PhD programme and states the programme is now open 'to new entrants to a Master's or PhD programme or to registered students in the first year of the degree'.",
+        "url_observed": null,
+        "contradictions": [
+          "Stored deadline_date 2025-10-31 is wrong; the official page states the 2026 applicant deadline as 23rd October 2025, 16:00 Irish local time.",
+          "Stored status 'closed' is superseded by the annual cycle: no 2027 call has opened as of 2026-10-04, so the next cycle is upcoming.",
+          "Stored funding_amount was null; the official page states up to EUR 34,000 per annum."
+        ],
+        "skeleton": false
+      }
+    }
+  ]
+}

@@ -1,0 +1,147 @@
+{
+  "agent": "agent_175",
+  "records": [
+    {
+      "id": 463,
+      "official": {
+        "official_source_urls": [
+          "https://www.studienfinanzierung.uzh.ch/en.html",
+          "https://www.studienfinanzierung.uzh.ch/en/application_deadlines.html",
+          "https://www.studienfinanzierung.uzh.ch/en/financial_support/bachelor_students.html",
+          "https://www.studienfinanzierung.uzh.ch/en/financial_support/master_students.html"
+        ],
+        "application_link": "https://www.studienfinanzierung.uzh.ch/en/application_deadlines.html",
+        "catalogue_url": "https://www.studienfinanzierung.uzh.ch/en/faq/faq_scholarships_loans_requests.html",
+        "official_updates_url": null,
+        "deadline_central": "2027-02-01",
+        "deadline_central_display": "1 February (spring semester scholarships)",
+        "deadline_note": "Two scholarship deadlines a year: 15 August for the fall semester and 1 February for the spring semester. Applications can be submitted no earlier than two months before the deadline, and the form is available in the portal from 15 June to 15 August for autumn and from 1 December to 1 February for spring.",
+        "application_cycle": "Rolling twice-yearly cycle - form in portal 15 June to 15 August for autumn, 1 December to 1 February for spring",
+        "status": "UPCOMING",
+        "status_note": "The next scholarship deadline is 1 February for the spring semester, with the application form opening in the portal on 1 December. The fall-semester deadline of 15 August has passed for this cycle.",
+        "tuition_coverage_note": "Support is granted on a subsidiary basis and is supplementary to government contributions, parental support and your own income; UZH states its scholarships do not replace statutory benefits such as social assistance. The office does not tie the award to tuition specifically.",
+        "funding_amount": null,
+        "funding_currency": null,
+        "funding_period": null,
+        "tuition_coverage": null,
+        "living_cost_coverage": null,
+        "travel_coverage": null,
+        "fully_funded": false,
+        "benefits": [
+          "Scholarships generally do not need to be repaid; repayment is only required in exceptional cases such as false information or unreported changes in financial circumstances",
+          "Support is usually provided in the form of scholarships and sometimes as loans",
+          "Scholarship holders can apply for a waiver of the UZH/ETH Language Center course fees with a letter of acceptance from the office",
+          "The office applies to private foundations on your behalf and chooses which foundations to approach"
+        ],
+        "eligibility": [
+          "First degree programmes at every level of study are supported; PhD study programmes are not supported",
+          "Swiss Bachelor's students and Bachelor's students with C residence permits may apply if parents have limited resources",
+          "International Bachelor's students become eligible after successfully completing the first year of studies, equivalent to at least 55 ECTS credits",
+          "International Bachelor's students with very good grades may apply for support after the first semester, in some cases in a reduced form",
+          "International Master's students can only be supported if they hold a Swiss Bachelor's degree",
+          "Refugees, stateless people and holders of protection status S may apply, with protection status S applicants needing 55 ECTS at UZH, at least 20 ECTS per semester and a GPA of at least 4.5",
+          "Parents' taxable income must not exceed CHF 86,000 and net worth must be below CHF 300,000, with the income limit increasing by CHF 6,000 for each additional child completing their initial education",
+          "An exemption of CHF 5,000 per person applies to personal assets; amounts above that are counted in the calculation",
+          "All other financing sources must be exhausted, as support is provided on a subsidiary basis"
+        ],
+        "requirements": [
+          "Be enrolled in a first degree programme at UZH",
+          "Demonstrate objective financial need with documentation of your own and your parents' financial situation",
+          "Have a UZH email address to access the application form",
+          "Hold Swiss citizenship or a C permit for either loan type, a requirement of the foundation that issues the loans",
+          "For incoming mobility students, no support is provided by this office"
+        ],
+        "documents": [
+          "The most recent tax return from you and your parents",
+          "The latest available final tax assessment from you and your parents",
+          "If you do not file a tax return in Switzerland: account statements for all your bank accounts from the past 6 months",
+          "Documents must be formatted as PDF and uploaded one per upload process"
+        ],
+        "selection_criteria": [
+          "Objective financial need, assessed from your and your parents' documentation",
+          "Academic performance is also relevant to the assessment",
+          "Eligibility for support from private foundations, whose missions the Student Financial Aid Office matches to your case",
+          "Earlier complete applications are processed sooner, though processing is only partly ordered by submission date"
+        ],
+        "coverage": [
+          "Support to bridge the gap between available resources and the cost of studying, paid for the entire semester",
+          "The office assumes a single person without children needs around CHF 12,000 per semester and helps bridge any shortfall",
+          "Support is supplementary to mandatory government contributions, parental contributions and own income"
+        ],
+        "application_method": [
+          "Start organising documents at least one month before the deadline",
+          "Log in to the online portal with your UZH email address and clear the browser cache before starting",
+          "Submit the application and upload attachments as PDF, one document per upload",
+          "Track status in the portal; the application and documents only become visible after the office has reviewed both",
+          "Receive the approval or rejection by notification to your UZH email address and download it from the Documents section"
+        ],
+        "application_route": "Single online portal for all support types, using the UZH email address, with the German-language scholarship form.",
+        "study_mode": "Full-time study in a first degree programme",
+        "citizenship_residency": "Swiss citizens, C permit holders, refugees and stateless people are eligible through the cantonal route; international students have restricted eligibility as described per programme level. Loans require Swiss citizenship or a C permit.",
+        "international_eligibility": "Partially. International Bachelor's students can apply after 55 ECTS credits (or after the first semester with very good grades). International Master's students without a Swiss Bachelor's degree cannot be supported. International students who reside in Switzerland only for study have no entitlement to Swiss government scholarships.",
+        "subject_or_agency_requirement": "First degree programmes only, at every level of study; PhD programmes are excluded.",
+        "research_requirement": null,
+        "duration": "Per semester or academic year, depending on financial need and academic progress; long-term support is possible where financial situation and performance remain stable",
+        "description": "The University of Zurich Student Financial Aid Office supports students through scholarships and, in some cases, loans, working with private foundations whose allocations are decided according to each foundation's mission, on a subsidiary basis.",
+        "region": "Europe",
+        "program_type": "University need-based scholarship and loan office",
+        "english_requirement": null
+      },
+      "verification": {
+        "source_citations": [
+          "https://www.studienfinanzierung.uzh.ch/en/application_deadlines.html",
+          "https://www.studienfinanzierung.uzh.ch/en/financial_support/bachelor_students.html",
+          "https://www.studienfinanzierung.uzh.ch/en/financial_support/master_students.html",
+          "https://www.studienfinanzierung.uzh.ch/en/faq/faq_scholarships_loans_requests.html"
+        ],
+        "last_verified_date": "2026-10-10",
+        "verification_status": "confirmed",
+        "confidence": "high",
+        "not_confirmed": [
+          "funding_amount",
+          "funding_currency",
+          "funding_period",
+          "tuition_coverage",
+          "living_cost_coverage",
+          "travel_coverage",
+          "english_requirement",
+          "which specific foundation an individual applicant is matched to"
+        ],
+        "notes": "Deadlines, eligibility thresholds, required documents and payment mechanics were read directly from the Student Financial Aid Office pages on studienfinanzierung.uzh.ch. The office publishes no fixed award value - only the assumption that a single person without children needs around CHF 12,000 per semester and that any shortfall is bridged - so all amount fields are left null."
+      },
+      "applicant_utility": {
+        "summary": "This is a means-tested top-up, not a scholarship you compete for on merit, so the whole file is a financial audit: your parents' tax assessment, your own bank statements and a subsidiary test that asks whether every other source has been exhausted. The gates are sharp - first degree programmes only, no PhD, and international master's students are only fundable with a Swiss bachelor's degree, which rules out most overseas master applicants by design. Plan a month ahead of the 1 February spring deadline, because incomplete files are what actually stall decisions, and expect roughly eight to ten weeks before you hear.",
+        "best_fit": "Enrolled UZH students in a first degree programme whose family income sits near or below CHF 86,000 and who can produce complete Swiss tax documentation.",
+        "application_readiness_checklist": [
+          "Confirm you are in a first degree programme - a completed apprenticeship, vocational bachelor's or master's degree ends initial education and ends eligibility",
+          "Request the latest final tax assessments for you and your parents early, since final assessments lag returns",
+          "If you do not file in Switzerland, gather six months of statements for every bank account you hold",
+          "For international bachelor students, track the 55 ECTS threshold, or aim at a first-semester application only if your grades are genuinely strong",
+          "Apply for the cantonal scholarship in parallel; UZH treats its own award as supplementary and a pending cantonal decision can be added to the calculation later",
+          "Clear your browser cache before starting the portal form, as UZH specifically warns about this"
+        ],
+        "common_rejection_risks": [
+          "Parental income above CHF 86,000 or net worth above CHF 300,000, with no allowance for children beyond the CHF 6,000-per-child uplift",
+          "Personal assets exceeding the CHF 5,000 exemption without explanation",
+          "Applying as an international master's student without a Swiss bachelor's degree, which the office states outright it cannot support",
+          "Submitting an incomplete file, which the office says you can speed up only by being meticulous",
+          "Assuming the award replaces a cantonal scholarship rather than supplementing it"
+        ],
+        "estimated_uncovered_costs": "UZH asks students to budget at least CHF 2,200 per month (about CHF 26,400 a year for international bachelor students), of which tuition and materials are only around CHF 250. Zurich accommodation at roughly CHF 910 a month is the largest single line, and dual-degree additional costs are explicitly not covered.",
+        "document_audit": [
+          "Documents must be PDF and uploaded one per upload process - a single batch upload will silently drop files",
+          "If you do not file a Swiss tax return, the six-month bank statements substitute for tax assessments and are not optional",
+          "Your UZH email address is a precondition for the form; if it has not arrived two weeks before the deadline, contact the office immediately",
+          "Scholarship holders wanting the UZH/ETH Language Center fee waiver must obtain the acceptance letter before registering, otherwise the fee is not refunded after the enrolment deadline"
+        ],
+        "alerts": [
+          "Two hard dates: 15 August for autumn and 1 February for spring, and files open only two months before each",
+          "Part-time work does not reduce the scholarship unless you earn more than CHF 6,000 a year",
+          "Loan products are gated separately - hardship loans up to CHF 6,000 and the one-off Pecunia loan of CHF 1,000 to 4,000 both require Swiss citizenship or a C permit",
+          "Decisions arrive about eight to ten weeks after the deadline, with payment credited roughly one week after approval, so the bridge months need separate funding"
+        ],
+        "submission_workflow": "Portal application with UZH login, PDF uploads one at a time, office review making documents visible, decision in the portal about eight to ten weeks after the deadline, payment for the semester credited about a week after approval."
+      }
+    }
+  ]
+}

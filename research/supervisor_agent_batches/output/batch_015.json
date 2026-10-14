@@ -1,0 +1,116 @@
+[
+  {
+    "scholarship_id": 115,
+    "outcome": "not_applicable",
+    "professors": [],
+    "notes": "Netaji Subhas-ICAR International Fellowship is a central Government of India scheme administered by ICAR (Ministry of Agriculture and Farmers Welfare). Like MEXT/GKS/Fulbright/DAAD-type national schemes, it has no single attached host institution or named supervising professor on the official scheme pages; fellows are placed across ICAR-AU institutions at award time. https://www.icar.gov.in returned repeated transport errors during research and could not be opened, but the scheme classification (national/government, no attached institution) makes it not_applicable."
+  },
+  {
+    "scholarship_id": 116,
+    "outcome": "verified_supervisors",
+    "professors": [
+      {
+        "canonical_name": "Bushra Ateeq",
+        "title": "Professor & Joy-Gill Chair; Dean of International Relations",
+        "institution_name": "Indian Institute of Technology Kanpur",
+        "department_name": "Biological Sciences and Bioengineering",
+        "official_profile_url": "https://iitk.ac.in/bsbe/bushra-ateeq",
+        "official_email": "bushra@iitk.ac.in",
+        "official_email_verified": true,
+        "lab_url": "https://home.iitk.ac.in/~bushra/",
+        "personal_academic_url": null,
+        "research_areas": ["Molecular oncology", "Cancer genetics and genomics", "Prostate cancer", "Epigenetics", "Drug resistance mechanisms"],
+        "research_keywords": ["prostate cancer", "mutational landscape", "organoids", "chemoresistance", "Molecular Oncology Laboratory"],
+        "relationship_type": "program_faculty",
+        "evidence_source_url": "https://iitk.ac.in/oir/team",
+        "evidence_source_type": "official_department_page",
+        "evidence_quote_or_summary": "OIR Team page: 'Prof. Bushra Ateeq - Dean of International Relations, doir[at]iitk.ac.in', linking to her BSBE faculty profile. The OIR 'How to apply' page states the Institute Fellowship is offered to all foreign degree students and is administered via the Office of International Relations.",
+        "confidence": 90,
+        "availability": {
+          "scope": "funding",
+          "state": "verified_yes",
+          "source_url": "https://iitk.ac.in/oir/how-to-apply"
+        }
+      }
+    ],
+    "notes": "The IIT Kanpur Institute Fellowship is an institute-wide monthly fellowship for admitted foreign degree students (MTech, MS (Research), MDes, MBA, PhD); admissions are decided by departmental committees and no single named thesis supervisor is attached to the fellowship. The faculty member officially responsible for the programme is the Dean of International Relations, Prof. Bushra Ateeq, whose email bushra@iitk.ac.in is published on her official IIT Kanpur lab page (home.iitk.ac.in/~bushra/)."
+  },
+  {
+    "scholarship_id": 117,
+    "outcome": "verified_supervisors",
+    "professors": [
+      {
+        "canonical_name": "Tarun Kanti Panda",
+        "title": "Professor; Dean (International Relations)",
+        "institution_name": "Indian Institute of Technology Hyderabad",
+        "department_name": "Chemistry",
+        "official_profile_url": "https://iith.ac.in/chy/tpanda/",
+        "official_email": "tpanda@chy.iith.ac.in",
+        "official_email_verified": true,
+        "lab_url": "https://sites.google.com/site/tkpandagroup/home",
+        "personal_academic_url": null,
+        "research_areas": ["Main group chemistry", "Coordination chemistry", "Lanthanide chemistry", "Homogeneous catalysis", "X-ray crystallography", "Catalysis", "Energy"],
+        "research_keywords": ["coordination chemistry", "lanthanide chemistry", "homogeneous catalysis", "crystallography"],
+        "relationship_type": "program_faculty",
+        "evidence_source_url": "https://ir.iith.ac.in/#/contacts",
+        "evidence_source_type": "official_programme_page",
+        "evidence_quote_or_summary": "IITH International Relations Cell team page: 'Prof Tarun Kanti Panda - Dean (International Relations) & Professor, Department of Chemistry, Email: dean.ir@iith.ac.in'. The IR Cell administers FIRST@IITH admissions (applications emailed to ia.ir@iith.ac.in per the official FIRST@IITH information document at https://ir.iith.ac.in/docs/FIRST@IITH INFORMATION.docx).",
+        "confidence": 90,
+        "availability": {
+          "scope": "funding",
+          "state": "verified_yes",
+          "source_url": "https://ir.iith.ac.in/#/contacts"
+        }
+      }
+    ],
+    "notes": "FIRST@IITH is a 4-year fully funded PhD fellowship for foreign nationals across IITH departments (AI, Biomedical, Biotechnology, Chemical, Climate Change, Civil, CSE, Electrical, MSME, Mechanical & Aerospace, Chemistry, Physics, Mathematics, Liberal Arts, Design, Entrepreneurship & Management, Heritage Science & Technology). The official source URL https://ir.iith.ac.in/first 404s; the live FIRST@IITH information document is hosted at https://ir.iith.ac.in/docs/FIRST@IITH INFORMATION.docx (downloaded and verified 2026-10-14). The IR Cell site is a JS-only app but renders with a browser. No individual thesis supervisor is named in the fellowship document; the Dean (International Relations) Prof. Tarun Kanti Panda is the faculty head of the office that runs the programme, and his email tpanda@chy.iith.ac.in is published on his official IITH faculty profile."
+  },
+  {
+    "scholarship_id": 118,
+    "outcome": "no_verified_supervisor_found",
+    "professors": [],
+    "notes": "KUISP is a university-wide tuition fee scholarship at KIIT Deemed to be University for international applicants across UG, PG and doctoral programmes, administered by the KIIT International Relations Office (internationaloffice@kiit.ac.in). The official page (international.kiit.ac.in) is an admissions application portal and names no supervising professor or faculty supervisor for the scholarship. Contact for the programme office: internationaloffice@kiit.ac.in (published on the official page)."
+  },
+  {
+    "scholarship_id": 120,
+    "outcome": "no_verified_supervisor_found",
+    "professors": [],
+    "notes": "The Alan and Jane Handler Endowed Scholarship is a four-year undergraduate scholarship administered by the University of Rochester Office of Admissions; the official page (admissions.rochester.edu/handler-scholarship) lists programme staff, not supervising professors: Karin Wilson, Handler Scholarship Program Director (karin.wilson@rochester.edu); Dominique Williams-Hill, Assistant Director, Financial Aid (dominique.williams@rochester.edu); Kristine Seewagen, Scholars Program Manager (kristine.seewagen@rochester.edu). No faculty supervisor is attached to this bachelor's scholarship."
+  },
+  {
+    "scholarship_id": 121,
+    "outcome": "no_verified_supervisor_found",
+    "professors": [],
+    "notes": "Berea College's Tuition Promise is a need-aware, all-student tuition model (fully funded degree by Fall 2027), not a research scholarship; no supervising professor or programme faculty is attached. Official admissions contact published on berea.edu/admissions: askadmissions@berea.edu."
+  },
+  {
+    "scholarship_id": 122,
+    "outcome": "verified_supervisors",
+    "professors": [
+      {
+        "canonical_name": "Giovanni Zanalda",
+        "title": "Professor of the Practice (Social Science Research Institute and Economics); Karsh Scholarship Faculty Director",
+        "institution_name": "Duke University",
+        "department_name": "Social Science Research Institute; Department of Economics; Department of History",
+        "official_profile_url": "https://ousf.duke.edu/profile/giovanni-zanalda/",
+        "official_email": "giovanni.zanalda@duke.edu",
+        "official_email_verified": true,
+        "lab_url": null,
+        "personal_academic_url": null,
+        "research_areas": ["Economic history", "International economy and finance", "Development and globalization", "Space economy", "Diplomacy studies"],
+        "research_keywords": ["economic history", "financial crises", "emerging markets", "space diplomacy", "rethinking diplomacy"],
+        "relationship_type": "program_faculty",
+        "evidence_source_url": "https://ousf.duke.edu/merit-scholarships/karsh-international-scholars-program",
+        "evidence_source_type": "official_programme_page",
+        "evidence_quote_or_summary": "Duke Office of University Scholars and Fellows page: 'Dr. Giovanni Zanalda, Karsh Scholarship Faculty Director ... Professor of the Practice in the Social Science Research Institute, Department of Economics, and Department of History, Director of the Rethinking Diplomacy Program'. His email giovanni.zanalda@duke.edu is published on his official Duke profile page.",
+        "confidence": 95,
+        "availability": {
+          "scope": "funding",
+          "state": "verified_yes",
+          "source_url": "https://ousf.duke.edu/merit-scholarships/karsh-international-scholars-program"
+        }
+      }
+    ],
+    "notes": "Karsh International Scholars Program is a four-year undergraduate scholarship with no separate application; the faculty member officially tied to the programme is the Karsh Scholarship Faculty Director, Dr. Giovanni Zanalda, whose email is published on his official Duke (ousf.duke.edu) profile page. Programme office contact: ousf@duke.edu."
+  }
+]

@@ -1,0 +1,276 @@
+[
+  {
+    "id": 280,
+    "country": "Belgium",
+    "elapsed_s": 64.2,
+    "status": "medium",
+    "requests": 10,
+    "persisted": true,
+    "previous_image_url": null,
+    "new_image_url": "https://www.international.vluhr.be/files/_660x495_crop_center-center_82_line/kyle-glenn-nXt5HtLmlgE-unsplash.jpg",
+    "images": [
+      {
+        "confidence": "medium",
+        "image_url": "https://www.international.vluhr.be/files/_660x495_crop_center-center_82_line/kyle-glenn-nXt5HtLmlgE-unsplash.jpg",
+        "page_url": "https://www.international.vluhr.be/scholarships",
+        "source_type": "official_provider",
+        "image_kind": "program_image",
+        "relevance_score": 0.4017,
+        "validation_status": "rejected",
+        "provenance": {
+          "discovery_method": "html-img",
+          "page_kind": "scholarship_page",
+          "official_domain": "www.international.vluhr.be",
+          "is_official_domain": true,
+          "trust_score": 70,
+          "validation_status": "rejected"
+        }
+      },
+      {
+        "confidence": "medium",
+        "image_url": "https://www.international.vluhr.be/files/_1320x990_crop_center-center_61_line/kyle-glenn-nXt5HtLmlgE-unsplash.jpg",
+        "page_url": "https://www.international.vluhr.be/scholarships",
+        "source_type": "official_provider",
+        "image_kind": "program_image",
+        "relevance_score": 0.4017,
+        "validation_status": "rejected",
+        "provenance": {
+          "discovery_method": "html-img",
+          "page_kind": "scholarship_page",
+          "official_domain": "www.international.vluhr.be",
+          "is_official_domain": true,
+          "trust_score": 70,
+          "validation_status": "rejected"
+        }
+      },
+      {
+        "confidence": "low",
+        "image_url": "https://www.international.vluhr.be/files/_1200x800_crop_center-center_82_line/susan-yin-2JIvboGLeho-unsplash.jpg",
+        "page_url": "https://www.international.vluhr.be/news",
+        "source_type": "official_provider",
+        "image_kind": null,
+        "relevance_score": 0.16,
+        "validation_status": "rejected",
+        "provenance": {
+          "discovery_method": "html-img",
+          "page_kind": "news",
+          "official_domain": "www.international.vluhr.be",
+          "is_official_domain": true,
+          "trust_score": 70,
+          "validation_status": "rejected"
+        }
+      }
+    ]
+  },
+  {
+    "id": 274,
+    "country": "Norway",
+    "elapsed_s": 26.1,
+    "status": "no_trustworthy_image",
+    "requests": 7,
+    "persisted": false,
+    "previous_image_url": null,
+    "new_image_url": null,
+    "images": []
+  },
+  {
+    "id": 275,
+    "country": "Norway",
+    "elapsed_s": 26.4,
+    "status": "no_trustworthy_image",
+    "requests": 7,
+    "persisted": false,
+    "previous_image_url": null,
+    "new_image_url": null,
+    "images": []
+  },
+  {
+    "id": 299,
+    "country": "Portugal",
+    "elapsed_s": 75.5,
+    "status": "low",
+    "requests": 15,
+    "persisted": true,
+    "previous_image_url": null,
+    "new_image_url": "https://www.fct.pt/wp-content/uploads/2022/12/fct-og.png",
+    "images": [
+      {
+        "confidence": "low",
+        "image_url": "https://www.fct.pt/wp-content/uploads/2022/12/fct-og.png",
+        "page_url": "https://www.fct.pt/funding",
+        "source_type": "official_provider",
+        "image_kind": "program_image",
+        "relevance_score": 0.19,
+        "validation_status": "rejected",
+        "provenance": {
+          "discovery_method": "og:image",
+          "page_kind": "announcement",
+          "official_domain": "www.fct.pt",
+          "is_official_domain": true,
+          "trust_score": 70,
+          "validation_status": "rejected"
+        }
+      },
+      {
+        "confidence": "low",
+        "image_url": "https://secure.gravatar.com/avatar/3db3524316b64ab069026478c22c91ed?s=96&d=mm&r=g",
+        "page_url": "https://www.fct.pt/funding",
+        "source_type": "official_provider",
+        "image_kind": null,
+        "relevance_score": 0.19,
+        "validation_status": "rejected",
+        "provenance": {
+          "discovery_method": "json-ld",
+          "page_kind": "announcement",
+          "official_domain": "www.fct.pt",
+          "is_official_domain": true,
+          "trust_score": 70,
+          "validation_status": "rejected"
+        }
+      },
+      {
+        "confidence": "low",
+        "image_url": "https://www.fct.pt/wp-content/uploads/2022/12/fct-og.png",
+        "page_url": "https://www.fct.pt/news",
+        "source_type": "official_provider",
+        "image_kind": null,
+        "relevance_score": 0.16,
+        "validation_status": "rejected",
+        "provenance": {
+          "discovery_method": "og:image",
+          "page_kind": "news",
+          "official_domain": "www.fct.pt",
+          "is_official_domain": true,
+          "trust_score": 70,
+          "validation_status": "rejected"
+        }
+      }
+    ]
+  },
+  {
+    "id": 14,
+    "country": "Switzerland",
+    "elapsed_s": 53.1,
+    "status": "high",
+    "requests": 13,
+    "persisted": true,
+    "previous_image_url": null,
+    "new_image_url": "https://ethz.ch/etc/designs/ethz/img/header/eth_default_og.jpg",
+    "images": [
+      {
+        "confidence": "high",
+        "image_url": "https://ethz.ch/etc/designs/ethz/img/header/eth_default_og.jpg",
+        "page_url": "https://ethz.ch/scholarships",
+        "source_type": "official_provider",
+        "image_kind": "program_image",
+        "relevance_score": 0.84,
+        "validation_status": "approved",
+        "provenance": {
+          "discovery_method": "og:image",
+          "page_kind": "scholarship_page",
+          "official_domain": "ethz.ch",
+          "is_official_domain": true,
+          "trust_score": 70,
+          "validation_status": "approved"
+        }
+      },
+      {
+        "confidence": "medium",
+        "image_url": "https://ethz.ch/etc/designs/ethz/img/header/eth_default_og.jpg",
+        "page_url": "https://ethz.ch/media",
+        "source_type": "official_provider",
+        "image_kind": null,
+        "relevance_score": 0.5633,
+        "validation_status": "rejected",
+        "provenance": {
+          "discovery_method": "og:image",
+          "page_kind": "press",
+          "official_domain": "ethz.ch",
+          "is_official_domain": true,
+          "trust_score": 70,
+          "validation_status": "rejected"
+        }
+      },
+      {
+        "confidence": "medium",
+        "image_url": "https://ethz.ch/etc/designs/ethz/img/icons/ETH-APP-Icons-Theme-white/192-xxxhpdi.png",
+        "page_url": "https://ethz.ch/scholarships",
+        "source_type": "official_provider",
+        "image_kind": "program_image",
+        "relevance_score": 0.44,
+        "validation_status": "approved",
+        "provenance": {
+          "discovery_method": "link-rel-icon",
+          "page_kind": "scholarship_page",
+          "official_domain": "ethz.ch",
+          "is_official_domain": true,
+          "trust_score": 70,
+          "validation_status": "approved"
+        }
+      }
+    ]
+  },
+  {
+    "id": 57,
+    "country": "USA",
+    "elapsed_s": 162.3,
+    "status": "medium",
+    "requests": 27,
+    "persisted": false,
+    "previous_image_url": "https://kmsp.wisc.edu/wp-content/uploads/sites/997/2026/01/Cohort-9-with-UHS-scaled-e1767374632560-1600x500.jpg",
+    "new_image_url": "https://kmsp.wisc.edu/wp-content/uploads/sites/997/2026/01/Cohort-9-with-UHS-scaled-e1767374632560-1600x500.jpg",
+    "images": [
+      {
+        "confidence": "medium",
+        "image_url": "https://kmsp.wisc.edu/scholarship#Web_Shield_blend",
+        "page_url": "https://kmsp.wisc.edu/scholarship",
+        "source_type": "official_provider",
+        "image_kind": null,
+        "relevance_score": 0.44,
+        "validation_status": "rejected",
+        "provenance": {
+          "discovery_method": "css-background",
+          "page_kind": "scholarship_page",
+          "official_domain": "kmsp.wisc.edu",
+          "is_official_domain": true,
+          "trust_score": 70,
+          "validation_status": "rejected"
+        }
+      },
+      {
+        "confidence": "medium",
+        "image_url": "https://kmsp.wisc.edu/wp-content/uploads/sites/997/2026/09/KMSP-Pro-Photo-Grad-2026-scaled-e1788882443518-1600x500.jpg",
+        "page_url": "https://kmsp.wisc.edu/",
+        "source_type": "official_provider",
+        "image_kind": "program_image",
+        "relevance_score": 0.395,
+        "validation_status": "rejected",
+        "provenance": {
+          "discovery_method": "html-img",
+          "page_kind": "root_domain",
+          "official_domain": "kmsp.wisc.edu",
+          "is_official_domain": true,
+          "trust_score": 70,
+          "validation_status": "rejected"
+        }
+      },
+      {
+        "confidence": "medium",
+        "image_url": "https://kmsp.wisc.edu/wp-content/uploads/sites/997/2026/01/IMG_7063-scaled-e1767379632472-1600x500.jpeg",
+        "page_url": "https://kmsp.wisc.edu/",
+        "source_type": "official_provider",
+        "image_kind": "program_image",
+        "relevance_score": 0.395,
+        "validation_status": "rejected",
+        "provenance": {
+          "discovery_method": "html-img",
+          "page_kind": "root_domain",
+          "official_domain": "kmsp.wisc.edu",
+          "is_official_domain": true,
+          "trust_score": 70,
+          "validation_status": "rejected"
+        }
+      }
+    ]
+  }
+]

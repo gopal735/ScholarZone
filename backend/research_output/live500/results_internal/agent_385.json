@@ -1,0 +1,194 @@
+{
+  "agent": "agent_385",
+  "records": [
+    {
+      "id": 10,
+      "programme_name": "Deutschlandstipendium",
+      "provider": "Federal Government of Germany, universities and private sponsors",
+      "country": "Germany",
+      "region": "Europe",
+      "program_type": "University-administered study stipend",
+      "official_source_urls": [
+        "https://www.deutschlandstipendium.de/deutschlandstipendium/de/services/english/the-deutschlandstipendium-best-of-both-worlds-for-students.html"
+      ],
+      "application_link": "https://www.deutschlandstipendium.de/deutschlandstipendium/de/services/english/the-deutschlandstipendium-best-of-both-worlds-for-students.html",
+      "catalogue_url": "https://www.deutschlandstipendium.de/deutschlandstipendium/de/services/english/the-deutschlandstipendium-best-of-both-worlds-for-students.html",
+      "official_updates_url": "https://www.deutschlandstipendium.de/deutschlandstipendium/de/services/english/the-deutschlandstipendium-best-of-both-worlds-for-students.html",
+      "deadline_central": null,
+      "deadline_central_display": null,
+      "deadline_type": null,
+      "deadline_note": "No central deadline is published: universities choose their own Deutschlandstipendium holders and set their own application windows, so the deadline is the one at your university's scholarship office.",
+      "application_cycle": "University-set application windows; no national deadline",
+      "status": "OPEN",
+      "status_note": "The stipend is applied for at the university itself, and participating universities choose their own scholarship holders, so the window depends on your institution. It is applicable in all Federal States of Germany to help high achievers study at the best universities in Germany.",
+      "tuition_coverage_note": null,
+      "funding_amount": 300,
+      "funding_currency": "EUR",
+      "funding_period": "per month",
+      "duration": "Granted for a minimum of two semesters and at most until the standard period of study has elapsed",
+      "tuition_coverage": false,
+      "living_cost_coverage": true,
+      "travel_coverage": false,
+      "fully_funded": false,
+      "coverage": [
+        "Monthly stipend of 300 euros, funded half by the Federal Government (150 euros) and half by private sponsors (150 euros)",
+        "Independent of income, so it can be received in addition to BAföG without affecting it",
+        "No social insurance contributions are payable on the stipend"
+      ],
+      "benefits": [
+        "300 euros per month for top international talent studying in Germany",
+        "Minimum two semesters, at most until the standard period of study has elapsed",
+        "Not counted against BAföG",
+        "No social insurance contributions payable, so recipients do not need to register with the public health insurance system for the stipend",
+        "No costs charged for the application"
+      ],
+      "eligibility": [
+        "Applicable in all Federal States of Germany to help high achievers study at the best universities in Germany",
+        "Universities choose their own scholarship holders, and prospective students may contact the university of their choice for the application procedure",
+        "Performance-based criteria as listed in the Deutschlandstipendium Act: outstanding academic marks and prospective suitability for a future profession"
+      ],
+      "requirements": [
+        "Outstanding academic marks (outstanding academic achievement)",
+        "Prospective suitability for a future profession",
+        "Application through your own university"
+      ],
+      "documents": [
+        "Application documents as specified by the participating university"
+      ],
+      "selection_criteria": [
+        "Outstanding academic marks",
+        "Prospective suitability for a future profession"
+      ],
+      "study_mode": "full-time",
+      "citizenship_residency": "Targets top international talent; applies at the university level regardless of nationality within the legal framework",
+      "international_eligibility": null,
+      "subject_or_agency_requirement": "All disciplines, at participating German universities",
+      "research_requirement": null,
+      "english_requirement": null,
+      "application_method": [
+        "Apply through the university of your choice; universities choose their own scholarship holders",
+        "No costs are charged for the application"
+      ],
+      "application_route": "Contact the participating university of your choice for the application procedure; each university sets its own deadline and selects its own scholarship holders.",
+      "description": "The Deutschlandstipendium supports high-achieving students at German universities with a monthly stipend of 300 euros, half financed by the Federal Government and half by private sponsors. It is income-independent, can be received in addition to BAföG, carries no social insurance contributions, and is granted for a minimum of two semesters and at most until the standard period of study has elapsed. Universities choose their own scholarship holders, so applications go through the university.",
+      "number_of_awards": null,
+      "verification": {
+        "citations": [
+          {
+            "url": "https://www.deutschlandstipendium.de/deutschlandstipendium/de/services/english/the-deutschlandstipendium-best-of-both-worlds-for-students.html"
+          }
+        ],
+        "last_verified_date": "2026-10-10",
+        "status": "confirmed",
+        "confidence": "high",
+        "not_confirmed": [
+          "University-specific application deadlines - no national deadline is published on the official page",
+          "Application deadlines and number of awards per university"
+        ],
+        "notes": "Verified on the official Deutschlandstipendium service page (English) on 10 October 2026: 300 euros per month (150 federal + 150 private), minimum two semesters and at most until the standard period of study has elapsed, income-independent with no BAföG offset, no social insurance contributions, and university-level selection with university-set deadlines."
+      },
+      "applicant_utility": "Applicant utility (original writing for the Deutschlandstipendium): the application does not go to a national office - each participating university selects its own scholarship holders and sets its own deadline, so the practical first step is asking the international office or scholarship office at your German university for the current window. The award itself is modest but frictionless: 300 euros per month for at least two semesters and up to the end of the standard period of study, with no reduction of BAföG, no social insurance contributions to arrange and no application costs. Because the criteria are outstanding academic marks and prospective suitability for a future profession, prepare a short file that shows both sides - a strong transcript and a concrete argument for what your chosen field will enable you to do. As a first-year international student, ask specifically whether the university accepts applications from second or later semesters as well, since the official page does not publish one national rule and practice differs between institutions."
+    },
+    {
+      "id": 21,
+      "programme_name": "Study Scholarships Master Studies in all disciplines (DAAD)",
+      "provider": "German Academic Exchange Service (DAAD), funded by the Federal Foreign Office",
+      "country": "Germany",
+      "region": "Europe",
+      "program_type": "Master's study scholarship",
+      "official_source_urls": [
+        "https://www2.daad.de/deutschland/stipendium/datenbank/en/21148-scholarship-database/?detail=50026200"
+      ],
+      "application_link": "https://www.daad.de/en/study-and-research-in-germany/scholarships/daad-scholarships/",
+      "catalogue_url": "https://www2.daad.de/deutschland/stipendium/datenbank/en/21148-scholarship-database/?detail=50026200",
+      "official_updates_url": "https://www2.daad.de/deutschland/stipendium/datenbank/en/21148-scholarship-database/?detail=50026200",
+      "deadline_central": null,
+      "deadline_central_display": null,
+      "deadline_type": null,
+      "deadline_note": "Applications are possible between 1 June and the stated application deadline. The DAAD portal showed 'Currently you cannot apply for this programme' at verification time, so the exact 2027 deadline date was not rendered on the page.",
+      "application_cycle": "Annual; applications open between 1 June and the stated deadline for funding beginning in 2027",
+      "status": "CLOSED",
+      "status_note": "The DAAD application portal displayed 'Currently you cannot apply for this programme' on 10 October 2026. Applications are possible between 1 June and the stated application deadline, and the scholarship must begin in 2027, usually on 1 October 2027.",
+      "tuition_coverage_note": "Tuition fees are not financed by this scholarship.",
+      "funding_amount": 992,
+      "funding_currency": "EUR",
+      "funding_period": "per month",
+      "duration": "10 to 24 months for Master's studies, depending on the course length",
+      "tuition_coverage": false,
+      "living_cost_coverage": true,
+      "travel_coverage": true,
+      "fully_funded": false,
+      "coverage": [
+        "Monthly payment of 992 euros",
+        "Tuition fees are not financed, but health, accident and liability insurance funded by the DAAD may be offered",
+        "Annual lump sum for study, research and production costs of 460 euros",
+        "Travel allowance where the funding period is at least 6 months (may be applied as extra payments)",
+        "One-off internationalisation allowance for study or research stays abroad",
+        "Supplementary payments for selected requirements, including family-related supplements and additional allowances (such as rent subsidy)"
+      ],
+      "benefits": [
+        "Monthly payment of 992 euros",
+        "Annual lump sum of 460 euros for study, research and production costs",
+        "Travel allowance (e.g. partly as extra payments) where applicable",
+        "Health, accident and liability insurance funded by the DAAD (no social insurance contributions required)",
+        "One-off internationalisation allowance for stays abroad"
+      ],
+      "eligibility": [
+        "Students from any country outside Germany who, at the time of application, have obtained their university degree (Bachelor) no more than 6 years ago",
+        "Maximum age limit of 36 years for the year of application (proof must be provided)",
+        "Completed first academic degree (normally Bachelor), with above-average results (upper CUStuni class)",
+        "Proof of knowledge of English or German equivalent to B1/B2 of the Common European Framework of Reference for Languages",
+        "Scholarship granted for one full study period (Master's degree programme) at a German university",
+        "Study period of no more than 12 months abroad is possible"
+      ],
+      "requirements": [
+        "Study plan including time schedule",
+        "Detailed and convincing description of the project in the research or study plan",
+        "Description of academic and personal reasons for choosing the study programme and university",
+        "Certified copies of the last two academic transcripts (English or German translation)",
+        "Language certificate equivalent to at least B1/B2 of the Common European Framework of Reference for Languages"
+      ],
+      "documents": [
+        "Bachelor's degree certificate (or Transcript of Records with a module grade average if the degree is still pending)",
+        "Study plan including time schedule",
+        "English or German translation of all documents",
+        "Two references, academic or from previous work experience",
+        "Detailed CV (Europass) with signature",
+        "Language certificate"
+      ],
+      "selection_criteria": [
+        "Academic excellence (above-average results, upper class degree)",
+        "Quality and feasibility of the study plan",
+        "Motivation for the chosen programme and study stay in Germany"
+      ],
+      "study_mode": "full-time",
+      "citizenship_residency": "Open to students from all countries outside Germany",
+      "international_eligibility": "International students from all countries outside Germany",
+      "subject_or_agency_requirement": "All disciplines at German universities, according to the DAAD programme list",
+      "research_requirement": null,
+      "english_requirement": "English B2/B1 CEFR or German equivalent, as required by the chosen programme (English-language programmes offer study scholarships in all disciplines, without an explicit German-language requirement)",
+      "application_method": [
+        "Applications are submitted through the DAAD portal between 1 June and the stated application deadline",
+        "Funding must begin in 2027, usually on 1 October 2027"
+      ],
+      "application_route": "Apply through the DAAD portal during the annual window (applications possible between 1 June and the stated deadline); the scholarship must begin in 2027.",
+      "description": "The DAAD study scholarship for Master's studies in all disciplines funds highly qualified international students from any country outside Germany for a full Master's degree programme at a German university. The scholarship pays 992 euros per month plus an annual lump sum of 460 euros for study, research and production costs, with travel allowance, DAAD-funded insurance and supplementary payments where applicable. Funding runs 10 to 24 months depending on the course length; tuition fees are not financed.",
+      "number_of_awards": null,
+      "verification": {
+        "citations": [
+          {
+            "url": "https://www2.daad.de/deutschland/stipendium/datenbank/en/21148-scholarship-database/?detail=50026200"
+          }
+        ],
+        "last_verified_date": "2026-10-10",
+        "status": "confirmed",
+        "confidence": "medium",
+        "not_confirmed": [
+          "Exact application deadline date for the current cycle - the DAAD page renders the closing date in a calendar element that was not displayed at verification; the page itself shows that applications are possible between 1 June and the stated deadline"
+        ],
+        "notes": "Verified on the official DAAD scholarship database entry on 10 October 2026: 992 euro monthly payment, annual lump sum of 460 euros for study, research and production costs, travel allowance, DAAD-funded health/accident/liability insurance, supplement for supporting household partners and children, 10-24 months duration, tuition not financed, funding must begin in 2027 (usually 1 October 2027), applications possible between 1 June and the stated deadline, portal currently closed ('Currently you cannot apply for this programme'), funded by the Federal Foreign Office. Deadline recorded as null because the page does not render a date."
+      },
+      "applicant_utility": "Applicant utility (original writing for the DAAD Master Studies all disciplines scholarship): this is the broad DAAD master's award, so if your plan is a full degree at a German university rather than a PhD grant, this is the entry point - it is not field-limited and includes English-taught programmes without a German-language requirement. The stipend is 992 euros per month plus an annual lump sum of 460 euros for study, research and production costs, and tuition is explicitly not financed, so combine it with the low-fee structure of German public universities when you pick the institution. Time the application to the official window: applications are possible between 1 June and the stated deadline, and the funding must begin in 2027, usually on 1 October 2027, so your file and language test (English or German around B1/B2 CEFR) need to be ready by early summer. The study plan with a time schedule and the second academic reference do a lot of work in the evaluation, so invest effort there rather than in a generic motivation letter."
+    }
+  ]
+}

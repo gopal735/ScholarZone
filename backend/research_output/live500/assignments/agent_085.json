@@ -1,0 +1,85 @@
+{
+ "agent": "agent_085",
+ "assignment_count": 1,
+ "scholarships": [
+  {
+   "id": 250,
+   "title": "UCD Global Excellence Scholarships (100% and 50% Tuition Fee)",
+   "country": "Ireland",
+   "degree": "Bachelor's, Master's",
+   "funding_label": "Tuition Fee Waiver",
+   "status": "upcoming",
+   "official_source": "University College Dublin (UCD)",
+   "official_source_url": "https://www.ucd.ie/global/study-at-ucd/scholarshipsfinances/scholarships/globalexcellencescholarships",
+   "application_link": "https://www.ucd.ie/global/study-at-ucd/scholarshipsfinances/scholarships/globalexcellencescholarships",
+   "catalogue_url": "https://www.ucd.ie/global/study-at-ucd/scholarshipsfinances/scholarships/globalexcellencescholarships",
+   "official_updates_url": "https://www.ucd.ie/global/study-at-ucd/scholarshipsfinances/scholarships/globalexcellencescholarships",
+   "existing": {
+    "funding_amount": null,
+    "funding_currency": null,
+    "funding_period": null,
+    "tuition_coverage": 1,
+    "living_cost_coverage": 0,
+    "travel_coverage": null,
+    "fully_funded": 0,
+    "description": "UCD Global Excellence Scholarships offer a limited number of 100% and 50% tuition fee scholarships to outstanding international students who are classed as non-EU for tuition fee purposes and are applying to undergraduate or graduate taught programmes that appear on UCD's eligible-programmes list. Students must first secure an offer or conditional offer on an eligible course. Application deadlines are regional - 1 February 2026 for North American undergraduates, 28 February 2026 for undergraduate and graduate taught applicants from the Middle East, Africa and Pakistan and graduate taught applicants from South Asia, and 31 March 2026 for all other regions. Results are published via SISWeb about seven weeks after each regional deadline. The award is a tuition fee reduction only, is not automatically renewable, and is reassessed for continuing students between late September and October.",
+    "eligibility": [
+     "Must be an incoming student who is classed as non-EU for tuition fee purposes (for information regarding fee classification, UCD directs applicants to its fees page)",
+     "Must apply to an undergraduate or graduate taught programme only",
+     "The programme must be listed in UCD's Eligible Programmes 2026 document",
+     "Must first have received an offer or a conditional offer to study on an eligible UCD course",
+     "Awards are not automatically renewed for continuing students; each is reassessed in line with the original award terms, with outcomes notified between late September and October"
+    ],
+    "eligibility_summary": "Open only to incoming students who are classed as non-EU for tuition fee purposes at UCD, applying to undergraduate or graduate taught programmes that appear on the published eligible-programmes list. Applicants must first have received an offer or a conditional offer to study on an eligible UCD course. Some programmes are excluded.",
+    "benefits": [
+     "100% tuition fee scholarship",
+     "50% tuition fee scholarship"
+    ],
+    "coverage": [
+     "100% tuition fee scholarships",
+     "50% tuition fee scholarships"
+    ],
+    "requirements": [
+     "Submit the programme application as early as possible - UCD reports a significant surge in applications during peak scholarship competition windows and processing delays may occur",
+     "Have received an offer or conditional offer for an eligible programme before the scholarship application",
+     "Check the Eligible Programmes 2026 document because some programmes are excluded",
+     "Read and accept the Terms & Conditions 2026/27",
+     "Follow the Application Instructions 2026"
+    ],
+    "documents": [
+     "Programme application submitted as early as possible",
+     "Scholarship application following the UCD Application Instructions 2026",
+     "Meeting the Terms & Conditions 2026/27 requirements"
+    ],
+    "english_requirement": "Not specified on the official scholarship page; English language requirements are set by each UCD programme.",
+    "application_method": [
+     "Apply for admission to the chosen UCD programme",
+     "Receive an offer or conditional offer",
+     "Submit the Global Excellence Scholarship application following Application Instructions 2026"
+    ],
+    "selection_notes": "There are a limited number of 100% and 50% tuition fee scholarships for outstanding international students. Scholarship results are shared approximately seven weeks after each regional deadline via SISWeb, or no later than two weeks after the Committee has confirmed its decisions. UCD cannot guarantee that all admissions applications will be processed before the scholarship application deadline. Scholarships are not automatically renewed; continuing students are reassessed after the end of the academic year and notified between late September and October.",
+    "best_fit": "Outstanding international undergraduate and graduate taught applicants to UCD",
+    "notes": null,
+    "duration": "Not stated; the scholarships apply to the programme start in September.",
+    "application_period": "The 2026/27 cycle is closed. Applications for the September 2026 intake ran to regional deadlines between 1 February and 31 March 2026, with results shared approximately seven weeks after each regional deadline via SISWeb. The scheme is annual and the 2027/28 call had not been published when checked.",
+    "deadline_display": "Regional deadlines for 2026/27: 1 February 2026 (undergraduate applicants from North America); 28 February 2026 (undergraduate and graduate taught applicants from the Middle East, Africa and Pakistan, and graduate taught applicants from South Asia); 31 March 2026 (all other applicants, undergraduate and graduate taught).",
+    "deadline_date": null,
+    "region": "Europe",
+    "program_type": "University-funded partial and full tuition fee scholarship for incoming non-EU international students",
+    "applicant_utility": null,
+    "official_details": null
+   },
+   "missing_fields": [
+    "funding_amount",
+    "funding_currency",
+    "funding_period",
+    "travel_coverage",
+    "notes",
+    "deadline_date",
+    "applicant_utility",
+    "official_details"
+   ]
+  }
+ ],
+ "result_file": "C:\\Users\\GopaL\\Desktop\\Projects folder\\ScholarZone\\backend\\research_output\\live500\\results\\agent_085.json"
+}

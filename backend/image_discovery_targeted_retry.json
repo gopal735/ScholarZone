@@ -1,0 +1,151 @@
+[
+  {
+    "scholarship_id": 28,
+    "title": "Chevening Scholarship",
+    "best_image_url": "https://web.archive.org/web/20250105175535im_/https://www.chevening.org/wp-content/uploads/2019/06/scholarships-banner.jpg",
+    "source_page": "https://web.archive.org/web/2024/https://www.chevening.org/scholarships/",
+    "discovery_method": "og:image",
+    "alt_text": null,
+    "width": 1920,
+    "height": 1080,
+    "notes": "",
+    "attempts": [
+      {
+        "url": "https://www.chevening.org/scholarships/",
+        "status": null,
+        "ok": false
+      },
+      {
+        "url": "https://www.chevening.org/scholarships/who-can-apply/",
+        "status": null,
+        "ok": false
+      },
+      {
+        "url": "https://www.chevening.org/about-chevening/",
+        "status": null,
+        "ok": false
+      },
+      {
+        "url": "https://www.chevening.org/apply/",
+        "status": null,
+        "ok": false
+      },
+      {
+        "url": "https://www.chevening.org",
+        "status": null,
+        "ok": false
+      },
+      {
+        "url": "https://webcache.googleusercontent.com/search?q=cache:www.chevening.org/scholarships/",
+        "status": 200,
+        "ok": true,
+        "bytes": 92888
+      },
+      {
+        "url": "https://web.archive.org/web/2024/https://www.chevening.org/scholarships/",
+        "status": 200,
+        "ok": true,
+        "bytes": 107231
+      }
+    ],
+    "all_candidates": [
+      {
+        "url": "https://web.archive.org/web/20250105175535im_/https://www.chevening.org/wp-content/uploads/2019/06/scholarships-banner.jpg",
+        "method": "og:image",
+        "alt": null,
+        "width": null,
+        "height": null,
+        "page_url": "https://web.archive.org/web/2024/https://www.chevening.org/scholarships/",
+        "sch_relevance_score": 5.8
+      },
+      {
+        "url": "https://web.archive.org/web/20250105175535im_/https://www.chevening.org/wp-content/uploads/2019/07/who-is-eligible-1.jpg",
+        "method": "img_tag",
+        "alt": "who-is-eligible",
+        "width": null,
+        "height": null,
+        "page_url": "https://web.archive.org/web/2024/https://www.chevening.org/scholarships/",
+        "sch_relevance_score": 2.4
+      },
+      {
+        "url": "https://web.archive.org/web/20250105175535im_/https://www.chevening.org/wp-content/uploads/2019/07/Research-box.jpg",
+        "method": "img_tag",
+        "alt": "Research-box",
+        "width": null,
+        "height": null,
+        "page_url": "https://web.archive.org/web/2024/https://www.chevening.org/scholarships/",
+        "sch_relevance_score": 2.4
+      },
+      {
+        "url": "https://web.archive.org/web/20250105175535im_/https://www.chevening.org/wp-content/uploads/2019/07/timeline.jpg",
+        "method": "img_tag",
+        "alt": "timeline",
+        "width": null,
+        "height": null,
+        "page_url": "https://web.archive.org/web/2024/https://www.chevening.org/scholarships/",
+        "sch_relevance_score": 2.4
+      },
+      {
+        "url": "https://web.archive.org/web/20250105175535im_/https://www.chevening.org/wp-content/uploads/2019/07/study-in-the-uk.jpg",
+        "method": "img_tag",
+        "alt": "study-in-the-uk",
+        "width": null,
+        "height": null,
+        "page_url": "https://web.archive.org/web/2024/https://www.chevening.org/scholarships/",
+        "sch_relevance_score": 2.4
+      }
+    ],
+    "image_probe": {
+      "reachable": true,
+      "http_status": 200,
+      "content_type": "image/jpeg",
+      "width": 1920,
+      "height": 1080,
+      "content_length": 284404
+    }
+  },
+  {
+    "scholarship_id": 34,
+    "title": "Taiwan Scholarship Program",
+    "best_image_url": null,
+    "source_page": null,
+    "discovery_method": null,
+    "alt_text": null,
+    "width": null,
+    "height": null,
+    "notes": "No usable image candidates found on attempted pages.",
+    "attempts": [
+      {
+        "url": "https://www.studyintaiwan.org",
+        "status": null,
+        "ok": false
+      },
+      {
+        "url": "https://www.studyintaiwan.org/taiwan_scholarship",
+        "status": null,
+        "ok": false
+      },
+      {
+        "url": "https://www.studyintaiwan.org/programs",
+        "status": null,
+        "ok": false
+      },
+      {
+        "url": "https://www.edutwscholarship.moe.gov.tw",
+        "status": null,
+        "ok": false
+      },
+      {
+        "url": "https://www.edutwscholarship.moe.gov.tw/scholarship/index",
+        "status": null,
+        "ok": false
+      },
+      {
+        "url": "https://web.archive.org/web/2024/https://www.studyintaiwan.org/taiwan_scholarship",
+        "status": 404,
+        "ok": false
+      }
+    ],
+    "all_candidates": []
+  }
+]

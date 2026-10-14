@@ -1,0 +1,90 @@
+{
+ "agent": "agent_248",
+ "assignment_count": 1,
+ "scholarships": [
+  {
+   "id": 604,
+   "title": "Beca Universidad de Chile (BUCH)",
+   "country": "Chile",
+   "degree": "Bachelor's",
+   "funding_label": "Tuition Fee Waiver",
+   "status": "closing-soon",
+   "official_source": "Universidad de Chile - Direccion de Bienestar y Desarrollo Estudiantil (DIRBDE)",
+   "official_source_url": "https://uchile.cl/convocatorias/37944/beca-universidad-de-chile",
+   "application_link": "https://uchile.cl/convocatorias/37944/beca-universidad-de-chile",
+   "catalogue_url": "https://uchile.cl/u5076",
+   "official_updates_url": "https://uchile.cl/convocatorias",
+   "existing": {
+    "funding_amount": null,
+    "funding_currency": null,
+    "funding_period": null,
+    "tuition_coverage": 1,
+    "living_cost_coverage": 0,
+    "travel_coverage": 0,
+    "fully_funded": 1,
+    "description": null,
+    "eligibility": [
+     "Estar cursando el cuarto ano de ensenanza media en el 2026",
+     "Promedio de notas de la ensenanza media igual o superior a 6,0",
+     "Cartola del Registro Social de Hogares, dentro del tramo de calificacion socioeconomica de hasta el 90%",
+     "Rendir la bateria de pruebas PAES para la admision 2027 (diciembre 2026) y obtener al menos 700 puntos ponderados entre Competencia Lectora y Competencia Matematica M1",
+     "Postular a los beneficios estudiantiles MINEDUC para la admision 2027",
+     "Autorizar el consentimiento informado en la plataforma DEMRE para compartir los resultados PAES",
+     "No tener asignacion de Gratuidad, Beca Vocacion de Profesor u otro beneficio equivalente"
+    ],
+    "eligibility_summary": "Chilean students in the fourth year of secondary education (2026), with a secondary-school average of 6.0 or above, within the 90% socioeconomic band of the Registro Social de Hogares, sitting the 2027 PAES admission battery with at least 700 weighted points across Competencia Lectora and Competencia Matematica M1, applying for MINEDUC student benefits for 2027 admission, and not holding MINEDUC gratuidad, Beca Vocacion de Profesor or an equivalent benefit.",
+    "benefits": [
+     "Financia el valor completo de la matricula y el arancel de cualquier carrera o programa de pregrado de la Universidad de Chile",
+     "100 awards per year",
+     "Annual renewal provided academic-progress and re-accreditation conditions are met"
+    ],
+    "coverage": [
+     "Matricula (enrolment fee) for the first year of the programme",
+     "Arancel (annual tuition) for any career or undergraduate programme of the Universidad de Chile",
+     "Renewed annually for the official duration of the programme"
+    ],
+    "requirements": [
+     "Application is made through the DIRBDE online form at https://postulacionbuch.uchile.cl/auth/login",
+     "Attach the Cartola del Registro Social de Hogares to the online form",
+     "Apply to a programme through the Sistema de Acceso a la Educacion Superior (SAES)",
+     "Be summoned to enrol and formalise the matricula within the University's deadlines",
+     "Complete the FOCES form and socio-economic accreditation with the academic unit's social worker",
+     "Complete the FUAS for the relevant academic period"
+    ],
+    "documents": [
+     "Cartola del Registro Social de Hogares (attached to the online application form)",
+     "Informe Social (may be requested where the Cartola is not available)",
+     "PAES 2026 results for admission 2027 (supplied by DEMRE/MINEDUC once published)"
+    ],
+    "english_requirement": null,
+    "application_method": [
+     "Online application form at https://postulacionbuch.uchile.cl/auth/login",
+     "Attach the Cartola del Registro Social de Hogares",
+     "Shortlist ranked by the BUCH weighted score announced on 4 January 2027",
+     "Final selection result announced on 18 January 2027"
+    ],
+    "selection_notes": "Candidates are ranked by the BUCH weighted score from PAES results: 25% Competencia Lectora score; 25% best score between Competencia Matematica M1 and M2; 20% best score among the elective History and Social Sciences and Science papers; 20% grade ranking score; 10% secondary-school grade average. The 100 highest-ranked eligible candidates are awarded.",
+    "best_fit": "High-achieving Chilean secondary-school leavers from low and middle socioeconomic households who have not won MINEDUC gratuidad and want a fully tuition-funded place at the Universidad de Chile.",
+    "notes": "Admission to the University and the scholarship are separate steps: the BUCH application does not replace SAES admission, and the award only becomes final once the candidate has been summoned to enrol and has formalised the matricula. If MINEDUC grants gratuidad or Beca Vocacion de Profesor, the ministerial benefit prevails; CAE/FSCU may complement BUCH. Award count is fixed at 100 per year by the University regulation.",
+    "duration": "Full official duration of the chosen programme (renEWed annually)",
+    "application_period": "21 September 2026 to 19 October 2026, 12:00",
+    "deadline_display": "19 October 2026, 12:00 noon (Santiago time)",
+    "deadline_date": "2026-10-19",
+    "region": "Latin America",
+    "program_type": "University merit and socioeconomic need scholarship",
+    "applicant_utility": null,
+    "official_details": null
+   },
+   "missing_fields": [
+    "funding_amount",
+    "funding_currency",
+    "funding_period",
+    "description",
+    "english_requirement",
+    "applicant_utility",
+    "official_details"
+   ]
+  }
+ ],
+ "result_file": "C:\\Users\\GopaL\\Desktop\\Projects folder\\ScholarZone\\backend\\research_output\\live500\\results\\agent_248.json"
+}

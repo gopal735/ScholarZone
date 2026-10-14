@@ -1,0 +1,617 @@
+{
+  "agent_id": "w2_05",
+  "shard": "w2-05",
+  "today": "2026-10-04",
+  "records": [
+    {
+      "outcome": "new",
+      "new_scholarship": {
+        "name": "UM NL Global Studies Scholarship",
+        "country": "Netherlands",
+        "region": "Europe",
+        "degree_levels": "Bachelor's",
+        "funding_type": "Fully Funded",
+        "program_type": "University scholarship",
+        "official_source": "Maastricht University",
+        "official_source_url": "https://www.maastrichtuniversity.nl/studeren/toelating-inschrijving/financing-your-studies/scholarships/um-nl-global-studies",
+        "catalogue_url": null,
+        "official_updates_url": "https://www.maastrichtuniversity.nl/studeren/toelating-inschrijving/financing-your-studies/scholarships",
+        "status": "open",
+        "is_verified": true,
+        "last_verified_date": "2026-10-04",
+        "description": "Maastricht University awards one full-coverage scholarship per academic year to a bachelor student who has been admitted to its Global Studies bachelor's programme. For 2027-2028 the award covers tuition fees at cost plus a living-expense stipend of EUR 20,150 per academic year, and includes a mandatory two-week UM Pre-Academic Training in the first week of August 2027. Applications are open from 1 October 2026 to 1 February 2027, and the bachelor's programme application in Studielink must be complete by 10 December 2026.",
+        "duration": "36 months (the full three-year Global Studies bachelor's programme)",
+        "deadline": "1 February 2027, 23:59 CET",
+        "deadline_date": "2027-02-01",
+        "deadline_precision": "exact",
+        "application_period": "1 October 2026 - 1 February 2027 (scholarship form); bachelor programme application in Studielink by 10 December 2026",
+        "funding_amount": 20150,
+        "funding_currency": "EUR",
+        "funding_period": "per academic year",
+        "eligibility_summary": "Applicants must hold the nationality of an OECD Official Development Assistance eligible country (excluding Surinam), must not hold dual EU/EEA, Swiss or Surinamese nationality, must have applied for admission to the Global Studies bachelor's programme for 2027-2028 with a complete file before 10 December 2026, must not already hold a bachelor's-equivalent degree, and must be under 35 years of age on 1 September 2027.",
+        "eligibility": [
+          "Nationality of an OECD DAC-eligible country, Surinam excluded",
+          "No dual nationality with an EU/EEA country, Switzerland or Surinam",
+          "Able to obtain an entry visa and residence permit for the Netherlands",
+          "Applicant to the Global Studies bachelor's programme at Maastricht University for 2027-2028, file complete before 10 December 2026",
+          "Meets the specific admission requirements of the bachelor programme applied to",
+          "Does not hold a diploma from a higher education institution and has not completed a bachelor-equivalent degree",
+          "Not older than 35 on 1 September 2027"
+        ],
+        "coverage": [
+          "Tuition fees for the Global Studies bachelor's programme, at cost per academic year",
+          "Living expenses of EUR 20,150 per academic year (EUR 1,550 per month)",
+          "Health and liability insurance, at cost",
+          "Visa application costs, at cost",
+          "UM Pre-Academic Training costs, at cost",
+          "International Student Ambassador Programme (ISAP) costs for the first block only"
+        ],
+        "benefits": [
+          "EUR 20,150 per academic year for living expenses, broken down by Maastricht as housing EUR 960, groceries and personal hygiene EUR 160, telephone EUR 60, travel EUR 100, books and study materials EUR 90, clothing, hobbies and going out EUR 125, miscellaneous EUR 55",
+          "A UM room allocated to the scholar until 16 July 2028",
+          "Two-week mandatory UM Pre-Academic Training in the first week of August 2027",
+          "Participation in the International Student Ambassador Programme"
+        ],
+        "requirements": [
+          "Apply for the Global Studies bachelor's programme at Maastricht University via Studielink and receive a UM student ID before applying for the scholarship",
+          "Complete all registration requirements by 1 February 2027, except legal residence, tuition payment and a hard copy of the diploma",
+          "Pay any programme handling fee yourself by 10 December 2026; the scholarship does not cover it",
+          "Sign and return the award letter to the UM International Services Desk to accept the scholarship",
+          "Agree to act as an active Global Studies and UM ambassador during and after the studies, including at least one information session"
+        ],
+        "required_documents": [
+          "Curriculum vitae, maximum two A4 pages, covering education, job experience, extracurricular engagement and active citizenship",
+          "Letter of motivation using the UM template",
+          "Proof of academic excellence: latest grade transcript showing at least 75% of the maximum grade",
+          "Personal statement of financial needs",
+          "One reference letter dated no earlier than 1 February 2025, written by a professor, teacher, principal, college counsellor, lecturer or employer, not a family member",
+          "Contact details of the one referee, including relationship, work telephone number and work or institutional email address"
+        ],
+        "application_method": [
+          "Apply for admission to the Global Studies bachelor's programme through Studielink",
+          "Log in with your UM account on the UM scholarship application form",
+          "Upload the required documents and the reference letter, then submit once before the deadline"
+        ],
+        "english_requirement": null,
+        "selection_notes": "The UM International Services Desk checks application completeness after 1 February 2027; the Global Studies admission office ranks files on the UM scholarship selection criteria and proposes a top five to the Global Studies Scholarship selection committee in March 2027; the top five are interviewed online; candidates are informed of their status in April 2027, with selected, waitlisted or rejected status final by the beginning of June 2027.",
+        "best_fit": "A student from an ODA-eligible country who has finished secondary school, applies to the Global Studies bachelor's programme at Maastricht, has demonstrable financial need and strong extracurricular and community engagement.",
+        "notes": "Only one application may be submitted and documents cannot be replaced afterwards. The scholarship portal is unavailable between 22 and 26 October 2026 during a portal upgrade. Refusing the allocated room cancels the scholarship. Air tickets and the approximately EUR 75 cleaning fee are not covered. The published amounts are stated as subject to change from academic year 2028-2029."
+      },
+      "programme_detail_official": {
+        "official_source_urls": [
+          "https://www.maastrichtuniversity.nl/studeren/toelating-inschrijving/financing-your-studies/scholarships/um-nl-global-studies"
+        ],
+        "application_link": "https://corsa-forms.mumc.maastrichtuniversity.nl/user/login?destination=/form/ssc-scholarships",
+        "official_updates_url": "https://www.maastrichtuniversity.nl/studeren/toelating-inschrijving/financing-your-studies/scholarships",
+        "catalogue_url": null,
+        "application_cycle": "2027-2028 Global Studies bachelor year; scholarship applications open 1 October 2026 and close 1 February 2027",
+        "deadline_central": "2027-02-01T23:59",
+        "deadline_central_display": "1 February 2027 at 23:59 CET",
+        "deadline_central_timezone": "Europe/Amsterdam",
+        "deadline_note": "A single exact deadline is published for the scholarship form. A separate, earlier deadline of 10 December 2026 applies to the bachelor's programme application in Studielink, and registration requirements must be met by 1 February 2027.",
+        "status": "OPEN",
+        "status_note": "Applications are open at the time of verification, 2026-10-04, three days after the published opening date.",
+        "funding_amount": 20150,
+        "funding_currency": "EUR",
+        "funding_period": "per academic year",
+        "funding_duration": "Three academic years, covering the 36-month bachelor's programme",
+        "tuition_coverage": true,
+        "tuition_coverage_note": "Tuition fees are covered at cost per academic year, arranged and paid by the UM International Services Desk.",
+        "living_cost_coverage": true,
+        "travel_coverage": false,
+        "fully_funded": true,
+        "funding_label": "Full coverage for the Global Studies bachelor's programme: tuition fees at cost plus EUR 20,150 per academic year for living expenses, for 36 months",
+        "benefits": [
+          "Living expenses of EUR 20,150 per academic year, paid monthly at EUR 1,550",
+          "Tuition fees at cost per academic year",
+          "Health and liability insurance at cost",
+          "Visa application costs at cost",
+          "UM Pre-Academic Training costs at cost",
+          "International Student Ambassador Programme costs for the first block only",
+          "A UM room allocated until 16 July 2028"
+        ],
+        "eligibility": [
+          "Nationality of an OECD DAC-eligible country, Surinam excluded",
+          "No dual nationality with an EU/EEA country, Switzerland or Surinam",
+          "Complete admission application to the Global Studies bachelor's programme for 2027-2028 before 10 December 2026",
+          "No bachelor's-equivalent degree already held",
+          "Under 35 years of age on 1 September 2027",
+          "Agreement to act as Global Studies and UM ambassador"
+        ],
+        "citizenship_residency": "Nationality of an OECD Official Development Assistance recipient country, excluding Surinam; applicants must qualify for a Dutch entry visa and residence permit.",
+        "international_eligibility": "Open to nationals of ODA-eligible countries only; applicants holding a valid Schengen residence permit may apply if that permit remains valid until at least 2 September 2027.",
+        "degree_levels": [
+          "Bachelor's"
+        ],
+        "study_mode": "Full-time, on campus",
+        "research_requirement": null,
+        "subject_or_agency_requirement": "Only the Global Studies bachelor's programme at Maastricht University qualifies.",
+        "application_method": "Separate from admission: first apply through Studielink for the bachelor programme, then submit the scholarship application form with the UM account.",
+        "application_route": "Online UM scholarship application form; one submission only",
+        "requirements": [
+          "Receive a UM student ID from the Studielink bachelor programme application before applying for the scholarship",
+          "Meet all registration requirements by the scholarship deadline",
+          "Pay any handling fee yourself by 10 December 2026",
+          "Accept the allocated room, as refusing it cancels the scholarship",
+          "Sign and return the award letter"
+        ],
+        "documents": [
+          "Curriculum vitae of maximum two A4 pages",
+          "Template letter of motivation",
+          "Latest grade transcript showing at least 75% of the maximum grade",
+          "Personal statement of financial needs",
+          "One reference letter dated no earlier than 1 February 2025",
+          "Referee contact details including institutional email and telephone"
+        ],
+        "english_requirement": null,
+        "english_requirement_note": "The scholarship page states no separate English language requirement; English proficiency is a condition of admission to the bachelor's programme rather than of the scholarship.",
+        "selection_criteria": [
+          "Application completeness checked by the UM International Services Desk",
+          "Ranking by the Global Studies admission office against the UM scholarship selection criteria",
+          "Shortlist of five proposed to the selection committee in March 2027",
+          "Online interview for the shortlisted five",
+          "Selection criteria are not published in full on the scholarship page"
+        ],
+        "selection_weighting": null,
+        "duration": "36 months",
+        "award_holder_conditions": [
+          "Accept and occupy the UM room allocated until 16 July 2028; housing for years two and three must be arranged by the scholar",
+          "Act as an active Global Studies and UM ambassador, including at least one information session for students or stakeholders",
+          "The allocated accommodation is not suitable for partners, spouses, children or pets"
+        ],
+        "supplements_or_initiatives": [
+          "Mandatory two-week UM Pre-Academic Training, first week of August 2027",
+          "International Student Ambassador Programme for the first block",
+          "Scholarship office is closed for the portal upgrade between 22 and 26 October 2026"
+        ],
+        "official_contacts": {
+          "general": "UM International Services Desk, Maastricht University",
+          "email": null,
+          "phone": null
+        },
+        "description": "One full-coverage scholarship per academic year for a bachelor student admitted to the Global Studies programme at Maastricht University, covering tuition at cost and a living-expense stipend of EUR 20,150 per academic year for 36 months, including the mandatory two-week UM Pre-Academic Training.",
+        "program_type": "University scholarship",
+        "region": "Europe",
+        "coverage": "Tuition fees, living expenses, health and liability insurance, visa application costs, Pre-Academic Training and the first block of the ambassador programme; air tickets and the room cleaning fee are excluded.",
+        "last_verified_date": "2026-10-04"
+      },
+      "programme_detail_applicant_utility": {
+        "application_readiness_checklist": [
+          "Studielink application to Global Studies submitted and complete before 10 December 2026",
+          "UM student ID received",
+          "Transcript showing at least 75% of the maximum grade available",
+          "Two-page CV written to the UM specification",
+          "Motivation letter written on the UM template",
+          "Financial needs statement drafted",
+          "Referee contacted in advance; institutional email and work telephone obtained",
+          "Reference letter dated on or after 1 February 2025 and uploaded by the applicant"
+        ],
+        "common_rejection_risks": [
+          "Missing the 10 December 2026 Studielink deadline",
+          "Reference letter dated before 1 February 2025, which makes the application incomplete",
+          "Referee using a personal email address without a valid reason",
+          "CV longer than two A4 pages",
+          "Submitting twice or trying to replace documents after submission",
+          "Applying from outside an ODA-eligible country or holding a disqualifying EU/EEA dual nationality"
+        ],
+        "estimated_uncovered_costs": [
+          "Air tickets to and from the Netherlands, explicitly excluded from the scholarship",
+          "Approximately EUR 75 cleaning fee for the allocated room",
+          "Housing from the second year onward, after 16 July 2028",
+          "Any programme handling fee, payable by 10 December 2026",
+          "Lunches and personal spending beyond the published monthly breakdown"
+        ],
+        "document_audit": [
+          "Reference letter date",
+          "Institutional referee email domain",
+          "Transcript grade percentage",
+          "CV page count",
+          "Use of the official motivation letter template"
+        ],
+        "alerts": [
+          {
+            "trigger": "Portal unavailable 22-26 October 2026",
+            "message": "The UM scholarship portal is closed for an upgrade between 22 and 26 October 2026, so do not plan to submit in that window."
+          },
+          {
+            "trigger": "Earlier admission deadline",
+            "message": "The scholarship deadline is 1 February 2027 but the programme application must be complete by 10 December 2026."
+          },
+          {
+            "trigger": "Room allocation is binding",
+            "message": "Accepting the scholarship means accepting the allocated room until 16 July 2028."
+          }
+        ],
+        "submission_workflow": [
+          "Apply for the Global Studies bachelor's programme in Studielink",
+          "Receive the UM student ID",
+          "Log in to the UM scholarship application form",
+          "Upload CV, motivation letter, transcript, financial needs statement and reference letter",
+          "Add the referee contact details",
+          "Submit once before 1 February 2027, 23:59 CET",
+          "Sign and return the award letter if selected"
+        ]
+      },
+      "programme_detail_verification": {
+        "cycle_verified": "2027-2028 Global Studies scholarship cycle, applications open 1 October 2026 to 1 February 2027, verified 2026-10-04",
+        "verification_confidence": 0.92,
+        "official_fields_confirmed": [
+          "deadline_central",
+          "application_period",
+          "funding_amount",
+          "funding_currency",
+          "funding_period",
+          "tuition_coverage",
+          "living_cost_coverage",
+          "eligibility",
+          "required_documents",
+          "selection procedure",
+          "duration"
+        ],
+        "institution_check_required": [
+          "Final admission decision and any conditional requirements from the Global Studies admission office",
+          "Exact tuition fee amount for 2027-2028, which the page states only as 'at cost'",
+          "Confirmation that the Pre-Academic Training dates hold for August 2027"
+        ],
+        "unverified_or_removed_claims": [
+          "The detailed weighting of the UM scholarship selection criteria is published in a separate document not read",
+          "The exact number of awards beyond 'one full coverage scholarship per academic year'",
+          "English language requirements, which are admission requirements rather than scholarship requirements"
+        ],
+        "source_citations": [
+          "https://www.maastrichtuniversity.nl/studeren/toelating-inschrijving/financing-your-studies/scholarships/um-nl-global-studies"
+        ],
+        "researched_by": "w2_05"
+      },
+      "logo_override": {
+        "url": "https://www.maastrichtuniversity.nl/themes/custom/um_corporate/favicon.ico",
+        "page_url": "https://www.maastrichtuniversity.nl/studeren/toelating-inschrijving/financing-your-studies/scholarships/um-nl-global-studies",
+        "official_host": true,
+        "alt_text": "Maastricht University",
+        "validation_result": "verified",
+        "validation_detail": "Probe returned 'Unsupported image format: image/x-icon', confirming HTTP 200 and an image content type. Asset discovered as the link[rel=icon] of the scholarship page itself, on the awarding university's own domain.",
+        "image_kind": "official_logo",
+        "image_format": "ico",
+        "verified_at": "2026-10-04T00:00:00+00:00",
+        "host_evidence": "same_registrable_domain",
+        "_award": "UM NL Global Studies Scholarship"
+      },
+      "research_notes": {
+        "logo": "Opened the scholarship page with the browser, scanned img[src] for /logo|brand/ plus link[rel*=icon] and og:image. The only image assets matching were the NL Scholarship programme logo (not Maastricht's mark) and the university's own favicon at /themes/custom/um_corporate/favicon.ico. Probed that favicon with webfetch: 'Unsupported image format: image/x-icon' confirms HTTP 200 and an image/x-icon content type. Used as the official_logo override. No white-on-transparent wordmark risk because an .ico rasterises with its own background.",
+        "unverified": [
+          "Byte-level inspection of the favicon colours was not performed; the favicon is a small square raster icon rather than a wordmark",
+          "The EUR 20,150 and EUR 1,550 figures are stated on the page as subject to change from academic year 2028-2029"
+        ],
+        "substitution": null,
+        "official_pages_read": [
+          "https://www.maastrichtuniversity.nl/studeren/toelating-inschrijving/financing-your-studies/scholarships/um-nl-global-studies"
+        ],
+        "degree_level_confirmed": "'The UM NL Global Studies Scholarship offers one full coverage scholarship (including a tuition fee waiver and monthly stipend) per academic year for a selected number of top-performing bachelor students from eligible countries' and 'Duration of the UM NL Global Studies Scholarship - 36 months for the bachelor's programme in Global Studies'.",
+        "dedup_check": "Compared against dedup.existing_titles, existing_hosts and existing_official_source_urls. maastrichtuniversity.nl appears in existing_hosts via 'Maastricht University Holland High Potential Scholarship', which is a different funding scheme (master's, non-EEA talent) with its own deadline and selection process. No title or URL in the dedup list matches the Global Studies bachelor scholarship.",
+        "skeleton": false
+      }
+    },
+    {
+      "outcome": "new",
+      "new_scholarship": {
+        "name": "Latvian State Scholarship for Foreign Students (Scholarship for Studies in Latvia)",
+        "country": "Latvia",
+        "region": "Europe",
+        "degree_levels": "Bachelor's, Master's, PhD",
+        "funding_type": "Stipend",
+        "program_type": "Government scholarship",
+        "official_source": "State Education Development Agency (VIAA), Latvia",
+        "official_source_url": "https://studyinlatvia.lv/scholarships",
+        "catalogue_url": "https://scholarships.viaa.gov.lv",
+        "official_updates_url": "https://studyinlatvia.lv/scholarships",
+        "status": "upcoming",
+        "is_verified": true,
+        "last_verified_date": "2026-10-04",
+        "description": "The Latvian state scholarship for studies pays a monthly stipend to students from more than 30 partner countries who are enrolled in a bachelor's, master's or doctoral programme at a Latvian higher education institution. It is worth EUR 500 per month for bachelor's and master's students and EUR 700 per month for doctoral students, awarded for up to 10 months (11 months for doctoral students). The annual call runs from 1 February to 1 April through the VIAA online application system, so the next window opens on 1 February 2027.",
+        "duration": "Up to 10 months for bachelor's and master's students; up to 11 months for doctoral students; maximum two terms within one study cycle",
+        "deadline": "1 April (annual call closes); applications open 1 February",
+        "deadline_date": null,
+        "deadline_precision": "recurring",
+        "application_period": "1 February - 1 April annually",
+        "funding_amount": 500,
+        "funding_currency": "EUR",
+        "funding_period": "per month",
+        "eligibility_summary": "Citizens of Latvia's more than 30 partner countries may apply. Bachelor's applicants must already have completed at least one academic year at any higher education institution; master's and doctoral applicants may come from any previous institution. Applicants must hold a confirmation letter from the chosen Latvian higher education institution and may not hold another grant concurrently.",
+        "eligibility": [
+          "Nationality of one of Latvia's partner countries (39 eligible countries are listed by VIAA)",
+          "Bachelor's applicants must have completed at least one academic year at any higher education institution",
+          "Master's or PhD applicants may apply from any previous higher education institution",
+          "Must have chosen a study programme at a Latvian higher education institution and obtained a confirmation letter from the designated institutional contact person before applying",
+          "Cannot be awarded concurrently with other grants",
+          "Must be present in Latvia for the scholarship to be paid; no scholarship is provided for presence of under 15 calendar days"
+        ],
+        "coverage": [
+          "Monthly stipend of EUR 500 for bachelor's and master's students",
+          "Monthly stipend of EUR 700 for doctoral students",
+          "Up to 10 months of support for bachelor's and master's students",
+          "Up to 11 months of support for doctoral students"
+        ],
+        "benefits": [
+          "EUR 500 monthly stipend for bachelor's and master's students",
+          "EUR 700 monthly stipend for doctoral students",
+          "A separate strand funds participation in approved summer schools in Latvia, with funds transferred to the organisers rather than to the participant"
+        ],
+        "requirements": [
+          "Submit the application online in the VIAA electronic application system",
+          "Fill in the application form according to the published quality evaluation criteria; incomplete or incorrect applications are not assessed",
+          "Attach all required documents translated into Latvian or English",
+          "Use the unified HEI confirmation letter template, signed and submitted by the institutional contact person",
+          "Register a profile with a unique login and password in the VIAA system"
+        ],
+        "required_documents": [
+          "Confirmation letter from the Latvian higher education institution, prepared by the designated contact person on the unified template",
+          "Europass-format curriculum vitae",
+          "Letter of motivation including activities outside studies related to the field of study in Latvia or the home country",
+          "Proof of education: diploma and supplements, or transcript of records for the last two semesters; first-year master's students must provide their bachelor diploma copy and supplement",
+          "Two copies of letters of recommendation from academic staff, signed within the last six months",
+          "Study plan on the published form",
+          "Copy of a language certificate"
+        ],
+        "application_method": [
+          "Register in the VIAA electronic application system and create a profile",
+          "Complete the online application form against the published criteria",
+          "Upload all required documents translated into Latvian or English",
+          "Submit before the call deadline; decisions are notified by email in June"
+        ],
+        "english_requirement": "A copy of a language certificate is one of the required documents; the official page does not name a specific level or test.",
+        "selection_notes": "All applications are evaluated against the published quality evaluation criteria and the final decision on granting scholarships is made by the VIAA evaluation committee. Candidates receive an official decision by email in June, also visible in their profile in the electronic application system.",
+        "best_fit": "A student from a Latvia partner country who has already completed at least one year of higher education and has secured a place on a study programme at a Latvian higher education institution.",
+        "notes": "The scholarship does not cover all study-related costs: some tuition fees, living costs and other expenses must be covered personally, travel expenses to and from Latvia are not covered, and insurance must be arranged by the holder. The stipend level for second-cycle programmes is set at EUR 500 per month under Cabinet Regulation No. 68 of 24 January 2012, as amended by Cabinet Regulation No. 298 of 26 May 2026."
+      },
+      "programme_detail_official": {
+        "official_source_urls": [
+          "https://studyinlatvia.lv/scholarships"
+        ],
+        "application_link": "https://scholarships.viaa.gov.lv",
+        "official_updates_url": "https://studyinlatvia.lv/scholarships",
+        "catalogue_url": "https://scholarships.viaa.gov.lv",
+        "application_cycle": "Annual call; applications open 1 February and close 1 April; decisions by email in June",
+        "deadline_central": null,
+        "deadline_central_display": "From 1 February to 1 April (annual call)",
+        "deadline_central_timezone": "Europe/Riga",
+        "deadline_note": "The official page states the call window as 'From 1 February to 1 April' without a calendar year, so no exact date can be given for the next cycle. The next window therefore opens on 1 February 2027.",
+        "status": "UPCOMING",
+        "status_note": "At verification on 2026-10-04 the annual call is closed; the published recurring window opens again on 1 February 2027.",
+        "funding_amount": 500,
+        "funding_currency": "EUR",
+        "funding_period": "per month",
+        "funding_duration": "Up to 10 months for bachelor's and master's students; up to 11 months for doctoral students; a maximum of two terms within one study cycle",
+        "tuition_coverage": false,
+        "tuition_coverage_note": "The official page states the scholarship does not fully cover study-related expenses and that some tuition fee, living cost and other expenses must be covered personally.",
+        "living_cost_coverage": true,
+        "travel_coverage": false,
+        "fully_funded": false,
+        "funding_label": "Monthly stipend of EUR 500 (bachelor's and master's) or EUR 700 (PhD) for up to 10 or 11 months; tuition fees, travel and insurance are not covered",
+        "benefits": [
+          "EUR 500 per month for bachelor's and master's students",
+          "EUR 700 per month for doctoral students",
+          "A separate strand funds participation in approved summer schools in Latvia, paid to the organisers",
+          "Support for up to two terms within one study cycle"
+        ],
+        "eligibility": [
+          "Nationality of one of Latvia's partner countries; VIAA publishes a list of 39 eligible countries",
+          "Bachelor's applicants must have completed at least one academic year at any higher education institution",
+          "Master's or PhD applicants may apply from any previous higher education institution",
+          "Confirmation letter from the chosen Latvian higher education institution obtained before application",
+          "No concurrent grant or scholarship",
+          "No scholarship paid for presence in Latvia of fewer than 15 calendar days"
+        ],
+        "citizenship_residency": "Citizenship of one of Latvia's partner or eligible countries; no Latvian residency requirement, but a study place at a Latvian higher education institution is required.",
+        "international_eligibility": "Open to citizens of more than 30 partner countries in Europe, Asia, North and South America and Africa that have signed an education and science cooperation agreement with Latvia, plus other partner countries.",
+        "degree_levels": [
+          "Bachelor's",
+          "Master's",
+          "PhD"
+        ],
+        "study_mode": "Full-time study at a Latvian higher education institution; English and Latvian instruction available",
+        "research_requirement": null,
+        "subject_or_agency_requirement": "Any study programme at a Latvian higher education institution; for the summer school strand, only approved summer schools are eligible.",
+        "application_method": "Online application in the VIAA electronic application system, following the published quality evaluation criteria and attaching all translated documents.",
+        "application_route": "VIAA electronic application system at scholarships.viaa.gov.lv",
+        "requirements": [
+          "Register a profile with a unique login and password",
+          "Complete the form according to the published criteria; incomplete or incorrect applications are not assessed",
+          "Obtain the HEI confirmation letter from the designated institutional contact person on the unified template",
+          "Attach all documents translated into Latvian or English",
+          "Submit before the call deadline"
+        ],
+        "documents": [
+          "HEI confirmation letter on the unified template",
+          "Europass curriculum vitae",
+          "Letter of motivation",
+          "Proof of education: diploma and supplements or transcript of the last two semesters",
+          "Two letters of recommendation from academic staff signed within the last six months",
+          "Study plan on the published form",
+          "Copy of a language certificate"
+        ],
+        "english_requirement": "A copy of a language certificate must be attached; the page does not name a level or test.",
+        "english_requirement_note": "The Latvian scholarship page lists a language certificate among the required documents but does not state a minimum level or accepted test.",
+        "selection_criteria": [
+          "Applications assessed against the published quality evaluation criteria of VIAA",
+          "Incomplete or incorrect applications are not assessed",
+          "Final decision taken by the VIAA evaluation committee"
+        ],
+        "selection_weighting": null,
+        "duration": "Up to 10 months for bachelor's and master's; up to 11 months for doctoral",
+        "award_holder_conditions": [
+          "Must not hold another grant or scholarship concurrently",
+          "Must arrange their own insurance coverage",
+          "Must be present in Latvia; no scholarship is provided for stays of under 15 calendar days",
+          "Must personally cover remaining tuition fee, living cost and other study expenses",
+          "Must cover travel, insurance and visa costs for the summer school strand"
+        ],
+        "supplements_or_initiatives": [
+          "Summer school strand: international students, academic and research staff may apply to approved summer schools in Latvia financed by Latvian state scholarships, with the same 1 February to 1 April call; funding goes to the organisers, not to the participant"
+        ],
+        "official_contacts": {
+          "general": "State Education Development Agency (VIAA) scholarship team, Valnu street 1, Riga, LV 1050",
+          "email": "scholarships@viaa.gov.lv",
+          "phone": null
+        },
+        "description": "Latvian government scholarship for citizens of Latvia's partner countries studying at Latvian higher education institutions, paid as a monthly stipend of EUR 500 for bachelor's and master's students and EUR 700 for doctoral students through an annual 1 February to 1 April call.",
+        "program_type": "Government scholarship",
+        "region": "Europe",
+        "coverage": "Monthly stipend only; tuition fees are not fully covered, travel and insurance are excluded, and a separate summer school strand pays organisers rather than participants.",
+        "last_verified_date": "2026-10-04"
+      },
+      "programme_detail_applicant_utility": {
+        "application_readiness_checklist": [
+          "Confirm your nationality appears on VIAA's list of eligible countries",
+          "For bachelor's applicants, confirm at least one completed academic year",
+          "Secure a study place at a Latvian higher education institution",
+          "Ask the university's designated contact person to issue the confirmation letter on the unified template",
+          "Prepare a Europass CV, motivation letter, study plan and language certificate",
+          "Request two academic referees, who must sign within the last six months",
+          "Translate all documents into Latvian or English",
+          "Create a VIAA application profile before 1 February"
+        ],
+        "common_rejection_risks": [
+          "Applying without the HEI confirmation letter on the unified template",
+          "Recommendation letters older than six months",
+          "Applications that do not follow the published quality evaluation criteria",
+          "Holding another grant or scholarship at the same time",
+          "Missing the 1 April deadline because the window is announced only as a month range"
+        ],
+        "estimated_uncovered_costs": [
+          "Tuition fees not covered in full by the stipend",
+          "Remaining living costs above EUR 500 per month",
+          "Travel from the home country to and from Latvia",
+          "Insurance coverage arranged by the holder",
+          "Visa costs"
+        ],
+        "document_audit": [
+          "Confirmation letter template version",
+          "Recommendation letter dates",
+          "Europass CV format",
+          "Translation into Latvian or English of every attachment"
+        ],
+        "alerts": [
+          {
+            "trigger": "Window opens 1 February",
+            "message": "The call is only announced as 'From 1 February to 1 April', so watch the page from the start of February."
+          },
+          {
+            "trigger": "Bachelor's applicants need a completed academic year",
+            "message": "Bachelor's applicants must already have completed at least one academic year at any higher education institution."
+          },
+          {
+            "trigger": "No scholarship for short stays",
+            "message": "No stipend is paid if you are present in Latvia for fewer than 15 calendar days."
+          }
+        ],
+        "submission_workflow": [
+          "Register in the VIAA system and create a profile",
+          "Obtain the HEI confirmation letter from the institutional contact person",
+          "Complete the online application form",
+          "Upload the translated documents and the study plan",
+          "Submit before 1 April",
+          "Await the decision notified by email in June"
+        ]
+      },
+      "programme_detail_verification": {
+        "cycle_verified": "Annual recurring call, 1 February to 1 April; next window opens 2027-02-01, verified 2026-10-04",
+        "verification_confidence": 0.88,
+        "official_fields_confirmed": [
+          "funding_amount",
+          "funding_currency",
+          "funding_period",
+          "funding_duration",
+          "application_period",
+          "eligibility",
+          "required_documents",
+          "tuition_coverage",
+          "travel_coverage"
+        ],
+        "institution_check_required": [
+          "The current list of 39 eligible countries, which is published only as a linked PDF",
+          "The exact 2027 call dates, which are not published on the page",
+          "Confirmation from the Latvian higher education institution that it is listed as a designated contact for the scholarship"
+        ],
+        "unverified_or_removed_claims": [
+          "Exact calendar dates for the 2027 call, which the page does not state",
+          "The total number of scholarships available",
+          "Whether the EUR 500 rate will still apply in the 2027 call, since amounts are stated as subject to change"
+        ],
+        "source_citations": [
+          "https://studyinlatvia.lv/scholarships"
+        ],
+        "researched_by": "w2_05"
+      },
+      "logo_override": {
+        "url": "https://studyinlatvia.lv/images/icons/viaa.svg",
+        "page_url": "https://studyinlatvia.lv/scholarships",
+        "official_host": true,
+        "alt_text": "State Education Development Agency (VIAA), Latvia",
+        "validation_result": "verified",
+        "validation_detail": "Probe returned 'svg width=\"114\" height=\"112\" ...' with roughly 169 KB of vector content, confirming HTTP 200 and an image/svg+xml content type. The asset is the VIAA agency mark linked from the footer of the official Study in Latvia portal.",
+        "image_kind": "official_logo",
+        "image_format": "svg",
+        "verified_at": "2026-10-04T00:00:00+00:00",
+        "host_evidence": "same_registrable_domain",
+        "_award": "Latvian State Scholarship for Foreign Students"
+      },
+      "research_notes": {
+        "logo": "The official Study in Latvia portal (studyinlatvia.lv, operated by VIAA) links the agency mark at /images/icons/viaa.svg in its footer. Probed with webfetch: the response begins with an SVG root element and the body is roughly 169 KB, confirming HTTP 200 and image/svg+xml. The SVG is rendered in the site's light footer rather than as a white-on-transparent wordmark; fill colours were not inspected byte-level, which is noted under unverified.",
+        "unverified": [
+          "Fill colours of the VIAA SVG were not inspected byte-level, so the dark-on-light assumption rests on the asset being used in the light footer of the official portal",
+          "The list of 39 eligible countries is a linked PDF that was not opened",
+          "The 2027 call dates are not published"
+        ],
+        "substitution": null,
+        "official_pages_read": [
+          "https://studyinlatvia.lv/scholarships"
+        ],
+        "degree_level_confirmed": "'A scholarship can be received by Bachelor's, Master's and PhD students for studies.' and '€500 per month for Bachelor's and Master's, €700 per month for Phd students', with 'Bachelor's students who have already successfully completed at least 1 academic year at any higher education institution'.",
+        "dedup_check": "Searched dedup.existing_titles for Latvia, Baltic and state scholarship schemes: none present (Latvia appears only in the country list, not as a host). existing_hosts contains no viaa.gov.lv or studyinlatvia.lv. No matching title or URL in existing_official_source_urls.",
+        "skeleton": false
+      }
+    }
+  ],
+  "rejected": [
+    {
+      "candidate": "Nordplus Higher Education mobility grants",
+      "url": "https://nordplusonline.org/apply-for-funding/activities-you-can-apply-for/nordplus-higher-education/",
+      "reason": "Not an individual award. The Nordplus Handbook states 'Only institutions or organisations can apply in Nordplus - you cannot apply as an individual', so no student can apply directly."
+    },
+    {
+      "candidate": "Orange Tulip Scholarship",
+      "url": "https://www.studyinnl.org/finances",
+      "reason": "already in catalogue, and additionally the centralised Orange Tulip Scholarship has been discontinued with per-institution remnants only; studyinnl.org is already an existing host."
+    },
+    {
+      "candidate": "Slovak Government Scholarships for foreign students (vladnestipendia.sk)",
+      "url": "https://www.vladnestipendia.sk/en/",
+      "reason": "Current cycle closed. The Ministry page states the 2026/2027 online application deadline was 25 May 2026 and no later window is published."
+    },
+    {
+      "candidate": "Nuffield Research Placements",
+      "url": "https://www.stem.org.uk/research-placements/students",
+      "reason": "Official STEM Learning page returns HTTP 403 to webfetch and the Nuffield Foundation states it ended its own funding and moved delivery to STEM Learning, so no award page could be read from the awarding body."
+    },
+    {
+      "candidate": "Civitella Ranieri Foundation Fellowship",
+      "url": "https://civitella.org/faqs/",
+      "reason": "Nomination only. The Foundation's own FAQ states 'Civitella Ranieri Fellows are selected by a nomination process and not by application', so there is no open application."
+    },
+    {
+      "candidate": "Onassis Foundation Scholarships 2026-27",
+      "url": "https://www.onassis.org/open-calls-past/onassis-foundation-scholarships-call-for-the-academic-year-2026-27",
+      "reason": "Closed cycle with no next window published. Deadline was 28 February 2026, results announced 27 July 2026, and the Foundation states it will not announce a scholarship programme for international scholars in Greece for 2026-2027."
+    },
+    {
+      "candidate": "Konrad Adenauer Foundation scholarship for the Baltic states",
+      "url": "https://www.kas.de/en/web/baltischestaaten/scholarship",
+      "reason": "Application deadline 15 September 2026 has passed; no next cycle is published on the Foundation's own page."
+    },
+    {
+      "candidate": "University of Pavia Foundation Year 2027/2028",
+      "url": "https://foundationyear.unipv.it/en/enrollment/how-apply",
+      "reason": "Admission application only, not a funding award. The page describes enrolment steps and a EUR 35 application fee, with no scholarship attached."
+    }
+  ]
+}

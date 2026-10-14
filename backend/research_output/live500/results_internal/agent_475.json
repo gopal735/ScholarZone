@@ -1,0 +1,250 @@
+{
+  "agent": "agent_475",
+  "records": [
+    {
+      "id": 466,
+      "official": {
+        "official_source_urls": [
+          "https://www.studienfinanzierung.uzh.ch/en/financial_support.html"
+        ],
+        "application_link": "https://www.studienfinanzierung.uzh.ch/en/financial_support.html",
+        "catalogue_url": "https://www.studienfinanzierung.uzh.ch/en/faq/faq_scholarships_loans_requests.html",
+        "official_updates_url": null,
+        "deadline_central": null,
+        "deadline_central_display": null,
+        "deadline_note": "'There are no deadlines for these applications.' Repeat applications are only possible every 6 months (and at most one time per semester).",
+        "application_cycle": "Rolling - applications accepted at any time",
+        "status": "OPEN",
+        "status_note": "UZH states hardship loans are available to enrolled students in an acute financial emergency and that there are no deadlines for these applications; applications are usually processed within a few working days.",
+        "tuition_coverage_note": null,
+        "funding_amount": 6000,
+        "funding_currency": "CHF",
+        "funding_period": "per application (maximum)",
+        "tuition_coverage": false,
+        "living_cost_coverage": true,
+        "travel_coverage": null,
+        "fully_funded": false,
+        "benefits": [
+          "Interest-free hardship loan 'without any bureaucratic red tape'",
+          "Maximum amount per application is CHF 6,000",
+          "No deadlines - applications can be submitted at any time",
+          "Usually processed within a few working days",
+          "Can be applied for a maximum of one time per semester"
+        ],
+        "eligibility": [
+          "Enrolled at the University of Zurich",
+          "In an acute financial emergency",
+          "Without any debt",
+          "Able to plausibly guarantee that the amount will be paid back within six months",
+          "Hardship loans can be applied for a maximum of one time per semester"
+        ],
+        "requirements": [
+          "Short-term loans are intended to bridge financial gaps - for example when waiting for funds from a cantonal scholarship - and are not meant for paying off debts",
+          "Repeat applications are only possible every 6 months",
+          "If not paid back on time, the loan is immediately sent to a debt collector"
+        ],
+        "documents": [
+          "Application submitted through the UZH portal (a UZH e-mail address is required to access the application form)",
+          "Evidence that repayment within six months is plausibly assured"
+        ],
+        "selection_criteria": [
+          "Cases are assessed by the Student Financial Aid Office; the loan is granted if repayment within six months can plausibly be guaranteed"
+        ],
+        "coverage": [
+          "Interest-free bridge financing for temporary financial gaps, up to CHF 6,000 per application"
+        ],
+        "application_method": [
+          "Log in to the UZH application portal with the UZH e-mail address",
+          "Submit the hardship loan request and upload the documents",
+          "The decision usually arrives within a few working days"
+        ],
+        "application_route": "Submit the hardship loan request at any time through the UZH online portal; no deadline applies.",
+        "study_mode": "Enrolled students (Bachelor's, Master's, Doctoral)",
+        "citizenship_residency": "Enrolment at the University of Zurich is the stated condition (unlike UZH's regular loans, which are limited to Swiss students and students with C permanent residence permits)",
+        "international_eligibility": "Yes - the published hardship-loan conditions refer to enrolment at UZH rather than nationality",
+        "subject_or_agency_requirement": null,
+        "research_requirement": null,
+        "duration": "Short-term bridge loan; repayable within six months, repeatable every 6 months and at most once per semester",
+        "description": "UZH states that 'hardship loans are available if you are enrolled at the University of Zurich and are in an acute financial emergency without any debt', offered as an interest-free loan 'without any bureaucratic red tape', with a maximum of CHF 6,000 per application and no deadlines.",
+        "region": "Europe",
+        "program_type": "Emergency student loan (hardship loan)",
+        "english_requirement": null
+      },
+      "verification": {
+        "source_citations": [
+          "https://www.studienfinanzierung.uzh.ch/en/financial_support.html"
+        ],
+        "last_verified_date": "2026-10-10",
+        "verification_status": "confirmed",
+        "confidence": "high",
+        "not_confirmed": [
+          "travel_coverage: the page describes general bridge financing and states no travel component",
+          "english_requirement: no language requirement is published for the loan"
+        ],
+        "notes": "Verified on the official UZH Student Financial Aid Office page: the interest-free format, the CHF 6,000 per-application maximum, the once-per-semester and 6-month repeat limits, the no-deadline rolling application, the six-month repayment guarantee, the debt-collection warning and the distinction from UZH's regular loans (limited to Swiss students and C permit holders, capped at CHF 36,000/24,000)."
+      },
+      "applicant_utility": {
+        "summary": "This is an emergency bridge, not a scholarship: enrolled UZH students facing an acute cash crisis with no existing debt can borrow up to CHF 6,000 interest-free, with no deadline and a decision usually within a few working days. You must plausibly show you can repay within six months - UZH's example is waiting for a cantonal scholarship decision - and unpaid loans go straight to a debt collector. You can only use it once per semester and every six months, so it is a tool for a genuine gap, not a recurring income line.",
+        "best_fit": "Enrolled UZH students with a sudden, temporary shortfall (delayed scholarship payment, unexpected bill) who can demonstrate a credible repayment source within six months.",
+        "application_readiness_checklist": [
+          "Confirm you have no existing debt - the conditions state 'without any debt'",
+          "Prepare evidence of the repayment source (pending scholarship decision, guaranteed income) that shows repayment within six months is plausible",
+          "Use your UZH e-mail address to access the portal application form",
+          "Apply only once per semester and no more often than every 6 months",
+          "Do not use it to clear debts - that is explicitly outside the loan's purpose"
+        ],
+        "common_rejection_risks": [
+          "Existing debt, which fails the stated eligibility condition",
+          "Being unable to demonstrate plausible six-month repayment",
+          "Applying while still inside a previous loan's 6-month repeat window",
+          "Missing the repayment, which triggers immediate debt collection"
+        ],
+        "estimated_uncovered_costs": "Everything beyond CHF 6,000 per application; the loan is capped, time-limited and must be repaid, so it covers only part of any emergency.",
+        "document_audit": [
+          "The application runs through the UZH portal, so an active UZH e-mail account is a practical prerequisite"
+        ],
+        "alerts": [
+          "Hardship loans can be accumulated within a semester only as an exception under UZH's rules",
+          "UZH's separate regular loans and the Pecunia one-time loan (CHF 1,000-4,000, once per studies) are limited to Swiss students and C-permit holders - hardship loans have no such nationality limit"
+        ],
+        "submission_workflow": "Portal submission at any time with supporting documents; the Student Financial Aid Office decides, usually within a few working days."
+      }
+    },
+    {
+      "id": 565,
+      "official": {
+        "official_source_urls": [
+          "https://www.sbfi.admin.ch/en/swiss-government-excellence-scholarships",
+          "https://www.sbfi.admin.ch/en/swiss-government-excellence-scholarships-at-a-glance"
+        ],
+        "application_link": "https://www.sbfi.admin.ch/en/swiss-government-excellence-scholarships",
+        "catalogue_url": "https://www.go.eskas.ch",
+        "official_updates_url": "https://www.sbfi.admin.ch/en/swiss-government-excellence-scholarships",
+        "deadline_central": null,
+        "deadline_central_display": null,
+        "deadline_note": "Applications are submitted to the applicant's Swiss diplomatic representation and the deadline is set country by country: information on application deadlines and scholarship opportunities by country of origin is published by the Federal Commission in August each year (A-Z and regional country lists in PDF).",
+        "application_cycle": "2027 - 2028 (applications open from 20 August 2026)",
+        "status": "OPEN",
+        "status_note": "'Applications are open starting August 20, 2026' for the 2027-2028 academic year; the FCS announces its award decisions by the end of May at the latest for the following academic year.",
+        "tuition_coverage_note": "'The Federal Excellence Scholarship does not cover tuition or semester fees.' In some cases universities require scholarship holders to pay semester fees (approx. CHF 600 to CHF 2,000 per semester) or reduced tuition fees, which holders must cover themselves.",
+        "funding_amount": 2450,
+        "funding_currency": "CHF",
+        "funding_period": "per month",
+        "tuition_coverage": false,
+        "living_cost_coverage": true,
+        "travel_coverage": true,
+        "fully_funded": false,
+        "benefits": [
+          "CHF 2,450 per month to cover basic living expenses for one person",
+          "Health insurance: the FCS covers the premiums for compulsory health insurance for scholarship holders from non-EU/EFTA countries (EU/EFTA holders cover these costs themselves)",
+          "One-time grant of CHF 600 for a rental deposit",
+          "Half-Fare Travelcard for public transport",
+          "Return flight allowance for scholarship holders from non-EU/EFTA countries (amount determined by country of origin, usable only to return to the country of origin within two months of the scholarship's expiry)",
+          "Excursions and activities organised for federal scholarship holders"
+        ],
+        "eligibility": [
+          "Open to applicants from 183 countries (currently); scholarships are mainly intended for talented early-career researchers who have already completed their Master's degree",
+          "Maximum age 35: date of birth after 31 December 1991 for the 2027-2028 cycle",
+          "Master's degree or equivalent completed by 31 July 2027 (30 June 2027 for ETH Zurich); art scholarships: Bachelor's degree by 31 July 2027 and no Master's degree held at the start",
+          "Letter of support from an academic supervisor at a Swiss higher education institution (with a short CV of that supervisor) - applications without an academic supervisor will not be considered",
+          "Applicants already residing in Switzerland must have entered no earlier than 1 August 2026 (registration confirmation or residence permit required)",
+          "Exclusion: living, studying or working in Switzerland for more than 13 months before the scholarship start; previous Swiss Government Excellence Scholarship holders; this being the fourth application after three unsuccessful attempts"
+        ],
+        "requirements": [
+          "Applications must be submitted to the Swiss diplomatic representation of the applicant's country of origin, within the country-specific deadline",
+          "Detailed research plan with a timeline specifying key milestones and activities",
+          "For PhD scholarships at graduate schools only: confirmation of admission to the doctoral school must be submitted with the application",
+          "The PhD scholarship application (with the supervisor letter) and the application for admission to a doctoral programme are two separate procedures"
+        ],
+        "documents": [
+          "Complete CV including educational background, degrees, awards, positions, publications, teaching and practical experience",
+          "Letter of motivation (max. 2 pages): reasons for the stay in Switzerland, significance for future career and professional plans after the scholarship",
+          "Research proposal on the FCS/ESKAS form (max. 5 pages including a summary for non-specialists)",
+          "Letter of support from an academic supervisor at a Swiss higher education institution, plus that supervisor's short CV (max. 2 pages)",
+          "For research fellowships: short CV of the academic supervisor at the home university",
+          "E-mail addresses of two different professors in the relevant field, who upload recommendation letters through the application system",
+          "Copies of certificates and transcripts from previous universities (certified translations if not in English, French, Italian or German; for India self-certification is accepted)",
+          "Copy of passport (both passports for dual citizens)",
+          "Copy of residence permit or registration confirmation if already residing in Switzerland",
+          "For PhD scholarships at graduate schools only: confirmation of admission to the doctoral school"
+        ],
+        "selection_criteria": [
+          "Candidate profile: academic profile, research competence and motivation",
+          "Quality of the research project or artistic work: originality and methodological quality",
+          "Synergies and potential for future research cooperation; quality of supervision and potential for future collaboration",
+          "Art scholarships are assessed on artistic profile, portfolio and enrolment availability; applications are reviewed in consultation with the Federal Office of Culture"
+        ],
+        "coverage": [
+          "CHF 2,450 per month to cover basic living expenses for one person - 'This scholarship is not a salary'",
+          "Valid only for full-time research in Switzerland",
+          "No funding is provided for fieldwork or conference participation",
+          "Compulsory health insurance premiums for non-EU/EFTA holders; CHF 600 one-time rental deposit grant; half-fare travelcard; return flight allowance for non-EU/EFTA holders",
+          "Costs borne by holders: tuition/semester fees, conference participation, field research and (for EU/EFTA holders) travel expenses"
+        ],
+        "application_method": [
+          "Check eligibility and the country-specific deadline on the FCS country lists",
+          "Register in Grants Online (GO ESKAS) and prepare the application",
+          "Submit the application to the Swiss diplomatic representation; applications are only accepted via the online system - not by e-mail or paper",
+          "Decisions are announced by the end of May at the latest for the following academic year"
+        ],
+        "application_route": "Apply online via GO ESKAS (access opens around 20 August) and submit through your Swiss diplomatic representation within the country-specific deadline.",
+        "study_mode": "Full-time research or studies in Switzerland",
+        "citizenship_residency": "Applicants must come from one of the 183 eligible countries; applicants already residing in Switzerland must have entered no earlier than 1 August 2026, and those living, studying or working in Switzerland for more than 13 months before the start are excluded",
+        "international_eligibility": "Yes - the programme exists exclusively for foreign students, researchers and artists",
+        "subject_or_agency_requirement": "Research scholarships: any discipline at Swiss cantonal universities, universities of applied sciences, ETH Zurich or EPFL, or the four ETH Domain research institutes (PSI, WSL, Empa, Eawag). Art scholarships: a first Master's at Swiss art schools or conservatories, from a limited number of countries",
+        "research_requirement": "A detailed research plan with timeline and milestones is required, and an academic supervisor in Switzerland must support the application; applications with more than one research project proposal are excluded",
+        "duration": "Research fellowships: maximum 12 months (minimum 6 months), no extensions, start 1 September 2027. PhD scholarships: 12 months, renewable twice for up to 36 months subject to academic progress, start 1 September 2027. Art scholarships: 12 months, extendable to a maximum of 21 months",
+        "description": "The Swiss Confederation awards Government Excellence Scholarships 'to encourage international exchange and research cooperation between Switzerland and over 180 other countries', with recipients selected by the Federal Commission for Scholarships for Foreign Students (FCS aka ESKAS) as research scholarships, PhD scholarships or art scholarships at CHF 2,450 per month.",
+        "region": "Europe",
+        "program_type": "Government research scholarship (Federal Commission for Scholarships for Foreign Students, FCS/ESKAS)",
+        "english_requirement": null
+      },
+      "verification": {
+        "source_citations": [
+          "https://www.sbfi.admin.ch/en/swiss-government-excellence-scholarships",
+          "https://www.sbfi.admin.ch/en/swiss-government-excellence-scholarships-at-a-glance"
+        ],
+        "last_verified_date": "2026-10-10",
+        "verification_status": "confirmed",
+        "confidence": "high",
+        "not_confirmed": [
+          "deadline_date: deadlines are set country by country and published in the August country lists; no single central date exists",
+          "english_requirement: no language requirement is published on the ESKAS pages"
+        ],
+        "notes": "Verified on the official SERI/FCS pages: the CHF 2,450 monthly amount for all three scholarship types, max age 35 (born after 31 Dec 1991), 183 eligible countries, applications open 20 August 2026, country-specific deadlines via Swiss diplomatic representations, supervisor requirement, durations (12-month research / 36-month PhD / 21-month art), additional benefits (health insurance for non-EU/EFTA, CHF 600 deposit grant, half-fare card, return flight allowance for non-EU/EFTA), the explicit exclusion of tuition and semester fees, the not-a-salary note, and the official phishing warning that applications are free of charge."
+      },
+      "applicant_utility": {
+        "summary": "ESKAS pays CHF 2,450 a month - basic living expenses for one person, explicitly not a salary - and deliberately does not cover tuition, so you must budget semester fees (CHF 600-2,000) and, for ETH/EPFL-type hosts, possibly reduced tuition yourself. Your single hardest task is not the paperwork but finding a Swiss academic supervisor who writes a genuine letter of support: applications without one are not considered at all, and professors can take weeks to reply. Timing is country-specific: applications open 20 August 2026 and go through your country's Swiss diplomatic representation, with decisions by end of May for a 1 September 2027 start.",
+        "best_fit": "Early-career researchers under 35 (born after 31 December 1991) who hold a Master's, have a concrete Swiss-hosted project in mind, and are not already living or studying in Switzerland.",
+        "application_readiness_checklist": [
+          "Check your country's deadline and available scholarship types in the official A-Z/regional country lists (published each August)",
+          "Find a supervisor early - a professor or lab group leader at a Swiss university, UAS or ETH Domain institute - and secure a substantive letter plus their 2-page CV",
+          "Write the research proposal on the official FCS/ESKAS form with a real timeline and a plain-language summary (max 5 pages), and the motivation letter within 2 pages",
+          "Line up two professors in your field to upload recommendation letters through the system when contacted",
+          "If you already live in Switzerland, verify you entered no earlier than 1 August 2026 and have under 13 months' residence",
+          "For graduate-school PhD scholarships, obtain the doctoral school's confirmation of admission in time to submit it with the application"
+        ],
+        "common_rejection_risks": [
+          "No Swiss supervisor or no letter of support - an automatic no",
+          "Multiple simultaneous applications to several host universities or scholarship types, or more than one research project proposal",
+          "Being over the age line (born on or before 31 December 1991) for the 2027-2028 cycle",
+          "Having lived, studied or worked in Switzerland for more than 13 months before the start",
+          "A fourth application after three unsuccessful attempts (excluded)",
+          "Informal errors or incompleteness in the file"
+        ],
+        "estimated_uncovered_costs": "Tuition and semester fees (approx. CHF 600-2,000 per semester where charged), conference participation and field research are all borne by the holder; EU/EFTA nationals also pay their own health insurance premiums and travel, and family costs have no allowance.",
+        "document_audit": [
+          "Certificates and transcripts in other languages need certified translations (India: self-certification accepted)",
+          "Dual citizens must submit copies of both passports",
+          "For cotutelle de thèse projects only the 12-month research fellowship is available, not the renewable PhD scholarship"
+        ],
+        "alerts": [
+          "SERI warns of phishing e-mails and social-media fake Swiss Government scholarship offers; the real application is free and runs only through GO ESKAS and your diplomatic representation",
+          "Scholarship holders must reside in the city or canton of the host institution, must notify the FCS of any other income, and may not supplement full-time employment",
+          "Field research outside Switzerland is not permitted during research fellowships; PhD holders may request up to six months without additional funding"
+        ],
+        "submission_workflow": "GO ESKAS online application (no e-mail or paper submissions) routed through your Swiss diplomatic representation by the country deadline; FCS assesses and decides by end of May."
+      }
+    }
+  ]
+}

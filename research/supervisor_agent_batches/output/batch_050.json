@@ -1,0 +1,104 @@
+[
+  {
+    "scholarship_id": 398,
+    "outcome": "not_applicable",
+    "professors": [],
+    "notes": "University-wide merit scholarship programmes (Amsterdam Merit Scholarship plus faculty-specific schemes) for admitted Bachelor's/Master's students. Applications are submitted to the Admissions Offices of the Graduate Schools and awards are based on academic excellence; no supervising professor is attached to any of these scholarships. Verified on the official UvA fees-and-funding hub. Note: the official_source_url in the input (.../scholarships/scholarships.html) now returns 404; the current hub is https://www.uva.nl/en/education/fees-and-funding/masters-scholarships-and-loans/scholarships-and-loans.html"
+  },
+  {
+    "scholarship_id": 399,
+    "outcome": "not_applicable",
+    "professors": [],
+    "notes": "Government-funded scheme (New Zealand Ministry of Education) administered by the Pacific Education Foundation Board; supports study at any NZ tertiary or vocational provider. No supervising professor or faculty is attached to the scholarship; decisions are made by the PEF Board. Official contact published on education.govt.nz: tuli.scholarships@education.govt.nz (programme inbox, not a professor)."
+  },
+  {
+    "scholarship_id": 400,
+    "outcome": "not_applicable",
+    "professors": [],
+    "notes": "Government-funded (MBIE / New Zealand Space Agency) three-month internship at NASA's Jet Propulsion Laboratory, USA - not a degree programme and not attached to any NZ institution or supervisor. Interns are mentored by JPL scientists/engineers assigned at the placement, who are not NZ university faculty. Official programme contact published on mbienet: nzspaceagency@mbie.govt.nz. The MBIE scholarship page fetch returned empty content (JS-rendered); page content was confirmed via the search index of mbienet."
+  },
+  {
+    "scholarship_id": 401,
+    "outcome": "not_applicable",
+    "professors": [],
+    "notes": "National research fellowship scheme administered by Royal Society Te Aparangi on behalf of MBIE. The fellowship is held by the early-career researcher at a host research organisation of their choosing (application requires a Host support template and host-organisation registration); no supervising professor is attached to the scheme itself. The Mana Tuapapa selection panel members (e.g. Prof Renwick Dobson, Prof Cate Macinnis-Ng) are panellists, not supervisors. Official scheme contact: tawhia@royalsociety.org.nz. Note: royalsociety.org.nz returned HTTP 403 to direct fetch, but scheme structure was confirmed via the search index of official royalsociety.org.nz pages."
+  },
+  {
+    "scholarship_id": 402,
+    "outcome": "verified_supervisors",
+    "professors": [
+      {
+        "canonical_name": "James Sneyd",
+        "title": "Professor",
+        "institution_name": "University of Auckland (Waipapa Taumata Rau)",
+        "department_name": "Department of Mathematics, Faculty of Science",
+        "official_profile_url": "https://profiles.auckland.ac.nz/jsne010",
+        "official_email": "sneyd@math.auckland.ac.nz",
+        "official_email_verified": true,
+        "lab_url": "https://www.math.auckland.ac.nz",
+        "personal_academic_url": null,
+        "research_areas": ["Applied mathematics", "Mathematical physiology", "Nonlinear dynamical systems"],
+        "research_keywords": ["dynamical systems", "intracellular calcium oscillations", "cell physiology", "biological mathematics"],
+        "relationship_type": "program_faculty",
+        "evidence_source_url": "https://www.universitiesnz.ac.nz/scholarships/rhodes-scholarship-new-zealand",
+        "evidence_source_type": "official_programme_page",
+        "evidence_quote_or_summary": "Rhodes Scholarship Advisers are available at each New Zealand university. Their role is to encourage and support applications for the Rhodes Scholarship for New Zealand. The advisers are: Waipapa Taumata Rau, University of Auckland - Prof James Sneyd sneyd@math.auckland.ac.nz",
+        "confidence": 95,
+        "availability": {
+          "scope": "phd_supervision",
+          "state": "verified_yes",
+          "source_url": "https://profiles.auckland.ac.nz/jsne010"
+        }
+      },
+      {
+        "canonical_name": "Kris Gledhill",
+        "title": "Professor",
+        "institution_name": "Auckland University of Technology",
+        "department_name": "AUT Law School",
+        "official_profile_url": "https://academics.aut.ac.nz/kris.gledhill",
+        "official_email": "kris.gledhill@aut.ac.nz",
+        "official_email_verified": true,
+        "lab_url": null,
+        "personal_academic_url": null,
+        "research_areas": ["Criminal law", "Human rights law"],
+        "research_keywords": ["criminal law", "international human rights", "clinical legal education"],
+        "relationship_type": "program_faculty",
+        "evidence_source_url": "https://www.universitiesnz.ac.nz/scholarships/rhodes-scholarship-new-zealand",
+        "evidence_source_type": "official_programme_page",
+        "evidence_quote_or_summary": "Rhodes Scholarship Advisers are available at each New Zealand university. Their role is to encourage and support applications for the Rhodes Scholarship for New Zealand. The advisers are: ... AUT - Professor Kris Gledhill kris.gledhill@aut.ac.nz",
+        "confidence": 95
+      },
+      {
+        "canonical_name": "Sarah-Jane Tiakiwai",
+        "title": "Deputy Vice-Chancellor Maori",
+        "institution_name": "University of Waikato",
+        "department_name": "Office of Deputy Vice-Chancellor Maori",
+        "official_profile_url": "https://profiles.waikato.ac.nz/sarah-jane.tiakiwai",
+        "official_email": "rimu@waikato.ac.nz",
+        "official_email_verified": true,
+        "lab_url": null,
+        "personal_academic_url": null,
+        "research_areas": ["Maori studies", "Indigenous methodologies", "Maori higher education"],
+        "research_keywords": ["matauranga Maori", "tribal claims research", "indigenous development"],
+        "relationship_type": "program_faculty",
+        "evidence_source_url": "https://www.universitiesnz.ac.nz/scholarships/rhodes-scholarship-new-zealand",
+        "evidence_source_type": "official_programme_page",
+        "evidence_quote_or_summary": "Rhodes Scholarship Advisers are available at each New Zealand university. Their role is to encourage and support applications for the Rhodes Scholarship for New Zealand. The advisers are: ... The University of Waikato - Dr Sarah-Jane Tiakiwai rimu@waikato.ac.nz",
+        "confidence": 90
+      }
+    ],
+    "notes": "The Rhodes Scholarship for New Zealand (Rhodes Trust / Robertson Foundation, administered in NZ by Universities New Zealand - Te Pokai Tara) funds postgraduate study at the University of Oxford; Oxford supervisors are chosen by the scholar after selection and are not named in the scholarship documentation. The official Universities NZ page publishes the designated Rhodes Scholarship Advisers at each NZ university; the first three listed are included here (max 3 professors per scholarship). Other published advisers: Bruce van Brunt (Massey), Chris Bumby (VUW), Assoc Prof Jenni Adams (Canterbury), Prof Grant Edwards (Lincoln), Assoc Prof Andrew Moore (Otago). Sarah-Jane Tiakiwai's Waikato profile also lists sarah-jane.tiakiwai@waikato.ac.nz; rimu@waikato.ac.nz is the address published on the Rhodes programme page."
+  },
+  {
+    "scholarship_id": 403,
+    "outcome": "not_applicable",
+    "professors": [],
+    "notes": "Merit scholarship scheme funded by the Ngarimu VC and 28th (Maori) Battalion Memorial Scholarship Fund Board and administered by the Ministry of Education; awards are for study at any tertiary/vocational provider chosen by the applicant. No supervising professor is attached to the scheme (doctoral applicants merely need a reference from their own chief supervisor, who is not part of the scholarship)."
+  },
+  {
+    "scholarship_id": 405,
+    "outcome": "not_applicable",
+    "professors": [],
+    "notes": "University of Auckland admissions-based merit award for students entering the first year of a full-time undergraduate degree (up to 250 awards; accommodation plus $5,000). There is no supervisor or research component by design; the scholarship is administered by the University's scholarships office."
+  }
+]

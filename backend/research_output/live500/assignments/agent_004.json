@@ -1,0 +1,173 @@
+{
+ "agent": "agent_004",
+ "assignment_count": 2,
+ "scholarships": [
+  {
+   "id": 30,
+   "title": "Australia Awards Scholarships",
+   "country": "Australia",
+   "degree": "Bachelor's, Master's, PhD",
+   "funding_label": "Fully Funded",
+   "status": "upcoming",
+   "official_source": "Department of Foreign Affairs and Trade (DFAT), Australian Government",
+   "official_source_url": "https://www.dfat.gov.au/people-to-people/australia-awards/australia-awards-scholarships",
+   "application_link": "https://www.dfat.gov.au/people-to-people/australia-awards/australia-awards-scholarships",
+   "catalogue_url": null,
+   "official_updates_url": null,
+   "existing": {
+    "funding_amount": null,
+    "funding_currency": null,
+    "funding_period": null,
+    "tuition_coverage": null,
+    "living_cost_coverage": null,
+    "travel_coverage": null,
+    "fully_funded": 1,
+    "description": null,
+    "eligibility": [
+     "Citizen of an eligible developing country (Bangladesh included).",
+     "Minimum 3 years relevant work experience for Master's applicants.",
+     "Not currently studying in Australia.",
+     "Meet English proficiency requirements (e.g., IELTS 6.5 overall, or equivalent).",
+     "Meet all Department of Home Affairs student visa requirements."
+    ],
+    "eligibility_summary": "Citizen of an eligible developing country (Bangladesh included); minimum 3 years relevant work experience for Master's applicants; not currently studying in Australia; meet English proficiency and visa requirements. Country-specific target groups and priorities apply.",
+    "benefits": [
+     "Full tuition fees",
+     "Return economy class airfare",
+     "Establishment allowance",
+     "Monthly stipend (covers living expenses)",
+     "Overseas Student Health Cover (OSHC)",
+     "Pre-course English (PCE) if required",
+     "Fieldwork allowance for compulsory research (where applicable)"
+    ],
+    "coverage": [
+     "Full tuition fees",
+     "Return economy class airfare",
+     "Establishment allowance",
+     "Monthly stipend (covers living expenses)",
+     "Overseas Student Health Cover (OSHC)",
+     "Pre-course English (PCE) if required",
+     "Fieldwork allowance for compulsory research (where applicable)"
+    ],
+    "requirements": [],
+    "documents": [
+     "Online application via OASIS (or country-specific portal)",
+     "Academic transcripts and certificates",
+     "Employment references",
+     "English proficiency test results",
+     "Medical examination",
+     "Passport copy"
+    ],
+    "english_requirement": "IELTS 6.5 overall (no band less than 6.0) or equivalent TOEFL/PTE; some countries may have lower thresholds for marginalized groups.",
+    "application_method": [
+     "Online via OASIS (Online Australia Scholarships Information System)",
+     "Hard-copy applications accepted in some countries"
+    ],
+    "selection_notes": null,
+    "best_fit": "Mid-career professionals from eligible developing countries seeking fully funded study in Australia.",
+    "notes": "Bangladesh 2027 intake: opening 1 February 2026, closing 30 April 2026. Country-specific eligibility, priority fields, and deadlines apply. Indonesia and the Philippines use country-specific portals, not OASIS. Strong preference for development-related fields of study.",
+    "duration": null,
+    "application_period": null,
+    "deadline_display": "Country-specific; Bangladesh 2027 intake: 30 April 2026",
+    "deadline_date": null,
+    "region": "Oceania",
+    "program_type": null,
+    "applicant_utility": null,
+    "official_details": null
+   },
+   "missing_fields": [
+    "funding_amount",
+    "funding_currency",
+    "funding_period",
+    "tuition_coverage",
+    "living_cost_coverage",
+    "travel_coverage",
+    "description",
+    "requirements",
+    "selection_notes",
+    "duration",
+    "application_period",
+    "deadline_date",
+    "program_type",
+    "applicant_utility",
+    "official_details"
+   ]
+  },
+  {
+   "id": 31,
+   "title": "Netherlands Fellowship Programme (NFP/OTS)",
+   "country": "Netherlands",
+   "degree": "Master's, PhD, Short courses",
+   "funding_label": "Fully Funded",
+   "status": "upcoming",
+   "official_source": "Nuffic (Study in NL)",
+   "official_source_url": "https://www.studyinnl.org/finances/ots-scholarships",
+   "application_link": "https://www.studyinnl.org/finances/ots-scholarships",
+   "catalogue_url": "https://www.studyinnl.org/finances/scholarships",
+   "official_updates_url": "https://www.studyinnl.org/finances",
+   "existing": {
+    "funding_amount": null,
+    "funding_currency": null,
+    "funding_period": null,
+    "tuition_coverage": 0,
+    "living_cost_coverage": null,
+    "travel_coverage": null,
+    "fully_funded": 0,
+    "description": "The Orange Tulip Scholarship (OTS) is a Nuffic-administered scholarship funded by Dutch higher education institutions and partner organisations for students from countries with a Nuffic Neso office, to study in the Netherlands. Study in NL describes OTS-branded awards on individual programme pages as 'These customised scholarships will increase the talent development in a country with a Nuffic Neso office by allowing talented students to study in the Netherlands.' As of 2026-10-04 the Study in NL scholarship hub no longer lists a dedicated OTS page, so amounts and deadlines must be obtained from the participating institution or Neso office. This row must not be merged with the Netherlands Fellowship Programme (NFP), which is a separate Nuffic programme.",
+    "eligibility": [],
+    "eligibility_summary": "Employed in eligible developing country, employer nomination required, under 45",
+    "benefits": [
+     "Tuition",
+     "Living allowance",
+     "Travel",
+     "Insurance",
+     "Visa costs"
+    ],
+    "coverage": [
+     "Tuition",
+     "Living allowance",
+     "Travel",
+     "Insurance",
+     "Visa costs"
+    ],
+    "requirements": [],
+    "documents": [
+     "Application form",
+     "Employer statement",
+     "Transcripts",
+     "English proficiency",
+     "Motivation letter"
+    ],
+    "english_requirement": "IELTS/TOEFL required by host university",
+    "application_method": [],
+    "selection_notes": null,
+    "best_fit": "Mid-career professionals sponsored by employer",
+    "notes": "Stored URL /finances/ots-scholarships returns HTTP 404; the live hub is /finances/scholarships. Stored title wrongly pairs OTS with the Netherlands Fellowship Programme.",
+    "duration": null,
+    "application_period": "Per participating institution; no central round published",
+    "deadline_display": "Varies by programme — check Nuffic website",
+    "deadline_date": null,
+    "region": "Europe",
+    "program_type": "Government/partnership scholarship administered by Nuffic",
+    "applicant_utility": null,
+    "official_details": null
+   },
+   "missing_fields": [
+    "funding_amount",
+    "funding_currency",
+    "funding_period",
+    "living_cost_coverage",
+    "travel_coverage",
+    "eligibility",
+    "requirements",
+    "application_method",
+    "selection_notes",
+    "duration",
+    "deadline_date",
+    "applicant_utility",
+    "official_details"
+   ]
+  }
+ ],
+ "result_file": "C:\\Users\\GopaL\\Desktop\\Projects folder\\ScholarZone\\backend\\research_output\\live500\\results\\agent_004.json"
+}

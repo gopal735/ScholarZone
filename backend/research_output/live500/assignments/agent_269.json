@@ -1,0 +1,93 @@
+{
+ "agent": "agent_269",
+ "assignment_count": 1,
+ "scholarships": [
+  {
+   "id": 634,
+   "title": "HHMI Janelia Joint Graduate Program in Neuroscience (with Johns Hopkins University)",
+   "country": "United States",
+   "degree": "PhD",
+   "funding_label": "Fully Funded",
+   "status": "open",
+   "official_source": "HHMI Janelia Research Campus, in collaboration with Johns Hopkins University School of Medicine",
+   "official_source_url": "https://www.janelia.org/you-janelia/students-postdocs/joint-graduate-program/application-details",
+   "application_link": "https://www.janelia.org/you-janelia/students-postdocs/joint-graduate-program/application-details",
+   "catalogue_url": "https://www.janelia.org/you-janelia/students-postdocs/joint-graduate-program",
+   "official_updates_url": "https://www.janelia.org/you-janelia/students-postdocs/joint-graduate-program/application-details",
+   "existing": {
+    "funding_amount": null,
+    "funding_currency": "USD",
+    "funding_period": "per year",
+    "tuition_coverage": 1,
+    "living_cost_coverage": 1,
+    "travel_coverage": 1,
+    "fully_funded": 1,
+    "description": "The Janelia Research Campus of the Howard Hughes Medical Institute runs two fully-funded graduate training programmes with Johns Hopkins University School of Medicine, in neuroscience and in cross-disciplinary biology (XDBio). Students apply directly to the Johns Hopkins Neuroscience programme in the autumn, naming one to four Janelia group leaders in the Statement of Interest; the published deadline for completed applications including letters of recommendation is December 3, and decisions are communicated by April 15. Janelia states that graduate scholars are fully supported financially by their labs and the graduate programme during their research, with a first-year Johns Hopkins stipend plus health insurance while in Baltimore, and a Janelia Graduate Scholar stipend, health insurance and travel support while at Janelia.",
+    "eligibility": [
+     "Hold a B.S. or B.A. before commencing the PhD",
+     "Apply directly to the Johns Hopkins University neuroscience graduate programme",
+     "Name one to four Janelia group leaders in the Statement of Interest and Career Objectives",
+     "Meet Johns Hopkins and partner-university admission requirements",
+     "Provide TOEFL or IELTS scores if from a non-English-speaking country"
+    ],
+    "eligibility_summary": "Applicants must hold a B.S. or B.A., apply directly to the Johns Hopkins neuroscience programme, and indicate an interest in conducting thesis research at Janelia by naming one to four Janelia group leaders. TOEFL or IELTS scores are required for students from non-English-speaking countries.",
+    "benefits": [
+     "Stipend equivalent to the first-year Johns Hopkins stipend while in the first year at Johns Hopkins",
+     "Janelia Graduate Scholar stipend while at Janelia",
+     "Health insurance plus other benefits supplied by Johns Hopkins, and health insurance plus other benefits while at Janelia",
+     "Payment of all programmatic travel costs",
+     "Free housing at Janelia during lab rotations",
+     "Travel to scientific conferences and courses",
+     "One year of residence at Johns Hopkins in Baltimore followed by research years at a Janelia laboratory"
+    ],
+    "coverage": [
+     "Full financial support of the doctoral programme by the host lab and graduate programme",
+     "Living stipend",
+     "Health insurance and other benefits",
+     "Programmatic travel costs",
+     "Conference and course travel"
+    ],
+    "requirements": [
+     "Applicants should have a B.S. or B.A.",
+     "Recommended courses: mathematics through calculus, general physics, general biology, general chemistry and organic chemistry",
+     "Laboratory research experience is desirable",
+     "TOEFL or IELTS scores for students from non-English-speaking countries",
+     "Three letters of recommendation, undergraduate transcripts and a Personal Statement",
+     "Statement of Interest must state interest in doing thesis research at Janelia Research Campus, list one to four Janelia group leaders and describe interest in those labs"
+    ],
+    "documents": [
+     "Johns Hopkins Neuroscience Graduate Student Application",
+     "Three letters of recommendation",
+     "Transcripts of undergraduate grades",
+     "Personal Statement",
+     "Statement of Interest and Career Objectives naming one to four Janelia group leaders",
+     "TOEFL or IELTS scores where required"
+    ],
+    "english_requirement": "TOEFL or IELTS required for international graduate scholars; the TOEFL requirement can be waived for applicants who have completed, or are currently enrolled in, a degree programme at a university in the United States or United Kingdom.",
+    "application_method": [
+     "Apply directly to the Johns Hopkins University neuroscience programme; Janelia does not require a separate application",
+     "Indicate Janelia research interest and named group leaders in the Statement of Interest and Career Objectives",
+     "Optionally contact Janelia group leaders directly about a summer rotation and later thesis placement"
+    ],
+    "selection_notes": "Selected students are invited to interview at Janelia during the Johns Hopkins recruitment visit. Acceptance into the Joint Graduate Program is communicated by Johns Hopkins by the beginning of March. Students admitted to the JHU neuroscience PhD who did not signal Janelia interest can still join after a summer rotation, by agreement of the student, advisors and program directors.",
+    "best_fit": "Students with a B.S. or B.A. seeking a fully-funded neuroscience PhD whose thesis research can be conducted at an HHMI Janelia laboratory.",
+    "notes": "The Additional Information page states that its financial-support figures relate to the 2023/2024 academic year, and no numeric stipend is published for the current cycle. No service obligation is published. Graduate student visas are sponsored by Johns Hopkins University, not by Janelia.",
+    "duration": "Multi-year PhD; one year in residence at Johns Hopkins followed by research years at Janelia",
+    "application_period": "Applications to the Johns Hopkins neuroscience PhD programme are submitted in the autumn each year; the deadline for completed applications including letters of recommendation is December 3 and candidates are notified by April 15.",
+    "deadline_display": "December 3",
+    "deadline_date": null,
+    "region": "North America",
+    "program_type": "Research institute joint doctoral programme",
+    "applicant_utility": null,
+    "official_details": null
+   },
+   "missing_fields": [
+    "funding_amount",
+    "deadline_date",
+    "applicant_utility",
+    "official_details"
+   ]
+  }
+ ],
+ "result_file": "C:\\Users\\GopaL\\Desktop\\Projects folder\\ScholarZone\\backend\\research_output\\live500\\results\\agent_269.json"
+}

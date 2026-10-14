@@ -1,0 +1,145 @@
+[
+  {
+    "scholarship_id": 513,
+    "outcome": "no_verified_supervisor_found",
+    "professors": [],
+    "notes": "Checked the official ANU scholarship page (study.anu.edu.au). This is an automatic, merit-based tuition award (20% first-year fee reduction) for undergraduate/postgraduate COURSEWORK students from selected countries; there is no supervisor attached to the award and no application is required. The only contact published on the official page is the Coursework Scholarship Office (coursework.scholarships@anu.edu.au), which is an administrative office, not a supervising professor. No faculty page or supervisor is tied to this scholarship."
+  },
+  {
+    "scholarship_id": 514,
+    "outcome": "not_applicable",
+    "professors": [],
+    "notes": "Japanese Government (MEXT) national scholarship, Embassy Recommendation route, administered by the Ministry of Education, Culture, Sports, Science and Technology via Japanese embassies/consulates. No host institution or supervisor is attached to the scheme; recipients are placed at a graduate school only after embassy selection (official MEXT page confirms embassy-led document screening, Japanese/English exams, and placement). Government scheme with no attached institution - supervisor research is not applicable."
+  },
+  {
+    "scholarship_id": 515,
+    "outcome": "verified_supervisors",
+    "professors": [
+      {
+        "canonical_name": "Hirofumi Takada",
+        "title": "Adjunct Professor; Vice President, Member, Board of Trustees; Director, Young Leaders Program",
+        "institution_name": "National Graduate Institute for Policy Studies (GRIPS)",
+        "department_name": "School of Government / School of Local Governance (Young Leaders Program)",
+        "official_profile_url": "https://www.grips.ac.jp/list/en/facultyinfo/takada_hirofumi/",
+        "official_email": "takada-h@grips.ac.jp",
+        "official_email_verified": true,
+        "lab_url": null,
+        "personal_academic_url": null,
+        "research_areas": [
+          "Local Public Administration and Finance",
+          "Local Revitalization",
+          "Comparative Research in Local Governance",
+          "Human Resources Development in Local Governments"
+        ],
+        "research_keywords": [
+          "local governance",
+          "local public finance",
+          "decentralization",
+          "regional revitalization",
+          "local government"
+        ],
+        "relationship_type": "program_faculty",
+        "evidence_source_url": "https://www.grips.ac.jp/en/education/inter_programs/leader",
+        "evidence_source_type": "official_programme_page",
+        "evidence_quote_or_summary": "Official YLP page: 'Program Director: Vice President, Member, Board of Trustees Hirofumi Takada'; School of Local Governance curriculum lists 'Independent Study - Takada, et al.' and 'Local Government System and Finance - Takada'. His official GRIPS faculty profile (https://www.grips.ac.jp/list/en/facultyinfo/takada_hirofumi/) confirms 'Director, Young Leaders Program', specialty 'Local Public Administration and Finance, Local Revitalization', and publishes his email on the page as 'E-mail: takada-h' with '*Please add \"@grips.ac.jp\" to send a message.'",
+        "confidence": 95,
+        "availability": {
+          "scope": "masters_supervision",
+          "state": "verified_yes",
+          "source_url": "https://www.grips.ac.jp/en/education/inter_programs/leader"
+        }
+      },
+      {
+        "canonical_name": "Tsuyoshi Yoshimuta",
+        "title": "Professor; Deputy Director, Young Leaders Program",
+        "institution_name": "National Graduate Institute for Policy Studies (GRIPS)",
+        "department_name": "School of Government",
+        "official_profile_url": "https://www.grips.ac.jp/list/en/facultyinfo/yoshimuta-tsuyoshi/",
+        "official_email": "t-yoshimuta@grips.ac.jp",
+        "official_email_verified": true,
+        "lab_url": null,
+        "personal_academic_url": null,
+        "research_areas": [
+          "System of Government",
+          "Government Reform",
+          "Public Policy",
+          "Comparative Government System",
+          "Crisis Management and Communication Strategy"
+        ],
+        "research_keywords": [
+          "government reform",
+          "comparative government",
+          "bureaucracy",
+          "public policy",
+          "administrative reform"
+        ],
+        "relationship_type": "program_faculty",
+        "evidence_source_url": "https://www.grips.ac.jp/en/education/inter_programs/leader",
+        "evidence_source_type": "official_programme_page",
+        "evidence_quote_or_summary": "Official YLP page: 'Deputy Program Director (School of Government): Professor Tsuyoshi Yoshimuta'; School of Government curriculum lists 'Colloquium - Yoshimuta' and 'Independent Study - Yoshimuta, et al'. His official GRIPS faculty profile (https://www.grips.ac.jp/list/en/facultyinfo/yoshimuta-tsuyoshi/) confirms 'Professor; Deputy Director of Young Leaders Program', specialty 'System of Government, Government Reform, Public Policy', and publishes his email on the page as 'e-mail: t-yoshimuta' with '*Please add \"@grips.ac.jp\" to send a message.'",
+        "confidence": 95,
+        "availability": {
+          "scope": "masters_supervision",
+          "state": "verified_yes",
+          "source_url": "https://www.grips.ac.jp/en/education/inter_programs/leader"
+        }
+      },
+      {
+        "canonical_name": "Andrea Pressello",
+        "title": "Professor",
+        "institution_name": "National Graduate Institute for Policy Studies (GRIPS)",
+        "department_name": null,
+        "official_profile_url": "https://www.grips.ac.jp/list/en/facultyinfo/pressello-andrea/",
+        "official_email": null,
+        "official_email_verified": false,
+        "lab_url": null,
+        "personal_academic_url": null,
+        "research_areas": [
+          "Japan's diplomatic history and foreign policy",
+          "Japanese diplomacy toward Southeast Asia during the Cold War"
+        ],
+        "research_keywords": [
+          "Japanese diplomacy",
+          "foreign policy",
+          "Southeast Asia",
+          "Cold War history"
+        ],
+        "relationship_type": "program_faculty",
+        "evidence_source_url": "https://www.grips.ac.jp/en/education/inter_programs/leader",
+        "evidence_source_type": "official_programme_page",
+        "evidence_quote_or_summary": "Official YLP page, School of Government Curriculum 2026/2027 lists 'Introduction to Japan - Pressello', 'Field Trip - Pressello', 'The Making of Modern Japan - Pressello', 'Japanese Foreign Policy - Pressello', 'Responding to Global Challenges - Pressello'. Official GRIPS faculty profile (https://www.grips.ac.jp/list/en/facultyinfo/pressello-andrea/) confirms 'Professor' and specialty 'Japan's diplomatic history and foreign policy'; no email is published on the profile page.",
+        "confidence": 90,
+        "availability": {
+          "scope": "masters_supervision",
+          "state": "verified_yes",
+          "source_url": "https://www.grips.ac.jp/en/education/inter_programs/leader"
+        }
+      }
+    ],
+    "notes": "The YLP is a one-year MEXT-funded taught Master of Public Policy hosted at GRIPS. The official GRIPS YLP programme page names the Program Director (Hirofumi Takada), Deputy Program Director (Tsuyoshi Yoshimuta) and the full instructor list; faculty profiles are on the official grips.ac.jp domain. Emails are published on the GRIPS faculty pages in the local-part + '@grips.ac.jp' format shown on each page; Pressello's page publishes no email. All three faculty supervise the programme's Independent Study / final paper component."
+  },
+  {
+    "scholarship_id": 516,
+    "outcome": "not_applicable",
+    "professors": [],
+    "notes": "Global Korea Scholarship (GKS) Undergraduate is a Korean government scheme run by NIIED (studyinkorea.go.kr). Students are placed at designated GKS universities via Embassy Track or University Track; no supervising professor is attached to the scheme itself and the official page only lists universities and a general contact (gksniied@korea.kr). Government scheme with no attached institution - supervisor research is not applicable."
+  },
+  {
+    "scholarship_id": 517,
+    "outcome": "not_applicable",
+    "professors": [],
+    "notes": "ICSSR Participation in International Seminar Abroad is a Government of India (Ministry of Education) travel grant for Indian scholars who already hold posts at their home universities/institutes and have a formal invitation to present abroad; applications are submitted to ICSSR in New Delhi. No host institution or supervising professor is attached to the scheme - supervisor research is not applicable."
+  },
+  {
+    "scholarship_id": 518,
+    "outcome": "not_applicable",
+    "professors": [],
+    "notes": "ICSSR Financial Assistance for Data Collection Abroad is a Government of India (Ministry of Education) fieldwork travel grant for Indian faculty and PhD/postdoctoral scholars affiliated with their own institutions; applications are submitted to ICSSR in New Delhi. No host institution or supervising professor is attached to the scheme - supervisor research is not applicable."
+  },
+  {
+    "scholarship_id": 519,
+    "outcome": "no_verified_supervisor_found",
+    "professors": [],
+    "notes": "Checked the official University of Sharjah Master's admissions page (sharjah.ac.ae/en/Admissions/Masters-Degree). The RA/TA scholarship is awarded at department level: 'The concerned academic department reserves the right to select eligible candidates based on its academic and research needs and the applicable selection criteria', across 68 master's programmes. No supervising professor or faculty name/email is published on the official page for this scholarship; candidates are directed to the concerned academic department, so no verified supervisor could be identified."
+  }
+]

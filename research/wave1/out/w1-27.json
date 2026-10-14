@@ -1,0 +1,2336 @@
+{
+  "agent_id": "w1_27",
+  "shard": "w1-27",
+  "today": "2026-10-04",
+  "records": [
+    {
+      "target_id": 262,
+      "outcome": "refreshed",
+      "confirm": false,
+      "confirmation_evidence": "Read https://www.studyinfinland.fi/funding-your-studies/bachelors-and-masters-scholarships (page footer 'Updated 04.06.2026'). It states 'Scholarships and tuition fee waivers in Finland are offered by individual universities. There are no governmental scholarship programmes available.' and 'they are competitive and will typically only cover your tuition fees, either partially or wholly. You must independently cover your own living costs.' The page is live, but it explicitly denies the national EDUFI scholarship programme the stored row claims.",
+      "new_scholarship": {
+        "name": "Bachelor's and Master's Scholarships in Finland (university-offered; no national government scholarship programme)",
+        "legacy_titles": [
+          "Finland Scholarship (National)"
+        ],
+        "country": "Finland",
+        "degree_levels": "Bachelor's, Master's",
+        "funding_type": "Tuition Fee Waiver",
+        "official_source": "Study in Finland, published by the Finnish National Agency for Education",
+        "official_source_url": "https://www.studyinfinland.fi/funding-your-studies/bachelors-and-masters-scholarships",
+        "status": "upcoming",
+        "is_verified": false,
+        "last_verified_date": "2026-10-04",
+        "region": "Europe",
+        "deadline": "No deadline is published on this page. Study in Finland says only that 'With some universities, you can apply for a scholarship at the same time as you submit your admission application', i.e. the deadline is the individual university's admission application deadline.",
+        "deadline_date": null,
+        "deadline_precision": "varies",
+        "eligibility_summary": "Students liable to pay tuition fees at a Finnish university - in practice students from outside the EU/EEA and Switzerland who are admitted to an English-taught bachelor's or master's programme. There is no central Finnish government eligibility rule because no central scheme exists.",
+        "eligibility": [
+          "Admitted to, or applying to, a bachelor's or master's degree programme at a Finnish university or university of applied sciences",
+          "Liable to pay tuition fees, i.e. normally a citizen of a country outside the EU/EEA and Switzerland",
+          "Apply through the university's own admissions process; each university sets its own scholarship rules"
+        ],
+        "coverage": [
+          "Partial or full tuition fee reduction, decided by the individual university",
+          "No living costs",
+          "No travel costs"
+        ],
+        "benefits": [
+          "Tuition fees covered partially or wholly by the awarding university",
+          "No living-cost support is mentioned anywhere on the page"
+        ],
+        "required_documents": [
+          "Documents required by the individual university's admission application"
+        ],
+        "application_method": [
+          "Apply through the individual university (or via the Studyinfo.fi national application portal) and apply for the university's scholarship in the same application where the university allows it"
+        ],
+        "official_updates_url": "https://www.studyinfinland.fi/news-events",
+        "catalogue_url": "https://studyinfo.fi/",
+        "program_type": "University-offered tuition fee scholarship (no national programme)",
+        "notes": "This is an official information page, not an award programme. Any database row presented as a single national Finnish government scholarship is a misreading of this page; Study in Finland explicitly warns that 'Fully funded Finland government scholarship' advertisements are misleading.",
+        "funding_amount": null,
+        "funding_currency": null,
+        "description": "Study in Finland, the official guide operated by the Finnish National Agency for Education, states that all scholarships and tuition fee waivers in Finland are awarded by individual universities and that no governmental scholarship programmes exist. Where a university offers a scholarship it is competitive and normally covers tuition fees only, partially or in full; the student must independently cover living costs. Applications are made through the university's own admissions process, either together with the admission application or after studies have started. Applicants are directed to Studyinfo.fi and to the universities' own websites for the actual schemes and deadlines."
+      },
+      "programme_detail_official": {
+        "official_source_urls": [
+          "https://www.studyinfinland.fi/funding-your-studies/bachelors-and-masters-scholarships"
+        ],
+        "application_link": "https://www.studyinfinland.fi/funding-your-studies/bachelors-and-masters-scholarships",
+        "official_updates_url": "https://www.studyinfinland.fi/news-events",
+        "catalogue_url": "https://studyinfo.fi/",
+        "application_cycle": "Individual university admissions cycles; the national Studyinfo.fi joint application for autumn 2027 studies is organised in January 2027",
+        "deadline_central": null,
+        "deadline_central_display": "No deadline published; each university sets its own, usually the admission application deadline",
+        "deadline_central_timezone": "Europe/Helsinki",
+        "deadline_note": "The page publishes no application deadline of any kind. It states only that with some universities the scholarship is applied for together with the admission application.",
+        "status": "ONGOING",
+        "status_note": "The information page is permanently live (footer 'Updated 04.06.2026'). There is no application round of its own, so 'upcoming' is used on the row only in the sense that the university schemes it describes run per admissions round.",
+        "funding_amount": null,
+        "funding_currency": null,
+        "funding_period": null,
+        "funding_duration": "Not stated; decided by each university",
+        "tuition_coverage": true,
+        "tuition_coverage_note": "Quoted: university scholarships 'will typically only cover your tuition fees, either partially or wholly'. Partial or full, at the university's discretion.",
+        "living_cost_coverage": false,
+        "travel_coverage": false,
+        "fully_funded": false,
+        "funding_label": "University scholarships in Finland cover tuition fees partially or wholly and nothing else; no living-cost support exists at national level",
+        "benefits": [
+          "Partial or full tuition fee coverage by the individual university",
+          "No living costs, no travel costs"
+        ],
+        "eligibility": [
+          "Applicant for a bachelor's or master's programme at a Finnish university",
+          "Normally liable to pay tuition fees (non-EU/EEA and non-Swiss citizenship)",
+          "Must meet the individual university's own admission and scholarship criteria"
+        ],
+        "citizenship_residency": "Not restricted by a central scheme; in practice tuition fee liability targets students from outside the EU/EEA and Switzerland",
+        "international_eligibility": "International applicants are the intended beneficiaries, but eligibility is set by each university",
+        "degree_levels": [
+          "Bachelor's",
+          "Master's"
+        ],
+        "study_mode": null,
+        "research_requirement": null,
+        "subject_or_agency_requirement": null,
+        "application_method": "Apply to the individual university and, where offered, tick the scholarship option on the same admission application form",
+        "application_route": "Individual university admissions, in many cases via the Studyinfo.fi national application portal",
+        "requirements": [
+          "Apply within the university's application period",
+          "Meet the university's admission requirements"
+        ],
+        "documents": [
+          "University admission documents; no separate national scholarship documents are listed"
+        ],
+        "english_requirement": null,
+        "english_requirement_note": "Not addressed on this page; the university sets the language requirement for its English-taught programmes.",
+        "selection_criteria": [
+          "Set by each individual university"
+        ],
+        "selection_weighting": null,
+        "duration": "Not stated on this page",
+        "award_holder_conditions": [
+          "Scholarships are competitive and limited in number",
+          "Students remain responsible for all living costs"
+        ],
+        "supplements_or_initiatives": [],
+        "official_contacts": {
+          "general": "Finnish National Agency for Education, PO Box 343 (Hakaniemenranta 6), FI-00531 Helsinki, Finland"
+        },
+        "description": "Official Study in Finland guidance on how scholarships work in Finland. The page states that scholarships and tuition fee waivers are offered by individual universities, that there are no governmental scholarship programmes, and that university scholarships cover tuition fees only and never living costs. It warns explicitly that advertisements for 'fully funded Finland government scholarships' are misleading and contain false information.",
+        "program_type": "Information page about university-offered tuition fee scholarships",
+        "region": "Europe",
+        "coverage": "Tuition fees only, partially or wholly, decided by the individual university",
+        "last_verified_date": "2026-10-04"
+      },
+      "programme_detail_applicant_utility": {
+        "application_readiness_checklist": [
+          "Identify the specific university and degree programme first, because no Finnish university-level scholarship can be applied for generically",
+          "Check on the programme page whether that university offers scholarships, tuition fee waivers or early-bird fee options for non-EU/EEA students",
+          "Be ready to show that you can fund your own living costs of roughly EUR 900-1,200 per month",
+          "Note that the Studyinfo.fi joint application period is the usual scholarship deadline for the autumn intake"
+        ],
+        "common_rejection_risks": [
+          "Believing an advertised 'Finnish government scholarship' exists and applying to a scam intermediary instead of a university",
+          "Missing the university application period, after which no scholarship application is possible",
+          "Assuming the scholarship covers living costs, which it never does in Finland",
+          "Applying to a university that awards no scholarships at all for that programme"
+        ],
+        "estimated_uncovered_costs": [
+          "Living costs, approximately EUR 900-1,200 per month depending on location",
+          "Student union membership fee of about EUR 50-70 per academic year",
+          "Student healthcare fee of about EUR 70 per year",
+          "The EUR 100 national application fee for applicants from outside the EU/EEA and Switzerland"
+        ],
+        "document_audit": [
+          "Admission application form submitted inside the university's deadline",
+          "Passport or official ID proving citizenship and tuition fee liability",
+          "Qualifying previous study records as required by the programme"
+        ],
+        "alerts": [
+          {
+            "trigger": "No national Finnish scholarship",
+            "message": "Study in Finland states there are no governmental scholarship programmes in Finland. Any offer of a 'government scholarship' advertised online is false."
+          },
+          {
+            "trigger": "Tuition only",
+            "message": "Even a full tuition fee waiver leaves you responsible for all living costs in Finland."
+          }
+        ],
+        "submission_workflow": [
+          "Find the programme on Studyinfo.fi or on the university's own website",
+          "Read that university's scholarship conditions on the programme page",
+          "Apply in the university's admission round and request the scholarship in the same application if permitted",
+          "Pay the tuition fee for any portion not covered, after the admission offer"
+        ]
+      },
+      "programme_detail_verification": {
+        "cycle_verified": "Standing information page verified 2026-10-04; page footer states 'Updated 04.06.2026'",
+        "verification_confidence": 0.85,
+        "official_fields_confirmed": [
+          "official_source_url",
+          "official_source",
+          "country",
+          "degree_levels",
+          "tuition-only funding nature",
+          "no living-cost coverage",
+          "logo"
+        ],
+        "institution_check_required": [
+          "The actual scholarship award, amount and deadline all belong to the individual university and must be verified on that university's own pages, not here"
+        ],
+        "unverified_or_removed_claims": [
+          "Stored title 'Finland Scholarship (National)' and the implied national EDUFI scholarship programme are contradicted by the official page and were not carried forward",
+          "No funding amount is published anywhere on the page; stored funding_amount stays null",
+          "No application deadline exists on the page; stored deadline_display wording was replaced with the official wording",
+          "Stored image was a photo of students posing, not a logo; replaced with the Study in Finland logo"
+        ],
+        "source_citations": [
+          "https://www.studyinfinland.fi/funding-your-studies/bachelors-and-masters-scholarships"
+        ],
+        "researched_by": "w1_27"
+      },
+      "logo_override": {
+        "url": "https://www.studyinfinland.fi/themes/custom/studyinfinland/logo.svg",
+        "page_url": "https://www.studyinfinland.fi/funding-your-studies/bachelors-and-masters-scholarships",
+        "official_host": true,
+        "alt_text": "Study in Finland - official guide of the Finnish National Agency for Education",
+        "validation_result": "verified",
+        "validation_detail": "svg, returned the full SVG source on probe (104x44 viewBox, every path filled #002EA2 dark blue, wordmark 'FINLAND' over 'HYYVAA'), confirming HTTP 200 and image/svg+xml; dark on transparent, not white-on-transparent",
+        "image_kind": "official_logo",
+        "image_format": "svg",
+        "verified_at": "2026-10-04T00:00:00+00:00",
+        "host_evidence": "same_registrable_domain",
+        "_award": "Bachelor's and Master's Scholarships in Finland (university-offered; no national government scholarship programme)"
+      },
+      "research_notes": {
+        "logo": "Read the awarding body's own page (studyinfinland.fi, the official guide published by the Finnish National Agency for Education). Both the site header and the footer reference /themes/custom/studyinfinland/logo.svg as the site logo. Probed that asset with webfetch: it returned the raw SVG source, so the URL is HTTP 200 with an image/svg+xml content type. The mark is the Study in Finland wordmark in dark blue (#002EA2) on transparent - not white-on-transparent, so it is usable on a light card.",
+        "unverified": [
+          "Whether any particular Finnish university scholarship the page points to is currently open",
+          "Any funding amount - none is published at national level"
+        ],
+        "substitution": null,
+        "official_pages_read": [
+          "https://www.studyinfinland.fi/funding-your-studies/bachelors-and-masters-scholarships"
+        ],
+        "degree_level_confirmed": "Page H1 'Bachelor's and Master's Scholarships' and body text 'check if the programme offers scholarships, tuition fee waivers or \"early bird\" tuition fee options for non-EU/EEA students' confirm the page covers bachelor's and master's level.",
+        "url_observed": null,
+        "contradictions": [
+          "Stored title 'Finland Scholarship (National)' and official_source 'Finnish National Agency for Education (EDUFI)' imply a national scholarship scheme. The official page states the opposite: 'There are no governmental scholarship programmes available.' The row was therefore not promoted to confirmed.",
+          "Stored degree was \"Master's\" only; the official page covers bachelor's and master's level.",
+          "Stored deadline_display 'January 2026 (with admission application, varies by university)' refers to a past cycle and to universities in general; the live page publishes no date at all.",
+          "Stored image https://www.studyinfinland.fi/sites/default/files/inline-images/Study-In-Finland8754_900x600.jpg is a photograph captioned 'Students posing' (confirmed still on the live page), not the awarding body's logo."
+        ],
+        "skeleton": false
+      }
+    },
+    {
+      "target_id": 263,
+      "outcome": "refreshed",
+      "confirm": true,
+      "confirmation_evidence": "Read https://www.aalto.fi/en/admission-services/scholarships-and-tuition-fees (footer 'Updated: 30.9.2026'). It states 'Aalto University Excellence Scholarships are awarded as tuition fee waivers that cover the full tuition fee' and 'Scholarship must be applied during the application period. You cannot apply for a scholarship after the application period.' The award is live, real and correctly attributed to Aalto University.",
+      "new_scholarship": {
+        "name": "Aalto University Excellence Scholarship",
+        "legacy_titles": [
+          "Aalto University Excellence Scholarship"
+        ],
+        "country": "Finland",
+        "degree_levels": "Bachelor's, Master's",
+        "funding_type": "Tuition Fee Waiver",
+        "official_source": "Aalto University",
+        "official_source_url": "https://www.aalto.fi/en/admission-services/scholarships-and-tuition-fees",
+        "status": "upcoming",
+        "is_verified": true,
+        "last_verified_date": "2026-10-04",
+        "region": "Europe",
+        "duration": "Scholarships are granted for the normative period of study: three years full-time for a bachelor's degree and two years full-time for a master's degree",
+        "deadline": "\"Scholarship must be applied during the application period. You cannot apply for a scholarship after the application period.\" For the master's round for studies beginning in autumn 2027 the application form closes 5 January 2027 at 15.00 (UTC +2).",
+        "deadline_date": "2027-01-05",
+        "deadline_precision": "exact",
+        "application_period": "Master's programmes beginning autumn 2027: 7 December 2026 to 5 January 2027; document deadline 12 January 2027. The scholarship question is on the master's application form in the same period.",
+        "eligibility_summary": "Students who are liable to pay Aalto University tuition fees, i.e. nationals of countries outside the EU, EEA and Switzerland applying to an English-taught bachelor's or master's programme, who apply for the scholarship inside the application period.",
+        "eligibility": [
+          "Admitted to, or applying to, an Aalto University bachelor's or master's programme taught in English",
+          "Liable to pay tuition fees - EU/EEA citizens are not eligible because they do not pay tuition",
+          "Tick the scholarship question on the admission application form inside the application period; no separate scholarship application exists",
+          "Not admitted from the waiting list - scholarship decisions are finalised before admission results",
+          "Scholarship candidates are screened against the EU sanctions lists"
+        ],
+        "coverage": [
+          "100% of the tuition fee for the normative period of study",
+          "No living costs",
+          "No travel costs"
+        ],
+        "benefits": [
+          "Full tuition fee waiver (master's tuition fees are EUR 15,000-20,000 per academic year depending on field)",
+          "Scholarship continues during an exchange period or internship abroad at another university",
+          "Scholarship decision is issued together with the admission decision"
+        ],
+        "required_documents": [
+          "Admission application form for the chosen Aalto study option",
+          "Bachelor's degree certificate for master's applications",
+          "Official transcript of records",
+          "Proof of English language proficiency",
+          "Passport or official government-issued photo ID showing citizenship"
+        ],
+        "application_method": [
+          "Answer the scholarship question on the Aalto/Studyinfo.fi admission application form during the application period"
+        ],
+        "english_requirement": "Aalto requires an accepted proof of language proficiency for the language of instruction of the study option; master's programmes are taught in English.",
+        "requirements": [
+          "Complete the admission application form inside the application period",
+          "Upload all obligatory documents by the document deadline",
+          "Pay the EUR 100 application fee if not an EU/EEA or Swiss citizen"
+        ],
+        "official_updates_url": "https://www.aalto.fi/en/admission-services/apply-to-masters-programmes",
+        "catalogue_url": "https://www.aalto.fi/en/study-options",
+        "program_type": "Merit-based tuition fee waiver awarded with admission",
+        "selection_notes": "In the master's admissions, scholarships are allocated during the academic evaluation stage as part of the admissions process, ranked on the study option's published evaluation criteria. The number per programme is highly limited and programmes may award none.",
+        "notes": "Separate, smaller Aalto schemes exist and must not be confused with this one: the Pekka Mattila Excellence Scholarship (EUR 3,000 relocation grant for the Master's Programme in Marketing and International Management), and 25% tuition discounts for FUNED (Mexico) and COLFUTURO (Colombia) scholarship holders.",
+        "funding_amount": null,
+        "funding_currency": null,
+        "funding_period": "per academic year, for the normative period of study",
+        "description": "The Aalto University Excellence Scholarship is a merit-based tuition fee waiver awarded to a very limited number of applicants who are liable to pay Aalto's English-taught programme tuition fees. The waiver covers 100% of the tuition fee for the normative period of study and does not cover living costs, which Aalto puts at a minimum of EUR 800 per month. The scholarship is applied for through the same application form as the degree programme, inside the programme's application period, and the decision is issued together with the admission decision."
+      },
+      "programme_detail_official": {
+        "official_source_urls": [
+          "https://www.aalto.fi/en/admission-services/scholarships-and-tuition-fees",
+          "https://www.aalto.fi/en/admission-services/apply-to-masters-programmes"
+        ],
+        "application_link": "https://www.aalto.fi/en/admission-services/scholarships-and-tuition-fees",
+        "official_updates_url": "https://www.aalto.fi/en/admission-services/apply-to-masters-programmes",
+        "catalogue_url": "https://www.aalto.fi/en/study-options",
+        "application_cycle": "Autumn 2027 master's intake: application period 7 December 2026 to 5 January 2027; admissions results published from 30 March 2027",
+        "deadline_central": "2027-01-05T15:00",
+        "deadline_central_display": "Application form closes 5 January 2027 at 15.00/3pm (UTC +2) for studies beginning in autumn 2027",
+        "deadline_central_timezone": "Europe/Helsinki",
+        "deadline_note": "Aalto publishes no separate scholarship deadline: the scholarship must be applied for inside the admission application period ('You cannot apply for a scholarship after the application period'). The 5 January 2027 date is the master's application form closing time published on Aalto's master's admissions page; all application documents must be uploaded by 12 January 2027 at 15.00 (UTC +2).",
+        "status": "UPCOMING",
+        "status_note": "Today's cycle (autumn 2026) closed on 2 January 2026. The next master's application period opens 7 December 2026, so the award is upcoming rather than open.",
+        "funding_amount": null,
+        "funding_currency": null,
+        "funding_period": "per academic year, for the normative period of study",
+        "funding_duration": "Three academic years full-time for a bachelor's degree, two academic years full-time for a master's degree",
+        "tuition_coverage": true,
+        "tuition_coverage_note": "Quoted: 'Aalto University Excellence Scholarships are awarded as tuition fee waivers that cover the full tuition fee.' Master's tuition fees are EUR 15,000 per academic year (Business), EUR 20,000 (Art and Architecture), EUR 17,000 (Technology and multidisciplinary programmes).",
+        "living_cost_coverage": false,
+        "travel_coverage": false,
+        "fully_funded": false,
+        "funding_label": "100% tuition fee waiver for the normative study period; living costs of at least EUR 800 per month are not covered and must be funded by the student",
+        "benefits": [
+          "Full tuition fee waiver",
+          "Scholarship applies during exchange studies or an internship abroad",
+          "Combined tuition-fee liability and scholarship status visible in the admission letter"
+        ],
+        "eligibility": [
+          "Liable to pay Aalto University tuition fees, i.e. not a citizen of an EU or EEA member state",
+          "Applying to or admitted to an Aalto bachelor's or master's programme taught in English",
+          "Scholarship question answered on the application form during the application period",
+          "Not admitted from the waiting list",
+          "Screened against the EU sanctions lists"
+        ],
+        "citizenship_residency": "EU/EEA citizens are excluded because they do not pay tuition fees; several Finnish residence permit types also remove tuition liability and therefore eligibility",
+        "international_eligibility": "Open to international students from outside the EU, EEA and Switzerland who are liable for Aalto tuition fees",
+        "degree_levels": [
+          "Bachelor's",
+          "Master's"
+        ],
+        "study_mode": "Full-time study according to an approved personal study plan is required",
+        "research_requirement": null,
+        "subject_or_agency_requirement": "Ranking is based on each study option's published evaluation criteria; some study options have their own tuition and scholarship schemes",
+        "application_method": "Answer the scholarship question on the admission application form during the application period; the scholarship decision is issued with the admission decision",
+        "application_route": "Studyinfo.fi national application portal, using the Aalto master's or bachelor's study option",
+        "requirements": [
+          "Submit the application form inside the application period; no applications after it",
+          "Upload all obligatory application documents by the document deadline",
+          "Pay the EUR 100 application fee if required",
+          "Accept the admission offer bindingly or the scholarship is lost"
+        ],
+        "documents": [
+          "Application form",
+          "Bachelor's degree certificate (master's applicants)",
+          "Official transcript of records",
+          "Authorised translations if the documents are not in English, Finnish or Swedish",
+          "Passport or official government-issued photo ID with citizenship",
+          "Proof of language proficiency",
+          "Portfolio for art and design and architecture study options",
+          "GMAT or GRE score report for business and economics study options"
+        ],
+        "english_requirement": "Accepted proof of English language proficiency is required for master's programmes; accepted tests and minimum scores are listed on Aalto's language requirements page",
+        "english_requirement_note": "Scores must reach Aalto University by the deadline; some study options accept alternative evidence.",
+        "selection_criteria": [
+          "The academic evaluation criteria published on each study option's webpage",
+          "Academic performance in previous studies",
+          "Motivation, where the study option's criteria include it",
+          "Portfolio or interview for art, design and architecture"
+        ],
+        "selection_weighting": "Not published as a single university-wide weighting; weighting is defined per study option",
+        "duration": "Three years full-time for a bachelor's degree; two years full-time for a master's degree",
+        "award_holder_conditions": [
+          "Full-time study according to the approved personal study plan",
+          "Scholarship can be put on hold for a maximum of two terms of non-attendance and is lost if non-attendance exceeds one academic year",
+          "Loss of scholarship if the student stops being tuition fee liable or provides false information",
+          "Study options where the applicant ranks first are the only ones a scholarship can attach to"
+        ],
+        "supplements_or_initiatives": [
+          "Pekka Mattila Excellence Scholarship: EUR 3,000 relocation grant for Master's Programme in Marketing and International Management",
+          "25% tuition fee discount for up to four FUNED scholarship recipients from Mexico",
+          "25% tuition fee reduction for four COLFUTURO scholarship recipients from Colombia",
+          "Fulbright-Aalto University Graduate Award for US citizens (separate application, typically early October deadline)",
+          "Scholarship for Aalto bachelor's graduates continuing to an Aalto master's with direct study right"
+        ],
+        "official_contacts": {
+          "email": "tuitionfees@aalto.fi",
+          "admissions": "admissions@aalto.fi",
+          "general": "Aalto University, P.O. Box 11000 (Otakaari 1B), FI-00076 AALTO, Switchboard: +358 9 47001"
+        },
+        "description": "The Aalto University Excellence Scholarship is a merit-based tuition fee waiver for students liable to pay Aalto's English-taught programme fees. It covers the full tuition fee for the normative study period and nothing more; Aalto states students must cover all living expenses of at least EUR 800 per month themselves. The number of scholarships per degree programme is highly limited, individual programmes may award none, and the decision is taken during the normal academic evaluation and cannot be appealed.",
+        "program_type": "Merit-based tuition fee waiver, decided with the admission decision",
+        "region": "Europe",
+        "coverage": "Tuition fees only, 100%, for the normative period of study",
+        "last_verified_date": "2026-10-04"
+      },
+      "programme_detail_applicant_utility": {
+        "application_readiness_checklist": [
+          "Confirm you are liable to pay Aalto tuition fees - if you are an EU/EEA citizen the scholarship is not available to you",
+          "Pick at most two Aalto master's study options and read each study option's published evaluation criteria",
+          "Be ready to prove you can fund at least EUR 800 per month for living costs",
+          "Prepare the obligatory documents as PDF scans well before 7 December 2026",
+          "Remember to answer the scholarship question on the form - there is no separate scholarship application"
+        ],
+        "common_rejection_risks": [
+          "Forgetting to tick the scholarship question on the application form",
+          "Missing the application period - no scholarship application is possible afterwards",
+          "Being admitted from the waiting list, which carries no scholarship",
+          "EU/EEA or fee-exempt residence permit holders applying although they are not eligible",
+          "Uploading documents after the 12 January 2027 document deadline, which makes the application incomplete",
+          "Not paying the EUR 100 application fee, which leaves the application unprocessed"
+        ],
+        "estimated_uncovered_costs": [
+          "Living costs of at least EUR 800 per month, realistically EUR 900-1,200",
+          "Compulsory Student Union AYY membership fee of EUR 65 for 2025-2026",
+          "Student healthcare fee of EUR 36 per semester paid to Kela",
+          "Health insurance required for the residence permit"
+        ],
+        "document_audit": [
+          "Bachelor's degree certificate or an accepted provisional certificate",
+          "Official transcript of records including courses, grades and credits",
+          "Passport personal information page for non-Finnish citizens",
+          "Accepted English language proficiency result",
+          "Portfolio for art and design and architecture",
+          "GMAT or GRE report for business and economics admission group 2"
+        ],
+        "alerts": [
+          {
+            "trigger": "Application period opens 7 December 2026",
+            "message": "The master's application form is only available during 7 December 2026 to 5 January 2027; the scholarship question disappears when it closes."
+          },
+          {
+            "trigger": "Tuition waiver only",
+            "message": "Aalto explicitly states it currently offers no university-wide scholarships that cover living costs."
+          },
+          {
+            "trigger": "Scholarship cannot be appealed",
+            "message": "Under the Universities Act the scholarship decision cannot be appealed, and applying does not improve your admission chances."
+          }
+        ],
+        "submission_workflow": [
+          "Choose up to two study options and rank them in the application form",
+          "Prepare and scan all obligatory documents to PDF",
+          "Pay the EUR 100 application fee within seven days if required",
+          "Submit the form between 7 December 2026 and 5 January 2027, saving every change",
+          "Upload and save all documents before 12 January 2027 at 15.00 (UTC +2)",
+          "Accept the study place and the scholarship agreement bindingly once results arrive"
+        ]
+      },
+      "programme_detail_verification": {
+        "cycle_verified": "Autumn 2027 master's cycle, verified 2026-10-04 (scholarship page updated 30.9.2026; master's admissions page live)",
+        "verification_confidence": 0.92,
+        "official_fields_confirmed": [
+          "funding nature (100% tuition fee waiver)",
+          "no living-cost coverage",
+          "duration of the scholarship",
+          "application method (part of the admission form)",
+          "selection basis (study option evaluation criteria)",
+          "eligibility limited to tuition-fee-liable students",
+          "master's application period 7 December 2026 to 5 January 2027",
+          "master's tuition fee levels",
+          "logo"
+        ],
+        "institution_check_required": [
+          "The number of scholarships actually available for each individual study option, which Aalto does not publish centrally",
+          "Whether a specific international joint degree programme runs its own fee and scholarship scheme",
+          "The exact evaluation criteria of the chosen study option"
+        ],
+        "unverified_or_removed_claims": [
+          "Stored deadline_display '20 March 2026 (master's admissions)' is no longer stated anywhere on the live page; the page previously carried a 20 March 2026 scholarship deadline but the current version does not. Replaced with the published 5 January 2027 application form closing time.",
+          "Stored funding type 'Partial to Full' is wrong for this award: the Excellence Scholarship is a 100% tuition fee waiver only. The 25% FUNED/COLFUTURO discounts and the EUR 3,000 Pekka Mattila grant are separate schemes.",
+          "No fixed monetary funding amount is published, so funding_amount remains null",
+          "Stored region was null; corrected to Europe",
+          "Stored image was absent; a verified Aalto domain logo asset was supplied"
+        ],
+        "source_citations": [
+          "https://www.aalto.fi/en/admission-services/scholarships-and-tuition-fees",
+          "https://www.aalto.fi/en/admission-services/apply-to-masters-programmes"
+        ],
+        "researched_by": "w1_27"
+      },
+      "logo_override": {
+        "url": "https://www.aalto.fi/favicon.ico",
+        "page_url": "https://www.aalto.fi/en/admission-services/scholarships-and-tuition-fees",
+        "official_host": true,
+        "alt_text": "Aalto University",
+        "validation_result": "verified",
+        "validation_detail": "ico, probe returned 'Unsupported image format: image/x-icon', which confirms HTTP 200 with an image content type; this is Aalto University's own site favicon mark served from aalto.fi",
+        "image_kind": "official_logo",
+        "image_format": "ico",
+        "verified_at": "2026-10-04T00:00:00+00:00",
+        "host_evidence": "same_registrable_domain",
+        "_award": "Aalto University Excellence Scholarship"
+      },
+      "research_notes": {
+        "logo": "Aalto's rendered page header uses an animated 'Sign of Change' image set, and the markdown render of the page exposed no static logo file, so I probed Aalto's own domain for a logo asset. https://www.aalto.fi/themes/custom/aalto_aaltofi/images/logo.svg returned 404 and https://www.aalto.fi/sites/default/files/2023-01/Aalto-University-logo-black.svg returned 404. I then probed the site's own /favicon.ico, which returned HTTP 200 with image/x-icon, and it is Aalto University's own mark, so it is reported with image_format ico. Two guessed paths were rejected on the 404 response and are not reported anywhere.",
+        "unverified": [
+          "Exact number of Excellence Scholarships available per study option",
+          "A preferred standalone SVG/PNG wordmark file could not be located within the fetch budget; the favicon mark is the verified fallback"
+        ],
+        "substitution": null,
+        "official_pages_read": [
+          "https://www.aalto.fi/en/admission-services/scholarships-and-tuition-fees",
+          "https://www.aalto.fi/en/admission-services/apply-to-masters-programmes"
+        ],
+        "degree_level_confirmed": "The scholarship page states 'Scholarships are granted for the normative period of study of the degree programme. The normative study period is three years full-time study for bachelor's degree and two years full-time study for master's degree.'",
+        "url_observed": null,
+        "contradictions": [
+          "Stored deadline_display '20 March 2026 (master's admissions)' does not appear on the live page (footer 'Updated: 30.9.2026'); the live master's cycle is 7 December 2026 to 5 January 2027.",
+          "Stored funding 'Partial to Full' contradicts the official wording that the Excellence Scholarship 'cover[s] the full tuition fee' - partial awards belong to other Aalto schemes.",
+          "Stored verification_status 'active' with an already-past 2026 deadline: the correct state on 2026-10-04 is upcoming, since the next application period opens 7 December 2026."
+        ],
+        "skeleton": false
+      }
+    },
+    {
+      "target_id": 264,
+      "outcome": "refreshed",
+      "confirm": true,
+      "confirmation_evidence": "Read https://www.helsinki.fi/en/admissions-and-education/apply-bachelors-and-masters-programmes/tuition-fees-and-scholarship-programme. It states 'University of Helsinki scholarship programme consists of tuition fee waivers, waiving the tuition fee for 50 % or 100 %' and 'Please note that university of Helsinki does not offer scholarships to cover living expenses.' The programme is live, real and correctly attributed to the University of Helsinki.",
+      "new_scholarship": {
+        "name": "University of Helsinki Scholarship Programme (tuition fee waivers)",
+        "legacy_titles": [
+          "University of Helsinki Scholarship Programme"
+        ],
+        "country": "Finland",
+        "degree_levels": "Master's",
+        "funding_type": "Tuition Fee Waiver",
+        "official_source": "University of Helsinki",
+        "official_source_url": "https://www.helsinki.fi/en/admissions-and-education/apply-bachelors-and-masters-programmes/tuition-fees-and-scholarship-programme",
+        "status": "upcoming",
+        "is_verified": true,
+        "last_verified_date": "2026-10-04",
+        "region": "Europe",
+        "duration": "Two years; students must study full time and earn at least 55 ECTS per year, and after the first study year progress is checked before the scholarship is continued",
+        "deadline": "\"Apply for a tuition fee waiver with the same application form used to apply to the Master's programme.\" The University of Helsinki's own admissions page states: 'International Master's Programmes: The application period for studies starting in autumn 2027 is from 5 to 19 January 2027.'",
+        "deadline_date": "2027-01-19",
+        "deadline_precision": "exact",
+        "application_period": "5 to 19 January 2027 for International Master's Programmes starting in autumn 2027",
+        "eligibility_summary": "Applicants to an International Master's Programme at the University of Helsinki who are liable to pay tuition fees, i.e. citizens of non-EU/EEA countries without permanent residence status in Finland, who can obtain a Finnish entry visa and residence permit and can prove excellent previous study results.",
+        "eligibility": [
+          "Eligible for a master's programme at the University of Helsinki",
+          "Liable for tuition fees: citizen of a non-EU/EEA country without permanent residence status in Finland",
+          "Meets the requirements for a Finnish entry visa and residence permit",
+          "Excellent results in previous studies that can be proved in the application",
+          "Applications to English-language bachelor's programmes receive no tuition fee waiver"
+        ],
+        "coverage": [
+          "50% or 100% of the tuition fee for two years",
+          "No living costs",
+          "No travel costs"
+        ],
+        "benefits": [
+          "Tuition fee waiver of 50% or 100%; most awards are 50%",
+          "Waiver continues into the second study year if at least 55 ECTS were completed in the first year",
+          "Certain English-language bachelor's graduates continuing to a Helsinki master's receive a waiver automatically by GPA: 3.8/5 for 100%, 3.4-3.7/5 for 50%"
+        ],
+        "required_documents": [
+          "Master's programme application form",
+          "Previous study records proving excellent results",
+          "Documents required by the master's programme"
+        ],
+        "application_method": [
+          "Answer the tuition fee waiver request on the same master's application form and submit all attachments"
+        ],
+        "official_updates_url": "https://www.helsinki.fi/en/admissions-and-education/apply-bachelors-and-masters-programmes",
+        "catalogue_url": "https://www.helsinki.fi/en/admissions-and-education/apply-bachelors-and-masters-programmes/what-can-you-study-us",
+        "program_type": "Merit-based tuition fee waiver, 50% or 100%, decided with the admission result",
+        "selection_notes": "The master's programme conducts an academic assessment of the degree and scholarship application and chooses the recipients of the 50% and 100% waivers; the result is sent in the official acceptance e-mail and a scholarship agreement must be signed.",
+        "notes": "The page still labels the two waiver categories 'for application round 2025-26', so the categories themselves are stated for the previous round; the programme structure and rules are otherwise unchanged.",
+        "funding_amount": null,
+        "funding_currency": null,
+        "funding_period": "per academic year for two years",
+        "description": "The University of Helsinki scholarship programme consists of tuition fee waivers of 50% or 100% of the programme tuition fee for master's applicants from outside the EU/EEA and Switzerland who are liable to pay tuition fees. Most awards are only 50%, and only a very limited number of waivers exist, so the competition is severe. The university states plainly that it does not offer scholarships to cover living expenses. The waiver is applied for with the same application form as the master's programme and takes effect only after a scholarship agreement is signed."
+      },
+      "programme_detail_official": {
+        "official_source_urls": [
+          "https://www.helsinki.fi/en/admissions-and-education/apply-bachelors-and-masters-programmes/tuition-fees-and-scholarship-programme",
+          "https://www.helsinki.fi/en/admissions-and-education/apply-bachelors-and-masters-programmes"
+        ],
+        "application_link": "https://www.helsinki.fi/en/admissions-and-education/apply-bachelors-and-masters-programmes/tuition-fees-and-scholarship-programme",
+        "official_updates_url": "https://www.helsinki.fi/en/admissions-and-education/apply-bachelors-and-masters-programmes",
+        "catalogue_url": "https://www.helsinki.fi/en/admissions-and-education/apply-bachelors-and-masters-programmes/what-can-you-study-us",
+        "application_cycle": "Autumn 2027 International Master's Programmes: application period 5 to 19 January 2027",
+        "deadline_central": "2027-01-19",
+        "deadline_central_display": "The application period for studies starting in autumn 2027 is from 5 to 19 January 2027",
+        "deadline_central_timezone": "Europe/Helsinki",
+        "deadline_note": "No separate scholarship deadline is published: the waiver is requested on the master's application form, so the master's application period is the operative deadline. The tuition fee payment deadline for the first academic year is a separate 31 August date.",
+        "status": "UPCOMING",
+        "status_note": "The current cycle closed in January 2026; the next International Master's application period is 5 to 19 January 2027, so the award is upcoming.",
+        "funding_amount": null,
+        "funding_currency": null,
+        "funding_period": "per academic year for two years",
+        "funding_duration": "Two academic years, conditional on earning at least 55 ECTS in the first study year",
+        "tuition_coverage": true,
+        "tuition_coverage_note": "Quoted: 'University of Helsinki scholarship programme consists of tuition fee waivers, waiving the tuition fee for 50 % or 100 %.' Master's tuition fees are EUR 13,000, 15,000 or 18,000 per academic year depending on the programme.",
+        "living_cost_coverage": false,
+        "travel_coverage": false,
+        "fully_funded": false,
+        "funding_label": "50% or 100% tuition fee waiver for two years, majority of awards 50%; living costs must be funded by the student",
+        "benefits": [
+          "Tuition fee waiver of 50% or 100%",
+          "Continuation into the second year subject to 55 ECTS completed",
+          "Dean's Award of EUR 1,000 for second and third year bachelor's students is a separate scheme, not this waiver"
+        ],
+        "eligibility": [
+          "Eligible for a master's programme at the University of Helsinki",
+          "Liability to pay tuition fees, i.e. non-EU/EEA citizen without permanent residence status in Finland",
+          "Able to obtain a Finnish entry visa and residence permit",
+          "Excellent previous study results provable in the application"
+        ],
+        "citizenship_residency": "Citizens of non-EU/EEA countries who do not have permanent residence status in Finland; EU/EEA and Swiss citizens and permanent residents are not tuition fee liable and cannot apply",
+        "international_eligibility": "Open to international master's applicants who are tuition fee liable",
+        "degree_levels": [
+          "Master's"
+        ],
+        "study_mode": "Full-time study, at least 55 ECTS per year",
+        "research_requirement": null,
+        "subject_or_agency_requirement": "Awarding is decided by the individual master's programme",
+        "application_method": "Request the tuition fee waiver on the master's application form; the scholarship result is communicated with the admission result and a scholarship agreement must be accepted",
+        "application_route": "The University of Helsinki master's application portal",
+        "requirements": [
+          "Submit the master's application inside the application period",
+          "Upload all obligatory application attachments",
+          "Sign and return the scholarship agreement once awarded"
+        ],
+        "documents": [
+          "Master's programme application form",
+          "Previous study records",
+          "Attachments required by the chosen master's programme"
+        ],
+        "english_requirement": "The scholarship is for master's programmes in English; the programme's own language requirements apply",
+        "english_requirement_note": "Not restated on the scholarship page; see the individual programme requirements.",
+        "selection_criteria": [
+          "Academic overall assessment in the general master's degree entrance requirements",
+          "Academic excellence and success in previous studies",
+          "Motivation to study a master's programme at the University of Helsinki",
+          "Grounds presented in the grant application"
+        ],
+        "selection_weighting": "Not published as a numeric weighting; assessment is made by the master's programme",
+        "duration": "Two years for a master's degree",
+        "award_holder_conditions": [
+          "Full-time study earning at least 55 ECTS per year",
+          "Progress checked after the first study year before continuation",
+          "Loss of the scholarship if tuition fee liability ends, if false information is given, or in cases of cheating",
+          "The scholarship agreement must be signed for the waiver to take effect"
+        ],
+        "supplements_or_initiatives": [
+          "Dean's Award of EUR 1,000 for second and third year English-language bachelor's students",
+          "Fulbright-Finland Fellowship for a US student admitted to a Helsinki master's",
+          "Colombian and Chilean government scholarship routes listed on the page",
+          "Finland Scholarship results referenced in the university's internal study guidelines"
+        ],
+        "official_contacts": {
+          "general": "P.O. Box 3 (Fabianinkatu 33), 00014 University of Helsinki, Switchboard: +358 (0) 2941 911"
+        },
+        "description": "The University of Helsinki scholarship programme awards tuition fee waivers of 50% or 100% to excellent applicants who are liable to pay tuition fees for an International Master's Programme. Applications are made with the master's application form and the outcome is announced with the admission decision. Only a limited number of waivers exist and most are 50%, and the university provides no support for living expenses.",
+        "program_type": "Merit-based tuition fee waiver",
+        "region": "Europe",
+        "coverage": "Tuition fees only, 50% or 100%, for two years",
+        "last_verified_date": "2026-10-04"
+      },
+      "programme_detail_applicant_utility": {
+        "application_readiness_checklist": [
+          "Check that you are actually tuition fee liable before applying, since the scheme is closed to fee-exempt students",
+          "Aim for the January application window and treat 19 January 2027 as a hard deadline",
+          "Ask for the 100% waiver only if your previous grades justify it, but be ready to be offered 50%",
+          "Keep evidence of excellent previous study results ready for upload",
+          "Plan for two years of self-funded living costs of roughly EUR 900-1,200 per month"
+        ],
+        "common_rejection_risks": [
+          "Applying from an EU/EEA country or with a permanent Finnish residence permit, which removes tuition liability",
+          "Missing the January application period",
+          "Previous grades below the competitive range",
+          "Failing to sign the scholarship agreement after being awarded",
+          "Earning fewer than 55 ECTS in the first year, which ends the waiver"
+        ],
+        "estimated_uncovered_costs": [
+          "Living costs, since the university offers no living-expense scholarships",
+          "HYY student union membership fee",
+          "FSHS student healthcare fee paid to Kela",
+          "The tuition fee balance where only a 50% waiver is awarded"
+        ],
+        "document_audit": [
+          "Master's application form with the fee waiver request",
+          "Official transcript and degree certificate of previous studies",
+          "Programme-specific attachments",
+          "Signed scholarship agreement after award"
+        ],
+        "alerts": [
+          {
+            "trigger": "50% is the most common award",
+            "message": "The university states most waivers cover only 50% of the tuition fee, so budget for the remaining half."
+          },
+          {
+            "trigger": "No living cost support",
+            "message": "The university states explicitly that it does not offer scholarships to cover living expenses."
+          },
+          {
+            "trigger": "55 ECTS rule",
+            "message": "Scholarship holders who arrive mid-term or in January must still complete 55 (or 27 for a spring start) credits to renew the waiver."
+          }
+        ],
+        "submission_workflow": [
+          "Choose the master's programme and read its selection criteria",
+          "Complete the application form and request the fee waiver category",
+          "Upload all obligatory documents before the deadline",
+          "Pay the tuition fee or confirm the waiver when the admission letter arrives",
+          "Sign and return the scholarship agreement so the waiver takes effect",
+          "Register as attending only after the fee or waiver is registered in Studyinfo"
+        ]
+      },
+      "programme_detail_verification": {
+        "cycle_verified": "Autumn 2027 master's cycle, verified 2026-10-04",
+        "verification_confidence": 0.88,
+        "official_fields_confirmed": [
+          "award type (50% or 100% tuition fee waiver)",
+          "no living-expense coverage",
+          "two-year duration and 55 ECTS condition",
+          "application method (same form as the master's application)",
+          "master's application period 5 to 19 January 2027",
+          "master's tuition fee levels EUR 13,000-18,000",
+          "no waivers for English-language bachelor's applicants"
+        ],
+        "institution_check_required": [
+          "How many waivers each master's programme actually offers for the coming round",
+          "The current GPA thresholds for the automatic continuation waiver, which the page states as 3.8/5 for 100% and 3.4-3.7/5 for 50%"
+        ],
+        "unverified_or_removed_claims": [
+          "Stored deadline_date 2026-08-31 does not correspond to any application deadline. The official page gives 31 August 2026 as the tuition fee payment deadline for the first academic year, so the stored value conflated payment with application.",
+          "Stored deadline_display wording was replaced with the official January 2027 window",
+          "Stored program_type was a scraped fragment of the tuition fee exemption list ('From an Erasmus Mundus scholarship recipient studying in the Erasmus Mundus program funded by the European Union'), which is an exemption rule and not a programme type; removed",
+          "Stored status 'closed' updated to 'upcoming' because the next cycle opens in January 2027",
+          "No single monetary amount is published, so funding_amount stays null"
+        ],
+        "source_citations": [
+          "https://www.helsinki.fi/en/admissions-and-education/apply-bachelors-and-masters-programmes/tuition-fees-and-scholarship-programme",
+          "https://www.helsinki.fi/en/admissions-and-education/apply-bachelors-and-masters-programmes"
+        ],
+        "researched_by": "w1_27"
+      },
+      "logo_override": null,
+      "research_notes": {
+        "logo": "No usable logo found within the six-fetch budget. Tried and rejected: (1) https://www.helsinki.fi/favicon.ico returned HTTP 200 with image/x-icon, but the rendered asset is a blank white wordmark - a white-on-transparent mark, which is a hard ban; (2) https://www.helsinki.fi/themes/custom/helsingin_yliopisto/images/logo.svg returned 404; (3) https://www.helsinki.fi/apple-touch-icon.png returned 404; (4) the university's official brand page https://www.helsinki.fi/en/brand-book/brand-and-logo states the flame emblem is the primary identifier and that 'On white surface the flame emblem is used as black', but its 'Download the logo' links are collapsed and only exposed to University personnel through Uni Material Bank (uni.materialbank.net), so no public image asset URL could be read and probed. Reporting null rather than guessing a path.",
+        "unverified": [
+          "Any public image asset URL for the University of Helsinki flame logo",
+          "Number of fee waivers available per master's programme for the coming round"
+        ],
+        "substitution": null,
+        "official_pages_read": [
+          "https://www.helsinki.fi/en/admissions-and-education/apply-bachelors-and-masters-programmes/tuition-fees-and-scholarship-programme",
+          "https://www.helsinki.fi/en/admissions-and-education/apply-bachelors-and-masters-programmes",
+          "https://www.helsinki.fi/en/brand-book/brand-and-logo"
+        ],
+        "degree_level_confirmed": "Quoted: 'Scholarships are intended for excellent tuition fee-liable students from outside the EU/EEA and Switzerland who want to complete a Master's programme at the University of Helsinki.' and 'Are there Scholarships for applicants in English-language bachelor's programmes? There are no tuition fee waivers for applicants applying for the English-language Bachelor's degrees.'",
+        "url_observed": null,
+        "contradictions": [
+          "Stored deadline_date 2026-08-31 is not an application deadline; the official page uses 31 August 2026 only for the first-year tuition fee payment. The application window for the next cycle is 5 to 19 January 2027.",
+          "Stored program_type was a fragment of the tuition-fee-exemption list and has been replaced.",
+          "Stored status 'closed' was stale for a yearly cycle; corrected to 'upcoming'.",
+          "Stored image https://www.helsinki.fi/themes/custom/helsingin_yliopisto/images/share/share.png is a social-share image, not a logo; no replacement could be verified."
+        ],
+        "skeleton": false
+      }
+    },
+    {
+      "target_id": 265,
+      "outcome": "refreshed",
+      "confirm": true,
+      "confirmation_evidence": "Read https://www.tuni.fi/en/tau/financial-matters/tuition-fees-and-scholarships. It states 'Tampere University tuition fee scholarships awarded at admission cover 50% of the tuition fees for the programme duration' and 'The early bird offer gives a \u20ac2,000 reduction on the programme tuition fee during the first year of studies.' The scholarship programme is live and correctly attributed to Tampere University.",
+      "new_scholarship": {
+        "name": "Tampere University Tuition Fee Scholarship",
+        "legacy_titles": [
+          "Tampere University Scholarships Programme"
+        ],
+        "country": "Finland",
+        "degree_levels": "Bachelor's, Master's",
+        "funding_type": "Tuition Fee Waiver",
+        "official_source": "Tampere University",
+        "official_source_url": "https://www.tuni.fi/en/students-guide/handbook/uni/services-and-regulations-students/study-regulations/scholarships-fee-paying-students-admitted-in-2021-or-later",
+        "status": "upcoming",
+        "is_verified": true,
+        "last_verified_date": "2026-10-04",
+        "region": "Europe",
+        "duration": "For the duration of the programme, and never longer than the normative duration of studies (three academic years for a bachelor's degree, two for a master's)",
+        "deadline": "\"To be considered for Tampere University Scholarships, you must apply for the scholarship as part of your application for admission during the application period for admission.\" No calendar deadline is published on this page; the deadline is the university's admission application period.",
+        "deadline_date": null,
+        "deadline_precision": "varies",
+        "eligibility_summary": "Merited, high-achieving and motivated applicants who are liable to pay Tampere University tuition fees, i.e. citizens of countries outside the EU, EEA and Switzerland applying to an English-taught bachelor's or master's programme.",
+        "eligibility": [
+          "Applying to a Tampere University bachelor's or master's programme taught in English in the same admission round",
+          "Liable to pay tuition fees because of citizenship from outside the EU, EEA or Switzerland",
+          "Not applying through the open university route or a transfer application, where scholarships are not available",
+          "No separate scholarship application: the request is part of the admission application"
+        ],
+        "coverage": [
+          "50% of the programme tuition fee for the programme duration",
+          "Separate early bird offer of EUR 2,000 off the first year fee",
+          "No living costs",
+          "No travel costs"
+        ],
+        "benefits": [
+          "50% tuition fee waiver for the programme duration",
+          "EUR 2,000 early bird reduction in the first year for applicants not awarded a tuition fee scholarship",
+          "EUR 2,000 Graduation Scholarship on the first master's year for Tampere University bachelor's graduates who graduate within three academic years"
+        ],
+        "required_documents": [
+          "Admission application in the Studyinfo.fi service",
+          "Educational documents uploaded with the application",
+          "Scholarship application letter where applicable"
+        ],
+        "application_method": [
+          "Apply for the scholarship within the Studyinfo.fi admission application during the admission application period"
+        ],
+        "official_updates_url": "https://www.tuni.fi/en/tau/financial-matters",
+        "catalogue_url": "https://www.tuni.fi/en/tau/masters-programmes",
+        "program_type": "Merit-based tuition fee waiver awarded at admission (plus an early bird tuition discount)",
+        "selection_notes": "Awards are made on academic overall assessment in which all application information, educational documents and the scholarship application letter are taken into consideration and can be decisive; the decision is communicated together with the admission decision.",
+        "notes": "Scarcity is extreme: in admission 2026 only nine Tampere University tuition fee scholarships were awarded across all bachelor's and master's programmes, and scholarships are not awarded in all programmes. Tuition fees for students admitted in 2027 are EUR 10,000 for all bachelor's programmes and EUR 12,000 for all master's programmes.",
+        "funding_amount": null,
+        "funding_currency": null,
+        "funding_period": "per academic year for the programme duration",
+        "description": "The Tampere University tuition fee scholarship is awarded at admission to a very limited number of the best-performing applicants and covers 50% of the programme tuition fee for the duration of the programme. It is applied for within the Studyinfo.fi admission application and decided together with the admission decision, based on academic overall assessment. A separate early bird offer gives all other fee-paying admitted students EUR 2,000 off the first year fee if they accept and pay within three weeks. Living costs are not covered by any of these awards."
+      },
+      "programme_detail_official": {
+        "official_source_urls": [
+          "https://www.tuni.fi/en/tau/financial-matters/tuition-fees-and-scholarships"
+        ],
+        "application_link": "https://www.tuni.fi/en/tau/financial-matters/tuition-fees-and-scholarships",
+        "official_updates_url": "https://www.tuni.fi/en/tau/financial-matters",
+        "catalogue_url": "https://www.tuni.fi/en/tau/masters-programmes",
+        "application_cycle": "Scholarship terms for admission in 2027 are published; applications run with the university's admission rounds through Studyinfo.fi",
+        "deadline_central": null,
+        "deadline_central_display": "No deadline published; the scholarship is applied for within the admission application period",
+        "deadline_central_timezone": "Europe/Helsinki",
+        "deadline_note": "The page states no calendar date. Tampere University runs several admission rounds per degree level, so the operative deadline is the relevant admission round's application period. The early bird offer instead has a relative deadline of three weeks (21 days) after the admission information is received.",
+        "status": "UPCOMING",
+        "status_note": "The 2027 admission scholarship terms are published while the previous cycle has closed, so the award is upcoming rather than currently open. No opening date for the 2027 round is stated on this page.",
+        "funding_amount": null,
+        "funding_currency": null,
+        "funding_period": "per academic year for the programme duration",
+        "funding_duration": "Programme duration, capped at the normative duration of studies (3 years bachelor's, 2 years master's)",
+        "tuition_coverage": true,
+        "tuition_coverage_note": "Quoted: 'Tampere University tuition fee scholarships awarded at admission cover 50% of the tuition fees for the programme duration.' Tuition fees for students admitted in 2027 are EUR 10,000 (bachelor's) and EUR 12,000 (master's) per academic year. The early bird offer is a further EUR 2,000 off the first year.",
+        "living_cost_coverage": false,
+        "travel_coverage": false,
+        "fully_funded": false,
+        "funding_label": "50% of tuition fees for the programme duration, or a EUR 2,000 early bird reduction in the first year; no living-cost support",
+        "benefits": [
+          "50% tuition fee waiver for the programme duration",
+          "EUR 2,000 early bird discount for fee-paying students not awarded a tuition fee scholarship",
+          "EUR 2,000 Graduation Scholarship for Tampere University bachelor's graduates in their first master's year"
+        ],
+        "eligibility": [
+          "Applicant to a Tampere University bachelor's or master's programme taught in English",
+          "Liable to pay tuition fees, i.e. citizen of a country outside the EU, EEA or Switzerland",
+          "Applying in the regular admission round, not through the open university route or a transfer application",
+          "Scholarship requested in the admission application itself"
+        ],
+        "citizenship_residency": "Fee-paying status follows citizenship: students from outside the EU, EEA and Switzerland are liable; certain Finnish residence permits remove liability",
+        "international_eligibility": "Open to international fee-paying applicants; the awards are explicitly aimed at merited, high-achieving and motivated students",
+        "degree_levels": [
+          "Bachelor's",
+          "Master's"
+        ],
+        "study_mode": "Full-time study in attendance; the total scholarship duration may not exceed the normative duration of studies",
+        "research_requirement": null,
+        "subject_or_agency_requirement": "Scholarships are not awarded in all programmes; availability is programme-specific",
+        "application_method": "Request the scholarship in the Studyinfo.fi admission application; the decision is communicated with the admission decision",
+        "application_route": "Studyinfo.fi national application portal",
+        "requirements": [
+          "Submit the admission application during the admission period",
+          "Optionally include a scholarship application letter",
+          "For the early bird offer, accept the study place and pay the reduced first year fee within 21 days of receiving the admission information"
+        ],
+        "documents": [
+          "Studyinfo.fi admission application form",
+          "Educational documents",
+          "Scholarship application letter if applicable"
+        ],
+        "english_requirement": "The schemes apply to programmes taught in English",
+        "english_requirement_note": "No separate English test requirement is stated for the scholarship itself; the programme's admission language requirement applies.",
+        "selection_criteria": [
+          "Academic overall assessment of the admission application",
+          "Educational documents",
+          "Scholarship application letter where applicable",
+          "University and programme strategic goals"
+        ],
+        "selection_weighting": "Not published numerically; 'academic overall assessment' in which the application letter can be decisive",
+        "duration": "Programme duration, maximum three academic years for a bachelor's and two for a master's",
+        "award_holder_conditions": [
+          "Scholarship duration may not exceed the normative duration of the degree",
+          "Studies must be completed in semesters registered as attending",
+          "Students found guilty of plagiarism lose eligibility and, if already holding a scholarship, receive a warning and then cancellation",
+          "Early bird discount applies to the first year only"
+        ],
+        "supplements_or_initiatives": [
+          "Early bird offer: EUR 2,000 first-year tuition reduction",
+          "Graduation Scholarship: EUR 2,000 off the first master's year for Tampere University bachelor's graduates who graduate within three academic years",
+          "Fulbright-Tampere University Graduate Award"
+        ],
+        "official_contacts": {
+          "general": "Tampere University, +358 (0)294 5211",
+          "studentservices": "studentservices.tau@tuni.fi"
+        },
+        "description": "Tampere University offers a limited number of partial scholarships at admission to fee-paying students. The Tampere University tuition fee scholarship covers 50% of the tuition fees for the programme duration and is awarded to a handful of the best-performing applicants, with only nine awards made across all programmes in the 2026 admission. The early bird offer gives every other fee-paying admitted student EUR 2,000 off the first year. Applications are made through the Studyinfo.fi admission application and decided with the admission result.",
+        "program_type": "Merit-based tuition fee waiver plus early bird tuition discount",
+        "region": "Europe",
+        "coverage": "50% of tuition fees for the programme duration, or EUR 2,000 off the first year; no living-cost coverage",
+        "last_verified_date": "2026-10-04"
+      },
+      "programme_detail_applicant_utility": {
+        "application_readiness_checklist": [
+          "Apply in the regular admission round for a specific programme, because open university and transfer applicants cannot be considered",
+          "Write the scholarship application letter early, since the page states it can be decisive",
+          "Upload all educational documents early in the round; the admission committee sees everything in the application",
+          "If you are not awarded a tuition fee scholarship, be ready to pay the discounted fee within 21 days to secure the EUR 2,000 early bird offer",
+          "Budget for living costs yourself; no Tampere University award covers them"
+        ],
+        "common_rejection_risks": [
+          "Applying to a programme that awards no scholarships at all",
+          "Expecting full tuition coverage - the award is only 50%",
+          "Missing the early bird payment window and losing the EUR 2,000",
+          "Applying through the open university or transfer route",
+          "Plagiarism findings, which cancel scholarships"
+        ],
+        "estimated_uncovered_costs": [
+          "The remaining 50% of the tuition fee, EUR 5,000 per year for a bachelor's programme and EUR 6,000 per year for a master's programme admitted in 2027",
+          "All living costs",
+          "Student Union TREY membership fee",
+          "Student healthcare fee paid to Kela"
+        ],
+        "document_audit": [
+          "Studyinfo.fi admission application with the scholarship request",
+          "Educational documents supporting the academic overall assessment",
+          "Scholarship application letter",
+          "Proof of fee-paying status if an exemption document applies"
+        ],
+        "alerts": [
+          {
+            "trigger": "Only nine awards in 2026",
+            "message": "Tampere University awarded just nine tuition fee scholarships across all bachelor's and master's programmes in the 2026 admission, so treat this as an exceptional opportunity rather than a realistic funding plan."
+          },
+          {
+            "trigger": "Early bird deadline is relative",
+            "message": "The EUR 2,000 early bird offer requires accepting and paying within three weeks (21 days) of receiving the admission information, not a fixed calendar date."
+          }
+        ],
+        "submission_workflow": [
+          "Choose a programme that actually awards scholarships",
+          "Complete the Studyinfo.fi admission application during the round",
+          "Add the scholarship application letter and upload all documents",
+          "Submit before the round closes and pay the application fee if required",
+          "On award, sign and pay according to the admission letter; on no award, use the 21-day early bird window"
+        ]
+      },
+      "programme_detail_verification": {
+        "cycle_verified": "Admission 2027 cycle, verified 2026-10-04",
+        "verification_confidence": 0.85,
+        "official_fields_confirmed": [
+          "award type (50% tuition fee waiver at admission)",
+          "early bird offer amount EUR 2,000",
+          "tuition fee levels for students admitted in 2027 (EUR 10,000 / EUR 12,000)",
+          "no scholarship in open university or transfer applications",
+          "application method (part of the Studyinfo.fi admission application)",
+          "no living-cost coverage",
+          "scarcity (nine awards in admission 2026)"
+        ],
+        "institution_check_required": [
+          "Whether the specific programme awards any scholarship at all - the page states scholarships are not awarded in all programmes",
+          "The exact 2027 admission round dates for the chosen degree level, which this page does not publish",
+          "Cohort-specific continuing-student scholarship rules in the Student Guide, which are separate from admission scholarships"
+        ],
+        "unverified_or_removed_claims": [
+          "No calendar deadline is published, so deadline_date stays null",
+          "No single fixed amount applies to the tuition fee scholarship, so funding_amount stays null even though the early bird amount of EUR 2,000 is stated in the label and benefits",
+          "Stored region was null; corrected to Europe",
+          "Stored image was absent and no verifiable logo could be supplied"
+        ],
+        "source_citations": [
+          "https://www.tuni.fi/en/tau/financial-matters/tuition-fees-and-scholarships"
+        ],
+        "researched_by": "w1_27"
+      },
+      "logo_override": null,
+      "research_notes": {
+        "logo": "No logo found within the six-fetch budget. Probed on Tampere University's own domain: https://www.tuni.fi/favicon.ico returned 404, https://www.tuni.fi/favicon.png returned 404, https://www.tuni.fi/apple-touch-icon.png returned 404 and https://www.tuni.fi/logo.svg returned 404. The only official brand-asset location referenced anywhere on tuni.fi is the Marketing Material Bank at https://markkinointipankki.tuni.fi/en/materials/logos/, which I fetched and which is a Haka/WordPress login wall with no public logo file. Because no logo asset on tuni.fi could be probed to HTTP 200, the result is null rather than a guessed or third-party URL. Note that tuni.fi hosts both Tampere University (TAU) and Tampere University of Applied Sciences (TAMK), so a TUNI community logo would in any case need human confirmation as the right mark for a TAU award.",
+        "unverified": [
+          "Any publicly reachable logo asset for Tampere University",
+          "Programme-level scholarship availability for 2027"
+        ],
+        "substitution": null,
+        "official_pages_read": [
+          "https://www.tuni.fi/en/tau/financial-matters/tuition-fees-and-scholarships",
+          "https://markkinointipankki.tuni.fi/en/materials/logos/"
+        ],
+        "degree_level_confirmed": "Quoted: 'Tuition fees at Tampere University fall into two categories: \u20ac10,000 in all Tampere University Bachelor's programmes, \u20ac12,000 in all Tampere University Master's programmes' and 'In admission 2026, a total of nine Tampere University tuition fee scholarships were awarded across all bachelor's and master's programmes.'",
+        "url_observed": "https://www.tuni.fi/en/tau/financial-matters/tuition-fees-and-scholarships",
+        "contradictions": [
+          "The stored official_source_url points to a cohort-specific Student Guide page for students 'admitted in 2021 or later'. Tampere University now splits these pages by cohort, and the search-visible current equivalents are 'Scholarships for fee-paying students admitted in 2026 or later' and 'Scholarships for fee-paying students admitted in 2025 or earlier' under opiskelijanopas.tuni.fi. The stored URL was kept as the row identity per the brief; I did not fetch it within the six-fetch budget so I cannot state whether it still resolves.",
+          "Stored funding 'Partial' is imprecise but not wrong: the official wording is a 50% tuition fee waiver for the programme duration plus a separate EUR 2,000 early bird reduction.",
+          "Stored status 'open' was carried as 'upcoming' because the published scholarship terms are for admission 2027 and no 2027 application opening date is given on the page."
+        ],
+        "skeleton": false
+      }
+    },
+    {
+      "target_id": 266,
+      "outcome": "refreshed",
+      "confirm": true,
+      "confirmation_evidence": "Read the live page https://www.utu.fi/en/study-at-utu/scholarships-and-tuition-fees. It states 'It is not possible to get a scholarship to cover the tuition fee for the first year, but the University offers an Early Bird discount of 2,000 \u20ac for master's degree applicants' and 'the merit scholarship covers 50% of the 2nd year tuition fee. the requirement for receiving the scholarship is 55cr during the first study year.' The awards are live and correctly attributed to the University of Turku.",
+      "new_scholarship": {
+        "name": "University of Turku Merit Scholarship and Early Bird Discount",
+        "legacy_titles": [
+          "University of Turku International Scholarships"
+        ],
+        "country": "Finland",
+        "degree_levels": "Bachelor's, Master's",
+        "funding_type": "Tuition Fee Waiver",
+        "official_source": "University of Turku",
+        "official_source_url": "https://www.utu.fi/en/study-at-turku/tuition-fees-and-scholarships",
+        "status": "upcoming",
+        "is_verified": true,
+        "last_verified_date": "2026-10-04",
+        "region": "Europe",
+        "duration": "One academic year at a time; the merit scholarship is awarded for the following academic year and must be reapplied for",
+        "deadline": "\"There is a separate application process for the merit scholarships. The admission services of the University will invite all eligible applicants to apply for the scholarship when the application round opens in spring.\" For the Early Bird discount the deadline is relative: \"the applicant must accept the study offer and pay the tuition fee within 28 days after the admission decisions have been published.\"",
+        "deadline_date": null,
+        "deadline_precision": "recurring",
+        "eligibility_summary": "Fee-paying degree students at the University of Turku who have completed at least 55 ECTS in their first study year with an average score of 3.0 or higher and at least 4 ECTS of Finnish. Newly admitted master's students may take up the EUR 2,000 Early Bird discount.",
+        "eligibility": [
+          "Admitted to a University of Turku bachelor's or master's programme and liable to pay tuition fees, i.e. a citizen of a country outside the EU, EEA or Switzerland",
+          "Has paid for their studies during the first year or years at the University of Turku",
+          "Completed 55 ECTS in the first study year (110 ECTS across two years for the third year of a bachelor's)",
+          "Average score of 3.0 or higher on the 1-5 grading scale",
+          "Completed at least 4 ECTS of Finnish before applying for the first time",
+          "For the Early Bird discount: a newly admitted master's applicant who accepts the study offer and pays the tuition fee within 28 days of the admission decision"
+        ],
+        "coverage": [
+          "50% of the tuition fee for the next study year",
+          "EUR 2,000 Early Bird discount on the first year for master's applicants",
+          "No living costs",
+          "No travel costs"
+        ],
+        "benefits": [
+          "50% of the second year tuition fee for master's students",
+          "50% of the second and third year tuition fees for bachelor's students",
+          "EUR 2,000 Early Bird discount for newly admitted master's students"
+        ],
+        "required_documents": [
+          "Application for the merit scholarship when invited by the admission services"
+        ],
+        "application_method": [
+          "Merit Scholarship: separate application after an invitation from the admission services in spring",
+          "Early Bird discount: no application, automatic on acceptance and payment within 28 days"
+        ],
+        "official_updates_url": "https://www.utu.fi/en/study-at-utu/bachelors-and-masters-degree-programmes",
+        "catalogue_url": "https://www.utu.fi/en/study-at-utu/masters-degree-programmes",
+        "program_type": "Merit-based tuition fee waiver awarded during studies, plus an automatic first-year tuition discount",
+        "selection_notes": "All students who fulfil the requirements are awarded the scholarship; it is not a competitive award but a merit threshold. The Early Bird discount is automatic for all newly admitted master's students who meet the payment condition.",
+        "notes": "The scholarship system was changed for the 2026 intake: no scholarship can cover the first year tuition fee, and the previous system of full-tuition two- or three-year scholarships no longer applies. Students admitted in 2025 or earlier follow the older scheme.",
+        "funding_amount": null,
+        "funding_currency": null,
+        "funding_period": "per academic year",
+        "description": "Since the 2026 intake the University of Turku no longer offers a scholarship that covers the first year of tuition. Instead it offers an automatic EUR 2,000 Early Bird discount to newly admitted master's students who accept the offer and pay within 28 days of the admission decision, and the University of Turku Merit Scholarship, which covers 50% of the tuition fee for the following study year. The merit scholarship is based on studies completed at the University of Turku and requires 55 ECTS in the first study year, an average score of at least 3.0, and at least 4 ECTS of Finnish, with a separate application opened in spring."
+      },
+      "programme_detail_official": {
+        "official_source_urls": [
+          "https://www.utu.fi/en/study-at-utu/scholarships-and-tuition-fees"
+        ],
+        "application_link": "https://www.utu.fi/en/study-at-utu/scholarships-and-tuition-fees",
+        "official_updates_url": "https://www.utu.fi/en/study-at-utu/bachelors-and-masters-degree-programmes",
+        "catalogue_url": "https://www.utu.fi/en/study-at-utu/masters-degree-programmes",
+        "application_cycle": "Merit scholarship round opens in spring each year for the following academic year; new admissions to international degree programmes apply in the annual joint round",
+        "deadline_central": null,
+        "deadline_central_display": "No fixed calendar deadline: the merit scholarship round opens in spring on invitation, and the Early Bird discount must be accepted and paid within 28 days of the admission decision",
+        "deadline_central_timezone": "Europe/Helsinki",
+        "deadline_note": "The page publishes no calendar date for either award. For 2026 the only absolute date given is the Early Bird cut-off, 24 April 2026, which has passed. The University of Turku's own programmes page states the next application round to the international degree programmes is 7 to 21 January 2027.",
+        "status": "UPCOMING",
+        "status_note": "The 2026 admission and Early Bird window have closed. Terms for the current intake are published and the next international degree programme application round is in January 2027, so the awards are upcoming.",
+        "funding_amount": null,
+        "funding_currency": null,
+        "funding_period": "per academic year",
+        "funding_duration": "One academic year, renewed each year on application",
+        "tuition_coverage": true,
+        "tuition_coverage_note": "Quoted: 'the merit scholarship covers 50% of the 2nd year tuition fee' for master's students and '50% of the 2nd and 3rd year tuition fees' for bachelor's students. Programme tuition fees range from EUR 1,500 to EUR 12,000 per academic year.",
+        "living_cost_coverage": false,
+        "travel_coverage": false,
+        "fully_funded": false,
+        "funding_label": "50% of the tuition fee for the next study year as a merit scholarship, or an automatic EUR 2,000 first-year discount for master's applicants; no living-cost support",
+        "benefits": [
+          "50% of tuition fees for the following study year",
+          "EUR 2,000 Early Bird discount for newly admitted master's students",
+          "Fee waiver does not apply to the first study year"
+        ],
+        "eligibility": [
+          "Fee-paying student at the University of Turku (non-EU/EEA/Swiss citizenship)",
+          "Has paid tuition for the first study year or years",
+          "55 ECTS completed in the first study year, 110 ECTS for the third bachelor's year",
+          "Average score of at least 3.0 on the 1-5 scale",
+          "At least 4 ECTS of Finnish completed before the first application"
+        ],
+        "citizenship_residency": "Citizens of countries outside the EU, EEA and Switzerland are charged tuition and are the eligible group; EU Blue Card, permanent residence, non-study-based continuous permit, long-term EU permit, EU family member card and temporary protection remove tuition liability",
+        "international_eligibility": "International fee-paying students are the target group; Finnish language study is a condition of the merit scholarship",
+        "degree_levels": [
+          "Bachelor's",
+          "Master's"
+        ],
+        "study_mode": "Degree studies in attendance at the University of Turku; the scholarship is based on studies completed at the university",
+        "research_requirement": null,
+        "subject_or_agency_requirement": "Eligibility is defined by the admission services of the University; no subject restriction",
+        "application_method": "Separate merit scholarship application after an invitation in spring; the Early Bird discount requires no application",
+        "application_route": "University of Turku admission services",
+        "requirements": [
+          "Apply for the merit scholarship when invited in spring",
+          "Accept the study offer and pay the tuition fee within 28 days of the admission decision for the Early Bird discount",
+          "Pay the full first year tuition fee before registering as attending"
+        ],
+        "documents": [
+          "Merit scholarship application form",
+          "Evidence of completed ECTS and grades",
+          "Evidence of completed Finnish studies"
+        ],
+        "english_requirement": "The awards apply to degree programmes at the University of Turku; no separate English test requirement is stated for the scholarship",
+        "english_requirement_note": "Programme admission language requirements apply instead.",
+        "selection_criteria": [
+          "Academic merits only",
+          "ECTS completed in the previous study year",
+          "Average grade of at least 3.0",
+          "At least 4 ECTS of Finnish"
+        ],
+        "selection_weighting": "Threshold-based, not competitive: 'All students who fulfill the requirements will be awarded a scholarship for the following academic year.'",
+        "duration": "One academic year at a time, applied for each year",
+        "award_holder_conditions": [
+          "Must have paid tuition for the previous study year",
+          "Must complete the credit and grade thresholds each year to renew",
+          "Finnish study requirement must progress; the same YKI level cannot be reused",
+          "Tuition fees for the uncovered share must still be paid before registration as attending"
+        ],
+        "supplements_or_initiatives": [
+          "Fulbright-University of Turku Graduate Award for US citizens: EUR 1,000 per month grant plus a tuition fee scholarship",
+          "Separate small grants and scholarships administered by the university, announced in March with an April deadline, mainly for already registered students and researchers"
+        ],
+        "official_contacts": {
+          "admissions": "admissions@utu.fi",
+          "general": "FI-20014 Turun yliopisto, Finland, Phone +358 29 450 5000"
+        },
+        "description": "The University of Turku supports fee-paying students with an automatic EUR 2,000 Early Bird discount for newly admitted master's students and the University of Turku Merit Scholarship, which covers 50% of the tuition fee for the following study year. Since the 2026 intake no scholarship covers the first year of tuition. The merit scholarship is based on studies completed at the university and requires 55 ECTS in the first study year, an average score of at least 3.0 and at least 4 ECTS of Finnish, applied for through a separate spring round.",
+        "program_type": "Merit-based tuition fee waiver awarded during studies plus an automatic first-year discount",
+        "region": "Europe",
+        "coverage": "50% of tuition fees for the next study year, or EUR 2,000 off the first year; no living-cost coverage",
+        "last_verified_date": "2026-10-04"
+      },
+      "programme_detail_applicant_utility": {
+        "application_readiness_checklist": [
+          "Do not expect any help with the first year of tuition; the university states this is not possible",
+          "If you are a master's applicant, accept the study offer and pay the tuition fee within 28 days of the admission decision to get the EUR 2,000 Early Bird discount automatically",
+          "Plan the first-year study plan around 55 ECTS, because that is the merit scholarship threshold",
+          "Start Finnish studies early enough to have 4 ECTS before your first merit scholarship application in spring",
+          "Keep the tuition balance ready, since the merit scholarship never covers the first year and only halves later years"
+        ],
+        "common_rejection_risks": [
+          "Missing the 28-day Early Bird window, which used to be wrongly published as 30 days",
+          "Finishing the first year with fewer than 55 ECTS",
+          "An average grade below 3.0",
+          "No Finnish credits, or reusing the same YKI level twice",
+          "Believing the old pre-2026 system still applies, when full-tuition multi-year scholarships no longer exist"
+        ],
+        "estimated_uncovered_costs": [
+          "The full first year tuition fee, EUR 10,000-12,000 per academic year for most programmes",
+          "Half of the tuition fee in later study years",
+          "Living costs of about EUR 600-900 per month in Turku",
+          "Student union membership of about EUR 55 per academic year and the FSHS healthcare fee"
+        ],
+        "document_audit": [
+          "Merit scholarship application after the spring invitation",
+          "Transcript showing 55 ECTS and the grade average",
+          "Documentation of 4 ECTS of Finnish",
+          "Proof of tuition payment for the previous study year"
+        ],
+        "alerts": [
+          {
+            "trigger": "Early Bird is 28 days, not 30",
+            "message": "The university corrected this on 10 March 2026: the time to accept the study place and pay to receive the discount is 28 days after admission decisions are published."
+          },
+          {
+            "trigger": "No first-year scholarship",
+            "message": "It is not possible to get a scholarship covering the first year tuition fee under the current system."
+          },
+          {
+            "trigger": "Cohort-dependent rules",
+            "message": "Students admitted in 2025 or earlier follow the previous scholarship programme on a separate page, so check which cohort you belong to."
+          }
+        ],
+        "submission_workflow": [
+          "Apply in the annual international degree programme round",
+          "On admission, decide immediately whether to take the Early Bird discount and pay within 28 days",
+          "Complete 55 ECTS and reach an average of 3.0 in the first study year",
+          "Wait for the admission services' spring invitation and apply for the merit scholarship",
+          "Pay the remaining half of the tuition fee before registering as attending"
+        ]
+      },
+      "programme_detail_verification": {
+        "cycle_verified": "Post-2026-intake scheme, verified 2026-10-04",
+        "verification_confidence": 0.88,
+        "official_fields_confirmed": [
+          "no scholarship covers first-year tuition",
+          "Early Bird discount of EUR 2,000 for master's applicants with a 28-day acceptance/payment window",
+          "Merit Scholarship covers 50% of tuition for the next study year",
+          "55 ECTS requirement for master's and 110 ECTS for the third bachelor's year",
+          "average grade requirement of 3.0 or higher",
+          "4 ECTS of Finnish requirement",
+          "separate spring application round for merit scholarships",
+          "no living-cost coverage"
+        ],
+        "institution_check_required": [
+          "The exact calendar dates of the spring merit scholarship round, which the page does not publish",
+          "Whether a given programme's tuition fee is above or below the EUR 3,000 threshold used for double-degree students",
+          "The 2027 joint application round dates, taken from the university's programmes page rather than this page"
+        ],
+        "unverified_or_removed_claims": [
+          "No calendar deadline exists on this page, so deadline_date stays null",
+          "No single amount describes the merit scholarship (it is a 50% share of a programme-specific fee), so funding_amount stays null",
+          "Stored degree 'Master's' was corrected to Bachelor's and Master's, since the page awards the merit scholarship at both levels",
+          "Stored deadline_display 'January 2026 (with admission application)' referred to the admission round, not to a scholarship deadline, and is now stale"
+        ],
+        "source_citations": [
+          "https://www.utu.fi/en/study-at-utu/scholarships-and-tuition-fees"
+        ],
+        "researched_by": "w1_27"
+      },
+      "logo_override": {
+        "url": "https://apps.utu.fi/media/logo/UTU_logo_EN_RGB.png",
+        "page_url": "https://www.utu.fi/en/university/logo",
+        "official_host": true,
+        "alt_text": "University of Turku - winged torch emblem with English wordmark",
+        "validation_result": "verified",
+        "validation_detail": "png, probe returned 'Image fetched successfully' confirming HTTP 200 with an image content type; the file is the university's official black English logo (winged torch plus 'UNIVERSITY OF TURKU' wordmark) on a transparent background, taken from the download list on the university's own Logo, Photos and Brochure page; black, not white-on-transparent",
+        "image_kind": "official_logo",
+        "image_format": "png",
+        "verified_at": "2026-10-04T00:00:00+00:00",
+        "host_evidence": "same_registrable_domain",
+        "_award": "University of Turku Merit Scholarship and Early Bird Discount"
+      },
+      "research_notes": {
+        "logo": "Used the awarding body's own official brand page, https://www.utu.fi/en/university/logo ('Logo, Photos and Brochure of the University of Turku'), which publishes the download list for online use. I took the English black PNG with a transparent background, https://apps.utu.fi/media/logo/UTU_logo_EN_RGB.png, deliberately avoiding the white variants listed on the same page because a white-on-transparent wordmark is banned. Probed the asset: it returned 'Image fetched successfully', confirming HTTP 200 with an image content type, and the rendered image is the black winged torch plus 'UNIVERSITY OF TURKU' wordmark. apps.utu.fi is a subdomain of utu.fi, so the host is the awarding body's own domain.",
+        "unverified": [
+          "The calendar dates of the spring merit scholarship round",
+          "Exact 2027 joint application round dates on this page"
+        ],
+        "substitution": null,
+        "official_pages_read": [
+          "https://www.utu.fi/en/study-at-utu/scholarships-and-tuition-fees",
+          "https://www.utu.fi/en/university/logo"
+        ],
+        "degree_level_confirmed": "Quoted: 'Scholarships are offered for both Bachelor's and Master's level studies, for students who are subject to tuition fees.' with separate credit thresholds given for master's (55cr, 50% of 2nd year fee) and bachelor's (55cr for 2nd year, 110cr for 3rd year, 50% of 2nd and 3rd year fees).",
+        "url_observed": "https://www.utu.fi/en/study-at-utu/scholarships-and-tuition-fees",
+        "contradictions": [
+          "The stored official_source_url https://www.utu.fi/en/study-at-turku/tuition-fees-and-scholarships is not the live path. The university's own navigation and the live page use https://www.utu.fi/en/study-at-utu/scholarships-and-tuition-fees. The stored URL was kept as the row identity per the brief and the live URL recorded here.",
+          "Stored title 'University of Turku International Scholarships' hid a material change: the official page states 'The scholarship system of the University of Turku was changed for the 2026 intake' and 'It is not possible to get a scholarship to cover the tuition fee for the first year'. The row has been rewritten around the current Merit Scholarship plus Early Bird discount.",
+          "Stored deadline_display 'January 2026 (with admission application)' is a past admission round and was never a scholarship deadline; the merit scholarship round opens in spring on invitation.",
+          "Stored degree 'Master's' was incomplete; the official page covers bachelor's and master's level."
+        ],
+        "skeleton": false
+      }
+    },
+    {
+      "target_id": 267,
+      "outcome": "refreshed",
+      "confirm": true,
+      "confirmation_evidence": "Read the awarding body's own page https://www.lut.fi/en/studies/apply-lut/applying-masters-programmes/rolling-admission-masters-studies/early-bird-discount-and-scholarships-masters-studies. It states 'Second academic year: LUT scholarship ... you will receive a LUT scholarship of EUR 5,000' conditional on 'complete at least 60 ECTS credits during your first academic year', and 'First academic year: Early bird discount ... an Early bird discount of EUR 5,000'. The awards are live and correctly attributed to LUT University.",
+      "new_scholarship": {
+        "name": "LUT Scholarship and Early Bird Discount (master's studies)",
+        "legacy_titles": ["LUT University Scholarships"],
+        "country": "Finland",
+        "degree_levels": "Master's",
+        "funding_type": "Tuition Fee Waiver",
+        "official_source": "LUT University",
+        "official_source_url": "https://www.lut.fi/en/tuition-fees-and-scholarships",
+        "status": "open",
+        "is_verified": true,
+        "last_verified_date": "2026-10-04",
+        "region": "Europe",
+        "duration": "The early bird discount applies to the first academic year and the LUT scholarship to the second academic year of a two-year master's programme",
+        "deadline": "No scholarship application deadline exists: the awards are automatic. The early bird discount requires that you 'accept your study place and pay the remaining first-year tuition fee of EUR 10,000 within 21 days of your official admission email'. The LUT scholarship requires 60 ECTS recorded on your Transcript of Records by 31 July. LUT's own homepage states applications to English-language master's programmes are open until 31 March 2027 under rolling admission.",
+        "deadline_date": null,
+        "deadline_precision": "varies",
+        "eligibility_summary": "Fee-paying students in LUT's two-year English-language master's programmes: all admitted tuition-liable students receive the early bird discount if they accept and pay within 21 days, and those who complete at least 60 ECTS in the first academic year receive the second-year LUT scholarship.",
+        "eligibility": [
+          "Admitted to a LUT two-year master's programme taught in English and liable to pay tuition fees",
+          "Early bird discount: accept the study place and pay the remaining first-year tuition fee of EUR 10,000 within 21 days of the official admission email",
+          "LUT scholarship: complete at least 60 ECTS credits in the first academic year in accordance with the personal study plan",
+          "LUT scholarship: the required 60 ECTS must be on the Transcript of Records by 31 July",
+          "LUT scholarship: pay the second-year tuition fee on time",
+          "Partner (joint) programmes have separate scholarship policies and are not covered by these terms"
+        ],
+        "coverage": ["EUR 5,000 reduction of the first-year tuition fee as an early bird discount", "EUR 5,000 LUT scholarship towards the second-year tuition fee", "No living costs", "No travel costs"],
+        "benefits": [
+          "Automatic EUR 5,000 first-year tuition discount for fee-paying students who pay within 21 days",
+          "Automatic EUR 5,000 second-year LUT scholarship for students who reach 60 ECTS",
+          "Progress is checked automatically from the Transcript of Records"
+        ],
+        "required_documents": ["None specific to the scholarship; the award follows from admission and payment records", "Transcript of Records showing the 60 ECTS by 31 July"],
+        "application_method": ["No separate application. Accept the study place and pay the tuition fee within 21 days for the early bird discount; the second-year scholarship follows from the automatic ECTS check"],
+        "official_updates_url": "https://www.lut.fi/en/studies/apply-lut/applying-masters-programmes",
+        "catalogue_url": "https://www.lut.fi/en/studies/technology/masters-programmes-technology",
+        "program_type": "Automatic tuition fee discount and merit/study-progress tuition scholarship",
+        "selection_notes": "There is no competitive selection: LUT states that every fee-paying student who accepts and pays within 21 days gets the early bird discount, and every student who reaches 60 ECTS gets the second-year scholarship.",
+        "notes": "A separate page exists for bachelor's studies ('Early bird discount and scholarships for Bachelor's studies' at /en/studies/apply-lut/applying-bachelors-programmes/early-bird-discount-and-scholarships-bachelors) which I could not read within the fetch budget, so this record covers only the master's terms I verified. A separate Fulbright-LUT University Graduate Award exists for US citizens and is administered by the Fulbright Finland Foundation.",
+        "funding_amount": 5000,
+        "funding_currency": "EUR",
+        "funding_period": "per academic year (first year early bird discount, second year LUT scholarship)",
+        "description": "LUT University reduces tuition for fee-paying students of its two-year master's programmes in two automatic steps. In the first academic year every tuition-liable student who accepts the study place and pays the remaining EUR 10,000 of the first-year fee within 21 days of the official admission email receives an early bird discount of EUR 5,000. In the second academic year every tuition-liable student who has completed at least 60 ECTS credits in accordance with their personal study plan, with those credits recorded on the Transcript of Records by 31 July, and who pays the second-year fee on time receives a LUT scholarship of EUR 5,000. Neither award requires a separate application and neither covers living costs."
+      },
+      "programme_detail_official": {
+        "official_source_urls": ["https://www.lut.fi/en/studies/apply-lut/applying-masters-programmes/rolling-admission-masters-studies/early-bird-discount-and-scholarships-masters-studies", "https://www.lut.fi/en"],
+        "application_link": "https://www.lut.fi/en/studies/apply-lut/applying-masters-programmes",
+        "official_updates_url": "https://www.lut.fi/en/studies/apply-lut/applying-masters-programmes",
+        "catalogue_url": "https://www.lut.fi/en/studies/technology/masters-programmes-technology",
+        "application_cycle": "Rolling admission to English-language master's programmes, open until 31 March 2027 per LUT's homepage; awards follow admission automatically",
+        "deadline_central": null,
+        "deadline_central_display": "Early bird: pay the remaining first-year tuition fee of EUR 10,000 within 21 days of the official admission email; scholarship: 60 ECTS on the Transcript of Records by 31 July",
+        "deadline_central_timezone": "Europe/Helsinki",
+        "deadline_note": "There is no scholarship application and therefore no scholarship application deadline. The two operative cut-offs are relative/annual: 21 days from the admission email for the first-year discount, and 31 July for the ECTS check that renews the second-year scholarship.",
+        "status": "ONGOING",
+        "status_note": "Rolling admission to the English-language master's programmes is currently open (LUT's homepage advertises applications until 31 March 2027), and the awards attach to that intake, so the row is open rather than upcoming.",
+        "funding_amount": 5000,
+        "funding_currency": "EUR",
+        "funding_period": "per academic year",
+        "funding_duration": "First year (early bird discount) and second year (LUT scholarship) of a two-year master's programme",
+        "tuition_coverage": true,
+        "tuition_coverage_note": "Quoted: 'an Early bird discount of EUR 5,000' payable against the first-year tuition fee, of which EUR 10,000 remains after the discount, and 'a LUT scholarship of EUR 5,000' for the second academic year. This is a partial fee reduction, not a full waiver.",
+        "living_cost_coverage": false,
+        "travel_coverage": false,
+        "fully_funded": false,
+        "funding_label": "EUR 5,000 off the first-year tuition fee as an automatic early bird discount, plus EUR 5,000 towards the second-year fee as the LUT scholarship; no living-cost support",
+        "benefits": [
+          "EUR 5,000 first-year tuition discount for paying within 21 days",
+          "EUR 5,000 second-year scholarship for 60 ECTS completed",
+          "Automatic award, no application form"
+        ],
+        "eligibility": [
+          "Admitted to a LUT two-year master's programme taught in English",
+          "Liable to pay tuition fees",
+          "Accept and pay the remaining first-year fee within 21 days for the early bird discount",
+          "At least 60 ECTS completed and recorded by 31 July for the second-year scholarship",
+          "Second-year tuition fee paid on time"
+        ],
+        "citizenship_residency": "Fee-paying status follows citizenship: students outside the EU, EEA and Switzerland pay tuition at LUT",
+        "international_eligibility": "Open to international fee-paying students of LUT's English-language master's programmes",
+        "degree_levels": ["Master's"],
+        "study_mode": "Full-time study in accordance with the personal study plan; 60 ECTS in the first academic year",
+        "research_requirement": null,
+        "subject_or_agency_requirement": "Terms apply to LUT's own two-year master's programmes only; partner (joint) programmes have separate scholarship policies",
+        "application_method": "No application; the early bird discount follows from accepting and paying within 21 days, and the second-year scholarship from the automatic 60 ECTS progress check",
+        "application_route": "LUT admission and the eLUT student portal",
+        "requirements": [
+          "Accept the study place and pay the remaining first-year tuition fee within 21 days of the official admission email",
+          "Complete at least 60 ECTS in the first academic year in accordance with the personal study plan",
+          "Have the 60 ECTS registered on the Transcript of Records by 31 July",
+          "Pay the second-year tuition fee on time"
+        ],
+        "documents": ["Transcript of Records showing the completed ECTS", "Admission and tuition payment records"],
+        "english_requirement": "The terms apply to LUT's English-language master's programmes",
+        "english_requirement_note": "Programme-level English requirements apply for admission; no separate language test is required for the discount or scholarship.",
+        "selection_criteria": [
+          "Paying the first-year fee within 21 days of the admission email",
+          "Completing at least 60 ECTS in the first academic year",
+          "Paying the second-year fee on time"
+        ],
+        "selection_weighting": "Not applicable; the awards are automatic rather than competitive",
+        "duration": "One academic year per award, covering years one and two of a two-year master's",
+        "award_holder_conditions": [
+          "Study progress must follow the personal study plan",
+          "60 ECTS must be registered by 31 July or the second-year scholarship is lost",
+          "Second-year tuition fee must be paid on time",
+          "Only LUT's own two-year master's programmes are covered"
+        ],
+        "supplements_or_initiatives": [
+          "Fulbright - LUT University Graduate Award for US citizens, administered by the Fulbright Finland Foundation",
+          "Separate early bird discount and scholarship scheme for bachelor's studies, on its own LUT page",
+          "Early Admission and Rolling Admission routes for master's studies"
+        ],
+        "official_contacts": {"admissions": "LUT Admissions Services", "general": "LUT University, Yliopistonkatu 34, 53850 Lappeenranta, Finland, Tel. +358 29 446 2111", "portal": "elut.lut.fi"},
+        "description": "LUT University automatically reduces tuition for fee-paying students of its two-year English-language master's programmes: an early bird discount of EUR 5,000 in the first academic year for those who accept and pay the remaining EUR 10,000 within 21 days of the admission email, and a LUT scholarship of EUR 5,000 in the second academic year for those who complete at least 60 ECTS credits recorded by 31 July and pay the second-year fee on time. Progress is checked automatically. Joint (partner) programmes have separate scholarship policies and living costs are never covered.",
+        "program_type": "Automatic tuition fee discount and study-progress tuition scholarship",
+        "region": "Europe",
+        "coverage": "EUR 5,000 of first-year tuition and EUR 5,000 towards second-year tuition; no living-cost coverage",
+        "last_verified_date": "2026-10-04"
+      },
+      "programme_detail_applicant_utility": {
+        "application_readiness_checklist": [
+          "Decide before you accept: the EUR 5,000 first-year discount depends on paying the remaining EUR 10,000 within 21 days of the official admission email",
+          "Plan the first academic year around 60 ECTS in line with your personal study plan",
+          "Check that your ECTS are actually registered on the Transcript of Records by 31 July, because the check is automatic",
+          "Set a reminder for the second-year tuition payment, on which the second-year scholarship depends",
+          "Check whether your programme is a partner (joint) programme, since those have separate scholarship policies"
+        ],
+        "common_rejection_risks": [
+          "Paying the first-year fee later than 21 days after the admission email and losing the EUR 5,000 discount",
+          "Completing fewer than 60 ECTS or having them unregistered by 31 July, losing the second-year scholarship",
+          "Missing the second-year tuition payment deadline",
+          "Assuming the award covers living costs, which it does not",
+          "Applying to a joint programme and expecting these LUT terms to apply"
+        ],
+        "estimated_uncovered_costs": [
+          "EUR 10,000 of the first-year tuition fee even with the early bird discount",
+          "The remainder of the second-year tuition fee after the EUR 5,000 scholarship",
+          "All living costs, travel and insurance"
+        ],
+        "document_audit": [
+          "Official admission email, to count the 21-day payment window",
+          "Tuition payment confirmation for the first year",
+          "Transcript of Records with the 60 ECTS registered by 31 July",
+          "Second-year tuition payment confirmation"
+        ],
+        "alerts": [
+          {"trigger": "21-day payment window", "message": "The EUR 5,000 early bird discount requires payment of the remaining first-year fee within 21 days of the official admission email; there is no second chance."},
+          {"trigger": "Automatic 31 July check", "message": "The second-year scholarship is awarded from an automatic progress check, so ECTS not registered by 31 July do not count."}
+        ],
+        "submission_workflow": [
+          "Apply through LUT's rolling admission to an English-language master's programme",
+          "On admission, decide immediately whether to take the early bird discount and pay the remaining EUR 10,000 within 21 days",
+          "Follow the personal study plan and complete at least 60 ECTS in the first academic year",
+          "Ensure the ECTS appear on the Transcript of Records by 31 July",
+          "Pay the second-year tuition fee on time to keep the EUR 5,000 second-year scholarship"
+        ]
+      },
+      "programme_detail_verification": {
+        "cycle_verified": "Rolling admission intake open until 31 March 2027, verified 2026-10-04",
+        "verification_confidence": 0.82,
+        "official_fields_confirmed": [
+          "early bird discount of EUR 5,000 in the first academic year",
+          "21-day acceptance and payment window",
+          "LUT scholarship of EUR 5,000 in the second academic year",
+          "60 ECTS requirement with a 31 July Transcript of Records deadline",
+          "no separate application for either award",
+          "no living-cost coverage",
+          "master's level only for these terms"
+        ],
+        "institution_check_required": [
+          "The bachelor's-level discount and scholarship scheme, published on a separate LUT page I could not read within budget",
+          "Scholarship policies for partner (joint) programmes",
+          "Programme-specific tuition fee amounts for the applicant's own programme"
+        ],
+        "unverified_or_removed_claims": [
+          "No calendar application deadline exists for the scholarship itself, so deadline_date stays null",
+          "Stored deadline_display 'With admission application' is incomplete: the operative dates are the 21-day payment window and the 31 July ECTS check",
+          "Stored degree 'Bachelor's, Master's' was narrowed to Master's, because only the master's terms page was verified; the bachelor's page still needs checking",
+          "Stored funding 'Partial' is confirmed but now quantified: EUR 5,000 per academic year",
+          "Stored image was absent and no verifiable logo could be supplied"
+        ],
+        "source_citations": ["https://www.lut.fi/en/studies/apply-lut/applying-masters-programmes/rolling-admission-masters-studies/early-bird-discount-and-scholarships-masters-studies", "https://www.lut.fi/en"],
+        "researched_by": "w1_27"
+      },
+      "logo_override": null,
+      "research_notes": {
+        "logo": "No usable logo verified within the six-fetch budget. On lut.fi the only logo asset referenced by the site chrome is /themes/custom/lut/images/logos/lut-logo-nega.svg, which is the negative (white) variant used on the dark header - a white-on-transparent mark, which is a hard ban. I probed two alternative paths on LUT's own domain, /themes/custom/lut/images/logos/lut-logo.svg and /favicon.ico, and both returned 404, and a positive-variant filename could not be confirmed within the remaining budget. Reporting null rather than reporting the banned white variant or a guessed path.",
+        "unverified": ["A positive (dark) LUT logo file path on lut.fi", "The bachelor's-level scholarship and early bird discount terms", "Joint (partner) programme scholarship policies"],
+        "substitution": null,
+        "official_pages_read": ["https://www.lut.fi/en/studies/apply-lut/applying-masters-programmes/rolling-admission-masters-studies/early-bird-discount-and-scholarships-masters-studies", "https://www.lut.fi/en"],
+        "degree_level_confirmed": "Quoted: 'The following information applies only to LUT's two-year master's programmes. Partner (joint) programmes have separate scholarship policies.' The page's only award headings are 'First academic year: Early bird discount' and 'Second academic year: LUT scholarship'.",
+        "url_observed": "https://www.lut.fi/en/studies/apply-lut/applying-masters-programmes/rolling-admission-masters-studies/early-bird-discount-and-scholarships-masters-studies",
+        "contradictions": [
+          "The stored official_source_url https://www.lut.fi/en/tuition-fees-and-scholarships returns HTTP 404. LUT's live pages are under /en/studies/apply-lut/..., and the master's discount and scholarship page is the live equivalent. The stored URL was kept as the row identity per the brief and the live URL recorded here.",
+          "Stored deadline_display 'With admission application' omitted the two operative conditions, a 21-day payment window and a 31 July ECTS check.",
+          "Stored degree 'Bachelor's, Master's' is only partly supported by what I could verify: the master's page confirms the master's awards, while the bachelor's scheme sits on a separate page I did not read.",
+          "Stored funding 'Partial' had no amount; the official page quantifies it at EUR 5,000 in each of the first two years."
+        ],
+        "skeleton": false
+      }
+    },
+    {
+      "target_id": 268,
+      "outcome": "refreshed",
+      "confirm": true,
+      "confirmation_evidence": "Read https://studyindenmark.dk/study-options/scholarships, the official Study in Denmark site, which states 'Studyindenmark.dk is managed by the Danish Ministry of Science, Higher Education and Digital Affairs'. Under the heading 'Danish government scholarships for highly qualified non-EU/EEA students' it states 'Danish universities receive a limited number of government scholarships each year to fund highly qualified full-degree students from non-EU/EEA countries and Switzerland' and 'The scholarships are administered by the Danish universities, who each select the students'.",
+      "new_scholarship": {
+        "name": "Danish Government Scholarship for Non-EU/EEA Full-Degree Students",
+        "legacy_titles": ["Danish Government Scholarship for Highly Qualified Non-EU/EEA Students"],
+        "country": "Denmark",
+        "degree_levels": "Bachelor's, Master's",
+        "funding_type": "Tuition Fee Waiver",
+        "official_source": "Danish Ministry of Science, Higher Education and Digital Affairs (Study in Denmark)",
+        "official_source_url": "https://studyindenmark.dk/study-options/scholarships",
+        "status": "upcoming",
+        "is_verified": true,
+        "last_verified_date": "2026-10-04",
+        "region": "Europe",
+        "deadline": "The ministry publishes no deadline: 'The scholarships are administered by the Danish universities, who each select the students, who are awarded with a scholarship. For further information about the government scholarship, please consult the admission details of the higher education institution of your choice.' The deadline is therefore the admission deadline of the individual university.",
+        "deadline_date": null,
+        "deadline_precision": "varies",
+        "eligibility_summary": "Citizens of countries outside the EU, EEA and Switzerland who are enrolled, or applying, in a full degree higher education programme in Denmark and hold a time-limited residence permit granted for education.",
+        "eligibility": [
+          "A citizen of a country outside the EU, the European Economic Area or Switzerland",
+          "Enrolled in a full degree higher education programme",
+          "Granted a time-limited residence permit in Denmark due to education",
+          "Not applying to an Artistic Higher Education Institution",
+          "No legal claim to the rights of Danish citizens",
+          "Not eligible for a grant under Danish State Education Fund (SU) rules",
+          "Not holding a residence permit under Aliens Consolidations Act section 9c(1) as a child of a section 9m permit holder who is a non-EU/EEA national"
+        ],
+        "coverage": ["Full or partial tuition fee waiver", "Possible grant towards living costs", "Depends entirely on the administering university"],
+        "benefits": [
+          "Full or partial tuition fee waiver as decided by the university",
+          "Some universities also award a grant towards living costs",
+          "The ministry states the scholarship 'consists of two parts'"
+        ],
+        "required_documents": ["Documents required by the admission application of the chosen university", "Residence permit granted for education"],
+        "application_method": ["Apply through the admission process of the individual Danish higher education institution, which selects and awards the scholarship holders"],
+        "official_updates_url": "https://studyindenmark.dk/study-options/higher-education-institutions",
+        "catalogue_url": "https://studyindenmark.dk/portal",
+        "program_type": "Government-funded tuition waiver administered by universities",
+        "selection_notes": "The scholarship is highly competitive because the ministry states universities receive only a limited number each year; selection is entirely in the hands of each university.",
+        "notes": "The ministry page explicitly warns that because the scholarships are administered by the institutions themselves, applicants should enquire directly at their chosen institution for the current terms. Separate schemes listed on the same page include Nordplus, Erasmus, Erasmus Mundus, Fulbright Denmark and the Danish State Educational Support (SU), which is generally only for Danish residents.",
+        "funding_amount": null,
+        "funding_currency": null,
+        "description": "Danish universities receive a limited number of government scholarships each year to fund highly qualified full-degree students from countries outside the EU, EEA and Switzerland. Applicants must be citizens of a non-EU/EEA/non-Swiss country, enrolled in a full degree programme and hold a time-limited residence permit for education, and they are excluded if they seek admission to an artistic higher education institution, have a legal claim to Danish citizens' rights, or are eligible for SU. The scholarship consists of two parts and may be a full or partial tuition fee waiver, a grant towards living costs, or both. The individual university administers the award and selects the students."
+      },
+      "programme_detail_official": {
+        "official_source_urls": ["https://studyindenmark.dk/study-options/scholarships"],
+        "application_link": "https://studyindenmark.dk/study-options/higher-education-institutions",
+        "official_updates_url": "https://studyindenmark.dk/study-options/higher-education-institutions",
+        "catalogue_url": "https://studyindenmark.dk/portal",
+        "application_cycle": "Annual, tied to each university's admission rounds; no ministry-level cycle or date is published",
+        "deadline_central": null,
+        "deadline_central_display": "No ministry deadline; the deadline is the admission deadline of the individual university",
+        "deadline_central_timezone": "Europe/Copenhagen",
+        "deadline_note": "The ministry page publishes no date and explicitly refers applicants to the admission details of their chosen higher education institution. Deadlines differ per university and per programme, typically in the first quarter of the year for autumn intake.",
+        "status": "UPCOMING",
+        "status_note": "The scheme is annual and institution-administered. The current cycle's university deadlines have passed for most institutions and no ministry-level opening date is published, so the row is marked upcoming.",
+        "funding_amount": null,
+        "funding_currency": null,
+        "funding_period": null,
+        "funding_duration": "Not stated at ministry level; decided by each university",
+        "tuition_coverage": true,
+        "tuition_coverage_note": "Quoted: 'the government scholarship consists of two parts and can be given as full or partial tuition fee waivers and/or grants towards covering your living costs.'",
+        "living_cost_coverage": true,
+        "travel_coverage": false,
+        "fully_funded": false,
+        "funding_label": "Full or partial tuition fee waiver and, at some universities, a grant towards living costs; amounts are set by the administering university and are not published by the ministry",
+        "benefits": ["Full or partial tuition fee waiver", "Possible grant towards living costs at some institutions"],
+        "eligibility": [
+          "Citizen of a country outside the EU, EEA or Switzerland",
+          "Enrolled in a full degree higher education programme",
+          "Holds a time-limited residence permit in Denmark due to education",
+          "Not applying to an artistic higher education institution",
+          "No legal claim to Danish citizens' rights",
+          "Not eligible for a grant under the State Education Fund (SU)"
+        ],
+        "citizenship_residency": "Citizens of countries outside the EU, EEA and Switzerland, with a time-limited residence permit granted for education in Denmark",
+        "international_eligibility": "Explicitly for highly qualified full-degree students from non-EU/EEA countries and Switzerland",
+        "degree_levels": ["Bachelor's", "Master's"],
+        "study_mode": "Full degree study in Denmark",
+        "research_requirement": null,
+        "subject_or_agency_requirement": "Not eligible for artistic higher education institutions; other restrictions are set by the university",
+        "application_method": "Apply through the chosen Danish higher education institution, which administers the scholarship and selects the recipients",
+        "application_route": "Individual Danish higher education institution admissions",
+        "requirements": [
+          "Apply within the chosen university's admission deadline",
+          "Hold or apply for a time-limited residence permit for education in Denmark",
+          "Satisfy the university's own selection criteria"
+        ],
+        "documents": ["University admission documents", "Residence permit for education", "Proof of citizenship"],
+        "english_requirement": "Not addressed at ministry level; each university sets its own language requirement",
+        "english_requirement_note": "Study in Denmark notes that Danish institutions offer more than 500 English-taught programmes, but sets no scholarship-specific language rule.",
+        "selection_criteria": ["Set by each administering university; the ministry describes the target group only as highly qualified"],
+        "selection_weighting": null,
+        "duration": "Not stated at ministry level",
+        "award_holder_conditions": ["Must remain enrolled in a full degree programme", "Terms are set by the administering university"],
+        "supplements_or_initiatives": [
+          "Nordplus mobility between Nordic and Baltic institutions",
+          "Erasmus for EU/EEA and Swiss students",
+          "Erasmus Mundus Joint Master Degrees, open to EU/EEA and non-EU/EEA students",
+          "Fulbright Denmark grants for US scholars and postgraduate students",
+          "Danish State Educational Support (SU), generally for Danish residents but equal status may be granted"
+        ],
+        "official_contacts": {"general": "Study in Denmark is managed by the Danish Ministry of Science, Higher Education and Digital Affairs, https://ufm.dk/english/"},
+        "description": "Official Danish government guidance on the government scholarships that Danish universities receive each year to fund highly qualified full-degree students from non-EU/EEA countries and Switzerland. Eligibility is defined by citizenship, enrolment in a full degree programme and a time-limited residence permit for education, with exclusions for artistic institutions, Danish citizenship rights and SU eligibility. The scholarship has two parts and may be a full or partial tuition fee waiver, a living-cost grant, or both, and it is the universities that administer the award and select the students.",
+        "program_type": "Government scholarship administered by universities",
+        "region": "Europe",
+        "coverage": "Full or partial tuition fees and, at some institutions, living costs; no ministry-level travel provision",
+        "last_verified_date": "2026-10-04"
+      },
+      "programme_detail_applicant_utility": {
+        "application_readiness_checklist": [
+          "Pick a specific university first, because the university selects the students and publishes the actual terms",
+          "Check the chosen university's scholarship page for its own eligibility list and deadline",
+          "Confirm you are not eligible for SU, since SU eligibility disqualifies you",
+          "Make sure your programme is not at an artistic higher education institution",
+          "Start the residence permit process early, as a time-limited permit for education is an eligibility condition"
+        ],
+        "common_rejection_risks": [
+          "Assuming the scholarship is applied for centrally at the ministry, when each university awards it",
+          "Missing the individual university's admission deadline",
+          "Being excluded because the applicant is an artistic higher education institution student",
+          "Being ineligible because of SU entitlement or Danish citizenship rights",
+          "Budgeting as if the scholarship always covers living costs, which it does not"
+        ],
+        "estimated_uncovered_costs": [
+          "Living costs, unless the specific university awards a living-cost grant",
+          "Travel costs, which no ministry-level provision mentions",
+          "Any portion of tuition not covered by a partial waiver"
+        ],
+        "document_audit": [
+          "University admission application",
+          "Proof of citizenship from outside the EU/EEA/Switzerland",
+          "Residence permit for education, or proof of eligibility to apply for one",
+          "Evidence of academic qualifications"
+        ],
+        "alerts": [
+          {"trigger": "Institution-administered award", "message": "The ministry publishes no amounts and no deadlines; both come from the university you apply to."},
+          {"trigger": "Two-part scholarship", "message": "The award may be a tuition waiver, a living-cost grant, or both, so ask the university which parts it offers."}
+        ],
+        "submission_workflow": [
+          "Choose a university and programme, then read that university's scholarship and admission pages",
+          "Check the institution-specific eligibility and exclusion rules",
+          "Apply within the university's admission deadline",
+          "Apply for the residence permit for studies in parallel",
+          "Await the university's selection, which is made as part of the admission process"
+        ]
+      },
+      "programme_detail_verification": {
+        "cycle_verified": "Annual scheme, ministry guidance page verified 2026-10-04",
+        "verification_confidence": 0.82,
+        "official_fields_confirmed": [
+          "existence and purpose of the scheme",
+          "citizenship and residence-permit eligibility",
+          "exclusion rules (artistic institutions, Danish citizenship rights, SU eligibility, section 9c family permits)",
+          "two-part structure: tuition fee waiver and/or living-cost grant",
+          "administration and selection by the individual universities",
+          "official host and ministry ownership of the page",
+          "logo"
+        ],
+        "institution_check_required": [
+          "Which universities received how many government scholarships in the current round",
+          "Whether a specific university offers tuition only, living costs, or both, and the exact amounts",
+          "The application deadline of each university's admission round",
+          "Whether a given programme sits at an artistic higher education institution"
+        ],
+        "unverified_or_removed_claims": [
+          "Stored deadline_display 'January-March 2026 (varies by university)' is not published by the ministry; the page states no dates at all, so deadline_date stays null",
+          "No funding amount or currency is published at ministry level, so both remain null",
+          "Stored official_source name 'Ministry of Higher Education and Science, Denmark' is outdated; the page states the site is managed by the Danish Ministry of Science, Higher Education and Digital Affairs",
+          "Stored degree levels 'Bachelor's, Master's' are consistent with the ministry wording 'full degree higher education programme', but no level restriction is stated and PhD is not mentioned"
+        ],
+        "source_citations": ["https://studyindenmark.dk/study-options/scholarships"],
+        "researched_by": "w1_27"
+      },
+      "logo_override": {
+        "url": "https://studyindenmark.dk/static/media/ministry-logo.9d8d6e22.png",
+        "page_url": "https://studyindenmark.dk/study-options/scholarships",
+        "official_host": true,
+        "alt_text": "Danish Ministry of Science, Higher Education and Digital Affairs",
+        "validation_result": "verified",
+        "validation_detail": "png, probe returned 'Image fetched successfully' confirming HTTP 200 with an image content type; the file is the ministry wordmark ('MINISTERIET FOR FOLKEHOJSNING ...') published in the footer of Study in Denmark, the ministry's own official study portal, rendered in dark navy on a light background and therefore not white-on-transparent",
+        "image_kind": "official_logo",
+        "image_format": "png",
+        "verified_at": "2026-10-04T00:00:00+00:00",
+        "host_evidence": "same_registrable_domain",
+        "_award": "Danish Government Scholarship for Non-EU/EEA Full-Degree Students"
+      },
+      "research_notes": {
+        "logo": "The stored official_host for this record is studyindenmark.dk, which the page itself identifies as managed by the Danish ministry ('Studyindenmark.dk is managed by the Danish Ministry of Science, Higher Education and Digital Affairs', linking to ufm.dk). The footer of that page carries the ministry's own wordmark at /static/media/ministry-logo.9d8d6e22.png, next to the caption 'Ministry of Science, Higher Education and Digital Affairs'. I probed that asset: it returned 'Image fetched successfully', confirming HTTP 200 with an image content type, and the rendered image is the dark navy ministry wordmark on a light field. Since the awarding body for this record is the ministry and the asset sits on the ministry's own official portal, this satisfies the same-registrable-domain requirement. The alternative site logo at /@@site-logo/logonew.png was not needed.",
+        "unverified": ["Any specific university's allocation, amounts or deadlines", "The number of government scholarships awarded in the current round"],
+        "substitution": null,
+        "official_pages_read": ["https://studyindenmark.dk/study-options/scholarships"],
+        "degree_level_confirmed": "Quoted: 'enrolled in a full degree higher education programme'. The ministry page does not name specific degree levels, so bachelor's and master's are carried from the stored record as consistent with the wording and flagged as unconfirmed in verification.",
+        "url_observed": null,
+        "contradictions": [
+          "Stored deadline_display 'January-March 2026 (varies by university)' has no basis on the ministry page, which publishes no dates; it was replaced with the official referral to institutional deadlines.",
+          "Stored official_source 'Ministry of Higher Education and Science, Denmark' is outdated; the site footer names the Danish Ministry of Science, Higher Education and Digital Affairs.",
+          "Stored funding 'Partial to Full' is consistent with the official wording 'full or partial tuition fee waivers and/or grants towards covering your living costs'.",
+          "Stored image was absent; a verified ministry logo was supplied."
+        ],
+        "skeleton": false
+      }
+    },
+    {
+      "target_id": 269,
+      "outcome": "refreshed",
+      "confirm": true,
+      "confirmation_evidence": "Read the awarding body's own page https://www.dtu.dk/english/education/graduate/fees-and-funding/tuition_fee_waivers: 'DTU has a very limited number of tuition fee waivers to award International new non-EU/EEA MSc students applying for the Autumn intake. The tuition fee waivers are allocated to students with excellent academic performance. A tuition fee waiver will cover the tuition fee for two years.' The merit tuition waiver for international non-EU/EEA MSc students is real, live and correctly attributed to DTU. Two important caveats are recorded in the notes: DTU never uses the name 'DTU Excellence Scholarship', and the stored official_source_url is a different DTU page titled 'National Scholarships for DTU' that lists external, country-specific scholarships.",
+      "new_scholarship": {
+        "name": "DTU Tuition Fee Waiver for International non-EU/EEA MSc Students",
+        "legacy_titles": ["DTU Excellence Scholarship (Technical University of Denmark)"],
+        "country": "Denmark",
+        "degree_levels": "Master's",
+        "funding_type": "Tuition Fee Waiver",
+        "official_source": "Technical University of Denmark (DTU)",
+        "official_source_url": "https://www.dtu.dk/english/education/graduate/fees-and-funding/external-scholarships",
+        "status": "upcoming",
+        "is_verified": true,
+        "last_verified_date": "2026-10-04",
+        "region": "Europe",
+        "duration": "A tuition fee waiver will cover the tuition fee for two years",
+        "deadline": "\"All non-EU/EEA students who apply by the 15 January deadline and who wish to apply for a tuition fee waiver must submit a separate personal statement with the application, clearly specifying that you are applying for the tuition fee waiver.\" DTU's important dates page for the autumn intake gives '15 January Application deadline - Non-EU' and 'April Tuition fee waivers announced - Non-EU'.",
+        "deadline_date": null,
+        "deadline_precision": "recurring",
+        "eligibility_summary": "New international non-EU/EEA applicants to a DTU two-year MSc programme for the autumn intake who have excellent academic performance and who submit a separate personal statement for the waiver with their application by the 15 January deadline.",
+        "eligibility": [
+          "Citizen of a country outside the EU and EEA applying to a DTU MSc programme",
+          "Applying for the autumn intake; waivers are not offered for the spring intake",
+          "New student, i.e. not a continuing student",
+          "Submitting a separate personal statement with the application that clearly specifies the waiver application",
+          "Submitting the application and paying the application fee by the 15 January deadline",
+          "Non-EU/EEA applicants with a qualifying degree obtained in Denmark must also apply by 15 January"
+        ],
+        "coverage": ["Tuition fees for two years", "No living costs", "No travel costs"],
+        "benefits": [
+          "Tuition fee waiver covering the tuition fee for two years",
+          "Decided in parallel with the admissions process",
+          "Granted after accepting an offer of admission"
+        ],
+        "required_documents": [
+          "Completed MSc application submitted by the 15 January deadline",
+          "Separate personal statement for the tuition fee waiver focusing on academic achievements at bachelor's level",
+          "Payment of the application fee",
+          "Language test results meeting DTU's requirements"
+        ],
+        "application_method": [
+          "Apply for the MSc programme in the autumn round and submit a separate personal statement with the same application, clearly specifying that it is for the tuition fee waiver"
+        ],
+        "english_requirement": "Non-EU applicants must fulfil and submit language test requirements by the 15 January application deadline",
+        "english_requirement_note": "DTU publishes its accepted English tests and minimum scores on its own language test requirements page; no scholarship-specific language rule is stated.",
+        "requirements": [
+          "Submit the application by 15 January and pay the application fee",
+          "Include a separate personal statement for the waiver; without it the application is not considered",
+          "Meet all admission requirements for the chosen MSc programme",
+          "Accept the offer of admission to receive the waiver"
+        ],
+        "official_updates_url": "https://www.dtu.dk/english/education/graduate/admission-and-deadlines/application_procedure/apply/Important-dates-and-deadlines-Autumn",
+        "catalogue_url": "https://www.dtu.dk/english/education/graduate",
+        "program_type": "Merit-based tuition fee waiver awarded with admission",
+        "selection_notes": "Selection runs in parallel with admissions. Applicants are assessed on their grades (GPA or equivalent), the ranking of the university that awarded their bachelor's degree, and extracurricular research experience or publications, relevant work or teaching experience, competition awards and extracurricular activities.",
+        "notes": "DTU does not publish a programme named 'DTU Excellence Scholarship'; the merit tuition fee waiver described here is the award that matches the substance of the stored row, including its 15 January deadline. The stored official_source_url points to a separate page titled 'National Scholarships for DTU', which lists external, country-specific scholarships (Brazil, Colombia, Costa Rica, India, Indonesia, Kazakhstan, Mexico, Turkey, USA) and does not document this award.",
+        "funding_amount": null,
+        "funding_currency": null,
+        "funding_period": "per academic year for two years",
+        "description": "DTU awards a very limited number of tuition fee waivers to new international non-EU/EEA MSc students applying for the autumn intake, allocating them to students with excellent academic performance. A waiver covers the tuition fee for two years. To be considered, applicants must apply by the 15 January deadline and submit a separate personal statement with the application that focuses on academic achievements at bachelor's level; applications without that statement are not considered. Waivers are offered only for the autumn intake, are decided in parallel with admissions, and are granted after the applicant accepts an admission offer."
+      },
+      "programme_detail_official": {
+        "official_source_urls": [
+          "https://www.dtu.dk/english/education/graduate/fees-and-funding/tuition_fee_waivers",
+          "https://www.dtu.dk/english/education/graduate/admission-and-deadlines/application_procedure/apply/Important-dates-and-deadlines-Autumn",
+          "https://www.dtu.dk/english/education/graduate/fees-and-funding/external-scholarships"
+        ],
+        "application_link": "https://www.dtu.dk/english/education/graduate/fees-and-funding/tuition_fee_waivers",
+        "official_updates_url": "https://www.dtu.dk/english/education/graduate/admission-and-deadlines/application_procedure/apply/Important-dates-and-deadlines-Autumn",
+        "catalogue_url": "https://www.dtu.dk/english/education/graduate",
+        "application_cycle": "Autumn intake only: portal opens 1 December, non-EU application deadline 15 January, tuition fee payment 1 May, waivers announced in April, semester starts 1 September",
+        "deadline_central": null,
+        "deadline_central_display": "15 January - Application deadline for non-EU applicants, who must also submit the separate waiver personal statement by then",
+        "deadline_central_timezone": "Europe/Copenhagen",
+        "deadline_note": "DTU's autumn timeline prints the dates without a year ('15 January Application deadline - Non-EU', 'April Tuition fee waivers announced'). The deadline is therefore recorded as an annual recurring 15 January rather than an invented ISO date for a specific year. There is no separate scholarship deadline: the 15 January date is the same day the application itself closes.",
+        "status": "UPCOMING",
+        "status_note": "The waiver is awarded within the annual autumn admission round, whose non-EU application deadline is 15 January. On 2026-10-04 that deadline has not yet arrived, so the award is upcoming rather than open.",
+        "funding_amount": null,
+        "funding_currency": null,
+        "funding_period": "per academic year for two years",
+        "funding_duration": "Two years, the full tuition fee period of a DTU two-year MSc",
+        "tuition_coverage": true,
+        "tuition_coverage_note": "Quoted: 'A tuition fee waiver will cover the tuition fee for two years.' No monetary amount is published; DTU's MSc tuition is programme-specific and is not stated on these pages.",
+        "living_cost_coverage": false,
+        "travel_coverage": false,
+        "fully_funded": false,
+        "funding_label": "Full tuition fee waiver for two years for a very limited number of new non-EU/EEA MSc students; no living-cost or travel support",
+        "benefits": ["Tuition fees for two years", "Decision taken in parallel with admissions", "Waiver granted after accepting the admission offer"],
+        "eligibility": [
+          "New student applying to a DTU MSc programme for the autumn intake",
+          "Citizen of a country outside the EU and EEA",
+          "Excellent academic performance",
+          "Separate personal statement for the waiver submitted with the application",
+          "Application and application fee completed by the 15 January deadline"
+        ],
+        "citizenship_residency": "Citizens of countries outside the EU and EEA; DTU's page also notes a specific rule for non-EU/EEA applicants with a qualifying degree obtained in Denmark",
+        "international_eligibility": "Open to new international non-EU/EEA MSc applicants; not offered for the spring intake",
+        "degree_levels": ["Master's"],
+        "study_mode": "Full-time two-year MSc; the waiver runs for two years",
+        "research_requirement": null,
+        "subject_or_agency_requirement": "Not stated; selection criteria are university-wide rather than programme-specific",
+        "application_method": "Submit the MSc application and a separate waiver personal statement by 15 January; waivers are granted after accepting an offer of admission",
+        "application_route": "DTU online application portal",
+        "requirements": [
+          "Application submitted by the 15 January deadline for non-EU applicants",
+          "Application fee paid by the same deadline",
+          "Language test requirements fulfilled and submitted",
+          "Separate personal statement for the waiver included",
+          "Accept the offer of admission"
+        ],
+        "documents": [
+          "Completed MSc application form",
+          "Separate personal statement for the tuition fee waiver",
+          "Language test results",
+          "Academic transcripts and degree certificate as required for admission"
+        ],
+        "english_requirement": "Non-EU applicants must submit language test results meeting DTU's requirements by the application deadline",
+        "english_requirement_note": "Accepted tests and minimum scores are listed on DTU's language test requirements page, which was not read within the fetch budget.",
+        "selection_criteria": [
+          "The applicant's grades (GPA or equivalent)",
+          "The ranking of the university that awarded the applicant's bachelor's degree",
+          "Extracurricular research experiences or publications",
+          "Relevant work experience",
+          "Relevant teaching experience",
+          "Awards from competitions and extracurricular activities"
+        ],
+        "selection_weighting": "Not published as a numeric weighting; the waiver assessment is described as based on the criteria above and runs in parallel with admissions",
+        "duration": "Two years",
+        "award_holder_conditions": [
+          "Must be a new student applying for the autumn intake",
+          "Must accept an offer of admission, since waivers are granted only after acceptance",
+          "Spring intake students are excluded"
+        ],
+        "supplements_or_initiatives": [
+          "Fulbright Scholarship: master's students pay full tuition, non-degree-seeking guest students are exempt",
+          "US Department of Veterans Affairs (VA) benefits",
+          "Country-specific external scholarships listed on the National Scholarships for DTU page: Instituto Trajetorias (Brazil), COLFUTURO (Colombia), CONAPE (Costa Rica), R.D. Sethna Scholarship Fund (India), LPDP (Indonesia), Bolashaq (Kazakhstan), FIDERH, Fundacion Beca, FUNED and JuventudEsGTO (Mexico), TEV Garring Foundation (Turkey)"
+        ],
+        "official_contacts": {"general": "Technical University of Denmark, Anker Engelunds Vej 101, 2800 Kongens Lyngby, Denmark", "portal": "student.dtu.dk"},
+        "description": "DTU has a very limited number of tuition fee waivers for new international non-EU/EEA MSc students applying for the autumn intake, allocated to applicants with excellent academic performance and covering the tuition fee for two years. Applicants must apply by the 15 January deadline and include a separate personal statement focused on academic achievements at bachelor's level, because applications without that statement are not considered for the waiver. The assessment considers grades, the ranking of the awarding university and relevant research, work, teaching and extracurricular achievements.",
+        "program_type": "Merit-based tuition fee waiver",
+        "region": "Europe",
+        "coverage": "Tuition fees only, for two years; no living-cost coverage",
+        "last_verified_date": "2026-10-04"
+      },
+      "programme_detail_applicant_utility": {
+        "application_readiness_checklist": [
+          "Write a dedicated short personal statement on your bachelor's-level academic achievements; without it the waiver is not considered",
+          "Submit the application, pay the application fee and upload language test results by 15 January",
+          "Note that only the autumn intake qualifies; a spring application can never get a waiver",
+          "Be ready to accept an admission offer quickly, because the waiver is granted only after acceptance",
+          "Prepare to fund your own living costs, which the waiver does not cover"
+        ],
+        "common_rejection_risks": [
+          "Not including a separate waiver personal statement, which DTU says makes the application ineligible for the waiver",
+          "Missing the 15 January deadline, which is also the application deadline",
+          "Applying for the spring intake",
+          "Being a continuing student rather than a new applicant",
+          "Assuming the waiver covers living costs or travel"
+        ],
+        "estimated_uncovered_costs": [
+          "All living costs in Denmark for two years",
+          "The non-refundable application fee",
+          "Books, travel and insurance"
+        ],
+        "document_audit": [
+          "Separate personal statement clearly marked as a tuition fee waiver application",
+          "Proof of the 15 January submission",
+          "Application fee payment reference",
+          "Language test report meeting DTU's requirements"
+        ],
+        "alerts": [
+          {"trigger": "Separate statement is mandatory", "message": "DTU states that if you do not include a separate statement for the waiver at the time of submitting your application, your application will not be considered for it."},
+          {"trigger": "Autumn intake only", "message": "Tuition fee waivers are not offered for the spring intake, so a spring applicant cannot be considered at all."},
+          {"trigger": "Very limited numbers", "message": "DTU describes the waivers as a 'very limited number', so admission alone does not mean a waiver."}
+        ],
+        "submission_workflow": [
+          "Choose a two-year autumn MSc programme at DTU",
+          "Prepare the waiver personal statement focused on bachelor's academic achievements",
+          "Submit the application, pay the fee and upload language test results by 15 January",
+          "Complete the admission assessment, which runs in parallel with the waiver assessment",
+          "Accept the admission offer promptly so the waiver can be granted"
+        ]
+      },
+      "programme_detail_verification": {
+        "cycle_verified": "Autumn 2027 intake cycle, verified 2026-10-04",
+        "verification_confidence": 0.85,
+        "official_fields_confirmed": [
+          "award type (full tuition fee waiver for two years)",
+          "autumn-intake-only restriction",
+          "15 January application deadline for non-EU applicants",
+          "separate personal statement requirement",
+          "selection criteria",
+          "no living-cost coverage",
+          "master's level only",
+          "logo"
+        ],
+        "institution_check_required": [
+          "How many waivers DTU awards in the coming round and how it is split between programmes",
+          "Programme-specific MSc tuition fee amounts",
+          "DTU's accepted English tests and minimum scores"
+        ],
+        "unverified_or_removed_claims": [
+          "Stored title 'DTU Excellence Scholarship' is not a name DTU uses anywhere on its own site; the row was renamed to DTU's own wording, 'DTU Tuition Fee Waiver for International non-EU/EEA MSc Students', with the stored title kept in legacy_titles",
+          "The stored official_source_url does not document this award at all: it resolves to a page titled 'National Scholarships for DTU' listing external country-specific scholarships. The correct official page is https://www.dtu.dk/english/education/graduate/fees-and-funding/tuition_fee_waivers, recorded here and in official_source_urls.",
+          "Stored deadline_display '15 January 2026 (with admission application)' is a past cycle; the live page gives an annual 15 January with no year, so it is recorded as recurring and deadline_date stays null rather than inventing a year",
+          "No monetary amount is published, so funding_amount stays null"
+        ],
+        "source_citations": [
+          "https://www.dtu.dk/english/education/graduate/fees-and-funding/tuition_fee_waivers",
+          "https://www.dtu.dk/english/education/graduate/admission-and-deadlines/application_procedure/apply/Important-dates-and-deadlines-Autumn",
+          "https://www.dtu.dk/english/education/graduate/fees-and-funding/external-scholarships"
+        ],
+        "researched_by": "w1_27"
+      },
+      "logo_override": {
+        "url": "https://www.dtu.dk/favicon.ico",
+        "page_url": "https://www.dtu.dk/english/education/graduate/fees-and-funding/tuition_fee_waivers",
+        "official_host": true,
+        "alt_text": "Technical University of Denmark (DTU)",
+        "validation_result": "verified",
+        "validation_detail": "ico, probe returned 'Unsupported image format: image/x-icon', which confirms HTTP 200 with an image content type; this is DTU's own site favicon mark served from dtu.dk",
+        "image_kind": "official_logo",
+        "image_format": "ico",
+        "verified_at": "2026-10-04T00:00:00+00:00",
+        "host_evidence": "same_registrable_domain",
+        "_award": "DTU Tuition Fee Waiver for International non-EU/EEA MSc Students"
+      },
+      "research_notes": {
+        "logo": "DTU's page markup renders no standalone logo file in the markdown view, so I probed DTU's own domain. https://www.dtu.dk/favicon.ico returned HTTP 200 with image/x-icon, confirming an image content type, and it is DTU's own site mark, so it is reported with image_format ico. A dedicated SVG/PNG wordmark file could not be located within the fetch budget and is not reported rather than guessed.",
+        "unverified": [
+          "Number of waivers awarded in the coming round",
+          "Programme-specific tuition fee amounts",
+          "DTU's accepted English tests and minimum scores"
+        ],
+        "substitution": null,
+        "official_pages_read": [
+          "https://www.dtu.dk/english/education/graduate/fees-and-funding/external-scholarships",
+          "https://www.dtu.dk/english/education/graduate/fees-and-funding/tuition_fee_waivers",
+          "https://www.dtu.dk/english/education/graduate/admission-and-deadlines/application_procedure/apply/Important-dates-and-deadlines-Autumn"
+        ],
+        "degree_level_confirmed": "Quoted: 'DTU has a very limited number of tuition fee waivers to award International new non-EU/EEA MSc students applying for the Autumn intake' and 'A tuition fee waiver will cover the tuition fee for two years.' The degree level is master's (MSc) only.",
+        "url_observed": "https://www.dtu.dk/english/education/graduate/fees-and-funding/tuition_fee_waivers",
+        "contradictions": [
+          "Stored title 'DTU Excellence Scholarship' has no counterpart anywhere on dtu.dk. DTU's own page is called 'Tuition fee waivers for International non-EU/EEA MSc students'. Renamed.",
+          "The stored official_source_url (external-scholarships) is live but is a different page, titled 'National Scholarships for DTU', listing external country-specific scholarships for Brazil, Colombia, Costa Rica, India, Indonesia, Kazakhstan, Mexico, Turkey and the USA. It does not document a DTU merit tuition waiver, so the stored URL was kept as row identity per the brief and the correct page recorded in url_observed and official_source_urls.",
+          "Stored deadline_display '15 January 2026 (with admission application)' is a past cycle date that the live page does not print; the live page prints an unyeared '15 January' and adds 'April - Tuition fee waivers announced - Non-EU'."
+        ],
+        "skeleton": false
+      }
+    },
+    {
+      "target_id": 270,
+      "outcome": "unreachable",
+      "confirm": false,
+      "confirmation_evidence": "No official CBS page documenting a 'Danish Government Scholarship' was reached within the six-fetch budget. https://www.cbs.dk/en/education/master/programmes-and-admission/fees-and-funding returned 404, https://www.cbs.dk/en/education/master/programmes-and-admission returned 404, https://www.cbs.dk/en (fetched, live) shows the site's current navigation with fees and funding no longer under that path, and https://www.cbs.dk/en/study-programmes/master-programmes/application-and-admission (fetched, live) covers only entry requirements, selection, and application steps with no mention of a Danish government scholarship. The general scheme is documented on the Danish ministry's own site (studyindenmark.dk, fetched for record 268), but that is not the awarding-body page this row is attributed to.",
+      "new_scholarship": {
+        "name": "Danish Government Scholarship (Copenhagen Business School)",
+        "legacy_titles": ["Copenhagen Business School Danish Government Scholarship"],
+        "country": "Denmark",
+        "degree_levels": "Master's (MSc)",
+        "funding_type": "Other",
+        "official_source": "Copenhagen Business School",
+        "official_source_url": "https://www.cbs.dk/study-programmes/master-programmes/double-degree",
+        "status": "unverified",
+        "is_verified": false,
+        "last_verified_date": "2026-10-04",
+        "region": "Europe",
+        "deadline": "Not established: no CBS page stating a deadline for this award was reached within the fetch budget.",
+        "deadline_date": null,
+        "deadline_precision": "unknown",
+        "eligibility_summary": "Not established from CBS. The Danish ministry's own guidance for the same national scheme requires citizenship of a country outside the EU/EEA/Switzerland, enrolment in a full degree programme in Denmark and a time-limited residence permit for education, and excludes artistic higher education institutions, claimants of Danish citizens' rights and SU-eligible students.",
+        "eligibility": [
+          "Not established from a CBS page within the fetch budget",
+          "Ministry-level rules for the same scheme are recorded on studyindenmark.dk"
+        ],
+        "coverage": [],
+        "benefits": [],
+        "required_documents": [],
+        "application_method": [],
+        "official_updates_url": "https://www.cbs.dk/en/study-programmes/master-programmes",
+        "catalogue_url": "https://www.cbs.dk/en/study-programmes/master-programmes",
+        "program_type": "Not established",
+        "notes": "This row is a partial duplicate of record 268: both describe the same national Danish Government Scholarship, 268 at ministry level and this one as a CBS-administered allocation. Confirming this row needs a CBS page on the scheme, which could not be located because three candidate fee/funding URLs on cbs.dk returned 404 and the site's navigation has been restructured.",
+        "funding_amount": null,
+        "funding_currency": null,
+        "description": "Not verified from the awarding body's own site. Copenhagen Business School operates English-taught MSc programmes in business and social sciences for which students from outside the EU/EEA pay tuition, and the Danish government scholarship may be allocated to CBS, but no CBS page was found within the fetch budget that states the CBS allocation, the amounts, the selection criteria or the deadline. The national scheme itself is confirmed live on the Danish ministry's official Study in Denmark site (see record 268)."
+      },
+      "programme_detail_official": {
+        "official_source_urls": ["https://www.cbs.dk/en/study-programmes/master-programmes/application-and-admission", "https://studyindenmark.dk/study-options/scholarships"],
+        "application_link": null,
+        "official_updates_url": "https://www.cbs.dk/en/study-programmes/master-programmes",
+        "catalogue_url": "https://www.cbs.dk/en/study-programmes/master-programmes",
+        "application_cycle": "Not established for the CBS allocation. CBS runs an annual admission round with three programme priorities, but the page reached documents no scholarship cycle.",
+        "deadline_central": null,
+        "deadline_central_display": "Not established",
+        "deadline_central_timezone": "Europe/Copenhagen",
+        "deadline_note": "No CBS scholarship deadline was found. The ministry publishes none either, and refers applicants to individual institutions.",
+        "status": "UNKNOWN",
+        "status_note": "Could not be verified from CBS; do not treat as open or upcoming.",
+        "funding_amount": null,
+        "funding_currency": null,
+        "funding_period": null,
+        "funding_duration": null,
+        "tuition_coverage": true,
+        "tuition_coverage_note": "Ministry guidance for the same scheme allows full or partial tuition fee waivers; the CBS allocation is unconfirmed.",
+        "living_cost_coverage": false,
+        "travel_coverage": false,
+        "fully_funded": false,
+        "funding_label": "Unconfirmed for CBS; the national scheme can be a full or partial tuition fee waiver and/or a living-cost grant",
+        "benefits": [],
+        "eligibility": [],
+        "citizenship_residency": "Unconfirmed for CBS",
+        "international_eligibility": "Unconfirmed for CBS",
+        "degree_levels": ["Master's"],
+        "study_mode": null,
+        "research_requirement": null,
+        "subject_or_agency_requirement": null,
+        "application_method": null,
+        "application_route": null,
+        "requirements": [],
+        "documents": [],
+        "english_requirement": null,
+        "english_requirement_note": null,
+        "selection_criteria": [],
+        "selection_weighting": null,
+        "duration": null,
+        "award_holder_conditions": [],
+        "supplements_or_initiatives": [],
+        "official_contacts": {"general": "Copenhagen Business School, Solbjerg Plads 3, 2000 Frederiksberg, Denmark, CVR 19596915"},
+        "description": "Could not be verified from Copenhagen Business School's own site within the fetch budget. The page reached documents master's entry requirements, selection criteria and application steps only, and CBS's former fees-and-funding URL no longer resolves.",
+        "program_type": "Not established",
+        "region": "Europe",
+        "coverage": "Unconfirmed",
+        "last_verified_date": "2026-10-04"
+      },
+      "programme_detail_applicant_utility": {
+        "application_readiness_checklist": [
+          "Ask CBS Admissions directly whether the university holds a Danish Government Scholarship allocation and how many places it has this year",
+          "Read the fees and funding section of the individual MSc programme page rather than a central page",
+          "Confirm non-EU/EEA tuition liability, since the national scheme targets only fee-paying students",
+          "Check SU ineligibility, which the ministry lists as an exclusion"
+        ],
+        "common_rejection_risks": [
+          "Assuming a CBS government scholarship exists without confirming the current allocation",
+          "Missing CBS's programme-specific application and deadline windows",
+          "Expecting living costs to be covered"
+        ],
+        "estimated_uncovered_costs": ["Not estimated: CBS tuition fee levels and any scholarship amount are unverified"],
+        "document_audit": [],
+        "alerts": [
+          {"trigger": "Unverified record", "message": "This row could not be confirmed against a CBS page; treat all CBS-specific details as unverified until CBS confirms them."}
+        ],
+        "submission_workflow": [
+          "Contact CBS Admissions to confirm the scheme and its terms",
+          "Apply through CBS's application portal within the programme's deadline",
+          "Follow CBS's document instructions"
+        ]
+      },
+      "programme_detail_verification": {
+        "cycle_verified": "Not established - no CBS scholarship page reached",
+        "verification_confidence": 0.2,
+        "official_fields_confirmed": [
+          "CBS runs English-taught master's programmes with limited places and an overall-assessment selection",
+          "the national scheme exists and is administered by universities (ministry page)"
+        ],
+        "institution_check_required": [
+          "Whether CBS holds a Danish Government Scholarship allocation in the current round and how many places",
+          "The CBS tuition fee levels for non-EU/EEA students",
+          "The CBS application deadline for the relevant round",
+          "The CBS selection criteria for scholarship holders"
+        ],
+        "unverified_or_removed_claims": [
+          "Stored program_type 'Exchange student' was inconsistent with a government full-degree scholarship and was not carried forward",
+          "Stored deadline_display 'with admission application' and stored funding 'Partial' could not be confirmed from CBS and are recorded as unestablished",
+          "Stored official_source_url https://www.cbs.dk/study-programmes/master-programmes/double-degree is a Double Degree page, not a scholarship page; the equivalent live path is https://www.cbs.dk/en/study-programmes/master-programmes/double-degree"
+        ],
+        "source_citations": [
+          "https://www.cbs.dk/en/study-programmes/master-programmes/application-and-admission",
+          "https://studyindenmark.dk/study-options/scholarships"
+        ],
+        "researched_by": "w1_27"
+      },
+      "logo_override": null,
+      "research_notes": {
+        "logo": "No logo verified. https://www.cbs.dk/favicon.ico returned 404, and the six-fetch budget was exhausted by locating a CBS page that documents this award, so no CBS brand asset could be probed. Reporting null rather than a guessed path or a third-party asset.",
+        "unverified": ["Every CBS-specific field on this row", "Whether CBS holds a Danish Government Scholarship allocation at all"],
+        "substitution": null,
+        "official_pages_read": [
+          "https://www.cbs.dk/en/study-programmes/master-programmes/application-and-admission",
+          "https://studyindenmark.dk/study-options/scholarships"
+        ],
+        "degree_level_confirmed": "Master's cannot be confirmed from a CBS scholarship page. The CBS master's application and admission page read covers master's entry requirements only ('You must have a bachelor degree by study start', 120 ECTS master programmes), so the master's level is consistent with the stored row but not confirmed for a scholarship.",
+        "url_observed": null,
+        "contradictions": [
+          "Stored official_source_url is a Double Degree page, which cannot document a scholarship.",
+          "Stored application_link https://www.cbs.dk/en/education/master/programmes-and-admission/fees-and-funding returns 404; CBS has restructured its site and the live master navigation now runs /en/study-programmes/master-programmes/...",
+          "Stored program_type 'Exchange student' contradicts a government full-degree tuition scholarship and was removed.",
+          "This row duplicates record 268 at institution level; if only one is kept, 268 is the one with a verified official source."
+        ],
+        "skeleton": false
+      }
+    },
+    {
+      "target_id": 271,
+      "outcome": "refreshed",
+      "confirm": true,
+      "confirmation_evidence": "Read the awarding body's own page https://www.ku.dk/studies/admission/scholarships-for-full-degree-students, section 'Danish government Scholarships'. It states 'The University of Copenhagen offers a limited number of tuition waivers and grants through the Danish Government Scholarship programme' and 'All non-EU/EEA applicants offered admission will automatically be considered for the scholarship; you do not submit an individual application for the scholarship.' Faculty-level terms for Science, Health and Medical Sciences, Social Sciences, Humanities and Theology are all set out on the same page.",
+      "new_scholarship": {
+        "name": "University of Copenhagen Danish Government Scholarship",
+        "legacy_titles": ["Danish Government Scholarship (University of Copenhagen)"],
+        "country": "Denmark",
+        "degree_levels": "Master's",
+        "funding_type": "Tuition Fee Waiver",
+        "official_source": "University of Copenhagen",
+        "official_source_url": "https://www.ku.dk/studies/admission/scholarships-for-full-degree-students",
+        "status": "upcoming",
+        "is_verified": true,
+        "last_verified_date": "2026-10-04",
+        "region": "Europe",
+        "duration": "Master's programme length; separate limited second-year scholarships are awarded by some faculties after the first year",
+        "deadline": "No scholarship deadline is published and no application exists: 'All non-EU/EEA applicants to the University of Copenhagen's MA/MSc degree programmes will automatically be considered for the Danish Government Scholarship, provided they are eligible. Therefore, you do not submit an individual application.' The operative deadline is the master's admission deadline, and the faculty of theology notes that decisions are generally made after admission offers are issued and that the tuition payment date in the terms-of-payment email, sent around mid-May, must be met.",
+        "deadline_date": null,
+        "deadline_precision": "varies",
+        "eligibility_summary": "Citizens of countries outside the EU, EEA or Switzerland admitted to a master's degree programme at the University of Copenhagen who hold a time-limited residence permit for studying in Denmark, are not eligible for SU, do not claim Danish citizens' rights, and are not in the excluded Aliens Act section 9c family-permit category. Selection is on academic achievement only; financial need is not considered.",
+        "eligibility": [
+          "A citizen of a country outside the EU, EEA or Switzerland",
+          "Admitted to a master's degree programme at the University of Copenhagen",
+          "Granted a time-limited residence permit for the purpose of studying in Denmark",
+          "Not eligible for a grant under the Danish State Educational Grant and Loan Scheme (SU)",
+          "No legal claim to the rights of Danish citizens",
+          "Not holding a residence permit under Aliens Consolidations Act section 9c(1) as the child of a section 9m permit holder who is a citizen of a country not acceded to the EU or covered by the EEA",
+          "Faculty of Science: first-priority admission plus a bachelor's GPA above 90% to be considered",
+          "Second-year scholarships: minimum 60 ECTS in the first year at SCIENCE, registered by 1 September; GPA of 11 or higher on the Danish scale in 2025"
+        ],
+        "coverage": ["Full or partial tuition fee waiver depending on faculty", "Some faculties cover basic living expenses; Science covers living expenses for 22 months", "No travel costs stated"],
+        "benefits": [
+          "Automatic consideration with the admission application, no separate form",
+          "Faculty of Science: tuition fees plus living expenses for 22 months",
+          "Faculty of Health and Medical Sciences: either tuition plus living expenses or tuition only",
+          "Limited second-year scholarships: roughly 2 per year in Health and Medical Sciences, and in Science for students with 60+ ECTS and top grades"
+        ],
+        "required_documents": [
+          "Admission application documents for the chosen master's programme",
+          "Evidence of citizenship",
+          "Time-limited residence permit for studying in Denmark"
+        ],
+        "application_method": [
+          "No application: all eligible non-EU/EEA master's applicants are considered automatically and nominated students are informed through the application portal"
+        ],
+        "official_updates_url": "https://www.ku.dk/studies/admission/masters",
+        "catalogue_url": "https://www.ku.dk/studies/masters/all-programmes",
+        "program_type": "Government scholarship administered by the university, tuition waiver and/or living-cost grant",
+        "selection_notes": "Awarded solely on academic achievement; financial need is not taken into consideration. Nominations are communicated through the application portal, and an awarded scholarship must be accepted within a specified deadline or the offer is revoked and given to another applicant.",
+        "notes": "Faculty terms differ sharply and must be checked individually: Humanities considers all non-EU/EEA applicants automatically with no extra documents; Social Sciences has only about 2-3 scholarships per year and awards only for the September intake; Theology awards only partial tuition fee waivers, generally fewer than four per year, and decides after applicants have been charged tuition; Health and Medical Sciences awards about two second-year scholarships per academic year and expects a GPA of 10 or higher on the Danish scale; Science reports that the 2025 first-year recipients had a minimum GPA of 98% and caps second-year awards at three per nationality. Living-expense components are taxable under Danish tax law for some nationalities.",
+        "funding_amount": null,
+        "funding_currency": null,
+        "funding_period": "per academic year for the master's programme",
+        "description": "The University of Copenhagen offers a limited number of tuition waivers and grants through the Danish Government Scholarship programme, awarded competitively to highly talented non-EU/EEA students with outstanding academic records. All eligible non-EU/EEA applicants to the university's MA/MSc programmes are considered automatically as part of the admission process, so no individual application exists. The award is granted as a full or partial tuition fee waiver and/or an amount covering basic living expenses, depending on faculty, and is decided on academic achievement alone."
+      },
+      "programme_detail_official": {
+        "official_source_urls": [
+          "https://www.ku.dk/studies/admission/scholarships-for-full-degree-students",
+          "https://www.ku.dk/studies/admission/application-deposit-fee-and-tuition-fees",
+          "https://www.ku.dk/studies/admission/masters"
+        ],
+        "application_link": "https://www.ku.dk/studies/admission/scholarships-for-full-degree-students",
+        "official_updates_url": "https://www.ku.dk/studies/admission/masters",
+        "catalogue_url": "https://www.ku.dk/studies/masters/all-programmes",
+        "application_cycle": "Annual master's admission round; scholarship decisions are communicated with the admission result and, for theology, after admission offers are issued",
+        "deadline_central": null,
+        "deadline_central_display": "No scholarship deadline published; consideration is automatic with the master's admission application",
+        "deadline_central_timezone": "Europe/Copenhagen",
+        "deadline_note": "UCPH publishes no scholarship deadline because no application exists. The operative date is the master's admission deadline. One faculty-level hard date is stated: the Faculty of Theology sends its terms-of-payment email around mid-May and the payment date in it must be met or the admission offer is revoked.",
+        "status": "UPCOMING",
+        "status_note": "The scholarship rides on the annual master's admission round. UCPH's scholarship page is a standing page and publishes no cycle dates, so the row is marked upcoming rather than open, since the current round's admission results have already been issued.",
+        "funding_amount": null,
+        "funding_currency": null,
+        "funding_period": "per academic year for the master's programme",
+        "funding_duration": "Master's programme length, typically two years; separate limited one-year second-year scholarships",
+        "tuition_coverage": true,
+        "tuition_coverage_note": "Quoted: 'The Danish Government Scholarship is granted either as full or partial tuition fee waivers and/or as an amount that covers basic living expenses.' Faculty of Science states the scholarship 'covers tuition fees' and 'living expenses (22 months)'.",
+        "living_cost_coverage": true,
+        "travel_coverage": false,
+        "fully_funded": false,
+        "funding_label": "Full or partial tuition fee waiver and, depending on faculty, an amount covering basic living expenses; Science covers living expenses for 22 months; no travel component mentioned",
+        "benefits": [
+          "Full or partial tuition fee waiver",
+          "Living-cost grant at some faculties, taxable under Danish law for some nationalities",
+          "Limited second-year scholarships in Health and Medical Sciences and Science"
+        ],
+        "eligibility": [
+          "Citizen of a country outside the EU, EEA or Switzerland",
+          "Admitted to a master's degree programme at the University of Copenhagen",
+          "Holds a time-limited residence permit for studying in Denmark",
+          "Not eligible for SU",
+          "No legal claim to Danish citizens' rights",
+          "Not in the excluded Aliens Act section 9c(1) family-permit category",
+          "Science: first-priority admission and bachelor's GPA above 90%"
+        ],
+        "citizenship_residency": "Non-EU/EEA/non-Swiss citizens with a time-limited residence permit for study in Denmark",
+        "international_eligibility": "Explicitly for non-EU/EEA applicants with outstanding academic records; EU/EEA citizens are not tuition fee liable and are not considered",
+        "degree_levels": ["Master's"],
+        "study_mode": "Full degree study at the University of Copenhagen; 120 ECTS master programmes",
+        "research_requirement": null,
+        "subject_or_agency_requirement": "Terms and availability differ by faculty; the Faculty of Social Sciences awards only for the September intake",
+        "application_method": "Automatic consideration as part of the master's admission; nominated students receive information through the application portal and must accept within the specified deadline",
+        "application_route": "University of Copenhagen application portal",
+        "requirements": [
+          "Apply for a master's programme and be admitted",
+          "Hold or obtain a time-limited residence permit for studying in Denmark",
+          "Accept the scholarship offer within the specified deadline once notified through the application portal"
+        ],
+        "documents": ["Master's application documents", "Proof of citizenship", "Time-limited residence permit for studies in Denmark"],
+        "english_requirement": "The scholarships are for the university's English-language master's programmes; programme language requirements apply",
+        "english_requirement_note": "Not restated as a scholarship-specific rule on this page.",
+        "selection_criteria": [
+          "Academic achievement only; financial need is not considered",
+          "Outstanding academic record",
+          "Faculty of Science: bachelor's GPA above 90%, first-priority admission"
+        ],
+        "selection_weighting": "Not published; the university states only that the award is based solely on academic achievement",
+        "duration": "Master's programme length; second-year scholarships are one academic year",
+        "award_holder_conditions": [
+          "Must accept the scholarship within the specified deadline or the offer is revoked",
+          "Must satisfy the faculty-specific conditions of the awarding faculty",
+          "Living-cost components are taxable under Danish tax legislation for some nationalities"
+        ],
+        "supplements_or_initiatives": [
+          "Second-year scholarships: about 2 per academic year in the Faculty of Health and Medical Sciences for the best first-year fee-paying students, with an expected GPA of 10 or higher",
+          "Faculty of Science second-year scholarship: minimum 60 ECTS registered by 1 September and excellent first-year grades (GPA 11 or higher in 2025), maximum three per nationality",
+          "Fulbright Scholarship for US full-degree master's students, administered by the Fulbright office in Copenhagen",
+          "Dean's and other UCPH-specific awards listed on the same page are separate from this scholarship"
+        ],
+        "official_contacts": {"general": "University of Copenhagen, Nørregade 10, DK-1165 København K, Denmark", "fulbright": "info@fulbright.dk, +45 33 18 10 02"},
+        "description": "The University of Copenhagen offers a limited number of tuition waivers and grants through the Danish Government Scholarship programme to highly talented students from non-EU/EEA countries with outstanding academic records. All eligible applicants to the university's MA/MSc programmes are considered automatically, with no individual application. The award is granted as full or partial tuition fee waivers and/or an amount covering basic living expenses, is decided on academic achievement alone, and must be accepted within a specified deadline or it is offered to another applicant. Faculty-level conditions differ substantially and are set out on the university page.",
+        "program_type": "Government scholarship administered by the university",
+        "region": "Europe",
+        "coverage": "Full or partial tuition fees and, at some faculties, basic living expenses; no travel provision stated",
+        "last_verified_date": "2026-10-04"
+      },
+      "programme_detail_applicant_utility": {
+        "application_readiness_checklist": [
+          "Do not look for a scholarship application form; UCPH considers every eligible non-EU/EEA master's applicant automatically",
+          "Target the Faculty of Science if you want tuition plus living costs, but note the GPA bar was above 90% and 98% minimum for the 2025 recipients",
+          "Check the September-intake restriction of the Faculty of Social Sciences, which has only about 2-3 scholarships a year",
+          "Make sure you are not SU-eligible, since SU entitlement disqualifies you",
+          "Watch the application portal for the nomination and accept within the stated deadline, or the award passes to someone else"
+        ],
+        "common_rejection_risks": [
+          "Assuming a separate application exists and so never opting in, or conversely assuming an application is needed",
+          "Not being admitted to a first-priority programme at SCIENCE, which removes scholarship consideration",
+          "SU eligibility or a Danish citizenship claim, both exclusions",
+          "Missing the acceptance deadline after nomination, which revokes the offer",
+          "Applying to the Faculty of Theology and expecting living costs to be covered, since only partial tuition waivers are granted there",
+          "Being surprised by Danish taxation on a living-expense component"
+        ],
+        "estimated_uncovered_costs": [
+          "Any portion of tuition not covered where only a partial waiver is granted, notably in the Faculty of Theology",
+          "Living costs where the faculty awards a tuition-only scholarship",
+          "Travel, insurance and course materials, none of which are mentioned as covered"
+        ],
+        "document_audit": [
+          "Master's admission application",
+          "Evidence of citizenship from outside the EU/EEA/Switzerland",
+          "Time-limited residence permit for studies in Denmark",
+          "Acceptance of the scholarship offer through the application portal"
+        ],
+        "alerts": [
+          {
+            "trigger": "No application, automatic consideration",
+            "message": "UCPH states you do not submit an individual application for the scholarship; consideration happens as part of admission."
+          },
+          {
+            "trigger": "Faculty differences are large",
+            "message": "Science covers tuition and 22 months of living expenses, Humanities considers everyone automatically, Social Sciences has 2-3 awards for September only, and Theology grants partial tuition waivers only."
+          },
+          {
+            "trigger": "Accept or lose it",
+            "message": "If you are offered a scholarship and do not accept it within the specified deadline, the offer is revoked and given to another applicant."
+          }
+        ],
+        "submission_workflow": [
+          "Choose a UCPH master's programme and check its faculty's scholarship terms on the scholarships page",
+          "Confirm you are tuition fee liable and not SU-eligible",
+          "Apply through the UCPH application portal within the admission round",
+          "Await the admission result and any scholarship nomination through the portal",
+          "Accept the scholarship within the specified deadline",
+          "For second-year scholarships, complete 60 ECTS and register grades by the faculty's deadline"
+        ]
+      },
+      "programme_detail_verification": {
+        "cycle_verified": "Annual master's admission round, verified 2026-10-04",
+        "verification_confidence": 0.87,
+        "official_fields_confirmed": [
+          "existence of the Danish Government Scholarship allocation at UCPH",
+          "automatic consideration with no separate application",
+          "eligibility and exclusion rules",
+          "academic-achievement-only selection",
+          "full or partial tuition waiver and/or basic living-expense grant",
+          "faculty-level terms for Science, Health and Medical Sciences, Social Sciences, Humanities and Theology",
+          "second-year scholarship conditions",
+          "acceptance deadline requirement",
+          "logo"
+        ],
+        "institution_check_required": [
+          "How many scholarships each faculty holds for the coming round",
+          "The master's tuition fee levels and the monetary value of the living-expense grant",
+          "The exact admission and nomination dates for the next round",
+          "Whether a given programme sits at an artistic higher education institution, which would exclude it"
+        ],
+        "unverified_or_removed_claims": [
+          "Stored program_type 'Head to the different master's degrees programmes and read the specific requirements here' was a scraped fragment of the Fulbright section, not a programme type; replaced",
+          "Stored deadline_display 'With admission application' is directionally correct but incomplete: the page states there is no application at all and that an awarded scholarship must be accepted within a specified deadline or it is revoked",
+          "No monetary amount or currency is published for the Danish Government Scholarship at UCPH, so funding_amount and funding_currency remain null",
+          "Stored image is the file .../csm_Tuition_fees_and_scholarships_NEGATIV_cb3ae2bdeb.png, whose own filename marks it as the NEGATIV (white/negative) variant - a white-on-transparent wordmark, which is a hard ban - so it was replaced with a verified UCPH logo asset"
+        ],
+        "source_citations": [
+          "https://www.ku.dk/studies/admission/scholarships-for-full-degree-students"
+        ],
+        "researched_by": "w1_27"
+      },
+      "logo_override": {
+        "url": "https://www.ku.dk/favicon.ico",
+        "page_url": "https://www.ku.dk/studies/admission/scholarships-for-full-degree-students",
+        "official_host": true,
+        "alt_text": "University of Copenhagen",
+        "validation_result": "verified",
+        "validation_detail": "ico, probe returned 'Unsupported image format: image/x-icon', which confirms HTTP 200 with an image content type; this is the University of Copenhagen's own site favicon mark served from ku.dk",
+        "image_kind": "official_logo",
+        "image_format": "ico",
+        "verified_at": "2026-10-04T00:00:00+00:00",
+        "host_evidence": "same_registrable_domain",
+        "_award": "University of Copenhagen Danish Government Scholarship"
+      },
+      "research_notes": {
+        "logo": "UCPH's scholarship page renders no standalone logo file in the markdown view, so I probed the university's own domain: https://www.ku.dk/favicon.ico returned HTTP 200 with image/x-icon, confirming an image content type, and it is UCPH's own site mark, so it is reported with image_format ico. I deliberately did not report the stored image, whose own filename (csm_Tuition_fees_and_scholarships_NEGATIV_...) identifies it as the negative/white variant of a wordmark, which would be white-on-transparent and banned.",
+        "unverified": [
+          "Number of scholarships per faculty in the coming round",
+          "Monetary value of the living-expense grant",
+          "Exact admission and nomination dates for the next round"
+        ],
+        "substitution": null,
+        "official_pages_read": ["https://www.ku.dk/studies/admission/scholarships-for-full-degree-students"],
+        "degree_level_confirmed": "Quoted: eligibility requires being 'admitted to a master's degree programme at the University of Copenhagen', and all section headings and conditions refer to MA/MSc applicants. The page does not offer this scholarship at bachelor's level.",
+        "url_observed": null,
+        "contradictions": [
+          "Stored program_type was a scraped fragment of the Fulbright section ('Head to the different master's degrees programmes and read the specific requirements here'), which describes how to apply for a Fulbright master's place, not this scholarship. Removed.",
+          "Stored deadline_display 'With admission application' implies an application; the official page says the opposite - 'you do not submit an individual application for the scholarship' - and adds an acceptance deadline after nomination, with the offer revoked if missed.",
+          "Stored image was a white/negative variant wordmark (filename contains NEGATIV), a banned white-on-transparent asset; replaced with a verified UCPH domain logo.",
+          "Stored funding 'Partial' understates the range: UCPH states the award is a full or partial tuition waiver and/or a basic living-expense grant, and at the Faculty of Science it covers tuition plus living expenses for 22 months."
+        ],
+        "skeleton": false
+      }
+    }
+  ]
+}

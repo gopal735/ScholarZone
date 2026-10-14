@@ -1,0 +1,144 @@
+{
+  "agent": "agent_323",
+  "records": [
+    {
+      "id": 716,
+      "official": {
+        "official_source_urls": [
+          "https://portal.gov.gy/services/scholarship",
+          "https://portal.gov.gy/benefits/government-of-guyana-scholarship",
+          "https://mps.gov.gy/scholarships/gog/",
+          "https://mps.gov.gy/faq/",
+          "https://govofguyana.smapply.io/"
+        ],
+        "application_link": "https://govofguyana.smapply.io/",
+        "catalogue_url": "https://mps.gov.gy/scholarships/gog/",
+        "official_updates_url": "https://www.facebook.com/MinistryofPublicService",
+        "deadline_central": null,
+        "deadline_central_display": null,
+        "deadline_note": "No central deadline exists: each award is advertised separately and its own closing date is stated in that advertisement on the Ministry's website, in the newspapers and on its social media pages. Every GoG round listed on the official scholarships page is marked Closed as of 10 October 2026 - most recently Guyana-Chile 2026 (closed 30 September 2026), Commonwealth Scholarship Commission 2027/2028 (closed 27 September 2026), Technical Institutes 2026 (closed 9 August 2026), Carnegie School of Home Economics 2026 (closed 31 July 2026), Japan JICA 2027 (closed 12 July 2026) and Japan MEXT 2027 (closed 24 May 2026).",
+        "application_cycle": "Rolling, one advertisement at a time; recent cycles are the 2026/2027 and 2027/2028 academic-year awards, all of which are currently closed",
+        "status": "CLOSED",
+        "status_note": "Every GoG scholarship offer listed on the Ministry's official page is marked 'Closed' at the time of verification. The Ministry advertises new rounds throughout the year on its website, in the newspapers and on its Facebook and Instagram pages, so the next opening is expected but not yet announced.",
+        "tuition_coverage_note": "Published wording: 'A fully funded Government of Guyana scholarship. Beneficiaries receive full tuition and allowances for books, outfit and travelling, and compensation for any other cost associated with the programme.' The application portal adds: 'All of the beneficiaries of fully funded Government of Guyana scholarship receive full tuition and allowances (books, outfit, travelling) and compensation for any other cost associated with the programme.'",
+        "funding_amount": null,
+        "funding_currency": null,
+        "funding_period": null,
+        "tuition_coverage": true,
+        "living_cost_coverage": true,
+        "travel_coverage": true,
+        "fully_funded": true,
+        "benefits": [
+          "Full tuition",
+          "Allowances for books, outfit and travelling",
+          "Compensation for any other cost associated with the programme",
+          "Graduates are bonded by contract and are guaranteed a job in the public sector after completing their studies"
+        ],
+        "eligibility": [
+          "Applicants must be a holder of a valid Guyanese passport",
+          "Applicants must have admission, or an unconditional acceptance letter, from the institution named in the advertisement",
+          "Applicants must hold the academic qualification and minimum grade point average named for that award, for example a Bachelor's degree with a minimum GPA of 3.0 for the Commonwealth Scholarship Commission awards",
+          "Any age limit named in the advertisement, for example 35 years or under for the Japan and Indonesia awards, below 40 years for the Azerbaijan award, 25 years or under for the China undergraduate award",
+          "Any language requirement named in the advertisement, for example fluency in Spanish for the Guyana to Chile scholarships",
+          "Willingness to accept the contractual bond: sign a contract with a guarantor and have the passport endorsed"
+        ],
+        "requirements": [
+          "Apply in response to the specific advertisement for the scholarship wanted",
+          "Register on the Government of Guyana scholarship portal and complete the application form for that award, uploading the documents it asks for before the published deadline",
+          "If awarded, sign the contract with a guarantor and have the passport endorsed; accepted forms of surety are land transport, a certificate of lease, a certificate of title, or a manager's cheque addressed to the Accountant General (motor vehicles are not accepted)",
+          "For technical institute awards, current students must have passes in all completed courses"
+        ],
+        "documents": [
+          "Valid Guyanese passport",
+          "Admission letter or unconditional acceptance letter from the institution",
+          "Academic certificates and transcripts evidencing the qualification and minimum GPA named in the advertisement",
+          "Language proficiency evidence where the advertisement requires it",
+          "Surety in an accepted form to support the contract with the guarantor"
+        ],
+        "selection_criteria": [
+          "Awards are offered based on the human resources needs of the country",
+          "No central selection criteria are published; each advertisement states the qualification, GPA, age and language requirements an applicant must meet, and awards are made against those named requirements only"
+        ],
+        "coverage": [
+          "Full tuition",
+          "Allowance for books",
+          "Outfit allowance",
+          "Travelling allowance",
+          "Compensation for any other cost associated with the programme"
+        ],
+        "application_method": [
+          "Find the open award on the Ministry's Government of Guyana scholarships page at mps.gov.gy, in the newspapers, or on the Ministry's Facebook and Instagram pages",
+          "Register on the Government of Guyana scholarship portal (govofguyana.smapply.io) and complete the application form for that award, uploading the documents it asks for before the published deadline (channel: online)",
+          "If awarded, sign the contract with a guarantor and have the passport endorsed (channel: in person)"
+        ],
+        "application_route": "Apply online through the Government of Guyana scholarship portal in response to a specific advertised award; rounds are announced on the Ministry's website, in the newspapers and on its Facebook and Instagram pages.",
+        "study_mode": null,
+        "citizenship_residency": "Applicants must be Guyanese nationals holding a valid Guyana passport",
+        "international_eligibility": "Restricted to Guyanese nationals holding a valid Guyana passport; the awards fund study at institutions in Guyana and overseas",
+        "subject_or_agency_requirement": "Fields of study are set per advertisement based on national workforce requirements and are usually agreed with a partner institution or government; recent named fields include Data science and Digital Transformation, Climate Smart Agriculture, Structural Engineering, Marine Engineering and Water and Wastewater Engineering (Commonwealth Scholarship Commission 2027/2028), and Mathematics, Structural Engineering and Geotechnics, Electrical Engineering Technology, Animal Health, Statistics, Engineering - Transport & Logistics, Agroecology and Neuroscience (Guyana-Chile 2026)",
+        "research_requirement": null,
+        "duration": "Duration is as advertised for each award; the post-graduation service bond is 1 year for programmes of 3-6 months, 3 years for over 6 to 18 months, and 5 years for over 18 months",
+        "description": "The Ministry of Public Service, Government Efficiency and Implementation advertises and administers Government of Guyana scholarships in three categories - undergraduate, technical and vocational education, and postgraduate - based on national workforce requirements. Beneficiaries receive full tuition and allowances for books, outfit and travelling, and compensation for any other cost associated with the programme, and graduates are bonded by contract and guaranteed a job in the public sector after completing their studies.",
+        "region": "Guyana; awards fund study at institutions in Guyana and overseas",
+        "program_type": "Government scholarship (in-kind benefit administered by the Ministry of Public Service, Government Efficiency and Implementation)",
+        "english_requirement": null
+      },
+      "verification": {
+        "source_citations": [
+          "https://portal.gov.gy/benefits/government-of-guyana-scholarship",
+          "https://portal.gov.gy/services/scholarship",
+          "https://mps.gov.gy/scholarships/gog/",
+          "https://mps.gov.gy/faq/",
+          "https://govofguyana.smapply.io/"
+        ],
+        "last_verified_date": "2026-10-10",
+        "verification_status": "confirmed",
+        "confidence": "high",
+        "not_confirmed": [
+          "funding_amount",
+          "funding_currency",
+          "funding_period",
+          "deadline_central",
+          "english_requirement",
+          "study_mode",
+          "research_requirement"
+        ],
+        "notes": "All five official Government of Guyana domains (GovPortal GY service and benefit pages, the Ministry's GoG scholarships page, the Ministry FAQ and the scholarship application portal) were fetched live on 2026-10-10; the benefit page states explicitly that no cash figure in Guyana dollars is published, and no individual amount appears on any official page."
+      },
+      "applicant_utility": {
+        "summary": "This is an umbrella, not one scholarship: the Ministry of Public Service, Government Efficiency and Implementation opens separate Government of Guyana rounds for undergraduate, technical/vocational and postgraduate study as workforce needs arise, so entry depends on catching the specific advertisement that names your field and institution. The funded package is full tuition plus allowances for books, outfit and travelling and compensation for other programme costs, applied for through the Government of Guyana online portal, and the trade-off is a binding contract with a guarantor, a stamped passport and one to five years of guaranteed public-sector service afterwards. Because nothing is open at the moment - every listed round closed by 30 September 2026 - the practical strategy is to prepare your passport, acceptance letter, transcripts and surety now so you can move within the short window the next round gives you.",
+        "best_fit": "Guyanese passport holders who already hold or can quickly secure admission to a named institution, meet the age and GPA cut-offs in the current advertisement, and genuinely want a public-sector career afterwards.",
+        "application_readiness_checklist": [
+          "Check the Ministry's GoG scholarships page and its Facebook and Instagram feeds weekly - recent rounds closed within weeks of opening (the Chile 2026 round closed 30 September 2026)",
+          "Secure the admission or unconditional acceptance letter first: most rounds require it at application stage and universities rarely hold offers for months",
+          "Arrange your guarantor and surety early - land transport, certificate of lease, certificate of title or a manager's cheque addressed to the Accountant General (a motor vehicle is rejected), and paperwork can take weeks",
+          "Assemble certified certificates and transcripts that evidence the exact qualification and the minimum GPA named in the advertisement, commonly 3.0 on a 4.0 scale",
+          "Create your account on the Government of Guyana scholarship portal before a round opens so login and upload problems do not eat the deadline",
+          "Confirm you meet the named language requirement where one exists, such as demonstrable Spanish fluency for the Guyana-Chile awards"
+        ],
+        "common_rejection_risks": [
+          "Applying generically: there is no standing application, only responses to individual advertisements, and out-of-round submissions are not considered",
+          "Field mismatch: each round names exact programmes at named institutions, so a strong applicant in an unlisted field is not shortlisted",
+          "Age cut-offs are enforced on several rounds - 35 or under for Japan and Indonesia, under 40 for Azerbaijan, 25 or under for the China undergraduate awards",
+          "Missing evidence of the named language, most visibly Spanish fluency for the Chile awards, rather than classroom study alone",
+          "No valid surety to complete the contract with the guarantor, or an attempted vehicle surety, which the Ministry does not accept",
+          "For continuing technical institute students, a single failed completed course when the advertisement requires passes in all"
+        ],
+        "estimated_uncovered_costs": "The Ministry publishes no cash figure for the allowance, so the true size of the stipend vs tuition, visa, medical, insurance and airfare costs cannot be checked from official pages and must be raised with the Scholarships Department; partner-donor awards advertised under the same umbrella may cover only full or partial tuition plus allowances and accommodation, so each advertisement's benefit wording must be read individually rather than assuming the fully funded package.",
+        "document_audit": [
+          "The passport does double duty as a legal record: it is endorsed with the contractual obligation stamp, and prior Ministry approval is required to leave the country once bonded",
+          "Acceptance letters must be unconditional where the advertisement says so - a conditional offer does not satisfy the rule",
+          "Surety documents must be in one of the four accepted forms and addressed exactly as stated (manager's cheques to the Accountant General); names on title or lease documents must match the guarantor",
+          "Transcripts must show the GPA itself where a minimum is named, since grade letters alone do not evidence the required 3.0"
+        ],
+        "alerts": [
+          "Nothing is open right now: every round on the official page is marked Closed as of 10 October 2026, with the latest closing date 30 September 2026 - plan for the next advertisement rather than a fixed annual date",
+          "The bond is long and real: programmes over 18 months commit you to five years of public service, placement is decided by the Ministry, and you must report to the Ministry within the first week of any return to Guyana",
+          "Allowances arrive on a schedule - locally in the first month of each academic quarter, overseas every six months or annually - so budget for the gaps between payments",
+          "Living overseas on the award requires permission workflows before travel (itinerary, surety, university letter where classes are ongoing), so do not plan spontaneous trips"
+        ],
+        "submission_workflow": "Watch for the individual advertisement, register and submit on the Government of Guyana scholarship portal before its stated closing date, then - if selected - sign the contract with a guarantor and have the passport endorsed before the award can be taken up."
+      }
+    }
+  ]
+}

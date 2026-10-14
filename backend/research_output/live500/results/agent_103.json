@@ -1,0 +1,136 @@
+{
+  "agent": "agent_103",
+  "records": [
+    {
+      "id": 291,
+      "official": {
+        "official_source_urls": [
+          "https://visegradfund.org/visegrad-scholarship-program-apply",
+          "https://visegradfund.org/faq-scholarships",
+          "https://visegradfund.org/scholarships",
+          "https://study.gov.pl/visegrad-scholarship-programme"
+        ],
+        "application_link": "https://my.visegradfund.org/Account/Login",
+        "catalogue_url": "https://visegradfund.org/scholarships",
+        "official_updates_url": "https://visegradfund.org/faq-scholarships",
+        "deadline_central": "2027-04-15",
+        "deadline_central_display": "15 April 2027, 12:00 PM (noon)",
+        "deadline_note": null,
+        "application_cycle": "2027/2028 round - call opens 1 January 2027",
+        "status": "OPEN",
+        "status_note": "The Fund's page states the call 'Opens on Jan 1, 2027 at 12:00 PM', with final application deadline 15 April 2027 at 12:00 PM and results announced 31 May 2027.",
+        "tuition_coverage_note": "Per the Fund's FAQ, the scholarship does not cover tuition fees directly: host institutions receive 2,000 EUR per semester per scholar, which for master's studies covers tuition or administrative costs, while excess fees remain the scholar's responsibility; for post-master's scholarships the lump sum covers institutional hosting expenses.",
+        "funding_amount": 3500,
+        "funding_currency": "EUR",
+        "funding_period": "per semester",
+        "tuition_coverage": true,
+        "living_cost_coverage": true,
+        "travel_coverage": false,
+        "fully_funded": false,
+        "benefits": [
+          "3,500 EUR per semester paid to each scholar's bank account, at the scholar's full disposal",
+          "2,000 EUR per semester per scholar paid to the host institution",
+          "Support for a study/research period of 1-2 semesters",
+          "Scholarship confirmation issued by the Fund, usable as an enclosure to a visa application"
+        ],
+        "eligibility": [
+          "Citizenship of a Visegrad country (Czechia, Hungary, Poland, Slovakia) or a Western Balkans / Eastern Partnership country: Albania, Armenia, Azerbaijan, Belarus, Bosnia and Herzegovina, Georgia, Kosovo, Moldova, Montenegro, North Macedonia, Serbia, Ukraine",
+          "The country of the applicant's citizenship must be different from the country of the host institution",
+          "Applicants must hold a bachelor's or master's degree; the FAQs state that for master's/post-master's scholarships 6+ completed semesters or a bachelor's degree are required",
+          "Previous levels of university studies must have been completed in a country other than the host country",
+          "The distance between the applicant's current employer/university or permanent residence and the host university/institute should exceed 150 km",
+          "Full-time master's level studies or full-time post-master's studies/research for 1-2 semesters"
+        ],
+        "requirements": [
+          "Application must be submitted online via My Visegrad by the deadline",
+          "Scanned valid national ID or passport",
+          "Master's level: transcript of records covering at least the last two completed semesters or a diploma supplement, plus a scanned letter of acceptance from the host university (or proof of applying if not yet accepted)",
+          "Post-master's level: scanned letter of acceptance with a detailed working plan",
+          "Documents written in English or accompanied by a translation certified by a sworn translator or a university official"
+        ],
+        "documents": [
+          "Scanned valid national ID document or passport",
+          "Scanned transcript of records covering at least the last two completed semesters or a diploma supplement (master's level)",
+          "Scanned letter of acceptance from the host university, or proof of applying if the student is not accepted yet (master's level)",
+          "Scanned letter of acceptance with a detailed working plan (post-master's level)",
+          "Certified or university translations for documents not written in English"
+        ],
+        "selection_criteria": [
+          "Preference is given to applicants not previously supported by the Fund",
+          "Preference is given to applicants with study/research topics relevant to the V4 region",
+          "Only one application per deadline, to one host institution, for one study program or research project"
+        ],
+        "coverage": [
+          "3,500 EUR per semester paid to the scholar's bank account, at the scholar's full disposal - the Fund states it cannot cover any additional costs",
+          "2,000 EUR per semester paid to the host institution, covering tuition or administrative costs for master's studies and institutional hosting expenses for post-master's scholarships",
+          "Travel, accommodation, insurance and visa arrangements are not provided by the Fund"
+        ],
+        "application_method": [
+          "Apply through the online system at my.visegradfund.org by the deadline",
+          "Secure admission or at least a preliminary acceptance at a host institution in Central and Eastern Europe",
+          "Upload all required documents to the online system by the deadline (PDF format recommended; nothing is sent by post)",
+          "Submit the final acceptance letter before signing the contract with the Fund"
+        ],
+        "application_route": "Online via the Fund's My Visegrad portal; the system opens approximately 45 days before the deadline.",
+        "study_mode": "Full-time",
+        "citizenship_residency": "Open to citizens of Czechia, Hungary, Poland, Slovakia and of Albania, Armenia, Azerbaijan, Belarus, Bosnia and Herzegovina, Georgia, Kosovo, Moldova, Montenegro, North Macedonia, Serbia and Ukraine; the applicant's citizenship country must differ from the host institution's country.",
+        "international_eligibility": "Yes - open to citizens of the Visegrad countries as well as Western Balkans and Eastern Partnership countries; no other nationalities are listed as eligible.",
+        "subject_or_agency_requirement": "All disciplines are supported; the application form offers a choice of 25 disciplines covering the large majority of study fields.",
+        "research_requirement": "Post-master's applicants must submit a letter of acceptance with a detailed (approved) working plan from the host institution.",
+        "duration": "1-2 semesters of full-time study/research; funding is paid per semester (5-month period)",
+        "description": "The International Visegrad Fund's Visegrad Scholarship Program supports master's and post-master's students and researchers, in all disciplines and any language, for up to two semesters at more than 190 accredited higher-education institutions across Central and Eastern Europe.",
+        "region": "Central and Eastern Europe (V4, Western Balkans and Eastern Partnership countries)",
+        "program_type": "Individual mobility scholarship programme (Master's and post-Master's)",
+        "english_requirement": "No language certificates are required and study/research may be in the host university's native language; the application form itself must be filled out in English."
+      },
+      "verification": {
+        "source_citations": [
+          "https://visegradfund.org/visegrad-scholarship-program-apply",
+          "https://visegradfund.org/faq-scholarships"
+        ],
+        "last_verified_date": "2026-10-10",
+        "verification_status": "confirmed",
+        "confidence": "high",
+        "not_confirmed": [
+          "Travel or insurance coverage - the Fund states only that it cannot cover additional costs",
+          "Any institutional deadline differing from the published central deadline - none published",
+          "The level of tuition excess fees above the 2,000 EUR institutional lump sum - set individually by each host institution"
+        ],
+        "notes": "Award amount (3,500 EUR/semester plus 2,000 EUR/semester to the host institution), deadline (15 April 2027, 12:00 PM), documents and eligibility conditions were confirmed on the International Visegrad Fund's own apply and FAQ pages."
+      },
+      "applicant_utility": {
+        "summary": "The Fund pays 3,500 EUR per semester directly into your account, plus 2,000 EUR per semester to your host institution, so a two-semester stay means 7,000 EUR for you - but travel, accommodation, insurance, visa fees and any tuition above the host's 2,000 EUR are on you. The 2027 round opens on 1 January 2027 and shuts strictly at noon on 15 April 2027, with results by 31 May and funding that cannot start before the September/October 2027 semester. The real filter is the mobility rules: no host in your citizenship country, no return to the country or university of your previous degree, and the host must sit more than 150 km from your current university or permanent residence.",
+        "best_fit": "Master's or post-master's students and researchers from V4, Western Balkans or Eastern Partnership countries who can line up a CEE host institution far enough from home to satisfy the 150 km rule.",
+        "application_readiness_checklist": [
+          "Contact host institutions early to obtain at least a preliminary acceptance letter, since admission is your responsibility",
+          "Request transcripts covering your last two completed semesters well before April",
+          "Arrange sworn or university translations into English for any non-English documents",
+          "Confirm in writing with the host university what tuition the 2,000 EUR institutional lump sum will actually cover",
+          "Check passport validity and research visa requirements so you can move once results land at the end of May"
+        ],
+        "common_rejection_risks": [
+          "Choosing a host in your own country of citizenship or in the country where you completed your previous degree",
+          "Host institution within 150 km of your current university or permanent residence",
+          "Submitting after the noon deadline - the Fund accepts no late applications",
+          "Filing more than one application, or several hosts or projects, in a single round",
+          "Uploading documents that are neither in English nor accompanied by a certified translation",
+          "Failing to disclose a concurrent scholarship such as Erasmus, which the Fund may treat as grounds to withdraw its offer"
+        ],
+        "estimated_uncovered_costs": "Travel to and from the host country, accommodation and daily living costs beyond the 3,500 EUR per semester, health insurance, visa/residence permit fees, and any tuition or administrative charges above the 2,000 EUR per semester the host institution receives.",
+        "document_audit": [
+          "Everything is uploaded to My Visegrad - no documents are sent by post - and PDF is the recommended format",
+          "If admission tests or interviews fall after the deadline, proof of application or preliminary acceptance is accepted, but the final acceptance letter must be on file before you sign the contract",
+          "A second-semester installment requires transcripts showing 30+ ECTS credits plus host enrolment confirmation, or supervisor-signed progress reports at post-master's level",
+          "Money is only released after the host university confirms your arrival in writing on letterhead with signature and stamp"
+        ],
+        "alerts": [
+          "The application system only goes live about 45 days before the deadline, so prepare documents before the January opening",
+          "Because results publish at the end of May, funding cannot start before the fall semester (September/October at the earliest)",
+          "It is an attendance scholarship - you must remain at the host institution for the entire period",
+          "Recipients must acknowledge the Fund in scholarly documentation and public events and use its logo"
+        ],
+        "submission_workflow": "Register on My Visegrad, upload the complete document set before 15 April 2027 12:00 PM, respond to any eligibility checks, then receive results by email and the Fund's website by 31 May 2027, sign the posted contract, and get the first payment released after the host confirms arrival."
+      }
+    }
+  ]
+}

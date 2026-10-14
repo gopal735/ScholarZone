@@ -1,0 +1,127 @@
+{
+  "agent": "agent_092",
+  "records": [
+    {
+      "id": 271,
+      "official": {
+        "official_source_urls": [
+          "https://www.ku.dk/studies/admission/scholarships-for-full-degree-students",
+          "https://www.ku.dk/studies/admission/masters-important-dates-and-deadlines"
+        ],
+        "application_link": "https://www.ku.dk/studies/admission/masters",
+        "catalogue_url": "https://www.ku.dk/studies/masters/all-programmes",
+        "official_updates_url": "https://www.ku.dk/studies/admission/masters-important-dates-and-deadlines",
+        "deadline_central": "2027-01-15",
+        "deadline_central_display": "15 January 2027",
+        "deadline_note": "There is no separate scholarship deadline. The operative deadline is the master's admission deadline for applicants from outside the EU/EEA and Switzerland: 15 January at 23:59 CET for the September intake, and 1 September at 23:59 CEST for the February intake, which is open only to programmes with a legal right of admission.",
+        "application_cycle": "September 2027 intake; the application portal for applicants outside the EU/EEA and Switzerland opens on 15 November 2026 and closes on 15 January 2027",
+        "status": "UPCOMING",
+        "status_note": "The next application window for the September 2027 intake opens on 15 November 2026. Scholarship consideration is automatic inside that admission round and no separate scholarship application exists.",
+        "tuition_coverage_note": "'The Danish Government Scholarship is granted either as full or partial tuition fee waivers and/or as an amount that covers basic living expenses.' The Faculty of Science states the scholarship covers 'tuition fees' and 'living expenses (22 months)'; the Faculty of Theology grants it 'only as partial tuition fee waivers, and not as an amount that covers basic living costs'.",
+        "funding_amount": null,
+        "funding_currency": null,
+        "funding_period": null,
+        "tuition_coverage": true,
+        "living_cost_coverage": true,
+        "travel_coverage": false,
+        "fully_funded": false,
+        "benefits": [
+          "Automatic consideration: all eligible non-EU/EEA applicants to the MA/MSc degree programmes are considered without submitting an individual application",
+          "Granted as a full or partial tuition fee waiver and/or an amount that covers basic living expenses, depending on faculty",
+          "Faculty of Science: the scholarship covers tuition fees and living expenses for 22 months",
+          "Faculty of Health and Medical Sciences: either tuition fees and living expenses, or the tuition fee only",
+          "Faculty of Science second-year scholarships: tuition fees and living expenses of the 2nd year for fee-paying students who excel in the first year"
+        ],
+        "eligibility": [
+          "A citizen of a country outside the EU, EEA (the European Economic Area) or Switzerland",
+          "Admitted to a master's degree programme at the University of Copenhagen",
+          "Granted a time-limited residence permit for the purpose of studying a higher educational programme in Denmark",
+          "Not eligible for a grant under the Danish State Educational Grant and Loan Scheme (SU)",
+          "No legal claim to the rights of Danish citizens",
+          "Faculty of Science: only applicants with a bachelor's grade point average above 90% are considered, and only on their 1st priority application"
+        ],
+        "requirements": [
+          "Submit the master's admission application by the deadline for applicants from outside the EU/EEA and Switzerland, with all documentation uploaded before the deadline",
+          "Accept any scholarship offer within the specified deadline, otherwise the offer is revoked and offered to another applicant",
+          "No separate scholarship application and no additional scholarship documents"
+        ],
+        "documents": [
+          "The admission application documents required for the chosen master's programme, uploaded to the application portal before the deadline",
+          "Evidence of citizenship of a country outside the EU, EEA or Switzerland"
+        ],
+        "selection_criteria": [
+          "The University awards the scholarships solely on the basis of academic achievement; financial need is not taken into consideration",
+          "Faculty of Science: bachelor's grade point average above 90%; in 2025 the recipients had a GPA of minimum 98%",
+          "Faculty of Health and Medical Sciences second-year scholarships: 'It is our expectation, that student must have a GPA of 10 or higher on the Danish grading scale'",
+          "Nominated students receive information directly through the application portal"
+        ],
+        "coverage": [
+          "Full or partial tuition fee waiver, depending on faculty",
+          "An amount that covers basic living expenses, at some faculties",
+          "Faculty of Science: living expenses for 22 months",
+          "No travel costs are stated"
+        ],
+        "application_method": [
+          "No individual application: all eligible non-EU/EEA applicants to the University of Copenhagen's MA/MSc degree programmes are automatically considered"
+        ],
+        "application_route": "Apply for admission to a master's programme through the University of Copenhagen application portal; the scholarship is decided inside that admission process and communicated through the same portal.",
+        "study_mode": "Full-time",
+        "citizenship_residency": "Must be a citizen of a country outside the EU, EEA or Switzerland and hold a time-limited residence permit for studying in Denmark",
+        "international_eligibility": "Only citizens of countries outside the EU, EEA and Switzerland are eligible",
+        "subject_or_agency_requirement": null,
+        "research_requirement": null,
+        "duration": "The duration of the master's programme; some faculties also award a very limited number of second-year scholarships after the first year",
+        "description": "The University of Copenhagen offers a limited number of tuition waivers and grants through the Danish Government Scholarship programme, awarded solely on academic achievement to highly talented students with outstanding academic records from non-EU/EEA countries. All non-EU/EEA applicants offered admission are considered automatically and do not submit an individual application.",
+        "region": "Europe",
+        "program_type": "Danish Government Scholarship administered by the university (tuition fee waiver and/or living-cost grant)",
+        "english_requirement": null
+      },
+      "verification": {
+        "source_citations": [
+          "https://www.ku.dk/studies/admission/scholarships-for-full-degree-students",
+          "https://www.ku.dk/studies/admission/masters-important-dates-and-deadlines"
+        ],
+        "last_verified_date": "2026-10-10",
+        "verification_status": "confirmed",
+        "confidence": "high",
+        "not_confirmed": [
+          "funding_amount",
+          "funding_currency",
+          "funding_period",
+          "english_requirement",
+          "exact number of scholarships per faculty for the 2027 cycle"
+        ],
+        "notes": "Award terms, eligibility rules, faculty variants and the automatic-consideration route were confirmed on UCPH's own scholarships page, and the non-EU/EEA application deadlines on UCPH's master's important-dates page. No monetary figure is published on either page."
+      },
+      "applicant_utility": {
+        "summary": "There is nothing to submit for this scholarship beyond the ordinary master's admission application, so your entire case rests on grades you already hold. At the Faculty of Science you are only screened if your bachelor's GPA exceeds 90% and the programme is your first priority, while the 2025 recipients started at 98%, so treat the waiver as a bonus rather than a budget line. If an offer arrives, accept it inside the stated window or it is passed to another applicant.",
+        "best_fit": "Non-EU/EEA applicants with near-flawless bachelor grades applying to a UCPH master's, especially in the Faculty of Science.",
+        "application_readiness_checklist": [
+          "Confirm you are a citizen of a country outside the EU/EEA/Switzerland and that you are not entitled to SU",
+          "Upload every admission document before the 15 January deadline rather than after it, because documentation must be in place at the deadline",
+          "Rank your genuinely preferred programme first if you are aiming at Science, since only first-priority applications are screened",
+          "Diarise the scholarship acceptance date the moment an offer appears in the application portal"
+        ],
+        "common_rejection_risks": [
+          "Applying with a first-priority choice you do not actually want at Science, so the screening never happens",
+          "Letting the acceptance window on a waiver offer lapse and losing it to another applicant",
+          "Being eligible for SU or holding a legal claim to the rights of Danish citizens, which disqualifies you outright",
+          "Targeting Theology expecting a living-cost grant, when that faculty grants only partial tuition waivers and decides after tuition has been charged"
+        ],
+        "estimated_uncovered_costs": "Anything beyond a tuition waiver: flights, housing deposits, insurance and daily living costs are yours unless the faculty grants the living-expense component, and even then that component is taxable under Danish tax legislation for some nationalities.",
+        "document_audit": [
+          "Your transcript must let UCPH read a GPA above 90% without interpretation; if your grading scale is unfamiliar, supply the official conversion key with the application",
+          "Citizenship evidence must match the passport you will use for the Danish residence permit",
+          "For a February intake, only programmes with a legal right of admission accept non-EU/EEA applicants, and the deadline is 1 September"
+        ],
+        "alerts": [
+          "The Faculty of Social Sciences has generally only 2-3 scholarships per year and awards them solely in connection with the September intake",
+          "Science caps second-year awards at three recipients sharing the same nationality and requires 60 ECTS registered by 1 September",
+          "Theology decides after applicants are offered admission and charged tuition, so never decline an offer while waiting for a waiver",
+          "The decision is communicated through the application portal rather than by email, so check the portal rather than your inbox"
+        ],
+        "submission_workflow": "One submission only, the master's admission application in the University of Copenhagen portal, with the scholarship decided inside the same process and communicated through the portal."
+      }
+    }
+  ]
+}

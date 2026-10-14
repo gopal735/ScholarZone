@@ -1,0 +1,96 @@
+{
+ "agent": "agent_230",
+ "assignment_count": 1,
+ "scholarships": [
+  {
+   "id": 578,
+   "title": "EASL Mobility / Research Fellowship Programme",
+   "country": "Switzerland",
+   "degree": "Postdoctoral",
+   "funding_label": "Partially Funded",
+   "status": "open",
+   "official_source": "European Association for the Study of the Liver (EASL)",
+   "official_source_url": "https://easl.eu/fellowship/mobility-research-fellowship-programme",
+   "application_link": "https://easl.eu/fellowship/mobility-research-fellowship-programme",
+   "catalogue_url": "https://easl.eu/fellowships",
+   "official_updates_url": "https://easl.eu/fellowships",
+   "existing": {
+    "funding_amount": null,
+    "funding_currency": null,
+    "funding_period": null,
+    "tuition_coverage": null,
+    "living_cost_coverage": null,
+    "travel_coverage": null,
+    "fully_funded": 0,
+    "description": null,
+    "eligibility": [
+     "Early- or mid-career professional in hepatology research or clinical practice",
+     "Affiliated with a recognised clinical / scientific institution or university in Europe",
+     "Host institute must be based in Europe (mobility fellowships)",
+     "Research or project focus must be on liver disease",
+     "Applicants must be EASL members",
+     "Strong motivation for a career in clinical or basic hepatology research (research fellowships)",
+     "Letter from the host institute confirming the ability to host the applicant (mobility fellowships)"
+    ],
+    "eligibility_summary": "Early- or mid-career professionals affiliated with a recognised clinical or scientific institution or university in Europe, must be EASL members, and the project must focus on liver disease. Mobility fellowships additionally require a host institute in Europe and a letter confirming it can host the applicant.",
+    "benefits": [
+     "Travel and accommodation costs (mobility fellowships)",
+     "Salary or living expenses",
+     "Laboratory supplies, equipment and research-related expenses",
+     "Other logistical costs needed to execute the fellowship, including childcare"
+    ],
+    "coverage": [
+     "Travel and accommodation costs (mobility fellowships)",
+     "Salary or living expenses",
+     "Laboratory supplies, equipment and research-related expenses",
+     "Other logistical costs needed to execute the fellowship, including childcare"
+    ],
+    "requirements": [
+     "Active EASL membership to access the Memberzone application portal",
+     "Research or project proposal of a maximum of 5 pages",
+     "Three-minute motivation video",
+     "Curriculum vitae of a maximum of 4 pages",
+     "Recommendation letter from a supervisor or mentor, maximum 1 page"
+    ],
+    "documents": [
+     "Research / project proposal (max. 5 pages)",
+     "Motivation video (3-minute elevator pitch)",
+     "Curriculum vitae (max. 4 pages)",
+     "Supervisor or mentor recommendation letter (max. 1 page)",
+     "Host institute letter confirming ability to host (mobility fellowships only)",
+     "Completed budget template with justification"
+    ],
+    "english_requirement": null,
+    "application_method": [
+     "Submit the application through the EASL Memberzone portal; an active EASL membership is required"
+    ],
+    "selection_notes": "Applications are scored out of 100 by an expert review panel appointed by the EASL Governing Board, with funding awarded to the highest overall scores. Weighting published by EASL: scientific/clinical merit 35%, applicant's motivation 20%, applicant's potential 15%, relevance to hepatology 15%, host institution and environment 15%. Final decisions also consider diversity, equity and potential long-term impact.",
+    "best_fit": "Early- to mid-career hepatology researchers and clinicians based at a European institution who want a six-month research placement abroad or a funded project at their current host.",
+    "notes": "Preference may be given to applicants from Inclusiveness Target Countries for mobility fellowships. Award notifications for the 2026 round were scheduled for November 2026.",
+    "duration": "6 months",
+    "application_period": null,
+    "deadline_display": "1 September (annual close; 2026 call closed 1 September 2026)",
+    "deadline_date": null,
+    "region": "Europe",
+    "program_type": "Professional association research and mobility fellowship",
+    "applicant_utility": null,
+    "official_details": null
+   },
+   "missing_fields": [
+    "funding_amount",
+    "funding_currency",
+    "funding_period",
+    "tuition_coverage",
+    "living_cost_coverage",
+    "travel_coverage",
+    "description",
+    "english_requirement",
+    "application_period",
+    "deadline_date",
+    "applicant_utility",
+    "official_details"
+   ]
+  }
+ ],
+ "result_file": "C:\\Users\\GopaL\\Desktop\\Projects folder\\ScholarZone\\backend\\research_output\\live500\\results\\agent_230.json"
+}

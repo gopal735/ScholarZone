@@ -1,0 +1,139 @@
+{
+  "agent": "agent_237",
+  "records": [
+    {
+      "id": 591,
+      "official": {
+        "official_source_urls": [
+          "https://horatioalger.org/scholarships-and-services/undergraduate-scholarships",
+          "https://horatioalger.org/scholarships-and-services/national-scholars/"
+        ],
+        "application_link": "https://horatioalger.org/scholarships-and-services/undergraduate-scholarships",
+        "catalogue_url": "https://horatioalger.org/scholarships-and-services/state-scholarships",
+        "official_updates_url": "https://horatioalger.org/scholarships-and-services/undergraduate-scholarships",
+        "deadline_central": "2027-03-01",
+        "deadline_central_display": "Applications open 1 December and close 1 March (next cycle: 1 December 2026 - 1 March 2027)",
+        "deadline_note": "High-school juniors apply between 12:01 a.m. on December 1 and 11:59 p.m. on March 1. The programme is offered by the Association; if no application is submitted for a state during the cycle, criteria are adjusted for the following year's state.",
+        "application_cycle": "Next cycle: applications open 1 December 2026 and close 1 March 2027",
+        "status": "CLOSED",
+        "status_note": "The published application period for juniors is 1 December to 1 March each year; as of 10 October 2026 the current cycle has closed and the next opens on 1 December 2026, closing 1 March 2027.",
+        "tuition_coverage_note": null,
+        "funding_amount": 25000,
+        "funding_currency": "USD",
+        "funding_period": "one-off total award",
+        "tuition_coverage": true,
+        "living_cost_coverage": false,
+        "travel_coverage": false,
+        "fully_funded": false,
+        "benefits": [
+          "105 National Scholarships of 25,000 USD each.",
+          "An additional 25,000 USD plus support services from the Association and its nonprofit partners through the Successful Turns program.",
+          "Scholars in the Rural America Initiative can receive an additional 20,000 USD to apply to their bill or defer it.",
+          "The Horatio Alger Association offers other scholarship programmes for undergraduates, graduate students and career and technical education, including Arborscapes, County of Los Angeles, Courage to Persevere, CTE, Dennis Patrick Murphy, Distinguish Americas, Educator Laureate, First Gen, Global Scholars, Horace Orr, Impact, International Scholarship, Jeanne Gibson, Judith McDonough Conrad, Loran and Roderick Reniff, Lyles-Sang-Champie Harrison, National Career and Technical Education, Path Forward, PepsiCo West, First Responders, State Scholarship, William C. Bennett and Woodhouse Family."
+        ],
+        "eligibility": [
+          "Be a US citizen.",
+          "Be enrolled full time as a high-school junior.",
+          "Have critical financial need, defined as a family income of USD 55,000 or less.",
+          "Be committed to completing a bachelor's degree at an accredited non-profit public or private institution in the United States of America immediately after graduating high school.",
+          "Demonstrate academic competency and integrity, and perseverance in overcoming adversity.",
+          "Participate in a generous and caring service to others at the community level."
+        ],
+        "requirements": [
+          "A critical financial need of USD 55,000 or less family income.",
+          "Full-time high-school junior enrollment.",
+          "Demonstration of critical financial need, commitment to completing a bachelor's degree, perseverance in overcoming adversity, and service to others at the community level.",
+          "A short personal statement or essay.",
+          "High-school transcripts and a school official's certification.",
+          "Documents evidencing family financial need."
+        ],
+        "documents": [
+          "Online application form.",
+          "Personal statement or essay on overcoming adversity.",
+          "High-school transcripts.",
+          "School official's certification.",
+          "Family financial documentation."
+        ],
+        "selection_criteria": [
+          "Critical financial need.",
+          "Integrity and perseverance in overcoming adversity.",
+          "Academic competency.",
+          "Providing service to others in the community."
+        ],
+        "coverage": [
+          "105 National Scholarships of 25,000 USD each.",
+          "An additional 25,000 USD plus support services from the Association and its nonprofit partners through the Successful Turns program.",
+          "Rural America Initiative Scholars receive an additional 20,000 USD to apply to their bill or defer it.",
+          "Tuition support, plus non-tuition educational expenses, support services and, for the Rural America Initiative, deferral of part of the bill."
+        ],
+        "application_method": [
+          "Check eligibility in the eligibility guide.",
+          "Prepare supporting documents and complete the essay.",
+          "Fill out the online application.",
+          "Submit the application after 12:01 a.m. on December 1 and before 11:59 p.m. on March 1.",
+          "Applicants are notified within 90 days of the application deadline; those selected for further review are contacted by program staff by telephone for a short interview."
+        ],
+        "application_route": "Online application on the Horatio Alger Association website, open from 12:01 a.m. on 1 December to 11:59 p.m. on 1 March, with notification within 90 days of the deadline.",
+        "study_mode": "Full-time: applicants must be enrolled full time as a high-school junior and pursue a full-time bachelor's degree immediately after high school graduation.",
+        "citizenship_residency": "US citizenship is required.",
+        "international_eligibility": "US citizens only; the separate International Scholarship has a different eligibility framework.",
+        "subject_or_agency_requirement": "Any academic discipline is acceptable for the 2-year college transfer and degree completion programmes; there are no subject restrictions published for the National Scholarship.",
+        "research_requirement": null,
+        "duration": "Bachelor's degree: applicants must pursue a bachelor's degree at an accredited non-profit public or private institution in the United States of America, immediately after graduating high school.",
+        "description": "The Horatio Alger Association is a US non-profit organisation dedicated to helping high-school students who face significant financial obstacles and demonstrating that a college education is attainable through scholarships, mentoring and other programs. This scholarship programme supports US high-school juniors who can demonstrate strong academic potential, perseverance in overcoming adversity and service to their community, aiming to help them attend a US college or university.",
+        "region": "North America",
+        "program_type": "Nonprofit scholarship",
+        "english_requirement": null
+      },
+      "verification": {
+        "source_citations": [
+          "https://horatioalger.org/scholarships-and-services/undergraduate-scholarships"
+        ],
+        "last_verified_date": "2026-10-10",
+        "verification_status": "confirmed",
+        "confidence": "high",
+        "not_confirmed": [
+          "funding_period in a published form - the page states 105 scholarships at 25,000 USD each but does not publish a payment or renewal schedule",
+          "tuition_coverage as an explicit statement - the page does not use the words 'tuition', so tuition coverage is inferred from the award being a college scholarship and from the Rural America Initiative's references to applying funds to the student's bill",
+          "english_requirement - no language requirement is published",
+          "the closing time zone for the 1 March deadline in each state"
+        ],
+        "notes": "The Horatio Alger Association's undergraduate scholarships page was read in full on its own domain. The 105 awards of 25,000 USD, the USD 55,000 family income ceiling, the full-time junior requirement, the US citizenship rule, the 1 December to 1 March application window with a first full-time junior year, and the additional Successful Turns and Rural America Initiative support were all confirmed directly."
+      },
+      "applicant_utility": {
+        "summary": "The threshold is family income, not GPA: USD 55,000 or less for the household, plus a full-time high-school junior year, so if your family earns above that line this is not your award. Only 105 students win nationally, and the essay on overcoming adversity plus community service carries as much weight as your transcript. What makes this one distinctive is the wrap-around money: 25,000 USD from the Rural America Initiative plus 25,000 USD through the Successful Turns support programme, which matters because the core award alone is unlikely to cover a four-year bill. Applications for the next cycle open on 1 December 2026 and close on 1 March 2027, and notification arrives within 90 days.",
+        "best_fit": "Full-time US high-school juniors from low-income families who can evidence hardship overcome, sustained community service and solid academics, and who intend to enrol straight into a US bachelor's degree.",
+        "application_readiness_checklist": [
+          "Check the family income ceiling first: USD 55,000 or less is a hard gate.",
+          "Confirm you will be a full-time high-school junior during the cycle you are applying in.",
+          "Confirm US citizenship and that you intend to enrol straight into a bachelor's degree at an accredited non-profit US institution.",
+          "Line up evidence of perseverance in overcoming adversity and of community service rather than a list of activities.",
+          "Ask for transcripts and the school official's certification well before 1 March, and gather family financial documentation early - income limits are documented, not asserted.",
+          "Answer your phone around the notification period, since shortlisted applicants are contacted by telephone for a brief interview."
+        ],
+        "common_rejection_risks": [
+          "Family income above the USD 55,000 threshold.",
+          "Not enrolled full time as a high-school junior in the cycle applied for.",
+          "Being a green-card holder or other non-US citizen.",
+          "A statement of adversity that reads as routine hardship rather than perseverance in overcoming it.",
+          "Community service that looks last-minute or is done only for the application.",
+          "Missing the 1 March cutoff - technically no applications are accepted after 25 March, but the published window closes on 1 March."
+        ],
+        "estimated_uncovered_costs": "The published award is 105 scholarships at 25,000 USD each. Because tuition_coverage is inferred rather than stated, treat the full cost of attendance - fees, room, board and travel - as largely your own responsibility unless you are also awarded the Rural America Initiative or Successful Turns support.",
+        "document_audit": [
+          "The application is submitted online, but the transcripts and school official's certification have to come from your school, so start the request early.",
+          "Financial documentation must substantiate the USD 55,000 figure, not just assert it.",
+          "The essay on adversity is the differentiator and the piece most applicants underprepare.",
+          "A telephone interview is part of the process for shortlisted applicants, so keep a phone monitored."
+        ],
+        "alerts": [
+          "Applications open 1 December and close 1 March each year; the next cycle runs 1 December 2026 to 1 March 2027.",
+          "Applicants are notified within 90 days of the application deadline.",
+          "State-level awards exist through State Scholarship and the county and state programmes, so check the state directory page for your state's specific criteria and window - the effective date can run as late as 1 March with no applications accepted after 25 March.",
+          "Programme availability varies by year and by state, and criteria are adjusted if no one applies from a given state in a cycle."
+        ],
+        "submission_workflow": "You check eligibility, prepare supporting documents and the essay, submit the online application between 1 December and 1 March, and the Association notifies applicants within 90 days of the deadline, with shortlisted applicants contacted by telephone for a short interview before selection."
+      }
+    }
+  ]
+}

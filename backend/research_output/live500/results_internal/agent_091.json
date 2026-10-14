@@ -1,0 +1,140 @@
+{
+  "agent": "agent_091",
+  "records": [
+    {
+      "id": 269,
+      "official": {
+        "official_source_urls": [
+          "https://www.dtu.dk/english/education/graduate/fees-and-funding/tuition_fee_waivers",
+          "https://www.dtu.dk/english/education/graduate/admission-and-deadlines/application_procedure/apply/Important-dates-and-deadlines-Autumn",
+          "https://www.dtu.dk/english/education/graduate/fees-and-funding/how-to-pay-tuition-fees"
+        ],
+        "application_link": "https://www.dtu.dk/english/education/graduate/fees-and-funding/tuition_fee_waivers",
+        "catalogue_url": "https://www.dtu.dk/english/education/graduate",
+        "official_updates_url": "https://www.dtu.dk/english/education/graduate/admission-and-deadlines/application_procedure/apply/Important-dates-and-deadlines-Autumn",
+        "deadline_central": "2027-01-15",
+        "deadline_central_display": "15 January (application deadline, non-EU/EEA, autumn intake)",
+        "deadline_note": "DTU's important dates and deadlines page for the autumn intake lists '15 January - Application deadline, Non-EU', with the application deadline requiring a completed application, payment of the application fee, and language test requirements submitted and fulfilled. Non-EU/EEA applicants with a qualifying degree from Denmark must also apply by 15 January to be considered for the waiver. DTU's page states the date as 15 January on its standing annual timeline; the next occurrence is 15 January 2027 for the autumn 2027 intake, and the application portal opens 1 December.",
+        "application_cycle": "Annual autumn intake; application portal opens 1 December, non-EU/EEA application deadline 15 January, waivers announced in April",
+        "status": "UPCOMING",
+        "status_note": "DTU's autumn-intake timeline shows the application portal opening on 1 December for all applicants, with the non-EU/EEA application deadline on 15 January and tuition fee waivers announced in April. On the date checked the next round had not yet opened.",
+        "tuition_coverage_note": "DTU states: 'A tuition fee waiver will cover the tuition fee for two years.' Separately, its fees page states that 'Tuition fees at DTU are 7500 EUR per semester excl. bank charges. If you have paid the application fee of 100 EUR, your first payment will be 7400 EUR', and warns that 'Tuition fees are likely to be revised for the Autumn 2026 intake.'",
+        "funding_amount": null,
+        "funding_currency": null,
+        "funding_period": null,
+        "tuition_coverage": true,
+        "living_cost_coverage": null,
+        "travel_coverage": null,
+        "fully_funded": false,
+        "benefits": [
+          "A tuition fee waiver covering the tuition fee for two years",
+          "Selection runs in parallel with the admissions process rather than as a separate later competition",
+          "The waiver is granted after the applicant has accepted an offer of admission"
+        ],
+        "eligibility": [
+          "A citizen of a country outside the EU and the EEA applying to a DTU MSc programme",
+          "A new student rather than a continuing student",
+          "Applying for the autumn intake, since waivers are not offered for the spring intake",
+          "Submitting the application, and paying the application fee, by the 15 January deadline",
+          "Non-EU/EEA applicants with a qualifying degree from Denmark must also apply by 15 January to be considered"
+        ],
+        "requirements": [
+          "Submit a separate personal statement with the application, clearly specifying that you are applying for the tuition fee waiver",
+          "Submit a completed application by 15 January and pay the application fee",
+          "Submit and fulfil language test requirements by the 15 January deadline",
+          "Accept the offer of admission, since waivers are granted only after acceptance"
+        ],
+        "documents": [
+          "Completed MSc application submitted by the 15 January deadline",
+          "Separate personal statement for the tuition fee waiver, focused on academic achievements at bachelor's level",
+          "Application fee payment, noting that DTU will not process the application until the payment has been registered",
+          "Language test results meeting DTU's requirements",
+          "Final diploma, diploma supplement or completed academic transcripts by the 15 July final document deadline"
+        ],
+        "selection_criteria": [
+          "The applicant's grades, GPA or equivalent",
+          "The ranking of the university that awarded the applicant's bachelor's degree",
+          "Extracurricular research experience or publications",
+          "Relevant work experience and relevant teaching experience",
+          "Awards from competitions and extracurricular activities"
+        ],
+        "coverage": [
+          "The tuition fee for two years",
+          "No living costs are mentioned on DTU's waiver page",
+          "No travel costs are mentioned on DTU's waiver page"
+        ],
+        "application_method": [
+          "Submit the MSc application in the autumn round through DTU's application portal",
+          "Attach a separate personal statement that clearly specifies the application is for the tuition fee waiver",
+          "Pay the application fee so that the application can be processed",
+          "Accept the offer of admission once received"
+        ],
+        "application_route": "Apply for the MSc by 15 January in the autumn round and attach a separate personal statement clearly labelled as the tuition fee waiver application; no separate submission exists.",
+        "study_mode": null,
+        "citizenship_residency": "Open to citizens of countries outside the EU and the EEA. DTU also publishes a separate list of non-EU/EEA citizens who are exempt from paying tuition, depending on the type of residence permit held.",
+        "international_eligibility": "Yes - the waiver exists specifically for international new non-EU/EEA MSc students.",
+        "subject_or_agency_requirement": "Available only for MSc programmes at DTU, and only for the autumn intake; waivers are not offered for the spring intake and cannot be applied for as a continuing student.",
+        "research_requirement": null,
+        "duration": "A tuition fee waiver covers the tuition fee for two years, matching the regular two-year MSc and the Industry Master of Science in Engineering.",
+        "description": "DTU awards a very limited number of merit-based tuition fee waivers to international new non-EU/EEA MSc students applying for the autumn intake, allocated to students with excellent academic performance. A waiver covers the tuition fee for two years, is decided in parallel with admissions, and is granted after the applicant accepts an offer of admission.",
+        "region": "Europe",
+        "program_type": "Merit-based tuition fee waiver awarded with admission",
+        "english_requirement": "Non-EU applicants must submit and fulfil DTU's language test requirements by the 15 January application deadline; DTU publishes the specifics on its separate English language requirements page."
+      },
+      "verification": {
+        "source_citations": [
+          "https://www.dtu.dk/english/education/graduate/fees-and-funding/tuition_fee_waivers",
+          "https://www.dtu.dk/english/education/graduate/admission-and-deadlines/application_procedure/apply/Important-dates-and-deadlines-Autumn"
+        ],
+        "last_verified_date": "2026-10-10",
+        "verification_status": "partial",
+        "confidence": "high",
+        "not_confirmed": [
+          "funding_amount",
+          "funding_currency",
+          "funding_period",
+          "living_cost_coverage",
+          "travel_coverage",
+          "study_mode",
+          "research_requirement",
+          "the specific English language test scores accepted (published on DTU's separate language requirements page)"
+        ],
+        "notes": "The URL in the assignment brief, dtu.dk/.../fees-and-funding/external-scholarships, is titled 'National Scholarships for DTU' and lists external country-specific schemes such as Instituto Trajetorias, COLFUTURO, LPDP, Bolashak, FUNED and TEV; it does not document this award. The award itself is documented at dtu.dk/.../fees-and-funding/tuition_fee_waivers, which was read in full together with DTU's autumn important dates page and its tuition fee page. DTU publishes tuition fees of 7500 EUR per semester and states no waiver figure, so the amount fields are null."
+      },
+      "applicant_utility": {
+        "summary": "The make-or-break item is a separate personal statement attached to the MSc application that explicitly says it is for the tuition fee waiver; DTU states that without it your application will not be considered at all, and this is the single most common self-inflicted failure. Everything hinges on 15 January, because the application, the application fee and the language test results all have to be in place by that date. Waivers are then announced in April and granted only once you accept the admission offer.",
+        "best_fit": "Strong non-EU/EEA bachelor's graduates with a high GPA from a well-ranked university and some research, teaching or competition record to show, applying to a DTU MSc for the autumn intake.",
+        "application_readiness_checklist": [
+          "Draft the separate waiver personal statement early and make it explicit on the first line that it is a tuition fee waiver application",
+          "Fill the statement with bachelor's-level academic achievement, because DTU says the waiver is merit-based and judged on that basis",
+          "Have language test scores ready before 15 January rather than planning to send them later, since DTU requires them submitted and fulfilled by the deadline",
+          "Pay the application fee immediately after submitting, because DTU will not process the application until the payment is registered",
+          "Prepare a short account of research experience, publications, work or teaching experience and competition awards, since these are DTU's named criteria",
+          "Diarise the 15 July final document deadline for the diploma, diploma supplement or completed transcripts"
+        ],
+        "common_rejection_risks": [
+          "Submitting no separate personal statement, which DTU states means the application is not considered for the waiver at all",
+          "Writing a general motivation letter that never specifies it is for the tuition fee waiver",
+          "Applying for the spring intake, where waivers are simply not offered",
+          "Applying as a continuing student, since the waiver is only for new students",
+          "Missing 15 January on language test results even when the application itself was submitted on time",
+          "Leaving the application fee unpaid, so the application is never processed"
+        ],
+        "estimated_uncovered_costs": "Living costs, travel and any other expenses, since DTU's waiver page covers tuition only. For scale, DTU publishes tuition fees of 7500 EUR per semester, with the first payment reduced to 7400 EUR if the 100 EUR application fee has already been paid, and warns that fees are likely to be revised.",
+        "document_audit": [
+          "The separate personal statement is an additional document, not a replacement for anything in the standard application, and it must be attached at the time of submission, not added later",
+          "A qualifying degree obtained in Denmark removes the application fee but not the 15 January deadline for the waiver",
+          "DTU requires the final diploma, diploma supplement or completed academic transcripts by 15 July for non-EU applicants, so an incomplete degree needs a plan to graduate before then",
+          "If someone else pays the tuition fee on your behalf, they must still include your journal number in the transfer reference or the payment cannot be registered"
+        ],
+        "alerts": [
+          "The waiver is only granted after you accept an offer of admission, so it cannot be used as leverage before acceptance",
+          "Do not rely on DTU's 'National Scholarships for DTU' page, which lists external country-specific schemes such as Instituto Trajetorias, COLFUTURO, LPDP, Bolashak, FUNED and TEV, and does not document this award",
+          "DTU states tuition fees are likely to be revised for the autumn 2026 intake, so any total derived from the 7500 EUR per semester figure should be re-checked against the current fee page",
+          "There is no application fee waiver route for non-EU applicants with a foreign qualifying degree, so budget the 100 EUR as unavoidable"
+        ],
+        "submission_workflow": "Autumn-round MSc application by 15 January with the separate waiver statement attached and the fee paid, admissions and waiver assessment run in parallel, waivers announced in April, and the waiver granted once the admission offer is accepted."
+      }
+    }
+  ]
+}

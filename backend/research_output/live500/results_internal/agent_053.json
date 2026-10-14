@@ -1,0 +1,118 @@
+{
+  "agent": "agent_053",
+  "records": [
+    {
+      "id": 162,
+      "official": {
+        "official_source_urls": [
+          "https://studieren.univie.ac.at/en/studying-and-learning/financial-matters/grants-and-scholarships",
+          "https://studienpraeses.univie.ac.at/stipendien/leistungsstipendium-nach-dem-studfg/",
+          "https://studienpraeses.univie.ac.at/stipendien/foerderungsstipendien-nach-dem-studfg/"
+        ],
+        "application_link": "https://studieren.univie.ac.at/en/studying-and-learning/financial-matters/grants-and-scholarships",
+        "catalogue_url": null,
+        "official_updates_url": null,
+        "deadline_central": "2026-11-03",
+        "deadline_central_display": "3 November 2026",
+        "deadline_note": "The 2025/2026 call for both StudFG scholarships runs from 1 October 2026 to 3 November 2026: the merit scholarship via u:space, the research scholarship by email.",
+        "application_cycle": "2025/2026 study year call",
+        "status": "OPEN",
+        "status_note": "The current call for the 2025/26 study year is open from 1 October 2026 to 3 November 2026 for both the merit scholarship and the research scholarship.",
+        "tuition_coverage_note": null,
+        "funding_amount": null,
+        "funding_currency": null,
+        "funding_period": null,
+        "tuition_coverage": null,
+        "living_cost_coverage": null,
+        "travel_coverage": null,
+        "fully_funded": false,
+        "benefits": [
+          "Merit scholarship awarded on the basis of academic achievement, retrospectively for already completed exams/courses and independent of income",
+          "Research scholarship as a one-off sum supporting an unfinished scientific work (Diploma thesis, Master's thesis or dissertation)",
+          "Signposting to external funding: grants.at Austrian database, stipendium.at, the Austrian National Union of Students database and the Chambers of Labour portal"
+        ],
+        "eligibility": [
+          "Merit scholarship: outstanding academic performance, awarded independently of the income of the student or their family",
+          "Research scholarship: above-average financial burden (e.g. research travel outside Vienna) and a fundable thesis topic; one application per semester",
+          "Applications require the Matrikelnummer; graduates quote it as well"
+        ],
+        "requirements": [
+          "Merit scholarship: apply via u:space between 1 October 2026 and 3 November 2026",
+          "Research scholarship: apply by email between 1 October 2026 and 3 November 2026 - personal applications are not possible"
+        ],
+        "documents": null,
+        "selection_criteria": [
+          "Merit scholarship: weighted grade average calculated from individual course grades (ECTS-weighted), not overall grades",
+          "Research scholarship: pre-decision by the scholarships commission, considering criteria such as an exceptional topic and the applicant's financial burden"
+        ],
+        "coverage": [
+          "Merit scholarship for already completed exams/courses, granted retrospectively",
+          "Research scholarship: a one-off payment to help complete a scientific thesis"
+        ],
+        "application_method": [
+          "Merit scholarship: online application via u:space",
+          "Research scholarship: application by email only to the Office of the Studienpräses"
+        ],
+        "application_route": "Merit scholarship via u:space; research scholarship via email to the Office of the Studienpräses",
+        "study_mode": null,
+        "citizenship_residency": "Non-Austrian citizens can be granted equal status under StudFG (detailed information published on the official equality information sheet)",
+        "international_eligibility": "Possible for non-Austrian citizens through equal-status rules under StudFG; needs-based support is handled separately by the Studienbeihilfenbehörde (stipendium.at)",
+        "subject_or_agency_requirement": null,
+        "research_requirement": "Research scholarship requires an unfinished scientific work (Diploma thesis, Master's thesis or dissertation)",
+        "duration": null,
+        "description": "The University of Vienna awards a merit scholarship for outstanding study performance and a research scholarship as a one-off payment supporting an unfinished scientific thesis, both funded by the Federal Ministry and administered by the Office of the Studienpräses, with needs-based support left to the state study grant authority.",
+        "region": "Europe",
+        "program_type": "University-administered merit and research scholarships under the Studienfoerderungsgesetz (StudFG)",
+        "english_requirement": null
+      },
+      "verification": {
+        "source_citations": [
+          "https://studieren.univie.ac.at/en/studying-and-learning/financial-matters/grants-and-scholarships",
+          "https://studienpraeses.univie.ac.at/stipendien/leistungsstipendium-nach-dem-studfg/",
+          "https://studienpraeses.univie.ac.at/stipendien/foerderungsstipendien-nach-dem-studfg/"
+        ],
+        "last_verified_date": "2026-10-10",
+        "verification_status": "confirmed",
+        "confidence": "medium",
+        "not_confirmed": [
+          "funding_amount - no figure is published on the official pages",
+          "funding_currency",
+          "funding_period",
+          "tuition_coverage",
+          "living_cost_coverage",
+          "travel_coverage",
+          "documents - no document list is published on the pages",
+          "english_requirement",
+          "study_mode"
+        ],
+        "notes": "The English grants-and-scholarships hub confirmed the award types and the 17.09.2026 publication date; the German studienpraeses subpages confirmed the 1 October - 3 November 2026 windows, the u:space and email routes and the selection criteria. No CHF/EUR amounts are published on any official page, so none are asserted."
+      },
+      "applicant_utility": {
+        "summary": "Vienna's own scholarships are performance-based, not need-based: the merit scholarship rewards a strong weighted grade average retrospectively via u:space, and the research scholarship is a one-off sum for an unfinished thesis, applied for by email only. Both run from 1 October to 3 November 2026; needs-based support comes separately from the state authority at stipendium.at.",
+        "best_fit": "High-performing enrolled students (merit scholarship) and students in the final thesis stage with above-average financial burden (research scholarship).",
+        "application_readiness_checklist": [
+          "Merit scholarship: apply in u:space between 1 October and 3 November 2026",
+          "Research scholarship: email the Studienpräses office within the same window - personal applications are not accepted",
+          "Prepare a cost breakdown and financing plan for the thesis award",
+          "If you need need-based aid, apply separately to the Studienbeihilfenbehörde via stipendium.at"
+        ],
+        "common_rejection_risks": [
+          "Confusing the university's merit scholarships with the state study grant - different offices, different rules",
+          "Missing the 1 October - 3 November 2026 window for either award",
+          "Applying for the research scholarship without a defensible cost plan and supervisor backing",
+          "Expecting an income test to help the merit award - it is explicitly income-independent"
+        ],
+        "estimated_uncovered_costs": "Vienna living costs and tuition fees; the research scholarship is a one-off thesis grant, not a living stipend.",
+        "document_audit": [
+          "Research-scholarship applications must be sent from your u:account email quoting your Matrikelnummer",
+          "The merit award is calculated on a weighted grade average built from individual course grades, not from overall grades"
+        ],
+        "alerts": [
+          "Non-Austrian citizens may qualify through equal-status rules under StudFG - check the official information sheet",
+          "Both 2025/26 calls were published on 17 September 2026, so dates can shift year to year"
+        ],
+        "submission_workflow": "Merit: u:space application -> Studienpräses decision. Research: email with forms and plans -> scholarships commission -> decision by email."
+      }
+    }
+  ]
+}

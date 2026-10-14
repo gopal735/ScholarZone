@@ -1,0 +1,81 @@
+{
+ "agent": "agent_072",
+ "assignment_count": 1,
+ "scholarships": [
+  {
+   "id": 194,
+   "title": "UQ International Excellence Scholarship",
+   "country": "Australia",
+   "degree": "Bachelor's, Master's (coursework)",
+   "funding_label": "Tuition Fee Waiver",
+   "status": "open",
+   "official_source": "The University of Queensland",
+   "official_source_url": "https://scholarships.uq.edu.au/scholarship/uq-international-excellence-scholarship",
+   "application_link": "https://scholarships.uq.edu.au/scholarship/uq-international-excellence-scholarship",
+   "catalogue_url": "https://scholarships.uq.edu.au/scholarships",
+   "official_updates_url": "https://scholarships.uq.edu.au/scholarship/uq-international-excellence-scholarship",
+   "existing": {
+    "funding_amount": null,
+    "funding_currency": null,
+    "funding_period": "per semester",
+    "tuition_coverage": 1,
+    "living_cost_coverage": 0,
+    "travel_coverage": 0,
+    "fully_funded": 0,
+    "description": "The UQ International Excellence Scholarship is a 25% reduction in tuition fees per semester awarded to high-achieving international students commencing a full-time undergraduate or postgraduate coursework program at The University of Queensland in 2027. There is no separate application: UQ states \"You don't need to apply for this scholarship. When you apply to study a program at UQ, you're automatically assessed for this scholarship.\" Offers are issued with the unconditional offer letter or once all conditions of a conditional offer are met, and the reduction is applied before the tuition fee due date each semester. The number of awards may vary, and the scholarship is valid only for the program and commencement semester named in the offer letter.",
+    "eligibility": [
+     "Be an international student",
+     "Have applied to study full-time at UQ commencing in 2027 in an eligible program",
+     "Have satisfied all the conditions of the program offer",
+     "Have satisfied the program entry rank and English language proficiency requirements",
+     "Have achieved a competitive score as determined by the University among the pool of offer holders for programs in their commencement semester",
+     "Not have received another scholarship, tuition fee reduction or rebate from UQ (excluding the UQ English Language Scholarship)",
+     "Not have received a full scholarship or sponsorship from another organisation; applicants with partial scholarships or sponsorships may be considered"
+    ],
+    "eligibility_summary": "International students who have applied to study full-time at UQ in an eligible program commencing in 2027, have satisfied all conditions of the program offer, have satisfied the program entry rank and English language proficiency requirements, and have achieved a competitive score as determined by the University among the pool of offer holders for programs in their commencement semester. Applicants must not have received another scholarship, tuition fee reduction or rebate from UQ (excluding the UQ English Language Scholarship), nor a full scholarship or sponsorship from another organisation.",
+    "benefits": [
+     "25% tuition fee reduction applied prior to the tuition fees due date each semester",
+     "Reduction applies for the duration of the enrolled program"
+    ],
+    "coverage": [
+     "25% reduction in tuition fees per semester"
+    ],
+    "requirements": [
+     "Full-time enrolment in an eligible program in the commencement semester named in the offer",
+     "Must accept the scholarship offer by the deadline UQ specifies"
+    ],
+    "documents": [
+     "Program application to UQ",
+     "Evidence of satisfying the program entry rank requirement",
+     "Evidence of English language proficiency"
+    ],
+    "english_requirement": "Must have satisfied the program entry rank and English language proficiency requirements.",
+    "application_method": [
+     "Apply to study a program at UQ through the normal UQ application process",
+     "No separate scholarship application is required; assessment is automatic"
+    ],
+    "selection_notes": "Applicants must have achieved a competitive score as determined by the University among the pool of offer holders for programs in their commencement semester. The number of scholarships awarded may vary.",
+    "best_fit": null,
+    "notes": null,
+    "duration": "For the duration of the program",
+    "application_period": "Assessed automatically for applicants applying to study full-time at UQ commencing in 2027; scholarship offers are issued with the unconditional letter of offer or once all conditions of a conditional offer are satisfied.",
+    "deadline_display": "No application deadline: eligibility is assessed automatically with the program application. UQ states \"We will let you know the deadline for accepting your scholarship offer\" once an offer is issued.",
+    "deadline_date": null,
+    "region": "Oceania",
+    "program_type": "Academic excellence",
+    "applicant_utility": null,
+    "official_details": null
+   },
+   "missing_fields": [
+    "funding_amount",
+    "funding_currency",
+    "best_fit",
+    "notes",
+    "deadline_date",
+    "applicant_utility",
+    "official_details"
+   ]
+  }
+ ],
+ "result_file": "C:\\Users\\GopaL\\Desktop\\Projects folder\\ScholarZone\\backend\\research_output\\live500\\results\\agent_072.json"
+}

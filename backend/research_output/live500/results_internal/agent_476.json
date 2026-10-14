@@ -1,0 +1,247 @@
+{
+  "agent": "agent_476",
+  "records": [
+    {
+      "id": 34,
+      "official": {
+        "official_source_urls": [
+          "https://taiwanscholarship.moe.gov.tw/web/pages.aspx?p=7"
+        ],
+        "application_link": "https://taiwanscholarship.moe.gov.tw/web/pages.aspx?p=7",
+        "catalogue_url": "https://taiwanscholarship.moe.gov.tw/web/index.aspx",
+        "official_updates_url": "https://taiwanscholarship.moe.gov.tw/web/index.aspx",
+        "deadline_central": null,
+        "deadline_central_display": null,
+        "deadline_note": "Applications must be submitted to the local Taiwan Representative Office responsible for the applicant's country; each Representative Office publishes its own number of scholarships, selection criteria, procedure and time schedule in Chinese and the local language. The programme year runs 1 September to 31 August; the 2026 round (1 February - 31 March 2026) has closed and the next falls in early 2027.",
+        "application_cycle": "Annual cycle, in principle 1 February - 31 March, with the actual window set by each Taiwan Representative Office; the scholarship year runs 1 September to 31 August",
+        "status": "UPCOMING",
+        "status_note": "The 2026 round closed; the next annual round is expected to open around 1 February 2027, with deadlines set by each Taiwan Representative Office rather than centrally.",
+        "tuition_coverage_note": "'The MOE will pay up to NTD40,000 each semester for each recipient''s approved tuition and miscellaneous expenses. If these exceed a total amount of NTD40,000, the remaining amount must be paid to the university/college by the student.'",
+        "funding_amount": 20000,
+        "funding_currency": "TWD",
+        "funding_period": "per month (Master's/Doctoral)",
+        "tuition_coverage": true,
+        "living_cost_coverage": true,
+        "travel_coverage": false,
+        "fully_funded": false,
+        "benefits": [
+          "Living allowance: NTD 15,000 per month for Bachelor Degree, NTD 20,000 per month for Master/Doctoral Degree",
+          "MOE pays up to NTD 40,000 each semester for approved tuition and miscellaneous expenses (student pays any excess)",
+          "Scholarship period begins on September 1 and ends on August 31 of the following year; graduates unable to graduate by June can receive the scholarship until August of that year",
+          "Scholarship period should not exceed a total of five years"
+        ],
+        "eligibility": [
+          "International students who must be foreign nationals with a secondary school graduation diploma or post-secondary degree(s), have shown excellent academic performance, and are of good moral character",
+          "Mainland China, Hong Kong, and Macao SAE students are not eligible",
+          "Scholarship duration: Bachelor Degree 4 years, Master Degree 2 years, Doctoral Degree 4 years; total period not exceeding five years",
+          "Work permit: students can apply for a working permit with maximum 20 hours per week (except summer and winter vacation), maximum validity six months per semester"
+        ],
+        "requirements": [
+          "All scholarship applications must be submitted to the local Taiwan Representative Office",
+          "A separate application for admission to the intended university or college in Taiwan is also required, within that institution's own deadline",
+          "For applications to undertake a program not completely taught in English: a copy of the results or certificate of TOCFL at Level 3 or above must be submitted (or taken at own expense by the end of the first semester after arrival in Taiwan)",
+          "Obtain a health certificate meeting the required items (Form B)",
+          "Sign the MOE Taiwan Scholarship Terms of Agreement; the scholarship may be suspended or revoked"
+        ],
+        "documents": [
+          "MOE Taiwan Scholarship Application Form",
+          "Academic transcripts and supporting certificates (with certified translations where required)",
+          "Passport copy",
+          "Study plan",
+          "Recommendation letters",
+          "Health certificate meeting the required items (Form B)"
+        ],
+        "selection_criteria": [
+          "Selection is delegated by the MOE to the local Taiwan Representative Offices, which may work with local government agencies, universities, colleges and cultural institutions",
+          "Each Representative Office publishes the number of scholarships, selection criteria, procedure and time schedule in Chinese and the local language"
+        ],
+        "coverage": [
+          "Living allowance: NTD 15,000 per month (Bachelor) / NTD 20,000 per month (Master and Doctoral)",
+          "Tuition and miscellaneous expenses: up to NTD 40,000 per semester, with any excess paid by the student",
+          "No air ticket or flight allowance is provided under the MOE Scholarship"
+        ],
+        "application_method": [
+          "Contact the Taiwan Representative Office responsible for your country for the application form and deadline",
+          "Submit the scholarship application and required documents to that Representative Office",
+          "Apply separately for admission to the intended university or college in Taiwan within its deadline",
+          "Sign the Terms of Agreement upon selection"
+        ],
+        "application_route": "Two applications: the scholarship application to your local Taiwan Representative Office, plus a separate admission application to the intended Taiwanese university or college.",
+        "study_mode": "Full-time",
+        "citizenship_residency": "Foreign nationals only; mainland China, Hong Kong and Macao students are not eligible. Applicants must not already hold student status (or be registered to begin studies) at a Taiwanese university or college, must not have studied in Taiwan for a degree at the same level applied for, and must not be exchange or dual/joint-degree students under a cooperation agreement. The total scholarship period cannot exceed five years, and a Taiwan Scholarship or MOE Huayu Enrichment Scholarship must never have been revoked. No other Taiwanese government or institutional scholarship may be held simultaneously (excluding university discounts that top up the tuition payment)",
+        "international_eligibility": "Yes - the programme is for foreign nationals (excluding mainland China, Hong Kong and Macao)",
+        "subject_or_agency_requirement": "Any degree programme at a Taiwanese university or college; a list of universities offering degree programmes taught in English is published by the programme",
+        "research_requirement": null,
+        "duration": "4 years for a bachelor's programme, 2 years for a master's programme, 4 years for a doctoral programme; the total scholarship period cannot exceed five years",
+        "description": "The MOE Taiwan Scholarship pays international students a monthly living allowance of NTD 15,000 (bachelor's) or NTD 20,000 (master's and doctoral) and covers approved tuition and miscellaneous expenses up to NTD 40,000 per semester, with applications submitted to the local Taiwan Representative Office and a separate university admission application required.",
+        "region": "Asia",
+        "program_type": "Government scholarship (Ministry of Education, Republic of China (Taiwan))",
+        "english_requirement": "For applications to undertake a programme not completely taught in English, a copy of the results or a certificate of TOCFL at Level 3 or above must be submitted; where the local Taiwan Representative Office does not organise TOCFL testing, applicants must take the TOCFL Level 3 test at their own expense by the end of the first semester after arriving in Taiwan and submit the results to their university/college."
+      },
+      "verification": {
+        "source_citations": [
+          "https://taiwanscholarship.moe.gov.tw/web/pages.aspx?p=7"
+        ],
+        "last_verified_date": "2026-10-10",
+        "verification_status": "confirmed",
+        "confidence": "high",
+        "not_confirmed": [
+          "deadline_date: the programme is administered through each Taiwan Representative Office, which sets its own deadline and publishes its own schedule; no central deadline date is published",
+          "travel_coverage: the official comparison table confirms the MOE Scholarship provides no air ticket (unlike the MOFA Scholarship), so no travel coverage is recorded"
+        ],
+        "notes": "Verified the MOE Scholarship column of the official Scholarship Comparison Table on the Taiwan Scholarship and Huayu Enrichment Scholarship website: NTD 15,000 (bachelor) and NTD 20,000 (master's/doctoral) monthly living allowances, tuition and miscellaneous expenses paid up to NTD 40,000 per semester with the student paying any excess, durations of 4/2/4 years within a five-year cap, the 1 September - 31 August scholarship year, submission to local Taiwan Representative Offices, the TOCFL Level 3 rule for programmes not taught in English, and the health certificate (Form B) requirement."
+      },
+      "applicant_utility": {
+        "summary": "The MOE Taiwan Scholarship combines a modest living allowance (NTD 20,000 a month at master's or doctoral level, NTD 15,000 for bachelor's) with capped tuition support: MOE pays up to NTD 40,000 per semester of tuition and miscellaneous fees, and anything above that is yours to pay. You must run two applications in parallel - the scholarship file to your local Taiwan Representative Office and a separate admission application to the Taiwanese university - and both have to succeed. There is no flight ticket under this award (that is the MOFA scholarship), and programmes not taught in English pull in a TOCFL Level 3 requirement.",
+        "best_fit": "Foreign nationals (outside mainland China, Hong Kong and Macau) with strong school or university records who want an English-taught or Mandarin-capable degree in Taiwan and can absorb fees above NTD 40,000 per semester plus living costs.",
+        "application_readiness_checklist": [
+          "Find the Taiwan Representative Office covering your country and use its country-specific form and deadline - the central site only sets the broad February-March rhythm",
+          "Start the separate university admission application early; the university deadline, not the scholarship deadline, often binds",
+          "Book the health certificate early against the published Form B item list",
+          "If your programme is not taught in English and no local TOCFL sitting exists, plan to sit TOCFL Level 3 in Taiwan by the end of your first semester at your own expense",
+          "Check that your target programme's tuition and miscellaneous fees do not exceed NTD 40,000 per semester, or budget the gap",
+          "Confirm you hold no other Taiwanese government or institutional scholarship (university top-up discounts are the exception)"
+        ],
+        "common_rejection_risks": [
+          "Treating the scholarship application as sufficient without a successful university admission application",
+          "Mainland China, Hong Kong or Macao nationality or household registration, which is excluded",
+          "Prior study in Taiwan at the same degree level, or current student status at a Taiwanese institution",
+          "Missing the Representative Office's own deadline while waiting for the university result",
+          "Holding or having held a revoked Taiwan Scholarship or MOE Huayu Enrichment Scholarship"
+        ],
+        "estimated_uncovered_costs": "Any tuition and miscellaneous fees above NTD 40,000 per semester, airfares (no ticket is provided), accommodation and all living costs beyond the NTD 15,000-20,000 monthly allowance.",
+        "document_audit": [
+          "Transcripts and certificates in languages other than the accepted ones need certified translations",
+          "The health certificate must match the published Form B items, not a generic medical check"
+        ],
+        "alerts": [
+          "Do not confuse this award with the MOFA Taiwan Scholarship (NT$33,000 plus a one-way air ticket, diplomatic-ally priority) or the MOE Huayu Enrichment Scholarship (Mandarin only, no tuition component)",
+          "Recipients sign a Terms of Agreement and the scholarship can be suspended or revoked; the total period is capped at five years",
+          "Work rights are limited: 20 hours per week outside vacations, six months maximum validity per semester, under the foreign-worker employment regulations"
+        ],
+        "submission_workflow": "Scholarship file to the local Taiwan Representative Office plus a separate admission application to the university; both must succeed, then the Terms of Agreement is signed."
+      }
+    },
+    {
+      "id": 144,
+      "official": {
+        "official_source_urls": [
+          "https://en.mofa.gov.tw/cp.aspx?n=1325",
+          "https://taiwanscholarship.moe.gov.tw/web/pages.aspx?p=7"
+        ],
+        "application_link": "https://en.mofa.gov.tw/cp.aspx?n=1325",
+        "catalogue_url": null,
+        "official_updates_url": null,
+        "deadline_central": null,
+        "deadline_central_display": null,
+        "deadline_note": "The guidelines state the application period only as 'from February 1 to March 31' with no year attached. The February-March 2026 window has passed; the next window is expected between 1 February and 31 March 2027. Applications are administered through the Taiwan Representative Offices under the Taiwan Scholarships portal.",
+        "application_cycle": "Annual window, 1 February - 31 March (year not attached in the guidelines)",
+        "status": "UPCOMING",
+        "status_note": "The published application period for the most recent cycle (1 February - 31 March 2026) has closed; the next cycle is expected to open 1 February 2027.",
+        "tuition_coverage_note": "'Universities and colleges may offer Scholarship recipients reduced tuition and miscellaneous fees.' MOFA states it 'will, in principle, not provide any other subsidies'.",
+        "funding_amount": 33000,
+        "funding_currency": "TWD",
+        "funding_period": "per month (degree programmes)",
+        "tuition_coverage": false,
+        "living_cost_coverage": true,
+        "travel_coverage": true,
+        "fully_funded": false,
+        "benefits": [
+          "Monthly stipend of NT$33,000 for degree programs",
+          "Monthly stipend of NT$28,000 for the pre-degree Mandarin Language Enrichment Program (LEP)",
+          "One-way economy-class plane tickets for direct flights to and from Taiwan",
+          "Possible reduced tuition and miscellaneous fees at universities and colleges, at their discretion"
+        ],
+        "eligibility": [
+          "Is a high school graduate or above with an excellent academic record, of good moral character and has no criminal record",
+          "Is not a national of the Republic of China (Taiwan)",
+          "Is not an overseas compatriot student",
+          "Has never attended an educational institution in Taiwan at the same level of degree or LEP that he/she intends to apply for",
+          "Is not an exchange student through any cooperation agreement between a foreign university/college and an educational institute in Taiwan while receiving the Scholarship",
+          "Has not previously had a Scholarship revoked by an ROC government agency or other relevant institution",
+          "In principle granted to students from countries that have diplomatic relations with Taiwan; special consideration may be given to students from other countries",
+          "Not applicable to students from mainland China, Hong Kong or Macau"
+        ],
+        "requirements": [
+          "Programmes: the pre-degree Mandarin Language Enrichment Program (LEP) for a maximum of one year at Mandarin Training Centers affiliated with MOE-accredited universities or colleges, or any degree programme leading to an undergraduate, master or doctoral degree, excluding in-service programmes",
+          "Award periods must be continuous with no breaks and cannot exceed a total of five years"
+        ],
+        "documents": [
+          "MOFA Taiwan Scholarship Application Form (published by MOFA)",
+          "MOFA Taiwan Scholarship Terms of Agreement",
+          "Plane Ticket Application Form for MOFA Scholarship Recipients",
+          "Health certificate meeting the required items (Form B)"
+        ],
+        "selection_criteria": [
+          "The Scholarship is in principle granted to students from countries that have diplomatic relations with Taiwan; special consideration may also be given to students from other countries",
+          "Selection follows the programme guidelines published by MOFA, administered for applicants through the Taiwan Scholarships portal"
+        ],
+        "coverage": [
+          "Monthly stipend of NT$33,000 for degree programmes (NT$28,000 for the pre-degree LEP)",
+          "One-way economy-class plane tickets for direct flights to and from Taiwan",
+          "Recipients are responsible for all expenses during their stay in Taiwan; MOFA will, in principle, not provide any other subsidies",
+          "Universities and colleges may offer reduced tuition and miscellaneous fees, but this is discretionary and not guaranteed"
+        ],
+        "application_method": [
+          "Consult the Taiwan Scholarships and Huayu Enrichment Scholarships website, which the MOFA guidelines name as the source of further information",
+          "Submit the application within the 1 February to 31 March window for the relevant cycle"
+        ],
+        "application_route": "Apply through the Taiwan Scholarships portal / local Taiwan Representative Office within the 1 February - 31 March window, per the MOFA guidelines.",
+        "study_mode": "Full-time",
+        "citizenship_residency": "Not a national of the Republic of China (Taiwan); not an overseas compatriot student; not applicable to students from mainland China, Hong Kong or Macau. In principle for citizens of countries with diplomatic relations with Taiwan, with special consideration possible for others",
+        "international_eligibility": "Yes - the programme is for international students, with priority in principle to Taiwan's diplomatic partners",
+        "subject_or_agency_requirement": "Any degree programme (excluding in-service programmes) at an MOE-accredited institution, or the one-year pre-degree Mandarin Language Enrichment Program at Mandarin Training Centers",
+        "research_requirement": null,
+        "duration": "Pre-degree LEP: one year. Degree programmes: undergraduate maximum four years, master's maximum two years, doctoral maximum four years. Award periods must be continuous, with no breaks, and cannot exceed a total of five years",
+        "description": "MOFA's Taiwan Scholarship Program 'aims to encourage outstanding international students to study in Taiwan, as well as to promote bilateral exchanges and friendship between the peoples of Taiwan and its diplomatic allies', paying NT$33,000 per month for degree programmes (NT$28,000 for the LEP) plus one-way economy-class air tickets, with recipients responsible for all other expenses.",
+        "region": "Asia",
+        "program_type": "Government scholarship (Taiwan Scholarship Program of the Ministry of Foreign Affairs)",
+        "english_requirement": null
+      },
+      "verification": {
+        "source_citations": [
+          "https://en.mofa.gov.tw/cp.aspx?n=1325",
+          "https://taiwanscholarship.moe.gov.tw/web/pages.aspx?p=7"
+        ],
+        "last_verified_date": "2026-10-10",
+        "verification_status": "confirmed",
+        "confidence": "high",
+        "not_confirmed": [
+          "deadline_date: the official guidelines state the application period only as 'from February 1 to March 31' without a year, so no dated deadline is recorded",
+          "english_requirement: no English requirement is published on the MOFA scholarship guidelines page",
+          "tuition_coverage: MOFA explicitly provides no tuition subsidy - only discretionary university reductions - so no tuition coverage is recorded"
+        ],
+        "notes": "Verified on the official MOFA Taiwan Scholarship guidelines page: the NT$33,000/NT$28,000 monthly stipends, the one-way economy-class air tickets, the statement that recipients are responsible for all expenses and MOFA provides no other subsidies, the discretionary university tuition reductions, the full eligibility list, the award periods (LEP 1 year; 4/2/4 years for degrees; five-year cap, continuous), and the 1 February - 31 March application period. Cross-checked stipend figures against the official Taiwan Scholarship comparison table."
+      },
+      "applicant_utility": {
+        "summary": "The MOFA scholarship is a living allowance with a flight attached: NT$33,000 a month for degree study (NT$28,000 for the pre-degree Mandarin LEP) plus one one-way economy ticket, and MOFA is explicit that recipients cover everything else - tuition reduction at your university is possible but discretionary, never guaranteed. In principle it goes to students from Taiwan's diplomatic partners, with special consideration for others, so applicants from non-ally countries should treat selection as competitive rather than routine. The window is 1 February - 31 March each year, so a February-March 2026 miss means waiting for the 2027 cycle.",
+        "best_fit": "Students from Taiwan's diplomatic partners (and, with special consideration, other countries) seeking a funded degree or a funded pre-degree Mandarin year who can self-fund tuition, housing and living costs beyond the stipend and ticket.",
+        "application_readiness_checklist": [
+          "Confirm your nationality situation against the diplomatic-partner principle before applying, and prepare to justify 'special consideration' if you are from a non-ally country",
+          "Prepare the MOFA application form and Terms of Agreement from the official MOFA or Taiwan Scholarships portal within the 1 February - 31 March window",
+          "Ask your target university directly whether it offers MOFA recipients reduced tuition and miscellaneous fees - the reduction is discretionary per institution",
+          "Verify you have never studied in Taiwan at the same level (including LEP) you are applying for",
+          "Budget for everything beyond the stipend: tuition (unless discounted), housing, insurance and daily living costs"
+        ],
+        "common_rejection_risks": [
+          "Being a national of the ROC (Taiwan) or an overseas compatriot student",
+          "Prior study in Taiwan at the same degree level or LEP",
+          "Mainland China, Hong Kong or Macao nationality - not applicable",
+          "Assuming the stipend covers tuition: MOFA publishes no tuition subsidy, so an undiscounted fee schedule breaks the budget",
+          "Simultaneous exchange-student status under a university cooperation agreement while holding the award"
+        ],
+        "estimated_uncovered_costs": "Tuition and miscellaneous fees (unless the university grants a discretionary reduction), accommodation, insurance and all living costs beyond the NT$33,000/NT$28,000 monthly stipend; only a one-way economy ticket is provided.",
+        "document_audit": [
+          "Use the official MOFA application form and Terms of Agreement, plus the separate plane ticket application form for the air ticket",
+          "The health certificate must meet the published Form B items"
+        ],
+        "alerts": [
+          "The guidelines' 'from February 1 to March 31' carries no year - confirm the current cycle's dates on the Taiwan Scholarships site before planning",
+          "Award periods must be continuous: switching from LEP to a degree programme or stopping breaks the award, and the five-year total cap is absolute",
+          "The MOFA award is distinct from the MOE Taiwan Scholarship (tuition up to NTD 40,000/semester plus a smaller stipend but no ticket) - check which one fits your finances before choosing where to apply"
+        ],
+        "submission_workflow": "Application within the 1 February - 31 March window through the Taiwan Scholarships portal / local Taiwan Representative Office, following the MOFA programme guidelines."
+      }
+    }
+  ]
+}

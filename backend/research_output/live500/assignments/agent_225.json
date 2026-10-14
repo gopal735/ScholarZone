@@ -1,0 +1,85 @@
+{
+ "agent": "agent_225",
+ "assignment_count": 1,
+ "scholarships": [
+  {
+   "id": 567,
+   "title": "Swiss-European Mobility Programme (SEMP) - Incoming Mobility to Switzerland",
+   "country": "Switzerland",
+   "degree": "Undergraduate, Master's, PhD",
+   "funding_label": "Partially Funded",
+   "status": "upcoming",
+   "official_source": "Movetia (Swiss agency for exchange and mobility), implementing the Swiss Programme for Erasmus+ on behalf of SERI",
+   "official_source_url": "https://movetia.ch/en/funding-opportunities/study-in-switzerland",
+   "application_link": "https://movetia.ch/en/funding-opportunities/study-in-switzerland",
+   "catalogue_url": "https://movetia.ch/en/how-to/further-advice-centres/international-relations-offices",
+   "official_updates_url": "https://movetia.ch/en/funding-opportunities/student-exchange",
+   "existing": {
+    "funding_amount": null,
+    "funding_currency": "CHF",
+    "funding_period": "per mobility",
+    "tuition_coverage": 1,
+    "living_cost_coverage": 1,
+    "travel_coverage": 1,
+    "fully_funded": 0,
+    "description": "Incoming mobility to Switzerland is funded under the Swiss-European Mobility Programme (SEMP), the higher education part of the Swiss Programme for Erasmus+ that Switzerland operates in place of Erasmus+ association. Students from abroad, including PhD students, can spend one or two semesters at a Swiss university or college of higher education, or do a traineeship in Switzerland, while remaining enrolled at their home institution and earning ECTS credits. They do not pay study fees at the Swiss host institution and receive a financial contribution towards travel and accommodation. Applications are coordinated by the international relations office of the Swiss host institution, which is the only party that can receive and pay out the grant.",
+    "eligibility": [
+     "Enrolled at a higher education institution (university, university of applied sciences, university of teacher education) or college of higher education outside Switzerland; PhD students included",
+     "Stay of between 60 days and 12 months",
+     "Interinstitutional agreement between the home institution and the Swiss host institution",
+     "Courses at the host institution count towards the student's home degree (ECTS credits or equivalent)",
+     "For traineeships placed at a Swiss company or NGO, a Swiss higher education institution must still coordinate the application and pay out the grant",
+     "The Swiss host institution must be SEMP-accredited; grants can only be paid out by Swiss higher education institutions, and not all institutions offer grants"
+    ],
+    "eligibility_summary": "Participants must be enrolled at a higher education institution (university, university of applied sciences, university of teacher education) or a college of higher education outside Switzerland, the stay must last between 60 days and 12 months, and there must be an interinstitutional agreement between the home and host institutions. Students from abroad apply for the grant directly with the Swiss higher education institution where they plan to study or train; if the placement is at a Swiss company or NGO, they must still find a Swiss institution willing to coordinate the application and pay out the grant.",
+    "benefits": [
+     "European mobility incoming: CHF 1,430 to CHF 4,500 depending on duration and country of origin",
+     "Worldwide mobility: CHF 1,750 to CHF 5,000 for incoming and outgoing mobility depending on duration",
+     "CHF 100 sustainable-mobility contribution included in European mobility grants for sustainable travel",
+     "Special-needs grant of up to CHF 12,000 for specific needs arising from a disability or physical, mental or chronic illness",
+     "No tuition fees at the host institution",
+     "Recognition of achievements abroad towards the home degree"
+    ],
+    "coverage": [
+     "Financial support for the stay (travel and accommodation)",
+     "Study fees not charged at the Swiss host institution",
+     "CHF 100 sustainable-mobility contribution for European mobility",
+     "Additional special-needs grant for participants with disabilities or physical, mental or chronic illness"
+    ],
+    "requirements": [],
+    "documents": [
+     "Learning agreement for study mobility, validated by the sending institution, the Swiss host institution and the participant",
+     "Mobility agreement or Grant Agreement for staff mobility",
+     "Declaration of Honour (student mobility), prepared and finalised by the Swiss institution before the mobility period",
+     "Proof of enrolment at the home institution",
+     "Evidence of the interinstitutional agreement",
+     "Requirement note (Anforderungsprotokoll) for any special-needs grant, applied for via the International Relations Office before departure"
+    ],
+    "english_requirement": null,
+    "application_method": [],
+    "selection_notes": "Selection is carried out by the home institution abroad (which runs the application and nominates the student) and then by the Swiss host institution, which coordinates the SEMP application and pays out the grant. Swiss SEMP institutions apply their own transparent selection criteria and may restrict SEMP grants to certain destinations.",
+    "best_fit": null,
+    "notes": "Switzerland is not associated to the Erasmus+ 2021-2027 programme; the funding for incoming mobility comes from the Swiss solution to Erasmus+, administered by Movetia on behalf of SERI. The European Union Programme Agreement was signed on 10 November 2025 and the Federal Council plans to request funding for association to Erasmus+ in 2027, so the programme framework may change.",
+    "duration": "2 to 12 months per mobility (minimum 60 days); one or two semesters for study mobility; traineeships of at least 60 days",
+    "application_period": "Annual institutional cycle with applications each March and a funding period from 1 June; student-level applications run through the Swiss host institution's own deadlines. Movetia expects the next call to be launched under Erasmus+ following Switzerland's planned participation from 2027.",
+    "deadline_display": "There is no central deadline for individual students: applications are handled by the international relations office of the Swiss host institution, which sets its own dates. At institutional level, accreditation and funding applications go to Movetia annually in early March for a funding period starting 1 June. Movetia currently states that the next application deadline is spring 2027, likely under Erasmus+.",
+    "deadline_date": null,
+    "region": "Europe",
+    "program_type": "Government mobility programme (higher education), Swiss solution to Erasmus+ - incoming mobility",
+    "applicant_utility": null,
+    "official_details": null
+   },
+   "missing_fields": [
+    "funding_amount",
+    "requirements",
+    "english_requirement",
+    "application_method",
+    "best_fit",
+    "deadline_date",
+    "applicant_utility",
+    "official_details"
+   ]
+  }
+ ],
+ "result_file": "C:\\Users\\GopaL\\Desktop\\Projects folder\\ScholarZone\\backend\\research_output\\live500\\results\\agent_225.json"
+}

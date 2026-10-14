@@ -1,0 +1,324 @@
+{
+  "attempts": [
+    {
+      "url": "https://web.archive.org/web/2024/https://www.studyintaiwan.org/taiwan_scholarship",
+      "status": 404,
+      "ok": false
+    },
+    {
+      "url": "https://web.archive.org/web/2023/https://www.studyintaiwan.org/taiwan_scholarship",
+      "status": 404,
+      "ok": false
+    },
+    {
+      "url": "https://web.archive.org/web/2022/https://www.studyintaiwan.org/",
+      "status": 200,
+      "ok": true,
+      "bytes": 102044
+    },
+    {
+      "url": "https://web.archive.org/web/2023/https://www.edutwscholarship.moe.gov.tw",
+      "status": 404,
+      "ok": false
+    },
+    {
+      "url": "https://web.archive.org/web/2024/https://en.moe.gov.tw/",
+      "status": 404,
+      "ok": false
+    },
+    {
+      "url": "https://web.archive.org/web/2023/https://english.moe.gov.tw/cp-1-37408-1.html",
+      "status": 404,
+      "ok": false
+    },
+    {
+      "url": "https://web.archive.org/web/2024/https://english.moe.gov.tw/cp-1-37408-1.html",
+      "status": 404,
+      "ok": false
+    }
+  ],
+  "candidates": [
+    {
+      "url": "https://web.archive.org/web/20230115030643im_/https://www.studyintaiwan.org/contents/frontend/assets/images/sit_og.jpg",
+      "method": "og:image",
+      "alt": null,
+      "page_url": "https://web.archive.org/web/2022/https://www.studyintaiwan.org/"
+    },
+    {
+      "url": "https://web.archive.org/web/20230115030643im_/https://www.studyintaiwan.org/assets/images/btn_close.png",
+      "method": "img_tag",
+      "alt": null,
+      "page_url": "https://web.archive.org/web/2022/https://www.studyintaiwan.org/"
+    },
+    {
+      "url": "https://web.archive.org/web/20230115030643im_/https://www.studyintaiwan.org/upload/nst_mts/義守.png",
+      "method": "img_tag",
+      "alt": null,
+      "page_url": "https://web.archive.org/web/2022/https://www.studyintaiwan.org/"
+    },
+    {
+      "url": "https://web.archive.org/web/20230115030643im_/https://www.studyintaiwan.org/upload/nst_mts/義守大學final_無字幕_458.jpg",
+      "method": "img_tag",
+      "alt": null,
+      "page_url": "https://web.archive.org/web/2022/https://www.studyintaiwan.org/"
+    },
+    {
+      "url": "https://web.archive.org/web/20230115030643im_/https://www.studyintaiwan.org/upload/nst_mts/123.png",
+      "method": "img_tag",
+      "alt": null,
+      "page_url": "https://web.archive.org/web/2022/https://www.studyintaiwan.org/"
+    },
+    {
+      "url": "https://web.archive.org/web/20230115030643im_/https://www.studyintaiwan.org/upload/nst_mts/02_日本_清大_首頁圖_YT011.jpg",
+      "method": "img_tag",
+      "alt": null,
+      "page_url": "https://web.archive.org/web/2022/https://www.studyintaiwan.org/"
+    },
+    {
+      "url": "https://web.archive.org/web/20230115030643im_/https://www.studyintaiwan.org/upload/nst_mts/456.png",
+      "method": "img_tag",
+      "alt": null,
+      "page_url": "https://web.archive.org/web/2022/https://www.studyintaiwan.org/"
+    },
+    {
+      "url": "https://web.archive.org/web/20230115030643im_/https://www.studyintaiwan.org/upload/nst_mts/學生照02.png",
+      "method": "img_tag",
+      "alt": null,
+      "page_url": "https://web.archive.org/web/2022/https://www.studyintaiwan.org/"
+    },
+    {
+      "url": "https://web.archive.org/web/20230115030643im_/https://www.studyintaiwan.org/upload/nst_mts/04_日本_師範_首頁圖_YT02.jpg",
+      "method": "img_tag",
+      "alt": null,
+      "page_url": "https://web.archive.org/web/2022/https://www.studyintaiwan.org/"
+    },
+    {
+      "url": "https://web.archive.org/web/20230115030643im_/https://www.studyintaiwan.org/upload/nst_mts/高教_師大_YT3.png",
+      "method": "img_tag",
+      "alt": null,
+      "page_url": "https://web.archive.org/web/2022/https://www.studyintaiwan.org/"
+    },
+    {
+      "url": "https://web.archive.org/web/20230115030643im_/https://www.studyintaiwan.org/upload/nst_mts/01_臺師大_波蘭_DSC00216_C.jpg",
+      "method": "img_tag",
+      "alt": null,
+      "page_url": "https://web.archive.org/web/2022/https://www.studyintaiwan.org/"
+    },
+    {
+      "url": "https://web.archive.org/web/20230115030643im_/https://www.studyintaiwan.org/upload/nst_mts/高教_成大_YT1.png",
+      "method": "img_tag",
+      "alt": null,
+      "page_url": "https://web.archive.org/web/2022/https://www.studyintaiwan.org/"
+    },
+    {
+      "url": "https://web.archive.org/web/20230115030643im_/https://www.studyintaiwan.org/upload/nst_mts/影片縮圖_SIT網站用.jpg",
+      "method": "img_tag",
+      "alt": null,
+      "page_url": "https://web.archive.org/web/2022/https://www.studyintaiwan.org/"
+    },
+    {
+      "url": "https://web.archive.org/web/20230115030643im_/https://www.studyintaiwan.org/upload/nst_mts/高教_政大_YT1.png",
+      "method": "img_tag",
+      "alt": null,
+      "page_url": "https://web.archive.org/web/2022/https://www.studyintaiwan.org/"
+    },
+    {
+      "url": "https://web.archive.org/web/20230115030643im_/https://www.studyintaiwan.org/upload/nst_mts/Siriruk1.jpg",
+      "method": "img_tag",
+      "alt": null,
+      "page_url": "https://web.archive.org/web/2022/https://www.studyintaiwan.org/"
+    },
+    {
+      "url": "https://web.archive.org/web/20230115030643im_/https://www.studyintaiwan.org/upload/nst_mts/北醫.png",
+      "method": "img_tag",
+      "alt": null,
+      "page_url": "https://web.archive.org/web/2022/https://www.studyintaiwan.org/"
+    },
+    {
+      "url": "https://web.archive.org/web/20230115030643im_/https://www.studyintaiwan.org/upload/nst_mts/北醫訪談_SIT.JPG",
+      "method": "img_tag",
+      "alt": null,
+      "page_url": "https://web.archive.org/web/2022/https://www.studyintaiwan.org/"
+    },
+    {
+      "url": "https://web.archive.org/web/20230115030643im_/https://www.studyintaiwan.org/upload/nst_mts/10_北醫_印尼.jpg",
+      "method": "img_tag",
+      "alt": null,
+      "page_url": "https://web.archive.org/web/2022/https://www.studyintaiwan.org/"
+    },
+    {
+      "url": "https://web.archive.org/web/20230115030643im_/https://www.studyintaiwan.org/upload/nst_mts/高教_正修_YT11.png",
+      "method": "img_tag",
+      "alt": null,
+      "page_url": "https://web.archive.org/web/2022/https://www.studyintaiwan.org/"
+    },
+    {
+      "url": "https://web.archive.org/web/20230115030643im_/https://www.studyintaiwan.org/upload/nst_mts/影片縮圖_SIT網站用3.jpg",
+      "method": "img_tag",
+      "alt": null,
+      "page_url": "https://web.archive.org/web/2022/https://www.studyintaiwan.org/"
+    },
+    {
+      "url": "https://web.archive.org/web/20230115030643im_/https://www.studyintaiwan.org/upload/nst_mts/02_正修_印尼.jpg",
+      "method": "img_tag",
+      "alt": null,
+      "page_url": "https://web.archive.org/web/2022/https://www.studyintaiwan.org/"
+    },
+    {
+      "url": "https://web.archive.org/web/20230115030643im_/https://www.studyintaiwan.org/upload/nst_mts/高教_東華_FB1.png",
+      "method": "img_tag",
+      "alt": null,
+      "page_url": "https://web.archive.org/web/2022/https://www.studyintaiwan.org/"
+    },
+    {
+      "url": "https://web.archive.org/web/20230115030643im_/https://www.studyintaiwan.org/upload/nst_mts/影片縮圖_SIT網站用1.jpg",
+      "method": "img_tag",
+      "alt": null,
+      "page_url": "https://web.archive.org/web/2022/https://www.studyintaiwan.org/"
+    },
+    {
+      "url": "https://web.archive.org/web/20230115030643im_/https://www.studyintaiwan.org/upload/nst_mts/影片封面_高餐_YT.png",
+      "method": "img_tag",
+      "alt": null,
+      "page_url": "https://web.archive.org/web/2022/https://www.studyintaiwan.org/"
+    },
+    {
+      "url": "https://web.archive.org/web/20230115030643im_/https://www.studyintaiwan.org/upload/nst_mts/學生照無字卡.jpg",
+      "method": "img_tag",
+      "alt": null,
+      "page_url": "https://web.archive.org/web/2022/https://www.studyintaiwan.org/"
+    },
+    {
+      "url": "https://web.archive.org/web/20230115030643im_/https://www.studyintaiwan.org/upload/nst_mts/05_高餐_韓國.jpg",
+      "method": "img_tag",
+      "alt": null,
+      "page_url": "https://web.archive.org/web/2022/https://www.studyintaiwan.org/"
+    },
+    {
+      "url": "https://web.archive.org/web/20230115030643im_/https://www.studyintaiwan.org/upload/nst_mts/高教_臺大_YT1.png",
+      "method": "img_tag",
+      "alt": null,
+      "page_url": "https://web.archive.org/web/2022/https://www.studyintaiwan.org/"
+    },
+    {
+      "url": "https://web.archive.org/web/20230115030643im_/https://www.studyintaiwan.org/upload/nst_mts/台灣大學（無字幕）_388_SIT.jpg",
+      "method": "img_tag",
+      "alt": null,
+      "page_url": "https://web.archive.org/web/2022/https://www.studyintaiwan.org/"
+    },
+    {
+      "url": "https://web.archive.org/web/20230115030643im_/https://www.studyintaiwan.org/upload/nst_mts/淡大.png",
+      "method": "img_tag",
+      "alt": null,
+      "page_url": "https://web.archive.org/web/2022/https://www.studyintaiwan.org/"
+    },
+    {
+      "url": "https://web.archive.org/web/20230115030643im_/https://www.studyintaiwan.org/upload/nst_mts/淡江大學無字幕_446_SIT.jpg",
+      "method": "img_tag",
+      "alt": null,
+      "page_url": "https://web.archive.org/web/2022/https://www.studyintaiwan.org/"
+    },
+    {
+      "url": "https://web.archive.org/web/20230115030643im_/https://www.studyintaiwan.org/upload/nst_mts/06_淡江_美國.jpg",
+      "method": "img_tag",
+      "alt": null,
+      "page_url": "https://web.archive.org/web/2022/https://www.studyintaiwan.org/"
+    },
+    {
+      "url": "https://web.archive.org/web/20230115030643im_/https://www.studyintaiwan.org/upload/nst_mts/03.jpg",
+      "method": "img_tag",
+      "alt": null,
+      "page_url": "https://web.archive.org/web/2022/https://www.studyintaiwan.org/"
+    },
+    {
+      "url": "https://web.archive.org/web/20230115030643im_/https://www.studyintaiwan.org/upload/nst_mts/中山.png",
+      "method": "img_tag",
+      "alt": null,
+      "page_url": "https://web.archive.org/web/2022/https://www.studyintaiwan.org/"
+    },
+    {
+      "url": "https://web.archive.org/web/20230115030643im_/https://www.studyintaiwan.org/upload/nst_mts/Mark_from_PH1.jpg",
+      "method": "img_tag",
+      "alt": null,
+      "page_url": "https://web.archive.org/web/2022/https://www.studyintaiwan.org/"
+    },
+    {
+      "url": "https://web.archive.org/web/20230115030643im_/https://www.studyintaiwan.org/upload/nst_mts/Issac_Jo.jpg",
+      "method": "img_tag",
+      "alt": null,
+      "page_url": "https://web.archive.org/web/2022/https://www.studyintaiwan.org/"
+    },
+    {
+      "url": "https://web.archive.org/web/20230115030643im_/https://www.studyintaiwan.org/contents/frontend/assets/images/index/playbtn.png",
+      "method": "img_tag",
+      "alt": null,
+      "page_url": "https://web.archive.org/web/2022/https://www.studyintaiwan.org/"
+    },
+    {
+      "url": "https://web.archive.org/web/20230115030643im_/https://www.studyintaiwan.org/contents/frontend/assets/images/index/sloge.png",
+      "method": "img_tag",
+      "alt": null,
+      "page_url": "https://web.archive.org/web/2022/https://www.studyintaiwan.org/"
+    },
+    {
+      "url": "https://web.archive.org/web/20230115030643im_/https://www.studyintaiwan.org/upload/news/意見調查活動_官網01_thumb.jpg",
+      "method": "img_tag",
+      "alt": null,
+      "page_url": "https://web.archive.org/web/2022/https://www.studyintaiwan.org/"
+    },
+    {
+      "url": "https://web.archive.org/web/20230115030643im_/https://www.studyintaiwan.org/upload/news/2022_Study_in_Taiwan_Online_Survey_官網_thumb.jpg",
+      "method": "img_tag",
+      "alt": null,
+      "page_url": "https://web.archive.org/web/2022/https://www.studyintaiwan.org/"
+    },
+    {
+      "url": "https://web.archive.org/web/20230115030643im_/https://www.studyintaiwan.org/contents/frontend/assets/images/index/join/map.png",
+      "method": "img_tag",
+      "alt": null,
+      "page_url": "https://web.archive.org/web/2022/https://www.studyintaiwan.org/"
+    },
+    {
+      "url": "https://web.archive.org/web/20230115030643im_/https://www.studyintaiwan.org/upload/link/TAFS1.jpg",
+      "method": "img_tag",
+      "alt": null,
+      "page_url": "https://web.archive.org/web/2022/https://www.studyintaiwan.org/"
+    },
+    {
+      "url": "https://web.archive.org/web/20230115030643im_/https://www.studyintaiwan.org/upload/link/旅宿網_防疫旅館_2.jpg",
+      "method": "img_tag",
+      "alt": null,
+      "page_url": "https://web.archive.org/web/2022/https://www.studyintaiwan.org/"
+    },
+    {
+      "url": "https://web.archive.org/web/20230115030643im_/https://www.studyintaiwan.org/upload/link/tourism1.jpg",
+      "method": "img_tag",
+      "alt": null,
+      "page_url": "https://web.archive.org/web/2022/https://www.studyintaiwan.org/"
+    },
+    {
+      "url": "https://web.archive.org/web/20230115030643im_/https://www.studyintaiwan.org/upload/link/MOFA1.jpg",
+      "method": "img_tag",
+      "alt": null,
+      "page_url": "https://web.archive.org/web/2022/https://www.studyintaiwan.org/"
+    },
+    {
+      "url": "https://web.archive.org/web/20230115030643im_/https://www.studyintaiwan.org/upload/link/海聯1.jpg",
+      "method": "img_tag",
+      "alt": null,
+      "page_url": "https://web.archive.org/web/2022/https://www.studyintaiwan.org/"
+    },
+    {
+      "url": "https://web.archive.org/web/20230115030643im_/https://www.studyintaiwan.org/upload/link/TOCFL1.jpg",
+      "method": "img_tag",
+      "alt": null,
+      "page_url": "https://web.archive.org/web/2022/https://www.studyintaiwan.org/"
+    },
+    {
+      "url": "https://web.archive.org/web/20230115030643im_/https://www.studyintaiwan.org/upload/link/hotfamily11.jpg",
+      "method": "img_tag",
+      "alt": null,
+      "page_url": "https://web.archive.org/web/2022/https://www.studyintaiwan.org/"
+    }
+  ]
+}

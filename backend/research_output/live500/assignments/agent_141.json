@@ -1,0 +1,82 @@
+{
+ "agent": "agent_141",
+ "assignment_count": 1,
+ "scholarships": [
+  {
+   "id": 369,
+   "title": "Sapienza University of Rome Scholarships",
+   "country": "Italy",
+   "degree": "Bachelor's, Master's",
+   "funding_label": "Partially Funded",
+   "status": "open",
+   "official_source": "Sapienza Università di Roma",
+   "official_source_url": "https://www.uniroma1.it/en/pagina/straniieri-borse-di-studio",
+   "application_link": "https://www.uniroma1.it/en/pagina/straniieri-borse-di-studio",
+   "catalogue_url": null,
+   "official_updates_url": "https://www.uniroma1.it/en/pagina/scholarships",
+   "existing": {
+    "funding_amount": null,
+    "funding_currency": null,
+    "funding_period": null,
+    "tuition_coverage": 0,
+    "living_cost_coverage": null,
+    "travel_coverage": null,
+    "fully_funded": 0,
+    "description": "Sapienza Università di Roma operates a broad scholarship portfolio for its students and graduates, covering study materials reimbursement, accommodation in university residences, international thesis work, post-degree study abroad, and paid student collaborations. Individual schemes publish their own values and deadlines, for example a monthly amount of €1,290.00 for the International Post-degree Scholarship and €1,295.00 for student-collaboration internships. Regional right-to-study benefits are administered by Disco Lazio through competitive selection. The university's official Scholarships page is the current authoritative index for these calls.",
+    "eligibility": [
+     "Enrolled at Sapienza on a degree programme, or a Sapienza graduate, depending on the individual call",
+     "Italian regional scholarship benefits applied for through the regional agency Disco Lazio by competitive selection",
+     "Meet the specific criteria published in each individual call"
+    ],
+    "eligibility_summary": "Eligibility is set per individual call. Sapienza's portfolio covers enrolled students and graduates, with separate schemes for students with care responsibilities or in vulnerable circumstances, reimbursement of study materials, university residence accommodation, the Rieti inter-university campus, worthy students, international thesis work, post-degree study, study and training abroad, and student-collaboration roles.",
+    "benefits": [
+     "International Post-degree Scholarship of €1,290.00 per month for 6 to 12 months",
+     "Student-collaboration grant of €1,295.00 for paid internships of 150 hours",
+     "Fee of €1,500.00 tax-free for support activities for students with disabilities and Specific Learning Difficulties",
+     "Study materials reimbursement",
+     "University residence accommodation places",
+     "Funding for thesis work and mobility abroad through Erasmus+ or Sapienza funding"
+    ],
+    "coverage": [
+     "Reimbursement of study materials",
+     "Monthly support for post-degree study and internships",
+     "Payment for student-collaboration activities",
+     "Places in Sapienza university residences"
+    ],
+    "requirements": [],
+    "documents": [
+     "Documents specified by each individual call"
+    ],
+    "english_requirement": null,
+    "application_method": [],
+    "selection_notes": null,
+    "best_fit": null,
+    "notes": "Regional right-to-study benefits are handled by Disco Lazio for the Lazio region and require a competitive selection. Italian government grants for citizens living abroad are awarded by the Italian Ministry of Foreign Affairs and International Cooperation. Thesis prizes and scholarships supported by external bodies are listed separately by Sapienza. Scholarship payments are made throughout the year but are suspended in December and January during Sapienza's year-end closing.",
+    "duration": "Academic year (renewable for up to 2 years)",
+    "application_period": "Rolling portfolio of calls across the year; specific calls open and close on their own published dates, with the September call noted for students in difficulty.",
+    "deadline_display": "The official Scholarships page publishes no single deadline. It states that for grants for students experiencing difficulties \"The call for applications is usually published in September\" and that \"Scholarships and awards are granted throughout the year\".",
+    "deadline_date": null,
+    "region": "Europe",
+    "program_type": "University scholarship portfolio (multiple schemes)",
+    "applicant_utility": null,
+    "official_details": null
+   },
+   "missing_fields": [
+    "funding_amount",
+    "funding_currency",
+    "funding_period",
+    "living_cost_coverage",
+    "travel_coverage",
+    "requirements",
+    "english_requirement",
+    "application_method",
+    "selection_notes",
+    "best_fit",
+    "deadline_date",
+    "applicant_utility",
+    "official_details"
+   ]
+  }
+ ],
+ "result_file": "C:\\Users\\GopaL\\Desktop\\Projects folder\\ScholarZone\\backend\\research_output\\live500\\results\\agent_141.json"
+}

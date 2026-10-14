@@ -1,0 +1,1290 @@
+{
+  "_generated": "2026-10-03T14:51:13.991Z",
+  "_method": "curated pool filtered against EXISTING_AWARDS.json by official host, then normalised name, then in-batch host uniqueness",
+  "accepted_count": 134,
+  "rejected_count": 27,
+  "logo_hosts_already_taken": [
+    "ucd.ie",
+    "chalmers.se",
+    "liu.se",
+    "hi.is",
+    "nawa.gov.pl",
+    "um.edu.mt",
+    "unizg.hr",
+    "uni-lj.si",
+    "uva.nl",
+    "sdu.dk",
+    "brandeis.edu",
+    "sfu.ca",
+    "rmit.edu.au",
+    "suss.edu.sg",
+    "ntu.edu.sg",
+    "sutd.edu.sg"
+  ],
+  "accepted": [
+    {
+      "name": "International Undergraduate Scholarships - Universita degli Studi di Milano",
+      "host": "unimi.it",
+      "region": "Europe",
+      "note": "undergraduate eligible",
+      "logo_host_taken": false,
+      "slot": "b01"
+    },
+    {
+      "name": "International Students Scholarships - Universita degli Studi di Parma",
+      "host": "unipr.it",
+      "region": "Europe",
+      "note": "undergraduate eligible",
+      "logo_host_taken": false,
+      "slot": "b02"
+    },
+    {
+      "name": "Borse di Studio - Universita di Pisa",
+      "host": "unipi.it",
+      "region": "Europe",
+      "note": "undergraduate eligible",
+      "logo_host_taken": false,
+      "slot": "b03"
+    },
+    {
+      "name": "Talent Awards - Universita degli Studi di Napoli Federico II",
+      "host": "unina.it",
+      "region": "Europe",
+      "note": "undergraduate eligible",
+      "logo_host_taken": false,
+      "slot": "b04"
+    },
+    {
+      "name": "International Scholarships - Universita di Catania",
+      "host": "unict.it",
+      "region": "Europe",
+      "note": "undergraduate eligible",
+      "logo_host_taken": false,
+      "slot": "b05"
+    },
+    {
+      "name": "International Students Scholarships - Vrije Universiteit Brussel",
+      "host": "vub.be",
+      "region": "Europe",
+      "note": "bachelor eligible",
+      "logo_host_taken": false,
+      "slot": "b06"
+    },
+    {
+      "name": "Bourse d Excellence - Universite Libre de Bruxelles",
+      "host": "ulb.be",
+      "region": "Europe",
+      "note": "bachelor eligible",
+      "logo_host_taken": false,
+      "slot": "b07"
+    },
+    {
+      "name": "Excellence Scholarship - Nyenrode Business University",
+      "host": "nyenrode.nl",
+      "region": "Europe",
+      "note": "bachelor eligible",
+      "logo_host_taken": false,
+      "slot": "b08"
+    },
+    {
+      "name": "International Scholarship for UG Students - Swansea University",
+      "host": "swansea.ac.uk",
+      "region": "Europe",
+      "note": "bachelor eligible",
+      "logo_host_taken": false,
+      "slot": "b09"
+    },
+    {
+      "name": "International Excellence Scholarships - University of Hull",
+      "host": "hull.ac.uk",
+      "region": "Europe",
+      "note": "bachelor eligible",
+      "logo_host_taken": false,
+      "slot": "b10"
+    },
+    {
+      "name": "International Undergraduate Scholarships - University of Plymouth",
+      "host": "plymouth.ac.uk",
+      "region": "Europe",
+      "note": "bachelor eligible",
+      "logo_host_taken": false,
+      "slot": "b11"
+    },
+    {
+      "name": "International Scholarships - University of Dundee",
+      "host": "dundee.ac.uk",
+      "region": "Europe",
+      "note": "bachelor eligible",
+      "logo_host_taken": false,
+      "slot": "b12"
+    },
+    {
+      "name": "International Excellence Scholarship (UNDERGRADUATE round) - University of St Andrews",
+      "host": "st-andrews.ac.uk",
+      "region": "Europe",
+      "note": "bachelor eligible - NOTE: there is NO undergraduate \"Global Excellence Scholarship\" at St Andrews; that name belongs to the postgraduate round. The undergraduate awards are International Undergraduate Scholarship, International Excellence Scholarship, Accommodation Award International, Davis UWC.",
+      "logo_host_taken": false,
+      "slot": "b13"
+    },
+    {
+      "name": "International Excellence Scholarship - University of Glasgow",
+      "host": "gla.ac.uk",
+      "region": "Europe",
+      "note": "bachelor eligible",
+      "logo_host_taken": false,
+      "slot": "b14"
+    },
+    {
+      "name": "Beit Scholarship - University of Oxford",
+      "host": "ox.ac.uk",
+      "region": "Europe",
+      "note": "bachelor eligible",
+      "logo_host_taken": false,
+      "slot": "b15"
+    },
+    {
+      "name": "Gates Cambridge Scholarship",
+      "host": "cam.ac.uk",
+      "region": "Europe",
+      "note": "bachelor eligible",
+      "logo_host_taken": false,
+      "slot": "b16"
+    },
+    {
+      "name": "Duffy Companies Rugby Scholarship - University College Dublin",
+      "host": "ucd.ie",
+      "region": "Europe",
+      "note": "bachelor eligible",
+      "logo_host_taken": true,
+      "slot": "b17"
+    },
+    {
+      "name": "Bursaries and Scholarships - University College Cork",
+      "host": "ucc.ie",
+      "region": "Europe",
+      "note": "bachelor eligible",
+      "logo_host_taken": false,
+      "slot": "b18"
+    },
+    {
+      "name": "Admissions Scholarships - Chalmers University of Technology",
+      "host": "chalmers.se",
+      "region": "Europe",
+      "note": "bachelor eligible",
+      "logo_host_taken": true,
+      "slot": "b19"
+    },
+    {
+      "name": "University Scholarship - Linkoping University",
+      "host": "liu.se",
+      "region": "Europe",
+      "note": "bachelor eligible",
+      "logo_host_taken": true,
+      "slot": "b20"
+    },
+    {
+      "name": "Johan Sebastian Bach Scholarship - University of Gothenburg",
+      "host": "gu.se",
+      "region": "Europe",
+      "note": "bachelor eligible",
+      "logo_host_taken": false,
+      "slot": "b21"
+    },
+    {
+      "name": "Norwegian State Educational Loan Fund / Study Allowance - Skatteetaten",
+      "host": "skatteetaten.no",
+      "region": "Europe",
+      "note": "study support not award - verify",
+      "logo_host_taken": false,
+      "slot": "b22"
+    },
+    {
+      "name": "Finnish Government Scholarship for Tuition Fees",
+      "host": "oph.fi",
+      "region": "Europe",
+      "note": "bachelor eligible",
+      "logo_host_taken": false,
+      "slot": "b23"
+    },
+    {
+      "name": "Denmark Student Grant (SU) - Udbetaling Danmark",
+      "host": "studiebolig.dk",
+      "region": "Europe",
+      "note": "study support not award - verify",
+      "logo_host_taken": false,
+      "slot": "b24"
+    },
+    {
+      "name": "Study Grant / Tuition Waiver - Iceland University",
+      "host": "hi.is",
+      "region": "Europe",
+      "note": "bachelor eligible",
+      "logo_host_taken": true,
+      "slot": "b25"
+    },
+    {
+      "name": "Norwegian Government Scholarship - GOG and Romania bilateral",
+      "host": "gog.gov.ro",
+      "region": "Europe",
+      "note": "bachelor eligible",
+      "logo_host_taken": false,
+      "slot": "b26"
+    },
+    {
+      "name": "Study in Poland Scholarships - NAWA",
+      "host": "nawa.gov.pl",
+      "region": "Europe",
+      "note": "verify bachelor level",
+      "logo_host_taken": true,
+      "shared_host_warn": "9 existing awards on this host; confirm by name before writing",
+      "slot": "b27"
+    },
+    {
+      "name": "Programme ambassador - Fulbright Slovakia",
+      "host": "fulbright.sk",
+      "region": "Europe",
+      "note": "master focused - verify",
+      "logo_host_taken": false,
+      "slot": "b28"
+    },
+    {
+      "name": "Austria Development Cooperation Scholarship - OeAD",
+      "host": "oead.adam.at",
+      "region": "Europe",
+      "note": "verify bachelor level",
+      "logo_host_taken": false,
+      "slot": "b29"
+    },
+    {
+      "name": "Rector Scholarship - University of Sarajevo",
+      "host": "unsa.ba",
+      "region": "Europe",
+      "note": "local focused - verify",
+      "logo_host_taken": false,
+      "slot": "b30"
+    },
+    {
+      "name": "Scholarship Programme - University of Tirana",
+      "host": "unit.edu.al",
+      "region": "Europe",
+      "note": "verify eligibility",
+      "logo_host_taken": false,
+      "slot": "b31"
+    },
+    {
+      "name": "Cyprus University of Technology International Scholarships",
+      "host": "cut.ac.cy",
+      "region": "Europe",
+      "note": "bachelor eligible",
+      "logo_host_taken": false,
+      "slot": "b32"
+    },
+    {
+      "name": "University of Malta International Scholarships",
+      "host": "um.edu.mt",
+      "region": "Europe",
+      "note": "bachelor eligible",
+      "logo_host_taken": true,
+      "slot": "b33"
+    },
+    {
+      "name": "Admissions Scholarship - University of Zagreb",
+      "host": "unizg.hr",
+      "region": "Europe",
+      "note": "bachelor eligible",
+      "logo_host_taken": true,
+      "slot": "b34"
+    },
+    {
+      "name": "Jasminka Scholarship - University of Ljubljana",
+      "host": "uni-lj.si",
+      "region": "Europe",
+      "note": "bachelor eligible",
+      "logo_host_taken": true,
+      "slot": "b35"
+    },
+    {
+      "name": "Tuition Waiver for International Students - University of Tuebingen",
+      "host": "uni-tuebingen.de",
+      "region": "Europe",
+      "note": "bachelor eligible",
+      "logo_host_taken": false,
+      "slot": "b36"
+    },
+    {
+      "name": "Tuition and Fee Waiver for International Students - University of Freiburg",
+      "host": "uni-freiburg.de",
+      "region": "Europe",
+      "note": "bachelor eligible",
+      "logo_host_taken": false,
+      "slot": "b37"
+    },
+    {
+      "name": "International Tuition Waiver - Technical University of Munich",
+      "host": "tum.de",
+      "region": "Europe",
+      "note": "bachelor eligible",
+      "logo_host_taken": false,
+      "slot": "b38"
+    },
+    {
+      "name": "International Tuition Fee Waiver - University of Cologne",
+      "host": "uni-koeln.de",
+      "region": "Europe",
+      "note": "bachelor eligible",
+      "logo_host_taken": false,
+      "slot": "b39"
+    },
+    {
+      "name": "Tuition Fee Waiver - University of Hamburg",
+      "host": "uni-hamburg.de",
+      "region": "Europe",
+      "note": "bachelor eligible",
+      "logo_host_taken": false,
+      "slot": "b40"
+    },
+    {
+      "name": "International Student Scholarships - University of Bonn",
+      "host": "uni-bonn.de",
+      "region": "Europe",
+      "note": "bachelor eligible",
+      "logo_host_taken": false,
+      "slot": "b41"
+    },
+    {
+      "name": "International Tuition Fee Reduction - RWTH Aachen University",
+      "host": "rwth-aachen.de",
+      "region": "Europe",
+      "note": "bachelor eligible",
+      "logo_host_taken": false,
+      "slot": "b42"
+    },
+    {
+      "name": "Tuition Fee Waiver - University of Mannheim",
+      "host": "uni-mannheim.de",
+      "region": "Europe",
+      "note": "bachelor eligible",
+      "logo_host_taken": false,
+      "slot": "b43"
+    },
+    {
+      "name": "Scholarships for International Students - University of Amsterdam",
+      "host": "uva.nl",
+      "region": "Europe",
+      "note": "bachelor eligible",
+      "logo_host_taken": true,
+      "slot": "b44"
+    },
+    {
+      "name": "Scholarships and Grants - University of Southern Denmark",
+      "host": "sdu.dk",
+      "region": "Europe",
+      "note": "bachelor eligible",
+      "logo_host_taken": true,
+      "slot": "b45"
+    },
+    {
+      "name": "President Scholarship - Williams College",
+      "host": "williams.edu",
+      "region": "United States",
+      "note": "bachelor eligible",
+      "logo_host_taken": false,
+      "slot": "b46"
+    },
+    {
+      "name": "Bowdoin College General Scholarship",
+      "host": "bowdoin.edu",
+      "region": "United States",
+      "note": "bachelor eligible",
+      "logo_host_taken": false,
+      "slot": "b47"
+    },
+    {
+      "name": "Middlebury College International Scholarships",
+      "host": "middlebury.edu",
+      "region": "United States",
+      "note": "bachelor eligible",
+      "logo_host_taken": false,
+      "slot": "b48"
+    },
+    {
+      "name": "Oberlin College International Scholarships",
+      "host": "oberlin.edu",
+      "region": "United States",
+      "note": "bachelor eligible",
+      "logo_host_taken": false,
+      "slot": "b49"
+    },
+    {
+      "name": "Denison University International Scholarships",
+      "host": "denison.edu",
+      "region": "United States",
+      "note": "bachelor eligible",
+      "logo_host_taken": false,
+      "slot": "b50"
+    },
+    {
+      "name": "Wofford College International Scholarships",
+      "host": "wofford.edu",
+      "region": "United States",
+      "note": "bachelor eligible",
+      "logo_host_taken": false,
+      "slot": "b51"
+    },
+    {
+      "name": "Lehigh University International Scholarships",
+      "host": "lehigh.edu",
+      "region": "United States",
+      "note": "bachelor eligible",
+      "logo_host_taken": false,
+      "slot": "b52"
+    },
+    {
+      "name": "Emerson College International Scholarships",
+      "host": "emerson.edu",
+      "region": "United States",
+      "note": "bachelor eligible",
+      "logo_host_taken": false,
+      "slot": "b53"
+    },
+    {
+      "name": "Brandeis University International Scholarship",
+      "host": "brandeis.edu",
+      "region": "United States",
+      "note": "bachelor eligible - verify vs id 58 Wien",
+      "logo_host_taken": true,
+      "slot": "b54"
+    },
+    {
+      "name": "New York University International Scholarships",
+      "host": "nyu.edu",
+      "region": "United States",
+      "note": "bachelor eligible",
+      "logo_host_taken": false,
+      "slot": "b55"
+    },
+    {
+      "name": "Johns Hopkins International Scholarships",
+      "host": "jhu.edu",
+      "region": "United States",
+      "note": "bachelor eligible",
+      "logo_host_taken": false,
+      "slot": "b56"
+    },
+    {
+      "name": "Tufts University International Scholarships",
+      "host": "tufts.edu",
+      "region": "United States",
+      "note": "bachelor eligible",
+      "logo_host_taken": false,
+      "slot": "b57"
+    },
+    {
+      "name": "Howard University International Scholarships",
+      "host": "howard.edu",
+      "region": "United States",
+      "note": "bachelor eligible",
+      "logo_host_taken": false,
+      "slot": "b58"
+    },
+    {
+      "name": "George Washington University International Merit Scholarships",
+      "host": "gwu.edu",
+      "region": "United States",
+      "note": "bachelor eligible",
+      "logo_host_taken": false,
+      "slot": "b59"
+    },
+    {
+      "name": "Georgetown University International Scholarships",
+      "host": "georgetown.edu",
+      "region": "United States",
+      "note": "bachelor eligible",
+      "logo_host_taken": false,
+      "slot": "b60"
+    },
+    {
+      "name": "Santa Clara University International Scholarships",
+      "host": "scu.edu",
+      "region": "United States",
+      "note": "bachelor eligible",
+      "logo_host_taken": false,
+      "slot": "b61"
+    },
+    {
+      "name": "SMU International Scholarships",
+      "host": "smu.edu",
+      "region": "United States",
+      "note": "bachelor eligible",
+      "logo_host_taken": false,
+      "slot": "b62"
+    },
+    {
+      "name": "Arizona State University International Scholarships",
+      "host": "asu.edu",
+      "region": "United States",
+      "note": "bachelor eligible",
+      "logo_host_taken": false,
+      "slot": "b63"
+    },
+    {
+      "name": "University of Colorado Boulder International Scholarships",
+      "host": "colorado.edu",
+      "region": "United States",
+      "note": "bachelor eligible",
+      "logo_host_taken": false,
+      "slot": "b64"
+    },
+    {
+      "name": "Fordham University International Scholarships",
+      "host": "fordham.edu",
+      "region": "United States",
+      "note": "bachelor eligible",
+      "logo_host_taken": false,
+      "slot": "b65"
+    },
+    {
+      "name": "Villanova University International Scholarships",
+      "host": "villanova.edu",
+      "region": "United States",
+      "note": "bachelor eligible",
+      "logo_host_taken": false,
+      "slot": "b66"
+    },
+    {
+      "name": "Yeshiva University International Scholarships",
+      "host": "yeshiva.edu",
+      "region": "United States",
+      "note": "bachelor eligible",
+      "logo_host_taken": false,
+      "slot": "b67"
+    },
+    {
+      "name": "Pace University International Scholarships",
+      "host": "pace.edu",
+      "region": "United States",
+      "note": "bachelor eligible",
+      "logo_host_taken": false,
+      "slot": "b68"
+    },
+    {
+      "name": "Catholic University of America International Scholarships",
+      "host": "cua.edu",
+      "region": "United States",
+      "note": "bachelor eligible",
+      "logo_host_taken": false,
+      "slot": "b69"
+    },
+    {
+      "name": "Pepperdine University International Scholarships",
+      "host": "pepperdine.edu",
+      "region": "United States",
+      "note": "bachelor eligible",
+      "logo_host_taken": false,
+      "slot": "b70"
+    },
+    {
+      "name": "Chapman University International Scholarships",
+      "host": "chapman.edu",
+      "region": "United States",
+      "note": "bachelor eligible",
+      "logo_host_taken": false,
+      "slot": "b71"
+    },
+    {
+      "name": "Pratt Institute International Scholarships",
+      "host": "pratt.edu",
+      "region": "United States",
+      "note": "bachelor eligible",
+      "logo_host_taken": false,
+      "slot": "b72"
+    },
+    {
+      "name": "ArtCenter College of Design International Scholarships",
+      "host": "artcenter.edu",
+      "region": "United States",
+      "note": "bachelor eligible",
+      "logo_host_taken": false,
+      "slot": "b73"
+    },
+    {
+      "name": "Ringling College of Art and Design International Scholarships",
+      "host": "ringling.edu",
+      "region": "United States",
+      "note": "bachelor eligible",
+      "logo_host_taken": false,
+      "slot": "b74"
+    },
+    {
+      "name": "Savannah College of Art and Design International Merit Scholarships",
+      "host": "scad.edu",
+      "region": "United States",
+      "note": "bachelor eligible",
+      "logo_host_taken": false,
+      "slot": "b75"
+    },
+    {
+      "name": "Berklee College of Music International Scholarships",
+      "host": "berklee.edu",
+      "region": "United States",
+      "note": "bachelor eligible",
+      "logo_host_taken": false,
+      "slot": "b76"
+    },
+    {
+      "name": "Juilliard School Scholarships",
+      "host": "juilliard.edu",
+      "region": "United States",
+      "note": "verify free tuition",
+      "logo_host_taken": false,
+      "slot": "b77"
+    },
+    {
+      "name": "Colburn Conservatory of Music",
+      "host": "colburn.edu",
+      "region": "United States",
+      "note": "bachelor eligible",
+      "logo_host_taken": false,
+      "slot": "b78"
+    },
+    {
+      "name": "Queen University International Scholarships",
+      "host": "queensu.ca",
+      "region": "Canada",
+      "note": "bachelor eligible",
+      "logo_host_taken": false,
+      "slot": "b79"
+    },
+    {
+      "name": "Western University International Scholarships",
+      "host": "uwo.ca",
+      "region": "Canada",
+      "note": "bachelor eligible",
+      "logo_host_taken": false,
+      "slot": "b80"
+    },
+    {
+      "name": "University of Ottawa International Scholarships",
+      "host": "uottawa.ca",
+      "region": "Canada",
+      "note": "bachelor eligible",
+      "logo_host_taken": false,
+      "slot": "b81"
+    },
+    {
+      "name": "Carleton University International Scholarships",
+      "host": "carleton.ca",
+      "region": "Canada",
+      "note": "bachelor eligible",
+      "logo_host_taken": false,
+      "slot": "b82"
+    },
+    {
+      "name": "Concordia University International Scholarships",
+      "host": "concordia.ca",
+      "region": "Canada",
+      "note": "bachelor eligible",
+      "logo_host_taken": false,
+      "slot": "b83"
+    },
+    {
+      "name": "University of Manitoba International Scholarships",
+      "host": "umanitoba.ca",
+      "region": "Canada",
+      "note": "bachelor eligible",
+      "logo_host_taken": false,
+      "slot": "b84"
+    },
+    {
+      "name": "University of Saskatchewan International Scholarships",
+      "host": "usask.ca",
+      "region": "Canada",
+      "note": "bachelor eligible",
+      "logo_host_taken": false,
+      "slot": "b85"
+    },
+    {
+      "name": "University of Alberta International Scholarships",
+      "host": "ualberta.ca",
+      "region": "Canada",
+      "note": "bachelor eligible",
+      "logo_host_taken": false,
+      "slot": "b86"
+    },
+    {
+      "name": "Wilfrid Laurier University International Scholarships",
+      "host": "wlu.ca",
+      "region": "Canada",
+      "note": "bachelor eligible",
+      "logo_host_taken": false,
+      "slot": "b87"
+    },
+    {
+      "name": "University of Guelph International Scholarships",
+      "host": "uoguelph.ca",
+      "region": "Canada",
+      "note": "bachelor eligible",
+      "logo_host_taken": false,
+      "slot": "b88"
+    },
+    {
+      "name": "Trent University International Scholarships",
+      "host": "trentu.ca",
+      "region": "Canada",
+      "note": "bachelor eligible",
+      "logo_host_taken": false,
+      "slot": "b89"
+    },
+    {
+      "name": "Brock University International Scholarships",
+      "host": "brocku.ca",
+      "region": "Canada",
+      "note": "bachelor eligible",
+      "logo_host_taken": false,
+      "slot": "b90"
+    },
+    {
+      "name": "Lakehead University International Scholarships",
+      "host": "lakeheadu.ca",
+      "region": "Canada",
+      "note": "bachelor eligible",
+      "logo_host_taken": false,
+      "slot": "b91"
+    },
+    {
+      "name": "University of Windsor International Scholarships",
+      "host": "uwindsor.ca",
+      "region": "Canada",
+      "note": "bachelor eligible",
+      "logo_host_taken": false,
+      "slot": "b92"
+    },
+    {
+      "name": "Dalhousie University International Scholarships",
+      "host": "dal.ca",
+      "region": "Canada",
+      "note": "bachelor eligible",
+      "logo_host_taken": false,
+      "slot": "b93"
+    },
+    {
+      "name": "Simon Fraser University International Scholarships",
+      "host": "sfu.ca",
+      "region": "Canada",
+      "note": "bachelor eligible",
+      "logo_host_taken": true,
+      "slot": "b94"
+    },
+    {
+      "name": "University of Victoria International Scholarships",
+      "host": "uvic.ca",
+      "region": "Canada",
+      "note": "bachelor eligible",
+      "logo_host_taken": false,
+      "slot": "b95"
+    },
+    {
+      "name": "Memorial University International Scholarships",
+      "host": "mun.ca",
+      "region": "Canada",
+      "note": "bachelor eligible",
+      "logo_host_taken": false,
+      "slot": "b96"
+    },
+    {
+      "name": "Thompson Rivers University International Scholarships",
+      "host": "tru.ca",
+      "region": "Canada",
+      "note": "bachelor eligible",
+      "logo_host_taken": false,
+      "slot": "b97"
+    },
+    {
+      "name": "International Excellence Scholarships - University of Queensland",
+      "host": "uq.edu.au",
+      "region": "Australia",
+      "note": "bachelor eligible",
+      "logo_host_taken": false,
+      "slot": "b98"
+    },
+    {
+      "name": "International Excellence Scholarship - University of Tasmania",
+      "host": "utas.edu.au",
+      "region": "Australia",
+      "note": "bachelor eligible",
+      "logo_host_taken": false,
+      "slot": "b99"
+    },
+    {
+      "name": "Curtin University International Scholarships",
+      "host": "curtin.edu.au",
+      "region": "Australia",
+      "note": "bachelor eligible",
+      "logo_host_taken": false,
+      "slot": "b100"
+    },
+    {
+      "name": "University of the Sunshine Coast International Scholarships",
+      "host": "usc.edu.au",
+      "region": "Australia",
+      "note": "bachelor eligible - NOT usc.edu",
+      "logo_host_taken": false,
+      "slot": "b101"
+    },
+    {
+      "name": "Charles Darwin University International Scholarships",
+      "host": "cdu.edu.au",
+      "region": "Australia",
+      "note": "bachelor eligible",
+      "logo_host_taken": false,
+      "slot": "b102"
+    },
+    {
+      "name": "Murdoch University International Scholarships",
+      "host": "murdoch.edu.au",
+      "region": "Australia",
+      "note": "bachelor eligible",
+      "logo_host_taken": false,
+      "slot": "b103"
+    },
+    {
+      "name": "University of Wollongong International Scholarships",
+      "host": "uow.edu.au",
+      "region": "Australia",
+      "note": "bachelor eligible",
+      "logo_host_taken": false,
+      "slot": "b104"
+    },
+    {
+      "name": "University of New England International Scholarships",
+      "host": "une.edu.au",
+      "region": "Australia",
+      "note": "bachelor eligible",
+      "logo_host_taken": false,
+      "slot": "b105"
+    },
+    {
+      "name": "Griffith University International Student Scholarships",
+      "host": "griffith.edu.au",
+      "region": "Australia",
+      "note": "bachelor eligible - check slot 41 use",
+      "logo_host_taken": false,
+      "slot": "b106"
+    },
+    {
+      "name": "Bond University International Scholarships",
+      "host": "bond.edu.au",
+      "region": "Australia",
+      "note": "bachelor eligible",
+      "logo_host_taken": false,
+      "slot": "b107"
+    },
+    {
+      "name": "Charles Sturt University International Scholarships",
+      "host": "csu.edu.au",
+      "region": "Australia",
+      "note": "bachelor eligible",
+      "logo_host_taken": false,
+      "slot": "b108"
+    },
+    {
+      "name": "Federation University Australia International Scholarships",
+      "host": "federation.edu.au",
+      "region": "Australia",
+      "note": "bachelor eligible",
+      "logo_host_taken": false,
+      "slot": "b109"
+    },
+    {
+      "name": "University of South Australia International Scholarships",
+      "host": "unisa.edu.au",
+      "region": "Australia",
+      "note": "bachelor eligible",
+      "logo_host_taken": false,
+      "slot": "b110"
+    },
+    {
+      "name": "Western Sydney University International Scholarships",
+      "host": "westernsydney.edu.au",
+      "region": "Australia",
+      "note": "bachelor eligible",
+      "logo_host_taken": false,
+      "slot": "b111"
+    },
+    {
+      "name": "University of Wollongong Dubai / RMIT - verify",
+      "host": "rmit.edu.au",
+      "region": "Australia",
+      "note": "bachelor eligible - check slot 46",
+      "logo_host_taken": true,
+      "slot": "b112"
+    },
+    {
+      "name": "Singapore University of Social Science Undergraduate Scholarships",
+      "host": "suss.edu.sg",
+      "region": "Singapore",
+      "note": "bachelor eligible",
+      "logo_host_taken": true,
+      "slot": "b113"
+    },
+    {
+      "name": "NTU ASEAN Undergraduate Scholarship",
+      "host": "ntu.edu.sg",
+      "region": "Singapore",
+      "note": "bachelor eligible - check slot 51 use",
+      "logo_host_taken": true,
+      "slot": "b114"
+    },
+    {
+      "name": "SUTD Undergraduate Scholarships",
+      "host": "sutd.edu.sg",
+      "region": "Singapore",
+      "note": "bachelor eligible - check slot 54 use",
+      "logo_host_taken": true,
+      "slot": "b115"
+    },
+    {
+      "name": "SMU Undergraduate Scholarships for International Students",
+      "host": "smu.edu.sg",
+      "region": "Singapore",
+      "note": "bachelor eligible - check slot 53 use",
+      "logo_host_taken": false,
+      "slot": "b116"
+    },
+    {
+      "name": "Universiti Malaya International Undergraduate Scholarships",
+      "host": "um.edu.my",
+      "region": "Malaysia",
+      "note": "NEGATIVE FINDING — do not assign. UM publishes NO international undergraduate scholarship: aasd.um.edu.my is unreachable server-side and the International Booklet PDF contains zero scholarship or waiver mentions. Recorded from two research passes.",
+      "logo_host_taken": false,
+      "slot": "b117"
+    },
+    {
+      "name": "Universiti Sains Malaysia International Undergraduate Scholarships",
+      "host": "usm.my",
+      "region": "Malaysia",
+      "note": "NEGATIVE FINDING — do not assign. USM publishes only a per-semester tuition-fee PDF for international undergraduates, and its own site lists international financial assistance as MIS, CSFP and IsDB, which are postgraduate external schemes. No UG scholarship exists to record.",
+      "logo_host_taken": false,
+      "slot": "b118"
+    },
+    {
+      "name": "Universiti Putra Malaysia International Undergraduate Scholarships",
+      "host": "upm.edu.my",
+      "region": "Malaysia",
+      "note": "bachelor eligible",
+      "logo_host_taken": false,
+      "slot": "b119"
+    },
+    {
+      "name": "Universiti Teknologi MARA International Scholarships",
+      "host": "uitm.edu.my",
+      "region": "Malaysia",
+      "note": "bachelor eligible",
+      "logo_host_taken": false,
+      "slot": "b120"
+    },
+    {
+      "name": "Universiti Islam Antarabangsa Malaysia International Scholarships",
+      "host": "iium.edu.my",
+      "region": "Malaysia",
+      "note": "bachelor eligible",
+      "logo_host_taken": false,
+      "slot": "b121"
+    },
+    {
+      "name": "Universiti Malaysia Sarawak International Undergraduate Scholarships",
+      "host": "unimas.my",
+      "region": "Malaysia",
+      "note": "bachelor eligible",
+      "logo_host_taken": false,
+      "slot": "b122"
+    },
+    {
+      "name": "Universiti Malaysia Terengganu International Scholarships",
+      "host": "umt.edu.my",
+      "region": "Malaysia",
+      "note": "bachelor eligible",
+      "logo_host_taken": false,
+      "slot": "b123"
+    },
+    {
+      "name": "Taylor University International Undergraduate Scholarships",
+      "host": "taylors.edu.my",
+      "region": "Malaysia",
+      "note": "bachelor eligible",
+      "logo_host_taken": false,
+      "slot": "b124"
+    },
+    {
+      "name": "Sunway University International Undergraduate Scholarships",
+      "host": "sunway.edu.my",
+      "region": "Malaysia",
+      "note": "bachelor eligible",
+      "logo_host_taken": false,
+      "slot": "b125"
+    },
+    {
+      "name": "UCSI University International Undergraduate Scholarships",
+      "host": "ucsi.edu.my",
+      "region": "Malaysia",
+      "note": "bachelor eligible",
+      "logo_host_taken": false,
+      "slot": "b126"
+    },
+    {
+      "name": "Universiti Tunku Abdul Rahman International Undergraduate Scholarships",
+      "host": "utar.edu.my",
+      "region": "Malaysia",
+      "note": "bachelor eligible",
+      "logo_host_taken": false,
+      "slot": "b127"
+    },
+    {
+      "name": "Management and Science University International Scholarships",
+      "host": "msu.edu.my",
+      "region": "Malaysia",
+      "note": "bachelor eligible",
+      "logo_host_taken": false,
+      "slot": "b128"
+    },
+    {
+      "name": "Multimedia University International Undergraduate Scholarships",
+      "host": "mmu.edu.my",
+      "region": "Malaysia",
+      "note": "bachelor eligible",
+      "logo_host_taken": false,
+      "slot": "b129"
+    },
+    {
+      "name": "Universiti Kuala Lumpur International Undergraduate Scholarships",
+      "host": "unimap.edu.my",
+      "region": "Malaysia",
+      "note": "bachelor eligible",
+      "logo_host_taken": false,
+      "slot": "b130"
+    },
+    {
+      "name": "HELP University International Undergraduate Scholarships",
+      "host": "help.edu.my",
+      "region": "Malaysia",
+      "note": "bachelor eligible",
+      "logo_host_taken": false,
+      "slot": "b131"
+    },
+    {
+      "name": "SEGi University International Undergraduate Scholarships",
+      "host": "segi.edu.my",
+      "region": "Malaysia",
+      "note": "bachelor eligible",
+      "logo_host_taken": false,
+      "slot": "b132"
+    },
+    {
+      "name": "Universiti Sultan Zainal Abidin International Scholarships",
+      "host": "unisza.edu.my",
+      "region": "Malaysia",
+      "note": "bachelor eligible",
+      "logo_host_taken": false,
+      "slot": "b133"
+    },
+    {
+      "name": "Universiti Pertahanan Nasional Malaysia International Scholarships",
+      "host": "upnm.edu.my",
+      "region": "Malaysia",
+      "note": "restricted - verify",
+      "logo_host_taken": false,
+      "slot": "b134"
+    }
+  ],
+  "rejected": [
+    {
+      "name": "Scholarships for Foreign Students and Italian Citizens Living Abroad (MAECI)",
+      "host": "esteri.it",
+      "region": "Europe",
+      "why": "registrable domain already in DB: LIVE/id133/Invest Your Talent in Italy (IYT), PENDING_INSERT/id-/Invest Your Talent in Italy (IYT) — MAECI / ICE / Uni-Italia scholarship programme",
+      "slot": null
+    },
+    {
+      "name": "Borse di Studio di Merito per Studenti Stranieri - University of Bologna",
+      "host": "unibo.it",
+      "region": "Europe",
+      "why": "registrable domain already in DB: CORRECTED/id134/University of Bologna — International Talents @Unibo",
+      "slot": null
+    },
+    {
+      "name": "International Students Scholarships - University of Padova",
+      "host": "unipd.it",
+      "region": "Europe",
+      "why": "registrable domain already in DB: LIVE/id136/University of Padua — Padua International Excellence Scholarship, LIVE/id370/University of Padua International Excellence Scholarship",
+      "slot": null
+    },
+    {
+      "name": "International Student Scholarships - Universita degli Studi di Torino",
+      "host": "unito.it",
+      "region": "Europe",
+      "why": "registrable domain already in DB: LIVE/id140/University of Turin — Talent 4 UniTo",
+      "slot": null
+    },
+    {
+      "name": "Bourse du Gouvernement Francais",
+      "host": "diplomatie.gouv.fr",
+      "region": "Europe",
+      "why": "registrable domain already in DB: LIVE/id20/France Excellence Major Scholarship",
+      "slot": null
+    },
+    {
+      "name": "Bourses du Gouvernement Francais - Campus France",
+      "host": "campusfrance.org",
+      "region": "Europe",
+      "why": "registrable domain already in DB: LIVE/id6/Eiffel Excellence Scholarship, LIVE/id352/France-South Africa Scholarship Programme 2027, LIVE/id8/France Excellence Charpak Scholarship Program, LIVE/id19/France Excellence Europa Scholarship, PENDING_INSERT/id-/MOPGA 2027: Visiting Fellowship Program for Early Career Researchers",
+      "slot": null
+    },
+    {
+      "name": "KU Leuven International Scholarship",
+      "host": "kuleuven.be",
+      "region": "Europe",
+      "why": "registrable domain already in DB: LIVE/id281/KU Leuven ICP Connect Scholarship (VLIR-UOS), LIVE/id282/KU Leuven Inspiring the Outstanding Scholarship",
+      "slot": null
+    },
+    {
+      "name": "University Scholarship - Ghent University",
+      "host": "ugent.be",
+      "region": "Europe",
+      "why": "registrable domain already in DB: PURGED/id283/Ghent University Top-Up Grant for International Students",
+      "slot": null
+    },
+    {
+      "name": "Global Studies Scholarship - Maastricht University",
+      "host": "maastrichtuniversity.nl",
+      "region": "Europe",
+      "why": "registrable domain already in DB: LIVE/id180/Maastricht University Holland High Potential Scholarship",
+      "slot": null
+    },
+    {
+      "name": "Holland Scholarship",
+      "host": "studyinnl.org",
+      "region": "Europe",
+      "why": "registrable domain already in DB: PENDING_INSERT/id-/NL Scholarship (formerly Holland Scholarship), PURGED/id172/Holland Scholarship",
+      "slot": null
+    },
+    {
+      "name": "Churchill Scholarship - University of Cambridge",
+      "host": "cam.ac.uk",
+      "region": "Europe",
+      "why": "host already used in this batch",
+      "slot": null
+    },
+    {
+      "name": "Admissions Scholarship - KTH Royal Institute of Technology",
+      "host": "kth.se",
+      "region": "Europe",
+      "why": "registrable domain already in DB: LIVE/id185/KTH Royal Institute of Technology — KTH Scholarship, LIVE/id457/KTH One-Year Scholarship, LIVE/id452/KTH Scholarship, LIVE/id458/KTH India Scholarship",
+      "slot": null
+    },
+    {
+      "name": "University Scholarship - Umea University",
+      "host": "umu.se",
+      "region": "Europe",
+      "why": "registrable domain already in DB: LIVE/id189/Umeå University Scholarship for International Students",
+      "slot": null
+    },
+    {
+      "name": "Government Scholarships for Foreign Students - Ministry of Education Czech Republic",
+      "host": "education.gov.cz",
+      "region": "Europe",
+      "why": "registrable domain already in DB: LIVE/id325/Czech Government Scholarship – Developing Countries for AY 2027/28, LIVE/id294/Czech Government Scholarships — Developing Countries (AY 2026/27)",
+      "slot": null
+    },
+    {
+      "name": "German Academic Exchange Service Scholarships",
+      "host": "daad.de",
+      "region": "Europe",
+      "why": "registrable domain already in DB: LIVE/id21/DAAD Study Scholarships - Master Studies for All Academic Disciplines, LIVE/id22/DAAD Study Scholarships for STEM Disciplines, LIVE/id23/DAAD Development-Related Postgraduate Courses (EPOS), LIVE/id231/DAAD Postgraduate Studies in the Field of Architecture, LIVE/id233/DAAD Postgraduate Studies in the Field of Music, LIVE/id234/DAAD Postgraduate Studies in the Field of Performing Arts, LIVE/id228/DAAD Research Grants - Doctoral Candidates and Young Academics, LIVE/id232/DAAD Postgraduate Studies in the Fields of Fine Art, Design, Visual Communication and Film, LIVE/id230/DAAD Helmut-Schmidt-Programme (Public Policy and Good Governance), LIVE/id3/DAAD Scholarship, PENDING_INSERT/id-/RISE Germany - Research Internships in Science and Engineering, PENDING_INSERT/id-/Development-Related Postgraduate Courses (EPOS)",
+      "slot": null
+    },
+    {
+      "name": "International Scholarship - University of Groningen",
+      "host": "rug.nl",
+      "region": "Europe",
+      "why": "registrable domain already in DB: LIVE/id392/Eric Bleumink Fellowship, CORRECTED/id177/University of Groningen Holland Scholarship & Talent Grant",
+      "slot": null
+    },
+    {
+      "name": "Holland Scholarship TU Delft",
+      "host": "tudelft.nl",
+      "region": "Europe",
+      "why": "registrable domain already in DB: LIVE/id174/Delft University of Technology (TU Delft) Justus & Louise van Effen Scholarship",
+      "slot": null
+    },
+    {
+      "name": "Tuition Fee Scholarship - Technical University of Denmark",
+      "host": "dtu.dk",
+      "region": "Europe",
+      "why": "registrable domain already in DB: LIVE/id269/DTU Excellence Scholarship (Technical University of Denmark), PURGED/id331/Tuition Fee Waiver",
+      "slot": null
+    },
+    {
+      "name": "University International Scholarship - University of Gothenburg",
+      "host": "gu.se",
+      "region": "Europe",
+      "why": "host already used in this batch",
+      "slot": null
+    },
+    {
+      "name": "University of Chicago International Scholarships - verify",
+      "host": "uchicago.edu",
+      "region": "United States",
+      "why": "ALREADY TAKEN id 96 - exclude",
+      "slot": null
+    },
+    {
+      "name": "Boston College International Scholarships - verify",
+      "host": "bc.edu",
+      "region": "United States",
+      "why": "ALREADY TAKEN id 123 - exclude",
+      "slot": null
+    },
+    {
+      "name": "University of Calgary International Scholarships",
+      "host": "ucalgary.ca",
+      "region": "Canada",
+      "why": "registrable domain already in DB: PENDING_INSERT/id-/Alberta Innovates Graduate Student Scholarships",
+      "slot": null
+    },
+    {
+      "name": "K.C. Kuok Scholarship - Monash University",
+      "host": "monash.edu",
+      "region": "Australia",
+      "why": "registrable domain already in DB: LIVE/id52/Monash International Leadership Scholarship",
+      "slot": null
+    },
+    {
+      "name": "Adelaide Foundation International Scholarships - University of Adelaide",
+      "host": "adelaide.edu.au",
+      "region": "Australia",
+      "why": "registrable domain already in DB: LIVE/id193/Adelaide Academic Excellence Scholarship (50%)",
+      "slot": null
+    },
+    {
+      "name": "Deakin University International Scholarships",
+      "host": "deakin.edu.au",
+      "region": "Australia",
+      "why": "PURGED - verify",
+      "slot": null
+    },
+    {
+      "name": "NUS International Undergraduate Scholarship - verify",
+      "host": "nus.edu.sg",
+      "region": "Singapore",
+      "why": "ALREADY TAKEN id 105 - exclude",
+      "slot": null
+    },
+    {
+      "name": "NUS Scholars Programme - verify",
+      "host": "nus.edu.sg",
+      "region": "Singapore",
+      "why": "registrable domain already in DB: LIVE/id105/NUS International Undergraduate Scholarship",
+      "slot": null
+    }
+  ]
+}

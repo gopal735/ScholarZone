@@ -1,0 +1,89 @@
+{
+ "agent": "agent_353",
+ "assignment_count": 1,
+ "scholarships": [
+  {
+   "id": 681,
+   "title": "Government of Brunei Darussalam Scholarship to Foreign Students Tenable in Brunei Darussalam (BDGS)",
+   "country": "Brunei",
+   "degree": "Diploma, Bachelor's, Master's",
+   "funding_label": "Fully Funded",
+   "status": "open",
+   "official_source": "Ministry of Foreign Affairs, Government of Brunei Darussalam",
+   "official_source_url": "https://www.mfa.gov.bn/Pages/online-bdgs.aspx",
+   "application_link": "https://www.mfa.gov.bn/Pages/online-bdgs.aspx",
+   "catalogue_url": "https://www.mfa.gov.bn/pages/scholarship.aspx",
+   "official_updates_url": "https://www.mfa.gov.bn/Pages/online-bdgs.aspx",
+   "existing": {
+    "funding_amount": 500,
+    "funding_currency": "BND",
+    "funding_period": null,
+    "tuition_coverage": 1,
+    "living_cost_coverage": 1,
+    "travel_coverage": 1,
+    "fully_funded": 1,
+    "description": "The Government of Brunei Darussalam Scholarship to Foreign Students Tenable in Brunei Darussalam (BDGS) is administered by Brunei's Ministry of Foreign Affairs and covers Diploma, Undergraduate Degree and Postgraduate Master's Degree study at Universiti Brunei Darussalam, Universiti Islam Sultan Sharif Ali, Universiti Teknologi Brunei, Kolej Universiti Perguruan Ugama Seri Begawan and Politeknik Brunei. The award covers full tuition including acceptance, examination, registration and orientation fees, economy-class air travel to and from Brunei, accommodation in the university or polytechnic residential college, comprehensive insurance and monthly allowances. Applicants must be aged 25 or under for undergraduate and diploma programmes and 35 or under for postgraduate master's programmes on the first day of July of the year the course starts, and must show English proficiency.",
+    "eligibility": [
+     "Foreign applicant studying in Brunei Darussalam for the first time",
+     "Age 25 or under on the first day of July of the course start year for undergraduate and diploma programmes",
+     "Age 35 or under on the first day of July of the course start year for postgraduate master's programmes",
+     "English proficiency: Credit 6 at GCE 'O' Level, Grade 'C' in IGCSE English (second language), IELTS 6.0, or TOEFL minimum 550",
+     "Not a Bruneian national or Brunei Permanent Resident",
+     "Not a student who already studies or has studied in Brunei tertiary institutions",
+     "Willing to be interviewed and to sit a written test in English, Malay or Arabic where applicable"
+    ],
+    "eligibility_summary": "Open to foreign applicants studying for the first time in Brunei Darussalam. Applicants must not exceed age 25 for undergraduate and diploma programmes and age 35 for postgraduate master's programmes on 1 July of the year the course starts, and must be proficient in English with Credit 6 at GCE 'O' Level, Grade 'C' in IGCSE English as a second language, IELTS 6.0 or TOEFL 550. Bruneians, Brunei Permanent Residents and international students who already study or have studied in Brunei tertiary institutions are not eligible.",
+    "benefits": [
+     "Exemption from tuition fees including acceptance, examination, registration and orientation fees for the duration of the programme",
+     "Economy class air ticket from the recipient's country of origin or domicile before the course begins",
+     "Economy class air ticket back to the country of origin or domicile on completion of the course",
+     "Monthly personal allowance of BND 500.00",
+     "Monthly meals allowance of BND 150.00",
+     "Annual book allowance of BND 600.00",
+     "Accommodation at the residential college of the University or Polytechnic",
+     "Baggage allowance for shipment of personal effects on completion, up to BND 250 within ASEAN or BND 500 outside ASEAN",
+     "Comprehensive insurance cover for the whole duration of the scholarship"
+    ],
+    "coverage": [
+     "Full tuition fees including acceptance, examination, registration and orientation fees",
+     "Economy class air ticket to Brunei Darussalam before the course and return air ticket on completion",
+     "Monthly personal allowance of BND 500",
+     "Monthly meals allowance of BND 150",
+     "Annual book allowance of BND 600",
+     "Accommodation at the residential college of the university or polytechnic",
+     "Baggage allowance of BND 250 (ASEAN destination) or BND 500 (destination outside ASEAN) on completion",
+     "Comprehensive insurance cover for the whole duration of the scholarship"
+    ],
+    "requirements": [],
+    "documents": [],
+    "english_requirement": "Required. Credit 6 at GCE 'O' Level Examination, Grade 'C' in IGCSE English (as a second language), an IELTS score of 6.0, or a TOEFL minimum score of 550.",
+    "application_method": [
+     "Complete the official online BDGS Application Form",
+     "Upload the required documents in the application form",
+     "Additionally apply directly to Universiti Brunei Darussalam or Universiti Teknologi Brunei if applying to those institutions"
+    ],
+    "selection_notes": "Selection is by the Ministry of Foreign Affairs. Applicants may be required to attend an interview at a place determined by the institution offering the programme and to sit a written examination assessing English, Malay or Arabic proficiency as applicable. The Government of Brunei Darussalam reserves the right to reject any application and its decision is final; disputes and enquiries will not be entertained.",
+    "best_fit": null,
+    "notes": "Full-time study only. Applicants must submit certified English translations of any supporting document not in English. The scholarship may not be held concurrently with any other scholarship, fellowship, grant or loan without prior written approval of the Ministry of Foreign Affairs. Recipients must leave Brunei Darussalam immediately on completion of the programme and may not take paid employment or serve on the staff of a foreign mission in Brunei during the scholarship.\nFunding period: per month (personal allowance), plus BND 150 per month meals allowance and BND 600 per year book allowance",
+    "duration": "Diploma, undergraduate degree or postgraduate master's degree programme, full-time, commencing at the July/August academic year intake",
+    "application_period": "Annual cycle announced by the Ministry of Foreign Affairs. For the 2026/2027 academic session the Ministry published an opening date of 15 December 2025 and a closing date of 15 February 2026.",
+    "deadline_display": "Applications for the 2026/2027 academic session opened on 15 December 2025 and closed on 15 February 2026; the scheme is announced annually by the Ministry of Foreign Affairs",
+    "deadline_date": null,
+    "region": "Asia",
+    "program_type": "Government scholarship",
+    "applicant_utility": null,
+    "official_details": null
+   },
+   "missing_fields": [
+    "funding_period",
+    "requirements",
+    "documents",
+    "best_fit",
+    "deadline_date",
+    "applicant_utility",
+    "official_details"
+   ]
+  }
+ ],
+ "result_file": "C:\\Users\\GopaL\\Desktop\\Projects folder\\ScholarZone\\backend\\research_output\\live500\\results\\agent_353.json"
+}

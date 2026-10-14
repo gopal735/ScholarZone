@@ -1,0 +1,113 @@
+{
+  "agent": "agent_290",
+  "records": [
+    {
+      "id": 667,
+      "official": {
+        "official_source_urls": [
+          "https://www.arabfund.org/overview/fellowships-program"
+        ],
+        "application_link": "https://www.arabfund.org/overview/fellowships-program",
+        "catalogue_url": null,
+        "official_updates_url": "https://www.arabfund.org/overview/fellowships-program",
+        "deadline_central": null,
+        "deadline_central_display": null,
+        "deadline_note": null,
+        "application_cycle": "Continuous intake; applications must be submitted at least one year before the expected starting date of the stay",
+        "status": "OPEN",
+        "status_note": "The programme runs continuously; the official page directs applicants to submit through the electronic services at zamalat.arabfund.org at least one year prior to the expected start of the stay at the foreign university",
+        "tuition_coverage_note": null,
+        "funding_amount": null,
+        "funding_currency": null,
+        "funding_period": null,
+        "tuition_coverage": null,
+        "living_cost_coverage": true,
+        "travel_coverage": true,
+        "fully_funded": false,
+        "benefits": [
+          "Full financial support: a fixed maintenance allowance so the fellow can focus entirely on academic activity",
+          "Round-trip airfare tickets for the beneficiary and the eligible members of their family",
+          "Health and personal accident insurance for the duration of the stay"
+        ],
+        "eligibility": [
+          "Arab national holding a PhD",
+          "Previous beneficiaries of the Fellowship are not eligible to re-apply",
+          "Intended activity is advanced research and/or academic activity at a foreign university"
+        ],
+        "requirements": [
+          "Hold a PhD and be an Arab national",
+          "Secure placement at a foreign university to conduct advanced research and/or teach",
+          "Submit the application at least one year before the expected start date of the stay"
+        ],
+        "documents": [],
+        "selection_criteria": [
+          "Excellent academic track record in different fields of specialization",
+          "Arab scholars seeking to lecture or conduct advanced research at world-renowned universities"
+        ],
+        "coverage": [
+          "Fixed maintenance allowance",
+          "Round-trip airfare for the beneficiary and eligible family members",
+          "Health and personal accident insurance for the duration of the stay"
+        ],
+        "application_method": [
+          "Register and submit the application through the Arab Fund's electronic services portal for the fellowship service (zamalat.arabfund.org)",
+          "Submit at least one year before the intended start of the stay at the host university"
+        ],
+        "application_route": "Apply through the Arab Fund's electronic fellowship service at zamalat.arabfund.org, at least one year before the expected start of the stay",
+        "study_mode": null,
+        "citizenship_residency": "Arab national holding a PhD",
+        "international_eligibility": "For Arab nationals; the research or teaching stay takes place at a foreign university",
+        "subject_or_agency_requirement": "Advanced research and/or teaching at a foreign university; not a degree-enrolment award",
+        "research_requirement": "Advanced research and/or academic activity at a foreign university, building bridges between Arab and foreign academic institutions",
+        "duration": "Usually 12 months; shorter periods are considered only in very special cases",
+        "description": "Since 1997 the Arab Fund's Fellowship Program has empowered Arab scholars with excellent academic track records to conduct advanced research and/or academic activity at prestigious universities, building bridges between Arab and foreign academic institutions; about 191 scholarships have been awarded since inception.",
+        "region": "Middle East",
+        "program_type": "Pan-Arab research fellowship",
+        "english_requirement": null
+      },
+      "verification": {
+        "source_citations": [
+          "https://www.arabfund.org/overview/fellowships-program"
+        ],
+        "last_verified_date": "2026-10-10",
+        "verification_status": "confirmed",
+        "confidence": "low",
+        "not_confirmed": [
+          "funding_amount, funding_currency, funding_period - the maintenance allowance is described as fixed but its value is not published",
+          "tuition_coverage - no statement about tuition or enrolment fees at the host university",
+          "documents - the official page does not itemise a document checklist",
+          "deadline - no fixed closing date; only the one-year lead rule is published"
+        ],
+        "notes": "The official arabfund.org fellowship page blocked automated access (HTTP 403) on two attempts on 2026-10-10; benefits, duration, eligibility rules and the one-year lead time were verified from the awarding body's own page content as published in the search index of arabfund.org, so confidence is low and no amount is asserted."
+      },
+      "applicant_utility": {
+        "summary": "This is a senior mobility fellowship, not a study scholarship: you must already hold a PhD and have a foreign host placement to lecture or conduct advanced research abroad. There is no deadline to chase because intake is continuous, but the one-year lead rule means the host university and project must be agreed roughly 12 months before you want to start. Previous fellows cannot re-apply, and the maintenance allowance is fixed but unpublished, so budget planning requires asking the Fund directly.",
+        "best_fit": "Arab PhD holders in academia or research who already have, or can quickly secure, a visiting research or teaching placement at a foreign university.",
+        "application_readiness_checklist": [
+          "Line up a host department and an agreed research or teaching plan before applying",
+          "Apply through zamalat.arabfund.org at least one year before the intended start",
+          "Confirm you are not a previous beneficiary of the Fellowship",
+          "Ask the Secretariat what the current fixed maintenance allowance covers for your family situation"
+        ],
+        "common_rejection_risks": [
+          "Applying less than a year before the intended start date",
+          "No confirmed foreign host placement - the fellowship funds an activity at a foreign university",
+          "Being a previous beneficiary (automatic ineligibility)",
+          "Family airfare expectations beyond 'eligible members' - dependant eligibility is decided case by case"
+        ],
+        "estimated_uncovered_costs": "The page publishes a fixed maintenance allowance, round-trip airfare and insurance but not their values; tuition or enrolment fees at the host are not mentioned, so host-institution charges would be self-funded unless the Fund confirms otherwise.",
+        "document_audit": [
+          "Applications go through the zamalat electronic services portal - it is the stated route",
+          "Evidence of the PhD and Arab nationality will be needed even though the page does not itemise a checklist",
+          "The host university's agreement matters as much as the Fund's form"
+        ],
+        "alerts": [
+          "Apply at least one year before the expected start of the stay - the only timing rule published",
+          "Previous beneficiaries are barred from re-applying",
+          "Duration is normally 12 months; shorter stays only in very special cases, so plan a realistic project"
+        ],
+        "submission_workflow": "Register and submit through the Arab Fund's electronic fellowship service at zamalat.arabfund.org, timed at least one year before the intended start of the stay."
+      }
+    }
+  ]
+}

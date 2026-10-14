@@ -1,0 +1,64 @@
+﻿2026-09-04T06:53:10.7094285Z Current runner version: '2.337.0'
+2026-09-04T06:53:10.7145645Z ##[group]Runner Image Provisioner
+2026-09-04T06:53:10.7147224Z Hosted Compute Agent
+2026-09-04T06:53:10.7148302Z Version: 20260828.587
+2026-09-04T06:53:10.7149459Z Commit: abac92662cab4cc7352de4f9f9d2e2419aad9c29
+2026-09-04T06:53:10.7171382Z Build Date: 2026-08-28T16:44:25Z
+2026-09-04T06:53:10.7172624Z Worker ID: {161c5911-cb6d-452f-9af7-c9c4d59a0a88}
+2026-09-04T06:53:10.7174012Z Azure Region: westus
+2026-09-04T06:53:10.7175106Z ##[endgroup]
+2026-09-04T06:53:10.7177619Z ##[group]Operating System
+2026-09-04T06:53:10.7178842Z Ubuntu
+2026-09-04T06:53:10.7179753Z 24.04.4
+2026-09-04T06:53:10.7181065Z LTS
+2026-09-04T06:53:10.7182047Z ##[endgroup]
+2026-09-04T06:53:10.7183127Z ##[group]Runner Image
+2026-09-04T06:53:10.7184321Z Image: ubuntu-24.04
+2026-09-04T06:53:10.7185289Z Version: 20260831.293.1
+2026-09-04T06:53:10.7187598Z Included Software: https://github.com/actions/runner-images/blob/ubuntu24/20260831.293/images/ubuntu/Ubuntu2404-Readme.md
+2026-09-04T06:53:10.7210879Z Image Release: https://github.com/actions/runner-images/releases/tag/ubuntu24%2F20260831.293
+2026-09-04T06:53:10.7212902Z ##[endgroup]
+2026-09-04T06:53:10.7214999Z ##[group]GITHUB_TOKEN Permissions
+2026-09-04T06:53:10.7218166Z Contents: read
+2026-09-04T06:53:10.7219156Z Metadata: read
+2026-09-04T06:53:10.7220503Z Packages: read
+2026-09-04T06:53:10.7221494Z ##[endgroup]
+2026-09-04T06:53:10.7224690Z Secret source: Actions
+2026-09-04T06:53:10.7226582Z Prepare workflow directory
+2026-09-04T06:53:10.7892058Z Prepare all required actions
+2026-09-04T06:53:10.8077435Z Complete job name: restore
+2026-09-04T06:53:10.9863449Z ##[group]Run python3 -c "
+2026-09-04T06:53:10.9864833Z [36;1mpython3 -c "[0m
+2026-09-04T06:53:10.9866090Z [36;1mimport urllib.request, urllib.error, json, time[0m
+2026-09-04T06:53:10.9867350Z [36;1mfor attempt in range(3):[0m
+2026-09-04T06:53:10.9868601Z [36;1m    try:[0m
+2026-09-04T06:53:10.9870839Z [36;1m        payload = json.dumps({'verification_status':'active','verified_by':None,'verification_notes':None}).encode('utf-8')[0m
+2026-09-04T06:53:10.9874691Z [36;1m        req = urllib.request.Request('https://scholarzone-api-2ee2d.containers.snapdeploy.app/scholarships/29/verify', data=payload, headers={'Content-Type':'application/json'}, method='PATCH')[0m
+2026-09-04T06:53:10.9877912Z [36;1m        with urllib.request.urlopen(req, timeout=30) as resp:[0m
+2026-09-04T06:53:10.9879453Z [36;1m            print(resp.read().decode())[0m
+2026-09-04T06:53:10.9881085Z [36;1m            break[0m
+2026-09-04T06:53:10.9882373Z [36;1m    except urllib.error.HTTPError as e:[0m
+2026-09-04T06:53:10.9883865Z [36;1m        print(f'HTTP {e.code}: {e.read().decode()}')[0m
+2026-09-04T06:53:10.9885142Z [36;1m        time.sleep(5)[0m
+2026-09-04T06:53:10.9886219Z [36;1m"[0m
+2026-09-04T06:53:11.0568751Z shell: /usr/bin/bash -e {0}
+2026-09-04T06:53:11.0570736Z ##[endgroup]
+2026-09-04T06:53:26.2978516Z HTTP 403: error code: 1010
+2026-09-04T06:53:26.2978876Z 
+2026-09-04T06:53:26.2979105Z HTTP 403: error code: 1010
+2026-09-04T06:53:26.2979313Z 
+2026-09-04T06:53:26.2979451Z HTTP 403: error code: 1010
+2026-09-04T06:53:26.2979636Z 
+2026-09-04T06:53:26.3168186Z ##[group]Run sleep 2
+2026-09-04T06:53:26.3168575Z [36;1msleep 2[0m
+2026-09-04T06:53:26.3170377Z [36;1mcurl -s "https://scholarzone-api-2ee2d.containers.snapdeploy.app/scholarships/29" | python3 -c "import sys,json; d=json.load(sys.stdin); print(json.dumps({k:d[k] for k in ['verified_by','verification_notes','verification_status','last_verified_date','next_verification_due']}, indent=2))"[0m
+2026-09-04T06:53:26.3208934Z shell: /usr/bin/bash -e {0}
+2026-09-04T06:53:26.3209272Z ##[endgroup]
+2026-09-04T06:53:28.5752011Z {
+2026-09-04T06:53:28.5753025Z   "verified_by": "single-scholarship-test",
+2026-09-04T06:53:28.5753768Z   "verification_notes": "Controlled single-scholarship verification test",
+2026-09-04T06:53:28.5754362Z   "verification_status": "active",
+2026-09-04T06:53:28.5754723Z   "last_verified_date": "2026-09-04",
+2026-09-04T06:53:28.5755640Z   "next_verification_due": "2026-12-03"
+2026-09-04T06:53:28.5755970Z }
+2026-09-04T06:53:28.5886086Z Cleaning up orphan processes

@@ -1,0 +1,52 @@
+{
+  "id": "670",
+  "verdict": "needs_review",
+  "confidence": "high",
+  "checked_at": "2026-10-13T01:12:59Z",
+  "sources": [
+    {
+      "url": "https://comstech.org/comstech-research-fellowships-for-women-scientists-ldc-oic",
+      "kind": "official",
+      "note": "COMSTECH's own programme page for 'COMSTECH-Research Fellowships for Women Scientists in Least Developed Countries (LDCs) in OIC' — call status, eligibility, terms of award, application form and contact details; read in full."
+    },
+    {
+      "url": "https://drive.google.com/file/d/12_Fxb25x5_fT_NG-O0qCWo9ow425Hg8F/view?usp=drive_link",
+      "kind": "other",
+      "note": "Supplementary flyer linked from the official page ('LDC flyer in english.pdf', Google Drive). Could not be read — the Drive viewer required sign-in — so no flyer-only terms were verified. All findings above come from the official HTML page."
+    }
+  ],
+  "findings": {
+    "awarding_body": {
+      "status": "confirmed",
+      "detail": "The page is COMSTECH's own site (comstech.org) and states the fellowships are awarded by COMSTECH together with the host institutions' joint scholarship committee, consistent with the record's 'OIC-COMSTECH'.",
+      "quote": "Research fellowships are awarded by COMSTECH, along with Host Institutions Joint scholarship Committee, based on scientific merit."
+    },
+    "deadline": {
+      "status": "confirmed",
+      "detail": "Rolling — no fixed closing date. The page states applications/nominations are open all around the year and gives the call status as currently open for 2026, so the cycle is open today.",
+      "quote": "Applications /Nominations are open all around the year"
+    },
+    "eligibility": {
+      "status": "confirmed",
+      "detail": "All eligibility claims confirmed: young women scientists and engineers who are citizens of an OIC least-developed country or employed by a research institution in an OIC country; at least an M.S. for graduate studies or a Ph.D. for post-graduate studies, or involved in active research; age limits 35 (graduate) and 45 (post-graduate); preference for early-career women in LDCs. The page lists the eligible LDCs (Afghanistan, Benin, Burkina Faso, Chad, Comoros, Guinea, Guinea-Bissau, Mali, Mozambique, Niger, Sierra Leone, Somalia, The Gambia, Togo, Mauritania, Uganda — the page's own list contains the typo 'Gambia The, Togo').",
+      "quote": "Eligible applicants for the research fellowships are young women scientists and Engineers who are citizens of a least developed country of OIC, or are employed by a research institution in an OIC country."
+    },
+    "funding": {
+      "status": "confirmed",
+      "detail": "'Partially Funded' is correct: COMSTECH bears only the international low-cost airfare; accommodation, subsistence, supervision and local training are provided by the host institution. This is not a fully funded award.",
+      "quote": "COMSTECH will bear international low-cost airfare. The host institutions are expected to provide accommodation, subsistence supervision, and mentor local trainings."
+    },
+    "degree_levels": {
+      "status": "unconfirmed",
+      "detail": "The record lists 'PhD' only. The page states the minimum degree held is 'M.S./Ph.D. or equivalent' and defines two tracks — graduate studies (at least an M.S., age limit 35) and post-graduate studies (a Ph.D., age limit 45). The fellowship is a 6-12 month research-training stay, not a PhD programme, and is open to holders of either degree, so the record's 'PhD' cannot be confirmed as stated.",
+      "quote": "M.S./Ph.D. or equivalent"
+    }
+  },
+  "recommended_field_updates": {
+    "official_source_url": null,
+    "deadline_text": "Applications /Nominations are open all around the year",
+    "deadline_date": null,
+    "verification_notes": "Official page read in full on 2026-10-13. Call stated open for 2026 with rolling applications all year ('The call is currently open'). Awarding body, eligibility and partial-funding claims all match the page verbatim. Open item: degree_levels — the page states 'M.S./Ph.D. or equivalent' with separate graduate (M.S., age <=35) and post-graduate (Ph.D., age <=45) tracks, while the record lists only 'PhD'. The supplementary flyer is a Google Drive PDF behind a sign-in wall and was not read."
+  },
+  "notes_for_reviewer": "Everything except degree_levels is confirmed verbatim against COMSTECH's own page. The only decision for a human: the page shows the fellowship serves both M.S. holders (graduate studies track, age <=35) and Ph.D. holders (post-graduate track, age <=45) — minimum degree held 'M.S./Ph.D. or equivalent' — so the record's 'PhD' is incomplete rather than wrong. Broaden the field (e.g. 'M.S./Ph.D. — research fellowship') or accept the catalogue shorthand. Note the record's own eligibility_summary already mentions the M.S. track, so the internal inconsistency is in the degree_levels field alone."
+}

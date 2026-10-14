@@ -81,8 +81,8 @@ export default function ScholarshipShowcase({ title, description, query }) {
           {loadState === 'fallback' && <p className="scholarship-showcase__fallback" role="status">Showing local directory data.</p>}
           {items.length > 0 ? (
             <div className="scholarship-showcase__grid">
-              {items.map((scholarship) => (
-                <ScholarshipCard key={scholarship.id} scholarship={scholarship} />
+              {items.map((scholarship, index) => (
+                <ScholarshipCard key={scholarship.id} scholarship={scholarship} index={index} />
               ))}
             </div>
           ) : (

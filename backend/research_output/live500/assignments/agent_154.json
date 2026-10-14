@@ -1,0 +1,89 @@
+{
+ "agent": "agent_154",
+ "assignment_count": 1,
+ "scholarships": [
+  {
+   "id": 402,
+   "title": "Rhodes Scholarship for New Zealand",
+   "country": "New Zealand",
+   "degree": "Master's, PhD",
+   "funding_label": "Fully Funded",
+   "status": "open",
+   "official_source": "Universities New Zealand – Te Pōkai Tara",
+   "official_source_url": "https://www.universitiesnz.ac.nz/scholarships/rhodes-scholarship-new-zealand",
+   "application_link": "https://www.universitiesnz.ac.nz/scholarships/rhodes-scholarship-new-zealand",
+   "catalogue_url": "https://www.rhodeshouse.ox.ac.uk/scholarships/applications",
+   "official_updates_url": null,
+   "existing": {
+    "funding_amount": null,
+    "funding_currency": null,
+    "funding_period": null,
+    "tuition_coverage": 1,
+    "living_cost_coverage": 1,
+    "travel_coverage": null,
+    "fully_funded": 1,
+    "description": "The Rhodes Scholarship for New Zealand is a partnership between the Rhodes Trust and the Robertson Foundation, administered in New Zealand by Universities New Zealand – Te Pōkai Tara. It supports outstanding all-round students to undertake postgraduate study at the University of Oxford, United Kingdom. Up to three scholars are elected from New Zealand each year, and the Scholarship covers fees, accommodation and living costs for up to three years. Applicants must be New Zealand citizens or hold a New Zealand Permanent Resident Visa and must meet an age and undergraduate GPA requirement.",
+    "eligibility": [
+     "On 1 August in the year of application hold New Zealand citizenship or a New Zealand Permanent Resident Visa",
+     "On 1 August in the year of application have spent at least five of the previous 10 years in New Zealand",
+     "By the time of entry to Oxford have graduated with an undergraduate degree with a GPA of 7.50/9.00",
+     "On 1 October 2026 be 18-24 and not have reached a 25th birthday (born after 1 October 2001 and on or before 2 October 2008)",
+     "OR, for older candidates who completed their first undergraduate degree later than usual: on 1 October 2026 not have reached a 27th birthday (born after 1 October 1999) AND have met or will meet the academic requirements for completing their first undergraduate degree on or after 1 October 2025"
+    ],
+    "eligibility_summary": "New Zealand citizens or New Zealand Permanent Resident Visa holders who have spent at least five of the previous ten years in New Zealand as at 1 August in the year of application, have graduated with an undergraduate degree with a GPA of 7.50/9.00 by the time of entry to Oxford, and meet the age rule (18-24 and not yet 25 on 1 October 2026, or under 27 with a later-completed first degree).",
+    "benefits": [
+     "Oxford tuition fees paid directly by the Rhodes Trust to the College and University",
+     "Accommodation",
+     "Living costs",
+     "Up to three years of study at the University of Oxford",
+     "Membership of the worldwide Rhodes Scholars community",
+     "Access to a Rhodes Scholarship Adviser at each New Zealand university"
+    ],
+    "coverage": [
+     "University of Oxford tuition fees, paid directly by the Rhodes Trust to the College and University",
+     "Accommodation",
+     "Living costs"
+    ],
+    "requirements": [
+     "Use the Rhodes House online application system",
+     "Ensure referees read the Guidance for Referees published by Universities New Zealand",
+     "Submit by the closing date published for the national constituency",
+     "Check eligibility through the Rhodes House eligibility checker before applying"
+    ],
+    "documents": [
+     "Completed online application via the Rhodes House application system",
+     "Academic transcripts",
+     "Referee reports",
+     "Personal statements and leadership/activity evidence as specified by Rhodes House"
+    ],
+    "english_requirement": null,
+    "application_method": [
+     "Rhodes House online application system",
+     "National application and selection process administered in New Zealand by Universities New Zealand – Te Pōkai Tara"
+    ],
+    "selection_notes": "Decisions for the 2027 entry are made in November 2026. Each New Zealand university appoints a Rhodes Scholarship Adviser to encourage and support applications.",
+    "best_fit": "New Zealand citizens and Permanent Resident Visa holders with an outstanding undergraduate record who have not yet started a second degree and who meet the age window for the Oxford cohort year.",
+    "notes": "The Scholarship is a partnership between the Rhodes Trust and the Robertson Foundation; the Rhodes Trust provides it in partnership with the Second Century Founder John McCall McBain and other benefactors. Universities New Zealand manages the application and selection process alongside about 35 other scholarships worth over $2 million.",
+    "duration": "Up to three years of postgraduate study at the University of Oxford",
+    "application_period": "Annual. 2027 entry: applications opened 1 June 2026 and closed 4 August 2026; decisions November 2026. Rhodes House publishes the cycle dates for each national constituency.",
+    "deadline_display": "For the 2027 entry the application period ran from an opening date of 1 June 2026 to a closing date of 4 August 2026, with decisions made in November 2026. The 2027 entry's closing date has now passed; the next cycle's dates are not published on this page.",
+    "deadline_date": null,
+    "region": "Oceania",
+    "program_type": "International postgraduate scholarship",
+    "applicant_utility": null,
+    "official_details": null
+   },
+   "missing_fields": [
+    "funding_amount",
+    "funding_currency",
+    "funding_period",
+    "travel_coverage",
+    "english_requirement",
+    "deadline_date",
+    "applicant_utility",
+    "official_details"
+   ]
+  }
+ ],
+ "result_file": "C:\\Users\\GopaL\\Desktop\\Projects folder\\ScholarZone\\backend\\research_output\\live500\\results\\agent_154.json"
+}

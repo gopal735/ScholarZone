@@ -1,0 +1,313 @@
+[
+ {
+  "scholarship_id": 675,
+  "outcome": "not_applicable",
+  "professors": [],
+  "notes": "National government scholarship awarded by Egypt's Ministry of Higher Education and Scientific Research with the Central Bank of Egypt for study at participating national (ahlia) universities. No single attached institution or supervising professor is tied to the award; selection is by secondary-school total mark, geographic allocation and an admission test. Not applicable per national/government scheme rule."
+ },
+ {
+  "scholarship_id": 676,
+  "outcome": "verified_supervisors",
+  "professors": [
+   {
+    "canonical_name": "Yoon Joo-il",
+    "title": "Associate Professor; Head of NPP Engineering",
+    "institution_name": "KEPCO International Nuclear Graduate School (KINGS)",
+    "department_name": "Department of NPP Engineering",
+    "official_profile_url": "https://kings.ac.kr/professor/index.do?pId=jiyoon",
+    "official_email": "jiyoon@kings.ac.kr",
+    "official_email_verified": true,
+    "lab_url": "https://rpl.kings.ac.kr",
+    "personal_academic_url": null,
+    "research_areas": [
+     "Reactor Physics and Computational Methods"
+    ],
+    "research_keywords": [
+     "reactor physics",
+     "computational methods",
+     "nuclear power plant engineering"
+    ],
+    "relationship_type": "potential_supervisor",
+    "evidence_source_url": "https://www.kings.ac.kr/academics/npp_faculty.do",
+    "evidence_source_type": "official_department_page",
+    "evidence_quote_or_summary": "KINGS official Department of NPP Engineering faculty page lists 'Yoon Joo-il — Head of NPP Engineering / Associate Professor, Reactor Physics and Computational Methods, Email jiyoon@kings.ac.kr, KINGS RPL (Reactor Physics Laboratory)'. The KINGS master's places in this scholarship cover the NPP Engineering department.",
+    "confidence": 90,
+    "availability": {
+     "scope": "masters_supervision",
+     "state": "unknown",
+     "source_url": "https://www.kings.ac.kr/academics/npp_faculty.do"
+    }
+   },
+   {
+    "canonical_name": "Cho Kang-wook",
+    "title": "Associate Professor; Head of Energy Policy and Engineering",
+    "institution_name": "KEPCO International Nuclear Graduate School (KINGS)",
+    "department_name": "Department of Energy Policy and Engineering",
+    "official_profile_url": "https://www.kings.ac.kr/academics/ep_faculty.do",
+    "official_email": "kangwook.cho@kings.ac.kr",
+    "official_email_verified": true,
+    "lab_url": "https://kings.ac.kr/professor/index.do?pId=kangwook.cho",
+    "personal_academic_url": null,
+    "research_areas": [
+     "Power and Energy Systems"
+    ],
+    "research_keywords": [
+     "power systems",
+     "energy policy",
+     "energy engineering"
+    ],
+    "relationship_type": "potential_supervisor",
+    "evidence_source_url": "https://www.kings.ac.kr/academics/ep_faculty.do",
+    "evidence_source_type": "official_department_page",
+    "evidence_quote_or_summary": "KINGS official Department of Energy Policy and Engineering faculty page lists 'Cho Kang-wook — Head of Energy Policy and Engineering / Associate Professor, Power and Energy Systems, Email kangwook.cho@kings.ac.kr, Go to Lab'. The KINGS master's places in this scholarship cover the Energy Policy and Engineering department.",
+    "confidence": 90,
+    "availability": {
+     "scope": "masters_supervision",
+     "state": "unknown",
+     "source_url": "https://www.kings.ac.kr/academics/ep_faculty.do"
+    }
+   },
+   {
+    "canonical_name": "Jung Woo-yong",
+    "title": "Professor; Dean of Academic Affairs",
+    "institution_name": "KEPCO International Nuclear Graduate School (KINGS)",
+    "department_name": "Department of NPP Engineering",
+    "official_profile_url": "https://kings.ac.kr/professor/index.do?pId=wooyong",
+    "official_email": "wooyong@kings.ac.kr",
+    "official_email_verified": true,
+    "lab_url": "https://kings.ac.kr/professor/index.do?pId=wooyong",
+    "personal_academic_url": null,
+    "research_areas": [
+     "Project Management"
+    ],
+    "research_keywords": [
+     "project management",
+     "nuclear",
+     "graduate education"
+    ],
+    "relationship_type": "program_faculty",
+    "evidence_source_url": "https://www.kings.ac.kr/academics/npp_faculty.do",
+    "evidence_source_type": "official_department_page",
+    "evidence_quote_or_summary": "KINGS official Department of NPP Engineering faculty page lists 'Jung Woo-yong — Dean of Academic Affairs / Professor, Project Management, Office Room 413 Main Bldg., wooyong@kings.ac.kr, Go to Lab'.",
+    "confidence": 85,
+    "availability": {
+     "scope": "masters_supervision",
+     "state": "unknown",
+     "source_url": "https://www.kings.ac.kr/academics/npp_faculty.do"
+    }
+   }
+  ],
+  "notes": "Scholarship funds M.Sc. places at KINGS (Ulsan, South Korea) in NPP Engineering and Energy Policy and Engineering for the 2027 intake (announced via Iraq's Ministry of Higher Education). Faculty pages on kings.ac.kr publish names, titles, research fields and @kings.ac.kr emails. Max 3 professors recorded; other verified faculty on the same pages include Hah Chang-joo (changhah@kings.ac.kr), Lim Hak-kyu (hklim@kings.ac.kr), Kim Ju-youl (jykim@kings.ac.kr) and Hwang Yong-soo (yhwang@kings.ac.kr).",
+  "verified_supervisor_count": null
+ },
+ {
+  "scholarship_id": 677,
+  "outcome": "verified_supervisors",
+  "professors": [
+   {
+    "canonical_name": "Danie Visser",
+    "title": "Emeritus Professor; Acting Director, Mastercard Foundation Scholars Program",
+    "institution_name": "University of Cape Town",
+    "department_name": "International Office (Mastercard Foundation Scholars Program)",
+    "official_profile_url": "https://uct.ac.za/node/611468/full?subsite=855",
+    "official_email": "director.international@uct.ac.za",
+    "official_email_verified": true,
+    "lab_url": null,
+    "personal_academic_url": null,
+    "research_areas": [
+     "Program leadership",
+     "Mastercard Foundation Scholars Program"
+    ],
+    "research_keywords": [
+     "scholarship program",
+     "international office"
+    ],
+    "relationship_type": "program_faculty",
+    "evidence_source_url": "https://uct.ac.za/mastercardfdn/about-program/program-team",
+    "evidence_source_type": "official_programme_page",
+    "evidence_quote_or_summary": "UCT Mastercard Foundation Scholars Program Team page lists 'Emeritus Professor Danie Visser — Acting Director Mastercard Foundation Scholars Program'. His official UCT profile page publishes 'Email director.international@uct.ac.za'.",
+    "confidence": 90
+   },
+   {
+    "canonical_name": "Gina Ziervogel",
+    "title": "Professor; Director, African Climate and Development Initiative (ACDI)",
+    "institution_name": "University of Cape Town",
+    "department_name": "Department of Environmental and Geographical Science",
+    "official_profile_url": "https://acdi.uct.ac.za/node/357218/full?subsite=1205",
+    "official_email": "gina.ziervogel@uct.ac.za",
+    "official_email_verified": true,
+    "lab_url": null,
+    "personal_academic_url": null,
+    "research_areas": [
+     "Climate change vulnerability and adaptation",
+     "Urban governance",
+     "Southern African development",
+     "Participatory research"
+    ],
+    "research_keywords": [
+     "climate adaptation",
+     "vulnerability",
+     "urban governance",
+     "Cape Town drought"
+    ],
+    "relationship_type": "potential_supervisor",
+    "evidence_source_url": "https://acdi.uct.ac.za/education/acdi-masters-climate-change-and-development",
+    "evidence_source_type": "official_programme_page",
+    "evidence_quote_or_summary": "The Mastercard Foundation Scholars Program application page states students admitted through the African Climate & Development Initiative are eligible. The ACDI masters programme page names her as thesis supervisor: 'supervised by Gina Ziervogel and Petra Holden'. Her official ACDI profile page publishes 'Email gina.ziervogel@uct.ac.za'.",
+    "confidence": 85,
+    "availability": {
+     "scope": "masters_supervision",
+     "state": "verified_yes",
+     "source_url": "https://acdi.uct.ac.za/education/acdi-masters-climate-change-and-development"
+    }
+   },
+   {
+    "canonical_name": "Mark New",
+    "title": "Professor; Research Chair, ACDI",
+    "institution_name": "University of Cape Town",
+    "department_name": "Department of Environmental and Geographical Science",
+    "official_profile_url": "https://acdi.uct.ac.za/node/283032/full?subsite=1205",
+    "official_email": "mark.new@uct.ac.za",
+    "official_email_verified": true,
+    "lab_url": null,
+    "personal_academic_url": null,
+    "research_areas": [
+     "Climate Impacts Modelling",
+     "Climate Change Attribution",
+     "Loss and Damage",
+     "Adaptation"
+    ],
+    "research_keywords": [
+     "climate modelling",
+     "attribution",
+     "climate risk",
+     "adaptation"
+    ],
+    "relationship_type": "potential_supervisor",
+    "evidence_source_url": "https://acdi.uct.ac.za/education/acdi-masters-climate-change-and-development",
+    "evidence_source_type": "official_programme_page",
+    "evidence_quote_or_summary": "The ACDI masters programme page (eligible for the Mastercard Foundation Scholars Program per the UCT application page) names him as thesis supervisor: 'supervised by Mark New and Tiro Nkemelang'. His official ACDI profile page publishes 'Email mark.new@uct.ac.za'.",
+    "confidence": 85,
+    "availability": {
+     "scope": "masters_supervision",
+     "state": "verified_yes",
+     "source_url": "https://acdi.uct.ac.za/education/acdi-masters-climate-change-and-development"
+    }
+   }
+  ],
+  "notes": "The Mastercard Foundation Scholars Program at UCT funds taught postgraduate qualifications (PG diploma in Health Sciences, honours, coursework master's) that do not use PhD-style supervisors, so the program team lead is recorded as program faculty, plus named supervisors from the eligible ACDI Climate Change and Development master's route. Program contact: info_mfsp@uct.ac.za (published on the Program Team page).",
+  "verified_supervisor_count": null
+ },
+ {
+  "scholarship_id": 678,
+  "outcome": "verified_supervisors",
+  "professors": [
+   {
+    "canonical_name": "Mostafa I. Soliman",
+    "title": "Professor",
+    "institution_name": "Egypt-Japan University of Science and Technology (E-JUST)",
+    "department_name": "Faculty of Computer Science and Information Technology (CSIT)",
+    "official_profile_url": "https://academic-profile.ejust.edu.eg/profile/MostafaSoliman",
+    "official_email": "mostafa.soliman@ejust.edu.eg",
+    "official_email_verified": true,
+    "lab_url": null,
+    "personal_academic_url": null,
+    "research_areas": [
+     "Computer Science and Information Technology"
+    ],
+    "research_keywords": [
+     "computer science",
+     "information technology"
+    ],
+    "relationship_type": "potential_supervisor",
+    "evidence_source_url": "https://ejust.edu.eg/csit-members",
+    "evidence_source_type": "official_department_page",
+    "evidence_quote_or_summary": "E-JUST official CSIT 'Members' page lists 'Prof. Mostafa I.Soliman' with links to his institutional academic profile and mailto mostafa.soliman@ejust.edu.eg. The TICAD8 M.Sc. scholarship covers the Computer Science and Information Technology field.",
+    "confidence": 85,
+    "availability": {
+     "scope": "masters_supervision",
+     "state": "unknown",
+     "source_url": "https://ejust.edu.eg/csit-members"
+    }
+   },
+   {
+    "canonical_name": "Sameh Nada",
+    "title": "Professor; Dean",
+    "institution_name": "Egypt-Japan University of Science and Technology (E-JUST)",
+    "department_name": "School of Energy, Built Environment, and Chemical Engineering (EBCE), Faculty of Engineering",
+    "official_profile_url": "https://academic-profile.ejust.edu.eg/profile/SamehNada",
+    "official_email": "sameh.nada@ejust.edu.eg",
+    "official_email_verified": true,
+    "lab_url": null,
+    "personal_academic_url": null,
+    "research_areas": [
+     "Energy Resources Engineering"
+    ],
+    "research_keywords": [
+     "energy resources",
+     "engineering",
+     "graduate education"
+    ],
+    "relationship_type": "potential_supervisor",
+    "evidence_source_url": "https://ejust.edu.eg/eece-members",
+    "evidence_source_type": "official_department_page",
+    "evidence_quote_or_summary": "E-JUST official EBCE 'Members' page lists 'Prof. Sameh Nada — Dean' under the Energy Resources department with links to his institutional academic profile and mailto sameh.nada@ejust.edu.eg. The TICAD8 M.Sc. scholarship covers the Engineering field.",
+    "confidence": 85,
+    "availability": {
+     "scope": "masters_supervision",
+     "state": "unknown",
+     "source_url": "https://ejust.edu.eg/eece-members"
+    }
+   },
+   {
+    "canonical_name": "Hassan Shokry Hassan",
+    "title": "Professor (Chair)",
+    "institution_name": "Egypt-Japan University of Science and Technology (E-JUST)",
+    "department_name": "Department of Environmental Engineering, School of EBCE",
+    "official_profile_url": "https://academic-profile.ejust.edu.eg/profile/H-Shokry",
+    "official_email": "Hassan.shokry@ejust.edu.eg",
+    "official_email_verified": true,
+    "lab_url": null,
+    "personal_academic_url": null,
+    "research_areas": [
+     "Environmental Engineering"
+    ],
+    "research_keywords": [
+     "environmental engineering",
+     "wastewater",
+     "air quality"
+    ],
+    "relationship_type": "potential_supervisor",
+    "evidence_source_url": "https://ejust.edu.eg/eece-members",
+    "evidence_source_type": "official_department_page",
+    "evidence_quote_or_summary": "E-JUST official EBCE 'Members' page lists 'Prof. Hassan Shokry Hassan — Professor (Chair)' in the Department of Environmental Engineering with links to his institutional academic profile and mailto Hassan.shokry@ejust.edu.eg.",
+    "confidence": 85,
+    "availability": {
+     "scope": "masters_supervision",
+     "state": "unknown",
+     "source_url": "https://ejust.edu.eg/eece-members"
+    }
+   }
+  ],
+  "notes": "TICAD8 fully funded M.Sc. scholarship at E-JUST (New Borg El-Arab, Alexandria, Egypt) for African nationals, covering Engineering, Computer Science and Information Technology, and Basic and Applied Sciences. Faculty names, titles, profiles and @ejust.edu.eg emails are published on official E-JUST pages (ejust.edu.eg and the academic-profile.ejust.edu.eg subdomain). Max 3 recorded; other verified faculty include Prof. Marghny H. Mohamed (CSIT), Assoc. Prof. Mustafa M. AL-Sayed (mustafa.Alsayed@ejust.edu.eg), Prof. Hamdy Abo Ali Hassan (hamdy.aboali@ejust.edu.eg), Prof. Mona Gamal Eldin Ibrahim (mona.gamal@ejust.edu.eg) and Prof. Usama Nour Eldemerdash (usama.nour@ejust.edu.eg).",
+  "verified_supervisor_count": null
+ },
+ {
+  "scholarship_id": 679,
+  "outcome": "not_applicable",
+  "professors": [],
+  "notes": "AUF/IFIC virtual mobility grant is a consortium distance-learning tuition support scheme across many francophone institutions (licence to doctorat). No single supervising professor or institution is attached to the award; outcome not applicable."
+ },
+ {
+  "scholarship_id": 680,
+  "outcome": "no_verified_supervisor_found",
+  "professors": [],
+  "notes": "Qatar University International Students Scholarship is a competitive undergraduate (bachelor's) merit award administered by the Scholarships Section of the Office of the VP for Student Affairs. The official scholarship types page confirms eligibility is limited to international students applying to undergraduate programs (transfer, visiting, non-degree and second-degree applicants excluded). No supervising professor or faculty tie is published for the award, and undergraduate study has no supervisor structure. Official page verified live: https://www.qu.edu.qa/en-us/students/admission/scholarships/types."
+ },
+ {
+  "scholarship_id": 681,
+  "outcome": "not_applicable",
+  "professors": [],
+  "notes": "Government of Brunei Darussalam Scholarship (BDGS) is a national government scheme administered by the Ministry of Foreign Affairs covering study at several Brunei institutions (UBD, UNISSA, UTB, KUPU SB, Politeknik Brunei). No specific supervising professor is attached to the award; outcome not applicable."
+ }
+]

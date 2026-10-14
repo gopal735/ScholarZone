@@ -533,6 +533,16 @@ class MaintenanceRun(Base):
     error_summary: Mapped[str | None] = mapped_column(Text, nullable=True)
     dry_run: Mapped[bool] = mapped_column(Boolean, nullable=False, default=False)
     duration_ms: Mapped[float | None] = mapped_column(Float, nullable=True)
+    #: What logically asked for this run (cron, workflow_dispatch, manual).
+    #:
+    #: Nullable because a run is first of all an execution, and the origin is
+    #: provenance about it. Read beside ``slot_id``, the two answer different
+    #: questions: the slot says which schedule this belonged to, this says what
+    #: kind of thing caused it at all. A dropped trigger leaves a slot with no
+    #: run; a manual dry run leaves a run with no slot.
+    logical_source: Mapped[str | None] = mapped_column(String(32), nullable=True)
+    #: What carried the request, when it was not the schedule.
+    transport_event: Mapped[str | None] = mapped_column(String(64), nullable=True)
 
 
 class MaintenanceSlot(Base):

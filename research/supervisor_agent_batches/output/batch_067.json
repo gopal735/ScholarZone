@@ -1,0 +1,80 @@
+[
+  {
+    "scholarship_id": 547,
+    "outcome": "not_applicable",
+    "professors": [],
+    "notes": "MOPGA is a French Government visiting fellowship (MEAE/MESRE, implemented by Campus France). No institution or supervisor is attached to the programme; applicants must find their own French host laboratory and supervisor as part of the application. National government scheme with no attached institution, per research guidance."
+  },
+  {
+    "scholarship_id": 548,
+    "outcome": "not_applicable",
+    "professors": [],
+    "notes": "ANR Appel a projets generique 2027 is the generic national research funding call of the Agence nationale de la recherche, addressed to all French public and private research actors. No attached institution, programme, or supervising professor. National government funding scheme, per research guidance."
+  },
+  {
+    "scholarship_id": 549,
+    "outcome": "verified_supervisors",
+    "professors": [
+      {
+        "canonical_name": "Florent Lafarge",
+        "title": "Inria researcher (DR), named PhD Supervisor for offer 2026-10352",
+        "institution_name": "Inria - Centre Inria d'Universite Cote d'Azur",
+        "department_name": "TITANE project-team (Geometric Modeling of 3D Environments), Sophia Antipolis",
+        "official_profile_url": "https://www-sop.inria.fr/members/Florent.Lafarge/",
+        "official_email": "Florent.Lafarge@inria.fr",
+        "official_email_verified": true,
+        "lab_url": "https://team.inria.fr/titane/",
+        "personal_academic_url": null,
+        "research_areas": [
+          "Computer vision",
+          "Geometry processing",
+          "Remote sensing",
+          "Geometric modeling of 3D environments from physical measurements"
+        ],
+        "research_keywords": [
+          "surface reconstruction",
+          "city modeling",
+          "piecewise-planar geometry",
+          "spatial point processes",
+          "3D change detection",
+          "Lidar"
+        ],
+        "relationship_type": "potential_supervisor",
+        "evidence_source_url": "https://jobs.inria.fr/public/classic/en/offres/2026-10352",
+        "evidence_source_type": "official_institution_domain",
+        "evidence_quote_or_summary": "Official Inria job offer #2026-10352 (TITANE, Centre Inria d'Universite Cote d'Azur) lists under Contacts: 'PhD Supervisor : Lafarge Florent / Florent.Lafarge@inria.fr'. His institutional member page confirms: 'I am a researcher at Inria in the Titane research group. I do research in Computer Vision, Geometry Processing and Remote Sensing.'",
+        "confidence": 100,
+        "availability": {
+          "scope": "phd_supervision",
+          "state": "verified_yes",
+          "source_url": "https://jobs.inria.fr/public/classic/en/offres/2026-10352"
+        }
+      }
+    ],
+    "notes": "The official Inria offer names a single PhD supervisor (Florent Lafarge, TITANE team). Email Florent.Lafarge@inria.fr is published on the official jobs.inria.fr offer page; the TITANE team page (https://team.inria.fr/titane/team/) confirms his team membership."
+  },
+  {
+    "scholarship_id": 550,
+    "outcome": "not_applicable",
+    "professors": [],
+    "notes": "Institut Pascal Call for Proposals 2026 is a call for thematic scientific programme organisers (programmes of 2-6 weeks), not a scholarship or degree position; applications are submitted by programme organisers as a single PDF. No attached supervising professor for scholarship applicants. Not applicable per research guidance."
+  },
+  {
+    "scholarship_id": 551,
+    "outcome": "not_applicable",
+    "professors": [],
+    "notes": "JSPS Postdoctoral Fellowship (Standard) is a Japanese government fellowship; the host researcher is chosen by the applicant and the programme page attaches no specific institution or supervisor. National government scheme, per research guidance."
+  },
+  {
+    "scholarship_id": 552,
+    "outcome": "not_applicable",
+    "professors": [],
+    "notes": "JSPS Postdoctoral Fellowship (Short-term Program for North American and European Researchers, PE) is a Japanese government fellowship; hosts are selected by applicants and no specific institution or supervisor is attached to the programme. National government scheme, per research guidance."
+  },
+  {
+    "scholarship_id": 554,
+    "outcome": "not_applicable",
+    "professors": [],
+    "notes": "Apoyo Complementario SECIHTI-OEA 2026 is a joint OAS/Secihti government complementary support (one-off USD 1,200 settling-in payment) for holders of the Secihti National Scholarship, who study at institutions of their choice. No attached institution or supervising professor. National/intergovernmental government scheme, per research guidance."
+  }
+]

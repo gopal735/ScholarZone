@@ -1,0 +1,151 @@
+{
+  "agent": "agent_335",
+  "records": [
+    {
+      "id": 729,
+      "official": {
+        "official_source_urls": [
+          "https://vanier.gc.ca/en/home-accueil.html",
+          "https://vanier.gc.ca/en/nomination_process-processus_de_mise_en_candidature.html",
+          "https://vanier.gc.ca/en/eligibility-admissibilite.html",
+          "https://vanier.gc.ca/en/administering_the_scholarship-comment_administrer_la_bourse.html"
+        ],
+        "application_link": "https://vanier.gc.ca/en/nomination_process-processus_de_mise_en_candidature.html",
+        "catalogue_url": null,
+        "official_updates_url": "https://vanier.gc.ca/en/news_releases-communiques.html",
+        "deadline_central": null,
+        "deadline_central_display": null,
+        "deadline_note": "No current round exists. For the final (archived) 2024-2025 competition, two deadlines applied: an institutional internal deadline set by each nominating Canadian institution (varies by school), and the programme deadline by which institutions forwarded their selected nominations to the Vanier-Banting Secretariat: October 30, 2024 (20:00 Eastern Time); results were announced in April 2025. The harmonized successor programme (Canada Graduate Research Scholarship - Doctoral) sets an agency deadline of October 17 (8:00 p.m. ET) for direct applicants, with institutional channels often much earlier.",
+        "application_cycle": "2024-2025 competition (archived; no longer accepting applications)",
+        "status": "CLOSED",
+        "status_note": "Official site banner: 'We are no longer accepting applications for the Vanier Canada Graduate Scholarships. Please refer to the Canada Graduate Research Scholarship - Doctoral program web page for information regarding the new harmonized program.'",
+        "tuition_coverage_note": null,
+        "funding_amount": 50000,
+        "funding_currency": "CAD",
+        "funding_period": "per year (for up to three years)",
+        "tuition_coverage": false,
+        "living_cost_coverage": false,
+        "travel_coverage": false,
+        "fully_funded": false,
+        "benefits": [
+          "Valued at $50,000 per year for three years during doctoral studies",
+          "Tenable only at the eligible Canadian institution that submitted the nomination",
+          "Holdable part-time (full-time value spread over a longer period) where registered part-time due to disability, parental or medical reasons, or family and community-related responsibilities",
+          "Start dates offered on May 1, September 1 or January 1 following the award offer"
+        ],
+        "eligibility": [
+          "Canadian citizens, permanent residents of Canada and foreign citizens are all eligible to be nominated",
+          "Must be nominated by only one Canadian institution, which must hold a Vanier CGS quota",
+          "Must be pursuing a first doctoral degree (including joint programs such as MD/PhD, DVM/PhD, JD/PhD, MBA/PhD with a demonstrated and significant research component)",
+          "Must have completed no more than 20 months of full-time doctoral study as of May 1, 2025 (or no more than 32 months for joint programs, direct-entry from bachelor's, or prior master's enrolment without the degree)",
+          "Must have achieved a first-class average, as determined by the institution, in each of the last two years of full-time study or equivalent",
+          "Cannot have already received a doctoral-level scholarship or fellowship from CIHR, NSERC or SSHRC",
+          "Doctoral program must include a significant research component leading to a thesis, major research project, dissertation, scholarly publication, performance, recital and/or exhibit that is merit/expert-reviewed at the institutional level",
+          "Must be registered full-time at the nominating institution and not concurrently hold any other CIHR, NSERC or SSHRC training award (Michael Smith Foreign Studies Supplement excepted)"
+        ],
+        "requirements": [
+          "Applications must be submitted through the ResearchNet system to the nominating institution by its internal deadline",
+          "Information in the application package must be self-contained; links to external websites or documents hosted on a drive are not permitted",
+          "Candidates must attain an average score of at least 3.1 in each of the three selection criteria to be considered for funding",
+          "All attachments must follow the published presentation standards; content exceeding page/character limits is removed without notification",
+          "Both referee assessments must be completed in ResearchNet before the applicant can submit"
+        ],
+        "documents": [
+          "ResearchNet application form",
+          "Canadian Common CV (CCV), Vanier-Banting Academic template, with confirmation number linked in ResearchNet",
+          "Transcripts",
+          "Research contributions (maximum 1 page)",
+          "Personal Leadership Statement (maximum 2 pages in English; 2.5 pages in French)",
+          "Two leadership reference letters (maximum 2 pages each, signed, on letterhead where available, each by a single writer)",
+          "Special circumstances statement (maximum 1 page, optional)",
+          "Research proposal (maximum 2 pages in English; 2.5 pages in French)",
+          "Project references (maximum 5 pages)",
+          "Two referee assessments completed online in ResearchNet",
+          "Voluntary Self-Identification Form for Indigenous Applicants (optional)"
+        ],
+        "selection_criteria": [
+          "Academic Excellence",
+          "Research Potential",
+          "Leadership (potential and demonstrated ability)",
+          "The three criteria are equally weighted; an average score of at least 3.1 in each is required to be considered for funding"
+        ],
+        "coverage": [
+          "Published value: $50,000 per year for three years during doctoral studies; official pages do not itemize what portion covers tuition, living costs or travel"
+        ],
+        "application_method": [
+          "Confirm you meet all eligibility criteria",
+          "Contact the faculty of graduate studies at your desired institution to confirm it holds a Vanier CGS quota and to learn its internal deadline",
+          "Register for a ResearchNet account, a Canadian Common CV (CCV) account and a CIHR PIN, and complete the mandatory EDI Self-Identification Questionnaire",
+          "Create the Vanier-Banting Academic CV and link its confirmation number into the ResearchNet application",
+          "Start the Vanier CGS application in ResearchNet, identify your area of research (health / natural sciences and engineering / social sciences and humanities), identify your two referees, and enter degree and proposal information",
+          "Prepare and attach all required documents within the published page limits",
+          "Submit to the nominating institution through ResearchNet by its internal deadline; the institution then forwards its selected nominations to the Vanier-Banting Secretariat"
+        ],
+        "application_route": "Direct application is not possible - candidates must be nominated by a single Canadian institution via its internal selection and ResearchNet; the Vanier CGS itself is closed and applicants are directed to the Canada Graduate Research Scholarship - Doctoral (CGRS-D) programme.",
+        "study_mode": "Full-time doctoral studies required (part-time permitted for disability, parental or medical reasons, or family and community-related responsibilities, with funding spread over a longer period)",
+        "citizenship_residency": "Canadian citizens, permanent residents of Canada and foreign citizens are all eligible to be nominated",
+        "international_eligibility": "Yes - foreign citizens are eligible to be nominated, provided a Canadian institution nominates them",
+        "subject_or_agency_requirement": "Research must fall within health research (reviewed by CIHR), natural sciences and/or engineering (NSERC), or social sciences and humanities (SSHRC); the declared area determines which multidisciplinary selection committee reviews the nomination",
+        "research_requirement": "A research proposal (maximum 2 pages in English, 2.5 pages in French) plus project references (maximum 5 pages) are required, and the doctoral programme must include a significant research component",
+        "duration": "Up to three years of doctoral studies",
+        "description": "Named after Major-General Georges P. Vanier, the first francophone Governor General of Canada, the Vanier Canada Graduate Scholarships programme helps Canadian institutions attract highly qualified doctoral students; it is valued at $50,000 per year for three years and is jointly administered by CIHR, NSERC and SSHRC. The programme is no longer accepting applications and has been replaced by the harmonized Canada Graduate Research Scholarship - Doctoral programme.",
+        "region": "Canada",
+        "program_type": "Doctoral scholarship (Tri-agency: CIHR, NSERC and SSHRC)",
+        "english_requirement": null
+      },
+      "verification": {
+        "source_citations": [
+          "https://vanier.gc.ca/en/home-accueil.html",
+          "https://vanier.gc.ca/en/nomination_process-processus_de_mise_en_candidature.html",
+          "https://vanier.gc.ca/en/eligibility-admissibilite.html",
+          "https://vanier.gc.ca/en/administering_the_scholarship-comment_administrer_la_bourse.html",
+          "https://www.nserc-crsng.gc.ca/Students-Etudiants/PG-CS/cgrsd-besrd_eng.asp"
+        ],
+        "last_verified_date": "2026-10-10",
+        "verification_status": "confirmed",
+        "confidence": "high",
+        "not_confirmed": [
+          "english_requirement - no language-test requirement is published on the official Vanier pages",
+          "itemized coverage - the official pages publish the $50,000 per year value but do not break out tuition, living-cost or travel components",
+          "current-cycle deadline - the programme is closed, so no current deadline exists; only the archived 2024-2025 dates are published"
+        ],
+        "notes": "Award value ($50,000/year for three years), eligibility rules, selection criteria, document requirements and the two-tier deadline structure were taken from the official vanier.gc.ca pages; the successor CGRS-D details (value, 36-month duration, October 17 deadline) come from NSERC's official funding-opportunity page."
+      },
+      "applicant_utility": {
+        "summary": "Do not plan around the Vanier CGS: the official site states it is no longer accepting applications, and the pages are archived. The practical target for a comparable Canadian doctoral award is the Canada Graduate Research Scholarship - Doctoral (CGRS-D), the harmonized Tri-agency successor worth $40,000 per year for 36 months, with an October 17 agency deadline and institutional channels that often close much earlier. Keep the Vanier's archived rulebook as a template for how these Tri-agency competitions actually work: institution-limited nomination quotas, strict page limits, and a written research proposal read by non-specialists.",
+        "best_fit": "Historically elite first-year PhD and joint-degree (MD/PhD, JD/PhD) researchers at Canadian universities with a quota and a first-class record; today, the same candidates should apply to CGRS-D through their institution or the relevant agency.",
+        "application_readiness_checklist": [
+          "Confirm whether your institution holds a doctoral quota with CIHR, NSERC or SSHRC for the current CGRS-D round, and ask the graduate studies office for its internal deadline (it is usually weeks before the agency's October 17 date)",
+          "Decide early which agency reviews your file - health (CIHR), natural sciences/engineering (NSERC) or social sciences/humanities (SSHRC) - because the wrong routing can get a nomination withdrawn",
+          "Draft the research proposal to be understood by a multidisciplinary, non-specialist committee: define all technical terms and state objectives, methods and timelines plainly",
+          "Line up referees early and set their in-system deadlines yourself, since the submission cannot be completed until every assessment is in",
+          "Prepare a Canadian Common CV (Vanier-style academic template) and enter the CCV confirmation number well ahead of the deadline, because validation can lag during peak weeks",
+          "Check your doctoral study clock against the eligibility window (the successor uses a 36-month limit as of December 31 of the application year)"
+        ],
+        "common_rejection_risks": [
+          "Losing the internal nomination: institutions forward only a quota-limited number of candidates, so many strong applications never reach the national committee",
+          "Missing the institution's internal deadline, which is earlier than and independent of any programme deadline",
+          "Exceeding page limits - over-length leadership statements, proposals or references are truncated with no notification and no chance to fix them",
+          "Incomplete referee assessments, which block submission entirely in ResearchNet",
+          "Exceeding the months-of-study window for the doctorate by the cut-off date, including study counted from earlier master's or joint-program registration",
+          "Already holding (or having held) a doctoral-level Tri-agency scholarship, which makes an applicant ineligible"
+        ],
+        "estimated_uncovered_costs": "The published $50,000 per year Vanier value (and the successor CGRS-D's $40,000 per year) is a stipend; the official pages do not state that tuition is covered, so doctoral tuition and any relocation, visa and travel expenses remain the student's responsibility.",
+        "document_audit": [
+          "Transcripts must cover all prior enrolments, including incomplete degrees, and part-time study must be explained in the application and reflected in the transcripts",
+          "The two leadership letters must come from non-academic referees, each signed by a single writer on letterhead - multi-author letters are not forwarded to the committee",
+          "The application package must be self-contained: external links or documents on cloud drives are not accepted",
+          "French-language applicants get an extra half page for the leadership statement and proposal, but the limit is enforced strictly",
+          "A mandatory EDI self-identification questionnaire must be completed before the deadline, and an optional Indigenous self-identification form exists for eligible applicants"
+        ],
+        "alerts": [
+          "The Vanier CGS is closed - any listing advertising a current Vanier intake is outdated; route all effort to CGRS-D",
+          "You cannot hold a Vanier or CGRS-D award concurrently with another Tri-agency training award (only the Michael Smith Foreign Studies Supplement is excepted), so map your funding plan before you accept anything",
+          "Institutional deadlines are the real deadlines; the published programme date only governs when the institution may forward your nomination",
+          "An award is tenable only at the nominating institution - changing schools means declining the award"
+        ],
+        "submission_workflow": "Applicant builds the package in ResearchNet and submits it to the chosen institution by its internal deadline; the institution screens and selects within its quota, then forwards the nomination to the Secretariat for national review, with results announced roughly six months later."
+      }
+    }
+  ]
+}

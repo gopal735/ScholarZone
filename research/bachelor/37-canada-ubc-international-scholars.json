@@ -1,0 +1,671 @@
+[
+  {
+    "id": "ubc-international-scholars-program",
+    "title": "UBC International Scholars Program",
+    "short_title": "ISP",
+    "legacy_titles": ["International Scholars Program"],
+    "country": "Canada",
+    "host_region": "Canada",
+    "degree": "Bachelor's",
+    "degree_levels": ["Bachelor's", "ISCED Level 6 equivalent"],
+    "study_level": "Undergraduate",
+    "program_type": "University need-and-merit scholarship awarded to nominated international entrants through a separate application administered by the UBC International Student Initiative",
+    "funding_type": "Need-and-merit-based university scholarship; value commensurate with assessed financial need and, for the Vantage One Excellence Award, up to the full cost of the academic programme plus living costs (university- and donor-funded)",
+    "administering_authority": "The University of British Columbia — UBC International Student Initiative (Undergraduate Programs and Admissions), with UBC Vantage College recommending the Vantage One Excellence Award",
+    "implementing_agency": "UBC International Scholars Program team (international.awards@ubc.ca) and the UBC Scholarships portal operated on SurveyMonkey Apply; UBC Undergraduate Admissions evaluates the separate admission application",
+    "programme_action": "UBC International Scholars Program — four award categories: Karen McKellin International Leader of Tomorrow Award; Donald A. Wehrung International Student Award; International Impact Award; Vantage One Excellence Award",
+    "description": "The UBC International Scholars Program is the University of British Columbia's need-and-merit-based award programme for international students entering a first undergraduate degree directly from an accredited secondary school. Nominated applicants are automatically considered for four award categories — the Karen McKellin International Leader of Tomorrow Award, the Donald A. Wehrung International Student Award, the International Impact Award, and the UBC Vantage One Excellence Award — with each award's value determined by the recipient's documented financial need. Applicants must first be nominated by a high school or registered non-profit organisation, apply for admission to UBC, and then complete a separate award application through UBC's scholarship portal. An applicant who applies to the programme is not considered for UBC's merit-based entrance awards.",
+    "programme_structure": {
+      "award_types": [
+        "Karen McKellin International Leader of Tomorrow Award",
+        "Donald A. Wehrung International Student Award",
+        "International Impact Award",
+        "Vantage One Excellence Award"
+      ],
+      "award_types_detail": {
+        "Karen McKellin International Leader of Tomorrow Award": "Recognises exceptional prospective international undergraduates who demonstrate superior academic achievement and exemplary leadership skills that support and empower others through collaboration, empathy and active listening, with positive impact through school and community service and notable achievement in academic or extra-curricular pursuits.",
+        "Donald A. Wehrung International Student Award": "Recognises outstanding international undergraduate students from impoverished or war-torn areas who have achieved academic excellence under challenging circumstances and who would be unable to attend university without significant financial assistance; students should demonstrate leadership potential and a strong commitment to making a positive impact in their communities.",
+        "International Impact Award": "Offered to exceptional students who have demonstrated leadership as well as commitment to and solutions for sustainability and climate change, natural resource conservation and management, social justice, equity and inclusion, or societal health and wellness; priority is given to first-generation learners and those from diverse lived backgrounds.",
+        "Vantage One Excellence Award": "Offered by UBC Vantage College for academically outstanding international students who do not yet meet the English Language Admission Standard for direct admission to UBC; awards range in value up to the full cost of a student's academic programme and living expenses, granted on the basis of academic merit with financial need also taken into account."
+      },
+      "renewable": true,
+      "renewal_criteria": "Awards are renewed for up to three additional years, or to degree completion, whichever is less. Vantage One Excellence Award recipients are reviewed annually to assess and update academic progress and financial need, and must maintain their status as an international student in Canada.",
+      "application_required": true,
+      "automatic_consideration": false,
+      "intake": "September (Winter Session) intake; the September 2027 intake cycle opened on October 5, 2026, with an application deadline of November 15, 2026. UBC also runs a May–August Summer Session."
+    },
+    "status": "OPEN",
+    "status_label": "Open — 2027 Winter session application window",
+    "status_note": "The application window for the September 2027 (Winter Session 2027/28) intake is currently open: it opened on October 5, 2026 at 09:00 PDT and closes on November 15, 2026 at 23:59 Pacific Time. Supporting admission documents and proof of the English Language Admission Standard remain due January 31, 2027 for International Scholars Program applicants, and results are released on a rolling basis February–April 2027. Next expected cycle: September 2028 intake, application opening in early October 2027.",
+    "is_verified": true,
+    "verification_status": "active",
+    "verification_type": "Direct verification from official you.ubc.ca, vantagecollege.ubc.ca and undergraduatescholarships.ubc.ca award, deadline and admission-requirement pages, plus an authenticated asset check of the awarding body's crest on its own domain.",
+    "last_verified_at": "2026-10-10T09:00:00-07:00",
+    "last_verified_date": "2026-10-10",
+    "verified_by": "ScholarZone research agent — official-source verification",
+    "verification_notes": "Ten official ubc.ca pages were read, including the live 2027 application record on the UBC Scholarships portal (undergraduatescholarships.ubc.ca) which publishes the opening and deadline with an explicit timezone, and the UBC Vancouver English Language Admission Standard table. No amount, total value or universal weighting is published for any award category, so all such fields are recorded as null. An application-fee waiver for Donald A. Wehrung nominees appears only in a 2019–2020 nomination package and is not restated for 2027, so it is carried as an unverified item rather than a current rule. Research was carried out on 2026-10-10; the SCHEMA_CONTRACT baseline date of 2026-10-03 was superseded by the actual retrieval date. The November 15, 2026 deadline remains in the future, so no CLOSED status applies.",
+    "next_verification_due": "2026-11-15",
+    "source_last_updated": "The International Scholars page reflects the September 2027 intake (hero imagery dated May 2026); the UBC dates-and-deadlines page lists the full 2026/27–2027/28 cycle; the UBC Vantage College scholarships page still carries the note that applications for the 2026 school year are closed.",
+    "current_programme_guide_checked": true,
+    "application_deadline": {
+      "single_central_deadline": true,
+      "deadline_date": "2026-11-15",
+      "deadline_timezone": "America/Vancouver (Pacific Standard Time, UTC-08:00)",
+      "deadline_precision": "exact",
+      "typical_application_window": "Opens in early October (October 5 for the September 2027 intake) and closes mid-November (November 15)",
+      "application_period": "October 5, 2026 (09:00 PDT) to November 15, 2026 (23:59 PST) for the September 2027 / Winter Session 2027–2028 intake",
+      "official_rule": "The UBC Scholarships portal states: Opens Oct 5 2026 09:00 AM (PDT); Deadline Nov 15 2026 11:59 PM (PST), and applicants are told to set the application time zone to Pacific Time — 'The deadline to apply is November 15, 2026 at 11:59 PM Pacific Time (PCT).' The dates-and-deadlines page lists November 15, 2026 (11:59 p.m. PST) as the deadline for international applicants to apply to UBC and submit an award application in order to be considered for International Scholars Program awards. Separate later dates apply: supporting admission documents and proof of the English Language Admission Standard are due January 31, 2027 for International Scholars Program applicants (not the date in the 'next steps' email), and the general Winter Session admission deadline is January 15, 2027.",
+      "deadline_warning": "Nominator and teacher-referee forms must be completed and submitted a few days before November 15, so the outlier risk is the school official, not the student; UBC advises that applications started shortly before the deadline are less likely to be successful and recommends submitting well in advance in case of technical difficulties. Applicants also need time for the financial-need section, four essays of roughly 150–250 words, and to have completed the UBC admission application before starting the award application.",
+      "next_verification_due": "2026-11-15"
+    },
+    "programme_duration": {
+      "official_range": "4 years to degree completion; nominees' awards are renewable for up to three additional years; applicants entering through Vantage One add an 11-month first year before progressing into second year",
+      "duration_years": 4,
+      "normal_duration_years": 4,
+      "duration_months": 48,
+      "renewable": true,
+      "renewal_note": "Vantage One Excellence Awards are renewed for up to three additional years or to degree completion, whichever is less, with annual review of academic progress and financial need and a requirement to maintain international student status in Canada. Donald A. Wehrung awards were renewed for up to three additional years of undergraduate study or to degree completion, whichever is less, provided the recipient met UBC Senate renewal requirements, continued to demonstrate financial need and maintained a Canadian study permit."
+    },
+    "funding": {
+      "scholarship_available": true,
+      "scholarship_type": "Need-and-merit-based entrance scholarship (university- and donor-funded)",
+      "scholarship_currency": "CAD",
+      "monthly_amount": null,
+      "monthly_amount_note": "UBC publishes no monthly stipend for the International Scholars Program. Award value is set per recipient by assessed financial need; the Vantage One Excellence Award ranges up to the full cost of the student's academic programme and living costs.",
+      "travel_support": null,
+      "visa_support": null,
+      "installation_support": null,
+      "living_allowance": "Living costs are inside the award value (the Vantage One Excellence Award ranges up to the full cost of a student's academic programme and living costs), but no separate or itemised living allowance amount is published.",
+      "insurance": null,
+      "travel_amount": null,
+      "travel_amount_note": "Travel to Canada is not named as a covered benefit in the official award descriptions.",
+      "institutional_costs": "Covered — award value is determined by reference to UBC tuition and fees together with living and other related costs.",
+      "fully_funded": true,
+      "fully_funded_note": "Fully funded in the sense that the Vantage One Excellence Award ranges up to the full cost of a student's academic programme and living expenses; the other three categories are valued commensurate with documented financial need rather than at a published fixed amount. UBC does not publish the dollar value of any individual award, so no amount can be quoted."
+    },
+    "funding_breakdown": {
+      "tuition": {
+        "covered": true,
+        "amount": null,
+        "currency": "CAD",
+        "conditions": "Included in the award value; the value of each award is dependent on the recipient's financial need. The Vantage One Excellence Award ranges in value up to the full cost of the student's academic programme and living costs."
+      },
+      "monthly_stipend": {
+        "available": false,
+        "note": "Not published in official source. UBC publishes no stipend amount for the International Scholars Program."
+      },
+      "travel_allowance": {
+        "available": false,
+        "note": "Not published in official source."
+      },
+      "installation_allowance": {
+        "available": false,
+        "note": "Not published in official source."
+      },
+      "visa_support": {
+        "available": false,
+        "note": "Not published in official source. Recipients must hold a Canadian study permit; UBC publishes study-permit guidance separately."
+      },
+      "insurance": {
+        "available": false,
+        "note": "Not published in official source as an award benefit. UBC requires all students to have basic and extended health insurance, budgeted by the student."
+      },
+      "research_allowance": {
+        "available": false,
+        "note": "Not published in official source."
+      },
+      "book_allowance": {
+        "available": false,
+        "note": "Not published in official source."
+      },
+      "equipment_allowance": {
+        "available": false,
+        "note": "Not published in official source."
+      },
+      "family_allowance": {
+        "available": false,
+        "note": "Not published in official source."
+      },
+      "accommodation_support": {
+        "covered": true,
+        "amount": null,
+        "currency": "CAD",
+        "conditions": "Living costs are inside the value of the Vantage One Excellence Award (up to the full cost of the student's academic programme and living costs); the value is dependent on the recipient's financial need. No separate housing payment or amount is published. Scholars are advised to wait for award decisions before applying for residence — the first-year housing deadline is May 1, 2027."
+      },
+      "bond": {
+        "available": false,
+        "note": "No service bond, repayment obligation or return-of-funds condition is stated in the official award descriptions. The only continuing conditions are annual review of academic progress and financial need, and — for the Vantage One Excellence Award — maintaining international student status in Canada."
+      },
+      "total_estimated_value": {
+        "available": false,
+        "note": "UBC does not publish award amounts or a total value for the International Scholars Program; value is set individually by assessed financial need. For scale only, UBC states that it devotes more than $35 million CAD annually to awards, scholarships and other financial support for international undergraduate students; that figure covers all international undergraduate awards and must not be read as an individual award value."
+      }
+    },
+    "coverage": [
+      "Tuition and fees up to the recipient's assessed full financial need",
+      "Living costs up to the full cost for the Vantage One Excellence Award",
+      "Award renewal for up to three additional years, or to degree completion, whichever is less",
+      "Dedicated International Scholars Program advising across the undergraduate degree",
+      "Skill-building workshops and retreats (UBC states more than 200 hours of developmental workshops and one-on-one support over the degree)",
+      "Optional participation in exchange and co-op"
+    ],
+    "coverage_limitations": [
+      "UBC publishes no dollar amount for any award category; value is set per recipient from documented financial need",
+      "The exact benefit structure differs by award category and by recipient, and may not match any published example",
+      "Applying to the programme disqualifies the applicant from UBC's merit-based entrance awards (International Major Entrance Scholarships, Outstanding International Student Award, Vantage One Entrance Award)",
+      "A student may be considered for either the merit-based or the need-based award programme, not both",
+      "Not available for the excluded degree programmes",
+      "Renewal requires continued academic progress, continued demonstrated financial need, and — for the Vantage One Excellence Award — continued international student status in Canada",
+      "Health and dental insurance, student fees, books and travel remain the student's own budget items and are not published as award benefits",
+      "Awards are made only to applicants who are nominated by a school or registered non-profit; self-nomination is not possible"
+    ],
+    "eligible_applicants": [
+      "International students who are not Canadian citizens or permanent residents and will study in Canada on a Canadian study permit",
+      "Students entering UBC directly from an accredited secondary school (including final-year secondary students)",
+      "Applicants for a first undergraduate degree who have not entered or completed post-secondary study",
+      "Applicants who demonstrate superior academic achievement (all As or equivalent standard)",
+      "Applicants who can prove a significant level of financial need with official documents",
+      "Applicants who meet UBC's English Language Admission Standard, or who qualify for UBC Vantage College and the Vantage One Excellence Award",
+      "Applicants who are nominated by their high school or by a registered non-profit organisation"
+    ],
+    "citizenship_restriction": true,
+    "worldwide_eligibility": true,
+    "bachelor_requirement": true,
+    "final_year_bachelor_allowed": false,
+    "final_year_condition": "Not applicable as a bachelor's-completion question: the programme funds a first undergraduate degree and requires entry directly from an accredited secondary school, so final-year secondary-school students are the intended applicants. Applicants for the 2027 Winter session must have graduated from high school no earlier than June 2026, and nominees who have already entered or completed post-secondary schooling are not eligible for the Donald A. Wehrung International Student Award.",
+    "equivalent_degree_allowed": true,
+    "equivalent_degree_note": "Yes — 'or equivalent standard' is applied to both the academic requirement (all As or equivalent) and the secondary credential. UBC publishes specific admission requirements for international high schools, the International Baccalaureate, Advanced Placement, British-patterned A-Level/GCSE, Indian CBSE/ISC curricula and other national curricula, and UBC Vantage College admits students below the direct-entry English standard.",
+    "age_limit": null,
+    "gender_restriction": false,
+    "nationality_quota": null,
+    "previous_emjm_scholarship_ineligible": false,
+    "eligibility": {
+      "citizenship": "Open to international students worldwide; the applicant must not be a Canadian citizen or permanent resident and will be studying in Canada on a Canadian study permit. Convention refugees and students intending to become landed immigrants to Canada are not eligible for the Donald A. Wehrung International Student Award.",
+      "residence_requirement": "Must hold or intend to hold a Canadian study permit and enter UBC directly from an accredited secondary school; no residence in Canada is required in advance.",
+      "age_limit": null,
+      "secondary_school_requirement": "Entering UBC directly from an accredited secondary school. For the 2027 Winter session, applicants must have graduated from high school no earlier than June 2026. Grades 9–11 and Grade 12 interim/mid-year transcripts, plus predicted grades for courses in progress, are required.",
+      "academic_requirements": "Superior academic achievement — achieve all As or equivalent standard — in addition to meeting UBC's general and degree-specific admission requirements for the first-choice programme.",
+      "gpa_requirement": "All As or equivalent standard; UBC does not publish a single universal percentage cut-off and interprets the requirement against each applicant's curriculum.",
+      "language_requirement": "UBC's English Language Admission Standard (ELAS) for direct entry, by one of nine routes or an accepted test: IELTS Academic 6.5 with no part below 6.0; TOEFL iBT overall 90 (Reading 22, Listening 22, Writing 21, Speaking 21); PTE Academic overall 65 with 60 in each skill; Duolingo English Test overall 125 (Reading 115, Listening 115, Writing 120, Speaking 120); CAEL overall 70; Cambridge B2 First/C1 Advanced/C2 Proficiency 180; or the UBC Certificate in English Language (600). Applicants below the direct-entry standard may be eligible for UBC Vantage College and the Vantage One Excellence Award; Vantage One accepts a minimum TOEFL 70 and IELTS 5.5 with certain sub-scores. ISP applicants must meet the standard by January 31, 2027; test scores must be from January 1, 2025 onwards for the 2027/2028 Winter Session.",
+      "work_experience": "Not required.",
+      "extracurricular_requirement": "Exceptional extracurricular activities and notable achievement in academic or extra-curricular pursuits are part of the programme's stated expectations.",
+      "leadership_requirement": true,
+      "financial_need": "A significant, documented level of financial need. UBC conducts a financial assessment that reviews documents outlining the family's gross income, expenses, family assets, dependants and annual school fees, and sources of financial support. It would be impossible for the applicant to pursue a UBC degree without meaningful financial help, the family cannot cover a significant level of the costs, and there is no access to external funding. The financial-need estimate is the amount of support the applicant requires to live and study at UBC after all resources are accounted for.",
+      "previous_scholarship_restriction": "Applicants may only be considered for either the merit-based or the financial need-based award programme. Applicants to the International Scholars Program are not considered for merit-based awards, including International Major Entrance Scholarships, the Outstanding International Student Award, Vantage One Entrance Awards and UBC Okanagan automatic awards consideration. A student may be nominated for only one award.",
+      "enrolment_status_requirement": "Must be applying for a first undergraduate degree and entering directly from secondary school. The applicant must apply for admission to UBC (myapplication.ubc.ca) before starting the award application, and the award application requests confirmation of the admission application. Students who have already entered or completed post-secondary schooling are not eligible for the Donald A. Wehrung International Student Award.",
+      "health_requirement": null,
+      "field_restrictions": "Not eligible for the UBC International Scholars Program awards: Bachelor of Nursing (Okanagan and Vancouver), Bachelor of Dental Science in Dental Hygiene, Bachelor of Medical Laboratory Science, Bachelor + Master of Management degree, dual degrees, joint degrees between UBC Okanagan and UBC Vancouver, and joint degrees with other post-secondary institutions. Applicants are considered for their first-choice programme and should still select a second choice.",
+      "official_source": "https://you.ubc.ca/financial-planning/scholarships-awards-international-students/international-scholars/"
+    },
+    "academic_requirements": {
+      "fixed_percentage_requirement": "All As or equivalent standard (no fixed percentage published)",
+      "percentage_note": "UBC states the requirement as 'superior academic achievement (achieve all As or equivalent standard)' rather than a single percentage; the standard is applied by UBC Admissions against the applicant's national curriculum or international programme.",
+      "programme_specific_requirements": "Applicants must also meet UBC's general and degree-specific admission requirements for the first-choice programme. Excluded degrees are Bachelor of Nursing (Vancouver and Okanagan), Bachelor of Dental Science in Dental Hygiene, Bachelor of Medical Laboratory Science, Bachelor + Master of Management, dual degrees, joint degrees between the two UBC campuses, and joint degrees with other post-secondary institutions.",
+      "selection_factors_may_include": [
+        "Superior academic achievement",
+        "Leadership qualities and potential",
+        "Exceptional contributions to school and community service projects",
+        "Extracurricular involvement and notable achievement in academic or extra-curricular pursuits",
+        "Impact on sustainability, climate change, natural resource conservation and management, social justice, equity and inclusion, or societal health and wellness (International Impact Award)",
+        "First-generation learner status and diverse lived backgrounds (priority for the International Impact Award)",
+        "Documented financial need",
+        "Video interview responses, where invited"
+      ],
+      "holistic_selection_note": "Programme materials describe a holistic review of academic standing, leadership and community contribution, extracurricular achievement and documented financial need, with the programme's stated purpose of bringing together scholars from diverse countries and cultures. UBC publishes no numeric weighting."
+    },
+    "english_requirement": {
+      "universal_requirement": true,
+      "minimum_ielts": 6.5,
+      "minimum_toefl": 90,
+      "minimum_pte": 65,
+      "minimum_duolingo": 125,
+      "moi_rule": "English is the primary language of instruction. Nine alternative routes satisfy UBC's English Language Admission Standard (ELAS): four or more consecutive years of full-time study in English in Canada immediately before UBC or in a country where English is the principal language; 70% or better on the provincial examination portion of Alberta ELA 30-1 or BC English 12; AP English Language & Composition or Literature & Composition grade 4, or IB English A grade 5; an accepted proficiency test; six credits of transferable first-year English studies at a recognised university in an English-speaking country; graduation from a degree programme taught in English in a country where English is the principal language; four or more years at an eligible international secondary school in a non-English-speaking country; or the UBC Certificate in English Language (CEL) at Levels 600 and 650. Bilingual schools require an ELAS waiver request, and a waiver may also be requested for fully proficient applicants (due February 15, with a transcript and recommendation from an English teacher, guidance counsellor or principal emailed by the school).",
+      "moi_accepted": true,
+      "test_score_note": "Accepted tests and minimums (minimum applies to each part unless stated otherwise, in a single sitting; scores across multiple sittings cannot be combined): IELTS Academic 6.5 with no part below 6.0 (IELTS General, IELTS Indicator and IELTS One Skill Retake are not accepted); TOEFL iBT or TOEFL iBT Home Edition overall 90 with Reading 22, Listening 22, Writing 21, Speaking 21 (UBC institution code 0965); PTE Academic overall 65 with Reading 60, Listening 60, Writing 60, Speaking 60; Duolingo English Test overall 125 with Reading 115, Listening 115, Writing 120, Speaking 120; CAEL or CAEL Online overall 70; Cambridge B2 First, C1 Advanced or C2 Proficiency 180; UBC Certificate in English Language (CEL) 600. Unlisted online tests (for example IELTS Indicator) may be considered only alongside a waiver request. Applicants for the 2027/2028 Winter Session must submit test scores from January 1, 2025 onwards, and International Scholars Program applicants must meet the standard by January 31, 2027.",
+      "test_validity_months": 24,
+      "accepted_tests": [
+        "IELTS Academic",
+        "TOEFL iBT (including TOEFL iBT Home Edition)",
+        "Pearson Test of English (PTE) Academic",
+        "Duolingo English Test (DET)",
+        "CAEL / CAEL Online",
+        "Cambridge English Qualifications (B2 First, C1 Advanced, C2 Proficiency)",
+        "UBC Certificate in English Language (CEL)"
+      ]
+    },
+    "language_of_instruction": {
+      "programme_specific": false,
+      "possible_languages": ["English"],
+      "bilingual_programmes": false,
+      "language_note": "English is the primary language of instruction at UBC. UBC Vantage One offers Arts, Science and Applied Science (Engineering) tracks with integrated academic English over an 11-month first year, after which students progress into second year of their degree."
+    },
+    "application_method": {
+      "direct_student_application": true,
+      "central_application": false,
+      "application_route": "Apply for admission to UBC at myapplication.ubc.ca first, secure a nomination from a school or registered non-profit and a teacher referee, then complete the separate International Scholars Program application in UBC's Scholarship portal (SurveyMonkey Apply) at undergraduatescholarships.ubc.ca.",
+      "portal_url": "https://undergraduatescholarships.ubc.ca/prog/2027_international_scholars_program_application/",
+      "application_steps": [
+        "1. Mid-September — decide the academic programme and campus. You are considered for your first-choice programme, and you should still select a second choice.",
+        "2. Late September — discuss the nomination with your school. You need one nominator (guidance counsellor, principal, administrator or a registered non-profit acting as an educational institution) and one teacher referee, who must be different people. A high school or registered non-profit may nominate up to two students for UBC Vancouver (including Vantage College) and one student for UBC Okanagan.",
+        "3. Early October — apply to UBC for admission (the award application asks for confirmation and the EducationPlanner/UBC application reference number, so the admission application must be submitted first).",
+        "4. Early October — create an account on the UBC Scholarships application platform and invite your nominator and teacher referee to complete their forms; the award application cannot be completed until both are submitted. Both forms should be completed and submitted a few days before November 15.",
+        "5. Mid-October — gather family and financial information: annual income and expenses, family wealth and assets, dependants and annual school fees, sources of financial support, and a financial-need calculation using UBC's cost estimator; record extracurricular information and awards.",
+        "6. By November 15, 2026 (23:59 Pacific) — submit the completed application: nomination form, reference form, application form, programme of study, and essays and extracurriculars (four essay questions of roughly 150–250 words).",
+        "7. By January 31, 2027 — submit the admission documents requested in the 'Your UBC Application – Next Steps' email (transcripts, high school academic certificates, predicted grades) and meet the English Language Admission Standard; for ISP applicants this replaces the date in the email. UBC requires official transcripts and certificates from the award recipient and the school after selection.",
+        "8. January–March 2027 — complete the video interview if invited; you have one week to record your responses in the online application platform.",
+        "9. February–April 2027 — monitor email (mark UBC addresses as safe); award decisions are released on a rolling basis, and by early- to mid-April you are told whether you have received an award. Wait for the award decision before applying for residence — the first-year housing deadline is May 1, 2027."
+      ],
+      "application_fee": "A separate award application fee is not published; applicants pay UBC's standard undergraduate admission application fee via the admission application. The current official page does not state any fee waiver for the 2027 cycle.",
+      "multiple_applications_allowed": false,
+      "paper_application_available": false
+    },
+    "official_application_documents": {
+      "universal_documents": [
+        "UBC undergraduate admission application (already submitted, with its reference number)",
+        "International Scholars Program award application (application form, programme of study, essays and extracurriculars)",
+        "Nomination form completed by the school or registered non-profit nominator",
+        "Reference form completed by the teacher referee (a different person from the nominator)",
+        "Official documents demonstrating family financial need (gross income, expenses, family assets and dependants' school fees)"
+      ],
+      "commonly_requested_documents": [
+        "Passport or other official documentation — the full legal name used in the admission application must match it exactly",
+        "Nomination details from the school or non-profit organisation (nominator's full name, position, organisation name, address, email and phone)",
+        "Awards received and extracurricular involvement records",
+        "Four essays of roughly 150–250 words",
+        "Recorded video interview responses, where invited"
+      ],
+      "two_recommendation_letters": "Two forms, not open letters: a nomination form completed by the nominator and a reference form completed by one teacher referee. They must be different people, and family members or friends cannot serve as references.",
+      "secondary_school_documents": "Grades 9–11 and Grade 12 interim/mid-year transcripts, with mock, predicted or pre-board grades for courses still in progress. In British-patterned education, certified copies of GCSE 'O' Level, GCE 'AS' and 'A' Level certificates plus predicted 'AS'/'A' Level grades from the original examining school. Students who have completed high school submit a final transcript and the secondary school certificate. UBC accepts scanned transcripts and certificates uploaded by the student or emailed by the school; official transcripts and certificates are required from recipients after selection.",
+      "document_language": "Documents should be submitted in English; certified copies of transcripts and certificates are required and a certified copy must bear the original school stamp and the signature of an official.",
+      "document_format": "Scanned or uploaded PDFs through the Applicant Service Centre, or certified copies emailed by the school to international.awards@ubc.ca where upload is unavailable.",
+      "transcript_requirement": "Grades 9–11 and Grade 12 interim/mid-year transcripts with predicted grades for in-progress courses; final transcript and secondary school certificate once available; official transcripts and certificates required from selected recipients.",
+      "certified_translation_requirement": true
+    },
+    "document_checklist": {
+      "identity_documents": [
+        {
+          "item": "Passport or other official identification",
+          "requirement": "Legal name in the UBC admission application must match the passport or other official documentation exactly",
+          "status": "required"
+        },
+        {
+          "item": "Proof of international student status on a Canadian study permit",
+          "requirement": "Applicant must be an international student who will study in Canada on a Canadian study permit",
+          "status": "eligibility condition, confirmed at the award and enrolment stage"
+        }
+      ],
+      "academic_documents": [
+        {
+          "item": "Grades 9–11 transcript",
+          "requirement": "Certified copy with school stamp and official signature",
+          "status": "required"
+        },
+        {
+          "item": "Grade 12 interim/mid-year transcript",
+          "requirement": "Including predicted, mock or pre-board grades for in-progress courses",
+          "status": "required, submit by January 31, 2027"
+        },
+        {
+          "item": "Final transcript and secondary school certificate",
+          "requirement": "Submit as soon as available; official copies required of selected recipients",
+          "status": "required on completion"
+        },
+        {
+          "item": "GCSE 'O' Level, GCE 'AS' and 'A' Level certificates with predicted grades (British-patterned curricula)",
+          "requirement": "Certified copies from the original examining school",
+          "status": "required where applicable"
+        }
+      ],
+      "language_documents": [
+        {
+          "item": "English Language Admission Standard evidence",
+          "requirement": "One of the nine ELAS routes or an accepted test score; must reach UBC by January 31, 2027 for ISP applicants",
+          "status": "required"
+        },
+        {
+          "item": "Official English test results from January 1, 2025 onwards",
+          "requirement": "Single sitting; minimum IELTS 6.5 (no part below 6.0), TOEFL iBT 90, PTE 65, DET 125, CAEL 70, Cambridge 180, or CEL 600",
+          "status": "required where the test route is used"
+        },
+        {
+          "item": "Vantage College English requirement (where applying to Vantage One)",
+          "requirement": "Vantage One minimum TOEFL 70 and IELTS 5.5, with applicable sub-scores",
+          "status": "required for Vantage One applicants"
+        }
+      ],
+      "recommendation_documents": [
+        {
+          "item": "Nomination form",
+          "requirement": "Completed by the nominator — a guidance counsellor, principal, administrator or a registered non-profit acting as an educational institution",
+          "status": "required"
+        },
+        {
+          "item": "Reference form",
+          "requirement": "Completed by one teacher referee familiar with your work in your chosen area of study; must be a different person from the nominator",
+          "status": "required"
+        },
+        {
+          "item": "ELAS waiver package (only if a waiver is requested)",
+          "requirement": "Student number and full name, a brief letter, a recommendation from the school emailed to elas.waivers@ubc.ca, and a transcript emailed by the school; due February 15",
+          "status": "conditional"
+        }
+      ],
+      "application_essays": [
+        {
+          "item": "Essays and extracurriculars section",
+          "requirement": "Four essay questions of approximately 150–250 words each, plus extracurricular information and awards",
+          "status": "required"
+        }
+      ],
+      "financial_documents": [
+        {
+          "item": "Official documents demonstrating significant financial need",
+          "requirement": "Family gross income, expenses, family wealth and assets, dependants and annual school fees, and sources of financial support, as reviewed in UBC's financial assessment",
+          "status": "required"
+        },
+        {
+          "item": "Financial-need calculation",
+          "requirement": "Calculate the family contribution and financial need using UBC's cost estimator at you.ubc.ca/financial-planning/cost/",
+          "status": "required"
+        }
+      ],
+      "additional_documents": [
+        {
+          "item": "Programme of study form",
+          "requirement": "Completed by the student as part of the award application",
+          "status": "required"
+        },
+        {
+          "item": "UBC admission application confirmation / reference number",
+          "requirement": "The award application requests confirmation of UBC application submission",
+          "status": "required"
+        },
+        {
+          "item": "Video interview recording",
+          "requirement": "Only where invited; one week to record responses in the online platform, January–March 2027",
+          "status": "conditional"
+        }
+      ]
+    },
+    "required_documents": [
+      "Completed UBC undergraduate admission application (reference number used in the award application)",
+      "International Scholars Program award application: application form, programme of study, and essays and extracurriculars (four essays of roughly 150–250 words)",
+      "Nomination form completed by the school or registered non-profit nominator",
+      "Reference form completed by the teacher referee (a different person from the nominator)",
+      "Official documents demonstrating significant family financial need (gross income, expenses, assets, dependants' school fees, sources of support)",
+      "Financial-need calculation using UBC's cost estimator",
+      "Grades 9–11 and Grade 12 interim/mid-year transcripts with predicted grades for in-progress courses",
+      "Final transcript and secondary school certificate once available (official copies from selected recipients)",
+      "Evidence of meeting the English Language Admission Standard, or Vantage College English requirement",
+      "Passport or other official documentation matching the legal name used in the admission application"
+    ],
+    "selection_process": {
+      "decision_maker": "UBC International Scholars Program / UBC International Student Initiative, with the Vantage One Excellence Award made on the recommendation of UBC Vantage College in consultation with the UBC International Student Initiative; UBC Undergraduate Admissions independently evaluates the admission application",
+      "selection_type": "Competitive, nomination-based, need-and-merit review",
+      "central_selection": false,
+      "possible_stages": [
+        "School or non-profit nomination (limited per campus)",
+        "Eligibility screen (international status and study permit, direct entry from accredited secondary school, graduation no earlier than June 2026 for the 2027 Winter session, first undergraduate degree, excluded degrees, English standard)",
+        "Financial assessment of the family documents submitted with the application",
+        "Committee review of academics, leadership, community contribution, extracurricular achievement and need",
+        "Video interview, where invited (January–March, one week to complete)",
+        "Award offers released on a rolling basis February–April 2027, with notification by early- to mid-April"
+      ],
+      "official_universal_weighting": null,
+      "weighting_note": "UBC publishes no numeric weighting for the programme. Applicants do not select an award: UBC automatically considers each nominee for the awards they are eligible for.",
+      "interview_possible": true,
+      "results_timing": "Results are released on a rolling basis throughout February–April; by early- to mid-April, applicants are told whether they have received an award. Award offers for merit-based awards are usually issued before the admission acceptance deadline (most May 1).",
+      "scholarship_rank_note": "There is no applicant-chosen preference or ranking among the four award categories; the committee automatically considers each nominee for the awards they are eligible for, and the award value is set by assessed financial need."
+    },
+    "selection_criteria": {
+      "academic_excellence": true,
+      "leadership": true,
+      "community_service": true,
+      "extracurricular_achievement": true,
+      "financial_need": true,
+      "additional_factors": [
+        "Superior academic achievement (all As or equivalent standard)",
+        "Exceptional contributions to communities and a desire to create positive global and social change",
+        "Impact on sustainability and climate change, natural resource conservation and management, social justice, equity and inclusion, or societal health and wellness (International Impact Award)",
+        "First-generation learner status and diverse lived backgrounds, given priority for the International Impact Award",
+        "Academic excellence achieved under challenging circumstances for the Donald A. Wehrung International Student Award",
+        "Notable achievement in academic or extra-curricular pursuits",
+        "Documented inability to attend university without significant financial assistance"
+      ],
+      "interview_required": false,
+      "portfolio_required": false,
+      "source": "https://you.ubc.ca/financial-planning/scholarships-awards-international-students/international-scholars/"
+    },
+    "degree_outcome": {
+      "awarded_qualification": "UBC bachelor's degree (first undergraduate degree) at UBC Vancouver or UBC Okanagan",
+      "typical_programme_length": "4 years; 5 academic years where the student enters through the 11-month Vantage One first year",
+      "possible_awards": [
+        "Karen McKellin International Leader of Tomorrow Award",
+        "Donald A. Wehrung International Student Award",
+        "International Impact Award",
+        "Vantage One Excellence Award"
+      ],
+      "degree_note": "Applicants are considered for their first-choice programme and should also select a second choice. The excluded degrees are Bachelor of Nursing (Vancouver and Okanagan), Bachelor of Dental Science in Dental Hygiene, Bachelor of Medical Laboratory Science, Bachelor + Master of Management, dual degrees, joint degrees between the two UBC campuses, and joint degrees with other post-secondary institutions. Successful Vantage One students progress into second year of their degree; a full-time international graduate of a UBC bachelor's programme can qualify for a post-graduation work permit of up to three years.",
+      "credit_transfer": "Vantage One carries the full requirements of the first year of an Arts or Science degree with integrated academic English, and students progress into second year on successful completion. UBC governs first-year credit from secondary credentials (IB, A-Levels, AP) separately from the award."
+    },
+    "student_rights_and_cost_protection": {
+      "tuition_fee_for_recipients": "Recipients pay international tuition fees; the award is applied towards tuition and fees at a value commensurate with documented financial need, up to the full cost of the academic programme for the Vantage One Excellence Award. UBC determines international tuition by citizenship status, so awards are calibrated against the international fee schedule.",
+      "application_fee_for_recipients": "No fee waiver for the 2027 cycle is published on the current official International Scholars page. An earlier Donald Wehrung nomination package stated that DWISA nominees did not pay the UBC undergraduate application fee; that statement is not restated for 2027 and should be checked with international.awards@ubc.ca.",
+      "student_agreement": "Award winners' awards are reviewed annually to assess and update academic progress and financial need. Data submitted on the UBC Scholarships portal is collected under section 26(c) of the BC Freedom of Information and Protection of Privacy Act (FIPPA) and handled within Canada by UBC and SurveyMonkey for the purpose of assessing suitability for awards.",
+      "programme_website": "https://you.ubc.ca/financial-planning/scholarships-awards-international-students/international-scholars/",
+      "common_services": "Recipients receive dedicated International Scholars Program advising, skill-building workshops and retreats, and access to standard UBC student services including the Applicant Service Centre, enrolment services, health and dental coverage, U-Pass transit access, housing, co-op and exchange.",
+      "bond_requirement": false,
+      "bond_breach_consequence": "No bond or repayment obligation is published. Continuing conditions are only annual review of academic progress and financial need and, for the Vantage One Excellence Award, maintaining international student status in Canada."
+    },
+    "practical_application_data": {
+      "application_readiness_checklist": [
+        "Confirm you are not a Canadian citizen or permanent resident and will study in Canada on a study permit",
+        "Confirm you are entering directly from an accredited secondary school and graduated no earlier than June 2026",
+        "Check that your intended degree is not on the excluded list",
+        "Confirm your school can nominate you and has not used its two Vancouver or one Okanagan nomination slot",
+        "Decide your first-choice campus and programme, plus a second choice",
+        "Secure a nominator and a teacher referee who are different people, and give them your contact details and first-choice programme in late September",
+        "Complete the UBC admission application before starting the award application",
+        "Collect official family financial documents: income, expenses, assets, dependants' school fees, sources of support",
+        "Calculate your financial need using UBC's cost estimator",
+        "Book an IELTS, TOEFL, PTE, DET or CAEL sitting early enough for official results to reach UBC by January 31, 2027, with a test date from January 1, 2025 onwards",
+        "Draft four essays of roughly 150–250 words and compile extracurriculars and awards",
+        "Set your portal time zone to Pacific Time and submit before November 15, 2026 23:59",
+        "Submit transcripts and certificates by January 31, 2027, and check spam filters for UBC email"
+      ],
+      "programme_comparison_fields": [
+        "Award value and whether it is capped by assessed financial need or a fixed amount",
+        "Whether a nomination is required and the per-school nomination cap",
+        "Whether applying bars consideration for merit-based entrance awards",
+        "Deadline and timezone",
+        "Renewal requirements and duration",
+        "English requirement and alternative pathways",
+        "Whether a Vantage One / foundation first year is required"
+      ],
+      "motivation_letter_strategy": "Write four essays of roughly 150–250 words that give concrete evidence of leadership and community contribution rather than assertions: name the project, your role, what changed, and who benefited. For the Donald A. Wehrung award, make the circumstance and the academic achievement under that circumstance explicit. For the International Impact Award, anchor the essay to one of the stated themes (sustainability and climate change, natural resource conservation and management, social justice, equity and inclusion, or societal health and wellness) and say what you did about it. For the Vantage One Excellence Award, connect your academic and extracurricular record to your English-development plan in Vantage One.",
+      "profile_fit_labels": [
+        "International student on a Canadian study permit",
+        "Direct secondary-school entrant",
+        "First-degree applicant",
+        "All-As academic record",
+        "Significant documented financial need",
+        "School- or nonprofit-nominated leader",
+        "Community-service contributor",
+        "First-generation learner",
+        "Vantage One (English-development pathway)"
+      ],
+      "common_mistakes": [
+        "Starting the award application before completing the UBC admission application — the award application asks for confirmation of admission submission",
+        "Assuming a self-nomination is possible; the school or non-profit must nominate, and there is a per-school cap",
+        "Leaving the nominator and referee forms to the last days — they must be completed before the November 15 deadline",
+        "Applying late in the window when the financial-need and essay sections are time-consuming",
+        "Applying to both this need-based programme and the merit-based entrance awards; only one stream is possible",
+        "Choosing an excluded degree (Nursing, Dental Hygiene, Medical Laboratory Science, Bachelor + Master of Management, dual or joint degrees)",
+        "Missing the document deadline of January 31, 2027 by following the date in the 'next steps' email instead",
+        "Applying for residence before the award decision; the first-year housing deadline is May 1, 2027"
+      ]
+    },
+    "application_status_workflow": [
+    "Not yet nominated",
+      "Nominated by school or non-profit",
+      "UBC admission application submitted",
+      "Award application in progress (financial section and essays)",
+      "Nominator and referee forms submitted",
+      "Award application submitted by November 15, 2026 23:59 Pacific",
+      "Documents and English standard submitted by January 31, 2027",
+      "Video interview completed (if invited)",
+      "Under review",
+      "Award decision received (rolling, February–April 2027)",
+      "Offer accepted and study permit obtained",
+      "Award renewed annually (up to three additional years or degree completion)"
+    ],
+    "best_fit": "International students outside Canada with a top secondary-school record (all As or equivalent), whose family genuinely cannot fund an international degree, and whose school will nominate them — especially applicants from economically disadvantaged, war-torn or politically unstable regions, first-generation learners, and applicants whose English is just below UBC's direct-entry standard who can enter through Vantage One.",
+    "not_best_fit": [
+      "Canadian citizens and permanent residents (not eligible)",
+      "Students who already hold or have completed a post-secondary qualification",
+      "Applicants who want a merit-only award without a financial-need assessment",
+      "Applicants who cannot secure a school or non-profit nomination",
+      "Applicants targeting Nursing, Dental Hygiene, Medical Laboratory Science, Bachelor + Master of Management, or dual/joint degrees",
+      "Applicants who need a published, fixed dollar amount to plan their finances before applying",
+      "Students looking for a short-term exchange or a single-term award"
+    ],
+    "image": {
+      "logo_url": "https://undergraduatescholarships.ubc.ca/media/awssmapply/reviewrooms/undergraduatescholarshipsubc/logo/UBC_Crest.png",
+      "logo_source_url": "https://undergraduatescholarships.ubc.ca/prog/2027_international_scholars_program_application/",
+      "logo_source_type": "official_provider_page",
+      "logo_verified": true,
+      "logo_verified_at": "2026-10-10",
+      "logo_verification_method": "The University of British Columbia crest is served as the logo asset of the official UBC Scholarships application portal on undergraduatescholarships.ubc.ca (an official ubc.ca subdomain) and is referenced by the live 2027 International Scholars Program application page. An HTTP HEAD request returned 200 with Content-Type image/png and 2,825 bytes on 2026-10-10. No third-party or aggregator source was used.",
+      "image_url": "https://you.ubc.ca/wp-content/uploads/2026/05/international-scholars-2026-students-alumni.jpg.webp",
+      "image_source_url": "https://you.ubc.ca/financial-planning/scholarships-awards-international-students/international-scholars/",
+      "image_source_type": "official_provider_page",
+      "image_verified": true,
+      "image_verified_at": "2026-10-10",
+      "image_alt_text": "International Scholars students and alumni, published on the official UBC International Scholars page",
+      "image_usage_note": "Photograph of 2026 International Scholars on the official you.ubc.ca International Scholars page; verify current UBC media terms before republication."
+    },
+    "official_source": "The University of British Columbia (UBC) — UBC International Scholars Program, Undergraduate Programs and Admissions",
+    "official_source_url": "https://you.ubc.ca/financial-planning/scholarships-awards-international-students/international-scholars/",
+    "official_programme_guide_url": null,
+    "official_catalogue_url": "https://you.ubc.ca/financial-planning/scholarships-awards-international-students/",
+    "official_application_route": "Apply for admission to UBC at myapplication.ubc.ca, be nominated by your high school or a registered non-profit, then complete the separate International Scholars Program application on UBC's Scholarships portal at undergraduatescholarships.ubc.ca by November 15, 2026, 23:59 Pacific Time.",
+    "official_updates_url": "https://you.ubc.ca/financial-planning/scholarships-awards-international-students/international-scholars/",
+    "verification": {
+      "is_verified": true,
+      "verification_status": "active",
+      "last_verified_at": "2026-10-10T09:00:00-07:00",
+      "last_verified_date": "2026-10-10",
+      "verification_date_meaning": "Date on which every official page cited in this record was fetched and read, and the logo asset was checked with an HTTP HEAD request.",
+      "verified_by": "ScholarZone research agent — official-source verification",
+      "source_type": "official_university",
+      "source_domain": "you.ubc.ca",
+      "verification_confidence": 0.95,
+      "official_fields_confirmed": [
+        "Official programme name and the four award categories",
+        "Application opening date (October 5, 2026, 09:00 PDT) and exact deadline (November 15, 2026, 23:59 Pacific Time) for the September 2027 intake",
+        "Requirement to apply to UBC for admission before starting the award application",
+        "Eligibility: international student on a Canadian study permit, direct entry from an accredited secondary school, first undergraduate degree, graduation no earlier than June 2026 for the 2027 Winter session",
+        "Significant financial need with an official documentation requirement and the categories of family financial information reviewed",
+        "Academic standard: all As or equivalent",
+        "English Language Admission Standard requirement and the Vantage College / Vantage One Excellence Award alternative",
+        "Excluded degree programmes",
+        "Merit-based OR need-based, not both",
+        "Nomination structure: one nominator and one teacher referee who must be different people; per-school nomination caps (2 Vancouver incl. Vantage College, 1 Okanagan)",
+        "Award value scale for the Vantage One Excellence Award (up to the full cost of the academic programme and living costs) and its renewal terms",
+        "Video interview possibility and results timing (rolling February–April, notification by early- to mid-April)",
+        "Document deadline of January 31, 2027 for International Scholars Program applicants",
+        "Housing application guidance and the May 1 deadline",
+        "English test minimums taken from the official ELAS table",
+        "Official UBC crest asset on the awarding body's own domain"
+      ],
+      "programme_check_required": [
+        "Dollar value of individual awards for the 2027 cycle (UBC publishes no amount per category)",
+        "Whether a Donald A. Wehrung application-fee waiver still applies in the 2027 cycle",
+        "Whether the Donald A. Wehrung 'war-torn or politically unstable / economically disadvantaged region' wording is still in the current 2027 nomination terms",
+        "Whether the 2027 cycle instruction sheet lists the same five application components",
+        "2027/28 Vantage One program fee and 2027/28 international tuition rates",
+        "Total number of awards and recipients per cycle"
+      ],
+      "unverified_or_removed_claims": [
+        "A 2019–2020 Donald Wehrung International Student Award nomination package on you.ubc.ca states that DWISA nominees do not pay UBC's undergraduate application fee; the current official International Scholars page makes no equivalent statement for 2027, so no waiver is recorded",
+        "The 2026-cycle application page (undergraduatescholarships.ubc.ca/prog/2026_international_scholars_program_application/) has been removed and returns HTTP 404, so only the live 2027 record was used",
+        "No per-award amount, total value, or universal selection weighting is published for any category; all such fields are null",
+        "UBC's $35 million+ annual international student financial assistance figure covers all international undergraduate awards and is not an individual award value"
+      ],
+      "source_citations": [
+        "https://you.ubc.ca/financial-planning/scholarships-awards-international-students/international-scholars/",
+        "https://you.ubc.ca/financial-planning/scholarships-awards-international-students/",
+        "https://you.ubc.ca/applying-ubc/dates-deadlines/",
+        "https://you.ubc.ca/applying-ubc/requirements/english-language-competency/",
+        "https://you.ubc.ca/applying-ubc/requirements/international-high-schools/",
+        "https://you.ubc.ca/applying-ubc/how-to-apply/",
+        "https://you.ubc.ca/applying-ubc/applied/first-year-study-options/",
+        "https://you.ubc.ca/financial-planning/cost/",
+        "https://you.ubc.ca/financial-planning/tuition-fees/",
+        "https://undergraduatescholarships.ubc.ca/prog/2027_international_scholars_program_application/",
+        "https://vantagecollege.ubc.ca/scholarships-awards"
+      ]
+    },
+    "risk_flags": [
+      {
+        "risk": "Missing the November 15, 2026 deadline",
+        "impact": "No consideration for the 2027 cycle; the next opportunity is the September 2028 intake, opening early October 2027",
+        "mitigation": "Start in early October, submit well in advance of November 15, and set the application time zone to Pacific Time"
+      },
+      {
+        "risk": "Nominator or teacher referee submits late",
+        "impact": "The award application cannot be completed or submitted even if the student's own sections are ready, because both forms must be submitted first",
+        "mitigation": "Secure both forms in late September, invite them in the portal in early October, and follow up so they are completed a few days before November 15"
+      },
+      {
+        "risk": "No award amount is published",
+        "impact": "Applicants cannot know the dollar value in advance, so longer-term financial planning is uncertain and non-covered costs must be funded another way",
+        "mitigation": "Treat the award as need-based and variable; use UBC's cost estimator to model the shortfall and prepare the financial documents that drive the assessment"
+      },
+      {
+        "risk": "Applying also disqualifies merit-based award consideration",
+        "impact": "An applicant who applies to the International Scholars Program is not considered for International Major Entrance Scholarships, the Outstanding International Student Award, Vantage One Entrance Awards or UBC Okanagan automatic awards, and may end up with nothing",
+        "mitigation": "Decide deliberately between the need-based and merit-based routes using UBC's own guidance before applying, since only one stream can be pursued"
+      },
+      {
+        "risk": "Intended degree is on the excluded list",
+        "impact": "No eligibility for any award in this programme regardless of academic standing or need",
+        "mitigation": "Check the excluded degrees (Nursing, Dental Hygiene, Medical Laboratory Science, Bachelor + Master of Management, dual and joint degrees) before selecting first and second choice programmes"
+      },
+      {
+        "risk": "English Language Admission Standard not met by January 31, 2027",
+        "impact": "The International Scholars Program application cannot proceed if documents or requirements needed for admission are missing",
+        "mitigation": "Book an accepted test early enough for official results to reach UBC well before January 31, 2027, using a test date from January 1, 2025 onwards, or apply through the Vantage One route"
+      },
+      {
+        "risk": "Renewal conditions are not met",
+        "impact": "The award is not automatically continued; renewal depends on academic progress, continued demonstrated financial need and, for the Vantage One Excellence Award, continued international student status",
+        "mitigation": "Maintain academic standing, keep financial documentation current for annual review, and retain study-permit status"
+      },
+      {
+        "risk": "Vantage One pathway extends the degree by a year",
+        "impact": "An 11-month Vantage One first year lengthens time and living-cost exposure beyond the standard four-year degree",
+        "mitigation": "Compare the Vantage One fee and total cost against meeting the direct-entry English standard before choosing the route"
+      }
+    ],
+    "database_notes": [
+        "No substitution was required. The assigned target (Canada — UBC International Scholars Program, including the Donald A. Wehrung International Student Award and the Vantage One Excellence Award) is not on the DO-NOT-DUPLICATE list, Canada is an allowed region, and the award funds a first bachelor's degree.",
+        "The record covers the UBC International Scholars Program as a whole because the Donald A. Wehrung International Student Award and the Vantage One Excellence Award are award categories within it and cannot be applied for separately; applicants are automatically considered for the awards they are eligible for.",
+        "The award has no published dollar amount for any category, so monthly_amount, travel_amount, insurance, the tuition amount and total_estimated_value are all null. UBC publishes the Vantage One Excellence Award scale ('up to the full cost of the student's academic programme and living costs') but no maximum figure.",
+        "Deadline precision is 'exact': the live 2027 record on undergraduatescholarships.ubc.ca states 'Deadline Nov 15 2026 11:59 PM (PST)' and instructs applicants to set their application time zone to Pacific Time.",
+        "Research was performed on 2026-10-10 (the retrieval date). The SCHEMA_CONTRACT baseline date of 2026-10-03 was therefore superseded; this does not affect status, because the November 15, 2026 deadline is in the future either way and the application window opened October 5, 2026.",
+        "eligibility.previous_scholarship_restriction carries the rule that applicants may be considered for either the merit-based or the need-based award programme, not both, since the schema forbids an extra top-level key for it.",
+        "'ISP' is a short form used informally for International Scholars Program; UBC's own materials write the name out in full, so short_title should be read as a convenient abbreviation rather than an official acronym.",
+        "International Major Entrance Scholarship figures for Vantage One (up to $85,000 total; $25,000 first year and up to $20,000 for years 2–4) appear on the Vantage College awards page but are merit-based awards that International Scholars Program applicants are excluded from; they are deliberately not recorded as benefits of this programme.",
+        "The official_programme_guide_url is null: no 2027-cycle rulebook or handbook PDF is published on the official pages. A 2019–2020 Donald Wehrung nomination package exists at https://you.ubc.ca/wp-content/uploads/2018/10/2019-20-DWISA-Nomination-Package.pdf but is a superseded cycle document and was used only for document-format context.",
+        "UBC Vancouver (Vancouver campus) figures and the English Language Admission Standard table are campus-specific; the Okanagan campus has separate English requirements and award pages.",
+        "The logo asset was authenticated with an HTTP HEAD request on the official awarding domain (200, image/png, 2,825 bytes). The crest belongs to the University of British Columbia, which is the awarding body, so no third-party logo was used."
+      ],
+      "_source_domain": "you.ubc.ca",
+      "_source_type": "official_provider",
+      "_cycle": "2027 Winter session (September 2027 intake)",
+      "_verification_timestamp": "2026-10-10T09:00:00-07:00",
+      "_completeness_score": 0.94
+    }
+]
+

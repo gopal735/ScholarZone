@@ -264,10 +264,32 @@ export default function HomePage() {
      shrinks underneath it. */
   const featuredItems = useMemo(() => scholarships.slice(0, 5), [scholarships])
 
+  /* The marquee's strip: the catalogue's own names, as the reference
+     does it. It is aria-hidden because every name in it is also a card
+     further down the page — the band is texture, not information. The
+     same string is rendered twice so the -50% loop is seamless. */
+  const marqueeNames = useMemo(() => {
+    const names = featuredItems
+      .concat(scholarships.slice(5, 15))
+      .map((scholarship) => scholarship.title)
+      .filter(Boolean)
+    const strip = names.length > 0 ? names.join('  ·  ') : 'Verified scholarships · Live deadlines · Official sources'
+    return `${strip}  ·  `
+  }, [scholarships, featuredItems])
+
   return (
     <div className="sz-home">
       {/* HERO SECTION */}
       <ScholarZoneHero />
+
+      {/* MARQUEE — the reference's scrolling band of programme names,
+          fed by the live catalogue rather than a hardcoded list. */}
+      <div className="p-mq" aria-hidden="true">
+        <div className="p-mq__track">
+          <span>{marqueeNames}</span>
+          <span>{marqueeNames}</span>
+        </div>
+      </div>
 
       {/* TRUST BAR */}
       <ScrollReveal className="sz-trust-bar">
@@ -358,7 +380,7 @@ export default function HomePage() {
         </ScrollReveal>
 
         <div className="sz-why-grid">
-          <ScrollReveal className="sz-why-card" delay={0}>
+          <ScrollReveal className="sz-why-card p-card" delay={0}>
             <div className="sz-why-card__icon" aria-hidden="true">
               <svg viewBox="0 0 24 24">
                 <path d="m9 12 2 2 4-4m5-4v6c0 5-3.4 8.7-8 10-4.6-1.3-8-5-8-10V6l8-3 8 3Z" />
@@ -368,7 +390,7 @@ export default function HomePage() {
             <p>Each scholarship is checked against official sources. Status is published on the listing so you know what you are working with.</p>
           </ScrollReveal>
 
-          <ScrollReveal className="sz-why-card" delay={100}>
+          <ScrollReveal className="sz-why-card p-card" delay={100}>
             <div className="sz-why-card__icon" aria-hidden="true">
               <svg viewBox="0 0 24 24">
                 <circle cx="12" cy="12" r="10" />
@@ -379,7 +401,7 @@ export default function HomePage() {
             <p>Opening and closing dates are recorded and updated. Closing-soon status surfaces what needs attention first.</p>
           </ScrollReveal>
 
-          <ScrollReveal className="sz-why-card" delay={200}>
+          <ScrollReveal className="sz-why-card p-card" delay={200}>
             <div className="sz-why-card__icon" aria-hidden="true">
               <svg viewBox="0 0 24 24">
                 <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z" />
@@ -390,7 +412,7 @@ export default function HomePage() {
             <p>Opportunities across dozens of countries and every degree level — from undergraduate bursaries to doctoral funding.</p>
           </ScrollReveal>
 
-          <ScrollReveal className="sz-why-card" delay={300}>
+          <ScrollReveal className="sz-why-card p-card" delay={300}>
             <div className="sz-why-card__icon" aria-hidden="true">
               <svg viewBox="0 0 24 24">
                 <path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z" />
@@ -582,7 +604,11 @@ export default function HomePage() {
             published eligibility rule and ranks what you can actually apply for.
           </p>
           <div className="sz-cta-banner__actions">
-            <Link to="/scholarships" className="sz-cta sz-cta--primary">
+            {/* The reference's CTA: the gradient control with its spring
+                press, plus the magnetic offset from the shell pointer
+                listener. One primary, the rest quiet — the accent is not
+                spent three times in one footer. */}
+            <Link to="/scholarships" className="p-btn sz-cta sz-cta--primary">
               Browse All Scholarships
               <svg viewBox="0 0 24 24" aria-hidden="true">
                 <path d="M5 12h14M13 5l7 7-7 7" />

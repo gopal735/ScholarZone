@@ -1,0 +1,128 @@
+{
+  "agent": "agent_290",
+  "records": [
+    {
+      "id": 667,
+      "official": {
+        "official_source_urls": [
+          "https://www.arabfund.org/overview/fellowships-program",
+          "https://www.arabfund.org/ar/afesd-activities/fellowships-program/",
+          "https://www.arabfund.org/blog/news_or_activity/twenty-sixth-session-of-the-arab-fund-fellowship-program-affp/",
+          "https://eservices.arabfund.org/"
+        ],
+        "application_link": "https://eservices.arabfund.org/Login?serviceType=2",
+        "catalogue_url": null,
+        "official_updates_url": "https://www.arabfund.org/overview/fellowships-program",
+        "deadline_central": null,
+        "deadline_central_display": null,
+        "deadline_note": "No fixed closing date is published for the current round: the Fund states it receives applications on a rolling basis throughout the year, and applications must be submitted at least one year prior to the expected starting date of the stay at the foreign university. The only dated deadline the Fund published (12/31/2022) applied to the 26th session cycle.",
+        "application_cycle": "Rolling intake throughout the year; fellowships begin on dates suggested by the beneficiaries, based on formal invitations from internationally reputable universities or host institutions",
+        "status": "OPEN",
+        "status_note": "The programme page presents the Fellowship as an active, ongoing programme ('Since 1997...'), the Fund's project register shows fellowship grants awarded for 2023 and 2025, and the Fund states applications are received on a rolling basis throughout the year.",
+        "tuition_coverage_note": null,
+        "funding_amount": null,
+        "funding_currency": null,
+        "funding_period": null,
+        "tuition_coverage": null,
+        "living_cost_coverage": true,
+        "travel_coverage": true,
+        "fully_funded": false,
+        "benefits": [
+          "Full Financial Support: a fixed maintenance allowance so the beneficiary can focus entirely on their academic activity",
+          "Global Mobility: round-trip airfare tickets for the beneficiaries and the eligible members of their families",
+          "Health and personal accident insurance for the duration of the stay"
+        ],
+        "eligibility": [
+          "Fellowships are open to Arab nationals who are currently working at a university in any of the member countries of the Arab League",
+          "Applicants must hold a Ph.D. and have an excellent academic track record",
+          "Previous beneficiaries of the Fellowship are not eligible to re-apply",
+          "The intended activity is advanced research and/or teaching (lecturing) at a world-renowned foreign university, based on a formal invitation from the host institution"
+        ],
+        "requirements": [
+          "Hold a PhD and be an Arab national working at a university in an Arab League member country",
+          "Secure placement at a foreign university to conduct advanced research and/or teach, based on formal invitations received from internationally reputable universities or host institutions",
+          "Submit the application at least one year prior to the expected starting date of the stay at the foreign university",
+          "Not have been a previous beneficiary of the Fellowship"
+        ],
+        "documents": null,
+        "selection_criteria": [
+          "Excellent academic track record of the applicant",
+          "Calibre of the host university (internationally reputable universities or host institutions)",
+          "Completeness of the application and all necessary supporting documents by the cycle cut-off (incomplete applications roll over to the following cycle)"
+        ],
+        "coverage": [
+          "Living costs for the beneficiary and eligible members of his/her family during the grant period (fixed maintenance allowance)",
+          "Travel (round-trip airfare tickets for the beneficiary and eligible family members)",
+          "Health insurance and personal accident insurance for the duration of the stay"
+        ],
+        "application_method": [
+          "Register and submit the application through the Arab Fund's electronic services portal (fellowship service at https://eservices.arabfund.org/Login?serviceType=2); technical support: cs@arabfund.org",
+          "Complete all necessary supporting documents by the submission; incomplete applications are deferred to the following cycle"
+        ],
+        "application_route": "Apply online through the Arab Fund's e-services portal fellowship service; applications are accepted on a rolling basis year-round and must be filed at least one year before the intended stay.",
+        "study_mode": null,
+        "citizenship_residency": "Open to Arab nationals who are currently working at a university in any of the member countries of the Arab League (as stated in the Fund's session announcement)",
+        "international_eligibility": "Not open to non-Arab nationals; eligibility is restricted to Arab nationals working at a university in an Arab League member country",
+        "subject_or_agency_requirement": "Open to Arab PhD holders in different fields of specialization with excellent academic track records; no field or agency restriction",
+        "research_requirement": "Advanced research and/or academic activity (lecturing) at a world-renowned foreign university, supported by formal invitation from the host institution; this is a research/academic-stay fellowship, not a degree-enrolment scholarship",
+        "duration": "Usually awarded for a period of twelve months; shorter periods may be considered only in very special cases",
+        "description": "Since 1997, the Arab Fund's Fellowship Program has empowered the Arab world's scholars, in different fields of specialization with excellent academic track records, to conduct advanced research and/or academic activity at some of the world's most prestigious universities. The program builds bridges between Arab and foreign academic institutions to transfer global expertise, knowledge and technology into the Arab region, and has awarded about 191 fellowships since its inception.",
+        "region": "Middle East / Arab region (administered by an inter-Arab fund based in Kuwait)",
+        "program_type": "Pan-Arab research and academic-activity fellowship for PhD holders (not a degree-enrolment scholarship)",
+        "english_requirement": null
+      },
+      "verification": {
+        "source_citations": [
+          "https://www.arabfund.org/overview/fellowships-program",
+          "https://www.arabfund.org/ar/afesd-activities/fellowships-program/",
+          "https://www.arabfund.org/blog/news_or_activity/twenty-sixth-session-of-the-arab-fund-fellowship-program-affp/"
+        ],
+        "last_verified_date": "2026-10-10",
+        "verification_status": "confirmed",
+        "confidence": "high",
+        "not_confirmed": [
+          "funding_amount",
+          "funding_currency",
+          "funding_period",
+          "tuition_coverage",
+          "english_requirement",
+          "documents (no document list published)",
+          "deadline for the current cycle (rolling intake; no dated closing)",
+          "catalogue_url"
+        ],
+        "notes": "Read the official English and Arabic programme pages, the Fund's 26th-session announcement, the e-services portal, and the 2023/2025 fellowship project registers on arabfund.org. The official pages never publish the value of the fixed maintenance allowance, so no funding figure is recorded; the project registers list only annual programme envelopes (KD 0.3 million for the 2023 and 2025 cohorts), which are totals, not per-fellow awards."
+      },
+      "applicant_utility": {
+        "summary": "This is a funded research and teaching stay, not a degree scholarship: you must already hold a PhD, be an Arab national, and be working at a university in an Arab League member country. You need a formal invitation from a reputable host institution, and the Fund asks that you apply at least a year before your intended start, with the stay typically lasting twelve months. The Fund covers living costs through a fixed maintenance allowance, round-trip airfare for you and eligible family members, and health/personal-accident insurance for the stay. Critically, the official pages never publish the allowance's value, so contact the Fund (info@arabfund.org) early to understand the actual stipend before committing to a host institution.",
+        "best_fit": "Arab PhD holders employed at Arab League member-state universities who have a credible host-institution invitation and can plan a year ahead.",
+        "application_readiness_checklist": [
+          "Secure a formal invitation letter from a reputable university or host institution naming your research/teaching plan and dates before touching the portal",
+          "Count backwards from your intended start date and file at least twelve months ahead; shorter lead times conflict with the published rule",
+          "Prepare your PhD certificate and an academic CV evidencing the 'excellent academic track record' the Fund screens for",
+          "Register on the Arab Fund e-services portal and complete the fellowship service application fully, leaving no supporting-document field blank",
+          "Confirm your annual programme envelope/status by emailing info@arabfund.org if you have not heard back after submission"
+        ],
+        "common_rejection_risks": [
+          "Incomplete application: the Fund's own announcement warns that applications not complete with all necessary supporting documents roll over to the next cycle rather than being assessed",
+          "Applying less than a year before the expected start date, which breaks the published minimum lead time",
+          "No formal invitation from an internationally reputable host institution - the stay's start date depends on it",
+          "Being a previous beneficiary of the Fellowship, which explicitly disqualifies re-application",
+          "Asking for a stay shorter than twelve months without a genuinely special justification",
+          "Tuition expectations: this programme is not framed as covering any programme fees, so assuming fee coverage risks a funding gap"
+        ],
+        "estimated_uncovered_costs": "Anything the official wording does not cover: any tuition or host-institution fees (never mentioned by the Fund), visa and residency costs, relocation beyond the published round-trip airfare, family members beyond those the Fund deems 'eligible', and the maintenance allowance's adequacy - the Fund publishes no figure, so its real value in the host country is unknown until you ask them directly.",
+        "document_audit": [
+          "The Fund publishes no checklist - the portal form itself defines required fields, so build a complete file (PhD certificate, academic CV, host invitation, research/teaching plan) rather than a partial one",
+          "Applicants have historically lost a cycle to missing supporting documents; save the completed portal form and confirmation as proof of filing date",
+          "Family travel eligibility is vague on the official page - confirm in writing which family members count as 'eligible' before booking"
+        ],
+        "alerts": [
+          "The deep link printed on the programme page (https://eservices.arabfund.org/Login?serviceType=2) currently returns a 'page not found' error; the working entry point is the portal home https://eservices.arabfund.org/, where the fellowship service is listed as 'الزمالات' (/login/2)",
+          "Rolling intake does not mean instant review: build the full package well before you need a decision, and remember incomplete files are deferred to the next cycle",
+          "Previous beneficiaries are permanently barred from re-applying - verify your status before investing in a host invitation"
+        ],
+        "submission_workflow": "Register on the Arab Fund e-services portal, open the fellowship service, submit the application form plus all supporting documents online; the Fund reviews on a rolling basis and fellowships start on dates you propose, tied to the host institution's formal invitation."
+      }
+    }
+  ]
+}

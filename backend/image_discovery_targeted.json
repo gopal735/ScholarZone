@@ -1,0 +1,1287 @@
+[
+  {
+    "scholarship_id": 26,
+    "title": "Global Korea Scholarship (GKS) Non-degree Exchange Program",
+    "official_source_url": "https://www.studyinkorea.go.kr/en/main.do",
+    "best_image_url": "https://www.niied.go.kr/web/main/file/image/uu/c45b0d4c32e44049baa30adc467777d2",
+    "source_page": "https://www.niied.go.kr",
+    "discovery_method": "img_tag",
+    "alt_text": "2026 Global Korea Scholarship Program for Graduate Degrees",
+    "width": null,
+    "height": null,
+    "notes": "",
+    "attempts": [
+      {
+        "url": "https://www.studyinkorea.go.kr/en/main.do",
+        "status": 200,
+        "ok": true,
+        "bytes": 118268
+      },
+      {
+        "url": "https://www.studyinkorea.go.kr",
+        "status": 200,
+        "ok": true,
+        "bytes": 118268
+      },
+      {
+        "url": "https://www.niied.go.kr/eng/index.do",
+        "status": 404,
+        "ok": false
+      },
+      {
+        "url": "https://www.niied.go.kr",
+        "status": 200,
+        "ok": true,
+        "bytes": 91054
+      }
+    ],
+    "all_candidates": [
+      {
+        "url": "https://www.niied.go.kr/web/main/file/image/uu/c45b0d4c32e44049baa30adc467777d2",
+        "method": "img_tag",
+        "alt": "2026 Global Korea Scholarship Program for Graduate Degrees",
+        "width": null,
+        "height": null,
+        "page_url": "https://www.niied.go.kr",
+        "sch_relevance_score": 4.0
+      },
+      {
+        "url": "https://www.niied.go.kr/web/main/file/image/uu/30ce99c005474e828fb7a91ddd023e9a",
+        "method": "img_tag",
+        "alt": "Application Guidelines for the GKS Degree Program",
+        "width": null,
+        "height": null,
+        "page_url": "https://www.niied.go.kr",
+        "sch_relevance_score": 2.8
+      },
+      {
+        "url": "https://www.niied.go.kr/web/main/file/image/uu/269293a4de4d446e9aa2922feda9e7ba",
+        "method": "img_tag",
+        "alt": "EPIK English Program in Korea 원어민영어 보조교사",
+        "width": null,
+        "height": null,
+        "page_url": "https://www.niied.go.kr",
+        "sch_relevance_score": 2.8
+      },
+      {
+        "url": "https://www.studyinkorea.go.kr/file/imgpreview.do?filename=CYBER_EXPO202608040215470710.png&orgfilename=banner_asia_pc4.png&fileStorePath=fileStorePath",
+        "method": "img_tag",
+        "alt": "STUDY IN KOREA Education Fair in India(Delhi)",
+        "width": null,
+        "height": null,
+        "page_url": "https://www.studyinkorea.go.kr/en/main.do",
+        "sch_relevance_score": 2.4
+      },
+      {
+        "url": "https://www.studyinkorea.go.kr/file/imgpreview.do?filename=CYBER_EXPO202608040215530380.png&orgfilename=banner_asia_mobile4.png&fileStorePath=fileStorePath",
+        "method": "img_tag",
+        "alt": "STUDY IN KOREA Education Fair in India(Delhi)",
+        "width": null,
+        "height": null,
+        "page_url": "https://www.studyinkorea.go.kr/en/main.do",
+        "sch_relevance_score": 2.4
+      },
+      {
+        "url": "https://www.studyinkorea.go.kr/file/imgpreview.do?filename=CYBER_EXPO202608040215294590.png&orgfilename=banner_asia_pc4.png&fileStorePath=fileStorePath",
+        "method": "img_tag",
+        "alt": "STUDY IN KOREA Education Fair in India(Chennai)",
+        "width": null,
+        "height": null,
+        "page_url": "https://www.studyinkorea.go.kr/en/main.do",
+        "sch_relevance_score": 2.4
+      },
+      {
+        "url": "https://www.studyinkorea.go.kr/file/imgpreview.do?filename=CYBER_EXPO202608040215356370.png&orgfilename=banner_asia_mobile4.png&fileStorePath=fileStorePath",
+        "method": "img_tag",
+        "alt": "STUDY IN KOREA Education Fair in India(Chennai)",
+        "width": null,
+        "height": null,
+        "page_url": "https://www.studyinkorea.go.kr/en/main.do",
+        "sch_relevance_score": 2.4
+      },
+      {
+        "url": "https://www.studyinkorea.go.kr/public/v3/images/main/img-slide-default_always_bg.png",
+        "method": "img_tag",
+        "alt": "Study in Korea Online Exhibition (Year-Round)",
+        "width": null,
+        "height": null,
+        "page_url": "https://www.studyinkorea.go.kr/en/main.do",
+        "sch_relevance_score": 2.4
+      },
+      {
+        "url": "https://www.studyinkorea.go.kr/public/v3/images/main/img-slide-default_always_mo.png",
+        "method": "img_tag",
+        "alt": "Study in Korea Online Exhibition (Year-Round)",
+        "width": null,
+        "height": null,
+        "page_url": "https://www.studyinkorea.go.kr/en/main.do",
+        "sch_relevance_score": 2.4
+      },
+      {
+        "url": "https://www.studyinkorea.go.kr/public/v3/images/main/img-slide-default_always.png",
+        "method": "img_tag",
+        "alt": null,
+        "width": null,
+        "height": null,
+        "page_url": "https://www.studyinkorea.go.kr/en/main.do",
+        "sch_relevance_score": 2.4
+      },
+      {
+        "url": "https://www.studyinkorea.go.kr/file/imgpreview.do?filename=&fileStorePath=fileStorePath",
+        "method": "img_tag",
+        "alt": null,
+        "width": null,
+        "height": null,
+        "page_url": "https://www.studyinkorea.go.kr/en/main.do",
+        "sch_relevance_score": 2.4
+      },
+      {
+        "url": "https://www.studyinkorea.go.kr/public/v3/images/main/img-work-1@2x.png",
+        "method": "img_tag",
+        "alt": "International Student Employment Stories",
+        "width": null,
+        "height": null,
+        "page_url": "https://www.studyinkorea.go.kr/en/main.do",
+        "sch_relevance_score": 2.4
+      },
+      {
+        "url": "https://www.studyinkorea.go.kr/public/v3/images/main/img-work-2@2x.png",
+        "method": "img_tag",
+        "alt": "Employment System for International Students",
+        "width": null,
+        "height": null,
+        "page_url": "https://www.studyinkorea.go.kr/en/main.do",
+        "sch_relevance_score": 2.4
+      },
+      {
+        "url": "https://www.studyinkorea.go.kr/public/v3/images/main/img-work-3@2x.png",
+        "method": "img_tag",
+        "alt": "Employment in Korea",
+        "width": null,
+        "height": null,
+        "page_url": "https://www.studyinkorea.go.kr/en/main.do",
+        "sch_relevance_score": 2.4
+      },
+      {
+        "url": "https://www.studyinkorea.go.kr/file/imgpreview.do?filename=SNS_202506021200365790.png&orgfilename=DECOC.png&fileStorePath=snsPath",
+        "method": "img_tag",
+        "alt": "DECOC (Congolese Elite Community in South Korea)",
+        "width": null,
+        "height": null,
+        "page_url": "https://www.studyinkorea.go.kr/en/main.do",
+        "sch_relevance_score": 2.4
+      },
+      {
+        "url": "https://www.studyinkorea.go.kr/file/imgpreview.do?filename=SNS_202505301259069030.png&orgfilename=ảnh giảm size.png&fileStorePath=snsPath",
+        "method": "img_tag",
+        "alt": "Vietnamese Students&rsquo; Association in Korea(VSAK)",
+        "width": null,
+        "height": null,
+        "page_url": "https://www.studyinkorea.go.kr/en/main.do",
+        "sch_relevance_score": 2.4
+      },
+      {
+        "url": "https://www.studyinkorea.go.kr/file/imgpreview.do?filename=SNS_202505291035289540.png&orgfilename=ksaak_final_clean_360x360.png&fileStorePath=snsPath",
+        "method": "img_tag",
+        "alt": "재한 카자흐스탄 유학생회/ Kazakhstan Students&rsquo; Association in Korea(KSAK)",
+        "width": null,
+        "height": null,
+        "page_url": "https://www.studyinkorea.go.kr/en/main.do",
+        "sch_relevance_score": 2.4
+      },
+      {
+        "url": "https://www.studyinkorea.go.kr/file/imgpreview.do?filename=SNS_202505280327455490.jpg&orgfilename=CSAK_FB_Page_360x360.jpg&fileStorePath=snsPath",
+        "method": "img_tag",
+        "alt": "Cambodian Student Association in Korea",
+        "width": null,
+        "height": null,
+        "page_url": "https://www.studyinkorea.go.kr/en/main.do",
+        "sch_relevance_score": 2.4
+      },
+      {
+        "url": "https://www.studyinkorea.go.kr/file/imgpreview.do?filename=SNS_202505271113512710.png&orgfilename=360-360.png&fileStorePath=snsPath",
+        "method": "img_tag",
+        "alt": "PSAK(Pakistan Students and Scholars Association Korea)",
+        "width": null,
+        "height": null,
+        "page_url": "https://www.studyinkorea.go.kr/en/main.do",
+        "sch_relevance_score": 2.4
+      },
+      {
+        "url": "https://www.studyinkorea.go.kr/file/imgpreview.do?filename=SNS_202505271040591380.png&orgfilename=PPMK-2.png&fileStorePath=snsPath",
+        "method": "img_tag",
+        "alt": "PPMK",
+        "width": null,
+        "height": null,
+        "page_url": "https://www.studyinkorea.go.kr/en/main.do",
+        "sch_relevance_score": 2.4
+      },
+      {
+        "url": "https://www.studyinkorea.go.kr/file/imgpreview.do?filename=SNS_202505261237006710.png&orgfilename=PIKO-niied.png&fileStorePath=snsPath",
+        "method": "img_tag",
+        "alt": "PIKO (주한필리핀유학생협회, Pinoy Iskolars sa Korea)",
+        "width": null,
+        "height": null,
+        "page_url": "https://www.studyinkorea.go.kr/en/main.do",
+        "sch_relevance_score": 2.4
+      },
+      {
+        "url": "https://www.studyinkorea.go.kr/file/imgpreview.do?filename=THUMBNAIL_202608240232167630.jpg&fileStorePath=thumbnailFileStorePath",
+        "method": "img_tag",
+        "alt": "thumbnail image",
+        "width": null,
+        "height": null,
+        "page_url": "https://www.studyinkorea.go.kr/en/main.do",
+        "sch_relevance_score": 2.4
+      },
+      {
+        "url": "https://www.studyinkorea.go.kr/file/imgpreview.do?filename=THUMBNAIL_202608240207312230.png&fileStorePath=thumbnailFileStorePath",
+        "method": "img_tag",
+        "alt": "thumbnail image",
+        "width": null,
+        "height": null,
+        "page_url": "https://www.studyinkorea.go.kr/en/main.do",
+        "sch_relevance_score": 2.4
+      },
+      {
+        "url": "https://www.studyinkorea.go.kr/file/imgpreview.do?filename=THUMBNAIL_202608240153481610.JPG&fileStorePath=thumbnailFileStorePath",
+        "method": "img_tag",
+        "alt": "thumbnail image",
+        "width": null,
+        "height": null,
+        "page_url": "https://www.studyinkorea.go.kr/en/main.do",
+        "sch_relevance_score": 2.4
+      },
+      {
+        "url": "https://www.studyinkorea.go.kr/file/imgpreview.do?filename=THUMBNAIL_202608200803074250.JPG&fileStorePath=thumbnailFileStorePath",
+        "method": "img_tag",
+        "alt": "thumbnail image",
+        "width": null,
+        "height": null,
+        "page_url": "https://www.studyinkorea.go.kr/en/main.do",
+        "sch_relevance_score": 2.4
+      }
+    ],
+    "image_probe": {
+      "reachable": true,
+      "http_status": 200,
+      "content_type": "image/png; charset=UTF-8",
+      "content_length": null,
+      "width": null,
+      "height": null
+    },
+    "db_official_source_url": "https://www.niied.go.kr/web/niied/contents/niiedEng/eng_gksNonDegreeExchange"
+  },
+  {
+    "scholarship_id": 28,
+    "title": "Chevening Scholarship",
+    "official_source_url": null,
+    "best_image_url": null,
+    "source_page": null,
+    "discovery_method": null,
+    "alt_text": null,
+    "width": null,
+    "height": null,
+    "notes": "No usable image candidates found on attempted pages.",
+    "attempts": [
+      {
+        "url": "https://www.chevening.org/scholarships/",
+        "status": null,
+        "ok": false
+      },
+      {
+        "url": "https://www.chevening.org/scholarships/who-can-apply/",
+        "status": null,
+        "ok": false
+      },
+      {
+        "url": "https://www.chevening.org",
+        "status": null,
+        "ok": false
+      }
+    ],
+    "all_candidates": [],
+    "db_official_source_url": "https://www.chevening.org"
+  },
+  {
+    "scholarship_id": 30,
+    "title": "Australia Awards Scholarships",
+    "official_source_url": "https://australiaawards.com.au",
+    "best_image_url": "https://australiaawards.com.au/uploads/2024/09/54010281573_4695d45e90_6k-1024x640.jpg",
+    "source_page": "https://australiaawards.com.au",
+    "discovery_method": "img_tag",
+    "alt_text": null,
+    "width": 1024,
+    "height": 640,
+    "notes": "",
+    "attempts": [
+      {
+        "url": "https://australiaawards.com.au",
+        "status": 200,
+        "ok": true,
+        "bytes": 181552
+      },
+      {
+        "url": "https://australiaawards.com.au/en/study-applications",
+        "status": 404,
+        "ok": false
+      },
+      {
+        "url": "https://www.dfat.gov.au/people-to-people/australia-awards",
+        "status": null,
+        "ok": false
+      },
+      {
+        "url": "https://www.dfat.gov.au/people-to-people/australia-awards-scholarships",
+        "status": null,
+        "ok": false
+      }
+    ],
+    "all_candidates": [
+      {
+        "url": "https://australiaawards.com.au/uploads/2024/09/54010281573_4695d45e90_6k-1024x640.jpg",
+        "method": "img_tag",
+        "alt": null,
+        "width": 800,
+        "height": 500,
+        "page_url": "https://australiaawards.com.au",
+        "sch_relevance_score": 6.3
+      },
+      {
+        "url": "https://australiaawards.com.au/uploads/2022/06/bangladesh-flag-w110-q35-australia-awards-226c9.jpeg",
+        "method": "img_tag",
+        "alt": null,
+        "width": 110,
+        "height": 66,
+        "page_url": "https://australiaawards.com.au",
+        "sch_relevance_score": 4.3
+      },
+      {
+        "url": "https://australiaawards.com.au/uploads/2022/06/bhutan-87c55572-28ac-39a0-89cd-3ff386ee2e6d-w110-q35-australia-awards-9c680.jpeg",
+        "method": "img_tag",
+        "alt": null,
+        "width": 110,
+        "height": 74,
+        "page_url": "https://australiaawards.com.au",
+        "sch_relevance_score": 4.3
+      },
+      {
+        "url": "https://australiaawards.com.au/uploads/2022/06/cambodia-3878aa15-6a67-3db2-8881-b7a669966cac-w110-q35-australia-awards-ac76e.jpeg",
+        "method": "img_tag",
+        "alt": null,
+        "width": 110,
+        "height": 73,
+        "page_url": "https://australiaawards.com.au",
+        "sch_relevance_score": 4.3
+      },
+      {
+        "url": "https://australiaawards.com.au/uploads/2022/06/india-fd404ffa-e38e-3d0a-92ff-45ed63b40e95-w110-q35-australia-awards-4afb8.jpeg",
+        "method": "img_tag",
+        "alt": null,
+        "width": 110,
+        "height": 73,
+        "page_url": "https://australiaawards.com.au",
+        "sch_relevance_score": 4.3
+      },
+      {
+        "url": "https://australiaawards.com.au/uploads/2022/06/indonesia-f280d8b1-44ef-3730-9a15-ce906b5e84ce-w110-q35-australia-awards-5e53f.jpeg",
+        "method": "img_tag",
+        "alt": null,
+        "width": 110,
+        "height": 73,
+        "page_url": "https://australiaawards.com.au",
+        "sch_relevance_score": 4.3
+      },
+      {
+        "url": "https://australiaawards.com.au/uploads/2022/06/laos-47df5031-3b13-3dbc-9eb4-8d7cc187ce92-w110-q35-australia-awards-233d0.jpeg",
+        "method": "img_tag",
+        "alt": null,
+        "width": 110,
+        "height": 73,
+        "page_url": "https://australiaawards.com.au",
+        "sch_relevance_score": 4.3
+      },
+      {
+        "url": "https://australiaawards.com.au/uploads/2022/06/maldives-96b20757-bf6f-34de-9a6c-8cdbb4e85efd-w110-q35-australia-awards-13857.jpeg",
+        "method": "img_tag",
+        "alt": null,
+        "width": 110,
+        "height": 73,
+        "page_url": "https://australiaawards.com.au",
+        "sch_relevance_score": 4.3
+      },
+      {
+        "url": "https://australiaawards.com.au/uploads/2022/06/mongolia-a443d9b1-1e82-3f34-a6db-c06b84228ca3-w110-q35-australia-awards-c8c92.jpeg",
+        "method": "img_tag",
+        "alt": null,
+        "width": 110,
+        "height": 55,
+        "page_url": "https://australiaawards.com.au",
+        "sch_relevance_score": 4.3
+      },
+      {
+        "url": "https://australiaawards.com.au/uploads/2022/06/myanmar-9269e88e-9323-35e8-8204-99ecac3e678b-w110-q35-australia-awards-d5909.jpeg",
+        "method": "img_tag",
+        "alt": null,
+        "width": 110,
+        "height": 62,
+        "page_url": "https://australiaawards.com.au",
+        "sch_relevance_score": 4.3
+      },
+      {
+        "url": "https://australiaawards.com.au/uploads/2022/06/coat-of-arms-w110-q35-australia-awards-e33f6.jpeg",
+        "method": "img_tag",
+        "alt": null,
+        "width": 110,
+        "height": 110,
+        "page_url": "https://australiaawards.com.au",
+        "sch_relevance_score": 3.3
+      }
+    ],
+    "image_probe": {
+      "reachable": true,
+      "http_status": 200,
+      "content_type": "image/jpeg",
+      "content_length": 71603,
+      "width": 1024,
+      "height": 640
+    },
+    "db_official_source_url": "https://www.dfat.gov.au/people-to-people/australia-awards/australia-awards-scholarships"
+  },
+  {
+    "scholarship_id": 31,
+    "title": "Netherlands Fellowship Programme (NFP/OTS)",
+    "official_source_url": "https://www.studyinnl.org/finances/nl-scholarship",
+    "best_image_url": "https://www.studyinnl.org/themes/custom/nuffic_sih_theme/assets/image/StudyinNL.jpg",
+    "source_page": "https://www.studyinnl.org/finances/nl-scholarship",
+    "discovery_method": "og:image",
+    "alt_text": null,
+    "width": 600,
+    "height": 316,
+    "notes": "",
+    "attempts": [
+      {
+        "url": "https://www.studyinnl.org/finances/nl-scholarship",
+        "status": 200,
+        "ok": true,
+        "bytes": 48679
+      },
+      {
+        "url": "https://www.studyinnl.org",
+        "status": 200,
+        "ok": true,
+        "bytes": 38840
+      },
+      {
+        "url": "https://www.nuffic.nl/en/subjects/information-for-students/scholarships",
+        "status": 404,
+        "ok": false
+      },
+      {
+        "url": "https://www.nuffic.nl",
+        "status": 200,
+        "ok": true,
+        "bytes": 272090
+      }
+    ],
+    "all_candidates": [
+      {
+        "url": "https://www.studyinnl.org/themes/custom/nuffic_sih_theme/assets/image/StudyinNL.jpg",
+        "method": "og:image",
+        "alt": null,
+        "width": null,
+        "height": null,
+        "page_url": "https://www.studyinnl.org/finances/nl-scholarship",
+        "sch_relevance_score": 5.0
+      },
+      {
+        "url": "https://www.nuffic.nl/sites/default/files/styles/12_12/public/2025-05/241204_NUF%20website%20illustraties%2080488_SK_1.%20Onderwijs.png.webp?itok=Kq6PPG9G",
+        "method": "img_tag",
+        "alt": null,
+        "width": 1920,
+        "height": 2022,
+        "page_url": "https://www.nuffic.nl",
+        "sch_relevance_score": 4.5
+      },
+      {
+        "url": "https://www.nuffic.nl/sites/default/files/styles/12_12/public/2025-05/241204_NUF%20website%20illustraties%2080488_SK_3.%20Studeren%20en%20werken-in%20Nederland.png.webp?itok=KeIROTOG",
+        "method": "img_tag",
+        "alt": null,
+        "width": 1920,
+        "height": 2007,
+        "page_url": "https://www.nuffic.nl",
+        "sch_relevance_score": 4.5
+      },
+      {
+        "url": "https://www.nuffic.nl/sites/default/files/styles/12_12/public/2025-05/241204_NUF%20website%20illustraties%2080488_SK_4.%20Onderzoek%20en%20cijfers.png.webp?itok=Gb5mshn9",
+        "method": "img_tag",
+        "alt": null,
+        "width": 1920,
+        "height": 1595,
+        "page_url": "https://www.nuffic.nl",
+        "sch_relevance_score": 4.5
+      },
+      {
+        "url": "https://www.nuffic.nl/sites/default/files/styles/12_12/public/2025-05/241204_NUF%20website%20illustraties%2080488_SK_5.%20Over%20Nuffic.png.webp?itok=tyoatLok",
+        "method": "img_tag",
+        "alt": null,
+        "width": 1920,
+        "height": 1595,
+        "page_url": "https://www.nuffic.nl",
+        "sch_relevance_score": 4.5
+      },
+      {
+        "url": "https://www.studyinnl.org/sites/default/files/styles/homepage_header_image_fallback_1407_x_412/public/2020-07/university-library_2.jpg?h=3392452d&itok=pwEgM-3h",
+        "method": "img_tag",
+        "alt": null,
+        "width": 1407,
+        "height": 412,
+        "page_url": "https://www.studyinnl.org",
+        "sch_relevance_score": 4.0
+      },
+      {
+        "url": "https://www.nuffic.nl/sites/default/files/styles/wide/public/2025-04/Over%20Nuffic%20-%20Wie%20we%20zijn.jpg.webp?h=8c1344d8&itok=tar2Q9BL",
+        "method": "img_tag",
+        "alt": "Wie we zijn",
+        "width": null,
+        "height": null,
+        "page_url": "https://www.nuffic.nl",
+        "sch_relevance_score": 2.0
+      },
+      {
+        "url": "https://www.nuffic.nl/sites/default/files/styles/content_card/public/2025-06/pexels-mikhail-nilov-7682464.jpg.webp?h=790be497&itok=JcW0tvdM",
+        "method": "img_tag",
+        "alt": null,
+        "width": null,
+        "height": null,
+        "page_url": "https://www.nuffic.nl",
+        "sch_relevance_score": 2.0
+      },
+      {
+        "url": "https://www.nuffic.nl/sites/default/files/styles/content_card/public/2020-08/country-expert-evaluates-diploma.jpg.webp?h=199d8c1f&itok=H8aQHOKS",
+        "method": "img_tag",
+        "alt": null,
+        "width": null,
+        "height": null,
+        "page_url": "https://www.nuffic.nl",
+        "sch_relevance_score": 2.0
+      },
+      {
+        "url": "https://www.nuffic.nl/sites/default/files/styles/content_card/public/2024-01/Nuffic%20Southeast%20Asia%20Homepage%20Option%201.jpg.webp?h=6f8e8448&itok=YuhqQk1Q",
+        "method": "img_tag",
+        "alt": null,
+        "width": null,
+        "height": null,
+        "page_url": "https://www.nuffic.nl",
+        "sch_relevance_score": 2.0
+      },
+      {
+        "url": "https://www.nuffic.nl/sites/default/files/styles/9_12/public/2026-07/HO_HogeschoolUtrecht_2023%20%2829%29.jpg.webp?itok=QMPJ_4DJ",
+        "method": "img_tag",
+        "alt": "Twee fietsende studenten van de Hogeschool Utrecht",
+        "width": null,
+        "height": null,
+        "page_url": "https://www.nuffic.nl",
+        "sch_relevance_score": 2.0
+      },
+      {
+        "url": "https://www.nuffic.nl/sites/default/files/styles/content_card/public/2026-07/HO_HogeschoolUtrecht_2023%20%2835%29.jpg.webp?h=4aded874&itok=9rGuL3p_",
+        "method": "img_tag",
+        "alt": "Studenten Hogeschool Utrecht met fiets aan de hand",
+        "width": null,
+        "height": null,
+        "page_url": "https://www.nuffic.nl",
+        "sch_relevance_score": 2.0
+      },
+      {
+        "url": "https://www.nuffic.nl/sites/default/files/styles/content_card/public/2026-08/EAIE%20Glasgow%202026.png.webp?h=3ee27182&itok=aDhK2Gbx",
+        "method": "img_tag",
+        "alt": "EAIE Glasgow",
+        "width": null,
+        "height": null,
+        "page_url": "https://www.nuffic.nl",
+        "sch_relevance_score": 2.0
+      },
+      {
+        "url": "https://www.nuffic.nl/sites/default/files/contextual/styles/content_card/public/2026-06/WhatsApp%20Image%202026-04-01%20at%2014__08__22%20%281%29__jpeg/3057.webp?itok=cK_O1_Vr&h=c6386474",
+        "method": "img_tag",
+        "alt": "studenten Albeda op Malta",
+        "width": null,
+        "height": null,
+        "page_url": "https://www.nuffic.nl",
+        "sch_relevance_score": 2.0
+      },
+      {
+        "url": "https://www.nuffic.nl/sites/default/files/styles/content_card/public/2025-04/world.png.webp?h=1eacecd4&itok=CtVcihB3",
+        "method": "img_tag",
+        "alt": "Aardbol",
+        "width": null,
+        "height": null,
+        "page_url": "https://www.nuffic.nl",
+        "sch_relevance_score": 2.0
+      },
+      {
+        "url": "https://www.nuffic.nl/sites/default/files/styles/content_card/public/2026-06/HO_HogeschoolUtrecht_2023%20%2838%29.jpg.webp?h=8c1344d8&itok=XU9jaznN",
+        "method": "img_tag",
+        "alt": "Studenten aan de Hogeschool Utrecht",
+        "width": null,
+        "height": null,
+        "page_url": "https://www.nuffic.nl",
+        "sch_relevance_score": 2.0
+      },
+      {
+        "url": "https://www.nuffic.nl/sites/default/files/styles/content_card/public/2026-04/meertalige-schoolklas-primair-onderwijs.jpg.webp?h=0df25fed&itok=MJjySoAy",
+        "method": "img_tag",
+        "alt": "Schoolklas met woord in verschillende talen",
+        "width": null,
+        "height": null,
+        "page_url": "https://www.nuffic.nl",
+        "sch_relevance_score": 2.0
+      }
+    ],
+    "image_probe": {
+      "reachable": true,
+      "http_status": 200,
+      "content_type": "image/jpeg",
+      "content_length": 18462,
+      "width": 600,
+      "height": 316
+    },
+    "db_official_source_url": "https://www.studyinnl.org/finances/ots-scholarships"
+  },
+  {
+    "scholarship_id": 32,
+    "title": "Swedish Institute Scholarship",
+    "official_source_url": "https://si.se/en/apply/scholarships/",
+    "best_image_url": "https://si.se/app/uploads/2022/11/margaretabsandeback191017_mbs2114-edit.jpg",
+    "source_page": "https://si.se",
+    "discovery_method": "og:image",
+    "alt_text": null,
+    "width": 1200,
+    "height": 800,
+    "notes": "",
+    "attempts": [
+      {
+        "url": "https://si.se/en/apply/scholarships/",
+        "status": null,
+        "ok": false
+      },
+      {
+        "url": "https://si.se/en/apply/scholarships/swedish-institute-scholarship-for-global-professionals",
+        "status": 404,
+        "ok": false
+      },
+      {
+        "url": "https://si.se",
+        "status": 200,
+        "ok": true,
+        "bytes": 143530
+      }
+    ],
+    "all_candidates": [
+      {
+        "url": "https://si.se/app/uploads/2022/11/margaretabsandeback191017_mbs2114-edit.jpg",
+        "method": "og:image",
+        "alt": null,
+        "width": null,
+        "height": null,
+        "page_url": "https://si.se",
+        "sch_relevance_score": 5.0
+      },
+      {
+        "url": "https://si.se/app/uploads/2023/02/dsc5034-1-1-1650x1100.jpg",
+        "method": "twitter:image",
+        "alt": null,
+        "width": null,
+        "height": null,
+        "page_url": "https://si.se",
+        "sch_relevance_score": 4.0
+      }
+    ],
+    "image_probe": {
+      "reachable": true,
+      "http_status": 200,
+      "content_type": "image/jpeg",
+      "content_length": 339548,
+      "width": 1200,
+      "height": 800
+    },
+    "db_official_source_url": "https://si.se/en/apply/scholarships"
+  },
+  {
+    "scholarship_id": 33,
+    "title": "Chinese Government Scholarship (CSC)",
+    "official_source_url": "https://www.campuschina.org",
+    "best_image_url": "https://www.chinesescholarshipcouncil.com/wp-content/uploads/2018/06/CSC-Scholarship.jpg",
+    "source_page": "https://www.chinesescholarshipcouncil.com",
+    "discovery_method": "og:image",
+    "alt_text": null,
+    "width": 680,
+    "height": 390,
+    "notes": "",
+    "attempts": [
+      {
+        "url": "https://www.campuschina.org",
+        "status": null,
+        "ok": false
+      },
+      {
+        "url": "https://www.campuschina.org/scholarships",
+        "status": null,
+        "ok": false
+      },
+      {
+        "url": "https://www.campuschina.org/universities",
+        "status": null,
+        "ok": false
+      },
+      {
+        "url": "https://www.chinesescholarshipcouncil.com",
+        "status": 200,
+        "ok": true,
+        "bytes": 323230
+      }
+    ],
+    "all_candidates": [
+      {
+        "url": "https://www.chinesescholarshipcouncil.com/wp-content/uploads/2018/06/CSC-Scholarship.jpg",
+        "method": "og:image",
+        "alt": null,
+        "width": null,
+        "height": null,
+        "page_url": "https://www.chinesescholarshipcouncil.com",
+        "sch_relevance_score": 5.8
+      }
+    ],
+    "image_probe": {
+      "reachable": true,
+      "http_status": 200,
+      "content_type": "image/jpeg",
+      "content_length": 26321,
+      "width": 680,
+      "height": 390
+    },
+    "db_official_source_url": "https://www.campuschina.org"
+  },
+  {
+    "scholarship_id": 34,
+    "title": "Taiwan Scholarship Program",
+    "official_source_url": null,
+    "best_image_url": null,
+    "source_page": null,
+    "discovery_method": null,
+    "alt_text": null,
+    "width": null,
+    "height": null,
+    "notes": "No usable image candidates found on attempted pages.",
+    "attempts": [
+      {
+        "url": "https://www.studyintaiwan.org",
+        "status": null,
+        "ok": false
+      },
+      {
+        "url": "https://www.studyintaiwan.org/taiwan_scholarship",
+        "status": null,
+        "ok": false
+      },
+      {
+        "url": "https://www.edutwscholarship.moe.gov.tw",
+        "status": null,
+        "ok": false
+      },
+      {
+        "url": "https://www.edutwscholarship.moe.gov.tw/scholarship/index",
+        "status": null,
+        "ok": false
+      }
+    ],
+    "all_candidates": [],
+    "db_official_source_url": "https://www.edutwscholarship.moe.gov.tw"
+  },
+  {
+    "scholarship_id": 35,
+    "title": "SINGA Scholarship (Singapore)",
+    "official_source_url": "https://www.a-star.edu.sg/Scholarships/SINGA",
+    "best_image_url": "https://www.a-star.edu.sg/api/media/fa8e37a6-4503-4e6b-9493-e0f2d1565058/astar-og-1200x630fa8e37a645034e6b9493e0f2d1565058.jpg",
+    "source_page": "https://www.a-star.edu.sg",
+    "discovery_method": "og:image",
+    "alt_text": null,
+    "width": 1200,
+    "height": 675,
+    "notes": "",
+    "attempts": [
+      {
+        "url": "https://www.a-star.edu.sg/Scholarships/SINGA",
+        "status": 404,
+        "ok": false
+      },
+      {
+        "url": "https://singa.a-star.edu.sg",
+        "status": null,
+        "ok": false
+      },
+      {
+        "url": "https://www.a-star.edu.sg",
+        "status": 200,
+        "ok": true,
+        "bytes": 983660
+      },
+      {
+        "url": "https://singa.comp.nus.edu.sg",
+        "status": null,
+        "ok": false
+      }
+    ],
+    "all_candidates": [
+      {
+        "url": "https://www.a-star.edu.sg/api/media/fa8e37a6-4503-4e6b-9493-e0f2d1565058/astar-og-1200x630fa8e37a645034e6b9493e0f2d1565058.jpg",
+        "method": "og:image",
+        "alt": null,
+        "width": null,
+        "height": null,
+        "page_url": "https://www.a-star.edu.sg",
+        "sch_relevance_score": 5.0
+      },
+      {
+        "url": "https://www.a-star.edu.sg/api/media/69cd45d0-36d4-4005-95d9-0c853494c0c5/singapore-champions-robotics-adoption-and-talent-development-with-new-open-source-initiatives---thumb.jpg",
+        "method": "img_tag",
+        "alt": "Singapore Champions Robotics Adoption And Talent Development With New Open-source Initiatives",
+        "width": null,
+        "height": null,
+        "page_url": "https://www.a-star.edu.sg",
+        "sch_relevance_score": 2.8
+      },
+      {
+        "url": "https://www.a-star.edu.sg/api/media/adba4d3e-985a-4ff6-8ce9-85a3708a5699/og-image_thumbnail.png",
+        "method": "img_tag",
+        "alt": "Singapore 100 Women in Tech 2025",
+        "width": null,
+        "height": null,
+        "page_url": "https://www.a-star.edu.sg",
+        "sch_relevance_score": 2.8
+      },
+      {
+        "url": "https://www.a-star.edu.sg/api/media/9cf6dab2-4e46-44da-938f-2bab7b7ca35d/2023-sg-100-wit---thumbnail-(600x300)---a_star.png",
+        "method": "img_tag",
+        "alt": "Singapore 100 Women in Tech 2023",
+        "width": null,
+        "height": null,
+        "page_url": "https://www.a-star.edu.sg",
+        "sch_relevance_score": 2.8
+      },
+      {
+        "url": "https://www.a-star.edu.sg/api/media/3747693f-9f8d-4297-9961-e453b4f51101/powering-singapore-innovation-economy---thumb.jpg",
+        "method": "img_tag",
+        "alt": "Powering Singapore's Innovation Economy",
+        "width": null,
+        "height": null,
+        "page_url": "https://www.a-star.edu.sg",
+        "sch_relevance_score": 2.8
+      },
+      {
+        "url": "https://www.a-star.edu.sg/api/media/bf27cc54-f593-4bf8-88d5-bbb490b5f3f0",
+        "method": "img_tag",
+        "alt": "People",
+        "width": null,
+        "height": null,
+        "page_url": "https://www.a-star.edu.sg",
+        "sch_relevance_score": 2.0
+      },
+      {
+        "url": "https://www.a-star.edu.sg/api/media/ea26185d-ff1d-4878-97bb-83e4542793ce",
+        "method": "img_tag",
+        "alt": "Robot hands",
+        "width": null,
+        "height": null,
+        "page_url": "https://www.a-star.edu.sg",
+        "sch_relevance_score": 2.0
+      },
+      {
+        "url": "https://www.a-star.edu.sg/api/media/2c9a037c-11ee-45fd-94b6-206a0b6d67fb",
+        "method": "img_tag",
+        "alt": "astar-image-placeholder",
+        "width": null,
+        "height": null,
+        "page_url": "https://www.a-star.edu.sg",
+        "sch_relevance_score": 2.0
+      },
+      {
+        "url": "https://www.a-star.edu.sg/api/media/ba686081-f486-410a-aebf-9e9269c7dad0",
+        "method": "img_tag",
+        "alt": "astar-image-placeholder",
+        "width": null,
+        "height": null,
+        "page_url": "https://www.a-star.edu.sg",
+        "sch_relevance_score": 2.0
+      },
+      {
+        "url": "https://www.a-star.edu.sg/api/media/477ad309-2843-4383-88df-833cc23ddb07",
+        "method": "img_tag",
+        "alt": "astar-image-placeholder",
+        "width": null,
+        "height": null,
+        "page_url": "https://www.a-star.edu.sg",
+        "sch_relevance_score": 2.0
+      },
+      {
+        "url": "https://www.a-star.edu.sg/api/media/3943f311-3fe2-4422-9aea-117d0982f4fe",
+        "method": "img_tag",
+        "alt": "astar-image-placeholder",
+        "width": null,
+        "height": null,
+        "page_url": "https://www.a-star.edu.sg",
+        "sch_relevance_score": 2.0
+      },
+      {
+        "url": "https://www.a-star.edu.sg/api/media/adb1b543-da01-49b6-a51f-b5082f86ac99",
+        "method": "img_tag",
+        "alt": "astar-image-placeholder",
+        "width": null,
+        "height": null,
+        "page_url": "https://www.a-star.edu.sg",
+        "sch_relevance_score": 2.0
+      },
+      {
+        "url": "https://www.a-star.edu.sg/api/media/72c36dc5-13e5-4a4b-817e-da4e9e46ccfc/PSTA-2026-thumbnail.webp",
+        "method": "img_tag",
+        "alt": "Celebrating A*STAR’s 2026 President's Technology Awardees",
+        "width": null,
+        "height": null,
+        "page_url": "https://www.a-star.edu.sg",
+        "sch_relevance_score": 2.0
+      },
+      {
+        "url": "https://www.a-star.edu.sg/api/media/da14c0f4-f4ea-435a-a253-431dc66c5bea/Endless Advice - When Parenting Becomes an Optimisation Exercise - 600x300.jpg",
+        "method": "img_tag",
+        "alt": "Endless Advice? When Parenting Becomes an Optimisation Exercise",
+        "width": null,
+        "height": null,
+        "page_url": "https://www.a-star.edu.sg",
+        "sch_relevance_score": 2.0
+      },
+      {
+        "url": "https://www.a-star.edu.sg/api/media/e3fca93b-2b54-4364-be00-8e3146c97eb4/psta-3---thumbnail.png",
+        "method": "img_tag",
+        "alt": "Celebrating A*STAR’s 2025 PSTA and YSA Awardees",
+        "width": null,
+        "height": null,
+        "page_url": "https://www.a-star.edu.sg",
+        "sch_relevance_score": 2.0
+      },
+      {
+        "url": "https://www.a-star.edu.sg/api/media/a93210dc-ee19-4f74-837c-f5261e3cf91e/astar-rolls-royce-saesl-smart-manufacturing-joint-lab-phase-two-600x300.jpg",
+        "method": "img_tag",
+        "alt": "A*STAR, Rolls-royce, And SAESL Deepen Strategic Partnership For Aerospace Manufacturing And MRO Technologies",
+        "width": null,
+        "height": null,
+        "page_url": "https://www.a-star.edu.sg",
+        "sch_relevance_score": 2.0
+      },
+      {
+        "url": "https://www.a-star.edu.sg/api/media/80a975ef-8957-43ee-8846-73ec65606148/scaling-the-future-astar-and-local-smes-jointly-invest-over-21m-in-advanced-manufacturing-joint-labs---600x300.jpg",
+        "method": "img_tag",
+        "alt": "Scaling The Future: A*STAR And Local SMEs Jointly Invest Over S$21m In Advanced Manufacturing Joint Labs",
+        "width": null,
+        "height": null,
+        "page_url": "https://www.a-star.edu.sg",
+        "sch_relevance_score": 2.0
+      },
+      {
+        "url": "https://www.a-star.edu.sg/_next/image?url=%2Fapi%2Fmedia%2Fa3ba86c1-55d5-4830-827d-11ac16a4ebe8%2Fcategory-banner.jpg&w=3840&q=75",
+        "method": "img_tag",
+        "alt": "bg",
+        "width": 0,
+        "height": 0,
+        "page_url": "https://www.a-star.edu.sg",
+        "sch_relevance_score": 2.0
+      },
+      {
+        "url": "https://www.a-star.edu.sg/api/media/d284800b-044f-4079-8b7f-95932a442dce/treating-cancer-at-its-source---600x300.jpg",
+        "method": "img_tag",
+        "alt": "Treating Cancer at its Source",
+        "width": null,
+        "height": null,
+        "page_url": "https://www.a-star.edu.sg",
+        "sch_relevance_score": 2.0
+      },
+      {
+        "url": "https://www.a-star.edu.sg/api/media/b0c0d0c1-f145-42ee-a3b3-45fa31db8f70/embracing-the-joy-of-endless-learning---dr-stacey-ann-lee-research---thumb.jpg",
+        "method": "img_tag",
+        "alt": "Embracing the Joy of Endless Learning: Dr Stacey-Ann Lee's Research",
+        "width": null,
+        "height": null,
+        "page_url": "https://www.a-star.edu.sg",
+        "sch_relevance_score": 2.0
+      },
+      {
+        "url": "https://www.a-star.edu.sg/api/media/7f532de5-31c1-469b-b740-8644a73085b7/Bitten-By-The-Bug---thumb.jpg",
+        "method": "img_tag",
+        "alt": "Bitten By The Bug",
+        "width": null,
+        "height": null,
+        "page_url": "https://www.a-star.edu.sg",
+        "sch_relevance_score": 2.0
+      },
+      {
+        "url": "https://www.a-star.edu.sg/api/media/afde4f84-263e-4a4f-afc1-3ebcd14353a4/Research-to-Solve-Real-Societal-Problems-Through-Systems-Engineering---thumb.jpg",
+        "method": "img_tag",
+        "alt": "Research to Solve Real Societal Problems Through Systems Engineering: A*STAR Systems Engineering Communities of Practice (CoP)",
+        "width": null,
+        "height": null,
+        "page_url": "https://www.a-star.edu.sg",
+        "sch_relevance_score": 2.0
+      },
+      {
+        "url": "https://www.a-star.edu.sg/api/media/101331ff-8027-491c-b0d0-f15cd623bd66/astar_dr-yang_600x300.png",
+        "method": "img_tag",
+        "alt": "Targeting The Bullseye Of Cancer Therapy",
+        "width": null,
+        "height": null,
+        "page_url": "https://www.a-star.edu.sg",
+        "sch_relevance_score": 2.0
+      },
+      {
+        "url": "https://www.a-star.edu.sg/api/media/e048cd85-58e1-47d6-bbdb-509111cd1402/astar_professor-rachel-watson_600x300.png",
+        "method": "img_tag",
+        "alt": "Breaking Barriers in Skin Research: Professor Rachel Watson’s Research Journey",
+        "width": null,
+        "height": null,
+        "page_url": "https://www.a-star.edu.sg",
+        "sch_relevance_score": 2.0
+      },
+      {
+        "url": "https://www.a-star.edu.sg/api/media/e4c91d7d-1254-4239-a841-38752dc99052/astar_a-commitment-to-public-service_group_600x300.png",
+        "method": "img_tag",
+        "alt": "A Commitment to Public Service",
+        "width": null,
+        "height": null,
+        "page_url": "https://www.a-star.edu.sg",
+        "sch_relevance_score": 2.0
+      }
+    ],
+    "image_probe": {
+      "reachable": true,
+      "http_status": 200,
+      "content_type": "image/jpeg",
+      "content_length": null,
+      "width": 1200,
+      "height": 675
+    },
+    "db_official_source_url": "https://www.a-star.edu.sg/Scholarships/for-graduate-studies/singa-award"
+  },
+  {
+    "scholarship_id": 36,
+    "title": "MAECI Italian Government Scholarship",
+    "official_source_url": "https://www.esteri.it/en/opportunita/borse-di-studio",
+    "best_image_url": "https://studyinitaly.esteri.it/img/Carousel_1.png",
+    "source_page": "https://studyinitaly.esteri.it",
+    "discovery_method": "img_tag",
+    "alt_text": "Slide1",
+    "width": 723,
+    "height": 254,
+    "notes": "",
+    "attempts": [
+      {
+        "url": "https://www.esteri.it/en/opportunita/borse-di-studio",
+        "status": 404,
+        "ok": false
+      },
+      {
+        "url": "https://www.esteri.it/en/opportunita/borse-di-studio/per-cittadini-stranieri",
+        "status": 404,
+        "ok": false
+      },
+      {
+        "url": "https://www.esteri.it",
+        "status": 200,
+        "ok": true,
+        "bytes": 21718
+      },
+      {
+        "url": "https://studyinitaly.esteri.it",
+        "status": 200,
+        "ok": true,
+        "bytes": 20790
+      }
+    ],
+    "all_candidates": [
+      {
+        "url": "https://studyinitaly.esteri.it/img/Carousel_1.png",
+        "method": "img_tag",
+        "alt": "Slide1",
+        "width": null,
+        "height": null,
+        "page_url": "https://studyinitaly.esteri.it",
+        "sch_relevance_score": 2.0
+      },
+      {
+        "url": "https://studyinitaly.esteri.it/img/Carousel_2.png",
+        "method": "img_tag",
+        "alt": "Slide2",
+        "width": null,
+        "height": null,
+        "page_url": "https://studyinitaly.esteri.it",
+        "sch_relevance_score": 2.0
+      },
+      {
+        "url": "https://studyinitaly.esteri.it/img/Carousel_3.png",
+        "method": "img_tag",
+        "alt": "Slide2",
+        "width": null,
+        "height": null,
+        "page_url": "https://studyinitaly.esteri.it",
+        "sch_relevance_score": 2.0
+      },
+      {
+        "url": "https://studyinitaly.esteri.it/img/search.png",
+        "method": "img_tag",
+        "alt": "Search button",
+        "width": null,
+        "height": null,
+        "page_url": "https://studyinitaly.esteri.it",
+        "sch_relevance_score": 2.0
+      }
+    ],
+    "image_probe": {
+      "reachable": true,
+      "http_status": 200,
+      "content_type": "image/png",
+      "content_length": 344730,
+      "width": 723,
+      "height": 254
+    },
+    "db_official_source_url": "https://www.esteri.it/en/opportunita/borse-di-studio"
+  },
+  {
+    "scholarship_id": 29,
+    "title": "Commonwealth Scholarship",
+    "official_source_url": "https://cscuk.fcdo.gov.uk/scholarships-developing-commonwealth-countries/",
+    "best_image_url": "https://cscuk.fcdo.gov.uk/wp-content/uploads/2025/12/Our-development-impact-Commonwealth-Scholars.jpg",
+    "source_page": "https://cscuk.fcdo.gov.uk",
+    "discovery_method": "img_tag",
+    "alt_text": "65 years of CSC scholarships",
+    "width": 2048,
+    "height": 1021,
+    "notes": "",
+    "attempts": [
+      {
+        "url": "https://cscuk.fcdo.gov.uk/scholarships-developing-commonwealth-countries/",
+        "status": 404,
+        "ok": false
+      },
+      {
+        "url": "https://cscuk.fcdo.gov.uk",
+        "status": 200,
+        "ok": true,
+        "bytes": 204071
+      },
+      {
+        "url": "https://www.gov.uk/government/organisations/commonwealth-scholarship-commission",
+        "status": 404,
+        "ok": false
+      }
+    ],
+    "all_candidates": [
+      {
+        "url": "https://cscuk.fcdo.gov.uk/wp-content/uploads/2025/12/Our-development-impact-Commonwealth-Scholars.jpg",
+        "method": "img_tag",
+        "alt": "65 years of CSC scholarships",
+        "width": 2048,
+        "height": 1021,
+        "page_url": "https://cscuk.fcdo.gov.uk",
+        "sch_relevance_score": 6.3
+      },
+      {
+        "url": "https://cscuk.fcdo.gov.uk/wp-content/uploads/2025/05/csc-23FEB24-1027-CR2-scaled-1.jpg",
+        "method": "img_tag",
+        "alt": null,
+        "width": 2880,
+        "height": 1920,
+        "page_url": "https://cscuk.fcdo.gov.uk",
+        "sch_relevance_score": 5.5
+      },
+      {
+        "url": "https://cscuk.fcdo.gov.uk/wp-content/uploads/2025/06/IMG_2789.jpg",
+        "method": "img_tag",
+        "alt": null,
+        "width": 1920,
+        "height": 1280,
+        "page_url": "https://cscuk.fcdo.gov.uk",
+        "sch_relevance_score": 5.5
+      },
+      {
+        "url": "https://cscuk.fcdo.gov.uk/wp-content/uploads/2026/07/counterfactual-400x250.jpg",
+        "method": "img_tag",
+        "alt": "Skills, Networks, and Development Impact: A Contribution Analysis of Commonwealth Scholarships",
+        "width": 400,
+        "height": 250,
+        "page_url": "https://cscuk.fcdo.gov.uk",
+        "sch_relevance_score": 5.3
+      },
+      {
+        "url": "https://cscuk.fcdo.gov.uk/wp-content/uploads/2026/08/Commonwealth-Masters-Scholarships-for-Small-Island-Developing-States-2026-27-400x250.png",
+        "method": "img_tag",
+        "alt": "Commonwealth Scholars from Small Island Developing States selected for 2026/27 Master’s Scholarships",
+        "width": 400,
+        "height": 250,
+        "page_url": "https://cscuk.fcdo.gov.uk",
+        "sch_relevance_score": 5.3
+      },
+      {
+        "url": "https://cscuk.fcdo.gov.uk/wp-content/uploads/2019/07/Best-homepage-option.jpg",
+        "method": "og:image",
+        "alt": null,
+        "width": null,
+        "height": null,
+        "page_url": "https://cscuk.fcdo.gov.uk",
+        "sch_relevance_score": 5.0
+      },
+      {
+        "url": "https://cscuk.fcdo.gov.uk/wp-content/uploads/2026/08/Formal-group-photo-400x250.jpg",
+        "method": "img_tag",
+        "alt": "Commonwealth Alumni Reconnect in Mauritius",
+        "width": 400,
+        "height": 250,
+        "page_url": "https://cscuk.fcdo.gov.uk",
+        "sch_relevance_score": 4.9
+      },
+      {
+        "url": "https://cscuk.fcdo.gov.uk/wp-content/uploads/2026/05/Interactive-workshop-400x250.jpg",
+        "method": "img_tag",
+        "alt": "Driving Environmental Resilience across Policy, Community, and Global Diplomacy in Bangladesh",
+        "width": 400,
+        "height": 250,
+        "page_url": "https://cscuk.fcdo.gov.uk",
+        "sch_relevance_score": 4.5
+      },
+      {
+        "url": "https://cscuk.fcdo.gov.uk/wp-content/uploads/2026/04/Tione-at-FE-226x250.jpg",
+        "method": "img_tag",
+        "alt": "Building Women’s Economic Agency and Advancing Gender-Responsive Disaster Management in Malawi",
+        "width": 400,
+        "height": 250,
+        "page_url": "https://cscuk.fcdo.gov.uk",
+        "sch_relevance_score": 4.5
+      },
+      {
+        "url": "https://cscuk.fcdo.gov.uk/wp-content/uploads/2026/09/Background-image-of-the-activity-400x250.jpg",
+        "method": "img_tag",
+        "alt": "Bridging the finance gap for women and youth entrepreneurs in Antigua and Barbuda",
+        "width": 400,
+        "height": 250,
+        "page_url": "https://cscuk.fcdo.gov.uk",
+        "sch_relevance_score": 4.5
+      }
+    ],
+    "image_probe": {
+      "reachable": true,
+      "http_status": 200,
+      "content_type": "image/jpeg",
+      "content_length": 170033,
+      "width": 2048,
+      "height": 1021
+    },
+    "db_official_source_url": "https://cscuk.fcdo.gov.uk"
+  }
+]

@@ -1,0 +1,272 @@
+{
+  "agent": "agent_390",
+  "records": [
+    {
+      "id": 500,
+      "official": {
+        "official_source_urls": [
+          "https://www.hss.de/stipendium/wen-suchen-wir",
+          "https://www.hss.de/stipendium/bewerbung",
+          "https://www.hss.de/stipendium/foerderung/",
+          "https://www.hss.de/stipendium/foerderung/finanzielle-foerderung/",
+          "https://www.hss.de/stipendium/foerderung/foerderdauer/"
+        ],
+        "application_link": "https://stipendienbewerbung.hss.de/",
+        "catalogue_url": null,
+        "official_updates_url": "https://www.hss.de/stipendium/bewerbung",
+        "deadline_central": "2027-01-15",
+        "deadline_central_display": "15 January 2027, 12:00 CET",
+        "deadline_note": "Applications run exclusively through the online portal 15 December 2026 to 15 January 2027 inclusive (12:00 CET) for Internationale Studierende und Promovierende (Ausländer); an identical second window follows 15 June to 15 July 2027 (12:00 CEST). Applicants from countries with an HSS country office must contact that office first, so the effective deadline for them depends on the office route.",
+        "application_cycle": "2026/2027 cycle",
+        "status": "OPEN",
+        "status_note": "The Bewerbung page states 'Unser Bewerbungsportal ist geöffnet' and lists Internationale Studierende und Promovierende (Ausländer) among the currently funded programmes.",
+        "tuition_coverage_note": null,
+        "funding_amount": 855,
+        "funding_currency": "EUR",
+        "funding_period": "per month",
+        "tuition_coverage": null,
+        "living_cost_coverage": true,
+        "travel_coverage": null,
+        "fully_funded": false,
+        "benefits": [
+          "Non-repayable base monthly study scholarship of at most 855 EUR for Studienstipendien, calculated under BMFTR guidelines according to the income and assets of the person obliged to support; graduates of the second educational path are funded independently of parents",
+          "Study-cost flat rate of 300 EUR per month, paid in addition to and independently of parents' income, for study-related expenditure that does not serve subsistence - learning and working materials (incl. books, hardware and software), language courses, relevant specialist conferences, congress visits and excursions",
+          "On application, monthly top-ups for health and nursing insurance of up to 102 EUR / 35 EUR; voluntarily statutorily or privately insured students over 30 can receive up to 185 EUR / 48 EUR",
+          "Childcare flat rate of 160 EUR per month for each child under 14 living in the same household (if the other parent receives no childcare allowance)",
+          "Doctoral track: maximum 1,750 EUR per month plus a research-cost flat rate of 100 EUR and a family supplement/child allowance of 155 EUR (up to 255 EUR for further children)",
+          "Non-material support: seminar programme on politics, society, innovation and technology, individual advising by HSS staff and trust lecturers, and integration into the lifelong HSS network"
+        ],
+        "eligibility": [
+          "Under 45 years old (Scholarship for Studies)",
+          "Proof of German language skills of at least B2 or a comparable level - applications without proof of German language skills are not considered",
+          "Above-average performance at school or in studies",
+          "Active voluntary engagement (politics, church, social association, sports, music, etc.), which must be evidenced with a confirmation",
+          "Political interest, civic-mindedness, and endorsement of the goals of the Hanns-Seidel-Stiftung",
+          "Full-time course of study at a state or state-recognised university in Germany; doctoral track: admission at a state or state-recognised university or research institution in Germany and no public funding of the doctorate up to a maximum of three years"
+        ],
+        "requirements": [
+          "Applications can be submitted only via the HSS application portal; incomplete applications cannot be submitted (the portal blocks missing mandatory fields)",
+          "Applicants from countries where the HSS maintains a country office must contact that office first; only where no office exists is the application submitted directly via the online portal",
+          "After successful submission the confirmation is displayed on screen ('Bewerbung abgeschickt ... Und jetzt?'); no additional confirmation email is sent",
+          "Use of the portal can cause problems in Safari; HSS recommends Firefox or Chrome, with technical problems reported to ref0405(at)hss.de",
+          "The outcome and any next steps are communicated by email approximately four weeks after the application deadline",
+          "Double funding by the Hanns-Seidel-Stiftung together with BAföG or other public funds is excluded"
+        ],
+        "documents": [
+          "Tabular curriculum vitae (PDF) plus a detailed curriculum vitae with the same facts but reasons for decisions and formative events (2-4 pages, 2.5 cm margins, 1.5 line spacing)",
+          "One-page exposé on study and career goals (PDF)",
+          "University entrance qualification; if available interim diploma/Bachelor certificate and current transcript of grades or graded/ungraded university certificates combined into one PDF",
+          "Certificate(s) of voluntary engagement combined into one PDF using the published template - only engagements evidenced with a confirmation are considered",
+          "Expert opinion (Fachgutachten) on the professional qualification from a (junior) professor, Privatdozent/in or, in justified exceptional cases, a doctoral academic employee; for students in the first or possibly second semester a teacher's opinion is accepted, and the expert may alternatively email it directly to the responsible specialist unit",
+          "If available, current registration or admission certificate (PDF, may be submitted later by first-year students); for international students, proof of German language skills of at least B2 or a comparable level"
+        ],
+        "selection_criteria": [
+          "Preliminary screening in the Institut für Begabtenförderung against the criteria on the 'Wen wir suchen' page",
+          "Applicants who appear suitable are invited to a selection meeting (Auswahltagung) where they are examined by an independent selection committee",
+          "The outcome and any next steps are communicated by email about four weeks after the closing date"
+        ],
+        "coverage": [
+          "Base monthly study scholarship of at most 855 EUR, means-tested under BMFTR guidelines",
+          "Study-cost flat rate of 300 EUR per month for study-related, non-subsistence expenditure",
+          "Possible top-ups for health/nursing insurance and childcare; doctoral track up to 1,750 EUR per month plus 100 EUR research costs and family/child supplements"
+        ],
+        "application_method": [
+          "Confirm every criterion of the 'Scholarship for Studies' / 'Scholarship for PhDs' programme with YES on the 'Wen wir suchen' page",
+          "Contact the HSS country office in your home country (list at hss.de/weltweit-aktiv); if the HSS has no office there, go directly to the online application platform",
+          "Prepare all documents as PDFs before starting, then submit exclusively via the portal between 15 December 2026 and 15 January 2027 (12:00 CET); the second window is 15 June to 15 July 2027 (12:00 CEST)"
+        ],
+        "application_route": "Apply online through the HSS Bewerbungsportal (stipendienbewerbung.hss.de) - after contacting the HSS country office first if one exists in your home country.",
+        "study_mode": "Full-time",
+        "citizenship_residency": "Aimed at international students and doctoral candidates; no German citizenship required (the domestic Studienförderung requires German citizenship or Bildungsinländer status).",
+        "international_eligibility": "Yes - the programme is explicitly the 'Förderung internationaler Studierender und Promovierender' with English criteria lists on the official page.",
+        "subject_or_agency_requirement": "No subject restriction is published for the international study/PhD programme; the journalism programme is separate and requires journalistic experience.",
+        "research_requirement": "Doctoral track requires admission to a state or state-recognised university or research institution in Germany and adequate German skills.",
+        "duration": "Study scholarship: support in principle until the maximum funding period under BAföG, reviewed at the end of each funding year, ending after passing the first qualifying examination; doctoral scholarship: initially three years, extendable by six months on justified application and up to four years in exceptional cases such as illness or pregnancy.",
+        "description": "The Hanns-Seidel-Stiftung's Institute for Talent Promotion supports international students and doctoral candidates who study or research full-time at a state or state-recognised institution in Germany, combining a means-tested monthly stipend with a study-cost allowance and a broad civic-education programme. There is no legal entitlement to the stated benefits and the scholarship does not have to be repaid.",
+        "region": "Germany",
+        "program_type": "Foundation scholarship (Begabtenförderung) for international students and doctoral candidates",
+        "english_requirement": null
+      },
+      "verification": {
+        "source_citations": [
+          "https://www.hss.de/stipendium/foerderung/finanzielle-foerderung/",
+          "https://www.hss.de/stipendium/bewerbung",
+          "https://www.hss.de/stipendium/wen-suchen-wir",
+          "https://www.hss.de/stipendium/foerderung/foerderdauer/"
+        ],
+        "last_verified_date": "2026-10-10",
+        "verification_status": "confirmed",
+        "confidence": "high",
+        "not_confirmed": [
+          "tuition_coverage - no tuition fee waiver or tuition coverage is published on the HSS pages",
+          "travel_coverage - no travel allowance or travel-cost reimbursement is published for holders",
+          "english_requirement - no English language requirement is published; German (at least B2) is the required language"
+        ],
+        "notes": "Amounts, both application windows, criteria, documents and duration confirmed on hss.de; the dedicated 'Finanzielle Förderung' page (855 EUR study / 1,750 EUR doctoral) was used because the overview page still shows slightly older figures (885 EUR / 1,650 EUR)."
+      },
+      "applicant_utility": {
+        "summary": "This is a top-up scholarship, not full funding: at most 855 EUR per month plus a fixed 300 EUR monthly study-cost allowance, means-tested on the income of whoever is legally obliged to support you, so financial planning still needs your own resources. The hard gates are German at B2 with proof (applications without it are not even considered) and full-time enrolment at a German state or state-recognised university. Timing is unforgiving - the portal only accepts the December-January window (12:00 CET) - and if your home country has an HSS office, that office is your mandatory first contact, not something you can bypass by applying online directly.",
+        "best_fit": "International students under 45 who are already enrolled full-time in Germany, can prove B2 German, hold above-average grades, and can document genuine voluntary engagement.",
+        "application_readiness_checklist": [
+          "Check whether the HSS has a country office in your home country and start that conversation months before the window opens",
+          "Secure written confirmation of every voluntary engagement early on the HSS template - engagements without a confirmation cannot be counted",
+          "Ask your professor for the Fachgutachten early; it can alternatively be emailed directly to the responsible specialist unit if the referee misses the portal deadline",
+          "Assemble all PDFs before the window opens and use Firefox or Chrome, since the portal can malfunction in Safari",
+          "Keep a copy of the on-screen submission confirmation, because no confirmation email is sent"
+        ],
+        "common_rejection_risks": [
+          "Applying without the mandatory German B2 proof - these applications are not considered at all",
+          "A second degree after an already professional-qualifying examination, or part-time study, which the programme excludes",
+          "Engagement that is only described in the motivational text but not evidenced by the signed template confirmations",
+          "Being over 45, or a domestic-style route through the portal when your country has an HSS office that must be contacted first"
+        ],
+        "estimated_uncovered_costs": "German semester contributions, private tuition, rent above the means-tested stipend, private health insurance beyond the optional top-up, and all travel - no travel allowance is published, so flights home and conference travel beyond the study-cost allowance come out of your own pocket.",
+        "document_audit": [
+          "All engagement confirmations must be merged into one PDF on the published template - photographs and informal letters are not proof",
+          "The detailed CV must repeat the tabular facts and respect the 2-4 page, 2.5 cm margin, 1.5 line-spacing format",
+          "Graded and ungraded university certificates must be combined into a single PDF, and the registration certificate can follow for first-year students but not indefinitely",
+          "The expert opinion has its own template (German plus an English version) and the referee must be given the closing-date deadline in writing if mailing it directly"
+        ],
+        "alerts": [
+          "The cut-off is 12:00 CET on 15 January 2027 (and 12:00 CEST on 15 July 2027 for the second window), not midnight",
+          "Outcome emails only arrive about four weeks after the deadline, so do not build other plans around an earlier response",
+          "Double funding with BAföG or other public funds is excluded - decide which funding route you take",
+          "The study scholarship ends with the first qualifying examination, so plan master's continuation separately"
+        ],
+        "submission_workflow": "Register on the HSS portal, fill the mandatory form and upload each PDF, submit before the noon cut-off, then wait roughly four weeks for the screening result before a possible invitation to the selection day."
+      }
+    },
+    {
+      "id": 502,
+      "official": {
+        "official_source_urls": [
+          "https://www.fes.de/studienfoerderung/stipendium/promotionsfoerderung-fuer-auslaender-innen",
+          "https://www.fes.de/studienfoerderung/bewerbung",
+          "https://www.fes.de/studienfoerderung/information-in-english"
+        ],
+        "application_link": "https://www.fes.de/oas/portal/pls/portal/bewsti2014.bewmaske?pFprog=3&pkn=A",
+        "catalogue_url": null,
+        "official_updates_url": "https://www.fes.de/studienfoerderung/bewerbung",
+        "deadline_central": null,
+        "deadline_central_display": null,
+        "deadline_note": "No fixed calendar deadline is published. The programme page states the right time to apply is up to about two years before submission of the dissertation ('bis circa zwei Jahre vor Abgabe der Dissertation') and as early as possible; the selection committee meets eight to ten times a year and the final decision is communicated at the latest one week after the relevant meeting.",
+        "application_cycle": "Rolling/continuous intake, with the selection committee meeting eight to ten times a year",
+        "status": "OPEN",
+        "status_note": "The online application form for Promotionsförderung für Ausländer:innen is published on the Bewerbung page and applications are accepted while the doctorate can still be completed within the funding period.",
+        "tuition_coverage_note": null,
+        "funding_amount": 1500,
+        "funding_currency": "EUR",
+        "funding_period": "per month",
+        "tuition_coverage": null,
+        "living_cost_coverage": true,
+        "travel_coverage": false,
+        "fully_funded": false,
+        "benefits": [
+          "Monthly payment of 1,500 EUR to doctoral scholarship holders of the Promotionsförderung für Ausländer:innen",
+          "Supplement for statutory health insurance (Zuschuss zur gesetzlichen Krankenversicherung); the English information page additionally lists a 276 EUR family allowance where applicable and refund of health care costs",
+          "The scholarship does not have to be repaid",
+          "Extensive range of seminars, workshops and competence training, plus networking in interdisciplinary doctoral colloquia",
+          "Specialist conferences with experts from politics and science where individual dissertation projects can be presented; scholarship-holder groups in numerous cities and 18 cross-city thematic working groups",
+          "Personal support and advice and integration into the alumni network with former holders as mentors; travel costs incurred for a selection interview can be reimbursed via the published form"
+        ],
+        "eligibility": [
+          "You come from abroad and are admitted to doctoral study at a German higher education institution",
+          "Very good German language skills - a level of B2 is accepted, even without a certificate, and proof is required even if the dissertation is written in English",
+          "Socio-political engagement (recent arrivals may also describe previous engagement in their country of origin)",
+          "Identification with the values of social democracy",
+          "Previous degree completed with an above-average result and promptly ('above average' measured against the subject average at the university location)",
+          "Research project that makes a significant contribution to research; all disciplines except medicine"
+        ],
+        "requirements": [
+          "Applications must be submitted in German, because German language skills are a requirement for the scholarship",
+          "You must already be studying in Germany at the time of your application and be admitted to doctoral study",
+          "Proof of German language skills is absolutely necessary; B2 is accepted also without a certificate",
+          "After the request you have three weeks to submit your documents and up to six weeks for the expert opinions, followed by confirmation of receipt",
+          "From application to decision it can take three to seven months; the selection committee meets eight to ten times a year"
+        ],
+        "documents": [
+          "Detailed curriculum vitae with information on previous education and socio-political engagement",
+          "Certificates, university entrance qualification, registration certificate and other evidence",
+          "Detailed letter of motivation",
+          "Two expert opinions (Gutachten) from university teachers; for students in their first years, from teachers",
+          "Online application form (Promotionsförderung für Ausländer:innen) at the FES application portal"
+        ],
+        "selection_criteria": [
+          "Formal and content-related review of the online application by FES staff",
+          "Particular consideration is given to applicants who are the first in their family to study and/or have a migration background, to women, and to students at universities of applied sciences and in MINT subjects",
+          "Shortlisted applicants have a specialist interview with a trust lecturer (Vertrauensdozentin/Vertrauensdozent) producing an opinion, then a second interview with a selection committee member",
+          "The selection committee meets eight to ten times a year and decides on admission; the applicant is informed at the latest one week after the meeting"
+        ],
+        "coverage": [
+          "Monthly payment of 1,500 EUR to doctoral scholarship holders",
+          "Supplement for statutory health insurance",
+          "Family allowance of 276 EUR where applicable and refund of health care costs, per the English information page"
+        ],
+        "application_method": [
+          "Complete the online application form for Promotionsförderung für Ausländer:innen with personal, professional and family background, motivation to become an FES scholarship holder, and details of socio-political engagement",
+          "Within two to four weeks receive either a rejection or the request to submit documents and expert opinions - three weeks for documents, up to six weeks for the Gutachten",
+          "If shortlisted, attend the first specialist interview with a trust lecturer and, if shortlisted again, the second interview with a selection committee member",
+          "Final decision by the selection committee, communicated at the latest one week after its meeting"
+        ],
+        "application_route": "Submit the online application form for Promotionsförderung für Ausländer:innen in German via the FES application portal; documents follow only on request.",
+        "study_mode": "Full-time doctoral study",
+        "citizenship_residency": "Aimed at doctoral candidates from abroad who are already studying in Germany and admitted at a German higher education institution.",
+        "international_eligibility": "Yes - this programme exists specifically for foreign doctoral candidates admitted at a German higher education institution.",
+        "subject_or_agency_requirement": "All disciplines except medicine; as a party-political foundation the FES requires identification with the values of social democracy.",
+        "research_requirement": "The research project must make a significant contribution to research; the dissertation may be written in English but German skills are still mandatory.",
+        "duration": "As a rule three and a half years; in justified exceptional cases longer, but at the latest until the final examination.",
+        "description": "The Friedrich-Ebert-Stiftung funds foreign doctoral candidates at German universities with 1,500 EUR per month, a health-insurance supplement and an extensive political-education and networking programme, so they can concentrate on the dissertation without financial worries. The scholarship is granted only to applicants with very good German skills, socio-political engagement and identification with social democracy, and it never has to be repaid.",
+        "region": "Germany",
+        "program_type": "Party foundation doctoral scholarship",
+        "english_requirement": null
+      },
+      "verification": {
+        "source_citations": [
+          "https://www.fes.de/studienfoerderung/stipendium/promotionsfoerderung-fuer-auslaender-innen",
+          "https://www.fes.de/studienfoerderung/bewerbung",
+          "https://www.fes.de/studienfoerderung/information-in-english"
+        ],
+        "last_verified_date": "2026-10-10",
+        "verification_status": "confirmed",
+        "confidence": "high",
+        "not_confirmed": [
+          "tuition_coverage - no tuition fee coverage is published for doctoral scholarship holders",
+          "fixed application deadline - the pages publish timing guidance instead of a calendar deadline",
+          "english_requirement - no English language requirement is published; German is the mandatory application language"
+        ],
+        "notes": "The 1,500 EUR monthly payment, health-insurance supplement, non-repayment, 3.5-year duration and the rolling application window were confirmed on the programme page; the travel-cost form and selection-interview reimbursement were confirmed on the Bewerbung page."
+      },
+      "applicant_utility": {
+        "summary": "FES pays 1,500 EUR per month plus a statutory health-insurance supplement for a typical 3.5 years, never repayable, but it is a living-cost stipend rather than full funding - no tuition is covered and any income above 400 EUR per month is offset against the scholarship. German is the real gate: the application itself must be written in German and B2 must be provable even without a certificate, even if your dissertation is in English. Since intake is rolling and the committee only sits eight to ten times a year, applying as early as possible - up to about two years before submission - is the single biggest lever on your chances and timeline.",
+        "best_fit": "Foreign doctoral researchers already studying in Germany with B2 German, demonstrable socio-political engagement, and a dissertation project that is still at least a couple of years from submission.",
+        "application_readiness_checklist": [
+          "Translate the full dossier into German early - application, documents and expert opinions all have to be German",
+          "Line up the two university Gutachten before you submit, remembering referees get up to six weeks to return them",
+          "Document socio-political engagement in the CV and motivation letter in detail, including anything from before you came to Germany",
+          "Keep any side income below 400 EUR per month so it is not credited against the scholarship",
+          "Verify your admission status in Germany is already registered, since application without being in the programme fails"
+        ],
+        "common_rejection_risks": [
+          "A medical doctorate - medicine is explicitly excluded from this funding",
+          "Applying too late in the doctorate, when the thesis can no longer be finished inside the funding period",
+          "A slow first degree, since an above-average and prompt completion is part of the profile",
+          "Weak or purely descriptive motivation, because the foundation explicitly wants proven socio-political commitment and identification with social democracy, not just good grades"
+        ],
+        "estimated_uncovered_costs": "Any tuition or semester fees are on you, and although travel to a selection interview is reimbursable on the published form, research stays abroad, conferences and everyday costs above the 1,500 EUR plus health supplement must be funded privately.",
+        "document_audit": [
+          "The CV must map previous education and socio-political engagement, not just list degrees",
+          "The two Gutachten must come from university teachers - plan who writes them well before the six-week clock starts",
+          "Certificates, the university entrance qualification and the registration certificate are only requested after the online form passes, so have scans ready but do not upload them first",
+          "Keep travel receipts from any selection interview and submit the Fahrtkostenerstattung form promptly"
+        ],
+        "alerts": [
+          "There is no calendar deadline but also no queue-jumping: expect three to seven months from application to decision, gated by committee meeting dates",
+          "German proof is mandatory even when the dissertation is written in English",
+          "Income above 400 EUR per month is deducted from the scholarship",
+          "Funding ends no later than the final examination, in principle after three and a half years"
+        ],
+        "submission_workflow": "Online form in German, a yes/no within two to four weeks, then documents (three weeks) and Gutachten (six weeks) on request, followed by the trust-lecturer and committee interviews and a decision at the next committee meeting."
+      }
+    }
+  ]
+}

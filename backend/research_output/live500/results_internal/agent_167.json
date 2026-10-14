@@ -1,0 +1,144 @@
+{
+  "agent": "agent_167",
+  "records": [
+    {
+      "id": 444,
+      "official": {
+        "official_source_urls": [
+          "https://www.temasek.com.sg/en/our-community/temasek-scholarship/temasek-undergraduate-overseas-scholarship"
+        ],
+        "application_link": "https://www.temasek.com.sg/en/our-community/temasek-scholarship/temasek-undergraduate-overseas-scholarship",
+        "catalogue_url": null,
+        "official_updates_url": "https://www.temasek.com.sg/en/our-community/temasek-scholarship",
+        "deadline_central": "2026-09-15",
+        "deadline_central_display": "15 September 2026 (AY2026/2027 window, extended)",
+        "deadline_note": "The page still reads 'The application window for the Academic Year 2026/2027 is now open and has been extended until 15 September 2026', which had already passed at the verification date. No AY2027/2028 window date is published on the page.",
+        "application_cycle": "Academic Year 2026/2027",
+        "status": "CLOSED",
+        "status_note": "Temasek's page still states the Academic Year 2026/2027 window is open and 'has been extended until 15 September 2026', which is in the past as at the verification date of 10 October 2026.",
+        "tuition_coverage_note": "Tuition and other compulsory fees over the course of study.",
+        "funding_amount": null,
+        "funding_currency": null,
+        "funding_period": null,
+        "tuition_coverage": true,
+        "living_cost_coverage": true,
+        "travel_coverage": true,
+        "fully_funded": true,
+        "benefits": [
+          "Tuition and other compulsory fees over the course of study",
+          "Monthly living allowance",
+          "Development programmes, including approved overseas exchange programmes",
+          "Access to internship opportunities within the Temasek ecosystem",
+          "Mentoring opportunities with a network of professionals",
+          "One-time relocation allowance including return airfare",
+          "One-time pre-studies allowance",
+          "Application fees to up to five overseas universities, reimbursed"
+        ],
+        "eligibility": [
+          "Be a Singapore citizen",
+          "Be a local polytechnic graduate, or graduating from a local polytechnic",
+          "Be accepted or planning to enroll in a STEM undergraduate course at an overseas university (excluding Medicine and Dentistry)",
+          "Have a Gross Monthly Household Income of S$15,000 or less at the point of admission",
+          "Demonstrate commitment to contribute to the STEM economy in Singapore"
+        ],
+        "requirements": [
+          "Interested polytechnic students are encouraged to apply prior to commencing their undergraduate degree",
+          "Applications may be submitted before final cumulative GPA and examination results are received",
+          "Applicants are required to declare their Gross Monthly Household Income as part of the application",
+          "Applicants who will be enlisting for National Service may apply, and preliminary polytechnic diploma results may be submitted",
+          "Upon graduation, scholars serve a 4-year bond to work in a STEM-related role in Singapore or with a Singapore-headquartered company"
+        ],
+        "documents": [
+          "Certificates of academic qualification obtained (e.g. GCE O-level, Polytechnic Diploma, or equivalent)",
+          "Pre-tertiary academic results (e.g. Polytechnic Diploma, or equivalent)",
+          "Co-curricular Activities records, Prizes, and Awards",
+          "University application and outcomes, if available",
+          "A declaration of Gross Monthly Household Income, submitted as part of the application"
+        ],
+        "selection_criteria": [
+          "Online psychometric and personality assessment and a video interview (remote, on-demand) designed to evaluate general abilities, motivations, interests and values",
+          "A one-day in-person group assessment encompassing an evaluation of leadership, agility, teamwork and critical thinking",
+          "Final candidates are invited for a 60-minutes structured interview",
+          "A provisional scholarship offer may be extended if the applicant is found to be suitable"
+        ],
+        "coverage": [
+          "Tuition and other compulsory fees over the course of study",
+          "Monthly living allowance",
+          "One-time relocation allowance including return airfare",
+          "One-time pre-studies allowance",
+          "Application fees to up to five overseas universities, reimbursed",
+          "Development programmes, including approved overseas exchange programmes"
+        ],
+        "application_method": [
+          "Apply using the 'Apply Now via Brightsparks' button on the official Temasek scholarship page",
+          "Consolidate all supporting documents into a single file for upload under CV submission",
+          "Declare Gross Monthly Household Income in the application",
+          "If shortlisted, complete the online psychometric and personality assessment and the remote, on-demand video interview",
+          "If shortlisted further, attend the one-day in-person group assessment, then the 60-minutes structured interview as a final candidate"
+        ],
+        "application_route": "Apply online through Brightsparks from the Temasek scholarship page, with supporting documents consolidated into a single file uploaded under CV submission.",
+        "study_mode": "Full-time",
+        "citizenship_residency": "Applicants must be Singapore citizens and must be a local polytechnic graduate or be graduating from a local polytechnic.",
+        "international_eligibility": "No. Applicants must be Singapore citizens.",
+        "subject_or_agency_requirement": "A STEM undergraduate course at an overseas university, excluding Medicine and Dentistry.",
+        "research_requirement": null,
+        "duration": "Over the course of undergraduate study at the overseas university; the official page does not state a fixed number of years",
+        "description": "Temasek frames the award as one where scholars have the opportunity to pursue further education at top overseas universities and are expected to contribute to Singapore's innovation and growth upon graduation, serving a 4-year bond in a STEM-related role in Singapore or with a Singapore-headquartered company.",
+        "region": "Asia",
+        "program_type": "Undergraduate STEM Scholarship (overseas), part of the Temasek Scholarship family",
+        "english_requirement": null
+      },
+      "verification": {
+        "source_citations": [
+          "https://www.temasek.com.sg/en/our-community/temasek-scholarship/temasek-undergraduate-overseas-scholarship"
+        ],
+        "last_verified_date": "2026-10-10",
+        "verification_status": "confirmed",
+        "confidence": "high",
+        "not_confirmed": [
+          "funding_amount",
+          "funding_currency",
+          "funding_period",
+          "english_requirement",
+          "research_requirement",
+          "a deadline for the next application cycle beyond the expired AY2026/2027 window",
+          "reimbursement of visa processing fees"
+        ],
+        "notes": "Read the Temasek Undergraduate Overseas Scholarship page on temasek.com.sg in a browser session. Temasek publishes the components of the award (tuition and compulsory fees, monthly living allowance, relocation and pre-studies allowances, reimbursed university application fees) but no monetary figures, so no amount is recorded. The stated AY2026/2027 window closed on 15 September 2026 and the page text had not been refreshed."
+      },
+      "applicant_utility": {
+        "summary": "The income test is the feature that catches people out: a Gross Monthly Household Income above S$15,000 at the point of admission disqualifies you regardless of results, and the threshold is measured on total household income including overtime pay, allowances, cash awards, commissions and bonuses. You must already be a local polytechnic graduate or final-year student aiming at an overseas STEM degree, so JC and A-Level applicants are outside this scheme entirely. Nothing on the page publishes a monetary value, so the offer is worth what the named components add up to rather than a headline figure, and the 4-year bond in a STEM role is the price of it.",
+        "best_fit": "Singapore Citizen polytechnic graduates or final-year polytechnic students from households at or below S$15,000 gross monthly income, heading to an overseas STEM degree.",
+        "application_readiness_checklist": [
+          "Calculate household income against Temasek's definition, which counts basic employment income, trade or self-employed income, overtime pay, allowances, cash awards, commissions and bonuses.",
+          "Confirm the target course is STEM and is not Medicine or Dentistry before investing in overseas applications.",
+          "Merge every supporting document into one file before you start, because the CV submission is a single upload.",
+          "Check whether you are enlisting for National Service; Temasek explicitly allows those applicants to apply.",
+          "Use preliminary polytechnic diploma results if finals are not out yet, since the application does not require them."
+        ],
+        "common_rejection_risks": [
+          "Household income creeping above S$15,000 by the point of admission, even if it was below the threshold at application.",
+          "Applying as a JC or A-Level holder rather than a polytechnic graduate or final-year polytechnic student.",
+          "Naming Medicine or Dentistry, which are excluded from the STEM course eligibility.",
+          "Not being accepted into an overseas university, since the provisional offer is conditional on it.",
+          "Assuming a full monetary value from the benefit list, which carries no figures at all."
+        ],
+        "estimated_uncovered_costs": "Temasek publishes no amounts for tuition, the living allowance, relocation, pre-studies or application fees, so the uncovered gap cannot be quantified from the official page; anything outside the named components is self-funded.",
+        "document_audit": [
+          "Everything goes into one consolidated file under CV submission, so file order and completeness matter more than separate attachments.",
+          "University application and outcomes are only 'if available', so an incomplete overseas application does not block submission.",
+          "Preliminary polytechnic diploma results are acceptable, which removes the excuse of waiting for finals.",
+          "The household income declaration is made in the application itself, so the declaration and any supporting evidence should be consistent."
+        ],
+        "alerts": [
+          "The AY2026/2027 window was extended to 15 September 2026 and the page still advertises it as open, so watch for the AY2027/2028 window rather than trusting the banner.",
+          "Assessment is four stages deep: psychometric and personality assessment, remote on-demand video interview, a full-day in-person group assessment, then a 60-minute structured interview.",
+          "The 4-year bond requires a STEM-related role in Singapore or with a Singapore-headquartered company, which also constrains postgraduate plans.",
+          "Offer confirmation waits on final cumulative GPA, exam results and an overseas university acceptance, so even a strong application can still fall through.",
+          "This is an overseas-study award; a local polytechnic-to-local-degree plan is covered by the sibling Temasek Undergraduate Local Scholarship instead."
+        ],
+        "submission_workflow": "Single-file Brightsparks application with the household income declaration, then four assessment stages, then a provisional offer conditional on final results and an overseas acceptance."
+      }
+    }
+  ]
+}

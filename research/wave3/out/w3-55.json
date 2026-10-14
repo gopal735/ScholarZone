@@ -1,0 +1,21 @@
+{
+  "agent_id": "w3_55",
+  "shard": "w3-55",
+  "host": "westernsydney.edu.au",
+  "today": "2026-10-04",
+  "logo_override": {
+    "url": "https://www.westernsydney.edu.au/.index/logo.png",
+    "page_url": "https://www.westernsydney.edu.au/schools/grs/scholarships/main-round-scholarships",
+    "official_host": true,
+    "alt_text": "Western Sydney University",
+    "validation_result": "verified",
+    "validation_detail": "same-origin fetch returned HTTP 200 with content-type image/png, 15548 bytes, natural size 500x74; canvas pixel audit mean luminance 57, 0% light pixels and 100% dark pixels, and rendered on white it shows the red 'WESTERN SYDNEY UNIVERSITY' wordmark with the red W crest, fully legible",
+    "image_kind": "official_university",
+    "image_format": "png",
+    "verified_at": "2026-10-04T00:00:00+00:00",
+    "host_evidence": "same_registrable_domain",
+    "_award": "Western Sydney University Research Scholarships (HDR/CDR)"
+  },
+  "target_ids": [666],
+  "notes": "The stored scholarship URL resolves 200 but its title is 'Research Scholarships | Western Sydney University', i.e. WSU now routes the scholarship under GRS. The university header on every page is <img src='https://www.westernsydney.edu.au/.index/logo.png' alt='Header Logo'> at natural size 500x74, which is the file-backed full-colour wordmark, so it satisfies the brief's step-1 img lookup directly. Probing note: ctx.request.get on that asset returns HTTP 406 with an empty content-type, because this Squiz Matrix instance rejects the API client - so it had to be probed with fetch() from inside the loaded page, which returned a real image/png (HTTP 200 confirmed per rule 4). Pixel audit: mean luminance 57, 0% light and 100% dark pixels, i.e. dark-on-transparent red artwork, visually confirmed on a white background as 'WESTERN SYDNEY UNIVERSITY' plus the W crest. Rejected: the og:image https://www.westernsydney.edu.au/default-meta-image.png?width=1200&format=pjpg&optimize=medium, a generic social/OG placeholder rather than the logo. The page exposes no apple-touch-icon or link rel=icon, and no JSON-LD logo. image_kind official_university because the University of Western Sydney is now Western Sydney University, the same institution renamed in 2019."
+}

@@ -1,0 +1,123 @@
+{
+  "agent": "agent_007",
+  "records": [
+    {
+      "id": 40,
+      "official": {
+        "official_source_urls": [
+          "https://www.ares-ac.be/en/scholarships",
+          "https://ares-ac.be/en/international-training-scholarships-2027-2028",
+          "https://www.ares-ac.be/en/scholarships-in-belgium-call-2027-2028-0",
+          "https://www.ares-ac.be/sites/default/files/2026-08/fi-2027-2028_document-d-appel-en-vf_2.pdf"
+        ],
+        "application_link": "https://www.ares-ac.be/en/scholarships",
+        "catalogue_url": null,
+        "official_updates_url": "https://www.ares-ac.be/en/theme/international-training",
+        "deadline_central": "2026-09-18",
+        "deadline_central_display": "18 September 2026, 12:00 Belgian time (2027-2028 call, now closed)",
+        "deadline_note": "Next call expected August 2027",
+        "application_cycle": "2027-2028 call under the 2027-2032 five-year programme",
+        "status": "CLOSED",
+        "status_note": "The 2027-2028 scholarship call for applications is now closed; the next call is expected in August 2027.",
+        "tuition_coverage_note": "The scholarship includes tuition fees only for bachelor's degrees and specialised master's degrees; continuing education courses do not include tuition.",
+        "funding_amount": null,
+        "funding_currency": null,
+        "funding_period": null,
+        "tuition_coverage": true,
+        "living_cost_coverage": true,
+        "travel_coverage": true,
+        "fully_funded": true,
+        "benefits": [
+          "International travel expenses (economy class on an IATA airline, maximum one return trip per academic year)",
+          "Subsistence allowance: monthly package for 12 months plus a reduced 13th month",
+          "Tuition fees (only for bachelor's degrees and specialised master's degrees)",
+          "Insurance costs (paid directly by ARES)",
+          "Exceptional costs related to visa applications (up to EUR 200 included in the subsistence allowance)",
+          "Inter-establishment travel fees up to EUR 250 based on actual costs"
+        ],
+        "eligibility": [
+          "Permanent resident of one of the 32 ARES partner countries",
+          "Earned a higher education degree",
+          "Demonstrated at least two years of work experience",
+          "Apply for only one programme"
+        ],
+        "requirements": [
+          "Apply for only one programme in the call",
+          "Applications are free of charge; ARES charges no fees at any stage of the application or selection process",
+          "A basic knowledge of French facilitates integration into daily life in Belgium"
+        ],
+        "documents": null,
+        "selection_criteria": null,
+        "coverage": [
+          "International travel expenses",
+          "Subsistence allowance (monthly package)",
+          "Tuition fees (degree programmes only)",
+          "Insurance costs",
+          "Exceptional visa application costs"
+        ],
+        "application_method": [
+          "Submit an application during the published call window (the call reference document sets out the full procedure)"
+        ],
+        "application_route": "Apply once during the annual ARES call window; the 2027-2028 call closed on 18 September 2026 and the next call is expected in August 2027.",
+        "study_mode": null,
+        "citizenship_residency": "Permanent resident of one of the 32 ARES partner countries (map of eligible countries published by ARES)",
+        "international_eligibility": "The scholarship is intended for permanent residents of ARES partner countries in Africa, Asia, Latin America and the Middle East",
+        "subject_or_agency_requirement": "Training must be development-related; the 2027-2028 call offers one specialised bachelor's degree, eight specialised master's degrees and one continuing education course at Wallonia-Brussels Federation institutions",
+        "research_requirement": null,
+        "duration": "One academic year (12 months maximum) for specialised bachelor's and specialised master's degrees; 6 months maximum for continuing education",
+        "description": "As part of its 2027-2032 five-year programme, ARES offers international training scholarships enabling permanent residents of partner countries to pursue a specialised bachelor's degree, a specialised master's degree or a continuing education course at an institution of the Wallonia-Brussels Federation in Belgium, while receiving a scholarship covering travel, subsistence, insurance and (for degrees) tuition.",
+        "region": "Europe",
+        "program_type": "International training scholarship (specialised bachelor's, specialised master's or continuing education)",
+        "english_requirement": null
+      },
+      "verification": {
+        "source_citations": [
+          "https://www.ares-ac.be/en/scholarships",
+          "https://ares-ac.be/en/international-training-scholarships-2027-2028",
+          "https://www.ares-ac.be/en/scholarships-in-belgium-call-2027-2028-0",
+          "https://www.ares-ac.be/sites/default/files/2026-08/fi-2027-2028_document-d-appel-en-vf_2.pdf"
+        ],
+        "last_verified_date": "2026-10-10",
+        "verification_status": "confirmed",
+        "confidence": "low",
+        "not_confirmed": [
+          "funding_amount",
+          "funding_currency",
+          "funding_period",
+          "documents",
+          "selection_criteria",
+          "english_requirement"
+        ],
+        "notes": "ares-ac.be blocked direct page fetching behind a JavaScript gate after repeated attempts, so content was taken from the official ARES domain's own published listings and the official 2027-2028 call PDF excerpt; the accessible official pages do not publish a monetary figure for the subsistence allowance."
+      },
+      "applicant_utility": {
+        "summary": "This is Belgium's ARES International Training Scholarships call: 100 awards for the 2027-2028 academic year covering specialised bachelor's, specialised master's and continuing-education programmes at Wallonia-Brussels Federation institutions. The 2027-2028 window closed on 18 September 2026, so the realistic next move is preparing for the August 2027 call. Note that tuition is only covered for the degree programmes, and you may compete for just one programme per call.",
+        "best_fit": "Early- to mid-career professionals with a university degree, at least two years of work experience, and permanent residence in one of the 32 ARES partner countries",
+        "application_readiness_checklist": [
+          "Confirm the 32-country list includes your country of permanent residence before investing effort",
+          "Secure proof of at least two years of professional experience; the admission rule is explicit",
+          "Pick exactly one programme from the fixed list (one specialised bachelor's, eight specialised master's, one continuing education course) rather than applying widely",
+          "Download the call reference document when the next call opens in August 2027 and build your file directly from its annexes",
+          "Arrange certified copies of your higher-education diploma and transcripts in advance, since the window has historically run just over six weeks"
+        ],
+        "common_rejection_risks": [
+          "Applying for more than one programme, which the rules forbid",
+          "Falling short of the two-year work-experience threshold despite strong academic results",
+          "Assuming continuing-education students receive tuition coverage; only degree programmes include tuition",
+          "Missing the 12:00 Belgian-time cutoff, which has historically been mid-day rather than midnight"
+        ],
+        "estimated_uncovered_costs": "The published package covers travel, subsistence, insurance and (for degrees) tuition, but the call sets no monetary figures on the accessible pages, so applicants should assume daily living costs beyond the monthly subsistence package, plus any visa excess above EUR 200, remain personal expenses.",
+        "document_audit": [
+          "The required document list lives in the call reference document rather than on the overview pages, so do not rely on third-party checklists",
+          "Visa costs above EUR 200 are reimbursed only against actual receipts, so keep supporting documents for every visa-related expense"
+        ],
+        "alerts": [
+          "The 2027-2028 call closed on 18 September 2026; the next call is expected around August 2027, roughly a year of waiting",
+          "The programme list changes each cycle; a course you target today may not be offered in the next call",
+          "Applications are free: any agent or consultant charging fees to apply is not acting for ARES, and ARES explicitly invites reports of such conduct"
+        ],
+        "submission_workflow": "Wait for the August 2027 call, download the reference document, prepare degree and work-experience evidence in advance, and file one application before the midday Belgian deadline."
+      }
+    }
+  ]
+}

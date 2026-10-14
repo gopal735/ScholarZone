@@ -1,0 +1,129 @@
+{
+  "agent": "agent_245",
+  "records": [
+    {
+      "id": 601,
+      "official": {
+        "official_source_urls": [
+          "https://convocatorias.conicet.gov.ar/becas/convocatoria-vigente",
+          "https://convocatorias.conicet.gov.ar/wp-content/uploads/sites/3/publico/convocatoria-becas-2026/becas-priorizadoslibres-2026/BASES-PD-2026_98b78a62c74993283d.pdf",
+          "https://convocatorias.conicet.gov.ar/wp-content/uploads/sites/3/estipendios-por-localidades-septiembre-diciembre-2026.pdf",
+          "https://www.conicet.gov.ar/becario/descripcion-2/"
+        ],
+        "application_link": "https://convocatorias.conicet.gov.ar/becas/convocatoria-vigente",
+        "catalogue_url": "https://convocatorias.conicet.gov.ar/becas",
+        "official_updates_url": "https://convocatorias.conicet.gov.ar/becas/convocatoria-vigente",
+        "deadline_central": "2027-03-05",
+        "deadline_central_display": "5 March 2027",
+        "deadline_note": "Application window for the postdoctoral line is 18 February to 5 March 2027.",
+        "application_cycle": "Convocatoria Becas 2026 - Becas Internas Postdoctorales line (800 places)",
+        "status": "OPEN",
+        "status_note": "The call page publishes the postdoctoral window as 18 February to 5 March 2027, with fellowships of 36 months starting 01/08/2027; the doctoral lines already ran in July-August 2026.",
+        "tuition_coverage_note": "A postdoctoral research fellowship in Argentina is not a degree programme; the call publishes no tuition figure.",
+        "funding_amount": 1530138.95,
+        "funding_currency": "ARS",
+        "funding_period": "per month",
+        "tuition_coverage": false,
+        "living_cost_coverage": true,
+        "travel_coverage": false,
+        "fully_funded": false,
+        "benefits": [
+          "Monthly stipend (estipendio mensual) - the published table for September 2026 shows ARS 1,530,138.95 as the base postdoctoral amount, varying by work locality up to ARS 1,962,659.22",
+          "ART (occupational risk) coverage",
+          "Additional amounts for medical cover and family, where applicable",
+          "Automatic extension for current CONICET doctoral or doctoral-completion scholars (cohorts 2021/2027, 2022/2027, 2025/2027) until the postdoctoral results are published"
+        ],
+        "eligibility": [
+          "Candidates wishing to perfect their academic training and develop research tasks",
+          "Doctoral thesis approved before the date set for the start of the fellowship",
+          "Final delivery of the doctoral thesis copies or defence of the thesis at the time of application",
+          "Apply to the Advisory Commission corresponding to the candidate's discipline"
+        ],
+        "requirements": [
+          "Apply within 18 February to 5 March 2027",
+          "Have defended the doctoral thesis, or delivered the final copies, before submitting",
+          "Submit through the electronic system described in the official presentation instructivo for the 2026 call",
+          "Frame the research plan against the call's priority themes list and priority regions/thematic areas matrix",
+          "Dedication exclusively to the academic and research tasks of the fellowship work plan"
+        ],
+        "documents": [
+          "Documentation listed in the official bases for Becas Internas Postdoctorales (BASES-PD-2026)",
+          "Any supporting documents required by the presentation instructivo, including digital letters of endorsement"
+        ],
+        "selection_criteria": [
+          "70% of each Advisory Commission's places go to proposals matching the priority themes or the priority regions and thematic areas matrix",
+          "Remaining 30% go to eligible applicants in order of merit within the Commission",
+          "Leftover places in a Commission are not reassigned to other Commissions and stay pending in a second round"
+        ],
+        "coverage": [
+          "Monthly stipend paid per the official stipend table by locality of the workplace (base ARS 1,530,138.95 per month for postdoctoral, September 2026 values)",
+          "ART coverage and, where applicable, additional amounts for medical cover and family",
+          "CONICET does not contribute pension payments for beneficiaries"
+        ],
+        "application_method": [
+          "Electronic submission following the official 'Instructivo para la presentación de solicitudes' published with the 2026 call"
+        ],
+        "application_route": "Electronic submission through the CONICET system following the official presentation instructivo for the 2026 call.",
+        "study_mode": "Full-time research",
+        "citizenship_residency": null,
+        "international_eligibility": null,
+        "subject_or_agency_requirement": "Apply to the Advisory Commission matching your discipline; 70% of places are reserved for proposals on the call's priority themes or in the priority regions/thematic areas matrix",
+        "research_requirement": "A research work plan framed against the call's priority themes and the priority regions/thematic areas matrix",
+        "duration": "Thirty-six (36) months from 01/08/2027",
+        "description": "CONICET's 2026 call provides 800 internal postdoctoral fellowships for candidates who have completed and defended their doctorate and wish to develop research in Argentina, with 36-month fellowships starting 1 August 2027.",
+        "region": "Latin America",
+        "program_type": "National research council postdoctoral fellowship",
+        "english_requirement": null
+      },
+      "verification": {
+        "source_citations": [
+          "https://convocatorias.conicet.gov.ar/becas/convocatoria-vigente",
+          "https://convocatorias.conicet.gov.ar/wp-content/uploads/sites/3/estipendios-por-localidades-septiembre-diciembre-2026.pdf",
+          "https://convocatorias.conicet.gov.ar/wp-content/uploads/sites/3/publico/convocatoria-becas-2026/becas-priorizadoslibres-2026/BASES-PD-2026_98b78a62c74993283d.pdf"
+        ],
+        "last_verified_date": "2026-10-10",
+        "verification_status": "confirmed",
+        "confidence": "medium",
+        "not_confirmed": [
+          "english_requirement",
+          "citizenship_residency",
+          "international_eligibility",
+          "study_mode",
+          "tuition_coverage"
+        ],
+        "notes": "The official convocatoria-vigente page, the BASES-PD-2026 PDF and CONICET's official stipend table (estipendios-por-localidades-septiembre-diciembre-2026.pdf) were downloaded and read. The stipend table publishes monthly postdoctoral amounts by locality: base ARS 1,530,138.95 (September 2026) rising across the September-December 2026 columns to ARS 1,606,343.42, with locality-dependent values up to ARS 1,962,659.22. The base September 2026 figure is recorded because the fellowship starts 01/08/2027 and CONICET will update the table before then, so the exact figure at start date is not yet published. The bases publish no citizenship rule, no English requirement and no tuition concept for this postdoctoral line."
+      },
+      "applicant_utility": {
+        "summary": "Timing is everything here: the postdoctoral window (18 February to 5 March 2027) opens only after the 2026 call's doctoral rounds have closed, and the fellowship itself starts 1 August 2027, so plan your postdoc start around that date. You must have already defended the thesis or made the final delivery of copies before you apply - an in-progress doctorate does not qualify. Because 70% of each Advisory Commission's places are reserved for the priority themes and regions, framing your plan against the CONICET priority list is the single highest-leverage move you can make.",
+        "best_fit": "Newly defended PhDs who want three years of funded research in Argentina and can align their plan with CONICET's priority themes or priority regions.",
+        "application_readiness_checklist": [
+          "Confirm the thesis defence or final delivery of copies is complete before the window opens",
+          "Read the priority themes PDF and the priority regions/thematic areas matrix and map your plan onto them",
+          "Identify the correct Advisory Commission for your discipline before registering",
+          "Follow the 2026 presentation instructivo exactly and upload the endorsement letters it requires",
+          "If you hold a CONICET doctoral or completion scholarship (cohorts 2021/2027, 2022/2027, 2025/2027), check how the automatic extension interacts with your application"
+        ],
+        "common_rejection_risks": [
+          "Applying before the thesis is defended or the final copies are delivered",
+          "A research plan with no link to the priority themes or regions, which forfeits the 70% quota",
+          "Applying to the wrong Advisory Commission for your discipline",
+          "Not following the electronic instructivo (missing endorsement letters or fields)",
+          "Counting on cross-Commission reassignment of leftover places - CONICET does not reassign"
+        ],
+        "estimated_uncovered_costs": "The stipend is the only published monetary support; relocation to the host locality in Argentina and any international travel are not part of the published benefits.",
+        "document_audit": [
+          "The instructivo governs the file - document names and formats must match it",
+          "Digital letters of endorsement are part of the submission, not an optional extra",
+          "Evidence of thesis defence or final delivery must match the dates the bases require"
+        ],
+        "alerts": [
+          "The window is short (18 February to 5 March 2027) - the system does not wait for late uploads",
+          "Published stipend values are for September-December 2026 and will be updated before the 01/08/2027 start",
+          "The overall 2026 call is for 1,000 doctoral, 300 completion and 800 postdoctoral places - those doctoral windows already closed in July-August 2026",
+          "CONICET pays no pension contributions on the stipend"
+        ],
+        "submission_workflow": "Register in the electronic system per the instructivo, submit the plan and endorsements to your Advisory Commission between 18 February and 5 March 2027; selection follows the 70/30 priority-then-merit allocation within each Commission."
+      }
+    }
+  ]
+}

@@ -1,0 +1,150 @@
+{
+  "agent": "agent_090",
+  "records": [
+    {
+      "id": 268,
+      "official": {
+        "official_source_urls": [
+          "https://studyindenmark.dk/study-options/scholarships",
+          "https://studyindenmark.dk/study-options/tuition-fees-and-scholarships",
+          "https://studyindenmark.dk/study-options/how-to-apply",
+          "https://studyindenmark.dk/study-options/how-to-apply/language-requirements",
+          "https://studyindenmark.dk/live-in-denmark/permits-visas-red-tape",
+          "https://studyindenmark.dk/live-in-denmark/bank-budget",
+          "https://www.ku.dk/studies/admission/scholarships-for-full-degree-students",
+          "https://www.ku.dk/studies/admission/masters-important-dates-and-deadlines"
+        ],
+        "application_link": "https://studyindenmark.dk/study-options/scholarships",
+        "catalogue_url": "https://studyindenmark.dk/portal",
+        "official_updates_url": "https://studyindenmark.dk/study-options/higher-education-institutions",
+        "deadline_central": null,
+        "deadline_central_display": null,
+        "deadline_note": "The ministry publishes no deadline of its own: 'The scholarships are administered by the Danish universities, who each select the students, who are awarded with a scholarship. For further information about the government scholarship, please consult the admission details of the higher education institution of your choice.' The effective deadline is therefore the institution's admission deadline. As an administering-institution example, the University of Copenhagen sets 15 January at 23:59 (CET) for applicants from outside the EU/EEA and Switzerland applying for a September start (portal opens 15 November, decisions 13 March, study place must be accepted by 18 March). Undergraduate admission for applicants with non-Danish upper secondary qualifications runs centrally through www.optagelse.dk with a 15 March, 12 noon (CET) deadline.",
+        "application_cycle": "No central cycle is published; the award follows each institution's own admission cycle. As an example, non-EU/EEA master's applicants to the University of Copenhagen apply by 15 January for the following September intake, which is also the intake its scholarship decisions are tied to.",
+        "status": "OPEN",
+        "status_note": "There is no separate scholarship round, application window or status page. The ministry states that because the scholarships are administered by the institutions themselves, applicants should enquire at the institution of their choice for further details; the 'open round' is simply that institution's admission round (at the University of Copenhagen the September-intake application portal for non-EU/EEA applicants opens on 15 November).",
+        "tuition_coverage_note": "The ministry: 'The government scholarship consists of two parts and can be given as full or partial tuition fee waivers and/or grants towards covering your living costs.' The administering institution decides which of the two parts an individual student receives: the University of Copenhagen states the scholarship 'is granted either as full or partial tuition fee waivers and/or as an amount that covers basic living expenses', and its Faculty of Theology states it is 'only granted as partial tuition fee waivers, and not as an amount that covers basic living costs'.",
+        "funding_amount": null,
+        "funding_currency": null,
+        "funding_period": null,
+        "tuition_coverage": true,
+        "living_cost_coverage": true,
+        "travel_coverage": false,
+        "fully_funded": false,
+        "benefits": [
+          "Full or partial tuition fee waiver, as decided by the administering university",
+          "A grant towards covering living costs - some universities award it, others do not",
+          "No separate scholarship application: eligible non-EU/EEA applicants are considered automatically as part of admission",
+          "Selection is made solely on academic achievement; financial need is not taken into consideration (University of Copenhagen)",
+          "Second-year top-up awards exist at some faculties for fee-paying students who excel in year one (University of Copenhagen Faculty of Science / Faculty of Health and Medical Sciences)"
+        ],
+        "eligibility": [
+          "A citizen of a country outside the EU, the European Economic Area or Switzerland",
+          "Enrolled in a full degree higher education programme",
+          "Granted a time-limited residence permit in Denmark due to education",
+          "Not seeking admission to an Artistic Higher Education Institution",
+          "No legal claim to the rights of Danish citizens",
+          "Not eligible for a grant in accordance with Danish law regarding the State Education Fund (SU)",
+          "Not granted a residence permit under the Aliens Consolidations Act section 9c, subsection 1 as the child of a foreign citizen holding a section 9m residence permit who is a citizen of a country outside the EU/EEA",
+          "Liable to pay tuition fees - higher education is free for EU/EEA and Swiss citizens, exchange students, those with permanent residence or temporary residence with the possibility of permanent residence, and children of section 9m permit holders, so those groups fall outside the scheme"
+        ],
+        "requirements": [
+          "Meet the general entry requirements (a qualification on a level with a Danish upper secondary school leaving certificate)",
+          "Meet the specific entry requirements of the individual study programme, including subject level and grade point average",
+          "Meet the language requirements of the programme",
+          "Bachelor's applicants apply centrally through www.optagelse.dk, may prioritise up to 8 programmes, and must send a hand-signed signature page to the institution offering the programme",
+          "Documents must be uploaded before the institution's deadline, not after"
+        ],
+        "documents": [
+          "Diplomas and other documentation uploaded to www.optagelse.dk (undergraduate) or the institution's application portal",
+          "Hand-signed signature page generated after the digital application, sent separately by mail or email to the institution offering the programme",
+          "Time-limited residence permit granted for the purpose of studying in Denmark",
+          "Whatever admission documents the chosen institution's own application process requires",
+          "Proof of English proficiency equivalent to at least English B (score equivalents are set by the individual institution)"
+        ],
+        "selection_criteria": [
+          "Academic achievement alone; the University of Copenhagen states financial need is not taken into consideration",
+          "Outstanding academic record - the University of Copenhagen's Faculty of Science considers only applicants whose bachelor's grade point average is above 90%, and recipients in 2025 had a GPA of at least 98%",
+          "Only the applicant's first-priority application is considered at the University of Copenhagen's Faculty of Science",
+          "Limited number of scholarships per institution and per faculty (for example, the University of Copenhagen's Faculty of Social Sciences generally awards 2-3 per year, with a maximum of three recipients of the same nationality at the Faculty of Science)"
+        ],
+        "coverage": [
+          "Tuition fee waiver, in full or in part",
+          "Grant towards covering basic living expenses, where the institution chooses that option",
+          "Travel, installation and insurance costs are not covered by anything the ministry publishes"
+        ],
+        "application_method": [
+          "No separate scholarship application form or deadline exists - universities consider eligible non-EU/EEA applicants automatically alongside admission (University of Copenhagen: 'you do not submit an individual application for the scholarship')",
+          "Undergraduate applicants apply through the coordinated national admission system at www.optagelse.dk",
+          "Master's applicants apply through the individual university's own application portal"
+        ],
+        "application_route": "Apply for admission to the full-degree programme at your chosen Danish institution (bachelor's via www.optagelse.dk, master's via the institution's portal) by that institution's non-EU/EEA deadline; the scholarship is decided inside that admission process and communicated through the application portal or the admission offer.",
+        "study_mode": "Full-time (full degree higher education programme)",
+        "citizenship_residency": "Open to citizens of countries outside the EU, the European Economic Area and Switzerland. You must be granted a time-limited residence permit in Denmark due to education, and you are excluded if you have a legal claim to the rights of Danish citizens, if you are eligible for SU, or if you hold a residence permit under Aliens Consolidations Act section 9c, subsection 1 as the child of a section 9m permit holder from outside the EU/EEA.",
+        "international_eligibility": "Yes - the scheme exists specifically for nationals of countries outside the EU/EEA and Switzerland. EU/EEA and Swiss citizens study free of charge in Denmark and are outside the target group.",
+        "subject_or_agency_requirement": "No subject restriction, but applicants seeking admission to an Artistic Higher Education Institution are explicitly excluded. Otherwise the individual university sets its own faculty-level rules, and the number of awards varies widely between faculties.",
+        "research_requirement": null,
+        "duration": null,
+        "description": "Danish universities receive a limited number of government scholarships each year to fund highly qualified full-degree students from countries outside the EU/EEA and Switzerland. The scholarship consists of two parts and can be given as full or partial tuition fee waivers and/or grants towards covering living costs, with each university administering the award and selecting the students.",
+        "region": "Europe (Denmark)",
+        "program_type": "Government-funded tuition fee waiver, with a possible living-cost grant, administered by Danish higher education institutions",
+        "english_requirement": "A minimum of English proficiency comparable to 'English B' in the Danish upper secondary school (gymnasium) - typically an IELTS score of at least 6.5, TOEFL 79-93 (internet-based), or the Cambridge CAE. Some programmes require 'English A', one level higher (typically IELTS at least 7.0, TOEFL 94-101, or CPE). Score equivalents are determined by the individual institution, and applicants who are native English speakers must also submit proof of at least English B level."
+      },
+      "verification": {
+        "source_citations": [
+          "https://studyindenmark.dk/study-options/scholarships",
+          "https://studyindenmark.dk/study-options/tuition-fees-and-scholarships",
+          "https://www.ku.dk/studies/admission/scholarships-for-full-degree-students"
+        ],
+        "last_verified_date": "2026-10-10",
+        "verification_status": "confirmed",
+        "confidence": "high",
+        "not_confirmed": [
+          "funding_amount",
+          "funding_currency",
+          "funding_period",
+          "scheme-level application deadline or award duration (both are set institution by institution)",
+          "travel or installation support",
+          "which of the two parts (waiver vs living-cost grant) an individual applicant will receive"
+        ],
+        "notes": "Checked the ministry's own scholarships page on studyindenmark.dk for eligibility, the two-part structure and the administration model; the tuition page for the DKK 45,000-120,000 full-degree fee range that a waiver offsets; the how-to-apply and language-requirements pages for the admission route, optagelse.dk deadlines and English B/A thresholds; and the University of Copenhagen's official scholarship and deadline pages as the administering institution's published terms. Neither the ministry nor the university publishes a monetary award figure - the university describes it only as 'full or partial tuition fee waivers and/or an amount that covers basic living expenses' - so the amount fields are null rather than estimated."
+      },
+      "applicant_utility": {
+        "summary": "This is not a scholarship you apply for: it is a limited pool of tuition waivers that Danish universities hand out to the strongest non-EU/EEA students already admitted to a fee-paying full-degree programme, so your admission application is the only lever you control. The award's money and its deadline both live with the individual institution, which means the single most useful thing you can do is email your chosen university's admissions office and ask what it awards, to whom, and by when. Because selection is on academic record alone and financial need is not considered, near-top grades matter far more than a hardship statement. Treat it as a bonus that reduces tuition rather than as a package you can budget a degree on, and secure the rest of your funding before you accept a place.",
+        "best_fit": "Non-EU/EEA applicants with an outstanding, fee-liable academic record who have secured or are seeking admission to a Danish full-degree programme and can self-fund most living costs.",
+        "application_readiness_checklist": [
+          "Shortlist institutions first and email each admissions office to ask what its Danish Government Scholarship covers (tuition only, or tuition plus living costs), how many it awards, and which faculty or intake it attaches to",
+          "Confirm your bachelor's grades convert well into the Danish grading scale - at the University of Copenhagen's Faculty of Science only applicants above 90% are even considered",
+          "Make the tuition-charging programme your first priority where the institution only considers first-priority applications",
+          "Book an IELTS/TOEFL/Cambridge test early enough that the result is valid before the institution's document deadline",
+          "Have foreign qualifications assessed against ufsn.dk/recognition before you apply, and upload diplomas and transcripts ahead of the deadline rather than on it",
+          "Plan the residence permit application and its fee, and note the residence-permit rule changes that took effect on 1 October 2026 for some non-EU/EEA students"
+        ],
+        "common_rejection_risks": [
+          "Grades below the faculty's internal cut-off - at UCPH Science the 2025 recipients had a GPA of at least 98%, so a good-but-not-exceptional record can lose without any fault in the paperwork",
+          "Applying through a quota or priority the institution does not consider: only the first-priority application is screened at UCPH Science",
+          "Being excluded without realising it - Artistic Higher Education Institutions are out, as is anyone eligible for SU or with a legal claim to Danish citizens' rights",
+          "Applying to a faculty that only awards partial waivers and few or no awards, so the tuition bill stays essentially intact",
+          "Missing the deadline to accept the study place or the scholarship offer, which at UCPH causes both the place and the award to be withdrawn",
+          "Assuming a living-cost grant is included: some faculties fund tuition only, so applicants who budget on a monthly allowance end up short"
+        ],
+        "estimated_uncovered_costs": "Mostly living costs and whatever tuition a partial waiver leaves behind. The ministry's own monthly budget list implies roughly DKK 8,000-13,000+ per month (rent DKK 3,000-6,500, food DKK 2,000-3,500, insurance about DKK 300, transport DKK 300, books DKK 400-650, phone DKK 250, other personal expenses DKK 2,000), plus first-arrival costs such as a deposit and housewares, the residence permit application fee, and any non-waived tuition - annual full-degree tuition runs DKK 45,000-120,000 (EUR 6,000-16,000) according to the ministry.",
+        "document_audit": [
+          "Undergraduate applicants must mail or email a hand-signed signature page generated on optagelse.dk - it must NOT be uploaded there, and a new one is needed for every programme applied for",
+          "Every document must be uploaded before the institution's deadline; late uploads are not rescued by the application timestamp",
+          "Native English speakers still need documented English at English B level or higher, and the specific IELTS/TOEFL equivalents are set by each institution",
+          "The application needs a residence permit granted for education, so the funding proof for that permit has to exist independently of the scholarship",
+          "Award notifications arrive through the application portal or the admission offer, so applicants must keep portal access and the email address on file live"
+        ],
+        "alerts": [
+          "There is no scholarship deadline and no amount to plan on - the scheme's two parts are handed out differently by every university, sometimes by faculty",
+          "Some faculties decide only after you have been admitted and charged tuition (UCPH Theology warns you must pay by the stated tuition deadline or lose the offer, with reimbursement only if you later win), so never rely on a waiver to accept a place",
+          "Living-cost grants are taxable under Danish tax legislation at UCPH, with only some nationalities exempt",
+          "Awards are often tied to the September intake, so February-start applicants should assume they are not in scope",
+          "New residence-permit rules apply from 1 October 2026 to certain students from outside the EU/EEA and Switzerland, affecting the post-graduation job-seeking period and family permits"
+        ],
+        "submission_workflow": "Submit the institution's admission application by its non-EU/EEA deadline with every document already uploaded, then the faculty's admissions committee screens eligible applicants on academic merit and reports the award through the application portal or inside the admission offer, which you must accept within the stated window."
+      }
+    }
+  ]
+}

@@ -1,0 +1,9 @@
+{
+  "agent_id": "w3_33",
+  "shard": "w3-33",
+  "host": "ip-paris.fr",
+  "today": "2026-10-04",
+  "logo_override": null,
+  "target_ids": [95],
+  "notes": "null. The awarding body, Institut Polytechnique de Paris, is unreachable from this environment, so no page markup could be read and - decisively - no asset URL could be probed. What I tried, in order: webfetch on the stored official_source_url (https://www.ip-paris.fr/en/education/useful-information/scholarships), on https://www.ip-paris.fr/en/ and on https://www.ip-paris.fr/ - all three returned 'Transport error'; Playwright navigation to the stored URL returned net::ERR_CONNECTION_TIMED_OUT; direct Invoke-WebRequest with a browser User-Agent over https://www.ip-paris.fr/, https://ip-paris.fr/ and http://www.ip-paris.fr/ all failed with 'Unable to connect to the remote server'. DNS itself is fine - both www.ip-paris.fr and ip-paris.fr resolve to the single A record 141.94.29.222 - but raw TCP tests to that address fail on both port 80 and port 443 (TcpTestSucceeded=False), so this is a connection-level block, not a WAF and not a bad hostname, and the brief's Playwright workaround for a WAF cannot help. Rule 1 offers no escape: the shard host's only permitted fallback is a subdomain or the parent ip-paris.fr, which is the same unreachable address. With the whole domain out of reach I cannot read the site's header markup, JSON-LD, og:image or msapplication-TileImage, and rule 5 forbids inventing or constructing a logo path I have not probed, so there is nothing I can honestly report. I deliberately did not substitute a logo from a third-party mirror, an aggregator or a search result under rule 6. Honest null per rule 7."
+}

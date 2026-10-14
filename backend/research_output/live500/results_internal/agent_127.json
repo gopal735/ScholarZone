@@ -1,0 +1,138 @@
+{
+  "agent": "agent_127",
+  "records": [
+    {
+      "id": 325,
+      "official": {
+        "official_source_urls": [
+          "https://study.fsv.cuni.cz/czech-government-scholarship-developing-countries-for-the-ay-2027-28",
+          "https://msmt.gov.cz/en/scholarships/government-scholarships-developing-countries",
+          "https://msmt.gov.cz/media/wp-content/uploads/2026/08/Guidelines_2026-1.pdf"
+        ],
+        "application_link": "https://studyin.gov.cz/",
+        "catalogue_url": "https://study.fsv.cuni.cz/how-to-apply/scholarships",
+        "official_updates_url": "https://msmt.gov.cz/en/scholarships/government-scholarships-developing-countries",
+        "deadline_central": "2026-09-30",
+        "deadline_central_display": "30 September 2026",
+        "deadline_note": "The scholarship is applied for centrally through studyin.gov.cz and the applicant's Czech embassy, not through the Faculty of Social Sciences; the embassy responsible for the applicant's country sets its own interview and document deadlines, asks selected applicants to an interview, and forwards final proposals in January 2027.",
+        "application_cycle": "Academic year 2027/2028 (application period 21 August - 30 September 2026)",
+        "status": "CLOSED",
+        "status_note": "The Ministry of Education, Youth and Sports states the application period for the academic year 2027/2028 is from 21 August until 30 September 2026; that window closed before 10 October 2026 and no date for a following cycle is published.",
+        "tuition_coverage_note": "FSV UK states the scholarship 'fully covers tuition fees of selected Master's study programs and provides subsidies for health insurance and living expenses in Czechia'.",
+        "funding_amount": 16000,
+        "funding_currency": "CZK",
+        "funding_period": "per month",
+        "tuition_coverage": true,
+        "living_cost_coverage": true,
+        "travel_coverage": false,
+        "fully_funded": false,
+        "benefits": [
+          "Scholarship of CZK 16,000 per month for students of a follow-up Master's study programme (CZK 24,960 for doctoral students)",
+          "Tuition fees of the selected follow-up Master's study programme covered",
+          "Costs of accommodation, food and public transport covered by scholarship holders from the scholarship under the same conditions that apply to Czech citizens",
+          "Health services provided on the same basis as to Czech citizens while the scholarship lasts"
+        ],
+        "eligibility": [
+          "Citizens of Bosnia and Herzegovina, Georgia, Ukraine, Belarus (democratic forces), Ethiopia, Gabon, Mauritania, Zambia, Bangladesh, Cambodia, Palestine, Guatemala or Honduras",
+          "Condition for a follow-up Master's scholarship: completion of a bachelor's study programme",
+          "Neither Czech citizens, nor EU citizens, nor other foreign nationals with a permanent residence permit in the Czech Republic may apply",
+          "Each applicant may register once and submit only one application"
+        ],
+        "requirements": [
+          "Completed electronic application form on the Foreign Development Cooperation portal",
+          "Motivation letter of one A4 page emphasising the practical application of the learning and the benefit to the applicant's country of origin after graduation",
+          "All mandatory tests completed: the General Study Prerequisites Test, plus the English Language Test for English-medium studies",
+          "Signed declarations on the terms of the scholarship, on the provision of health services, and affirmation on return to the country of origin after graduation",
+          "Completion of a bachelor's study programme before the scholarship starts"
+        ],
+        "documents": [
+          "Motivation letter (one A4 page for follow-up Master's applicants)",
+          "CV with a focus on studies and employment",
+          "Photocopy of passport, if issued",
+          "Legalised copy of birth certificate with certified Czech translation",
+          "Medical confirmation about the applicant's health no more than two months old",
+          "Legalised copy of the foreign diploma including diploma supplement, with higher authentication (apostille/superlegalisation) and certified Czech translation"
+        ],
+        "selection_criteria": [
+          "The application is considered complete only after the motivation letter and all mandatory tests are completed",
+          "Incomplete applications, i.e. applications missing any mandatory attachments, will not be accepted for further consideration",
+          "The Czech Embassy responsible for the applicant's country asks selected applicants to an interview and sets the deadline for submitting documents",
+          "There is no legal claim to a scholarship award"
+        ],
+        "coverage": [
+          "Tuition fees of the selected follow-up Master's study programme",
+          "Accommodation, food and public transport from the monthly scholarship",
+          "Health services on the same basis as Czech citizens"
+        ],
+        "application_method": [
+          "Register once in the Foreign Development Cooperation programme on the studyin.gov.cz portal and fill in the electronic application form",
+          "Complete the General Study Prerequisites Test and, for English-medium studies, the English Language Test",
+          "Upload all mandatory documents to the personal account in the portal",
+          "Attend the interview requested by the Czech Embassy and submit the required documents by the deadline the Embassy sets"
+        ],
+        "application_route": "Apply electronically once through studyin.gov.cz, then engage with the Czech Embassy in the applicant's country, which interviews and shortlists applicants.",
+        "study_mode": "Full-time, standard period of study",
+        "citizenship_residency": "Open only to citizens of the thirteen listed developing countries; Czech and EU citizens and foreign nationals with permanent residence in the Czech Republic are excluded.",
+        "international_eligibility": "Open to nationals of the thirteen listed developing countries only; EU citizens cannot apply.",
+        "subject_or_agency_requirement": "Only the selected follow-up Master's programmes offered in English are eligible; at the Faculty of Social Sciences these are MEF, MFDA, GPS, IEPS, MAIN and MISS.",
+        "research_requirement": null,
+        "duration": "Standard period of full-time study, two years for the selected follow-up Master's programmes",
+        "description": "The Government of the Czech Republic funds studies of foreign nationals from listed developing countries at Czech public higher education institutions as part of its foreign development cooperation, governed by Government Resolution No. 870 of 27 November 2024. At the Faculty of Social Sciences, Charles University, the award supports selected English-taught follow-up Master's programmes.",
+        "region": "Europe",
+        "program_type": "Government scholarship under the Foreign Development Cooperation programme",
+        "english_requirement": "Applicants for government scholarships supporting English-medium studies must sit an online entrance English language test in the course of the application submission, which proves sufficient command of English."
+      },
+      "verification": {
+        "source_citations": [
+          "https://msmt.gov.cz/media/wp-content/uploads/2026/08/Guidelines_2026-1.pdf",
+          "https://msmt.gov.cz/en/scholarships/government-scholarships-developing-countries",
+          "https://study.fsv.cuni.cz/czech-government-scholarship-developing-countries-for-the-ay-2027-28"
+        ],
+        "last_verified_date": "2026-10-10",
+        "verification_status": "confirmed",
+        "confidence": "high",
+        "not_confirmed": [
+          "funding_amount is the published monthly rate for follow-up Master's holders; the doctoral rate (CZK 24,960 per month) applies to a different degree level",
+          "travel_coverage: the guidelines state travel to the Czech Republic and back are paid by the foreign national at their own cost or by the nominating party, so no travel support is published",
+          "administrative study fees: applicants are expected to have funds of approximately CZK 5,000 to CZK 8,000, which the scholarship does not pay",
+          "deadline for the 2028/2029 cycle is not published",
+          "the number of scholarship places per programme or per country is not published"
+        ],
+        "notes": "Checked the Ministry of Education, Youth and Scholarships call page, the binding Guidelines for Granting Scholarships of the Government of the Czech Republic (2026 edition) and the Faculty of Social Sciences notice; the CZK 16,000 monthly rate for follow-up Master's holders and the 21 August - 30 September 2026 window both come from official Ministry publications."
+      },
+      "applicant_utility": {
+        "summary": "This is an embassy-mediated route: you submit one application through studyin.gov.cz, sit an online general-prerequisites test plus an English test, and only then does the Czech Embassy in your country interview you, with decisions delivered by the end of June 2027. The CZK 16,000 monthly stipend is meant to cover accommodation, food and public transport, so you must still budget roughly CZK 5,000-8,000 for administrative study fees and pay your own travel to Prague. Pick one of the six eligible FSV Master's programmes before you start, because a single registration allows only one application.",
+        "best_fit": "Graduates of a bachelor's degree from one of the thirteen listed countries who can commit to a specific English-taught FSV Master's programme and can survive a long embassy interview stage.",
+        "application_readiness_checklist": [
+          "Verify your nationality is on the thirteen-country list before investing in documents",
+          "Get the diploma, diploma supplement and birth certificate apostilled or superlegalised, then certified into Czech by a sworn translator registered in the Czech Republic",
+          "Obtain a medical confirmation less than two months old on the Ministry's prescribed form and have it translated",
+          "Draft a one-page motivation letter that argues what the learning will practically change in your home country",
+          "Complete the general study prerequisites test and the English language test inside the portal, not outside it",
+          "Arrange cash for administrative study fees (about CZK 5,000-8,000) and travel, since neither is funded"
+        ],
+        "common_rejection_risks": [
+          "Missing any mandatory attachment - the guidelines say incomplete applications are not accepted for consideration at all",
+          "Missing the English Language Test or the General Study Prerequisites Test, which leaves the application formally incomplete",
+          "Submitting more than one application or registering twice, which is prohibited",
+          "A motivation letter that reads as a career plan rather than a development case for the applicant's country of origin",
+          "Documents that are legalised but not translated by a translator entered on the Czech list of sworn experts"
+        ],
+        "estimated_uncovered_costs": "Administrative study fees of roughly CZK 5,000-8,000, travel to and from the Czech Republic, anything above standard health care, and any accommodation or living shortfall beyond what the monthly scholarship covers.",
+        "document_audit": [
+          "The birth certificate needs legalisation plus a certified Czech translation, not just a notarised copy",
+          "The diploma must carry a diploma supplement and higher authentication (apostille or superlegalisation)",
+          "The medical confirmation has a two-month validity window measured against arrival, so timing it wrong forces a re-do",
+          "Three separate signed declarations are required (scholarship terms, health services terms, return to country of origin)"
+        ],
+        "alerts": [
+          "The 30 September 2026 window has closed; watch the Ministry page from August for the next cycle",
+          "Applicants already studying at a Czech university must mail a printed signed application to the Ministry of Foreign Affairs by 20 December 2026 and are assessed only after applicants from abroad",
+          "Leaving the Czech Republic for more than 30 consecutive days outside study obligations or holidays stops the scholarship payment",
+          "The Faculty of Social Sciences cannot answer application questions - queries go to registr@dzs.cz"
+        ],
+        "submission_workflow": "One electronic application in the studyin.gov.cz portal, then an embassy interview, then a January 2027 shortlist, then a decision delivered through the embassy by the end of June 2027."
+      }
+    }
+  ]
+}

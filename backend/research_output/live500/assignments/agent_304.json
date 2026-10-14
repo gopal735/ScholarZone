@@ -1,0 +1,91 @@
+{
+ "agent": "agent_304",
+ "assignment_count": 1,
+ "scholarships": [
+  {
+   "id": 683,
+   "title": "Brunei Darussalam Government Scholarship for Foreign Students Tenable in Brunei Darussalam (BDGS)",
+   "country": "Brunei",
+   "degree": "Bachelor's, Master's",
+   "funding_label": "Fully Funded",
+   "status": "upcoming",
+   "official_source": "Government of Brunei Darussalam, Ministry of Foreign Affairs and Ministry of Education",
+   "official_source_url": "https://www.mfa.gov.bn/Pages/scholarship.aspx",
+   "application_link": "https://www.mfa.gov.bn/Pages/scholarship.aspx",
+   "catalogue_url": "https://ubd.edu.bn/admission/scholarship",
+   "official_updates_url": "https://www.moe.gov.bn/department-of-scholarship-management",
+   "existing": {
+    "funding_amount": null,
+    "funding_currency": null,
+    "funding_period": null,
+    "tuition_coverage": 1,
+    "living_cost_coverage": 1,
+    "travel_coverage": 1,
+    "fully_funded": 1,
+    "description": "The Brunei Darussalam Government Scholarship for Foreign Students Tenable in Brunei Darussalam, known as BDGS, is the Government of Brunei Darussalam's scholarship scheme for international applicants, administered by the Ministry of Education with applications handled by the Ministry of Foreign Affairs through its Katalyst applicant portal. It covers undergraduate and postgraduate study at institutions in Brunei Darussalam, with tuition paid by the government plus bursaries for accommodation, books, food and personal spending, complementary medical treatment in Brunei government hospitals and travel arranged through Brunei's diplomatic missions. The applicant portal for the 2026/2027 session now displays that applications are closed, and the scheme is announced annually.",
+    "eligibility": [
+     "Be an international applicant who is not a Brunei Darussalam citizen; Brunei Darussalam nationals apply under the separate BDGS for locals scheme",
+     "Hold a place or apply for a place at an eligible institution in Brunei Darussalam, such as Universiti Brunei Darussalam",
+     "Apply through the Brunei Darussalam diplomatic mission in the applicant's country of origin",
+     "Meet the academic and language entry requirements of the chosen institution and programme"
+    ],
+    "eligibility_summary": "International applicants who are not Brunei Darussalam citizens, applying to a degree programme offered in Brunei Darussalam and applying through their Brunei Darussalam mission or through the Ministry of Foreign Affairs applicant portal.",
+    "benefits": [
+     "Government-borne tuition at universities in Brunei Darussalam",
+     "Bursaries for accommodation, books and food",
+     "Personal spending bursary",
+     "Complementary medical treatment at Brunei government hospitals",
+     "Travel expenses arranged by the Brunei Darussalam Foreign Mission in the applicant's country of origin or the nearest Brunei Darussalam mission",
+     "Access to the Bruneian higher education system for Bachelor's and Master's study"
+    ],
+    "coverage": [
+     "Tuition fees at institutions in Brunei Darussalam",
+     "Bursary for accommodation",
+     "Bursary for books",
+     "Bursary for food",
+     "Personal spending bursary",
+     "Complementary medical treatment at any Brunei Darussalam government hospital",
+     "Travel expenses arranged by the Brunei Darussalam Foreign Mission in the scholar's country of origin"
+    ],
+    "requirements": [
+     "Apply through the Brunei Darussalam Foreign Mission or the Ministry of Foreign Affairs BDGS applicant portal",
+     "Meet the entry requirements of the chosen institution and programme, including English language proficiency",
+     "Submit the documents listed in the annual Ministry announcement"
+    ],
+    "documents": [
+     "Application form completed through the Ministry of Foreign Affairs BDGS applicant portal",
+     "Academic certificates and transcripts from previous studies",
+     "Proof of identity and nationality, showing that the applicant is not a Brunei Darussalam citizen",
+     "English language proficiency evidence required by the chosen institution"
+    ],
+    "english_requirement": "English, as the medium of instruction at Bruneian institutions; specific English requirements are set by each institution and programme",
+    "application_method": [
+     "Register on the Ministry of Foreign Affairs BDGS applicant portal (apps.katalyst.gov.bn)",
+     "Complete the BDGS application for the relevant academic session",
+     "Submit supporting documents requested in the annual announcement",
+     "Coordinate with the Brunei Darussalam mission in the country of origin, which arranges travel"
+    ],
+    "selection_notes": "Applications are reviewed by the Ministry of Education and the Ministry of Foreign Affairs through the annual BDGS announcement, with award decisions tied to admission to the chosen Brunei Darussalam institution. The Ministry of Education's Department of Scholarship Management monitors government scholarship students studying abroad under Ministry of Education schemes.",
+    "best_fit": "International students from any country who want a fully funded degree in Brunei Darussalam and are able to apply through their Brunei Darussalam mission.",
+    "notes": "The scheme is sometimes referred to as BDGS (IS) to distinguish it from the BDGS for Brunei Darussalam citizens, which is administered separately. Doctor of Philosophy study at Universiti Brunei Darussalam is covered by the UBD Graduate Research Scholarship rather than BDGS.",
+    "duration": "Duration of the degree programme, up to a maximum of four years for undergraduate study and up to two years for postgraduate study under the standard BDGS terms",
+    "application_period": "Annual cycle announced by the Ministry of Education and the Ministry of Foreign Affairs, with applications submitted through the Ministry of Foreign Affairs Katalyst portal; the 2026/2027 session is now closed",
+    "deadline_display": "The Ministry of Foreign Affairs BDGS applicant portal for the 2026/2027 academic session now shows \"This application is now closed\"; the scheme is opened annually by the Ministry of Education and the Ministry of Foreign Affairs, so the 2027/2028 window is expected to follow the same annual cycle",
+    "deadline_date": null,
+    "region": "Asia",
+    "program_type": "Government scholarship",
+    "applicant_utility": null,
+    "official_details": null
+   },
+   "missing_fields": [
+    "funding_amount",
+    "funding_currency",
+    "funding_period",
+    "deadline_date",
+    "applicant_utility",
+    "official_details"
+   ]
+  }
+ ],
+ "result_file": "C:\\Users\\GopaL\\Desktop\\Projects folder\\ScholarZone\\backend\\research_output\\live500\\results\\agent_304.json"
+}

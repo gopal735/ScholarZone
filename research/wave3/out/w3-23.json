@@ -1,0 +1,21 @@
+{
+  "agent_id": "w3_23",
+  "shard": "w3-23",
+  "host": "escardio.org",
+  "today": "2026-10-04",
+  "logo_override": {
+    "url": "https://escelearning.escardio.org/_nuxt/img/ESC-Acronym.fa0b837.png",
+    "page_url": "https://www.escardio.org/education/career-development/grants/hfa-grants-programme/",
+    "official_host": true,
+    "alt_text": "ESC - European Society of Cardiology",
+    "validation_result": "verified",
+    "validation_detail": "png, probed via webfetch -> 'Image fetched successfully' (HTTP 200 + image content type); full-colour ESC lockup, crimson heart mark + black 'ESC' lettering, dark on a light card",
+    "image_kind": "official_logo",
+    "image_format": "png",
+    "verified_at": "2026-10-04T00:00:00+00:00",
+    "host_evidence": "same_registrable_domain",
+    "_award": "HFA Research and Training Grants Programme (Heart Failure Association of the European Society of Cardiology)"
+  },
+  "target_ids": [580],
+  "notes": "Awarding body is the European Society of Cardiology (HFA is its Heart Failure Association), so the ESC corporate mark is correct. Both the programme page and the ESC homepage served their header/footer logos from the third-party CDN images1/images3.cmp.optimizely.com, which rule 1 rejects (a CDN mirror is not the body's own domain), so I did not use those. On www.escardio.org itself the only on-domain mark is /ClientResources/Icons/Escardio/favicon-32x32.png (probed OK) and /ClientResources/Icons/Escardio/favicon.ico (probed -> 'Unsupported image format: image/x-icon', i.e. 200 + ico) - bare favicons, which the brief says to use only when no wordmark exists. I then read the ESC eLearning platform at escelearning.escardio.org, a subdomain of the shard host (rule 1 explicitly allows a subdomain), whose markup references its own bundled logo files under /_nuxt/img/. Two are the body's own marks and both probed 200 with an image content type: ESC-Acronym.fa0b837.png (ESC heart + 'ESC', chosen: ESC is the legal awarding entity named in the official_source_url, HFA is its constituent association) and HFA-Acronym.ead8b3f.png (gold/red heart + 'HFA', the narrower association mark). Rule 3 checked: both are dark-on-light, no white-on-transparent variant. Also tried and rejected /assets/logo.svg and /brand/logo.svg from the brief's common-path list - both HTTP 404."
+}

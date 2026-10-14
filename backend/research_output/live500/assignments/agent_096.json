@@ -1,0 +1,85 @@
+{
+ "agent": "agent_096",
+ "assignment_count": 1,
+ "scholarships": [
+  {
+   "id": 275,
+   "title": "Master International Scholarship – Bergen",
+   "country": "Norway",
+   "degree": "Master's",
+   "funding_label": "Fully Funded",
+   "status": "upcoming",
+   "official_source": "BI Norwegian Business School",
+   "official_source_url": "https://www.bi.no/en/programmes-and-individual-courses/scholarships/master-of-science-international-scholarship--bergen",
+   "application_link": "https://www.bi.no/en/programmes-and-individual-courses/scholarships/master-of-science-international-scholarship--bergen",
+   "catalogue_url": null,
+   "official_updates_url": "https://www.bi.no/en/programmes-and-individual-courses/scholarships/master-of-science-international-scholarship--bergen",
+   "existing": {
+    "funding_amount": null,
+    "funding_currency": null,
+    "funding_period": null,
+    "tuition_coverage": 1,
+    "living_cost_coverage": 0,
+    "travel_coverage": 0,
+    "fully_funded": 1,
+    "description": "The Master International Scholarship – Bergen is awarded to applicants with a strong academic record admitted to any MSc programme at BI's Bergen campus. It covers full tuition fees for up to two years provided the student maintains the scholarship recipients' academic progression requirements, and no living-expense stipend is stated for this award. Eligibility requires international citizenship without Norwegian residency and a minimum overall GPA of 4.0 on the ECTS scale, and only candidates seeking their first master's degree are considered. Applications are submitted through the BI online portal together with the admission application before 1 March.",
+    "eligibility": [
+     "International citizenship and not a resident of Norway",
+     "Strong academic record with a minimum overall GPA of 4.0 on the ECTS scale (international grades converted by BI)",
+     "Admission to a Master of Science degree programme at campus Bergen",
+     "Only candidates seeking their first master's degree are considered",
+     "International citizens who completed a bachelor's degree in Norway are treated as domestic applicants and are not eligible for this scholarship"
+    ],
+    "eligibility_summary": "International citizens who are not residents of Norway, with a minimum overall GPA of 4.0 on the ECTS scale, admitted to an MSc programme at BI's Bergen campus, seeking their first master's degree.",
+    "benefits": [
+     "Full tuition fees for up to two years",
+     "Recognition as a BI Ambassador"
+    ],
+    "coverage": [
+     "Full tuition fees for up to two years",
+     "No living-expense stipend is stated for this scholarship",
+     "No travel, housing or insurance coverage stated"
+    ],
+    "requirements": [
+     "Apply for the scholarship at the same time as the admission application on BI's online portal",
+     "Upload the combined CV and one-page scholarship letter to the section marked 'Scholarship'",
+     "Submit the complete admission documentation in the same application",
+     "Accept the offer of admission for the scholarship application to be considered",
+     "No documentation submitted after the application will be accepted",
+     "Maintain 30 ECTS per semester and a cumulative GPA of at least 'B' on the BI ECTS scale"
+    ],
+    "documents": [
+     "CV/resume",
+     "Scholarship application letter of a maximum one page, combined with the CV into a single PDF",
+     "All documentation required for admission evaluation to an MSc programme"
+    ],
+    "english_requirement": null,
+    "application_method": [
+     "Scholarship materials are uploaded to the 'Scholarship' section of the same online application used for admission. Applications for scholarship are not accepted by email."
+    ],
+    "selection_notes": "Awarded on academic merit, not financial need, assessed on the ECTS scale with international grades converted by BI. BI ensures distribution across MSc programmes and reserves the right to prioritise specific programmes, diversity, gender distribution or partner schools. Applicants who also apply for the BI Presidential Scholarship are considered for this scholarship without a separate letter. Decisions are final and cannot be appealed.",
+    "best_fit": "International master's students at BI Bergen campus",
+    "notes": null,
+    "duration": "Up to two years of full tuition fees",
+    "application_period": "Annual: scholarship materials uploaded with the admission application before 1 March; results notified by the end of April.",
+    "deadline_display": "Application deadline is March 1. International applicants must upload a complete application for admission, including the scholarship application, to the online application portal. Applications for scholarship are not accepted by email. Late applications will not be considered.",
+    "deadline_date": null,
+    "region": "Europe",
+    "program_type": "Merit-based tuition fee scholarship",
+    "applicant_utility": null,
+    "official_details": null
+   },
+   "missing_fields": [
+    "funding_amount",
+    "funding_currency",
+    "funding_period",
+    "english_requirement",
+    "notes",
+    "deadline_date",
+    "applicant_utility",
+    "official_details"
+   ]
+  }
+ ],
+ "result_file": "C:\\Users\\GopaL\\Desktop\\Projects folder\\ScholarZone\\backend\\research_output\\live500\\results\\agent_096.json"
+}

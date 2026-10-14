@@ -1,0 +1,137 @@
+{
+  "agent": "agent_334",
+  "records": [
+    {
+      "id": 728,
+      "official": {
+        "official_source_urls": [
+          "https://www2.daad.de/deutschland/stipendium/datenbank/en/21148-scholarship-database/?detail=57742130"
+        ],
+        "application_link": "https://www2.daad.de/deutschland/stipendium/datenbank/en/21148-scholarship-database/?detail=57742130",
+        "catalogue_url": null,
+        "official_updates_url": null,
+        "deadline_central": null,
+        "deadline_central_display": null,
+        "deadline_note": "Applications are possible only between 1 June and the stated annual application deadline; DAAD updates deadlines annually in the second quarter on the programme page. The portal is currently closed between cycles.",
+        "application_cycle": "Annual cycle; funding must begin in 2027, usually on 1 October 2027, for winter term 2027/28 only",
+        "status": "CLOSED",
+        "status_note": "The DAAD page states that you currently cannot apply for this programme and refers to the application deadline shown under the Application procedure tab; the portal only appears during the annual window.",
+        "tuition_coverage_note": "The DAAD does not cover tuition fees; only tuition-free Master's degree programmes qualify.",
+        "funding_amount": 992,
+        "funding_currency": "EUR",
+        "funding_period": "per month",
+        "tuition_coverage": false,
+        "living_cost_coverage": true,
+        "travel_coverage": true,
+        "fully_funded": false,
+        "benefits": [
+          "Monthly scholarship payments of 992 euros",
+          "Payments towards health, accident and personal liability insurance cover",
+          "Travel allowance (upon application only)",
+          "Annual study allowance of 460 euros",
+          "On application: monthly rent subsidy, monthly allowance for accompanying family members, subsidy for justified costs in case of disability or chronic illness, reimbursement of carbon offset payments for air travel",
+          "Language benefits on application: payment of online language course fees, a German language course in Germany before the programme, an allowance for a personally chosen German course, and reimbursement of TestDaF or DSH test fees"
+        ],
+        "eligibility": [
+          "High-achieving students from developing and emerging countries; country eligibility is checked against the DAAD list (e.g. Ghana, Kenya, Indonesia, Mexico, Vietnam, Peru, Colombia, Jordan and others)",
+          "First degree recognised in Germany (e.g. Bachelor's degree) completed by the application deadline at the latest",
+          "Cannot already hold a Master's degree by the application deadline",
+          "Most recent university degree should not date back more than 6 years at the time of the application deadline",
+          "Cannot have been resident in Germany for longer than 15 months at the application deadline",
+          "Above-average academic performance",
+          "Admission to a full-time, on-campus Master's in mathematics, computer science, natural sciences or engineering at a German state or state-recognised university, starting winter term 2027/28; the programme must be tuition-free and must not have already begun in Germany"
+        ],
+        "requirements": [
+          "Only complete applications with all mandatory documents are considered; incomplete applications are excluded for formal reasons",
+          "Proof of at least level B1 in the language of instruction must be provided to the DAAD when applying for the scholarship",
+          "Applicants are themselves responsible for submitting the university admission application by its due date"
+        ],
+        "documents": [
+          "Full curriculum vitae in tabular form (max. 3 pages)",
+          "Letter of motivation, 1 to 3 pages",
+          "Letter of admission to the study programme at the host university (or submitted before the funding period begins)",
+          "Form 'Information about your preferred master programmes' (up to 5 programmes)",
+          "Current transcript of records with individual grades",
+          "All university degree certificates already obtained, with transcripts for all academic years (provisional document if not yet issued)",
+          "Language certificate for the language of instruction (no older than 3 years, at least B1)",
+          "One recent letter of recommendation on the DAAD form from a university teacher",
+          "Passport or national identity card (for refugees: refugee ID card and UNHCR registration or official proof of asylum)"
+        ],
+        "selection_criteria": [
+          "Academic qualification: academic achievements, course of studies, knowledge of the language of instruction, relevant internships and work experience",
+          "Quality of the study project and of the preparation: choice of degree programme, host university and establishment of contacts, and integration into the academic career path",
+          "Potential of the applicant: motivation, prospects for further development, extracurricular commitment",
+          "Equal-opportunity aspects are considered; the committee can take account of special life circumstances such as disability, chronic illness, raising children, refugee background or work undertaken to finance studies"
+        ],
+        "coverage": [
+          "Monthly scholarship payments of 992 euros",
+          "Payments towards health, accident and personal liability insurance",
+          "Travel allowance (upon application only)",
+          "Annual study allowance of 460 euros",
+          "Tuition fees are not covered - the DAAD does not cover tuition and formally excludes Master's programmes that charge fees"
+        ],
+        "application_method": [
+          "Register in the DAAD portal between 1 June and the application deadline",
+          "Generate the letter of recommendation form in the portal and send it to your university teacher",
+          "Complete the online application and upload all documents as PDF files",
+          "Submit online - the portal closes at 24:00 CET/CEST on the last application day"
+        ],
+        "application_route": "Online through the DAAD portal during the annual window; applications are only possible from the listed eligible countries",
+        "study_mode": "Full-time, on-campus Master's degree",
+        "citizenship_residency": "Eligibility depends on the country you live in and apply from, which must appear on the DAAD list for this programme",
+        "international_eligibility": "Yes - aimed at international students from developing and emerging countries",
+        "subject_or_agency_requirement": "STEM disciplines only: mathematics, computer science, natural sciences and engineering; interdisciplinary programmes require a designated STEM focus; funded by the German Federal Foreign Office",
+        "research_requirement": null,
+        "duration": "Funding is provided for 10 months to a maximum of 24 months depending on the standard period of study, usually beginning 1 October 2027 or earlier with a prior German language course",
+        "description": "The programme supports the qualification and employability of young academics from developing and emerging countries by funding a complete, tuition-free STEM Master's degree at a German university.",
+        "region": "Germany",
+        "program_type": "Government-funded Master's scholarship (German Federal Foreign Office, administered by DAAD)",
+        "english_requirement": "At least level B1 in the language of instruction must be proven to the DAAD when applying; the language of instruction is German, or English in international programmes, and accepted English certificates include IELTS, TOEFL iBT, Cambridge and Duolingo English Test"
+      },
+      "verification": {
+        "source_citations": [
+          "https://www2.daad.de/deutschland/stipendium/datenbank/en/21148-scholarship-database/?detail=57742130"
+        ],
+        "last_verified_date": "2026-10-10",
+        "verification_status": "confirmed",
+        "confidence": "high",
+        "not_confirmed": [
+          "deadline_central"
+        ],
+        "notes": "The DAAD scholarship database entry (detail 57742130) was fetched live; monthly amount, allowances, eligibility, documents and selection process were confirmed on DAAD's own domain. The exact annual application date is not published inline - DAAD states it updates deadlines in the second quarter - so the date is recorded as not confirmed."
+      },
+      "applicant_utility": {
+        "summary": "Two gates decide this scholarship before you write a single line: your country of application must be on DAAD's eligible list, and every programme you name must be tuition-free at a state or state-recognised university, because DAAD formally excludes programmes that charge fees. The monthly award is EUR 992 plus insurance payments, a travel allowance on application and an annual study allowance of EUR 460 - enough to live on in Germany but not to also cover fees. Since the portal only opens on 1 June and closes hard at midnight on the deadline day, treat late May as your real target for a complete dossier, and expect an interview with an independent committee of university teachers after document pre-selection.",
+        "best_fit": "Recent STEM graduates (typically within six years of the first degree) from a listed developing or emerging country who want a tuition-free German Master's.",
+        "application_readiness_checklist": [
+          "Confirm your country of application appears in the eligible-country list on the DAAD page before investing effort",
+          "Shortlist only full-time, on-campus, tuition-free STEM Master's programmes starting in winter term 2027/28 and note their separate university admission deadlines",
+          "Request the DAAD recommendation form from your professor through the portal once the window opens - it can only be generated then",
+          "Secure at least a B1 language certificate for the language of instruction, no older than three years",
+          "Prepare every listed document as PDF; incomplete applications are formally excluded"
+        ],
+        "common_rejection_risks": [
+          "Naming any programme that charges tuition fees - formally excluded from consideration",
+          "An incomplete dossier, since all listed documents are mandatory",
+          "Already holding a Master's degree, or a first degree older than roughly six years",
+          "More than 15 months of residence in Germany at the deadline",
+          "No admission letter by the time funding begins"
+        ],
+        "estimated_uncovered_costs": "Tuition wherever a programme charges it, visa and language test fees that DAAD does not reimburse, and the period before the first monthly payment",
+        "document_audit": [
+          "If your degree certificate is not yet issued, upload a provisional document and supply the original before the scholarship starts",
+          "The recommendation letter must be on the official DAAD form generated inside the portal",
+          "Transcripts must show individual grades per academic year, not only final averages",
+          "Documents in your national language need German or English translations uploaded together with the originals"
+        ],
+        "alerts": [
+          "The portal is only available from 1 June until the annual deadline - outside that window there is no way to apply",
+          "Funding begins in 2027, usually 1 October 2027, and only for winter term 2027/28 starts",
+          "The personal interview is described as a decisive element of assessment, not a formality",
+          "Academic achievements after the first year are reassessed before the scholarship continues"
+        ],
+        "submission_workflow": "Register in the DAAD portal from 1 June, generate the recommendation form, upload all documents and submit before the deadline; document pre-selection follows, then an interview with the independent selection committee."
+      }
+    }
+  ]
+}

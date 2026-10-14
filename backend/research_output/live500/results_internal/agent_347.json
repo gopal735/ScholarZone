@@ -1,0 +1,276 @@
+[
+  {
+    "id": 222,
+    "official": {
+      "programme": "Helmut Veith Stipend",
+      "university": "Vienna University of Technology (TU Wien)",
+      "country": "Austria",
+      "region": "Europe",
+      "degree_level": "Master's",
+      "funding_label": "EUR 7,000 per year plus tuition fee waiver",
+      "official_source_urls": [
+        "https://www.tuwien.at/studium/studieren-an-der-tuw/stipendien-und-beihilfen/helmut-veith-stipendium"
+      ],
+      "application_link": "https://jobs.tuwien.ac.at/Job/270266",
+      "catalogue_url": null,
+      "official_updates_url": "https://www.tuwien.at/studium/studieren-an-der-tuw/stipendien-und-beihilfen/helmut-veith-stipendium",
+      "deadline_central": "2026-11-30",
+      "deadline_central_display": "November 30th (annually)",
+      "deadline_note": "TU Wien states 'Annual Deadline: November 30th'. Applications may be filed before or in parallel with the admissions process.",
+      "application_cycle": "Annual round, deadline every 30 November",
+      "status": "OPEN",
+      "status_note": "TU Wien's scholarship page publishes an annual deadline of 30 November and directs applicants to submit electronically through the TU Wien job portal.",
+      "tuition_coverage_note": "Waiver of tuition fees at TU Wien",
+      "funding_amount": 7000,
+      "funding_currency": "EUR",
+      "funding_period": "per year (annually awarded, duration up to two years)",
+      "tuition_coverage": true,
+      "living_cost_coverage": null,
+      "travel_coverage": null,
+      "fully_funded": false,
+      "benefits": [
+        "EUR 7000 per year",
+        "Waiver of tuition fees at TU Wien",
+        "Annually awarded",
+        "Fund set up by TU Wien, the Wolfgang Pauli Institute and the colleagues and friends of the late Prof. Veith"
+      ],
+      "eligibility": [
+        "Female students in the field of computer science (CS)",
+        "Female students who (plan to) pursue one of the Master's programmes in Computer Science at TU Wien taught in English",
+        "Applicants must be eligible for admission to one of the Master's Programmes in Computer Science at TU Wien that are taught in English",
+        "Applicants must have (or have the interest to develop) a solid mathematical and technical background in at least one of the areas in which Austrian scientist Helmut Veith worked"
+      ],
+      "requirements": [
+        "Applications for funding can be filed before or in parallel with the admissions process",
+        "The funding will only be awarded to applicants who have been unconditionally admitted to the Master's programme",
+        "An application for funding does not replace the admissions process; neither does a conditional offer of funding entitle the applicant to study at TU Wien",
+        "The application must be submitted electronically via the TU Wien job portal"
+      ],
+      "documents": [
+        "Electronic application submitted via the TU Wien job portal"
+      ],
+      "selection_criteria": [
+        "Annually awarded to female students in the field of computer science",
+        "Applicants must have, or be willing to develop, a solid mathematical and technical background in at least one of Helmut Veith's areas: logic in computer science, computer-aided verification, software engineering, or computer security",
+        "Eligibility for admission to one of the English-taught Master's Programmes in Computer Science at TU Wien"
+      ],
+      "coverage": [
+        "EUR 7000 per year",
+        "Waiver of tuition fees at TU Wien",
+        "TU Wien publishes no statement on living, travel or accommodation costs"
+      ],
+      "application_method": [
+        "Submit the application electronically via the TU Wien job portal before 30 November",
+        "Applications may be filed before or in parallel with the admissions process, but unconditional admission to the Master's programme is required for the funding to be awarded"
+      ],
+      "application_route": "Submit the application electronically via the TU Wien job portal; the funding is only awarded to applicants who have been unconditionally admitted to the Master's programme.",
+      "study_mode": "Full-time Master's programme at TU Wien",
+      "citizenship_residency": "TU Wien's scholarship page publishes no nationality restriction; TU Wien reporting describes the stipend as given to exceptionally talented female students coming to Vienna from abroad to take up a master's program in Informatics",
+      "international_eligibility": "Yes - TU Wien reporting on the awards ceremony describes the stipend as being given annually to exceptionally talented female students coming to Vienna from abroad",
+      "subject_or_agency_requirement": "Female students in computer science applying to one of the English-taught Master's programmes in Computer Science at TU Wien: Master in Data Science, Master in Business Informatics, Master in Logic and Artificial Intelligence, Master in Media and Human-Centered Computing, Master in Software Engineering, Master in Quantum Information Science and Technology, Master in Embedded Computing Systems, or Master in Visual Computing",
+      "research_requirement": null,
+      "duration": "EUR 7000 per year; the stipend is annually awarded, with TU Wien reporting holders over up to two years",
+      "description": "The Helmut Veith Stipend for female master students is dedicated to the memory of Professor Helmut Veith (1971-2016), an outstanding computer scientist who worked in the fields of logic in computer science, computer-aided verification, software engineering, and computer security. The fund is set up by TU Wien, the Wolfgang Pauli Institute and the colleagues and friends of the late Prof. Veith.",
+      "program_type": "Merit-based scholarship for female computer science master's students",
+      "english_requirement": "Applicants must be eligible for admission to one of the Master's Programmes in Computer Science at TU Wien that are taught in English (eight currently listed programmes)"
+    },
+    "verification": {
+      "source_citations": [
+        "https://www.tuwien.at/studium/studieren-an-der-tuw/stipendien-und-beihilfen/helmut-veith-stipendium",
+        "https://jobs.tuwien.ac.at/Job/270266"
+      ],
+      "last_verified_date": "2026-10-10",
+      "verification_status": "confirmed",
+      "confidence": "high",
+      "not_confirmed": [
+        "required_documents_list_beyond_the_job_portal_form",
+        "detailed_selection_criteria_and_scoring",
+        "living_cost_coverage",
+        "travel_coverage",
+        "exact_award_duration_per_recipient"
+      ],
+      "notes": "Award amount (EUR 7000 per year), tuition fee waiver, annual 30 November deadline, the eight eligible English-taught Computer Science master's programmes and the electronic application route via the TU Wien job portal were read directly on TU Wien's own scholarship page. TU Wien does not enumerate the documents required beyond the job-portal application, nor publish a detailed scoring scheme, and makes no statement on living or travel costs."
+    },
+    "applicant_utility": {
+      "summary": "The Helmut Veith Stipend gives female computer science master's students EUR 7,000 per year plus a full tuition fee waiver at TU Wien, and it is open to applicants to any of eight English-taught CS master's programmes including Logic and Artificial Intelligence, Software Engineering, Visual Computing and Embedded Computing Systems. The annual deadline is 30 November, and you may apply for the stipend before or in parallel with your admission. The catch is that funding is only released once you have unconditional admission, so the stipend application and the admissions application have to be run in parallel, not one after the other.",
+      "best_fit": "Women with a strong mathematics and technical foundation in one of Helmut Veith's fields - logic in computer science, computer-aided verification, software engineering or computer security - who want an English-taught TU Wien master's in an area where they already have depth. Applicants who intend to build that background during their studies are explicitly welcome too, so a demonstrable aptitude and a plan count alongside completed coursework.",
+      "application_readiness_checklist": [
+        "Pick one of the eight English-taught Master's Programmes in Computer Science at TU Wien and confirm you are eligible for admission",
+        "Start the admission application in parallel - the stipend does not replace it",
+        "Note your mathematical and technical background against logic, verification, software engineering or computer security",
+        "Prepare the electronic application in the TU Wien job portal",
+        "Submit the stipend application before 30 November",
+        "Hold any evidence you will need for the admission decision (transcripts, degree certificate, English proof)"
+      ],
+      "common_rejection_risks": [
+        "Missing the 30 November annual deadline",
+        "Assuming the stipend application covers the admissions application - TU Wien states it does not",
+        "Applying while holding only a conditional admission or no admission yet and expecting payment",
+        "Choosing a Computer Science-related master's programme that is not on the eight-programme English-taught list",
+        "No evidence of mathematical or technical depth in any of Helmut Veith's fields",
+        "Expecting the stipend to cover rent and living costs - it does not"
+      ],
+      "estimated_uncovered_costs": "Even with the tuition waiver, you must fund approximately EUR 11,000 to 15,000 a year of living costs in Vienna, plus the Students Union fee, health insurance, travel and any material costs, out of the EUR 7,000 and your own funds.",
+      "document_audit": "TU Wien does not publish a document list for this stipend beyond the job-portal application, so keep your degree certificate, transcripts, English-language proof and CV ready for immediate upload when the portal form requests them.",
+      "alerts": [
+        "Annual deadline: 30 November",
+        "Applications may be filed before or in parallel with the admissions process, but funding is only awarded to unconditionally admitted applicants",
+        "Funding for this stipend is set up by TU Wien, the Wolfgang Pauli Institute and the colleagues and friends of Prof. Veith, so award numbers can be small",
+        "The stipend is restricted to female students in computer science"
+      ],
+      "submission_workflow": [
+        "Select one of the eight English-taught Computer Science master's programmes",
+        "Open the TU Wien job-portal posting for the Helmut Veith Stipend",
+        "Complete the electronic application, documenting your mathematical and technical background in Veith's fields",
+        "Submit before 30 November",
+        "In parallel, complete and secure your unconditional admission to the master's programme",
+        "Once admitted, the funding is awarded and the tuition fee waiver is applied"
+      ]
+    }
+  },
+  {
+    "id": 226,
+    "official": {
+      "programme": "Mannagetta Fellowships",
+      "university": "Austrian Academy of Sciences (OeAW)",
+      "country": "Austria",
+      "region": "Europe",
+      "degree_level": "PhD",
+      "funding_label": "EUR 25,000 completion fellowship, 12 months",
+      "official_source_urls": [
+        "https://stipendien.oeaw.ac.at/en/fellowships/mannagetta",
+        "https://stipendien.oeaw.ac.at/en/fellowships/mannagetta/mannagetta-application"
+      ],
+      "application_link": "https://stipendien.oeaw.ac.at/en/fellowships/mannagetta/mannagetta-application",
+      "catalogue_url": "https://stipendien.oeaw.ac.at/fileadmin/subsites/stipendien/pdf/Mannagetta_Praedoc/MANNAGETTA_Fellowships_program_statutes_2025.pdf",
+      "official_updates_url": "https://stipendien.oeaw.ac.at/en/fellowships/mannagetta",
+      "deadline_central": "2026-10-20",
+      "deadline_central_display": "20 October 2026, 2 p.m. CEST",
+      "deadline_note": "Submission deadline 20 October 2026 at 2 p.m. CEST. After receipt of the application, changes or the submission of missing documents are no longer possible.",
+      "application_cycle": "Annual call; one or two fellowships granted per year",
+      "status": "OPEN",
+      "status_note": "The current round closes on 20 October 2026 at 2 p.m. CEST; the programme statutes page and the award-committee page are published alongside the call.",
+      "tuition_coverage_note": null,
+      "funding_amount": 25000,
+      "funding_currency": "EUR",
+      "funding_period": "one award covering a 12-month fellowship",
+      "tuition_coverage": false,
+      "living_cost_coverage": null,
+      "travel_coverage": null,
+      "fully_funded": false,
+      "benefits": [
+        "Amount of fellowship: EUR 25,000",
+        "Duration of the fellowship: 12 months",
+        "One or two fellowships can be granted per year",
+        "Financed from the funds of the Johann Wilhelm Ritter von Mannagetta Foundation at the Austrian Academy of Sciences",
+        "Aims to allow the applicants to finish their doctoral theses"
+      ],
+      "eligibility": [
+        "Young, highly qualified doctoral candidates pursuing doctoral studies at a university in Austria",
+        "Doctoral or PhD studies started no more than three years ago (the deadline is the submission date)",
+        "The applicants need another twelve months to complete their doctoral theses",
+        "The dissertation project must be in one of the subject areas: Archaeology; Prehistory and Early History, Ancient History, Medieval History; Art History, Music History; Philosophy; Law"
+      ],
+      "requirements": [
+        "Applications can be submitted in either German or English",
+        "After receipt of the application, changes or the submission of missing documents are no longer possible",
+        "Only applications meeting the formal criteria are included in the review process",
+        "The completed documents have to be uploaded in the online form as a total of 2 PDF files; protected files are not accepted",
+        "Individual files may not exceed 10 MB",
+        "A signed, printed form has to be returned by replying to the e-mail of the online form confirmation"
+      ],
+      "documents": [
+        "Tabular CV and a list of publications",
+        "Statement of the dissertation supervisor referring to the scientific qualifications of the applicant, the dissertation project (in particular question and method, significance for the field), and the expected completion of the dissertation, and confirming that financing from third-party funds or funds from the institute is not possible",
+        "Proof of previous university qualifications: Master's degree certificate and a list of all examinations passed during doctoral studies",
+        "Description of the dissertation project of 10 to 15 pages including theoretical foundations and research question(s), preparatory work already carried out, and a detailed time and work plan for the requested funding period",
+        "Abstract of the project description in German, maximum 1 to 2 pages"
+      ],
+      "selection_criteria": [
+        "One or two fellowships can be granted per year",
+        "The applications are checked against the formal criteria; only applications meeting the formal criteria are included in the review process",
+        "The awarding of the Mannagetta Fellowships is handled by the awarding committee of the Mannagetta Foundation"
+      ],
+      "coverage": [
+        "EUR 25,000 stipend for a 12-month fellowship period",
+        "The programme statutes published by the Austrian Academy of Sciences govern the detailed conditions"
+      ],
+      "application_method": [
+        "Read the general information and the programme statutes first",
+        "Register in the online form",
+        "Prepare the application documents and the project documents in advance",
+        "Upload the completed documents as a total of 2 PDF files",
+        "Reply to the confirmation e-mail with the signed printed form"
+      ],
+      "application_route": "Register in the OeAW online form, upload the application and project documents as two unprotected PDF files of no more than 10 MB each, and return the signed printed form as a reply to the confirmation e-mail.",
+      "study_mode": "Full-time doctoral research at a university in Austria",
+      "citizenship_residency": "Doctoral studies at a university in Austria; the OeAW publishes no citizenship restriction",
+      "international_eligibility": "Not specified on the OeAW page; the stated requirement is doctoral studies at a university in Austria",
+      "subject_or_agency_requirement": "Dissertation project in Archaeology; Prehistory and Early History, Ancient History and Medieval History; Art History and Music History; Philosophy; or Law",
+      "research_requirement": "A 10 to 15 page description of the dissertation project including theoretical foundations and research questions, preparatory work already carried out, and a detailed time and work plan for the requested funding period, plus a 1 to 2 page abstract in German",
+      "duration": "12 months",
+      "description": "Mannagetta Fellowships support the completion of a doctoral thesis in archaeology, prehistory and early history, ancient history, medieval history, art history, music history, philosophy and law. The fellowships are financed from the funds of the Johann Wilhelm Ritter von Mannagetta Foundation at the Austrian Academy of Sciences, and one or two fellowships can be granted per year.",
+      "program_type": "Completion fellowship for doctoral candidates in the humanities, law and arts",
+      "english_requirement": "Applications can be submitted in either German or English"
+    },
+    "verification": {
+      "source_citations": [
+        "https://stipendien.oeaw.ac.at/en/fellowships/mannagetta",
+        "https://stipendien.oeaw.ac.at/en/fellowships/mannagetta/mannagetta-application"
+      ],
+      "last_verified_date": "2026-10-10",
+      "verification_status": "confirmed",
+      "confidence": "high",
+      "not_confirmed": [
+        "living_cost_coverage",
+        "travel_coverage",
+        "tuition_coverage",
+        "awarding_committee_composition_and_detailed_selection_criteria"
+      ],
+      "notes": "Fellowship amount of EUR 25,000, the 12-month duration, the 20 October 2026 2 p.m. CEST deadline, eligibility rules including the three-year doctoral-study limit, the seven subject areas, the document list and the two-PDF submission rules were read directly on the Austrian Academy of Sciences' own Mannagetta pages. The detailed conditions in the programme statutes PDF could not be parsed during verification, so no living-cost, travel or tuition coverage is recorded, and the awarding committee page was not read."
+    },
+    "applicant_utility": {
+      "summary": "Mannagetta Fellowships are completion fellowships of EUR 25,000 for twelve months, aimed at doctoral candidates in Austria in archaeology, ancient and medieval history, art and music history, philosophy or law who started their doctorate no more than three years ago and need exactly one more year to finish. There are only one or two fellowships per year, so the pool is very small. The strongest part of the file is the supervisor's statement, which has to confirm that third-party or institute funding is not possible - that is the gate that makes this a completion fellowship rather than a general stipend.",
+      "best_fit": "Late-stage doctoral candidates in the seven eligible disciplines who have a complete, realistic twelve-month writing plan and whose supervisor will state that no other funding route exists. Anyone whose doctorate started more than three years ago, or who needs more than twelve months, should look elsewhere - the rules on both are explicit and unforgiving.",
+      "application_readiness_checklist": [
+        "Confirm your doctoral or PhD studies at an Austrian university started no more than three years before the submission date",
+        "Confirm your dissertation is in archaeology, prehistory and early history, ancient history and medieval history, art history and music history, philosophy, or law",
+        "Draft the 10 to 15 page project description: theoretical foundations, research questions, preparatory work, detailed time and work plan",
+        "Write the German abstract of the project description (1 to 2 pages)",
+        "Assemble the list of all examinations passed during doctoral studies and the Master's certificate",
+        "Ask your supervisor for the written statement, including the confirmation that third-party or institute financing is not possible",
+        "Prepare the CV and publication list",
+        "Merge into two unprotected PDF files of at most 10 MB each and register in the OeAW online form",
+        "Return the signed printed form by replying to the confirmation e-mail",
+        "Submit before 20 October 2026, 2 p.m. CEST"
+      ],
+      "common_rejection_risks": [
+        "Missing the hard 2 p.m. CEST cut-off on 20 October 2026 - after receipt, changes or additional documents are not possible",
+        "Doctoral studies that started more than three years before submission",
+        "A project description shorter than 10 pages or longer than 15, or without a detailed time and work plan",
+        "A supervisor statement that omits the confirmation that third-party or institute funding is not possible",
+        "Protected or password-secured PDFs, or a single file over 10 MB",
+        "A dissertation outside the seven listed subject areas",
+        "A work plan that plainly needs more than twelve months"
+      ],
+      "estimated_uncovered_costs": "The OeAW publishes no statement on what the EUR 25,000 covers or what it excludes. Any travel, translation, publication or additional academic costs during the twelve months need to be met from the stipend itself or from other funds.",
+      "document_audit": "Two PDFs maximum, unprotected, 10 MB each. Keep the German abstract inside the correct file so the reviewer does not have to hunt for it. Check the printing of the signed form and send the reply e-mail from the same account that registered the application.",
+      "alerts": [
+        "Deadline 20 October 2026, 2 p.m. CEST - no corrections afterwards",
+        "One or two fellowships per year, so the odds are low and a strong supervisor statement is essential",
+        "Doctoral studies must have started within the last three years",
+        "Applications are accepted in German or English; the project abstract must be in German",
+        "The programme statutes PDF published by the OeAW governs detailed conditions"
+      ],
+      "submission_workflow": [
+        "Read the general information and programme statutes on the OeAW Mannagetta page",
+        "Register in the online form",
+        "Prepare the application documents (CV, supervisor statement, degrees, examinations) and the project documents (10 to 15 page description plus German abstract) separately",
+        "Upload as two unprotected PDFs of no more than 10 MB",
+        "Reply to the confirmation e-mail with the signed printed form",
+        "Submit before 20 October 2026, 2 p.m. CEST",
+        "Await the formal eligibility check and the awarding committee's decision"
+      ]
+    }
+  }
+]

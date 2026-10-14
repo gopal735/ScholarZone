@@ -1,0 +1,86 @@
+{
+ "agent": "agent_053",
+ "assignment_count": 1,
+ "scholarships": [
+  {
+   "id": 162,
+   "title": "University of Vienna Scholarships for International Students",
+   "country": "Austria",
+   "degree": "Bachelor's, Master's, PhD",
+   "funding_label": "Partially Funded",
+   "status": "open",
+   "official_source": "University of Vienna",
+   "official_source_url": "https://studieren.univie.ac.at/en/scholarships",
+   "application_link": "https://studieren.univie.ac.at/en/scholarships",
+   "catalogue_url": null,
+   "official_updates_url": null,
+   "existing": {
+    "funding_amount": null,
+    "funding_currency": null,
+    "funding_period": null,
+    "tuition_coverage": null,
+    "living_cost_coverage": null,
+    "travel_coverage": null,
+    "fully_funded": 0,
+    "description": null,
+    "eligibility": [],
+    "eligibility_summary": "International students enrolled at the University of Vienna. Various scholarships available based on academic merit and financial need.",
+    "benefits": [
+     "Tuition fee waiver",
+     "Monthly stipend varies",
+     "Travel allowance in some cases"
+    ],
+    "coverage": [
+     "Tuition fee waiver",
+     "Monthly stipend varies",
+     "Travel allowance in some cases"
+    ],
+    "requirements": [],
+    "documents": [],
+    "english_requirement": null,
+    "application_method": [],
+    "selection_notes": null,
+    "best_fit": null,
+    "notes": null,
+    "duration": null,
+    "application_period": null,
+    "deadline_display": "Varies (typically March-May for winter semester)",
+    "deadline_date": null,
+    "region": "Europe",
+    "program_type": null,
+    "applicant_utility": null,
+    "official_details": {
+     "official_source_urls": [
+      "https://www.uc.pt/en/studyatuc/international-students/bolsas-de-merito/"
+     ],
+     "application_link": "https://www.uc.pt/en/studyatuc/international-students/bolsas-de-merito/",
+     "official_updates_url": "https://www.uc.pt/en/studyatuc/international-students/bolsas-de-merito/",
+     "application_cycle": "Varies by admission cycle (ongoing for enrolled students)"
+    }
+   },
+   "missing_fields": [
+    "funding_amount",
+    "funding_currency",
+    "funding_period",
+    "tuition_coverage",
+    "living_cost_coverage",
+    "travel_coverage",
+    "description",
+    "eligibility",
+    "requirements",
+    "documents",
+    "english_requirement",
+    "application_method",
+    "selection_notes",
+    "best_fit",
+    "notes",
+    "duration",
+    "application_period",
+    "deadline_date",
+    "program_type",
+    "applicant_utility"
+   ]
+  }
+ ],
+ "result_file": "C:\\Users\\GopaL\\Desktop\\Projects folder\\ScholarZone\\backend\\research_output\\live500\\results\\agent_053.json"
+}

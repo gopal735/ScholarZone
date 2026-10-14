@@ -1,0 +1,277 @@
+{
+  "agent": "agent_344",
+  "records": [
+    {
+      "id": 163,
+      "official": {
+        "official_source_urls": [
+          "https://www.tuwien.at/en/studies/student-support/financial-support",
+          "https://informatics.tuwien.ac.at/study-services/scholarships/",
+          "https://www.tuwien.at/en/mg/dekanat/scholarships",
+          "https://www.tuwien.at/en/mwbw/dekanat/grants-and-scholarships",
+          "https://www.tuwien.at/en/studies/admission/students-union-fee-and-tuition-fee/tuition-fee"
+        ],
+        "application_link": "https://www.tuwien.at/en/studies/student-support/financial-support",
+        "catalogue_url": null,
+        "official_updates_url": "https://informatics.tuwien.ac.at/study-services/dates/",
+        "deadline_central": "2026-10-15",
+        "deadline_central_display": "15 October 2026",
+        "deadline_note": "Merit scholarship submission is due 15 October of the respective year; funding grants are due 30 April and 15 October; the Scholarship for Completion of Studies runs 1 October-30 November; the Helmut Veith Stipend deadline is 30 November.",
+        "application_cycle": "2026/2027 cycle - annual call with 15 October submission deadline",
+        "status": "OPEN",
+        "status_note": "Faculty dean's office pages list the next merit scholarship application deadline as 15 October 2026, so the current round is open; decisions are notified mid-December.",
+        "tuition_coverage_note": "Merit and funding grants are cash payments, not tuition waivers; only the Helmut Veith Stipend includes a tuition fee waiver. Non-EU nationals pay EUR 726.72 tuition per semester from the first semester.",
+        "funding_amount": 1500,
+        "funding_currency": "EUR",
+        "funding_period": "one-off per academic year",
+        "tuition_coverage": false,
+        "living_cost_coverage": false,
+        "travel_coverage": false,
+        "fully_funded": false,
+        "benefits": [
+          "Merit scholarship (§ 57ff. StudFG): level of bursary €750 to €1,500 in recognition of outstanding academic performance",
+          "Funding grant (§ 63ff. StudFG): €750 to €3,600 for scientific or artistic work (diploma theses and dissertations)",
+          "Scholarship for Completion of Studies (TU Wien): €3,000 per academic year for working students - two years for bachelor students, max. one year for master students",
+          "Helmut Veith Stipend: €6,000 p.a. for up to two years plus a tuition fee waiver, for female students in English-language Computer Science master's programmes",
+          "Siemens Award for Excellence: €1,000 for the best three female students from the Informatics bachelor and master's programs"
+        ],
+        "eligibility": [
+          "Austrian citizenship or equal status according to § 4 StudFG",
+          "EEA citizens according to § 4 p. 1 StudFG",
+          "Third-country nationals with a long-term residence permit who have lived in Austria for at least 5 years",
+          "Stateless persons are treated equally if they were liable to income tax in Austria for at least 5 years before admission together with at least one parent and had their centre of life in Austria",
+          "Regular students of TU Wien; compliance with the duration of entitlement (§ 18 StudFG), taking into account important reasons (§ 19 StudFG)",
+          "Achievement of a certain weighted minimum average grade in the previous academic year, as indicated in the call for applications"
+        ],
+        "requirements": [
+          "A certain weighted minimum average grade in the previous academic year, as indicated in the annual call for applications",
+          "Merit scholarships are awarded on the basis of ECTS performance, ECTS-weighted grade point average and length of study",
+          "Funding grants require an application with a description of the work, cost breakdown and financing plan, plus at least one expert opinion from the supervisor",
+          "Documents can be handed in personally at the Dean's Office or sent by e-mail"
+        ],
+        "documents": [
+          "Application form F-990 and F-990d, or the faculty's own application form",
+          "Current Record of Studies, including records of other universities from which proof of examinations is submitted",
+          "Transcript of Records including negative grades, plus a Transcript of Records for the period 01.10.-30.09.",
+          "Notifications of recognition and examination certificates of passed examinations that do not appear on the Transcript of Records",
+          "Residence permit of non-EU nationals and registration form for non-Austrian residence",
+          "Acknowledgment of Study Time Extension, if any (§ 19 StudFG)"
+        ],
+        "selection_criteria": [
+          "ECTS performance, ECTS-weighted grade point average and length of study",
+          "The Dean of Studies decides whether to award a merit scholarship and the amount",
+          "The number of scholarships available is limited, so not all students who apply will receive one",
+          "There is no legal entitlement to a Merit Scholarship"
+        ],
+        "coverage": [
+          "Merit scholarship: a one-off cash payment in recognition of outstanding academic performance, not earmarked for tuition",
+          "Funding grant: finances scientific or artistic work such as diploma theses and dissertations",
+          "Scholarship for Completion of Studies: €3,000 per academic year for working regular students",
+          "Helmut Veith Stipend: €6,000 p.a. plus tuition fee waiver",
+          "No award covers travel, installation or living costs"
+        ],
+        "application_method": [
+          "Download the application form (F-990 and F-990d or the faculty form) and the information sheet",
+          "Submit the complete application to your faculty's Dean's Office, in person by appointment or by e-mail, by 15 October",
+          "Informatics students submit to leifoe.informatik@tuwien.ac.at and are notified mid-December",
+          "Completion of Studies applications go to abschluss-stipendium@tuwien.ac.at between October and November",
+          "Foundation Grant applications go to stiftungs-stipendium@tuwien.ac.at, usually until February"
+        ],
+        "application_route": "Apply once a year to your own faculty's Dean's Office with forms F-990/F-990d by 15 October; the central Financial Support page names the dean's office for each faculty.",
+        "study_mode": "Regular (ordentliche) student status at TU Wien; no separate part-time scholarship route is published",
+        "citizenship_residency": "Austrian citizenship or equal status (§ 4 StudFG), EEA citizenship, third-country nationals with a long-term residence permit and at least 5 years in Austria, or qualifying stateless status",
+        "international_eligibility": "Partly - only EEA citizens and third-country nationals with a long-term Austrian residence permit and at least 5 years in Austria can receive the state merit and funding grants; students coming from abroad are directed to the OeAD grants.at database",
+        "subject_or_agency_requirement": "None for the general merit and funding grants; the Helmut Veith Stipend is limited to female students of English-language Computer Science master's programmes and the Siemens Award for Excellence to Informatics students",
+        "research_requirement": "Funding grants require a project description, cost breakdown, financing plan and at least one expert opinion from the supervisor; the Helmut Veith Stipend requires a motivation letter naming potential thesis groups",
+        "duration": "One-off payment per academic year; funding grants once a year (30 April and 15 October); Completion of Studies scholarship €3,000 per academic year for two years (bachelor) or max. one year (master); Helmut Veith Stipend up to two years",
+        "description": "TU Wien states that it offers scholarships in accordance with the Student Support Act and also awards a number of other scholarships for excellence. Merit scholarships support students and graduates with outstanding academic performance, while funding grants support scientific or artistic work such as diploma theses and dissertations.",
+        "region": "Europe - Vienna, Austria",
+        "program_type": "University scholarships under the Austrian Student Support Act (StudFG): merit scholarships, funding grants, completion-of-studies scholarship, foundation grants and named excellence awards",
+        "english_requirement": null
+      },
+      "verification": {
+        "source_citations": [
+          "https://www.tuwien.at/en/studies/student-support/financial-support",
+          "https://informatics.tuwien.ac.at/study-services/scholarships/",
+          "https://www.tuwien.at/en/mg/dekanat/scholarships",
+          "https://www.tuwien.at/en/mwbw/dekanat/grants-and-scholarships"
+        ],
+        "last_verified_date": "2026-10-10",
+        "verification_status": "confirmed",
+        "confidence": "high",
+        "not_confirmed": [
+          "the exact amount awarded inside the €750-€1,500 band, which the Dean of Studies sets case by case",
+          "a single university-wide deadline covering every scholarship type",
+          "english_requirement, which is not published for the state scholarships",
+          "living-cost, travel or installation allowances"
+        ],
+        "notes": "Amounts and deadlines were read from TU Wien's central Financial Support page and the faculty dean's office scholarship pages; the catalogue URL /en/studies/scholarships returns 404 and was replaced by the live central page."
+      },
+      "applicant_utility": {
+        "summary": "TU Wien's own scholarships are modest one-off merit payments rather than study funding: the standard merit scholarship pays €750-€1,500 once a year, decided case by case by your Dean of Studies, so you still have to cover the €726.72-per-semester non-EU tuition fee and Vienna's living costs yourself. Eligibility is the catch for newcomers, because the state-backed merit and funding grants require EEA citizenship or five years of residence in Austria, so a first-year international from outside the EEA should run a parallel search on OeAD's grants.at database. If you are a woman admitted to an English-language Computer Science master's programme, the Helmut Veith Stipend at €6,000 a year plus a tuition fee waiver (deadline 30 November) is the one award that materially changes the economics.",
+        "best_fit": "Enrolled TU Wien students with EEA citizenship or 5+ years of Austrian residence who can document a strong ECTS record by mid-October, and female applicants to English-language CS master's programmes.",
+        "application_readiness_checklist": [
+          "Order your Transcript of Records early and make sure it covers 01.10.-30.09. and includes negative grades - missing records are the most common failure point",
+          "Download forms F-990 and F-990d or your faculty's own form plus the information sheet from the dean's office page",
+          "Check the call's weighted minimum average grade and your § 18/§ 19 entitlement period before investing time in the application",
+          "For a funding grant, prepare the project description, cost breakdown, financing plan and cost offers, and secure your supervisor's expert opinion first",
+          "Book an appointment or email your dean's office, submit by 15 October and expect a decision around mid-December",
+          "Non-EEA newcomers should search grants.at in parallel for OeAD awards aimed at students coming from abroad"
+        ],
+        "common_rejection_risks": [
+          "Sending the file to the central university instead of your own faculty's dean's office, which runs its own call",
+          "A Transcript of Records that misses the 01.10.-30.09. window or omits negative grades",
+          "Falling below the weighted minimum average grade set in that year's call, or exceeding the § 18 entitlement period without a § 19 acknowledgment",
+          "Treating the award as reliable income - it is a one-off payment with no legal entitlement and limited numbers",
+          "Waiting on the 15 October round and missing the separate Helmut Veith (30 November) and completion-of-studies (October-November) windows"
+        ],
+        "estimated_uncovered_costs": "Tuition fees (€726.72 per semester for non-EU nationals plus the ÖH fee), living costs, accommodation, travel and health insurance - none of these are covered by the merit or funding grants.",
+        "document_audit": [
+          "Transcripts must include negative grades and document the 01.10.-30.09. academic-year window in full",
+          "Records of studies from other universities need the matching recognition notifications attached",
+          "Non-EU applicants must attach the residence permit and the registration form for non-Austrian residence",
+          "Funding-grant budgets must be evidenced with cost estimates, and the Informatics call asks for at least two offers"
+        ],
+        "alerts": [
+          "The 15 October deadline lands days after the winter semester starts, so assemble transcripts during September",
+          "State scholarships are closed to non-EEA students without five years of Austrian residence, so plan on OeAD awards or self-funding from day one",
+          "The Helmut Veith Stipend closes 30 November and is restricted to female students of English-taught CS master's programmes",
+          "Never count this award as proof of funds for a visa or residence permit, given limited numbers and no legal entitlement"
+        ],
+        "submission_workflow": "Complete the call's application form, attach the full transcript package, and hand it to your dean's office in person by appointment or by e-mail before 15 October; the dean notifies decisions around mid-December."
+      }
+    },
+    {
+      "id": 170,
+      "official": {
+        "official_source_urls": [
+          "https://www.webster.ac.at/financialinformation/financialaid.php"
+        ],
+        "application_link": "https://www.webster.ac.at/financialinformation/financialaid.php",
+        "catalogue_url": null,
+        "official_updates_url": "https://www.webster.ac.at/financialinformation/index.php",
+        "deadline_central": "2026-11-30",
+        "deadline_central_display": "30 November 2026, 13:00 CET",
+        "deadline_note": "Spring Semester round for newly admitted students opens 1 October and closes 30 November at 13:00 CET; Fall Semester round opens 1 March and closes 31 May at 13:00 CET; the Austrian Federal Ministry Merit Award closes 4 December 2026 at 1 p.m. CET.",
+        "application_cycle": "Spring 2027 entry round (application period 1 October - 30 November 2026); Fall round runs 1 March - 31 May",
+        "status": "OPEN",
+        "status_note": "The Spring Semester scholarship application period for newly admitted students begins on 1 October and closes 30 November at 13:00 CET; the Webster Vienna Training Scholarship Fall 2026 application period is closed.",
+        "tuition_coverage_note": "Published wording: 'Please note that we offer partial scholarships only and the remaining tuition fee must be paid by the recipient.'",
+        "funding_amount": 12000,
+        "funding_currency": "EUR",
+        "funding_period": "per academic year",
+        "tuition_coverage": true,
+        "living_cost_coverage": false,
+        "travel_coverage": false,
+        "fully_funded": false,
+        "benefits": [
+          "Bachelor degrees - Distinction 12,000 euros, Merit 7,000 euros, Honors 4,000 euros per academic year",
+          "Master degrees - Distinction 8,000 euros, Merit 5,000 euros, Honors 3,000 euros per academic year",
+          "Up to 20 new students may receive different scholarship awards per year",
+          "The scholarship may be renewed for the full duration of the academic program (max. four years undergraduate; max. two years graduate)",
+          "Merit Award - Austrian Federal Ministry of Education, Science and Research: 1,000-1,500 euros for degree-seeking students with a GPA of at least 3.3",
+          "Webster Vienna Legacy Grant: 10% tuition reduction (5% for extended family); Second Degree Grant: tuition waiver for the final course of a second degree and a 20% graduate tuition discount for Webster alumni"
+        ],
+        "eligibility": [
+          "Newly admitted bachelor's and master's degree students with exceptional academic achievement and proven financial need",
+          "Minimum grade point average (GPA) of 3.0 on the American 4.0 scale",
+          "Advanced or native-level proficiency in English",
+          "Only students admitted to full bachelor's or master's degree programs (NOT certificate and English preparation programs)",
+          "Webster Vienna Training Scholarship: open to all enrolled students during open calls, with full- or part-time enrolment of at least six U.S. credit hours per semester",
+          "Merit Award (Austrian Federal Ministry): GPA of at least 3.3 and minimum credit hours (undergraduates 24, graduates 12); Austrian citizens, EEA citizens with close ties to Austria, citizens of other countries who have lived in Austria for the past five years with at least one parent paying income tax in Austria, or refugees according to the Geneva Convention"
+        ],
+        "requirements": [
+          "Significant financial need for the Distinction and Merit levels, and financial need for the Honors level",
+          "Excellent or strong essay and recommendations depending on the level; minimum C1 English proficiency for Distinction and minimum B2 for Merit and Honors",
+          "Renewal requires full-time enrolment (24 U.S. credits or 48 ECTS per year undergraduate; 12 U.S. credits or 30 ECTS per year graduate) and a minimum GPA of 3.0 each semester",
+          "Admission to a full degree program must be completed before the scholarship application"
+        ],
+        "documents": [
+          "Acceptance letter proving admission to a full degree program",
+          "Financial motivation letter explaining the applicant's financial background, how the scholarship would help finance their education and why they deserve it",
+          "Official financial documents (officially translated into English if not in English) such as salary slips, employer or pension confirmation of net earnings, with all amounts stated in euros and the conversion rate indicated; no bank account statements are accepted",
+          "Original essay in English of 1,000 to 1,200 words on one of the two published topics",
+          "For self-employment, company information and an official letter stating net earnings in euros",
+          "Recommendations, with quality weighted according to the scholarship level"
+        ],
+        "selection_criteria": [
+          "Level-specific criteria: GPA thresholds, English proficiency level, financial need and the quality of essay and recommendations",
+          "Up to 20 new students may receive awards per academic year, and the Austrian Federal Ministry Merit Award is explicitly competitive",
+          "Awards go to newly accepted undergraduate or graduate students starting in the Fall or Spring semester"
+        ],
+        "coverage": [
+          "Tuition reduction only - partial scholarships, with the remaining tuition fee paid by the recipient",
+          "Training Scholarship amounts are applied toward tuition charges only and are not redeemable as a cash payment",
+          "No living-cost, travel or installation component is published"
+        ],
+        "application_method": [
+          "First apply for admission to a full bachelor's or master's degree program through the Admissions Office",
+          "Once admitted, request the online scholarship application form from the Admissions Office (admissions@webster.ac.at)",
+          "Complete the online form and upload the acceptance letter, financial motivation letter, official financial documents and the English essay",
+          "Send questions about the form and required documents to scholarship@webster.ac.at",
+          "Merit Award applicants download the application form and send it to Merit.award@webster.ac.at by 4 December 2026, 1 p.m. CET"
+        ],
+        "application_route": "Get admitted to a full degree programme first, then request the online scholarship form from the Admissions Office and submit it with the document set during the open round (Spring 1 October - 30 November; Fall 1 March - 31 May).",
+        "study_mode": "Full-time enrolment is required to obtain and renew the scholarship (24 U.S. credits or 48 ECTS per year undergraduate; 12 U.S. credits or 30 ECTS per year graduate); the Training Scholarship accepts full- or part-time enrolment of at least six U.S. credit hours",
+        "citizenship_residency": "No citizenship restriction is published for the WVPU New Student Scholarships; the Austrian Federal Ministry Merit Award is limited to Austrian citizens, EEA citizens with close ties to Austria, long-term residents meeting the five-year and parental income-tax conditions, and Geneva Convention refugees",
+        "international_eligibility": "Yes - international students may apply for the WVPU New Student Scholarships; only the Austrian Federal Ministry Merit Award and U.S. federal aid are restricted",
+        "subject_or_agency_requirement": "Enrolment must be in a full bachelor's or master's degree programme; certificate and English preparation programmes are excluded",
+        "research_requirement": null,
+        "duration": "Awarded per academic year and renewable for the full duration of the programme (max. four years undergraduate, max. two years graduate)",
+        "description": "Webster Vienna Private University encourages all newly admitted bachelor's and master's degree students with exceptional academic achievement and proven financial need to apply for a WVPU New Student Scholarship. Awards are partial tuition scholarships given at three published levels, with up to 20 new students funded per academic year.",
+        "region": "Europe - Vienna, Austria",
+        "program_type": "University merit-and-need tuition scholarships for newly admitted students, plus training, legacy and second-degree grants",
+        "english_requirement": "Minimum C1 English proficiency for the Distinction level and minimum B2 for the Merit and Honors levels; applicants must show advanced or native-level proficiency in English, and the essay must be written in English"
+      },
+      "verification": {
+        "source_citations": [
+          "https://www.webster.ac.at/financialinformation/financialaid.php"
+        ],
+        "last_verified_date": "2026-10-10",
+        "verification_status": "confirmed",
+        "confidence": "high",
+        "not_confirmed": [
+          "tuition fee amounts per programme, which are published separately on the Tuition and Fees page",
+          "living-cost, travel or installation support, which is not published",
+          "award statistics beyond the statement that up to 20 new students may receive awards per year"
+        ],
+        "notes": "The catalogue /scholarships URL returns 404; the live official page is Financial Aid and Scholarships, which publishes the level tables, deadlines and document list."
+      },
+      "applicant_utility": {
+        "summary": "Webster Vienna's scholarship money is a tuition discount rather than a living allowance: bachelor's awards run €4,000-€12,000 a year and master's awards €3,000-€8,000, with the balance of tuition still owed by you, so you need separate proof of funds for living costs before the visa stage. Admission comes first, because you can only apply once you hold an acceptance letter to a full degree programme, and only about 20 new students win an award each year. The decisive ingredients are a 3.0+ GPA, documented financial need and a 1,000-1,200-word essay, so treat the essay and the financial evidence pack as the real application instead of a formality.",
+        "best_fit": "Admitted full-degree students with a GPA of at least 3.0, demonstrable financial need and solid English (B2 minimum, C1 for the top level) who can file inside the Spring round's 30 November 13:00 CET cutoff.",
+        "application_readiness_checklist": [
+          "Secure the acceptance letter early - the scholarship form cannot be requested without it",
+          "Request the online scholarship form from admissions@webster.ac.at at the start of the round rather than in its final week",
+          "Build the financial evidence file first: official net-earnings documents such as salary slips and employer or pension confirmations, officially translated into English and converted to euros with the rate stated, because bank statements are rejected",
+          "Draft the essay to exactly 1,000-1,200 words on one of the two published prompts and check it against the criteria of the level you are targeting",
+          "Submit before 13:00 CET on 30 November (Spring round) or 31 May (Fall round) and confirm receipt with scholarship@webster.ac.at",
+          "Plan renewal from the first semester: full-time enrolment and a 3.0 semester GPA are conditions of keeping the award"
+        ],
+        "common_rejection_risks": [
+          "Applying before admission is complete - certificate and English preparation students are excluded outright",
+          "Submitting bank account statements, which are explicitly not accepted, instead of employer or pension confirmations of net earnings",
+          "Financial documents that are untranslated or quoted in another currency without the conversion rate",
+          "An essay outside the 1,000-1,200-word range or written on a topic other than the two published prompts",
+          "Missing the 13:00 CET cutoff, or dropping below full-time enrolment or a 3.0 GPA and losing renewal",
+          "Budgeting as if the award were a full ride when the remaining tuition stays your responsibility"
+        ],
+        "estimated_uncovered_costs": "The remaining tuition fee after a partial award, plus living costs, accommodation, health insurance and travel - Webster Vienna warns that students must arrange funding for travel and living costs for at least the first one to two months and that aid is not disbursed until studies begin.",
+        "document_audit": [
+          "Net-earnings proof must come from employers or pension authorities, never bank statements; self-employed applicants need company information plus an official net-earnings letter in euros",
+          "Every non-English financial document needs an official English translation",
+          "The financial motivation letter must explain background, how the money helps and why you deserve it - a generic statement weakens the file",
+          "Keep documentation of the exchange rate used for any non-euro figures",
+          "Recommendation quality is scored, so brief referees on the level criteria you are targeting"
+        ],
+        "alerts": [
+          "The Spring round closes 30 November at 13:00 CET, in the same season as the Austrian Federal Ministry Merit Award's 4 December deadline, so do not confuse the two",
+          "Immigration requires proof of financial capability and the student residence permit can take four to seven months, so start that process as soon as the acceptance letter arrives",
+          "Scholarships go only to students admitted to full degree programmes - certificate and English preparation routes receive nothing",
+          "The Webster Vienna Training Scholarship Fall 2026 application period is closed, so already-enrolled students should watch for the next open call"
+        ],
+        "submission_workflow": "Admission first, then request the online form from Admissions, upload the document set inside the open round, and let the scholarship office score it against the level tables; the award applies to tuition and renews on full-time enrolment plus a 3.0 GPA."
+      }
+    }
+  ]
+}

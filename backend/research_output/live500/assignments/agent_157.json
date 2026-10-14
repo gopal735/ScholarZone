@@ -1,0 +1,80 @@
+{
+ "agent": "agent_157",
+ "assignment_count": 1,
+ "scholarships": [
+  {
+   "id": 417,
+   "title": "Bekker NAWA Programme",
+   "country": "Poland",
+   "degree": "Doctoral and postdoctoral (PhD students, scientists and academic teachers)",
+   "funding_label": "Stipend",
+   "status": "upcoming",
+   "official_source": "Polish National Agency for Academic Exchange (NAWA)",
+   "official_source_url": "https://nawa.gov.pl/en/scientists/bekker",
+   "application_link": "https://nawa.gov.pl/en/scientists/bekker",
+   "catalogue_url": "https://nawa.gov.pl/en/scientists/the-bekker-programme",
+   "official_updates_url": "https://nawa.gov.pl/en/nawa/news/call-for-applications-for-the-bekker-nawa-programme-now-open",
+   "existing": {
+    "funding_amount": null,
+    "funding_currency": null,
+    "funding_period": null,
+    "tuition_coverage": 0,
+    "living_cost_coverage": 1,
+    "travel_coverage": null,
+    "fully_funded": 0,
+    "description": "The Bekker NAWA Programme supports the international mobility of PhD students, scientists and academic teachers from Polish scientific and academic units by funding research fellowships of 3 to 24 months at recognised research centres abroad. It covers the scholarship holder's living expenses during the stay together with a mobility allowance, and the amount may be increased for a spouse, underage children, or an assistant with a severe or moderate disability. The programme is open to all scientific and artistic disciplines with no restriction on host countries, and can serve as a postdoctoral fellowship for young scientists or as part of doctoral education for PhD students. The 2026 call closed on 29 May 2026 at 3:00 p.m. Polish time, for projects starting between 1 March and 1 October 2027, with applications in English through NAWA's ICT system.",
+    "eligibility": [
+     "PhD student, scientist or academic teacher based at a Polish scientific or academic institution",
+     "Any field or discipline of science, and artistic disciplines",
+     "Host institution may be located in any country",
+     "Doctoral candidates may use the fellowship to complete part of their doctoral education"
+    ],
+    "eligibility_summary": "Open to PhD students, scientists and academic teachers from Polish scientific and academic units, in all fields and disciplines of science as well as artistic disciplines, with no restriction on the country of the host institution. For young scientists the fellowship can serve as a postdoctoral placement; for PhD students it can form part of their doctoral education.",
+    "benefits": [
+     "Scholarship covering living expenses at the foreign host centre",
+     "Mobility allowance",
+     "Possible increases for a spouse and/or underage children",
+     "Possible increase where the grantee has a severe or moderate disability"
+    ],
+    "coverage": [
+     "Scholarship covering the scholarship holder's living expenses during the stay at the foreign host centre",
+     "Mobility allowance",
+     "Funding may be increased where the grantee has a spouse and/or underage children",
+     "Funding may be increased for the assistant of a scholarship holder with a severe or moderate disability"
+    ],
+    "requirements": [],
+    "documents": [],
+    "english_requirement": "Applications must be prepared entirely in English.",
+    "application_method": [
+     "Submit the application electronically in the NAWA ICT system at https://programs.nawa.gov.pl/login",
+     "Prepare the entire application in English"
+    ],
+    "selection_notes": null,
+    "best_fit": null,
+    "notes": "NAWA reports that 996 people have benefited across eight editions, in 46 countries, with Cambridge, Oxford and MIT among the most frequently chosen hosts; the most represented disciplines are natural sciences, engineering and technology, medical sciences and agricultural sciences.",
+    "duration": "Research fellowships of 3 to 24 months; in the 2026 edition projects may start between 1 March and 1 October 2027",
+    "application_period": "Annual edition; the 2026 call closed on 29 May 2026 for projects starting between 1 March and 1 October 2027",
+    "deadline_display": "Applications can be submitted until 29 May 2026 at 3:00 pm (Polish time) via the NAWA ICT system.",
+    "deadline_date": null,
+    "region": "Europe",
+    "program_type": "International research mobility fellowship for Polish-based researchers",
+    "applicant_utility": null,
+    "official_details": null
+   },
+   "missing_fields": [
+    "funding_amount",
+    "funding_currency",
+    "funding_period",
+    "travel_coverage",
+    "requirements",
+    "documents",
+    "selection_notes",
+    "best_fit",
+    "deadline_date",
+    "applicant_utility",
+    "official_details"
+   ]
+  }
+ ],
+ "result_file": "C:\\Users\\GopaL\\Desktop\\Projects folder\\ScholarZone\\backend\\research_output\\live500\\results\\agent_157.json"
+}

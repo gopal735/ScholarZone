@@ -1,0 +1,97 @@
+{
+ "agent": "agent_045",
+ "assignment_count": 1,
+ "scholarships": [
+  {
+   "id": 129,
+   "title": "Dartmouth College Need-Based Financial Aid (International Students)",
+   "country": "United States",
+   "degree": "Bachelor's",
+   "funding_label": "Need-Based",
+   "status": "open",
+   "official_source": "Dartmouth College",
+   "official_source_url": "https://admissions.dartmouth.edu/affordability/international-students",
+   "application_link": "https://admissions.dartmouth.edu/affordability/international-students",
+   "catalogue_url": null,
+   "official_updates_url": null,
+   "existing": {
+    "funding_amount": null,
+    "funding_currency": null,
+    "funding_period": null,
+    "tuition_coverage": 1,
+    "living_cost_coverage": 1,
+    "travel_coverage": 1,
+    "fully_funded": 0,
+    "description": "Dartmouth College meets 100% of the demonstrated need of all admitted financial aid applicants, regardless of citizenship or entry round, and its financial aid packages never include a required student loan. Need is calculated as cost of attendance minus family contribution, with direct expenses of tuition, fees, food and housing and indirect expenses such as travel, books, supplies and laundry. Families with total annual income below $125,000 with typical assets can expect no parent contribution, while families earning between $125,000 and $175,000 with typical assets can expect a scholarship or grants covering the full cost of tuition. International applicants file the CSS Profile with school code 3351, or the International Student Financial Aid Application if the CSS fee is a serious hardship. Financial aid deadlines are November 1 for Early Decision and February 1 for Regular Decision.",
+    "eligibility": [
+     "Admitted Dartmouth undergraduate student, international or domestic",
+     "Policy applies to all students regardless of citizenship or entry round",
+     "International applicants may use the ISFAA instead of the CSS Profile without changing eligibility",
+     "No income cut-off for scholarship consideration at Dartmouth"
+    ],
+    "eligibility_summary": "All admitted Dartmouth students, regardless of citizenship or entry round, are eligible for need-based financial aid. Dartmouth is need-blind and meets 100% of demonstrated need without requiring a student loan. International applicants file the CSS Profile, or the International Student Financial Aid Application if the CSS fee causes serious hardship.",
+    "benefits": [
+     "100% of demonstrated need met",
+     "No required student loan in any aid package",
+     "Zero parent contribution for families with annual income below $125,000 and typical assets",
+     "Full-tuition scholarship and/or grants for families earning between $125,000 and $175,000 with typical assets",
+     "Same net price for off-campus study terms as for a term in Hanover",
+     "Travel of a financial aid award travels with the student"
+    ],
+    "coverage": [
+     "Tuition",
+     "Fees",
+     "Food",
+     "Housing",
+     "Travel costs",
+     "Books",
+     "Supplies",
+     "Laundry and other indirect cost-of-attendance items"
+    ],
+    "requirements": [
+     "Submit the CSS Profile by the financial aid deadline, or the ISFAA where the CSS fee is a hardship",
+     "Submit parents' income tax statements in English, keeping amounts in home currency rather than converting to USD",
+     "Submit the FAFSA if a U.S. citizen or permanent resident",
+     "Meet the expected student contribution, part of which comes from leave-term earnings of roughly $1,000 to $2,500 per year"
+    ],
+    "documents": [
+     "CSS Profile (Dartmouth school code 3351)",
+     "FAFSA for U.S. citizens and permanent residents (Dartmouth school code 002573)",
+     "International Student Financial Aid Application (ISFAA) in place of the CSS Profile where the CSS fee causes serious hardship",
+     "Signed copies of all pages of parents' 2025 income tax statements for their country of residence, in English and in home currency",
+     "Non-custodial PROFILE Waiver Request Form where applicable",
+     "Non-Filing Statement for Parents 2027-2028 where applicable"
+    ],
+    "english_requirement": null,
+    "application_method": [
+     "File the CSS Profile using Dartmouth school code 3351, or submit the ISFAA directly to the Financial Aid Office",
+     "Upload parents' income tax statements for the country of residence",
+     "File the FAFSA with school code 002573 if eligible for federal aid",
+     "Check the Application Management System in late November for the full financial aid application status"
+    ],
+    "selection_notes": "Once the Admissions office has selected students to admit, the Financial Aid Office determines each student's need and awards aid accordingly, so financial need plays no part in the admission decision for admitted students. Aid is evaluated individually and annually.",
+    "best_fit": "Students from families with low to middle incomes, including international applicants, who cannot afford Dartmouth's full cost of attendance.",
+    "notes": "Dartmouth adopted universal need-blind admissions covering all international citizens, made possible by a $40 million anonymous gift, and states it is the sixth U.S. institution with universal need-blind admissions paired with a commitment to meet 100 percent of demonstrated need. A qualifying student is expected to meet the cost of attendance through a student contribution from leave-term earnings, a part-time on-campus job and/or personal savings. Contact: financial.aid@dartmouth.edu, 6024 McNutt Hall, Hanover NH 03755.",
+    "duration": null,
+    "application_period": "Annual cycle. Financial aid materials due November 1 for Early Decision and February 1 for Regular Decision.",
+    "deadline_display": "Dartmouth's official Application Deadlines for Financial Aid are: November 1st Early Decision, February 1st Regular Decision, March 1st Transfer Applications.",
+    "deadline_date": null,
+    "region": "North America",
+    "program_type": "Need-based undergraduate financial aid programme",
+    "applicant_utility": null,
+    "official_details": null
+   },
+   "missing_fields": [
+    "funding_amount",
+    "funding_currency",
+    "funding_period",
+    "english_requirement",
+    "duration",
+    "deadline_date",
+    "applicant_utility",
+    "official_details"
+   ]
+  }
+ ],
+ "result_file": "C:\\Users\\GopaL\\Desktop\\Projects folder\\ScholarZone\\backend\\research_output\\live500\\results\\agent_045.json"
+}

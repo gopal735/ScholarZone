@@ -1,0 +1,166 @@
+{
+ "agent": "agent_385",
+ "assignment_count": 2,
+ "scholarships": [
+  {
+   "id": 10,
+   "title": "Deutschlandstipendium (Germany Scholarship)",
+   "country": "Germany",
+   "degree": "Bachelor's, Master's",
+   "funding_label": "Partial",
+   "status": "open",
+   "official_source": "Federal Ministry of Education and Research (BMBF/BMFTR) + Private Sponsors",
+   "official_source_url": "https://www.deutschlandstipendium.de",
+   "application_link": "https://www.deutschlandstipendium.de",
+   "catalogue_url": null,
+   "official_updates_url": "https://www.deutschlandstipendium.de/deutschlandstipendium/de/services/english/the-deutschlandstipendium-best-of-both-worlds-for-students.html",
+   "existing": {
+    "funding_amount": null,
+    "funding_currency": null,
+    "funding_period": null,
+    "tuition_coverage": null,
+    "living_cost_coverage": null,
+    "travel_coverage": null,
+    "fully_funded": 0,
+    "description": null,
+    "eligibility": [
+     "Enrolled at a public or state-recognized university in Germany",
+     "First-semester and higher-semester students eligible",
+     "All nationalities can apply",
+     "High academic achievement (good grades and study performance)",
+     "Social commitment and/or personal achievements (e.g., overcoming social/family obstacles)",
+     "No means-testing (income-independent)"
+    ],
+    "eligibility_summary": "All nationalities; enrolled at public or state-recognized German university; high academic achievement; social commitment; personal achievements.",
+    "benefits": [
+     "€300 per month (€150 federal + €150 private sponsor) for minimum 2 semesters, renewable up to standard study period"
+    ],
+    "coverage": [
+     "€300 per month (€150 federal + €150 private sponsor) for minimum 2 semesters, renewable up to standard study period"
+    ],
+    "requirements": [
+     "Application form",
+     "CV",
+     "Motivation letter",
+     "Academic transcripts",
+     "Language proficiency certificate",
+     "Recommendation letters",
+     "Passport copy",
+     "University admission letter"
+    ],
+    "documents": [
+     "Application form (from university)",
+     "CV",
+     "Motivation letter",
+     "Academic transcripts",
+     "Language proficiency certificate (varies by program)",
+     "Recommendation letters",
+     "Passport copy",
+     "University admission letter"
+    ],
+    "english_requirement": "Not centrally specified - varies by university and study program (German or English)",
+    "application_method": [
+     "Directly through participating German university"
+    ],
+    "selection_notes": "Selection criteria: Academic achievement (grades), social commitment, and personal achievements (overcoming challenges in social or family background). Selection is made by individual universities, not centrally. Each university has its own application deadlines and selection process. Non-financial support (mentoring, networking, internships) often provided by sponsors.",
+    "best_fit": "High-achieving students at German universities seeking monthly financial support and networking.",
+    "notes": "Largest public-private scholarship program in Germany (33,500+ recipients in 2025); includes mentoring, networking, and internship opportunities; not means-tested. Scholarship funds do not count towards BAföG; no social insurance contributions payable.",
+    "duration": "Minimum 2 semesters, renewable up to standard period of study (Regelstudienzeit)",
+    "application_period": "Varies by university - check directly with the university's scholarship office",
+    "deadline_display": "Varies by university (typically spring/summer for winter semester)",
+    "deadline_date": null,
+    "region": "Europe",
+    "program_type": "Public-private partnership scholarship (Federal Government + private sponsors, administered by universities)",
+    "applicant_utility": null,
+    "official_details": null
+   },
+   "missing_fields": [
+    "funding_amount",
+    "funding_currency",
+    "funding_period",
+    "tuition_coverage",
+    "living_cost_coverage",
+    "travel_coverage",
+    "description",
+    "deadline_date",
+    "applicant_utility",
+    "official_details"
+   ]
+  },
+  {
+   "id": 21,
+   "title": "DAAD Study Scholarships - Master Studies for All Academic Disciplines",
+   "country": "Germany",
+   "degree": "Master's",
+   "funding_label": "Partial to Full",
+   "status": "open",
+   "official_source": "DAAD — German Academic Exchange Service",
+   "official_source_url": "https://www2.daad.de/deutschland/stipendium/datenbank/en/21148-scholarship-database/?detail=50026200",
+   "application_link": "https://www2.daad.de/deutschland/stipendium/datenbank/en/21148-scholarship-database/?detail=50026200",
+   "catalogue_url": "https://www.daad.de/en/study-and-research-in-germany/scholarships/scholarship-database/information-on-other-funding-organisations/",
+   "official_updates_url": null,
+   "existing": {
+    "funding_amount": null,
+    "funding_currency": null,
+    "funding_period": null,
+    "tuition_coverage": null,
+    "living_cost_coverage": null,
+    "travel_coverage": null,
+    "fully_funded": 0,
+    "description": "Quality of the study project and of the preparation (preliminary information, choice of degree programme, host university and establishment of contacts)",
+    "eligibility": [
+     "Your application cannot be considered, if you have been resident in Germany for longer than 15 months at the application deadline."
+    ],
+    "eligibility_summary": "Completed first degree (e.g., Bachelor's or Diplom) by funding start date; typically no more than 6 years since last degree; application via DAAD portal open from 1 June until stated deadline.",
+    "benefits": [
+     "Monthly stipend approx. EUR 934-1,200 (varies by programme/degree level)",
+     "Health, accident, and personal liability insurance",
+     "Travel allowance",
+     "Some programmes also cover tuition and research/study allowances"
+    ],
+    "coverage": [
+     "Monthly stipend approx. EUR 934-1,200 (varies by programme/degree level)",
+     "Health, accident, and personal liability insurance",
+     "Travel allowance",
+     "Some programmes also cover tuition and research/study allowances"
+    ],
+    "requirements": [],
+    "documents": [
+     "Online application form via DAAD portal",
+     "CV",
+     "Motivation letter (1-3 pages)",
+     "Academic transcripts and certificates",
+     "Letter of admission to German university",
+     "Language certificates (German and/or English depending on programme)"
+    ],
+    "english_requirement": "course prior to the study programme.",
+    "application_method": [
+     "Online via DAAD portal"
+    ],
+    "selection_notes": "An independent selection committee consisting of specialist scientists reviews applications. The Selection criteria are: Academic qualification",
+    "best_fit": "Graduates seeking Master's funding across all academic disciplines in Germany.",
+    "notes": "Funded by German Federal Foreign Office; not a single unified scholarship but a database entry for a specific programme. Application portal access only appears during active application periods.",
+    "duration": "Between 10 and 24 months depending on the length of your chosen study programme or project",
+    "application_period": "Typically June-October/November annually",
+    "deadline_display": "Typically October annually (2026 deadline: 16 November 2026 for some countries; varies by country)",
+    "deadline_date": "2026-11-16",
+    "region": "Europe",
+    "program_type": "Master's degree programme:",
+    "applicant_utility": null,
+    "official_details": null
+   },
+   "missing_fields": [
+    "funding_amount",
+    "funding_currency",
+    "funding_period",
+    "tuition_coverage",
+    "living_cost_coverage",
+    "travel_coverage",
+    "requirements",
+    "applicant_utility",
+    "official_details"
+   ]
+  }
+ ],
+ "result_file": "C:\\Users\\GopaL\\Desktop\\Projects folder\\ScholarZone\\backend\\research_output\\live500\\results\\agent_385.json"
+}

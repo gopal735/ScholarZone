@@ -1,0 +1,234 @@
+[
+  {
+    "host": "admissions.msu.edu",
+    "severity": "ERROR",
+    "rule": 3,
+    "message": "official_host=true but the logo is served by edge.sitecorecloud.io while page_url is admissions.msu.edu",
+    "url": "https://edge.sitecorecloud.io/michiganstab57e-msustrategi129d-prod9868-7e5e/media/project/msu/shared/logos/msu_wordmark_green.svg",
+    "page_url": "https://admissions.msu.edu/"
+  },
+  {
+    "host": "admissions.msu.edu",
+    "severity": "WARN",
+    "rule": 1,
+    "message": "key \"admissions.msu.edu\" is not the registrable domain of the logo host edge.sitecorecloud.io (rename may orphan this entry)",
+    "url": "https://edge.sitecorecloud.io/michiganstab57e-msustrategi129d-prod9868-7e5e/media/project/msu/shared/logos/msu_wordmark_green.svg"
+  },
+  {
+    "host": "dzs.cz",
+    "severity": "ERROR",
+    "rule": 6,
+    "message": "white-on-transparent wordmark: 3/4 fills are near-white (75%) — 13028 bytes, image/svg+xml",
+    "url": "https://www.dzs.cz/themes/reason_dzs/img/logo/logo_msmt_cerne_rgb.svg",
+    "white_fills": 3,
+    "total_fills": 4,
+    "bytes": 13028,
+    "ctype": "image/svg+xml"
+  },
+  {
+    "host": "uct.ac.za",
+    "severity": "ERROR",
+    "rule": 6,
+    "message": "white-on-transparent wordmark: 96/97 fills are near-white (99%) — 30430 bytes, image/svg+xml",
+    "url": "https://www.uct.ac.za/themes/custom/blip_uct/logo.svg",
+    "white_fills": 96,
+    "total_fills": 97,
+    "bytes": 30430,
+    "ctype": "image/svg+xml"
+  },
+  {
+    "host": "studyinbelgium.be",
+    "severity": "WARN",
+    "rule": 6,
+    "message": "2/5 fills near-white (40%) — confirm the mark reads on a light card",
+    "url": "https://www.studyinbelgium.be/themes/custom/expansion_theme/assets/dist/images/logo-studyinbelgium.svg"
+  },
+  {
+    "host": "tampere.fi",
+    "severity": "WARN",
+    "rule": 6,
+    "message": "9/25 fills near-white (36%) — confirm the mark reads on a light card",
+    "url": "https://www.tampere.fi/themes/custom/tampere/images/icon-sets/logo-icons/logo-tampere-default.svg"
+  },
+  {
+    "host": "scholarships.unimelb.edu.au",
+    "severity": "WARN",
+    "rule": 6,
+    "message": "4/10 fills near-white (40%) — confirm the mark reads on a light card",
+    "url": "https://d2h9b02ioca40d.cloudfront.net/v15.14.0/assets/logo-9f61db642f53f8d36d9c.svg"
+  },
+  {
+    "host": "cvut.cz",
+    "severity": "ERROR",
+    "rule": 6,
+    "message": "white-on-transparent wordmark: 36/36 fills are near-white (100%) — 18231 bytes, image/svg+xml",
+    "url": "https://www.cvut.cz/sites/all/themes/cvut/logo-en.svg",
+    "white_fills": 36,
+    "total_fills": 36,
+    "bytes": 18231,
+    "ctype": "image/svg+xml"
+  },
+  {
+    "host": "utoronto.ca",
+    "severity": "ERROR",
+    "rule": 6,
+    "message": "white-on-transparent wordmark: 81/81 fills are near-white (100%) — 119511 bytes, image/svg+xml",
+    "url": "https://www.utoronto.ca/themes/custom/bootstrap_uoft/logo.svg",
+    "white_fills": 81,
+    "total_fills": 81,
+    "bytes": 119511,
+    "ctype": "image/svg+xml"
+  },
+  {
+    "host": "tlu.ee",
+    "severity": "WARN",
+    "rule": 6,
+    "message": "1/3 fills near-white (33%) — confirm the mark reads on a light card",
+    "url": "https://tlu.ee/themes/tlu/logo_en.svg"
+  },
+  {
+    "host": "flinders.edu.au",
+    "severity": "ERROR",
+    "rule": 6,
+    "message": "white-on-transparent wordmark: 7/11 fills are near-white (64%) — 8047 bytes, image/svg+xml",
+    "url": "https://www.flinders.edu.au/content/dam/images/60th/flinders-60th-navy-header.svg",
+    "white_fills": 7,
+    "total_fills": 11,
+    "bytes": 8047,
+    "ctype": "image/svg+xml"
+  },
+  {
+    "host": "jku.at",
+    "severity": "ERROR",
+    "rule": 6,
+    "message": "white-on-transparent wordmark: 1/1 fills are near-white (100%) — 10214 bytes, image/svg+xml",
+    "url": "https://www.jku.at/_assets/7b7ae113224322fc24a1ce79b517249a/Images/Footer/jku-logo-desktop.svg",
+    "white_fills": 1,
+    "total_fills": 1,
+    "bytes": 10214,
+    "ctype": "image/svg+xml"
+  },
+  {
+    "host": "admissions.msu.edu",
+    "severity": "ERROR",
+    "rule": 6,
+    "message": "white-on-transparent wordmark: 101/126 fills are near-white (80%) — 104404 bytes, image/svg+xml",
+    "url": "https://edge.sitecorecloud.io/michiganstab57e-msustrategi129d-prod9868-7e5e/media/project/msu/shared/logos/msu_wordmark_green.svg",
+    "white_fills": 101,
+    "total_fills": 126,
+    "bytes": 104404,
+    "ctype": "image/svg+xml"
+  },
+  {
+    "host": "liu.se",
+    "severity": "ERROR",
+    "rule": 6,
+    "message": "white-on-transparent wordmark: 1/1 fills are near-white (100%) — 2982 bytes, image/svg+xml",
+    "url": "https://liu.se/dist/global/images/logo-main.svg",
+    "white_fills": 1,
+    "total_fills": 1,
+    "bytes": 2982,
+    "ctype": "image/svg+xml"
+  },
+  {
+    "host": "ku.dk",
+    "severity": "ERROR",
+    "rule": 6,
+    "message": "white-on-transparent wordmark: 1/2 fills are near-white (50%) — 40836 bytes, image/svg+xml",
+    "url": "https://www.ku.dk/_assets/12a46eea25fd08a7277319b85c785b6b/Icons/Site/ucph-logo-da.svg",
+    "white_fills": 1,
+    "total_fills": 2,
+    "bytes": 40836,
+    "ctype": "image/svg+xml"
+  },
+  {
+    "host": "international.vluhr.be",
+    "severity": "WARN",
+    "rule": 6,
+    "message": "3/7 fills near-white (43%) — confirm the mark reads on a light card",
+    "url": "https://www.international.vluhr.be/img/svg/logo.svg"
+  },
+  {
+    "host": "admission.brown.edu",
+    "severity": "WARN",
+    "rule": 6,
+    "message": "6/17 fills near-white (35%) — confirm the mark reads on a light card",
+    "url": "https://admission.brown.edu/themes/custom/brown/static/images/logo.svg"
+  },
+  {
+    "host": "education.ki.se",
+    "severity": "ERROR",
+    "rule": 6,
+    "message": "white-on-transparent wordmark: 1/1 fills are near-white (100%) — 94007 bytes, image/svg+xml",
+    "url": "https://education.ki.se/themes/custom/ki_education/logo.svg",
+    "white_fills": 1,
+    "total_fills": 1,
+    "bytes": 94007,
+    "ctype": "image/svg+xml"
+  },
+  {
+    "host": "studies.ku.dk",
+    "severity": "ERROR",
+    "rule": 6,
+    "message": "white-on-transparent wordmark: 1/2 fills are near-white (50%) — 40617 bytes, image/svg+xml",
+    "url": "https://www.ku.dk/_assets/12a46eea25fd08a7277319b85c785b6b/Icons/Site/ucph-logo-en.svg",
+    "white_fills": 1,
+    "total_fills": 2,
+    "bytes": 40617,
+    "ctype": "image/svg+xml"
+  },
+  {
+    "host": "jeffersonscholars.org",
+    "severity": "ERROR",
+    "rule": 6,
+    "message": "white-on-transparent wordmark: 1/1 fills are near-white (100%) — 14803 bytes, image/svg+xml",
+    "url": "https://www.jeffersonscholars.org/themes/jsf/wordmark.svg",
+    "white_fills": 1,
+    "total_fills": 1,
+    "bytes": 14803,
+    "ctype": "image/svg+xml"
+  },
+  {
+    "host": "uwaterloo.ca",
+    "severity": "WARN",
+    "rule": 6,
+    "message": "21/46 fills near-white (46%) — confirm the mark reads on a light card",
+    "url": "https://uwaterloo.ca/profiles/uw_base_profile/modules/custom/uw_wcms_ohana/dist/images/uwaterloo-logo.svg"
+  },
+  {
+    "host": "daad.de",
+    "severity": "ERROR",
+    "rule": 6,
+    "message": "white-on-transparent wordmark: 2/4 fills are near-white (50%) — 34715 bytes, image/svg+xml",
+    "url": "https://www.daad.de/_nuxt/logo-light.1I6xeyd5.svg",
+    "white_fills": 2,
+    "total_fills": 4,
+    "bytes": 34715,
+    "ctype": "image/svg+xml"
+  },
+  {
+    "host": "www2.daad.de",
+    "severity": "ERROR",
+    "rule": 6,
+    "message": "white-on-transparent wordmark: 2/3 fills are near-white (67%) — 2006 bytes, image/svg+xml",
+    "url": "https://www.daad.de/_nuxt/logo-small-dark.BjXioAOO.svg",
+    "white_fills": 2,
+    "total_fills": 3,
+    "bytes": 2006,
+    "ctype": "image/svg+xml"
+  },
+  {
+    "host": "mo.ibrahim.foundation",
+    "severity": "WARN",
+    "rule": 6,
+    "message": "17/44 fills near-white (39%) — confirm the mark reads on a light card",
+    "url": "https://mo.ibrahim.foundation/themes/custom/mif2/assets/img/MIF-logo.svg"
+  },
+  {
+    "host": "jwu.edu",
+    "severity": "ERROR",
+    "rule": 7,
+    "message": "serves content-type \"text/html\" instead of an image on all 3 attempts (WAF interstitial or error page, 212 bytes)",
+    "url": "https://www.jwu.edu/wp-content/themes/jwu-theme/assets/images/jwu-logo-acronym-crest-white.svg"
+  }
+]

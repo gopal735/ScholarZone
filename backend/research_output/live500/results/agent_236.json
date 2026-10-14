@@ -1,0 +1,156 @@
+{
+  "agent": "agent_236",
+  "records": [
+    {
+      "id": 590,
+      "official": {
+        "official_source_urls": [
+          "https://www.secihti.mx/convocatoria/becas-nacionales/convocatoria-de-becas-nacionales-para-estudios-de-posgrado-2026",
+          "https://www.secihti.mx/wp-content/uploads/2026/02/CBNP_2026-20260703T190250.pdf",
+          "https://www.secihti.mx/wp-content/uploads/2026/02/TDR_BP_A_2026-20260223T161734.pdf",
+          "https://www.secihti.mx/wp-content/uploads/2026/02/TDR_BP_B_2026-20260223T161750.pdf",
+          "https://www.secihti.mx/wp-content/uploads/2026/02/TABBN-26-20260223T163125.pdf",
+          "https://www.secihti.mx/wp-content/uploads/2026/02/VIGBEC-26-20260223T163400.pdf",
+          "https://www.secihti.mx/wp-content/uploads/2026/02/VISATEMP-26-20260223T163444.pdf",
+          "https://www.secihti.mx/wp-content/uploads/2026/02/MCF-26-20260223T162846.pdf",
+          "https://www.secihti.mx/wp-content/uploads/2026/02/GP26-20260223T162015.pdf",
+          "https://www.secihti.mx/becas-nacionales"
+        ],
+        "application_link": "https://www.secihti.mx/convocatoria/becas-nacionales/convocatoria-de-becas-nacionales-para-estudios-de-posgrado-2026",
+        "catalogue_url": "https://www.secihti.mx/becas-nacionales",
+        "official_updates_url": "https://www.secihti.mx/convocatoria_categoria/becas-nacionales",
+        "deadline_central": "2026-11-28",
+        "deadline_central_display": "28 November 2026, 23:59 (hora local CDMX)",
+        "deadline_note": "The call page closes reception at 28 November 2026 23:59 CDMX, but the Terms of Reference calendar splits the cycle into staged ordinary-reception windows by start month: the last ordinary window (students starting in November 2026) is 3-14 November 2026 with an inconsistencies period 15-21 November 2026, and the CAB must be formalised by 27 November 2026. Days run 09:00-23:59 (tiempo del centro de Mexico).",
+        "application_cycle": "Convocatoria 2026 (periodo 2026, estatus Abierta); selection runs in two periods - start of validity January-June 2026 (first period) and August-November 2026 (second period)",
+        "status": "OPEN",
+        "status_note": "Estatus de la convocatoria: Abierta. Published Monday 23 February 2026; reception of applications open from Monday 23 February 2026 20:00 to Saturday 28 November 2026 23:59, local CDMX time.",
+        "tuition_coverage_note": "The call publishes no tuition (colegiatura) funding. The rubrics it covers are stated as: 'Apoyo economico mensual, de acuerdo con el Tabulador de Becas Nacionales 2026' and 'Servicio medico proporcionado por el Instituto de Seguridad y Servicios Sociales de los Trabajadores del Estado (ISSSTE)'.",
+        "funding_amount": 16047.99,
+        "funding_currency": "MXN",
+        "funding_period": "per month",
+        "tuition_coverage": false,
+        "living_cost_coverage": true,
+        "travel_coverage": false,
+        "fully_funded": false,
+        "benefits": [
+          "Apoyo economico mensual, de acuerdo con el Tabulador de Becas Nacionales 2026 (monthly economic support set by the 2026 tabulator)",
+          "Servicio medico proporcionado por el Instituto de Seguridad y Servicios Sociales de los Trabajadores del Estado (ISSSTE), with registration as derechohabiente under ISSSTE rules",
+          "Support is paid in complete months, including the months of the vacation period, regardless of the programme's start and end dates; the first payment includes retroactivity to the month of the scholarship's start date",
+          "First payment within 20 business days of formalisation; following payments in the first five business days of each month, except December and January which follow SHCP spending rules",
+          "Validity in complete months per the plan or programme registered in the SNP: doctorado directo up to 60 months, doctorado up to 48 months, maestria and especialidad up to 24 months"
+        ],
+        "eligibility": [
+          "People of Mexican or foreign nationality enrolled in a postgraduate programme registered in the Sistema Nacional de Posgrados (SNP) that is eligible for scholarship allocation",
+          "School-based (escolarizado) eligible programmes are covered by Terminos de Referencia A; eligible non-school-based programmes are covered by Terminos de Referencia B and its separate postulation guides",
+          "Anyone who previously held a Conahcyt/Secihti scholarship or support must have completed the conclusion procedure before registering the request in this call",
+          "Nivel inmediato anterior requirement applies; doctoral programmes that accept licenciatura-level applicants require the postgraduate coordination to e-mail the programme's rules (PDF, max 2 MB) and written Secihti authorisation",
+          "Foreign applicants must sign with the CURP contained in a valid temporary resident card; Secihti does not intervene in the applicant's or their economic dependants' immigration status",
+          "Requests are not processed from people with a report of non-compliance or debt under programme S190, who seek a degree equal to one already obtained with Secihti support, who are registered as applicant or scholarship holder in another S190 call, who hold an equivalent state support for the same purpose, or who submit false information or documents"
+        ],
+        "requirements": [
+          "Create, update or validate the curriculum vitae in the Perfil Unico at https://rizoma.secihti.mx/",
+          "Register and submit the scholarship request following the Guia para la postulacion de Becas Nacionales; once sent, the request cannot be modified",
+          "Sign the request electronically with the Clave Unica de Registro de Poblacion (CURP) e-signature",
+          "Track the request in the Apeiron system at https://apeiron.secihti.mx/ during the inconsistencies period, where Secihti issues a single prevention with at least five business days to correct it",
+          "Formalise the Convenio de Asignacion de Beca (CAB) and Anexo Uno (Carta de Asignacion de Beca) and register a bank account in the scholarship system, signing electronically with the CURP",
+          "Complete every mandatory Rizoma profile section: photograph, semblanza, emergency contact, mobile number flagged as primary contact, area of knowledge, RFC, marital status, address, nationality evidence and probatory document, plus economic dependants and family schooling records"
+        ],
+        "documents": [
+          "Documento probatorio de nacionalidad uploaded as PDF in the Rizoma profile (official identification with photograph accrediting nationality)",
+          "CURP for Mexican citizens, or the CURP contained in the temporary resident card for foreign nationals",
+          "CVU generated in the Perfil Unico (Rizoma), with a single registration created at https://registro.secihti.mx/",
+          "Documento probatorio evidencing the previous level (obtencion de grado, creditos terminados)",
+          "Registration of the matricula in the SNP by the programme (10 February - 16 June 2026 for the first period; 27 July - 30 October 2026 for the second period)",
+          "Carta de Reconocimiento or Carta de No Adeudo where a previous Secihti/Conahcyt award existed; for foreign applicants also the Modelo de Carta de Aceptacion issued by the postgraduate coordination plus a valid passport copy, sent to aspiranteextrabn@secihti.mx as PDF under 2 MB"
+        ],
+        "selection_criteria": [
+          "Assignment is based on the SNP categories and their corresponding assignment criteria established in the Ley General, the SNP Lineamientos, the Reglas de Operacion and other applicable provisions",
+          "Selection is carried out in two periods; the applicant may request the scholarship with start of validity January-June 2026 (first period) or August-November 2026 (second period)",
+          "Submitting a request does not oblige Secihti to assign the support; submission implies express acceptance of the call's terms and conditions and of the Reglamento de Becas",
+          "Results are announced through the scholarship system, with an e-mail notice to the address registered by the applicant"
+        ],
+        "coverage": [
+          "Apoyo economico mensual, de acuerdo con el Tabulador de Becas Nacionales 2026: maestria e intercambio academico 4.5 UMA = $16,047.99; doctorado 6.0 UMA = $21,397.32; especialidad 4.0 UMA = $14,264.88 (UMA mensual 2026 = $3,566.22), amounts valid from 1 February 2026 and updated each February according to the UMA in force during the scholarship's validity",
+          "Servicio medico proporcionado por el ISSSTE, registered as derechohabiente under ISSSTE's own rules",
+          "No tuition, travel or installation/relocation rubric is published in the call, its terms of reference or the 2026 tabulator"
+        ],
+        "application_method": [
+          "Register or validate the CVU in the Perfil Unico (Rizoma) at https://rizoma.secihti.mx/, using a single registration at https://registro.secihti.mx/",
+          "Complete the mandatory profile sections and register the scholarship request in Rizoma",
+          "Open the Vista previa, check the data, then send the request and confirm - once sent, no modifications are possible",
+          "Sign the request electronically with the CURP e-signature",
+          "Follow the request in Apeiron at https://apeiron.secihti.mx/ and clear any single prevention inside the inconsistencies window",
+          "Formalise the CAB and Anexo Uno, register the bank account (Guia para el Registro de Cuenta Bancaria BNP) and sign with the CURP e-signature"
+        ],
+        "application_route": "Online only: create or validate the CVU in Rizoma (Perfil Unico), complete the mandatory profile, register and e-sign the request with the CURP during the published window, follow it in Apeiron, then formalise the CAB and register a bank account after the award.",
+        "study_mode": "Full-time school-based (escolarizado) programmes under Terminos de Referencia A; eligible non-school-based (no escolarizados) programmes are covered by Terminos de Referencia B with its own postulation guide",
+        "citizenship_residency": "Open to people of Mexican or foreign nationality. Foreign nationals apply using the CURP on their temporary resident card, which must remain valid, must obtain the Residente Temporal Estudiante visa from a Mexican consulate abroad and complete the INM procedure within 180 days of arrival; Secihti does not intervene in the applicant's or their dependants' immigration status.",
+        "international_eligibility": "Yes - foreign nationals enrolled in SNP-registered programmes are eligible; they apply with the CURP on their valid temporary resident card and, per the official visa guidance, can be nominated once they hold the Tarjeta de Residencia Temporal Estudiante.",
+        "subject_or_agency_requirement": "The postgraduate programme must be registered in the Sistema Nacional de Posgrados (SNP) and eligible for scholarship allocation; medical speciality programmes are published as a separate call, and non-school-based programmes follow Terminos de Referencia B.",
+        "research_requirement": null,
+        "duration": "Validity in complete months set by the plan or programme registered in the SNP: doctorado directo up to 60 months, doctorado up to 48 months, maestria and especialidad up to 24 months (Reglamento de Becas, article 13). Academic periods already studied before the award are not covered, and retroactivity applies only to the start of the period in which the request was made, within the same fiscal year.",
+        "description": "Secihti's national scholarships programme promotes the development and consolidation of national capacities in science, humanities, technologies and innovation by supporting postgraduate training in Mexico for people of Mexican or foreign nationality enrolled in programmes registered in the Sistema Nacional de Posgrados, so that they obtain the corresponding degree.",
+        "region": "Latin America",
+        "program_type": "Government postgraduate scholarship (Programa Presupuestario S190 Becas de Posgrado y Apoyos a la Calidad)",
+        "english_requirement": null
+      },
+      "verification": {
+        "source_citations": [
+          "https://www.secihti.mx/wp-content/uploads/2026/02/TABBN-26-20260223T163125.pdf",
+          "https://www.secihti.mx/wp-content/uploads/2026/02/TDR_BP_A_2026-20260223T161734.pdf",
+          "https://www.secihti.mx/wp-content/uploads/2026/02/CBNP_2026-20260703T190250.pdf",
+          "https://www.secihti.mx/convocatoria/becas-nacionales/convocatoria-de-becas-nacionales-para-estudios-de-posgrado-2026"
+        ],
+        "last_verified_date": "2026-10-10",
+        "verification_status": "confirmed",
+        "confidence": "high",
+        "not_confirmed": [
+          "tuition_coverage: the call and its terms of reference list only two covered rubrics (monthly economic support and ISSSTE medical service), so no tuition funding is published",
+          "travel, relocation or installation allowance: not among the published rubrics",
+          "english_requirement: no TOEFL/IELTS score or medium-of-instruction rule is published in the call, the terms of reference or the postulation guide",
+          "number of scholarships and total budget available for the 2026 cycle: not published on the call page",
+          "institutional deadline differing from the programme's: only Secihti's own calendar is published, with no separate institutional cut-off"
+        ],
+        "notes": "Amounts taken from the official Tabulador de Becas Nacionales 2026 PDF linked from the call page (master's/intercambio 4.5 UMA = MXN 16,047.99 per month from 1 February 2026, doctorate 6.0 UMA = MXN 21,397.32, speciality 4.0 UMA = MXN 14,264.88); rubrics, validity, eligibility, restrictions, calendar and funding route cross-checked against the official Convocatoria 2026 PDF and Terminos de Referencia A PDF, plus the official vigencia, visa and postulation-guide documents. All sources are on secihti.mx."
+      },
+      "applicant_utility": {
+        "summary": "This is a monthly stipend, not a full ride: in the 2026 cycle a master's student receives MXN 16,047.99 per month (4.5 UMA) and a doctoral student MXN 21,397.32, plus ISSSTE medical cover, with no tuition, travel or installation money attached. Eligibility follows the programme you are already enrolled in, so what matters is that your programme is registered in the SNP and flagged as eligible for scholarship allocation - not a separate research proposal. The request is lodged in stages through Rizoma, and reception for the cycle closes on 28 November 2026.",
+        "best_fit": "Students already enrolled (or enrolling during 2026) in an SNP-registered, scholarship-eligible Mexican master's or doctoral programme who need predictable monthly income and ISSSTE health cover to finish their degree.",
+        "application_readiness_checklist": [
+          "Confirm with your postgraduate coordination that the programme is registered in the SNP and eligible for scholarship allocation, and that your matricula has been registered for the period you are applying for (10 Feb - 16 Jun 2026 for period one, 27 Jul - 30 Oct 2026 for period two).",
+          "Create one registration at https://registro.secihti.mx/ and one CVU in Rizoma; a second CVU created through MIIC can delay or cancel the process and forces you into the technical support queue.",
+          "Fill every mandatory Rizoma section before starting the request: photo, semblanza, emergency contact, a mobile number flagged as primary contact, RFC, marital status, address, area of knowledge, nationality evidence and the probatory document, plus economic dependants and family schooling records.",
+          "Upload the nationality evidence and probatory document as PDFs and open them with 'Ver' to confirm they attached correctly.",
+          "Foreign applicants: send the acceptance-letter model and passport copy to aspiranteextrabn@secihti.mx about three months before the programme starts, and hold the Tarjeta de Residencia Temporal Estudiante before being nominated.",
+          "Have a bank account in your own name ready for the BNP registration so the CAB can be formalised before the date fixed in the calendar (27 November 2026 for the last window)."
+        ],
+        "common_rejection_risks": [
+          "An unfinished conclusion procedure on an earlier Secihti/Conahcyt scholarship, or a report of non-compliance or debt under programme S190 - the request is not even processed.",
+          "Being registered as applicant or scholarship holder in another S190 call, or holding an equivalent Mexican state grant for the same purpose.",
+          "A CURP that is unknown, duplicated or (for foreign nationals) no longer valid on the temporary resident card, which blocks registration, signing and payment at once.",
+          "Sending the request with mandatory profile sections incomplete, or expecting to correct it afterwards - once sent, no modification is accepted, and after the inconsistencies window closes no document can be added.",
+          "Applying before the programme's matricula is registered in the SNP, which makes the request unprocessable for that period.",
+          "A doctoral programme that admits licenciatura-level applicants without the coordination's PDF rules and written Secihti authorisation already on file."
+        ],
+        "estimated_uncovered_costs": "Tuition and enrolment fees, travel to and within Mexico, relocation and installation, books, equipment, thesis work and publication, and - for foreign applicants - consular visa fees, INM residence-card costs and annual renewal of the residence card. The first stipend only arrives after the CAB is signed (with retroactivity to the start month), so applicants need bridging funds for at least the first weeks of the cycle.",
+        "document_audit": [
+          "The nationality evidence and probatory document are uploaded inside the Rizoma profile, not e-mailed: a document sent to asignacionbn@secihti.mx does not count as submitted.",
+          "Your previous-degree record must match the SNP registration of the programme you are entering (nivel inmediato anterior); any mismatch needs the coordination's rules PDF and written Secihti authorisation first.",
+          "For foreign applicants the acceptance-letter PDF must stay under 2 MB and must carry the passport number and the embassy or consulate where the visa will be processed; the original letter must reach the student.",
+          "The Carta de Reconocimiento or Carta de No Adeudo only applies where a previous Secihti/Conahcyt award existed, but it must be obtained before the request is registered, which can take longer than applicants expect.",
+          "The bank account must be in the applicant's own name - incorrect data is the applicant's strict responsibility and is the most common cause of a misrouted or delayed monthly payment."
+        ],
+        "alerts": [
+          "28 November 2026 is only the outer limit: the terms of reference calendar runs staged windows, and the last ordinary window for November starters is 3-14 November 2026 with inconsistencies 15-21 November and CAB formalisation due 27 November 2026.",
+          "The stipend is expressed in UMA and re-set every February, so the amounts quoted (valid from 1 February 2026) will change with the UMA in force during the life of the scholarship.",
+          "Report any technical problem to the Centro de Contacto de Atencion at least three working days before the window closes - Secihti does not guarantee fixing problems reported later.",
+          "Medical speciality programmes are published as a separate call, so applicants in that area must watch for that publication instead of this one.",
+          "For foreign nationals the visa chain takes roughly 90 working days in total (about 30 for the consulate notification and 30 more for the INM residence card), with 180 days from arrival to regularise status and annual renewal of the card; missing those deadlines means leaving the country and re-applying at your own cost.",
+          "Awards can be reviewed or audited by oversight bodies during the scholarship and for five years after it ends, and can be suspended or cancelled under the Reglamento de Becas."
+        ],
+        "submission_workflow": "Build the CVU in Rizoma and complete the mandatory profile, register the request and e-sign it with your CURP inside the window, watch Apeiron for the single prevention you must clear, then sign the CAB and register your bank account to release the first payment."
+      }
+    }
+  ]
+}

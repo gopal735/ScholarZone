@@ -1,0 +1,243 @@
+{
+  "agent": "agent_422",
+  "records": [
+    {
+      "id": 523,
+      "official": {
+        "official_source_urls": [
+          "https://unhcr-dafi-tertiary.scholarshipsplatform.com/page/ynXGvbmb"
+        ],
+        "application_link": "https://unhcr-dafi-tertiary.scholarshipsplatform.com/page/ynXGvbmb",
+        "catalogue_url": null,
+        "official_updates_url": "https://www.unhcr.org/what-we-do/build-better-futures/education/higher-education-and-skills/dafi-tertiary-scholarship-0",
+        "deadline_central": null,
+        "deadline_central_display": "No single global deadline; each UNHCR country operation publishes its own application window",
+        "deadline_note": "Deadlines are set per country operation and published with each country's call; the official programme platform publishes no global closing date.",
+        "application_cycle": "Country-specific calls on the DAFI Programme Management Platform; the next cycle is announced per country operation",
+        "status": "OPEN",
+        "status_note": "The DAFI Programme Management Platform was live and accessible on 2026-10-10; the applicable round is the one published by the applicant's own UNHCR country operation.",
+        "tuition_coverage_note": "The scholarship package covers a range of costs including tuition and study materials, food, transportation and accommodation.",
+        "funding_amount": null,
+        "funding_currency": null,
+        "funding_period": null,
+        "tuition_coverage": true,
+        "living_cost_coverage": true,
+        "travel_coverage": null,
+        "fully_funded": true,
+        "benefits": [
+          "Tuition and study materials covered",
+          "Food, transportation and accommodation covered",
+          "Academic preparatory, language and ICT courses may also be provided, depending on the needs and capacity of the country operation or programme partner",
+          "Psychosocial support may also be provided, depending on the needs and capacity of the country operation or programme partner"
+        ],
+        "eligibility": [
+          "Qualified refugee and returnee (in selected countries) students may earn an undergraduate degree in their country of asylum or home country",
+          "Programmes must be ISCED level 6 (bachelor's or equivalent) or ISCED level 5 short-cycle tertiary, including accredited TVET programmes of two years or more",
+          "DAFI does NOT cover Masters studies",
+          "Only one family member can apply or obtain a DAFI scholarship",
+          "Applicants are invited to contact their own UNHCR country operation by email for application questions"
+        ],
+        "requirements": [
+          "Apply through the DAFI Programme Management Platform",
+          "Contact your UNHCR country operation by email (published country list on the programme page) for questions about the application process"
+        ],
+        "documents": [
+          "UNHCR proof of registration",
+          "Official or certified copy of the high school diploma",
+          "University admission letter or proof of acceptance in the country of asylum",
+          "Equivalence certificate from the Ministry of Education of the country of asylum"
+        ],
+        "selection_criteria": [
+          "Priority is given to applicants with excellent academic performance",
+          "Female applicants and persons with special needs education are highly encouraged to apply",
+          "UNHCR and its education partners monitor scholars' academic progress and well-being through regular engagement with students and their institutions"
+        ],
+        "coverage": [
+          "Tuition",
+          "Study materials",
+          "Food",
+          "Transportation",
+          "Accommodation",
+          "Academic preparatory, language and ICT courses, and psychosocial support (site-dependent)"
+        ],
+        "application_method": [
+          "Check the call published by your own UNHCR country operation for the current cycle",
+          "Register an account on the DAFI Programme Management Platform",
+          "Start the application, attach the required documents listed in your country call, and submit it for review",
+          "Wait for the final status, which is notified by email from the DAFI platform"
+        ],
+        "application_route": "Apply online through the DAFI Programme Management Platform when your UNHCR country operation opens its call",
+        "study_mode": null,
+        "citizenship_residency": "Recognised refugees and, in selected countries, returnees; asylum seekers are accepted in selected country operations",
+        "international_eligibility": "Eligibility rests on UNHCR-recognised refugee or returnee status rather than nationality",
+        "subject_or_agency_requirement": "No field-of-study restriction beyond ISCED 6 bachelor's or ISCED 5 short-cycle tertiary/TVET of two years or more; master's programmes are excluded",
+        "research_requirement": null,
+        "duration": "Follows the enrolled programme: ISCED 6 bachelor's or equivalent, or ISCED 5 short-cycle tertiary/TVET of two years or more",
+        "description": "The UNHCR Tertiary Refugee Scholarship Programme (DAFI) offers qualified refugee and returnee students the possibility to earn an undergraduate degree in their country of asylum or home country, covering tuition, study materials, food, transportation and accommodation, with further support depending on the country operation or programme partner.",
+        "region": "Global",
+        "program_type": "UN agency tertiary scholarship programme (Albert Einstein German Academic Refugee Initiative)",
+        "english_requirement": null
+      },
+      "verification": {
+        "source_citations": [
+          "https://unhcr-dafi-tertiary.scholarshipsplatform.com/page/ynXGvbmb"
+        ],
+        "last_verified_date": "2026-10-10",
+        "verification_status": "confirmed",
+        "confidence": "high",
+        "not_confirmed": [
+          "funding_amount",
+          "funding_currency",
+          "funding_period",
+          "deadline_date",
+          "english_requirement",
+          "travel_coverage"
+        ],
+        "notes": "Official DAFI programme platform page read in full on 2026-10-10; unhcr.org pages returned 403 (bot protection) after repeated attempts, so the platform page is the sole citation. No monetary figure is published anywhere on the official page, so all amount fields are null."
+      },
+      "applicant_utility": {
+        "summary": "DAFI funds recognised refugees and returnees through a full undergraduate or short-cycle TVET place in their country of asylum or home country, paying tuition, study materials, food, transport and accommodation directly or through the partner. Because every country operation runs its own call with its own documents and closing date, the single most useful thing you can do is email your UNHCR country office (addresses are published on the programme page) and ask when the next call opens. Do not budget for a master's degree with this money: DAFI explicitly excludes master's studies.",
+        "best_fit": "Recognised refugees and returnees holding a secondary-school qualification who have been admitted to a bachelor's or two-year TVET programme in their country of asylum or home country.",
+        "application_readiness_checklist": [
+          "Confirm your UNHCR registration is current and obtain your proof of registration before the call opens",
+          "Secure the university admission letter or proof of acceptance first; it is a required upload",
+          "Request a certified copy of your high school diploma early; unofficial scans are a common cause of failed files",
+          "Obtain the equivalence certificate from the Ministry of Education of your country of asylum before the deadline",
+          "Check that no other family member holds or has applied for a DAFI award"
+        ],
+        "common_rejection_risks": [
+          "Applying for a master's programme, which the programme explicitly does not fund",
+          "Submitting an uncertified or unofficial copy of the high school diploma",
+          "Missing the country operation's own closing date because you assumed a global deadline existed",
+          "A second family member applying in the same round"
+        ],
+        "estimated_uncovered_costs": "Personal expenses beyond the published package (clothing, personal items, communication) and any costs of travelling to the institution are not covered; the programme page publishes no monetary value for the package, so the actual stipend level can only be learned from your own country operation.",
+        "document_audit": [
+          "The admission letter must come from a university in the country of asylum or home country, not from a foreign online programme",
+          "The equivalence certificate must be issued by the Ministry of Education of the country of asylum; certificates from your country of origin are not the same document",
+          "Proof of registration must be UNHCR's own document, not an asylum-seeker card from another agency"
+        ],
+        "alerts": [
+          "There is no global deadline: only your country operation's published window applies, and 2026/2027 country windows had largely closed by August 2026",
+          "Applications are free of charge; any site or agent charging a fee for DAFI submission is not official",
+          "Only qualified candidates duly registered with UNHCR are invited to interview in several country operations"
+        ],
+        "submission_workflow": "Register on the DAFI platform when your country call opens, complete and save the application in-progress, upload the documents your country call lists, submit for review, then await the status email from the platform."
+      }
+    },
+    {
+      "id": 538,
+      "official": {
+        "official_source_urls": [
+          "https://mo.ibrahim.foundation/fellowships"
+        ],
+        "application_link": "https://mo.ibrahim.foundation/fellowships",
+        "catalogue_url": "https://mo.ibrahim.foundation/fellowships",
+        "official_updates_url": "https://mo.ibrahim.foundation/news",
+        "deadline_central": null,
+        "deadline_central_display": null,
+        "deadline_note": "Closing dates for the 2027 round are published on each host organisation's own vacancy page (AfDB, ITC, UNECA) and differ per host; the Foundation page states only that applications are open.",
+        "application_cycle": "2027 Fellowships",
+        "status": "OPEN",
+        "status_note": "The Foundation states: 'The application process for the 2027 Fellowships is now open. Visit the host organisation website in the links below for details and to apply.'",
+        "tuition_coverage_note": "This is a 12-month work placement, not a degree-granting scholarship; no tuition is paid.",
+        "funding_amount": 100000,
+        "funding_currency": "USD",
+        "funding_period": "per year (12-month fellowship)",
+        "tuition_coverage": false,
+        "living_cost_coverage": true,
+        "travel_coverage": true,
+        "fully_funded": false,
+        "benefits": [
+          "Stipend of $100,000",
+          "12-month placement in the executive office of the AfDB (Abidjan), ECA (Addis Ababa) or the ITC (Geneva)",
+          "Direct mentorship from the head of the host organisation",
+          "Membership of the Mo Ibrahim Foundation's Now Generation Network (NGN) after the Fellowship"
+        ],
+        "eligibility": [
+          "National of an African country",
+          "Minimum 7 years of relevant work experience",
+          "Master's degree",
+          "Under the age of 40; or 45 for women with children",
+          "Any additional criteria as set by the host organisation"
+        ],
+        "requirements": [
+          "Apply online through the host organisation's own application system",
+          "Meet any additional criteria set by the chosen host"
+        ],
+        "documents": [
+          "Comprehensive curriculum vitae indicating date of birth, nationality, education and relevant experience",
+          "Copies of academic transcripts",
+          "Three letters of recommendation"
+        ],
+        "selection_criteria": [
+          "Applications are vetted by the host's HR department into a shortlist of ten, then reviewed by the Foundation",
+          "A shortlist of three candidates is decided by the head of the host organisation",
+          "Only applicants who fully meet the requirements and are considered for interview are contacted"
+        ],
+        "coverage": [
+          "Annual stipend of $100,000",
+          "Assumption-of-duty and repatriation travel and shipping funded",
+          "Official mission travel expenses borne by the host"
+        ],
+        "application_method": [
+          "Choose the host organisation route on the Mo Ibrahim Foundation fellowships page",
+          "Open the host organisation's 2027 vacancy or programme page (AfDB, ITC or UNECA)",
+          "Complete the online application on the host's system and attach the required documents before the host's closing date"
+        ],
+        "application_route": "Apply through the chosen host organisation's own vacancy page, linked from mo.ibrahim.foundation/fellowships",
+        "study_mode": null,
+        "citizenship_residency": "National of an African country",
+        "international_eligibility": "Open to nationals of any African country",
+        "subject_or_agency_requirement": "Discipline relevant to the host's business; master's degree in banking, business, economics, other social sciences, finance, international development or another relevant discipline",
+        "research_requirement": null,
+        "duration": "12 months (non-renewable)",
+        "description": "The Ibrahim Leadership Fellowships place three Fellows per year for 12 months in the executive offices of the AfDB, ECA or ITC, where they work on research and policy design, receive direct mentorship from the head of the host organisation, and receive a stipend of $100,000.",
+        "region": "Global",
+        "program_type": "Leadership fellowship",
+        "english_requirement": null
+      },
+      "verification": {
+        "source_citations": [
+          "https://mo.ibrahim.foundation/fellowships"
+        ],
+        "last_verified_date": "2026-10-10",
+        "verification_status": "confirmed",
+        "confidence": "medium",
+        "not_confirmed": [
+          "deadline_central",
+          "host-route closing dates",
+          "host-specific application document lists"
+        ],
+        "notes": "Foundation page read in full on 2026-10-10 and confirms the $100,000 stipend, 12-month duration, three hosts, eligibility criteria and the open 2027 round. The AfDB vacancy page and ITC/UN host pages were bot-blocked at verification, so per-host closing dates and document lists rest on the brief's previously captured data and could not be re-verified live."
+      },
+      "applicant_utility": {
+        "summary": "This is a salaried 12-month executive placement, not a scholarship: three African nationals with a master's degree and at least seven years' experience are placed in the AfDB, ECA or ITC offices with a $100,000 stipend and mentorship from the head of the institution. Because you apply through the host's own system, the host you choose effectively determines your closing date and extra rules, so open all three host pages before drafting anything. Treat the age limit strictly: 40, or 45 for women with children, at the start of the fellowship.",
+        "best_fit": "Mid-career African professionals (roughly seven to fifteen years' experience) with a master's degree who want senior policy exposure inside a continental bank or UN body.",
+        "application_readiness_checklist": [
+          "Pick one host route and study its vacancy page in full before writing; each adds its own criteria",
+          "Update your CV to show date of birth, nationality, education and relevant experience explicitly",
+          "Line up three referees early; recommendation letters are a required attachment",
+          "Check the AfDB-specific bars if you use that route (current/former staff and close family of staff, government officials, active military and party leaders are excluded)"
+        ],
+        "common_rejection_risks": [
+          "Applying to more than one host and splitting your preparation, when each host assesses a single complete file",
+          "Falling foul of the AfDB route's staff-relations and public-office exclusions",
+          "Missing that the fellowship is a one-year, non-renewable contract with no right to employment afterwards, including a one-year bar on applying for AfDB staff positions"
+        ],
+        "estimated_uncovered_costs": "The stipend of $100,000 is paid monthly by the host; the Fellow is not a regular employee, so medical insurance, child education and retirement arrangements must be organised and funded by the Fellow (the Foundation is responsible for ensuring these are arranged, not for paying them).",
+        "document_audit": [
+          "The CV must state date of birth and nationality; a generic corporate CV will not",
+          "Three separate letters of recommendation are required, not two",
+          "Host pages may require the transcripts to cover all degrees listed"
+        ],
+        "alerts": [
+          "Closing dates differ per host and none is published on the Foundation page itself; check the host page you intend to use rather than relying on a single date",
+          "Only applicants who fully meet the requirements and are considered for interview are contacted, so silence is the norm for most applicants",
+          "Fellows gain no employment rights and, on the AfDB route, cannot apply for Bank staff positions for a year after the Fellowship"
+        ],
+        "submission_workflow": "Select a host on the Foundation's fellowships page, complete the host's online application form with CV, transcripts and three recommendation letters, then pass HR vetting, Foundation review, and final selection by the host's head."
+      }
+    }
+  ]
+}

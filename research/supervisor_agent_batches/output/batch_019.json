@@ -1,0 +1,161 @@
+[
+  {
+    "scholarship_id": 150,
+    "outcome": "no_verified_supervisor_found",
+    "professors": [],
+    "notes": "University-wide doctoral scholarship administered by the NYCU Office of International Affairs (official application system: https://oia-scholarship.nycu.edu.tw; contact scholarshipoia@nycu.edu.tw). The award is made on college recommendation with scholarship-committee review and is not attached to any specific department, programme, or research group, so no supervising professor can be evidenced on official pages."
+  },
+  {
+    "scholarship_id": 151,
+    "outcome": "not_applicable",
+    "professors": [],
+    "notes": "Government scheme of the Ministry of Education (Taiwan) under the New Southbound Policy, delivered through multiple participating universities (e.g. NCKU, Taipei Tech). NCKU OIA page (https://oia.ncku.edu.tw/p/404-1032-229890.php?Lang=en): 'MOE Elite Scholarship ... Eligibility: Doctoral/Master's degree-seeking applicants who are currently university lecturers or professors ... OIA will provide the list of candidates to MOE for final reviewing.' No single attached institution; not_applicable per batch rules."
+  },
+  {
+    "scholarship_id": 152,
+    "outcome": "no_verified_supervisor_found",
+    "professors": [],
+    "notes": "Faculty-wide Master of Science fellowship covering all Faculty of Science disciplines (astronomy, biology, chemistry and biochemistry, computer science, mathematics, physics, pharmaceutical sciences, earth sciences). The official page names no professors; inquiries are directed to unnamed 'Masters coordinators or the Academic advisor'. Taught master's programmes have no thesis supervisors."
+  },
+  {
+    "scholarship_id": 153,
+    "outcome": "no_verified_supervisor_found",
+    "professors": [],
+    "notes": "University-wide excellence scholarship administered by UNIL's Social Affairs and Student Mobility Service (SASME); official contact mastergrants@unil.ch. Selection is made by an unnamed Selection Board with faculties deciding on admission; no named professor appears on official pages."
+  },
+  {
+    "scholarship_id": 154,
+    "outcome": "no_verified_supervisor_found",
+    "professors": [],
+    "notes": "Invitation-only, merit-based Bachelor scholarship administered by the University of St.Gallen's Advice Center for Study Funding; 'The final selection of scholarship awardees is the responsibility of the relevant committees' (committees unnamed). No professors named on official pages; bachelor's programmes have no supervisors."
+  },
+  {
+    "scholarship_id": 155,
+    "outcome": "verified_supervisors",
+    "professors": [
+      {
+        "canonical_name": "Jessica Aschari-Lincoln",
+        "title": "Head of Best Talents Programme and Co-Head of the Advice Center for Study Funding (Dr. oec.)",
+        "institution_name": "University of St.Gallen",
+        "department_name": "School of Management / Advice Center for Study Funding",
+        "official_profile_url": "https://www.unisg.ch/en/university/about-us/organisation/detail/person-id/71d317d9-a9b3-47b8-8161-38143c442ef2/",
+        "official_email": "jessica.aschari-lincoln@unisg.ch",
+        "official_email_verified": true,
+        "lab_url": null,
+        "personal_academic_url": null,
+        "research_areas": ["Social Impact - Management, Growth & Evaluation"],
+        "research_keywords": ["social entrepreneurship", "philanthropy", "study funding", "impact scaling"],
+        "relationship_type": "program_faculty",
+        "evidence_source_url": "https://www.unisg.ch/en/studying/why-hsg/hsg-best-talents/",
+        "evidence_source_type": "official_programme_page",
+        "evidence_quote_or_summary": "HSG Best Talents Programme page (the programme through which the Starr International Foundation Scholarship is delivered) lists 'Programme Contact: Dr. Jessica Aschari-Lincoln, Head of Best Talents Programme, besttalents@unisg.ch'. Her official unisg.ch profile confirms 'Dr.oec. - Head Best Talents Programme and Co-Head Advice Center for Study Funding'; her address jessica.aschari-lincoln@unisg.ch is published on HSG's institutional repository alexandria.unisg.ch.",
+        "confidence": 90,
+        "availability": {
+          "scope": "funding",
+          "state": "verified_yes",
+          "source_url": "https://www.unisg.ch/en/studying/why-hsg/hsg-best-talents/"
+        }
+      },
+      {
+        "canonical_name": "Manuel Ammann",
+        "title": "Professor of Finance and President of the University of St.Gallen",
+        "institution_name": "University of St.Gallen",
+        "department_name": "Rektorat (University Presidency); School of Finance",
+        "official_profile_url": "https://www.unisg.ch/en/university/about-us/organisation/detail/person-id/63268381-a24f-4a42-8764-5ee72d79198e/",
+        "official_email": "manuel.ammann@unisg.ch",
+        "official_email_verified": true,
+        "lab_url": null,
+        "personal_academic_url": null,
+        "research_areas": ["Finance"],
+        "research_keywords": ["banking and finance", "asset management"],
+        "relationship_type": "program_relevant_faculty",
+        "evidence_source_url": "https://www.unisg.ch/en/studying/why-hsg/hsg-best-talents/",
+        "evidence_source_type": "official_programme_page",
+        "evidence_quote_or_summary": "HSG Best Talents Programme page quotes 'Prof. Manuel Ammann, President of the University of St.Gallen: Together with our funding partners, we can attract and nurture the best talents and support them in taking on responsibility in business and society' about the Best Talents Programme (delivering the Starr International Foundation Scholarship). His unisg.ch profile states 'Prof. Dr. - President / Chair ... Main Focuses: Finance'; his address manuel.ammann@unisg.ch is published on HSG's institutional repository alexandria.unisg.ch.",
+        "confidence": 70,
+        "availability": {
+          "scope": "funding",
+          "state": "verified_yes",
+          "source_url": "https://www.unisg.ch/en/studying/why-hsg/hsg-best-talents/"
+        }
+      }
+    ],
+    "notes": "The Starr International Foundation Scholarship is delivered through the HSG Best Talents Programme; the scholarship's dedicated unisg.ch URL currently returns 404, so the Best Talents Programme page was used as the official source. Entries are the officials tied to the delivering programme on official unisg.ch pages (programme head; university president quoted for the programme). This is a taught master's excellence programme with no thesis supervisors."
+  },
+  {
+    "scholarship_id": 156,
+    "outcome": "verified_supervisors",
+    "professors": [
+      {
+        "canonical_name": "Stefan Matile",
+        "title": "Professor",
+        "institution_name": "University of Geneva",
+        "department_name": "School of Chemistry and Biochemistry, Department of Organic Chemistry",
+        "official_profile_url": "https://www.unige.ch/sciences/chiorg/matile/",
+        "official_email": "Stefan.Matile@unige.ch",
+        "official_email_verified": true,
+        "lab_url": "https://www.unige.ch/sciences/chiorg/matile/",
+        "personal_academic_url": null,
+        "research_areas": ["Organic synthesis", "Supramolecular chemistry", "Bioorganic chemistry", "Functional systems"],
+        "research_keywords": ["anion-pi interactions", "thiol-mediated uptake", "fluorescent probes", "membrane tension"],
+        "relationship_type": "program_relevant_faculty",
+        "evidence_source_url": "https://foundation.scg.ch/scholarships/werner-scholarship",
+        "evidence_source_type": "official_programme_page",
+        "evidence_quote_or_summary": "SCS Foundation official page, 'Alfred Werner Fund Allocation Committee - Committee Members from Academic Institutions: Prof. Stefan Matile, University of Geneva'. The page states 'The nominations are reviewed by the Alfred Werner Fund Allocation Committee, whose members are appointed by the participating companies and academic institutions.' Email published on his University of Geneva group page as Stefan.Matile(at)unige.ch.",
+        "confidence": 85,
+        "availability": {
+          "scope": "funding",
+          "state": "verified_yes",
+          "source_url": "https://foundation.scg.ch/scholarships/werner-scholarship"
+        }
+      },
+      {
+        "canonical_name": "Jiri Vanicek",
+        "title": "Professor (Head of the Laboratory of Theoretical Physical Chemistry)",
+        "institution_name": "EPFL (École polytechnique fédérale de Lausanne)",
+        "department_name": "Institute of Chemical Sciences and Engineering (ISIC), School of Basic Sciences",
+        "official_profile_url": "https://www.epfl.ch/labs/lcpt/vanicek/",
+        "official_email": "jiri.vanicek@epfl.ch",
+        "official_email_verified": true,
+        "lab_url": "https://www.epfl.ch/labs/lcpt/",
+        "personal_academic_url": null,
+        "research_areas": ["Theoretical molecular quantum dynamics", "Bioinformatics"],
+        "research_keywords": ["semiclassical dynamics", "Car-Parrinello simulations", "nonadiabatic dynamics", "quantum-classical methods"],
+        "relationship_type": "program_relevant_faculty",
+        "evidence_source_url": "https://foundation.scg.ch/scholarships/werner-scholarship",
+        "evidence_source_type": "official_programme_page",
+        "evidence_quote_or_summary": "SCS Foundation official page, 'Alfred Werner Fund Allocation Committee - Committee Members from Academic Institutions: Prof. Jiri Vanicek, EPFL Lausanne'. The page states 'The nominations are reviewed by the Alfred Werner Fund Allocation Committee, whose members are appointed by the participating companies and academic institutions.' His EPFL LCPT contacts page lists 'Head of the laboratory: Prof. Jiri VANICEK ... E-mail' published on the epfl.ch page (address shown as an obfuscated mailto link).",
+        "confidence": 85,
+        "availability": {
+          "scope": "funding",
+          "state": "verified_yes",
+          "source_url": "https://foundation.scg.ch/scholarships/werner-scholarship"
+        }
+      },
+      {
+        "canonical_name": "Karl Gademann",
+        "title": "Professor",
+        "institution_name": "University of Zurich",
+        "department_name": "Department of Chemistry",
+        "official_profile_url": "https://www.chem.uzh.ch/en/research/groups/gademann.html",
+        "official_email": "karl.gademann@chem.uzh.ch",
+        "official_email_verified": true,
+        "lab_url": "https://www.chem.uzh.ch/en/research/groups/gademann.html",
+        "personal_academic_url": "https://www.gademann-lab.com",
+        "research_areas": ["Natural product chemistry", "Organic synthesis", "Chemical biology"],
+        "research_keywords": ["total synthesis", "molecular design", "biohybrid microbots"],
+        "relationship_type": "program_relevant_faculty",
+        "evidence_source_url": "https://foundation.scg.ch/scholarships/werner-scholarship",
+        "evidence_source_type": "official_programme_page",
+        "evidence_quote_or_summary": "SCS Foundation official page, 'Alfred Werner Fund Allocation Committee - Committee Members from Academic Institutions: Prof. Karl Gademann, University of Zurich'. The page states 'The nominations are reviewed by the Alfred Werner Fund Allocation Committee, whose members are appointed by the participating companies and academic institutions.' His University of Zurich group page lists 'E-Mail: Karl Gademann (karl.gademann@chem.uzh.ch)' under 'Organic Synthesis and Chemical Biology'.",
+        "confidence": 85,
+        "availability": {
+          "scope": "funding",
+          "state": "verified_yes",
+          "source_url": "https://foundation.scg.ch/scholarships/werner-scholarship"
+        }
+      }
+    ],
+    "notes": "Verified professors are the academic members of the Alfred Werner Fund Allocation Committee listed on the official SCS Foundation programme page; the committee reviews institutional nominations for the MSc scholarship. Max 3 of the 7 listed academic committee members included; the full list also includes Prof. Christof Sparr (University of Basel), Prof. Martin Albrecht (University of Bern), Prof. Bruno Therrien (University of Neuchatel) and Prof. Kathrin Lang (ETH Zurich)."
+  }
+]

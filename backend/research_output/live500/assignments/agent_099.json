@@ -1,0 +1,79 @@
+{
+ "agent": "agent_099",
+ "assignment_count": 1,
+ "scholarships": [
+  {
+   "id": 279,
+   "title": "NORPART – Norwegian Partnership Programme",
+   "country": "Norway",
+   "degree": "Master's, PhD",
+   "funding_label": "Fully Funded",
+   "status": "open",
+   "official_source": "Norwegian Directorate for Higher Education and Skills (HK-dir)",
+   "official_source_url": "https://www.uhr.no/programmes-and-agreements/norpart-norwegian-partnership-programme",
+   "application_link": "https://www.uhr.no/programmes-and-agreements/norpart-norwegian-partnership-programme",
+   "catalogue_url": null,
+   "official_updates_url": null,
+   "existing": {
+    "funding_amount": null,
+    "funding_currency": null,
+    "funding_period": null,
+    "tuition_coverage": null,
+    "living_cost_coverage": null,
+    "travel_coverage": null,
+    "fully_funded": 0,
+    "description": null,
+    "eligibility": [],
+    "eligibility_summary": "Supports academic cooperation and student mobility between Norwegian universities and partner institutions in developing countries. Covers tuition, travel, and living costs. Open to students from Ethiopia, Ghana, Kenya, Malawi, Mozambique, Nigeria, Rwanda, South Africa, Tanzania, Uganda. Bangladesh NOT currently listed as NORPART partner country — verify with home institution. Students can only access through home institution's partnership agreement — no individual applications.",
+    "benefits": [
+     "Tuition fees",
+     "Travel costs",
+     "Living costs (varies by partnership)"
+    ],
+    "coverage": [
+     "Tuition fees",
+     "Travel costs",
+     "Living costs (varies by partnership)"
+    ],
+    "requirements": [],
+    "documents": [],
+    "english_requirement": null,
+    "application_method": [],
+    "selection_notes": null,
+    "best_fit": "Students at institutions with NORPART partnership agreements (Bangladesh needs_review)",
+    "notes": null,
+    "duration": null,
+    "application_period": null,
+    "deadline_display": "15 October 2026",
+    "deadline_date": null,
+    "region": "Europe",
+    "program_type": null,
+    "applicant_utility": null,
+    "official_details": null
+   },
+   "missing_fields": [
+    "funding_amount",
+    "funding_currency",
+    "funding_period",
+    "tuition_coverage",
+    "living_cost_coverage",
+    "travel_coverage",
+    "description",
+    "eligibility",
+    "requirements",
+    "documents",
+    "english_requirement",
+    "application_method",
+    "selection_notes",
+    "notes",
+    "duration",
+    "application_period",
+    "deadline_date",
+    "program_type",
+    "applicant_utility",
+    "official_details"
+   ]
+  }
+ ],
+ "result_file": "C:\\Users\\GopaL\\Desktop\\Projects folder\\ScholarZone\\backend\\research_output\\live500\\results\\agent_099.json"
+}

@@ -1,0 +1,9 @@
+{
+  "agent_id": "w3_11",
+  "shard": "w3-11",
+  "host": "anrfonline.in",
+  "today": "2026-10-04",
+  "logo_override": null,
+  "target_ids": [361],
+  "notes": "Probed anrfonline.in itself (webfetch, HTTP 200, full markup retrieved twice). ANRF ships NO logo image at all: the header block <div class=\"serb-logo\"> is pure live text - <span class=\"hindi\">अनुसंधान नेशनल रिसर्च फाउंडेशन</span><br><span class=\"english\">Anusandhan National Research Foundation</span> inside an <a title=\"Anusandhan National Research Foundation\"> - there is no <img>, no background-image, no inline SVG and no JSON-LD logo anywhere in the document. No og:image and no msapplication-TileImage that resolves (declared but broken). Scanned all 40+ <img> tags in the homepage: every one is either a UI icon (user.svg, captcha, browser icons), a scheme banner (ban30.jpg, MAHA.png, Supra.jpg, ban_vajra.png...), or a DIFFERENT body's logo in the 'important links' block (serbimp.png, dstimp.png, serbprism.png, dbtimp.png, csir.png, cadc.png). Per rule 2 none of those may stand in for the ANRF mark - SERB/DST/DBT/CSIR/CDAC are other bodies, and reporting a ministry logo on a foundation-awarded fellowship is exactly the provenance error the brief forbids. Asset probes, all HTTP 404: /favicon.ico, /ANRF/resources/app_srv/serb/gl/images/apple-icons/apple-touch-icon-precomposed.png (the path the page itself declares for apple-touch-icon), /ANRF/.../homepage/img/anrf_logo.png, /ANRF/.../homepage_new/images/logo.svg. Not probed and deliberately not used: anrf.gov.in and serbonline.in marks - different registrable domains, so rule 1 excludes them even though ANRF/SERB are the same organisation. Result is an honest null: the awarding body publishes its name as text and serves no mark of its own on its own domain."
+}

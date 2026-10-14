@@ -1,0 +1,139 @@
+{
+  "agent": "agent_333",
+  "records": [
+    {
+      "id": 727,
+      "official": {
+        "official_source_urls": [
+          "https://www.sbfi.admin.ch/en/swiss-government-excellence-scholarships",
+          "https://www.sbfi.admin.ch/en/swiss-government-excellence-scholarships-at-a-glance"
+        ],
+        "application_link": "https://www.go.eskas.ch/BewerbungServlet?identifier=SBFI&kz_bew_pers=S&kz_bew_art=IN&aust_prog=CHECK&sprache=en&onlyEligibilityCheck=ELIG_CHECK_SUCCESS",
+        "catalogue_url": null,
+        "official_updates_url": "https://www.sbfi.admin.ch/en/swiss-government-excellence-scholarships",
+        "deadline_central": null,
+        "deadline_central_display": null,
+        "deadline_note": "Country-specific: applications opened 20 August 2026 and closing dates are published per country of origin in the A-Z list of countries and territories with scholarship types and deadlines on the SERI page.",
+        "application_cycle": "2027-2028 academic year (all awards start 1 September 2027)",
+        "status": "OPEN",
+        "status_note": "Applications are open starting 20 August 2026 for the 2027-2028 academic year; the programme is open to applicants from 183 countries.",
+        "tuition_coverage_note": "The Federal Excellence Scholarship does not cover tuition or semester fees; holders themselves pay them (in some cases approx. CHF 600 to CHF 2,000 per semester, or reduced tuition fees).",
+        "funding_amount": 2450,
+        "funding_currency": "CHF",
+        "funding_period": "per month",
+        "tuition_coverage": false,
+        "living_cost_coverage": true,
+        "travel_coverage": true,
+        "fully_funded": false,
+        "benefits": [
+          "CHF 2,450 per month to cover basic living expenses for one person",
+          "Health insurance: FCS covers the premiums for compulsory health insurance for scholarship holders from non-EU/EFTA countries",
+          "One-time grant of CHF 600 for rental deposit",
+          "Half-Fare Travelcard for public transport",
+          "Return flight allowance for scholarship holders from non-EU/EFTA countries (amount determined by country of origin)",
+          "Excursions and activities organised by the coordinating body"
+        ],
+        "eligibility": [
+          "Master's degree or equivalent completed by 31 July 2027 (ETH Zurich: 30 June 2027) for research and PhD scholarships",
+          "Date of birth after 31 December 1991 (maximum age 35)",
+          "Detailed research plan with a timeline specifying key milestones and activities",
+          "Letter of support from an academic supervisor at a Swiss higher education institution, including a short CV",
+          "If already residing in Switzerland: date of entry must not be earlier than 1 August 2026",
+          "Art scholarships: Bachelor's degree completed by 31 July 2027, must not already hold a Master's degree, and an admission letter or proof of application from a Swiss University of the Arts or Music"
+        ],
+        "requirements": [
+          "Valid only for full-time research or study in Switzerland at an eligible Swiss institution",
+          "Scholarship holders must reside in the city or canton of the Swiss host institution",
+          "Applications are submitted only via the GO ESKAS online portal - not by email or on paper"
+        ],
+        "documents": [
+          "Complete CV including educational background, degrees, awards, positions, publications, teaching and practical experience",
+          "Letter of motivation (max. 2 pages) covering reasons for the stay in Switzerland and its significance for future career plans",
+          "Research proposal on the FCS/ESKAS form (max. 5 pages including a summary for non-specialists)",
+          "Letter of support from an academic supervisor at a Swiss higher education institution",
+          "Short CV (max. 2 pages) from the academic supervisor",
+          "E-mail addresses of two different professors in the relevant field, who upload recommendation letters through the application system",
+          "Copies of certificates and transcripts from previous universities, with certified translations if not in English, French, Italian or German",
+          "Copy of passport (dual citizens submit copies of both passports)",
+          "Copy of residence permit or registration confirmation if already residing in Switzerland"
+        ],
+        "selection_criteria": [
+          "Candidate profile",
+          "Quality of the research project or artistic work",
+          "Synergies and potential for future research cooperation",
+          "Art scholarships additionally assess artistic profile, qualifications, motivation and the submitted portfolio"
+        ],
+        "coverage": [
+          "Monthly stipend of CHF 2,450 to cover basic living expenses of one person",
+          "Compulsory health insurance premiums for holders from non-EU/EFTA countries",
+          "CHF 600 one-time grant for rental deposit",
+          "Half-Fare Travelcard for public transport",
+          "Return flight allowance for holders from non-EU/EFTA countries",
+          "Not covered: tuition and semester fees, conference participation, field research, and travel expenses for EU/EFTA holders"
+        ],
+        "application_method": [
+          "Check the available scholarship types and the deadline for your country of origin in the A-Z country list",
+          "Register in Grants Online (GO ESKAS)",
+          "Prepare and submit the application online; for research and PhD scholarships, first identify an academic supervisor in Switzerland"
+        ],
+        "application_route": "Online via the GO ESKAS portal (access from 20 August 2026); email or paper applications are not accepted",
+        "study_mode": "Full-time research or study in Switzerland",
+        "citizenship_residency": "Applicants from 183 eligible countries; priority is given to those who have not previously studied or conducted research in Switzerland, and someone who has lived, studied or worked in Switzerland more than 13 months before the start is excluded",
+        "international_eligibility": "Yes - the programme targets foreign early-career researchers and postgraduate art students",
+        "subject_or_agency_requirement": "Research and PhD scholarships: any academic field at an eligible Swiss university, university of applied sciences, ETHZ/EPFL or ETH Domain research institute. Art scholarships are offered at Swiss conservatories and art schools and only to a limited number of countries",
+        "research_requirement": "Research and PhD applications require a detailed research plan on the FCS/ESKAS form with a timeline, plus a supervisor's letter of support; applications without an academic supervisor are not considered",
+        "duration": "Research fellowship: 6 to 12 months maximum, no extensions. PhD scholarship: 12 months, renewable twice up to 36 months. Art Master's: 12 months, extendable up to a maximum of 21 months. All start on 1 September 2027",
+        "description": "Each year the Swiss Confederation awards Government Excellence Scholarships to encourage international exchange and research cooperation between Switzerland and over 180 other countries; recipients are selected by the Federal Commission for Scholarships for Foreign Students (FCS aka ESKAS).",
+        "region": "Europe",
+        "program_type": "Federal government scholarship (FCS/ESKAS)",
+        "english_requirement": null
+      },
+      "verification": {
+        "source_citations": [
+          "https://www.sbfi.admin.ch/en/swiss-government-excellence-scholarships-at-a-glance",
+          "https://www.sbfi.admin.ch/en/swiss-government-excellence-scholarships"
+        ],
+        "last_verified_date": "2026-10-10",
+        "verification_status": "confirmed",
+        "confidence": "high",
+        "not_confirmed": [
+          "deadline_central",
+          "return flight allowance amounts",
+          "english_requirement"
+        ],
+        "notes": "SERI overview and 'at a glance' pages fetched live; the CHF 2,450 monthly amount, additional benefits, exclusions and holder obligations are confirmed on the awarding body's own domain. Deadline is country-specific and published in the A-Z country list PDF, which is a binary file and could not be parsed."
+      },
+      "applicant_utility": {
+        "summary": "The decisive step here happens before any form exists: a professor at a Swiss institution must agree to supervise your project and sign the letter of support, because applications without a supervisor are not considered at all. After that, plan on one to two days to build the dossier - CV, a two-page motivation letter, a five-page research plan on the FCS/ESKAS form, the supervisor's letter and two-page CV, two referee contacts who will upload letters, and certified translations where needed. Submit only through GO ESKAS inside your own country's window, and remember the CHF 2,450 monthly stipend is explicitly not a salary and covers one person only.",
+        "best_fit": "Early-career researchers who can realistically secure a Swiss academic supervisor and want funded research time rather than a full degree.",
+        "application_readiness_checklist": [
+          "Start supervisor outreach months in advance and target professors whose research matches your project",
+          "Use the official FCS/ESKAS research proposal form downloaded from the online application and keep it within 5 pages including the lay summary",
+          "Line up two professors who can upload recommendation letters when the system emails them",
+          "Arrange certified translations of certificates and transcripts not in English, French, Italian or German",
+          "Find your country's exact deadline in the A-Z country list - it is not a single shared date"
+        ],
+        "common_rejection_risks": [
+          "No academic supervisor or no letter of support - the application is not considered",
+          "Submitting more than one research project proposal, or simultaneous applications to several host universities or scholarship types",
+          "Having lived, studied or worked in Switzerland more than 13 months before the scholarship start",
+          "Applying a fourth time after three unsuccessful attempts",
+          "Incomplete or formally defective applications"
+        ],
+        "estimated_uncovered_costs": "Semester fees of roughly CHF 600-2,000 per semester, conference participation, up to six months of field research without additional funding, and - for EU/EFTA passport holders - travel expenses and their own health insurance premiums",
+        "document_audit": [
+          "The research proposal must be on the official FCS/ESKAS form - a generic template counts as a formal error",
+          "The supervisor's CV is capped at 2 pages",
+          "Graduate school PhD applicants additionally need the recognised school's confirmation of admission",
+          "If you already live in Switzerland, upload your residence permit or registration confirmation showing entry no earlier than 1 August 2026"
+        ],
+        "alerts": [
+          "Applications opened 20 August 2026 but each country has its own deadline - do not assume a single date",
+          "The stipend is not a salary and includes no family allowances; accompanying-person policy is currently restrictive",
+          "Award decisions arrive by the end of May for a 1 September 2027 start, so plan current employment and study around that"
+        ],
+        "submission_workflow": "Secure a supervisor, assemble the dossier, register in GO ESKAS and submit online before your country's deadline; the FCS assesses and announces decisions by the end of May."
+      }
+    }
+  ]
+}

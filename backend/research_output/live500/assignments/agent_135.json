@@ -1,0 +1,77 @@
+{
+ "agent": "agent_135",
+ "assignment_count": 1,
+ "scholarships": [
+  {
+   "id": 339,
+   "title": "University of Turku Merit Scholarship (50% of tuition) and Early Bird Discount",
+   "country": "Finland",
+   "degree": "Bachelor's, Master's",
+   "funding_label": "Partially Funded",
+   "status": "open",
+   "official_source": "University of Turku",
+   "official_source_url": "https://www.utu.fi/en/study-at-utu/scholarships-and-tuition-fees",
+   "application_link": "https://www.utu.fi/en/study-at-utu/scholarships-and-tuition-fees",
+   "catalogue_url": "https://www.utu.fi/en/study-at-utu/bachelors-and-masters-degree-programmes",
+   "official_updates_url": "https://www.utu.fi/en/study-at-utu/scholarships-and-tuition-fees",
+   "existing": {
+    "funding_amount": null,
+    "funding_currency": "EUR",
+    "funding_period": null,
+    "tuition_coverage": 1,
+    "living_cost_coverage": 0,
+    "travel_coverage": 0,
+    "fully_funded": 0,
+    "description": "The University of Turku does not offer any scholarship covering tuition for the first study year. Newly admitted master's students can receive a EUR 2,000 Early Bird discount by accepting the study offer and paying tuition within 28 days of the admission decisions being published. The University of Turku Merit Scholarship, awarded on academic merit, then covers 50% of tuition for the following academic year - the second year for master's students and the second and third years for bachelor's students - provided the student has met the credit, grade and Finnish-language requirements. All students who fulfil the requirements are eligible.",
+    "eligibility": [
+     "Admitted to a University of Turku degree programme and liable for tuition fees",
+     "Paid for their studies during their first study year(s) at the University of Turku",
+     "Master's students: at least 55 credits in the first study year",
+     "Bachelor's students: 55 credits for the second study year and 110 credits across the first two study years for the third study year",
+     "Average score of 3.0 or higher on the 1-5 grading scale",
+     "At least 4 credits of Finnish completed before first applying, or proven Finnish proficiency assessed case by case"
+    ],
+    "eligibility_summary": "Students liable for University of Turku tuition fees (citizens of countries outside the EU/EEA and Switzerland) at bachelor's and master's level who are admitted and pay for their studies. No first-year scholarship is possible; the Early Bird discount is master's only, and the Merit Scholarship applies from the second study year onwards.",
+    "benefits": [
+     "EUR 2,000 Early Bird discount on the first-year master's tuition",
+     "50% of the second-year master's tuition fee",
+     "50% of the second and third-year bachelor's tuition fees"
+    ],
+    "coverage": [
+     "Early Bird discount: EUR 2,000 for newly admitted master's students",
+     "Merit Scholarship: 50% of the tuition fee for the following academic year"
+    ],
+    "requirements": [],
+    "documents": [],
+    "english_requirement": null,
+    "application_method": [
+     "For the Early Bird discount: accept the study offer and pay the tuition fee within 28 days of the admission decisions being published",
+     "For the Merit Scholarship: apply once invited by the admission services in the spring round"
+    ],
+    "selection_notes": null,
+    "best_fit": "Fee-paying University of Turku students who perform strongly academically and complete Finnish credits.",
+    "notes": "\"The Early Bird discount is not available for applicants of the bachelor's degree programmes.\" The page also corrects an earlier error: the 28-day window was previously wrongly stated as 30 days.",
+    "duration": "The Merit Scholarship covers the following academic year: master's year two, or bachelor's years two and three",
+    "application_period": "Merit Scholarship invitations are issued when the application round opens in spring; the 2026 Early Bird deadline was 24 April 2026",
+    "deadline_display": "Early Bird: \"the applicant must accept the study offer and pay the tuition fee within 28 days after the admission decisions have been published\" - for 2026, \"the final date to accept the study offer and pay the tuition fee is 24 April\". Merit Scholarship: \"The admission services of the University will invite all eligible applicants to apply for the scholarship when the application round opens in spring.\"",
+    "deadline_date": null,
+    "region": "Europe",
+    "program_type": "Academic-merit tuition fee scholarship plus first-year tuition discount",
+    "applicant_utility": null,
+    "official_details": null
+   },
+   "missing_fields": [
+    "funding_amount",
+    "funding_period",
+    "requirements",
+    "documents",
+    "english_requirement",
+    "selection_notes",
+    "deadline_date",
+    "applicant_utility",
+    "official_details"
+   ]
+  }
+ ],
+ "result_file": "C:\\Users\\GopaL\\Desktop\\Projects folder\\ScholarZone\\backend\\research_output\\live500\\results\\agent_135.json"
+}

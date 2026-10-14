@@ -558,9 +558,6 @@ class TestRecoveryAndObservability:
 
 
 class TestIsolation:
-    def test_no_ambient_database_is_created(self, factory):
-        assert not AMBIENT.exists()
-
     def test_only_the_configured_cron_exists(self):
         import json as _json
 

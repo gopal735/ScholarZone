@@ -1,0 +1,100 @@
+{
+ "agent": "agent_463",
+ "assignment_count": 1,
+ "scholarships": [
+  {
+   "id": 522,
+   "title": "African Institute for Mathematical Sciences (AIMS) Structured Master's Scholarship - January 2027 intake (South African applicants)",
+   "country": "South Africa",
+   "degree": "Master's",
+   "funding_label": "Fully Funded",
+   "status": "open",
+   "official_source": "African Institute for Mathematical Sciences (AIMS), Muizenberg, Cape Town",
+   "official_source_url": "https://aims.ac.za/academics/prospective_students",
+   "application_link": "https://aims.ac.za/academics/prospective_students",
+   "catalogue_url": null,
+   "official_updates_url": "https://aims.ac.za",
+   "existing": {
+    "funding_amount": null,
+    "funding_currency": null,
+    "funding_period": null,
+    "tuition_coverage": null,
+    "living_cost_coverage": null,
+    "travel_coverage": null,
+    "fully_funded": 0,
+    "description": null,
+    "eligibility": [
+     "be a resident in Africa at the time of application*",
+     "be a citizen of any country in Africa",
+     "have completed a four-year undergraduate degree or a three-year undergraduate degree with an honours year by August (for the September intake) or December (for South African applicants in the January intake)",
+     "not have held a previous scholarship to study at an AIMS centre"
+    ],
+    "eligibility_summary": "Must be a citizen of any African country and resident in Africa at the time of application, hold a four-year undergraduate degree or a three-year degree with an honours year completed by December for the January intake (M1 year in the French LMD system), not have previously held an AIMS scholarship, and for the January 2027 intake be a South African applicant.",
+    "benefits": [
+     "Flights to and from South Africa",
+     "Airport transfers",
+     "Medical insurance",
+     "Tuition and research fees",
+     "Stipend of R2,200 per month",
+     "Accommodation on-site at AIMS (6 Melrose Road, Muizenberg)",
+     "Three meals a day at the AIMS canteen"
+    ],
+    "coverage": [
+     "Flights to and from South Africa",
+     "Airport transfers",
+     "Medical insurance",
+     "Tuition and research fees",
+     "Stipend of R2,200 per month",
+     "Accommodation on-site at AIMS (6 Melrose Road, Muizenberg)",
+     "Three meals a day at the AIMS canteen"
+    ],
+    "requirements": [
+     "Applications for the Structured Master's programme are completed online.",
+     "Choose the relevant stream: the Mathematical Sciences stream (apply.aims.ac.za) or the AI for Science stream (ai.aims.ac.za/apply).",
+     "Complete the online application form.",
+     "Upload your undergraduate and postgraduate transcripts, a CV, a cover letter and sample work.",
+     "Submit your application."
+    ],
+    "documents": [
+     "Undergraduate transcripts",
+     "Postgraduate transcripts",
+     "A CV",
+     "Cover letter",
+     "Sample work"
+    ],
+    "english_requirement": null,
+    "application_method": [
+     "Choose the relevant stream: Mathematical Sciences stream (apply.aims.ac.za) or AI for Science stream (ai.aims.ac.za/apply).",
+     "Complete the online application form.",
+     "Upload your undergraduate and postgraduate transcripts, a CV, cover letter and sample work.",
+     "Submit your application."
+    ],
+    "selection_notes": "\"Shortlisted candidates will be invited for an online interview before final selections are made.\" AIMS publishes no scoring criteria, no weighting, no shortlist size and no results date, so selection beyond the interview stage is not documented on its public pages.",
+    "best_fit": "Applicants who are citizens of any African country and resident in Africa at the time of application, hold a four-year undergraduate degree or a three-year undergraduate degree plus an honours year (or the French LMD equivalent of an M1 year) in physics, mathematics, statistics, computer science, engineering or another discipline with a strong computational and mathematical component, and have never previously held a scholarship to study at an AIMS centre. For the intake that is open on 2026-10-01, applicants must additionally be South African, and the degree must be completed by December.",
+    "notes": "Money is handled by the institute rather than by the student: \"the scholarship funds are managed by AIMS and are not paid into students' bank accounts. Students receive stipends, paid directly into their South African bank accounts. AIMS processes and covers all other expenses directly.\" Applicants are barred from applying if they have previously held a scholarship to study at an AIMS centre. The Africa-wide September intake is closed for the year, so the live window in October is the South African applicant intake only, and the AI for Science stream has no January intake. AIMS publishes no deferral rule, no renewal rule, no return-home obligation and no disciplinary or clinical restriction, so those fields are left null rather than assumed. AIMS does publish a residency exception: \"The residency requirement is not applicable to students who are displaced by war.\"",
+    "duration": "Structured Master's programme within AIMS's academic year, which \"kicks off in September and runs through until the end of June\"; the January intake begins in January and AIMS publishes no separate end date or programme length for it on this page",
+    "application_period": "Two published windows. September intake (African applicants): applications open January to March. January intake (South African applicants): applications open August to October of the preceding year. As at 2026-10-01 the only window still running is the January 2027 intake for South African applicants, open August to October 2026. The AI for Science stream is not part of this window because AIMS states: \"For the AI for Science stream we only have the September intake with applications open from January to March.\"",
+    "deadline_display": "\"Applications are open from January to March.\" and \"For our Mathematical Sciences stream, we have a September intake, open January to March and a January intake (South African applicants) open August to October of the preceding year.\" No day-level closing date is published, so the January 2027 intake window is stated only as closing in October 2026, and no day has been inferred.",
+    "deadline_date": null,
+    "region": "Africa",
+    "program_type": "Institute scholarship (fully funded postgraduate award from the African Institute for Mathematical Sciences)",
+    "applicant_utility": null,
+    "official_details": null
+   },
+   "missing_fields": [
+    "funding_amount",
+    "funding_currency",
+    "funding_period",
+    "tuition_coverage",
+    "living_cost_coverage",
+    "travel_coverage",
+    "description",
+    "english_requirement",
+    "deadline_date",
+    "applicant_utility",
+    "official_details"
+   ]
+  }
+ ],
+ "result_file": "C:\\Users\\GopaL\\Desktop\\Projects folder\\ScholarZone\\backend\\research_output\\live500\\results\\agent_463.json"
+}

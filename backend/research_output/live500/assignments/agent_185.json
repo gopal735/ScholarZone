@@ -1,0 +1,90 @@
+{
+ "agent": "agent_185",
+ "assignment_count": 1,
+ "scholarships": [
+  {
+   "id": 484,
+   "title": "University of Chicago International Student Financial Aid (Need-Based and Merit Scholarships for Undergraduates)",
+   "country": "United States",
+   "degree": "Undergraduate",
+   "funding_label": "Fully Funded",
+   "status": "open",
+   "official_source": "The University of Chicago (College Admissions and Office of Financial Aid)",
+   "official_source_url": "https://www.uchicago.edu/admissions/undergraduate/financial-aid/international-students",
+   "application_link": "https://www.uchicago.edu/admissions/undergraduate/financial-aid/international-students",
+   "catalogue_url": "https://collegeadmissions.uchicago.edu/financial-support/international-financial-aid",
+   "official_updates_url": "https://financialaid.uchicago.edu/undergraduate/the-application-process/prospective-and-transfer-students",
+   "existing": {
+    "funding_amount": null,
+    "funding_currency": "USD",
+    "funding_period": "per academic year",
+    "tuition_coverage": 1,
+    "living_cost_coverage": 1,
+    "travel_coverage": 0,
+    "fully_funded": 1,
+    "description": null,
+    "eligibility": [
+     "Applies for first-year admission to the University of Chicago as an international (non-US citizen, non-permanent resident) applicant",
+     "Submits the Student Financial Aid Worksheet through the UChicago Account",
+     "Submits documentation of family income and assets, translated into English and converted to US Dollars where the home country uses non-US tax forms",
+     "Submits a complete financial aid application by the deadline for the admission round",
+     "International transfer students are not eligible for need-based financial aid or merit scholarships"
+    ],
+    "eligibility_summary": "First-year international applicants to the University of Chicago who apply for financial aid at the same time as their admission application. Aid eligibility is fixed at admission: students who do not apply for aid during the admissions process cannot apply later, including during their four years in the College.",
+    "benefits": [
+     "Loan-free need-based financial aid package meeting 100% of demonstrated need",
+     "Automatic consideration for merit scholarships for all first-year applicants, with no additional application required",
+     "Merit scholarships as partial-tuition awards, either a single lump sum or a renewable annual award"
+    ],
+    "coverage": [
+     "Tuition",
+     "Housing",
+     "Health insurance (MIT-equivalent student health plan cost is included in the UChicago package)",
+     "Meal plan",
+     "Estimates for additional costs such as books and personal expenses"
+    ],
+    "requirements": [
+     "Complete the Student Financial Aid Worksheet in the UChicago Account",
+     "Upload all financial aid documents through the UChicago Account; the Office of Financial Aid cannot accept emailed documents",
+     "Do not submit the CSS Profile or the FAFSA as an international aid applicant",
+     "The Certification of Finances form need not be submitted with the financial aid application"
+    ],
+    "documents": [
+     "Student Financial Aid Worksheet completed electronically in the applicant's UChicago Account (the only aid form for non-US citizens and non-US permanent residents)",
+     "Documentation of Family Income: 2024 Tax Forms, or the home-country equivalent translated into English and converted into US Dollars",
+     "If the home country does not require tax filing: an employer statement of annual income and benefits, or bank statements showing recurring salary deposits",
+     "Asset Verification Form",
+     "Statements of checking, savings and investment account balances",
+     "Statement showing the value of property owned other than the primary home, if applicable"
+    ],
+    "english_requirement": null,
+    "application_method": [
+     "Apply for admission to UChicago and for financial aid at the same time",
+     "Complete the Student Financial Aid Worksheet online through the UChicago Account",
+     "Upload supporting income and asset documents through the UChicago Account",
+     "Meet the document deadline for the admission round"
+    ],
+    "selection_notes": "Need-based aid is determined during the admission process. Merit scholarships are considered independently of financial need, and the College states applicants should not rely on merit scholarships to fund their education because the vast majority of UChicago aid is need-based. Only merit scholarship winners are notified, on a rolling basis through the end of April.",
+    "best_fit": "First-year international applicants to the University of Chicago whose families cannot fund the full cost of attendance and who are willing to document family income and assets in detail through the UChicago Account.",
+    "notes": "Aid eligibility is determined only once, at admission. UChicago reports that nearly $20 million in need-based aid has been awarded to international students over the past four years and that a recent $35 million gift for international financial aid has strengthened this commitment.",
+    "duration": "Aid is determined during the admissions process before the first year and re-applied for in each subsequent year of the College.",
+    "application_period": "Aligned to the UChicago admission rounds for first-year applicants; aid documents are uploaded through the applicant's UChicago Account and the deadline matches the admission round chosen.",
+    "deadline_display": "Prospective students must have submitted a complete financial aid application by the deadline associated with their admission application round. Deadline for Financial Aid document submission: Nov 15 (Early Action and Early Decision I), Jan 15 (Early Decision II), Feb 15 (Regular Decision), March 15 (transfer Early Decision) and April 1 (transfer Rolling Decision).",
+    "deadline_date": null,
+    "region": "North America",
+    "program_type": "Need-blind institutional need-based grant aid for international undergraduates, plus partial-tuition merit scholarships.",
+    "applicant_utility": null,
+    "official_details": null
+   },
+   "missing_fields": [
+    "funding_amount",
+    "description",
+    "english_requirement",
+    "deadline_date",
+    "applicant_utility",
+    "official_details"
+   ]
+  }
+ ],
+ "result_file": "C:\\Users\\GopaL\\Desktop\\Projects folder\\ScholarZone\\backend\\research_output\\live500\\results\\agent_185.json"
+}

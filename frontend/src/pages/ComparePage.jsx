@@ -42,7 +42,7 @@ export default function ComparePage() {
           </span>
           <h2>Nothing selected for comparison yet.</h2>
           <p>Select up to {maxItems} scholarships from the directory to compare their key details here.</p>
-          <Link to="/scholarships" className="compare-page__action">
+          <Link to="/scholarships" className="p-btn compare-page__action">
             Explore scholarships <span aria-hidden="true">&rarr;</span>
           </Link>
         </div>

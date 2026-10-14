@@ -1,0 +1,138 @@
+{
+  "agent": "agent_261",
+  "records": [
+    {
+      "id": 620,
+      "official": {
+        "official_source_urls": [
+          "https://au.int/en/announcements/20251115/pan-african-university-call-scholarships-applications-academic-year-2026-2027",
+          "https://www.au-pau.org/submission"
+        ],
+        "application_link": "https://www.au-pau.org/submission",
+        "catalogue_url": "https://au.int/en/announcements-1",
+        "official_updates_url": "https://au.int/en/announcements-1",
+        "deadline_central": "2025-12-15",
+        "deadline_central_display": "15 December 2025",
+        "deadline_note": "The call states applications received after 15 December 2025 will NOT be considered. No 2027 call dates have been published, though the cycle historically runs 15 November to 15 December.",
+        "application_cycle": "2026-2027 academic year; the call was launched on 15 November 2025 and closed on 15 December 2025",
+        "status": "CLOSED",
+        "status_note": "The official announcement and the PAU submission platform both state that the call closed on 15 December 2025 and that late applications will not be considered. The 2026-2027 cycle is therefore closed.",
+        "tuition_coverage_note": "The announcement states only that 'The African Union Commission will offer full scholarships to successful candidates' and does not itemise what the full scholarship covers.",
+        "funding_amount": null,
+        "funding_currency": null,
+        "funding_period": null,
+        "tuition_coverage": null,
+        "living_cost_coverage": null,
+        "travel_coverage": null,
+        "fully_funded": false,
+        "benefits": [
+          "Full scholarships awarded by the African Union Commission (the announcement states the Commission will offer full scholarships to successful candidates)",
+          "Joint degree awards from the Pan African University and its host universities",
+          "Study at one of four PAU institutes: PAUSTI in Kenya, PAUGHSS in Cameroun, PAUWES in Algeria and PAULESI in Nigeria"
+        ],
+        "eligibility": [
+          "Applicants from African countries and the Diaspora",
+          "Master's: not older than 25 years for male and 28 years for female applicants",
+          "Master's: holder of an undergraduate degree from a recognised university, with at least a second-class upper division or its equivalent, in a relevant field",
+          "PhD: maximum 28 years old for male and 30 years old for female applicants",
+          "PhD: a master's degree in a relevant field from PAU or any internationally recognised university",
+          "Master's candidates for Conference Interpreting and Translation must have excellent knowledge of at least two of the African Union's official languages (Arabic, English, French, Portuguese, Kiswahili and Spanish)",
+          "Meet immigration and visa requirements for the host institute"
+        ],
+        "requirements": [
+          "Academic competence must be evidenced in academic transcripts at the bachelor's level",
+          "Candidates may be required to undergo a written or oral examination after pre-selection",
+          "Names and contact details of three reference university lecturers, with email address and WhatsApp number, are mandatory",
+          "Scholarship awardees should be committed to working in Africa after graduation"
+        ],
+        "documents": [
+          "Certified true copies of relevant certificates and transcripts, from university and high school",
+          "Passport or National Identity card, personal details page",
+          "Clear coloured passport size photograph, 2cm x 2cm",
+          "Detailed CV",
+          "Master's: one recommendation letter from a former university lecturer",
+          "PhD: recommendation letters from two professors",
+          "PhD: a 3 to 4 page research concept note covering tentative title, research questions, objectives and significance of the research"
+        ],
+        "selection_criteria": [
+          "Candidates may be required to undergo a written or oral examination after pre-selection",
+          "Academic competence must be evidenced in the bachelor's-level transcripts",
+          "The announcement particularly encourages applicants who desire transformative leadership roles as academics, professionals, industrialists, innovators and entrepreneurs"
+        ],
+        "coverage": [
+          "The announcement states the African Union Commission will offer full scholarships to successful candidates, but does not itemise the components"
+        ],
+        "application_method": [
+          "Register on the PAU submission platform with a valid username and email",
+          "Check your inbox, including spam, and click the confirmation link to complete registration",
+          "Set a valid password and log in with your credentials",
+          "Open the Application page, provide all your data, click Save, and then click FINISH",
+          "If you do not finish, log in again later with the same email and password to continue"
+        ],
+        "application_route": "Register on the PAU submission portal, confirm the registration email, then complete and FINISH the online application; no paper application is accepted.",
+        "study_mode": "full-time",
+        "citizenship_residency": "Open to applicants from African countries and the African Diaspora; no specific residency or nationality list of eligible countries is published.",
+        "international_eligibility": "Open to applicants from African countries and the Diaspora, studying at PAU institutes hosted in Kenya, Cameroun, Algeria and Nigeria.",
+        "subject_or_agency_requirement": "Master's and PhD programmes at the four PAU institutes (PAUSTI Basic Sciences, Technology and Innovation; PAUGHSS Governance, Humanities and Social Sciences; PAUWES Water and Energy Sciences including Climate Change; PAULESI Life and Earth Sciences including Health and Agriculture).",
+        "research_requirement": "PhD applicants must submit a 3 to 4 page research concept note covering a tentative title, research questions, objectives and the significance of the research.",
+        "duration": "Master's and PhD programmes at the Pan African University institutes; the announcement does not state programme length",
+        "description": "The Pan African University is an initiative of the Heads of State and Government of the African Union, a premier continental university network whose mission is to provide quality postgraduate education geared towards a prosperous, integrated and peaceful Africa. From 2014 to date PAU has issued 2549 certificates to 856 females and 1693 males from 50 member states, and the African Union Commission offers full scholarships to successful candidates.",
+        "region": "Africa",
+        "program_type": "Continental intergovernmental scholarship (African Union)",
+        "english_requirement": null
+      },
+      "verification": {
+        "source_citations": [
+          "https://au.int/en/announcements/20251115/pan-african-university-call-scholarships-applications-academic-year-2026-2027",
+          "https://www.au-pau.org/submission"
+        ],
+        "last_verified_date": "2026-10-10",
+        "verification_status": "confirmed",
+        "confidence": "high",
+        "not_confirmed": [
+          "funding_amount, funding_currency and funding_period - the announcement publishes no award value for the full scholarship",
+          "tuition_coverage, living_cost_coverage and travel_coverage - the announcement states only that full scholarships will be offered and does not itemise the components",
+          "english_requirement - no English test or score requirement is published; the only language rule is the two official languages requirement for the Master in Conference Interpreting and Translation",
+          "the 2027 cycle dates - only the 2026-2027 call (15 November to 15 December 2025) is published",
+          "programme length, and whether the scholarship covers the full master's or PhD duration"
+        ],
+        "notes": "The full scholarship statement, all master's and PhD admission requirements, the document list, the deadline and the 'will NOT be considered' rule, the certificate statistics, and the step-by-step portal registration and submission procedure were read directly from the African Union announcement page and the official PAU submission platform."
+      },
+      "applicant_utility": {
+        "summary": "This is one tight annual window, historically 15 November to 15 December, and the announcement is explicit that late applications will not be considered, so the practical deadline is the day the window closes rather than whenever you finish gathering documents. Your three reference lecturers must be listed with both an email address and a WhatsApp number, which is an unusual data requirement that routinely delays applications. The age limits are strict and gendered, with PhD applicants capped at 28 for men and 30 for women, so eligibility should be checked against the exact cut-off before investing in the full document set.",
+        "best_fit": "Young African graduates and postgraduates within the published age limits who want master's or PhD study at one of the four Pan African University institutes.",
+        "application_readiness_checklist": [
+          "Confirm your age against the exact caps: 25 male / 28 female for master's, and 28 male / 30 female for PhD",
+          "Line up three reference lecturers early and collect both an email address and a WhatsApp number for each, since all three are mandatory",
+          "Have certificates and transcripts certified as true copies, including high school records, not just university ones",
+          "Prepare a 2cm x 2cm clear coloured passport photograph to the exact stated dimensions",
+          "PhD applicants: draft the 3 to 4 page concept note with tentative title, research questions, objectives and significance before opening the portal",
+          "Register on the portal early and immediately check spam for the confirmation email, since registration must be confirmed before you can log in"
+        ],
+        "common_rejection_risks": [
+          "Submitting after the 15 December close, which the announcement says will not be considered at any point",
+          "Exceeding the age limits, which are published per gender and are not waived",
+          "Failing to confirm the registration email, which blocks login and therefore submission",
+          "Omitting one of the three mandatory reference lecturers, or providing an email without a WhatsApp number",
+          "Leaving the application saved rather than clicking FINISH, which means it is never submitted",
+          "A bachelor's degree below a second-class upper division or equivalent, since academic competence must be evidenced at that level"
+        ],
+        "estimated_uncovered_costs": "Not published: because the announcement does not itemise the scholarship, any shortfall in fees, living costs, travel or family support cannot be quantified from the official page.",
+        "document_audit": [
+          "Both university and high school transcripts are required, so applicants who discarded school records early will need to obtain certified replacements",
+          "Certified true copies are required rather than plain photocopies or uncertified scans",
+          "The photograph must be 2cm x 2cm, coloured and clear, which is stricter than the usual generic passport photo",
+          "Reference lecturers must be listed with email and WhatsApp contact details, so referees need to be briefed on this before submission",
+          "PhD applicants need two professor recommendation letters plus the concept note, a heavier set than the master's single lecturer letter"
+        ],
+        "alerts": [
+          "The 2026-2027 call closed on 15 December 2025 and late applications are explicitly not considered, so the next realistic opportunity is the following November window",
+          "Registration must be confirmed by clicking the link sent to your email, so use an address you actively check and look in the spam folder",
+          "A written or oral examination may follow pre-selection, so a submitted application is not the final assessment stage",
+          "Awardees are expected to be committed to working in Africa after graduation, which is a stated condition rather than an informal expectation"
+        ],
+        "submission_workflow": "Register on the PAU submission platform, confirm the email link, log in, complete the Application page, click Save and then FINISH, and await possible written or oral examination if pre-selected."
+      }
+    }
+  ]
+}

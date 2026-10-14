@@ -1,0 +1,172 @@
+{
+ "agent": "agent_415",
+ "assignment_count": 2,
+ "scholarships": [
+  {
+   "id": 380,
+   "title": "Rotary Yoneyama Memorial Scholarship 2027 (Overseas Candidates)",
+   "country": "Japan",
+   "degree": "Undergraduate, Master's, Doctoral",
+   "funding_label": "Stipend",
+   "status": "open",
+   "official_source": "Rotary Yoneyama Memorial Foundation",
+   "official_source_url": "https://www.rotary-yoneyama.or.jp/english/overseas",
+   "application_link": "https://www.rotary-yoneyama.or.jp/english/overseas",
+   "catalogue_url": "https://www.rotary-yoneyama.or.jp/english/overseas",
+   "official_updates_url": "https://www.rotary-yoneyama.or.jp/english/overseas",
+   "existing": {
+    "funding_amount": null,
+    "funding_currency": "JPY",
+    "funding_period": "per month",
+    "tuition_coverage": 0,
+    "living_cost_coverage": 1,
+    "travel_coverage": 1,
+    "fully_funded": 0,
+    "description": "The Rotary Yoneyama Memorial Scholarship for Overseas Candidates is for overseas students scheduled to enrol in a Japanese university or graduate school, and requires a JLPT pass at N3 or above and an independent application to a Japanese institution. The application window for 2027 enrolment runs from 13:00 JST on 1 October 2026 to 13:00 JST on 31 October 2026. The stipend is JPY 100,000 per month for undergraduates and JPY 140,000 per month for master's and doctoral students, and successful applicants may receive a travel-expense subsidy of up to JPY 250,000.",
+    "eligibility": [
+     "Overseas student scheduled to enrol in a Japanese university or graduate school",
+     "Must have passed the Japanese-Language Proficiency Test at N3 or above at the time of application",
+     "Must have applied to a Japanese university or graduate school by themselves and submit a copy of the admission application",
+     "Graduate school applicants must submit a recommendation letter from a supervisor or professor of the targeted graduate school",
+     "Must enter the exact name of the Japanese university or graduate school being applied to",
+     "Not eligible if the plan is to attend a university outside Japan or a language school"
+    ],
+    "eligibility_summary": "Overseas students who will enrol in a Japanese university or graduate school, who have passed the JLPT at N3 or above, and who have already applied to a Japanese university or graduate school themselves and can submit a copy of that admission application.",
+    "benefits": [
+     "JPY 100,000 per month for undergraduates, JPY 140,000 per month for master's and doctoral students",
+     "Travel-expense subsidy of up to JPY 250,000, reimbursed on production of receipts after arrival",
+     "Scholarship payment begins in April 2027 for April enrolment, or in October (or September) 2027 for fall enrolment"
+    ],
+    "coverage": [
+     "Monthly stipend of JPY 100,000 for undergraduates",
+     "Monthly stipend of JPY 140,000 for master's students",
+     "Monthly stipend of JPY 140,000 for doctoral students",
+     "Travel-expense subsidy of up to JPY 250,000 toward travel to Japan"
+    ],
+    "requirements": [
+     "Register on the Foundation's website and enter information on the dedicated forms, uploading the application documentation",
+     "Submit only the documents required in the Application Guidelines",
+     "Enter the exact name of the Japanese university or graduate school being applied to",
+     "Successful applicants must arrive in Japan before the designated month of admission or eligibility is lost"
+    ],
+    "documents": [
+     "Application Guide for Rotary Yoneyama Scholarship for Overseas Candidate",
+     "Application for Scholarship form",
+     "Research Plan at Japanese University",
+     "Essay: \"Why I chose to study in Japan. My future plan after studying in Japan.\"",
+     "Recommendation Letter (required for graduate school applicants)",
+     "Copy of the admission application to the Japanese university or graduate school",
+     "Certificate of JLPT N3 or above",
+     "Documents entered on and uploaded through the Foundation's dedicated web application forms"
+    ],
+    "english_requirement": null,
+    "application_method": [
+     "Online: register on the Foundation's website, complete the dedicated forms and upload the application documentation within the application period",
+     "Apply to the Japanese university or graduate school independently and supply a copy of that admission application"
+    ],
+    "selection_notes": "Selection results are notified to applicants by email by mid-March 2027, and a certificate of eligibility is issued to successful applicants by the end of March 2027. An applicant rejected for admission by the university loses scholarship eligibility.",
+    "best_fit": null,
+    "notes": null,
+    "duration": null,
+    "application_period": "1 to 31 October 2026 (13:00 JST), for April 2027 and fall (September/October) 2027 enrolment; selection results notified by mid-March 2027",
+    "deadline_display": "\"Application Period: For both April and fall (September/October) 2027 Enrollment. From: 13:00 JST, October 1, 2026 To: 13:00 JST, October 31, 2026\"",
+    "deadline_date": "2026-10-31",
+    "region": "Global",
+    "program_type": "Foundation scholarship - monthly stipend plus travel subsidy",
+    "applicant_utility": null,
+    "official_details": null
+   },
+   "missing_fields": [
+    "funding_amount",
+    "english_requirement",
+    "best_fit",
+    "notes",
+    "duration",
+    "applicant_utility",
+    "official_details"
+   ]
+  },
+  {
+   "id": 551,
+   "title": "JSPS Postdoctoral Fellowship for Research in Japan (Standard Program)",
+   "country": "Japan",
+   "degree": "Postdoctoral",
+   "funding_label": "Stipend",
+   "status": "open",
+   "official_source": "Japan Society for the Promotion of Science (JSPS), Overseas Fellowship Division, International Program Department",
+   "official_source_url": "https://www.jsps.go.jp/english/e-fellow/e-ippan/index.html",
+   "application_link": "https://www.jsps.go.jp/english/e-fellow/e-ippan/index.html",
+   "catalogue_url": "https://www.jsps.go.jp/english/e-fellow/index.html",
+   "official_updates_url": "https://www.jsps.go.jp/english/e-news",
+   "existing": {
+    "funding_amount": 362000,
+    "funding_currency": "JPY",
+    "funding_period": "per month",
+    "tuition_coverage": 0,
+    "living_cost_coverage": 1,
+    "travel_coverage": 1,
+    "fully_funded": 0,
+    "description": "JSPS funds postdoctoral researchers from overseas to conduct collaborative research in Japan under the guidance of a Japanese host researcher at a university or other eligible research institution. Financial support is a maintenance allowance of JPY362,000 per month, a round-trip air ticket, a settling-in allowance of JPY200,000, and overseas travel insurance. A Grant-in-Aid for Scientific Research for JSPS Research Fellows can also be applied for through the host institution to cover cooperative research-related expenses. Because this is a research appointment rather than a degree programme, there is no tuition to pay and the award is not presented as tuition funding.",
+    "eligibility": [
+     "Be a citizen of a country that has diplomatic relations with Japan (JSPS treats Taiwanese and Palestinian researchers in this manner)",
+     "As of April 1 of the fiscal year, have obtained a doctoral degree within six years of the date the fellowship goes into effect (on or after April 2, six years prior to the fiscal year), or who are expected to receive a Ph.D. by the start date of the fellowship period",
+     "Whether or not the candidate is employed in a full-time position is not considered",
+     "Researchers who obtained their PhD within six years minus time taken for maternity and/or parental leave (every four weeks of leave counted as one month)",
+     "Those who have previously been awarded and started a fellowship under the JSPS Postdoctoral Fellowship Program for Research in Japan (Standard, and Pathway to University positions in Japan) are not eligible",
+     "Japanese citizens and foreigners with permanent residence status in Japan are not eligible",
+     "A selected fellow must submit an original copy of the doctoral degree certificate or diploma before the fellowship starting date",
+     "Host researcher must be a full-time researcher at a KAKENHI-eligible institution, eligible to apply for a KAKENHI grant, and each host researcher can submit up to three applications"
+    ],
+    "eligibility_summary": "Citizens of a country with diplomatic relations with Japan who obtained a doctoral degree on or after April 2 of the year six years before the fiscal year, or who are expected to hold a PhD by the fellowship start date.",
+    "benefits": [
+     "Settling-in allowance and outbound airfare are not paid to a candidate who has been living in Japan with a mailing address before the fellowship start date",
+     "Fellows may spend part of the tenure at another research institution, including one located overseas, when recognised as necessary to advance their research"
+    ],
+    "coverage": [
+     "Maintenance allowance of JPY362,000 per month",
+     "Round-trip air ticket (based on JSPS regulations)",
+     "Settling-in allowance of JPY200,000",
+     "Overseas travel insurance",
+     "Grant-in-Aid for Scientific Research (Grant-in-Aid for JSPS Research Fellow) for cooperative research-related expenses, applied for by the host researcher through their institution"
+    ],
+    "requirements": [
+     "Applications must be submitted to JSPS by a host researcher in Japan via the head of their university or institution",
+     "Submit the application form using the JSPS Electronic Application System by the deadline designated by the host institution",
+     "The JSPS Electronic Application System becomes available approximately two months before the JSPS application period",
+     "The host institution must verify that the application is approved by the head of the institution and that the stated requirements will be carried out if approved"
+    ],
+    "documents": [
+     "FORM1 (Reference): application form for the JSPS Electronic Application System, completed by the host researcher",
+     "FORM2: application form completed by the foreign candidate",
+     "Letter of Recommendation (Sample): letter of recommendation to be filled out by the recommender of the foreign candidate within one page, written in English or in Japanese"
+    ],
+    "english_requirement": null,
+    "application_method": [
+     "Secure an eligible host researcher and host institution in Japan (JSPS does not introduce host institutions to applicants)",
+     "Contact the host institution to confirm its internal deadline, which may be more than one month before the JSPS deadline",
+     "Complete FORM2 and obtain a one-page letter of recommendation",
+     "Host researcher enters and submits the application on the JSPS Electronic Application System",
+     "Host institution verifies and transmits the application to the president of JSPS by the JSPS deadline"
+    ],
+    "selection_notes": null,
+    "best_fit": "Researchers who received a PhD within the past six years (maternity and parental leave time is subtracted) and who can secure a host researcher and host institution in Japan before applying.",
+    "notes": "Host institutions may impose their own deadline more than one month before the JSPS deadline, so the practical deadline is earlier than the published JSPS date. Airfare and the settling-in allowance are withheld from candidates already resident in Japan. Total support is a fixed monthly stipend, not a full cost-of-attendance package; the brief says a fixed stipend is not automatically full funding. A person who selected cannot submit a doctoral degree certificate at application time, so verify eligibility before the internal deadline.",
+    "duration": "12 to 24 months",
+    "application_period": "Two open calls per year. FY2027 1st: application deadline August 28, 2026 (5 p.m. JST), results late December 2026, arrival windows April 1 - September 30, 2027, 120 fellowships. FY2027 2nd: application deadline April 23, 2027 (5 p.m. JST), results early August 2027, arrival windows September 1 - November 30, 2027, 120 fellowships.",
+    "deadline_display": "FY2027 2nd recruitment: April 23, 2027, 5 p.m. JST, submission from the Japanese host institution to JSPS. FY2027 1st recruitment closed on August 28, 2026.",
+    "deadline_date": "2027-04-23",
+    "region": "Asia",
+    "program_type": "Government research fellowship",
+    "applicant_utility": null,
+    "official_details": null
+   },
+   "missing_fields": [
+    "english_requirement",
+    "selection_notes",
+    "applicant_utility",
+    "official_details"
+   ]
+  }
+ ],
+ "result_file": "C:\\Users\\GopaL\\Desktop\\Projects folder\\ScholarZone\\backend\\research_output\\live500\\results\\agent_415.json"
+}

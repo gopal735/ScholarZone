@@ -1,0 +1,82 @@
+{
+ "agent": "agent_445",
+ "assignment_count": 1,
+ "scholarships": [
+  {
+   "id": 606,
+   "title": "Overseas Scholarship for MS/M.Phil and Ph.D Studies (Phase-III), Higher Education Commission Pakistan",
+   "country": "Pakistan",
+   "degree": "Master's, PhD",
+   "funding_label": "Partially Funded",
+   "status": "upcoming",
+   "official_source": "Higher Education Commission (HEC), Pakistan",
+   "official_source_url": "https://www.hec.gov.pk/english/scholarshipsgrants/OSSPhase-III/Pages/default.aspx",
+   "application_link": "https://www.hec.gov.pk/english/scholarshipsgrants/OSSPhase-III/Pages/default.aspx",
+   "catalogue_url": "https://www.hec.gov.pk/english/scholarshipsgrants/OSSPhase-III/Pages/Partner-Agencies-and-Univesities.aspx",
+   "official_updates_url": "https://www.hec.gov.pk/english/scholarshipsgrants/OSSPhase-III/Pages/Announcement.aspx",
+   "existing": {
+    "funding_amount": 1600,
+    "funding_currency": "USD",
+    "funding_period": "per month (maintenance allowance, maximum)",
+    "tuition_coverage": 0,
+    "living_cost_coverage": 1,
+    "travel_coverage": 1,
+    "fully_funded": 0,
+    "description": "The Higher Education Commission of Pakistan awards MS/M.Phil and PhD scholarships to Pakistani and Azad Jammu and Kashmir nationals to study at universities ranked in the top 200 of the QS or THE world rankings, in eight named thematic areas. Payments cover a maintenance allowance, a capped contribution to tuition fees, health insurance and one economy-class round-trip air ticket. Admission to the foreign university is separate from the award and must be secured by the scholar. The Batch-IV application window ran from 9 August 2026 to 28 August 2026 and has closed; HEC runs the scheme in successive batches.",
+    "eligibility": [
+     "Pakistani or Azad Jammu and Kashmir national",
+     "Minimum CGPA 3.0 out of 4.0 for MS applicants and for PhD applicants in their MS/MPhil",
+     "At most one second division (or equivalent) in the academic career before the terminal degree",
+     "For PhD: minimum 18 years of education, or 17 years with equivalence from the HEC Assessment and Accreditation division",
+     "Age limit 30 for MS and 35 for PhD for non-government employees; 35 for MS and 40 for PhD for public-sector, government or semi-government employees",
+     "Employees of public-sector universities, colleges, R&D bodies or government organisations must submit a No Objection Certificate",
+     "A valid HEC Aptitude Test score is required unless exempt"
+    ],
+    "eligibility_summary": null,
+    "benefits": [
+     "Monthly maintenance allowance",
+     "Capped annual tuition-fee contribution",
+     "Health insurance reimbursement",
+     "Round-trip economy airfare reimbursement"
+    ],
+    "coverage": [],
+    "requirements": [
+     "Online registration through the HEC e-Services Scholarship Portal",
+     "Application processing fee of Rs. 3,000 paid through 1LINK payment services",
+     "A valid HEC Aptitude Test score valid for two years",
+     "Confirmed admission offer from a top-200 QS/THE ranked university in a thematic area"
+    ],
+    "documents": [],
+    "english_requirement": null,
+    "application_method": [
+     "Register online through the HEC e-Services Scholarship Portal",
+     "Pay the Rs. 3,000 processing fee through 1LINK payment services",
+     "Sit the HEC Aptitude Test (HAT) conducted by the Education Testing Council",
+     "Attend the interview if shortlisted"
+    ],
+    "selection_notes": "Selection is on merit based on HEC Aptitude Test scores and interview results, subject to approved provincial quotas and thematic-area slot availability. Candidates holding confirmed unconditional admission in a thematic area for Fall 2026 at a top-200 QS/THE ranked university are exempted from the scholarship test and interview. HEC may re-allocate the chosen university or country.",
+    "best_fit": null,
+    "notes": "Tuition support is capped rather than full: HEC states that any tuition fee exceeding the allocated amount must be covered by a fee waiver or by the scholar.",
+    "duration": "Maintenance allowance payable for up to 24 months for the MS program and up to 48 months for the PhD program; tuition contribution capped at two years for MS and four years for PhD.",
+    "application_period": "Batch-IV online registration 9 August 2026 to 28 August 2026 16:00, with the HEC Aptitude Test held 27 September 2026; further batches announced by HEC",
+    "deadline_display": "Batch-IV applications closed 28 August 2026 at 16:00",
+    "deadline_date": null,
+    "region": "Asia",
+    "program_type": "Government scholarship",
+    "applicant_utility": null,
+    "official_details": null
+   },
+   "missing_fields": [
+    "eligibility_summary",
+    "coverage",
+    "documents",
+    "english_requirement",
+    "best_fit",
+    "deadline_date",
+    "applicant_utility",
+    "official_details"
+   ]
+  }
+ ],
+ "result_file": "C:\\Users\\GopaL\\Desktop\\Projects folder\\ScholarZone\\backend\\research_output\\live500\\results\\agent_445.json"
+}

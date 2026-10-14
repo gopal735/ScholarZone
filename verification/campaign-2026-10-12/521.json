@@ -1,0 +1,67 @@
+{
+  "id": "521",
+  "verdict": "active",
+  "confidence": "high",
+  "checked_at": "2026-10-12T19:16:22Z",
+  "sources": [
+    {
+      "url": "https://www.mandelawashingtonfellowship.org/apply",
+      "kind": "official",
+      "note": "Official Application and Eligibility Information page of the U.S. Department of State's Mandela Washington Fellowship: application timeline, full eligibility criteria, and programme description."
+    },
+    {
+      "url": "https://www.mandelawashingtonfellowship.org/wp-content/uploads/2026/09/2027-Mandela-Washington-Fellowship-Application-Instructions_Final_9.17.2026-1.pdf",
+      "kind": "official",
+      "note": "Official 2027 application instructions PDF (linked from the site's Application Instructions page): exact deadline wording, Financial Provisions of the Fellowship, technical eligibility requirements, and application timeline."
+    },
+    {
+      "url": "https://www.mandelawashingtonfellowship.org/apply-faqs/",
+      "kind": "official",
+      "note": "Official application FAQ for the 2027 Fellowship: age, citizenship, residency and language rules; confirms no application fee and no degree requirement."
+    },
+    {
+      "url": "https://www.mandelawashingtonfellowship.org/2027-application-instructions/",
+      "kind": "official",
+      "note": "Official landing page that hosts the download link to the 2027 application instructions PDF."
+    },
+    {
+      "url": "https://www.mandelawashingtonfellowship.org/about/",
+      "kind": "official",
+      "note": "Official About the Fellowship page: fellowship overview, six-week leadership institutes, YALI context."
+    }
+  ],
+  "findings": {
+    "awarding_body": {
+      "status": "confirmed",
+      "detail": "The site is the programme's own official page, not an aggregator. Its header and footer state that the Fellowship is a programme of the U.S. Department of State (Bureau of Educational and Cultural Affairs) with U.S. Government funding, administered by IREX - exactly as the record says.",
+      "quote": "THIS IS A PROGRAM OF THE U.S. DEPARTMENT OF STATE:  The Mandela Washington Fellowship is a program of the U.S. Department of State with funding provided by the U.S. Government and administered by IREX."
+    },
+    "deadline": {
+      "status": "confirmed",
+      "detail": "The cycle currently open on 12 October 2026 is the 2027 Fellowship: applications opened 22 September 2026 and close 13 October 2026 at 16:00/4:00 PM GMT - the exact date and time quoted in the record. The deadline is stated verbatim in the official 2027 application instructions PDF and in the site's application timeline.",
+      "quote": "APPLICATION DEADLINE: 16:00/4:00 PM GMT on Tuesday, October 13, 2026  |  Applications must be submitted using the online application system at apply.mandelawashingtonfellowship.org.  ...  The deadline for applications for the Mandela Washington Fellowship is 16:00/4:00 PM GMT on Tuesday, October 13, 2026."
+    },
+    "eligibility": {
+      "status": "confirmed",
+      "detail": "Every eligibility claim in the record is confirmed on the official pages and the PDF: ages 25-35 as of the October 13, 2026 deadline with exceptional applicants aged 21-24 considered; citizenship of one of 49 listed Sub-Saharan African countries (identical 49-country list on the /apply page and in the PDF); permanent residence in an eligible country as of 1 February 2027 and June 2027; proficiency in English; J-1 visa eligibility; not a U.S. citizen or permanent resident; not a U.S. Government employee or immediate family member; and no prior participation as a Fellow.",
+      "quote": "Are between the ages of 25 and 35 on or before the application deadline, although exceptional applicants ages 21-24 may be considered; ... Are citizens of one of the following countries: Angola, Benin, Botswana, Burkina Faso, Burundi, Cameroon, Cabo Verde, Central African Republic, Chad, Comoros, Republic of the Congo, Democratic Republic of the Congo (DRC), Cote d'Ivoire, Djibouti, Equatorial Guinea, Eritrea, Eswatini, Ethiopia, Gabon, The Gambia, Ghana, Guinea, Guinea-Bissau, Kenya, Lesotho, Liberia, Madagascar, Malawi, Mali, Mauritania, Mauritius, Mozambique, Namibia, Niger, Nigeria, Rwanda, Sao Tome and Principe, Senegal, Seychelles, Sierra Leone, Somalia, South Africa, South Sudan, Sudan, Tanzania, Togo, Uganda, Zambia, or Zimbabwe;"
+    },
+    "funding": {
+      "status": "confirmed",
+      "detail": "The Fellowship is fully funded: the official instructions state the U.S. Government covers all programme costs - J-1 visa support, round-trip international and domestic U.S. travel, the six-week institute, a limited accident and sickness benefit plan, housing and meals, and an optional four-week Professional Development Experience. There is no application fee. The only exclusions are salaries during the programme and personal purchases, which is standard for a fully funded non-degree exchange programme and does not make the award partial.",
+      "quote": "There is no fee to apply for the Mandela Washington Fellowship.  If you are selected for the Fellowship, the U.S. Government will cover all program costs.  Program costs funded by the U.S. Government will include: J-1 visa support; Round-trip travel from Fellow's home city to the United States and domestic U.S. travel as required by the program...; A six-week institute; A limited accident and sickness benefit plan; Housing and meals during the program; and An optional four-week Professional Development Experience (for up to 50 Fellows)."
+    },
+    "degree_levels": {
+      "status": "confirmed",
+      "detail": "The programme is a non-degree, six-week executive-style exchange institute hosted by U.S. colleges and universities; no academic degree is awarded. The FAQ confirms no university degree is even required to apply. This matches the record's non-degree classification.",
+      "quote": "Participate in a six-week executive-style institute at a U.S. college or university to share your experiences with and learn from American experts.  ...  Must I have attended university or have a university degree to apply?  No.  While formal education may contribute to your overall competitiveness in meeting the Fellowship's selection criteria, you will not be disqualified if you do not have a formal diploma or degree."
+    }
+  },
+  "recommended_field_updates": {
+    "official_source_url": null,
+    "deadline_text": "APPLICATION DEADLINE: 16:00/4:00 PM GMT on Tuesday, October 13, 2026",
+    "deadline_date": "2026-10-13",
+    "verification_notes": "Verified 12 October 2026 against the official programme site and the official 2027 application instructions PDF. The currently open cycle is the 2027 Fellowship: applications opened 22 September 2026 and close 13 October 2026 at 16:00/4:00 PM GMT, so the open-cycle status is time-sensitive and expires the day after this check. The exact deadline wording with the 16:00 GMT cut-off lives in the 2027 application instructions PDF linked from the /2027-application-instructions/ page, not on the /apply page itself, which shows only the calendar date; future re-checks should read both. After 13 October 2026 the site will roll over to the next (2028) cycle and every date on the record must be re-read then."
+  },
+  "notes_for_reviewer": "All five claims (awarding body, deadline, eligibility, funding, degree levels) agree with the record, and the cycle is open today, so the record can move to active. Two points a human should know: (1) the application window closes tomorrow, 13 October 2026 at 16:00 GMT, so the card should ideally note the deadline is imminent; (2) 'Fully Funded' is accurate but prospective applicants should understand it covers all programme costs (visa support, round-trip travel, the six-week institute, insurance, housing and meals, optional PDE) - it does not cover the Fellow's salary while away from work or personal purchases."
+}

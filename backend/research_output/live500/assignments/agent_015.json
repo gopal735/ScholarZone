@@ -1,0 +1,88 @@
+{
+ "agent": "agent_015",
+ "assignment_count": 1,
+ "scholarships": [
+  {
+   "id": 54,
+   "title": "University of Miami Stamps Scholarship",
+   "country": "USA",
+   "degree": "Bachelor's (undergraduate)",
+   "funding_label": "Fully Funded",
+   "status": "open",
+   "official_source": "University of Miami",
+   "official_source_url": "https://admissions.miami.edu/undergraduate/financial-aid/scholarships/stamps/index.html",
+   "application_link": "https://admissions.miami.edu/undergraduate/financial-aid/scholarships/stamps/index.html",
+   "catalogue_url": "https://admissions.miami.edu/undergraduate/academics/honors-and-scholars-programs/index.html",
+   "official_updates_url": "https://news.miami.edu/index.html",
+   "existing": {
+    "funding_amount": null,
+    "funding_currency": null,
+    "funding_period": null,
+    "tuition_coverage": 1,
+    "living_cost_coverage": 1,
+    "travel_coverage": null,
+    "fully_funded": 1,
+    "description": "The Stamps Scholarship is the University of Miami's most prestigious merit award, given to exceptional and academically accomplished high school seniors who apply and are admitted through Early Decision I or Early Action. Stamps Scholars receive the full cost of attendance for up to eight semesters (ten for five-year programs) or until completion of their first degree, whichever comes first. The package covers tuition and fees, on-campus housing, a meal plan, University health insurance, textbooks and a laptop allowance, plus access to a $12,000 enrichment fund. There is no separate scholarship application beyond the Common Application, semi-finalists are interviewed by mid-January, and recipients are announced in early March.",
+    "eligibility": [
+     "All incoming first-year students applying to University of Miami (domestic and international).",
+     "Exceptional academic achievement, leadership, and curiosity.",
+     "Must apply via Early Decision I or Early Action to be considered for Stamps Scholarship.",
+     "Meet University of Miami admission requirements."
+    ],
+    "eligibility_summary": "All incoming first-year students (including international) applying to University of Miami; exceptional academic achievement, leadership, and curiosity; no separate scholarship application required — considered automatically via admission application.",
+    "benefits": [
+     "Full tuition and fees",
+     "On-campus housing",
+     "Meal plan",
+     "University health insurance",
+     "Textbooks",
+     "Laptop allowance",
+     "$12,000 enrichment fund (study abroad, research, internships, etc.)"
+    ],
+    "coverage": [
+     "Full tuition and fees",
+     "On-campus housing",
+     "Meal plan",
+     "University health insurance",
+     "Textbooks",
+     "Laptop allowance",
+     "$12,000 enrichment fund (study abroad, research, internships, etc.)"
+    ],
+    "requirements": [
+     "Enroll full-time with no fewer than 12 credit hours in each of the fall and spring semesters (minimum 24 credit hours per academic year)",
+     "Maintain a minimum 3.0 GPA at the University of Miami, first calculated at the end of the second semester of attendance",
+     "Use of the $12,000 enrichment fund is subject to prior approval"
+    ],
+    "documents": [
+     "University of Miami admission application (Common Application)",
+     "No separate scholarship application required",
+     "Automatic consideration via admission review"
+    ],
+    "english_requirement": "As per University of Miami undergraduate admission requirements; international students must demonstrate English proficiency.",
+    "application_method": [
+     "Automatic consideration via University of Miami admission application (Early Decision I or Early Action)"
+    ],
+    "selection_notes": "Selected through the University of Miami's holistic review process. Semi-finalists are contacted and interviewed by the Stamps Scholarship Committee by mid-January; finalists are notified at Early Action decision release in late January and then interview with the Stamps Foundation; recipients are announced in early March. Additional information may be required as part of the selection process.",
+    "best_fit": "Exceptional incoming first-year students with outstanding academic achievement and leadership seeking full funding at University of Miami.",
+    "notes": "No separate Stamps application; must apply Early Decision I or Early Action by November 1. Renewable for up to eight semesters with minimum 3.0 GPA. Enrichment fund supports study abroad, undergraduate research, unpaid internships. Not stackable with other merit scholarships.",
+    "duration": "Up to eight semesters, or ten semesters for students in five-year degree programs, or until completion of the first degree, whichever is sooner",
+    "application_period": "Apply via Early Decision I or Early Action for Fall 2027 entry by November 1, 2026",
+    "deadline_display": "November 1 (Early Decision I and Early Action)",
+    "deadline_date": "2026-11-01",
+    "region": "North America",
+    "program_type": "Merit-based university scholarship (Stamps Foundation-endowed premier scholarship)",
+    "applicant_utility": null,
+    "official_details": null
+   },
+   "missing_fields": [
+    "funding_amount",
+    "funding_currency",
+    "funding_period",
+    "travel_coverage",
+    "applicant_utility",
+    "official_details"
+   ]
+  }
+ ],
+ "result_file": "C:\\Users\\GopaL\\Desktop\\Projects folder\\ScholarZone\\backend\\research_output\\live500\\results\\agent_015.json"
+}

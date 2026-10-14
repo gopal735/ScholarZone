@@ -1,0 +1,85 @@
+{
+ "agent": "agent_329",
+ "assignment_count": 1,
+ "scholarships": [
+  {
+   "id": 723,
+   "title": "Cost Sharing Overseas PhD Scholarships Scheme with Australian Universities (TSLS, Government of Fiji)",
+   "country": "Fiji",
+   "degree": "PhD",
+   "funding_label": "Government scholarship",
+   "status": "open",
+   "official_source": "Tertiary Scholarships and Loans Service (TSLS), Ministry of Education, Government of Fiji",
+   "official_source_url": "https://tsls.com.fj/cost-sharing-overseas-phd-scholarships-scheme",
+   "application_link": "https://tsls.com.fj/cost-sharing-overseas-phd-scholarships-scheme",
+   "catalogue_url": "https://tsls.com.fj/schemes",
+   "official_updates_url": "https://tsls.com.fj",
+   "existing": {
+    "funding_amount": null,
+    "funding_currency": null,
+    "funding_period": null,
+    "tuition_coverage": null,
+    "living_cost_coverage": null,
+    "travel_coverage": null,
+    "fully_funded": 0,
+    "description": null,
+    "eligibility": [
+     "Be a Fiji citizen",
+     "Be ordinarily resident in Fiji for at least three (3) years before the award commencement date unless determined by the Service",
+     "Secure an offer letter or candidature based on the eligible university's requirements for full-time mode, unless determined otherwise by the Service or arranged with an employer",
+     "Demonstrate the direct and applied relevance of the research study towards Fiji's workforce needs and development",
+     "Be less than 50 years at the time of application",
+     "Not be an existing TSLS sponsored student or graduate on active bond service, or sponsored through any other agency"
+    ],
+    "eligibility_summary": "Fiji citizens resident in Fiji for at least three years, under 50, who hold a full-time offer or candidature from a listed Australian university and whose research directly serves Fiji's workforce and development needs.",
+    "benefits": [],
+    "coverage": [],
+    "requirements": [
+     "Register on the TSLS Apply portal, complete the online form and submit the application",
+     "Hold an offer letter or candidature from one of the 10 listed Australian universities",
+     "Frame the research around Fiji's workforce and development needs"
+    ],
+    "documents": [
+     "Offer letter or candidature confirmation from an eligible Australian university",
+     "Research proposal demonstrating relevance to Fiji's workforce needs and development",
+     "Evidence of Fiji citizenship and three years of ordinary residence in Fiji"
+    ],
+    "english_requirement": null,
+    "application_method": [
+     "Register on TSLS Apply",
+     "Fill in the online form",
+     "Submit the application",
+     "TSLS processes the application and issues the scholarship result"
+    ],
+    "selection_notes": "39 awards are available under the scheme across twelve priority disciplines: Medical and Health Services; Engineering Services; Climate Change/Environmental Science; Marine Science; Forestry; Public Policy and Analysis; Economic Modelling and Policies; Public Financing; Inclusive Education; Information Technology Services; Social Science; Border Security. Eligible institutions are 10 Australian universities: CQ University Australia, Griffith, Monash, Queensland University of Technology, Swinburne, University of Newcastle, UNSW, University of Queensland, Western Sydney and RMIT.",
+    "best_fit": "Fiji citizens under 50 with a full-time PhD offer from a listed Australian university whose research directly serves Fiji's workforce or development needs.",
+    "notes": "TSLS publishes no benefit breakdown on the scheme page; the benefit schedule and the cost-sharing terms sit in the TSLS Scholarship Policies Handbook. TSLS operates a Travel and Bond Clearance/Repayment portal and a Bond Calculator, which evidences a bond obligation, but the scheme page does not state the bond period.",
+    "duration": "Not published on the scheme page; the TSLS Scholarship Policies Handbook covers this",
+    "application_period": "TSLS published its 2027 Scholarship Policies Handbook in September 2026 and its TSLS Apply portal was live and linked as \"Apply Now\" on the scheme page when checked on 2026-10-04. TSLS does not publish a closing date on the scheme page.",
+    "deadline_display": null,
+    "deadline_date": null,
+    "region": "Oceania",
+    "program_type": "Government scholarship (Fiji Tertiary Scholarships and Loans Service statutory scheme)",
+    "applicant_utility": null,
+    "official_details": null
+   },
+   "missing_fields": [
+    "funding_amount",
+    "funding_currency",
+    "funding_period",
+    "tuition_coverage",
+    "living_cost_coverage",
+    "travel_coverage",
+    "description",
+    "benefits",
+    "coverage",
+    "english_requirement",
+    "deadline_display",
+    "deadline_date",
+    "applicant_utility",
+    "official_details"
+   ]
+  }
+ ],
+ "result_file": "C:\\Users\\GopaL\\Desktop\\Projects folder\\ScholarZone\\backend\\research_output\\live500\\results\\agent_329.json"
+}

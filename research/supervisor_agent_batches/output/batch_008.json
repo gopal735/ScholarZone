@@ -1,0 +1,77 @@
+[
+  {
+    "scholarship_id": 63,
+    "outcome": "no_verified_supervisor_found",
+    "professors": [],
+    "notes": "Live research (Oct 2026): the official MSU page (https://admissions.msu.edu/cost-aid/scholarships/international) lists only automatic, admissions-based merit awards for incoming first-year students with non-U.S. residency status (MSU Non-resident Scholarship at six levels from $3,000-$18,000, Red Cedar Scholarship, Presidential Study Abroad Scholarship, and Honors College awards including the $13,000 Excellence Scholarship and the Professorial Assistantship). No professor, supervisor, lab or research group is attached to any of the awards; the only published contact is the admissions office (admis@msu.edu, 517-355-8332), which is administrative. The Honors College Professorial Assistantship involves 'faculty-mentored research or scholarly activity' but names no professor on the official page. As an automatic undergraduate entrance-merit scholarship it has no supervising faculty (same category as the UBC IMES entry)."
+  },
+  {
+    "scholarship_id": 64,
+    "outcome": "no_verified_supervisor_found",
+    "professors": [],
+    "notes": "Live research (Oct 2026): the official ICSP page (https://isss.uoregon.edu/icsp) describes a partial tuition-waiver 'cultural service' scholarship for new and continuing international undergraduates, administered by International Student and Scholar Services (Division of Global Engagement). The page lists current student members but no faculty, supervisors or research staff. The only published contact is the programme office (icsp@uoregon.edu, 541-346-3206), which is administrative. As an undergraduate programme it has no supervising professor."
+  },
+  {
+    "scholarship_id": 65,
+    "outcome": "no_verified_supervisor_found",
+    "professors": [],
+    "notes": "Live research (Oct 2026): the official Clarendon Fund pages (https://www.ox.ac.uk/clarendon and https://www.ox.ac.uk/clarendon/about/purpose) confirm Clarendon is Oxford's university-wide scholarship scheme: 'open to all candidates in any subject area who apply for a new Master's or DPhil course by the relevant December or January course deadline', with departments nominating within academic divisions. The Fund is managed by 'a small team within the University's Student Fees and Funding Department consisting of the Student Funding Manager (Clarendon) and Student Funding Administrator (Clarendon)' and overseen by the Clarendon Fund Steering Group - administrators, not faculty. No individual professor is tied to the scholarship; any DPhil supervisor comes from the scholar's own chosen department/course, not from the Clarendon Fund."
+  },
+  {
+    "scholarship_id": 66,
+    "outcome": "no_verified_supervisor_found",
+    "professors": [],
+    "notes": "Live research (Oct 2026): the official Oxford page (https://www.ox.ac.uk/admissions/graduate/fees-and-funding/fees-funding-and-scholarship-search/weidenfeld-hoffmann-scholarships-and-leadership-programme) and the Weidenfeld-Hoffmann Trust site (https://whtrust.org/who-are-we/staff/) show the programme is administered by the Trust's professional team: Director & Chief Executive Dame Hilary Boulding, Scholarships and Leadership Programme Manager Jane Baldwin, Alumni and Communications Officer Nikita Arora, and Academic Fellow Stephen Wright. Scholars pursue their own chosen Oxford course and are supervised within their own departments; no professor is attached to the scholarship or its Leadership Programme (which is 'guided by leading academics and experts' without any named individual). Trust trustees include academics (e.g. Professor Francisca Mutapi, University of Edinburgh) but only in a governance capacity. Contact info@whtrust.org is administrative."
+  },
+  {
+    "scholarship_id": 67,
+    "outcome": "no_verified_supervisor_found",
+    "professors": [],
+    "notes": "Live research (Oct 2026): the official Oxford page (https://www.ox.ac.uk/admissions/undergraduate/fees-and-funding/oxford-bursaries-and-scholarships/reach-oxford; direct fetch returned HTTP 403 but page content confirmed via Oxford's official bursaries and scholarships listing at https://www.ox.ac.uk/admissions/undergraduate/fees-and-funding/oxford-bursaries-and-scholarships) is an undergraduate bursary for nationals of DAC-listed low-income countries, tenable for all undergraduate subjects except medicine, administered centrally by the University with participation by colleges. It is applied for via the admission application only; no professor, supervisor or research group is attached, and undergraduate study at Oxford is not supervisor-based. The university-wide nature of the award is fully confirmable from official ox.ac.uk pages, so the outcome is not source_blocked."
+  },
+  {
+    "scholarship_id": 68,
+    "outcome": "verified_supervisors",
+    "professors": [
+      {
+        "canonical_name": "Eilís Ferran",
+        "title": "Professor of Company and Securities Law; Provost of the Gates Cambridge Trust",
+        "institution_name": "University of Cambridge",
+        "department_name": "Faculty of Law",
+        "official_profile_url": "https://www.law.cam.ac.uk/people/academic/ev-ferran/28",
+        "official_email": "evf1000@cam.ac.uk",
+        "official_email_verified": true,
+        "lab_url": "https://www.law.cam.ac.uk/research-centres/centre-corporate-and-commercial-law-3cl",
+        "personal_academic_url": null,
+        "research_areas": [
+          "Corporate finance law",
+          "Company law",
+          "Financial regulation"
+        ],
+        "research_keywords": [
+          "corporate finance law",
+          "company law",
+          "financial regulation",
+          "UK/EU financial regulation"
+        ],
+        "relationship_type": "program_relevant_faculty",
+        "evidence_source_url": "https://www.gatescambridge.org/about/people",
+        "evidence_source_type": "official_programme_page",
+        "evidence_quote_or_summary": "Gates Cambridge official People page: 'A small team, headed by the Provost, is responsible for managing the Gates Cambridge Scholarships programme' and lists 'Professor Eilis Ferran FBA - Provost - Professor of Company and Securities Law at the University of Cambridge, and Emeritus Professorial Fellow of St Catharine's College, Cambridge'. Her Cambridge Faculty of Law profile (https://www.law.cam.ac.uk/people/academic/ev-ferran/28) confirms: 'She is also the Provost of the Gates-Cambridge Trust, which provides scholarships for postgraduate study at Cambridge funded by a major donation from the Gates Foundation.' She is the academic head of the programme, not a thesis supervisor for individual scholars; her email evf1000@cam.ac.uk is published on her law.cam.ac.uk profile page.",
+        "confidence": 85,
+        "availability": {
+          "scope": "funding",
+          "state": "not_published",
+          "source_url": "https://www.gatescambridge.org/about/people"
+        }
+      }
+    ],
+    "notes": "Live research (Oct 2026): Gates Cambridge is a university-wide Trust scholarship at Cambridge for postgraduate study in any subject (https://www.gatescambridge.org/programme/the-scholarship/): 'pursue a postgraduate degree in any subject available at the University of Cambridge'. Individual scholars' supervisors come from their own departments, so no supervisor is attached to the funding itself. The only named professor tied to the programme is Professor Eilís Ferran, Provost of the Gates Cambridge Trust, who heads the team managing the scholarship programme (official People page above), recorded here as programme leadership following the McCall MacBain/McGill convention. The Board is chaired by Vice-Chancellor Professor Deborah Prentice and trustees include Professors Usha Goswami and Bhaskar Vira, but those are governance roles only."
+  },
+  {
+    "scholarship_id": 69,
+    "outcome": "no_verified_supervisor_found",
+    "professors": [],
+    "notes": "Live research (Oct 2026): the official Cambridge Trust page (https://www.cambridgetrust.org/scholarship/cambridge-international-scholarship) states the International Scholarships 'are offered to applicants who are from countries other than the United Kingdom or Ireland who are highly ranked by their prospective Departments within the University', are tenable at any College in any subject excluding premium rate courses, and require no separate application. No faculty member is named on any Trust page. The Trust is run by a professional team (CEO Helen Pennant; Directors of Awards, Finance and Operations, Partnerships per https://www.cambridgetrust.org/team). Trustees include Cambridge academics (e.g. Prof. Loraine Gelsthorpe, Deputy Chair; Prof. Catherine Barnard; Prof. Duncan Maskell) but in a governance capacity only. The general contact cambridge.trust@admin.cam.ac.uk is administrative. No supervising professor is attached to the scholarship."
+  }
+]

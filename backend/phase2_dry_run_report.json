@@ -1,0 +1,266 @@
+{
+  "dry_run_timestamp": "2026-09-06T15:57:57.507934+00:00",
+  "scholarships_checked": 10,
+  "results": [
+    {
+      "scholarship_id": 1,
+      "title": "Erasmus Mundus Joint Masters (EMJM)",
+      "country": "EU (multiple)",
+      "current_status": "open",
+      "proposed_status": null,
+      "lifecycle_reason": null,
+      "fetch_success": true,
+      "fetch_error": null,
+      "changes_detected": [
+        {
+          "field": "application_link",
+          "old": "https://erasmus-plus.ec.europa.eu",
+          "new": "https://erasmus-plus.ec.europa.eu/resources-and-tools/how-to-apply",
+          "confidence": "high"
+        }
+      ],
+      "next_cycle_found": false,
+      "next_cycle_year": null,
+      "duplicate_found": false,
+      "duplicate_id": null,
+      "image_action": "revalidate_stored_image",
+      "proposed_db_changes": []
+    },
+    {
+      "scholarship_id": 3,
+      "title": "DAAD Scholarship",
+      "country": "Germany",
+      "current_status": "open",
+      "proposed_status": null,
+      "lifecycle_reason": null,
+      "fetch_success": true,
+      "fetch_error": null,
+      "changes_detected": [],
+      "next_cycle_found": false,
+      "next_cycle_year": null,
+      "duplicate_found": false,
+      "duplicate_id": null,
+      "image_action": "revalidate_stored_image",
+      "proposed_db_changes": []
+    },
+    {
+      "scholarship_id": 4,
+      "title": "Global Korea Scholarship (GKS)",
+      "country": "South Korea",
+      "current_status": "open",
+      "proposed_status": null,
+      "lifecycle_reason": null,
+      "fetch_success": true,
+      "fetch_error": null,
+      "changes_detected": [
+        {
+          "field": "degree",
+          "old": "UG (Bachelor's/Associate)",
+          "new": "of study,",
+          "confidence": "medium"
+        },
+        {
+          "field": "eligibility",
+          "old": [
+            "Citizen of an NIIED-designated country; parents must not hold Korean citizenship.",
+            "High school graduate or expecting graduation.",
+            "Undergraduate applicants usually have age and CGPA requirements that change each cycle."
+          ],
+          "new": "(Including Language Proficiency), Curriculum, and Scholarship Programs for Interested Universities and Majors",
+          "confidence": "medium"
+        },
+        {
+          "field": "application_link",
+          "old": "https://www.studyinkorea.go.kr",
+          "new": "https://www.studyinkorea.go.kr/ko/receipt/OnlineReceipt11.do",
+          "confidence": "high"
+        }
+      ],
+      "next_cycle_found": false,
+      "next_cycle_year": null,
+      "duplicate_found": false,
+      "duplicate_id": null,
+      "image_action": "revalidate_stored_image",
+      "proposed_db_changes": []
+    },
+    {
+      "scholarship_id": 5,
+      "title": "MEXT (Monbukagakusho) Scholarship",
+      "country": "Japan",
+      "current_status": "open",
+      "proposed_status": null,
+      "lifecycle_reason": null,
+      "fetch_success": true,
+      "fetch_error": null,
+      "changes_detected": [],
+      "next_cycle_found": false,
+      "next_cycle_year": null,
+      "duplicate_found": false,
+      "duplicate_id": null,
+      "image_action": "revalidate_stored_image",
+      "proposed_db_changes": []
+    },
+    {
+      "scholarship_id": 6,
+      "title": "Eiffel Excellence Scholarship",
+      "country": "France",
+      "current_status": "closed",
+      "proposed_status": null,
+      "lifecycle_reason": null,
+      "fetch_success": true,
+      "fetch_error": null,
+      "changes_detected": [
+        {
+          "field": "degree",
+          "old": "PG/PhD only (Master's and Doctoral)",
+          "new": "programs at the Master's and Doctoral levels. Applications are submitted exclusively by French higher education institutions.",
+          "confidence": "medium"
+        },
+        {
+          "field": "application_link",
+          "old": "https://www.campusfrance.org/en/the-france-excellence-eiffel-scholarship-program",
+          "new": "https://www.campusfrance.org/en/application-higher-education-france",
+          "confidence": "high"
+        }
+      ],
+      "next_cycle_found": false,
+      "next_cycle_year": null,
+      "duplicate_found": false,
+      "duplicate_id": null,
+      "image_action": "eligible_for_image_discovery",
+      "proposed_db_changes": []
+    },
+    {
+      "scholarship_id": 7,
+      "title": "Swiss Government Excellence Scholarship (ESKAS)",
+      "country": "Switzerland",
+      "current_status": "open",
+      "proposed_status": null,
+      "lifecycle_reason": null,
+      "fetch_success": true,
+      "fetch_error": null,
+      "changes_detected": [
+        {
+          "field": "degree",
+          "old": "PhD/Postdoctoral research and Art Master's only - NOT for standard Bachelor's/Master's study",
+          "new": "in an artistic field in Switzerland. This scholarship is available to students from a limited number of countries only.",
+          "confidence": "medium"
+        },
+        {
+          "field": "application_link",
+          "old": "https://www.sbfi.admin.ch/en/swiss-government-excellence-scholarships",
+          "new": "https://www.sbfi.admin.ch/en/swiss-government-excellence-scholarships#Applying-for-a-Swiss-Government-Excellence-Scholarship",
+          "confidence": "high"
+        }
+      ],
+      "next_cycle_found": false,
+      "next_cycle_year": null,
+      "duplicate_found": false,
+      "duplicate_id": null,
+      "image_action": "eligible_for_image_discovery",
+      "proposed_db_changes": []
+    },
+    {
+      "scholarship_id": 14,
+      "title": "ETH Zurich Excellence Scholarship & Opportunity Programme (ESOP)",
+      "country": "Switzerland",
+      "current_status": "upcoming",
+      "proposed_status": null,
+      "lifecycle_reason": null,
+      "fetch_success": true,
+      "fetch_error": null,
+      "changes_detected": [
+        {
+          "field": "degree",
+          "old": "Master's",
+          "new": "course.",
+          "confidence": "medium"
+        },
+        {
+          "field": "application_link",
+          "old": "https://ethz.ch/students/en/studies/financial/scholarships/excellencescholarship.html",
+          "new": "https://www.lehrbetrieb.ethz.ch/eApply/ealogin.view?lang=en",
+          "confidence": "high"
+        }
+      ],
+      "next_cycle_found": false,
+      "next_cycle_year": null,
+      "duplicate_found": false,
+      "duplicate_id": null,
+      "image_action": "eligible_for_image_discovery",
+      "proposed_db_changes": []
+    },
+    {
+      "scholarship_id": 27,
+      "title": "Fulbright Foreign Student Program",
+      "country": "USA",
+      "current_status": "open",
+      "proposed_status": null,
+      "lifecycle_reason": null,
+      "fetch_success": true,
+      "fetch_error": null,
+      "changes_detected": [
+        {
+          "field": "application_link",
+          "old": "https://foreign.fulbrightonline.org",
+          "new": "https://foreign.fulbrightonline.org/apply",
+          "confidence": "high"
+        }
+      ],
+      "next_cycle_found": false,
+      "next_cycle_year": null,
+      "duplicate_found": false,
+      "duplicate_id": null,
+      "image_action": "eligible_for_image_discovery",
+      "proposed_db_changes": []
+    },
+    {
+      "scholarship_id": 28,
+      "title": "Chevening Scholarship",
+      "country": "UK",
+      "current_status": "closing-soon",
+      "proposed_status": null,
+      "lifecycle_reason": null,
+      "fetch_success": true,
+      "fetch_error": null,
+      "changes_detected": [
+        {
+          "field": "application_link",
+          "old": "https://www.chevening.org",
+          "new": "https://www.chevening.org/resource-hub/guidance/",
+          "confidence": "high"
+        }
+      ],
+      "next_cycle_found": false,
+      "next_cycle_year": null,
+      "duplicate_found": false,
+      "duplicate_id": null,
+      "image_action": "eligible_for_image_discovery",
+      "proposed_db_changes": []
+    },
+    {
+      "scholarship_id": 30,
+      "title": "Australia Awards Scholarships",
+      "country": "Australia",
+      "current_status": "open",
+      "proposed_status": null,
+      "lifecycle_reason": null,
+      "fetch_success": false,
+      "fetch_error": "Request to official source timed out",
+      "changes_detected": [],
+      "next_cycle_found": false,
+      "next_cycle_year": null,
+      "duplicate_found": false,
+      "duplicate_id": null,
+      "image_action": "eligible_for_image_discovery",
+      "proposed_db_changes": []
+    }
+  ],
+  "summary": {
+    "fetch_failures": 1,
+    "status_changes_proposed": 0,
+    "next_cycles_discovered": 0,
+    "duplicates_found": 0,
+    "changes_detected": 12
+  }
+}

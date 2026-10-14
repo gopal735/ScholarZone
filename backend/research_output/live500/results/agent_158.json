@@ -1,0 +1,140 @@
+{
+  "agent": "agent_158",
+  "records": [
+    {
+      "id": 423,
+      "official": {
+        "official_source_urls": [
+          "https://erasmusplus.org.pl/sektory/szkolnictwo-wyzsze/akcja-1-mobilnosc-edukacyjna",
+          "https://erasmusplus.org.pl/jak-zlozyc-wniosek",
+          "https://erasmusplus.org.pl/dokumenty?download_category=komunikatyna",
+          "https://erasmusplus.org.pl/brepo/panel_repo_files/2026/01/27/zcxbhs/zasady-alokacji-i-stawki-stypendialne-ka131-2026-f.pdf",
+          "https://erasmusplus.org.pl/brepo/panel_repo_files/2025/11/13/xrqjug/programme-guide-2026-en.pdf",
+          "https://study.gov.pl/erasmus"
+        ],
+        "application_link": "https://erasmusplus.org.pl/sektory/szkolnictwo-wyzsze/akcja-1-mobilnosc-edukacyjna",
+        "catalogue_url": "https://study.gov.pl/erasmus",
+        "official_updates_url": "https://erasmusplus.org.pl",
+        "deadline_central": "2027-02-19",
+        "deadline_central_display": "19 February, 12:00 midday (Brussels time) - annual KA131-HED round",
+        "deadline_note": "The National Agency's application page publishes 19 February 2026, 12:00 for the higher education mobility round (KA131-HED 2026, now closed); the Erasmus+ Programme Guide 2026 fixes 19 February at 12:00 midday Brussels time for the annual call, so the next round is 19 February 2027. This deadline binds higher education institutions applying to the National Agency - individual students apply through their home university, whose internal deadlines are set locally and differ.",
+        "application_cycle": "KA131-HED annual round; 2026 call published 12 November 2025, mobility for the 2026/2027 academic year",
+        "status": "OPEN",
+        "status_note": "Ongoing programme under the 2021-2027 funding period. The Polish National Agency's 2026 call documents are published and being implemented; NA news of 28 September 2026 ('Erasmus+ 2026: remaining deadlines this year') confirms most 2026 application rounds have closed, and student mobility continues through university arrangements throughout the academic year. The next institutional round follows the Programme Guide's 19 February deadline.",
+        "tuition_coverage_note": "study.gov.pl: Erasmus+ Higher Education 'allows students to undertake a part of their studies in another country without additional costs of tuition, registration or examination.'",
+        "funding_amount": 670,
+        "funding_currency": "EUR",
+        "funding_period": "per month",
+        "tuition_coverage": true,
+        "living_cost_coverage": true,
+        "travel_coverage": true,
+        "fully_funded": false,
+        "benefits": [
+          "Monthly individual support for study mobility (SMS): 670 EUR for Group 1 and Group 2 destination countries, 600 EUR for Group 3 countries (2026 rates)",
+          "Monthly individual support for traineeship mobility (SMT): 820 EUR for Group 1 and Group 2 countries, 750 EUR for Group 3 countries (2026 rates)",
+          "Additional 250 EUR per month for participants meeting the definition of 'students and graduates with fewer opportunities'",
+          "Travel support as a distance-band lump sum from 28 EUR to 1735 EUR per participant, with higher 'green travel' rates",
+          "Study abroad without additional costs of tuition, registration or examination at the receiving institution",
+          "Organisational support for institutions (400 EUR per participant for mobilities of 1-100 people, 230 EUR above 100) and 125 EUR additional support for participants with disabilities"
+        ],
+        "eligibility": [
+          "Enrolled student or doctoral candidate at a higher education institution awarded the Erasmus Charter for Higher Education (ECHE) - the NA states the ECHE must be valid to 2027",
+          "Sending and receiving institutions must have an inter-institutional agreement in place before the mobility takes place",
+          "Student mobility for studies: both sending and receiving organisations must be HEIs awarded with an ECHE",
+          "Mobility must take place in an EU Member State or a third country associated to the Programme (or an eligible non-associated country) different from the sending country and the country where the student lives during studies",
+          "Study or traineeship mobility may last from 2 to 12 months of physical mobility; total mobility is capped at 12 months per study cycle",
+          "The time spent abroad and the courses completed must be accepted by the home institution"
+        ],
+        "requirements": [
+          "Learning Agreement (or a similar document) specifying expected learning outcomes, agreed by the participant, the sending organisation and the hosting organisation before the mobility starts",
+          "After the activity, achieved learning outcomes must be recognised by issuing a Europass Mobility or a similar document, kept as proof of completion",
+          "A grant agreement with the participant may be required by the National Agency and kept as supporting documentation",
+          "An amendment to the mobility must be concluded with the participant before the end of the mobility if the period is to be extended; raising the stipend rate above the rate announced by the NA is not possible"
+        ],
+        "documents": [
+          "Learning Agreement signed by the participant, sending and receiving institution before departure",
+          "Grant agreement with the participant (where required by the National Agency)",
+          "Europass Mobility or similar recognition document issued after the activity",
+          "For the fewer-opportunities top-up: university decision on a social scholarship, certificate of disability, child's birth certificate (for students with children up to 8 years), or an asylum/refugee/subsidiary protection statement - originals held by the institution and shown during monitoring or checks"
+        ],
+        "selection_criteria": [
+          "For institutional KA131-HED applications there is no qualitative assessment: any eligible grant application that passes the eligibility check will get funding",
+          "The maximum grant depends on the number of mobilities applied for, the applicant's past performance, the number of blended intensive programmes applied for, and the national budget allocated to the action",
+          "The National Agency recommends that institutional selection rules prefer one-semester student mobilities and, for staff, first-time travellers, shorter service and employment-contract staff",
+          "Individual student selection is run by the sending institution; the NA recommends universities set institutional selection and funding rules"
+        ],
+        "coverage": [
+          "Individual support for subsistence: 670 EUR per month for study mobility and 820 EUR for traineeships to Group 1 and Group 2 countries; 600 EUR and 750 EUR to Group 3 countries; 700 EUR per month for mobility to third countries not associated to the Programme",
+          "Travel costs as distance-band lump sums from 28 EUR to 1735 EUR per participant (higher for green travel)",
+          "No additional costs of tuition, registration or examination at the receiving institution",
+          "Organisational support and inclusion support for the sending institutions"
+        ],
+        "application_method": [
+          "Students apply to the international/Erasmus+ office of their sending higher education institution, which must hold an ECHE and a KA131 grant from the National Agency",
+          "The institution applies to the National Agency individually or as coordinator of a mobility consortium by the published annual deadline"
+        ],
+        "application_route": "Apply to your own university's Erasmus+/international office - students cannot apply directly to the National Agency",
+        "study_mode": "Physical mobility abroad (full-time study or traineeship); blended formats with a virtual component are also supported",
+        "citizenship_residency": "No nationality restriction is published for KA131 mobility; eligibility is tied to enrolment or employment at a sending higher education institution awarded the ECHE",
+        "international_eligibility": "Open to students of any nationality enrolled at a participating (ECHE-holding) institution in a Programme Country; mobility to non-associated third countries is funded at the published 700 EUR per month rate",
+        "subject_or_agency_requirement": "No field restriction - mobility is supported across all disciplines and study cycles (first, second and third cycle and long-cycle programmes); the grant applicant is the higher education institution or a mobility consortium",
+        "research_requirement": null,
+        "duration": "Study or traineeship mobility: 2 to 12 months of physical mobility (5 to 30 days for blended short-term and doctoral short-term mobility); a maximum of 12 months of mobility per study cycle, 24 months in one-cycle programmes",
+        "description": "Erasmus+ is the European Union programme supporting projects, partnerships, events and mobility in education, training, youth and sport, implemented in Poland by the Foundation for the Development of the Education System as the Polish National Agency. Its higher education strand lets students spend part of their studies abroad in another country without additional costs of tuition, registration or examination, supported by a monthly scholarship covering living costs abroad, with work placements in companies and staff mobility also supported.",
+        "region": "Europe (Erasmus+ Programme Countries)",
+        "program_type": "EU-funded academic mobility programme - Key Action 1 (mobility of individuals), higher education sector",
+        "english_requirement": null
+      },
+      "verification": {
+        "source_citations": [
+          "https://erasmusplus.org.pl/brepo/panel_repo_files/2026/01/27/zcxbhs/zasady-alokacji-i-stawki-stypendialne-ka131-2026-f.pdf",
+          "https://erasmusplus.org.pl/jak-zlozyc-wniosek",
+          "https://erasmusplus.org.pl/aktualnosci/erasmus-2026-pozostale-terminy-w-tym-roku",
+          "https://erasmusplus.org.pl/brepo/panel_repo_files/2025/11/13/xrqjug/programme-guide-2026-en.pdf",
+          "https://study.gov.pl/erasmus"
+        ],
+        "last_verified_date": "2026-10-10",
+        "verification_status": "confirmed",
+        "confidence": "high",
+        "not_confirmed": [
+          "english_requirement - the official pages publish no English test score or MOI rule for KA131 student mobility",
+          "individual university application deadlines and internal selection criteria - set locally by each sending institution",
+          "total award per participant - varies by destination country group, duration and mobility type"
+        ],
+        "notes": "Amounts taken from the Polish National Agency's published KA131-HED 2026 stipend rates; deadline, eligibility, duration and documentation from the Erasmus+ Programme Guide 2026 hosted by FRSE; tuition wording from study.gov.pl. The assignment's study.gov.pl/erasmus-plus-programme URL now returns 404 - the live catalogue page is study.gov.pl/erasmus."
+      },
+      "applicant_utility": {
+        "summary": "This is not a scholarship you apply for directly: the Polish National Agency (FRSE) funds your university, and your university's Erasmus+ office selects you and pays the grant. For the 2026 call, a study period abroad pays 670 EUR per month to most destinations (600 EUR to Group 3 countries such as Hungary, Croatia, Poland or Turkiye) and a traineeship pays 820/750 EUR, plus a one-off travel lump sum of 28-1735 EUR set by distance. You pay no additional tuition at the host university, but you still owe your normal home tuition and most of your living costs.",
+        "best_fit": "Enrolled students at a Polish or other Programme Country university that holds an ECHE and has inter-institutional agreements, wanting a funded 2-12 month study or traineeship period abroad.",
+        "application_readiness_checklist": [
+          "Confirm your university holds a valid Erasmus Charter for Higher Education and has an inter-institutional agreement with your target host before planning anything.",
+          "Track your own university's Erasmus+ office calls and internal deadline - they run months ahead of the February institutional deadline and well before departure.",
+          "Have a Learning Agreement drafted and signed by you, your home coordinator and the host before you leave, with courses pre-agreed for recognition.",
+          "Plan the stay around the 12-month-per-cycle cap (24 months in one-cycle programmes such as medicine); previous Erasmus+ and Erasmus Mundus months count towards it.",
+          "If you may qualify for the fewer-opportunities top-up (social scholarship, disability, a child under 8, refugee status), collect the documents early - they add 250 EUR per month."
+        ],
+        "common_rejection_risks": [
+          "Applying directly to the National Agency or FRSE instead of your own university - applications from individual students are not processed.",
+          "A host institution with no inter-institutional agreement with yours, or without an ECHE - mobility there is not eligible.",
+          "Mobility planned without a signed Learning Agreement or without prior recognition of the courses abroad.",
+          "A planned period that breaks the duration rules: under 2 months, over 12 months, or beyond the 12-month cycle cap.",
+          "Assuming the travel lump sum covers a real trip - it is a fixed distance-band amount, not a reimbursement of actual cost."
+        ],
+        "estimated_uncovered_costs": "Home tuition fees, rent and living costs above the monthly subsidy, visa and residence permit fees, health insurance, and travel above the distance-band lump sum.",
+        "document_audit": [
+          "The Learning Agreement must be signed by all three parties before departure - an unsigned or late one is the classic audit failure.",
+          "Any extension must be agreed by amendment before the mobility ends; retroactive extension is not possible and the stipend rate cannot be raised above the announced rate.",
+          "For the fewer-opportunities top-up, original supporting documents (social scholarship decision, disability certificate, child's birth certificate, asylum statement) must remain with the institution for inspection.",
+          "A Europass Mobility or equivalent recognition document is issued after the activity and must be kept as proof of completion."
+        ],
+        "alerts": [
+          "The 19 February 12:00 deadline is for universities, not students - your university's internal call is the date that actually governs your application.",
+          "Rates are fixed per destination country group and are the same for every country inside a group, so the same semester can be worth different amounts depending on destination.",
+          "Traineeship mobility is paid more per month than study mobility (820 vs 670 EUR to most destinations), and the two can be combined if the minimum study mobility duration is met.",
+          "The 2026 national allocation is capped: universities receive grant sizes based on 40% of their 2026 application, 30% of their 2025 contract and 30% of their 2024 delivery, so an institution that under-delivered previously will have less to distribute."
+        ],
+        "submission_workflow": "Answer your university's internal Erasmus+ call, let the international office nominate you to the receiving institution, sign the Learning Agreement before departure, then receive the monthly grant plus the travel lump sum during the mobility."
+      }
+    }
+  ]
+}

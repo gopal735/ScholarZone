@@ -1,0 +1,164 @@
+[
+  {
+    "scholarship_id": 717,
+    "outcome": "not_applicable",
+    "professors": [],
+    "notes": "National/government mobility scheme of the Slovak Republic, administered by SAIA under the Ministry of Education, Research, Development and Youth. It funds study, research or artistic stays at foreign host institutions that each applicant arranges themselves; no institution or supervising professor is attached to the scheme. Official site stipendia.sk confirms: 'Narodny stipendijny program je urceny na podporu mobilstudent, doktorandov, vysokoskolskych ucitelov, vyskumnych a umeleckych pracovnikov. Administrativne ho zabezpecuje SAIA, n.o.' Verified live at https://www.stipendia.sk. Classified not_applicable per national/government scheme guidance."
+  },
+  {
+    "scholarship_id": 718,
+    "outcome": "not_applicable",
+    "professors": [],
+    "notes": "National GETFund (Ghana Education Trust Fund) scholarship for postgraduate study abroad. Applications are made through the official GETFund scholarship portal and beneficiaries study at institutions of their own choosing abroad; no institution or supervising professor is attached to the scheme. Official page verified live (JS-rendered, loaded via browser): 'Applications for the scholarship opened on 13th April 2026 and will close on 30th April 2026... through the official GETFund scholarship portal.' Classified not_applicable per national/government scheme guidance."
+  },
+  {
+    "scholarship_id": 719,
+    "outcome": "verified_supervisors",
+    "professors": [
+      {
+        "canonical_name": "Jeremy Dorovolomo",
+        "title": "Associate Professor",
+        "institution_name": "The University of the South Pacific",
+        "department_name": "Discipline of Education, School of Pacific Arts, Communication and Education (SPACE)",
+        "official_profile_url": "https://www.usp.ac.fj/discipline-of-education/staff/dr-jeremy-dorovolomo/",
+        "official_email": "jeremy.dorovolomo@usp.ac.fj",
+        "official_email_verified": true,
+        "lab_url": null,
+        "personal_academic_url": null,
+        "research_areas": ["Physical education", "Sports education", "Sports for development", "Outdoor education", "Higher education"],
+        "research_keywords": ["physical education", "sports education", "sports for development", "outdoor education", "Pacific education"],
+        "relationship_type": "potential_supervisor",
+        "evidence_source_url": "https://www.usp.ac.fj/research/pg-affairs/post-graduate-scholarships/pacific-scholarship-for-excellence-in-research-innovation-pseri/",
+        "evidence_source_type": "official_programme_page",
+        "evidence_quote_or_summary": "PSERI official page: applications invited for 'a Masters degree or Doctor of Philosophy (PhD) by research only at The University of the South Pacific'; the page lists 'School of Pacific Arts, Communication and Education (SPACE)' among the academic units and states 'Applicants may discuss their applications with a potential supervisor.' His official USP staff profile states: 'I am currently Associate Professor at the University of the South Pacific based in Suva, Fiji' with Research Interests: 'Physical education, sports education, outdoor education, sports for development, higher education and Solomon Islands issues.'",
+        "confidence": 78
+      },
+      {
+        "canonical_name": "Neelesh Gounder",
+        "title": "Senior Lecturer",
+        "institution_name": "The University of the South Pacific",
+        "department_name": "School of Accounting, Finance and Economics (SAFE), Economics",
+        "official_profile_url": "https://www.usp.ac.fj/bio/dr-neelesh-gounder/",
+        "official_email": "neelesh.gounder@usp.ac.fj",
+        "official_email_verified": true,
+        "lab_url": null,
+        "personal_academic_url": null,
+        "research_areas": ["Economic growth and macroeconomic policy", "International and development finance", "Poverty and inequality"],
+        "research_keywords": ["economic growth", "macroeconomic policy", "poverty and inequality", "development economics"],
+        "relationship_type": "potential_supervisor",
+        "evidence_source_url": "https://www.usp.ac.fj/research/pg-affairs/post-graduate-scholarships/pacific-scholarship-for-excellence-in-research-innovation-pseri/",
+        "evidence_source_type": "official_programme_page",
+        "evidence_quote_or_summary": "PSERI official page lists 'School of Accounting, Finance and Economics (SAFE)' among the academic units whose research areas applicants should review and states 'Applicants may discuss their applications with a potential supervisor.' His official USP bio page (linked from the SAFE staff page, https://www.usp.ac.fj/usp-safe/staff/) shows 'Dr Neelesh Gounder - Senior Lecturer', Office: Economics, Email neelesh.gounder@usp.ac.fj. USP's official potential-supervisors matrix (usp.ac.fj) lists his specialised areas: 'economic growth, economic modeling, macroeconomic policy ... Poverty and Inequality; health economics'.",
+        "confidence": 72
+      },
+      {
+        "canonical_name": "Krishna Kumar Kotra",
+        "title": "Senior Lecturer",
+        "institution_name": "The University of the South Pacific",
+        "department_name": "Discipline of Biological and Chemical Sciences, School of Agriculture, Geography, Environment, Ocean and Natural Sciences (SAGEONS)",
+        "official_profile_url": "https://www.usp.ac.fj/discipline-of-biological-and-chemical-sciences/staff/dr-krishna-kumar-kotra/",
+        "official_email": "krishna.kotra@usp.ac.fj",
+        "official_email_verified": true,
+        "lab_url": null,
+        "personal_academic_url": null,
+        "research_areas": ["Water quality", "Marine studies", "Climate change"],
+        "research_keywords": ["water quality", "marine studies", "climate change", "WASH", "coastal ecosystems"],
+        "relationship_type": "potential_supervisor",
+        "evidence_source_url": "https://www.usp.ac.fj/research/pg-affairs/post-graduate-support/",
+        "evidence_source_type": "official_department_page",
+        "evidence_quote_or_summary": "USP Research & Innovation Office Post Graduate Support page lists under 'School of Agriculture, Geography, Environment, Ocean & Natural Sciences (SAGEONS)': 'Dr Krishna Kotra Acting Deputy Head of School (Research, Innovation and Postgraduate Affairs) Tel: 40624 Email: krishna.kotra@usp.ac.fj'. His official USP staff profile states: 'His research interests include water quality, marine studies, and climate change.' PSERI lists SAGEONS among the academic units and invites applicants to discuss with a potential supervisor.",
+        "availability": {
+          "scope": "phd_supervision",
+          "state": "verified_yes",
+          "source_url": "https://www.usp.ac.fj/research/wp-content/uploads/sites/5/2025/01/PASS-CR-Research-Topics-and-Themes-Compendium_2025.pdf"
+        },
+        "confidence": 80
+      }
+    ],
+    "notes": "Official source https://www.usp.ac.fj blocks plain HTTP fetches (403); page verified live via headless browser. Scholarship is university-wide and interdisciplinary, so supervisors were selected across the academic units the PSERI page itself lists (SPACE, SAFE, SAGEONS), each holding an official USP profile with a published institutional email."
+  },
+  {
+    "scholarship_id": 720,
+    "outcome": "not_applicable",
+    "professors": [],
+    "notes": "TSLS statutory government scheme (Ministry of Education, Government of Fiji) funding Fiji citizens to study at listed Australian/NZ universities. The scheme's own page is currently unavailable (HTTP 404 at https://tsls.com.fj/high-achievers-higher-education-level-7-overseas-scheme) and it is not in the 2026-2027 TSLS Handbook. No institution or supervising professor is attached to the scheme; students secure their own university offers. Classified not_applicable per national/government scheme guidance."
+  },
+  {
+    "scholarship_id": 721,
+    "outcome": "not_applicable",
+    "professors": [],
+    "notes": "New Zealand Government scholarship funded by the Ministry for Pacific Peoples and administered by Le Va; up to NZD 10,000 per year is paid directly to the student's own institution. No attached institution or supervising professor. Direct fetch of https://www.mpp.govt.nz/programmes-and-funding/education/toloa-scholarships returned 403 (bot protection) but the scheme's government-scheme nature is confirmed by the official source; classification per national/government scheme guidance."
+  },
+  {
+    "scholarship_id": 722,
+    "outcome": "verified_supervisors",
+    "professors": [
+      {
+        "canonical_name": "Jeremy Dorovolomo",
+        "title": "Associate Professor",
+        "institution_name": "The University of the South Pacific",
+        "department_name": "Discipline of Education, School of Pacific Arts, Communication and Education (SPACE)",
+        "official_profile_url": "https://www.usp.ac.fj/discipline-of-education/staff/dr-jeremy-dorovolomo/",
+        "official_email": "jeremy.dorovolomo@usp.ac.fj",
+        "official_email_verified": true,
+        "lab_url": null,
+        "personal_academic_url": null,
+        "research_areas": ["Physical education", "Sports education", "Sports for development", "Sports coaching"],
+        "research_keywords": ["physical education", "sports education", "sports for development", "Pacific sport"],
+        "relationship_type": "potential_supervisor",
+        "evidence_source_url": "https://www.usp.ac.fj/research/pg-affairs/post-graduate-scholarships/sports-scholars/",
+        "evidence_source_type": "official_programme_page",
+        "evidence_quote_or_summary": "PRSRS official page: 'This scholarship is a collaboration between the Oceania National Olympic Committee (ONOC) and USP. The two partners are keen to fund interdisciplinary projects that fall within the following research themes with a focus on sports: Economics, Social Impact, Physical Education' and 'Applicants may discuss their applications with a potential supervisor.' Dorovolomo's official USP profile gives Research Interests: 'Physical education, sports education, outdoor education, sports for development, higher education...' - a direct match to the Physical Education theme.",
+        "confidence": 85
+      },
+      {
+        "canonical_name": "Yoko Kanemasu",
+        "title": "Associate Professor",
+        "institution_name": "The University of the South Pacific",
+        "department_name": "Discipline of Social Sciences, School of Law and Social Sciences (SoLaSS)",
+        "official_profile_url": "https://www.usp.ac.fj/discipline-of-social-sciences/socpp/socpp-staff-profiles/yoko-kanemasu/",
+        "official_email": "yoko.kanemasu@usp.ac.fj",
+        "official_email_verified": true,
+        "lab_url": null,
+        "personal_academic_url": null,
+        "research_areas": ["Sociology of sport", "Gender and sport", "Sport and society in the Pacific Islands", "Identity and representation"],
+        "research_keywords": ["sociology of sport", "gender and sport", "Pacific Islands", "women's rugby", "social impact of sport"],
+        "relationship_type": "potential_supervisor",
+        "evidence_source_url": "https://www.usp.ac.fj/research/pg-affairs/post-graduate-scholarships/sports-scholars/",
+        "evidence_source_type": "official_programme_page",
+        "evidence_quote_or_summary": "PRSRS official page invites 'interdisciplinary projects that fall within the following research themes with a focus on sports: Economics, Social Impact, Physical Education' and states 'Applicants may discuss their applications with a potential supervisor.' Kanemasu's official USP profile lists 'Associate Professor', Research Areas: 'Gender, Sexuality, Women, Disability, Sport, Resistance, Identity, Representation, Migration, Pacific Islands', an 'MA and PhD Supervision' section, and she is editor of 'Towards a Pacific Island Sociology of Sport: Seeking New Horizons' - a direct match to the Social Impact theme.",
+        "availability": {
+          "scope": "masters_supervision",
+          "state": "verified_yes",
+          "source_url": "https://www.usp.ac.fj/discipline-of-social-sciences/socpp/socpp-staff-profiles/yoko-kanemasu/"
+        },
+        "confidence": 88
+      },
+      {
+        "canonical_name": "Neelesh Gounder",
+        "title": "Senior Lecturer",
+        "institution_name": "The University of the South Pacific",
+        "department_name": "School of Accounting, Finance and Economics (SAFE), Economics",
+        "official_profile_url": "https://www.usp.ac.fj/bio/dr-neelesh-gounder/",
+        "official_email": "neelesh.gounder@usp.ac.fj",
+        "official_email_verified": true,
+        "lab_url": null,
+        "personal_academic_url": null,
+        "research_areas": ["Economics", "Economic growth and macroeconomic policy", "Poverty and inequality"],
+        "research_keywords": ["economics", "economic growth", "macroeconomic policy", "poverty and inequality"],
+        "relationship_type": "potential_supervisor",
+        "evidence_source_url": "https://www.usp.ac.fj/research/pg-affairs/post-graduate-scholarships/sports-scholars/",
+        "evidence_source_type": "official_programme_page",
+        "evidence_quote_or_summary": "PRSRS official page lists 'Economics' as one of the three research themes 'with a focus on sports' and states 'Applicants may discuss their applications with a potential supervisor.' Gounder's official USP bio page (linked from the SAFE staff page) shows 'Dr Neelesh Gounder - Senior Lecturer', Office: Economics, Email neelesh.gounder@usp.ac.fj, covering the Economics theme for sports-related research at USP.",
+        "confidence": 70
+      }
+    ],
+    "notes": "Official source https://www.usp.ac.fj blocks plain HTTP fetches (403); page verified live via headless browser. The three professors map onto the three PRSRS themes cited on the scholarship page: Economics (Gounder, SAFE), Social Impact (Kanemasu, SoLaSS sociology of sport), Physical Education (Dorovolomo, SPACE Education). Each has an official USP profile page with a published usp.ac.fj email address."
+  },
+  {
+    "scholarship_id": 723,
+    "outcome": "not_applicable",
+    "professors": [],
+    "notes": "TSLS statutory government scheme (Ministry of Education, Government of Fiji). Official page verified live at https://tsls.com.fj/cost-sharing-overseas-phd-scholarships-scheme: it lists ten eligible Australian universities and requires applicants to 'secure an offer letter or candidature confirmation letter from an eligible institution in Australia or New Zealand for full-time studies'. No supervising professor is attached to the scheme; supervision is arranged by the student with the chosen partner university. Classified not_applicable per national/government scheme guidance."
+  }
+]

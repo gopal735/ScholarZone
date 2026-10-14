@@ -1,0 +1,21 @@
+{
+  "agent_id": "w3_53",
+  "shard": "w3-53",
+  "host": "web.ub.edu",
+  "today": "2026-10-04",
+  "logo_override": {
+    "url": "https://campusvirtual.ub.edu/pluginfile.php/1/core_admin/logocompact/300x300/1790954334/company_logo2025.png",
+    "page_url": "https://campusvirtual.ub.edu/",
+    "official_host": true,
+    "alt_text": "Universitat de Barcelona",
+    "validation_result": "verified",
+    "validation_detail": "HTTP 200, content-type image/png, 9738 bytes, 300x121; canvas pixel audit mean luminance 38, 0% light pixels and 77% dark pixels, and rendered on a white background it shows the full 'UNIVERSITAT DE BARCELONA' wordmark with the coloured UB crest, so it is dark-on-transparent and fully legible on a light card",
+    "image_kind": "official_university",
+    "image_format": "png",
+    "verified_at": "2026-10-04T00:00:00+00:00",
+    "host_evidence": "same_registrable_domain",
+    "_award": "University of Barcelona (UB) Master's Degree+UB Scholarships"
+  },
+  "target_ids": [100],
+  "notes": "The stored page and the whole www.ub.edu/web.ub.edu site are behind a Cloudflare challenge that never clears here: Playwright got HTTP 403 with a 'Just a moment...' interstitial on the exact stored URL, then a 35s navigation timeout on web.ub.edu/ca/web/ub/, and webfetch returned 403 on both https://web.ub.edu/en/web/beques-graus-masters/... and https://web.ub.edu/en/web/ub/. www.ub.edu 302s to web.ub.edu, so the apex does not help either. Per the brief I therefore went after the same registrable domain (ub.edu) on subdomains that are NOT challenged. Reachable and probed: campusvirtual.ub.edu (200, 'Home | CVUB') and diposit.ub.edu (200, 'Diput Digital de la Universitat de Barcelona'). Accepted /pluginfile.php/1/core_admin/logocompact/300x300/1790954334/company_logo2025.png - HTTP 200, image/png, 9738 B, 300x121, rendered and visually confirmed as the university wordmark plus crest. Its alt attribute says 'CVUB' because it is set as the Moodle site logo, but the artwork is the University of Barcelona's own mark, not a Campus Virtual sub-brand, so rule 2 is satisfied. Probed and rejected: diposit.ub.edu/assets/ub/images/UB_logo.png - HTTP 200, image/png, 12608 B, 300x90, alt 'Universitat de Barcelona', and it LOOKS like the right file, but the pixel audit gives mean luminance 255 with 100% light and 0% dark pixels and it renders completely blank on white: a white-on-transparent wordmark, rejected under rule 3. Also rejected: diposit.ub.edu/assets/ub/images/UB_logo_white.png, UB_logo_dark.png, UB_logo.svg and logo.png (all 404); diposit.ub.edu/assets/images/favicon.ico and web.ub.edu/o/ub-theme/images/favicon.ico (both 200 but 16x16, 1150 B, too small to render as a record image); web.ub.edu/o/ub-theme/images/logo.png, UB_logo.png and logo.svg (404 - static theme assets on the shard host itself are reachable even though its pages are not, but it carries no logo file). Also rejected as third-party under rule 6: the Open Access PLOS logo that diposit.ub.edu loads from upload.wikimedia.org, and its own dd-logo.png, which is the repository's mark rather than the university's. Non-resolving ub.edu hosts: biblioteca.ub.edu, qualitat.ub.edu, acsys.ub.edu. openaccesslogo variants were not used."
+}

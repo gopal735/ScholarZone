@@ -1,0 +1,230 @@
+[
+  {
+    "scholarship_name": "Beca Juan Gómez Millas para Estudiantes Extranjeros (BJGME)",
+    "award_body": "Ministerio de Educación de Chile (Subsecretaría de Educación Superior)",
+    "host_country": "Chile",
+    "funding_type": "Government",
+    "degree_levels": ["Undergraduate"],
+    "funding_amount": null,
+    "tuition_coverage": true,
+    "fully_funded": false,
+    "application_required": true,
+    "official_government_required": false,
+    "secondary_audience": false,
+    "status": "open",
+    "deadline_precision": "exact",
+    "deadline_date": "2026-10-22",
+    "status_note": "The 2027 student-benefits application window is open and closes Thursday 22 October 2026 at the end of that day. The BJGME is listed by Mineduc among the state higher-education benefits whose eligibility is determined through the 2027 FUAS round, so a foreign applicant must complete the FUAS before that deadline.",
+    "official_source_url": "https://portal.beneficiosestudiantiles.cl/becas/becas-de-arancel",
+    "logo_url": null,
+    "logo_validation_detail": "No usable mark found. mineduc.cl publishes no wordmark asset on its own domain: the only images it exposes at /wp-content/uploads matching logo/brand/icon are social-media button files (logos_rrss_mineduc-01..12.png, logos_rrss_mineduc_youtube-11/12.png), and its apple-touch-icon and favicon files are cropped favicon frames of size 180x180/192x192/32x32 that render as plain Chilean-flag colour blocks (blue and red) with no ministry mark at all. https://www.mineduc.cl/wp-content/uploads/sites/19/2021/04/cropped-favicon-192x192.jpg was probed (HTTP 200, bytes are a 192x192 JPEG) and webfetch rendered it as two flat colour rectangles, so it is not a recognisable ministry logo and was rejected. The header wordmark is served as inline SVG/CSS, not as a file. No third-party or Wikimedia substitute was used.",
+    "source_citations": [
+      "https://portal.beneficiosestudiantiles.cl/becas/becas-de-arancel",
+      "https://www.mineduc.cl/fuas-2027-ya-esta-abierta-la-postulacion-a-becas-creditos-y-gratuidad-para-la-educacion-superior"
+    ],
+    "research_notes": "Award type: tuition (arancel) scholarship. Mineduc's own catalogue defines a beca as 'un apoyo economico que entrega el Ministerio de Educacion para que puedas financiar parte del costo de tus estudios, cubriendo el total o parte del arancel anual de tu carrera, y en algunos casos, la matricula', states the resources are paid directly to the institutions and not to students, and stresses that unlike a credito the money is not repaid on graduation or on transfer. That same page carries the BJGME entry: 'Beca Juan Gomez Millas para Estudiantes Extranjeros (BJGME) - Una oportunidad de financiamiento para jovenes extranjeros que cursen sus estudios superiores en Chile'. This is the only Beca in the whole catalogue aimed at foreign nationals, and it is the entry point for international students in Chile. Recorded as its own record rather than folded into the general Becas de Arancel entry because the beneficiary group and eligibility rule differ; the broader domestic programme is recorded separately in this same output. funding_amount is null because neither official page publishes a single peso figure for BJGME: amounts depend on the institution's arancel, and Mineduc points to a separate reference-tariff area (Aranceles de referencia) on beneficiosestudiantiles.cl. Mineduc's 1 October 2026 announcement of the 2027 FUAS round names Juan Gomez Millas para Estudiantes Extranjeros among the benefits whose requirements are verified through that form, which is what anchors the 22 October 2026 deadline to this award. Not fully funded: the benefit covers tuition only, not living costs.",
+    "verification_confidence": 0.92,
+    "eligibility": [
+      "Foreign nationality: the award is expressly for young foreign nationals studying higher education in Chile.",
+      "Must be entering, or already be studying, higher education in Chile for the 2027 cycle at a centre de formation technique, instituto profesional or universidad.",
+      "Socioeconomic data declared in the FUAS and validated by the Subsecretaría de Educación Superior; an updated Registro Social de Hogares speeds verification but is not itself a prerequisite.",
+      "Application is free and made online; having taken the PAES admission test is not required."
+    ],
+    "benefits": [
+      "Supports part or all of the annual tuition (arancel) of the degree, and in some cases the enrolment fee (matricula)",
+      "Paid directly by Mineduc to the higher-education institution, never to the student",
+      "Non-repayable: unlike the credito, the money is not returned on graduation or transfer"
+    ]
+  },
+  {
+    "scholarship_name": "Becas de Arancel Mineduc 2027 (Beca Bicentenario, Beca Nuevo Milenio y Beca Juan Gómez Millas)",
+    "award_body": "Ministerio de Educación de Chile (Subsecretaría de Educación Superior)",
+    "host_country": "Chile",
+    "funding_type": "Government",
+    "degree_levels": ["Undergraduate"],
+    "funding_amount": null,
+    "tuition_coverage": true,
+    "fully_funded": false,
+    "application_required": true,
+    "official_government_required": false,
+    "secondary_audience": false,
+    "status": "open",
+    "deadline_precision": "exact",
+    "deadline_date": "2026-10-22",
+    "status_note": "Open now. Mineduc opened the 2027 student-benefits application round on Thursday 1 October 2026 and the Formulario Unico de Acreditacion Socioeconomica (FUAS) must be completed online by Thursday 22 October 2026. There is no later FUAS round announced for the 2027 cycle.",
+    "official_source_url": "https://www.mineduc.cl/fuas-2027-ya-esta-abierta-la-postulacion-a-becas-creditos-y-gratuidad-para-la-educacion-superior",
+    "logo_url": null,
+    "logo_validation_detail": "No usable mark found on the awarding body's own domain. mineduc.cl serves its header wordmark as inline SVG/CSS rather than as a file, and the only logo-named image files it publishes are social-media button graphics (logos_rrss_mineduc-*.png). The favicon family was probed and rejected: https://www.mineduc.cl/favicon.ico returns a 32x32 JPEG and https://www.mineduc.cl/wp-content/uploads/sites/19/2021/04/cropped-favicon-192x192.jpg returns a 192x192 JPEG, both served with an empty Content-Type header, and webfetch rendered the larger one as flat Chilean-flag colour blocks (blue/red) with no ministry mark. Neither is a recognisable logo and both fail the image-content-type test. The third-party logo pool and Wikimedia were deliberately not used, so this stays null rather than being filled with a non-ministry image.",
+    "source_citations": [
+      "https://www.mineduc.cl/fuas-2027-ya-esta-abierta-la-postulacion-a-becas-creditos-y-gratuidad-para-la-educacion-superior",
+      "https://portal.beneficiosestudiantiles.cl/becas/becas-de-arancel",
+      "https://www.fuas.cl/"
+    ],
+    "research_notes": "Award type: tuition (arancel) scholarship. The FUAS is the single application instrument for Chile's 2027 state higher-education benefits; the scholarships themselves are the awards. Mineduc's announcement of 1 October 2026 lists the scholarships available for 2027: Bicentenario, Nuevo Milenio, Juan Gomez Millas, Juan Gomez Millas para Estudiantes Extranjeros, Excelencia Academica, Distincion a las Trayectorias Educativas (DTE), Excelencia Tecnica, para Estudiantes Hijos de Profesionales de la Educacion, Articulacion, para Estudiantes en Situacion de Discapacidad, Continuidad de Estudios para Instituciones en Cierre (three separate awards), Vocacion de Profesor (two) and Reparacion. The same announcement says the Ministry validates the declared family and socioeconomic data through the Subsecretaria de Educacion Superior to determine income level and verify the requirements of each state benefit, and states that the deadline applies to anyone wishing to enter higher education in 2027 as well as to students already enrolled without financial support. The ministry's own catalogue notes that Beca Bicentenario, Beca Juan Gomez Millas, Beca Nuevo Milenio and the award for children of teachers are the four benefits also granted to students already studying a degree, and that there are special quotas for students with disabilities under Bicentenario, Juan Gomez Millas and Nuevo Milenio for applicants with a secondary-school average of 5.0 or above. The credits (Fondo Solidario de Credito Universitario and the state-guaranteed CAE) that share the same FUAS form are loans and are deliberately excluded. Recorded separately from the BJGME record in this same output because that award is restricted to foreign nationals. funding_amount is null: no single peso figure is published, as amounts follow the institution's arancel and Mineduc publishes only reference tariffs.",
+    "verification_confidence": 0.92,
+    "eligibility": [
+      "Submit the FUAS online by Thursday 22 October 2026; the process is free and can be completed on a phone, tablet or computer.",
+      "Intend to enter a centre de formation technique, instituto profesional or universidad in 2027, or already be studying a degree without financial support.",
+      "Family and socioeconomic data validated by the Subsecretaría de Educación Superior; an updated Registro Social de Hogares simplifies verification but is not mandatory.",
+      "For Beca Bicentenario the institution must hold at least four years of accreditation; Beca Juan Gómez Millas is available at any accredited institution and Beca Nuevo Milenio targets technical-professional programmes.",
+      "Students already enrolled may also qualify for Beca Bicentenario, Beca Juan Gómez Millas, Beca Nuevo Milenio or the award for children of teachers."
+    ],
+    "benefits": [
+      "Part or all of the annual tuition (arancel), and in some cases the enrolment fee (matricula)",
+      "Paid directly by Mineduc to the institution, not to the student",
+      "Non-repayable, unlike the state credits that share the same FUAS form"
+    ]
+  },
+  {
+    "scholarship_name": "Becas Doctorales y Postdoctorales Cofinanciadas con Empresa",
+    "award_body": "CONICET (Consejo Nacional de Investigaciones Científicas y Técnicas), Argentina",
+    "host_country": "Argentina",
+    "funding_type": "Government",
+    "degree_levels": ["Doctoral", "Postdoc"],
+    "funding_amount": null,
+    "tuition_coverage": false,
+    "fully_funded": false,
+    "application_required": true,
+    "official_government_required": false,
+    "secondary_audience": false,
+    "status": "upcoming",
+    "deadline_precision": "recurring",
+    "deadline_date": null,
+    "status_note": "Not open right now. CONICET publishes a fixed two-calls-a-year calendar for this scheme: 1-15 March with the scholarship starting 1 September of the same year, and 15-30 September with it starting 1 April of the following year. The 15-30 September 2026 call closed on 30 September 2026, four days before this record was written. The next published window is therefore 1-15 March 2027, about five months out, so expect the March call to reopen on the same published dates. CONICET has not yet published a 2027 calendar date of its own.",
+    "official_source_url": "https://convocatorias.conicet.gov.ar/becas/convocatoria-vigente/",
+    "logo_url": "https://www.conicet.gov.ar/wp-content/uploads/logo-CONICET_opt.png",
+    "logo_validation_detail": "Probed and rendered. URL is on the awarding body's own registrable domain conicet.gov.ar. webfetch returned 'Image fetched successfully' (HTTP 200, real PNG bytes), though the server omits the Content-Type header; independent verification with Pillow confirmed PNG format, 107x67 pixels, palette mode, with 2179 opaque pixels averaging RGB (36, 141, 170), and webfetch rendered the image as the legible dark 'CONICET' wordmark above CONICET's teal-and-yellow loop mark. Not white-on-transparent and not a third-party rendering.",
+    "source_citations": [
+      "https://convocatorias.conicet.gov.ar/becas/convocatoria-vigente/",
+      "https://convocatorias.conicet.gov.ar/becas/"
+    ],
+    "research_notes": "Award type: research scholarship (doctoral and postdoctoral), co-financed by a private company. CONICET's convocatoria page states that from the 15-30 September 2026 call applications are submitted through the SIGEVA module, and that the scheme exists to promote research in the business sphere, ease the transfer of projects originating in the public sector, encourage researchers to move into private-sector work and develop public-private links, with the parties signing an agreement that covers intellectual-property safeguards and any resulting business benefits. Two calls a year with the published windows and start dates quoted in status_note. Distinct from CONICET's ordinary internal doctoral/postdoctoral convocatoria (also on the same page, whose 2026 windows of 27 July-21 August for doctorates and 27 July-14 August for finalisation-of-doctorate awards have closed), and distinct from the Estadias en el Exterior scheme, which is recorded separately in this output. From the September 2026 call onward submissions go through SIGEVA rather than SIGERH. funding_amount is null because the stipend and benefit tables sit in the Bases PDF that I did not open; CONICET does not state a figure on the convocatoria page itself.",
+    "verification_confidence": 0.85,
+    "eligibility": [
+      "Doctoral candidates or postdoctoral researchers in Argentina who apply during one of the two published annual windows.",
+      "A private company must co-finance the award under a signed agreement between the company, CONICET and the host institution.",
+      "Postdoctoral applicants must not already hold an Extraordinary, Special or Reinsertion Postdoctoral CONICET award.",
+      "Applications submitted from the 15-30 September 2026 call onwards go through the SIGEVA module.",
+      "Prioritised topics and geographic regions receive 70% of the available allocation in each Advisory Commission, with the remaining 30% awarded on disciplinary merit."
+    ],
+    "benefits": [
+      "CONICET doctoral or postdoctoral fellowship for the duration of the scheme, co-financed by the company",
+      "Intellectual-property safeguards and any resulting business benefits agreed in advance between the parties",
+      "Funding linked to strategic economic sectors and priority knowledge areas identified in the convocatoria"
+    ]
+  },
+  {
+    "scholarship_name": "Becas de Estadías en el Exterior CONICET",
+    "award_body": "CONICET (Consejo Nacional de Investigaciones Científicas y Técnicas), Argentina",
+    "host_country": "Argentina",
+    "funding_type": "Government",
+    "degree_levels": ["Postdoc"],
+    "funding_amount": null,
+    "tuition_coverage": false,
+    "fully_funded": false,
+    "application_required": true,
+    "official_government_required": false,
+    "secondary_audience": true,
+    "status": "upcoming",
+    "deadline_precision": "recurring",
+    "deadline_date": null,
+    "status_note": "Not open right now. CONICET publishes two fixed application periods a year for these stays: 1-10 March for stays beginning between September of the same year and March of the following year, and 1-10 September for stays beginning between April and August of the following year. Both 2026 periods have passed (1-10 March 2026 and 1-10 September 2026), so the next published window is 1-10 March 2027, roughly five months out.",
+    "official_source_url": "https://convocatorias.conicet.gov.ar/becas/estadias-en-el-exterior/",
+    "logo_url": "https://www.conicet.gov.ar/wp-content/uploads/logo-CONICET_opt.png",
+    "logo_validation_detail": "Same verified asset as the other CONICET record: https://www.conicet.gov.ar/wp-content/uploads/logo-CONICET_opt.png on the awarding body's own domain, webfetch returned 'Image fetched successfully', Pillow confirmed a 107x67 PNG with 2179 opaque pixels averaging RGB (36, 141, 170), and the rendered image is the legible dark 'CONICET' wordmark with the teal-and-yellow loop mark. Not white-on-transparent.",
+    "source_citations": [
+      "https://convocatorias.conicet.gov.ar/becas/estadias-en-el-exterior/"
+    ],
+    "research_notes": "Award type: partial financing of short research stays abroad (movilidad/misión científica), awarded by CONICET to its own researchers. The scheme has two streams on the same page: partial financing of brief stays abroad for CONICET's internal postdoctoral grantees, and partial financing of stays for researchers in the assistant category of CONICET's scientific and technical investigator career. Stays train the holder and/or provide hands-on experience within a research plan in centres of excellence abroad. The page also records that beneficiaries of Extraordinary, Special or Reinsertion Postdoctoral awards cannot apply, nor internal postdoctoral grantees already enjoying an additional period beyond the regulatory one, nor anyone who has already used this benefit or is simultaneously applying to any of the concurrent Stay or External Postdoctoral Programmes. Queries go to becext@conicet.gov.ar. Marked secondary_audience because eligibility is closed to existing CONICET postdoctoral grantees and assistant researchers, so no external applicant can enter this scheme directly. funding_amount is null: the page links 'Bases y condiciones', a Formulario de Financiamiento parcial and a Compromiso de regreso but states no figures; the words 'financiamiento parcial' are the only quantification given.",
+    "verification_confidence": 0.82,
+    "eligibility": [
+      "Internal CONICET postdoctoral grantees (becarios/as postdoctorales Internos/as) for the postdoctoral stream.",
+      "Members of CONICET's Carrera del Investigador Científico y Tecnológico in the assistant category for the assistant-researcher stream.",
+      "Cannot hold an Extraordinary, Special or Reinsertion Postdoctoral award, and cannot be in an additional period beyond the regulatory postdoctoral one.",
+      "Cannot have already used this benefit, nor apply simultaneously to any concurrent Stay or External Postdoctoral Programme.",
+      "Apply during one of the two published annual periods (1-10 March or 1-10 September) for a stay starting in the corresponding window."
+    ],
+    "benefits": [
+      "Partial financing of a short research stay at an excellence centre abroad",
+      "Opportunity to work within a research plan in an overseas centre, with a return commitment",
+      "Applies to both postdoctoral grantees and assistant researchers"
+    ]
+  },
+  {
+    "scholarship_name": "Bolsa de Pesquisa no Exterior (BPE) — Research Fellowship Abroad, FAPESP",
+    "award_body": "FAPESP (Fundação de Amparo à Pesquisa do Estado de São Paulo), Brazil",
+    "host_country": "Brazil",
+    "funding_type": "Government",
+    "degree_levels": ["Doctoral"],
+    "funding_amount": null,
+    "tuition_coverage": false,
+    "fully_funded": false,
+    "application_required": true,
+    "official_government_required": false,
+    "secondary_audience": false,
+    "status": "open",
+    "deadline_precision": "rolling",
+    "deadline_date": null,
+    "status_note": "Open now with no closing date. FAPESP states that the Bolsa de Pesquisa no Exterior may be requested 'em qualquer epoca do ano (fluxo continuo)', that is, at any time of year on a continuous flow, submitted through the SAGe system. There is no annual deadline and no call window.",
+    "official_source_url": "https://www.fapesp.br/bolsas/bpe",
+    "logo_url": "https://fapesp.br/assets/img/fapesp-img.jpg",
+    "logo_validation_detail": "Probed and rendered. The URL sits on FAPESP's own asset host fapesp.br. webfetch returned 'Image fetched successfully'; independent verification recorded HTTP 200 with Content-Type image/jpeg, 251,772 bytes, 1537x711 pixels, and webfetch rendered the image as the full official lockup: navy 'FAPESP' wordmark with the book/paper mark above the navy lines 'FUNDACAO DE AMPARO A PESQUISA DO ESTADO DE SAO PAULO' on a white ground. Dark on white, so it stays legible on a light card, and it is not white-on-transparent. Two other FAPESP assets were probed and rejected: https://www.fapesp.br/assets/img/logo-simple2.png (the header wordmark) analysed to mean RGB (254,254,254) at 50.8% transparency and rendered as a white-on-transparent wordmark, and https://www.fapesp.br/assets/img/logo-indicadores.png, which rendered as a multicoloured bar chart with an invisible white-on-white wordmark and is a data graphic rather than a logo.",
+    "source_citations": [
+      "https://www.fapesp.br/bolsas/bpe",
+      "https://www.fapesp.br/bolsas/"
+    ],
+    "research_notes": "Award type: research mobility fellowship funding a period of research abroad. The official norm states the BPE is intended for a researcher holding a doctoral degree or equivalent, as evidenced by their curriculum vitae, who is attached to a research institution in the state of Sao Paulo. Duration is up to 12 consecutive months and cannot be extended. Fundable components for the grantee are a daily allowance or monthly maintenance under Portaria PR no. 35/2020 with the value tables published at fapesp.br/valores, transport costs (air ticket issued in economy class, or land transport excluding taxi and individual-carrier fares), and travel insurance. Separate components are provided for dependents where the stay's duration equals the grantee's, including one dependent's transport and travel insurance. Explicitly not fundable: school fees, bench and other laboratory fees, and benefits for dependents in other cases; also excluded are end-user licences, the preparation and submission of proposals, and the cost of registering institutions. The responsible researcher must be in good standing with FAPESP (issuing reviews, returning processes, delivering scientific reports and accounts). Distinct from the BEPE, which is the six-month stage attached to an in-country grant and is recorded separately in this output; FAPESP's own English menu names BPE 'Research Fellowship Abroad' and BEPE 'Research Internship Abroad'. funding_amount is null because amounts are only published in the separate value tables at fapesp.br/valores, which were not opened. country is Brazil because FAPESP is the awarding body and the grantee must be attached to a Sao Paulo state research institution; the funded research stay itself takes place abroad.",
+    "verification_confidence": 0.9,
+    "eligibility": [
+      "Holds a doctoral degree or equivalent, evidenced by the curriculum vitae.",
+      "Attached to a research institution in the state of São Paulo, Brazil.",
+      "The responsible researcher is up to date with FAPESP: peer reviews issued, processes returned, scientific reports and accounts delivered.",
+      "Host institution abroad must meet FAPESP's requirements for the receiving institution.",
+      "Requests may be made at any time of the year through the SAGe system."
+    ],
+    "benefits": [
+      "Daily allowance or monthly maintenance per Portaria PR nº 35/2020, valued at the fapesp.br/valores tables",
+      "Transport: economy-class air ticket, or land transport (excluding taxi and individual-carrier fares)",
+      "Travel insurance",
+      "Dependent components, including one dependent's transport and insurance, when the stay matches the grantee's duration"
+    ]
+  },
+  {
+    "scholarship_name": "Bolsa Estágio de Pesquisa no Exterior (BEPE) — Research Internship Abroad, FAPESP",
+    "award_body": "FAPESP (Fundação de Amparo à Pesquisa do Estado de São Paulo), Brazil",
+    "host_country": "Brazil",
+    "funding_type": "Government",
+    "degree_levels": ["Doctoral"],
+    "funding_amount": null,
+    "tuition_coverage": false,
+    "fully_funded": false,
+    "application_required": true,
+    "official_government_required": false,
+    "secondary_audience": true,
+    "status": "open",
+    "deadline_precision": "rolling",
+    "deadline_date": null,
+    "status_note": "Open now with no closing date. FAPESP states the request may be made 'em qualquer epoca do ano (fluxo continuo)', at any time of year on a continuous flow, submitted through the SAGe system, under the norm in force from 1 September 2026.",
+    "official_source_url": "https://www.fapesp.br/bolsas/bepe",
+    "logo_url": "https://fapesp.br/assets/img/fapesp-img.jpg",
+    "logo_validation_detail": "Same verified asset as the BPE record: https://fapesp.br/assets/img/fapesp-img.jpg on FAPESP's own host, webfetch returned 'Image fetched successfully', HTTP 200 with Content-Type image/jpeg, 251,772 bytes, 1537x711 pixels, rendering as the legible navy 'FAPESP' lockup with the full foundation name in navy on white. Not white-on-transparent. The white-on-transparent header wordmark (logo-simple2.png) and the bar-chart asset (logo-indicadores.png) were both probed and rejected.",
+    "source_citations": [
+      "https://www.fapesp.br/bolsas/bepe",
+      "https://www.fapesp.br/bolsas/"
+    ],
+    "research_notes": "Award type: six-month research internship abroad for a FAPESP grantee, drawn from the technical reserve of the in-country scholarship. The norm in force from 1 September 2026 states the internship is drawn from the technical reserve of the Bolsas no Pais to fund up to six months abroad without interrupting the FAPESP scholarship, that the internship is mandatorily an integral part of the Bolsa no Pais and cannot be requested independently, and that approval interrupts the in-country grant for the stay's duration without prejudice to that grant's overall duration. Modalities cover Doutorado, Doutorado Direto and Pos-Doutorado. The abroad stage should preferably be foreseen in the initial request or in the scientific reports of the in-country scholarship. It may begin from the twelfth month of enrolment in the postgraduate course, though FAPESP may analyse requests earlier in cases of a high degree of exceptionality on a case-by-case justified basis; and once all compulsory subjects are completed, or earlier where enough credits exist for the project. Duration is 6 months, extendable only in exceptional and duly justified cases. Applications must go exclusively through the SAGe system. Marked secondary_audience because eligibility requires already holding a FAPESP in-country scholarship, so it cannot be applied for independently. funding_amount is null because amounts are only published in the value tables at fapesp.br/valores.",
+    "verification_confidence": 0.9,
+    "eligibility": [
+      "Already holds a FAPESP Bolsa no País in one of the Doutorado, Doutorado Direto or Pós-Doutorado modalities.",
+      "The internship must form an integral part of the in-country scholarship and cannot be applied for independently.",
+      "Normally begins from the twelfth month of enrolment in the postgraduate course, or once all compulsory subjects are passed; FAPESP may consider earlier cases that are exceptional and duly justified.",
+      "Requires identification of the host institution abroad and of the researcher who will supervise the grantee.",
+      "Submitted exclusively through the SAGe system, at any time of year."
+    ],
+    "benefits": [
+      "Up to six months of research abroad drawn from the technical reserve of the in-country FAPESP scholarship",
+      "Daily allowance or monthly maintenance, plus economy-class air or land transport and travel insurance",
+      "In-country FAPESP scholarship is suspended for the duration of the stay without reducing its overall length"
+    ]
+  }
+]

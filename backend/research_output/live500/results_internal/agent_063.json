@@ -1,0 +1,131 @@
+{
+  "agent": "agent_063",
+  "records": [
+    {
+      "id": 179,
+      "official": {
+        "official_source_urls": [
+          "https://www.ru.nl/en/education/scholarships/radboud-scholarship-programme",
+          "https://www.ru.nl/en/education/scholarships"
+        ],
+        "application_link": "https://www.ru.nl/en/education/scholarships/radboud-scholarship-programme",
+        "catalogue_url": null,
+        "official_updates_url": "https://www.ru.nl/en/education/scholarships/radboud-scholarship-programme",
+        "deadline_central": "2027-01-31",
+        "deadline_central_display": "31 January 2027, 23:59 CET",
+        "deadline_note": "The application must be submitted in OSIRIS by 31 January 2027, 23:59 CET and must be complete by 14 February 2027, 23:59 CET; incomplete applications are not considered.",
+        "application_cycle": "2027-2028 intake",
+        "status": "OPEN",
+        "status_note": "The page publishes award details for the academic year 2027-2028 and states a maximum of 26 Radboud Scholarships across six faculties for 2027-2028.",
+        "tuition_coverage_note": "The page states 'A Radboud Scholarship will reduce your tuition fee to €2,771.- (amount to be confirmed)... instead of €19,000 (depending on your programme)' and that 'The costs of living and studying in the Netherlands are not covered by the scholarship'.",
+        "funding_amount": 2771,
+        "funding_currency": "EUR",
+        "funding_period": "tuition fee payable per year after the award",
+        "tuition_coverage": true,
+        "living_cost_coverage": false,
+        "travel_coverage": false,
+        "fully_funded": false,
+        "benefits": [
+          "Reduces the tuition fee to EUR 2,771 per academic year (amount to be confirmed) instead of EUR 19,000 depending on the programme",
+          "The scholarship covers the visa application fee, residence permit, health and liability insurance (Aon Student Insurance)",
+          "Partial scholarship: living and studying costs in the Netherlands are not covered",
+          "Can be combined with the NL Scholarship, which is a one-off grant of EUR 5,000",
+          "The scholarship amount depends on the tuition fee of the study programme"
+        ],
+        "eligibility": [
+          "Applying for admission for the nominal duration of a Master's programme at Radboud University",
+          "Not eligible if applying for a stand-alone dual master's programme or other joint degree master's programme co-organised with another partner university or institution",
+          "Erasmus Mundus students are not eligible for the Radboud Scholarship Programme",
+          "Eligible for a possible second year of the scholarship if all courses from the first year are passed",
+          "Must meet the English language proficiency requirement of the Master's programme of your choice"
+        ],
+        "requirements": [
+          "Submit the application in OSIRIS by the January deadline and make it complete by the February deadline",
+          "Two reference letters must be uploaded in OSIRIS, on or before the deadline",
+          "Prove English language proficiency for the chosen programme, recommended before 14 February 2027",
+          "Only complete submissions are taken into account"
+        ],
+        "documents": [
+          "Two reference letters uploaded in OSIRIS on or before the deadline",
+          "Curriculum vitae, used as a basis for the selection of reference letters and the assessment",
+          "Proof of English language proficiency for the Master's programme of choice"
+        ],
+        "selection_criteria": [
+          "Academic excellence",
+          "Ambition",
+          "Strength of the references",
+          "Statement of purpose",
+          "Recommendation of the selection committee"
+        ],
+        "coverage": [
+          "Tuition fee reduced to EUR 2,771 per academic year (amount to be confirmed), instead of the standard fee, which the page gives as EUR 19,000 depending on the programme",
+          "Visa application fee, residence permit, health insurance and liability insurance (Aon Student Insurance)",
+          "Living and studying costs in the Netherlands are not covered",
+          "A maximum of 26 Radboud Scholarships for 2027-2028 across six faculties, with three available per faculty as an example"
+        ],
+        "application_method": [
+          "Apply for the Master's programme of your choice in Studielink and, when needed, in OSIRIS",
+          "The Radboud Scholarship programme application portal in OSIRIS opens mid-December to mid-January, around 20 December to 27 January in previous rounds",
+          "Submit the application in OSIRIS by 31 January, 23:59 CET and complete it by 14 February, 23:59 CET"
+        ],
+        "application_route": "Apply through the Radboud Scholarship programme application portal in OSIRIS after starting your master's application.",
+        "study_mode": "Full-time (the scholarship is linked to the nominal duration of a Master's programme)",
+        "citizenship_residency": null,
+        "international_eligibility": "Yes - the page is written for students applying for a Radboud Master's programme who would otherwise pay the institutional tuition fee",
+        "subject_or_agency_requirement": "Master's programmes in the six faculties that hold Radboud Scholarships; Erasmus Mundus, stand-alone dual and joint-degree master's programmes are excluded",
+        "research_requirement": null,
+        "duration": "Nominal duration of the Master's programme, with a possible second year if all first-year courses are passed",
+        "description": "The Radboud Scholarship Programme is a partial scholarship for talented non-EU/EEA students pursuing a Master's at Radboud University in Nijmegen, funded by the Profiling Fund. It reduces the tuition fee to EUR 2,771 per academic year, covers the visa application fee, residence permit and Aon Student Insurance, and explicitly does not cover living and studying costs. A maximum of 26 scholarships are available for 2027-2028 spread across six faculties.",
+        "region": "Europe - Nijmegen, Netherlands",
+        "program_type": "University partial tuition scholarship for master's students",
+        "english_requirement": "You must meet the English language proficiency requirement of the Master's programme of your choice; the page recommends arranging a language test or exemption before 14 February 2027."
+      },
+      "verification": {
+        "source_citations": [
+          "https://www.ru.nl/en/education/scholarships/radboud-scholarship-programme"
+        ],
+        "last_verified_date": "2026-10-10",
+        "verification_status": "confirmed",
+        "confidence": "high",
+        "not_confirmed": [
+          "the exact final tuition fee for 2027-2028, since the page marks the EUR 2,771 figure as to be confirmed",
+          "citizenship_residency - no nationality restriction is stated in the section of the page that was published",
+          "travel_coverage - no travel allowance is mentioned; only visa, permit and insurance costs are listed",
+          "the exact portal opening window for the 2027-2028 round, since previous-round dates only are given as an example"
+        ],
+        "notes": "The EUR 2,771 figure is published on the university's own page as 'amount to be confirmed' and is a reduced tuition fee payable by the holder, not an amount transferred to the student; the funding_amount records that published figure with a period string that says so."
+      },
+      "applicant_utility": {
+        "summary": "The Radboud Scholarship does not pay you money, it lowers your tuition to EUR 2,771 a year, so plan around what you owe rather than what you receive, and note the university itself flags that figure as to be confirmed. What the award really adds is the visa application fee, residence permit and the Aon Student Insurance health and liability policy, which are genuinely useful for an international applicant. The university is equally clear that living and studying costs in the Netherlands are not covered, and there are only 26 scholarships across six faculties for 2027-2028, so treat this as one of several funding sources rather than a full ride, and remember the NL Scholarship of EUR 5,000 stacks with it.",
+        "best_fit": "Non-EU master's applicants to a Radboud programme in a participating faculty who can cover Dutch living costs themselves and who want the fee reduction plus visa and insurance cover.",
+        "application_readiness_checklist": [
+          "Confirm your master's is in one of the six faculties holding Radboud Scholarships and is not an Erasmus Mundus, dual or joint-degree programme",
+          "Prepare for both deadlines: OSIRIS submission by 31 January, 23:59 CET and a complete file by 14 February, 23:59 CET",
+          "Identify two referees early and make sure both upload their letters in OSIRIS before the deadline, since the references are a stated selection criterion",
+          "Arrange the language test or an exemption for your programme's English requirement well before 14 February",
+          "Budget around EUR 2,771 in fees plus rent, food and insurance in Nijmegen, since living costs are excluded",
+          "Apply for the NL Scholarship as well, since the two awards can be combined"
+        ],
+        "common_rejection_risks": [
+          "Assuming an incomplete application can be topped up after 14 February, when incomplete applications are not considered",
+          "Applying for an Erasmus Mundus or joint-degree master's, which are excluded",
+          "Having only one reference letter uploaded by the deadline",
+          "Expecting the award to pay living costs in the Netherlands",
+          "Relying on a second year of the award without passing all first-year courses"
+        ],
+        "estimated_uncovered_costs": "Rent, food, transport and study materials in Nijmegen, plus any programme-specific extras; the university states that living and studying costs in the Netherlands are not covered.",
+        "document_audit": [
+          "Reference letters must be uploaded in OSIRIS by your referees by the deadline, not sent by e-mail",
+          "English proof should be in place before 14 February, so book the test early if you have no exemption",
+          "The CV is used for selecting reference letters and assessing ambition, so keep it current and specific to the programme"
+        ],
+        "alerts": [
+          "The EUR 2,771 reduced fee is published as to be confirmed for 2027-2028, so check the final fee before committing",
+          "A maximum of 26 scholarships are available across six faculties, with availability an example of three per faculty",
+          "The programme is funded by the Profiling Fund, so award numbers depend on the annual profile allocation"
+        ],
+        "submission_workflow": "Apply to your programme in Studielink and OSIRIS, submit the Radboud Scholarship application in the OSIRIS portal by 31 January, complete the file by 14 February, and await the committee's decision before the mid-April start of studies."
+      }
+    }
+  ]
+}

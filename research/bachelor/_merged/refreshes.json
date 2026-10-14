@@ -1,0 +1,31 @@
+[
+  {
+    "slot": "25",
+    "name": "Karsh International Scholarship",
+    "matched_by": "override",
+    "host": null,
+    "existing_id": 122,
+    "existing_state": "LIVE",
+    "existing_name": "Karsh International Scholars Program — Duke University",
+    "why": "Same award. The name difference is only 'Scholars Program' vs 'Scholarship', which the mechanical normaliser does not unify. Record id 122 already cites the same ousf.duke.edu page and carries the package, CSS/IDOC documents, 100%-of-need basis and three summers. This research refreshes it with the 2026-27 cycle (ED 2 Nov 2026 / RD 4 Jan 2027) and Duke's current cost of attendance, which id 122 still carries at 2025-26 figures."
+  },
+  {
+    "slot": "36",
+    "name": "Lester B. Pearson International Student Scholarships",
+    "matched_by": "override",
+    "host": null,
+    "existing_id": 39,
+    "existing_state": "LIVE",
+    "existing_name": "Pearson International Scholarship (University of Toronto)",
+    "why": "Same award. Record id 39 is a stub carrying the non-canonical URL future.utoronto.ca/pearson; the researched record carries the canonical /pearson-scholarships page plus the full benefit package, the 2027-entry eligibility wording, the school-nomination mechanics and the two-stage timeline."
+  },
+  {
+    "slot": "b134",
+    "name": "SUTD Trailblazers (International) Scholarship",
+    "matched_by": "name",
+    "host": "www.sutd.edu.sg",
+    "existing_id": 447,
+    "existing_state": "LIVE",
+    "existing_name": "SUTD Trailblazers Scholarship"
+  }
+]

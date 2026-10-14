@@ -1,0 +1,116 @@
+{
+  "agent": "agent_052",
+  "records": [
+    {
+      "id": 160,
+      "official": {
+        "official_source_urls": [
+          "https://www.unibas.ch/en/Studies/Advice-and-Support/Funding/Scholarships.html",
+          "https://www.unibas.ch/en/Studies/Advice-and-Support/Funding/Scholarships/Funding-From-the-University-of-Basel.html",
+          "https://www.unibas.ch/en/Studies/Advice-and-Support/Funding/Scholarships/Submission-Deadlines.html"
+        ],
+        "application_link": "https://www.unibas.ch/en/Studies/Advice-and-Support/Funding/Scholarships.html",
+        "catalogue_url": "https://www.unibas.ch/en/Studies.html",
+        "official_updates_url": "https://www.unibas.ch/en/Studies/Advice-and-Support/Funding/Scholarships/Submission-Deadlines.html",
+        "deadline_central": null,
+        "deadline_central_display": null,
+        "deadline_note": "University scholarship funds, Kranken- und Unfallfonds, Legat Grobe and Lichtenstein Foundation: applications for the fall semester until June 15, applications for the spring semester until January 15.",
+        "application_cycle": "Semester-based (fall semester: until June 15; spring semester: until January 15)",
+        "status": "OPEN",
+        "status_note": "Applications for the university scholarship funds are accepted twice a year: until June 15 for the fall semester and until January 15 for the spring semester.",
+        "tuition_coverage_note": null,
+        "funding_amount": 200,
+        "funding_currency": "CHF",
+        "funding_period": "per month",
+        "tuition_coverage": null,
+        "living_cost_coverage": null,
+        "travel_coverage": null,
+        "fully_funded": false,
+        "benefits": [
+          "Supplementary university scholarships of CHF 200 to 600 per person, per month, primarily during the final degree phase (BA/MA)",
+          "Solidarity fund (Solifonds) of CHF 500 to 1000 per person, per semester",
+          "Legat Grobe of CHF 200 to 600 per person, per month for students completing biology degrees with a focal area in zoology/botany",
+          "Margarete and Walter Lichtenstein Foundation funds for medical students with Swiss citizenship",
+          "Exchange scholarships for students in exchange programmes",
+          "Advice from the Social Services student welfare office"
+        ],
+        "eligibility": [
+          "Enrolled at the University of Basel for the university scholarship funds and supplementary scholarships",
+          "University scholarship funds are awarded primarily in the final degree phase (BA/MA)",
+          "Legat Grobe: completing a degree in biology degree programmes with a focal area in zoology/botany",
+          "Lichtenstein Foundation funds: medical students with Swiss citizenship",
+          "Enrolled in an exchange programme for the exchange scholarships"
+        ],
+        "requirements": [
+          "Application by the relevant semester deadline (June 15 for the fall semester, January 15 for the spring semester)"
+        ],
+        "documents": null,
+        "selection_criteria": null,
+        "coverage": [
+          "Supplementary scholarships granted by the scholarship committee of the Senate, in addition to cantonal education contributions",
+          "University scholarship funds: CHF 200 to 600 per person, per month, primarily in the final degree phase",
+          "Solidarity fund (Solifonds): CHF 500 to 1000 per person, per semester"
+        ],
+        "application_method": [
+          "The student welfare office (Social Services) provides additional information and assists with the submission of applications"
+        ],
+        "application_route": "Apply through the university's Social Services student welfare office by the June 15 (fall) or January 15 (spring) deadline",
+        "study_mode": null,
+        "citizenship_residency": "No general nationality condition is stated for the supplementary scholarships; Lichtenstein Foundation funds require Swiss citizenship; international students are directed to scholarships in their home country",
+        "international_eligibility": "Limited - the page directs international students to scholarships available in their home country; individual funds carry their own citizenship rules",
+        "subject_or_agency_requirement": "Legat Grobe is restricted to biology programmes with a zoology/botany focus; Lichtenstein funds to medical students",
+        "research_requirement": null,
+        "duration": "Per academic year of enrolment; no fixed award term is published",
+        "description": "The University of Basel grants supplementary scholarships through the Senate's scholarship committee in addition to cantonal education contributions - mainly CHF 200 to 600 per month in the final degree phase - alongside a student solidarity fund, subject-specific legacies and exchange scholarships, while the page stresses that primary funding responsibility lies with parents and the cantonal scholarship offices.",
+        "region": "Europe",
+        "program_type": "Umbrella funding hub: supplementary university scholarships plus signposting to cantonal and national scholarship schemes",
+        "english_requirement": null
+      },
+      "verification": {
+        "source_citations": [
+          "https://www.unibas.ch/en/Studies/Advice-and-Support/Funding/Scholarships/Funding-From-the-University-of-Basel.html",
+          "https://www.unibas.ch/en/Studies/Advice-and-Support/Funding/Scholarships/Submission-Deadlines.html"
+        ],
+        "last_verified_date": "2026-10-10",
+        "verification_status": "confirmed",
+        "confidence": "high",
+        "not_confirmed": [
+          "tuition_coverage - the funds are supplementary support, not tuition waivers",
+          "living_cost_coverage - the funds are not explicitly characterised as living-cost support",
+          "travel_coverage",
+          "documents - no document list is published",
+          "selection_criteria for the university funds",
+          "english_requirement",
+          "study_mode"
+        ],
+        "notes": "This record is a funding information hub, not a single named scholarship. The amounts (CHF 200-600 per month; Solifonds CHF 500-1000 per semester) come from the official 'Funding from the University of Basel' page, and the June 15 / January 15 semester deadlines from the official Submission Deadlines page. Cantonal education contributions are handled by the cantonal offices for Basel-Stadt and Basel-Landschaft, not the university."
+      },
+      "applicant_utility": {
+        "summary": "Basel's university scholarships are supplementary, not primary: cantonal education contributions are the main route, and the Senate committee adds smaller top-ups of CHF 200-600 per month mainly in your final BA/MA phase. Apply twice a year - by 15 June for the fall semester and 15 January for the spring - through the university's Social Services office, and heed the page's warning that international students should check home-country funding first.",
+        "best_fit": "Enrolled Basel students in the final phase of a BA/MA who need a top-up on cantonal support, including biology students (Legat Grobe) and Swiss medical students (Lichtenstein Foundation).",
+        "application_readiness_checklist": [
+          "Secure your cantonal education contribution from your canton of residence first - university funds are explicitly supplementary",
+          "Apply by 15 June (fall) or 15 January (spring) via the Social Services student welfare office",
+          "Check the legacy funds' subject rules if you study biology (zoology/botany focus) or medicine",
+          "If you are an international student, investigate home-country scholarships in parallel"
+        ],
+        "common_rejection_risks": [
+          "Applying without first claiming cantonal support, which the page treats as the primary funding",
+          "Missing the semester cutoffs (15 June / 15 January)",
+          "Assuming the Solifonds (CHF 500-1,000 per semester) and the scholarship funds share one application",
+          "Overlooking that Lichtenstein Foundation funds require Swiss citizenship"
+        ],
+        "estimated_uncovered_costs": "The bulk of Basel living costs and rent; university funds add at most CHF 600 per month and only in the final degree phase.",
+        "document_audit": [
+          "The pages publish no document list - contact Social Services early because the office assists with the submission itself",
+          "Cantonal offices require their own forms plus family income and tax evidence"
+        ],
+        "alerts": [
+          "Lichtenstein Foundation funds are restricted to medical students with Swiss citizenship",
+          "Deadlines are semester-based, not annual - a missed 15 January means waiting until 15 June"
+        ],
+        "submission_workflow": "Cantonal contribution in place -> apply to Social Services by the semester cutoff -> Senate scholarship committee decides."
+      }
+    }
+  ]
+}

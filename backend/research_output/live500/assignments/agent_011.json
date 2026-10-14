@@ -1,0 +1,77 @@
+{
+ "agent": "agent_011",
+ "assignment_count": 1,
+ "scholarships": [
+  {
+   "id": 47,
+   "title": "Melbourne International Undergraduate Scholarship",
+   "country": "Australia",
+   "degree": "Bachelor's",
+   "funding_label": "Partial",
+   "status": "open",
+   "official_source": "University of Melbourne",
+   "official_source_url": "https://scholarships.unimelb.edu.au/awards/melbourne-international-undergraduate-scholarship",
+   "application_link": "https://scholarships.unimelb.edu.au/awards/melbourne-international-undergraduate-scholarship",
+   "catalogue_url": "https://scholarships.unimelb.edu.au/eligible-countries",
+   "official_updates_url": "https://scholarships.unimelb.edu.au/awards/melbourne-international-undergraduate-scholarship",
+   "existing": {
+    "funding_amount": null,
+    "funding_currency": null,
+    "funding_period": null,
+    "tuition_coverage": 0,
+    "living_cost_coverage": 0,
+    "travel_coverage": 0,
+    "fully_funded": 0,
+    "description": null,
+    "eligibility": [
+     "Citizen of a country with GDP per capita of USD 10,000 or less (World Bank data).",
+     "Received an offer for an Overseas Fee place in a bachelor degree for commencement in the award year.",
+     "Completed secondary school outside Australia or a foundation program in Australia.",
+     "Not previously undertaken tertiary studies (excluding year 12 extension studies)."
+    ],
+    "eligibility_summary": "Citizen of a country with GDP per capita of USD 10,000 or less (World Bank data); received an offer for an Overseas Fee place in a bachelor degree; completed secondary school outside Australia or an Australian foundation program; not previously undertaken tertiary studies (excluding extension studies).",
+    "benefits": [
+     "20% tuition fee sponsorship for the duration of the course (from 2027; previously 25% for scholarships awarded before 2027)."
+    ],
+    "coverage": [
+     "20% tuition fee sponsorship for the duration of the course (from 2027; previously 25% for scholarships awarded before 2027)."
+    ],
+    "requirements": [
+     "Minimum selection scores vary by qualification (e.g., IB 40, A Levels A*A*A*)",
+     "Selection based on final secondary school or foundation studies results"
+    ],
+    "documents": [
+     "Apply for admission to the University of Melbourne bachelor degree program.",
+     "No separate scholarship application required; automatic consideration."
+    ],
+    "english_requirement": null,
+    "application_method": [
+     "Automatic consideration upon applying for admission"
+    ],
+    "selection_notes": null,
+    "best_fit": "High-achieving international students from lower-income countries seeking undergraduate study at the University of Melbourne.",
+    "notes": "From 2027, the scholarship provides 20% fee sponsorship (previously 25%). Number of scholarships increasing to 225 from 2027. Cannot be held with another scholarship providing fee sponsorship or discount. Selection based on final secondary school or foundation studies results. Minimum selection scores vary by qualification (e.g., IB 40, A Levels A*A*A*).",
+    "duration": "One or more years",
+    "application_period": "Open for automatic consideration when applying for admission",
+    "deadline_display": "No application required. \"You are automatically considered for this scholarship, if you have applied for a course.\"",
+    "deadline_date": null,
+    "region": "Oceania",
+    "program_type": "Undergraduate tuition fee remission",
+    "applicant_utility": null,
+    "official_details": null
+   },
+   "missing_fields": [
+    "funding_amount",
+    "funding_currency",
+    "funding_period",
+    "description",
+    "english_requirement",
+    "selection_notes",
+    "deadline_date",
+    "applicant_utility",
+    "official_details"
+   ]
+  }
+ ],
+ "result_file": "C:\\Users\\GopaL\\Desktop\\Projects folder\\ScholarZone\\backend\\research_output\\live500\\results\\agent_011.json"
+}

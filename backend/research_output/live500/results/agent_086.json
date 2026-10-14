@@ -1,0 +1,159 @@
+{
+  "agent": "agent_086",
+  "records": [
+    {
+      "id": 254,
+      "official": {
+        "official_source_urls": [
+          "https://www.nzscholarships.govt.nz",
+          "https://www.nzscholarships.govt.nz/international-tertiary-students/",
+          "https://www.nzscholarships.govt.nz/check-eligible-countries/",
+          "https://www.nzscholarships.govt.nz/check-eligibility-criteria/",
+          "https://www.nzscholarships.govt.nz/study-subjects/",
+          "https://www.nzscholarships.govt.nz/research-available-courses/",
+          "https://www.nzscholarships.govt.nz/how-to-apply-for-a-scholarship/",
+          "https://www.nzscholarships.govt.nz/6-how-we-select-scholars/",
+          "https://www.nzscholarships.govt.nz/7-preferred-candidates-what-next/",
+          "https://www.nzscholarships.govt.nz/scholars-get-ready-to-start-your-scholarship/"
+        ],
+        "application_link": "https://mnzspapplicantportal.powerappsportals.com/",
+        "catalogue_url": "https://www.nzscholarships.govt.nz/conduct-requirements-of-new-zealand-scholars/",
+        "official_updates_url": null,
+        "deadline_central": null,
+        "deadline_central_display": null,
+        "deadline_note": "The official site states: \"Tertiary applications for the Manaaki New Zealand Scholarship Programme have now closed.\" The only dated window published is the Samoa Foundation intake: \"Applications for Samoa Foundation open midnight 4 August 2026 and close midday 4 September 2026\" - which has also now passed. The next tertiary round's dates are not yet published, and the awarding body warns that \"the Manaaki New Zealand Scholarship Programme application system may close early to countries with a large volume of applications\".",
+        "application_cycle": "Annual round with country- and region-specific opening and closing dates; the 2026 tertiary round has closed and the next round's dates are not yet published. Pacific scholars are advised they will aim to commence study in semester 1 the year after they apply.",
+        "status": "CLOSED",
+        "status_note": "The official tertiary page states: \"Tertiary applications for the Manaaki New Zealand Scholarship Programme have now closed.\" Applicants are directed to follow the published steps to apply for a future tertiary scholarship round.",
+        "tuition_coverage_note": "\"Full tuition fees for the approved study programme, including enrolment, orientation, and student union fees. Fees are not paid for any professional membership.\" Scholars are responsible for managing and paying their own expenses except tuition and associated fees, travel to and from New Zealand, and insurance.",
+        "funding_amount": 615,
+        "funding_currency": "NZD",
+        "funding_period": "per week",
+        "tuition_coverage": true,
+        "living_cost_coverage": true,
+        "travel_coverage": true,
+        "fully_funded": true,
+        "benefits": [
+          "Full tuition fees for the approved study programme, including enrolment, orientation, and student union fees",
+          "Living allowance (stipend) of $615 per week, paid fortnightly in arrears over the scholarship duration",
+          "Initial establishment allowance of $3,000 in the first academic year, plus $1,000 at the beginning of each additional calendar year",
+          "Medical insurance and travel insurance to meet basic requirements",
+          "Additional tutoring allowance of up to $1,000 per academic year",
+          "Travel to and from the scholar's own country at the start and end of the scholarship, plus reunion travel for scholarships over 1.6 years",
+          "Reintegration allowance of $1,000 on return home",
+          "Postgraduate research allowance of $1,000 (one-off) and postgraduate thesis allowance of up to $850 (non-PhD) or up to $1,500 (PhD)"
+        ],
+        "eligibility": [
+          "Citizenship of an eligible Pacific or Asian country (Fiji is postgraduate only; Cook Islands and Tokelau applicants follow separate arrangements)",
+          "At least 18 years old when signing the scholarship letter of offer (17 for the Samoa Foundation intake); no upper age limit, but applicants under 40 are preferred and selection favours those 39 or younger at scholarship start",
+          "Resident in the home country for the two years prior to applying, with exceptions for diplomatic assignments and overseas study",
+          "Postgraduate applicants need one year of full-time or two years of part-time relevant work experience (paid, unpaid or voluntary), unless exempt as a school leaver, recent school leaver or person in employment",
+          "Meet the academic entry requirements and English language requirements set by the preferred education institution",
+          "Not within the stand-down period of a previous Manaaki tertiary, English Language Training for Officials or short-term training scholarship",
+          "Agree to return to the home country and contribute to its social or economic development for at least two years after completing the scholarship"
+        ],
+        "requirements": [
+          "Upload the academic transcript for the qualification applied for, including the Grading Scale (not required for Samoa Foundation applicants)",
+          "Describe how the preferred courses relate to one of the recommended subjects for the applicant's country or region, the skills and knowledge to be gained, and why these are important to the country's development",
+          "Select education institution and qualification/course study preferences in the application portal",
+          "Agree to the Manaaki Scholar Code of Conduct and scholarship conditions",
+          "Shortlisted New Zealand-bound candidates must provide an English language test score (IELTS, TOEFL, PTE Academic or Cambridge Academic English) from the last 12 months; verified English translations of transcripts and completion certificates"
+        ],
+        "documents": [
+          "Academic transcript for the qualification applied for, including the grading scale, uploaded with the application",
+          "If shortlisted: verified English-translated copies of academic transcripts and completion certificates",
+          "If shortlisted for study in New Zealand: a current English language test score (IELTS, TOEFL, PTE Academic or Cambridge Academic English) from the last 12 months",
+          "For preferred candidates seeking admission: valid passport, birth certificate, government ID, academic records and English language test results",
+          "Payment receipts for the visa application fee, immigration levy and immigration medical check (reimbursed on arrival)"
+        ],
+        "selection_criteria": [
+          "Strong academic ability and the right qualifications for entry into the preferred courses",
+          "Commitment to the social and economic development of the applicant's country, clearly described",
+          "Courses that align with the recommended subjects for the applicant's country or region and that progress on from the highest qualification held",
+          "Relevant work experience in the proposed field of study",
+          "Good character, integrity, ethics, resilience, motivation, communication and relationship skills",
+          "Result in the online abstract reasoning and personality test, followed by a 40-minute, six-question video interview (typically May to July)"
+        ],
+        "coverage": [
+          "Tuition and associated fees: full tuition fees for the approved study programme, including enrolment, orientation and student union fees",
+          "Basic living expenses covered by the $615 per week stipend: accommodation (rent or board), food, transport to and from the institution, incidentals and personal items, plus course-related clothing, stationery, photocopying, internet and computer equipment and software",
+          "Establishment costs: $3,000 in the first academic year and $1,000 at the start of each later calendar year for temporary accommodation, accommodation bonds, rent in advance, textbooks and household items",
+          "Insurance: medical insurance while in New Zealand and travel insurance covering baggage and personal items",
+          "Travel: economy airfare to and from the home country at the start and end of the scholarship, reunion travel for scholarships over 1.6 years, and home-country travel for approved postgraduate research",
+          "Reimbursements: visa application fee and immigration levy, one immigration medical check, and the English language test fee for shortlisted candidates",
+          "Study support: up to $1,000 per academic year for additional tutoring, a $1,000 postgraduate research allowance, and thesis costs up to $850 (non-PhD) or $1,500 (PhD)"
+        ],
+        "application_method": [
+          "Apply online through the Manaaki New Zealand Scholarship applicant portal at mnzspapplicantportal.powerappsportals.com",
+          "Follow the official steps: check eligible countries, check eligibility criteria, review recommended study subjects for your country, research available courses, then apply",
+          "Complete the eligibility questionnaire, answer the development-impact questions and select study preferences in the portal"
+        ],
+        "application_route": "Apply online via the official Manaaki applicant portal during your country or region's application window; portal may close early for high-volume countries.",
+        "study_mode": "full-time",
+        "citizenship_residency": "Open only to citizens of eligible Pacific countries (Fiji postgraduate only, French Pacific, Kiribati, Naoero, Niue, North Pacific, Papua New Guinea, Samoa, Solomon Islands, Tonga, Tuvalu, Vanuatu) and eligible Asian countries (Cambodia, Indonesia, Lao PDR, Malaysia, Nepal, Philippines, Thailand, Timor-Leste, Viet Nam). Applicants must have lived in their home country for two years prior to applying, with exceptions for diplomatic assignments and study overseas.",
+        "international_eligibility": "Yes - the scholarship exists specifically for citizens of eligible developing countries studying as international students in New Zealand or the Pacific; Cook Islands citizens apply through their own government scholarship and Tokelau citizens are currently eligible only for short-term training scholarships.",
+        "subject_or_agency_requirement": "Applications must strongly align with the recommended study subjects for the applicant's country or region; the official site states that applications that do not strongly align with the recommended subjects are highly unlikely to be considered.",
+        "research_requirement": "Master's by thesis and PhD applicants must write a research proposal as part of the application. PhD applicants must contact suitable supervisors early and provide evidence at interview that a supervisor is secured or in active discussion. English language training support is not available for scholars applying for PhD study.",
+        "duration": "Qualification-dependent as published: undergraduate degree 3-4 years; postgraduate certificate 6 months; postgraduate diploma 1 year; master's degree 1-2 years; PhD 3.5 years",
+        "description": "The New Zealand Government offers Manaaki New Zealand Scholarships to eligible citizens from developing countries to study full-time at a New Zealand or Pacific education institution, aiming to enhance the mana of partner countries and Aotearoa New Zealand through manaakitanga. The tertiary strand is a full scholarship: full tuition fees, a living allowance of NZ$615 per week paid fortnightly, establishment and reintegration allowances, medical and travel insurance, flights home, tutoring and research or thesis support. Scholars can study at eight New Zealand universities, two institutes of technology, or - for eligible Pacific citizens - the University of the South Pacific or Fiji National University.",
+        "region": "New Zealand and the Pacific (study destination); applicants from eligible Pacific and Asian countries",
+        "program_type": "New Zealand Government scholarship programme (tertiary strand), administered by Education New Zealand | Manapou ki te Ao",
+        "english_requirement": "Each education institution sets its own minimum, but the official published guide is: postgraduate study - overall IELTS 6.5 with no band below 6.0, TOEFL iBT 90 with writing 21, PTE Academic 58 with no communicative skill below 50, or Cambridge Academic English (advanced) 176 with no band below 169; undergraduate study - overall IELTS 6.0 with no band below 5.5, TOEFL iBT 80 with writing 21, PTE Academic 50 with no skill below 42, or Cambridge Academic English (advanced) 169 with no band below 162. Test scores are required only from shortlisted candidates studying in New Zealand (not for Pacific study); Education New Zealand organises and pays the IELTS test for shortlisted applicants from a listed set of countries, and preferred candidates just below the required level may be funded for English language training."
+      },
+      "verification": {
+        "source_citations": [
+          "https://www.nzscholarships.govt.nz/scholars-get-ready-to-start-your-scholarship/",
+          "https://assets.ctfassets.net/9d9xnserxur1/45NsnHZHYCMG9PvZWMdSNr/a3f73f4bc93860ef8dd8b6e7b62b2eb6/Manaaki_New_Zealand_Scholarships_Policy_Guidance_for_Scholars.pdf",
+          "https://assets.ctfassets.net/9d9xnserxur1/53ytkt5GhcDkaErp2iilAr/4d259677bbe433c25047f98ac751b35b/Manaaki_Predeparture_briefing__scholars__-_Nov_2025.pdf",
+          "https://www.nzscholarships.govt.nz/check-eligibility-criteria/"
+        ],
+        "last_verified_date": "2026-10-10",
+        "verification_status": "confirmed",
+        "confidence": "high",
+        "not_confirmed": [
+          "deadline_date - no open tertiary deadline is published; only the closed 2026 Samoa Foundation window and the closure notice",
+          "the stipend and allowance rates that will apply to the next (2027) intake, which are not yet published",
+          "the separate entitlements and rates for scholars studying at a Pacific university, which are set out in the separate Pacific Scholar policy handbook",
+          "country-by-country recommended subject lists, which are published on separate official country pages"
+        ],
+        "notes": "Read the full official application-process pages on nzscholarships.govt.nz (eligible countries, eligibility criteria, study subjects, available courses, how to apply, selection, preferred candidates, get ready to start) and extracted the text of the official NZ Scholar Operational Policy Handbook and the November 2025 pre-departure briefing, both linked from the official site. All figures come from those awarding-body documents, not from aggregators."
+      },
+      "applicant_utility": {
+        "summary": "This is a genuinely full-cost government package: Education New Zealand pays your tuition directly to the institution and puts NZ$615 a week into your own bank account, plus NZ$3,000 on arrival to set yourself up and NZ$1,000 every later year. In practice you are selected as much on your home-country development story as on your grades, because the programme states that applications not strongly aligned with your country's recommended subjects are highly unlikely to be considered, and more than 15,000 people apply every year. Budget a one-year runway: selection takes six to ten months from close, interviews run May to July, and the round itself is annual, so the day applications open is the day you should be submitting.",
+        "best_fit": "Working professionals from eligible Pacific and Asian countries with at least a year of relevant experience and a course plan that maps onto their own country's recommended subjects.",
+        "application_readiness_checklist": [
+          "Request your academic transcript early and confirm it shows the grading scale - the portal upload requires it, and an incomplete transcript stalls the application",
+          "Download your country or region's recommended-subjects list and map every course preference onto it before writing any narrative",
+          "Draft the three development answers ENZ asks for: how the course links to a recommended subject, the skills you will gain, and why your country needs them",
+          "Check entry and English requirements on each preferred institution's own site, since they set their own minimums",
+          "Make sure your passport is valid if you are likely to be shortlisted for NZ study, since IELTS registration needs a passport copy",
+          "Keep every visa, levy, medical and English-test receipt - reimbursement is receipt-based and happens on arrival"
+        ],
+        "common_rejection_risks": [
+          "Course preferences that do not align with your country's recommended subjects",
+          "A qualification that does not progress from your highest one, such as a second master's degree",
+          "A weak development-impact narrative - ENZ lists clearer descriptions of country benefit among its most common decline reasons",
+          "A low score in the online abstract reasoning and personality test",
+          "Missing the 10-day window to complete the psychometric test after the email arrives",
+          "Falling outside the two-year home-country residency rule, or sitting inside the stand-down after a previous Manaaki scholarship"
+        ],
+        "estimated_uncovered_costs": "You still fund dependants' visa fees, passport application or renewal, police clearance, courier fees, travel to your medical check and interview, and personal extras - ENZ lists all of these as not reimbursed. The official pre-departure briefing also recommends arriving with access to at least NZ$1,000 of your own money for initial expenses.",
+        "document_audit": [
+          "The transcript must include the grading scale; a scanned transcript without it is the classic incomplete-upload trap",
+          "If shortlisted you need verified English translations of both transcripts and completion certificates, so start sourcing these before you are shortlisted",
+          "Only shortlisted candidates studying in New Zealand need English test scores, and they must be from the last 12 months; candidates heading to the Pacific are exempt",
+          "Preferred candidates must also produce a valid passport, birth certificate, government ID and academic records for the institution's admission process",
+          "If your study programme starts remotely from home, note the stipend is adjusted to reflect lower living costs, so budget against the adjusted rate"
+        ],
+        "alerts": [
+          "The application system may close early for countries with a high volume of applications, so waiting for the advertised closing date can cost you the round",
+          "Selection takes six to ten months and interviews are usually May to July, so do not commit to a conflicting job or study start date in that window",
+          "Once named a preferred candidate you must accept the Letter of Offer online within 14 days, and the student visa process can take two to three months with medical tests",
+          "The Letter of Offer is a legal contract: failing to return home for two years leaves you with a repayable debt equal to the full cost of the scholarship",
+          "A previous Manaaki tertiary scholarship imposes a two-year stand-down, or five years if it ended through academic termination, downgrade or withdrawal without completing"
+        ],
+        "submission_workflow": "Submit online in the Manaaki portal before your country's window closes, then complete the psychometric test within 10 days, await email decisions through detailed assessment and a video interview, and if named a preferred candidate apply for admission at your chosen institution and accept the Letter of Offer online within 14 days."
+      }
+    }
+  ]
+}

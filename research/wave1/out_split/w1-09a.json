@@ -1,0 +1,1560 @@
+{
+  "agent_id": "w1_09a",
+  "shard": "w1-09a",
+  "today": "2026-10-04",
+  "records": [
+    {
+      "target_id": 82,
+      "outcome": "refreshed",
+      "confirm": true,
+      "confirmation_evidence": "The Foundation's own 'Become a Scholar' page (trudeaufoundation.ca/become-a-scholar) states under 'Key dates': \"2027 competition — The application period for the Pierre Elliott Trudeau Foundation's 2027 Scholarship is from September 1 to November 6, 2026, at 5:00 p.m. (ET).\" The companion official page trudeaufoundation.ca/2027-applications/ confirms the two-step process and lists \"November 6, 2026, at 5:00 p.m. ET — Deadline to submit the complete application\".",
+      "new_scholarship": {
+        "name": "Pierre Elliott Trudeau Foundation Doctoral Scholarship",
+        "legacy_titles": ["Pierre Elliott Trudeau Foundation Doctoral Scholarship"],
+        "country": "Canada",
+        "region": "North America",
+        "degree_levels": "PhD",
+        "funding_type": "Stipend",
+        "official_source": "Pierre Elliott Trudeau Foundation",
+        "official_source_url": "https://www.trudeaufoundation.ca/become-a-scholar",
+        "status": "open",
+        "is_verified": true,
+        "last_verified_date": "2026-10-04",
+        "deadline": "November 6, 2026, at 5:00 p.m. ET — deadline to submit the complete application.",
+        "deadline_date": "2026-11-06",
+        "deadline_precision": "exact",
+        "application_period": "2027 competition: eligibility verification form opens September 1, 2026; eligibility confirmation request due October 2, 2026; mandatory information sessions in the weeks of October 5 and October 12, 2026; references due October 30, 2026 at 9:00 a.m. ET; complete application due November 6, 2026 at 5:00 p.m. ET.",
+        "program_type": "Doctoral scholarship for candidates in the first or second year of a PhD program whose research aligns with at least one of the Foundation's four themes.",
+        "eligibility_summary": "Applicants must be in the first or second year of a PhD program at the time of application, in a field broadly related to the humanities or social sciences that addresses issues relevant to Canada's future, and must be a Canadian student at a Canadian or non-Canadian university, or an international student at a Canadian university.",
+        "eligibility": [
+          "In the first year of a PhD program at the time of application, or in the second year of a PhD program",
+          "Field of study broadly related to the humanities or social sciences, addressing issues relevant to Canada's future",
+          "PhD research must align with at least one of the Foundation's four themes: Human Rights and Dignity; Responsible Citizenship; Canada and the World; People and their Natural Environment",
+          "Canadian student enrolled at a Canadian university",
+          "Canadian student enrolled at a university outside Canada",
+          "International student enrolled at a Canadian university",
+          "International students residing outside Canada or enrolled at a university outside Canada are not eligible",
+          "Three letters of reference: one from the PhD supervisor, one from another academic referee, one from a referee outside academia"
+        ],
+        "coverage": [
+          "Scholarship support for PhD students (official wording: \"a generous scholarship\")",
+          "Research allowances",
+          "Access to a community of peers"
+        ],
+        "benefits": [
+          "Scholarship funding",
+          "Research allowances",
+          "Membership of a community of peers"
+        ],
+        "required_documents": [
+          "Eligibility verification/screening form submitted via SmartSimple",
+          "Complete 2027 Scholarship application form",
+          "Three letters of reference (PhD supervisor, another academic referee, a referee outside academia)"
+        ],
+        "catalogue_url": "https://www.trudeaufoundation.ca/scholarship/",
+        "official_updates_url": "https://www.trudeaufoundation.ca/2027-applications/",
+        "english_requirement": null,
+        "requirements": [
+          "Complete the eligibility screening form first; only applicants whose eligibility has been confirmed can access the full application form",
+          "Applications that do not meet the eligibility criteria will not be reviewed"
+        ],
+        "application_method": [
+          "Step 1: complete the eligibility screening form at fdnpetf.smartsimple.ca",
+          "Step 2: once eligibility is confirmed, complete the full 2027 Scholarship application form"
+        ],
+        "selection_notes": "Applications are assessed on academic excellence, alignment of the research project with the Foundation's mission and its four founding themes, the rigour of the research proposal, and the ability to share knowledge for the benefit of society.",
+        "best_fit": "First- or second-year humanities and social sciences PhD students at a Canadian university, or Canadian students at a university outside Canada, whose research maps to one of the Foundation's four founding themes.",
+        "funding_amount": null,
+        "funding_currency": null,
+        "funding_period": null,
+        "description": "The Pierre Elliott Trudeau Foundation awards a doctoral scholarship to exceptionally engaged PhD students undertaking significant research projects of major social importance. For the 2027 competition the Foundation states the application period runs \"from September 1 to November 6, 2026, at 5:00 p.m. (ET)\", using a two-step process in which candidates must first request eligibility confirmation. Applicants must be in the first or second year of a PhD program in a field broadly related to the humanities or social sciences. Research must align with at least one of the Foundation's four themes: Human Rights and Dignity, Responsible Citizenship, Canada and the World, and People and their Natural Environment. The official pages read for this record do not publish a dollar amount or state that tuition fees are paid."
+      },
+      "programme_detail_official": {
+        "official_source_urls": [
+          "https://www.trudeaufoundation.ca/become-a-scholar",
+          "https://www.trudeaufoundation.ca/2027-applications/"
+        ],
+        "application_link": "https://www.trudeaufoundation.ca/2027-applications/",
+        "official_updates_url": "https://www.trudeaufoundation.ca/2027-applications/",
+        "catalogue_url": "https://www.trudeaufoundation.ca/scholarship/",
+        "application_cycle": "2027 Scholarship competition; application period September 1 to November 6, 2026",
+        "deadline_central": "2026-11-06T17:00",
+        "deadline_central_display": "November 6, 2026, at 5:00 p.m. ET",
+        "deadline_central_timezone": "America/Toronto",
+        "deadline_note": "Two deadlines sit inside the 2027 cycle. The eligibility confirmation request was due October 2, 2026 (that step has now passed), and the complete application is due November 6, 2026 at 5:00 p.m. ET. Three references must be received by October 30, 2026 at 9:00 a.m. ET. A separate news post gives 4:00 p.m. ET for the final submission while the Become a Scholar and 2027 Applications pages both give 5:00 p.m. ET; the two programme pages agree, so 5:00 p.m. ET is used.",
+        "status": "OPEN",
+        "status_note": "The 2027 application window is still running until November 6, 2026, but new applicants can no longer begin the process because the October 2, 2026 eligibility confirmation request has passed; only candidates whose eligibility was already confirmed can submit the complete application.",
+        "funding_amount": null,
+        "funding_currency": null,
+        "funding_period": null,
+        "funding_duration": "Multi-year doctoral scholarship; no fixed end date is published on the pages read.",
+        "tuition_coverage": false,
+        "tuition_coverage_note": "Neither the Become a Scholar page nor the 2027 Applications page states that the scholarship pays tuition fees. The Foundation describes the support as \"a generous scholarship\" plus research allowances. Tuition coverage is therefore recorded as false rather than assumed.",
+        "living_cost_coverage": null,
+        "travel_coverage": null,
+        "fully_funded": false,
+        "funding_label": "Doctoral scholarship plus research allowances; no published amount and no stated tuition coverage on the official pages read.",
+        "benefits": [
+          "Generous doctoral scholarship",
+          "Research allowances",
+          "Access to a community of peers"
+        ],
+        "eligibility": [
+          "In the first year of a PhD program at the time of application, or in the second year of a PhD program",
+          "Field of study broadly related to the humanities or social sciences",
+          "Research addressing issues relevant to Canada's future",
+          "PhD research aligned with at least one of the four themes: Human Rights and Dignity; Responsible Citizenship; Canada and the World; People and their Natural Environment",
+          "Canadian student at a Canadian university",
+          "Canadian student at a university outside Canada",
+          "International student at a Canadian university",
+          "International students residing outside Canada or enrolled at a university outside Canada are not eligible",
+          "Three letters of reference: PhD supervisor, another academic referee, and a referee outside academia"
+        ],
+        "citizenship_residency": "Canadian citizens or international students, provided the international student is enrolled at a Canadian university.",
+        "international_eligibility": "International students are eligible only if enrolled at a Canadian university. International students residing outside Canada or enrolled at a university outside Canada are not eligible.",
+        "degree_levels": ["PhD"],
+        "study_mode": null,
+        "research_requirement": "Research must align with at least one of the Foundation's four founding themes and address issues relevant to Canada's future.",
+        "subject_or_agency_requirement": "Broadly related to the humanities or social sciences.",
+        "application_method": "Two-step process: (1) complete the eligibility screening form at fdnpetf.smartsimple.ca by October 2, 2026; (2) once eligibility is confirmed, complete the full 2027 Scholarship application form by November 6, 2026, 5:00 p.m. ET, with three references received by October 30, 2026, 9:00 a.m. ET.",
+        "application_route": "Online application via the Foundation's SmartSimple portal, accessed from trudeaufoundation.ca/2027-applications/.",
+        "requirements": [
+          "Eligibility confirmation request submitted by October 2, 2026",
+          "Eligibility confirmed before the full application form can be accessed",
+          "Three references received by October 30, 2026 at 9:00 a.m. ET",
+          "Complete application submitted by November 6, 2026 at 5:00 p.m. ET"
+        ],
+        "documents": [
+          "Eligibility verification form",
+          "Completed 2027 Scholarship application form",
+          "Three letters of reference (PhD supervisor, another academic referee, referee outside academia)"
+        ],
+        "english_requirement": null,
+        "english_requirement_note": "The official pages read do not state an English language or test-score requirement.",
+        "selection_criteria": [
+          "Academic excellence supported by an outstanding academic record",
+          "A compelling research project that addresses issues shaping Canada's future",
+          "A strong commitment to making a positive impact",
+          "A willingness to engage in dialogue, interdisciplinary collaboration and knowledge sharing",
+          "Alignment of the research with the Foundation's mission and its four founding themes",
+          "Rigor of the research proposal"
+        ],
+        "selection_weighting": null,
+        "duration": "Multi-year doctoral scholarship; specific term length not published on the pages read.",
+        "award_holder_conditions": [
+          "Applications that do not meet the eligibility criteria will not be reviewed",
+          "Mandatory information sessions are held in the weeks of October 5 and October 12, 2026"
+        ],
+        "supplements_or_initiatives": [
+          "Public Interaction Program (PIP) brings Scholars, Fellows and Mentors together"
+        ],
+        "official_contacts": {
+          "general": "https://www.trudeaufoundation.ca/contact/",
+          "email": "scholarship2027@trudeaufoundation.ca"
+        },
+        "description": "The Pierre Elliott Trudeau Foundation's doctoral scholarship supports outstanding PhD students whose research addresses major social challenges relevant to Canada. The 2027 competition application period runs from September 1 to November 6, 2026 at 5:00 p.m. ET. Applicants must be in the first or second year of a PhD program in the humanities or social sciences, with research aligned to at least one of the Foundation's four founding themes, and must supply three letters of reference including one from outside academia.",
+        "program_type": "Doctoral scholarship (PhD, humanities and social sciences)",
+        "region": "North America",
+        "coverage": "Doctoral scholarship and research allowances; tuition coverage is not stated on the official pages read.",
+        "last_verified_date": "2026-10-04"
+      },
+      "programme_detail_applicant_utility": {
+        "application_readiness_checklist": [
+          "Confirm you are in the first or second year of your PhD at the date of application",
+          "Confirm your field is broadly humanities or social sciences",
+          "Choose the one of the four founding themes your research best matches",
+          "Secure three referees: your PhD supervisor, another academic referee, and one outside academia",
+          "Ask your referees to submit their letters early enough to be received by October 30, 2026 at 9:00 a.m. ET",
+          "Submit the eligibility confirmation request before October 2, 2026 — this step is already closed for the 2027 cycle",
+          "Block time to complete the full application before November 6, 2026, 5:00 p.m. ET"
+        ],
+        "common_rejection_risks": [
+          "Missing the October 2, 2026 eligibility confirmation request, after which the full application cannot be accessed",
+          "Research that does not map to at least one of the four founding themes",
+          "A field outside the humanities and social sciences",
+          "Being a second-year-or-later PhD student at the time of application",
+          "International students residing outside Canada or enrolled outside Canada",
+          "References not received by October 30, 2026 at 9:00 a.m. ET"
+        ],
+        "estimated_uncovered_costs": [
+          "No published scholarship amount means tuition fees, health insurance and other doctoral costs are not covered by anything the official pages confirm",
+          "The Foundation states no tuition coverage on the pages read, so plan for full tuition and incidental fees separately"
+        ],
+        "document_audit": [
+          "Eligibility verification form submitted and confirmed received",
+          "Full application form completed in full",
+          "Three reference letters, including one from a referee outside academia",
+          "Confirmation that your PhD year and field satisfy the stated criteria"
+        ],
+        "alerts": [
+          {
+            "trigger": "2027 eligibility step closed",
+            "message": "The eligibility confirmation request deadline of October 2, 2026 has passed. Only candidates whose eligibility was already confirmed can still submit a complete application by November 6, 2026."
+          },
+          {
+            "trigger": "Reference deadline earlier than application deadline",
+            "message": "All three references must be received by October 30, 2026 at 9:00 a.m. ET, one week before the application deadline. Late references invalidate the application."
+          },
+          {
+            "trigger": "Final deadline time varies between official pages",
+            "message": "A Foundation news post states 4:00 p.m. ET while the Become a Scholar and 2027 Applications pages state 5:00 p.m. ET. Submit before 4:00 p.m. ET to be safe."
+          }
+        ],
+        "submission_workflow": [
+          "Read the eligibility criteria on trudeaufoundation.ca/become-a-scholar before starting",
+          "Submit the eligibility screening form at fdnpetf.smartsimple.ca",
+          "Wait for the Foundation to confirm eligibility, which unlocks the full application form",
+          "Complete the full 2027 Scholarship application form",
+          "Send the three reference requests with the Foundation's own reference submission route so they are received by October 30, 2026 at 9:00 a.m. ET",
+          "Submit the complete application before November 6, 2026, 5:00 p.m. ET",
+          "Contact scholarship2027@trudeaufoundation.ca with any questions about the process"
+        ]
+      },
+      "programme_detail_verification": {
+        "cycle_verified": "2027 Scholarship competition, verified 2026-10-04",
+        "verification_confidence": 0.88,
+        "official_fields_confirmed": [
+          "official_source_url",
+          "application_cycle",
+          "deadline_central",
+          "deadline_central_display",
+          "deadline_central_timezone",
+          "status",
+          "degree_levels",
+          "eligibility",
+          "citizenship_residency",
+          "international_eligibility",
+          "selection_criteria",
+          "documents",
+          "application_method",
+          "official_contacts",
+          "benefits",
+          "program_type",
+          "region"
+        ],
+        "institution_check_required": [
+          "Confirm the applicant's PhD year (first or second) at the date of application, as this is an absolute eligibility gate",
+          "Confirm the research falls within the humanities or social sciences and aligns with one of the four founding themes"
+        ],
+        "unverified_or_removed_claims": [
+          "funding_amount: no CAD figure is published on the Become a Scholar or 2027 Applications pages, so funding_amount stays null",
+          "funding_type: stored record says 'Fully Funded', but no official page read states that tuition is paid; recorded as 'Stipend' and fully_funded/tuition_coverage set to false",
+          "tuition_coverage, living_cost_coverage, travel_coverage: not stated on any official page read",
+          "duration: specific scholarship term length is not published on the pages read",
+          "english_requirement: no official English test requirement is published on the pages read"
+        ],
+        "source_citations": [
+          "https://www.trudeaufoundation.ca/become-a-scholar",
+          "https://www.trudeaufoundation.ca/2027-applications/",
+          "https://www.fondationtrudeau.ca/wp-content/uploads/2025/02/fondation-pe-trudeau_logo_228x89.svg"
+        ],
+        "researched_by": "w1_09a"
+      },
+      "logo_override": {
+        "url": "https://www.fondationtrudeau.ca/wp-content/uploads/2025/02/fondation-pe-trudeau_logo_228x89.svg",
+        "page_url": "https://www.trudeaufoundation.ca/become-a-scholar",
+        "official_host": true,
+        "alt_text": "Fondation Pierre Elliott Trudeau official logo",
+        "validation_result": "verified",
+        "validation_detail": "svg 228x89 viewBox, HTTP 200 image/svg+xml confirmed by probe; fills #ea0100 (red) and #363134 (charcoal), dark/coloured wordmark on transparent, not white-on-transparent. Glyph outlines in the clip paths spell FONDATION / PIERRE / ELLIOTT / TRUDEAU.",
+        "image_kind": "official_logo",
+        "image_format": "svg",
+        "verified_at": "2026-10-04T00:00:00+00:00",
+        "host_evidence": "same_registrable_domain",
+        "_award": "Pierre Elliott Trudeau Foundation Doctoral Scholarship"
+      },
+      "research_notes": {
+        "logo": "Rejected both header logo candidates that ship with the English site's WordPress theme: https://www.trudeaufoundation.ca/wp-content/themes/bridge/img/logo.png and https://www.trudeaufoundation.ca/wp-content/themes/bridge/img/logo_black.png both returned HTTP 200 image/png but render the theme vendor's boxed 'BRIDGE' wordmark (Q14 | WEB + DESIGN + MARKETING appears in the page footer), i.e. another body's mark. Also rejected https://www.trudeaufoundation.ca/wp-content/uploads/2025/02/fondation-pe-trudeau_logo-blanc_228x89.svg because '-blanc' is the white-on-transparent variant, banned by the brief. The header markup on every Foundation page links the coloured counterpart of that file on the Foundation's French-language domain of the same site, https://www.fondationtrudeau.ca/wp-content/uploads/2025/02/fondation-pe-trudeau_logo_228x89.svg; probed it and it returned HTTP 200 image/svg+xml with red (#ea0100) and charcoal (#363134) fills, so it is the official dark wordmark and is reported. fondationtrudeau.ca is the Foundation's own bilingual site (both languages are linked from each page header), not a third party. The mobile variant https://www.fondationtrudeau.ca/wp-content/uploads/2025/11/fondation-pe-trudeau_logo-mobile-1.svg was also probed successfully as a fallback but the primary horizontal wordmark was preferred.",
+        "unverified": [
+          "No published funding amount in CAD on either official page read",
+          "No statement of tuition coverage on either official page read",
+          "Scholarship term length not published on either official page read",
+          "No official English language requirement published on either official page read"
+        ],
+        "substitution": null,
+        "official_pages_read": [
+          "https://www.trudeaufoundation.ca/become-a-scholar",
+          "https://www.trudeaufoundation.ca/2027-applications/"
+        ],
+        "degree_level_confirmed": "\"At the time of application, you must be: in the first year of a PhD program; or in the second year of a PhD program.\" (trudeaufoundation.ca/become-a-scholar, 'Stage of Study'). The 2027 Applications page repeats: \"Applications for the 2027 Pierre Elliott Trudeau Foundation Scholarship are open to doctoral students who are in the first or second year of their PhD program at the time of application.\"",
+        "url_observed": null,
+        "contradictions": [
+          "Stored deadline_date '2026-10-02' is the eligibility confirmation request deadline, not the application deadline. The official complete-application deadline is November 6, 2026 at 5:00 p.m. ET, so deadline_date corrected to 2026-11-06 and deadline_precision to 'exact'.",
+          "Stored deadline_display '~November 17, 2026 (for 2027 cohort; check annually)' is wrong; the official page states 'November 6, 2026, at 5:00 p.m. ET'.",
+          "Stored deadline_precision 'varies' is wrong for the 2027 cycle; the Foundation publishes an exact calendar date and time.",
+          "Stored program_type 'in the second year of a PhD program.' is wrong; eligibility covers the first OR second year of a PhD.",
+          "Stored funding 'Fully Funded' is not supported: neither official page read states tuition coverage, so fully_funded/tuition_coverage are false and funding_type is 'Stipend'.",
+          "Stored status 'closed' was correct only for the eligibility step; the overall 2027 application window runs to November 6, 2026, so status is 'open' with an explicit status_note about the closed eligibility step.",
+          "Stored current_image_url was a programme photo (wp-content/uploads/2026/07/IMG_4714-1-scaled-e1783523761417.jpg) sourced from a different domain, not the official logo; replaced with the probed official wordmark."
+        ],
+        "skeleton": false
+      }
+    },
+    {
+      "target_id": 83,
+      "outcome": "refreshed",
+      "confirm": true,
+      "confirmation_evidence": "The programme's own Apply page (mccallmacbainscholars.org/apply) states \"Applications for Summer/Fall 2027 are closed.\" and publishes the two deadlines: \"September 23, 2026 — 4:00 PM Eastern Time\" for students and graduates of universities in Canada and the United States plus Canadians abroad, and \"August 19, 2026 — 4:00 PM Eastern Time\" for applicants from other countries. The official Program Overview page confirms the money: \"The scholarship covers: Tuition and fees for the full normal duration of the master's or professional program; A living stipend of $2,300 per month during academic terms; A one-time relocation grant for moving to Montreal.\"",
+      "new_scholarship": {
+        "name": "McCall MacBain Scholarships at McGill University",
+        "legacy_titles": ["McCall MacBain Scholarships at McGill University"],
+        "country": "Canada",
+        "region": "North America",
+        "degree_levels": "Master's, Second-Entry Professional Undergraduate (JD/BCL, MD, DMD)",
+        "funding_type": "Fully Funded",
+        "official_source": "McCall MacBain Scholarships at McGill (McGill University / McCall MacBain Foundation)",
+        "official_source_url": "https://mccallmacbainscholars.org/apply",
+        "status": "upcoming",
+        "is_verified": true,
+        "last_verified_date": "2026-10-04",
+        "deadline": "The 2027 cycle has closed: September 23, 2026 at 4:00 PM Eastern Time for students and graduates of universities in Canada and the United States and Canadians abroad, and August 19, 2026 at 4:00 PM Eastern Time for applicants from all other countries. The application is available online from June to August/September each year for Summer/Fall entry the following year.",
+        "deadline_date": null,
+        "deadline_precision": "recurring",
+        "application_period": "Applications open online in June and close in August or September each year for Summer/Fall admission the following year; the 2027 cohort closed on August 19 and September 23, 2026.",
+        "program_type": "Full graduate scholarship for a full-time master's or second-entry professional undergraduate program at McGill University, combined with an interdisciplinary leadership curriculum.",
+        "eligibility_summary": "Applicants must meet at least one of three criteria: be a current student on track to earn a first bachelor's degree by August 2027; have earned a first bachelor's degree in the last five years (January 2021 or later); or have earned a first bachelor's degree more than five years ago and have been 30 years or younger on January 1, 2026. Applicants must also meet McGill's minimum degree and language requirements for master's admission.",
+        "eligibility": [
+          "Current student on track to earn your first bachelor's degree by August 2027",
+          "Earned your first bachelor's degree in the last five years (January 2021 or later)",
+          "Earned your first bachelor's degree more than five years ago and were 30 years or younger on January 1, 2026",
+          "Meet the minimum degree and language requirements for McGill master's program admission",
+          "Applying for Summer/Fall 2027 admission to a full-time master's or second-entry professional undergraduate program at McGill University consisting of 45 credits or more",
+          "Program must take place primarily on McGill's downtown or Macdonald campuses"
+        ],
+        "coverage": [
+          "Tuition and fees for the full normal duration of the master's or professional program",
+          "Living stipend of $2,300 per month during academic terms",
+          "One-time relocation grant for moving to Montreal",
+          "Up to $5,000 for summer initiatives for scholars not pursuing an academic term in summer",
+          "Travel costs covered for finalists attending final interviews in Montreal"
+        ],
+        "benefits": [
+          "Full tuition and fees",
+          "$2,300 per month living stipend during academic terms",
+          "One-time relocation grant",
+          "Leadership skills development curriculum with annual summer intensives and bi-weekly seminars",
+          "Mentorship from experienced leaders, an executive coach and advisors",
+          "Access to the McCall MacBain House on McGill's downtown campus",
+          "Optional supplemental learning such as French language courses through McGill and the Indigenous Learning Opportunity fund",
+          "Place-based learning trip in the second year to another part of Quebec or Canada"
+        ],
+        "required_documents": [
+          "Completed online McCall MacBain Scholarship application",
+          "Two completed online reference forms",
+          "Separate application to the intended McGill University program"
+        ],
+        "catalogue_url": "https://mccallmacbainscholars.org/program/",
+        "official_updates_url": "https://mccallmacbainscholars.org/news-updates/",
+        "english_requirement": "Applicants must meet the minimum degree and language requirements for McGill master's program admission; reference form responses must be written in English or French.",
+        "requirements": [
+          "Attend an information session before applying",
+          "Submit two reference forms completed online by the reference writers before the application deadline",
+          "Apply separately to compatible programs at McGill University; finalists must apply to McGill in December even if the program deadline is later"
+        ],
+        "application_method": [
+          "Register for and attend an information session",
+          "Submit the online McCall MacBain Scholarship application through apply.mccallmacbainscholars.org",
+          "Have two reference writers complete their online reference forms before the application deadline",
+          "Apply separately to the intended McGill University program by that program's deadline"
+        ],
+        "selection_notes": "Candidates are assessed on exceptional character, community engagement, leadership potential, entrepreneurial spirit, and academic strength and intellectual curiosity. More than 250 semi-finalists are invited to regional interviews, and approximately 85 finalists are invited to final interviews in Montreal.",
+        "best_fit": "Students and recent graduates with strong leadership and community records who intend to enter a full-time master's or second-entry professional program (JD, MD or DMD) at McGill University.",
+        "funding_amount": 2300,
+        "funding_currency": "CAD",
+        "funding_period": "per month during academic terms",
+        "description": "The McCall MacBain Scholarships at McGill University is a full graduate scholarship for candidates entering a full-time master's or second-entry professional undergraduate program at McGill. For the 2027 cohort the programme awards up to 30 full scholarships and up to 100 finalist and regional awards. The scholarship covers tuition and fees for the full normal duration of the programme, a living stipend of $2,300 per month during academic terms, and a one-time relocation grant, with up to $5,000 available for summer initiatives. Applicants must satisfy at least one of three recency or age criteria and meet McGill's minimum admission requirements. Applications for Summer/Fall 2027 closed on August 19 or September 23, 2026 depending on applicant group, and the programme runs annually."
+      },
+      "programme_detail_official": {
+        "official_source_urls": [
+          "https://mccallmacbainscholars.org/apply",
+          "https://mccallmacbainscholars.org/program/"
+        ],
+        "application_link": "https://apply.mccallmacbainscholars.org/apply",
+        "official_updates_url": "https://mccallmacbainscholars.org/news-updates/",
+        "catalogue_url": "https://mccallmacbainscholars.org/program/",
+        "application_cycle": "Annual; 2027 cohort applications were open June to September 2026 and are now closed",
+        "deadline_central": "2026-09-23T16:00",
+        "deadline_central_display": "September 23, 2026 at 4:00 PM Eastern Time (Canada, United States and Canadians abroad); August 19, 2026 at 4:00 PM Eastern Time (all other countries)",
+        "deadline_central_timezone": "America/Toronto",
+        "deadline_note": "The 2027 cycle has two published deadlines, both now past: August 19, 2026 at 4:00 PM ET for students and graduates of universities located in other countries, and September 23, 2026 at 4:00 PM ET for students and graduates of universities in Canada and the United States plus Canadians abroad. Because the 2027 deadlines have passed and the programme publishes no date for the next cohort, deadline_date is null and deadline_precision is 'recurring'; the historical 2027 dates are retained here for reference.",
+        "status": "UPCOMING",
+        "status_note": "The Apply page states plainly: \"Applications for Summer/Fall 2027 are closed.\" The programme is annual and the FAQ states \"Applications will open in June 2026 for our 2027 cohort\", so the next cohort is expected to open in June 2027 with a comparable August/September 2027 close.",
+        "funding_amount": 2300,
+        "funding_currency": "CAD",
+        "funding_period": "per month during academic terms",
+        "funding_duration": "Full normal duration of the master's or professional program; international Finalist Awards of $20,000 per year run for up to 2 years.",
+        "tuition_coverage": true,
+        "tuition_coverage_note": "The official Program Overview page states the scholarship covers \"Tuition and fees for the full normal duration of the master's or professional program\" and links directly to McGill's graduate tuition charges page.",
+        "living_cost_coverage": true,
+        "travel_coverage": true,
+        "fully_funded": true,
+        "funding_label": "Fully funded: full tuition and fees for the normal duration of the programme, a $2,300 per month living stipend during academic terms, and a one-time relocation grant; up to $5,000 summer funding and finalist interview travel are also covered. No bond or service obligation is stated on the official pages.",
+        "benefits": [
+          "Tuition and fees for the full normal duration of the programme",
+          "$2,300 per month living stipend during academic terms",
+          "One-time relocation grant for moving to Montreal",
+          "Up to $5,000 for summer initiatives",
+          "Leadership development curriculum, annual summer intensives and bi-weekly seminars",
+          "Mentor, executive coach and advisors matched to each scholar",
+          "Access to the McCall MacBain House and supplemental learning including French language courses"
+        ],
+        "eligibility": [
+          "Current student on track to earn your first bachelor's degree by August 2027",
+          "Earned your first bachelor's degree in the last five years (January 2021 or later)",
+          "Earned your first bachelor's degree more than five years ago and were 30 years or younger on January 1, 2026",
+          "Meet the minimum degree and language requirements for McGill master's admission",
+          "Applying to a full-time master's or second-entry professional undergraduate program at McGill of 45 credits or more, based primarily on the downtown or Macdonald campuses"
+        ],
+        "citizenship_residency": "Split by applicant group: Canadian applicants (Canadian citizens, permanent residents and refugees) receive 20 Scholarships, 30 Finalist Awards of $10,000 and 30 Regional Awards of $5,000; all other citizenships receive 10 Scholarships, 25 Finalist Awards of $20,000 per year for up to 2 years, and 15 Regional Awards of $10,000.",
+        "international_eligibility": "International applicants are eligible; any citizenship or nationality other than Canadian falls into the international pool, with their own earlier deadline (August 19, 2026 for the 2027 cohort) and their own award values. In the United States each fellowship advising office may endorse several candidates for international awards and any number of Canadian candidates.",
+        "degree_levels": ["Master's", "Second-Entry Professional Undergraduate"],
+        "study_mode": "Full-time",
+        "research_requirement": null,
+        "subject_or_agency_requirement": "More than 150 fields of study are eligible, covering MA, MArch, MATL, MBA, MEd, MEng, MISt, MM, MMus, MPP, MSc, MScA, MScAPT, MScAOT, MSW, MUP, LLM and STM degrees, plus BCL/JD, DMD and MDCM. Graduate certificates, executive master's programs (EMBA, IMHL, IMPM), PhDs, part-time programs and joint degree programs are not covered.",
+        "application_method": "Online application at apply.mccallmacbainscholars.org, separate from McGill graduate admissions, with two online reference forms completed by the reference writers before the application deadline. Applicants must also apply separately to compatible McGill programs; finalists must apply to McGill in December even where the program deadline is later.",
+        "application_route": "apply.mccallmacbainscholars.org for the scholarship; McGill graduate admissions for the degree.",
+        "requirements": [
+          "Attend an information session",
+          "Two reference forms completed online by the reference writers before the deadline; otherwise the application is considered incomplete",
+          "Reference form responses must be written in English or French",
+          "Separate McGill program application submitted by that program's deadline"
+        ],
+        "documents": [
+          "Completed online scholarship application",
+          "Two online reference forms completed by the reference writers",
+          "Separate McGill University program application"
+        ],
+        "english_requirement": "Applicants must meet the minimum degree and language requirements for McGill master's program admission.",
+        "english_requirement_note": "The scholarship site does not publish its own English test score threshold; it defers to McGill's minimum degree and language requirements, and states that reference form responses must be written in English or French.",
+        "selection_criteria": [
+          "Exceptional character: excellence, hard work, service, lifelong learning, integrity, honesty, empathy, tenacity and willingness to take meaningful risks",
+          "Community engagement: working with and for others to address community challenges",
+          "Leadership potential: experience working with and leading others toward a common goal",
+          "Entrepreneurial spirit: identifying unmet needs and motivating creative solutions",
+          "Academic strength and intellectual curiosity: fit between the proposed graduate program, qualifications and future plans"
+        ],
+        "selection_weighting": "Applications are reviewed after the deadline; more than 250 semi-finalists are invited to regional interviews, and approximately 85 finalists are invited to final interviews in Montreal. Travel costs are covered for finalists.",
+        "duration": "Full normal duration of the master's or professional program; scholars begin studies in September 2027 for the 2027 cohort.",
+        "award_holder_conditions": [
+          "Participate in the interdisciplinary leadership curriculum, annual summer intensives and bi-weekly seminars",
+          "Scholars not pursuing an academic term during summer may apply for up to $5,000 for summer initiatives",
+          "Scholars are matched with a mentor, executive coach and advisors and engage with place-based learning in their second year"
+        ],
+        "supplements_or_initiatives": [
+          "McCall MacBain House on McGill's downtown campus",
+          "Indigenous Learning Opportunity fund",
+          "French language courses offered through McGill",
+          "Place-based learning travel in the second year"
+        ],
+        "official_contacts": {
+          "general": "https://mccallmacbainscholars.org/apply/#how",
+          "address": "McCall MacBain Scholarships at McGill, 772 Sherbrooke St W, 4th Floor, Montreal (QC) H3A 1G1",
+          "charitable_registration_number": "715559712 RR 0001"
+        },
+        "description": "The McCall MacBain Scholarships at McGill University fund a full-time master's or second-entry professional undergraduate program at McGill alongside an interdisciplinary leadership curriculum. For 2027 the programme offers up to 30 full scholarships and up to 100 finalist and regional awards, split between Canadian and international applicant pools. Funding covers full tuition and fees, a $2,300 monthly living stipend during academic terms, a one-time relocation grant, and up to $5,000 for summer initiatives. Applications for the 2027 cohort closed on August 19 and September 23, 2026 depending on applicant group; the programme recurs annually.",
+        "program_type": "Full graduate scholarship with leadership development curriculum",
+        "region": "North America",
+        "coverage": "Tuition and fees, living stipend, relocation grant and summer initiative funding; finalist interview travel covered. No bond or service obligation stated.",
+        "last_verified_date": "2026-10-04"
+      },
+      "programme_detail_applicant_utility": {
+        "application_readiness_checklist": [
+          "Work out which of the three eligibility routes applies to you and be ready to evidence it in the application",
+          "Confirm your intended McGill programme is a full-time master's or second-entry professional undergraduate degree of 45 credits or more on the downtown or Macdonald campus",
+          "Check that your programme is not an excluded type (PhD, graduate certificate, executive master's, part-time or joint degree)",
+          "Attend an information session before applying — the FAQ tells applicants to do this",
+          "Identify two referees who know you well enough to give concrete examples against the five selection criteria",
+          "Brief your referees early: they fill in the online forms themselves and the responses must be in English or French",
+          "Track which of the two deadlines applies to you, since the international deadline is about five weeks earlier"
+        ],
+        "common_rejection_risks": [
+          "Missing your group's deadline — the international deadline (August 19, 2026) is earlier than the Canada/US deadline (September 23, 2026)",
+          "Reference forms not completed by the reference writers before the deadline, which makes the application incomplete",
+          "Intending to study a PhD, graduate certificate, executive master's, part-time or joint degree, all of which are excluded",
+          "Applying to a McGill program of fewer than 45 credits or based mainly off campus",
+          "Failing to meet McGill's minimum degree and language requirements for master's admission",
+          "Separately missing the McGill program deadline — finalists must apply to McGill in December regardless of the program deadline"
+        ],
+        "estimated_uncovered_costs": [
+          "Living costs outside academic terms are not covered by the stipend, which the programme states applies 'during academic terms'",
+          "Books, equipment and travel home are not listed among the covered items",
+          "Regional Award holders at a public university in Canada receive $5,000 (Canadian applicants) or $10,000 (international applicants) with no tuition coverage stated"
+        ],
+        "document_audit": [
+          "Online scholarship application submitted and confirmed",
+          "Two online reference forms completed and received before the deadline",
+          "Separate McGill program application submitted by the program deadline",
+          "Evidence of the eligibility route you are using (degree completion date or age on January 1, 2026)"
+        ],
+        "alerts": [
+          {
+            "trigger": "2027 applications closed",
+            "message": "The Apply page states \"Applications for Summer/Fall 2027 are closed.\" The next cohort is expected to open in June 2027."
+          },
+          {
+            "trigger": "Two different deadlines",
+            "message": "August 19, 2026 4:00 PM ET for applicants from other countries; September 23, 2026 4:00 PM ET for Canada, the United States and Canadians abroad. Both are 4:00 PM Eastern Time, not midnight."
+          },
+          {
+            "trigger": "Two separate applications",
+            "message": "The scholarship application is separate from McGill admissions. You must apply to both, and finalists must apply to McGill in December even when the program deadline is later."
+          }
+        ],
+        "submission_workflow": [
+          "Register for an information session at apply.mccallmacbainscholars.org/portal/events and attend it",
+          "Choose your McGill target programme and verify it appears in the eligible degrees list",
+          "Submit the online scholarship application well before your group's deadline",
+          "Send your two referees the Foundation's reference request so they complete their own online forms before the deadline",
+          "Apply separately to your McGill programme by its own deadline",
+          "If shortlisted, attend regional interviews between October and December 2026",
+          "If selected as a finalist, attend final interviews in Montreal in March 2027 and apply to McGill in December 2026"
+        ]
+      },
+      "programme_detail_verification": {
+        "cycle_verified": "2027 cohort (Summer/Fall 2027 admission), verified 2026-10-04; applications confirmed closed",
+        "verification_confidence": 0.95,
+        "official_fields_confirmed": [
+          "official_source_url",
+          "application_link",
+          "application_cycle",
+          "deadline_central",
+          "deadline_central_display",
+          "deadline_central_timezone",
+          "status",
+          "funding_amount",
+          "funding_currency",
+          "funding_period",
+          "tuition_coverage",
+          "living_cost_coverage",
+          "travel_coverage",
+          "fully_funded",
+          "benefits",
+          "eligibility",
+          "citizenship_residency",
+          "international_eligibility",
+          "degree_levels",
+          "study_mode",
+          "subject_or_agency_requirement",
+          "application_method",
+          "requirements",
+          "documents",
+          "selection_criteria",
+          "selection_weighting",
+          "award_holder_conditions",
+          "official_contacts",
+          "catalogue_url",
+          "official_updates_url",
+          "program_type",
+          "region"
+        ],
+        "institution_check_required": [
+          "Confirm the applicant separately satisfies McGill's minimum degree and language requirements, since the scholarship defers to McGill admissions",
+          "Confirm the intended McGill programme is full-time, 45 credits or more, and not an excluded degree type"
+        ],
+        "unverified_or_removed_claims": [
+          "Next-cycle (2028) application dates are not published on the official site, so no new deadline_date could be set; deadline_date is null with precision 'recurring'",
+          "No specific English test score or IELTS/TOEFL threshold is published by the scholarship site",
+          "The programme's own English-language requirement is deferred to McGill and was not independently read from mcgill.ca"
+        ],
+        "source_citations": [
+          "https://mccallmacbainscholars.org/apply",
+          "https://mccallmacbainscholars.org/program/",
+          "https://mccallmacbainscholars.org/wp-content/uploads/2019/02/MMS-LOGO_tagline_ENG.png"
+        ],
+        "researched_by": "w1_09a"
+      },
+      "logo_override": {
+        "url": "https://mccallmacbainscholars.org/wp-content/uploads/2019/02/MMS-LOGO_tagline_ENG.png",
+        "page_url": "https://mccallmacbainscholars.org/apply",
+        "official_host": true,
+        "alt_text": "McCall MacBain Scholars at McGill official logo with the tagline Leading with Purpose",
+        "validation_result": "verified",
+        "validation_detail": "png 900x250, HTTP 200 image/png confirmed by probe; renders as the 'BOURSIERS McCall MacBain SCHOLARS | LEADING WITH PURPOSE' wordmark on the programme's own solid dark navy field, so it is legible on a light card and is not white-on-transparent.",
+        "image_kind": "official_logo",
+        "image_format": "png",
+        "verified_at": "2026-10-04T00:00:00+00:00",
+        "host_evidence": "same_registrable_domain",
+        "_award": "McCall MacBain Scholarships at McGill University"
+      },
+      "research_notes": {
+        "logo": "The stored image was already correct and has been re-probed rather than replaced. The Apply and Program Overview page markup both carry https://mccallmacbainscholars.org/wp-content/uploads/2019/02/MMS-LOGO_tagline_ENG.png as the site header logo, hosted on the awarding body's own domain; probed it and it returned HTTP 200 image/png (900x250) rendering the 'BOURSIERS McCall MacBain SCHOLARS | LEADING WITH PURPOSE' mark on a solid dark navy background. Rejected the WordPress-generated -300x83 variant (https://mccallmacbainscholars.org/wp-content/uploads/2019/02/MMS-LOGO_tagline_ENG-300x83.png) as a downscaled duplicate. Note the McGill University crest appears elsewhere in page imagery but is a different body's mark and was not used, since this scholarship is awarded by the McCall MacBain Scholarships at McGill programme.",
+        "unverified": [
+          "2028 cohort application dates are not published on the official site",
+          "No English test score threshold is published by the scholarship site",
+          "McGill's own minimum degree and language requirements were not independently read from mcgill.ca within the fetch budget"
+        ],
+        "substitution": null,
+        "official_pages_read": [
+          "https://mccallmacbainscholars.org/apply",
+          "https://mccallmacbainscholars.org/program/"
+        ],
+        "degree_level_confirmed": "\"McCall MacBain Scholars pursue a funded master's or second-entry professional undergraduate program at McGill University while participating in an interdisciplinary leadership curriculum.\" and \"You can apply for the McCall MacBain Scholarship in 2026 if you are planning to apply for Summer / Fall 2027 admission to a full-time master's or second-entry professional undergraduate program at McGill University. The program must consist of 45 credits or more\" (mccallmacbainscholars.org/program).",
+        "url_observed": null,
+        "contradictions": [
+          "Stored status 'closed' understates the position: the official Apply page says \"Applications for Summer/Fall 2027 are closed\" but the programme is annual and the FAQ states \"Applications will open in June 2026 for our 2027 cohort\", so status corrected to 'upcoming' with the closure recorded in programme_detail_official.status_note.",
+          "Stored deadline_date '2026-09-23' is a past, already-elapsed date from the closed 2027 cycle, so deadline_date is set to null rather than carried forward; deadline_precision corrected from 'varies' to 'recurring'.",
+          "Stored deadline_display 'August 19, 2026 (international applicants)' showed only one of two published deadlines and omitted the 4:00 PM Eastern Time component of both; the official page states August 19, 2026 4:00 PM ET for other countries and September 23, 2026 4:00 PM ET for Canada, the United States and Canadians abroad.",
+          "Stored funding was null; the official Program Overview publishes a $2,300 per month living stipend during academic terms plus full tuition and fees and a one-time relocation grant, so funding_amount/funding_currency/funding_period are now populated and 'Fully Funded' is confirmed rather than assumed.",
+          "Stored degree description \"Master's (and 2nd-entry professional undergraduate)\" is confirmed by the official page but sharpened to name the specific eligible second-entry degrees (BCL/JD, DMD, MDCM) and the exclusions (PhDs, graduate certificates, executive master's, part-time and joint degrees), which the stored record omitted."
+        ],
+        "skeleton": false
+      }
+    },
+    {
+      "target_id": 84,
+      "outcome": "refreshed",
+      "confirm": true,
+      "confirmation_evidence": "UBC's own awards page (you.ubc.ca/financial-planning/scholarships-awards-international-students/) states: \"For the 2026/2027 academic year, IMES awards will be valued at $10,000 - $25,000/year\" and \"Students receive their IMES when they enter their first year at UBC, and the scholarships are renewable for up to three additional years of study.\" UBC's official Dates and deadlines page confirms the next cycle is live: \"Early October 2026 - Application opens\" and \"January 15, 2027 (11:59 p.m. PST) - Applications due - Deadline to apply for Winter Session (September 2027 to April 2028).\"",
+      "new_scholarship": {
+        "name": "International Major Entrance Scholarship (IMES), University of British Columbia",
+        "legacy_titles": ["UBC International Major Entrance Scholarship (IMES)"],
+        "country": "Canada",
+        "region": "North America",
+        "degree_levels": "Bachelor's",
+        "funding_type": "Partially Funded",
+        "official_source": "University of British Columbia",
+        "official_source_url": "https://you.ubc.ca/financial-planning/scholarships-awards-international-students",
+        "status": "open",
+        "is_verified": true,
+        "last_verified_date": "2026-10-04",
+        "deadline": "Apply to UBC by the admissions deadline: January 15, 2027 (11:59 p.m. PST), the deadline to apply for Winter Session (September 2027 to April 2028). The IMES has no separate application form; applying to UBC by the admissions deadline is the eligibility requirement.",
+        "deadline_date": "2027-01-15",
+        "deadline_precision": "exact",
+        "application_period": "Annual. For September 2027 entry the online application opened in early October 2026 and applications are due January 15, 2027 at 11:59 p.m. PST. Scholarship decisions are made between mid-February and the end of April.",
+        "program_type": "Merit-based, automatically considered entrance scholarship for international students entering an undergraduate program at UBC directly from secondary school.",
+        "eligibility_summary": "Applicants must be new to UBC entering directly from secondary school, hold a Canadian study permit, demonstrate exceptional academic achievement and intellectual promise with impressive extracurricular and community involvement, not be nominated for a need-and-merit International Scholars award, and apply to UBC by the admissions deadline.",
+        "eligibility": [
+          "Be new to UBC, entering directly from secondary school",
+          "Be an international student who will be studying at UBC on a Canadian study permit (student visa); changes to citizenship status affect IMES eligibility",
+          "Demonstrate exceptional academic achievement and intellectual promise",
+          "Demonstrate impressive extracurricular and community involvement",
+          "Not be nominated for a need-and-merit-based International Scholars award",
+          "Apply to UBC by the admissions deadline"
+        ],
+        "coverage": [
+          "Award valued at $10,000-$25,000 per year for the 2026/2027 academic year",
+          "Renewable for up to three additional years of study",
+          "Not full cost of education: UBC states these awards do not cover the full cost of education"
+        ],
+        "benefits": [
+          "Entrance award of $10,000-$25,000 per year (2026/2027 academic year)",
+          "Renewability for up to three additional years of study",
+          "Automatic consideration with the UBC undergraduate application"
+        ],
+        "required_documents": [
+          "UBC undergraduate admissions application submitted by January 15, 2027",
+          "Secondary school documents required for admission assessment",
+          "Personal profile and extracurricular history supplied through the UBC application"
+        ],
+        "catalogue_url": "https://you.ubc.ca/financial-planning/scholarships-awards-international-students",
+        "official_updates_url": "https://you.ubc.ca/applying-ubc/dates-deadlines/",
+        "english_requirement": "Applicants must meet UBC's English Language Admission Standard for direct entry to the degree.",
+        "requirements": [
+          "Submit the UBC undergraduate application by the admissions deadline to be considered",
+          "Be new to UBC and entering directly from secondary school",
+          "Hold a Canadian study permit at the time of study"
+        ],
+        "application_method": [
+          "Submit the UBC undergraduate admissions application online at myapplication.ubc.ca",
+          "No separate IMES application is required: UBC states that if you apply to UBC by the admissions deadline you will automatically be considered for the International Major Entrance Scholarship and the Outstanding International Student Award",
+          "Respond to any award offer before the admission acceptance deadline, which is usually May 1"
+        ],
+        "selection_notes": "Merit-based awards are evaluated on the applicant's academic and personal profile. All international undergraduate applicants are considered, so the process is highly competitive. Admissions decisions and award evaluations are separate processes; award decisions are made between mid-February and the end of April, and only successful recipients are notified. Award offers are final.",
+        "best_fit": "Exceptional international secondary school leavers with strong grades and significant extracurricular or community involvement who are applying to an undergraduate program at UBC Vancouver or UBC Okanagan.",
+        "funding_amount": 10000,
+        "funding_currency": "CAD",
+        "funding_period": "per year",
+        "description": "The International Major Entrance Scholarship is a merit-based award for exceptional international students entering undergraduate programs at UBC, awarded in the first year of study and renewable for up to three additional years. For the 2026/2027 academic year UBC states awards will be valued at $10,000 to $25,000 per year, with the number and level varying depending on available funding. Consideration is automatic: no separate application is needed as long as the applicant applies to UBC by the admissions deadline, which for September 2027 entry is January 15, 2027 at 11:59 p.m. PST. Applicants must be new to UBC, entering directly from secondary school, and studying on a Canadian study permit, and cannot be nominated for a need-and-merit International Scholars award. UBC explicitly states these merit-based awards do not cover the full cost of education and that financial need is not considered."
+      },
+      "programme_detail_official": {
+        "official_source_urls": [
+          "https://you.ubc.ca/financial-planning/scholarships-awards-international-students",
+          "https://you.ubc.ca/applying-ubc/dates-deadlines/"
+        ],
+        "application_link": "https://myapplication.ubc.ca/apply",
+        "official_updates_url": "https://you.ubc.ca/applying-ubc/dates-deadlines/",
+        "catalogue_url": "https://you.ubc.ca/financial-planning/scholarships-awards-international-students",
+        "application_cycle": "September 2027 entry; online application opened early October 2026 and applications are due January 15, 2027",
+        "deadline_central": "2027-01-15T23:59",
+        "deadline_central_display": "January 15, 2027 (11:59 p.m. PST) - Deadline to apply for Winter Session (September 2027 to April 2028)",
+        "deadline_central_timezone": "America/Vancouver",
+        "deadline_note": "The IMES has no deadline of its own; UBC states eligibility requires applying to UBC by the admissions deadline. For September 2027 entry that is January 15, 2027 at 11:59 p.m. PST. A separate, earlier November 15, 2026 deadline applies only to the International Scholars Program awards, not to IMES. Scholarship decisions are made between mid-February and the end of April.",
+        "status": "OPEN",
+        "status_note": "The 2027 cycle is open: the online application opened in early October 2026 and the deadline is January 15, 2027 at 11:59 p.m. PST. The published award values on the awards page are labelled for the 2026/2027 academic year; UBC has not yet posted 2027/2028 values.",
+        "funding_amount": 10000,
+        "funding_currency": "CAD",
+        "funding_period": "per year",
+        "funding_duration": "Awarded in first year at UBC and renewable for up to three additional years of study.",
+        "tuition_coverage": false,
+        "tuition_coverage_note": "UBC does not describe the IMES as a tuition credit. It states the opposite in substance: \"Our OIS and IMES are merit-based awards and we are unable to take financial need into consideration. Recipients of OIS and IMES awards are encouraged to create a financial plan for the duration of their degree at UBC as these awards do not cover the full cost of education.\" Unlike the UBC Okanagan awards, which are explicitly \"applied to tuition\", the IMES has no stated tuition-only application.",
+        "living_cost_coverage": null,
+        "travel_coverage": null,
+        "fully_funded": false,
+        "funding_label": "Merit-based entrance award of CAD 10,000-25,000 per year for 2026/2027, renewable for up to three additional years; explicitly does not cover the full cost of education and financial need is not considered. No bond or service obligation stated.",
+        "benefits": [
+          "Award valued at $10,000-$25,000 per year for the 2026/2027 academic year",
+          "Renewable for up to three additional years of study",
+          "Automatic consideration with the UBC application"
+        ],
+        "eligibility": [
+          "New to UBC, entering directly from secondary school",
+          "International student studying at UBC on a Canadian study permit (student visa)",
+          "Exceptional academic achievement and intellectual promise",
+          "Impressive extracurricular and community involvement",
+          "Not nominated for a need-and-merit-based International Scholars award",
+          "Apply to UBC by the admissions deadline"
+        ],
+        "citizenship_residency": "International students only; a Canadian study permit is required and changes to citizenship status affect eligibility.",
+        "international_eligibility": "Open to international students entering UBC undergraduate programs directly from secondary school. Canadian citizens and permanent residents are routed to UBC's Canadian-student awards instead.",
+        "degree_levels": ["Bachelor's"],
+        "study_mode": "Full-time",
+        "research_requirement": null,
+        "subject_or_agency_requirement": "Any undergraduate program at UBC; award is not tied to a faculty or subject.",
+        "application_method": "Submit the UBC undergraduate admissions application online at myapplication.ubc.ca by the admissions deadline. No separate scholarship application exists: UBC states that applying to UBC by the admissions deadline produces automatic consideration for the IMES and the Outstanding International Student Award.",
+        "application_route": "myapplication.ubc.ca (UBC undergraduate admissions); award consideration is automatic.",
+        "requirements": [
+          "UBC undergraduate application submitted by January 15, 2027 at 11:59 p.m. PST for September 2027 entry",
+          "New to UBC, entering directly from secondary school",
+          "Canadian study permit held for the intended study period",
+          "Meet UBC's admission and English language requirements for the degree"
+        ],
+        "documents": [
+          "Completed UBC undergraduate admissions application",
+          "Secondary school transcripts and certificates required for admission assessment",
+          "Personal profile and extracurricular information within the UBC application"
+        ],
+        "english_requirement": "Must meet UBC's English Language Admission Standard for direct entry.",
+        "english_requirement_note": "The IMES page defers to UBC's general English Language Admission Standard rather than publishing its own test score threshold.",
+        "selection_criteria": [
+          "Exceptional academic achievement",
+          "Intellectual promise",
+          "Impressive extracurricular involvement",
+          "Community involvement"
+        ],
+        "selection_weighting": "All international undergraduate applicants are considered, so the award evaluation process is highly competitive. Award evaluation is based on the applicant's academic and personal profile and is separate from the admissions decision.",
+        "duration": "Up to four years in total (first-year award plus up to three additional years of renewal).",
+        "award_holder_conditions": [
+          "Awards are renewable but renewability and amount vary by award",
+          "Award offers are final and recipients must accept by their admission offer deadline",
+          "Financial need is not considered; recipients must fund the remainder of the degree themselves"
+        ],
+        "supplements_or_initiatives": [
+          "UBC Vantage One variant: International Major Entrance Scholarship for Vantage One, for students entering through UBC Vantage College"
+        ],
+        "official_contacts": {
+          "general": "https://you.ubc.ca/contact-us/",
+          "application_portal": "https://myapplication.ubc.ca/apply"
+        },
+        "description": "The International Major Entrance Scholarship is a UBC merit-based entrance award for exceptional international undergraduates entering directly from secondary school. For the 2026/2027 academic year it is valued at $10,000 to $25,000 per year, is awarded in first year and is renewable for up to three further years. Consideration is automatic on submitting the UBC application by the admissions deadline, which is January 15, 2027 at 11:59 p.m. PST for September 2027 entry. Applicants must hold a Canadian study permit and cannot be nominated for a need-and-merit International Scholars award. UBC states the award does not cover the full cost of education.",
+        "program_type": "Merit-based undergraduate entrance scholarship",
+        "region": "North America",
+        "coverage": "CAD 10,000-25,000 per year, renewable up to three additional years; explicitly not full cost of education. No tuition-only application stated.",
+        "last_verified_date": "2026-10-04"
+      },
+      "programme_detail_applicant_utility": {
+        "application_readiness_checklist": [
+          "Apply to UBC by January 15, 2027 at 11:59 p.m. PST - there is no separate scholarship form to submit",
+          "Be genuinely new to UBC and entering directly from secondary school",
+          "Secure a Canadian study permit for the intended study period, since eligibility depends on it",
+          "Check you are not nominated for a need-and-merit International Scholars award, which would disqualify you from IMES consideration",
+          "Build a strong personal profile covering grades and extracurricular or community involvement",
+          "Make sure you also clear UBC's English Language Admission Standard",
+          "Be ready to accept the award offer before your admission acceptance deadline, which is usually May 1"
+        ],
+        "common_rejection_risks": [
+          "Missing the January 15, 2027 11:59 p.m. PST admissions deadline, which is the only IMES deadline",
+          "Being nominated for a need-and-merit International Scholars award, which removes merit-based eligibility",
+          "Applying as a transfer or post-secondary applicant rather than entering directly from secondary school",
+          "Losing Canadian study permit status, since changes to citizenship status affect IMES eligibility",
+          "Assuming the award covers tuition or living costs - UBC states it does not cover the full cost of education",
+          "A thin personal profile in a pool where all international undergraduate applicants are considered"
+        ],
+        "estimated_uncovered_costs": [
+          "The award covers only $10,000-$25,000 per year and UBC states it does not cover the full cost of education",
+          "Financial need is not considered, so no top-up for demonstrated hardship is available through IMES",
+          "Living costs, books, transportation and health insurance are not named as covered items",
+          "Plan the remainder of the degree budget using UBC's own cost estimator"
+        ],
+        "document_audit": [
+          "UBC undergraduate application submitted and confirmation received",
+          "Secondary school transcripts and certificates uploaded for admission assessment",
+          "Personal profile completed with academic history",
+          "Extracurricular and community involvement entries completed",
+          "Canadian study permit documentation in place for enrolment"
+        ],
+        "alerts": [
+          {
+            "trigger": "No separate scholarship application",
+            "message": "IMES consideration is automatic. UBC states that if you apply to UBC by the admissions deadline you will automatically be considered for the International Major Entrance Scholarship and the Outstanding International Student Award."
+          },
+          {
+            "trigger": "Misrouted to the wrong award pool",
+            "message": "If you apply to the International Scholars Program you will not be considered for merit-based awards, including IMES. Applicants may be considered for either the merit-based or the need-based pool, not both."
+          },
+          {
+            "trigger": "Award values not yet updated for the new cycle",
+            "message": "The published $10,000-$25,000 range is labelled for the 2026/2027 academic year. UBC has not posted 2027/2028 values, and the number and level of awards vary depending on available funding."
+          },
+          {
+            "trigger": "Silent non-award",
+            "message": "Only successful recipients receive notification of an award offer. If you have not heard by your admission deadline, no award is being made to you."
+          }
+        ],
+        "submission_workflow": [
+          "Choose your UBC program and campus and submit the undergraduate application at myapplication.ubc.ca",
+          "Complete the personal profile section covering academic history and personal profile",
+          "Add extracurricular and community involvement evidence",
+          "Upload secondary school documents required for admission assessment",
+          "Submit before January 15, 2027 at 11:59 p.m. PST for September 2027 entry",
+          "After admission, monitor email from February to the end of April for award decisions, checking spam filters",
+          "Accept any award offer before your admission acceptance deadline, usually May 1"
+        ]
+      },
+      "programme_detail_verification": {
+        "cycle_verified": "September 2027 entry cycle, verified 2026-10-04",
+        "verification_confidence": 0.92,
+        "official_fields_confirmed": [
+          "official_source_url",
+          "application_link",
+          "application_cycle",
+          "deadline_central",
+          "deadline_central_display",
+          "deadline_central_timezone",
+          "status",
+          "funding_amount",
+          "funding_currency",
+          "funding_period",
+          "funding_duration",
+          "degree_levels",
+          "eligibility",
+          "citizenship_residency",
+          "international_eligibility",
+          "selection_criteria",
+          "selection_weighting",
+          "application_method",
+          "requirements",
+          "documents",
+          "official_contacts",
+          "catalogue_url",
+          "official_updates_url",
+          "program_type",
+          "region"
+        ],
+        "institution_check_required": [
+          "Confirm the applicant holds or will hold a Canadian study permit, since eligibility depends on it",
+          "Confirm the applicant is new to UBC entering directly from secondary school rather than as a transfer or post-secondary applicant",
+          "Confirm the applicant is not nominated for a need-and-merit International Scholars award, which removes merit-based eligibility"
+        ],
+        "unverified_or_removed_claims": [
+          "Award values for the 2027/2028 academic year are not yet published; only the 2026/2027 range of $10,000-$25,000 is on the official page",
+          "living_cost_coverage and travel_coverage are not addressed anywhere on the official IMES page, so both remain null",
+          "tuition_coverage is recorded as false because UBC states only that the awards do not cover the full cost of education and does not describe the IMES as a tuition credit; UBC does not publish an IMES-specific allocation between tuition and living costs",
+          "Exact amounts are not fixed per recipient - UBC states the number and level of scholarships vary depending on available funding, so funding_amount records the published minimum of the range"
+        ],
+        "source_citations": [
+          "https://you.ubc.ca/financial-planning/scholarships-awards-international-students",
+          "https://you.ubc.ca/applying-ubc/dates-deadlines/",
+          "https://you.ubc.ca/wp-content/uploads/2021/10/cropped-ubc-favicon-192x192.webp"
+        ],
+        "researched_by": "w1_09a"
+      },
+      "logo_override": {
+        "url": "https://you.ubc.ca/wp-content/uploads/2021/10/cropped-ubc-favicon-192x192.webp",
+        "page_url": "https://you.ubc.ca/financial-planning/scholarships-awards-international-students",
+        "official_host": true,
+        "alt_text": "University of British Columbia official UBC logo",
+        "validation_result": "verified",
+        "validation_detail": "webp 192x192, HTTP 200 image/webp confirmed by probe; renders the white 'UBC' institutional wordmark on the university's own solid UBC navy field, so it is legible on a light card and is not white-on-transparent.",
+        "image_kind": "official_logo",
+        "image_format": "webp",
+        "verified_at": "2026-10-04T00:00:00+00:00",
+        "host_evidence": "same_registrable_domain",
+        "_award": "International Major Entrance Scholarship (IMES), University of British Columbia"
+      },
+      "research_notes": {
+        "logo": "UBC's Common Look and Feel header on you.ubc.ca and www.ubc.ca renders its logo purely from the CSS sprite sheet https://cdn.ubc.ca/clf/7.0.3/img/ubc7-clf-sprite-blue.png (www.ubc.ca uses the 7.0.5 copy); a sprite sheet is a stylesheet asset full of UI icons, not a logo, so it was rejected - and it is exactly what the stored record for target 86 was using. The header markup exposes no standalone logo image and no og:image or schema.org logo. UBC's official brand download page at brand.ubc.ca/guidelines/downloads/logos-signatures-and-visual-identity-assets/ sits behind a UBC Cybersecurity JavaScript browser-verification wall and returned an interstitial, so no asset could be read from it. Direct probes of guessed CLF paths (https://cdn.ubc.ca/clf/7.0.3/img/ubc-logo.svg and .../img/ubc-logo-2022.svg) both returned HTTP 404. Playwright scans of you.ubc.ca, www.ubc.ca, ok.ubc.ca, students.ubc.ca and www.ubc.ca/visualidentity/ found no standalone logo file anywhere on UBC domains. The mark finally reported is https://you.ubc.ca/wp-content/uploads/2021/10/cropped-ubc-favicon-192x192.webp, discovered in the awarding body's own page head as its declared icon asset; probed it and it returned HTTP 200 image/webp rendering the white 'UBC' wordmark on a solid UBC navy field. This is UBC's own institutional mark on UBC's own domain, not a third-party asset. The same asset is reused for target_ids 85 and 86 because all three are awarded by the University of British Columbia; it was probed once and is not re-probed per record.",
+        "unverified": [
+          "IMES award values for the 2027/2028 academic year are not yet published by UBC",
+          "Whether the award is credited against tuition or paid as a general award is not stated; UBC only says the awards do not cover the full cost of education",
+          "No living-cost or travel coverage is mentioned for the IMES"
+        ],
+        "substitution": null,
+        "official_pages_read": [
+          "https://you.ubc.ca/financial-planning/scholarships-awards-international-students",
+          "https://you.ubc.ca/applying-ubc/dates-deadlines/"
+        ],
+        "degree_level_confirmed": "\"International Major Entrance Scholarships (IMES) are awarded to exceptional international students entering undergraduate programs at UBC. Students receive their IMES when they enter their first year at UBC, and the scholarships are renewable for up to three additional years of study.\" (you.ubc.ca/financial-planning/scholarships-awards-international-students, 'International Major Entrance Scholarship')",
+        "url_observed": null,
+        "contradictions": [
+          "Stored deadline_display 'January 15, 2026 (next cycle: 2027)' pointed at an already-past year. UBC's live Dates and deadlines page gives January 15, 2027 (11:59 p.m. PST) for Winter Session September 2027 to April 2028, with the application opening in early October 2026, so deadline_date is set to 2027-01-15 with precision 'exact'.",
+          "Stored deadline_precision 'varies' is wrong; the deadline is a single published calendar date and time.",
+          "Stored funding was null; UBC publishes \"For the 2026/2027 academic year, IMES awards will be valued at $10,000 - $25,000/year\", so funding_amount and funding_currency are now populated.",
+          "Stored funding label 'Partial' is confirmed but under-specified; the stored record omitted that the award is renewable for up to three additional years and that the amount varies with available funding.",
+          "Stored program_type was null; the official page confirms this is a merit-based award considered automatically, with no separate application, and that applicants nominated for a need-and-merit International Scholars award are excluded.",
+          "Stored current_image_url was a stock-style 'hand holding dollar coin' icon SVG from you.ubc.ca/wp-content/uploads/2025/04/, i.e. decorative artwork rather than the university's mark; replaced with the probed official UBC logo."
+        ],
+        "skeleton": false
+      }
+    },
+    {
+      "target_id": 85,
+      "outcome": "refreshed",
+      "confirm": true,
+      "confirmation_evidence": "The award is confirmed on UBC's own International Scholars page, which lists it under 'Award categories' as: \"Karen McKellin International Leader of Tomorrow Award - This award recognizes exceptional prospective international undergraduate students who demonstrate superior academic achievement and exemplary leadership skills that support and empower others through collaboration, empathy and active listening.\" The same page states \"Applications for the September 2027 intake will open on October 5, 2026\" and step 6 is \"By November 15: Submit your completed application - The International Scholars Program application is due November 15.\"",
+      "new_scholarship": {
+        "name": "Karen McKellin International Leader of Tomorrow Award (UBC International Scholars Program)",
+        "legacy_titles": ["Karen McKellin International Leader of Tomorrow Award (UBC)"],
+        "country": "Canada",
+        "region": "North America",
+        "degree_levels": "Bachelor's",
+        "funding_type": "Partially Funded",
+        "official_source": "University of British Columbia",
+        "official_source_url": "https://you.ubc.ca/financial-planning/scholarships-awards-international-students/international-scholars",
+        "status": "upcoming",
+        "is_verified": true,
+        "last_verified_date": "2026-10-04",
+        "deadline": "By November 15: Submit your completed application - The International Scholars Program application is due November 15. For the September 2027 intake this is November 15, 2026. Supporting documents are due January 31, 2027, and the nominator and teacher referee recommendations must be completed a few days before November 15.",
+        "deadline_date": "2026-11-15",
+        "deadline_precision": "exact",
+        "application_period": "September 2027 intake. The award application opens October 5, 2026 and is due November 15, 2026; required admission documents and proof of English language proficiency are due January 31, 2027; shortlisted applicants complete a video interview between January and March; results are released on a rolling basis from February to April, with final notice by early to mid-April.",
+        "program_type": "Need-and-merit-based undergraduate award within UBC's International Scholars Program, requiring high school nomination.",
+        "eligibility_summary": "Applicants must be international students studying in Canada on a Canadian study permit, entering UBC directly from an accredited secondary school with their first undergraduate degree, graduating no earlier than June 2026 for the 2027 Winter session, able to prove significant financial need, achieving superior academic performance of all As or equivalent, meeting UBC's English Language Admission Standard, and nominated by their school. All criteria must be met with no exceptions.",
+        "eligibility": [
+          "International student who will be studying in Canada on a Canadian study permit",
+          "Entering UBC directly from an accredited secondary school",
+          "Applicants for the 2027 Winter session must have graduated from high school no earlier than June 2026",
+          "Applying for a first undergraduate degree",
+          "Can prove a significant level of financial need, with official supporting documents",
+          "Family is not able to afford a significant level of educational costs and has no access to external funding",
+          "Meets UBC's admission requirements, including general and degree-specific requirements",
+          "Demonstrates superior academic achievement (all As or equivalent standard)",
+          "Meets UBC's English Language Admission Standard, or is eligible for Vantage College and the Vantage One Excellence Award",
+          "Nominated by the secondary school through one nominator and one teacher referee who must be different people"
+        ],
+        "coverage": [
+          "Need-and-merit-based financial support assessed against documented financial need (no dollar value published for this award category)"
+        ],
+        "benefits": [
+          "Financial support determined by UBC's financial need assessment",
+          "Skill building workshops and retreats",
+          "Optional exchange and co-op participation",
+          "Dedicated International Scholars Program advisors",
+          "Membership in the International Scholars cohort, described as over 680 Scholars from 111+ countries since 2001"
+        ],
+        "required_documents": [
+          "Completed International Scholars Program award application",
+          "Official documents demonstrating financial need, including family gross income, expenses and family assets",
+          "Secondary school nomination by a guidance counsellor, principal or administrator",
+          "Teacher referee recommendation",
+          "UBC admission documents submitted by January 31",
+          "Evidence of meeting UBC's English Language Admission Standard",
+          "Four essay questions of approximately 150-250 words each"
+        ],
+        "catalogue_url": "https://you.ubc.ca/financial-planning/scholarships-awards-international-students/international-scholars",
+        "official_updates_url": "https://you.ubc.ca/financial-planning/scholarships-awards-international-students/international-scholars",
+        "english_requirement": "Must meet UBC's English Language Admission Standard by January 31, 2027. Applicants who do not satisfy it for direct entry may be eligible for UBC Vantage College and the Vantage One Excellence Award.",
+        "requirements": [
+          "All eligibility criteria must be met; UBC states there are no exceptions",
+          "Submit the UBC Admissions application first - the award application requests confirmation of UBC application submission and cannot be started until it is done",
+          "Obtain one school nominator and one teacher referee, who must be different people",
+          "Have the nominator and teacher recommendations completed and submitted a few days before November 15",
+          "Submit the completed award application by November 15",
+          "Submit all required admission documents and English language evidence by January 31",
+          "Complete a video interview if invited, within one week"
+        ],
+        "application_method": [
+          "Decide on academic program and campus by mid-September",
+          "Discuss the nomination with the secondary school in late September",
+          "Apply to UBC in early October via myapplication.ubc.ca",
+          "Create an award application account and invite the nominator and teacher referee to complete their forms",
+          "Gather family financial information and complete the award application sections in mid-October",
+          "Submit the completed award application by November 15",
+          "Submit required documents by January 31 and complete a video interview if invited"
+        ],
+        "selection_notes": "UBC evaluates academic achievement, leadership qualities, exceptional contributions to community, and financial need. A financial assessment reviews family gross income, expenses and family assets. Applicants do not select which award they wish to receive; UBC's team automatically considers each applicant for the awards they are eligible for.",
+        "best_fit": "Academically exceptional international secondary school leavers from low-income or disadvantaged backgrounds who can document significant financial need and have a committed, empathetic leadership record.",
+        "funding_amount": null,
+        "funding_currency": null,
+        "funding_period": null,
+        "description": "The Karen McKellin International Leader of Tomorrow Award is one of four need-and-merit-based award categories in UBC's International Scholars Program. It recognizes exceptional prospective international undergraduates with superior academic achievement and exemplary leadership skills that support and empower others through collaboration, empathy and active listening, and who have made a positive impact through school and community service. Applicants must be nominated by their secondary school through one nominator and one teacher referee, must document significant financial need, and must have all As or equivalent. For the September 2027 intake applications open on October 5, 2026 and the award application is due November 15, 2026, with supporting documents due January 31, 2027. UBC does not publish a dollar value for this award category."
+      },
+      "programme_detail_official": {
+        "official_source_urls": [
+          "https://you.ubc.ca/financial-planning/scholarships-awards-international-students/international-scholars"
+        ],
+        "application_link": "https://myapplication.ubc.ca/apply",
+        "official_updates_url": "https://you.ubc.ca/financial-planning/scholarships-awards-international-students/international-scholars",
+        "catalogue_url": "https://you.ubc.ca/financial-planning/scholarships-awards-international-students/international-scholars",
+        "application_cycle": "September 2027 intake; award applications open October 5, 2026 and are due November 15, 2026",
+        "deadline_central": "2026-11-15",
+        "deadline_central_display": "By November 15: Submit your completed application - The International Scholars Program application is due November 15.",
+        "deadline_central_timezone": "America/Vancouver",
+        "deadline_note": "The International Scholars Program application is due November 15 each cycle, which is November 15, 2026 for the September 2027 intake. Two further dates are fixed by UBC: the nominator and teacher referee recommendations must be completed and submitted a few days before November 15, and all required admission documents plus evidence of meeting UBC's English Language Admission Standard are due January 31, 2027. UBC states applications started shortly before the deadline are less likely to be successful. Award results are released on a rolling basis from February to April.",
+        "status": "UPCOMING",
+        "status_note": "The official page states \"Applications for the September 2027 intake will open on October 5, 2026.\" As of verification on 2026-10-04 the award is one day from opening, so status is upcoming rather than open. The November 15, 2026 deadline is still ahead and therefore applicable.",
+        "funding_amount": null,
+        "funding_currency": null,
+        "funding_period": null,
+        "funding_duration": "Award applies to the undergraduate degree; UBC does not publish a term-by-term breakdown for this award category.",
+        "tuition_coverage": false,
+        "tuition_coverage_note": "UBC publishes no tuition-coverage statement for the Karen McKellin International Leader of Tomorrow Award specifically. The programme page describes the award only in terms of academic achievement and leadership recognition, and the programme as a whole is need-assessed financial support. Tuition coverage is therefore not claimed. By contrast UBC does state, for the separate Vantage One Excellence Award in the same programme, that awards range in value up to the full cost of a student's academic program and living expenses.",
+        "living_cost_coverage": null,
+        "travel_coverage": null,
+        "fully_funded": false,
+        "funding_label": "Need-and-merit-based financial support assessed against documented family financial need; UBC publishes no dollar value for this award category and no full-cost-of-education commitment. No bond or service obligation stated.",
+        "benefits": [
+          "Financial support determined by UBC's financial need assessment",
+          "Skill building workshops and retreats",
+          "Option to participate in exchange and co-op",
+          "Dedicated International Scholars Program advisors",
+          "Membership in a cohort of more than 680 International Scholars from over 111 countries since 2001"
+        ],
+        "eligibility": [
+          "International student studying in Canada on a Canadian study permit",
+          "Entering UBC directly from an accredited secondary school",
+          "Graduated from high school no earlier than June 2026 for the 2027 Winter session",
+          "Applying for a first undergraduate degree",
+          "Able to prove a significant level of financial need with official documents",
+          "Meets UBC's admission requirements including degree-specific requirements",
+          "Superior academic achievement, all As or equivalent standard",
+          "Meets UBC's English Language Admission Standard",
+          "Nominated by the secondary school with one nominator and one teacher referee who are different people",
+          "Not enrolled in an excluded degree: Bachelor of Nursing, Bachelor of Dental Science in Dental Hygiene, Bachelor of Medical Laboratory Science, Bachelor + Master of Management, dual degrees, or joint degrees involving UBC Okanagan and UBC Vancouver or another institution"
+        ],
+        "citizenship_residency": "International students studying in Canada on a Canadian study permit. Canadian citizens and permanent residents are not eligible for this programme.",
+        "international_eligibility": "Open to international students only, and only those entering UBC directly from an accredited secondary school for a first undergraduate degree. High schools or registered non-profit organisations may nominate candidates; the non-profit route is typically reserved for applicants from war-torn, politically unstable or economically disadvantaged areas where no other education option exists.",
+        "degree_levels": ["Bachelor's"],
+        "study_mode": "Full-time",
+        "research_requirement": null,
+        "subject_or_agency_requirement": "Applicants are considered for their first-choice program; a second choice should still be selected. Excluded degrees are listed in the eligibility criteria.",
+        "application_method": "Nine-step process published by UBC: decide on program and campus by mid-September; discuss nomination with the school in late September; apply to UBC in early October; discuss the nomination and create the award application account in early October and invite the nominator and teacher referee; gather family and financial information and complete the award application sections in mid-October including four essay questions of approximately 150-250 words; submit the completed application by November 15; submit required documents by January 31; complete a video interview between January and March if invited; monitor email for results from February to April.",
+        "application_route": "UBC Admissions application at myapplication.ubc.ca plus the International Scholars Program award application, accessed from the International Scholars page on you.ubc.ca.",
+        "requirements": [
+          "All eligibility criteria must be met; UBC states there are no exceptions",
+          "UBC Admissions application must be submitted before the award application can be started",
+          "One school nominator (guidance counsellor, principal or administrator) and one teacher referee, who must be different people",
+          "Nominator and teacher recommendations completed and submitted a few days before November 15",
+          "Completed award application submitted by November 15",
+          "Required admission documents and English Language Admission Standard evidence submitted by January 31",
+          "Video interview completed within one week if invited"
+        ],
+        "documents": [
+          "Completed International Scholars Program award application",
+          "Official financial need documents covering family gross income, expenses, family assets, dependents and annual school fees",
+          "Secondary school nomination",
+          "Teacher referee recommendation",
+          "UBC admission documents",
+          "Evidence of meeting UBC's English Language Admission Standard",
+          "Four essay responses of approximately 150-250 words each"
+        ],
+        "english_requirement": "Must meet UBC's English Language Admission Standard by January 31, 2027, or meet the English language requirement for UBC Vantage College if applying through Vantage One.",
+        "english_requirement_note": "If an English language test is required, UBC states it must be completed early enough for official test results to reach UBC Admissions by January 31; the application cannot proceed if admission documents or requirements are missing.",
+        "selection_criteria": [
+          "Superior academic achievement",
+          "Exemplary leadership skills that support and empower others through collaboration, empathy and active listening",
+          "Positive impact through school and community service projects and initiatives",
+          "Notable achievement in other academic or extra-curricular pursuits",
+          "Demonstrated significant financial need, assessed from family gross income, expenses and assets"
+        ],
+        "selection_weighting": "UBC's evaluation includes a financial assessment. Applicants do not select a specific award; UBC's team automatically considers each applicant for the award categories they are eligible for. More than 250 semi-finalist style interview stages are not described here; for this programme shortlisted applicants may be invited to a video interview.",
+        "duration": "Full undergraduate degree.",
+        "award_holder_conditions": [
+          "Applicants may only be considered for either the merit-based or the financial need-based award programme, not both",
+          "Scholars are expected to participate in skill building workshops and retreats",
+          "Results are released on a rolling basis from February to April, with final notification by early to mid-April",
+          "UBC Housing applications should wait until award decisions are released; the housing deadline is May 1"
+        ],
+        "supplements_or_initiatives": [
+          "Skill building workshops and retreats",
+          "Optional exchange and co-op participation",
+          "Dedicated International Scholars Program advisors",
+          "Related awards in the same programme: Donald A. Wehrung International Student Award, International Impact Award, Vantage One Excellence Award"
+        ],
+        "official_contacts": {
+          "general": "https://account.you.ubc.ca/s/ask-ubc",
+          "programme_page": "https://you.ubc.ca/financial-planning/scholarships-awards-international-students/international-scholars"
+        },
+        "description": "The Karen McKellin International Leader of Tomorrow Award is one of four need-and-merit-based award categories in UBC's International Scholars Program, recognising exceptional prospective international undergraduates with superior academic achievement and exemplary, empathetic leadership. Applicants must be entering UBC directly from an accredited secondary school, hold a Canadian study permit, prove significant financial need with official documents, achieve all As or equivalent, meet UBC's English Language Admission Standard, and be nominated by their school through one nominator and one teacher referee. For September 2027 entry the award application opens October 5, 2026 and closes November 15, 2026, with documents due January 31, 2027. UBC publishes no dollar value for this award category.",
+        "program_type": "Need-and-merit-based undergraduate award (nominated)",
+        "region": "North America",
+        "coverage": "Need-assessed financial support; UBC publishes no dollar value or tuition/living split for this award category. No bond or service obligation stated.",
+        "last_verified_date": "2026-10-04"
+      },
+      "programme_detail_applicant_utility": {
+        "application_readiness_checklist": [
+          "Ask your high school whether it can nominate you - a nomination is mandatory and the school must confirm you meet the criteria before you proceed",
+          "Secure two different people: one nominator (guidance counsellor, principal or administrator) and one teacher referee familiar with your work in your chosen field",
+          "Submit the UBC Admissions application in early October; the award application cannot be started until this is done",
+          "Gather family financial documents early: gross income, expenses, family assets, dependents, annual school fees and other sources of support",
+          "Use UBC's cost estimator to calculate your family contribution and financial need",
+          "Draft four essay answers of roughly 150-250 words each well before November 15",
+          "Ask your nominator and referee to submit their forms a few days before November 15, not on the deadline",
+          "Book any English language test so official results reach UBC Admissions by January 31, 2027"
+        ],
+        "common_rejection_risks": [
+          "Missing the November 15 award application deadline - UBC states applications started shortly before the deadline are less likely to be successful",
+          "Missing the January 31 document deadline, which UBC states is the award document deadline and not the date in the 'UBC Application - Next Steps' email",
+          "No school nomination, or nominator and referee being the same person",
+          "Failing to document significant financial need; the financial assessment reviews family gross income, expenses and assets",
+          "Not achieving the all As or equivalent standard",
+          "Applying for the need-based International Scholars Program and expecting to be considered for merit-based awards - UBC states you will not be",
+          "Applying to an excluded degree such as Nursing, Dental Hygiene, Medical Laboratory Science, the integrated Bachelor + Master of Management, or a dual/joint degree"
+        ],
+        "estimated_uncovered_costs": [
+          "UBC publishes no dollar value for this award category, so the shortfall against your assessed need cannot be calculated from official sources",
+          "Financial support is determined case by case through UBC's need assessment rather than a fixed published amount",
+          "Housing is separate: UBC tells applicants to wait for award decisions before applying for residence, with a May 1 housing deadline",
+          "Books, daily living costs and travel are not named as covered items for this award"
+        ],
+        "document_audit": [
+          "UBC Admissions application submitted (required before the award application opens)",
+          "Award application account created and both referee invitations issued",
+          "Nominator recommendation submitted",
+          "Teacher referee recommendation submitted",
+          "Official financial need documents uploaded",
+          "Four essay responses completed at the required length",
+          "Admission documents and English language evidence uploaded by January 31"
+        ],
+        "alerts": [
+          {
+            "trigger": "Award application not yet open",
+            "message": "UBC states applications for the September 2027 intake open on October 5, 2026. Before then you can prepare documents and confirm your school's nomination ability."
+          },
+          {
+            "trigger": "Document deadline differs from the email date",
+            "message": "UBC states that as an International Scholars Program applicant your document deadline is January 31 and not the date listed in your 'UBC Application - Next Steps' email."
+          },
+          {
+            "trigger": "Automatic award assignment",
+            "message": "You do not choose which award you receive. UBC's team automatically considers you for the award categories you are eligible for, so applying for the International Scholars Program covers all of them."
+          },
+          {
+            "trigger": "Mutually exclusive award pools",
+            "message": "Applicants may only be considered for either the merit-based or the financial need-based award programme, not both."
+          }
+        ],
+        "submission_workflow": [
+          "Mid-September: choose your first-choice UBC program and campus, and a second choice",
+          "Late September: confirm your high school can nominate you and obtain your nominator's and teacher referee's contact details",
+          "Early October: submit the UBC Admissions application at myapplication.ubc.ca",
+          "Early October: email your nominator and referee the recommendation request, then create your award application account and invite them to complete their forms",
+          "Follow up to confirm both referees received their invitations, since you cannot complete the application until both are submitted",
+          "Mid-October: gather financial information, calculate your need with UBC's cost estimator, and complete all award application sections and essays",
+          "By November 15, 2026: submit the completed award application",
+          "By January 31, 2027: submit all required admission documents and English language evidence",
+          "January to March 2027: complete a video interview within one week if invited",
+          "February to April 2027: monitor email, including spam filters, for results; wait for award decisions before applying for UBC Housing"
+        ]
+      },
+      "programme_detail_verification": {
+        "cycle_verified": "September 2027 intake, verified 2026-10-04; applications confirmed to open October 5, 2026",
+        "verification_confidence": 0.9,
+        "official_fields_confirmed": [
+          "official_source_url",
+          "application_cycle",
+          "deadline_central",
+          "deadline_central_display",
+          "status",
+          "degree_levels",
+          "eligibility",
+          "citizenship_residency",
+          "international_eligibility",
+          "selection_criteria",
+          "application_method",
+          "application_route",
+          "requirements",
+          "documents",
+          "english_requirement",
+          "award_holder_conditions",
+          "supplements_or_initiatives",
+          "official_contacts",
+          "program_type",
+          "region",
+          "benefits"
+        ],
+        "institution_check_required": [
+          "Confirm the secondary school is able to nominate the applicant, including any limit on the number of nominations per campus",
+          "Confirm the applicant can document significant financial need acceptable to UBC's financial assessment",
+          "Confirm the applicant is not enrolled in one of the excluded degrees and that January 31 admission documents can be met"
+        ],
+        "unverified_or_removed_claims": [
+          "funding_amount and funding_currency: UBC publishes no dollar value for the Karen McKellin International Leader of Tomorrow Award category, so both remain null",
+          "tuition_coverage: UBC publishes no tuition-coverage statement for this award category, so it is not claimed and fully_funded is false; the programme's only full-cost statement applies to the separate Vantage One Excellence Award",
+          "living_cost_coverage and travel_coverage: not addressed on the official page",
+          "Specific shortlisting or interview volumes for this award category are not published"
+        ],
+        "source_citations": [
+          "https://you.ubc.ca/financial-planning/scholarships-awards-international-students/international-scholars",
+          "https://you.ubc.ca/wp-content/uploads/2021/10/cropped-ubc-favicon-192x192.webp"
+        ],
+        "researched_by": "w1_09a"
+      },
+      "logo_override": {
+        "url": "https://you.ubc.ca/wp-content/uploads/2021/10/cropped-ubc-favicon-192x192.webp",
+        "page_url": "https://you.ubc.ca/financial-planning/scholarships-awards-international-students/international-scholars",
+        "official_host": true,
+        "alt_text": "University of British Columbia official UBC logo",
+        "validation_result": "verified",
+        "validation_detail": "webp 192x192, HTTP 200 image/webp confirmed by probe; renders the white 'UBC' institutional wordmark on the university's own solid UBC navy field, so it is legible on a light card and is not white-on-transparent. Same awarding body and asset as target_id 84; probed once for the University of British Columbia.",
+        "image_kind": "official_logo",
+        "image_format": "webp",
+        "verified_at": "2026-10-04T00:00:00+00:00",
+        "host_evidence": "same_registrable_domain",
+        "_award": "Karen McKellin International Leader of Tomorrow Award (UBC International Scholars Program)"
+      },
+      "research_notes": {
+        "logo": "Same awarding body (University of British Columbia) as target_id 84, so the same verified asset applies and was not re-probed: https://you.ubc.ca/wp-content/uploads/2021/10/cropped-ubc-favicon-192x192.webp, HTTP 200 image/webp, white 'UBC' wordmark on a solid UBC navy field, discovered in the head of the awarding body's own page as its declared icon asset. Rejected for this record: the CLF sprite sheet https://cdn.ubc.ca/clf/7.0.3/img/ubc7-clf-sprite-blue.png (a stylesheet asset, not a logo) and the brand.ubc.ca download page (behind a UBC Cybersecurity JavaScript browser-verification wall). The stored image for this record, https://you.ubc.ca/wp-content/uploads/2019/10/ISI-2019-096-YARA9377.jpg, is a photograph, not a logo, and was replaced. Full probing log for the host is recorded on target_id 84.",
+        "unverified": [
+          "No dollar value is published for the Karen McKellin International Leader of Tomorrow Award category",
+          "No tuition or living-cost coverage split is published for this award",
+          "Interview volumes and weighting for this specific award category are not published"
+        ],
+        "substitution": null,
+        "official_pages_read": [
+          "https://you.ubc.ca/financial-planning/scholarships-awards-international-students/international-scholars"
+        ],
+        "degree_level_confirmed": "\"The UBC International Scholars Program is for international students who have demonstrated leadership qualities, exceptional contributions to their communities, have outstanding academic performance, and require meaningful financial support to attend UBC.\" Combined with the eligibility line \"You are applying for your first undergraduate degree\" and the excluded-degree list referring to bachelor's degrees (Bachelor of Nursing, Bachelor of Dental Science in Dental Hygiene, Bachelor of Medical Laboratory Science), this confirms the award funds a bachelor's degree. The award's own description reads \"This award recognizes exceptional prospective international undergraduate students.\"",
+        "url_observed": null,
+        "contradictions": [
+          "Stored deadline_display 'Apply to UBC by January 15, 2026' is the wrong deadline for this award. January 15 is UBC's general undergraduate application deadline; the International Scholars Program award application is due November 15, and the official page's own step 6 says \"By November 15: Submit your completed application\". deadline_date corrected to 2026-11-15.",
+          "Stored deadline_date was null and deadline_precision 'varies'; the official page publishes an exact annual date of November 15, and for the September 2027 intake that is November 15, 2026, so precision is corrected to 'exact'.",
+          "Stored status 'open' was premature: the official page states \"Applications for the September 2027 intake will open on October 5, 2026\" and verification took place on 2026-10-04, so status corrected to 'upcoming'.",
+          "Stored funding 'Partial to Full' overstates the coverage for this award. UBC publishes no dollar value for this category and only the separate Vantage One Excellence Award is described as reaching full cost, so funding_type is narrowed to 'Partially Funded' with funding_amount left null.",
+          "Stored program_type text \"If you apply to the International Scholars Program, you will not be considered for merit-based awards.\" is real but was stored as if it described this award; it is an exclusion rule. It has been moved into eligibility_summary and award_holder_conditions and the program_type field now names the award type correctly.",
+          "Stored current_image_url was a photograph (ISI-2019-096-YARA9377.jpg) rather than a logo; replaced with the probed official UBC logo."
+        ],
+        "skeleton": false
+      }
+    },
+    {
+      "target_id": 86,
+      "outcome": "refreshed",
+      "confirm": true,
+      "confirmation_evidence": "The award is confirmed on UBC's own International Scholars page under 'Award categories': \"Donald A. Wehrung International Student Award - This award recognizes outstanding international undergraduate students from impoverished or war-torn areas who have achieved academic excellence under challenging circumstances, and who would be unable to attend university without significant financial assistance.\" The stored official_source_url returned HTTP 404; the working official page for this award is https://you.ubc.ca/financial-planning/scholarships-awards-international-students/international-scholars.",
+      "new_scholarship": {
+        "name": "Donald A. Wehrung International Student Award (UBC International Scholars Program)",
+        "legacy_titles": ["Donald A. Wehrung International Student Award (UBC)"],
+        "country": "Canada",
+        "region": "North America",
+        "degree_levels": "Bachelor's",
+        "funding_type": "Partially Funded",
+        "official_source": "University of British Columbia",
+        "official_source_url": "https://you.ubc.ca/financial-planning/scholarships-awards-international-students/international-scholars/donald-a-wehrung-international-student-award",
+        "status": "upcoming",
+        "is_verified": true,
+        "last_verified_date": "2026-10-04",
+        "deadline": "By November 15: Submit your completed application - The International Scholars Program application is due November 15. For the September 2027 intake this is November 15, 2026. Required admission documents and evidence of meeting UBC's English Language Admission Standard are due January 31, 2027.",
+        "deadline_date": "2026-11-15",
+        "deadline_precision": "exact",
+        "application_period": "September 2027 intake. The award application opens October 5, 2026 and is due November 15, 2026; required documents are due January 31, 2027; shortlisted applicants complete a video interview between January and March; results are released on a rolling basis from February to April.",
+        "program_type": "Need-and-merit-based undergraduate award within UBC's International Scholars Program, requiring high school nomination.",
+        "eligibility_summary": "Applicants must be international students studying in Canada on a Canadian study permit, entering UBC directly from an accredited secondary school for their first undergraduate degree, graduating no earlier than June 2026 for the 2027 Winter session, able to prove significant financial need, achieving superior academic performance of all As or equivalent, meeting UBC's English Language Admission Standard, and nominated by their school. All criteria must be met with no exceptions.",
+        "eligibility": [
+          "International student who will be studying in Canada on a Canadian study permit",
+          "Entering UBC directly from an accredited secondary school",
+          "Applicants for the 2027 Winter session must have graduated from high school no earlier than June 2026",
+          "Applying for a first undergraduate degree",
+          "Can prove a significant level of financial need, with official supporting documents",
+          "Meets UBC's admission requirements, including general and degree-specific requirements",
+          "Demonstrates superior academic achievement (all As or equivalent standard)",
+          "Meets UBC's English Language Admission Standard, or is eligible for Vantage College and the Vantage One Excellence Award",
+          "Nominated by the secondary school through one nominator and one teacher referee who must be different people"
+        ],
+        "coverage": [
+          "Need-and-merit-based financial support assessed against documented financial need (no dollar value published for this award category)"
+        ],
+        "benefits": [
+          "Financial support determined by UBC's financial need assessment",
+          "Skill building workshops and retreats",
+          "Optional exchange and co-op participation",
+          "Dedicated International Scholars Program advisors",
+          "Membership in the International Scholars cohort, described as over 680 Scholars from 111+ countries since 2001"
+        ],
+        "required_documents": [
+          "Completed International Scholars Program award application",
+          "Official documents demonstrating financial need, including family gross income, expenses and family assets",
+          "Secondary school nomination by a guidance counsellor, principal or administrator",
+          "Teacher referee recommendation",
+          "UBC admission documents submitted by January 31",
+          "Evidence of meeting UBC's English Language Admission Standard",
+          "Four essay questions of approximately 150-250 words each"
+        ],
+        "catalogue_url": "https://you.ubc.ca/financial-planning/scholarships-awards-international-students/international-scholars",
+        "official_updates_url": "https://you.ubc.ca/financial-planning/scholarships-awards-international-students/international-scholars",
+        "english_requirement": "Must meet UBC's English Language Admission Standard by January 31, 2027. Applicants who do not satisfy it for direct entry may be eligible for UBC Vantage College and the Vantage One Excellence Award.",
+        "requirements": [
+          "All eligibility criteria must be met; UBC states there are no exceptions",
+          "Submit the UBC Admissions application first; the award application requests confirmation of UBC application submission",
+          "Obtain one school nominator and one teacher referee, who must be different people",
+          "Have the nominator and teacher recommendations completed and submitted a few days before November 15",
+          "Submit the completed award application by November 15",
+          "Submit all required admission documents and English language evidence by January 31",
+          "Complete a video interview if invited, within one week"
+        ],
+        "application_method": [
+          "Decide on academic program and campus by mid-September",
+          "Discuss the nomination with the secondary school in late September",
+          "Apply to UBC in early October via myapplication.ubc.ca",
+          "Create an award application account and invite the nominator and teacher referee to complete their forms",
+          "Gather family financial information and complete the award application sections in mid-October",
+          "Submit the completed award application by November 15",
+          "Submit required documents by January 31 and complete a video interview if invited"
+        ],
+        "selection_notes": "The award targets students from impoverished or war-torn areas who achieved academic excellence under challenging circumstances and could not attend university without significant financial assistance, who should demonstrate leadership potential and a strong commitment to making a positive impact in their communities. UBC assesses financial need from family gross income, expenses and assets, and automatically assigns each applicant the award categories they qualify for.",
+        "best_fit": "Academically excellent international secondary school leavers from impoverished or war-torn areas who would otherwise be unable to attend university, with proven financial need and community leadership.",
+        "funding_amount": null,
+        "funding_currency": null,
+        "funding_period": null,
+        "description": "The Donald A. Wehrung International Student Award is one of four need-and-merit-based award categories in UBC's International Scholars Program. It recognises outstanding international undergraduates from impoverished or war-torn areas who have achieved academic excellence under challenging circumstances and would be unable to attend university without significant financial assistance, and who demonstrate leadership potential and a commitment to making a positive impact in their communities. Applicants must be nominated by their secondary school, must document significant financial need, and must achieve all As or equivalent. For the September 2027 intake the award application opens October 5, 2026 and closes November 15, 2026, with documents due January 31, 2027. UBC does not publish a dollar value for this award category."
+      },
+      "programme_detail_official": {
+        "official_source_urls": [
+          "https://you.ubc.ca/financial-planning/scholarships-awards-international-students/international-scholars"
+        ],
+        "application_link": "https://myapplication.ubc.ca/apply",
+        "official_updates_url": "https://you.ubc.ca/financial-planning/scholarships-awards-international-students/international-scholars",
+        "catalogue_url": "https://you.ubc.ca/financial-planning/scholarships-awards-international-students/international-scholars",
+        "application_cycle": "September 2027 intake; award applications open October 5, 2026 and are due November 15, 2026",
+        "deadline_central": "2026-11-15",
+        "deadline_central_display": "By November 15: Submit your completed application - The International Scholars Program application is due November 15.",
+        "deadline_central_timezone": "America/Vancouver",
+        "deadline_note": "The International Scholars Program application is due November 15 each cycle, which is November 15, 2026 for the September 2027 intake. The nominator and teacher referee recommendations must be completed and submitted a few days before November 15, and all required admission documents plus English language evidence are due January 31, 2027. Award results are released on a rolling basis from February to April. The stored deep-link official_source_url is dead (HTTP 404); the award is documented on the International Scholars programme page.",
+        "status": "UPCOMING",
+        "status_note": "The official page states \"Applications for the September 2027 intake will open on October 5, 2026.\" Verification took place on 2026-10-04, one day before opening, so status is upcoming. The November 15, 2026 deadline is still ahead and therefore applicable.",
+        "funding_amount": null,
+        "funding_currency": null,
+        "funding_period": null,
+        "funding_duration": "Award applies to the undergraduate degree; no term-by-term breakdown is published for this award category.",
+        "tuition_coverage": false,
+        "tuition_coverage_note": "UBC publishes no tuition-coverage statement for the Donald A. Wehrung International Student Award category. The programme page describes the award only in terms of academic excellence under challenging circumstances, financial inability to attend, leadership and commitment. Tuition coverage is therefore not claimed, and fully_funded is false. UBC's only full-cost-of-education statement in this programme applies to the separate Vantage One Excellence Award.",
+        "living_cost_coverage": null,
+        "travel_coverage": null,
+        "fully_funded": false,
+        "funding_label": "Need-and-merit-based financial support assessed against documented financial need for students from impoverished or war-torn areas; UBC publishes no dollar value for this award category and no full-cost commitment. No bond or service obligation stated.",
+        "benefits": [
+          "Financial support determined by UBC's financial need assessment",
+          "Skill building workshops and retreats",
+          "Option to participate in exchange and co-op",
+          "Dedicated International Scholars Program advisors",
+          "Membership in a cohort of more than 680 International Scholars from over 111 countries since 2001"
+        ],
+        "eligibility": [
+          "International student studying in Canada on a Canadian study permit",
+          "Entering UBC directly from an accredited secondary school",
+          "Graduated from high school no earlier than June 2026 for the 2027 Winter session",
+          "Applying for a first undergraduate degree",
+          "Able to prove a significant level of financial need with official documents",
+          "Meets UBC's admission requirements including degree-specific requirements",
+          "Superior academic achievement, all As or equivalent standard",
+          "Meets UBC's English Language Admission Standard",
+          "Nominated by the secondary school with one nominator and one teacher referee who are different people",
+          "Not enrolled in an excluded degree: Bachelor of Nursing, Bachelor of Dental Science in Dental Hygiene, Bachelor of Medical Laboratory Science, Bachelor + Master of Management, dual degrees, or joint degrees involving UBC Okanagan and UBC Vancouver or another institution"
+        ],
+        "citizenship_residency": "International students studying in Canada on a Canadian study permit. Canadian citizens and permanent residents are not eligible for this programme.",
+        "international_eligibility": "Open to international students only, entering UBC directly from an accredited secondary school for a first undergraduate degree, with a specific emphasis on candidates from impoverished or war-torn areas. High schools or registered non-profit organisations may nominate candidates, and the non-profit route is typically reserved for applicants from war-torn, politically unstable or economically disadvantaged areas of the world.",
+        "degree_levels": ["Bachelor's"],
+        "study_mode": "Full-time",
+        "research_requirement": null,
+        "subject_or_agency_requirement": "Applicants are considered for their first-choice program; a second choice should still be selected. Excluded degrees are listed in the eligibility criteria.",
+        "application_method": "Nine-step process published by UBC: decide on program and campus by mid-September; discuss nomination with the school in late September; apply to UBC in early October; discuss the nomination and create the award application account in early October and invite the nominator and teacher referee; gather family and financial information and complete the award application sections in mid-October including four essay questions of approximately 150-250 words; submit the completed application by November 15; submit required documents by January 31; complete a video interview between January and March if invited; monitor email for results from February to April.",
+        "application_route": "UBC Admissions application at myapplication.ubc.ca plus the International Scholars Program award application.",
+        "requirements": [
+          "All eligibility criteria must be met; UBC states there are no exceptions",
+          "UBC Admissions application must be submitted before the award application can be started",
+          "One school nominator and one teacher referee, who must be different people",
+          "Nominator and teacher recommendations completed and submitted a few days before November 15",
+          "Completed award application submitted by November 15",
+          "Required admission documents and English Language Admission Standard evidence submitted by January 31",
+          "Video interview completed within one week if invited"
+        ],
+        "documents": [
+          "Completed International Scholars Program award application",
+          "Official financial need documents covering family gross income, expenses, family assets, dependents and annual school fees",
+          "Secondary school nomination",
+          "Teacher referee recommendation",
+          "UBC admission documents",
+          "Evidence of meeting UBC's English Language Admission Standard",
+          "Four essay responses of approximately 150-250 words each"
+        ],
+        "english_requirement": "Must meet UBC's English Language Admission Standard by January 31, 2027, or meet the English language requirement for UBC Vantage College if applying through Vantage One.",
+        "english_requirement_note": "If an English language test is required, UBC states it must be completed early enough for official test results to reach UBC Admissions by January 31; the application cannot proceed if admission documents or requirements are missing.",
+        "selection_criteria": [
+          "Academic excellence achieved under challenging circumstances",
+          "Proven inability to attend university without significant financial assistance",
+          "Leadership potential",
+          "Strong commitment to making a positive impact in the student's community",
+          "Significant financial need, assessed from family gross income, expenses and assets"
+        ],
+        "selection_weighting": "UBC's evaluation includes a financial assessment of family gross income, expenses and assets. Applicants do not select a specific award; UBC's team automatically considers each applicant for the award categories they are eligible for.",
+        "duration": "Full undergraduate degree.",
+        "award_holder_conditions": [
+          "Applicants may only be considered for either the merit-based or the financial need-based award programme, not both",
+          "Scholars are expected to participate in skill building workshops and retreats",
+          "Results are released on a rolling basis from February to April, with final notification by early to mid-April",
+          "UBC Housing applications should wait until award decisions are released; the housing deadline is May 1"
+        ],
+        "supplements_or_initiatives": [
+          "Skill building workshops and retreats",
+          "Optional exchange and co-op participation",
+          "Dedicated International Scholars Program advisors",
+          "Related awards in the same programme: Karen McKellin International Leader of Tomorrow Award, International Impact Award, Vantage One Excellence Award"
+        ],
+        "official_contacts": {
+          "general": "https://account.you.ubc.ca/s/ask-ubc",
+          "programme_page": "https://you.ubc.ca/financial-planning/scholarships-awards-international-students/international-scholars"
+        },
+        "description": "The Donald A. Wehrung International Student Award is a need-and-merit-based award category in UBC's International Scholars Program for outstanding international undergraduates from impoverished or war-torn areas who have achieved academic excellence under challenging circumstances and would be unable to attend university without significant financial assistance. Applicants must be entering UBC directly from an accredited secondary school, hold a Canadian study permit, prove significant financial need, achieve all As or equivalent, meet UBC's English Language Admission Standard, and be nominated by their school. For September 2027 entry the award application opens October 5, 2026 and closes November 15, 2026, with documents due January 31, 2027. UBC publishes no dollar value for this award category.",
+        "program_type": "Need-and-merit-based undergraduate award (nominated)",
+        "region": "North America",
+        "coverage": "Need-assessed financial support; UBC publishes no dollar value or tuition/living split for this award category. No bond or service obligation stated.",
+        "last_verified_date": "2026-10-04"
+      },
+      "programme_detail_applicant_utility": {
+        "application_readiness_checklist": [
+          "Confirm your school is able to nominate you; a nomination is mandatory and non-profit nomination routes are reserved for applicants from war-torn, politically unstable or economically disadvantaged areas",
+          "Secure two different people: one nominator and one teacher referee",
+          "Submit the UBC Admissions application in early October before starting the award application",
+          "Document financial need thoroughly: family gross income, expenses, family assets, dependents, annual school fees and other support sources",
+          "Use UBC's cost estimator to calculate family contribution and financial need",
+          "Draft four essay answers of roughly 150-250 words each before November 15",
+          "Have both referees submit their recommendations a few days before November 15",
+          "Arrange any English language test so results reach UBC Admissions by January 31, 2027"
+        ],
+        "common_rejection_risks": [
+          "Missing the November 15 award application deadline",
+          "Missing the January 31 document deadline, which differs from the date in the 'UBC Application - Next Steps' email",
+          "No school nomination, or using the same person as nominator and teacher referee",
+          "Inability to substantiate significant financial need",
+          "Not achieving the all As or equivalent standard despite coming from a challenging background",
+          "Applying to an excluded degree such as Nursing, Dental Hygiene, Medical Laboratory Science, the integrated Bachelor + Master of Management, or a dual/joint degree",
+          "Expecting merit-based award consideration after applying to the need-based International Scholars Program, which UBC states will not happen"
+        ],
+        "estimated_uncovered_costs": [
+          "No dollar value is published for this award category, so the gap against assessed need cannot be calculated from official sources",
+          "Support is determined case by case through UBC's need assessment rather than a fixed published amount",
+          "Housing is handled separately and UBC tells applicants to wait for award decisions before applying, with a May 1 deadline",
+          "Books, everyday living costs and travel are not named as covered items"
+        ],
+        "document_audit": [
+          "UBC Admissions application submitted before the award application",
+          "Award application account created and both referee invitations issued and confirmed received",
+          "Nominator recommendation submitted",
+          "Teacher referee recommendation submitted",
+          "Official financial need documents uploaded",
+          "Four essay responses completed at the required length",
+          "Admission documents and English language evidence uploaded by January 31"
+        ],
+        "alerts": [
+          {
+            "trigger": "Award application not yet open",
+            "message": "UBC states applications for the September 2027 intake open on October 5, 2026. Use the waiting period to confirm your school's nomination ability and gather financial documents."
+          },
+          {
+            "trigger": "Document deadline differs from the email date",
+            "message": "UBC states that as an International Scholars Program applicant your document deadline is January 31, not the date listed in your 'UBC Application - Next Steps' email."
+          },
+          {
+            "trigger": "Automatic award assignment",
+            "message": "You do not choose which award you receive; UBC automatically considers you for every category you qualify for, including the Karen McKellin International Leader of Tomorrow Award and the International Impact Award."
+          },
+          {
+            "trigger": "Mutually exclusive award pools",
+            "message": "Applicants may only be considered for either the merit-based or the financial need-based award programme, not both."
+          }
+        ],
+        "submission_workflow": [
+          "Mid-September: choose your first-choice UBC program and campus, and a second choice",
+          "Late September: confirm your school's nomination ability and obtain nominator and referee contact details",
+          "Early October: submit the UBC Admissions application at myapplication.ubc.ca",
+          "Early October: email your nominator and referee the recommendation request, create your award application account, and invite them to complete their forms",
+          "Follow up to confirm both referees received their invitations, since the application cannot be completed until both are submitted",
+          "Mid-October: gather financial information, calculate need with UBC's cost estimator, and complete all application sections and essays",
+          "By November 15, 2026: submit the completed award application",
+          "By January 31, 2027: submit all required admission documents and English language evidence",
+          "January to March 2027: complete a video interview within one week if invited",
+          "February to April 2027: monitor email, including spam filters, for results; wait for award decisions before applying for UBC Housing"
+        ]
+      },
+      "programme_detail_verification": {
+        "cycle_verified": "September 2027 intake, verified 2026-10-04; applications confirmed to open October 5, 2026",
+        "verification_confidence": 0.85,
+        "official_fields_confirmed": [
+          "award existence and official description",
+          "application_cycle",
+          "deadline_central",
+          "deadline_central_display",
+          "status",
+          "degree_levels",
+          "eligibility",
+          "citizenship_residency",
+          "international_eligibility",
+          "selection_criteria",
+          "application_method",
+          "requirements",
+          "documents",
+          "english_requirement",
+          "award_holder_conditions",
+          "official_contacts",
+          "region",
+          "program_type",
+          "benefits"
+        ],
+        "institution_check_required": [
+          "Confirm the secondary school is able to nominate the applicant and that any nomination limits per campus are respected",
+          "Confirm the applicant can document significant financial need acceptable to UBC's financial assessment",
+          "Confirm the applicant is not enrolled in one of the excluded degrees"
+        ],
+        "unverified_or_removed_claims": [
+          "funding_amount and funding_currency: UBC publishes no dollar value for the Donald A. Wehrung International Student Award category, so both remain null",
+          "tuition_coverage: no tuition-coverage statement is published for this award category, so it is not claimed and fully_funded is false",
+          "living_cost_coverage and travel_coverage: not addressed on the official page",
+          "The stored official_source_url is a dead deep link (HTTP 404); the award is documented only inside the International Scholars programme page, so no dedicated award page could be cited",
+          "Specific shortlisting volumes or weighting for this award category are not published"
+        ],
+        "source_citations": [
+          "https://you.ubc.ca/financial-planning/scholarships-awards-international-students/international-scholars",
+          "https://you.ubc.ca/wp-content/uploads/2021/10/cropped-ubc-favicon-192x192.webp"
+        ],
+        "researched_by": "w1_09a"
+      },
+      "logo_override": {
+        "url": "https://you.ubc.ca/wp-content/uploads/2021/10/cropped-ubc-favicon-192x192.webp",
+        "page_url": "https://you.ubc.ca/financial-planning/scholarships-awards-international-students/international-scholars",
+        "official_host": true,
+        "alt_text": "University of British Columbia official UBC logo",
+        "validation_result": "verified",
+        "validation_detail": "webp 192x192, HTTP 200 image/webp confirmed by probe; renders the white 'UBC' institutional wordmark on the university's own solid UBC navy field, so it is legible on a light card and is not white-on-transparent. Same awarding body and asset as target_ids 84 and 85; probed once for the University of British Columbia.",
+        "image_kind": "official_logo",
+        "image_format": "webp",
+        "verified_at": "2026-10-04T00:00:00+00:00",
+        "host_evidence": "same_registrable_domain",
+        "_award": "Donald A. Wehrung International Student Award (UBC International Scholars Program)"
+      },
+      "research_notes": {
+        "logo": "Same awarding body (University of British Columbia) as target_ids 84 and 85, so the same verified asset applies and was not re-probed: https://you.ubc.ca/wp-content/uploads/2021/10/cropped-ubc-favicon-192x192.webp, HTTP 200 image/webp, white 'UBC' wordmark on a solid UBC navy field, discovered in the head of the awarding body's own page as its declared icon asset. The stored image for this record was https://cdn.ubc.ca/clf/7.0.3/img/ubc7-clf-sprite-blue.png with image_kind 'official_banner' - that is the CLF CSS sprite sheet containing dozens of UI icons, not a logo, and it was rejected on those grounds. brand.ubc.ca (the official logo download page) is behind a UBC Cybersecurity JavaScript browser-verification wall. Full probing log for the host is recorded on target_id 84.",
+        "unverified": [
+          "No dollar value is published for the Donald A. Wehrung International Student Award category",
+          "No tuition or living-cost coverage split is published for this award",
+          "No dedicated award page exists on you.ubc.ca; the award is documented inside the International Scholars programme page",
+          "Interview volumes and weighting for this specific award category are not published"
+        ],
+        "substitution": null,
+        "official_pages_read": [
+          "https://you.ubc.ca/financial-planning/scholarships-awards-international-students/international-scholars"
+        ],
+        "degree_level_confirmed": "\"The UBC International Scholars Program is for international students who have demonstrated leadership qualities, exceptional contributions to their communities, have outstanding academic performance, and require meaningful financial support to attend UBC.\" With the eligibility line \"You are applying for your first undergraduate degree\" and an excluded-degree list written in bachelor's terms (Bachelor of Nursing, Bachelor of Dental Science in Dental Hygiene, Bachelor of Medical Laboratory Science, Bachelor + Master of Management), this confirms the award funds a bachelor's degree. The award's own description reads \"This award recognizes outstanding international undergraduate students from impoverished or war-torn areas.\"",
+        "url_observed": "https://you.ubc.ca/financial-planning/scholarships-awards-international-students/international-scholars",
+        "contradictions": [
+          "MATERIAL: the stored official_source_url https://you.ubc.ca/financial-planning/scholarships-awards-international-students/international-scholars/donald-a-wehrung-international-student-award returns HTTP 404. There is no dedicated award page. The award is documented inside the International Scholars programme page, which lists it under 'Award categories' as accordion panel 'accordion-5-panel-2'. The stored URL is retained as the row identity per the brief and the working page is recorded in research_notes.url_observed.",
+          "Stored deadline_display 'Apply to UBC by January 15, 2026' is the wrong deadline. January 15 is UBC's general undergraduate application deadline; this award's application is due November 15 per the programme page's step 6, and its documents are due January 31.",
+          "Stored deadline_date was null and deadline_precision 'varies'; an exact annual deadline of November 15 is published, which for the September 2027 intake is November 15, 2026, so precision is corrected to 'exact' and deadline_date set to 2026-11-15.",
+          "Stored status 'open' was premature: applications for the September 2027 intake open October 5, 2026 and verification took place on 2026-10-04, so status corrected to 'upcoming'.",
+          "Stored region was null; North America has been supplied, consistent with the other Canadian records in the catalogue.",
+          "Stored funding 'Partial to Full' overstates coverage for this award. UBC publishes no dollar value and reserves its only full-cost statement for the separate Vantage One Excellence Award, so funding_type is narrowed to 'Partially Funded' with funding_amount left null.",
+          "Stored current_image_kind 'official_banner' pointed at the CLF CSS sprite sheet, which is not a logo; replaced with the probed official UBC logo."
+        ],
+        "skeleton": false
+      }
+    }
+  ]
+}

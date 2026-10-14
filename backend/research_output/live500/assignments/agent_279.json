@@ -1,0 +1,86 @@
+{
+ "agent": "agent_279",
+ "assignment_count": 1,
+ "scholarships": [
+  {
+   "id": 647,
+   "title": "International Graduate Student Scholarship (IGSS)",
+   "country": "Malaysia",
+   "degree": "PhD",
+   "funding_label": "Tuition Fee Waiver",
+   "status": "upcoming",
+   "official_source": "Universiti Putra Malaysia (UPM), School of Graduate Studies",
+   "official_source_url": "https://sgs.upm.edu.my/financial_assistance_scholarships/scholarship_financial_assistance_upm/international_graduate_student_scholarship_igss-1402",
+   "application_link": "https://sgs.upm.edu.my/financial_assistance_scholarships/scholarship_financial_assistance_upm/international_graduate_student_scholarship_igss-1402",
+   "catalogue_url": null,
+   "official_updates_url": "https://sgs.upm.edu.my/financial_assistance_scholarships/scholarship_financial_assistance_upm/international_graduate_student_scholarship_igss-1402",
+   "existing": {
+    "funding_amount": null,
+    "funding_currency": null,
+    "funding_period": null,
+    "tuition_coverage": 0,
+    "living_cost_coverage": 0,
+    "travel_coverage": 0,
+    "fully_funded": 0,
+    "description": "The School of Graduate Studies of Universiti Putra Malaysia awards the International Graduate Student Scholarship (IGSS) as a 30-50% tuition fee waiver for PhD students from Southeast Asia, South Asia, Central Asia, the Middle East and Africa. Funding covers up to three years (to the sixth semester) and is subject to an annual review of the student's academic progress. Priority is given to applicants from developing countries where UPM holds strategic importance and to staff of institutions with an MoU or MoA with UPM. Applicants must hold a master's degree, must not hold any other scholarship or financial assistance, must not be employed at the time of application, and must supply a supervisor support letter and an embassy letter confirming they receive no government or agency financial assistance.",
+    "eligibility": [
+     "Fulfils the general application requirements for international students",
+     "Holder of a master's degree",
+     "From a country in Southeast Asia, South Asia, Central Asia, the Middle East or Africa",
+     "Not a recipient of any other scholarship or financial assistance and not in any employment at the time of application",
+     "Has published at least one article in an academic journal and/or holds strong recommendations from academic institutions",
+     "Holds a support letter from an advisor/supervisor",
+     "Holds a letter from their embassy verifying that they receive no financial assistance, scholarship or income from any agency or government"
+    ],
+    "eligibility_summary": "PhD applicants from Southeast Asia, South Asia, Central Asia, the Middle East and Africa who already hold a master's degree, are not receiving any other scholarship or financial assistance and are not employed at the time of application.",
+    "benefits": [
+     "30-50% tuition fee waiver granted by UPM",
+     "Funding for up to 3 years (6th semester) of PhD study"
+    ],
+    "coverage": [
+     "30-50% tuition fee waiver",
+     "Up to 3 years of study (6th semester), subject to annual review of academic progress"
+    ],
+    "requirements": [
+     "Priority is given to applicants from developing countries in which UPM holds strategic importance and from institutions with an MoU/MoA with UPM",
+     "Priority to academic staff members of MoU partner institutions intending to conduct research in UPM priority areas",
+     "Number of awards depends on application quality and funding availability",
+     "Open to new students and to first-semester students with \"Continue\" status"
+    ],
+    "documents": [
+     "Online application form completed in the SGS student portal",
+     "Support letter from the advisor/supervisor",
+     "Embassy letter confirming no other financial assistance",
+     "Evidence of at least one journal publication and/or strong institutional recommendation letters"
+    ],
+    "english_requirement": null,
+    "application_method": [
+     "Complete the online application form in the UPM SGS student portal at http://sgsportal.upm.edu.my:8080/sgsportal/",
+     "The applicant's advisor/supervisor and the dean/director of the faculty, school or institute must support the application online before or latest by the closing date"
+    ],
+    "selection_notes": "Selection is based on application quality, publication record or strong institutional recommendations, and the existence of an MoU/MoA between the applicant's institution and UPM.",
+    "best_fit": "PhD candidates from developing Asian, African and Middle Eastern countries who already hold a master's degree, hold at least one journal publication and can obtain a supervisor support letter.",
+    "notes": null,
+    "duration": "Up to 3 years (to the 6th semester), reviewed annually",
+    "application_period": "Published window for First Semester 2026/2027 was 01-31 August 2026; the page was last updated 02/07/2026 and has not published the next round.",
+    "deadline_display": "31 August 2026 (published window for First Semester 2026/2027; now closed)",
+    "deadline_date": null,
+    "region": "Asia",
+    "program_type": "University tuition waiver scholarship",
+    "applicant_utility": null,
+    "official_details": null
+   },
+   "missing_fields": [
+    "funding_amount",
+    "funding_currency",
+    "funding_period",
+    "english_requirement",
+    "notes",
+    "deadline_date",
+    "applicant_utility",
+    "official_details"
+   ]
+  }
+ ],
+ "result_file": "C:\\Users\\GopaL\\Desktop\\Projects folder\\ScholarZone\\backend\\research_output\\live500\\results\\agent_279.json"
+}

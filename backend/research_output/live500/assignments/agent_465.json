@@ -1,0 +1,177 @@
+{
+ "agent": "agent_465",
+ "assignment_count": 2,
+ "scholarships": [
+  {
+   "id": 208,
+   "title": "SNU President Fellowship Program (SPF)",
+   "country": "South Korea",
+   "degree": "PhD",
+   "funding_label": "Fully Funded",
+   "status": "open",
+   "official_source": "Seoul National University",
+   "official_source_url": "https://en.snu.ac.kr/admission/graduate/scholarships/before_application",
+   "application_link": "https://en.snu.ac.kr/admission/graduate/scholarships/before_application",
+   "catalogue_url": "https://en.snu.ac.kr/admission",
+   "official_updates_url": "https://en.snu.ac.kr/admission/overview/notice",
+   "existing": {
+    "funding_amount": null,
+    "funding_currency": "KRW",
+    "funding_period": "per month",
+    "tuition_coverage": 1,
+    "living_cost_coverage": 1,
+    "travel_coverage": 1,
+    "fully_funded": 1,
+    "description": "The SNU President Fellowship Program is one of Seoul National University's most prestigious scholarship programmes, launched to provide opportunities for teaching and instructional staff members of universities in developing countries to pursue PhD degrees at SNU. Approximately 8 recipients are awarded each semester. Benefits include full tuition exemption for a maximum of 6 semesters, monthly living expenses of 1,500,000 to 2,000,000 KRW for 3 to 4 years, a round-trip economy airfare, Korean language training, and reimbursement of National Health Insurance fees. The application is made at the same time as the online application for admission to SNU, and the deadline falls during the international student admission period each semester.",
+    "eligibility": [
+     "Be a teaching/instructional staff member of a major university in a developing country who does not hold a Ph.D. degree",
+     "Hold a master's degree or higher from an accredited institution",
+     "Be employed at a university as Professor, Associate Professor, Assistant Professor, Research Professor, Lecturer, Instructor, Teaching Assistant or Research Assistant, or an equivalent position",
+     "Be a newly admitted student to SNU as a PhD student for the relevant semester"
+    ],
+    "eligibility_summary": "Teaching or instructional staff members of major universities in developing countries who do not hold a PhD, hold a master's degree or higher from an accredited institution, and are newly admitted to SNU as a PhD student.",
+    "benefits": [
+     "Full tuition fee exemption for a maximum of 6 semesters",
+     "Monthly living expenses of 1,500,000 to 2,000,000 KRW for 3 to 4 years",
+     "Round-trip airfare, economy class based on the GTS system",
+     "Korean language training, evening classes only during regular semesters",
+     "National Health Insurance fee reimbursement",
+     "Child care support, with the amount of coverage depending on the recipient's situation (per the 2027 spring application guidelines)"
+    ],
+    "coverage": [
+     "Full tuition exemption for a maximum of 6 semesters",
+     "Monthly living expenses of 1,500,000 to 2,000,000 KRW for 3 to 4 years",
+     "Round-trip airfare (economy class based on the GTS system)",
+     "Korean language training (evening classes only during regular semesters)",
+     "National Health Insurance fee reimbursement"
+    ],
+    "requirements": [
+     "Submit the online SPF application through the SNU Office of Admissions website during the admission application period",
+     "Check the 'Application for Scholarship' box on the admission application",
+     "Submit evidential documents for the scholarship application to the SNU Office of Global Affairs",
+     "Attend the interview stage if shortlisted",
+     "Apply for a PhD programme; the SPF is limited to doctoral-level applicants"
+    ],
+    "documents": [
+     "Online SPF application submitted with the SNU Office of Admissions application, with the 'Application for Scholarship' box checked",
+     "Evidential documents regarding the scholarship application, submitted to the SNU Office of Global Affairs",
+     "SNU admission application documents and recommendation letters",
+     "Evidence of current employment as university teaching or instructional staff",
+     "Evidence of holding a master's degree or higher from an accredited institution"
+    ],
+    "english_requirement": null,
+    "application_method": [
+     "Apply for admission to an SNU PhD programme through the SNU Office of Admissions online application",
+     "Tick the 'Application for Scholarship' box during the online application",
+     "Submit the evidential documents for the scholarship application to the SNU Office of Global Affairs",
+     "Proceed through SNU admission results and the SPF interview stage",
+     "Await the decision notification"
+    ],
+    "selection_notes": "The selection procedure is: application for the SPF scholarship made at the same time as the online application for admission to SNU's Office of Admissions (with the 'Application for Scholarship' box checked), then submission of application documents to SNU OGA, then SNU admission results, then an interview, then the decision. SNU states that priority is given to faculty members from major universities in developing countries in Asia, Africa, South America and similar regions.",
+    "best_fit": "Professors, lecturers and teaching or research assistants at universities in developing countries who do not hold a PhD, hold a master's degree or higher, and are applying to an SNU doctoral programme.",
+    "notes": "The SPF and the GSFS are alternatives rather than combinable: SNU's online application guidance states that if an applicant is selected by both, they must choose only one.",
+    "duration": "Tuition exemption for a maximum of 6 semesters; monthly living expenses for 3 to 4 years",
+    "application_period": "Every semester, alongside the SNU international graduate admission application cycle; approximately 8 recipients are awarded each semester.",
+    "deadline_display": "Application Period: \"During admission period for international students every semester\". The scholarship application is submitted with the SNU online admission application, so the deadline is the SNU international graduate admission deadline for the semester applied for.",
+    "deadline_date": null,
+    "region": "Asia",
+    "program_type": "University-funded doctoral fellowship for faculty members from developing countries",
+    "applicant_utility": null,
+    "official_details": null
+   },
+   "missing_fields": [
+    "funding_amount",
+    "english_requirement",
+    "deadline_date",
+    "applicant_utility",
+    "official_details"
+   ]
+  },
+  {
+   "id": 210,
+   "title": "KAIST Scholarship (KAIST International Undergraduate Admission)",
+   "country": "South Korea",
+   "degree": "Undergraduate",
+   "funding_label": "Partially Funded",
+   "status": "closing-soon",
+   "official_source": "Korea Advanced Institute of Science and Technology (KAIST), Office of Admissions",
+   "official_source_url": "https://admission.kaist.ac.kr/intl-undergraduate/support/scholarships/kaist",
+   "application_link": "https://admission.kaist.ac.kr/intl-undergraduate/support/scholarships/kaist",
+   "catalogue_url": "https://admission.kaist.ac.kr/intl-undergraduate/support/scholarships/kaist",
+   "official_updates_url": "https://admission.kaist.ac.kr/intl-undergraduate/application/ApplicationGuide/ApplicationTimeline",
+   "existing": {
+    "funding_amount": null,
+    "funding_currency": null,
+    "funding_period": null,
+    "tuition_coverage": null,
+    "living_cost_coverage": null,
+    "travel_coverage": null,
+    "fully_funded": 0,
+    "description": "KAIST awards its scholarship automatically to every admitted international undergraduate student, with no separate application: the applicant simply ticks \"KAIST scholarship\" on the Statement of Financial Resources section of the admission application. The award pays tuition exemption for 8 semesters, a living allowance of 350,000 KRW per month, and medical health insurance. It is not full funding: KAIST's own cost table shows the scholarship offsets 11,738,360 KRW of a 14,885,680 KRW essential annual budget, leaving roughly 3,359,000 KRW per year for housing, food and books.",
+    "eligibility": [
+     "Scholarship eligibility: Applicants of International Student Admission",
+     "Spring Semester, 2027 (Early only): Candidates who have graduated or will graduate from his or her high school by February 28th, 2027",
+     "Fall Semester, 2027 (Early / Regular): Candidates who have graduated or will graduate from his or her high school by August 31st, 2027",
+     "Applicants who hold Korean Citizenship (dual citizenship) are not eligible to apply as foreign students",
+     "International applicants must additionally satisfy one of: neither of the applicant's parents is a Korean citizen; or, for applicants of Korean origin, the applicant received their entire elementary, junior high and high school education outside of Korea at a comparable and equivalent level to that provided in Korea",
+     "Applicants who completed or will have completed high school in Korea are also welcomed to apply to the KAIST Undergraduate program",
+     "There is no transfer programme for international students; applicants must apply as a freshman student",
+     "By the time of enrolment at KAIST the applicant must not hold any degree-seeking status from another university, otherwise admission shall be revoked"
+    ],
+    "eligibility_summary": "Applicants of KAIST International Student Admission who graduate from high school by February 28, 2027 for the Spring 2027 Early track or by August 31, 2027 for the Fall 2027 tracks, and who satisfy the published foreign-citizenship conditions.",
+    "benefits": [
+     "Automatic entitlement: upon being selected for admission, the applicant is automatically entitled to the KAIST Scholarship",
+     "No separate scholarship application process - the application period is the same as the admission application period"
+    ],
+    "coverage": [
+     "Full tuition fee - tuition exemption for 8 semesters",
+     "Living expenses - 350,000 KRW per month",
+     "Medical health insurance"
+    ],
+    "requirements": [
+     "There is no separate process for applying for the scholarship",
+     "Check 'KAIST scholarship' on the Statement of Financial Resources section of the online admission application",
+     "We offer KAIST Scholarships to admitted students",
+     "Students must maintain GPA over 2.7 out of 4.3 at KAIST after their freshman year"
+    ],
+    "documents": [
+     "Completed online admission application submitted with documents, including a recommendation letter, by 6:00 PM (KST) on the deadline"
+    ],
+    "english_requirement": null,
+    "application_method": [
+     "Choose the admission track: Early Admissions (Spring Track) or Regular Admissions (Fall Track / Fall Track Only)",
+     "Create the online admission application on the KAIST Office of Admissions site",
+     "In the Statement of Financial Resources section, check 'KAIST scholarship'",
+     "Submit the completed application and documents, including the recommendation letter, by 6:00 PM (KST) on the deadline",
+     "Have the recommendation letter submitted by the published recommendation-letter submission date",
+     "Complete an online interview if KAIST contacts you because one is deemed necessary",
+     "Await the admission announcement (January 7, 2027, 10:00 AM KST for Early/Spring; March 25, 2027, 10:00 AM KST for Regular/Fall)",
+     "Reply your admission acceptance before February (Early/Spring) or before May (Regular/Fall)"
+    ],
+    "selection_notes": "There is no separate scholarship selection. All applications are thoroughly and equally reviewed during the admission process, and upon being selected for admission the applicant is automatically entitled to the KAIST Scholarship. Retention of the award after admission depends on maintaining a GPA over 2.7 out of 4.3 at KAIST after the freshman year.",
+    "best_fit": "International students applying as freshmen to KAIST undergraduate admission - including international students who completed high school in Korea - who want full tuition plus a monthly living allowance without filing a separate scholarship form.",
+    "notes": "Automatic award tied to admission, not a competitive scholarship. Applicants pay the application fee and may not change their application track afterwards (for example from Early to Regular). Interviews are not required for all applicants; selected applicants are contacted individually by email with further instructions and the interview date is subject to change. Admission announcement dates are also published as subject to change. KAIST students hold an undeclared major during the freshman year and may choose any major at the end of the second semester, with no per-department quota. The page's calendar table carries a stale caption reading \"Application Timeline for 2023 Admissions\" while the section heading and the dates themselves are for 2027 admissions.",
+    "duration": "Tuition exemption for 8 semesters (the published cost table describes the KAIST Scholarship as covering the entire tuition fee for 4 years once admitted)",
+    "application_period": "Early Admissions for the Spring 2027 semester run 2026-09-22 to 2026-10-22 (6:00 PM KST), so on 2026-10-01 this window is open. Regular Admissions for the Fall 2027 semester run 2026-11-10 to 2027-01-14 (6:00 PM KST). There is no separate scholarship application: the application period is the same as the admission application period.",
+    "deadline_display": "Early Admissions (Spring Track, 2027): Application Period and Document Submission September 22 - October 22, 2026, 6:00 PM (KST); Recommendation Letter Submission October 29, 2026, 6:00 PM (KST). Regular Admissions (Fall Track / Fall Track Only, 2027): November 10, 2026 - January 14, 2027, 6:00 PM (KST); Recommendation Letter Submission January 21, 2027, 6:00 PM (KST).",
+    "deadline_date": "2026-10-22",
+    "region": "Asia",
+    "program_type": "University scholarship",
+    "applicant_utility": null,
+    "official_details": null
+   },
+   "missing_fields": [
+    "funding_amount",
+    "funding_currency",
+    "funding_period",
+    "tuition_coverage",
+    "living_cost_coverage",
+    "travel_coverage",
+    "english_requirement",
+    "applicant_utility",
+    "official_details"
+   ]
+  }
+ ],
+ "result_file": "C:\\Users\\GopaL\\Desktop\\Projects folder\\ScholarZone\\backend\\research_output\\live500\\results\\agent_465.json"
+}

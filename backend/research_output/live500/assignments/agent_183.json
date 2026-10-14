@@ -1,0 +1,91 @@
+{
+ "agent": "agent_183",
+ "assignment_count": 1,
+ "scholarships": [
+  {
+   "id": 482,
+   "title": "MIT Undergraduate Need-Based Financial Aid and MIT Scholarship for International Students",
+   "country": "United States",
+   "degree": "Undergraduate",
+   "funding_label": "Need-based grant aid (MIT meets 100% of demonstrated need)",
+   "status": "open",
+   "official_source": "MIT Student Financial Services",
+   "official_source_url": "https://sfs.mit.edu/undergraduate-students/apply-for-aid/international",
+   "application_link": "https://sfs.mit.edu/undergraduate-students/apply-for-aid/international",
+   "catalogue_url": "https://sfs.mit.edu/undergraduate-students/types-of-aid",
+   "official_updates_url": "https://sfs.mit.edu/undergraduate-students/apply-for-aid/deadlines-process",
+   "existing": {
+    "funding_amount": null,
+    "funding_currency": null,
+    "funding_period": null,
+    "tuition_coverage": null,
+    "living_cost_coverage": null,
+    "travel_coverage": null,
+    "fully_funded": 0,
+    "description": null,
+    "eligibility": [
+     "Classified as an international student for financial aid purposes (not eligible for U.S. federal student financial aid per FAFSA eligibility rules)",
+     "Applies for undergraduate admission to MIT",
+     "Submits the CSS Profile designating MIT (CSS Code 3514)",
+     "Submits parental tax returns or income documentation for both parents via IDOC",
+     "Demonstrates financial need; there are no fee waivers for international students on the CSS Profile"
+    ],
+    "eligibility_summary": "Any applicant classified as international for federal financial aid purposes (not eligible for FAFSA-based federal aid) who applies for admission to MIT as an undergraduate and submits the CSS Profile plus parental income documentation. Awarding is based solely on demonstrated financial need.",
+    "benefits": [
+     "Tuition and fees up to 100% of MIT's calculated demonstrated need",
+     "Health Insurance Grant covering the MIT Student Health Insurance Plan for highest-need undergraduates who lack adequate coverage",
+     "First Year Grant of $2,000 for highest-need first-year students, split equally between fall and spring"
+    ],
+    "coverage": [
+     "Tuition and fees up to 100% of MIT's calculated demonstrated need",
+     "Health Insurance Grant covering the MIT Student Health Insurance Plan for highest-need undergraduates who lack adequate coverage",
+     "First Year Grant of $2,000 for highest-need first-year students, split equally between fall and spring"
+    ],
+    "requirements": [
+     "Submit the CSS Profile and all MIT supplemental CSS questions",
+     "Upload parent income documents to the College Board IDOC platform, not directly to MIT",
+     "Allow up to two weeks for IDOC delivery of tax returns to MIT",
+     "Allow about 10 business days for documents to appear in the MIT Online Financial Aid System"
+    ],
+    "documents": [
+     "CSS Profile (College Board) designating MIT, CSS Code 3514",
+     "Parents' income tax returns or wage statements from two years ago",
+     "Parents' tax return from their country of residence plus an English translation if parents live outside the U.S.",
+     "Records of untaxed income, current bank account balances and records of investments",
+     "Noncustodial parent documentation if applicable"
+    ],
+    "english_requirement": null,
+    "application_method": [
+     "Submit the CSS Profile online through the College Board",
+     "Submit parental tax returns or income documentation to the College Board's Institutional Documentation Service (IDOC)",
+     "Track documents and view the aid offer in the MIT Application Portal"
+    ],
+    "selection_notes": "Awards are made on the basis of financial need alone; about 58% of MIT undergraduates receive an MIT Scholarship.",
+    "best_fit": "International undergraduates admitted to MIT whose families cannot fund the MIT cost of attendance and who are willing to document family income in detail through the CSS Profile process.",
+    "notes": "The award is a grant, not a loan. Awarded students must complete a Student Information Review Form between May 1 and July 1 each year so MIT can match them to the correct endowed scholarship fund.",
+    "duration": "Aid is awarded for each academic year of the undergraduate degree and reviewed annually; continuing students reapply by February 15.",
+    "application_period": "Annual cycle. Early Action November 30, Regular Action February 15, Transfer February 15; aid documents manageable through the MIT Application Portal until mid-May.",
+    "deadline_display": "To apply for financial aid, all students must submit the CSS Profile and parental tax returns or income documentation through IDOC by the following deadlines: Early Action November 30, Regular Action February 15, Transfer February 15. MIT publishes no calendar year for these dates.",
+    "deadline_date": null,
+    "region": "North America",
+    "program_type": "Need-blind institutional need-based grant aid for undergraduate international students at a private research university.",
+    "applicant_utility": null,
+    "official_details": null
+   },
+   "missing_fields": [
+    "funding_amount",
+    "funding_currency",
+    "funding_period",
+    "tuition_coverage",
+    "living_cost_coverage",
+    "travel_coverage",
+    "description",
+    "english_requirement",
+    "deadline_date",
+    "applicant_utility",
+    "official_details"
+   ]
+  }
+ ],
+ "result_file": "C:\\Users\\GopaL\\Desktop\\Projects folder\\ScholarZone\\backend\\research_output\\live500\\results\\agent_183.json"
+}

@@ -1,0 +1,223 @@
+{
+  "agent": "agent_005",
+  "records": [
+    {
+      "id": 33,
+      "official": {
+        "official_source_urls": [
+          "https://www.campuschina.org/",
+          "https://www.csc.edu.cn/",
+          "https://www.studyinchina.csc.edu.cn/"
+        ],
+        "application_link": "https://www.campuschina.org/",
+        "catalogue_url": "https://scholarshipzone.org/scholarship/chinese-government-scholarship/",
+        "official_updates_url": "https://www.campuschina.org/scholarships/index.html",
+        "deadline_central": null,
+        "deadline_central_display": null,
+        "deadline_note": "No deadline could be confirmed: all official Chinese Government Scholarship / CSC domains (campuschina.org, csc.edu.cn, studyinchina.csc.edu.cn) returned HTTP 412 from this environment on 10 October 2026, and the session's web search provider had no quota left to work around it.",
+        "application_cycle": null,
+        "status": null,
+        "status_note": "The official CSC domains were unreachable (HTTP 412) from this environment on every attempt, so no current-cycle status could be read.",
+        "tuition_coverage_note": null,
+        "funding_amount": null,
+        "funding_currency": null,
+        "funding_period": null,
+        "tuition_coverage": null,
+        "living_cost_coverage": null,
+        "travel_coverage": null,
+        "fully_funded": false,
+        "benefits": null,
+        "eligibility": null,
+        "requirements": null,
+        "documents": null,
+        "selection_criteria": null,
+        "coverage": null,
+        "application_method": null,
+        "application_route": null,
+        "study_mode": null,
+        "citizenship_residency": null,
+        "international_eligibility": null,
+        "subject_or_agency_requirement": null,
+        "research_requirement": null,
+        "duration": null,
+        "description": "The Chinese Government Scholarship is a MOE/CSC state scholarship that funds international students to study at designated Chinese universities; it is administered by the China Scholarship Council and promoted through its official portals campuschina.org and studyinchina.csc.edu.cn.",
+        "region": "China",
+        "program_type": "Government scholarship for international students (China Scholarship Council)",
+        "english_requirement": null
+      },
+      "verification": {
+        "source_citations": [
+          "https://www.campuschina.org/",
+          "https://www.studyinchina.csc.edu.cn/"
+        ],
+        "last_verified_date": "2026-10-10",
+        "verification_status": "unconfirmed",
+        "confidence": "low",
+        "not_confirmed": [
+          "funding_amount (no monthly stipend figure could be verified)",
+          "funding_currency",
+          "funding_period",
+          "tuition_coverage",
+          "living_cost_coverage",
+          "travel_coverage",
+          "fully_funded",
+          "benefits",
+          "eligibility",
+          "requirements",
+          "documents",
+          "selection_criteria",
+          "coverage",
+          "application_method",
+          "deadline_central",
+          "status",
+          "duration",
+          "english_requirement"
+        ],
+        "notes": "All official Chinese Government Scholarship domains (campuschina.org, studyinchina.csc.edu.cn, csc.edu.cn) returned HTTP 412 (blocked) on every attempt on 10 October 2026, via both direct request and the fetch tool; the web search provider quota was also exhausted, so no CSC-published figure, deadline or coverage statement could be confirmed. No amount is recorded and the record is marked low confidence rather than guessing."
+      },
+      "applicant_utility": {
+        "summary": "Nothing about the current CSC cycle - amounts, deadlines, coverage - could be verified from the official portals today: campuschina.org and studyinchina.csc.edu.cn both refused automated access (HTTP 412) throughout the research window. Rather than carry forward an unverified stipend number, this record holds nulls: before applying, open campuschina.org and studyinchina.csc.edu.cn yourself in a browser, or contact a designated Chinese university's scholarships office and the Chinese Embassy in Dhaka, and take the figures only from those pages. Treat any figure you see only on aggregator sites as unreliable.",
+        "best_fit": "Applicants who can verify the current year's terms directly on the CSC's own portals before preparing documents.",
+        "application_readiness_checklist": [
+          "Open campuschina.org and studyinchina.csc.edu.cn in a normal browser and confirm the current call's amount, coverage and deadline",
+          "Check whether your target university participates in the CSC scheme and whether it takes applications through the embassy route or its own portal",
+          "Ask the Chinese Embassy in Dhaka which application round is currently open for Bangladeshi applicants"
+        ],
+        "common_rejection_risks": [
+          "Relying on an aggregator's stipend or deadline figure that does not match the current CSC notice",
+          "Missing the embassy-university two-track structure for choosing where the application is submitted"
+        ],
+        "estimated_uncovered_costs": null,
+        "document_audit": [
+          "Do not assemble documents around an unverified spec - wait until the official notice states what is required"
+        ],
+        "alerts": [
+          "This record was produced under blocked official domains; re-verify before relying on any field"
+        ],
+        "submission_workflow": "Unknown from official sources today; verify the current notice on campuschina.org or studyinchina.csc.edu.cn and follow the application channel it names (embassy or university)."
+      }
+    },
+    {
+      "id": 36,
+      "official": {
+        "official_source_urls": [
+          "https://studyinitaly.esteri.it/ListaBandi",
+          "https://studyinitaly.esteri.it/Static/FAQ",
+          "https://ambdhaka.esteri.it/en/news/dall_ambasciata/2026/06/final-ranking-for-italian-government-study-grants-in-bangladesh-maeci-scholarship-a-y-2026-2027/"
+        ],
+        "application_link": "https://studyinitaly.esteri.it/",
+        "catalogue_url": "https://scholarshipzone.org/scholarship/italian-government-scholarship-maeci/",
+        "official_updates_url": "https://studyinitaly.esteri.it/ListaBandi",
+        "deadline_central": null,
+        "deadline_central_display": null,
+        "deadline_note": "No date is published on the current pages: the Study in Italy portal lists the call as closed and says the next academic year's call will be published later; the Italian Embassy Dhaka notice covering the A.Y. 2026-2027 process published the final ranking on 3 June 2026 but does not restate the closing date.",
+        "application_cycle": "A.Y. 2026-2027 call completed (final ranking published 3 June 2026); next call not yet published on the portal",
+        "status": "CLOSED",
+        "status_note": "The official Study in Italy portal (10 October 2026) states the call for applications for MAECI grants is now closed and asks applicants to check the website for publication of the next academic year's call; the Embassy of Italy in Dhaka published the final ranking for the A.Y. 2026-2027 grants on 3 June 2026.",
+        "tuition_coverage_note": null,
+        "funding_amount": null,
+        "funding_currency": null,
+        "funding_period": null,
+        "tuition_coverage": null,
+        "living_cost_coverage": true,
+        "travel_coverage": null,
+        "fully_funded": false,
+        "benefits": [
+          "A MAECI scholarship aims to help cover the costs of living and studying in Italy, and is paid only for the periods the grantee actually spends in Italy",
+          "A nine-month scholarship starts on 1 November of the year of publication of the Call and ends on 31 July of the following year; a three-month scholarship can be benefited in a period of study starting on 1 January and ending by 30 September of the year of publication of the Call",
+          "Renewal: the awarding of a new MAECI Scholarship to beneficiaries of the previous Call who submit a regular application to continue their study programme, in accordance with Article 3 of the Call"
+        ],
+        "eligibility": [
+          "Applications are accepted from citizens of the countries included in the eligible countries list published in the Call; if your country is not on the list you cannot apply",
+          "You can indicate a maximum of three course options, even in different institutions or universities, but all three must be of the same type",
+          "It is not possible to apply for online study programmes, as the scholarship only covers onsite attendance of academic courses on Italian territory",
+          "Applying for a MAECI grant and enrolling at the university or institution are two separate and different procedures"
+        ],
+        "requirements": [
+          "Applications are accepted exclusively through the Study in Italy website after completing the sign-up procedure; applications and documents submitted through any other means of transmission are not accepted",
+          "Documents must be uploaded exclusively in PDF format, one file per field (multiple documents may be merged into a single file), each file not exceeding 2 MB",
+          "It is not necessary to upload translated or legalized documents; a scan of the original documents in PDF format is required",
+          "Supplementary documents as per Article 7.2 (including language certificates) must be uploaded strictly by 14:00 Italian time on 1 July 2026, otherwise the application cannot be evaluated; supplementary documents cannot be submitted for intensive Italian language and culture courses or renewals"
+        ],
+        "documents": [
+          "Curriculum Vitae; the academic qualification valid for admission to the chosen programme (with achieved or expected marks); the transcript of records",
+          "Language certificate from an official certification body or other documentation certifying proficiency with specific reference to CEFR levels; Duolingo certificates are accepted exclusively for the English language",
+          "Motivation letter describing your personal story, education background, academic interests and the purpose and goals of your study project, on plain paper and not exceeding 500 words",
+          "Other documents: any useful element that can be positively evaluated; an admission letter for the chosen programme or a letter of recommendation may be uploaded",
+          "For PhD applications: the admission letter is required (a supervisor invitation letter may be uploaded until the admission letter is issued; pre-admission letters are not considered valid)"
+        ],
+        "selection_criteria": [
+          "At the end of the evaluation, the relevant Italian Diplomatic representation publishes the ranking of winners and any reserves on its website; the merit ranking is unquestionable and only winners are notified via the Study in Italy portal"
+        ],
+        "coverage": [
+          "A MAECI scholarship aims to help cover the costs of living and studying in Italy, paid only for the periods the grantee actually spends in Italy (nine-month grants: 1 November - 31 July)"
+        ],
+        "application_method": [
+          "Sign up and submit the application exclusively through the Study in Italy website during the Call window",
+          "Select the type of study programme (Master's Degree, Higher Education for Fine Arts Music and Dance, PhD, research project, intensive Italian language and culture course, or Bachelor's/single-cycle renewal for previous 'Costruiamo il futuro' beneficiaries)",
+          "Indicate up to three course options of the same type, then upload all required documents in PDF before the deadline"
+        ],
+        "application_route": "Apply online exclusively through the official Study in Italy platform (studyinitaly.esteri.it) when the annual Call opens; rankings are published by the Italian Diplomatic representation.",
+        "study_mode": "Onsite attendance on Italian territory; online study programmes are not eligible",
+        "citizenship_residency": "Citizens of the countries on the eligible countries list published in the Call",
+        "international_eligibility": "Yes - the grants are for foreign citizens to study in Italy, published as the Italian Government scholarships for foreign students",
+        "subject_or_agency_requirement": "Master's Degree, Higher Education in Fine Arts Music and Dance (AFAM), PhD, research project, or intensive Italian language and culture course; Bachelor's degree/single-cycle Master's degree exclusively for students who have already benefited from the 'Costruiamo il futuro' scholarship under Articles 1.6 and 3 of the Call",
+        "research_requirement": "Research projects are one of the offered study types; the title of the research project is entered in the course selection",
+        "duration": "Nine months (1 November - 31 July) for most study programmes; three months for the intensive Italian language and culture course",
+        "description": "Italian Government (MAECI) Study Grants are scholarships for foreign citizens to study in Italy at Master's, AFAM, PhD or research level or to attend intensive Italian language and culture courses, applied for exclusively through the official Study in Italy platform.",
+        "region": "Italy",
+        "program_type": "Government grant for international students (Italian Government / MAECI scholarship)",
+        "english_requirement": "A certificate issued by an official certification body or other documents certifying language proficiency with specific reference to CEFR levels; Duolingo certificates are accepted exclusively for the English language. Italian or English requirements follow the Call, and the certificate can be uploaded as a supplementary document by 14:00 Italian time on 1 July 2026 if listed in the merit ranking (not possible for language courses and renewals)."
+      },
+      "verification": {
+        "source_citations": [
+          "https://studyinitaly.esteri.it/ListaBandi",
+          "https://studyinitaly.esteri.it/Static/FAQ",
+          "https://ambdhaka.esteri.it/en/news/dall_ambasciata/2026/06/final-ranking-for-italian-government-study-grants-in-bangladesh-maeci-scholarship-a-y-2026-2027/"
+        ],
+        "last_verified_date": "2026-10-10",
+        "verification_status": "confirmed",
+        "confidence": "high",
+        "not_confirmed": [
+          "funding_amount (no monthly figure is stated on the pages checked)",
+          "funding_currency",
+          "funding_period",
+          "tuition_coverage",
+          "travel_coverage",
+          "deadline_central (the next Call's dates are not yet published)"
+        ],
+        "notes": "Portal status, study types, three-course rule, renewal, duration, language and document rules from the official MAECI pages studyinitaly.esteri.it/ListaBandi and /Static/FAQ; the A.Y. 2026-2027 Bangladesh final ranking notice on ambdhaka.esteri.it confirms the cycle completed. The grant amount is only published in each Call itself, which was not yet published on 10 October 2026, so funding_amount stays null."
+      },
+      "applicant_utility": {
+        "summary": "This is a monthly grant for living and studying costs, not a full scholarship: it is paid only for the months actually in Italy, and nine-month grants run 1 November to 31 July, so plan your own funds around the rest of the year. Applications are free and go only through the official Study in Italy platform - never pay an agent - and you may list up to three course options of the same type. The A.Y. 2026-2027 round has already closed with the final ranking published on 3 June 2026, and the portal had not yet announced the next call as of 10 October 2026, so use the interval to line up your CEFR-language certificate and supervisor contacts.",
+        "best_fit": "Self-motivated graduates and PhD applicants who can top up the Italian living grant with their own funds and apply separately for university admission.",
+        "application_readiness_checklist": [
+          "Confirm your country is on the eligible countries list in the Call - if it is not, you cannot apply at all",
+          "Choose up to three course options, all of the same type, at institutions listed on the Universitaly portal",
+          "Start the separate university enrolment process early: the grant application does not enrol you",
+          "Prepare your language certificate from an official body with an explicit CEFR level (Duolingo only works for English), and be ready to supplement it by 14:00 Italian time on 1 July if you make the ranking",
+          "Keep the motivation letter under 500 words and upload everything as PDF files under 2 MB"
+        ],
+        "common_rejection_risks": [
+          "Missing the 1 July 14:00 Italian time supplementary-documents deadline, after which the application cannot be evaluated",
+          "Proposing an online study programme, which is expressly ineligible",
+          "Uploading translated or legalized paperwork that was never required, wasting time and stalling the real gaps (qualification, transcript, language certificate)",
+          "Assuming the MAECI grant also secures university admission - it does not",
+          "Mixing course types across the three options, which the platform disallows"
+        ],
+        "estimated_uncovered_costs": "Everything beyond the monthly grant: accommodation outside the 1 November - 31 July window, travel to Italy, enrolment taxes or tuition the institution charges, and general living costs.",
+        "document_audit": [
+          "PhD applicants must upload the admission letter; until it exists, the supervisor's invitation letter substitutes, but pre-admission letters are never accepted",
+          "Renewal applicants need a certificate or hand-signed self-declaration of university credits (CFU) obtained with marks",
+          "No translations or legalizations are needed - original scans in PDF only, merged where necessary, each file under 2 MB",
+          "Supplementary documents - including language certificates - cannot be submitted for intensive language courses or renewals, so those must be complete at submission"
+        ],
+        "alerts": [
+          "The next Call is not yet published; the grant amount itself is fixed only in each Call, which is why no figure appears here",
+          "Only applications submitted through the Study in Italy website are accepted - other channels are not"
+        ],
+        "submission_workflow": "Wait for the Call on studyinitaly.esteri.it, apply free of charge on the platform with up to three same-type course options, upload the PDF document set before the deadline, supplement by 1 July 14:00 Italian time if ranked, then await the ranking published by the Italian Diplomatic representation."
+      }
+    }
+  ]
+}

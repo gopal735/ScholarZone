@@ -1,0 +1,134 @@
+{
+  "agent": "agent_048",
+  "records": [
+    {
+      "id": 152,
+      "official": {
+        "official_source_urls": [
+          "https://www.unige.ch/sciences/en/enseignements/formations/masters/excellencemasterfellowships",
+          "https://www.unige.ch/sciences/en/enseignements/formations/masters/excellencemasterfellowships/winners-2026",
+          "https://www.unige.ch/immatriculations/en/conditions"
+        ],
+        "application_link": "https://www.unige.ch/sciences/en/enseignements/formations/masters/excellencemasterfellowships",
+        "catalogue_url": "https://www.unige.ch/sciences/en/enseignements/formations/masters",
+        "official_updates_url": "https://www.unige.ch/sciences/en/enseignements/formations/masters/excellencemasterfellowships/winners-2026",
+        "deadline_central": "2026-02-28",
+        "deadline_central_display": "28 February 2026",
+        "deadline_note": "Official page (checked 2026-10-10) still publishes 'Next application deadline is 28 February, 2026 (for Masters starting September 14, 2026)'. That round has concluded (Spring 2026 winners are published); the application window reopens at the beginning of January each year, and the next cycle's deadline has not yet been published.",
+        "application_cycle": "Annual round: applications open at the beginning of January each year; the published 28 February 2026 deadline was for the intake starting 14 September 2026",
+        "status": "UPCOMING",
+        "status_note": "The Faculty's Grant Committee has awarded the Spring 2026 round (winners published on the official updates page); the next round opens at the beginning of January 2027 and the page promises the 28 February deadline pattern.",
+        "tuition_coverage_note": null,
+        "funding_amount": null,
+        "funding_currency": "CHF",
+        "funding_period": "per year",
+        "tuition_coverage": null,
+        "living_cost_coverage": null,
+        "travel_coverage": null,
+        "fully_funded": false,
+        "benefits": [
+          "Grant amounting to CHF 10'000 to CHF 15'000 per year",
+          "No teaching duties",
+          "Awarded for one year and extended for the regular duration of the chosen Master's programme if academically successful at the end of the first semester",
+          "Some fellowships are financed by external partners: a private foundation in Geneva and the Werner Foundation"
+        ],
+        "eligibility": [
+          "Open regardless of home university, to students who have passed or are doing a brilliant bachelor's degree and are one of the best in their year",
+          "Must meet the admission criteria of the Master programme of choice",
+          "Must pursue a Master of Science in one of the disciplines covered by the Faculty: astronomy, biology, chemistry and biochemistry, computer science, mathematics, physics, pharmaceutical sciences, earth sciences",
+          "Must have fulfilled the UNIGE enrolment procedure for the chosen Master's programme before the fellowship application is considered",
+          "Students who have already started a Master programme at the Faculty of Science can no longer apply"
+        ],
+        "requirements": [
+          "Application in English or French, submitted as a SINGLE pdf file",
+          "Proof of enrolment: scan of the UNIGE card (current UNIGE students) or the mail 'UNIGE-Candidature: Depôt de votre dossier' received after registering for the master's programme (non-UNIGE students)",
+          "All listed clauses must be completed or the application file would not be considered"
+        ],
+        "documents": [
+          "Scan of national identity card or passport",
+          "Curriculum Vitae (2 pages maximum)",
+          "Transcript of exams passed during the bachelor education, with all grades",
+          "Motivation letter describing specific scientific interests and motivation to pursue a Master of Science at the University of Geneva",
+          "Letters of reference from two professors attesting aptitude to the programme",
+          "Any other pertinent information, e.g. GRE, TOEFL or other language test results"
+        ],
+        "selection_criteria": [
+          "Candidate selection is based on excellence",
+          "Awards are made by the Grant Committee of the Faculty of Science",
+          "Incomplete files are not considered"
+        ],
+        "coverage": [
+          "Grant amounting to CHF 10'000 to CHF 15'000 per year",
+          "No teaching duties attached to the fellowship",
+          "Renewal for the regular duration of the chosen Master's programme (three or four semesters) conditional on academic success at the end of the first semester"
+        ],
+        "application_method": [
+          "Fulfill the UNIGE enrolment procedure for the chosen Master's programme as described on the Admissions office website",
+          "From the beginning of January, wait for the e-mail containing a personal link allowing you to fill out the application form",
+          "Complete the online application form",
+          "Upload one single pdf file containing all required documents"
+        ],
+        "application_route": "Register for the chosen UNIGE Master's programme first, then apply online in January-February via the personal link e-mailed after registration, uploading one combined PDF",
+        "study_mode": null,
+        "citizenship_residency": "No citizenship or residency restriction is published; the programme is open regardless of home university",
+        "international_eligibility": "Yes - open to applicants from any university worldwide (2026 winners came from universities in the USA, India, Algeria, Poland, Estonia, Iran, Hungary, Serbia, Italy, Spain, Argentina, China, Mexico and Cuba, as well as from UNIGE)",
+        "subject_or_agency_requirement": "Must be a Master of Science in a discipline covered by the Faculty of Science: astronomy, biology, chemistry and biochemistry, computer science, mathematics, physics, pharmaceutical sciences, earth sciences. Some awards are financed by external partners (a Geneva private foundation; the Werner Foundation)",
+        "research_requirement": null,
+        "duration": "One year, then extended for the regular duration of the chosen Master's programme (three or four semesters) if the holder is academically successful at the end of the first semester of studies",
+        "description": "The Faculty of Science of the University of Geneva, with the support of external partners, has established an Excellence Fellowship programme open to outstanding and highly motivated students who wish to pursue a Master of Science degree in one of the disciplines covered by the Faculty. Candidate selection is based on excellence, and the grant carries no teaching duties.",
+        "region": "Europe (Geneva, Switzerland)",
+        "program_type": "Faculty-level excellence grant scheme for incoming Master of Science students",
+        "english_requirement": "The fellowship page mandates no separate English test; TOEFL or other language test results are listed only as optional 'other pertinent information'. Master's programmes are either entirely in English or in English and French."
+      },
+      "verification": {
+        "source_citations": [
+          "https://www.unige.ch/sciences/en/enseignements/formations/masters/excellencemasterfellowships",
+          "https://www.unige.ch/sciences/en/enseignements/formations/masters/excellencemasterfellowships/winners-2026"
+        ],
+        "last_verified_date": "2026-10-10",
+        "verification_status": "confirmed",
+        "confidence": "high",
+        "not_confirmed": [
+          "funding_amount (the official page publishes only the range CHF 10,000 to CHF 15,000 per year, not a single figure)",
+          "tuition_coverage (no tuition coverage is stated; the award is described solely as a grant)",
+          "living_cost_coverage",
+          "travel_coverage",
+          "study_mode (no full-time/part-time wording published)",
+          "exact 2027-cycle deadline date (not yet published)"
+        ],
+        "notes": "Amount range, deadline, duration, eligibility, documents and selection wording taken directly from the Faculty of Science official fellowship page; winner list and external-partner funding from the Spring 2026 winners page; enrolment procedure cross-checked on the UNIGE admissions conditions page. The published deadline of 28 February 2026 refers to the concluded round for Masters starting 14 September 2026; the round reopens annually in January."
+      },
+      "applicant_utility": {
+        "summary": "This is an excellence-selected cash grant of CHF 10,000-15,000 per year for students entering any MSc in the UNIGE Faculty of Science, with no teaching duties and automatic renewal across the full 3-4 semester programme provided you pass your first semester. Its unusual mechanic is that the fellowship sits downstream of admission: you must already have begun the UNIGE enrolment for your chosen MSc before your file is even considered. The window is narrow and fixed each year - it opens at the beginning of January and closes on 28 February - so treat your MSc registration, not the fellowship form, as the action item that starts the clock.",
+        "best_fit": "Bachelor graduates ranked among the best of their cohort who want a research-oriented MSc in Geneva without teaching obligations.",
+        "application_readiness_checklist": [
+          "Begin the UNIGE enrolment for your chosen MSc early - you need the 'UNIGE-Candidature: Depot de votre dossier' confirmation e-mail (or your UNIGE card) inside the fellowship file",
+          "Watch for the personal application link e-mailed after registration once the January window opens; there is no public form to find",
+          "Assemble every item into ONE pdf in English or French - the Faculty rejects files that are not single-pdf or are incomplete",
+          "Brief your two referees on the specific MSc you have chosen, since the letters must attest aptitude to that programme",
+          "Order a full transcript with all bachelor's grades (not a summary) and keep the CV to 2 pages"
+        ],
+        "common_rejection_risks": [
+          "Missing proof of UNIGE enrolment registration - without the card scan or the candidature e-mail the file is not considered, whatever the grades",
+          "Submitting several PDFs or an over-length CV, or leaving one listed document out; all clauses must be completed",
+          "Applying after having already started a Master at the Faculty of Science, which is a hard exclusion",
+          "Not meeting the admission criteria of the chosen MSc - the fellowship selection is made on the basis of the application file against those criteria"
+        ],
+        "estimated_uncovered_costs": "The award is a cash grant only; tuition, housing, Swiss health insurance, residence-permit costs and travel are not covered by the published terms, and Geneva is a high-cost city, so most fellows will need substantial additional funds.",
+        "document_audit": [
+          "Reference letters must come from two professors - employers or assistants do not match the published requirement",
+          "The transcript must cover the full bachelor's education with all grades, not just the final year",
+          "Proof of registration differs by status: current UNIGE students upload a card scan, everyone else uploads the 'UNIGE-Candidature: Depôt de votre dossier' e-mail",
+          "GRE/TOEFL results are optional but are explicitly welcomed as 'other pertinent information' - include them if you have strong scores"
+        ],
+        "alerts": [
+          "The 28 February deadline applies to the intake starting the following 14 September; there is no rolling submission and the form link only exists during the January-February window",
+          "The grant can be lost at renewal if the first semester is not academically successful - year one is effectively a probationary performance review",
+          "Some awards are financed by external partners (a Geneva private foundation, the Werner Foundation), so awards within the CHF 10,000-15,000 band may not be uniform across the cohort",
+          "The published page can lag behind the calendar - as of 10 October 2026 it still advertises the concluded 28 February 2026 round, so check the winners/updates page in January for the next call"
+        ],
+        "submission_workflow": "Register for the MSc (enrolment) -> receive the personal application link by e-mail in January -> complete the online form -> upload one combined PDF by 28 February."
+      }
+    }
+  ]
+}

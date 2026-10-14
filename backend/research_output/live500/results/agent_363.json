@@ -1,0 +1,300 @@
+{
+  "agent": "agent_363",
+  "records": [
+    {
+      "id": 699,
+      "official": {
+        "official_source_urls": [
+          "https://www.chileatiende.gob.cl/fichas/36380-beca-para-estudiantes-en-situacion-de-discapacidad",
+          "https://portal.beneficiosestudiantiles.cl/becas-y-creditos/becas-para-estudiantes-en-situacion-de-discapacidad"
+        ],
+        "application_link": "https://postulacion.beneficiosestudiantiles.cl/fuas/",
+        "catalogue_url": "https://www.chileatiende.gob.cl/buscar?query=beca",
+        "official_updates_url": "https://portal.beneficiosestudiantiles.cl/agenda",
+        "deadline_central": "2026-10-22",
+        "deadline_central_display": "22 October 2026",
+        "deadline_note": "Single central deadline for the first application period of the 2027 admission cycle; Mineduc publishes later dates for socioeconomic information (17 December 2026), pre-selection results (15 January 2027), assignment results (10 March 2027) and the appeal window (10-25 March 2027). No separate institutional deadline is published by the awarding body.",
+        "application_cycle": "admisión 2027 (first application period)",
+        "status": "CLOSING",
+        "status_note": "Applications for the 2027 admission cycle run from 1 to 22 October 2026 via the FUAS website; as of the verification date the window is in its final days. Assignment, appeal and renewal results already published refer to the previous admisión 2026 round and remain available from 15 October 2026 on the Beneficios Estudiantiles site.",
+        "tuition_coverage_note": "The benefit finances all or part of the annual tuition (arancel anual) of a regular undergraduate degree at an institution accredited as at 31 December 2026. The amount depends on the institution and the type of degree: Council of Rectors universities finance the annual reference tuition (arancel de referencia anual) through 250 places of the Beca Bicentenario; other accredited institutions finance the annual tuition up to a maximum of CLP 1,150,000 through 250 places of the Beca Juan Gómez Millas; technical or professional degrees taught by institutes finance between CLP 600,000 and CLP 860,000 through 250 places of the Beca Nuevo Milenio. The caps concern tuition only; the annual arancel does not include the enrolment fee (matrícula).",
+        "funding_amount": 1150000,
+        "funding_currency": "CLP",
+        "funding_period": "per academic year (maximum, varies by institution)",
+        "tuition_coverage": true,
+        "living_cost_coverage": false,
+        "travel_coverage": false,
+        "fully_funded": false,
+        "benefits": [
+          "Economic support that finances all or part of the annual tuition of a regular degree programme at an accredited higher-education institution",
+          "A place in one of the three underlying scholarships - Beca Bicentenario, Beca Juan Gómez Millas or Beca Nuevo Milenio - depending on the institution and the type of degree",
+          "750 special inclusion places in total, 250 in each of the three underlying scholarships",
+          "Beca Bicentenario route: financing of the full annual reference tuition of the degree",
+          "Beca Juan Gómez Millas route: financing of the annual tuition up to a maximum of CLP 1,150,000",
+          "Beca Nuevo Milenio route: financing of the annual tuition between CLP 600,000 and CLP 860,000"
+        ],
+        "eligibility": [
+          "Tener la nacionalidad chilena (Chilean nationality)",
+          "Tener un promedio de enseñanza media igual o superior a 5,0 (secondary-school average of 5.0 or above)",
+          "Estar inscrita o inscrito al 31 de diciembre de 2026 en el Registro Nacional de Discapacidad del Servicio de Registro Civil e Identificación (registered in the RND as at 31 December 2026)",
+          "Pertenecer al 70 % más vulnerable según el Registro Social de Hogares (belong to the 70% most vulnerable group according to the RSH)",
+          "No contar con un título profesional o técnico de nivel superior, o con una licenciatura terminal",
+          "No haber recibido becas de arancel del Mineduc en dos oportunidades distintas con anterioridad a la postulación",
+          "No haber recibido en dos oportunidades distintas becas de arancel del Mineduc como estudiante de primer año",
+          "Only obtainable in a degree different from the one previously studied with Gratuidad",
+          "The degree must be undergraduate (pregrado) in face-to-face (presencial) mode"
+        ],
+        "requirements": [
+          "File the application through the Formulario Único de Acreditación Socioeconómica (FUAS) with RUT and password or ClaveÚnica",
+          "Upload the supporting documents on the FUAS site on the dates set by Mineduc",
+          "Enrol at an institution accredited as at 31 December 2026",
+          "Accredit socioeconomic status at the enrolled institution, where applicable"
+        ],
+        "documents": [
+          "Completed FUAS socioeconomic accreditation form (the benefit is granted on the basis of the data entered in the FUAS plus the information held by the State)",
+          "Proof of registration in the Registro Nacional de Discapacidad of the Servicio de Registro Civil e Identificación as at 31 December 2026",
+          "Registro Social de Hogares (RSH) household registration data showing the 70% most vulnerable group",
+          "Proof of enrolment (comprobante de matrícula) and the annual tuition of the degree for the admission year",
+          "Secondary-school (enseñanza media) academic record supporting the 5.0 average"
+        ],
+        "selection_criteria": [
+          "Academic merit: secondary-school (enseñanza media) average of 5.0 or above",
+          "Socioeconomic level: membership of the 70% most vulnerable group according to the Registro Social de Hogares",
+          "State-held information combined with the data supplied in the FUAS",
+          "Allocation is subject to the 750 places available and to the conditions defined by the budget law for the year of assignment"
+        ],
+        "coverage": [
+          "Universidades del Consejo de Rectores (CRUCh): financing of the annual reference tuition (arancel de referencia anual) of the degree, through 250 places of the Beca Bicentenario",
+          "Instituciones privadas acreditadas (universidades, centros de formación técnica e institutos profesionales): financing of the annual tuition of the degree up to a maximum of CLP 1,150,000, through 250 places of the Beca Juan Gómez Millas",
+          "Carreras técnicas o profesionales dictadas por institutos: financing of the annual tuition between CLP 600,000 and CLP 860,000, through 250 places of the Beca Nuevo Milenio, at accredited institutions"
+        ],
+        "application_method": [
+          "Enter the FUAS website at https://postulacion.beneficiosestudiantiles.cl/fuas/ with RUT and password or ClaveÚnica and complete the application form",
+          "Review socioeconomic-level information at https://resultados.beneficiosestudiantiles.cl/ on the dates published",
+          "Review pre-selection and assignment results at https://resultados.beneficiosestudiantiles.cl/",
+          "Enrol at the higher-education institution and accredit socioeconomic status at the same institution where applicable"
+        ],
+        "application_route": "Apply online through the FUAS (Formulario Único de Acreditación Socioeconómica) using RUT and password or ClaveÚnica; the benefit is granted on the basis of the FUAS data plus State-held information.",
+        "study_mode": "Pregrado (undergraduate) in modalidad presencial (face-to-face)",
+        "citizenship_residency": "Chilean nationality required (tener la nacionalidad chilena); no residency rule beyond nationality is published.",
+        "international_eligibility": "No - the published requirement is Chilean nationality, so international students are not eligible.",
+        "subject_or_agency_requirement": "No subject restriction: the benefit covers any regular undergraduate degree at an institution accredited as at 31 December 2026. Restriction is by institution type (Council of Rectors universities vs accredited institutions) and by degree type (professional vs technical).",
+        "research_requirement": null,
+        "duration": "Annual, tied to the Chilean academic year; the benefit is assigned per admission cycle and the places are subject to the conditions defined by the budget law for the year of assignment.",
+        "description": "A Mineduc benefit giving special inclusion places in the Beca Bicentenario, Beca Juan Gómez Millas and Beca Nuevo Millas scholarships to students with a registered disability, Chilean nationality, a secondary-school average of 5.0 or above and membership of the 70% most vulnerable group according to the Registro Social de Hogares, to finance all or part of the annual tuition of a regular undergraduate degree at an accredited institution.",
+        "region": "Chile (Latin America)",
+        "program_type": "Government tuition scholarship (special inclusion places of the Beca Bicentenario, Beca Juan Gómez Millas and Beca Nuevo Milenio)",
+        "english_requirement": null
+      },
+      "verification": {
+        "source_citations": [
+          "https://www.chileatiende.gob.cl/fichas/36380-beca-para-estudiantes-en-situacion-de-discapacidad",
+          "https://portal.beneficiosestudiantiles.cl/becas-y-creditos/becas-para-estudiantes-en-situacion-de-discapacidad"
+        ],
+        "last_verified_date": "2026-10-10",
+        "verification_status": "confirmed",
+        "confidence": "high",
+        "not_confirmed": [
+          "english_requirement",
+          "living_cost_coverage (the official pages publish tuition-only coverage; no living allowance is mentioned, so recorded as false)",
+          "travel_coverage (no travel or installation allowance is published)",
+          "research_requirement",
+          "exact tuition amount per degree (the reference arancel varies by degree and institution; Mineduc publishes a separate aranceles de referencia list rather than a single figure)",
+          "document upload dates for the 2027 cycle (Mineduc sets them separately and they are not published on the pages checked)",
+          "renewal conditions for holders of this specific benefit"
+        ],
+        "notes": "Amounts and coverage read directly from the Mineduc Beneficios Estudiantiles programme page and the ChileAtiende ficha published by the Ministerio de Educación; deadline and the full timeline taken from the ChileAtiende ficha for the admisión 2027 first application period."
+      },
+      "applicant_utility": {
+        "summary": "This is not a standalone scholarship but a reserved block of 750 places inside three existing Mineduc tuition scholarships, so your award depends entirely on which institution and which kind of degree you enrol in: a Council of Rectors university pays your full annual reference tuition, an accredited private university or CFT/IP pays up to CLP 1,150,000, and a technical/professional degree at an institute pays between CLP 600,000 and CLP 860,000. The benefit covers tuition only, never the matrícula (enrolment fee), materials, transport or living costs, so you must plan for those yourself. The application runs exclusively through the FUAS between 1 and 22 October 2026 for the 2027 intake, and the grant is decided on FUAS data plus State records rather than on any score you can prepare at the last minute. Be aware that having previously used Gratuidad for a degree blocks this benefit for that same degree, and that two prior Mineduc tuition scholarships disqualify you.",
+        "best_fit": "Chilean undergraduates with a disability registered in the RND, from the bottom 70% of the RSH, with a secondary-school average of 5.0+ and no prior higher qualification, enrolling face-to-face at an accredited institution.",
+        "application_readiness_checklist": [
+          "Check your Registro Social de Hogares tramo in Mi ChileAtiende with RUN and ClaveÚnica before applying, since the 70% most vulnerable cut-off is applied on that register and not on what you type into FUAS",
+          "Confirm your RND (Registro Nacional de Discapacidad) registration is valid through 31 December 2026 before you file - re-registering after that date will not help this cycle",
+          "Get ClaveÚnica activated in advance if you do not already have FUAS credentials, as the FUAS portal needs one of the two to log in",
+          "Look up the degree's reference arancel and the institution's accreditation status on the Mineduc acceso site so you know which of the three underlying scholarships you would fall into",
+          "Complete the FUAS thoroughly and consistently with your household's actual composition, since the income calculation uses your family group and the characteristics of every member",
+          "Prepare the enrolment proof (comprobante de matrícula) showing the degree and the annual arancel for 2027 as soon as you are admitted"
+        ],
+        "common_rejection_risks": [
+          "Enrolling in a distance or non-presencial undergraduate programme, which the programme excludes outright",
+          "Choosing an institution or programme that is not accredited as at 31 December 2026",
+          "Applying for a degree you previously studied under Gratuidad, which is expressly forbidden",
+          "Letting the RND registration lapse so that it is not valid on 31 December 2026",
+          "Having already received two separate Mineduc tuition scholarships, or two as a first-year student",
+          "Missing the document-upload window on the FUAS site even though the application itself was filed on time",
+          "Assuming the award follows your grades: allocation is capped at 750 places and bounded by the budget law, so meeting every requirement does not guarantee a place"
+        ],
+        "estimated_uncovered_costs": "Enrolment fee (matrícula), materials, transport and all living costs are not covered; at Council of Rectors universities any amount by which the real arancel exceeds the published reference arancel also stays with the student.",
+        "document_audit": [
+          "The comprobante de matrícula must expressly show the degree and the annual arancel for the admission year - an invoice or a simple enrolment confirmation without the arancel will not do",
+          "Documents must be uploaded as PDFs on the FUAS site during Mineduc's own upload window, not attached at the moment you file the application",
+          "Your licence/record of enseñanza media must support the 5.0 average you claim; the FUAS data is cross-checked against State records",
+          "Keep the RND certificate and the RSH household printout ready as the two documents outside the FUAS that prove your eligibility"
+        ],
+        "alerts": [
+          "The 2027 application window closes 22 October 2026 and there is no late route published for the first period",
+          "Dates after 22 October 2026 are fixed: socioeconomic information 17 December 2026, pre-selection results 15 January 2027, assignment results 10 March 2027, appeals 10-25 March 2027 - build your enrolment decision around them",
+          "Call Ayuda Mineduc on 600 600 26 26 early if any document is unclear; the window is short and the ChileAtiende helpdesk cannot process FUAS uploads",
+          "Do not let an admitted student combine this with Gratuidad or another Mineduc tuition scholarship for the same degree - the rule is enforced on prior receipt of arancel scholarships"
+        ],
+        "submission_workflow": "File the FUAS form online with RUT/password or ClaveÚnica during the application window, upload the supporting PDFs during Mineduc's separate upload dates, then track pre-selection and assignment on resultados.beneficiosestudiantiles.cl."
+      }
+    },
+    {
+      "id": 700,
+      "official": {
+        "official_source_urls": [
+          "https://www.chileatiende.gob.cl/fichas/2278-beca-de-reparacion-valech",
+          "https://portal.beneficiosestudiantiles.cl/becas-y-creditos/becas-de-reparacion"
+        ],
+        "application_link": "https://postulacion.beneficiosestudiantiles.cl/fuas/",
+        "catalogue_url": "https://www.chileatiende.gob.cl/buscar?query=beca",
+        "official_updates_url": "https://portal.beneficiosestudiantiles.cl/agenda",
+        "deadline_central": "2026-10-22",
+        "deadline_central_display": "22 October 2026",
+        "deadline_note": "Single central deadline for the first application period of the 2027 admission cycle. Mineduc additionally publishes: socioeconomic information 17 December 2026, pre-selection and potential renewant results 15 January 2027, assignment results 10 March 2027, and the appeal period 10-25 March 2027. No separate institutional deadline is published by the awarding body.",
+        "application_cycle": "admisión 2027 (first application period)",
+        "status": "CLOSING",
+        "status_note": "Applications for the 2027 admission cycle run from 1 to 22 October 2026 through the FUAS website; as of the verification date the window is in its final days. Assignment, appeal and renewal results already published concern the previous admisión 2026 round and remain available from 15 October 2026 on the Beneficios Estudiantiles site.",
+        "tuition_coverage_note": "Titulares (the Valech-named beneficiaries themselves): the benefit finances the enrolment fee (matrícula) and the whole annual tuition of the degree. Traspaso (child or grandchild route): at Council of Rectors universities it finances the enrolment fee plus the annual reference tuition; at private universities and for professional degrees at professional institutes it finances the enrolment fee plus annual tuition up to a maximum of CLP 1,150,000; at technical training centres and for technical degrees at professional institutes it finances the enrolment fee plus annual tuition up to a maximum of CLP 600,000.",
+        "funding_amount": 1150000,
+        "funding_currency": "CLP",
+        "funding_period": "per academic year (maximum, varies by route)",
+        "tuition_coverage": true,
+        "living_cost_coverage": false,
+        "travel_coverage": false,
+        "fully_funded": false,
+        "benefits": [
+          "Titulares: financing of the enrolment fee (matrícula) and the whole annual tuition of the degree",
+          "Traspaso: financing of the enrolment fee plus the annual reference tuition at Council of Rectors universities",
+          "Traspaso: financing of the enrolment fee plus annual tuition up to a maximum of CLP 1,150,000 at private universities and for professional degrees at professional institutes",
+          "Traspaso: financing of the enrolment fee plus annual tuition up to a maximum of CLP 600,000 at technical training centres and for technical degrees at professional institutes",
+          "The benefit can be transferred to a child or grandchild when the holder does not use it",
+          "No socioeconomic requirement and no PSU/PDT/PAES or secondary-school grades requirement"
+        ],
+        "eligibility": [
+          "Ser una persona individualizada como víctima en el informe de la Comisión Valech (titular), o una/o de sus hijas/os o nietas/os (traspaso)",
+          "Traspaso route: the beneficiary may use the scholarship only if no family member has already used the benefit at the time of application",
+          "No contar con un título profesional o técnico de nivel superior, o con una licenciatura terminal",
+          "No haber recibido becas de arancel del Ministerio de Educación en dos oportunidades distintas con anterioridad a la postulación",
+          "Enrolling for the first year as titular: any institution with official recognition from Mineduc is acceptable",
+          "Already studying a degree and applying for the second year onward, or applying through traspaso: the institution must be accredited as at 31 December 2026",
+          "Traspaso into Medicina, Pedagogía u Odontología: the degree itself must also be accredited or in the accreditation process as at 31 January 2027",
+          "The degree must be undergraduate (pregrado) in face-to-face (presencial) mode"
+        ],
+        "requirements": [
+          "Complete the specific benefit form on the FUAS website during the published dates and upload the documents corresponding to your situation in PDF format",
+          "Notarise the transfer form (anexo N° 1, N° 2 or N° 3) where the route requires it",
+          "For the traspaso route, present the anexo N° 5 carta de aceptación del beneficio",
+          "Matriculate at an institution with official Mineduc recognition as titular, or at an accredited institution if applying through traspaso",
+          "Completing the general FUAS form as well is recommended, since it opens access to the Junaeb Beca de Alimentación"
+        ],
+        "documents": [
+          "Titulares: formulario de aceptación del beneficio educacional under Ley N° 19.992, or anexo N° 4",
+          "Titulares: fotocopia de cédula de identidad",
+          "Titulares: licencia de enseñanza media or a legalised photocopy",
+          "Titulares: photocopy of the enrolment certificate specifying the degree and the annual arancel",
+          "Traspaso: certificado de nacimiento of the applicant (for family assignment)",
+          "Traspaso: photocopy of the applicant's cédula de identidad on both sides",
+          "Traspaso: legalised photocopy of the applicant's licencia de enseñanza media",
+          "Traspaso: photocopy of the applicant's enrolment certificate specifying the degree and the annual arancel",
+          "Traspaso: certificado de nacimiento of the applicant's father or mother, where the holder is the applicant's grandmother or grandfather",
+          "Traspaso: carta de aceptación del beneficio, anexo N° 5",
+          "With a living holder: notarised transfer form, anexo N° 1, plus both-sided copy of the holder's cédula de identidad",
+          "With a deceased holder and a previously executed transfer: anexo N° 1 plus both-sided copy of the applicant's cédula de identidad",
+          "With a deceased holder with posesión efectiva: certificado de defunción, the court or Registro Civil resolution granting the posesión efectiva, and notarised anexo N° 2",
+          "With a deceased holder without posesión efectiva: certificado de defunción and notarised anexo N° 3"
+        ],
+        "selection_criteria": [
+          "This is a reparations entitlement created by Ley N° 19.992 rather than a competitive selection",
+          "No socioeconomic requirement and no academic score requirement (no PSU, PDT, PAES or secondary-school grades)",
+          "Not to hold a professional or technical degree of higher level, nor a terminal licenciatura",
+          "Not to have received Mineduc tuition scholarships on two separate prior occasions",
+          "The benefit is granted on the basis of the data entered in the FUAS plus the information held by the State"
+        ],
+        "coverage": [
+          "Titulares: financing of the enrolment fee (matrícula) and the totality of the annual tuition of the degree",
+          "Traspaso at Council of Rectors universities: financing of the enrolment fee and the annual reference tuition",
+          "Traspaso at private universities and for professional degrees at professional institutes: financing of the enrolment fee and annual tuition up to a maximum of CLP 1,150,000",
+          "Traspaso at technical training centres or for technical degrees at professional institutes: financing of the enrolment fee and annual tuition up to a maximum of CLP 600,000"
+        ],
+        "application_method": [
+          "Access www.fuas.cl / https://postulacion.beneficiosestudiantiles.cl/fuas/ and complete the specific benefit form for the scholarship during the published dates",
+          "Upload the documents corresponding to your route in PDF format on the FUAS site",
+          "Matriculate at the institution, and review the final results at https://resultados.beneficiosestudiantiles.cl/ on the published dates"
+        ],
+        "application_route": "Apply online through the FUAS (Formulario Único de Acreditación Socioeconómica), completing the specific benefit form and uploading the route-specific documents as PDFs.",
+        "study_mode": "Pregrado (undergraduate) in modalidad presencial (face-to-face)",
+        "citizenship_residency": "No nationality or residency rule is published; eligibility rests on being named in the Informe Comisión Valech (or being a lineal descendant to whom the benefit has been transferred).",
+        "international_eligibility": "Not restricted by nationality - entitlement follows from the Informe Comisión Valech listing rather than citizenship, so no nationality bar is published.",
+        "subject_or_agency_requirement": "No subject restriction, but in the traspaso route the degrees of Medicina, Pedagogía and Odontología additionally require the degree itself to be accredited or in the accreditation process as at 31 January 2027.",
+        "research_requirement": null,
+        "duration": "Annual, tied to the Chilean academic year and to the admission cycle in which the benefit is assigned.",
+        "description": "A reparations scholarship created by Ley N° 19.992 for people individualised as victims in the Informe de la Comisión Valech, financing the enrolment fee and the annual tuition of an officially recognised undergraduate degree; a holder who does not use the benefit may transfer it to a child or grandchild, in which case coverage follows the type of institution.",
+        "region": "Chile (Latin America)",
+        "program_type": "Government reparations scholarship (Ley N° 19.992)",
+        "english_requirement": null
+      },
+      "verification": {
+        "source_citations": [
+          "https://www.chileatiende.gob.cl/fichas/2278-beca-de-reparacion-valech",
+          "https://portal.beneficiosestudiantiles.cl/becas-y-creditos/becas-de-reparacion"
+        ],
+        "last_verified_date": "2026-10-10",
+        "verification_status": "confirmed",
+        "confidence": "high",
+        "not_confirmed": [
+          "english_requirement",
+          "living_cost_coverage (the official pages publish enrolment fee and tuition only; no living allowance is mentioned, so recorded as false)",
+          "travel_coverage (no travel or installation allowance is published)",
+          "research_requirement",
+          "exact tuition amount per degree (capped figures are published but the actual arancel varies by degree and institution)",
+          "document upload dates for the 2027 cycle (Mineduc sets them separately and they are not published on the pages checked)",
+          "renewal conditions for beneficiaries of this specific scholarship",
+          "number of available places (the official pages publish no cupos figure for this benefit)"
+        ],
+        "notes": "Coverage tiers and document routes read directly from the Mineduc Beneficios Estudiantiles programme page and the ChileAtiende ficha published by the Ministerio de Educación; deadline and full timeline taken from the ChileAtiende ficha for the admisión 2027 first application period. The list of universities eligible for Beca Bicentenario is published separately by Mineduc as a PDF."
+      },
+      "applicant_utility": {
+        "summary": "This is a legal entitlement under Ley N° 19.992 rather than a competition, so there is no socioeconomic test, no PSU/PDT/PAES score and no grade cut-off - what decides your outcome is documentary, not academic. Which route you are on changes the amount completely: a titular named in the Valech report gets the enrolment fee plus the entire annual tuition, whereas a grandchild using a transferred benefit at a private university or a professional institute is capped at CLP 1,150,000 and at a technical centre or technical degree at CLP 600,000. The application is filed on the FUAS between 1 and 22 October 2026 for the 2027 intake, and the transfer forms must be notarised, which is the step that most often runs out of time. If the holder died, the specific anexo you need (1, 2 or 3) depends on whether a transfer was executed in life and whether posesión efectiva has been granted - picking the wrong one stalls the whole file.",
+        "best_fit": "People individualised in the Informe Comisión Valech, or their children and grandchildren using a transferred benefit, who need tuition and enrolment covered without any income or grade test.",
+        "application_readiness_checklist": [
+          "Confirm the holder's status in the Informe Comisión Valech through the INDH listing and that no other family member has already drawn the benefit, as that voids the traspaso route",
+          "Identify your exact documentary route before you start: titular, traspaso with a living holder, traspaso with a deceased holder with a previously executed transfer, traspaso with posesión efectiva, or traspaso without it",
+          "Book a notary appointment early for anexo N° 1, 2 or 3 - notarisation is unavoidable and the FUAS window is only three weeks",
+          "Obtain the certificado de defunción and, where relevant, the posesión efectiva resolution from the Juzgado de Letras en lo Civil or the Registro Civil in advance",
+          "Check the accreditation status of the institution (and of the degree itself if you are entering Medicina, Pedagogía or Odontología) on the Mineduc acceso site, since accredited status is required as at 31 December 2026 for second-year and traspaso routes and 31 January 2027 for those three degrees",
+          "Scan every document to PDF before the window opens, including both sides of the cédula de identidad",
+          "Also complete the general FUAS form, which the awarding body recommends because it opens the Junaeb Beca de Alimentación"
+        ],
+        "common_rejection_risks": [
+          "Using the wrong anexo (1, 2 or 3) for the holder's actual situation, or submitting a transfer form that was never notarised",
+          "A family member having already taken the benefit, which blocks the traspaso route at the time of application",
+          "Applying through traspaso into an institution that is not accredited as at 31 December 2026",
+          "Entering Medicina, Pedagogía or Odontología where the degree itself is not accredited or in process as at 31 January 2027",
+          "Holding a professional or technical degree of higher level, or a terminal licenciatura",
+          "Having received two separate Mineduc tuition scholarships previously",
+          "Enrolling in a distance or non-presencial undergraduate programme",
+          "Uploading a comprobante de matrícula that does not state the degree and the annual arancel for the year"
+        ],
+        "estimated_uncovered_costs": "All living costs, materials and transport; in the traspaso route at private universities and professional institutes, the part of the arancel above CLP 1,150,000, and at technical centres and technical degrees the part above CLP 600,000, plus any difference between the real arancel and the published reference arancel at Council of Rectors universities.",
+        "document_audit": [
+          "The transfer forms (anexos 1, 2, 3) and the anexo 5 carta de aceptación must be legalised before a notary - an unnotarised scan is the single most common failure",
+          "Cédulas de identidad must be copied on both sides, including the holder's where the route requires it",
+          "The licencia de enseñanza media must be a legalised photocopy for the traspaso route, not a plain copy",
+          "Where the holder is the applicant's grandmother or grandfather, you must additionally produce the certificado de nacimiento of the applicant's parent to prove the family line",
+          "Every document goes in as PDF on the FUAS site, so keep the originals accessible for any later verification"
+        ],
+        "alerts": [
+          "The application window for admisión 2027 closes 22 October 2026 and the notarisation requirement means you should start at least several weeks earlier",
+          "For a deceased holder, the transfer must have been executed in life by notarial document for descendants beyond a second-degree lineal relative to qualify, so an informal family promise has no legal standing",
+          "Fixed dates after 22 October 2026: socioeconomic information 17 December 2026, pre-selection results 15 January 2027, assignment results 10 March 2027, appeals 10-25 March 2027",
+          "Only 24 days separate the close of applications from the socioeconomic information date, so do not leave document uploads until after the deadline",
+          "Call Ayuda Mineduc on 600 600 26 26 for route clarification; the ChileAtiende 101 line cannot resolve FUAS document questions"
+        ],
+        "submission_workflow": "Complete the specific benefit form on the FUAS site during the application window, upload the notarised route-specific PDFs during Mineduc's upload dates, enrol at the qualifying institution, then follow the assignment result on resultados.beneficiosestudiantiles.cl."
+      }
+    }
+  ]
+}

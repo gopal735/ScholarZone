@@ -1,0 +1,122 @@
+{
+  "agent": "agent_123",
+  "records": [
+    {
+      "id": 321,
+      "official": {
+        "official_source_urls": [
+          "https://iso.fudan.edu.cn/isoenglish/82/fb/c17458a754427/page.htm",
+          "https://iso.fudan.edu.cn/_upload/article/files/57/73/705fe7f44aebab32b316c3a8a22d/74cb9068-3844-442d-9022-bf71c12d48dd.pdf"
+        ],
+        "application_link": "https://iso.fudan.edu.cn/isoenglish/82/fb/c17458a754427/page.htm",
+        "catalogue_url": "https://iso.fudan.edu.cn/isoenglish/SummerPrograms/list.htm",
+        "official_updates_url": "https://iso.fudan.edu.cn/isoenglish/51337/list.htm",
+        "deadline_central": "2025-12-10",
+        "deadline_central_display": "December 10, 2025",
+        "deadline_note": "The published application period ran from October 13, 2025 to December 10, 2025; that window has passed and no next-cycle date is published.",
+        "application_cycle": "2026 intake (application period 2025.10.13-2025.12.10)",
+        "status": "CLOSED",
+        "status_note": "The published 2026 application period closed on December 10, 2025; no new dates are published on the ISO page.",
+        "tuition_coverage_note": "Exemption from tuition fee, providing free on-campus accommodation or providing accommodation subsidy, Comprehensive Medical Insurance",
+        "funding_amount": 3000,
+        "funding_currency": "CNY",
+        "funding_period": "per month",
+        "tuition_coverage": true,
+        "living_cost_coverage": true,
+        "travel_coverage": null,
+        "fully_funded": true,
+        "benefits": [
+          "Living stipend (Master student: 3000RMB/month, Doctoral student: 3500RMB/month)",
+          "Exemption from tuition fee",
+          "Free on-campus accommodation or accommodation subsidy",
+          "Comprehensive Medical Insurance"
+        ],
+        "eligibility": [
+          "Non-Chinese citizens in good health",
+          "Master's applicants: holders of a bachelor's degree under the age of 35",
+          "Doctoral applicants: holders of a master's degree under the age of 40",
+          "Not holding any other scholarship provided by the Chinese government"
+        ],
+        "requirements": [
+          "Download, print, fill out and sign the Shanghai Government Scholarship application form from the ISO website",
+          "Complete the Fudan application choosing 'Self-support' as the fund source and select the 'Shanghai Government Scholarship' option",
+          "Upload the completed Foreigner Physical Examination Form"
+        ],
+        "documents": [
+          "Completely filled Foreigner Physical Examination Form, filled out in Chinese or English, valid for six months",
+          "The signed Shanghai Government Scholarship application form downloaded from the ISO website"
+        ],
+        "selection_criteria": null,
+        "coverage": [
+          "Exemption from tuition fee",
+          "Free on-campus accommodation or accommodation subsidy",
+          "Comprehensive Medical Insurance",
+          "Living stipend (Master student: 3000RMB/month, Doctoral student: 3500RMB/month)"
+        ],
+        "application_method": [
+          "Step One: visit https://iso.fudan.edu.cn/16053/list.htm to download the application form; print, fill out and sign it",
+          "Step Two: visit https://istudent.fudan.edu.cn/apply to complete the application, choosing 'Self-support' as the fund source",
+          "When filling in the application form, choose the option of 'Shanghai Government Scholarship' and upload the scholarship application form",
+          "Upload the completely filled Foreigner Physical Examination Form (applicants residing in China may submit a Residence Permit or Foreign Permanent Resident ID Card instead)"
+        ],
+        "application_route": "Download and sign the scholarship form, apply at istudent.fudan.edu.cn as 'Self-support' and select the Shanghai Government Scholarship option, then upload the signed form.",
+        "study_mode": null,
+        "citizenship_residency": "Applicants should be non-Chinese citizens",
+        "international_eligibility": "Open to international students (non-Chinese citizens)",
+        "subject_or_agency_requirement": null,
+        "research_requirement": null,
+        "duration": null,
+        "description": "The Shanghai Government Scholarship supports international master's and doctoral students at Fudan University with tuition exemption, free on-campus accommodation or an accommodation subsidy, comprehensive medical insurance and a monthly living stipend.",
+        "region": "Asia",
+        "program_type": "Shanghai Government Scholarship (municipal government scholarship)",
+        "english_requirement": null
+      },
+      "verification": {
+        "source_citations": [
+          "https://iso.fudan.edu.cn/isoenglish/82/fb/c17458a754427/page.htm",
+          "https://iso.fudan.edu.cn/_upload/article/files/57/73/705fe7f44aebab32b316c3a8a22d/74cb9068-3844-442d-9022-bf71c12d48dd.pdf"
+        ],
+        "last_verified_date": "2026-10-10",
+        "verification_status": "confirmed",
+        "confidence": "high",
+        "not_confirmed": [
+          "selection_criteria (the notice publishes none)",
+          "travel_coverage (not addressed in the published coverage)",
+          "an explicit programme duration",
+          "next-cycle application dates",
+          "undergraduate eligibility (the notice states rules only for master's and doctoral applicants)"
+        ],
+        "notes": "All fields read from the ISO PDF notice published 2025-10-31 and its article page; funding_amount records the published master's stipend rate with the doctoral rate preserved in the coverage wording."
+      },
+      "applicant_utility": {
+        "summary": "Fudan's route into the Shanghai Government Scholarship is a single online application with one easily-missed step: you register as a self-support student, then switch the fund source to the Shanghai Government Scholarship option and upload the separately downloaded, signed form. The award covers tuition, on-campus accommodation or a subsidy, medical insurance and a 3,000 RMB monthly stipend for master's students (3,500 for doctoral). Applications for the 2026 intake closed on 10 December 2025, so watch the ISO site for the next window.",
+        "best_fit": "International master's and doctoral applicants to Fudan who want a straightforward, single-form municipal scholarship route.",
+        "application_readiness_checklist": [
+          "Download the scholarship form from the ISO page before starting the online application",
+          "Register at istudent.fudan.edu.cn and choose 'Self-support' as the fund source so the scholarship option is available",
+          "Upload the printed, completed and signed scholarship form - not just the online data",
+          "Book the Foreigner Physical Examination Form within six months of applying",
+          "Apply inside the published window (for the 2026 round: October 13 to December 10, 2025)"
+        ],
+        "common_rejection_risks": [
+          "Forgetting to tick the Shanghai Government Scholarship option, leaving you as a fee-paying self-support student",
+          "Uploading an unsigned or incomplete scholarship form",
+          "An expired physical examination form (valid for six months only)",
+          "Missing the published window entirely - there is no rolling admission"
+        ],
+        "estimated_uncovered_costs": "Personal spending, international travel and visa costs sit outside the published coverage.",
+        "document_audit": [
+          "The scholarship application form is a separate download (iso.fudan.edu.cn/16053/list.htm) that must be printed, signed and scanned back in",
+          "Applicants already in China can substitute a Residence Permit or Foreign Permanent Resident ID Card for the physical examination form"
+        ],
+        "alerts": [
+          "You cannot hold another Chinese government scholarship at the same time",
+          "Late arrival on the registration date without approval in advance automatically cancels the scholarship",
+          "Annual evaluation is mandatory; failing it ends the award",
+          "The major and study period cannot be changed once enrolled"
+        ],
+        "submission_workflow": "One online application at istudent.fudan.edu.cn with the signed scholarship form uploaded; results are checked in the 'Notices' column of the ISO website."
+      }
+    }
+  ]
+}

@@ -1,0 +1,9 @@
+{
+  "agent_id": "w3_38",
+  "shard": "w3-38",
+  "host": "master-europeanforestry.eu",
+  "today": "2026-10-04",
+  "logo_override": null,
+  "target_ids": [348],
+  "notes": "Same outcome and same cause as the Bioceb shard: the shard host is gone, so nothing can be served by the awarding body's own domain. master-europeanforestry.eu is NXDOMAIN - Playwright navigation could not be attempted against it because DNS resolution fails, and Resolve-DnsName returned 'DNS name does not exist' for master-europeanforestry.eu and www.master-europeanforestry.eu on the default resolver and again independently on both 8.8.8.8 and 1.1.1.1. Authoritative negative, not a timeout or resolver-side filtering. The Erasmus Mundus European Forestry MSc was likewise a fixed-term consortium project and the dedicated .eu site lapsed. I did not substitute any consortium partner's mark (no HAMK, University of Edinburgh, Swedish University of Agricultural Sciences or Viikki mark) because under rules 1 and 2 none of those is the body that awards the scholarship, and I did not use an archived copy or third-party mirror per rules 5 and 6. Data note for the coordinator: the stored official_source_url for target 348 is https://www.master-europeanforestry.eu, which is dead, so this record's source link also needs repointing or retiring."
+}

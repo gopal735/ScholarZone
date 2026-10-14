@@ -1,0 +1,89 @@
+{
+ "agent": "agent_163",
+ "assignment_count": 1,
+ "scholarships": [
+  {
+   "id": 431,
+   "title": "PSC Scholarships",
+   "country": "Singapore",
+   "degree": "Undergraduate",
+   "funding_label": "Fully Funded",
+   "status": "open",
+   "official_source": "Public Service Commission, Singapore",
+   "official_source_url": "https://www.psc.gov.sg/scholarships/undergraduate-scholarships",
+   "application_link": "https://www.psc.gov.sg/scholarships/undergraduate-scholarships",
+   "catalogue_url": "https://www.psc.gov.sg/scholarships/apply-for-scholarship/psc-scholarships/list-of-psc-scholarships",
+   "official_updates_url": "https://www.psc.gov.sg/scholarships/apply-for-scholarship/psc-scholarships",
+   "existing": {
+    "funding_amount": null,
+    "funding_currency": null,
+    "funding_period": "per month",
+    "tuition_coverage": 1,
+    "living_cost_coverage": 1,
+    "travel_coverage": 1,
+    "fully_funded": 0,
+    "description": "The PSC Scholarships are the Singapore Government's premier merit-based undergraduate scholarships, awarded by the Public Service Commission for entry to the Singapore Public Service. Applicants may apply before beginning their degree or as mid-term applicants up to the penultimate year, and must be Singapore Citizens who demonstrate strong leadership qualities and potential with good academic and non-academic records. Value of award covers tuition fees and other approved charges, return airfare for overseas degrees, maintenance and other allowances, full salary including bonuses on the Uniformed Service track, and sponsorship of PSC development programmes and approved exchange or summer programmes.",
+    "eligibility": [
+     "Be a Singapore Citizen",
+     "Demonstrate strong leadership qualities and potential",
+     "Present themselves as well-rounded individuals with good academic and non-academic records",
+     "Hold a GCE A-level, International Baccalaureate, NUS High School Diploma, Polytechnic Diploma with merit or other high school diploma or equivalent",
+     "For mid-term applicants: at least one semester of university results and application made before the final year of undergraduate study",
+     "For professional schemes with a tied agency: be undertaking an undergraduate degree relevant to that tied agency"
+    ],
+    "eligibility_summary": "Applicants must be Singapore Citizens who demonstrate strong leadership qualities and potential and present themselves as well-rounded individuals with good academic and non-academic records, holding a GCE A-level, International Baccalaureate, NUS High School Diploma, Polytechnic Diploma with merit or other high school diploma or equivalent. Mid-term applicants additionally need at least one semester of university results and must apply before the final year of study.",
+    "benefits": [
+     "Tuition fees and other approved charges",
+     "Return airfare for overseas degrees",
+     "Maintenance and other allowances",
+     "Full salary including bonuses on the Uniformed Service track",
+     "Sponsorship of PSC development programmes",
+     "Sponsorship of approved student exchange or summer programmes",
+     "Facilitated internship opportunities",
+     "Master's degree sponsorship if requirements are met"
+    ],
+    "coverage": [
+     "Tuition fees and other approved charges",
+     "Return airfare for overseas degrees",
+     "Maintenance and other allowances",
+     "Full salary including bonuses for those on the Uniformed Service track",
+     "Sponsorship of PSC development programmes and approved student exchange or summer programmes",
+     "Master's degree sponsorship (if applicable and requirements are met)",
+     "Back payment of tuition and other compulsory fees for mid-term candidates"
+    ],
+    "requirements": [
+     "The application must include an essay and a video interview alongside supporting documents",
+     "May apply before receiving final examination results, in which case a provisional offer may be made subject to confirmation",
+     "Study duration must stay within the published maximum, which varies by country of study",
+     "For mid-term applicants, tuition and compulsory fees incurred before the award are back paid but allowances only start from the point of award"
+    ],
+    "documents": [],
+    "english_requirement": "Speaking Countries",
+    "application_method": [
+     "Submit an online application with the necessary supporting documents, an essay and a video interview",
+     "Check the PSC Apply page for the full application process at https://www.psc.gov.sg/scholarships/apply-for-scholarship/psc-scholarships/"
+    ],
+    "selection_notes": "Scholarship holders are described by PSC as a diverse group of outstanding young talents who are all-rounded and committed to serving Singapore, excelling in both academic and non-academic pursuits, possessing sound character and exemplifying the ethos of the Public Service. Shortlisted candidates are informed of further stages.",
+    "best_fit": "Singapore Citizen school leavers or current undergraduates with strong academic and co-curricular records who intend to join the Singapore Public Service, including the Public Administration, Professional Service and Uniformed Service tracks.",
+    "notes": null,
+    "duration": "Up to 3 years undergraduate degree in the UK (plus 1 to 2 additional years for a Master's), 4 years in the US (plus 1 to 2 years for a Master's), 1 year plus Master's years in Singapore, 2 years plus 2 years for a Master's in other countries",
+    "application_period": "Applications open and close on a single annual cycle; the 2027 cycle closes 15 March 2027",
+    "deadline_display": "'Applications for PSC Scholarships for 2027 are now open and will close on 15 March 2027.'",
+    "deadline_date": "2027-03-15",
+    "region": "Asia",
+    "program_type": "Government undergraduate scholarship for the Singapore Public Service, three career tracks",
+    "applicant_utility": null,
+    "official_details": null
+   },
+   "missing_fields": [
+    "funding_amount",
+    "funding_currency",
+    "documents",
+    "notes",
+    "applicant_utility",
+    "official_details"
+   ]
+  }
+ ],
+ "result_file": "C:\\Users\\GopaL\\Desktop\\Projects folder\\ScholarZone\\backend\\research_output\\live500\\results\\agent_163.json"
+}

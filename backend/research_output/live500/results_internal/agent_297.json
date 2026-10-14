@@ -1,0 +1,124 @@
+{
+  "agent": "agent_297",
+  "records": [
+    {
+      "id": 674,
+      "official": {
+        "official_source_urls": [
+          "https://www.hec.gov.rw/fileadmin/user_upload/HEC/Scholarships/KINGDOM_OF_MOROCCO_-__GOVERNMENT_OF_RWANDA_SCHOLARSHIPS.pdf",
+          "https://www.hec.gov.rw/updates/scholarships"
+        ],
+        "application_link": "https://hecmis.hec.gov.rw/",
+        "catalogue_url": "https://www.hec.gov.rw/updates/scholarships",
+        "official_updates_url": "https://www.hec.gov.rw/updates/scholarships",
+        "deadline_central": "2026-08-29",
+        "deadline_central_display": "29 August 2026 (2026/2027 cycle)",
+        "deadline_note": null,
+        "application_cycle": "2026/2027 academic year",
+        "status": "CLOSED",
+        "status_note": "The call was announced by Rwanda's Higher Education Council on 26 August 2026 with a closing date of 29 August 2026 for entry in academic year 2026/2027; the next call is expected in the same late-August window.",
+        "tuition_coverage_note": null,
+        "funding_amount": null,
+        "funding_currency": null,
+        "funding_period": null,
+        "tuition_coverage": null,
+        "living_cost_coverage": null,
+        "travel_coverage": null,
+        "fully_funded": false,
+        "benefits": [],
+        "eligibility": [
+          "Rwandan national applying through the Higher Education Council (HEC) of Rwanda",
+          "Diploma (technical and vocational) candidates: completed a Technical Secondary School (TSS) STEM-related combination in 2024/2025 with at least 70% in the 2025 national examination",
+          "Bachelor's (general education) candidates: completed secondary studies in a STEM-related combination in 2024/2025 with at least 70% in the 2025 national examination",
+          "Master's and PhD candidates: at least 14/20 (2nd class upper division) or equivalent at the previous completed level"
+        ],
+        "requirements": [
+          "Application letter addressed to the Director General of HEC indicating the programme the candidate wishes to study",
+          "Copy of national identity card or valid passport",
+          "Copy of transcript of the last high school year (diploma and bachelor's candidates) or of the previous university level (master's and PhD candidates)",
+          "Copy of certificate or degree of the most recently completed level of study",
+          "Submit the complete application file online through HEC MIS and complete the additional online form linked from the announcement"
+        ],
+        "documents": [
+          "Application letter to the Director General of HEC",
+          "Copy of national identity card or valid passport",
+          "High school transcript of the last year (diploma and bachelor's applicants)",
+          "Previous university-level transcript (master's and PhD applicants)",
+          "Certificate or degree of the most recently completed level of study"
+        ],
+        "selection_criteria": [
+          "Applications are submitted to Rwanda's Higher Education Council, which handles the nominations under the Morocco-Rwanda bilateral scheme"
+        ],
+        "coverage": [
+          "Study at Diploma, Bachelor's, Master's and PhD level commencing in academic year 2026/2027",
+          "Studies taught in French at Moroccan public training institutions and universities"
+        ],
+        "application_method": [
+          "Submit the complete application file online through HEC MIS at https://hecmis.hec.gov.rw/",
+          "After submitting through HEC MIS, complete the additional online form linked from the announcement"
+        ],
+        "application_route": "Apply through HEC's HEC MIS system, then complete the additional online form linked from the announcement",
+        "study_mode": null,
+        "citizenship_residency": "Rwandan nationals",
+        "international_eligibility": "For Rwandan nationals only; study takes place at Moroccan institutions",
+        "subject_or_agency_requirement": "Diploma and bachelor's candidates must come from STEM-related combinations of technical secondary school or secondary studies",
+        "research_requirement": null,
+        "duration": null,
+        "description": "Under the Morocco-Rwanda bilateral scheme, the Kingdom of Morocco awards places to Rwandan nationals to study at Moroccan public training institutions and universities, taught in French, at Diploma, Bachelor's, Master's and PhD level commencing in academic year 2026/2027.",
+        "region": "Rwanda / Morocco",
+        "program_type": "Bilateral government scholarship",
+        "english_requirement": null
+      },
+      "verification": {
+        "source_citations": [
+          "https://www.hec.gov.rw/updates/scholarships",
+          "https://www.hec.gov.rw/fileadmin/user_upload/HEC/Scholarships/KINGDOM_OF_MOROCCO_-__GOVERNMENT_OF_RWANDA_SCHOLARSHIPS.pdf"
+        ],
+        "last_verified_date": "2026-10-10",
+        "verification_status": "confirmed",
+        "confidence": "medium",
+        "not_confirmed": [
+          "funding_amount",
+          "funding_currency",
+          "funding_period",
+          "tuition_coverage",
+          "living_cost_coverage",
+          "travel_coverage",
+          "benefits",
+          "duration",
+          "english_requirement",
+          "document detail (announcement PDF body could not be re-parsed on 2026-10-10)"
+        ],
+        "notes": "The HEC scholarships listing page confirms the Kingdom of Morocco - Government of Rwanda scholarships announcement published Wednesday 26 August 2026 and links the call PDF; the PDF itself returned unparseable binary on two fetch attempts and one browser attempt, so the 29 August 2026 closing date and document list are carried from the announcement file as previously captured and should be re-checked when the PDF is readable."
+      },
+      "applicant_utility": {
+        "summary": "This scheme moves unusually fast: the call was published on 26 August and closed three days later on 29 August, so the only realistic way in is to have the HEC MIS file ready before late August. Because instruction is in French at Moroccan public institutions, French-language readiness is the real entry barrier rather than paperwork.",
+        "best_fit": "Rwandan school leavers and first-degree graduates with strong STEM results who want to study in French in Morocco.",
+        "application_readiness_checklist": [
+          "Keep your HEC MIS profile active and complete before August, since the window is only days long",
+          "Prepare a clean scan of your national identity card or valid passport",
+          "Keep to hand the transcript of your last secondary year (diploma and bachelor's) or of your previous university level (master's and PhD)",
+          "Draft the application letter to the HEC Director General naming the programme you intend to study",
+          "Complete both the HEC MIS submission and the supplementary online form linked from the announcement"
+        ],
+        "common_rejection_risks": [
+          "Missing the very short window between announcement and closing",
+          "Applying outside the STEM-related combinations required at diploma and bachelor's level",
+          "Falling below the 70% mark in the 2025 national examination or the 14/20 (second class upper) threshold for master's and PhD",
+          "Submitting through HEC MIS only, without the linked supplementary form, or vice versa"
+        ],
+        "estimated_uncovered_costs": "The announcement publishes no stipend, tuition or travel figure, so flights, visa costs, insurance and living expenses in Morocco should be assumed to be self-funded unless HEC confirms otherwise.",
+        "document_audit": [
+          "Diploma and bachelor's applicants need the high-school transcript, not a university one",
+          "Master's and PhD applicants need the previous university-level transcript instead",
+          "The application letter must be addressed to the Director General of HEC and state the intended programme"
+        ],
+        "alerts": [
+          "The window between announcement and deadline has historically been only days",
+          "Instruction is in French, so no English-language test substitutes for French readiness"
+        ],
+        "submission_workflow": "File the documents through HEC MIS, complete the linked supplementary form, and let HEC forward the nomination under the bilateral agreement."
+      }
+    }
+  ]
+}

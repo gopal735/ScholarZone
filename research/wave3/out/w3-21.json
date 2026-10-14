@@ -1,0 +1,21 @@
+{
+  "agent_id": "w3_21",
+  "shard": "w3-21",
+  "host": "education.gov.au",
+  "today": "2026-10-04",
+  "logo_override": {
+    "url": "https://www.education.gov.au/themes/custom/gurney/logo.png",
+    "page_url": "https://www.education.gov.au/research-block-grants/research-training-program",
+    "official_host": true,
+    "alt_text": "Australian Government Department of Education",
+    "validation_result": "verified",
+    "validation_detail": "Verified in-browser per brief section 2.4, because webfetch cannot reach this host at all. The page returned HTTP 200 with title 'Research Training Program - Department of Education, Australian Government', and the asset was loaded by the browser as a real image (naturalWidth 746, naturalHeight 190) and decoded to a canvas, proving genuine image bytes rather than an HTML error page. Pixel analysis of the decoded bitmap: 746x190, 78.9% fully transparent background, and of the opaque pixels 100.0% fall below luminance 60 with a mean luminance of 0 and 0.0% above luminance 230. That is the strongest possible result for rule 3 - dark artwork on transparency with no near-white pixel anywhere in the mark, so it cannot be a white-on-transparent wordmark and is legible on a light card.",
+    "image_kind": "official_government",
+    "image_format": "png",
+    "verified_at": "2026-10-04T00:00:00+00:00",
+    "host_evidence": "same_registrable_domain",
+    "_award": "Research Training Program (RTP)"
+  },
+  "target_ids": [596],
+  "notes": "Connectivity here is the hard part, and my finding refines what a peer reported. webfetch on both https://www.education.gov.au/research-block-grants/research-training-program (timeout=120) and shorter paths returns 'Request timed out', and a direct .NET request also times out. Diagnosis: DNS resolves to two Akamai addresses (23.223.245.118, 23.223.245.107) and a TCP connect to port 443 succeeds, but the TLS/HTTP layer never completes - so the host is up and reachable at the network level and is being stalled or filtered at the application layer, not down. Crucially, Playwright DOES get through (HTTP 200, correct page title), so this host is not unusable - the §2.4 browser route is what unblocks it. That is worth knowing for any other shard on this domain. Logo found directly in the rendered markup as the site header brand: <img alt=\"Department of Education\" src=\"/themes/custom/gurney/logo.png\">, resolved to the absolute URL above, served from the department's own Drupal 'gurney' theme directory on www.education.gov.au, so rule 1 holds. Rule 2 holds precisely: the Research Training Program is administered by the Australian Government Department of Education, so this is the awarding department's own mark and not a related-but-wrong body such as DEST or the National Health and Medical Research Council. Rejected og:image and twitter:image (both https://www.education.gov.au/sites/default/files/images/2022-09/generic_education.png) as generic stock education imagery rather than the corporate mark, and /themes/custom/gurney/favicon.ico as a bare icon when a full-colour wordmark-and-Coat-of-Arms lockup is available at the logo.png path."
+}

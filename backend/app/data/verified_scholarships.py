@@ -80,6 +80,7 @@ VERIFIED_SCHOLARSHIPS = (
         image_source_url="https://erasmus-plus.ec.europa.eu/opportunities/individuals/students/erasmus-mundus-joint-masters",
         image_source_type="official_scholarship",
         image_verified_at=date(2025, 6, 26),
+        image_kind="program_image",
         image_alt_text="Erasmus Mundus Joint Masters students on a European university campus",
     ),
     ScholarshipIngestionRecord(
@@ -135,6 +136,7 @@ VERIFIED_SCHOLARSHIPS = (
         image_source_url="https://www.studyinkorea.go.kr/en/plan/scholarship.do",
         image_source_type="official_scholarship",
         image_verified_at=date(2025, 4, 5),
+        image_kind="official_banner",
         image_alt_text="Global Korea Scholarship (GKS) students at a Korean university",
     ),
     ScholarshipIngestionRecord(
@@ -216,6 +218,7 @@ VERIFIED_SCHOLARSHIPS = (
         image_source_url="https://www.daad.de/en/studying-in-germany/scholarships/daad-scholarships",
         image_source_type="official_provider",
         image_verified_at=date(2025, 4, 10),
+        image_kind="official_banner",
         image_alt_text="DAAD scholarship recipients at a German university campus",
     ),
     ScholarshipIngestionRecord(
@@ -294,10 +297,16 @@ VERIFIED_SCHOLARSHIPS = (
         ),
         legacy_titles=("iccr scholarship", "iccr scholarship (suborno jayanti scheme)"),
         preferred_id=2,
+        # This is a site-wide portal header, not programme artwork: the
+        # classification the live database holds for it is official_banner, and
+        # the alt text states as much. Ingestion records the kind so the
+        # provenance the row already carries is written deliberately rather
+        # than inferred at read time.
         image_url="https://a2ascholarships.iccr.gov.in/assets/images/header-banner.jpg",
         image_source_url="https://a2ascholarships.iccr.gov.in",
         image_source_type="official_scholarship",
         image_verified_at=date(2025, 3, 15),
+        image_kind="official_banner",
         image_alt_text="ICCR Scholarship banner showing international students",
     ),
     ScholarshipIngestionRecord(
@@ -390,6 +399,7 @@ VERIFIED_SCHOLARSHIPS = (
         image_source_url="https://www.studyinjapan.go.jp/en/planning/scholarships/mext-scholarships/",
         image_source_type="official_scholarship",
         image_verified_at=date(2025, 5, 20),
+        image_kind="program_image",
         image_alt_text="MEXT scholarship students at a Japanese university",
     ),
     ScholarshipIngestionRecord(
@@ -1355,7 +1365,7 @@ VERIFIED_SCHOLARSHIPS = (
     ),
     ScholarshipIngestionRecord(
         name="Fulbright Foreign Student Program",
-        country="USA",
+        country="United States",
         degree_levels="Master's, PhD, Research",
         funding_type="Fully Funded",
         official_source_url="https://foreign.fulbrightonline.org",
@@ -1386,7 +1396,7 @@ VERIFIED_SCHOLARSHIPS = (
     ),
     ScholarshipIngestionRecord(
         name="Chevening Scholarship",
-        country="UK",
+        country="United Kingdom",
         degree_levels="Master's only",
         funding_type="Fully Funded",
         official_source_url="https://www.chevening.org",
@@ -1454,7 +1464,7 @@ VERIFIED_SCHOLARSHIPS = (
     ),
     ScholarshipIngestionRecord(
         name="Commonwealth Scholarship",
-        country="UK",
+        country="United Kingdom",
         degree_levels="Master's, PhD, Split-site PhD",
         funding_type="Fully Funded",
         official_source_url="https://cscuk.fcdo.gov.uk",
@@ -2173,7 +2183,7 @@ VERIFIED_SCHOLARSHIPS = (
     # === NEW United States Scholarships ===
     ScholarshipIngestionRecord(
         name="Hubert H. Humphrey Fellowship Program",
-        country="USA",
+        country="United States",
         degree_levels="Non-degree professional fellowship (graduate-level study)",
         funding_type="Fully Funded",
         official_source_url="https://www.humphreyfellowship.org",
@@ -2228,7 +2238,7 @@ VERIFIED_SCHOLARSHIPS = (
     ),
     ScholarshipIngestionRecord(
         name="University of Miami Stamps Scholarship",
-        country="USA",
+        country="United States",
         degree_levels="Bachelor's (undergraduate)",
         funding_type="Fully Funded",
         official_source_url="https://admissions.miami.edu/undergraduate/financial-aid/scholarships/stamps/index.html",
@@ -2277,7 +2287,7 @@ VERIFIED_SCHOLARSHIPS = (
     ),
     ScholarshipIngestionRecord(
         name="American University Emerging Global Leader Scholarship",
-        country="USA",
+        country="United States",
         degree_levels="Bachelor's (undergraduate)",
         funding_type="Fully Funded",
         official_source_url="https://www.american.edu/admissions/international/au-egls-apply.cfm",
@@ -2327,7 +2337,7 @@ VERIFIED_SCHOLARSHIPS = (
     ),
     ScholarshipIngestionRecord(
         name="Jefferson Scholars Foundation Scholarship",
-        country="USA",
+        country="United States",
         degree_levels="Bachelor's (undergraduate)",
         funding_type="Fully Funded",
         official_source_url="https://www.jeffersonscholars.org/scholarships",
@@ -2376,7 +2386,7 @@ VERIFIED_SCHOLARSHIPS = (
     ),
     ScholarshipIngestionRecord(
         name="King-Morgridge Scholars Program",
-        country="USA",
+        country="United States",
         degree_levels="Bachelor's (undergraduate)",
         funding_type="Fully Funded",
         official_source_url="https://kmsp.wisc.edu/",
@@ -2424,7 +2434,7 @@ VERIFIED_SCHOLARSHIPS = (
     ),
     ScholarshipIngestionRecord(
         name="Brandeis University Wien International Scholarship",
-        country="USA",
+        country="United States",
         degree_levels="Bachelor's (undergraduate)",
         funding_type="Need-based (up to full tuition)",
         official_source_url="https://www.brandeis.edu/isso/programs/wien/index.html",
@@ -2465,7 +2475,7 @@ VERIFIED_SCHOLARSHIPS = (
     ),
     ScholarshipIngestionRecord(
         name="University of Minnesota Global Excellence Scholarship",
-        country="USA",
+        country="United States",
         degree_levels="Bachelor's (undergraduate)",
         funding_type="Partial",
         official_source_url="https://admissions.tc.umn.edu/global-excellence-scholarships",
@@ -2507,7 +2517,7 @@ VERIFIED_SCHOLARSHIPS = (
     ),
     ScholarshipIngestionRecord(
         name="University of Iowa International Distinction in Education Award",
-        country="USA",
+        country="United States",
         degree_levels="Bachelor's (undergraduate)",
         funding_type="Partial",
         official_source_url="https://admissions.uiowa.edu/scholarship/international-distinction-education-award-idea",
@@ -2550,7 +2560,7 @@ VERIFIED_SCHOLARSHIPS = (
     ),
     ScholarshipIngestionRecord(
         name="Clark University Global Scholars Program",
-        country="USA",
+        country="United States",
         degree_levels="Bachelor's (undergraduate)",
         funding_type="Partial",
         official_source_url="https://www.clarku.edu/financial-aid/types/scholarships/",
@@ -2593,7 +2603,7 @@ VERIFIED_SCHOLARSHIPS = (
     ),
     ScholarshipIngestionRecord(
         name="Knight-Hennessy Scholars",
-        country="USA",
+        country="United States",
         degree_levels="Graduate (Master's, JD, MBA, MD, MFA, MS, DMA, PhD, and joint/dual degrees)",
         funding_type="Fully Funded",
         official_source_url="https://knight-hennessy.stanford.edu/",
@@ -2643,7 +2653,7 @@ VERIFIED_SCHOLARSHIPS = (
     ),
     ScholarshipIngestionRecord(
         name="Michigan State University International Merit Scholarships",
-        country="USA",
+        country="United States",
         degree_levels="Bachelor's (undergraduate)",
         funding_type="Partial",
         official_source_url="https://admissions.msu.edu/cost-aid/scholarships/international",
@@ -2689,7 +2699,7 @@ VERIFIED_SCHOLARSHIPS = (
     ),
     ScholarshipIngestionRecord(
         name="University of Oregon International Cultural Service Program",
-        country="USA",
+        country="United States",
         degree_levels="Bachelor's (undergraduate)",
         funding_type="Partial",
         official_source_url="https://isss.uoregon.edu/icsp",

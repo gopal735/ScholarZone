@@ -1,0 +1,1538 @@
+{
+ "agents": 500,
+ "records_seen": 643,
+ "dropped": [
+  {
+   "agent": "results_internal\\agent_000.json",
+   "reason": "live fleet already wrote this agent"
+  },
+  {
+   "agent": "results_internal\\agent_001.json",
+   "reason": "live fleet already wrote this agent"
+  },
+  {
+   "agent": "results_internal\\agent_002.json",
+   "reason": "live fleet already wrote this agent"
+  },
+  {
+   "agent": "results_internal\\agent_003.json",
+   "reason": "live fleet already wrote this agent"
+  },
+  {
+   "agent": "results_internal\\agent_004.json",
+   "reason": "live fleet already wrote this agent"
+  },
+  {
+   "agent": "results_internal\\agent_005.json",
+   "reason": "live fleet already wrote this agent"
+  },
+  {
+   "agent": "results_internal\\agent_006.json",
+   "reason": "live fleet already wrote this agent"
+  },
+  {
+   "agent": "results_internal\\agent_007.json",
+   "reason": "live fleet already wrote this agent"
+  },
+  {
+   "agent": "results_internal\\agent_008.json",
+   "reason": "live fleet already wrote this agent"
+  },
+  {
+   "agent": "results_internal\\agent_009.json",
+   "reason": "live fleet already wrote this agent"
+  },
+  {
+   "agent": "results_internal\\agent_010.json",
+   "reason": "live fleet already wrote this agent"
+  },
+  {
+   "agent": "results_internal\\agent_011.json",
+   "reason": "live fleet already wrote this agent"
+  },
+  {
+   "agent": "results_internal\\agent_012.json",
+   "reason": "live fleet already wrote this agent"
+  },
+  {
+   "agent": "results_internal\\agent_013.json",
+   "reason": "live fleet already wrote this agent"
+  },
+  {
+   "agent": "results_internal\\agent_014.json",
+   "reason": "live fleet already wrote this agent"
+  },
+  {
+   "agent": "results_internal\\agent_015.json",
+   "reason": "live fleet already wrote this agent"
+  },
+  {
+   "agent": "results_internal\\agent_016.json",
+   "reason": "live fleet already wrote this agent"
+  },
+  {
+   "agent": "results_internal\\agent_017.json",
+   "reason": "live fleet already wrote this agent"
+  },
+  {
+   "agent": "results_internal\\agent_018.json",
+   "reason": "live fleet already wrote this agent"
+  },
+  {
+   "agent": "results_internal\\agent_019.json",
+   "reason": "live fleet already wrote this agent"
+  },
+  {
+   "agent": "results_internal\\agent_020.json",
+   "reason": "live fleet already wrote this agent"
+  },
+  {
+   "agent": "results_internal\\agent_021.json",
+   "reason": "live fleet already wrote this agent"
+  },
+  {
+   "agent": "results_internal\\agent_022.json",
+   "reason": "live fleet already wrote this agent"
+  },
+  {
+   "agent": "results_internal\\agent_023.json",
+   "reason": "live fleet already wrote this agent"
+  },
+  {
+   "agent": "results_internal\\agent_024.json",
+   "reason": "live fleet already wrote this agent"
+  },
+  {
+   "agent": "results_internal\\agent_025.json",
+   "reason": "live fleet already wrote this agent"
+  },
+  {
+   "agent": "results_internal\\agent_026.json",
+   "reason": "live fleet already wrote this agent"
+  },
+  {
+   "agent": "results_internal\\agent_028.json",
+   "reason": "live fleet already wrote this agent"
+  },
+  {
+   "agent": "results_internal\\agent_029.json",
+   "reason": "live fleet already wrote this agent"
+  },
+  {
+   "agent": "results_internal\\agent_030.json",
+   "reason": "live fleet already wrote this agent"
+  },
+  {
+   "agent": "results_internal\\agent_031.json",
+   "reason": "live fleet already wrote this agent"
+  },
+  {
+   "agent": "results_internal\\agent_032.json",
+   "reason": "live fleet already wrote this agent"
+  },
+  {
+   "agent": "results_internal\\agent_033.json",
+   "reason": "live fleet already wrote this agent"
+  },
+  {
+   "agent": "results_internal\\agent_034.json",
+   "reason": "live fleet already wrote this agent"
+  },
+  {
+   "agent": "results_internal\\agent_035.json",
+   "reason": "live fleet already wrote this agent"
+  },
+  {
+   "agent": "results_internal\\agent_036.json",
+   "reason": "live fleet already wrote this agent"
+  },
+  {
+   "agent": "results_internal\\agent_037.json",
+   "reason": "live fleet already wrote this agent"
+  },
+  {
+   "agent": "results_internal\\agent_038.json",
+   "reason": "live fleet already wrote this agent"
+  },
+  {
+   "agent": "results_internal\\agent_039.json",
+   "reason": "live fleet already wrote this agent"
+  },
+  {
+   "agent": "results_internal\\agent_040.json",
+   "reason": "live fleet already wrote this agent"
+  },
+  {
+   "agent": "results_internal\\agent_041.json",
+   "reason": "live fleet already wrote this agent"
+  },
+  {
+   "agent": "results_internal\\agent_042.json",
+   "reason": "live fleet already wrote this agent"
+  },
+  {
+   "agent": "results_internal\\agent_043.json",
+   "reason": "live fleet already wrote this agent"
+  },
+  {
+   "agent": "results_internal\\agent_044.json",
+   "reason": "live fleet already wrote this agent"
+  },
+  {
+   "agent": "results_internal\\agent_045.json",
+   "reason": "live fleet already wrote this agent"
+  },
+  {
+   "agent": "results_internal\\agent_046.json",
+   "reason": "live fleet already wrote this agent"
+  },
+  {
+   "agent": "results_internal\\agent_047.json",
+   "reason": "live fleet already wrote this agent"
+  },
+  {
+   "agent": "results_internal\\agent_048.json",
+   "reason": "live fleet already wrote this agent"
+  },
+  {
+   "agent": "results_internal\\agent_049.json",
+   "reason": "live fleet already wrote this agent"
+  },
+  {
+   "agent": "results_internal\\agent_050.json",
+   "reason": "live fleet already wrote this agent"
+  },
+  {
+   "agent": "results_internal\\agent_051.json",
+   "reason": "live fleet already wrote this agent"
+  },
+  {
+   "agent": "results_internal\\agent_052.json",
+   "reason": "live fleet already wrote this agent"
+  },
+  {
+   "agent": "results_internal\\agent_053.json",
+   "reason": "live fleet already wrote this agent"
+  },
+  {
+   "agent": "results_internal\\agent_054.json",
+   "reason": "live fleet already wrote this agent"
+  },
+  {
+   "agent": "results_internal\\agent_055.json",
+   "reason": "live fleet already wrote this agent"
+  },
+  {
+   "agent": "results_internal\\agent_056.json",
+   "reason": "live fleet already wrote this agent"
+  },
+  {
+   "agent": "results_internal\\agent_057.json",
+   "reason": "live fleet already wrote this agent"
+  },
+  {
+   "agent": "results_internal\\agent_058.json",
+   "reason": "live fleet already wrote this agent"
+  },
+  {
+   "agent": "results_internal\\agent_059.json",
+   "reason": "live fleet already wrote this agent"
+  },
+  {
+   "agent": "results_internal\\agent_060.json",
+   "reason": "live fleet already wrote this agent"
+  },
+  {
+   "agent": "results_internal\\agent_061.json",
+   "reason": "live fleet already wrote this agent"
+  },
+  {
+   "agent": "results_internal\\agent_062.json",
+   "reason": "live fleet already wrote this agent"
+  },
+  {
+   "agent": "results_internal\\agent_063.json",
+   "reason": "live fleet already wrote this agent"
+  },
+  {
+   "agent": "results_internal\\agent_064.json",
+   "reason": "live fleet already wrote this agent"
+  },
+  {
+   "agent": "results_internal\\agent_065.json",
+   "reason": "live fleet already wrote this agent"
+  },
+  {
+   "agent": "results_internal\\agent_066.json",
+   "reason": "live fleet already wrote this agent"
+  },
+  {
+   "agent": "results_internal\\agent_067.json",
+   "reason": "live fleet already wrote this agent"
+  },
+  {
+   "agent": "results_internal\\agent_068.json",
+   "reason": "live fleet already wrote this agent"
+  },
+  {
+   "agent": "results_internal\\agent_069.json",
+   "reason": "live fleet already wrote this agent"
+  },
+  {
+   "agent": "results_internal\\agent_071.json",
+   "reason": "live fleet already wrote this agent"
+  },
+  {
+   "agent": "results_internal\\agent_072.json",
+   "reason": "live fleet already wrote this agent"
+  },
+  {
+   "agent": "results_internal\\agent_073.json",
+   "reason": "live fleet already wrote this agent"
+  },
+  {
+   "agent": "results_internal\\agent_074.json",
+   "reason": "live fleet already wrote this agent"
+  },
+  {
+   "agent": "results_internal\\agent_075.json",
+   "reason": "live fleet already wrote this agent"
+  },
+  {
+   "agent": "results_internal\\agent_076.json",
+   "reason": "live fleet already wrote this agent"
+  },
+  {
+   "agent": "results_internal\\agent_077.json",
+   "reason": "live fleet already wrote this agent"
+  },
+  {
+   "agent": "results_internal\\agent_078.json",
+   "reason": "live fleet already wrote this agent"
+  },
+  {
+   "agent": "results_internal\\agent_079.json",
+   "reason": "live fleet already wrote this agent"
+  },
+  {
+   "agent": "results_internal\\agent_080.json",
+   "reason": "live fleet already wrote this agent"
+  },
+  {
+   "agent": "results_internal\\agent_081.json",
+   "reason": "live fleet already wrote this agent"
+  },
+  {
+   "agent": "results_internal\\agent_082.json",
+   "reason": "live fleet already wrote this agent"
+  },
+  {
+   "agent": "results_internal\\agent_083.json",
+   "reason": "live fleet already wrote this agent"
+  },
+  {
+   "agent": "results_internal\\agent_084.json",
+   "reason": "live fleet already wrote this agent"
+  },
+  {
+   "agent": "results_internal\\agent_085.json",
+   "reason": "live fleet already wrote this agent"
+  },
+  {
+   "agent": "results_internal\\agent_086.json",
+   "reason": "live fleet already wrote this agent"
+  },
+  {
+   "agent": "results_internal\\agent_087.json",
+   "reason": "live fleet already wrote this agent"
+  },
+  {
+   "agent": "results_internal\\agent_088.json",
+   "reason": "live fleet already wrote this agent"
+  },
+  {
+   "agent": "results_internal\\agent_089.json",
+   "reason": "live fleet already wrote this agent"
+  },
+  {
+   "agent": "results_internal\\agent_090.json",
+   "reason": "live fleet already wrote this agent"
+  },
+  {
+   "agent": "results_internal\\agent_091.json",
+   "reason": "live fleet already wrote this agent"
+  },
+  {
+   "agent": "results_internal\\agent_092.json",
+   "reason": "live fleet already wrote this agent"
+  },
+  {
+   "agent": "results_internal\\agent_093.json",
+   "reason": "live fleet already wrote this agent"
+  },
+  {
+   "agent": "results_internal\\agent_094.json",
+   "reason": "live fleet already wrote this agent"
+  },
+  {
+   "agent": "results_internal\\agent_095.json",
+   "reason": "live fleet already wrote this agent"
+  },
+  {
+   "agent": "results_internal\\agent_096.json",
+   "reason": "live fleet already wrote this agent"
+  },
+  {
+   "agent": "results_internal\\agent_097.json",
+   "reason": "live fleet already wrote this agent"
+  },
+  {
+   "agent": "results_internal\\agent_098.json",
+   "reason": "live fleet already wrote this agent"
+  },
+  {
+   "agent": "results_internal\\agent_099.json",
+   "reason": "live fleet already wrote this agent"
+  },
+  {
+   "agent": "results_internal\\agent_100.json",
+   "reason": "live fleet already wrote this agent"
+  },
+  {
+   "agent": "results_internal\\agent_101.json",
+   "reason": "live fleet already wrote this agent"
+  },
+  {
+   "agent": "results_internal\\agent_102.json",
+   "reason": "live fleet already wrote this agent"
+  },
+  {
+   "agent": "results_internal\\agent_103.json",
+   "reason": "live fleet already wrote this agent"
+  },
+  {
+   "agent": "results_internal\\agent_104.json",
+   "reason": "live fleet already wrote this agent"
+  },
+  {
+   "agent": "results_internal\\agent_105.json",
+   "reason": "live fleet already wrote this agent"
+  },
+  {
+   "agent": "results_internal\\agent_106.json",
+   "reason": "live fleet already wrote this agent"
+  },
+  {
+   "agent": "results_internal\\agent_107.json",
+   "reason": "live fleet already wrote this agent"
+  },
+  {
+   "agent": "results_internal\\agent_108.json",
+   "reason": "live fleet already wrote this agent"
+  },
+  {
+   "agent": "results_internal\\agent_109.json",
+   "reason": "live fleet already wrote this agent"
+  },
+  {
+   "agent": "results_internal\\agent_110.json",
+   "reason": "live fleet already wrote this agent"
+  },
+  {
+   "agent": "results_internal\\agent_111.json",
+   "reason": "live fleet already wrote this agent"
+  },
+  {
+   "agent": "results_internal\\agent_112.json",
+   "reason": "live fleet already wrote this agent"
+  },
+  {
+   "agent": "results_internal\\agent_113.json",
+   "reason": "live fleet already wrote this agent"
+  },
+  {
+   "agent": "results_internal\\agent_114.json",
+   "reason": "live fleet already wrote this agent"
+  },
+  {
+   "agent": "results_internal\\agent_115.json",
+   "reason": "live fleet already wrote this agent"
+  },
+  {
+   "agent": "results_internal\\agent_116.json",
+   "reason": "live fleet already wrote this agent"
+  },
+  {
+   "agent": "results_internal\\agent_117.json",
+   "reason": "live fleet already wrote this agent"
+  },
+  {
+   "agent": "results_internal\\agent_118.json",
+   "reason": "live fleet already wrote this agent"
+  },
+  {
+   "agent": "results_internal\\agent_119.json",
+   "reason": "live fleet already wrote this agent"
+  },
+  {
+   "agent": "results_internal\\agent_120.json",
+   "reason": "live fleet already wrote this agent"
+  },
+  {
+   "agent": "results_internal\\agent_121.json",
+   "reason": "live fleet already wrote this agent"
+  },
+  {
+   "agent": "results_internal\\agent_122.json",
+   "reason": "live fleet already wrote this agent"
+  },
+  {
+   "agent": "results_internal\\agent_123.json",
+   "reason": "live fleet already wrote this agent"
+  },
+  {
+   "agent": "results_internal\\agent_124.json",
+   "reason": "live fleet already wrote this agent"
+  },
+  {
+   "agent": "results_internal\\agent_125.json",
+   "reason": "live fleet already wrote this agent"
+  },
+  {
+   "agent": "results_internal\\agent_126.json",
+   "reason": "live fleet already wrote this agent"
+  },
+  {
+   "agent": "results_internal\\agent_127.json",
+   "reason": "live fleet already wrote this agent"
+  },
+  {
+   "agent": "results_internal\\agent_128.json",
+   "reason": "live fleet already wrote this agent"
+  },
+  {
+   "agent": "results_internal\\agent_129.json",
+   "reason": "live fleet already wrote this agent"
+  },
+  {
+   "agent": "results_internal\\agent_131.json",
+   "reason": "live fleet already wrote this agent"
+  },
+  {
+   "agent": "results_internal\\agent_132.json",
+   "reason": "live fleet already wrote this agent"
+  },
+  {
+   "agent": "results_internal\\agent_133.json",
+   "reason": "live fleet already wrote this agent"
+  },
+  {
+   "agent": "results_internal\\agent_134.json",
+   "reason": "live fleet already wrote this agent"
+  },
+  {
+   "agent": "results_internal\\agent_135.json",
+   "reason": "live fleet already wrote this agent"
+  },
+  {
+   "agent": "results_internal\\agent_136.json",
+   "reason": "live fleet already wrote this agent"
+  },
+  {
+   "agent": "results_internal\\agent_137.json",
+   "reason": "live fleet already wrote this agent"
+  },
+  {
+   "agent": "results_internal\\agent_138.json",
+   "reason": "live fleet already wrote this agent"
+  },
+  {
+   "agent": "results_internal\\agent_139.json",
+   "reason": "live fleet already wrote this agent"
+  },
+  {
+   "agent": "results_internal\\agent_140.json",
+   "reason": "live fleet already wrote this agent"
+  },
+  {
+   "agent": "results_internal\\agent_142.json",
+   "reason": "live fleet already wrote this agent"
+  },
+  {
+   "agent": "results_internal\\agent_143.json",
+   "reason": "live fleet already wrote this agent"
+  },
+  {
+   "agent": "results_internal\\agent_144.json",
+   "reason": "live fleet already wrote this agent"
+  },
+  {
+   "agent": "results_internal\\agent_145.json",
+   "reason": "live fleet already wrote this agent"
+  },
+  {
+   "agent": "results_internal\\agent_147.json",
+   "reason": "live fleet already wrote this agent"
+  },
+  {
+   "agent": "results_internal\\agent_148.json",
+   "reason": "live fleet already wrote this agent"
+  },
+  {
+   "agent": "results_internal\\agent_149.json",
+   "reason": "live fleet already wrote this agent"
+  },
+  {
+   "agent": "results_internal\\agent_150.json",
+   "reason": "live fleet already wrote this agent"
+  },
+  {
+   "agent": "results_internal\\agent_153.json",
+   "reason": "live fleet already wrote this agent"
+  },
+  {
+   "agent": "results_internal\\agent_154.json",
+   "reason": "live fleet already wrote this agent"
+  },
+  {
+   "agent": "results_internal\\agent_155.json",
+   "reason": "live fleet already wrote this agent"
+  },
+  {
+   "agent": "results_internal\\agent_156.json",
+   "reason": "live fleet already wrote this agent"
+  },
+  {
+   "agent": "results_internal\\agent_157.json",
+   "reason": "live fleet already wrote this agent"
+  },
+  {
+   "agent": "results_internal\\agent_158.json",
+   "reason": "live fleet already wrote this agent"
+  },
+  {
+   "agent": "results_internal\\agent_161.json",
+   "reason": "live fleet already wrote this agent"
+  },
+  {
+   "agent": "results_internal\\agent_163.json",
+   "reason": "live fleet already wrote this agent"
+  },
+  {
+   "agent": "results_internal\\agent_164.json",
+   "reason": "live fleet already wrote this agent"
+  },
+  {
+   "agent": "results_internal\\agent_165.json",
+   "reason": "live fleet already wrote this agent"
+  },
+  {
+   "agent": "results_internal\\agent_166.json",
+   "reason": "live fleet already wrote this agent"
+  },
+  {
+   "agent": "results_internal\\agent_167.json",
+   "reason": "live fleet already wrote this agent"
+  },
+  {
+   "agent": "results_internal\\agent_168.json",
+   "reason": "live fleet already wrote this agent"
+  },
+  {
+   "agent": "results_internal\\agent_169.json",
+   "reason": "live fleet already wrote this agent"
+  },
+  {
+   "agent": "results_internal\\agent_170.json",
+   "reason": "live fleet already wrote this agent"
+  },
+  {
+   "agent": "results_internal\\agent_172.json",
+   "reason": "live fleet already wrote this agent"
+  },
+  {
+   "agent": "results_internal\\agent_173.json",
+   "reason": "live fleet already wrote this agent"
+  },
+  {
+   "agent": "results_internal\\agent_175.json",
+   "reason": "live fleet already wrote this agent"
+  },
+  {
+   "agent": "results_internal\\agent_176.json",
+   "reason": "live fleet already wrote this agent"
+  },
+  {
+   "agent": "results_internal\\agent_177.json",
+   "reason": "live fleet already wrote this agent"
+  },
+  {
+   "agent": "results_internal\\agent_178.json",
+   "reason": "live fleet already wrote this agent"
+  },
+  {
+   "agent": "results_internal\\agent_179.json",
+   "reason": "live fleet already wrote this agent"
+  },
+  {
+   "agent": "results_internal\\agent_180.json",
+   "reason": "live fleet already wrote this agent"
+  },
+  {
+   "agent": "results_internal\\agent_181.json",
+   "reason": "live fleet already wrote this agent"
+  },
+  {
+   "agent": "results_internal\\agent_183.json",
+   "reason": "live fleet already wrote this agent"
+  },
+  {
+   "agent": "results_internal\\agent_184.json",
+   "reason": "live fleet already wrote this agent"
+  },
+  {
+   "agent": "results_internal\\agent_185.json",
+   "reason": "live fleet already wrote this agent"
+  },
+  {
+   "agent": "results_internal\\agent_186.json",
+   "reason": "live fleet already wrote this agent"
+  },
+  {
+   "agent": "results_internal\\agent_187.json",
+   "reason": "live fleet already wrote this agent"
+  },
+  {
+   "agent": "results_internal\\agent_188.json",
+   "reason": "live fleet already wrote this agent"
+  },
+  {
+   "agent": "results_internal\\agent_190.json",
+   "reason": "live fleet already wrote this agent"
+  },
+  {
+   "agent": "results_internal\\agent_191.json",
+   "reason": "live fleet already wrote this agent"
+  },
+  {
+   "agent": "results_internal\\agent_192.json",
+   "reason": "live fleet already wrote this agent"
+  },
+  {
+   "agent": "results_internal\\agent_193.json",
+   "reason": "live fleet already wrote this agent"
+  },
+  {
+   "agent": "results_internal\\agent_194.json",
+   "reason": "live fleet already wrote this agent"
+  },
+  {
+   "agent": "results_internal\\agent_195.json",
+   "reason": "live fleet already wrote this agent"
+  },
+  {
+   "agent": "results_internal\\agent_196.json",
+   "reason": "live fleet already wrote this agent"
+  },
+  {
+   "agent": "results_internal\\agent_197.json",
+   "reason": "live fleet already wrote this agent"
+  },
+  {
+   "agent": "results_internal\\agent_198.json",
+   "reason": "live fleet already wrote this agent"
+  },
+  {
+   "agent": "results_internal\\agent_199.json",
+   "reason": "live fleet already wrote this agent"
+  },
+  {
+   "agent": "results_internal\\agent_200.json",
+   "reason": "live fleet already wrote this agent"
+  },
+  {
+   "agent": "results_internal\\agent_202.json",
+   "reason": "live fleet already wrote this agent"
+  },
+  {
+   "agent": "results_internal\\agent_205.json",
+   "reason": "live fleet already wrote this agent"
+  },
+  {
+   "agent": "results_internal\\agent_209.json",
+   "reason": "live fleet already wrote this agent"
+  },
+  {
+   "agent": "results_internal\\agent_211.json",
+   "reason": "live fleet already wrote this agent"
+  },
+  {
+   "agent": "results_internal\\agent_212.json",
+   "reason": "live fleet already wrote this agent"
+  },
+  {
+   "agent": "results_internal\\agent_215.json",
+   "reason": "live fleet already wrote this agent"
+  },
+  {
+   "agent": "results_internal\\agent_216.json",
+   "reason": "live fleet already wrote this agent"
+  },
+  {
+   "agent": "results_internal\\agent_217.json",
+   "reason": "live fleet already wrote this agent"
+  },
+  {
+   "agent": "results_internal\\agent_218.json",
+   "reason": "live fleet already wrote this agent"
+  },
+  {
+   "agent": "results_internal\\agent_219.json",
+   "reason": "live fleet already wrote this agent"
+  },
+  {
+   "agent": "results_internal\\agent_220.json",
+   "reason": "live fleet already wrote this agent"
+  },
+  {
+   "agent": "results_internal\\agent_222.json",
+   "reason": "live fleet already wrote this agent"
+  },
+  {
+   "agent": "results_internal\\agent_223.json",
+   "reason": "live fleet already wrote this agent"
+  },
+  {
+   "agent": "results_internal\\agent_224.json",
+   "reason": "live fleet already wrote this agent"
+  },
+  {
+   "agent": "results_internal\\agent_225.json",
+   "reason": "live fleet already wrote this agent"
+  },
+  {
+   "agent": "results_internal\\agent_226.json",
+   "reason": "live fleet already wrote this agent"
+  },
+  {
+   "agent": "results_internal\\agent_227.json",
+   "reason": "live fleet already wrote this agent"
+  },
+  {
+   "agent": "results_internal\\agent_228.json",
+   "reason": "live fleet already wrote this agent"
+  },
+  {
+   "agent": "results_internal\\agent_229.json",
+   "reason": "live fleet already wrote this agent"
+  },
+  {
+   "agent": "results_internal\\agent_231.json",
+   "reason": "live fleet already wrote this agent"
+  },
+  {
+   "agent": "results_internal\\agent_232.json",
+   "reason": "live fleet already wrote this agent"
+  },
+  {
+   "agent": "results_internal\\agent_233.json",
+   "reason": "live fleet already wrote this agent"
+  },
+  {
+   "agent": "results_internal\\agent_234.json",
+   "reason": "live fleet already wrote this agent"
+  },
+  {
+   "agent": "results_internal\\agent_235.json",
+   "reason": "live fleet already wrote this agent"
+  },
+  {
+   "agent": "results_internal\\agent_236.json",
+   "reason": "live fleet already wrote this agent"
+  },
+  {
+   "agent": "results_internal\\agent_237.json",
+   "reason": "live fleet already wrote this agent"
+  },
+  {
+   "agent": "results_internal\\agent_238.json",
+   "reason": "live fleet already wrote this agent"
+  },
+  {
+   "agent": "results_internal\\agent_239.json",
+   "reason": "live fleet already wrote this agent"
+  },
+  {
+   "agent": "results_internal\\agent_240.json",
+   "reason": "live fleet already wrote this agent"
+  },
+  {
+   "agent": "results_internal\\agent_241.json",
+   "reason": "live fleet already wrote this agent"
+  },
+  {
+   "agent": "results_internal\\agent_242.json",
+   "reason": "live fleet already wrote this agent"
+  },
+  {
+   "agent": "results_internal\\agent_243.json",
+   "reason": "live fleet already wrote this agent"
+  },
+  {
+   "agent": "results_internal\\agent_244.json",
+   "reason": "live fleet already wrote this agent"
+  },
+  {
+   "agent": "results_internal\\agent_245.json",
+   "reason": "live fleet already wrote this agent"
+  },
+  {
+   "agent": "results_internal\\agent_246.json",
+   "reason": "live fleet already wrote this agent"
+  },
+  {
+   "agent": "results_internal\\agent_247.json",
+   "reason": "live fleet already wrote this agent"
+  },
+  {
+   "agent": "results_internal\\agent_248.json",
+   "reason": "live fleet already wrote this agent"
+  },
+  {
+   "agent": "results_internal\\agent_249.json",
+   "reason": "live fleet already wrote this agent"
+  },
+  {
+   "agent": "results_internal\\agent_250.json",
+   "reason": "live fleet already wrote this agent"
+  },
+  {
+   "agent": "results_internal\\agent_251.json",
+   "reason": "live fleet already wrote this agent"
+  },
+  {
+   "agent": "results_internal\\agent_252.json",
+   "reason": "live fleet already wrote this agent"
+  },
+  {
+   "agent": "results_internal\\agent_253.json",
+   "reason": "live fleet already wrote this agent"
+  },
+  {
+   "agent": "results_internal\\agent_254.json",
+   "reason": "live fleet already wrote this agent"
+  },
+  {
+   "agent": "results_internal\\agent_255.json",
+   "reason": "live fleet already wrote this agent"
+  },
+  {
+   "agent": "results_internal\\agent_256.json",
+   "reason": "live fleet already wrote this agent"
+  },
+  {
+   "agent": "results_internal\\agent_258.json",
+   "reason": "live fleet already wrote this agent"
+  },
+  {
+   "agent": "results_internal\\agent_259.json",
+   "reason": "live fleet already wrote this agent"
+  },
+  {
+   "agent": "results_internal\\agent_260.json",
+   "reason": "live fleet already wrote this agent"
+  },
+  {
+   "agent": "results_internal\\agent_261.json",
+   "reason": "live fleet already wrote this agent"
+  },
+  {
+   "agent": "results_internal\\agent_262.json",
+   "reason": "live fleet already wrote this agent"
+  },
+  {
+   "agent": "results_internal\\agent_263.json",
+   "reason": "live fleet already wrote this agent"
+  },
+  {
+   "agent": "results_internal\\agent_264.json",
+   "reason": "live fleet already wrote this agent"
+  },
+  {
+   "agent": "results_internal\\agent_266.json",
+   "reason": "live fleet already wrote this agent"
+  },
+  {
+   "agent": "results_internal\\agent_267.json",
+   "reason": "live fleet already wrote this agent"
+  },
+  {
+   "agent": "results_internal\\agent_268.json",
+   "reason": "live fleet already wrote this agent"
+  },
+  {
+   "agent": "results_internal\\agent_269.json",
+   "reason": "live fleet already wrote this agent"
+  },
+  {
+   "agent": "results_internal\\agent_270.json",
+   "reason": "live fleet already wrote this agent"
+  },
+  {
+   "agent": "results_internal\\agent_271.json",
+   "reason": "live fleet already wrote this agent"
+  },
+  {
+   "agent": "results_internal\\agent_274.json",
+   "reason": "live fleet already wrote this agent"
+  },
+  {
+   "agent": "results_internal\\agent_275.json",
+   "reason": "live fleet already wrote this agent"
+  },
+  {
+   "agent": "results_internal\\agent_276.json",
+   "reason": "live fleet already wrote this agent"
+  },
+  {
+   "agent": "results_internal\\agent_277.json",
+   "reason": "live fleet already wrote this agent"
+  },
+  {
+   "agent": "results_internal\\agent_278.json",
+   "reason": "live fleet already wrote this agent"
+  },
+  {
+   "agent": "results_internal\\agent_279.json",
+   "reason": "live fleet already wrote this agent"
+  },
+  {
+   "agent": "results_internal\\agent_280.json",
+   "reason": "live fleet already wrote this agent"
+  },
+  {
+   "agent": "results_internal\\agent_281.json",
+   "reason": "live fleet already wrote this agent"
+  },
+  {
+   "agent": "results_internal\\agent_282.json",
+   "reason": "live fleet already wrote this agent"
+  },
+  {
+   "agent": "results_internal\\agent_283.json",
+   "reason": "live fleet already wrote this agent"
+  },
+  {
+   "agent": "results_internal\\agent_287.json",
+   "reason": "live fleet already wrote this agent"
+  },
+  {
+   "agent": "results_internal\\agent_288.json",
+   "reason": "live fleet already wrote this agent"
+  },
+  {
+   "agent": "results_internal\\agent_289.json",
+   "reason": "live fleet already wrote this agent"
+  },
+  {
+   "agent": "results_internal\\agent_290.json",
+   "reason": "live fleet already wrote this agent"
+  },
+  {
+   "agent": "results_internal\\agent_291.json",
+   "reason": "live fleet already wrote this agent"
+  },
+  {
+   "agent": "results_internal\\agent_292.json",
+   "reason": "live fleet already wrote this agent"
+  },
+  {
+   "agent": "results_internal\\agent_293.json",
+   "reason": "live fleet already wrote this agent"
+  },
+  {
+   "agent": "results_internal\\agent_294.json",
+   "reason": "live fleet already wrote this agent"
+  },
+  {
+   "agent": "results_internal\\agent_295.json",
+   "reason": "live fleet already wrote this agent"
+  },
+  {
+   "agent": "results_internal\\agent_296.json",
+   "reason": "live fleet already wrote this agent"
+  },
+  {
+   "agent": "results_internal\\agent_297.json",
+   "reason": "live fleet already wrote this agent"
+  },
+  {
+   "agent": "results_internal\\agent_298.json",
+   "reason": "live fleet already wrote this agent"
+  },
+  {
+   "agent": "results_internal\\agent_299.json",
+   "reason": "live fleet already wrote this agent"
+  },
+  {
+   "agent": "results_internal\\agent_300.json",
+   "reason": "live fleet already wrote this agent"
+  },
+  {
+   "agent": "results_internal\\agent_301.json",
+   "reason": "live fleet already wrote this agent"
+  },
+  {
+   "agent": "results_internal\\agent_302.json",
+   "reason": "live fleet already wrote this agent"
+  },
+  {
+   "agent": "results_internal\\agent_303.json",
+   "reason": "live fleet already wrote this agent"
+  },
+  {
+   "agent": "results_internal\\agent_304.json",
+   "reason": "live fleet already wrote this agent"
+  },
+  {
+   "agent": "results_internal\\agent_305.json",
+   "reason": "live fleet already wrote this agent"
+  },
+  {
+   "agent": "results_internal\\agent_306.json",
+   "reason": "live fleet already wrote this agent"
+  },
+  {
+   "agent": "results_internal\\agent_307.json",
+   "reason": "live fleet already wrote this agent"
+  },
+  {
+   "agent": "results_internal\\agent_308.json",
+   "reason": "live fleet already wrote this agent"
+  },
+  {
+   "agent": "results_internal\\agent_309.json",
+   "reason": "live fleet already wrote this agent"
+  },
+  {
+   "agent": "results_internal\\agent_310.json",
+   "reason": "live fleet already wrote this agent"
+  },
+  {
+   "agent": "results_internal\\agent_311.json",
+   "reason": "live fleet already wrote this agent"
+  },
+  {
+   "agent": "results_internal\\agent_312.json",
+   "reason": "live fleet already wrote this agent"
+  },
+  {
+   "agent": "results_internal\\agent_313.json",
+   "reason": "live fleet already wrote this agent"
+  },
+  {
+   "agent": "results_internal\\agent_314.json",
+   "reason": "live fleet already wrote this agent"
+  },
+  {
+   "agent": "results_internal\\agent_315.json",
+   "reason": "live fleet already wrote this agent"
+  },
+  {
+   "agent": "results_internal\\agent_316.json",
+   "reason": "live fleet already wrote this agent"
+  },
+  {
+   "agent": "results_internal\\agent_317.json",
+   "reason": "live fleet already wrote this agent"
+  },
+  {
+   "agent": "results_internal\\agent_318.json",
+   "reason": "live fleet already wrote this agent"
+  },
+  {
+   "agent": "results_internal\\agent_319.json",
+   "reason": "live fleet already wrote this agent"
+  },
+  {
+   "agent": "results_internal\\agent_320.json",
+   "reason": "live fleet already wrote this agent"
+  },
+  {
+   "agent": "results_internal\\agent_321.json",
+   "reason": "live fleet already wrote this agent"
+  },
+  {
+   "agent": "results_internal\\agent_322.json",
+   "reason": "live fleet already wrote this agent"
+  },
+  {
+   "agent": "results_internal\\agent_323.json",
+   "reason": "live fleet already wrote this agent"
+  },
+  {
+   "agent": "results_internal\\agent_325.json",
+   "reason": "live fleet already wrote this agent"
+  },
+  {
+   "agent": "results_internal\\agent_326.json",
+   "reason": "live fleet already wrote this agent"
+  },
+  {
+   "agent": "results_internal\\agent_327.json",
+   "reason": "live fleet already wrote this agent"
+  },
+  {
+   "agent": "results_internal\\agent_328.json",
+   "reason": "live fleet already wrote this agent"
+  },
+  {
+   "agent": "results_internal\\agent_329.json",
+   "reason": "live fleet already wrote this agent"
+  },
+  {
+   "agent": "results_internal\\agent_330.json",
+   "reason": "live fleet already wrote this agent"
+  },
+  {
+   "agent": "results_internal\\agent_331.json",
+   "reason": "live fleet already wrote this agent"
+  },
+  {
+   "agent": "results_internal\\agent_332.json",
+   "reason": "live fleet already wrote this agent"
+  },
+  {
+   "agent": "results_internal\\agent_333.json",
+   "reason": "live fleet already wrote this agent"
+  },
+  {
+   "agent": "results_internal\\agent_334.json",
+   "reason": "live fleet already wrote this agent"
+  },
+  {
+   "agent": "results_internal\\agent_335.json",
+   "reason": "live fleet already wrote this agent"
+  },
+  {
+   "agent": "results_internal\\agent_336.json",
+   "reason": "live fleet already wrote this agent"
+  },
+  {
+   "agent": "results_internal\\agent_337.json",
+   "reason": "live fleet already wrote this agent"
+  },
+  {
+   "agent": "results_internal\\agent_338.json",
+   "reason": "live fleet already wrote this agent"
+  },
+  {
+   "agent": "results_internal\\agent_339.json",
+   "reason": "live fleet already wrote this agent"
+  },
+  {
+   "agent": "results_internal\\agent_340.json",
+   "reason": "live fleet already wrote this agent"
+  },
+  {
+   "agent": "results_internal\\agent_341.json",
+   "reason": "live fleet already wrote this agent"
+  },
+  {
+   "agent": "results_internal\\agent_342.json",
+   "reason": "live fleet already wrote this agent"
+  },
+  {
+   "agent": "results_internal\\agent_343.json",
+   "reason": "live fleet already wrote this agent"
+  },
+  {
+   "agent": "results_internal\\agent_344.json",
+   "reason": "live fleet already wrote this agent"
+  },
+  {
+   "agent": "results_internal\\agent_345.json",
+   "reason": "live fleet already wrote this agent"
+  },
+  {
+   "agent": "results_internal\\agent_347.json",
+   "reason": "live fleet already wrote this agent"
+  },
+  {
+   "agent": "results_internal\\agent_348.json",
+   "reason": "live fleet already wrote this agent"
+  },
+  {
+   "agent": "results_internal\\agent_349.json",
+   "reason": "live fleet already wrote this agent"
+  },
+  {
+   "agent": "results_internal\\agent_351.json",
+   "reason": "live fleet already wrote this agent"
+  },
+  {
+   "agent": "results_internal\\agent_352.json",
+   "reason": "live fleet already wrote this agent"
+  },
+  {
+   "agent": "results_internal\\agent_353.json",
+   "reason": "live fleet already wrote this agent"
+  },
+  {
+   "agent": "results_internal\\agent_358.json",
+   "id": 310,
+   "reason": "no citations"
+  },
+  {
+   "agent": "results_internal\\agent_358.json",
+   "id": 311,
+   "reason": "no citations"
+  },
+  {
+   "agent": "results_internal\\agent_359.json",
+   "id": 312,
+   "reason": "no citations"
+  },
+  {
+   "agent": "results_internal\\agent_359.json",
+   "id": 586,
+   "reason": "no citations"
+  },
+  {
+   "agent": "results_internal\\agent_360.json",
+   "id": 587,
+   "reason": "no citations"
+  },
+  {
+   "agent": "results_internal\\agent_360.json",
+   "id": 588,
+   "reason": "no citations"
+  },
+  {
+   "agent": "results_internal\\agent_362.json",
+   "id": 555,
+   "reason": "no citations"
+  },
+  {
+   "agent": "results_internal\\agent_362.json",
+   "id": 605,
+   "reason": "no citations"
+  },
+  {
+   "agent": "results_internal\\agent_364.json",
+   "id": 701,
+   "reason": "no citations"
+  },
+  {
+   "agent": "results_internal\\agent_364.json",
+   "id": 702,
+   "reason": "no citations"
+  },
+  {
+   "agent": "results_internal\\agent_366.json",
+   "id": 243,
+   "reason": "no citations"
+  },
+  {
+   "agent": "results_internal\\agent_366.json",
+   "id": 245,
+   "reason": "no citations"
+  },
+  {
+   "agent": "results_internal\\agent_379.json",
+   "id": 19,
+   "reason": "no citations"
+  },
+  {
+   "agent": "results_internal\\agent_379.json",
+   "id": 20,
+   "reason": "no citations"
+  },
+  {
+   "agent": "results_internal\\agent_381.json",
+   "id": 94,
+   "reason": "no citations"
+  },
+  {
+   "agent": "results_internal\\agent_381.json",
+   "id": 96,
+   "reason": "no citations"
+  },
+  {
+   "agent": "results_internal\\agent_382.json",
+   "id": 350,
+   "reason": "no citations"
+  },
+  {
+   "agent": "results_internal\\agent_382.json",
+   "id": 352,
+   "reason": "no citations"
+  },
+  {
+   "agent": "results_internal\\agent_385.json",
+   "id": 10,
+   "reason": "no citations"
+  },
+  {
+   "agent": "results_internal\\agent_385.json",
+   "id": 21,
+   "reason": "no citations"
+  },
+  {
+   "agent": "results_internal\\agent_387.json",
+   "id": 228,
+   "reason": "no citations"
+  },
+  {
+   "agent": "results_internal\\agent_387.json",
+   "id": 229,
+   "reason": "no citations"
+  },
+  {
+   "agent": "results_internal\\agent_388.json",
+   "id": 231,
+   "reason": "no citations"
+  },
+  {
+   "agent": "results_internal\\agent_388.json",
+   "id": 232,
+   "reason": "no citations"
+  },
+  {
+   "agent": "results_internal\\agent_389.json",
+   "id": 234,
+   "reason": "no citations"
+  },
+  {
+   "agent": "results_internal\\agent_389.json",
+   "id": 235,
+   "reason": "no citations"
+  },
+  {
+   "agent": "results_internal\\agent_390.json",
+   "id": 500,
+   "reason": "no citations"
+  },
+  {
+   "agent": "results_internal\\agent_390.json",
+   "id": 502,
+   "reason": "no citations"
+  }
+ ],
+ "added": [],
+ "filled": {
+  "637": [
+   "study_mode"
+  ],
+  "646": [
+   "tuition_coverage_note"
+  ],
+  "712": [
+   "deadline_central_display"
+  ],
+  "713": [
+   "funding_currency"
+  ],
+  "714": [
+   "tuition_coverage",
+   "living_cost_coverage",
+   "benefits"
+  ],
+  "717": [
+   "tuition_coverage_note",
+   "english_requirement"
+  ],
+  "394": [
+   "application_link",
+   "catalogue_url",
+   "official_updates_url",
+   "status_note",
+   "funding_amount_note",
+   "application_route",
+   "study_mode",
+   "subject_or_agency_requirement"
+  ],
+  "575": [
+   "application_link",
+   "deadline_central",
+   "deadline_central_display",
+   "application_cycle",
+   "status",
+   "status_note",
+   "tuition_coverage_note",
+   "funding_amount",
+   "funding_currency",
+   "funding_period",
+   "tuition_coverage",
+   "living_cost_coverage",
+   "travel_coverage",
+   "fully_funded",
+   "benefits",
+   "eligibility",
+   "requirements",
+   "documents",
+   "selection_criteria",
+   "coverage",
+   "application_method",
+   "application_route",
+   "study_mode",
+   "international_eligibility",
+   "subject_or_agency_requirement",
+   "duration",
+   "description",
+   "region",
+   "program_type"
+  ],
+  "261": [
+   "application_link",
+   "catalogue_url",
+   "official_updates_url",
+   "deadline_note",
+   "application_cycle",
+   "status",
+   "status_note",
+   "tuition_coverage_note",
+   "funding_amount",
+   "funding_currency",
+   "funding_period",
+   "tuition_coverage",
+   "living_cost_coverage",
+   "travel_coverage",
+   "fully_funded",
+   "benefits",
+   "eligibility",
+   "requirements",
+   "documents",
+   "selection_criteria",
+   "coverage",
+   "application_method",
+   "application_route",
+   "study_mode",
+   "international_eligibility",
+   "duration",
+   "description",
+   "region",
+   "program_type"
+  ],
+  "399": [
+   "application_link",
+   "catalogue_url",
+   "official_updates_url",
+   "deadline_central",
+   "status_note",
+   "funding_amount_note",
+   "application_route"
+  ],
+  "401": [
+   "study_mode"
+  ],
+  "403": [
+   "application_link",
+   "funding_amount_note",
+   "tuition_coverage",
+   "living_cost_coverage",
+   "travel_coverage"
+  ]
+ },
+ "fixes": 0
+}

@@ -1,0 +1,21 @@
+{
+  "agent_id": "w3_48",
+  "shard": "w3-48",
+  "host": "unige.ch",
+  "today": "2026-10-04",
+  "logo_override": {
+    "url": "https://www.unige.ch/apple-touch-icon.png",
+    "page_url": "https://www.unige.ch/en/",
+    "official_host": true,
+    "alt_text": "University of Geneva",
+    "validation_result": "verified",
+    "validation_detail": "HTTP 200, content-type image/png, 9423 bytes, 180x180, 100% opaque (no transparency to bleed onto a card); canvas pixel audit mean luminance 171 with 38% dark pixels, and rendered on a white background it shows the University of Geneva logotype plus keyhole seal in UNIGE red, fully legible",
+    "image_kind": "official_university",
+    "image_format": "png",
+    "verified_at": "2026-10-04T00:00:04+00:00",
+    "host_evidence": "same_registrable_domain",
+    "_award": "Excellence Master Fellowships (Faculty of Science, University of Geneva)"
+  },
+  "target_ids": [152],
+  "notes": "The University of Geneva publishes exactly one file-backed wordmark and it is white, so it was rejected and a coloured official mark substituted. Probed: /cdn/themes/unige2016/img/unige-logo.svg is the wordmark every unige.ch page uses in its header - webfetch returned the raw SVG and every path is fill=\"#FFFFFF\"; rendered on white it is completely invisible, so it fails rule 3. /cdn/themes/unige2016/img/unige-logo.png is the same wordmark as a raster (164x47, 47% opaque, mean luminance 255, 100% light pixels) - also white, also rejected. I then grepped the theme stylesheet https://www.unige.ch/cdn/themes/unige2016/css/styles.min.css (200, 1.1 MB) for url(...) logo references and found none, which confirms UNIGE never serves the logo as a CSS background and so there is no hidden dark variant there. Probed and 404: unige-logo-black/-couleur/-color/-rouge/-bleu.svg, logo-unige.svg/.png, logo.svg, and at the site root logo.svg, logo.png, brand.svg, og-image.png, share.png. Accepted /apple-touch-icon.png: HTTP 200, image/png, 9423 B, 180x180, fully opaque, and visually confirmed on white to be the UNIGE logotype and keyhole seal in UNIGE red. /favicon.ico (200, image/vnd.microsoft.icon, 1285 B) is the same seal reduced to 16x16 - too small to use, so the 180x180 PNG was preferred. The existing record image was an official_banner, not a logo. Caveat for the merge: this is the square app-icon composition of the UNIGE mark rather than a full-width horizontal wordmark, because UNIGE does not publish the horizontal dark variant as a file."
+}

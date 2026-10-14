@@ -1,0 +1,123 @@
+{
+  "agent": "agent_331",
+  "records": [
+    {
+      "id": 725,
+      "official": {
+        "official_source_urls": [
+          "https://mcfsprecruitment.ur.ac.rw",
+          "https://mcfsprecruitment.ur.ac.rw/ug-recruitment"
+        ],
+        "application_link": "https://mcfsprecruitment.ur.ac.rw/ug-recruitment",
+        "catalogue_url": null,
+        "official_updates_url": "https://mcfsprecruitment.ur.ac.rw",
+        "deadline_central": "2026-10-12",
+        "deadline_central_display": "12 October 2026, 23:59 Kigali time",
+        "deadline_note": null,
+        "application_cycle": "2026/2027 Cohort 5 undergraduate intake",
+        "status": "OPEN",
+        "status_note": "The undergraduate track is open for the 2026/2027 Cohort 5 intake; the postgraduate track for the same intake is closed (applications ran 23 July to 25 August 2026).",
+        "tuition_coverage_note": "The portal publishes only 'a full scholarship to study for a bachelor's degree at the University of Rwanda' and does not itemise tuition, living costs or travel.",
+        "funding_amount": null,
+        "funding_currency": null,
+        "funding_period": null,
+        "tuition_coverage": null,
+        "living_cost_coverage": null,
+        "travel_coverage": null,
+        "fully_funded": false,
+        "benefits": [
+          "A full scholarship to study for a bachelor's degree at the University of Rwanda"
+        ],
+        "eligibility": [
+          "Talented young people from economically disadvantaged backgrounds",
+          "Applicants must verify eligibility with a University of Rwanda student number",
+          "Assessed on a weighting of Academic Talent 30%, Economic Disadvantage 45%, Leadership Potential 25%"
+        ],
+        "requirements": [
+          "Apply through the programme's online undergraduate recruitment portal before the closing date",
+          "Applicants with foreign academic qualifications must obtain an equivalence from Rwanda's Higher Education Council (HEC) and the National Examination and School Inspection Authority (NESA)"
+        ],
+        "documents": [
+          "University of Rwanda student number (all applicants)",
+          "Digital passport photo, white background (all applicants)",
+          "Scanned National ID showing date of birth, passport or refugee ID (all applicants)",
+          "Disability certificate (disability category only)",
+          "Leadership certificates (if held)"
+        ],
+        "selection_criteria": [
+          "Academic talent - 30%",
+          "Economic disadvantage - 45%",
+          "Leadership potential - 25%"
+        ],
+        "coverage": [
+          "A full scholarship to study for a bachelor's degree at the University of Rwanda; no further itemisation is published on the portal"
+        ],
+        "application_method": [
+          "Create an account on the undergraduate recruitment portal and complete the six sections (A to E) covering identification, education, family, socio-economic and leadership information",
+          "Review, submit and track application status from the portal dashboard",
+          "Contact the programme at mcfsp@ur.ac.rw including full name and application number"
+        ],
+        "application_route": "Online only through the Mastercard Foundation Scholars Program at UR undergraduate recruitment portal",
+        "study_mode": "Blended learning; the programme provides a laptop to each scholar",
+        "citizenship_residency": "Applicants must hold a University of Rwanda student number to register; an entry visa is granted on arrival at Kigali International Airport to citizens of all countries",
+        "international_eligibility": "International students may apply; those from outside Rwanda must obtain a study visa within 15 days of arrival with a police clearance and valid passport",
+        "subject_or_agency_requirement": null,
+        "research_requirement": null,
+        "duration": null,
+        "description": "The Mastercard Foundation Scholars Program partners with the University of Rwanda to award undergraduate scholarships based on academic merit, demonstrated economic disadvantage and leadership potential.",
+        "region": "Africa",
+        "program_type": "University undergraduate scholarship",
+        "english_requirement": null
+      },
+      "verification": {
+        "source_citations": [
+          "https://mcfsprecruitment.ur.ac.rw",
+          "https://mcfsprecruitment.ur.ac.rw/ug-recruitment"
+        ],
+        "last_verified_date": "2026-10-10",
+        "verification_status": "confirmed",
+        "confidence": "high",
+        "not_confirmed": [
+          "funding_amount",
+          "funding_currency",
+          "funding_period",
+          "tuition_coverage",
+          "living_cost_coverage",
+          "travel_coverage",
+          "duration",
+          "english_requirement"
+        ],
+        "notes": "Both portal pages fetched live on the awarding body's own domain; no monetary figure is published, so amount and coverage fields are recorded as null."
+      },
+      "applicant_utility": {
+        "summary": "This is the University of Rwanda's own Mastercard Foundation Scholars cohort: you can only apply through the UR portal, you need a University of Rwanda student number just to create an account, and the clock is short because the window shuts 12 October 2026 at 23:59 Kigali time. Economic disadvantage carries 45% of the assessment, so the socio-economic section matters more to your score than raw grades. Build the dossier around ID scans, proof of need and leadership evidence rather than spending the remaining days polishing an essay.",
+        "best_fit": "Economically disadvantaged applicants who hold or are obtaining a University of Rwanda student number and can document hardship and leadership.",
+        "application_readiness_checklist": [
+          "Confirm you have a University of Rwanda student number - the portal checks it at account creation",
+          "Prepare clear scans: passport photo on white background, National ID/passport/refugee ID, disability certificate if applicable, leadership certificates",
+          "If your qualifications are from outside Rwanda, begin the HEC/NESA equivalence process now - it is a stated prerequisite",
+          "Draft the six portal sections in advance and save progress before the final day",
+          "Email mcfsp@ur.ac.rw with your full name and application number for any portal issue, and respond quickly if they reply"
+        ],
+        "common_rejection_risks": [
+          "No University of Rwanda student number - registration is impossible without it",
+          "A vague socio-economic section when 45% of the weighting is economic disadvantage",
+          "Missing HEC/NESA equivalence for foreign academic qualifications",
+          "Submitting in the final hours and losing the form to a portal timeout"
+        ],
+        "estimated_uncovered_costs": "Not published - the portal does not itemise the stipend, so budget for personal expenses until an award letter states what is covered",
+        "document_audit": [
+          "The disability certificate is required only for the disability category - do not upload it in the general pool",
+          "Leadership certificates are requested only if you have any, but leadership carries 25% of the score",
+          "Scans must be legible PDF, JPG or PNG files of no more than 5 MB each"
+        ],
+        "alerts": [
+          "The postgraduate track for 2026/2027 is already closed - this record is the undergraduate track only",
+          "The deadline is 23:59 Kigali time, not your local time zone",
+          "Scholars from outside Rwanda must obtain a study visa within 15 days of arrival"
+        ],
+        "submission_workflow": "Verify with your UR student number, register, complete sections A-E, review and submit, then track status on the same dashboard."
+      }
+    }
+  ]
+}

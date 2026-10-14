@@ -1,0 +1,21 @@
+{
+  "agent_id": "w3_52",
+  "shard": "w3-52",
+  "host": "vlaanderen.be",
+  "today": "2026-10-04",
+  "logo_override": {
+    "url": "https://www.vlaanderen.be/img/logo/vlaanderen-logo.jpg",
+    "page_url": "https://www.vlaanderen.be/en/studying/flanders-trainee-programme",
+    "official_host": true,
+    "alt_text": "Vlaanderen - verbeelding werkt",
+    "validation_result": "verified",
+    "validation_detail": "HTTP 200, content-type image/jpeg, 32106 bytes; rendered on a white background it shows the Flemish lion mark plus 'Vlaanderen / verbeelding werkt' in dark grey - a JPEG has no alpha channel so there is no white-on-transparent risk, and the wordmark is clearly legible on a light card",
+    "image_kind": "official_government",
+    "image_format": "jpg",
+    "verified_at": "2026-10-04T00:00:00+00:00",
+    "host_evidence": "same_registrable_domain",
+    "_award": "Flanders Trainee Programme (Flanders Traineeship Programme)"
+  },
+  "target_ids": [508],
+  "notes": "The Flanders Trainee Programme is a programme of the Government of Flanders (Departement Buitenlandse Zaken), so the Government of Flanders mark is the correct awarding-body logo under rule 2 - a university mark would have been a provenance error. Found in the page's own JSON-LD, which declares publisher 'Vlaamse overheid' with logo ImageObject https://www.vlaanderen.be/img/logo/vlaanderen-logo.jpg - exactly the step-1 lookup the brief prescribes. Probed: 200 image/jpeg 32106 B, rendered and visually confirmed (lion + Vlaanderen/verbeelding werkt in dark grey). Rejected: the og:image and twitter:image https://assets.vlaanderen.be/image/upload/c_fill,h_630,q_auto:eco,w_1200/TWIT_card_algemeen_aw4mra, because assets.vlaanderen.be is a Cloudinary image CDN mirroring the file (rules 1 and 6) and it is a programme banner, not a logo; and the app icons on ui.vlaanderen.be/3.latest/icons/app-icon/icon-highres-precomposed.png (200, image/png, 8648 B - probed and rendered, shows only the black lion on the yellow Flemish flag tile, no wordmark). Note for the merge: www.vlaanderen.be is a live Nuxt app whose header logo is rendered client-side, so a plain HTML fetch of the page shows no logo <img> at all - the JSON-LD is the reliable source here. Playwright's page.goto to this host timed out at 30s once, so webfetch was used to read the markup instead."
+}

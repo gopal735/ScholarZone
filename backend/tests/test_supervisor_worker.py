@@ -282,12 +282,14 @@ def test_link_labels_are_not_mistaken_for_people(polite_site):
 
     from app.services.supervisor_person import classify_person_candidate
 
-    assert (
-        classify_person_candidate(
-            "Apply Now", url="https://uni1.edu/people/apply-now", directory_context=True
-        ).academic_role_stated
-        is False
+    # A call-to-action label never becomes a professor. The classifier either
+    # refuses it outright, or returns a signal that states no role; both are
+    # acceptable because both end the question. What must never happen is a
+    # truthy role claim being built from the word "Apply".
+    classification = classify_person_candidate(
+        "Apply Now", url="https://uni1.edu/people/apply-now", directory_context=True
     )
+    assert classification is None or classification.academic_role_stated is False
 
 
 def test_a_candidate_without_a_profile_url_is_impossible(polite_site):

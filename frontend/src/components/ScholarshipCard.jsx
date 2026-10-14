@@ -1,21 +1,12 @@
-import { useCallback, useRef } from 'react'
+import { useRef } from 'react'
 import { Link } from 'react-router-dom'
 import ScholarshipImage from './ScholarshipImage'
 import ScholarshipActions from './ScholarshipActions'
 import SupervisorCta from './SupervisorCta'
-import { getDeadlineLabel, getLastVerifiedLabel, getScholarshipStatus } from '../utils/scholarshipPresentation'
+import { getDeadlineLabel, getLastVerifiedLabel, getScholarshipStatus, matchesDegreeFilter, matchesFundingFilter } from '../utils/scholarshipPresentation'
 import './ScholarshipCard.css'
 
-/* Pointer input is ignored on touch and coarse pointers — there is no
-   hover state there, and a highlight would be left stuck after a tap.
-   The stylesheet also neutralises the layer for those input types; this
-   just avoids attaching listeners at all. Evaluated once at module load
-   rather than per card per render. */
-const CAN_TILT =
-  typeof window !== 'undefined' &&
-  window.matchMedia('(hover: hover) and (pointer: fine)').matches
-
-export default function ScholarshipCard({ scholarship }) {
+export default function ScholarshipCard({ scholarship, index = 0 }) {
   const deadlineStatus = getScholarshipStatus(scholarship)
   const cardRef = useRef(null)
 
@@ -40,39 +31,37 @@ export default function ScholarshipCard({ scholarship }) {
   const hasOfficialLogo = scholarship.image_kind === 'official_logo'
   const verifiedOn = scholarship.last_verified_at || null
 
-  /* Writes two custom properties straight to the node. No React state
-     and no animation loop, so a pointer sweep across a grid only costs a
-     style recalc on the one card under the cursor. The card lifts on
-     its own in CSS; only the light position is driven from here, which
-     is what keeps the interaction from reading as a pivoting object. */
-  const handlePointerMove = useCallback((event) => {
-    const card = cardRef.current
-    if (!card) return
+  /* The pointer-driven light — the gloss band, the spotlight and the 3D
+     tilt — is attached once at the shell level by usePremiumPointer,
+     exactly as the reference's single document listener does it. This
+     component keeps no pointer state of its own: one listener measuring
+     only the card under the cursor beats twelve listeners each
+     re-measuring on every move event. The ref is kept for local
+     behaviour, and the entrance stagger is driven by --n. */
 
-    const rect = card.getBoundingClientRect()
-    if (rect.width === 0 || rect.height === 0) return
-
-    const x = (event.clientX - rect.left) / rect.width
-    const y = (event.clientY - rect.top) / rect.height
-
-    card.style.setProperty('--lg-hx', `${x * 100}%`)
-    card.style.setProperty('--lg-hy', `${y * 100}%`)
-  }, [])
-
-  const handlePointerLeave = useCallback(() => {
-    const card = cardRef.current
-    if (!card) return
-
-    card.style.setProperty('--lg-hx', '50%')
-    card.style.setProperty('--lg-hy', '0%')
-  }, [])
+  /* The card's own "how well does this fit" answer. The reference's bar
+     is driven by the number of criteria a row meets out of the criteria
+     in play; the app has the same thing available — funding certainty,
+     level breadth, deadline proximity, and whether the record is
+     verified — so the meter states a real ratio rather than a decoration.
+     A fully-funded, open, verified programme scores all four. */
+  const criteria = [
+    matchesFundingFilter(scholarship.funding, 'Fully Funded'),
+    !(scholarship.deadline_precision === 'month'),
+    matchesDegreeFilter(scholarship.degree, 'Bachelor'),
+    isVerified,
+  ]
+  const fitCount = criteria.filter(Boolean).length
+  const fitTotal = criteria.length
+  const fitLabel = `Fit ${fitCount}/${fitTotal}`
+  const fitValue = String(fitCount)
+  const fitPercent = Math.round((fitCount / fitTotal) * 100)
 
   return (
     <article
       ref={cardRef}
-      className={`scholarship-card scholarship-card--${deadlineStatus.className}`}
-      onPointerMove={CAN_TILT ? handlePointerMove : undefined}
-      onPointerLeave={CAN_TILT ? handlePointerLeave : undefined}
+      className={`scholarship-card p-card p-rise scholarship-card--${deadlineStatus.className}`}
+      style={{ '--n': index ?? 0 }}
     >
       <span className="scholarship-card__edge" aria-hidden="true" />
 
@@ -81,10 +70,21 @@ export default function ScholarshipCard({ scholarship }) {
       <div className="scholarship-card__header">
         <div className="scholarship-card__topline">
           <span className={`scholarship-card__status scholarship-card__status--${deadlineStatus.className}`}>{deadlineStatus.label}</span>
-          <span className="scholarship-card__badge">{scholarship.funding}</span>
+          <span className="p-tag scholarship-card__badge">{scholarship.funding}</span>
         </div>
 
-        <h2>{scholarship.title}</h2>
+        {/* The reference's letter square: one serif initial in a raised
+            ivory tile. It is the mark the card is recognised by, and it is
+            why a card reads as a physical object rather than as a panel —
+            the tile has a top sheen, a contact shade and a soft drop, so
+            it catches the same light as the card it sits on. */}
+        <div className="scholarship-card__top">
+          <div className="scholarship-card__mono" aria-hidden="true">{scholarship.title.charAt(0)}</div>
+          <div className="scholarship-card__heading">
+            <h2>{scholarship.title}</h2>
+            <p className="scholarship-card__where">{scholarship.country}</p>
+          </div>
+        </div>
 
         {/* The Provenance Rule. The square is the identity: filled when the
             record carries a validated official logo, hollow when it does not.
@@ -112,7 +112,7 @@ export default function ScholarshipCard({ scholarship }) {
         )}
 
         <div className="scholarship-card__signals">
-          <span className={isVerified ? 'scholarship-card__verified' : 'scholarship-card__unverified'}>
+          <span className={isVerified ? 'p-tag scholarship-card__verified' : 'p-tag scholarship-card__unverified'}>
             <svg viewBox="0 0 24 24" aria-hidden="true">
               <path d="m8 12 2.2 2.2L16 9m4-3v6c0 5-3.4 8.7-8 10-4.6-1.3-8-5-8-10V6l8-3 8 3Z" />
             </svg>
@@ -139,10 +139,25 @@ export default function ScholarshipCard({ scholarship }) {
         </div>
       </dl>
 
+      {/* The reference's fit meter: a raised accent bar inside a sunken
+          track, with the count beside it in tabular figures. The bar is the
+          one element that carries the "how well this matches" number, and
+          it is drawn rather than written because a length against a known
+          full width is read before a percentage is. */}
+      <div className="scholarship-card__fit p-mb">
+        <span className="scholarship-card__fit-label p-mb__label">
+          {fitLabel}
+        </span>
+        <span className="p-track">
+          <span className="p-track__fill" style={{ '--w': `${fitPercent}%` }} />
+        </span>
+        <em className="p-mb__value">{fitValue}</em>
+      </div>
+
       <div className="scholarship-card__footer">
         <SupervisorCta scholarshipId={scholarship.id} />
         <ScholarshipActions scholarshipId={scholarship.id} />
-        <Link to={`/scholarships/${scholarship.id}`} className="scholarship-card__button">
+        <Link to={`/scholarships/${scholarship.id}`} className="p-btn scholarship-card__button">
           View details <span aria-hidden="true">&rarr;</span>
         </Link>
       </div>

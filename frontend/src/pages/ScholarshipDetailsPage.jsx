@@ -150,12 +150,31 @@ function DetailList({ items, ordered = false, variant = 'check' }) {
   )
 }
 
+/* Long facts span two columns.
+
+   The catalogue's long values are one-line answers to a different
+   question than the short ones: "Fully Funded" is a label, "Government
+   scholarship (500 seats for Bangladesh under Suborno Jayanti)" is a
+   sentence. Packed into a 286px column the sentence wraps to six lines
+   and the grid reads as an accident rather than as a set. Letting it
+   take a second column, and only when the grid actually has a second
+   column to give, keeps every value between two and three lines.
+
+   The threshold is a character count, not a word count, because the
+   break it is guarding against is a wrap: a 60-character value in a
+   286px column is where the wrap begins. ``--wide`` is consumed only at
+   600px and up so a one-column phone is unaffected. */
+const WIDE_FACT_THRESHOLD = 60
+
 function KeyValueGrid({ entries }) {
   if (!entries.length) return null
   return (
     <dl className="sz-detail__facts">
       {entries.map((entry) => (
-        <div className="sz-detail__fact" key={entry.id}>
+        <div
+          className={`sz-detail__fact${entry.value.length > WIDE_FACT_THRESHOLD ? ' sz-detail__fact--wide' : ''}`}
+          key={entry.id}
+        >
           <dt>{entry.label}</dt>
           <dd>{entry.value}</dd>
         </div>
@@ -495,7 +514,7 @@ const bestFit = readText(scholarship.best_fit)
                 href={applyUrl}
                 target="_blank"
                 rel="noreferrer"
-                className="sz-detail-hero__apply"
+                className="p-btn sz-detail-hero__apply"
               >
                 Apply on the official site
                 <span aria-hidden="true">↗</span>
@@ -545,7 +564,7 @@ const bestFit = readText(scholarship.best_fit)
           ))}
         </div>
         {applyUrl ? (
-          <a href={applyUrl} target="_blank" rel="noreferrer" className="sz-detail-summary__apply">
+          <a href={applyUrl} target="_blank" rel="noreferrer" className="p-btn sz-detail-summary__apply">
             Apply <span aria-hidden="true">↗</span>
           </a>
         ) : null}
@@ -669,7 +688,7 @@ const bestFit = readText(scholarship.best_fit)
           <ul className="sz-detail__links">
             {officialLinks.map((link) => (
               <li key={link.id}>
-                <a href={link.url} target="_blank" rel="noreferrer" className="sz-detail__link">
+                <a href={link.url} target="_blank" rel="noreferrer" className="p-ap sz-detail__link">
                   <span className="sz-detail__link-body">
                     <strong>{link.label}</strong>
                     <em>{link.note}</em>
@@ -736,7 +755,7 @@ const bestFit = readText(scholarship.best_fit)
           </p>
           <div className="sz-detail__closing-actions">
             {applyUrl ? (
-              <a href={applyUrl} target="_blank" rel="noreferrer" className="sz-detail-hero__apply">
+              <a href={applyUrl} target="_blank" rel="noreferrer" className="p-btn sz-detail-hero__apply">
                 Apply on the official site <span aria-hidden="true">↗</span>
               </a>
             ) : null}

@@ -1,0 +1,140 @@
+[
+  {
+    "scholarship_id": 640,
+    "outcome": "verified_supervisors",
+    "professors": [
+      {
+        "canonical_name": "Alberto Martin Gago Medina",
+        "title": "Professor",
+        "institution_name": "Pontificia Universidad Católica del Perú (PUCP)",
+        "department_name": "Departamento Académico de Ciencias - Sección Física",
+        "official_profile_url": "https://www.pucp.edu.pe/profesor/alberto-gago-medina/",
+        "official_email": "agago@pucp.edu.pe",
+        "official_email_verified": true,
+        "lab_url": null,
+        "personal_academic_url": null,
+        "research_areas": [
+          "High-energy particle physics",
+          "Astroparticle physics"
+        ],
+        "research_keywords": [
+          "particle physics",
+          "high energy physics",
+          "ALICE experiment",
+          "LHC"
+        ],
+        "relationship_type": "potential_supervisor",
+        "evidence_source_url": "https://posgrado.pucp.edu.pe/doctorados/doctorado-fisica/",
+        "evidence_source_type": "official_programme_page",
+        "evidence_quote_or_summary": "Doctorado en Física programme page lists 'Dr. Alberto Gago Medina' as 'Director del Doctorado' with link to his PUCP faculty profile; the scholarship page states candidates must have 'el aval de un asesor de la PUCP vinculado al programa doctoral' and that the programme's Beneficios include the 'Beca Doctoral PUCP'.",
+        "confidence": 90,
+        "availability": {
+          "scope": "phd_supervision",
+          "state": "verified_yes",
+          "source_url": "https://www.pucp.edu.pe/profesor/alberto-gago-medina/docencia/"
+        }
+      },
+      {
+        "canonical_name": "Jose Luis Bazo Alba",
+        "title": "Professor",
+        "institution_name": "Pontificia Universidad Católica del Perú (PUCP)",
+        "department_name": "Departamento Académico de Ciencias - Sección Física",
+        "official_profile_url": "https://www.pucp.edu.pe/profesor/jose-bazo-alba",
+        "official_email": "jbazo@pucp.edu.pe",
+        "official_email_verified": true,
+        "lab_url": null,
+        "personal_academic_url": null,
+        "research_areas": [
+          "Astroparticle physics",
+          "Experimental high-energy physics"
+        ],
+        "research_keywords": [
+          "cosmic rays",
+          "neutrinos",
+          "gamma rays",
+          "Grupo de Altas Energías",
+          "SWGO",
+          "TAMBO"
+        ],
+        "relationship_type": "potential_supervisor",
+        "evidence_source_url": "https://posgrado.pucp.edu.pe/doctorados/doctorado-fisica/",
+        "evidence_source_type": "official_programme_page",
+        "evidence_quote_or_summary": "Doctorado en Física programme page lists 'Dr. José Bazo Alba' in the 'Comité Directivo' with link to his PUCP faculty profile; his profile notes he teaches doctoral thesis seminars (Seminario de Tesis Doctoral) and the scholarship requires a PUCP doctoral-programme advisor's backing ('aval de un asesor de la PUCP vinculado al programa doctoral').",
+        "confidence": 90,
+        "availability": {
+          "scope": "phd_supervision",
+          "state": "verified_yes",
+          "source_url": "https://www.pucp.edu.pe/profesor/jose-bazo-alba/docencia/"
+        }
+      },
+      {
+        "canonical_name": "Francisco Antonio de Zela Martinez",
+        "title": "Professor",
+        "institution_name": "Pontificia Universidad Católica del Perú (PUCP)",
+        "department_name": "Departamento Académico de Ciencias - Sección Física",
+        "official_profile_url": "https://www.pucp.edu.pe/profesor/francisco-de-zela-martinez/",
+        "official_email": "fdezela@pucp.edu.pe",
+        "official_email_verified": true,
+        "lab_url": null,
+        "personal_academic_url": null,
+        "research_areas": [
+          "Quantum optics",
+          "Quantum information"
+        ],
+        "research_keywords": [
+          "quantum optics",
+          "entanglement",
+          "photonics",
+          "quantum information"
+        ],
+        "relationship_type": "potential_supervisor",
+        "evidence_source_url": "https://posgrado.pucp.edu.pe/doctorados/doctorado-fisica/",
+        "evidence_source_type": "official_programme_page",
+        "evidence_quote_or_summary": "Doctorado en Física programme page lists 'Dr. Francisco de Zela Martínez' in the 'Comité Directivo' with link to his PUCP faculty profile; his profile shows he teaches doctoral thesis seminars (Seminario de Tesis Doctoral), consistent with the scholarship requirement of a PUCP doctoral-programme advisor's backing.",
+        "confidence": 90,
+        "availability": {
+          "scope": "phd_supervision",
+          "state": "verified_yes",
+          "source_url": "https://www.pucp.edu.pe/profesor/francisco-de-zela-martinez/docencia/"
+        }
+      }
+    ],
+    "notes": "University-wide PUCP doctoral scholarship with no single attached department; the Doctorado en Física programme (which lists the Beca Doctoral PUCP among its benefits) was used to identify programme faculty. The Beca Doctoral PUCP bases require applicants to hold the endorsement of a PUCP advisor linked to the doctoral programme ('carta de compromiso del asesor de tesis') and award 22.5 of 100 evaluation points to the advisor's opinion. Emails were read from the professors' official pucp.edu.pe profile pages. The same scheme applies to other PUCP doctoral programmes (e.g. Mathematics, Anthropology, History, Philosophy, Economics, Education, Ciencia Política y Gobierno)."
+  },
+  {
+    "scholarship_id": 641,
+    "outcome": "not_applicable",
+    "professors": [],
+    "notes": "Undergraduate merit/need-based tuition scholarship for new entrants finishing secondary school in 2026; no research or thesis supervisor is attached to this scheme. Official page confirms allocation by faculty under PUCP's Reglamento General del Sistema de Becas y Crédito Educativo, with no named faculty/supervisors."
+  },
+  {
+    "scholarship_id": 642,
+    "outcome": "not_applicable",
+    "professors": [],
+    "notes": "Government-of-Chile cooperation programme for foreign uniformed police; studies are Formación/Perfeccionamiento/Especialización Policial courses at the teaching schools of Carabineros de Chile and Policía de Investigaciones de Chile. No attached academic institution, professor, or supervisor published on the official CECIPU pages."
+  },
+  {
+    "scholarship_id": 643,
+    "outcome": "no_verified_supervisor_found",
+    "professors": [],
+    "notes": "Undergraduate research scholarship at FCM UNCUYO. The call operates in two stages: faculty ('docentes-investigadores') submit research projects to act as scholarship directors in stage 1 (5-16 Oct 2026), and only the admitted projects and their directors are published 2-6 Nov 2026, after which students apply. As of research date no list of named project directors/supervisors for the 2026-2027 call is published on the official FCM pages (news page and bases page checked), so no individual supervisor can be verified. The programme is run by the Dirección de Investigación y Relaciones Institucionales, Secretaría de Desarrollo Institucional, FCM UNCUYO."
+  },
+  {
+    "scholarship_id": 644,
+    "outcome": "not_applicable",
+    "professors": [],
+    "notes": "National government scholarship scheme of the Commission on Higher Education (CHED) Philippines; funding follows the staff member to a Philippine higher education institution in one of ten priority disciplines. No institution or supervising professor is attached to the scheme itself. Note: the CHED SIKAP call page returned little server-rendered content when fetched (appears to require JavaScript rendering), but the scheme classification as a national government scholarship is unaffected."
+  },
+  {
+    "scholarship_id": 645,
+    "outcome": "not_applicable",
+    "professors": [],
+    "notes": "TaiwanICDF International Higher Education Scholarship Program is a government scholarship scheme; admission is obtained via application to one programme at one TICA partner university, but the Fund attaches no specific institution or supervising professor to the award itself. Verified against the official TaiwanICDF scholarship programme page."
+  },
+  {
+    "scholarship_id": 646,
+    "outcome": "not_applicable",
+    "professors": [],
+    "notes": "Government scholarship scheme operated by JSC 'Center for International Programs' (Bolashak), Kazakhstan. The official page states the list of participating universities and fields is available only on the Study In portal during the application process; no specific institution or supervising professor is attached to the scheme itself."
+  }
+]

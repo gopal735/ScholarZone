@@ -1,0 +1,117 @@
+{
+  "agent": "agent_302",
+  "records": [
+    {
+      "id": 679,
+      "official": {
+        "official_source_urls": [
+          "https://appels-propositions.auf.org/appel-a-candidatures-2026-27-formations-diplomantes-internationales-a-distance",
+          "https://l.auf.org/FOAD-FD"
+        ],
+        "application_link": "https://appels-propositions.auf.org/appel-a-candidatures-2026-27-formations-diplomantes-internationales-a-distance",
+        "catalogue_url": "https://l.auf.org/FOAD-FD",
+        "official_updates_url": "https://www.auf.org/appels-a-propositions",
+        "deadline_central": null,
+        "deadline_central_display": "Closed 14 September 2026 at 23:59 Europe/Paris for programmes starting January/February 2027; 9 June 2026 for programmes starting September/October 2026",
+        "deadline_note": "Two intake deadlines were published: 9 June 2026 for formations beginning September/October 2026 and 14 September 2026 for formations beginning January/February 2027; the call ran from 7 April 2026.",
+        "application_cycle": "2026/27 call for international distance degree programmes (FOAD/IFIC)",
+        "status": "CLOSED",
+        "status_note": "The official call page lists 'Cloture : 14/09/2026 a 23h59' (Europe/Paris) and the 2026/27 reception window has now closed; the next call appears on the AUF calls-for-applications platform when announced.",
+        "tuition_coverage_note": "Published as 'une prise en charge partielle des frais d'inscription' - a partial coverage of enrolment fees - for the most meritorious students or those with limited resources; no percentage, cap or amount is published.",
+        "funding_amount": null,
+        "funding_currency": null,
+        "funding_period": null,
+        "tuition_coverage": true,
+        "living_cost_coverage": false,
+        "travel_coverage": false,
+        "fully_funded": false,
+        "benefits": [
+          "Virtual international mobility allowance in the form of partial coverage of enrolment fees ('allocation de mobilite virtuelle internationale sous forme d'une prise en charge partielle des frais d'inscription')",
+          "Support from candidacy through to the diploma, including follow-up of the course and organisation of exams and defences",
+          "Free access to AUF offices ('implantations') worldwide during the whole process"
+        ],
+        "eligibility": [
+          "Francophone student who does not have to leave their country of residence ('Vous etes etudiant.e Francophone ?')",
+          "Most meritorious students or students with limited resources ('les etudiants les plus meritants ou ayant des ressources limitees')",
+          "Enrolled in, or applying to, one of the more than 150 international distance degree programmes from licence to doctorat",
+          "Programme delivered by one of the 45+ AUF member institutions across 13 countries"
+        ],
+        "requirements": [
+          "Apply to one of the international distance degree programmes listed in the AUF catalogue",
+          "Meet the entry requirements of the delivering AUF member institution",
+          "Submit the application through the AUF calls-for-applications platform before the applicable intake deadline"
+        ],
+        "documents": null,
+        "selection_criteria": [
+          "Merit ('les etudiants les plus meritants')",
+          "Limited resources ('ayant des ressources limitees')"
+        ],
+        "coverage": [
+          "Partial coverage of enrolment fees only ('prise en charge partielle des frais d'inscription')",
+          "Mentoring and administrative follow-up from candidacy to diploma, including organisation of exams and thesis defences",
+          "Free access to AUF implantations worldwide throughout the process"
+        ],
+        "application_method": [
+          "Consult the catalogue of more than 150 international distance degree programmes at l.auf.org/FOAD-FD",
+          "Create an account and apply on the AUF calls-for-applications platform (appels-propositions.auf.org)",
+          "Contact foad@auf.org for guidance"
+        ],
+        "application_route": "Apply online through the AUF calls-for-applications platform for a programme chosen from the AUF FOAD catalogue; guidance at foad@auf.org.",
+        "study_mode": "Distance learning (FOAD - formation ouverte et a distance), without leaving the country of residence",
+        "citizenship_residency": "No nationality restriction published; the call targets francophone students who stay in their country of residence.",
+        "international_eligibility": "Open to francophone students taking programmes delivered by AUF member institutions in 13 countries.",
+        "subject_or_agency_requirement": "Must follow one of the AUF international distance degree programmes delivered by an AUF member institution.",
+        "research_requirement": null,
+        "duration": "Duration of the chosen distance degree programme, from licence to doctorat",
+        "description": "With the support of IFIC, the Agence universitaire de la Francophonie supports francophone students through a virtual international mobility allowance in the form of partial coverage of enrolment fees, accompanied by support from application to diploma and free access to AUF offices worldwide, so that students can obtain an international university degree at a distance without leaving their country of residence.",
+        "region": "International (AUF member institutions in 13 countries; network concentrated in Africa)",
+        "program_type": "Virtual international mobility grant (partial enrolment-fee support) for AUF distance degree programmes",
+        "english_requirement": null
+      },
+      "verification": {
+        "source_citations": [
+          "https://appels-propositions.auf.org/appel-a-candidatures-2026-27-formations-diplomantes-internationales-a-distance",
+          "https://l.auf.org/FOAD-FD"
+        ],
+        "last_verified_date": "2026-10-10",
+        "verification_status": "confirmed",
+        "confidence": "high",
+        "not_confirmed": [
+          "funding_amount - no monetary figure is published; the support is a partial reimbursement of enrolment fees of unstated value",
+          "funding_currency",
+          "funding_period",
+          "documents - the call page does not itemise the document list",
+          "english_requirement"
+        ],
+        "notes": "Read the official AUF/IFIC call page directly: launch 07/04/2026, closing 14/09/2026 23:59 Europe/Paris, with the 9 June 2026 deadline for September/October 2026 starts; benefit wording, support package, catalogue scale (150+ programmes, 45+ institutions, 13 countries) and contact all confirmed verbatim."
+      },
+      "applicant_utility": {
+        "summary": "This is a partial enrolment-fee rebate for francophone students entering one of the 150+ AUF distance degrees, not a full scholarship - the AUF publishes no amount, so you must fund the residual enrolment fee, materials, connectivity and any travel to exam centres or defences yourself. Because the allowance follows admission to a catalogue programme, your first task is securing a place in a FOAD programme run by an AUF member institution; the award is decided on merit or limited resources and is paid as partial reimbursement rather than up front. The 2026/27 window closed on 14 September 2026, so track the AUF calls platform and the catalogue for the next call instead of waiting for an invitation.",
+        "best_fit": "Francophone students in Africa and the Arab Maghreb who want an internationally delivered degree without relocating and whose main obstacle is the enrolment fee.",
+        "application_readiness_checklist": [
+          "Shortlist two or three catalogue-listed FOAD programmes (licence to doctorat) and confirm the delivering member institution's own entry requirements and full fee scale",
+          "Watch appels-propositions.auf.org and l.auf.org/FOAD-FD for the next call before the window opens",
+          "Build the admission file required by the delivering institution - the call page itself publishes no document list, so that file is your document checklist",
+          "Email foad@auf.org with any eligibility questions before the window closes; it is the only official guidance channel published"
+        ],
+        "common_rejection_risks": [
+          "Choosing a programme that is not in the published FOAD catalogue or not delivered by an AUF member institution",
+          "Expecting a full fee waiver: the scheme is explicitly partial, so an inability to bridge the remaining fees derails enrolment",
+          "Missing the intake-specific deadline - September/October and January/February starts carried different closing dates in this cycle",
+          "Relying on aggregator summaries rather than the official call text for the eligibility wording"
+        ],
+        "estimated_uncovered_costs": "The unpublished remainder of the enrolment fees after partial reimbursement, plus all living costs, hardware and internet, travel to exam centres or thesis defences, and any institutional registration charges - none of these are covered.",
+        "document_audit": [
+          "The call page publishes no document checklist; do not wait for one - the delivering institution's admission requirements govern what you submit",
+          "Keep evidence of your francophone study background and financial situation, since the award turns on merit or limited resources"
+        ],
+        "alerts": [
+          "The 2026/27 call closed on 14 September 2026 at 23:59 Europe/Paris; there is no rolling deadline",
+          "Two intake deadlines applied within one call, so in the next cycle confirm whether your start month falls under the June or the September cut-off",
+          "The allowance is a reimbursement model - you must be able to pay enrolment fees first and be reimbursed in part afterwards"
+        ],
+        "submission_workflow": "Gain admission to a catalogue FOAD programme through the delivering institution, then file the AUF call application with an account on appels-propositions.auf.org; the AUF runs vetting, course follow-up and exam/defence organisation."
+      }
+    }
+  ]
+}

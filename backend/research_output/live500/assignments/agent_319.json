@@ -1,0 +1,83 @@
+{
+ "agent": "agent_319",
+ "assignment_count": 1,
+ "scholarships": [
+  {
+   "id": 709,
+   "title": "John Curtin Global Excellence Scholarship (Curtin University)",
+   "country": "Australia",
+   "degree": "Bachelor's, Master's",
+   "funding_label": "Tuition Fee Waiver (40% of tuition fee for the scholarship term)",
+   "status": "open",
+   "official_source": "Curtin University",
+   "official_source_url": "https://scholarships.curtin.edu.au/Scholarship/?id=7985",
+   "application_link": "https://scholarships.curtin.edu.au/Scholarship/?id=7985",
+   "catalogue_url": "https://www.curtin.edu.au/study/scholarships/international-scholarships",
+   "official_updates_url": "https://scholarships.curtin.edu.au/Scholarship/?id=7985",
+   "existing": {
+    "funding_amount": null,
+    "funding_currency": null,
+    "funding_period": null,
+    "tuition_coverage": 1,
+    "living_cost_coverage": 0,
+    "travel_coverage": 0,
+    "fully_funded": 0,
+    "description": "Curtin University's John Curtin Global Excellence Scholarship gives eligible international, fee-paying, non-sponsored students 40% off the tuition fee of their course, credited for up to four years of an undergraduate degree or two years of a Master's by coursework. Applicants need a Course-Weighted Average of 95% or equivalent in their most recent eligible study and must study at a Curtin Western Australian campus commencing in 2027 or 2028. No separate scholarship application is needed: all qualifying applications to Curtin are assessed automatically by Global Admissions.",
+    "eligibility": [
+     "Be an international, fee-paying, non-sponsored student of any nationality except Australian",
+     "Be enrolled in a Curtin undergraduate degree course or a Master's degree by coursework",
+     "Will be studying at a Curtin Western Australian campus commencing in 2027 or 2028",
+     "Have achieved a Course-Weighted Average of 95% or equivalent scores in the most recent and eligible course of study, as determined by Curtin University",
+     "Not be enrolled in Not-for-Degree Exchange or Study Abroad, a campus transfer from a Curtin global campus, or a recognised joint program at a Curtin Transnational Partner Location outside Australia",
+     "Not be enrolled in one of the excluded courses"
+    ],
+    "eligibility_summary": "International, fee-paying, non-sponsored students of any nationality except Australian, enrolled in a Curtin undergraduate degree or Master's degree by coursework, studying at a Curtin Western Australian campus commencing in 2027 or 2028, with a Course-Weighted Average of 95% or equivalent in their most recent eligible course of study, and not enrolled in an excluded course or programme type.",
+    "benefits": [
+     "40% tuition fee reduction for the duration of the scholarship term"
+    ],
+    "coverage": [
+     "40% of tuition fees only, for the scholarship term. The official page states it does not cover any other international student expense, so living costs, accommodation and travel are not covered."
+    ],
+    "requirements": [
+     "Must maintain enrolment as an international full fee-paying, non-sponsored student during the scholarship",
+     "Must maintain 'Good Standing' academic status and a minimum CWA of 70% from the second study period onwards in every study period",
+     "Must maintain full-time enrolment in each study period; underloading does not extend the scholarship term",
+     "Must not be on Leave of Absence during the scholarship term",
+     "Must not be withdrawn or AWOL from Curtin",
+     "Must not receive, hold or be awarded any other Curtin or Australian government scholarship while in receipt of this one",
+     "Must pay the full Deposit amount set out in the Letter of Offer for the first study period to accept the scholarship offer",
+     "Must accept the Letter of Offer and enrol in the course by the specified date"
+    ],
+    "documents": [],
+    "english_requirement": null,
+    "application_method": [
+     "There is no separate scholarship application required",
+     "Apply for the Curtin course through a Curtin University registered education agent or apply directly to Curtin online",
+     "All qualifying applications to Curtin are automatically assessed for the John Curtin Global Excellence Scholarship",
+     "Global Admissions assesses each application and issues a supplementary letter with the Letter of Offer confirming success"
+    ],
+    "selection_notes": "Merit based. The CWA threshold of 95% or equivalent is determined by Curtin University and may change without notice, as may the list of excluded courses. Curtin reserves the right to cease offering the scholarship if the offer is not accepted by the due date or all places are filled.",
+    "best_fit": "International applicants with a 95% or equivalent average seeking a 40% tuition reduction at Curtin's Western Australian campuses for 2027 or 2028 entry, who are not sponsored and whose course is not on the exclusion list.",
+    "notes": "Awarded automatically on admission rather than by a separate scholarship application. Because it covers only 40% of tuition and no other expenses, it is not a fully funded award. The scholarship cannot be withdrawn or refunded in cash, cannot be transferred to a Curtin campus or partner outside Western Australia or to another university, and cannot be retained if studies are deferred beyond the study period and year offered.",
+    "duration": "Credited for up to 4 years for an undergraduate degree, or a maximum of 2 years for a Master's degree by coursework",
+    "application_period": "Applications open 27 July 2026 and close 1 October 2027, for study commencing 2027 or 2028 at a Curtin Western Australian campus.",
+    "deadline_display": "1 October 2027 (applications opened 27 July 2026)",
+    "deadline_date": "2027-10-01",
+    "region": "Oceania",
+    "program_type": "University merit scholarship",
+    "applicant_utility": null,
+    "official_details": null
+   },
+   "missing_fields": [
+    "funding_amount",
+    "funding_currency",
+    "funding_period",
+    "documents",
+    "english_requirement",
+    "applicant_utility",
+    "official_details"
+   ]
+  }
+ ],
+ "result_file": "C:\\Users\\GopaL\\Desktop\\Projects folder\\ScholarZone\\backend\\research_output\\live500\\results\\agent_319.json"
+}

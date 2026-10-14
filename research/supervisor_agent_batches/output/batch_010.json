@@ -1,0 +1,77 @@
+[
+  {
+    "scholarship_id": 77,
+    "outcome": "no_verified_supervisor_found",
+    "professors": [],
+    "notes": "Cranfield University GREAT Scholarship 2026 Bangladesh is a GBP 10,000 partial tuition fee award offered university-wide across ~25 full-time taught master's courses (e.g. Advanced Materials MSc, Robotics MSc, Management MSc). The official Cranfield page names no supervising professor or academic supervisor; the only published contact is the administrative Student Funding and Scholarships office (studentfunding@cranfield.ac.uk, +44 1234 758181), which is not faculty. Master's coursework is not supervisor-based, and the scholarship is not tied to any specific professor, lab, or research group."
+  },
+  {
+    "scholarship_id": 78,
+    "outcome": "no_verified_supervisor_found",
+    "professors": [],
+    "notes": "University of Edinburgh GREAT Scholarships 2026 (3 awards for nationals/residents of Thailand, Mexico and Ghana applying for one-year postgraduate taught courses) is a university-wide partial tuition fee scholarship under the British Council GREAT campaign. Edinburgh's official international funding page confirms the offer but names no professors or programme supervisors. The British Council country page (study-uk.britishcouncil.org) returned HTTP 403 (blocked) and Edinburgh's dedicated GREAT Scholarships 2026 page URL currently returns HTTP 404; the university-wide merit nature of the award is still confirmable from the official ed.ac.uk funding page, so the outcome is not source_blocked. As a taught master's scholarship not attached to a specific programme or supervisor, no supervising professors are tied to it."
+  },
+  {
+    "scholarship_id": 79,
+    "outcome": "no_verified_supervisor_found",
+    "professors": [],
+    "notes": "Edinburgh Global Research Scholarship is a university-wide, merit-based PhD tuition fee differential award for overseas research students (up to 3 years). It is not attached to a specific school, programme, lab or supervisor. The current official Edinburgh international funding page lists its successor scheme, the Edinburgh Doctoral College Scholarships (for students starting PhD research in 2027-2028), which explicitly directs applicants to 'make contact with their academic school' and states outcomes are notified 'by the relevant school' - no individual supervising professors are named on either page. Potential supervisors depend entirely on the applicant's chosen research field and school."
+  },
+  {
+    "scholarship_id": 81,
+    "outcome": "not_applicable",
+    "professors": [],
+    "notes": "Study in Canada Scholarships (SICS) is a Government of Canada / Global Affairs Canada national mobility scheme for students from eligible countries to undertake short-term study or research exchanges (4 months / one academic term; 5-6 months at graduate level) at Canadian post-secondary institutions. It has no single attached institution or named supervising professors; administration is via designated Canadian institutions and agencies, per the official educanada.ca page."
+  },
+  {
+    "scholarship_id": 82,
+    "outcome": "not_applicable",
+    "professors": [],
+    "notes": "Pierre Elliott Trudeau Foundation Doctoral Scholarship is a foundation-run national scheme (up to CAD 50,000/year for 3 years) open to PhD candidates in humanities/social sciences at any Canadian university (and Canadians studying abroad) whose research aligns with the Foundation's four themes. It is not attached to any specific institution, department or supervisor, so no supervising professors are applicable. Applicants' own PhD supervisors serve only as referees."
+  },
+  {
+    "scholarship_id": 83,
+    "outcome": "verified_supervisors",
+    "professors": [
+      {
+        "canonical_name": "Deep Saini",
+        "title": "President and Vice-Chancellor; Professor",
+        "institution_name": "McGill University",
+        "department_name": "Office of the President and Vice-Chancellor",
+        "official_profile_url": "https://www.mcgill.ca/president/about-president",
+        "official_email": null,
+        "official_email_verified": false,
+        "lab_url": null,
+        "personal_academic_url": null,
+        "research_areas": [
+          "Plant biology",
+          "Plant physiology",
+          "Higher education leadership"
+        ],
+        "research_keywords": [
+          "plant biology",
+          "plant physiology",
+          "university president",
+          "research administration"
+        ],
+        "relationship_type": "program_relevant_faculty",
+        "evidence_source_url": "https://mccallmacbainscholars.org/about/",
+        "evidence_source_type": "official_programme_page",
+        "evidence_quote_or_summary": "The scholarship's official About page lists governance: 'Deep Saini - Board Director; President and Vice-Chancellor of McGill University'. His official McGill profile page confirms: 'Professor Deep Saini began his term as President and Vice-Chancellor of McGill University on April 1, 2023' and describes him as 'a career academic and accomplished researcher in plant biology'. He is the senior academic officer of the host institution and a director of the scholarship's governing board; he is not a thesis supervisor for individual scholars (the McCall MacBain Scholars each pursue their own master's or professional program). No personal name@ email is published - the President's office publishes only the general contact 'president [at] mcgill.ca' on the institutional page.",
+        "confidence": 75,
+        "availability": {
+          "scope": "funding",
+          "state": "not_published",
+          "source_url": "https://mccallmacbainscholars.org/about/"
+        }
+      }
+    ],
+    "notes": "McCall MacBain Scholarships at McGill is a full graduate scholarship for master's and second-entry professional programs across 150+ fields of study; scholars pursue their own chosen programs, so the scholarship has no thesis supervisors. The only named professor tied to the programme is Prof. Deep Saini, McGill's President and Vice-Chancellor and a Board Director of the McCall MacBain Scholarships (governance listed on the programme's official About page; profile on mcgill.ca). Programme staff (CEO Natasha Sawh; André-Yanne Parent, Director, Leadership Development) are professional staff, not professors, and the programme's mentors/coaches are external volunteers, not supervising faculty, so they are excluded."
+  },
+  {
+    "scholarship_id": 84,
+    "outcome": "no_verified_supervisor_found",
+    "professors": [],
+    "notes": "International Major Entrance Scholarship (IMES) at UBC is an automatic, merit-based entrance scholarship for international students entering undergraduate programs directly from secondary school (CAD 10,000-25,000/year, renewable). It is administered by UBC Undergraduate Programs and Admissions; the official you.ubc.ca page names no professors, supervisors or academic staff - consideration is automatic upon application by the admissions deadline. There is no faculty tie to the award."
+  }
+]

@@ -1,0 +1,91 @@
+{
+ "agent": "agent_078",
+ "assignment_count": 1,
+ "scholarships": [
+  {
+   "id": 215,
+   "title": "KOICA Scholarship Program (Scholarship Program, CIAT)",
+   "country": "South Korea",
+   "degree": "Master's, PhD",
+   "funding_label": "Fully Funded",
+   "status": "upcoming",
+   "official_source": "Korea International Cooperation Agency (KOICA) - Korean Government",
+   "official_source_url": "https://www.koica.go.kr/eng",
+   "application_link": "https://www.koica.go.kr/eng",
+   "catalogue_url": null,
+   "official_updates_url": "https://www.koica.go.kr/ciat/7815/subview.do",
+   "existing": {
+    "funding_amount": null,
+    "funding_currency": null,
+    "funding_period": null,
+    "tuition_coverage": 1,
+    "living_cost_coverage": 1,
+    "travel_coverage": 1,
+    "fully_funded": 1,
+    "description": "The KOICA Scholarship Program (SP) is a Government of Korea scholarship administered by the Korea International Cooperation Agency within its CIAT (Capacity Improvement and Advancement for Tomorrow) fellowship programme. KOICA states that SP offers postgraduate opportunities at both master's and doctoral levels, was initiated in 1997 and has produced thousands of graduates from more than 80 nationalities. KOICA lists the benefits as full tuition fees, one round-trip airfare, settlement allowance, dormitory accommodation, monthly allowance, national health insurance, private medical insurance and a scholarship completion grant. Applications are handled first by the applicant's own KOICA Overseas Office or Korean Embassy and then by a university screening round, and KOICA describes the programme as specially designed for government officials.",
+    "eligibility": [
+     "National of a KOICA partner (developing) country",
+     "Government official or public sector representative from a partner country",
+     "Applying to a master's or doctoral programme at a Korean university participating in the programme",
+     "Nominated through the KOICA Overseas Office or Korean Embassy route in the applicant's country"
+    ],
+    "eligibility_summary": "Government officials and professionals from KOICA partner countries applying to postgraduate (master's and doctoral) study at universities in Korea. KOICA states the programme is 'specially designed for government officials' and that selection is rigorous; applicants are routed through their own country's KOICA Overseas Office or the Korean Embassy.",
+    "benefits": [
+     "Full tuition fees",
+     "One round-trip airfare",
+     "Settlement allowance",
+     "Dormitory accommodation",
+     "Monthly allowance",
+     "National Health Insurance fee",
+     "Private Medical Insurance fee",
+     "Scholarship Completion Grant",
+     "Supplementary support including academic experiential learning activities, expert encounters, industrial visits, international conference participation and Korean language classes",
+     "Pre-departure orientations, arrival briefings and initial settling-in assistance"
+    ],
+    "coverage": [
+     "Full tuition fees",
+     "One round-trip airfare",
+     "Settlement allowance",
+     "Dormitory accommodation",
+     "Monthly allowance",
+     "National Health Insurance fee",
+     "Private Medical Insurance fee",
+     "Scholarship Completion Grant",
+     "Pre-departure orientation, arrival briefing and settling-in support including immigration procedures and transport to the institution"
+    ],
+    "requirements": [],
+    "documents": [
+     "KOICA Scholarship Program application form",
+     "Official documents required by the applicant's own KOICA Overseas Office or Korean Embassy for the embassy/overseas-office round"
+    ],
+    "english_requirement": null,
+    "application_method": [],
+    "selection_notes": null,
+    "best_fit": "Government officials and public sector employees from Bangladesh",
+    "notes": null,
+    "duration": "Master's programmes are described by KOICA as seventeen months long; the Doctoral programme duration is not stated on the page fetched.",
+    "application_period": "Two-stage annual cycle: a KOICA Overseas Office / Korean Embassy round followed by a university round. Dates are set locally by each KOICA overseas office or embassy.",
+    "deadline_display": "KOICA does not publish a single central application deadline on its Scholarship Program page: candidates apply through their country's KOICA Overseas Office or the Korean Embassy in the first round, followed by a university screening round, and KOICA states the deadline is set by each respective KOICA overseas office or embassy.",
+    "deadline_date": null,
+    "region": "Global",
+    "program_type": "Government-funded international postgraduate scholarship administered by KOICA under its CIAT fellowship programme",
+    "applicant_utility": null,
+    "official_details": null
+   },
+   "missing_fields": [
+    "funding_amount",
+    "funding_currency",
+    "funding_period",
+    "requirements",
+    "english_requirement",
+    "application_method",
+    "selection_notes",
+    "notes",
+    "deadline_date",
+    "applicant_utility",
+    "official_details"
+   ]
+  }
+ ],
+ "result_file": "C:\\Users\\GopaL\\Desktop\\Projects folder\\ScholarZone\\backend\\research_output\\live500\\results\\agent_078.json"
+}

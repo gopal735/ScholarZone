@@ -1,0 +1,84 @@
+{
+ "agent": "agent_116",
+ "assignment_count": 1,
+ "scholarships": [
+  {
+   "id": 308,
+   "title": "Alberta Graduate Excellence Scholarship (AGES)",
+   "country": "Canada",
+   "degree": "Master's, PhD",
+   "funding_label": "Stipend",
+   "status": "upcoming",
+   "official_source": "Alberta Student Aid (Government of Alberta)",
+   "official_source_url": "https://studentaid.alberta.ca/scholarships/alberta-graduate-excellence-scholarship",
+   "application_link": "https://studentaid.alberta.ca/scholarships/alberta-graduate-excellence-scholarship",
+   "catalogue_url": "https://www.alberta.ca/designated-post-secondary-institutions-alberta.aspx",
+   "official_updates_url": "https://studentaid.alberta.ca/scholarships",
+   "existing": {
+    "funding_amount": null,
+    "funding_currency": "CAD",
+    "funding_period": null,
+    "tuition_coverage": 0,
+    "living_cost_coverage": null,
+    "travel_coverage": null,
+    "fully_funded": 0,
+    "description": "The Alberta Graduate Excellence Scholarship recognizes outstanding academic achievement of students pursuing graduate studies in Alberta. It was established to incent the best and the brightest students, including international students, to study in Alberta, and is funded through the Alberta Heritage Scholarship Fund. The award is between $11,000 and $15,000. Applicants must be enrolled full-time in a master's, doctoral or ladderable graduate programme at an eligible Alberta post-secondary institution while living in Alberta, and eligible statuses include Canadian citizens, Permanent Residents, Protected Persons, international students and Indigenous students. Alberta Student Aid publishes no application deadline; selection is carried out by schools.",
+    "eligibility": [
+     "Enrolled full-time in a master's, doctoral or graduate level programme; graduate level programmes must be able to ladder into a master's degree programme",
+     "Enrolled in at least 60% of a full course load (40% of a full course load for students with a disability) in at least one term of study in a graduate programme",
+     "Enrolled in the Fall 2026 and/or Winter 2027 term",
+     "Living in Alberta while studying at an eligible Alberta post-secondary institution",
+     "Be a Canadian citizen, Permanent Resident of Canada or Protected Person, OR an international student, OR a Status Indian/First Nations, Non-Status Indian/First Nations, Metis or Inuit"
+    ],
+    "eligibility_summary": "You must be enrolled full-time in a master's, doctoral, or graduate level programme, where graduate level programmes must be able to ladder into a master's degree programme. You must also be enrolled in at least 60% of a full course load (40% for students with a disability) in at least one term of study in a graduate programme, and in the Fall 2026 and/or Winter 2027 term. Applicants must be living in Alberta while studying at an eligible Alberta post-secondary institution, and must meet one of three status criteria: Canadian citizen, Permanent Resident or Protected Person; international student; or Status Indian/First Nations, Non-Status Indian/First Nations, Metis or Inuit.",
+    "benefits": [
+     "Open to international students as well as domestic applicants"
+    ],
+    "coverage": [
+     "Alberta Graduate Excellence Scholarship award of between $11,000 and $15,000, funded through the Alberta Heritage Scholarship Fund"
+    ],
+    "requirements": [
+     "Nomination by home faculty/department (students cannot apply directly in most cases)",
+     "Academic transcripts",
+     "Research proposal (thesis-based students)",
+     "AGES Student Declaration form",
+     "To get student aid you must meet academic and residency requirements, have financial need, and be enrolled in an eligible program.",
+     "meet residency or citizenship requirements"
+    ],
+    "documents": [
+     "AGES Student Declaration form",
+     "Academic transcript",
+     "CV",
+     "Research proposal or explanation of program goals"
+    ],
+    "english_requirement": null,
+    "application_method": [
+     "Contact the Student Awards or Scholarships Office at your school, or visit your school's website, for information on how to apply",
+     "Schools select recipients based on the minimum eligibility criteria for the AGES and any additional criteria set by the school"
+    ],
+    "selection_notes": "Institutions select recipients based on minimum eligibility criteria and any additional institution-specific criteria.",
+    "best_fit": "Outstanding graduate students pursuing thesis-based or course-based studies at Alberta universities.",
+    "notes": "A student may receive only one AGES per year. Not renewable. International students are eligible but must hold a valid study permit and be living in Alberta.",
+    "duration": "Not stated on the official page; the award is funded through the Alberta Heritage Scholarship Fund",
+    "application_period": "Annual competition; fall deadlines",
+    "deadline_display": "No application deadline is published. The official page states: 'For more information on how to apply, contact the Student Awards or Scholarships Offices at your school, or visit your school's website.'",
+    "deadline_date": null,
+    "region": "North America",
+    "program_type": "Provincial scholarship",
+    "applicant_utility": null,
+    "official_details": null
+   },
+   "missing_fields": [
+    "funding_amount",
+    "funding_period",
+    "living_cost_coverage",
+    "travel_coverage",
+    "english_requirement",
+    "deadline_date",
+    "applicant_utility",
+    "official_details"
+   ]
+  }
+ ],
+ "result_file": "C:\\Users\\GopaL\\Desktop\\Projects folder\\ScholarZone\\backend\\research_output\\live500\\results\\agent_116.json"
+}

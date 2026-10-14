@@ -1,0 +1,89 @@
+{
+ "agent": "agent_246",
+ "assignment_count": 1,
+ "scholarships": [
+  {
+   "id": 602,
+   "title": "Programa de Becas de Cooperación Sur Sur - República de Chile, Convocatoria Año 2027 (AGCID)",
+   "country": "Chile",
+   "degree": "Master's",
+   "funding_label": "Partially Funded",
+   "status": "open",
+   "official_source": "Agencia Chilena de Cooperación Internacional para el Desarrollo (AGCID), Government of Chile",
+   "official_source_url": "https://www.agcid.gob.cl/becas/becas-para-extranjeros/ofertas-vigentes",
+   "application_link": "https://www.agcid.gob.cl/becas/becas-para-extranjeros/ofertas-vigentes",
+   "catalogue_url": "https://www.agcid.gob.cl/becas/becas-para-extranjeros/ofertas-vigentes",
+   "official_updates_url": "https://www.agcid.gob.cl/becas/becas-para-extranjeros/ofertas-vigentes",
+   "existing": {
+    "funding_amount": null,
+    "funding_currency": null,
+    "funding_period": null,
+    "tuition_coverage": 0,
+    "living_cost_coverage": null,
+    "travel_coverage": null,
+    "fully_funded": 0,
+    "description": "AGCID, Chile's international cooperation agency, runs a South-South cooperation scholarship programme under which professionals from Latin America and the Caribbean study a master's degree at accredited Chilean universities with a high level of excellence. The 2027 call is aimed at degree-holding professionals working in government programmes or ministries and public services, as well as university academic staff, teachers and researchers, and also at professionals working in civil society across the invited countries. Applications go through the national focal point in each candidate's country, and the scholarship takes place in person in Chile. The official Panamanian focal-point page for this call states a closing date of 30 October 2026.",
+    "eligibility": [
+     "Professionales titulados que se desempeñen en programas y/o funciones gubernamentales, en Ministerios o Servicios Públicos",
+     "Personal académico, docentes o investigadores de universidades oficialmente reconocidas por sus respectivos países",
+     "Profesionales que se desempeñan en los diversos ámbitos de la sociedad civil de los países convocados",
+     "Contar con aceptación definitiva e incondicional de una universidad chilena participante (requisito_differs según el país focal)"
+    ],
+    "eligibility_summary": "Degree-holding professionals from the invited Latin American and Caribbean countries who work in government programmes or public services, or are academics, teachers or researchers at recognised universities, or work in civil society, and who have been admitted to an eligible Chilean master's programme.",
+    "benefits": [
+     "Scholarship placement in a master's programme at an accredited Chilean university or higher-education institution",
+     "In-person (presencial) study in Chile",
+     "Participation in AGCID's South-South cooperation scholarship cohort for the 2027 academic year"
+    ],
+    "coverage": [],
+    "requirements": [
+     "Apply within your own country's national focal point deadline, which is earlier than the international cut-off",
+     "Submit electronically to the PUNTO FOCAL in your country and send a copy to the Chilean embassy",
+     "Hold unconditional acceptance from a participating Chilean institution",
+     "Use only a master's programme listed in the call's Annex 1 of accredited programmes"
+    ],
+    "documents": [
+     "Carta de Aceptación definitiva con la fecha de inicio y término del Programa, debe incluir su examen de grado",
+     "Certificado Original de Título Profesional o copia autorizada por un Notario Público",
+     "Curriculum Vitae",
+     "Carta de Motivación que contenga las razones que lo impulsan a realizar estudios en Chile",
+     "Breve descripción de la posible área de tesis",
+     "Carta de Patrocinio de la Institución Empleadora (respaldo institucional)",
+     "Carta de Referencia Académica",
+     "Documento Excel con información personal y del magíster",
+     "Copia de pasaporte",
+     "Annexes 1 to 5 of the AGCID call, downloaded from the AGCID scholarship page"
+    ],
+    "english_requirement": null,
+    "application_method": [
+     "Submit the complete file electronically to the national focal point (PUNTO FOCAL) of your country, with a copy to the Chilean embassy",
+     "In Panama the focal point is IFARHU's Department of International Scholarships; documents are also sent to becaspasantias@mire.gob.pa"
+    ],
+    "selection_notes": "The official page states the programme's purpose as contributing to advanced human-capital formation through Latin American and Caribbean professionals participating in master's programmes at Chilean institutions accredited to a high standard of excellence. Priority among applications is given to public officials and academics from officially recognised institutions.",
+    "best_fit": "A mid-career professional from an invited Latin American or Caribbean country working in the public sector, at a university, or in civil society, who already holds unconditional admission to an accredited Chilean master's programme listed in the call's annex.",
+    "notes": "The programme is organised by AGCID under South-South cooperation and each invited country runs its own national selection through its focal point, so deadlines differ by country and the national window closes before the international one. AGCID's own 'Ofertas Vigentes' page loads its list of scholarships with JavaScript and did not render any entries when read in a browser on 2026-10-04, so the call's own PDF convocatoria could not be read as text; the priority thematic areas, the maximum 24-month duration, the 1 March to 30 September 2027 start window and the benefit breakdown sit in that PDF and are recorded as unverified rather than asserted here.",
+    "duration": null,
+    "application_period": "Applications are submitted through each country's national focal point; the official IFARHU page for this call gives a closing date of 30 October 2026. Individual countries set earlier national deadlines, so the focal point in your own country governs.",
+    "deadline_display": "30/10/2026",
+    "deadline_date": "2026-10-30",
+    "region": "Latin America",
+    "program_type": "Government scholarship",
+    "applicant_utility": null,
+    "official_details": null
+   },
+   "missing_fields": [
+    "funding_amount",
+    "funding_currency",
+    "funding_period",
+    "living_cost_coverage",
+    "travel_coverage",
+    "coverage",
+    "english_requirement",
+    "duration",
+    "applicant_utility",
+    "official_details"
+   ]
+  }
+ ],
+ "result_file": "C:\\Users\\GopaL\\Desktop\\Projects folder\\ScholarZone\\backend\\research_output\\live500\\results\\agent_246.json"
+}

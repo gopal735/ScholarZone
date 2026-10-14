@@ -1,0 +1,98 @@
+{
+ "agent": "agent_288",
+ "assignment_count": 1,
+ "scholarships": [
+  {
+   "id": 662,
+   "title": "Swinburne Research Stipend Scholarship",
+   "country": "Australia",
+   "degree": "PhD",
+   "funding_label": "Fully Funded",
+   "status": "closing-soon",
+   "official_source": "Swinburne University of Technology",
+   "official_source_url": "https://www.swinburne.edu.au/study/options/scholarships/510/swinburne-research-scholarships",
+   "application_link": "https://www.swinburne.edu.au/study/options/scholarships/510/swinburne-research-scholarships",
+   "catalogue_url": "https://www.swinburne.edu.au/courses/scholarships",
+   "official_updates_url": "https://www.swinburne.edu.au/study/options/scholarships/510/swinburne-research-scholarships",
+   "existing": {
+    "funding_amount": null,
+    "funding_currency": null,
+    "funding_period": null,
+    "tuition_coverage": null,
+    "living_cost_coverage": null,
+    "travel_coverage": null,
+    "fully_funded": 0,
+    "description": null,
+    "eligibility": [
+     "Meet the entry requirements for a PhD or Professional Doctorate in the proposed Swinburne program",
+     "Hold a Bachelor Degree with First Class Honours or equivalent",
+     "Propose a research project aligning with a Swinburne Research Strategy and Ecosystem area",
+     "Not in receipt of another stipend scholarship for general living costs greater than 75 per cent of the RTP Stipend or SUPRA stipend rate",
+     "Be applying for entry into a PhD or Professional Doctorate, or be enrolled in a Swinburne PhD or Professional Doctorate for less than two years at the closing date, or hold an offer of candidature and not yet be enrolled",
+     "Open to both domestic and international students"
+    ],
+    "eligibility_summary": "For candidates of exceptional research potential entering or already in a Swinburne PhD or Professional Doctorate. Applicants must meet the entry requirements for the proposed program, hold a Bachelor Degree with First Class Honours or equivalent, and propose a research project aligned with a Swinburne Research Strategy and Ecosystem area.",
+    "benefits": [
+     "Annual stipend of AUD 35,500 (indexed, 2026 rate) for three years, with a possible six-month extension",
+     "Tuition fees for up to four years, via an automatic RTP Fees-Offset for domestic students or a Swinburne Tuition Fee Scholarship for international students",
+     "Relocation allowance",
+     "Thesis allowance",
+     "Paid leave of absence"
+    ],
+    "coverage": [
+     "Annual stipend of AUD 35,500 (indexed, 2026 rate) for three years, with a possible six-month extension",
+     "Tuition fees for up to four years, via an automatic RTP Fees-Offset for domestic students or a Swinburne Tuition Fee Scholarship for international students",
+     "Relocation allowance",
+     "Thesis allowance",
+     "Paid leave of absence"
+    ],
+    "requirements": [
+     "Secure agreement from a nominated Principal Supervisor, who must sign the HDR Research Proposal template",
+     "Organise a minimum of two referees to complete a Swinburne Research referee report",
+     "Applicants in the Doctor of Philosophy (Clinical Psychology) and Doctor of Psychology programs must also organise two professional references, so at least four reports in total",
+     "Meet Swinburne English language requirements; evidence must remain valid until the scholarship enrolment deadline"
+    ],
+    "documents": [
+     "Completed HDR Research Proposal template signed by the nominated Principal Supervisor",
+     "Certified academic transcripts and evidence of completion",
+     "Proof of citizenship or identity",
+     "Resume",
+     "Evidence of prior research including publications",
+     "Evidence of meeting Swinburne postgraduate research English language requirements (international and permanent resident applicants only)"
+    ],
+    "english_requirement": null,
+    "application_method": [
+     "Submit the Swinburne higher degree by research application during an open scholarship round",
+     "Select 'Swinburne Research Scholarships' at the Select a Scholarship option",
+     "Attach all listed supporting documentation",
+     "Have referees email completed reports to HDRrefereereports@swin.edu.au by the round deadline",
+     "Current Swinburne PhD students use the 2026 Swinburne Research Stipend Scholarship Current Student Application Form"
+    ],
+    "selection_notes": "Applicants are automatically considered for both the Swinburne University Postgraduate Research Award and the Research Training Program Stipend Scholarship and do not have to nominate one. The competitive assessment may take into account candidature and scholarship eligibility, the round's advertised selection criteria, research proposal quality and alignment with Swinburne's Research Strategy and Ecosystem, previous academic achievement, referee reports, research and publication experience relative to opportunity, relevant work experience, the quality of the supervisory team, and undertaking doctoral studies for the first time.",
+    "best_fit": "Doctoral researchers worldwide with a first-class honours degree who can secure a Swinburne Principal Supervisor and who need tuition fees covered - international candidates rely on this scheme because the RTP Fees Offset (International) is not available at Swinburne in 2026 and 2027.",
+    "notes": "Round 2 outcomes are anticipated to be sent progressively from Wednesday 2 December 2026. International scholarship offers must be accepted by enrolment on Tuesday 29 June 2027. Indigenous applicants may also be eligible for the separate Swinburne Indigenous Postgraduate Research Scholarship.",
+    "duration": "Three years of stipend, with a possible six-month extension; tuition fees covered for up to four years",
+    "application_period": "Two scholarship rounds a year. Round 2 opened Monday 7 September 2026 at 9.00am AEST and closes Friday 9 October 2026 at 11.59pm AEDT, with outcomes sent progressively from Wednesday 2 December 2026.",
+    "deadline_display": "9 October 2026, 11.59pm AEDT",
+    "deadline_date": "2026-10-09",
+    "region": "Oceania",
+    "program_type": "University research scholarship",
+    "applicant_utility": null,
+    "official_details": null
+   },
+   "missing_fields": [
+    "funding_amount",
+    "funding_currency",
+    "funding_period",
+    "tuition_coverage",
+    "living_cost_coverage",
+    "travel_coverage",
+    "description",
+    "english_requirement",
+    "applicant_utility",
+    "official_details"
+   ]
+  }
+ ],
+ "result_file": "C:\\Users\\GopaL\\Desktop\\Projects folder\\ScholarZone\\backend\\research_output\\live500\\results\\agent_288.json"
+}

@@ -1,0 +1,47 @@
+{
+  "id": "686",
+  "verdict": "active",
+  "confidence": "high",
+  "checked_at": "2026-10-12T19:19:21Z",
+  "sources": [
+    {
+      "url": "https://www.newcastle.edu.au/scholarships/UNI_053",
+      "kind": "official",
+      "note": "The University of Newcastle, Australia's own scholarship listing page for the International Excellence Scholarship (UNI_053), including Establishment, Eligibility, Benefit and Selection sections."
+    }
+  ],
+  "findings": {
+    "awarding_body": {
+      "status": "confirmed",
+      "detail": "The page is hosted on newcastle.edu.au and is the University of Newcastle, Australia's own scholarship register entry; it presents the programme as established and administered by the University itself.",
+      "quote": "The International Excellence Scholarship 2027 has been established to attract high-performing students to study at the University of Newcastle."
+    },
+    "deadline": {
+      "status": "confirmed",
+      "detail": "No application deadline is published. The page states that no separate application is required and that candidates are assessed automatically upon application for admission. The currently open cycle is the 2027 version: scholarships are awarded to applicants who commence study in 2027 or later, and the page (read 12 October 2026) carries no closing date, matching the record's rolling deadline_label.",
+      "quote": "No application is required for this scholarship. Scholarships are automatically assessed upon application for admission to the University."
+    },
+    "eligibility": {
+      "status": "confirmed",
+      "detail": "All eligibility claims in the record are confirmed verbatim on the page: international full fee-paying status; commencing an eligible CRICOS-registered undergraduate or postgraduate coursework degree; not being the beneficiary of another University scholarship; meeting the financial obligations of a full fee-paying international student as specified by the Australian Government; not being enrolled in a quota-limited program; and residing within 50 km of the campus named on the Confirmation of Enrolment. One nuance: the page allows a separate University scholarship to be held 'unless prior approval for special dispensation has been obtained from the university'.",
+      "quote": "Be an international full fee-paying student. Be commencing study in an eligible CRICOS-registered undergraduate or postgraduate coursework degree program at the University. Not be the beneficiary of a separate University scholarship unless prior approval for special dispensation has been obtained from the university. Be able to meet the financial obligations of a full fee-paying international student specified by the Australian Government. Not be enrolled in a program of study covered under a quota arrangement in which the number of international enrolments are limited. Reside within 50km of the campus location specified on your Confirmation of Enrolment (COE)."
+    },
+    "funding": {
+      "status": "confirmed",
+      "detail": "The award is a partial tuition waiver, not fully funded: a dollar value equivalent to 20% of the gross annual international tuition fee, administered each term as a tuition fee reduction against the units required to complete the program. The scholarship details box confirms 20% of gross annual international tuition fee for students commencing in 2027, with 500 scholarships available. This matches the record's funding_type exactly.",
+      "quote": "The scholarship will be administered for each term of study in the eligible program(s) as a tuition fee reduction against the number of units required to successfully complete the program of study as specified in the University's Program Handbook."
+    },
+    "degree_levels": {
+      "status": "confirmed",
+      "detail": "The eligible programs are CRICOS-registered undergraduate or postgraduate coursework degrees, which corresponds to the record's Bachelor's and Master's levels. The Selection section explicitly excludes Higher Degrees by Research and standalone Graduate Certificate or Graduate Diploma programs, so the record's degree level list is consistent with what the page states.",
+      "quote": "Students studying English Language Bridging Program (ELBP), Enabling, Non-Award, Exchange or Study Abroad, Higher Degrees by Research programs, degrees without a CRICIOS code, standalone Graduate Certificate or Graduate Diploma programs, and programs delivered at offshore campuses or via online delivery."
+    }
+  },
+  "recommended_field_updates": {
+    "official_source_url": null,
+    "deadline_text": "No application is required for this scholarship. Scholarships are automatically assessed upon application for admission to the University.",
+    "deadline_date": null,
+    "verification_notes": "Record verified live on the University's own page. Currently open cycle is the 2027 version (commence 2027 or later). 500 scholarships available, indicative only. The page links the 2027 Terms and Conditions PDF (UNI_053-International-Excellence-Scholarship-2027-T-and-Cs-04092026.pdf, dated 04/09/2026), which returned unreadable binary content and could not be parsed; no record claim depended on it. Excluded categories to remember: research degrees, standalone Grad Cert/Dip, ELBP, online/offshore delivery, internal transfers, externally sponsored and Australia Awards students. Next re-check should confirm the page has not rolled over to a 2028 version of the scholarship."
+  },
+  "notes_for_reviewer": "Minor wording nuance only: the record says applicants must not hold another University scholarship, while the official page allows holders of a separate University scholarship if 'prior approval for special dispensation has been obtained from the university'. Not material to the verdict."
+}

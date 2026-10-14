@@ -1,0 +1,155 @@
+{
+ "agent": "agent_001",
+ "assignment_count": 2,
+ "scholarships": [
+  {
+   "id": 4,
+   "title": "Global Korea Scholarship (GKS)",
+   "country": "South Korea",
+   "degree": "UG (Bachelor's/Associate)",
+   "funding_label": "Fully Funded",
+   "status": "upcoming",
+   "official_source": "National Institute for International Education (NIIED)",
+   "official_source_url": "https://www.studyinkorea.go.kr",
+   "application_link": "https://www.studyinkorea.go.kr",
+   "catalogue_url": "https://www.studyinkorea.go.kr/ko/notice/scholarshipsList.do?boardSort=3",
+   "official_updates_url": "https://www.studyinkorea.go.kr/en/notice/scholarshipsList.do?boardSort=3",
+   "existing": {
+    "funding_amount": null,
+    "funding_currency": null,
+    "funding_period": null,
+    "tuition_coverage": 1,
+    "living_cost_coverage": 1,
+    "travel_coverage": 1,
+    "fully_funded": 1,
+    "description": "The Global Korea Scholarship is the Republic of Korea's representative government-invited scholarship programme, administered by the National Institute for International Education (NIIED), which invites outstanding students from around the world to study at Korean universities. It funds Korean language training plus associate degree, bachelor's, master's and doctoral degree programmes across more than 80 GKS universities, and also runs an exchange students programme and Korea-Japan exchange programmes. Applicants apply either through their Korean embassy (Embassy Track) or directly to a GKS university (University Track), and the scholarship covers airfare, Korean language training fees, tuition and monthly allowances.",
+    "eligibility": [
+     "Citizen of an NIIED-designated country; parents must not hold Korean citizenship.",
+     "High school graduate or expecting graduation.",
+     "Undergraduate applicants usually have age and CGPA requirements that change each cycle."
+    ],
+    "eligibility_summary": "Citizen of an NIIED-designated country; parents must not hold Korean citizenship; high school graduate or expecting graduation; undergraduate applicants usually have age and CGPA requirements that change each cycle.",
+    "benefits": [
+     "Round-trip airfare; tuition support; Korean language training; monthly stipend; settlement allowance; medical insurance and other official benefits depending on track."
+    ],
+    "coverage": [
+     "Round-trip airfare; tuition support; Korean language training; monthly stipend; settlement allowance; medical insurance and other official benefits depending on track."
+    ],
+    "requirements": [
+     "English test scores are not mandatory.",
+     "TOPIK or TOEFL/IELTS scores may provide additional evaluation advantage."
+    ],
+    "documents": [
+     "Application form",
+     "Personal statement",
+     "Study plan",
+     "Recommendation letter",
+     "Graduation certificate",
+     "Transcript",
+     "Proof of citizenship",
+     "Required medical documents"
+    ],
+    "english_requirement": "Not mandatory. TOPIK or TOEFL/IELTS scores may provide additional evaluation advantage.",
+    "application_method": [
+     "Embassy Track",
+     "University Track"
+    ],
+    "selection_notes": "Selection runs in stages: the recommending embassy or university performs the first screening, NIIED performs the second, and Embassy Track candidates go through a third university screening to confirm final selections. Assessment separates eligibility screening from aptitude screening, which evaluates academic ability, language ability, academic activities, social contribution and international exchange competence, potential for development, and the completeness and authenticity of submitted documents.",
+    "best_fit": "Students seeking fully funded undergraduate opportunities in South Korea.",
+    "notes": "Formerly known as KGSP. Current official name is Global Korea Scholarship (GKS). Applicants must verify yearly announcements from the official Study in Korea website.",
+    "duration": "Korean language training (1 year) + associate degree (2-3 years), bachelor's degree (4-6 years), master's degree (2 years), doctoral degree (3 years)",
+    "application_period": "Annual cycle: NIIED announces in September, Embassy Track applications are submitted in September and University Track applications in September to November, screening runs October to December and final results are announced in December.",
+    "deadline_display": null,
+    "deadline_date": null,
+    "region": "Asia",
+    "program_type": "Government-invited scholarship degree programme (NIIED, Ministry of Education)",
+    "applicant_utility": null,
+    "official_details": null
+   },
+   "missing_fields": [
+    "funding_amount",
+    "funding_currency",
+    "funding_period",
+    "deadline_display",
+    "deadline_date",
+    "applicant_utility",
+    "official_details"
+   ]
+  },
+  {
+   "id": 5,
+   "title": "MEXT (Monbukagakusho) Scholarship",
+   "country": "Japan",
+   "degree": "UG/PG/PhD - separate application tracks: Undergraduate, Research Student (leads to Master's/PhD), Teacher Training, Japanese Studies, College of Technology",
+   "funding_label": "Fully Funded",
+   "status": "upcoming",
+   "official_source": "Ministry of Education, Culture, Sports, Science and Technology (MEXT), Japan",
+   "official_source_url": "https://www.studyinjapan.go.jp",
+   "application_link": "https://www.studyinjapan.go.jp",
+   "catalogue_url": "https://www.studyinjapan.go.jp/en/planning/scholarships/mext-scholarships",
+   "official_updates_url": "https://www.bd.emb-japan.go.jp/en/education/scholarshipNotice.html",
+   "existing": {
+    "funding_amount": null,
+    "funding_currency": "JPY",
+    "funding_period": "per month",
+    "tuition_coverage": 1,
+    "living_cost_coverage": 1,
+    "travel_coverage": 1,
+    "fully_funded": 1,
+    "description": "The Japanese Government (Monbukagakusho) Scholarship is MEXT's scholarship programme for international students, offered in seven types: Research students, Teacher training students, Undergraduate students, Japanese studies students, College of technology students, Specialized training college students and Young Leaders Program students. There are two application routes: a recommendation from a Japanese embassy or other Japanese diplomatic mission, or a recommendation from a Japanese university. The scholarship pays a monthly stipend, exempts tuition and provides a round-trip travel allowance (airfare), and in most tracks includes Japanese language training before or during study.",
+    "eligibility": [
+     "Research Students: Bangladeshi citizen, born on or after April 2, 1991 (for 2026 cycle), Bachelor's degree or higher, study in same or related field",
+     "Undergraduate: age 17-25 as of April 1 of scholarship year, completed 11-12 years of schooling"
+    ],
+    "eligibility_summary": "Undergraduate track: age 17-25 as of April 1 of the scholarship year, completed (or completing) 11 years of schooling equivalent to high school. Research Student track (leads to Master's/PhD): age below 35. Bangladeshi nationality required for Embassy-recommended tracks.",
+    "benefits": [
+     "Full tuition, monthly stipend approx. 117,000-148,000 JPY (undergraduate is at the lower end), round-trip economy airfare Dhaka-Japan, 6 months-1 year Japanese language training included"
+    ],
+    "coverage": [
+     "Full tuition, monthly stipend approx. 117,000-148,000 JPY (undergraduate is at the lower end), round-trip economy airfare Dhaka-Japan, 6 months-1 year Japanese language training included"
+    ],
+    "requirements": [
+     "Application Form (use current year's MEXT form)",
+     "Placement Preference Application Form",
+     "Field of Study and Research Plan",
+     "Academic transcript for all academic years of university attended",
+     "Certificate of graduation or degree certificate",
+     "Recommendation letter from the president/dean or academic advisor at current/last university",
+     "Medical Certificate (filled by a professional medical doctor)"
+    ],
+    "documents": [
+     "Application form (use current year's MEXT form)",
+     "Placement Preference Application Form",
+     "Field of Study and Research Plan",
+     "Academic transcript for all academic years of university attended",
+     "Certificate of graduation or degree certificate of the university attended",
+     "Recommendation letter from the president/dean or academic advisor at current/last university attended",
+     "Medical Certificate (filled by a professional medical doctor)"
+    ],
+    "english_requirement": "A written English exam is part of the selection process itself (not a pre-submitted score like IELTS) - no separate IELTS/TOEFL required for the Embassy track. STEM majors also sit Math/Physics/Chemistry exams.",
+    "application_method": [
+     "Embassy Recommendation: Apply through Bangladesh Ministry of Education SHED portal, then screened by Embassy of Japan Dhaka (written exam + interview)",
+     "University Recommendation: Apply directly to a specific Japanese university, which then recommends to MEXT"
+    ],
+    "selection_notes": "Selection by Embassy of Japan Dhaka (written exam + interview) for Embassy track; by MEXT Tokyo for University track. Candidates who pass first screening must request provisional acceptance from Japanese universities by September 1.",
+    "best_fit": "Strong fit for academically strong STEM applicants comfortable with a written entrance exam, not just document review",
+    "notes": "Two distinct application paths for a Bangladeshi UG applicant: (1) Embassy Recommendation - apply via the Bangladesh Ministry of Education SHED portal, screened by the Embassy of Japan Dhaka (written exam + interview in Baridhara); (2) University Recommendation - apply directly to a specific Japanese university, which then recommends the candidate to MEXT (eligibility/deadline set by that university). Clarify which path a user means before giving deadline information.",
+    "duration": "Research Students: 2 years for regular course (6 months preparatory education added if needed). Undergraduate: 5 years including Japanese language training (7 years for medicine/dentistry/pharmacy/veterinary science). Standard: Master's 2 years, Doctoral 3 years (4 years for some fields).",
+    "application_period": "Embassy Recommendation (Research Students): April-June annually",
+    "deadline_display": "Varies by track - Embassy Recommendation (Research Students): April-June annually; varies for other tracks. For 2027 cycle, recruitment is April-May 2026.",
+    "deadline_date": null,
+    "region": "East Asia",
+    "program_type": "Government scholarship (multiple tracks: Research, Undergraduate, Teacher Training, Japanese Studies, College of Technology, Specialized Training College)",
+    "applicant_utility": null,
+    "official_details": null
+   },
+   "missing_fields": [
+    "funding_amount",
+    "deadline_date",
+    "applicant_utility",
+    "official_details"
+   ]
+  }
+ ],
+ "result_file": "C:\\Users\\GopaL\\Desktop\\Projects folder\\ScholarZone\\backend\\research_output\\live500\\results\\agent_001.json"
+}

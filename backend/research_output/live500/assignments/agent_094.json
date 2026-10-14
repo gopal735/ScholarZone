@@ -1,0 +1,91 @@
+{
+ "agent": "agent_094",
+ "assignment_count": 1,
+ "scholarships": [
+  {
+   "id": 273,
+   "title": "University of Southern Denmark (SDU) Danish Government Scholarship",
+   "country": "Denmark",
+   "degree": "Bachelor's, Master's",
+   "funding_label": "Tuition Fee Waiver",
+   "status": "open",
+   "official_source": "University of Southern Denmark (SDU)",
+   "official_source_url": "https://www.sdu.dk/en/uddannelse/tuition-fees-and-scholarships",
+   "application_link": "https://www.sdu.dk/en/uddannelse/tuition-fees-and-scholarships",
+   "catalogue_url": null,
+   "official_updates_url": "https://www.sdu.dk/en/uddannelse/fees_and_funding/scholarships",
+   "existing": {
+    "funding_amount": null,
+    "funding_currency": null,
+    "funding_period": null,
+    "tuition_coverage": 1,
+    "living_cost_coverage": 0,
+    "travel_coverage": 0,
+    "fully_funded": 0,
+    "description": "The University of Southern Denmark awards a limited number of Danish government scholarships to highly qualified non-EU/EEA citizens. Eligibility is restricted to seven specific programmes: MSc in Engineering in Electronics/Electrical Engineering, Mechanical Engineering and Mechatronics at the Sønderborg campus, and BSc in Artificial Intelligence, Computer Science, Interactive Technology Engineering and Software Engineering at the Vejle campus. The award is a full tuition fee waiver covering two years for MSc and three years for BSc programmes, limited to 30 ECTS per semester, and it does not cover living costs. Applicants need no separate scholarship application; the admission application is submitted by 1 February for master's and 15 March for bachelor's programmes, followed by an online interview for shortlisted candidates.",
+    "eligibility": [
+     "Non-EU/EEA citizen",
+     "Enrolling in one of the listed SDU master's programmes at Sønderborg or bachelor's programmes at Vejle",
+     "Submission of the admission application by the level-specific deadline with all documentation already uploaded",
+     "For the master's level: the programme applied for must be the applicant's highest priority if more than one is applied for",
+     "Not eligible for the Danish State Grant (SU): 'If you are eligible to receive the Danish State Grant, you cannot be considered for the scholarship.'"
+    ],
+    "eligibility_summary": "Non-EU/EEA citizens applying to one of seven named SDU programmes - three MSc Engineering programmes at the Sønderborg campus and four BSc programmes at the Vejle campus.",
+    "benefits": [
+     "Full tuition fee waiver for the standard length of the programme",
+     "Fee waiver covers up to 30 ECTS per semester"
+    ],
+    "coverage": [
+     "Full tuition fee waiver for two years (MSc) or three years (BSc)",
+     "Up to 30 ECTS per semester; courses beyond 30 ECTS are not covered",
+     "Living costs are not covered",
+     "No travel, accommodation or insurance coverage stated"
+    ],
+    "requirements": [
+     "Demonstrate satisfactory academic progress each semester, as a guideline completing at least 30 ECTS per semester",
+     "Upload all documents in the online application at the time of application; SDU does not accept documents sent by email",
+     "Submit the master's application by 1 February even if you hold a Danish residence permit",
+     "Attend the online interview if invited"
+    ],
+    "documents": [
+     "Application deposit fee receipt",
+     "Official Bachelor's transcripts and diploma in English, Danish, Swedish or Norwegian, including grades and ECTS/units/credits for each course",
+     "Verified course descriptions for the courses on the transcripts",
+     "Self-assessment form (Electronics or Mechatronics) for master's applicants",
+     "Proof of English language proficiency"
+    ],
+    "english_requirement": "Proof of English language proficiency must be included in the online application for the master's level.",
+    "application_method": [
+     "No separate scholarship application. Applicants simply apply for admission to one or more of the relevant programmes through the online application portal."
+    ],
+    "selection_notes": "Scholarships are awarded to the best-qualified candidates. Bachelor's selection is based on the uniTEST online admission test plus an online interview; master's selection is based on the bachelor's grade point average plus an online interview with key persons from the master's programme consisting of a few technical questions.",
+    "best_fit": "Non-EU students in eligible SDU bachelor's and master's programmes",
+    "notes": null,
+    "duration": "Two years for MSc programmes, three years for BSc programmes",
+    "application_period": "Applications are submitted through the regular DANS admission portal; Master's interviews run 19-27 February and Bachelor's interviews in early June.",
+    "deadline_display": "Master's: 'You must submit your application for admission no later than February 1 - even if you have a Danish residence permit'. Bachelor's: 'You must submit your application for admission no later than March 15'.",
+    "deadline_date": null,
+    "region": "Europe",
+    "program_type": "Danish Government Scholarship (tuition fee waiver)",
+    "applicant_utility": null,
+    "official_details": {
+     "official_source_urls": [
+      "https://www.sdu.dk/en/uddannelse/fees_and_funding/scholarships"
+     ],
+     "application_link": "https://www.sdu.dk/en/uddannelse/fees_and_funding/scholarships",
+     "official_updates_url": "https://www.sdu.dk/en/uddannelse/fees_and_funding/scholarships",
+     "application_cycle": "Master's: February 1 (annually). Bachelor's: March 15 (with uniTEST). For 2027 intake: Master's February 1, 2027."
+    }
+   },
+   "missing_fields": [
+    "funding_amount",
+    "funding_currency",
+    "funding_period",
+    "notes",
+    "deadline_date",
+    "applicant_utility"
+   ]
+  }
+ ],
+ "result_file": "C:\\Users\\GopaL\\Desktop\\Projects folder\\ScholarZone\\backend\\research_output\\live500\\results\\agent_094.json"
+}

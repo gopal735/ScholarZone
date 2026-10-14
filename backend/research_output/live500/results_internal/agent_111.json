@@ -1,0 +1,128 @@
+{
+  "agent": "agent_111",
+  "records": [
+    {
+      "id": 300,
+      "official": {
+        "official_source_urls": [
+          "https://erasmus-plus.ec.europa.eu/opportunities/individuals/students/erasmus-mundus-joint-masters",
+          "https://erasmus-plus.ec.europa.eu/opportunities/organisations/cooperation-among-organisations-and-institutions/erasmus-mundus-joint-masters",
+          "https://www.eacea.ec.europa.eu/scholarships/erasmus-mundus-catalogue_en"
+        ],
+        "application_link": "https://www.eacea.ec.europa.eu/scholarships/erasmus-mundus-catalogue_en",
+        "catalogue_url": "https://www.eacea.ec.europa.eu/scholarships/erasmus-mundus-catalogue_en",
+        "official_updates_url": null,
+        "deadline_central": null,
+        "deadline_central_display": "Varies by programme; the Commission states that in most cases applications run from October to January for courses starting the following academic year",
+        "deadline_note": "There is no single Commission-wide deadline: each consortium running the joint master publishes its own admission and scholarship deadlines, and the Commission advises applying between October and January for the following academic year.",
+        "application_cycle": "Annual; a new batch of selected Erasmus Mundus Masters is added to the catalogue each year",
+        "status": "OPEN",
+        "status_note": "The Commission's student page is live and directs applicants to the current EMJM catalogue and to each consortium's own application portal.",
+        "tuition_coverage_note": "The Commission's student page states that 'Masters may also offer full scholarships to the best-ranked students worldwide' and that 'Scholarships cover your participation costs and contribute to travel, visa, a living allowance'; it does not itemise tuition, which is set by each consortium.",
+        "funding_amount": 1400,
+        "funding_currency": "EUR",
+        "funding_period": "per month",
+        "tuition_coverage": null,
+        "living_cost_coverage": true,
+        "travel_coverage": true,
+        "fully_funded": false,
+        "benefits": [
+          "Full scholarship to the best-ranked students worldwide",
+          "Scholarship covers participation costs",
+          "Contribution to travel",
+          "Contribution to visa costs",
+          "A living allowance",
+          "EU scholarship for individuals: EUR 1,400 per month, maximum 24 months"
+        ],
+        "eligibility": [
+          "Students from all over the world are welcome",
+          "Must hold a bachelor's degree (first degree), or be in the last year of bachelor studies",
+          "Must graduate before the master's programme starts",
+          "A bachelor's equivalent level of learning may be accepted if officially recognised in the degree-awarding country",
+          "Applicants apply directly to the institution running their chosen programme"
+        ],
+        "requirements": [
+          "Apply directly to the institution running the chosen programme via that master's website",
+          "Hold a bachelor's degree, or complete it before the programme starts",
+          "Follow the application steps published by each consortium, for the scholarship route and the non-scholarship route"
+        ],
+        "documents": [
+          "Each master's website publishes its own list of required application documents and steps; the Commission does not publish a common document list"
+        ],
+        "selection_criteria": [
+          "Scholarships are awarded to the best-ranked students worldwide",
+          "Ranking and selection are run by the consortium delivering the joint master"
+        ],
+        "coverage": [
+          "Participation costs",
+          "Travel",
+          "Visa costs",
+          "A living allowance of EUR 1,400 per month, for a maximum of 24 months"
+        ],
+        "application_method": [
+          "Search the EMJM course catalogue for programmes with Portuguese partners",
+          "Open the master's own website for entry requirements, deadlines and application steps",
+          "Submit the application directly to the institution running the programme"
+        ],
+        "application_route": "Search the Commission's EMJM catalogue, then apply directly to the consortium running the programme - there is no central Commission application.",
+        "study_mode": "full-time",
+        "citizenship_residency": "No nationality restriction; students from all countries worldwide may apply",
+        "international_eligibility": "Yes - the Commission states students from all over the world are welcome",
+        "subject_or_agency_requirement": null,
+        "research_requirement": null,
+        "duration": "1 to 2 academic years (60, 90 or 120 ECTS credits); scholarship paid for a maximum of 24 months",
+        "description": "Erasmus Mundus Joint Masters are prestigious international masters, jointly designed and delivered by a group of higher education institutions, involving at least three institutions from at least three different countries, and typically including periods of study, research, traineeship, thesis preparation and defence.",
+        "region": "Europe",
+        "program_type": "EU-funded joint master's degree delivered by an international consortium, with competitive EU scholarships",
+        "english_requirement": null
+      },
+      "verification": {
+        "source_citations": [
+          "https://erasmus-plus.ec.europa.eu/opportunities/individuals/students/erasmus-mundus-joint-masters",
+          "https://erasmus-plus.ec.europa.eu/opportunities/organisations/cooperation-among-organisations-and-institutions/erasmus-mundus-joint-masters"
+        ],
+        "last_verified_date": "2026-10-10",
+        "verification_status": "confirmed",
+        "confidence": "high",
+        "not_confirmed": [
+          "deadline_central - no single Commission-wide deadline exists; each consortium publishes its own",
+          "tuition_coverage - the Commission's pages describe full scholarships and participation costs but do not itemise tuition, which is set consortium by consortium",
+          "the list of individual programmes with Portuguese partners - the Commission page links to the EACEA catalogue rather than listing programmes inline",
+          "english_requirement - language requirements are set by each consortium"
+        ],
+        "notes": "The country-specific URLs given in the brief (/erasmus-mundus-joint-masters/portugal) return 404, so the Commission's general student and organisations pages plus the EACEA catalogue were read instead; the EUR 1,400 per month figure is taken from the Commission's organisations page on the same domain."
+      },
+      "applicant_utility": {
+        "summary": "A Portuguese partner in a joint master means a Portuguese semester somewhere in a multi-country route, so check how many months are actually spent there and whether the Portuguese term is in Lisbon or Porto, because that drives your rent far more than the EUR 1,400 monthly allowance does. The application is to the consortium, not to the Commission and not to the Portuguese university, so your motivation letter has to address the consortium's research plan. Build the file as one of several parallel October-January submissions, since only the best-ranked applicants are funded.",
+        "best_fit": "Final-year bachelor's students or recent graduates who want a structured multi-country master's, can document completion of the bachelor's before the programme starts, and are willing to apply separately to several consortia with Portuguese partners.",
+        "application_readiness_checklist": [
+          "Shortlist joint masters in the EACEA catalogue that include a Portuguese university and note where in the route the Portuguese semester falls",
+          "Open each consortium's own page for entry requirements, language requirements and its scholarship deadline, and keep a per-programme tracker for October to January",
+          "Confirm the bachelor's degree will be awarded before the programme starts and that it is recognisable in the degree-awarding country",
+          "Draft the motivation letter around that consortium's mobility route and research topics, not around Portugal in general",
+          "Check the consortium's statement on tuition and any consortium-level fees, since the Commission's page does not itemise them"
+        ],
+        "common_rejection_risks": [
+          "Missing a consortium deadline because you waited for a common Commission date",
+          "Applying for the scholarship route while ignoring the consortium's separate scholarship essay or interview",
+          "Being a final-year student without a verifiable graduation date before the start of the programme",
+          "Assuming EUR 1,400 a month covers Lisbon accommodation",
+          "Applying only for the scholarship with no fallback plan if the consortium ranks you below the awards"
+        ],
+        "estimated_uncovered_costs": "Visa and travel receive only a stated contribution and tuition is set by each consortium, so installation costs, the gap between EUR 1,400 and Lisbon rents, and any consortium charges stay on you.",
+        "document_audit": [
+          "There is no Commission-wide document list, so each consortium's own pack must be assembled separately",
+          "Diplomas from outside the EU generally need translation and sometimes legalisation, and recognition in the degree-awarding country is a stated condition",
+          "Final-year students need documentary evidence of expected graduation rather than a statement in the motivation letter",
+          "Certified language certificates take weeks to arrive, so order them before the application window opens"
+        ],
+        "alerts": [
+          "An EMJM must involve at least three institutions from at least three different countries, so verify the Portuguese partner's slot in the route before accepting",
+          "The Commission adds a new batch of selected masters to the catalogue each year, so check the catalogue rather than relying on a previous year's list",
+          "Only best-ranked students worldwide are funded, so treat the EUR 1,400 monthly figure as a unit cost rather than a personal budget"
+        ],
+        "submission_workflow": "Find the programme in the EACEA catalogue, apply to the institution running it inside its own window, and let the consortium rank you for the scholarship - there is no Commission-level application."
+      }
+    }
+  ]
+}

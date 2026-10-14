@@ -1,0 +1,83 @@
+{
+ "agent": "agent_265",
+ "assignment_count": 1,
+ "scholarships": [
+  {
+   "id": 628,
+   "title": "Gulbenkian Institute for Advanced Study Fellowships 2027/28",
+   "country": "Portugal",
+   "degree": "Postdoctoral",
+   "funding_label": "Fully Funded",
+   "status": "closing-soon",
+   "official_source": "Fundacao Calouste Gulbenkian",
+   "official_source_url": "https://gulbenkian.pt/en/bolsas-lista/fellowships-gulbenkian-institute-for-advanced-study",
+   "application_link": "https://gulbenkian.pt/en/bolsas-lista/fellowships-gulbenkian-institute-for-advanced-study",
+   "catalogue_url": null,
+   "official_updates_url": "https://gulbenkian.pt/en/bolsas-lista",
+   "existing": {
+    "funding_amount": null,
+    "funding_currency": "EUR",
+    "funding_period": null,
+    "tuition_coverage": 0,
+    "living_cost_coverage": 1,
+    "travel_coverage": 1,
+    "fully_funded": 0,
+    "description": "The Gulbenkian Institute for Advanced Study in Lisbon awards fellowships to international academics, emeriti, independent scholars and artists for residencies of three to eight months to work on projects of their own choosing. Each fellowship includes travel expenses, travel and health insurance, a monthly stipend and a partial housing allowance. Applications for the 2027/28 cycle are open from 1 July 2026 until 15 October 2026 at 15:00 Lisbon time, and offers are made from late January of the following year.",
+    "eligibility": [
+     "International academics, emeriti, independent scholars and artists may apply",
+     "Applications in most non-laboratorial and non-experimental fields are considered",
+     "The proposed work must not be primarily practice- or application-oriented",
+     "Applications are submitted individually"
+    ],
+    "eligibility_summary": "International academics, emeriti, independent scholars and artists in most non-laboratory and non-experimental fields, whose proposed work is not primarily practice- or application-oriented.",
+    "benefits": [
+     "Travel expenses covered",
+     "Travel and health insurance",
+     "Monthly stipend",
+     "Partial housing allowance",
+     "Three-to-eight-month residency at the Institute's premises in Lisbon"
+    ],
+    "coverage": [
+     "Travel expenses to and from Lisbon",
+     "Travel and health insurance",
+     "Monthly stipend",
+     "Partial housing allowance"
+    ],
+    "requirements": [
+     "A curriculum vitae",
+     "A brief description of what the applicant proposes to do while at the GIAS",
+     "The names of two referees"
+    ],
+    "documents": [
+     "Curriculum vitae",
+     "Brief project description",
+     "Names of two referees"
+    ],
+    "english_requirement": null,
+    "application_method": [
+     "Submit an individual online application through the Fundacao Calouste Gulbenkian grants and scholarships portal",
+     "All mandatory fields must be complete and mandatory documents uploaded for the application to be valid"
+    ],
+    "selection_notes": "Applications are assessed through a competitive international process in which the quality and originality of the proposed work, in keeping with the Institute's spirit and intellectual environment, are the central considerations. The final cohort is selected by the GIAS Advisory Board.",
+    "best_fit": "Established academics, emeriti, independent scholars or artists worldwide who can spend three to eight uninterrupted months in Lisbon on a self-directed project in a non-laboratory discipline.",
+    "notes": "The fellowship amount is set only after the application is selected, and the final amount for each award takes into account the anticipated length of stay and the circumstances of each fellow. The total value of the fellowships awarded each year cannot exceed that year's budgeted amount.\nFunding period: Monthly stipend, plus travel expenses, travel and health insurance and a partial housing allowance; the total amount is set after selection",
+    "duration": "3 to 8 months per residency",
+    "application_period": "Open call 1 July 2026 to 15 October 2026, 15:00 Lisbon time",
+    "deadline_display": "15 October 2026 at 15:00 Lisbon time",
+    "deadline_date": "2026-10-15",
+    "region": "Europe",
+    "program_type": "Research institute fellowship",
+    "applicant_utility": null,
+    "official_details": null
+   },
+   "missing_fields": [
+    "funding_amount",
+    "funding_period",
+    "english_requirement",
+    "applicant_utility",
+    "official_details"
+   ]
+  }
+ ],
+ "result_file": "C:\\Users\\GopaL\\Desktop\\Projects folder\\ScholarZone\\backend\\research_output\\live500\\results\\agent_265.json"
+}

@@ -1,0 +1,1753 @@
+{
+  "agent_id": "w1_44",
+  "shard": "w1-44",
+  "today": "2026-10-04",
+  "records": [
+    {
+      "target_id": 428,
+      "outcome": "refreshed",
+      "confirm": true,
+      "confirmation_evidence": "Read the official MINDEF page 'SAF Merit Scholarship | Ministry of Defence' (last updated 2 October 2026), which lists 'Status: OPEN' with 'Application Window: 1 Sep 2026 – 30 Apr 2027', states the award gives 'Full tuition fees and other approved academic charges' and 'Monthly salary for the duration of studies', and describes it as 'a top tier military scholarship offered by MINDEF/SAF'.",
+      "new_scholarship": {
+        "name": "SAF Merit Scholarship",
+        "legacy_titles": ["SAF Merit Scholarship"],
+        "country": "Singapore",
+        "degree_levels": "Bachelor's",
+        "funding_type": "Fully Funded",
+        "official_source": "Ministry of Defence (MINDEF)/Singapore Armed Forces",
+        "official_source_url": "https://www.mindef.gov.sg/join-us/scholarships-and-sponsorships/scholarships/scholarships-sms",
+        "status": "open",
+        "is_verified": true,
+        "last_verified_date": "2026-10-04",
+        "description": "The SAF Merit Scholarship is a top-tier military scholarship offered by the Ministry of Defence and the Singapore Armed Forces. It provides a monthly salary, full tuition fees and other approved academic charges, maintenance and other allowances, and return airfare for up to six years of studies inclusive of a Master's degree where applicable. Recipients are trained for leadership appointments in the SAF and serve a six-year bond after graduation."
+      },
+      "programme_detail_official": {
+        "official_source_urls": ["https://www.mindef.gov.sg/join-us/scholarships-and-sponsorships/scholarships/scholarships-sms"],
+        "application_link": "https://go.gov.sg/mindef-saf-scholarship",
+        "official_updates_url": null,
+        "catalogue_url": null,
+        "application_cycle": "2026-2027 cycle; male applications 1 Sep 2026 - 30 Apr 2027, female applications 1 Apr 2027 - 31 Aug 2027",
+        "deadline_central": "2027-04-30",
+        "deadline_central_display": "Application Window: 1 Sep 2026 - 30 Apr 2027 (male applicants); 1 Apr 2027 - 31 Aug 2027 (female applicants)",
+        "deadline_central_timezone": null,
+        "deadline_note": "The official page publishes application windows rather than a single deadline. The male window (1 Sep 2026 - 30 Apr 2027) is open as at 2026-10-04; the female window (1 Apr 2027 - 31 Aug 2027) is currently closed.",
+        "status": "OPEN",
+        "status_note": "Male applications open 1 Sep 2026 - 30 Apr 2027; female applications open 1 Apr 2027 - 31 Aug 2027, per the page as updated 2 October 2026.",
+        "funding_amount": null,
+        "funding_currency": null,
+        "funding_period": null,
+        "funding_duration": "Sponsorship for up to 6 years of studies, inclusive of Master's if applicable",
+        "tuition_coverage": true,
+        "tuition_coverage_note": "The 'Value of award' section lists 'Full tuition fees and other approved academic charges'.",
+        "living_cost_coverage": true,
+        "living_cost_coverage_note": "Award includes 'Monthly salary for the duration of studies' plus 'Maintenance and other allowances, e.g. books, clothing, computer'.",
+        "travel_coverage": true,
+        "travel_coverage_note": "Award includes 'Return airfare' and 'One-time sponsorship for summer exchange programmes'.",
+        "fully_funded": false,
+        "funding_label": "Full tuition fees, monthly salary, maintenance allowances and return airfare for up to 6 years of study, with a six-year service bond after graduation",
+        "benefits": [
+          "Monthly salary for the duration of studies",
+          "Full tuition fees and other approved academic charges",
+          "Maintenance and other allowances (books, clothing, computer)",
+          "Return airfare",
+          "One-time sponsorship for summer exchange programmes",
+          "Sponsorship for up to 6 years of studies, inclusive of Master's if applicable"
+        ],
+        "eligibility": [
+          "Singapore citizens or permanent residents intending to take up citizenship",
+          "Good GCE 'A' Level or International Baccalaureate results, Polytechnic Diploma (with Merit) or equivalent",
+          "Good co-curricular activities (CCA) records",
+          "Strong leadership qualities",
+          "Qualify for and excel in Officer Cadet School",
+          "Possess a strong interest in a military career",
+          "All MINDEF/SAF scholarships are open for application to both genders"
+        ],
+        "citizenship_residency": "Singapore citizens or permanent residents intending to take up citizenship",
+        "international_eligibility": "Not open to foreign nationals. Permanent residents may apply but must take up Singapore citizenship before being awarded the scholarship.",
+        "degree_levels": ["Bachelor's"],
+        "study_mode": "Full-time",
+        "research_requirement": null,
+        "subject_or_agency_requirement": "Any discipline except professional courses such as architecture, medicine and dentistry. A Law degree is permitted but recipients will not be called to the Bar while serving in MINDEF/SAF.",
+        "application_method": "Online submission through the MINDEF/SAF scholarship portal",
+        "application_route": "MINDEF/SAF scholarship portal (go.gov.sg/mindef-saf-scholarship)",
+        "requirements": [
+          "Good GCE 'A' Level or International Baccalaureate results, Polytechnic Diploma (with Merit) or equivalent",
+          "Good co-curricular activities records",
+          "Strong leadership qualities",
+          "Qualification for and excellence in Officer Cadet School",
+          "Strong interest in a military career",
+          "Applicants apply separately for university admission"
+        ],
+        "documents": [],
+        "english_requirement": null,
+        "english_requirement_note": "No English language requirement is published on the official page.",
+        "selection_criteria": [
+          "Leadership potential",
+          "Sound character",
+          "Commitment to serve Singapore and Singaporeans",
+          "Keen interest in a challenging and fulfilling profession with MINDEF/SAF",
+          "Strong academic and co-curricular records",
+          "Performance in Basic Military Training and Officer Cadet School"
+        ],
+        "selection_weighting": null,
+        "duration": "Up to 6 years of studies, inclusive of Master's if applicable",
+        "award_holder_conditions": [
+          "Six-year bond that takes immediate effect after graduation and return to service",
+          "The period of studies is not counted towards fulfilment of the bond",
+          "Recipients must perform well in Basic Military Training and qualify for Officer Cadet School; failure to gain entry to OCS is a veto criterion",
+          "Male scholars continue in the Service in which they were commissioned; female applicants may indicate a Service preference"
+        ],
+        "supplements_or_initiatives": [
+          "Summer vacation attachments in SAF units and developmental programmes organised by PSC",
+          "A mentor assigned prior to graduation and attached for several years after return",
+          "Route of advancement courses to prepare for appointments on return"
+        ],
+        "official_contacts": {
+          "general": "Contact MINDEF Scholarship Centre: https://www.mindef.gov.sg/join-us/scholarships-and-sponsorships/scholarships/contact-mindef-scholarship-centre/"
+        },
+        "description": "The SAF Merit Scholarship is a top-tier military scholarship offered by MINDEF/SAF. It equips recipients with a world-class education and training that develops operational know-how and expertise relevant to the organisation, preparing them for leadership appointments in the Singapore Armed Forces.",
+        "program_type": "Military scholarship for undergraduate study",
+        "region": "Asia",
+        "coverage": "Tuition fees and approved academic charges, monthly salary, maintenance and other allowances, return airfare, one-time summer exchange sponsorship",
+        "last_verified_date": "2026-10-04"
+      },
+      "programme_detail_applicant_utility": {
+        "application_readiness_checklist": [
+          "Confirm you meet the nationality condition (Singapore Citizen, or PR intending to take up citizenship)",
+          "Prepare GCE 'A' Level, IB or Polytechnic Diploma transcripts showing Merit where applicable",
+          "Document CCA records and leadership roles",
+          "Apply through go.gov.sg/mindef-saf-scholarship within the window that applies to your gender",
+          "Apply separately to universities; note admission is by individual merit"
+        ],
+        "common_rejection_risks": [
+          "Failure to qualify for Officer Cadet School is an explicit veto criterion",
+          "Weak performance during Basic Military Training",
+          "Choosing a professional course (architecture, medicine, dentistry) that is excluded",
+          "Missing the gender-specific application window"
+        ],
+        "estimated_uncovered_costs": [
+          "University admission tests such as the SAT are arranged and paid by the applicant",
+          "Costs outside approved academic charges, maintenance allowances and airfare"
+        ],
+        "document_audit": [
+          "Academic results transcripts",
+          "CCA and leadership records",
+          "Evidence of citizenship or intent to take up citizenship (for permanent residents)"
+        ],
+        "alerts": [
+          {
+            "trigger": "Window closes 30 Apr 2027",
+            "message": "Male applicants have until 30 April 2027; the female window only opens on 1 April 2027."
+          },
+          {
+            "trigger": "Six-year bond",
+            "message": "The bond begins after graduation and return to service, and study years do not count towards it."
+          }
+        ],
+        "submission_workflow": [
+          "Submit the application online via the MINDEF/SAF scholarship portal",
+          "Male applicants are commissioned as officers before disrupting for studies; shortlisted candidates attend an interview after commissioning",
+          "Female applicants apply in their final year of studies; successful provisional recipients complete Basic Military Training in January",
+          "Depart for studies around August/September for US universities and end September for UK universities"
+        ]
+      },
+      "programme_detail_verification": {
+        "cycle_verified": "2026-2027 application cycle, verified 2026-10-04",
+        "verification_confidence": 0.9,
+        "official_fields_confirmed": ["name", "country", "degree_levels", "funding_type", "official_source", "status", "application_link", "deadline_display", "eligibility", "coverage", "award_holder_conditions"],
+        "institution_check_required": ["funding_amount", "funding_currency"],
+        "unverified_or_removed_claims": ["No monetary funding amount is published, so funding_amount and funding_currency remain null."],
+        "source_citations": ["https://www.mindef.gov.sg/join-us/scholarships-and-sponsorships/scholarships/scholarships-sms"],
+        "researched_by": "w1_44"
+      },
+      "logo_override": {
+        "url": "https://isomer-user-content.by.gov.sg/138/d1123e05-23e5-4d11-9876-aca4275b4551/logo_mindef.png",
+        "page_url": "https://www.mindef.gov.sg/join-us/scholarships-and-sponsorships/scholarships/scholarships-sms",
+        "official_host": true,
+        "alt_text": "Ministry of Defence",
+        "validation_result": "verified",
+        "validation_detail": "png 17237B, 210x76, dark MINDEF wordmark with State Arms on opaque white background; probed HTTP 200 with image content-type (image/webp 3684B by content negotiation; raw bytes PNG 89 50 4E 47)",
+        "image_kind": "official_logo",
+        "image_format": "png",
+        "verified_at": "2026-10-04T00:00:00+00:00",
+        "host_evidence": "same_registrable_domain",
+        "_award": "SAF Merit Scholarship (Ministry of Defence)"
+      },
+      "research_notes": {
+        "logo": "Found in the official page's header markup and its <meta property=\"og:image\">, where the site links https://isomer-user-content.by.gov.sg/138/d1123e05-23e5-4d11-9876-aca4275b4551/logo_mindef.png with alt text 'Ministry of Defence'. Probed: HTTP 200, 17237B, content-type image/webp when negotiated (raw bytes are a valid PNG, magic 89 50 4E 47). Host is isomer-user-content.by.gov.sg, the Government of Singapore's official Isomer asset domain on which mindef.gov.sg stores and serves its own site media (monef.gov.sg/favicon.ico and /logo.svg both return 404, so no logo exists on the bare agency domain). Verified by pixel inspection: 210x76, 100% opaque, dark wordmark and State Arms on a white/opaque background - NOT white-on-transparent. No third-party or aggregator host was used.",
+        "unverified": ["No published funding amount", "No specific English language requirement", "No document list is published"],
+        "substitution": null,
+        "official_pages_read": ["https://www.mindef.gov.sg/join-us/scholarships-and-sponsorships/scholarships/scholarships-sms"],
+        "degree_level_confirmed": "The page's eligibility criteria require 'Good GCE 'A' Level or International Baccalaureate results, Polytechnic Diploma (with Merit) or equivalent', and the award sponsors 'up to 6 years of studies, inclusive of Master's if applicable', confirming undergraduate study.",
+        "url_observed": null,
+        "contradictions": ["Stored deadline_precision 'application_dead' is not a permitted value; replaced with 'varies'.", "Stored deadline_display was an FAQ sentence about requesting university deadline extensions, not the application deadline; replaced with the published application windows."],
+        "skeleton": false
+      }
+    },
+    {
+      "target_id": 429,
+      "outcome": "refreshed",
+      "confirm": true,
+      "confirmation_evidence": "Read the official MHA page 'MHA Civilian Scholarship | Ministry of Home Affairs' (last updated 2 October 2026), which states 'Applications are open now till 15 March 2027!' and that the scholarship 'is awarded to all-rounded individuals who are passionate about strengthening Singapore's safety and security in a civilian appointment', with tuition fees and monthly maintenance allowances.",
+      "new_scholarship": {
+        "name": "MHA Civilian Scholarship",
+        "legacy_titles": ["MHA Civilian Scholarship"],
+        "country": "Singapore",
+        "degree_levels": "Bachelor's",
+        "funding_type": "Fully Funded",
+        "official_source": "Ministry of Home Affairs",
+        "official_source_url": "https://www.mha.gov.sg/careers/mha-scholarships/mha-civilian-scholarships",
+        "status": "open",
+        "is_verified": true,
+        "last_verified_date": "2026-10-04",
+        "description": "The Ministry of Home Affairs Civilian Scholarship is awarded to all-rounded individuals who are passionate about strengthening Singapore's safety and security in a civilian appointment. Recipients pursue undergraduate studies at a local or overseas university and can choose a Generalist or Specialist (Commercial Affairs, Intelligence, Internal Security, Psychology) track. The award covers tuition fees and approved charges, monthly maintenance allowance and return economy airfare, with a bond period after graduation."
+      },
+      "programme_detail_official": {
+        "official_source_urls": ["https://www.mha.gov.sg/careers/mha-scholarships/mha-civilian-scholarships"],
+        "application_link": "https://www.psc.gov.sg/scholarships/apply-for-scholarship/psc-scholarships/",
+        "official_updates_url": null,
+        "catalogue_url": null,
+        "application_cycle": "Applications open until 15 March 2027",
+        "deadline_central": "2027-03-15",
+        "deadline_central_display": "Applications are open now till 15 March 2027!",
+        "deadline_central_timezone": null,
+        "deadline_note": "The official page states 'Applications are open now till 15 March 2027!' with no time of day or timezone given.",
+        "status": "OPEN",
+        "status_note": "Applications open until 15 March 2027 as stated on the page as at its 2 October 2026 footer update.",
+        "funding_amount": null,
+        "funding_currency": null,
+        "funding_period": null,
+        "funding_duration": "Duration of undergraduate studies",
+        "tuition_coverage": true,
+        "tuition_coverage_note": "The 'Award Value and Benefits' section lists 'Tuition fees and other approved charges'.",
+        "living_cost_coverage": true,
+        "living_cost_coverage_note": "Award includes 'Monthly overseas or local maintenance allowance (including accommodation)' and a pre-studies allowance.",
+        "travel_coverage": true,
+        "travel_coverage_note": "Award includes 'Return economy class airfare' for selected scholarship tiers.",
+        "fully_funded": false,
+        "funding_label": "Tuition fees and approved charges, monthly maintenance allowance, pre-studies allowance and return airfare, with a 4-6 year bond after graduation",
+        "benefits": [
+          "Tuition fees and other approved charges",
+          "Monthly overseas or local maintenance allowance (including accommodation)",
+          "Pre-studies allowance e.g. settling in, warm clothing, computer",
+          "Return economy class airfare (for selected scholarship tiers)",
+          "Sponsorship of Master's and exchange programmes (if requirements are met)",
+          "Vacation Attachment Programme",
+          "Full salary for the duration of studies including bonuses (selected tiers)"
+        ],
+        "eligibility": [
+          "Singapore Citizen or Singapore Permanent Resident who is intending to take up Singapore Citizenship",
+          "Strong leadership qualities and potential",
+          "Strong interest in safeguarding the safety and security of Singapore",
+          "Good academic and Co-Curricular Activities (CCAs) records",
+          "GCE A-Levels, International Baccalaureate, Polytechnic, NUS High School, or other high school diploma/certificate",
+          "Current undergraduate students not in their final year may apply for a mid-term scholarship"
+        ],
+        "citizenship_residency": "Singapore Citizen or Singapore Permanent Resident intending to take up Singapore Citizenship",
+        "international_eligibility": "Not open to foreign nationals; permanent residents must intend to take up Singapore citizenship.",
+        "degree_levels": ["Bachelor's"],
+        "study_mode": "Full-time",
+        "research_requirement": null,
+        "subject_or_agency_requirement": "Most disciplines except medicine, dentistry and architecture. Applicants intending to pursue a degree in Law will not be called to the Bar while serving in the Home Team.",
+        "application_method": "Apply online through the Public Service Commission scholarship portal",
+        "application_route": "PSC scholarship application portal",
+        "requirements": [
+          "Good academic and Co-Curricular Activities records",
+          "Strong leadership qualities and potential",
+          "Strong interest in safeguarding the safety and security of Singapore",
+          "GCE A-Levels, International Baccalaureate, Polytechnic, NUS High School or other high school diploma/certificate",
+          "For mid-term applicants: on track for at least 2nd Upper Honours and at least one semester completed, not in final year"
+        ],
+        "documents": [],
+        "english_requirement": null,
+        "english_requirement_note": "No English language test requirement is published; the bond schedule distinguishes English-speaking and non-English-speaking countries of study.",
+        "selection_criteria": [
+          "All-roundedness and leadership potential",
+          "Strong academic and CCA records",
+          "Interest in and commitment to Singapore's safety and security",
+          "Interview performance, including choice of specialisation track"
+        ],
+        "selection_weighting": null,
+        "duration": "Duration of undergraduate studies",
+        "award_holder_conditions": [
+          "Bond period of 4 years for local studies, 5 years for studies in non-English speaking countries and 6 years for studies in English speaking countries",
+          "The bond period starts on the day recipients assume official duty after completing their studies",
+          "Changing specialisation or converting between Civilian and Uniformed schemes requires strong justification and is considered case-by-case by MHA"
+        ],
+        "supplements_or_initiatives": [
+          "Home Team Leaders-in Development Programme for recipients who meet the criteria",
+          "Public Service Leadership Programme (PSLP)",
+          "Vacation Attachment Programme"
+        ],
+        "official_contacts": {
+          "general": "Ministry of Home Affairs, https://www.mha.gov.sg/careers/mha-scholarships/"
+        },
+        "description": "The Ministry of Home Affairs Civilian Scholarship allows recipients to kickstart a leadership journey in the Home Team, pursuing undergraduate studies at a local or overseas university. Career options include the Civilian Generalist track and Specialist tracks in Commercial Affairs, Intelligence, Internal Security and Psychology.",
+        "program_type": "Civilian public service scholarship for undergraduate study",
+        "region": "Asia",
+        "coverage": "Tuition fees and approved charges, monthly maintenance allowance including accommodation, pre-studies allowance, return economy airfare, Master's and exchange programme sponsorship",
+        "last_verified_date": "2026-10-04"
+      },
+      "programme_detail_applicant_utility": {
+        "application_readiness_checklist": [
+          "Confirm Singapore Citizenship or PR status with intent to take up citizenship",
+          "Prepare GCE A-Level, IB, Polytechnic, NUS High School or equivalent results",
+          "Document CCA records and leadership experiences",
+          "Decide between Generalist and Specialist tracks (Commercial Affairs, Intelligence, Internal Security, Psychology)",
+          "Submit the application through the PSC scholarship portal before 15 March 2027"
+        ],
+        "common_rejection_risks": [
+          "Applying in the final year of undergraduate study under the mid-term route",
+          "Choosing medicine, dentistry or architecture, which are excluded courses",
+          "Weak academic or CCA records",
+          "Late submission after the 15 March 2027 closing date"
+        ],
+        "estimated_uncovered_costs": [
+          "Airfare where the awarded scholarship tier does not include return economy airfare",
+          "Any study or programme cost outside approved charges"
+        ],
+        "document_audit": [
+          "Academic transcripts and results",
+          "CCA and leadership records",
+          "Citizenship or permanent residency documentation"
+        ],
+        "alerts": [
+          {
+            "trigger": "Applications close 15 March 2027",
+            "message": "The official page states 'Applications are open now till 15 March 2027!'"
+          },
+          {
+            "trigger": "Bond length varies by country of study",
+            "message": "4 years for local studies, 5 years for non-English speaking countries, 6 years for English speaking countries."
+          }
+        ],
+        "submission_workflow": [
+          "Apply online via the PSC scholarship portal",
+          "Indicate preferred specialisation track at the point of interview",
+          "Await the Scholarship Board decision on tier (SGS, LMS or HTLSA)",
+          "Complete undergraduate studies, then assume official duty with the Home Team"
+        ]
+      },
+      "programme_detail_verification": {
+        "cycle_verified": "Application cycle closing 15 March 2027, verified 2026-10-04",
+        "verification_confidence": 0.9,
+        "official_fields_confirmed": ["name", "country", "degree_levels", "funding_type", "official_source", "status", "application_link", "deadline_central", "eligibility", "coverage", "award_holder_conditions", "region"],
+        "institution_check_required": ["funding_amount", "funding_currency"],
+        "unverified_or_removed_claims": ["No monetary funding amount or currency is published, so both remain null.", "The official page does not state a region label; stored region was null and 'Asia' was assigned from the host country Singapore."],
+        "source_citations": ["https://www.mha.gov.sg/careers/mha-scholarships/mha-civilian-scholarships"],
+        "researched_by": "w1_44"
+      },
+      "logo_override": {
+        "url": "https://isomer-user-content.by.gov.sg/341/ac9a71af-d5b3-4415-aa96-e09705c7a8e2/MHA-logo.png",
+        "page_url": "https://www.mha.gov.sg/careers/mha-scholarships/mha-civilian-scholarships",
+        "official_host": true,
+        "alt_text": "Ministry of Home Affairs",
+        "validation_result": "verified",
+        "validation_detail": "png 5916B, 117x117, dark-blue Ministry of Home Affairs crest on opaque white background; probed HTTP 200 with image content-type (image/webp 3987B by content negotiation; raw bytes PNG 89 50 4E 47)",
+        "image_kind": "official_logo",
+        "image_format": "png",
+        "verified_at": "2026-10-04T00:00:00+00:00",
+        "host_evidence": "same_registrable_domain",
+        "_award": "MHA Civilian Scholarship (Ministry of Home Affairs)"
+      },
+      "research_notes": {
+        "logo": "Found in the official page's header markup and its <meta property=\"og:image\">, where the site links https://isomer-user-content.by.gov.sg/341/ac9a71af-d5b3-4415-aa96-e09705c7a8e2/MHA-logo.png with alt text 'Ministry of Home Affairs' (a second variant mha-logo-2x.png is also referenced in the markup). Probed: HTTP 200, 5916B, content-type image/webp when negotiated (raw bytes are a valid PNG, magic 89 50 4E 47). Host is isomer-user-content.by.gov.sg, the Government of Singapore's official Isomer asset domain on which mha.gov.sg serves its own site media (mha.gov.sg/favicon.ico, /logo.svg and /apple-touch-icon.png all return 404, so no logo exists on the bare agency domain). Verified by pixel inspection: 117x117, no alpha channel, dark-blue crest on white - NOT white-on-transparent. No third-party or aggregator host was used.",
+        "unverified": ["No published funding amount", "No document list is published"],
+        "substitution": null,
+        "official_pages_read": ["https://www.mha.gov.sg/careers/mha-scholarships/mha-civilian-scholarships"],
+        "degree_level_confirmed": "The page states recipients may 'pursue your undergraduate studies at a prestigious local or overseas university' and that applicants may be 'Current Undergraduate students'.",
+        "url_observed": null,
+        "contradictions": ["Stored deadline_precision 'unknown' and deadline_display null are wrong: the page states 'Applications are open now till 15 March 2027!'.", "Stored region was null; set to Asia from the host country."],
+        "skeleton": false
+      }
+    },
+    {
+      "target_id": 430,
+      "outcome": "refreshed",
+      "confirm": true,
+      "confirmation_evidence": "Read the official MHA page 'The Singapore Police Force Scholarship | Ministry of Home Affairs' (last updated 7 October 2026), which states 'Applications are open now till 15 March 2027!' and that the scholarship 'is one of the most prestigious scholarships awarded by the Public Service Commission', offering 'Tuition fees and other approved charges' and a 'Monthly overseas or local maintenance allowance (including accommodation)'.",
+      "new_scholarship": {
+        "name": "The Singapore Police Force Scholarship",
+        "legacy_titles": ["Singapore Police Force Scholarship"],
+        "country": "Singapore",
+        "degree_levels": "Bachelor's",
+        "funding_type": "Fully Funded",
+        "official_source": "Ministry of Home Affairs / Singapore Police Force",
+        "official_source_url": "https://www.mha.gov.sg/careers/mha-scholarships/the-singapore-police-force-scholarship",
+        "status": "open",
+        "is_verified": true,
+        "last_verified_date": "2026-10-04",
+        "description": "The Singapore Police Force (SPF) Scholarship is one of the most prestigious scholarships awarded by the Public Service Commission, awarded to candidates who have shown outstanding leadership qualities, impeccable integrity and a strong interest in policing work. Recipients study at a local or overseas university in most disciplines and then enter the Uniformed Service career track, with regular postings in the first six years to build investigation, policy and leadership capabilities."
+      },
+      "programme_detail_official": {
+        "official_source_urls": ["https://www.mha.gov.sg/careers/mha-scholarships/the-singapore-police-force-scholarship"],
+        "application_link": "https://www.psc.gov.sg/scholarships/apply-for-scholarship/psc-scholarships/",
+        "official_updates_url": null,
+        "catalogue_url": null,
+        "application_cycle": "Applications open until 15 March 2027",
+        "deadline_central": "2027-03-15",
+        "deadline_central_display": "Applications are open now till 15 March 2027!",
+        "deadline_central_timezone": null,
+        "deadline_note": "The official page states 'Applications are open now till 15 March 2027!' with no time of day or timezone given.",
+        "status": "OPEN",
+        "status_note": "Applications open until 15 March 2027 as stated on the page as at its 7 October 2026 update.",
+        "funding_amount": null,
+        "funding_currency": null,
+        "funding_period": null,
+        "funding_duration": "Duration of undergraduate studies",
+        "tuition_coverage": true,
+        "tuition_coverage_note": "The 'Award Value and Benefits' section lists 'Tuition fees and other approved charges'.",
+        "living_cost_coverage": true,
+        "living_cost_coverage_note": "Award includes 'Monthly overseas or local maintenance allowance (including accommodation)', a pre-studies allowance, and full salary for the duration of studies including bonuses.",
+        "travel_coverage": true,
+        "travel_coverage_note": "Award includes 'Return economy class airfare (if studying overseas)'.",
+        "fully_funded": false,
+        "funding_label": "Tuition fees and approved charges, monthly maintenance allowance, pre-studies allowance, return airfare and full salary during studies, with a 4-6 year bond after graduation",
+        "benefits": [
+          "Tuition fees and other approved charges",
+          "Monthly overseas or local maintenance allowance (including accommodation)",
+          "Pre-studies allowance e.g. settling in, warm clothing, computer",
+          "Return economy class airfare (if studying overseas)",
+          "NS disruption",
+          "Sponsorship of Master's and exchange programmes (if requirements are met)",
+          "Full salary for the duration of studies (including bonuses)",
+          "Vacation Attachment Programme"
+        ],
+        "eligibility": [
+          "Be a Singapore Citizen",
+          "Have strong leadership qualities and potential",
+          "Have a keen interest in serving in the Singapore Police Force",
+          "Have outstanding academic and Co-Curricular Activity (CCA) records",
+          "Have a GCE A-Levels, International Baccalaureate, Polytechnic, NUS High School, or other high school diploma/certificate",
+          "Excel in Officer Cadet School",
+          "All MHA scholarships are open to male and female applicants"
+        ],
+        "citizenship_residency": "Singapore Citizen only",
+        "international_eligibility": "Not open to foreign nationals or to permanent residents; the page requires applicants to 'Be a Singapore Citizen'.",
+        "degree_levels": ["Bachelor's"],
+        "study_mode": "Full-time",
+        "research_requirement": null,
+        "subject_or_agency_requirement": "Most disciplines except medicine, dentistry and architecture. Recipients who pursue a Law degree will not be called to the Bar while serving in the SPF.",
+        "application_method": "Apply online through the Public Service Commission scholarship portal",
+        "application_route": "PSC scholarship application portal",
+        "requirements": [
+          "Outstanding academic and Co-Curricular Activity records",
+          "Strong leadership qualities and potential",
+          "Keen interest in serving in the Singapore Police Force",
+          "Excellence in Officer Cadet School",
+          "GCE A-Levels, International Baccalaureate, Polytechnic, NUS High School or other high school diploma/certificate",
+          "Female applicants must apply early enough to prepare for enlistment into Basic Military Training"
+        ],
+        "documents": [],
+        "english_requirement": null,
+        "english_requirement_note": "No English language test requirement is published; the bond schedule distinguishes English-speaking and non-English-speaking countries of study.",
+        "selection_criteria": [
+          "Outstanding leadership qualities and potential",
+          "Impeccable integrity",
+          "Strong interest in policing work to safeguard the nation",
+          "Outstanding academic and CCA records",
+          "Performance in Officer Cadet School"
+        ],
+        "selection_weighting": null,
+        "duration": "Duration of undergraduate studies",
+        "award_holder_conditions": [
+          "Bond of 4 years for local studies, 5 years for studies in non-English speaking countries and 6 years for studies in English speaking countries",
+          "The bond period starts on the day recipients assume official duty after completing their studies",
+          "Rotation through regular postings in the first 6 years of the career"
+        ],
+        "supplements_or_initiatives": [
+          "Public Service Leadership Programme (PSLP) for recipients who meet the criteria",
+          "Vacation Attachment Programme"
+        ],
+        "official_contacts": {
+          "general": "Ministry of Home Affairs, https://www.mha.gov.sg/careers/mha-scholarships/"
+        },
+        "description": "The Singapore Police Force Scholarship is a Uniformed Service track scholarship hosted on the Ministry of Home Affairs scholarships pages and offered by the Public Service Commission and the Singapore Police Force. It is intended for candidates with outstanding leadership qualities, impeccable integrity and a strong interest in policing work.",
+        "program_type": "Uniformed service scholarship for undergraduate study",
+        "region": "Asia",
+        "coverage": "Tuition fees and approved charges, monthly maintenance allowance including accommodation, pre-studies allowance, return economy airfare, full salary during studies",
+        "last_verified_date": "2026-10-04"
+      },
+      "programme_detail_applicant_utility": {
+        "application_readiness_checklist": [
+          "Confirm Singapore Citizenship (permanent residents are not eligible for this scheme)",
+          "Prepare GCE A-Level, IB, Polytechnic, NUS High School or equivalent results",
+          "Document outstanding CCA records and leadership evidence",
+          "Submit the application through the PSC scholarship portal before 15 March 2027",
+          "Female applicants: apply early enough to allow time for Basic Military Training enlistment"
+        ],
+        "common_rejection_risks": [
+          "Failing to excel in Officer Cadet School",
+          "Weak academic or CCA records relative to the 'outstanding' standard stated by MHA",
+          "Choosing medicine, dentistry or architecture, which are excluded courses",
+          "Late submission after the 15 March 2027 closing date"
+        ],
+        "estimated_uncovered_costs": [
+          "Airfare is only provided where studying overseas",
+          "Any cost outside approved academic charges and stated allowances"
+        ],
+        "document_audit": [
+          "Academic transcripts and results",
+          "CCA records and leadership evidence",
+          "Singapore Citizenship documentation"
+        ],
+        "alerts": [
+          {
+            "trigger": "Applications close 15 March 2027",
+            "message": "The official page states 'Applications are open now till 15 March 2027!'."
+          },
+          {
+            "trigger": "Bond varies by country of study",
+            "message": "4 years for local studies, 5 years for non-English speaking countries, 6 years for English speaking countries."
+          },
+          {
+            "trigger": "Law graduates are not called to the Bar",
+            "message": "A Law degree is permitted but Recipients will not be called to the Bar while serving in the SPF."
+          }
+        ],
+        "submission_workflow": [
+          "Apply online via the PSC scholarship portal",
+          "Undergo selection by the PSC Scholarships Selection Board",
+          "Complete undergraduate studies at the chosen local or overseas university",
+          "Assume official duty with the Singapore Police Force and begin the bond period"
+        ]
+      },
+      "programme_detail_verification": {
+        "cycle_verified": "Application cycle closing 15 March 2027, verified 2026-10-04",
+        "verification_confidence": 0.9,
+        "official_fields_confirmed": ["name", "country", "degree_levels", "funding_type", "status", "application_link", "deadline_central", "eligibility", "citizenship_residency", "coverage", "award_holder_conditions", "region"],
+        "institution_check_required": ["funding_amount", "funding_currency"],
+        "unverified_or_removed_claims": [
+          "No monetary funding amount or currency is published, so funding_amount and funding_currency remain null.",
+          "The stored record attributes the award to 'Mha Government Sg'; the official page states it is 'Offered by the Public Service Commission and the Singapore Police Force'. The MHA page is the awarding ministry's official page for the award, and the MHA logo is used accordingly.",
+          "No document list is published."
+        ],
+        "source_citations": ["https://www.mha.gov.sg/careers/mha-scholarships/the-singapore-police-force-scholarship"],
+        "researched_by": "w1_44"
+      },
+      "logo_override": {
+        "url": "https://isomer-user-content.by.gov.sg/341/ac9a71af-d5b3-4415-aa96-e09705c7a8e2/MHA-logo.png",
+        "page_url": "https://www.mha.gov.sg/careers/mha-scholarships/the-singapore-police-force-scholarship",
+        "official_host": true,
+        "alt_text": "Ministry of Home Affairs",
+        "validation_result": "verified",
+        "validation_detail": "png 5916B, 117x117, dark-blue Ministry of Home Affairs crest on opaque white background; probed HTTP 200 with image content-type (image/webp 3987B by content negotiation; raw bytes PNG 89 50 4E 47)",
+        "image_kind": "official_logo",
+        "image_format": "png",
+        "verified_at": "2026-10-04T00:00:00+00:00",
+        "host_evidence": "same_registrable_domain",
+        "_award": "Singapore Police Force Scholarship (Ministry of Home Affairs)"
+      },
+      "research_notes": {
+        "logo": "Same official wordmark as the MHA Civilian Scholarship page: taken from this page's header markup and <meta property=\"og:image\">, https://isomer-user-content.by.gov.sg/341/ac9a71af-d5b3-4415-aa96-e09705c7a8e2/MHA-logo.png with alt text 'Ministry of Home Affairs'. Probed HTTP 200, 5916B, image content-type on negotiation (raw bytes PNG). Host is the Government of Singapore's official Isomer asset domain (isomer-user-content.by.gov.sg) from which mha.gov.sg serves its own site media; mha.gov.sg/favicon.ico, /logo.svg and /apple-touch-icon.png all return 404. Pixel-checked: 117x117, no alpha, dark-blue crest on white - not white-on-transparent. Used because this scholarship is published as an MHA Scholarship on mha.gov.sg, the ministry under which the Singapore Police Force sits.",
+        "unverified": ["No published funding amount", "No published document list", "The official page gives no application open date, only the 15 March 2027 closing date"],
+        "substitution": null,
+        "official_pages_read": ["https://www.mha.gov.sg/careers/mha-scholarships/the-singapore-police-force-scholarship"],
+        "degree_level_confirmed": "The page's eligibility list requires 'a GCE A-Levels, International Baccalaureate, Polytechnic, NUS High School, or other high school diploma/certificate', and benefits include 'Sponsorship of Master's and exchange programmes (if requirements are met)', confirming undergraduate study.",
+        "url_observed": null,
+        "contradictions": [
+          "Stored deadline_precision was 'unknown' and deadline_display was null; the official page states 'Applications are open now till 15 March 2027!'.",
+          "Stored region was null; set to Asia from the host country Singapore.",
+          "Stored official_source 'Mha Government Sg' is incomplete: the page states the scholarship is 'Offered by the Public Service Commission and the Singapore Police Force'."
+        ],
+        "skeleton": false
+      }
+    },
+    {
+      "target_id": 431,
+      "outcome": "refreshed",
+      "confirm": true,
+      "confirmation_evidence": "Read the official PSC page 'PSC Scholarships | Public Service Commission' (last updated 1 September 2026), which states 'Applications for PSC Scholarships for 2027 are now open and will close on 15 March 2027' and that 'The Public Service Commission (PSC) Scholarship is the premier government scholarship awarded based on merit', with 'Tuition fees and other approved charges' and maintenance allowances.",
+      "new_scholarship": {
+        "name": "PSC Scholarships (Undergraduate)",
+        "legacy_titles": ["PSC Undergraduate Scholarship"],
+        "country": "Singapore",
+        "degree_levels": "Bachelor's",
+        "funding_type": "Fully Funded",
+        "official_source": "Public Service Commission",
+        "official_source_url": "https://www.psc.gov.sg/scholarships/undergraduate-scholarships",
+        "status": "open",
+        "is_verified": true,
+        "last_verified_date": "2026-10-04",
+        "description": "The PSC Scholarships are the premier government scholarships awarded on merit by the Singapore Public Service Commission for undergraduate study. They offer three career paths - Public Administration, Professional Service and Uniformed Service - and cover tuition fees and approved charges plus maintenance and other allowances, with sponsorship of a Master's degree and PSC development programmes. A bond of 4 to 6 years applies depending on the country of study."
+      },
+      "programme_detail_official": {
+        "official_source_urls": [
+          "https://www.psc.gov.sg/scholarships/undergraduate-scholarships",
+          "https://www.psc.gov.sg/scholarships/undergraduate-scholarships/psc-scholarships"
+        ],
+        "application_link": "https://www.psc.gov.sg/scholarships/apply-for-scholarship/psc-scholarships/",
+        "official_updates_url": "https://www.psc.gov.sg/scholarships",
+        "catalogue_url": null,
+        "application_cycle": "Applications for 2027 open and closing 15 March 2027",
+        "deadline_central": "2027-03-15",
+        "deadline_central_display": "Applications for PSC Scholarships for 2027 are now open and will close on 15 March 2027.",
+        "deadline_central_timezone": null,
+        "deadline_note": "The official page states applications for 2027 'are now open and will close on 15 March 2027', with no time of day or timezone given.",
+        "status": "OPEN",
+        "status_note": "Applications for the 2027 intake are open and close on 15 March 2027 as stated on the page as at its 1 September 2026 update.",
+        "funding_amount": null,
+        "funding_currency": null,
+        "funding_period": null,
+        "funding_duration": "Duration of the undergraduate degree, with additional year(s) granted for a Master's programme if requirements are met",
+        "tuition_coverage": true,
+        "tuition_coverage_note": "The 'Value of Award' section lists 'Tuition fees and other approved charges. For overseas degrees, return airfare will be provided. For mid-term candidates, tuition and other compulsory fees incurred before the award will be back paid.'",
+        "living_cost_coverage": true,
+        "living_cost_coverage_note": "Award includes 'Maintenance and other allowances', and 'For those on the Uniformed Service track, full salary including bonuses will be paid'.",
+        "travel_coverage": true,
+        "travel_coverage_note": "'For overseas degrees, return airfare will be provided' and sponsorship covers 'approved student exchange or summer programmes'.",
+        "fully_funded": false,
+        "funding_label": "Tuition fees and approved charges, maintenance and other allowances, return airfare for overseas degrees and sponsorship of development programmes and a Master's, with a 4-6 year bond after graduation",
+        "benefits": [
+          "Tuition fees and other approved charges (back paid for mid-term candidates)",
+          "Maintenance and other allowances",
+          "Full salary including bonuses on the Uniformed Service track",
+          "Return airfare for overseas degrees",
+          "Sponsorship of PSC development programmes and approved student exchange or summer programmes",
+          "Sponsored internship opportunities",
+          "Sponsorship of a Master's degree if requirements are met"
+        ],
+        "eligibility": [
+          "Be a Singapore Citizen",
+          "Demonstrate strong leadership qualities and potential",
+          "Present themselves as well-rounded individuals, possessing good academic and non-academic records",
+          "GCE A-levels; or International Baccalaureate; or NUS High School Diploma; or Polytechnic Diploma with merit; or other high school diploma or equivalent",
+          "Mid-term applicants additionally need at least one semester of university results and must apply before the final year of undergraduate studies",
+          "For professional schemes with a tied agency, the undergraduate degree must be in an area relevant to the tied agency"
+        ],
+        "citizenship_residency": "Singapore Citizen",
+        "international_eligibility": "Not open to foreign nationals; applicants must 'Be a Singapore Citizen'.",
+        "degree_levels": ["Bachelor's"],
+        "study_mode": "Full-time",
+        "research_requirement": null,
+        "subject_or_agency_requirement": "Public Administration, Professional Service (Engineering, Public Finance, Foreign Service, Judicial/Legal Service, Medicine or Dentistry, Teaching Service) and Uniformed Service tracks. For professional schemes with a tied agency the degree must be relevant to the tied agency.",
+        "application_method": "Online application with supporting documents, an essay and a video interview, submitted through the PSC portal after Singpass login",
+        "application_route": "PSC scholarship application portal (Singpass login required)",
+        "requirements": [
+          "GCE A-levels, International Baccalaureate, NUS High School Diploma, Polytechnic Diploma with merit or other high school diploma or equivalent",
+          "Good academic and non-academic records",
+          "Strong leadership qualities and potential",
+          "Mid-term applicants: at least one semester of university results and application before the final year",
+          "Supporting documents, an essay and a video interview"
+        ],
+        "documents": [
+          "Secondary 4 / Year 4 Year End School Academic Reports (including results and teachers' comments)",
+          "Secondary 4 / Year 4 Co-curricular Activities (CCA) and Community Involvement Programme (CIP) Records",
+          "Pre-tertiary CCA and CIP Records",
+          "Certificates of Academic Qualification Obtained (e.g. GCE O-level, GCE A-level, International Baccalaureate Diploma, NUS High School Diploma, Polytechnic Diploma, other high school diploma or equivalent). Preliminary examination results are not required.",
+          "Mid-term applicants additionally: University Academic Transcripts, University CCA Records, Employment Testimonials (if applicable), NS Certificate of Service and Testimonial (if applicable), Public Service Internship Testimonials (if applicable)"
+        ],
+        "english_requirement": null,
+        "english_requirement_note": "No English language test requirement is published; the bond schedule distinguishes English-speaking and non-English-speaking countries of study.",
+        "selection_criteria": [
+          "Strong leadership qualities and potential",
+          "Well-roundedness with good academic and non-academic records",
+          "Sound character and exemplification of the ethos of the Public Service",
+          "Commitment to serving Singapore and Singaporeans",
+          "Performance in assessments and the panel interview with the PSC Scholarships Selection Board"
+        ],
+        "selection_weighting": null,
+        "duration": "Undergraduate degree with additional year(s) granted for a Master's programme if requirements are met",
+        "award_holder_conditions": [
+          "Bond of 6 years for undergraduate study in English speaking countries (including Australia, Canada and New Zealand)",
+          "Bond of 5 years for study in non-English-speaking countries",
+          "Bond of 4 years for study in Singapore",
+          "For PSC Scholarship (Medicine or Dentistry): up to 5 years of study for Medicine and up to 4 years for Dentistry, with a 6-year bond"
+        ],
+        "supplements_or_initiatives": [
+          "Preparatory Course (two-week programme before undergraduate studies)",
+          "PSC Scholarship Holders' Mid-Course Programme (PSMP) at the end of the second year, including a six-to-twelve week internship",
+          "Gap Year Programme (six months to a year attachment after studies and National Service)",
+          "Public Service Leadership Programme (PSLP), not applicable to Legal Service, Medicine/Dentistry or The SAF Scholarship schemes"
+        ],
+        "official_contacts": {
+          "general": "Public Service Commission, https://www.psc.gov.sg/scholarships"
+        },
+        "description": "The PSC Scholarships are the premier government scholarships awarded based on merit, offering varied career pathways in the Singapore Public Service. Scholarship holders pursue a variety of disciplines at different universities and are developed with diversity in mind.",
+        "program_type": "Undergraduate scholarship (Public Administration, Professional Service, Uniformed Service tracks)",
+        "region": "Asia",
+        "coverage": "Tuition fees and approved charges, maintenance and other allowances, full salary on the Uniformed Service track, return airfare for overseas degrees, development programme and exchange sponsorship, Master's sponsorship",
+        "last_verified_date": "2026-10-04"
+      },
+      "programme_detail_applicant_utility": {
+        "application_readiness_checklist": [
+          "Confirm Singapore Citizenship",
+          "Gather Secondary 4 / Year 4 school reports and CCA/CIP records",
+          "Gather pre-tertiary CCA and CIP records",
+          "Gather certificates of academic qualifications (preliminary examination results are not required)",
+          "Mid-term applicants: prepare university transcripts, CCA records, employment testimonials and NS certificate of service",
+          "Have a valid Singpass account ready to log in to the portal",
+          "Prepare an essay and a video interview"
+        ],
+        "common_rejection_risks": [
+          "Missing supporting documents; the portal requires a complete upload set",
+          "Applying without a valid Singpass account",
+          "For professional schemes, holding a degree not relevant to the tied agency",
+          "Mid-term applicants applying in their final year of undergraduate studies"
+        ],
+        "estimated_uncovered_costs": [
+          "Costs outside approved academic charges and the published allowances",
+          "Costs of programmes not covered by the approved development and exchange sponsorship"
+        ],
+        "document_audit": [
+          "Secondary 4 / Year 4 Year End School Academic Reports with teachers' comments",
+          "Secondary 4 / Year 4 CCA and CIP records",
+          "Pre-tertiary CCA and CIP records",
+          "Certificates of academic qualification",
+          "Mid-term applicants: university transcripts, CCA records, employment and NS testimonials, public service internship testimonials"
+        ],
+        "alerts": [
+          {
+            "trigger": "Applications close 15 March 2027",
+            "message": "The official page states applications for 2027 'are now open and will close on 15 March 2027'."
+          },
+          {
+            "trigger": "Outcome expected by June",
+            "message": "PSC states that applicants 'should receive an application outcome by June', with assessments and interviews running from August each year to June in the following year."
+          },
+          {
+            "trigger": "Bond length depends on country of study",
+            "message": "4 years for Singapore, 5 years for non-English-speaking countries, 6 years for English-speaking countries."
+          }
+        ],
+        "submission_workflow": [
+          "Prepare supporting documents before starting the form",
+          "Log in to the PSC scholarship portal with Singpass and submit the online application with essay and video interview",
+          "Receive an application outcome, expected by June",
+          "Undergo assessments and a panel interview with the PSC Scholarships Selection Board",
+          "Possible outcomes include Unsuccessful, Referred to Ministries, or Offered PSC Scholarship"
+        ]
+      },
+      "programme_detail_verification": {
+        "cycle_verified": "2027 intake cycle closing 15 March 2027, verified 2026-10-04",
+        "verification_confidence": 0.9,
+        "official_fields_confirmed": ["name", "country", "degree_levels", "funding_type", "official_source", "status", "application_link", "deadline_central", "eligibility", "citizenship_residency", "documents", "coverage", "award_holder_conditions", "region"],
+        "institution_check_required": ["funding_amount", "funding_currency", "study duration by country of study"],
+        "unverified_or_removed_claims": [
+          "No monetary funding amount or currency is published, so funding_amount and funding_currency remain null.",
+          "The study-duration and bond-duration tables on the page could not be reliably read as structured text, so only the bond durations (4/5/6 years) that are stated in prose-equivalent table cells are reported; the exact maximum undergraduate duration per country of study is left unverified.",
+          "The stored program_type 'Undergraduate Degree [Country of Study]' was a table column heading, not a programme type, and has been replaced."
+        ],
+        "source_citations": [
+          "https://www.psc.gov.sg/scholarships/undergraduate-scholarships",
+          "https://www.psc.gov.sg/scholarships/undergraduate-scholarships/psc-scholarships"
+        ],
+        "researched_by": "w1_44"
+      },
+      "logo_override": {
+        "url": "https://isomer-user-content.by.gov.sg/417/ea52e2be-2288-4c41-9033-f238dff8bd35/logo.png",
+        "page_url": "https://www.psc.gov.sg/scholarships/undergraduate-scholarships/psc-scholarships",
+        "official_host": true,
+        "alt_text": "Public Service Commission",
+        "validation_result": "verified",
+        "validation_detail": "png 23619B, 'PUBLIC SERVICE COMMISSION / SINGAPORE' wordmark with crest in dark grey on opaque white; probed HTTP 200 with image content-type (image/webp on content negotiation; raw bytes PNG 89 50 4E 47)",
+        "image_kind": "official_logo",
+        "image_format": "png",
+        "verified_at": "2026-10-04T00:00:00+00:00",
+        "host_evidence": "same_registrable_domain",
+        "_award": "PSC Scholarships (Public Service Commission)"
+      },
+      "research_notes": {
+        "logo": "Taken from the PSC page header markup and <meta property=\"og:image\"> on psc.gov.sg, which links https://isomer-user-content.by.gov.sg/417/ea52e2be-2288-4c41-9033-f238dff8bd35/logo.png with alt text 'Public Service Commission'. Probed: HTTP 200, 23619B, image content-type on content negotiation (raw bytes are a valid PNG, magic 89 50 4E 47). Host is isomer-user-content.by.gov.sg, the Government of Singapore's official Isomer asset domain from which psc.gov.sg serves its own site media; psc.gov.sg/favicon.ico, /logo.svg, /logo.png and /images/logo.png all return 404, so no logo exists on the bare agency domain. Visually verified as the PSC wordmark and crest in dark grey on an opaque white background - not white-on-transparent.",
+        "unverified": ["No published funding amount", "Maximum undergraduate study duration by country of study could not be read reliably from the tables"],
+        "substitution": null,
+        "official_pages_read": [
+          "https://www.psc.gov.sg/scholarships/undergraduate-scholarships",
+          "https://www.psc.gov.sg/scholarships/undergraduate-scholarships/psc-scholarships"
+        ],
+        "degree_level_confirmed": "The page states applicants are 'welcome to apply prior to pursuing their undergraduate degree or up until the penultimate year of their undergraduate degree (referred to as mid-term applicants)', confirming undergraduate study.",
+        "url_observed": "https://www.psc.gov.sg/scholarships/undergraduate-scholarships is the live section index; the detailed scheme page read for this record is https://www.psc.gov.sg/scholarships/undergraduate-scholarships/psc-scholarships",
+        "contradictions": [
+          "Stored deadline_precision was 'unknown' and deadline_display was null; the official page states 'Applications for PSC Scholarships for 2027 are now open and will close on 15 March 2027'.",
+          "Stored program_type 'Undergraduate Degree [Country of Study]' was a table column heading, not a programme type; replaced.",
+          "Stored official_source 'Psc Government Sg' replaced with the official body name 'Public Service Commission'."
+        ],
+        "skeleton": false
+      }
+    },
+    {
+      "target_id": 432,
+      "outcome": "refreshed",
+      "confirm": true,
+      "confirmation_evidence": "Read the official PSC page 'PSC Master's Scholarships | Public Service Commission' (last updated 9 September 2026), which states 'Applications for PSC Master's Scholarships for 2027 are now open and will close on 15 March 2027' and that 'Recipients of the PSC Master's Scholarships will pursue a career in Public Administration in the Singapore Public Service', with 'Tuition fees and other approved charges'.",
+      "new_scholarship": {
+        "name": "PSC Master's Scholarships",
+        "legacy_titles": ["PSC Master's Scholarship"],
+        "country": "Singapore",
+        "degree_levels": "Master's",
+        "funding_type": "Fully Funded",
+        "official_source": "Public Service Commission",
+        "official_source_url": "https://www.psc.gov.sg/scholarships/postgraduate-scholarships/psc-master's-scholarship",
+        "status": "open",
+        "is_verified": true,
+        "last_verified_date": "2026-10-04",
+        "description": "The PSC Master's Scholarships are postgraduate scholarships awarded by the Singapore Public Service Commission for those pursuing a Master's degree and a career in Public Administration and Sustainability. Applicants may choose between the PSC Master's Scholarship and the PSC Master's Scholarship (Sustainability). The award covers tuition fees and approved charges plus maintenance allowances, with a bond after graduation. MBA programmes are not allowed."
+      },
+      "programme_detail_official": {
+        "official_source_urls": [
+          "https://www.psc.gov.sg/scholarships/postgraduate-scholarships/psc-masters-scholarships",
+          "https://www.psc.gov.sg/scholarships/postgraduate-scholarships"
+        ],
+        "application_link": "https://www.psc.gov.sg/scholarships/apply-for-scholarship/psc-masters-scholarships",
+        "official_updates_url": "https://www.psc.gov.sg/scholarships",
+        "catalogue_url": null,
+        "application_cycle": "Applications for 2027 open and closing 15 March 2027",
+        "deadline_central": "2027-03-15",
+        "deadline_central_display": "Applications for PSC Master's Scholarships for 2027 are now open and will close on 15 March 2027.",
+        "deadline_central_timezone": null,
+        "deadline_note": "The official page states applications for 2027 'are now open and will close on 15 March 2027', with no time of day or timezone given.",
+        "status": "OPEN",
+        "status_note": "Applications for the 2027 intake are open and close on 15 March 2027 as stated on the page as at its 9 September 2026 update.",
+        "funding_amount": null,
+        "funding_currency": null,
+        "funding_period": null,
+        "funding_duration": "Maximum 2 years of Master's study in any country of study",
+        "tuition_coverage": true,
+        "tuition_coverage_note": "The 'Value of Award' section lists 'Tuition fees and other approved charges. For overseas degrees, return airfare will be provided.'",
+        "living_cost_coverage": true,
+        "living_cost_coverage_note": "Award includes 'Maintenance and other allowances.'",
+        "travel_coverage": true,
+        "travel_coverage_note": "'For overseas degrees, return airfare will be provided.'",
+        "fully_funded": false,
+        "funding_label": "Tuition fees and approved charges, return airfare for overseas degrees, maintenance and other allowances and sponsored development programmes, with a 3-year bond after graduation",
+        "benefits": [
+          "Tuition fees and other approved charges",
+          "Return airfare for overseas degrees",
+          "Maintenance and other allowances",
+          "A series of sponsored development programmes, including student exchange and summer opportunities"
+        ],
+        "eligibility": [
+          "Be a Singapore Citizen",
+          "Demonstrate strong leadership qualities and potential",
+          "Present themselves as well-rounded individuals, possessing good academic and non-academic records",
+          "GCE A-levels; or International Baccalaureate; or NUS High School Diploma; or Polytechnic Diploma; or other high school diploma or equivalent; and university results",
+          "Apply during the final year of undergraduate studies, or as a fresh graduate with no more than 3 years of working experience (including part-time or contract work) in the private or non-government sector only",
+          "Prepared to start the Master's programme in the immediate academic year following the offer"
+        ],
+        "citizenship_residency": "Singapore Citizen",
+        "international_eligibility": "Not open to foreign nationals; applicants must 'Be a Singapore Citizen'.",
+        "degree_levels": ["Master's"],
+        "study_mode": "Full-time",
+        "research_requirement": null,
+        "subject_or_agency_requirement": "A diverse range of courses relevant to the Public Service at local or overseas universities, subject to PSC approval. MBA programmes are not allowed. Sustainability applicants should intend to read a Master's in a field related to sustainability and circularity.",
+        "application_method": "Online application with supporting documents, an essay and a video interview, submitted through the PSC portal after Singpass login",
+        "application_route": "PSC scholarship application portal (Singpass login required)",
+        "requirements": [
+          "GCE A-levels, International Baccalaureate, NUS High School Diploma, Polytechnic Diploma or other high school diploma or equivalent, and university results",
+          "Good academic and non-academic records",
+          "Strong leadership qualities and potential",
+          "No more than 3 years of private or non-government sector working experience for fresh graduates",
+          "Supporting documents, an essay and a video interview"
+        ],
+        "documents": [
+          "Secondary 4/Year 4 Year End School Academic Reports (including results and teachers' comments)",
+          "Secondary 4/Year 4 Co-curricular Activities (CCA) and Community Involvement Programme (CIP) Records",
+          "Pre-tertiary CCA and CIP Records",
+          "Certificates of Academic Qualification Obtained (e.g. GCE O-level, GCE A-level, International Baccalaureate Diploma, NUS High School Diploma, Polytechnic Diploma, other high school diploma or equivalent)",
+          "University Academic Transcripts",
+          "University CCA Records",
+          "Employment Testimonials (if applicable)",
+          "NS Certificate of Service and Testimonial (if applicable)",
+          "Public Service Internship Testimonials (if applicable)"
+        ],
+        "english_requirement": null,
+        "english_requirement_note": "No English language test requirement is published.",
+        "selection_criteria": [
+          "Strong leadership qualities and potential",
+          "Well-roundedness with good academic and non-academic records",
+          "Relevance of the intended Master's course to the Public Service",
+          "Performance in assessments and the panel interview with the PSC Scholarships Selection Board"
+        ],
+        "selection_weighting": null,
+        "duration": "Maximum 2 years of Master's study in any country of study",
+        "award_holder_conditions": [
+          "Bond of 3 years for study in any country",
+          "Candidates must be prepared to start their Master's programme in the immediate academic year following the offer of the scholarship",
+          "MBA programmes are not allowed"
+        ],
+        "supplements_or_initiatives": [
+          "Gap Year Programme (six months to a year attachment in the people or private sector after studies and National Service)",
+          "Public Service Leadership Programme (PSLP)"
+        ],
+        "official_contacts": {
+          "general": "Public Service Commission, https://www.psc.gov.sg/scholarships"
+        },
+        "description": "Recipients of the PSC Master's Scholarships pursue a career in Public Administration in the Singapore Public Service, taking on different roles across the wide spectrum of public governance work from policy formulation to implementation. Scholarship holders are posted to a ministry or statutory board depending on the needs of the Service and their suitability.",
+        "program_type": "Postgraduate (Master's) scholarship in Public Administration and Sustainability",
+        "region": "Asia",
+        "coverage": "Tuition fees and approved charges, return airfare for overseas degrees, maintenance and other allowances, sponsored development programmes including student exchange and summer opportunities",
+        "last_verified_date": "2026-10-04"
+      },
+      "programme_detail_applicant_utility": {
+        "application_readiness_checklist": [
+          "Confirm Singapore Citizenship",
+          "Confirm eligibility window: final year of undergraduate studies, or no more than 3 years of private/non-government sector experience",
+          "Gather school reports, CCA and CIP records and academic qualification certificates",
+          "Gather university academic transcripts and CCA records",
+          "Have a valid Singpass account ready to log in to the portal",
+          "Prepare an essay and a video interview",
+          "Confirm the intended Master's course is not an MBA"
+        ],
+        "common_rejection_risks": [
+          "Proposing an MBA programme, which is explicitly not allowed",
+          "More than 3 years of working experience, or experience in the public/government sector",
+          "Inability to start the Master's programme in the immediate academic year after the offer",
+          "Missing supporting documents or a valid Singpass account"
+        ],
+        "estimated_uncovered_costs": [
+          "Costs outside approved academic charges and the published allowances",
+          "Any programme not covered by the approved development, exchange or summer sponsorship"
+        ],
+        "document_audit": [
+          "Secondary 4/Year 4 school reports with teachers' comments",
+          "Secondary 4/Year 4 CCA and CIP records",
+          "Pre-tertiary CCA and CIP records",
+          "Certificates of academic qualification",
+          "University academic transcripts",
+          "University CCA records",
+          "Employment testimonials, NS certificate of service and public service internship testimonials where applicable"
+        ],
+        "alerts": [
+          {
+            "trigger": "Applications close 15 March 2027",
+            "message": "The official page states applications for 2027 'are now open and will close on 15 March 2027'."
+          },
+          {
+            "trigger": "MBA programmes are not allowed",
+            "message": "PSC states that holders 'may study at local or overseas universities; and choose to read from a diverse range of courses relevant to the Public Service (subject to PSC's approval). MBA programmes are not allowed.'"
+          },
+          {
+            "trigger": "3-year bond",
+            "message": "The published bond duration for PSC Master's Scholarships is 3 years for study in any country."
+          }
+        ],
+        "submission_workflow": [
+          "Prepare supporting documents before starting the form",
+          "Log in to the PSC portal with Singpass and submit the online application with essay and video interview",
+          "Undergo assessments and a panel interview with the PSC Scholarships Selection Board",
+          "On offer, start the Master's programme in the immediate academic year, then join a ministry or statutory board"
+        ]
+      },
+      "programme_detail_verification": {
+        "cycle_verified": "2027 intake cycle closing 15 March 2027, verified 2026-10-04",
+        "verification_confidence": 0.9,
+        "official_fields_confirmed": ["name", "country", "degree_levels", "funding_type", "official_source", "status", "application_link", "deadline_central", "eligibility", "citizenship_residency", "documents", "coverage", "award_holder_conditions", "duration", "region"],
+        "institution_check_required": ["funding_amount", "funding_currency"],
+        "unverified_or_removed_claims": [
+          "No monetary funding amount or currency is published, so funding_amount and funding_currency remain null.",
+          "The stored record's official_source_url 404s; the live official page is singular-plural 'psc-masters-scholarships'. The stored URL has been preserved as the record identity and the live URL is reported in research_notes.url_observed."
+        ],
+        "source_citations": [
+          "https://www.psc.gov.sg/scholarships/postgraduate-scholarships/psc-masters-scholarships",
+          "https://www.psc.gov.sg/scholarships/postgraduate-scholarships"
+        ],
+        "researched_by": "w1_44"
+      },
+      "logo_override": {
+        "url": "https://isomer-user-content.by.gov.sg/417/ea52e2be-2288-4c41-9033-f238dff8bd35/logo.png",
+        "page_url": "https://www.psc.gov.sg/scholarships/postgraduate-scholarships/psc-masters-scholarships",
+        "official_host": true,
+        "alt_text": "Public Service Commission",
+        "validation_result": "verified",
+        "validation_detail": "png 23619B, 'PUBLIC SERVICE COMMISSION / SINGAPORE' wordmark with crest in dark grey on opaque white; probed HTTP 200 with image content-type (image/webp on content negotiation; raw bytes PNG 89 50 4E 47)",
+        "image_kind": "official_logo",
+        "image_format": "png",
+        "verified_at": "2026-10-04T00:00:00+00:00",
+        "host_evidence": "same_registrable_domain",
+        "_award": "PSC Master's Scholarships (Public Service Commission)"
+      },
+      "research_notes": {
+        "logo": "Taken from the PSC page header markup and <meta property=\"og:image\"> on psc.gov.sg, which links https://isomer-user-content.by.gov.sg/417/ea52e2be-2288-4c41-9033-f238dff8bd35/logo.png with alt text 'Public Service Commission'. Probed: HTTP 200, 23619B, image content-type on content negotiation (raw bytes are a valid PNG, magic 89 50 4E 47). Host is isomer-user-content.by.gov.sg, the Government of Singapore's official Isomer asset domain from which psc.gov.sg serves its own site media; no logo exists on the bare psc.gov.sg domain (favicon.ico, /logo.svg, /logo.png and /images/logo.png all return 404). Visually verified as the PSC wordmark and crest in dark grey on an opaque white background - not white-on-transparent.",
+        "unverified": ["No published funding amount"],
+        "substitution": null,
+        "official_pages_read": [
+          "https://www.psc.gov.sg/scholarships/postgraduate-scholarships/psc-masters-scholarships",
+          "https://www.psc.gov.sg/scholarships/postgraduate-scholarships"
+        ],
+        "degree_level_confirmed": "The page states it is 'For those who wish to pursue a Master's degree and a career in Public Administration and Sustainability' and that holders 'may study at local or overseas universities' for a Master's, confirming Master's level study.",
+        "url_observed": "The stored official_source_url https://www.psc.gov.sg/scholarships/postgraduate-scholarships/psc-master's-scholarship returns HTTP 404. The live official page is https://www.psc.gov.sg/scholarships/postgraduate-scholarships/psc-masters-scholarships (plural, no apostrophe). The stored URL has been kept unchanged in official_source_url because it is the record identity, and changing it would create a duplicate row.",
+        "contradictions": [
+          "The stored official_source_url is dead (HTTP 404); the live page differs only by pluralising to 'psc-masters-scholarships'.",
+          "The official award name is plural, 'PSC Master's Scholarships', covering two schemes (PSC Master's Scholarship and PSC Master's Scholarship (Sustainability)); the stored title is singular.",
+          "Stored deadline_precision was 'unknown' and deadline_display was null; the official page states 'Applications for PSC Master's Scholarships for 2027 are now open and will close on 15 March 2027'.",
+          "Stored region was null; set to Asia from the host country Singapore."
+        ],
+        "skeleton": false
+      }
+    },
+    {
+      "target_id": 433,
+      "outcome": "refreshed",
+      "confirm": true,
+      "confirmation_evidence": "Read the official PSC page 'Lee Kuan Yew Scholarship | Public Service Commission' (last updated 20 August 2026), which states 'Applications for Lee Kuan Yew (LKY) Scholarship for the year of 2026 is currently closed' and that 'Scholarship recipients will receive full tuition fees coverage and an annual allowance of S$50,000 for up to 2 years if they are pursuing a Master's degree or up to 5 years for PhD studies.'",
+      "new_scholarship": {
+        "name": "Lee Kuan Yew Scholarship",
+        "legacy_titles": ["Lee Kuan Yew Scholarship"],
+        "country": "Singapore",
+        "degree_levels": "Master's, PhD",
+        "funding_type": "Fully Funded",
+        "official_source": "Public Service Commission",
+        "official_source_url": "https://www.psc.gov.sg/scholarships/postgraduate-scholarships/lee-kuan-yew-scholarship",
+        "status": "upcoming",
+        "is_verified": true,
+        "last_verified_date": "2026-10-04",
+        "description": "The Lee Kuan Yew Scholarship is the premier postgraduate scholarship in Singapore, set up in 1991 by the Tanjong Pagar Citizens' Consultative Committee with funding from the public to commemorate the contributions of Mr Lee Kuan Yew. It provides full tuition fee coverage and an annual allowance of S$50,000 for up to two years of Master's study or up to five years of PhD study, with no bond attached. Recipients are Singapore citizens assessed holistically on leadership and achievement in their fields."
+      },
+      "programme_detail_official": {
+        "official_source_urls": ["https://www.psc.gov.sg/scholarships/postgraduate-scholarships/lee-kuan-yew-scholarship"],
+        "application_link": null,
+        "official_updates_url": "https://www.psc.gov.sg/scholarships/postgraduate-scholarships",
+        "catalogue_url": null,
+        "application_cycle": "2026 cycle closed on 28 February 2026; the award is annual and the next cycle date is not yet published",
+        "deadline_central": null,
+        "deadline_central_display": "2026 cycle closed 28 February 2026; next cycle deadline not yet published",
+        "deadline_central_timezone": null,
+        "deadline_note": "The official page states 'Applications for Lee Kuan Yew (LKY) Scholarship for the year of 2026 is currently closed.' The page still carries the 2026 cycle instructions requiring submission 'by 28 February 2026', which has now passed. No date for the next cycle is published, so no forward-looking deadline_date is recorded.",
+        "status": "UPCOMING",
+        "status_note": "The 2026 application cycle is closed as stated on the page. The award is an annual programme, so the next cycle is expected but its opening date and deadline are not yet published. The page also carries a stale sentence reading 'Application for the 2025 LKY Scholarship is now open', which is inconsistent with the closed status stated at the top of the same page.",
+        "funding_amount": 50000,
+        "funding_currency": "SGD",
+        "funding_period": "per year",
+        "funding_duration": "Up to 2 years for a Master's degree or up to 5 years for PhD studies",
+        "tuition_coverage": true,
+        "tuition_coverage_note": "The page states 'Scholarship recipients will receive full tuition fees coverage and an annual allowance of S$50,000'.",
+        "living_cost_coverage": true,
+        "living_cost_coverage_note": "The award provides 'an annual allowance of S$50,000' which covers living costs.",
+        "travel_coverage": null,
+        "travel_coverage_note": "The official page does not state whether any travel or airfare allowance is provided.",
+        "fully_funded": true,
+        "funding_label": "Full tuition fees plus an annual allowance of S$50,000 for up to 2 years (Master's) or up to 5 years (PhD), with no bond attached",
+        "benefits": [
+          "Full tuition fees coverage",
+          "Annual allowance of S$50,000 for up to 2 years for a Master's degree or up to 5 years for PhD studies",
+          "Public sector awardees already sponsored by their agencies receive a one-off sum of S$10,000"
+        ],
+        "eligibility": [
+          "Applicants must be Singapore citizens",
+          "Applicants will be assessed holistically, including their track record of leadership and achievement in their fields of pursuit or professions",
+          "Applicants should have the potential to excel in their fields or professions, which will contribute to and benefit Singapore and our society",
+          "Applicants who have started their postgraduate studies should have at least three academic terms of study remaining at the point of application"
+        ],
+        "citizenship_residency": "Singapore citizens only",
+        "international_eligibility": "Not open to foreign nationals; the page states 'Applicants, who must be Singapore citizens'.",
+        "degree_levels": ["Master's", "PhD"],
+        "study_mode": "Full-time",
+        "research_requirement": "Postgraduate study at a local or overseas university; applicants who have already started must have at least three academic terms of study remaining",
+        "subject_or_agency_requirement": "There are no restrictions on the course of study",
+        "application_method": "Applications are submitted via the Gateway application portal, with reference letters submitted by referees through a FormSG link",
+        "application_route": "Gateway application portal plus referee submission via FormSG",
+        "requirements": [
+          "Singapore citizenship",
+          "Track record of leadership and achievement in the applicant's field of pursuit or profession",
+          "Potential to excel in the field and to contribute to and benefit Singapore and Singaporean society",
+          "At least three academic terms of study remaining for applicants who have already started postgraduate studies",
+          "Two referees submitting reference letters via the official FormSG link within 14 days of submission or by the application deadline, whichever is earlier"
+        ],
+        "documents": [
+          "Referee reference letters submitted via the official FormSG link",
+          "Evidence of leadership and achievement record in the applicant's field"
+        ],
+        "english_requirement": null,
+        "english_requirement_note": "No English language test requirement is published.",
+        "selection_criteria": [
+          "Track record of leadership and achievement in the applicant's field",
+          "Potential to excel in the field and contribute to Singapore and Singaporean society",
+          "Holistic assessment by the scholarship board",
+          "Shortlisted applicants are notified by early April and interviewed in April"
+        ],
+        "selection_weighting": null,
+        "duration": "Up to 2 years for a Master's degree or up to 5 years for PhD studies",
+        "award_holder_conditions": [
+          "There is no bond associated with the Scholarship",
+          "Recipients are expected to actively contribute towards the betterment of Singapore and Singaporeans",
+          "Public sector awardees already sponsored by their agencies receive a one-off S$10,000 and do not receive tuition sponsorship or the annual allowance from the Lee Kuan Yew Scholarship"
+        ],
+        "supplements_or_initiatives": [
+          "LKY Scholarship Fund, a registered charity supporting the scholarship programme"
+        ],
+        "official_contacts": {
+          "email": "psc@psd.gov.sg",
+          "general": "Public Service Commission, https://www.psc.gov.sg/scholarships/postgraduate-scholarships/lee-kuan-yew-scholarship"
+        },
+        "description": "The Lee Kuan Yew Scholarship marks Singapore's continuous effort to recognise outstanding individuals with the aptitude and inclination to contribute to Singapore and society. Since its inception many holders have gone on to make significant contributions across the Public Service, business, law, medicine, the arts and academia.",
+        "program_type": "Postgraduate scholarship (Master's and PhD) with no course restriction",
+        "region": "Asia",
+        "coverage": "Full tuition fees and an annual allowance of S$50,000 for up to 2 years (Master's) or up to 5 years (PhD); one-off S$10,000 for agency-sponsored public sector awardees",
+        "last_verified_date": "2026-10-04"
+      },
+      "programme_detail_applicant_utility": {
+        "application_readiness_checklist": [
+          "Confirm Singapore citizenship",
+          "Confirm at least three academic terms of postgraduate study remain if already enrolled",
+          "Brief two referees early so they can submit via the official FormSG link within 14 days of your submission",
+          "Prepare evidence of leadership and achievement in your field",
+          "Monitor the official page for the next cycle opening, as no date is published yet"
+        ],
+        "common_rejection_risks": [
+          "Failing to reach the three-remaining-terms threshold if already enrolled",
+          "Referees missing the 14-day reference letter window or the application deadline, whichever is earlier",
+          "Applying as a non-Singapore citizen"
+        ],
+        "estimated_uncovered_costs": [
+          "Any cost beyond full tuition fees and the S$50,000 annual allowance; the official page states no travel or relocation allowance",
+          "For agency-sponsored public sector awardees, tuition and living costs are not covered by this scholarship"
+        ],
+        "document_audit": [
+          "Referee reference letters via the official FormSG link",
+          "Evidence of leadership and achievement record",
+          "Postgraduate study timeline showing at least three remaining academic terms"
+        ],
+        "alerts": [
+          {
+            "trigger": "Next cycle date not published",
+            "message": "The 2026 cycle is closed and the official page gives no opening date or deadline for the next cycle. Monitor the official page rather than relying on third-party deadlines."
+          },
+          {
+            "trigger": "Referee deadline is the earlier of 14 days or the application deadline",
+            "message": "The page requires referees to submit 'within 14 days from the date of your application submission, or by the application deadline of 28 February 2026, whichever is earlier'."
+          },
+          {
+            "trigger": "No bond",
+            "message": "The official page states 'there is no bond associated with the Scholarship', though recipients are expected to contribute to the betterment of Singapore and Singaporeans."
+          }
+        ],
+        "submission_workflow": [
+          "Wait for the next cycle to open; the 2026 cycle closed on 28 February 2026",
+          "Submit the application via the Gateway application portal",
+          "Arrange for two referees to submit reference letters via the official FormSG link within 14 days",
+          "Shortlisted applicants are notified by early April and interviewed in April"
+        ]
+      },
+      "programme_detail_verification": {
+        "cycle_verified": "2026 cycle (closed 28 February 2026); next cycle not yet published - verified 2026-10-04",
+        "verification_confidence": 0.85,
+        "official_fields_confirmed": ["name", "country", "degree_levels", "funding_type", "official_source", "citizenship_residency", "funding_amount", "funding_currency", "funding_period", "coverage", "award_holder_conditions", "selection_criteria", "region"],
+        "institution_check_required": ["deadline_central for the next cycle", "application_link", "travel_coverage"],
+        "unverified_or_removed_claims": [
+          "No deadline for the next (2027) cycle is published, so deadline_date and deadline_central are null even though the stored record carried 2026-02-28.",
+          "The application link is not published on the page read; applications are described as going through the 'Gateway application portal' without a URL.",
+          "The stored record's status 'closed' was replaced with 'upcoming' because the award runs annually; the 2026 cycle specifically is closed.",
+          "The official page contains a stale sentence, 'Application for the 2025 LKY Scholarship is now open', which contradicts the closed status stated at the top of the same page."
+        ],
+        "source_citations": ["https://www.psc.gov.sg/scholarships/postgraduate-scholarships/lee-kuan-yew-scholarship"],
+        "researched_by": "w1_44"
+      },
+      "logo_override": {
+        "url": "https://isomer-user-content.by.gov.sg/417/ea52e2be-2288-4c41-9033-f238dff8bd35/logo.png",
+        "page_url": "https://www.psc.gov.sg/scholarships/postgraduate-scholarships/lee-kuan-yew-scholarship",
+        "official_host": true,
+        "alt_text": "Public Service Commission",
+        "validation_result": "verified",
+        "validation_detail": "png 23619B, 'PUBLIC SERVICE COMMISSION / SINGAPORE' wordmark with crest in dark grey on opaque white; probed HTTP 200 with image content-type (image/webp on content negotiation; raw bytes PNG 89 50 4E 47)",
+        "image_kind": "official_logo",
+        "image_format": "png",
+        "verified_at": "2026-10-04T00:00:00+00:00",
+        "host_evidence": "same_registrable_domain",
+        "_award": "Lee Kuan Yew Scholarship (Public Service Commission)"
+      },
+      "research_notes": {
+        "logo": "Taken from the PSC page header markup and <meta property=\"og:image\"> on psc.gov.sg, which links https://isomer-user-content.by.gov.sg/417/ea52e2be-2288-4c41-9033-f238dff8bd35/logo.png with alt text 'Public Service Commission'. Probed: HTTP 200, 23619B, image content-type on content negotiation (raw bytes are a valid PNG, magic 89 50 4E 47). Host is isomer-user-content.by.gov.sg, the Government of Singapore's official Isomer asset domain from which psc.gov.sg serves its own site media; no logo exists on the bare psc.gov.sg domain (favicon.ico, /logo.svg, /logo.png and /images/logo.png all return 404). Visually verified as the PSC wordmark and crest in dark grey on an opaque white background - not white-on-transparent. This is the correct provenance because the Lee Kuan Yew Scholarship is administered by PSC, not by the Tanjong Pagar Citizens' Consultative Committee which founded it in 1991.",
+        "unverified": ["No published deadline for the next cycle", "No published application URL", "Travel coverage is not stated", "The page mixes '2025 LKY Scholarship is now open' with '2026 is currently closed'"],
+        "substitution": null,
+        "official_pages_read": ["https://www.psc.gov.sg/scholarships/postgraduate-scholarships/lee-kuan-yew-scholarship"],
+        "degree_level_confirmed": "The page states recipients receive the annual allowance 'for up to 2 years if they are pursuing a Master's degree or up to 5 years for PhD studies', confirming both Master's and PhD levels.",
+        "url_observed": null,
+        "contradictions": [
+          "Stored status 'closed' replaced with 'upcoming': the 2026 cycle is closed but the award is an annual programme, so the record should not read as terminated.",
+          "Stored deadline_precision 'application_dead' is not a permitted value; the cycle used had an exact calendar date, but as it has passed no forward-looking deadline_date is recorded.",
+          "Stored funding_amount was null, but the official page publishes 'an annual allowance of S$50,000' and 'full tuition fees coverage'; funding_amount 50000 SGD per year has been added.",
+          "Stored funding_type 'Full funding' replaced with 'Fully Funded' for schema consistency."
+        ],
+        "skeleton": false
+      }
+    },
+    {
+      "target_id": 434,
+      "outcome": "refreshed",
+      "confirm": true,
+      "confirmation_evidence": "Read the official MOE page 'MOE Teaching Scholarships/Award (Full-Term)' (application page last updated 14 September 2026), which states 'Full coverage of your undergraduate tuition fees' and 'A monthly allowance to support your expenses during your studies', and that 'The application window will open from the date of the release of the GCE A-Level results to 19 March 2027 (Friday)'.",
+      "new_scholarship": {
+        "name": "MOE Teaching Scholarships/Award (Full-Term)",
+        "legacy_titles": ["MOE Teaching Scholarship (Full-Term)"],
+        "country": "Singapore",
+        "degree_levels": "Bachelor's",
+        "funding_type": "Fully Funded",
+        "official_source": "Ministry of Education",
+        "official_source_url": "https://www.moe.gov.sg/careers/teaching-scholarships-sponsorships/moe-teaching-scholarships-full-term/moe-application",
+        "status": "upcoming",
+        "is_verified": true,
+        "last_verified_date": "2026-10-04",
+        "description": "The MOE Teaching Scholarships and Teaching Award (Full-Term) are administered by the Ministry of Education for applicants entering full-time undergraduate teacher education. The award provides full coverage of undergraduate tuition fees and a monthly allowance, together with developmental opportunities and the option to enrol in the NTU-NIE Bachelor of Arts/Science (BABSc) programme. Application windows differ by qualification type and are published on the MOE application page."
+      },
+      "programme_detail_official": {
+        "official_source_urls": [
+          "https://www.moe.gov.sg/careers/teaching-scholarships-sponsorships/moe-teaching-scholarships-full-term/moe-application",
+          "https://www.moe.gov.sg/careers/teaching-scholarships-sponsorships/moe-teaching-scholarships-full-term"
+        ],
+        "application_link": null,
+        "official_updates_url": "https://www.moe.gov.sg/careers/teaching-scholarships-sponsorships/moe-teaching-scholarships-full-term",
+        "catalogue_url": null,
+        "application_cycle": "2027 intake; windows open by qualification type - International and other qualifications from mid-October 2026, NUS High School from early December 2026, GCE 'A' Level from results release to 19 March 2027, Polytechnic Diploma from early February 2027",
+        "deadline_central": "2027-03-19",
+        "deadline_central_display": "GCE 'A' Level applicants: from the release of the GCE A-Level results to 19 March 2027 (Friday). Other qualification types have their own windows with no published closing date.",
+        "deadline_central_timezone": null,
+        "deadline_note": "Application windows are qualification-specific. Only the GCE 'A' Level window has a published closing date, 19 March 2027 (Friday). The Polytechnic Diploma window opens in early February 2027, the International and other qualifications window opens in mid-October 2026, and the NUS High School Diploma window opens in early December 2026; none of these three states a closing date. No timezone is given.",
+        "status": "UPCOMING",
+        "status_note": "As at 2026-10-04 every application window is described as currently closed, with the next windows opening from mid-October 2026 (International and other qualifications). The scholarship is continuing and targets the 2027 intake, so the status is upcoming rather than closed.",
+        "funding_amount": null,
+        "funding_currency": null,
+        "funding_period": null,
+        "funding_duration": "Duration of the undergraduate degree",
+        "tuition_coverage": true,
+        "tuition_coverage_note": "The overview states 'Full coverage of your undergraduate tuition fees'.",
+        "living_cost_coverage": true,
+        "living_cost_coverage_note": "The overview states 'A monthly allowance to support your expenses during your studies'.",
+        "travel_coverage": null,
+        "travel_coverage_note": "The official pages read do not state whether any travel or relocation allowance is provided.",
+        "fully_funded": true,
+        "funding_label": "Full coverage of undergraduate tuition fees plus a monthly allowance during studies; no bond amount is published on the pages read",
+        "benefits": [
+          "Full coverage of undergraduate tuition fees",
+          "A monthly allowance to support expenses during studies",
+          "Exclusive developmental opportunities tailored to nurture educational leaders",
+          "Opportunity to enrol in the specially curated NTU-NIE Bachelor of Arts/Science (BABSc) programme",
+          "Opportunities for professional growth based on aspirations, demonstrated capabilities and aptitude",
+          "Possible deployment to MOE Headquarters, with influence on educational policies",
+          "Potential appointments to key leadership positions within schools and MOE Headquarters"
+        ],
+        "eligibility": [
+          "Applicants hold one of the qualification types listed by MOE: Singapore-Cambridge GCE 'A' Level, International Baccalaureate, NUS High School Diploma, Polytechnic Diploma, or International and other qualifications",
+          "Applicants must apply during the application window that matches their qualification type",
+          "Applicants intending to teach in Singapore's education service"
+        ],
+        "citizenship_residency": "Not stated on the application page read",
+        "international_eligibility": "Not stated on the application page read; the window for 'International and other qualifications' indicates non-local qualifications are accepted.",
+        "degree_levels": ["Bachelor's"],
+        "study_mode": "Full-time",
+        "research_requirement": null,
+        "subject_or_agency_requirement": "Applicants are entering full-time undergraduate teacher education; the NTU-NIE Bachelor of Arts/Science (BABSc) programme is offered as an option.",
+        "application_method": "Online application form with supporting documents, submitted directly to MOE during the published window for the applicant's qualification type. Applicants interested in the Public Service Commission Scholarship (Teaching Service) apply separately via the PSC Gateway Portal.",
+        "application_route": "Direct application to MOE (online application form with supporting documents)",
+        "requirements": [
+          "Apply during the application window for the applicant's qualification type",
+          "Submit an online application form complete with the necessary supporting documents",
+          "Applicants are encouraged not to wait until the end of the window; earlier shortlisted applicants are scheduled for interviews sooner"
+        ],
+        "documents": [],
+        "english_requirement": null,
+        "english_requirement_note": "No English language test requirement is published on the pages read.",
+        "selection_criteria": [
+          "Shortlisted applicants are invited for an interview and may be scheduled for other selection processes",
+          "Applicants can generally expect to hear from MOE within 4 weeks of the close of the application window",
+          "All interviewed candidates are carefully evaluated by the recruitment team"
+        ],
+        "selection_weighting": null,
+        "duration": "Duration of the undergraduate degree",
+        "award_holder_conditions": [],
+        "supplements_or_initiatives": [
+          "NTU-NIE Bachelor of Arts/Science (BABSc) programme",
+          "Mentorship and developmental programmes for educational leaders"
+        ],
+        "official_contacts": {
+          "general": "Ministry of Education, https://www.moe.gov.sg/careers/teaching-scholarships-sponsorships/moe-teaching-scholarships-full-term"
+        },
+        "description": "MOE provides varied opportunities for aspiring educators through its teaching scholarships and teaching award, aiming to nurture the next generation of educational leaders. Recipients may look forward to professional growth, possible deployment to MOE Headquarters and potential appointments to key leadership positions within schools and MOE Headquarters.",
+        "program_type": "Full-term teaching scholarship or award for undergraduate teacher education",
+        "region": "Asia",
+        "coverage": "Full undergraduate tuition fees and a monthly allowance during studies; developmental opportunities; optional NTU-NIE BABSc programme enrolment",
+        "last_verified_date": "2026-10-04"
+      },
+      "programme_detail_applicant_utility": {
+        "application_readiness_checklist": [
+          "Identify which qualification type applies and note its window (A-Level, IB, NUS High, Polytechnic Diploma, or International and other qualifications)",
+          "For the International and other qualifications route, prepare to apply when the window opens in mid-October 2026",
+          "For NUS High School Diploma, prepare to apply when the window opens in early December 2026",
+          "For Polytechnic Diploma, prepare to apply when the window opens in early February 2027",
+          "For GCE 'A' Level, apply from the release of results through to 19 March 2027",
+          "Assemble supporting documents before the window opens so the form can be completed early"
+        ],
+        "common_rejection_risks": [
+          "Applying outside the window for the applicant's qualification type",
+          "Waiting until the end of the window, which delays interview scheduling",
+          "Confusing the MOE Teaching Scholarship with the separate PSC Scholarship (Teaching Service), which is applied for through the PSC Gateway Portal"
+        ],
+        "estimated_uncovered_costs": [
+          "Any cost beyond full tuition fees and the monthly allowance; travel and relocation costs are not stated on the pages read"
+        ],
+        "document_audit": [
+          "Supporting documents required by the MOE online application form (the page states the form must be submitted 'complete with the necessary supporting documents' without listing them)"
+        ],
+        "alerts": [
+          {
+            "trigger": "GCE 'A' Level window closes 19 March 2027",
+            "message": "The official page states the window runs 'from the date of the release of the GCE A-Level results to 19 March 2027 (Friday)'."
+          },
+          {
+            "trigger": "Earliest windows open imminently",
+            "message": "The International and other qualifications window opens in mid-October 2026 and the NUS High School Diploma window in early December 2026."
+          },
+          {
+            "trigger": "Separate PSC route exists",
+            "message": "The PSC Scholarship (Teaching Service) is administered by the Public Service Commission and applied for via the PSC Gateway Portal; PSC Scholarships for 2027 close on 15 March 2027."
+          }
+        ],
+        "submission_workflow": [
+          "Wait for the application window for the applicant's qualification type to open",
+          "Submit the online application form with supporting documents directly to MOE",
+          "Expect contact within 4 weeks of the window closing if shortlisted",
+          "Attend an interview and any other selection processes",
+          "Receive an outcome; applications are still actively considered if no response is received within 3 weeks after interview"
+        ]
+      },
+      "programme_detail_verification": {
+        "cycle_verified": "2027 intake application windows, verified 2026-10-04",
+        "verification_confidence": 0.85,
+        "official_fields_confirmed": ["name", "country", "degree_levels", "funding_type", "official_source", "status", "official_updates_url", "deadline_central", "tuition_coverage", "living_cost_coverage", "coverage", "region"],
+        "institution_check_required": ["citizenship_residency", "application_link", "documents", "bond or service obligation", "funding_amount"],
+        "unverified_or_removed_claims": [
+          "The application page does not state the application URL, so application_link is null.",
+          "No citizenship or residency requirement is published on the pages read, so citizenship_residency is recorded as not stated.",
+          "No bond or service obligation amount is published on the pages read, so award_holder_conditions is empty and the bond length is unverified.",
+          "No document list is published; the page only says the form must be 'complete with the necessary supporting documents'.",
+          "No monetary funding amount is published; only full tuition coverage and a monthly allowance are stated."
+        ],
+        "source_citations": [
+          "https://www.moe.gov.sg/careers/teaching-scholarships-sponsorships/moe-teaching-scholarships-full-term/moe-application",
+          "https://www.moe.gov.sg/careers/teaching-scholarships-sponsorships/moe-teaching-scholarships-full-term"
+        ],
+        "researched_by": "w1_44"
+      },
+      "logo_override": {
+        "url": "https://www.moe.gov.sg/-/media/images/news/moe-logo.jpg",
+        "page_url": "https://www.moe.gov.sg/careers/teaching-scholarships-sponsorships/moe-teaching-scholarships-full-term",
+        "official_host": true,
+        "alt_text": "Ministry of Education Singapore",
+        "validation_result": "verified",
+        "validation_detail": "jpeg 62952B, full Ministry of Education crest and 'Ministry of Education / SINGAPORE' wordmark in dark ink on white; probed HTTP 200 with content-type image/jpeg directly from the official moe.gov.sg domain",
+        "image_kind": "official_logo",
+        "image_format": "jpeg",
+        "verified_at": "2026-10-04T00:00:00+00:00",
+        "host_evidence": "same_registrable_domain",
+        "_award": "MOE Teaching Scholarships/Award (Full-Term) (Ministry of Education)"
+      },
+      "research_notes": {
+        "logo": "The MOE site is a Next.js site that serves its own assets from moe.gov.sg. The page's <meta property=\"og:image\"> and <meta name=\"twitter:image\"> both point to https://www.moe.gov.sg/-/media/images/news/moe-logo.jpg, which is on the official ministry domain itself. Probed: HTTP 200, content-type image/jpeg, 62952 bytes. Visually verified as the full Ministry of Education crest with the 'Ministry of Education / SINGAPORE' wordmark in dark ink on white - not white-on-transparent, and hosted on the awarding body's own domain. A second official asset, https://www.moe.gov.sg/media/moe/assets/4f24da8d-0ce9-438c-9c0f-ecba0849db81.svg, returns HTTP 200 image/svg+xml (1182 bytes) but is only a 26x31 unit monogram icon, too small to serve as the ministry wordmark, so the og:image jpeg was preferred.",
+        "unverified": ["Citizenship or residency requirement is not published", "No application URL is published", "No published bond or service obligation", "No published document list", "No published monetary funding amount"],
+        "substitution": null,
+        "official_pages_read": [
+          "https://www.moe.gov.sg/careers/teaching-scholarships-sponsorships/moe-teaching-scholarships-full-term/moe-application",
+          "https://www.moe.gov.sg/careers/teaching-scholarships-sponsorships/moe-teaching-scholarships-full-term"
+        ],
+        "degree_level_confirmed": "The overview states the award includes 'Full coverage of your undergraduate tuition fees' and 'Opportunity to enrol in the specially curated NTU-NIE Bachelor of Arts/Science (BABSc) programme', confirming undergraduate study.",
+        "url_observed": null,
+        "contradictions": [
+          "Stored status 'open' replaced with 'upcoming': as at 2026-10-04 all application windows are described as currently closed, with the next windows opening from mid-October 2026 onward.",
+          "Stored deadline_precision was 'unknown' and deadline_display was null; the official page publishes qualification-specific windows including a closing date of 19 March 2027 for GCE 'A' Level applicants.",
+          "Stored official_source 'Moe Government Sg' replaced with the official body name 'Ministry of Education'.",
+          "The official title is 'MOE Teaching Scholarships/Award (Full-Term)', which covers both a scholarship and a teaching award; the stored title omits the Teaching Award."
+        ],
+        "skeleton": false
+      }
+    },
+    {
+      "target_id": 435,
+      "outcome": "refreshed",
+      "confirm": true,
+      "confirmation_evidence": "Read the official MOE pages 'Singapore-Industry Scholarship (SgIS)' and 'Singapore-Industry Scholarships (SgIS): How to apply' (how-to-apply page last updated 24 March 2026), which state 'You can apply online from Thursday, 15 January 2026 to Monday, 23 March 2026' and that 'SgIS is the only multi-industry scholarship in partnership with the Singapore Government, offering Singapore Citizens scholarships at different stages of their university education, locally and overseas.'",
+      "new_scholarship": {
+        "name": "Singapore-Industry Scholarship (SgIS)",
+        "legacy_titles": ["Singapore-Industry Scholarship (SgIS)"],
+        "country": "Singapore",
+        "degree_levels": "Bachelor's",
+        "funding_type": "Fully Funded",
+        "official_source": "Ministry of Education",
+        "official_source_url": "https://www.moe.gov.sg/sgis/application/how-to-apply",
+        "status": "upcoming",
+        "is_verified": true,
+        "last_verified_date": "2026-10-04",
+        "description": "The Singapore-Industry Scholarship (SgIS) is a multi-industry scholarship offered in partnership with the Singapore Government, targeting young Singaporean talent who wish to contribute to leading organisations in Singapore's strategic sectors. It is offered in three schemes - Full-Term, Mid-Term (Local) and Mid-Term (Overseas) - across local and overseas universities. Scholars join a sponsoring organisation and complete at least one internship with it, supported by the SgIS Scholars' Development and Engagement Programme."
+      },
+      "programme_detail_official": {
+        "official_source_urls": [
+          "https://www.moe.gov.sg/sgis/application/how-to-apply",
+          "https://www.moe.gov.sg/sgis/about-sgis"
+        ],
+        "application_link": "https://www.moe.gov.sg/sgis/application/how-to-apply",
+        "official_updates_url": "https://www.moe.gov.sg/sgis",
+        "catalogue_url": null,
+        "application_cycle": "2026 cycle ran 15 January 2026 to 23 March 2026 and has closed; the scholarship runs annually and the next cycle dates are not yet published",
+        "deadline_central": null,
+        "deadline_central_display": "2026 cycle: applications open Thursday 15 January 2026 and closed Monday 23 March 2026. The next cycle deadline is not yet published.",
+        "deadline_central_timezone": null,
+        "deadline_note": "The how-to-apply page, last updated 24 March 2026, states 'You can apply online from Thursday, 15 January 2026 to Monday, 23 March 2026'. That window has closed and the page still carries the 2026 dates. No dates for the next cycle are published, so no forward-looking deadline is recorded. Offline applications are not accepted after the application period ends.",
+        "status": "UPCOMING",
+        "status_note": "The 2026 application window closed on 23 March 2026 and the page has not been updated with a new window as at 2026-10-04. The scholarship itself is continuing - it is presented as an ongoing MOE programme - so the status is upcoming rather than closed.",
+        "funding_amount": null,
+        "funding_currency": null,
+        "funding_period": null,
+        "funding_duration": "Duration of the undergraduate degree",
+        "tuition_coverage": null,
+        "tuition_coverage_note": "The pages read describe the schemes and the development programme but do not state the tuition or allowance amounts, so tuition coverage cannot be confirmed or denied from the pages read.",
+        "living_cost_coverage": null,
+        "living_cost_coverage_note": "The pages read do not state any allowance amount or living-cost coverage.",
+        "travel_coverage": null,
+        "travel_coverage_note": "The pages read do not state any travel or relocation allowance.",
+        "fully_funded": false,
+        "funding_label": "Sponsorship of undergraduate studies by a Singapore-Industry Scholarship sponsoring organisation; specific tuition, allowance and travel amounts are not published on the pages read",
+        "benefits": [
+          "Scholarship sponsored by a participating organisation from Singapore's strategic sectors",
+          "SgIS Scholars' Development and Engagement Programme comprising induction programmes, internships, mentorships, dialogue sessions, Leaders' Forums and the SgIS Scholars' Network",
+          "At least 1 internship programme with the sponsoring organisation",
+          "An early start in personal and professional development during undergraduate studies"
+        ],
+        "eligibility": [
+          "Singapore Citizens",
+          "Full-Term: applicants embarking on full-time undergraduate studies in a local university",
+          "Mid-Term (Local): applicants currently pursuing full-time undergraduate studies in a local university",
+          "Mid-Term (Overseas): applicants currently pursuing full-time undergraduate studies in an overseas university",
+          "Applicants must choose one of the three schemes and apply within the published application period"
+        ],
+        "citizenship_residency": "Singapore Citizens",
+        "international_eligibility": "Not open to foreign nationals; the official page states SgIS offers 'Singapore Citizens scholarships at different stages of their university education'.",
+        "degree_levels": ["Bachelor's"],
+        "study_mode": "Full-time",
+        "research_requirement": null,
+        "subject_or_agency_requirement": "Applicants select a sponsoring organisation whose sector matches their interests. Participating industries include Aviation and Aerospace, Biomedical and Pharmaceuticals, Energy and Natural Resources, Healthcare (Administrators), Hospitality and Tourism, and Supply Chain Management.",
+        "application_method": "Online application only, submitted within the published application period. Offline applications are not accepted after the application period ends.",
+        "application_route": "MOE SgIS online application form",
+        "requirements": [
+          "O-Level and A-Level information (results or transcripts are not needed unless the exams were taken overseas)",
+          "A PDF copy of the academic transcript for a Polytechnic Diploma, International Baccalaureate Diploma, NUS High School Diploma or equivalent",
+          "Intended universities and courses of study for Full-Term applicants",
+          "A PDF copy of the University Academic Transcript for Mid-Term applicants",
+          "A 500-word write-up about the applicant and their career aspirations",
+          "National Service information",
+          "Optional: Co-Curricular Activities (CCAs) and other achievements or qualifications"
+        ],
+        "documents": [
+          "PDF academic transcript (Polytechnic Diploma, IB Diploma, NUS High School Diploma or equivalent)",
+          "PDF University Academic Transcript for Mid-Term applicants",
+          "500-word write-up about the applicant and their career aspirations",
+          "National Service information",
+          "Optional: CCA and other achievement or qualification records"
+        ],
+        "english_requirement": null,
+        "english_requirement_note": "No English language test requirement is published on the pages read.",
+        "selection_criteria": [
+          "Applicants are shortlisted from the online application and the sponsoring organisation's requirements",
+          "Applicants are encouraged to discuss career aspirations and preferences with the sponsoring organisation before graduation, as these factor into eventual deployment",
+          "Outreach sessions are held from February to March each year for applicants to learn about sponsoring organisations"
+        ],
+        "selection_weighting": null,
+        "duration": "Duration of the undergraduate degree",
+        "award_holder_conditions": [
+          "Recipients participate in at least 1 internship programme with the sponsoring organisation",
+          "Eventual job role and deployment depend on the organisation's needs"
+        ],
+        "supplements_or_initiatives": [
+          "SgIS Scholars' Development and Engagement Programme (induction programmes, internships, mentorships, dialogue sessions, Leaders' Forums, SgIS Scholars' Network)",
+          "Annual 'Explore with SgIS' outreach sessions with sponsoring organisations",
+          "SgIS brochure and sponsoring organisation information"
+        ],
+        "official_contacts": {
+          "general": "Ministry of Education Singapore-Industry Scholarship, https://www.moe.gov.sg/sgis"
+        },
+        "description": "SgIS is the only multi-industry scholarship in partnership with the Singapore Government, offering Singapore Citizens scholarships at different stages of their university education, locally and overseas. Together with participating organisations from various industries, the programme grooms the next generation of leaders through internships and professional development.",
+        "program_type": "Multi-industry undergraduate scholarship (Full-Term, Mid-Term Local, Mid-Term Overseas)",
+        "region": "Asia",
+        "coverage": "Undergraduate study sponsorship by a participating organisation, SgIS Scholars' Development and Engagement Programme and at least one internship with the sponsoring organisation; specific monetary amounts are not published on the pages read",
+        "last_verified_date": "2026-10-04"
+      },
+      "programme_detail_applicant_utility": {
+        "application_readiness_checklist": [
+          "Confirm Singapore Citizenship",
+          "Choose the correct scheme: Full-Term, Mid-Term (Local) or Mid-Term (Overseas)",
+          "Prepare the PDF academic transcript for Polytechnic Diploma, IB Diploma, NUS High School Diploma or equivalent",
+          "Mid-Term applicants: prepare the University Academic Transcript PDF",
+          "Draft the 500-word write-up about yourself and your career aspirations",
+          "Prepare National Service information",
+          "Optionally compile CCA and other achievement records",
+          "Apply only online and only within the published application period"
+        ],
+        "common_rejection_risks": [
+          "Submitting an offline application after the application period ends; offline applications are not accepted",
+          "Applying under the wrong scheme for the applicant's stage of study",
+          "Choosing a sponsoring organisation whose sector does not match the applicant's intended course or career interests",
+          "Applying as a non-Singaporean"
+        ],
+        "estimated_uncovered_costs": [
+          "Any cost not covered by the sponsoring organisation; the pages read publish no tuition, allowance or travel amounts, so uncovered costs cannot be itemised"
+        ],
+        "document_audit": [
+          "PDF academic transcript (Polytechnic, IB, NUS High School Diploma or equivalent)",
+          "PDF University Academic Transcript for Mid-Term applicants",
+          "500-word career aspirations write-up",
+          "National Service information",
+          "Optional CCA and achievement records",
+          "O-Level and A-Level information (only if exams taken overseas)"
+        ],
+        "alerts": [
+          {
+            "trigger": "Next cycle dates not published",
+            "message": "The how-to-apply page still shows the 2026 window of 15 January to 23 March 2026 and has not been updated. Monitor https://www.moe.gov.sg/sgis for the next cycle."
+          },
+          {
+            "trigger": "Offline applications are not accepted",
+            "message": "The official page states 'Offline applications will not be accepted after the application period ends.'"
+          },
+          {
+            "trigger": "Deployment depends on the organisation",
+            "message": "MOE states 'Your eventual job role and deployment will depend on the organisation's needs', so applicants should raise aspirations with the sponsoring organisation before graduation."
+          }
+        ],
+        "submission_workflow": [
+          "Monitor the official SgIS page for the next application period",
+          "Complete the online application form with all required information and uploads",
+          "Submit within the application period; offline submissions are not accepted afterwards",
+          "Attend 'Explore with SgIS' outreach sessions to assess sponsoring organisations (registration closes one week before each session)",
+          "Interview with the sponsoring organisation and receive an offer"
+        ]
+      },
+      "programme_detail_verification": {
+        "cycle_verified": "2026 application cycle (15 January to 23 March 2026, closed); next cycle not yet published - verified 2026-10-04",
+        "verification_confidence": 0.8,
+        "official_fields_confirmed": ["name", "country", "degree_levels", "official_source", "status", "application_link", "eligibility", "citizenship_residency", "documents", "scheme structure", "region"],
+        "institution_check_required": ["funding_amount", "funding_currency", "tuition_coverage", "living_cost_coverage", "travel_coverage", "award_holder_conditions beyond the internship requirement", "next cycle deadline"],
+        "unverified_or_removed_claims": [
+          "The stored funding_type 'Full sponsorship' could not be verified: the official pages read describe the schemes and the development programme but publish no tuition, allowance or travel amounts. It has been retained as the stored value but funding_amount, funding_currency, tuition_coverage, living_cost_coverage and travel_coverage are all null, and fully_funded is set to false.",
+          "The how-to-apply page has not been updated since 24 March 2026 and still shows the closed 2026 window; no next-cycle dates are published.",
+          "The exact list of sponsoring organisations and the award values per organisation are on a brochure and organisation pages not read in this verification."
+        ],
+        "source_citations": [
+          "https://www.moe.gov.sg/sgis/application/how-to-apply",
+          "https://www.moe.gov.sg/sgis/about-sgis"
+        ],
+        "researched_by": "w1_44"
+      },
+      "logo_override": {
+        "url": "https://www.moe.gov.sg/-/media/images/news/moe-logo.jpg",
+        "page_url": "https://www.moe.gov.sg/sgis",
+        "official_host": true,
+        "alt_text": "Ministry of Education Singapore",
+        "validation_result": "verified",
+        "validation_detail": "jpeg 62952B, full Ministry of Education crest and 'Ministry of Education / SINGAPORE' wordmark in dark ink on white; probed HTTP 200 with content-type image/jpeg directly from the official moe.gov.sg domain",
+        "image_kind": "official_logo",
+        "image_format": "jpeg",
+        "verified_at": "2026-10-04T00:00:00+00:00",
+        "host_evidence": "same_registrable_domain",
+        "_award": "Singapore-Industry Scholarship (SgIS) (Ministry of Education)"
+      },
+      "research_notes": {
+        "logo": "The MOE site serves its own assets from moe.gov.sg. The SgIS pages' <meta property=\"og:image\"> is https://www.moe.gov.sg/-/media/images/news/moe-logo.jpg on the official ministry domain itself. Probed: HTTP 200, content-type image/jpeg, 62952 bytes. Visually verified as the full Ministry of Education crest with the 'Ministry of Education / SINGAPORE' wordmark in dark ink on white - not white-on-transparent, hosted on the awarding body's own domain. A second official asset, https://www.moe.gov.sg/media/moe/assets/4f24da8d-0ce9-438c-9c0f-ecba0849db81.svg, returns HTTP 200 image/svg+xml (1182 bytes) but is only a 26x31 unit monogram icon, so the og:image jpeg was preferred.",
+        "unverified": ["All funding amounts (tuition, allowance, travel)", "Citizenship is stated but residency detail is not", "Next cycle application dates", "Bond or service obligation if any"],
+        "substitution": null,
+        "official_pages_read": [
+          "https://www.moe.gov.sg/sgis/application/how-to-apply",
+          "https://www.moe.gov.sg/sgis/about-sgis",
+          "https://www.moe.gov.sg/sgis/explore-with-sgis"
+        ],
+        "degree_level_confirmed": "The official page states SgIS offers 'Singapore Citizens scholarships at different stages of their university education, locally and overseas' and that the Full-Term scheme is 'if you are going to embark on full-time undergraduate studies in a local university', confirming undergraduate study.",
+        "url_observed": null,
+        "contradictions": [
+          "Stored status 'open' replaced with 'upcoming': the only published window, 15 January to 23 March 2026, has closed and no new window has been published as at 2026-10-04.",
+          "Stored deadline_precision was 'unknown' and deadline_display was null; the official page publishes 'You can apply online from Thursday, 15 January 2026 to Monday, 23 March 2026'.",
+          "Stored official_source 'Moe Government Sg' replaced with the official body name 'Ministry of Education'.",
+          "Stored region was 'Asia' and is retained; the stored image was a programme asset rather than the ministry logo and has been replaced."
+        ],
+        "skeleton": false
+      }
+    },
+    {
+      "target_id": 436,
+      "outcome": "refreshed",
+      "confirm": true,
+      "confirmation_evidence": "Read the official A*STAR page 'Graduate Research' at the Bioinformatics Institute, which states 'The Singapore International Graduate Award (SINGA) is a collaboration between the Agency for Science, Technology & Research (A*STAR), the Nanyang Technological University (NTU), the National University of Singapore (NUS) and the Singapore University of Technology and Design (SUTD)' and lists SINGA among 'the scholarships and awards that are available for PhD'. The A*STAR Graduate Academy international awards page and scholarships hub were also read to confirm the award's attribution to A*STAR.",
+      "new_scholarship": {
+        "name": "Singapore International Graduate Award (SINGA)",
+        "legacy_titles": ["SINGA - Singapore International Graduate Award"],
+        "country": "Singapore",
+        "degree_levels": "PhD",
+        "funding_type": "Fully Funded",
+        "official_source": "Agency for Science, Technology and Research (A*STAR)",
+        "official_source_url": "https://www.a-star.edu.sg/singa-award",
+        "status": "open",
+        "is_verified": true,
+        "last_verified_date": "2026-10-04",
+        "description": "The Singapore International Graduate Award (SINGA) is a collaboration between the Agency for Science, Technology & Research (A*STAR), Nanyang Technological University, the National University of Singapore and the Singapore University of Technology and Design. It supports international graduates to pursue a PhD in Singapore, with awardees conducting research at A*STAR research institutes or at a partner autonomous university. The award is administered alongside A*STAR's Graduate Academy and Research Attachment Programmes."
+      },
+      "programme_detail_official": {
+        "official_source_urls": [
+          "https://www.a-star.edu.sg/bii/join-us/graduate-research",
+          "https://www.a-star.edu.sg/scholarships/home/international-awards",
+          "https://www.a-star.edu.sg/scholarships/home"
+        ],
+        "application_link": null,
+        "official_updates_url": "https://www.a-star.edu.sg/scholarships",
+        "catalogue_url": null,
+        "application_cycle": "Not published on the official pages read; A*STAR restructured its scholarships site in 2026 and no dedicated SINGA page is currently live",
+        "deadline_central": null,
+        "deadline_central_display": "No application deadline is published on the official A*STAR pages currently read",
+        "deadline_central_timezone": null,
+        "deadline_note": "A*STAR's current Graduate Academy scholarships site lists only the National Science Scholarship (BS-PhD), National Science Scholarship (PhD), A*STAR Graduate Scholarship and A*STAR International Fellowship, and the International Awards page lists only the A*STAR Research Attachment Programme (ARAP) and Singapore Research Attachment Programme (SRAP). No dedicated SINGA page with a deadline could be reached on any official A*STAR URL, so no deadline is recorded. Third-party sites publishing SINGA deadlines and stipend amounts were deliberately not used as sources.",
+        "status": "OPEN",
+        "status_note": "SINGA is confirmed as an active award on A*STAR's own site: the Bioinformatics Institute 'Graduate Research' page lists it first among 'the scholarships and awards that are available for PhD'. However, no dedicated SINGA page is currently reachable on www.a-star.edu.sg, so the current cycle's open/closed status could not be confirmed from an official source.",
+        "funding_amount": null,
+        "funding_currency": null,
+        "funding_period": null,
+        "funding_duration": null,
+        "tuition_coverage": null,
+        "tuition_coverage_note": "No tuition coverage statement for SINGA was reachable on an official A*STAR page; the Graduate Academy FAQ applies only to A*STAR scholarships generally, not specifically to SINGA.",
+        "living_cost_coverage": null,
+        "living_cost_coverage_note": "No allowance or stipend statement specific to SINGA was reachable on an official A*STAR page.",
+        "travel_coverage": null,
+        "travel_coverage_note": "No travel allowance statement for SINGA was reachable on an official A*STAR page.",
+        "fully_funded": false,
+        "funding_label": "Award covers PhD study at A*STAR or a partner university, but no funding amounts, stipend or coverage details are published on any currently reachable official A*STAR page",
+        "benefits": [
+          "PhD study at A*STAR research institutes or at a partner autonomous university",
+          "Collaboration between A*STAR, NTU, NUS and SUTD",
+          "Access to a conducive learning environment with active collaborations and strong international linkages",
+          "Participation in journal publications and poster presentations at international conferences"
+        ],
+        "eligibility": [
+          "International graduates with a passion for science and engineering research",
+          "Applicants for a PhD under programmes affiliated to an A*STAR research institute"
+        ],
+        "citizenship_residency": "Not applicable - the award targets international graduates",
+        "international_eligibility": "Open to international graduates; the award is A*STAR's international graduate award for overseas talent coming to Singapore for a full PhD.",
+        "degree_levels": ["PhD"],
+        "study_mode": "Full-time",
+        "research_requirement": "PhD research at an A*STAR research institute or a partner autonomous university under the supervision of A*STAR or partner university scientists",
+        "subject_or_agency_requirement": "Science and engineering research across the two A*STAR research councils; applicants may review research projects in all categories regardless of previous research experience",
+        "application_method": "Not published on the official A*STAR pages currently read; the Graduate Academy scholarships hub is the official route for A*STAR scheme applications",
+        "application_route": "A*STAR Graduate Academy (official route; no SINGA-specific application page currently reachable)",
+        "requirements": [
+          "Qualification for a PhD under a programme affiliated to an A*STAR research institute",
+          "Interest in research at A*STAR or a partner autonomous university"
+        ],
+        "documents": [],
+        "english_requirement": null,
+        "english_requirement_note": "No English language requirement specific to SINGA was reachable on an official A*STAR page.",
+        "selection_criteria": [
+          "Holistic assessment by A*STAR and the partner university",
+          "Fit with available supervisors and research projects across the research councils"
+        ],
+        "selection_weighting": null,
+        "duration": null,
+        "award_holder_conditions": [],
+        "supplements_or_initiatives": [
+          "A*STAR Research Attachment Programme (ARAP) - an alternative route for overseas PhD students to conduct 1 to 2 years of research at A*STAR under joint supervision, with application deadlines of 1 June and 1 December",
+          "Singapore Research Attachment Programme (SRAP) - supports 1 to 2 years of research attachments of overseas-based postgraduate and PhD students over a 3 to 5 year project term, with application deadlines of 1 May and 1 November"
+        ],
+        "official_contacts": {
+          "general": "A*STAR Graduate Academy, https://www.a-star.edu.sg/scholarships"
+        },
+        "description": "SINGA is A*STAR's international graduate award, launched around 2007 to bring overseas talent to Singapore for a full PhD. It began at NUS and NTU and was later expanded to include the Singapore University of Technology and Design and the Singapore Management University. Awardees conduct research at A*STAR research institutes or partner autonomous universities.",
+        "program_type": "International PhD research award (A*STAR with partner universities)",
+        "region": "Asia",
+        "coverage": "PhD research training at A*STAR research institutes or a partner autonomous university; specific scholarship funding amounts are not published on the currently reachable official A*STAR pages",
+        "last_verified_date": "2026-10-04"
+      },
+      "programme_detail_applicant_utility": {
+        "application_readiness_checklist": [
+          "Confirm you meet the international graduate profile the award targets (overseas students coming to Singapore for a full PhD)",
+          "Review A*STAR research projects across both research councils rather than filtering by prior field",
+          "Identify and contact a potential supervisor whose projects match your interests",
+          "Monitor https://www.a-star.edu.sg/scholarships for the SINGA scheme page to reappear before applying",
+          "Do not rely on third-party deadline or stipend figures; confirm on the official A*STAR site"
+        ],
+        "common_rejection_risks": [
+          "Relying on third-party sites for SINGA deadlines, stipend amounts or application routes, none of which are currently verifiable on the official A*STAR site",
+          "Confusing SINGA with the A*STAR Graduate Scholarship (AGS), which has its own separate eligibility, stipend table and service commitment",
+          "Filtering research interests too narrowly; A*STAR encourages reviewing projects across all categories"
+        ],
+        "estimated_uncovered_costs": [
+          "Cannot be determined: no tuition, stipend or travel amounts for SINGA are published on any currently reachable official A*STAR page"
+        ],
+        "document_audit": [
+          "Cannot be determined from the official pages currently read; no SINGA-specific document list is published on a reachable A*STAR page"
+        ],
+        "alerts": [
+          {
+            "trigger": "No dedicated SINGA page is currently live",
+            "message": "The stored official_source_url https://www.a-star.edu.sg/singa-award returns HTTP 404. A*STAR's current scholarships hub does not list SINGA, so its application window, deadline and funding amounts are not verifiable from official sources at present."
+          },
+          {
+            "trigger": "Do not use third-party SINGA figures",
+            "message": "Aggregator and guide sites publish SINGA deadlines and stipend amounts, but these are not official sources and were deliberately excluded from this verification."
+          },
+          {
+            "trigger": "SINGA is not the A*STAR Graduate Scholarship",
+            "message": "AGS is a separate scheme with its own eligibility, stipend table and a three-year service commitment for some international applicants. Applying to the wrong scheme is a common error."
+          }
+        ],
+        "submission_workflow": [
+          "Monitor the official A*STAR Graduate Academy scholarships hub for the SINGA scheme page to be restored",
+          "Contact a potential A*STAR supervisor or partner university supervisor whose projects match the intended research",
+          "Once a SINGA application route is published, apply through the official A*STAR system"
+        ]
+      },
+      "programme_detail_verification": {
+        "cycle_verified": "No cycle or deadline could be verified from an official A*STAR page as at 2026-10-04",
+        "verification_confidence": 0.7,
+        "official_fields_confirmed": ["name", "country", "degree_levels", "official_source", "awarding partners", "international_eligibility", "region"],
+        "institution_check_required": ["deadline_central", "funding_amount", "funding_currency", "funding_period", "tuition_coverage", "living_cost_coverage", "travel_coverage", "application_link", "documents", "award_holder_conditions", "duration"],
+        "unverified_or_removed_claims": [
+          "The stored official_source_url https://www.a-star.edu.sg/singa-award returns HTTP 404 and the scheme is absent from A*STAR's current scholarships hub, so no deadline, funding amount, coverage, document list, application link or bond condition could be verified from an official source.",
+          "Stored funding_type 'Fully funded' could not be verified and has been retained only as the stored value, with all funding coverage fields set to null and fully_funded set to false.",
+          "Stored deadline_precision 'unknown' is correct and retained; no deadline_date is recorded.",
+          "Third-party sources (aggregators, guides and blogs) publishing SINGA deadlines of 1 December 2026 and stipend amounts were identified but deliberately NOT used, per the brief's rule that only the awarding body's own site may be cited.",
+          "Stored region was null; set to Asia from the host country Singapore."
+        ],
+        "source_citations": [
+          "https://www.a-star.edu.sg/bii/join-us/graduate-research",
+          "https://www.a-star.edu.sg/scholarships/home/international-awards",
+          "https://www.a-star.edu.sg/scholarships/home"
+        ],
+        "researched_by": "w1_44"
+      },
+      "logo_override": {
+        "url": "https://www.a-star.edu.sg/api/media/53d6d556-a0aa-4bcb-9ba8-4eb1fc9ae750/ASTAR HQ Corporate Website.png",
+        "page_url": "https://www.a-star.edu.sg/scholarships",
+        "official_host": true,
+        "alt_text": "HQ",
+        "validation_result": "verified",
+        "validation_detail": "png 20365B, A*STAR 'a' wordmark in dark blue with red star and 'Agency for Science, Technology and Research / SINGAPORE' in dark blue on opaque white; probed HTTP 200 with content-type image/png directly from the official a-star.edu.sg domain",
+        "image_kind": "official_logo",
+        "image_format": "png",
+        "verified_at": "2026-10-04T00:00:00+00:00",
+        "host_evidence": "same_registrable_domain",
+        "_award": "Singapore International Graduate Award (SINGA) (A*STAR)"
+      },
+      "research_notes": {
+        "logo": "The A*STAR site header links its logo from a-star.edu.sg itself: the <header class=\"header__logo\"> block on https://www.a-star.edu.sg/ contains <img alt=\"HQ\" src=\"/api/media/53d6d556-a0aa-4bcb-9ba8-4eb1fc9ae750/ASTAR HQ Corporate Website.png\">, wrapped in an <a href=\"https://www.a-star.edu.sg/\" aria-label=\"Logo\">. Probed: HTTP 200, content-type image/png, 20365 bytes (the space in the path must be URL-encoded as %20). Visually verified as the A*STAR 'a' wordmark in dark blue with the red star and 'Agency for Science, Technology and Research / SINGAPORE' in dark blue on an opaque white background - not white-on-transparent, and on the awarding body's own domain. The favicon at https://www.a-star.edu.sg/api/media/867ab78f-c433-4489-9de0-51f3937f384c/favicon.ico also probes HTTP 200 image/x-icon (18686 bytes) but is only an icon, so the full header logo was preferred.",
+        "unverified": [
+          "Deadline and application cycle for the next SINGA intake",
+          "All funding amounts: tuition, stipend or allowance, and travel",
+          "Application link and application method",
+          "Required documents",
+          "Award duration",
+          "Bond or service obligation, if any",
+          "English language requirement"
+        ],
+        "substitution": null,
+        "official_pages_read": [
+          "https://www.a-star.edu.sg/bii/join-us/graduate-research",
+          "https://www.a-star.edu.sg/scholarships/home/international-awards",
+          "https://www.a-star.edu.sg/scholarships/home",
+          "https://www.a-star.edu.sg/scholarships"
+        ],
+        "degree_level_confirmed": "The Bioinformatics Institute 'Graduate Research' page lists SINGA among 'The scholarships and awards that are available for PhD', and the A*STAR Graduate Academy site describes its international awards as being for 'PhD students', confirming PhD level.",
+        "url_observed": "The stored official_source_url https://www.a-star.edu.sg/singa-award returns HTTP 404. A*STAR's 2026 site restructure removed the dedicated SINGA page; it is absent from the current sitemap (4108 URLs) and from the scholarships hub. The best currently reachable official A*STAR page describing SINGA is https://www.a-star.edu.sg/bii/join-us/graduate-research, which confirms the awarding collaboration and PhD level. The stored URL is kept unchanged in official_source_url because it is the record identity; changing it would create a duplicate row.",
+        "contradictions": [
+          "The stored official_source_url is dead (HTTP 404) and no dedicated SINGA page exists on the current A*STAR site.",
+          "Stored deadline_precision 'unknown' is correct and is retained; the stored deadline_display null is correct.",
+          "Stored region was null; set to Asia from the host country Singapore.",
+          "Stored official_source 'A Star University Sg' is inaccurate: A*STAR is a research agency, not a university. Replaced with 'Agency for Science, Technology and Research (A*STAR)'. The stored image was an A*STAR press-release hero image, not the logo, and has been replaced.",
+          "Stored status 'open' could not be confirmed; it is retained with an explicit status_note that the current cycle status is unverifiable."
+        ],
+        "skeleton": false
+      }
+    }
+  ]
+}

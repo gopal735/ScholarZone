@@ -1,0 +1,250 @@
+{
+  "agent": "agent_400",
+  "records": [
+    {
+      "id": 252,
+      "official": {
+        "official_source_urls": [
+          "https://www.tcd.ie/study/international/scholarships/postgraduate/gexpg.php"
+        ],
+        "application_link": "https://www.tcd.ie/study/international/scholarships/postgraduate/gexpg.php",
+        "catalogue_url": "https://www.tcd.ie/study/postgraduate/scholarships-funding/",
+        "official_updates_url": null,
+        "deadline_central": null,
+        "deadline_central_display": null,
+        "deadline_note": "Regional closing dates are published per cycle. For the 2026/2027 academic year they were: Africa 1 May 2026, Central/North/South America 1 April 2026, South East Asia and Oceania 15 July 2026 and all other regions 15 June 2026 - all passed, with no 2027/2028 dates published.",
+        "application_cycle": "2026/2027 academic year (closed)",
+        "status": "CLOSED",
+        "status_note": "The page lists final regional closing dates for the 2026/2027 cycle, all of which had passed by the verification date; no 2027/2028 dates are published. Applications are assessed and awarded on a rolling basis.",
+        "tuition_coverage_note": "Scholarships are applied as a one-time reduction to the tuition fees of a full-time postgraduate taught programme, for the first year of study only.",
+        "funding_amount": null,
+        "funding_currency": "EUR",
+        "funding_period": "One-time, first year of study",
+        "tuition_coverage": true,
+        "living_cost_coverage": false,
+        "travel_coverage": null,
+        "fully_funded": false,
+        "benefits": [
+          "Scholarship worth between EUR 2,000 and EUR 5,000 depending on the region",
+          "Applied as a one-time reduction to the tuition fees of a full-time postgraduate taught programme",
+          "Awarded to exceptional international students with a course offer, assessed on a rolling basis"
+        ],
+        "eligibility": [
+          "Applicants must have non-EU fee status, with tuition fees billed at the non-EU rate",
+          "Applicants must have a course offer to commence a full-time postgraduate degree programme at Trinity College Dublin for the relevant academic year",
+          "Limited to applicants enrolling in a full-time postgraduate taught enrolment",
+          "Business, engineering, natural sciences, and computer science and statistics courses are exempt from this scholarship programme",
+          "Students from China are not eligible and should instead apply for the Claddagh Scholarship"
+        ],
+        "requirements": [
+          "Complete the online scholarship form before the regional closing dates",
+          "Provide basic personal information and a statement discussing how you will contribute to the Trinity College Dublin community",
+          "Fully accept the course offer in order to receive the award"
+        ],
+        "documents": [
+          "Basic personal information entered on the online scholarship form",
+          "Statement discussing how you will contribute to the Trinity College Dublin community"
+        ],
+        "selection_criteria": [
+          "Applications are assessed and awarded on a rolling basis",
+          "Exceptional international students with a course offer are selected, with regional allocations",
+          "Awardees are expected to fully accept their course offer to receive the award"
+        ],
+        "coverage": [
+          "One-time reduction to the tuition fees of a full-time postgraduate taught programme, for the first year of study only",
+          "Award value varies by region between EUR 2,000 and EUR 5,000",
+          "Scholarships are applied to the tuition fee bills of awardees"
+        ],
+        "application_method": [
+          "Apply online using the form linked from the Global Excellence Postgraduate Scholarships page",
+          "If the online form cannot be accessed from your region, contact the Trinity Regional Manager/Advisor for your area for an alternative application form",
+          "Fully accept the course offer after the award; for questions contact the online course enquiry team listed on the page"
+        ],
+        "application_route": "Online scholarship form with rolling assessment, with a paper alternative via the Trinity Regional Manager/Advisor",
+        "study_mode": "Full-time postgraduate taught programmes only",
+        "citizenship_residency": "Non-EU fee status required; students from China are not eligible for this award",
+        "international_eligibility": "Yes - for international (non-EU fee status) students, excluding students from China",
+        "subject_or_agency_requirement": "Business, engineering, natural sciences, and computer science and statistics courses are exempt, and separate scholarships exist for those areas",
+        "research_requirement": null,
+        "duration": "First year of a full-time postgraduate taught programme only",
+        "description": "Trinity College Dublin's Global Excellence Postgraduate Scholarships are one-time tuition-fee reductions of EUR 2,000 to EUR 5,000 depending on the region, awarded to exceptional international students with a course offer for a full-time postgraduate taught programme and non-EU fee status, assessed and awarded on a rolling basis.",
+        "region": "Europe",
+        "program_type": "Postgraduate taught merit scholarship",
+        "english_requirement": null
+      },
+      "verification": {
+        "source_citations": [
+          "https://www.tcd.ie/study/international/scholarships/postgraduate/gexpg.php"
+        ],
+        "last_verified_date": "2026-10-10",
+        "verification_status": "confirmed",
+        "confidence": "high",
+        "not_confirmed": [
+          "funding_amount as a single figure (published only as a regional range of EUR 2,000 to EUR 5,000)",
+          "deadline_date for the next cycle",
+          "english_requirement",
+          "travel_coverage"
+        ],
+        "notes": "The EUR 2,000 - EUR 5,000 range, the one-time first-year nature, the non-EU fee-status requirement, the China exclusion, the exemption of business, engineering, natural sciences and computer science and statistics courses, the four regional closing dates for 2026/2027 and the rolling assessment process were confirmed on Trinity's official page, updated 3 June 2026; all four 2026/2027 regional deadlines have passed."
+      },
+      "applicant_utility": {
+        "summary": "The award is a one-time cut to tuition fees for the first year only, worth between EUR 2,000 and EUR 5,000 depending on your region, so you still need a funding plan for living costs in Dublin and for the remainder of your programme. Check the exemptions before you invest effort: business, engineering, natural sciences, computer science and statistics courses are excluded, and applicants from China are directed to the Claddagh Scholarship instead. Because everything is processed on a rolling basis, applying early in the next cycle matters more than polishing the application for months.",
+        "best_fit": "Non-EU fee status international students holding an offer for a full-time postgraduate taught programme at Trinity outside the exempt subject areas (excluding China).",
+        "application_readiness_checklist": [
+          "Confirm your course is not in an exempt area: business, engineering, natural sciences, or computer science and statistics",
+          "Confirm you are not applying from China, in which case the Claddagh Scholarship applies instead",
+          "Have your full-time postgraduate taught course offer in hand before the regional closing date",
+          "Draft the statement on how you will contribute to the Trinity College Dublin community in advance",
+          "Submit the online form early, since assessment and awards are made on a rolling basis",
+          "Plan to fully accept the course offer once the award is communicated"
+        ],
+        "common_rejection_risks": [
+          "Applying to an exempt course area without noticing the exclusion list",
+          "Chinese applicants using this form instead of the Claddagh Scholarship",
+          "Applying without a course offer, since a course offer is part of the eligibility",
+          "Missing the regional closing date, which differs by up to three months between regions",
+          "Assuming the award renews into later years - it applies to the first year only",
+          "Expecting living-cost or travel support, which this scholarship does not provide"
+        ],
+        "estimated_uncovered_costs": "Living costs in Dublin and the remainder of the programme's tuition fees, since the award is a one-time reduction of at most EUR 5,000 applied to the first year only.",
+        "document_audit": [
+          "The form itself is light - personal information plus a short statement - so the course offer carries the eligibility weight",
+          "If the online form is inaccessible in your region, the Trinity Regional Manager or Advisor can supply an alternative application form, so contact them early"
+        ],
+        "alerts": [
+          "The four 2026/2027 regional deadlines (1 April, 1 May, 15 June and 15 July 2026) have all passed, so the earliest realistic next window is the following intake; early application is advised because assessment is rolling",
+          "The award value is region-dependent, so the same profile can attract EUR 2,000 or EUR 5,000",
+          "Separate scholarship programmes exist for the exempt areas, so check the postgraduate scholarships overview for your subject"
+        ],
+        "submission_workflow": "Submit the online scholarship form before your regional closing date, then fully accept the course offer; questions go through the online course enquiry team."
+      }
+    },
+    {
+      "id": 362,
+      "official": {
+        "official_source_urls": [
+          "https://www.researchireland.ie/funding/government-ireland-postgraduate",
+          "https://media.researchireland.ie/wp-content/uploads/2026/02/Government-of-Ireland-Postgraduate-Scholarship-2026_Call-Document.pdf"
+        ],
+        "application_link": "https://www.researchireland.ie/funding/government-ireland-postgraduate",
+        "catalogue_url": "https://www.researchireland.ie/funding/government-ireland-postgraduate",
+        "official_updates_url": "https://www.researchireland.ie/news/",
+        "deadline_central": null,
+        "deadline_central_display": null,
+        "deadline_note": "The 2026 call closed with an applicant deadline of 23 October 2025, 16:00 Irish local time; the supervisor/mentor deadline was 6 November 2025, the research office endorsement deadline 13 November 2025, the call outcome was communicated at the end of April 2026 and awards started 1 September 2026. No next-call date is published.",
+        "application_cycle": "2026 call (closed)",
+        "status": "CLOSED",
+        "status_note": "The programme page is marked as closed for the 2026 call, and its important dates list shows every 2026 milestone (applicant deadline, supervisor deadline, research office deadline, call outcome and start date) as achieved.",
+        "tuition_coverage_note": "The award includes a contribution to fees, including non-EU fees, up to a maximum of EUR 5,750 per annum. Non-EU nationals may request an additional EUR 4,000 per annum above the standard fee contribution, and any remaining differential in fees must be paid by the grant recipient and/or the research body.",
+        "funding_amount": 34000,
+        "funding_currency": "EUR",
+        "funding_period": "per annum",
+        "tuition_coverage": true,
+        "living_cost_coverage": true,
+        "travel_coverage": null,
+        "fully_funded": false,
+        "benefits": [
+          "Stipend of EUR 25,000 per annum",
+          "Contribution to fees, including non-EU fees, up to a maximum of EUR 5,750 per annum, with non-EU nationals able to request an additional EUR 4,000 per annum above the standard fee contribution",
+          "Eligible direct costs of EUR 3,250 per annum",
+          "Total value up to a maximum of EUR 34,000 per annum in any approved year",
+          "Funding across all disciplines, from archaeology to zoology",
+          "Competitive selection with an average success rate of 18 percent over the past five years"
+        ],
+        "eligibility": [
+          "Excellent postgraduate researchers seeking funding for a period of 1-4 years",
+          "New entrants to a Master's or PhD programme, or registered students in the first year of the degree for which they are seeking funding (effective from the 2026 call)",
+          "All disciplines are funded",
+          "Bottom-up, non-directed research, except research funded by Research Ireland's strategic funding partners",
+          "An academic supervisor may act as primary supervisor for no more than one applicant to the programme; there is no restriction on secondary or co-supervision",
+          "Funded by the Department of Further and Higher Education, Research, Innovation and Science and managed by Research Ireland"
+        ],
+        "requirements": [
+          "Application submitted through the Research Ireland online system by the applicant deadline",
+          "Primary supervisor or mentor endorsement submitted by the supervisor/mentor deadline",
+          "Research office endorsement submitted by the research office deadline",
+          "Selection through international, independent expert peer review"
+        ],
+        "documents": [
+          "Completed online application submitted through the Research Ireland online system",
+          "Primary supervisor or mentor endorsement, submitted through the research office",
+          "The application documents and call document downloadable from the programme page"
+        ],
+        "selection_criteria": [
+          "Objective selection process using international, independent expert peer review",
+          "Pioneering proposals that address new and emerging fields of research, use creative and innovative approaches, and interdisciplinary proposals are particularly welcomed",
+          "Highly competitive, with an average success rate of 18 percent over the past five years"
+        ],
+        "coverage": [
+          "Stipend of EUR 25,000 per annum",
+          "Fee contribution, including non-EU fees, up to EUR 5,750 per annum, plus up to EUR 4,000 more per annum for non-EU nationals",
+          "Eligible direct costs of EUR 3,250 per annum",
+          "Any remaining differential in fees must be paid by the grant recipient and/or the research body"
+        ],
+        "application_method": [
+          "Submit the online application through the Research Ireland online system before the applicant deadline, allowing time for the supervisor and research office endorsements",
+          "Secure a primary supervisor who is not already primary supervisor for another applicant in the same call",
+          "Arrange the research office endorsement before the research office deadline",
+          "Wait for the peer-reviewed outcome, communicated at the end of April in the 2026 cycle"
+        ],
+        "application_route": "Online application via the Research Ireland online system with supervisor/mentor and research office endorsements",
+        "study_mode": null,
+        "citizenship_residency": null,
+        "international_eligibility": "The fee rules explicitly cover non-EU nationals and allow an additional fee contribution, so non-EU applicants are supported, although no separate citizenship restriction is published.",
+        "subject_or_agency_requirement": "Bottom-up, non-directed research in any discipline, except research funded by Research Ireland's strategic funding partners (Environmental Protection Agency, Department of Children, Equality, Disability, Integration and Youth, Department of Foreign Affairs and Met Éireann for 2026)",
+        "research_requirement": "A bottom-up, researcher-initiated research proposal in any discipline, assessed by international, independent expert peer review; pioneering and interdisciplinary proposals are particularly welcomed",
+        "duration": "1-4 years",
+        "description": "The Government of Ireland Postgraduate Scholarship Programme awards individual, prestigious research scholarships worth up to EUR 34,000 per annum - a stipend of EUR 25,000, a contribution to fees including non-EU fees of up to EUR 5,750, and eligible direct costs of EUR 3,250 - for a period of 1-4 years, funded by the Department of Further and Higher Education, Research, Innovation and Science and managed by Research Ireland.",
+        "region": "Europe",
+        "program_type": "Government postgraduate research scholarship programme",
+        "english_requirement": null
+      },
+      "verification": {
+        "source_citations": [
+          "https://www.researchireland.ie/funding/government-ireland-postgraduate"
+        ],
+        "last_verified_date": "2026-10-10",
+        "verification_status": "confirmed",
+        "confidence": "high",
+        "not_confirmed": [
+          "deadline_date for the next call",
+          "english_requirement",
+          "travel_coverage"
+        ],
+        "notes": "The EUR 25,000 stipend, the EUR 5,750 fee contribution including non-EU fees with the additional EUR 4,000 for non-EU nationals, the EUR 3,250 direct costs, the EUR 34,000 annual maximum, the 1-4 year duration, the 18 percent success rate, the primary-supervisor rule of one applicant, the new-entrant eligibility change effective from the 2026 call and the 2026 call timeline (deadline 23 October 2025 16:00 Irish local time, outcome end of April 2026, start 1 September 2026) were confirmed on Research Ireland's official programme page."
+      },
+      "applicant_utility": {
+        "summary": "This is a large, highly competitive award (about 18 percent success over the past five years) rather than a guaranteed top-up, so apply with a genuinely pioneering, interdisciplinary bottom-up proposal and a supervisor who is not already primary supervisor for someone else in the same call. Cash-out depends on the year: the stipend is EUR 25,000, fees attract up to EUR 5,750 (or EUR 9,750 for non-EU nationals) and eligible direct costs EUR 3,250, giving the EUR 34,000 ceiling, but any remaining non-EU fee differential lands on you or your host research body. Note the new-entrant rule in force from the 2026 call: you must be newly entering the degree or in your first registered year.",
+        "best_fit": "New entrants to a Master's or first-year PhD candidates with an exceptional research idea, a free primary supervisor and a research office that can endorse on time.",
+        "application_readiness_checklist": [
+          "Check the new-entrant rule: new entry to the Master's or PhD, or first registered year of that degree, for the 2026 call onwards",
+          "Confirm your intended primary supervisor has no other applicant in the same call",
+          "Diarise the two-stage endorsement chain: supervisor/mentor deadline, then research office deadline, which come after the applicant deadline in the 2026 cycle",
+          "Budget the non-EU fee differential if applicable, since only part of it can be requested",
+          "Frame the proposal as bottom-up and non-directed, and flag pioneering or interdisciplinary elements explicitly",
+          "Plan for a spring outcome - the 2026 call outcome only came at the end of April, with awards starting 1 September"
+        ],
+        "common_rejection_risks": [
+          "Choosing a primary supervisor already supervising another applicant in the call",
+          "Missing the applicant deadline at 16:00 Irish local time or the later endorsement deadlines",
+          "Being beyond the first registered year of the target degree under the 2026 rule change",
+          "Proposing work within the remit of a strategic funding partner (EPA, DCEDIY, DFA or Met Éireann), which is directed rather than bottom-up",
+          "Assuming the EUR 34,000 covers all non-EU fees, when the remaining differential is payable by the recipient or research body",
+          "Relying on the award to start study expenses early, given the April outcome and September start"
+        ],
+        "estimated_uncovered_costs": "Any fee differential beyond the EUR 5,750 standard (plus the additional EUR 4,000 for non-EU nationals) fee contribution, and personal living costs above the EUR 25,000 stipend.",
+        "document_audit": [
+          "The application is submitted online through the Research Ireland system, but the endorsements are separate submitted components, so start the chain early",
+          "Download the call document from the programme page for the definitive document list rather than relying on the summary",
+          "The programme is competitive and peer-reviewed internationally, so the proposal quality, not the form, is decisive"
+        ],
+        "alerts": [
+          "The page is marked closed for the 2026 call with all milestones achieved; monitor Research Ireland news for the next call, which historically opens around spring for an October deadline",
+          "An academic supervisor may be primary supervisor for only one applicant per call, but may co-supervise others",
+          "The new-entrant eligibility rule changed for the 2026 call, so older guidance listing wider eligibility may no longer apply"
+        ],
+        "submission_workflow": "Apply through the Research Ireland online system by the applicant deadline, then supervisor/mentor endorsement, then research office endorsement, then international expert peer review."
+      }
+    }
+  ]
+}

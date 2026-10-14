@@ -1,0 +1,240 @@
+{
+ "agent": "agent_485",
+ "records": [
+  {
+   "id": 65,
+   "official": {
+    "official_source_urls": [
+     "https://www.ox.ac.uk/admissions/graduate/fees-and-funding/funding/clarendon",
+     "https://www.ox.ac.uk/admissions/graduate/fees-and-funding/funding/clarendon/applicants"
+    ],
+    "application_link": "https://www.ox.ac.uk/clarendon",
+    "catalogue_url": "https://www.ox.ac.uk/admissions/graduate/courses",
+    "official_updates_url": "https://www.ox.ac.uk/admissions/graduate/fees-and-funding/funding/clarendon",
+    "deadline_central": null,
+    "deadline_central_display": null,
+    "deadline_note": "There is no separate Clarendon deadline: you are automatically considered if you apply to your Oxford course by the December or January admissions deadline relevant to that course. Departmental nominations are reviewed by the academic divisions in February or March.",
+    "application_cycle": "Annual, tied to the Oxford graduate course deadlines",
+    "status": "OPEN",
+    "status_note": "The official page states Clarendon offers over 200 new fully-funded scholarships each year (over 230 in 2025/26), with about 700 on-course scholars from around 70 nations.",
+    "tuition_coverage_note": "Clarendon scholarships cover course fees in full. This applies to Home and Overseas fee status students.",
+    "funding_amount": 20780,
+    "funding_currency": "GBP",
+    "funding_period": "per year (2025-26 rate)",
+    "tuition_coverage": true,
+    "living_cost_coverage": true,
+    "travel_coverage": null,
+    "fully_funded": true,
+    "benefits": [
+     "Course fees covered in full for Home and Overseas fee status students",
+     "Annual grant for living expenses of at least the UKRI minimum doctoral stipend rate - at least £20,780 in 2025-26 for full-time scholars",
+     "Study support grant for part-time scholars, worth a sixth, a third or half of the UKRI minimum doctoral stipend rate",
+     "No separate application, nomination or extra documentation required",
+     "Membership of the Clarendon scholar community of about 700 on-course scholars from around 70 nations"
+    ],
+    "eligibility": [
+     "Applying for a new full-time or part-time DPhil or Master's course at Oxford",
+     "Applying by the December or January admissions deadline relevant to the course",
+     "No restrictions on nationality, ordinary residence or field of study",
+     "Not eligible if already holding a deferred graduate offer, or if a current Oxford student continuing the same degree next year"
+    ],
+    "requirements": [
+     "Submit the Oxford graduate application for the chosen course by the relevant December or January deadline",
+     "No separate scholarship application, nomination or extra documentation is required",
+     "Meet the academic bar of the course as well as the Clarendon selection criteria",
+     "Accept the Clarendon offer letter once issued"
+    ],
+    "documents": [
+     "Oxford graduate application for the chosen course (the only application needed)",
+     "Transcripts and references as required by the chosen course"
+    ],
+    "selection_criteria": [
+     "Outstanding academic merit and future potential",
+     "Academic quality assessed by the department, with divisions assessing nominations on academic merit and future potential",
+     "Selection criteria vary slightly by subject area and by taught versus research degree"
+    ],
+    "coverage": [
+     "Course fees covered in full for Home and Overseas fee status students",
+     "Annual grant for living expenses of at least the UKRI minimum doctoral stipend rate (at least £20,780 in 2025-26) for full-time scholars",
+     "Study support grant toward non-fee costs for part-time scholars",
+     "Continuation charges applied after the period of fee liability are not covered by the Clarendon Fund"
+    ],
+    "application_method": [
+     "Submit a single Oxford graduate application; consideration for Clarendon is automatic"
+    ],
+    "application_route": "Apply to your Oxford graduate course by its December or January deadline - no separate scholarship application exists.",
+    "study_mode": "Full-time and part-time DPhil and Master's courses",
+    "citizenship_residency": "No restrictions on nationality or country of ordinary residence",
+    "international_eligibility": "Open to applicants of any nationality",
+    "subject_or_agency_requirement": null,
+    "research_requirement": null,
+    "duration": "Normally the scholar's period of fee liability; at the discretion of the academic divisions some awards extend beyond it, with only the living grant paid in the extra period",
+    "description": "Clarendon offers over 200 new fully-funded scholarships each year to outstanding graduate scholars in any subject, with no restrictions on nationality, ordinary residence or field of study. Every student who applies for a degree-bearing graduate course by the relevant December or January funding deadline is automatically considered, and scholars join a community of about 700 on-course scholars from around 70 nations.",
+    "region": "Europe",
+    "program_type": "Doctoral and taught postgraduate scholarship scheme based on academic merit",
+    "english_requirement": null
+   },
+   "verification": {
+    "source_citations": [
+     "https://www.ox.ac.uk/admissions/graduate/fees-and-funding/funding/clarendon/applicants",
+     "https://www.ox.ac.uk/admissions/graduate/fees-and-funding/funding/clarendon"
+    ],
+    "last_verified_date": "2026-10-10",
+    "verification_status": "confirmed",
+    "confidence": "low",
+    "not_confirmed": [
+     "travel_coverage",
+     "english_requirement",
+     "2026-27 living grant figure (the official page still publishes the 2025-26 rate of at least £20,780)"
+    ],
+    "notes": "Direct fetches of ox.ac.uk returned HTTP 403 on repeated attempts; all figures above were taken from the University of Oxford's own published page content served through official-domain search results. £20,780 is the published 2025-26 floor for the full-time living expenses grant."
+   },
+   "applicant_utility": {
+    "summary": "Clarendon is decided by your course application alone, so the scholarship is won or lost at the admissions stage: a first-class or equivalent record is effectively the entry ticket. There is no form to fill in and no essay to write, which means your only lever is applying by your course's December or January deadline - miss it and Clarendon consideration disappears entirely. The award covers fees in full plus a living grant at the UKRI minimum stipend rate, so admitted scholars have no tuition liability, but Oxford's own 2026-27 living-cost estimate of £1,405-£2,105 per month sits at or above the stipend floor, so budget for a possible shortfall in expensive months.",
+    "best_fit": "Applicants with a first-class or equivalent degree applying for a new Oxford Master's or DPhil in any subject, from any country.",
+    "application_readiness_checklist": [
+     "Identify your course's exact funding deadline (December or January) on the Oxford course page and work backwards at least four weeks",
+     "Secure strong academic references early - the course application is the scholarship application",
+     "Prepare transcripts and any written work your department requires with the same care as a scholarship submission",
+     "Do not defer an existing graduate offer if you want Clarendon consideration in the next cycle"
+    ],
+    "common_rejection_risks": [
+     "Missing the course's December or January funding deadline, which ends automatic Clarendon consideration",
+     "A borderline academic record - the majority of successful scholars hold a first or equivalent (around 3.7/4 GPA)",
+     "Applying while holding a deferred graduate offer, which makes you ineligible",
+     "Assuming a separate scholarship application exists and under-investing in the admissions application itself"
+    ],
+    "estimated_uncovered_costs": "Oxford estimates living costs of £1,405-£2,105 per month in 2026-27 (£16,860-£25,260 for 12 months), which can exceed the stipend floor; continuation charges after fee liability are not covered.",
+    "document_audit": [
+     "Your course application and its supporting documents are the only submission - no extra scholarship paperwork exists",
+     "Check the course page for department-specific written work or research proposals, as these feed the academic assessment"
+    ],
+    "alerts": [
+     "Deadline discipline is everything: Clarendon has no separate round and no late window",
+     "Part-time scholars receive only a fraction of the living grant (a sixth, a third or a half of the UKRI rate)",
+     "College fee liability periods differ by course - confirm how long your award will actually run in your offer letter"
+    ],
+    "submission_workflow": "One graduate application to Oxford by the course's December or January deadline; departments nominate, divisions shortlist in February or March, and offer letters arrive with the admissions decision."
+   }
+  },
+  {
+   "id": 66,
+   "official": {
+    "official_source_urls": [
+     "https://www.ox.ac.uk/admissions/graduate/fees-and-funding/fees-funding-and-scholarship-search/weidenfeld-hoffmann-scholarships-and-leadership-programme"
+    ],
+    "application_link": "https://www.ox.ac.uk/admissions/graduate/fees-and-funding/fees-funding-and-scholarship-search/weidenfeld-hoffmann-scholarships-and-leadership-programme",
+    "catalogue_url": "https://www.ox.ac.uk/admissions/graduate/courses",
+    "official_updates_url": "https://www.ox.ac.uk/admissions/graduate/fees-and-funding/fees-funding-and-scholarship-search/weidenfeld-hoffmann-scholarships-and-leadership-programme",
+    "deadline_central": null,
+    "deadline_central_display": null,
+    "deadline_note": "There is no separate scholarship deadline: submit your graduate application by the December or January deadline for your course, together with the Weidenfeld-Hoffmann Scholarships Statement. Applications held over after the deadline, or placed on a waiting list, are not eligible for scholarship consideration.",
+    "application_cycle": "2027/28 cycle",
+    "status": "OPEN",
+    "status_note": "The official page publishes the 2027/28 Scholarships Statement and states the scholarship covers 100% of course fees and a grant for living costs of at least £21,805.",
+    "tuition_coverage_note": "The scholarship will cover 100% of course fees and a grant for living costs (of at least £21,805).",
+    "funding_amount": 21805,
+    "funding_currency": "GBP",
+    "funding_period": "per year (2027/28 rate)",
+    "tuition_coverage": true,
+    "living_cost_coverage": true,
+    "travel_coverage": null,
+    "fully_funded": true,
+    "benefits": [
+     "100% of course fees covered",
+     "Grant for living costs of at least £21,805",
+     "One-year leadership development programme with philosophical discussions, business skills and communication training",
+     "Long-term mentoring and networking through the Weidenfeld-Hoffmann Trust",
+     "Possible transfer to a partner college that contributes to the scholarship funding"
+    ],
+    "eligibility": [
+     "Applying to start a new full-time graduate course at Oxford",
+     "Ordinarily resident in one of the eligible countries, mainly developing and emerging economies",
+     "Intending to return to your country of ordinary residence once the course is completed",
+     "Able to demonstrate a connection between your subject of study and longer-term career objectives improving public life in your country of origin or at a wider regional or international level",
+     "Not eligible: candidates holding deferred offers to start in 2027-28, or current Oxford students who are not already Weidenfeld-Hoffmann scholars"
+    ],
+    "requirements": [
+     "Select the Weidenfeld-Hoffmann Scholarships and Leadership Programme in the Scholarships section of the Oxford graduate application form",
+     "Submit the graduate application by the December or January deadline for your course",
+     "Complete and upload the Weidenfeld-Hoffmann Scholarships Statement 2027/28 by the same deadline",
+     "Be available for an interview, likely held online in April 2027"
+    ],
+    "documents": [
+     "Oxford graduate application form with the Weidenfeld-Hoffmann programme selected in the Scholarships section",
+     "Weidenfeld-Hoffmann Scholarships Statement 2027/28 (official form, uploaded with the application)",
+     "Any documents required by the chosen course"
+    ],
+    "selection_criteria": [
+     "Potential to become leaders who will improve public life in their country or region",
+     "Connection between the subject of study and longer-term career objectives",
+     "Assessment of the graduate application form, the Scholarships Statement and the interview",
+     "Partner colleges may transfer successful candidates to a partner college to take up the scholarship"
+    ],
+    "coverage": [
+     "100% of course fees",
+     "Grant for living costs of at least £21,805",
+     "Leadership development programme including philosophical discussions, business skills and communication training",
+     "Long-term mentoring and networking"
+    ],
+    "application_method": [
+     "Oxford graduate application form with the scholarship selected in the Scholarships section",
+     "Upload of the Weidenfeld-Hoffmann Scholarships Statement 2027/28",
+     "Online interview for shortlisted candidates"
+    ],
+    "application_route": "Select the programme in the Scholarships section of the Oxford graduate application and upload the 2027/28 Scholarships Statement by your course's December or January deadline.",
+    "study_mode": "Full-time graduate courses",
+    "citizenship_residency": "Ordinarily resident in an eligible country, mainly developing and emerging economies; nationality and ordinary residence details from the application form are used to assess country eligibility",
+    "international_eligibility": "Open to eligible-country residents only; applicants with refugee or displaced status are considered if their nationality meets the country criteria",
+    "subject_or_agency_requirement": "Eligible courses are listed on the official page",
+    "research_requirement": null,
+    "duration": "The full duration of the fee liability for the agreed course",
+    "description": "The Weidenfeld-Hoffmann Scholarships and Leadership Programme cultivates the leaders of tomorrow by providing outstanding university graduates and professionals from developing and emerging economies with the opportunity to pursue fully-funded graduate studies at the University of Oxford, combined with a comprehensive programme of leadership development, long-term mentoring and networking.",
+    "region": "Europe",
+    "program_type": "Fully-funded graduate scholarship with a leadership development programme",
+    "english_requirement": null
+   },
+   "verification": {
+    "source_citations": [
+     "https://www.ox.ac.uk/admissions/graduate/fees-and-funding/fees-funding-and-scholarship-search/weidenfeld-hoffmann-scholarships-and-leadership-programme"
+    ],
+    "last_verified_date": "2026-10-10",
+    "verification_status": "confirmed",
+    "confidence": "low",
+    "not_confirmed": [
+     "travel_coverage",
+     "english_requirement",
+     "exact eligible-country and eligible-course lists (collapsed sections on the official page)"
+    ],
+    "notes": "Direct fetches of ox.ac.uk returned HTTP 403 on repeated attempts; the £21,805 figure and 100% fee coverage were verified from the University of Oxford's own published page content served through official-domain search results. Several Oxford college subpages still show older £18,622-£20,780 figures and were ignored in favour of the central scholarship page."
+   },
+   "applicant_utility": {
+    "summary": "This is a leadership scholarship, not a pure merit award: your eligibility hinges on ordinary residence in an eligible developing or emerging economy and on articulating how your Oxford degree will improve public life back home. The application has one extra piece of paperwork - the 2027/28 Scholarships Statement - that must be uploaded by the same December or January deadline as your course application, and forgetting it is the classic way strong candidates lose consideration. Shortlisted applicants face an online interview, likely in April 2027, so your written narrative has to survive being discussed aloud months later.",
+    "best_fit": "Exceptional graduates and professionals from eligible developing and emerging economies who intend to return home and can tie their field of study to improving public life.",
+    "application_readiness_checklist": [
+     "Confirm your country of ordinary residence appears on the eligible-country list before investing time in the application",
+     "Download the Weidenfeld-Hoffmann Scholarships Statement 2027/28 from the official page and draft answers well before the course deadline",
+     "Map your career story: subject of study, long-term objectives, and the public-life improvement in your country or region",
+     "Prepare for the online interview by rehearsing how your leadership record supports that same narrative"
+    ],
+    "common_rejection_risks": [
+     "Country eligibility failure - ordinary residence in an ineligible country ends the application regardless of record",
+     "Omitting the Scholarships Statement or uploading it after the deadline",
+     "Failing to convince selectors you will return to your country of ordinary residence after the course",
+     "Being waitlisted or held over after the deadline, which the official page states makes you ineligible for scholarship consideration"
+    ],
+    "estimated_uncovered_costs": "The award covers 100% of course fees plus a living grant of at least £21,805; Oxford's 2026-27 living cost estimate of £1,405-£2,105 per month means the grant may not stretch across a 12-month year in Oxford for every lifestyle.",
+    "document_audit": [
+     "The 'Nationality and ordinary residence' section of the graduate application form is the evidence used for country eligibility - keep it consistent with your passport and residence history",
+     "The Scholarships Statement is an Oxford-published form; use that exact template rather than a free-form letter"
+    ],
+    "alerts": [
+     "Deferred 2027-28 offers are excluded from this cycle by the official page",
+     "Interviews are typically online in April 2027 with decisions expected by the end of May 2027 - do not accept conflicting commitments in that window",
+     "Applying constitutes consent to be considered for the Trust's separately managed partner schemes (Oxford Pakistan Programme and Chevening)"
+    ],
+    "submission_workflow": "Oxford graduate application with the scholarship selected, plus the uploaded 2027/28 Statement, by the course's December or January deadline; shortlisting leads to an online interview around April 2027 and outcomes by late May 2027."
+   }
+  }
+ ]
+}

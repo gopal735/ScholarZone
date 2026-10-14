@@ -1,0 +1,102 @@
+{
+ "agent": "agent_026",
+ "assignment_count": 1,
+ "scholarships": [
+  {
+   "id": 86,
+   "title": "Donald A. Wehrung International Student Award (UBC International Scholars Program)",
+   "country": "Canada",
+   "degree": "Bachelor's",
+   "funding_label": "Partially Funded",
+   "status": "open",
+   "official_source": "University of British Columbia",
+   "official_source_url": "https://you.ubc.ca/financial-planning/scholarships-awards-international-students/international-scholars/donald-a-wehrung-international-student-award",
+   "application_link": "https://you.ubc.ca/financial-planning/scholarships-awards-international-students/international-scholars/donald-a-wehrung-international-student-award",
+   "catalogue_url": "https://you.ubc.ca/financial-planning/scholarships-awards-international-students/international-scholars",
+   "official_updates_url": "https://you.ubc.ca/financial-planning/scholarships-awards-international-students/international-scholars",
+   "existing": {
+    "funding_amount": null,
+    "funding_currency": null,
+    "funding_period": null,
+    "tuition_coverage": 0,
+    "living_cost_coverage": null,
+    "travel_coverage": null,
+    "fully_funded": 0,
+    "description": "The Donald A. Wehrung International Student Award is one of four need-and-merit-based award categories in UBC's International Scholars Program. It recognises outstanding international undergraduates from impoverished or war-torn areas who have achieved academic excellence under challenging circumstances and would be unable to attend university without significant financial assistance, and who demonstrate leadership potential and a commitment to making a positive impact in their communities. Applicants must be nominated by their secondary school, must document significant financial need, and must achieve all As or equivalent. For the September 2027 intake the award application opens October 5, 2026 and closes November 15, 2026, with documents due January 31, 2027. UBC does not publish a dollar value for this award category.",
+    "eligibility": [
+     "International student who will be studying in Canada on a Canadian study permit",
+     "Entering UBC directly from an accredited secondary school",
+     "Applicants for the 2027 Winter session must have graduated from high school no earlier than June 2026",
+     "Applying for a first undergraduate degree",
+     "Can prove a significant level of financial need, with official supporting documents",
+     "Meets UBC's admission requirements, including general and degree-specific requirements",
+     "Demonstrates superior academic achievement (all As or equivalent standard)",
+     "Meets UBC's English Language Admission Standard, or is eligible for Vantage College and the Vantage One Excellence Award",
+     "Nominated by the secondary school through one nominator and one teacher referee who must be different people"
+    ],
+    "eligibility_summary": "Applicants must be international students studying in Canada on a Canadian study permit, entering UBC directly from an accredited secondary school for their first undergraduate degree, graduating no earlier than June 2026 for the 2027 Winter session, able to prove significant financial need, achieving superior academic performance of all As or equivalent, meeting UBC's English Language Admission Standard, and nominated by their school. All criteria must be met with no exceptions.",
+    "benefits": [
+     "Financial support determined by UBC's financial need assessment",
+     "Skill building workshops and retreats",
+     "Optional exchange and co-op participation",
+     "Dedicated International Scholars Program advisors",
+     "Membership in the International Scholars cohort, described as over 680 Scholars from 111+ countries since 2001"
+    ],
+    "coverage": [
+     "Need-and-merit-based financial support assessed against documented financial need (no dollar value published for this award category)"
+    ],
+    "requirements": [
+     "All eligibility criteria must be met; UBC states there are no exceptions",
+     "Submit the UBC Admissions application first; the award application requests confirmation of UBC application submission",
+     "Obtain one school nominator and one teacher referee, who must be different people",
+     "Have the nominator and teacher recommendations completed and submitted a few days before November 15",
+     "Submit the completed award application by November 15",
+     "Submit all required admission documents and English language evidence by January 31",
+     "Complete a video interview if invited, within one week"
+    ],
+    "documents": [
+     "Completed International Scholars Program award application",
+     "Official documents demonstrating financial need, including family gross income, expenses and family assets",
+     "Secondary school nomination by a guidance counsellor, principal or administrator",
+     "Teacher referee recommendation",
+     "UBC admission documents submitted by January 31",
+     "Evidence of meeting UBC's English Language Admission Standard",
+     "Four essay questions of approximately 150-250 words each"
+    ],
+    "english_requirement": "Must meet UBC's English Language Admission Standard by January 31, 2027. Applicants who do not satisfy it for direct entry may be eligible for UBC Vantage College and the Vantage One Excellence Award.",
+    "application_method": [
+     "Decide on academic program and campus by mid-September",
+     "Discuss the nomination with the secondary school in late September",
+     "Apply to UBC in early October via myapplication.ubc.ca",
+     "Create an award application account and invite the nominator and teacher referee to complete their forms",
+     "Gather family financial information and complete the award application sections in mid-October",
+     "Submit the completed award application by November 15",
+     "Submit required documents by January 31 and complete a video interview if invited"
+    ],
+    "selection_notes": "The award targets students from impoverished or war-torn areas who achieved academic excellence under challenging circumstances and could not attend university without significant financial assistance, who should demonstrate leadership potential and a strong commitment to making a positive impact in their communities. UBC assesses financial need from family gross income, expenses and assets, and automatically assigns each applicant the award categories they qualify for.",
+    "best_fit": "Academically excellent international secondary school leavers from impoverished or war-torn areas who would otherwise be unable to attend university, with proven financial need and community leadership.",
+    "notes": null,
+    "duration": null,
+    "application_period": "September 2027 intake. The award application opens October 5, 2026 and is due November 15, 2026; required documents are due January 31, 2027; shortlisted applicants complete a video interview between January and March; results are released on a rolling basis from February to April.",
+    "deadline_display": "By November 15: Submit your completed application - The International Scholars Program application is due November 15. For the September 2027 intake this is November 15, 2026. Required admission documents and evidence of meeting UBC's English Language Admission Standard are due January 31, 2027.",
+    "deadline_date": "2026-11-15",
+    "region": "North America",
+    "program_type": "Need-and-merit-based undergraduate award within UBC's International Scholars Program, requiring high school nomination.",
+    "applicant_utility": null,
+    "official_details": null
+   },
+   "missing_fields": [
+    "funding_amount",
+    "funding_currency",
+    "funding_period",
+    "living_cost_coverage",
+    "travel_coverage",
+    "notes",
+    "duration",
+    "applicant_utility",
+    "official_details"
+   ]
+  }
+ ],
+ "result_file": "C:\\Users\\GopaL\\Desktop\\Projects folder\\ScholarZone\\backend\\research_output\\live500\\results\\agent_026.json"
+}

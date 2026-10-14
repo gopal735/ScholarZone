@@ -1,0 +1,88 @@
+{
+ "agent": "agent_276",
+ "assignment_count": 1,
+ "scholarships": [
+  {
+   "id": 643,
+   "title": "Programa de Becas de Investigacion para Estudiantes 2026-2027 (FCM UNCUYO)",
+   "country": "Argentina",
+   "degree": "Bachelor's",
+   "funding_label": "Stipend",
+   "status": "upcoming",
+   "official_source": "Facultad de Ciencias Medicas, Universidad Nacional de Cuyo - Direccion de Investigacion y Relaciones Institucionales",
+   "official_source_url": "https://fcm.uncuyo.edu.ar/convocatoria-2026-2027-a-becas-de-investigacion-para-estudiantes",
+   "application_link": "https://fcm.uncuyo.edu.ar/convocatoria-2026-2027-a-becas-de-investigacion-para-estudiantes",
+   "catalogue_url": "https://fcm.uncuyo.edu.ar/becas-de-investigacion-para-estudiantes-de-la-fcm-convocatoria-20262027",
+   "official_updates_url": "https://fcm.uncuyo.edu.ar/categorias/index/becas-y-fincanciamiento-estudiantes",
+   "existing": {
+    "funding_amount": null,
+    "funding_currency": null,
+    "funding_period": null,
+    "tuition_coverage": 0,
+    "living_cost_coverage": 0,
+    "travel_coverage": 0,
+    "fully_funded": 0,
+    "description": null,
+    "eligibility": [
+     "Be a regular student of Medicina, Licenciatura en enfermeria or Tecnicos Asistenciales en Salud at the FCM UNCUYO",
+     "Have passed at least the first complete year of the degree (as minimo, el primer ano completo de la carrera)",
+     "Apply to a research project that has been submitted by a FCM teacher-researcher and approved in the first stage",
+     "Apply either individually or as a pair"
+    ],
+    "eligibility_summary": "Regular students of Medicine, Licenciatura en enfermeria or Tecnicos Asistenciales en Salud at the Facultad de Ciencias Medicas of the Universidad Nacional de Cuyo who have already passed at least the first full year of their degree. Students apply individually or as a pair to projects put forward by faculty researchers. The faculty's own teaching and research staff qualify as project supervisors.",
+    "benefits": [
+     "Entry into real research projects alongside teacher-researchers from the first stages of the degree",
+     "20 places in the 2026-2027 call",
+     "210 hours of recognised research training and project work",
+     "Training in the full research cycle, from hypothesis formulation through ethics and results analysis to scientific presentation"
+    ],
+    "coverage": [
+     "20 research scholarships awarded in the 2026-2027 edition",
+     "210 clock hours of training and research work: 10 hours of Research Methodology Course plus 200 hours of project execution",
+     "Project to be developed over a maximum of six consecutive months, starting 1 February 2027",
+     "Structured training in hypothesis formulation, objective setting, methodological planning, research ethics, results analysis and oral and written presentation of scientific work"
+    ],
+    "requirements": [
+     "Faculty researchers who wish to supervise a scholarship must first submit a research project to the relevant advisory commission during the first stage, 5 to 16 October 2026",
+     "Wait for approved projects and supervisors to be circulated from 2 to 6 November 2026",
+     "Register as a student between 9 and 20 November 2026, individually or in a pair",
+     "Meet the minimum score set for projects to be admitted at the first-stage evaluation",
+     "Undertake 10 hours of Research Methodology Course and 200 hours of project execution within six consecutive months"
+    ],
+    "documents": [
+     "The full bases of the Programa de Becas de Investigacion para Estudiantes, published by the faculty for the 2026-2027 call"
+    ],
+    "english_requirement": null,
+    "application_method": [
+     "Two successive stages: first, project and supervisor submission by faculty researchers from 5 to 16 October 2026",
+     "Advisory commission evaluation of the submitted projects",
+     "Circulation of approved projects and supervisors from 2 to 6 November 2026",
+     "Student registration from 9 to 20 November 2026, individually or in pairs",
+     "Student evaluation between 30 November and 11 December 2026",
+     "Definitive awards announced in December 2026, with scholarships starting 1 February 2027"
+    ],
+    "selection_notes": "Only 20 scholarships are awarded. Selection is two-tiered: a research project plus supervisor must first clear the first-stage evaluation by the corresponding advisory commission, and only then can students apply to the approved projects. Evaluation of student applications runs from 30 November to 11 December 2026 and final awards are confirmed in December 2026. Students may apply as a pair. The announcement page states that the format of the research scholarships is formative, so the emphasis is on acquiring research tools rather than on producing a finished project.",
+    "best_fit": "Medicine, Nursing and health technician students at the FCM UNCUYO who have finished their first year and want early research experience in health sciences alongside a faculty supervisor.",
+    "notes": "This is a faculty-level award restricted to students of one specific faculty, not a national scheme. Scope is deliberately narrow: it covers Medicine, Licenciatura en Enfermeria and Tecnicos Asistenciales en Salud at FCM UNCUYO only, and requires at least one completed year of study, which makes it a genuinely early-stage entry point into research. The announcement page describes the award in hours and as a scholarship but publishes no monetary amount, so funding_amount is null and no figure should be assumed.",
+    "duration": "210 clock hours in total: 10 hours for a Research Methodology Course and 200 hours for the research project, to be carried out over a maximum of six consecutive months from 1 February 2027",
+    "application_period": "Call presented to the FCM community 28 September to 2 October 2026; director project submission 5 to 16 October 2026; student registration 9 to 20 November 2026",
+    "deadline_display": "20 November 2026 (student registration closes)",
+    "deadline_date": "2026-11-20",
+    "region": "Latin America",
+    "program_type": "Undergraduate research scholarship",
+    "applicant_utility": null,
+    "official_details": null
+   },
+   "missing_fields": [
+    "funding_amount",
+    "funding_currency",
+    "funding_period",
+    "description",
+    "english_requirement",
+    "applicant_utility",
+    "official_details"
+   ]
+  }
+ ],
+ "result_file": "C:\\Users\\GopaL\\Desktop\\Projects folder\\ScholarZone\\backend\\research_output\\live500\\results\\agent_276.json"
+}

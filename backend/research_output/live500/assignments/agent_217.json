@@ -1,0 +1,82 @@
+{
+ "agent": "agent_217",
+ "assignment_count": 1,
+ "scholarships": [
+  {
+   "id": 550,
+   "title": "Institut Pascal (IPa) Call for Proposals 2026",
+   "country": "France",
+   "degree": "PhD, Postdoc",
+   "funding_label": "Research Funding",
+   "status": "open",
+   "official_source": "Institut Pascal, Université Paris-Saclay",
+   "official_source_url": "https://www.institut-pascal.universite-paris-saclay.fr/en/proposal-submissions",
+   "application_link": "https://www.institut-pascal.universite-paris-saclay.fr/en/proposal-submissions",
+   "catalogue_url": "https://www.universite-paris-saclay.fr/en/news/institut-pascal-call-proposals-scientific-programmes-2026",
+   "official_updates_url": "https://www.institut-pascal.universite-paris-saclay.fr/en/news",
+   "existing": {
+    "funding_amount": null,
+    "funding_currency": null,
+    "funding_period": null,
+    "tuition_coverage": 0,
+    "living_cost_coverage": 1,
+    "travel_coverage": 1,
+    "fully_funded": 0,
+    "description": "Institut Pascal is a Université Paris-Saclay institute that runs thematic scientific programmes lasting typically 2-3 weeks and up to 6 weeks, hosting up to 60 international and national visitors. Selected programmes receive funding for accommodation, on-site catering and part of travel costs for the visiting scientists and students, plus meeting rooms and 26 offices in the Orsay facility. Applications are made by programme organisers as a single PDF, not by individual students.",
+    "eligibility": [
+     "Programmes mainly related to the scientific fields covered by Université Paris-Saclay, from Mathematics to Life Sciences, be they theoretical or experimental",
+     "Long-duration thematic programmes (typically 2-3 weeks, up to 6 weeks) favouring brainstorming sessions that lead to innovative advancements",
+     "Proposals must be submitted online in a single PDF file"
+    ],
+    "eligibility_summary": "The call targets thematic scientific programmes, mainly in fields covered by Université Paris-Saclay from mathematics to life sciences, whether theoretical or experimental, that bring scientific communities together to establish new collaborations.",
+    "benefits": [
+     "Ability to host up to 60 international and national visitors in purpose-built offices and lecture rooms for plenary meetings"
+    ],
+    "coverage": [
+     "Financing accommodation for programme participants",
+     "On-site catering",
+     "Part of travel costs",
+     "Rooms and space for meetings in the IPa facility, with 2 amphitheatres, videoconference-equipped meeting rooms and 26 offices to host up to 60 visitors",
+     "Support from the IPa team for budget and registration management, accommodation booking, meeting and social event organisation, and mission fee management"
+    ],
+    "requirements": [
+     "Proposal must be submitted online as a single PDF file",
+     "It is strongly recommended that organisers submit a first draft to institut-pascal@universite-paris-saclay.fr by 28 October 2026 so the IPa board can give early feedback and improve the programme's chances of selection",
+     "Interview and selection by the Scientific Council takes place at the end of February / beginning of March 2027"
+    ],
+    "documents": [
+     "Proposal submitted as a single PDF file",
+     "Framework of the 2026 Call (2026_call_IPa_final.pdf)"
+    ],
+    "english_requirement": null,
+    "application_method": [
+     "Download the framework of the 2026 Call (2026_call_IPa_final.pdf) from the IPa website",
+     "Optionally send a first draft to institut-pascal@universite-paris-saclay.fr by 28 October 2026 for early board feedback",
+     "Prepare the proposal as a single PDF",
+     "Submit the proposal through the online proposal submission form before 20 November 2026",
+     "Prepare for the Scientific Council interview and selection at the end of February / beginning of March 2027"
+    ],
+    "selection_notes": "Proposals are selected by the Institut Pascal board for early feedback and then interviewed and selected by the Scientific Council at the end of February / beginning of March 2027. The call page does not publish the detailed scoring criteria; those are in the framework of the 2026 Call document.",
+    "best_fit": "Researchers leading a thematic scientific programme (typically from a Paris-Saclay field, from mathematics to life sciences) who can convene international collaborators and students for a multi-week programme and submit a single-PDF proposal by 20 November 2026.",
+    "notes": "This is a call for programme organisers, not an individual scholarship: individual students and researchers do not apply to IPa directly, they are hosted as participants of a selected programme. No per-person funding amount is published on the call page, so funding_amount is left null; the page states only that accommodation, on-site catering and part of travel costs are financed. The framework of the 2026 Call PDF is the authoritative document for budget rules and eligibility and was not read in full, so those details are recorded as unverified. The institute is located at 530 Rue Andre Riviere, 91400 Orsay, and can host up to 60 visitors.",
+    "duration": "Programmes typically run 2-3 weeks, up to 6 weeks",
+    "application_period": "The 2026 call is open with a submission deadline of 20 November 2026. A first draft is strongly recommended to institut-pascal@universite-paris-saclay.fr by 28 October 2026 so the IPa board can give early feedback. Interview and selection by the Scientific Council takes place at the end of February / beginning of March 2027.",
+    "deadline_display": "Next deadline: 20th November 2026",
+    "deadline_date": "2026-11-20",
+    "region": "Europe",
+    "program_type": "University research programme funding call",
+    "applicant_utility": null,
+    "official_details": null
+   },
+   "missing_fields": [
+    "funding_amount",
+    "funding_currency",
+    "funding_period",
+    "english_requirement",
+    "applicant_utility",
+    "official_details"
+   ]
+  }
+ ],
+ "result_file": "C:\\Users\\GopaL\\Desktop\\Projects folder\\ScholarZone\\backend\\research_output\\live500\\results\\agent_217.json"
+}

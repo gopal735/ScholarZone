@@ -1,0 +1,91 @@
+[
+  {
+    "scholarship_id": 276,
+    "outcome": "not_applicable",
+    "professors": [],
+    "notes": "Bachelor's-level merit scholarship at BI Norwegian Business School (official page reviewed 2026-10-14). Award is tied to admission in the Bachelor of Business Administration, Bachelor of Data Science for Business or Bachelor of Digital Business. Bachelor programmes carry no supervision structure, so no supervising professor exists for this scholarship."
+  },
+  {
+    "scholarship_id": 277,
+    "outcome": "no_verified_supervisor_found",
+    "professors": [],
+    "notes": "Master's entrance scholarship at BI Norwegian Business School (official page reviewed 2026-10-14). Covers admission to any full-time master's degree across all BI campuses; selection is by an internal admissions/scholarship process based on academic merit. No supervising professor or programme director is attached to this scholarship on any official BI page, and the award is not tied to a specific programme or research group."
+  },
+  {
+    "scholarship_id": 278,
+    "outcome": "verified_supervisors",
+    "professors": [
+      {
+        "canonical_name": "Martin Ludvigsen",
+        "title": "Professor",
+        "institution_name": "Norwegian University of Science and Technology (NTNU)",
+        "department_name": "Department of Marine Technology",
+        "official_profile_url": "https://www.ntnu.edu/employees/martin.ludvigsen",
+        "official_email": "martin.ludvigsen@ntnu.no",
+        "official_email_verified": true,
+        "lab_url": "https://www.ntnu.edu/aur-lab",
+        "personal_academic_url": null,
+        "research_areas": ["Underwater robotics", "Autonomous marine systems", "Vehicle control", "Acoustic navigation", "Arctic observation systems"],
+        "research_keywords": ["underwater robotics", "AUV", "autonomy", "marine robotics", "AUR-Lab"],
+        "relationship_type": "potential_supervisor",
+        "evidence_source_url": "https://www.jobbnorge.no/en/available-jobs/job/308114/phd-research-fellow-in-self-organising-maritime-autonomy",
+        "evidence_source_type": "official_institution_domain",
+        "evidence_quote_or_summary": "Official NTNU vacancy ad (Jobbnorge.no, Norway's public-sector job portal) for a PhD Research Fellow in Self-Organising Maritime Autonomy, Dept. of Marine Technology: \"Your immediate manager will be the supervising professor\" and \"If you have any questions about the position, please contact Martin Ludvigsen, professor, telephone 918 97 272, martin.ludvigsen@ntnu.no.\" Email confirmed on his NTNU employee profile page.",
+        "confidence": 92,
+        "availability": {
+          "scope": "phd_supervision",
+          "state": "verified_yes",
+          "source_url": "https://www.jobbnorge.no/en/available-jobs/job/308114/phd-research-fellow-in-self-organising-maritime-autonomy"
+        }
+      },
+      {
+        "canonical_name": "Elin Angelo",
+        "title": "Professor",
+        "institution_name": "Norwegian University of Science and Technology (NTNU)",
+        "department_name": "Department of Music",
+        "official_profile_url": "https://www.ntnu.edu/employees/elin.angelo",
+        "official_email": "elin.angelo@ntnu.no",
+        "official_email_verified": true,
+        "lab_url": null,
+        "personal_academic_url": null,
+        "research_areas": ["Music education", "Music pedagogy", "Arts education", "Qualitative research in the arts"],
+        "research_keywords": ["music education", "kulturskole research", "MiU network", "philosophy of science"],
+        "relationship_type": "potential_supervisor",
+        "evidence_source_url": "https://www.jobbnorge.no/en/available-jobs/job/308444/phd-research-fellow-in-music",
+        "evidence_source_type": "official_institution_domain",
+        "evidence_quote_or_summary": "Official NTNU vacancy ad (Jobbnorge.no) for a PhD Research Fellow (stipendiat) at the Department of Music requires \"bekreftelse fra potensiell hovedveileder. Hovedveileder ma vaere tilsatt paa Institutt for musikk\" (confirmation from a potential main supervisor employed at the Department of Music) and names the academic contact: \"Hvis du har spoersmaal om stillingen kan du ta kontakt med instituttets nestleder for FoU, Elin Angelo, e-post: elin.angelo@ntnu.no.\" Email confirmed on her NTNU employee profile page.",
+        "confidence": 75,
+        "availability": {
+          "scope": "phd_supervision",
+          "state": "unknown",
+          "source_url": "https://www.jobbnorge.no/en/available-jobs/job/308444/phd-research-fellow-in-music"
+        }
+      }
+    ],
+    "notes": "NTNU PhD positions are salaried employment continuously advertised per department (the given source URL www.ntnu.edu/jobs is dead; current listings at www.ntnu.edu/vacancies and on Jobbnorge.no). As of 2026-10-14, two current NTNU PhD research fellow advertisements name supervising/contact professors with institutional emails: Jobbnorge ID 308114 (Dept. of Marine Technology, deadline 14.10.2026, Prof. Martin Ludvigsen) and Jobbnorge ID 308444 (Dept. of Music, deadline 01.12.2026, Prof. Elin Angelo, Deputy Head of R&D). Listings rotate, so this is a point-in-time snapshot; supervisors vary by individual position."
+  },
+  {
+    "scholarship_id": 279,
+    "outcome": "not_applicable",
+    "professors": [],
+    "notes": "NORPART is an institutional collaboration grant administered by the Norwegian Directorate for Higher Education and Skills (HK-dir), not a student scholarship: the applicant must be an accredited Norwegian higher education institution applying together with an accredited partner institution in a NORPART partner country. No individual scholarship holder, programme or supervising professor is attached."
+  },
+  {
+    "scholarship_id": 280,
+    "outcome": "not_applicable",
+    "professors": [],
+    "notes": "Master Mind Scholarships are granted by the Flemish Ministry of Education and Training (VLUHR). The applicant applies to a master programme at any Flemish higher education institution (host institution); there is no single attached institution, programme or supervising professor. Selection is by a central Flemish selection committee."
+  },
+  {
+    "scholarship_id": 282,
+    "outcome": "no_verified_supervisor_found",
+    "professors": [],
+    "notes": "KU Leuven's Inspiring the Outstanding Scholarship is a university-wide master's scholarship funded by the KU Leuven International Scholarship Fund, open to all eligible KU Leuven master's and advanced master's programmes. The official scholarship page (reviewed 2026-10-14) shows nomination by individual programmes but selection by a central KU Leuven Selection Committee; no supervising professor or named faculty is tied to the scholarship."
+  },
+  {
+    "scholarship_id": 284,
+    "outcome": "not_applicable",
+    "professors": [],
+    "notes": "Erasmus Mundus Joint Master Degrees are an EU-funded (European Commission) scheme delivered by rotating international consortia of at least three higher education institutions; students apply directly to the consortium running each chosen programme. As a central EU scheme with no single attached institution or supervisor, it is not applicable for supervisor enrichment."
+  }
+]

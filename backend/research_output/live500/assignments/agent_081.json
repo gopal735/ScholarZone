@@ -1,0 +1,78 @@
+{
+ "agent": "agent_081",
+ "assignment_count": 1,
+ "scholarships": [
+  {
+   "id": 225,
+   "title": "FWF Doctoral Programs DK",
+   "country": "Austria",
+   "degree": "PhD",
+   "funding_label": "Fully Funded",
+   "status": "open",
+   "official_source": "Austrian Science Fund (FWF)",
+   "official_source_url": "https://www.fwf.ac.at/en/funding/funding-portfolio/doctoral-programmes",
+   "application_link": "https://www.fwf.ac.at/en/funding/funding-portfolio/doctoral-programmes",
+   "catalogue_url": null,
+   "official_updates_url": null,
+   "existing": {
+    "funding_amount": null,
+    "funding_currency": null,
+    "funding_period": null,
+    "tuition_coverage": null,
+    "living_cost_coverage": null,
+    "travel_coverage": null,
+    "fully_funded": 0,
+    "description": null,
+    "eligibility": [],
+    "eligibility_summary": "Doctoral students at Austrian universities; open to international researchers; programs funded by FWF DocFunds.",
+    "benefits": [
+     "Up to €1,960 per month for a period of 4 years",
+     "Renewable twice upon favorable reviews"
+    ],
+    "coverage": [
+     "Up to €1,960 per month for a period of 4 years",
+     "Renewable twice upon favorable reviews"
+    ],
+    "requirements": [],
+    "documents": [],
+    "english_requirement": null,
+    "application_method": [],
+    "selection_notes": null,
+    "best_fit": null,
+    "notes": null,
+    "duration": null,
+    "application_period": null,
+    "deadline_display": "Varies (positions advertised individually)",
+    "deadline_date": null,
+    "region": "Europe",
+    "program_type": null,
+    "applicant_utility": null,
+    "official_details": null
+   },
+   "missing_fields": [
+    "funding_amount",
+    "funding_currency",
+    "funding_period",
+    "tuition_coverage",
+    "living_cost_coverage",
+    "travel_coverage",
+    "description",
+    "eligibility",
+    "requirements",
+    "documents",
+    "english_requirement",
+    "application_method",
+    "selection_notes",
+    "best_fit",
+    "notes",
+    "duration",
+    "application_period",
+    "deadline_date",
+    "program_type",
+    "applicant_utility",
+    "official_details"
+   ]
+  }
+ ],
+ "result_file": "C:\\Users\\GopaL\\Desktop\\Projects folder\\ScholarZone\\backend\\research_output\\live500\\results\\agent_081.json"
+}

@@ -16,7 +16,7 @@ from ..services.scholarship_ingestion import ScholarshipIngestionRecord
 UK_SCHOLARSHIPS = (
     ScholarshipIngestionRecord(
         name="Clarendon Fund Scholarship",
-        country="UK",
+        country="United Kingdom",
         degree_levels="Master's, DPhil (PhD)",
         funding_type="Fully Funded",
         deadline="Course application deadline (December or January, depending on course)",
@@ -35,7 +35,7 @@ UK_SCHOLARSHIPS = (
     ),
     ScholarshipIngestionRecord(
         name="Weidenfeld-Hoffmann Scholarships and Leadership Programme",
-        country="UK",
+        country="United Kingdom",
         degree_levels="Master's, DPhil (PhD)",
         funding_type="Fully Funded",
         deadline="Relevant December or January graduate application deadline",
@@ -53,7 +53,7 @@ UK_SCHOLARSHIPS = (
     ),
     ScholarshipIngestionRecord(
         name="Reach Oxford Scholarship",
-        country="UK",
+        country="United Kingdom",
         degree_levels="Undergraduate (all subjects except Medicine)",
         funding_type="Fully Funded",
         deadline="4 February 2026 (for 2026 entry); 2027 entry opens January 2027",
@@ -72,7 +72,7 @@ UK_SCHOLARSHIPS = (
     ),
     ScholarshipIngestionRecord(
         name="Gates Cambridge Scholarship",
-        country="UK",
+        country="United Kingdom",
         degree_levels="Master's, PhD (all subjects)",
         funding_type="Fully Funded",
         deadline="Same as course funding deadline (varies by department)",
@@ -90,7 +90,7 @@ UK_SCHOLARSHIPS = (
     ),
     ScholarshipIngestionRecord(
         name="Cambridge Trust International Scholarship",
-        country="UK",
+        country="United Kingdom",
         degree_levels="Master's, PhD",
         funding_type="Partial to Full",
         deadline="Same as course funding deadline",
@@ -107,7 +107,7 @@ UK_SCHOLARSHIPS = (
     ),
     ScholarshipIngestionRecord(
         name="President's PhD Scholarships — Imperial College London",
-        country="UK",
+        country="United Kingdom",
         degree_levels="PhD (3.5 years)",
         funding_type="Fully Funded",
         deadline="Varies (see departmental pages)",
@@ -121,7 +121,7 @@ UK_SCHOLARSHIPS = (
     ),
     ScholarshipIngestionRecord(
         name="UCL Global Master's Scholarship",
-        country="UK",
+        country="United Kingdom",
         degree_levels="Master's (taught, full-time)",
         funding_type="Partial",
         deadline="5pm BST, 7 May 2026",
@@ -138,7 +138,7 @@ UK_SCHOLARSHIPS = (
     ),
     ScholarshipIngestionRecord(
         name="UCL Humanitarian Scholarship",
-        country="UK",
+        country="United Kingdom",
         degree_levels="Master's (full-time taught)",
         funding_type="Fully Funded",
         deadline="5pm BST, 7 May 2026",
@@ -155,7 +155,7 @@ UK_SCHOLARSHIPS = (
     ),
     ScholarshipIngestionRecord(
         name="LSE PhD Studentships",
-        country="UK",
+        country="United Kingdom",
         degree_levels="PhD (4 years)",
         funding_type="Fully Funded",
         deadline="14 January 2026 (some departments 10 December 2025)",
@@ -172,7 +172,7 @@ UK_SCHOLARSHIPS = (
     ),
     ScholarshipIngestionRecord(
         name="LSE Excellence Scholarship",
-        country="UK",
+        country="United Kingdom",
         degree_levels="Postgraduate Taught (Master's)",
         funding_type="Partial",
         deadline="23 April 2026 (LSE programme application deadline)",
@@ -189,7 +189,7 @@ UK_SCHOLARSHIPS = (
     ),
     ScholarshipIngestionRecord(
         name="Global Futures Scholarship (South Asia) — University of Manchester",
-        country="UK",
+        country="United Kingdom",
         degree_levels="Master's",
         funding_type="Partial",
         deadline="~April 2026 (check site for 2026/27 cycle dates)",
@@ -207,7 +207,7 @@ UK_SCHOLARSHIPS = (
     ),
     ScholarshipIngestionRecord(
         name="GREAT Scholarship 2026 — University of Manchester (Bangladesh)",
-        country="UK",
+        country="United Kingdom",
         degree_levels="Master's (1-year)",
         funding_type="Partial",
         deadline="23 April 2026",
@@ -224,7 +224,7 @@ UK_SCHOLARSHIPS = (
     ),
     ScholarshipIngestionRecord(
         name="GREAT Scholarship 2026 — Cranfield University (Bangladesh)",
-        country="UK",
+        country="United Kingdom",
         degree_levels="Master's (selected full-time MSc)",
         funding_type="Partial",
         deadline="18 May 2026",
@@ -238,7 +238,7 @@ UK_SCHOLARSHIPS = (
     ),
     ScholarshipIngestionRecord(
         name="GREAT Scholarship 2026 — University of Edinburgh (Bangladesh)",
-        country="UK",
+        country="United Kingdom",
         degree_levels="Master's (1-year postgraduate)",
         funding_type="Partial",
         deadline="Varies by institution (2026/27 cycle)",
@@ -252,7 +252,7 @@ UK_SCHOLARSHIPS = (
     ),
     ScholarshipIngestionRecord(
         name="Edinburgh Global Research Scholarship",
-        country="UK",
+        country="United Kingdom",
         degree_levels="PhD (any field)",
         funding_type="Partial",
         deadline="Early February 2026 (verify on official site)",
@@ -268,7 +268,7 @@ UK_SCHOLARSHIPS = (
     ),
     ScholarshipIngestionRecord(
         name="Rhodes Scholarship (Global Constituency) — University of Oxford",
-        country="UK",
+        country="United Kingdom",
         degree_levels="Master's, DPhil (PhD) at Oxford",
         funding_type="Fully Funded",
         deadline="Varies by constituency (Global deadline ~late August/September 2026 for 2027 entry)",
@@ -977,7 +977,7 @@ INDIA_SCHOLARSHIPS = (
 USA_SCHOLARSHIPS = (
     ScholarshipIngestionRecord(
         name="Global Undergraduate Exchange Program (Global UGRAD)",
-        country="USA",
+        country="United States",
         degree_levels="Undergraduate (one semester exchange)",
         funding_type="Fully Funded",
         deadline="Typically December-January annually",
@@ -995,7 +995,7 @@ USA_SCHOLARSHIPS = (
     ),
     ScholarshipIngestionRecord(
         name="Alan and Jane Handler Endowed Scholarship — University of Rochester",
-        country="USA",
+        country="United States",
         degree_levels="Bachelor's (first-year)",
         funding_type="Fully Funded",
         deadline="December 1",
@@ -1012,7 +1012,7 @@ USA_SCHOLARSHIPS = (
     ),
     ScholarshipIngestionRecord(
         name="Berea College Tuition Promise Scholarship",
-        country="USA",
+        country="United States",
         degree_levels="Bachelor's",
         funding_type="Fully Funded",
         deadline="October 15 (Early Action), January 15 (Regular Decision)",
@@ -1030,7 +1030,7 @@ USA_SCHOLARSHIPS = (
     ),
     ScholarshipIngestionRecord(
         name="Karsh International Scholars Program — Duke University",
-        country="USA",
+        country="United States",
         degree_levels="Bachelor's (first-year)",
         funding_type="Fully Funded",
         deadline="November 2 (Early Decision), January 4 (Regular Decision)",
@@ -1047,7 +1047,7 @@ USA_SCHOLARSHIPS = (
     ),
     ScholarshipIngestionRecord(
         name="Gabelli Presidential Scholars Program — Boston College",
-        country="USA",
+        country="United States",
         degree_levels="Bachelor's (first-year)",
         funding_type="Full Tuition",
         deadline="November 1 (priority scholarship deadline)",
@@ -1063,7 +1063,7 @@ USA_SCHOLARSHIPS = (
     ),
     ScholarshipIngestionRecord(
         name="Clark University Presidential Scholarship",
-        country="USA",
+        country="United States",
         degree_levels="Bachelor's (first-year)",
         funding_type="Fully Funded",
         deadline="November 1 (Early Action), January 15 (Regular Decision)",
@@ -1077,7 +1077,7 @@ USA_SCHOLARSHIPS = (
     ),
     ScholarshipIngestionRecord(
         name="Simmons University Kotzen Scholarship",
-        country="USA",
+        country="United States",
         degree_levels="Bachelor's",
         funding_type="Fully Funded",
         deadline="December 1",
@@ -1091,7 +1091,7 @@ USA_SCHOLARSHIPS = (
     ),
     ScholarshipIngestionRecord(
         name="Harvard University Financial Aid (International)",
-        country="USA",
+        country="United States",
         degree_levels="Bachelor's",
         funding_type="Need-Based",
         deadline="February 1",
@@ -1108,7 +1108,7 @@ USA_SCHOLARSHIPS = (
     ),
     ScholarshipIngestionRecord(
         name="Yale University Need-Based Financial Aid (International)",
-        country="USA",
+        country="United States",
         degree_levels="Bachelor's",
         funding_type="Need-Based",
         deadline="November 1 (Early Action), February 15 (Regular Decision)",
@@ -1125,7 +1125,7 @@ USA_SCHOLARSHIPS = (
     ),
     ScholarshipIngestionRecord(
         name="Princeton University Financial Aid (International)",
-        country="USA",
+        country="United States",
         degree_levels="Bachelor's",
         funding_type="Need-Based",
         deadline="November 1 (Early Action), January 1 (Regular Decision)",
@@ -1142,7 +1142,7 @@ USA_SCHOLARSHIPS = (
     ),
     ScholarshipIngestionRecord(
         name="Brown University Financial Aid (International)",
-        country="USA",
+        country="United States",
         degree_levels="Bachelor's",
         funding_type="Need-Based",
         deadline="November 1 (Early Decision), January 1 (Regular Decision)",
@@ -1159,7 +1159,7 @@ USA_SCHOLARSHIPS = (
     ),
     ScholarshipIngestionRecord(
         name="Dartmouth College Financial Aid (International)",
-        country="USA",
+        country="United States",
         degree_levels="Bachelor's",
         funding_type="Need-Based",
         deadline="November 1 (Early Decision), January 1 (Regular Decision)",
@@ -1176,7 +1176,7 @@ USA_SCHOLARSHIPS = (
     ),
     ScholarshipIngestionRecord(
         name="Aga Khan Foundation International Scholarship Programme",
-        country="USA",
+        country="United States",
         degree_levels="Master's, PhD (limited)",
         funding_type="50% Grant / 50% Loan",
         deadline="January-March (varies by country)",
@@ -1194,7 +1194,7 @@ USA_SCHOLARSHIPS = (
     ),
     ScholarshipIngestionRecord(
         name="Rotary Peace Fellowships",
-        country="USA",
+        country="United States",
         degree_levels="Master's",
         funding_type="Fully Funded",
         deadline="May (annual)",
@@ -1208,7 +1208,7 @@ USA_SCHOLARSHIPS = (
     ),
     ScholarshipIngestionRecord(
         name="#YouAreWelcomeHere Scholarship",
-        country="USA",
+        country="United States",
         degree_levels="Bachelor's",
         funding_type="Partial",
         deadline="Varies by institution",

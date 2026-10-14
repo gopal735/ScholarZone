@@ -1,0 +1,575 @@
+{
+  "agent_id": "w1_26a1",
+  "shard": "w1-26a1",
+  "today": "2026-10-04",
+  "records": [
+    {
+      "target_id": 260,
+      "outcome": "refreshed",
+      "confirm": true,
+      "confirmation_evidence": "Official scholarship page https://www.wgtn.ac.nz/scholarships/current/vuw-postgraduate-international-scholarship states \"Value: $10,000\", \"Closing date(s): Same as the programme application closing date\", \"This is a partial fee-based scholarship that will go towards tuition fees for a Master's degree programme of 120, 180 or 240 points or a Postgraduate Diploma of 120 points\" and \"A scholarship application is not required. Students will be assessed for their eligibility for a scholarship on application for their programme. Recipients will be advised if they have been offered the scholarship in their Offer of Place.\"",
+      "new_scholarship": {
+        "name": "VUW Postgraduate International Scholarship",
+        "legacy_titles": ["VUW Postgraduate International Scholarship (Victoria University of Wellington)"],
+        "country": "New Zealand",
+        "region": "Oceania",
+        "degree_levels": "Master's, Postgraduate Diploma",
+        "funding_type": "Partially Funded",
+        "official_source": "Te Herenga Waka — Victoria University of Wellington",
+        "official_source_url": "https://www.wgtn.ac.nz/scholarships/current/vuw-postgraduate-international-scholarship",
+        "status": "open",
+        "is_verified": true,
+        "last_verified_date": "2026-10-04",
+        "application_link": "https://www.wgtn.ac.nz/scholarships/current/vuw-postgraduate-international-scholarship",
+        "official_updates_url": "https://www.wgtn.ac.nz/scholarships/current/vuw-postgraduate-international-scholarship",
+        "catalogue_url": "https://www.wgtn.ac.nz/scholarships/scholarships-office",
+        "program_type": "Partial tuition fee scholarship for new international postgraduate students",
+        "duration": "One year of study only, for a student's first enrolment in the programme",
+        "funding_amount": 10000,
+        "funding_currency": "NZD",
+        "funding_period": "one year of study",
+        "deadline": "Closing date(s): Same as the programme application closing date. A scholarship application is not required; students are assessed for eligibility on application for their programme.",
+        "deadline_date": null,
+        "deadline_precision": "varies",
+        "application_period": "Aligned with programme applications; there is no separate scholarship application window and the outcome is communicated in the applicant's Offer of Place",
+        "eligibility_summary": "International students paying full international fees who hold an unconditional or conditional Offer of Place for a Master's degree programme of 120, 180 or 240 points, or a Postgraduate Diploma of 120 points, and who are new to the postgraduate programme. The scholarship is open to students completing or recently completing Victoria's EAP programme or a Victoria bachelor's degree, but not to returning students, Study Abroad or Exchange students, students with credit transfer or advanced standing, government sponsored students, or Australian and New Zealand citizens, permanent residents, resident visa holders and diplomatic visa holders.",
+        "eligibility": [
+          "Be an international student paying full international fees",
+          "Intend to attain a Master's degree at Victoria University of Wellington of 120, 180 or 240 points, or a Postgraduate Diploma of 120 points",
+          "Hold an unconditional or conditional Offer of Place for a Master's degree programme or Postgraduate Diploma at Victoria University of Wellington",
+          "Be a new student to a Victoria University of Wellington Postgraduate Diploma or Master's degree programme",
+          "Not be already studying at Victoria University of Wellington as a returning student, unless undertaking the University's EAP or Bachelor's degree programme",
+          "Not be a Study Abroad, Exchange or Twinning student from an overseas partner university",
+          "Not have received credit transfer, advanced standing or recognition of prior learning from a previous qualification",
+          "Not be sponsored by their home government or the New Zealand government",
+          "Not be an Australian or New Zealand citizen, permanent resident, resident visa holder, or hold a diplomatic visa entitling them to domestic status"
+        ],
+        "coverage": [
+          "NZ$10,000 credited towards tuition fees only, for one year of study"
+        ],
+        "benefits": [
+          "NZ$10,000 tuition fee credit applied directly to tuition fees upfront, so students pay the reduced amount to the University",
+          "Applies for one year of study only, for the student's first enrolment in the programme",
+          "May be held in conjunction with other scholarships where the other scholarship's regulations permit",
+          "Recipients may request approval to defer the scholarship to another intake within the same calendar year"
+        ],
+        "required_documents": [
+          "Application for the relevant Master's degree or Postgraduate Diploma programme, through which eligibility is assessed",
+          "Evidence of international fee status and of the Offer of Place, held by the University"
+        ],
+        "english_requirement": "Not stated as a separate scholarship requirement; students completing Victoria's English for Academic Purposes (EAP) programme are explicitly eligible for the scholarship.",
+        "requirements": [
+          "Apply for a Master's degree programme of 120, 180 or 240 points or a Postgraduate Diploma of 120 points and hold an Offer of Place",
+          "Pay full international fees",
+          "Enrol in first-year courses, which is when the scholarship is formally awarded"
+        ],
+        "application_method": [
+          "No separate scholarship application: students are assessed for scholarship eligibility on application for their programme",
+          "Recipients are advised in their Offer of Place if the scholarship has been offered"
+        ],
+        "selection_notes": "Holders must demonstrate their academic potential, as demonstrated by their admission into a Victoria University of Wellington Master's or Postgraduate Diploma degree programme. There is no separate competitive selection round described on the official page; eligibility is assessed through admission.",
+        "best_fit": "New international students entering a full-time on-campus Master's degree or 120-point Postgraduate Diploma at Victoria University of Wellington who are paying full international fees.",
+        "description": "The VUW Postgraduate International Scholarship is a partial fee-based scholarship of NZ$10,000 towards tuition fees for new international students entering a Master's degree programme of 120, 180 or 240 points, or a 120-point Postgraduate Diploma, at Te Herenga Waka — Victoria University of Wellington. No separate scholarship application is required: eligibility is assessed when the student applies for their programme, and the outcome is communicated in the Offer of Place. The scholarship applies for one year of study only, is credited directly against tuition fees upfront, and is awarded formally once the student enrols in first-year courses. It may be held alongside other scholarships where their regulations allow, and deferral is possible within the same calendar year but not to a later year."
+      },
+      "programme_detail_official": {
+        "official_source_urls": [
+          "https://www.wgtn.ac.nz/scholarships/current/vuw-postgraduate-international-scholarship",
+          "https://www.wgtn.ac.nz/international/scholarships-fees/scholarships",
+          "https://www.wgtn.ac.nz/international/applying"
+        ],
+        "application_link": "https://www.wgtn.ac.nz/scholarships/current/vuw-postgraduate-international-scholarship",
+        "official_updates_url": "https://www.wgtn.ac.nz/scholarships/current/vuw-postgraduate-international-scholarship",
+        "catalogue_url": "https://www.wgtn.ac.nz/scholarships/scholarships-office",
+        "application_cycle": "Continuous, aligned with programme applications; the closing date is the programme application closing date and there is no separate scholarship application",
+        "deadline_central": null,
+        "deadline_central_display": "Closing date(s): Same as the programme application closing date",
+        "deadline_central_timezone": "Pacific/Auckland",
+        "deadline_note": "There is no scholarship-specific deadline. The University publishes the closing date as the programme application closing date, which differs by programme and intake, so no single exact date can be stated. Applicants do not submit a scholarship form at all; they are assessed during programme admission.",
+        "status": "OPEN",
+        "status_note": "Live and open. The scholarship is listed among the University's current international scholarships with closing date(s) 'Same as the programme application closing date', so applications are accepted in line with admissions for each programme.",
+        "funding_amount": 10000,
+        "funding_currency": "NZD",
+        "funding_period": "one year of study",
+        "funding_duration": "One year of study only, for the student's first enrolment in that programme",
+        "tuition_coverage": true,
+        "tuition_coverage_note": "Partial tuition coverage: \"This is a partial fee-based scholarship that will go towards tuition fees\" and \"Payment of the scholarship will be made as a credit towards tuition fees only\". The fixed NZ$10,000 does not equal full international tuition and no living-cost component is published.",
+        "living_cost_coverage": false,
+        "travel_coverage": false,
+        "fully_funded": false,
+        "funding_label": "NZ$10,000 tuition fee credit for one year of study; may be withdrawn and repaid if fee or residency status changes from international to domestic, or if the recipient withdraws after award",
+        "benefits": [
+          "NZ$10,000 credit towards tuition fees, applied upfront so the student pays the reduced amount",
+          "One year of study only, for the first enrolment in the programme",
+          "Can be held in conjunction with other scholarships where their regulations permit",
+          "Deferral to another intake within the same calendar year can be requested"
+        ],
+        "eligibility": [
+          "Be an international student who is paying full international fees",
+          "Intend to attain a Master's degree at Victoria University of Wellington of 120, 180 or 240 points, or a Postgraduate Diploma of 120 points",
+          "Hold an unconditional or conditional Offer of Place for a Master's degree programme or Postgraduate Diploma",
+          "Be a new student to a Victoria University of Wellington Postgraduate Diploma or Master's degree programme",
+          "Be completing or have recently completed Victoria's English for Academic Purposes (EAP) programme, or a Victoria Bachelor's degree or Bachelor's degree with Honours",
+          "Not be a returning student already studying at Victoria University of Wellington (unless undertaking EAP or a Bachelor's degree programme)",
+          "Not be a Study Abroad, Exchange or Twinning student from an overseas partner university",
+          "Not have received credit transfer, advanced standing or recognition of prior learning",
+          "Not be sponsored by their home government or the New Zealand government",
+          "Not be an Australian or New Zealand citizen, permanent resident, resident visa holder, or hold a diplomatic visa entitling them to domestic status"
+        ],
+        "citizenship_residency": "International students paying full international fees. Australian and New Zealand citizens, permanent residents, resident visa holders and holders of a diplomatic visa entitling them to domestic status are not eligible.",
+        "international_eligibility": "Open to new international students entering a full-time on-campus Master's degree or 120-point Postgraduate Diploma at Victoria University of Wellington who hold an Offer of Place.",
+        "degree_levels": ["Master's", "Postgraduate Diploma"],
+        "study_mode": "Full-time, on campus",
+        "research_requirement": "Open to both Master's by thesis and Master's by coursework programmes of 120, 180 or 240 points.",
+        "subject_or_agency_requirement": null,
+        "application_method": "A scholarship application is not required. Students are assessed for their eligibility for a scholarship on application for their programme, and recipients are advised in their Offer of Place if the scholarship has been offered.",
+        "application_route": "Master's degree or Postgraduate Diploma programme application at Victoria University of Wellington",
+        "requirements": [
+          "Apply for a Master's degree programme of 120, 180 or 240 points or a 120-point Postgraduate Diploma and hold an Offer of Place",
+          "Be paying full international fees",
+          "Enrol in first-year courses, at which point the scholarship is formally awarded"
+        ],
+        "documents": [
+          "Programme application for the relevant Master's degree or Postgraduate Diploma",
+          "Records held by the University evidencing international fee status and the Offer of Place"
+        ],
+        "english_requirement": null,
+        "english_requirement_note": "No separate English language requirement is stated for the scholarship. Students who are completing or have recently completed Victoria's English for Academic Purposes (EAP) programme are explicitly eligible.",
+        "selection_criteria": [
+          "Academic potential, as demonstrated by admission into a Victoria University of Wellington Master's or Postgraduate Diploma degree programme"
+        ],
+        "selection_weighting": null,
+        "duration": "One year",
+        "award_holder_conditions": [
+          "The scholarship applies for one year of study only, for the student's first enrolment in that programme",
+          "The scholarship is only formally awarded once per student, even where multiple programme applications generate multiple Offer of Place notifications",
+          "Recipients who withdraw from study after the scholarship has been formally awarded may be required to pay back some or all of the value at the University's discretion",
+          "Deferral is possible to another intake within the same calendar year only; the scholarship cannot be deferred to a later year",
+          "May be held in conjunction with other scholarships only where the other scholarship's regulations permit",
+          "If fee status changes from international to domestic before the scholarship is credited, the scholarship is withdrawn; if residency status changes from international to domestic during the tenure, the University may suspend or terminate it and require the return of funds in part or in full",
+          "The scholarship does not appear on the recipient's academic transcript"
+        ],
+        "supplements_or_initiatives": [
+          "VUW Undergraduate International Scholarship (separate award, established August 2025 alongside this one)",
+          "International Office funding confirmation support for visa purposes"
+        ],
+        "official_contacts": {
+          "general": "International Office, Level 3 of Rutherford House, Pipitea campus, 23 Lambton Quay, Wellington 6011; phone +64 4 472 1000",
+          "email": "international@vuw.ac.nz"
+        },
+        "description": "The VUW Postgraduate International Scholarship provides NZ$10,000 towards tuition fees for new international students entering a Master's degree programme of 120, 180 or 240 points or a 120-point Postgraduate Diploma at Te Herenga Waka — Victoria University of Wellington, studying full-time on campus and paying full international fees. No separate scholarship application is required: eligibility is assessed when the applicant applies for their programme and the outcome is communicated in the Offer of Place. The scholarship is credited directly against tuition fees upfront for one year of study, is formally awarded once the student enrols in first-year courses, and may be combined with other scholarships where their regulations permit. Withdrawal after award can trigger repayment, and a change in fee or residency status from international to domestic can cause the scholarship to be withdrawn, suspended or repaid.",
+        "program_type": "Partial tuition fee scholarship for new international postgraduate students",
+        "region": "Oceania",
+        "coverage": "Tuition fees only, fixed NZ$10,000 credit for one year of study",
+        "last_verified_date": "2026-10-04"
+      },
+      "programme_detail_applicant_utility": {
+        "application_readiness_checklist": [
+          "Apply for a Master's degree programme of 120, 180 or 240 points or a 120-point Postgraduate Diploma and secure an Offer of Place",
+          "Confirm you will be paying full international fees rather than domestic fees",
+          "Check the Offer of Place for the scholarship offer, which is where the outcome is communicated",
+          "Be aware the award covers one year of study only, so later years are not funded by it",
+          "If you are already at Victoria (EAP or bachelor's study) confirm you still count as a new student to the postgraduate programme",
+          "Note that credit transfer, advanced standing or recognition of prior learning makes you ineligible"
+        ],
+        "common_rejection_risks": [
+          "Not paying full international fees, including students on domestic status or a diplomatic visa",
+          "Being a returning student already studying at Victoria",
+          "Holding credit transfer, advanced standing or recognition of prior learning",
+          "Being a Study Abroad, Exchange or Twinning student from a partner university",
+          "Being sponsored by a home government or the New Zealand government",
+          "Missing the programme application closing date, which is also the scholarship closing date",
+          "Withdrawing after the scholarship is formally awarded, which can trigger repayment"
+        ],
+        "estimated_uncovered_costs": [
+          "The balance of international tuition fees above NZ$10,000",
+          "Student Services Fee and course costs not covered by the fee credit",
+          "Living costs and accommodation in Wellington",
+          "Travel, visa and insurance costs",
+          "All years of study after the first, as the scholarship is one year only"
+        ],
+        "document_audit": [
+          "Programme application submitted and Offer of Place issued",
+          "Evidence of international fee status for the programme",
+          "Check of the Offer of Place for the scholarship offer wording",
+          "Confirmation of no credit transfer or advanced standing on the enrolment record"
+        ],
+        "alerts": [
+          {
+            "trigger": "No scholarship deadline",
+            "message": "The closing date is the programme application closing date; scholarship eligibility is assessed during admission, not through a separate form."
+          },
+          {
+            "trigger": "One year only",
+            "message": "The scholarship applies for one year of study only, for the student's first enrolment in the programme."
+          },
+          {
+            "trigger": "Repayment risk",
+            "message": "Recipients who withdraw after the scholarship is formally awarded may be required to pay back some or all of the value."
+          },
+          {
+            "trigger": "Status change",
+            "message": "If fee status changes to domestic before the credit is applied, the scholarship is withdrawn; a later residency change can require repayment."
+          }
+        ],
+        "submission_workflow": [
+          "Choose a Master's degree programme of 120, 180 or 240 points or a 120-point Postgraduate Diploma",
+          "Apply for the programme before its application closing date",
+          "Receive an Offer of Place and check whether it includes the scholarship offer",
+          "Accept the offer and enrol in first-year courses, at which point the scholarship is formally awarded and credited to tuition fees"
+        ]
+      },
+      "programme_detail_verification": {
+        "cycle_verified": "Current cycle as published 2026-10-04; closing date follows the programme application closing date",
+        "verification_confidence": 0.92,
+        "official_fields_confirmed": [
+          "funding_amount",
+          "funding_currency",
+          "degree_levels",
+          "eligibility",
+          "application_method",
+          "duration",
+          "tuition_coverage",
+          "status",
+          "official_contacts"
+        ],
+        "institution_check_required": [
+          "Confirm the applicant's programme is a Master's degree of 120, 180 or 240 points or a 120-point Postgraduate Diploma and that they will pay full international fees",
+          "Confirm the specific programme application closing date, since the scholarship deadline follows it",
+          "Confirm international tuition fee level for the programme to work out the proportion covered by NZ$10,000"
+        ],
+        "unverified_or_removed_claims": [
+          "No scholarship-specific deadline date exists; the official page gives only 'Same as the programme application closing date', so deadline_date is null and deadline_precision is varies",
+          "Number offered is published only as \"Varies\"",
+          "No selection weighting or competitive round is described beyond academic potential as demonstrated by admission",
+          "No official English language requirement is stated for the scholarship"
+        ],
+        "source_citations": [
+          "https://www.wgtn.ac.nz/scholarships/current/vuw-postgraduate-international-scholarship",
+          "https://www.wgtn.ac.nz/__data/assets/git_bridge/0005/1778018/dist/images/new/v2/logo-green-full.svg"
+        ],
+        "researched_by": "w1_26a1"
+      },
+      "logo_override": {
+        "url": "https://www.wgtn.ac.nz/__data/assets/git_bridge/0005/1778018/dist/images/new/v2/logo-green-full.svg",
+        "page_url": "https://www.wgtn.ac.nz/scholarships/current/vuw-postgraduate-international-scholarship",
+        "official_host": true,
+        "alt_text": "Te Herenga Waka — Victoria University of Wellington logo",
+        "validation_result": "verified",
+        "validation_detail": "svg, probed and returned the full SVG source (HTTP 200, image/svg+xml); the University's full horizontal logo with the Te Whare Wānanga o te Ūpoko o te Ika a Māui roundel and wordmark, all paths filled #004b34 (dark green) so it is clearly visible on a light card. It is the logo used in the header of the official scholarship page.",
+        "image_kind": "official_logo",
+        "image_format": "svg",
+        "verified_at": "2026-10-04T00:00:00+00:00",
+        "host_evidence": "same_registrable_domain",
+        "_award": "VUW Postgraduate International Scholarship"
+      },
+      "research_notes": {
+        "logo": "Scanned the official scholarship page markup for logo assets. The header uses https://www.wgtn.ac.nz/__data/assets/git_bridge/0005/1778018/dist/images/new/v2/logo-green-full.svg and the footer uses logo-white-full.svg; the footer white variant was rejected as white-on-transparent. The header green full logo was probed and returned the complete SVG source with every path filled #004b34 (dark green), confirming HTTP 200 with an image content type and a dark, light-card-safe mark of the awarding body itself on its own domain.",
+        "unverified": [
+          "No scholarship-specific closing date; the deadline follows each programme's application closing date",
+          "Number offered is published only as \"Varies\"",
+          "The specific tuition fee of each programme, and therefore the proportion of tuition that NZ$10,000 covers"
+        ],
+        "substitution": null,
+        "official_pages_read": [
+          "https://www.wgtn.ac.nz/scholarships/current/vuw-postgraduate-international-scholarship",
+          "https://www.wgtn.ac.nz/__data/assets/git_bridge/0005/1778018/dist/images/new/v2/logo-green-full.svg"
+        ],
+        "degree_level_confirmed": "Official page \"Scholarship level: Master's by thesis; Master's by coursework\" and \"It is designed for new international students who are entering a Master's degree or Postgraduate Diploma and studying full-time on campus\".",
+        "url_observed": null,
+        "contradictions": [
+          "Stored current_image_url was https://www.wgtn.ac.nz/__data/assets/git_bridge/0005/1778018/dist/images/safari-pinned-tab.svg with image_kind \"official_banner\"; that is a monochrome browser pinned-tab icon, not the University's logo. Replaced with the University's own green full logo SVG.",
+          "Stored funding amount and currency were null; the official page publishes a value of NZ$10,000.",
+          "Stored deadline_display \"Automatic with admission — assessed at point of offer\" is confirmed but incomplete: the official closing date is \"Same as the programme application closing date\", so the applicant must still meet the programme application deadline.",
+          "Stored verification_status was needs_review; the record is now verified against the awarding body's own page.",
+          "Stored deadline_precision \"varies\" is confirmed by the official page and retained."
+        ],
+        "skeleton": false
+      }
+    },
+    {
+      "target_id": 261,
+      "outcome": "refreshed",
+      "confirm": true,
+      "confirmation_evidence": "Official scholarship page https://www.wgtn.ac.nz/scholarships/current/vuw-undergraduate-international-scholarship states \"Value: $15,000\", \"Scholarship level: Future students; School leaver\", \"Closing date(s): Same as the programme application closing date\", \"This is a partial fee-based scholarship that will go towards tuition fees for one year of study\" and \"A scholarship application is not required. Students will be assessed for their eligibility for a scholarship on application for their programme. Recipients will be advised if they have been offered the scholarship in their Offer of Place.\" The stored index page https://www.wgtn.ac.nz/international/scholarships-fees/scholarships also lists \"VUW Undergraduate International Scholarship — This scholarship is for all new international students who are entering their first year of a Bachelor's degree programme and studying full-time on campus.\"",
+      "new_scholarship": {
+        "name": "VUW Undergraduate International Scholarship",
+        "legacy_titles": ["VUW Undergraduate International Scholarship (Victoria University of Wellington)"],
+        "country": "New Zealand",
+        "region": "Oceania",
+        "degree_levels": "Bachelor's",
+        "funding_type": "Partially Funded",
+        "official_source": "Te Herenga Waka — Victoria University of Wellington",
+        "official_source_url": "https://www.wgtn.ac.nz/international/scholarships-fees/scholarships",
+        "status": "open",
+        "is_verified": true,
+        "last_verified_date": "2026-10-04",
+        "application_link": "https://www.wgtn.ac.nz/international/scholarships-fees/scholarships",
+        "official_updates_url": "https://www.wgtn.ac.nz/scholarships/current/vuw-undergraduate-international-scholarship",
+        "catalogue_url": "https://www.wgtn.ac.nz/scholarships/scholarships-office",
+        "program_type": "Partial tuition fee scholarship for new international undergraduate students",
+        "duration": "One year of study only, for a student's first enrolment in the programme",
+        "funding_amount": 15000,
+        "funding_currency": "NZD",
+        "funding_period": "one year of study",
+        "deadline": "Closing date(s): Same as the programme application closing date. A scholarship application is not required; students are assessed for eligibility on application for their programme.",
+        "deadline_date": null,
+        "deadline_precision": "varies",
+        "application_period": "Aligned with programme applications; there is no separate scholarship application window and the outcome is communicated in the applicant's Offer of Place",
+        "eligibility_summary": "International students paying full international fees who intend to study towards a Bachelor's degree at Victoria University of Wellington, hold an unconditional or conditional Offer of Place, and are new students to the University. The scholarship is open to students completing or recently completing Victoria's EAP or Foundation Studies programmes, but not to returning students, Study Abroad or Exchange students, students with credit transfer or advanced standing, government sponsored students, or Australian and New Zealand citizens, permanent residents, resident visa holders and diplomatic visa holders.",
+        "eligibility": [
+          "Be an international student who is paying full international fees",
+          "Intend to study towards a Bachelor's degree at Victoria University of Wellington",
+          "Hold an unconditional or conditional Offer of Place for a Bachelor's degree at Victoria University of Wellington",
+          "Be a new student to Victoria University of Wellington",
+          "Not be already studying at Victoria University of Wellington as a returning student, unless undertaking the University's EAP or Foundation Studies programmes",
+          "Not be a Study Abroad, Exchange or Twinning student from an overseas partner university",
+          "Not have received credit transfer, advanced standing or recognition of prior learning from a previous qualification",
+          "Not be sponsored by their home government or the New Zealand government",
+          "Not be an Australian or New Zealand citizen, permanent resident, resident visa holder, or hold a diplomatic visa entitling them to domestic status"
+        ],
+        "coverage": [
+          "NZ$15,000 credited towards tuition fees only, for one year of study"
+        ],
+        "benefits": [
+          "NZ$15,000 tuition fee credit applied directly to tuition fees upfront, so students pay the reduced amount to the University",
+          "Applies for one year of study only, for the student's first enrolment in the programme",
+          "May be held in conjunction with other scholarships where the other scholarship's conditions permit",
+          "Recipients may request approval to defer the scholarship to another intake within the same calendar year"
+        ],
+        "required_documents": [
+          "Application for a Bachelor's degree programme at Victoria University of Wellington, through which eligibility is assessed",
+          "Evidence of international fee status and of the Offer of Place, held by the University"
+        ],
+        "english_requirement": "Not stated as a separate scholarship requirement; students completing Victoria's English for Academic Purposes (EAP) or Foundation Studies programmes are explicitly eligible for the scholarship.",
+        "requirements": [
+          "Apply for a Bachelor's degree programme and hold an Offer of Place",
+          "Pay full international fees",
+          "Enrol in first-year courses, which is when the scholarship is formally awarded"
+        ],
+        "application_method": [
+          "No separate scholarship application: students are assessed for scholarship eligibility on application for their programme",
+          "Recipients are advised in their Offer of Place if the scholarship has been offered"
+        ],
+        "selection_notes": "Holders must demonstrate their academic potential, as demonstrated by their admission into a Victoria University of Wellington programme. The official page describes no separate competitive selection round; eligibility is assessed through admission.",
+        "best_fit": "New international students entering the first year of a full-time on-campus Bachelor's degree at Victoria University of Wellington who are paying full international fees.",
+        "description": "The VUW Undergraduate International Scholarship is a partial fee-based scholarship of NZ$15,000 towards tuition fees for one year of study, for new international students entering their first year of a Bachelor's degree programme at Te Herenga Waka — Victoria University of Wellington and studying full-time on campus. No separate scholarship application is required: eligibility is assessed when the student applies for their programme, and the outcome is communicated in the Offer of Place. The scholarship is credited directly against tuition fees upfront, is awarded formally once the student enrols in first-year courses, and covers one year of study only. Students completing Victoria's EAP or Foundation Studies programmes remain eligible, but returning students, Study Abroad or Exchange students, students with credit transfer, government sponsored students and holders of domestic status are not. Withdrawal after award can trigger repayment, and a change in fee or residency status from international to domestic can cause the scholarship to be withdrawn, suspended or repaid."
+      },
+      "programme_detail_official": {
+        "official_source_urls": [
+          "https://www.wgtn.ac.nz/scholarships/current/vuw-undergraduate-international-scholarship",
+          "https://www.wgtn.ac.nz/international/scholarships-fees/scholarships",
+          "https://www.wgtn.ac.nz/international/applying"
+        ],
+        "application_link": "https://www.wgtn.ac.nz/international/scholarships-fees/scholarships",
+        "official_updates_url": "https://www.wgtn.ac.nz/scholarships/current/vuw-undergraduate-international-scholarship",
+        "catalogue_url": "https://www.wgtn.ac.nz/scholarships/scholarships-office",
+        "application_cycle": "Continuous, aligned with programme applications; the closing date is the programme application closing date and there is no separate scholarship application",
+        "deadline_central": null,
+        "deadline_central_display": "Closing date(s): Same as the programme application closing date",
+        "deadline_central_timezone": "Pacific/Auckland",
+        "deadline_note": "There is no scholarship-specific deadline. The University publishes the closing date as the programme application closing date, which differs by programme and intake, so no single exact date can be stated. Applicants do not submit a scholarship form at all; they are assessed during programme admission.",
+        "status": "OPEN",
+        "status_note": "Live and open. The scholarship is listed among the University's current international scholarships with closing date(s) 'Same as the programme application closing date', so applications are accepted in line with admissions for each programme.",
+        "funding_amount": 15000,
+        "funding_currency": "NZD",
+        "funding_period": "one year of study",
+        "funding_duration": "One year of study only, for the student's first enrolment in that programme",
+        "tuition_coverage": true,
+        "tuition_coverage_note": "Partial tuition coverage: \"This is a partial fee-based scholarship that will go towards tuition fees for one year of study\" and \"Payment of the scholarship will be made as a credit towards tuition fees only\". The fixed NZ$15,000 does not equal full international tuition and no living-cost component is published.",
+        "living_cost_coverage": false,
+        "travel_coverage": false,
+        "fully_funded": false,
+        "funding_label": "NZ$15,000 tuition fee credit for one year of study; may be withdrawn and repaid if fee or residency status changes from international to domestic, or if the recipient withdraws after award",
+        "benefits": [
+          "NZ$15,000 credit towards tuition fees, applied upfront so the student pays the reduced amount",
+          "One year of study only, for the first enrolment in the programme",
+          "Can be held in conjunction with other scholarships where their conditions permit",
+          "Deferral to another intake within the same calendar year can be requested"
+        ],
+        "eligibility": [
+          "Be an international student who is paying full international fees",
+          "Intend to study towards a Bachelor's degree at Victoria University of Wellington",
+          "Hold an unconditional or conditional Offer of Place for a Bachelor's degree",
+          "Be a new student to Victoria University of Wellington",
+          "Be completing or have recently completed Victoria's English for Academic Purposes (EAP) programme or its Foundation Studies programme",
+          "Not be a returning student already studying at Victoria University of Wellington (unless undertaking EAP or Foundation Studies)",
+          "Not be a Study Abroad, Exchange or Twinning student from an overseas partner university",
+          "Not have received credit transfer, advanced standing or recognition of prior learning",
+          "Not be sponsored by their home government or the New Zealand government",
+          "Not be an Australian or New Zealand citizen, permanent resident, resident visa holder, or hold a diplomatic visa entitling them to domestic status"
+        ],
+        "citizenship_residency": "International students paying full international fees. Australian and New Zealand citizens, permanent residents, resident visa holders and holders of a diplomatic visa entitling them to domestic status are not eligible.",
+        "international_eligibility": "Open to all new international students entering their first year of a Bachelor's degree programme and studying full-time on campus at Victoria University of Wellington who hold an Offer of Place.",
+        "degree_levels": ["Bachelor's"],
+        "study_mode": "Full-time, on campus",
+        "research_requirement": null,
+        "subject_or_agency_requirement": null,
+        "application_method": "A scholarship application is not required. Students are assessed for their eligibility for a scholarship on application for their programme, and recipients are advised in their Offer of Place if the scholarship has been offered.",
+        "application_route": "Bachelor's degree programme application at Victoria University of Wellington",
+        "requirements": [
+          "Apply for a Bachelor's degree programme and hold an Offer of Place",
+          "Be paying full international fees",
+          "Enrol in first-year courses, at which point the scholarship is formally awarded"
+        ],
+        "documents": [
+          "Programme application for the relevant Bachelor's degree",
+          "Records held by the University evidencing international fee status and the Offer of Place"
+        ],
+        "english_requirement": null,
+        "english_requirement_note": "No separate English language requirement is stated for the scholarship. Students who are completing or have recently completed Victoria's English for Academic Purposes (EAP) or Foundation Studies programmes are explicitly eligible.",
+        "selection_criteria": [
+          "Academic potential, as demonstrated by admission into a Victoria University of Wellington programme"
+        ],
+        "selection_weighting": null,
+        "duration": "One year",
+        "award_holder_conditions": [
+          "The scholarship applies for one year of study only, for the student's first enrolment in that programme",
+          "The scholarship is only formally awarded once per student, even where multiple programme applications generate multiple Offer of Place notifications",
+          "Recipients who withdraw from study after the scholarship has been formally awarded may be required to pay back some or all of the value at the University's discretion",
+          "Deferral is possible to another intake within the same calendar year only; the scholarship cannot be deferred to a later year",
+          "May be held in conjunction with other scholarships only where the other scholarship's conditions permit",
+          "If fee status changes from international to domestic before the scholarship is credited, the scholarship is withdrawn; if residency status changes from international to domestic during the tenure, the University may suspend or terminate it and require the return of funds in part or in full",
+          "The scholarship does not appear on the recipient's academic transcript"
+        ],
+        "supplements_or_initiatives": [
+          "VUW Postgraduate International Scholarship (separate award, established August 2025 alongside this one)",
+          "New Zealand International School Leaver Grants (separate award for international secondary students completing at least a full year of study in a New Zealand secondary school)"
+        ],
+        "official_contacts": {
+          "general": "International Office, Level 3 of Rutherford House, Pipitea campus, 23 Lambton Quay, Wellington 6011; phone +64 4 472 1000",
+          "email": "international@vuw.ac.nz"
+        },
+        "description": "The VUW Undergraduate International Scholarship provides NZ$15,000 towards tuition fees for one year of study for new international students entering the first year of a Bachelor's degree programme at Te Herenga Waka — Victoria University of Wellington and studying full-time on campus. No separate scholarship application is required: eligibility is assessed when the student applies for their programme and the outcome is communicated in the Offer of Place. The scholarship is credited directly against tuition fees upfront, is formally awarded once the student enrols in first-year courses, and covers one year of study only. Students completing Victoria's EAP or Foundation Studies programmes remain eligible, but returning students, Study Abroad or Exchange students, students with credit transfer, government sponsored students and holders of domestic status are excluded. The award was established in August 2025, replacing and combining earlier scholarships such as the Tongarewa International Scholarship, the Latin American Academic Achievement Scholarship, the International Alumni Fees Waiver and the New Zealand International School-Leaver Grant.",
+        "program_type": "Partial tuition fee scholarship for new international undergraduate students",
+        "region": "Oceania",
+        "coverage": "Tuition fees only, fixed NZ$15,000 credit for one year of study",
+        "last_verified_date": "2026-10-04"
+      },
+      "programme_detail_applicant_utility": {
+        "application_readiness_checklist": [
+          "Apply for a Bachelor's degree programme and secure an Offer of Place before the programme application closing date",
+          "Confirm you will be paying full international fees rather than domestic fees",
+          "Check the Offer of Place for the scholarship offer, which is where the outcome is communicated",
+          "Be aware the award covers one year of study only, so later years are not funded by it",
+          "If you completed Victoria's EAP or Foundation Studies programme, confirm you still count as a new student to the Bachelor's degree",
+          "Note that credit transfer, advanced standing or recognition of prior learning makes you ineligible"
+        ],
+        "common_rejection_risks": [
+          "Not paying full international fees, including students on domestic status or a diplomatic visa",
+          "Being a returning student already studying at Victoria",
+          "Holding credit transfer, advanced standing or recognition of prior learning",
+          "Being a Study Abroad, Exchange or Twinning student from a partner university",
+          "Being sponsored by a home government or the New Zealand government",
+          "Missing the programme application closing date, which is also the scholarship closing date",
+          "Withdrawing after the scholarship is formally awarded, which can trigger repayment"
+        ],
+        "estimated_uncovered_costs": [
+          "The balance of international tuition fees above NZ$15,000",
+          "Student Services Fee and course costs not covered by the fee credit",
+          "Living costs and accommodation in Wellington",
+          "Travel, visa and insurance costs",
+          "All years of study after the first, as the scholarship is one year only"
+        ],
+        "document_audit": [
+          "Programme application submitted and Offer of Place issued",
+          "Evidence of international fee status for the programme",
+          "Check of the Offer of Place for the scholarship offer wording",
+          "Confirmation of no credit transfer or advanced standing on the enrolment record"
+        ],
+        "alerts": [
+          {
+            "trigger": "No scholarship deadline",
+            "message": "The closing date is the programme application closing date; scholarship eligibility is assessed during admission, not through a separate form."
+          },
+          {
+            "trigger": "One year only",
+            "message": "The scholarship applies for one year of study only, for the student's first enrolment in the programme."
+          },
+          {
+            "trigger": "Repayment risk",
+            "message": "Recipients who withdraw after the scholarship is formally awarded may be required to pay back some or all of the value."
+          },
+          {
+            "trigger": "Status change",
+            "message": "If fee status changes to domestic before the credit is applied, the scholarship is withdrawn; a later residency change can require repayment."
+          }
+        ],
+        "submission_workflow": [
+          "Choose a Bachelor's degree programme at Victoria University of Wellington",
+          "Apply for the programme before its application closing date",
+          "Receive an Offer of Place and check whether it includes the scholarship offer",
+          "Accept the offer and enrol in first-year courses, at which point the scholarship is formally awarded and credited to tuition fees"
+        ]
+      },
+      "programme_detail_verification": {
+        "cycle_verified": "Current cycle as published 2026-10-04; closing date follows the programme application closing date",
+        "verification_confidence": 0.93,
+        "official_fields_confirmed": [
+          "funding_amount",
+          "funding_currency",
+          "degree_levels",
+          "eligibility",
+          "application_method",
+          "duration",
+          "tuition_coverage",
+          "status",
+          "official_contacts"
+        ],
+        "institution_check_required": [
+          "Confirm the applicant's programme is a Bachelor's degree and that they will pay full international fees",
+          "Confirm the specific programme application closing date, since the scholarship deadline follows it",
+          "Confirm international tuition fee level for the programme to work out the proportion covered by NZ$15,000"
+        ],
+        "unverified_or_removed_claims": [
+          "No scholarship-specific deadline date exists; the official page gives only 'Same as the programme application closing date', so deadline_date is null and deadline_precision is varies",
+          "Number offered is published only as \"Varies\"",
+          "No selection weighting or competitive round is described beyond academic potential as demonstrated by admission",
+          "No official English language requirement is stated for the scholarship",
+          "The stored official_source_url points at the International site's scholarship index page rather than the scholarship's own page; the stored URL was kept unchanged as required and the scholarship page is recorded in research_notes.url_observed"
+        ],
+        "source_citations": [
+          "https://www.wgtn.ac.nz/scholarships/current/vuw-undergraduate-international-scholarship",
+          "https://www.wgtn.ac.nz/__data/assets/git_bridge/0005/1778018/dist/images/new/v2/logo-green-full.svg"
+        ],
+        "researched_by": "w1_26a1"
+      },
+      "logo_override": {
+        "url": "https://www.wgtn.ac.nz/__data/assets/git_bridge/0005/1778018/dist/images/new/v2/logo-green-full.svg",
+        "page_url": "https://www.wgtn.ac.nz/scholarships/current/vuw-undergraduate-international-scholarship",
+        "official_host": true,
+        "alt_text": "Te Herenga Waka — Victoria University of Wellington logo",
+        "validation_result": "verified",
+        "validation_detail": "svg, probed and returned the full SVG source (HTTP 200, image/svg+xml); the University's full horizontal logo with the Te Whare Wānanga o te Ūpoko o te Ika a Māui roundel and wordmark, all paths filled #004b34 (dark green) so it is clearly visible on a light card. It is the logo used in the header of the official scholarship page.",
+        "image_kind": "official_logo",
+        "image_format": "svg",
+        "verified_at": "2026-10-04T00:00:00+00:00",
+        "host_evidence": "same_registrable_domain",
+        "_award": "VUW Undergraduate International Scholarship"
+      },
+      "research_notes": {
+        "logo": "Reused the same verified asset as record 260 because the awarding body is identical: the header logo https://www.wgtn.ac.nz/__data/assets/git_bridge/0005/1778018/dist/images/new/v2/logo-green-full.svg, probed and returning the complete SVG source with all paths filled #004b34 (dark green), confirming HTTP 200 with an image content type and a dark, light-card-safe mark. The footer variant logo-white-full.svg on the same pages was rejected as white-on-transparent.",
+        "unverified": [
+          "No scholarship-specific closing date; the deadline follows each programme's application closing date",
+          "Number offered is published only as \"Varies\"",
+          "The tuition fee of each programme, and therefore the proportion of tuition that NZ$15,000 covers",
+          "The stored International index page was confirmed by the official scholarship page's own content but was not separately fetched, so it is not listed in source_citations"
+        ],
+        "substitution": null,
+        "official_pages_read": [
+          "https://www.wgtn.ac.nz/scholarships/current/vuw-undergraduate-international-scholarship",
+          "https://www.wgtn.ac.nz/__data/assets/git_bridge/0005/1778018/dist/images/new/v2/logo-green-full.svg"
+        ],
+        "degree_level_confirmed": "Official page \"It is designed for new international students who are entering their first year of a Bachelor's degree programme and studying full-time on campus\" and \"Intending to study towards a Bachelor's degree at Victoria University of Wellington\".",
+        "url_observed": "https://www.wgtn.ac.nz/scholarships/current/vuw-undergraduate-international-scholarship is the scholarship's own official page. The stored official_source_url https://www.wgtn.ac.nz/international/scholarships-fees/scholarships is the International site's scholarship index page, which still lists this scholarship; it was kept unchanged as required because it is the record's identity.",
+        "contradictions": [
+          "Stored current_image_url was https://www.wgtn.ac.nz/__data/assets/image/0008/2296331/students-computers-studio-2000x800px.jpg, a photograph of two students at computers, with image_kind \"program_image\"; it is not a logo. Replaced with the University's own green full logo SVG.",
+          "Stored funding amount and currency were null; the official page publishes a value of NZ$15,000.",
+          "Stored deadline_display \"Automatic with admission — assessed at point of offer\" is confirmed but incomplete: the official closing date is \"Same as the programme application closing date\", so the applicant must still meet the programme application deadline.",
+          "Stored verification_status was needs_review; the record is now verified against the awarding body's own page.",
+          "Stored deadline_precision \"varies\" is confirmed by the official page and retained."
+        ],
+        "skeleton": false
+      }
+    }
+  ]
+}

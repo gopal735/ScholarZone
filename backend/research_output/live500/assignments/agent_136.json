@@ -1,0 +1,97 @@
+{
+ "agent": "agent_136",
+ "assignment_count": 1,
+ "scholarships": [
+  {
+   "id": 355,
+   "title": "Mastercard Foundation Scholars Program at Sciences Po (Graduate Level)",
+   "country": "France",
+   "degree": "Master's",
+   "funding_label": "Fully Funded",
+   "status": "open",
+   "official_source": "Sciences Po",
+   "official_source_url": "https://www.sciencespo.fr/students/en/fees-funding/bursaries-financial-aid/mastercard-foundation-scholarships/graduate-study",
+   "application_link": "https://www.sciencespo.fr/students/en/fees-funding/bursaries-financial-aid/mastercard-foundation-scholarships/graduate-study",
+   "catalogue_url": "https://www.sciencespo.fr/students/en/fees-funding/bursaries-financial-aid/mastercard-foundation-scholarships/graduate-study",
+   "official_updates_url": "https://www.sciencespo.fr/students/en/fees-funding/bursaries-financial-aid/mastercard-foundation-scholarships/graduate-study",
+   "existing": {
+    "funding_amount": null,
+    "funding_currency": null,
+    "funding_period": null,
+    "tuition_coverage": 1,
+    "living_cost_coverage": 1,
+    "travel_coverage": null,
+    "fully_funded": 1,
+    "description": "The Mastercard Foundation Scholars Program at Sciences Po is the first such programme in continental Europe and supports students from the African continent who wish to pursue a two-year Master's degree at Sciences Po, covering the full financial needs of selected Scholars. Applicants must first be declared eligible and receive an application fee waiver, then apply and be admitted through the International Graduate Admissions Procedure, and finally be selected by the Programme's Selection Committee. For the 2027 intake the fee-waiver window runs from October to mid-December 2026, while the scholarship application timeline itself had not been published on the page as of 4 October 2026. Shortlisted admitted candidates are invited to a roughly 25-minute online interview conducted by Zoom.",
+    "eligibility": [
+     "Hold the citizenship of an African country; applicants holding dual citizenship that includes citizenship of a country outside the African continent are not eligible",
+     "Be currently completing, or already hold, a Bachelor's degree from one of the listed partner institutions, or from a recognised bridge or mentoring programme offered by an approved organisation, or hold or have held UNHCR refugee status",
+     "Be under 35 years of age on 1 September of the year in which the scholarship application is submitted",
+     "Not already hold, or currently be pursuing, a Master's degree",
+     "Be applying to the Mastercard Foundation Scholars Program for the first time",
+     "Meet Sciences Po's minimum academic result requirement for the country of the home university",
+     "Be applying to a two-year Master's programme at Sciences Po through the International Graduate Admissions Procedure; dual degree and one-year Master's programmes are not eligible",
+     "Students currently enrolled at Sciences Po, or currently enrolled in or graduated from a French higher education institution, are not eligible"
+    ],
+    "eligibility_summary": "Citizens of an African country (dual citizenship including a non-African country is excluded), under 35 on 1 September of the application year, holding or completing a Bachelor's degree from a listed partner institution or an approved bridge programme, or holding UNHCR refugee status, not already holding or pursuing a Master's degree, and applying for the first time. Applicants currently enrolled at Sciences Po, or currently enrolled in or graduated from a French higher education institution, are not eligible.",
+    "benefits": [
+     "Full financial needs covered for two years of Master's study at Sciences Po",
+     "Application fee waiver",
+     "Comprehensive support from selection through to first employment"
+    ],
+    "coverage": [
+     "Full financial needs of selected Scholars for the two years of study",
+     "Application fee waiver as part of the eligibility process",
+     "Comprehensive support from the moment candidates are selected until they secure their first job"
+    ],
+    "requirements": [
+     "Demonstrate a clear alignment between the chosen Master's programme, personal and academic background and future career goals",
+     "Demonstrate critical thinking and analytical insight into major contemporary political, economic and societal challenges facing Africa and the world",
+     "Demonstrate ambition, originality and perseverance through entrepreneurial initiatives or public service projects with potential to contribute to Africa's socio-economic transformation",
+     "Submit a complete application; any missing or non-compliant document renders the application incomplete and therefore ineligible",
+     "Consult the mandatory minimum academic results table before applying; applicants below the threshold are automatically deemed ineligible"
+    ],
+    "documents": [
+     "Valid identity document (passport, national identity card or travel document)",
+     "Proof of completed or in-progress Bachelor's degree (transcript, diploma or certificate) from a recognised partner university",
+     "Or certificate confirming successful completion of a recognised bridge programme",
+     "Or proof of refugee status (UNHCR registration card)",
+     "Academic recommendations, which must not be sent from a personal email address",
+     "Language test results as required by the chosen Master's programme",
+     "Written scholarship application and interview responses"
+    ],
+    "english_requirement": null,
+    "application_method": [
+     "Check eligibility against the published criteria",
+     "Request the application fee waiver through the Sciences Po application platform",
+     "If eligible, receive a message with the steps to complete and submit the application with the fee waived",
+     "Apply and be admitted to a two-year Master's programme through the International Graduate Admissions Procedure",
+     "Be considered by the Programme's Selection Committee and, if shortlisted, attend an online Zoom interview of about 25 minutes"
+    ],
+    "selection_notes": "Application review assesses significant barriers to accessing education, commitment to African development and aspiration to become a changemaker, and potential for transformative leadership, with particular consideration for young women, refugees and displaced persons, and persons with disabilities. Shortlisted admitted applicants are interviewed online by Zoom for about 25 minutes. Meeting the criteria and being admitted to Sciences Po does not guarantee an interview, and an interview invitation does not guarantee the award. Several months may elapse between a Sciences Po admission offer and a scholarship decision.",
+    "best_fit": "Under-35 citizens of an African country with a strong academic record from a listed partner institution, a demonstrated commitment to African development and leadership potential, seeking a two-year Master's in Paris.",
+    "notes": null,
+    "duration": "Two years of Master's study in person in Paris",
+    "application_period": "2027 intake. Application fee waiver window October to mid-December 2026; information sessions between September and December 2026; virtual Open House 17 October 2026; Sciences Po international graduate procedure deadline 21 February 2027 (11.59pm Paris time) for the 2027 intake.",
+    "deadline_display": "Applications for the fee waiver will be open from October to mid-December 2026; the scholarship's own application deadline has not yet been published on the programme page.",
+    "deadline_date": null,
+    "region": "Africa",
+    "program_type": "Fully funded graduate scholarship",
+    "applicant_utility": null,
+    "official_details": null
+   },
+   "missing_fields": [
+    "funding_amount",
+    "funding_currency",
+    "funding_period",
+    "travel_coverage",
+    "english_requirement",
+    "notes",
+    "deadline_date",
+    "applicant_utility",
+    "official_details"
+   ]
+  }
+ ],
+ "result_file": "C:\\Users\\GopaL\\Desktop\\Projects folder\\ScholarZone\\backend\\research_output\\live500\\results\\agent_136.json"
+}

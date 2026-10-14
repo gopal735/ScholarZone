@@ -1,0 +1,1777 @@
+{
+ "generated_at": "2026-10-03",
+ "public_total": 386,
+ "detail_500_count": 116,
+ "repaired_records": 117,
+ "repair_rule": "A bare JSON string in an array-typed detail field becomes a one-element array containing that string. The text is preserved byte for byte. No value is split, reordered, truncated or invented.",
+ "records": [
+  {
+   "id": 16,
+   "name": "Marie Skłodowska-Curie Actions (MSCA) Postdoctoral Fellowships",
+   "http_status": 500,
+   "fields": {
+    "eligibility": {
+     "stored": "Postdoctoral researchers who completed their PhD and satisfy the mobility rule, having carried out their main research activity outside the country of the host institution in the last three years.",
+     "repaired": [
+      "Postdoctoral researchers who completed their PhD and satisfy the mobility rule, having carried out their main research activity outside the country of the host institution in the last three years."
+     ]
+    }
+   }
+  },
+  {
+   "id": 34,
+   "name": "Taiwan Scholarship Program",
+   "http_status": 500,
+   "fields": {
+    "application_method": {
+     "stored": "Submit the application to the local Taiwan Representative Office; MOE scholarship applications must be submitted to the local Taiwan Representative Office, and MOFA recipients' scholarship certificates are issued by Taiwan's diplomatic missions before arrival.",
+     "repaired": [
+      "Submit the application to the local Taiwan Representative Office; MOE scholarship applications must be submitted to the local Taiwan Representative Office, and MOFA recipients' scholarship certificates are issued by Taiwan's diplomatic missions before arrival."
+     ]
+    }
+   }
+  },
+  {
+   "id": 74,
+   "name": "LSE Excellence Scholarship",
+   "http_status": 500,
+   "fields": {
+    "application_method": {
+     "stored": "No separate application. Candidates are identified from their application for admission, and awards are made on a rolling basis through the application cycle until all awards are allocated.",
+     "repaired": [
+      "No separate application. Candidates are identified from their application for admission, and awards are made on a rolling basis through the application cycle until all awards are allocated."
+     ]
+    }
+   }
+  },
+  {
+   "id": 75,
+   "name": "Global Futures Scholarship (South Asia) — University of Manchester",
+   "http_status": 500,
+   "fields": {
+    "application_method": {
+     "stored": "Hold an offer of a study place for a course starting in September 2027, then submit the dedicated online application form that is emailed to all relevant offer holders. Late applications are not accepted under any circumstances.",
+     "repaired": [
+      "Hold an offer of a study place for a course starting in September 2027, then submit the dedicated online application form that is emailed to all relevant offer holders. Late applications are not accepted under any circumstances."
+     ]
+    }
+   }
+  },
+  {
+   "id": 78,
+   "name": "GREAT Scholarship 2026 — University of Edinburgh (Bangladesh)",
+   "http_status": 500,
+   "fields": {
+    "application_method": {
+     "stored": "Visit the participating university page, follow the link to the university website, and apply for the individual scholarship following that university's own instructions. Successful scholars are informed by the individual university, and funding is issued by the university after registration.",
+     "repaired": [
+      "Visit the participating university page, follow the link to the university website, and apply for the individual scholarship following that university's own instructions. Successful scholars are informed by the individual university, and funding is issued by the university after registration."
+     ]
+    }
+   }
+  },
+  {
+   "id": 94,
+   "name": "INSEAD MBA / Master in Management / Master in Finance Scholarships",
+   "http_status": 500,
+   "fields": {
+    "application_method": {
+     "stored": "Submit the INSEAD programme application through the Application Online platform first; the scholarship form then becomes available in the same platform. MBA candidates may select up to four scholarships; GEMBA candidates up to two. Some scholarships (spot, MIM/MIF Excellence, Diversity) require no separate application and are awarded on the admissions application.",
+     "repaired": [
+      "Submit the INSEAD programme application through the Application Online platform first; the scholarship form then becomes available in the same platform. MBA candidates may select up to four scholarships; GEMBA candidates up to two. Some scholarships (spot, MIM/MIF Excellence, Diversity) require no separate application and are awarded on the admissions application."
+     ]
+    }
+   }
+  },
+  {
+   "id": 98,
+   "name": "IE University – Master's Awards & Scholarships",
+   "http_status": 500,
+   "fields": {
+    "application_method": {
+     "stored": "Submit the online admission application for the master's programme of your choice. Then log in to the online financial aid platform using the same email and password as your admission application, complete the financial aid application, upload all necessary documentation and submit. IE verifies completeness after admission is granted, may request further information, and the IE Financial Aid Committee normally decides within 1 to 3 weeks of admission being granted. If offered an award, you must complete your enrolment in the programme.",
+     "repaired": [
+      "Submit the online admission application for the master's programme of your choice. Then log in to the online financial aid platform using the same email and password as your admission application, complete the financial aid application, upload all necessary documentation and submit. IE verifies completeness after admission is granted, may request further information, and the IE Financial Aid Committee normally decides within 1 to 3 weeks of admission being granted. If offered an award, you must complete your enrolment in the programme."
+     ]
+    }
+   }
+  },
+  {
+   "id": 99,
+   "name": "ESADE Talent Scholarships (MSc & MBA)",
+   "http_status": 500,
+   "fields": {
+    "application_method": {
+     "stored": "Not published as a step-by-step process on the pages read. The Scholarship Program page states that 'Calls for these scholarship applications are generic and targeted at all those who meet the legally established criteria' and that 'Our Talent Attraction Committee will study their applications to confirm that candidates meet the established requirements.' Programme-specific application routes are linked from the Financial Aid page (Bachelor's, Executive MBA, Full-time MBA, MSc need-based scholarships, Executive Education, and research programme admissions).",
+     "repaired": [
+      "Not published as a step-by-step process on the pages read. The Scholarship Program page states that 'Calls for these scholarship applications are generic and targeted at all those who meet the legally established criteria' and that 'Our Talent Attraction Committee will study their applications to confirm that candidates meet the established requirements.' Programme-specific application routes are linked from the Financial Aid page (Bachelor's, Executive MBA, Full-time MBA, MSc need-based scholarships, Executive Education, and research programme admissions)."
+     ]
+    }
+   }
+  },
+  {
+   "id": 102,
+   "name": "NUS Research Scholarship",
+   "http_status": 500,
+   "fields": {
+    "application_method": {
+     "stored": "Applicants may apply for the scholarship within their admissions application through GradApp and must fulfil the additional scholarship application requirements stated there. Incoming graduate students should indicate their interest in the Scholarship in their application for admission.",
+     "repaired": [
+      "Applicants may apply for the scholarship within their admissions application through GradApp and must fulfil the additional scholarship application requirements stated there. Incoming graduate students should indicate their interest in the Scholarship in their application for admission."
+     ]
+    }
+   }
+  },
+  {
+   "id": 103,
+   "name": "NUS Commonwealth Scholarship",
+   "http_status": 500,
+   "fields": {
+    "application_method": {
+     "stored": "Apply for the scholarship within the admissions application through GradApp, fulfilling the additional scholarship application requirements stated there. Incoming graduate students should indicate their interest in the Scholarship in their application for admission.",
+     "repaired": [
+      "Apply for the scholarship within the admissions application through GradApp, fulfilling the additional scholarship application requirements stated there. Incoming graduate students should indicate their interest in the Scholarship in their application for admission."
+     ]
+    }
+   }
+  },
+  {
+   "id": 107,
+   "name": "NTU Nanyang President's Graduate Scholarship (NPGS)",
+   "http_status": 500,
+   "fields": {
+    "application_method": {
+     "stored": "The official page does not publish an application method, only that the application period for Academic Year 2027-2028 will be announced in due course, that successful candidates are informed of the outcome together with the offer of admissions via email, and that they are required to observe the terms and conditions for the award. New students are directed to update their Singapore bank account details in student intranet (GSLink) before the 15th of the semester commencement month (January or August) to avoid delays in stipend payment, after which the one-time IT allowance is disbursed automatically.",
+     "repaired": [
+      "The official page does not publish an application method, only that the application period for Academic Year 2027-2028 will be announced in due course, that successful candidates are informed of the outcome together with the offer of admissions via email, and that they are required to observe the terms and conditions for the award. New students are directed to update their Singapore bank account details in student intranet (GSLink) before the 15th of the semester commencement month (January or August) to avoid delays in stipend payment, after which the one-time IT allowance is disbursed automatically."
+     ]
+    }
+   }
+  },
+  {
+   "id": 109,
+   "name": "SUTD President's Graduate Fellowship (PGF)",
+   "http_status": 500,
+   "fields": {
+    "application_method": {
+     "stored": "Apply to the SUTD PhD programme through the SUTD graduate admission portal; the President's Graduate Fellowship is awarded with admission and has no separate application.",
+     "repaired": [
+      "Apply to the SUTD PhD programme through the SUTD graduate admission portal; the President's Graduate Fellowship is awarded with admission and has no separate application."
+     ]
+    }
+   }
+  },
+  {
+   "id": 113,
+   "name": "UGC Junior Research Fellowship (JRF) & Research Associateship (RA) for Foreign Nationals",
+   "http_status": 500,
+   "fields": {
+    "application_method": {
+     "stored": "For the general JRF scheme read, candidates must have qualified in NET-JRF or the UGC-CSIR joint test, and the registration for the M.Phil/PhD is made by the university, institution or college. The page links to the National Testing Agency site for the qualifying test. No application procedure specific to foreign nationals was published on the pages read.",
+     "repaired": [
+      "For the general JRF scheme read, candidates must have qualified in NET-JRF or the UGC-CSIR joint test, and the registration for the M.Phil/PhD is made by the university, institution or college. The page links to the National Testing Agency site for the qualifying test. No application procedure specific to foreign nationals was published on the pages read."
+     ]
+    }
+   }
+  },
+  {
+   "id": 114,
+   "name": "TWAS-CSIR Postgraduate Fellowship Programme",
+   "http_status": 500,
+   "fields": {
+    "application_method": {
+     "stored": "Applications can only be submitted through the TWAS online portal, using the 'apply now' button once the call is open. A tutorial for using the online application form is available on the page. If already registered for a PhD in the home country, the Vice-Chancellor or Registrar of the home university must sign a copy of the 'Registration and No Objection Certificate', and a copy must be sent to both CSIR and TWAS. The CSIR acceptance letter must be submitted with the application, or by the deadline at the latest - without preliminary acceptance, the application will not be considered for selection.",
+     "repaired": [
+      "Applications can only be submitted through the TWAS online portal, using the 'apply now' button once the call is open. A tutorial for using the online application form is available on the page. If already registered for a PhD in the home country, the Vice-Chancellor or Registrar of the home university must sign a copy of the 'Registration and No Objection Certificate', and a copy must be sent to both CSIR and TWAS. The CSIR acceptance letter must be submitted with the application, or by the deadline at the latest - without preliminary acceptance, the application will not be considered for selection."
+     ]
+    }
+   }
+  },
+  {
+   "id": 122,
+   "name": "Karsh International Scholars Program — Duke University",
+   "http_status": 500,
+   "fields": {
+    "application_method": {
+     "stored": "Simply apply to Duke University and request financial aid. Complete the financial aid forms, which are all available online through the Duke Financial Aid website. There is no separate scholarship application and candidates cannot be nominated.",
+     "repaired": [
+      "Simply apply to Duke University and request financial aid. Complete the financial aid forms, which are all available online through the Duke Financial Aid website. There is no separate scholarship application and candidates cannot be nominated."
+     ]
+    }
+   }
+  },
+  {
+   "id": 125,
+   "name": "Harvard University Financial Aid (International)",
+   "http_status": 500,
+   "fields": {
+    "application_method": {
+     "stored": "File the College Board CSS Profile including Harvard (code 3434), then upload documents through the College Board IDOC service. US citizens, permanent residents and other eligible non-citizens additionally file the FAFSA with Harvard code E00468. International applicants unable to pay the CSS Profile fee, or in countries the College Board cannot process payments from, follow Harvard's alternate application instructions.",
+     "repaired": [
+      "File the College Board CSS Profile including Harvard (code 3434), then upload documents through the College Board IDOC service. US citizens, permanent residents and other eligible non-citizens additionally file the FAFSA with Harvard code E00468. International applicants unable to pay the CSS Profile fee, or in countries the College Board cannot process payments from, follow Harvard's alternate application instructions."
+     ]
+    }
+   }
+  },
+  {
+   "id": 131,
+   "name": "Rotary Peace Fellowships",
+   "http_status": 500,
+   "fields": {
+    "application_method": {
+     "stored": "Online application through the Rotary Fellowship application portal at my.rotary.org. Rotary also operates a referral form for prospective candidates nominated by others.",
+     "repaired": [
+      "Online application through the Rotary Fellowship application portal at my.rotary.org. Rotary also operates a referral form for prospective candidates nominated by others."
+     ]
+    }
+   }
+  },
+  {
+   "id": 135,
+   "name": "Politecnico di Milano — Merit Based International Scholarships",
+   "http_status": 500,
+   "fields": {
+    "application_method": {
+     "stored": "Submit an admission application during the Early Bird window, then complete the additional scholarship application form published with the call; the detailed deadlines and procedure are in the linked call PDF.",
+     "repaired": [
+      "Submit an admission application during the Early Bird window, then complete the additional scholarship application form published with the call; the detailed deadlines and procedure are in the linked call PDF."
+     ]
+    }
+   }
+  },
+  {
+   "id": 136,
+   "name": "University of Padua — Padua International Excellence Scholarship",
+   "http_status": 500,
+   "fields": {
+    "application_method": {
+     "stored": "The application for the degree course of your interest automatically makes you eligible to compete for the scholarship; no separate application or additional documentation is required beyond the documents for the chosen degree programme. Selected candidates receive a specific notice with the procedures and deadline for accepting the benefit.",
+     "repaired": [
+      "The application for the degree course of your interest automatically makes you eligible to compete for the scholarship; no separate application or additional documentation is required beyond the documents for the chosen degree programme. Selected candidates receive a specific notice with the procedures and deadline for accepting the benefit."
+     ]
+    }
+   }
+  },
+  {
+   "id": 139,
+   "name": "Bocconi University — ISU Bocconi Scholarship / Bocconi4Access to Education",
+   "http_status": 500,
+   "fields": {
+    "application_method": {
+     "stored": "Complete the online application on the Bocconi portal during the relevant session window, fill in all required information including status, family household, incomes, entrepreneurial activities and company shares, upload the necessary documentation for the declared requirements and status, finalize by clicking Complete data and Submit application before the deadline, then upload documents proving non-resident status. After submitting, periodically verify the Notifications area of MyApplication, where all communication from the Fees, Funding and Housing office is sent.",
+     "repaired": [
+      "Complete the online application on the Bocconi portal during the relevant session window, fill in all required information including status, family household, incomes, entrepreneurial activities and company shares, upload the necessary documentation for the declared requirements and status, finalize by clicking Complete data and Submit application before the deadline, then upload documents proving non-resident status. After submitting, periodically verify the Notifications area of MyApplication, where all communication from the Fees, Funding and Housing office is sent."
+     ]
+    }
+   }
+  },
+  {
+   "id": 140,
+   "name": "University of Turin — Talent 4 UniTo",
+   "http_status": 500,
+   "fields": {
+    "application_method": {
+     "stored": "Apply against the published call for application. The official page links the English call PDF (bando_talents4unito_2026_2027_en.pdf) and publishes the resulting ranking list and a correction. Applicants are told to check the page regularly as \"new admission calls may be published\".",
+     "repaired": [
+      "Apply against the published call for application. The official page links the English call PDF (bando_talents4unito_2026_2027_en.pdf) and publishes the resulting ranking list and a correction. Applicants are told to check the page regularly as \"new admission calls may be published\"."
+     ]
+    }
+   }
+  },
+  {
+   "id": 144,
+   "name": "MOFA Taiwan Scholarship",
+   "http_status": 500,
+   "fields": {
+    "application_method": {
+     "stored": "Apply through the Taiwan Scholarships and Huayu Enrichment Scholarships website during the February 1 to March 31 window.",
+     "repaired": [
+      "Apply through the Taiwan Scholarships and Huayu Enrichment Scholarships website during the February 1 to March 31 window."
+     ]
+    }
+   }
+  },
+  {
+   "id": 149,
+   "name": "NTHU International Student Scholarship",
+   "http_status": 500,
+   "fields": {
+    "application_method": {
+     "stored": "Use the NTHU International Student Online Application System, the same system used for international degree programmes, and select 'Apply for NTHU international student scholarship'",
+     "repaired": [
+      "Use the NTHU International Student Online Application System, the same system used for international degree programmes, and select 'Apply for NTHU international student scholarship'"
+     ]
+    }
+   }
+  },
+  {
+   "id": 151,
+   "name": "MOE Elite Scholarship for University Lecturers from South & Southeast Asia",
+   "http_status": 500,
+   "fields": {
+    "application_method": {
+     "stored": "Submit the application together with the university admission application. NCKU directs applicants to contact the relevant Taiwan Embassy or Representative Office and to refer to the MOE scholarship program office website for application guidelines, forms, types of scholarship, quotas and selection process information.",
+     "repaired": [
+      "Submit the application together with the university admission application. NCKU directs applicants to contact the relevant Taiwan Embassy or Representative Office and to refer to the MOE scholarship program office website for application guidelines, forms, types of scholarship, quotas and selection process information."
+     ]
+    }
+   }
+  },
+  {
+   "id": 154,
+   "name": "University of St.Gallen (HSG) Excellence Scholarships for Bachelor Students",
+   "http_status": 500,
+   "fields": {
+    "application_method": {
+     "stored": "There is no application method in the usual sense. Enrolled students with outstanding academic performance in the HSG Assessment Year are identified by the Advice Center for Study Funding and invited to apply. The page states expressly that an application without an invitation from the University of St.Gallen is not possible. The Advice Center first checks the completeness of the application and then contacts the applicant to coordinate a personal interview for the separate loan and scholarship fund applications.",
+     "repaired": [
+      "There is no application method in the usual sense. Enrolled students with outstanding academic performance in the HSG Assessment Year are identified by the Advice Center for Study Funding and invited to apply. The page states expressly that an application without an invitation from the University of St.Gallen is not possible. The Advice Center first checks the completeness of the application and then contacts the applicant to coordinate a personal interview for the separate loan and scholarship fund applications."
+     ]
+    }
+   }
+  },
+  {
+   "id": 156,
+   "name": "Alfred Werner Scholarship Programme — Swiss Chemical Society",
+   "http_status": 500,
+   "fields": {
+    "application_method": {
+     "stored": "Candidates are nominated by the academic institutions to which they have been admitted. The SCS Foundation does not accept direct applications from individual candidates. Nominations are reviewed by the Alfred Werner Fund Allocation Committee.",
+     "repaired": [
+      "Candidates are nominated by the academic institutions to which they have been admitted. The SCS Foundation does not accept direct applications from individual candidates. Nominations are reviewed by the Alfred Werner Fund Allocation Committee."
+     ]
+    }
+   }
+  },
+  {
+   "id": 157,
+   "name": "CERN Doctoral Student Programme",
+   "http_status": 500,
+   "fields": {
+    "application_method": {
+     "stored": "Complete the online application in the CERN recruitment portal before the deadline; an interview may follow.",
+     "repaired": [
+      "Complete the online application in the CERN recruitment portal before the deadline; an interview may follow."
+     ]
+    }
+   }
+  },
+  {
+   "id": 158,
+   "name": "CERN Research Fellowship",
+   "http_status": 500,
+   "fields": {
+    "application_method": {
+     "stored": "Complete the online application for the specific advertised vacancy with your CV (in English or French), adding a copy of your most relevant university diploma (or a certificate of achievement if the paper diploma has not yet been issued) and, depending on the advertisement, a statement of research interests and recent letters of recommendation. Shortlisted applicants may be invited to an online interview with the hiring manager.",
+     "repaired": [
+      "Complete the online application for the specific advertised vacancy with your CV (in English or French), adding a copy of your most relevant university diploma (or a certificate of achievement if the paper diploma has not yet been issued) and, depending on the advertisement, a statement of research interests and recent letters of recommendation. Shortlisted applicants may be invited to an online interview with the hiring manager."
+     ]
+    }
+   }
+  },
+  {
+   "id": 159,
+   "name": "IMD MBA Scholarships",
+   "http_status": 500,
+   "fields": {
+    "application_method": {
+     "stored": "Complete the scholarship application in the Program section of your IMD MBA application form. Bursaries are also applied for through the admissions application. External funding is applied for directly with third-party providers.",
+     "repaired": [
+      "Complete the scholarship application in the Program section of your IMD MBA application form. Bursaries are also applied for through the admissions application. External funding is applied for directly with third-party providers."
+     ]
+    }
+   }
+  },
+  {
+   "id": 161,
+   "name": "WIPO Fellowship Program",
+   "http_status": 500,
+   "fields": {
+    "application_method": {
+     "stored": "Apply through a call for expressions of interest published on WIPO's career website, or monitor WIPO's LinkedIn and other social media channels for advertised positions.",
+     "repaired": [
+      "Apply through a call for expressions of interest published on WIPO's career website, or monitor WIPO's LinkedIn and other social media channels for advertised positions."
+     ]
+    }
+   }
+  },
+  {
+   "id": 163,
+   "name": "TU Wien Scholarships for International Students",
+   "http_status": 500,
+   "fields": {
+    "application_method": {
+     "stored": "Apply to the relevant Dean's Office, most often by email with the required forms; the Merit Scholarship and Funding Grant forms are published per faculty. Foundation Grant applications are emailed to stiftungs-stipendium@tuwien.ac.at. Study Grant applications go directly to the Austrian Study Grant Authority.",
+     "repaired": [
+      "Apply to the relevant Dean's Office, most often by email with the required forms; the Merit Scholarship and Funding Grant forms are published per faculty. Foundation Grant applications are emailed to stiftungs-stipendium@tuwien.ac.at. Study Grant applications go directly to the Austrian Study Grant Authority."
+     ]
+    }
+   }
+  },
+  {
+   "id": 170,
+   "name": "Webster University Vienna Scholarships",
+   "http_status": 500,
+   "fields": {
+    "application_method": {
+     "stored": "Apply for and be admitted to a full degree programme first through the Webster Vienna Admissions Office, then request the online scholarship application form from admissions@webster.ac.at during the open scholarship period. Questions about the form and required documents go to scholarship@webster.ac.at.",
+     "repaired": [
+      "Apply for and be admitted to a full degree programme first through the Webster Vienna Admissions Office, then request the online scholarship application form from admissions@webster.ac.at during the open scholarship period. Questions about the form and required documents go to scholarship@webster.ac.at."
+     ]
+    }
+   }
+  },
+  {
+   "id": 171,
+   "name": "Modul University Vienna Scholarships",
+   "http_status": 500,
+   "fields": {
+    "application_method": {
+     "stored": "Apply through the MU online application portal (MUVi at apply.modul.ac.at). Reductions and grants are assessed as part of the admission process; MU advises contacting recruitment@modul.ac.at about individual cases. Students on the Valedictorian Grant are informed at the end of each academic year rather than applying.",
+     "repaired": [
+      "Apply through the MU online application portal (MUVi at apply.modul.ac.at). Reductions and grants are assessed as part of the admission process; MU advises contacting recruitment@modul.ac.at about individual cases. Students on the Valedictorian Grant are informed at the end of each academic year rather than applying."
+     ]
+    }
+   }
+  },
+  {
+   "id": 174,
+   "name": "Delft University of Technology (TU Delft) Justus & Louise van Effen Scholarship",
+   "http_status": 500,
+   "fields": {
+    "application_method": {
+     "stored": "Complete the MSc application, then upload the Scholarship Application Form, one reference letter (two references must be uploaded as a single PDF) and the English language certificate in the MSc application. Applications cannot be sent by email outside the portal.",
+     "repaired": [
+      "Complete the MSc application, then upload the Scholarship Application Form, one reference letter (two references must be uploaded as a single PDF) and the English language certificate in the MSc application. Applications cannot be sent by email outside the portal."
+     ]
+    }
+   }
+  },
+  {
+   "id": 176,
+   "name": "Leiden University Excellence Scholarship (LExS)",
+   "http_status": 500,
+   "fields": {
+    "application_method": {
+     "stored": "Apply online for admission to a Leiden Master's programme and pay the application fee if applicable, then return to the Apply screen in the online application, open the Scholarships section, indicate the LExS application and upload an LExS motivation letter as a PDF of max. 500 words. Each separate application for admission needs its own LExS application and motivation letter if applying for more than one programme or specialisation.",
+     "repaired": [
+      "Apply online for admission to a Leiden Master's programme and pay the application fee if applicable, then return to the Apply screen in the online application, open the Scholarships section, indicate the LExS application and upload an LExS motivation letter as a PDF of max. 500 words. Each separate application for admission needs its own LExS application and motivation letter if applying for more than one programme or specialisation."
+     ]
+    }
+   }
+  },
+  {
+   "id": 179,
+   "name": "Radboud University Scholarship Programme",
+   "http_status": 500,
+   "fields": {
+    "application_method": {
+     "stored": "Indicate during the OSIRIS application for a Master's programme that you wish to apply for a Radboud Scholarship, then upload two reference letters and a curriculum vitae.",
+     "repaired": [
+      "Indicate during the OSIRIS application for a Master's programme that you wish to apply for a Radboud Scholarship, then upload two reference letters and a curriculum vitae."
+     ]
+    }
+   }
+  },
+  {
+   "id": 181,
+   "name": "University of Twente Scholarship (UTS)",
+   "http_status": 500,
+   "fields": {
+    "application_method": {
+     "stored": "Apply for a Master's programme at the University of Twente first and receive a (conditional) admission letter; the scholarship application is a separate procedure and requires your UT student number. Once admitted, apply for the scholarship through the UTS application form. The page notes it can take up to 8 weeks after you complete your application to receive the result. You can only be awarded one UT scholarship.",
+     "repaired": [
+      "Apply for a Master's programme at the University of Twente first and receive a (conditional) admission letter; the scholarship application is a separate procedure and requires your UT student number. Once admitted, apply for the scholarship through the UTS application form. The page notes it can take up to 8 weeks after you complete your application to receive the result. You can only be awarded one UT scholarship."
+     ]
+    }
+   }
+  },
+  {
+   "id": 185,
+   "name": "KTH Royal Institute of Technology — KTH Scholarship",
+   "http_status": 500,
+   "fields": {
+    "application_method": {
+     "stored": "First apply for a KTH master's programme via universityadmissions.se, then submit the KTH scholarship form on the scholarship page when it opens.",
+     "repaired": [
+      "First apply for a KTH master's programme via universityadmissions.se, then submit the KTH scholarship form on the scholarship page when it opens."
+     ]
+    }
+   }
+  },
+  {
+   "id": 194,
+   "name": "UQ International Excellence Scholarship",
+   "http_status": 500,
+   "fields": {
+    "application_method": {
+     "stored": "No separate scholarship application. UQ states 'You don't need to apply for this scholarship. When you apply to study a program at UQ, you're automatically assessed for this scholarship.' The offer is notified with the unconditional letter of offer, or once conditional offer conditions are met.",
+     "repaired": [
+      "No separate scholarship application. UQ states 'You don't need to apply for this scholarship. When you apply to study a program at UQ, you're automatically assessed for this scholarship.' The offer is notified with the unconditional letter of offer, or once conditional offer conditions are met."
+     ]
+    }
+   }
+  },
+  {
+   "id": 197,
+   "name": "University of Sydney International Scholarship (USydIS)",
+   "http_status": 500,
+   "fields": {
+    "application_method": {
+     "stored": "Two steps. Commencing students: (1) apply for admission and submit all required documentation for admission to a higher degree by research through Sydney Courses by the deadlines in the Application and award timeline table, and (2) submit the scholarship application form by the deadline. Currently enrolled students: be currently enrolled in a higher degree by research and submit the scholarship application form by the deadline. The page links a 'Submit RTP form' Formstack form and lists required related documents including the HDR scholarship selection process PDF, the research experience evidence template and the research experience information and appendix guide.",
+     "repaired": [
+      "Two steps. Commencing students: (1) apply for admission and submit all required documentation for admission to a higher degree by research through Sydney Courses by the deadlines in the Application and award timeline table, and (2) submit the scholarship application form by the deadline. Currently enrolled students: be currently enrolled in a higher degree by research and submit the scholarship application form by the deadline. The page links a 'Submit RTP form' Formstack form and lists required related documents including the HDR scholarship selection process PDF, the research experience evidence template and the research experience information and appendix guide."
+     ]
+    }
+   }
+  },
+  {
+   "id": 200,
+   "name": "UTS Vice-Chancellor's International Undergraduate Scholarship",
+   "http_status": 500,
+   "fields": {
+    "application_method": {
+     "stored": "Submit the UTS online Scholarships Application form. All applicants must apply using this form to be eligible. Application Open 01/10/2026, Application Close 02/11/2026. On-campus study includes face-to-face and/or online (remote) learning applicable to all degrees except online degrees and distance mode degrees.",
+     "repaired": [
+      "Submit the UTS online Scholarships Application form. All applicants must apply using this form to be eligible. Application Open 01/10/2026, Application Close 02/11/2026. On-campus study includes face-to-face and/or online (remote) learning applicable to all degrees except online degrees and distance mode degrees."
+     ]
+    }
+   }
+  },
+  {
+   "id": 214,
+   "name": "Yonsei University International Student Companion Scholarship",
+   "http_status": 500,
+   "fields": {
+    "application_method": {
+     "stored": "On-campus scholarship application is handled in the department and college; the university instructs students to inquire about application methods with the department and college",
+     "repaired": [
+      "On-campus scholarship application is handled in the department and college; the university instructs students to inquire about application methods with the department and college"
+     ]
+    }
+   }
+  },
+  {
+   "id": 216,
+   "name": "GIST (Gwangju Institute of Science and Technology) Government-Sponsored Scholarship",
+   "http_status": 500,
+   "fields": {
+    "application_method": {
+     "stored": "Submit the online application through the GIST international graduate application portal, together with all required documents before the published deadline. GIST publishes a separate schedule for each semester intake.",
+     "repaired": [
+      "Submit the online application through the GIST international graduate application portal, together with all required documents before the published deadline. GIST publishes a separate schedule for each semester intake."
+     ]
+    }
+   }
+  },
+  {
+   "id": 225,
+   "name": "FWF Doctoral Programs DK",
+   "http_status": 500,
+   "fields": {
+    "application_method": {
+     "stored": "Applications are submitted by a multi-institutional consortium through the FWF elane portal, using the published application guidelines and checklist. Individual doctoral candidates do not apply to FWF for this programme.",
+     "repaired": [
+      "Applications are submitted by a multi-institutional consortium through the FWF elane portal, using the published application guidelines and checklist. Individual doctoral candidates do not apply to FWF for this programme."
+     ]
+    }
+   }
+  },
+  {
+   "id": 236,
+   "name": "MEXT Scholarship for Undergraduate Students",
+   "http_status": 500,
+   "fields": {
+    "application_method": {
+     "stored": "There are 2 routes to apply. Under the University Recommendation route you apply directly to the accepting university, and the university forwards a list of recommended candidates to MEXT. Under the Embassy Recommendation route you apply through the embassy or consulate in your country, which conducts recruitment, selection and screening, makes a list of candidates, and forwards the list to MEXT. The page describes a typical Embassy Recommendation selection process and timeline: the embassy conducts recruitment and selection between April and May of the year preceding enrollment, then conducts screening in May and August, and notifies the results by the end of January 2027 or early 2027.",
+     "repaired": [
+      "There are 2 routes to apply. Under the University Recommendation route you apply directly to the accepting university, and the university forwards a list of recommended candidates to MEXT. Under the Embassy Recommendation route you apply through the embassy or consulate in your country, which conducts recruitment, selection and screening, makes a list of candidates, and forwards the list to MEXT. The page describes a typical Embassy Recommendation selection process and timeline: the embassy conducts recruitment and selection between April and May of the year preceding enrollment, then conducts screening in May and August, and notifies the results by the end of January 2027 or early 2027."
+     ]
+    }
+   }
+  },
+  {
+   "id": 237,
+   "name": "MEXT Scholarship for Research Students (University Recommendation)",
+   "http_status": 500,
+   "fields": {
+    "application_method": {
+     "stored": "For the University Recommendation route, the page states there are 2 routes to apply. You can apply to the university that has an agreement to accept research students and recommend you, or apply to the nearest embassy or consulate of Japan. Under the University Recommendation route you apply directly to the accepting university, and the university forwards a list of recommended candidates. Under the Embassy Recommendation route you apply through the embassy or consulate, which conducts recruitment and screening and then recommends candidates to MEXT.",
+     "repaired": [
+      "For the University Recommendation route, the page states there are 2 routes to apply. You can apply to the university that has an agreement to accept research students and recommend you, or apply to the nearest embassy or consulate of Japan. Under the University Recommendation route you apply directly to the accepting university, and the university forwards a list of recommended candidates. Under the Embassy Recommendation route you apply through the embassy or consulate, which conducts recruitment and screening and then recommends candidates to MEXT."
+     ]
+    }
+   }
+  },
+  {
+   "id": 240,
+   "name": "JASSO Reservation Program for Monbukagakusho Honors Scholarship by Pre-arrival Admission",
+   "http_status": 500,
+   "fields": {
+    "application_method": {
+     "stored": "Ask the school you plan to enrol in; JASSO does not accept direct applications and the procedure must be completed through the school.",
+     "repaired": [
+      "Ask the school you plan to enrol in; JASSO does not accept direct applications and the procedure must be completed through the school."
+     ]
+    }
+   }
+  },
+  {
+   "id": 241,
+   "name": "Kyushu University International Scholarship",
+   "http_status": 500,
+   "fields": {
+    "application_method": {
+     "stored": "For awards with on-campus selection, submit the required application documents directly to the International Student Exchange Division. For awards marked as direct application, the applicant applies to the foundation itself, following the foundation's website. Kyushu University may screen students on campus before recommending them to a foundation.",
+     "repaired": [
+      "For awards with on-campus selection, submit the required application documents directly to the International Student Exchange Division. For awards marked as direct application, the applicant applies to the foundation itself, following the foundation's website. Kyushu University may screen students on campus before recommending them to a foundation."
+     ]
+    }
+   }
+  },
+  {
+   "id": 256,
+   "name": "University of Auckland Doctoral Scholarship",
+   "http_status": 500,
+   "fields": {
+    "application_method": {
+     "stored": "No separate application: confirm scholarship consideration in the doctoral programme application form.",
+     "repaired": [
+      "No separate application: confirm scholarship consideration in the doctoral programme application form."
+     ]
+    }
+   }
+  },
+  {
+   "id": 257,
+   "name": "University of Otago Global Scholarship",
+   "http_status": 500,
+   "fields": {
+    "application_method": {
+     "stored": "No extra scholarship application required. Applicants are automatically assessed for this scholarship during the admission process, and scholarship offers must be actively accepted by the deadline indicated in the scholarship offer letter, in addition to accepting the admission offer.",
+     "repaired": [
+      "No extra scholarship application required. Applicants are automatically assessed for this scholarship during the admission process, and scholarship offers must be actively accepted by the deadline indicated in the scholarship offer letter, in addition to accepting the admission offer."
+     ]
+    }
+   }
+  },
+  {
+   "id": 258,
+   "name": "University of Otago Vice-Chancellor's Scholarship for International Students",
+   "http_status": 500,
+   "fields": {
+    "application_method": {
+     "stored": "No separate application. Offshore applicants agree in their eVision application to be considered for international scholarships; New Zealand-based applicants apply through the online Entrance Scholarship application between 1 July and 15 August",
+     "repaired": [
+      "No separate application. Offshore applicants agree in their eVision application to be considered for international scholarships; New Zealand-based applicants apply through the online Entrance Scholarship application between 1 July and 15 August"
+     ]
+    }
+   }
+  },
+  {
+   "id": 259,
+   "name": "University of Otago International Academic Excellence Scholarship",
+   "http_status": 500,
+   "fields": {
+    "application_method": {
+     "stored": "Apply for study through the University of Otago student management system, eVision, and agree in that application to be considered for international scholarships. After accepting an Offer of Place, the University invites eligible candidates to apply for this scholarship; the candidate then completes the scholarship application questions and supplies the requested further information within the 2-week window. For academic leniency, request continuation in writing from the Manager, Undergraduate Entrance Scholarships (entrance.scholarships@otago.ac.nz), recommended by 31 January.",
+     "repaired": [
+      "Apply for study through the University of Otago student management system, eVision, and agree in that application to be considered for international scholarships. After accepting an Offer of Place, the University invites eligible candidates to apply for this scholarship; the candidate then completes the scholarship application questions and supplies the requested further information within the 2-week window. For academic leniency, request continuation in writing from the Manager, Undergraduate Entrance Scholarships (entrance.scholarships@otago.ac.nz), recommended by 31 January."
+     ]
+    }
+   }
+  },
+  {
+   "id": 263,
+   "name": "Aalto University Excellence Scholarship",
+   "http_status": 500,
+   "fields": {
+    "application_method": {
+     "stored": "'The scholarship application is part of the application form for admission.' On the application form you choose whether to apply for the scholarship. Applications are completed in the national Studyinfo.fi service during the application period, with non-EU/EEA and non-Swiss citizens paying a EUR 100 statutory application fee within seven days, and all application documents uploaded and saved in the form by the document deadline. The scholarship decision is given at the same time as the admission decision.",
+     "repaired": [
+      "'The scholarship application is part of the application form for admission.' On the application form you choose whether to apply for the scholarship. Applications are completed in the national Studyinfo.fi service during the application period, with non-EU/EEA and non-Swiss citizens paying a EUR 100 statutory application fee within seven days, and all application documents uploaded and saved in the form by the document deadline. The scholarship decision is given at the same time as the admission decision."
+     ]
+    }
+   }
+  },
+  {
+   "id": 268,
+   "name": "Danish Government Scholarship for Highly Qualified Non-EU/EEA Students",
+   "http_status": 500,
+   "fields": {
+    "application_method": {
+     "stored": "The scholarships are administered by the Danish universities, who each select the students awarded a scholarship. Consult the admission details of the higher education institution of your choice.",
+     "repaired": [
+      "The scholarships are administered by the Danish universities, who each select the students awarded a scholarship. Consult the admission details of the higher education institution of your choice."
+     ]
+    }
+   }
+  },
+  {
+   "id": 270,
+   "name": "Copenhagen Business School Danish Government Scholarship",
+   "http_status": 500,
+   "fields": {
+    "application_method": {
+     "stored": "Apply for admission through the CBS Application Portal, indicate that you wish to be considered for the CBS scholarship in the portal, and upload a personal statement of a maximum of 2 pages. Applicants offered a scholarship are notified by 15 March at the latest (10 December for the Winter round).",
+     "repaired": [
+      "Apply for admission through the CBS Application Portal, indicate that you wish to be considered for the CBS scholarship in the portal, and upload a personal statement of a maximum of 2 pages. Applicants offered a scholarship are notified by 15 March at the latest (10 December for the Winter round)."
+     ]
+    }
+   }
+  },
+  {
+   "id": 289,
+   "name": "Stefan Banach NAWA Scholarship Programme (Poland)",
+   "http_status": 500,
+   "fields": {
+    "eligibility": {
+     "stored": "Citizens of listed developing countries without Polish citizenship, holding a first-cycle diploma from 2024 onwards. The Stefan Banach Programme funds second-cycle (master's) and preparatory studies.",
+     "repaired": [
+      "Citizens of listed developing countries without Polish citizenship, holding a first-cycle diploma from 2024 onwards. The Stefan Banach Programme funds second-cycle (master's) and preparatory studies."
+     ]
+    }
+   }
+  },
+  {
+   "id": 295,
+   "name": "Charles University Scholarships — International Students",
+   "http_status": 500,
+   "fields": {
+    "application_method": {
+     "stored": "Varies by scheme; the page directs applicants to the relevant body or the faculty Admission Office.",
+     "repaired": [
+      "Varies by scheme; the page directs applicants to the relevant body or the faculty Admission Office."
+     ]
+    }
+   }
+  },
+  {
+   "id": 298,
+   "name": "Erasmus Mundus Joint Master Degrees — Czech Universities",
+   "http_status": 500,
+   "fields": {
+    "application_method": {
+     "stored": "Apply directly to the institution running your chosen programme. Search the EACEA course catalogue for details of the latest programmes on offer. Each master's website publishes the entry requirements and all steps of the application process, both with and without a scholarship.",
+     "repaired": [
+      "Apply directly to the institution running your chosen programme. Search the EACEA course catalogue for details of the latest programmes on offer. Each master's website publishes the entry requirements and all steps of the application process, both with and without a scholarship."
+     ]
+    }
+   }
+  },
+  {
+   "id": 300,
+   "name": "Erasmus Mundus Joint Master Degrees — Portuguese Universities",
+   "http_status": 500,
+   "fields": {
+    "application_method": {
+     "stored": "Students apply directly to the institution running their chosen programme. The course catalogue is the search route; each master's own website holds the detailed process, participating universities, entry requirements and scholarship/non-scholarship application steps.",
+     "repaired": [
+      "Students apply directly to the institution running their chosen programme. The course catalogue is the search route; each master's own website holds the detailed process, participating universities, entry requirements and scholarship/non-scholarship application steps."
+     ]
+    }
+   }
+  },
+  {
+   "id": 326,
+   "name": "Václav Havel Bursary",
+   "http_status": 500,
+   "fields": {
+    "application_method": {
+     "stored": "Submit the application form and all required documents to the Student Affairs Office of the Charles University faculty where you are enrolled; the faculty forwards it digitally to the Chair of the Václav Havel Bursary Board.",
+     "repaired": [
+      "Submit the application form and all required documents to the Student Affairs Office of the Charles University faculty where you are enrolled; the faculty forwards it digitally to the Chair of the Václav Havel Bursary Board."
+     ]
+    }
+   }
+  },
+  {
+   "id": 328,
+   "name": "CTU Scholarship for Foreign Students of English Master's Degree Study Programmes",
+   "http_status": 500,
+   "fields": {
+    "application_method": {
+     "stored": "After obtaining the agreement of their faculty, the applicant submits the application through the faculty's International Office to the Department of International Relations at the CTU rectorate, using the published application form. Decisions are made by the vice-rector on the basis of a recommendation by the commission of vice-deans for international relations.",
+     "repaired": [
+      "After obtaining the agreement of their faculty, the applicant submits the application through the faculty's International Office to the Department of International Relations at the CTU rectorate, using the published application form. Decisions are made by the vice-rector on the basis of a recommendation by the commission of vice-deans for international relations."
+     ]
+    }
+   }
+  },
+  {
+   "id": 335,
+   "name": "Aalto University Excellence Scholarship (100% Tuition Fee Waiver)",
+   "http_status": 500,
+   "fields": {
+    "coverage": {
+     "stored": "Covers 100% of tuition fees only; it does not cover living costs, travel or other expenses.",
+     "repaired": [
+      "Covers 100% of tuition fees only; it does not cover living costs, travel or other expenses."
+     ]
+    },
+    "application_method": {
+     "stored": "Apply in the same application form as the degree programme, selecting the scholarship option in the application.",
+     "repaired": [
+      "Apply in the same application form as the degree programme, selecting the scholarship option in the application."
+     ]
+    }
+   }
+  },
+  {
+   "id": 336,
+   "name": "Tampere University Scholarships (Tuition Fee Waiver + International Advancement Scholarship)",
+   "http_status": 500,
+   "fields": {
+    "application_method": {
+     "stored": "No separate application for the tuition fee scholarship; it is granted automatically to students who pay the tuition fee. The Early bird offer is granted by accepting the admission offer by the early bird deadline.",
+     "repaired": [
+      "No separate application for the tuition fee scholarship; it is granted automatically to students who pay the tuition fee. The Early bird offer is granted by accepting the admission offer by the early bird deadline."
+     ]
+    }
+   }
+  },
+  {
+   "id": 352,
+   "name": "France-South Africa Scholarship Programme 2027",
+   "http_status": 500,
+   "fields": {
+    "coverage": {
+     "stored": "Covers a monthly living allowance, one return air ticket, social security and health insurance, priority student housing access, visa fee, CVEC and registration fee exemptions where applicable, but explicitly does not cover tuition fees.",
+     "repaired": [
+      "Covers a monthly living allowance, one return air ticket, social security and health insurance, priority student housing access, visa fee, CVEC and registration fee exemptions where applicable, but explicitly does not cover tuition fees."
+     ]
+    }
+   }
+  },
+  {
+   "id": 359,
+   "name": "Semmelweis Pannonia In Excellence Scholarship",
+   "http_status": 500,
+   "fields": {
+    "coverage": {
+     "stored": "A merit-based financial support payment of HUF 900,000-2,900,000 per academic year depending on faculty, paid monthly; the page does not state that it covers tuition fees, accommodation or travel.",
+     "repaired": [
+      "A merit-based financial support payment of HUF 900,000-2,900,000 per academic year depending on faculty, paid monthly; the page does not state that it covers tuition fees, accommodation or travel."
+     ]
+    }
+   }
+  },
+  {
+   "id": 363,
+   "name": "Ireland Fellows Programme 2027/2028",
+   "http_status": 500,
+   "fields": {
+    "coverage": {
+     "stored": "Fully funds one year of master's study in Ireland for the recipient only, including the study period; no funding for dependants.",
+     "repaired": [
+      "Fully funds one year of master's study in Ireland for the recipient only, including the study period; no funding for dependants."
+     ]
+    },
+    "application_method": {
+     "stored": "Three-stage process: preliminary application, detailed application, and interviews. Stage 1 is completed on the strand application form; shortlisted applicants who lack the required English certification take the Duolingo English Test, and if their course or institution does not accept Duolingo they must take IELTS in January 2027.",
+     "repaired": [
+      "Three-stage process: preliminary application, detailed application, and interviews. Stage 1 is completed on the strand application form; shortlisted applicants who lack the required English certification take the Duolingo English Test, and if their course or institution does not accept Duolingo they must take IELTS in January 2027."
+     ]
+    }
+   }
+  },
+  {
+   "id": 366,
+   "name": "DCU International Scholarships for Non-EU Students 2027-28",
+   "http_status": 500,
+   "fields": {
+    "application_method": {
+     "stored": "No separate application. All Non-EU applications to a full-time eligible undergraduate or postgraduate programme are automatically considered, the reduction is applied directly to the student account, and only successful recipients are notified by email.",
+     "repaired": [
+      "No separate application. All Non-EU applications to a full-time eligible undergraduate or postgraduate programme are automatically considered, the reduction is applied directly to the student account, and only successful recipients are notified by email."
+     ]
+    }
+   }
+  },
+  {
+   "id": 370,
+   "name": "University of Padua International Excellence Scholarship",
+   "http_status": 500,
+   "fields": {
+    "application_method": {
+     "stored": "No separate application. Applying to an English-taught degree programme at the University of Padua within the deadline automatically enters the candidate into the scholarship competition; the Teaching Committee of each degree course selects successful applicants.",
+     "repaired": [
+      "No separate application. Applying to an English-taught degree programme at the University of Padua within the deadline automatically enters the candidate into the scholarship competition; the Teaching Committee of each degree course selects successful applicants."
+     ]
+    }
+   }
+  },
+  {
+   "id": 371,
+   "name": "University of Bologna Study Grants and Fees",
+   "http_status": 500,
+   "fields": {
+    "coverage": {
+     "stored": "Predominantly tuition-fee reductions and exemptions, plus ER.GO study grants which the Region says bear the cost of your academic studies; accommodation, canteen, transport and software benefits are separate services rather than part of the grants.",
+     "repaired": [
+      "Predominantly tuition-fee reductions and exemptions, plus ER.GO study grants which the Region says bear the cost of your academic studies; accommodation, canteen, transport and software benefits are separate services rather than part of the grants."
+     ]
+    },
+    "application_method": {
+     "stored": "Applications are made against the individual published calls on bandi.unibo.it; the University's own portal for calls and competitions is bandi.unibo.it.",
+     "repaired": [
+      "Applications are made against the individual published calls on bandi.unibo.it; the University's own portal for calls and competitions is bandi.unibo.it."
+     ]
+    }
+   }
+  },
+  {
+   "id": 374,
+   "name": "Japanese Government (MEXT) Scholarship 2027 – Research Students",
+   "http_status": 500,
+   "fields": {
+    "coverage": {
+     "stored": "Covers a monthly stipend, tuition exemption and round-trip airfare; the page does not state that all required expenses are covered, so it is not recorded as full funding.",
+     "repaired": [
+      "Covers a monthly stipend, tuition exemption and round-trip airfare; the page does not state that all required expenses are covered, so it is not recorded as full funding."
+     ]
+    },
+    "application_method": {
+     "stored": "Apply to MEXT either by embassy recommendation (documents and interviews conducted by the Japanese embassy or diplomatic mission in the applicant's country) or by university recommendation (the university recruits and recommends the candidate to MEXT).",
+     "repaired": [
+      "Apply to MEXT either by embassy recommendation (documents and interviews conducted by the Japanese embassy or diplomatic mission in the applicant's country) or by university recommendation (the university recruits and recommends the candidate to MEXT)."
+     ]
+    }
+   }
+  },
+  {
+   "id": 376,
+   "name": "JASSO Monbukagakusho Honors Scholarship for Privately-Financed International Students",
+   "http_status": 500,
+   "fields": {
+    "coverage": {
+     "stored": "Covers a monthly living stipend only; tuition, enrollment fees and travel are not covered.",
+     "repaired": [
+      "Covers a monthly living stipend only; tuition, enrollment fees and travel are not covered."
+     ]
+    },
+    "application_method": {
+     "stored": "Ask the staff at the educational institution in which you are enrolled; the institution nominates candidates to JASSO.",
+     "repaired": [
+      "Ask the staff at the educational institution in which you are enrolled; the institution nominates candidates to JASSO."
+     ]
+    }
+   }
+  },
+  {
+   "id": 380,
+   "name": "Rotary Yoneyama Memorial Scholarship 2027 (Overseas Candidates)",
+   "http_status": 500,
+   "fields": {
+    "coverage": {
+     "stored": "A monthly stipend plus a possible one-time travel subsidy to Japan; no tuition or full living-cost coverage is stated.",
+     "repaired": [
+      "A monthly stipend plus a possible one-time travel subsidy to Japan; no tuition or full living-cost coverage is stated."
+     ]
+    },
+    "application_method": {
+     "stored": "Register on the foundation's website, enter information in the dedicated forms and upload the application documentation.",
+     "repaired": [
+      "Register on the foundation's website, enter information in the dedicated forms and upload the application documentation."
+     ]
+    }
+   }
+  },
+  {
+   "id": 392,
+   "name": "Eric Bleumink Fellowship",
+   "http_status": 500,
+   "fields": {
+    "coverage": {
+     "stored": "Covers tuition fee, international travel, subsistence, books and health insurance for a one or two year master's programme; no amount is published and grants are limited in number.",
+     "repaired": [
+      "Covers tuition fee, international travel, subsistence, books and health insurance for a one or two year master's programme; no amount is published and grants are limited in number."
+     ]
+    },
+    "application_method": {
+     "stored": "Not applicable - it is not possible to actively apply. The University of Groningen's Admission Office, in consultation with the Admission Boards of its faculties, determines which applicants will be nominated. Suitable candidates are informed about a nomination.",
+     "repaired": [
+      "Not applicable - it is not possible to actively apply. The University of Groningen's Admission Office, in consultation with the Admission Boards of its faculties, determines which applicants will be nominated. Suitable candidates are informed about a nomination."
+     ]
+    }
+   }
+  },
+  {
+   "id": 394,
+   "name": "Tilburg University Waiver",
+   "http_status": 500,
+   "fields": {
+    "coverage": {
+     "stored": "Halves the institutional tuition fee only; the page states recipients must still show funds for the remaining 50% of tuition, pay the IND immigration fee, prove sufficient living-cost funds and cover their own living costs for the full duration of the Master's program.",
+     "repaired": [
+      "Halves the institutional tuition fee only; the page states recipients must still show funds for the remaining 50% of tuition, pay the IND immigration fee, prove sufficient living-cost funds and cover their own living costs for the full duration of the Master's program."
+     ]
+    },
+    "application_method": {
+     "stored": "Submit a complete application for an eligible one-year Master's program starting September 2027 by April 1, 2027, then complete the Tilburg University Waiver application webform by the same deadline. A waiver becomes effective only after unconditional admission has been confirmed.",
+     "repaired": [
+      "Submit a complete application for an eligible one-year Master's program starting September 2027 by April 1, 2027, then complete the Tilburg University Waiver application webform by the same deadline. A waiver becomes effective only after unconditional admission has been confirmed."
+     ]
+    }
+   }
+  },
+  {
+   "id": 407,
+   "name": "University of Waikato Vice-Chancellor's International Excellence Scholarship 2026",
+   "http_status": 500,
+   "fields": {
+    "coverage": {
+     "stored": "Covers part of tuition fees only, as a one-off credit in the first trimester; remaining tuition fees, living costs, travel and all other costs must be met by the recipient.",
+     "repaired": [
+      "Covers part of tuition fees only, as a one-off credit in the first trimester; remaining tuition fees, living costs, travel and all other costs must be met by the recipient."
+     ]
+    },
+    "application_method": {
+     "stored": "Online submission to the University of Waikato after an offer of place has been received; the online submission must include the conditional or unconditional offer of place.",
+     "repaired": [
+      "Online submission to the University of Waikato after an offer of place has been received; the online submission must include the conditional or unconditional offer of place."
+     ]
+    }
+   }
+  },
+  {
+   "id": 409,
+   "name": "University of Otago International Master's Research Scholarship",
+   "http_status": 500,
+   "fields": {
+    "coverage": {
+     "stored": "Covers a NZ$18,204 annual stipend and tuition up to a NZ$35,000 cap for one year; it does not fully cover tuition for higher-fee programmes, and excludes student services fee, insurance and any tuition above the cap.",
+     "repaired": [
+      "Covers a NZ$18,204 annual stipend and tuition up to a NZ$35,000 cap for one year; it does not fully cover tuition for higher-fee programmes, and excludes student services fee, insurance and any tuition above the cap."
+     ]
+    },
+    "application_method": {
+     "stored": "Apply online through the eVision portal after applying for admission to a programme; the application form becomes available through an alert at one of the four review dates.",
+     "repaired": [
+      "Apply online through the eVision portal after applying for admission to a programme; the application form becomes available through an alert at one of the four review dates."
+     ]
+    }
+   }
+  },
+  {
+   "id": 410,
+   "name": "University of Otago Doctoral Scholarship",
+   "http_status": 500,
+   "fields": {
+    "coverage": {
+     "stored": "Covers a NZ$34,128 per annum stipend and a domestic-rate tuition fee waiver for up to 36 months, but explicitly excludes the student services fee and insurance and caps professional doctorate waivers at the domestic rate.",
+     "repaired": [
+      "Covers a NZ$34,128 per annum stipend and a domestic-rate tuition fee waiver for up to 36 months, but explicitly excludes the student services fee and insurance and caps professional doctorate waivers at the domestic rate."
+     ]
+    },
+    "application_method": {
+     "stored": "'Applications must be submitted via eVision with a completed departmental assessment by the first day of each round month.' The page states that 'Further information on how to apply for this scholarship is available elsewhere on this website' and links to the University of Otago Postgraduate Research Scholarship regulations (PDF).",
+     "repaired": [
+      "'Applications must be submitted via eVision with a completed departmental assessment by the first day of each round month.' The page states that 'Further information on how to apply for this scholarship is available elsewhere on this website' and links to the University of Otago Postgraduate Research Scholarship regulations (PDF)."
+     ]
+    }
+   }
+  },
+  {
+   "id": 413,
+   "name": "Konstanty Kalinowski Scholarship",
+   "http_status": 500,
+   "fields": {
+    "eligibility": {
+     "stored": "Students and graduates from Eastern Partnership countries (Georgia, Ukraine, Armenia, Azerbaijan, Belarus, Moldova); must hold secondary school diploma or higher education qualification; max age 26 (may be relaxed)",
+     "repaired": [
+      "Students and graduates from Eastern Partnership countries (Georgia, Ukraine, Armenia, Azerbaijan, Belarus, Moldova); must hold secondary school diploma or higher education qualification; max age 26 (may be relaxed)"
+     ]
+    }
+   }
+  },
+  {
+   "id": 415,
+   "name": "NAWA Ulam Programme (International Research Projects)",
+   "http_status": 500,
+   "fields": {
+    "eligibility": {
+     "stored": "International researchers (non-Polish citizens) conducting joint research projects with Polish research teams; PhD students, postdocs, and professors; host institution must be a Polish higher education or research organisation",
+     "repaired": [
+      "International researchers (non-Polish citizens) conducting joint research projects with Polish research teams; PhD students, postdocs, and professors; host institution must be a Polish higher education or research organisation"
+     ]
+    },
+    "benefits": {
+     "stored": "PLN 2,500 per month plus tuition exemption and PLN 2,500 travel allowance",
+     "repaired": [
+      "PLN 2,500 per month plus tuition exemption and PLN 2,500 travel allowance"
+     ]
+    },
+    "coverage": {
+     "stored": "Not published on the announcement page read; amounts and covered costs are set in the institutional programme regulations (Appendix 1), which are published as a downloadable document.",
+     "repaired": [
+      "Not published on the announcement page read; amounts and covered costs are set in the institutional programme regulations (Appendix 1), which are published as a downloadable document."
+     ]
+    },
+    "application_method": {
+     "stored": "The Principal Investigator at the inviting Polish institution issues an invitation using the template in Appendix 4; the application is then submitted by the inviting institution, optionally under the power of attorney in Appendix 3, using the appropriate application form (Appendix 5a or 5b).",
+     "repaired": [
+      "The Principal Investigator at the inviting Polish institution issues an invitation using the template in Appendix 4; the application is then submitted by the inviting institution, optionally under the power of attorney in Appendix 3, using the appropriate application form (Appendix 5a or 5b)."
+     ]
+    }
+   }
+  },
+  {
+   "id": 417,
+   "name": "NAWA Bekker Programme (Academic Exchange)",
+   "http_status": 500,
+   "fields": {
+    "eligibility": {
+     "stored": "Academic exchange for short-term research/teaching stays at Polish universities and research institutes; open to researchers at all career stages",
+     "repaired": [
+      "Academic exchange for short-term research/teaching stays at Polish universities and research institutes; open to researchers at all career stages"
+     ]
+    },
+    "benefits": {
+     "stored": "PLN 2,500 per month plus tuition exemption and PLN 2,500 travel allowance",
+     "repaired": [
+      "PLN 2,500 per month plus tuition exemption and PLN 2,500 travel allowance"
+     ]
+    },
+    "coverage": {
+     "stored": "Covers living costs during the stay in the foreign host centre, a mobility allowance, a travel flat sum, and support for children or disability, paid as flat rates without receipts; it is a mobility fellowship and pays no Polish tuition or host-country fees.",
+     "repaired": [
+      "Covers living costs during the stay in the foreign host centre, a mobility allowance, a travel flat sum, and support for children or disability, paid as flat rates without receipts; it is a mobility fellowship and pays no Polish tuition or host-country fees."
+     ]
+    },
+    "application_method": {
+     "stored": "Submit through NAWA's IT system at programs.nawa.gov.pl. The project must be carried out in continuous mode, and the application form must be completed in English, with copies of key publications in Polish or English and attachments in Polish or English.",
+     "repaired": [
+      "Submit through NAWA's IT system at programs.nawa.gov.pl. The project must be carried out in continuous mode, and the application form must be completed in English, with copies of key publications in Polish or English and attachments in Polish or English."
+     ]
+    }
+   }
+  },
+  {
+   "id": 418,
+   "name": "NAWA Walczak Programme (Internships)",
+   "http_status": 500,
+   "fields": {
+    "eligibility": {
+     "stored": "PhD students (non-Polish) undertaking research internships at Polish universities or research institutes participating in the programme",
+     "repaired": [
+      "PhD students (non-Polish) undertaking research internships at Polish universities or research institutes participating in the programme"
+     ]
+    },
+    "benefits": {
+     "stored": "PLN 2,500 per month plus tuition exemption and PLN 2,500 travel allowance",
+     "repaired": [
+      "PLN 2,500 per month plus tuition exemption and PLN 2,500 travel allowance"
+     ]
+    }
+   }
+  },
+  {
+   "id": 420,
+   "name": "Lane Kirkland Scholarship Program",
+   "http_status": 500,
+   "fields": {
+    "application_method": {
+     "stored": "The official page states: 'Description of the program and detailed application instructions can be obtained directly from the following website: www.kirkland.edu.pl. They can also be requested by e-mail from the Program Office.' The page itself publishes no application form or procedure.",
+     "repaired": [
+      "The official page states: 'Description of the program and detailed application instructions can be obtained directly from the following website: www.kirkland.edu.pl. They can also be requested by e-mail from the Program Office.' The page itself publishes no application form or procedure."
+     ]
+    }
+   }
+  },
+  {
+   "id": 421,
+   "name": "Poland My First Choice (PMFC)",
+   "http_status": 500,
+   "fields": {
+    "eligibility": {
+     "stored": "High school graduates (non-Polish citizens, non-EU); must have scored minimum 80% in national secondary school exam; apply for full Bachelor's degree studies in STEM/IT fields; limited programme slots per university",
+     "repaired": [
+      "High school graduates (non-Polish citizens, non-EU); must have scored minimum 80% in national secondary school exam; apply for full Bachelor's degree studies in STEM/IT fields; limited programme slots per university"
+     ]
+    },
+    "benefits": {
+     "stored": "PLN 2,500 per month plus tuition exemption and PLN 2,500 travel allowance",
+     "repaired": [
+      "PLN 2,500 per month plus tuition exemption and PLN 2,500 travel allowance"
+     ]
+    },
+    "coverage": {
+     "stored": "The programme pays a monthly scholarship for the statutory period of full-time second-cycle study and, in addition, exempts students from tuition fees at public universities; at non-public institutions tuition is not exempt, and travel costs are not mentioned on the programme page.",
+     "repaired": [
+      "The programme pays a monthly scholarship for the statutory period of full-time second-cycle study and, in addition, exempts students from tuition fees at public universities; at non-public institutions tuition is not exempt, and travel costs are not mentioned on the programme page."
+     ]
+    },
+    "application_method": {
+     "stored": "NAWA states it does not act as an intermediary in admission: 'Applicants select the university and the field of study at which they want to study independently, based on the offer of universities listed in the call for applications. NAWA does not act as an intermediary in the admission of Applicants for studies. Applicants participate in the admission process at the university of their choice by themselves and independently of the application submitted to the NAWA.' The 2026 call is issued as a PDF announcement with five attachments, including the NAWA programme regulations, the list of eligible institutions with a framework agreement, and lists of recognised Polish and English language certificates.",
+     "repaired": [
+      "NAWA states it does not act as an intermediary in admission: 'Applicants select the university and the field of study at which they want to study independently, based on the offer of universities listed in the call for applications. NAWA does not act as an intermediary in the admission of Applicants for studies. Applicants participate in the admission process at the university of their choice by themselves and independently of the application submitted to the NAWA.' The 2026 call is issued as a PDF announcement with five attachments, including the NAWA programme regulations, the list of eligible institutions with a framework agreement, and lists of recognised Polish and English language certificates."
+     ]
+    }
+   }
+  },
+  {
+   "id": 423,
+   "name": "Erasmus+ Programme",
+   "http_status": 500,
+   "fields": {
+    "eligibility": {
+     "stored": "EU and partner country students enrolled in higher education institutions participating in Erasmus+; study or traineeship period in Poland",
+     "repaired": [
+      "EU and partner country students enrolled in higher education institutions participating in Erasmus+; study or traineeship period in Poland"
+     ]
+    },
+    "coverage": {
+     "stored": "Erasmus+ covers exemption from tuition, registration, examination and laboratory/library access fees at the receiving institution plus a grant contributing to travel and daily living costs, but the grant is a contribution whose amount depends on living-cost differences, applicant numbers and distance, and small insurance or student-union fees may still apply - so it is not a full cost-of-living package.",
+     "repaired": [
+      "Erasmus+ covers exemption from tuition, registration, examination and laboratory/library access fees at the receiving institution plus a grant contributing to travel and daily living costs, but the grant is a contribution whose amount depends on living-cost differences, applicant numbers and distance, and small insurance or student-union fees may still apply - so it is not a full cost-of-living package."
+     ]
+    },
+    "application_method": {
+     "stored": "There is no central application. Contact the international or Erasmus+ office of your own (sending) university. The sending institution selects applicants in a fair and transparent way, applies for funding on students' behalf, and students then sign a participant grant agreement. Before the mobility a 'learning agreement for studies' is signed with sending and receiving institutions, along with the Erasmus+ Student Charter.",
+     "repaired": [
+      "There is no central application. Contact the international or Erasmus+ office of your own (sending) university. The sending institution selects applicants in a fair and transparent way, applies for funding on students' behalf, and students then sign a participant grant agreement. Before the mobility a 'learning agreement for studies' is signed with sending and receiving institutions, along with the Erasmus+ Student Charter."
+     ]
+    }
+   }
+  },
+  {
+   "id": 424,
+   "name": "Fulbright Program (Poland-US)",
+   "http_status": 500,
+   "fields": {
+    "eligibility": {
+     "stored": "Highly qualified US citizens for study/research/teaching in Poland; highly qualified Polish citizens for study/research/teaching in the US; all degree levels and fields",
+     "repaired": [
+      "Highly qualified US citizens for study/research/teaching in Poland; highly qualified Polish citizens for study/research/teaching in the US; all degree levels and fields"
+     ]
+    },
+    "coverage": {
+     "stored": "Covers a living stipend, J-1 visa and SEVIS fees, medical insurance, round-trip travel and additional allowances for host institution fees, relocation, research, conferences and family support, with amounts and duration varying by award; tuition is not stated to be fully covered across all awards.",
+     "repaired": [
+      "Covers a living stipend, J-1 visa and SEVIS fees, medical insurance, round-trip travel and additional allowances for host institution fees, relocation, research, conferences and family support, with amounts and duration varying by award; tuition is not stated to be fully covered across all awards."
+     ]
+    },
+    "application_method": {
+     "stored": "Apply directly to the Polish-U.S. Fulbright Commission for grants to the USA, or to the U.S. Department of State / Fulbright Online for grants to Poland. Research and scholar applicants must include a letter of invitation from their proposed host institution. Application forms and calls are published by the commission, several in Polish only.",
+     "repaired": [
+      "Apply directly to the Polish-U.S. Fulbright Commission for grants to the USA, or to the U.S. Department of State / Fulbright Online for grants to Poland. Research and scholar applicants must include a letter of invitation from their proposed host institution. Application forms and calls are published by the commission, several in Polish only."
+     ]
+    }
+   }
+  },
+  {
+   "id": 425,
+   "name": "CEEPUS Exchange Programme",
+   "http_status": 500,
+   "fields": {
+    "eligibility": {
+     "stored": "Students and staff from CEEPUS member countries (16 Central and Eastern European countries; non-CEEPUS citizens may apply for remaining slots); enrolled at home institution",
+     "repaired": [
+      "Students and staff from CEEPUS member countries (16 Central and Eastern European countries; non-CEEPUS citizens may apply for remaining slots); enrolled at home institution"
+     ]
+    },
+    "application_method": {
+     "stored": "Register in 'My CEEPUS' on the central CEEPUS online system, complete the online mobility application form, and upload any required documents. For network mobilities, applicants must first get in contact with the network coordinator or the network partner at their university. Freemover students need two letters of recommendation and a letter of acceptance from the host university; freemover teachers need one letter of acceptance from the host. Network applicants who are citizens of CEEPUS states do not have to upload documents, but those with different citizenship need a confirmation of enrolment (equal status document).",
+     "repaired": [
+      "Register in 'My CEEPUS' on the central CEEPUS online system, complete the online mobility application form, and upload any required documents. For network mobilities, applicants must first get in contact with the network coordinator or the network partner at their university. Freemover students need two letters of recommendation and a letter of acceptance from the host university; freemover teachers need one letter of acceptance from the host. Network applicants who are citizens of CEEPUS states do not have to upload documents, but those with different citizenship need a confirmation of enrolment (equal status document)."
+     ]
+    }
+   }
+  },
+  {
+   "id": 429,
+   "name": "MHA Civilian Scholarship",
+   "http_status": 500,
+   "fields": {
+    "application_method": {
+     "stored": "Apply through the Public Service Commission's PSC Scholarships portal following the MHA and PSC application process guidance. Your preferred specialist track can be indicated at the point of interview.",
+     "repaired": [
+      "Apply through the Public Service Commission's PSC Scholarships portal following the MHA and PSC application process guidance. Your preferred specialist track can be indicated at the point of interview."
+     ]
+    }
+   }
+  },
+  {
+   "id": 430,
+   "name": "Singapore Police Force Scholarship",
+   "http_status": 500,
+   "fields": {
+    "coverage": {
+     "stored": "Covers tuition and approved charges, monthly living allowance including accommodation, pre-studies allowance, return economy airfare and a full salary during study, in exchange for a 4 to 6 year bond; not open to non-citizens.",
+     "repaired": [
+      "Covers tuition and approved charges, monthly living allowance including accommodation, pre-studies allowance, return economy airfare and a full salary during study, in exchange for a 4 to 6 year bond; not open to non-citizens."
+     ]
+    },
+    "application_method": {
+     "stored": "Apply through the Public Service Commission's PSC Scholarships portal, following the MHA and PSC guidance on the scholarship application process and the stages to expect.",
+     "repaired": [
+      "Apply through the Public Service Commission's PSC Scholarships portal, following the MHA and PSC guidance on the scholarship application process and the stages to expect."
+     ]
+    }
+   }
+  },
+  {
+   "id": 434,
+   "name": "MOE Teaching Scholarship (Full-Term)",
+   "http_status": 500,
+   "fields": {
+    "coverage": {
+     "stored": "The PSC-administered Education Merit Scholarship/Teaching Scholarship covers tuition fees and other approved charges, a monthly maintenance and pre-service allowance, return economy airfare if studying overseas, developmental programmes, approved exchange/summer programmes and CCAs, and possible Master's sponsorship; the MOE Teaching Award carries the same package minus airfare and without a pre-service allowance. MOE does not itemise personal living costs, and it does not use the phrase 'fully funded'.",
+     "repaired": [
+      "The PSC-administered Education Merit Scholarship/Teaching Scholarship covers tuition fees and other approved charges, a monthly maintenance and pre-service allowance, return economy airfare if studying overseas, developmental programmes, approved exchange/summer programmes and CCAs, and possible Master's sponsorship; the MOE Teaching Award carries the same package minus airfare and without a pre-service allowance. MOE does not itemise personal living costs, and it does not use the phrase 'fully funded'."
+     ]
+    },
+    "application_method": {
+     "stored": "Apply directly to MOE during the relevant qualification-specific application window using the online application form, complete with the necessary supporting documents. MOE states shortlisted applicants will generally hear back within 4 weeks of the close of the window and will be invited to an interview and may be scheduled for other selection processes.",
+     "repaired": [
+      "Apply directly to MOE during the relevant qualification-specific application window using the online application form, complete with the necessary supporting documents. MOE states shortlisted applicants will generally hear back within 4 weeks of the close of the window and will be invited to an interview and may be scheduled for other selection processes."
+     ]
+    }
+   }
+  },
+  {
+   "id": 437,
+   "name": "A*STAR International Fellowship (AIF)",
+   "http_status": 500,
+   "fields": {
+    "coverage": {
+     "stored": "Covers a monthly overseas living allowance, monthly sustenance allowance, annual return airfare, settling-in/computer/conference allowances and annual personal insurance, but not host-university tuition, consumables or research-related fees.",
+     "repaired": [
+      "Covers a monthly overseas living allowance, monthly sustenance allowance, annual return airfare, settling-in/computer/conference allowances and annual personal insurance, but not host-university tuition, consumables or research-related fees."
+     ]
+    },
+    "application_method": {
+     "stored": "Apply online through the A*STAR Careers portal using the track-specific posting (Apply for AIF (Research) or Apply for AIF (Innovation)). The page notes you should have your CV ready before creating your account. Shortlisted applicants attend at least 2 rounds of interviews.",
+     "repaired": [
+      "Apply online through the A*STAR Careers portal using the track-specific posting (Apply for AIF (Research) or Apply for AIF (Innovation)). The page notes you should have your CV ready before creating your account. Shortlisted applicants attend at least 2 rounds of interviews."
+     ]
+    }
+   }
+  },
+  {
+   "id": 447,
+   "name": "SUTD Trailblazers Scholarship",
+   "http_status": 500,
+   "fields": {
+    "application_method": {
+     "stored": "Apply for the scholarship at the same time as the application for admission to SUTD. Scholarships are awarded based on competition among eligible applicants, and shortlisted applicants are notified in due course.",
+     "repaired": [
+      "Apply for the scholarship at the same time as the application for admission to SUTD. Scholarships are awarded based on competition among eligible applicants, and shortlisted applicants are notified in due course."
+     ]
+    }
+   }
+  },
+  {
+   "id": 448,
+   "name": "SUSS Scholarship (Part-time Undergraduate)",
+   "http_status": 500,
+   "fields": {
+    "coverage": {
+     "stored": "Covers 100% of course fee including government subsidy plus course materials, examination, compulsory and miscellaneous fees, but does not state any living-cost, accommodation or travel coverage.",
+     "repaired": [
+      "Covers 100% of course fee including government subsidy plus course materials, examination, compulsory and miscellaneous fees, but does not state any living-cost, accommodation or travel coverage."
+     ]
+    },
+    "application_method": {
+     "stored": "Online e-application via the SUSS scholarship application portal (SUSS Connect / the Scholarships or Sponsorships page). Supporting documents that cannot be attached in the e-portal must be emailed to financialaid@suss.edu.sg before the application deadline, quoting full name, last 4 characters of NRIC and the scholarship applied.",
+     "repaired": [
+      "Online e-application via the SUSS scholarship application portal (SUSS Connect / the Scholarships or Sponsorships page). Supporting documents that cannot be attached in the e-portal must be emailed to financialaid@suss.edu.sg before the application deadline, quoting full name, last 4 characters of NRIC and the scholarship applied."
+     ]
+    }
+   }
+  },
+  {
+   "id": 456,
+   "name": "Lund University African Research Universities Alliance (ARUA) Scholarship",
+   "http_status": 500,
+   "fields": {
+    "coverage": {
+     "stored": "Covers a percentage of tuition fees up to a maximum of 90%, with the exact percentage depending on programme or faculty budget; it explicitly does not cover living costs, which recipients must meet themselves under Swedish Migration Agency requirements.",
+     "repaired": [
+      "Covers a percentage of tuition fees up to a maximum of 90%, with the exact percentage depending on programme or faculty budget; it explicitly does not cover living costs, which recipients must meet themselves under Swedish Migration Agency requirements."
+     ]
+    }
+   }
+  },
+  {
+   "id": 459,
+   "name": "EPFL Bachelor Excellence Fellowships",
+   "http_status": 500,
+   "fields": {
+    "coverage": {
+     "stored": "Provides CHF 10,000 in cash instalments over three years plus a residence room reservation that the student pays for, and does not state that tuition or all living costs are covered.",
+     "repaired": [
+      "Provides CHF 10,000 in cash instalments over three years plus a residence room reservation that the student pays for, and does not state that tuition or all living costs are covered."
+     ]
+    },
+    "application_method": {
+     "stored": "Tick the corresponding box on the EPFL Bachelor application form before 30 April and provide the requested application file. Where the applicant is eligible, an ad hoc form is issued and the listed documents are requested. Each section then pre-selects the best applications for a presentation of the maturity project (or another subject, if not applicable) before a jury made up in part of EPFL academic staff, in a short five-minute presentation followed by questions. The applications retained are then examined by the Central Committee for Bachelor Excellence Fellowships, which awards the fellowships.",
+     "repaired": [
+      "Tick the corresponding box on the EPFL Bachelor application form before 30 April and provide the requested application file. Where the applicant is eligible, an ad hoc form is issued and the listed documents are requested. Each section then pre-selects the best applications for a presentation of the maturity project (or another subject, if not applicable) before a jury made up in part of EPFL academic staff, in a short five-minute presentation followed by questions. The applications retained are then examined by the Central Committee for Bachelor Excellence Fellowships, which awards the fellowships."
+     ]
+    }
+   }
+  },
+  {
+   "id": 466,
+   "name": "UZH Hardship Loan",
+   "http_status": "TimeoutError",
+   "fields": {
+    "coverage": {
+     "stored": "Short-term emergency loan up to CHF 6,000 for urgent living expenses; not a scholarship and not tuition funding.",
+     "repaired": [
+      "Short-term emergency loan up to CHF 6,000 for urgent living expenses; not a scholarship and not tuition funding."
+     ]
+    }
+   }
+  },
+  {
+   "id": 467,
+   "name": "MOE Short Term Research Award (STRA)",
+   "http_status": 500,
+   "fields": {
+    "application_method": {
+     "stored": "Submit the STRA application to the host institution in Taiwan - a university or tertiary college, or an MOE-affiliated research organisation - at which the applicant would like to undertake research. The application must arrive at the host institution, rather than being sent directly to the MOE.",
+     "repaired": [
+      "Submit the STRA application to the host institution in Taiwan - a university or tertiary college, or an MOE-affiliated research organisation - at which the applicant would like to undertake research. The application must arrive at the host institution, rather than being sent directly to the MOE."
+     ]
+    }
+   }
+  },
+  {
+   "id": 468,
+   "name": "NYCU International Student Scholarship",
+   "http_status": 500,
+   "fields": {
+    "application_method": {
+     "stored": "Current NYCU students: apply and upload the required documents on the NYCU scholarship application system. Incoming students: apply along with the admission application through the online application system. Criteria and required documents are set out in the NYCU scholarship regulations.",
+     "repaired": [
+      "Current NYCU students: apply and upload the required documents on the NYCU scholarship application system. Incoming students: apply along with the admission application through the online application system. Criteria and required documents are set out in the NYCU scholarship regulations."
+     ]
+    }
+   }
+  },
+  {
+   "id": 470,
+   "name": "Fulbright U.S. Student Program 2027-2028",
+   "http_status": 500,
+   "fields": {
+    "benefits": {
+     "stored": "Tuition, maintenance, airfare and health insurance",
+     "repaired": [
+      "Tuition, maintenance, airfare and health insurance"
+     ]
+    }
+   }
+  },
+  {
+   "id": 478,
+   "name": "Phi Kappa Phi Fellowship 2026",
+   "http_status": 500,
+   "fields": {
+    "application_method": {
+     "stored": "Submit the application through the online portal from 15 December 2026, then submit the application, official transcripts, work sample and two letters of recommendation to your local chapter by the chapter's deadline",
+     "repaired": [
+      "Submit the application through the online portal from 15 December 2026, then submit the application, official transcripts, work sample and two letters of recommendation to your local chapter by the chapter's deadline"
+     ]
+    }
+   }
+  },
+  {
+   "id": 480,
+   "name": "Harvard College Need-Based Financial Aid 2027-2028",
+   "http_status": 500,
+   "fields": {
+    "coverage": {
+     "stored": "Need-determined aid towards the cost of attendance rather than a fixed scholarship amount; Harvard does not publish a numeric award value or a statement that tuition, living costs and expenses are all covered, so fully_funded is false.",
+     "repaired": [
+      "Need-determined aid towards the cost of attendance rather than a fixed scholarship amount; Harvard does not publish a numeric award value or a statement that tuition, living costs and expenses are all covered, so fully_funded is false."
+     ]
+    },
+    "application_method": {
+     "stored": "File the CSS Profile through the College Board using Harvard's code 3434, file the FAFSA if a US citizen, permanent resident or other eligible non-citizen using Harvard's code E00468, then submit tax and other documents through the College Board IDOC Service. IDOC cannot be accessed until the CSS Profile is completed.",
+     "repaired": [
+      "File the CSS Profile through the College Board using Harvard's code 3434, file the FAFSA if a US citizen, permanent resident or other eligible non-citizen using Harvard's code E00468, then submit tax and other documents through the College Board IDOC Service. IDOC cannot be accessed until the CSS Profile is completed."
+     ]
+    }
+   }
+  },
+  {
+   "id": 481,
+   "name": "Yale College Need-Based Financial Aid 2027-2028",
+   "http_status": 500,
+   "fields": {
+    "coverage": {
+     "stored": "For families with income below $100,000, Yale states the aid covers tuition and fees, housing, food, travel and hospitalization insurance with no loans; for higher-income families the award meets 100% of demonstrated need, which does not include a parent contribution.",
+     "repaired": [
+      "For families with income below $100,000, Yale states the aid covers tuition and fees, housing, food, travel and hospitalization insurance with no loans; for higher-income families the award meets 100% of demonstrated need, which does not include a parent contribution."
+     ]
+    },
+    "application_method": {
+     "stored": "Complete the CSS Profile (and FAFSA for domestic applicants) as part of the Yale College admission application by the relevant admission plan deadline. International applicants use the CSS Profile only. Admitted transfer applicants should also complete the CSS Profile.",
+     "repaired": [
+      "Complete the CSS Profile (and FAFSA for domestic applicants) as part of the Yale College admission application by the relevant admission plan deadline. International applicants use the CSS Profile only. Admitted transfer applicants should also complete the CSS Profile."
+     ]
+    }
+   }
+  },
+  {
+   "id": 482,
+   "name": "MIT Undergraduate Financial Aid for International Students 2026-2027",
+   "http_status": 500,
+   "fields": {
+    "coverage": {
+     "stored": "MIT meets 100% of demonstrated financial need, which covers tuition and the costs in MIT's cost-of-attendance calculation; international students are ineligible for all federal aid.",
+     "repaired": [
+      "MIT meets 100% of demonstrated financial need, which covers tuition and the costs in MIT's cost-of-attendance calculation; international students are ineligible for all federal aid."
+     ]
+    },
+    "application_method": {
+     "stored": "Two-document process: complete the CSS Profile (CSS Code 3514) with parents' financial information, then submit the same income documents to IDOC.",
+     "repaired": [
+      "Two-document process: complete the CSS Profile (CSS Code 3514) with parents' financial information, then submit the same income documents to IDOC."
+     ]
+    }
+   }
+  },
+  {
+   "id": 483,
+   "name": "UT Austin International Student Scholarships (Spring 2027 and Fall 2027)",
+   "http_status": 500,
+   "fields": {
+    "coverage": {
+     "stored": "Each named award is either a one-time cash scholarship, a tuition scholarship, or a waiver of the nonresident portion of tuition; none is presented as covering tuition, living costs and all required expenses.",
+     "repaired": [
+      "Each named award is either a one-time cash scholarship, a tuition scholarship, or a waiver of the nonresident portion of tuition; none is presented as covering tuition, living costs and all required expenses."
+     ]
+    },
+    "application_method": {
+     "stored": "Applications are accepted via LASSO, the university-wide scholarship system, and applicants submit ahead of the deadline for review. In LASSO, use the keyword search 'ISSS', click 'Apply Now' at the top right of the Scholarship Search page, log in, then find the desired scholarship application in the Task section and click 'Start Application' or 'Continue Application'. Applicants should be prepared to answer questions about estimated annual expenses and to write essays related to the scholarship's intent or their own experiences and background.",
+     "repaired": [
+      "Applications are accepted via LASSO, the university-wide scholarship system, and applicants submit ahead of the deadline for review. In LASSO, use the keyword search 'ISSS', click 'Apply Now' at the top right of the Scholarship Search page, log in, then find the desired scholarship application in the Task section and click 'Start Application' or 'Continue Application'. Applicants should be prepared to answer questions about estimated annual expenses and to write essays related to the scholarship's intent or their own experiences and background."
+     ]
+    }
+   }
+  },
+  {
+   "id": 484,
+   "name": "University of Chicago International Scholarships for Undergraduates",
+   "http_status": 500,
+   "fields": {
+    "coverage": {
+     "stored": "Covers an estimate of full enrolment costs (tuition, housing, health insurance, meal plan, books and personal expenses) at 100% of demonstrated need as a loan-free package, but merit scholarships cover tuition only and cannot be relied on to fund a degree.",
+     "repaired": [
+      "Covers an estimate of full enrolment costs (tuition, housing, health insurance, meal plan, books and personal expenses) at 100% of demonstrated need as a loan-free package, but merit scholarships cover tuition only and cannot be relied on to fund a degree."
+     ]
+    },
+    "application_method": {
+     "stored": "Submit the Student Financial Aid Worksheet online through the applicant's UChicago Account at the time of the admission application, together with supporting documentation of family income and family assets. The Student Financial Aid Worksheet is the only form available to non-US citizens and non-US permanent residents applying for financial aid.",
+     "repaired": [
+      "Submit the Student Financial Aid Worksheet online through the applicant's UChicago Account at the time of the admission application, together with supporting documentation of family income and family assets. The Student Financial Aid Worksheet is the only form available to non-US citizens and non-US permanent residents applying for financial aid."
+     ]
+    }
+   }
+  },
+  {
+   "id": 486,
+   "name": "Google PhD Fellowship Program 2027 (anticipated)",
+   "http_status": 500,
+   "fields": {
+    "coverage": {
+     "stored": "Region-dependent: in Canada and the US, US $85K per year towards tuition and fees, living expenses, travel and equipment; in most other regions a single or annual award for stipend, research activities and travel, with Europe and the Middle East receiving a country-varying bursary. Awards are paid to the university, not the student.",
+     "repaired": [
+      "Region-dependent: in Canada and the US, US $85K per year towards tuition and fees, living expenses, travel and equipment; in most other regions a single or annual award for stipend, research activities and travel, with Europe and the Middle East receiving a country-varying bursary. Awards are paid to the university, not the student."
+     ]
+    }
+   }
+  },
+  {
+   "id": 496,
+   "name": "Bilateral programme grants Wallonia-Brussels Federation/Quebec | Wallonie-Bruxelles Campus",
+   "http_status": 500,
+   "fields": {
+    "coverage": {
+     "stored": "Covers a monthly stipend, university registration fees, a small monthly materials or travel allowance and a one-off thesis or dissertation printing payment, but not tuition fees as such.",
+     "repaired": [
+      "Covers a monthly stipend, university registration fees, a small monthly materials or travel allowance and a one-off thesis or dissertation printing payment, but not tuition fees as such."
+     ]
+    },
+    "application_method": {
+     "stored": "Send the application file to the Quebec Ministry of Education (Ministère de l'Éducation et de l'Enseignement supérieur, Direction des relations extérieures). A Ministry evaluation committee assesses applications, the Ministry recommends selected candidates and forwards their file to the donor country, and the donor country makes the final selection.",
+     "repaired": [
+      "Send the application file to the Quebec Ministry of Education (Ministère de l'Éducation et de l'Enseignement supérieur, Direction des relations extérieures). A Ministry evaluation committee assesses applications, the Ministry recommends selected candidates and forwards their file to the donor country, and the donor country makes the final selection."
+     ]
+    }
+   }
+  },
+  {
+   "id": 498,
+   "name": "Other funding opportunities - swissuniversities",
+   "http_status": 500,
+   "fields": {
+    "coverage": {
+     "stored": "Publishes pointers to third-party funding bodies and scholarship databases; it does not award, administer or guarantee any funding itself.",
+     "repaired": [
+      "Publishes pointers to third-party funding bodies and scholarship databases; it does not award, administer or guarantee any funding itself."
+     ]
+    },
+    "application_method": {
+     "stored": "Not applicable. The page directs advanced students and researchers to contact the host university directly about financial aid, and states that foreign higher education institutions often offer their own scholarships that are not announced worldwide. Each linked body sets its own procedure.",
+     "repaired": [
+      "Not applicable. The page directs advanced students and researchers to contact the host university directly about financial aid, and states that foreign higher education institutions often offer their own scholarships that are not announced worldwide. Each linked body sets its own procedure."
+     ]
+    }
+   }
+  },
+  {
+   "id": 500,
+   "name": "Grants for the USA - swissuniversities",
+   "http_status": 500,
+   "fields": {
+    "coverage": {
+     "stored": "For Fulbright, about USD 20,000 for one academic year applied toward tuition and other academic expenses with insurance and J-1 visa support, but explicitly not renewable and not a full tuition guarantee; the Medicus amount is not published on the hub page.",
+     "repaired": [
+      "For Fulbright, about USD 20,000 for one academic year applied toward tuition and other academic expenses with insurance and J-1 visa support, but explicitly not renewable and not a full tuition guarantee; the Medicus amount is not published on the hub page."
+     ]
+    },
+    "application_method": {
+     "stored": "Complete the online application at the IIE portal, following the Switzerland-specific 'Online Application Instructions'. A complete application consists of the online form including three reference letters uploaded directly by the recommenders plus copies of academic transcripts and diplomas/degrees in English or with an original English translation, AND hard copies of official (certified) academic transcripts with original English translations sent directly from the higher education institution to swissuniversities in a sealed envelope. 'Your application is not considered complete until swissuniversities has received your electronically submitted online application and the hard copies of the official (certified) transcripts.'",
+     "repaired": [
+      "Complete the online application at the IIE portal, following the Switzerland-specific 'Online Application Instructions'. A complete application consists of the online form including three reference letters uploaded directly by the recommenders plus copies of academic transcripts and diplomas/degrees in English or with an original English translation, AND hard copies of official (certified) academic transcripts with original English translations sent directly from the higher education institution to swissuniversities in a sealed envelope. 'Your application is not considered complete until swissuniversities has received your electronically submitted online application and the hard copies of the official (certified) transcripts.'"
+     ]
+    }
+   }
+  },
+  {
+   "id": 509,
+   "name": "Commonwealth Master’s Scholarships - Commonwealth Scholarship Commission in the UK",
+   "http_status": 500,
+   "fields": {
+    "benefits": {
+     "stored": "Full tuition, monthly stipend (GBP 1,712, GBP 2,000 in London) and airfare",
+     "repaired": [
+      "Full tuition, monthly stipend (GBP 1,712, GBP 2,000 in London) and airfare"
+     ]
+    }
+   }
+  },
+  {
+   "id": 510,
+   "name": "Commonwealth Shared Scholarships - Commonwealth Scholarship Commission in the UK",
+   "http_status": 500,
+   "fields": {
+    "benefits": {
+     "stored": "Full tuition, monthly stipend (GBP 1,712, GBP 2,000 in London) and airfare",
+     "repaired": [
+      "Full tuition, monthly stipend (GBP 1,712, GBP 2,000 in London) and airfare"
+     ]
+    }
+   }
+  },
+  {
+   "id": 511,
+   "name": "Commonwealth Scholarships Frequently Asked Questions - Commonwealth Scholarship Commission in the UK",
+   "http_status": 500,
+   "fields": {
+    "benefits": {
+     "stored": "Full tuition, monthly stipend (GBP 1,712, GBP 2,000 in London) and airfare",
+     "repaired": [
+      "Full tuition, monthly stipend (GBP 1,712, GBP 2,000 in London) and airfare"
+     ]
+    }
+   }
+  },
+  {
+   "id": 512,
+   "name": "Commonwealth Shared Scholarships - Commonwealth Scholarship Commission in the UK",
+   "http_status": 500,
+   "fields": {
+    "benefits": {
+     "stored": "Full tuition, monthly stipend (GBP 1,712, GBP 2,000 in London) and airfare",
+     "repaired": [
+      "Full tuition, monthly stipend (GBP 1,712, GBP 2,000 in London) and airfare"
+     ]
+    }
+   }
+  },
+  {
+   "id": 513,
+   "name": "CSC Disability Support Statement - Commonwealth Scholarship Commission in the UK",
+   "http_status": 500,
+   "fields": {
+    "eligibility": {
+     "stored": "Citizen of a Commonwealth Scholarship Commission country holding a master's-equivalent degree. Applicants must also secure a nomination from an approved nominating body.",
+     "repaired": [
+      "Citizen of a Commonwealth Scholarship Commission country holding a master's-equivalent degree. Applicants must also secure a nomination from an approved nominating body."
+     ]
+    },
+    "benefits": {
+     "stored": "Full tuition, monthly stipend (GBP 1,712, GBP 2,000 in London) and airfare",
+     "repaired": [
+      "Full tuition, monthly stipend (GBP 1,712, GBP 2,000 in London) and airfare"
+     ]
+    }
+   }
+  },
+  {
+   "id": 514,
+   "name": "Van Gogh program 2023 | Campus France",
+   "http_status": 500,
+   "fields": {
+    "eligibility": {
+     "stored": "MOPGA (Make Our Planet Great Again) grants. Doctorate defended between December 2021 and December 2026, non-French national, not resident in or active in France, and no previous MOPGA award.",
+     "repaired": [
+      "MOPGA (Make Our Planet Great Again) grants. Doctorate defended between December 2021 and December 2026, non-French national, not resident in or active in France, and no previous MOPGA award."
+     ]
+    },
+    "benefits": {
+     "stored": "EUR 2,500 per month for 12 months plus a EUR 500 installation allowance",
+     "repaired": [
+      "EUR 2,500 per month for 12 months plus a EUR 500 installation allowance"
+     ]
+    }
+   }
+  },
+  {
+   "id": 517,
+   "name": "Applied Informatics - FPV - UMB | Portal VS",
+   "http_status": 500,
+   "fields": {
+    "application_method": {
+     "stored": "Apply through the electronic application form of the university, or the university e-application form. The applicant must always attach a copy of the payment confirmation of the admission fee to the application form; without it, the application form will not be accepted and will be returned. Payment is only accepted by wire transfer using the published bank details and the variable symbol for master's study (5032).",
+     "repaired": [
+      "Apply through the electronic application form of the university, or the university e-application form. The applicant must always attach a copy of the payment confirmation of the admission fee to the application form; without it, the application form will not be accepted and will be returned. Payment is only accepted by wire transfer using the published bank details and the variable symbol for master's study (5032)."
+     ]
+    }
+   }
+  },
+  {
+   "id": 522,
+   "name": "Applied Geosciences - FPV - UMB | Portal VS",
+   "http_status": 500,
+   "fields": {
+    "application_method": {
+     "stored": "Apply through the university's electronic application form or via prihlaskavs.sk, and pay the EUR 32 admission fee by bank transfer before the deadline.",
+     "repaired": [
+      "Apply through the university's electronic application form or via prihlaskavs.sk, and pay the EUR 32 admission fee by bank transfer before the deadline."
+     ]
+    }
+   }
+  },
+  {
+   "id": 523,
+   "name": "Commonwealth Shared Scholarships - Commonwealth Scholarship Commission in the UK",
+   "http_status": 500,
+   "fields": {
+    "benefits": {
+     "stored": "Full tuition, monthly stipend (GBP 1,712, GBP 2,000 in London) and airfare",
+     "repaired": [
+      "Full tuition, monthly stipend (GBP 1,712, GBP 2,000 in London) and airfare"
+     ]
+    }
+   }
+  }
+ ],
+ "unexplained": []
+}

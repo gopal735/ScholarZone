@@ -1,0 +1,1036 @@
+{
+  "agent_id": "w1_34",
+  "shard": "w1-34",
+  "today": "2026-10-04",
+  "records": [
+    {
+      "target_id": 332,
+      "outcome": "refreshed",
+      "confirm": true,
+      "confirmation_evidence": "Read Aalborg University's own 'Finance and fees' page for master's applicants, whose Scholarships section states: 'Each September intake, Aalborg University grants a limited number of scholarships to individually selected applicants from non-EU/EEA countries' and 'A scholarship consists of a tuition fee waiver and a monthly stipend aimed at covering living expenses during the four semesters of your master's programme', with 'The stipend rate for new students in 2026 is 11,225 DKK / 1503 EUR per month'.",
+      "new_scholarship": {
+        "name": "Aalborg University Master's Programme Scholarships for Non-EU/EEA Applicants",
+        "legacy_titles": ["International Student Scholarship"],
+        "country": "Denmark",
+        "degree_levels": "Master's",
+        "funding_type": "Partially Funded",
+        "official_source": "Aalborg University",
+        "official_source_url": "https://www.en.aau.dk/education/finance/scholarships",
+        "status": "open",
+        "is_verified": true,
+        "last_verified_date": "2026-10-04",
+        "description": "Aalborg University grants a limited number of scholarships - approximately 15 each year - to individually selected non-EU/EEA applicants for its master's programmes, for the September intake. The scholarships are financed by the Danish Government and awarded by Aalborg University, and there is no separate scholarship application: all non-EU/EEA applicants are automatically considered when they apply to a master's programme. Each scholarship consists of a tuition fee waiver plus a monthly stipend paid across the four semesters of the master's programme.",
+        "region": "Europe",
+        "duration": "Four semesters (two years), the standard duration of a master's degree at Aalborg University",
+        "deadline": "There is no separate scholarship application; non-EU/EEA applicants are considered automatically with their master's programme application. Aalborg University's published application deadlines for master's applicants are: September intake - 15 January 23:59 CET for fee-paying applicants, 1 March 23:59 CET for non-fee-paying applicants; February intake - 15 October 23:59 CET for all applicants.",
+        "deadline_date": null,
+        "deadline_precision": "recurring",
+        "application_period": "September intake: fee-paying (non-EU/EEA) applicants 15 January 23:59 CET, non-fee-paying applicants 1 March 23:59 CET; February intake: 15 October 23:59 CET for all applicants",
+        "eligibility_summary": "Applicants from outside the EU/EEA applying to a master's programme at Aalborg University are automatically considered; EU/EEA students cannot apply for scholarships at AAU. Selection is based on strategic considerations and academic qualifications.",
+        "eligibility": [
+          "Applicant must hold citizenship of a country outside the EU/EEA (EU/EEA students cannot apply for scholarships at AAU)",
+          "Applicant must be admitted to, or applying to, a master's programme at Aalborg University for the September intake",
+          "All non-EU/EEA applicants are automatically considered; there is no separate scholarship application",
+          "Scholarships are not offered for bachelor's degree programmes at Aalborg University"
+        ],
+        "coverage": [
+          "Tuition fee waiver for the master's programme",
+          "Monthly stipend of 11,225 DKK / 1,503 EUR (2026 rate for new students) aimed at covering living expenses, paid for the four semesters of the master's programme"
+        ],
+        "benefits": [
+          "Tuition fee waiver",
+          "Monthly stipend of 11,225 DKK / 1,503 EUR in 2026, paid for four semesters"
+        ],
+        "required_documents": [
+          "Passport or national ID",
+          "Diploma (and Diploma Supplement if available), or transcript if the bachelor's degree is not yet completed",
+          "Bachelor's degree transcripts showing all grades and courses",
+          "English test, or an official receipt confirming registration for a test",
+          "Receipt for the paid application fee (non-EU/EEA applicants)",
+          "Danish residence permit card and letter (non-EU/EEA applicants who already hold one)",
+          "Official description of the grading system from the home university (non-EU/EEA applicants, if available)"
+        ],
+        "catalogue_url": "https://www.en.aau.dk/education/master/list",
+        "official_updates_url": "https://www.en.aau.dk/education/apply/master/finance-and-fees",
+        "english_requirement": "An English test result, or an official receipt confirming registration for a test, is sufficient when applying; the final test result is not required at the application stage.",
+        "requirements": [
+          "Applications are submitted through the Danish Application Portal",
+          "Maximum of three master's programme priorities per applicant; applications exceeding three priorities are rejected",
+          "The entire documentation set must be uploaded as PDF, merged into one file per document, maximum 10 MB",
+          "Documents sent by post or email are not accepted"
+        ],
+        "application_method": ["Danish Application Portal (online master's programme application, no separate scholarship application)"],
+        "selection_notes": "Aalborg University grants scholarships to individually selected non-EU/EEA applicants 'based on strategic considerations and academic qualifications'. Applicants are informed of the scholarship decision by the beginning of July at the latest, though it may be earlier, via a separate letter in the Application Portal.",
+        "program_type": "University-funded scholarship for non-EU/EEA master's applicants (tuition fee waiver plus living stipend)",
+        "best_fit": "Non-EU/EEA applicants to an Aalborg University master's programme who need tuition relief and partial living support",
+        "notes": "Aalborg University states it grants approximately 15 scholarships each year and advises applicants not to rely solely on receiving a scholarship when applying.",
+        "funding_amount": 11225,
+        "funding_currency": "DKK",
+        "funding_period": "per month",
+        "degree_level_confirmed": "Scholarships are granted for master's degree programmes: 'A scholarship consists of a tuition fee waiver and a monthly stipend aimed at covering living expenses during the four semesters of your master's programme'; Aalborg University 'does not offer tuition waivers or scholarships for bachelor's programmes'."
+      },
+      "programme_detail_official": {
+        "official_source_urls": [
+          "https://www.en.aau.dk/education/apply/master/finance-and-fees",
+          "https://www.en.aau.dk/education/apply/master/how-and-when-to-apply"
+        ],
+        "application_link": "https://dans.stads.dk/SelfUserRegistration/faces/WelcomePage.jspx",
+        "official_updates_url": "https://www.en.aau.dk/education/apply/master/finance-and-fees",
+        "catalogue_url": "https://www.en.aau.dk/education/master/list",
+        "application_cycle": "Annual; scholarships are granted for the September intake. As of 2026-10-04 the next September intake application runs with the portal opening in mid-December and closing 15 January (fee-paying applicants); the February 2027 intake closes 15 October 23:59 CET.",
+        "deadline_central": null,
+        "deadline_central_display": "September intake, fee-paying (non-EU/EEA) applicants: 15 January 23:59 CET. September intake, non-fee-paying applicants: 1 March 23:59 CET. February intake: 15 October 23:59 CET for all applicants.",
+        "deadline_central_timezone": "Europe/Copenhagen",
+        "deadline_note": "There is no separate scholarship deadline. The scholarship is decided with the master's programme application, so the applicable deadlines are Aalborg University's published master's application deadlines. The official page states these as recurring annual calendar dates (15 January / 1 March for the September intake, 15 October for the February intake) without naming the next intake's year, so no single ISO next-cycle date is published.",
+        "status": "OPEN",
+        "status_note": "Applications for the February intake close 15 October 23:59 CET and the September intake round follows annually. Scholarships themselves are granted only for the September intake, approximately 15 per year, with decisions communicated by the beginning of July at the latest.",
+        "funding_amount": 11225,
+        "funding_currency": "DKK",
+        "funding_period": "per month",
+        "funding_duration": "Four semesters (the standard duration of a master's degree); no further stipend beyond the first two years of study if studies are prolonged",
+        "tuition_coverage": true,
+        "tuition_coverage_note": "A scholarship 'consists of a tuition fee waiver and a monthly stipend'; if tuition has already been paid and a scholarship is then granted, the tuition fee is refunded.",
+        "living_cost_coverage": true,
+        "living_cost_coverage_note": "A monthly stipend of 11,225 DKK / 1,503 EUR (2026) is paid for four semesters, but Aalborg University warns 'the scholarship might not cover all your living expenses in Denmark'.",
+        "travel_coverage": null,
+        "fully_funded": false,
+        "funding_label": "Tuition fee waiver plus a stipend of 11,225 DKK / 1,503 EUR per month (2026) for four semesters; Aalborg University states the stipend may not cover all living expenses.",
+        "benefits": [
+          "Tuition fee waiver",
+          "Monthly stipend of 11,225 DKK / 1,503 EUR (2026 rate for new students) for four semesters"
+        ],
+        "eligibility": [
+          "Applicants from non-EU/EEA countries applying to a master's programme",
+          "EU/EEA students cannot apply for scholarships at Aalborg University",
+          "All non-EU/EEA applicants are automatically considered when applying to a master's programme"
+        ],
+        "citizenship_residency": "Open to applicants from outside the EU/EEA; EU/EEA students cannot apply for scholarships at AAU.",
+        "international_eligibility": "Non-EU/EEA applicants are automatically considered for every master's programme application; no separate scholarship application is possible.",
+        "degree_levels": ["Master's"],
+        "study_mode": null,
+        "research_requirement": null,
+        "subject_or_agency_requirement": null,
+        "application_method": "No separate scholarship application; all non-EU/EEA applicants are automatically considered when applying to a master's programme through the Danish Application Portal.",
+        "application_route": "Danish Application Portal (dans.stads.dk), maximum three master's programme priorities per applicant",
+        "requirements": [
+          "Apply to a master's programme via the Danish Application Portal (maximum three priorities)",
+          "Upload the full documentation set as PDF, one merged file per document, maximum 10 MB",
+          "Non-EU/EEA applicants must upload the receipt for the paid application fee"
+        ],
+        "documents": [
+          "Passport or national ID",
+          "Diploma (and Diploma Supplement if available) or transcript if the bachelor's degree is not yet completed",
+          "Bachelor's degree transcripts showing all grades and courses",
+          "English test or official receipt confirming registration for a test",
+          "Application fee receipt (non-EU/EEA applicants)",
+          "Danish residence permit card and letter (non-EU/EEA applicants who already hold one)"
+        ],
+        "english_requirement": "An English test or an official receipt confirming registration for a test; the test result itself is not necessary when applying.",
+        "english_requirement_note": "Aalborg University accepts an English test or an official receipt confirming registration for a test at the application stage; final test results are due later, by the deadline for meeting admission requirements.",
+        "selection_criteria": [
+          "Strategic considerations and academic qualifications, with selection made among individually selected non-EU/EEA applicants",
+          "Academic qualifications are described by AAU as transcending national borders and being essentially global"
+        ],
+        "selection_weighting": null,
+        "duration": "Four semesters (two years), the standard duration of a master's degree at Aalborg University",
+        "award_holder_conditions": [
+          "The stipend is paid for four semesters only; if studies are prolonged no further stipend is paid beyond the first two years",
+          "A Danish CPR number, a NemKonto and registration with the Danish tax authorities are required before stipend payments can start, so the first payment may be retroactive",
+          "Recipients may be required to pay tax on the stipend"
+        ],
+        "supplements_or_initiatives": [],
+        "official_contacts": {
+          "general": "Master Admission, Aalborg University, Fredrik Bajers Vej 1, 9220 Aalborg East, Denmark",
+          "email": "masteradmission@aau.dk",
+          "phone": "+45 9940 9940"
+        },
+        "description": "Aalborg University grants approximately 15 scholarships each September intake to individually selected non-EU/EEA applicants, financed by the Danish Government and awarded by Aalborg University. Each scholarship is a tuition fee waiver plus a monthly stipend (11,225 DKK / 1,503 EUR for new students in 2026) paid for the four semesters of the master's programme. There is no separate scholarship application; all non-EU/EEA applicants are automatically considered with their master's application, and decisions are communicated by the beginning of July at the latest.",
+        "program_type": "University-funded scholarship (tuition fee waiver plus living stipend) for non-EU/EEA master's applicants",
+        "region": "Europe",
+        "coverage": "Tuition fee waiver plus a monthly living stipend for four semesters",
+        "last_verified_date": "2026-10-04"
+      },
+      "programme_detail_applicant_utility": {
+        "application_readiness_checklist": [
+          "Confirm you hold non-EU/EEA citizenship and a qualifying bachelor's degree for the master's programme you want",
+          "Apply to an Aalborg University master's programme through the Danish Application Portal before the deadline for fee-paying applicants (15 January 23:59 CET for the September intake)",
+          "Pay the 150 EUR (1,150 DKK) application fee and keep the receipt for upload",
+          "Merge each document into a single PDF per document and keep each under 10 MB",
+          "Register for an English test early, or upload the official registration receipt, since the result is not required at application"
+        ],
+        "common_rejection_risks": [
+          "Assuming a separate scholarship application exists - none is possible, and missing the master's application deadline forfeits consideration",
+          "Assuming the 11,225 DKK stipend covers all living costs; AAU warns applicants may need savings, a loan or a student job",
+          "Submitting more than three programme priorities, which AAU rejects without further notice",
+          "Uploading unmerged or oversized documents, or sending documents by email or post"
+        ],
+        "estimated_uncovered_costs": [
+          "150 EUR (1,150 DKK) application fee, non-refundable",
+          "Any living costs above the monthly stipend of 11,225 DKK / 1,503 EUR",
+          "Tax payable on the stipend where applicable"
+        ],
+        "document_audit": [
+          "Passport or national ID showing full name, nationality and date of birth",
+          "Diploma and Diploma Supplement, or a transcript if the degree is not yet complete",
+          "Full bachelor's transcripts, signed and stamped by the home university",
+          "English test result or official registration receipt",
+          "Application fee receipt",
+          "Residence permit card and letter if already held"
+        ],
+        "alerts": [
+          {
+            "trigger": "Stipend start delay",
+            "message": "Stipend payments require a Danish CPR number, a NemKonto and registration with the Danish tax authorities; the September payment may therefore be made retroactively."
+          },
+          {
+            "trigger": "Tuition already paid",
+            "message": "Scholarship decisions may arrive after the tuition payment deadline, but AAU refunds tuition if a scholarship is subsequently granted."
+          }
+        ],
+        "submission_workflow": [
+          "Create a profile in the Danish Application Portal when it opens in mid-December",
+          "Submit up to three master's programme priorities with all required PDF documents attached",
+          "Await the admission answer (fee-paying applicants: 10 April; non-fee-paying applicants: 10 June)",
+          "Await the scholarship decision, communicated by the beginning of July at the latest via a separate letter in the Application Portal"
+        ]
+      },
+      "programme_detail_verification": {
+        "cycle_verified": "September intake annual scholarship cycle, verified 2026-10-04",
+        "verification_confidence": 0.95,
+        "official_fields_confirmed": [
+          "funding_amount",
+          "funding_currency",
+          "funding_period",
+          "tuition_coverage",
+          "living_cost_coverage",
+          "eligibility",
+          "citizenship_residency",
+          "international_eligibility",
+          "degree_levels",
+          "duration",
+          "application_method",
+          "documents",
+          "english_requirement",
+          "selection_criteria",
+          "award_holder_conditions",
+          "official_contacts",
+          "application_period"
+        ],
+        "institution_check_required": [
+          "Exact calendar date of the next application deadline is published as a recurring annual date rather than a dated next-cycle date",
+          "Number of scholarships awarded per programme and per faculty is not published"
+        ],
+        "unverified_or_removed_claims": [
+          "The stored URL https://www.en.aau.dk/education/finance/scholarships returns HTTP 404; the live scholarship information is at https://www.en.aau.dk/education/apply/master/finance-and-fees (reported in url_observed, stored URL kept as required)",
+          "Stored funding_type 'Partial scholarship' retained as Partially Funded: the official page states the stipend 'might not cover all your living expenses in Denmark'",
+          "No funding amount was stored; the official 2026 stipend rate of 11,225 DKK / 1,503 EUR per month has been added",
+          "Travel coverage is not addressed by the official pages, so it is null"
+        ],
+        "source_citations": [
+          "https://www.en.aau.dk/education/apply/master/finance-and-fees",
+          "https://www.en.aau.dk/education/apply/master/how-and-when-to-apply"
+        ],
+        "researched_by": "w1_34"
+      },
+      "logo_override": {
+        "url": "https://www.aau.dk/android-chrome-512x512.png",
+        "page_url": "https://www.en.aau.dk/education/apply/master/finance-and-fees",
+        "official_host": true,
+        "alt_text": "Aalborg University",
+        "validation_result": "verified",
+        "validation_detail": "png 37495+B, 512x512 dark-navy Aalborg University wings mark on a transparent background (0% of opaque pixels are white, so it is not a white-on-transparent wordmark)",
+        "image_kind": "official_logo",
+        "image_format": "png",
+        "verified_at": "2026-10-04T00:00:00+00:00",
+        "host_evidence": "same_registrable_domain",
+        "_award": "Aalborg University Master's Programme Scholarships for Non-EU/EEA Applicants"
+      },
+      "research_notes": {
+        "logo": "AAU serves its logo as an inline SVG web-component in the site header (viewBox '0 0 244 60' wordmark), so no standalone wordmark file is published at /logo.svg, /assets/logo.svg, /sites/default/files/logo.svg or /images/logo.png (all return 404). The site's own app-icon asset https://www.aau.dk/android-chrome-512x512.png was probed: HTTP 200, image/png, 37,495 bytes, 512x512, and a pixel scan confirmed a dark-navy mark on a transparent background with 0% white opaque pixels. The apple-touch-icon variant (180x180) was rejected because 74% of its opaque pixels are white. The aau.dk host is the same registrable domain as the awarding body's en.aau.dk.",
+        "unverified": [
+          "Next-cycle calendar deadline date (published only as recurring annual dates)",
+          "Travel coverage",
+          "Number of scholarships per programme"
+        ],
+        "substitution": null,
+        "official_pages_read": [
+          "https://www.en.aau.dk/education/apply/master/finance-and-fees",
+          "https://www.en.aau.dk/education/apply/master/how-and-when-to-apply",
+          "https://www.aau.dk/",
+          "https://www.en.aau.dk/news/press-contact"
+        ],
+        "degree_level_confirmed": "'A scholarship consists of a tuition fee waiver and a monthly stipend aimed at covering living expenses during the four semesters of your master's programme' - and AAU 'does not offer tuition waivers or scholarships for bachelor's programmes'.",
+        "url_observed": "https://www.en.aau.dk/education/apply/master/finance-and-fees",
+        "contradictions": [
+          "The stored official_source_url https://www.en.aau.dk/education/finance/scholarships returns HTTP 404; the live scholarship content is at https://www.en.aau.dk/education/apply/master/finance-and-fees",
+          "Stored funding_type 'Partial scholarship' is consistent, but the stored record contained no funding amount; the official 2026 stipend rate is 11,225 DKK / 1,503 EUR per month",
+          "Stored record had no deadline information; the official master's application deadlines are now recorded, and scholarship consideration is automatic with the master's application rather than a separate deadline"
+        ],
+        "skeleton": false
+      }
+    },
+    {
+      "target_id": 333,
+      "outcome": "refreshed",
+      "confirm": true,
+      "confirmation_evidence": "Read the University of Helsinki RESDOC project page, which states: 'RESDOC (Resilient and Just Systems Doctoral Project) is an international doctoral training project at the University of Helsinki in Finland' and 'A total of 30 doctoral researchers will be recruited in 2026. The call has been closed and the evaluation phase started in September 2026.'",
+      "new_scholarship": {
+        "name": "RESDOC - Resilient and Just Systems Doctoral Project (MSCA COFUND Doctoral Researcher Positions, University of Helsinki)",
+        "legacy_titles": ["University of Helsinki RESDOC Doctoral Researcher Positions 2026 (30 Fully Funded PhD Positions)"],
+        "country": "Finland",
+        "degree_levels": "Doctoral (PhD)",
+        "funding_type": "Fully Funded",
+        "official_source": "University of Helsinki",
+        "official_source_url": "https://www.helsinki.fi/en/research/doctoral-school/resdoc-project",
+        "status": "upcoming",
+        "is_verified": true,
+        "last_verified_date": "2026-10-04",
+        "description": "RESDOC (Resilient and Just Systems Doctoral Project) is an international doctoral training project at the University of Helsinki that runs from 2027 to 2031 and recruits 30 doctoral researchers on full-time employment contracts. It is funded under the EU MSCA COFUND programme and covers four interdisciplinary themes: infectious diseases and antimicrobial resistance, biodiversity and nature's resilience, secure and sustainable food and water systems, and just socio-ecological transition. The 2026 call closed on 31 August 2026 with 2,159 applications, of which 1,023 (47%) were found eligible, and the evaluation stage was still in progress as of 2026-10-04.",
+        "region": "Europe",
+        "duration": "Four years full-time, with residence in Finland for the full duration",
+        "deadline": "The 2026 RESDOC call closed on 31 August 2026 at 11:59 PM Finnish time (EET); applications had to be submitted by that deadline. As of 2026-10-04 the call is closed and evaluation is under way, with the written-application evaluation to be finalised by mid-October 2026 and interview rounds in late October 2026.",
+        "deadline_date": null,
+        "deadline_precision": "varies",
+        "application_period": null,
+        "eligibility_summary": "Applicants must hold a completed master's degree qualifying for doctoral studies, must not hold a PhD, must be an early-stage researcher with less than four years of full-time-equivalent research experience, must fulfil University of Helsinki English language requirements, must not be permanently employed by the University, must comply with the MSCA mobility rule, must be willing to reside in Finland for the full four years, and must propose a research topic fitting the RESDOC themes.",
+        "eligibility": [
+          "Master's degree or equivalent qualifying for doctoral studies, fully completed and dated in the certificate by the call deadline of 31 August 2026",
+          "Must not hold a doctoral (PhD) degree",
+          "Early-stage researcher: less than four years of full-time-equivalent research experience after the master's degree",
+          "English language requirements of the University of Helsinki met; applications submitted in English",
+          "Not permanently employed by the University of Helsinki",
+          "MSCA mobility rule: no more than 12 months of residence or main activity in Finland between 1 September 2023 and the call deadline",
+          "Willing to reside in Finland for the full four-year duration of the project",
+          "Research topic must fit the RESDOC themes and available supervision"
+        ],
+        "coverage": [
+          "Full-time salaried employment contract with the University of Helsinki for the doctoral research period",
+          "No tuition fees are collected from doctoral researchers at the University of Helsinki"
+        ],
+        "benefits": [
+          "Fully funded doctoral degree through a 100% employment contract with the University of Helsinki",
+          "Salary and social security as a University employee, including occupational health care",
+          "Doctoral tuition is free at the University of Helsinki",
+          "Participation in the RESDOC doctoral training programme across four interdisciplinary themes"
+        ],
+        "required_documents": [
+          "Europass CV in the predefined Europass template",
+          "Letter of Motivation in the predefined RESDOC template",
+          "Research proposal, ethics self-assessment and intersectoral mobility plan in the predefined RESDOC template",
+          "Scanned degree certificate and transcript of records (with official translations where applicable)",
+          "Proof of English language skills (optional at application, mandatory for selected candidates by 31 December 2026)"
+        ],
+        "official_updates_url": "https://www.helsinki.fi/en/research/doctoral-school/resdoc-project/how-apply",
+        "english_requirement": "Applicants must meet the University of Helsinki English language requirements. Proficiency can be stated but need not be proven at the application stage; selected candidates must provide valid proof by 31 December 2026.",
+        "requirements": [
+          "Single application only; applicants are expected to submit one RESDOC application",
+          "Mandatory templates must be used for the CV, motivation letter and research plan; deviations cause disqualification",
+          "Applications must be in English and submitted through the University of Helsinki online recruitment system",
+          "Recommendation letters and additional attachments are not evaluated"
+        ],
+        "application_method": ["University of Helsinki online recruitment system ('apply for the post' on the job announcement)"],
+        "selection_notes": "Two-stage evaluation with a threshold grade of 3 per criterion. The written application carries 70% weight and the interview 30%. Written criteria are thematic fit, quality and novelty of the research plan, feasibility of the workplan, study and intersectoral mobility plan, and applicant competence.",
+        "program_type": "MSCA COFUND doctoral training project with salaried doctoral researcher positions",
+        "best_fit": "Recent master's graduates with under four years of research experience who want a funded four-year PhD at the University of Helsinki on sustainability, biodiversity, food/water or socio-ecological transition themes",
+        "notes": "The 2026 call is closed. The RESDOC project runs from 2027 to 2031 and no further call had been announced as of 2026-10-04.",
+        "funding_amount": null,
+        "funding_currency": null,
+        "funding_period": null,
+        "degree_level_confirmed": "RESDOC 'offers a unique opportunity to complete a fully funded doctoral degree at the University of Helsinki in Finland' and positions are salaried doctoral researcher posts in the University's doctoral programmes, with a master's degree required for eligibility."
+      },
+      "programme_detail_official": {
+        "official_source_urls": [
+          "https://www.helsinki.fi/en/research/doctoral-school/resdoc-project",
+          "https://www.helsinki.fi/en/research/doctoral-school/resdoc-project/how-apply"
+        ],
+        "application_link": null,
+        "official_updates_url": "https://www.helsinki.fi/en/research/doctoral-school/resdoc-project/how-apply",
+        "catalogue_url": null,
+        "application_cycle": "2026 call for doctoral researchers starting September 2026 intake (project period 2027-2031). The call closed 31 August 2026.",
+        "deadline_central": "2026-08-31T23:59",
+        "deadline_central_display": "The 2026 call deadline was 31 August 2026 at 11:59 PM Finnish time (EET). The call is now closed.",
+        "deadline_central_timezone": "Europe/Helsinki",
+        "deadline_note": "The 2026 call closed on 31 August 2026 and the University stated 'We have closed the call August 31, 2026, and are currently processing applications.' No new call date had been published as of 2026-10-04.",
+        "status": "CLOSED",
+        "status_note": "The 2026 RESDOC call for 30 doctoral researchers closed on 31 August 2026; the eligibility check was completed (1,023 of 2,159 applicants, 47%, found eligible) and excellence evaluation by external evaluators began in September 2026. The University aimed to finalise written evaluation by mid-October 2026 and hold interview rounds in late October 2026. The RESDOC project period runs from 2027 to 2031; no further call had been announced as of 2026-10-04.",
+        "funding_amount": null,
+        "funding_currency": null,
+        "funding_period": null,
+        "funding_duration": "Four years (full-time doctoral researcher employment, 100% employment contract)",
+        "tuition_coverage": true,
+        "tuition_coverage_note": "The University of Helsinki 'does not collect tuition fees from doctoral researchers, and studies at the University are free'.",
+        "living_cost_coverage": true,
+        "living_cost_coverage_note": "The position is a 100% salaried employment contract with the University of Helsinki; the salary amount is not published on the RESDOC pages.",
+        "travel_coverage": null,
+        "fully_funded": true,
+        "funding_label": "Fully funded doctoral degree via a 100% salaried University of Helsinki employment contract; tuition is free for doctoral researchers. Salary amount not published.",
+        "benefits": [
+          "100% employment contract with the University of Helsinki",
+          "Salary and social security, occupational health care, work facilities and equipment as a University employee",
+          "No doctoral tuition fees at the University of Helsinki",
+          "Doctoral training across four interdisciplinary RESDOC themes"
+        ],
+        "eligibility": [
+          "Master's degree or equivalent qualifying for doctoral studies, fully completed and dated by the 31 August 2026 call deadline",
+          "Must not hold a PhD degree",
+          "Early-stage researcher: under four years of full-time-equivalent research experience after the master's degree",
+          "University of Helsinki English language requirements met",
+          "Not permanently employed by the University of Helsinki",
+          "MSCA mobility rule: no more than 12 months in Finland in the three years before the call deadline",
+          "Willing to reside in Finland for the full four-year duration",
+          "Research topic fitting the RESDOC themes and available supervision"
+        ],
+        "citizenship_residency": "Open to applicants of 110 nationalities. The MSCA mobility rule bars applicants who resided or carried out their main activity in Finland for more than 12 months in the three years before the call deadline (1 September 2023 to 31 August 2026).",
+        "international_eligibility": "International applicants are eligible; the 2026 applicant pool represented 110 nationalities, with the largest numbers from India, Pakistan, Iran, Nigeria, Ethiopia and China.",
+        "degree_levels": ["Doctoral (PhD)"],
+        "study_mode": "Full-time",
+        "research_requirement": "Applicants must propose a research topic fitting the RESDOC themes and available supervision, and must be willing to reside in Finland for the full four-year duration.",
+        "subject_or_agency_requirement": "Research must fit one of the four RESDOC themes: infectious diseases and antimicrobial resistance; biodiversity and nature's resilience; secure and sustainable food and water systems; just socio-ecological transition.",
+        "application_method": "Online application through the University of Helsinki online recruitment system; click 'apply for the post' on the job announcement. Applications were accepted only via the online recruitment system in English.",
+        "application_route": "University of Helsinki online recruitment system (Varbi job announcement for the RESDOC doctoral researcher positions)",
+        "requirements": [
+          "Single application per applicant",
+          "Mandatory RESDOC templates for the CV, motivation letter and research plan; failure to use them causes disqualification",
+          "Files in PDF format, maximum recommended size 5 MB each, Latin-alphabet file names",
+          "Applications submitted in English by 31 August 2026 at the latest"
+        ],
+        "documents": [
+          "Europass CV in the predefined Europass template",
+          "Letter of Motivation in the predefined RESDOC template",
+          "Research proposal, ethics self-assessment and intersectoral mobility plan in the predefined template",
+          "Scanned degree certificate and transcript of records, with official translations where needed",
+          "Proof of English language skills (optional at application, required from selected candidates by 31 December 2026)"
+        ],
+        "english_requirement": "Applicants must meet the University of Helsinki English language requirements; applications must be submitted in English.",
+        "english_requirement_note": "Applicants may state but need not prove English proficiency at the application phase; selected candidates must provide a valid proof by 31 December 2026. A master's degree conducted fully in English can satisfy the requirement.",
+        "selection_criteria": [
+          "Written application (70%): thematic suitability to RESDOC themes; quality and novelty of research objectives, methodology, impact and potential for scientific renewal; feasibility including target time, workplan quality and risk mitigation; study and intersectoral mobility plan; competence of the applicant as shown in the CV and motivation letter",
+          "Interview (30%): ability to present the proposed project and answer questions; academic and professional alignment to the available research options and supervision",
+          "Each criterion graded 0-5 with a threshold grade of 3"
+        ],
+        "selection_weighting": "Written application 70%, interview 30%",
+        "duration": "Four years full-time",
+        "award_holder_conditions": [
+          "100% employment contract; additional jobs are 'not recommended nor feasible' and the EU funder expects exclusive work for the doctoral research",
+          "Residence in Finland for the full four-year duration; work cannot be carried out remotely outside Finland for long periods",
+          "Applicants who already hold a study place must be ready to restart their PhD; RESDOC is not a funding option for an existing doctoral study"
+        ],
+        "supplements_or_initiatives": [
+          "Four RESDOC research themes: infectious diseases and antimicrobial resistance; biodiversity and nature's resilience; secure and sustainable food and water systems; just socio-ecological transition",
+          "External RESDOC Evaluation Panel of independent international evaluators"
+        ],
+        "official_contacts": {
+          "general": "University of Helsinki, P.O. Box 3 (Fabianinkatu 33), 00014 University of Helsinki, switchboard +358 (0) 2941 911"
+        },
+        "description": "RESDOC is an MSCA COFUND doctoral training project at the University of Helsinki running from 2027 to 2031, recruiting 30 doctoral researchers on 100% employment contracts. Research spans four interdisciplinary themes on global sustainability and health challenges. The 2026 call closed on 31 August 2026 with 2,159 applications from 110 nationalities; 1,023 applicants (47%) passed the eligibility check and entered excellence evaluation.",
+        "program_type": "MSCA COFUND funded doctoral training project with salaried doctoral researcher positions",
+        "region": "Europe",
+        "coverage": "Salaried doctoral employment (100% contract) with free doctoral tuition at the University of Helsinki",
+        "last_verified_date": "2026-10-04"
+      },
+      "programme_detail_applicant_utility": {
+        "application_readiness_checklist": [
+          "Confirm the master's degree certificate is final, dated and in hand before the call deadline - an attestation of completion is not accepted",
+          "Count full-time-equivalent research experience carefully in the CV; part-time research work must be converted and dated",
+          "Document any time spent in Finland during the three years before the deadline, to test the MSCA mobility rule",
+          "Download and strictly follow the predefined Europass CV, motivation letter and research plan templates",
+          "Name files using Latin-alphabet characters only and keep PDFs below the 5 MB recommendation"
+        ],
+        "common_rejection_risks": [
+          "Using a non-template CV, motivation letter or research plan, or changing font size and page limits",
+          "An unfinished or undated master's certificate by the deadline, or submitting an attestation instead of a final diploma",
+          "Exceeding four years of research experience, which disqualifies the applicant under the early-stage researcher rule",
+          "More than 12 months of residence or main activity in Finland in the three years before the deadline, breaching the MSCA mobility rule",
+          "Clicking 'save' instead of 'apply' in the recruitment system, which leaves the application unsubmitted",
+          "Adding unsolicited attachments, which are not evaluated and may cause problems if templates are incomplete"
+        ],
+        "estimated_uncovered_costs": [
+          "Living and accommodation costs beyond the employment salary in the Helsinki Metropolitan Area, where the University notes the cost of living is relatively high in European terms",
+          "First residence permit fee of 530 EUR (continuing permit 230 EUR)"
+        ],
+        "document_audit": [
+          "Europass CV with all research experience dated and converted to full-time equivalent",
+          "Motivation letter in the required template",
+          "Research proposal, ethics self-assessment and intersectoral mobility plan in the required template, naming 2-3 suggested supervisors",
+          "Final master's degree certificate and transcript of records, with official translations if not in Finnish, Swedish or English",
+          "Valid proof of English language skills if already held"
+        ],
+        "alerts": [
+          {
+            "trigger": "Call closed",
+            "message": "The 2026 RESDOC call closed on 31 August 2026 and the project is not currently accepting applications; no new call had been announced as of 2026-10-04."
+          },
+          {
+            "trigger": "Exclusive employment",
+            "message": "The 100% employment contract is intended to be exclusive - the EU funder expects selected researchers to work only on their doctoral research."
+          }
+        ],
+        "submission_workflow": [
+          "Confirm eligibility against all published criteria before applying",
+          "Prepare the three mandatory template documents and merge/compress them to PDF",
+          "Submit through the University of Helsinki online recruitment system, clicking 'apply' rather than 'save'",
+          "Eligibility screening by the RESDOC Project Management Office",
+          "Excellence evaluation by external evaluators, then interviews in late October 2026 for eligible applicants"
+        ]
+      },
+      "programme_detail_verification": {
+        "cycle_verified": "2026 RESDOC recruitment call (project period 2027-2031), verified 2026-10-04",
+        "verification_confidence": 0.9,
+        "official_fields_confirmed": [
+          "status",
+          "degree_levels",
+          "duration",
+          "tuition_coverage",
+          "living_cost_coverage",
+          "eligibility",
+          "citizenship_residency",
+          "international_eligibility",
+          "subject_or_agency_requirement",
+          "selection_criteria",
+          "selection_weighting",
+          "documents",
+          "requirements",
+          "english_requirement",
+          "award_holder_conditions",
+          "supplements_or_initiatives",
+          "official_contacts"
+        ],
+        "institution_check_required": [
+          "Exact salary amount is not published on the official RESDOC pages",
+          "Whether further RESDOC calls will be published during the 2027-2031 project period",
+          "Exact start date of the 2027-2031 project appointments"
+        ],
+        "unverified_or_removed_claims": [
+          "No funding amount could be confirmed: neither the RESDOC project page, the how-to-apply page nor the University's 'How to fund a doctorate?' page publishes a salary figure, so funding_amount, funding_currency and funding_period are null",
+          "The stored status 'open' is contradicted: the official site states 'The call has been closed and the evaluation phase started in September 2026'",
+          "Travel coverage is not addressed in the official pages, so it is null"
+        ],
+        "source_citations": [
+          "https://www.helsinki.fi/en/research/doctoral-school/resdoc-project",
+          "https://www.helsinki.fi/en/research/doctoral-school/resdoc-project/how-apply",
+          "https://www.helsinki.fi/en/research/doctoral-school/doctoral-studies-university-helsinki/how-fund-doctorate"
+        ],
+        "researched_by": "w1_34"
+      },
+      "logo_override": null,
+      "research_notes": {
+        "logo": "The University of Helsinki serves its logo as an inline SVG web component rather than a file: /themes/custom/helsingin_yliopisto/dist/hudslib-0.12.2/esm/hy-icon-hy-logo.entry.js contains an inline <svg viewBox='0 0 1000 1000' fill='currentColor'> mark, and the site's pages contain no <img> elements at all. Probed and rejected: /themes/custom/helsingin_yliopisto/favicon.ico (HTTP 200 image/x-icon but only a 16x16 dark glyph, 1,150 bytes - too small to serve as the awarding body's logo mark); /themes/custom/helsingin_yliopisto/images/share/share.png (HTTP 200 image/png, 24,178 bytes, but it is a 1200x630 social share card, not a logo); /themes/custom/helsingin_yliopisto/favicon.svg, /logo.svg, /sites/default/files/logo.svg, /assets/drupal/logo.svg, /android-chrome-512x512.png and /apple-touch-icon.png all return non-2xx. Reported null because no probed image file on helsinki.fi is the awarding body's logo.",
+        "unverified": [
+          "Salary amount for the doctoral researcher employment contract",
+          "Whether a further RESDOC call will be published within the 2027-2031 project period"
+        ],
+        "substitution": null,
+        "official_pages_read": [
+          "https://www.helsinki.fi/en/research/doctoral-school/resdoc-project",
+          "https://www.helsinki.fi/en/research/doctoral-school/resdoc-project/how-apply",
+          "https://www.helsinki.fi/en/research/doctoral-school/doctoral-studies-university-helsinki/how-fund-doctorate"
+        ],
+        "degree_level_confirmed": "RESDOC 'offers a unique opportunity to complete a fully funded doctoral degree at the University of Helsinki in Finland', and eligibility requires 'a Master's degree or equivalent qualifying for doctoral studies'.",
+        "url_observed": null,
+        "contradictions": [
+          "Stored status 'open' is wrong: the official page states 'The call has been closed and the evaluation phase started in September 2026' and the how-to-apply page states 'We have closed the call August 31, 2026, and are currently processing applications.'",
+          "Stored funding 'Fully funded employment contract (salary-based)' is confirmed, but no funding amount is published, so funding_amount remains null"
+        ],
+        "skeleton": false
+      }
+    },
+    {
+      "target_id": 334,
+      "outcome": "refreshed",
+      "confirm": true,
+      "confirmation_evidence": "Read the University of Helsinki page 'University-funded doctoral researcher positions', which states: 'The University of Helsinki Doctoral School (UHDS) provides annual funding for doctoral researcher positions in doctoral programmes' and 'The next application period for salaried positions is August 24 - September 7, 2026.'",
+      "new_scholarship": {
+        "name": "University-Funded Doctoral Researcher Positions (University of Helsinki Doctoral School)",
+        "legacy_titles": ["University-funded Doctoral Researcher Positions 2026 (Salaried PhD Positions)"],
+        "country": "Finland",
+        "degree_levels": "Doctoral (PhD)",
+        "funding_type": "Fully Funded",
+        "official_source": "University of Helsinki",
+        "official_source_url": "https://www.helsinki.fi/en/research/doctoral-school/university-funded-doctoral-researcher-positions",
+        "status": "upcoming",
+        "is_verified": true,
+        "last_verified_date": "2026-10-04",
+        "description": "The University of Helsinki Doctoral School funds salaried doctoral researcher positions across the University's doctoral programmes, with one application period each year. The positions are designated as full-time work and aim for the doctoral researcher to complete a post-graduate doctoral degree within four years. The 2026 application period was 24 August to 7 September 2026 and has closed. The University does not collect tuition fees from doctoral researchers.",
+        "region": "Europe",
+        "duration": "Four years (full-time doctoral researcher employment)",
+        "deadline": "The University of Helsinki states 'There is one application period each year for University-funded doctoral researcher positions for all of the University's doctoral programmes' and 'The next application period for salaried positions is August 24 - September 7, 2026.' The 2026 window closed on 7 September 2026 and the next annual window had not been announced as of 2026-10-04.",
+        "deadline_date": null,
+        "deadline_precision": "recurring",
+        "application_period": "One application period each year. The 2026 application period was 24 August to 7 September 2026.",
+        "eligibility_summary": "Applicants apply to a specific doctoral programme in the annual university-wide application period, following both the general instructions and the doctoral programme specific instructions published in the Studies Service. Applicants must be pursuing a post-graduate doctoral degree.",
+        "eligibility": [
+          "Applicants must apply to one of the University of Helsinki doctoral programmes in the annual university-wide application period",
+          "The doctoral researcher must complete a post-graduate doctoral degree, which the University aims to see completed within four years",
+          "Positions are designated as full-time work"
+        ],
+        "coverage": [
+          "Salary from a University-funded doctoral researcher position",
+          "No tuition fees: the University of Helsinki 'does not collect tuition fees from doctoral researchers, and studies at the University are free'"
+        ],
+        "benefits": [
+          "University-funded salaried doctoral researcher position (full-time)",
+          "Free doctoral tuition at the University of Helsinki",
+          "University employee rights including salary, social security, occupational health care, work facilities and equipment"
+        ],
+        "required_documents": [],
+        "official_updates_url": "https://www.helsinki.fi/en/research/doctoral-school/university-funded-doctoral-researcher-positions",
+        "english_requirement": "Applicants must meet University of Helsinki English language requirements as set out in the programme specific application instructions.",
+        "requirements": [
+          "Apply only in the single annual application period for university-funded positions",
+          "Read both the general instructions and the doctoral programme specific instructions in the Studies Service",
+          "Specific instructions and requirements are published per doctoral programme"
+        ],
+        "application_method": ["Online application via the University of Helsinki Studies Service, following the doctoral programme specific instructions"],
+        "selection_notes": "Selection is carried out by each doctoral programme according to its own instructions and criteria, which are published in the Studies Service alongside the call. The University publishes a list of awarded university-funded doctoral researcher positions (as of 11 December 2025, subject to change).",
+        "program_type": "University-funded salaried doctoral researcher positions in doctoral programmes",
+        "best_fit": "Prospective doctoral researchers seeking a salaried, fully funded PhD at the University of Helsinki in any of its doctoral programmes",
+        "notes": "The 2026 application period was 24 August to 7 September 2026 and has closed. Positions are announced once a year across all doctoral programmes.",
+        "funding_amount": null,
+        "funding_currency": null,
+        "funding_period": null,
+        "degree_level_confirmed": "'The University of Helsinki Doctoral School (UHDS) provides annual funding for doctoral researcher positions in doctoral programmes' and the aim is that 'the university-funded doctoral researchers will pursue a post-graduate doctoral degree'."
+      },
+      "programme_detail_official": {
+        "official_source_urls": [
+          "https://www.helsinki.fi/en/research/doctoral-school/university-funded-doctoral-researcher-positions",
+          "https://www.helsinki.fi/en/research/doctoral-school/doctoral-studies-university-helsinki/how-fund-doctorate"
+        ],
+        "application_link": "https://studies.helsinki.fi/instructions/article/university-funded-doctoral-researcher-positions",
+        "official_updates_url": "https://www.helsinki.fi/en/research/doctoral-school/university-funded-doctoral-researcher-positions",
+        "catalogue_url": "https://www.helsinki.fi/en/research/doctoral-school",
+        "application_cycle": "One application period each year, university-wide. The 2026 period was 24 August to 7 September 2026; the next annual period had not been announced as of 2026-10-04.",
+        "deadline_central": "2026-09-07",
+        "deadline_central_display": "The 2026 application period was August 24 - September 7, 2026. The position applications closed on 7 September 2026.",
+        "deadline_central_timezone": "Europe/Helsinki",
+        "deadline_note": "The University publishes one application period each year. The 2026 period of 24 August to 7 September 2026 has closed, and the next annual period had not been announced on the page as of 2026-10-04.",
+        "status": "CLOSED",
+        "status_note": "The 2026 application period for salaried doctoral researcher positions (24 August to 7 September 2026) has closed. The University states there is one application period each year, so the next window is expected in late August or September 2027 but had not been announced as of 2026-10-04. The list of awarded university-funded doctoral researcher positions is published on the page, as of 11 December 2025, subject to change.",
+        "funding_amount": null,
+        "funding_currency": null,
+        "funding_period": null,
+        "funding_duration": "Four years (full-time doctoral researcher employment; the degree should be completed within four years)",
+        "tuition_coverage": true,
+        "tuition_coverage_note": "'The University of Helsinki does not collect tuition fees from doctoral researchers, and studies at the University are free.'",
+        "living_cost_coverage": true,
+        "living_cost_coverage_note": "The position is salaried employment with the University; the salary amount is not published on the page, and the University notes that doctoral researchers are expected to cover their own living and accommodation costs.",
+        "travel_coverage": null,
+        "fully_funded": true,
+        "funding_label": "University-funded salaried doctoral researcher position (full-time) with free doctoral tuition; salary amount not published.",
+        "benefits": [
+          "University-funded salaried doctoral researcher position, designated as full-time work",
+          "Free doctoral tuition at the University of Helsinki",
+          "University employee rights: salary, social security, occupational health care, work facilities and equipment"
+        ],
+        "eligibility": [
+          "Applicants apply to a University of Helsinki doctoral programme during the single annual application period",
+          "Positions are full-time doctoral work aimed at completing a doctoral degree within four years"
+        ],
+        "citizenship_residency": "Not stated on the official page; eligibility is set by the general and doctoral programme specific application instructions, which applicants must read.",
+        "international_eligibility": "Not stated on the official page for these positions. The University states that doctoral researchers are hired around the year by different research projects and groups in addition to the annual university-wide call.",
+        "degree_levels": ["Doctoral (PhD)"],
+        "study_mode": "Full-time",
+        "research_requirement": "The aim is that university-funded doctoral researchers pursue a post-graduate doctoral degree, which should be completed within four years.",
+        "subject_or_agency_requirement": "Positions are available in the University of Helsinki doctoral programmes; applicants should choose the doctoral programme that matches their research plan and contact the programme for supervisors.",
+        "application_method": "Online application through the University of Helsinki Studies Service during the single annual application period, following both the general instructions and the doctoral programme specific instructions.",
+        "application_route": "University of Helsinki Studies Service application instructions (specific instructions and more information published per call)",
+        "requirements": [
+          "Apply in the single annual application period for university-funded positions",
+          "Read both the general and the doctoral programme specific application instructions in the Studies Service",
+          "Contact the doctoral programme for questions about research plans and supervisors"
+        ],
+        "documents": [],
+        "english_requirement": "Set out in the general and doctoral programme specific application instructions in the Studies Service.",
+        "english_requirement_note": "The University of Helsinki doctoral researcher positions page does not state English language requirements; these are defined per call in the application instructions.",
+        "selection_criteria": [
+          "Selection is carried out under the doctoral programme specific instructions published in the Studies Service",
+          "Awarded positions are published by the University on the University-funded doctoral researcher positions page"
+        ],
+        "selection_weighting": null,
+        "duration": "Four years (full-time)",
+        "award_holder_conditions": [
+          "The position is designated as full-time work",
+          "The doctoral degree should be completed within four years"
+        ],
+        "supplements_or_initiatives": [
+          "One joint annual application period covering all University of Helsinki doctoral programmes",
+          "Doctoral researchers are additionally hired around the year by research projects and groups"
+        ],
+        "official_contacts": {
+          "general": "University of Helsinki, P.O. Box 3 (Fabianinkatu 33), 00014 University of Helsinki, switchboard +358 (0) 2941 911; general application questions addressed to the Doctoral School"
+        },
+        "description": "The University of Helsinki Doctoral School provides annual funding for salaried doctoral researcher positions across the University's doctoral programmes, with a single application period each year. The 2026 application period ran from 24 August to 7 September 2026. Positions are full-time doctoral work aimed at completion of a doctoral degree within four years, and the University charges no tuition fees to doctoral researchers.",
+        "program_type": "University-funded salaried doctoral researcher positions",
+        "region": "Europe",
+        "coverage": "University-funded salary (full-time doctoral researcher employment) with free doctoral tuition",
+        "last_verified_date": "2026-10-04"
+      },
+      "programme_detail_applicant_utility": {
+        "application_readiness_checklist": [
+          "Choose the University of Helsinki doctoral programme that matches your research plan and contact it about supervisors",
+          "Watch for the single annual application period, which in 2026 opened on 24 August",
+          "Read both the general instructions and the doctoral programme specific instructions in the Studies Service before applying",
+          "Prepare the documents required by your specific doctoral programme's instructions"
+        ],
+        "common_rejection_risks": [
+          "Missing the single annual application period, which is not rolling",
+          "Applying without reading the doctoral programme specific instructions, which define the required documents",
+          "Assuming a scholarship rather than an employment relationship: these are salaried positions with employer obligations"
+        ],
+        "estimated_uncovered_costs": [
+          "Living and accommodation costs beyond the salary in the Helsinki Metropolitan Area, where the University states the cost of living is relatively high in European terms",
+          "Research expenses: the University notes the Doctoral School and doctoral programmes do not generally cover expenses arising from research"
+        ],
+        "document_audit": [
+          "Documents specified by the doctoral programme specific application instructions in the Studies Service (the University of Helsinki positions page itself does not list them)"
+        ],
+        "alerts": [
+          {
+            "trigger": "Annual window only",
+            "message": "There is one application period each year for university-funded positions; applications cannot be submitted outside it."
+          },
+          {
+            "trigger": "2026 window closed",
+            "message": "The 2026 application period closed on 7 September 2026; the next annual window had not been announced as of 2026-10-04."
+          }
+        ],
+        "submission_workflow": [
+          "Identify the doctoral programme and contact it about research plans and supervisors",
+          "Watch the University of Helsinki Doctoral School page for the annual application period announcement",
+          "Apply through the Studies Service following the general and programme specific instructions",
+          "Track the published list of awarded university-funded doctoral researcher positions"
+        ]
+      },
+      "programme_detail_verification": {
+        "cycle_verified": "2026 application period (24 August - 7 September 2026), verified 2026-10-04",
+        "verification_confidence": 0.85,
+        "official_fields_confirmed": [
+          "status",
+          "application_period",
+          "deadline_central",
+          "degree_levels",
+          "duration",
+          "tuition_coverage",
+          "study_mode",
+          "application_method",
+          "supplements_or_initiatives",
+          "official_contacts"
+        ],
+        "institution_check_required": [
+          "Required documents for each call, which are set by the doctoral programme specific instructions",
+          "Salary amount and pay scale for university-funded doctoral researcher positions",
+          "Whether applicants must already hold the right to pursue a doctoral degree when applying",
+          "English language requirements, defined per call"
+        ],
+        "unverified_or_removed_claims": [
+          "No funding amount is published on the official page, so funding_amount, funding_currency and funding_period are null",
+          "Documents could not be confirmed from the awarding body page (the list is published per call in the Studies Service), so the documents array is empty",
+          "English requirements could not be confirmed from the awarding body page; the page states only that specific instructions should be read",
+          "Travel coverage is not addressed, so it is null",
+          "The stored status 'open' is contradicted: the published 2026 application period of 24 August to 7 September 2026 has closed"
+        ],
+        "source_citations": [
+          "https://www.helsinki.fi/en/research/doctoral-school/university-funded-doctoral-researcher-positions",
+          "https://www.helsinki.fi/en/research/doctoral-school/doctoral-studies-university-helsinki/how-fund-doctorate"
+        ],
+        "researched_by": "w1_34"
+      },
+      "logo_override": null,
+      "research_notes": {
+        "logo": "The University of Helsinki publishes no standalone logo image file. Its logo is an inline SVG inside the site's web-component bundle (/themes/custom/helsingin_yliopisto/dist/hudslib-0.12.2/esm/hy-icon-hy-logo.entry.js contains <svg viewBox='0 0 1000 1000' fill='currentColor'>), and no page on helsinki.fi contains an <img> element. Probed and rejected: /themes/custom/helsingin_yliopisto/favicon.ico (200 image/x-icon, 1,150 bytes, but a 16x16 dark glyph only); /themes/custom/helsingin_yliopisto/images/share/share.png (200 image/png, 24,178 bytes, but a 1200x630 social share card, not a logo); /themes/custom/helsingin_yliopisto/favicon.svg, /logo.svg, /sites/default/files/logo.svg, /assets/drupal/logo.svg, /themes/custom/helsingin_yliopisto/logo.svg, /themes/custom/helsingin_yliopisto/logo.png, /assets/images/logo.svg, /apple-touch-icon.png, /favicon.ico, /android-chrome-512x512.png and /android-chrome-192x192.png all return non-2xx. Reported null because no probed image file on helsinki.fi is the awarding body's logo.",
+        "unverified": [
+          "Salary amount for the doctoral researcher positions",
+          "Documents required for the 2027 call",
+          "English language requirements for the call"
+        ],
+        "substitution": null,
+        "official_pages_read": [
+          "https://www.helsinki.fi/en/research/doctoral-school/university-funded-doctoral-researcher-positions",
+          "https://www.helsinki.fi/en/research/doctoral-school/doctoral-studies-university-helsinki/how-fund-doctorate",
+          "https://www.helsinki.fi/en/research/doctoral-school",
+          "https://www.helsinki.fi/en/news/press-and-media-services"
+        ],
+        "degree_level_confirmed": "'The University of Helsinki Doctoral School (UHDS) provides annual funding for doctoral researcher positions in doctoral programmes', with the aim that 'the university-funded doctoral researchers will pursue a post-graduate doctoral degree, which should be completed within four years'.",
+        "url_observed": null,
+        "contradictions": [
+          "Stored status 'open' is wrong: the published application period 'August 24 - September 7, 2026' had already closed by 2026-10-04",
+          "Stored record contained no funding amount, and the official page does not publish a salary figure, so it remains null"
+        ],
+        "skeleton": false
+      }
+    },
+    {
+      "target_id": 337,
+      "outcome": "refreshed",
+      "confirm": true,
+      "confirmation_evidence": "Read the University of Oulu page 'University of Oulu tuition fees and scholarships for international applicants', which states 'Explore tuition fees, Early Bird discounts and tuition fee waiver scholarships available for international applicants to the University of Oulu's Bachelor's and Master's degree programmes' and 'The University of Oulu does not offer scholarships that cover 100% of the tuition fee.'",
+      "new_scholarship": {
+        "name": "University of Oulu Tuition Fee Waivers and Early Bird Discount",
+        "legacy_titles": ["University of Oulu Tuition Fee Waivers and Early Bird Discount"],
+        "country": "Finland",
+        "degree_levels": "Bachelor's, Master's",
+        "funding_type": "Tuition Fee Waiver",
+        "official_source": "University of Oulu",
+        "official_source_url": "https://www.oulu.fi/en/apply/how-apply/university-oulu-tuition-fees-and-scholarships-for-international-applicants",
+        "status": "open",
+        "is_verified": true,
+        "last_verified_date": "2026-10-04",
+        "description": "The University of Oulu collects tuition fees from non-EU/EEA students admitted to English-taught Bachelor's and Master's degree programmes, and offers two partial reductions: an Early Bird discount on the first-year fee and Tuition Fee Waiver Scholarships from the second year onwards. The Early Bird discount is granted if the tuition fee is paid within three weeks of the admission results being published, and the Tuition Fee Waiver Scholarship requires at least 60 ECTS credits completed in the preceding academic year. Both reductions are percentage-based, vary by degree programme, and no University of Oulu scholarship covers 100% of the tuition fee.",
+        "region": "Europe",
+        "duration": "Full degree programme; the Early Bird discount covers the first academic year and Tuition Fee Waiver Scholarships apply from the second year onwards",
+        "deadline": "The Early Bird discount is granted 'if the tuition fee is paid within three weeks of the admission results being published'. For programmes where the Early Bird discount is not available, or if the full fee is paid instead, the fee must be paid by the deadline given in the admission offer, and the University directs applicants to check the programme's application timeline and deadlines for the exact payment deadline.",
+        "deadline_date": null,
+        "deadline_precision": "varies",
+        "application_period": "Admission to the autumn 2027 intake; the Early Bird payment window opens when admission results are published and closes three weeks later",
+        "eligibility_summary": "Tuition fee liability applies to students admitted to English-taught Bachelor's and Master's programmes who are not EU/EEA or Swiss citizens and do not hold an exempting Finnish residence permit. Early Bird discounts are available for selected programmes, and Tuition Fee Waiver Scholarships from the second year onwards require at least 60 ECTS credits completed in the preceding academic year in accordance with the approved study plan, including the required Finnish language studies.",
+        "eligibility": [
+          "Liable for tuition fees unless an EU/EEA citizen or Swiss citizen, or a family member of such a person holding a residence card for a family member of an EU citizen in Finland",
+          "Exempt if holding a permanent (type P) residence permit in Finland, or a long-term resident's EU residence permit (type P-EU)",
+          "Exempt if holding a residence permit based on temporary protection, an EU Blue Card in Finland, or right of residence under the withdrawal agreement (Brexit residence permit)",
+          "Exempt with a continuous (type A) residence permit granted on the basis of employment where the applicant's first Finnish residence permit was not granted on the basis of studies",
+          "Exempt with a continuous (type A) residence permit based on family ties where the family member's first residence permit was not granted on the basis of studies",
+          "Tuition Fee Waiver Scholarship (from the second year onwards): at least 60 ECTS credits completed during the preceding academic year in accordance with the approved study plan, including the required Finnish language studies, which differ in scope between degree programmes"
+        ],
+        "coverage": [
+          "Early Bird discount of 5%, 15% or 30% on the first academic year's tuition fee, depending on the degree programme",
+          "Tuition Fee Waiver Scholarship of 10%, 15%, 20%, 30% or 40% on the annual tuition fee from the second year onwards, depending on the degree programme",
+          "Nokia Scholarship of 3,000 EUR each for a limited number of accepted applicants to selected master's programmes in Computer Science and Engineering, Electronics, Wireless Communications Engineering and Sustainable and Autonomous Systems"
+        ],
+        "benefits": [
+          "Early Bird discount on the first-year tuition fee if paid within three weeks of publication of admission results",
+          "Tuition Fee Waiver Scholarship from the second year onwards, based on study progress",
+          "Nokia Scholarship of 3,000 EUR for selected master's programmes, open to all applicants including those required to pay tuition fees"
+        ],
+        "required_documents": [],
+        "catalogue_url": "https://www.oulu.fi/en/apply/how-apply",
+        "official_updates_url": "https://www.oulu.fi/en/apply/how-apply/university-oulu-tuition-fees-and-scholarships-for-international-applicants",
+        "english_requirement": null,
+        "requirements": [
+          "New students must pay the full first-year tuition fee in a single payment by the deadline; the fee cannot be paid in instalments in the first year",
+          "Tuition fees are paid through the Flywire payment platform using the link in the admission offer email from Admissions Services",
+          "Early Bird discount is granted only if the tuition fee is paid within three weeks of the admission results being published",
+          "From the second year onwards, instalment payment options are available in some faculties"
+        ],
+        "application_method": ["Admission application to the University of Oulu; no separate scholarship application is needed for the Early Bird discount or the Tuition Fee Waiver Scholarship"],
+        "selection_notes": "Tuition Fee Waiver Scholarships are awarded based on successful progress in studies rather than by separate competition. The University states: 'Faculty-funded scholarships are not available for first-year students. However, some programmes offer an Early Bird discount.'",
+        "program_type": "University-administered tuition fee reductions: an Early Bird discount for admitted first-year students and Tuition Fee Waiver Scholarships for continuing students",
+        "best_fit": "Non-EU/EEA applicants to English-taught Bachelor's or Master's degree programmes at the University of Oulu who can pay the first-year tuition fee within three weeks of admission, or who can complete 60 ECTS in their first year to continue receiving a percentage waiver",
+        "notes": "The University of Oulu does not offer scholarships that cover 100% of the tuition fee. The tuition fee covers tuition only and does not include living expenses such as accommodation, meals, transportation or other personal costs.",
+        "funding_amount": 3000,
+        "funding_currency": "EUR",
+        "funding_period": "one-off",
+        "degree_level_confirmed": "The official page covers both degree levels directly: 'Explore tuition fees, Early Bird discounts and tuition fee waiver scholarships available for international applicants to the University of Oulu's Bachelor's and Master's degree programmes', with separate tables headed \"Bachelor's degrees\" (\"students admitted to bachelor's degree programmes starting in autumn 2027\") and \"Master's degrees\" (\"students admitted to master's degree programmes starting in autumn 2027\")."
+      },
+      "programme_detail_official": {
+        "official_source_urls": [
+          "https://www.oulu.fi/en/apply/how-apply/university-oulu-tuition-fees-and-scholarships-for-international-applicants"
+        ],
+        "application_link": null,
+        "official_updates_url": "https://www.oulu.fi/en/apply/how-apply/university-oulu-tuition-fees-and-scholarships-for-international-applicants",
+        "catalogue_url": "https://www.oulu.fi/en/apply/how-apply",
+        "application_cycle": "Information applies to students admitted during the autumn 2026 or spring 2027 admission rounds for studies beginning in the 2027-2028 academic year, i.e. the autumn 2027 intake",
+        "deadline_central": null,
+        "deadline_central_display": "Early Bird discount: tuition fee paid within three weeks of the admission results being published. Otherwise the fee must be paid by the deadline given in the admission offer; the University directs applicants to the programme's application timeline and deadlines for the exact payment deadline.",
+        "deadline_central_timezone": null,
+        "deadline_note": "The Early Bird discount deadline is defined relative to the publication of admission results for each programme, not as a fixed calendar date, so deadline_central is null and deadline_precision is 'varies'. The University states: 'If the Early Bird discount is not available for your programme, or if you choose to pay the full tuition fee, the fee must be paid by the given deadline... Check the application timeline and deadlines for the exact payment deadline.'",
+        "status": "ONGOING",
+        "status_note": "The University's tuition fee and scholarship framework is an ongoing, annually administered scheme applied to each new admission cohort. The page states the information applies to students admitted during the autumn 2026 or spring 2027 admission rounds for studies beginning in the 2027-2028 academic year, and the reduction percentages are published programme by programme for that intake.",
+        "funding_amount": 3000,
+        "funding_currency": "EUR",
+        "funding_period": "one-off",
+        "funding_duration": "Early Bird discount applies to the first academic year only; Tuition Fee Waiver Scholarships apply from the second year onwards for the remainder of the programme; the Nokia Scholarship is a one-off 3,000 EUR award",
+        "tuition_coverage": true,
+        "tuition_coverage_note": "Tuition fees themselves are reduced, not fully waived: the Early Bird discount and Tuition Fee Waiver Scholarships cut the annual tuition fee by a programme-specific percentage. The University states explicitly: 'The University of Oulu does not offer scholarships that cover 100% of the tuition fee.' Annual tuition fees published on the page range from 8,500 to 14,000 EUR depending on programme.",
+        "living_cost_coverage": false,
+        "living_cost_coverage_note": "The tuition fee 'does not include living expenses such as accommodation, meals, transportation or other personal costs', and no living stipend is offered. The University states: 'please ensure that you have sufficient funding for tuition fees and living expenses. Scholarships and fee waivers are intended to reduce costs but do not cover all study-related expenses'.",
+        "travel_coverage": false,
+        "fully_funded": false,
+        "funding_label": "Partial tuition reductions only: Early Bird discount of 5-30% in the first year and Tuition Fee Waiver Scholarships of 10-40% from the second year onwards; no living, travel or 100% tuition coverage",
+        "benefits": [
+          "Early Bird discount of 5%, 15% or 30% on the first academic year's tuition fee",
+          "Tuition Fee Waiver Scholarship of 10%, 15%, 20%, 30% or 40% on the annual tuition fee from the second year onwards",
+          "Nokia Scholarship of 3,000 EUR each for a limited number of accepted applicants to selected master's programmes",
+          "Instalment payment options for tuition in some faculties from the second year onwards"
+        ],
+        "eligibility": [
+          "Fees apply to students admitted to English-taught Bachelor's and Master's programmes who are not citizens of an EU/EEA country or Switzerland and do not hold a residence permit that exempts them from tuition fees",
+          "Early Bird discount is available for selected degree programmes",
+          "Tuition Fee Waiver Scholarship: students must complete at least 60 ECTS credits during the preceding academic year in accordance with their approved study plan, including the required Finnish language studies, which differ in scope between degree programmes",
+          "Nokia Scholarship: offered to a limited number of accepted applicants of the Computer Science and Engineering, Electronics, Wireless Communications Engineering and Sustainable and Autonomous Systems master's programmes, intended to fast progress in System-on-Chip and Radio Frequency related courses"
+        ],
+        "citizenship_residency": "Open to non-EU/EEA and non-Swiss applicants, i.e. exactly those liable for tuition fees. EU/EEA citizens, Swiss citizens, holders of type P or P-EU permits, temporary-protection permits, EU Blue Cards, Brexit right-of-residence permits, and qualifying type A employment-based permits are exempt from tuition fees altogether and therefore do not need the waivers.",
+        "international_eligibility": "Open to all international applicants liable for tuition fees; eligibility depends on residence permit status rather than nationality alone. The University notes the exemption rules and directs applicants to the Finnish National Agency of Education's tuition fee page.",
+        "degree_levels": ["Bachelor's", "Master's"],
+        "study_mode": "Full-time",
+        "research_requirement": null,
+        "subject_or_agency_requirement": "Reductions are published per degree programme, so availability depends on the programme applied to. Bachelor's programmes published with an Early Bird discount are Computer Science and Engineering, Electronics and Communications Engineering, Software Engineering and Information Systems, and International Business Management. Selected master's programmes have no Early Bird discount or no second-year waiver at all (Epidemiology and Biomedical Data Science is published as 'not available' for both).",
+        "application_method": "No separate scholarship application. The Early Bird discount is granted automatically on timely payment of the first-year tuition fee, and the Tuition Fee Waiver Scholarship is assessed from study progress. Tuition fees are paid through the Flywire payment platform using the link provided in the admission offer email from Admissions Services.",
+        "application_route": "Admission application to a University of Oulu English-taught degree programme, followed by payment of the first-year tuition fee through Flywire",
+        "requirements": [
+          "New students must pay the full first-year tuition fee in a single payment by the deadline; the fee cannot be paid in instalments in the first year",
+          "Early Bird discount is granted if the tuition fee is paid within three weeks of the admission results being published",
+          "From the second year onwards, at least 60 ECTS credits must be completed in the preceding academic year in accordance with the approved study plan, including the required Finnish language studies",
+          "Confirmation of the study place before payment is not required but is strongly recommended, so the student can register for the academic year and begin preparations",
+          "From the second year onwards, instalment payment options are available in some faculties"
+        ],
+        "documents": [],
+        "english_requirement": null,
+        "english_requirement_note": "The University of Oulu tuition fees and scholarships page does not state English language requirements; these are set out in the programme-specific admission criteria on the separate application pages.",
+        "selection_criteria": [
+          "Early Bird discount: granted on timely payment of the first-year tuition fee within three weeks of publication of admission results",
+          "Tuition Fee Waiver Scholarship: awarded based on successful progress in studies, requiring at least 60 ECTS credits in the preceding academic year in accordance with the approved study plan, including the required Finnish language studies",
+          "Nokia Scholarship: offered to a limited number of accepted applicants of the four named master's programmes, intended to support fast progress in System-on-Chip and Radio Frequency related courses"
+        ],
+        "selection_weighting": null,
+        "duration": "Full degree programme; reductions apply per academic year (first year for the Early Bird discount, second year onwards for the Tuition Fee Waiver Scholarship)",
+        "award_holder_conditions": [
+          "The full first-year tuition fee must be paid in a single payment; instalments are not available in the first year",
+          "Tuition fee waivers are assessed annually from the second year onwards and require continued study progress, so a missed 60 ECTS threshold can end the reduction",
+          "Tuition fee payments are refundable only in the listed circumstances, and any study credits gained during the academic year prevent a refund",
+          "Nokia Scholarship recipients are expected to take System-on-Chip and Radio Frequency related courses in the curriculum"
+        ],
+        "supplements_or_initiatives": [
+          "Nokia Scholarship, funded by Nokia, of 3,000 EUR each for accepted applicants of specific master's programmes",
+          "Instalment payment options in some faculties from the second year onwards"
+        ],
+        "official_contacts": {
+          "general": "University of Oulu, P.O.Box 8000, FI-90014 University of Oulu, tel. +358 294 48 0000, university.of.oulu(at)oulu.fi",
+          "email": "university.of.oulu@oulu.fi",
+          "phone": "+358 294 48 0000"
+        },
+        "description": "The University of Oulu administers two tuition fee reductions for its English-taught Bachelor's and Master's programmes: an Early Bird discount for first-year students who pay within three weeks of admission results, and Tuition Fee Waiver Scholarships from the second year onwards for students who complete at least 60 ECTS credits. Reductions are percentage-based and published per programme, with annual tuition fees between 8,500 and 14,000 EUR. The University states it does not offer scholarships covering 100% of the tuition fee, and the fee excludes living expenses. A separate Nokia Scholarship of 3,000 EUR is offered to accepted applicants of four named master's programmes.",
+        "program_type": "University-administered tuition fee reductions: Early Bird discount for admitted first-year students and Tuition Fee Waiver Scholarships for continuing students",
+        "region": "Europe",
+        "coverage": "Partial tuition reductions only: 5-30% Early Bird discount in the first year and 10-40% Tuition Fee Waiver Scholarships from the second year onwards",
+        "last_verified_date": "2026-10-04"
+      },
+      "programme_detail_applicant_utility": {
+        "application_readiness_checklist": [
+          "Check whether your degree programme lists an Early Bird discount at all; the tables on the University of Oulu page are programme-specific and some programmes have none",
+          "Confirm you are not exempt from tuition fees (EU/EEA or Swiss citizenship, type P or P-EU permit, temporary protection permit, EU Blue Card, Brexit right of residence, or qualifying type A permit) before budgeting for fees",
+          "Watch your email for the admission offer containing the Flywire payment link, and set a reminder for the Early Bird payment window",
+          "Plan to pay the full first-year tuition fee in one single payment - instalments are not available in the first year",
+          "Check the programme's own application timeline and deadlines page for the exact payment deadline, since it depends on when admission results are published",
+          "If applying to the four Nokia-eligible master's programmes, note that the Nokia Scholarship requires a separate expression of interest and that the University says further information will be published later",
+          "For the second year onwards, plan to complete at least 60 ECTS credits including the required Finnish language studies, otherwise the Tuition Fee Waiver Scholarship is not granted"
+        ],
+        "common_rejection_risks": [
+          "Paying the tuition fee more than three weeks after publication of the admission results, which forfeits the Early Bird discount entirely",
+          "Assuming a scholarship fee waiver is automatic on admission; the University states faculty-funded scholarships are not available for first-year students",
+          "Assuming the waiver percentages apply to every programme; each degree programme has its own percentages and some are marked 'not available'",
+          "Assuming a full scholarship is available; the University states it does not offer scholarships covering 100% of the tuition fee",
+          "Assuming the tuition fee covers living costs; accommodation, meals, transport and personal costs are excluded",
+          "Falling below 60 ECTS credits in the first year, which ends the Tuition Fee Waiver Scholarship from the second year onwards",
+          "Gaining any study credits during the academic year and then requesting a refund; the University states tuition fee is not refunded in that case",
+          "Waiting for instalment options in the first year; new students must pay the full first-year fee in a single payment"
+        ],
+        "estimated_uncovered_costs": [
+          "Living expenses: the tuition fee 'does not include living expenses such as accommodation, meals, transportation or other personal costs'",
+          "The residual tuition fee after the Early Bird discount, e.g. 7,000 EUR instead of 10,000 EUR at a 30% discount",
+          "The full tuition fee in any year where no Tuition Fee Waiver Scholarship is available for the programme"
+        ],
+        "document_audit": [
+          "Admission offer email from Admissions Services, which contains the Flywire payment link",
+          "Proof of residence permit status if you are claiming an exemption from tuition fees; the University will request permit history from Migri",
+          "Approved study plan and ECTS transcript for the Tuition Fee Waiver Scholarship, which is assessed on study progress including required Finnish language studies"
+        ],
+        "alerts": [
+          {
+            "trigger": "Three-week Early Bird window",
+            "message": "The Early Bird discount is granted only if the tuition fee is paid within three weeks of the admission results being published. Confirm your study place first, then pay through the Flywire link in your admission offer email."
+          },
+          {
+            "trigger": "No 100% coverage",
+            "message": "The University of Oulu does not offer scholarships that cover 100% of the tuition fee. Budget for the full residual fee and for living expenses, which are excluded from the tuition fee."
+          },
+          {
+            "trigger": "Refund trap",
+            "message": "Tuition fees may be refunded only in listed circumstances such as unfulfilled conditional admission, relinquishing the study right during registration, a negative residence permit decision with no credits gained, or a change of permit status before the end of registration. Any study credits gained during the academic year prevent a refund."
+          }
+        ],
+        "submission_workflow": [
+          "Apply for admission to an English-taught Bachelor's or Master's programme at the University of Oulu through the admission process for the autumn 2027 intake",
+          "Receive the admission offer, which states your tuition fee amount and contains the Flywire payment link; the University also sends a reminder including the Early Bird payment deadline",
+          "Pay the full first-year tuition fee within three weeks of the publication of admission results to receive the Early Bird discount; no separate scholarship application is needed",
+          "Confirm your study place in your My Studyinfo account, then register for the academic year",
+          "From the second year onwards, rely on the Tuition Fee Waiver Scholarship assessed automatically from completed credits, and check the Continuing Student Tuition Fees and Scholarships page for details"
+        ]
+      },
+      "programme_detail_verification": {
+        "cycle_verified": "Autumn 2027 intake cycle (admitted during the autumn 2026 or spring 2027 admission rounds), verified 2026-10-04",
+        "verification_confidence": 0.9,
+        "official_fields_confirmed": [
+          "degree_levels",
+          "duration",
+          "application_method",
+          "application_route",
+          "requirements",
+          "citizenship_residency",
+          "international_eligibility",
+          "eligibility",
+          "selection_criteria",
+          "coverage",
+          "tuition_coverage",
+          "living_cost_coverage",
+          "travel_coverage",
+          "fully_funded",
+          "funding_amount",
+          "funding_currency",
+          "funding_period",
+          "status",
+          "subject_or_agency_requirement",
+          "official_contacts",
+          "description"
+        ],
+        "institution_check_required": [
+          "Exact calendar payment deadline for each programme, which the University publishes per programme on its application timeline and deadlines pages rather than on the tuition fees page",
+          "Nokia Scholarship application details, since the official page states 'Further information will be published at a later date'",
+          "The percentage reductions for programmes whose 2027-2028 figures are not yet published"
+        ],
+        "unverified_or_removed_claims": [
+          "deadline_central and deadline_date remain null because no fixed calendar date is published on the official page; the Early Bird window is defined relative to the publication of admission results",
+          "documents and english_requirement are null/empty because the official tuition fees and scholarships page does not list documents or an English language requirement",
+          "The stored record's deadline_display 'and a link to the payment portal. You may also request a payment link from Admissions Services by email...' is a payment-procedure sentence rather than a deadline, and has been replaced with the official wording",
+          "The stored record's program_type about a joint European master's programme refers to a different Oulu programme page and does not describe this tuition fee and scholarship scheme"
+        ],
+        "source_citations": [
+          "https://www.oulu.fi/en/apply/how-apply/university-oulu-tuition-fees-and-scholarships-for-international-applicants"
+        ],
+        "researched_by": "w1_34"
+      },
+      "logo_override": {
+        "url": "https://www.oulu.fi/sites/default/files/favicons/apple-touch-icon.png",
+        "page_url": "https://www.oulu.fi/en/apply/how-apply/university-oulu-tuition-fees-and-scholarships-for-international-applicants",
+        "official_host": true,
+        "alt_text": "University of Oulu",
+        "validation_result": "verified",
+        "validation_detail": "png 2501+B, 180x180 University of Oulu brand mark in purple on a solid white background (0% transparent pixels, visible on a light card)",
+        "image_kind": "official_logo",
+        "image_format": "png",
+        "verified_at": "2026-10-04T00:00:00+00:00",
+        "host_evidence": "same_registrable_domain",
+        "_award": "University of Oulu Tuition Fee Waivers and Early Bird Discount"
+      },
+      "research_notes": {
+        "logo": "The site header wordmark is /themes/custom/nextgen/dist/icons.svg?20261010#oy-logo-en (1,617 bytes for the symbol) but its fill is #fff, i.e. a white-on-transparent wordmark, which is a hard ban; the site CSS confirms .logo__svg--en.logo__svg--main-site{fill:#fff}. The theme's /themes/custom/nextgen/logo.svg is also white (#fff) on transparent and was rejected. /sites/default/files/favicons/favicon-32x32.png is only 668 bytes and 32x32, too small to serve as the awarding body's logo. The footer mark is an inline <svg id='oy-footer-logo-en'> in the page HTML, not a separate image URL. The University of Oulu's own brand mark served at the documented /apple-touch-icon.png path on oulu.fi was probed: HTTP 200, image/png, 2,501 bytes, 180x180, and a pixel scan confirmed the purple Oulu mark on an opaque white background (0% transparent, 6.4% white opaque), so it is visible on a light card and is on the awarding body's own domain.",
+        "unverified": [
+          "Exact calendar payment deadline for each degree programme, published per programme on the application timeline and deadlines pages",
+          "Nokia Scholarship deadline and application route; the official page states further information will be published at a later date",
+          "English language requirements and required documents, which are not stated on the tuition fees and scholarships page",
+          "Percentage reductions for programmes whose 2027-2028 figures are not yet published"
+        ],
+        "substitution": null,
+        "official_pages_read": [
+          "https://www.oulu.fi/en/apply/how-apply/university-oulu-tuition-fees-and-scholarships-for-international-applicants"
+        ],
+        "degree_level_confirmed": "The official page covers both degree levels directly: 'Explore tuition fees, Early Bird discounts and tuition fee waiver scholarships available for international applicants to the University of Oulu's Bachelor's and Master's degree programmes', with separate tables headed \"Bachelor's degrees\" (\"students admitted to bachelor's degree programmes starting in autumn 2027\") and \"Master's degrees\" (\"students admitted to master's degree programmes starting in autumn 2027\").",
+        "url_observed": null,
+        "contradictions": [
+          "Stored deadline_display 'and a link to the payment portal. You may also request a payment link from Admissions Services by email. Please follow the payment instructions provided in the email and in the payment portal.' is not a deadline at all; the page's actual deadline wording is 'The discount is granted if the tuition fee is paid within three weeks of the admission results being published.'",
+          "Stored program_type 'University of Oulu offers a joint European master's programme via its partner networks...' describes a different Oulu page and does not apply to this tuition fee and scholarship scheme",
+          "Stored funding 'Tuition fee discount/waiver (partial)' is consistent with the official page, which states 'The University of Oulu does not offer scholarships that cover 100% of the tuition fee.'"
+        ],
+        "skeleton": false
+      }
+    }
+  ]
+}

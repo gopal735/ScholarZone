@@ -1,0 +1,62 @@
+{
+  "id": "695",
+  "verdict": "needs_review",
+  "confidence": "low",
+  "checked_at": "2026-10-12T19:25:15Z",
+  "sources": [
+    {
+      "url": "https://www.fulbright.ca/programs/killam-fellowships",
+      "kind": "official",
+      "note": "Killam Fellowships main page on the awarding body's own domain. Live fetch failed from this environment (TCP connection timeout; DNS resolves to 50.87.91.83). Content known only through a search-engine snippet of this exact page, crawled 2026-08-15."
+    },
+    {
+      "url": "https://www.fulbright.ca/programs/killam-fellowships/canadians/application-deadlines",
+      "kind": "official",
+      "note": "Official deadlines page for Canadian applicants. Same connection timeout; content known only via search snippet."
+    },
+    {
+      "url": "https://www.fulbright.ca/programs/killam-fellowships/canadians/eligibility",
+      "kind": "official",
+      "note": "Official eligibility page for Canadian applicants. Same connection timeout; content known only via search snippet."
+    },
+    {
+      "url": "https://html.duckduckgo.com/html/?q=site%3Afulbright.ca+killam+fellowships+award+%22%246%2C000%22",
+      "kind": "other",
+      "note": "DuckDuckGo HTML search used to retrieve snippets of the official pages above (site:fulbright.ca queries); this search result page is what was actually read."
+    }
+  ],
+  "findings": {
+    "awarding_body": {
+      "status": "confirmed",
+      "detail": "The official instruction PDF on fulbright.ca states the programme is administered by Fulbright Canada, matching the record's awarding body (Fulbright Canada, Foundation for Educational Exchange between Canada and the United States of America).",
+      "quote": "The Killam Fellowships Program, administered by Fulbright Canada, offers exceptional undergraduate students from the United States the opportunity to spend one semester or a full academic year studying at a university in Canada."
+    },
+    "deadline": {
+      "status": "confirmed",
+      "detail": "The official application-deadlines page snippet states the 2027-28 competition deadline is January 31, 2027, which matches the record's deadline_label '31 January 2027' and deadline_date 2027-01-31 exactly, and is a currently-open cycle as of 12 October 2026 (competition opened 15 August 2026 per the 2027 instruction PDF dated 2026-07-13).",
+      "quote": "The deadline for the open competition for the 2027-28 Killam Fellowships competition is January 31, 2027."
+    },
+    "eligibility": {
+      "status": "confirmed",
+      "detail": "Core claims confirmed via official-page snippets: undergraduate students from universities in Canada and the United States spending one semester or a full academic year as exchange students in the other country; Canadian applicants must be Canadian citizens and full-time undergraduates in good standing. Minor wording nuance: the official text says students are 'from universities in Canada and the United States' rather than 'registered at one of the participating ... universities'; the 'participating/partner institutions' restriction applies specifically to the direct-exchange route, which the record also describes.",
+      "quote": "The Killam Fellowships Program provides an opportunity for exceptional undergraduate students from universities in Canada and the United States to spend either one semester or a full academic year as an exchange student in the other country."
+    },
+    "funding": {
+      "status": "confirmed",
+      "detail": "Funding type 'Stipend' is confirmed: the award is a cash award of US$6,000 per semester (US$12,000 per academic year) plus a health benefit plan, plus orientation and spring seminar. It is not fully funded - tuition is not covered and direct-exchange fellows continue paying tuition to their home institution - but the record does not claim full funding, so there is no contradiction.",
+      "quote": "The Killam Fellowships Program offers a cash award of $6,000 US for a one semester exchange ($12,000 US for the academic year), along with a health benefit plan."
+    },
+    "degree_levels": {
+      "status": "confirmed",
+      "detail": "Undergraduate (Bachelor's) level only, matching the record. Official pages describe the programme as being for 'exceptional undergraduate students' and require applicants to 'Expect to receive an undergraduate degree'.",
+      "quote": "Be full-time undergraduate students in good standing at a degree-granting institution in Canada"
+    }
+  },
+  "recommended_field_updates": {
+    "official_source_url": null,
+    "deadline_text": "The deadline for the open competition for the 2027-28 Killam Fellowships competition is January 31, 2027.",
+    "deadline_date": "2027-01-31",
+    "verification_notes": "Live fetch of www.fulbright.ca fails from this environment (TCP connection timeout via webfetch, PowerShell Invoke-WebRequest, and Playwright; DNS resolves to 50.87.91.83; no Wayback Machine snapshot exists). Every claim in the record matches exact sentences from the awarding body's own pages as indexed by the search engine on 2026-08-15, so a successful live re-read should most likely return verdict 'active'. Recheck the live site first; verdict is needs_review only because the page itself could not be read."
+  },
+  "notes_for_reviewer": "Verdict is needs_review purely because the awarding body's site was unreachable from the verification environment on 2026-10-12 (repeated connection timeouts), not because of any discrepancy - all official-domain snippets agree with the record. Two things a human should check on the live site: (1) the dedicated subdomain killamfellowships.fulbrightcanada.com showed a stale 'Apply by Jan 31, 2026' banner in snippets while the main fulbright.ca pages state January 31, 2027 for the 2027-28 cycle; (2) the eligibility wording on the live pages versus the record's 'participating ... universities' phrasing. Confidence is low because all evidence is search-result snippets, never the live page."
+}

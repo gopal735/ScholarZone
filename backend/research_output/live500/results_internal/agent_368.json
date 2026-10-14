@@ -1,0 +1,286 @@
+{
+ "agent": {
+  "agent_id": "agent_368",
+  "batch": "r2_05",
+  "researched_at": "2026-10-10T20:38:29Z",
+  "research_mode": "LIVE",
+  "coverage": 2
+ },
+ "id": 319,
+ "records": [
+  {
+   "id": 319,
+   "identity": {
+    "name": "Chinese Government Scholarship (Chinese University Program) at Fudan University",
+    "awarding_body": "Fudan University",
+    "issuing_authority": "China Scholarship Council (CSC) with Fudan University as the dispatching institution",
+    "official_source_urls": [
+     "https://iso.fudan.edu.cn/isoenglish/82/fe/c17458a754430/page.htm"
+    ],
+    "application_link": "https://istudent.fudan.edu.cn/apply/#/user/login",
+    "catalogue_url": "https://iso.fudan.edu.cn/isoenglish/51328/list.htm",
+    "official_updates_url": "https://iso.fudan.edu.cn/isoenglish/82/fe/c17458a754430/page.htm",
+    "status": "CLOSED",
+    "verifiable_urls": [
+     {
+      "url": "https://iso.fudan.edu.cn/isoenglish/82/fe/c17458a754430/page.htm",
+      "publisher": "Fudan University International Students Office",
+      "kind": "scholarship notice (2026 cycle)"
+     },
+     {
+      "url": "https://iso.fudan.edu.cn/isoenglish/51328/list.htm",
+      "publisher": "Fudan University International Students Office",
+      "kind": "graduate admission listing"
+     },
+     {
+      "url": "https://iso.fudan.edu.cn/isoenglish/51337/list.htm",
+      "publisher": "Fudan University International Students Office",
+      "kind": "scholarship documents listing"
+     }
+    ]
+   },
+   "description": "Fudan University hosts the Chinese Government Scholarship under the Chinese University Program (Type B, CSC agency number 10246) for international students at undergraduate, master's and doctoral level. The published package combines exemption from tuition, free on-campus accommodation or an accommodation subsidy, comprehensive medical insurance and a monthly living stipend. Applicants register first on the CSC portal at campuschina.org and then on Fudan's own application system, where they select \"Self-support\" as the fund source and attach the CSC application form.",
+   "official": {
+    "program_type": "Chinese Government Scholarship - Chinese University Program (Type B), full degree",
+    "eligibility": [
+     "Applicants should be non-Chinese citizens and in good health",
+     "Applicants for master's programs should be under the age of 35; applicants for doctoral programs should be under the age of 40",
+     "Applicants should not be holding any other scholarship provided by Chinese government",
+     "Applicants for Category B scholarships can only choose one school"
+    ],
+    "benefits": [
+     "Exemption from tuition fee",
+     "Providing free on-campus accommodation or providing accommodation subsidy",
+     "Comprehensive Medical Insurance",
+     "Living stipend (Master student: 3000 RMB/month, Doctoral student: 3500 RMB/month)"
+    ],
+    "selection_criteria": [
+     "Fudan University admission requirements",
+     "No other Chinese government scholarship held",
+     "Annual evaluation for continuing scholarship students"
+    ],
+    "application_process": [
+     "Step One: visit campuschina.org to complete the application online, print and sign the application form (Program Category: Type B, Agency No. 10246 for Fudan University)",
+     "Step Two: visit istudent.fudan.edu.cn/apply to complete the application for study program, choosing \"Self-support\" as the fund source and choosing the option of \"Chinese Government Scholarship\" before uploading the scholarship application form",
+     "Upload a completely filled Foreigner Physical Examination Form (downloadable from DOCUMENTS on the ISO site), filled out in Chinese or English, valid for six months",
+     "Applicants currently residing in China may submit Residence Permit or Foreign Permanent Resident ID Card in substitute for the Foreigner Physical Examination Form",
+     "Check the result by visiting the column \"Notices\" on the ISO website"
+    ],
+    "duration": "Bachelor's: 2-4 years; Master's: 1-2 years; Doctoral: 2-4 years",
+    "key_dates": [
+     "2026 application period: from October 13, 2025 to December 10, 2025",
+     "Notice published: 31 October 2025",
+     "Registration must occur on the date specified in the admission notice"
+    ]
+   },
+   "verification": {
+    "confidence": "high",
+    "deadlines": [
+     {
+      "label": "CGS application window (2026 cycle)",
+      "date": "2025-12-10",
+      "date_display": "10 December 2025",
+      "note": "Fudan's own notice sets the 2026 application period from 13 October 2025 to 10 December 2025. The window for this cycle has closed."
+     }
+    ],
+    "deadline_central": "2025-12-10",
+    "deadline_display": "10 December 2025",
+    "deadline_note": "Fudan publishes a single national-style window for the CSC Type B route (13 October - 10 December 2025 for the 2026 cycle). There is no separate institutional deadline earlier than the CSC closing date, but you must complete both the campuschina.org form and the Fudan application within that window.",
+    "application_cycle": "2026 intake cycle (notice published 31 October 2025)",
+    "funding_amount": 3000,
+    "funding_currency": "CNY",
+    "funding_period": "per month (master's rate)",
+    "tuition_coverage_note": "Fudan states the scholarship provides \"Exemption from tuition fee\".",
+    "living_cost_coverage": true,
+    "travel_coverage": null,
+    "tuition_coverage": true,
+    "fully_funded": false,
+    "english_requirement": null,
+    "status_note": "The published 2026 application period ran from 13 October 2025 to 10 December 2025 and has closed; no 2027 window has been posted on the ISO site as of verification. Fudan's Scholarship documents listing was refreshed on 9 October 2026 with Excellence and Merit-based scholarship application forms, which are separate university awards and not the CSC programme.",
+    "source_citations": [
+     "https://iso.fudan.edu.cn/isoenglish/82/fe/c17458a754430/page.htm",
+     "https://iso.fudan.edu.cn/isoenglish/51328/list.htm",
+     "https://iso.fudan.edu.cn/isoenglish/51337/list.htm"
+    ],
+    "not_confirmed": [
+     "living stipend amount for undergraduate applicants (the notice publishes the master's and doctoral rates only)",
+     "travel or installation allowance (not mentioned in the Fudan notice)",
+     "whether the accommodation component is a free room or a subsidy, which Fudan leaves to the two options in its coverage wording",
+     "a funded rate for the 2027 cycle"
+    ],
+    "documents": [
+     "CSC online application form, printed and signed (Type B, Agency No. 10246)",
+     "Completely filled Foreigner Physical Examination Form in Chinese or English, valid for six months",
+     "Residence Permit or Foreign Permanent Resident ID Card as a substitute for the physical examination form for applicants already in China",
+     "Fudan study programme application via istudent.fudan.edu.cn with fund source set to \"Self-support\""
+    ]
+   },
+   "applicant_utility": {
+    "description": "This is a two-portal scholarship: the CSC form on campuschina.org does not count on its own, because Fudan requires the same form uploaded into its own application system where you deliberately pick \"Self-support\" as the fund source and then flag \"Chinese Government Scholarship\". The whole 2026 round closed on 10 December 2025, so if you are reading this for a 2027 start you should watch the ISO Notices column rather than the CSC portal for the new dates. Because Category B allows only one university, Fudan has to be your single Type B choice, which makes this a poor fit if you also want to run parallel CSC Type B applications elsewhere.",
+    "eligibility_tips": [
+     "Age limits are hard and measured at the application deadline: under 35 for master's, under 40 for doctoral. There is no stated flexibility for applicants with work experience.",
+     "You must not currently hold any other Chinese government scholarship - and Fudan warns that concealing other government financial support disqualifies you from applying for three years as well as forfeiting the award.",
+     "Non-Chinese citizenship is the only citizenship rule published; no residence or schooling history is required beyond good health."
+    ],
+    "application_tips": [
+     "Complete the CSC form first, sign it, then upload that signed PDF into Fudan's system - the Fudan application is what triggers their review, so an unlinked CSC application will not be seen.",
+     "Book the physical examination early: the form is only valid for six months and a missing photo, cross-page seal, doctor's signature or hospital seal makes it invalid. If you already live in China, use your Residence Permit instead and skip the medical entirely.",
+     "If your physical form needs a hospital stamp, note that Fudan does not accept mailed paper copies for general admission documents, so keep everything digital."
+    ],
+    "documents": [
+     "Foreigner Physical Examination Form - Fudan publishes its own template; incomplete items, a missing photo, a missing cross-page seal or a missing doctor/hospital signature render it invalid.",
+     "Residence Permit or Foreign Permanent Resident ID Card, only if you are already in China and wish to substitute it for the medical.",
+     "Signed CSC application form from campuschina.org."
+    ],
+    "mistakes_to_avoid": [
+     "Choosing \"Chinese Government Scholarship\" as the fund source in Fudan's own portal instead of \"Self-support\" - Fudan's instructions are explicit that you select Self-support and then flag the scholarship separately.",
+     "Sending paper documents by post. Fudan's graduate admission guide states that posted hard copies and emailed documents will not be reviewed.",
+     "Applying to more than one university under Type B. CSC rules allow only one Type B institution per applicant, so a second choice silently voids this one."
+    ],
+    "deadline_notes": "Fudan published the 2026 window as 13 October - 10 December 2025, which is already closed; treat the CSC portal opening date as your signal to start rather than assuming it stays the same each year. Late registration without prior approval after an admission offer automatically cancels the scholarship, so keep travel flexible around the notice dates."
+   }
+  },
+  {
+   "id": 650,
+   "identity": {
+    "name": "Zhejiang University \"Belt and Road\" International School of Medicine Scholarship (PhD)",
+    "awarding_body": "International School of Medicine, Zhejiang University",
+    "issuing_authority": "Zhejiang University International School of Medicine, administered with the ZJU International College",
+    "official_source_urls": [
+     "https://iczu.zju.edu.cn/admissionsen/2022/0530/c68996a2590725/page.htm"
+    ],
+    "application_link": "https://iczu.zju.edu.cn/admissionsen/2022/0530/c68996a2590725/page.htm",
+    "catalogue_url": "https://iczu.zju.edu.cn/admissionsen/wcholarships/list.htm",
+    "official_updates_url": "https://iczu.zju.edu.cn/admissionsen/wcholarships/list.htm",
+    "status": "OPEN",
+    "verifiable_urls": [
+     {
+      "url": "https://iczu.zju.edu.cn/admissionsen/2022/0530/c68996a2590725/page.htm",
+      "publisher": "Zhejiang University International College / International School of Medicine",
+      "kind": "scholarship terms page"
+     },
+     {
+      "url": "https://iczu.zju.edu.cn/admissionsen/2024/1030/c68990a2981900/page.htm",
+      "publisher": "Zhejiang University International College",
+      "kind": "Application Guide for Doctoral Degree Programs 2026 (deadlines table)"
+     },
+     {
+      "url": "https://iczu.zju.edu.cn/admissionsen/woticewwwwdmissionwwesults/list.htm",
+      "publisher": "Zhejiang University International College",
+      "kind": "Notice and admission results board"
+     },
+     {
+      "url": "https://iczu.zju.edu.cn/_upload/article/files/2b/3b/e20929be480ba21faedb2a0198ed/4c6cdaf7-5f70-4855-994a-70c51f5b1b8c.pdf",
+      "publisher": "Zhejiang University International College",
+      "kind": "Language Requirements for ZJU International Graduate Programs"
+     }
+    ]
+   },
+   "description": "This school-level scholarship is established and funded by Zhejiang University's International School of Medicine and is open only to doctoral candidates in medical programmes. It comes in two full-scholarship tiers: both waive tuition, provide free on-campus accommodation and comprehensive medical insurance for international students, and pay a monthly living allowance of RMB 7,000 (tier A) or RMB 3,500 (tier B). The school is located in Yiwu in central Zhejiang Province, and recipients must accept all of its teaching arrangements.",
+   "official": {
+    "program_type": "University scholarship (school-level, medical sciences, doctoral)",
+    "eligibility": [
+     "Must meet Zhejiang University doctoral admission requirements and the International School of Medicine doctoral admission requirements",
+     "In the ZJU international student application system, the preferred college must be the Medical School and the preferred programme must carry the suffix \"International School of Medicine\"",
+     "Must not hold any other scholarship at the same time",
+     "Open to both domestic and international doctoral candidates; Chinese applicants including those from Hong Kong, Macao and Taiwan must refer to a separate notice",
+     "Age limit for doctoral applicants is under 40, flexible for healthy applicants with working experience and high academic ability (per the ZJU doctoral admission guide)",
+     "Applicants must hold a Master's degree; pre-graduation certificates must be replaced by the diploma no later than registration"
+    ],
+    "benefits": [
+     "Full tuition waiver (免交学费) under both tier A and tier B",
+     "Free on-campus accommodation (提供免费校内住宿) under both tiers",
+     "Monthly living allowance of RMB 7,000 under tier A and RMB 3,500 under tier B",
+     "Comprehensive medical insurance for international students studying in China (来华留学生综合医疗保险)"
+    ],
+    "selection_criteria": [
+     "Selected on the basis of research ability, academic performance, language level and video interview performance",
+     "Related matters are determined by the International School of Medicine interview result",
+     "Final interpretation rests with the International School of Medicine and the ZJU International Education College",
+     "Recipients are subject to an annual scholarship review and may be suspended or cancelled if the review is failed"
+    ],
+    "application_process": [
+     "Complete the International School of Medicine scholarship application form in Chinese or English and email it to ismgraduate@zju.edu.cn with the subject line set as application number + passport name + programme name",
+     "Upload the same form, together with the full admission dossier, to the Zhejiang University international student application system",
+     "Complete the online application and pay the application fee before the deadline - applications without the application fee paid before the deadline are considered invalid",
+     "The school does not accept mailed paper documents or emailed documents other than the scholarship application form",
+     "Check the Zhejiang University international student application system for the result at the end of July or the beginning of August"
+    ],
+    "duration": "The scholarship period matches the length of the doctoral programme, stated as 3-4 years for doctoral study, with the exact period as specified in the admission notice",
+    "key_dates": [
+     "Application deadline for the International School of Medicine Scholarship: 28 February 2026 (ZJU doctoral admission guide, 2026 cycle)",
+     "Admission notice downloadable from the online application system from the end of July 2026",
+     "Online pre-registration expected at the end of August 2026; on-site registration expected in early September 2026"
+    ]
+   },
+   "verification": {
+    "confidence": "high",
+    "deadlines": [
+     {
+      "label": "ZJU International School of Medicine Scholarship application",
+      "date": "2026-02-28",
+      "date_display": "28 February 2026",
+      "note": "The standing scholarship page states an application deadline of 28 February; the ZJU Application Guide for Doctoral Degree Programs 2026 lists \"Zhejiang University International School of Medicine Scholarship - February 28, 2026\"."
+     }
+    ],
+    "deadline_central": "2026-02-28",
+    "deadline_display": "28 February 2026",
+    "deadline_note": "28 February is the recurring school deadline mirrors the self-funded and Zhejiang Government Scholarship deadlines in the ZJU doctoral admission guide. You must have both the emailed form and the completed online application in place before that date.",
+    "application_cycle": "2026 doctoral intake cycle",
+    "funding_amount": 7000,
+    "funding_currency": "CNY",
+    "funding_period": "per month (tier A; tier B is RMB 3,500)",
+    "tuition_coverage_note": "The page states 免交学费 (tuition waiver) for both tier A and tier B.",
+    "living_cost_coverage": true,
+    "travel_coverage": false,
+    "tuition_coverage": true,
+    "fully_funded": false,
+    "english_requirement": "For English-taught graduate programmes, ZJU requires IELTS 6.5, TOEFL 90, Duolingo 120, Cambridge CAE 180 or Cambridge CPE 180; applicants whose native language is English are exempt. A Certificate of Instruction in English from a previous institution also suffices. Chinese-taught programmes require HSK level 5 (180 points) or above.",
+    "status_note": "The 2026 cycle's 28 February deadline has passed and results were readable in the application system at the end of July / beginning of August 2026. The International College notice board's most recent entry is dated 28 July 2026 (CSC recipients announcement), so no 2027 call had been posted at the time of verification.",
+    "source_citations": [
+     "https://iczu.zju.edu.cn/admissionsen/2022/0530/c68996a2590725/page.htm",
+     "https://iczu.zju.edu.cn/admissionsen/2024/1030/c68990a2981900/page.htm",
+     "https://iczu.zju.edu.cn/_upload/article/files/2b/3b/e20929be480ba21faedb2a0198ed/4c6cdaf7-5f70-4855-994a-70c51f5b1b8c.pdf"
+    ],
+    "not_confirmed": [
+     "which tier a given applicant will be offered (the school states the result is determined by the interview)",
+     "a published 2027 deadline",
+     "any travel or installation allowance",
+     "the separate deadline route for Chinese applicants from Hong Kong, Macao and Taiwan, which is directed to a separate notice not linked from this page"
+    ],
+    "documents": [
+     "《浙江大学\"一带一路\"国际医学院奖学金申请表》 school scholarship application form, completed in Chinese or English, emailed to ismgraduate@zju.edu.cn and uploaded to the ZJU international student application system",
+     "《外国人体格检查记录》 Foreigner Physical Examination Record, submitted as a copy (keep the original), completed in Chinese or English; incomplete items, a missing photo, a missing cross-page seal, a missing doctor's signature or missing hospital seal render it invalid. Validity is six months.",
+     "无犯罪记录证明 police clearance certificate issued by the local public security authority, valid for six months",
+     "All documents required for admission under the Zhejiang University international student (doctoral) admission guide, including passport, degree certificates, transcripts, personal statement of at least 1,500 words, two recommendation letters and the supervisor acceptance form",
+     "GRE or NTS-GAT scores, which the school encourages but does not require"
+    ]
+   },
+   "applicant_utility": {
+    "description": "This is a school-run award, not a government one, so it does not compete with the CSC Type B route - but ZJU still routes every doctoral applicant through its own application system, and the International School of Medicine must be named as both your preferred college and your preferred programme or the dossier is not even considered. Expect the tier decision to be made at the video interview rather than in advance, and budget for a Yiwu address rather than Hangzhou, since the teaching base is in Yiwu. The monthly allowance stops the moment you are suspended or absent without leave for more than two weeks, so treat the attendance rules as part of the funding terms.",
+    "eligibility_tips": [
+     "In the ZJU application system the preferred college must be 医学院 (Medical School) and the preferred programme must carry the 国际医学院 (International School of Medicine) suffix. Picking a different ZJU medical programme excludes you from this scholarship entirely.",
+     "You cannot hold any other scholarship simultaneously - this is stated twice on the page and is checked.",
+     "The English requirement depends on the programme language: English-taught programmes need IELTS 6.5 / TOEFL 90 / Duolingo 120 or a Certificate of Instruction in English, while Chinese-taught programmes need HSK 5 (180 points)."
+    ],
+    "application_tips": [
+     "Send the scholarship form by email AND upload it in the ZJU system - the page states both must be completed before the deadline, and the email is the only emailed document that gets reviewed.",
+     "Use the exact email subject format: application number + passport name + programme name. Anything else risks the form being missed.",
+     "Pay the RMB 800 non-refundable application fee through the online system before the deadline; ZJU states applications without the fee are invalid, and that rule applies to scholarship applications too.",
+     "Time the physical examination carefully: it is only valid for six months, so an examination done in August is useless by a February deadline."
+    ],
+    "documents": [
+     "Foreigner Physical Examination Record - a missing photo, cross-page seal, doctor's signature or hospital seal each individually invalidate the form, and the six-month validity window is tight against a February deadline.",
+     "Police clearance certificate - also six-month validity, so obtain it close to the deadline rather than early.",
+     "Personal statement in Chinese or English of not less than 1,500 words, plus two recommendation letters from full or associate professors with signature, phone and email on the letter."
+    ],
+    "mistakes_to_avoid": [
+     "Mailing paper documents or emailing additional documents beyond the scholarship form. ZJU states posted hard copies and emailed documents will not be reviewed.",
+     "Applying to another ZJU college by mistake. The scholarship is exclusive to the International School of Medicine.",
+     "Assuming the scholarship follows you if you change institutions, programmes or study length after arriving in China - the terms state recipients may not change any of the three."
+    ],
+    "deadline_notes": "Deadline is 28 February and results land in the ZJU system at the end of July or beginning of August, so there is a five-month gap in which you have no funding certainty and must not commit elsewhere. Keep in mind the scholarship can be retained for at most one year if you suspend for serious illness at university approval, but the living allowance stops during the suspension and return travel is at your own cost."
+   }
+  }
+ ]
+}

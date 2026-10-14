@@ -1,0 +1,248 @@
+{
+  "agent": "agent_464",
+  "records": [
+    {
+      "id": 13,
+      "official": {
+        "official_source_urls": [
+          "https://www.postf.org/en/asia/purpose",
+          "https://www.postf.org/en/asia/abroad/purpose",
+          "https://www.postf.org/en/asia/abroad/business",
+          "https://www.postf.org/en/asia/abroad/faq",
+          "https://www.postf.org/en/asia/abroad/fellow"
+        ],
+        "application_link": "https://www.postf.org/en/asia/abroad/business",
+        "catalogue_url": "https://www.postf.org/en/asia/abroad/business",
+        "official_updates_url": "https://www.postf.org/en/news/notice",
+        "deadline_central": null,
+        "deadline_central_display": null,
+        "deadline_note": "No single calendar deadline is published. The annual cycle runs: graduate school admission (~Nov) - recommendation submission by the graduate school (~Dec) - interview by the Foundation (~Jan) - final selection announcement (~Feb) - certificate award ceremony (Mar).",
+        "application_cycle": "Annual intake with a March certificate award ceremony; entry begins with graduate school admission around November",
+        "status": "OPEN",
+        "status_note": "The Foundation presents this as a standing annual programme (20 students per year, subject to change); 2026 fellows are already listed and the next cycle follows the same November-to-March timetable.",
+        "tuition_coverage_note": "Master's program: Full tuition for 4 semesters. Doctoral program / Integrated Master's and Doctoral program: Full tuition for 6 semesters.",
+        "funding_amount": 1000000,
+        "funding_currency": "KRW",
+        "funding_period": "per month",
+        "tuition_coverage": true,
+        "living_cost_coverage": true,
+        "travel_coverage": null,
+        "fully_funded": true,
+        "benefits": [
+          "Tuition",
+          "Living expenses",
+          "Settlement fee",
+          "Insurance premium",
+          "Korean excellence scholarship",
+          "Experience Korean culture",
+          "Master's program: Full tuition for 4 semesters and living expenses for 22 months (KRW 1,000,000/month)",
+          "Doctoral program / Integrated Master's and Doctoral program: Full tuition for 6 semesters and living expenses for 36 months (KRW 1,000,000/month)",
+          "Initial settlement fee of KRW 1,000,000 (one-time payment), National Health Insurance premium (NHIS), etc.",
+          "Support for Korean language education, certificate award ceremonies, welfare services, Korean cultural experience programs, etc."
+        ],
+        "eligibility": [
+          "Applicants must hold (or be expected to hold) a Bachelor's degree and possess a non-Korean nationality; applicants with Korean citizenship, including dual citizenship holders, are not eligible",
+          "Applicants must have been admitted to a Master's or Doctoral program at a Korean graduate school and must be recommended by their admitting institution",
+          "Eligible countries (tentative): Asia - China, India, Indonesia, Japan, Kazakhstan, Malaysia, Myanmar, Philippines, Saudi Arabia, Singapore, Thailand, United Arab Emirates, Vietnam; Americas - Argentina, Brazil, Mexico, United States; Europe - Germany, Italy, Poland, Slovakia, Turkiye, United Kingdom; Africa - Egypt, Morocco, South Africa",
+          "Eligible universities (tentative): KDI School of Public Policy and Management, Korea University, POSTECH, Seoul National University, The Academy of Korean Studies, Yonsei University",
+          "Applicants may apply for majors in the humanities, social sciences, or natural sciences/engineering"
+        ],
+        "requirements": [
+          "Admission to a Master's or Doctoral program at an eligible Korean graduate school (the entry route)",
+          "Recommendation by the admitting graduate school, submitted to the Foundation around December",
+          "Interview by the Foundation for candidates moving to final selection (around January)"
+        ],
+        "documents": null,
+        "selection_criteria": null,
+        "coverage": [
+          "Tuition (full, for 4 semesters Master's / 6 semesters doctoral)",
+          "Living expenses: KRW 1,000,000 per month for 22 months (Master's) or 36 months (doctoral)",
+          "Settlement fee: KRW 1,000,000 one-time payment",
+          "Insurance premium (National Health Insurance, NHIS)",
+          "Korean language education and Korean cultural experience programmes"
+        ],
+        "application_method": [
+          "Graduate school admission at an eligible Korean university (~Nov)",
+          "Recommendation submission by the graduate school to the Foundation (~Dec)",
+          "Interview by the Foundation (~Jan)",
+          "Final selection announcement (~Feb)",
+          "Certificate award ceremony (Mar)"
+        ],
+        "application_route": "No direct application to the Foundation: gain admission to a Master's or Doctoral program at one of the designated Korean graduate schools, then be recommended by that school.",
+        "study_mode": null,
+        "citizenship_residency": "Non-Korean nationality required; applicants with Korean citizenship, including dual citizenship holders, are not eligible",
+        "international_eligibility": "Open to non-Korean nationals from the listed eligible countries",
+        "subject_or_agency_requirement": "Majors in the humanities, social sciences, or natural sciences/engineering at six designated graduate schools (lists marked tentative)",
+        "research_requirement": null,
+        "duration": "Master's program: 4 semesters of tuition support and 22 months of living expenses. Doctoral program / Integrated Master's and Doctoral program: 6 semesters of tuition support and 36 months of living expenses.",
+        "description": "The POSCO Global Scholarship in Korea, presented by the POSCO TJ Park Foundation as 'The Global Future Leaders Scholarship Program', is the Foundation's in-bound scholarship that invites non-Korean talent to Korea to complete Master's or Doctoral degrees at designated graduate schools. It offers full tuition and living expenses so awardees build connections with Korean society and become globally minded leaders bridging their home countries and Korea.",
+        "region": "Asia",
+        "program_type": "Private-sector foundation scholarship administered by the POSCO TJ Park Foundation (POSCO Group)",
+        "english_requirement": null
+      },
+      "verification": {
+        "source_citations": [
+          "https://www.postf.org/en/asia/abroad/business",
+          "https://www.postf.org/en/asia/abroad/faq",
+          "https://www.postf.org/en/asia/abroad/purpose"
+        ],
+        "last_verified_date": "2026-10-10",
+        "verification_status": "confirmed",
+        "confidence": "high",
+        "not_confirmed": [
+          "documents",
+          "english_requirement",
+          "deadline_central (no calendar date published)",
+          "travel_coverage",
+          "study_mode",
+          "selection_criteria"
+        ],
+        "notes": "Amounts, coverage, eligibility, selection timetable and country/university lists taken from the Foundation's own programme, FAQ and purpose pages; the Foundation marks both the country and university lists as tentative. Selection is capped at 20 students per year (subject to change)."
+      },
+      "applicant_utility": {
+        "summary": "Treat this as a two-stage race: the scholarship only opens after you are admitted to one of six designated Korean graduate schools and nominated by that school around December, so the real deadline is your graduate admission, not anything the Foundation publishes. Funding is full tuition for four semesters (Master's) or six (doctoral) plus KRW 1,000,000 a month for 22 or 36 months, a one-off KRW 1,000,000 settlement fee and NHIS coverage.",
+        "best_fit": "High-achieving non-Korean applicants from the listed countries aiming for a Master's or PhD at SNU, Yonsei, Korea University, POSTECH, KDI School or the Academy of Korean Studies.",
+        "application_readiness_checklist": [
+          "Secure graduate admission first at a designated university - nomination is impossible without an offer",
+          "Verify your nationality is on the Foundation's tentative eligible-country list and that you hold no Korean citizenship",
+          "In November, ask your admitting school's graduate or international office who files the Foundation recommendation and what they need from you",
+          "Prepare for the Foundation interview held around January",
+          "Re-check the Foundation notice board each autumn, because both the country and university lists are marked tentative and can change"
+        ],
+        "common_rejection_risks": [
+          "Holding Korean citizenship, including as a dual national - an absolute bar",
+          "Being admitted to a university outside the six designated schools",
+          "Choosing a major outside the humanities, social sciences or natural sciences/engineering",
+          "Waiting for a Foundation application window that never comes and missing the school's December nomination",
+          "Enrolling on a programme whose remaining semesters fall outside the 22/36-month support period, leaving the final stretch unfunded"
+        ],
+        "estimated_uncovered_costs": "The published package covers tuition, the monthly allowance, the settlement fee and NHIS premiums; airfare, visa and residence fees, and living costs above KRW 1,000,000 a month are not published as covered and should be self-funded.",
+        "document_audit": [
+          "The Foundation publishes no document checklist, so the nominating graduate school defines the de facto package - request it from the international office early",
+          "Expect to evidence non-Korean nationality, since dual citizenship is an absolute disqualifier",
+          "Because the Foundation interviews candidates directly in January, be ready to speak fluently about your study plan even though no written list is published"
+        ],
+        "alerts": [
+          "Only about 20 scholars are selected per year worldwide (subject to change)",
+          "Both the eligible-country and eligible-university lists are explicitly marked tentative and can shift between cycles",
+          "Selection is multi-stage: school recommendation in December, Foundation interview in January, announcement in February",
+          "The cycle culminates in a March certificate award ceremony, so plan your arrival around the spring semester"
+        ],
+        "submission_workflow": "Graduate admission at a designated school in autumn -> school recommendation to the Foundation in December -> Foundation interview in January -> final announcement in February -> award ceremony in March."
+      }
+    },
+    {
+      "id": 26,
+      "official": {
+        "official_source_urls": [
+          "https://www.niied.go.kr/web/niied/contents/niiedEng/eng_gksNonDegreeExchange"
+        ],
+        "application_link": "https://www.niied.go.kr/web/niied/contents/niiedEng/eng_gksNonDegreeExchange",
+        "catalogue_url": null,
+        "official_updates_url": null,
+        "deadline_central": null,
+        "deadline_central_display": null,
+        "deadline_note": "NIIED publishes no central deadline on the programme page; application timing is set by each Korean university selected to operate the programme, so deadlines vary by affiliated university.",
+        "application_cycle": null,
+        "status": "OPEN",
+        "status_note": "Standing annual programme described on NIIED's live programme page; support runs for one 4-month semester and selection is routed through universities NIIED has chosen to operate the programme.",
+        "tuition_coverage_note": null,
+        "funding_amount": 630000,
+        "funding_currency": "KRW",
+        "funding_period": "per month",
+        "tuition_coverage": false,
+        "living_cost_coverage": true,
+        "travel_coverage": true,
+        "fully_funded": false,
+        "benefits": [
+          "Monthly allowance: 630,000 KRW per month",
+          "Round-trip airfare: economy class airfare based on the actual cost",
+          "The grants cover the expenses for accommodation, settlement, airfare, and insurance fee"
+        ],
+        "eligibility": [
+          "Undergraduate and graduate (Master's and Doctoral degree) students of foreign nationality who are enrolled in an overseas university that have agreements with a Korean university affiliated with NIIED",
+          "Applicants whose overall academic performance at their home university is 80% or above",
+          "Applicants must be enrolled in a degree exchange program (those enrolled solely in Korean language courses are excluded)",
+          "Applicants who have previously received scholarship from the Korean government are not eligible",
+          "Dual nationals who hold Korean citizenship are not eligible"
+        ],
+        "requirements": [
+          "Enrollment in a degree exchange program (applicants enrolled solely in Korean language courses are excluded)",
+          "Overall academic performance at the home university of 80% or above",
+          "Recommendation by a Korean university selected by NIIED to operate the programme"
+        ],
+        "documents": null,
+        "selection_criteria": null,
+        "coverage": [
+          "Accommodation",
+          "Settlement",
+          "Airfare",
+          "Insurance fee",
+          "Monthly allowance of 630,000 KRW"
+        ],
+        "application_method": [
+          "NIIED selects universities to operate the GKS Exchange Students Program",
+          "The selected university recommends scholarship applicants",
+          "NIIED reviews and selects the recommended applicants"
+        ],
+        "application_route": "Apply through a Korean university that NIIED has selected to operate the programme; individual applications to NIIED are not accepted.",
+        "study_mode": null,
+        "citizenship_residency": "Foreign nationality required; dual nationals who hold Korean citizenship are not eligible",
+        "international_eligibility": "Open to foreign nationals enrolled at overseas universities holding agreements with NIIED-affiliated Korean universities",
+        "subject_or_agency_requirement": "Degree exchange program only; applicants enrolled solely in Korean language courses are excluded",
+        "research_requirement": null,
+        "duration": "4 months (1 semester)",
+        "description": "The GKS Non-degree Program for Foreign Exchange Students offers financial support for selected international exchange students at affiliated universities in Korea, with grants covering accommodation, settlement, airfare and insurance fees plus a monthly allowance for a single 4-month semester.",
+        "region": "Asia",
+        "program_type": "Global Korea Scholarship (GKS) Program, operated by the National Institute for International Education (NIIED) under the Ministry of Education",
+        "english_requirement": null
+      },
+      "verification": {
+        "source_citations": [
+          "https://www.niied.go.kr/web/niied/contents/niiedEng/eng_gksNonDegreeExchange"
+        ],
+        "last_verified_date": "2026-10-10",
+        "verification_status": "confirmed",
+        "confidence": "high",
+        "not_confirmed": [
+          "deadline_central (no central deadline published)",
+          "documents",
+          "english_requirement",
+          "application_cycle",
+          "study_mode",
+          "selection_criteria"
+        ],
+        "notes": "Allowance (KRW 630,000/month), airfare rule, coverage list, 4-month duration, eligibility rules and the two-stage selection procedure taken from NIIED's official programme page; NIIED publishes no central deadline or document list, and the English news board shows no current-cycle notice for this programme."
+      },
+      "applicant_utility": {
+        "summary": "Never apply to NIIED directly: your route is your home university's exchange office nominating you to a Korean host university that NIIED has selected to run the programme, with NIIED making the final call. Support is KRW 630,000 per month for a single 4-month semester plus economy round-trip airfare at actual cost, with accommodation, settlement and insurance covered but no tuition.",
+        "best_fit": "Current undergraduate or graduate students at partner universities abroad with strong transcripts (80%+) heading to Korea for one credit-bearing exchange semester.",
+        "application_readiness_checklist": [
+          "Confirm your home university has an agreement with a Korean university operating the GKS programme this cycle",
+          "Check that your overall academic performance clears the 80% threshold before your school will nominate you",
+          "Make sure your exchange is degree/credit-bearing - Korean-language-only enrollment is excluded",
+          "Ask the host Korean university's international office for their nomination deadline and package, since NIIED sets no central date"
+        ],
+        "common_rejection_risks": [
+          "Enrolling solely in Korean language courses, which the programme explicitly excludes",
+          "Having previously received any Korean government scholarship - an absolute bar",
+          "Holding Korean dual citizenship",
+          "Overall performance below 80% at the home university",
+          "Sending an individual application to NIIED instead of going through the university route"
+        ],
+        "estimated_uncovered_costs": "Tuition is not among the published grant items; the KRW 630,000 monthly allowance plus actual-cost airfare, accommodation, settlement and insurance cover the stay, so meals, local transport, visa costs and personal spending come from your own funds.",
+        "document_audit": [
+          "NIIED publishes no document list, so the nominating university's exchange office defines what you must submit",
+          "Proof of enrollment at your home university and full transcripts evidencing the 80%+ performance will be central to the nomination",
+          "Airfare is reimbursed at actual cost, so keep tickets, boarding passes and receipts if you front the money"
+        ],
+        "alerts": [
+          "Deadlines vary by affiliated university - there is no single national date",
+          "Funding covers one 4-month semester only; no Korean degree is awarded and you return to your home institution afterward",
+          "NIIED chooses which universities may operate the programme each cycle, so availability shifts year to year"
+        ],
+        "submission_workflow": "Home university exchange office -> Korean host university (selected by NIIED) nominates you -> NIIED reviews and makes the final selection."
+      }
+    }
+  ]
+}

@@ -1,0 +1,125 @@
+{
+  "agent": "agent_259",
+  "records": [
+    {
+      "id": 618,
+      "official": {
+        "official_source_urls": [
+          "https://scholarships.gov.gh/opportunities/presidential-west-african-scholarship-initiative-pwasi-2026"
+        ],
+        "application_link": "https://apply.scholarships.gov.gh/",
+        "catalogue_url": "https://scholarships.gov.gh/opportunities",
+        "official_updates_url": "https://scholarships.gov.gh/opportunities",
+        "deadline_central": "2026-08-30",
+        "deadline_central_display": "30 August 2026",
+        "deadline_note": "The notice's own deadline field reads 'Not specified'. The only date published is 30 August 2026, by which nominating agencies must email the scanned National Endorsement Form to the Ghana Scholarships Authority. Each participating institution also has its own separate admission window, shown in the notice's institution table.",
+        "application_cycle": "2026/2027 academic year (published 3 June 2026); the nominating-agency deadline of 30 August 2026 has passed",
+        "status": "CLOSED",
+        "status_note": "The notice lists the deadline as 'Not specified' and the only published date, the 30 August 2026 nominating-agency deadline, has now passed, so the 2026 cycle is closed.",
+        "tuition_coverage_note": "The notice does not state what the scholarship covers. It announces the 'Award of Scholarships by the Government of Republic of Ghana' for full-time, on-campus undergraduate and postgraduate study at public tertiary institutions, without itemising tuition, living costs or travel.",
+        "funding_amount": null,
+        "funding_currency": null,
+        "funding_period": null,
+        "tuition_coverage": null,
+        "living_cost_coverage": null,
+        "travel_coverage": null,
+        "fully_funded": false,
+        "benefits": [
+          "A Ghana Government scholarship for full-time, on-campus undergraduate and postgraduate study at a public tertiary education institution in Ghana for the 2026/2027 academic year"
+        ],
+        "eligibility": [
+          "Be a citizen of an ECOWAS member state other than Ghana",
+          "Meet the admission requirements of the attached list of participating universities",
+          "Demonstrate academic excellence and leadership potential",
+          "Demonstrate commitment to contributing to national or regional development",
+          "Meet immigration and visa requirements for international students studying in Ghana"
+        ],
+        "requirements": [
+          "Have applied for at least one full-time on-campus programme at a Ghanaian public tertiary institution",
+          "Attach either a conditional offer (letter of admission) or an acknowledgement notice confirming the application was made and the appropriate application fee paid",
+          "Be nominated by the designated nominating agency in your ECOWAS member state; individual applicants cannot self-nominate",
+          "Nominating agencies may be guided by the section 1.0 eligibility criteria and section 3.0 priority fields of study"
+        ],
+        "documents": [
+          "Conditional offer letter of admission, or an acknowledgement notice from a Ghanaian public tertiary institution confirming the application was made and the application fee paid",
+          "Academic credentials",
+          "Completed National Endorsement Form, processed by the nominating agency"
+        ],
+        "selection_criteria": [
+          "Nomination by ECOWAS member states based on quotas, national priority and other considerations",
+          "Nomination of ineligible applicants, or with incomplete supporting documents, will not be considered",
+          "The distribution of nominees across undergraduate and postgraduate programmes rests with the nominating agencies"
+        ],
+        "coverage": [
+          "The notice does not itemise what the award covers; it announces the award of Ghana Government scholarships for full-time, on-campus study at public tertiary institutions"
+        ],
+        "application_method": [
+          "Apply for at least one full-time on-campus programme at a Ghanaian public tertiary institution and obtain a conditional offer or a paid-application acknowledgement",
+          "Submit academic credentials, admission letters and supporting documents via the Ghana Scholarships Authority online portal",
+          "Await the Authority's initial review and onward submission to the designated nominating agency in your ECOWAS member state",
+          "The nominating agency nominates within its quota and returns the National Endorsement Form through the Ministry of Foreign Affairs (Ghana)"
+        ],
+        "application_route": "Secure a Ghanaian university admission first, upload evidence to the Ghana Scholarships Authority portal, then have your ECOWAS member state's nominating agency endorse you through the Ministry of Foreign Affairs.",
+        "study_mode": "full-time",
+        "citizenship_residency": "Applicants must be citizens of ECOWAS member states other than Ghana. Ghanaian nationals are excluded.",
+        "international_eligibility": "Yes, it is designed for international (ECOWAS) students studying in Ghana, subject to immigration and visa requirements.",
+        "subject_or_agency_requirement": "Awards are made in priority fields aligned with regional development priorities: engineering, computer science, artificial intelligence, data science, cybersecurity and renewable energy; medicine, nursing, public health and biomedical sciences; agribusiness, crop science, animal science and food technology; economics, finance, entrepreneurship, international trade and AfCFTA-related studies; public administration, law, international relations and peace and security studies; climate change, environmental management, natural resource governance and marine and blue economy studies.",
+        "research_requirement": "No research proposal is published as a requirement; the notice asks for admission letters and academic credentials only.",
+        "duration": "Undergraduate 4 years, Master's 2 years, PhD 4 years (maximum duration stated in the notice)",
+        "description": "The Government of the Republic of Ghana is offering scholarships for full-time, on-campus undergraduate and postgraduate study at public tertiary education institutions in Ghana to qualified students from ECOWAS member states for the 2026/2027 academic year, awarded in fields aligned with regional development priorities and administered through each applicant's home-country nominating agency.",
+        "region": "Africa",
+        "program_type": "Regional government scholarship",
+        "english_requirement": null
+      },
+      "verification": {
+        "source_citations": [
+          "https://scholarships.gov.gh/opportunities/presidential-west-african-scholarship-initiative-pwasi-2026"
+        ],
+        "last_verified_date": "2026-10-10",
+        "verification_status": "confirmed",
+        "confidence": "high",
+        "not_confirmed": [
+          "funding_amount, funding_currency and funding_period - the notice publishes no award value",
+          "tuition_coverage, living_cost_coverage and travel_coverage - the notice does not state what the award covers",
+          "deadline_central - the notice's deadline field reads 'Not specified'; the only published date is the 30 August 2026 nominating-agency deadline, and each institution has its own separate admission window",
+          "english_requirement - no English test or score requirement is published"
+        ],
+        "notes": "Eligibility criteria, duration table, the five priority field groups, the five-step application procedure, the nominating-agency rules, the 30 August 2026 endorsement deadline, the 3-per-state quotas totalling 42, and the full participating-institution table with each institution's own application window were read directly from the Ghana Scholarships Authority's official notice page."
+      },
+      "applicant_utility": {
+        "summary": "You cannot apply directly: your application has to be endorsed by your ECOWAS member state's nominating agency, and each member state only gets three nominees, so the real competition is at national level rather than in Accra. The first practical step is a Ghanaian university admission, because the Authority requires either a conditional offer or a paid-application acknowledgement before your file moves forward. Since the funding notice never says whether tuition, living costs or travel are covered, budget as if you may be funding much of the award yourself until you receive an offer letter that itemises it.",
+        "best_fit": "ECOWAS nationals who already hold or are close to securing admission to a participating Ghanaian public university in a listed priority field, and whose home ministry will actually nominate them.",
+        "application_readiness_checklist": [
+          "Confirm which of your country's bodies is the official nominating agency, since a nomination from the wrong organisation is discarded",
+          "Apply early to a participating Ghanaian public university and pay the application fee so you can produce the acknowledgement notice the Authority requires",
+          "Check the institution table in the notice for your chosen university's own opening and closing dates, since they differ materially between institutions",
+          "Prepare attested academic credentials and a passport with enough validity for a Ghanaian student visa",
+          "Contact your nominating agency well before 30 August so the National Endorsement Form is returned and couriered in time",
+          "Align your field of study with the section 3.0 priority list, since nominating agencies are told to use it"
+        ],
+        "common_rejection_risks": [
+          "Assuming you can apply directly and missing the nomination step entirely",
+          "Submitting after your member state's three-per-country quota has been filled by earlier nominees",
+          "Applying without a Ghanaian admission offer or a paid-application acknowledgement, which fails step 1",
+          "An incomplete supporting document set, which the notice says will not be considered",
+          "Studying a field outside the published priority areas, which weakens a nomination decision",
+          "Choosing a public tertiary institution that is not on the participating list in the notice"
+        ],
+        "estimated_uncovered_costs": "Unknown from the notice, which is itself the risk: since the award does not state whether tuition, living costs or travel are covered, you may need to fund some or all of these yourself. Ghanaian university application fees, attestation, passports, visas and travel to Ghana are always yours to pay.",
+        "document_audit": [
+          "Either a conditional offer letter or an acknowledgement notice proving the application fee was paid is mandatory, not optional",
+          "The National Endorsement Form is completed and submitted by the nominating agency, so confirm they have your details rather than uploading it yourself",
+          "Scanned endorsement forms must be emailed and the complete paper application couriered to the Director-General via the Ministry of Foreign Affairs, so build in courier time",
+          "Academic credentials must support the admission you are claiming, so inconsistencies between the two are a fast rejection"
+        ],
+        "alerts": [
+          "The 2026 cycle is closed: the nominating-agency deadline of 30 August 2026 has passed and the notice was published on 3 June 2026 for the 2026/2027 year",
+          "Each participating institution has its own admission window, some opening as early as January and others as late as September 2026",
+          "The quota of three nominees per member state means a strong application can still fail purely on national-level timing",
+          "The notice gives no award value or itemised coverage, so do not treat the scholarship as fully funded on the basis of this page alone"
+        ],
+        "submission_workflow": "Apply to a participating Ghanaian public university, upload your credentials and admission evidence to the Ghana Scholarships Authority portal, then wait for the Authority's review and your country's nominating agency to return the National Endorsement Form through the Ministry of Foreign Affairs."
+      }
+    }
+  ]
+}

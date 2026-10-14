@@ -1,0 +1,91 @@
+{
+ "agent": "agent_237",
+ "assignment_count": 1,
+ "scholarships": [
+  {
+   "id": 591,
+   "title": "Horatio Alger Association National Scholarship",
+   "country": "United States",
+   "degree": "Bachelor's",
+   "funding_label": "Partially Funded",
+   "status": "open",
+   "official_source": "Horatio Alger Association of Distinguished Americans",
+   "official_source_url": "https://horatioalger.org/scholarships-and-services/undergraduate-scholarships",
+   "application_link": "https://horatioalger.org/scholarships-and-services/undergraduate-scholarships",
+   "catalogue_url": "https://horatioalger.org/scholarships",
+   "official_updates_url": "https://horatioalger.org/news-events/news",
+   "existing": {
+    "funding_amount": null,
+    "funding_currency": null,
+    "funding_period": null,
+    "tuition_coverage": null,
+    "living_cost_coverage": null,
+    "travel_coverage": null,
+    "fully_funded": 0,
+    "description": null,
+    "eligibility": [
+     "Enrolled full time as a high school junior in the United States",
+     "Strong commitment to pursue and complete a bachelor's degree at an accredited non-profit public or private institution in the United States immediately after high school graduation",
+     "Demonstrates financial need: USD 100,000 or lower adjusted gross family income is required",
+     "Involved in co-curricular and community service activities",
+     "Displays integrity and perseverance in overcoming adversity",
+     "Minimum grade point average of 2.0",
+     "United States citizen"
+    ],
+    "eligibility_summary": "Enrolled full time as a high school junior in the United States, committed to completing a bachelor's degree immediately after high school at an accredited non-profit public or private US institution (two-year start followed by transfer is allowed), with an adjusted gross family income of USD 100,000 or lower, a minimum GPA of 2.0, co-curricular and community service involvement, and demonstrated integrity and perseverance in overcoming adversity. Must be a US citizen.",
+    "benefits": [
+     "USD 25,000 scholarship award used towards undergraduate tuition and education costs at a US accredited institution"
+    ],
+    "coverage": [
+     "USD 25,000 scholarship award used towards undergraduate tuition and education costs at a US accredited institution"
+    ],
+    "requirements": [
+     "Complete the online Horatio Alger application during the published application period",
+     "Write essay responses describing the Horatio Alger story and the American Dream experience",
+     "Provide a high school transcript that includes fall grades",
+     "Provide income verification, most often the parents' tax form",
+     "Provide your school counselor's email so the counselor can submit the Counselor Certification Form",
+     "Provide the email of an adult over 21 who is not related to you and is familiar with the adversity described, who then reviews and confirms the adversity section"
+    ],
+    "documents": [
+     "High school transcript including fall grades",
+     "Income verification (parents' tax form, or alternative documentation where no tax form is available)",
+     "Counselor Certification Form submitted by the school counselor",
+     "Support Form Provider confirmation of the adversity section"
+    ],
+    "english_requirement": null,
+    "application_method": [
+     "Online application on the Horatio Alger Association website",
+     "School counselor submits the Counselor Certification Form",
+     "Support Form Provider reviews and confirms the adversity responses",
+     "Supporting documents uploaded to the application"
+    ],
+    "selection_notes": "The Association states that while most other scholarships focus exclusively on academic achievement or leadership potential, Horatio Alger Scholarships are also intended for promising students who have critical financial need, demonstrate integrity and perseverance in overcoming adversity, and are determined to succeed. Specialized member-funded scholarships require a separate application; the National Scholarship is awarded through the single general application.",
+    "best_fit": "US high school juniors from households with an adjusted gross income of USD 100,000 or less who have overcome significant adversity and plan to enter a US bachelor's degree immediately after graduation.",
+    "notes": "The National Scholarship is one of over 70 scholarship programs administered by the Association, which awards roughly 105 National Scholarships each cycle. Other member-funded and state-restricted awards (for example the Bergeron Everglades Environmental Steward Scholarship for Florida residents studying environmental sciences, or the Denny Sanford institutional awards) are separate applications with their own eligibility rules.",
+    "duration": "Four-year undergraduate scholarship, renewed annually through the degree",
+    "application_period": "Opens December 1 and closes March 1 for high school juniors; opens December 1 and closes February 15 for high school seniors. As of 2026-10-04 the next cycle opens on December 1, 2026.",
+    "deadline_display": "Junior application period: December 1 - March 1; Senior application period: December 1 - February 15",
+    "deadline_date": null,
+    "region": "North America",
+    "program_type": "Need-based scholarship from a non-governmental organisation",
+    "applicant_utility": null,
+    "official_details": null
+   },
+   "missing_fields": [
+    "funding_amount",
+    "funding_currency",
+    "funding_period",
+    "tuition_coverage",
+    "living_cost_coverage",
+    "travel_coverage",
+    "description",
+    "english_requirement",
+    "deadline_date",
+    "applicant_utility",
+    "official_details"
+   ]
+  }
+ ],
+ "result_file": "C:\\Users\\GopaL\\Desktop\\Projects folder\\ScholarZone\\backend\\research_output\\live500\\results\\agent_237.json"
+}

@@ -1,0 +1,93 @@
+{
+ "agent": "agent_301",
+ "assignment_count": 1,
+ "scholarships": [
+  {
+   "id": 678,
+   "title": "E-JUST TICAD8 African Scholarships for Science, Technology and Innovation",
+   "country": "Egypt",
+   "degree": "Master's",
+   "funding_label": "Fully Funded",
+   "status": "upcoming",
+   "official_source": "Egypt-Japan University of Science and Technology (E-JUST)",
+   "official_source_url": "https://ejust.edu.eg/international-scholarships",
+   "application_link": "https://ejust.edu.eg/international-scholarships",
+   "catalogue_url": "https://ejust.edu.eg/international-pg",
+   "official_updates_url": "https://ejust.edu.eg/international-deadlines",
+   "existing": {
+    "funding_amount": null,
+    "funding_currency": null,
+    "funding_period": null,
+    "tuition_coverage": 1,
+    "living_cost_coverage": 1,
+    "travel_coverage": 1,
+    "fully_funded": 1,
+    "description": "A fully funded master's scholarship offered by the Egypt-Japan University of Science and Technology under the cooperation of the Egyptian government and the Japan International Cooperation Agency, for nationals of African countries other than Egypt. It covers tuition, accommodation, a monthly stipend, medical care and return airfare, and runs for the period needed to complete the M.Sc. degree requirements. Applicants who will return to employment at their home institution are preferred and must have their application endorsed by that institution.",
+    "eligibility": [
+     "Holder of the nationality of a country in Africa except Egypt",
+     "Current home address in an African country",
+     "Researcher or instructor, or a person expected to become one, needing an M.Sc. in a science or engineering field or other specialisation",
+     "Not serving in the military",
+     "Meets all E-JUST admission requirements and passes the academic interview and oral examination"
+    ],
+    "eligibility_summary": "Researchers or instructors (or those expected to become such) who need an M.Sc. in science or engineering or another specialisation, who hold the nationality of an African country other than Egypt and whose current home address is in an African country. Applicants must fulfil all E-JUST admission requirements and pass the academic interview and oral examination. Applicants who will continue in their jobs at their home universities or institutions after completing the programme are preferred, and in that case endorsement of the application by the home institution is required.",
+    "benefits": [
+     "Full tuition fee coverage",
+     "On-campus accommodation",
+     "Monthly stipend",
+     "Medical care",
+     "Return international airfare",
+     "Six months of preparatory courses where necessary"
+    ],
+    "coverage": [
+     "Tuition fees",
+     "Accommodation",
+     "Monthly stipend",
+     "Medical care",
+     "International round-trip airfare from and to the applicant's home country"
+    ],
+    "requirements": [
+     "Fulfil all E-JUST admission requirements",
+     "Pass the academic interview and oral examination",
+     "Equivalency certificate from the Egyptian Supreme Council of Universities and security clearance from the Ministry of Interior, both of which E-JUST applies for on behalf of successful candidates",
+     "Endorsement by the home institution where the applicant will return to work there",
+     "Full-time study only; scholarship holders may not work elsewhere during the scholarship period"
+    ],
+    "documents": [
+     "Online international admission application submitted through the E-JUST international admission tab",
+     "Academic documents required by E-JUST for the chosen programme",
+     "Endorsement of the application form by the home institution, for applicants who will return to it",
+     "Two recommendation letters or equivalent, as specified by E-JUST admissions"
+    ],
+    "english_requirement": "Full-time students: TOEFL iBT minimum 79 or Academic IELTS minimum 6.5. Provisionally accepted students: Duolingo English Test minimum 125, TOEFL iBT minimum 65 or Academic IELTS minimum 5.5, with a mandatory English language course in the preparatory year. Applicants whose native language is English, from countries where English is an official language, are exempt.",
+    "application_method": [
+     "Submit the online application through the international admission tab on the E-JUST website",
+     "Attach all required documents",
+     "Sit the admission interview and oral examination as scheduled by E-JUST"
+    ],
+    "selection_notes": "E-JUST states that reasons for disqualification at any stage of selection will not be disclosed and that the schedule is subject to change. Academic background must match the programme's academic background tables. Support is conditional on good standing with the E-JUST graduate programme, and a semi-annual progress report is sent to the sponsor.",
+    "best_fit": "Academic staff and early-career researchers from African countries other than Egypt who need an M.Sc. in engineering, computer science, basic and applied sciences, international business and humanities, or heritage science, and who intend to return to their home institution.",
+    "notes": "Full-time award only: E-JUST states scholarship holders must devote themselves fully to study and research and are not allowed to work elsewhere during the scholarship period. Progress is reviewed semi-annually and reported to the sponsor. E-JUST states the scholarship term is the period needed to complete the degree requirements, normally two years for the M.Sc. plus six months of preparatory courses where necessary. The page read documents only the Fall 2026 cycle, whose submission deadline of 15 February 2026 has passed, so the record is treated as a recurring annual award whose next window E-JUST has not yet published.",
+    "duration": null,
+    "application_period": "Published cycle on the E-JUST site is the Fall 2026 semester, with application submission closing 15 February 2026; the next equivalent cycle has not yet been published as of 2026-10-04.",
+    "deadline_display": null,
+    "deadline_date": null,
+    "region": "Middle East",
+    "program_type": "Government-funded full scholarship for African nationals, delivered by a national university",
+    "applicant_utility": null,
+    "official_details": null
+   },
+   "missing_fields": [
+    "funding_amount",
+    "funding_currency",
+    "funding_period",
+    "duration",
+    "deadline_display",
+    "deadline_date",
+    "applicant_utility",
+    "official_details"
+   ]
+  }
+ ],
+ "result_file": "C:\\Users\\GopaL\\Desktop\\Projects folder\\ScholarZone\\backend\\research_output\\live500\\results\\agent_301.json"
+}

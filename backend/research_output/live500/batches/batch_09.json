@@ -1,0 +1,30 @@
+{
+ "batch": "batch_09",
+ "agents": [
+  57,
+  58,
+  59,
+  60,
+  61,
+  62,
+  63
+ ],
+ "assignment_files": [
+  "assignments/agent_057.json",
+  "assignments/agent_058.json",
+  "assignments/agent_059.json",
+  "assignments/agent_060.json",
+  "assignments/agent_061.json",
+  "assignments/agent_062.json",
+  "assignments/agent_063.json"
+ ],
+ "result_files": [
+  "results_internal/agent_057.json",
+  "results_internal/agent_058.json",
+  "results_internal/agent_059.json",
+  "results_internal/agent_060.json",
+  "results_internal/agent_061.json",
+  "results_internal/agent_062.json",
+  "results_internal/agent_063.json"
+ ]
+}

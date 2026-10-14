@@ -1,0 +1,44 @@
+[
+  {
+    "scholarship_id": 26,
+    "outcome": "not_applicable",
+    "professors": [],
+    "notes": "National/government scheme with no attached institution, so no supervising professor/programme faculty is applicable per task rules. Verified live on the official NIIED page (fetched 2026-10-14): 'The National Institute for International Education (NIIED) selects universities to operate the GKS Exchange Students Program > NIIED reviews and selects scholarship applicants recommended by the selected universities.' Host Korean universities vary by bilateral agreement and are selected by NIIED each cycle; the scheme office is NIIED's Global Korea Scholarship Center (contact gksniied@korea.kr is a government scheme office, not a professor). Source: https://www.niied.go.kr/web/niied/contents/niiedEng/eng_gksNonDegreeExchange"
+  },
+  {
+    "scholarship_id": 28,
+    "outcome": "not_applicable",
+    "professors": [],
+    "notes": "Central UK Government (FCDO) scholarship scheme, not attached to any specific institution. Verified on chevening.org: 'Chevening Scholarships allow exceptional individuals to study for a one-year master's degree at a UK university' and footer notice 'Chevening Awards are supported by the Foreign, Commonwealth and Development Office (FCDO) and partner organisations.' Scholars may pursue almost any eligible taught master's at any UK university (12,000+ courses at 150+ institutions per FCDO announcements on gov.uk), so no single supervising professor or programme faculty is tied to the award. Source: https://www.chevening.org/scholarships/"
+  },
+  {
+    "scholarship_id": 30,
+    "outcome": "not_applicable",
+    "professors": [],
+    "notes": "Central Australian Government (DFAT) bilateral scholarship with no single attached institution; per task rules national/government schemes have outcome not_applicable. Verified via official DFAT material (dfat.gov.au): 'The Australia Awards are an Australia Government initiative delivered by DFAT' and 'In FY2025-2026, it is estimated that $160 million will be invested by DFAT via 40+ education institutions for the delivery of Australia Awards Scholarships.' DFAT's Participating Institutions page lists 40+ Australian universities and TAFEs (e.g., ANU, University of Melbourne, UNSW, University of Queensland); scholars are placed by DFAT placement request, so no specific supervising professor is tied to the scholarship. Sources: https://www.dfat.gov.au/people-to-people/australia-awards and https://www.dfat.gov.au/development/australia-awards-participating-institutions"
+  },
+  {
+    "scholarship_id": 31,
+    "outcome": "not_applicable",
+    "professors": [],
+    "notes": "Nuffic-administered, decentralised scholarship scheme funded by many Dutch higher education institutions and partner organisations; no single attached institution, so outcome not_applicable per task rules. Verified on the official Nuffic site: OTS appears under 'Programmes previously managed by Nuffic - Orange Tulip Scholarship (OTS)'; Study in NL (studyinnl.org) lists OTS-branded awards on individual programme pages of various universities (e.g., VU Amsterdam 'Orange Tulip Scholarship - China', Radboud University). The batch's official_source_url (https://www.studyinnl.org/finances/ots-scholarships) currently returns HTTP 404 - Nuffic/Study in NL no longer publish a dedicated OTS page, consistent with the batch description dated 2026-10-04. Sources: https://www.nuffic.nl/en/international/international-programmes and https://www.studyinnl.org/finances/scholarships"
+  },
+  {
+    "scholarship_id": 32,
+    "outcome": "not_applicable",
+    "professors": [],
+    "notes": "Swedish government agency (Swedish Institute) scholarship scheme, not attached to any specific institution, so outcome not_applicable per task rules. Verified live on si.se: 'The scholarship supports full-time, one- or two-year master's studies at Swedish universities, across a wide range of English-taught programmes' and eligibility requires admission to one of the master's programmes on the published eligible-programme list (2026/2027 list PDF on si.se) spanning multiple Swedish universities. SI contact si@si.se is a scheme office address, not a professor. Source: https://si.se/en/apply/scholarships/swedish-institute-scholarships-for-global-professionals/"
+  },
+  {
+    "scholarship_id": 33,
+    "outcome": "not_applicable",
+    "professors": [],
+    "notes": "Central state scholarship administered by the China Scholarship Council (CSC)/MOE with no attached institution; per task rules outcome not_applicable. Official rules confirm the scheme spans hundreds of designated universities: 'Preference of Institutions must be chosen from 279 Chinese universities designated by MOE' and campuschina.org is 'the only official website that China Scholarship Council publishing Study in China information'. Note: direct webfetch of https://www.campuschina.org/ returned a transport error on 2026-10-14, but the portal's status and scheme rules were confirmed via official PRC embassy notices citing http://www.campuschina.org. Sources: https://www.campuschina.org/ and https://bs.china-embassy.gov.cn/eng/sggg/202510/t20251028_11742717.htm (see also eu.china-mission.gov.cn CGSIS instructions PDF)"
+  },
+  {
+    "scholarship_id": 34,
+    "outcome": "not_applicable",
+    "professors": [],
+    "notes": "Central Ministry of Education (Taiwan) government scholarship scheme with no attached institution; per task rules outcome not_applicable. Verified on the official MOE English page: 'Scholarship applications must be submitted to a Republic of China (ROC) overseas mission and applicants must apply separately to a university or college in Taiwan for admission' - awardees then study at a wide range of Taiwanese universities (list on studyintaiwan.org), so no specific supervising professor or programme faculty is tied to the scholarship. Source: https://english.moe.gov.tw/cp-24-16833-23C09-1.html"
+  }
+]

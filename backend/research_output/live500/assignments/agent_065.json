@@ -1,0 +1,87 @@
+{
+ "agent": "agent_065",
+ "assignment_count": 1,
+ "scholarships": [
+  {
+   "id": 183,
+   "title": "Lund University Global Scholarship",
+   "country": "Sweden",
+   "degree": "Master's, Bachelor's",
+   "funding_label": "Tuition Fee Waiver",
+   "status": "upcoming",
+   "official_source": "Lund University",
+   "official_source_url": "https://www.lunduniversity.lu.se/study/admission-degree-studies/scholarships-and-awards/lund-university-global-scholarship",
+   "application_link": "https://www.lunduniversity.lu.se/study/admission-degree-studies/scholarships-and-awards/lund-university-global-scholarship",
+   "catalogue_url": "https://www.lunduniversity.lu.se/study/admission-degree-studies/scholarships-and-awards/lund-university-global-scholarship",
+   "official_updates_url": "https://www.lunduniversity.lu.se/study/admission-degree-studies/scholarships-and-awards/lund-university-global-scholarship",
+   "existing": {
+    "funding_amount": null,
+    "funding_currency": null,
+    "funding_period": null,
+    "tuition_coverage": 1,
+    "living_cost_coverage": 0,
+    "travel_coverage": null,
+    "fully_funded": 0,
+    "description": "The Lund University Global Scholarship is a selective, merit-based scholarship that Lund University awards each year to high-achieving international students from outside the EU/EEA (and Switzerland) who pay tuition fees. Grants may cover part or all of the tuition fees, with the percentage set by the programme or faculty budget rather than the student's academic standing. The official page states 'Scholarships cover tuition fees only - living costs are not included', and recipients must independently meet the Swedish Migration Agency's living-cost funding requirement. Lund University awards approximately SEK 26 million in scholarship grants per year across the programme.",
+    "eligibility": [
+     "Citizen of a country outside the EU/EEA and Switzerland",
+     "Required to pay tuition fees at Lund University",
+     "Applying in a regular application round to Master's level studies leading to a degree at Lund University, or exceptionally to a Bachelor's programme in Development Studies, Mathematics, Physics or Physical Geography",
+     "The Lund University programme applied for is the first choice in the universityadmissions.se application",
+     "Meets the admission requirements to Lund University",
+     "Can secure funding for living costs as required by the Swedish Migration Agency",
+     "Special conditions may apply to Music and Fine Arts programmes"
+    ],
+    "eligibility_summary": "Applicants must be citizens of a country outside the EU/EEA (and Switzerland) and be required to pay tuition fees. They must be applying in a regular application round to a Master's level programme at Lund University, or exceptionally to one of the Bachelor's programmes in Development Studies, Mathematics, Physics and Physical Geography, with the Lund programme as their first choice at universityadmissions.se. Applicants must already meet the admission requirements and must be able to secure their own living-cost funding as required by the Swedish Migration Agency.",
+    "benefits": [
+     "Reduction of part or all of the tuition fees",
+     "Possible admission to Bachelor's programmes in Development Studies, Mathematics, Physics and Physical Geography that are otherwise tuition-fee liable"
+    ],
+    "coverage": [
+     "Part or all of the tuition fees, with the percentage set by the programme/faculty budget",
+     "Living costs are explicitly not included"
+    ],
+    "requirements": [
+     "Submit a complete national programme application and pay the application fee at universityadmissions.se before applying for the scholarship",
+     "Select the scholarship-for Lund programme as first choice",
+     "Upload the Scholarship Motivation Letter of no more than 600 words",
+     "Apply for only one Lund University Global Scholarship per application round",
+     "Use the separate scholarship application portal, not the national programme application portal"
+    ],
+    "documents": [
+     "Scholarship Motivation Letter of maximum 600 words, distinct from the programme statement of purpose",
+     "Complete national application to a Lund University degree programme via universityadmissions.se",
+     "Proof of payment of the national application fee"
+    ],
+    "english_requirement": "English-taught degree programmes at Lund University; English requirements are set by the programme's admission requirements",
+    "application_method": [
+     "Apply for a degree programme at Lund University through www.universityadmissions.se during the relevant national application period",
+     "Pay the application fee so the national application is complete",
+     "When the scholarship round opens, use the scholarship application portal link posted on the Lund University Global Scholarship page",
+     "Upload the Scholarship Motivation Letter and submit"
+    ],
+    "selection_notes": "The scholarship is merit-based only and financial need is not considered. Priority goes to applicants who demonstrate strong academic performance, are assessed as a good fit for the chosen programme, show a strong commitment to studying at Lund University, and have selected a Lund University programme as first choice at universityadmissions.se. Results are communicated shortly after admission results and include the awarded amount.",
+    "best_fit": "High-achieving non-EU/EEA applicants with a proven record of consistently high academic performance who already hold a first-choice place at Lund University and can fund their own living costs.",
+    "notes": "Grants may cover part or all of the tuition fees; the percentage awarded depends on the programme/faculty budget and does not reflect the student's academic standing. Applicants may apply for other scholarships such as the Swedish Institute scholarships in addition to one LUGS application. Applicants in Fine Art or Music programmes, or applying in the March-April round, receive specific application instructions by email if scholarships are available. Successful recipients must accept the scholarship and the study place within the stated time frame and pay any remaining tuition instalment, which may be due earlier than the general non-scholarship tuition deadline.",
+    "duration": "One academic year of tuition fees for the degree programme applied for; grants cover part or all of the tuition fees depending on the programme/faculty budget",
+    "application_period": "Closed for the current cycle - the deadline was 16 February 2026. The application round usually opens in early February each year for the following autumn semester, and runs alongside the national universityadmissions.se round.",
+    "deadline_display": "The scholarship application is now closed; the deadline to apply was 16 February 2026. The application usually opens in early February every year.",
+    "deadline_date": null,
+    "region": "Europe",
+    "program_type": "Merit-based tuition fee scholarship for non-EU/EEA students",
+    "applicant_utility": null,
+    "official_details": null
+   },
+   "missing_fields": [
+    "funding_amount",
+    "funding_currency",
+    "funding_period",
+    "travel_coverage",
+    "deadline_date",
+    "applicant_utility",
+    "official_details"
+   ]
+  }
+ ],
+ "result_file": "C:\\Users\\GopaL\\Desktop\\Projects folder\\ScholarZone\\backend\\research_output\\live500\\results\\agent_065.json"
+}

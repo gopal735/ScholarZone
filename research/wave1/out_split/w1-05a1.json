@@ -1,0 +1,996 @@
+{
+  "agent_id": "w1_05a1",
+  "shard": "w1-05a1",
+  "today": "2026-10-04",
+  "records": [
+    {
+      "target_id": 48,
+      "outcome": "refreshed",
+      "confirm": true,
+      "confirmation_evidence": "Read the University of Sydney's own scholarship page, which states \"Up to $60,000 scholarship to support high-achieving international students to pursue coursework studies at the University of Sydney\" and publishes the close dates \"Semester 1, 2027 ... Round 1 17 August 2026 ... Round 2 5 October 2026 ... Round 3 16 November 2026\". It also states \"No application is required, as all eligible students who have secured an unconditional offer of admission by the following closing dates, will be automatically considered.\"",
+      "new_scholarship": {
+        "name": "Vice-Chancellor's International Scholarships Scheme",
+        "legacy_titles": ["University of Sydney Vice-Chancellor's International Scholarships Scheme"],
+        "country": "Australia",
+        "region": "International students from any country; no country restriction is published",
+        "degree_levels": "Bachelor's, Master's (coursework)",
+        "duration": "One year (paid in two equal instalments per semester) or one semester, depending on the award amount",
+        "funding_type": "Partially Funded",
+        "funding_amount": 60000,
+        "funding_currency": "AUD",
+        "funding_period": "per year",
+        "official_source": "University of Sydney",
+        "official_source_url": "https://www.sydney.edu.au/scholarships/e/vice-chancellor-international-scholarships-scheme.html",
+        "status": "open",
+        "is_verified": true,
+        "last_verified_date": "2026-10-04",
+        "deadline": "No application required. Eligible students who secure an unconditional offer of admission by the relevant close date are automatically considered. Semester 1, 2027 offer rounds close 17 August 2026, 5 October 2026 and 16 November 2026; Semester 2, 2027 rounds close 15 February 2027, 22 March 2027 and 3 May 2027.",
+        "deadline_date": "2026-11-16",
+        "deadline_precision": "exact",
+        "application_period": "Offer rounds for Semester 1, 2027 and Semester 2, 2027. An extra offer round is run for International Baccalaureate graduates after 16 December 2026 results are released and for International UAC students after the 23 December 2026 offer round.",
+        "program_type": "Post-admission merit scholarship for international coursework students",
+        "eligibility_summary": "International students who have applied for but not yet commenced a bachelor's or coursework master's degree that is a CRICOS-registered award usually delivered onshore at the University of Sydney, and who receive an unconditional offer of admission by the relevant close date.",
+        "eligibility": [
+          "Be an international student as defined in the Higher Education Support Act 2003",
+          "Have applied for but not yet commenced a bachelor's degree or coursework master's degree that is a CRICOS registered award program usually delivered onshore at the University of Sydney",
+          "Receive an unconditional offer of admission by the relevant offer round close date",
+          "Complete acceptance of the unconditional offer by the deadline associated with the scholarship offer round and remain enrolled after the census date",
+          "Not be a recipient of a scholarship provided by the Australian Government",
+          "Applicants commencing a second degree at the University of Sydney are eligible provided they have not previously held the Vice-Chancellor's International Scholarships"
+        ],
+        "coverage": [
+          "One of five scholarship amounts based on ranking: AUD 60,000 for one year, AUD 40,000 for one year, AUD 20,000 for one semester, AUD 10,000 for one semester, or AUD 5,000 for one semester"
+        ],
+        "application_method": [
+          "No application required; automatic consideration for eligible students holding an unconditional offer by the relevant close date"
+        ],
+        "official_updates_url": "https://www.sydney.edu.au/scholarships/e/vice-chancellor-international-scholarships-scheme.html",
+        "notes": "The award is awarded on commencement of a coursework degree and is not renewable for the following years. Recipients who also hold a Sydney International Student Award are capped at AUD 40,000. From 2026 intakes the termination threshold for holding another University of Sydney scholarship rose from AUD 10,000 to AUD 20,000 per annum."
+      },
+      "programme_detail_official": {
+        "official_source_urls": [
+          "https://www.sydney.edu.au/scholarships/e/vice-chancellor-international-scholarships-scheme.html"
+        ],
+        "application_link": "https://www.sydney.edu.au/scholarships/e/vice-chancellor-international-scholarships-scheme.html",
+        "official_updates_url": "https://www.sydney.edu.au/scholarships/e/vice-chancellor-international-scholarships-scheme.html",
+        "catalogue_url": null,
+        "application_cycle": "Offer-round based. Semester 1, 2027 rounds close 17 August 2026, 5 October 2026 and 16 November 2026, with additional rounds for International Baccalaureate graduates after 16 December 2026 results and International UAC students after the 23 December 2026 offer round. Semester 2, 2027 rounds close 15 February 2027, 22 March 2027 and 3 May 2027.",
+        "deadline_central": "2026-11-16",
+        "deadline_central_display": "No application required. Semester 1, 2027 offer rounds close 17 August 2026, 5 October 2026 and 16 November 2026; Semester 2, 2027 rounds close 15 February 2027, 22 March 2027 and 3 May 2027.",
+        "deadline_central_timezone": "Australia/Sydney",
+        "deadline_note": "The open date is listed as N/A and there is no single deadline: eligibility is tied to unconditional offer rounds. deadline_date records 16 November 2026, the next Semester 1, 2027 round still ahead of 2026-10-04; the 5 October 2026 Round 2 close is one day after the verification date and the Semester 2, 2027 rounds fall in 2027. The stored value 2026-12-16 is not a published close date; the page mentions 16 December 2026 only as the date International Baccalaureate results are released.",
+        "status": "OPEN",
+        "status_note": "Round 3 for Semester 1, 2027 is still ahead of the verification date, so new applicants remain eligible as late as 16 November 2026, and Semester 2, 2027 rounds run to 3 May 2027. The Scholarship will be offered subject to the availability of funds.",
+        "funding_amount": 60000,
+        "funding_currency": "AUD",
+        "funding_period": "per year",
+        "funding_duration": "One year paid in two equal instalments per semester, or one semester for the lower award tiers",
+        "tuition_coverage": false,
+        "tuition_coverage_note": "The terms describe the award as a scholarship amount payable in instalments on or after the relevant census date; they do not state that the money is applied to tuition fees.",
+        "living_cost_coverage": null,
+        "travel_coverage": false,
+        "fully_funded": false,
+        "funding_label": "Five award tiers based on ranking: AUD 60,000 for one year, AUD 40,000 for one year, AUD 20,000 for one semester, AUD 10,000 for one semester, AUD 5,000 for one semester. It is a cash award, not a tuition waiver, and recipients must maintain a minimum semester average mark of 65 with no outstanding fees.",
+        "benefits": [
+          "AUD 60,000 payable for one year in two equal instalments per semester",
+          "AUD 40,000 payable for one year in two equal instalments per semester",
+          "AUD 20,000 payable for one semester",
+          "AUD 10,000 payable for one semester",
+          "AUD 5,000 payable for one semester",
+          "Possible invitation to promote the programme and represent the University at orientation, marketing and corporate networking events"
+        ],
+        "eligibility": [
+          "International student as defined in the Higher Education Support Act 2003",
+          "Applied for but not yet commenced an undergraduate or postgraduate coursework degree at the University of Sydney",
+          "The degree must be a CRICOS registered award program usually delivered onshore at the University of Sydney",
+          "Must receive an unconditional offer of admission by the relevant close date",
+          "Must complete acceptance of the unconditional offer by the deadline associated with the scholarship offer round and remain enrolled after census date",
+          "Not eligible if already the holder of a scholarship provided by the Australian Government",
+          "Applicants commencing a second degree are eligible provided they have not previously held the Vice-Chancellor's International Scholarships"
+        ],
+        "citizenship_residency": "International student status is the only residency condition. The University of Sydney publishes no country or nationality restriction for this scheme.",
+        "international_eligibility": "Open to international students applying to a CRICOS-registered onshore coursework degree. Australian Government scholarship recipients are excluded.",
+        "degree_levels": [
+          "Bachelor's",
+          "Master's (coursework)"
+        ],
+        "study_mode": "Full degree, CRICOS registered and usually delivered onshore; commencement of study is required because the award is made on commencement",
+        "research_requirement": null,
+        "subject_or_agency_requirement": null,
+        "application_method": "No application. All eligible students who secure an unconditional offer of admission by the relevant close date are automatically considered.",
+        "application_route": "Automatic consideration via the University of Sydney admissions process; the offer round in which the unconditional offer is received determines eligibility",
+        "requirements": [
+          "International student status",
+          "Application for a CRICOS-registered onshore bachelor's or coursework master's degree",
+          "Unconditional offer of admission received in a qualifying offer round",
+          "Acceptance of the unconditional offer by the scholarship round deadline",
+          "Continued enrolment after the census date",
+          "Not in receipt of an Australian Government scholarship"
+        ],
+        "documents": [],
+        "english_requirement": null,
+        "english_requirement_note": "The scholarship page states no additional English language requirement. Standard English requirements for admission to the University of Sydney apply.",
+        "selection_criteria": [
+          "Academic merit as assessed from a student's application for admission to an undergraduate or postgraduate coursework degree",
+          "Nomination by a selection committee consisting of two nominees of the Executive Director, Sydney Future Students and one nominee of the Admissions Office",
+          "Ranking against the selection criteria determines which of the five award amounts is offered"
+        ],
+        "selection_weighting": null,
+        "duration": "One year or one semester, depending on the award tier",
+        "award_holder_conditions": [
+          "Recipients of two-instalment awards must maintain a minimum semester average mark of 65 and have no outstanding fees to receive the next payment",
+          "Recipients undertaking an exchange must have achieved a Satisfied Requirements grade to receive the next payment",
+          "Acceptance of the unconditional offer must be completed by the deadline associated with the scholarship offer round, and the student must remain enrolled after the census date",
+          "Payment is made on or after the relevant census date",
+          "The scholarship is transferable to another major, degree or faculty but is not transferable to another university",
+          "Deferral or suspension is not permitted except in exceptional circumstances",
+          "Recipients who also receive a Sydney International Student Award are capped at AUD 40,000",
+          "The scholarship is terminated if the recipient withdraws or fails to enrol, becomes a domestic student, commences part-time study without prior approval, does not maintain satisfactory academic performance, is found guilty of serious misconduct, accepts another scholarship administered by the University of Sydney valued at more than AUD 20,000 per annum, or does not resume study after approved leave",
+          "The University may request reimbursement of scholarship funds paid where serious misconduct is found or where the recipient withdraws from the course"
+        ],
+        "supplements_or_initiatives": [
+          "Sydney International Student Award stacking, subject to an AUD 40,000 cap on the combined value",
+          "Reciprocal arrangement for applicants commencing a second degree at the University of Sydney"
+        ],
+        "official_contacts": {
+          "general": "Scholarships contact: 1800 SYD UNI (1800 793 864) or +61 2 8627 1444, open 9am to 5pm Monday to Friday; prospective international students can also lodge an enquiry through the University of Sydney service portal",
+          "email": null
+        },
+        "description": "The Vice-Chancellor's International Scholarships Scheme awards a scholarship to exceptional international students commencing a coursework degree at the University of Sydney. Five award amounts are offered on the basis of ranking against the selection criteria: AUD 60,000 and AUD 40,000 for one year, and AUD 20,000, AUD 10,000 and AUD 5,000 for one semester. No application is required, because eligibility is determined by receiving an unconditional offer of admission in a qualifying offer round by the published close date. Recipients must maintain a minimum semester average mark of 65 and cannot accept another University of Sydney scholarship valued above AUD 20,000 per annum.",
+        "program_type": "Post-admission merit scholarship for international coursework students",
+        "region": "International students from any country, at the University of Sydney",
+        "coverage": "Cash scholarship of AUD 5,000 to AUD 60,000 depending on ranking tier; no tuition waiver, travel support or separately itemised living-cost component is published",
+        "last_verified_date": "2026-10-04"
+      },
+      "programme_detail_applicant_utility": {
+        "application_readiness_checklist": [
+          "Apply for a CRICOS-registered onshore bachelor's or coursework master's degree, since the scheme is limited to onshore coursework awards",
+          "Target an offer round deliberately: the 5 October 2026 and 16 November 2026 Round 2 and Round 3 closes for Semester 1, 2027 are the near-term windows",
+          "Make sure you accept the unconditional offer by the deadline attached to that offer round, because acceptance after the deadline forfeits consideration",
+          "Check you are not already holding an Australian Government scholarship, which makes you ineligible",
+          "Accept that the award is capped at AUD 40,000 if you also hold a Sydney International Student Award",
+          "Plan to maintain a minimum semester average mark of 65 and clear any outstanding fees, or the second instalment is withheld"
+        ],
+        "common_rejection_risks": [
+          "Missing the acceptance deadline that matches the offer round, which is separate from the round close date",
+          "Holding or accepting an Australian Government scholarship",
+          "Holding another University of Sydney scholarship worth more than AUD 20,000 per annum, which terminates the award",
+          "Falling below a semester average mark of 65 or leaving fees outstanding between instalments",
+          "Applying to a degree that is not CRICOS registered or not delivered onshore",
+          "Expecting a renewable award: it is awarded only once, on commencement, and is not renewable"
+        ],
+        "estimated_uncovered_costs": [
+          "Tuition fees, which this award does not state that it covers",
+          "Living costs and accommodation beyond the scholarship amount",
+          "Travel costs to and from Australia",
+          "The gap between the scholarship received and the full cost of the degree, which is substantial for most award tiers"
+        ],
+        "document_audit": [
+          "Your admission application for a CRICOS-registered onshore coursework degree",
+          "Evidence of acceptance of the unconditional offer by the round deadline",
+          "Confirmation that you hold no Australian Government scholarship",
+          "Records needed to demonstrate a semester average mark of 65 once enrolled"
+        ],
+        "alerts": [
+          {
+            "trigger": "Acceptance deadline beats the round close date",
+            "message": "You must accept your unconditional offer by the deadline linked to your scholarship offer round, which is earlier than the general admissions deadline."
+          },
+          {
+            "trigger": "Stacking cap",
+            "message": "If you also hold a Sydney International Student Award your VCIS is capped at AUD 40,000, and from 2026 intakes the termination threshold for other University of Sydney scholarships rose to AUD 20,000 per annum."
+          },
+          {
+            "trigger": "Subject to funds",
+            "message": "The University states the scholarship will be offered subject to the availability of funds, so an award is not guaranteed even if you are eligible."
+          }
+        ],
+        "submission_workflow": [
+          "Choose your offer round and note both its close date and the acceptance deadline attached to it",
+          "Apply for an eligible CRICOS-registered onshore coursework degree through the University of Sydney admissions process",
+          "Receive and accept the unconditional offer by the deadline linked to that round",
+          "Wait for the automatic scholarship assessment; no separate submission is made",
+          "If awarded, note which tier you received and the instalment schedule",
+          "Maintain a semester average mark of 65 and keep fees clear so the second instalment is released"
+        ]
+      },
+      "programme_detail_verification": {
+        "cycle_verified": "Semester 1, 2027 offer rounds, verified 2026-10-04",
+        "verification_confidence": 0.92,
+        "official_fields_confirmed": [
+          "funding_amount",
+          "funding_currency",
+          "deadline_central",
+          "eligibility",
+          "selection_criteria",
+          "award_holder_conditions",
+          "degree_levels",
+          "status",
+          "official_source"
+        ],
+        "institution_check_required": [
+          "Applicants must confirm which offer round they fall into and the acceptance deadline linked to it, since these differ per round",
+          "International Baccalaureate and International UAC applicants must confirm the special round timing, which depends on results and offer-round release dates"
+        ],
+        "unverified_or_removed_claims": [
+          "The stored deadline_date 2026-12-16 is not a published close date. The page references 16 December 2026 only as the date International Baccalaureate results are released, so the stored value appears to be a mis-parse; the real next applicable close date is 16 November 2026 (Semester 1, 2027 Round 3).",
+          "The stored deadline_display text was a fragment of the terms (\"associated with their scholarship offer round, and remain enrolled after census date\") rather than a deadline; it is replaced with the official close-date table.",
+          "The award is a cash scholarship and the official terms do not say tuition fees are met, so tuition_coverage is false and living_cost_coverage is null rather than assumed.",
+          "The page publishes no applicant document list and no English language requirement, so those fields are null or empty."
+        ],
+        "source_citations": [
+          "https://www.sydney.edu.au/scholarships/e/vice-chancellor-international-scholarships-scheme.html",
+          "https://www.sydney.edu.au/content/dam/icons/logos/logo-usyd-dark.svg"
+        ],
+        "researched_by": "w1_05a1"
+      },
+      "logo_override": {
+        "url": "https://www.sydney.edu.au/content/dam/icons/logos/logo-usyd-dark.svg",
+        "page_url": "https://www.sydney.edu.au/scholarships/e/vice-chancellor-international-scholarships-scheme.html",
+        "official_host": true,
+        "alt_text": "University of Sydney",
+        "validation_result": "verified",
+        "validation_detail": "svg, viewBox 0 0 233 80, served from sydney.edu.au with HTTP 200 as an image asset; the returned markup is the SVG source and every path fill is #141414, so this is the dark variant and is safe on a light card, not a white-on-transparent wordmark",
+        "image_kind": "official_logo",
+        "image_format": "svg",
+        "verified_at": "2026-10-04T00:00:00+00:00",
+        "host_evidence": "same_registrable_domain",
+        "_award": "Vice-Chancellor's International Scholarships Scheme"
+      },
+      "research_notes": {
+        "logo": "The page's header and \"University Home\" links both point to /content/dam/icons/logos/logo-usyd-dark.svg, the University's own first-party logo asset. Probed it directly: it returned HTTP 200 as an image asset and the SVG source with a 233x80 viewBox and all fills set to #141414, confirming the dark variant. No third-party host and no white-on-transparent wordmark.",
+        "unverified": [
+          "Which of the five award tiers any individual applicant would receive, since that depends on committee ranking",
+          "Availability of funds for the current round",
+          "Applicant document and English language requirements, which are not published on this page"
+        ],
+        "substitution": null,
+        "official_pages_read": [
+          "https://www.sydney.edu.au/scholarships/e/vice-chancellor-international-scholarships-scheme.html"
+        ],
+        "degree_level_confirmed": "The official terms state \"The Scholarship is open to all commencing international students enrolled in an undergraduate or postgraduate coursework full degree\" and eligibility requires an applicant to \"have applied for but not yet commenced a bachelor's degree or a coursework master's degree that is a CRICOS registered award program usually delivered onshore at the University of Sydney\". This confirms the stored Bachelor's and coursework Master's levels.",
+        "url_observed": "https://www.sydney.edu.au/scholarships/e/vice-chancellor-international-scholarships-scheme.html (stored URL resolves and is the live page, no change needed)",
+        "contradictions": [
+          "Stored deadline_date 2026-12-16 is wrong. The official close dates are 17 August 2026, 5 October 2026 and 16 November 2026 for Semester 1, 2027 and 15 February, 22 March and 3 May 2027 for Semester 2, 2027. 16 December 2026 appears on the page only as the International Baccalaureate results release date.",
+          "Stored deadline_precision \"month\" was wrong; the official page publishes exact calendar close dates, so precision is now exact.",
+          "Stored deadline_display held a fragment of the terms of the award rather than any deadline.",
+          "Stored funding amount was null, but the official page publishes five amounts up to AUD 60,000, now recorded.",
+          "The stored image was a generic default hero photograph (default-hero.jpg, image_kind program_image), not a logo; it has been replaced with the University's official logo."
+        ],
+        "skeleton": false
+      }
+    },
+    {
+      "target_id": 49,
+      "outcome": "refreshed",
+      "confirm": true,
+      "confirmation_evidence": "Read the University of Sydney's own scholarship page, which states \"A $20,000 scholarship for exceptional international students from diverse priority markets studying Bachelor of Agricultural Science degree at the University of Sydney\" and lists the value as \"$20,000 p.a. (up to 3 years)\" with a close date of \"01 December 2025\". The same page states \"No application is required, as all eligible students who have secured an unconditional offer of admission will be automatically considered.\"",
+      "new_scholarship": {
+        "name": "Farrand Scholarship in Agricultural Science (International)",
+        "legacy_titles": ["Annie Farrand Scholarship in Agricultural Science (International)"],
+        "country": "Australia",
+        "region": "International students from diverse priority markets, as defined by the University of Sydney",
+        "degree_levels": "Bachelor's, Bachelor's (Honours)",
+        "duration": "Up to 3 years, full-time study only",
+        "funding_type": "Partially Funded",
+        "funding_amount": 20000,
+        "funding_currency": "AUD",
+        "funding_period": "per annum",
+        "official_source": "University of Sydney",
+        "official_source_url": "https://www.sydney.edu.au/scholarships/d/farrand-scholarship-in-agricultural-science--international-.html",
+        "status": "upcoming",
+        "is_verified": true,
+        "last_verified_date": "2026-10-04",
+        "deadline": "No application required. The only close date published on the official page is 01 December 2025, which has already passed, and the open date is listed as N/A, so the next cycle's date is not yet published.",
+        "deadline_date": null,
+        "deadline_precision": "recurring",
+        "application_period": "Annual award, established in 2023, awarded on the basis of unconditional admission offers received by the published close date. The currently published close date of 01 December 2025 has passed and the University has not yet posted a 2027 date.",
+        "program_type": "Undergraduate merit scholarship restricted to a single degree",
+        "eligibility_summary": "International students holding an unconditional offer of admission to study full-time in the Bachelor of Agricultural Science or Bachelor of Agricultural Science (Honours) in the Faculty of Science at the University of Sydney.",
+        "eligibility": [
+          "Be an international student at the time of application",
+          "Hold an unconditional offer of admission to study full-time in the Bachelor of Agricultural Science or Bachelor of Agricultural Science (Honours) in the Faculty of Science",
+          "Not become a domestic student before the semester census date"
+        ],
+        "coverage": [
+          "AUD 20,000 per annum for up to 3 years, paid in equal instalments after the census date of each semester"
+        ],
+        "application_method": [
+          "No application required; automatic consideration for eligible students holding an unconditional offer"
+        ],
+        "catalogue_url": "https://www.sydney.edu.au/science/schools/school-of-life-and-environmental-sciences.html",
+        "official_updates_url": "https://www.sydney.edu.au/scholarships/d/farrand-scholarship-in-agricultural-science--international-.html",
+        "notes": "Established in 2023 from a donation by the Estate of Annie Farrand in memory of her and her mother Annie Elizabeth Farrand. The scholarship is awarded on the nomination of the Dean of the Faculty of Science or their nominated delegate and is subject to the availability of funds."
+      },
+      "programme_detail_official": {
+        "official_source_urls": [
+          "https://www.sydney.edu.au/scholarships/d/farrand-scholarship-in-agricultural-science--international-.html"
+        ],
+        "application_link": "https://www.sydney.edu.au/scholarships/d/farrand-scholarship-in-agricultural-science--international-.html",
+        "official_updates_url": "https://www.sydney.edu.au/scholarships/d/farrand-scholarship-in-agricultural-science--international-.html",
+        "catalogue_url": "https://www.sydney.edu.au/science/schools/school-of-life-and-environmental-sciences.html",
+        "application_cycle": "Annual award on the basis of unconditional admission offers. The only close date currently published is 01 December 2025, which has passed.",
+        "deadline_central": null,
+        "deadline_central_display": "No application required. The published close date is 01 December 2025 and the open date is listed as N/A; no 2027 date has been posted.",
+        "deadline_central_timezone": "Australia/Sydney",
+        "deadline_note": "The official page still shows a close date of 01 December 2025, which is in the past as at 2026-10-04, and shows no open date. No exact date for the next still-applicable cycle is published, so deadline_date is null and deadline_precision is recurring to reflect the annual cycle.",
+        "status": "UPCOMING",
+        "status_note": "The scheme is an ongoing annual award, but the only close date published has passed and the next cycle's date has not been posted, so it is recorded as upcoming rather than open.",
+        "funding_amount": 20000,
+        "funding_currency": "AUD",
+        "funding_period": "per annum",
+        "funding_duration": "Up to 3 years, full-time study only",
+        "tuition_coverage": false,
+        "tuition_coverage_note": "The terms describe a cash scholarship paid in equal instalments after each semester census date and do not state that it is applied to tuition fees.",
+        "living_cost_coverage": null,
+        "travel_coverage": false,
+        "fully_funded": false,
+        "funding_label": "AUD 20,000 per annum for up to 3 years, paid in equal instalments after the census date of each semester. It is a cash award, not a tuition waiver, and recipients must maintain a minimum semester average mark of 65 with no outstanding fees.",
+        "benefits": [
+          "AUD 20,000 per annum for up to 3 years",
+          "Payment in equal instalments after the census date of each semester",
+          "Possible invitation to promote the Bachelor of Agricultural Science degrees and represent the University at orientation, marketing and corporate networking events"
+        ],
+        "eligibility": [
+          "International student at the time of application",
+          "Unconditional offer of admission to study full-time in the Bachelor of Agricultural Science or Bachelor of Agricultural Science (Honours) in the Faculty of Science at the University of Sydney",
+          "Must not become a domestic student before the semester census date"
+        ],
+        "citizenship_residency": "International student status is required. The official wording targets \"exceptional international students from diverse priority markets\", but no country list is published on this page.",
+        "international_eligibility": "Open to international students only, and only into the Bachelor of Agricultural Science or Bachelor of Agricultural Science (Honours) in the Faculty of Science.",
+        "degree_levels": [
+          "Bachelor's",
+          "Bachelor's (Honours)"
+        ],
+        "study_mode": "Full-time study only",
+        "research_requirement": null,
+        "subject_or_agency_requirement": "Bachelor of Agricultural Science or Bachelor of Agricultural Science (Honours) in the Faculty of Science, taught at the School of Life and Environmental Sciences",
+        "application_method": "No application. All eligible students who have secured an unconditional offer of admission will be automatically considered.",
+        "application_route": "Automatic consideration via the University of Sydney admissions process for the Bachelor of Agricultural Science degrees",
+        "requirements": [
+          "International student status",
+          "Unconditional offer of admission to the Bachelor of Agricultural Science or Bachelor of Agricultural Science (Honours)",
+          "Full-time enrolment",
+          "Continued enrolment after each census date"
+        ],
+        "documents": [],
+        "english_requirement": null,
+        "english_requirement_note": "The scholarship page states no English language requirement. Standard English requirements for admission to the University of Sydney apply.",
+        "selection_criteria": [
+          "Academic merit as assessed from the applicant's application for admission",
+          "Awarded on the nomination of the Dean of the Faculty of Science or their nominated delegate"
+        ],
+        "selection_weighting": null,
+        "duration": "Up to 3 years",
+        "award_holder_conditions": [
+          "Must maintain a minimum semester average mark of 65 each semester and have no outstanding fees",
+          "Recipients undertaking an exchange must have achieved a Satisfied Requirements grade to receive the next payment",
+          "Annual value is paid in equal instalments after the census date of each semester",
+          "Deferral is not permitted without the prior permission of the Dean of the Faculty of Science or their nominated delegate",
+          "The scholarship is not transferable to another University school, faculty or university",
+          "Terminated if the recipient withdraws or fails to enrol, becomes a domestic student before the census date, does not maintain satisfactory academic performance, is found guilty of serious misconduct, accepts an alternative scholarship administered by the University of Sydney valued at AUD 8,300 per annum or more for the same purpose including the Vice-Chancellor's International Scholarships Scheme, or does not resume study after approved leave",
+          "The University may request reimbursement of scholarship funds where serious misconduct is found or the scholarship is terminated"
+        ],
+        "supplements_or_initiatives": [],
+        "official_contacts": {
+          "general": "Scholarships contact: 1800 SYD UNI (1800 793 864) or +61 2 8627 1444, open 9am to 5pm Monday to Friday; prospective international students can also lodge an enquiry through the University of Sydney service portal",
+          "email": null
+        },
+        "description": "The Farrand Scholarship in Agricultural Science is a University of Sydney undergraduate award, established in 2023 from a donation by the Estate of Annie Farrand, for exceptional international students from diverse priority markets. It is valued at AUD 20,000 per annum for up to three years and is tenable only by students enrolled full-time in the Bachelor of Agricultural Science or Bachelor of Agricultural Science (Honours) in the Faculty of Science. No application is required, because all eligible students who have secured an unconditional offer are automatically considered, and the award is made on academic merit as assessed from the admission application and on the nomination of the Dean of the Faculty of Science.",
+        "program_type": "Undergraduate merit scholarship restricted to a single degree",
+        "region": "International students from diverse priority markets, at the University of Sydney",
+        "coverage": "Cash scholarship of AUD 20,000 per annum for up to 3 years; no tuition waiver, travel support or separately itemised living-cost component is published",
+        "last_verified_date": "2026-10-04"
+      },
+      "programme_detail_applicant_utility": {
+        "application_readiness_checklist": [
+          "Apply for the Bachelor of Agricultural Science or Bachelor of Agricultural Science (Honours) full-time, because the award is restricted to those degrees and to full-time enrolment",
+          "Aim to secure your unconditional offer before the University's published close date, since no separate application is possible",
+          "Watch the scholarship page for a new close date, because the currently published 01 December 2025 date has passed and no 2027 date is posted",
+          "Check you are not also holding another University of Sydney scholarship worth AUD 8,300 per annum or more for the same purpose, including the Vice-Chancellor's International Scholarships Scheme",
+          "Plan to hold a minimum semester average mark of 65 and keep fees clear in order to receive each instalment",
+          "Get the Dean's written permission before deferring, because deferral is otherwise not permitted"
+        ],
+        "common_rejection_risks": [
+          "Missing the close date, since eligibility is tied to the unconditional offer rather than a separate application",
+          "Enrolling in a different degree, or part-time, which makes the recipient ineligible",
+          "Holding the Vice-Chancellor's International Scholarship or any other University of Sydney scholarship valued at AUD 8,300 per annum or more for the same purpose",
+          "Falling below a semester average mark of 65 or leaving fees outstanding",
+          "Deferring without the prior permission of the Dean of the Faculty of Science"
+        ],
+        "estimated_uncovered_costs": [
+          "Tuition fees, which the official terms do not state this award covers",
+          "Living and accommodation costs beyond AUD 20,000 per annum for three years",
+          "Travel costs to and from Australia",
+          "Textbooks, equipment and field-trip costs for an agricultural science degree"
+        ],
+        "document_audit": [
+          "Your admission application for the Bachelor of Agricultural Science or Honours",
+          "Evidence of acceptance of the unconditional offer",
+          "Records needed to demonstrate a semester average mark of 65 once enrolled"
+        ],
+        "alerts": [
+          {
+            "trigger": "Published close date has expired",
+            "message": "The only close date on the official page is 01 December 2025, which has passed, and the open date shows N/A, so there is no current window to apply in until the University posts the next one."
+          },
+          {
+            "trigger": "Narrow stacking threshold",
+            "message": "This award terminates if you accept any other University of Sydney scholarship worth AUD 8,300 per annum or more for the same purpose, which is far lower than the VCIS threshold."
+          },
+          {
+            "trigger": "Single degree only",
+            "message": "Only the Bachelor of Agricultural Science and its Honours variant qualify, so no other degree at the University of Sydney is eligible."
+          }
+        ],
+        "submission_workflow": [
+          "Monitor the scholarship page for a republished close date",
+          "Apply for the Bachelor of Agricultural Science or Bachelor of Agricultural Science (Honours) full-time through University of Sydney admissions",
+          "Secure and accept the unconditional offer before the published close date",
+          "Await automatic scholarship assessment; there is no separate submission",
+          "If awarded, confirm your award letter and instalment schedule",
+          "Maintain a semester average mark of 65 and clear fees so each instalment is released"
+        ]
+      },
+      "programme_detail_verification": {
+        "cycle_verified": "Most recent published cycle closed 01 December 2025; next cycle not yet published, verified 2026-10-04",
+        "verification_confidence": 0.88,
+        "official_fields_confirmed": [
+          "funding_amount",
+          "funding_currency",
+          "funding_period",
+          "degree_levels",
+          "eligibility",
+          "selection_criteria",
+          "award_holder_conditions",
+          "official_source",
+          "program_type"
+        ],
+        "institution_check_required": [
+          "Applicants must confirm whether their country counts as one of the University's priority markets, because no country list is published on the scholarship page",
+          "Applicants must confirm the current close date directly with the University, since the published date has expired"
+        ],
+        "unverified_or_removed_claims": [
+          "No deadline is published for the next still-applicable cycle: the official page shows a close date of 01 December 2025, already past, and an open date of N/A, so deadline_date is null and deadline_precision is recurring.",
+          "The official page does not enumerate the priority markets referred to in its wording, so the region value stays at the official phrase rather than a list.",
+          "The award is a cash scholarship and the terms do not state that tuition is met, so tuition_coverage is false and living_cost_coverage is null.",
+          "No applicant document list and no English language requirement are published on this page."
+        ],
+        "source_citations": [
+          "https://www.sydney.edu.au/scholarships/d/farrand-scholarship-in-agricultural-science--international-.html",
+          "https://www.sydney.edu.au/content/dam/icons/logos/logo-usyd-dark.svg"
+        ],
+        "researched_by": "w1_05a1"
+      },
+      "logo_override": {
+        "url": "https://www.sydney.edu.au/content/dam/icons/logos/logo-usyd-dark.svg",
+        "page_url": "https://www.sydney.edu.au/scholarships/d/farrand-scholarship-in-agricultural-science--international-.html",
+        "official_host": true,
+        "alt_text": "University of Sydney",
+        "validation_result": "verified",
+        "validation_detail": "svg, viewBox 0 0 233 80, served from sydney.edu.au with HTTP 200 as an image asset; every path fill is #141414, so this is the University's dark logo variant and is safe on a light card",
+        "image_kind": "official_logo",
+        "image_format": "svg",
+        "verified_at": "2026-10-04T00:00:00+00:00",
+        "host_evidence": "same_registrable_domain",
+        "_award": "Farrand Scholarship in Agricultural Science (International)"
+      },
+      "research_notes": {
+        "logo": "The page header and \"University Home\" links point to the same first-party University of Sydney logo asset as target_id 48, /content/dam/icons/logos/logo-usyd-dark.svg. Reused the asset already probed: HTTP 200 as an image asset, 233x80 viewBox, all fills #141414, so it is the dark variant and not a white-on-transparent wordmark.",
+        "unverified": [
+          "The next cycle's close date, which the University has not published",
+          "The list of priority markets referred to in the official wording",
+          "Applicant document and English language requirements"
+        ],
+        "substitution": null,
+        "official_pages_read": [
+          "https://www.sydney.edu.au/scholarships/d/farrand-scholarship-in-agricultural-science--international-.html"
+        ],
+        "degree_level_confirmed": "The official terms state the scholarship is offered \"subject to the applicant having an unconditional offer of admission to study full-time in the Bachelor of Agricultural Science or Bachelor of Agricultural Science (Honours) in the Faculty of Science at the University of Sydney\". This confirms the stored Bachelor's and Bachelor's (Honours) levels and adds the full-time-only restriction.",
+        "url_observed": "https://www.sydney.edu.au/scholarships/d/farrand-scholarship-in-agricultural-science--international-.html (stored URL resolves and is the live page, no change needed)",
+        "contradictions": [
+          "Stored status \"open\" is not supportable: the only published close date, 01 December 2025, has passed and the open date is listed as N/A, so the record is \"upcoming\".",
+          "Stored deadline_precision \"month\" was wrong; the official page publishes no usable date for the next cycle, so precision is recurring and deadline_date is null.",
+          "Stored funding amount was null, but the official page publishes \"$20,000 p.a. (up to 3 years)\", now recorded as AUD 20,000 per annum.",
+          "Stored region was null and is now set from the official phrase \"international students from diverse priority markets\".",
+          "The stored image was a generic default hero photograph (default-hero.jpg, image_kind program_image), not a logo; it has been replaced with the University's official logo.",
+          "The official name on the page is \"Farrand Scholarship in Agricultural Science (International)\", which does not include the stored title's word \"Annie\"; the stored title is preserved verbatim in legacy_titles for merge matching."
+        ],
+        "skeleton": false
+      }
+    },
+    {
+      "target_id": 50,
+      "outcome": "refreshed",
+      "confirm": true,
+      "confirmation_evidence": "Read the Australian National University's own scholarship page, which states \"The ANU Chancellor's International Scholarship offers an opportunity for students from around the world to access one of multiple scholarships available to undergraduate and postgraduate students\" and \"The scholarship will award a tuition fee reduction of 25% or 50% as outlined above. The reduction is applied towards the tuition fees for the duration of the undergraduate or postgraduate degree.\" The same page currently displays \"The scholarship is currently unavailable.\" and \"Application closed\".",
+      "new_scholarship": {
+        "name": "ANU Chancellor's International Scholarship",
+        "legacy_titles": ["ANU Chancellor's International Scholarship"],
+        "country": "Australia",
+        "region": "International students from all countries; awards are distributed into 9 categories, including dedicated categories for India, Indonesia, Vietnam, South East Asia, and Europe, Central and South Americas, with at least one category open to students from anywhere in the world",
+        "degree_levels": "Bachelor's, Master's, Graduate Certificate",
+        "duration": "Duration of the undergraduate or postgraduate degree",
+        "funding_type": "Tuition Fee Waiver",
+        "official_source": "Australian National University (ANU)",
+        "official_source_url": "https://study.anu.edu.au/scholarships/find-scholarship/anu-chancellors-international-scholarship",
+        "status": "upcoming",
+        "is_verified": true,
+        "last_verified_date": "2026-10-04",
+        "deadline": "Application period is open all year round. However, the official page currently states \"The scholarship is currently unavailable\" and lists the application period as \"Application closed\".",
+        "deadline_date": null,
+        "deadline_precision": "rolling",
+        "application_period": "The scheme states the application period is open all year round, but as at 2026-10-04 the page reports the scholarship as currently unavailable with the application period closed. Applicants are considered automatically as part of the ANU 2026 admissions process.",
+        "program_type": "Post-admission automatic tuition fee reduction",
+        "eligibility_summary": "Overseas students applying for admission to commence at ANU in an eligible program, who are automatically assessed against up to 9 award categories based on their citizenship and are always assessed first for the highest-value award for which they are eligible.",
+        "eligibility": [
+          "Be defined as an overseas student under the Education Services for Overseas Students Act 2000 and not hold a subclass 995 visa, unless enrolling in an eligible postgraduate program",
+          "Have received an offer of admission to commence at ANU in an eligible program",
+          "Meet the conditions of the program for which an offer of admission was received, including any onshore component requirement",
+          "Not have previously received the Award for the same level of study",
+          "Not be the recipient of an external sponsorship that covers all or part of the cost of tuition fees with the University",
+          "Be assessed automatically into one of 9 award categories on the basis of citizenship"
+        ],
+        "coverage": [
+          "Tuition fee reduction of 25%, or 25% or 50% in the South East Asia and Europe, Central and South Americas categories, applied towards tuition fees for the duration of the degree",
+          "Guaranteed accommodation for the first year of study if the recipient chooses to take it up"
+        ],
+        "application_method": [
+          "No application required for the scholarship; all eligible overseas students applying for admission are automatically considered"
+        ],
+        "official_updates_url": "https://study.anu.edu.au/scholarships/find-scholarship/anu-chancellors-international-scholarship",
+        "notes": "Up to 200 scholarships are offered. Excluded programs are the Doctor of Medicine and Surgery (MChD) and the Master of Military and Defence Studies. Recipients must accept the academic offer and the scholarship offer separately."
+      },
+      "programme_detail_official": {
+        "official_source_urls": [
+          "https://study.anu.edu.au/scholarships/find-scholarship/anu-chancellors-international-scholarship"
+        ],
+        "application_link": "https://study.anu.edu.au/scholarships/find-scholarship/anu-chancellors-international-scholarship",
+        "official_updates_url": "https://study.anu.edu.au/scholarships/find-scholarship/anu-chancellors-international-scholarship",
+        "catalogue_url": null,
+        "application_cycle": "Automatic consideration within the ANU admissions cycle; the page states the application period is open all year round, while also reporting the scholarship as currently unavailable with the application period closed. The page directs applicants to the 2026 ANU admissions application process.",
+        "deadline_central": null,
+        "deadline_central_display": "Application period is open all year round, but the page currently shows the scholarship as unavailable and the application period as closed.",
+        "deadline_central_timezone": "Australia/Canberra",
+        "deadline_note": "There is no closing date because consideration is automatic and the page states the application period is open all year round, so deadline_precision is rolling and deadline_date is null. The same page nonetheless reports the scholarship as currently unavailable, which is recorded in status_note.",
+        "status": "CLOSED",
+        "status_note": "The official page displays \"The scholarship is currently unavailable.\" and lists the application period as \"Application closed\", while also stating the application period is open all year round. The scheme itself remains live, with current Conditions of Award (89/2025) published, so this is not recorded as discontinued; new_scholarship.status carries \"upcoming\" only because no new award can be accepted right now.",
+        "funding_amount": null,
+        "funding_currency": null,
+        "funding_period": null,
+        "funding_duration": "Reduction applied for the duration of the undergraduate or postgraduate degree",
+        "tuition_coverage": false,
+        "tuition_coverage_note": "The award is a partial reduction of 25%, or 25% or 50% in two of the categories, applied towards tuition fees. The remaining tuition balance is not covered.",
+        "living_cost_coverage": null,
+        "travel_coverage": null,
+        "fully_funded": false,
+        "funding_label": "Tuition fee reduction of 25%, or 25% or 50% for the South East Asia and Europe, Central and South Americas categories, applied towards tuition fees for the duration of the degree, plus guaranteed first-year accommodation. The scholarship is currently unavailable, so no new awards are being made.",
+        "benefits": [
+          "Tuition fee reduction of 25%, or 25% or 50% depending on the award category",
+          "Reduction applied towards tuition fees for the duration of the degree",
+          "Guaranteed accommodation for the first year of study if the recipient chooses to take up the benefit",
+          "Up to 200 scholarships awarded across the 9 categories"
+        ],
+        "eligibility": [
+          "Overseas student as defined by the Education Services for Overseas Students Act 2000, not holding a subclass 995 visa unless enrolling in an eligible postgraduate program",
+          "Offer of admission to commence at ANU in an eligible program",
+          "Must meet program conditions, including onshore requirements where applicable",
+          "Must not have previously received the Award for the same level of study",
+          "Must not hold an external sponsorship covering all or part of tuition fees with the University",
+          "Automatically assessed into one of 9 award categories based on citizenship, with the highest-value eligible award assessed first",
+          "Excluded programs: Doctor of Medicine and Surgery (MChD) and Master of Military and Defence Studies"
+        ],
+        "citizenship_residency": "Overseas student status under the Education Services for Overseas Students Act 2000. Citizenship determines which of the 9 award categories an applicant is assessed into, with at least one category open to students from anywhere in the world.",
+        "international_eligibility": "Open to overseas students only. The scheme is categorised by citizenship, with dedicated categories for India, Indonesia, Vietnam, South East Asia, and Europe, Central and South Americas, and at least one category open worldwide. Australian domestic students are not eligible.",
+        "degree_levels": [
+          "Bachelor's",
+          "Master's",
+          "Graduate Certificate"
+        ],
+        "study_mode": "Commencing ANU student; continuation of the award is based on full-time study load",
+        "research_requirement": null,
+        "subject_or_agency_requirement": "Any eligible program except the Doctor of Medicine and Surgery (MChD) and the Master of Military and Defence Studies",
+        "application_method": "No application for the scholarship. All eligible overseas students applying for admission to commence at the University are automatically considered.",
+        "application_route": "Automatic consideration inside the ANU admissions application process; the academic offer and the scholarship offer must be accepted separately",
+        "requirements": [
+          "Overseas student status under the Education Services for Overseas Students Act 2000",
+          "Offer of admission to commence at ANU in a program that is not excluded",
+          "Compliance with program conditions including onshore components where applicable",
+          "No previous receipt of this Award at the same level of study",
+          "No external sponsorship covering tuition fees with the University",
+          "Separate acceptance of the academic offer and the scholarship offer"
+        ],
+        "documents": [
+          "Conditions of Award (89/2025)",
+          "Conditions of Award (31/2024)",
+          "Conditions of Award (68/2023)",
+          "Conditions of Award (27/2022)",
+          "FAQs - ANU Chancellor's International Scholarship (2025-26)",
+          "Reference document listing the countries included in each of the 9 award categories"
+        ],
+        "english_requirement": null,
+        "english_requirement_note": "The scholarship page states no English language requirement. Standard English requirements for admission to ANU apply.",
+        "selection_criteria": [
+          "Selection is made on the basis of academic merit",
+          "Qualifications submitted for admission are converted to a common scale to determine the applicant's place on the merit list",
+          "Applicants with multiple qualifications are ranked according to the qualification used as the basis of admission",
+          "Automatic assessment into the highest-value award category for which the applicant is eligible"
+        ],
+        "selection_weighting": null,
+        "duration": "Duration of the undergraduate or postgraduate degree",
+        "award_holder_conditions": [
+          "Must be a commencing ANU student; continuation is based on full-time study load",
+          "Must accept the academic offer and the scholarship offer separately",
+          "Must not have previously received the Award for the same level of study",
+          "Must not be the recipient of an external sponsorship that covers all or part of tuition fees with the University",
+          "Must meet any onshore component requirements of the enrolled program"
+        ],
+        "supplements_or_initiatives": [
+          "Guaranteed accommodation for the first year of study"
+        ],
+        "official_contacts": {
+          "general": "ANU International Student Recruitment",
+          "email": "International.recruitment@anu.edu.au"
+        },
+        "description": "The ANU Chancellor's International Scholarship is a tuition fee reduction for overseas students commencing an undergraduate or postgraduate degree, or a graduate certificate, at the Australian National University. Awards are distributed into 9 citizenship-based categories with at least one open worldwide, and applicants are automatically assessed first for the highest-value award for which they are eligible. The reduction is 25% of tuition fees, or 25% or 50% in the South East Asia and Europe, Central and South Americas categories, applied for the duration of the degree, with guaranteed first-year accommodation available. As at 2026-10-04 the official page states that the scholarship is currently unavailable and the application period is closed.",
+        "program_type": "Post-admission automatic tuition fee reduction",
+        "region": "International students from all countries, with citizenship-based award categories including India, Indonesia, Vietnam, South East Asia, and Europe, Central and South Americas",
+        "coverage": "Partial tuition only: 25% of tuition fees, or 25% or 50% in two categories, for the duration of the degree, plus guaranteed accommodation for the first year of study. No stipend, travel support or separately itemised living-cost component is published.",
+        "last_verified_date": "2026-10-04"
+      },
+      "programme_detail_applicant_utility": {
+        "application_readiness_checklist": [
+          "Check that your course is not one of the excluded programs, the Doctor of Medicine and Surgery (MChD) or the Master of Military and Defence Studies",
+          "Apply through ANU admissions rather than a separate scholarship application, because consideration is automatic",
+          "Note that the page currently reports the scholarship as unavailable, so confirm with ANU International Student Recruitment before committing to ANU on the strength of this award",
+          "Make sure you are not already the holder of an external sponsorship that covers tuition fees with the University, which disqualifies you",
+          "Be ready to accept the academic offer and the scholarship offer separately",
+          "Plan to study full-time, because continuation of the award depends on full-time study load"
+        ],
+        "common_rejection_risks": [
+          "Applying to an excluded program, the MChD or the Master of Military and Defence Studies",
+          "Holding an external sponsorship that covers tuition fees with the University",
+          "Having previously received this Award at the same level of study",
+          "Expecting full tuition coverage, when the maximum reduction is 50%",
+          "Relying on the award while the page reports it as currently unavailable"
+        ],
+        "estimated_uncovered_costs": [
+          "75% of tuition fees in most categories, and 50% of tuition fees in the highest-value categories",
+          "All living costs beyond the guaranteed first-year accommodation, which is optional",
+          "Travel costs to and from Australia, which are not listed as covered"
+        ],
+        "document_audit": [
+          "Your ANU admissions application",
+          "Evidence of overseas student status under the Education Services for Overseas Students Act 2000",
+          "Academic qualifications for merit ranking",
+          "Confirmation that no external sponsorship covers your tuition fees",
+          "Separate acceptance of the academic and scholarship offers"
+        ],
+        "alerts": [
+          {
+            "trigger": "Currently unavailable",
+            "message": "The official page states the scholarship is currently unavailable and the application period is closed, so do not assume you can be awarded it for a 2026 start."
+          },
+          {
+            "trigger": "Highest-value-first assessment",
+            "message": "You are always assessed for the highest-value award you are eligible for, so your citizenship category determines the reduction you can receive."
+          },
+          {
+            "trigger": "Subclass 495 exclusion",
+            "message": "Subclass 495 visa holders are excluded unless enrolling in an eligible postgraduate program."
+          }
+        ],
+        "submission_workflow": [
+          "Choose an eligible ANU program and avoid the MChD and Master of Military and Defence Studies",
+          "Apply for admission through the ANU 2026 admissions process; there is no separate scholarship form",
+          "Ensure you hold no external tuition-fee sponsorship with the University",
+          "Await automatic category assessment and merit ranking based on your admission qualifications",
+          "If offered, accept the academic offer and the scholarship offer separately",
+          "Enrol full-time to preserve continuation of the award"
+        ]
+      },
+      "programme_detail_verification": {
+        "cycle_verified": "2026 admissions cycle; scholarship reported as currently unavailable, verified 2026-10-04",
+        "verification_confidence": 0.9,
+        "official_fields_confirmed": [
+          "name",
+          "degree_levels",
+          "funding_type",
+          "eligibility",
+          "coverage",
+          "status",
+          "application_method",
+          "official_source",
+          "program_type"
+        ],
+        "institution_check_required": [
+          "Applicants must confirm directly with ANU International Student Recruitment whether and when the scholarship will next be available, because the page gives no reopening date",
+          "Applicants must consult the reference document listing the countries in each of the 9 award categories, which is published as a separate document and was not opened in this pass"
+        ],
+        "unverified_or_removed_claims": [
+          "The stored deadline_display value \"01\" is not a deadline and appears to be a parsing artefact; it is replaced with the official wording that the application period is open all year round while the scholarship is currently unavailable.",
+          "The stored deadline_precision \"month\" was wrong; the official page states the application period is open all year round, so precision is rolling and deadline_date is null.",
+          "The stored program_type field contained selection text (\"Applicants will always be assessed first for the highest-value award for which they are eligible.\") rather than a programme type; it has been replaced with \"Post-admission automatic tuition fee reduction\" and the sentence is preserved in selection_criteria.",
+          "The official page's Value field renders as a dash, so no cash amount is published; funding_amount and funding_currency are null and the benefit is described as a percentage reduction.",
+          "Conditions of Award PDFs and the FAQ are published on an ANU-operated CloudFront host and were not opened in this pass, so no claim is sourced from them."
+        ],
+        "source_citations": [
+          "https://study.anu.edu.au/scholarships/find-scholarship/anu-chancellors-international-scholarship"
+        ],
+        "researched_by": "w1_05a1"
+      },
+      "logo_override": null,
+      "research_notes": {
+        "logo": "Result is null. The ANU homepage (www.anu.edu.au) references its logo only as https://d1blp3aor2iuhp.cloudfront.net/images/logos/logo-ANU-black.svg and logo-ANU.svg, both served from an Amazon CloudFront host rather than anu.edu.au. CloudFront is a third-party CDN host and is banned by the brief, and neither host_evidence value in the schema fits it. The only first-party ANU asset I found is a favicon at https://d1zkbwgd2iyy9p.cloudfront.net/themes/custom/webstyle/favicon.ico, which is again CloudFront-hosted and is not a logo mark. The study.anu.edu.au scholarship page itself exposed no img, og:image or CSS background logo at all, so no first-party logo URL could be extracted without guessing.",
+        "unverified": [
+          "The country list behind each of the 9 award categories, published in a separate reference document",
+          "Conditions of Award (89/2025) detail, published as a PDF on an ANU-operated CloudFront host",
+          "Any reopening date for the scholarship"
+        ],
+        "substitution": null,
+        "official_pages_read": [
+          "https://study.anu.edu.au/scholarships/find-scholarship/anu-chancellors-international-scholarship",
+          "https://www.anu.edu.au/"
+        ],
+        "degree_level_confirmed": "The official page states the study level is \"Undergraduate/Bachelor, Postgraduate/Masters, and Graduate certificate\", and that the reduction \"is applied towards the tuition fees for the duration of the undergraduate or postgraduate degree\". This confirms the stored degree levels.",
+        "url_observed": "https://study.anu.edu.au/scholarships/find-scholarship/anu-chancellors-international-scholarship (stored URL resolves and is the live page, no change needed)",
+        "contradictions": [
+          "Stored status \"closed\" understated the situation: the official page states \"The scholarship is currently unavailable.\" and shows \"Application closed\", while also saying the application period is open all year round. Both facts are now recorded rather than only one.",
+          "Stored deadline_display was the string \"01\", which is not a deadline on the official page.",
+          "Stored deadline_precision \"month\" was wrong; the official page states the application period is open all year round, so precision is rolling.",
+          "Stored program_type was not a programme type at all but a selection rule sentence; this is a data-quality defect in the stored record and has been corrected.",
+          "Stored funding amount was null and remains null, because the official page expresses the benefit only as a 25% or 50% tuition fee reduction and renders its Value field as a dash.",
+          "The stored image was a generic scholar placeholder banner (imagedepot.anu.edu.au/isfs/microsite/scholarships/scholar-default1.png, alt \"hero-banner\"), not the ANU logo; no compliant first-party logo could be sourced, so logo_override is null."
+        ],
+        "skeleton": false
+      }
+    },
+    {
+      "target_id": 51,
+      "outcome": "refreshed",
+      "confirm": true,
+      "confirmation_evidence": "Read the University of Western Australia's own scholarship page, which states \"If you're looking to start studying in 2027, you could receive up to 20%* off your tuition fees for the entire duration of your eligible undergraduate or postgraduate course\" and \"Students from all countries are eligible. You will need to have received an offer for an eligible undergraduate or postgraduate course for 2027 at The University of Western Australia.\" The same page states \"A separate scholarship application is not required.\"",
+      "new_scholarship": {
+        "name": "Global Excellence Scholarship",
+        "legacy_titles": ["UWA Global Excellence Scholarship"],
+        "country": "Australia",
+        "region": "Students from all countries",
+        "degree_levels": "Bachelor's, Master's (coursework), Combined Bachelor's and Master's degrees",
+        "duration": "The normal full-time duration of the awardee's course as specified in their letter of offer",
+        "funding_type": "Tuition Fee Waiver",
+        "official_source": "University of Western Australia (UWA)",
+        "official_source_url": "https://www.uwa.edu.au/study/scholarships-and-fees/scholarships/international-scholarships/global-excellence-scholarship",
+        "status": "open",
+        "is_verified": true,
+        "last_verified_date": "2026-10-04",
+        "deadline": "A separate scholarship application is not required and no scholarship deadline is published. The award is made automatically once UWA Admissions assesses your final academic transcripts after you apply for a 2027 course.",
+        "deadline_date": null,
+        "deadline_precision": "rolling",
+        "application_period": "For students starting in 2027. The scholarship is in place for the 2027 to 2029 intakes, so commencement can be deferred to 2028.",
+        "program_type": "Post-admission automatic tuition fee discount",
+        "eligibility_summary": "International students from any country who have applied for and received an offer for an eligible undergraduate or postgraduate UWA course, and who meet the ATAR or WAM threshold for the 10 per cent or 20 per cent tuition discount.",
+        "eligibility": [
+          "Be an international student from any country",
+          "Have received an offer for an eligible undergraduate or postgraduate course for 2027 at the University of Western Australia",
+          "For undergraduate courses: apply for an eligible undergraduate course, combined bachelor's degree, combined bachelor's and master's degree, or Assured Pathway course",
+          "For undergraduate courses: achieve an equivalent of a minimum ATAR of 85.00 for a 10 per cent tuition discount, or 90.00 for a 20 per cent discount",
+          "For postgraduate courses: achieve a minimum WAM of 65.00 for a 10 per cent tuition discount, or 75.00 for a 20 per cent discount",
+          "Undergraduate exclusions: Assured Pathway to Medicine and Assured Pathway to Dental Medicine",
+          "Postgraduate exclusions: Juris Doctor (20820), Doctor of Medicine (91850), Doctor of Dental Medicine (91860), Doctor of Optometry (91590) and UWA Micro-credentials",
+          "Submit final academic transcripts, since scholarship eligibility can only be assessed once final transcripts are received"
+        ],
+        "coverage": [
+          "10 per cent or 20 per cent reduction in tuition fees for the normal full-time duration of the course as specified in the letter of offer"
+        ],
+        "application_method": [
+          "No separate scholarship application; apply for the chosen course and the award is automatic"
+        ],
+        "official_updates_url": "https://www.uwa.edu.au/study/scholarships-and-fees/scholarships/international-scholarships/global-excellence-scholarship",
+        "notes": "The discount is determined by the applicant's equivalent Australian Tertiary Admission Rank (ATAR) or UWA weighted average mark (WAM). The scholarship cannot be held concurrently with any other UWA-issued tuition fee reduction, academic scholarship or award, and continuation is governed by clause 13 of the full terms and conditions."
+      },
+      "programme_detail_official": {
+        "official_source_urls": [
+          "https://www.uwa.edu.au/study/scholarships-and-fees/scholarships/international-scholarships/global-excellence-scholarship"
+        ],
+        "application_link": "https://www.uwa.edu.au/study/login",
+        "official_updates_url": "https://www.uwa.edu.au/study/scholarships-and-fees/scholarships/international-scholarships/global-excellence-scholarship",
+        "catalogue_url": null,
+        "application_cycle": "Annual award aligned to the UWA admissions cycle for 2027 start. The scholarship is in place for the 2027 to 2029 intakes, so a 2027 award holder may defer commencement to 2028.",
+        "deadline_central": null,
+        "deadline_central_display": "A separate scholarship application is not required. The scholarship is awarded automatically to those who are eligible, and eligibility can only be assessed once UWA Admissions receives your final academic transcripts.",
+        "deadline_central_timezone": "Australia/Perth",
+        "deadline_note": "There is no scholarship deadline: no separate application exists and the award follows the course application and the receipt of final transcripts. deadline_precision is rolling and deadline_date is null. The application itself is governed by the UWA course application deadlines, which are not published on this page.",
+        "status": "OPEN",
+        "status_note": "Open for 2027 start, with the scholarship in place for 2027 to 2029 intakes. Applications are open through the UWA course application process.",
+        "funding_amount": null,
+        "funding_currency": null,
+        "funding_period": null,
+        "funding_duration": "Normal full-time duration of the awardee's course as specified in their letter of offer",
+        "tuition_coverage": false,
+        "tuition_coverage_note": "The award is a tuition fee discount of 10 or 20 per cent only. The remaining 80 to 90 per cent of tuition fees is not covered.",
+        "living_cost_coverage": null,
+        "travel_coverage": null,
+        "fully_funded": false,
+        "funding_label": "Annual tuition fee discount of 10 per cent or 20 per cent for the normal full-time duration of the course, set by the applicant's equivalent ATAR or UWA WAM. No stipend, accommodation contribution, travel support or living-cost component is published.",
+        "benefits": [
+          "10 per cent off tuition fees for the normal full-time duration of the course, for an equivalent ATAR of 85.00 or a WAM of 65.00",
+          "20 per cent off tuition fees for the normal full-time duration of the course, for an equivalent ATAR of 90.00 or a WAM of 75.00",
+          "Ability to defer commencement to 2028 and retain the scholarship, since it is in place for the 2027 to 2029 intakes",
+          "Automatic award on the basis of ATAR or WAM, with no separate application"
+        ],
+        "eligibility": [
+          "Students from all countries are eligible",
+          "Offer for an eligible undergraduate or postgraduate course for 2027 at the University of Western Australia",
+          "Undergraduate: eligible undergraduate course, combined bachelor's degree, combined bachelor's and master's degree, or Assured Pathway course",
+          "Undergraduate exclusions: Assured Pathway to Medicine, Assured Pathway to Dental Medicine",
+          "Undergraduate threshold: equivalent ATAR 85.00 for 10 per cent off, ATAR 90.00 for 20 per cent off",
+          "Postgraduate: eligible postgraduate course",
+          "Postgraduate exclusions: Juris Doctor (20820), Doctor of Medicine (91850), Doctor of Dental Medicine (91860), Doctor of Optometry (91590), UWA Micro-credentials",
+          "Postgraduate threshold: WAM 65.00 for 10 per cent off, WAM 75.00 for 20 per cent off",
+          "All combined bachelor's and combined bachelor's and master's degrees are considered eligible",
+          "Final academic transcripts must be submitted, because eligibility can only be assessed once they are received"
+        ],
+        "citizenship_residency": "No citizenship or residency restriction. The official page states \"Students from all countries are eligible.\"",
+        "international_eligibility": "Open to international students from every country who hold an offer for an eligible 2027 UWA course. Domestic fee-paying students are not the target of this award.",
+        "degree_levels": [
+          "Bachelor's",
+          "Master's (coursework)",
+          "Combined Bachelor's degree",
+          "Combined Bachelor's and Master's degree"
+        ],
+        "study_mode": "Normal full-time duration of the course as specified in the letter of offer",
+        "research_requirement": null,
+        "subject_or_agency_requirement": "Any eligible undergraduate or postgraduate course, excluding Assured Pathway to Medicine, Assured Pathway to Dental Medicine, Juris Doctor (20820), Doctor of Medicine (91850), Doctor of Dental Medicine (91860), Doctor of Optometry (91590) and UWA Micro-credentials",
+        "application_method": "No separate scholarship application. Submit an application to the chosen course; UWA Admissions automatically assesses eligibility once final transcripts are provided.",
+        "application_route": "Automatic assessment inside the UWA course application process, confirmed in the student's offer letter and, where the offer was conditional, in a follow-up scholarship contract",
+        "requirements": [
+          "Offer for an eligible 2027 UWA undergraduate or postgraduate course",
+          "Equivalent ATAR of at least 85.00, or WAM of at least 65.00, for the 10 per cent discount",
+          "Equivalent ATAR of at least 90.00, or WAM of at least 75.00, for the 20 per cent discount",
+          "Submission of final academic transcripts for scholarship assessment",
+          "Acceptance of the course offer",
+          "Compliance with the continuation criteria in clause 13 of the full terms and conditions"
+        ],
+        "documents": [
+          "Final academic transcript, which is required before scholarship eligibility can be assessed",
+          "Full terms and conditions for the Global Excellence Scholarship, including clause 13 on criteria for continuation"
+        ],
+        "english_requirement": null,
+        "english_requirement_note": "This page states no English language requirement. UWA publishes its own English language requirements on a separate admissions page, which was not opened in this pass.",
+        "selection_criteria": [
+          "The value of the scholarship is determined by the applicant's equivalent Australian Tertiary Admission Rank (ATAR) or UWA weighted average mark (WAM)",
+          "UWA Admissions assesses eligibility upon submission of the final academic transcript",
+          "Students who already hold the International Student Award and later provide final transcripts are assessed for the Global Excellence Scholarship, and Admissions awards the scholarship with the highest value the student is eligible for",
+          "International and overseas qualifications that reach a given level make a candidate eligible; other programs or qualifications are considered on an individual basis"
+        ],
+        "selection_weighting": null,
+        "duration": "Normal full-time duration of the awardee's course as specified in their letter of offer",
+        "award_holder_conditions": [
+          "Eligibility can only be assessed once final academic transcripts are received; a conditional offer may be issued without the scholarship attached",
+          "The Global Excellence Scholarship may not be held concurrently with any other UWA-issued tuition fee reduction, academic scholarship or award",
+          "Continuation is governed by clause 13, criteria for continuation, of the full terms and conditions",
+          "The scholarship discount is applied automatically by the Fees team to tuition fees payable each semester after the offer is accepted"
+        ],
+        "supplements_or_initiatives": [
+          "Deferral of commencement to 2028 with the scholarship and place retained, under the 2027 to 2029 intake scheme",
+          "Interaction with the UWA International Student Award, where Admissions awards the highest-value scholarship the student is eligible for"
+        ],
+        "official_contacts": {
+          "general": "UWA Future Students Centre, +61 8 6488 1000, open 8.30am to 5.00pm AWST Monday to Friday; enquiries can also be submitted through the UWA international enquiry form",
+          "email": null
+        },
+        "description": "The Global Excellence Scholarship is an annual tuition fee discount awarded automatically by the University of Western Australia to high-achieving international students from any country who take an eligible 2027 undergraduate or postgraduate course. The discount is 10 or 20 per cent of tuition fees for the normal full-time duration of the course, and its value is set by the applicant's equivalent ATAR for undergraduate study or UWA weighted average mark for postgraduate study. No separate scholarship application is required, because UWA Admissions assesses eligibility automatically once final transcripts are received. The scholarship is in place for the 2027 to 2029 intakes and cannot be held alongside any other UWA tuition fee reduction, scholarship or award.",
+        "program_type": "Post-admission automatic tuition fee discount",
+        "region": "Students from all countries, at the University of Western Australia",
+        "coverage": "Tuition fees only, at 10 or 20 per cent for the normal full-time duration of the course. No accommodation, living-cost, travel or stipend component is published.",
+        "last_verified_date": "2026-10-04"
+      },
+      "programme_detail_applicant_utility": {
+        "application_readiness_checklist": [
+          "Check your course against the exclusion list before applying, since medicine, dental medicine, optometry, the Juris Doctor, Assured Pathways to Medicine and Dental Medicine, and UWA Micro-credentials are ineligible",
+          "Work out whether your equivalent ATAR clears 85.00 or 90.00 for undergraduate study, or whether your WAM clears 65.00 or 75.00 for postgraduate study",
+          "Apply for the course itself; there is no separate scholarship application to submit",
+          "Submit final academic transcripts as soon as they are issued, because scholarship eligibility cannot be assessed without them and a conditional offer may arrive with no scholarship attached",
+          "Decide between this scholarship and any other UWA tuition fee reduction or award, since they cannot be held together",
+          "Note that the discount is worth more than its headline percentage implies only if you finish the course full-time within the normal duration set out in your offer"
+        ],
+        "common_rejection_risks": [
+          "Applying to an excluded course, most commonly the Doctor of Medicine or the Juris Doctor",
+          "Predicted rather than final results being used to assess eligibility",
+          "Holding another UWA-issued tuition fee reduction or scholarship that conflicts with this award",
+          "Missing the equivalent ATAR or WAM threshold, or submitting qualifications UWA cannot convert",
+          "Failing the continuation criteria in clause 13 of the terms and conditions"
+        ],
+        "estimated_uncovered_costs": [
+          "80 to 90 per cent of tuition fees, depending on which discount tier you are awarded",
+          "All living and accommodation costs, which are not covered",
+          "Travel costs to and from Australia",
+          "Course-related costs such as textbooks, equipment and field trips"
+        ],
+        "document_audit": [
+          "Final academic transcript, mandatory for scholarship assessment",
+          "Evidence supporting your equivalent ATAR or WAM",
+          "Your UWA course application and offer letter",
+          "For international applicants, the English proficiency evidence required by UWA admissions"
+        ],
+        "alerts": [
+          {
+            "trigger": "Final transcripts gate everything",
+            "message": "Admissions may issue a conditional offer without the scholarship attached if your final transcripts have not arrived, so submit them promptly."
+          },
+          {
+            "trigger": "Two-tier value, not one",
+            "message": "The award is worth 10 or 20 per cent depending on whether you clear the lower or higher ATAR/WAM threshold, so it is not a single fixed percentage."
+          },
+          {
+            "trigger": "Deferral is safe",
+            "message": "Because the scholarship is in place for the 2027 to 2029 intakes, you can defer commencement to 2028 without losing it."
+          }
+        ],
+        "submission_workflow": [
+          "Choose an eligible UWA course and confirm it is not on the exclusion list",
+          "Apply for the course through the UWA application portal; do not look for a scholarship form",
+          "Provide final academic transcripts as soon as they are available",
+          "Wait for the scholarship outcome, which appears in your offer letter or in a follow-up scholarship contract",
+          "If offered, accept the offer; the Fees team applies the discount automatically each semester",
+          "Review clause 13 of the full terms and conditions for the continuation criteria before accepting"
+        ]
+      },
+      "programme_detail_verification": {
+        "cycle_verified": "2027 intake cycle, in place for 2027 to 2029, verified 2026-10-04",
+        "verification_confidence": 0.9,
+        "official_fields_confirmed": [
+          "funding_type",
+          "degree_levels",
+          "eligibility",
+          "selection_criteria",
+          "award_holder_conditions",
+          "status",
+          "application_method",
+          "official_source",
+          "program_type"
+        ],
+        "institution_check_required": [
+          "Applicants must confirm how UWA converts their particular international qualification into an equivalent ATAR or WAM, since the official page says other programs or qualifications are considered on an individual basis",
+          "Applicants must read clause 13, criteria for continuation, of the full terms and conditions, which is a linked PDF that was not opened in this pass"
+        ],
+        "unverified_or_removed_claims": [
+          "The award is expressed only as a percentage discount, so funding_amount and funding_currency are null and tuition_coverage is false.",
+          "No scholarship deadline is published on the page, so deadline_date is null and deadline_precision is rolling; the underlying UWA course application deadlines are not published here.",
+          "No English language requirement appears on this page; UWA's separate English language requirements page was linked in the site navigation but not opened.",
+          "No accommodation, living-cost or travel component is published, so living_cost_coverage and travel_coverage are null rather than false."
+        ],
+        "source_citations": [
+          "https://www.uwa.edu.au/study/scholarships-and-fees/scholarships/international-scholarships/global-excellence-scholarship"
+        ],
+        "researched_by": "w1_05a1"
+      },
+      "logo_override": null,
+      "research_notes": {
+        "logo": "Result is null. Scanned the scholarship page, the UWA homepage and the site header container on uwa.edu.au for every /logo/i, /crest/i and /brand/i image, og:image and CSS background. UWA's only first-party logo asset is https://static.weboffice.uwa.edu.au/visualid/devcore/1/_assets/img/uwacrest-small-white.svg, used identically in the site header (id uwa-header__container-logo) and the footer. Despite being on the uwa.edu.au registrable domain, the filename and its white header treatment identify it as the white-on-transparent variant, which the brief bans, so I probed a sibling dark-variant path, https://static.weboffice.uwa.edu.au/visualid/devcore/1/_assets/img/uwacrest-small.svg, and it returned HTTP 404 with content-type text/html, so no dark first-party variant exists to report. The page's og:image is /_assets/opengraph.png, a generic open-graph banner rather than a logo, which is also the asset the stored record was already using.",
+        "unverified": [
+          "Clause 13, criteria for continuation, in the linked full terms and conditions PDF",
+          "How UWA converts a specific international qualification into an equivalent ATAR or WAM",
+          "Whether a dark non-header UWA crest exists anywhere else on uwa.edu.au"
+        ],
+        "substitution": null,
+        "official_pages_read": [
+          "https://www.uwa.edu.au/study/scholarships-and-fees/scholarships/international-scholarships/global-excellence-scholarship",
+          "https://www.uwa.edu.au/"
+        ],
+        "degree_level_confirmed": "The official page states candidates must be \"applying for an eligible undergraduate course, combined bachelor's degree, combined bachelor's and master's degree, or Assured Pathway course\" or \"applying for an eligible postgraduate course\", and that the discount applies \"for the entire duration of your eligible undergraduate or postgraduate course\". This confirms the stored Bachelor's and coursework Master's levels and adds the combined degrees.",
+        "url_observed": "https://www.uwa.edu.au/study/scholarships-and-fees/scholarships/international-scholarships/global-excellence-scholarship (stored URL resolves and is the live page, no change needed)",
+        "contradictions": [
+          "Stored deadline_display \"indicated in your offer.\" was a fragment of the FAQ rather than a deadline. The official position is that no separate scholarship application or deadline exists and the award is automatic, so the record now says that in full.",
+          "Stored deadline_precision \"month\" was wrong; the official page publishes no scholarship date at all, so precision is rolling and deadline_date is null.",
+          "Stored funding amount was null and remains null, but the benefit is now precisely specified: 10 or 20 per cent of tuition fees, set by equivalent ATAR or WAM.",
+          "Stored program_type was not a programme type but marketing copy about choosing a course (\"Undergraduate students Applying for an undergraduate degree? No matter your career goals, you'll find a course that's the right fit for you.\"); this is a data-quality defect in the stored record and has been replaced with \"Post-admission automatic tuition fee discount\".",
+          "Stored region \"Oceania\" was wrong: the official page states \"Students from all countries are eligible.\" This is now corrected to all countries.",
+          "The stored image was the site's generic open-graph banner (/_assets/opengraph.png, image_kind official_banner), not the UWA logo; UWA publishes no compliant first-party logo asset, so logo_override is null rather than substituting the banned white crest.",
+          "The stored record implied a single undifferentiated benefit; the official page publishes two tiers (ATAR 85 / WAM 65 for 10 per cent, ATAR 90 / WAM 75 for 20 per cent) and a specific exclusion list, none of which was captured before."
+        ],
+        "skeleton": false
+      }
+    }
+  ]
+}

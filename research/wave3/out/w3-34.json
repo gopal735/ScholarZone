@@ -1,0 +1,21 @@
+{
+  "agent_id": "w3_34",
+  "shard": "w3-34",
+  "host": "jobs.inria.fr",
+  "today": "2026-10-04",
+  "logo_override": {
+    "url": "https://www.inria.fr/sites/default/files/2024-05/logo-institut-carnot-inria.png",
+    "page_url": "https://www.inria.fr/en",
+    "official_host": true,
+    "alt_text": "Inria",
+    "validation_result": "verified",
+    "validation_detail": "png 260x109, probed HTTP 200 with content-type image/png (11720 bytes). Rendered on a white background and visually confirmed: the Institut Carnot device beside the Inria wordmark set in white on a solid navy plate. 0% transparent pixels, so the white wordmark sits on an opaque navy field and stays legible on a light card - it is not a white-on-transparent wordmark. Awarding body is Inria, the French National Institute for Research in Digital Science and Technology, so this is the research institute's own mark.",
+    "image_kind": "official_government",
+    "image_format": "png",
+    "verified_at": "2026-10-04T11:20:00+00:00",
+    "host_evidence": "same_registrable_domain",
+    "_award": "PhD Position F/M Spatio-temporal analysis of remote sensing data at large scales (Inria offer 2026-10352)"
+  },
+  "target_ids": [549],
+  "notes": "Awarding body for target 549 is Inria (Centre Inria d'Universite Cote d'Azur, TITANE team), so an Inria mark is correct and a host-university mark would have been a provenance error. www.inria.fr is fronted by an Anubis proof-of-work WAF that returns an HTML interstitial to webfetch, so per brief section 2.4 I opened it with Playwright, waited out the challenge, and read the markup there. Inria's own site header logo is an inline SVG with no probeable URL, and its footer referenced two file assets. Rejected on rule 3 (white-on-transparent): jobs.inria.fr/images/inr_logo_blanc.png is the only logo in the job portal's markup and pixel analysis gives 84.8% transparent with 100% of its opaque pixels near-white (645x227); www.inria.fr/sites/default/files/2024-05/Footer_HR_logo_260.png is 91.0% transparent with 100% near-white. IMPORTANT REJECTION: jobs.inria.fr/apple-touch-icon.png probes clean (HTTP 200, image/png, 129x129, 20.7% transparent, mean opaque rgb(37,37,37)) and would pass a byte-level rule-3 check, but rendering it on white shows a black circle with a white script 'sf' - that is Softonic branding, not Inria. Rejecting it is the whole point of rendering rather than trusting pixel statistics. Also rejected as too small to be usable: jobs.inria.fr/favicon-16x16.png and /favicon.ico (both a single 16x16 red tile carrying the Inria 'i'). Probed and 404: /images/inr_logo.png, /images/logo-inria.png, /images/inr_logo_couleur.png, /images/inria-logo.png, /images/inr_logo.svg, /favicon-32x32.png, www.inria.fr/favicon.ico, www.inria.fr/apple-touch-icon.png, and four guessed filenames in the 2024-05 assets folder. What is reported is a co-branded Institut Carnot / Inria lockup rather than a standalone Inria wordmark: no standalone non-white Inria file exists on any inria.fr host that I could reach, and the lockup does carry Inria's own wordmark on Inria's own domain. Recorded image_kind as official_government because Inria is a French national research institute rather than a university. Note for the merge: this asset is served from www.inria.fr, a sibling of the shard host jobs.inria.fr, so it rests on the brief's same_registrable_domain value (inria.fr) rather than being a subdomain of jobs.inria.fr."
+}

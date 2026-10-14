@@ -1,0 +1,21 @@
+{
+  "agent_id": "w3_10",
+  "shard": "w3-10",
+  "host": "albertainnovates.ca",
+  "today": "2026-10-04",
+  "logo_override": {
+    "url": "https://albertainnovates.ca/wp-content/uploads/2023/06/AI-LOGO-HORIZONTAL_COLOUR-scaled.jpg",
+    "page_url": "https://albertainnovates.ca/funding/graduate-student-scholarships/",
+    "official_host": true,
+    "alt_text": "Alberta Innovates",
+    "validation_result": "verified",
+    "validation_detail": "webfetch of the asset URL returned 'Image fetched successfully' (HTTP 200 + image content type, not HTML). WP REST media record id=2661 (slug ai-logo-horizontal_colour, title 'AI LOGO HORIZONTAL_COLOUR') confirms mime_type=image/jpeg and media_details 2560x334 for the -scaled file. Rendered output shows the full Alberta Innovates horizontal primary wordmark: navy 'ALBERTA INNOVATES' lettering plus the three-strand triangular ribbon mark in green/cyan/navy on an opaque white field. Colour and mark geometry match the live inline header SVG on the site (fills #003a70 wordmark, #00b189 green, #00abd9 cyan), confirming it is the same brand asset rather than a different body's logo. Because it is a JPEG it cannot be white-on-transparent, and the rendered pixels confirm dark/coloured artwork.",
+    "image_kind": "official_logo",
+    "image_format": "jpg",
+    "verified_at": "2026-10-04T00:00:00+00:00",
+    "host_evidence": "same_registrable_domain",
+    "_award": "Alberta Innovates Graduate Student Scholarships"
+  },
+  "target_ids": [499],
+  "notes": "Site is WordPress (Yoast SEO, theme 'abinnovates') and webfetch was not blocked, so no Playwright fallback was needed. Both https://albertainnovates.ca/ and the shard page https://albertainnovates.ca/programs/graduate-student-scholarships (canonical: https://albertainnovates.ca/funding/graduate-student-scholarships/) were fetched and scanned. Neither page exposes a logo via og:image or a schema.org 'logo' property - the Yoast ld+json graph contains only WebPage/BreadcrumbList/WebSite nodes - and no <img> with 'logo' in its src exists anywhere in either document. All <img>/icon references in <head> are the same-origin WordPress favicon crops (https://albertainnovates.ca/wp-content/uploads/2023/03/cropped-favicon-{32x32,192x192,180x180,270x270}.png, also the msapplication-TileImage), which are the small icon mark only, not the wordmark, so they were not used. The live header and footer logos are BOTH inline <svg> blocks, not files, so neither is fetchable: header .identity svg viewBox='0 0 612 239' with fills #003a70/#00abd9/#00b189 (full colour, but inline), and footer .footer-logo svg viewBox='0 0 166 64' whose every path is fill=\"white\" - a white-on-transparent wordmark, rejected outright under the hard ban. Guessed paths /favicon.ico, /apple-touch-icon.png, /assets/logo.svg, /images/logo.png and /static/logo.svg were therefore not relied on; instead of guessing, the site's own media library was enumerated authoritatively via the public REST endpoint https://albertainnovates.ca/wp-json/wp/v2/media?search=logo&per_page=50, which returned real source_url values rather than guessed ones. From that list the partner/other-body marks were discarded by name (Amii, InnoTech, C-FER, ARECCI, CERIN, Alberta SPOR Support Unit, i4, SXSW, Brightsquid, AVCCB, Inside Education, WPC-Canada, Carbon Fibre Grand Challenge, IDEATE Alberta, EDA, carbon-capture-canada) as logos belonging to other bodies, as were the co-branded 'Alberta-Health-and-Alberta-Innovates-logos.png' (two bodies) and the 2024/07 'Logos.png'. The surviving candidate, 2023/06/AI-LOGO-HORIZONTAL_COLOUR-scaled.jpg, is Alberta Innovates' own horizontal colour primary logo, hosted on the awarding body's own registrable domain and probed to a 200 image response. Chosen over the sibling AI-Logo-Square-Green.png (square icon mark) and over the smaller -300x39/-576x75/-1200x157 derivatives because -scaled.jpg is the 2560x334 full-resolution original of the wordmark."
+}

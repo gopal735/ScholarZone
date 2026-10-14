@@ -1,0 +1,124 @@
+{
+  "agent": "agent_126",
+  "records": [
+    {
+      "id": 324,
+      "official": {
+        "official_source_urls": [
+          "https://bs.china-embassy.gov.cn/eng/sggg/202510/t20251028_11742717.htm"
+        ],
+        "application_link": "https://bs.china-embassy.gov.cn/eng/sggg/202510/t20251028_11742717.htm",
+        "catalogue_url": null,
+        "official_updates_url": "https://bs.china-embassy.gov.cn/eng/sggg",
+        "deadline_central": "2026-02-14",
+        "deadline_central_display": "February 14, 2026",
+        "deadline_note": "The 2026/2027 notice required the online application and documents to be submitted in the system before February 14, 2026; the Embassy then forwarded recommended applications to the China Scholarship Council between February 24 and March 3, 2026, and that window has now closed.",
+        "application_cycle": "2026/2027 cycle (announcement published 2025-10-28; results July-August 2026)",
+        "status": "CLOSED",
+        "status_note": "The 2026/2027 window closed on 14 February 2026 with results released in the system in July-August 2026; the Embassy has published no next-cycle date.",
+        "tuition_coverage_note": "Both strands are described as 'Full scholarship'; the Bilateral Scholarship 'Includes international travel expenses' while the Unilateral Scholarship 'Does not include international travel expenses'. No itemised tuition or living-cost breakdown is published.",
+        "funding_amount": null,
+        "funding_currency": null,
+        "funding_period": null,
+        "tuition_coverage": true,
+        "living_cost_coverage": null,
+        "travel_coverage": null,
+        "fully_funded": false,
+        "benefits": [
+          "Bilateral Scholarship: 1 place, full scholarship, includes international travel expenses",
+          "Unilateral Scholarship: 3 places, full scholarship, does not include international travel expenses",
+          "Admission notice and JW201 visa form downloadable from the system once selected"
+        ],
+        "eligibility": [
+          "Citizens of a country other than the People's Republic of China, in good health both mentally and physically",
+          "Age ceilings by level: high school graduate under 25 (undergraduate), bachelor's holder under 35 (master's), master's holder under 40 (doctoral), high school graduate under 45 (general scholar), master's holder or associate professor under 50 (senior scholar)",
+          "China Scholastic Competency Assessment (CSCA, www.csca.cn) score report required when applying for bachelor programs",
+          "Chinese proficiency of HSK Level 3 for Chinese-taught general scholar and senior scholar programs; HSK Level 4 for Chinese-taught master's or doctoral programs (Chinese-language students exempted from the general scholar requirement)",
+          "Meet the admission requirements of the applied universities in terms of academic ability, language proficiency and other relevant criteria"
+        ],
+        "requirements": [
+          "Contact favourite Chinese universities and obtain the Pre-Admission Documents before submitting the online application",
+          "Take the CSCA exam on December 21, 2025 or January 25, 2026 for a September 2026 intake (bachelor's applicants)",
+          "Uploaded supporting documents must be clear, authentic and valid"
+        ],
+        "documents": [
+          "Application Form for Chinese Government Scholarship (in Chinese or English)",
+          "Passport home page: clear scanned copy of the information page of an ordinary passport, valid for at least 12 months from the expected start date of study",
+          "Notarised highest diploma (prospective diploma winners submit official proof of student status) and academic transcripts, with notarised Chinese or English translations where the original is not in Chinese or English",
+          "Language qualification certificates (valid HSK score report for Chinese-taught programmes; IELTS or TOEFL-type certificates for programmes taught in other languages) and the CSCA Score Report for bachelor's applicants",
+          "Pre-Admission Documents issued by the universities applied to, plus a Study Plan or Research Proposal in Chinese or English (minimum 200 words for undergraduates, 500 for non-degree students, 800 for postgraduates) and two recommendation letters from professors or associate professors for graduate or senior scholar programmes",
+          "Supporting items: Example of Art/Other Supporting Documents for art or design majors; valid guardians' documents in China for applicants under 18; photocopy of the completed Foreigner Physical Examination Form for stays over 6 months; non-criminal record report issued by the local public security authority usually within 6 months prior to submission"
+        ],
+        "selection_criteria": [
+          "The embassy sends all recommended applications to the China Scholarship Council for final review"
+        ],
+        "coverage": [
+          "Bilateral Scholarship (1 place): full scholarship including international travel expenses",
+          "Unilateral Scholarship (3 places): full scholarship excluding international travel expenses"
+        ],
+        "application_method": [
+          "Submit the online application (www.campuschina.org) and the corresponding application documents in the system before February 14, 2026, under Bahamian Program Category A, Agency Number 0441",
+          "No paper material is required"
+        ],
+        "application_route": "Apply online at www.campuschina.org under Bahamian Program Category A, Agency Number 0441 before 14 February 2026; no paper material is required.",
+        "study_mode": null,
+        "citizenship_residency": "Applicants must be citizens of a country other than the People's Republic of China; announced by the Embassy of the PRC in The Bahamas",
+        "international_eligibility": "Yes - non-PRC citizens",
+        "subject_or_agency_requirement": null,
+        "research_requirement": "Study Plan or Research Proposal in Chinese or English (minimum 200 words for undergraduates, 500 words for non-degree students, 800 words for postgraduates)",
+        "duration": null,
+        "description": "The 2026/2027 Chinese Government Scholarship announced by the Embassy of the People's Republic of China in The Bahamas comprises one bilateral place and three unilateral places for undergraduate, master's, doctoral, advanced general studies and advanced higher studies programmes; both strands are described as full scholarships, but only the bilateral place includes international travel expenses.",
+        "region": "Asia",
+        "program_type": "Chinese Government Scholarship - Bilateral (1 place) and Unilateral (3 places)",
+        "english_requirement": "Applicants for programmes taught in other languages are required to provide relevant language proficiency certificates, such as IELTS or TOEFL score reports, in accordance with the requirements of each university"
+      },
+      "verification": {
+        "source_citations": [
+          "https://bs.china-embassy.gov.cn/eng/sggg/202510/t20251028_11742717.htm"
+        ],
+        "last_verified_date": "2026-10-10",
+        "verification_status": "confirmed",
+        "confidence": "high",
+        "not_confirmed": [
+          "funding_amount, funding_currency and funding_period (no figures are published in the notice)",
+          "living_cost_coverage (described as 'full scholarship' without itemising accommodation or stipend)",
+          "travel_coverage as a single value (travel is included for the bilateral strand but excluded for the three unilateral places)",
+          "the next cycle's deadline"
+        ],
+        "notes": "Strand structure, eligibility, documents, agency number and timetable read from the Embassy's 28 October 2025 notice; amounts left null because the notice publishes none, so fully_funded is recorded false."
+      },
+      "applicant_utility": {
+        "summary": "The Bahamas notice splits the 2026/2027 Chinese Government Scholarship into four places: one bilateral scholarship that includes international airfare and three unilateral ones that do not. Everything is filed in one place - campuschina.org under Bahamian Program Category A, Agency Number 0441 - and, as with the other embassy routes, a pre-admission document from your target university is a hard prerequisite. Because the places are few and travel cover differs by strand, establish which strand you are competing for before you budget.",
+        "best_fit": "Applicants on the Bahamian track (non-PRC citizens) who can win pre-admission from a Chinese university and want funded undergraduate through doctoral study.",
+        "application_readiness_checklist": [
+          "Secure pre-admission documents from your target Chinese universities before filing",
+          "Bachelor's applicants: sit the CSCA on 21 December 2025 or 25 January 2026 and upload the score report",
+          "Verify your passport runs at least 12 months beyond the study start date",
+          "Draft the study plan to the level-specific word count (200/500/800 words)",
+          "File at campuschina.org with Agency Number 0441 before 14 February 2026 and check every upload for legibility"
+        ],
+        "common_rejection_risks": [
+          "Missing pre-admission documents - the notice makes them mandatory for all applicants",
+          "No CSCA score report for bachelor's applications",
+          "Using the wrong agency number or programme category and landing outside the Bahamian allocation",
+          "Unclear scans; the notice warns that applicants bear the consequences of unclear or unidentifiable uploads",
+          "With only four places in total, there is little margin for a weak file"
+        ],
+        "estimated_uncovered_costs": "For the three unilateral places, international airfare is not covered; visa costs, notarisation and personal spending apply to all strands.",
+        "document_audit": [
+          "The non-criminal record report must usually be issued within 6 months before submission",
+          "The physical examination form is valid for six months and must be fully completed, signed, stamped and sealed with the applicant's photograph",
+          "Notarised translations are required for any document not in Chinese or English",
+          "Under-18 applicants need valid documents of their legal guardians in China"
+        ],
+        "alerts": [
+          "Travel cover depends on the strand - the bilateral place includes it, the unilateral places do not",
+          "Holding other Chinese government awards voids the CGS; concealment means a three-year application ban",
+          "Results surface in the system only in July-August, five months after the deadline",
+          "No next-cycle date is published - monitor the Embassy notices page"
+        ],
+        "submission_workflow": "Single portal file at campuschina.org before 14 February 2026; the Embassy forwards recommendations to the CSC between 24 February and 3 March and results appear in the system in July-August."
+      }
+    }
+  ]
+}

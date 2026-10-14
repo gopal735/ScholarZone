@@ -1,0 +1,21 @@
+{
+  "agent_id": "w3_09",
+  "shard": "w3-09",
+  "host": "aims.ac.za",
+  "today": "2026-10-04",
+  "logo_override": {
+    "url": "https://aims.ac.za/images/logo.png",
+    "page_url": "https://aims.ac.za/academics/prospective_students",
+    "official_host": true,
+    "alt_text": "AIMS",
+    "validation_result": "verified",
+    "validation_detail": "Site-declared og:image/twitter:image on every page (declared 2048x411, actual PNG IHDR 2048x411). Probed: HTTP 200, Content-Type image/png, 154334 bytes, valid 89-50-4E-47 signature, ColorType 6 RGBA. Pixel sampling over 93571 samples: 0 near-white pixels among opaque pixels; 100% of opaque pixels are near-black wordmark or #8a1e04 orange, so this is the dark/orange wordmark and not a white-on-transparent variant. Renders correctly on white.",
+    "image_kind": "official_logo",
+    "image_format": "png",
+    "verified_at": "2026-10-04T00:00:00+00:00",
+    "host_evidence": "same_registrable_domain",
+    "_award": "site_declared_og_image_and_twitter_image_on_shard_page_and_homepage"
+  },
+  "target_ids": [522],
+  "notes": "Host aims.ac.za is the African Institute for Mathematical Sciences South Africa site (Hugo static build). Candidates found in markup: (a) og:image + twitter:image = https://aims.ac.za/images/logo.png on both the homepage and /academics/prospective_students - SELECTED; (b) navbar/footer brand img-light = /images/logo_hu4600616865369929826.webp (280x411 dark wordmark) - probed 200 image/webp but smaller and not needed; (c) navbar/footer brand img-dark = /images/logo-w_hu14195724773755920410.webp - probed 200 but REJECTED: renders as a white-on-transparent wordmark, which is a hard ban; (d) PNG fallback /images/logo_hu10911764487100562301.png - probed 200 image/png, also dark wordmark, but 280px and superseded by (a). Site uses a light/dark theme switcher with paired img-light / img-dark brand images, so only the dark wordmark variants were eligible. No third-party host was used; every selected asset is first-party on aims.ac.za."
+}

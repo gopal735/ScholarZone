@@ -1,0 +1,1335 @@
+{
+  "agent_id": "w2_41",
+  "shard": "w2-41",
+  "today": "2026-10-04",
+  "records": [
+    {
+      "outcome": "new",
+      "new_scholarship": {
+        "name": "Kingdom of Morocco – Government of Rwanda Scholarships (2026/2027)",
+        "country": "Morocco",
+        "region": "Africa",
+        "degree_levels": "Diploma, Bachelor's, Master's, PhD",
+        "funding_type": "Not specified",
+        "program_type": "Bilateral government scholarship",
+        "official_source": "Kingdom of Morocco, scholarship call published by the Higher Education Council (HEC) of Rwanda",
+        "official_source_url": "https://www.hec.gov.rw/fileadmin/user_upload/HEC/Scholarships/KINGDOM_OF_MOROCCO_-__GOVERNMENT_OF_RWANDA_SCHOLARSHIPS.pdf",
+        "catalogue_url": "https://www.hec.gov.rw/updates/scholarships",
+        "official_updates_url": "https://www.hec.gov.rw/updates/scholarships",
+        "status": "upcoming",
+        "is_verified": true,
+        "last_verified_date": "2026-10-04",
+        "deadline": "29 August 2026 (2026/2027 cycle)",
+        "deadline_date": null,
+        "deadline_precision": "recurring",
+        "application_period": "Announced 26 August 2026 for entry in academic year 2026/2027; the 2026/2027 window closed on 29 August 2026.",
+        "eligibility_summary": "Rwandan nationals applying through the Higher Education Council of Rwanda. Diploma and bachelor's candidates must have completed STEM-related combinations of technical secondary school or secondary studies in 2024/2025 and scored at least 70% in the 2025 national examinations. Master's and PhD candidates must hold at least 14/20 (2nd class upper division) or equivalent from the previous completed level.",
+        "eligibility": [
+          "Rwandan national applying through the Higher Education Council (HEC) of Rwanda",
+          "Diploma (technical and vocational) candidates: completed a Technical Secondary School (TSS) STEM-related combination in 2024/2025 with at least 70% in the 2025 national examination",
+          "Bachelor's (general education) candidates: completed secondary studies in a STEM-related combination in 2024/2025 with at least 70% in the 2025 national examination",
+          "Master's and PhD candidates: at least 14/20 (2nd class upper division) or equivalent at the previous completed level"
+        ],
+        "coverage": [
+          "Study at Diploma, bachelor's, master's and PhD level",
+          "Studies taught in French at Moroccan public training institutions and universities"
+        ],
+        "benefits": [],
+        "requirements": [
+          "Application letter addressed to the Director General of HEC indicating the programme the candidate wishes to study",
+          "Copy of national identity card or valid passport",
+          "Copy of transcript of the last high school year (diploma and bachelor's candidates) or transcript of the previous university level (master's and PhD candidates)",
+          "Copy of certificate or degree of the most recently completed level of study"
+        ],
+        "required_documents": [
+          "Application letter to the Director General of HEC",
+          "Copy of ID or valid passport",
+          "High school transcript (diploma and bachelor's applicants)",
+          "Previous university-level transcript (master's and PhD applicants)",
+          "Certificate or degree of the most recently completed level"
+        ],
+        "application_method": [
+          "Submit the complete application file online through HEC MIS at https://hecmis.hec.gov.rw/",
+          "After submitting through HEC MIS, complete the additional online form linked from the announcement"
+        ],
+        "english_requirement": null,
+        "selection_notes": "Applications are submitted to Rwanda's Higher Education Council, which forwards them under the Morocco–Rwanda bilateral scheme.",
+        "best_fit": "Rwandan students who have just completed secondary school or a first degree and want to study in French at a Moroccan public institution.",
+        "funding_amount": null,
+        "funding_currency": null,
+        "funding_period": null,
+        "notes": "The official public announcement states the scholarship is offered \"at Diploma, Bachelors, Masters and PhD level commencing in academic year 2026/2027 taught in French from Moroccan public training institutions/ universities\". It does not publish any monetary value, so no funding amount is recorded.",
+        "duration": null,
+        "image_url": null,
+        "image_source_url": null,
+        "image_source_type": null,
+        "image_alt_text": null,
+        "image_verified_at": null,
+        "description": "A bilateral scholarship scheme in which the Kingdom of Morocco awards places to Rwandan nationals to study at Moroccan public training institutions and universities, taught in French. The 2026/2027 call covers diploma, bachelor's, master's and PhD levels. Applications are handled by Rwanda's Higher Education Council through its HEC MIS online system rather than directly by the candidate. The published 2026/2027 application deadline was 29 August 2026, so this cycle has closed and the next call is expected in the same late-August window."
+      },
+      "programme_detail_official": {
+        "official_source_urls": [
+          "https://www.hec.gov.rw/updates/scholarships",
+          "https://www.hec.gov.rw/fileadmin/user_upload/HEC/Scholarships/KINGDOM_OF_MOROCCO_-__GOVERNMENT_OF_RWANDA_SCHOLARSHIPS.pdf"
+        ],
+        "application_link": "https://hecmis.hec.gov.rw/",
+        "official_updates_url": "https://www.hec.gov.rw/updates/scholarships",
+        "catalogue_url": "https://www.hec.gov.rw/updates/scholarships",
+        "application_cycle": "2026/2027 academic year; announcement published 26 August 2026, application deadline 29 August 2026",
+        "deadline_central": null,
+        "deadline_central_display": "Application deadline: 29/08/2026",
+        "deadline_central_timezone": "Africa/Kigali",
+        "deadline_note": "The official public announcement gives the deadline as 29/08/2026, which is before today's date of 2026-10-04, so the 2026/2027 cycle is closed. No next-cycle date is published, so deadline_date is left null and precision is recorded as recurring.",
+        "status": "UPCOMING",
+        "status_note": "2026/2027 cycle closed on 29 August 2026. The award is announced annually by Rwanda's Higher Education Council, so the next call is expected in the same late-August window, but no next-cycle date is published.",
+        "funding_amount": null,
+        "funding_currency": null,
+        "funding_period": null,
+        "funding_duration": null,
+        "tuition_coverage": null,
+        "tuition_coverage_note": "The official announcement describes the scheme as scholarships covering study at diploma, bachelor's, master's and PhD level but does not state whether tuition, accommodation or a stipend are paid. No tuition coverage is claimed.",
+        "living_cost_coverage": null,
+        "travel_coverage": null,
+        "fully_funded": false,
+        "funding_label": "Bilateral Moroccan government scholarship places at Diploma, bachelor's, master's and PhD level; the official announcement publishes no monetary value, so no coverage can be confirmed and fully_funded is false.",
+        "benefits": [
+          "Scholarship place at Diploma, bachelor's, master's or PhD level",
+          "Study in French at Moroccan public training institutions and universities"
+        ],
+        "eligibility": [
+          "Rwandan citizen applying through the Higher Education Council of Rwanda",
+          "Diploma (technical and vocational): completed Technical Secondary School STEM-related combination in 2024/2025 with at least 70% in the 2025 national examination",
+          "Bachelor's (general education): completed secondary studies in a STEM-related combination in 2024/2025 with at least 70% in the 2025 national examination",
+          "Master's and PhD: at least 14/20 (2nd class upper division) or equivalent at the previous completed level"
+        ],
+        "citizenship_residency": "Rwandan citizens only, applying through the Higher Education Council of Rwanda",
+        "international_eligibility": "Not open to non-Rwandan applicants; Rwanda allocates its bilateral places to its own nationals",
+        "degree_levels": [
+          "Diploma",
+          "Bachelor's",
+          "Master's",
+          "PhD"
+        ],
+        "study_mode": null,
+        "research_requirement": null,
+        "subject_or_agency_requirement": "STEM-related combinations required for diploma and bachelor's applications",
+        "application_method": "Online application through HEC MIS, followed by the additional online form linked in the announcement",
+        "application_route": "https://hecmis.hec.gov.rw/",
+        "requirements": [
+          "Application letter addressed to the Director General of HEC indicating the programme to be studied",
+          "Copy of ID or valid passport",
+          "High school transcript for diploma and bachelor's candidates",
+          "Transcript of the previous university level for master's and PhD candidates",
+          "Certificate or degree of the most recently completed level of study"
+        ],
+        "documents": [
+          "Application letter to the Director General of HEC",
+          "Copy of ID or valid passport",
+          "Last high school year transcript",
+          "Previous university-level transcript",
+          "Certificate or degree of the most recently completed level"
+        ],
+        "english_requirement": null,
+        "english_requirement_note": "The announcement states the studies are taught in French and sets no English requirement.",
+        "selection_criteria": [
+          "Minimum 70% in the 2025 national examinations for diploma and bachelor's applicants",
+          "STEM-related school combinations for diploma and bachelor's applicants",
+          "At least 14/20 (2nd class upper division) or equivalent for master's and PhD applicants"
+        ],
+        "selection_weighting": null,
+        "duration": null,
+        "award_holder_conditions": [],
+        "supplements_or_initiatives": [],
+        "official_contacts": {
+          "general": "Higher Education Council (HEC) of Rwanda, Ministry of Education Building, P.O. Box 6311 Kigali, Rwanda",
+          "email": "info@hec.gov.rw",
+          "phone": "0786823101"
+        },
+        "description": "Bilateral scholarship places offered by the Kingdom of Morocco to the Government of Rwanda for study at Diploma, bachelor's, master's and PhD level in academic year 2026/2027, taught in French at Moroccan public training institutions and universities. Rwanda's Higher Education Council receives and submits all applications through the HEC MIS portal. The official announcement sets a 29 August 2026 deadline.",
+        "program_type": "Bilateral government scholarship",
+        "region": "Africa",
+        "coverage": "Studies at Moroccan public training institutions and universities, taught in French, at diploma, bachelor's, master's and PhD level",
+        "last_verified_date": "2026-10-04"
+      },
+      "programme_detail_applicant_utility": {
+        "application_readiness_checklist": [
+          "Confirm you are a Rwandan national with an HEC MIS account",
+          "Check whether your secondary combination is STEM-related (required for diploma and bachelor's applications)",
+          "Have your 2025 national examination certificate showing at least 70% ready",
+          "For master's or PhD, have your previous transcript showing at least 14/20 or equivalent",
+          "Prepare the application letter addressed to the Director General of HEC naming the programme you want to study",
+          "Scan the ID or passport and the required transcripts in the format HEC MIS accepts",
+          "Submit through HEC MIS, then complete the follow-up online form, as both steps are required"
+        ],
+        "common_rejection_risks": [
+          "Applying outside the HEC MIS window, since the deadline of 29 August 2026 has passed for 2026/2027",
+          "Non-STEM secondary combinations for diploma or bachelor's applications",
+          "A national examination result below 70% for diploma or bachelor's applications",
+          "Missing the second step: submitting through HEC MIS without completing the follow-up online form",
+          "Submitting to Morocco directly instead of through Rwanda's Higher Education Council"
+        ],
+        "estimated_uncovered_costs": [
+          "Travel to Morocco and return",
+          "Health insurance and medical costs",
+          "Books, study materials and any extra-curricular activity fees",
+          "Local transport and day-to-day living costs, if not covered by the Moroccan scheme"
+        ],
+        "document_audit": [
+          "Application letter addressed to the Director General of HEC naming the programme",
+          "Copy of national ID or valid passport",
+          "Transcript of the last high school year for diploma and bachelor's applicants",
+          "Transcript of the previous university level for master's and PhD applicants",
+          "Certificate or degree of the most recently completed level of study"
+        ],
+        "alerts": [
+          {
+            "trigger": "Application window",
+            "message": "The published 2026/2027 deadline was 29 August 2026, so applications are not currently being accepted; watch the HEC scholarships page for the next annual call."
+          },
+          {
+            "trigger": "Language of study",
+            "message": "The studies are taught in French at Moroccan public institutions."
+          },
+          {
+            "trigger": "Money not published",
+            "message": "The official announcement does not state what the scholarship pays for, so confirm the coverage directly with HEC before committing."
+          }
+        ],
+        "submission_workflow": [
+          "Register or sign in to HEC MIS at https://hecmis.hec.gov.rw/",
+          "Start a new application and choose the Morocco–Rwanda scholarship and the intended programme",
+          "Upload the application letter, ID or passport, transcripts and the certificate of the last completed level",
+          "Submit the HEC MIS application",
+          "Complete the separate online form linked in the announcement, as the announcement states both steps are required"
+        ]
+      },
+      "programme_detail_verification": {
+        "cycle_verified": "2026/2027 academic year call, published 26 August 2026 and closed 29 August 2026; verified 2026-10-04",
+        "verification_confidence": 0.72,
+        "official_fields_confirmed": [
+          "degree_levels",
+          "eligibility",
+          "deadline_central_display",
+          "application_method",
+          "application_cycle",
+          "official_source_url"
+        ],
+        "institution_check_required": [
+          "Whether the Moroccan scheme covers tuition fees, accommodation and any stipend",
+          "Which specific Moroccan public institutions and programmes are allocated places under the 2026/2027 quota",
+          "The date the next annual call will open"
+        ],
+        "unverified_or_removed_claims": [
+          "Any monetary value, stipend, tuition or accommodation coverage: the official announcement publishes none, so funding_amount and coverage flags are left null/false",
+          "Programme duration",
+          "Selection weighting beyond the published minimum grades",
+          "French-language proficiency requirement"
+        ],
+        "source_citations": [
+          "https://www.hec.gov.rw/updates/scholarships",
+          "https://www.hec.gov.rw/fileadmin/user_upload/HEC/Scholarships/KINGDOM_OF_MOROCCO_-__GOVERNMENT_OF_RWANDA_SCHOLARSHIPS.pdf"
+        ],
+        "researched_by": "w2_41"
+      },
+      "logo_override": {
+        "url": "https://www.hec.gov.rw/fileadmin/user_upload/HEC/Icon_logos/Logo_HEC.png",
+        "page_url": "https://www.hec.gov.rw/updates/scholarships",
+        "official_host": true,
+        "alt_text": "Higher Education Council (HEC) of Rwanda",
+        "validation_result": "verified",
+        "validation_detail": "webfetch returned \"Image fetched successfully\" (HTTP 200, image/png) for the HEC logo file on hec.gov.rw; the mark is a dark teal and amber HEC graduation-cap lockup with the words \"Higher Education Council - Quality Education - Our Aim\" on white, so it is not white-on-transparent.",
+        "image_kind": "official_logo",
+        "image_format": "png",
+        "verified_at": "2026-10-04T00:00:00+00:00",
+        "host_evidence": "same_registrable_domain",
+        "_award": "Kingdom of Morocco – Government of Rwanda Scholarships (2026/2027)"
+      },
+      "research_notes": {
+        "logo": "Extracted from the header markup of the official HEC scholarships listing page (https://www.hec.gov.rw/updates/scholarships), which references /fileadmin/user_upload/HEC/Icon_logos/Logo_HEC.png. Probed with webfetch, which returned \"Image fetched successfully\", confirming HTTP 200 and an image content type on the awarding body's own domain. The mark is dark teal/amber on white, not white-on-transparent.",
+        "unverified": [
+          "What the scholarship actually pays for (no monetary value or coverage is published)",
+          "Next application cycle date",
+          "Programme duration",
+          "The awarding ministry in Morocco is not named in the announcement"
+        ],
+        "substitution": null,
+        "official_pages_read": [
+          "https://www.hec.gov.rw/updates/scholarships",
+          "https://www.hec.gov.rw/fileadmin/user_upload/HEC/Scholarships/KINGDOM_OF_MOROCCO_-__GOVERNMENT_OF_RWANDA_SCHOLARSHIPS.pdf"
+        ],
+        "degree_level_confirmed": "Official announcement wording: \"The Kingdom of Morocco has offered to the Government of Rwanda scholarships at Diploma, Bachelors, Masters and PhD level commencing in academic year 2026/2027 taught in French from Moroccan public training institutions/ universities.\"",
+        "dedup_check": "Checked against the 489 titles and 320 hosts in research/wave2/shards/w2-49.json (the live global catalogue) and against the Oceania dedup block in research/wave2/shards/w2-41.json. No Morocco, Rwanda, hec.gov.rw or bilateral-Morocco entry exists in either list; the only Middle East/Africa title in the catalogue is \"France-South Africa Scholarship Programme 2027\", which is a different scheme and is not a near-duplicate of this Morocco-Rwanda bilateral award.",
+        "skeleton": false,
+        "extraction_note": "The HEC announcement is a PDF. webfetch returns raw PDF bytes for it (verified HTTP 200 with application/pdf), so the announcement's text was read from the search engine's text extraction of that same official PDF URL. Both URLs are cited, and verification_confidence is reduced to 0.72 for that reason. Future agents should note that webfetch cannot extract PDF text on this host."
+      }
+    },
+    {
+      "outcome": "new",
+      "new_scholarship": {
+        "name": "Future Scientists Scholarship (منحة علماء المستقبل) 2026/2027 — Ministry of Higher Education and Scientific Research and Central Bank of Egypt",
+        "country": "Egypt",
+        "region": "Africa",
+        "degree_levels": "Bachelor's",
+        "funding_type": "Fully Funded",
+        "program_type": "Government scholarship",
+        "official_source": "Ministry of Higher Education and Scientific Research (Egypt), in cooperation with the Central Bank of Egypt",
+        "official_source_url": "https://sis.gov.eg/ar/%D8%A7%D9%84%D9%85%D8%B1%D9%83%D8%B2-%D8%A7%D9%84%D8%A5%D8%B9%D9%84%D8%A7%D9%85%D9%8A/%D8%A7%D9%84%D8%A3%D8%AE%D8%A8%D8%A7%D8%B1/%D9%85%D8%AF-%D9%81%D8%AA%D8%B1%D8%A9-%D8%A7%D9%84%D8%AA%D9%82%D8%AF%D9%8A%D9%85-%D9%84%D9%85%D9%86%D8%AD%D8%A9-%D8%B9%D9%84%D9%85%D8%A7%D8%A1-%D8%A7%D9%84%D9%85%D8%B3%D8%AA%D9%82%D8%A8%D9%84",
+        "catalogue_url": "https://futurescholars.mohesr.gov.eg/",
+        "official_updates_url": "https://futurescholars.mohesr.gov.eg/",
+        "status": "upcoming",
+        "is_verified": true,
+        "last_verified_date": "2026-10-04",
+        "deadline": "4 September 2026, 19:00 (extended from 2 September 2026, 17:00)",
+        "deadline_date": null,
+        "deadline_precision": "recurring",
+        "application_period": "2026/2027 academic year; applications opened 11:00 on Saturday 29 August 2026 and were extended to 19:00 on Friday 4 September 2026.",
+        "eligibility_summary": "Egyptian nationals who are academically distinguished holders of a secondary school certificate from a government school for the 2025/2026 academic year, and who are either beneficiaries of the Takaful wa-Karama initiative or were exempted from school fees by the Ministry of Education during 2025/2026. Applicants must be of good conduct, must not have been dismissed academically or disciplinarily from any educational institution, and must not already hold another scholarship funded by another party in parallel.",
+        "eligibility": [
+          "Egyptian nationality",
+          "Academically distinguished student (متفوق دراسيًا)",
+          "Holder of a secondary school certificate from a government school for the 2025/2026 academic year",
+          "Beneficiary of the Takaful wa-Karama initiative, or exempted from school fees by the Ministry of Education during the 2025/2026 academic year",
+          "Of good conduct and behaviour (حسن السيرة والسلوك)",
+          "Not dismissed academically or disciplinarily from any educational institution",
+          "Not already in receipt of another scholarship funded by another party in parallel with this scholarship",
+          "Must pass the admission test held after preliminary shortlisting"
+        ],
+        "coverage": [
+          "Full coverage of study costs (تغطية كاملة للمصروفات الدراسية)",
+          "Accommodation costs (تكاليف الإقامة)",
+          "Living and board costs (تكاليف الإعاشة) for the whole period of study at participating national universities until graduation"
+        ],
+        "benefits": [
+          "Full coverage of educational expenses",
+          "Accommodation costs covered",
+          "Living and board costs covered for the duration of study until graduation",
+          "Covered provided the student continues to meet the scholarship's requirements"
+        ],
+        "requirements": [
+          "Preliminary shortlisting is done electronically on the basis of the secondary school total score",
+          "Geographic distribution applies: allocation by the governorate where the secondary school is located, or the nearest governorate if the requested faculty is not available there",
+          "An admission test is held after preliminary shortlisting",
+          "Only candidates who pass the admission test are shortlisted to complete the scholarship admission procedures",
+          "Applicant must sign an application undertaking together with the parent or guardian"
+        ],
+        "required_documents": [
+          "All documents required by the application portal (uploaded electronically)",
+          "Signed application undertaking from the student and the parent or guardian"
+        ],
+        "application_method": [
+          "Apply online through the official Future Scientists Scholarship portal at https://futurescholars.mohesr.gov.eg/",
+          "Log in with the national ID number as the username and the password printed on the secondary school completion certificate",
+          "Upload all required documents and sign the student and parent undertaking"
+        ],
+        "english_requirement": null,
+        "selection_notes": "Students are sorted electronically according to their secondary school total mark to select preliminary candidates, applying the geographic distribution of scholarships across all governorates. After preliminary shortlisting an admission test is run, and only candidates who pass are shortlisted for the scholarship admission procedure.",
+        "best_fit": "High-achieving Egyptian secondary school leavers from low-income households who are already covered by the Takaful wa-Karama cash-transfer programme or by a Ministry of Education fee exemption.",
+        "funding_amount": null,
+        "funding_currency": "EGP",
+        "funding_period": null,
+        "duration": "Until graduation from the participating national university (الأهلية)",
+        "notes": "The scholarship covers nine specialisms: medicine, engineering, computers and artificial intelligence, nursing, veterinary medicine, applied arts, arts and design, agriculture, and tourism, hotels and antiquities. No monetary amount or stipend figure is published; coverage is described in words as full.",
+        "image_url": null,
+        "image_source_url": null,
+        "image_source_type": null,
+        "image_alt_text": null,
+        "image_verified_at": null,
+        "description": "A fully funded Egyptian government scholarship for students who have just finished secondary school, awarded by the Ministry of Higher Education and Scientific Research with the Central Bank of Egypt. It pays the full cost of study plus accommodation and living expenses at participating national universities until graduation, in nine specialisms that the state designates as priorities. Selection starts from the secondary school total mark with a geographic allocation across governorates, then an admission test. Applications for 2026/2027 ran from 29 August to 4 September 2026 and have closed."
+      },
+      "programme_detail_official": {
+        "official_source_urls": [
+          "https://sis.gov.eg/ar/%D8%A7%D9%84%D9%85%D8%B1%D9%83%D8%B2-%D8%A7%D9%84%D8%A5%D8%B9%D9%84%D8%A7%D9%85%D9%8A/%D8%A7%D9%84%D8%A3%D8%AE%D8%A8%D8%A7%D8%B1/%D9%85%D8%AF-%D9%81%D8%AA%D8%B1%D8%A9-%D8%A7%D9%84%D8%AA%D9%82%D8%AF%D9%8A%D9%85-%D9%84%D9%85%D9%86%D8%AD%D8%A9-%D8%B9%D9%84%D9%85%D8%A7%D8%A1-%D8%A7%D9%84%D9%85%D8%B3%D8%AA%D9%82%D8%A8%D9%84",
+          "https://mohesr.gov.eg/"
+        ],
+        "application_link": "https://futurescholars.mohesr.gov.eg/",
+        "official_updates_url": "https://futurescholars.mohesr.gov.eg/",
+        "catalogue_url": "https://futurescholars.mohesr.gov.eg/",
+        "application_cycle": "2026/2027 academic year; applications opened 11:00 on 29 August 2026 and were extended to 19:00 on 4 September 2026",
+        "deadline_central": null,
+        "deadline_central_display": "حتى الساعة السابعة مساءً يوم الجمعة الموافق 4 سبتمبر 2026 (until 19:00 on Friday 4 September 2026)",
+        "deadline_central_timezone": "Africa/Cairo",
+        "deadline_note": "The deadline of 4 September 2026 19:00 is before today's date of 2026-10-04, so the 2026/2027 cycle is closed. No next-cycle date is published, so deadline_date is null and precision is recorded as recurring.",
+        "status": "UPCOMING",
+        "status_note": "The 2026/2027 application window closed on 4 September 2026 after an extension from 2 September 2026. The ministry announced a second intake of new students for the coming year, so a further round is expected, but no date is published.",
+        "funding_amount": null,
+        "funding_currency": "EGP",
+        "funding_period": null,
+        "funding_duration": "Throughout the period of study at the participating national university until graduation",
+        "tuition_coverage": true,
+        "tuition_coverage_note": "Official wording: \"وتشمل المنحة تغطية كاملة للمصروفات الدراسية وتكاليف الإقامة والإعاشة طوال فترة الدراسة في الجامعات الأهلية المشاركة حتى التخرج\" — the scholarship includes full coverage of study costs plus accommodation and living costs for the whole period of study until graduation.",
+        "living_cost_coverage": true,
+        "travel_coverage": null,
+        "fully_funded": true,
+        "funding_label": "Fully funded: full coverage of study costs, accommodation and living costs until graduation at participating Egyptian national universities; no bond or service obligation is stated.",
+        "benefits": [
+          "Full coverage of educational expenses",
+          "Accommodation costs covered",
+          "Living and board costs covered throughout the study period until graduation",
+          "Continued support is conditional on the student continuing to satisfy the scholarship requirements"
+        ],
+        "eligibility": [
+          "Egyptian nationality",
+          "Academically distinguished",
+          "Secondary school certificate from a government school for the 2025/2026 academic year",
+          "Beneficiary of the Takaful wa-Karama initiative, or exempted from fees by the Ministry of Education in the 2025/2026 academic year",
+          "Good conduct and behaviour",
+          "Not dismissed academically or disciplinarily from any educational institution",
+          "Not in receipt of another scholarship funded by another party in parallel"
+        ],
+        "citizenship_residency": "Egyptian citizens only",
+        "international_eligibility": "Not open to non-Egyptian applicants",
+        "degree_levels": [
+          "Bachelor's"
+        ],
+        "study_mode": "On campus at participating national (non-governmental) universities",
+        "research_requirement": null,
+        "subject_or_agency_requirement": "Medicine, engineering, computers and artificial intelligence, nursing, veterinary medicine, applied arts, arts and design, agriculture, or tourism, hotels and antiquities",
+        "application_method": "Online application through the Future Scientists Scholarship portal, using the national ID as username and the secondary school certificate password",
+        "application_route": "https://futurescholars.mohesr.gov.eg/",
+        "requirements": [
+          "Preliminary shortlisting by electronic sorting on the secondary school total mark",
+          "Geographic distribution by governorate of the secondary school, or the nearest governorate if the faculty is unavailable",
+          "Admission test after preliminary shortlisting",
+          "Only candidates who pass the admission test proceed to complete the scholarship admission procedures",
+          "Signed undertaking from the student and the parent or guardian"
+        ],
+        "documents": [
+          "All documents required by the application portal, uploaded electronically",
+          "Application undertaking signed by the student and the parent or guardian"
+        ],
+        "english_requirement": null,
+        "english_requirement_note": "The official announcement is in Arabic and sets no English language requirement; instruction at the participating universities is in Arabic.",
+        "selection_criteria": [
+          "Secondary school total mark (used for electronic preliminary shortlisting)",
+          "Passing the admission test held after preliminary shortlisting",
+          "Beneficiary of Takaful wa-Karama or a Ministry of Education fee exemption",
+          "Geographic allocation across governorates"
+        ],
+        "selection_weighting": "Electronic sorting by secondary school total mark, then an admission test; no weighting percentages are published",
+        "duration": "Until graduation",
+        "award_holder_conditions": [
+          "Must continue to satisfy the scholarship's requirements in order to keep the support (بشرط استدامة تحقيق متطلبات المنحة)",
+          "Must sign an application undertaking with the parent or guardian"
+        ],
+        "supplements_or_initiatives": [
+          "The national initiative for supporting distinguished students at Egyptian universities (المبادرة الوطنية لدعم الطلاب المتميزين بالجامعات المصرية)",
+          "Cooperation with the Central Bank of Egypt (البنك المركزي المصري)"
+        ],
+        "official_contacts": {
+          "general": "Ministry of Higher Education and Scientific Research, Cairo, Egypt",
+          "email": "Futurescholars@mohesr.gov.eg"
+        },
+        "description": "Egypt's Future Scientists Scholarship is a fully funded government scholarship awarded by the Ministry of Higher Education and Scientific Research with the Central Bank of Egypt to high-achieving secondary school leavers. It pays the full cost of study together with accommodation and living costs at participating Egyptian national universities until graduation, in nine state-priority specialisms. Applicants are shortlisted electronically on their secondary school total mark with a geographic allocation across governorates, then must pass an admission test.",
+        "program_type": "Government scholarship",
+        "region": "Africa",
+        "coverage": "Full coverage of study costs, accommodation and living costs at participating Egyptian national universities until graduation",
+        "last_verified_date": "2026-10-04"
+      },
+      "programme_detail_applicant_utility": {
+        "application_readiness_checklist": [
+          "Confirm you are an Egyptian national with a secondary school certificate from a government school for 2025/2026",
+          "Confirm you are a beneficiary of the Takaful wa-Karama initiative or hold a Ministry of Education fee exemption for 2025/2026",
+          "Have your secondary school total mark and national ID number ready",
+          "Use your national ID number as the portal username and the password printed on your secondary school completion certificate",
+          "Prepare every document the portal asks for before you start, as the 2026 window was only about a week long",
+          "Have your parent or guardian available to sign the application undertaking",
+          "Check which of the nine specialisms are offered in your governorate, because allocation follows your school governorate or the nearest one"
+        ],
+        "common_rejection_risks": [
+          "Missing the window, which ran only from 29 August to 4 September 2026 after an extension",
+          "Applying without Takaful wa-Karama registration or a Ministry of Education fee exemption, both of which are mandatory eligibility categories",
+          "Holding a secondary certificate from a private school rather than a government school",
+          "Failing the admission test given after preliminary shortlisting",
+          "Already holding another scholarship funded by another party, which disqualifies the applicant",
+          "Being dismissed academically or disciplinarily from any institution, or having a conduct issue"
+        ],
+        "estimated_uncovered_costs": [
+          "Travel costs to and from the university, if the student is not from the same governorate",
+          "Books, stationery and personal expenses not covered by the full study-cost package",
+          "Any extra-curricular or optional fees"
+        ],
+        "document_audit": [
+          "National ID number (used as the portal username)",
+          "Secondary school completion certificate and its printed password",
+          "Secondary school transcript showing the total mark",
+          "Evidence of Takaful wa-Karama benefit registration or a Ministry of Education fee-exemption letter for 2025/2026",
+          "Government school enrolment evidence for 2025/2026",
+          "Application undertaking signed by the student and the parent or guardian"
+        ],
+        "alerts": [
+          {
+            "trigger": "Application window",
+            "message": "The 2026/2027 window closed at 19:00 on 4 September 2026. Watch the Future Scientists portal and the ministry's site for the next round."
+          },
+          {
+            "trigger": "Second intake announced",
+            "message": "The ministry has stated it is preparing a second intake of new students for the coming academic year, so a further call for the same award is likely."
+          },
+          {
+            "trigger": "Geographic allocation",
+            "message": "Places are allocated by the governorate of your secondary school, or the nearest governorate if your preferred faculty is not offered there."
+          },
+          {
+            "trigger": "Support is conditional",
+            "message": "Full coverage is stated to be provided provided you keep meeting the scholarship's requirements."
+          }
+        ],
+        "submission_workflow": [
+          "Open https://futurescholars.mohesr.gov.eg/ during the application window",
+          "Register or sign in using your national ID number as username and the password on your secondary school completion certificate",
+          "Complete the required data and upload every required document",
+          "Sign the application undertaking with your parent or guardian",
+          "Submit before the closing time, then track the outcome and, if shortlisted, sit the admission test"
+        ]
+      },
+      "programme_detail_verification": {
+        "cycle_verified": "2026/2027 academic year cycle, applications 29 August to 4 September 2026 (extended), verified 2026-10-04",
+        "verification_confidence": 0.88,
+        "official_fields_confirmed": [
+          "funding_label",
+          "tuition_coverage",
+          "living_cost_coverage",
+          "fully_funded",
+          "eligibility",
+          "application_method",
+          "subject_or_agency_requirement",
+          "deadline_central_display",
+          "selection_criteria"
+        ],
+        "institution_check_required": [
+          "Which specific national universities and which of the nine specialisms are available in each governorate for the next round",
+          "The date the next application window opens",
+          "Any monetary cap or stipend component, which the announcement does not quantify"
+        ],
+        "unverified_or_removed_claims": [
+          "Any specific monetary value or stipend figure: the announcement describes coverage in words only, so funding_amount is null",
+          "Travel cost coverage: not mentioned",
+          "Exact programme length per specialism",
+          "The content of the admission test"
+        ],
+        "source_citations": [
+          "https://sis.gov.eg/ar/%D8%A7%D9%84%D9%85%D8%B1%D9%83%D8%B2-%D8%A7%D9%84%D8%A5%D8%B9%D9%84%D8%A7%D9%85%D9%8A/%D8%A7%D9%84%D8%A3%D8%AE%D8%A8%D8%A7%D8%B1/%D9%85%D8%AF-%D9%81%D8%AA%D8%B1%D8%A9-%D8%A7%D9%84%D8%AA%D9%82%D8%AF%D9%8A%D9%85-%D9%84%D9%85%D9%86%D8%AD%D8%A9-%D8%B9%D9%84%D9%85%D8%A7%D8%A1-%D8%A7%D9%84%D9%85%D8%B3%D8%AA%D9%82%D8%A8%D9%84",
+          "https://mohesr.gov.eg/"
+        ],
+        "researched_by": "w2_41"
+      },
+      "logo_override": {
+        "url": "https://mohesr.gov.eg/images/logo.png",
+        "page_url": "https://mohesr.gov.eg/",
+        "official_host": true,
+        "alt_text": "Ministry of Higher Education and Scientific Research, Egypt (وزارة التعليم العالي والبحث العلمي)",
+        "validation_result": "verified",
+        "validation_detail": "webfetch returned \"Image fetched successfully\" (HTTP 200, image/png) for /images/logo.png on the ministry's own domain. The image is the ministry's gold Eagle of Saladin emblem with the Arabic ministry name on a white background, so it is the awarding body's own mark and is not white-on-transparent. The ministry's favicon at /images/favicon_mohe.ico also probed successfully (\"Unsupported image format: image/vnd.microsoft.icon\") but the emblem was preferred.",
+        "image_kind": "official_logo",
+        "image_format": "png",
+        "verified_at": "2026-10-04T00:00:00+00:00",
+        "host_evidence": "same_registrable_domain",
+        "_award": "Future Scientists Scholarship (منحة علماء المستقبل) 2026/2027"
+      },
+      "research_notes": {
+        "logo": "The ministry's own homepage markup (https://mohesr.gov.eg/) references /images/favicon_mohe.ico as its icon; /images/logo.png on the same domain was probed with webfetch and returned \"Image fetched successfully\", confirming HTTP 200 and an image/png content type. It is the ministry's gold Eagle of Saladin emblem with the Arabic ministry name on white. Not a third-party asset, not another body's logo, not white-on-transparent.",
+        "unverified": [
+          "Any monetary amount or stipend attached to the scholarship",
+          "Travel cost coverage",
+          "The date the next application round opens",
+          "Which faculties offer the nine specialisms in each governorate"
+        ],
+        "substitution": null,
+        "official_pages_read": [
+          "https://sis.gov.eg/ar/%D8%A7%D9%84%D9%85%D8%B1%D9%83%D8%B2-%D8%A7%D9%84%D8%A5%D8%B9%D9%84%D8%A7%D9%85%D9%8A/%D8%A7%D9%84%D8%A3%D8%AE%D8%A8%D8%A7%D8%B1/%D9%85%D8%AF-%D9%81%D8%AA%D8%B1%D8%A9-%D8%A7%D9%84%D8%AA%D9%82%D8%AF%D9%8A%D9%85-%D9%84%D9%85%D9%86%D8%AD%D8%A9-%D8%B9%D9%84%D9%85%D8%A7%D8%A1-%D8%A7%D9%84%D9%85%D8%B3%D8%AA%D9%82%D8%A8%D9%84",
+          "https://mohesr.gov.eg/"
+        ],
+        "degree_level_confirmed": "Official wording: \"للالتحاق بالجامعات الأهلية المشاركة، والحصول على درجة البكالوريوس أو الليسانس في التخصصات العلمية التي تحتاجها الدولة\" — for joining participating national universities and obtaining a bachelor's or licence degree in the scientific specialisms the state needs.",
+        "dedup_check": "Checked against the 489 titles and 320 hosts in research/wave2/shards/w2-49.json (the live global catalogue) and against the Oceania dedup block in research/wave2/shards/w2-41.json. Neither contains any Egypt, Egyptian Ministry of Higher Education, Future Scientists or sis.gov.eg entry, and the all_countries_in_database list contains no Egypt or Middle East/Africa country at all.",
+        "skeleton": false,
+        "extraction_note": "The ministry's own scholarship portal futurescholars.mohesr.gov.eg could not be fetched from this environment (two transport errors), so the official record was built from the Egyptian State Information Service (sis.gov.eg), an official Egyptian government body, which publishes the Ministry of Higher Education and Scientific Research's announcement in full and attributes it to the ministry. This is why verification_confidence is 0.88 rather than 0.9+."
+      }
+    },
+    {
+      "outcome": "new",
+      "new_scholarship": {
+        "name": "KINGS Master's Scholarship 2027 (KEPCO International Nuclear Graduate School, South Korea) — non-employee quota announced by Iraq's Ministry of Higher Education",
+        "country": "Iraq",
+        "region": "Middle East",
+        "degree_levels": "Master's",
+        "funding_type": "Not specified",
+        "program_type": "Government scholarship",
+        "official_source": "Ministry of Higher Education and Scientific Research (Iraq), Department of Missions and Cultural Relations",
+        "official_source_url": "https://mohesr.gov.iq/ar/post/%D8%A7%D9%84%D8%AA%D8%B9%D9%84%D9%8A%D9%85-%D8%AA%D8%B9%D9%84%D9%86-%D8%AA%D9%88%D9%81%D8%B1-%D9%85%D9%86%D8%AD-%D8%AF%D8%B1%D8%A7%D8%B3%D9%8A%D8%A9-%D9%81%D9%8A-%D9%83%D9%88%D8%B1%D9%8A%D8%A7-%D8%A7%D9%84%D8%AC%D9%86%D9%88%D8%A8%D9%8A%D8%A9-2026-09-20-14",
+        "catalogue_url": "https://portal.scrd-gate.gov.iq",
+        "official_updates_url": "https://mohesr.gov.iq/ar/ministrySection/48",
+        "status": "open",
+        "is_verified": true,
+        "last_verified_date": "2026-10-04",
+        "deadline": "26 October 2026",
+        "deadline_date": "2026-10-26",
+        "deadline_precision": "exact",
+        "application_period": "Announced by the Iraqi Ministry of Higher Education on 20 September 2026; applications close on 26 October 2026 for the 2027 intake.",
+        "eligibility_summary": "Open to the non-employee category (لغير الموظفين), meaning applicants who are not employed by the Iraqi government and therefore not eligible for the government-employee scholarship track. The announcement states the places are for a master's degree in nuclear power plant engineering and in energy policy and engineering at KINGS in South Korea. Detailed eligibility sits in the ministry's official conditions document.",
+        "eligibility": [
+          "Non-employee applicants only (فئة غير الموظفين) under the Iraqi Ministry of Higher Education's scholarship categories",
+          "Must apply through the Department of Missions and Cultural Relations portal at https://portal.scrd-gate.gov.iq",
+          "Must satisfy the conditions published in the ministry's official requirements document for this scholarship"
+        ],
+        "coverage": [
+          "Master's degree study in nuclear power plant engineering",
+          "Master's degree study in energy policy and engineering",
+          "Study at the KEPCO International Nuclear Graduate School (KINGS) in South Korea"
+        ],
+        "benefits": [],
+        "requirements": [
+          "Submit through the Department of Missions and Cultural Relations electronic portal",
+          "Meet the eligibility conditions in the ministry's official requirements document (الشروط والمتطلبات) published with the announcement",
+          "Choose one of the two funded fields: nuclear power plant engineering, or energy policy and engineering"
+        ],
+        "required_documents": null,
+        "application_method": [
+          "Register and submit through the Department of Missions and Cultural Relations portal at https://portal.scrd-gate.gov.iq",
+          "Review the ministry's published conditions and requirements document before applying"
+        ],
+        "english_requirement": null,
+        "selection_notes": "The announcement is issued under the Ministry's Missions and Cultural Relations Department, which allocates the Iraqi quota among eligible applicants in the non-employee category.",
+        "best_fit": "Iraqi graduates who are not employed by the government and want a master's in nuclear power plant engineering or energy policy and engineering in South Korea.",
+        "funding_amount": null,
+        "funding_currency": "KRW",
+        "funding_period": null,
+        "duration": null,
+        "notes": "The ministry's announcement does not state a monetary value, stipend or what the scholarship covers, so no funding claim is recorded. The provider link given by the ministry is https://www.kings.ac.kr. KINGS was founded by Korea Electric Power Corporation (KEPCO) in 2014 and awards master's and doctoral degrees.",
+        "image_url": null,
+        "image_source_url": null,
+        "image_source_type": null,
+        "image_alt_text": null,
+        "image_verified_at": null,
+        "description": "A master's degree scholarship for the 2027 intake at the KEPCO International Nuclear Graduate School (KINGS) in South Korea, offered to the non-employee category of applicants by Iraq's Ministry of Higher Education and Scientific Research. Places cover nuclear power plant engineering and energy policy and engineering. Applications are submitted through the ministry's Missions and Cultural Relations portal and close on 26 October 2026, so the award is open now."
+      },
+      "programme_detail_official": {
+        "official_source_urls": [
+          "https://mohesr.gov.iq/ar/post/%D8%A7%D9%84%D8%AA%D8%B9%D9%84%D9%8A%D9%85-%D8%AA%D8%B9%D9%84%D9%86-%D8%AA%D9%88%D9%81%D8%B1-%D9%85%D9%86%D8%AD-%D8%AF%D8%B1%D8%A7%D8%B3%D9%8A%D8%A9-%D9%81%D9%8A-%D9%83%D9%88%D8%B1%D9%8A%D8%A7-%D8%A7%D9%84%D8%AC%D9%86%D9%88%D8%A8%D9%8A%D8%A9-2026-09-20-14",
+          "https://www.kings.ac.kr"
+        ],
+        "application_link": "https://portal.scrd-gate.gov.iq",
+        "official_updates_url": "https://mohesr.gov.iq/ar/ministrySection/48",
+        "catalogue_url": "https://portal.scrd-gate.gov.iq",
+        "application_cycle": "2027 intake; announced 20 September 2026, applications close 26 October 2026",
+        "deadline_central": "2026-10-26",
+        "deadline_central_display": "واخر موعد للتقديم سيكون يوم 2026/10/26 (deadline: 26 October 2026)",
+        "deadline_central_timezone": "Asia/Baghdad",
+        "deadline_note": "The deadline of 26 October 2026 is after today's date of 2026-10-04, so the award is open now with about three weeks remaining.",
+        "status": "OPEN",
+        "status_note": "Open now. The Iraqi Ministry of Higher Education announced the 2027 KINGS master's places on 20 September 2026 with a closing date of 26 October 2026.",
+        "funding_amount": null,
+        "funding_currency": "KRW",
+        "funding_period": null,
+        "funding_duration": null,
+        "tuition_coverage": null,
+        "tuition_coverage_note": "The ministry's announcement describes only the places and fields and publishes no statement about tuition, stipend or living costs, so no coverage is claimed.",
+        "living_cost_coverage": null,
+        "travel_coverage": null,
+        "fully_funded": false,
+        "funding_label": "Funded master's places at KINGS announced through Iraq's Ministry of Higher Education; the announcement states no monetary value or coverage, so fully_funded is false.",
+        "benefits": [
+          "Master's degree place in nuclear power plant engineering",
+          "Master's degree place in energy policy and engineering",
+          "Study at KINGS, the KEPCO International Nuclear Graduate School, in South Korea"
+        ],
+        "eligibility": [
+          "Non-employee category (فئة غير الموظفين) as defined by the Iraqi Ministry of Higher Education",
+          "Bachelor's degree or equivalent qualifying entry to a master's programme in the chosen field",
+          "Must apply through the Department of Missions and Cultural Relations portal"
+        ],
+        "citizenship_residency": "Iraqi nationals under the ministry's scholarship scheme",
+        "international_eligibility": "Not open to non-Iraqi applicants through this channel",
+        "degree_levels": [
+          "Master's"
+        ],
+        "study_mode": null,
+        "research_requirement": null,
+        "subject_or_agency_requirement": "Nuclear power plant engineering, or energy policy and engineering",
+        "application_method": "Online submission through the Department of Missions and Cultural Relations electronic portal",
+        "application_route": "https://portal.scrd-gate.gov.iq",
+        "requirements": [
+          "Submit through the Missions and Cultural Relations portal",
+          "Satisfy the conditions published in the ministry's official requirements document",
+          "Select either nuclear power plant engineering or energy policy and engineering as the field of study"
+        ],
+        "documents": [],
+        "english_requirement": null,
+        "english_requirement_note": "The announcement is in Arabic and sets no English requirement, though KINGS delivers its master's programmes in English.",
+        "selection_criteria": [
+          "Non-employee category eligibility",
+          "Academic fit with the selected engineering field",
+          "Any further criteria set out in the ministry's official requirements document"
+        ],
+        "selection_weighting": null,
+        "duration": null,
+        "award_holder_conditions": [],
+        "supplements_or_initiatives": [],
+        "official_contacts": {
+          "general": "Department of Missions and Cultural Relations, Ministry of Higher Education and Scientific Research, Baghdad, Iraq",
+          "phone": "07708117408"
+        },
+        "description": "Master's degree scholarship places for the 2027 intake at the KEPCO International Nuclear Graduate School (KINGS) in South Korea, in nuclear power plant engineering and energy policy and engineering. Iraq's Ministry of Higher Education and Scientific Research announced them on 20 September 2026 for the non-employee applicant category, with applications closing on 26 October 2026 through the ministry's Missions and Cultural Relations portal.",
+        "program_type": "Government scholarship",
+        "region": "Middle East",
+        "coverage": "Master's degree study in nuclear power plant engineering or energy policy and engineering at KINGS, South Korea",
+        "last_verified_date": "2026-10-04"
+      },
+      "programme_detail_applicant_utility": {
+        "application_readiness_checklist": [
+          "Confirm you fall in the non-employee category, since employees of the Iraqi government apply through a separate track",
+          "Choose between nuclear power plant engineering and energy policy and engineering before you apply",
+          "Download and read the ministry's official conditions and requirements document linked from the announcement",
+          "Create an account on the Department of Missions and Cultural Relations portal at https://portal.scrd-gate.gov.iq",
+          "Have your bachelor's transcript and any English-language evidence ready, because KINGS teaches in English",
+          "Submit well before 26 October 2026 to allow for portal issues"
+        ],
+        "common_rejection_risks": [
+          "Applying through the wrong track, as government employees cannot use the non-employee call",
+          "Missing the 26 October 2026 deadline, which is a single fixed date with no extension mentioned",
+          "Choosing a field that does not match the academic background in the requirements document",
+          "Incomplete registration on portal.scrd-gate.gov.iq"
+        ],
+        "estimated_uncovered_costs": [
+          "Any tuition, stipend, accommodation or travel not covered by the scholarship, because the announcement states none of this",
+          "Personal expenses and health insurance"
+        ],
+        "document_audit": [
+          "Bachelor's degree certificate and transcript",
+          "Identity documents required by the Missions and Cultural Relations portal",
+          "Evidence of non-employment status under the ministry's classification",
+          "English proficiency evidence, if requested in the requirements document"
+        ],
+        "alerts": [
+          {
+            "trigger": "Open window",
+            "message": "Applications are open now and close on 26 October 2026, so act within about three weeks."
+          },
+          {
+            "trigger": "Coverage not published",
+            "message": "The ministry's announcement does not say what the scholarship pays for, so confirm tuition, stipend and travel with the ministry before committing."
+          },
+          {
+            "trigger": "Intake year",
+            "message": "The places are for the 2027 intake at KINGS, not for 2026."
+          }
+        ],
+        "submission_workflow": [
+          "Open https://portal.scrd-gate.gov.iq and create or access your account",
+          "Locate the KINGS 2027 master's scholarship call for the non-employee category",
+          "Complete the personal, academic and contact data the portal requests",
+          "Attach the documents required by the ministry's published requirements document",
+          "Submit before 26 October 2026 and keep the submission confirmation"
+        ]
+      },
+      "programme_detail_verification": {
+        "cycle_verified": "2027 intake call announced 20 September 2026 with a 26 October 2026 deadline, verified 2026-10-04",
+        "verification_confidence": 0.78,
+        "official_fields_confirmed": [
+          "deadline_central",
+          "degree_levels",
+          "subject_or_agency_requirement",
+          "status",
+          "application_route",
+          "official_source_url"
+        ],
+        "institution_check_required": [
+          "Whether the scholarship covers tuition, a monthly stipend, accommodation, settlement allowance and airfare, which the ministry's requirements document is expected to set out but which could not be read from this environment",
+          "The minimum bachelor's grade and any English test score required",
+          "The number of funded places and the selection criteria weighting"
+        ],
+        "unverified_or_removed_claims": [
+          "Any statement that this is fully funded: the announcement gives no coverage detail, so funding_amount, tuition_coverage and living_cost_coverage are null and fully_funded is false",
+          "Programme duration and award-holder conditions, which are not published on the announcement page",
+          "Required documents, which sit in a PDF that could not be extracted"
+        ],
+        "source_citations": [
+          "https://mohesr.gov.iq/ar/post/%D8%A7%D9%84%D8%AA%D8%B9%D9%84%D9%8A%D9%85-%D8%AA%D8%B9%D9%84%D9%86-%D8%AA%D9%88%D9%81%D8%B1-%D9%85%D9%86%D8%AD-%D8%AF%D8%B1%D8%A7%D8%B3%D9%8A%D8%A9-%D9%81%D9%8A-%D9%83%D9%88%D8%B1%D9%8A%D8%A7-%D8%A7%D9%84%D8%AC%D9%86%D9%88%D8%A8%D9%8A%D8%A9-2026-09-20-14",
+          "https://www.kings.ac.kr"
+        ],
+        "researched_by": "w2_41"
+      },
+      "logo_override": {
+        "url": "https://mohesr.gov.iq/ar/assets/viewApp/imgs/mohser_logo/symbol.png",
+        "page_url": "https://mohesr.gov.iq/ar/post/%D8%A7%D9%84%D8%AA%D8%B9%D9%84%D9%8A%D9%85-%D8%AA%D8%B9%D9%84%D9%86-%D8%AA%D9%88%D9%81%D8%B1-%D9%85%D9%86%D8%AD-%D8%AF%D8%B1%D8%A7%D8%B3%D9%8A%D8%A9-%D9%81%D9%8A-%D9%83%D9%88%D8%B1%D9%8A%D8%A7-%D8%A7%D9%84%D8%AC%D9%86%D9%88%D8%A8%D9%8A%D8%A9-2026-09-20-14",
+        "official_host": true,
+        "alt_text": "Iraq Ministry of Higher Education and Scientific Research emblem (وزارة التعليم العالي والبحث العلمي)",
+        "validation_result": "verified",
+        "validation_detail": "webfetch returned \"Image fetched successfully\" (HTTP 200, image/png) for /ar/assets/viewApp/imgs/mohser_logo/symbol.png on mohesr.gov.iq. That path is the emblem used in the header lockup of the ministry's own pages, alongside /ar/assets/viewApp/imgs/mohser_logo/text.svg, so it is the announcing body's own mark on its own registrable domain. The asset is a small-resolution seal, which is a limitation worth noting.",
+        "image_kind": "official_logo",
+        "image_format": "png",
+        "verified_at": "2026-10-04T00:00:00+00:00",
+        "host_evidence": "same_registrable_domain",
+        "_award": "KINGS Master's Scholarship 2027 (Iraq)"
+      },
+      "research_notes": {
+        "logo": "The ministry's own announcement page embeds the header lockup /ar/assets/viewApp/imgs/mohser_logo/symbol.png plus text.svg. The symbol was probed with webfetch, which returned \"Image fetched successfully\", confirming HTTP 200 and an image content type on the ministry's own domain. It is the ministry's own seal, not a third-party asset. The file is small resolution, which is the one weakness.",
+        "unverified": [
+          "What the scholarship covers, because the announcement page gives no tuition, stipend or living-cost detail",
+          "Required documents and selection criteria, which sit in a linked PDF that webfetch cannot extract",
+          "Programme duration and the number of funded places",
+          "Minimum grade and English test requirements"
+        ],
+        "substitution": null,
+        "official_pages_read": [
+          "https://mohesr.gov.iq/ar/post/%D8%A7%D9%84%D8%AA%D8%B9%D9%84%D9%8A%D9%85-%D8%AA%D8%B9%D9%84%D9%86-%D8%AA%D9%88%D9%81%D8%B1-%D9%85%D9%86%D8%AD-%D8%AF%D8%B1%D8%A7%D8%B3%D9%8A%D8%A9-%D9%81%D9%8A-%D9%83%D9%88%D8%B1%D9%8A%D8%A7-%D8%A7%D9%84%D8%AC%D9%86%D9%88%D8%A8%D9%8A%D8%A9-2026-09-20-14",
+          "https://www.kings.ac.kr"
+        ],
+        "degree_level_confirmed": "Official wording: \"تعلن وزارة التعليم العالي والبحث العلمي توفر منح لدراسة الماجستير ضمن برنامج المدرسة الدولية العليا للطاقة النووية (KINGS) لسنة ٢٠٢٧ في كوريا الجنوبية لفئة غير الموظفين\" and \"المنح مخصصة لدراسة الماجستير في هندسة محطات الطاقة النووية وسياسات وهندسة الطاقة\" — master's degree places for the 2027 intake, in nuclear power plant engineering and energy policy and engineering.",
+        "dedup_check": "Checked against the 489 titles and 320 hosts in research/wave2/shards/w2-49.json and against the Oceania dedup block in research/wave2/shards/w2-41.json. There is no KINGS entry, no Korea entry, no Iraq entry and no mohesr.gov.iq host in either list, and the Middle East/Africa keyword filter over the whole catalogue returns only the France-South Africa Scholarship Programme 2027.",
+        "skeleton": false,
+        "extraction_note": "The ministry's detailed conditions are in a PDF at /ar/assets/img/uploaded_files/20092026.pdf which webfetch returns as raw bytes and cannot convert to text, so those details are deliberately left null rather than guessed."
+      }
+    },
+    {
+      "outcome": "new",
+      "new_scholarship": {
+        "name": "Joint Algeria/Ghana Government Scholarship Awards 2026/2027 (tenable in Algeria)",
+        "country": "Algeria",
+        "region": "Africa",
+        "degree_levels": "Undergraduate, Vocational/Technical Certificate, Bachelor's, Master's",
+        "funding_type": "Fully Funded",
+        "program_type": "Bilateral government scholarship",
+        "official_source": "Government of the People's Democratic Republic of Algeria, announced by the Ghana Scholarships Authority (Republic of Ghana)",
+        "official_source_url": "https://scholarships.gov.gh/opportunities/the-joint-algeriaghana-government-scholarship-awards-for-the-20262027-academic-year-tenable-in-algeria",
+        "catalogue_url": "https://scholarships.gov.gh/opportunities/the-joint-algeriaghana-government-scholarship-awards-for-the-20262027-academic-year-tenable-in-algeria",
+        "official_updates_url": "https://scholarships.gov.gh/opportunities",
+        "status": "upcoming",
+        "is_verified": true,
+        "last_verified_date": "2026-10-04",
+        "deadline": "21 September 2026",
+        "deadline_date": null,
+        "deadline_precision": "recurring",
+        "application_period": "2026/2027 academic year; notice published 5 September 2026 and closed on 21 September 2026.",
+        "eligibility_summary": "Open to Ghanaian citizens resident in Ghana who have completed Senior High School with their current 2025 result, obtained an aggregate score of not more than 13, are not more than 23 years of age, and hold a genuine birth certificate and a passport. Master's applicants need a bachelor's degree (or equivalent) in Islamic Sciences, Humanities and Social Sciences, Law and Political Science, or Arabic Language and Literature.",
+        "eligibility": [
+          "Ghanaian citizen resident in Ghana",
+          "Completed Senior High School education with the current 2025 result",
+          "WASSCE aggregate score of not more than 13",
+          "Not more than 23 years of age",
+          "Genuine birth certificate",
+          "Valid passport",
+          "Master's category only: bachelor's degree or equivalent in Islamic Sciences, Humanities and Social Sciences, Law and Political Science, or Arabic Language and Literature",
+          "Religious studies category only: good command of spoken and written Arabic and full or partial memorisation of the Holy Quran"
+        ],
+        "coverage": [
+          "University education (undergraduate studies) in Algeria for the 2026/2027 academic year",
+          "Vocational education and technical training as a two-year professional certificate",
+          "Religious studies as a three-year Imam training programme",
+          "Master's in Islamic Studies as a two-year programme",
+          "One year of French language training before the main course of study for successful candidates in the Islamic Studies categories"
+        ],
+        "benefits": [
+          "Full scholarship award tenable in Algeria covering the categories listed in the notice",
+          "One year of French language training ahead of the main course of study for candidates in the Islamic Studies categories",
+          "Free application assistance from the Ghana Scholarships Authority Secretariat"
+        ],
+        "requirements": [
+          "Log in to the Ghana Scholarships Authority website and create an account under the Algerian Government Scholarship",
+          "Complete the online application, print the application form and submit it with copies of WASSCE result slips, birth certificates and transcript to the Ghana Scholarships Authority",
+          "Master's applicants must additionally attach copies of their degree certificates and transcripts",
+          "Apply no later than 21 September 2026"
+        ],
+        "required_documents": [
+          "WASSCE result slips",
+          "Birth certificate",
+          "Transcript",
+          "For the Master's category: copies of the degree certificate and transcript",
+          "Printed copy of the completed online application form"
+        ],
+        "application_method": [
+          "Register online at www.scholarships.gov.gh under the Algerian Government Scholarship",
+          "Print the completed application form",
+          "Submit the form with the required documents to the Director-General, Ghana Scholarships Authority, P.O. Box M.75, Accra, office at GES Council Building, Behind Accra High School, North Ridge",
+          "Alternatively email apply@scholarships.gov.gh for enquiries"
+        ],
+        "english_requirement": null,
+        "selection_notes": "The notice is a joint Algeria and Ghana government award, allocated by the Ghana Scholarships Authority under the bilateral scheme. The Authority states that its services are free and that no individual, group or third party has been engaged to assist applicants.",
+        "best_fit": "Recent Ghanaian Senior High School graduates with a WASSCE aggregate of 13 or better who want an Algerian degree, a two-year vocational qualification, Imam training, or a Master's in Islamic Studies.",
+        "funding_amount": null,
+        "funding_currency": "DZD",
+        "funding_period": null,
+        "duration": "Undergraduate: a degree programme; Vocational education and technical training: 2 years; Religious studies (Imam training): 3 years; Master's in Islamic Studies: 2 years, preceded by one year of French language training",
+        "notes": "The notice describes these as scholarship awards tenable in Algeria but does not publish a monetary value or an itemised benefits list, so no funding amount is recorded.",
+        "image_url": null,
+        "image_source_url": null,
+        "image_source_type": null,
+        "image_alt_text": null,
+        "image_verified_at": null,
+        "description": "A joint Algerian and Ghanaian government scholarship for the 2026/2027 academic year, tenable in Algeria and allocated to Ghanaian citizens by the Ghana Scholarships Authority. It is unusual in the breadth of levels it covers: undergraduate university study in science, technology, mathematics, computer science, architecture, medicine, veterinary science, dentistry, agricultural science, pharmacy and urban planning; a two-year vocational and technical professional certificate; three-year Imam training for candidates with Arabic and Quran memorisation; and a two-year Master's in Islamic Studies that requires a first degree in a related field. Successful candidates in the Islamic Studies categories complete a year of French language training first."
+      },
+      "programme_detail_official": {
+        "official_source_urls": [
+          "https://scholarships.gov.gh/opportunities/the-joint-algeriaghana-government-scholarship-awards-for-the-20262027-academic-year-tenable-in-algeria",
+          "https://scholarships.gov.gh/opportunities"
+        ],
+        "application_link": "https://scholarships.gov.gh/opportunities/the-joint-algeriaghana-government-scholarship-awards-for-the-20262027-academic-year-tenable-in-algeria",
+        "official_updates_url": "https://scholarships.gov.gh/opportunities",
+        "catalogue_url": "https://scholarships.gov.gh/opportunities",
+        "application_cycle": "2026/2027 academic year; notice published 5 September 2026, deadline 21 September 2026",
+        "deadline_central": null,
+        "deadline_central_display": "NOT LATER THAN 21 SEPTEMBER, 2026",
+        "deadline_central_timezone": "Africa/Accra",
+        "deadline_note": "The published deadline of 21 September 2026 is before today's date of 2026-10-04, so the 2026/2027 cycle is closed. No next-cycle date is published, so deadline_date is null and precision is recorded as recurring.",
+        "status": "UPCOMING",
+        "status_note": "The 2026/2027 cycle closed on 21 September 2026. This is an annual joint government award announced each September by the Ghana Scholarships Authority, so a next call is expected in the same window, but no date is published.",
+        "funding_amount": null,
+        "funding_currency": "DZD",
+        "funding_period": null,
+        "funding_duration": "2-year professional certificate for vocational and technical training; 3 years for religious studies; 2 years for the Master's in Islamic Studies, after one year of French training",
+        "tuition_coverage": null,
+        "tuition_coverage_note": "The notice describes the awards as scholarship awards tenable in Algeria but does not itemise what is paid, so no tuition coverage is claimed.",
+        "living_cost_coverage": null,
+        "travel_coverage": null,
+        "fully_funded": false,
+        "funding_label": "Joint Algeria and Ghana government scholarship places covering four award categories; the notice publishes no monetary value and no itemised benefits, so fully_funded is false.",
+        "benefits": [
+          "Scholarship award tenable in Algeria in one of four categories",
+          "One year of French language training before the main course of study for candidates in the Islamic Studies categories",
+          "Free application processing through the Ghana Scholarships Authority Secretariat, which states no third party is paid to assist applicants"
+        ],
+        "eligibility": [
+          "Ghanaian citizen resident in Ghana",
+          "Completed Senior High School with the current 2025 result",
+          "WASSCE aggregate score of not more than 13",
+          "Age 23 or under",
+          "Genuine birth certificate",
+          "Valid passport",
+          "Master's category: bachelor's degree or equivalent in Islamic Sciences, Humanities and Social Sciences, Law and Political Science, or Arabic Language and Literature",
+          "Religious studies category: good spoken and written Arabic and full or partial memorisation of the Holy Quran"
+        ],
+        "citizenship_residency": "Ghanaian citizens resident in Ghana",
+        "international_eligibility": "Allocated to Ghanaian nationals only; other nationalities apply through their own country's bilateral scheme",
+        "degree_levels": [
+          "Undergraduate",
+          "Vocational/Technical Certificate",
+          "Bachelor's",
+          "Master's"
+        ],
+        "study_mode": null,
+        "research_requirement": null,
+        "subject_or_agency_requirement": "Academic disciplines (science and technology, mathematics, computer science, architecture, medicine, veterinary sciences, dentistry, agricultural sciences, pharmacy, urban planning); vocational fields (graphic design layout artist, senior technician in architecture, interior architecture, industrial maintenance, quality control and processing of dairy products, computer science for database management and web/mobile application development, computer systems and networks with cybersecurity, automotive mechatronics); religious studies; or Master's in Islamic Studies",
+        "application_method": "Online registration on the Ghana Scholarships Authority website, then submission of the printed application form with documents to the Authority's office in Accra",
+        "application_route": "https://scholarships.gov.gh/opportunities/the-joint-algeriaghana-government-scholarship-awards-for-the-20262027-academic-year-tenable-in-algeria",
+        "requirements": [
+          "Create an account and register under the Algerian Government Scholarship on www.scholarships.gov.gh",
+          "Complete the online application",
+          "Print the application form",
+          "Attach WASSCE result slips, birth certificates and transcript",
+          "Master's applicants attach degree certificates and transcripts",
+          "Submit to the Ghana Scholarships Authority before the deadline"
+        ],
+        "documents": [
+          "WASSCE result slips",
+          "Birth certificate",
+          "Transcript",
+          "Degree certificate and transcript for Master's applicants",
+          "Printed application form"
+        ],
+        "english_requirement": null,
+        "english_requirement_note": "The notice is in English and sets no English test requirement; instruction in Algeria is in French and Arabic, and the Islamic Studies categories require Arabic.",
+        "selection_criteria": [
+          "WASSCE aggregate score of 13 or better",
+          "Age 23 or under",
+          "Completion of Senior High School in the current 2025 sitting",
+          "Arabic language ability and Quran memorisation for religious studies applicants",
+          "Relevant first degree for Master's applicants"
+        ],
+        "selection_weighting": null,
+        "duration": "Two years for vocational training, three years for religious studies, two years for the Master's in Islamic Studies plus one year of French training",
+        "award_holder_conditions": [
+          "Successful candidates in the Islamic Studies categories must complete one year of French language training before the main course of study"
+        ],
+        "supplements_or_initiatives": [
+          "Joint Algeria and Ghana government scholarship scheme",
+          "One-year French language training for the Islamic Studies categories"
+        ],
+        "official_contacts": {
+          "general": "The Director-General, Ghana Scholarships Authority, P.O. Box M.75, Accra; office at GES Council Building, Behind Accra High School, North Ridge",
+          "email": "apply@scholarships.gov.gh",
+          "phone": "0302907051"
+        },
+        "description": "The Joint Algeria/Ghana Government Scholarship Awards offer scholarship places tenable in Algeria for the 2026/2027 academic year to Ghanaian citizens. The call covers undergraduate university study, a two-year vocational and technical professional certificate, three-year Imam training, and a two-year Master's in Islamic Studies that requires a first degree in Islamic Sciences, Humanities and Social Sciences, Law and Political Science, or Arabic Language and Literature. Candidates in the Islamic Studies categories first complete one year of French language training. Applicants register on the Ghana Scholarships Authority website and submit the printed form with WASSCE result slips, birth certificate and transcript; the deadline was 21 September 2026.",
+        "program_type": "Bilateral government scholarship",
+        "region": "Africa",
+        "coverage": "Undergraduate, two-year vocational and technical training, three-year religious studies and a two-year Master's in Islamic Studies in Algeria, with one year of French language training for the Islamic Studies categories",
+        "last_verified_date": "2026-10-04"
+      },
+      "programme_detail_applicant_utility": {
+        "application_readiness_checklist": [
+          "Check your WASSCE aggregate is 13 or better and that you are 23 or under, because both conditions are hard requirements",
+          "Confirm you are a Ghanaian citizen resident in Ghana and hold a genuine birth certificate and a valid passport",
+          "Choose your category early: academic undergraduate, vocational and technical, religious studies, or Master's in Islamic Studies",
+          "For religious studies, be ready to evidence spoken and written Arabic and Quran memorisation",
+          "For the Master's, confirm your first degree is in Islamic Sciences, Humanities and Social Sciences, Law and Political Science, or Arabic Language and Literature",
+          "Create your account on www.scholarships.gov.gh and register under the Algerian Government Scholarship",
+          "Complete the online form, print it, and attach WASSCE result slips, birth certificate and transcript",
+          "Deliver the hard copy to the Authority's Accra office, or email for enquiries, well before the deadline"
+        ],
+        "common_rejection_risks": [
+          "An aggregate score above 13, which is the stated cut-off",
+          "Being older than 23",
+          "Missing the annual window, which in 2026 ran only from 5 September to 21 September",
+          "Applying for the Master's category without a degree certificate and transcript",
+          "Applying for religious studies without demonstrable Arabic and Quran memorisation",
+          "Paying an agent, since the Authority states its Secretariat services are free and no third party is engaged"
+        ],
+        "estimated_uncovered_costs": [
+          "Travel to Algeria and return, which the notice does not mention",
+          "Passport renewal and any medical or vaccination costs",
+          "Personal expenses beyond the published award, which the notice does not itemise"
+        ],
+        "document_audit": [
+          "WASSCE result slips for the current 2025 sitting",
+          "Genuine birth certificate",
+          "Transcript",
+          "Degree certificate and transcript for the Master's category",
+          "Printed copy of the completed online application form",
+          "Passport copy for the Authority's records"
+        ],
+        "alerts": [
+          {
+            "trigger": "Application window",
+            "message": "The 2026/2027 deadline was 21 September 2026 and has passed. Watch the Ghana Scholarships Authority opportunities page for the next annual joint call."
+          },
+          {
+            "trigger": "Category choice",
+            "message": "The four categories have very different entry requirements and durations, so pick one before you start the form."
+          },
+          {
+            "trigger": "French training year",
+            "message": "Master's and religious studies candidates face a year of French language training before their main course, which extends the total programme by a year."
+          },
+          {
+            "trigger": "Free service",
+            "message": "The Authority states its Secretariat services are free and that no individual, group or third party has been engaged to assist applicants."
+          }
+        ],
+        "submission_workflow": [
+          "Go to www.scholarships.gov.gh and create an account",
+          "Register under the Algerian Government Scholarship",
+          "Complete the online application form for your chosen category",
+          "Print the completed form",
+          "Attach WASSCE result slips, birth certificates and transcript, plus degree certificate and transcript for Master's applicants",
+          "Submit to the Director-General, Ghana Scholarships Authority, P.O. Box M.75, Accra, or email apply@scholarships.gov.gh"
+        ]
+      },
+      "programme_detail_verification": {
+        "cycle_verified": "2026/2027 academic year cycle, notice published 5 September 2026 and closed 21 September 2026, verified 2026-10-04",
+        "verification_confidence": 0.86,
+        "official_fields_confirmed": [
+          "degree_levels",
+          "eligibility",
+          "deadline_central_display",
+          "application_method",
+          "subject_or_agency_requirement",
+          "selection_criteria",
+          "official_source_url"
+        ],
+        "institution_check_required": [
+          "What the award actually pays for, including whether tuition, accommodation and a stipend are covered, because the notice itemises nothing",
+          "Which Algerian institutions host each category and how many places each carries",
+          "The date the next annual call opens",
+          "The French language test or level required before the Islamic Studies courses begin"
+        ],
+        "unverified_or_removed_claims": [
+          "Any monetary value or itemised benefit: none is published, so funding_amount is null and fully_funded is false",
+          "Travel cost coverage",
+          "Selection weighting beyond the published age and aggregate conditions",
+          "Whether the Master's in Islamic Studies is offered in Arabic, French or English"
+        ],
+        "source_citations": [
+          "https://scholarships.gov.gh/opportunities/the-joint-algeriaghana-government-scholarship-awards-for-the-20262027-academic-year-tenable-in-algeria",
+          "https://scholarships.gov.gh/opportunities"
+        ],
+        "researched_by": "w2_41"
+      },
+      "logo_override": {
+        "url": "https://scholarships.gov.gh/images/logo.png",
+        "page_url": "https://scholarships.gov.gh/opportunities",
+        "official_host": true,
+        "alt_text": "Ghana Scholarships Authority (Republic of Ghana) logo",
+        "validation_result": "verified",
+        "validation_detail": "webfetch returned \"Image fetched successfully\" (HTTP 200, image/png) for /images/logo.png on scholarships.gov.gh. The image is the Ghana Scholarships Authority wordmark beside the Ghanaian national coat of arms, with the strapline \"Transforming Ghana through Education\", drawn in black and the national colours on white. It is the administering body's own mark on its own registrable domain and is not white-on-transparent.",
+        "image_kind": "official_logo",
+        "image_format": "png",
+        "verified_at": "2026-10-04T00:00:00+00:00",
+        "host_evidence": "same_registrable_domain",
+        "_award": "Joint Algeria/Ghana Government Scholarship Awards 2026/2027"
+      },
+      "research_notes": {
+        "logo": "Extracted from the header markup of the Ghana Scholarships Authority opportunities page, which references /images/logo.png. Probed with webfetch, which returned \"Image fetched successfully\", confirming HTTP 200 and an image/png content type on the Authority's own domain. The Ghana Scholarships Authority is the body that publishes and processes the award, so its mark is the awarding body's own mark here.",
+        "unverified": [
+          "What the scholarship pays for, because the notice itemises no benefits or amounts",
+          "Which Algerian institutions host each category and how many places exist",
+          "The date the next annual call opens",
+          "The French level required before the Islamic Studies courses"
+        ],
+        "substitution": null,
+        "official_pages_read": [
+          "https://scholarships.gov.gh/opportunities",
+          "https://scholarships.gov.gh/opportunities/the-joint-algeriaghana-government-scholarship-awards-for-the-20262027-academic-year-tenable-in-algeria"
+        ],
+        "degree_level_confirmed": "Official wording: \"scholarship awards for undergraduate studies, vocational/technical education and religious studies for the 2026/2027 academic year, tenable in Algeria\", with the four categories listed as (1) University Education (Undergraduate studies), (2) Vocational Education and Technical Training (2 years Professional Certificate), (3) Religious Studies (3 years Imam Training) and (4) Masters in Islamic Studies (2 years).",
+        "dedup_check": "Checked against the 489 titles and 320 hosts in research/wave2/shards/w2-49.json and against the Oceania dedup block in research/wave2/shards/w2-41.json. Neither list contains any Algeria, Ghana, scholarships.gov.gh or bilateral Algeria entry. The only Middle East/Africa title in the catalogue is \"France-South Africa Scholarship Programme 2027\", a different scheme.",
+        "skeleton": false,
+        "extraction_note": "scholarships.gov.gh is reachable and renders server-side, so the notice text was read directly rather than through a search-engine extract. Reachability was first tested cheaply with HTTP HEAD requests before spending a full fetch."
+      }
+    },
+    {
+      "outcome": "new",
+      "new_scholarship": {
+        "name": "Scholarship Opportunities in the Kingdom of Saudi Arabia (Study in Saudi — Ghana allocation)",
+        "country": "Saudi Arabia",
+        "region": "Middle East",
+        "degree_levels": "Not specified",
+        "funding_type": "Not specified",
+        "program_type": "Government scholarship",
+        "official_source": "Government of the Kingdom of Saudi Arabia, announced by the Ghana Scholarships Authority (Republic of Ghana)",
+        "official_source_url": "https://scholarships.gov.gh/opportunities/scholarship-oppurtunities-in-the-kingdom-of-saudi-arabia",
+        "catalogue_url": "https://scholarships.gov.gh/opportunities/scholarship-oppurtunities-in-the-kingdom-of-saudi-arabia",
+        "official_updates_url": "https://scholarships.gov.gh/opportunities",
+        "status": "open",
+        "is_verified": true,
+        "last_verified_date": "2026-10-04",
+        "deadline": "28 October 2026",
+        "deadline_date": "2026-10-28",
+        "deadline_precision": "exact",
+        "application_period": "Notice published 28 September 2026; applications close on 28 October 2026.",
+        "eligibility_summary": "Open to candidates who satisfy three published conditions: they must be Ghanaian citizens resident in Ghana, hold a genuine birth certificate, and hold a passport. The notice does not state a minimum grade, degree level or language requirement.",
+        "eligibility": [
+          "Ghanaian citizen resident in Ghana",
+          "Genuine birth certificate",
+          "Passport"
+        ],
+        "coverage": [
+          "Scholarship awards at six selected universities in the Kingdom of Saudi Arabia: University of Taif, University of Madinah, University of Jazan, University of Najran, University of Tabuk and Fahad Bin Sultan University"
+        ],
+        "benefits": [],
+        "requirements": [
+          "Review the eligibility requirements, terms and conditions on the official Study in Saudi platform before applying",
+          "Apply through the official Study in Saudi application portal at https://studyinsaudi.sa/en"
+        ],
+        "required_documents": [
+          "Genuine birth certificate",
+          "Passport",
+          "Any further documents required by the participating Saudi university on the Study in Saudi platform"
+        ],
+        "application_method": [
+          "Visit https://studyinsaudi.sa/en and complete the official application",
+          "Carefully review the eligibility requirements, terms and conditions before submitting"
+        ],
+        "english_requirement": null,
+        "selection_notes": "The notice is signed by the Director-General of the Ghana Scholarships Authority and directs applicants to the Saudi Ministry's own Study in Saudi platform for the actual application.",
+        "best_fit": "Ghanaian citizens resident in Ghana with a valid passport and birth certificate who want to study in Saudi Arabia at one of the six listed universities.",
+        "funding_amount": null,
+        "funding_currency": "SAR",
+        "funding_period": null,
+        "duration": null,
+        "notes": "The notice lists nine available programmes (Technology Management, Business Management, Islamic Economics, Marketing, Engineering, Technology, Medicine, Education and Architecture) but does not state whether each is a bachelor's, master's or other level, so the degree level is recorded as not specified. No monetary value or benefits are published on the notice.",
+        "image_url": null,
+        "image_source_url": null,
+        "image_source_type": null,
+        "image_alt_text": null,
+        "image_verified_at": null,
+        "description": "Scholarship awards at six selected Saudi universities — Taif, Madinah, Jazan, Najran, Tabuk and Fahad Bin Sultan University — announced by the Ghana Scholarships Authority and applied for through the Saudi Ministry of Education's Study in Saudi platform. The call is open to Ghanaian citizens resident in Ghana who hold a genuine birth certificate and a passport, and covers programmes in technology management, business management, Islamic economics, marketing, engineering, technology, medicine, education and architecture. Applications close on 28 October 2026."
+      },
+      "programme_detail_official": {
+        "official_source_urls": [
+          "https://scholarships.gov.gh/opportunities/scholarship-oppurtunities-in-the-kingdom-of-saudi-arabia",
+          "https://scholarships.gov.gh/opportunities"
+        ],
+        "application_link": "https://studyinsaudi.sa/en",
+        "official_updates_url": "https://scholarships.gov.gh/opportunities",
+        "catalogue_url": "https://scholarships.gov.gh/opportunities",
+        "application_cycle": "Notice published 28 September 2026, deadline 28 October 2026",
+        "deadline_central": "2026-10-28",
+        "deadline_central_display": "Deadline: October 28, 2026",
+        "deadline_central_timezone": "Africa/Accra",
+        "deadline_note": "The deadline of 28 October 2026 is after today's date of 2026-10-04, so the award is open now with about three and a half weeks remaining.",
+        "status": "OPEN",
+        "status_note": "Open now. The Ghana Scholarships Authority portal shows this notice as Open with a closing date of 28 October 2026, roughly 24 days after publication.",
+        "funding_amount": null,
+        "funding_currency": "SAR",
+        "funding_period": null,
+        "funding_duration": null,
+        "tuition_coverage": null,
+        "tuition_coverage_note": "The notice publishes no statement about tuition, accommodation or a stipend, so no coverage is claimed.",
+        "living_cost_coverage": null,
+        "travel_coverage": null,
+        "fully_funded": false,
+        "funding_label": "Scholarship awards at six named Saudi universities; the notice publishes no monetary value or benefits list, so fully_funded is false.",
+        "benefits": [
+          "Scholarship award at one of six participating Saudi universities"
+        ],
+        "eligibility": [
+          "Ghanaian citizen resident in Ghana",
+          "Genuine birth certificate",
+          "Valid passport"
+        ],
+        "citizenship_residency": "Ghanaian citizens resident in Ghana",
+        "international_eligibility": "Allocated to Ghanaian nationals through the Ghana Scholarships Authority; other nationalities apply through studyinsaudi.sa or their own government",
+        "degree_levels": [
+          "Not specified"
+        ],
+        "study_mode": null,
+        "research_requirement": null,
+        "subject_or_agency_requirement": "Technology Management, Business Management, Islamic Economics, Marketing, Engineering, Technology, Medicine, Education or Architecture, at one of the six participating universities",
+        "application_method": "Online application through the Saudi Ministry of Education's Study in Saudi platform",
+        "application_route": "https://studyinsaudi.sa/en",
+        "requirements": [
+          "Review the eligibility requirements, terms and conditions on the Study in Saudi platform before applying",
+          "Meet the three published conditions: Ghanaian citizen resident in Ghana, genuine birth certificate, passport"
+        ],
+        "documents": [
+          "Genuine birth certificate",
+          "Valid passport",
+          "Documents required by the participating Saudi university through Study in Saudi"
+        ],
+        "english_requirement": null,
+        "english_requirement_note": "The notice sets no English requirement; instruction at Saudi universities is in Arabic and English.",
+        "selection_criteria": [
+          "Ghanaian citizenship and residence in Ghana",
+          "Possession of a genuine birth certificate and a passport"
+        ],
+        "selection_weighting": null,
+        "duration": null,
+        "award_holder_conditions": [],
+        "supplements_or_initiatives": [],
+        "official_contacts": {
+          "general": "Ghana Scholarships Authority, P.O. Box M.75, Accra",
+          "email": "apply@scholarships.gov.gh",
+          "phone": "0302907051"
+        },
+        "description": "A scholarship call for study at six selected Saudi universities, announced by the Ghana Scholarships Authority on 28 September 2026 and applied for through the Study in Saudi platform. Eligibility is limited to three published conditions: Ghanaian citizenship and residence, a genuine birth certificate and a passport. Nine programmes are available, covering technology management, business management, Islamic economics, marketing, engineering, technology, medicine, education and architecture. Applications close on 28 October 2026.",
+        "program_type": "Government scholarship",
+        "region": "Middle East",
+        "coverage": "Scholarship awards at the University of Taif, University of Madinah, University of Jazan, University of Najran, University of Tabuk and Fahad Bin Sultan University, in nine named programmes",
+        "last_verified_date": "2026-10-04"
+      },
+      "programme_detail_applicant_utility": {
+        "application_readiness_checklist": [
+          "Confirm you are a Ghanaian citizen resident in Ghana",
+          "Get hold of your genuine birth certificate and a valid passport before you start",
+          "Choose among the six participating universities: Taif, Madinah, Jazan, Najran, Tabuk or Fahad Bin Sultan University",
+          "Choose among the nine programmes, which span engineering, technology, medicine, education, architecture, business and Islamic economics",
+          "Go to https://studyinsaudi.sa/en and read the eligibility requirements, terms and conditions before submitting anything",
+          "Complete the Study in Saudi application well before 28 October 2026",
+          "Keep any confirmation the platform issues, because the Ghana portal may ask for evidence of having applied"
+        ],
+        "common_rejection_risks": [
+          "Missing the 28 October 2026 deadline, which is less than four weeks away",
+          "Not being resident in Ghana, which the eligibility wording requires",
+          "Applying without a genuine birth certificate or a valid passport, the two documentary conditions",
+          "Assuming the award is fully funded, since the notice publishes no coverage detail",
+          "Applying outside Study in Saudi, which is the channel the notice directs applicants to"
+        ],
+        "estimated_uncovered_costs": [
+          "Tuition, accommodation, living costs and airfare, because the notice does not state what the scholarship pays for",
+          "Health insurance and visa costs"
+        ],
+        "document_audit": [
+          "Genuine birth certificate",
+          "Valid passport",
+          "Secondary school and tertiary certificates and transcripts as required by the chosen Saudi university",
+          "Evidence of having applied through Study in Saudi, if requested by the Ghana Scholarships Authority"
+        ],
+        "alerts": [
+          {
+            "trigger": "Open window",
+            "message": "The call is open now and closes on 28 October 2026, so you have about three weeks to apply."
+          },
+          {
+            "trigger": "Degree level unstated",
+            "message": "The notice names nine programmes but never says whether they are bachelor's or postgraduate, so check the individual university pages on Study in Saudi before you commit."
+          },
+          {
+            "trigger": "Coverage not published",
+            "message": "No benefits or amounts are stated, so confirm what the scholarship covers with the Saudi university or the Ghana Scholarships Authority."
+          },
+          {
+            "trigger": "Only three conditions",
+            "message": "Eligibility is unusually short: citizenship and residence, birth certificate and passport. Do not assume additional criteria, but do not assume there are none at the university either."
+          }
+        ],
+        "submission_workflow": [
+          "Open https://studyinsaudi.sa/en",
+          "Review the eligibility requirements, terms and conditions listed on the platform",
+          "Register and select one of the six participating universities and one of the nine programmes",
+          "Complete and submit the application",
+          "Retain the submission confirmation and monitor the Ghana Scholarships Authority opportunities page for updates"
+        ]
+      },
+      "programme_detail_verification": {
+        "cycle_verified": "Notice published 28 September 2026 with a 28 October 2026 deadline, verified 2026-10-04",
+        "verification_confidence": 0.82,
+        "official_fields_confirmed": [
+          "deadline_central",
+          "status",
+          "eligibility",
+          "application_route",
+          "official_source_url"
+        ],
+        "institution_check_required": [
+          "What the scholarship actually covers, because the notice publishes no benefits or amounts",
+          "Whether each of the nine programmes is a bachelor's or postgraduate award",
+          "Minimum academic entry requirement and English language requirement for each university",
+          "Number of funded places and the selection weighting"
+        ],
+        "unverified_or_removed_claims": [
+          "Any statement that the award is fully funded: no coverage is published, so funding_amount, tuition_coverage and living_cost_coverage are null and fully_funded is false",
+          "Degree level, which the notice does not state, so degree_levels is recorded as Not specified",
+          "Programme duration",
+          "Selection weighting and any interview requirement"
+        ],
+        "source_citations": [
+          "https://scholarships.gov.gh/opportunities/scholarship-oppurtunities-in-the-kingdom-of-saudi-arabia",
+          "https://scholarships.gov.gh/opportunities"
+        ],
+        "researched_by": "w2_41"
+      },
+      "logo_override": {
+        "url": "https://scholarships.gov.gh/images/logo.png",
+        "page_url": "https://scholarships.gov.gh/opportunities",
+        "official_host": true,
+        "alt_text": "Ghana Scholarships Authority (Republic of Ghana) logo",
+        "validation_result": "verified",
+        "validation_detail": "webfetch returned \"Image fetched successfully\" (HTTP 200, image/png) for /images/logo.png on scholarships.gov.gh. The image is the Ghana Scholarships Authority wordmark beside the Ghanaian national coat of arms with the strapline \"Transforming Ghana through Education\", in black and the national colours on white. It is the announcing body's own mark on its own registrable domain and is not white-on-transparent.",
+        "image_kind": "official_logo",
+        "image_format": "png",
+        "verified_at": "2026-10-04T00:00:00+00:00",
+        "host_evidence": "same_registrable_domain",
+        "_award": "Scholarship Opportunities in the Kingdom of Saudi Arabia"
+      },
+      "research_notes": {
+        "logo": "Same Ghana Scholarships Authority asset used for the sibling Algeria/Ghana record, taken from the header markup of the Authority's opportunities page (/images/logo.png) and probed with webfetch, which returned \"Image fetched successfully\". Same registrable domain, so it is the announcing body's own mark. The alternative asset on that site, /images/logo_transparent.png, was not used because the brief warns against white-on-transparent marks.",
+        "unverified": [
+          "What the scholarship covers, because the notice publishes no benefits or amounts",
+          "The degree level of each of the nine programmes",
+          "Programme duration",
+          "Any selection weighting or interview requirement"
+        ],
+        "substitution": null,
+        "official_pages_read": [
+          "https://scholarships.gov.gh/opportunities",
+          "https://scholarships.gov.gh/opportunities/scholarship-oppurtunities-in-the-kingdom-of-saudi-arabia"
+        ],
+        "degree_level_confirmed": "Not confirmed. The notice lists nine \"PROGRAMMES AVAILABLE\" — Technology Management, Business Management, Islamic Economics, Marketing, Engineering, Technology, Medicine, Education and Architecture — but never states a degree level, so degree_levels is honestly recorded as \"Not specified\" rather than guessed.",
+        "dedup_check": "Checked against the 489 titles and 320 hosts in research/wave2/shards/w2-49.json and against the Oceania dedup block in research/wave2/shards/w2-41.json. There is no Saudi Arabia, Study in Saudi, studyinsaudi.sa or scholarships.gov.gh entry in either list.",
+        "skeleton": false,
+        "extraction_note": "Both Ghana Scholarships Authority notice pages render server-side and were read directly. StudyinSaudi itself was not fetched, because the awarding criteria in this record come from the Ghana Scholarships Authority notice."
+      }
+    }
+  ],
+  "rejected": [
+    {
+      "candidate": "France-South Africa Scholarship Programme 2027",
+      "url": "https://southafrica-france-scholarships.com",
+      "reason": "already in catalogue"
+    },
+    {
+      "candidate": "Qatar University International Students Scholarship / Talents Scholarship",
+      "url": "https://www.qu.edu.qa/en-us/students/admission/scholarships/Pages/scholarships-timeline.aspx",
+      "reason": "university-internal award whose own timeline shows the March 2026 window closed; not a government scheme and not an early-stage/bridging award"
+    }
+  ]
+}

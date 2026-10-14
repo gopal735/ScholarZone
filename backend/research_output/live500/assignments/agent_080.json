@@ -1,0 +1,90 @@
+{
+ "agent": "agent_080",
+ "assignment_count": 1,
+ "scholarships": [
+  {
+   "id": 224,
+   "title": "FWF ASTRA Awards",
+   "country": "Austria",
+   "degree": "Advanced Postdoc",
+   "funding_label": "Fully Funded",
+   "status": "upcoming",
+   "official_source": "Austrian Science Fund (FWF)",
+   "official_source_url": "https://www.fwf.ac.at/en/funding/funding-portfolio/fwf-astra",
+   "application_link": "https://www.fwf.ac.at/en/funding/funding-portfolio/fwf-astra",
+   "catalogue_url": "https://www.fwf.ac.at/fileadmin/Website/Dokumente/Foerdern/Portfolio/ASTRA/fwf_ast_application_guidelines.pdf",
+   "official_updates_url": null,
+   "existing": {
+    "funding_amount": null,
+    "funding_currency": "EUR",
+    "funding_period": "over five years",
+    "tuition_coverage": 0,
+    "living_cost_coverage": null,
+    "travel_coverage": null,
+    "fully_funded": 0,
+    "description": "The FWF ASTRA Awards are a career funding programme launched in July 2024 for advanced postdocs in Austria who already have experience with independent research (R3 level). The FWF awards between EUR 500,000 and EUR 1 million per project over five years, plus an additional EUR 200,000 tenure package for female principal investigators who secure a permanent position within the first three years. The programme is decided by the FWF Scientific Board on the recommendation of an international jury following peer review and a hearing, with about 18 awards per call and half of them awarded to women. Proposals are submitted through the elane portal during a published annual application window, which was closed on the verification date.",
+    "eligibility": [
+     "Academic qualifications needed to lead the proposed research project",
+     "Doctoral degree awarded at least 2 and not more than 9 years prior to September 30 of the year of submission (exceptions such as parental leave are defined in the Application Guidelines)",
+     "In arts-based research, researchers without a doctorate may apply with at least 2 to a maximum of 9 years of relevant experience according to international standards",
+     "Not already holding a tenured professorship or an equivalent permanent leadership position, and not already having accepted such an appointment",
+     "Researchers may apply to the ASTRA programme a maximum of two times in their career and may serve as principal investigator in only one approved project",
+     "All Austrian research institutions are eligible to apply; the project must be carried out in Austria"
+    ],
+    "eligibility_summary": "Successful, internationally visible researchers from all disciplines, including arts-based research, who already have experience of independent research (R3 level) and whose doctorate was awarded at least 2 and not more than 9 years before 30 September of the year of submission.",
+    "benefits": [
+     "Project funding of EUR 500,000 to a maximum of EUR 1 million for five years",
+     "Additional EUR 200,000 tenure package for female principal investigators",
+     "Career coaching and networking measures",
+     "Child allowances",
+     "Fallback funding as a three-year Principal Investigator Project (Merit Award) of up to EUR 450,000 for shortlisted applicants who do not win an ASTRA Award"
+    ],
+    "coverage": [
+     "Project-specific costs of EUR 500,000 to a maximum of EUR 1 million over five years",
+     "An additional EUR 200,000 tenure package for female principal investigators who are granted a permanent position within the first three years"
+    ],
+    "requirements": [
+     "Applications are submitted online via the elane digital application portal",
+     "Funding is administered in PROFI mode, so the application must be approved for submission by both the applicant and the Austrian host research institution",
+     "All forms must be completed online and all documents uploaded in full before institutional approval",
+     "The FWF strongly recommends limiting the number of ASTRA applications per research institution, per the Guidelines on the Maximum Number of ASTRA Applications",
+     "Half of the ASTRA Awards are granted to women"
+    ],
+    "documents": [
+     "Scientific abstract",
+     "Project description with annexes",
+     "Alternative project plan (max. 2 pages including cost breakdown) for the Merit Award fallback",
+     "Template publication record of the principal investigator",
+     "Checklist ASTRA Awards",
+     "Scientific disciplines / Code Statistics Austria classification document",
+     "Information on and checklist/form for accounting for career breaks, if applicable",
+     "Evidence of positive ethics commission opinion for clinical research projects, if applicable"
+    ],
+    "english_requirement": "The official programme page and ASTRA application guidelines are published in English; no English language test for applicants is stated",
+    "application_method": [
+     "Online application through the elane digital application portal during the published application window"
+    ],
+    "selection_notes": "Decision by the Scientific Board based on a recommendation by an international jury; recommendations are made on the basis of international peer review and a hearing. Projects presented at the hearing that do not receive an ASTRA Award will be funded as three-year Principal Investigator Projects with a maximum of EUR 450,000 each (Merit Awards).",
+    "best_fit": "Internationally visible researchers 2 to 9 years after their doctorate, from any discipline including arts-based research, who are building a case for an academic leadership position and have not yet taken up a permanent professorship.",
+    "notes": "The formal announcement of the FWF ASTRA Awards takes place each June. Approximately 18 award winners are expected per call, depending on the FWF funding budget. A 2026 award round has already taken place, with 18 grants presented for five-year projects at universities and research institutions across Austria.",
+    "duration": "5 years",
+    "application_period": "Annual call with a fixed submission window; the 2026 call has closed and the next window was not yet published on 2026-10-04",
+    "deadline_display": "Submissions are accepted only during a published annual application window; on 2026-10-04 the official page showed \"Currently no submissions\". The next call window is not yet published.",
+    "deadline_date": null,
+    "region": "Europe",
+    "program_type": "Career award for advanced postdocs (principal investigator project)",
+    "applicant_utility": null,
+    "official_details": null
+   },
+   "missing_fields": [
+    "funding_amount",
+    "living_cost_coverage",
+    "travel_coverage",
+    "deadline_date",
+    "applicant_utility",
+    "official_details"
+   ]
+  }
+ ],
+ "result_file": "C:\\Users\\GopaL\\Desktop\\Projects folder\\ScholarZone\\backend\\research_output\\live500\\results\\agent_080.json"
+}

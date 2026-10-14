@@ -1,0 +1,138 @@
+{
+  "agent": "agent_296",
+  "records": [
+    {
+      "id": 673,
+      "official": {
+        "official_source_urls": [
+          "https://scholarship.ptdf.gov.ng/guidelines"
+        ],
+        "application_link": "https://scholarship.ptdf.gov.ng/guidelines",
+        "catalogue_url": "https://scholarship.ptdf.gov.ng/approved-schools/iss",
+        "official_updates_url": "https://scholarship.ptdf.gov.ng/news",
+        "deadline_central": "2026-06-05",
+        "deadline_central_display": "Friday 5 June 2026 (2026/27 cycle: applications opened Monday 27 April 2026 and closed Friday 5 June 2026, a six-week window)",
+        "deadline_note": null,
+        "application_cycle": "2026/27 In-Country Scholarship Scheme (ISS)",
+        "status": "CLOSED",
+        "status_note": "The published 2026/27 window ran from Monday 27 April 2026 to Friday 5 June 2026 and has closed; PTDF runs the scheme on an annual cycle and no 2027/28 window is published yet.",
+        "tuition_coverage_note": null,
+        "funding_amount": null,
+        "funding_currency": null,
+        "funding_period": null,
+        "tuition_coverage": false,
+        "living_cost_coverage": null,
+        "travel_coverage": null,
+        "fully_funded": false,
+        "benefits": [
+          "Undergraduate, Master's and PhD scholarship awards in Nigerian public universities",
+          "Tenable only on courses from the Fund's published sponsored-course lists, grouped into engineering, science, environmental science, renewable energy and management"
+        ],
+        "eligibility": [
+          "Be a Nigerian citizen applying to study at a Nigerian public university only",
+          "Possess a National Identity Number (NIN) and verify it before applying; NIMC verification charges apply",
+          "Applicants who have benefited from any PTDF scholarship in the past cannot apply for the same or a lower category of degree",
+          "Applicants who are current beneficiaries of any other scholarship need not apply",
+          "Undergraduate: be a full-time student presently in 200 level, have completed first-year examinations, hold 5 credits in WAEC/SSCE/NECO including English Language and Mathematics, and a minimum CGPA of 2.4 on a scale of 5.0",
+          "Postgraduate: hold a full-time admission letter into a public university and a minimum of Second Class Lower (2:2) in an oil and gas-related field, plus an NYSC certificate or letter of exemption and a certificate of indigeneship",
+          "Admission for part-time studies shall not be considered for all categories of applications"
+        ],
+        "requirements": [
+          "Access the online application form through the PTDF Scholarship Management Portal at scholarship.ptdf.gov.ng after verifying your NIN",
+          "Undergraduate: WAEC/SSCE/NECO results (at least 5 credits including English and Mathematics, not more than 2 sittings, first sitting uploaded), letter of admission, first-year transcript signed and stamped by the HOD/Exams Officer or authorised personnel, certificate of indigeneship, and a personal statement of at least 300 words",
+          "MSc: personal statement of at least 1,000 words covering reasons for the study, relevance to the industry and expected impact on national development",
+          "PhD: research proposal of not more than 6 pages (topic, introduction, literature review, research questions, methodology, mode of data collection, expected outcomes, novelty, relevance to the industry, references) using the template from the applicant's portal profile",
+          "All documents must be uploaded as legible PDFs at the file sizes indicated in the portal, except the passport photograph",
+          "Postgraduate applicants who meet the requirements are shortlisted and invited for oral interviews before final selection"
+        ],
+        "documents": [
+          "National Identity Number with NIMC verification",
+          "WAEC/SSCE/NECO results showing at least 5 credits including English Language and Mathematics (not more than 2 sittings)",
+          "Letter of admission into the university",
+          "First-year academic transcript signed and stamped by the HOD, Exams Officer or authorised university personnel (undergraduates)",
+          "Certificate of indigeneship showing state of origin and local government",
+          "Personal statement (minimum 300 words undergraduate, 1,000 words MSc)",
+          "First-degree certificate or statement of results (postgraduates)",
+          "NYSC certificate or letter of exemption (postgraduates)",
+          "Second-degree certificate or statement of results (PhD applicants)",
+          "PhD research proposal of not more than 6 pages on the portal template"
+        ],
+        "selection_criteria": [
+          "The scholarship is highly competitive and merit-driven; selection is based on equitable representation of the 36 States of the Federation and the Federal Capital Territory, except where a State does not have the requisite number of candidates to fill allotted slots",
+          "Undergraduate final selection is based on grades on transcripts, which must be signed and stamped by the HOD, Exams Officer or any authorised university personnel",
+          "Postgraduate panel assesses academic merit evidenced by quality of degrees, full academic transcripts, professional qualifications and relevant publications; membership of professional bodies; viability of the study/research plan (PhD); and the statement of purpose (undergraduate and MSc)"
+        ],
+        "coverage": [],
+        "application_method": [
+          "Obtain and verify a National Identity Number before applying",
+          "Read the application requirements on the PTDF Scholarship Management Portal",
+          "Complete the online application form and upload all required documents as legible PDFs at the sizes indicated",
+          "PhD applicants download the proposal template from the applicant profile on the portal",
+          "Shortlisted postgraduate applicants attend oral interviews before final selection"
+        ],
+        "application_route": "Online application through the PTDF Scholarship Management Portal at scholarship.ptdf.gov.ng after NIN verification",
+        "study_mode": "Full time only; admission for part-time studies shall not be considered for all categories of applications",
+        "citizenship_residency": "Nigerian citizens only; study at Nigerian public universities only",
+        "international_eligibility": "Not open to international students",
+        "subject_or_agency_requirement": "Course of study must be on the published list of sponsored courses across engineering, science, environmental science, renewable energy and management, and related to the oil and gas industry",
+        "research_requirement": "PhD applicants must submit a research proposal of not more than 6 pages using the portal template; the research area must be relevant to the oil and gas industry",
+        "duration": null,
+        "description": "The Petroleum Technology Development Fund (PTDF), a Federal Government of Nigeria agency with the mandate of developing indigenous human capacity and petroleum technology to meet the needs of the oil and gas industry, invites applications from qualified Nigerians for its 2026/27 Undergraduate, Master's and PhD scholarships in Nigerian public universities only.",
+        "region": "Nigeria (national scheme)",
+        "program_type": "Government scholarship",
+        "english_requirement": "No English language test is published; English Language is one of the five mandatory WAEC/SSCE/NECO credits required of all applicants."
+      },
+      "verification": {
+        "source_citations": [
+          "https://scholarship.ptdf.gov.ng/guidelines"
+        ],
+        "last_verified_date": "2026-10-10",
+        "verification_status": "confirmed",
+        "confidence": "high",
+        "not_confirmed": [
+          "funding_amount",
+          "funding_currency",
+          "funding_period",
+          "tuition_coverage",
+          "living_cost_coverage",
+          "travel_coverage",
+          "duration",
+          "2027/28 application window"
+        ],
+        "notes": "Official PTDF guidelines page read in full; it confirms the 27 April - 5 June 2026 window, eligibility, sponsored-course lists and document requirements, but does not itemise what the award pays for and publishes no monetary value."
+      },
+      "applicant_utility": {
+        "summary": "The 2026/27 window has closed, so treat this as a recurring annual scheme and use the gap to make the file airtight for the next round. The two items that quietly disqualify people are an unverified NIN and a transcript that is not signed and stamped, so handle both months before applications reopen rather than in the final week.",
+        "best_fit": "Nigerian public-university students at 200 level, or MSc/PhD applicants with a 2:2 or better in an oil and gas, energy or management-related discipline, pursuing one of the Fund's named sponsored courses full time.",
+        "application_readiness_checklist": [
+          "Verify your NIN on the NIMC platform well before the window opens and keep the verification slip",
+          "Ask your HOD or Exams Officer to sign and stamp your first-year transcript early - unstamped transcripts are a common failure",
+          "Request your certificate of indigeneship from your local government in advance",
+          "Draft the personal statement (300 words undergraduate, at least 1,000 words MSc) explicitly against your chosen sponsored course",
+          "PhD applicants: download the proposal template from your portal profile once registered and keep it within six pages",
+          "Confirm your WAEC/SSCE/NECO sittings number no more than two and that the first sitting is the one you upload"
+        ],
+        "common_rejection_risks": [
+          "Applying with part-time admission, which is excluded in every category",
+          "Holding a current scholarship from another body - the guidelines say such applicants need not apply",
+          "Having previously held a PTDF scholarship at the same or a lower degree level",
+          "Being a postgraduate applicant in your final year of studies, who are told not to apply",
+          "Choosing a course that does not appear on the published sponsored-courses lists",
+          "Uploading more than two WAEC/SSCE/NECO sittings, or the wrong sitting"
+        ],
+        "estimated_uncovered_costs": "The published guidelines do not itemise what the scholarship pays for, so nothing about fees, upkeep or books should be assumed; plan a contingency until the next guidelines confirm coverage.",
+        "document_audit": [
+          "Transcripts must be signed and stamped by the HOD, Exams Officer or any authorised university personnel",
+          "All uploads must be legible PDFs at the portal's indicated file sizes, except the passport photograph",
+          "For postgraduates both WAEC/SSCE/NECO results must precede the first degree",
+          "The certificate of indigeneship must show both state of origin and local government"
+        ],
+        "alerts": [
+          "Selection runs a 36-states-plus-FCT quota, so you are effectively competing against candidates from your own state",
+          "The 2026/27 window was only six weeks long, and postgraduate shortlists must attend oral interviews"
+        ],
+        "submission_workflow": "Register on the PTDF portal after NIN verification, complete the online form, upload the full PDF set, then await shortlisting and - for postgraduates - an oral interview."
+      }
+    }
+  ]
+}

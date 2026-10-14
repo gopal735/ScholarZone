@@ -1,0 +1,84 @@
+{
+ "agent": "agent_020",
+ "assignment_count": 1,
+ "scholarships": [
+  {
+   "id": 64,
+   "title": "University of Oregon International Cultural Service Program",
+   "country": "USA",
+   "degree": "Bachelor's (undergraduate)",
+   "funding_label": "Partial",
+   "status": "open",
+   "official_source": "University of Oregon",
+   "official_source_url": "https://isss.uoregon.edu/icsp",
+   "application_link": "https://isss.uoregon.edu/icsp",
+   "catalogue_url": "https://isss.uoregon.edu/icsp/application",
+   "official_updates_url": "https://isss.uoregon.edu/scholarships",
+   "existing": {
+    "funding_amount": null,
+    "funding_currency": null,
+    "funding_period": "per year",
+    "tuition_coverage": 1,
+    "living_cost_coverage": 0,
+    "travel_coverage": null,
+    "fully_funded": 0,
+    "description": null,
+    "eligibility": [
+     "New or continuing international student at University of Oregon.",
+     "Demonstrate financial need and academic merit.",
+     "Minimum 3.0 cumulative GPA (for new students).",
+     "Commitment to completing 66–80 hours of cultural service per year.",
+     "Cannot be U.S. citizen, permanent resident, or eligible for U.S. federal assistance."
+    ],
+    "eligibility_summary": "New and continuing international students at University of Oregon; financial need and academic merit; commitment to cultural service and presentations about home country.",
+    "benefits": [
+     "Partial tuition scholarship (approximately 50% of tuition)",
+     "Renewable annually until completion of one UO degree"
+    ],
+    "coverage": [
+     "Partial tuition scholarship (approximately 50% of tuition)",
+     "Renewable annually until completion of one UO degree"
+    ],
+    "requirements": [
+     "Apply for admission to the University of Oregon before applying for the scholarship",
+     "Retrieve the UO Student ID (95xxxxxxx) from the Admissions Status Portal within 3 days of applying, and use it to create a UO Scholarship Dashboard account",
+     "Submit the Profile, ISSS Endowed Scholarships Application and ICSP Scholarship Application by the deadline",
+     "Ensure all reference letters are submitted by the deadline",
+     "Demonstrate financial need and sufficient additional financial resources",
+     "Maintain a minimum 3.5 cumulative GPA",
+     "Complete 66-80 hours of cultural service each year"
+    ],
+    "documents": [
+     "University of Oregon admission application",
+     "Separate ICSP scholarship application",
+     "Academic transcripts",
+     "Proof of international student status"
+    ],
+    "english_requirement": "As per University of Oregon undergraduate admission requirements.",
+    "application_method": [
+     "Apply for admission to University of Oregon, then submit separate ICSP application"
+    ],
+    "selection_notes": "The official page lists five selection criteria: demonstrated financial need, experience participating in cultural activities, demonstrated performance and presentation skills, strong academic records, and strong communication skills. Selected students must be trained to make public presentations and give 66-80 hours of cultural service per year to schools and community groups in the Eugene-Springfield area.",
+    "best_fit": "International students at University of Oregon seeking partial tuition funding and interested in cross-cultural ambassadorship.",
+    "notes": "Recipients must give presentations about their home culture to local schools and community organizations (66-80 hours/year). Renewable annually. New students must apply for admission by January 15. Must maintain 3.0 GPA.",
+    "duration": "Renewable annually until completion of a UO degree, provided ICSP programme requirements are met",
+    "application_period": "Fall admission; separate ICSP application required",
+    "deadline_display": "Not announced for next cycle",
+    "deadline_date": "2027-02-01",
+    "region": "North America",
+    "program_type": "Cultural service work-learning tuition waiver for international students",
+    "applicant_utility": null,
+    "official_details": null
+   },
+   "missing_fields": [
+    "funding_amount",
+    "funding_currency",
+    "travel_coverage",
+    "description",
+    "applicant_utility",
+    "official_details"
+   ]
+  }
+ ],
+ "result_file": "C:\\Users\\GopaL\\Desktop\\Projects folder\\ScholarZone\\backend\\research_output\\live500\\results\\agent_020.json"
+}

@@ -1,0 +1,82 @@
+{
+ "agent": "agent_012",
+ "assignment_count": 1,
+ "scholarships": [
+  {
+   "id": 51,
+   "title": "UWA Global Excellence Scholarship",
+   "country": "Australia",
+   "degree": "Bachelor's, Master's (coursework)",
+   "funding_label": "Partial",
+   "status": "open",
+   "official_source": "University of Western Australia (UWA)",
+   "official_source_url": "https://www.uwa.edu.au/study/scholarships-and-fees/scholarships/international-scholarships/global-excellence-scholarship",
+   "application_link": "https://www.uwa.edu.au/study/scholarships-and-fees/scholarships/international-scholarships/global-excellence-scholarship",
+   "catalogue_url": "https://www.uwa.edu.au/study/how-to-apply/pathways-and-eligibility/university-preparation-programs",
+   "official_updates_url": "https://www.uwa.edu.au/study/scholarships-and-fees/scholarships/international-scholarships/global-excellence-scholarship",
+   "existing": {
+    "funding_amount": null,
+    "funding_currency": null,
+    "funding_period": null,
+    "tuition_coverage": 0,
+    "living_cost_coverage": null,
+    "travel_coverage": null,
+    "fully_funded": 0,
+    "description": "*International and overseas qualifications achieved at a certain level make you eligible for this scholarship. Other programs or qualifications will be considered on an individual basis.",
+    "eligibility": [
+     "International student (full-fee paying).",
+     "Offer for an eligible undergraduate or postgraduate coursework degree at UWA for 2026.",
+     "Equivalent minimum ATAR 85.00 (undergraduate) or minimum WAM 65.00 (postgraduate).",
+     "Final academic transcripts submitted (conditional offers may not include scholarship)."
+    ],
+    "eligibility_summary": "International student with an offer for an eligible undergraduate or postgraduate coursework degree at UWA for 2026; minimum equivalent ATAR 85.00 (undergraduate) or minimum WAM 65.00 (postgraduate).",
+    "benefits": [
+     "Undergraduate: up to AUD 48,000 over 4 years (ATAR 98+ = AUD 12,000/year; 90–97.95 = AUD 10,000/year; 85–89.95 = AUD 6,000/year).",
+     "Postgraduate: up to AUD 24,000 over 2 years (WAM 85+ = AUD 12,000/year; 75–84.99 = AUD 10,000/year; 65–74.99 = AUD 6,000/year).",
+     "Annual tuition fee discount applied per semester."
+    ],
+    "coverage": [
+     "Undergraduate: up to AUD 48,000 over 4 years (ATAR 98+ = AUD 12,000/year; 90–97.95 = AUD 10,000/year; 85–89.95 = AUD 6,000/year).",
+     "Postgraduate: up to AUD 24,000 over 2 years (WAM 85+ = AUD 12,000/year; 75–84.99 = AUD 10,000/year; 65–74.99 = AUD 6,000/year).",
+     "Annual tuition fee discount applied per semester."
+    ],
+    "requirements": [
+     "Minimum equivalent ATAR 85.00 (undergraduate) or minimum WAM 65.00 (postgraduate)",
+     "Final academic transcripts submitted (conditional offers may not include scholarship)",
+     "Congratulations on receiving an offer for a place in a UWA Health and Medical Sciences course. There are important compulsory health and legal screening requirements that you must now commence."
+    ],
+    "documents": [
+     "Apply for admission to an eligible UWA course.",
+     "Submit final academic transcripts for scholarship assessment.",
+     "No separate scholarship application required."
+    ],
+    "english_requirement": "language requirements[/LINK]",
+    "application_method": [
+     "Automatic consideration upon admission application and final transcript submission"
+    ],
+    "selection_notes": "Our Admissions team will automatically assess your eligibility for a Global Excellence Scholarship once you provide your final transcripts.</p></div></div></div></details><details class=\"accordion\"><summary>How do I find out if my current qualifications satisfy the requirements for this scholarship?</summary><div class=\"_content\"><div><div class=\"ck-content\"><p>The Global Excellence Scholarship wi",
+    "best_fit": "High-achieving international students from all countries seeking undergraduate or postgraduate coursework at UWA.",
+    "notes": "650 scholarships allocated for 2026 intake. Scholarship reviewed annually; deferral does not guarantee same value in future years. May not be held concurrently with other UWA tuition fee reductions. Excluded programs: Juris Doctor, Doctor of Medicine, Doctor of Dental Medicine, Doctor of Optometry, UWA Micro-credentials.",
+    "duration": "The normal full-time duration of the awardee's course as specified in their letter of offer",
+    "application_period": "Automatic consideration upon application; assessed upon final transcript submission",
+    "deadline_display": "A separate scholarship application is not required and no scholarship deadline is published. The award is made automatically once UWA Admissions assesses your final academic transcripts after you apply for a 2027 course.",
+    "deadline_date": null,
+    "region": "Oceania",
+    "program_type": "Post-admission automatic tuition fee discount",
+    "applicant_utility": null,
+    "official_details": null
+   },
+   "missing_fields": [
+    "funding_amount",
+    "funding_currency",
+    "funding_period",
+    "living_cost_coverage",
+    "travel_coverage",
+    "deadline_date",
+    "applicant_utility",
+    "official_details"
+   ]
+  }
+ ],
+ "result_file": "C:\\Users\\GopaL\\Desktop\\Projects folder\\ScholarZone\\backend\\research_output\\live500\\results\\agent_012.json"
+}

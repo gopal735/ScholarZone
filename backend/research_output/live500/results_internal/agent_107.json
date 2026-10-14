@@ -1,0 +1,117 @@
+{
+  "agent": "agent_107",
+  "records": [
+    {
+      "id": 295,
+      "official": {
+        "official_source_urls": [
+          "https://cuni.cz/UKEN-1617.html",
+          "https://cuni.cz/UKEN-2329.html",
+          "https://stars-natur.cz/",
+          "https://fsv.cuni.cz/en/admissions/scholarships-funding-and-fees/development-scholarships"
+        ],
+        "application_link": "https://cuni.cz/UKEN-1617.html",
+        "catalogue_url": null,
+        "official_updates_url": "https://cuni.cz/UKEN-1617.html",
+        "deadline_central": null,
+        "deadline_central_display": null,
+        "deadline_note": "There is no application deadline for the doctoral study income. The university states that as a full-time doctoral student 'you receive a doctoral study income in a guaranteed minimum amount of 1.2 times the minimum wage in Czechia during the standard length of your studies (4 years)', i.e. it is a standing entitlement attached to full-time enrolment rather than a call.",
+        "application_cycle": null,
+        "status": "OPEN",
+        "status_note": "Standing entitlement: the page is published and describes the guarantee as applying to full-time doctoral students, with no call, round or closing date attached to it.",
+        "tuition_coverage_note": "The page states that most faculties offer 'merit-based scholarships for outstanding students and various forms of tuition fee waivers or reductions' after the first year of studies, with the exact amounts set by each faculty's internal regulations; no tuition waiver is stated for the doctoral study income itself.",
+        "funding_amount": null,
+        "funding_currency": "CZK",
+        "funding_period": "per month",
+        "tuition_coverage": false,
+        "living_cost_coverage": null,
+        "travel_coverage": null,
+        "fully_funded": false,
+        "benefits": [
+          "Guaranteed doctoral study income of a minimum of 1.2 times the minimum wage in Czechia during the standard length of doctoral studies (4 years)",
+          "The income may consist of a doctoral scholarship, a salary or a wage for creative activities directly related to the preparation of the dissertation, or a combination of both",
+          "Often supplemented by awards for participation in research projects and remuneration for teaching undergraduates"
+        ],
+        "eligibility": [
+          "Enrolled as a full-time doctoral student at Charles University",
+          "Within the standard length of the doctoral study programme (4 years)"
+        ],
+        "requirements": [
+          "Enrol full-time in a doctoral study programme at Charles University",
+          "For the separate Václav Havel Bursary: demonstrate that studies are hindered or prevented by repression under totalitarian, authoritarian or other non-democratic regimes; it applies to students of both foundation and degree programmes",
+          "For faculty awards: consult the faculty's own scholarship and bursary rules and its Admission Office, because amounts are set by faculty regulations"
+        ],
+        "documents": [],
+        "selection_criteria": [
+          "The doctoral study income is not competitive; it is described as a guaranteed minimum for every full-time doctoral student",
+          "Merit-based scholarships and tuition fee waivers offered by faculties after the first year of studies are competitive and faculty-specific"
+        ],
+        "coverage": [
+          "Guaranteed minimum doctoral study income during the standard length of studies (4 years)",
+          "Often supplemented by awards for participation in research projects and teaching remuneration"
+        ],
+        "application_method": [
+          "For the doctoral study income: none - it is paid as a guaranteed entitlement to enrolled full-time doctoral students",
+          "For the Václav Havel Bursary: apply through the Charles University page for that bursary",
+          "For faculty awards: contact the faculty's Admission Office directly"
+        ],
+        "application_route": "No application is needed for the doctoral study income itself; the competitive awards on the same page are applied for separately through the faculty or the named programme.",
+        "study_mode": "full-time",
+        "citizenship_residency": null,
+        "international_eligibility": "Yes - the guarantee applies to any full-time doctoral student; the same page directs international applicants to the MEYS scholarships for developing countries and to the International Visegrad Fund scholarships, and to faculty schemes such as MFF, STARS and FSV UK SCHOLARS",
+        "subject_or_agency_requirement": null,
+        "research_requirement": null,
+        "duration": "Standard length of doctoral studies (4 years)",
+        "description": "As a full-time doctoral student you receive a doctoral study income in a guaranteed minimum amount of 1.2 times the minimum wage in Czechia during the standard length of your studies, which may consist of a doctoral scholarship, a salary or wage for creative activities directly related to the preparation of the dissertation, or a combination of both.",
+        "region": "Europe",
+        "program_type": "Institutional guaranteed doctoral study income (stipend or salary) for full-time doctoral students",
+        "english_requirement": null
+      },
+      "verification": {
+        "source_citations": [
+          "https://cuni.cz/UKEN-1617.html"
+        ],
+        "last_verified_date": "2026-10-10",
+        "verification_status": "confirmed",
+        "confidence": "high",
+        "not_confirmed": [
+          "funding_amount - the university expresses the guarantee only as 'a guaranteed minimum amount of 1.2 times the minimum wage in Czechia' and publishes no CZK figure on the page",
+          "living_cost_coverage - the page does not state what the income is intended to cover",
+          "travel_coverage - no travel or relocation support is mentioned",
+          "english_requirement - no language requirement is published for the doctoral study income",
+          "documents - no document list is published for the income itself"
+        ],
+        "notes": "Read the Charles University Scholarships page (last changed 14 August 2026) confirming the 1.2x minimum wage guarantee for full-time doctoral students; the other awards listed on the same page are separate schemes and were not treated as part of this row."
+      },
+      "applicant_utility": {
+        "summary": "This is an entitlement, not a competition: enrol full-time in a CU doctoral programme and the income floor follows, so your effort goes into the doctoral admission, not into a scholarship application. What is genuinely variable is the form it takes - a doctoral scholarship, a salary or wage for dissertation-related creative work, or a mix - and who pays it, which is decided by your faculty and supervisor. Treat the 1.2x minimum wage figure as a floor, not a target: top-ups from research-project awards and teaching are common and are the part you negotiate.",
+        "best_fit": "Candidates admitted full-time to a CU doctoral programme who want a guaranteed income floor while they write up, especially where a supervisor can add project or teaching money on top.",
+        "application_readiness_checklist": [
+          "Confirm your doctoral programme is full-time, since the guarantee is stated for full-time doctoral students only",
+          "Ask your future supervisor and the doctoral studies office how the income is delivered at that faculty - scholarship, wage for dissertation-related work, or a combination",
+          "Budget against the floor (1.2x the Czech minimum wage) rather than against any advertised stipend figure, since CU publishes no amount",
+          "Separately check the faculty's own post-first-year merit scholarships and tuition fee waivers, whose amounts are set by faculty regulations",
+          "If you are affected by repression, check the separate Václav Havel Bursary listed on the same page"
+        ],
+        "common_rejection_risks": [
+          "Enrolling part-time, which removes the guarantee",
+          "Assuming the income covers tuition - it is stated as income, and tuition waivers are a separate faculty-level matter",
+          "Waiting for a salary that has been agreed in principle but not contracted through the faculty",
+          "Confusing this guarantee with the competitive MEYS, Visegrad or faculty schemes listed on the same page"
+        ],
+        "estimated_uncovered_costs": "Tuition fees, unless your faculty separately grants a waiver, plus anything above the guaranteed minimum - CU publishes no figure, so you must budget against the Czech minimum wage times 1.2 and treat extras as variable.",
+        "document_audit": [
+          "No documents are required for the income itself; documentation starts only at doctoral admission and at faculty level for the separate competitive awards",
+          "For the Václav Havel Bursary you must be able to document that studies are hindered or prevented by repression under a non-democratic regime",
+          "For faculty awards, the faculty's own rules govern - ask the Admission Office for the current list rather than relying on the university page"
+        ],
+        "alerts": [
+          "The guarantee runs for the standard length of the doctorate (4 years), not indefinitely",
+          "The income is a floor stated in terms of the Czech minimum wage, so it moves with national minimum wage changes rather than with a fixed scholarship table",
+          "The competitive faculty scholarships and tuition waivers become available only after the first year of studies"
+        ],
+        "submission_workflow": "Secure full-time doctoral admission at CU, then let the faculty set up the income as scholarship, wage or a combination; no separate scholarship submission is involved for the income itself."
+      }
+    }
+  ]
+}

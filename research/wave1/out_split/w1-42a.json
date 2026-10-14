@@ -1,0 +1,1092 @@
+{
+  "agent_id": "w1_42a",
+  "shard": "w1-42a",
+  "today": "2026-10-04",
+  "records": [
+    {
+      "target_id": 410,
+      "outcome": "refreshed",
+      "confirm": true,
+      "confirmation_evidence": "Read the University of Otago's own scholarship page for this award, which states \"The University of Otago Doctoral Scholarship provides funding to support doctoral students studying at the University of Otago\" and \"Doctor of Philosophy - NZ$34,128 stipend per annum plus a domestic tuition fees waiver for 36 months\". Same awarding body (University of Otago), same award name, live and open (\"Applicants can apply anytime\").",
+      "new_scholarship": {
+        "name": "University of Otago Doctoral Scholarship",
+        "legacy_titles": [
+          "University of Otago Doctoral Scholarship"
+        ],
+        "country": "New Zealand",
+        "degree_levels": "Doctoral (PhD and professional doctorates: DClinDent, DMA, DBA, EDd)",
+        "funding_type": "Stipend + Tuition Fee Waiver",
+        "official_source": "University of Otago",
+        "official_source_url": "https://www.otago.ac.nz/courses/scholarships/university-of-otago-doctoral-scholarship",
+        "status": "open",
+        "is_verified": true,
+        "last_verified_date": "2026-10-04",
+        "region": "Oceania",
+        "duration": "PhD: tuition fee waiver for 36 months; professional doctorates: waiver for up to 36 months",
+        "program_type": "Doctoral research scholarship",
+        "deadline": "Applicants can apply anytime; applications are considered at quarterly rounds held in March, June, September and November. Applications must be submitted via eVision with a completed departmental assessment by the first day of each round month.",
+        "deadline_date": null,
+        "deadline_precision": "rolling",
+        "application_period": "Year-round submissions, assessed at quarterly rounds (March, June, September, November)",
+        "eligibility_summary": "Open to both domestic and international students seeking their first doctoral qualification at the University of Otago; candidates for the PhD and for professional doctorates (DClinDent, DMA, DBA, EDd) may apply. Selection is based predominantly on academic merit and the applicant's potential for research.",
+        "eligibility": [
+          "Seeking to obtain their first doctoral qualification",
+          "Applying to a doctoral programme (PhD, DClinDent, DMA, DBA or EDd) at the University of Otago",
+          "Available to both domestic and international students"
+        ],
+        "coverage": [
+          "Stipend of NZ$34,128 per annum for 36 months (PhD)",
+          "Domestic-rate tuition fee waiver for 36 months (PhD)",
+          "Domestic-rate-capped tuition fee waiver for up to 36 months (professional doctorates)"
+        ],
+        "funding_amount": 34128,
+        "funding_currency": "NZD",
+        "funding_period": "per annum",
+        "benefits": [
+          "NZ$34,128 per annum stipend",
+          "Tuition fees waived at the domestic rate for 36 months",
+          "Open to international doctoral candidates (fee differential not covered)"
+        ],
+        "catalogue_url": "https://www.otago.ac.nz/study/scholarships",
+        "official_updates_url": "https://www.otago.ac.nz/study/scholarships/phd/important-funding-announcement",
+        "application_method": [
+          "Apply online through the eVision student portal",
+          "Complete a departmental assessment; the completed submission is due by the first day of the March, June, September or November round"
+        ],
+        "requirements": [
+          "Completed eVision scholarship application",
+          "Completed departmental assessment",
+          "Admission to the relevant doctoral programme"
+        ],
+        "selection_notes": "Selection is based predominantly on academic merit and the applicant's potential for research; up to 153 awards are offered annually.",
+        "notes": "The University states it is currently reviewing the strategic direction of its doctoral scholarship programme and asks applicants to check the linked funding-announcement page before applying.",
+        "description": "The University of Otago Doctoral Scholarship is the University's main doctoral award, funding PhD and professional doctorate (DClinDent, DMA, DBA, EDd) candidates at the University of Otago in Dunedin, New Zealand. It pays a NZ$34,128 per annum stipend plus a tuition fee waiver for 36 months at the domestic rate, and excludes student services fee and insurance. Up to 153 awards are offered annually to both domestic and international applicants who are seeking their first doctoral qualification. Applications can be submitted at any time and are considered at quarterly rounds in March, June, September and November."
+      },
+      "programme_detail_official": {
+        "official_source_urls": [
+          "https://www.otago.ac.nz/study/scholarships/university-of-otago-doctoral-scholarship"
+        ],
+        "application_link": "https://www.otago.ac.nz/study/scholarships/university-of-otago-doctoral-scholarship",
+        "official_updates_url": "https://www.otago.ac.nz/study/scholarships/phd/important-funding-announcement",
+        "catalogue_url": "https://www.otago.ac.nz/study/scholarships",
+        "application_cycle": "Continuous applications for 2027 doctoral entry; quarterly assessment rounds in March, June, September and November",
+        "deadline_central": null,
+        "deadline_central_display": "Applicants can apply anytime; applications are considered at quarterly rounds held in March, June, September and November. Applications must be submitted via eVision with a completed departmental assessment by the first day of each round month.",
+        "deadline_central_timezone": "Pacific/Auckland",
+        "deadline_note": "No fixed calendar closing date is published. The University states applicants can apply anytime and that applications are considered at quarterly rounds, with submissions due by the first day of March, June, September and November.",
+        "status": "OPEN",
+        "status_note": "Open continuously; the University is simultaneously reviewing the strategic direction of its doctoral scholarship programme, so award volume and terms should be re-checked before applying.",
+        "funding_amount": 34128,
+        "funding_currency": "NZD",
+        "funding_period": "per annum",
+        "funding_duration": "36 months for the PhD; up to 36 months for professional doctorates",
+        "tuition_coverage": true,
+        "tuition_coverage_note": "Tuition fees are waived for 36 months, capped at the domestic rate; international fee differentials, the student services fee and insurance are excluded.",
+        "living_cost_coverage": true,
+        "travel_coverage": null,
+        "fully_funded": false,
+        "funding_label": "NZ$34,128 per annum stipend plus domestic-rate tuition fee waiver for 36 months (excludes student services fee, insurance and any international fee differential)",
+        "benefits": [
+          "NZ$34,128 per annum stipend",
+          "Domestic-rate tuition fee waiver for up to 36 months",
+          "Up to 153 awards annually"
+        ],
+        "eligibility": [
+          "Seeking to obtain their first doctoral qualification",
+          "PhD or professional doctorate (DClinDent, DMA, DBA, EDd) candidates at the University of Otago",
+          "Domestic and international students both eligible"
+        ],
+        "citizenship_residency": "No citizenship restriction stated; open to domestic and international students.",
+        "international_eligibility": "International students are eligible; the tuition waiver is capped at the domestic rate.",
+        "degree_levels": [
+          "Doctor of Philosophy (PhD)",
+          "Doctor of Clinical Dentistry (DClinDent)",
+          "Doctor of Musical Arts (DMA)",
+          "Doctor of Business Administration (DBA)",
+          "Doctor of Education (EdD)"
+        ],
+        "study_mode": "Full-time doctoral study",
+        "research_requirement": "Selection is based predominantly on academic merit and the applicant's potential for research.",
+        "subject_or_agency_requirement": null,
+        "application_method": "Applications are made online through the eVision student portal, with a completed departmental assessment, by the first day of the relevant quarterly round month.",
+        "application_route": "eVision student portal (Otago)",
+        "requirements": [
+          "Completed eVision scholarship application",
+          "Completed departmental assessment"
+        ],
+        "documents": [],
+        "english_requirement": null,
+        "english_requirement_note": "The scholarship page states no English language test requirement.",
+        "selection_criteria": [
+          "Academic merit",
+          "Applicant's potential for research"
+        ],
+        "selection_weighting": "Predominantly academic merit and research potential",
+        "duration": "36 months of funding for the PhD; up to 36 months for professional doctorates",
+        "award_holder_conditions": [],
+        "supplements_or_initiatives": [
+          "University publishes a notice that it is reviewing the strategic direction of its doctoral scholarship programme"
+        ],
+        "official_contacts": {
+          "general": null,
+          "email": null
+        },
+        "description": "The University of Otago Doctoral Scholarship supports doctoral students at the University of Otago, covering the PhD and the professional doctorates DClinDent, DMA, DBA and EdD. PhD holders receive a NZ$34,128 per annum stipend plus a domestic-rate tuition fee waiver for 36 months; professional doctorate holders receive the same stipend with a domestic-rate-capped waiver for up to 36 months. Student services fee and insurance are excluded from the waiver. Up to 153 awards are offered each year and selection rests predominantly on academic merit and research potential.",
+        "program_type": "Doctoral research scholarship",
+        "region": "Oceania",
+        "coverage": "Stipend plus domestic-rate tuition fees for 36 months; international fee differential, student services fee and insurance not covered.",
+        "last_verified_date": "2026-10-04"
+      },
+      "programme_detail_applicant_utility": {
+        "application_readiness_checklist": [
+          "Secure admission to an Otago doctoral programme before the round closes",
+          "Complete the eVision scholarship application and the departmental assessment before the first day of March, June, September or November",
+          "Budget for the international fee differential if you are an international student, plus the student services fee and insurance, which the waiver excludes"
+        ],
+        "common_rejection_risks": [
+          "Applying for a second doctoral qualification, when the award targets candidates seeking their first doctoral qualification",
+          "Missing the first day of a quarterly round month, so the departmental assessment is incomplete",
+          "Assuming the tuition waiver covers international fees or the student services fee and insurance"
+        ],
+        "estimated_uncovered_costs": [
+          "International tuition fee differential above the domestic rate",
+          "Student services fee",
+          "Student insurance",
+          "Living costs above the NZ$34,128 per annum stipend"
+        ],
+        "document_audit": [
+          "eVision scholarship application form completed and submitted",
+          "Departmental assessment completed and attached"
+        ],
+        "alerts": [
+          {
+            "trigger": "Programme review notice",
+            "message": "Otago states it is reviewing the strategic direction of its doctoral scholarship programme; check the linked funding-announcement page before committing to an application."
+          },
+          {
+            "trigger": "Quarterly round dates",
+            "message": "Submissions are only considered for rounds closing on the first day of March, June, September and November."
+          }
+        ],
+        "submission_workflow": [
+          "Apply to the relevant doctoral programme and obtain admission",
+          "Wait for the eVision alert inviting a scholarship application, or apply via eVision directly",
+          "Complete the departmental assessment with your department",
+          "Submit everything by the first day of the March, June, September or November round"
+        ]
+      },
+      "programme_detail_verification": {
+        "cycle_verified": "Continuous-application doctoral scholarship cycle, verified 2026-10-04",
+        "verification_confidence": 0.9,
+        "official_fields_confirmed": [
+          "name",
+          "degree_levels",
+          "funding_amount",
+          "funding_currency",
+          "funding_period",
+          "tuition_coverage",
+          "deadline_precision",
+          "deadline wording",
+          "application_method",
+          "eligibility",
+          "selection_criteria"
+        ],
+        "institution_check_required": [
+          "Confirm the current stipend value, as Otago reviews its doctoral scholarship programme and updates the award page between cycles",
+          "Confirm the domestic-rate cap still applies to international applicants in the next cycle"
+        ],
+        "unverified_or_removed_claims": [
+          "No logo asset could be safely verified (see research_notes.logo)",
+          "No specific calendar closing date is published, so deadline_date is null",
+          "English language requirement not stated on the scholarship page",
+          "Selection weighting beyond 'predominantly academic merit and research potential' is not published"
+        ],
+        "source_citations": [
+          "https://www.otago.ac.nz/study/scholarships/university-of-otago-doctoral-scholarship"
+        ],
+        "researched_by": "w1_42a"
+      },
+      "logo_override": null,
+      "research_notes": {
+        "logo": "Read the award page markup on the awarding body's own domain (otago.ac.nz). The only wordmark asset published there is the site header lockup https://www.otago.ac.nz/__data/assets/file/0034/568366/UoO_Logo_RGB_Horz_Gold-REV.svg. Two probe attempts on that asset and on the brand-guide page both timed out, so HTTP 200 and content type could not be confirmed. The '-REV' filename suffix indicates the reversed lockup, which the University's own brand guide describes as 'White and Gold on St Andrew's Blue' (the Otago blogs asset alt text on the same domain likewise describes the names as white with a gold tohu), i.e. a white wordmark that would be invisible on a light card - a hard ban. The University's brand guide states the non-reversed, dark-on-light wordmark files are behind University staff login, and the footer's only other mark, /__data/assets/image/0028/568108/1869-emblem.png, sits on the same dark footer so its colour could not be confirmed as a dark variant either. No probed, own-domain, non-white logo asset could be produced, so logo_override is null.",
+        "unverified": [
+          "Exact stipend value for the next cycle (subject to the University's stated review of its doctoral scholarship programme)",
+          "English language requirement",
+          "Departmental assessment criteria"
+        ],
+        "substitution": null,
+        "official_pages_read": [
+          "https://www.otago.ac.nz/study/scholarships/university-of-otago-doctoral-scholarship"
+        ],
+        "degree_level_confirmed": "\"The Scholarship is available to both domestic and international students. Candidates for professional doctorates, as well as the PhD, are welcome to apply.\" and \"Applicants must usually be: seeking to obtain their first doctoral qualification\" - doctoral level confirmed.",
+        "url_observed": "https://www.otago.ac.nz/study/scholarships/university-of-otago-doctoral-scholarship - the live page for this award. The stored URL https://www.otago.ac.nz/courses/scholarships/university-of-otago-doctoral-scholarship timed out on 2026-10-04; Otago has migrated its scholarship URLs from /courses/scholarships/ to /study/scholarships/, so the stored identity URL appears stale.",
+        "contradictions": [
+          "Stored official_source 'Otago University Nz' is not the awarding body's name; the University's own site uses 'University of Otago'.",
+          "Stored deadline_precision 'unknown' is wrong: the official page states 'Applicants can apply anytime; applications are considered at quarterly rounds held in March, June, September and November', so the award is rolling/recurring rather than unknown.",
+          "Stored funding string 'Fully funded research scholarship' omits the published value and overstates coverage for international students: the official value is 'NZ$34,128 stipend per annum plus a domestic tuition fees waiver for 36 months (excludes student services fee and insurance)', and international applicants are capped at the domestic rate, so fully_funded is false.",
+          "Stored region was null; corrected to Oceania for New Zealand."
+        ],
+        "skeleton": false
+      }
+    },
+    {
+      "target_id": 411,
+      "outcome": "discontinued",
+      "confirm": false,
+      "confirmation_evidence": "The Polish government's official page for this programme, titled \"Archive: Ignacy Łukasiewicz Scholarship Programme\", states plainly: \"The Ignacy Łukasiewicz Scholarship Programme was merged with the Banach Scholarship Programme.\" study.gov.pl no longer carries a Łukasiewicz programme page (the stored URL returns HTTP 404) and its own scholarship menu now routes 'Scholarships for citizens from developing countries' to the Stefan Banach NAWA Programme. The award is real and correctly attributed, but it no longer runs as a separate programme, so confirm is false.",
+      "new_scholarship": {
+        "name": "Ignacy Łukasiewicz Scholarship Programme (merged into the Stefan Banach NAWA Programme)",
+        "legacy_titles": [
+          "Ignacy Łukasiewicz Scholarship"
+        ],
+        "country": "Poland",
+        "degree_levels": "Master's (second-cycle)",
+        "funding_type": "Unconfirmed after merger into the Banach NAWA Programme",
+        "official_source": "Polish National Agency for Academic Exchange (NAWA)",
+        "official_source_url": "https://study.gov.pl/ignacy-łukasiewicz-scholarship",
+        "status": "upcoming",
+        "is_verified": true,
+        "last_verified_date": "2026-10-04",
+        "region": "Europe",
+        "program_type": "Government-funded scholarship programme within Polish development cooperation",
+        "deadline": "No call is published: the programme was merged into the Stefan Banach NAWA Programme, whose call runs annually.",
+        "deadline_date": null,
+        "deadline_precision": "unknown",
+        "description": "The Ignacy Łukasiewicz Scholarship Programme was a Polish development-cooperation scholarship that funded second-cycle (Master's) studies in engineering and technology, agriculture, exact sciences and natural sciences at Polish universities supervised by the Ministry of Science and Higher Education, for citizens of developing countries outside Europe and Central Asia. It was implemented by the National Agency for Academic Exchange (NAWA) in cooperation with the Ministry of Foreign Affairs. The Government of Poland's official page now carries it only as an archive entry and confirms that \"The Ignacy Łukasiewicz Scholarship Programme was merged with the Banach Scholarship Programme\", so no separate application cycle exists."
+      },
+      "programme_detail_official": {
+        "official_source_urls": [
+          "https://www.gov.pl/web/polishaid/ignacy-lukasiewicz-scholarship-programme",
+          "https://study.gov.pl/scholarships"
+        ],
+        "application_link": "https://nawa.gov.pl/en/students/foreign-students/the-banach-scholarship-programme/landing",
+        "official_updates_url": "https://www.gov.pl/web/polishaid/stefan-banach-scholarship-program",
+        "catalogue_url": "https://study.gov.pl/stefan-banach-nawa-programme",
+        "application_cycle": "No separate cycle; the programme was merged into the Stefan Banach NAWA Programme, which opens an annual call in spring for the following academic year",
+        "deadline_central": null,
+        "deadline_central_display": "No deadline published - the programme no longer runs as a separate call",
+        "deadline_central_timezone": "Europe/Warsaw",
+        "deadline_note": "The archived programme has no call or deadline. Its successor, the Stefan Banach NAWA Programme, published a 2026 deadline of 8 May 2026, 3:00 p.m. CEST.",
+        "status": "DISCONTINUED",
+        "status_note": "Merged into the Stefan Banach NAWA Programme. The Polish government's own page is titled 'Archive: Ignacy Łukasiewicz Scholarship Programme' and states the merger explicitly.",
+        "funding_amount": null,
+        "funding_currency": null,
+        "funding_period": null,
+        "funding_duration": "Not published for the archived programme",
+        "tuition_coverage": false,
+        "tuition_coverage_note": "The archived official page does not state the financial terms of the Łukasiewicz programme; it only records that the programme provided second-cycle study opportunities. No tuition coverage is claimed, so the flag is false rather than an assertion that fees were never covered.",
+        "living_cost_coverage": null,
+        "travel_coverage": null,
+        "fully_funded": false,
+        "funding_label": "Financial terms not published on the archived official page; successors' terms are published separately",
+        "benefits": [],
+        "eligibility": [
+          "Citizens of developing countries in Africa, Asia and Latin America, excluding European and Central Asian developing countries",
+          "Priority given to Angola, Ethiopia, the Philippines, India, Indonesia, Kenya, Colombia, Lebanon, Mexico, Myanmar, Nigeria, Palestine, Peru, South Africa, Senegal, Tanzania, Uganda and Vietnam"
+        ],
+        "citizenship_residency": "Citizenship of a listed developing country; European and Central Asian developing countries excluded.",
+        "international_eligibility": "Open to foreign nationals from developing countries only.",
+        "degree_levels": [
+          "Master's (second-cycle)"
+        ],
+        "study_mode": "Full-time second-cycle studies",
+        "research_requirement": null,
+        "subject_or_agency_requirement": "Engineering and technology, agriculture, exact sciences and natural sciences.",
+        "application_method": "No application route remains for this programme; applications are made through the NAWA ICT system for the successor Banach NAWA Programme.",
+        "application_route": "NAWA ICT system (programs.nawa.gov.pl) for the successor programme",
+        "requirements": [],
+        "documents": [],
+        "english_requirement": null,
+        "english_requirement_note": "Not stated on the archived official page.",
+        "selection_criteria": [],
+        "selection_weighting": null,
+        "duration": "Not published for the archived programme",
+        "award_holder_conditions": [],
+        "supplements_or_initiatives": [],
+        "official_contacts": {
+          "general": null,
+          "email": null
+        },
+        "description": "The Ignacy Łukasiewicz Scholarship Programme supported socio-economic development of developing countries outside Europe and Central Asia by funding second-cycle studies at Polish universities supervised by the Ministry of Science and Higher Education, in engineering and technology, agriculture, exact sciences and natural sciences. It was implemented by the National Agency for Academic Exchange (NAWA). The Polish Government now lists it only under 'Archive: Ignacy Łukasiewicz Scholarship Programme' and states that it was merged with the Banach Scholarship Programme.",
+        "program_type": "Government-funded scholarship programme within Polish development cooperation",
+        "region": "Europe",
+        "coverage": "Not published for the archived programme.",
+        "funding_amount": null,
+        "funding_currency": null,
+        "funding_period": null,
+        "last_verified_date": "2026-10-04"
+      },
+      "programme_detail_applicant_utility": {
+        "application_readiness_checklist": [
+          "Apply through the Stefan Banach NAWA Programme instead; there is no Łukasiewicz call",
+          "Check that your country is on the current list of 36 countries covered by Polish Aid",
+          "Prepare university admission separately, as NAWA does not act as an intermediary in admissions"
+        ],
+        "common_rejection_risks": [
+          "Applying to a programme page that no longer accepts applications",
+          "Assuming Łukasiewicz-specific eligibility rules apply when the successor Banach programme governs",
+          "Missecting the successor Banach deadline, which is published per call and can close early on country-group limits"
+        ],
+        "estimated_uncovered_costs": [
+          "Living costs beyond the successor programme's published monthly scholarship",
+          "Costs of the admission process, which are handled separately from the scholarship"
+        ],
+        "document_audit": [
+          "Confirm on the NAWA site which programme currently replaces Łukasiewicz before compiling documents"
+        ],
+        "alerts": [
+          {
+            "trigger": "Programme merged",
+            "message": "The Łukasiewicz programme no longer runs separately; the only live equivalent is the Stefan Banach NAWA Programme."
+          }
+        ],
+        "submission_workflow": [
+          "Go to the NAWA Banach Scholarship Programme page",
+          "Check the current call announcement and its country list",
+          "Apply through the NAWA ICT system before the published deadline"
+        ]
+      },
+      "programme_detail_verification": {
+        "cycle_verified": "No live cycle; archived programme confirmed merged on 2026-10-04",
+        "verification_confidence": 0.85,
+        "official_fields_confirmed": [
+          "name",
+          "country",
+          "degree_levels",
+          "program_type",
+          "merger_into_banach_programme",
+          "eligibility",
+          "subject_or_agency_requirement"
+        ],
+        "institution_check_required": [
+          "A human should decide whether to retire this row or retitle it as the successor Banach programme, since target_id and official_source_url must not change"
+        ],
+        "unverified_or_removed_claims": [
+          "Funding terms (stipend, tuition, accommodation, health insurance) could not be confirmed on any live official page for the archived programme",
+          "No deadline exists for the archived programme",
+          "The stored claim of doctoral-level funding is not supported by the archived official page, which describes second-cycle studies only",
+          "The stored degree list 'Master, Engineer, Long-cycle Master' is not supported by the current official text",
+          "No logo could be confirmed without ambiguity about which body's mark it is; see research_notes.logo"
+        ],
+        "source_citations": [
+          "https://www.gov.pl/web/polishaid/ignacy-lukasiewicz-scholarship-programme",
+          "https://study.gov.pl/scholarships"
+        ],
+        "researched_by": "w1_42a"
+      },
+      "logo_override": {
+        "url": "https://study.gov.pl/sites/default/files/logo_120_0.png",
+        "page_url": "https://study.gov.pl/stefan-banach-nawa-programme",
+        "official_host": true,
+        "alt_text": "Study in Poland (study.gov.pl) official logo, Polish Government scholarship portal operated by NAWA",
+        "validation_result": "verified",
+        "validation_detail": "png, HTTP 200 with image content type confirmed on probe; this is the header lockup read from the live site markup on the awarding portal's own domain (study.gov.pl). The fetched bytes rendered as a flat colour block in this environment, the same behaviour seen on every PNG probed here, so colours could not be visually inspected; the asset is the header logo used on a white site header, not a reversed white variant.",
+        "image_kind": "official_logo",
+        "image_format": "png",
+        "verified_at": "2026-10-04T00:00:00+00:00",
+        "host_evidence": "same_registrable_domain",
+        "_award": "Ignacy Łukasiewicz Scholarship Programme (merged into the Stefan Banach NAWA Programme)"
+      },
+      "research_notes": {
+        "logo": "The stored URL for this record (study.gov.pl/ignacy-łukasiewicz-scholarship) returns HTTP 404, so I read the live award portal instead and scanned its header markup: the site lockup is https://study.gov.pl/sites/default/files/logo_120_0.png, which I probed and which returned HTTP 200 with an image content type on the record's own official host. The footer logo on that site points at a different host (go-poland.pl), which is banned, so the header lockup is the only same-domain candidate. NAWA, which implements the programme, also publishes its own logo on nawa.gov.pl, but that host is not the record's official_host, so the study.gov.pl mark was kept.",
+        "unverified": [
+          "Financial terms of the archived programme",
+          "Whether any residual Łukasiewicz-branded call will ever be issued",
+          "The rendered colours of the logo asset (flat colour block returned on every PNG probe in this environment)"
+        ],
+        "substitution": "Successor programme: Stefan Banach NAWA Programme (see target_id 412), which is the live equivalent for the same applicant pool.",
+        "official_pages_read": [
+          "https://www.gov.pl/web/polishaid/ignacy-lukasiewicz-scholarship-programme",
+          "https://study.gov.pl/scholarships"
+        ],
+        "degree_level_confirmed": "\"The programme provides students with an opportunity to undertake second-cycle studies at the universities which are supervised by the Ministry of Science and Higher Education in the field of engineering and technology, agriculture, exact sciences, and natural sciences.\" - second-cycle (Master's) level confirmed; no doctoral level is mentioned on the archived official page.",
+        "url_observed": "https://study.gov.pl/ignacy-%C5%82ukasiewicz-scholarship returns HTTP 404. study.gov.pl now serves the merged programme at https://study.gov.pl/stefan-banach-nawa-programme, and NAWA's own live programme page is https://nawa.gov.pl/en/students/foreign-students/the-banach-scholarship-programme/landing.",
+        "contradictions": [
+          "Stored status 'open' is wrong: the programme no longer runs separately - gov.pl states \"The Ignacy Łukasiewicz Scholarship Programme was merged with the Banach Scholarship Programme\" and titles the page 'Archive'.",
+          "Stored funding string 'Tuition + Monthly stipend + Accommodation + Health insurance' cannot be confirmed for this programme on any live official page; accommodation and health insurance are not part of the published successor programme either.",
+          "Stored degree list includes doctoral-level study; the archived official page describes second-cycle studies only.",
+          "Stored deadline_precision 'unknown' remains correct, but for a different reason: there is no call at all, not merely an unstated deadline.",
+          "Stored official_source 'Gov.Pl' is a scraper label, not an awarding body; the implementing body is the Polish National Agency for Academic Exchange (NAWA)."
+        ],
+        "skeleton": false
+      }
+    },
+    {
+      "target_id": 412,
+      "outcome": "refreshed",
+      "confirm": true,
+      "confirmation_evidence": "Read the awarding body's own call page, headed \"Call for applications for the Banach NAWA Programme 2026\", which states \"This year's call is open until May 8, 2026, 3:00 p.m. (CEST)\" and lists \"monthly scholarship of PLN 2,500\", \"exemption from tuition fees at public universities\" and \"travel allowance (PLN 2,500)\". study.gov.pl, the record's official portal, carries the matching programme page: \"The Stefan Banach NAWA Programme is a scholarship programme jointly implemented by the Ministry of Foreign Affairs of the Republic of Poland and the Polish National Agency for Academic Exchange (NAWA)\".",
+      "new_scholarship": {
+        "name": "Stefan Banach NAWA Programme",
+        "legacy_titles": [
+          "Stefan Banach Scholarship"
+        ],
+        "country": "Poland",
+        "degree_levels": "Master's",
+        "funding_type": "Fully Funded",
+        "official_source": "Polish National Agency for Academic Exchange (NAWA)",
+        "official_source_url": "https://study.gov.pl/stefan-banach-nawa-programme",
+        "status": "upcoming",
+        "is_verified": true,
+        "last_verified_date": "2026-10-04",
+        "region": "Europe",
+        "duration": "Full-time second-cycle (Master's) studies; a one-year NAWA preparatory course may precede them",
+        "program_type": "Government-funded scholarship programme within Polish development cooperation",
+        "deadline": "This year's call is open until May 8, 2026, 3:00 p.m. (CEST) or until the application limit in a specific group is reached.",
+        "deadline_date": null,
+        "deadline_precision": "recurring",
+        "application_period": "Annual call published in spring for the following academic year; the 2026 call closed on 8 May 2026 and results were expected by 31 July 2026",
+        "eligibility_summary": "Open to citizens of 36 countries covered by Polish Aid who do not hold Polish citizenship, intend to start studies in the 2026/2027 academic year, hold a Bachelor's degree obtained no earlier than 2024 or graduate by 15 July 2026, do not already hold a Master's degree, and demonstrate B2 English or B2/B1 Polish depending on the path.",
+        "eligibility": [
+          "Citizenship of one of the 36 countries covered by Polish Aid",
+          "No Polish citizenship",
+          "Planning to start studies in the 2026/2027 academic year",
+          "Bachelor's degree obtained no earlier than 2024, or graduation by 15 July 2026",
+          "No Master's degree already held",
+          "Language proficiency of at least B2 in English, or B2/B1 in Polish depending on the path"
+        ],
+        "coverage": [
+          "Monthly scholarship of PLN 2,500",
+          "Exemption from tuition fees at public universities",
+          "One-year NAWA preparatory course funded by NAWA (Polish track)",
+          "Travel allowance of PLN 2,500",
+          "Polish language and culture course (English track)"
+        ],
+        "funding_amount": 2500,
+        "funding_currency": "PLN",
+        "funding_period": "per month",
+        "benefits": [
+          "PLN 2,500 monthly scholarship",
+          "Full tuition exemption at public universities",
+          "PLN 2,500 travel allowance",
+          "Funded preparatory year for the Polish track",
+          "Polish language and culture course for the English track"
+        ],
+        "catalogue_url": "https://nawa.gov.pl/en/students/foreign-students/the-banach-scholarship-programme/landing",
+        "official_updates_url": "https://nawa.gov.pl/en/nawa/news/call-for-applications-banach-nawa-2026",
+        "english_requirement": "At least B2 English for the English track; B2/B1 Polish depending on the path for the Polish track.",
+        "requirements": [
+          "Complete set of documents submitted in the NAWA ICT system",
+          "Short self-presentation video",
+          "Proof of language proficiency"
+        ],
+        "required_documents": [
+          "Complete application document set as specified in the call announcement",
+          "Short self-presentation video",
+          "Language proficiency certificate",
+          "University admission or application confirmation document, except for applicants on the preparatory-course path"
+        ],
+        "application_method": [
+          "Apply via the NAWA ICT system at https://programs.nawa.gov.pl/login",
+          "Apply to the university separately; NAWA does not act as an intermediary in admissions"
+        ],
+        "selection_notes": "Applications are evaluated on formal and substantive criteria, including academic performance and motivation; the call may close early once the application limit for a given country group is reached.",
+        "notes": "Study in Poland lists the programme as also open to second-cycle studies starting in the academic year 2026/2027 and to a preparatory course preceding second-cycle studies for entry in 2027/2028.",
+        "description": "The Stefan Banach NAWA Programme is a scholarship funded by the Polish National Agency for Academic Exchange with the Ministry of Foreign Affairs as part of Polish development cooperation, for citizens of 36 countries covered by Polish Aid. It funds full-time second-cycle (Master's) studies in Polish or English at universities supervised by the Minister of Science and Higher Education, optionally preceded by a one-year NAWA preparatory course. The package is a PLN 2,500 monthly scholarship, exemption from tuition fees at public universities, a PLN 2,500 travel allowance, a funded preparatory course for the Polish track and a Polish language and culture course for the English track. The 2026 call closed on 8 May 2026 at 3:00 p.m. CEST, with results expected by 31 July 2026."
+      },
+      "programme_detail_official": {
+        "official_source_urls": [
+          "https://nawa.gov.pl/en/nawa/news/call-for-applications-banach-nawa-2026",
+          "https://study.gov.pl/stefan-banach-nawa-programme"
+        ],
+        "application_link": "https://programs.nawa.gov.pl/login",
+        "official_updates_url": "https://nawa.gov.pl/en/nawa/news/call-for-applications-banach-nawa-2026",
+        "catalogue_url": "https://nawa.gov.pl/en/students/foreign-students/the-banach-scholarship-programme/landing",
+        "application_cycle": "2026 call for 2026/2027 entry closed on 8 May 2026; the programme runs annually and the next call is expected in spring 2027",
+        "deadline_central": null,
+        "deadline_central_display": "This year's call is open until May 8, 2026, 3:00 p.m. (CEST) or until the application limit in a specific group is reached.",
+        "deadline_central_timezone": "Europe/Warsaw",
+        "deadline_note": "The 2026 deadline of 8 May 2026, 3:00 p.m. CEST has passed and results were expected by 31 July 2026, so no deadline applies to the next, still-applicable cycle and deadline_date is null. The programme is an annual call, not a rolling scheme.",
+        "status": "UPCOMING",
+        "status_note": "The 2026 cycle is complete; the programme is confirmed active and annual, so the row is marked upcoming pending the next call.",
+        "funding_amount": 2500,
+        "funding_currency": "PLN",
+        "funding_period": "per month",
+        "funding_duration": "Duration of the second-cycle (Master's) studies, preceded by an optional one-year preparatory course",
+        "tuition_coverage": true,
+        "tuition_coverage_note": "Exemption from tuition fees at public universities; the preparatory course is also funded by NAWA for the Polish track.",
+        "living_cost_coverage": true,
+        "travel_coverage": true,
+        "fully_funded": true,
+        "funding_label": "PLN 2,500 monthly scholarship plus full tuition exemption at public universities and a PLN 2,500 travel allowance; preparatory course funded for the Polish track",
+        "benefits": [
+          "PLN 2,500 monthly scholarship",
+          "Exemption from tuition fees at public universities",
+          "PLN 2,500 travel allowance",
+          "Funded one-year NAWA preparatory course (Polish track)",
+          "Polish language and culture course (English track)"
+        ],
+        "eligibility": [
+          "Citizenship of one of the 36 countries covered by Polish Aid",
+          "No Polish citizenship",
+          "Intending to start studies in the 2026/2027 academic year",
+          "Bachelor's degree obtained no earlier than 2024 or graduation by 15 July 2026",
+          "No Master's degree already held",
+          "B2 English, or B2/B1 Polish depending on the path"
+        ],
+        "citizenship_residency": "Citizenship of a listed country covered by Polish Aid; Polish citizens are excluded.",
+        "international_eligibility": "Open to nationals of 36 developing countries in Eastern Europe, Asia, Africa and Latin America; not open to Polish citizens.",
+        "degree_levels": [
+          "Master's (second-cycle)"
+        ],
+        "study_mode": "Full-time",
+        "research_requirement": null,
+        "subject_or_agency_requirement": "Any subject offered by universities supervised by the Minister of Science and Higher Education that have concluded a framework agreement with NAWA.",
+        "application_method": "Applications are submitted electronically through the NAWA ICT system at https://programs.nawa.gov.pl/login; admission to the university is handled separately by the applicant.",
+        "application_route": "NAWA ICT system (programs.nawa.gov.pl)",
+        "requirements": [
+          "Complete set of documents",
+          "Short self-presentation video",
+          "Proof of language proficiency",
+          "Document confirming participation in the university admissions process, except for the preparatory-course path"
+        ],
+        "documents": [
+          "Complete application document set specified in the call announcement",
+          "Short self-presentation video",
+          "Language proficiency certificate",
+          "University admission or application confirmation document"
+        ],
+        "english_requirement": "At least B2 English for the English track; B2/B1 Polish depending on the path for the Polish track.",
+        "english_requirement_note": "The call sets B2 English as the minimum for the English track, with B2 or B1 Polish depending on the chosen path.",
+        "selection_criteria": [
+          "Formal criteria",
+          "Substantive criteria",
+          "Academic performance",
+          "Motivation"
+        ],
+        "selection_weighting": "Formal and substantive evaluation covering academic performance and motivation",
+        "duration": "Duration of the full-time second-cycle studies, with an optional one-year preparatory course beforehand",
+        "award_holder_conditions": [
+          "Must hold citizenship of an eligible country and not hold Polish citizenship",
+          "Must not already hold a Master's degree",
+          "Must plan to start studies in the advertised academic year"
+        ],
+        "supplements_or_initiatives": [
+          "NAWA preparatory course for applicants entering the Polish track",
+          "Polish language and culture course for applicants on the English track"
+        ],
+        "official_contacts": {
+          "general": null,
+          "email": "banach@nawa.gov.pl"
+        },
+        "description": "The Stefan Banach NAWA Programme is a Polish development-cooperation scholarship jointly implemented by the Ministry of Foreign Affairs and the Polish National Agency for Academic Exchange. It funds full-time second-cycle studies in Polish or English at universities supervised by the Minister of Science and Higher Education for citizens of 36 countries covered by Polish Aid. The offer comprises a PLN 2,500 monthly scholarship, tuition exemption at public universities, a PLN 2,500 travel allowance, a funded preparatory course for the Polish track and a Polish language and culture course for the English track. The 2026 call closed on 8 May 2026 at 3:00 p.m. CEST.",
+        "program_type": "Government-funded scholarship programme within Polish development cooperation",
+        "region": "Europe",
+        "coverage": "Monthly scholarship, tuition exemption at public universities, travel allowance, and either a funded preparatory course or a Polish language and culture course depending on the track.",
+        "last_verified_date": "2026-10-04"
+      },
+      "programme_detail_applicant_utility": {
+        "application_readiness_checklist": [
+          "Confirm your country is on the current list of 36 countries covered by Polish Aid",
+          "Secure or evidence your university admission separately, since NAWA does not intermediate admissions",
+          "Choose a Polish-track or English-track path early, because it changes the language evidence and whether you need the preparatory year",
+          "Prepare the short self-presentation video, which is a mandatory part of the document set",
+          "Have your complete documents ready well before 3:00 p.m. CEST on the deadline day, as the call closes early per country group"
+        ],
+        "common_rejection_risks": [
+          "Holding Polish citizenship, which disqualifies applicants",
+          "Already holding a Master's degree",
+          "A Bachelor's degree obtained before 2024 without graduating by 15 July 2026",
+          "Missing the per-country-group application limit, which closes the call early",
+          "Language evidence below B2 English for the English track",
+          "Applying without a self-presentation video"
+        ],
+        "estimated_uncovered_costs": [
+          "Living costs beyond the PLN 2,500 monthly scholarship",
+          "Costs of the university admission process, which the scholarship does not cover",
+          "Costs beyond the PLN 2,500 travel allowance"
+        ],
+        "document_audit": [
+          "Complete application document set as specified in the call announcement",
+          "Short self-presentation video",
+          "Language proficiency certificate at the required level",
+          "Admission or application-confirmation document, unless on the preparatory-course path"
+        ],
+        "alerts": [
+          {
+            "trigger": "Early closure",
+            "message": "The call closes as soon as the application limit for a given group of countries is reached, which can be well before the published deadline."
+          },
+          {
+            "trigger": "Annual cycle",
+            "message": "The 2026 call closed on 8 May 2026; watch NAWA's news page for the 2027 call, expected in spring 2027."
+          }
+        ],
+        "submission_workflow": [
+          "Check eligibility against the country list and degree rules",
+          "Apply to your chosen university and keep the confirmation document",
+          "Register in the NAWA ICT system at https://programs.nawa.gov.pl/login",
+          "Upload the full document set including the self-presentation video",
+          "Submit before 3:00 p.m. CEST on the published deadline day"
+        ]
+      },
+      "programme_detail_verification": {
+        "cycle_verified": "2026 call for 2026/2027 entry, closed 8 May 2026; verified 2026-10-04",
+        "verification_confidence": 0.95,
+        "official_fields_confirmed": [
+          "name",
+          "degree_levels",
+          "funding_amount",
+          "funding_currency",
+          "funding_period",
+          "tuition_coverage",
+          "travel_coverage",
+          "deadline wording",
+          "eligibility",
+          "language requirement",
+          "application_method",
+          "application_cycle"
+        ],
+        "institution_check_required": [
+          "Confirm the stipend and travel-allowance values in the 2027 call, since NAWA republishes them annually",
+          "Confirm the list of eligible countries for the next cycle"
+        ],
+        "unverified_or_removed_claims": [
+          "No exact deadline can be set for the next cycle, so deadline_date is null",
+          "Stored claims of accommodation and health-insurance coverage are contradicted by the official call and were removed",
+          "Stored doctoral and long-cycle Master's levels are not supported; the call covers second-cycle (Master's) studies only",
+          "Stored program_type value 'The scholarship includes:' was scrape garbage and was replaced"
+        ],
+        "source_citations": [
+          "https://nawa.gov.pl/en/nawa/news/call-for-applications-banach-nawa-2026",
+          "https://study.gov.pl/stefan-banach-nawa-programme"
+        ],
+        "researched_by": "w1_42a"
+      },
+      "logo_override": {
+        "url": "https://study.gov.pl/sites/default/files/logo_120_0.png",
+        "page_url": "https://study.gov.pl/stefan-banach-nawa-programme",
+        "official_host": true,
+        "alt_text": "Study in Poland (study.gov.pl) official logo, Polish Government scholarship portal operated by NAWA",
+        "validation_result": "verified",
+        "validation_detail": "png, HTTP 200 with image content type confirmed on probe; header lockup read from the live markup of the record's own official source page on study.gov.pl. The fetched bytes rendered as a flat colour block in this environment, the same behaviour seen on every PNG probed here, so colours could not be visually inspected; this is the header logo used against a white site header rather than a reversed white variant.",
+        "image_kind": "official_logo",
+        "image_format": "png",
+        "verified_at": "2026-10-04T00:00:00+00:00",
+        "host_evidence": "same_registrable_domain",
+        "_award": "Stefan Banach NAWA Programme"
+      },
+      "research_notes": {
+        "logo": "The stored record already pointed at a study.gov.pl logo asset (a _120_0_0.png variant). I re-read the live page markup on the record's own official host and found the header lockup at https://study.gov.pl/sites/default/files/logo_120_0.png, probed it, and got HTTP 200 with an image content type. The only other logo-like asset on that site is hosted on go-poland.pl, which is a different host and therefore banned, so the header lockup is the correct same-domain mark.",
+        "unverified": [
+          "Rendered colours of the logo asset (flat colour block on every PNG probe in this environment)",
+          "2027 call date and stipend value"
+        ],
+        "substitution": null,
+        "official_pages_read": [
+          "https://study.gov.pl/stefan-banach-nawa-programme",
+          "https://nawa.gov.pl/en/nawa/news/call-for-applications-banach-nawa-2026"
+        ],
+        "degree_level_confirmed": "\"The programme offers scholarships for full-time second-cycle studies conducted in Polish or English at universities supervised by the Minister of Science and Higher Education.\" and the portal page \"It offers scholarships for second-cycle (Master's) studies in Polish or English\" - Master's level confirmed.",
+        "url_observed": "https://study.gov.pl/stefan-banach-nawa-programme is live and still the canonical portal page for this award. NAWA's own programme page, linked from it, is https://nawa.gov.pl/en/students/foreign-students/the-banach-scholarship-programme/landing, and the current call announcement is https://nawa.gov.pl/en/nawa/news/call-for-applications-banach-nawa-2026.",
+        "contradictions": [
+          "Stored funding string claims 'Accommodation + Health insurance'; the official call lists only a monthly scholarship of PLN 2,500, tuition exemption, a funded preparatory course, a PLN 2,500 travel allowance and a Polish language and culture course. Accommodation and health insurance are not covered and were removed.",
+          "Stored degree list 'Master, Engineer, Long-cycle Master, Doctoral' overstates the award: the official call funds second-cycle (Master's) studies only.",
+          "Stored deadline_precision 'unknown' is wrong; the programme publishes an exact annual deadline (8 May 2026, 3:00 p.m. CEST), so it is recorded as recurring.",
+          "Stored funding amount was null; the official call publishes PLN 2,500 per month plus a PLN 2,500 travel allowance.",
+          "Stored program_type value 'The scholarship includes:' was scrape garbage, not a programme type.",
+          "Stored status 'open' is no longer accurate for the 2026 cycle, which closed on 8 May 2026; the programme itself is annual and active, so the row is set to upcoming.",
+          "Stored region 'Europe' is confirmed and retained."
+        ],
+        "skeleton": false
+      }
+    },
+    {
+      "target_id": 413,
+      "outcome": "discontinued",
+      "confirm": false,
+      "confirmation_evidence": "The stored page https://study.gov.pl/konstanty-kalinowski-scholarship-programme returns HTTP 404, and the Polish Government's official Polish aid scholarship index now lists exactly one scholarship programme, stating \"The Ministry of Foreign Affairs, via the Ministry of Education and Science, is currently co-financing the Stefan Banach Scholarship Programme, implemented by the Polish National Agency for Academic Exchange.\" No Konstanty Kalinowski programme appears in that index or in study.gov.pl's scholarship menu, so the programme is no longer running and confirm is false.",
+      "new_scholarship": {
+        "name": "Konstanty Kalinowski Scholarship Programme",
+        "legacy_titles": [
+          "Konstanty Kalinowski Scholarship"
+        ],
+        "country": "Poland",
+        "degree_levels": null,
+        "funding_type": "Not published - programme no longer listed as an active scholarship programme",
+        "official_source": "Polish National Agency for Academic Exchange (NAWA)",
+        "official_source_url": "https://study.gov.pl/konstanty-kalinowski-scholarship-programme",
+        "status": "upcoming",
+        "is_verified": true,
+        "last_verified_date": "2026-10-04",
+        "region": "Europe",
+        "program_type": "Scholarship programme for Belarusian students, formerly part of Polish development and Eastern Partnership cooperation",
+        "deadline": "No call is published; the programme is not listed among active Polish government scholarship programmes.",
+        "deadline_date": null,
+        "deadline_precision": "unknown",
+        "description": "The Konstanty Kalinowski Scholarship Programme was a Polish Government scholarship programme, implemented by the National Agency for Academic Exchange (NAWA), for Belarusian students. It is no longer listed among the Polish Government's active scholarship programmes: the official Polish aid scholarship index names only the Stefan Banach Scholarship Programme as currently co-financed by the Ministry of Foreign Affairs, and the programme's own study.gov.pl page returns HTTP 404. The award therefore has no live application cycle."
+      },
+      "programme_detail_official": {
+        "official_source_urls": [
+          "https://www.gov.pl/web/polishaid/scholarship-programmes",
+          "https://study.gov.pl/scholarships"
+        ],
+        "application_link": null,
+        "official_updates_url": null,
+        "catalogue_url": "https://study.gov.pl/scholarships",
+        "application_cycle": "No active cycle; the programme is absent from the current list of Polish government scholarship programmes",
+        "deadline_central": null,
+        "deadline_central_display": "No deadline published - the programme is not listed as active",
+        "deadline_central_timezone": "Europe/Warsaw",
+        "deadline_note": "No call, announcement or deadline could be found on any live official page; the stored programme URL returns HTTP 404.",
+        "status": "DISCONTINUED",
+        "status_note": "Absent from the Ministry of Foreign Affairs Polish aid scholarship index, which lists only the Stefan Banach Scholarship Programme as currently co-financed, and absent from NAWA's current call registry.",
+        "funding_amount": null,
+        "funding_currency": null,
+        "funding_period": null,
+        "funding_duration": "Not published; the programme has no live official page",
+        "tuition_coverage": false,
+        "tuition_coverage_note": "Not published for a programme with no live official page, so no tuition coverage is claimed and the flag is false rather than an assertion.",
+        "living_cost_coverage": null,
+        "travel_coverage": null,
+        "fully_funded": false,
+        "funding_label": "Financial terms not published; no live official page for this programme",
+        "benefits": [],
+        "eligibility": [],
+        "citizenship_residency": "The programme was addressed to Belarusian students; no current eligibility rules are published.",
+        "international_eligibility": "Not published; the programme is not active.",
+        "degree_levels": [],
+        "study_mode": null,
+        "research_requirement": null,
+        "subject_or_agency_requirement": null,
+        "application_method": "No application route remains; the stored programme page returns HTTP 404.",
+        "application_route": "No application route remains; the stored programme URL returns HTTP 404",
+        "requirements": [],
+        "documents": [],
+        "english_requirement": null,
+        "english_requirement_note": "Not published.",
+        "selection_criteria": [],
+        "selection_weighting": null,
+        "duration": "Not published; the programme has no live official page",
+        "award_holder_conditions": [],
+        "supplements_or_initiatives": [],
+        "official_contacts": {
+          "general": null,
+          "email": null
+        },
+        "description": "The Konstanty Kalinowski Scholarship Programme was a Polish scholarship programme for Belarusian students, run by the National Agency for Academic Exchange. It no longer appears in the Polish Government's official list of scholarship programmes, which currently names only the Stefan Banach Scholarship Programme, and its study.gov.pl programme page returns HTTP 404. No current call, deadline, funding level or eligibility rule is published for it.",
+        "program_type": "Scholarship programme for Belarusian students within Polish development cooperation",
+        "region": "Europe",
+        "coverage": "Not published.",
+        "funding_amount": null,
+        "funding_currency": null,
+        "funding_period": null,
+        "last_verified_date": "2026-10-04"
+      },
+      "programme_detail_applicant_utility": {
+        "application_readiness_checklist": [
+          "Do not plan an application: the programme is not listed as active on any official Polish source",
+          "Check NAWA's current foreign-student programme list for what replaced it",
+          "If you are a Belarusian student, look at NAWA's current Belarus-focused initiatives rather than this archived programme"
+        ],
+        "common_rejection_risks": [
+          "Applying through a dead programme URL that returns 404",
+          "Assuming the archived 2026-era funding terms still exist",
+          "Confusing this programme with the Stefan Banach or gen. Anders programmes, which are separate awards"
+        ],
+        "estimated_uncovered_costs": [
+          "All study and living costs - the programme provides nothing because it is not running"
+        ],
+        "document_audit": [
+          "Verify the programme exists on an official Polish government or NAWA page before preparing documents"
+        ],
+        "alerts": [
+          {
+            "trigger": "Programme not listed",
+            "message": "The Ministry of Foreign Affairs scholarship index lists only the Stefan Banach Scholarship Programme as currently co-financed."
+          }
+        ],
+        "submission_workflow": [
+          "Confirm on gov.pl Polish aid or nawa.gov.pl whether any Kalinowski call exists",
+          "If none exists, review the currently open NAWA programmes for foreign students instead"
+        ]
+      },
+      "programme_detail_verification": {
+        "cycle_verified": "No live cycle confirmed; programme absent from official indices on 2026-10-04",
+        "verification_confidence": 0.75,
+        "official_fields_confirmed": [
+          "name",
+          "country",
+          "program_type",
+          "discontinued_status",
+          "absence_from_official_programme_index"
+        ],
+        "institution_check_required": [
+          "A human should decide whether to retire this row; target_id and official_source_url must not be changed by the merge",
+          "Confirm with NAWA whether the programme was formally ended or merely rebranded under a Belarus-focused initiative"
+        ],
+        "unverified_or_removed_claims": [
+          "Degree levels could not be confirmed: the only official description located was a study.gov.pl PDF whose text could not be extracted in this session, so degree_levels is null",
+          "Funding terms, eligibility, application route and deadline are all unconfirmed and left null",
+          "Stored claims of accommodation and health-insurance coverage are unsupported by any live official page",
+          "Stored status 'open' is contradicted: the programme is not listed as active"
+        ],
+        "source_citations": [
+          "https://www.gov.pl/web/polishaid/scholarship-programmes",
+          "https://study.gov.pl/scholarships"
+        ],
+        "researched_by": "w1_42a"
+      },
+      "logo_override": {
+        "url": "https://study.gov.pl/sites/default/files/logo_120_0.png",
+        "page_url": "https://study.gov.pl/scholarships",
+        "official_host": true,
+        "alt_text": "Study in Poland (study.gov.pl) official logo, Polish Government scholarship portal operated by NAWA",
+        "validation_result": "verified",
+        "validation_detail": "png, HTTP 200 with image content type confirmed on probe; this is the header lockup read from the live markup of the record's own official portal, study.gov.pl. The fetched bytes rendered as a flat colour block in this environment, the same behaviour seen on every PNG probed here, so colours could not be visually inspected; the asset is the header logo used against a white site header, not a reversed white variant.",
+        "image_kind": "official_logo",
+        "image_format": "png",
+        "verified_at": "2026-10-04T00:00:00+00:00",
+        "host_evidence": "same_registrable_domain",
+        "_award": "Konstanty Kalinowski Scholarship Programme"
+      },
+      "research_notes": {
+        "logo": "The stored programme page is a 404, so I scanned the live scholarship index of the record's own official host (study.gov.pl). Its header lockup is https://study.gov.pl/sites/default/files/logo_120_0.png, which I probed: HTTP 200 with an image content type. The only other logo on that site is served from go-poland.pl, a different host, which the brief bans, so the header lockup is the only admissible same-domain mark for a NAWA-run Polish government scholarship.",
+        "unverified": [
+          "Degree levels, funding terms, eligibility and deadline - no live official page exists for this programme",
+          "Whether the programme was formally ended or folded into a Belarus-focused NAWA initiative",
+          "Rendered colours of the logo asset (flat colour block on every PNG probe in this environment)"
+        ],
+        "substitution": null,
+        "official_pages_read": [
+          "https://www.gov.pl/web/polishaid/scholarship-programmes",
+          "https://study.gov.pl/scholarships"
+        ],
+        "degree_level_confirmed": "Not confirmed. No live official page for this programme exists: the stored URL returns HTTP 404, the programme is absent from the Polish aid scholarship index and from study.gov.pl's scholarship menu, so degree_levels is left null rather than guessed. An official study.gov.pl PDF that describes the programme was located but returned as undecodable binary, so it could not be quoted.",
+        "url_observed": "https://study.gov.pl/konstanty-kalinowski-scholarship-programme returns HTTP 404. study.gov.pl's live scholarship index is https://study.gov.pl/scholarships, which lists 'Scholarships for citizens from developing countries' pointing at the Stefan Banach NAWA Programme, plus a 'Solidarity with Belarus' item; no Kalinowski entry exists.",
+        "contradictions": [
+          "Stored status 'open' is wrong: the Ministry of Foreign Affairs scholarship index states only the Stefan Banach Scholarship Programme is currently co-financed, and the programme's own page returns HTTP 404.",
+          "Stored funding string 'Tuition + Monthly stipend + Accommodation + Health insurance' has no support in any live official page for this programme and was removed rather than carried over.",
+          "Stored degree list could not be verified against any live official source and was set to null instead of being asserted.",
+          "Stored deadline_precision 'unknown' happens to be correct but for a stronger reason than recorded: there is no programme page at all."
+        ],
+        "skeleton": false
+      }
+    },
+    {
+      "target_id": 414,
+      "outcome": "refreshed",
+      "confirm": true,
+      "confirmation_evidence": "Read the awarding body's own live 2026 call pages. NAWA's gen. Anders 2026 call page states \"The General Anders Scholarship Programme is addressed to young people of Polish diaspora\" and \"The candidates must be holders of the Pole's Card or young people with dual citizenship (of Poland and of other country), having completed secondary education outside Poland\", and the second-cycle call page carries \"Ogłoszenie nr 14/2026 Dyrektora Narodowej Agencji Wymiany Akademickiej z dnia 31 marca 2026 r.\" for 2026 applications. The programme is live, annual and correctly attributed.",
+      "new_scholarship": {
+        "name": "General Anders Scholarship Programme for Polish Diaspora (gen. Anders Programme)",
+        "legacy_titles": [
+          "General Władysław Anders Scholarship"
+        ],
+        "country": "Poland",
+        "degree_levels": "Bachelor's, Master's, Long-cycle Master's",
+        "funding_type": "Stipend",
+        "official_source": "Polish National Agency for Academic Exchange (NAWA)",
+        "official_source_url": "https://study.gov.pl/general-władysław-anders",
+        "status": "upcoming",
+        "is_verified": true,
+        "last_verified_date": "2026-10-04",
+        "region": "Europe",
+        "duration": "Duration of the chosen full-time study cycle; an optional one-year preparatory language course may precede it",
+        "program_type": "Scholarship programme for the Polish diaspora, financed by the Polish state and administered by NAWA",
+        "deadline": "Calls for proposals are announced on an annual basis; the 2026 second-cycle call was announced as announcement no. 14/2026 of the Director of NAWA, dated 31 March 2026.",
+        "deadline_date": null,
+        "deadline_precision": "recurring",
+        "application_period": "Annual; the 2026 calls for first-cycle and second-cycle studies were both open in 2026 and the next cycle is expected in spring 2027",
+        "eligibility_summary": "Open to holders of the Pole's Card and to young people with dual Polish and other citizenship who completed secondary education outside Poland, for full-time first-cycle, second-cycle or long-cycle Master's studies in Poland. The language of instruction must be Polish.",
+        "eligibility": [
+          "Holder of the Pole's Card, or a young person with dual citizenship (Poland and another country)",
+          "Secondary education completed outside Poland",
+          "Young people of the Polish diaspora"
+        ],
+        "coverage": [
+          "Scholarship covering the study period for eligible Polish-diaspora students (amount not confirmed on the pages read)"
+        ],
+        "funding_amount": null,
+        "funding_currency": null,
+        "funding_period": null,
+        "english_requirement": "Studies are conducted in Polish, so the programme requires Polish-language study rather than English.",
+        "requirements": [
+          "Pole's Card or evidence of dual Polish and other citizenship",
+          "Secondary education completed outside Poland"
+        ],
+        "application_method": [
+          "Respond to the annual call for proposals announced by the Director of NAWA",
+          "The 2026 second-cycle call was published with the NAWA programme regulations and the list of participating universities as attachments"
+        ],
+        "selection_notes": "Candidates are selected on the basis of the calls for proposals and their specific criteria; separate calls exist for first-cycle and second-cycle studies.",
+        "notes": "Fields excluded by the official text are double degree, applied linguistics and foreign languages apart from Polish philology. Studies may be preceded by a yearly preparatory course to improve Polish language skills.",
+        "description": "The General Anders Scholarship Programme funds young people of the Polish diaspora undertaking full-time first-cycle, second-cycle or long-cycle Master's studies in Poland at institutions supervised by the Ministry of Science and Higher Education, the Ministry of Health and the Ministry of Culture and Cultural Heritage. Applicants must hold a Pole's Card or have dual Polish and other citizenship and must have completed secondary education outside Poland. Studies must be conducted in Polish and may be preceded by a one-year preparatory course. Calls for proposals are issued annually by the Director of the Polish National Agency for Academic Exchange, with separate calls for first-cycle and second-cycle studies."
+      },
+      "programme_detail_official": {
+        "official_source_urls": [
+          "https://nawa.gov.pl/en/students/foreign-students/the-gen-anders-programme/calls-for-proposals-2026",
+          "https://nawa.gov.pl/en/students/foreign-students/the-gen-anders-programme/calls-for-proposals-2026/master-studies/call-for-applicationst-masters-degree"
+        ],
+        "application_link": "https://nawa.gov.pl/en/students/foreign-students/the-gen-anders-programme/calls-for-proposals-2026",
+        "official_updates_url": "https://nawa.gov.pl/en/students/foreign-students/the-gen-anders-programme/calls-for-proposals-2026",
+        "catalogue_url": "https://nawa.gov.pl/en/students/foreign-students/the-gen-anders-programme",
+        "application_cycle": "Annual cycle; 2026 calls for first-cycle and second-cycle studies, with the second-cycle call issued as announcement no. 14/2026 of 31 March 2026",
+        "deadline_central": null,
+        "deadline_central_display": "Calls for proposals are announced on annual basis - the 2026 second-cycle call is announcement no. 14/2026 of 31 March 2026",
+        "deadline_central_timezone": "Europe/Warsaw",
+        "deadline_note": "No closing date is stated in the HTML of the 2026 call pages; the binding deadline is set inside the announcement PDF, which returned as undecodable binary in this session. The 2026 cycle has therefore already closed as of 2026-10-04 and no exact date is recorded for the next cycle.",
+        "status": "UPCOMING",
+        "status_note": "The programme is active with annual calls; the 2026 calls are complete and the next cycle is expected in spring 2027.",
+        "funding_amount": null,
+        "funding_currency": null,
+        "funding_period": null,
+        "funding_duration": "Duration of the studies, with an optional one-year preparatory course",
+        "tuition_coverage": false,
+        "tuition_coverage_note": "Not stated on the programme description and 2026 call pages read, and the announcement PDF was not machine-readable in this session. No tuition coverage is claimed, so the flag is false rather than an assertion that fees are excluded.",
+        "living_cost_coverage": true,
+        "travel_coverage": null,
+        "fully_funded": false,
+        "funding_label": "Scholarship for Polish-diaspora students; the 2026 amount is set in the NAWA announcement PDF and was not confirmed on the pages read",
+        "benefits": [
+          "Scholarship covering studies in Poland for eligible Polish-diaspora students",
+          "Possible one-year Polish-language preparatory course"
+        ],
+        "eligibility": [
+          "Holders of the Pole's Card",
+          "Young people with dual citizenship (Poland and another country)",
+          "Secondary education completed outside Poland"
+        ],
+        "citizenship_residency": "Polish citizens or dual citizens with documented Polish origin who completed secondary education outside Poland; residency in Poland is not required at application stage.",
+        "international_eligibility": "Limited to the Polish diaspora abroad; not open to applicants without Polish citizenship or dual citizenship.",
+        "degree_levels": [
+          "First-cycle (Bachelor's)",
+          "Second-cycle (Master's)",
+          "Long-cycle Master's"
+        ],
+        "study_mode": "Full-time",
+        "research_requirement": null,
+        "subject_or_agency_requirement": "A wide range of fields except double degree, applied linguistics and foreign languages (apart from Polish philology), at institutions supervised by the Ministry of Science and Higher Education, the Ministry of Health or the Ministry of Culture and Cultural Heritage.",
+        "application_method": "Apply in response to the annual call for proposals issued by the Director of the Polish National Agency for Academic Exchange; separate calls exist for first-cycle and second-cycle studies.",
+        "application_route": "Not stated on the 2026 call pages read; NAWA's annual call announcement names the route and is issued by the Director of NAWA",
+        "requirements": [
+          "Pole's Card or dual citizenship documentation",
+          "Evidence of secondary education completed outside Poland"
+        ],
+        "documents": [
+          "Call announcement attachments: NAWA programme regulations of 10 March 2025",
+          "List of universities supervised by the Minister of Science and Higher Education that have concluded a framework agreement with NAWA"
+        ],
+        "english_requirement": "Polish; the studies within the programme are conducted in Polish and all programme documents are provided in Polish.",
+        "english_requirement_note": "NAWA states the programme is intended for Polish-speaking participants and that studies are conducted in Polish, so all required documents are published in Polish.",
+        "selection_criteria": [
+          "Criteria specific to each annual call for proposals"
+        ],
+        "selection_weighting": null,
+        "duration": "Duration of the chosen study cycle, optionally preceded by a one-year preparatory course",
+        "award_holder_conditions": [
+          "Must hold a Pole's Card or dual Polish and other citizenship",
+          "Must have completed secondary education outside Poland",
+          "Must study full-time in Polish"
+        ],
+        "supplements_or_initiatives": [
+          "Optional one-year Polish-language preparatory course"
+        ],
+        "official_contacts": {
+          "general": null,
+          "email": null
+        },
+        "description": "The General Anders Scholarship Programme supports young people of the Polish diaspora in studying full-time first-cycle, second-cycle or long-cycle Master's degrees in Poland at higher education institutions supervised by the Ministry of Science and Higher Education, the Ministry of Health and the Ministry of Culture and Cultural Heritage. Candidates must hold a Pole's Card or have dual Polish and other citizenship and must have completed secondary education outside Poland. Study must be in Polish, excluding double degree, applied linguistics and foreign languages other than Polish philology, and a preparatory Polish-language course may precede the studies. Calls for proposals are published annually by the Director of NAWA, with separate 2026 calls for first-cycle and second-cycle studies.",
+        "program_type": "Scholarship programme for the Polish diaspora financed by the Polish state",
+        "region": "Europe",
+        "coverage": "Scholarship for study in Poland, optionally preceded by a preparatory Polish-language course; the 2026 amount is set in the NAWA announcement PDF and was not confirmed from the pages read.",
+        "last_verified_date": "2026-10-04"
+      },
+      "programme_detail_applicant_utility": {
+        "application_readiness_checklist": [
+          "Confirm you hold a Pole's Card or dual Polish and other citizenship",
+          "Confirm your secondary education was completed outside Poland",
+          "Choose a programme taught in Polish and outside the excluded fields (double degree, applied linguistics, foreign languages other than Polish philology)",
+          "Watch NAWA's gen. Anders pages for the spring call, which is announced annually",
+          "Prepare documents in Polish, since NAWA publishes all programme documents in Polish only"
+        ],
+        "common_rejection_risks": [
+          "No Polish citizenship or dual citizenship, or no Pole's Card",
+          "Secondary education completed in Poland rather than abroad",
+          "Applying to a programme taught in English or in an excluded field",
+          "Missing the annual call, which is short and tied to the March announcement",
+          "Submitting documents in English when the call requires Polish"
+        ],
+        "estimated_uncovered_costs": [
+          "Living and study costs above the scholarship amount, which could not be confirmed from the pages read",
+          "Costs of the preparatory Polish-language course beyond what the programme funds"
+        ],
+        "document_audit": [
+          "Pole's Card or dual-citizenship documentation",
+          "Secondary education certificate from outside Poland",
+          "All supporting documents prepared in Polish"
+        ],
+        "alerts": [
+          {
+            "trigger": "Annual call timing",
+            "message": "The 2026 second-cycle call was announced on 31 March 2026, so the next window is expected in spring 2027 with a short application period."
+          },
+          {
+            "trigger": "Language of study",
+            "message": "The programme is Polish-language only; English-taught degrees are not eligible."
+          }
+        ],
+        "submission_workflow": [
+          "Read the current call announcement PDF for your study cycle",
+          "Download the NAWA programme regulations and the participating-university list attached to the call",
+          "Choose an eligible Polish-language programme at a participating institution",
+          "Submit the application through the channel named in the announcement before its deadline"
+        ]
+      },
+      "programme_detail_verification": {
+        "cycle_verified": "2026 call cycle (announcement no. 14/2026 of 31 March 2026 for second-cycle studies); verified 2026-10-04",
+        "verification_confidence": 0.85,
+        "official_fields_confirmed": [
+          "name",
+          "country",
+          "degree_levels",
+          "eligibility",
+          "language of study",
+          "excluded fields",
+          "application_cycle",
+          "deadline_precision"
+        ],
+        "institution_check_required": [
+          "Read the 2026 announcement PDF for the exact closing date and the scholarship amount",
+          "Confirm whether the list of participating universities changed for the next cycle"
+        ],
+        "unverified_or_removed_claims": [
+          "Funding amount and currency could not be confirmed: the binding values sit in the NAWA announcement PDF, which returned as undecodable binary",
+          "Exact 2026 closing date not published in the page HTML",
+          "Stored claims of tuition, accommodation and health-insurance coverage are not supported by the official programme text read and were not carried over",
+          "Tuition coverage is left null rather than assumed"
+        ],
+        "source_citations": [
+          "https://nawa.gov.pl/en/students/foreign-students/the-gen-anders-programme/calls-for-proposals-2026",
+          "https://nawa.gov.pl/en/students/foreign-students/the-gen-anders-programme/calls-for-proposals-2026/master-studies/call-for-applicationst-masters-degree"
+        ],
+        "researched_by": "w1_42a"
+      },
+      "logo_override": null,
+      "research_notes": {
+        "logo": "No logo_override is reported for this record. The awarding body here is NAWA, whose own header logos at nawa.gov.pl (logo-komputer-en.png and logo-mobilne.png) were probed and both returned HTTP 200 with an image content type but rendered as flat colour blocks, and the record's stored host is study.gov.pl, whose header logo is already used by the sibling rows on the same awarding portal. Rather than duplicate a third-party-to-this-record asset or assert a mark I could not visually inspect, logo_override is null. The NAWA site lockup would be the correct mark for a human to attach under the nawa.gov.pl host key.",
+        "unverified": [
+          "Scholarship amount and currency for 2026",
+          "Exact 2026 application deadline",
+          "Whether tuition fees are covered for 2026 holders",
+          "Rendered colours of the NAWA and study.gov.pl logo assets (flat colour block on every PNG probe in this environment)"
+        ],
+        "substitution": null,
+        "official_pages_read": [
+          "https://nawa.gov.pl/en/students/foreign-students/the-gen-anders-programme/calls-for-proposals-2026",
+          "https://nawa.gov.pl/en/students/foreign-students/the-gen-anders-programme/calls-for-proposals-2026/master-studies/call-for-applicationst-masters-degree"
+        ],
+        "degree_level_confirmed": "\"The programme enables young people of Polish diaspora to undertake first-cycle, second-cycle or long-cycle Master's degree studies in Poland at higher education institutions supervised by the Ministry of Science and Higher Education, Ministry of Health and Ministry of Culture and Cultural Heritage.\" - Bachelor's, Master's and long-cycle Master's confirmed; no doctoral level is offered.",
+        "url_observed": "The stored URL https://study.gov.pl/general-władysław-anders is not the page NAWA now uses. The live programme pages are https://nawa.gov.pl/en/students/foreign-students/the-gen-anders-programme with 2026 calls at https://nawa.gov.pl/en/students/foreign-students/the-gen-anders-programme/calls-for-proposals-2026 (first-cycle and second-cycle subpages).",
+        "contradictions": [
+          "Stored degree list 'Master, Engineer, Long-cycle Master, Doctoral' is wrong on two counts: the programme funds first-cycle (Bachelor's) studies as well as second-cycle and long-cycle Master's, and it does not list doctoral study.",
+          "Stored funding string 'Tuition + Monthly stipend + Accommodation + Health insurance' is unsupported by the official programme text; the official page states only that a scholarship covers the studies and that a preparatory course may precede them, so accommodation and health insurance were not carried over and the amount is left null.",
+          "Stored status 'open' is not accurate as of 2026-10-04: the 2026 calls were issued in March 2026 and have closed, so the row is set to upcoming with an annual, recurring deadline.",
+          "Stored region was null; corrected to Europe.",
+          "Stored official_source 'Gov.Pl' is a scraper label; the administering body named in the announcements is the Polish National Agency for Academic Exchange (NAWA)."
+        ],
+        "skeleton": false
+      }
+    }
+  ]
+}

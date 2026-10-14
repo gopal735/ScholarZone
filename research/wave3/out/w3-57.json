@@ -1,0 +1,21 @@
+{
+  "agent_id": "w3_57",
+  "shard": "w3-57",
+  "host": "whitleyaward.org",
+  "today": "2026-10-04",
+  "logo_override": {
+    "url": "https://whitleyaward.org/content/themes/whitleyaward.org/touch-icon-iphone-retina.png",
+    "page_url": "https://whitleyaward.org/apply-for-conservation-funding/apply-for-a-whitley-award/",
+    "official_host": true,
+    "alt_text": "Whitley Fund for Nature",
+    "validation_result": "verified",
+    "validation_detail": "HTTP 200, content-type image/png, 8919 bytes, 180x180 and fully opaque (no alpha to bleed); canvas pixel audit mean luminance 194 with 73% light and 17% dark pixels, and rendered on white it shows the Whitley Fund's monarch-butterfly device in orange and black on a light tile, clearly legible",
+    "image_kind": "official_logo",
+    "image_format": "png",
+    "verified_at": "2026-10-04T00:00:00+00:00",
+    "host_evidence": "same_registrable_domain",
+    "_award": "Whitley Awards 2027"
+  },
+  "target_ids": [537],
+  "notes": "The stored URL redirects: https://whitleyaward.org/apply/ 302s to https://whitleyaward.org/apply-for-conservation-funding/apply-for-a-whitley-award/. The Whitley Fund for Nature is a registered wildlife conservation charity and is the body that awards the Whitley Awards, so its own mark is correct under rule 2 and image_kind is official_logo. Hard case: the site's real logo is NOT a file. The header logo is a single 19415-byte INLINE svg inside <span class='sf-logo__text sf-logo__large' itemprop='headline'>, viewBox 0 0 100 69.59, with fill #ee7117 (the Fund's orange butterfly) plus near-black wordmark fills #020202/#0e0e0e/#0b0b0b/#0c0c0c/#070707/#0a0a0a/#0d0d0d - it combines the butterfly device and the 'Whitley Fund for Nature' wordmark in one path set, and inline SVG has no probeable URL. The rendered header contains ZERO <img> elements and there is no CSS background logo, so the brief's step-1 img/og:image/JSON-LD lookups all come back empty here. I therefore took the file-backed copy of the same butterfly device. Probed and accepted /content/themes/whitleyaward.org/touch-icon-iphone-retina.png (200, image/png, 8919 B, 180x180, opaque, visually confirmed). Probed and rejected: /content/themes/whitleyaward.org/touch-icon-ipad-retina.png (200, 8218 B, 167x167 - same artwork, smaller); /content/themes/whitleyaward.org/touch-icon-iphone.png, touch-icon-ipad.png and touch-icon-iphone-retina.png at the other declared sizes (200, smaller still); /content/themes/whitleyaward.org/favicon.ico (200, image/x-icon, 1150 B but only a 16x16 frame, mean luminance 67 - too small to render as a record image); /content/themes/whitleyaward.org/assets/images/logo.svg (404); /content/themes/whitleyaward.org/images/logo.png and /content/themes/whitleyaward.org/logo.png (both request timeouts, no bytes returned, so not usable); the og:image on the apply page, which points at standfirst-whitleyaward-production.imgix.net and is a photo of a Brazilian tree frog finalist - an imgix CDN mirror and a photograph, rejected under rules 1 and 6. Caveat for the merge: this is the Fund's butterfly device without the accompanying wordmark, because no file-backed version of the combined lockup is published."
+}

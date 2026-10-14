@@ -1,0 +1,165 @@
+{
+ "agent": "agent_413",
+ "assignment_count": 2,
+ "scholarships": [
+  {
+   "id": 376,
+   "title": "JASSO Monbukagakusho Honors Scholarship for Privately-Financed International Students",
+   "country": "Japan",
+   "degree": "Undergraduate, Master's, PhD, Junior College, College of Technology, Specialized Training College, University Preparatory Course, Japanese Language Institute",
+   "funding_label": "Stipend",
+   "status": "open",
+   "official_source": "Japan Student Services Organization (JASSO)",
+   "official_source_url": "https://www.jasso.go.jp/en/ryugaku/scholarship_j/index.html",
+   "application_link": "https://www.jasso.go.jp/en/ryugaku/scholarship_j/index.html",
+   "catalogue_url": "https://www.jasso.go.jp/en/ryugaku/scholarship_j/shoreihi/about.html",
+   "official_updates_url": "https://www.jasso.go.jp/en/ryugaku/scholarship_j/shoreihi/index.html",
+   "existing": {
+    "funding_amount": 48000,
+    "funding_currency": "JPY",
+    "funding_period": "per month",
+    "tuition_coverage": 0,
+    "living_cost_coverage": 1,
+    "travel_coverage": 0,
+    "fully_funded": 0,
+    "description": "The JASSO Monbukagakusho Honors Scholarship for Privately-Financed International Students is a stipend for privately financed international students in Japan with excellent academic and character records who face financial difficulties. It is not open for direct application: each educational institution nominates candidates to JASSO, and the number of candidates depends on the institution's international enrolment. The stipend is JPY 48,000 per month at graduate and undergraduate level and JPY 30,000 per month at Japanese language institutes, for 12 or 6 months.",
+    "eligibility": [
+     "Privately financed, i.e. not a grantee of the Japanese Government (MEXT) Scholarship or any foreign government scholarship",
+     "Residence status of Student",
+     "Enrolled as a full-time student at a Japanese educational institution (graduate school, research student, undergraduate school, junior college, college of technology from third year, specialized training college, preparatory Japanese language programme, university preparatory course, or Japanese language institute)",
+     "Meets the grading criteria in the application guidelines",
+     "Meets the Japanese or English language condition: JLPT N2 or above, EJU Japanese 200 points or more, a JASSO-recognised equivalent level, or CEFR B2 or above in English (the language condition is waived for preparatory Japanese language programmes, university preparatory courses and Japanese language institutes)",
+     "Private funding allowance must not exceed an average of JPY 90,000 per month, excluding enrolment and tuition fees",
+     "If a financial supporter resides in Japan, that supporter's annual income must be under JPY 5,000,000",
+     "Not receiving a scholarship that cannot be combined with the Honors Scholarship, and not receiving JASSO Student Exchange Support Program support"
+    ],
+    "eligibility_summary": "Privately-financed international students with excellent academic and character records who hold Student residence status and are enrolled full-time at a Japanese undergraduate school, graduate school, junior college, college of technology, specialized training college, university preparatory course or Japanese language institute, and who face financial difficulties.",
+    "benefits": [
+     "JPY 48,000 per month at graduate and undergraduate level",
+     "JPY 30,000 per month at Japanese language institutes",
+     "12-month or 6-month scholarship period",
+     "Direct support toward day-to-day living costs"
+    ],
+    "coverage": [
+     "Monthly stipend of JPY 48,000 at graduate and undergraduate level",
+     "Monthly stipend of JPY 30,000 at Japanese language institutes"
+    ],
+    "requirements": [
+     "Apply through the enrolled educational institution, never directly to JASSO",
+     "Sign the sheet designated by JASSO every month at the international students' office of the enrolled institution",
+     "Agree after the award to cooperate in the JASSO career path survey",
+     "Report to the international students' office at school monthly to confirm attendance records"
+    ],
+    "documents": [
+     "Application documents as specified in the JASSO application guidelines for the awarding year",
+     "Evidence of enrolment as a full-time student",
+     "Evidence of grades for the grading criteria",
+     "Japanese or English language proficiency evidence",
+     "Monthly signature sheet signed at the international students' office of the enrolled institution"
+    ],
+    "english_requirement": "CEFR B2 or above in English, or JLPT N2 or above in Japanese, or EJU Japanese 200 points or more, or a separately JASSO-recognised level",
+    "application_method": [
+     "Ask the staff at the educational institution in which you are enrolled, which then nominates candidates to JASSO",
+     "Pre-arrival reservation route for students who already hold admission to a Japanese institution, selected on EJU score"
+    ],
+    "selection_notes": "The number of students an educational institution can recommend depends on the number of international students enrolled there, so some institutions cannot put forward candidates. JASSO publishes annual selection results.",
+    "best_fit": null,
+    "notes": null,
+    "duration": "12 months (April to the following March) or 6 months (October to the following March)",
+    "application_period": "Applications are handled by the enrolled educational institution; JASSO publishes 2026 selection results and runs annual reservation rounds tied to the EJU",
+    "deadline_display": "\"Please ask the staff at the educational institution in which you are enrolled.\" JASSO publishes no application deadline of its own; each educational institution runs its own selection.",
+    "deadline_date": null,
+    "region": "Global",
+    "program_type": "Privately-financed student honors scholarship (nominated by the host institution)",
+    "applicant_utility": null,
+    "official_details": null
+   },
+   "missing_fields": [
+    "best_fit",
+    "notes",
+    "deadline_date",
+    "applicant_utility",
+    "official_details"
+   ]
+  },
+  {
+   "id": 377,
+   "title": "JSPS Postdoctoral Fellowships for Research in Japan - Standard Program (Open Call)",
+   "country": "Japan",
+   "degree": "Postdoctoral",
+   "funding_label": "Stipend",
+   "status": "open",
+   "official_source": "Japan Society for the Promotion of Science (JSPS)",
+   "official_source_url": "https://www.jsps.go.jp/english/e-fellow/e-ippan/appliguidelines.html",
+   "application_link": "https://www.jsps.go.jp/english/e-fellow/e-ippan/appliguidelines.html",
+   "catalogue_url": "https://www.jsps.go.jp/file/storage/e-fellow/guideline_2026/2026_Program_Guidelines_e.pdf",
+   "official_updates_url": "https://www.jsps.go.jp/english/e-fellow/e-ippan/appliguidelines.html",
+   "existing": {
+    "funding_amount": 362000,
+    "funding_currency": "JPY",
+    "funding_period": "per month",
+    "tuition_coverage": 0,
+    "living_cost_coverage": 1,
+    "travel_coverage": 1,
+    "fully_funded": 0,
+    "description": "The JSPS Postdoctoral Fellowships for Research in Japan (Standard Program) let excellent postdoctoral researchers from other countries conduct cooperative research in Japan with a Japanese host researcher. JSPS runs two open-call rounds a year and awarded 120 fellowships in each FY2027 round. The fellowship pays a maintenance allowance of JPY 362,000 per month, a round-trip air ticket, a settling-in allowance of JPY 200,000 and overseas travel insurance. Applications are submitted by the host researcher through the JSPS Electronic Application System, not by candidates directly.",
+    "eligibility": [
+     "Postdoctoral researcher from a country other than Japan",
+     "Holds a doctoral degree, or is scheduled to receive one by the time the fellowship starts",
+     "Must be hosted by a Japanese researcher who applies on the candidate's behalf through the JSPS Electronic Application System",
+     "Cannot be a Japanese national or hold permanent residence status in Japan"
+    ],
+    "eligibility_summary": "Excellent postdoctoral researchers from other countries who will conduct cooperative research with a Japanese host researcher and who hold, or will have received by the start of the fellowship, a doctoral degree.",
+    "benefits": [
+     "Maintenance allowance of JPY 362,000 per month",
+     "Round-trip air ticket (economy class, subject to JSPS regulations)",
+     "Settling-in allowance of JPY 200,000",
+     "Overseas travel insurance",
+     "Host researchers may apply for a Grant-in-Aid for Scientific Research to cover cooperative research expenses"
+    ],
+    "coverage": [
+     "Maintenance allowance of JPY 362,000 per month",
+     "Round-trip air ticket based on JSPS regulations",
+     "Settling-in allowance of JPY 200,000",
+     "Overseas travel insurance"
+    ],
+    "requirements": [
+     "A Japanese host researcher must submit the application to JSPS; candidates cannot apply directly",
+     "Applications must reach JSPS by 5 p.m. JST on the round's deadline date",
+     "The fellowship is provided in full month units",
+     "Air tickets must be booked through the travel agency designated by JSPS, not bought independently"
+    ],
+    "documents": [
+     "Application submitted via the JSPS Electronic Application System by the host researcher",
+     "Doctoral degree certificate or documentation confirming the expected date of the doctoral degree",
+     "Research plan and CV as specified in the application call",
+     "Documents from the host institution required by the JSPS application call"
+    ],
+    "english_requirement": null,
+    "application_method": [
+     "Open call (Standard): the host researcher submits the nomination through the JSPS Electronic Application System before the round deadline",
+     "Invitation route: a JSPS overseas counterpart organisation may nominate a candidate"
+    ],
+    "selection_notes": "Two open-call rounds are held each year with 120 fellowships in each round for FY2027. Selection results are published in late December 2026 for the 1st round and early August 2027 for the 2nd round.",
+    "best_fit": null,
+    "notes": null,
+    "duration": "12 to 24 months, provided in full month units; the Standard open call runs two rounds a year with arrival windows of 1 April to 30 September 2027 (1st round) and 1 September to 30 November 2027 (2nd round)",
+    "application_period": "Two open-call rounds a year; 1st round applications reach JSPS by 28 August 2026 (5 p.m. JST), 2nd round by 23 April 2027 (5 p.m. JST)",
+    "deadline_display": "\"Application deadline (from host institution to JSPS)\" - FY2027 1st round: \"August 28, 2026 (by 5 p.m. (JST))\"; FY2027 2nd round: \"April 23, 2027 (by 5 p.m. (JST))\". The next still-applicable round as of 2026-10-04 is the 2nd round.",
+    "deadline_date": "2027-04-23",
+    "region": "Global",
+    "program_type": "Research fellowship - postdoctoral, open call",
+    "applicant_utility": null,
+    "official_details": null
+   },
+   "missing_fields": [
+    "english_requirement",
+    "best_fit",
+    "notes",
+    "applicant_utility",
+    "official_details"
+   ]
+  }
+ ],
+ "result_file": "C:\\Users\\GopaL\\Desktop\\Projects folder\\ScholarZone\\backend\\research_output\\live500\\results\\agent_413.json"
+}

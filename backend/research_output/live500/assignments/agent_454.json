@@ -1,0 +1,94 @@
+{
+ "agent": "agent_454",
+ "assignment_count": 1,
+ "scholarships": [
+  {
+   "id": 622,
+   "title": "World in Serbia Project Scholarships of the Government of the Republic of Serbia",
+   "country": "Serbia",
+   "degree": "Bachelor's, Master's, PhD",
+   "funding_label": "Fully Funded",
+   "status": "upcoming",
+   "official_source": "Ministry of Education, Science and Technological Development of the Republic of Serbia",
+   "official_source_url": "https://www.prosveta.gov.rs/wp-content/uploads/2026/05/WORLD-IN-SERBIA-PROJECT-DESCRIPTION-2026-2027-2028.pdf",
+   "application_link": "https://www.prosveta.gov.rs/wp-content/uploads/2026/05/WORLD-IN-SERBIA-PROJECT-DESCRIPTION-2026-2027-2028.pdf",
+   "catalogue_url": "https://welcometoserbia.gov.rs/scholarships",
+   "official_updates_url": null,
+   "existing": {
+    "funding_amount": 18000,
+    "funding_currency": "RSD",
+    "funding_period": "per month",
+    "tuition_coverage": 1,
+    "living_cost_coverage": 1,
+    "travel_coverage": 0,
+    "fully_funded": 0,
+    "description": "The \"World in Serbia\" project is a Government of the Republic of Serbia scholarship programme run by the Ministry of Education for candidates from member and observer states of the Non-Aligned Movement, covering candidates from Africa, Asia, Central and South America. Scholarship holders study free of charge at public higher education institutions founded by the Republic of Serbia, in all study programmes and at all study levels, after a preparatory Serbian-language year. The February 2026 official call covers Serbian-language study in the 2026/2027 academic year and enrolment at Serbian higher education institutions in the 2027/2028 academic year, with applications due no later than 1 June 2026.",
+    "eligibility": [
+     "Citizen of a member state or observer state of the Non-Aligned Movement",
+     "Nominated by the competent authority of the participating state in the Project",
+     "Younger than 21 years old for enrolment in first-level studies",
+     "Younger than 25 years old for second-level studies (master's, specialist and specialist vocational)",
+     "Younger than 35 years old for third-level studies (doctoral)",
+     "Overall pass grade of at least 80% at undergraduate and master level",
+     "Knowledge of English at least at A1 level, or Serbian at least at A1 level on arrival",
+     "In overall good health, verified by the Student Health Care Institute of Belgrade"
+    ],
+    "eligibility_summary": "Citizens of Non-Aligned Movement member or observer states, nominated by the competent authority of their country, with age limits of under 21 for first-level studies, under 25 for second-level studies and under 35 for third-level (doctoral) studies, an overall 80% pass grade at undergraduate and master level, English or Serbian at A1 level, and good health.",
+    "benefits": [
+     "Free of charge study (tuition) at all study programmes and levels at institutions founded by the Republic of Serbia",
+     "Accommodation and food in the student standard system of the Republic of Serbia (Belgrade, Novi Sad, Nis, Kragujevac)",
+     "Financial scholarship of RSD 18,000 per month",
+     "Health insurance",
+     "Free intensive Serbian-language courses before enrolment",
+     "Assistance with translation and recognition of prior diplomas by the Ministry of Education and the Qualifications Agency"
+    ],
+    "coverage": [
+     "Free tuition at higher education institutions founded by the Republic of Serbia",
+     "Accommodation and meals in the student standard (student centre) system",
+     "Monthly financial allowance",
+     "Health insurance"
+    ],
+    "requirements": [
+     "Pass the Serbian language examination before commencing higher education studies",
+     "Pass the entrance exam at the chosen faculty and complete enrolment",
+     "Earn a minimum of 37 ECTS credits during the academic year for budget-funded re-enrolment",
+     "Regularly attend classes and sit the prescribed examinations",
+     "Obtain and maintain temporary residence status in the Republic of Serbia",
+     "Inform the Ministry of Education of material changes to scholarship status within 30 days",
+     "Return to the country that nominated them upon completion of studies"
+    ],
+    "documents": [
+     "Curriculum vitae with a motivational letter",
+     "Copy of the travel document (passport), valid for at least another 6 years at the date of submission for a visa",
+     "Proof of acquired education (certified transcripts, secondary school certificates, diplomas, grade transcripts, diploma supplements) translated into Serbian or English",
+     "Health documentation, subject to a general medical examination on arrival",
+     "Completed and signed application form, submitted to the relevant institution in the candidate's country for endorsement"
+    ],
+    "english_requirement": "English at A1 level accepted as an alternative to Serbian; all documentation must be translated into English or Serbian",
+    "application_method": [
+     "Submit the completed application form through the official Google Form link given in the call",
+     "Email scanned original documentation plus Serbian or English certified translations to worldinserbia@prosveta.gov.rs",
+     "A copy of the documentation and the health certificate is submitted to the relevant institution in the candidate's country for formal endorsement",
+     "The endorsing institution submits the list of endorsed candidates to the Serbian diplomatic-consular mission, which forwards it via the Ministry of Foreign Affairs"
+    ],
+    "selection_notes": "Each participating state must nominate endorsed candidates. The Ministry of Foreign Affairs transmits the lists of nominated candidates with all application forms to the Ministry of Education no later than 10 June. A special inter-ministerial commission comprising representatives of the Ministry of Education, the Ministry of Foreign Affairs, the Agency for Qualifications (ENIC/NARIC Centre) and the Student Health Care Institute of Belgrade selects the candidates, and the decision on the final list of endorsed candidates is adopted by the Minister responsible for education no later than 26 June. Scholarships may be terminated for inauthentic or fraudulent documentation, unverified health documentation, failure to pass the Serbian language examination, failure to obtain the required ECTS credits, or voluntary renunciation.",
+    "best_fit": "Students from Non-Aligned Movement countries in Africa, Asia and Central and South America who can obtain a government endorsement and are willing to study in Serbian after a preparatory language year.",
+    "notes": "The published February 2026 call states a monthly financial scholarship of RSD 18,000. Approximately 536 scholarship holders from 127 countries were studying in Serbia under the project at the time of publication.",
+    "duration": "One year of Serbian-language preparation (2026/2027) followed by the enrolled degree cycle beginning in the 2027/2028 academic year",
+    "application_period": "Serbian language study in the 2026/2027 academic year, then enrolment in higher education institutions founded by the Republic of Serbia in the 2027/2028 academic year",
+    "deadline_display": "No later than 1 June 2026 for the 2026 call; the call is reissued annually, so the next cycle is expected to close around the same date in 2027",
+    "deadline_date": null,
+    "region": "Europe",
+    "program_type": "Government scholarship",
+    "applicant_utility": null,
+    "official_details": null
+   },
+   "missing_fields": [
+    "deadline_date",
+    "applicant_utility",
+    "official_details"
+   ]
+  }
+ ],
+ "result_file": "C:\\Users\\GopaL\\Desktop\\Projects folder\\ScholarZone\\backend\\research_output\\live500\\results\\agent_454.json"
+}

@@ -1,0 +1,88 @@
+{
+ "agent": "agent_024",
+ "assignment_count": 1,
+ "scholarships": [
+  {
+   "id": 82,
+   "title": "Pierre Elliott Trudeau Foundation Doctoral Scholarship",
+   "country": "Canada",
+   "degree": "PhD",
+   "funding_label": "Stipend",
+   "status": "open",
+   "official_source": "Pierre Elliott Trudeau Foundation",
+   "official_source_url": "https://www.trudeaufoundation.ca/become-a-scholar",
+   "application_link": "https://www.trudeaufoundation.ca/become-a-scholar",
+   "catalogue_url": "https://www.trudeaufoundation.ca/scholarship",
+   "official_updates_url": "https://www.trudeaufoundation.ca/2027-applications",
+   "existing": {
+    "funding_amount": null,
+    "funding_currency": null,
+    "funding_period": null,
+    "tuition_coverage": 0,
+    "living_cost_coverage": null,
+    "travel_coverage": null,
+    "fully_funded": 0,
+    "description": "The Pierre Elliott Trudeau Foundation awards a doctoral scholarship to exceptionally engaged PhD students undertaking significant research projects of major social importance. For the 2027 competition the Foundation states the application period runs \"from September 1 to November 6, 2026, at 5:00 p.m. (ET)\", using a two-step process in which candidates must first request eligibility confirmation. Applicants must be in the first or second year of a PhD program in a field broadly related to the humanities or social sciences. Research must align with at least one of the Foundation's four themes: Human Rights and Dignity, Responsible Citizenship, Canada and the World, and People and their Natural Environment. The official pages read for this record do not publish a dollar amount or state that tuition fees are paid.",
+    "eligibility": [
+     "In the first year of a PhD program at the time of application, or in the second year of a PhD program",
+     "Field of study broadly related to the humanities or social sciences, addressing issues relevant to Canada's future",
+     "PhD research must align with at least one of the Foundation's four themes: Human Rights and Dignity; Responsible Citizenship; Canada and the World; People and their Natural Environment",
+     "Canadian student enrolled at a Canadian university",
+     "Canadian student enrolled at a university outside Canada",
+     "International student enrolled at a Canadian university",
+     "International students residing outside Canada or enrolled at a university outside Canada are not eligible",
+     "Three letters of reference: one from the PhD supervisor, one from another academic referee, one from a referee outside academia"
+    ],
+    "eligibility_summary": "Applicants must be in the first or second year of a PhD program at the time of application, in a field broadly related to the humanities or social sciences that addresses issues relevant to Canada's future, and must be a Canadian student at a Canadian or non-Canadian university, or an international student at a Canadian university.",
+    "benefits": [
+     "Scholarship funding",
+     "Research allowances",
+     "Membership of a community of peers"
+    ],
+    "coverage": [
+     "Scholarship support for PhD students (official wording: \"a generous scholarship\")",
+     "Research allowances",
+     "Access to a community of peers"
+    ],
+    "requirements": [
+     "Complete the eligibility screening form first; only applicants whose eligibility has been confirmed can access the full application form",
+     "Applications that do not meet the eligibility criteria will not be reviewed"
+    ],
+    "documents": [
+     "Eligibility verification/screening form submitted via SmartSimple",
+     "Complete 2027 Scholarship application form",
+     "Three letters of reference (PhD supervisor, another academic referee, a referee outside academia)"
+    ],
+    "english_requirement": null,
+    "application_method": [
+     "Step 1: complete the eligibility screening form at fdnpetf.smartsimple.ca",
+     "Step 2: once eligibility is confirmed, complete the full 2027 Scholarship application form"
+    ],
+    "selection_notes": "Applications are assessed on academic excellence, alignment of the research project with the Foundation's mission and its four founding themes, the rigour of the research proposal, and the ability to share knowledge for the benefit of society.",
+    "best_fit": "First- or second-year humanities and social sciences PhD students at a Canadian university, or Canadian students at a university outside Canada, whose research maps to one of the Foundation's four founding themes.",
+    "notes": null,
+    "duration": null,
+    "application_period": "2027 competition: eligibility verification form opens September 1, 2026; eligibility confirmation request due October 2, 2026; mandatory information sessions in the weeks of October 5 and October 12, 2026; references due October 30, 2026 at 9:00 a.m. ET; complete application due November 6, 2026 at 5:00 p.m. ET.",
+    "deadline_display": "November 6, 2026, at 5:00 p.m. ET — deadline to submit the complete application.",
+    "deadline_date": "2026-11-06",
+    "region": "North America",
+    "program_type": "Doctoral scholarship for candidates in the first or second year of a PhD program whose research aligns with at least one of the Foundation's four themes.",
+    "applicant_utility": null,
+    "official_details": null
+   },
+   "missing_fields": [
+    "funding_amount",
+    "funding_currency",
+    "funding_period",
+    "living_cost_coverage",
+    "travel_coverage",
+    "english_requirement",
+    "notes",
+    "duration",
+    "applicant_utility",
+    "official_details"
+   ]
+  }
+ ],
+ "result_file": "C:\\Users\\GopaL\\Desktop\\Projects folder\\ScholarZone\\backend\\research_output\\live500\\results\\agent_024.json"
+}

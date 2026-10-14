@@ -1,0 +1,21 @@
+{
+  "agent_id": "w3_60",
+  "shard": "w3-60",
+  "host": "edu.gov.az",
+  "today": "2026-10-04",
+  "logo_override": {
+    "url": "https://edu.gov.az/site/views/site/images/Az-Resp-elm-tehsil-naziriyi-logo.png",
+    "page_url": "https://edu.gov.az/",
+    "official_host": true,
+    "alt_text": "Azərbaycan Respublikası Elm və Təhsil Nazirliyi - Ministry of Science and Education of the Republic of Azerbaijan",
+    "validation_result": "verified",
+    "validation_detail": "webfetch probe returned 'Image fetched successfully' (HTTP 200 plus an image content type, no HTML/WAF body); raw GET 200, image/png, 51599 bytes, 500x500; the file has an opaque white background (not transparent), so it needs no compositing, and flattened on white it measures mean luminance 225.2 - the artwork is the ministry's own gold 8-pointed star device with the Azerbaijani coat of arms in its centre over the gold lockup 'AZƏRBAYCAN RESPUBLİKASI ELM VƏ TƏHSİL NAZİRLİYİ', all of which stays visible on a light card, so there is no white-on-transparent failure",
+    "image_kind": "official_government",
+    "image_format": "png",
+    "verified_at": "2026-10-04T00:00:00+00:00",
+    "host_evidence": "same_registrable_domain",
+    "_award": "Heydar Aliyev International Education Grant (Study in Azerbaijan project)"
+  },
+  "target_ids": [715],
+  "notes": "Awarding body is the Ministry of Science and Education of the Republic of Azerbaijan (Elm və Təhsil Nazirliyi), the operator of edu.gov.az, and the accepted asset is that ministry's own emblem-and-wordmark lockup published by the ministry itself - not the Azerbaijani flag and not the logo of any other body. Note mes.gov.az is the separate Ministry of Education and its mark must not be used here. Trap found and worked around: every header logo on the site is the WHITE reverse variant for the dark-blue header, which fails brief rule 3. Measured by compositing each on white: /uploads/elm-tehsil-naziriyi-logo.png (200, image/png, 30076 B, 500x226) mean luminance 245.9 with 0.2% dark pixels; /uploads/elm-tehsil-naziriyi-logo-en.png (200, image/png, 22260 B, 500x179) mean 247.1 with 0.2% dark; /uploads/elm-tehsil-naziriyi-logo-ru.png (200, image/png, 22276 B, 500x164) mean 246.2 with 0.1% dark; /site/views/site/images/favicon/apple-touch-icon.png (200, image/png, 12954 B, 180x180) mean 249.5 with 0.3% dark. All four are white-on-transparent and were rejected. Also rejected: /site/views/site/images/favicon/safari-pinned-tab.svg (200, image/svg+xml, 54341 B) - it is a single #000000 silhouette (fill #000000 x1, no white) so it is dark and would pass rule 3, but a Safari pinned-tab mask has no wordmark and renders as a 46-shape blob, and the one I screenshotted in Chromium showed empty art inside its 1376x1376 viewBox, so it is not a usable record image. Probed and 404: /site/views/site/images/{logo.png,logo-dark.png,header-logo.png,elm-tehsil-naziriyi-logo-dark.png,elm-tehsil-naziriyi-logo-en.png,elm-tehsil-naziriyi-logo-color.png,Az-Resp-elm-tehsil-naziriyi-logo-en.png,En-Resp-elm-tehsil-naziriyi-logo.png,en-elm-tehsil-naziriyi-logo.png,elm-tehsil-naziriyi-logo.png} and /site/views/site/images/favicon.ico. Caution for anyone re-probing this host: several non-existent paths (for example /uploads/elm-tehsil-naziriyi-logo-en-1.png, -rgb.png, -gov.png) answer HTTP 200 with text/html, i.e. a soft-404 page, so only the content-type check distinguishes them from real assets. Not used: /uploads/STUDY%20%C4%B0N%20AZERBAYCAN.svg (the og:image of the English programme page, which is Heydar Aliyev International Education Grant programme artwork, not the ministry's mark) and /uploads/layiheler/2025/en/Study%20in%20Azerbaijan.jpg (programme banner photo). Honest caveat: the accepted lockup is the ministry's Azerbaijani-language one, because the English-language lockup exists only as the white reverse PNG that rule 3 forbids; the device and coat of arms are language-neutral and the gold-on-white contrast is moderate but the wordmark is fully legible in the render."
+}

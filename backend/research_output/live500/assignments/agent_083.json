@@ -1,0 +1,93 @@
+{
+ "agent": "agent_083",
+ "assignment_count": 1,
+ "scholarships": [
+  {
+   "id": 244,
+   "title": "Chinese Government Scholarship - Tsinghua University Program (Type B)",
+   "country": "China",
+   "degree": "Master's, PhD",
+   "funding_label": "Fully Funded",
+   "status": "open",
+   "official_source": "Tsinghua University & China Scholarship Council (CSC)",
+   "official_source_url": "https://yz.tsinghua.edu.cn/en/info/1027/1117.htm",
+   "application_link": "https://yz.tsinghua.edu.cn/en/info/1027/1117.htm",
+   "catalogue_url": "https://yz.tsinghua.edu.cn/en/Programs/Schools___Departments.htm",
+   "official_updates_url": "https://yz.tsinghua.edu.cn/en/Financial_Aid/Scholarship_Application.htm",
+   "existing": {
+    "funding_amount": null,
+    "funding_currency": null,
+    "funding_period": null,
+    "tuition_coverage": 1,
+    "living_cost_coverage": 1,
+    "travel_coverage": null,
+    "fully_funded": 1,
+    "description": "The Chinese Government Scholarship (CGS) is funded by the Chinese government and administered by the China Scholarship Council, which is entrusted by the Ministry of Education with admission, enrolment and administration of recipients. Tsinghua University hosts the Category Type B route, in which the university nominates candidates under the CGS-Chinese University Program, and the page also explains that Type A programmes are handled by other authorities such as the bilateral, EU and AUN programmes. This record covers the Type B route for graduate study at Tsinghua. Full CGS covers tuition, university accommodation or an accommodation subsidy, a stipend and comprehensive medical insurance, for one to three years of master's study or four to five years of doctoral study.",
+    "eligibility": [
+     "Citizen of a country other than the People's Republic of China and in good health both mentally and physically",
+     "Bachelor's degree holder under the age of 35 when applying for master's programs",
+     "Master's degree holder under the age of 40 when applying for doctoral programs",
+     "HSK Level 4 for Chinese-taught master's or doctoral programs; holders of a degree from a Chinese university taught in Chinese must instead provide proof of Chinese-taught instruction from the previous degree-awarding institution",
+     "Pre-admitted by Tsinghua University and recommended for CGS by the admitting school or department - otherwise the application is not considered",
+     "Must not have been offered other scholarships for prospective graduate study at Tsinghua or nominated as a CGS candidate by another university",
+     "Must meet other Type B programme requirements such as applicable programmes, majors and nationalities"
+    ],
+    "eligibility_summary": "Applicants must be citizens of a country other than the People's Republic of China, in good physical and mental health, hold a bachelor's degree and be under 35 for master's programs or a master's degree and be under 40 for doctoral programs, hold HSK Level 4 for Chinese-taught master's or doctoral programs, be pre-admitted by Tsinghua and recommended by the admitting school or department, and hold no other Tsinghua scholarship or CSC nomination.",
+    "benefits": [
+     "Full CGS: tuition fees",
+     "Free university dormitory or accommodation subsidy",
+     "Monthly stipend",
+     "Comprehensive medical insurance",
+     "Partial CGS variants include one or some items from the full coverage"
+    ],
+    "coverage": [
+     "Tuition fees",
+     "Free university dormitory or accommodation subsidy",
+     "Stipend",
+     "Comprehensive medical insurance"
+    ],
+    "requirements": [
+     "Submit the Tsinghua pre-admission online application at https://yzbm.tsinghua.edu.cn/intlLogin",
+     "Obtain a recommendation from the admitting school or department",
+     "Complete the CSC online application in the Chinese Government Scholarship Information System when instructed by the department",
+     "Submit documents online; CGS applicants do not need to mail hard copies to Tsinghua University"
+    ],
+    "documents": [
+     "Chinese Government Scholarship Application form (Attachment 2), submitted online only",
+     "Pre-admission result and school or department recommendation",
+     "Documents listed in Attachment 2 of the Tsinghua scholarship page"
+    ],
+    "english_requirement": "Not specified on this page beyond HSK Level 4 for Chinese-taught programmes; English-medium programmes are listed separately in the programme catalogue.",
+    "application_method": [
+     "Step 1: Tsinghua pre-admission application and school/department recommendation",
+     "Step 2: complete and download the CGS online application form in the CSC system",
+     "Step 3: school/department recommendation",
+     "Step 4: Tsinghua selects candidates and nominates them to the CSC",
+     "Step 5: CSC expert review and approval, with results notified to Tsinghua"
+    ],
+    "selection_notes": "Tsinghua states that applying for CGS through Tsinghua is highly competitive and that it usually selects candidates from pre-admitted applicants of remarkable merit. Applicants who cannot be reached or who fail to complete the CGS online application in time are treated as renouncing the candidacy. All CGS holders must pass a strict annual review covering academic performance, learning attitude, attendance, student conduct, rewards and punishments; the scholarship is suspended or terminated if the review is failed.",
+    "best_fit": "Outstanding Bangladeshi students admitted to Tsinghua graduate programs",
+    "notes": null,
+    "duration": "Master's degree: 1-3 years. Doctoral degree: 4-5 years.",
+    "application_period": "The 2026 cycle page was published in November 2025 with pre-admission applications recommended before mid-December 2025. Tsinghua's 2027 international graduate admission round was announced on 5 September 2026, so the 2027 CGS Type B cycle is expected to open in the same period as the 2026 one.",
+    "deadline_display": "Applicants are highly recommended to apply before Mid-December, 2025; the exact date is set by each school or department of Tsinghua University, so there is no single university-wide deadline.",
+    "deadline_date": null,
+    "region": "Asia",
+    "program_type": "Chinese Government Scholarship Category Type B (CGS-Chinese University Program) nominated by Tsinghua University to the China Scholarship Council",
+    "applicant_utility": null,
+    "official_details": null
+   },
+   "missing_fields": [
+    "funding_amount",
+    "funding_currency",
+    "funding_period",
+    "travel_coverage",
+    "notes",
+    "deadline_date",
+    "applicant_utility",
+    "official_details"
+   ]
+  }
+ ],
+ "result_file": "C:\\Users\\GopaL\\Desktop\\Projects folder\\ScholarZone\\backend\\research_output\\live500\\results\\agent_083.json"
+}

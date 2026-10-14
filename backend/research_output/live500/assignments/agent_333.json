@@ -1,0 +1,104 @@
+{
+ "agent": "agent_333",
+ "assignment_count": 1,
+ "scholarships": [
+  {
+   "id": 727,
+   "title": "Swiss Government Excellence Scholarship (ESKAS)",
+   "country": "Switzerland",
+   "degree": "PhD/Postdoctoral research and Art Master's only - NOT for standard Bachelor's/Master's study",
+   "funding_label": "Monthly stipend, housing grant, health insurance, and travel card",
+   "status": "open",
+   "official_source": "State Secretariat for Education, Research and Innovation (SERI), Switzerland",
+   "official_source_url": "https://www.sbfi.admin.ch/en/swiss-government-excellence-scholarships",
+   "application_link": "https://www.sbfi.admin.ch/en/swiss-government-excellence-scholarships",
+   "catalogue_url": null,
+   "official_updates_url": "https://www.sbfi.admin.ch/en/swiss-government-excellence-scholarships",
+   "existing": {
+    "funding_amount": null,
+    "funding_currency": null,
+    "funding_period": null,
+    "tuition_coverage": null,
+    "living_cost_coverage": null,
+    "travel_coverage": null,
+    "fully_funded": 0,
+    "description": null,
+    "eligibility": [
+     "Research/PhD: Master's degree or equivalent completed by 31 July 2027 (ETH Zurich: 30 June 2027)",
+     "Date of birth after 31 December 1991",
+     "Detailed research plan with timeline specifying key milestones and activities",
+     "Letter of support from Swiss academic supervisor required (including short CV)",
+     "If already in Switzerland: date of entry must not be earlier than 1 August 2026",
+     "Art Master's: Bachelor's degree completed by 31 July 2027; must not already hold a Master's degree",
+     "Art Master's: Admission letter or proof of application from Swiss University of the Arts or Music"
+    ],
+    "eligibility_summary": "Research/PhD applicants must already hold a Master's degree. Must secure a nomination/support letter from an academic supervisor at a Swiss institution BEFORE applying. Must not have lived in Switzerland for more than 12 months prior.",
+    "benefits": [
+     "Monthly stipend CHF 2,450 (all scholarship types)",
+     "CHF 600 one-time rental deposit",
+     "Compulsory health insurance covered (non-EU/EFTA scholars)",
+     "One-year Half-Fare Travelcard for Swiss public transport",
+     "Return flight allowance (non-EU/EFTA, amount varies by country)",
+     "Tuition fees NOT covered - universities may charge CHF 600-2,000/semester"
+    ],
+    "coverage": [
+     "Monthly stipend CHF 2,450 (all scholarship types)",
+     "CHF 600 one-time rental deposit",
+     "Compulsory health insurance covered (non-EU/EFTA scholars)",
+     "One-year Half-Fare Travelcard for Swiss public transport",
+     "Return flight allowance (non-EU/EFTA, amount varies by country)",
+     "Tuition fees NOT covered - universities may charge CHF 600-2,000/semester"
+    ],
+    "requirements": [
+     "Complete CV including educational background, degrees, awards, positions, publications, teaching and practical experience",
+     "Letter of motivation (max. 2 pages): reasons for stay in Switzerland, significance for future career",
+     "Research proposal on FCS/ESKAS form (max. 5 pages including summary for non-specialists)",
+     "Letter of support from an academic supervisor at a Swiss higher education institution",
+     "Short CV (max. 2 pages) from the academic supervisor",
+     "Two professors' email addresses (for recommendation letters submitted via system)",
+     "Copies of certificates and transcripts from previous universities (with certified translations if not in EN/FR/IT/DE)",
+     "Copy of passport (dual citizens submit both)",
+     "Copy of residence permit or registration confirmation if already residing in Switzerland"
+    ],
+    "documents": [
+     "Complete CV including educational background, degrees, awards, positions, publications, teaching and practical experience",
+     "Letter of motivation (max. 2 pages): reasons for stay in Switzerland, significance for future career",
+     "Research proposal on FCS/ESKAS form (max. 5 pages including summary for non-specialists)",
+     "Letter of support from an academic supervisor at a Swiss higher education institution",
+     "Short CV (max. 2 pages) from the academic supervisor",
+     "Two professors' email addresses (for recommendation letters submitted via system)",
+     "Copies of certificates and transcripts from previous universities (with certified translations if not in EN/FR/IT/DE)",
+     "Copy of passport (dual citizens submit both)",
+     "Copy of residence permit or registration confirmation if already residing in Switzerland"
+    ],
+    "english_requirement": "Not centrally specified - depends on the host institution/programme",
+    "application_method": [],
+    "selection_notes": "Selection criteria: Academic profile, research competence, and motivation; originality and methodological quality of the project; quality of supervision and potential for future collaboration. Art scholarships assess artistic profile, qualifications, motivation, and portfolio quality. Decisions announced by end of May.",
+    "best_fit": "Only for PhD-track or postgraduate researchers who already have an academic connection in Switzerland - not usable for undergraduate applicants",
+    "notes": "Application now fully online via go.eskas.ch (embassy paper submission discontinued as of 2026-27 cycle). Requires securing a Swiss academic mentor/supervisor BEFORE applying - this is the hardest and most time-consuming step, start it months in advance.",
+    "duration": "Research Fellowship: 6-12 months (no extensions). PhD: 12 months, renewable twice up to 36 months (subject to academic progress). Art Master's: 12 months, extendable up to 21 months depending on programme and ECTS credits. All start 1 September 2027.",
+    "application_period": "Applications open 20 August 2026; country-specific deadlines published at go.eskas.ch (typically September to December 2026 depending on country of origin)",
+    "deadline_display": "Applications open 20 August 2026; country-specific deadlines vary (September to December 2026). Check go.eskas.ch for exact deadline by country of citizenship.",
+    "deadline_date": null,
+    "region": "Europe",
+    "program_type": "Government scholarship (Federal Commission for Scholarships for Foreign Students)",
+    "applicant_utility": null,
+    "official_details": null
+   },
+   "missing_fields": [
+    "funding_amount",
+    "funding_currency",
+    "funding_period",
+    "tuition_coverage",
+    "living_cost_coverage",
+    "travel_coverage",
+    "description",
+    "application_method",
+    "deadline_date",
+    "applicant_utility",
+    "official_details"
+   ]
+  }
+ ],
+ "result_file": "C:\\Users\\GopaL\\Desktop\\Projects folder\\ScholarZone\\backend\\research_output\\live500\\results\\agent_333.json"
+}

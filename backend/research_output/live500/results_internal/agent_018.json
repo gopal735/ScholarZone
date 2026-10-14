@@ -1,0 +1,122 @@
+{
+  "agent": "agent_018",
+  "records": [
+    {
+      "id": 58,
+      "official": {
+        "official_source_urls": [
+          "https://www.brandeis.edu/admissions/apply/scholarships/index.html",
+          "https://www.brandeis.edu/isso/programs/wien/index.html",
+          "https://www.brandeis.edu/admissions/apply/application-process/index.html"
+        ],
+        "application_link": "https://www.brandeis.edu/isso/programs/wien/index.html",
+        "catalogue_url": null,
+        "official_updates_url": null,
+        "deadline_central": "2027-01-15",
+        "deadline_central_display": "January 15, 2027 (Early Decision II / Regular Decision); November 2, 2026 (Early Decision I / Early Action)",
+        "deadline_note": "There is no separate Wien deadline: consideration follows the admission application, and the CSS Profile/FAFSA financial aid deadline matches each admission plan (Nov. 2 for EDI/EA; Jan. 15 for EDII/RD).",
+        "application_cycle": "Fall 2027 first-year entry (current admission cycle)",
+        "status": "OPEN",
+        "status_note": "Wien consideration is automatic with the Brandeis admission application; Brandeis publishes first-year deadlines for the current cycle (EDI/EA Nov. 2; EDII/RD Jan. 15) with financial aid deadlines matching each plan.",
+        "tuition_coverage_note": "This scholarship meets the full demonstrated financial need of each recipient, based on a complete review of financial documentation.",
+        "funding_amount": null,
+        "funding_currency": "USD",
+        "funding_period": "awarded annually and renewed each academic year",
+        "tuition_coverage": true,
+        "living_cost_coverage": true,
+        "travel_coverage": null,
+        "fully_funded": false,
+        "benefits": [
+          "Meets the full demonstrated financial need of each recipient, based on a complete review of financial documentation",
+          "Awarded to exceptional international applicants who demonstrate strong academic achievement and extracurricular or community involvement",
+          "No separate application process or alternative requirements",
+          "Part of a programme that has brought over 894 scholars from 115 countries to Brandeis since 1958"
+        ],
+        "eligibility": [
+          "International applicant to Brandeis University's undergraduate program",
+          "Strong academic achievement",
+          "Significant extracurricular or community involvement",
+          "Must demonstrate financial need (CSS Profile required for institutional need-based aid)"
+        ],
+        "requirements": [
+          "Apply to Brandeis via the Common Application or Coalition Application - Wien consideration is automatic",
+          "File the CSS Profile (and FAFSA if applicable) by the financial aid deadline matching your admission plan",
+          "Complete a full review of financial documentation to establish demonstrated need",
+          "Brandeis scholarship awards are renewable for up to eight semesters, provided you meet renewal requirements"
+        ],
+        "documents": [
+          "Common Application or Coalition Application submitted directly to Brandeis",
+          "CSS Profile and supporting income/asset documentation",
+          "No separate scholarship application required"
+        ],
+        "selection_criteria": [
+          "Exceptional international applicants with strong academic achievement and extracurricular or community involvement",
+          "Demonstrated financial need established through a complete review of financial documentation",
+          "No external partners in selection - all applications must be submitted directly to Brandeis"
+        ],
+        "coverage": [
+          "The scholarship meets the full demonstrated financial need of each recipient, based on a complete review of financial documentation"
+        ],
+        "application_method": [
+          "Automatic consideration with the Brandeis admission application via the Common Application or Coalition Application; there is no separate application process"
+        ],
+        "application_route": "Apply to Brandeis (Common App or Coalition App) by your admission-plan deadline and file the CSS Profile - Wien consideration is automatic.",
+        "study_mode": "Full-time",
+        "citizenship_residency": "Open to international applicants to Brandeis University's undergraduate program",
+        "international_eligibility": "Yes - the Wien International Scholarship Program is Brandeis's scholarship program for international undergraduate applicants",
+        "subject_or_agency_requirement": null,
+        "research_requirement": null,
+        "duration": "Renewable for up to eight semesters, subject to annual reapplication, continued demonstrated need, and renewal requirements",
+        "description": "Established in 1958, the Wien International Scholarship Program is a first-of-its-kind program at Brandeis University bringing undergraduate students from every corner of the globe to campus; it meets the full demonstrated financial need of each recipient and has brought over 894 scholars from 115 countries to Brandeis.",
+        "region": "North America",
+        "program_type": "Need-based scholarship for international undergraduates (no separate application)",
+        "english_requirement": null
+      },
+      "verification": {
+        "source_citations": [
+          "https://www.brandeis.edu/admissions/apply/scholarships/index.html",
+          "https://www.brandeis.edu/isso/programs/wien/index.html",
+          "https://www.brandeis.edu/admissions/apply/application-process/index.html"
+        ],
+        "last_verified_date": "2026-10-10",
+        "verification_status": "confirmed",
+        "confidence": "high",
+        "not_confirmed": [
+          "funding_amount",
+          "travel_coverage",
+          "english_requirement"
+        ],
+        "notes": "Brandeis publishes Wien as meeting full demonstrated financial need with no separate application and no dollar figure; first-year admission and financial aid deadlines (Nov. 2 EDI/EA, Jan. 15 EDII/RD) were confirmed on the application process page."
+      },
+      "applicant_utility": {
+        "summary": "There is nothing extra to submit for the Wien Scholarship - it rides on your Brandeis application, so the real work is the Common Application plus a strong CSS Profile filed by your plan's deadline (Nov. 2 for EDI/EA, Jan. 15 for EDII/RD). Because the award equals your full demonstrated financial need, the quality and completeness of your financial documentation directly determines the size of the cheque. Build the file around both strong academics and sustained community involvement, since Brandeis explicitly weighs extracurricular and community contribution.",
+        "best_fit": "International applicants with genuine financial need, strong academics, and a sustained record of community involvement who want need-based funding without a separate scholarship application.",
+        "application_readiness_checklist": [
+          "File the Common App or Coalition Application by your plan deadline (Nov. 2 EDI/EA; Jan. 15 EDII/RD)",
+          "Complete the CSS Profile by the same date as your admission application - financial aid deadlines match admission deadlines",
+          "Assemble complete income and asset documentation early; the award equals need established after a full review",
+          "Document community involvement with roles, hours, and impact, not just membership lists",
+          "Plan to reapply for financial aid each academic year and maintain satisfactory academic progress"
+        ],
+        "common_rejection_risks": [
+          "Filing the CSS Profile late or not at all - need-based consideration depends on complete financial documentation",
+          "Overstating or omitting family finances; Brandeis verifies credentials and falsified materials can cost the offer",
+          "Thin extracurricular or community evidence despite strong grades",
+          "Assuming a separate scholarship essay exists and leaving the admission application itself under-polished"
+        ],
+        "estimated_uncovered_costs": "Because the award is set at full demonstrated financial need, any gap depends on your family's determined contribution; costs beyond demonstrated need, such as personal travel, are not addressed by the award.",
+        "document_audit": [
+          "The CSS Profile is required for institutional need-based aid - skipping it leaves the Wien award undeterminable",
+          "Documents must come directly from schools and officials; Brandeis verifies credentials and may withdraw offers for falsified materials",
+          "No separate scholarship application exists, so nothing extra will rescue a weak admission file"
+        ],
+        "alerts": [
+          "Financial aid deadlines match admission-plan deadlines - missing the CSS Profile date weakens both aid and Wien consideration",
+          "Renewal requires annual reapplication; need is re-established each academic year",
+          "Lookalike awards exist (Watanabe Scholarship for students from Japan, Davis UWC Scholars) with different eligibility - only Wien is the general international need-based award"
+        ],
+        "submission_workflow": "Common/Coalition Application + CSS Profile by your admission-plan deadline -> automatic Wien review inside the admission decision -> award notice included with the admission decision -> annual financial aid reapplication for renewal."
+      }
+    }
+  ]
+}

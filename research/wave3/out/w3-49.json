@@ -1,0 +1,21 @@
+{
+  "agent_id": "w3_49",
+  "shard": "w3-49",
+  "host": "unitn.it",
+  "today": "2026-10-04",
+  "logo_override": {
+    "url": "https://www.unitn.it/themes/custom/unitn_eventi/logointerno.svg",
+    "page_url": "https://www.unitn.it/it",
+    "official_host": true,
+    "alt_text": "Universita di Trento",
+    "validation_result": "verified",
+    "validation_detail": "same-origin fetch returned HTTP 200 with content-type image/svg+xml, 254973 bytes; fills #231F20 (near-black wordmark), #FEFEFE, #CF1F38 (Trento red seal); rendered on a white background and visually confirmed as the red seal plus black 'UNIVERSITA DI TRENTO' wordmark, 324x101",
+    "image_kind": "official_university",
+    "image_format": "svg",
+    "verified_at": "2026-10-04T00:00:00+00:00",
+    "host_evidence": "same_registrable_domain",
+    "_award": "University of Trento - International Student Scholarships"
+  },
+  "target_ids": [137],
+  "notes": "The stored page https://www.unitn.it/en/... returns HTTP 403 to both webfetch and Playwright because of a Cloudflare 'Just a moment...' interstitial that never clears on a direct /en request. It DOES clear when the bare apex https://unitn.it/ is requested, which 302s to https://www.unitn.it/it and renders the real site (title 'UniTrento'). Assets on this host are also refused to ctx.request.get, so every candidate was probed by fetching it same-origin from inside that loaded page - each returned a real image/svg+xml, confirming HTTP 200 per rule 4. Rejected: /themes/custom/unitn_default/logo.svg (200 but <title>logo white</title> and a single fill #FFFFFF, i.e. the white-on-transparent wordmark the header uses on its dark band - fails rule 3; rendered on white it is invisible). Also rejected 12 sibling guesses in the default theme dir (logo-bianco/color/colori/nero/original/footer/header/stampato/full variants) - all HTTP 404, so the default theme publishes only the white one. Accepted instead /themes/custom/unitn_eventi/logointerno.svg, a sibling theme of the same university site on the same registrable domain, which is the full-colour version of the same mark. Verified visually by rendering the fetched bytes as a data URL on a white background: red circular seal + black 'UNIVERSITA DI TRENTO' wordmark. Also noted and ignored: /themes/custom/unitn_eventi/logointerno.svg is used by the events microsite but is the university logo itself, not an events sub-brand. Alternate subdomains www.digit.unitn.it, corsidilaurea.unitn.it and admissioni.unitn.it do not resolve; portale.unitn.it is also behind the challenge."
+}

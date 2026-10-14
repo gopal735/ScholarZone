@@ -1,0 +1,153 @@
+[
+  {
+    "scholarship_id": 443,
+    "outcome": "not_applicable",
+    "professors": [],
+    "notes": "SMU Merit Scholarship is a general university merit award for Singapore Citizens entering any full-time SMU undergraduate degree; SMU states it 'imposes no restrictions on what you choose to study'. No research degree and no named supervising professor are attached, so the supervising-professor concept is not applicable at the undergraduate merit level. Source: admissions.smu.edu.sg/financial-aid/smu-merit-scholarship."
+  },
+  {
+    "scholarship_id": 444,
+    "outcome": "not_applicable",
+    "professors": [],
+    "notes": "Temasek Undergraduate Overseas Scholarship funds study at an overseas university chosen by the recipient; no single fixed institutional programme or supervising professor is attached (analogous to a scheme with no attached institution). Supervisor mapping is therefore not applicable. Note: the official temasek.com.sg page returned HTTP 403 to automated fetch, but the nature of the award (self-selected overseas STEM undergraduate study) makes a supervising professor not applicable."
+  },
+  {
+    "scholarship_id": 445,
+    "outcome": "not_applicable",
+    "professors": [],
+    "notes": "Temasek Undergraduate Local Scholarship is a STEM undergraduate merit award for polytechnic graduates studying at the Singapore Institute of Technology. It is an undergraduate award with no research degree and no named supervising professor, so the supervising-professor concept is not applicable. Note: the official temasek.com.sg page returned HTTP 403 to automated fetch."
+  },
+  {
+    "scholarship_id": 446,
+    "outcome": "not_applicable",
+    "professors": [],
+    "notes": "SUTD Undergraduate Merit Scholarship is a general academic merit award open to all Singapore Citizens applying to any SUTD undergraduate degree (confirmed on the loaded official page). No named supervising professor is attached; undergraduate merit scholarship, so supervisor mapping not applicable. Source: www.sutd.edu.sg/admissions/undergraduate/scholarship/sutd-administered/sutd-undergraduate-merit-scholarship."
+  },
+  {
+    "scholarship_id": 447,
+    "outcome": "not_applicable",
+    "professors": [],
+    "notes": "SUTD Trailblazers Scholarship is an undergraduate leadership/merit award open to all Singapore Citizens applying to any SUTD bachelor's degree programme (confirmed on the loaded official page: 'open to Singapore Citizens who are applying for admission to SUTD's undergraduate degree programme'). No named supervising professor is attached; undergraduate award, so supervisor mapping not applicable. Source: www.sutd.edu.sg/admissions/undergraduate/scholarship/sutd-administered/sutd-trailblazers-scholarship."
+  },
+  {
+    "scholarship_id": 448,
+    "outcome": "not_applicable",
+    "professors": [],
+    "notes": "SUSS premier institutional scholarship for part-time undergraduates (any programme except Law). It is a part-time undergraduate award with no research degree and no named supervising professor, so the supervising-professor concept is not applicable. Note: the official suss.edu.sg part-time undergraduate page returned HTTP 403 to automated fetch."
+  },
+  {
+    "scholarship_id": 449,
+    "outcome": "verified_supervisors",
+    "professors": [
+      {
+        "canonical_name": "Atiqah Azhari",
+        "title": "Associate Professor; Provost's Chair; Head, PhD Programme, Graduate Studies; Head, Research Cluster",
+        "institution_name": "Singapore University of Social Sciences (SUSS)",
+        "department_name": "School of Humanities and Behavioural Sciences; Office of Graduate Studies (PhD Programme)",
+        "official_profile_url": "https://www.suss.edu.sg/academics/schools-college/faculty-listing/detail/associate-professor-atiqah-azhari",
+        "official_email": "atiqah@suss.edu.sg",
+        "official_email_verified": true,
+        "lab_url": null,
+        "personal_academic_url": "https://www.atiqahazhari.com/",
+        "research_areas": [
+          "Relational neuroscience",
+          "Psychology",
+          "Parent-child relationships and child development",
+          "Collaboration, learning and performance",
+          "Human adaptation to stress"
+        ],
+        "research_keywords": [
+          "social neuroscience",
+          "brain synchrony",
+          "autism spectrum disorder",
+          "interpersonal psychology",
+          "stress and resilience",
+          "well-being"
+        ],
+        "relationship_type": "potential_supervisor",
+        "evidence_source_url": "https://www.suss.edu.sg/academics/schools-college/faculty-listing/detail/associate-professor-atiqah-azhari",
+        "evidence_source_type": "official_university_profile",
+        "evidence_quote_or_summary": "SUSS faculty profile lists her as 'Head, PhD Programme, Graduate Studies; Head, Research Cluster' (head of the scholarship-eligible Doctor of Philosophy programme) and under Graduate Student Supervision states 'Supervisor for 1 PhD student and 1 Master's (MRESS) student'. Email published on page: atiqah@suss.edu.sg.",
+        "confidence": 95,
+        "availability": {
+          "scope": "phd_supervision",
+          "state": "verified_yes",
+          "source_url": "https://www.suss.edu.sg/academics/schools-college/faculty-listing/detail/associate-professor-atiqah-azhari"
+        }
+      },
+      {
+        "canonical_name": "Carol Ma Hok Ka",
+        "title": "Associate Professor; Head (Gerontology Programmes)",
+        "institution_name": "Singapore University of Social Sciences (SUSS)",
+        "department_name": "S R Nathan School of Human Development",
+        "official_profile_url": "https://www.suss.edu.sg/academics/schools-college/faculty-listing/detail/carol-ma",
+        "official_email": "carolmahk@suss.edu.sg",
+        "official_email_verified": true,
+        "lab_url": null,
+        "personal_academic_url": null,
+        "research_areas": [
+          "Social gerontology",
+          "Ageing populations and policies in Asia",
+          "Service-learning in higher education",
+          "Dementia care and community engagement",
+          "Older-adult wellbeing"
+        ],
+        "research_keywords": [
+          "ageing",
+          "gerontology",
+          "service-learning",
+          "dementia",
+          "older adults",
+          "intergenerational communication",
+          "social care"
+        ],
+        "relationship_type": "potential_supervisor",
+        "evidence_source_url": "https://www.suss.edu.sg/academics/schools-college/faculty-listing/detail/carol-ma",
+        "evidence_source_type": "official_university_profile",
+        "evidence_quote_or_summary": "SUSS faculty profile lists her as 'Head (Gerontology Programmes), S R Nathan School of Human Development' and 'Associate Professor & Head, Master and PhD of Gerontology Programmes' - the PhD (Gerontology) doctorate is one of the three scholarship-eligible research programmes. Email published on page: carolmahk@suss.edu.sg.",
+        "confidence": 95,
+        "availability": {
+          "scope": "phd_supervision",
+          "state": "verified_yes",
+          "source_url": "https://www.suss.edu.sg/academics/schools-college/faculty-listing/detail/carol-ma"
+        }
+      },
+      {
+        "canonical_name": "Wei Ting Ng",
+        "title": "Associate Professor; Head, Master of Applied Research in Social Sciences (MRESS), and Behavioural Science Core",
+        "institution_name": "Singapore University of Social Sciences (SUSS)",
+        "department_name": "School of Humanities and Behavioural Sciences",
+        "official_profile_url": "https://www.suss.edu.sg/academics/schools-college/faculty-listing/detail/associate-professor-ng-wei-ting",
+        "official_email": "weiting@suss.edu.sg",
+        "official_email_verified": true,
+        "lab_url": null,
+        "personal_academic_url": null,
+        "research_areas": [
+          "Cognition, emotion and traits",
+          "Well-being and happiness",
+          "Personality and emotion regulation",
+          "Culture and emotion"
+        ],
+        "research_keywords": [
+          "well-being",
+          "happiness",
+          "personality",
+          "emotion regulation",
+          "cognition",
+          "cultural differences"
+        ],
+        "relationship_type": "potential_supervisor",
+        "evidence_source_url": "https://www.suss.edu.sg/academics/schools-college/faculty-listing/detail/associate-professor-ng-wei-ting",
+        "evidence_source_type": "official_university_profile",
+        "evidence_quote_or_summary": "SUSS faculty profile lists him as 'Head, Master of Applied Research in Social Sciences (MRESS), and Behavioural Science Core, School of Humanities and Behavioural Sciences' - the MRESS programme is one of the three scholarship-eligible programmes. Email published on page: weiting@suss.edu.sg.",
+        "confidence": 92,
+        "availability": {
+          "scope": "masters_supervision",
+          "state": "verified_yes",
+          "source_url": "https://www.suss.edu.sg/academics/schools-college/faculty-listing/detail/associate-professor-ng-wei-ting"
+        }
+      }
+    ],
+    "notes": "Verified 3 programme heads tied to the three research programmes eligible for the SUSS Research Scholarship (PhD; PhD Gerontology; MRESS). Scholarship page (suss.edu.sg/.../scholarship) states the award supports applicants 'whose proposed research aligns with the research focus of the Singapore University of Social Sciences and expertise of our faculty' and is open to applicants to the 'Doctor of Philosophy', 'Doctor of Philosophy (Gerontology)', and 'Master of Applied Research in Social Sciences' programmes. The PhD programme page (suss.edu.sg/programmes/detail/doctor-of-philosophy-phdg) states applicants are 'encouraged to connect with a potential supervisor prior to applying ... browse through the Faculty Listing' and 'A supervisor will be assigned.' Access note: suss.edu.sg pages return HTTP 403 to automated fetch; names, titles, roles and the published institutional emails (atiqah@suss.edu.sg, carolmahk@suss.edu.sg, weiting@suss.edu.sg) were confirmed from verbatim content of the official SUSS profile/programme pages as indexed by search. Capped at 3 professors (max)."
+  }
+]

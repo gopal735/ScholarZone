@@ -1,0 +1,252 @@
+{
+  "agent": "agent_342",
+  "records": [
+    {
+      "id": 664,
+      "official": {
+        "official_source_urls": [
+          "https://bond.edu.au/scholarship/bond-university-postgraduate-research-scholarship",
+          "https://bond.edu.au/research/research-degrees/fees-and-scholarships",
+          "https://bond.edu.au/research/research-degrees/how-to-apply"
+        ],
+        "application_link": "https://bond.edu.au/scholarship/bond-university-postgraduate-research-scholarship",
+        "catalogue_url": "https://bond.edu.au/research/research-degrees/fees-and-scholarships",
+        "official_updates_url": "https://bond.edu.au/research/research-degrees/fees-and-scholarships",
+        "deadline_central": "2027-03-31",
+        "deadline_central_display": "31 March 2027 (next round closing date)",
+        "deadline_note": "The scholarship page lists the current round as Applications Open 1/8/2026 and Applications Close 30/9/2026, and the fees page banner states HDR scholarship applications close 30 September 2026. The FAQ states rounds open 1 February and close 31 March, then open 1 August and close 30 September, so the next closing date after verification is 31 March 2027.",
+        "application_cycle": "HDR scholarship rounds held twice per year: open 1 February - close 31 March, and open 1 August - close 30 September",
+        "status": "CLOSED (2026 round closed 30 September 2026); next round opens 1 February 2027",
+        "status_note": "The official page publishes application dates of 1/8/2026 - 30/9/2026 for the current round, which had closed at the verification date; the twice-yearly round calendar continues.",
+        "tuition_coverage_note": "The scholarship page states 'The fee waiver for this scholarship is 100% of program fees for 4 years.' The fees and scholarships page adds that the 100 per cent fee waiver runs for up to four years for international students, while domestic students are automatically entitled to a 100 per cent fee waiver under the RTP scheme.",
+        "funding_amount": 34315,
+        "funding_currency": "AUD",
+        "funding_period": "per annum",
+        "tuition_coverage": true,
+        "living_cost_coverage": true,
+        "travel_coverage": null,
+        "fully_funded": true,
+        "benefits": [
+          "100 per cent fee waiver for program fees for 4 years",
+          "Living stipend of $34,315 per annum, indexed annually, for a duration of 3 years",
+          "Single overseas health cover for international students (four years)",
+          "Stipends are intended to support candidates with their day-to-day expenses and do not include tuition fees"
+        ],
+        "eligibility": [
+          "You must have a valid Bond University Letter of Offer for a PhD program or a Professional Doctorate of Occupational Therapy before your scholarship application can be considered",
+          "You must be studying your program full time",
+          "Open to domestic and overseas doctoral students",
+          "Students cannot apply if they are receiving an equivalent award or scholarship from the Commonwealth designed to offset HDR fees",
+          "Research master's students are not eligible for any HDR scholarships"
+        ],
+        "requirements": [
+          "Submit a Bond application for the doctoral program before applying for the scholarship",
+          "Apply on the Bond online scholarship application form (Bond University Higher Degree Scholarship Application form)",
+          "Scholarship applications cannot be accepted unless all required documents for assessment are uploaded to the application form",
+          "Applications received after the nominated round closure date will not be accepted",
+          "Previously unsuccessful applicants may submit one additional application outlining changed circumstances; a second unsuccessful application ends eligibility"
+        ],
+        "documents": [
+          "Research Project Proposal",
+          "Academic Transcripts including results/grades awarded, information on institution grading systems/scales, and evidence of completion",
+          "Curriculum Vitae (CV) including research publications and conference presentations",
+          "Prize and Award Certificates",
+          "Two referee reports"
+        ],
+        "selection_criteria": [
+          "Awarded by the Bond University HDR Scholarships Committee through a competitive, merit-based selection process",
+          "Assessed on academic merit, research potential, and overall competitiveness against the selection criteria",
+          "Applications are considered against the Bond University Research Scholarship Panel Assessment Criteria (published PDF)",
+          "The University has discretion to favour indicators such as first class honours, Indigenous background, industry experience, or undertaking a doctoral degree for the first time"
+        ],
+        "coverage": [
+          "100 per cent of program fees waived for up to four years",
+          "Living stipend of $34,315 per annum, indexed annually, for three years",
+          "Single overseas health cover for international students for four years"
+        ],
+        "application_method": [
+          "Submit a Bond University application for an eligible doctoral program (PhD or Professional Doctorate of Occupational Therapy)",
+          "Once you have applied, submit the scholarship application online using the Bond University Higher Degree Scholarship Application form",
+          "Upload all required assessment documents to the application form before the round closure date"
+        ],
+        "application_route": "Lodge a Bond program application first and receive a Letter of Offer, then complete the online Bond Higher Degree Scholarship Application form with all documents before the round closes.",
+        "study_mode": "Full time",
+        "citizenship_residency": "Open to Australian (domestic) and international (overseas) doctoral students",
+        "international_eligibility": "International students are eligible; the 100 per cent fee waiver is published for international students (domestic students are automatically entitled to a 100 per cent fee waiver under the RTP scheme), and international students receive single overseas health cover for four years",
+        "subject_or_agency_requirement": "Limited to doctoral programs: Doctor of Philosophy (PhD) or Professional Doctorate of Occupational Therapy; research master's students are not eligible",
+        "research_requirement": "A Research Project Proposal forms part of the scholarship application assessment",
+        "duration": "Fee waiver for 4 years; living stipend for 3 years (stipend cannot be extended beyond that term)",
+        "description": "The Bond University Postgraduate Research Scholarship (BUPRS) is awarded through a competitive application process to a limited number of domestic and overseas doctoral students, funding a 100 per cent program fee waiver for four years and an indexed living stipend for three years.",
+        "region": "Gold Coast, Queensland, Australia",
+        "program_type": "University higher degree research scholarship",
+        "english_requirement": null
+      },
+      "verification": {
+        "source_citations": [
+          "https://bond.edu.au/scholarship/bond-university-postgraduate-research-scholarship",
+          "https://bond.edu.au/research/research-degrees/fees-and-scholarships"
+        ],
+        "last_verified_date": "2026-10-10",
+        "verification_status": "confirmed",
+        "confidence": "high",
+        "not_confirmed": [
+          "travel or relocation coverage (no travel/relocation benefit is published on Bond's scholarship pages)",
+          "english_requirement (the scholarship pages publish no scholarship-specific English requirement; program entry requirements apply)",
+          "funding amount basis on the scholarship page is labelled the 2025 annual value while the fees page publishes the same $34,315 figure as the 2026 rate for all HDR scholarship categories"
+        ],
+        "notes": "Both official pages were fetched directly; amount, fee waiver, stipend duration, documents, round dates and reapplication rules were read on bond.edu.au itself."
+      },
+      "applicant_utility": {
+        "summary": "BUPRS covers a full four-year fee waiver plus a three-year stipend at the current A$34,315 rate, but the scholarship application is only considered once you already hold a doctoral Letter of Offer, and admission alone can take 6-10 weeks. With just a limited number of awards and two hard cut-offs each year (31 March and 30 September), the workable plan is to start the program application months early and have all five assessment documents ready before the window opens.",
+        "best_fit": "Full-time PhD or Professional Doctorate of Occupational Therapy candidates, domestic or international, who already hold or can quickly secure a Bond offer and need fees plus living costs covered on the Gold Coast.",
+        "application_readiness_checklist": [
+          "Start the Bond program application early enough to hold a Letter of Offer before round close (Bond warns admission can take 6-10 weeks)",
+          "Secure two referees willing to upload reports directly into the scholarship application form",
+          "Obtain academic transcripts that show results, grading scales and evidence of completion",
+          "Build a CV that lists publications and conference presentations",
+          "Collect prize and award certificates",
+          "Finalise a research project proposal aligned to a potential supervisor"
+        ],
+        "common_rejection_risks": [
+          "Submitting after the round closure date - late applications are not accepted, full stop",
+          "An incomplete form: scholarship applications cannot be accepted unless all required documents are uploaded",
+          "Applying while holding an equivalent Commonwealth award designed to offset HDR fees",
+          "A repeat application that does not outline genuinely changed circumstances; a second failure permanently ends eligibility",
+          "Applying as a research master's student, who is not eligible for any HDR scholarship"
+        ],
+        "estimated_uncovered_costs": "Relocation to the Gold Coast and flights, day-to-day living costs above the stipend, and any additional program costs; Bond states the stipend supports day-to-day expenses and does not include tuition fees.",
+        "document_audit": "Transcripts must carry the awarding institution's grading scale and proof of completion or the package is incomplete. The two referee reports must be uploaded into the form itself rather than sent separately by email. Withdrawing formally before the round closing date is the only clean reset if you need to resubmit.",
+        "alerts": [
+          "The round running 1 August - 30 September 2026 closed before this verification date; target the 1 February - 31 March 2027 window",
+          "You get at most two scholarship attempts in total: a second unsuccessful application ends future eligibility",
+          "Part-time study is not the standard route - a 0.5 FTE scholarship is only considered for significant caring commitments or a medical condition or disability, never for employment"
+        ],
+        "submission_workflow": "Bond Admissions processes the program application and issues the Letter of Offer, then you lodge the online Higher Degree Scholarship Application form with all five documents attached before the round closes."
+      }
+    },
+    {
+      "id": 665,
+      "official": {
+        "official_source_urls": [
+          "https://www.acu.edu.au/research-and-enterprise/graduate-research-school/scholarships/acu-stipend-scholarship",
+          "https://www.acu.edu.au/research-and-enterprise/graduate-research-school/scholarships",
+          "https://www.acu.edu.au/research-and-enterprise/graduate-research-school/how-to-apply/faq",
+          "https://policy.acu.edu.au/document/view.php?id=240"
+        ],
+        "application_link": "https://www.acu.edu.au/research-and-enterprise/graduate-research-school/scholarships/acu-stipend-scholarship",
+        "catalogue_url": "https://www.acu.edu.au/research-and-enterprise/graduate-research-school/scholarships",
+        "official_updates_url": "https://www.acu.edu.au/research-and-enterprise/graduate-research-school/scholarships",
+        "deadline_central": "2027-04-01",
+        "deadline_central_display": "1 April 2027 (next round closing date)",
+        "deadline_note": "The scholarship page publishes applications open twice per annum in April and October, with Round 1 closing Wednesday 1 April 2026 11:59 PM (AEDT) and Round 2 closing Thursday 1 October 2026 11:59 PM (AEST). The October round had closed at the verification date, so the next closing date is 1 April 2027.",
+        "application_cycle": "Applications open twice per annum in April and October",
+        "status": "CLOSED (1 October 2026 round); next round closes 1 April 2027",
+        "status_note": "The scholarships listing page records the ACU Stipend Scholarship as open twice per annum in April and October; the 1 October 2026 deadline had passed at the verification date.",
+        "tuition_coverage_note": "Successful applicants are awarded a full fee offset valued at approximately AUD $34,728 per annum (2026 value, indexed annually).",
+        "funding_amount": 34315,
+        "funding_currency": "AUD",
+        "funding_period": "per annum",
+        "tuition_coverage": true,
+        "living_cost_coverage": true,
+        "travel_coverage": true,
+        "fully_funded": true,
+        "benefits": [
+          "Stipend scholarship of AUD $34,315 per annum (full-time)",
+          "Full fee offset valued at approximately AUD $34,728 per annum",
+          "A single Overseas Student Health Care Policy and relocation allowance of up to AUD $2,000 for international applicants",
+          "2026 value, indexed annually"
+        ],
+        "eligibility": [
+          "A student must be a domestic student or an overseas student enrolled in an accredited research higher degree at ACU",
+          "Undertaking a Research Doctorate or Research Masters degree",
+          "Applications are open to all applicants whose proposed research aligns with any of ACU's broad areas of expertise"
+        ],
+        "requirements": [
+          "Applications for stipend scholarships must be made on the relevant ACU application form and received by the University no later than the published deadline",
+          "The University reserves the right not to consider incomplete or late applications",
+          "Prospective students apply as part of the application process for a research degree at ACU",
+          "Current students download the scholarship application form from the Student Portal and submit it with the required supporting documentation to the Graduate Research School"
+        ],
+        "documents": [
+          "Academic transcripts (certified copies required)",
+          "Curriculum vitae (CV)",
+          "Research proposal of 2,000 words in a text-searchable PDF or Microsoft Word (.docx) format",
+          "Proof of identity - certified copy of a birth certificate, citizenship certificate or passport",
+          "Referee details, with referee reports submitted directly by referees",
+          "Evidence of English language proficiency where English is not the first language or prior study was not in English"
+        ],
+        "selection_criteria": [
+          "These scholarships are competitive and awarded following a merit-based selection process",
+          "Candidates with strong academic credentials and research potential are encouraged to apply",
+          "Applications are ranked on alignment with the University's research priorities or existing and emerging research strengths",
+          "Applicants are also ranked on whether the research can be supported by ACU's supervision and infrastructure",
+          "Academic merit is evidenced by academic qualifications, the strength of the research proposal, and referee reports"
+        ],
+        "coverage": [
+          "Stipend scholarship of AUD $34,315 per annum (full-time, 2026 value, indexed annually)",
+          "Full fee offset valued at approximately AUD $34,728 per annum",
+          "A single Overseas Student Health Care Policy for international applicants",
+          "Relocation allowance of up to AUD $2,000 for international applicants"
+        ],
+        "application_method": [
+          "Future students: apply as part of the application process for a research degree at ACU, indicating scholarship interest in the online application form",
+          "Current students: download the scholarship application form from the Student Portal and submit it with supporting documentation to the Graduate Research School (grad.research@acu.edu.au)"
+        ],
+        "application_route": "Prospective candidates are assessed through the research degree application (stipend scholarship requested in the form); enrolled candidates lodge the Student Portal scholarship form plus certified documents to the Graduate Research School.",
+        "study_mode": "Full-time (published per-annum value applies to a full-time load)",
+        "citizenship_residency": "Open to domestic students and to overseas students enrolled in an accredited research higher degree at ACU",
+        "international_eligibility": "International applicants are eligible; international applicants receive a single Overseas Student Health Care Policy and a relocation allowance of up to AUD $2,000",
+        "subject_or_agency_requirement": "Proposed research must align with any of ACU's broad areas of expertise",
+        "research_requirement": "A 2,000-word research proposal in text-searchable PDF or Microsoft Word (.docx) format",
+        "duration": "Three years for a Research Doctorate at full-time load and two years for a Research Masters at full-time load, doubled for part-time enrolment, with prior study towards the degree deducted, per the ACU Research Training Program Scholarship Policy",
+        "description": "The Australian Catholic University offers stipend scholarships to support domestic and international candidates undertaking a Research Doctorate or Research Masters degree, awarded and administered in accordance with the ACU Research Training Program Scholarship Policy.",
+        "region": "Australia (multi-campus)",
+        "program_type": "University research training stipend scholarship",
+        "english_requirement": "English language proficiency must be demonstrated if English is not the first language or previous university studies were not completed in English or in an approved English-speaking country; met by a recognised English language test or evidence of prior qualifications taught in English completed within two years of the intended course start date"
+      },
+      "verification": {
+        "source_citations": [
+          "https://www.acu.edu.au/research-and-enterprise/graduate-research-school/scholarships/acu-stipend-scholarship",
+          "https://www.acu.edu.au/research-and-enterprise/graduate-research-school/how-to-apply/faq",
+          "https://policy.acu.edu.au/document/view.php?id=240"
+        ],
+        "last_verified_date": "2026-10-10",
+        "verification_status": "confirmed",
+        "confidence": "low",
+        "not_confirmed": [
+          "specific IELTS/TOEFL score thresholds (the scholarship page sets no scores; thresholds sit in Appendix C of the ACU Higher Degree Research Policy, which was not captured)",
+          "any travel or conference funding beyond the published international relocation allowance",
+          "live page render: direct fetches of the acu.edu.au scholarship page returned HTTP 403 on both attempts, so page content was read from acu.edu.au's own published search-index text"
+        ],
+        "notes": "Amounts and benefits were corroborated across multiple acu.edu.au pages (ACU Stipend Scholarship, RTP Stipend Scholarship, Graduate Research Scholarship Package, Industry PhD Scholarships), all agreeing on the $34,315 stipend, ~$34,728 fee offset and $2,000 relocation figures; direct page fetch was blocked (403) after two attempts."
+      },
+      "applicant_utility": {
+        "summary": "ACU's Stipend Scholarship bundles a A$34,315 annual stipend with a full fee offset worth roughly A$34,728, plus health cover and up to A$2,000 relocation for international applicants, but it only opens twice a year with hard 1 April and 1 October cut-offs. Future students ride on the research degree application while current enrolled students use a separate Student Portal form emailed to the Graduate Research School, so confirm which lane you are in before documents are due.",
+        "best_fit": "Research doctorate and research master's candidates, domestic or international, whose project fits ACU's broad areas of expertise and who need tuition plus living costs covered for the full candidature.",
+        "application_readiness_checklist": [
+          "Check that your proposed topic aligns with ACU's broad areas of expertise and identified research strengths before you write",
+          "Draft the 2,000-word proposal as a text-searchable PDF or Word file, not a scan",
+          "Get transcripts and identity documents certified by a JP, notary, AskACU centre or Australian embassy",
+          "Line up referees early - their reports can arrive up to one week after the application deadline, but only if nominated on time",
+          "Arrange English test evidence within two years of your start date if your prior study was not in English",
+          "Current students: pull the scholarship form from the Student Portal and email it with attachments to grad.research@acu.edu.au"
+        ],
+        "common_rejection_risks": [
+          "Late or incomplete lodgement - ACU reserves the right not to consider either",
+          "A proposal that does not connect to any ACU research strength or available supervision",
+          "Uncertified transcripts or identity documents, which the FAQ flags as a certification requirement",
+          "Missing the twice-yearly window entirely, since there is no rolling intake for this scholarship",
+          "Holding an equivalent Commonwealth award designed to offset research higher degree fees"
+        ],
+        "estimated_uncovered_costs": "Relocation and flights above the $2,000 international allowance, dependants' relocation costs (extra allowance only at the Director's discretion), and general living costs beyond the indexed stipend.",
+        "document_audit": "Transcripts, birth certificates, citizenship certificates and passports all require certified copies, and anything not in English needs a translation attached. The proposal must be a text-searchable PDF or .docx - an image-only scan will stall assessment. Current students additionally need an enrolment summary.",
+        "alerts": [
+          "Round 2 closed 1 October 2026; the realistic target is the round closing 1 April 2027",
+          "Any prior study towards the degree is deducted from the stipend's three-year (doctorate) or two-year (research master's) duration",
+          "Domestic and international commencements differ by round - August/February domestic versus Research Term D/C international - so map your visa and move to the round you pick"
+        ],
+        "submission_workflow": "Future applicants submit one research degree application and request stipend scholarship consideration in it; current students submit the Student Portal form plus certified documents to the Graduate Research School, with panel ranking under the RTP Scholarship Policy."
+      }
+    }
+  ]
+}

@@ -1,0 +1,136 @@
+{
+  "agent": "agent_073",
+  "records": [
+    {
+      "id": 199,
+      "official": {
+        "official_source_urls": [
+          "https://www.deakin.edu.au/study/fees-and-scholarships/scholarships/find-a-scholarship/deakin-vice-chancellors-international-scholarship",
+          "https://www.deakin.edu.au/international-students/international-student-scholarships"
+        ],
+        "application_link": "https://www.deakin.edu.au/study/fees-and-scholarships/scholarships/find-a-scholarship/deakin-vice-chancellors-international-scholarship",
+        "catalogue_url": "https://www.deakin.edu.au/international-students/international-student-scholarships",
+        "official_updates_url": "https://www.deakin.edu.au/study/fees-and-scholarships/scholarships/find-a-scholarship",
+        "deadline_central": null,
+        "deadline_central_display": null,
+        "deadline_note": "No closing date is published. Deakin instructs applicants to complete the International Scholarship Program application form and email it to Deakin International Admissions at least one month before the program starts. Deakin's scholarship index records the application period as trimesters one, two and three, and the international scholarships hub says successful applicants are emailed an outcome, usually within four weeks of the closing date.",
+        "application_cycle": "Rolling assessment in the lead-up to each trimester; the scholarship index lists the open period as Trimester 3 2026 with applications coverable across all three trimesters",
+        "status": "OPEN",
+        "status_note": "Deakin's own scholarship index lists the Deakin Vice-Chancellor's International Scholarship with status 'open' and an open-date display of 'Trimester 3 2026'. The previously published 'International Vice-Chancellor's Scholarship 100% (South Asia)' page now returns 404 and no South Asia variant appears anywhere in Deakin's scholarship index.",
+        "tuition_coverage_note": "Value and duration: 100% or 50% of your tuition fees (depending on scholarship outcome), plus participation in the Vice-Chancellor's Professional Excellence Program (VCPEP), a requirement of the scholarship, and priority access to on-campus accommodation at your own cost and subject to availability.",
+        "funding_amount": null,
+        "funding_currency": null,
+        "funding_period": "for the normal duration of the program",
+        "tuition_coverage": true,
+        "living_cost_coverage": false,
+        "travel_coverage": false,
+        "fully_funded": false,
+        "benefits": [
+          "100% or 50% of your tuition fees, depending on scholarship outcome.",
+          "Participation in the Vice-Chancellor's Professional Excellence Program (VCPEP), which is a requirement of the scholarship.",
+          "Priority access to on-campus accommodation, at your own cost and subject to availability.",
+          "Available for the normal duration of your program."
+        ],
+        "eligibility": [
+          "Be a new international student enrolling in a Deakin coursework degree.",
+          "Meet the entry requirements for your program, including English language requirements.",
+          "Have achieved at least an 85% average (or equivalent) in previous studies - for example 85% overall in Year 12 (CBSE, ICSE or State Board), a score of 10 overall in GCSE / A Level, or 32 overall in the International Baccalaureate Diploma Programme.",
+          "Alternatively for postgraduate entry, 80% overall in an undergraduate degree or equivalent in the first four semesters of the undergraduate program.",
+          "Not be an international student enrolled in the Doctor of Medicine (H911) program.",
+          "Meeting the minimum criteria does not guarantee selection; due to strong competition, higher academic results may be required."
+        ],
+        "requirements": [
+          "All conditions must be met, and the scholarship is conditional upon acceptance of the terms and conditions outlined in the acceptance form.",
+          "Additional fees may apply; the scholarship will not cover study beyond the standard program duration, including extra or repeated units.",
+          "Participation in the Vice-Chancellor's Professional Excellence Program is a requirement of the scholarship.",
+          "A separate application is required - this scholarship is not part of Deakin's automatic international assessment."
+        ],
+        "documents": [
+          "Completed International Scholarship Program application form (PDF).",
+          "A 300-word personal statement.",
+          "Two references highlighting your community involvement and/or leadership skills.",
+          "Your program application, including academic transcripts."
+        ],
+        "selection_criteria": [
+          "Recognises international students with consistently high academic performance and the potential to make a leading contribution to Deakin and the communities we serve.",
+          "At least an 85% average (or equivalent) in previous studies, with higher results likely required due to strong competition.",
+          "Applicants may also be invited to attend an interview.",
+          "Only successful applicants are contacted with an outcome."
+        ],
+        "coverage": [
+          "100% or 50% of tuition fees, depending on the scholarship outcome.",
+          "For the normal duration of the program; study beyond the standard program duration, including extra or repeated units, is not covered."
+        ],
+        "application_method": [
+          "Apply for a Deakin degree through the international student application process.",
+          "Complete the International Scholarship Program application form (PDF) and email it to Deakin International Admissions at least one month before your program starts.",
+          "Upload the personal statement, the two references and your academic transcripts with the application.",
+          "Only successful applicants will be contacted with an outcome."
+        ],
+        "application_route": "Apply for a Deakin coursework degree, then email the completed International Scholarship Program application form with a 300-word personal statement, two references and transcripts to Deakin International Admissions at least one month before your program starts.",
+        "study_mode": "Full-time coursework degree",
+        "citizenship_residency": "Open to new international students enrolling in a Deakin coursework degree; the Doctor of Medicine (H911) is excluded.",
+        "international_eligibility": "Open to international students only.",
+        "subject_or_agency_requirement": "Coursework degrees only (undergraduate and postgraduate coursework); the Doctor of Medicine (H911) is excluded.",
+        "research_requirement": null,
+        "duration": "Normal course duration",
+        "description": "Deakin's Vice-Chancellor's International Scholarship recognises international students with consistently high academic performance and the potential to make a leading contribution to Deakin and the communities we serve. It offers 100% or 50% of tuition fees depending on the scholarship outcome, together with participation in the Vice-Chancellor's Professional Excellence Program and priority access to on-campus accommodation.",
+        "region": "Oceania",
+        "program_type": "Academic merit - Vice-Chancellor's international scholarship",
+        "english_requirement": "Applicants must meet the entry requirements for their program, including English language requirements; Deakin publishes the minimum language requirements in the Entry requirements section of each degree page rather than on the scholarship page."
+      },
+      "verification": {
+        "source_citations": [
+          "https://www.deakin.edu.au/study/fees-and-scholarships/scholarships/find-a-scholarship/deakin-vice-chancellors-international-scholarship",
+          "https://www.deakin.edu.au/international-students/international-student-scholarships"
+        ],
+        "last_verified_date": "2026-10-10",
+        "verification_status": "partially_confirmed",
+        "confidence": "medium",
+        "not_confirmed": [
+          "the South Asia-specific variant - the catalogue URL returns 404 and no South Asia variant exists in Deakin's scholarship index, so its country list, agent route and criteria could not be confirmed",
+          "funding_amount and funding_currency - the award is published only as a 100% or 50% tuition fee reduction, with no dollar figure",
+          "whether a 100% outcome is currently offered to applicants from Bangladesh, Bhutan, Mauritius, Myanmar or Nepal",
+          "deadline_central - no calendar closing date is published, only 'at least one month before your program starts'",
+          "english_requirement - no specific score is published on the scholarship page"
+        ],
+        "notes": "The URL recorded in the assignment (…/international-vice-chancellors-scholarship-100-south-asia) returns 404, and a second likely variant URL also returns 404. Deakin's own scholarship search index, which holds 165 scholarship documents, contains exactly one international Vice-Chancellor's scholarship - the Deakin Vice-Chancellor's International Scholarship, status 'open', open-date display 'Trimester 3 2026', annual value display '100% or 50% of your tuition fees plus participation in the Vice-Chancellor's Professional Excellence Program and priority place in on-campus accommodation (at own cost and subject to availability)'. A query of that index for 'south asia' returns only three unrelated results, confirming the South Asia variant is no longer published. The record therefore records the current published award on Deakin's own page, and the South Asia-specific eligibility previously held in the catalogue (country residence, applying via a Deakin agent, 85%+ in Year 12) is flagged as not confirmed rather than carried forward."
+      },
+      "applicant_utility": {
+        "summary": "Deakin has folded its country-specific international scholarships into a single Vice-Chancellor's International Scholarship, so do not plan around a dedicated South Asia round - the outcome is now either 100% or 50% of tuition fees and you will not know which until you are told. This one is genuinely application-based rather than automatic: unlike most of Deakin's international scholarships, it needs the International Scholarship Program form, a 300-word personal statement and two references, emailed to Deakin International Admissions at least a month before your program starts. The academic bar is at least an 85% average with several published reference points (85% overall in CBSE, ICSE or State Board Year 12; 10 overall in GCSE/A Level; 32 in the IB Diploma; or 80% across the first four semesters of an undergraduate degree), and Deakin warns that stronger results may be needed because competition is strong. Winning also commits you to the Vice-Chancellor's Professional Excellence Program, which is a requirement of the scholarship, not an optional extra.",
+        "best_fit": "New international coursework applicants with a consistently 85%+ academic record who are willing to write a personal statement, line up two references, and commit to the Vice-Chancellor's Professional Excellence Program.",
+        "application_readiness_checklist": [
+          "Confirm your intended degree is not the Doctor of Medicine (H911), which is explicitly excluded",
+          "Work out which of Deakin's published equivalence points your result maps to (85% Year 12, 10 in GCSE/A Level, 32 IBDP, or 80% across the first four undergraduate semesters)",
+          "Draft the 300-word personal statement in your own words, covering why Deakin, extracurricular or work experience, and what makes you a strong ambassador",
+          "Ask referees early - you need two references specifically addressing community involvement and/or leadership, not just academic ability",
+          "Send the completed form and documents to Deakin International Admissions at least one month before your program start date",
+          "Check the English entry requirements on your specific degree page, since Deakin sets them per program"
+        ],
+        "common_rejection_risks": [
+          "Assuming this scholarship is automatic like most other Deakin international scholarships and never submitting the separate form",
+          "Being on the Doctor of Medicine (H911), which is excluded outright",
+          "Sitting on the application until the program start date is close, when the instruction is at least one month before",
+          "Submitting generic references that speak to grades rather than community involvement and leadership",
+          "Expecting a 100% outcome as standard when it is '100% or 50% depending on scholarship outcome'"
+        ],
+        "estimated_uncovered_costs": "Any portion of tuition not covered if the outcome is the 50% tier, all living and accommodation costs (priority accommodation access is at your own cost), Overseas Student Health Cover, flights and visa costs, plus any fees for extra or repeated units and study beyond the standard program duration.",
+        "document_audit": [
+          "The application is a PDF form emailed to International Admissions, not an online portal submission, so build in email delivery time",
+          "The personal statement has a hard 300-word limit - Deakin asks for it in your own words and your own voice",
+          "The two references must specifically highlight community involvement and/or leadership skills, so generic academic referees are a weak fit",
+          "The program application including academic transcripts must accompany the scholarship application",
+          "An interview may be part of the process, so keep your availability open after submission"
+        ],
+        "alerts": [
+          "Only successful applicants are contacted, so silence after submission is the expected outcome for most people rather than a system failure",
+          "Winning the scholarship obliges you to participate in the Vice-Chancellor's Professional Excellence Program",
+          "The accommodation benefit is priority access only, at your own cost and subject to availability - it is not free housing",
+          "The scholarship does not cover study beyond the standard program duration, including extra or repeated units, so a failed or repeated subject is on you",
+          "Because the country-specific variant has been withdrawn, older listings promising a dedicated South Asia 100% round should be treated as out of date"
+        ],
+        "submission_workflow": "Apply for a Deakin coursework degree, complete the International Scholarship Program form with a 300-word personal statement, two references and transcripts, and email the package to Deakin International Admissions at least a month before your program starts."
+      }
+    }
+  ]
+}

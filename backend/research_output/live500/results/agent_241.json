@@ -1,0 +1,143 @@
+{
+  "agent": "agent_241",
+  "records": [
+    {
+      "id": 597,
+      "official": {
+        "official_source_urls": [
+          "https://www.pronabec.gob.pe/beca-generacion-bicentenario",
+          "https://cdn.www.gob.pe/uploads/document/file/10618627/8594676-rde-n-149-2026-minedu-vmgi-pronabec.pdf",
+          "https://cdn.www.gob.pe/uploads/document/file/7680926/6504279-rde-n-016-2025-minedu-vmgi-pronabec.pdf",
+          "https://www.pronabec.gob.pe/concursos-becas-creditos"
+        ],
+        "application_link": "https://www.pronabec.gob.pe/beca-generacion-bicentenario",
+        "catalogue_url": "https://www.pronabec.gob.pe/concursos-becas-creditos",
+        "official_updates_url": "https://www.pronabec.gob.pe/beca-generacion-bicentenario",
+        "deadline_central": "2026-11-13",
+        "deadline_central_display": "13 November 2026 (23:59:59 Peru time)",
+        "deadline_note": "Applications run 30/10/2026-13/11/2026 and the module closes at 23:59:59 Peru time per the cronograma in the bases (numeral 9.3); no separate institutional deadline applies. Review/subsanacion 03/11-24/11/2026, results 15/12/2026, acceptance 16/12-21/12/2026.",
+        "application_cycle": "Convocatoria extraordinaria 2026 - Beca Generacion del Bicentenario (RDE n. 149-2026)",
+        "status": "OPEN",
+        "status_note": "The official page presents the extraordinary 2026 call ('El Peru cuenta con tu talento') as the current round, with the published cronograma of the bases: application 30/10/2026-13/11/2026, subsanation 03/11-24/11/2026, selection results published 15/12/2026, acceptance 16/12-21/12/2026 and the final scholarship-holder list from 22/12/2026.",
+        "tuition_coverage_note": "Matricula y pension de estudios se financian de conformidad con las 'Normas para la Ejecucion de Subvenciones para Estudios en el Extranjero'; incluye todos los conceptos obligatorios y necesarios exigidos por la IES ('mandatory services', 'student fees', 'student services'). No se financia la doble titulacion.",
+        "funding_amount": 4650946,
+        "funding_currency": "PEN",
+        "funding_period": "total contest budget for up to 20 scholarships",
+        "tuition_coverage": true,
+        "living_cost_coverage": true,
+        "travel_coverage": true,
+        "fully_funded": true,
+        "benefits": [
+          "Matricula (tuition/enrolment) y pension de estudios, per the Normas para la Ejecucion de Subvenciones para Estudios en el Extranjero",
+          "Obtencion del grado y/o titulo respectivo y trabajo de investigacion para la obtencion del grado (thesis costs)",
+          "Transporte internacional (Peru to destination city and back, only at the start and end of the programme)",
+          "Alojamiento y alimentacion, including 15 days before classes start and 15 days after studies end",
+          "Movilidad local y seguro medico (health, life, accidents and repatriation coverage)",
+          "Costos administrativos, per the Normas para la Ejecucion de Subvenciones para Estudios en el Extranjero"
+        ],
+        "eligibility": [
+          "Tener nacionalidad peruana conforme al ordenamiento juridico vigente (DNI verified online with RENIEC)",
+          "Acreditar estudios de pregrado o posgrado concluidos: grado de Bachiller, titulo profesional o titulo profesional tecnico para maestria; grado o diploma de maestria para doctorado (foreign degrees must be recognised by SUNEDU)",
+          "Acreditar alto rendimiento academico: pertenecer al tercio superior o percentil equivalente como minimo (primer/segundo puesto, decimo o quinto superior score higher)",
+          "Tener insuficientes recursos economicos: ingreso bruto promedio mensual per capita familiar igual o menor a 7 RMV, equivalente a S/ 7,910",
+          "Acreditar experiencia profesional minima de dos (2) anos, contados desde la obtencion del grado de Bachiller o titulo hasta el inicio de la fase de postulacion",
+          "Contar con la carta de aceptacion definitiva de una IES elegible (rankeada entre las primeras 400 en QS, ARWU o THE al menos una vez en los ultimos 5 anos) para estudios que inician entre el 01/07/2026 y el 31/12/2027; no hay limite de edad para postular"
+        ],
+        "requirements": [
+          "Carta de aceptacion definitiva e incondicional de la IES elegible with: IES and programme names, applicant's full name, no payment/visa/funding conditions, signature of an institutional representative, start and end month-year (including thesis), curriculum, full-time in-person modality, and the total programme cost",
+          "Documento oficial de la IES de procedencia que acredite el alto rendimiento academico with the accumulated weighted average and the percentile obtained at graduation",
+          "Acreditar un buen perfil profesional y/o de investigacion (master's: one academic period of teaching/teaching support, or a completed specialisation/diploma of at least 120 academic hours; doctorate: an indexed-journal article, a book, or active RENACYT registration)",
+          "Certificados de trabajo, constancias de prestacion de servicios o CUL que acrediten dos anos de experiencia profesional (volunteering and ad-honorem work do not count)",
+          "Ficha Socioeconomica completed in the application module plus 2025 income documents for the household (SUNAT annual income declarations, fifth-category withholding certificates, sworn declaration per Anexo 03)",
+          "Certificado de salud fisica (medico colegiado) y certificado de salud mental (psiquiatra colegiado), each with maximum validity of 120 days; no negative rating (deficient, doubtful or loss) in the SBS credit-risk registry"
+        ],
+        "documents": [
+          "DNI (consulted online with RENIEC) and degree/title (verified automatically in SUNEDU's national registry of grades and titles)",
+          "Official certificate of high academic performance stating the accumulated weighted average and percentile",
+          "Definitive acceptance letter from the eligible IES, plus a Constancia de matricula if studies start before 30/10/2026",
+          "Professional/research profile evidence and work experience certificates covering at least two years",
+          "Ficha Socioeconomica and 2025 income documentation for household members (SUNAT certificates or sworn declaration)",
+          "Physical and mental health certificates (validity up to 120 days) and the sworn declarations/formats generated by the application module (Ficha de Postulacion, veracity declaration, no-impediment declaration)"
+        ],
+        "selection_criteria": [
+          "Puntaje de Seleccion = A (perfil profesional y academico) + B (IES de destino) + C (condiciones priorizables); max 130 points for master's and 150 for doctorate",
+          "Selection prioritises applicants whose pregrado/professional career or master's programme appears in the EDO 2026 Top-10 high-demand lists of the MTPE, in strict order of merit",
+          "Tie-breakers in order: public-sector employment commitment letter or study licence, private-sector letter, higher merit order, lower individual gross income, higher-ranked destination IES, holding another academic scholarship, priorizable condition, and residence in the poorest district (2018 poverty map)"
+        ],
+        "coverage": [
+          "Matricula y pension de estudios (all mandatory IES fees such as 'mandatory services' and 'student fees')",
+          "Obtencion del grado y/o titulo respectivo (degree/titration costs) and the research work for the thesis",
+          "Transporte internacional at the start and end of the programme (direct or with layovers, economy fares)",
+          "Alojamiento y alimentacion, subsidised from 15 days before classes until 15 days after completion, conditional on presence in the destination country",
+          "Movilidad local and seguro medico with health, life, accident and repatriation cover",
+          "Costos administrativos per the Normas para la Ejecucion de Subvenciones para Estudios en el Extranjero"
+        ],
+        "application_method": [
+          "Apply virtually through the Modulo de Postulacion of the SIBEC on PRONABEC's institutional portal (www.gob.pe/pronabec), 'Postula aqui', between 30/10/2026 and 13/11/2026",
+          "Scan and upload every mandatory document (both sides where applicable) as legible A4 PDF files of maximum 2 MB each",
+          "Correct observations during the Fase de Revision y Subsanacion (03/11-24/11/2026); missing mandatory documents or illegible/enamelled uploads are declared NO APTO without subsanation",
+          "Selected applicants accept the scholarship electronically by signing the acceptance format and the Compromiso de Servicio al Peru between 16/12/2026 and 21/12/2026"
+        ],
+        "application_route": "Online application via the SIBEC application module on PRONABEC's portal (www.gob.pe/pronabec) within the 30/10/2026-13/11/2026 window",
+        "study_mode": "Full-time, in-person (presencial) in the destination country; semi-presential, fully asynchronous or virtual programmes are excluded",
+        "citizenship_residency": "Peruvian nationality is mandatory and the DNI is verified online with RENIEC; the call is national in scope",
+        "international_eligibility": "Only Peruvian nationals may apply; the funded programme of study must be taken abroad",
+        "subject_or_agency_requirement": "The destination IES must be PRONABEC-eligible (top 400 in QS, ARWU or THE at least once in the last five years, per the eligible-IES list RJ n. 2953-2026); published lists prioritise EDO 2026 high-demand careers for master's applicants and high-demand master's programmes for doctoral applicants",
+        "research_requirement": "Doctoral applicants must evidence research output: at least one article in an indexed journal or a book in the last five years, or active registration in RENACYT; the thesis research work for the degree is a funded benefit",
+        "duration": "The duration of the programme stated in the acceptance letter, including thesis elaboration; the funded studies must start between 01/07/2026 and 31/12/2027",
+        "description": "PRONABEC's extraordinary 2026 call 'El Peru cuenta con tu talento' offers 20 integral scholarships (17 master's, 3 doctoral) so Peruvian professionals with high academic performance and insufficient economic resources can study a postgraduate programme abroad at an eligible top-400 ranked university and turn their knowledge into development opportunities for Peru; there is no age limit to apply.",
+        "region": "Peru (national call; studies abroad)",
+        "program_type": "Government scholarship - Beca Posgrado (PRONABEC, Ministerio de Educacion del Peru)",
+        "english_requirement": null
+      },
+      "verification": {
+        "source_citations": [
+          "https://www.pronabec.gob.pe/beca-generacion-bicentenario",
+          "https://cdn.www.gob.pe/uploads/document/file/10618627/8594676-rde-n-149-2026-minedu-vmgi-pronabec.pdf",
+          "https://cdn.www.gob.pe/uploads/document/file/7680926/6504279-rde-n-016-2025-minedu-vmgi-pronabec.pdf"
+        ],
+        "last_verified_date": "2026-10-10",
+        "verification_status": "confirmed",
+        "confidence": "high",
+        "not_confirmed": [
+          "Per-scholar funding value (individual tuition, monthly living or travel amounts) - PRONABEC sets these per concept through OAF cost-determination resolutions, and no figure is published in the bases, the official page or the subvention norms",
+          "english_requirement - neither the bases nor the official page publish an English test (IELTS/TOEFL) or medium-of-instruction requirement; the only language rule is that documents in a language other than Spanish need a simple signed translation"
+        ],
+        "notes": "Amount, cronograma, requisites, documents, scoring and benefits were verified against PRONABEC's official Beca Generacion Bicentenario page and the contest bases RDE n. 149-2026; the only published figure is the total contest budget of S/ 4,650,946.00 charged to fiscal year 2027 for up to 20 new scholarships."
+      },
+      "applicant_utility": {
+        "summary": "This is PRONABEC's flagship integral postgraduate scholarship for study abroad: 20 awards (17 master's, 3 doctoral) covering tuition, living costs, international travel and insurance at a top-400 ranked university, with benefits running from 1 January 2027. The whole cycle is compressed into seven weeks - apply by 13 November 2026, results land on 15 December and acceptance must be completed within six days. Admission comes before funding: you need a definitive, unconditional acceptance letter and a top-third academic ranking before you can even submit.",
+        "best_fit": "Peruvian professionals in the top third of their graduating class, with two years' work experience, household per-capita income at or below S/ 7,910 a month, and a firm unconditional offer from a top-400 ranked university for a 2026-27 start.",
+        "application_readiness_checklist": [
+          "Request an unconditional acceptance letter that names the IES and programme, your full name, start and end month-year including thesis, the curriculum, full-time in-person modality and the total programme cost - anything with payment, visa or funding conditions is rejected as not definitive",
+          "Ask your university for a certificate stating your accumulated weighted average and your exact graduation percentile (tercio superior is the floor); if it shows per-term percentils only, the lowest is used",
+          "Collect 2025 SUNAT income evidence for every household member (fifth-category withholding certificates, annual income declarations, electronic receipts report) and confirm the per-capita monthly figure stays at or below S/ 7,910",
+          "Book your medical and psychiatric appointments now so both certificates are issued within 120 days of submission, and verify the doctors' registration at conoceatumedico.cmp.org.pe",
+          "Prepare your profile evidence early: teaching/support certificates signed by the administration (never by teachers), a 120-hour diploma, or your indexed article, book or RENACYT certificate"
+        ],
+        "common_rejection_risks": [
+          "Conditional acceptance letters (payment, visa or funding conditions) are not considered definitive acceptance and end the application",
+          "Acceptance letters missing mandatory data - no total cost, no start/end dates, no curriculum or no modality - make the file NO APTO",
+          "An academic-performance certificate without a global graduation percentile, or a percentile below tercio superior",
+          "Per-capita household income above S/ 7,910, a negative SBS credit-risk rating, or income data that contradicts SUNAT/ESSALUD/SBS cross-checks",
+          "Work experience proved only by volunteer or ad-honorem work, parallel jobs counted once, or certificates lacking the signatory's name, role and signature",
+          "Degrees from foreign universities not recognised by SUNEDU, and semi-presential, company-run, foundation or double-degree programmes, which are expressly excluded"
+        ],
+        "estimated_uncovered_costs": "Installation and personal expenses, dependants' costs and language-levelling courses are expressly not funded, laptop and insurance purchases above the OAF-set caps are out of pocket, and since benefits only run from 1 January 2027 with no retroactive recognition, any study time or costs incurred before that date are entirely yours.",
+        "document_audit": [
+          "Every mandatory document must be uploaded both sides, legible, as an A4 PDF of maximum 2 MB; incomplete or illegible uploads are declared NO APTO with no subsanation window",
+          "Documents in a language other than Spanish need a simple translation carrying the translator's full name and signature - official translations are not required, but unsigned or unidentified translations fail",
+          "Sworn declarations, annexes and formats generated by the SIBEC module keep their formalities; check whether an annex must be downloaded and carries a handwritten signature before upload"
+        ],
+        "alerts": [
+          "The acceptance window is only 16-21 December 2026 - a selected applicant who misses the electronic acceptance of the scholarship and the Compromiso de Servicio al Peru is declared a non-accepting applicant and loses the slot",
+          "Benefits start on 1 January 2027 and no benefits are recognised for study time already completed, so a programme that started in 2026 is only funded from January 2027 onward",
+          "Awardees must sign the Compromiso de Servicio al Peru: work in Peru for a period equal to the subsidised time, capped at three years",
+          "You cannot apply if you previously held a state-funded integral scholarship at the same level, renounced or lost a PRONABEC scholarship at that level, or falsified socio-economic, academic or health information",
+          "Selection prioritises EDO 2026 high-demand careers - check the prioritised and non-priorised study lists on the official page before choosing your programme, and remember only 20 awards exist (17 master's, 3 doctoral)"
+        ],
+        "submission_workflow": "Register in the SIBEC application module on PRONABEC's portal, complete the socio-economic ficha, upload all mandatory A4 PDFs and submit before 13/11/2026 23:59 Peru time, then watch the review/subsanation window (03/11-24/11/2026), results (15/12/2026) and the six-day acceptance window (16-21/12/2026)."
+      }
+    }
+  ]
+}

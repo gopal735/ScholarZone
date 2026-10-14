@@ -1,0 +1,137 @@
+{
+  "agent": "agent_308",
+  "records": [
+    {
+      "id": 689,
+      "official": {
+        "official_source_urls": [
+          "https://secihti.mx/convocatoria/becas-nacionales/convocatoria-2026-apoyo-complementario-de-maternidad-y-paternidad-nacional-en-el-extranjero-y-de-consolidacion",
+          "https://secihti.mx/wp-content/uploads/2026/02/Convocatoria_AC_MaternidadyPaternidad_2026-20260602T020018.pdf",
+          "https://secihti.mx/wp-content/uploads/2026/02/GPFMATNAL_26-20260223T175404.pdf",
+          "https://secihti.mx/wp-content/uploads/2026/02/Guia_Postulacion_MatPat-BC-20260604T014105.pdf",
+          "https://secihti.mx/wp-content/uploads/2026/02/Aviso1_Conv_MatPat_Consolidacion-20260602T020140.pdf",
+          "https://secihti.mx/wp-content/uploads/2026/02/Aviso2_Conv_MatPat_Consolidacion-20260606T002533.pdf"
+        ],
+        "application_link": "https://secihti.mx/convocatoria/becas-nacionales/convocatoria-2026-apoyo-complementario-de-maternidad-y-paternidad-nacional-en-el-extranjero-y-de-consolidacion",
+        "catalogue_url": "https://secihti.mx/convocatoria_categoria/becas-nacionales",
+        "official_updates_url": "https://secihti.mx/convocatoria/becas-nacionales/convocatoria-2026-apoyo-complementario-de-maternidad-y-paternidad-nacional-en-el-extranjero-y-de-consolidacion",
+        "deadline_central": "2026-12-03",
+        "deadline_central_display": "3 December 2026 (23:59 Mexico City time)",
+        "deadline_note": "Reception opens 23 February 2026 for holders of a Beca de Posgrado Nacional or en el Extranjero. For the Becas de Consolidacion track the Convocatoria set 1 June 2026, moved to 3 June 2026 by Aviso 1; consolidation results are published bimonthly (31 July, 30 September, 30 November, 11 December 2026) and formalisation runs until 15 December 2026 (Aviso 2). All tracks close 3 December 2026.",
+        "application_cycle": "Convocatoria 2026 (period 2026)",
+        "status": "OPEN",
+        "status_note": "The convocatoria page lists the status as 'Abierta' and publishes a reception window that is still open at verification time.",
+        "tuition_coverage_note": "The Convocatoria publishes no tuition coverage: the support is 'un pago unico de $43,876.35 MXN' whose object is 'el cuidado y atencion infantil de hijas e hijos'.",
+        "funding_amount": 43876.35,
+        "funding_currency": "MXN",
+        "funding_period": "one-off payment (pago unico)",
+        "tuition_coverage": false,
+        "living_cost_coverage": false,
+        "travel_coverage": false,
+        "fully_funded": false,
+        "benefits": [
+          "Pago unico de $43,876.35 MXN como apoyo complementario a la maternidad y paternidad",
+          "Apoyo para el cuidado y atencion infantil de hijas e hijos",
+          "Pago dentro de los 20 dias habiles siguientes a la formalizacion del convenio, salvo diciembre y enero sujetos a las disposiciones de ejercicio del gasto de la SHCP"
+        ],
+        "eligibility": [
+          "Contar con una beca de posgrado nacional, en el extranjero o de consolidacion vigente",
+          "Haber tenido, adoptado o reconocido por sentencia definitiva a hijas o hijos menores de edad entre el 1 de diciembre de 2025 y el 30 de noviembre de 2026",
+          "Beca nacional: al cierre de la convocatoria la beca de posgrado nacional debe contar al menos con seis meses de vigencia",
+          "El apoyo se asignara por hija o hijo, a la madre y padre siempre y cuando ambos sean becarios"
+        ],
+        "requirements": [
+          "Crear, actualizar o validar el curriculum vitae en el Perfil Unico (https://rizoma.conahcyt.mx/)",
+          "Registrar y enviar la solicitud de apoyo complementario conforme a la Guia de Postulacion correspondiente al track",
+          "Firmar electronicamente la solicitud con la Clave Unica de Registro de Poblacion (CURP)",
+          "Dar seguimiento a la solicitud en el sistema informatico Apeiron (https://apeiron.secihti.mx/)",
+          "Registrar una cuenta bancaria a nombre de la persona becaria y firmar electronicamente el Convenio de Asignacion de Beca o Apoyo (CAB) y su Anexo Uno antes del plazo de formalizacion"
+        ],
+        "documents": [
+          "Copia del acta de nacimiento certificada, de adopcion o de reconocimiento emitida por el Registro Civil de cada hija o hijo, donde se observe el nombre de la madre o padre becario",
+          "Copia certificada del Registro de Nacimiento en el Extranjero ante una Oficina Consular de Mexico, en su caso",
+          "Sentencia definitiva que decreta la tutoria, en su caso",
+          "Los documentos deben cargarse en formato PDF; para actas se recomienda descargar la version certificada del portal https://www.miregistrocivil.gob.mx/"
+        ],
+        "selection_criteria": [
+          "Seran consideradas las solicitudes presentadas en tiempo y forma que cumplan con la documentacion y requisitos establecidos en la convocatoria y la disponibilidad presupuestaria",
+          "La Secihti se reserva el derecho de asignar los apoyos declinados a personas solicitantes no favorecidas por falta de disponibilidad presupuestaria",
+          "No se da tramite a solicitudes con reporte de incumplimiento o adeudo en el Programa S190, con apoyo equivalente por parte del Estado mexicano para el mismo fin, o con informacion o documentos falsos"
+        ],
+        "coverage": [
+          "Cuidado y atencion infantil de hijas e hijos, mediante un pago unico de $43,876.35 MXN"
+        ],
+        "application_method": [
+          "Becas nacionales y en el extranjero: registrar y enviar la solicitud en el sistema Apeiron (https://apeiron.secihti.mx/) en el apartado 'Apoyos Complementarios', previa validacion del CV en el Perfil Unico",
+          "Becas de consolidacion: postular en el Sistema Becas Consolidacion (https://consolidacion.secihti.mx/) con credenciales vigentes del Perfil Unico Rizoma",
+          "Firma electronica de la solicitud y posteriormente del CAB con CURP, tras el registro de la cuenta bancaria a nombre del becario"
+        ],
+        "application_route": "Online only: validate the Perfil Unico CV, then file and sign (CURP e.firma) the application in Apeiron (national/abroad) or the Becas Consolidacion system (consolidation), and finally formalise the CAB with a registered bank account.",
+        "study_mode": null,
+        "citizenship_residency": null,
+        "international_eligibility": "Only current holders of a SECIHTI postgraduate scholarship (nacional, en el extranjero or de consolidacion) can apply; the convocatoria addresses no other applicants.",
+        "subject_or_agency_requirement": null,
+        "research_requirement": null,
+        "duration": "Pago unico en una sola exhibicion",
+        "description": "SECIHTI, a traves de la Direccion General de Becas y Apoyos a la Comunidad Cientifica y Humanistica (DGBACCYH), convoca a personas beneficiadas con una beca de posgrado nacional, en el extranjero o de consolidacion a obtener un apoyo complementario a la maternidad y paternidad para el cuidado y atencion infantil de hijas e hijos nacidas, adoptadas o reconocidas entre el 1 de diciembre de 2025 y el 30 de noviembre de 2026.",
+        "region": "Mexico (national scheme)",
+        "program_type": "Apoyo complementario (complementary support payment of the SECIHTI postgraduate scholarships programme)",
+        "english_requirement": null
+      },
+      "verification": {
+        "source_citations": [
+          "https://secihti.mx/wp-content/uploads/2026/02/Convocatoria_AC_MaternidadyPaternidad_2026-20260602T020018.pdf",
+          "https://secihti.mx/convocatoria/becas-nacionales/convocatoria-2026-apoyo-complementario-de-maternidad-y-paternidad-nacional-en-el-extranjero-y-de-consolidacion",
+          "https://secihti.mx/wp-content/uploads/2026/02/GPFMATNAL_26-20260223T175404.pdf"
+        ],
+        "last_verified_date": "2026-10-10",
+        "verification_status": "confirmed",
+        "confidence": "high",
+        "not_confirmed": [
+          "english_requirement",
+          "study_mode",
+          "citizenship_residency (the convocatoria states the scholarship-holding condition, not an explicit nationality rule)",
+          "subject_or_agency_requirement",
+          "research_requirement",
+          "travel_coverage (no travel, installation or relocation item is published)"
+        ],
+        "notes": "Amount, one-off payment basis, eligibility window, documents, calendars and formalisation/payment rules were read directly from the official Convocatoria PDF and the national track postulacion guide on secihti.mx; the official page confirms status Abierta and the 3 December 2026 closing date; Avisos 1 and 2 confirm the consolidation-track calendar adjustments."
+      },
+      "applicant_utility": {
+        "summary": "This is not a scholarship competition: it is a one-off top-up of MXN 43,876.35 paid to scholars who are already inside SECIHTI's postgraduate scholarship system when they have, adopt or legally recognise a minor child during the 1 December 2025 to 30 November 2026 window. National and abroad scholars apply through Apeiron from 23 February 2026, while consolidation scholars apply through the consolidation platform from 3 June 2026 (moved from 1 June by Aviso 1), and every track stops accepting applications on 3 December 2026. Approval is documentary and rules-based, so the decisive work is proving the child's birth, adoption or recognition with a clean certified acta rather than competing on merit. Payment only starts after the Convenio de Asignacion (CAB) is signed electronically with the CURP and a bank account registered in the scholar's own name.",
+        "best_fit": "Mexican postgraduate scholars already holding a SECIHTI Beca de Posgrado Nacional, en el Extranjero or de Consolidacion who had, adopted or recognised a minor child between 1 December 2025 and 30 November 2026.",
+        "application_readiness_checklist": [
+          "Confirm your SECIHTI postgraduate scholarship is vigente and, for the national track, still has at least six months of validity at the 3 December 2026 close",
+          "Validate or update your Perfil Unico CV (rizoma.conahcyt.mx) before filing, since the system draws your data from it",
+          "Download the certified acta for each child from miregistrocivil.gob.mx in colour and save it as PDF",
+          "Have each child's CURP to hand (the addition of a partner's CURP is optional and only validates kinship)",
+          "Register a bank account in your own exact legal name in the scholarship system before formalisation",
+          "Keep your CURP e.firma credentials working for the electronic signature of the request and the CAB"
+        ],
+        "common_rejection_risks": [
+          "An outstanding compliance report or debt inside the S190 postgraduate scholarships programme, which blocks admission of the request outright",
+          "Receiving an equivalent support from the Mexican state for the same purpose, which makes the award incompatible",
+          "A child born, adopted or recognised outside the 1 December 2025 to 30 November 2026 window",
+          "National-track scholars whose scholarship has fewer than six months of validity left at the close of the call",
+          "Failure to cure an inconsistency within the five working-day window, after which the file is dismissed",
+          "Not signing the CAB within the formalisation deadline, which cancels the assigned support"
+        ],
+        "estimated_uncovered_costs": "The fixed MXN 43,876.35 payment is awarded for childcare care and attention and does not cover tuition, living costs, travel or installation; anything the family needs beyond that figure comes out of pocket.",
+        "document_audit": [
+          "App-scanned phone photos, black-and-white copies, illegible copies and documents with cross-outs or corrections are explicitly rejected, so use only the certified PDF from the official civil registry portal",
+          "The acta must visibly show the scholarship-holding parent's name; children born abroad need the consular registration copy",
+          "One acta per eligible child, and the upload slots in Apeiron are tied to each child's CURP",
+          "An adoption or court-recognised case needs the definitive judgment decreeing guardianship instead of a standard acta"
+        ],
+        "alerts": [
+          "The reception window closes 3 December 2026 at 23:59 Mexico City time and the convocatoria treats working days as 09:00 to 23:59 local time, so late uploads fail",
+          "Consolidation scholars face their own calendar: reception from 3 June 2026, bimonthly result releases (31 July, 30 September, 30 November, 11 December 2026) and a formalisation cut-off of 15 December 2026",
+          "Payments are promised within 20 working days of formalisation except in December and January, which fall under SHCP spending rules, so a late-year award can arrive much later than expected",
+          "Inconsistency notifications and result tracking happen only inside Apeiron; not checking it can cost you the five-day cure window",
+          "Beneficiaries' names are published in SECIHTI's transparency register, and the award can be audited for five years after the scholarship ends"
+        ],
+        "submission_workflow": "Validate the Perfil Unico CV, create and sign the request in Apeiron or the consolidation system with each child's certified acta attached, monitor the file in Apeiron for inconsistency notices, cure within five working days if flagged, then formalise the CAB with a registered bank account to trigger payment."
+      }
+    }
+  ]
+}

@@ -1,0 +1,21 @@
+{
+  "agent_id": "w3_14",
+  "shard": "w3-14",
+  "host": "aut.ac.nz",
+  "today": "2026-10-04",
+  "logo_override": {
+    "url": "https://www.aut.ac.nz/__data/assets/image/0005/1046534/aut-logo.jpg",
+    "page_url": "https://www.aut.ac.nz/study/fees-and-scholarships/scholarships-and-awards-at-aut/doctoral-scholarships",
+    "official_host": true,
+    "alt_text": "Auckland University of Technology (AUT) - Te Wananga Aronui / Otamaki Makaurau",
+    "validation_result": "verified",
+    "validation_detail": "webfetch returned 'Image fetched successfully', confirming HTTP 200 plus a real image content type rather than a WAF interstitial. Decoded and rendered for inspection: the full official AUT lockup - black 'AUT' wordmark with the triangular Aronui mark, over the red Te Wananga Aronui / Otamaki Makaurau bar. Format is jpg, so there is no alpha channel at all and no white-on-transparent variant is possible; the wordmark is black on white and the only colour is AUT red, so it is fully legible on a light card.",
+    "image_kind": "official_university",
+    "image_format": "jpg",
+    "verified_at": "2026-10-04T00:00:00+00:00",
+    "host_evidence": "same_registrable_domain",
+    "_award": "AUT Doctoral Scholarship"
+  },
+  "target_ids": [616],
+  "notes": "AUT does not put the logo in an <img> tag, which is why a naive markup scan finds nothing: the header brand is the bare anchor <a id=\"headerLogo\" class=\"navbar-brand m-0\" href=\"/\">AUT</a> and the actual mark is a CSS background. Traced it through the site's own stylesheet https://www.aut.ac.nz/_design/design2025/css-2025/global.css?v=0.1.106, whose rule '#topNav #headerLogo' declares background-image: url(https://www.aut.ac.nz/__data/assets/image/0005/1046534/aut-logo.jpg), with '#topNav.shrink #headerLogo' sizing it 90x98. That asset is served from the awarding university's own __data/assets path on aut.ac.nz, so rule 1 holds, and it is AUT's own corporate lockup for a university-awarded doctoral scholarship, so rule 2 holds. Preferred over the favicon https://www.aut.ac.nz/__data/assets/file/0018/747/favicon.ico declared in the same page's <head>, because the brief asks for a full-colour wordmark or crest in preference to a bare icon. Rule 3 was checked by decoding the image rather than trusting the extension: the filename has no 'white' or 'transbg' hint, and the render confirms black-on-white plus red, with no transparency because it is a jpg. Noted but not used: og:image on the page is present but empty (content=\"\")."
+}

@@ -1,0 +1,17 @@
+{
+  "applied_at": "2026-10-05T14:39:35.538808+00:00",
+  "database": "backend\\scholarzone.db",
+  "rows_changed": 646,
+  "tally": {
+    "tuition_coverage": 472,
+    "living_cost_coverage": 388,
+    "travel_coverage": 322,
+    "region": 226,
+    "fully_funded": 125,
+    "funding": 58,
+    "deletion_protected": 52,
+    "country": 48
+  },
+  "detail": {
+    "country": {
+      

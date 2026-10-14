@@ -1,0 +1,114 @@
+[
+  {
+    "scholarship_id": 632,
+    "outcome": "not_applicable",
+    "professors": [],
+    "notes": "UNCF (United Negro College Fund) is a non-governmental scholarship provider; this one-time USD 5,000 need-based award for students at two-/four-year colleges in Upstate South Carolina is administered by UNCF, not by any degree programme, so no supervising professor or faculty is tied to the scholarship. Confirmed via uncf.org/scholarships ('2026-2027 Etta Gray Memorial Scholarship Program... one-time $5,000 need based scholarship award. Deadline: October 30')."
+  },
+  {
+    "scholarship_id": 633,
+    "outcome": "not_applicable",
+    "professors": [],
+    "notes": "UNCF-administered scholarship for students at accredited HBCUs nationwide (two USD 10,000 awards per year). The award is administered and managed by UNCF, a non-governmental organisation, with no attached institution or programme faculty; recipients attend HBCUs of their own choosing. Official page (uncf.org/pages/the-frederick-douglass-bicentennial-scholarship-program) names no professor or supervising faculty."
+  },
+  {
+    "scholarship_id": 634,
+    "outcome": "verified_supervisors",
+    "professors": [
+      {
+        "canonical_name": "Misha Ahrens",
+        "title": "Senior Group Leader",
+        "institution_name": "HHMI Janelia Research Campus",
+        "department_name": "Ahrens Lab",
+        "official_profile_url": "https://www.janelia.org/people/misha-ahrens",
+        "official_email": "ahrensm@janelia.hhmi.org",
+        "official_email_verified": true,
+        "lab_url": "https://www.janelia.org/lab/ahrens-lab",
+        "personal_academic_url": null,
+        "research_areas": ["Systems neuroscience", "Whole-brain functional imaging in zebrafish", "Neural circuits underlying behavior, memory and learning", "Glia-neuron interactions"],
+        "research_keywords": ["zebrafish", "whole-brain imaging", "light-sheet microscopy", "behavioral flexibility", "motor learning"],
+        "relationship_type": "potential_supervisor",
+        "evidence_source_url": "https://www.janelia.org/lab/ahrens-lab",
+        "evidence_source_type": "official_university_profile",
+        "evidence_quote_or_summary": "Ahrens Lab page: 'We have opportunities for postdoctoral researchers, PhD students (through the Johns Hopkins / Janelia graduate program, or graduate research fellowship program), and undergraduate students (through the Janelia summer undergraduate program). For inquiries email ahrensm@janelia.hhmi.org.' The programme application page states applicants should 'list the names of one to four Janelia Group Leaders with whom they would like to do your thesis research'.",
+        "confidence": 95,
+        "availability": {
+          "scope": "phd_supervision",
+          "state": "verified_yes",
+          "source_url": "https://www.janelia.org/lab/ahrens-lab"
+        }
+      },
+      {
+        "canonical_name": "Michael Reiser",
+        "title": "Senior Group Leader",
+        "institution_name": "HHMI Janelia Research Campus",
+        "department_name": "Reiser Lab",
+        "official_profile_url": "https://www.janelia.org/people/michael-reiser",
+        "official_email": "reiserm@janelia.hhmi.org",
+        "official_email_verified": true,
+        "lab_url": "https://www.janelia.org/lab/reiser-lab",
+        "personal_academic_url": null,
+        "research_areas": ["Visual neuroscience in Drosophila", "Neural circuits for vision and navigation", "Motion vision and visual place learning", "Computational methods for neural circuit analysis"],
+        "research_keywords": ["Drosophila", "vision", "visual place learning", "neural circuits", "two-photon calcium imaging"],
+        "relationship_type": "potential_supervisor",
+        "evidence_source_url": "https://www.janelia.org/lab/reiser-lab/positions",
+        "evidence_source_type": "official_university_profile",
+        "evidence_quote_or_summary": "Reiser Lab positions page: 'If you are interested in the Janelia Graduate Program, or if you are at Johns Hopkins and would like to do a summer rotation in my lab, you will find helpful information here' and 'Interested applicants should apply by email (reiserm 'at' janelia.hhmi.org)'. Programme application page: applicants 'list the names of one to four Janelia Group Leaders with whom they would like to do your thesis research'.",
+        "confidence": 90,
+        "availability": {
+          "scope": "phd_supervision",
+          "state": "verified_yes",
+          "source_url": "https://www.janelia.org/lab/reiser-lab/positions"
+        }
+      },
+      {
+        "canonical_name": "Vivek Jayaraman",
+        "title": "Senior Group Leader",
+        "institution_name": "HHMI Janelia Research Campus",
+        "department_name": "Jayaraman Lab",
+        "official_profile_url": "https://www.janelia.org/people/vivek-jayaraman",
+        "official_email": null,
+        "official_email_verified": false,
+        "lab_url": "https://www.janelia.org/lab/jayaraman-lab",
+        "personal_academic_url": null,
+        "research_areas": ["Neural circuits and behavior in Drosophila", "Central complex and navigation", "Neural dynamics of sensory-motor integration", "Two-photon calcium imaging and optogenetics"],
+        "research_keywords": ["Drosophila", "central complex", "navigation", "neural dynamics", "two-photon imaging"],
+        "relationship_type": "potential_supervisor",
+        "evidence_source_url": "https://www.janelia.org/lab/jayaraman-lab/members",
+        "evidence_source_type": "official_university_profile",
+        "evidence_quote_or_summary": "Jayaraman Lab members page lists 'Senior Group Leader Vivek Jayaraman' alongside current 'Janelia Graduate Scholar' lab members, consistent with the programme instruction that applicants name one to four Janelia Group Leaders for thesis research; his lab's central-complex navigation research (janelia.org/lab/jayaraman-lab) matches the JHU Neuroscience programme scope. No email address is published on his institutional pages.",
+        "confidence": 85,
+        "availability": {
+          "scope": "phd_supervision",
+          "state": "verified_yes",
+          "source_url": "https://www.janelia.org/lab/jayaraman-lab/members"
+        }
+      }
+    ],
+    "notes": "Joint Graduate Program: students apply to the JHU Neuroscience programme and name 1-4 Janelia Group Leaders as thesis supervisors; Janelia labs/group leaders are therefore the potential supervisors. Emails recorded only where published on janelia.org (Ahrens on his lab page; Reiser on his positions page, published as 'reiserm at janelia.hhmi.org'). Jayaraman has no published institutional email on his lab/people pages. HHMI's own group-leader listing page (hhmi.org/research/janelia/group-leaders) is JS-rendered and returned no names; janelia.org lab pages were used instead."
+  },
+  {
+    "scholarship_id": 636,
+    "outcome": "not_applicable",
+    "professors": [],
+    "notes": "Organization of American States (OAS) intergovernmental scholarship (PAEC) hosted at Colorado State University: 1/3 off non-resident tuition for any degree-seeking on-campus programme (undergraduate or graduate), administered by the CSU International Enrollment Center. The award is university-wide and not tied to any specific programme, department or supervising professor; the official page names no faculty. Programme contact only: international.admissions@colostate.edu via the IEC page."
+  },
+  {
+    "scholarship_id": 637,
+    "outcome": "not_applicable",
+    "professors": [],
+    "notes": "CAPES-Global.Edu central scheme (Comite Gestor Fiocruz Edital 02/2026, Capacitacao de curta duracao no Exterior, 15 days or 1 month of training abroad). The candidate nominates the foreign host institution (an acceptance letter from the host IES is required, Anexo VII), so no supervising professor is attached to the award itself. Only a programme contact email is published: rede.capesglobal@fiocruz.br (not a professor)."
+  },
+  {
+    "scholarship_id": 638,
+    "outcome": "not_applicable",
+    "professors": [],
+    "notes": "Becas El Quantificador is an NGO/corporate-sponsored data-skills bursary run by LIDE with DataCamp (DataCamp Donates): a 12-month DataCamp licence plus workshops for university students across Ecuador. No degree programme, institution or supervising professor is tied to the award; the official project page (laboratoriolide.org/es/projects/becas-lide-datacamp) names no faculty."
+  },
+  {
+    "scholarship_id": 639,
+    "outcome": "not_applicable",
+    "professors": [],
+    "notes": "Instituto Riva-Aguero (PUCP) 2027 research-support becas: individual (PEN 10,000) and group (PEN 20,000) grants of up to 10 months, open to the institute's own members to carry out their own research projects within the institute's research lines. The award funds the applicant's own project and names no supervising professor; official convocatoria page lists only the programme contact evelyn.sotomayor@pucp.pe. Projects must align with IRA research lines/groups, but no individual researcher is tied to the scholarship."
+  }
+]

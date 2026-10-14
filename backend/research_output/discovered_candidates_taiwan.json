@@ -1,0 +1,80 @@
+[
+  {
+    "title": "MOE Taiwan Scholarship Program",
+    "provider": "Ministry of Education (MOE), Taiwan",
+    "official_source_url": "https://english.moe.gov.tw/cp-24-16833-23C09-1.html",
+    "degree_levels": ["Bachelor", "Master", "Doctoral"],
+    "funding_type": "Government Scholarship",
+    "application_deadline": "Varies by country (typically January–February each year via ROC overseas missions)",
+    "application_opening_date": "Not publicly specified",
+    "eligibility_summary": "Foreign nationals with secondary school graduation or post-secondary degree, excellent academic record, good character. Not open to ROC nationals, overseas Chinese, or those already studying in Taiwan at same degree level. Maximum 5 years cumulative.",
+    "funding_details": "Tuition and miscellaneous expenses up to NTD 40,000 per semester + monthly living allowance of NTD 15,000 (bachelor) or NTD 20,000 (master/doctoral).",
+    "duration": "Bachelor: 4 years; Master: 2 years; Doctoral: 4 years (maximum cumulative 5 years)",
+    "status": "Active/Annual"
+  },
+  {
+    "title": "MOE Huayu Enrichment Scholarship (HES)",
+    "provider": "Ministry of Education (MOE), Taiwan",
+    "official_source_url": "https://english.moe.gov.tw/cp-24-24284-3ea37-1.html",
+    "degree_levels": ["Language Study (Non-degree)"],
+    "funding_type": "Government Scholarship",
+    "application_deadline": "Varies by country (typically January–February each year via ROC overseas missions)",
+    "application_opening_date": "Not publicly specified",
+    "eligibility_summary": "Foreign persons at least 18 years old, graduated from secondary school or post-secondary level, excellent academic record, good moral character. Not open to ROC passport holders or those currently studying Chinese in Taiwan.",
+    "funding_details": "Monthly stipend of NTD 28,000.",
+    "duration": "2 months (summer), 3 months, 6 months, 9 months, or 12 months",
+    "status": "Active/Annual"
+  },
+  {
+    "title": "MOE Short Term Research Award (STRA)",
+    "provider": "Ministry of Education (MOE), Taiwan",
+    "official_source_url": "https://english.moe.gov.tw/cp-24-16836-FEE8B-1.html",
+    "degree_levels": ["PhD", "Postdoctoral"],
+    "funding_type": "Government Research Grant",
+    "application_deadline": "September 30 each year (to host institution in Taiwan)",
+    "application_opening_date": "Not publicly specified",
+    "eligibility_summary": "International scholars (excluding mainland China, Hong Kong, Macao) who are PhD students at overseas approved universities or postdoctoral fellows. Must not hold ROC passport, not currently in Taiwan, not receiving other Taiwan government financial assistance, and not have received STRA within last 5 years.",
+    "funding_details": "Monthly research allowance of NTD 25,000 for PhD students; NTD 40,000 for postdoctoral fellows. Economy class round-trip airfare reimbursement for most direct route.",
+    "duration": "2 to 6 months",
+    "status": "Active/Annual"
+  },
+  {
+    "title": "Academia Sinica Taiwan International Graduate Program (TIGP)",
+    "provider": "Academia Sinica",
+    "official_source_url": "https://tigp.sinica.edu.tw/",
+    "degree_levels": ["Doctoral"],
+    "funding_type": "Government/Research Institution Scholarship",
+    "application_deadline": "Not publicly specified (check website for current cycle)",
+    "application_opening_date": "Not publicly specified",
+    "eligibility_summary": "International students admitted to TIGP PhD programs. Top performers eligible for extended funding.",
+    "funding_details": "Tax-free stipend of NT$40,000 per month (NT$34,000 + NT$6,000) for first year. For students who perform well, this scholarship/stipend will be extended for one more year. Further financial support depends on thesis advisor.",
+    "duration": "First year guaranteed; extendable for second year based on performance; subsequent years dependent on advisor funding",
+    "status": "Active"
+  },
+  {
+    "title": "NYCU International Student Scholarship",
+    "provider": "National Yang Ming Chiao Tung University (NYCU)",
+    "official_source_url": "https://oia.nycu.edu.tw/oia/en/app/data/view?module=nycu0012&id=792&serno=0f046f83-4147-4ec7-8921-bbaccd8c678f",
+    "degree_levels": ["Undergraduate", "Master", "Doctoral"],
+    "funding_type": "University Scholarship",
+    "application_deadline": "Fall Semester: March 15; Spring Semester: September 15",
+    "application_opening_date": "Fall Semester: January 15; Spring Semester: July 15",
+    "eligibility_summary": "Current NYCU international students who have not received Taiwan government scholarships. Minimum cumulative GPA of 3.5 for graduate students and 3.0 for undergraduate students. Not eligible if currently receiving government-funded scholarships or holding working VISA/ARC.",
+    "funding_details": "Monthly stipend (university-funded + match-funding from college/department/advisor) and tuition award (full tuition waiver or tuition charged at local student rates). Amounts flexibly adjusted based on budget.",
+    "duration": "Generally 1 year per award; maximum 4 years (undergraduate), 2 years (master), 5 years (PhD)",
+    "status": "Active"
+  },
+  {
+    "title": "NYCU Elite Ph.D. Scholarship",
+    "provider": "National Yang Ming Chiao Tung University (NYCU)",
+    "official_source_url": "https://oia.nycu.edu.tw/oia/en/app/data/view?module=nycu0012&id=792&serno=0f046f83-4147-4ec7-8921-bbaccd8c678f",
+    "degree_levels": ["Doctoral"],
+    "funding_type": "University Scholarship",
+    "application_deadline": "Not publicly specified (awarded by recommendation)",
+    "application_opening_date": "Not publicly specified",
+    "eligibility_summary": "New PhD students with outstanding grades who have not received scholarships or grants from the Taiwan government. Awarded based on recommendations from the college and review by the scholarship committee; not through direct student application.",
+    "funding_details": "Monthly stipend of NT$33,000 plus full tuition waiver for 2 years.",
+    "duration": "2 years",
+    "status": "Active"
+  }
+]

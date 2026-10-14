@@ -1,0 +1,158 @@
+{
+ "agent": "agent_487",
+ "assignment_count": 2,
+ "scholarships": [
+  {
+   "id": 71,
+   "title": "UCL Global Master's Scholarship",
+   "country": "United Kingdom",
+   "degree": "Master's (taught, full-time)",
+   "funding_label": "Partially Funded",
+   "status": "open",
+   "official_source": "University College London",
+   "official_source_url": "https://www.ucl.ac.uk/scholarships/ucl-global-masters-scholarship",
+   "application_link": "https://www.ucl.ac.uk/scholarships/ucl-global-masters-scholarship",
+   "catalogue_url": null,
+   "official_updates_url": null,
+   "existing": {
+    "funding_amount": null,
+    "funding_currency": null,
+    "funding_period": null,
+    "tuition_coverage": null,
+    "living_cost_coverage": null,
+    "travel_coverage": null,
+    "fully_funded": 0,
+    "description": null,
+    "eligibility": [],
+    "eligibility_summary": "Overseas fee-paying students from lower-income backgrounds. Up to 85 scholarships for 2026/27 (5 ring-fenced for India, 1 for Japan).",
+    "benefits": [
+     "£15,000 tuition contribution"
+    ],
+    "coverage": [
+     "£15,000 tuition contribution"
+    ],
+    "requirements": [],
+    "documents": [],
+    "english_requirement": null,
+    "application_method": [],
+    "selection_notes": null,
+    "best_fit": null,
+    "notes": null,
+    "duration": null,
+    "application_period": null,
+    "deadline_display": "5pm BST, 7 May 2026",
+    "deadline_date": null,
+    "region": "Europe",
+    "program_type": null,
+    "applicant_utility": null,
+    "official_details": null
+   },
+   "missing_fields": [
+    "funding_amount",
+    "funding_currency",
+    "funding_period",
+    "tuition_coverage",
+    "living_cost_coverage",
+    "travel_coverage",
+    "description",
+    "eligibility",
+    "requirements",
+    "documents",
+    "english_requirement",
+    "application_method",
+    "selection_notes",
+    "best_fit",
+    "notes",
+    "duration",
+    "application_period",
+    "deadline_date",
+    "program_type",
+    "applicant_utility",
+    "official_details"
+   ]
+  },
+  {
+   "id": 72,
+   "title": "UCL Humanitarian Scholarship",
+   "country": "United Kingdom",
+   "degree": "Master's",
+   "funding_label": "Fully Funded",
+   "status": "upcoming",
+   "official_source": "University College London",
+   "official_source_url": "https://www.ucl.ac.uk/scholarships/ucl-humanitarian-scholarship",
+   "application_link": "https://www.ucl.ac.uk/scholarships/ucl-humanitarian-scholarship",
+   "catalogue_url": null,
+   "official_updates_url": "https://www.ucl.ac.uk/scholarships/news-0",
+   "existing": {
+    "funding_amount": 20000,
+    "funding_currency": "GBP",
+    "funding_period": "per year for the normal course duration",
+    "tuition_coverage": 1,
+    "living_cost_coverage": 1,
+    "travel_coverage": 1,
+    "fully_funded": 1,
+    "description": null,
+    "eligibility": [
+     "From any country outside the UK; applications are not accepted from those already residing in the UK",
+     "At serious risk as a direct result of armed conflict, and/or displaced from their home country within the last three years because of armed conflict",
+     "Has sought international protection outside of the UK",
+     "Eligible to pay the Overseas fee rate",
+     "Comes from a lower income background",
+     "Does not already hold, or is not in the process of gaining, a qualification at or above the level of the course applied for",
+     "Holds an offer of a place on a chosen full-time Master's at UCL by the scholarship panel meeting at the start of June 2026",
+     "Has a valid passport or other eligible travel document in place by the selection panel meeting so a UK student visa can be applied for"
+    ],
+    "eligibility_summary": "Candidates must be from outside the UK, not already resident in the UK, at serious risk or displaced because of armed conflict within the last three years, have sought international protection outside the UK, be eligible for the Overseas fee rate, come from a lower income background, and hold a UCL offer by the scholarship panel meeting in early June.",
+    "benefits": [
+     "Full tuition fee waiver",
+     "Approx. GBP 20,000 maintenance payment",
+     "Guaranteed UCL accommodation single room",
+     "Immigration Health Surcharge and visa fee allowance",
+     "One return flight"
+    ],
+    "coverage": [
+     "Full tuition fees for the normal course duration",
+     "Maintenance payment of approximately GBP 20,000 to cover accommodation and living costs",
+     "Guaranteed single room in UCL accommodation (the accommodation fee is deducted from the maintenance payment)",
+     "Allowance covering the Immigration Health Surcharge and visa fees",
+     "One return flight"
+    ],
+    "requirements": [],
+    "documents": [
+     "Valid passport or other eligible travel document",
+     "Evidence of financial need (requested from shortlisted candidates)",
+     "Uploaded Word document or PDF answering the three Humanitarian Scholarship questions in the International Master's Awards form"
+    ],
+    "english_requirement": null,
+    "application_method": [
+     "Submit a complete UCL admission application, including submitted references, before the scholarship deadline",
+     "Complete the International Master's Awards form and answer the mandatory Humanitarian Scholarship questions",
+     "Upload a Word document or PDF answering the three Humanitarian Scholarship questions",
+     "If shortlisted, provide evidence of financial need and of a valid travel document"
+    ],
+    "selection_notes": "Awarded on the basis of financial need, on the recommendation of the UCL Humanitarian Scholarship panel. Shortlisted candidates are contacted in mid May; successful candidates are typically informed by late June.",
+    "best_fit": null,
+    "notes": null,
+    "duration": "Tenable for one year, unless the full-time programme is two years in length",
+    "application_period": "The 2026/27 cycle closed at 5pm BST on Thursday 7 May 2026. UCL has not yet published the date for the following annual cycle.",
+    "deadline_display": "5pm BST, Thursday 7 May 2026",
+    "deadline_date": null,
+    "region": "Europe",
+    "program_type": "Humanitarian scholarship for conflict-displaced postgraduate students",
+    "applicant_utility": null,
+    "official_details": null
+   },
+   "missing_fields": [
+    "description",
+    "requirements",
+    "english_requirement",
+    "best_fit",
+    "notes",
+    "deadline_date",
+    "applicant_utility",
+    "official_details"
+   ]
+  }
+ ],
+ "result_file": "C:\\Users\\GopaL\\Desktop\\Projects folder\\ScholarZone\\backend\\research_output\\live500\\results\\agent_487.json"
+}

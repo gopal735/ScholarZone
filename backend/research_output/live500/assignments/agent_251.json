@@ -1,0 +1,80 @@
+{
+ "agent": "agent_251",
+ "assignment_count": 1,
+ "scholarships": [
+  {
+   "id": 609,
+   "title": "Seoul G20 Global Leaders Scholarship (KDI School of Public Policy and Management)",
+   "country": "South Korea",
+   "degree": "Master's",
+   "funding_label": "Fully Funded",
+   "status": "upcoming",
+   "official_source": "KDI School of Public Policy and Management, Korea Development Institute",
+   "official_source_url": "https://www.kdischool.ac.kr/menu.es?mid=a40203000000",
+   "application_link": "https://www.kdischool.ac.kr/menu.es?mid=a40203000000",
+   "catalogue_url": null,
+   "official_updates_url": "https://www.kdischool.ac.kr/menu.es?mid=a40401000000",
+   "existing": {
+    "funding_amount": null,
+    "funding_currency": null,
+    "funding_period": null,
+    "tuition_coverage": 1,
+    "living_cost_coverage": 1,
+    "travel_coverage": 1,
+    "fully_funded": 1,
+    "description": "Full-tuition-waiver plus monthly stipend plus round-trip airfare award administered by KDI School, the graduate school of the Korea Development Institute, in Sejong. It is intended for working professionals in the public sector and other potential global leaders, and decisions are made by the school's Admissions Committee. There is no separate scholarship application: candidates are considered through the ordinary KDI School online admissions application.",
+    "eligibility": [
+     "Foreign national with a Bachelor's degree or higher",
+     "Applicants from G20 countries: at least 1 year of work experience in the public sector",
+     "Applicants from non-G20 countries: at least 6 years of work experience in the public sector",
+     "Graduates of a Korea Studies programme holding a Bachelor's (or Master's) degree in Korea Studies, regardless of nationality"
+    ],
+    "eligibility_summary": "Foreign nationals holding a Bachelor's degree or higher who satisfy one of: at least 1 year of public-sector work experience (G20 countries), at least 6 years of public-sector work experience (non-G20 countries), or a Bachelor's/Master's degree in Korea Studies regardless of nationality.",
+    "benefits": [
+     "Full tuition waiver",
+     "Monthly stipend (amount not published on the official scholarship page)",
+     "Round-trip airfare"
+    ],
+    "coverage": [
+     "Full tuition waiver for the Master's programme",
+     "Monthly stipend",
+     "Round-trip international airfare"
+    ],
+    "requirements": [
+     "Submit the KDI School online application with the supporting documents listed in the application guidelines",
+     "No separate scholarship application is required"
+    ],
+    "documents": [],
+    "english_requirement": null,
+    "application_method": [
+     "Online application through the KDI School international admissions system by the published admissions deadline"
+    ],
+    "selection_notes": null,
+    "best_fit": null,
+    "notes": "KDI School states that all accepted international students are considered for scholarship, and that the award is limited in number and decided by the Admissions Committee on the strength of the admission process overall.",
+    "duration": "Master's: about 1.5 years (4 semesters)",
+    "application_period": "Spring and Fall admissions cycles; the Spring 2027 cycle ran to a document-review result on 2 October 2026 and a final result announcement on 19 October 2026",
+    "deadline_display": null,
+    "deadline_date": null,
+    "region": "Asia",
+    "program_type": "Government institute scholarship (Korea Development Institute)",
+    "applicant_utility": null,
+    "official_details": null
+   },
+   "missing_fields": [
+    "funding_amount",
+    "funding_currency",
+    "funding_period",
+    "documents",
+    "english_requirement",
+    "selection_notes",
+    "best_fit",
+    "deadline_display",
+    "deadline_date",
+    "applicant_utility",
+    "official_details"
+   ]
+  }
+ ],
+ "result_file": "C:\\Users\\GopaL\\Desktop\\Projects folder\\ScholarZone\\backend\\research_output\\live500\\results\\agent_251.json"
+}

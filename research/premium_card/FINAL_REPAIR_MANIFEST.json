@@ -1,0 +1,81 @@
+{
+  "generated_at": "2026-10-07T00:00:00Z",
+  "auditor": "Kilo",
+  "total_transactions": 2,
+  "total_rows_updated": 698,
+  "failed_transactions": 0,
+  "rollback_count": 0,
+  "repairs": [
+    {
+      "id": "repair_001",
+      "description": "Full JSON column contamination cleanup - NULL all JSON columns then repopulate 16 matched targets from research output",
+      "timestamp": "2026-10-07T00:00:00Z",
+      "transaction_type": "BEGIN IMMEDIATE ... COMMIT",
+      "sql_summary": [
+        "UPDATE scholarships SET official_details = NULL, applicant_utility = NULL, programme_verification = NULL;",
+        "UPDATE scholarships SET official_details = ?, applicant_utility = ?, programme_verification = ? WHERE id = ?; -- x16 targets"
+      ],
+      "rows_affected": 691,
+      "target_ids": [271, 272, 273, 264, 335, 337, 341, 348, 349, 285, 356, 359, 299, 162],
+      "verification": {
+        "integrity_check": "ok",
+        "bug_contamination_before": 586,
+        "bug_contamination_after": 0,
+        "legitimate_research_references": 7,
+        "non_target_rows_with_json_after": 0
+      },
+      "safety_checks": [
+        "rowcount == 691 for bulk NULL",
+        "rowcount == 1 for each of 16 target updates",
+        "PRAGMA integrity_check == ok",
+        "no non-target rows modified"
+      ]
+    },
+    {
+      "id": "repair_002",
+      "description": "Phase 3 core column restoration to wave13_local snapshot values",
+      "timestamp": "2026-10-07T00:00:00Z",
+      "transaction_type": "BEGIN IMMEDIATE ... COMMIT",
+      "sql_summary": [
+        "UPDATE scholarships SET deadline_date = ?, funding_period = ?, english_requirement = ? WHERE id = ?; -- x7 rows"
+      ],
+      "rows_affected": 7,
+      "target_ids": [162, 271, 272, 273, 285, 299, 356],
+      "snapshot_source": "wave13_local.db",
+      "values_restored": {
+        "162": {"deadline_date": null, "funding_period": null, "english_requirement": null},
+        "271": {"deadline_date": null, "funding_period": "per academic year for the master's programme", "english_requirement": "skills in Danish."},
+        "272": {"deadline_date": null, "funding_period": null, "english_requirement": null},
+        "273": {"deadline_date": null, "funding_period": null, "english_requirement": "Proof of English language proficiency must be included in the online application for the master's level."},
+        "285": {"deadline_date": null, "funding_period": null, "english_requirement": null},
+        "299": {"deadline_date": null, "funding_period": "per month", "english_requirement": null},
+        "356": {"deadline_date": null, "funding_period": null, "english_requirement": "courses but this is a simplification. Experts call the attention to the fact that internationalisation has a deeper meaning and should affect higher education in more fundamental aspects."}
+      },
+      "verification": {
+        "integrity_check": "ok",
+        "all_7_rows_match_snapshot": true
+      },
+      "safety_checks": [
+        "rowcount == 1 for each of 7 updates",
+        "PRAGMA integrity_check == ok",
+        "no other columns modified",
+        "row count unchanged (691)"
+      ]
+    }
+  ],
+  "non_target_write_verification": {
+    "historical_31_ids": [6, 7, 22, 29, 38, 91, 142, 143, 186, 233, 249, 253, 281, 286, 316, 346, 347, 351, 357, 433, 454, 457, 461, 471, 490, 491, 506, 530, 533, 534, 635],
+    "preserved": true,
+    "restored": false,
+    "id_451_blocked": true,
+    "additional_missing_rows": 0
+  },
+  "final_state": {
+    "total_scholarships": 691,
+    "verification_history": 723,
+    "db_sha256": "10bfa7f6a30126df141b753e20babb9d87a95889f27ea88046c6c2963ad3aaaf",
+    "integrity_check": "ok",
+    "rows_with_json": 14,
+    "bug_contamination": 0
+  }
+}

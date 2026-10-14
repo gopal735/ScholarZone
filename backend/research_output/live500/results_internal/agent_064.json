@@ -1,0 +1,135 @@
+{
+  "agent": "agent_064",
+  "records": [
+    {
+      "id": 182,
+      "official": {
+        "official_source_urls": [
+          "https://vu.nl/en/education/more-about/incoming-master-scholarships"
+        ],
+        "application_link": "https://vu.nl/en/education/more-about/incoming-master-scholarships",
+        "catalogue_url": null,
+        "official_updates_url": "https://vu.nl/en/education/more-about/incoming-master-scholarships",
+        "deadline_central": "2027-02-01",
+        "deadline_central_display": "1 February 2027 (23:59 CET)",
+        "deadline_note": "Master's programme registration in Studielink opens 1 October 2026; VU advises submitting the programme application no later than 1 December 2026 because a conditional offer is a precondition for applying to the VUFP.",
+        "application_cycle": "2027/2028 cycle, September 2027 entry",
+        "status": "UPCOMING",
+        "status_note": "Official page: 'Applications are welcome from November 1st 2026' and 'Deadline VUFP application: 1 February 2027 (23:59 CET)'. Results expected mid-March 2027; offers must be accepted by the end of March 2027.",
+        "tuition_coverage_note": "Official wording: 'The VUFP scholarship covers the tuition fees only. It does not provide any additional allowance towards study or living costs, like rent, food, insurances. Be aware that you must be able to finance these living expenses by yourself.'",
+        "funding_amount": null,
+        "funding_currency": null,
+        "funding_period": null,
+        "tuition_coverage": true,
+        "living_cost_coverage": false,
+        "travel_coverage": null,
+        "fully_funded": false,
+        "benefits": [
+          "Full tuition fee waiver for a one- or two-year Master's programme; the second year is only extended if 100% of the first-year ECTS have been achieved",
+          "Automatic simultaneous application for the NL Scholarship (a one-time EUR 5,000 contribution towards living costs, first study year only)",
+          "Invitation to become a VU international student ambassador for the duration of the Master's programme"
+        ],
+        "eligibility": [
+          "You hold a non-EU/EEA passport and you are not eligible for the lower tuition fee, and you do not have Dutch nationality",
+          "You can prove your academic excellence (GPA equivalent to a Dutch 8)",
+          "You are conditionally or unconditionally admitted to the first year of a full-time English-taught Master's programme at VU Amsterdam starting per September 2027",
+          "Students starting in February cannot apply",
+          "Joint programmes where VU Amsterdam does not administer the admission process are excluded from VUFP",
+          "The degree with which you are seeking admission has not been obtained in the Netherlands, and you are not currently enrolled in a Bachelor or Master programme in the Netherlands",
+          "You do not need to complete a preparatory programme before the start of your Master's"
+        ],
+        "requirements": [
+          "Submit only ONE Master's programme choice for the VUFP, even if you applied for admission to more than one",
+          "Fill out the VUFP-NLS application form for the relevant academic year; older versions are not accepted",
+          "Paste the GPA proof / programme transcript and a grading scale explanation at the end of the form",
+          "Save the completed form as ONE file in .PDF format and upload it in the Scholarship section of your personal VU dashboard",
+          "The application form must include all answers plus the GPA proof; anything missing makes it incomplete and not evaluated",
+          "You may submit your application only once - resubmission is not allowed"
+        ],
+        "documents": [
+          "Completed VUFP-NLS application form for 2027-2028, saved as a single PDF",
+          "Bachelor's programme transcript or GPA proof with the most up-to-date grades",
+          "Grading scale explanation showing how the GPA is calculated"
+        ],
+        "selection_criteria": [
+          "Academic performance",
+          "Motivation",
+          "Motivation for this university and the specific programme",
+          "Future ambitions",
+          "Extracurricular activities"
+        ],
+        "coverage": [
+          "Full tuition fees for the awarded study period",
+          "No allowance towards study or living costs (rent, food, insurance)"
+        ],
+        "application_method": [
+          "Step 1: Register for a Master's programme in Studielink from 1 October 2026 and complete the registration in your personal VU dashboard (advised deadline 1 December 2026)",
+          "Step 2: Be conditionally admitted, then submit your VUFP application from 1 November 2026 in your personal VU dashboard by uploading the single PDF",
+          "Step 3: The faculty of the applied programme reviews applications received by 1 February 2027 and nominates applicants to the Central Scholarship Committee, which awards scholarships to the most talented students",
+          "Step 4: Receive the decision by email/notification, expected mid-March 2027",
+          "Step 5: Accept or decline the VUFP and NL Scholarship offer in your personal VU dashboard by the end of March 2027; offers not actioned within two weeks are withdrawn"
+        ],
+        "application_route": "Apply for admission via Studielink plus the VU dashboard, obtain at least a conditional offer, then upload one combined PDF form to the Scholarship section of the same dashboard.",
+        "study_mode": "Full-time",
+        "citizenship_residency": "Non-EU/EEA passport required; you must not hold Dutch nationality and must not be eligible for the lower Dutch tuition fee.",
+        "international_eligibility": "Open to non-EU/EEA applicants who pay the higher tuition fee only.",
+        "subject_or_agency_requirement": null,
+        "research_requirement": null,
+        "duration": "One or two years of a full-time English-taught Master's programme starting September 2027",
+        "description": "The VU Fellowship Programme is VU Amsterdam's merit-based tuition fee waiver for talented prospective non-EU/EEA students, which the university funds alongside VUvereniging. It removes the tuition fee but leaves living costs entirely to the student.",
+        "region": "Europe (Netherlands)",
+        "program_type": "Merit-based tuition fee waiver for non-EU/EEA students",
+        "english_requirement": "Admission to the first year of a full-time English-taught Master's programme at VU Amsterdam; the page publishes no separate test score."
+      },
+      "verification": {
+        "source_citations": [
+          "https://vu.nl/en/education/more-about/incoming-master-scholarships"
+        ],
+        "last_verified_date": "2026-10-10",
+        "verification_status": "confirmed",
+        "confidence": "high",
+        "not_confirmed": [
+          "funding_amount",
+          "funding_currency",
+          "funding_period",
+          "travel_coverage"
+        ],
+        "notes": "Live-fetched the VU Amsterdam scholarships page for incoming Master's students. The catalogue URL (vu.nl/en/deducation/scholarships/vu-fellowship-programme) returns 404; the working official page is the incoming-master-scholarships page, which carries the entire VUFP section including dates, eligibility, amounts and the application procedure. No per-student monetary amount is published: the only figures on the page are the approximately EUR 1 million VU-wide commitment and the separate EUR 5,000 NL Scholarship."
+      },
+      "applicant_utility": {
+        "summary": "Treat the VUFP as a tuition solution, not a study budget: the university's own wording is that it covers tuition only and gives no allowance for rent, food or insurance, so you must already be able to self-finance living costs in Amsterdam before you accept. The binding constraint is admission rather than the scholarship itself, because you need at least a conditional Master's offer before the VUFP form even becomes available, which is why VU tells you to apply for admission by 1 December 2026. The application is one-shot: resubmission is not allowed, and a single unanswered question or a missing transcript makes the file incomplete and therefore never evaluated. One VUFP place is reserved for a former Semester in Amsterdam student, so alumni of that programme should flag their application to the Semester in Amsterdam team.",
+        "best_fit": "Non-EU/EEA applicants whose transcript converts to a Dutch 8 or better and who can pair it with credible savings or family support for Amsterdam living costs.",
+        "application_readiness_checklist": [
+          "Get the Master's application into Studielink and the VU dashboard in early October 2026, not December - a conditional offer is a hard prerequisite",
+          "Request the bachelor transcript and a written grading-scale explanation early; foreign scales are converted by ECCTIS-style grade distribution statistics, not by a simple percentage match",
+          "Draft the motivation text covering motivation for VU and the specific programme, future ambitions and extracurriculars, since GPA is only one scoring factor",
+          "Convert everything into one PDF including the transcript pasted at the end, and proofread it before upload because there is no second submission",
+          "Note the two post-result deadlines in March 2027: the decision email and the two-week window to accept or decline"
+        ],
+        "common_rejection_risks": [
+          "Applying for admission too late to hold a conditional offer by the time the VUFP window closes",
+          "Leaving any question on the form blank, or omitting the transcript/grading scale, which makes the application non-evaluated",
+          "Treating the Dutch 8 minimum as a competitive score - it is only the threshold that lets your file be processed",
+          "Applying for a joint programme whose admission VU Amsterdam does not administer, or for a February intake",
+          "Assuming the NL Scholarship follows automatically from the VUFP - selection is separate and only a few VUFP winners receive it"
+        ],
+        "estimated_uncovered_costs": "Accommodation, food, health and liability insurance, study materials, residence-permit and travel costs, and any remaining tuition if only part of the programme is covered.",
+        "document_audit": [
+          "The transcript and grading scale explanation must be pasted into the application form itself, not sent as separate attachments",
+          "Only the bachelor GPA is considered, even if you already hold a Master's degree",
+          "If you have not yet officially graduated, the most up-to-date transcript showing your grades is what VU expects",
+          "Only the current academic year's form version is accepted - an older form is grounds for rejection",
+          "Upload must be a single PDF in the Scholarship section of the dashboard; split uploads or wrong formats are a common failure"
+        ],
+        "alerts": [
+          "Offers withdrawn automatically if you do not act within two weeks of the results email",
+          "A scholarship granted for one academic year cannot be postponed to another academic year",
+          "Students already inside a two-year Master's who missed the VUFP in 2026/2027 are barred from applying for 2027/2028",
+          "You can name only one Master's programme for the VUFP even if you hold several admission applications",
+          "If you reject the scholarship because of funding gaps, remember there is no allowance component to fall back on"
+        ],
+        "submission_workflow": "Studielink and dashboard registration first, conditional offer second, single-PDF upload to the dashboard Scholarship section third, then accept or decline online within two weeks of the March decision."
+      }
+    }
+  ]
+}

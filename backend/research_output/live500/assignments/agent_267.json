@@ -1,0 +1,89 @@
+{
+ "agent": "agent_267",
+ "assignment_count": 1,
+ "scholarships": [
+  {
+   "id": 630,
+   "title": "International Student Leadership Award (ISLA) - Fall",
+   "country": "Canada",
+   "degree": "Bachelor's",
+   "funding_label": "Entrance scholarship, non-renewable",
+   "status": "upcoming",
+   "official_source": "Toronto Metropolitan University",
+   "official_source_url": "https://www.torontomu.ca/international/admissions/paying-for-your-education/scholarships-awards",
+   "application_link": "https://www.torontomu.ca/international/admissions/paying-for-your-education/scholarships-awards",
+   "catalogue_url": "https://www.torontomu.ca/admissions/scholarships-awards",
+   "official_updates_url": "https://www.torontomu.ca/international/admissions/paying-for-your-education/scholarships-awards",
+   "existing": {
+    "funding_amount": null,
+    "funding_currency": null,
+    "funding_period": null,
+    "tuition_coverage": null,
+    "living_cost_coverage": null,
+    "travel_coverage": null,
+    "fully_funded": 0,
+    "description": null,
+    "eligibility": [
+     "Be an international student starting your first year of a Canadian post-secondary institution",
+     "Be an international student starting the first year of a full-time 4-year, or 5-year co-op, undergraduate degree at Toronto Metropolitan University",
+     "Be required to pay international tuition fees",
+     "Have a final admission average of at least 86%, an A, or an equivalent",
+     "Be enrolling in a post-secondary institution for the first time",
+     "If a gap year was taken, it must be no longer than one academic year",
+     "Hold International Visa student status and authorization at the time of registration and during the semester in which the award begins",
+     "Have first-class standing and not have previously been in attendance at a Canadian post-secondary institution on a full-time basis"
+    ],
+    "eligibility_summary": "Undergraduate international students who are starting their first year at a Canadian post-secondary institution on a full-time basis, are required to pay international tuition fees, and hold a final admission average of at least 86%, an A, or an equivalent. Any gap year taken must be no longer than one academic year.",
+    "benefits": [
+     "Cash award of $10,000 CAD",
+     "Up to 53 recipients for ISLA - Fall 2027"
+    ],
+    "coverage": [
+     "Cash award of $10,000 CAD",
+     "Up to 53 recipients for ISLA - Fall 2027"
+    ],
+    "requirements": [
+     "Write a personal statement for submission",
+     "Apply through the AwardSpring portal once the fall 2027 awards application opens on November 2, 2026",
+     "Have received a TMU Student Number and activated online identity to access AwardSpring, although applicants are eligible to apply before receiving an offer of admission",
+     "Submit before the extended deadline of February 16, 2027, as the form closes promptly at 11:59 p.m. ET"
+    ],
+    "documents": [
+     "Personal statement",
+     "Completed AwardSpring application"
+    ],
+    "english_requirement": null,
+    "application_method": [
+     "Register and start, or use an existing, TMU Student Number and activate the online identity",
+     "Log on to AwardSpring at torontomu.awardspring.ca",
+     "Complete the general application and then the ISLA follow-up components, including the personal statement",
+     "Submit before the deadline, monitoring email and the ChooseTMU Applicant Portal for decisions"
+    ],
+    "selection_notes": "The award targets international students who do well academically, volunteer, join clubs and show leadership qualities. Number of recipients is capped at 53 for fall 2027.",
+    "best_fit": "High-achieving international undergraduates with 86% or better final admission averages who can document volunteering, club involvement and leadership.",
+    "notes": "ISLA - Fall and ISLA - Winter are separate awards with separate deadlines; the ISLA - Winter 2027 deadline was September 14, 2026 and had already passed at the verification date, and the fall deadline explicitly does not apply to ISLA - Winter. The award is entrance-only and non-renewable.",
+    "duration": "Entrance award only, non-renewable",
+    "application_period": "The application for fall 2027 awards is available on AwardSpring from November 2, 2026 until the extended deadline of February 16, 2027. The form closes promptly at 11:59 p.m. ET and applications are not accepted past the deadline under any circumstances, including technical difficulties.",
+    "deadline_display": "February 16, 2027 (extended deadline). The fall 2027 awards application opens on AwardSpring on November 2, 2026",
+    "deadline_date": "2027-02-16",
+    "region": "North America",
+    "program_type": "University international merit scholarship",
+    "applicant_utility": null,
+    "official_details": null
+   },
+   "missing_fields": [
+    "funding_amount",
+    "funding_currency",
+    "funding_period",
+    "tuition_coverage",
+    "living_cost_coverage",
+    "travel_coverage",
+    "description",
+    "english_requirement",
+    "applicant_utility",
+    "official_details"
+   ]
+  }
+ ],
+ "result_file": "C:\\Users\\GopaL\\Desktop\\Projects folder\\ScholarZone\\backend\\research_output\\live500\\results\\agent_267.json"
+}

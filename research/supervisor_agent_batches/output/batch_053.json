@@ -1,0 +1,44 @@
+[
+  {
+    "scholarship_id": 423,
+    "outcome": "not_applicable",
+    "professors": [],
+    "notes": "Erasmus+ is the EU-funded academic mobility programme; in Poland it is implemented by the Foundation for the Development of the Education System (FRSE), the Polish National Agency. No institution is attached to the scholarship itself and no supervising professor or faculty tie exists on the official page. Official page live and readable (note: input URL /erasmus-plus-programme returned 404; current page is https://study.gov.pl/erasmus). Per batch rules, national/EU schemes without an attached institution are not_applicable."
+  },
+  {
+    "scholarship_id": 424,
+    "outcome": "not_applicable",
+    "professors": [],
+    "notes": "The Fulbright Program in Poland is administered by the Polish-U.S. Fulbright Commission, a bilateral government commission, not a university. It funds individuals to study/research at institutions of their own choosing; no supervising professor is attached to the scholarship on the official page. Fulbright is explicitly listed in batch rules as not_applicable. Official page live and readable at https://study.gov.pl/fulbright-program."
+  },
+  {
+    "scholarship_id": 425,
+    "outcome": "not_applicable",
+    "professors": [],
+    "notes": "CEEPUS is a multilateral exchange programme organised as subject-specific university networks across Central and Eastern European countries; exchanges run through member institutions chosen by the applicant, with no institution or supervisor attached to the scholarship itself. Per batch rules, national/multilateral schemes without an attached institution are not_applicable. Official page live and readable at https://study.gov.pl/ceepus-exchange-programme-central-and-eastern-europe."
+  },
+  {
+    "scholarship_id": 428,
+    "outcome": "not_applicable",
+    "professors": [],
+    "notes": "SAF Merit Scholarship is a MINDEF/SAF military undergraduate scholarship; recipients choose and are admitted to local or overseas universities on their own merit ('You are expected to apply for universities of your choice as admission is dependent on individual merit'). No institution or supervising professor is attached to the scholarship. Government scheme without attached institution -> not_applicable. Official MINDEF page live and readable."
+  },
+  {
+    "scholarship_id": 429,
+    "outcome": "not_applicable",
+    "professors": [],
+    "notes": "MHA Civilian Scholarship is a Ministry of Home Affairs civilian public service undergraduate scholarship; study is at a local or overseas university chosen by the recipient with no attached institution or faculty supervisor. Government scheme without attached institution -> not_applicable. Official MHA page live and readable."
+  },
+  {
+    "scholarship_id": 430,
+    "outcome": "not_applicable",
+    "professors": [],
+    "notes": "The Singapore Police Force Scholarship is a uniformed public service undergraduate scholarship offered by the Public Service Commission and the Singapore Police Force; country of study is 'Local or overseas universities' chosen by the applicant, with no attached institution or supervising professor. Government scheme without attached institution -> not_applicable. Official MHA page live and readable."
+  },
+  {
+    "scholarship_id": 431,
+    "outcome": "not_applicable",
+    "professors": [],
+    "notes": "PSC Scholarships are the Singapore Public Service Commission's merit-based undergraduate scholarships across three career tracks; holders pursue degrees at universities of their choice ('Our scholarship holders pursue a variety of disciplines at different universities'), with no attached institution or faculty supervisor. Government scheme without attached institution -> not_applicable. Official PSC pages live and readable."
+  }
+]

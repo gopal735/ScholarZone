@@ -1,0 +1,27 @@
+{
+  "shard": "w3-01",
+  "agent_id": "w3_01",
+  "today": "2026-10-04",
+  "host": "massey.ac.nz",
+  "records": [
+    {
+      "target_id": 615,
+      "title": "Massey University Doctoral Scholarship",
+      "official_source": "Massey University",
+      "official_source_url": "https://www.massey.ac.nz/study/scholarships-and-awards/massey-university-doctoral-scholarship"
+    },
+    {
+      "target_id": 658,
+      "title": "Undergraduate International Study Grants (Massey University)",
+      "official_source": "Massey University",
+      "official_source_url": "https://www.massey.ac.nz/study/scholarships-and-awards/undergraduate-international-study-grants"
+    },
+    {
+      "target_id": 659,
+      "title": "Postgraduate International Study Grants (Massey University)",
+      "official_source": "Massey University",
+      "official_source_url": "https://www.massey.ac.nz/study/scholarships-and-awards/postgraduate-international-study-grants"
+    }
+  ],
+  "added_later": false
+}

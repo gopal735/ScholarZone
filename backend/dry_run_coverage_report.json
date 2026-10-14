@@ -1,0 +1,172 @@
+{
+  "dry_run_report": {
+    "generated_at": "2026-09-06",
+    "phase": "DRY-RUN - NO INSERTION",
+    "database_snapshot": {
+      "total_existing": 303,
+      "distinct_countries": 29,
+      "duplicate_groups": 0,
+      "missing_urls": 0
+    },
+    "countries_processed": ["Australia", "Austria", "Belgium", "Canada", "China"],
+    "country_results": {
+      "Australia": {
+        "existing_count": 26,
+        "agent_candidates_found": 87,
+        "agent_new_scholarships": "87 candidates returned by deep research agent (output truncated in display)",
+        "websearch_verified_sources": [
+          "dfat.gov.au",
+          "education.gov.au",
+          "studyaustralia.gov.au",
+          "griffith.edu.au",
+          "jcu.edu.au",
+          "newcastle.edu.au",
+          "curtin.edu.au",
+          "swinburne.edu.au",
+          "westernsydney.edu.au",
+          "utas.edu.au",
+          "uow.edu.au",
+          "ecu.edu.au",
+          "vu.edu.au",
+          "bond.edu.au",
+          "acu.edu.au",
+          "murdoch.edu.au",
+          "unisq.edu.au",
+          "unisc.edu.au",
+          "cdu.edu.au",
+          "csu.edu.au",
+          "wa.gov.au",
+          "studymelbourne.vic.gov.au",
+          "study.nsw.gov.au"
+        ],
+        "notable_findings": [
+          "Australia Awards Scholarships 2027 cycle opens 1 Feb 2026, closes 30 April 2026",
+          "WA Premier's University Scholarship 2026 Round 7 open for Semester 2 2026",
+          "Multiple university-specific scholarships found: Griffith, JCU, Newcastle, Curtin, Deakin, RMIT, La Trobe, Victoria University",
+          "ANU Vice-Chancellor's International Achievement Award (20% tuition reduction)",
+          "Deakin STEM Scholarship (20% for specific countries)",
+          "RMIT Future Leaders Scholarship (20% for Indian subcontinent)",
+          "VU Global Research Scholarship (20% off for Master by Research/PhD)"
+        ],
+        "coverage_assessment": "strong"
+      },
+      "Austria": {
+        "existing_count": 22,
+        "agent_candidates_found": 18,
+        "agent_new_scholarships": "18 candidates returned by research agent",
+        "websearch_verified_sources": [
+          "oead.at",
+          "grants.at",
+          "marshallplan.at",
+          "asea-uninet.org",
+          "tuwien.at",
+          "univie.ac.at",
+          "uni-graz.at",
+          "studyinaustria.at",
+          "bmfwf.gv.at",
+          "bmeia.gv.at",
+          "fwf.ac.at"
+        ],
+        "notable_findings": [
+          "OeAD 2026/27 scholarship call open with EUR 15M budget",
+          "Ernst Mach Grant worldwide deadline 1 Feb 2026",
+          "Ernst Mach Grant FH deadline 1 Feb 2026",
+          "Ernst Mach ASEA-UNINET deadline 1 Mar 2026",
+          "Franz Werfel Fellowship deadline 1 Mar 2026",
+          "Richard Plaschka Fellowship deadline 15 Sep 2026 (last call)",
+          "Marshall Plan Scholarships Sept-Oct 2026 call",
+          "Independence 250 - Austrian Marshall Plan Foundation special call",
+          "APPEAR Austrian Partnership Programme",
+          "Indonesia-Austria Scholarship Programme (IASP)"
+        ],
+        "coverage_assessment": "strong"
+      },
+      "Belgium": {
+        "existing_count": 6,
+        "agent_candidates_found": 0,
+        "agent_new_scholarships": "none returned by agent",
+        "websearch_verified_sources": [
+          "ares-ac.be",
+          "vliruos.be",
+          "kuleuven.be",
+          "studyinbelgium.be",
+          "international.vluhr.be",
+          "ugent.be"
+        ],
+        "notable_findings": [
+          "Master Mind Scholarships 2026-2027 call open (EUR 480,000 budget, 30 scholarships)",
+          "VLIR-UOS ICP Connect Scholarships 2026-2027 (50 scholarships across 20 programmes)",
+          "ARES International Training Scholarships 2026-2027 (200 scholarships, deadline 19 Sep 2025)",
+          "MASTER IN - WBI Grants 2026-2027 (Wallonia-Brussels, grant EUR 10,020)",
+          "KU Leuven ICP Connect Scholarship (deadline 1 Feb 2026)"
+        ],
+        "coverage_assessment": "moderate - existing records may already cover major programmes"
+      },
+      "Canada": {
+        "existing_count": 12,
+        "agent_candidates_found": 0,
+        "agent_new_scholarships": "none returned by agent",
+        "websearch_verified_sources": [
+          "gc.ca",
+          "educanada.ca",
+          "frq.gouv.qc.ca",
+          "mcgill.ca",
+          "uottawa.ca",
+          "utoronto.ca",
+          "uwaterloo.ca"
+        ],
+        "notable_findings": [
+          "Study in Canada Scholarships (SICS) - short-term exchange programme",
+          "PBEEE Quebec Merit Scholarship 2026-2027 (Master's $20K/yr, PhD $25K/yr, Postdoc $35K)",
+          "Quebec PBEEE 2027-2028 announced (deadline 2 Dec 2026)",
+          "McGill PBEEE postdoc/short-term competition (July-Dec 2026 timeline)",
+          "UQTR PBEEE preselection deadline 29 Aug 2025",
+          "HEC Montreal PBEEE (June 1 - Aug 15, 2026)",
+          "Waterloo $10K International Student Entrance Scholarship",
+          "Mitacs Globalink Research Award (deadline 1 Mar 2027)"
+        ],
+        "coverage_assessment": "moderate - PBEEE is significant new finding"
+      },
+      "China": {
+        "existing_count": 7,
+        "agent_candidates_found": 0,
+        "agent_new_scholarships": "none returned by agent",
+        "websearch_verified_sources": [
+          "campuschina.org",
+          "china-embassy.gov.cn",
+          "tsinghua.edu.cn",
+          "ucas.ac.cn",
+          "nankai.edu.cn",
+          "shu.edu.cn"
+        ],
+        "notable_findings": [
+          "CSC Type B High Level Postgraduate Program Shanghai University 2026-2027",
+          "CSC Type B Silk Road Program Shanghai University (deadline 10 May 2026)",
+          "Nankai University CSC Silk Road Program (deadline 18 May 2026)",
+          "UCAS CSC Scholarship 2026 (deadline 31 Jan 2026)",
+          "CSC Bilateral Program Type A through embassies",
+          "Shanghai Government Scholarship (SGS) - all levels from Bachelor to PhD"
+        ],
+        "coverage_assessment": "moderate - university-specific CSC programmes are new findings"
+      }
+    },
+    "summary": {
+      "total_existing": 303,
+      "total_new_found_dry_run": "87+ (Australia deep agent) + 18 (Austria agent) + potential new from websearch",
+      "countries_with_new_findings": 5,
+      "countries_with_empty_agents": 3,
+      "countries_requiring_deeper_research": ["Belgium", "Canada", "China"],
+      "duplicate_count": 0,
+      "rejected_count": 0,
+      "insertion_status": "NONE - DRY RUN ONLY",
+      "next_steps": [
+        "Retrieve full Australia agent output (87 candidates)",
+        "Retrieve full Austria agent output (18 candidates)",
+        "Launch deeper research for Belgium, Canada, China",
+        "Validate all records against existing database URLs",
+        "Run duplicate detection and schema validation",
+        "Proceed to safe insertion only after validation"
+      ]
+    }
+  }
+}

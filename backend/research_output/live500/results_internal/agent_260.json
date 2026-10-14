@@ -1,0 +1,136 @@
+{
+  "agent": "agent_260",
+  "records": [
+    {
+      "id": 619,
+      "official": {
+        "official_source_urls": [
+          "https://studyinsaudi.sa/en/VisaOptions",
+          "https://studyinsaudi.sa/en"
+        ],
+        "application_link": "https://studyinsaudi.sa/en/VisaOptions",
+        "catalogue_url": "https://studyinsaudi.sa/en/Institutions",
+        "official_updates_url": "https://studyinsaudi.sa/en",
+        "deadline_central": "2026-10-06",
+        "deadline_central_display": "6 October 2026",
+        "deadline_note": "The Ministry's published timeline for the Second Semester Academic Calendar 2026 runs 16 September to 6 October 2026 for international and resident students. No next-cycle dates are published yet.",
+        "application_cycle": "Second Semester Academic Calendar 2026, application period 16 September to 6 October 2026",
+        "status": "CLOSED",
+        "status_note": "The Ministry of Education publishes the end of the application period for international and resident students for the Second Semester Academic Calendar 2026 as 6 October 2026, so that window has now closed.",
+        "tuition_coverage_note": "The Ministry's Study Visa & Pathways page describes the Full Scholarships tier as 'Tuition, housing & living - all covered', and the Partial Scholarships tier as covering part of tuition costs.",
+        "funding_amount": null,
+        "funding_currency": null,
+        "funding_period": null,
+        "tuition_coverage": true,
+        "living_cost_coverage": true,
+        "travel_coverage": null,
+        "fully_funded": true,
+        "benefits": [
+          "Full Scholarships: 'Tuition, housing & living - all covered'",
+          "Partial Scholarships: partial support covering part of tuition costs",
+          "Paid Study Programs: self-funded study options",
+          "Access to more than 50 public and private universities in Saudi Arabia through the platform's institution directory"
+        ],
+        "eligibility": [
+          "Applicant must be 16 years of age or older",
+          "Hold a valid passport with at least 6 months validity from the intended date of entry to the Kingdom",
+          "Hold acceptance from a licensed and accredited educational institution in the Kingdom",
+          "Provide proof of financial ability to cover tuition and living expenses, or a financial guarantee",
+          "Provide written consent of the guardian and companions for visa holders under 18 years of age",
+          "For the long-term visa: a medical report confirming freedom from infectious diseases, and a medical insurance document for the visa holder and dependants",
+          "For the long-term visa: proof of proficiency in the language of study, except for those wishing to study Arabic"
+        ],
+        "requirements": [
+          "Complete your platform profile before applying to academic programmes, since the platform states 'Your profile is incomplete. Complete it to apply to academic programs'",
+          "Apply through the educational institution where you wish to study by submitting an admission application",
+          "The institution reviews your application and issues an admission decision accordingly",
+          "Once approved by the institution, the application is processed by the institution and the Ministry of Education to complete final admission procedures"
+        ],
+        "documents": [
+          "Valid passport with at least 6 months validity from the intended date of entry",
+          "Acceptance letter from a licensed and accredited Saudi educational institution",
+          "Proof of financial ability to cover tuition and living expenses, or a financial guarantee",
+          "Written consent of the guardian and companions for applicants under 18",
+          "Medical report confirming freedom from infectious diseases (long-term visa)",
+          "Medical insurance document for the visa holder and dependants (long-term visa)",
+          "Proof of proficiency in the language of study, unless you wish to study Arabic (long-term visa)"
+        ],
+        "selection_criteria": [
+          "The platform publishes no separate selection criteria or weighting: the chosen educational institution reviews the application and issues an admission decision",
+          "An application status of 'Under Process' means the application is under review by the relevant institution and is being processed according to approved procedures"
+        ],
+        "coverage": [
+          "Full Scholarships tier: tuition, housing and living costs, described by the Ministry of Education as 'Tuition, housing & living - all covered'",
+          "Partial Scholarships tier: partial support, described as scholarships covering part of tuition costs"
+        ],
+        "application_method": [
+          "Create and fully complete your profile on the Study in Saudi platform",
+          "Browse the participating institutions and find your programme",
+          "Submit an admission application to the chosen educational institution through the institution",
+          "Await the institution's admission decision, then the Ministry of Education's final admission processing"
+        ],
+        "application_route": "Complete your Study in Saudi platform profile, then submit an admission application to your chosen institution through the platform; funding is decided through that institution-mediated process.",
+        "study_mode": "full-time",
+        "citizenship_residency": "The platform's published application window covers international and resident students; no nationality restriction is published on the page.",
+        "international_eligibility": "Yes, the platform invites international students, and its published timeline is specifically for international and resident students.",
+        "subject_or_agency_requirement": "Programmes are available at more than 50 public and private Saudi universities across Bachelor's, Master's and Doctorate levels; the platform also offers self-funded and partially funded routes alongside Full Scholarships.",
+        "research_requirement": "Not published as a separate scholarship requirement; admission is assessed by the chosen educational institution.",
+        "duration": "Not stated as a fixed scholarship term on the Study Visa & Pathways page; the long-term study visa it supports is issued for 1 year and is renewable annually",
+        "description": "The Ministry of Education's Study in Saudi platform administers government scholarships for international students at Saudi universities, offering Full Scholarships described as 'Tuition, housing & living - all covered', Partial Scholarships covering part of tuition costs, and self-funded paid study programmes, with applications made through the educational institution of choice.",
+        "region": "Middle East",
+        "program_type": "Government scholarship",
+        "english_requirement": "Proof of proficiency in the language of study is required for the long-term study visa, except for applicants wishing to study Arabic; the platform publishes no specific English test or score threshold."
+      },
+      "verification": {
+        "source_citations": [
+          "https://studyinsaudi.sa/en/VisaOptions",
+          "https://studyinsaudi.sa/en"
+        ],
+        "last_verified_date": "2026-10-10",
+        "verification_status": "confirmed",
+        "confidence": "high",
+        "not_confirmed": [
+          "funding_amount, funding_currency and funding_period - no monetary value is published for any of the three funding tiers",
+          "travel_coverage - the Full Scholarships tier is described as covering tuition, housing and living, with no mention of flights or travel tickets",
+          "the next application cycle's dates - only the Second Semester Academic Calendar 2026 window (16 September to 6 October 2026) is published",
+          "institution-level selection criteria, since the platform states the institution reviews and decides on admission without publishing a rubric"
+        ],
+        "notes": "The three funding tiers and their exact published wording, the short-term and long-term visa eligibility lists, the 16 September to 6 October 2026 application timeline, and the platform FAQ covering profile completion, application stages, data editing and passport updates were all read directly from the Ministry of Education's Study in Saudi platform."
+      },
+      "applicant_utility": {
+        "summary": "The 'Fully Funded' label belongs to one of three tiers on the same platform, so confirm which tier your chosen institution is actually offering you before treating the award as full funding. Applications are institution-mediated rather than central: you submit an admission application to the university, the institution decides, and the Ministry of Education then completes the final admission steps, so there is no separate scholarship form to win. The 16 September to 6 October 2026 window has closed, so the practical next step is to watch the platform for the following semester's timeline rather than to apply now.",
+        "best_fit": "International students aged 16 or over seeking a government-funded place at a participating Saudi university who can meet the institution's own admissions requirements.",
+        "application_readiness_checklist": [
+          "Complete every section of your Study in Saudi platform profile before you start applying, since the platform blocks applications while the profile is incomplete",
+          "Check your passport has at least 6 months validity beyond your intended entry date before you apply",
+          "Line up a licensed and accredited institution's acceptance, plus proof of financial ability or a financial guarantee for the visa",
+          "Prepare the medical report confirming freedom from infectious diseases and medical insurance for yourself and any dependants, both of which are long-term visa requirements",
+          "Verify what proof of language-of-study proficiency your institution accepts, since the platform states the requirement but sets no test or threshold",
+          "Double-check every field before submitting, because contact information can be edited later but other application data cannot"
+        ],
+        "common_rejection_risks": [
+          "Applying with an incomplete platform profile, which prevents you from applying to academic programmes at all",
+          "Assuming the Full Scholarships tier applies when the institution is offering a Partial Scholarship or a paid study programme instead",
+          "Submitting errors in your application data, since only contact information can be changed after submission",
+          "Passport validity of less than 6 months from the intended date of entry, which fails the visa conditions",
+          "Missing the medical report, medical insurance, or language proficiency documents required for the long-term visa",
+          "Renewing or updating your passport after submitting, since the passport number can only be changed on a new account with no applications submitted"
+        ],
+        "estimated_uncovered_costs": "Under the Partial Scholarships or Paid Study Programmes tiers, part or all of your tuition and living costs. The platform publishes no stipend figure, so the actual monthly value of housing and living support cannot be estimated from the official page.",
+        "document_audit": [
+          "Your passport number cannot be changed once an application has been submitted, so a passport renewal mid-application is a real problem",
+          "Only contact information is editable after submission, so treat the first submission as final",
+          "The acceptance letter must come from a licensed and accredited Saudi educational institution, not an agent or pathway provider",
+          "Financial ability or a financial guarantee is required for the visa even where a scholarship is offered, so scholarship evidence alone may not satisfy the visa step"
+        ],
+        "alerts": [
+          "The published window for the Second Semester Academic Calendar 2026 closed on 6 October 2026, so no application can be made until the next timeline is announced",
+          "The platform hosts three funding levels plus self-funded study, so an admission offer is not the same as a full scholarship",
+          "An 'Under Process' status simply means the institution is reviewing your file, so it is not an indication of a scholarship decision",
+          "Profile completeness is a hard gate: the platform will not let you apply to academic programmes until your profile is finished"
+        ],
+        "submission_workflow": "Complete your platform profile, submit an admission application to your chosen institution, wait for that institution's admission decision, and then the Ministry of Education completes the final admission procedures before the study visa is issued."
+      }
+    }
+  ]
+}

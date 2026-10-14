@@ -1,0 +1,142 @@
+{
+  "agent": "agent_117",
+  "records": [
+    {
+      "id": 309,
+      "official": {
+        "official_source_urls": [
+          "https://frq.gouv.qc.ca/en/program/merit-scholarship-program-for-foreign-students-pbeee-2026-2027-2",
+          "https://frq.gouv.qc.ca/en/open-competitions",
+          "https://frq.gouv.qc.ca/app/uploads/2025/08/pbeee-regles-du-concours.pdf"
+        ],
+        "application_link": "https://frq.gouv.qc.ca/en/program/merit-scholarship-program-for-foreign-students-pbeee-2026-2027-2",
+        "catalogue_url": "https://frq.gouv.qc.ca/en/complete-program-directory",
+        "official_updates_url": "https://frq.gouv.qc.ca/en/open-competitions",
+        "deadline_central": "2025-12-02",
+        "deadline_central_display": "2 December 2025, 4:00 p.m. EST (2026-2027 competition - closed)",
+        "deadline_note": "Universities and the CCTT network had to transmit preselected candidates to FRQ by 4 p.m. on 23 October 2025 (each university's own internal preselection deadline differs - see the FRQ toolbox deadline table); candidates preselected by the China Scholarship Council: before 31 March 2026. Results were announced April 2026. No 2027-2028 deadline has been published as of 2026-10-10.",
+        "application_cycle": "2026-2027 (rules marked out of competition; 2027-2028 cycle not yet published as of 2026-10-10)",
+        "status": "CLOSED",
+        "status_note": "The 2026-2027 program rules are marked 'out of competition' on the FRQ site; the December 2, 2025 deadline has passed and results were announced in April 2026. No 2027-2028 competition has been announced as of 2026-10-10 - monitor the FRQ open competitions page.",
+        "tuition_coverage_note": "In addition to the scholarship, MES offers all scholarship recipients an exemption from paying the higher tuition fees required for foreign students and the medical insurance coverage offered by the Régie de l'assurance maladie du Québec (RAMQ).",
+        "funding_amount": 25000,
+        "funding_currency": "CAD",
+        "funding_period": "per year",
+        "tuition_coverage": true,
+        "living_cost_coverage": true,
+        "travel_coverage": null,
+        "fully_funded": true,
+        "benefits": [
+          "Annual value of a Master's research scholarship (VM): $20,000",
+          "Annual value of a Doctoral research scholarship (V1, 1B, 1C, 1I, 1IS, 1W): $25,000 for the first 9 sessions, and $12,000 for the last 3 sessions if an extension is requested (maximum $87,000)",
+          "Annual value of a Postdoctoral scholarship (V2, 2B, 2C, 2I): $35,000 (one year)",
+          "Value of a Short-term research or professional development scholarship (V3, 3B, 3C, 3I, 3IS, 3W): $3,000 per month, maximum 4 instalments (4 months) totalling $12,000",
+          "Exemption from paying the higher tuition fees required for foreign students, and from RAMQ medical insurance coverage costs",
+          "Open to students of all countries, plus five bilateral components (Quebec-Brazil, Quebec-China, Quebec-India, Quebec-Israel, Quebec-Wallonia)"
+        ],
+        "eligibility": [
+          "Open to all candidates who are not Canadian citizens or permanent residents of Canada and who have not applied for permanent residence under Canadian immigration laws",
+          "Master's research component (VM): the master's programme must lead to the writing of a thesis - essays, research reports, dissertations and papers are not accepted, and professional master's programmes are not eligible; candidates must have been enrolled for up to three full-time semesters (1 year) or less before May 1, 2026",
+          "Doctoral research component (V1, 1B, 1C, 1I, 1IS, 1W): eligible for the first nine semesters of doctoral study, with all prior doctoral semesters (funded or unfunded) subtracted",
+          "Postdoctoral component (V2, 2B, 2C, 2I): PhD obtained no more than two years before the competition deadline, or doctoral dissertation submitted by January 15, 2026; research must be conducted in an institution other than the one that granted the doctorate, and doctoral supervisors and co-supervisors may not act as postdoctoral supervisor",
+          "Short-term component (V3, 3B, 3C, 3I, 3IS, 3W): technical and university students (option A) or researchers who completed a doctorate no more than five years before the deadline (option B); research must be in an institution other than the one at which the student was enrolled when applying",
+          "Must not have already received a Merit Scholarship for Foreign Students from the Ministere de l'Enseignement superieur du Quebec (MES); recipients must be physically present in Quebec for the entire funding period and attend the preselected institution; joint (cotutelle) degree programmes are not eligible"
+        ],
+        "requirements": [
+          "Be preselected by a Quebec university or the CCTT network as of October 23, 2025 (or by the China Scholarship Council as of March 31, 2026 for the Quebec-China component)",
+          "Create an account in the FRQnet system and, once contacted by FRQ, complete the electronic form with all required documents attached - files cannot be updated after the application deadline",
+          "Submit the application electronically by the competition deadline; an application submitted after the deadline is deemed inadmissible by the Fonds",
+          "Notify FRQ of acceptance or refusal of a funding offer no later than 30 days after notification via the FRQnet portal",
+          "Documents submitted in a language other than French or English must be accompanied by a basic translation",
+          "Submit a funding request accompanied by a commitment to read and respect the standards of ethics and integrity, the Open Access Dissemination Policy (2022) and the Responsible Conduct of Research of the Fonds de recherche du Quebec"
+        ],
+        "documents": [
+          "Photocopy of the identification page of a passport from the candidate's country of origin, or any other official document establishing the candidate's citizenship",
+          "Transcripts for every year of all university studies, whether completed or not (certificates, diplomas, bachelor's, master's, PhD), including transcripts for equivalences, organized chronologically from newest to oldest",
+          "For transcripts from outside North America: a letter explaining the grading system used by the institution concerned",
+          "Acknowledgements of receipt from the publisher for all articles submitted, and notices received from editors for articles accepted for publication",
+          "Postdoctoral component: a copy of the doctoral diploma (or attestation of the first reading of the dissertation); if these cannot be provided, a copy of the doctoral transcript",
+          "Postdoctoral and short-term components: a letter of acceptance from the supervisor, submitted by the supervisor themselves through the FRQnet portal"
+        ],
+        "selection_criteria": [
+          "Scholarships are offered following a competition process, based on the excellence of the applications",
+          "Scholarship holders are selected by multidisciplinary evaluation committees composed of professors/researchers",
+          "Scholarships are offered according to the availability of funds",
+          "All decisions are final and cannot be appealed; there is no review process"
+        ],
+        "coverage": [
+          "Master's research scholarship (VM): $20,000 per year, maximum 6 instalments (6 semesters) totalling $40,000",
+          "Doctoral research scholarship (V1, 1B, 1C, 1I, 1IS, 1W): $25,000 per year for the first 9 sessions and $12,000 for the last 3 sessions if an extension is requested, maximum 12 sessions (12 instalments) totalling $87,000",
+          "Postdoctoral scholarship (V2, 2B, 2C, 2I): $35,000, 3 instalments (one year) totalling $35,000",
+          "Short-term research or professional development scholarship (V3, 3B, 3C, 3I, 3IS, 3W): $3,000 per month, maximum 4 instalments (4 months) totalling $12,000",
+          "In addition, MES offers all recipients an exemption from paying the higher tuition fees required for foreign students and from the RAMQ medical insurance coverage"
+        ],
+        "application_method": [
+          "Universities and the CCTT network nominate preselected candidates through the FRQnet system, transmitted electronically by 4 p.m. on the institution's deadline (October 23, 2025 for the 2026-2027 cycle)",
+          "Preselected candidates create an FRQnet account; FRQ contacts them to complete the electronic form with the required documents attached, submitted electronically by the competition deadline",
+          "For the postdoctoral and short-term components, the supervisor submits the letter of acceptance directly through the FRQnet portal"
+        ],
+        "application_route": "Indirect only - a Quebec university or the CCTT network must preselect you first, then FRQ contacts you to complete the FRQnet form; candidates cannot apply directly to the Fonds",
+        "study_mode": "Full-time (recipients must be full-time dedicated to the programme of study, research or professional development)",
+        "citizenship_residency": "Open to all candidates who are not Canadian citizens or permanent residents of Canada and who have not applied for permanent residence under Canadian immigration laws",
+        "international_eligibility": "Yes - by design the competition is exclusively for foreign (non-Canadian) students and researchers from all countries",
+        "subject_or_agency_requirement": "No sector restriction: intended for foreign students or researchers from all research sectors (health, humanities and social sciences, arts and letters, natural sciences, engineering), with no research sector given preference. Candidates must be preselected by a Quebec university, the CCTT network, or the China Scholarship Council (Quebec-China component)",
+        "research_requirement": "Master's programme must lead to the writing of a thesis; postdoctoral and short-term research must be conducted at an institution other than the one that granted the doctorate or at which the student was enrolled when applying; recipients must be physically present in Quebec and full-time dedicated to the programme",
+        "duration": "Master's: maximum 6 instalments (6 semesters). Doctoral: maximum 12 sessions (12 instalments). Postdoctoral: maximum 12 months, not renewable. Short-term research or professional development: 4 months, not renewable.",
+        "description": "In support of the Quebec government's science policy, the Merit Scholarship for Foreign Students program supports the internationalization of research activities in Quebec's higher education institutions, attracts top foreign researchers and students, and creates cultural links for joint research projects. It is managed by the Fonds de recherche du Quebec - secteur Nature et technologies, commissioned and funded by the Ministere de l'Enseignement superieur du Quebec (MES), and has four components: master's research, doctoral research, postdoctoral and short-term research or professional development.",
+        "region": "Quebec, Canada",
+        "program_type": "Merit Scholarship Program for Foreign Students (PBEEE) - master's research (VM), doctoral research (V1 and bilateral), postdoctoral (V2 and bilateral), and short-term research or professional development (V3 and bilateral) scholarships",
+        "english_requirement": null
+      },
+      "verification": {
+        "source_citations": [
+          "https://frq.gouv.qc.ca/en/program/merit-scholarship-program-for-foreign-students-pbeee-2026-2027-2",
+          "https://frq.gouv.qc.ca/en/open-competitions"
+        ],
+        "last_verified_date": "2026-10-10",
+        "verification_status": "confirmed",
+        "confidence": "high",
+        "not_confirmed": [
+          "travel_coverage - no travel or installation allowance is published",
+          "english_requirement - no formal English test requirement is published; only the French/English document-language rule is stated",
+          "2027-2028 cycle deadline and amounts - not yet published as of 2026-10-10"
+        ],
+        "notes": "All amounts, component values, deadlines, eligibility and document rules taken directly from the official FRQ 2026-2027 program-rules page (marked out of competition; deadline 2 December 2025 passed, results April 2026); FRQ news and complete program directory confirm no 2027-2028 PBEEE cycle as of 2026-10-10."
+      },
+      "applicant_utility": {
+        "summary": "This scholarship is university-gated: a Quebec university or the CCTT network must nominate you first, so the deadline that actually matters is your target school's internal preselection date, which falls well before the FRQ cutoff. The package is a CAD 20,000-35,000 per-year stipend plus exemption of the foreign-student tuition surcharge and RAMQ insurance - substantial, but you still pay Quebec-resident tuition and all living costs. The published 2026-2027 round closed on 2 December 2025 with results announced April 2026, and the 2027-2028 cycle was not yet announced as of 10 October 2026, so open conversations with prospective supervisors and university international offices now to be on the preselection list when the next round launches.",
+        "best_fit": "International thesis-based master's and PhD students - and recent PhDs for the postdoctoral track - who already have a Quebec supervisor willing to back their nomination.",
+        "application_readiness_checklist": [
+          "Identify the PBEEE preselection contact at each target Quebec university and ask for their internal preselection deadline - it lands weeks or months before the FRQ date",
+          "Secure your supervisor's commitment early; for postdoctoral and short-term components the supervisor must personally submit the acceptance letter through FRQnet",
+          "Order transcripts for every year of every university programme attended, including incomplete ones, ordered newest to oldest, plus a grading-system explanation letter if you studied outside North America",
+          "Assemble your passport bio page, publisher acknowledgements for submitted or accepted articles, and (postdoctoral) your doctoral diploma or dissertation defence attestation",
+          "Watch the FRQ open competitions page and the FRQnet portal for the next-cycle launch; preselection lists are typically built around two months before the FRQ deadline"
+        ],
+        "common_rejection_risks": [
+          "Missing the university's internal preselection deadline - only preselected candidates can apply, and universities nominate a capped number (a maximum of 16 across the all-countries components, one candidate per bilateral component per year)",
+          "Applying through a professional or non-thesis master's programme, or proposing a second degree too similar to a previously PBEEE-funded one",
+          "Uploading files in a language other than French or English without a basic translation, or illegible/low-resolution scans that cannot be verified",
+          "Postdoctoral candidates whose PhD is more than two years old, or who propose research at their doctorate-granting institution or under their doctoral supervisor",
+          "Cotutelle (joint degree) proposals, and candidates who have already received an MES Merit Scholarship for Foreign Students",
+          "Submitting after the deadline or leaving incomplete attachments - the Fonds deems late applications inadmissible and files cannot be updated once the deadline passes"
+        ],
+        "estimated_uncovered_costs": "No figure is published. The exemption covers the higher foreign-student tuition surcharge and RAMQ insurance only; the CAD 20,000-35,000 annual stipend must cover housing, food and local transport, and no travel or installation allowance is published, so budget for flights, CAQ/study-permit fees and moving costs yourself.",
+        "document_audit": [
+          "Transcripts must cover every year of all university studies, completed or not, ordered newest to oldest; forgotten equivalence transcripts from courses taken elsewhere are a common gap",
+          "Supervisor acceptance letters (postdoctoral and short-term components) must come from the supervisor's own FRQnet account - the Fonds may reject letters uploaded by the applicant, and creating an account on a supervisor's behalf can make the application ineligible",
+          "Because uploads cannot be updated after the deadline, submit final versions early; the FRQ explicitly warns about the volume of requests received at the end of the competition period"
+        ],
+        "alerts": [
+          "The published 2026-2027 round is closed (deadline passed 2 December 2025; results announced April 2026) and the 2027-2028 cycle had not been announced as of 10 October 2026",
+          "Preselection by a Quebec university, the CCTT network, or the China Scholarship Council is mandatory and precedes the FRQ deadline - without it you cannot apply at all",
+          "Scholarship payments begin only after FRQ receives a copy of your study permit (doctoral) or work permit (postdoctoral), so start immigration paperwork as soon as an offer letter exists",
+          "You must be physically present in Quebec for the entire funding period and full-time dedicated to the programme; part-time enrolment and cotutelle programmes break eligibility",
+          "Committee decisions are final with no appeal, and an offer must be accepted or refused in FRQnet within 30 days - a refused offer cannot be reactivated",
+          "Concurrent holding with other government scholarships is prohibited, while private-sector, home-country government and university scholarships are allowed"
+        ],
+        "submission_workflow": "University/CCTT nominates the candidate in FRQnet -> FRQ contacts the nominee -> candidate creates an FRQnet account and completes the electronic form with attachments -> FRQ eligibility check (notice by mid-December) -> multidisciplinary committee evaluation -> results at the end of April -> accept or refuse in FRQnet within 30 days."
+      }
+    }
+  ]
+}

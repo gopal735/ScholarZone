@@ -1,0 +1,156 @@
+{
+  "agent": "agent_307",
+  "records": [
+    {
+      "id": 688,
+      "official": {
+        "official_source_urls": [
+          "https://secihti.mx/convocatoria/becas-nacionales/convocatoria-becas-nacionales-de-inclusion-2026",
+          "https://secihti.mx/wp-content/uploads/2026/02/Conv_Inclusion26-20260625T235701.pdf",
+          "https://secihti.mx/wp-content/uploads/2026/02/TDR_ByAMJF2026-20260223T170825.pdf",
+          "https://secihti.mx/wp-content/uploads/2026/02/TDR_ACPI2026-20260223T170915.pdf",
+          "https://secihti.mx/wp-content/uploads/2026/02/TDR_ACDISC2026-20260223T171127.pdf",
+          "Calendar-adjustment Avisos published on the call page: https://secihti.mx/wp-content/uploads/2026/02/Mod_Calendario-20260818T200321.pdf, https://secihti.mx/wp-content/uploads/2026/02/Mod_Calen_PIND-20260917T225701.pdf and https://secihti.mx/wp-content/uploads/2026/02/Mod_Calen_PDISC-20260917T225658.pdf"
+        ],
+        "application_link": "https://secihti.mx/convocatoria/becas-nacionales/convocatoria-becas-nacionales-de-inclusion-2026",
+        "catalogue_url": "https://secihti.mx/convocatoria_categoria/becas-nacionales",
+        "official_updates_url": "https://secihti.mx/convocatoria/becas-nacionales/convocatoria-becas-nacionales-de-inclusion-2026",
+        "deadline_central": "2026-09-25",
+        "deadline_central_display": "25 September 2026 (overall close of the call; the 2026 application windows themselves closed earlier - Track A on 27 August 2026, Tracks B and C on 17 September 2026)",
+        "deadline_note": "The call header carries one overall closing date (25 September 2026, 11:59 PM CDMX), but each Término de Referencia sets its own application window: Track A (jefas de familia) received applications from 6 July to 27 August 2026, with an inconsistency-fixing period to 3 September 2026 and applicant formalisation by 24 September 2026; Tracks B and C received applications from 10 August to 17 September 2026, with an inconsistency period to 24 September 2026 and formalisation until 8 October 2026. The latter windows were changed by the Primer, Segundo and Tercer Aviso published on the call page (18 August 2026 and 17 September 2026).",
+        "application_cycle": "2026 cycle (published 23 February 2026; SECIHTI labels the page 'Periodo: 2026')",
+        "status": "CLOSED",
+        "status_note": "The SECIHTI page still shows 'Estatus de la convocatoria: Abierta', but that label is stale: every 2026 application window in the three Términos de Referencia closed in August/September 2026 and the page header itself lists 25 September 2026 as the 'Conclusión de recepción de solicitudes'. No dates for a next cycle are published.",
+        "tuition_coverage_note": "The convocatoria does not pay tuition as such. It sets out the covered items ('rubros que ampara la beca') in each Término de Referencia: for Track A a monthly economic support of MXN $4,500.00, an annual MXN $2,000.00 for school-material expenses assigned at the start of each school year in August or September, a one-off MXN $20,000.00 for operating expenses of the study programme (inscription, materials, transport, etc.), plus ISSSTE medical services; for Tracks B and C one-off complementary supports of MXN $20,000.00 for study-programme operating expenses, MXN $15,000.00 for research-project operating expenses, MXN $15,000.00 for degree-completion (titulación) procedures, and for Track C additionally MXN $15,000.00 for assistive devices, technical aids and support systems.",
+        "funding_amount": 4500,
+        "funding_currency": "MXN",
+        "funding_period": "per month (Track A); one-off amounts also published",
+        "tuition_coverage": false,
+        "living_cost_coverage": true,
+        "travel_coverage": true,
+        "fully_funded": false,
+        "benefits": [
+          "Track A: Apoyo económico mensual de $4,500.00 (cuatro mil quinientos pesos 00/100 M.N.)",
+          "Track A: Monto anual por $2,000.00 (dos mil pesos 00/100 M.N.) para gastos de material escolar, asignados al inicio de cada ciclo escolar anual en los meses de agosto o septiembre",
+          "Track A: Apoyo económico por única ocasión para gastos de operación del programa de estudios (inscripción, materiales, transporte, etc.) por $20,000.00 (veinte mil pesos 00/100 M.N.)",
+          "Track A: Servicio médico proporcionado por el Instituto de Seguridad y Servicios Sociales de los Trabajadores del Estado (ISSSTE)",
+          "Tracks B and C: Apoyo 1 - gastos de operación en el programa de estudios por $20,000.00; Apoyo 2 - gastos de operación de su proyecto de investigación por $15,000.00; Apoyo 3 - trámites de titulación hasta por $15,000.00 (quince mil pesos 00/100 M.N. cada uno)",
+          "Track C only: Apoyo 4 - adquisición de dispositivos de asistencia, ayudas técnicas y sistemas de apoyo que ayudan a compensar o disminuir limitaciones funcionales por $15,000.00 (quince mil pesos 00/100 M.N.)"
+        ],
+        "eligibility": [
+          "Track A: ser mujer de nacionalidad mexicana (Mexican woman)",
+          "Track A: ser la principal o única aportadora económica de su familia (principal or sole economic provider of the family)",
+          "Track A: estar inscrita en un programa presencial de licenciatura o técnico superior universitario en Instituciones de Educación Superior Públicas (IES)",
+          "Track A: tener a su cargo la manutención de al menos una hija o hijo menor de 18 años, or a child with a disability who is of legal age",
+          "Tracks B and C: contar con una beca de posgrado nacional vigente (hold a current SECIHTI national postgraduate scholarship); Track B requires self-identification as indigenous, Track C a valid SNDIF disability identification",
+          "Restrictions: no equivalent support from another Mexican state body for the same purpose; no non-compliance report or debt under budget programme S190; not seeking a degree level already obtained with a SECIHTI scholarship; not registered as applicant or holder in another S190 call"
+        ],
+        "requirements": [
+          "Crear, actualizar o validar el curriculum vitae en el Perfil Único (Rizoma-Secihti)",
+          "Registrar y enviar la solicitud conforme a la Guía para la postulación de Becas de Inclusión",
+          "Firmar electrónicamente la solicitud con la Clave Única de Registro de Población (CURP) vigente",
+          "Dar seguimiento a la solicitud en el sistema informático Ápeiron (https://apeiron.secihti.mx/) y atender la prevención within 5 business days",
+          "Formalizar el Convenio de Asignación de Beca (CAB) y el Anexo Uno (Carta de Asignación de Beca) con firma electrónica vía CURP, después de registrar previamente una cuenta bancaria a nombre de la persona solicitante",
+          "Haber concluido el trámite de conclusión of any previous SECIHTI scholarship before registering the application"
+        ],
+        "documents": [
+          "Formato MBP-MJF (Track A application format, PDF on the convocatoria page) and the reporting formats FAC-MMJF (Track A), FAC-PI (Track B), FAC-PDISC (Track C) sent to becasinclusion@secihti.mx by 31 January 2027",
+          "Track A family evidence: acta de nacimiento for each child under 18; for an adult child with a disability the birth certificate plus front and back of a current SNDIF disability ID; plus a constancia de inexistencia de matrimonio, acta of dissolution of the marital bond, judicial resolution, or acta de madre jefa de familia",
+          "Track A: carta bajo protesta de decir verdad, in the prescribed Formato, declaring she is the principal or sole economic provider of her family",
+          "Track B: constancia de pertenencia a comunidad indígena issued by traditional indigenous authorities, ejidal or bienes comunales authorities, or municipal authorities, stating ethnicity, community, municipality and federal entity",
+          "Tracks B and C (Apoyo 2 and Apoyo 3): constancia on institutional letterhead of the registered research project or of the titulación procedures, each with the programme coordinator's signature and the institutional seal",
+          "Track C: copia (anverso y reverso) of a valid SNDIF disability identification"
+        ],
+        "selection_criteria": [
+          "Los criterios para la selección y asignación para cada tipo de beca o apoyo complementario están establecidos en los términos de referencia correspondientes",
+          "Selection and assignment are also subject to the budget provisions issued by the Secretaría de Hacienda y Crédito Público (SHCP)",
+          "Track A: manual documentary review of the application and the jefa de familia evidence; SECIHTI publishes results through the becas system and Ápeiron",
+          "Applications failing the requisitos, or blocked by the restricciones e incompatibilidades in Bases Segunda, are not processed"
+        ],
+        "coverage": [
+          "Track A: monthly economic support, annual school-material amount, one-off study-programme operating support, and ISSSTE health services; the convocatoria does not cover tuition fee payments",
+          "Track A: the one-off MXN 20,000.00 covers operating expenses associated with the study programme such as inscription, materials and transport",
+          "Tracks B and C: complementary supports paid en una sola exhibición for study-programme operating expenses, research-project operating expenses, degree-completion (titulación) procedures, and (Track C) assistive devices and technical aids",
+          "La ministración de los recursos se realiza una vez firmado el CAB; el primer pago within 20 business days of formalisation and includes retroactivity to the month the scholarship started"
+        ],
+        "application_method": [
+          "Online application through the SECIHTI becas system (Ápeiron / Perfil Único Rizoma-Secihti), following the published manuals: Proceso de Solicitud de Becas y Apoyos Complementarios Nacionales Inclusión 2026, Proceso de Formalización, Proceso de Registro de Cuentas Bancarias and Nivel inmediato anterior",
+          "Electronic signature of the application with a valid CURP",
+          "Formalisation of the CAB and Anexo Uno, then registration of a bank account in the name of the applicant before payment",
+          "Track A applicants use Formato MBP-MJF; Tracks B and C apply for the complementary supports they qualify for"
+        ],
+        "application_route": "Apply online via the SECIHTI Perfil Único (Rizoma-Secihti) CV and the Ápeiron scholarships system, signing the application electronically with a valid CURP; Tracks B and C must already hold a current SECIHTI national postgraduate scholarship.",
+        "study_mode": "Track A: estudios presenciales escolarizados de licenciatura o técnico superior universitario; Tracks B and C: national postgraduate study as holder of a SECIHTI national postgraduate scholarship",
+        "citizenship_residency": "Mexican nationality is required in all three tracks; no separate residency rule is published. The convocatoria states that La Secihti no intervendrá en la gestión de la situación migratoria de la persona solicitante ni de sus dependientes económicos.",
+        "international_eligibility": "No - every track requires Mexican nationality (de nacionalidad mexicana); foreign nationals are not eligible for this call.",
+        "subject_or_agency_requirement": "Track A: enrolment in a public higher-education institution (IES Públicas); Tracks B and C: holder of a SECIHTI national postgraduate scholarship (Beca de Posgrado Nacional) in humanities, sciences, technologies or innovation.",
+        "research_requirement": "Tracks B and C: Apoyo 2 requires a registered research project evidenced by a Constancia de registro del proyecto de investigación signed by the programme coordinator; Apoyo 3 requires a constancia of titulación procedures. Apoyos 2 and 3 cannot be requested at the same time.",
+        "duration": "Track A: vigencia mínima 6 meses y máxima 48 meses, set by the duration of the study programme and recorded in the Carta de Asignación de Beca (Anexo Uno) of the CAB; it cannot be extended beyond that maximum. Tracks B and C: the complementary support is paid in a single instalment (una sola exhibición).",
+        "description": "SECIHTI's Becas Nacionales de Inclusión 2026 contributes to social equity and the reduction of social, cultural and economic inequalities in science, humanities, technology and innovation through scholarships for Mexican mothers who head their families and complementary supports for indigenous people and people with disabilities who hold a SECIHTI national postgraduate scholarship.",
+        "region": "Mexico (national)",
+        "program_type": "Government scholarship (Secretaría de Ciencia, Humanidades, Tecnología e Innovación - Dirección General de Becas y Apoyos a la Comunidad Científica y Humanística)",
+        "english_requirement": null
+      },
+      "verification": {
+        "source_citations": [
+          "https://secihti.mx/convocatoria/becas-nacionales/convocatoria-becas-nacionales-de-inclusion-2026",
+          "https://secihti.mx/wp-content/uploads/2026/02/TDR_ByAMJF2026-20260223T170825.pdf",
+          "https://secihti.mx/wp-content/uploads/2026/02/TDR_ACPI2026-20260223T170915.pdf",
+          "https://secihti.mx/wp-content/uploads/2026/02/TDR_ACDISC2026-20260223T171127.pdf",
+          "https://secihti.mx/wp-content/uploads/2026/02/Conv_Inclusion26-20260625T235701.pdf"
+        ],
+        "last_verified_date": "2026-10-10",
+        "verification_status": "confirmed",
+        "confidence": "high",
+        "not_confirmed": [
+          "english_requirement (the call and the Términos de Referencia publish no language requirement)",
+          "living_cost_coverage / travel_coverage as separate named rubros (Track A's monthly support and the one-off operating support are not labelled as living or travel costs; transport is explicitly named inside the one-off operating support)",
+          "tuition_coverage (no tuition fee item is published - only the rubros listed in each Término de Referencia)",
+          "the exact dates published in the three Avisos (the PDFs are scanned images and could not be read; only their titles and the calendar in the Términos de Referencia were used)",
+          "selection_criteria detail (the convocatoria points to the Términos de Referencia and to SHCP budget provisions without publishing scoring rules)",
+          "renewal procedures and the Trámite de Conclusión de la Beca manuals",
+          "the date of the next cycle (none published)"
+        ],
+        "notes": "Amounts were taken from the SECIHTI Términos de Referencia A, B and C PDFs linked from the official convocatoria page (all on secihti.mx); the call dates, eligibility bases, restrictions, application and payment procedure come from the Convocatoria 2026 PDF and the convocatoria page itself. The 'Abierta' status label on the page is inconsistent with the 2026 calendar, which has closed, so the record is marked CLOSED. The three Aviso PDFs are scanned images and could not be text-extracted; only the TDR calendars were used."
+      },
+      "applicant_utility": {
+        "summary": "This is one call with three completely different doors, and the door you knock on decides the money: single mothers get a MXN 4,500 monthly stipend plus MXN 2,000 a year for school materials and a one-off MXN 20,000 for study costs, whereas indigenous applicants and applicants with disabilities who already hold a current SECIHTI national postgraduate scholarship get one-off top-ups of MXN 20,000, MXN 15,000 and MXN 15,000 (plus MXN 15,000 for assistive devices under Track C). Nothing here pays your tuition, so treat this as income support rather than a full ride. The 2026 round has closed, so the practical task right now is building the file - Perfil Único CV, a valid CURP e-signature and the Track A or Track B/C evidence - so you can submit in the first days of the next window.",
+        "best_fit": "Mexican single mothers enrolled face-to-face in a public-IES bachelor's or upper-technical programme who are the family's main breadwinner (Track A), or current SECIHTI national postgraduate scholars who self-identify as indigenous or hold an SNDIF disability credential and need money for study costs, research costs or titulación (Tracks B and C).",
+        "application_readiness_checklist": [
+          "Register or refresh your CV in the SECIHTI Perfil Único (Rizoma-Secihti) before the window opens and confirm your CURP is valid for electronic signature - Track A academic-programme registration ran 29 June to 9 July 2026, ahead of the application window",
+          "For Track A: collect birth certificates for every child under 18, or for an adult child with a disability plus both sides of a current SNDIF disability ID, plus a marriage-status document and the sworn letter declaring you are the main provider",
+          "For Track B: obtain the constancia de pertenencia a comunidad indígena early - it must come from traditional indigenous, ejidal/comunal or municipal authorities and name your ethnicity, community, municipality and federal entity",
+          "For Track B/C Apoyo 2 or 3: ask your programme coordinator in advance for the letterhead constancia with project registration, description, schedule, their signature and the institutional seal",
+          "Open the bank account in your own name as soon as results are announced; the CAB cannot be formalised without it",
+          "Decide before applying whether you want Apoyo 2 (research) or Apoyo 3 (titulación) - you cannot request both at the same time, and applying for the wrong one is an easy own goal"
+        ],
+        "common_rejection_risks": [
+          "Being registered as applicant or holder in another S190 call - an automatic bar, easy to trip if you hold a scholarship in another SECIHTI programme",
+          "An equivalent state support for the same purpose, which makes the request incompatible",
+          "An unfinished trámite de conclusión on an earlier SECIHTI scholarship, or a non-compliance report or debt under S190",
+          "Missing the 5-business-day prevención window in Ápeiron - unaddressed, the file is desechado",
+          "Not signing the CAB and Anexo Uno electronically with your CURP within the formalisation window (24 September 2026 for Track A, 8 October 2026 for Tracks B and C), which cancels the request",
+          "A bank account not held in the applicant's own name, which blocks formalisation and therefore payment"
+        ],
+        "estimated_uncovered_costs": "Tuition fees are not covered at all; the monthly stipend and one-off supports do not cover living costs beyond the amounts published (MXN 4,500 per month in Track A), and Track B/C supports are capped reimbursements for study, research or titulación expenses. Health cover is provided only through ISSSTE registration by Track A holders, and Tracks B and C do not list a medical rubro.",
+        "document_audit": [
+          "Every constancia for Apoyo 2 and Apoyo 3 must be on institutional letterhead and must carry the coordinator's signature and the institutional seal - a plain letter is not enough",
+          "The SNDIF disability ID must be current and both the front and the reverse must be copied; an expired card fails",
+          "Track A's sworn letter must follow the prescribed Formato, not free-form wording",
+          "The indigenous-community constancia has to specify ethnicity, community, municipality and federal entity; a vague letter from a relative is not acceptable",
+          "Birth certificates are required per child, so families with several children must supply one for each",
+          "Reporting formats FAC-MMJF / FAC-PI / FAC-PDISC are due by 31 January 2027 at becasinclusion@secihti.mx, and missing them is treated as a breach of obligations"
+        ],
+        "alerts": [
+          "The web page still says 'Abierta' even though every 2026 application window is shut - trust the calendar in the Términos de Referencia, not the status badge",
+          "Track A and Tracks B/C have different application windows (6 July-27 August 2026 vs 10 August-17 September 2026) and different formalisation deadlines, so a date you saw for one track does not apply to the other",
+          "The calendar was modified mid-call by three Avisos (18 August and two on 17 September 2026), so re-read the call page rather than relying on the original published dates",
+          "SECIHTI will not fix technical problems reported late and only guarantees help if you contact the CCA at least three business days before the deadline, so submit early; once the inconsistency-fixing period ends no document can be added or changed",
+          "Award amounts are subject to budget availability (sujeto a disponibilidad presupuestaria), and payments in December and January follow SHCP spending rules",
+          "Names of scholarship holders are published in SECIHTI's padrón de beneficiarios, and the award can be audited for five years after it ends"
+        ],
+        "submission_workflow": "Upload the application and evidence through the SECIHTI becas system, sign it with your CURP, watch Ápeiron for any prevención during the inconsistency window, then formalise the CAB and Anexo Uno electronically and register your bank account for payment."
+      }
+    }
+  ]
+}

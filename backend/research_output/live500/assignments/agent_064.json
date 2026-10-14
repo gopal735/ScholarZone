@@ -1,0 +1,88 @@
+{
+ "agent": "agent_064",
+ "assignment_count": 1,
+ "scholarships": [
+  {
+   "id": 182,
+   "title": "VU Fellowship Programme (VUFP)",
+   "country": "Netherlands",
+   "degree": "Master's",
+   "funding_label": "Tuition Fee Waiver",
+   "status": "open",
+   "official_source": "Vrije Universiteit Amsterdam",
+   "official_source_url": "https://vu.nl/en/deducation/scholarships/vu-fellowship-programme",
+   "application_link": "https://vu.nl/en/deducation/scholarships/vu-fellowship-programme",
+   "catalogue_url": "https://vu.nl/en/education/more-about/incoming-master-scholarships",
+   "official_updates_url": "https://vu.nl/en/education/more-about/incoming-master-scholarships",
+   "existing": {
+    "funding_amount": null,
+    "funding_currency": null,
+    "funding_period": null,
+    "tuition_coverage": 1,
+    "living_cost_coverage": 0,
+    "travel_coverage": null,
+    "fully_funded": 0,
+    "description": "The VU Fellowship Programme (VUFP) is a merit-based tuition fee waiver from Vrije Universiteit Amsterdam for non-EU/EEA applicants who pay higher tuition fees. It can be granted for a one- or two-year full-time English-taught Master's programme starting in September 2027, and a second year is only extended if 100% of the ECTS of the first year are achieved. The official page states the VUFP 'covers the tuition fees only' and 'does not provide any additional allowance towards study or living costs, like rent, food, insurances'. Applications for the 2027/2028 cycle open on 1 November 2026 and close on 1 February 2027 at 23:59 CET.",
+    "eligibility": [
+     "Hold a non-EU/EEA passport and not be eligible for the lower tuition fee",
+     "Not hold Dutch nationality",
+     "Prove academic excellence with a GPA equivalent to a Dutch 8",
+     "Be conditionally or unconditionally admitted to the first year of a full-time English-taught VU Amsterdam Master's programme starting September 2027",
+     "Students starting in February cannot apply",
+     "Joint programmes where VU Amsterdam does not administer the admission process are excluded",
+     "The degree for which admission is sought has not been obtained in the Netherlands",
+     "Not currently enrolled in a Bachelor or Master programme in the Netherlands",
+     "No preparatory programme required before the start of the Master's"
+    ],
+    "eligibility_summary": "Applicants must hold a non-EU/EEA passport and not be eligible for the lower Dutch tuition fee, prove academic excellence equivalent to a Dutch grade 8, and hold a conditional or unconditional offer for the first year of a full-time English-taught VU Amsterdam Master's programme starting September 2027. February starters, joint programmes VU does not administer, and applicants with a Dutch degree or current Dutch enrolment are excluded.",
+    "benefits": [
+     "Full tuition fee waiver for one or two study years",
+     "Automatic simultaneous application to the NL Scholarship living-cost contribution",
+     "Invitation to become a VU international student ambassador"
+    ],
+    "coverage": [
+     "Full tuition fees for the awarded study period",
+     "No allowance towards study or living costs (rent, food, insurance)"
+    ],
+    "requirements": [
+     "Submit the complete VUFP application form with all questions answered",
+     "Paste the GPA proof/programme transcript and grading scale explanation at the end of the form",
+     "Upload the single PDF in the Scholarship section of the personal VU dashboard",
+     "Apply for only one Master's programme for the VUFP",
+     "Submit the application only once - resubmission is not allowed"
+    ],
+    "documents": [
+     "Completed VUFP-NLS application form for the relevant academic year, saved as a single PDF",
+     "Bachelor's programme transcript or GPA proof",
+     "Grading scale explanation showing how the GPA is calculated"
+    ],
+    "english_requirement": "Admission to a full-time English-taught Master's programme at VU Amsterdam",
+    "application_method": [
+     "Register for the Master's programme in Studielink from 1 October 2026 and complete the personal VU dashboard registration",
+     "Be admitted (at least conditionally) to the programme",
+     "Complete the VUFP-NLS application form and upload the single PDF to the Scholarship section of the personal VU dashboard"
+    ],
+    "selection_notes": "The faculty of the applied Master's programme reviews all VUFP applications received by the deadline and nominates applicants to the Central Scholarship Committee, which awards scholarships to the most talented students. Results are based on academic performance and motivation; GPA is only one of several scoring factors, together with motivation for the university/specific programme, future ambitions and extracurricular activities. Results are expected mid-March 2027 and offers must be accepted by the end of March 2027.",
+    "best_fit": "Non-EU/EEA applicants with a GPA equivalent to a Dutch 8 who already hold a conditional or unconditional offer for a September 2027 English-taught VU Amsterdam Master's programme and can self-fund living costs.",
+    "notes": "The VUFP is financially supported by VUvereniging, a social network of people connected to Vrije Universiteit Amsterdam. Applying for the VUFP automatically also applies for the NL Scholarship (formerly Holland Scholarship Programme), which is a separate one-time EUR 5,000 contribution towards living costs awarded to only about 20-25 candidates per year and only for the first study year. One VUFP scholarship is reserved for applicants who previously completed a semester or full academic year at VU Amsterdam through the Semester in Amsterdam programme. Students already enrolled in a two-year Master's who were not awarded the VUFP in 2026/2027 cannot apply for 2027/2028.",
+    "duration": "One- or two-year full-time English-taught Master's programme starting September 2027",
+    "application_period": "Applications open 1 November 2026 and close 1 February 2027 (23:59 CET) for September 2027 entry. VU advises applying for the Master's programme admission by 1 December 2026.",
+    "deadline_display": "Applications are welcome from November 1st 2026. Deadline VUFP application: 1 February 2027 (23:59 CET).",
+    "deadline_date": "2027-02-01",
+    "region": "Europe",
+    "program_type": "Merit-based tuition fee waiver for non-EU/EEA students",
+    "applicant_utility": null,
+    "official_details": null
+   },
+   "missing_fields": [
+    "funding_amount",
+    "funding_currency",
+    "funding_period",
+    "travel_coverage",
+    "applicant_utility",
+    "official_details"
+   ]
+  }
+ ],
+ "result_file": "C:\\Users\\GopaL\\Desktop\\Projects folder\\ScholarZone\\backend\\research_output\\live500\\results\\agent_064.json"
+}

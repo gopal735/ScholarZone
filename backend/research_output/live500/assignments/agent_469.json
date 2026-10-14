@@ -1,0 +1,175 @@
+{
+ "agent": "agent_469",
+ "assignment_count": 2,
+ "scholarships": [
+  {
+   "id": 32,
+   "title": "Swedish Institute Scholarship",
+   "country": "Sweden",
+   "degree": "Master's only",
+   "funding_label": "Fully Funded",
+   "status": "upcoming",
+   "official_source": "Swedish Institute (Svenska institutet)",
+   "official_source_url": "https://si.se/en/apply/scholarships",
+   "application_link": "https://si.se/en/apply/scholarships",
+   "catalogue_url": "https://si.se/app/uploads/2025/11/eligible-master-programmes-si-sgp-2026_2027-tillganglighetsanpassad.pdf",
+   "official_updates_url": "https://si.se/en/apply/scholarships/swedish-institute-scholarships-for-global-professionals",
+   "existing": {
+    "funding_amount": 12000,
+    "funding_currency": "SEK",
+    "funding_period": "per month",
+    "tuition_coverage": 1,
+    "living_cost_coverage": 1,
+    "travel_coverage": 1,
+    "fully_funded": 1,
+    "description": "The Swedish Institute, a Swedish government agency, awards fully funded scholarships for master's studies in Sweden to global professionals from 34 eligible countries. The SI Scholarship for Global Professionals covers full tuition fees, a monthly living-expense allowance of SEK 12,000 and a one-time travel grant, and runs once a year for master's studies starting in the autumn semester. The Swedish Institute also runs the Pioneering Women in STEM scholarship, awarded through the same single application. The 2026/2027 call closed on 25 February 2026 and recipients were announced on 23 April 2026; the next call is expected to be published on si.se in mid-November 2026.",
+    "eligibility": [
+     "Armenia, Azerbaijan, Bangladesh, Belarus, Bolivia, Brazil, Colombia, Ecuador, Egypt, Ethiopia, Georgia, Guatemala, Indonesia, Iraq, Jordan, Kenya, Liberia, Malaysia, Mexico, Moldova, Morocco, Nigeria, Peru, Philippines, Rwanda, Senegal, South Africa, Tanzania, Thailand, Uganda, Ukraine, Uzbekistan, Vietnam, Zambia",
+     "Liability to pay tuition fees at University Admissions",
+     "Admitted or conditionally admitted to an eligible programme on the admissions results day (26 March 2026 for the 2026/2027 cycle)",
+     "At least 3,000 hours of proven work experience prior to February 2026 for applicants from Bangladesh, Bolivia, Brazil, Colombia, Ecuador, Egypt, Ethiopia, Guatemala, Indonesia, Iraq, Jordan, Kenya, Liberia, Malaysia, Mexico, Morocco, Nigeria, Peru, Philippines, Rwanda, Senegal, South Africa, Tanzania, Thailand, Uganda, Uzbekistan, Vietnam and Zambia",
+     "No minimum hours for applicants from Armenia, Azerbaijan, Belarus, Georgia, Moldova and Ukraine, but more experience is prioritised",
+     "Not currently enrolled in or holding a degree from a Swedish university or university college",
+     "Not having resided in Sweden for cumulatively two years or more before the scholarship period (starting August 2026)"
+    ],
+    "eligibility_summary": "Bachelor's degree, 3000 hours work experience, leadership qualities, apply to Swedish university simultaneously",
+    "benefits": [
+     "SEK 11,000/month living costs",
+     "Travel grant",
+     "Insurance",
+     "Tuition covered separately by university"
+    ],
+    "coverage": [
+     "SEK 11,000/month living costs",
+     "Travel grant",
+     "Insurance",
+     "Tuition covered separately by university"
+    ],
+    "requirements": [
+     "Citizen of one of the 34 eligible countries (residency in that country not required)",
+     "Liability to pay tuition fees to Swedish universities",
+     "Admitted or conditionally admitted to an SI-eligible master's programme on the University Admissions results day",
+     "Demonstrated work experience, certified on SI's template",
+     "Demonstrated leadership experience from a current or previous employer, or civil society engagement",
+     "Not a previous holder of a Swedish Institute scholarship for studies in Sweden",
+     "Not a Swedish or EU/EEA citizen, and no Swedish permanent residence or work/family-based permit"
+    ],
+    "documents": [
+     "SI application",
+     "University application simultaneously",
+     "CV",
+     "Motivation letter",
+     "References"
+    ],
+    "english_requirement": "IELTS/TOEFL as per university requirement",
+    "application_method": [
+     "Apply for an eligible master's programme at University Admissions (universityadmissions.se) and pay the application fee",
+     "Save the eight-digit University Admissions application number",
+     "Submit one SI scholarship application at apply-scholarships.si.se listing up to four eligible programmes",
+     "Keep the admissions offer unchanged; reserves and late admissions are not eligible"
+    ],
+    "selection_notes": "SI scores applications against the aim of the programme and the government strategy it reports to, prioritises work and leadership experience relevant to the chosen field, aims for gender balance and country spread, and states it has no quotas for specific countries, fields of study or universities.",
+    "best_fit": "Young professionals with leadership experience",
+    "notes": "The scholarship does not include insurance, does not provide additional grants for family members, does not cover the University Admissions application fee, does not allow changes to the study programme and does not allow extensions or changes to the scholarship period.",
+    "duration": "One- or two-year full-time master's programme",
+    "application_period": "Annual cycle. For academic year 2026/2027: university applications 16 October 2025 - 15 January 2026, SI scholarship portal 9-25 February 2026, results 23 April 2026.",
+    "deadline_display": "Typically February each year",
+    "deadline_date": null,
+    "region": "Europe",
+    "program_type": "Government scholarship (Swedish Institute public agency), master's level",
+    "applicant_utility": null,
+    "official_details": null
+   },
+   "missing_fields": [
+    "deadline_date",
+    "applicant_utility",
+    "official_details"
+   ]
+  },
+  {
+   "id": 510,
+   "title": "Nordic Scholarship Programme (Nordic Africa Institute)",
+   "country": "Sweden",
+   "degree": "Master's, PhD",
+   "funding_label": "Fully Funded",
+   "status": "closing-soon",
+   "official_source": "The Nordic Africa Institute (NAI), Uppsala",
+   "official_source_url": "https://nai.uu.se/opportunities/nordic-scholarship-programme.html",
+   "application_link": "https://nai.uu.se/opportunities/nordic-scholarship-programme.html",
+   "catalogue_url": null,
+   "official_updates_url": "https://nai.uu.se/opportunities.html",
+   "existing": {
+    "funding_amount": 450,
+    "funding_currency": "SEK",
+    "funding_period": "per day",
+    "tuition_coverage": null,
+    "living_cost_coverage": null,
+    "travel_coverage": null,
+    "fully_funded": 0,
+    "description": "A one-month funded research stay at the Nordic Africa Institute in Uppsala for Africa-focused researchers and students already based at a university or research centre in Sweden, Finland, Denmark or Iceland. The scholarship covers return travel at the least expensive fare, free centrally located accommodation in Uppsala, a desk and computer in a shared office at the Institute, and a subsistence allowance of SEK 450 per day. It is a short-term research stay award, not a degree programme.",
+    "eligibility": [
+     "You must be pursuing Africa-oriented studies/research within the fields of social sciences or humanities",
+     "You can be a master student, PhD candidate, postdoctoral or mid-career researcher",
+     "You may apply regardless of citizenship, but you must be affiliated to and based at a university or research centre in Sweden, Finland, Denmark or Iceland (both when you apply and when you take up the scholarship)",
+     "The scholarship is awarded for a one-month stay at the Nordic Africa Institute in Uppsala"
+    ],
+    "eligibility_summary": "Africa-oriented studies or research in the social sciences or humanities, with a current affiliation to a university or research centre in Sweden, Finland, Denmark or Iceland, held both at the time of application and when the scholarship is taken up.",
+    "benefits": [
+     "Access to the Nordic Africa Institute's library collections on contemporary Africa (books, periodicals, newspapers, and government publications)",
+     "Support to connect to existing work at the Institute through NAI research hosts",
+     "Access to a workspace in a shared office at the Institute for the one-month stay"
+    ],
+    "coverage": [
+     "Travelling expenses for the least expensive fare from residential address (in Sweden, Finland, Denmark and Iceland) to Uppsala and return",
+     "Free accommodation centrally located in Uppsala",
+     "A subsistence allowance of SEK 450 per day",
+     "A desk and computer in a shared office at the Institute for the one-month stay",
+     "Access to the Institute's library collections on contemporary Africa (books, periodicals, newspapers, and government publications)",
+     "Connection to existing work at the Institute through NAI research hosts"
+    ],
+    "requirements": [
+     "Applications are submitted online",
+     "The application and appendices must be in English",
+     "Incomplete applications will not be considered",
+     "The application must be uploaded with all four listed documents"
+    ],
+    "documents": [
+     "Up-to-date CV, including list of publications (if any)",
+     "Outline of research project, 3-5 pages: objective of the research project (the research topic should be clearly identified and contextualized within its academic discipline); method and time frame (how the research project will be accomplished, the research method, data gathering techniques and time frame); theoretical explication (a brief indication of the theoretical basis of the research project)",
+     "Work plan, 1 page: specific for the time spent at the Institute, clarifying what part of the research project the applicant will work on during the stay",
+     "Reference: a signed letter of support from the applicant's supervisor or head of department, which confirms current affiliation and field of research"
+    ],
+    "english_requirement": "The application and all appendices must be in English.",
+    "application_method": [
+     "Open the Nordic Scholarship Programme 2027 application link on the Nordic Africa Institute opportunities page",
+     "Register and complete the online application",
+     "Upload the up-to-date CV including list of publications (if any)",
+     "Upload the 3-5 page outline of the research project covering objective, method and time frame, and theoretical explication",
+     "Upload the 1 page work plan specific to the stay at the Institute",
+     "Upload the signed reference letter from the supervisor or head of department confirming current affiliation and field of research",
+     "Submit before the closing date of 11 October 2026",
+     "Wait for the outcome, which is communicated as soon as the selection process is finalized and by the end of November 2026 at the latest"
+    ],
+    "selection_notes": "Applications are primarily evaluated based on the outline of the research project. The Institute states that it reads proposals carefully and that it is important to learn about the applicant's research in their own words and framing, and that using AI to develop the text may place an applicant at a disadvantage in the assessment process. Scholarships are awarded once per year.",
+    "best_fit": "Master's students, PhD candidates, postdoctoral and mid-career researchers based in Sweden, Finland, Denmark or Iceland whose work is Africa-oriented and located in the social sciences or humanities",
+    "notes": "The scholarship does not include health care insurance or other insurances. Persons currently or previously employed by or otherwise professionally affiliated with the Nordic Africa Institute are not eligible for scholarships. In the extraordinary event that the scholarship programme does not receive full funding or cannot for other unforeseen reasons be implemented in 2027, applicants will be informed accordingly. Successful candidates who have been awarded but cannot take up the stay are not covered by any published replacement policy. Applications are submitted once per annual round.",
+    "duration": "One-month stay at the Nordic Africa Institute in Uppsala",
+    "application_period": "Open now for scholarships in 2027, closing 11 October 2026; applicants informed of the outcome by the end of November 2026 at the latest",
+    "deadline_display": "Closing date 11 October 2026",
+    "deadline_date": "2026-10-11",
+    "region": "Europe",
+    "program_type": "Research funding",
+    "applicant_utility": null,
+    "official_details": null
+   },
+   "missing_fields": [
+    "tuition_coverage",
+    "living_cost_coverage",
+    "travel_coverage",
+    "applicant_utility",
+    "official_details"
+   ]
+  }
+ ],
+ "result_file": "C:\\Users\\GopaL\\Desktop\\Projects folder\\ScholarZone\\backend\\research_output\\live500\\results\\agent_469.json"
+}

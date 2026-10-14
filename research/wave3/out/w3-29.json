@@ -1,0 +1,21 @@
+{
+  "agent_id": "w3_29",
+  "shard": "w3-29",
+  "host": "grants.at",
+  "today": "2026-10-04",
+  "logo_override": {
+    "url": "https://grants.at/fileadmin/Dokumente/oead.at/00_site_config/OeAD_logo.png",
+    "page_url": "https://grants.at/en/",
+    "official_host": true,
+    "alt_text": "OeAD Logo",
+    "validation_result": "verified",
+    "validation_detail": "png, probed via webfetch -> 'Image fetched successfully' (HTTP 200 + image content type); full-colour OeAD lockup - the red 'equals' mark plus near-black 'oead' wordmark, dark on a light/transparent field so it stays legible on a light card",
+    "image_kind": "official_logo",
+    "image_format": "png",
+    "verified_at": "2026-10-04T00:00:00+00:00",
+    "host_evidence": "same_registrable_domain",
+    "_award": "Ernst Mach Grant - worldwide"
+  },
+  "target_ids": [526],
+  "notes": "Awarding body is OeAD - Austria's Agency for Education and Internationalisation, and grants.at is OeAD's own scholarship database (its footer states the OeAD is a non-profit GmbH owned by the Republic of Austria, and Matomo is tagged oead.matomo.cloud), so the OeAD mark is correct. Route: webfetched https://grants.at/en/, the awarding body's own site, and read the header markup. The primary header logo appears twice (mobile bar and desktop bar) as <img class='header__logo-image' src='/fileadmin/Dokumente/oead.at/00_site_config/OeAD_logo.png' width='125' height='60' alt='OeAD Logo'>, served from grants.at itself - no CDN, no third party. Probed it: 200 plus an image content type. Rule 3 checked and it passes: the wordmark is near-black with a red mark, not white-on-transparent. I also probed the second OeAD logo on the same host, /static/app/build/assets/logo-oead-subtenant-B0g8B902.svg (alt 'Logo OeAD', 56x14, in the dark 'Visit the OeAD website' strip), and rejected it: reading the SVG source shows the wordmark paths are fill=\"#fff\" on a transparent field, i.e. exactly the white-on-transparent case rule 3 forbids. Rejected under rule 2 as well: the footer owner logo /fileadmin/Public/_processed_/0/d/csm_BMFWF_Logo_srgb_EN_5e25b725e9.png is the Austrian Federal Ministry of Women, Science and Research - the ministry that owns OeAD, not the body that runs the grant, which is precisely the provenance error the brief warns about. The og:image (og_fallback.jpg) and the hero photo (csm_Kopfstand_...) are artwork, not a logo."
+}

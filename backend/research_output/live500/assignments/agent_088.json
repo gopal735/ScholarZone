@@ -1,0 +1,77 @@
+{
+ "agent": "agent_088",
+ "assignment_count": 1,
+ "scholarships": [
+  {
+   "id": 264,
+   "title": "University of Helsinki Scholarship Programme (tuition fee waivers)",
+   "country": "Finland",
+   "degree": "Master's",
+   "funding_label": "Tuition Fee Waiver",
+   "status": "upcoming",
+   "official_source": "University of Helsinki",
+   "official_source_url": "https://www.helsinki.fi/en/admissions-and-education/apply-bachelors-and-masters-programmes/tuition-fees-and-scholarship-programme",
+   "application_link": "https://www.helsinki.fi/en/admissions-and-education/apply-bachelors-and-masters-programmes/tuition-fees-and-scholarship-programme",
+   "catalogue_url": "https://www.helsinki.fi/en/admissions-and-education/apply-bachelors-and-masters-programmes/what-can-you-study-us",
+   "official_updates_url": "https://www.helsinki.fi/en/admissions-and-education/apply-bachelors-and-masters-programmes",
+   "existing": {
+    "funding_amount": null,
+    "funding_currency": null,
+    "funding_period": "per academic year for two years",
+    "tuition_coverage": 1,
+    "living_cost_coverage": 0,
+    "travel_coverage": 0,
+    "fully_funded": 0,
+    "description": "The University of Helsinki scholarship programme consists of tuition fee waivers of 50% or 100% of the programme tuition fee for master's applicants from outside the EU/EEA and Switzerland who are liable to pay tuition fees. Most awards are only 50%, and only a very limited number of waivers exist, so the competition is severe. The university states plainly that it does not offer scholarships to cover living expenses. The waiver is applied for with the same application form as the master's programme and takes effect only after a scholarship agreement is signed.",
+    "eligibility": [
+     "Eligible for a master's programme at the University of Helsinki",
+     "Liable for tuition fees: citizen of a non-EU/EEA country without permanent residence status in Finland",
+     "Meets the requirements for a Finnish entry visa and residence permit",
+     "Excellent results in previous studies that can be proved in the application",
+     "Applications to English-language bachelor's programmes receive no tuition fee waiver"
+    ],
+    "eligibility_summary": "Applicants to an International Master's Programme at the University of Helsinki who are liable to pay tuition fees, i.e. citizens of non-EU/EEA countries without permanent residence status in Finland, who can obtain a Finnish entry visa and residence permit and can prove excellent previous study results.",
+    "benefits": [
+     "Tuition fee waiver of 50% or 100%; most awards are 50%",
+     "Waiver continues into the second study year if at least 55 ECTS were completed in the first year",
+     "Certain English-language bachelor's graduates continuing to a Helsinki master's receive a waiver automatically by GPA: 3.8/5 for 100%, 3.4-3.7/5 for 50%"
+    ],
+    "coverage": [
+     "50% or 100% of the tuition fee for two years",
+     "No living costs",
+     "No travel costs"
+    ],
+    "requirements": [],
+    "documents": [
+     "Master's programme application form",
+     "Previous study records proving excellent results",
+     "Documents required by the master's programme"
+    ],
+    "english_requirement": null,
+    "application_method": [
+     "Answer the tuition fee waiver request on the same master's application form and submit all attachments"
+    ],
+    "selection_notes": "The master's programme conducts an academic assessment of the degree and scholarship application and chooses the recipients of the 50% and 100% waivers; the result is sent in the official acceptance e-mail and a scholarship agreement must be signed.",
+    "best_fit": "Outstanding non-EU master's applicants to University of Helsinki",
+    "notes": "The page still labels the two waiver categories 'for application round 2025-26', so the categories themselves are stated for the previous round; the programme structure and rules are otherwise unchanged.",
+    "duration": "Two years; students must study full time and earn at least 55 ECTS per year, and after the first study year progress is checked before the scholarship is continued",
+    "application_period": "5 to 19 January 2027 for International Master's Programmes starting in autumn 2027",
+    "deadline_display": "\"Apply for a tuition fee waiver with the same application form used to apply to the Master's programme.\" The University of Helsinki's own admissions page states: 'International Master's Programmes: The application period for studies starting in autumn 2027 is from 5 to 19 January 2027.'",
+    "deadline_date": "2027-01-19",
+    "region": "Europe",
+    "program_type": "Merit-based tuition fee waiver, 50% or 100%, decided with the admission result",
+    "applicant_utility": null,
+    "official_details": null
+   },
+   "missing_fields": [
+    "funding_amount",
+    "funding_currency",
+    "requirements",
+    "english_requirement",
+    "applicant_utility",
+    "official_details"
+   ]
+  }
+ ],
+ "result_file": "C:\\Users\\GopaL\\Desktop\\Projects folder\\ScholarZone\\backend\\research_output\\live500\\results\\agent_088.json"
+}

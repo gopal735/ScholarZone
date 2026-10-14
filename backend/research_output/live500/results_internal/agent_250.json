@@ -1,0 +1,140 @@
+{
+  "agent": "agent_250",
+  "records": [
+    {
+      "id": 608,
+      "official": {
+        "official_source_urls": [
+          "https://asian-university.org/admissions/scholarships-financial-aid",
+          "https://asian-university.org/admissions/tuition-fees/",
+          "https://asian-university.org/admissions/who-can-apply/"
+        ],
+        "application_link": "https://apps.auw.edu.bd/admission",
+        "catalogue_url": "https://asian-university.org/admissions/scholarships-financial-aid",
+        "official_updates_url": "https://asian-university.org/admissions",
+        "deadline_central": null,
+        "deadline_central_display": null,
+        "deadline_note": "No closing date is published. The official admissions pages carry an 'ADMISSIONS ARE OPEN!' banner and applications run with the annual admissions cycle.",
+        "application_cycle": "Annual admissions cycle (currently open)",
+        "status": "OPEN",
+        "status_note": "Every AUW admissions page currently carries the banner 'ADMISSIONS ARE OPEN!' and no closing date is stated.",
+        "tuition_coverage_note": "Full scholarships cover tuition, room and board, course supplies, student activities, and primary healthcare; full and partial scholarships are offered based on each student's financial circumstances.",
+        "funding_amount": null,
+        "funding_currency": null,
+        "funding_period": null,
+        "tuition_coverage": true,
+        "living_cost_coverage": true,
+        "travel_coverage": true,
+        "fully_funded": true,
+        "benefits": [
+          "Full and partial scholarships based on each student's financial circumstances; AUW states it strives to meet the demonstrated financial need of each admitted student",
+          "Full scholarships cover tuition, room and board, course supplies, student activities, and primary healthcare",
+          "AUW waives ALL fees and covers all costs for students who are first in their family to enter university and those who enter through the Pathways for Promise programme",
+          "Travel grants may be awarded to international students who qualify for financial assistance, limited to a one-way ticket to Chittagong and a ticket home after graduation",
+          "Currently 85% of AUW students receive scholarship support"
+        ],
+        "eligibility": [
+          "Have completed 10+2, a total of 12 years of education",
+          "60% of marks or equivalent grades in the final examinations of Grade X and Grade XII, including a minimum score of 60% in English and Maths individually",
+          "For IB candidates, a minimum score of 24 points out of 45 in the IB Examination",
+          "Demonstrated leadership potential and a commitment to work for positive social change",
+          "Age must be within 22 years",
+          "For financial aid: submit the applicable Self-Assessment Form (SAF-Bangladesh or SAF-International) with all necessary supporting documents",
+          "Maintain a CGPA of 2.5 each year to maintain financial aid",
+          "Transfer students are ineligible for financial aid"
+        ],
+        "requirements": [
+          "Submit the Self-Assessment Form (SAF-Bangladesh or SAF-International) along with the admission application",
+          "Provide bank statements, tax return documents and salary certificates of salaried parent(s)",
+          "Provide information from third-party sources and any other documents the Financial Aid Committee deems necessary",
+          "All financial aid awards are assessed prior to the beginning of each academic programme",
+          "The Financial Aid Committee has the right to investigate and verify all information and documents submitted"
+        ],
+        "documents": [
+          "AUW Self-Assessment Form (SAF-Bangladesh for applicants from Bangladesh, SAF-International for others)",
+          "Bank statements",
+          "Tax return documents",
+          "Salary certificates of salaried parent(s)",
+          "Information from third-party source(s) as needed",
+          "Other documents or information as the committee deems necessary"
+        ],
+        "selection_criteria": [
+          "Family composition, education level of parent(s), jobs and professions of earning members",
+          "Income of parents/guardians (salary, business, investment, rental, total household income) and earnings of other supporting family members such as siblings",
+          "Number of non-earning dependents; movable and immovable properties at present market value",
+          "Community's comment on the socio-economic condition of the family; school attended by the student and siblings in terms of educational costs",
+          "Socio-economic situation of the geographical area where the family resides; luxury items owned by the student and her family"
+        ],
+        "coverage": [
+          "Tuition (USD 9,000 per year of the USD 15,000 annual cost of attendance)",
+          "Room and board (USD 3,000 per year)",
+          "Books, course supplies and student activities (USD 3,000 per year)",
+          "Primary healthcare",
+          "Annual registration fee of USD 600, waivable at the Financial Aid Committee's discretion",
+          "Travel grant limited to a one-way ticket to Chittagong and a ticket home after graduation, for qualifying international students"
+        ],
+        "application_method": [
+          "Apply through AUW's online admission portal at https://apps.auw.edu.bd/admission",
+          "Submit the applicable Self-Assessment Form with all supporting financial documents as part of the admission application",
+          "Financial aid awards are assessed before the beginning of the academic programme and confirmed in the offer letter"
+        ],
+        "application_route": "One combined admission application at apps.auw.edu.bd/admission with the SAF and financial documents attached; financial aid is decided by the Financial Aid Committee as part of admission",
+        "study_mode": "full-time",
+        "citizenship_residency": "Under its Charter AUW primarily recruits young women from South, Southeast and West Asia and the Middle East, and also accepts stateless students, exchange students from the United States, Europe and East Asia, and others from outside Asia",
+        "international_eligibility": true,
+        "subject_or_agency_requirement": null,
+        "research_requirement": null,
+        "duration": "Financial aid is assessed prior to the beginning of each academic programme and continued year by year while a CGPA of 2.5 is maintained",
+        "description": "AUW strives to meet the demonstrated financial need of each admitted student and offers full and partial scholarships based on each student's financial circumstances, with full scholarships covering tuition, room and board, course supplies, student activities and primary healthcare. Financial aid is awarded by AUW itself as part of the admission application and assessed by the Financial Aid Committee on family circumstances.",
+        "region": "Asia",
+        "program_type": "University need-based scholarship and financial aid",
+        "english_requirement": "A minimum of 60% in English in the final Grade X and Grade XII examinations (or the equivalent for other examination systems); AUW publishes no IELTS/TOEFL requirement on these pages"
+      },
+      "verification": {
+        "source_citations": [
+          "https://asian-university.org/admissions/scholarships-financial-aid"
+        ],
+        "last_verified_date": "2026-10-10",
+        "verification_status": "confirmed",
+        "confidence": "high",
+        "notes": "AUW's official Scholarships & Financial Aid, Tuition & Fees and Who Can Apply pages were all fetched in full on 2026-10-10; the coverage definition of full scholarships, the USD 15,000 cost breakdown, the SAF document list, the Committee's assessment factors, the CGPA 2.5 condition, the travel-grant rule and the admissions-open banner were read directly from those pages."
+      },
+      "not_confirmed": [
+        "individual aid amounts (awards are set per student by the Financial Aid Committee and no fixed table is published)",
+        "a closing date (none is published; admissions are currently open)",
+        "whether the USD 600 admission fee and USD 200 caution deposit will be waived in an individual case"
+      ],
+      "applicant_utility": {
+        "summary": "This is need-based institutional aid, not a separate scholarship competition: your SAF and financial documents travel with the admission application, and the Financial Aid Committee sizes the award to your family's assessed circumstances. The ceiling is well defined - the published cost of attendance is USD 15,000 a year (USD 9,000 tuition, USD 3,000 room and board, USD 3,000 books, supplies and activities), and AUW states it waives all fees and covers all costs for first-in-family students and Pathways for Promise entrants. Keep your CGPA at 2.5 or above every year, because aid is re-assessed annually and increases after starting are described as a rare occurrence.",
+        "best_fit": "Women from low-income households across South, Southeast and West Asia and the Middle East who completed 12 years of schooling with 60% or better, including first-in-family university entrants.",
+        "application_readiness_checklist": [
+          "Download and complete the correct Self-Assessment Form (SAF-Bangladesh or SAF-International) and attach it to the admission application",
+          "Gather bank statements, tax return documents and salary certificates for salaried parent(s) before starting the portal form",
+          "Document the family picture the Committee scores: household composition, parents' education and jobs, siblings' earnings, non-earning dependants, property values and area socio-economic conditions",
+          "Verify you are within the age limit of 22 years and hold 12 years of completed education with at least 60% in English and in Maths individually",
+          "Plan finances for the USD 600 one-time admission fee and USD 200 refundable caution deposit, which are not covered by default"
+        ],
+        "common_rejection_risks": [
+          "Transfer students are explicitly ineligible for financial aid",
+          "Dropping below a CGPA of 2.5 in any year puts continuation of the aid at risk",
+          "An incomplete or inconsistent SAF package - the Committee may investigate and verify every submitted document",
+          "Assuming a mid-programme top-up is possible; increases after starting are described as rare and require a major change in family finances",
+          "Missing the 60% threshold in English or Maths individually, even where the overall average clears 60%"
+        ],
+        "estimated_uncovered_costs": "The USD 600 non-refundable admission fee and USD 200 caution deposit (refundable) unless the Committee waives them, the USD 600 annual registration fee where not waived, and travel home during intermediate summers, which AUW suggests funding through its work-study programme.",
+        "document_audit": [
+          "Choosing the wrong SAF variant (SAF-Bangladesh vs SAF-International) is a common and avoidable miss",
+          "Salaried parents must provide salary certificates, not only bank statements - the document list is explicit",
+          "Third-party information may be requested, so referees should be warned in advance that the Committee verifies submissions",
+          "Keep receipts: the Finance Department issues receipts for all payments and the caution deposit refund requires clearance forms"
+        ],
+        "alerts": [
+          "Aid is assessed before each academic programme begins, so the award in your offer letter is the one you plan around",
+          "The travel grant covers only a one-way ticket to Chittagong and the ticket home after graduation - intermediate summers are not covered",
+          "If you live and take meals outside AUW facilities you are not charged room and board, which changes both the aid need and your budget"
+        ],
+        "submission_workflow": "One admission application through apps.auw.edu.bd with the SAF and financial evidence attached; the Financial Aid Committee assesses need and confirms the package in the offer letter before the programme starts."
+      }
+    }
+  ]
+}

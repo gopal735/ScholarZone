@@ -1,0 +1,115 @@
+{
+  "agent": "agent_229",
+  "records": [
+    {
+      "id": 576,
+      "official": {
+        "official_source_urls": [
+          "https://www.gla.ac.uk/scholarships/worldchangersglasgowscholarship",
+          "https://www.gla.ac.uk/scholarships"
+        ],
+        "application_link": "https://www.gla.ac.uk/scholarships/worldchangersglasgowscholarship",
+        "catalogue_url": "https://www.gla.ac.uk/scholarships",
+        "official_updates_url": "https://www.gla.ac.uk/scholarships/worldchangersglasgowscholarship",
+        "deadline_central": null,
+        "deadline_central_display": null,
+        "deadline_note": "No application deadline applies: the discount is awarded automatically and applied at registration once you hold an offer for an eligible postgraduate programme for the September 2027 or January 2028 intake.",
+        "application_cycle": "September 2027 or January 2028 postgraduate entry",
+        "status": "OPEN",
+        "status_note": "The University publishes the scholarship for September 2027 / January 2028 entry, states that the number of scholarships is unlimited, and that it will be automatically awarded to all eligible applicants.",
+        "tuition_coverage_note": "The scholarship is published as 'a GBP 5,000 tuition fee discount', applied at registration.",
+        "funding_amount": 5000,
+        "funding_currency": "GBP",
+        "funding_period": "one-off tuition fee discount",
+        "tuition_coverage": true,
+        "living_cost_coverage": false,
+        "travel_coverage": false,
+        "fully_funded": false,
+        "benefits": [
+          "GBP 5,000 tuition fee discount",
+          "Awarded automatically to all eligible applicants, with an unlimited number of scholarships",
+          "No separate application or essay is required; the discount is applied at registration",
+          "A communication confirming the scholarship is sent soon after the programme offer"
+        ],
+        "eligibility": [
+          "Be enrolled on an eligible postgraduate programme for the September 2027 or January 2028 intake",
+          "Be a national of one of the eligible countries: Brazil, Chile, Colombia, India, Indonesia, Israel, Jordan, Kenya, Lebanon, Malaysia, Mexico, Nigeria, Pakistan, Palestine, Singapore, Syria, Thailand, Vietnam or Yemen",
+          "Have international fee status",
+          "The discount cannot be combined with another University scholarship",
+          "If you are fully funded by an external sponsor, the scholarship offer will be automatically withdrawn"
+        ],
+        "requirements": [
+          "Meet the entry criteria for one of the listed eligible postgraduate programmes",
+          "Hold international fee status",
+          "Hold the nationality of one of the 19 eligible countries"
+        ],
+        "documents": [],
+        "selection_criteria": [
+          "Awarded automatically to all applicants who meet the entry criteria; the University publishes no separate selection process or academic threshold",
+          "Confirmation is sent by email after the programme offer and the discount is applied at registration"
+        ],
+        "coverage": [
+          "GBP 5,000 off the tuition fee for an eligible postgraduate programme"
+        ],
+        "application_method": [
+          "Apply for admission to an eligible postgraduate programme for the September 2027 or January 2028 intake",
+          "No additional application is required for the scholarship",
+          "The tuition fee discount is applied at registration and confirmed by email after the programme offer"
+        ],
+        "application_route": "Simply secure an offer on an eligible postgraduate programme with international fee status and an eligible nationality; the GBP 5,000 discount is applied at registration with no separate application.",
+        "study_mode": "Full-time postgraduate (taught programmes listed on the scholarship page)",
+        "citizenship_residency": "National of one of the 19 listed countries; international fee status required. Residency itself is not specified beyond fee status.",
+        "international_eligibility": "Yes - the scholarship exists specifically for nationals of the listed non-UK countries",
+        "subject_or_agency_requirement": "The chosen programme must appear on the scholarship page's list of eligible programmes",
+        "research_requirement": null,
+        "duration": "Duration of the eligible postgraduate programme applied for; no separate scholarship duration is published",
+        "description": "The World Changers Glasgow Scholarship is a University of Glasgow tuition fee discount of GBP 5,000 for nationals of 19 listed countries taking an eligible postgraduate programme in the September 2027 or January 2028 intake, awarded automatically rather than competitively.",
+        "region": "Europe (United Kingdom)",
+        "program_type": "University country-specific tuition scholarship",
+        "english_requirement": null
+      },
+      "verification": {
+        "source_citations": [
+          "https://www.gla.ac.uk/scholarships/worldchangersglasgowscholarship"
+        ],
+        "last_verified_date": "2026-10-10",
+        "verification_status": "confirmed",
+        "confidence": "high",
+        "not_confirmed": [
+          "english_requirement - no English language requirement is published on the scholarship page (programme-level requirements sit on the individual programme pages)",
+          "duration - the scholarship page does not state how the discount is spread across years of a programme",
+          "documents - no documents are required for the award itself"
+        ],
+        "notes": "Value, automatic award, unlimited number, eligible countries, eligible-programme list, the no-combination rule and the external-sponsor withdrawal rule were all read directly from the University of Glasgow's own scholarship page. There is no separate deadline because no separate application exists."
+      },
+      "applicant_utility": {
+        "summary": "Nothing to apply for: if you are a national of one of the 19 listed countries, hold international fee status and land an offer on a listed postgraduate programme for September 2027 or January 2028, the GBP 5,000 comes off your tuition at registration automatically. The real trap is the stacking rule - you cannot combine this with another University of Glasgow scholarship, so an applicant holding, say, a larger Glasgow award needs to know which one survives. The second trap is sponsorship: if an external funder covers your full costs, Glasgow says the offer is withdrawn automatically.",
+        "best_fit": "Nationals of the 19 listed countries with an offer on a listed Glasgow taught master's programme who are partly self-funding.",
+        "application_readiness_checklist": [
+          "Check that your exact programme appears on the scholarship page's eligible-programme list, not just that it is a Glasgow postgraduate programme",
+          "Count your nationality against the 19 listed countries before planning your budget around the GBP 5,000",
+          "Declare any other Glasgow scholarship or external sponsorship you hold so you know early which award applies",
+          "Watch for the confirmation email after your offer, since the discount is administratively applied at registration rather than on request"
+        ],
+        "common_rejection_risks": [
+          "Choosing a programme that is not on the eligible list, even a similar one in the same college",
+          "Holding a nationality that is not on the list of 19",
+          "Being fully funded by an external sponsor, which triggers automatic withdrawal",
+          "Holding another University of Glasgow scholarship, which cannot be combined with this discount"
+        ],
+        "estimated_uncovered_costs": "Everything except GBP 5,000 of tuition: living costs in Glasgow, the remaining tuition balance, flights, and the visa and immigration health surcharge.",
+        "document_audit": [
+          "No supporting documents are needed for the scholarship itself, but your fee status must be correctly recorded as international at registration for the discount to apply",
+          "Keep the confirmation email from Glasgow as evidence of the award when you plan your budget"
+        ],
+        "alerts": [
+          "The award is withdrawn automatically if an external sponsor fully funds you, so a funding change after the offer can affect the money",
+          "The page covers September 2027 and January 2028 entry only, so applicants aiming at a later intake should re-check the University's scholarship listings",
+          "This is distinct from Glasgow's undergraduate World Changers Global Excellence Scholarship, which is a separate scheme with its own rules",
+          "If your nationality is not listed, the University of Glasgow still runs other country-specific awards on its scholarships pages"
+        ],
+        "submission_workflow": "No scholarship submission at all: admission application first, then automatic award, then the discount is applied at registration."
+      }
+    }
+  ]
+}

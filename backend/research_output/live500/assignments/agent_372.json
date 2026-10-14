@@ -1,0 +1,76 @@
+{
+ "agent": "agent_372",
+ "assignment_count": 1,
+ "scholarships": [
+  {
+   "id": 1,
+   "title": "Erasmus Mundus Joint Masters (EMJM)",
+   "country": "EU (multiple)",
+   "degree": "PG only (Joint Master's)",
+   "funding_label": "Fully Funded",
+   "status": "open",
+   "official_source": "European Commission (Erasmus+)",
+   "official_source_url": "https://erasmus-plus.ec.europa.eu",
+   "application_link": "https://erasmus-plus.ec.europa.eu",
+   "catalogue_url": "https://www.eacea.ec.europa.eu/scholarships/erasmus-mundus-catalogue_en",
+   "official_updates_url": "https://erasmus-plus.ec.europa.eu/opportunities/individuals/students/erasmus-mundus-joint-masters",
+   "existing": {
+    "funding_amount": 1400,
+    "funding_currency": "EUR",
+    "funding_period": "per month",
+    "tuition_coverage": 1,
+    "living_cost_coverage": 1,
+    "travel_coverage": 1,
+    "fully_funded": 1,
+    "description": "Erasmus Mundus Joint Masters are high-level, integrated transnational study programmes at master's level designed and delivered by international partnerships of higher education institutions. An EMJM involves at least three higher education institutions from at least three different countries, and includes periods of study, research, traineeship, thesis preparation and defence. Each edition runs 1 to 2 academic years (60, 90 or 120 ECTS credits) and awards either a joint degree or multiple degrees. A new batch of selected Erasmus Mundus Masters is added to the list each year, and students apply directly to the institution running their chosen programme.",
+    "eligibility": [
+     "Bachelor's degree (first degree) completed, or the candidate is in the final year of a bachelor's programme",
+     "Graduation before the master's programme starts",
+     "Officially recognised bachelor-equivalent level of learning (recognised under the legislation and practices of the degree-awarding country) is also accepted"
+    ],
+    "eligibility_summary": "Bachelor's degree (3-4 years) in a relevant field, or final-year students may apply if the programme allows (must graduate before the program starts). No fixed CGPA requirement - selection weighs motivation, relevant background, and clarity of goals more heavily than grades.",
+    "benefits": [
+     "Full tuition, approx. EUR 1,400/month stipend, travel allowance, installation allowance (exact figures vary slightly by consortium)"
+    ],
+    "coverage": [
+     "Full tuition, approx. EUR 1,400/month stipend, travel allowance, installation allowance (exact figures vary slightly by consortium)"
+    ],
+    "requirements": [],
+    "documents": [
+     "Academic transcripts/certificates (Bachelor's, HSC, SSC)",
+     "CV",
+     "Motivation letter",
+     "2 recommendation letters (typical)",
+     "Proof of English proficiency"
+    ],
+    "english_requirement": "IELTS/TOEFL, OR a Medium of Instruction (MOI) certificate from a prior English-medium degree - accepted by many (not all) programmes as a substitute for a test score",
+    "application_method": [
+     "Apply directly to the institution running the selected Erasmus Mundus Joint Master programme.",
+     "Erasmus+",
+     "Depending on what part of the programme you are applying for, you will need to fill out a specific application form.",
+     "For the decentralised activities managed by National Agencies , please apply using the Erasmus+ and European Solidarity Corps page .",
+     "The partner search on the EU's Funding and Tenders portal helps you search for potential partners for your proposal.",
+     "This page focuses on guidance for organisations to apply for grants and calls for proposals under Erasmus+ and the European Solidarity Corps."
+    ],
+    "selection_notes": "Highly competitive. Selection depends on academic background, motivation, recommendation letters and programme-specific requirements.",
+    "best_fit": "Accessible for average-CGPA applicants with a strong personal motivation/story - no fixed CGPA cutoff, evaluated more holistically than most government scholarships",
+    "notes": "This is a category of 50+ separate Joint Master's programmes (each its own university consortium), not one application. Applicants pick and apply directly to specific joint-programme(s) via the Erasmus Mundus Catalogue on erasmus-plus.ec.europa.eu. Deadlines are set per-programme.",
+    "duration": "1 to 2 academic years (60, 90 or 120 ECTS credits)",
+    "application_period": "Varies by consortium/programme - typically Dec-Feb for a Sept/Oct intake; no single central deadline",
+    "deadline_display": "Varies by consortium/programme - typically Dec-Feb for a Sept/Oct intake; no single central deadline",
+    "deadline_date": null,
+    "region": "Global",
+    "program_type": "Joint Master Programme",
+    "applicant_utility": null,
+    "official_details": null
+   },
+   "missing_fields": [
+    "requirements",
+    "deadline_date",
+    "applicant_utility",
+    "official_details"
+   ]
+  }
+ ],
+ "result_file": "C:\\Users\\GopaL\\Desktop\\Projects folder\\ScholarZone\\backend\\research_output\\live500\\results\\agent_372.json"
+}

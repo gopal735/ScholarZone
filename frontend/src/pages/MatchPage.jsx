@@ -178,7 +178,13 @@ export function MatchPage() {
         ) : null}
 
         {showForm ? (
-          <>
+          /* The reference's hero panel treatment: a soft blurred surface
+             with a conic gradient border that rotates through the two
+             accents on a 5s cycle. It wraps exactly the describe-yourself
+             step, and nothing else — the results below are ordinary
+             cards, because a rotating border around a result list would
+             spend the whole budget on chrome. */
+          <div className="p-panel match-page__panel">
             <ProfileTextParser
               value={description}
               onChange={updateDescription}
@@ -229,11 +235,7 @@ export function MatchPage() {
                 ) : null}
               </div>
             </MatchProfileForm>
-
-            {results?.profile_strength ? (
-              <ProfileStrengthPanel strength={results.profile_strength} />
-            ) : null}
-          </>
+          </div>
         ) : null}
 
         {showResults && results ? (

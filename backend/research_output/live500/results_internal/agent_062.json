@@ -1,0 +1,102 @@
+{
+  "agent": "agent_062",
+  "records": [
+    {
+      "id": 178,
+      "official": {
+        "official_source_urls": [
+          "https://www.uu.nl/en/masters/utrecht-excellence-scholarships",
+          "https://www.uu.nl/en/bachelors/utrecht-excellence-scholarships"
+        ],
+        "application_link": "https://www.uu.nl/en/masters/utrecht-excellence-scholarships",
+        "catalogue_url": null,
+        "official_updates_url": "https://www.uu.nl/en/masters/utrecht-excellence-scholarships",
+        "deadline_central": null,
+        "deadline_central_display": null,
+        "deadline_note": null,
+        "application_cycle": null,
+        "status": "CLOSED",
+        "status_note": "The university states: 'Due to significant budget cuts, the Utrecht Excellence Scholarship (UES) will no longer be offered for programmes starting in the 2026-2027 academic year. No new UES applications will be accepted as of the upcoming admissions cycle. If you have already been awarded a UES, your scholarship remains unchanged and will continue as agreed.'",
+        "tuition_coverage_note": null,
+        "funding_amount": null,
+        "funding_currency": null,
+        "funding_period": null,
+        "tuition_coverage": null,
+        "living_cost_coverage": null,
+        "travel_coverage": null,
+        "fully_funded": false,
+        "benefits": [
+          "Existing UES awards continue unchanged for students already awarded, as the university states",
+          "The university's master's programme pages publish alternative funding, including the NL Scholarship, the Utrecht Sylff Scholarship, the Rembrandt Grant, the Orange Tulip Scholarship, the Fanny Blankers-Koen Scholarship and the Bright Minds Fellowships"
+        ],
+        "eligibility": [
+          "No new applications are accepted for programmes starting in the 2026-2027 academic year",
+          "Students already awarded a UES keep their scholarship unchanged and it continues as agreed"
+        ],
+        "requirements": [],
+        "documents": null,
+        "selection_criteria": [],
+        "coverage": [],
+        "application_method": [
+          "No new applications are accepted for programmes starting in the 2026-2027 academic year",
+          "Alternative funds are listed on the individual master's programme pages, with dates and conditions per fund"
+        ],
+        "application_route": "No application route exists for new applicants; the page points to alternatives published on the individual master's programme pages.",
+        "study_mode": null,
+        "citizenship_residency": null,
+        "international_eligibility": null,
+        "subject_or_agency_requirement": null,
+        "research_requirement": null,
+        "duration": null,
+        "description": "The Utrecht Excellence Scholarship was Utrecht University's scholarship for talented students in bachelor's and master's programmes. Following significant budget cuts the university states that the UES will no longer be offered for programmes starting in the 2026-2027 academic year and that no new applications will be accepted from the upcoming admissions cycle. Students already holding a UES continue to receive it as agreed, so the scheme is live for current award holders only.",
+        "region": "Europe - Utrecht, Netherlands",
+        "program_type": "University talent scholarship (discontinued for new awards)",
+        "english_requirement": null
+      },
+      "verification": {
+        "source_citations": [
+          "https://www.uu.nl/en/masters/utrecht-excellence-scholarships",
+          "https://www.uu.nl/en/bachelors/utrecht-excellence-scholarships"
+        ],
+        "last_verified_date": "2026-10-10",
+        "verification_status": "confirmed",
+        "confidence": "high",
+        "not_confirmed": [
+          "funding_amount, funding_currency, funding_period - no award amount is published on the current page",
+          "tuition_coverage, living_cost_coverage, travel_coverage - no coverage terms are published on the current page",
+          "deadline_central, application_cycle, eligibility, documents, selection_criteria and duration - the page no longer publishes any details for new applicants",
+          "whether the UES will be reinstated in a later academic year"
+        ],
+        "notes": "The same discontinuation notice appears on both the master's and the bachelor's UES pages. Verification of the award's former terms is impossible from the official site because the page has been replaced by the discontinuation notice."
+      },
+      "applicant_utility": {
+        "summary": "Do not plan around the Utrecht Excellence Scholarship. Utrecht University states plainly that due to significant budget cuts the UES will no longer be offered for programmes starting in the 2026-2027 academic year and that no new applications will be accepted from the upcoming admissions cycle, so there is no form to fill in and no amount to apply for. If you have already been awarded a UES it continues unchanged, which is the only situation in which the award still exists. Redirect your effort to the alternative funds Utrecht still lists on its programme pages, which include the NL Scholarship, the Utrecht Sylff Scholarship, the Rembrandt Grant, the Orange Tulip Scholarship, the Fanny Blankers-Koen Scholarship and the Bright Minds Fellowships.",
+        "best_fit": "Current UES award holders only, since their scholarships continue as agreed; new applicants should look at the alternative funds on their programme page instead.",
+        "application_readiness_checklist": [
+          "Remove the UES from your funding plan for any programme starting in 2026-2027 or later",
+          "Open your specific Utrecht master's programme page and check the funding section for the named alternatives",
+          "Check each alternative's own nationality and deadline conditions, since they differ per fund",
+          "If you already hold a UES, keep the university's confirmation that it continues as agreed for your file",
+          "Budget tuition and living costs in Utrecht without assuming any Utrecht university award"
+        ],
+        "common_rejection_risks": [
+          "Applying for the UES out of date because an older page or third-party directory still lists it",
+          "Assuming that because an award existed a year ago there is a comparable replacement with the same amount",
+          "Confusing the UES with the Utrecht University bachelor excellence scholarship, which is also discontinued for new awards",
+          "Missing an alternative fund's deadline because you were focused on the UES page"
+        ],
+        "estimated_uncovered_costs": "Unknown and effectively undocumented for new applicants; with no UES available, applicants must cover Utrecht tuition and living costs from the alternative funds listed or from personal means.",
+        "document_audit": [
+          "Keep any UES award correspondence if you are already a holder, since it is the only proof the award continues",
+          "For alternative funds, follow each fund's document list rather than a generic Utrecht scholarship checklist"
+        ],
+        "alerts": [
+          "This record is closed for new applicants and the official page publishes no amounts, deadlines or criteria",
+          "Third-party scholarship directories are not reliable here because they predate the budget decision",
+          "Check the programme pages again each cycle in case a replacement fund is introduced"
+        ],
+        "submission_workflow": "No submission workflow exists for new applicants; existing holders take no action because the university confirms the award continues as agreed."
+      }
+    }
+  ]
+}

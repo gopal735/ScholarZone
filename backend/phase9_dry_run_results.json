@@ -1,0 +1,3058 @@
+[
+  {
+    "idx": 1,
+    "id": 40,
+    "title": "ARES Scholarships (Belgium)",
+    "country": "Belgium",
+    "existing_image": null,
+    "elapsed_s": 28.6,
+    "status": "no_trustworthy_image",
+    "requests": 20,
+    "persisted": false,
+    "error": null,
+    "image_results": [],
+    "page_discovery": {
+      "official_domain": "www.ares-ac.be",
+      "is_official_domain": true,
+      "candidates": 5,
+      "trusted_candidates": 5,
+      "requests_made": 20,
+      "pages_fetched": 13,
+      "sitemaps_found": [],
+      "timed_out": true,
+      "bounded": true,
+      "error": null,
+      "trusted_urls": [
+        "https://www.ares-ac.be/en/cooperation-au-developpement/bourses",
+        "https://www.ares-ac.be/scholarships",
+        "https://www.ares-ac.be/scholarship",
+        "https://www.ares-ac.be/funding",
+        "https://www.ares-ac.be/grants"
+      ],
+      "page_kinds": {
+        "root_domain": 1,
+        "scholarship_page": 4
+      }
+    }
+  },
+  {
+    "idx": 2,
+    "id": 280,
+    "title": "Master Mind Scholarships \u2014 Flemish Government",
+    "country": "Belgium",
+    "existing_image": null,
+    "elapsed_s": 77.9,
+    "status": "high",
+    "requests": 19,
+    "persisted": false,
+    "error": null,
+    "image_results": [
+      {
+        "confidence": "high",
+        "image_url": "https://www.international.vluhr.be/files/_1200x800_crop_center-center_82_line/susan-yin-2JIvboGLeho-unsplash.jpg",
+        "page_url": "https://www.international.vluhr.be/scholarships/master-mind-scholarships",
+        "source_type": "official_provider",
+        "image_kind": "program_image",
+        "alt_text": "Master Mind Scholarships",
+        "relevance_score": 0.604,
+        "validation_status": "approved",
+        "provenance": {
+          "discovery_method": "html-img",
+          "page_kind": "root_domain",
+          "official_domain": "www.international.vluhr.be",
+          "is_official_domain": true,
+          "trust_score": 70,
+          "validation_status": "approved"
+        }
+      },
+      {
+        "confidence": "high",
+        "image_url": "https://www.international.vluhr.be/files/_2400x1601_crop_center-center_61_line/susan-yin-2JIvboGLeho-unsplash.jpg",
+        "page_url": "https://www.international.vluhr.be/scholarships/master-mind-scholarships",
+        "source_type": "official_provider",
+        "image_kind": "program_image",
+        "alt_text": "Master Mind Scholarships",
+        "relevance_score": 0.604,
+        "validation_status": "approved",
+        "provenance": {
+          "discovery_method": "html-img",
+          "page_kind": "root_domain",
+          "official_domain": "www.international.vluhr.be",
+          "is_official_domain": true,
+          "trust_score": 70,
+          "validation_status": "approved"
+        }
+      },
+      {
+        "confidence": "medium",
+        "image_url": "https://www.international.vluhr.be/files/_660x495_crop_center-center_82_line/kyle-glenn-nXt5HtLmlgE-unsplash.jpg",
+        "page_url": "https://www.international.vluhr.be/scholarships",
+        "source_type": "official_provider",
+        "image_kind": null,
+        "alt_text": "Globe on a table.",
+        "relevance_score": 0.317,
+        "validation_status": "rejected",
+        "provenance": {
+          "discovery_method": "html-img",
+          "page_kind": "scholarship_page",
+          "official_domain": "www.international.vluhr.be",
+          "is_official_domain": true,
+          "trust_score": 70,
+          "validation_status": "rejected"
+        }
+      }
+    ],
+    "page_discovery": {
+      "official_domain": "www.international.vluhr.be",
+      "is_official_domain": true,
+      "candidates": 4,
+      "trusted_candidates": 4,
+      "requests_made": 19,
+      "pages_fetched": 12,
+      "sitemaps_found": [],
+      "timed_out": true,
+      "bounded": true,
+      "error": null,
+      "trusted_urls": [
+        "https://www.international.vluhr.be/scholarships/master-mind-scholarships",
+        "https://www.international.vluhr.be/scholarships",
+        "https://www.international.vluhr.be/news",
+        "https://www.international.vluhr.be/contact"
+      ],
+      "page_kinds": {
+        "root_domain": 1,
+        "scholarship_page": 1,
+        "news": 1,
+        "unknown": 1
+      }
+    }
+  },
+  {
+    "idx": 3,
+    "id": 39,
+    "title": "Pearson International Scholarship (University of Toronto)",
+    "country": "Canada",
+    "existing_image": null,
+    "elapsed_s": 52.8,
+    "status": "no_trustworthy_image",
+    "requests": 7,
+    "persisted": false,
+    "error": null,
+    "image_results": [],
+    "page_discovery": {
+      "official_domain": "future.utoronto.ca",
+      "is_official_domain": true,
+      "candidates": 0,
+      "trusted_candidates": 0,
+      "requests_made": 7,
+      "pages_fetched": 0,
+      "sitemaps_found": [],
+      "timed_out": true,
+      "bounded": false,
+      "error": null,
+      "trusted_urls": [],
+      "page_kinds": {}
+    }
+  },
+  {
+    "idx": 4,
+    "id": 242,
+    "title": "Chinese Government Scholarship - Bilateral Program (Type A)",
+    "country": "China",
+    "existing_image": null,
+    "elapsed_s": 24.0,
+    "status": "low",
+    "requests": 20,
+    "persisted": false,
+    "error": null,
+    "image_results": [
+      {
+        "confidence": "low",
+        "image_url": "https://ee.china-embassy.gov.cn/images/more_tp12.gif",
+        "page_url": "https://ee.china-embassy.gov.cn/scholarship",
+        "source_type": "official_provider",
+        "image_kind": null,
+        "alt_text": null,
+        "relevance_score": 0.2926,
+        "validation_status": "rejected",
+        "provenance": {
+          "discovery_method": "html-img",
+          "page_kind": "scholarship_page",
+          "official_domain": "ee.china-embassy.gov.cn",
+          "is_official_domain": true,
+          "trust_score": 70,
+          "validation_status": "rejected"
+        }
+      },
+      {
+        "confidence": "low",
+        "image_url": "https://ee.china-embassy.gov.cn/dssghd/202602/W020260214846264224250_ORIGIN.jpg",
+        "page_url": "https://ee.china-embassy.gov.cn/scholarship",
+        "source_type": "official_provider",
+        "image_kind": null,
+        "alt_text": null,
+        "relevance_score": 0.2926,
+        "validation_status": "rejected",
+        "provenance": {
+          "discovery_method": "html-img",
+          "page_kind": "scholarship_page",
+          "official_domain": "ee.china-embassy.gov.cn",
+          "is_official_domain": true,
+          "trust_score": 70,
+          "validation_status": "rejected"
+        }
+      },
+      {
+        "confidence": "low",
+        "image_url": "https://ee.china-embassy.gov.cn/dssghd/202602/W020260211860791334017_ORIGIN.jpg",
+        "page_url": "https://ee.china-embassy.gov.cn/scholarship",
+        "source_type": "official_provider",
+        "image_kind": null,
+        "alt_text": null,
+        "relevance_score": 0.2926,
+        "validation_status": "rejected",
+        "provenance": {
+          "discovery_method": "html-img",
+          "page_kind": "scholarship_page",
+          "official_domain": "ee.china-embassy.gov.cn",
+          "is_official_domain": true,
+          "trust_score": 70,
+          "validation_status": "rejected"
+        }
+      }
+    ],
+    "page_discovery": {
+      "official_domain": "ee.china-embassy.gov.cn",
+      "is_official_domain": true,
+      "candidates": 5,
+      "trusted_candidates": 5,
+      "requests_made": 20,
+      "pages_fetched": 13,
+      "sitemaps_found": [],
+      "timed_out": true,
+      "bounded": true,
+      "error": null,
+      "trusted_urls": [
+        "https://ee.china-embassy.gov.cn/eng/tzygg/202511/t20251108_11749274.htm",
+        "https://ee.china-embassy.gov.cn/scholarships",
+        "https://ee.china-embassy.gov.cn/scholarship",
+        "https://ee.china-embassy.gov.cn/funding",
+        "https://ee.china-embassy.gov.cn/grants"
+      ],
+      "page_kinds": {
+        "root_domain": 1,
+        "scholarship_page": 4
+      }
+    }
+  },
+  {
+    "idx": 5,
+    "id": 294,
+    "title": "Czech Government Scholarships \u2014 Developing Countries (AY 2026/27)",
+    "country": "Czech Republic",
+    "existing_image": null,
+    "elapsed_s": 45.8,
+    "status": "no_trustworthy_image",
+    "requests": 20,
+    "persisted": false,
+    "error": null,
+    "image_results": [],
+    "page_discovery": {
+      "official_domain": "msmt.gov.cz",
+      "is_official_domain": false,
+      "candidates": 5,
+      "trusted_candidates": 0,
+      "requests_made": 20,
+      "pages_fetched": 13,
+      "sitemaps_found": [],
+      "timed_out": true,
+      "bounded": true,
+      "error": null,
+      "trusted_urls": [],
+      "page_kinds": {
+        "root_domain": 1,
+        "scholarship_page": 4
+      }
+    }
+  },
+  {
+    "idx": 6,
+    "id": 268,
+    "title": "Danish Government Scholarship for Highly Qualified Non-EU/EEA Students",
+    "country": "Denmark",
+    "existing_image": null,
+    "elapsed_s": 87.5,
+    "status": "no_trustworthy_image",
+    "requests": 14,
+    "persisted": false,
+    "error": null,
+    "image_results": [],
+    "page_discovery": {
+      "official_domain": "studyindenmark.dk",
+      "is_official_domain": true,
+      "candidates": 3,
+      "trusted_candidates": 3,
+      "requests_made": 14,
+      "pages_fetched": 7,
+      "sitemaps_found": [],
+      "timed_out": true,
+      "bounded": true,
+      "error": null,
+      "trusted_urls": [
+        "https://studyindenmark.dk/study-options/scholarships",
+        "https://studyindenmark.dk/programmes",
+        "https://studyindenmark.dk/news"
+      ],
+      "page_kinds": {
+        "root_domain": 1,
+        "scholarship_page": 1,
+        "news": 1
+      }
+    }
+  },
+  {
+    "idx": 7,
+    "id": 269,
+    "title": "DTU Excellence Scholarship (Technical University of Denmark)",
+    "country": "Denmark",
+    "existing_image": null,
+    "elapsed_s": 107.2,
+    "status": "medium",
+    "requests": 26,
+    "persisted": false,
+    "error": null,
+    "image_results": [
+      {
+        "confidence": "medium",
+        "image_url": "https://www.dtu.dk/english/-/media/dtu_generelt/standard_grafik/2022-standard/er-dtu-for-dig.jpg?cx=0.47&cy=0.52&cw=540&ch=960&hash=1504D124193238E6FFE1A3F5D98A1879",
+        "page_url": "https://www.dtu.dk/english",
+        "source_type": "official_provider",
+        "image_kind": "program_image",
+        "alt_text": "",
+        "relevance_score": 0.3867,
+        "validation_status": "human_review",
+        "provenance": {
+          "discovery_method": "html-img",
+          "page_kind": "unknown",
+          "official_domain": "www.dtu.dk",
+          "is_official_domain": true,
+          "trust_score": 70,
+          "validation_status": "human_review"
+        }
+      },
+      {
+        "confidence": "medium",
+        "image_url": "https://www.dtu.dk/english/-/media/dtu_generelt/standard_grafik/2022-standard/er-dtu-for-dig.jpg?cx=0.47&cy=0.52&cw=480&ch=810&hash=8F358EC2BB83CD36DED2CE1AB7E373DC",
+        "page_url": "https://www.dtu.dk/english",
+        "source_type": "official_provider",
+        "image_kind": "program_image",
+        "alt_text": "",
+        "relevance_score": 0.3867,
+        "validation_status": "human_review",
+        "provenance": {
+          "discovery_method": "html-img",
+          "page_kind": "unknown",
+          "official_domain": "www.dtu.dk",
+          "is_official_domain": true,
+          "trust_score": 70,
+          "validation_status": "human_review"
+        }
+      },
+      {
+        "confidence": "medium",
+        "image_url": "https://www.dtu.dk/english/-/media/dtu_generelt/standard_grafik/2022-standard/er-dtu-for-dig.jpg?cx=0.47&cy=0.52&cw=960&ch=810&hash=ADA63E1089136FDF261AEF8010B119E5",
+        "page_url": "https://www.dtu.dk/english",
+        "source_type": "official_provider",
+        "image_kind": "program_image",
+        "alt_text": "",
+        "relevance_score": 0.3867,
+        "validation_status": "human_review",
+        "provenance": {
+          "discovery_method": "html-img",
+          "page_kind": "unknown",
+          "official_domain": "www.dtu.dk",
+          "is_official_domain": true,
+          "trust_score": 70,
+          "validation_status": "human_review"
+        }
+      }
+    ],
+    "page_discovery": {
+      "official_domain": "www.dtu.dk",
+      "is_official_domain": true,
+      "candidates": 5,
+      "trusted_candidates": 5,
+      "requests_made": 26,
+      "pages_fetched": 19,
+      "sitemaps_found": [],
+      "timed_out": true,
+      "bounded": true,
+      "error": null,
+      "trusted_urls": [
+        "https://www.dtu.dk/english/education/graduate/fees-and-funding/external-scholarships",
+        "https://www.dtu.dk/contact",
+        "https://www.dtu.dk/english",
+        "https://www.dtu.dk/english/education",
+        "https://www.dtu.dk/english/continuing-education"
+      ],
+      "page_kinds": {
+        "root_domain": 1,
+        "unknown": 4
+      }
+    }
+  },
+  {
+    "idx": 8,
+    "id": 1,
+    "title": "Erasmus Mundus Joint Masters (EMJM)",
+    "country": "EU (multiple)",
+    "existing_image": "https://erasmus-plus.ec.europa.eu/sites/default/files/styles/hero_desktop/public/2025-01/emjm_students_european_campus.jpg",
+    "elapsed_s": 111.4,
+    "status": "low",
+    "requests": 27,
+    "persisted": false,
+    "error": null,
+    "image_results": [
+      {
+        "confidence": "low",
+        "image_url": "https://erasmus-plus.ec.europa.eu/themes/contrib/oe_theme/dist/ec/images/logo/positive/logo-ec--en.svg",
+        "page_url": "https://erasmus-plus.ec.europa.eu/",
+        "source_type": "official_provider",
+        "image_kind": null,
+        "alt_text": "Erasmus+ home page",
+        "relevance_score": 0.0,
+        "validation_status": "rejected",
+        "provenance": {
+          "discovery_method": "html-img",
+          "page_kind": "root_domain",
+          "official_domain": "erasmus-plus.ec.europa.eu",
+          "is_official_domain": true,
+          "trust_score": 70,
+          "validation_status": "rejected"
+        }
+      },
+      {
+        "confidence": "low",
+        "image_url": "https://erasmus-plus.ec.europa.eu/themes/contrib/oe_theme/dist/ec/images/logo/logo-ec--mute.svg",
+        "page_url": "https://erasmus-plus.ec.europa.eu/",
+        "source_type": "official_provider",
+        "image_kind": null,
+        "alt_text": "Erasmus+ home page",
+        "relevance_score": 0.0,
+        "validation_status": "rejected",
+        "provenance": {
+          "discovery_method": "html-img",
+          "page_kind": "root_domain",
+          "official_domain": "erasmus-plus.ec.europa.eu",
+          "is_official_domain": true,
+          "trust_score": 70,
+          "validation_status": "rejected"
+        }
+      },
+      {
+        "confidence": "low",
+        "image_url": "https://erasmus-plus.ec.europa.eu/themes/contrib/oe_theme/dist/ec/images/logo/negative/logo-ec--en.svg",
+        "page_url": "https://erasmus-plus.ec.europa.eu/",
+        "source_type": "official_provider",
+        "image_kind": null,
+        "alt_text": "European Commission",
+        "relevance_score": 0.0,
+        "validation_status": "rejected",
+        "provenance": {
+          "discovery_method": "html-img",
+          "page_kind": "root_domain",
+          "official_domain": "erasmus-plus.ec.europa.eu",
+          "is_official_domain": true,
+          "trust_score": 70,
+          "validation_status": "rejected"
+        }
+      }
+    ],
+    "page_discovery": {
+      "official_domain": "erasmus-plus.ec.europa.eu",
+      "is_official_domain": true,
+      "candidates": 5,
+      "trusted_candidates": 5,
+      "requests_made": 27,
+      "pages_fetched": 20,
+      "sitemaps_found": [],
+      "timed_out": true,
+      "bounded": true,
+      "error": null,
+      "trusted_urls": [
+        "https://erasmus-plus.ec.europa.eu/",
+        "https://erasmus-plus.ec.europa.eu/funding",
+        "https://erasmus-plus.ec.europa.eu/opportunities",
+        "https://erasmus-plus.ec.europa.eu/contact",
+        "https://erasmus-plus.ec.europa.eu/students"
+      ],
+      "page_kinds": {
+        "root_domain": 1,
+        "scholarship_page": 1,
+        "unknown": 3
+      }
+    }
+  },
+  {
+    "idx": 9,
+    "id": 16,
+    "title": "Marie Sk\u0142odowska-Curie Actions (MSCA) Postdoctoral Fellowships",
+    "country": "EU (multiple)",
+    "existing_image": null,
+    "elapsed_s": 77.9,
+    "status": "medium",
+    "requests": 27,
+    "persisted": false,
+    "error": null,
+    "image_results": [
+      {
+        "confidence": "medium",
+        "image_url": "https://marie-sklodowska-curie-actions.ec.europa.eu/themes/contrib/oe_theme/dist/ec/images/logo/positive/logo-ec--en.svg",
+        "page_url": "https://marie-sklodowska-curie-actions.ec.europa.eu/actions/postdoctoral-fellowships",
+        "source_type": "official_provider",
+        "image_kind": null,
+        "alt_text": "Marie Sk\u0142odowska-Curie Actions home page",
+        "relevance_score": 0.3192,
+        "validation_status": "rejected",
+        "provenance": {
+          "discovery_method": "html-img",
+          "page_kind": "root_domain",
+          "official_domain": "marie-sklodowska-curie-actions.ec.europa.eu",
+          "is_official_domain": true,
+          "trust_score": 70,
+          "validation_status": "rejected"
+        }
+      },
+      {
+        "confidence": "medium",
+        "image_url": "https://marie-sklodowska-curie-actions.ec.europa.eu/themes/contrib/oe_theme/dist/ec/images/logo/logo-ec--mute.svg",
+        "page_url": "https://marie-sklodowska-curie-actions.ec.europa.eu/actions/postdoctoral-fellowships",
+        "source_type": "official_provider",
+        "image_kind": null,
+        "alt_text": "Marie Sk\u0142odowska-Curie Actions home page",
+        "relevance_score": 0.3192,
+        "validation_status": "rejected",
+        "provenance": {
+          "discovery_method": "html-img",
+          "page_kind": "root_domain",
+          "official_domain": "marie-sklodowska-curie-actions.ec.europa.eu",
+          "is_official_domain": true,
+          "trust_score": 70,
+          "validation_status": "rejected"
+        }
+      },
+      {
+        "confidence": "medium",
+        "image_url": "https://marie-sklodowska-curie-actions.ec.europa.eu/themes/contrib/oe_theme/dist/ec/images/logo/negative/logo-ec--en.svg",
+        "page_url": "https://marie-sklodowska-curie-actions.ec.europa.eu/actions/postdoctoral-fellowships",
+        "source_type": "official_provider",
+        "image_kind": null,
+        "alt_text": "European Commission",
+        "relevance_score": 0.3192,
+        "validation_status": "rejected",
+        "provenance": {
+          "discovery_method": "html-img",
+          "page_kind": "root_domain",
+          "official_domain": "marie-sklodowska-curie-actions.ec.europa.eu",
+          "is_official_domain": true,
+          "trust_score": 70,
+          "validation_status": "rejected"
+        }
+      }
+    ],
+    "page_discovery": {
+      "official_domain": "marie-sklodowska-curie-actions.ec.europa.eu",
+      "is_official_domain": true,
+      "candidates": 5,
+      "trusted_candidates": 5,
+      "requests_made": 27,
+      "pages_fetched": 20,
+      "sitemaps_found": [],
+      "timed_out": true,
+      "bounded": true,
+      "error": null,
+      "trusted_urls": [
+        "https://marie-sklodowska-curie-actions.ec.europa.eu/actions/postdoctoral-fellowships",
+        "https://marie-sklodowska-curie-actions.ec.europa.eu/funding",
+        "https://marie-sklodowska-curie-actions.ec.europa.eu/news",
+        "https://marie-sklodowska-curie-actions.ec.europa.eu/contact",
+        "https://marie-sklodowska-curie-actions.ec.europa.eu/"
+      ],
+      "page_kinds": {
+        "root_domain": 1,
+        "scholarship_page": 2,
+        "news": 1,
+        "unknown": 1
+      }
+    }
+  },
+  {
+    "idx": 10,
+    "id": 262,
+    "title": "Finland Scholarship (National)",
+    "country": "Finland",
+    "existing_image": null,
+    "elapsed_s": 89.2,
+    "status": "medium",
+    "requests": 28,
+    "persisted": false,
+    "error": null,
+    "image_results": [
+      {
+        "confidence": "medium",
+        "image_url": "https://www.studyinfinland.fi/sites/default/files/styles/og_image/public/2023-11/Investment-Scholarships-16by6ratio-notext_0.jpg?itok=KLDPbEnA",
+        "page_url": "https://www.studyinfinland.fi/scholarships",
+        "source_type": "official_provider",
+        "image_kind": null,
+        "alt_text": null,
+        "relevance_score": 0.5583,
+        "validation_status": "rejected",
+        "provenance": {
+          "discovery_method": "og:image",
+          "page_kind": "scholarship_page",
+          "official_domain": "www.studyinfinland.fi",
+          "is_official_domain": true,
+          "trust_score": 70,
+          "validation_status": "rejected"
+        }
+      },
+      {
+        "confidence": "low",
+        "image_url": "https://www.studyinfinland.fi/themes/custom/studyinfinland/images/sif-logo.png",
+        "page_url": "https://www.studyinfinland.fi/funding-your-studies/bachelors-and-masters-scholarships",
+        "source_type": "official_provider",
+        "image_kind": "program_image",
+        "alt_text": null,
+        "relevance_score": 0.1633,
+        "validation_status": "human_review",
+        "provenance": {
+          "discovery_method": "og:image",
+          "page_kind": "root_domain",
+          "official_domain": "www.studyinfinland.fi",
+          "is_official_domain": true,
+          "trust_score": 70,
+          "validation_status": "human_review"
+        }
+      },
+      {
+        "confidence": "low",
+        "image_url": "https://www.studyinfinland.fi/themes/custom/studyinfinland/logo.svg",
+        "page_url": "https://www.studyinfinland.fi/funding-your-studies/bachelors-and-masters-scholarships",
+        "source_type": "official_provider",
+        "image_kind": "program_image",
+        "alt_text": "",
+        "relevance_score": 0.1633,
+        "validation_status": "rejected",
+        "provenance": {
+          "discovery_method": "html-img",
+          "page_kind": "root_domain",
+          "official_domain": "www.studyinfinland.fi",
+          "is_official_domain": true,
+          "trust_score": 70,
+          "validation_status": "rejected"
+        }
+      }
+    ],
+    "page_discovery": {
+      "official_domain": "www.studyinfinland.fi",
+      "is_official_domain": true,
+      "candidates": 5,
+      "trusted_candidates": 5,
+      "requests_made": 28,
+      "pages_fetched": 21,
+      "sitemaps_found": [],
+      "timed_out": true,
+      "bounded": true,
+      "error": null,
+      "trusted_urls": [
+        "https://www.studyinfinland.fi/funding-your-studies/bachelors-and-masters-scholarships",
+        "https://www.studyinfinland.fi/scholarships",
+        "https://www.studyinfinland.fi/about",
+        "https://www.studyinfinland.fi/contact",
+        "https://www.studyinfinland.fi/news-events/scholarship-facts"
+      ],
+      "page_kinds": {
+        "root_domain": 1,
+        "scholarship_page": 1,
+        "unknown": 2,
+        "news": 1
+      }
+    }
+  },
+  {
+    "idx": 11,
+    "id": 6,
+    "title": "Eiffel Excellence Scholarship",
+    "country": "France",
+    "existing_image": null,
+    "elapsed_s": 470.2,
+    "status": "medium",
+    "requests": 26,
+    "persisted": false,
+    "error": null,
+    "image_results": [
+      {
+        "confidence": "medium",
+        "image_url": "https://www.campusfrance.org/sites/default/files/medias/images/2022-12/logo_eiffel.jpg",
+        "page_url": "https://www.campusfrance.org/en/the-france-excellence-eiffel-scholarship-program",
+        "source_type": "official_provider",
+        "image_kind": "official_logo",
+        "alt_text": null,
+        "relevance_score": 0.5,
+        "validation_status": "rejected",
+        "provenance": {
+          "discovery_method": "og:image",
+          "page_kind": "root_domain",
+          "official_domain": "campusfrance.org",
+          "is_official_domain": true,
+          "trust_score": 90,
+          "validation_status": "rejected"
+        }
+      },
+      {
+        "confidence": "medium",
+        "image_url": "https://www.campusfrance.org/modules/custom/campus_common/img/logo-republique-francaise.svg",
+        "page_url": "https://www.campusfrance.org/en/the-france-excellence-eiffel-scholarship-program",
+        "source_type": "official_provider",
+        "image_kind": "official_logo",
+        "alt_text": "R\u00e9publique fran\u00e7aise, Libert\u00e9 \u00c9galit\u00e9 Fraternit\u00e9",
+        "relevance_score": 0.5,
+        "validation_status": "rejected",
+        "provenance": {
+          "discovery_method": "html-img",
+          "page_kind": "root_domain",
+          "official_domain": "campusfrance.org",
+          "is_official_domain": true,
+          "trust_score": 90,
+          "validation_status": "rejected"
+        }
+      },
+      {
+        "confidence": "medium",
+        "image_url": "https://www.campusfrance.org/modules/custom/campus_common/img/logo-campus-france.png",
+        "page_url": "https://www.campusfrance.org/en/the-france-excellence-eiffel-scholarship-program",
+        "source_type": "official_provider",
+        "image_kind": "official_logo",
+        "alt_text": "Campus France logo",
+        "relevance_score": 0.5,
+        "validation_status": "rejected",
+        "provenance": {
+          "discovery_method": "html-img",
+          "page_kind": "root_domain",
+          "official_domain": "campusfrance.org",
+          "is_official_domain": true,
+          "trust_score": 90,
+          "validation_status": "rejected"
+        }
+      }
+    ],
+    "page_discovery": {
+      "official_domain": "campusfrance.org",
+      "is_official_domain": true,
+      "candidates": 5,
+      "trusted_candidates": 5,
+      "requests_made": 26,
+      "pages_fetched": 19,
+      "sitemaps_found": [],
+      "timed_out": true,
+      "bounded": true,
+      "error": null,
+      "trusted_urls": [
+        "https://www.campusfrance.org/en/the-france-excellence-eiffel-scholarship-program",
+        "https://www.campusfrance.org/contact",
+        "https://www.campusfrance.org/en/france-excellence-eiffel-scholarship-program",
+        "https://www.campusfrance.org/fr/la-bourse-france-excellence-eiffel",
+        "https://www.campusfrance.org/es/el-programa-de-becas-france-excellence-eiffel"
+      ],
+      "page_kinds": {
+        "root_domain": 1,
+        "unknown": 2,
+        "scholarship_page": 2
+      }
+    }
+  },
+  {
+    "idx": 12,
+    "id": 8,
+    "title": "France Excellence Charpak Scholarship Program",
+    "country": "France",
+    "existing_image": null,
+    "elapsed_s": 339.7,
+    "status": "no_trustworthy_image",
+    "requests": 26,
+    "persisted": false,
+    "error": null,
+    "image_results": [],
+    "page_discovery": {
+      "official_domain": "www.inde.campusfrance.org",
+      "is_official_domain": false,
+      "candidates": 5,
+      "trusted_candidates": 0,
+      "requests_made": 26,
+      "pages_fetched": 19,
+      "sitemaps_found": [],
+      "timed_out": true,
+      "bounded": true,
+      "error": null,
+      "trusted_urls": [],
+      "page_kinds": {
+        "root_domain": 1,
+        "unknown": 1,
+        "scholarship_page": 3
+      }
+    }
+  },
+  {
+    "idx": 13,
+    "id": 3,
+    "title": "DAAD Scholarship",
+    "country": "Germany",
+    "existing_image": "https://www.daad.de/shared/study/scholarships/2025/scholarship-banner-students-campus.jpg",
+    "elapsed_s": 881.6,
+    "status": "no_trustworthy_image",
+    "requests": 7,
+    "persisted": false,
+    "error": null,
+    "image_results": [],
+    "page_discovery": {
+      "official_domain": "www.daad.de",
+      "is_official_domain": true,
+      "candidates": 0,
+      "trusted_candidates": 0,
+      "requests_made": 7,
+      "pages_fetched": 0,
+      "sitemaps_found": [],
+      "timed_out": true,
+      "bounded": false,
+      "error": null,
+      "trusted_urls": [],
+      "page_kinds": {}
+    }
+  },
+  {
+    "idx": 14,
+    "id": 10,
+    "title": "Deutschlandstipendium (Germany Scholarship)",
+    "country": "Germany",
+    "existing_image": null,
+    "elapsed_s": 120.1,
+    "status": "low",
+    "requests": 33,
+    "persisted": false,
+    "error": null,
+    "image_results": [
+      {
+        "confidence": "low",
+        "image_url": "https://www.deutschlandstipendium.de/SiteGlobals/Frontend/Images/icons/_common/bmftr-logo.svg?__blob=normal&v=6",
+        "page_url": "https://www.deutschlandstipendium.de/",
+        "source_type": "official_provider",
+        "image_kind": "official_logo",
+        "alt_text": "Bundesministerium f\u00fcr Forschung, Technologie und Raumfahrt - Startseite",
+        "relevance_score": 0.0,
+        "validation_status": "rejected",
+        "provenance": {
+          "discovery_method": "html-img",
+          "page_kind": "root_domain",
+          "official_domain": "www.deutschlandstipendium.de",
+          "is_official_domain": true,
+          "trust_score": 70,
+          "validation_status": "rejected"
+        }
+      },
+      {
+        "confidence": "low",
+        "image_url": "https://www.deutschlandstipendium.de/SiteGlobals/Frontend/Images/icons/_common/logo_bmftr_small.svg?__blob=normal&v=1",
+        "page_url": "https://www.deutschlandstipendium.de/",
+        "source_type": "official_provider",
+        "image_kind": "official_logo",
+        "alt_text": "Logo Bundesministerium f\u00fcr Forschung, Technologie und Raumfahrt",
+        "relevance_score": 0.0,
+        "validation_status": "rejected",
+        "provenance": {
+          "discovery_method": "html-img",
+          "page_kind": "root_domain",
+          "official_domain": "www.deutschlandstipendium.de",
+          "is_official_domain": true,
+          "trust_score": 70,
+          "validation_status": "rejected"
+        }
+      },
+      {
+        "confidence": "low",
+        "image_url": "https://www.deutschlandstipendium.de/SiteGlobals/Frontend/Images/icons/deutschlandstipendium/logo-deutschlandstipendium.jpg?__blob=normal&v=6",
+        "page_url": "https://www.deutschlandstipendium.de/",
+        "source_type": "official_provider",
+        "image_kind": null,
+        "alt_text": "Bild-Dokument f\u00fcr das Frontend",
+        "relevance_score": 0.0,
+        "validation_status": "rejected",
+        "provenance": {
+          "discovery_method": "html-img",
+          "page_kind": "root_domain",
+          "official_domain": "www.deutschlandstipendium.de",
+          "is_official_domain": true,
+          "trust_score": 70,
+          "validation_status": "rejected"
+        }
+      }
+    ],
+    "page_discovery": {
+      "official_domain": "www.deutschlandstipendium.de",
+      "is_official_domain": true,
+      "candidates": 5,
+      "trusted_candidates": 5,
+      "requests_made": 33,
+      "pages_fetched": 26,
+      "sitemaps_found": [],
+      "timed_out": true,
+      "bounded": true,
+      "error": null,
+      "trusted_urls": [
+        "https://www.deutschlandstipendium.de/",
+        "https://www.deutschlandstipendium.de/deutschlandstipendium/de/home/home_node.html",
+        "https://www.deutschlandstipendium.de/deutschlandstipendium/de/services/sitemap/sitemap_node.html",
+        "https://www.deutschlandstipendium.de/deutschlandstipendium/de/services/kontakt/kontakt_node.html",
+        "https://www.deutschlandstipendium.de/deutschlandstipendium/de/services/presse/presse_node.html"
+      ],
+      "page_kinds": {
+        "root_domain": 1,
+        "unknown": 3,
+        "press": 1
+      }
+    }
+  },
+  {
+    "idx": 15,
+    "id": 285,
+    "title": "Stipendium Hungaricum Scholarship Programme",
+    "country": "Hungary",
+    "existing_image": null,
+    "elapsed_s": 56.8,
+    "status": "error",
+    "requests": 34,
+    "persisted": false,
+    "error": "unhashable type: 'list'",
+    "image_results": [],
+    "page_discovery": {
+      "official_domain": "stipendiumhungaricum.hu",
+      "is_official_domain": true,
+      "candidates": 5,
+      "trusted_candidates": 5,
+      "requests_made": 34,
+      "pages_fetched": 27,
+      "sitemaps_found": [],
+      "timed_out": true,
+      "bounded": true,
+      "error": null,
+      "trusted_urls": [
+        "https://stipendiumhungaricum.hu/",
+        "https://stipendiumhungaricum.hu/scholarship",
+        "https://stipendiumhungaricum.hu/news",
+        "https://stipendiumhungaricum.hu/about",
+        "https://stipendiumhungaricum.hu/contact"
+      ],
+      "page_kinds": {
+        "root_domain": 1,
+        "scholarship_page": 1,
+        "news": 1,
+        "unknown": 2
+      }
+    }
+  },
+  {
+    "idx": 16,
+    "id": 286,
+    "title": "Hungarian Diaspora Scholarship Programme",
+    "country": "Hungary",
+    "existing_image": null,
+    "elapsed_s": 149.3,
+    "status": "error",
+    "requests": 37,
+    "persisted": false,
+    "error": "unhashable type: 'list'",
+    "image_results": [],
+    "page_discovery": {
+      "official_domain": "diasporascholarship.hu",
+      "is_official_domain": true,
+      "candidates": 5,
+      "trusted_candidates": 5,
+      "requests_made": 37,
+      "pages_fetched": 30,
+      "sitemaps_found": [],
+      "timed_out": true,
+      "bounded": true,
+      "error": null,
+      "trusted_urls": [
+        "https://diasporascholarship.hu/en",
+        "https://diasporascholarship.hu/scholarship",
+        "https://diasporascholarship.hu/news",
+        "https://diasporascholarship.hu/media",
+        "https://diasporascholarship.hu/about"
+      ],
+      "page_kinds": {
+        "root_domain": 1,
+        "scholarship_page": 2,
+        "news": 1,
+        "press": 1
+      }
+    }
+  },
+  {
+    "idx": 17,
+    "id": 2,
+    "title": "ICCR Scholarship (Suborno Jayanti Scheme)",
+    "country": "India",
+    "existing_image": "https://a2ascholarships.iccr.gov.in/assets/images/header-banner.jpg",
+    "elapsed_s": 26.8,
+    "status": "medium",
+    "requests": 34,
+    "persisted": false,
+    "error": null,
+    "image_results": [
+      {
+        "confidence": "medium",
+        "image_url": "https://a2ascholarships.iccr.gov.in/assets/site/main/images/500-error.png",
+        "page_url": "https://a2ascholarships.iccr.gov.in/scholarships",
+        "source_type": "official_provider",
+        "image_kind": "official_media",
+        "alt_text": null,
+        "relevance_score": 0.411,
+        "validation_status": "rejected",
+        "provenance": {
+          "discovery_method": "html-img",
+          "page_kind": "scholarship_page",
+          "official_domain": "a2ascholarships.iccr.gov.in",
+          "is_official_domain": true,
+          "trust_score": 70,
+          "validation_status": "rejected"
+        }
+      },
+      {
+        "confidence": "medium",
+        "image_url": "https://a2ascholarships.iccr.gov.in/assets/site/main/images/newnotification.gif",
+        "page_url": "https://a2ascholarships.iccr.gov.in/",
+        "source_type": "official_provider",
+        "image_kind": "official_logo",
+        "alt_text": "new gif Image",
+        "relevance_score": 0.366,
+        "validation_status": "rejected",
+        "provenance": {
+          "discovery_method": "html-img",
+          "page_kind": "root_domain",
+          "official_domain": "a2ascholarships.iccr.gov.in",
+          "is_official_domain": true,
+          "trust_score": 70,
+          "validation_status": "rejected"
+        }
+      },
+      {
+        "confidence": "low",
+        "image_url": "https://a2ascholarships.iccr.gov.in/assets/site/main/images/mea-logo.png",
+        "page_url": "https://a2ascholarships.iccr.gov.in/scholarships",
+        "source_type": "official_provider",
+        "image_kind": "official_logo",
+        "alt_text": "MEA Logo",
+        "relevance_score": 0.011,
+        "validation_status": "rejected",
+        "provenance": {
+          "discovery_method": "html-img",
+          "page_kind": "scholarship_page",
+          "official_domain": "a2ascholarships.iccr.gov.in",
+          "is_official_domain": true,
+          "trust_score": 70,
+          "validation_status": "rejected"
+        }
+      }
+    ],
+    "page_discovery": {
+      "official_domain": "a2ascholarships.iccr.gov.in",
+      "is_official_domain": true,
+      "candidates": 5,
+      "trusted_candidates": 5,
+      "requests_made": 34,
+      "pages_fetched": 27,
+      "sitemaps_found": [],
+      "timed_out": true,
+      "bounded": true,
+      "error": null,
+      "trusted_urls": [
+        "https://a2ascholarships.iccr.gov.in/",
+        "https://a2ascholarships.iccr.gov.in/scholarships",
+        "https://a2ascholarships.iccr.gov.in/scholarship",
+        "https://a2ascholarships.iccr.gov.in/funding",
+        "https://a2ascholarships.iccr.gov.in/grants"
+      ],
+      "page_kinds": {
+        "root_domain": 1,
+        "scholarship_page": 4
+      }
+    }
+  },
+  {
+    "idx": 18,
+    "id": 11,
+    "title": "Study in India (SII) Scholarship",
+    "country": "India",
+    "existing_image": null,
+    "elapsed_s": 130.2,
+    "status": "no_trustworthy_image",
+    "requests": 7,
+    "persisted": false,
+    "error": null,
+    "image_results": [],
+    "page_discovery": {
+      "official_domain": "www.studyinindia.gov.in",
+      "is_official_domain": true,
+      "candidates": 0,
+      "trusted_candidates": 0,
+      "requests_made": 7,
+      "pages_fetched": 0,
+      "sitemaps_found": [],
+      "timed_out": true,
+      "bounded": false,
+      "error": null,
+      "trusted_urls": [],
+      "page_kinds": {}
+    }
+  },
+  {
+    "idx": 19,
+    "id": 248,
+    "title": "Government of Ireland International Education Scholarship (GOI-IES)",
+    "country": "Ireland",
+    "existing_image": null,
+    "elapsed_s": 163.9,
+    "status": "high",
+    "requests": 39,
+    "persisted": false,
+    "error": null,
+    "image_results": [
+      {
+        "confidence": "high",
+        "image_url": "https://hea.ie/assets/uploads/2017/04/INSPIRE-320x291.png",
+        "page_url": "https://hea.ie/policy/internationalisation/goi-ies",
+        "source_type": "official_provider",
+        "image_kind": "program_image",
+        "alt_text": "",
+        "relevance_score": 0.661,
+        "validation_status": "rejected",
+        "provenance": {
+          "discovery_method": "html-img",
+          "page_kind": "root_domain",
+          "official_domain": "hea.ie",
+          "is_official_domain": true,
+          "trust_score": 70,
+          "validation_status": "rejected"
+        }
+      },
+      {
+        "confidence": "high",
+        "image_url": "https://hea.ie/assets/uploads/2023/02/Graduate-Outcomes-320x213.jpg",
+        "page_url": "https://hea.ie/policy/internationalisation/goi-ies",
+        "source_type": "official_provider",
+        "image_kind": "program_image",
+        "alt_text": "Image of the Graduate Outcomes Document",
+        "relevance_score": 0.661,
+        "validation_status": "rejected",
+        "provenance": {
+          "discovery_method": "html-img",
+          "page_kind": "root_domain",
+          "official_domain": "hea.ie",
+          "is_official_domain": true,
+          "trust_score": 70,
+          "validation_status": "rejected"
+        }
+      },
+      {
+        "confidence": "medium",
+        "image_url": "https://hea.ie/assets/uploads/2022/04/47FF0391-B290-4C7D-A3BA-DDFE8D595FCA-640x480.jpeg",
+        "page_url": "https://hea.ie/scholarships",
+        "source_type": "official_provider",
+        "image_kind": "program_image",
+        "alt_text": null,
+        "relevance_score": 0.3529,
+        "validation_status": "rejected",
+        "provenance": {
+          "discovery_method": "og:image",
+          "page_kind": "news",
+          "official_domain": "hea.ie",
+          "is_official_domain": true,
+          "trust_score": 70,
+          "validation_status": "rejected"
+        }
+      }
+    ],
+    "page_discovery": {
+      "official_domain": "hea.ie",
+      "is_official_domain": true,
+      "candidates": 5,
+      "trusted_candidates": 5,
+      "requests_made": 39,
+      "pages_fetched": 32,
+      "sitemaps_found": [],
+      "timed_out": true,
+      "bounded": true,
+      "error": null,
+      "trusted_urls": [
+        "https://hea.ie/policy/internationalisation/goi-ies",
+        "https://hea.ie/scholarships",
+        "https://hea.ie/scholarship",
+        "https://hea.ie/funding",
+        "https://hea.ie/news"
+      ],
+      "page_kinds": {
+        "root_domain": 1,
+        "news": 3,
+        "scholarship_page": 1
+      }
+    }
+  },
+  {
+    "idx": 20,
+    "id": 249,
+    "title": "Government of Ireland Postgraduate Scholarship Programme",
+    "country": "Ireland",
+    "existing_image": null,
+    "elapsed_s": 75.6,
+    "status": "high",
+    "requests": 16,
+    "persisted": false,
+    "error": null,
+    "image_results": [
+      {
+        "confidence": "high",
+        "image_url": "https://research.ie/assets/uploads/2017/05/Today.jpg",
+        "page_url": "https://research.ie/funding/goipg",
+        "source_type": "official_provider",
+        "image_kind": null,
+        "alt_text": "Person walking into sunset",
+        "relevance_score": 0.825,
+        "validation_status": "rejected",
+        "provenance": {
+          "discovery_method": "html-img",
+          "page_kind": "root_domain",
+          "official_domain": "research.ie",
+          "is_official_domain": true,
+          "trust_score": 70,
+          "validation_status": "rejected"
+        }
+      },
+      {
+        "confidence": "high",
+        "image_url": "https://research.ie/assets/themes/irc/images/footer/eu_social_fund.svg",
+        "page_url": "https://research.ie/funding/goipg",
+        "source_type": "official_provider",
+        "image_kind": null,
+        "alt_text": "European Union Investing in your future. European Social Fund",
+        "relevance_score": 0.825,
+        "validation_status": "rejected",
+        "provenance": {
+          "discovery_method": "html-img",
+          "page_kind": "root_domain",
+          "official_domain": "research.ie",
+          "is_official_domain": true,
+          "trust_score": 70,
+          "validation_status": "rejected"
+        }
+      },
+      {
+        "confidence": "medium",
+        "image_url": "https://research.ie/assets/themes/irc/images/logo.png",
+        "page_url": "https://research.ie/funding/goipg",
+        "source_type": "official_provider",
+        "image_kind": "program_image",
+        "alt_text": null,
+        "relevance_score": 0.425,
+        "validation_status": "human_review",
+        "provenance": {
+          "discovery_method": "og:image",
+          "page_kind": "root_domain",
+          "official_domain": "research.ie",
+          "is_official_domain": true,
+          "trust_score": 70,
+          "validation_status": "human_review"
+        }
+      }
+    ],
+    "page_discovery": {
+      "official_domain": "research.ie",
+      "is_official_domain": true,
+      "candidates": 5,
+      "trusted_candidates": 5,
+      "requests_made": 16,
+      "pages_fetched": 9,
+      "sitemaps_found": [],
+      "timed_out": true,
+      "bounded": true,
+      "error": null,
+      "trusted_urls": [
+        "https://research.ie/funding/goipg",
+        "https://research.ie/funding",
+        "https://research.ie/news",
+        "https://research.ie/study",
+        "https://research.ie/international"
+      ],
+      "page_kinds": {
+        "root_domain": 1,
+        "scholarship_page": 1,
+        "news": 1,
+        "press": 1,
+        "unknown": 1
+      }
+    }
+  },
+  {
+    "idx": 21,
+    "id": 133,
+    "title": "Invest Your Talent in Italy (IYT)",
+    "country": "Italy",
+    "existing_image": null,
+    "elapsed_s": 160.6,
+    "status": "no_trustworthy_image",
+    "requests": 7,
+    "persisted": false,
+    "error": null,
+    "image_results": [],
+    "page_discovery": {
+      "official_domain": "investyourtalentapplication.esteri.it",
+      "is_official_domain": true,
+      "candidates": 0,
+      "trusted_candidates": 0,
+      "requests_made": 7,
+      "pages_fetched": 0,
+      "sitemaps_found": [],
+      "timed_out": true,
+      "bounded": false,
+      "error": null,
+      "trusted_urls": [],
+      "page_kinds": {}
+    }
+  },
+  {
+    "idx": 22,
+    "id": 5,
+    "title": "MEXT (Monbukagakusho) Scholarship",
+    "country": "Japan",
+    "existing_image": "https://www.studyinjapan.go.jp/applies/wp-content/uploads/2025/02/mext_scholarship_students_japan.jpg",
+    "elapsed_s": 33.2,
+    "status": "medium",
+    "requests": 19,
+    "persisted": false,
+    "error": null,
+    "image_results": [
+      {
+        "confidence": "medium",
+        "image_url": "https://www.studyinjapan.go.jp/ja/assets/images/common/ogimg.png",
+        "page_url": "https://www.studyinjapan.go.jp/ja/planning/scholarships",
+        "source_type": "official_provider",
+        "image_kind": null,
+        "alt_text": null,
+        "relevance_score": 0.3567,
+        "validation_status": "rejected",
+        "provenance": {
+          "discovery_method": "twitter:image",
+          "page_kind": "scholarship_page",
+          "official_domain": "www.studyinjapan.go.jp",
+          "is_official_domain": true,
+          "trust_score": 70,
+          "validation_status": "rejected"
+        }
+      },
+      {
+        "confidence": "low",
+        "image_url": "https://www.studyinjapan.go.jp/ja/assets/images/common/ogimg.png",
+        "page_url": "https://www.studyinjapan.go.jp/",
+        "source_type": "official_provider",
+        "image_kind": "program_image",
+        "alt_text": null,
+        "relevance_score": 0.145,
+        "validation_status": "rejected",
+        "provenance": {
+          "discovery_method": "twitter:image",
+          "page_kind": "root_domain",
+          "official_domain": "www.studyinjapan.go.jp",
+          "is_official_domain": true,
+          "trust_score": 70,
+          "validation_status": "rejected"
+        }
+      },
+      {
+        "confidence": "low",
+        "image_url": "https://www.studyinjapan.go.jp/ja/assets/images/common/study_in_Japan_logo.svg",
+        "page_url": "https://www.studyinjapan.go.jp/",
+        "source_type": "official_provider",
+        "image_kind": "program_image",
+        "alt_text": "STUDY in JAPAN",
+        "relevance_score": 0.0,
+        "validation_status": "rejected",
+        "provenance": {
+          "discovery_method": "html-img",
+          "page_kind": "root_domain",
+          "official_domain": "www.studyinjapan.go.jp",
+          "is_official_domain": true,
+          "trust_score": 70,
+          "validation_status": "rejected"
+        }
+      }
+    ],
+    "page_discovery": {
+      "official_domain": "www.studyinjapan.go.jp",
+      "is_official_domain": true,
+      "candidates": 5,
+      "trusted_candidates": 5,
+      "requests_made": 19,
+      "pages_fetched": 12,
+      "sitemaps_found": [],
+      "timed_out": true,
+      "bounded": true,
+      "error": null,
+      "trusted_urls": [
+        "https://www.studyinjapan.go.jp/",
+        "https://www.studyinjapan.go.jp/ja/planning/scholarships",
+        "https://www.studyinjapan.go.jp/ja/search-for-scholarships/tuition-reduction_search.php",
+        "https://www.studyinjapan.go.jp/ja/events",
+        "https://www.studyinjapan.go.jp/ja/news/2609071400.html"
+      ],
+      "page_kinds": {
+        "root_domain": 1,
+        "scholarship_page": 2,
+        "unknown": 1,
+        "news": 1
+      }
+    }
+  },
+  {
+    "idx": 23,
+    "id": 12,
+    "title": "JASSO Monbukagakusho Honors Scholarship",
+    "country": "Japan",
+    "existing_image": null,
+    "elapsed_s": 46.0,
+    "status": "high",
+    "requests": 36,
+    "persisted": false,
+    "error": null,
+    "image_results": [
+      {
+        "confidence": "high",
+        "image_url": "https://www.jasso.go.jp/assets/images/common/btn_drawer_close.svg",
+        "page_url": "https://www.jasso.go.jp/en/ryugaku/scholarship_j/shoreihi/about.html",
+        "source_type": "official_provider",
+        "image_kind": "official_banner",
+        "alt_text": "",
+        "relevance_score": 0.7987,
+        "validation_status": "rejected",
+        "provenance": {
+          "discovery_method": "html-img",
+          "page_kind": "root_domain",
+          "official_domain": "www.jasso.go.jp",
+          "is_official_domain": true,
+          "trust_score": 70,
+          "validation_status": "rejected"
+        }
+      },
+      {
+        "confidence": "medium",
+        "image_url": "https://www.jasso.go.jp/assets/images/common/btn_drawer_close.svg",
+        "page_url": "https://www.jasso.go.jp/scholarships",
+        "source_type": "official_provider",
+        "image_kind": null,
+        "alt_text": "",
+        "relevance_score": 0.4662,
+        "validation_status": "rejected",
+        "provenance": {
+          "discovery_method": "html-img",
+          "page_kind": "scholarship_page",
+          "official_domain": "www.jasso.go.jp",
+          "is_official_domain": true,
+          "trust_score": 70,
+          "validation_status": "rejected"
+        }
+      },
+      {
+        "confidence": "medium",
+        "image_url": "https://www.jasso.go.jp/assets/images/common/ogp_en_logo.jpg",
+        "page_url": "https://www.jasso.go.jp/en/ryugaku/scholarship_j/shoreihi/about.html",
+        "source_type": "official_provider",
+        "image_kind": "program_image",
+        "alt_text": null,
+        "relevance_score": 0.3987,
+        "validation_status": "rejected",
+        "provenance": {
+          "discovery_method": "og:image",
+          "page_kind": "root_domain",
+          "official_domain": "www.jasso.go.jp",
+          "is_official_domain": true,
+          "trust_score": 70,
+          "validation_status": "rejected"
+        }
+      }
+    ],
+    "page_discovery": {
+      "official_domain": "www.jasso.go.jp",
+      "is_official_domain": true,
+      "candidates": 5,
+      "trusted_candidates": 5,
+      "requests_made": 36,
+      "pages_fetched": 29,
+      "sitemaps_found": [],
+      "timed_out": true,
+      "bounded": true,
+      "error": null,
+      "trusted_urls": [
+        "https://www.jasso.go.jp/en/ryugaku/scholarship_j/shoreihi/about.html",
+        "https://www.jasso.go.jp/scholarships",
+        "https://www.jasso.go.jp/scholarship",
+        "https://www.jasso.go.jp/funding",
+        "https://www.jasso.go.jp/grants"
+      ],
+      "page_kinds": {
+        "root_domain": 1,
+        "scholarship_page": 4
+      }
+    }
+  },
+  {
+    "idx": 24,
+    "id": 172,
+    "title": "Holland Scholarship",
+    "country": "Netherlands",
+    "existing_image": null,
+    "elapsed_s": 45.6,
+    "status": "no_trustworthy_image",
+    "requests": 18,
+    "persisted": false,
+    "error": null,
+    "image_results": [],
+    "page_discovery": {
+      "official_domain": "www.studyinnl.org",
+      "is_official_domain": false,
+      "candidates": 4,
+      "trusted_candidates": 0,
+      "requests_made": 18,
+      "pages_fetched": 11,
+      "sitemaps_found": [],
+      "timed_out": true,
+      "bounded": true,
+      "error": null,
+      "trusted_urls": [],
+      "page_kinds": {
+        "root_domain": 1,
+        "scholarship_page": 1,
+        "news": 1,
+        "unknown": 1
+      }
+    }
+  },
+  {
+    "idx": 25,
+    "id": 254,
+    "title": "Manaaki New Zealand Scholarships",
+    "country": "New Zealand",
+    "existing_image": null,
+    "elapsed_s": 41.1,
+    "status": "medium",
+    "requests": 23,
+    "persisted": false,
+    "error": null,
+    "image_results": [
+      {
+        "confidence": "medium",
+        "image_url": "https://images.ctfassets.net/9d9xnserxur1/7d6NUvOGjVaGDAvLZi2pUS/e7996bba74c299812e297a9330cd551c/Scholarship_handbook_photos_1_web__2_.jpg",
+        "page_url": "https://www.nzscholarships.govt.nz/",
+        "source_type": "official_provider",
+        "image_kind": "program_image",
+        "alt_text": null,
+        "relevance_score": 0.81,
+        "validation_status": "rejected",
+        "provenance": {
+          "discovery_method": "og:image",
+          "page_kind": "root_domain",
+          "official_domain": "www.nzscholarships.govt.nz",
+          "is_official_domain": true,
+          "trust_score": 70,
+          "validation_status": "rejected"
+        }
+      },
+      {
+        "confidence": "medium",
+        "image_url": "https://www.nzscholarships.govt.nz/logo-think-new-teal-400.png",
+        "page_url": "https://www.nzscholarships.govt.nz/why-study-in-new-zealand",
+        "source_type": "official_provider",
+        "image_kind": null,
+        "alt_text": null,
+        "relevance_score": 0.4475,
+        "validation_status": "rejected",
+        "provenance": {
+          "discovery_method": "twitter:image",
+          "page_kind": "scholarship_page",
+          "official_domain": "www.nzscholarships.govt.nz",
+          "is_official_domain": true,
+          "trust_score": 70,
+          "validation_status": "rejected"
+        }
+      },
+      {
+        "confidence": "medium",
+        "image_url": "https://www.nzscholarships.govt.nz/assets/nzgovt-logo-white.svg",
+        "page_url": "https://www.nzscholarships.govt.nz/why-study-in-new-zealand",
+        "source_type": "official_provider",
+        "image_kind": null,
+        "alt_text": "NZ government logo",
+        "relevance_score": 0.4475,
+        "validation_status": "rejected",
+        "provenance": {
+          "discovery_method": "html-img",
+          "page_kind": "scholarship_page",
+          "official_domain": "www.nzscholarships.govt.nz",
+          "is_official_domain": true,
+          "trust_score": 70,
+          "validation_status": "rejected"
+        }
+      }
+    ],
+    "page_discovery": {
+      "official_domain": "www.nzscholarships.govt.nz",
+      "is_official_domain": true,
+      "candidates": 5,
+      "trusted_candidates": 5,
+      "requests_made": 23,
+      "pages_fetched": 16,
+      "sitemaps_found": [],
+      "timed_out": true,
+      "bounded": true,
+      "error": null,
+      "trusted_urls": [
+        "https://www.nzscholarships.govt.nz/",
+        "https://www.nzscholarships.govt.nz/why-study-in-new-zealand",
+        "https://www.nzscholarships.govt.nz/conduct-requirements-of-new-zealand-scholars",
+        "https://www.nzscholarships.govt.nz/types-of-manaaki-scholarships",
+        "https://www.nzscholarships.govt.nz/international-tertiary-students"
+      ],
+      "page_kinds": {
+        "root_domain": 1,
+        "scholarship_page": 3,
+        "announcement": 1
+      }
+    }
+  },
+  {
+    "idx": 26,
+    "id": 274,
+    "title": "BI Presidential Scholarship",
+    "country": "Norway",
+    "existing_image": null,
+    "elapsed_s": 47.7,
+    "status": "high",
+    "requests": 12,
+    "persisted": false,
+    "error": null,
+    "image_results": [
+      {
+        "confidence": "high",
+        "image_url": "https://media.bi.no/asset/f6bf9a41-2dc4-4690-8a04-bf602df37577/Large/Marked-Heltid-internasjonal-FW25-07.jpg",
+        "page_url": "https://www.bi.no/en/programmes-and-individual-courses/scholarships/bi-presidential-scholarships",
+        "source_type": "official_provider",
+        "image_kind": "program_image",
+        "alt_text": null,
+        "relevance_score": 0.9,
+        "validation_status": "approved",
+        "provenance": {
+          "discovery_method": "og:image",
+          "page_kind": "root_domain",
+          "official_domain": "www.bi.no",
+          "is_official_domain": true,
+          "trust_score": 70,
+          "validation_status": "approved"
+        }
+      },
+      {
+        "confidence": "medium",
+        "image_url": "https://www.bi.no/public/images/Icons/favicon-svg.svg",
+        "page_url": "https://www.bi.no/en/programmes-and-individual-courses/scholarships/bi-presidential-scholarships",
+        "source_type": "official_provider",
+        "image_kind": "program_image",
+        "alt_text": null,
+        "relevance_score": 0.5,
+        "validation_status": "approved",
+        "provenance": {
+          "discovery_method": "link-rel-icon",
+          "page_kind": "root_domain",
+          "official_domain": "www.bi.no",
+          "is_official_domain": true,
+          "trust_score": 70,
+          "validation_status": "approved"
+        }
+      },
+      {
+        "confidence": "medium",
+        "image_url": "https://www.bi.no/public/images/Icons/favicon-32x32.png",
+        "page_url": "https://www.bi.no/en/programmes-and-individual-courses/scholarships/bi-presidential-scholarships",
+        "source_type": "official_provider",
+        "image_kind": "program_image",
+        "alt_text": null,
+        "relevance_score": 0.5,
+        "validation_status": "approved",
+        "provenance": {
+          "discovery_method": "link-rel-icon",
+          "page_kind": "root_domain",
+          "official_domain": "www.bi.no",
+          "is_official_domain": true,
+          "trust_score": 70,
+          "validation_status": "approved"
+        }
+      }
+    ],
+    "page_discovery": {
+      "official_domain": "www.bi.no",
+      "is_official_domain": true,
+      "candidates": 3,
+      "trusted_candidates": 3,
+      "requests_made": 12,
+      "pages_fetched": 5,
+      "sitemaps_found": [],
+      "timed_out": true,
+      "bounded": true,
+      "error": null,
+      "trusted_urls": [
+        "https://www.bi.no/en/programmes-and-individual-courses/scholarships/bi-presidential-scholarships",
+        "https://www.bi.no/en/programmes-and-individual-courses/scholarships",
+        "https://www.bi.no/en/about-bi/for-the-press"
+      ],
+      "page_kinds": {
+        "root_domain": 1,
+        "scholarship_page": 1,
+        "press": 1
+      }
+    }
+  },
+  {
+    "idx": 27,
+    "id": 275,
+    "title": "BI Master International Scholarship \u2013 Bergen",
+    "country": "Norway",
+    "existing_image": null,
+    "elapsed_s": 58.4,
+    "status": "high",
+    "requests": 17,
+    "persisted": false,
+    "error": null,
+    "image_results": [
+      {
+        "confidence": "high",
+        "image_url": "https://media.bi.no/asset/f6bf9a41-2dc4-4690-8a04-bf602df37577/Large/Marked-Heltid-internasjonal-FW25-07.jpg",
+        "page_url": "https://www.bi.no/en/programmes-and-individual-courses/scholarships/master-of-science-international-scholarship--bergen",
+        "source_type": "official_provider",
+        "image_kind": "program_image",
+        "alt_text": null,
+        "relevance_score": 0.873,
+        "validation_status": "approved",
+        "provenance": {
+          "discovery_method": "og:image",
+          "page_kind": "root_domain",
+          "official_domain": "www.bi.no",
+          "is_official_domain": true,
+          "trust_score": 70,
+          "validation_status": "approved"
+        }
+      },
+      {
+        "confidence": "high",
+        "image_url": "https://media.bi.no/transform/b8b86e69-ad32-4bea-af40-7f006d3d234a/4429x4429?io=transform:fit,width:720",
+        "page_url": "https://www.bi.no/en/programmes-and-individual-courses/master-programmes",
+        "source_type": "official_provider",
+        "image_kind": null,
+        "alt_text": "People looking at the camera",
+        "relevance_score": 0.634,
+        "validation_status": "rejected",
+        "provenance": {
+          "discovery_method": "html-img",
+          "page_kind": "scholarship_page",
+          "official_domain": "www.bi.no",
+          "is_official_domain": true,
+          "trust_score": 70,
+          "validation_status": "rejected"
+        }
+      },
+      {
+        "confidence": "medium",
+        "image_url": "https://media.bi.no/asset/5a40aadb-6370-43b7-91df-50ad94ce89f1/Large/Arbeidsplass-Torg-15.jpg",
+        "page_url": "https://www.bi.no/en/programmes-and-individual-courses/master-programmes",
+        "source_type": "official_provider",
+        "image_kind": null,
+        "alt_text": null,
+        "relevance_score": 0.509,
+        "validation_status": "rejected",
+        "provenance": {
+          "discovery_method": "og:image",
+          "page_kind": "scholarship_page",
+          "official_domain": "www.bi.no",
+          "is_official_domain": true,
+          "trust_score": 70,
+          "validation_status": "rejected"
+        }
+      }
+    ],
+    "page_discovery": {
+      "official_domain": "www.bi.no",
+      "is_official_domain": true,
+      "candidates": 5,
+      "trusted_candidates": 5,
+      "requests_made": 17,
+      "pages_fetched": 10,
+      "sitemaps_found": [],
+      "timed_out": true,
+      "bounded": true,
+      "error": null,
+      "trusted_urls": [
+        "https://www.bi.no/en/programmes-and-individual-courses/scholarships/master-of-science-international-scholarship--bergen",
+        "https://www.bi.no/en/programmes-and-individual-courses/master-programmes",
+        "https://www.bi.no/en/programmes-and-individual-courses/master-programmes/executive-mba",
+        "https://www.bi.no/en/programmes-and-individual-courses/international-summer-programme",
+        "https://www.bi.no/en/programmes-and-individual-courses/scholarships"
+      ],
+      "page_kinds": {
+        "root_domain": 1,
+        "scholarship_page": 4
+      }
+    }
+  },
+  {
+    "idx": 28,
+    "id": 289,
+    "title": "Stefan Banach NAWA Scholarship Programme (Poland)",
+    "country": "Poland",
+    "existing_image": null,
+    "elapsed_s": 108.3,
+    "status": "low",
+    "requests": 45,
+    "persisted": false,
+    "error": null,
+    "image_results": [
+      {
+        "confidence": "low",
+        "image_url": "http://nawa.gov.pl/images/open-graph/logo.jpg",
+        "page_url": "https://nawa.gov.pl/en/students/foreign-students/the-banach-scholarship-programme/about-the-programme",
+        "source_type": "official_provider",
+        "image_kind": "official_logo",
+        "alt_text": null,
+        "relevance_score": 0.1958,
+        "validation_status": "rejected",
+        "provenance": {
+          "discovery_method": "og:image",
+          "page_kind": "root_domain",
+          "official_domain": "nawa.gov.pl",
+          "is_official_domain": true,
+          "trust_score": 70,
+          "validation_status": "rejected"
+        }
+      },
+      {
+        "confidence": "low",
+        "image_url": "https://nawa.gov.pl/images/open-graph/logo.jpg",
+        "page_url": "https://nawa.gov.pl/en/students/foreign-students/the-banach-scholarship-programme/about-the-programme",
+        "source_type": "official_provider",
+        "image_kind": "official_logo",
+        "alt_text": null,
+        "relevance_score": 0.1958,
+        "validation_status": "rejected",
+        "provenance": {
+          "discovery_method": "og:image",
+          "page_kind": "root_domain",
+          "official_domain": "nawa.gov.pl",
+          "is_official_domain": true,
+          "trust_score": 70,
+          "validation_status": "rejected"
+        }
+      },
+      {
+        "confidence": "low",
+        "image_url": "https://nawa.gov.pl/images/rozszerzenia/szablony/siteb3/logo-komputer.png",
+        "page_url": "https://nawa.gov.pl/en/students/foreign-students/the-banach-scholarship-programme/about-the-programme",
+        "source_type": "official_provider",
+        "image_kind": "official_logo",
+        "alt_text": null,
+        "relevance_score": 0.1958,
+        "validation_status": "rejected",
+        "provenance": {
+          "discovery_method": "json-ld",
+          "page_kind": "root_domain",
+          "official_domain": "nawa.gov.pl",
+          "is_official_domain": true,
+          "trust_score": 70,
+          "validation_status": "rejected"
+        }
+      }
+    ],
+    "page_discovery": {
+      "official_domain": "nawa.gov.pl",
+      "is_official_domain": true,
+      "candidates": 5,
+      "trusted_candidates": 5,
+      "requests_made": 45,
+      "pages_fetched": 38,
+      "sitemaps_found": [],
+      "timed_out": true,
+      "bounded": true,
+      "error": null,
+      "trusted_urls": [
+        "https://nawa.gov.pl/en/students/foreign-students/the-banach-scholarship-programme/about-the-programme",
+        "https://nawa.gov.pl/scholarships",
+        "https://nawa.gov.pl/scholarship",
+        "https://nawa.gov.pl/funding",
+        "https://nawa.gov.pl/grants"
+      ],
+      "page_kinds": {
+        "root_domain": 1,
+        "scholarship_page": 4
+      }
+    }
+  },
+  {
+    "idx": 29,
+    "id": 290,
+    "title": "Poland My First Choice NAWA Scholarship Programme",
+    "country": "Poland",
+    "existing_image": null,
+    "elapsed_s": 108.9,
+    "status": "medium",
+    "requests": 45,
+    "persisted": false,
+    "error": null,
+    "image_results": [
+      {
+        "confidence": "medium",
+        "image_url": "http://nawa.gov.pl/images/open-graph/logo.jpg",
+        "page_url": "https://nawa.gov.pl/en/students/foreign-students/poland-my-first-choice-programme/about-the-programme",
+        "source_type": "official_provider",
+        "image_kind": "official_logo",
+        "alt_text": null,
+        "relevance_score": 0.3031,
+        "validation_status": "rejected",
+        "provenance": {
+          "discovery_method": "og:image",
+          "page_kind": "root_domain",
+          "official_domain": "nawa.gov.pl",
+          "is_official_domain": true,
+          "trust_score": 70,
+          "validation_status": "rejected"
+        }
+      },
+      {
+        "confidence": "medium",
+        "image_url": "https://nawa.gov.pl/images/open-graph/logo.jpg",
+        "page_url": "https://nawa.gov.pl/en/students/foreign-students/poland-my-first-choice-programme/about-the-programme",
+        "source_type": "official_provider",
+        "image_kind": "official_logo",
+        "alt_text": null,
+        "relevance_score": 0.3031,
+        "validation_status": "rejected",
+        "provenance": {
+          "discovery_method": "og:image",
+          "page_kind": "root_domain",
+          "official_domain": "nawa.gov.pl",
+          "is_official_domain": true,
+          "trust_score": 70,
+          "validation_status": "rejected"
+        }
+      },
+      {
+        "confidence": "medium",
+        "image_url": "https://nawa.gov.pl/images/rozszerzenia/szablony/siteb3/logo-komputer.png",
+        "page_url": "https://nawa.gov.pl/en/students/foreign-students/poland-my-first-choice-programme/about-the-programme",
+        "source_type": "official_provider",
+        "image_kind": "official_logo",
+        "alt_text": null,
+        "relevance_score": 0.3031,
+        "validation_status": "rejected",
+        "provenance": {
+          "discovery_method": "json-ld",
+          "page_kind": "root_domain",
+          "official_domain": "nawa.gov.pl",
+          "is_official_domain": true,
+          "trust_score": 70,
+          "validation_status": "rejected"
+        }
+      }
+    ],
+    "page_discovery": {
+      "official_domain": "nawa.gov.pl",
+      "is_official_domain": true,
+      "candidates": 5,
+      "trusted_candidates": 5,
+      "requests_made": 45,
+      "pages_fetched": 38,
+      "sitemaps_found": [],
+      "timed_out": true,
+      "bounded": true,
+      "error": null,
+      "trusted_urls": [
+        "https://nawa.gov.pl/en/students/foreign-students/poland-my-first-choice-programme/about-the-programme",
+        "https://nawa.gov.pl/scholarships",
+        "https://nawa.gov.pl/scholarship",
+        "https://nawa.gov.pl/funding",
+        "https://nawa.gov.pl/grants"
+      ],
+      "page_kinds": {
+        "root_domain": 1,
+        "scholarship_page": 4
+      }
+    }
+  },
+  {
+    "idx": 30,
+    "id": 299,
+    "title": "Portuguese Foundation for Science and Technology (FCT) PhD Studentships",
+    "country": "Portugal",
+    "existing_image": null,
+    "elapsed_s": 102.2,
+    "status": "medium",
+    "requests": 36,
+    "persisted": false,
+    "error": null,
+    "image_results": [
+      {
+        "confidence": "medium",
+        "image_url": "https://www.fct.pt/wp-content/uploads/2022/12/fct-og.png",
+        "page_url": "https://www.fct.pt/en/concursos/concurso-bolsas-de-doutoramento-2026-linha-de-candidatura-geral",
+        "source_type": "official_provider",
+        "image_kind": "program_image",
+        "alt_text": null,
+        "relevance_score": 0.4139,
+        "validation_status": "approved",
+        "provenance": {
+          "discovery_method": "og:image",
+          "page_kind": "root_domain",
+          "official_domain": "www.fct.pt",
+          "is_official_domain": true,
+          "trust_score": 70,
+          "validation_status": "approved"
+        }
+      },
+      {
+        "confidence": "medium",
+        "image_url": "https://www.fct.pt/wp-content/themes/fct/assets/search_white.svg",
+        "page_url": "https://www.fct.pt/en/concursos/concurso-bolsas-de-doutoramento-2026-linha-de-candidatura-geral",
+        "source_type": "official_provider",
+        "image_kind": null,
+        "alt_text": "search",
+        "relevance_score": 0.4139,
+        "validation_status": "rejected",
+        "provenance": {
+          "discovery_method": "html-img",
+          "page_kind": "root_domain",
+          "official_domain": "www.fct.pt",
+          "is_official_domain": true,
+          "trust_score": 70,
+          "validation_status": "rejected"
+        }
+      },
+      {
+        "confidence": "low",
+        "image_url": "https://www.fct.pt/wp-content/uploads/2022/12/fct-og.png",
+        "page_url": "https://www.fct.pt/funding",
+        "source_type": "official_provider",
+        "image_kind": null,
+        "alt_text": null,
+        "relevance_score": 0.2689,
+        "validation_status": "rejected",
+        "provenance": {
+          "discovery_method": "og:image",
+          "page_kind": "announcement",
+          "official_domain": "www.fct.pt",
+          "is_official_domain": true,
+          "trust_score": 70,
+          "validation_status": "rejected"
+        }
+      }
+    ],
+    "page_discovery": {
+      "official_domain": "www.fct.pt",
+      "is_official_domain": true,
+      "candidates": 5,
+      "trusted_candidates": 5,
+      "requests_made": 36,
+      "pages_fetched": 29,
+      "sitemaps_found": [],
+      "timed_out": true,
+      "bounded": true,
+      "error": null,
+      "trusted_urls": [
+        "https://www.fct.pt/en/concursos/concurso-bolsas-de-doutoramento-2026-linha-de-candidatura-geral",
+        "https://www.fct.pt/funding",
+        "https://www.fct.pt/news",
+        "https://www.fct.pt/media",
+        "https://www.fct.pt/about"
+      ],
+      "page_kinds": {
+        "root_domain": 1,
+        "announcement": 1,
+        "news": 1,
+        "press": 1,
+        "unknown": 1
+      }
+    }
+  },
+  {
+    "idx": 31,
+    "id": 101,
+    "title": "A*STAR Graduate Scholarship (AGS)",
+    "country": "Singapore",
+    "existing_image": null,
+    "elapsed_s": 61.1,
+    "status": "high",
+    "requests": 20,
+    "persisted": false,
+    "error": null,
+    "image_results": [
+      {
+        "confidence": "high",
+        "image_url": "https://www.a-star.edu.sg/_next/image?url=%2Fapi%2Fmedia%2F53d6d556-a0aa-4bcb-9ba8-4eb1fc9ae750%2FASTAR%20HQ%20Corporate%20Website.png&w=640&q=75",
+        "page_url": "https://www.a-star.edu.sg/scholarships/home/scholarships/ags--scholarship",
+        "source_type": "official_provider",
+        "image_kind": "program_image",
+        "alt_text": "Scholarships",
+        "relevance_score": 0.673,
+        "validation_status": "human_review",
+        "provenance": {
+          "discovery_method": "html-img",
+          "page_kind": "root_domain",
+          "official_domain": "www.a-star.edu.sg",
+          "is_official_domain": true,
+          "trust_score": 70,
+          "validation_status": "human_review"
+        }
+      },
+      {
+        "confidence": "high",
+        "image_url": "https://www.a-star.edu.sg/_next/image?url=%2Fapi%2Fmedia%2F53d6d556-a0aa-4bcb-9ba8-4eb1fc9ae750%2FASTAR%20HQ%20Corporate%20Website.png&w=256&q=75",
+        "page_url": "https://www.a-star.edu.sg/scholarships/home/scholarships/ags--scholarship",
+        "source_type": "official_provider",
+        "image_kind": "program_image",
+        "alt_text": "Scholarships",
+        "relevance_score": 0.673,
+        "validation_status": "rejected",
+        "provenance": {
+          "discovery_method": "html-img",
+          "page_kind": "root_domain",
+          "official_domain": "www.a-star.edu.sg",
+          "is_official_domain": true,
+          "trust_score": 70,
+          "validation_status": "rejected"
+        }
+      },
+      {
+        "confidence": "high",
+        "image_url": "https://www.a-star.edu.sg/api/media/098fc4fc-ca59-4ae1-9a97-7a9766836759.jpg",
+        "page_url": "https://www.a-star.edu.sg/scholarships/home/scholarships/ags--scholarship",
+        "source_type": "official_provider",
+        "image_kind": "generic_official",
+        "alt_text": "/images/65astargraduateacademyagalibraries/aga/scholars/dr-joyce-tay-jia-xin_1200x700.tmb-rs560.webp?Culture=en&sfvrsn=b9d68e44_1",
+        "relevance_score": 0.673,
+        "validation_status": "rejected",
+        "provenance": {
+          "discovery_method": "html-img",
+          "page_kind": "root_domain",
+          "official_domain": "www.a-star.edu.sg",
+          "is_official_domain": true,
+          "trust_score": 70,
+          "validation_status": "rejected"
+        }
+      }
+    ],
+    "page_discovery": {
+      "official_domain": "www.a-star.edu.sg",
+      "is_official_domain": true,
+      "candidates": 5,
+      "trusted_candidates": 5,
+      "requests_made": 20,
+      "pages_fetched": 13,
+      "sitemaps_found": [],
+      "timed_out": true,
+      "bounded": true,
+      "error": null,
+      "trusted_urls": [
+        "https://www.a-star.edu.sg/scholarships/home/scholarships/ags--scholarship",
+        "https://www.a-star.edu.sg/scholarships",
+        "https://www.a-star.edu.sg/news",
+        "https://www.a-star.edu.sg/about",
+        "https://www.a-star.edu.sg/scholarships/home"
+      ],
+      "page_kinds": {
+        "root_domain": 1,
+        "scholarship_page": 2,
+        "news": 1,
+        "unknown": 1
+      }
+    }
+  },
+  {
+    "idx": 32,
+    "id": 4,
+    "title": "Global Korea Scholarship (GKS)",
+    "country": "South Korea",
+    "existing_image": "https://www.studyinkorea.go.kr/en/community/data/file/2025/01/gks_scholarship_banner.jpg",
+    "elapsed_s": 108.2,
+    "status": "medium",
+    "requests": 32,
+    "persisted": false,
+    "error": null,
+    "image_results": [
+      {
+        "confidence": "medium",
+        "image_url": "https://www.studyinkorea.go.kr/file/srcFileDown.do?filename=FILE_202609091130262870.png&orgfilename=2027 GKS banner_v2.png&fileStorePath=fileStorePath",
+        "page_url": "https://www.studyinkorea.go.kr/",
+        "source_type": "official_provider",
+        "image_kind": null,
+        "alt_text": "2027 Global Korea Scholarship for Undergraduate Degrees",
+        "relevance_score": 0.5463,
+        "validation_status": "rejected",
+        "provenance": {
+          "discovery_method": "html-img",
+          "page_kind": "root_domain",
+          "official_domain": "www.studyinkorea.go.kr",
+          "is_official_domain": true,
+          "trust_score": 70,
+          "validation_status": "rejected"
+        }
+      },
+      {
+        "confidence": "low",
+        "image_url": "http://www.studyinkorea.go.kr/file/srcFileDown.do?filename=FILE_202609230224096340.png&orgfilename=\u26052027 GKS holiday banner(0923).png&fileStorePath=fileStorePath",
+        "page_url": "https://www.studyinkorea.go.kr/",
+        "source_type": "official_provider",
+        "image_kind": null,
+        "alt_text": "NOTICE",
+        "relevance_score": 0.2963,
+        "validation_status": "rejected",
+        "provenance": {
+          "discovery_method": "html-img",
+          "page_kind": "root_domain",
+          "official_domain": "www.studyinkorea.go.kr",
+          "is_official_domain": true,
+          "trust_score": 70,
+          "validation_status": "rejected"
+        }
+      }
+    ],
+    "page_discovery": {
+      "official_domain": "www.studyinkorea.go.kr",
+      "is_official_domain": true,
+      "candidates": 5,
+      "trusted_candidates": 5,
+      "requests_made": 32,
+      "pages_fetched": 25,
+      "sitemaps_found": [],
+      "timed_out": true,
+      "bounded": true,
+      "error": null,
+      "trusted_urls": [
+        "https://www.studyinkorea.go.kr/",
+        "https://www.studyinkorea.go.kr/ko/why/globalTechFuture.do",
+        "https://www.studyinkorea.go.kr/ko/plan/scholarship.do",
+        "https://www.studyinkorea.go.kr/ko/plan/scholarship.do?tab=gks-tab4",
+        "https://www.studyinkorea.go.kr/ko/notice/scholarshipsList.do?boardSort=3"
+      ],
+      "page_kinds": {
+        "root_domain": 1,
+        "unknown": 1,
+        "scholarship_page": 2,
+        "announcement": 1
+      }
+    }
+  },
+  {
+    "idx": 33,
+    "id": 13,
+    "title": "POSCO TJ Park Foundation Global Scholarship",
+    "country": "South Korea",
+    "existing_image": null,
+    "elapsed_s": 48.1,
+    "status": "no_trustworthy_image",
+    "requests": 34,
+    "persisted": false,
+    "error": null,
+    "image_results": [],
+    "page_discovery": {
+      "official_domain": "www.postf.org",
+      "is_official_domain": false,
+      "candidates": 5,
+      "trusted_candidates": 0,
+      "requests_made": 34,
+      "pages_fetched": 27,
+      "sitemaps_found": [],
+      "timed_out": true,
+      "bounded": true,
+      "error": null,
+      "trusted_urls": [],
+      "page_kinds": {
+        "root_domain": 1,
+        "scholarship_page": 4
+      }
+    }
+  },
+  {
+    "idx": 34,
+    "id": 41,
+    "title": "AECID Spanish Government Scholarship",
+    "country": "Spain",
+    "existing_image": null,
+    "elapsed_s": 122.6,
+    "status": "low",
+    "requests": 22,
+    "persisted": false,
+    "error": null,
+    "image_results": [
+      {
+        "confidence": "low",
+        "image_url": "https://www.aecid.es/documents/20120/90521/Logo_MAUEC_banderas.png/1c1115eb-fbcf-ae76-1703-d768bf2bad2a?version=2.0&t=1758526388501",
+        "page_url": "https://www.aecid.es/es/becas-y-lectorados",
+        "source_type": "official_provider",
+        "image_kind": "official_logo",
+        "alt_text": "Logo del Ministerio de Exteriores de Espa\u00f1a, lleva a la p\u00e1gina del ministerio de asuntos exteriores, se abre en otra pesta\u00f1a",
+        "relevance_score": 0.0,
+        "validation_status": "rejected",
+        "provenance": {
+          "discovery_method": "html-img",
+          "page_kind": "root_domain",
+          "official_domain": "www.aecid.es",
+          "is_official_domain": true,
+          "trust_score": 70,
+          "validation_status": "rejected"
+        }
+      },
+      {
+        "confidence": "low",
+        "image_url": "https://www.aecid.es/documents/20120/90521/AECID_color.png/4e704793-23d4-9f45-8555-7dec7ceabac2?version=1.0&t=1758281446612",
+        "page_url": "https://www.aecid.es/es/becas-y-lectorados",
+        "source_type": "official_provider",
+        "image_kind": "official_logo",
+        "alt_text": "Logo de AECID, lleva a la p\u00e1gina de AECID se abre en otra pesta\u00f1a",
+        "relevance_score": 0.0,
+        "validation_status": "rejected",
+        "provenance": {
+          "discovery_method": "html-img",
+          "page_kind": "root_domain",
+          "official_domain": "www.aecid.es",
+          "is_official_domain": true,
+          "trust_score": 70,
+          "validation_status": "rejected"
+        }
+      },
+      {
+        "confidence": "low",
+        "image_url": "https://www.aecid.es/documents/20120/90521/Logo_Cooperacion_Espanola_3%281%29_preview_rev_1.png/97f48f14-fc23-7aca-6ed9-864b6b20f203?version=2.0&t=1759129369053",
+        "page_url": "https://www.aecid.es/es/becas-y-lectorados",
+        "source_type": "official_provider",
+        "image_kind": "official_logo",
+        "alt_text": "Logo de Cooperaci\u00f3n Espa\u00f1ola, lleva al sitio web de Cooperaci\u00f3n Espa\u00f1ola",
+        "relevance_score": 0.0,
+        "validation_status": "rejected",
+        "provenance": {
+          "discovery_method": "html-img",
+          "page_kind": "root_domain",
+          "official_domain": "www.aecid.es",
+          "is_official_domain": true,
+          "trust_score": 70,
+          "validation_status": "rejected"
+        }
+      }
+    ],
+    "page_discovery": {
+      "official_domain": "www.aecid.es",
+      "is_official_domain": true,
+      "candidates": 5,
+      "trusted_candidates": 5,
+      "requests_made": 22,
+      "pages_fetched": 15,
+      "sitemaps_found": [],
+      "timed_out": true,
+      "bounded": true,
+      "error": null,
+      "trusted_urls": [
+        "https://www.aecid.es/es/becas-y-lectorados",
+        "https://www.aecid.es/news",
+        "https://www.aecid.es/es/transparencia",
+        "https://www.aecid.es/es/biblioteca",
+        "https://www.aecid.es/es/becas-lectorados"
+      ],
+      "page_kinds": {
+        "root_domain": 1,
+        "news": 1,
+        "unknown": 3
+      }
+    }
+  },
+  {
+    "idx": 35,
+    "id": 97,
+    "title": "Barcelona School of Economics (BSE) Master's Scholarships",
+    "country": "Spain",
+    "existing_image": null,
+    "elapsed_s": 77.8,
+    "status": "no_trustworthy_image",
+    "requests": 23,
+    "persisted": false,
+    "error": null,
+    "image_results": [],
+    "page_discovery": {
+      "official_domain": "bse.eu",
+      "is_official_domain": false,
+      "candidates": 5,
+      "trusted_candidates": 0,
+      "requests_made": 23,
+      "pages_fetched": 16,
+      "sitemaps_found": [],
+      "timed_out": true,
+      "bounded": true,
+      "error": null,
+      "trusted_urls": [],
+      "page_kinds": {
+        "root_domain": 1,
+        "news": 2,
+        "press": 1,
+        "unknown": 1
+      }
+    }
+  },
+  {
+    "idx": 36,
+    "id": 32,
+    "title": "Swedish Institute Scholarship",
+    "country": "Sweden",
+    "existing_image": null,
+    "elapsed_s": 99.6,
+    "status": "error",
+    "requests": 38,
+    "persisted": false,
+    "error": "unhashable type: 'list'",
+    "image_results": [],
+    "page_discovery": {
+      "official_domain": "si.se",
+      "is_official_domain": true,
+      "candidates": 5,
+      "trusted_candidates": 5,
+      "requests_made": 38,
+      "pages_fetched": 31,
+      "sitemaps_found": [],
+      "timed_out": true,
+      "bounded": true,
+      "error": null,
+      "trusted_urls": [
+        "https://si.se/en/apply/scholarships",
+        "https://si.se/scholarships",
+        "https://si.se/scholarship",
+        "https://si.se/funding",
+        "https://si.se/news"
+      ],
+      "page_kinds": {
+        "root_domain": 1,
+        "scholarship_page": 2,
+        "announcement": 1,
+        "news": 1
+      }
+    }
+  },
+  {
+    "idx": 37,
+    "id": 183,
+    "title": "Lund University Global Scholarship",
+    "country": "Sweden",
+    "existing_image": null,
+    "elapsed_s": 197.2,
+    "status": "high",
+    "requests": 38,
+    "persisted": false,
+    "error": null,
+    "image_results": [
+      {
+        "confidence": "high",
+        "image_url": "https://www.lunduniversity.lu.se/sites/www.lunduniversity.lu.se/files/styles/lu_wysiwyg_full_desktop/public/2020-06/lugs-scholarship-ceremony-dinner.jpg.webp?itok=PFrh_iKD",
+        "page_url": "https://www.lunduniversity.lu.se/admissions/scholarships-and-awards/lund-university-global-scholarship",
+        "source_type": "official_provider",
+        "image_kind": "program_image",
+        "alt_text": "LUGS scholarship receivers having dinner and talking to a donor at the annual scholarship ceremony",
+        "relevance_score": 0.9,
+        "validation_status": "human_review",
+        "provenance": {
+          "discovery_method": "html-img",
+          "page_kind": "root_domain",
+          "official_domain": "www.lunduniversity.lu.se",
+          "is_official_domain": true,
+          "trust_score": 70,
+          "validation_status": "human_review"
+        }
+      },
+      {
+        "confidence": "high",
+        "image_url": "https://www.lunduniversity.lu.se/sites/www.lunduniversity.lu.se/files/styles/lu_original_ratio_full_width_desktop/public/2024-10/new-photo-scholarships-and-awards.jpg.webp?itok=wyfdGS5z",
+        "page_url": "https://www.lunduniversity.lu.se/scholarships",
+        "source_type": "official_provider",
+        "image_kind": null,
+        "alt_text": "Three students holding diplomas from Lund University. Photo.",
+        "relevance_score": 0.6175,
+        "validation_status": "rejected",
+        "provenance": {
+          "discovery_method": "html-img",
+          "page_kind": "scholarship_page",
+          "official_domain": "www.lunduniversity.lu.se",
+          "is_official_domain": true,
+          "trust_score": 70,
+          "validation_status": "rejected"
+        }
+      },
+      {
+        "confidence": "medium",
+        "image_url": "https://www.lunduniversity.lu.se/sites/www.lunduniversity.lu.se/files/Lund_university_L_CMYK.svg",
+        "page_url": "https://www.lunduniversity.lu.se/admissions/scholarships-and-awards/lund-university-global-scholarship",
+        "source_type": "official_provider",
+        "image_kind": "program_image",
+        "alt_text": "Lund university logotype, link to home page.",
+        "relevance_score": 0.5,
+        "validation_status": "human_review",
+        "provenance": {
+          "discovery_method": "html-img",
+          "page_kind": "root_domain",
+          "official_domain": "www.lunduniversity.lu.se",
+          "is_official_domain": true,
+          "trust_score": 70,
+          "validation_status": "human_review"
+        }
+      }
+    ],
+    "page_discovery": {
+      "official_domain": "www.lunduniversity.lu.se",
+      "is_official_domain": true,
+      "candidates": 5,
+      "trusted_candidates": 5,
+      "requests_made": 38,
+      "pages_fetched": 31,
+      "sitemaps_found": [],
+      "timed_out": true,
+      "bounded": true,
+      "error": null,
+      "trusted_urls": [
+        "https://www.lunduniversity.lu.se/admissions/scholarships-and-awards/lund-university-global-scholarship",
+        "https://www.lunduniversity.lu.se/scholarships",
+        "https://www.lunduniversity.lu.se/scholarship",
+        "https://www.lunduniversity.lu.se/programmes",
+        "https://www.lunduniversity.lu.se/news"
+      ],
+      "page_kinds": {
+        "root_domain": 1,
+        "scholarship_page": 3,
+        "news": 1
+      }
+    }
+  },
+  {
+    "idx": 38,
+    "id": 7,
+    "title": "Swiss Government Excellence Scholarship (ESKAS)",
+    "country": "Switzerland",
+    "existing_image": null,
+    "elapsed_s": 115.8,
+    "status": "medium",
+    "requests": 28,
+    "persisted": false,
+    "error": null,
+    "image_results": [
+      {
+        "confidence": "medium",
+        "image_url": "https://www.sbfi.admin.ch/images/swiss-logo-flag.svg",
+        "page_url": "https://www.sbfi.admin.ch/en/swiss-government-excellence-scholarships",
+        "source_type": "official_provider",
+        "image_kind": "program_image",
+        "alt_text": "Logo with Swiss flag",
+        "relevance_score": 0.304,
+        "validation_status": "rejected",
+        "provenance": {
+          "discovery_method": "html-img",
+          "page_kind": "root_domain",
+          "official_domain": "www.sbfi.admin.ch",
+          "is_official_domain": true,
+          "trust_score": 70,
+          "validation_status": "rejected"
+        }
+      },
+      {
+        "confidence": "low",
+        "image_url": "https://prod-sbfitestch-hcms-sdweb.imgix.net/dam/fr/sd-web/2aS4I7PkhL3J/SBFI-Organigramm_f.png?w=1024&auto=format",
+        "page_url": "https://www.sbfi.admin.ch/contact",
+        "source_type": "official_provider",
+        "image_kind": null,
+        "alt_text": "Organigramme du SEFRI au 1er septembre 2026",
+        "relevance_score": 0.16,
+        "validation_status": "rejected",
+        "provenance": {
+          "discovery_method": "html-img",
+          "page_kind": "unknown",
+          "official_domain": "www.sbfi.admin.ch",
+          "is_official_domain": true,
+          "trust_score": 70,
+          "validation_status": "rejected"
+        }
+      }
+    ],
+    "page_discovery": {
+      "official_domain": "www.sbfi.admin.ch",
+      "is_official_domain": true,
+      "candidates": 5,
+      "trusted_candidates": 5,
+      "requests_made": 28,
+      "pages_fetched": 21,
+      "sitemaps_found": [],
+      "timed_out": true,
+      "bounded": true,
+      "error": null,
+      "trusted_urls": [
+        "https://www.sbfi.admin.ch/en/swiss-government-excellence-scholarships",
+        "https://www.sbfi.admin.ch/contact",
+        "https://www.sbfi.admin.ch/en/swiss-government-excellence-scholarships-at-a-glance",
+        "https://www.sbfi.admin.ch/en/faq-swiss-government-excellence-scholarships",
+        "https://www.sbfi.admin.ch/en/seri-on-social-media"
+      ],
+      "page_kinds": {
+        "root_domain": 1,
+        "unknown": 1,
+        "scholarship_page": 2,
+        "press": 1
+      }
+    }
+  },
+  {
+    "idx": 39,
+    "id": 14,
+    "title": "ETH Zurich Excellence Scholarship & Opportunity Programme (ESOP)",
+    "country": "Switzerland",
+    "existing_image": null,
+    "elapsed_s": 75.3,
+    "status": "high",
+    "requests": 29,
+    "persisted": false,
+    "error": null,
+    "image_results": [
+      {
+        "confidence": "high",
+        "image_url": "https://ethz.ch/students/en/studies/financial/scholarships/excellencescholarship/_jcr_content/pageimages/imageCarousel.imageformat.lightbox.1672553135.jpg",
+        "page_url": "https://ethz.ch/students/en/studies/financial/scholarships/excellencescholarship.html",
+        "source_type": "official_provider",
+        "image_kind": "program_image",
+        "alt_text": null,
+        "relevance_score": 0.6786,
+        "validation_status": "approved",
+        "provenance": {
+          "discovery_method": "og:image",
+          "page_kind": "root_domain",
+          "official_domain": "ethz.ch",
+          "is_official_domain": true,
+          "trust_score": 70,
+          "validation_status": "approved"
+        }
+      },
+      {
+        "confidence": "medium",
+        "image_url": "https://ethz.ch/etc/designs/ethz/img/header/eth_default_og.jpg",
+        "page_url": "https://ethz.ch/scholarships",
+        "source_type": "official_provider",
+        "image_kind": "program_image",
+        "alt_text": null,
+        "relevance_score": 0.5207,
+        "validation_status": "rejected",
+        "provenance": {
+          "discovery_method": "og:image",
+          "page_kind": "scholarship_page",
+          "official_domain": "ethz.ch",
+          "is_official_domain": true,
+          "trust_score": 70,
+          "validation_status": "rejected"
+        }
+      },
+      {
+        "confidence": "low",
+        "image_url": "https://ethz.ch/etc/designs/ethz/img/icons/ETH-APP-Icons-Theme-white/192-xxxhpdi.png",
+        "page_url": "https://ethz.ch/students/en/studies/financial/scholarships/excellencescholarship.html",
+        "source_type": "official_provider",
+        "image_kind": "program_image",
+        "alt_text": null,
+        "relevance_score": 0.2786,
+        "validation_status": "approved",
+        "provenance": {
+          "discovery_method": "link-rel-icon",
+          "page_kind": "root_domain",
+          "official_domain": "ethz.ch",
+          "is_official_domain": true,
+          "trust_score": 70,
+          "validation_status": "approved"
+        }
+      }
+    ],
+    "page_discovery": {
+      "official_domain": "ethz.ch",
+      "is_official_domain": true,
+      "candidates": 5,
+      "trusted_candidates": 5,
+      "requests_made": 29,
+      "pages_fetched": 22,
+      "sitemaps_found": [],
+      "timed_out": true,
+      "bounded": true,
+      "error": null,
+      "trusted_urls": [
+        "https://ethz.ch/students/en/studies/financial/scholarships/excellencescholarship.html",
+        "https://ethz.ch/scholarships",
+        "https://ethz.ch/news",
+        "https://ethz.ch/media",
+        "https://ethz.ch/about"
+      ],
+      "page_kinds": {
+        "root_domain": 1,
+        "scholarship_page": 1,
+        "news": 1,
+        "press": 1,
+        "unknown": 1
+      }
+    }
+  },
+  {
+    "idx": 40,
+    "id": 29,
+    "title": "Commonwealth Scholarship",
+    "country": "UK",
+    "existing_image": null,
+    "elapsed_s": 159.3,
+    "status": "medium",
+    "requests": 31,
+    "persisted": false,
+    "error": null,
+    "image_results": [
+      {
+        "confidence": "medium",
+        "image_url": "https://px.ads.linkedin.com/collect/?%0D%0Apid=7882178&fmt=gif",
+        "page_url": "https://cscuk.fcdo.gov.uk/scholarships",
+        "source_type": "official_provider",
+        "image_kind": null,
+        "alt_text": "",
+        "relevance_score": 0.855,
+        "validation_status": "rejected",
+        "provenance": {
+          "discovery_method": "html-img",
+          "page_kind": "scholarship_page",
+          "official_domain": "cscuk.fcdo.gov.uk",
+          "is_official_domain": true,
+          "trust_score": 70,
+          "validation_status": "rejected"
+        }
+      },
+      {
+        "confidence": "high",
+        "image_url": "https://cscuk.fcdo.gov.uk/wp-content/uploads/2019/07/Best-homepage-option.jpg",
+        "page_url": "https://cscuk.fcdo.gov.uk/",
+        "source_type": "official_provider",
+        "image_kind": "program_image",
+        "alt_text": null,
+        "relevance_score": 0.81,
+        "validation_status": "rejected",
+        "provenance": {
+          "discovery_method": "twitter:image",
+          "page_kind": "root_domain",
+          "official_domain": "cscuk.fcdo.gov.uk",
+          "is_official_domain": true,
+          "trust_score": 70,
+          "validation_status": "rejected"
+        }
+      },
+      {
+        "confidence": "high",
+        "image_url": "https://px.ads.linkedin.com/collect/?%0D%0Apid=7882178&fmt=gif",
+        "page_url": "https://cscuk.fcdo.gov.uk/",
+        "source_type": "official_provider",
+        "image_kind": "generic_official",
+        "alt_text": "",
+        "relevance_score": 0.81,
+        "validation_status": "rejected",
+        "provenance": {
+          "discovery_method": "html-img",
+          "page_kind": "root_domain",
+          "official_domain": "cscuk.fcdo.gov.uk",
+          "is_official_domain": true,
+          "trust_score": 70,
+          "validation_status": "rejected"
+        }
+      }
+    ],
+    "page_discovery": {
+      "official_domain": "cscuk.fcdo.gov.uk",
+      "is_official_domain": true,
+      "candidates": 5,
+      "trusted_candidates": 5,
+      "requests_made": 31,
+      "pages_fetched": 24,
+      "sitemaps_found": [],
+      "timed_out": true,
+      "bounded": true,
+      "error": null,
+      "trusted_urls": [
+        "https://cscuk.fcdo.gov.uk/",
+        "https://cscuk.fcdo.gov.uk/scholarships",
+        "https://cscuk.fcdo.gov.uk/scholarship",
+        "https://cscuk.fcdo.gov.uk/awards",
+        "https://cscuk.fcdo.gov.uk/news"
+      ],
+      "page_kinds": {
+        "root_domain": 1,
+        "scholarship_page": 3,
+        "news": 1
+      }
+    }
+  },
+  {
+    "idx": 41,
+    "id": 27,
+    "title": "Fulbright Foreign Student Program",
+    "country": "USA",
+    "existing_image": null,
+    "elapsed_s": 67.7,
+    "status": "no_trustworthy_image",
+    "requests": 28,
+    "persisted": false,
+    "error": null,
+    "image_results": [],
+    "page_discovery": {
+      "official_domain": "foreign.fulbrightonline.org",
+      "is_official_domain": false,
+      "candidates": 5,
+      "trusted_candidates": 0,
+      "requests_made": 28,
+      "pages_fetched": 21,
+      "sitemaps_found": [],
+      "timed_out": true,
+      "bounded": true,
+      "error": null,
+      "trusted_urls": [],
+      "page_kinds": {
+        "root_domain": 1,
+        "press": 1,
+        "news": 1,
+        "announcement": 1,
+        "scholarship_page": 1
+      }
+    }
+  },
+  {
+    "idx": 42,
+    "id": 53,
+    "title": "Hubert H. Humphrey Fellowship Program",
+    "country": "USA",
+    "existing_image": null,
+    "elapsed_s": 90.4,
+    "status": "no_trustworthy_image",
+    "requests": 24,
+    "persisted": false,
+    "error": null,
+    "image_results": [],
+    "page_discovery": {
+      "official_domain": "www.humphreyfellowship.org",
+      "is_official_domain": false,
+      "candidates": 5,
+      "trusted_candidates": 0,
+      "requests_made": 24,
+      "pages_fetched": 17,
+      "sitemaps_found": [],
+      "timed_out": true,
+      "bounded": true,
+      "error": null,
+      "trusted_urls": [],
+      "page_kinds": {
+        "root_domain": 1,
+        "scholarship_page": 4
+      }
+    }
+  },
+  {
+    "idx": 43,
+    "id": 57,
+    "title": "King-Morgridge Scholars Program",
+    "country": "USA",
+    "existing_image": "https://kmsp.wisc.edu/wp-content/uploads/sites/997/2026/01/Cohort-9-with-UHS-scaled-e1767374632560-1600x500.jpg",
+    "elapsed_s": 132.6,
+    "status": "high",
+    "requests": 16,
+    "persisted": false,
+    "error": null,
+    "image_results": [
+      {
+        "confidence": "high",
+        "image_url": "https://kmsp.wisc.edu/scholarship#Web_Shield_blend",
+        "page_url": "https://kmsp.wisc.edu/scholarship",
+        "source_type": "official_provider",
+        "image_kind": null,
+        "alt_text": null,
+        "relevance_score": 0.855,
+        "validation_status": "rejected",
+        "provenance": {
+          "discovery_method": "css-background",
+          "page_kind": "scholarship_page",
+          "official_domain": "kmsp.wisc.edu",
+          "is_official_domain": true,
+          "trust_score": 70,
+          "validation_status": "rejected"
+        }
+      },
+      {
+        "confidence": "high",
+        "image_url": "https://kmsp.wisc.edu/wp-content/uploads/sites/997/2026/09/KMSP-Pro-Photo-Grad-2026-scaled-e1788882443518-1600x500.jpg",
+        "page_url": "https://kmsp.wisc.edu/",
+        "source_type": "official_provider",
+        "image_kind": "program_image",
+        "alt_text": "KMSP Group photo from May 2026 graduation",
+        "relevance_score": 0.81,
+        "validation_status": "approved",
+        "provenance": {
+          "discovery_method": "html-img",
+          "page_kind": "root_domain",
+          "official_domain": "kmsp.wisc.edu",
+          "is_official_domain": true,
+          "trust_score": 70,
+          "validation_status": "approved"
+        }
+      },
+      {
+        "confidence": "high",
+        "image_url": "https://kmsp.wisc.edu/wp-content/uploads/sites/997/2026/01/IMG_7063-scaled-e1767379632472-1600x500.jpeg",
+        "page_url": "https://kmsp.wisc.edu/",
+        "source_type": "official_provider",
+        "image_kind": "program_image",
+        "alt_text": "KMSP all group photo with KMS shirts and W Dec 2025",
+        "relevance_score": 0.81,
+        "validation_status": "approved",
+        "provenance": {
+          "discovery_method": "html-img",
+          "page_kind": "root_domain",
+          "official_domain": "kmsp.wisc.edu",
+          "is_official_domain": true,
+          "trust_score": 70,
+          "validation_status": "approved"
+        }
+      }
+    ],
+    "page_discovery": {
+      "official_domain": "kmsp.wisc.edu",
+      "is_official_domain": true,
+      "candidates": 5,
+      "trusted_candidates": 5,
+      "requests_made": 16,
+      "pages_fetched": 9,
+      "sitemaps_found": [],
+      "timed_out": true,
+      "bounded": true,
+      "error": null,
+      "trusted_urls": [
+        "https://kmsp.wisc.edu/",
+        "https://kmsp.wisc.edu/scholarship",
+        "https://kmsp.wisc.edu/news",
+        "https://kmsp.wisc.edu/about",
+        "https://kmsp.wisc.edu/program-support"
+      ],
+      "page_kinds": {
+        "root_domain": 1,
+        "scholarship_page": 3,
+        "news": 1
+      }
+    }
+  },
+  {
+    "idx": 44,
+    "id": 61,
+    "title": "Clark University Global Scholars Program",
+    "country": "USA",
+    "existing_image": "https://cdn.clarku.edu/financial-aid/wp-content/uploads/sites/23/2025/01/fin-aid-contact-area.jpg",
+    "elapsed_s": 107.4,
+    "status": "medium",
+    "requests": 30,
+    "persisted": false,
+    "error": null,
+    "image_results": [
+      {
+        "confidence": "medium",
+        "image_url": "https://cdn.clarku.edu/financial-aid/wp-content/themes/jonas/images/pp-nav-bug.png",
+        "page_url": "https://www.clarku.edu/financial-aid/types/scholarships",
+        "source_type": "official_university",
+        "image_kind": "official_banner",
+        "alt_text": "Plan and Purpose: our campaign for what matters most",
+        "relevance_score": 0.502,
+        "validation_status": "rejected",
+        "provenance": {
+          "discovery_method": "html-img",
+          "page_kind": "root_domain",
+          "official_domain": "www.clarku.edu",
+          "is_official_domain": true,
+          "trust_score": 70,
+          "validation_status": "rejected"
+        }
+      },
+      {
+        "confidence": "low",
+        "image_url": "https://www.clarku.edu/programs/wp-content/uploads/sites/2/2025/01/clarku-seal-only.png",
+        "page_url": "https://www.clarku.edu/programs",
+        "source_type": "official_university",
+        "image_kind": "generic_official",
+        "alt_text": null,
+        "relevance_score": 0.132,
+        "validation_status": "rejected",
+        "provenance": {
+          "discovery_method": "json-ld",
+          "page_kind": "scholarship_page",
+          "official_domain": "www.clarku.edu",
+          "is_official_domain": true,
+          "trust_score": 70,
+          "validation_status": "rejected"
+        }
+      },
+      {
+        "confidence": "low",
+        "image_url": "https://cdn.clarku.edu/programs/wp-content/themes/jonas/images/clark-logo-w-type-r-logo.svg",
+        "page_url": "https://www.clarku.edu/programs",
+        "source_type": "official_university",
+        "image_kind": null,
+        "alt_text": "Clark University logo",
+        "relevance_score": 0.132,
+        "validation_status": "rejected",
+        "provenance": {
+          "discovery_method": "html-img",
+          "page_kind": "scholarship_page",
+          "official_domain": "www.clarku.edu",
+          "is_official_domain": true,
+          "trust_score": 70,
+          "validation_status": "rejected"
+        }
+      }
+    ],
+    "page_discovery": {
+      "official_domain": "www.clarku.edu",
+      "is_official_domain": true,
+      "candidates": 5,
+      "trusted_candidates": 5,
+      "requests_made": 30,
+      "pages_fetched": 23,
+      "sitemaps_found": [],
+      "timed_out": true,
+      "bounded": true,
+      "error": null,
+      "trusted_urls": [
+        "https://www.clarku.edu/financial-aid/types/scholarships",
+        "https://www.clarku.edu/programs",
+        "https://www.clarku.edu/news",
+        "https://www.clarku.edu/about",
+        "https://www.clarku.edu/apply"
+      ],
+      "page_kinds": {
+        "root_domain": 1,
+        "scholarship_page": 1,
+        "news": 1,
+        "unknown": 1,
+        "announcement": 1
+      }
+    }
+  }
+]

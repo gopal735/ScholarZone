@@ -1,0 +1,122 @@
+{
+  "agent": "agent_135",
+  "records": [
+    {
+      "id": 339,
+      "official": {
+        "official_source_urls": [
+          "https://www.utu.fi/en/study-at-utu/scholarships-and-tuition-fees",
+          "https://www.utu.fi/en/study-at-utu/language-requirements-for-masters-degree-programmes"
+        ],
+        "application_link": "https://www.utu.fi/en/study-at-utu/scholarships-and-tuition-fees",
+        "catalogue_url": "https://www.utu.fi/en/study-at-utu/bachelors-and-masters-degree-programmes",
+        "official_updates_url": "https://www.utu.fi/en/study-at-utu/scholarships-and-tuition-fees",
+        "deadline_central": null,
+        "deadline_central_display": null,
+        "deadline_note": "Early Bird discount: the applicant must accept the study offer and pay the tuition fee within 28 days after the admission decisions have been published; for 2026 the final date was 24 April. Merit Scholarship: no separate deadline is published - admission services invite all eligible applicants to apply when the application round opens in spring.",
+        "application_cycle": "2026 admissions (information on the page is for students admitted in 2026)",
+        "status": "OPEN",
+        "status_note": "The scholarships and Early Bird discount page is live and currently describes the 2026 admission cycle, including the correction published 10 March 2026 that the Early Bird window is 28 days, not 30.",
+        "tuition_coverage_note": "It is not possible to get a scholarship to cover the tuition fee for the first year. All students who fulfil the requirements will be awarded a scholarship for the following academic year that covers 50% of the tuition fee.",
+        "funding_amount": 2000,
+        "funding_currency": "EUR",
+        "funding_period": "one-off",
+        "tuition_coverage": true,
+        "living_cost_coverage": false,
+        "travel_coverage": false,
+        "fully_funded": false,
+        "benefits": [
+          "Early Bird discount of 2,000 EUR for newly admitted master's degree students",
+          "Merit Scholarship covering 50% of the tuition fee for the next study year (master's year two; bachelor's years two and three)",
+          "Scholarships are awarded based on academic merits only, and all students who fulfil the requirements are eligible"
+        ],
+        "eligibility": [
+          "Scholarships are offered for students who are subject to tuition fees - citizens of a country outside the EU/EEA or Switzerland",
+          "Students who have paid for their studies during their first year(s) of studies at the University of Turku are eligible to apply",
+          "Master's students: 55 credits during the first study year",
+          "Bachelor's students: 55 credits during the first study year for year two, and 110 credits across the first and second study year for year three",
+          "Average score of 3.0 or higher on a grading scale of 1-5",
+          "At least 4 credits of Finnish completed before applying for the scholarship for the first time; these credits can be part of the 55 credit requirement",
+          "Other previous Finnish studies or proven Finnish proficiency may also be accepted, assessed on a case-by-case basis"
+        ],
+        "requirements": [
+          "The student must apply for the scholarship; the admission services of the University invite all eligible applicants when the application round opens in spring",
+          "For the Early Bird discount: accept the study offer and pay the tuition fee within 28 days after the admission decisions have been published"
+        ],
+        "documents": [],
+        "selection_criteria": [
+          "The University of Turku Merit Scholarship is awarded based on studies at the University of Turku and the programme the student has been admitted to",
+          "The scholarships are awarded based on academic merits only"
+        ],
+        "coverage": [
+          "Early Bird discount: 2,000 EUR off the first-year tuition fee for newly admitted master's degree students",
+          "Merit Scholarship: 50% of the tuition fee for the following academic year",
+          "No living-cost, travel or installation support is published for either award"
+        ],
+        "application_method": [
+          "Early Bird discount: no separate application - accept the study offer and pay the tuition fee within 28 days after the admission decisions have been published",
+          "Merit Scholarship: a separate application process; the admission services invite all eligible applicants when the application round opens in spring"
+        ],
+        "application_route": "Be admitted to a fee-liable Turku degree programme, pay the first year, then respond to the University's spring invitation and apply for the Merit Scholarship.",
+        "study_mode": "Full-time degree study",
+        "citizenship_residency": "Tuition fees are charged from citizens of a country outside the European Union (EU) and the European Economic Area (EEA) or Switzerland; scholarships are offered for students who are subject to tuition fees.",
+        "international_eligibility": "Open to non-EU/EEA and non-Swiss citizens who are liable for University of Turku tuition fees.",
+        "subject_or_agency_requirement": null,
+        "research_requirement": null,
+        "duration": "The Merit Scholarship covers the following academic year: master's year two, or bachelor's years two and three. The Early Bird discount applies to the first study year.",
+        "description": "The University of Turku charges tuition fees from all non-EU/EEA citizens and supports merited students with scholarships: a 2,000 EUR Early Bird discount for newly admitted master's students who accept and pay within 28 days, and a Merit Scholarship covering 50% of tuition for the following study year, awarded on academic merit to all students who meet the credit, grade and Finnish-language requirements. No first-year tuition scholarship is offered.",
+        "region": "Finland",
+        "program_type": "Academic-merit tuition fee scholarship plus first-year tuition discount",
+        "english_requirement": "Applicants must have excellent English language skills and a certificate proving them; for master's programmes the published minimums are IELTS Academic overall 6.5 with no band below 6.0, TOEFL iBT overall 92 with writing 22 or above (or 4.5 overall with 4.0 per section under the scale used from 21 January 2026), PTE Academic 68 with writing 61 or above, or Cambridge C1 Advanced / C2 Proficiency at grade A, B or C."
+      },
+      "verification": {
+        "source_citations": [
+          "https://www.utu.fi/en/study-at-utu/scholarships-and-tuition-fees",
+          "https://www.utu.fi/en/study-at-utu/language-requirements-for-masters-degree-programmes"
+        ],
+        "last_verified_date": "2026-10-10",
+        "verification_status": "confirmed",
+        "confidence": "high",
+        "not_confirmed": [
+          "funding_amount of the Merit Scholarship as a euro figure (published only as 50% of the tuition fee, which varies by programme from EUR 1,500 to EUR 12,000 per year)",
+          "a calendar deadline date for the Merit Scholarship round",
+          "documents required for the Merit Scholarship application",
+          "living_cost_coverage",
+          "travel_coverage"
+        ],
+        "notes": "Read the University of Turku scholarships and tuition fees page in full; confirmed the EUR 2,000 Early Bird figure, the 50% tuition coverage wording, the 28-day payment window (corrected 10 March 2026) and the 2026 final date of 24 April. English test minimums come from the University's language requirements page for master's programmes, not from the scholarship page."
+      },
+      "applicant_utility": {
+        "summary": "Treat this as a two-part deal rather than one award: the discount you can bank immediately is the EUR 2,000 Early Bird, and it requires paying the full first-year tuition within 28 days of the admission decisions, so have the funds ready before results land. The larger prize is the Merit Scholarship, but it only kicks in for year two (or years two and three on a bachelor's) and is conditional on 55-110 credits, a 3.0 average, and at least 4 credits of Finnish completed before you first apply. Because the invitation arrives by email from admissions services in spring and there is no published closing date, keep your UTU inbox monitored and do not assume there is a form to fill in autumn.",
+        "best_fit": "Fee-paying non-EU/EEA master's and bachelor's students at Turku who are strong academically and willing to take Finnish language credits alongside a full course load.",
+        "application_readiness_checklist": [
+          "Confirm your programme appears on the published tuition-fee list and note its exact annual fee, since 50% of that figure is your actual year-two value",
+          "Diarise the 28-day Early Bird window from the admission decision date and pre-arrange international payment of the full first-year fee",
+          "Track credits from day one: 55 credits in year one is the hard gate for the master's award, and 110 cumulative credits for the bachelor's third-year award",
+          "Enrol in at least 4 credits of Finnish early enough to finish before your first scholarship application; prior Finnish study or proven proficiency can substitute but is assessed case by case",
+          "Watch for the spring invitation email from admissions services and check spam folders, since missing the invitation means missing the round"
+        ],
+        "common_rejection_risks": [
+          "Missing the 28-day Early Bird window because the payment cleared after the deadline - the discount is forfeited, not deferred",
+          "Falling below 55 credits in year one, which removes the Merit Scholarship entirely regardless of grades",
+          "Applying for the Merit Scholarship before completing the 4 Finnish credits, or assuming prior Finnish study will definitely be counted",
+          "Assuming a first-year scholarship exists - the page states plainly that first-year tuition support is not available, so a fully funded first year is not on offer here",
+          "Letting the average drop under 3.0 on the 1-5 scale in a single strong or weak semester"
+        ],
+        "estimated_uncovered_costs": "Roughly half of every tuition fee from year two onwards (and all of year one minus EUR 2,000 on master's programmes), plus living costs, flights, the mandatory Student Union membership fee of about EUR 55 per academic year and the compulsory Student Health Care fee paid to Kela.",
+        "document_audit": [
+          "The scholarship page itself lists no documents for the Merit Scholarship, so do not build a file around a published checklist that does not exist - wait for the invitation and follow its instructions exactly",
+          "Evidence of prior Finnish proficiency or completed Finnish studies, if you intend to rely on either instead of the 4 Turku credits, needs to be ready at the point you first apply",
+          "For the Early Bird route the only 'document' is a payment receipt within 28 days, so confirm your bank's international transfer lead time against that window"
+        ],
+        "alerts": [
+          "The University corrected an earlier error on this page: the Early Bird window is 28 days, not 30 - discount any third-party listing that still says 30 days",
+          "The Early Bird discount is explicitly not available for applicants of the bachelor's degree programmes",
+          "The page states its information is for students admitted in 2026; students admitted in 2025 or before are directed to a different page, so check which version applies to you",
+          "No first-year tuition scholarship exists under this scheme, so plan funding for the whole of year one independently"
+        ],
+        "submission_workflow": "Admission through the Finnish joint application in January, then accept and pay within 28 days for the Early Bird, then respond to the spring admissions-services invitation to apply for the Merit Scholarship."
+      }
+    }
+  ]
+}

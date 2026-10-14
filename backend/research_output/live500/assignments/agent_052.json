@@ -1,0 +1,80 @@
+{
+ "agent": "agent_052",
+ "assignment_count": 1,
+ "scholarships": [
+  {
+   "id": 160,
+   "title": "University of Basel Financial Aid and Scholarships",
+   "country": "Switzerland",
+   "degree": "Bachelor's, Master's",
+   "funding_label": "Partially Funded",
+   "status": "open",
+   "official_source": "University of Basel",
+   "official_source_url": "https://www.unibas.ch/en/Studies/Advice-and-Support/Funding/Scholarships.html",
+   "application_link": "https://www.unibas.ch/en/Studies/Advice-and-Support/Funding/Scholarships.html",
+   "catalogue_url": "https://www.unibas.ch/en/Studies.html",
+   "official_updates_url": "https://www.unibas.ch/en/Studies/Advice-and-Support/Funding/Scholarships/Submission-Deadlines.html",
+   "existing": {
+    "funding_amount": null,
+    "funding_currency": null,
+    "funding_period": null,
+    "tuition_coverage": null,
+    "living_cost_coverage": null,
+    "travel_coverage": null,
+    "fully_funded": 0,
+    "description": "The University of Basel's scholarship page explains how study funding is structured in Switzerland: essentially, the parents and the scholarship office in the parents' canton of residence are responsible for funding studies, and scholarships from the university are granted by the scholarship committee of the Senate in addition to any cantonal education contributions. The university additionally awards specific scholarships to students in exchange programmes, advised by the Student Exchange Office, and its Social Services student welfare office offers advice. The page signposts the cantonal scholarship and student loan offices for Basel-Stadt and Basel-Landschaft as well as ausbildungsbeitraege.ch for all cantons, and advises international students to find out what scholarships they are eligible for in their home country.",
+    "eligibility": [
+     "Enrolled at the University of Basel for university supplementary scholarships",
+     "Enrolled in an exchange programme for the specific exchange scholarships the university awards",
+     "For cantonal education contributions, residence in the relevant canton, which is decided by the parents' or student's canton of residence rather than by the university",
+     "No nationality condition is stated, but the page directs international students to scholarships in their home country"
+    ],
+    "eligibility_summary": "Students already enrolled at the University of Basel. University scholarships are supplementary, granted by the scholarship committee of the Senate in addition to cantonal education contributions, and the page stresses that primary responsibility for funding lies with the student and the parents and with the scholarship office in the canton where the parents reside. International students are directed to scholarships available in their home country.",
+    "benefits": [
+     "Supplementary university scholarships on top of cantonal education contributions",
+     "Exchange scholarships for students in exchange programmes",
+     "Advice from the Social Services student welfare office",
+     "Signposted cantonal scholarship and loan offices for Basel-Stadt and Basel-Landschaft"
+    ],
+    "coverage": [
+     "Supplementary scholarships granted by the scholarship committee of the Senate, in addition to cantonal education contributions",
+     "Specific scholarships awarded to students in exchange programmes",
+     "Advice from the University of Basel Social Services student welfare office",
+     "Signposting to cantonal scholarship and student loan schemes for Basel-Stadt and Basel-Landschaft and to ausbildungsbeitraege.ch for all cantons"
+    ],
+    "requirements": [],
+    "documents": [],
+    "english_requirement": null,
+    "application_method": [],
+    "selection_notes": "/en/Studies/Advice-and-Support/Career-Counseling/Counseling/Tips-for-Applications-and-Interviews.html <span>Tips and Tricks for Job Applications and Interviews</span>",
+    "best_fit": null,
+    "notes": "This record is a funding information hub rather than a single named scholarship, so no amount, deadline or document list can be attributed to it and those fields are left null. The page explicitly states that the primary responsibility for funding studies lies with the parents and the scholarship office in the parents' canton of residence, that university scholarships are only supplementary to cantonal education contributions, and that international students should investigate eligibility for scholarships in their home country. That last point is directly relevant to an international-scholarship database and contradicts any reading of this record as a funding route open to international applicants. The page also carries a dedicated Submission Deadlines subpage and a Funding from the University of Basel subpage, neither of which was fetched within this record's fetch budget.",
+    "duration": "Per academic year of enrolment; the page gives no fixed award term",
+    "application_period": "Varies by fund. Cantonal education contributions are handled by the cantonal offices for Basel-Stadt and Basel-Landschaft; university supplementary scholarships follow the Senate scholarship committee's schedule, published on the Submission Deadlines page.",
+    "deadline_display": "The page publishes no central deadline. It links to a dedicated Submission Deadlines page under Advice and Support > Funding > Scholarships, and directs students to the scholarship office of their canton of residence, whose own deadlines apply.",
+    "deadline_date": null,
+    "region": "Europe",
+    "program_type": "Umbrella funding hub: supplementary university scholarships plus signposting to cantonal and national scholarship schemes",
+    "applicant_utility": null,
+    "official_details": null
+   },
+   "missing_fields": [
+    "funding_amount",
+    "funding_currency",
+    "funding_period",
+    "tuition_coverage",
+    "living_cost_coverage",
+    "travel_coverage",
+    "requirements",
+    "documents",
+    "english_requirement",
+    "application_method",
+    "best_fit",
+    "deadline_date",
+    "applicant_utility",
+    "official_details"
+   ]
+  }
+ ],
+ "result_file": "C:\\Users\\GopaL\\Desktop\\Projects folder\\ScholarZone\\backend\\research_output\\live500\\results\\agent_052.json"
+}

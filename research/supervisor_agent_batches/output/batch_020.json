@@ -1,0 +1,143 @@
+[
+  {
+    "scholarship_id": 157,
+    "outcome": "not_applicable",
+    "professors": [],
+    "notes": "CERN Doctoral Student Programme is a paid employment contract at an international research organisation, not a university programme. No university is attached to the award: the applicant must already be enrolled (or about to enrol) in a doctoral programme at their own university, and CERN's official programme page states 'Your university must accept that the research you conduct at CERN contributes to your doctoral thesis in one of CERN's fields of work'. Neither the programme page (https://careers.cern/programmes/doctoral-studentship) nor the open vacancy (TSC-2027-1/DOCT, https://careers.cern/jobs/tsc-doct/) names any CERN supervisor, group leader or university professor; the recruitment process only mentions an online interview with 'the hiring manager(s)'. No official supervising professor can therefore be identified or verified."
+  },
+  {
+    "scholarship_id": 158,
+    "outcome": "not_applicable",
+    "professors": [],
+    "notes": "CERN Research Fellowship is a postdoctoral employment contract at an international research organisation (CERN, Geneva) with no attached university programme and no published supervising professor. The official programme page (https://careers.cern/programmes/research-fellowship) and the currently open Theoretical Physics vacancy TH-2026-1/Cat1 (https://careers.cern/jobs/research-fellowship-theoretical-physics/) state that the applicant 'will join one of CERN's theoretical physics research groups' and will be interviewed by 'the hiring manager(s)', but no individual supervisor, group leader or faculty member is named, and no CERN department page publishes a supervisor list for the fellowship. Outcome: no institution-attached supervising professor exists for this scheme."
+  },
+  {
+    "scholarship_id": 159,
+    "outcome": "no_verified_supervisor_found",
+    "professors": [],
+    "notes": "Researched the official IMD MBA scholarships page (https://www.imd.org/degree/mba/financing/imd-mba-scholarships). It lists the six open scholarships (MBA5 Scholarship CHF 50K, Hilti STEM Scholars Program CHF 50K, Nestle Scholarship for Women CHF 40K, Forte Scholarship for Women CHF 30K, IMD MBA Merit Scholarships up to CHF 40K, BackPack Scholarship for Women full funding) plus bursaries and external funding links, with eligibility criteria and deadlines, but names no supervising professor, scholarship committee, faculty member or contact person, and publishes no email addresses. The one-year IMD MBA is a taught professional degree with no thesis supervision, so no professor-supervisor tie to this scholarship could be verified on the official source."
+  },
+  {
+    "scholarship_id": 160,
+    "outcome": "not_applicable",
+    "professors": [],
+    "notes": "Umbrella funding hub rather than a specific programme. The official University of Basel page (https://www.unibas.ch/en/Studies/Advice-and-Support/Funding/Scholarships.html) states that 'Scholarships from the university are granted by the scholarship committee of the Senate in addition to any cantonal education contributions' and signposts cantonal/national schemes (Basel-Stadt Amt fuer Ausbildungsbeitraege, Basel-Landschaft, ausbildungsbeitraege.ch). It names no degree programme, thesis or supervising professor; the only published contacts are administrative (University of Basel Social Services). No supervising professor is attached to this scheme."
+  },
+  {
+    "scholarship_id": 161,
+    "outcome": "not_applicable",
+    "professors": [],
+    "notes": "WIPO Fellowship Program is a professional fellowship / employment contract at an international organisation (World Intellectual Property Organization, Geneva) with four fellow categories (PCT translation and terminology fellows, WIPO Domain Name legal case manager fellows, Research and Visiting Fellows, other specialized fellows). Positions are filled through calls for expressions of interest advertised on WIPO's career website; no university or research programme is attached and no supervising professor is named anywhere on the official fellowship page (https://www.wipo.int/en/web/working-at-wipo/fellowship-program). Outcome: not applicable, no supervising professor to verify."
+  },
+  {
+    "scholarship_id": 162,
+    "outcome": "not_applicable",
+    "professors": [],
+    "notes": "University of Vienna's merit scholarship and research scholarship are statutory, university-wide awards under the Studienfoerderungsgesetz (StudFG) administered centrally by the Office of the Studienpraees and are open to students of all degree programmes; they are not tied to any programme, thesis or supervisor. Researched the official pages: the input URL https://studieren.univie.ac.at/en/scholarships now returns HTTP 404 (site restructured) - the current page is https://studieren.univie.ac.at/en/studying-and-learning/financial-matters/grants-and-scholarships, which only lists the Research scholarship and Merit scholarship and links to the Office of the Studienpraees. The Foerderungsstipendium detail page (https://studienpraeses.univie.ac.at/stipendien/foerderungsstipendien-nach-dem-studfg/) publishes only administrative contacts (Claudia Fritz-Larott, claudia.fritz-larott@univie.ac.at; stipendium@univie.ac.at) and no professor. The stipend commission that assesses applications is not published by name."
+  },
+  {
+    "scholarship_id": 163,
+    "outcome": "verified_supervisors",
+    "professors": [
+      {
+        "canonical_name": "Shqiponja Ahmetaj",
+        "title": "Assistant Professor",
+        "institution_name": "TU Wien (Vienna University of Technology)",
+        "department_name": "Faculty of Informatics - Institute of Logic and Computation, Research Unit Knowledge-Based Systems (E192-03)",
+        "official_profile_url": "https://informatics.tuwien.ac.at/people/shqiponja-ahmetaj/",
+        "official_email": "shqiponja.ahmetaj@tuwien.ac.at",
+        "official_email_verified": true,
+        "lab_url": "https://www.dbai.tuwien.ac.at/staff/",
+        "personal_academic_url": null,
+        "research_areas": [
+          "Knowledge-Based Systems",
+          "Explainable AI",
+          "Logic and Artificial Intelligence"
+        ],
+        "research_keywords": [
+          "knowledge-based systems",
+          "explainable AI",
+          "logic and artificial intelligence",
+          "shape constraint language"
+        ],
+        "relationship_type": "program_faculty",
+        "evidence_source_url": "https://www.vcla.at/2026/05/helmut-veith-awards-2026/",
+        "evidence_source_type": "official_programme_page",
+        "evidence_quote_or_summary": "VCLA (Vienna Center for Logic and Algorithms, TU Wien Informatics) report on the 2026 Helmut Veith Stipend award ceremony: 'The co-chair of the selection committee, Shqiponja Ahmetaj, presented the awards to the winners.' She is a professor (Assistant Professor, E192-03) at TU Wien Informatics, the faculty whose English-taught CS master's programmes the Helmut Veith Stipend funds.",
+        "confidence": 85,
+        "availability": {
+          "scope": "masters_supervision",
+          "state": "not_published",
+          "source_url": "https://www.vcla.at/helmut-veith-stipend/"
+        }
+      },
+      {
+        "canonical_name": "Agata Ciabattoni",
+        "title": "Full Professor",
+        "institution_name": "TU Wien (Vienna University of Technology)",
+        "department_name": "Faculty of Informatics - Institute of Logic and Computation, Research Unit Theory and Logic (E192-05)",
+        "official_profile_url": "https://informatics.tuwien.ac.at/people/agata-ciabattoni/",
+        "official_email": "agata.ciabattoni@tuwien.ac.at",
+        "official_email_verified": true,
+        "lab_url": "https://www.logic.at/",
+        "personal_academic_url": null,
+        "research_areas": [
+          "Mathematical logic",
+          "Formal Methods",
+          "Non-classical logics",
+          "Artificial Intelligence"
+        ],
+        "research_keywords": [
+          "mathematical logic",
+          "formal methods",
+          "non-classical logics",
+          "logic and AI"
+        ],
+        "relationship_type": "program_faculty",
+        "evidence_source_url": "https://www.vcla.at/2024/12/helmut-veith-stipend-award-ceremony-3/",
+        "evidence_source_type": "official_programme_page",
+        "evidence_quote_or_summary": "VCLA (the awarding body of the Helmut Veith Stipend, based at TU Wien Informatics) report on the Helmut Veith Stipend award ceremony: 'VCLA Co-Chairs Agata Ciabattoni and Stefan Szeider introduced the VCLA and the Helmut Veith Stipend.' The VCLA About page likewise states 'The acting chairs are Agata Ciabattoni and Stefan Szeider'.",
+        "confidence": 85,
+        "availability": {
+          "scope": "masters_supervision",
+          "state": "not_published",
+          "source_url": "https://www.vcla.at/helmut-veith-stipend/"
+        }
+      },
+      {
+        "canonical_name": "Stefan Szeider",
+        "title": "Full Professor",
+        "institution_name": "TU Wien (Vienna University of Technology)",
+        "department_name": "Faculty of Informatics - Institute of Logic and Computation, Research Unit Algorithms and Complexity (E192-01)",
+        "official_profile_url": "https://informatics.tuwien.ac.at/people/stefan-szeider/",
+        "official_email": "stefan.szeider@tuwien.ac.at",
+        "official_email_verified": true,
+        "lab_url": "https://www.ac.tuwien.ac.at/",
+        "personal_academic_url": null,
+        "research_areas": [
+          "Combinatorial Optimization",
+          "Automated Reasoning",
+          "Algorithms",
+          "Computational Complexity"
+        ],
+        "research_keywords": [
+          "SAT",
+          "constraint satisfaction",
+          "fixed-parameter tractability",
+          "artificial intelligence"
+        ],
+        "relationship_type": "program_faculty",
+        "evidence_source_url": "https://www.vcla.at/2024/12/helmut-veith-stipend-award-ceremony-3/",
+        "evidence_source_type": "official_programme_page",
+        "evidence_quote_or_summary": "VCLA report on the Helmut Veith Stipend award ceremony: 'VCLA Co-Chairs Agata Ciabattoni and Stefan Szeider introduced the VCLA and the Helmut Veith Stipend.' Stefan Szeider is also listed as the author of the award-ceremony report and as an acting VCLA chair on https://www.vcla.at/about/.",
+        "confidence": 85,
+        "availability": {
+          "scope": "masters_supervision",
+          "state": "not_published",
+          "source_url": "https://www.vcla.at/helmut-veith-stipend/"
+        }
+      }
+    ],
+    "notes": "TU Wien's official Financial Support page indexes several separate schemes; only the Helmut Veith Stipend (EUR 7,000 per year for up to two years plus tuition-fee waiver, for female students on the English-taught Computer Science master's programmes at TU Wien Informatics, deadline 30 November, awarded by the Vienna Center for Logic and Algorithms) has named faculty attached. The stipend's application requires a motivation letter describing 'with which groups of the faculty the student would be interested to work with during their master's thesis', so the VCLA co-chairs who present/award the stipend and the co-chair of the stipend's selection committee are recorded as programme faculty. All three professors are verified on official TU Wien Informatics profile pages (informatics.tuwien.ac.at) with published institutional email addresses. The other schemes on the page (faculty merit scholarships EUR 750-1,500, funding grants EUR 750-3,600, foundation grants with contact stiftungs-stipendium@tuwien.ac.at, graduation scholarships, OeAD/Study Grant Authority support) name no professors. Note: the official_source_url given in the input (https://www.tuwien.at/en/studies/scholarships) returns HTTP 404; the current page is https://www.tuwien.at/en/studies/student-support/financial-support, and the Helmut Veith Stipend's own site is https://www.vcla.at/helmut-veith-stipend/ (VCLA is part of TU Wien's Institute of Logic and Computation, Favoritenstrasse 9-11, 1040 Vienna)."
+  }
+]

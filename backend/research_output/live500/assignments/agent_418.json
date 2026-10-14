@@ -1,0 +1,89 @@
+{
+ "agent": "agent_418",
+ "assignment_count": 1,
+ "scholarships": [
+  {
+   "id": 585,
+   "title": "Latvian State Scholarship for Foreign Students (Scholarship for Studies in Latvia)",
+   "country": "Latvia",
+   "degree": "Bachelor's, Master's, PhD",
+   "funding_label": "Stipend",
+   "status": "upcoming",
+   "official_source": "State Education Development Agency (VIAA), Latvia",
+   "official_source_url": "https://studyinlatvia.lv/scholarships",
+   "application_link": "https://studyinlatvia.lv/scholarships",
+   "catalogue_url": "https://scholarships.viaa.gov.lv",
+   "official_updates_url": "https://studyinlatvia.lv/scholarships",
+   "existing": {
+    "funding_amount": 500,
+    "funding_currency": "EUR",
+    "funding_period": "per month",
+    "tuition_coverage": 0,
+    "living_cost_coverage": 1,
+    "travel_coverage": 0,
+    "fully_funded": 0,
+    "description": "The Latvian state scholarship for studies pays a monthly stipend to students from more than 30 partner countries who are enrolled in a bachelor's, master's or doctoral programme at a Latvian higher education institution. It is worth EUR 500 per month for bachelor's and master's students and EUR 700 per month for doctoral students, awarded for up to 10 months (11 months for doctoral students). The annual call runs from 1 February to 1 April through the VIAA online application system, so the next window opens on 1 February 2027.",
+    "eligibility": [
+     "Nationality of one of Latvia's partner countries (39 eligible countries are listed by VIAA)",
+     "Bachelor's applicants must have completed at least one academic year at any higher education institution",
+     "Master's or PhD applicants may apply from any previous higher education institution",
+     "Must have chosen a study programme at a Latvian higher education institution and obtained a confirmation letter from the designated institutional contact person before applying",
+     "Cannot be awarded concurrently with other grants",
+     "Must be present in Latvia for the scholarship to be paid; no scholarship is provided for presence of under 15 calendar days"
+    ],
+    "eligibility_summary": "Citizens of Latvia's more than 30 partner countries may apply. Bachelor's applicants must already have completed at least one academic year at any higher education institution; master's and doctoral applicants may come from any previous institution. Applicants must hold a confirmation letter from the chosen Latvian higher education institution and may not hold another grant concurrently.",
+    "benefits": [
+     "EUR 500 monthly stipend for bachelor's and master's students",
+     "EUR 700 monthly stipend for doctoral students",
+     "A separate strand funds participation in approved summer schools in Latvia, with funds transferred to the organisers rather than to the participant"
+    ],
+    "coverage": [
+     "Monthly stipend of EUR 500 for bachelor's and master's students",
+     "Monthly stipend of EUR 700 for doctoral students",
+     "Up to 10 months of support for bachelor's and master's students",
+     "Up to 11 months of support for doctoral students"
+    ],
+    "requirements": [
+     "Submit the application online in the VIAA electronic application system",
+     "Fill in the application form according to the published quality evaluation criteria; incomplete or incorrect applications are not assessed",
+     "Attach all required documents translated into Latvian or English",
+     "Use the unified HEI confirmation letter template, signed and submitted by the institutional contact person",
+     "Register a profile with a unique login and password in the VIAA system"
+    ],
+    "documents": [
+     "Confirmation letter from the Latvian higher education institution, prepared by the designated contact person on the unified template",
+     "Europass-format curriculum vitae",
+     "Letter of motivation including activities outside studies related to the field of study in Latvia or the home country",
+     "Proof of education: diploma and supplements, or transcript of records for the last two semesters; first-year master's students must provide their bachelor diploma copy and supplement",
+     "Two copies of letters of recommendation from academic staff, signed within the last six months",
+     "Study plan on the published form",
+     "Copy of a language certificate"
+    ],
+    "english_requirement": "A copy of a language certificate is one of the required documents; the official page does not name a specific level or test.",
+    "application_method": [
+     "Register in the VIAA electronic application system and create a profile",
+     "Complete the online application form against the published criteria",
+     "Upload all required documents translated into Latvian or English",
+     "Submit before the call deadline; decisions are notified by email in June"
+    ],
+    "selection_notes": "All applications are evaluated against the published quality evaluation criteria and the final decision on granting scholarships is made by the VIAA evaluation committee. Candidates receive an official decision by email in June, also visible in their profile in the electronic application system.",
+    "best_fit": "A student from a Latvia partner country who has already completed at least one year of higher education and has secured a place on a study programme at a Latvian higher education institution.",
+    "notes": "The scholarship does not cover all study-related costs: some tuition fees, living costs and other expenses must be covered personally, travel expenses to and from Latvia are not covered, and insurance must be arranged by the holder. The stipend level for second-cycle programmes is set at EUR 500 per month under Cabinet Regulation No. 68 of 24 January 2012, as amended by Cabinet Regulation No. 298 of 26 May 2026.",
+    "duration": "Up to 10 months for bachelor's and master's students; up to 11 months for doctoral students; maximum two terms within one study cycle",
+    "application_period": "1 February - 1 April annually",
+    "deadline_display": "1 April (annual call closes); applications open 1 February",
+    "deadline_date": null,
+    "region": "Europe",
+    "program_type": "Government scholarship",
+    "applicant_utility": null,
+    "official_details": null
+   },
+   "missing_fields": [
+    "deadline_date",
+    "applicant_utility",
+    "official_details"
+   ]
+  }
+ ],
+ "result_file": "C:\\Users\\GopaL\\Desktop\\Projects folder\\ScholarZone\\backend\\research_output\\live500\\results\\agent_418.json"
+}

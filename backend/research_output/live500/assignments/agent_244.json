@@ -1,0 +1,95 @@
+{
+ "agent": "agent_244",
+ "assignment_count": 1,
+ "scholarships": [
+  {
+   "id": 600,
+   "title": "Becas Colombia Biodiversa - Fondo de Becas Colombia Biodiversa, Convocatoria II-2026",
+   "country": "Colombia",
+   "degree": "Bachelor's, Master's",
+   "funding_label": "Partially Funded",
+   "status": "open",
+   "official_source": "Fundación Alejandro Ángel Escobar (FAAE)",
+   "official_source_url": "https://www.faae.org.co/colombiabiodiversa/instrucciones-para-la-aplicacion",
+   "application_link": "https://www.faae.org.co/colombiabiodiversa/instrucciones-para-la-aplicacion",
+   "catalogue_url": "https://www.faae.org.co/colombiabiodiversa",
+   "official_updates_url": "https://www.faae.org.co/colombiabiodiversa/instrucciones-para-la-aplicacion",
+   "existing": {
+    "funding_amount": null,
+    "funding_currency": null,
+    "funding_period": null,
+    "tuition_coverage": null,
+    "living_cost_coverage": null,
+    "travel_coverage": null,
+    "fully_funded": 0,
+    "description": null,
+    "eligibility": [
+     "Estudiantes colombianos (la convocatoria se encuentra abierta sólo para estudiantes colombianos)",
+     "Matriculados en un programa de pregrado o maestría en una universidad nacional aprobada por el ICFES o en una universidad extranjera formalmente reconocida",
+     "La propuesta debe ser una tesis de grado aprobada por la facultad, y no superar el 50 % de ejecución al cierre de la convocatoria",
+     "Modalidad individual o colectiva; en la colectiva todos los integrantes deben pertenecer al mismo programa y se designa un coordinador o representante"
+    ],
+    "eligibility_summary": "Colombian students enrolled in an undergraduate or master's programme who have a thesis proposal approved by their faculty on the knowledge, conservation or sustainable use of Colombian biodiversity, at the start of execution or not yet started.",
+    "benefits": [
+     "Research costs for the approved thesis (up to COP 3,500,000)",
+     "Equipment needed for the research, which may be purchased with the grant and then belongs to the student"
+    ],
+    "coverage": [
+     "Research costs for the approved thesis (up to COP 3,500,000)",
+     "Equipment needed for the research, which may be purchased with the grant and then belongs to the student"
+    ],
+    "requirements": [
+     "Read the bases for the II-2026 call before applying",
+     "Complete the three-stage online pre-registration form",
+     "Keep the research proposal to a maximum of five pages in the prescribed format",
+     "Have the thesis approved by the faculty and submit the director's letter and the faculty letter",
+     "State whether any artificial-intelligence tool was used in the proposal and at which stage",
+     "Mention any framework collection permits needed for sampling wild species",
+     "Note that the budget must be the total project budget, identifying which lines the grant will cover"
+    ],
+    "documents": [
+     "Research proposal of no more than five pages (Times New Roman 12, 1.5 cm margins) containing title, introduction, general and specific objectives, relevance to biodiversity, methodology, expected results and bibliography",
+     "Detailed and justified budget identifying which lines the Becas Colombia Biodiversa grant will cover and which other sources will cover; the amount requested may not exceed COP 3,500,000",
+     "Activity timetable with months of start and end and the current state of progress",
+     "Letter from the thesis supervisor to the Colombia Biodiversa Fund certifying the thesis is approved (for collective proposals, naming every member)",
+     "Letter from the faculty on letterhead to the Colombia Biodiversa Fund certifying the thesis is approved",
+     "Official enrolment certificate issued by the university",
+     "Recommendation letter from a faculty professor other than the thesis director",
+     "Student identity document"
+    ],
+    "english_requirement": null,
+    "application_method": [
+     "Complete the online pre-registration form in three stages: type of proposal and personal/recommendation data; category (undergraduate or master's), abstract, motivation and funding sources; file uploads and a short survey",
+     "Wait for FAAE to verify the form and uploaded documents; a definitive registration number is then emailed"
+    ],
+    "selection_notes": "The foundation states that students from all areas of knowledge may apply as long as the degree project turns on the knowledge, conservation or sustainable use of Colombian biodiversity, and that only research proposals qualify.",
+    "best_fit": "Colombian undergraduate or master's students whose approved thesis concerns Colombian biodiversity and is at the start of its execution, particularly field or sampling work in the Orinoquía.",
+    "notes": "The fund does not support undergraduate or master's tuition fees; it funds the thesis research. Undergraduates have one year from award to finish, master's students two years. The fund does not cover health-risk insurance for field work. Students Colombian but studying abroad may apply provided the project relates directly to Colombian biodiversity. The programme marked 20 years in 2025 and has supported more than 180 young researchers.",
+    "duration": null,
+    "application_period": "Convocatoria II-2026 announced as open on the fund's official application-instructions page; the official page read does not publish the closing date for this call",
+    "deadline_display": null,
+    "deadline_date": null,
+    "region": "Latin America",
+    "program_type": "Foundation research scholarship",
+    "applicant_utility": null,
+    "official_details": null
+   },
+   "missing_fields": [
+    "funding_amount",
+    "funding_currency",
+    "funding_period",
+    "tuition_coverage",
+    "living_cost_coverage",
+    "travel_coverage",
+    "description",
+    "english_requirement",
+    "duration",
+    "deadline_display",
+    "deadline_date",
+    "applicant_utility",
+    "official_details"
+   ]
+  }
+ ],
+ "result_file": "C:\\Users\\GopaL\\Desktop\\Projects folder\\ScholarZone\\backend\\research_output\\live500\\results\\agent_244.json"
+}

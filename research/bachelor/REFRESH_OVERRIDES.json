@@ -1,0 +1,60 @@
+{
+  "_comment": "Coordinator adjudication of ambiguous cases that mechanical host/name matching cannot settle. The validator reads this and forces the routing decision. Same-host is NOT proof of duplication: monash.edu and nus.edu.sg each legitimately carry several distinct programmes, which is why each case below was read individually.",
+  "_name_disambiguation_note": "do_add() drops a record whose lowercased title already appeared earlier in the same batch ('duplicate within batch'), so two genuinely distinct awards that share a generic published title cannot both land as-is. The repo's own convention is to qualify such titles with the awarding body, e.g. the existing 'Karsh International Scholars Program — Duke University'. Entries under title_overrides apply that convention. The published title is preserved in the verification block.",
+  "title_overrides": [
+    {
+      "published_title": "International Excellence Scholarship",
+      "_applies_to_host": "st-andrews.ac.uk",
+      "title": "International Excellence Scholarship — University of St Andrews",
+      "why": "St Andrews and Swansea University both publish an award officially titled 'International Excellence Scholarship'. They are distinct awards on distinct hosts. Left as-is, do_add() would drop the second as 'duplicate within batch' because it compares lowercased titles only. This is an ARRAY, not an object, because JSON objects cannot hold two keys with the same name and the earlier object form silently collapsed to one entry."
+    },
+    {
+      "published_title": "International Excellence Scholarship",
+      "_applies_to_host": "swansea.ac.uk",
+      "title": "International Excellence Scholarship — Swansea University",
+      "why": "See the St Andrews entry. Applied only when the record's official host is www.swansea.ac.uk / swansewa.ac.uk."
+    }
+  ],
+  "by_award_name": {
+    "Karsh International Scholarship": {
+      "route": "REFRESH_EXISTING_ID",
+      "existing_id": 122,
+      "existing_state": "LIVE",
+      "existing_name": "Karsh International Scholars Program — Duke University",
+      "why": "Same award. The name difference is only 'Scholars Program' vs 'Scholarship', which the mechanical normaliser does not unify. Record id 122 already cites the same ousf.duke.edu page and carries the package, CSS/IDOC documents, 100%-of-need basis and three summers. This research refreshes it with the 2026-27 cycle (ED 2 Nov 2026 / RD 4 Jan 2027) and Duke's current cost of attendance, which id 122 still carries at 2025-26 figures.",
+      "decided_by": "coordinator",
+      "decided_at": "2026-10-03"
+    },
+    "Lester B. Pearson International Student Scholarships": {
+      "route": "REFRESH_EXISTING_ID",
+      "existing_id": 39,
+      "existing_state": "LIVE",
+      "existing_name": "Pearson International Scholarship (University of Toronto)",
+      "why": "Same award. Record id 39 is a stub carrying the non-canonical URL future.utoronto.ca/pearson; the researched record carries the canonical /pearson-scholarships page plus the full benefit package, the 2027-entry eligibility wording, the school-nomination mechanics and the two-stage timeline.",
+      "decided_by": "coordinator",
+      "decided_at": "2026-10-03"
+    },
+    "K.C. Kuok Scholarship": {
+      "route": "INSERT_NEW",
+      "why": "Distinct award, despite sharing monash.edu with id 52. id 52 is the Monash International Leadership Scholarship (different donor, merit-based, not citizenship-locked). K.C. Kuok is a different donor-funded award restricted to mainland China, Indonesia, Hong Kong and Southeast Asian citizens. Host overlap alone is not duplication.",
+      "decided_by": "coordinator",
+      "decided_at": "2026-10-03"
+    },
+    "Science & Technology Undergraduate Scholarship": {
+      "route": "INSERT_NEW",
+      "why": "Distinct award, despite sharing nus.edu.sg with id 105. id 105 is the NUS International Undergraduate Scholarship (Asia-Pacific, unrestricted field); the Science & Technology award is field-restricted to Computing, Engineering and Science, carries a six-year MOE bond, and has different benefit amounts. Confirmed by the researcher against the NUS scholarship index.",
+      "decided_by": "coordinator",
+      "decided_at": "2026-10-03"
+    },
+    "ANU International Achievement Award": {
+      "route": "INSERT_NEW",
+      "why": "Distinct award, despite sharing study.anu.edu.au with existing ANU records (nearest LIVE id 196 'ANU University Research Scholarship'). That award is a research-stipend programme for higher degree by research students; the ANU International Achievement Award is a coursework tuition fee reduction of 20%, 25% or 50% published on the ANU scholarship finder for international undergraduate, Honours, postgraduate coursework and graduate certificate students, with academic merit as its only selection base and no stipend, travel or living component. Different funding instrument, different population, different benefit structure and a different official page. Host overlap alone is not duplication. Note also that this slot is a substitution: the assigned target 'Australia Awards Singapore' / 'Australia Awards Brunei' is postgraduate-only, and the parent Australia Awards Scholarships substitute was already recorded in slot 41.",
+      "decided_by": "coordinator",
+      "decided_at": "2026-10-03"
+    }
+  },
+  "known_repo_issues": {
+    "utoronto.ca_logo_override_white_wordmark": "The existing utoronto.ca entry in official_logo_overrides.json uses a white-on-transparent wordmark (81 of 82 fill attributes are #ffffff), which violates rule 6 of that file's own _rules: 'White-on-transparent wordmarks are deliberately excluded. A white logo is invisible on a light card.' The researched replacement at https://future.utoronto.ca/themes/utfs/images/icons/logo-svg.svg was probed live: HTTP 200, image/svg+xml, 143192 bytes, viewBox 0 0 162 58, zero fill attributes, therefore renders black and is light-card safe. Recommend replacing the existing override rather than adding a second key. Not applied automatically — logo entries are a human-audited surface.",
+    "programme_details_id39_stub": "id 39 exists but carries the non-canonical application URL future.utoronto.ca/pearson and lacks the verified benefit package. Treated here as a refresh target."
+  }
+}

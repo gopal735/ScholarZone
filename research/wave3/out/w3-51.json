@@ -1,0 +1,21 @@
+{
+  "agent_id": "w3_51",
+  "shard": "w3-51",
+  "host": "visegradfund.mvcr.cz",
+  "today": "2026-10-04",
+  "logo_override": {
+    "url": "https://www.visegradfund.org/logo.png",
+    "page_url": "https://www.visegradfund.org/about-us/logo",
+    "official_host": true,
+    "alt_text": "Visegrad Fund",
+    "validation_result": "verified",
+    "validation_detail": "HTTP 200, content-type image/png, 1841 bytes; rendered on a white background it shows the 'Visegrad Fund' wordmark with the four V4 dots in dark navy (matching the #0F3250 of the fund's positive logo on its own Logo page), so it is dark-on-transparent and clearly legible on a light card",
+    "image_kind": "official_logo",
+    "image_format": "png",
+    "verified_at": "2026-10-04T00:00:00+00:00",
+    "host_evidence": "same_registrable_domain",
+    "_award": "Visegrad Scholarship Program"
+  },
+  "target_ids": [419],
+  "notes": "IMPORTANT DOMAIN CHANGE - the stored shard host is dead. Resolve-DnsName returns NXDOMAIN for visegradfund.mvcr.cz and www.visegradfund.mvcr.cz (the parent mvcr.cz does resolve to 94.199.45.82), so the stored official_source_url https://visegradfund.mvcr.cz/en/scholarships cannot be fetched at all. I also tested visegradfund.eu and www.visegradfund.eu: NXDOMAIN in DNS and webfetch returns a transport error. A web search for the current programme page identified the International Visegrad Fund's live site as visegradfund.org, which resolves and serves the programme (2027 call: opens 1 Jan 2027, deadline 15 Apr 2027). host_evidence is same_registrable_domain relative to the awarding body (visegradfund.org), NOT to the shard host - flagged here because it is a cross-domain substitution, though the asset is unambiguously the awarding body's own file. How I found it: the site's own footer nav has a 'Logo' link to /about-us/logo, a dedicated brand page (200, title 'Logo | International Visegrad Fund') which shows two inline 116x53 SVGs of identical path data - the positive version fill #0F3250 and the reversed version fill #D2F0F0. Those are inline and so have no probeable URL, which is why I took the file-backed PNG instead. Probed and rejected: /apple-touch-icon.png (200, image/png, 4452 B - a bare teal square with four white dots, an app icon with no wordmark); /favicon-32x32.png (200, 530 B, too small); /og-default.png (200, 22786 B - a social share card with decorative teal quarter-circles, a banner not a logo); /logo.svg, /logo.webp, /images/logo.svg, /assets/logo.svg, /visegrad-logo.svg, /img/logo.svg (404 or transport error); every site photo resolves through imgctx.com/cdn-cgi and data.eu.cntmbr.com, a Cloudflare image CDN, so all of those are rejected under rules 1 and 6. Nothing acceptable is served from the mvcr.cz domain, and using the Czech MFA (mvcr.cz) mark would be a provenance error under rule 2 since the Fund, not the ministry, awards the scholarship."
+}

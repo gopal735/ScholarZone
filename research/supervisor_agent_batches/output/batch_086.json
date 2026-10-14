@@ -1,0 +1,44 @@
+[
+  {
+    "scholarship_id": 682,
+    "outcome": "no_verified_supervisor_found",
+    "professors": [],
+    "notes": "University-administered financial aid/scholarship route at Nazarbayev University for NUFYP (Foundation Year) and four-year undergraduate programmes, 2027-2028 cycle. Official page (nu.edu.kz/admissions/how-to-apply/foundation-undergraduate/financial-aid-end-scholarships) describes a four-step application handled entirely by the NU Admissions Office through the admissions.nu.edu.kz portal under six applicant categories (NUET, SAT/ACT, Olympiad winners, IB, A-level/NIS Grade 12, NUFYP students); no professor, supervisor, lab or research group is named or attached to this award, and Foundation/undergraduate study has no supervision component. The page's 'Useful information' section links only a general faculty directory (research.nu.edu.kz/en/persons/) that is not tied to this scholarship, so no professor entry can be evidenced. Outcome: university merit/financial-aid scheme with an attached institution but no supervising faculty, so no_verified_supervisor_found."
+  },
+  {
+    "scholarship_id": 683,
+    "outcome": "not_applicable",
+    "professors": [],
+    "notes": "Government scholarship of Brunei Darussalam (BDGS) administered by the Ministry of Foreign Affairs and Ministry of Education. Official MFA scholarship page (mfa.gov.bn/Pages/scholarship.aspx) lists 'THE GOVERNMENT OF BRUNEI DARUSSALAM SCHOLARSHIP FOR FOREIGN STUDENTS TENABLE IN BRUNEI DARUSSALAM (BDGS) ACADEMIC SESSION 2026/2027' and routes applicants to the central Katalyst portal (apps.katalyst.gov.bn/mfa/BDGS-V3/loginApplicant). Page rendered with full content. The scheme pays tuition plus bursaries at institutions in Brunei but names no host institution, department or supervising professor; placement is arranged after selection. National/government scheme with no attached institution, so not_applicable per research guidance."
+  },
+  {
+    "scholarship_id": 684,
+    "outcome": "not_applicable",
+    "professors": [],
+    "notes": "Mauritius-Africa Scholarship Scheme run by the Ministry of Tertiary Education, Science and Research, Republic of Mauritius. Official source is the Ministry's published 'Call for Application' PDF (tertiaryeducation.govmu.org/te/wp-content/uploads/2025/10/Call-for-Application.pdf); the PDF downloads as a valid document (text streams compressed, so not quotable here) and the call is issued by the Ministry for African Union / African Commonwealth resident citizens. The scheme pays tuition, a MUR 16,500 monthly allowance and airfare for Diploma/Bachelor's/MPhil/PhD study at listed Mauritian public higher education institutions, and requires awardees to have already secured or applied for a place at a listed institution; the call itself is a national government scheme and names no supervising professor. Government scheme with no attached institution, so not_applicable per research guidance."
+  },
+  {
+    "scholarship_id": 685,
+    "outcome": "not_applicable",
+    "professors": [],
+    "notes": "Ghana Education Trust Fund (GETFund) Postgraduate Local Scholarship 2026/27. GETFund is a statutory Ghanaian education fund created by Act of Parliament; the official news page (getfund.gov.gh/news/getfund-opens-applications-for-2026-27-undergraduate-and-postgraduate-local-scholarships) is a JavaScript-only site that returns an empty body on fetch (only the page title 'GETFund Ghana - Ghana Education Trust Fund' renders; same for getfund.gov.gh homepage), so full text could not be extracted. However, the scheme is unambiguously a national government trust-fund scheme: applications are made only through the central GETFund Scholarship Portal (scholarships.getfund.gov.gh), candidates must already hold admission to Master's/PhD programmes within Ghana, and the Fund covers tuition, accommodation and scholastic materials. No institution, department or supervising professor is attached to the scheme. National/government scheme with no attached institution, so not_applicable per research guidance."
+  },
+  {
+    "scholarship_id": 686,
+    "outcome": "no_verified_supervisor_found",
+    "professors": [],
+    "notes": "International Excellence Scholarship 2027 at The University of Newcastle, Australia. Official page (newcastle.edu.au/scholarships/UNI_053) describes an automatic merit-based tuition reduction of 20% of the gross annual international tuition fee for new international students commencing a CRICOS-registered undergraduate or postgraduate COURSEWORK degree in 2027 or later; 'No application is required for this scholarship. Scholarships are automatically assessed upon application for admission.' The page explicitly excludes Higher Degrees by Research programmes, and the only published contact is the university's Global Office (international-enquiries@newcastle.edu.au, an administrative office rather than a professor). No professor, supervisor or research group is tied to this award. Outcome: university merit scholarship with an attached institution but no supervising faculty, so no_verified_supervisor_found."
+  },
+  {
+    "scholarship_id": 687,
+    "outcome": "not_applicable",
+    "professors": [],
+    "notes": "Beca Posgrado STEM Regional (Fulbright-Garcia Robles) run by COMEXUS, the U.S.-Mexico Commission for Educational and Cultural Exchange (Fulbright Commission in Mexico). Official page (comexus.org.mx/becas_para_mexicanos/posgrado_stem_regional) states the Commission supports awardees with admission applications to up to five US universities and funds master's/doctoral STEM study for up to 18 months/three years, with the only published contact being the Commission's scholarships office (becas@comexus.org.mx). The award is a central bilateral government exchange scholarship: no host US institution, department or supervising professor is attached; candidates must not already hold a US university acceptance at application. Bilateral government exchange scheme with no attached institution, so not_applicable per research guidance."
+  },
+  {
+    "scholarship_id": 688,
+    "outcome": "not_applicable",
+    "professors": [],
+    "notes": "Becas Nacionales de Inclusion 2026 convocatoria of the Secretaria de Ciencia, Humanidades y Tecnologia (SECIHTI), Gobierno de Mexico. Official page (secihti.mx/convocatoria/becas-nacionales/convocatoria-becas-nacionales-de-inclusion-2026) rendered correctly and publishes the convocatoria with three tracks governed by Terminos de Referencia PDFs: A. Becas de Licenciatura para Jefas de Familia; B. Apoyos Complementarios para Personas Indigenas; C. Apoyos Complementarios para Personas con Discapacidad (the latter two for existing holders of SECIHTI national postgraduate scholarships). Applications go through SECIHTI's central portal; the convocatoria names no host institution, department or supervising professor. National/government scheme with no attached institution, so not_applicable per research guidance."
+  }
+]

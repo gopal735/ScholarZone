@@ -1,0 +1,101 @@
+{
+ "agent": "agent_233",
+ "assignment_count": 1,
+ "scholarships": [
+  {
+   "id": 582,
+   "title": "EMBO Postdoctoral Fellowships",
+   "country": "Multiple",
+   "degree": "Postdoctoral",
+   "funding_label": "Stipend and Salary",
+   "status": "open",
+   "official_source": "European Molecular Biology Organization (EMBO)",
+   "official_source_url": "https://www.embo.org/funding/fellowships-grants-and-career-support/postdoctoral-fellowships",
+   "application_link": "https://www.embo.org/funding/fellowships-grants-and-career-support/postdoctoral-fellowships",
+   "catalogue_url": "https://www.embo.org/funding/fellowships-grants-and-career-support/postdoctoral-fellowships",
+   "official_updates_url": "https://www.embo.org/funding/fellowships-grants-and-career-support/postdoctoral-fellowships/application",
+   "existing": {
+    "funding_amount": null,
+    "funding_currency": null,
+    "funding_period": null,
+    "tuition_coverage": null,
+    "living_cost_coverage": null,
+    "travel_coverage": null,
+    "fully_funded": 0,
+    "description": null,
+    "eligibility": [
+     "Applicants must hold a doctorate or equivalent at the start of the fellowship",
+     "Applicants who already hold a PhD at the time of application are eligible only if they obtained it during the two years prior to the date the application is submitted",
+     "Applicants must have at least one first author publication (research paper) accepted in or published in an international peer reviewed journal at the time of application",
+     "A first author preprint with public in-depth peer reviews obtained from an independent peer review service is also sufficient for eligibility",
+     "All applications must involve movement between countries",
+     "Applications to go to the country in which the PhD was obtained will not be considered",
+     "Applications to return to a laboratory where the candidate worked for more than six months in total will not be considered",
+     "Applications to work in the laboratory, institute or department where the candidate worked to obtain the PhD, or again with the candidate's PhD supervisor, will not be considered",
+     "Candidates who have already started working in the host laboratory may apply only if they have been living in the host country for less than six months at the time the application is submitted",
+     "Candidates can submit only one application for one project at one host laboratory at each round of selection",
+     "Projects that are a direct continuation of the PhD work are not eligible"
+    ],
+    "eligibility_summary": "PhD holders in the life sciences who obtained their doctorate within the two years before submitting the application, have at least one first-author publication (or verifiably peer-reviewed first-author preprint), and are applying to move to a different country than where the PhD was obtained.",
+    "benefits": [
+     "Salary or stipend for the postdoctoral position (host-institution employment contract in EMBC Member States)",
+     "Travel and relocation allowance as a lump sum",
+     "Child daycare allowance up to EUR 2,500 per fellowship year per child for children under six (non-EMBC fellows only)",
+     "Dependent child allowance for children under 18 (non-EMBC fellows only, value depends on country visited)",
+     "Free attendance at an EMBO Laboratory Leadership Course",
+     "Travel and accommodation for the two-day EMBO workshop for journalist fellows is not part of this scheme"
+    ],
+    "coverage": [
+     "Salary or stipend for the postdoctoral position (host-institution employment contract in EMBC Member States)",
+     "Travel and relocation allowance as a lump sum",
+     "Child daycare allowance up to EUR 2,500 per fellowship year per child for children under six (non-EMBC fellows only)",
+     "Dependent child allowance for children under 18 (non-EMBC fellows only, value depends on country visited)",
+     "Free attendance at an EMBO Laboratory Leadership Course",
+     "Travel and accommodation for the two-day EMBO workshop for journalist fellows is not part of this scheme"
+    ],
+    "requirements": [
+     "At least one first-author publication in an international peer-reviewed journal, or a first-author preprint with public in-depth peer reviews from an independent peer review service",
+     "PhD obtained within the two years preceding the application submission date",
+     "Cross-country mobility between the country of the PhD and the host country",
+     "Doctoral supervisor's support and a host laboratory in a host institution",
+     "Agreement with the host institution that the EMBO grant is used to fund an employment contract for the fellow"
+    ],
+    "documents": [
+     "Online application via the EMBO application portal",
+     "Confirmation of the host supervisor and host institution",
+     "First-author publication or verifiably peer-reviewed preprint",
+     "CV and list of publications"
+    ],
+    "english_requirement": "Not stated on the fellowship pages read; EMBO operates in English and the application is submitted in English through its portal.",
+    "application_method": [
+     "Online application through the EMBO application portal (http://applications.embo.org/01/register.php?reg=S019)",
+     "Submit before the hard cutoff of the relevant evaluation round"
+    ],
+    "selection_notes": "Applications are assessed on the excellence of the research project, the applicant's track record and the international mobility of the project. Effective from the Autumn 2026 selection round a host laboratory may support a maximum of one candidate per selection round. Effective from the Autumn 2027 selection round (applications submitted after 22 January 2027, 14:00 CET) re-applications will no longer be permitted.",
+    "best_fit": "Life-science PhD holders from any country who need a funded two-year postdoctoral position abroad and who can satisfy the strict international-mobility and publication requirements.",
+    "notes": "EMBO explicitly does not cover bench fees, overheads, consumables or other financial benefits to the host supervisor or receiving institute. The grant rate depends on the country being visited. Fellows are responsible for national tax arrangements; EMBO cannot advise on tax regulations.\nFunding period: per fellowship year (childcare allowance) / per country-dependent grant or stipend rate",
+    "duration": "Up to two years; minimum one year; maximum combined full-time and part-time duration 36 months",
+    "application_period": "Rolling applications; evaluation rounds with hard cutoffs (next cutoff 22 January 2027, 14:00 CET)",
+    "deadline_display": "Applications accepted throughout the year; next cutoff date / hard deadline Friday 22 January 2027, 14:00 CET",
+    "deadline_date": null,
+    "region": "Europe",
+    "program_type": "Research fellowship (life sciences)",
+    "applicant_utility": null,
+    "official_details": null
+   },
+   "missing_fields": [
+    "funding_amount",
+    "funding_currency",
+    "funding_period",
+    "tuition_coverage",
+    "living_cost_coverage",
+    "travel_coverage",
+    "description",
+    "deadline_date",
+    "applicant_utility",
+    "official_details"
+   ]
+  }
+ ],
+ "result_file": "C:\\Users\\GopaL\\Desktop\\Projects folder\\ScholarZone\\backend\\research_output\\live500\\results\\agent_233.json"
+}

@@ -1,0 +1,131 @@
+{
+  "agent": "agent_223",
+  "records": [
+    {
+      "id": 561,
+      "official": {
+        "official_source_urls": [
+          "https://royalsociety.org/grants/career-development-fellowship",
+          "https://royalsociety.org/grants/applications/",
+          "https://royalsociety.org/news"
+        ],
+        "application_link": "https://grants.royalsociety.org/",
+        "catalogue_url": "https://grants.royalsociety.org",
+        "official_updates_url": "https://royalsociety.org/news",
+        "deadline_central": "2026-11-18",
+        "deadline_central_display": "18 November 2026",
+        "deadline_note": "2027 round opened 22 September 2026 and closes 18 November 2026, with decisions due by 30 June 2027.",
+        "application_cycle": "2027 round (opened 22 September 2026)",
+        "status": "OPEN",
+        "status_note": "The scheme page states Status: Open and Deadline: 18 November 2026, with an open date of 22 September 2026 and a decision date of 30 June 2027.",
+        "tuition_coverage_note": null,
+        "funding_amount": 703800,
+        "funding_currency": "GBP",
+        "funding_period": "over four years (total grant cap)",
+        "tuition_coverage": false,
+        "living_cost_coverage": true,
+        "travel_coverage": true,
+        "fully_funded": false,
+        "benefits": [
+          "Applicants can apply for up to GBP 703,800 over four years",
+          "Contribution to the Research Fellow's salary and associated on-costs (at 80%)",
+          "Directly allocated costs (at 80%)",
+          "Research expenses (at 100%)",
+          "Relocation and visa costs for themselves and their dependants (partner and children), which can be requested in addition to the total grant cap of GBP 703,800 over four years",
+          "A bespoke programme of training, mentoring and engagement to support career development"
+        ],
+        "eligibility": [
+          "You self-identify as being from a Black heritage, including mixed Black background",
+          "You are a UK national or you have completed a part of your education in the UK through your Undergraduate, Master's or PhD degree studies or you hold/have held a postdoctoral researcher position in the UK",
+          "You have a PhD, or will have one by the time the funding starts, but have less than 24 months post-doctoral experience",
+          "Your research is within the Royal Society's remit of natural sciences, which includes but is not limited to biological research and biomedical sciences, chemistry, engineering, mathematics and physics"
+        ],
+        "requirements": [
+          "Apply through Flexi-Grant, the Royal Society application and grant management system",
+          "Shortlisted applicants are invited to an in-person interview at the Royal Society",
+          "Full funding details are set out in the scheme notes and the Royal Society Funding Guidance"
+        ],
+        "documents": [
+          "Application submitted through Flexi-Grant (scheme notes, available as a PDF download on the scheme page, specify the required attachments)"
+        ],
+        "selection_criteria": [
+          "Assessment is overseen by the Career Development Fellowship panel",
+          "Shortlisted applicants are invited to an in-person interview at the Royal Society, where the aim is for the applicant to demonstrate the importance and scientific validity of their work"
+        ],
+        "coverage": [
+          "Contribution to the Research Fellow's salary and associated on-costs at 80%",
+          "Directly allocated costs at 80%",
+          "Research expenses at 100%",
+          "Relocation and visa costs for the applicant and their dependants, on top of the grant cap",
+          "Financial support for childcare costs arising from attending conferences, collaborative research visits or invited talks"
+        ],
+        "application_method": [
+          "Register an account on Flexi-Grant, the Royal Society application and grant management system",
+          "Choose the Career Development Fellowship scheme for the 2027 round",
+          "Complete the application, including the research proposal",
+          "Submit before the 18 November 2026 close date",
+          "Attend the in-person interview at the Royal Society if shortlisted"
+        ],
+        "application_route": "One application through Flexi-Grant with a research proposal; shortlisted applicants are then invited to an in-person interview at the Royal Society.",
+        "study_mode": "Full-time postdoctoral research fellowship in a UK institution, with flexibility for part-time working, sabbaticals and secondments",
+        "citizenship_residency": "Applicants can be of any nationality. They must be a UK national, or have completed part of their education in the UK through Undergraduate, Master's or PhD studies, or hold/have held a postdoctoral researcher position in the UK.",
+        "international_eligibility": "Both UK and non-UK domiciled researchers who wish to conduct their research in the UK are eligible. Applicants requiring a visa are eligible to apply for a Global Talent Visa under the fast-track process of endorsement.",
+        "subject_or_agency_requirement": "Research must fall within the Royal Society's remit of natural sciences, including but not limited to biological research and biomedical sciences, chemistry, engineering, mathematics and physics. A separate Royal Society and Alzheimer's Society Career Development Fellowship funds research directly relevant to dementia, excluding clinical and interventional studies on humans.",
+        "research_requirement": "A research proposal is submitted through Flexi-Grant; the interview asks the applicant to demonstrate the importance and scientific validity of their work.",
+        "duration": "Four years",
+        "description": "The Career Development Fellowship provides the most talented early career scientists from underrepresented groups in STEM with research funding and high-quality training opportunities to build a strong base for a successful research career. It is currently offered as a pilot with researchers from Black heritage backgrounds and, if successful, may be broadened to researchers from other underrepresented groups.",
+        "region": "Europe",
+        "program_type": "Research organisation postdoctoral fellowship",
+        "english_requirement": null
+      },
+      "verification": {
+        "source_citations": [
+          "https://royalsociety.org/grants/career-development-fellowship",
+          "https://royalsociety.org/grants/applications/",
+          "https://royalsociety.org/grants/application-dates/"
+        ],
+        "last_verified_date": "2026-10-10",
+        "verification_status": "confirmed",
+        "confidence": "high",
+        "not_confirmed": [
+          "english_requirement",
+          "tuition_coverage (the scheme funds salary and research costs and does not pay tuition)",
+          "full document checklist (the scheme notes PDF is the authoritative source and was not parsed in full)"
+        ],
+        "notes": "Scheme page read in full on royalsociety.org, including the 'What does the scheme offer?' section, eligibility, the application and assessment process, and the application and offer data table (2024/25: 233 eligible applications, 7 offers, 3%; 2025/26: 114 eligible applications, 8 offers, 7%). The GBP 703,800 four-year cap is stated verbatim on the page, so funding_amount records that figure with the stated period. The scheme is salary-based and does not pay tuition, so tuition_coverage is false and fully_funded is false because the salary and directly allocated costs are paid at only 80%."
+      },
+      "applicant_utility": {
+        "summary": "This is a four-year, GBP 703,800-capped postdoctoral fellowship for researchers who self-identify as being from a Black heritage background, with fewer than 24 months of postdoctoral experience and a UK connection through nationality, prior UK study or a UK postdoc. It funds salary at 80%, so your prospective host institution must be willing to cover the remaining 20% and directly allocated costs, which makes the host conversation as decisive as the science. Treat it as a high-risk, high-reward application: the published success rate was 3% in 2024/25 and 7% in 2025/26, so apply knowing the numbers and do not rely on it as your only route.",
+        "best_fit": "Early postdoctoral researchers from Black heritage backgrounds in natural sciences who already have a UK host department willing to co-fund 20% of salary and directly allocated costs.",
+        "application_readiness_checklist": [
+          "Count your postdoctoral months precisely, since more than 24 months of postdoctoral experience at the funding start date ends your eligibility",
+          "Line up a UK host institution early and confirm in writing that it will cover the 20% shortfall on salary and directly allocated costs",
+          "Register on Flexi-Grant well before 18 November 2026 and check the scheme notes for the full attachment list",
+          "Attend the scheme information session linked from the scheme page if it is still open for the 2027 round",
+          "Request relocation and visa costs for dependants explicitly, since these sit outside the grant cap",
+          "Plan for an in-person interview at the Royal Society in London, including travel and any accessibility needs"
+        ],
+        "common_rejection_risks": [
+          "Exceeding the 24-month postdoctoral experience threshold by the time funding would start",
+          "Having no UK connection through nationality, UK study or a UK postdoctoral position",
+          "Research that falls outside the Royal Society's natural sciences remit",
+          "A host institution that cannot absorb the 20% of salary and directly allocated costs it must cover",
+          "A proposal that cannot be defended on the importance and scientific validity of the work, which is exactly what the interview tests"
+        ],
+        "estimated_uncovered_costs": "The 20% of salary, associated on-costs and directly allocated costs that the host institution must fund, plus anything outside research expenses and the dependant relocation and visa provision.",
+        "document_audit": [
+          "The scheme notes PDF is the authoritative source for the required attachments, so read it rather than relying on the summary page",
+          "If you need an adjustment for the application, the interview or any other part of the process, email adjustments@royalsociety.org or call +44 20 7451 2666, and requests are handled confidentially",
+          "Applicants requiring a visa should confirm eligibility for the Global Talent Visa fast-track endorsement before committing to a UK move"
+        ],
+        "alerts": [
+          "The scheme is a pilot restricted to researchers from Black heritage backgrounds; if it is not broadened, later cohorts may not exist",
+          "Undergraduate, Master's and PhD students cannot apply for Royal Society funding, so this is not a route into a PhD",
+          "The 18 November 2026 close date is fixed for the 2027 round and decisions are not due until 30 June 2027, leaving a long gap to plan around",
+          "The scheme is funded by the Department for Business, Innovation, Science and Trade (BIST) and Royal Society charitable funds"
+        ],
+        "submission_workflow": "Flexi-Grant application with research proposal, panel assessment and shortlisting, in-person interview at the Royal Society for shortlisted applicants, then a decision by 30 June 2027."
+      }
+    }
+  ]
+}

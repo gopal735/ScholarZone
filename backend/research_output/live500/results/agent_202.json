@@ -1,0 +1,158 @@
+{
+  "agent": "agent_202",
+  "records": [
+    {
+      "id": 516,
+      "official": {
+        "official_source_urls": [
+          "https://www.studyinkorea.go.kr/en/plan/scholarship.do",
+          "https://www.studyinkorea.go.kr/ko/notice/scholarshipsList.do?boardSort=3",
+          "https://www.studyinkorea.go.kr/cmm/fms/FileDown.do?atchFileId=FILE_000000000673717&fileSn=1"
+        ],
+        "application_link": "https://www.studyinkorea.go.kr/en/plan/scholarship.do",
+        "catalogue_url": null,
+        "official_updates_url": "https://www.studyinkorea.go.kr/ko/notice/scholarshipsList.do?boardSort=3",
+        "deadline_central": "2026-09-30",
+        "deadline_central_display": "30 September 2026, 18:00 KST (Embassy Track online application)",
+        "deadline_note": "Embassy Track: online application on Study in Korea 15 September 2026 11:00 - 30 September 2026 18:00 KST. University Track: September - November 2026, according to each university's own schedule, so applicants must check each university's own announcement for its period, submission method and required documents. All times are Korea Standard Time.",
+        "application_cycle": "2027 GKS-U (Global Korea Scholarship for Undergraduate Degrees) cycle; degree/language programs start March 2027",
+        "status": "CLOSED",
+        "status_note": "The published 2027 GKS-U Embassy Track application window (15-30 September 2026) has closed and the University Track window (September-November 2026, per each university) is at its end; the selection process continued through NIIED second round and the final announcement of 2027 GKS-U scholars was expected by 7 January 2027.",
+        "tuition_coverage_note": "Tuition: NIIED pays up to 5 million KRW per semester; the university pays the amount that exceeds 5 million KRW plus the admission fee. Korean language program fee: 5.2 million KRW per year.",
+        "funding_amount": 14400000,
+        "funding_currency": "KRW",
+        "funding_period": "per year (degree program monthly allowance)",
+        "tuition_coverage": true,
+        "living_cost_coverage": true,
+        "travel_coverage": true,
+        "fully_funded": true,
+        "benefits": [
+          "Tuition: NIIED up to 5 million KRW per semester; the university covers the amount that exceeds 5 million KRW and the admission fee",
+          "Korean language program fee: 5.2 million KRW per year",
+          "Airfare: economy class flight ticket (actual expense)",
+          "Monthly allowance: Korean language program 13,560,000 KRW per year; degree program 14,400,000 KRW per year",
+          "Monthly Allowance: all-inclusive subsidy of living expenses, accommodation, health insurance, Korean proficiency grants, TOPIK application fee, settlement allowance, and degree completion grants"
+        ],
+        "eligibility": [
+          "All applicants must hold citizenship of NIIED designated countries invited to take part in the GKS program; however, the UIC Program is open to all countries around the world",
+          "Applicants' parents (or legal guardians) must hold citizenship from a country other than Korea; dual citizens holding both Korean and another citizenship are not eligible",
+          "Applicants and their parents who had previously held Korean citizenship must submit documentation proving renunciation of Korean citizenship",
+          "Must be under 25 years of age (born on or after March 1, 2002)",
+          "Bachelor's degree program: graduated (or expected to graduate) from a high school or an associate degree program; applicants who already hold a bachelor's degree cannot apply",
+          "Associate degree program: graduated (or expected to graduate) from a high school",
+          "CGPA of the entire curriculum must be 80% or above on a 100-point scale, or rank within the top 20% of the class, or be at least 2.64/4.0, 2.80/4.3, 2.91/4.5 or 3.23/5.0",
+          "All applicants must be in good health, mentally and physically, to study in Korea for the full duration, and must have no grounds for disqualification (e.g. criminal history) for overseas travel",
+          "Not eligible: graduates (or expected graduates) of Korean high schools or Korean associate degree programs, previous Korean government degree-program scholarship recipients, and GKS scholars whose scholarship was cancelled after beginning a degree program",
+          "Each applicant may apply to only one track/program; University Track applicants apply to ONE university and ONE department"
+        ],
+        "requirements": [
+          "Embassy Track: online application through the Study in Korea website after signing up, filling out the required sections and uploading the necessary documents",
+          "University Track: apply according to each university's own submission method (in person, by mail, etc.)",
+          "Applicants expected to graduate as of December 31, 2026 must submit a certificate of expected graduation at application, then the graduation certificate and transcript by December 31, 2026",
+          "A recommendation letter issued within one year of the application deadline is required (only one recommendation letter is accepted)",
+          "Applicants must achieve at least TOPIK level 3 within the yearlong Korean language program to proceed to the degree program; some departments require TOPIK level 4 or higher"
+        ],
+        "documents": [
+          "Form 1 Application Form",
+          "Form 2 Personal Statement",
+          "Form 3 Study Plan",
+          "Form 4 Recommendation Letter",
+          "Form 5 GKS Applicant Agreement",
+          "Form 6 Personal Medical Assessment",
+          "Form 7 Consent to Collect and Use Personal Information",
+          "Proof of Citizenship (applicant and parents) and Proof of Family Relationship",
+          "High School Graduation Certificate (or certificate of expected graduation) and Academic Transcript of High School Curriculum",
+          "Graduation Certificate and Academic Transcript of Associate Degree Program (if applicable)",
+          "Score Report of valid TOPIK (original) or English Proficiency Test (copy) - required if applicable, otherwise optional",
+          "Copy of awards and other certificates (up to FIVE documents on activities or achievements from high school onward) - optional",
+          "Applicant's Passport",
+          "Required certificates must be submitted with apostille or consular confirmation as specified"
+        ],
+        "selection_criteria": [
+          "Review of Eligibility: document screening of citizenship, level of education and academic grades; only applicants passing this stage proceed to the competency review",
+          "Review of Competency: document screening and an oral interview considering academic performance, language proficiency, academic activities, contributions to society and international exchange, potential for future development, and completeness and authenticity of submitted documents",
+          "Language proficiency is scored separately for Korean and English: TOPIK Level 5+ = 100% of the language score, Level 4 = 90%, Level 3 = 80%, Level 2 = 70%, Level 1 = 60%; English via TOEFL iBT/IELTS conversions (e.g. IELTS 8.0+ under the new scale) - no official score equals 50%",
+          "Additional points: direct descendants of Korean War veterans 10% of total allocated points; TOPIK level 3/4/5+ = 3%/4%/5%; science and engineering departments 5%",
+          "Evaluation preference (non-quantitative, considered in the comprehensive competency assessment): Overseas Koreans, applicants from low-income or underprivileged backgrounds, science and engineering applicants, national-level technical skills competition winners (associate degree), and R-GKS applicants in regional priority fields under the ANCHOR system"
+        ],
+        "coverage": [
+          "Tuition (NIIED up to 5 million KRW per semester; university pays the excess plus admission fee)",
+          "Korean language program fee (5.2 million KRW per year)",
+          "Round-trip entry airfare (economy class, actual expense)",
+          "Monthly living allowance (14,400,000 KRW per year in the degree program; 13,560,000 KRW per year in the Korean language program)",
+          "Monthly allowance is an all-inclusive subsidy of living expenses, accommodation, health insurance, Korean proficiency grants, TOPIK application fee, settlement allowance and degree completion grants"
+        ],
+        "application_method": [
+          "Read the 2027 GKS-U Application Guidelines and the University Information file on the Study in Korea website",
+          "Choose one track only: Embassy Track (General, Overseas Koreans & Adoptees, R-GKS) or University Track (UIC, Associate Degree)",
+          "Embassy Track: sign up on www.studyinkorea.go.kr, complete the online application and upload all documents within the published window",
+          "University Track: apply directly to the GKS-designated university using that university's own submission method and schedule",
+          "Embassy Track applicants choose up to three universities (at least one Type B; R-GKS up to two Type B) and one department each; University Track applicants choose one university and one department",
+          "First-round successful candidates submit original and certified documents to the embassy/university for NIIED's second round by the announced deadline"
+        ],
+        "application_route": "Embassy Track: online application through the Study in Korea website (www.studyinkorea.go.kr). University Track: apply directly to a GKS-designated university according to its own submission method and schedule.",
+        "study_mode": "full-time",
+        "citizenship_residency": "Applicants and both parents must hold non-Korean citizenship; applicants must hold citizenship of an NIIED designated country (the UIC program is open to all countries); dual citizens holding Korean citizenship and applicants/parents who previously held Korean citizenship must prove renunciation.",
+        "international_eligibility": "Yes - the programme invites international (non-Korean) students; UIC is open to applicants from all countries.",
+        "subject_or_agency_requirement": "Embassy Track General covers all fields (humanities, social sciences, natural sciences, arts and physical education) across 28 Type A and 42 Type B/R-GKS universities. University Track UIC covers science and engineering departments only, through industry-university cooperation; the Associate Degree program is offered at designated colleges. Applicants may only choose universities and departments listed in the official University Information file, and cannot apply to multiple departments at the same university.",
+        "research_requirement": null,
+        "duration": "Bachelor's: 5-7 years (1 year of Korean language program + 4-6 years of degree program). Associate: 3-4 years (1 year of Korean language program + 2-3 years of degree program).",
+        "description": "South Korea's representative government-invited scholarship degree program, run by NIIED, which invites outstanding students from around the world to pursue higher education in Korea; it provides a Korean language training year followed by an associate or bachelor's degree at a designated GKS university.",
+        "region": "Asia (South Korea)",
+        "program_type": "Government-invited scholarship degree program (GKS Undergraduate, including Associate Degree)",
+        "english_requirement": null
+      },
+      "verification": {
+        "source_citations": [
+          "https://www.studyinkorea.go.kr/cmm/fms/FileDown.do?atchFileId=FILE_000000000673717&fileSn=1",
+          "https://www.studyinkorea.go.kr/en/plan/scholarship.do",
+          "https://www.studyinkorea.go.kr/ko/notice/scholarshipsList.do?boardSort=3"
+        ],
+        "last_verified_date": "2026-10-10",
+        "verification_status": "confirmed",
+        "confidence": "high",
+        "not_confirmed": [
+          "University Track day-level deadlines (published as September-November 2026 according to each university's own schedule)",
+          "A required English test score - the guidelines state that TOEFL/IELTS/TOPIK certificates are optional, so no minimum English score is published"
+        ],
+        "notes": "All amounts, benefits, eligibility rules, documents, evaluation criteria and deadlines were taken from the 2027 GKS-U Application Guidelines (English) PDF published by NIIED on the official Study in Korea GKS notice board, cross-checked against the GKS Scholarships programme page. No aggregator sources were used."
+      },
+      "applicant_utility": {
+        "summary": "Apply through exactly one route: the Embassy Track online system on studyinkorea.go.kr (window 15-30 September 2026) or a single University Track university and department. Budgeting is realistic - the degree-program allowance of KRW 14,400,000 a year plus tuition, the language-year fee and economy airfare covers study and living costs, but not home-country travel, insurance, or the cost of apostilled documents. Start your document file early: apostilled or consular-confirmed graduation certificates, transcripts and citizenship proofs are the items that most often arrive late. A Korean language certificate is the cheapest edge you can buy - TOPIK Level 5-6 exempts you from the mandatory language year entirely and adds up to 5% bonus points, while science and engineering applicants get a further 5%.",
+        "best_fit": "Non-Korean high-school or associate-degree graduates under 25 with strong grades (80%+/top 20%) who can commit to a mandatory Korean language year and want full government funding at a top Korean university.",
+        "application_readiness_checklist": [
+          "Confirm you hold citizenship of an NIIED designated country (UIC is the exception and accepts all countries) and that neither parent holds Korean citizenship; prepare renunciation proof if any parent formerly did",
+          "Check your age against the cut-off (born on or after 1 March 2002) and your CGPA against one of the three thresholds (80%+/top 20%/2.64 of 4.0 scale equivalents)",
+          "Start apostille or consular confirmation of your graduation certificate, transcripts and citizenship/family-relationship documents months before the window opens",
+          "Secure exactly one recommendation letter dated within one year of the application deadline",
+          "Make sure the English name on every document matches your passport exactly, and that department names match the official University Information file word for word",
+          "Book a TOPIK sitting early if you are not already at Level 5-6, since valid certificates are PBT 96th-109th or IBT 4th-16th exams only"
+        ],
+        "common_rejection_risks": [
+          "Applying to more than one track, program, university or department - duplicate applications are disregarded or the scholarship is cancelled if found later",
+          "Missing signatures or an unsigned recommendation letter, which excludes the file from evaluation",
+          "Expected graduates (as of 31 December 2026) who fail to submit the graduation certificate and transcript by 31 December 2026 lose the acceptance",
+          "An invalid or out-of-range TOPIK certificate, or a language certificate that does not count toward exemption",
+          "Concentrating all three Embassy Track choices on popular Type A universities and failing at every preference in the third round despite passing NIIED's second round",
+          "Failing to reach TOPIK Level 3 during the language year, or missing the Level 4 requirement some departments impose, which blocks entry to the degree program"
+        ],
+        "estimated_uncovered_costs": "Domestic travel within the applicant's home country, international travel insurance for the trip to Korea, and the cost of obtaining apostilled/consular-confirmed certificates are not covered. Entry airfare is also not provided to scholars already residing in Korea at final announcement or to those entering Korea from a country other than their country of citizenship.",
+        "document_audit": [
+          "Required certificates need apostille or consular confirmation; if a document is not subject to apostille, obtain a certified true copy from the issuing authority or a Korean embassy on a notarized copy - unclear authenticity puts the application at a disadvantage",
+          "Third-country graduates may obtain consular confirmation from that country's embassy instead",
+          "TOPIK originals must be posted while English test copies suffice; the recommendation letter must be the recommender's own original letter",
+          "Applicants who submit a provisional graduation certificate are treated as expected graduates and must complete the certificate by 31 December 2026",
+          "Prepare multiple apostilled copies of the graduation certificate before entering Korea - the degree university, the embassy and Korean immigration each need one"
+        ],
+        "alerts": [
+          "Embassy Track applicants who pass the first round (including backups) cannot then apply to the University Track; unsuccessful first-round applicants get one further chance through a university, but never both at once",
+          "The University Track schedule runs September-November 2026 purely on each university's own calendar, so the deadline you must watch is the university's, not NIIED's",
+          "The final announcement is expected by 7 January 2027 and NIIED never contacts applicants individually - you must check the Study in Korea site and your My Page after every round",
+          "Withdrawing within the first three months after enrolment means returning the full scholarship amount received",
+          "After final selection, transfer to a different field of study is not permitted"
+        ],
+        "submission_workflow": "Embassy Track: complete and upload everything in the Study in Korea online system inside the September window, then post original/certified documents to the embassy for NIIED's second round. University Track: submit the completed forms and documents directly to the chosen university using its own method and deadline, with the university then forwarding the recommended file to NIIED."
+      }
+    }
+  ]
+}

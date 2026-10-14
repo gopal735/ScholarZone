@@ -1,0 +1,1610 @@
+{
+  "agent_id": "w2_22",
+  "shard": "w2-22",
+  "today": "2026-10-04",
+  "records": [
+    {
+      "outcome": "new",
+      "new_scholarship": {
+        "name": "Beca Universidad de Chile (BUCH)",
+        "country": "Chile",
+        "region": "Latin America",
+        "degree_levels": "Bachelor's",
+        "funding_type": "Tuition Fee Waiver",
+        "program_type": "University merit and socioeconomic need scholarship",
+        "official_source": "Universidad de Chile - Direccion de Bienestar y Desarrollo Estudiantil (DIRBDE)",
+        "official_source_url": "https://uchile.cl/convocatorias/37944/beca-universidad-de-chile",
+        "catalogue_url": "https://uchile.cl/u5076",
+        "official_updates_url": "https://uchile.cl/convocatorias",
+        "status": "open",
+        "is_verified": true,
+        "last_verified_date": "2026-10-04",
+        "duration": "Full official duration of the chosen programme (renEWed annually)",
+        "deadline": "19 October 2026, 12:00 noon (Santiago time)",
+        "deadline_date": "2026-10-19",
+        "deadline_precision": "exact",
+        "application_period": "21 September 2026 to 19 October 2026, 12:00",
+        "eligibility_summary": "Chilean students in the fourth year of secondary education (2026), with a secondary-school average of 6.0 or above, within the 90% socioeconomic band of the Registro Social de Hogares, sitting the 2027 PAES admission battery with at least 700 weighted points across Competencia Lectora and Competencia Matematica M1, applying for MINEDUC student benefits for 2027 admission, and not holding MINEDUC gratuidad, Beca Vocacion de Profesor or an equivalent benefit.",
+        "eligibility": [
+          "Estar cursando el cuarto ano de ensenanza media en el 2026",
+          "Promedio de notas de la ensenanza media igual o superior a 6,0",
+          "Cartola del Registro Social de Hogares, dentro del tramo de calificacion socioeconomica de hasta el 90%",
+          "Rendir la bateria de pruebas PAES para la admision 2027 (diciembre 2026) y obtener al menos 700 puntos ponderados entre Competencia Lectora y Competencia Matematica M1",
+          "Postular a los beneficios estudiantiles MINEDUC para la admision 2027",
+          "Autorizar el consentimiento informado en la plataforma DEMRE para compartir los resultados PAES",
+          "No tener asignacion de Gratuidad, Beca Vocacion de Profesor u otro beneficio equivalente"
+        ],
+        "coverage": [
+          "Matricula (enrolment fee) for the first year of the programme",
+          "Arancel (annual tuition) for any career or undergraduate programme of the Universidad de Chile",
+          "Renewed annually for the official duration of the programme"
+        ],
+        "benefits": [
+          "Financia el valor completo de la matricula y el arancel de cualquier carrera o programa de pregrado de la Universidad de Chile",
+          "100 awards per year",
+          "Annual renewal provided academic-progress and re-accreditation conditions are met"
+        ],
+        "requirements": [
+          "Application is made through the DIRBDE online form at https://postulacionbuch.uchile.cl/auth/login",
+          "Attach the Cartola del Registro Social de Hogares to the online form",
+          "Apply to a programme through the Sistema de Acceso a la Educacion Superior (SAES)",
+          "Be summoned to enrol and formalise the matricula within the University's deadlines",
+          "Complete the FOCES form and socio-economic accreditation with the academic unit's social worker",
+          "Complete the FUAS for the relevant academic period"
+        ],
+        "required_documents": [
+          "Cartola del Registro Social de Hogares (attached to the online application form)",
+          "Informe Social (may be requested where the Cartola is not available)",
+          "PAES 2026 results for admission 2027 (supplied by DEMRE/MINEDUC once published)"
+        ],
+        "application_method": [
+          "Online application form at https://postulacionbuch.uchile.cl/auth/login",
+          "Attach the Cartola del Registro Social de Hogares",
+          "Shortlist ranked by the BUCH weighted score announced on 4 January 2027",
+          "Final selection result announced on 18 January 2027"
+        ],
+        "english_requirement": null,
+        "selection_notes": "Candidates are ranked by the BUCH weighted score from PAES results: 25% Competencia Lectora score; 25% best score between Competencia Matematica M1 and M2; 20% best score among the elective History and Social Sciences and Science papers; 20% grade ranking score; 10% secondary-school grade average. The 100 highest-ranked eligible candidates are awarded.",
+        "best_fit": "High-achieving Chilean secondary-school leavers from low and middle socioeconomic households who have not won MINEDUC gratuidad and want a fully tuition-funded place at the Universidad de Chile.",
+        "notes": "Admission to the University and the scholarship are separate steps: the BUCH application does not replace SAES admission, and the award only becomes final once the candidate has been summoned to enrol and has formalised the matricula. If MINEDUC grants gratuidad or Beca Vocacion de Profesor, the ministerial benefit prevails; CAE/FSCU may complement BUCH. Award count is fixed at 100 per year by the University regulation.",
+        "funding_amount": null,
+        "funding_currency": null,
+        "funding_period": null
+      },
+      "programme_detail_official": {
+        "official_source_urls": [
+          "https://uchile.cl/convocatorias/37944/beca-universidad-de-chile"
+        ],
+        "application_link": "https://postulacionbuch.uchile.cl/auth/login",
+        "official_updates_url": "https://uchile.cl/convocatorias",
+        "catalogue_url": "https://uchile.cl/u5076",
+        "application_cycle": "2027 admission; applications open 21 September 2026 and close 19 October 2026 at midday",
+        "deadline_central": "2026-10-19T12:00",
+        "deadline_central_display": "19 de octubre de 2026 al mediodía",
+        "deadline_central_timezone": "America/Santiago",
+        "deadline_note": "The official convocatoria page states Inicio 21 de septiembre de 2026 and Cierre 19 de octubre de 2026, and the body text specifies '21 de septiembre hasta el 19 de octubre de 2026 al mediodia'.",
+        "status": "OPEN",
+        "status_note": "Application window is live at the time of verification (4 October 2026), two weeks before it closes.",
+        "funding_amount": null,
+        "funding_currency": null,
+        "funding_period": null,
+        "funding_duration": "For the official duration of the enrolled programme, renewed annually",
+        "tuition_coverage": true,
+        "tuition_coverage_note": "The official page states the BUCH finances 'el valor completo de la matricula y el arancel de cualquier carrera o programa de pregrado de la Universidad de Chile'. No living costs, travel or materials are mentioned.",
+        "living_cost_coverage": false,
+        "travel_coverage": false,
+        "fully_funded": true,
+        "funding_label": "Full tuition (arancel) and matricula for the whole programme; no living stipend or travel funding is stated on the official page.",
+        "benefits": [
+          "100% of matricula",
+          "100% of arancel for any Universidad de Chile undergraduate career or programme",
+          "100 awards awarded annually",
+          "Annual renewal subject to academic-progress thresholds"
+        ],
+        "eligibility": [
+          "Enrolled in the fourth year of secondary education (ensenanza media) in 2026",
+          "Secondary-school average of 6.0 or higher",
+          "Within the 90% socioeconomic band of the Registro Social de Hogares",
+          "Sit the PAES battery for 2027 admission and reach at least 700 weighted points across Competencia Lectora and Competencia Matematica M1",
+          "Apply for MINEDUC student benefits for 2027 admission",
+          "Hold no MINEDUC gratuidad, Beca Vocacion de Profesor or equivalent benefit"
+        ],
+        "citizenship_residency": "Chilean national; applicant must be in the final year of Chilean secondary education in 2026",
+        "international_eligibility": "Not open to international applicants; the official page and the university regulation define the award for Chilean students who have just completed ensenanza media",
+        "degree_levels": [
+          "Bachelor's"
+        ],
+        "study_mode": "On campus at the Universidad de Chile; the award follows whatever mode the admitted programme uses",
+        "research_requirement": null,
+        "subject_or_agency_requirement": "Any career or undergraduate programme of the Universidad de Chile; applies across all disciplines listed on the convocatoria (sciences, humanities, health, law, arts, agriculture, technology)",
+        "application_method": "Online form submitted through the DIRBDE BUCH portal, with the Cartola del Registro Social de Hogares attached; shortlist published 4 January 2027 and final result 18 January 2027",
+        "application_route": "https://postulacionbuch.uchile.cl/auth/login",
+        "requirements": [
+          "Complete the BUCH online application form between 21 September and 19 October 2026 (closing at midday)",
+          "Attach the Cartola del Registro Social de Hogares to the form",
+          "Sit the PAES battery for 2027 admission and meet the 700-point threshold",
+          "Apply to MINEDUC student benefits for 2027 admission",
+          "Register an informed-consent authorisation on the DEMRE platform so PAES results can be shared",
+          "Apply for admission through the Sistema de Acceso a la Educacion Superior",
+          "Accept the summons to enrol and formalise the matricula at the University",
+          "For renewal: at least 70% academic progress in year one and 80% from year two, complete the FOCES form, undergo socio-economic accreditation and complete the FUAS, without exceeding the formal duration of the programme"
+        ],
+        "documents": [
+          "Cartola del Registro Social de Hogares",
+          "Informe Social where required in place of the Cartola",
+          "PAES results for 2026 sitting (admission 2027), supplied through DEMRE/MINEDUC",
+          "FOCES form and completed FUAS for annual renewal"
+        ],
+        "english_requirement": null,
+        "english_requirement_note": "The official page sets no English requirement; the application and the award are entirely in Spanish through the DEMRE/MINEDUC systems.",
+        "selection_criteria": [
+          "BUCH weighted score built from PAES results: 25% Competencia Lectora, 25% best of Competencia Matematica M1/M2, 20% best elective paper, 20% grade ranking, 10% secondary-school average",
+          "Meeting every eligibility requirement",
+          "Valid admission application through the Sistema de Acceso a la Educacion Superior",
+          "Graduating from ensenanza media in the year immediately before entering the University",
+          "Being summoned to enrol and formalising the matricula",
+          "Socio-economic accreditation by the DIRBDE",
+          "Not holding MINEDUC gratuidad or an equivalent full-tuition benefit"
+        ],
+        "selection_weighting": "100 highest BUCH weighted scores among fully eligible applicants receive the 100 available awards",
+        "duration": "Official duration of the enrolled undergraduate programme, with annual renewal",
+        "award_holder_conditions": [
+          "Must complete 70% of the programme in year one and 80% from the second year onwards to renew",
+          "Must complete the FOCES form and pass socio-economic accreditation each period",
+          "Must complete the FUAS for the relevant academic period",
+          "Must not exceed the formal duration of the programme",
+          "Award lapses if the student is granted MINEDUC gratuidad, Beca Vocacion de Profesor or an equivalent benefit"
+        ],
+        "supplements_or_initiatives": [
+          "BUCH is designed for students not covered by MINEDUC gratuidad and not holding an equivalent benefit",
+          "CAe/FSCe student aid can complement BUCH, which then covers arancel and matricula",
+          "Where the candidate is granted Beca Bicentenario, Beca Hijo de Profesionales de la Educacion or Beca de Excelencia Academica, that benefit complements BUCH"
+        ],
+        "official_contacts": {
+          "general": "Mesa de Ayuda DIRBDE - https://ayudadirbde.uchile.cl/",
+          "email": null,
+          "website": "https://uchile.cl/convocatorias/37944/beca-universidad-de-chile"
+        },
+        "description": "The Beca Universidad de Chile (BUCH) is a tuition benefit awarded by the Universidad de Chile through its Direccion de Bienestar y Desarrollo Estudiantil (DIRBDE) to 100 academically outstanding young people each year. It finances the full matricula and arancel of any undergraduate career or programme of the University. Its stated objective is to reward excellent academic performance and the economic support needs of young talent in the country. The award is aimed at students in the fourth year of Chilean secondary education who do not hold MINEDUC gratuidad or an equivalent full-tuition benefit.",
+        "program_type": "University merit and socioeconomic need scholarship",
+        "region": "Latin America",
+        "coverage": "Full tuition (arancel) and matricula fees for the official duration of the programme; no living, travel or materials funding is stated",
+        "last_verified_date": "2026-10-04"
+      },
+      "programme_detail_applicant_utility": {
+        "application_readiness_checklist": [
+          "Confirm you are in the fourth year of ensenanza media in 2026, or already graduated in the year immediately before entry",
+          "Register for and sit the PAES battery in December 2026 for admission 2027",
+          "Have an updated Cartola del Registro Social de Hogares showing you inside the 90% socioeconomic band",
+          "Create the DIRBDE BUCH account at https://postulacionbuch.uchile.cl/auth/login and prepare the Cartola as an attachment before 21 September 2026",
+          "Apply for MINEDUC student benefits for admission 2027",
+          "Tick the informed-consent box on the DEMRE platform so PAES results reach the University",
+          "List your candidate programmes for the Sistema de Acceso a la Educacion Superior",
+          "Note that the form closes at midday on 19 October 2026, not at end of day"
+        ],
+        "common_rejection_risks": [
+          "Holding MINEDUC gratuidad, Beca Vocacion de Profesor or an equivalent full-tuition benefit, which makes the candidate ineligible",
+          "A secondary-school average below 6.0",
+          "A PAES weighted score below 700 across Competencia Lectora and Competencia Matematica M1",
+          "A Registro Social de Hogares household outside the 90% socioeconomic band",
+          "Missing the midday cut-off on 19 October 2026",
+          "Submitting the application but not following through with SAES admission and matricula formalisation",
+          "Failing to renew: dropping below the 70%/80% academic-progress thresholds in a later year"
+        ],
+        "estimated_uncovered_costs": [
+          "Living costs, accommodation and food: the BUCH page covers tuition and matricula only",
+          "Books, study materials and equipment",
+          "Transport between home and campus"
+        ],
+        "document_audit": [
+          "Cartola del Registro Social de Hogares: current, legible, showing the household socioeconomic qualification",
+          "Informe Social: only if the DIRBDE asks for it in place of the Cartola",
+          "PAES results: these come automatically from DEMRE, so confirm your consent registration was completed",
+          "FOCES form and FUAS: required for renewal, complete them each academic period"
+        ],
+        "alerts": [
+          {
+            "trigger": "Deadline cut-off is midday, not midnight",
+            "message": "The official convocatoria states the BUCH form closes 19 October 2026 al mediodia. Submitting later in the day is too late."
+          },
+          {
+            "trigger": "Award only confirms in January",
+            "message": "The shortlist is published 4 January 2027 and the final selection on 18 January 2027, so treat the award as provisional until then and keep other funding options open."
+          },
+          {
+            "trigger": "MINEDUC benefit interaction",
+            "message": "If MINEDUC later grants you gratuidad or Beca Vocacion de Profesor, that ministerial benefit replaces BUCH. Check your MINEDUC outcome before committing."
+          }
+        ],
+        "submission_workflow": [
+          "Sit the PAES battery in December 2026 for 2027 admission",
+          "Apply for MINEDUC student benefits for admission 2027",
+          "Apply for admission to your programmes through the Sistema de Acceso a la Educacion Superior",
+          "From 21 September 2026, register at https://postulacionbuch.uchile.cl/auth/login",
+          "Complete the online form and attach the Cartola del Registro Social de Hogares",
+          "Submit before 12:00 on 19 October 2026",
+          "Check the shortlist on 4 January 2027 and the final result on 18 January 2027",
+          "Accept the summons to enrol and formalise the matricula at the Universidad de Chile",
+          "Complete the FOCES form and socio-economic accreditation for each academic period to keep the award"
+        ]
+      },
+      "programme_detail_verification": {
+        "cycle_verified": "2027 admission cycle, verified 2026-10-04; applications open 21 September 2026 and close 19 October 2026 at midday",
+        "verification_confidence": 0.95,
+        "official_fields_confirmed": [
+          "name",
+          "status",
+          "application_period",
+          "deadline_central",
+          "deadline_date",
+          "degree_levels",
+          "eligibility",
+          "tuition_coverage",
+          "coverage",
+          "benefits",
+          "application_method",
+          "application_route",
+          "requirements",
+          "documents",
+          "selection_criteria",
+          "selection_weighting",
+          "award_holder_conditions",
+          "official_contacts"
+        ],
+        "institution_check_required": [
+          "Confirm your PAES 2026 weighted score reaches 700 across Competencia Lectora and Competencia Matematica M1 when DEMRE publishes results in December 2026",
+          "Confirm the household remains inside the 90% socioeconomic band at the DIRBDE socio-economic accreditation stage in 2027",
+          "Confirm you have not been granted MINEDUC gratuidad or Beca Vocacion de Profesor for 2027 admission",
+          "Confirm your chosen programme is a regular programme for which the University summons you to enrol"
+        ],
+        "unverified_or_removed_claims": [
+          "Monetary value of the award: the official page states full coverage of matricula and arancel but publishes no peso amount, so funding_amount is null",
+          "Whether the Ministry of Education offers CAE or FSCE in 2027 and the exact stacking order with BUCH; the official page references both without stating 2027 rules",
+          "Living-cost support: not mentioned on the official page and therefore recorded as not covered"
+        ],
+        "source_citations": [
+          "https://uchile.cl/convocatorias/37944/beca-universidad-de-chile"
+        ],
+        "researched_by": "w2_22"
+      },
+      "logo_override": {
+        "url": "https://uchile.cl/.resources/portal-uchile/images/escudo-uchile-horizontal-color.jpg",
+        "page_url": "https://uchile.cl/convocatorias/37944/beca-universidad-de-chile",
+        "official_host": true,
+        "alt_text": "Universidad de Chile",
+        "validation_result": "verified",
+        "validation_detail": "webfetch of the URL returned 'Image fetched successfully'; served from the uchile.cl registrable domain as the site's own escudo and dark wordmark (black 'UNIVERSIDAD DE CHILE' lettering on white), not white-on-transparent and not a third-party asset.",
+        "image_kind": "official_logo",
+        "image_format": "jpg",
+        "verified_at": "2026-10-04T00:00:00+00:00",
+        "host_evidence": "same_registrable_domain",
+        "_award": "Beca Universidad de Chile (BUCH)"
+      },
+      "research_notes": {
+        "logo": "Found the Universidad de Chile's own horizontal escudo-and-wordmark JPEG in the header markup of the very convocatoria page used as the source: https://uchile.cl/.resources/portal-uchile/images/escudo-uchile-horizontal-color.jpg. Probed with webfetch, which returned 'Image fetched successfully' (HTTP 200 with an image content type), and the bytes render as the dark university wordmark, so it is safe on a light card. It is the awarding institution's own mark on its own domain.",
+        "unverified": [
+          "No peso amount for the award is published on the official convocatoria page",
+          "2027 CAE/FSCE stacking rules are not stated on this page"
+        ],
+        "substitution": null,
+        "official_pages_read": [
+          "https://uchile.cl/convocatorias/37944/beca-universidad-de-chile"
+        ],
+        "degree_level_confirmed": "The official page states the BUCH finances 'el valor completo de la matricula y el arancel de cualquier carrera o programa de pregrado de la Universidad de Chile' and that selection requires the candidate to apply 'a alguna carrera o programa de pregrado' through the Sistema de Acceso a la Educacion Superior - i.e. a Bachelor's-level programme.",
+        "dedup_check": "The shard's dedup lists (existing_titles, existing_hosts, existing_official_source_urls) are all empty, and all_countries_in_database contains no Latin American country, so no entry could match. I additionally confirmed no Universidad de Chile BUCH record exists in the catalogue. Faculty mirror pages of the same convocatoria (facso.uchile.cl, odontologia.uchile.cl) were treated as the same award and not recorded separately.",
+        "skeleton": false
+      }
+    },
+    {
+      "outcome": "new",
+      "new_scholarship": {
+        "name": "Programa de Becas de Cooperacion Sur-Sur - Republica de Chile 2027 (AGCID)",
+        "country": "Chile",
+        "region": "Latin America",
+        "degree_levels": "Master's",
+        "funding_type": "Fully Funded",
+        "program_type": "Government scholarship (South-South cooperation)",
+        "official_source": "Agencia Chilena de Cooperacion Internacional para el Desarrollo (AGCID), Government of Chile",
+        "official_source_url": "https://web.icetex.gov.co/es/-/becas-maestria-chile-agcid-2027",
+        "catalogue_url": "https://www.agcid.gob.cl/becas/becas-para-extranjeros/ofertas-vigentes",
+        "official_updates_url": "https://www.agcid.gob.cl/becas/becas-para-extranjeros/resultados-de-postulacion-2",
+        "status": "open",
+        "is_verified": true,
+        "last_verified_date": "2026-10-04",
+        "duration": "Up to 24 months (maximum four academic semesters or six quarters), aligned to the official duration of the chosen master's programme",
+        "deadline": "9 October 2026, 1:00 p.m. Colombia time (ICETEX channel deadline for the Colombian focal point)",
+        "deadline_date": "2026-10-09",
+        "deadline_precision": "exact",
+        "application_period": "12 August 2026 to 9 October 2026, 13:00 (Colombian focal-point window); programmes start between 1 March and 30 September 2027",
+        "eligibility_summary": "Nationals of Argentina, Bolivia, Brazil, Colombia, Cuba, Ecuador, Mexico, Paraguay, Peru, Uruguay, Costa Rica, El Salvador, Guatemala, Haiti, Honduras, Panama, the Dominican Republic and CARICOM member states who hold a professional undergraduate degree, have a cumulative GPA of at least 4.0/5.0, are aged over 20 and under 65 at the closing date, and already hold unconditional admission to an accredited Chilean master's programme listed in Anexo 1 of the call. Applicants must be resident in their country of origin and must return there after the programme.",
+        "eligibility": [
+          "National of one of the countries listed in the call: Argentina, Bolivia, Brazil, Colombia, Cuba, Ecuador, Mexico, Paraguay, Peru, Uruguay, Costa Rica, El Salvador, Guatemala, Haiti, Honduras, Panama, Dominican Republic and the CARICOM member states",
+          "Age over 20 and under 65 at the closing date of the call",
+          "Professional undergraduate degree from a recognised higher-education institution",
+          "Cumulative undergraduate GPA of at least 4.0/5.0 evidenced by an official transcript",
+          "Unconditional admission letter from the Chilean institution for a master's programme listed in Anexo 1",
+          "Resident in their country of origin at the time of application",
+          "Not in arrears with ICETEX credit lines or administered funds (checked in ICETEX systems)",
+          "Priority given to public officials and to academic, teaching or research staff of recognised higher-education institutions",
+          "Applicants in public entities, ministries, public services, state institutions or companies, as well as staff of recognised higher-education institutions, may apply; professionals linked to civil-society organisations may also apply if they meet the requirements"
+        ],
+        "coverage": [
+          "100% of matricula, arancel (tuition) and graduation costs charged by the Chilean higher-education institution, for up to four academic semesters or six quarters",
+          "Monthly maintenance allowance of CLP 600,000 for up to 24 months, only for programmes delivered in person or hybrid with physical presence in Chile",
+          "Life, health and accident insurance for the duration of the scholarship, only for scholars studying in Chile",
+          "One-time allocation of CLP 90,000 for textbooks and study materials in the first academic term, only for programmes delivered in Chile",
+          "One-time allocation of CLP 300,000 to support thesis or final-degree project costs, subject to AGCID academic conditions"
+        ],
+        "benefits": [
+          "Full tuition, matricula and titulation costs at an accredited Chilean institution",
+          "CLP 600,000 monthly maintenance stipend for in-person or hybrid programmes with presence in Chile",
+          "CLP 90,000 one-time study-materials allocation",
+          "CLP 300,000 one-time thesis support",
+          "Life, health and accident insurance for in-country study",
+          "Priority weighting for master's programmes in areas designated strategic by the Government of Chile"
+        ],
+        "requirements": [
+          "Secure unconditional admission to a Chilean master's programme listed in Anexo 1 of the call, at the applicant's own cost",
+          "Submit the official AGCID ANEXO 4 scholarship application form, typed on a computer and signed, using the unmodified official layout",
+          "Submit the ANEXO 5 health declaration and pre-existing conditions statement signed by a licensed physician",
+          "Submit the ANEXO 4 form and the AGCID master's-programme-and-scholar information format, both mandatory, in their official layout",
+          "Upload all documents as legible PDFs in Spanish; illegible, password-protected or non-Spanish documents are discarded",
+          "Reach a minimum of 55 base points in the preselection scoring to be considered at all",
+          "Remain exclusively dedicated to the funded study programme and comply with AGCID academic and administrative rules"
+        ],
+        "required_documents": [
+          "ANEXO 4 - Formulario de Solicitud de Beca AGCID, completed on computer and signed",
+          "Carta de aceptacion definitiva del programa de magisteria, on university letterhead, stating unconditional acceptance, delivery mode, start and end dates, and the matricula and annual arancel values",
+          "ANEXO 5 - Declaracion de Salud y Enfermedades Preexistentes, signed by a licensed physician",
+          "Titulo universitario de pregrado, digital copy, with official Spanish translation if issued abroad",
+          "Certificado de notas de pregrado showing the weighted cumulative average, issued and signed by the institution; foreign transcripts must state the grading scale from 1 to 5",
+          "Certificados de experiencia profesional laboral relacionada, naming the employer, dates of service and functions; the current-employment certificate must be no more than 30 calendar days old at the closing date",
+          "Socioeconomic evidence: a copy of a domestic public-utility bill (electricity, gas or water) issued within the last 60 working days showing estrato and address, and where SISBEN IV applies a screenshot or certificate of the SISBEN IV category updated for 2025",
+          "Hoja de vida (CV) emphasising academic training and professional experience",
+          "Carta de motivacion in Spanish, dated and signed, of about one to two pages and at least 500 words",
+          "Propuesta preliminar de tesis, about one page",
+          "Una carta de referencia academica, dated and signed; letters from relatives are not accepted",
+          "Carta de patrocinio de la entidad empleadora, where the applicant is employed",
+          "AGCID information format for the master's programme and the scholarship holder",
+          "Legible copy of the national identity card on both sides; a valid passport is the selected scholar's own responsibility for the whole programme"
+        ],
+        "application_method": [
+          "Apply through the ICETEX postulation platform as focal point for Colombia; applications sent directly to AGCID are not considered",
+          "Upload every required document as a legible Spanish PDF in the platform",
+          "Preselection by the Comision Nacional de Becas on 26 October 2026",
+          "ICETEX forwards its ranked preselected list to AGCID, whose Selection Committee makes the final, definitive and unappealable decision",
+          "Definitive results communicated from the second half of November 2026 via the AGCID results page",
+          "The award is formalised by signing the AGCID scholarship acceptance document (ANEXO 2)"
+        ],
+        "english_requirement": null,
+        "selection_notes": "Preselection is scored out of 100 base points: related professional experience 40% (more than 85 months 40 pts; 61-84 months 35 pts; 37-60 months 30 pts; 12-36 months 25 pts); academic average 40% (4.6-5.0 gives 40 pts; 4.3-4.5 gives 30 pts; 4.0-4.2 gives 20 pts); socioeconomic factor 20% (SISBEN IV categories A1-B7 give 20 pts, C1-C18 18 pts, D1-D3 16 pts, D4-D21 14 pts; where no SISBEN IV is available, estratos 1-2 give 12 pts, estratos 3-4 10 pts, estratos 5-6 8 pts). Up to 10 non-cumulative bonus points are available for working as a public official or as academic, teaching or research staff at a recognised higher-education institution; for a master's in a Chilean-government priority area; for membership of an ethnic community recognised by the Ministry of the Interior; for being certified a victim of the armed conflict through the RUV; and for having been a beneficiary of an ICETEX credit or administered fund. A minimum of 55 base points is required. Tiebreakers in order: highest academic average, then preference for women as recorded on the identity card, then earliest completed submission.",
+        "best_fit": "Mid-career professionals from Latin America and the Caribbean who already hold unconditional admission to an accredited Chilean master's programme and have a strong academic record, limited means, or membership of a priority group.",
+        "notes": "Admission and funding are separate steps: the applicant must already hold an unconditional acceptance letter from a Chilean institution for a programme listed in Anexo 1, and pays all admission-related costs, before the scholarship can be applied for. Applications for programmes not in Anexo 1 are not considered. AGCID scholarships are incompatible with any other AGCID scholarship for study in Chile, and a spouse who holds an AGCID scholarship in the same call is also excluded. Scholars must return to their country of origin after the programme in order to apply and replicate what they have learned, which is stated as a condition of the award.",
+        "funding_amount": 600000,
+        "funding_currency": "CLP",
+        "funding_period": "per month"
+      },
+      "programme_detail_official": {
+        "official_source_urls": [
+          "https://web.icetex.gov.co/es/-/becas-maestria-chile-agcid-2027",
+          "https://www.agcid.gob.cl/becas/becas-para-extranjeros/ofertas-vigentes",
+          "https://www.agcid.gob.cl/becas/becas-para-extranjeros/resultados-de-postulacion-2"
+        ],
+        "application_link": "https://web.icetex.gov.co/es/-/becas-maestria-chile-agcid-2027",
+        "official_updates_url": "https://www.agcid.gob.cl/becas/becas-para-extranjeros/resultados-de-postulacion-2",
+        "catalogue_url": "https://www.agcid.gob.cl/becas/becas-para-extranjeros/ofertas-vigentes",
+        "application_cycle": "2027 academic year; Chilean window from 12 August 2026, Colombian ICETEX window closing 9 October 2026 at 13:00",
+        "deadline_central": "2026-10-09T13:00",
+        "deadline_central_display": "9 de octubre de 2026, hasta la 1:00 p. m. (hora de Colombia)",
+        "deadline_central_timezone": "America/Bogota",
+        "deadline_note": "Deadline taken from the official ICETEX convocatoria page for the Colombian focal point of the AGCID call, which shows Estado de la convocatoria: Abierta with Apertura 12 de agosto de 2026 and Cierre 9 de octubre de 2026. Each focal point sets its own internal closing date, so other eligible countries close on different dates. The AGCID convocatoria PDF on appspublic.agci.cl could not be rendered as text and its own date schedule was therefore not confirmed directly.",
+        "status": "OPEN",
+        "status_note": "Live at the time of verification on 4 October 2026, five days before the Colombian channel closes.",
+        "funding_amount": 600000,
+        "funding_currency": "CLP",
+        "funding_period": "per month",
+        "funding_duration": "Up to 24 months for the maintenance stipend; tuition covered for up to four academic semesters or six quarters",
+        "tuition_coverage": true,
+        "tuition_coverage_note": "The official page states that 100% of the matricula, arancel and titulation costs charged by the Chilean institution will be covered for the duration of the master's programme, capped at four academic semesters or six quarters.",
+        "living_cost_coverage": true,
+        "travel_coverage": false,
+        "fully_funded": false,
+        "funding_label": "Fully funded master's tuition plus a CLP 600,000 monthly maintenance stipend, but the award carries an obligation to return to the applicant's country of origin and excludes air tickets, visa fees, taxes and personal costs, so it is not treated as unconditional full funding.",
+        "benefits": [
+          "100% of matricula, arancel and titulation costs at the Chilean institution, maximum four semesters or six quarters",
+          "Monthly maintenance allowance of CLP 600,000 for a maximum of 24 months, for in-person or hybrid programmes with presence in Chile",
+          "Life, health and accident insurance for the duration of the scholarship for scholars studying in Chile",
+          "One-time CLP 90,000 for textbooks and study materials in the first academic term, for programmes delivered in Chile",
+          "One-time CLP 300,000 supporting thesis or final-degree project expenditure",
+          "Bonus weighting for Chilean-government priority areas: astronomy, mining, Antarctic sciences, renewable energies, marine resources, economic development, international trade, international relations, sovereignty and territorial integrity, national security, and the fight against organised crime and terrorism"
+        ],
+        "eligibility": [
+          "National of Argentina, Bolivia, Brazil, Colombia, Cuba, Ecuador, Mexico, Paraguay, Peru, Uruguay, Costa Rica, El Salvador, Guatemala, Haiti, Honduras, Panama, the Dominican Republic or a CARICOM member state",
+          "Aged over 20 and under 65 at the closing of the call",
+          "Holds a professional undergraduate degree from a recognised higher-education institution",
+          "Cumulative undergraduate GPA of at least 4.0/5.0 on an official transcript",
+          "Holds unconditional admission to a master's programme listed in Anexo 1 of the call at an accredited Chilean institution",
+          "Normally at least 12 months of professional experience after graduation, in an area related to the master's programme",
+          "Resident in their country of origin when applying, and required to return there on completion",
+          "Not in default on any ICETEX credit line or administered fund as at the closing date",
+          "Where employed, holds the employer's backing and sponsorship letter"
+        ],
+        "citizenship_residency": "National of a listed Latin American or Caribbean country, resident in that country of origin; the ICETEX page covers the Colombian channel, where applicants must be Colombian professionals resident in Colombia",
+        "international_eligibility": "Open to professionals from Argentina, Bolivia, Brazil, Colombia, Cuba, Ecuador, Mexico, Paraguay, Peru, Uruguay, Costa Rica, El Salvador, Guatemala, Haiti, Honduras, Panama, the Dominican Republic and the CARICOM member states, applying through the focal point of their own country. Each focal point may submit a maximum of ten prioritised preselected candidates.",
+        "degree_levels": [
+          "Master's"
+        ],
+        "study_mode": "In person, hybrid or fully virtual, as specified by the Chilean institution in the definitive acceptance letter; maintenance, insurance and materials benefits apply only to in-person or hybrid programmes with presence in Chile",
+        "research_requirement": "A preliminary thesis proposal of about one page is required at application, and the thesis or final-degree requirement must be completed within the funded period; CLP 300,000 of thesis support is granted only if AGCID academic conditions are met.",
+        "subject_or_agency_requirement": "The master's programme must appear in Anexo 1 of the call. Priority weighting applies to programmes in areas designated strategic by the Government of Chile: astronomy, mining, Antarctic sciences, renewable energies, marine resources, economic development, international trade, international relations, sovereignty and territorial integrity, national security, and the fight against organised crime and terrorism.",
+        "application_method": "Online application through the ICETEX postulation platform as focal point; documents uploaded as legible Spanish PDFs; preselection by the Comision Nacional de Becas; final selection by the AGCID Selection Committee",
+        "application_route": "https://web.icetex.gov.co/es/-/becas-maestria-chile-agcid-2027",
+        "requirements": [
+          "Obtain unconditional admission to a Chilean master's programme listed in Anexo 1 before applying, paying all admission costs personally",
+          "Complete the official ANEXO 4 scholarship application form on a computer, sign it, and not alter its structure, content, format or design",
+          "Complete and sign the ANEXO 5 health and pre-existing conditions declaration on the official form with a licensed physician",
+          "Complete the AGCID information format for the master's programme and the scholarship holder",
+          "Upload every document as a legible, unprotected PDF in Spanish, with official Spanish translations attached to anything issued in another language",
+          "Score at least 55 base points in preselection to remain in the process",
+          "Dedicate themselves exclusively to the funded programme and meet the academic and administrative obligations set by the institution and by AGCID",
+          "If selected, obtain the student visa and other migration documents at their own cost, and have the undergraduate degree apostilled or legalised where the Chilean institution requires it"
+        ],
+        "documents": [
+          "ANEXO 4 - Formulario de Solicitud de Beca AGCID, completed and signed",
+          "Definitive acceptance letter from the Chilean master's programme on institutional letterhead, showing unconditional acceptance, delivery mode, start and end dates and fee values",
+          "ANEXO 5 - Declaracion de Salud y Enfermedades Preexistentes, signed by a licensed physician",
+          "Digital copy of the undergraduate degree, with official Spanish translation if obtained abroad",
+          "Official undergraduate transcript with weighted cumulative average and grading scale stated for foreign qualifications",
+          "Professional experience certificates from the employing organisations, current one no more than 30 calendar days old at closing",
+          "Socioeconomic documents: public-utility bill from the last 60 working days showing estrato and address, plus SISBEN IV category evidence updated for 2025 where applicable",
+          "Updated curriculum vitae",
+          "Motivation letter in Spanish, dated and signed, at least 500 words",
+          "Preliminary thesis proposal, about one page",
+          "One academic reference letter, dated and signed, not from a relative",
+          "Institutional sponsorship letter from the employer where applicable",
+          "AGCID master's programme and scholarship holder information format",
+          "Legible copy of the national identity card on both sides"
+        ],
+        "english_requirement": null,
+        "english_requirement_note": "No English test is required by this call. The official page states the language of instruction is Spanish and that all documents must be submitted in Spanish with official translations attached for anything issued in another language.",
+        "selection_criteria": [
+          "Related professional experience, 40% of the base score",
+          "Weighted undergraduate academic average, 40% of the base score, minimum 4.0/5.0",
+          "Socioeconomic factor via SISBEN IV category or public-utility-bill estrato, 20% of the base score",
+          "Bonus up to 10 points for public official or recognised higher-education academic, teaching or research staff status",
+          "Bonus up to 10 points for a master's in a Chilean-government priority area",
+          "Bonus up to 10 points for membership of an ethnic community recognised by the Colombian Ministry of the Interior",
+          "Bonus up to 10 points for certification as a victim of the armed conflict through the RUV",
+          "Bonus up to 10 points for having been a beneficiary of an ICETEX credit or administered fund",
+          "Minimum of 55 base points to be considered for preselection"
+        ],
+        "selection_weighting": "Base score of 100 points weighted 40% experience, 40% academic average and 20% socioeconomic, with up to 10 non-cumulative bonus points for a maximum of 110. Tiebreakers in order: highest academic average, preference for women as recorded on the identity card, then earliest completed submission.",
+        "duration": "Up to 24 months, matching the official duration of the selected master's programme, with a maximum of four academic semesters or six quarters of funding",
+        "award_holder_conditions": [
+          "Must return to their country of origin once the programme finishes, in order to apply and replicate the knowledge acquired for the benefit of their community and country",
+          "Must reside in their country of origin at the time of application",
+          "Must dedicate themselves exclusively to the funded study programme",
+          "Must comply with the academic regime of the Chilean institution and with AGCID's academic, administrative and migratory obligations",
+          "Must not hold any other AGCID scholarship for study in Chile, and cannot be the spouse of an AGCID scholarship holder in the same call",
+          "Must not change academic programme without AGCID's prior authorisation; unauthorised change, serious breach of obligations or serious disciplinary sanctions can end the scholarship early",
+          "Must obtain and maintain a student visa and other migration documents where the programme is delivered in Chile",
+          "Must submit the apostilled or legalised undergraduate degree to the Chilean institution where required",
+          "Must cover personal expenses, application costs to Chilean universities, visa procedures, taxes, air tickets, local transport, travel insurance and any cost not listed in the call",
+          "Benefits are personal and non-transferable, and AGCID does not fund family members or companions"
+        ],
+        "supplements_or_initiatives": [
+          "Applicants who hold an AGCID scholarship for study in Chile cannot combine these benefits",
+          "Each focal point may submit up to ten prioritised preselected candidates, so the effective award rate depends on competition across all participating countries",
+          "The ICETEX page states that maintenance, insurance and study-material benefits do not apply to fully virtual programmes",
+          "Individual focal points may set earlier closing dates and apply their own additional preselection criteria"
+        ],
+        "official_contacts": {
+          "general": "ICETEX Ventana Digital and Comision Nacional de Becas; Bogota +57 333 6025656; national toll free 018000-916821",
+          "email": "agencia@agcid.gob.cl (AGCID, per the official convocatoria)",
+          "website": "https://www.agcid.gob.cl/becas/becas-para-extranjeros/ofertas-vigentes"
+        },
+        "description": "The Programa de Becas de Cooperacion Sur-Sur - Republica de Chile is financed by the Agencia Chilena de Cooperacion Internacional para el Desarrollo (AGCID) and funds master's studies at accredited Chilean universities and higher-education institutions for professionals from Latin America and the Caribbean. For the 2027 academic year the scholarship covers 100% of matricula, tuition and graduation costs and pays a monthly maintenance allowance, together with insurance, study materials and thesis support. Applicants must already hold unconditional admission to one of the master's programmes listed in Anexo 1 of the call, and the final award is decided by AGCID's Selection Committee after national preselection by each country's focal point. Selection weighting explicitly favours low-income applicants, ethnic communities and victims of the armed conflict.",
+        "program_type": "Government scholarship (South-South cooperation)",
+        "region": "Latin America",
+        "coverage": "Full tuition, matricula and graduation costs plus a monthly maintenance allowance for in-person or hybrid study in Chile; excludes air tickets, visa fees, taxes, application costs and personal expenses",
+        "last_verified_date": "2026-10-04"
+      },
+      "programme_detail_applicant_utility": {
+        "application_readiness_checklist": [
+          "Get unconditional admission to a Chilean master's programme that appears in Anexo 1 of the call, and keep the stamped institutional acceptance letter",
+          "Check that your nationality is on the eligible-country list before spending time on the admission process",
+          "Confirm you are over 20 and under 65 on the closing date",
+          "Order an official undergraduate transcript showing the weighted cumulative average, with the grading scale stated if it comes from abroad",
+          "Obtain professional experience certificates; the current-employer certificate must be less than 30 calendar days old at closing",
+          "Gather a public-utility bill from the last 60 working days and, if applicable, a SISBEN IV category screenshot updated for 2025",
+          "Download and use the unmodified ANEXO 4, ANEXO 5 and AGCID programme-information formats",
+          "Write a 500-word-plus Spanish motivation letter and a one-page preliminary thesis proposal",
+          "Get one academic reference letter dated and signed, not from a relative",
+          "If employed, request the institutional sponsorship letter from your employer",
+          "Have every document scanned as a legible, unprotected Spanish PDF with official translations attached",
+          "Confirm you are not in arrears with any ICETEX credit or administered fund"
+        ],
+        "common_rejection_risks": [
+          "No unconditional acceptance letter from a Chilean institution, or admission to a programme absent from Anexo 1",
+          "ANEXO 4, ANEXO 5 or the AGCID information format completed on paper, incompletely, unsigned, or with altered layout - these are excluded outright",
+          "Cumulative GPA below 4.0/5.0",
+          "Transcript not issued and signed by the awarding institution, or a foreign transcript missing its 1-to-5 grading scale",
+          "Scoring fewer than 55 base points at preselection",
+          "Documents that are illegible, password-protected, in a language other than Spanish without an official translation, or submitted after the deadline",
+          "Professional experience certificate for current employment older than 30 calendar days at closing",
+          "Applying directly to AGCID rather than through the national focal point, which means the application is not considered",
+          "Holding another AGCID scholarship for study in Chile, or being the spouse of an AGCID scholarship holder in the same call",
+          "Default on an ICETEX credit line or administered fund"
+        ],
+        "estimated_uncovered_costs": [
+          "Air tickets to and from Chile, which the call explicitly excludes",
+          "Student visa and other migration fees",
+          "Costs of applying to Chilean universities and of the admission process",
+          "Taxes and any personal expenses not listed in the call",
+          "Local transport and travel insurance",
+          "Living costs for fully virtual programmes, which receive no maintenance allowance, insurance or materials allocation",
+          "Costs for family members or companions, which AGCID does not fund"
+        ],
+        "document_audit": [
+          "ANEXO 4: typed on a computer, complete, signed, original layout unmodified",
+          "Acceptance letter: institutional letterhead and seal, unconditional acceptance, delivery mode, start and end dates including thesis and degree exam, matricula and annual arancel values",
+          "ANEXO 5: every field completed and countersigned by a licensed physician",
+          "Undergraduate degree: legible digital copy; official Spanish translation if issued abroad",
+          "Transcript: weighted cumulative average stated, institution-issued and signed; grading scale from 1 to 5 stated for foreign qualifications",
+          "Experience certificates: employer name, service dates and functions described; current one dated within 30 calendar days of closing",
+          "Utility bill: issued within 60 working days, showing estrato and home address",
+          "SISBEN IV: screenshot or certificate from the citizen portal, updated for 2025",
+          "Motivation letter: Spanish, dated, signed, minimum 500 words",
+          "Reference letter: dated, signed, and not issued by a family member",
+          "Identity document: national ID copy on both sides, legible",
+          "All files: legible, unprotected PDFs in Spanish"
+        ],
+        "alerts": [
+          {
+            "trigger": "Colombian channel closes 9 October 2026 at 13:00",
+            "message": "Only five days remain at the time of this record and the cut-off is 1:00 p.m. Colombia time, not midnight. Other focal-point countries close on their own dates."
+          },
+          {
+            "trigger": "Admission must come first",
+            "message": "You cannot apply without an unconditional acceptance letter for an Anexo 1 programme, and you pay for that admission yourself. Start the Chilean admission process immediately."
+          },
+          {
+            "trigger": "Official AGCID form layout is mandatory",
+            "message": "Applications using a retyped or reformatted ANEXO 4, ANEXO 5 or AGCID information form are excluded without evaluation, no matter how strong the candidate."
+          },
+          {
+            "trigger": "Virtual programmes lose the stipend",
+            "message": "The CLP 600,000 monthly allowance, insurance and study-materials allocation do not apply to fully virtual master's programmes."
+          },
+          {
+            "trigger": "Award requires a return to your home country",
+            "message": "Scholars must go back to their country of origin on completion. Treat this as a binding condition, not a suggestion."
+          }
+        ],
+        "submission_workflow": [
+          "Confirm nationality eligibility and the closing date for your own country's focal point",
+          "Apply directly to an accredited Chilean institution for a master's programme listed in Anexo 1 and secure unconditional admission",
+          "Collect the official transcript, degree, experience certificates, socioeconomic evidence and identity document",
+          "Download ANEXO 4, ANEXO 5 and the AGCID programme-information format from the official call page",
+          "Have the health declaration completed and signed by a licensed physician",
+          "Write the Spanish motivation letter (500+ words) and the one-page thesis proposal, and obtain one academic reference letter",
+          "If employed, obtain the institutional sponsorship letter",
+          "Convert everything to legible, unprotected Spanish PDFs with official translations where needed",
+          "Register on the ICETEX platform and upload every document before the channel deadline",
+          "Track the Comision Nacional de Becas preselection on 26 October 2026 and the AGCID final result from the second half of November 2026"
+        ]
+      },
+      "programme_detail_verification": {
+        "cycle_verified": "2027 academic year cycle, verified 2026-10-04; Colombian focal-point window open 12 August 2026 to 9 October 2026 at 13:00",
+        "verification_confidence": 0.82,
+        "official_fields_confirmed": [
+          "status",
+          "application_period",
+          "deadline_central",
+          "degree_levels",
+          "funding_amount",
+          "funding_currency",
+          "funding_period",
+          "coverage",
+          "benefits",
+          "eligibility",
+          "requirements",
+          "documents",
+          "selection_criteria",
+          "selection_weighting",
+          "duration",
+          "award_holder_conditions",
+          "official_contacts"
+        ],
+        "institution_check_required": [
+          "Confirm the chosen Chilean master's programme still appears in Anexo 1 of the call",
+          "Confirm the definitive acceptance letter states unconditional acceptance, the delivery mode and the tuition values",
+          "Confirm the closing date published by your own country's focal point, which may be earlier than the Colombian one",
+          "Confirm whether the programme is delivered in person or hybrid, since that determines stipend eligibility"
+        ],
+        "unverified_or_removed_claims": [
+          "The official AGCID convocatoria PDF at appspublic.agci.cl returned raw PDF bytes rather than extractable text, so AGCID's own internal calendar and the full list of participating countries were read from the Colombian focal-point page and from the Anexo 1 reference rather than confirmed in the AGCID document",
+          "Total number of scholarships available across all participating countries is not fixed by the call and was not published",
+          "No English-language requirements were found; the call works in Spanish, and the postgraduate language requirement for each programme is set by the Chilean institution"
+        ],
+        "source_citations": [
+          "https://web.icetex.gov.co/es/-/becas-maestria-chile-agcid-2027",
+          "https://www.agcid.gob.cl/becas/becas-para-extranjeros/ofertas-vigentes",
+          "https://www.agcid.gob.cl/becas/becas-para-extranjeros/resultados-de-postulacion-2"
+        ],
+        "researched_by": "w2_22"
+      },
+      "logo_override": {
+        "url": "https://www.agcid.gob.cl/images/Insumos_IMG/home/logo_header_AGCID_GOB.png",
+        "page_url": "https://www.agcid.gob.cl/becas/becas-para-extranjeros/ofertas-vigentes",
+        "official_host": true,
+        "alt_text": "AGCID - Ministerio de Relaciones Exteriores, Gobierno de Chile",
+        "validation_result": "verified",
+        "validation_detail": "webfetch of the URL returned 'Image fetched successfully' and the bytes render as the AGCID mark on a solid white panel with dark lettering, so it is not white-on-transparent. Served from the awarding body's own agcid.gob.cl domain and referenced in the header markup of the agency's own scholarship pages.",
+        "image_kind": "official_logo",
+        "image_format": "png",
+        "verified_at": "2026-10-04T00:00:00+00:00",
+        "host_evidence": "same_registrable_domain",
+        "_award": "Programa de Becas de Cooperacion Sur-Sur - Republica de Chile 2027 (AGCID)"
+      },
+      "research_notes": {
+        "logo": "AGCID's header logo is a .webp file, which webfetch returned as raw RIFF bytes rather than an image confirmation, so I probed the PNG path on the same award page directory instead: https://www.agcid.gob.cl/images/Insumos_IMG/home/logo_header_AGCID_GOB.png. That returned 'Image fetched successfully' and renders the dark AGCID wordmark and Chilean coat of arms on white. First-party asset on the awarding body's own domain.",
+        "unverified": [
+          "AGCID's own convocatoria PDF could not be rendered as text, so AGCID-side dates and the full country list were taken from the Colombian focal-point page",
+          "Total scholarship quota across participating countries"
+        ],
+        "substitution": null,
+        "official_pages_read": [
+          "https://web.icetex.gov.co/es/-/becas-maestria-chile-agcid-2027",
+          "https://www.agcid.gob.cl/becas/becas-para-extranjeros/ofertas-vigentes",
+          "https://www.agcid.gob.cl/becas/becas-para-extranjeros/resultados-de-postulacion-2",
+          "https://appspublic.agci.cl/becas/horizontal/docs/cv_369/CONVOCATORIA%20REP%C3%9ABLICA%20DE%20CHILE%202027%20-%20FINAL%20OK.pdf"
+        ],
+        "degree_level_confirmed": "The official convocatoria page states 'Estudio: Maestria', 'Titulo a obtener: Titulo otorgado por la universidad respectiva' and 'Duracion del programa: Hasta veinticuatro (24) meses', and requires a carta de aceptacion definitiva to a programa de magisteria - a Master's-level award.",
+        "dedup_check": "The shard's three dedup lists are empty and all_countries_in_database contains no Latin American country, so no entry could match. I also checked that this is not a second record of the same scheme under another name: the Chilean JICA and Chilean ANID programmes are different bodies with different schemes, and the ICETEX mirror of this AGCID call and the AGCID convocatoria PDF are the same award, recorded once with the AGCID results page as the updates URL.",
+        "skeleton": false
+      }
+    },
+    {
+      "outcome": "new",
+      "new_scholarship": {
+        "name": "Becas R.P. Jorge Dintilhac SS.CC. (PUCP)",
+        "country": "Peru",
+        "region": "Latin America",
+        "degree_levels": "Bachelor's",
+        "funding_type": "Tuition Fee Waiver",
+        "program_type": "University merit and need-based scholarship",
+        "official_source": "Pontificia Universidad Catolica del Peru (PUCP) - Oficina de Becas y Credito Educativo",
+        "official_source_url": "https://admision.pucp.edu.pe/becas-y-pensiones/becas/becas-rp-jorge-dintilhac-sscc",
+        "catalogue_url": "https://admision.pucp.edu.pe/becas-y-pensiones/becas",
+        "official_updates_url": "https://admision.pucp.edu.pe/becas-y-pensiones/becas/becas-rp-jorge-dintilhac-sscc",
+        "status": "open",
+        "is_verified": true,
+        "last_verified_date": "2026-10-04",
+        "duration": "One academic year (two regular terms), renewable annually up to the end of the degree as long as academic standing conditions are met",
+        "deadline": "9 October 2026 (registration closes; no time stated)",
+        "deadline_date": "2026-10-09",
+        "deadline_precision": "exact",
+        "application_period": "14 September 2026 to 9 October 2026",
+        "eligibility_summary": "Peruvian students who will complete 5th year of secondary school in 2026 at any public or private school nationwide, hold PUCP pre-admission for the 2027-1 intake by September 2026, and can evidence strong school achievement from 1st to 4th year of secondary. For Estudios Generales Ciencias, Estudios Generales Letras and Arquitectura the certificate must show top-tenth (decimo superior) standing; for Artes Escenicas, Arte y Diseño and Educacion it must show top-fifth (quinto superior) standing. COAR students submit an Alto Rendimiento Escolar certificate instead.",
+        "eligibility": [
+          "Cursar 5.o de secundaria en el ano 2026",
+          "Tener la preadmision a la Universidad, hasta septiembre de 2026, por cualquiera de los procesos de admision ofrecidos para iniciar estudios en el 2027-1 (marzo)",
+          "Acreditar ser un alumno de alto rendimiento escolar de 1.o a 4.o de secundaria mediante una constancia de excelencia academica escolar, considerando el merito academico acumulado durante ese periodo",
+          "For Estudios Generales Ciencias, Estudios Generales Letras and Arquitectura: constancia de excelencia academica showing decimo superior",
+          "For Artes Escenicas, Arte y Diseno and Educacion: constancia de excelencia academica showing quinto superior",
+          "Students of the COAR colleges must present a constancia de Alto Rendimiento Escolar"
+        ],
+        "coverage": [
+          "100% of academic fees (derechos academicos) for the enrolled programme, except for courses withdrawn from the curriculum",
+          "Study-materials bonus for each regular academic term",
+          "English-language study at Idiomas Catolica, as set by PUCP for language accreditation",
+          "Mobility bonus",
+          "Food allowance (alimentacion)",
+          "Accommodation (alojamiento) for scholars from outside Lima, subject to assessment by the Consejo Directivo de Becas y Credito Educativo",
+          "Fees for obtaining the bachiller degree and the professional title, subject to assessment by the Consejo Directivo de Becas y Credito Educativo",
+          "Three insurance policies: accident cover, national cancer cover and educational-income insurance"
+        ],
+        "benefits": [
+          "Full tuition coverage at the Pontificia Universidad Catolica del Peru",
+          "Six complementary bonuses covering study materials, English study, mobility, food, accommodation for provincial scholars, and degree-awarding fees",
+          "Three insurance policies: accidents, national oncological and educational income",
+          "Support programme from the Oficina de Becas with individual or group activities matched to scholars' interests and needs",
+          "Only 14 scholarships awarded each year, so competition is intense"
+        ],
+        "requirements": [
+          "Register for the scholarship through the PUCP scholarship contest between 14 September and 9 October 2026; registration is free of charge",
+          "Secure PUCP pre-admission through one of the university's admission processes for the 2027-1 intake by September 2026",
+          "Sit the Evaluacion de Potencial, a written, in-person cognitive-aptitude test lasting about 90 minutes on the PUCP campus on 18 October 2026",
+          "Attend a roughly 20-minute in-person finalist interview on 8 November 2026 if shortlisted",
+          "Sign the scholarship acceptance letter setting out the programme guidelines, coverage and grounds for loss",
+          "For renewal: finish the first year within the upper half of the faculty and, from the second year onward, be within the upper third of the faculty"
+        ],
+        "required_documents": [
+          "Constancia de excelencia academica escolar covering 1st to 4th year of secondary, showing decimo superior or quinto superior as applicable",
+          "PUCP pre-admission documentation for the 2027-1 intake",
+          "For COAR students, a constancia de Alto Rendimiento Escolar",
+          "Scholarship acceptance letter once awarded, detailing guidelines, coverage and grounds for loss"
+        ],
+        "application_method": [
+          "Register online through the PUCP scholarship contest portal between 14 September and 9 October 2026 at no cost",
+          "Sit the Evaluacion de Potencial aptitude test on the PUCP campus on Sunday 18 October 2026",
+          "Only applicants who pass the aptitude evaluation proceed to the finalist interviews",
+          "Attend an in-person finalist interview on 8 November 2026",
+          "Winners are published in December 2026"
+        ],
+        "english_requirement": null,
+        "selection_notes": "With only 14 scholarships available, competition is extremely tight. Allocation is by faculty: 5 for Estudios Generales Ciencias, 5 for Estudios Generales Letras, and 1 each for Arquitectura y Urbanismo, Arte y Diseno, Artes Escenicas, and Educacion. The number of scholarships is updated annually. Shortlisting depends on the Evaluacion de Potencial, a cognitive-aptitude test that measures talent rather than school marks alone, followed by interviews. All PUCP scholarships are governed by the Reglamento General del Sistema de Becas y Credito Educativo.",
+        "best_fit": "Peruvian students finishing secondary school in 2026 from low-income families who are in the top tenth or top fifth of their class and have already secured or are close to PUCP pre-admission for the March 2027 intake.",
+        "notes": "Coverage is not literally everything: the matricula fee payable in the first instalment of each term is explicitly excluded, and courses withdrawn from the curriculum are also excluded. The accommodation, degree-fee and bonus benefits are conditional on annual assessment by the Consejo Directivo de Becas y Credito Educativo, and bonus amounts and delivery method are set each year by the Oficina de Becas. Insurance enrolment depends on the assessment of the provider. Renewal is conditional on faculty ranking, so the scholarship is not automatically held for the full degree.",
+        "funding_amount": null,
+        "funding_currency": null,
+        "funding_period": null
+      },
+      "programme_detail_official": {
+        "official_source_urls": [
+          "https://admision.pucp.edu.pe/becas-y-pensiones/becas/becas-rp-jorge-dintilhac-sscc",
+          "https://admision.pucp.edu.pe/becas-y-pensiones/becas"
+        ],
+        "application_link": "http://campusvirtual.pucp.edu.pe/pucp/oca/oawadmin/oawadmin?accion=IniciarInscripcion&codProceso=01955",
+        "official_updates_url": "https://admision.pucp.edu.pe/becas-y-pensiones/becas/becas-rp-jorge-dintilhac-sscc",
+        "catalogue_url": "https://admision.pucp.edu.pe/becas-y-pensiones/becas",
+        "application_cycle": "2027-1 intake; registration open 14 September to 9 October 2026, aptitude test 18 October 2026, interviews 8 November 2026, winners published December 2026",
+        "deadline_central": "2026-10-09",
+        "deadline_central_display": "9 de octubre de 2026 (inscripcion)",
+        "deadline_central_timezone": "America/Lima",
+        "deadline_note": "The official page states Convocatoria: Del 14 de septiembre al 9 de octubre de 2026 and Calendario: Inscripcion: Del 14 de septiembre al 9 de octubre de 2026. No closing time is published, so the deadline is treated as exact to the day but end-of-day is unconfirmed.",
+        "status": "OPEN",
+        "status_note": "Live at the time of verification on 4 October 2026, five days before registration closes.",
+        "funding_amount": null,
+        "funding_currency": null,
+        "funding_period": null,
+        "funding_duration": "One academic year (two regular terms), renewable annually to the end of the degree",
+        "tuition_coverage": true,
+        "tuition_coverage_note": "The official page states Cobertura del 100% de derechos academicos, with the explicit exception of the matricula fee paid in the first instalment of each term and of courses withdrawn from the curriculum.",
+        "living_cost_coverage": true,
+        "travel_coverage": false,
+        "fully_funded": false,
+        "funding_label": "Full academic-fee waiver plus food, accommodation for provincial scholars, materials, English study and mobility bonuses, but the matricula fee is excluded and the conditional bonuses depend on annual assessment, so it is not recorded as fully funded.",
+        "benefits": [
+          "100% of derechos academicos (academic fees), excluding the matricula fee and withdrawn courses",
+          "Study-materials bonus each regular academic term",
+          "English study at Idiomas Catolica according to PUCP's language-accreditation rules",
+          "Mobility bonus",
+          "Food allowance (alimentacion)",
+          "Accommodation for scholars from the provinces, subject to assessment by the Consejo Directivo de Becas y Credito Educativo",
+          "Fees for the bachiller degree and the professional title, subject to the same assessment",
+          "Accident insurance, national oncological insurance and educational-income insurance"
+        ],
+        "eligibility": [
+          "Completing 5th year of secondary education in 2026 at a public or private school anywhere in Peru",
+          "Holding PUCP pre-admission by September 2026 through any of the admission processes offered for the 2027-1 (March) intake",
+          "Able to evidence high school performance from 1st to 4th year through an constancia de excelencia academica escolar covering the accumulated merit for that period",
+          "Decimo superior certificate for Estudios Generales Ciencias, Estudios Generales Letras and Arquitectura",
+          "Quinto superior certificate for Artes Escenicas, Arte y Diseno and Educacion",
+          "COAR college students present an Alto Rendimiento Escolar certificate"
+        ],
+        "citizenship_residency": "Peruvian students completing 5th year of secondary school in 2026; the programme is described as national in scope, covering public and private schools across Peru",
+        "international_eligibility": "Not open to international applicants; the official page addresses Peruvian secondary-school completers applying for PUCP admission",
+        "degree_levels": [
+          "Bachelor's"
+        ],
+        "study_mode": "In person at the Pontificia Universidad Catolica del Peru; the aptitude test and interviews are both delivered on campus",
+        "research_requirement": null,
+        "subject_or_agency_requirement": "Awards are tied to specific programmes at PUCP: 5 scholarships for Estudios Generales Ciencias, 5 for Estudios Generales Letras, 1 for Arquitectura y Urbanismo, 1 for Arte y Diseno, 1 for Artes Escenicas and 1 for Educacion. The number of scholarships is updated annually.",
+        "application_method": "Online registration in the PUCP scholarship contest at no cost, followed by a written in-person aptitude evaluation on campus and then a finalist interview",
+        "application_route": "http://campusvirtual.pucp.edu.pe/pucp/oca/oawadmin/oawadmin?accion=IniciarInscripcion&codProceso=01955",
+        "requirements": [
+          "Register between 14 September and 9 October 2026; the official page states registration has no cost",
+          "Have PUCP pre-admission for the 2027-1 intake secured by September 2026",
+          "Submit a constancia de excelencia academica escolar evidencing accumulated merit from 1st to 4th year of secondary",
+          "Attend the Evaluacion de Potencial, a written in-person cognitive-aptitude test of about 90 minutes, on 18 October 2026",
+          "If shortlisted, attend an in-person finalist interview of about 20 minutes on 8 November 2026",
+          "On award, sign the scholarship acceptance letter detailing the programme guidelines, coverage and grounds for loss",
+          "For renewal, finish the first year in the upper half of the faculty and, from the second year, be in the upper third"
+        ],
+        "documents": [
+          "Constancia de excelencia academica escolar for 1st to 4th year of secondary, at decimo superior or quinto superior level as applicable",
+          "PUCP pre-admission record for the 2027-1 intake",
+          "Constancia de Alto Rendimiento Escolar for COAR students",
+          "Signed scholarship acceptance letter once awarded"
+        ],
+        "english_requirement": null,
+        "english_requirement_note": "No English test score is required to enter the scholarship. English is instead a benefit: the award covers English study at Idiomas Catolica in line with PUCP's language-accreditation requirements.",
+        "selection_criteria": [
+          "Registration completed within the 14 September to 9 October 2026 window",
+          "PUCP pre-admission secured for the 2027-1 intake",
+          "High school excellence certificate at decimo superior or quinto superior level for the relevant programme",
+          "Performance in the Evaluacion de Potencial cognitive-aptitude test",
+          "Performance in the finalist interview",
+          "For renewal, upper-half then upper-third faculty ranking"
+        ],
+        "selection_weighting": "Not disclosed. Shortlisting is by the Evaluacion de Potencial aptitude test, then interviews. Only 14 awards exist in total, allocated 5/5/1/1/1/1 across the six named programmes.",
+        "duration": "One academic year (two regular terms), renewable annually up to the end of the degree",
+        "award_holder_conditions": [
+          "Must finish the first academic year within the upper half of the faculty to renew",
+          "From the second year onward, must be within the upper third of the faculty to renew",
+          "Must sign the scholarship acceptance letter outlining guidelines, coverage and grounds for loss",
+          "The accommodation, degree-fee and bonus benefits are subject to annual assessment by the Consejo Directivo de Becas y Credito Educativo",
+          "Bonus amounts and delivery method are set each year by the Oficina de Becas",
+          "Insurance enrolment is conditional on the assessment of the provider",
+          "The scholarship does not cover the matricula fee or courses withdrawn from the curriculum"
+        ],
+        "supplements_or_initiatives": [
+          "All PUCP scholarships operate under the Reglamento General del Sistema de Becas y Credito Educativo",
+          "The Oficina de Becas runs an accompaniment programme with individual and group activities",
+          "Only 14 places are available each year and the allocation per faculty is updated annually",
+          "Other PUCP scholarship routes exist for applicants who do not qualify here, including Becas LUCET, Becas Fe y Alegria, Becas Colegios de Alto Rendimiento and Becas CEPREPUC"
+        ],
+        "official_contacts": {
+          "general": "PUCP Admision undergraduate office",
+          "email": "admisionpregrado@pucp.edu.pe",
+          "website": "https://admision.pucp.edu.pe/becas-y-pensiones/becas/becas-rp-jorge-dintilhac-sscc"
+        },
+        "description": "The Becas R.P. Jorge Dintilhac SS.CC. are fourteen scholarships funded by the Pontificia Universidad Catolica del Peru for students who will complete 5th year of secondary school in 2026 and who show outstanding school performance from 1st to 4th year. Each award covers 100% of academic fees for one academic year, renewable annually subject to faculty ranking, and adds six complementary bonuses covering study materials, English study at Idiomas Catolica, mobility, food, accommodation for scholars from the provinces and degree-awarding fees, plus three insurance policies. Selection runs through a cognitive-aptitude evaluation on 18 October 2026 and finalist interviews on 8 November 2026, with winners announced in December 2026.",
+        "program_type": "University merit and need-based scholarship",
+        "region": "Latin America",
+        "coverage": "Full academic-fee waiver plus conditional food, provincial accommodation, materials, English-study, mobility and degree-fee bonuses and three insurance policies; the matricula fee is excluded",
+        "last_verified_date": "2026-10-04"
+      },
+      "programme_detail_applicant_utility": {
+        "application_readiness_checklist": [
+          "Confirm you will finish 5.o de secundaria in 2026 and sit in the top tenth or top fifth of your class",
+          "Request the constancia de excelencia academica escolar covering 1.o to 4.o de secundaria, at decimo superior for Ciencias, Letras or Arquitectura, or quinto superior for Artes Escenicas, Arte y Diseno or Educacion",
+          "If you come from a COAR college, obtain a constancia de Alto Rendimiento Escolar instead",
+          "Complete PUCP pre-admission through one of the 2027-1 admission processes by September 2026",
+          "Register in the scholarship contest between 14 September and 9 October 2026; registration is free",
+          "Block out Sunday 18 October 2026 for the 90-minute Evaluacion de Potencial on the PUCP campus",
+          "Hold 8 November 2026 free for a 20-minute in-person finalist interview",
+          "Decide which of the six funded programmes you will apply to, since the 14 places are allocated 5/5/1/1/1/1",
+          "Budget for the matricula fee, which is not covered, and for the first instalment of each term"
+        ],
+        "common_rejection_risks": [
+          "Missing the 9 October 2026 registration deadline",
+          "Not having PUCP pre-admission secured for the 2027-1 intake by September 2026",
+          "A constancia decellence below decimo superior where required, or below quinto superior for the arts and education programmes",
+          "Underperforming on the aptitude test, which measures cognitive talent rather than school marks",
+          "Applying to a programme with no scholarship place in the current allocation",
+          "Missing the degree-fee, accommodation or bonus conditions at renewal, which require upper-half then upper-third faculty ranking",
+          "Not signing the scholarship acceptance letter"
+        ],
+        "estimated_uncovered_costs": [
+          "The matricula fee paid in the first instalment of each academic term, which is explicitly excluded",
+          "Any cost attached to courses withdrawn from the curriculum",
+          "Air travel and transport, which are not part of the stated benefits",
+          "Living costs beyond the food allowance and, where granted, accommodation",
+          "Bonus amounts not guaranteed, since the Oficina de Becas sets amounts and delivery method annually"
+        ],
+        "document_audit": [
+          "Constancia de excelencia academica escolar: must cover 1.o to 4.o de secundaria and state the ranking band explicitly",
+          "Ranking band: decimo superior for Estudios Generales Ciencias, Estudios Generales Letras and Arquitectura; quinto superior for Artes Escenicas, Arte y Diseno and Educacion",
+          "COAR students: constancia de Alto Rendimiento Escolar in place of the ranking band certificate",
+          "PUCP pre-admission: confirm it is for the 2027-1 (March) intake and was completed by September 2026",
+          "After award: sign the acceptance letter, since coverage and grounds for loss are set out in it"
+        ],
+        "alerts": [
+          {
+            "trigger": "Only 14 places exist",
+            "message": "This is one of the most competitive undergraduate awards in Peru, with 14 places across six programmes. Register early and prepare seriously for the aptitude test."
+          },
+          {
+            "trigger": "Matricula fee is not covered",
+            "message": "Coverage is 100% of derechos academicos but explicitly not the matricula fee paid with the first instalment of each term."
+          },
+          {
+            "trigger": "Renewal depends on faculty ranking",
+            "message": "You must finish year one in the upper half of your faculty and, from year two, stay in the upper third. The award is not automatic for the full degree."
+          },
+          {
+            "trigger": "Accommodation and degree fees are conditional",
+            "message": "Alojamiento for provincial scholars and the bachiller and professional-title fees both require assessment by the Consejo Directivo de Becas y Credito Educativo."
+          }
+        ],
+        "submission_workflow": [
+          "Confirm you are completing 5.o de secundaria in 2026",
+          "Obtain the constancia de excelencia academica escolar with the correct ranking band",
+          "Apply for and secure PUCP pre-admission for the 2027-1 intake by September 2026",
+          "Register in the scholarship contest between 14 September and 9 October 2026 at no cost",
+          "Sit the Evaluacion de Potencial aptitude test on the PUCP campus on 18 October 2026",
+          "If shortlisted, attend the finalist interview on 8 November 2026",
+          "Check for the winners list published in December 2026",
+          "On award, sign the acceptance letter and set up the insurance enrolment",
+          "For each following year, confirm your faculty ranking meets the renewal threshold"
+        ]
+      },
+      "programme_detail_verification": {
+        "cycle_verified": "2027-1 intake cycle, verified 2026-10-04; registration open 14 September to 9 October 2026, aptitude test 18 October 2026, interviews 8 November 2026, results December 2026",
+        "verification_confidence": 0.93,
+        "official_fields_confirmed": [
+          "status",
+          "application_period",
+          "deadline_central",
+          "degree_levels",
+          "eligibility",
+          "tuition_coverage",
+          "living_cost_coverage",
+          "coverage",
+          "benefits",
+          "requirements",
+          "documents",
+          "selection_criteria",
+          "duration",
+          "award_holder_conditions",
+          "application_route",
+          "official_contacts"
+        ],
+        "institution_check_required": [
+          "Confirm your constancia de excelencia academica states decimo superior or quinto superior as required for your chosen programme",
+          "Confirm PUCP pre-admission for the 2027-1 intake is complete by September 2026",
+          "Confirm the annual allocation of the 14 scholarships, which the official page says is updated each year",
+          "Confirm the 2027 bonus amounts and the accommodation and degree-fee decisions with the Oficina de Becas"
+        ],
+        "unverified_or_removed_claims": [
+          "Selection weighting between the aptitude test and the interview is not published and was left unquantified",
+          "Monetary amounts for the food, accommodation, materials, mobility and degree-fee bonuses are not published; the page states only that the Oficina de Becas sets them annually, so funding_amount is null",
+          "No English test score is required, and none is stated; the English study benefit is not the same as an entry requirement",
+          "No closing time is published for 9 October 2026, so end-of-day versus a specific hour is unconfirmed"
+        ],
+        "source_citations": [
+          "https://admision.pucp.edu.pe/becas-y-pensiones/becas/becas-rp-jorge-dintilhac-sscc",
+          "https://admision.pucp.edu.pe/becas-y-pensiones/becas"
+        ],
+        "researched_by": "w2_22"
+      },
+      "logo_override": null,
+      "research_notes": {
+        "logo": "The only logo asset on the official page is https://admision.pucp.edu.pe/themes/custom/pucp_adm/logo.svg. webfetch returned the full SVG source, and its embedded stylesheet defines a single class st0 with fill:#FFFFFF, which every path in the file uses. That makes the mark render white-on-transparent and invisible on a light card, so I rejected it and left logo_override null rather than ship an asset that fails the visibility requirement.",
+        "unverified": [
+          "Monetary values of the six complementary bonuses",
+          "Exact selection weighting between aptitude test and interview"
+        ],
+        "substitution": null,
+        "official_pages_read": [
+          "https://admision.pucp.edu.pe/becas-y-pensiones/becas/becas-rp-jorge-dintilhac-sscc"
+        ],
+        "degree_level_confirmed": "The official page describes the award as covering 'el 100% de derechos academicos' for undergraduate study and includes 'derechos para la obtencion del grado de bachiller y titulo profesional'. Award places are allocated to Estudios Generales and to Faculties such as Arquitectura y Urbanismo, Arte y Diseno, Artes Escenicas and Educacion - i.e. Bachelor's-level programmes. Recorded degree_levels: Bachelor's.",
+        "dedup_check": "The shard's three dedup lists are empty and all_countries_in_database contains no Latin American country, so no entry could match. The sibling PUCP scholarship schemes (Becas LUCET, Becas Fe y Alegria, Becas Colegios de Alto Rendimiento COAR, Becas CEPREPUC) are separate competitions with separate conditions and were not recorded here.",
+        "skeleton": false
+      }
+    },
+    {
+      "outcome": "new",
+      "new_scholarship": {
+        "name": "Programa de Cooperacion Internacional del Gobierno de Chile para Policias Extranjeras Uniformadas (CECIPU)",
+        "country": "Chile",
+        "region": "Latin America",
+        "degree_levels": "Other",
+        "funding_type": "Partial Funding",
+        "program_type": "Government scholarship",
+        "official_source": "Programa CECIPU - Secretaria Ejecutiva, Ministerio de Seguridad Publica de Chile",
+        "official_source_url": "https://www.cecipu.gob.cl/becas-de-estudios/",
+        "catalogue_url": "https://www.cecipu.gob.cl/cursos-ofrecidos/",
+        "official_updates_url": "https://www.cecipu.gob.cl/postulaciones-cecipu/",
+        "status": "open",
+        "is_verified": true,
+        "last_verified_date": "2026-10-04",
+        "duration": "Follows the calendar set for each selected course; the 2027-1 cycle runs from 2 February to 30 November 2027 as listed on Paraguay's MEF scholarship portal",
+        "deadline": "30 October 2026, 23:59",
+        "deadline_date": "2026-10-30",
+        "deadline_precision": "exact",
+        "application_period": "1 August 2026 to 30 October 2026 at 23:59",
+        "eligibility_summary": "Serving officers, non-commissioned officers and enlisted personnel of the uniformed police forces of countries participating in CECIPU who apply to join the programme. Civil police institutions are not accepted. Applicants who do not speak Spanish must have a medium to medium-high command of Spanish, sufficient to understand and express themselves adequately in speech and writing. A valid official passport is mandatory, and life insurance is compulsory.",
+        "eligibility": [
+          "Be an Officer, Non-commissioned Officer or enlisted member (Oficial, Suboficial or Tropa) of a uniformed police force in a participating country",
+          "Belong to a uniformed police institution; applications from civilian police institutions are not accepted",
+          "Where the applicant is not a Spanish speaker, hold a medium to medium-high command of Spanish, enough for satisfactory oral and written comprehension and expression",
+          "Hold a valid official passport, which is mandatory",
+          "Hold life insurance, which is mandatory",
+          "Meet the specific requirements of the course applied for, including any health requirements set in the bases",
+          "Obtain authorisation from the highest-ranking police authority in the applicant's own institution"
+        ],
+        "coverage": [
+          "Rent and food costs for courses delivered as externado (day attendance)",
+          "Accommodation and food for courses delivered as internado (residential)",
+          "Primary medical and dental coverage, only for circumstances arising from the course's own activities",
+          "Clothing and necessary equipment, for formation courses only",
+          "Not covered: international air tickets, complementary insurance, and personal expenses outside the scholarship"
+        ],
+        "benefits": [
+          "Full subsistence for the duration of the course through externado or internado arrangements",
+          "Uniform and equipment provided for formation-level courses",
+          "Basic medical and dental cover tied to course activities",
+          "Training delivered in the schools of Carabineros de Chile and the Policia de Investigaciones de Chile"
+        ],
+        "requirements": [
+          "Apply exclusively through the CECIPU official portal, completing the electronic form and attaching all documentation before the deadline",
+          "Read the Requisitos de Postulacion, the Instructivo de Postulacion and the official prospectus in full before applying, since formalising an application is taken as accepting all the terms",
+          "Confirm the specific requirements of the course selected, as they vary by course",
+          "Watch for the confirmation email with the registration number, which the portal generates automatically on submission",
+          "Consult the official CECIPU prospectus for the detailed list of courses, benefits, requirements and conditions"
+        ],
+        "required_documents": [
+          "Official passport, mandatory",
+          "Life insurance, mandatory",
+          "Application form",
+          "Institutional curriculum vitae",
+          "Official medical certificate and psychological test",
+          "Authorisation letter from the highest police authority in the applicant's institution",
+          "Institutional photograph",
+          "Birth certificate or certificate of birth record",
+          "Apostilled or legalised police clearance certificate",
+          "Certificates of technical and/or university studies",
+          "Any additional documents required for the specific course"
+        ],
+        "application_method": [
+          "Apply through the CECIPU portal only, by completing the electronic form and attaching the full documentation",
+          "Receive an automatic confirmation email with the registration number on submission",
+          "The Executive Secretariat reports the selection to the applicant's Director or Commander General in the second half of December; unsuccessful applicants are not notified",
+          "The Secretariat reserves the right to accept or reject applications based on available places and requirement compliance, and its decision is unappealable"
+        ],
+        "english_requirement": null,
+        "selection_notes": "Selection is managed centrally by the CECIPU Executive Secretariat rather than by a published scoring system. The Secretariat communicates results in the second half of December directly to each applicant's police command, does not notify applicants who were not awarded a place, and reserves the right to accept or reject applications according to available places, compliance with requirements and its own unappealable criteria. Non-Spanish-speaking applicants must demonstrate a medium to medium-high level of Spanish.",
+        "best_fit": "Serving officers, NCOs and enlisted personnel of uniformed police forces in Latin American and other participating countries who want police training, specialisation or advanced study in Chile and can satisfy the Spanish-language requirement.",
+        "notes": "This is a professional police training award rather than a university degree scholarship, so degree_levels is recorded as Other; Paraguay's MEF portal labels the level GRADO/POSTGRADO because some CECIPU courses sit at that level, but the Chilean programme page describes them as Formación, Perfeccionamiento y Especialización Policial courses at the teaching schools of the police forces. The scholarship is not fully funded: international air tickets, complementary insurance and personal expenses are excluded, and life insurance must be arranged by the applicant. The programme depends on annual course offerings, so the precise benefits vary with the course selected.",
+        "funding_amount": null,
+        "funding_currency": null,
+        "funding_period": null
+      },
+      "programme_detail_official": {
+        "official_source_urls": [
+          "https://www.cecipu.gob.cl/becas-de-estudios/",
+          "https://www.cecipu.gob.cl/cursos-ofrecidos/",
+          "https://www.cecipu.gob.cl/postulaciones-cecipu/",
+          "https://becas.mef.gov.py/cooperacion/beca/datalle264/activo"
+        ],
+        "application_link": "https://www.cecipu.gob.cl/postulaciones-cecipu/",
+        "official_updates_url": "https://www.cecipu.gob.cl/postulaciones-cecipu/",
+        "catalogue_url": "https://www.cecipu.gob.cl/cursos-ofrecidos/",
+        "application_cycle": "2027-1 cycle; applications open 1 August 2026 and close 30 October 2026 at 23:59",
+        "deadline_central": "2026-10-30T23:59",
+        "deadline_central_display": "30 de octubre de 2026, 23:59 horas",
+        "deadline_central_timezone": "America/Santiago",
+        "deadline_note": "The official CECIPU page states 'El plazo de postulacion se inicia el 1o de agosto y cierra el 30 de octubre del 2026, a las 23:59 horas'. Paraguay's Ministry of Economy and Finance scholarship portal independently lists the same call with a postulation limit of 30/10/2026 15:00, which reflects its own local cut-off rather than CECIPU's stated closing hour.",
+        "status": "OPEN",
+        "status_note": "Live at the time of verification on 4 October 2026, with just under four weeks to run.",
+        "funding_amount": null,
+        "funding_currency": null,
+        "funding_period": null,
+        "funding_duration": "For the duration of the selected course; the 2027-1 cycle runs 2 February to 30 November 2027 according to the MEF portal listing",
+        "tuition_coverage": true,
+        "tuition_coverage_note": "The official page describes the subsidy items as accommodation and food costs rather than tuition, because CECIPU courses are taught at the police forces' own teaching schools. The award meets the study and subsistence costs of the course itself, with no separate tuition line published.",
+        "living_cost_coverage": true,
+        "travel_coverage": false,
+        "fully_funded": false,
+        "funding_label": "Covers in-country study subsistence (rent and food for externado, accommodation and food for internado), course-related primary medical and dental care, and uniform and equipment for formation courses, but excludes international air tickets, complementary insurance and personal expenses, and requires the scholar to hold their own life insurance.",
+        "benefits": [
+          "Rent and food costs covered for externado (day-attendance) courses",
+          "Accommodation and food covered for internado (residential) courses",
+          "Primary medical and dental coverage, limited to circumstances arising from the course's own activities",
+          "Clothing and necessary equipment for formation courses only",
+          "Teaching delivered at the schools of Carabineros de Chile and the Policia de Investigaciones de Chile"
+        ],
+        "eligibility": [
+          "Officer, Non-commissioned Officer or enlisted member of the uniformed police force of a participating country",
+          "Members of civilian police institutions are not accepted",
+          "Non-Spanish-speaking applicants must have a medium to medium-high command of Spanish, sufficient for satisfactory oral and written comprehension and expression",
+          "A valid official passport is mandatory",
+          "Life insurance is mandatory",
+          "Must meet the specific requirements of the course applied for, plus the health requirements in the bases",
+          "Must hold written authorisation from the highest police authority in their own institution"
+        ],
+        "citizenship_residency": "No single nationality is required; the award is open to serving uniformed police personnel from the countries participating in CECIPU, which is an international cooperation programme of the Government of Chile",
+        "international_eligibility": "International by design. Serving members of the uniformed police forces of participating countries may apply, with specific course-level conditions. Civilian police institutions are excluded.",
+        "degree_levels": [
+          "Other"
+        ],
+        "study_mode": "Depends on the course selected: presencial, internado (residential), externado (day attendance) or a mixed modality, delivered at Chilean public-security teaching schools",
+        "research_requirement": null,
+        "subject_or_agency_requirement": "Studies must be in subjects proper to the police function (materias propias de la funcion policial), at the teaching schools of Carabineros de Chile or the Policia de Investigaciones de Chile",
+        "application_method": "Online application exclusively through the CECIPU portal, with the electronic form and all attachments; automatic confirmation email with a registration number; results notified by the Executive Secretariat to the applicant's police command",
+        "application_route": "https://www.cecipu.gob.cl/postulaciones-cecipu/",
+        "requirements": [
+          "Apply only through the CECIPU official portal",
+          "Read the Requisitos de Postulacion, the Instructivo de Postulacion and the official prospectus in full, since submitting an application is taken as full acceptance of the terms",
+          "Verify and meet the specific requirements of the course selected",
+          "Hold a valid official passport and life insurance before applying",
+          "Secure authorisation from the highest-ranking authority of your own police institution",
+          "Attach every required document, including the medical certificate, psychological test, apostilled or legalised police clearance and study certificates",
+          "Submit before 23:59 on 30 October 2026"
+        ],
+        "documents": [
+          "Official passport, mandatory",
+          "Life insurance, mandatory",
+          "Application form",
+          "Institutional curriculum vitae",
+          "Official medical certificate",
+          "Psychological test",
+          "Authorisation letter from the highest police authority",
+          "Institutional photograph",
+          "Birth certificate or birth record",
+          "Apostilled or legalised police clearance certificate",
+          "Technical and/or university study certificates",
+          "Any additional documents required for the specific course"
+        ],
+        "english_requirement": null,
+        "english_requirement_note": "No English requirement exists. The binding language requirement is Spanish: the programme states that applicants who are not Spanish speakers must have a medium to medium-high command of the language, sufficient to understand and express themselves adequately in writing and speech.",
+        "selection_criteria": [
+          "Serving status as an Officer, Non-commissioned Officer or enlisted member of a participating country's uniformed police force",
+          "Compliance with the general CECIPU requirements",
+          "Compliance with the specific requirements of the course applied for",
+          "Spanish language ability at medium to medium-high level for non-native speakers",
+          "Availability of places in the course"
+        ],
+        "selection_weighting": "Not published. The Executive Secretariat decides according to available places and requirement compliance; its decision is final and unappealable, and unsuccessful applicants are not notified.",
+        "duration": "Follows the calendar of the selected course; the 2027-1 cycle is listed on Paraguay's MEF portal as running from 2 February 2027 to 30 November 2027",
+        "award_holder_conditions": [
+          "Must be a serving member of a uniformed police force and belong to a participating country",
+          "Must hold a valid official passport for the whole period",
+          "Must hold life insurance, which is compulsory",
+          "Must satisfy the health requirements set in the bases and the specific requirements of the course",
+          "Must obtain and present the authorisation of the highest police authority in their own institution",
+          "Must apply exclusively through the official CECIPU portal"
+        ],
+        "supplements_or_initiatives": [
+          "The programme is delivered with the participation of the Ministry of Foreign Affairs of Chile, AGCID, Carabineros de Chile and the Policia de Investigaciones de Chile",
+          "Programme offerings are renewed annually, so benefits and the course list change year to year",
+          "The full course list, benefits and conditions are set out in the official CECIPU prospectus",
+          "Applicants can consult the Executive Secretariat for queries"
+        ],
+        "official_contacts": {
+          "general": "Secretaria Ejecutiva del Programa CECIPU",
+          "email": "ssp-cecipu@minsegpublica.gob.cl",
+          "website": "https://www.cecipu.gob.cl/becas-de-estudios/"
+        },
+        "description": "CECIPU is the Programme of International Cooperation of the Government of Chile for Foreign Uniformed Police, run by its Executive Secretariat within the Ministry of Public Security together with the Ministry of Foreign Affairs, AGCID, Carabineros de Chile and the Policia de Investigaciones de Chile. It awards scholarships for police formation, advanced and specialisation studies in subjects proper to the police function at the Chilean public-security teaching schools. The scholarship subsidises rent and food for day-attendance courses, accommodation and food for residential courses, course-related primary medical and dental care, and uniform and equipment for formation courses. It excludes international air tickets, complementary insurance and personal expenses, and requires scholars to hold their own passport and life insurance. Applications for the 2027-1 cycle close on 30 October 2026 at 23:59, with results notified in the second half of December.",
+        "program_type": "Government scholarship",
+        "region": "Latin America",
+        "coverage": "In-country subsistence, accommodation and food, course-related primary medical and dental care, and uniform and equipment for formation courses; excludes international air tickets, complementary insurance and personal expenses",
+        "last_verified_date": "2026-10-04"
+      },
+      "programme_detail_applicant_utility": {
+        "application_readiness_checklist": [
+          "Confirm you are a serving Oficial, Suboficial or Tropa member of a uniformed police force, and that your institution is not a civilian police body",
+          "Check that your country participates in CECIPU and that the specific course you want is on this year's list",
+          "Assess your Spanish; if you are not a native speaker you need at least a medium to medium-high command of the language",
+          "Arrange life insurance, which is mandatory and must be in place",
+          "Check that your official passport is valid for the whole programme period",
+          "Read the Requisitos de Postulacion, the Instructivo de Postulacion and the official prospectus in full, because applying counts as accepting them",
+          "Prepare the institutional CV, official medical certificate, psychological test, institutional photograph, birth certificate, apostilled or legalised police clearance, study certificates and authorisation letter from your police command",
+          "Obtain the signed authorisation from the highest-ranking police authority in your institution",
+          "Submit only through the CECIPU portal, before 23:59 on 30 October 2026, and keep the registration number from the confirmation email"
+        ],
+        "common_rejection_risks": [
+          "Applying from a civilian rather than uniformed police institution, which is explicitly not accepted",
+          "Not having a valid official passport or not holding life insurance, both mandatory",
+          "Insufficient Spanish for non-native speakers, where the stated bar is medium to medium-high in both spoken and written form",
+          "Missing the 23:59 cut-off on 30 October 2026, or using any channel other than the official portal",
+          "Failure to obtain authorisation from the highest police authority in your own institution",
+          "Missing the course-specific requirements or health requirements for the course selected",
+          "Not completing the medical certificate or psychological test",
+          "Leaving the institutional photograph, birth certificate, police clearance or study certificates out of the upload"
+        ],
+        "estimated_uncovered_costs": [
+          "International air tickets to and from Chile, explicitly excluded",
+          "Complementary insurance, explicitly excluded",
+          "Personal expenses outside the scholarship, explicitly excluded",
+          "Life insurance, which the scholar must arrange themselves as a mandatory condition",
+          "Costs of obtaining apostille or legalisation of the police clearance and other documents",
+          "Clothing and equipment for courses other than formation courses, which are not covered"
+        ],
+        "document_audit": [
+          "Official passport: check the expiry date covers the whole course",
+          "Life insurance: policy must already be in place at application",
+          "Institutional CV: issued by your police institution, not a personal-format CV",
+          "Official medical certificate and psychological test: both required, in the form CECIPU accepts",
+          "Authorisation letter: signed by the highest police authority, not a line supervisor",
+          "Institutional photograph: official format, not a casual photo",
+          "Birth certificate or birth record",
+          "Police clearance certificate: must be apostilled or legalised",
+          "Study certificates: technical and/or university, as applicable",
+          "Course-specific extras: read the prospectus for the chosen course and attach anything additional it demands"
+        ],
+        "alerts": [
+          {
+            "trigger": "Applications close at 23:59 on 30 October 2026",
+            "message": "The official page gives a precise closing hour of 23:59 Chilean time on 30 October 2026. Paraguay's MEF portal shows 15:00 the same day for its own channel, so do not rely on a third-party portal's hour."
+          },
+          {
+            "trigger": "Uniformed police only",
+            "message": "Civil police institutions are not accepted. If your body is a civilian police service, this programme is not for you."
+          },
+          {
+            "trigger": "Spanish is the binding language requirement",
+            "message": "Non-Spanish speakers need a medium to medium-high level of Spanish, enough to follow the course in speech and writing. There is no English route into this scholarship."
+          },
+          {
+            "trigger": "Unsuccessful applicants are not told",
+            "message": "The Executive Secretariat notifies only the police command of selected scholars and does not contact those who did not receive a place, so a silent inbox is not a rejection and not an acceptance either."
+          },
+          {
+            "trigger": "Air tickets are not covered",
+            "message": "Budget for your own international flights, and arrange the mandatory life insurance yourself before applying."
+          }
+        ],
+        "submission_workflow": [
+          "Confirm your eligibility as serving uniformed police personnel from a participating country",
+          "Review the courses offered this year and the specific requirements of your chosen course",
+          "Review the official CECIPU prospectus, the Requisitos de Postulacion and the Instructivo de Postulacion",
+          "Secure a valid official passport and take out life insurance",
+          "Obtain the authorisation letter from the highest police authority in your institution",
+          "Assemble the institutional CV, medical certificate, psychological test, photograph, birth certificate, apostilled police clearance and study certificates",
+          "Create your application on the CECIPU portal and upload every document",
+          "Submit before 23:59 on 30 October 2026 and save the registration number from the confirmation email",
+          "Wait for the Executive Secretariat to notify your police command in the second half of December"
+        ]
+      },
+      "programme_detail_verification": {
+        "cycle_verified": "2027-1 cycle, verified 2026-10-04; applications open 1 August 2026 and close 30 October 2026 at 23:59 Chile time, with results notified in the second half of December 2026",
+        "verification_confidence": 0.86,
+        "official_fields_confirmed": [
+          "status",
+          "application_period",
+          "deadline_central",
+          "degree_levels",
+          "eligibility",
+          "tuition_coverage",
+          "living_cost_coverage",
+          "travel_coverage",
+          "coverage",
+          "benefits",
+          "requirements",
+          "documents",
+          "selection_criteria",
+          "application_method",
+          "application_route",
+          "official_contacts"
+        ],
+        "institution_check_required": [
+          "Confirm your country and your institution are eligible participants in CECIPU for this cycle",
+          "Confirm the course you want is still offered and check its specific requirements in the official prospectus",
+          "Confirm the specific benefit package for your course, since benefits vary between formation, perfeccionamiento and especializacion",
+          "Confirm you meet the course-specific health and entry requirements"
+        ],
+        "unverified_or_removed_claims": [
+          "Monetary values are not published; the official page describes benefit categories rather than amounts, so funding_amount is null",
+          "Selection scoring and weighting are not published; the Secretariat states only that it decides on places and requirement compliance, unappealably",
+          "The detailed course list and per-course conditions sit in the CECIPU prospectus PDF, which was not rendered as text during this verification",
+          "The start and end dates 2 February to 30 November 2027 come from Paraguay's MEF portal listing of the call, not from the Chilean programme page itself"
+        ],
+        "source_citations": [
+          "https://www.cecipu.gob.cl/becas-de-estudios/",
+          "https://www.cecipu.gob.cl/",
+          "https://becas.mef.gov.py/cooperacion/beca/datalle264/activo"
+        ],
+        "researched_by": "w2_22"
+      },
+      "logo_override": {
+        "url": "https://www.cecipu.gob.cl/media/2025/06/logo-cecipu.png",
+        "page_url": "https://www.cecipu.gob.cl/becas-de-estudios/",
+        "official_host": true,
+        "alt_text": "CECIPU - Programa de Cooperacion Internacional para Policias Uniformadas Extranjera, Gobierno de Chile, Ministerio de Seguridad Publica",
+        "validation_result": "verified",
+        "validation_detail": "webfetch of the URL returned 'Image fetched successfully' and the bytes render the Gobierno de Chile blocks and the CECIPU wordmark in dark lettering on a white background, so it is neither white-on-transparent nor a third-party asset. It is the header mark of the awarding programme's own cecipu.gob.cl site.",
+        "image_kind": "official_logo",
+        "image_format": "png",
+        "verified_at": "2026-10-04T00:00:00+00:00",
+        "host_evidence": "same_registrable_domain",
+        "_award": "Programa de Cooperacion Internacional del Gobierno de Chile para Policias Extranjeras Uniformadas (CECIPU)"
+      },
+      "research_notes": {
+        "logo": "The CECIPU site uses a single header image, /media/2025/06/logo-cecipu.png, referenced as the site logo on both the homepage and the Becas de estudio page. Probed with webfetch, which returned 'Image fetched successfully', and the image shows the Gobierno de Chile red-and-blue blocks with the dark CECIPU wordmark on white. First-party asset on the programme's own gob.cl domain.",
+        "unverified": [
+          "Per-course benefit amounts, which the official page does not publish",
+          "The detailed course catalogue, which sits in the CECIPU prospectus PDF that was not rendered as text"
+        ],
+        "substitution": null,
+        "official_pages_read": [
+          "https://www.cecipu.gob.cl/becas-de-estudios/",
+          "https://www.cecipu.gob.cl/",
+          "https://becas.mef.gov.py/cooperacion/beca/datalle264/activo"
+        ],
+        "degree_level_confirmed": "The official BECIPU conditions page describes the awards as subsidy for 'estudios de Formacion, Perfeccionamiento y Especializacion Policial' at the teaching schools of Carabineros de Chile and the Policia de Investigaciones de Chile, that is police training courses rather than a conferred university degree. Recorded degree_levels: Other, with the note that Paraguay's MEF portal labels the call GRADO/POSTGRADO.",
+        "dedup_check": "The shard's three dedup lists are empty and all_countries_in_database contains no Latin American country, so no entry could match. The Paraguay MEF portal mirror of this same call was used only to corroborate the deadline and is not recorded as a separate award.",
+        "skeleton": false
+      }
+    },
+    {
+      "outcome": "new",
+      "new_scholarship": {
+        "name": "Programa de Becas de Investigacion para Estudiantes 2026-2027 (FCM UNCUYO)",
+        "country": "Argentina",
+        "region": "Latin America",
+        "degree_levels": "Bachelor's",
+        "funding_type": "Stipend",
+        "program_type": "Undergraduate research scholarship",
+        "official_source": "Facultad de Ciencias Medicas, Universidad Nacional de Cuyo - Direccion de Investigacion y Relaciones Institucionales",
+        "official_source_url": "https://fcm.uncuyo.edu.ar/convocatoria-2026-2027-a-becas-de-investigacion-para-estudiantes",
+        "catalogue_url": "https://fcm.uncuyo.edu.ar/becas-de-investigacion-para-estudiantes-de-la-fcm-convocatoria-20262027",
+        "official_updates_url": "https://fcm.uncuyo.edu.ar/categorias/index/becas-y-fincanciamiento-estudiantes",
+        "status": "upcoming",
+        "is_verified": true,
+        "last_verified_date": "2026-10-04",
+        "duration": "210 clock hours in total: 10 hours for a Research Methodology Course and 200 hours for the research project, to be carried out over a maximum of six consecutive months from 1 February 2027",
+        "deadline": "20 November 2026 (student registration closes)",
+        "deadline_date": "2026-11-20",
+        "deadline_precision": "exact",
+        "application_period": "Call presented to the FCM community 28 September to 2 October 2026; director project submission 5 to 16 October 2026; student registration 9 to 20 November 2026",
+        "eligibility_summary": "Regular students of Medicine, Licenciatura en enfermeria or Tecnicos Asistenciales en Salud at the Facultad de Ciencias Medicas of the Universidad Nacional de Cuyo who have already passed at least the first full year of their degree. Students apply individually or as a pair to projects put forward by faculty researchers. The faculty's own teaching and research staff qualify as project supervisors.",
+        "eligibility": [
+          "Be a regular student of Medicina, Licenciatura en enfermeria or Tecnicos Asistenciales en Salud at the FCM UNCUYO",
+          "Have passed at least the first complete year of the degree (as minimo, el primer ano completo de la carrera)",
+          "Apply to a research project that has been submitted by a FCM teacher-researcher and approved in the first stage",
+          "Apply either individually or as a pair"
+        ],
+        "coverage": [
+          "20 research scholarships awarded in the 2026-2027 edition",
+          "210 clock hours of training and research work: 10 hours of Research Methodology Course plus 200 hours of project execution",
+          "Project to be developed over a maximum of six consecutive months, starting 1 February 2027",
+          "Structured training in hypothesis formulation, objective setting, methodological planning, research ethics, results analysis and oral and written presentation of scientific work"
+        ],
+        "benefits": [
+          "Entry into real research projects alongside teacher-researchers from the first stages of the degree",
+          "20 places in the 2026-2027 call",
+          "210 hours of recognised research training and project work",
+          "Training in the full research cycle, from hypothesis formulation through ethics and results analysis to scientific presentation"
+        ],
+        "requirements": [
+          "Faculty researchers who wish to supervise a scholarship must first submit a research project to the relevant advisory commission during the first stage, 5 to 16 October 2026",
+          "Wait for approved projects and supervisors to be circulated from 2 to 6 November 2026",
+          "Register as a student between 9 and 20 November 2026, individually or in a pair",
+          "Meet the minimum score set for projects to be admitted at the first-stage evaluation",
+          "Undertake 10 hours of Research Methodology Course and 200 hours of project execution within six consecutive months"
+        ],
+        "required_documents": [
+          "The full bases of the Programa de Becas de Investigacion para Estudiantes, published by the faculty for the 2026-2027 call"
+        ],
+        "application_method": [
+          "Two successive stages: first, project and supervisor submission by faculty researchers from 5 to 16 October 2026",
+          "Advisory commission evaluation of the submitted projects",
+          "Circulation of approved projects and supervisors from 2 to 6 November 2026",
+          "Student registration from 9 to 20 November 2026, individually or in pairs",
+          "Student evaluation between 30 November and 11 December 2026",
+          "Definitive awards announced in December 2026, with scholarships starting 1 February 2027"
+        ],
+        "english_requirement": null,
+        "selection_notes": "Only 20 scholarships are awarded. Selection is two-tiered: a research project plus supervisor must first clear the first-stage evaluation by the corresponding advisory commission, and only then can students apply to the approved projects. Evaluation of student applications runs from 30 November to 11 December 2026 and final awards are confirmed in December 2026. Students may apply as a pair. The announcement page states that the format of the research scholarships is formative, so the emphasis is on acquiring research tools rather than on producing a finished project.",
+        "best_fit": "Medicine, Nursing and health technician students at the FCM UNCUYO who have finished their first year and want early research experience in health sciences alongside a faculty supervisor.",
+        "notes": "This is a faculty-level award restricted to students of one specific faculty, not a national scheme. Scope is deliberately narrow: it covers Medicine, Licenciatura en Enfermeria and Tecnicos Asistenciales en Salud at FCM UNCUYO only, and requires at least one completed year of study, which makes it a genuinely early-stage entry point into research. The announcement page describes the award in hours and as a scholarship but publishes no monetary amount, so funding_amount is null and no figure should be assumed.",
+        "funding_amount": null,
+        "funding_currency": null,
+        "funding_period": null
+      },
+      "programme_detail_official": {
+        "official_source_urls": [
+          "https://fcm.uncuyo.edu.ar/convocatoria-2026-2027-a-becas-de-investigacion-para-estudiantes",
+          "https://fcm.uncuyo.edu.ar/becas-de-investigacion-para-estudiantes-de-la-fcm-convocatoria-20262027",
+          "https://fcm.uncuyo.edu.ar/categorias/index/becas-y-fincanciamiento-estudiantes"
+        ],
+        "application_link": "https://fcm.uncuyo.edu.ar/becas-de-investigacion-para-estudiantes-de-la-fcm-convocatoria-20262027",
+        "official_updates_url": "https://fcm.uncuyo.edu.ar/categorias/index/becas-y-fincanciamiento-estudiantes",
+        "catalogue_url": "https://fcm.uncuyo.edu.ar/becas-de-investigacion-para-estudiantes-de-la-fcm-convocatoria-20262027",
+        "application_cycle": "2026-2027 call; director project submission 5 to 16 October 2026, student registration 9 to 20 November 2026, evaluation 30 November to 11 December 2026, awards from 1 February 2027",
+        "deadline_central": "2026-11-20",
+        "deadline_central_display": "20 de noviembre de 2026 (inscripcion de estudiantes)",
+        "deadline_central_timezone": "America/Argentina/Mendoza",
+        "deadline_note": "The official announcement states 'La inscripcion de estudiantes se realizara posteriormente, del 9 al 20 de noviembre de 2026, tanto para quienes se presenten individualmente como para quienes lo hagan en dupla'. No closing hour is published, so the date is exact but the time of day is unconfirmed.",
+        "status": "UPCOMING",
+        "status_note": "The call is formally launched and its full calendar is published, but student registration does not open until 9 November 2026, about five weeks after the verification date. The supervisor stage is open now, from 5 to 16 October 2026, but that stage is for faculty researchers rather than students.",
+        "funding_amount": null,
+        "funding_currency": null,
+        "funding_period": null,
+        "funding_duration": "210 clock hours in total, spread over a maximum of six consecutive months from 1 February 2027",
+        "tuition_coverage": false,
+        "tuition_coverage_note": "The official announcement describes the award in hours of training and project work and does not state any fee coverage. It is a research scholarship for students already enrolled at the faculty, not a tuition waiver.",
+        "living_cost_coverage": false,
+        "travel_coverage": false,
+        "fully_funded": false,
+        "funding_label": "Research scholarship valued at 210 clock hours of training and project work over six months, with no published cash amount and no stated coverage of tuition, living costs or travel.",
+        "benefits": [
+          "20 research scholarships in the 2026-2027 edition",
+          "10 clock hours of Research Methodology Course",
+          "200 clock hours of research project execution",
+          "Project period of a maximum of six consecutive months starting 1 February 2027",
+          "Training across hypothesis formulation, objective setting, methodological planning, ethics, results analysis and scientific presentation"
+        ],
+        "eligibility": [
+          "Be a regular student of Medicina, Licenciatura en Enfermeria or Tecnicos Asistenciales en Salud at the Facultad de Ciencias Medicas UNCUYO",
+          "Have completed at least the first full year of the degree",
+          "Apply to a research project submitted and approved in the first stage",
+          "Apply individually or as a pair"
+        ],
+        "citizenship_residency": "No nationality condition is stated. Eligibility is by enrolment: regular students of the named degrees at the FCM UNCUYO in Mendoza, Argentina.",
+        "international_eligibility": "Not open to international applicants; the award is restricted by degree enrolment at one faculty of the Universidad Nacional de Cuyo",
+        "degree_levels": [
+          "Bachelor's"
+        ],
+        "study_mode": "In person at the Facultad de Ciencias Medicas, Universidad Nacional de Cuyo, Mendoza, working alongside a faculty supervisor on a research project",
+        "research_requirement": "Central to the award. The scholar must complete 200 hours of project execution plus a 10-hour Research Methodology Course within six consecutive months, covering hypothesis formulation, objectives, methodology, ethics, results analysis and presentation. Supervisors must first submit a project to the relevant advisory commission, which may address basic and biomedical research, clinical research, epidemiology and population health, health systems, services and policy, translational and implementation research, health innovation and technology transfer, and health-science education.",
+        "subject_or_agency_requirement": "Restricted to students of the FCM UNCUYO degrees Medicina, Licenciatura en Enfermeria and Tecnicos Asistenciales en Salud; projects must be led by FCM teacher-researchers",
+        "application_method": "Two-stage internal process: supervisor project submission and advisory-commission evaluation, followed by circulation of approved projects and student registration, then student evaluation and definitive award",
+        "application_route": "https://fcm.uncuyo.edu.ar/becas-de-investigacion-para-estudiantes-de-la-fcm-convocatoria-20262027",
+        "requirements": [
+          "For supervisors: submit a research project to the corresponding advisory commission between 5 and 16 October 2026",
+          "Reach the minimum score established for the project to be admitted",
+          "Wait for approved projects and supervisors to be circulated between 2 and 6 November 2026",
+          "For students: register between 9 and 20 November 2026, individually or in a pair",
+          "Undertake the 10-hour Research Methodology Course",
+          "Execute 200 hours of project work within a maximum of six consecutive months from 1 February 2027"
+        ],
+        "documents": [
+          "The programme bases for the 2026-2027 call published by the faculty",
+          "Project and supervisor submission for the first stage, for faculty researchers"
+        ],
+        "english_requirement": null,
+        "english_requirement_note": "No English requirement is stated. The announcement, the bases and the whole process are in Spanish and are run internally by the faculty.",
+        "selection_criteria": [
+          "Project quality as judged by the corresponding advisory commission at the first stage",
+          "Achievement of the minimum score set for admission of the project",
+          "Evaluation of student applications between 30 November and 11 December 2026",
+          "Enrolment as a regular student in one of the three eligible FCM degrees",
+          "Completion of at least the first year of the degree"
+        ],
+        "selection_weighting": "Not published. Two sequential filters apply: projects and supervisors are assessed first, and student applications are then evaluated between 30 November and 11 December 2026 for 20 available scholarships.",
+        "duration": "210 clock hours (10 for a Research Methodology Course plus 200 for the project), developed over a maximum of six consecutive months starting 1 February 2027",
+        "award_holder_conditions": [
+          "Must be a regular student of an eligible FCM UNCUYO degree at the time of registration",
+          "Must complete 10 hours of Research Methodology Course",
+          "Must complete 200 hours of project execution",
+          "Must complete both within a maximum of six consecutive months from 1 February 2027",
+          "Must work under the supervision of the approved teacher-researcher",
+          "May share the scholarship as a pair where two students apply together"
+        ],
+        "supplements_or_initiatives": [
+          "The programme is run by the Direccion de Investigacion y Relaciones Institucionales of the Secretaria de Desarrollo Institucional",
+          "It is framed as part of the faculty's strategy to build research skills from the earliest stages of undergraduate study",
+          "20 places are available in the 2026-2027 edition",
+          "The faculty runs other separate aid schemes, including Becas de Ayuda Economica, which are distinct from this research award"
+        ],
+        "official_contacts": {
+          "general": "Facultad de Ciencias Medicas UNCUYO, M5502JMA, Mendoza, Argentina",
+          "email": null,
+          "website": "https://fcm.uncuyo.edu.ar/becas-de-investigacion-para-estudiantes-de-la-fcm-convocatoria-20262027"
+        },
+        "description": "The Programa de Becas de Investigacion para Estudiantes of the Facultad de Ciencias Medicas of the Universidad Nacional de Cuyo brings undergraduate and pregraduate students into real research projects alongside faculty researchers from the earliest stages of their degree. The 2026-2027 call awards 20 scholarships worth 210 clock hours each: 10 hours of a Research Methodology Course and 200 hours of project execution, to be carried out over a maximum of six consecutive months from 1 February 2027. The process has two successive stages: faculty researchers first submit projects and are assessed by an advisory commission, then approved projects are circulated and students register between 9 and 20 November 2026, individually or in pairs, with evaluation from 30 November to 11 December and definitive awards in December 2026.",
+        "program_type": "Undergraduate research scholarship",
+        "region": "Latin America",
+        "coverage": "210 clock hours of research methodology training and project work over six months; no published cash amount and no stated fee, living-cost or travel coverage",
+        "last_verified_date": "2026-10-04"
+      },
+      "programme_detail_applicant_utility": {
+        "application_readiness_checklist": [
+          "Confirm you are a regular student of Medicina, Licenciatura en Enfermeria or Tecnicos Asistenciales en Salud at the FCM UNCUYO",
+          "Confirm you have passed the full first year of your degree",
+          "Check which projects and supervisors were approved, published between 2 and 6 November 2026",
+          "Decide whether to apply alone or as a pair",
+          "Read the full programme bases published by the faculty",
+          "Register between 9 and 20 November 2026",
+          "Be ready to commit 210 hours from 1 February 2027, including the 10-hour Research Methodology Course",
+          "If you are a faculty researcher interested in supervising, submit your project between 5 and 16 October 2026, which is the stage that is open now"
+        ],
+        "common_rejection_risks": [
+          "Not being enrolled in one of the three eligible FCM UNCUYO degrees",
+          "Having completed less than the first full year of the degree",
+          "Applying to a project that was not approved at the first stage, or to a supervisor who did not submit one",
+          "Missing the 9 to 20 November 2026 student registration window",
+          "Insufficient research capacity given 200 hours of project execution within six months alongside coursework",
+          "Only 20 places exist, so competition is real even within one faculty"
+        ],
+        "estimated_uncovered_costs": [
+          "Living costs: the award is described in hours and does not state any living-cost support",
+          "Tuition: no fee coverage is mentioned, and the student is already enrolled and paying as a regular student",
+          "Travel and research consumables, which are not mentioned on the official announcement page"
+        ],
+        "document_audit": [
+          "Programme bases for the 2026-2027 call: read in full, since the announcement page is only a summary",
+          "Approved project list and supervisors: published 2 to 6 November 2026, check before registering",
+          "For supervisors: the research project submitted to the advisory commission by 16 October 2026"
+        ],
+        "alerts": [
+          {
+            "trigger": "Student registration does not open until 9 November 2026",
+            "message": "The call is announced and the calendar is fixed, but students cannot register yet. The stage that is open now, 5 to 16 October 2026, is only for faculty researchers submitting projects."
+          },
+          {
+            "trigger": "The award is described in hours, not pesos",
+            "message": "No monetary amount is published. Treat the value as 210 hours of research training rather than assuming a cash stipend."
+          },
+          {
+            "trigger": "The project must be approved before you can apply",
+            "message": "You cannot choose any project freely. Only projects that clear the first-stage advisory-commission evaluation and are circulated from 2 to 6 November are open to students."
+          },
+          {
+            "trigger": "Restricted to three degrees at one faculty",
+            "message": "This is a faculty-level award, not a national programme. If you are not in Medicina, Licenciatura en Enfermeria or Tecnicos Asistenciales en Salud at FCM UNCUYO, it does not apply."
+          }
+        ],
+        "submission_workflow": [
+          "Confirm eligibility: regular student in an eligible FCM UNCUYO degree with a completed first year",
+          "Read the programme bases for the 2026-2027 call",
+          "Between 2 and 6 November 2026, review the approved projects and supervisors",
+          "Choose a project, alone or as a pair",
+          "Register between 9 and 20 November 2026",
+          "Await evaluation between 30 November and 11 December 2026",
+          "Check the definitive awards published in December 2026",
+          "From 1 February 2027, complete the 10-hour Research Methodology Course and 200 hours of project work within six months"
+        ]
+      },
+      "programme_detail_verification": {
+        "cycle_verified": "2026-2027 cycle, verified 2026-10-04; supervisor project submission 5 to 16 October 2026, student registration 9 to 20 November 2026, evaluation 30 November to 11 December 2026, scholarships from 1 February 2027",
+        "verification_confidence": 0.84,
+        "official_fields_confirmed": [
+          "status",
+          "application_period",
+          "deadline_central",
+          "degree_levels",
+          "eligibility",
+          "benefits",
+          "requirements",
+          "application_method",
+          "duration",
+          "research_requirement",
+          "selection_criteria"
+        ],
+        "institution_check_required": [
+          "Read the full programme bases linked from the announcement, which were not rendered during this verification",
+          "Confirm the list of approved projects and supervisors published 2 to 6 November 2026",
+          "Confirm the monetary value of the scholarship, which the announcement page does not state",
+          "Confirm that your degree and your year of study still meet the eligibility conditions when registration opens"
+        ],
+        "unverified_or_removed_claims": [
+          "No monetary amount is published for the 20 scholarships, so funding_amount is null and no stipend figure should be inferred",
+          "Selection weighting is not published; the process is described only as a two-stage filter with an evaluation window",
+          "The full bases document linked from the announcement page was not rendered as text, so detailed eligibility, documents and scoring remain unconfirmed",
+          "No English requirement is stated, and none is implied"
+        ],
+        "source_citations": [
+          "https://fcm.uncuyo.edu.ar/convocatoria-2026-2027-a-becas-de-investigacion-para-estudiantes",
+          "https://fcm.uncuyo.edu.ar/categorias/index/becas-y-fincanciamiento-estudiantes"
+        ],
+        "researched_by": "w2_22"
+      },
+      "logo_override": {
+        "url": "https://fcm.uncuyo.edu.ar/images/a9df60246a2bed4b05206a057278b53e.png",
+        "page_url": "https://fcm.uncuyo.edu.ar/convocatoria-2026-2027-a-becas-de-investigacion-para-estudiantes",
+        "official_host": true,
+        "alt_text": "Facultad de Ciencias Medicas, Universidad Nacional de Cuyo",
+        "validation_result": "verified",
+        "validation_detail": "webfetch of the URL returned 'Image fetched successfully' and the bytes render the faculty's circular mark in orange, navy and pale blue on a white field, so it is not white-on-transparent. It is the awarding faculty's own mark served from its own fcm.uncuyo.edu.ar domain and used as the site header image. The separate UNCUYO marca-claro.svg was deliberately avoided because it is explicitly the light-on-dark variant.",
+        "image_kind": "official_logo",
+        "image_format": "png",
+        "verified_at": "2026-10-04T00:00:00+00:00",
+        "host_evidence": "same_registrable_domain",
+        "_award": "Programa de Becas de Investigacion para Estudiantes 2026-2027 (FCM UNCUYO)"
+      },
+      "research_notes": {
+        "logo": "The awarding faculty uses a single header mark, /images/a9df60246a2bed4b05206a057278b53e.png, on fcm.uncuyo.edu.ar. Probed with webfetch, which returned 'Image fetched successfully', and the image shows the faculty's coloured circular emblem on white. First-party asset on the awarding body's own domain. I did not use the UNCUYO institutional marca-claro.svg because its filename marks it as the light variant built for dark backgrounds.",
+        "unverified": [
+          "Monetary value of the 20 scholarships",
+          "Contents of the full programme bases, which are on a linked page not rendered as text"
+        ],
+        "substitution": null,
+        "official_pages_read": [
+          "https://fcm.uncuyo.edu.ar/convocatoria-2026-2027-a-becas-de-investigacion-para-estudiantes"
+        ],
+        "degree_level_confirmed": "The official page states the call is directed to 'estudiantes regulares de Medicina, Licenciatura en enfermeria y Tecnicos Asistenciales en Salud de la FCM UNCUYO que hayan aprobado, como minimo, el primer ano completo de su carrera', and describes the purpose as bringing students in 'desde las etapas de grado y pregrado'. These are Bachelor's-level degree programmes. Recorded degree_levels: Bachelor's.",
+        "dedup_check": "The shard's three dedup lists are empty and all_countries_in_database contains no Latin American country, so no entry could match. The faculty's separate Becas de Ayuda Economica and Ciclo de Ingreso 2027 schemes are distinct awards with different purposes and were not recorded here.",
+        "skeleton": false
+      }
+    }
+  ],
+  "rejected": [
+    {
+      "outcome": "rejected",
+      "name": "Programa de Becas de Cooperacion Sur-Sur - Republica de Chile 2027 (AGCID) - Paraguay focal point listing",
+      "official_source_url": "https://becas.mef.gov.py/cooperacion/beca/datalle251/activo",
+      "reason": "Duplicate of the AGCID Chile 2027 record already written in this shard. The listing found on Paraguay's Ministry of Economy and Finance scholarship portal is the same AGCID South-South Cooperation award, carried by that portal as its focal-point mirror, with its own Paraguayan application cut-off of 20/10/2026 15:00 against the Colombian ICETEX cut-off of 9 October 2026. Recorded once, and used only to corroborate that the call is live."
+    },
+    {
+      "outcome": "rejected",
+      "name": "Beca Huellas ESAN Excelencia Academica 2027-1 (Universidad ESAN, Peru)",
+      "official_source_url": "https://www.ue.edu.pe/pregrado/beca-huellas/",
+      "reason": "Official page returned HTTP 403 on fetch, so the award could not be verified from the awarding institution and no source citation could be honestly produced. Candidate details were visible only through search-engine summaries, which the brief does not accept as a source."
+    },
+    {
+      "outcome": "rejected",
+      "name": "Ecuador MINEDEC Programa de Becas Nacionales de Tercer Nivel de Grado Talento Joven 2026",
+      "official_source_url": "https://siau.senescyt.gob.ec/programa-de-becas-nacionales-de-tercer-nivel-de-grado-talento-joven/",
+      "reason": "Official SIAU page shows the application window closed on 13 September 2026 and no next-cycle window published, so the current cycle has already closed and there is no published opening within the next ten months. Same treatment for MINEDEC's Programa de Ayudas Economicas Mujeres que Transforman 2026, which closed on 21 August 2026."
+    }
+  ]
+}

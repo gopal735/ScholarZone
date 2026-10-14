@@ -1,0 +1,138 @@
+{
+  "agent": "agent_166",
+  "records": [
+    {
+      "id": 439,
+      "official": {
+        "official_source_urls": [
+          "https://www.nus.edu.sg/oam/scholarships/scholarships-for-freshmen-singapore-citizens",
+          "https://www.nus.edu.sg/oam/scholarships/scholarships-for-freshmen-singapore-citizens/nus-undergraduate-scholarship"
+        ],
+        "application_link": "https://www.nus.edu.sg/oam/scholarships/scholarships-for-freshmen-singapore-citizens",
+        "catalogue_url": null,
+        "official_updates_url": "https://www.nus.edu.sg/oam/scholarships/scholarships-for-freshmen-singapore-citizens",
+        "deadline_central": "2027-03-19",
+        "deadline_central_display": "19 March 2027",
+        "deadline_note": null,
+        "application_cycle": "AY2027 intake",
+        "status": "OPEN",
+        "status_note": "NUS states: 'Application for NUS Scholarships for AY2027 commences from 1 February to 19 March 2027. Only one common scholarship application is required.'",
+        "tuition_coverage_note": "The Scholarship covers subsidised tuition fees (after MOE Tuition Grant subsidy).",
+        "funding_amount": null,
+        "funding_currency": null,
+        "funding_period": null,
+        "tuition_coverage": true,
+        "living_cost_coverage": null,
+        "travel_coverage": null,
+        "fully_funded": false,
+        "benefits": [
+          "Subsidised tuition fees (after MOE Tuition Grant subsidy)",
+          "Guaranteed Student Exchange Programme (SEP) placement with one of NUS' overseas partner universities for one semester (not applicable for NUS Medicine and Dentistry undergraduate programmes)",
+          "Priority for on-campus accommodation for the first two years of undergraduate study, subject to meeting the eligibility criteria and submitting a complete hostel application during the first housing application window each year (Year 1: Halls and Houses; Year 2: Halls, Houses and Residences)",
+          "Bond-free scholarship"
+        ],
+        "eligibility": [
+          "Singapore Citizens",
+          "Have strong leadership qualities and potential",
+          "Have a good co-curricular activities record",
+          "Possess outstanding results in Singapore-Cambridge GCE A Level, local Polytechnic Diploma, International Baccalaureate Diploma, NUS High School Diploma or equivalent qualifications",
+          "Applying for admission to a full-time undergraduate degree programme at NUS",
+          "Transfer applicants from local or overseas universities are not eligible"
+        ],
+        "requirements": [
+          "Scholarship application can be submitted only after application for admission to NUS has been submitted",
+          "Upload supporting documents such as the co-curricular activities record at the Applicant Portal",
+          "Submit one Referee Recommendation Form online, to be submitted separately by your Junior College/Polytechnic/High School Principal or Tutor",
+          "Recipients may not concurrently hold any other scholarship, fellowship, bursary, grant, award, allowance, waiver or free aid without prior approval from the University",
+          "The scholarship is renewed every semester provided the recipient maintains a GPA of at least 3.50, or grades within the top 80% of their cohort for Dentistry, Law and Medicine recipients, and has good conduct"
+        ],
+        "documents": [
+          "Supporting documents such as the co-curricular activities record, uploaded at the Applicant Portal",
+          "One Referee Recommendation Form submitted online separately by the applicant's Junior College/Polytechnic/High School Principal or Tutor",
+          "An admission application to NUS, which must be submitted before the scholarship application"
+        ],
+        "selection_criteria": [
+          "Applicants will be assessed for scholarship suitability based on the strength of their application and their performance in the scholarship selection interview(s), if shortlisted",
+          "Applicants who have selected Dentistry/Medicine/Law as their top choices of courses and have been shortlisted for the Dentistry/Medicine/Law admission tests/interviews will be assessed on their performance in those tests/interviews instead; further scholarship selection interview(s) may be conducted",
+          "Applicants shortlisted for selection interview(s) will be informed via e-mail; interviews are conducted from late-March onwards and outcomes are notified by late-May",
+          "NUS reserves the right to not award any scholarship if there are no candidates of sufficient merit"
+        ],
+        "coverage": [
+          "Subsidised tuition fees after the MOE Tuition Grant subsidy",
+          "Guaranteed one-semester Student Exchange Programme placement with one of NUS' overseas partner universities",
+          "Priority for on-campus accommodation for the first two years of undergraduate study"
+        ],
+        "application_method": [
+          "Submit an application for admission to NUS first",
+          "Submit one common online scholarship application between 1 February and 19 March 2027, which covers the NUS Scholarships tiers and the donated scholarships listed on the same page",
+          "Upload the co-curricular activities record and supporting documents at the Applicant Portal",
+          "Have your Junior College/Polytechnic/High School Principal or Tutor submit the Referee Recommendation Form online",
+          "Attend the selection interview if shortlisted, and check for the outcome by late May"
+        ],
+        "application_route": "One common online scholarship application through the NUS Applicant Portal, submitted only after the NUS admission application, between 1 February and 19 March 2027.",
+        "study_mode": "Full-time",
+        "citizenship_residency": "Singapore Citizens only for this listing.",
+        "international_eligibility": "No. This listing is for Singapore Citizens; NUS publishes separate freshmen scholarship listings for Singapore Permanent Residents and for International Students.",
+        "subject_or_agency_requirement": "The NUS Scholarships tiers exclude Dentistry, Medicine and Music.",
+        "research_requirement": null,
+        "duration": "Tenable for the normal candidature period of the degree, renewed every semester",
+        "description": "NUS describes NUS Scholarships as highly coveted awards given to high-calibre individuals who demonstrate academic excellence, present an excellent co-curricular activities record and exhibit outstanding leadership qualities, with NUS Scholars expected to contribute to the NUS community while in NUS and develop into dynamic global leaders capable of effecting positive societal change.",
+        "region": "Asia",
+        "program_type": "Undergraduate Merit Scholarship (third of the three NUS Scholarships tiers)",
+        "english_requirement": null
+      },
+      "verification": {
+        "source_citations": [
+          "https://www.nus.edu.sg/oam/scholarships/scholarships-for-freshmen-singapore-citizens/nus-undergraduate-scholarship",
+          "https://www.nus.edu.sg/oam/scholarships/scholarships-for-freshmen-singapore-citizens"
+        ],
+        "last_verified_date": "2026-10-10",
+        "verification_status": "confirmed",
+        "confidence": "high",
+        "not_confirmed": [
+          "funding_amount",
+          "funding_currency",
+          "funding_period",
+          "living_cost_coverage",
+          "travel_coverage",
+          "english_requirement",
+          "research_requirement"
+        ],
+        "notes": "Read the NUS Undergraduate Scholarship tier page and the NUS Scholarships for Freshmen (Singapore Citizens) listing on nus.edu.sg. NUS publishes no monetary value; the benefit list for this tier covers subsidised tuition only, with no living or travel component, so fully_funded is recorded as false. AY2027 window and the single common application were read from the official listing."
+      },
+      "applicant_utility": {
+        "summary": "One common application covers the NUS Global Merit, NUS Merit and NUS Undergraduate Scholarship tiers, so you compete for all three at once and cannot choose which tier you land in. This tier's package is a subsidised tuition fee after the MOE Tuition Grant plus a guaranteed exchange semester and two years of accommodation priority; there is no living stipend in it, so treat it as a fee award rather than full funding. The interview is not optional in practice, because a missed scheduled interview without valid reason withdraws the application.",
+        "best_fit": "Singapore Citizen freshmen with outstanding A-Level, polytechnic, IB or NUS High School results and a strong co-curricular record who want a bond-free NUS degree with an exchange semester.",
+        "application_readiness_checklist": [
+          "File the NUS admission application first and wait for Applicant Portal access before touching the scholarship form; the scholarship application is blocked until admission is submitted.",
+          "Chase the Referee Recommendation Form early, because it is submitted separately by your principal or tutor and sits outside your control.",
+          "Note the exclusions: Dentistry, Medicine and Music are outside the NUS Scholarships tiers.",
+          "Keep your co-curricular activities record current and upload it as a supporting document rather than summarising it in the form.",
+          "Confirm you hold no other scholarship, fellowship, bursary, grant, award, allowance, waiver or free aid without prior NUS approval."
+        ],
+        "common_rejection_risks": [
+          "Applying as a transfer applicant from a local or overseas university, which is explicitly excluded.",
+          "A referee form that never arrives because the deadline sits with the school rather than the applicant.",
+          "Missing a scheduled selection interview without a valid reason, which NUS treats as a withdrawal.",
+          "Assuming you will get the top tier; the common application means a strong file can still be placed in the lower Undergraduate Scholarship tier.",
+          "Holding another award concurrently without prior University approval."
+        ],
+        "estimated_uncovered_costs": "Living costs, accommodation fees beyond the priority placement, and the cost of the exchange semester (airfare and living costs abroad) are not covered; this tier waives subsidised tuition only.",
+        "document_audit": [
+          "The Referee Recommendation Form is filed by the Principal or Tutor separately, so build in a reminder rather than assuming it is automatic.",
+          "The priority accommodation benefit is conditional on a complete hostel application during the first housing application window each year; miss that window and the priority is not usable.",
+          "The GPA renewal condition is stricter for Dentistry, Law and Medicine recipients (top 80% of cohort) than the general 3.50.",
+          "The Application Guide is published on the NUS scholarships page; use it rather than guessing at form conventions."
+        ],
+        "alerts": [
+          "Renewal is every semester and depends on maintaining at least a 3.50 GPA, so a weak first semester can cost the whole award.",
+          "Interviews start from late March, right after the 19 March deadline, and outcomes come only by late May.",
+          "If Dentistry, Medicine or Law is your first choice and you are shortlisted for those admission tests, you are assessed on those instead and may face further scholarship interviews.",
+          "Premature withdrawal or termination exposes you to repayment of all scholarship monies disbursed.",
+          "The single common application also covers the donated scholarships listed on the same page, so check whether any of them restrict you."
+        ],
+        "submission_workflow": "Admission application first, then one common scholarship application on the Applicant Portal, a separate referee form, a shortlisting interview from late March, and an outcome by late May."
+      }
+    }
+  ]
+}

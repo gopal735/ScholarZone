@@ -1,0 +1,84 @@
+{
+ "agent": "agent_257",
+ "assignment_count": 1,
+ "scholarships": [
+  {
+   "id": 615,
+   "title": "Massey University Doctoral Scholarship",
+   "country": "New Zealand",
+   "degree": "PhD",
+   "funding_label": "Fully Funded",
+   "status": "open",
+   "official_source": "Massey University",
+   "official_source_url": "https://www.massey.ac.nz/study/scholarships-and-awards/massey-university-doctoral-scholarship",
+   "application_link": "https://www.massey.ac.nz/study/scholarships-and-awards/massey-university-doctoral-scholarship",
+   "catalogue_url": "https://www.massey.ac.nz/study/scholarships-and-awards",
+   "official_updates_url": "https://www.massey.ac.nz/study/scholarships-and-awards/massey-university-doctoral-scholarship",
+   "existing": {
+    "funding_amount": null,
+    "funding_currency": null,
+    "funding_period": null,
+    "tuition_coverage": null,
+    "living_cost_coverage": null,
+    "travel_coverage": null,
+    "fully_funded": 0,
+    "description": null,
+    "eligibility": [
+     "Enrolled in the first 12 months of doctoral study, or holding an offer of place for doctoral study at Massey University, at the application closing date",
+     "GPA of 7.0 or higher",
+     "Researching a topic of strategic value to the University",
+     "Agree to the conditions of the scholarship as set out in the scholarship regulations",
+     "Enrol in the doctoral programme no later than 1 March of the year following selection"
+    ],
+    "eligibility_summary": "For candidates enrolled in, or holding an offer of place for, the Doctor of Philosophy, Doctor of Clinical Psychology or Doctor of Social Work at Massey University, at the closing date. Applicants need a GPA of 7.0 or higher, must be researching a topic of strategic value to the University, and must agree to the scholarship regulations.",
+    "benefits": [
+     "Tuition and compulsory fees for the doctoral programme",
+     "Doctoral stipend",
+     "Named variants for Maori and Pacific doctoral candidates"
+    ],
+    "coverage": [
+     "Tuition and compulsory fees for the doctoral programme",
+     "Doctoral stipend",
+     "Named variants for Maori and Pacific doctoral candidates"
+    ],
+    "requirements": [
+     "Supervisor must complete the Massey Supervisor Support Template",
+     "Admission offer or offer of place letter secured before the scholarship closing date",
+     "Allow a minimum of four weeks for admission applications to be processed"
+    ],
+    "documents": [],
+    "english_requirement": null,
+    "application_method": [
+     "Submit the scholarship application through the Massey Student Portal",
+     "Upload the completed Supervisor Support Template at the point of application"
+    ],
+    "selection_notes": "Academic achievement is considered alongside alignment of the research to the strategic priorities of the University, the College and the research supervisor. The award is not limited to GPA selection.",
+    "best_fit": "Doctoral candidates in any Massey discipline with a strong academic record whose research aligns with University, College or School research strategy.",
+    "notes": "The official page states this is 'a scholarship for a stipend plus fees'. No bond, service obligation or travel funding is stated.\nFunding period: three-year award; the official page states the value as '$90,000 plus fees' with 'Three years' duration' and does not publish an annual breakdown",
+    "duration": "Three years' duration",
+    "application_period": "The published 2026 round opened 1 August 2026 and closed 1 October 2026. The award runs on a recurring cycle with closing dates of 1 October and 1 April, so the next window is the 1 April 2027 round.",
+    "deadline_display": "1 October and 1 April each year; the 2026 round closed 1 October 2026",
+    "deadline_date": null,
+    "region": "Oceania",
+    "program_type": "University doctoral scholarship",
+    "applicant_utility": null,
+    "official_details": null
+   },
+   "missing_fields": [
+    "funding_amount",
+    "funding_currency",
+    "funding_period",
+    "tuition_coverage",
+    "living_cost_coverage",
+    "travel_coverage",
+    "description",
+    "documents",
+    "english_requirement",
+    "deadline_date",
+    "applicant_utility",
+    "official_details"
+   ]
+  }
+ ],
+ "result_file": "C:\\Users\\GopaL\\Desktop\\Projects folder\\ScholarZone\\backend\\research_output\\live500\\results\\agent_257.json"
+}

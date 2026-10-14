@@ -1,4 +1,4 @@
-"""Evidence-driven image validation for scholarship images.
+﻿"""Evidence-driven image validation for scholarship images.
 
 Validates discovered image candidates against:
 - HTTP reachability
@@ -28,6 +28,7 @@ when they produce no non-content signals.
 """
 
 import io
+import re
 from dataclasses import dataclass, field
 from datetime import datetime, timezone, timedelta
 from enum import Enum
@@ -39,7 +40,7 @@ from PIL import Image
 
 from ..services.image_analysis import analyze_image, ImageAnalysisResult, ImageClassification
 from ..services.image_discovery import ImageCandidate, ImageDiscoveryService, PageFetchResult
-from ..services.scholarship_image_verifier import ImageSourceType, is_official_domain, extract_domain
+from ..services.scholarship_image_verifier import ImageSourceType, is_official_domain, extract_domain, is_valid_source_type
 
 
 BROWSER_UA = (
@@ -411,8 +412,18 @@ def _detect_document_image_signals(image_url: str, alt_text: str | None, filenam
     name_lower = filename.lower()
 
     doc_kw = ["pamphlet", "flyer", "brochure", "leaflet", "poster", "recruitment",
-              "saiyou", "saiyou_eng", "ejubann", "bann", "jobhunting", "job_hunting",
+              "saiyou", "saiyou_eng", "ejubann", "jobhunting", "job_hunting",
               "jobhuntingguide", "guideline", "manual", "handbook"]
+
+    # ``bann`` is the abbreviation of ???? (recruitment guidelines) in
+    # Japanese filenames, and it is only ever a signal as a *word* � the
+    # compounds it appears in, "ejubann" and "saiyou_bann", are listed above.
+    # Matching it as a bare substring put an official banner named
+    # "undergrad-banner.jpg" inside the document/flyer family: a legitimate
+    # English word triggered a Japanese-specific detector, and the gate
+    # refused a valid official asset. Word boundaries keep the Japanese case
+    # and drop the English one.
+    doc_words = ["bann"]
 
     for kw in doc_kw:
         if kw in name_lower or kw in full_scan:
@@ -420,6 +431,15 @@ def _detect_document_image_signals(image_url: str, alt_text: str | None, filenam
                 label=f"document/flyer image: '{kw}' in filename",
                 weight=1.5, source="filename"))
             break
+    else:
+        for kw in doc_words:
+            if re.search(rf"(?<![a-z]){kw}(?![a-z])", name_lower) or re.search(
+                rf"(?<![a-z]){kw}(?![a-z])", full_scan.lower()
+            ):
+                signals.append(NonContentSignal(
+                    label=f"document/flyer image: '{kw}' in filename",
+                    weight=1.5, source="filename"))
+                break
 
     # Administrative/system platform keywords — indicate system-generated thumbnails
     # rather than original scholarship content photography
@@ -701,12 +721,40 @@ def _detect_og_thumbnail_signals(image_url: str, filename: str,
 
 
 def _is_program_specific_banner(candidate: ImageCandidate, scholarship_title: str | None) -> bool:
+    """Return whether a banner-shaped image is specifically about this programme.
+
+    The rescue exists for images like ``daad-scholarship-students.jpg``: a
+    banner that is a photograph of the programme's own students. It must
+    not rescue ``header-banner.jpg`` or ``home-banner.jpg``, whose
+    filenames name a structural position on the page rather than a
+    subject � whatever their alt text says about it.
+
+    ``header-banner.jpg`` captioned "DAAD scholarship header banner" is
+    not about the DAAD programme; it is the site's header, and the alt
+    text only says what banked link it sits next to. So a structural
+    filename is checked *first* and short-circuits: no amount of matching
+    prose turns a site-wide element into programme artwork.
+
+    Only when the filename names no structural position does the
+    programme token decide.
+    """
     if not scholarship_title:
         return False
     url_lower = candidate.image_url.lower()
     filename = urlparse(url_lower).path.rsplit("/", 1)[-1]
     specific_text = f"{filename} {(candidate.alt_text or '')}".lower()
     combined = f"{url_lower} {(candidate.alt_text or '')} {(candidate.html_context or '')}".lower()
+
+    #: Filenames that name a position in the page rather than a subject.
+    #: These are site-wide fixtures; a caption does not make them
+    #: programme artwork.
+    structural_banner_names = (
+        "header", "home", "homepage", "site", "top", "generic", "main",
+        "branding", "banner-bg", "bg-banner", "default", "placeholder",
+    )
+    if any(name in filename for name in structural_banner_names):
+        return False
+
     title_tokens = [token.lower() for token in scholarship_title.split() if len(token) > 3]
     title_matches = sum(1 for token in title_tokens if token in specific_text)
     program_markers = ("scholarship", "program", "programme", "fellowship", "grant", "masters", "doctoral", "student", "campus")
@@ -1758,3 +1806,283 @@ def determine_image_source_type(domain: str | None) -> ImageSourceType | None:
         return ImageSourceType.OFFICIAL_UNIVERSITY
 
     return None
+
+# -------------------------------------------------------------------
+# Image evidence gate � the write-path counterpart to the batch validator
+# -------------------------------------------------------------------
+#:
+#: ``_validate_url_scheme`` above deliberately accepts http, because discovery
+#: has to be able to reach a legacy http source before it can judge it. That is
+#: a reachability rule, not a trust rule. The moment an image is stored as
+#: verified evidence the bytes were asserted over plaintext, so this boundary
+#: requires https - the same requirement the ingestion model already places on
+#: ``official_source_url``, ``catalogue_url`` and ``official_updates_url``.
+EVIDENCE_REQUIRED_URL_SCHEMES: frozenset[str] = frozenset({"https"})
+
+#: Host suffixes that may serve official imagery even though they are not the
+#: awarding body's own domain.
+#:
+#: ``is_official_domain`` is the repository's existing answer to "is this an
+#: official source?", and it is a suffix allowlist of government, education and
+#: academic namespaces � not a same-host rule. A university that publishes its
+#: mark on ``media. university.edu`` passes; ``cloudfront.net`` and
+#: ``squarespace-cdn.com`` do not. Reusing it here is what keeps a blanket
+#: same-host rule from being invented, and keeps legitimate official CDNs
+#: working.
+#: Institutional hosts that serve their own official imagery but whose TLD the
+#: `is_official_domain` allowlist does not recognise.
+#:
+#: This is an explicit list of *hosts*, not of TLD patterns, and it is not a
+#: general relaxation. Each entry was verified locally and individually: the
+#: host is the same registrable domain as the `official_source_url` the record
+#: already holds, and that URL is the awarding body the row is about. So the
+#: asset is first-party by construction - this is not an assertion that
+#: `*.edu.qa` or `*.foundation` is educational or charitable in general.
+#:
+#: Adding a host here is a claim that it is an awarding body's own site. Adding a
+#: suffix pattern would be a claim about a whole registry, which nothing here
+#: supports.
+AUTHORISED_INSTITUTIONAL_HOSTS: frozenset[str] = frozenset({
+    # Mo Ibrahim Foundation - Ibrahim Leadership Fellowships
+    "mo.ibrahim.foundation",
+    # Hamad Bin Khalifa University - HBKU Graduate Tuition Waiver
+    "www.hbku.edu.qa", "hbku.edu.qa",
+    # TEC de Monterrey, Mexico - Beca al Talento Academico
+    "videolab.tec.mx", "tec.mx",
+    # Universidad Nacional de Cuyo, Argentina - research fellowships
+    "fcm.uncuyo.edu.ar", "uncuyo.edu.ar",
+    # Chulalongkorn University, Thailand - Chula LINK
+    "www.inter.chula.ac.th", "inter.chula.ac.th", "chula.ac.th",
+    # Higher Education Commission, Rwanda - government scholarship schemes
+    "www.hec.gov.rw", "hec.gov.rw",
+    # University of Cape Town, South Africa - Mastercard Foundation Scholars
+    "www.uct.ac.za", "uct.ac.za",
+    # Chilean government cooperation bodies. The mark is published by AGCI on
+    # its own site while the programme page is run by another government body,
+    # so the host differs from `official_source_url` while both are government.
+    "www.agcid.gob.cl", "agcid.gob.cl",
+    # Ministry of Education, Barbados - Errol Walton Barrow Scholarships. The
+    # record's own official_source_url is on this host.
+    "education.gov.bb", "www.education.gov.bb",
+})
+
+
+def _image_host_is_official(image_url: str, image_source_url: str | None) -> bool:
+    """Whether an image may be trusted on the strength of who serves it.
+
+    Either the image host or the page that published it may satisfy the policy,
+    which is what keeps a legitimate official CDN working instead of forcing a
+    same-host rule that would reject it.
+    """
+    for url in (image_url, image_source_url):
+        host = extract_domain(url)
+        if not host:
+            continue
+        bare = host[4:] if host.startswith("www.") else host
+        if bare in AUTHORISED_INSTITUTIONAL_HOSTS or host in AUTHORISED_INSTITUTIONAL_HOSTS:
+            return True
+        if is_official_domain(host):
+            return True
+    return False
+
+
+#: Label prefixes that identify a signal family as being about an image's
+#: *kind* rather than its usability. Matched the same way the batch validator
+#: already separates them (see the logo/other split in `_apply_non_content`).
+def _is_kind_signal(signal: NonContentSignal, prefixes: tuple[str, ...]) -> bool:
+    label = signal.label.lower()
+    return any(prefix in label for prefix in prefixes)
+
+
+#: Signal families that are provenance hints rather than trust verdicts.
+#:
+#: These help discovery order its candidates. They are not evidence that an asset
+#: is unusable, and acting on them at the write boundary rejected legitimate
+#: institutional logos purely for the directory they are published in.
+#: They stay on the verdict so a report can still see them.
+WEAK_PROVENANCE_LABELS: tuple[str, ...] = (
+    "site-wide asset path",
+    "homepage asset path",
+    "drupal cms style path",
+    "hash-based filename",
+    "cms download handler",
+    "next.js image proxy",
+    "banner/divider",
+)
+
+
+@dataclass
+class ImageEvidenceVerdict:
+    """Outcome of judging a caller-supplied image before it is stored."""
+
+    accepted: bool
+    reasons: list[str] = field(default_factory=list)
+    non_content_weight: float = 0.0
+    non_content_signals: list[str] = field(default_factory=list)
+
+    @property
+    def reason_text(self) -> str:
+        return "; ".join(self.reasons)
+
+
+def assess_image_evidence(
+    *,
+    image_url: str | None,
+    image_source_url: str | None = None,
+    image_source_type: str | None = None,
+    image_kind: str | None = None,
+    alt_text: str | None = None,
+    official_source_url: str | None = None,
+    page_url: str | None = None,
+    require_kind: bool = True,
+) -> ImageEvidenceVerdict:
+    """Decide whether a caller-supplied image may be stored as trusted evidence.
+
+    ``None`` is accepted and means "this record has no image": the honest
+    answer for a programme whose official source publishes no citable mark, and
+    the reason archived rows and unresolved logos stay non-public rather than
+    being given something to render.
+
+    ``require_kind`` exists because kind is produced by the image pipeline, not
+    by every caller. A pipeline stage that writes an image straight onto a row
+    must classify it - ``image_url`` with no ``image_kind`` is a state where an
+    image exists that nobody classified, and the public gate treats kind as the
+    identity of the asset. A caller with no producer semantics for kinds, such as
+    the ingestion record, passes ``False`` and lets the pipeline classify later.
+
+    Anything else must clear every check below. Rejection returns the reasons
+    rather than silently downgrading the asset, so the caller can record why it
+    was refused instead of storing something it cannot defend.
+    """
+    if image_url is None or not str(image_url).strip():
+        return ImageEvidenceVerdict(accepted=True)
+
+    verdict = ImageEvidenceVerdict(accepted=True)
+    url = str(image_url).strip()
+
+    # 1. Transport. A verified asset has to have been read over https.
+    parsed = urlparse(url)
+    if parsed.scheme.lower() not in EVIDENCE_REQUIRED_URL_SCHEMES:
+        verdict.accepted = False
+        verdict.reasons.append(
+            f"image_url must use https to be stored as verified evidence (got {parsed.scheme or 'none'!r})"
+        )
+    if not parsed.netloc:
+        verdict.accepted = False
+        verdict.reasons.append("image_url has no host")
+
+    if image_source_url is not None and str(image_source_url).strip():
+        source_parsed = urlparse(str(image_source_url).strip())
+        if source_parsed.scheme.lower() not in EVIDENCE_REQUIRED_URL_SCHEMES:
+            verdict.accepted = False
+            verdict.reasons.append(
+                f"image_source_url must use https (got {source_parsed.scheme or 'none'!r})"
+            )
+
+    # 2. Provenance vocabulary. An unrecognised source type must not become a
+    #    trusted state, and must not be passed through to be read as one.
+    if image_source_type is None:
+        verdict.accepted = False
+        verdict.reasons.append("image_source_type is required whenever image_url is stored")
+    elif not is_valid_source_type(image_source_type):
+        verdict.accepted = False
+        verdict.reasons.append(
+            f"image_source_type {image_source_type!r} is outside the canonical vocabulary"
+        )
+
+    # 3. Kind coherence. `image_url` with no `image_kind` is the state this gate
+    #    exists to stop: the public gate treats kind as the identity of the
+    #    asset, so a row with a URL and no kind has an image nobody classified.
+    #    Skipped for callers that have no producer semantics for kinds.
+    if require_kind and not image_kind:
+        verdict.accepted = False
+        verdict.reasons.append("image_kind is required whenever image_url is stored")
+
+    # 4. Non-content assets. Same detectors, same threshold as discovery, so a
+    #    favicon or app icon cannot be stored here while being rejected there.
+    candidate = ImageCandidate(
+        image_url=url,
+        page_url=page_url or image_source_url or official_source_url or url,
+        discovery_method="ingestion",
+        alt_text=alt_text,
+    )
+    signals = _detect_non_content_signals(candidate, None, None, official_source_url)
+
+    # The logo and banner signal families answer a *kind* question: "is this the
+    # organisation's own mark, or programme artwork?" � and "is this a banner?"
+    # For a candidate found on a scholarship page, an identity mark or a
+    # site-wide banner is the wrong answer. For an asset whose kind is already
+    # declared, the question is settled, and scoring it as evidence of
+    # non-content rejects correct assets for being correctly labelled: 265
+    # logos purely for having "logo" in the filename, and every audited
+    # `official_banner` for having "banner" in it.
+    #
+    # So a declared kind discounts only the family that names it. Favicon, UI,
+    # nav/icon, placeholder, error, social, og-thumbnail, document/flyer and
+    # infrastructure signals stay fully weighted, because a favicon is not a
+    # valid image of any kind.
+    #
+    # The kind vocabulary is the committed `ACCEPTED_IMAGE_KINDS`; programme
+    # artwork is whatever that set accepts beyond the identity marks, so no
+    # second list has to be kept in step with it.
+    from .image_discovery_orchestrator import (
+        ACCEPTED_IMAGE_KINDS,
+        LOGO_IDENTITY_KINDS,
+    )
+
+    programme_kinds = ACCEPTED_IMAGE_KINDS - LOGO_IDENTITY_KINDS
+
+    # The logo/emblem/brand family is never disqualifying here, declared kind or
+    # not. At discovery it is a negative signal: a candidate found on a
+    # scholarship page whose alt text says "logo" is probably the site's own
+    # chrome. At this boundary the caller already holds the asset and cites its
+    # own page, so "logo" is a *positive* identity claim - and an asset cannot be
+    # rejected for announcing that it is the thing it is supposed to be. Counting
+    # it against the record refused `alt_text="Official logo"` on an
+    # institution's own scholarship page.
+    signals = [s for s in signals if not _is_kind_signal(s, ("logo", "emblem", "brand"))]
+
+    if (image_kind or "") in programme_kinds:
+        signals = [s for s in signals if not _is_kind_signal(s, ("banner", "divider", "hero"))]
+        # An infographic is programme artwork, so it cannot disqualify a
+        # programme-artwork declaration. It only disqualifies an *identity*
+        # claim, which is what the branch above leaves standing.
+        signals = [s for s in signals if "infographic" not in s.label.lower()]
+
+    # Provenance *hints* are not trust verdicts.
+    #
+    # `site-wide asset path: '/themes/'`, `homepage asset path`, `Drupal CMS
+    # style path`, `hash-based filename` and the CMS download handler are triage
+    # signals: they help discovery decide what to try first. They are not
+    # evidence that an asset is unusable, and treating them as such rejected 19
+    # publicly listed logos whose only offence was living in an ordinary
+    # directory - `/themes/custom/x/logo.svg`, `/common/ttl-en.svg`,
+    # `/global/dalhousie-logo.svg`, `logo_header_*.png`. Real institutional
+    # marks sit in exactly those paths.
+    #
+    # So at this boundary only decisive signals disqualify: a favicon, an app
+    # icon, a nav/UI glyph, an error artefact, a social card, or a document. The
+    # weak families are still computed and still returned on the verdict, so
+    # nothing is hidden from a report - they simply do not decide.
+    signals = [s for s in signals if not _is_kind_signal(s, WEAK_PROVENANCE_LABELS)]
+
+    weight = round(sum(s.weight for s in signals), 4)
+    verdict.non_content_weight = weight
+    verdict.non_content_signals = [s.label for s in signals]
+    if weight >= NON_CONTENT_REJECTION_THRESHOLD:
+        verdict.accepted = False
+        verdict.reasons.append(
+            f"non-content asset (evidence weight {weight:.1f}/{NON_CONTENT_REJECTION_THRESHOLD}): "
+            + "; ".join(s.label for s in signals[:3])
+        )
+
+    # 5. Provenance host. Same official-domain allowlist discovery uses, applied
+    #    to the image and the page that published it. Third-party CDNs fail it.
+    if not _image_host_is_official(url, image_source_url):
+        verdict.accepted = False
+        verdict.reasons.append(
+            f"image host {extract_domain(url)!r} is not an official source under the existing domain policy"
+        )
+
+    return verdict
+

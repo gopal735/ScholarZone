@@ -1,0 +1,150 @@
+{
+  "agent": "agent_298",
+  "records": [
+    {
+      "id": 675,
+      "official": {
+        "official_source_urls": [
+          "https://sis.gov.eg/ar/%D8%A7%D9%84%D9%85%D8%B1%D9%83%D8%B2-%D8%A7%D9%84%D8%A5%D8%B9%D9%84%D8%A7%D9%85%D9%8A/%D8%A7%D9%84%D8%A3%D8%AE%D8%A8%D8%A7%D8%B1/%D9%85%D8%AF-%D9%81%D8%AA%D8%B1%D8%A9-%D8%A7%D9%84%D8%AA%D9%82%D8%AF%D9%8A%D9%85-%D9%84%D9%85%D9%86%D8%AD%D8%A9-%D8%B9%D9%84%D9%85%D8%A7%D8%A1-%D8%A7%D9%84%D9%85%D8%B3%D8%AA%D9%82%D8%A8%D9%84",
+          "https://futurescholars.mohesr.gov.eg/home",
+          "https://futurescholars.mohesr.gov.eg/faqs",
+          "https://futurescholars.mohesr.gov.eg/news"
+        ],
+        "application_link": "https://futurescholars.mohesr.gov.eg",
+        "catalogue_url": "https://futurescholars.mohesr.gov.eg",
+        "official_updates_url": "https://futurescholars.mohesr.gov.eg",
+        "deadline_central": "2026-09-04",
+        "deadline_central_display": "4 September 2026, 19:00 (extended from 2 September 2026, 17:00)",
+        "deadline_note": "Applications for the 2026/2027 round opened at 11:00 on Saturday 29 August 2026 and were originally to close at 17:00 on Wednesday 2 September 2026; the Ministry of Higher Education and Scientific Research announced an extension to 19:00 on Friday 4 September 2026.",
+        "application_cycle": "2026/2027 academic year (second intake of the national initiative)",
+        "status": "CLOSED",
+        "status_note": "The official portal states that the names of students nominated for the second admission stage have been announced and that students can now enquire about the date and place of the admission test; the news page carries the item 'مد فترة التقديم حتى الجمعة 4 سبتمبر' dated 1 September 2026.",
+        "tuition_coverage_note": "The official wording is 'تغطية كاملة للمصروفات الدراسية وتكاليف الإقامة والإعاشة طوال فترة الدراسة في الجامعات الأهلية المشاركة حتى التخرج، بشرط استدامة تحقيق متطلبات المنحة' - full coverage of study expenses and accommodation and living costs throughout the period of study at the participating national universities until graduation, provided the student continues to meet the scholarship's requirements. The portal's own wording is 'تغطية شاملة ... تتضمن المصروفات الدراسية، ونفقات الاعاشة الدراسية طوال فترة الدراسة حتى التروج (بشرط استيفاء معايير المنحة، وأهمها الحفاظ على معدل تراكمى لا يقل عن 3 أو ما يعادله، وذلك بدءا من السنة الثانية)'.",
+        "funding_amount": null,
+        "funding_currency": null,
+        "funding_period": null,
+        "tuition_coverage": true,
+        "living_cost_coverage": true,
+        "travel_coverage": null,
+        "fully_funded": true,
+        "benefits": [
+          "تغطية شاملة (comprehensive coverage): study expenses (المصروفات الدراسية) and study living expenses (نفقات الإعاشة) for the whole period of study until graduation",
+          "المنحة الدراسية الكاملة (full scholarship) in modern specialisms, with geographic distribution of grants across all governorates",
+          "تطوير المهارات: additional programmes provided to enhance students' personal and language skills (برامج اضافية لتعزيز المهارات الشخصية واللغوية)",
+          "عدالة التوزيع الجغرافي: distribution of grants covers all governorates",
+          "تكافؤ الفرص: equal opportunity for all, including persons with disabilities (ذوي الهمم)",
+          "The grant covers all participating national (أهلية) universities, stated on the portal as 32 universities, including Nile University, the French University in Egypt, the Egyptian E-Learning University, Egypt University of Informatics, Galala, New Alamein International, King Salman International, New Mansoura, Ismailia, Mansoura National, Assiut National, Menoufia National, Zagazig National and Beni Suef National",
+          "Accommodation and living costs (تكاليف ومصاريف الإعاشة والإقامة) are paid to the student through a bank account the student commits to open at a bank licensed by the Central Bank of Egypt inside Egypt"
+        ],
+        "eligibility": [
+          "الجنسية: أن يحمل الطالب الجنسية المصرية - Egyptian nationality",
+          "التقدم: أن يكون الطالب من المستفيدين من مبادرة تكافل وكرامة أو من الطلاب الذين تم إعفاؤهم من المصروفات من قبل وزارة التربية والتعليم - beneficiary of the Takaful wa-Karama initiative, or exempted from school fees by the Ministry of Education, during the 2025/2026 academic year",
+          "التفوق: أن يكون الطالب من المتفوقين دراسيًا في الثانوية العامة (or STEM) ويحقق الحد الأدنى المعلن من قبل إدارة المبادرة للتقدم لكل كلية - academically distinguished in the secondary school and achieving the minimum mark announced by the initiative administration for each faculty",
+          "المؤهل الدراسي: الحصول على الثانوية العامة من إحدى المدارس الحكومية للعام الدراسي 2025/2026 - secondary school certificate obtained from a government school in 2025/2026",
+          "السلوك: أن يكون الطالب حسن السيرة والسلوك وغير مفصول أكاديميًا أو تأديبيًا من أي مؤسسة تعليمية - good conduct and behaviour, and not dismissed academically or disciplinarily from any educational institution",
+          "المنح الأخرى: ألا يكون الطالب قد حصل على منحة أخرى ممولة من جهة أخرى بالتوازي مع المنحة المقررة بموجب هذا البروتوكول - must not already hold another scholarship funded by another party in parallel",
+          "Must pass the admission test (اختبار القبول) held after preliminary nomination",
+          "The initiative states it provides equal opportunity for all, including persons with disabilities (ذوي الهمم)"
+        ],
+        "requirements": [
+          "إجراء اختبار قبول للطالب المرشح، على أن يتم ترشيحه لاستكمال إجراءات الالتحاق بالمنحة بعد اجتيازه الاختبار - an admission test is held for the nominated student, and only those who pass it are nominated to complete the scholarship enrolment procedures",
+          "تنسيق الطالب إلكترونيًا بناءً على المجموع في الثانوية العامة والموقع الجغرافي للمدرسة (أو أقرب محافظة تتوفر بها الكلية المطلوبة) - electronic coordination based on the secondary school total and the geographic location of the school, or the nearest governorate if the requested faculty is unavailable there",
+          "الإقرار: الالتزام بتقديم كافة المستندات المطلوبة (أو التي ستطلب لاحقًا) والتوقيع على إقرار التقدم من الطالب وولي الأمر - submission of all required documents (or those requested later) and signature of the application declaration by the student and the parent or guardian",
+          "توقيع الطالب وولي الأمر على اتفاقية الحصول على المنحة - signature by the student and guardian on the scholarship grant agreement",
+          "الحفاظ على معدل تراكمي لا يقل عن 3 أو ما يعادله، وذلك بدءًا من السنة الثانية - maintain a cumulative GPA of not less than 3 or its equivalent, starting from the second year, as the main condition of continued support",
+          "يلتزم كل طالب حاصل على المنحة بفتح حساب بنكي في أحد البنوك المرخص لها من البنك المركزي المصري داخل جمهورية مصر العربية؛ وذلك بغرض تلقي تكاليف ومصاريف الإعاشة والإقامة الممنوحة له - each grantee must open a bank account at a Central Bank of Egypt-licensed bank in Egypt in order to receive the living and accommodation costs",
+          "التزام الطالب بكافة القوانين واللوائح الجامعية والجهة المانحة - compliance with all university laws and regulations and with those of the granting party"
+        ],
+        "documents": [
+          "كافة المستندات المطلوبة (أو التي ستطلب لاحقًا) - all documents required by the application portal, including any requested later, uploaded electronically",
+          "إقرار التقدم موقع من الطالب وولي الأمر - the application declaration signed by the student and the parent or guardian",
+          "اتفاقية الحصول على المنحة موقعة من الطالب وولي الأمر - the scholarship grant agreement signed by the student and the parent or guardian",
+          "The secondary school completion certificate, which carries the password used to log in to the application platform"
+        ],
+        "selection_criteria": [
+          "Electronic sorting and ranking of applicants by secondary school total mark to choose the preliminary candidates (الترشيح الأولي)",
+          "Geographic distribution of grants across all governorates, by the governorate of the secondary school or the nearest governorate offering the requested faculty",
+          "Passing the admission test held after preliminary nomination",
+          "Social entitlement: benefit from the Takaful wa-Karama initiative or a Ministry of Education fee exemption in 2025/2026",
+          "Academic distinction meeting the minimum mark announced by the initiative administration for each faculty"
+        ],
+        "coverage": [
+          "تغطية كاملة للمصروفات الدراسية - full coverage of study expenses at the participating national universities",
+          "تكاليف الإقامة - accommodation costs",
+          "تكاليف الإعاشة (living and board costs) for the whole period of study until graduation",
+          "Coverage runs throughout the period of study at participating national universities until graduation, conditional on the student continuing to meet the scholarship's requirements"
+        ],
+        "application_method": [
+          "Apply online through the official Future Scientists Scholarship platform at https://futurescholars.mohesr.gov.eg/",
+          "Log in with the national ID number (الرقم القومي) as the username and the password printed on the secondary school completion certificate (شهادة إتمام الثانوية العامة)",
+          "Complete the required data electronically, upload all required documents and sign the application declaration by the student and the parent or guardian",
+          "Preliminary nomination is then done electronically by secondary school total with geographic distribution, followed by an admission test that the candidate must attend"
+        ],
+        "application_route": "Apply online at the official Future Scientists Scholarship portal (futurescholars.mohesr.gov.eg), logging in with the national ID as username and the password printed on the secondary school completion certificate.",
+        "study_mode": null,
+        "citizenship_residency": "أن يحمل الطالب الجنسية المصرية - the student must hold Egyptian nationality; study must be at a participating national (أهلية) university inside Egypt.",
+        "international_eligibility": "Not open to international students - Egyptian nationality is a stated condition of application and the programme funds study at Egyptian national universities.",
+        "subject_or_agency_requirement": "The full scholarship is offered in nine priority specialisms designated by the state: الطب (medicine), الهندسة (engineering), الحاسبات والذكاء الاصطناعي (computing and artificial intelligence), التمريض (nursing), الطب البيطري (veterinary medicine), الفنون التطبيقية (applied arts), الفنون والتصميم (arts and design), الزراعة (agriculture), and السياحة والفنادق والآثار (tourism, hotels and antiquities).",
+        "research_requirement": null,
+        "duration": "For the whole period of study at the participating national university until graduation (Bachelor's / Licence degree).",
+        "description": "The National Initiative to Support Distinguished Students in Egyptian Universities (المبادرة الوطنية لدعم الطلاب المتميزين بالجامعات المصرية), launched by the Ministry of Higher Education and Scientific Research in cooperation with the Central Bank of Egypt, funds academically distinguished and socially eligible Egyptian secondary school leavers to study state-priority specialisms at participating national universities. The Ministry presents it as support for equal opportunity and the preparation of qualified scientific cadres in specialisations that answer the state's priorities, with grants distributed across all governorates.",
+        "region": "Egypt (all governorates) / Africa",
+        "program_type": "Government national initiative scholarship (Ministry of Higher Education and Scientific Research with the Central Bank of Egypt)",
+        "english_requirement": null
+      },
+      "verification": {
+        "source_citations": [
+          "https://sis.gov.eg/ar/%D8%A7%D9%84%D9%85%D8%B1%D9%83%D8%B2-%D8%A7%D9%84%D8%A5%D8%B9%D9%84%D8%A7%D9%85%D9%8A/%D8%A7%D9%84%D8%A3%D8%AE%D8%A8%D8%A7%D8%B1/%D9%85%D8%AF-%D9%81%D8%AA%D8%B1%D8%A9-%D8%A7%D9%84%D8%AA%D9%82%D8%AF%D9%8A%D9%85-%D9%84%D9%85%D9%86%D8%AD%D8%A9-%D8%B9%D9%84%D9%85%D8%A7%D8%A1-%D8%A7%D9%84%D9%85%D8%B3%D8%AA%D9%82%D8%A8%D9%84",
+          "https://futurescholars.mohesr.gov.eg/home",
+          "https://futurescholars.mohesr.gov.eg/faqs"
+        ],
+        "last_verified_date": "2026-10-10",
+        "verification_status": "confirmed",
+        "confidence": "medium",
+        "not_confirmed": [
+          "funding_amount - no monetary figure, stipend or per-year amount is published on any official page for this programme; coverage is described only in words as full",
+          "funding_currency and funding_period - no cash amount is published, so there is no currency or cadence to confirm",
+          "travel_coverage - the official pages do not mention travel or installation costs",
+          "english_requirement - no IELTS/TOEFL score or MOI rule is published; the portal only refers to additional programmes that enhance students' personal and language skills",
+          "study_mode - not stated in words on the official pages",
+          "research_requirement - not applicable/published for this bachelor's-level scheme",
+          "next-cycle dates - no dates for a 2027/2028 round are published yet",
+          "The ministry's own application portal domain (futurescholars.mohesr.gov.eg) was unreachable from the research network after repeated attempts (transport error / connection refused), so the portal-only details - the list of 32 participating national universities and the cumulative GPA of at least 3 from the second year - were captured from the official domain's own indexed content and should be re-checked when the portal responds"
+        ],
+        "notes": "Deadline extension, full coverage wording, eligibility conditions, application route with national ID login, electronic ranking and admission test, and the nine specialisms were read in full on the official Egyptian State Information Service page (sis.gov.eg, the official source URL in the brief), fetched successfully. The ministry's application portal domain could not be reached directly, so its own published wording (32 national universities, GPA 3.0 condition, full conditions list, second-stage nomination notice) was taken from the official domain's indexed content."
+      },
+      "applicant_utility": {
+        "summary": "This is a needs-based full ride rather than a pure merit award: you must be a high scorer and, at the same time, either a Takaful wa-Karama beneficiary or a student the Ministry of Education exempted from school fees in 2025/2026, with a government-school secondary certificate. Applications for the 2026/2027 intake ran only from 11:00 on 29 August 2026 to 19:00 on 4 September 2026 after a single extension, and the round is now closed with second-stage nomination lists published. No cash stipend figure is ever published, so your realistic expectation is full study expenses plus paid accommodation and living support, transferred into a bank account you open at a Central Bank-licensed Egyptian bank.",
+        "best_fit": "Egyptian government-school leavers from Takaful wa-Karama or fee-exempt households with a strong secondary-school total who want a tuition-free place at a national (أهلية) university in medicine, engineering, computing/AI or another priority field.",
+        "application_readiness_checklist": [
+          "Have the national ID number and the password printed on the secondary school completion certificate ready before the portal opens; the certificate is the only source of the password and without it you cannot log in at all.",
+          "Obtain documentary proof of Takaful wa-Karama enrolment or of the Ministry of Education fee exemption for 2025/2026 - eligibility fails without this evidence, whatever your marks.",
+          "Line up a parent or guardian who can co-sign both the application declaration and the later scholarship grant agreement.",
+          "Prepare to open a bank account at a bank licensed by the Central Bank of Egypt inside Egypt; the living and accommodation money is paid into it.",
+          "Read the minimum mark the initiative administration announces for each faculty and confirm your requested faculty exists in your governorate, or accept the nearest governorate that offers it."
+        ],
+        "common_rejection_risks": [
+          "Incomplete or inconsistent portal data - the Ministry states that applications with missing information, or data shown to be untrue or not matching official documents, are simply excluded.",
+          "Failing to sit the admission test: nomination is cancelled automatically if the candidate does not attend it.",
+          "Submitting any information that later proves false, which the official wording says automatically cancels the admission.",
+          "Holding another scholarship funded by another party in parallel - an explicit disqualifier.",
+          "Missing the very short window: applications ran for roughly one week and were extended only once, on 1 September 2026."
+        ],
+        "estimated_uncovered_costs": "The official pages publish no monetary value and no list of exclusions, so anything outside study expenses, accommodation and living support - personal spending, travel to and from the university, clothing, and any fee or item not covered by the grant agreement - must be self-funded; the exact scope can only be settled by the signed grant agreement and the university's own fee schedule.",
+        "document_audit": [
+          "The portal password exists only on the secondary school completion certificate; losing or misplacing that certificate is a direct barrier to applying, so keep it safe from results day onwards.",
+          "The application declaration and the grant agreement both require the parent or guardian's signature, so an unreachable or unwilling guardian stops the application at two separate points.",
+          "Proof of Takaful wa-Karama benefit or Ministry of Education fee exemption functions as the real eligibility gate, even though the official text only refers generally to 'all required documents'.",
+          "Opening a bank account at a Central Bank-licensed Egyptian bank is a post-award obligation, not a document: a grantee who cannot open one cannot receive the living and accommodation payments."
+        ],
+        "alerts": [
+          "The 2026/2027 application window is closed - it shut at 19:00 on Friday 4 September 2026 - so monitor the portal news page and the Ministry's official channels from late August for the next round, since the window lasts about a week.",
+          "Continued funding depends on keeping a cumulative GPA of at least 3 or its equivalent from the second year onwards; treating the first year lightly puts the whole grant at risk.",
+          "Geographic allocation follows the governorate of your secondary school, or the nearest governorate if your requested faculty is not offered there, so the faculty you rank may decide which university and city you end up in.",
+          "The programme is genuinely competitive: candidates are pre-sorted by secondary school total, so a mid-range total can be excluded before any test is taken."
+        ],
+        "submission_workflow": "A single electronic submission on the ministry's portal: log in with the national ID and the certificate password, complete the data, upload documents and sign the declaration with the guardian - then wait for electronic ranking, preliminary nomination and the invitation to the admission test."
+      }
+    }
+  ]
+}

@@ -1,0 +1,138 @@
+{
+  "agent": "agent_014",
+  "records": [
+    {
+      "id": 53,
+      "official": {
+        "official_source_urls": [
+          "https://www.humphreyfellowship.org",
+          "https://www.humphreyfellowship.org/how-to-apply/",
+          "https://www.humphreyfellowship.org/how-to-apply/eligibility/",
+          "https://www.humphreyfellowship.org/how-to-apply/fellowship-components/",
+          "https://www.humphreyfellowship.org/how-to-apply/frequently-asked-questions/"
+        ],
+        "application_link": "https://www.humphreyfellowship.org/how-to-apply/",
+        "catalogue_url": "https://az.usembassy.gov/education/#non-degree-programs",
+        "official_updates_url": null,
+        "deadline_central": null,
+        "deadline_central_display": null,
+        "deadline_note": "Application deadlines vary by country: the nominating U.S. Embassy or Binational Fulbright Commission sets its own internal deadline, and nominations must reach the Institute of International Education by mid-September. Selections are announced in March and fellows start between August and September.",
+        "application_cycle": "Annual cohort; embassy nominations due to IIE by mid-September, fellowship begins August-September of the same year",
+        "status": "UPCOMING",
+        "status_note": "The programme publishes no single central application window; each U.S. Embassy Public Affairs Section or Binational Fulbright Commission runs its own round and advises applicants of its internal deadline.",
+        "tuition_coverage_note": "Payment of tuition and fees at the assigned host university.",
+        "funding_amount": null,
+        "funding_currency": null,
+        "funding_period": "one ten-month fellowship year",
+        "tuition_coverage": true,
+        "living_cost_coverage": true,
+        "travel_coverage": true,
+        "fully_funded": true,
+        "benefits": [
+          "Payment of tuition and fees at the assigned host university",
+          "A maintenance (living) allowance, including a one-time settling-in allowance",
+          "Accident and sickness coverage",
+          "A book allowance",
+          "A one-time computer subsidy",
+          "Air travel (international travel to and from the U.S. for the Program and domestic travel to required program events)",
+          "A Professional Development allowance for professional activities, such as field trips, professional visits, and conferences"
+        ],
+        "eligibility": [
+          "Be a citizen of an eligible country",
+          "Have an undergraduate (first university or Bachelor's) degree",
+          "Have a minimum of five years of full-time professional experience",
+          "Demonstrated leadership qualities and a record of public service in the community",
+          "Limited experience in the United States",
+          "Demonstrated English language ability"
+        ],
+        "requirements": [
+          "Apply through the U.S. Embassy (Public Affairs Section) or Binational Fulbright Commission in your country",
+          "Complete answers to all questions; essay responses in English must thoroughly address the prompt",
+          "Two letters of recommendation in English; one must be from the applicant's current employer",
+          "Official transcripts in English (diplomas need only be uploaded if the transcript does not show proof the degree was obtained)"
+        ],
+        "documents": [
+          "Application via U.S. Embassy Public Affairs Section or Binational Fulbright Commission",
+          "English essay responses addressing the application prompt",
+          "Two letters of recommendation in English (one from current employer)",
+          "Official transcripts in English",
+          "Diploma/degree certificate when transcripts do not evidence the degree"
+        ],
+        "selection_criteria": [
+          "National selection by the U.S. Embassy or Binational Fulbright Commission",
+          "Review by independent review committees in the United States",
+          "Final candidate approval determined by the J. William Fulbright Foreign Scholarship Board",
+          "Assignment in groups of 13-15 to the host institution best matched to the Fellow's professional field; Fellows cannot choose their university"
+        ],
+        "coverage": [
+          "Tuition and fees at the assigned host university",
+          "Maintenance (living) allowance with a one-time settling-in allowance",
+          "Accident and sickness coverage",
+          "Book allowance",
+          "One-time computer subsidy",
+          "International travel to and from the U.S. plus domestic travel to required program events",
+          "Professional Development allowance"
+        ],
+        "application_method": [
+          "Apply through the U.S. Embassy (Public Affairs Section) or Binational Fulbright Commission in your home country; direct applications to the programme are not accepted"
+        ],
+        "application_route": "Contact your U.S. Embassy or Binational Fulbright Commission to access the application; local deadlines apply and nominations go to IIE by mid-September.",
+        "study_mode": "Full-time, non-degree",
+        "citizenship_residency": "Must be a citizen of an eligible country (see the U.S. Embassies & Commissions country eligibility list)",
+        "international_eligibility": "Yes - the programme serves mid-career professionals from designated eligible countries outside the United States",
+        "subject_or_agency_requirement": "Field of study must align with the programme's impact areas: Human & Institutional Capacity, Rights & Freedoms, Sustainable Lands, or Thriving Communities",
+        "research_requirement": null,
+        "duration": "Ten-month Fellowship year, including a pre-academic English and professional programme, a six-week Professional Affiliation, the Humphrey Seminar, and the Global Leadership Forum",
+        "description": "The Humphrey Fellowship, a Fulbright exchange, brings influential professionals from priority countries to the United States for graduate-level, non-degree study and professional experience at U.S. host universities; it is funded by the U.S. Department of State and administered by the Institute of International Education.",
+        "region": "North America",
+        "program_type": "Non-degree professional fellowship for mid-career professionals (Fulbright exchange)",
+        "english_requirement": "Demonstrated English language ability; the official FAQ states that IELTS or the Duolingo English Test can be utilized for all candidates - confirm specifics with your Embassy or Fulbright Commission"
+      },
+      "verification": {
+        "source_citations": [
+          "https://www.humphreyfellowship.org/how-to-apply/frequently-asked-questions/",
+          "https://www.humphreyfellowship.org/how-to-apply/eligibility/"
+        ],
+        "last_verified_date": "2026-10-10",
+        "verification_status": "confirmed",
+        "confidence": "high",
+        "not_confirmed": [
+          "funding_amount",
+          "funding_currency",
+          "deadline_central"
+        ],
+        "notes": "The official Humphrey site publishes benefit components but no monetary figure; deadlines are set per country by U.S. Embassies and Fulbright Commissions, with nominations due to IIE by mid-September."
+      },
+      "applicant_utility": {
+        "summary": "This is a nomination-driven fellowship: you cannot apply directly, so your first move is contacting your U.S. Embassy or Binational Fulbright Commission to learn its local deadline well before the mid-September nomination cutoff. Build your file around a public-service track record - at least five years of full-time professional work plus a bachelor's degree - and secure one of your two recommendation letters from your current employer. Because placement is by cohort field rather than personal choice, frame your essays around the professional field you want to deepen, not a specific U.S. university.",
+        "best_fit": "Mid-career public-service professionals from designated eligible countries with 5+ years of full-time experience who want a non-degree, graduate-level year in the U.S.",
+        "application_readiness_checklist": [
+          "Confirm your country appears on the Humphrey eligible-country list via the U.S. Embassies & Commissions page",
+          "Contact your Embassy Public Affairs Section or Binational Fulbright Commission early to obtain the local deadline and forms",
+          "Draft English essay responses that address the prompt directly and evidence leadership and public service",
+          "Line up two recommenders, one of whom must be your current employer",
+          "Gather official English transcripts and diploma certificates before the embassy window opens"
+        ],
+        "common_rejection_risks": [
+          "Missing the embassy's internal deadline - the mid-September nomination cutoff leaves no room for late files",
+          "Thin professional record: fewer than five years of full-time experience or mostly part-time work",
+          "Generic essays that read like graduate-school statements instead of public-service leadership evidence",
+          "Recommendation letters that lack current-employer insight into your recent work"
+        ],
+        "estimated_uncovered_costs": "No additional maintenance allowance is provided for dependents; fellows bringing family must show financial support, adequate dependent insurance meeting U.S. State Department requirements, and child care plans.",
+        "document_audit": [
+          "Transcripts must be official, valid documents listing courses and grades - informal uploads are not accepted",
+          "Diplomas are only required when the transcript does not already prove the degree was obtained",
+          "Both recommendation letters must be in English and one must come from the current employer"
+        ],
+        "alerts": [
+          "Deadlines vary by country - the mid-September date is the embassy nomination cutoff, not your personal deadline",
+          "More than three years of prior U.S. stay, or fewer than four years back home at professional responsibility, affects eligibility",
+          "Fellows are assigned to host universities in cohorts of 13-15 and cannot choose the institution",
+          "The programme does not award a degree, so it cannot substitute for a graduate programme application"
+        ],
+        "submission_workflow": "Apply to your Embassy/Fulbright Commission by its local deadline -> commission nominates to IIE by mid-September -> U.S. review committees and the Fulbright Foreign Scholarship Board approve -> fellows notified in spring, starting August-September."
+      }
+    }
+  ]
+}

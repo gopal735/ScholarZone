@@ -1,0 +1,85 @@
+{
+ "agent": "agent_327",
+ "assignment_count": 1,
+ "scholarships": [
+  {
+   "id": 720,
+   "title": "Scholarships for High Achievers Higher Education (Level 7) Overseas Scheme (TSLS, Government of Fiji)",
+   "country": "Fiji",
+   "degree": "Bachelor's",
+   "funding_label": "Government scholarship",
+   "status": "open",
+   "official_source": "Tertiary Scholarships and Loans Service (TSLS), Ministry of Education, Government of Fiji",
+   "official_source_url": "https://tsls.com.fj/high-achievers-higher-education-level-7-overseas-scheme",
+   "application_link": "https://tsls.com.fj/high-achievers-higher-education-level-7-overseas-scheme",
+   "catalogue_url": "https://tsls.com.fj/schemes",
+   "official_updates_url": "https://tsls.com.fj",
+   "existing": {
+    "funding_amount": null,
+    "funding_currency": null,
+    "funding_period": null,
+    "tuition_coverage": null,
+    "living_cost_coverage": null,
+    "travel_coverage": null,
+    "fully_funded": 0,
+    "description": null,
+    "eligibility": [
+     "Be a Fiji citizen",
+     "Be ordinarily resident in Fiji for at least three (3) years before the award commencement date, unless determined otherwise by the Service",
+     "Have completed Year 13 in 2025, or as determined by the Service at the time of application; applicants who completed Foundation Studies or repeated Year 13 are not eligible",
+     "Score 340/400 and above in the Year 13 examination and apply in a listed programme for the Overseas Scholarship",
+     "Secure a place at an eligible institution by means of a final offer letter",
+     "Not be an existing TSLS sponsored student or graduate on active bond service, or sponsored through any other agency"
+    ],
+    "eligibility_summary": "Fiji citizens resident in Fiji for at least three years who completed Year 13 with 340/400 or above, hold a final offer from a listed Australian or New Zealand institution, and are applying in a priority discipline.",
+    "benefits": [],
+    "coverage": [],
+    "requirements": [
+     "Register on the TSLS Apply portal, complete the online form and submit the application",
+     "Hold a final offer letter from one of the listed eligible institutions",
+     "Apply in a listed priority discipline and programme"
+    ],
+    "documents": [
+     "Final offer letter from an eligible institution",
+     "Year 13 examination result showing 340/400 or above",
+     "Evidence of Fiji citizenship and three years of ordinary residence in Fiji"
+    ],
+    "english_requirement": null,
+    "application_method": [
+     "Register on TSLS Apply",
+     "Fill in the online form",
+     "Submit the application",
+     "TSLS processes the application and issues the scholarship result"
+    ],
+    "selection_notes": "80 awards are available under the scheme, allocated across priority disciplines: Engineering Services (10), Medical and Health Services (10), Agriculture, Forestry and Fisheries (10), Information Technology Services (20), Science and Innovation - Meteorology (10), Business and Commerce (10) and Special Areas (10). Eligible institutions are 20 universities in Australia and New Zealand, including Auckland University of Technology, Griffith, Massey, Monash, QUT, Swinburne, University of Auckland, Canberra, Canterbury, Newcastle, UNSW, Queensland, Sydney, Waikato, Victoria University of Wellington, Western Sydney, Otago, RMIT and University of Southern Queensland.",
+    "best_fit": "Fiji citizen Year 13 leavers with 340/400 or above who already hold an offer for an approved engineering, health, agriculture, IT, meteorology, business or specialist programme at a listed Australian or New Zealand university.",
+    "notes": "TSLS publishes no benefit breakdown on the scheme page; the benefit schedule sits in the TSLS Scholarship Policies Handbook. TSLS operates a Travel and Bond Clearance/Repayment portal and a Bond Calculator, which evidences a bond obligation on sponsored students, but the scheme page does not state the bond period.",
+    "duration": "Not published on the scheme page; the TSLS Scholarship Policies Handbook covers this",
+    "application_period": "TSLS published its 2027 Scholarship Policies Handbook in September 2026 and its TSLS Apply portal was live and linked as \"Apply Now\" on the scheme page when checked on 2026-10-04. TSLS does not publish a closing date on the scheme page.",
+    "deadline_display": null,
+    "deadline_date": null,
+    "region": "Oceania",
+    "program_type": "Government scholarship (Fiji Tertiary Scholarships and Loans Service statutory scheme)",
+    "applicant_utility": null,
+    "official_details": null
+   },
+   "missing_fields": [
+    "funding_amount",
+    "funding_currency",
+    "funding_period",
+    "tuition_coverage",
+    "living_cost_coverage",
+    "travel_coverage",
+    "description",
+    "benefits",
+    "coverage",
+    "english_requirement",
+    "deadline_display",
+    "deadline_date",
+    "applicant_utility",
+    "official_details"
+   ]
+  }
+ ],
+ "result_file": "C:\\Users\\GopaL\\Desktop\\Projects folder\\ScholarZone\\backend\\research_output\\live500\\results\\agent_327.json"
+}

@@ -1,0 +1,154 @@
+{
+  "agent": "agent_180",
+  "records": [
+    {
+      "id": 477,
+      "official": {
+        "official_source_urls": [
+          "https://www.borenawards.org/apply-now",
+          "https://www.borenawards.org/budgetguidelines",
+          "https://www.borenawards.org/eligible-programs",
+          "https://www.borenawards.org/selection-criteria",
+          "https://www.borenawards.org/application-instructions-boren-scholarships",
+          "https://www.borenawards.org/about-us/about-us",
+          "https://www.borenawards.org/boren-fellowship-faq"
+        ],
+        "application_link": "https://www.borenawards.org/apply-now",
+        "catalogue_url": "https://www.borenawards.org/eligible-programs",
+        "official_updates_url": "https://www.borenawards.org/rss.xml",
+        "deadline_central": "2027-01-20",
+        "deadline_central_display": "20 January 2027",
+        "deadline_note": "Two national deadlines in the same cycle: Boren Fellowships close 20 January 2027 and the undergraduate Boren Scholarships close 27 January 2027, both at 5pm Eastern time. Campus representatives may set earlier campus deadlines that applicants are asked to respect.",
+        "application_cycle": "2027-2028 cycle, open as of the 2026-10-10 check; funding may be applied to programs starting as early as June 2027 or as late as 1 March 2028",
+        "status": "OPEN",
+        "status_note": "The official Apply Now page states the 2027-2028 Boren Scholarship application cycle and the 2027-2028 Boren Fellowship application cycle are both open, with applications started through the IIE application portals.",
+        "tuition_coverage_note": "Approved program tuition and fees are eligible, including tuition required to maintain matriculation at the home institution; home institution matriculation fees are covered up to $2,500 per semester with a $5,000 overall cap.",
+        "funding_amount": 25000,
+        "funding_currency": "USD",
+        "funding_period": "one-off, tiered by overseas duration (8-52 weeks)",
+        "tuition_coverage": true,
+        "living_cost_coverage": true,
+        "travel_coverage": true,
+        "fully_funded": false,
+        "benefits": [
+          "Award tiers set by duration of overseas study: $8,000 for 8-11 week summer programs (STEM majors only), $12,500 for 12-24 weeks, $25,000 for 25-52 weeks",
+          "Regional Flagship Language Initiative awards add the approved summer domestic cost on top of the overseas tier amount",
+          "As a condition of the award, recipients agree to seek and secure national security employment in the federal government for at least one year after graduation, with preference for longer-term commitment",
+          "All overseas program proposals are reviewed and approved by a Boren Program Advisor before travel to confirm they meet program requirements",
+          "Award amounts are firm by duration tier; financial aid from other sources must be reported and may reduce the Boren grant where costs overlap"
+        ],
+        "eligibility": [
+          "U.S. citizens at the time of the national application deadline; no permanent residents or international students are eligible",
+          "A high school graduate or GED holder, and at least 18 years of age by the time the application is submitted",
+          "Matriculated in a degree program at a U.S. institution accredited by a body recognized by the U.S. Department of Education, remaining matriculated and not graduating until the award is complete",
+          "An overseas program in a preferred destination outside Western Europe, Canada, Australia and New Zealand, in a country of which the applicant is not a citizen",
+          "A continuous program of at least 12 weeks (8 weeks for undergraduate STEM summer programs) with classroom language study of at least 15-20 weekly contact hours as a core element",
+          "ROTC cadets, midshipmen and members of the Reserves or National Guard must be in inactive, non-drilling status for the duration of the funded program"
+        ],
+        "requirements": [
+          "Two essays: national security (maximum 800 words) and motivation and public service careers (maximum 800 words for Scholarships, 1,000 words for Fellowships)",
+          "Study Plan Summary of up to 250 words for each segment of the proposed program, plus a study abroad program description upload limited to 5 pages",
+          "Two letters of recommendation for Scholarships (a third optional) and three for Fellowships, submitted by recommenders through the online application system; recommenders may not be family or friends",
+          "An unofficial transcript from the current U.S. institution is required in order to submit; unofficial transcripts from up to two additional institutions must be received before the national deadline",
+          "An alternate study abroad program in a different destination is required for destinations marked with an asterisk and for the languages Arabic, Mandarin or Russian (with listed exceptions)",
+          "Employment history and activities entries of 50 to 100 words each, plus a language self-assessment in the online application"
+        ],
+        "documents": [
+          "Unofficial transcript(s) from the current and up to two previous U.S. institutions, showing name, institution, course titles and grades, with sensitive personal identifying information redacted",
+          "Study abroad program description: a screenshot or PDF from the program website or a scanned brochure, no more than 5 pages",
+          "Letters of recommendation submitted by the recommenders themselves through the online system",
+          "Optional language proficiency evaluation completed by a language instructor",
+          "Optional letter of affiliation from an overseas host institution or faculty (strongly advised for Fellowship applicants proposing research, internship or coursework)"
+        ],
+        "selection_criteria": [
+          "A clear and compelling explanation of the significance of the overseas destination, region, language, field of study and study itself to U.S. national security, tied to federal career goals (Tier One priority organizations are the Departments of War, State and Homeland Security and the Intelligence Community)",
+          "Demonstrated understanding of how to fulfil the one-year federal service requirement, with preference for a longer-term commitment to government service",
+          "Serious commitment to language study before, during and after the program, with realistic proficiency goals matched to an appropriately intensive program",
+          "Use of a preferred overseas destination, preferred language and preferred field of study, at the preferred 25+ week duration, or a compelling argument where these are not met",
+          "Academic preparation, adaptability, flexibility and maturity required to succeed abroad; preference is given to veterans when other factors are equivalent",
+          "No semi-finalist or interview phase: regional merit review panels of faculty and administrators make recommendations, with final decision authority held by DLNSEO"
+        ],
+        "coverage": [
+          "Approved program tuition and fees, plus home institution matriculation fees up to $2,500 per semester ($5,000 overall cap)",
+          "Room and board (housing and food), including during program breaks spent in the destination",
+          "Books and supplies",
+          "Visa and overseas visa-related costs",
+          "Fly America Act compliant round-trip airfare at the lowest cost unrestricted class (basic economy), plus checked luggage up to 2 bags",
+          "Overseas health insurance, local transportation, and cybersecurity costs up to $500 (burner laptop and/or phone, or VPN); select research-related expenses for Fellows only"
+        ],
+        "application_method": [
+          "Start the application through the IIE online application portal (apply.iie.org/borenscholarship or apply.iie.org/borenfellowship) linked from the official Apply Now page",
+          "Notify your Boren Awards campus representative as early as possible and respect any earlier campus deadline; applicants without a campus representative may still apply without penalty",
+          "Complete the twelve application sections, including eligibility determination, academic information, program information and budget, essays, language self-assessment, additional information, recommendations and the submission agreement",
+          "Upload the unofficial transcript and program description, and have recommenders submit their letters through the online system",
+          "Agree to the policies in the Submission Information section, then click Submit Application in the Review section before the national deadline"
+        ],
+        "application_route": "Online application through IIE's Boren Scholarship or Boren Fellowship portal, started from the official Apply Now page and submitted by the national deadline.",
+        "study_mode": "Full-time continuous overseas immersion; online programs are not eligible",
+        "citizenship_residency": "U.S. citizens at the time of the national application deadline only; permanent residents and international students are not eligible, and recipients may not study in a destination of which they are citizens",
+        "international_eligibility": "No - only U.S. citizens are eligible; no permanent residents or international students",
+        "subject_or_agency_requirement": "Classroom language study of a Boren preferred language in a preferred overseas destination (Africa, Asia, Central and Eastern Europe, Eurasia, Latin America, Middle East) must be a core element; French and Spanish carry minimum proficiency conditions verified by testing",
+        "research_requirement": "Not required; Boren Fellows may add research, classroom study or internships alongside language study, with language acquisition as the primary purpose, and are strongly advised to secure letters of overseas affiliation",
+        "duration": "Continuous overseas study of 8 to 52 weeks; minimum 12 weeks for most applicants (8 weeks for undergraduate STEM summer programs); 25-52 weeks preferred",
+        "description": "Boren Awards are scholarships and fellowships for U.S. undergraduate and graduate students committed to long-term overseas study and public service, funding study of the languages most critical to U.S. national security in Africa, Asia, Central and Eastern Europe, Eurasia, Latin America and the Middle East. Funding is designed to cover the majority of an awardee's overseas expenses and is not all-inclusive. In exchange, recipients agree to seek and secure national security employment in the federal government for at least one year after graduation.",
+        "region": "Overseas study in Africa, Asia, Central and Eastern Europe, Eurasia, Latin America and the Middle East; Western Europe, Canada, Australia and New Zealand are always ineligible",
+        "program_type": "U.S. federal government scholarship and fellowship (National Security Education Program / DLNSEO, administered by IIE)",
+        "english_requirement": null
+      },
+      "verification": {
+        "source_citations": [
+          "https://www.borenawards.org/budgetguidelines",
+          "https://www.borenawards.org/eligible-programs",
+          "https://www.borenawards.org/apply-now"
+        ],
+        "last_verified_date": "2026-10-10",
+        "verification_status": "confirmed",
+        "confidence": "high",
+        "not_confirmed": [
+          "english_requirement: no English-language test requirement (IELTS/TOEFL or MOI rule) is published on the official pages; the only language testing is the target-language self-assessment and proficiency verification for French and Spanish applicants",
+          "Notification date for the 2027-2028 cycle (previously mid-to-late April) is not stated on the pages checked",
+          "The IIE application portals (apply.iie.org) are linked from the official Apply Now page but the portals themselves were not opened"
+        ],
+        "notes": "Award tiers, coverage items, deadlines, cycle status and eligibility verified directly on borenawards.org (Budget Guidelines, Selecting an Eligible Study Program, Apply Now, Official Selection Criteria, Application Instructions, About Us and the Fellowship FAQ) on 2026-10-10; the official RSS updates feed is currently empty of items."
+      },
+      "applicant_utility": {
+        "summary": "This award pays a fixed one-off grant set strictly by how long you stay overseas: $8,000 for STEM-only summer programmes of 8-11 weeks, $12,500 for 12-24 weeks and $25,000 for 25-52 weeks, so programme length is the single biggest funding decision you make. The money can go to tuition and fees, housing and food, books, visas, Fly America-compliant flights, insurance and local transport, but the programme itself states the award is not all-inclusive, so most recipients cover a share of costs themselves. Because it carries a binding one-year federal national-security service commitment after graduation, it suits applicants already leaning toward a U.S. government career rather than those seeking generic study-abroad money. The 2027-2028 cycle runs through IIE's online portal and closes 20 January 2027 for Fellowships and 27 January 2027 for Scholarships, both at 5pm Eastern.",
+        "best_fit": "U.S. citizens aged 18 or over who are matriculated at an accredited U.S. institution, can commit 25 or more weeks to classroom-heavy language study in a Boren-preferred language outside Western Europe, Canada, Australia and New Zealand, and intend to build a federal national-security career.",
+        "application_readiness_checklist": [
+          "Confirm your destination and language sit on the preferred lists, and check whether the destination is asterisked (blue); if it is, or if you are studying Arabic, Mandarin or Russian, line up a viable alternate programme in an unrestricted destination first.",
+          "Verify from the programme syllabus that you will get at least 15-20 weekly contact hours of formal classroom language acquisition, since online programmes are ineligible and diluted language programmes score poorly.",
+          "Download the official Boren budget worksheet and total your real costs early, because the tier you land in ($8,000/$12,500/$25,000) is fixed by duration and never rounds up.",
+          "Contact your Boren campus representative in the autumn: many set earlier internal deadlines, and applicants without a campus representative can still apply without penalty.",
+          "Ask your two (Scholarship) or three (Fellowship) recommenders at least four to six weeks before the deadline, because letters must arrive through the online system and relatives or friends are not accepted.",
+          "Draft both essays directly against the published selection criteria, naming concrete federal agencies and a realistic path to the one-year service requirement, and steer clear of the prohibited topics listed in the Executive Orders disclaimer."
+        ],
+        "common_rejection_risks": [
+          "Proposing a destination in Western Europe, Canada, Australia or New Zealand, or a country of which you are a citizen; these are automatic ineligibility, not a scoring deduction.",
+          "A programme whose language study is diluted by English-taught coursework or unpaid internships, or that delivers fewer than 15-20 weekly contact hours.",
+          "Treating the federal service requirement as an afterthought; panels explicitly score how well you understand and commit to fulfilling it.",
+          "Falling a few days short of the 25-week threshold and expecting the higher tier: the budget guidelines confirm 24 weeks and a few days stays at $12,500.",
+          "Proposing French or Spanish without the required proficiency level, since awards in those languages are contingent on verified testing.",
+          "Graduating or losing matriculation before the funded period ends; Fellowship applicants also cannot use the award for a gap year between degrees."
+        ],
+        "estimated_uncovered_costs": "Passport fees, medical costs including vaccinations and prescriptions, a personal laptop, dependent expenses, personal travel or entertainment, ongoing U.S. costs such as rent, car or loan payments, any non-Fly America-compliant flights, and whatever your total programme cost exceeds the tier award, since the programme states the award is not all-inclusive.",
+        "document_audit": [
+          "The unofficial transcript from your current institution is needed just to submit; it must show your name, the institution, course titles and grades, and any SSN or date of birth must be redacted before upload.",
+          "Transcripts from up to two previous institutions can follow after submission but must arrive before the national deadline, so request them the moment you start applying.",
+          "The programme description upload (screenshot, PDF or brochure) is capped at five pages, so choose pages that evidence weekly contact hours and language intensity.",
+          "Letters must be submitted by the recommenders themselves through the system; you cannot upload on their behalf and relatives' letters are not accepted.",
+          "Word limits are hard: 800 words per essay for Scholarships (1,000 for the Fellowship's second essay) and 250 words per study-plan segment.",
+          "ROTC cadets, midshipmen, reservists and National Guard members need to document inactive, non-drilling status for the funded period."
+        ],
+        "alerts": [
+          "The two deadlines differ: Fellowships close 20 January 2027 and Scholarships 27 January 2027, both at 5pm Eastern, and your campus may set an earlier internal one.",
+          "You can adjust programme dates and providers later, but only within the same language, destination and budget tier; moving from a 30-week plan down to 15 weeks is reviewed case by case.",
+          "Funding for programme expenses after 31 May 2028 is contingent on availability and cannot be guaranteed at the time of award.",
+          "No paid employment and no internships with the U.S. or a foreign government during the funded period, and Fellows may not work as journalists abroad, even freelance or unpaid.",
+          "Study must form one continuous period in a single destination; multi-country tours such as a semester at sea are ineligible, though two cities in one country are allowed.",
+          "There is no interview stage, so anything you want the panel to know must appear in the written application."
+        ],
+        "submission_workflow": "Build the application in IIE's online portal for the Boren Scholarship or Boren Fellowship, work through its twelve sections, upload the unofficial transcript and programme description, route recommendations to your referees, agree to the submission policies, then press Submit Application in the Review section before the 5pm Eastern deadline."
+      }
+    }
+  ]
+}

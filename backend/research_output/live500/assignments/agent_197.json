@@ -1,0 +1,89 @@
+{
+ "agent": "agent_197",
+ "assignment_count": 1,
+ "scholarships": [
+  {
+   "id": 507,
+   "title": "AFdoc – Aides à la formation doctorale (FNR PhD funding scheme)",
+   "country": "Luxembourg",
+   "degree": "PhD",
+   "funding_label": "Research Funding",
+   "status": "open",
+   "official_source": "Fonds National de la Recherche (FNR), Luxembourg",
+   "official_source_url": "https://www.fnr.lu/funding-instruments/afdoc",
+   "application_link": "https://www.fnr.lu/funding-instruments/afdoc",
+   "catalogue_url": null,
+   "official_updates_url": "https://www.fnr.lu/afdoc-new-funding-scheme-for-phds-abroad-and-in-luxembourg-companies",
+   "existing": {
+    "funding_amount": null,
+    "funding_currency": null,
+    "funding_period": null,
+    "tuition_coverage": null,
+    "living_cost_coverage": null,
+    "travel_coverage": null,
+    "fully_funded": 0,
+    "description": null,
+    "eligibility": [
+     "Researchers at the career stage 'PhD Candidate (with Masters)'",
+     "Applicants must meet cumulative eligibility conditions: demonstrate a link to Luxembourg, be enrolled in a PhD programme by the project start date, not already hold a PhD, and not benefit from an old-age pension",
+     "Each applicant may submit one proposal per call",
+     "Bottom-up: proposals from all fields of research and technological development are eligible"
+    ],
+    "eligibility_summary": "Doctoral candidates holding a Master's who can demonstrate a clear link to Luxembourg, will be enrolled in a PhD programme by the project start date, do not already hold a PhD, and are not in receipt of an old-age pension.",
+    "benefits": [
+     "Maximum annual salary contribution of EUR 54,574 per funded doctoral candidate, including employer charges, social security and pension contributions, based on the salary index applicable on 1 June 2026",
+     "Up to four years of doctoral training"
+    ],
+    "coverage": [
+     "Maximum annual salary contribution of EUR 54,574 per funded doctoral candidate, including employer charges, social security and pension contributions, based on the salary index applicable on 1 June 2026",
+     "Up to four years of doctoral training"
+    ],
+    "requirements": [
+     "Demonstrate a clear link to Luxembourg",
+     "Be enrolled in a PhD programme by the project start date",
+     "Not already hold a PhD",
+     "Not be in receipt of an old-age pension",
+     "Submit only one proposal per call",
+     "Applications must be submitted in English via the FNR Grant Management System"
+    ],
+    "documents": [
+     "The instrument page itself publishes no document checklist; the application file requirements are set out in the AFdoc call documents",
+     "Published in the AFdoc call documents folder on the FNR SharePoint: 'Application guidelines AFdoc vf 1.pdf'",
+     "Published in the AFdoc call documents folder: 'Selection Guidelines AFdoc.pdf'",
+     "Published in the AFdoc call documents folder: 'AFdoc PhD Project DescriptionTemplate.docx' (also available as PDF)",
+     "Published in the AFdoc call documents folder: 'COMMITMENT LETTER.pdf'"
+    ],
+    "english_requirement": "Applications must be submitted in English via the FNR Grant Management System.",
+    "application_method": [
+     "Prepare the proposal using the AFdoc call documents (application guidelines, selection guidelines, project description template and commitment letter)",
+     "Submit the proposal in English through the FNR Grant Management System at https://grants.fnr.lu/login",
+     "Submit no more than one proposal per call",
+     "Wait for the funding decision in March of the following year (second/September call) or July (first/April call)"
+    ],
+    "selection_notes": "Eligible proposals are assessed on the scientific quality and potential of the project, the applicant's profile and potential, the quality of the Host Institution, supervision and training environment, and the expected impact of the project. AFdoc follows a bottom-up approach: proposals from all fields of research and technological development are eligible, and projects do not need to align with Luxembourg's National Research Priorities provided they fall within the expertise of the supervisors, the Host Institution and, where applicable, the company partner. The 2026 call is a pilot for a self-assessment on potential research security aspects.",
+    "best_fit": "Doctoral candidates who already hold a Master's degree, can demonstrate a clear link to Luxembourg, and want to do a funded PhD at a public university abroad or at a Luxembourg R&D company working with a public PhD-awarding institution.",
+    "notes": "Tuition fees and related research costs are not eligible. No renewal, deferral, return-home or clinical restriction rule is published on the instrument page. Because funding goes to the Host Institution and the candidate is employed, the award is a salary rather than a stipend; the beneficiary has an employment relationship with the host, not with the FNR.",
+    "duration": "Funding may cover up to four years of doctoral training.",
+    "application_period": "The very first call was launched mid-September 2026 with a deadline on Wednesday, 25 November 2026 at 14:00 CET, so the scheme is open on 2026-10-01. From 2027 there will be two calls per year: the first call launched mid-February closes on the last Wednesday of April at 14:00 CET, funding decisions are communicated in July and funded projects must start no later than 1 February of the following year; the second call launched mid-September closes on the last Wednesday of November at 14:00 CET, decisions are communicated in March of the following year and funded projects must start no later than 1 October.",
+    "deadline_display": "First call: 'a deadline on Wednesday, 25 November 2026 at 14:00 CET'. From 2027 there will be two calls per year: the first call launched mid-February closes on the last Wednesday of April at 14:00 CET, and the second call launched mid-September closes on the last Wednesday of November at 14:00 CET.",
+    "deadline_date": "2026-11-25",
+    "region": "Europe",
+    "program_type": "Government research funding",
+    "applicant_utility": null,
+    "official_details": null
+   },
+   "missing_fields": [
+    "funding_amount",
+    "funding_currency",
+    "funding_period",
+    "tuition_coverage",
+    "living_cost_coverage",
+    "travel_coverage",
+    "description",
+    "applicant_utility",
+    "official_details"
+   ]
+  }
+ ],
+ "result_file": "C:\\Users\\GopaL\\Desktop\\Projects folder\\ScholarZone\\backend\\research_output\\live500\\results\\agent_197.json"
+}

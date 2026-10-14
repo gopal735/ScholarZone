@@ -1,0 +1,87 @@
+{
+ "agent": "agent_201",
+ "assignment_count": 1,
+ "scholarships": [
+  {
+   "id": 515,
+   "title": "Young Leaders' Program (YLP) - Japanese Government (MEXT) Scholarship, GRIPS School of Government and School of Local Governance",
+   "country": "Japan",
+   "degree": "Master's",
+   "funding_label": "Fully Funded",
+   "status": "open",
+   "official_source": "Ministry of Education, Culture, Sports, Science and Technology (MEXT), Japan - hosted at the National Graduate Institute for Policy Studies (GRIPS)",
+   "official_source_url": "https://www.grips.ac.jp/en/education/inter_programs/leader",
+   "application_link": "https://www.grips.ac.jp/en/education/inter_programs/leader",
+   "catalogue_url": "https://www.mext.go.jp/a_menu/koutou/ryugaku/ylp.htm",
+   "official_updates_url": "https://www.grips.ac.jp/en/admissions/apply",
+   "existing": {
+    "funding_amount": null,
+    "funding_currency": null,
+    "funding_period": null,
+    "tuition_coverage": null,
+    "living_cost_coverage": null,
+    "travel_coverage": null,
+    "fully_funded": 0,
+    "description": null,
+    "eligibility": [
+     "Young Leaders Program (YLP) students: You must be under 40 years of age (in principle), and university or college graduates who have practical work experience, young public administrators, etc. who are expected to play active role in Asia and other countries.",
+     "Study in Japan: 'Young Leaders Program (YLP) students' - Embassy recommendation: No; University recommendation: No. Recommendations come from official overseas recommending organizations (footnote 2).",
+     "GRIPS target group: 'This program is open to exceptionally promising young government officials with considerable working experiences in the area of public administration. In principle, a minimum of three years working experience in the field in the applicant's home country is a prerequisite for admission to the program.'",
+     "GRIPS: 'Students will be admitted on the basis of an appraisal of their potential to become future leaders at home, to play important roles in their countries' development, and to maintain the lasting friendship and trust of Japan and other countries around the world.'"
+    ],
+    "eligibility_summary": "YLP students must be under 40 years of age (in principle), and be university or college graduates who have practical work experience, young public administrators and others who are expected to play an active role in Asia and other countries.",
+    "benefits": [
+     "Monthly scholarship of ¥242,000",
+     "Tuition exempted",
+     "Round-trip travel expenses (airfare) provided"
+    ],
+    "coverage": [
+     "Monthly scholarship of ¥242,000",
+     "Tuition exempted",
+     "Round-trip travel expenses (airfare) provided"
+    ],
+    "requirements": [
+     "Applications for the Japanese Government (MEXT) Scholarships are conducted through Japanese embassies, consulates in your countries, or institutions of higher education in Japan.",
+     "Candidates are recommended through official overseas recommending organizations; GRIPS publishes a country-by-country list of recommending authorities for the School of Government and the School of Local Governance.",
+     "GRIPS states the scholarship listed for YLP is for international students only, funded by the Japanese Government (MEXT).",
+     "MEXT states the application is free of charge and warns that organisations or individuals charging application fees or deposits have no relation with the Japanese Government."
+    ],
+    "documents": [],
+    "english_requirement": null,
+    "application_method": [
+     "Apply to and be selected through the nominating authority in your own country; the list of recommending authorities is published by the host institution.",
+     "Proceed through the Japanese embassy or consulate general route for the MEXT scholarship components.",
+     "Submit the application materials required by your nominating authority; MEXT and GRIPS publish no central document checklist for YLP on the pages read.",
+     "Attend any selection interviews your nominating authority or embassy requires.",
+     "Receive the offer and enrol at GRIPS in October; the programme runs one year to September graduation."
+    ],
+    "selection_notes": "Applications are handled at country level through the nominating authority, which is the institution listed for the applicant's country on the GRIPS page; MEXT's embassy/consulate route completes the scholarship process. GRIPS states admission is based on an appraisal of the applicant's potential to become a future leader at home, to play an important role in their country's development, and to maintain lasting friendship and trust between Japan and other countries. Selection method and review stages are not published on the pages read and are left unconfirmed.",
+    "best_fit": "Promising young government officials with at least three years of public-administration experience in their home country who are nominated by a listed authority in a designated country, and who will return to a leadership role in that administration.",
+    "notes": "Return-home expectation is published: 'Upon completing the program, graduates will, in principle, resume their former positions in their home countries' and the published career list of graduates shows return to positions such as ministries, city halls and public agencies, so a return-to-administration expectation is explicit. MEXT's published table shows no preliminary training block for YLP and a one-year duration including Japanese language education. No deferral, renewal or clinical-restriction term is published on the pages read, so those fields are null.",
+    "duration": "Within 1 year and 6 months including Japanese language education (MEXT table); GRIPS states a 1-year programme, October enrolment to September graduation",
+    "application_period": "GRIPS publishes that for the cycle it runs, application acceptance runs July to October (last year's result), enrolment is in October and graduation the following September, with results announced the following April. GRIPS has published the YLP Brochure for 2027-2028. The nominating authority in the applicant's own country sets the operative date; no central deadline exists.",
+    "deadline_display": "No central deadline is published. MEXT states that all application procedures for Japanese Government (MEXT) Scholarships are conducted through Japanese embassies, consulates in your countries, or institutions of higher education in Japan, and candidates should ask their own embassy/consulate. GRIPS publishes the application window as a historical reference only: application acceptance period (last year's result) July to October, with results announced the following April.",
+    "deadline_date": null,
+    "region": "Asia",
+    "program_type": "Government scholarship",
+    "applicant_utility": null,
+    "official_details": null
+   },
+   "missing_fields": [
+    "funding_amount",
+    "funding_currency",
+    "funding_period",
+    "tuition_coverage",
+    "living_cost_coverage",
+    "travel_coverage",
+    "description",
+    "documents",
+    "english_requirement",
+    "deadline_date",
+    "applicant_utility",
+    "official_details"
+   ]
+  }
+ ],
+ "result_file": "C:\\Users\\GopaL\\Desktop\\Projects folder\\ScholarZone\\backend\\research_output\\live500\\results\\agent_201.json"
+}

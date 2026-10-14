@@ -1,0 +1,143 @@
+[
+  {
+    "scholarship_id": 244,
+    "outcome": "no_verified_supervisor_found",
+    "professors": [],
+    "notes": "Official page verified live at https://yz.tsinghua.edu.cn/en/info/1027/1117.htm. The CGS Type B route is a China Scholarship Council (CSC) government scholarship hosted/nominated by Tsinghua but spanning 40+ schools/departments; pre-admission and recommendation are handled by each applying school/department, not by any named professor. Page states 'Have been pre-admitted by THU and recommended for CGS by the pre-admitted schools/departments' and 'Please consult the scholarship contact at schools/departments for details in advance'. The admissions guidance (https://yz.tsinghua.edu.cn/en/Admissions/How_to_Apply.htm) states 'For personal information of supervisors, please check on the departments'/schools' websites' - i.e., supervision is department-specific and not tied to the scholarship itself. The Financial Aid Contact page (https://yz.tsinghua.edu.cn/en/Financial_Aid/Contact.htm) publishes only administrative admissions emails (e.g., finaid@tsinghua.edu.cn, grad@tsinghua.edu.cn), not professors. Because no faculty supervisor is attached to the scholarship, none could be verified without fabricating a tie."
+  },
+  {
+    "scholarship_id": 245,
+    "outcome": "verified_supervisors",
+    "professors": [
+      {
+        "canonical_name": "AI Zhipin",
+        "title": "Professor, Doctoral Supervisor (研究员、博士生导师)",
+        "institution_name": "University of Chinese Academy of Sciences (UCAS)",
+        "department_name": "Institute of Geographic Sciences and Natural Resources Research (IGSNRR), Chinese Academy of Sciences",
+        "official_profile_url": "https://people.ucas.ac.cn/~aizhipin?language=en",
+        "official_email": "aizhipin@igsnrr.ac.cn",
+        "official_email_verified": true,
+        "lab_url": null,
+        "personal_academic_url": null,
+        "research_areas": [
+          "Global environment change and sustainability",
+          "Integrated modeling of water-food-energy-ecosystem",
+          "Climate change impact assessment and adaptation",
+          "Application of machine learning and remote sensing in ecohydrology"
+        ],
+        "research_keywords": [
+          "global hydrology",
+          "water-food-energy-ecosystem nexus",
+          "climate adaptation",
+          "eco-hydrology",
+          "remote sensing"
+        ],
+        "relationship_type": "potential_supervisor",
+        "evidence_source_url": "https://english.ucas.ac.cn/index.php/admission/international-students/supervisors",
+        "evidence_source_type": "official_programme_page",
+        "evidence_quote_or_summary": "Listed in UCAS's official 'Supervisors' directory for international students (letter A: 'AI Zhipin', linked to https://people.ucas.ac.cn/~aizhipin). The official UCAS profile (English) states: 'Prof. AI Zhipin, Email: aizhipin@igsnrr.ac.cn, Institute of Geographic Sciences and Natural Resources Research (IGSNRR), Chinese Academy of Sciences (CAS), Professor ... Scientific Interests: Global environment change and sustainability; Integrated modeling of water-food-energy-ecosystem; Climate change impact assessment and adaptation; Application of machine learning and remote sensing in ecohydrology'. The CGS call page (https://english.ucas.ac.cn/index.php/admission/international-students/financial-aid/6656-call-for-2026-chinese-government-scholarship-for-international-students-to-study-at-ucas) requires applicants to 'fill and submit PROVISIONAL ACCEPTANCE FORM OF INTERNATIONAL STUDENT BY UCAS SUPERVISOR', making directory supervisors directly tied to this scholarship route. Chinese profile adds: 招收普通招考博士生和直博生 (recruits regular- and direct-entry PhD students).",
+        "confidence": 90,
+        "availability": {
+          "scope": "phd_supervision",
+          "state": "verified_yes",
+          "source_url": "https://people.ucas.ac.cn/~aizhipin?language=en"
+        }
+      },
+      {
+        "canonical_name": "AN Wei",
+        "title": "Professor (Researcher), Doctoral Supervisor (博导)",
+        "institution_name": "University of Chinese Academy of Sciences (UCAS)",
+        "department_name": "Research Center for Eco-Environmental Sciences (RCEES), Chinese Academy of Sciences",
+        "official_profile_url": "https://people.ucas.ac.cn/~0024515",
+        "official_email": "anwei@rcees.ac.cn",
+        "official_email_verified": true,
+        "lab_url": null,
+        "personal_academic_url": null,
+        "research_areas": [
+          "Environmental statistics",
+          "Environmental modeling and risk assessment",
+          "Environmental information systems",
+          "Industrial wastewater treatment"
+        ],
+        "research_keywords": [
+          "environmental statistics",
+          "environmental modeling",
+          "risk assessment",
+          "wastewater treatment"
+        ],
+        "relationship_type": "potential_supervisor",
+        "evidence_source_url": "https://english.ucas.ac.cn/index.php/admission/international-students/supervisors",
+        "evidence_source_type": "official_programme_page",
+        "evidence_quote_or_summary": "Listed in UCAS's official 'Supervisors' directory for international students (letter A: 'AN Wei', linked to https://people.ucas.ac.cn/~0024515). The official UCAS profile states: 'AN Wei ... 博导 (doctoral supervisor), 中国科学院生态环境研究中心, email: anwei@rcees.ac.cn ... 招生专业: 083002 环境工程 / 070103 概率论与数理统计 / 081701 化学工程; 招生方向: 环境统计，环境模型、风险评价，环境信息系统构建，工业废水处理'. The CGS call page (https://english.ucas.ac.cn/index.php/admission/international-students/financial-aid/6656-call-for-2026-chinese-government-scholarship-for-international-students-to-study-at-ucas) requires a 'PROVISIONAL ACCEPTANCE FORM OF INTERNATIONAL STUDENT BY UCAS SUPERVISOR', tying directory supervisors to this scholarship route.",
+        "confidence": 90,
+        "availability": {
+          "scope": "phd_supervision",
+          "state": "verified_yes",
+          "source_url": "https://people.ucas.ac.cn/~0024515"
+        }
+      },
+      {
+        "canonical_name": "Songjian AO",
+        "title": "Doctoral Supervisor (博导), Institute of Geology and Geophysics, Chinese Academy of Sciences",
+        "institution_name": "University of Chinese Academy of Sciences (UCAS)",
+        "department_name": "Institute of Geology and Geophysics (IGGCAS), Chinese Academy of Sciences",
+        "official_profile_url": "https://people.ucas.ac.cn/~0029499?language=en",
+        "official_email": "asj@mail.iggcas.ac.cn",
+        "official_email_verified": true,
+        "lab_url": null,
+        "personal_academic_url": null,
+        "research_areas": [
+          "Evolution of orogen",
+          "Ophiolite"
+        ],
+        "research_keywords": [
+          "structural geology",
+          "orogenic belt evolution",
+          "ophiolite",
+          "accretionary processes"
+        ],
+        "relationship_type": "potential_supervisor",
+        "evidence_source_url": "https://english.ucas.ac.cn/index.php/admission/international-students/supervisors",
+        "evidence_source_type": "official_programme_page",
+        "evidence_quote_or_summary": "Listed in UCAS's official 'Supervisors' directory for international students (letter A: 'Songjian AO', linked to https://people.ucas.ac.cn/~0029499). The official UCAS profile states: 'Songjian AO ... 博导 (doctoral supervisor), 中国科学院地质与地球物理研究所, email: asj@mail.iggcas.ac.cn ... 招生专业 070904 构造地质学; 招生方向 造山带演化, 盆山作用' (English profile: 'Research Areas: Evolution of Orogen, Ophiolite'). The CGS call page (https://english.ucas.ac.cn/index.php/admission/international-students/financial-aid/6656-call-for-2026-chinese-government-scholarship-for-international-students-to-study-at-ucas) requires a 'PROVISIONAL ACCEPTANCE FORM OF INTERNATIONAL STUDENT BY UCAS SUPERVISOR', tying directory supervisors to this scholarship route.",
+        "confidence": 90,
+        "availability": {
+          "scope": "phd_supervision",
+          "state": "verified_yes",
+          "source_url": "https://people.ucas.ac.cn/~0029499?language=en"
+        }
+      }
+    ],
+    "notes": "UCAS hosts the CGS-Chinese University Program (CSC agency number 80001). UCAS publishes an official 'Supervisors' directory for international students (https://english.ucas.ac.cn/index.php/admission/international-students/supervisors) that lists eligible supervisors with links to official UCAS profile pages at people.ucas.ac.cn; the scholarship call requires a UCAS supervisor's provisional acceptance form, so directory supervisors are directly tied to this scholarship. The three professors above (from the directory's letter-A listing) are verified from their official UCAS profile pages, each publishing an institutional email (igsnrr.ac.cn, rcees.ac.cn, mail.iggcas.ac.cn) and doctoral-supervisor status. Thousands of further supervisors exist in the directory across CAS institutes; three representative verified entries are recorded (max 3 per scholarship)."
+  },
+  {
+    "scholarship_id": 246,
+    "outcome": "no_verified_supervisor_found",
+    "professors": [],
+    "notes": "Official page verified live at https://ensie.nankai.edu.cn/info/1047/1347.htm. The Nankai CGS Silk Road Program funds five taught programmes (three Chinese-taught bachelor's: Business Economics, Business Administration, Finance; two master's: International Business, International Affairs and Public Policy) nominated by Nankai University to CSC. The official page names no professor, programme director or faculty supervisor; the only published contact is administrative admissions staff: 'School of International Education, Nankai University ... Contact Person: Ms. Sun / Xing ... Email: nkadmission01@nankai.edu.cn'. These are taught bachelor's/master's degrees administered centrally by the School of International Education, so no supervising professor is tied to the scholarship and none could be verified without fabricating a tie."
+  },
+  {
+    "scholarship_id": 247,
+    "outcome": "not_applicable",
+    "professors": [],
+    "notes": "The Confucius Institute Scholarship (International Chinese Language Teachers Scholarship, cis.chinese.cn; application portal chinese.cn) is a national scheme established by the Center for Language Education and Cooperation (CLEC) of China's Ministry of Education. Verified via the official 2025 Application Guidelines PDF on chinese.cn (https://www.chinese.cn/uploads/file/20250212-1739354417242563.pdf): 'the Center for Language Education and Cooperation (CLEC) has established the International Chinese Language Teachers Scholarship ... Recommending Institutions may recommend outstanding students and in-service Chinese language teachers to further their studies ... at Chinese universities (hereinafter referred to as Host Institutions)'. Awards are distributed across dozens of host universities (e.g., Nanjing University, Central South University) via recommending institutions; the scheme has no single attached institution or supervising professor, so none exists to verify. (The input official_source_url https://cis.chinese.cn returned a 404 to the fetch tool; the scheme remains live via chinese.cn and host-institution pages.)"
+  },
+  {
+    "scholarship_id": 248,
+    "outcome": "not_applicable",
+    "professors": [],
+    "notes": "Official page verified live at https://hea.ie/policy/internationalisation/goi-ies. The Government of Ireland International Education Scholarship is a national government scheme: 'The programme is funded by the Government of Ireland in partnership with Irish higher education institutions (HEIs) and managed by the Higher Education Authority.' Applicants first apply separately to any eligible Irish HEI ('Candidates will first need to apply for admission to a master's, postgraduate diploma or PhD programme offered by an eligible Irish higher education institution as per that institution's admission procedures'), and the only published contact is the central HEA office (goi-ies@hea.ie). No single institution or supervising professor is attached to the scheme itself, so none exists to verify."
+  },
+  {
+    "scholarship_id": 250,
+    "outcome": "no_verified_supervisor_found",
+    "professors": [],
+    "notes": "Official page verified live at https://www.ucd.ie/global/study-at-ucd/scholarshipsfinances/scholarships/globalexcellencescholarships. UCD Global Excellence Scholarships are university-wide merit tuition-fee scholarships (100%/50%) for incoming non-EU students applying to undergraduate or graduate taught programmes on UCD's eligible-programmes list across every college (Arts and Humanities, Business, Engineering and Architecture, Health and Agricultural Sciences, Science, Social Sciences and Law). Selection is by the UCD Global Office committee against regional deadlines; the page names no professor, supervisor or programme director, and the only contact is the administrative UCD Global office (T: +353 1 716 8500). Because the award is decoupled from any specific programme, lab or faculty member, no supervising professor could be verified without fabricating a tie."
+  },
+  {
+    "scholarship_id": 251,
+    "outcome": "no_verified_supervisor_found",
+    "professors": [],
+    "notes": "Official page verified live at https://www.tcd.ie/study/international/scholarships/undergraduate/geug.php. Trinity's Global Excellence Undergraduate Scholarships are rolling regional tuition-fee reductions (EUR 2,000-5,000) applied to year-one undergraduate fees for non-EU offer holders; the page states selection 'will be based on academic achievement and applicants' potential to contribute to the Trinity community' and directs queries to regional managers/advisors and the Academic Registry (academic.registry@tcd.ie). No professor, supervisor or faculty member is named or tied to the award; it is an undergraduate taught-entry fee reduction with no research-supervision component, so no supervising professor could be verified."
+  }
+]

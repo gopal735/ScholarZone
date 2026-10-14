@@ -1,0 +1,254 @@
+{
+  "agent": "agent_470",
+  "records": [
+    {
+      "id": 14,
+      "official": {
+        "official_source_urls": [
+          "https://ethz.ch/students/en/studies/financial/scholarships/excellencescholarship.html",
+          "https://ethz.ch/en/studies/master/application/language-requirements.html"
+        ],
+        "application_link": "https://www.lehrbetrieb.ethz.ch/eApply/ealogin.view?lang=en",
+        "catalogue_url": "https://ethz.ch/content/dam/ethz/main/education/finanzielles/files-en/guidelines-scholarships.pdf",
+        "official_updates_url": "https://ethz.ch/staffnet/en/news-and-events/academic-calendar.html",
+        "deadline_central": "2026-11-30",
+        "deadline_central_display": "30 November 2026",
+        "deadline_note": "First Master application window, 1-30 November 2026, for a start in the Master programme in HS27; the page headline states 11.59h MEZ while the section text says 12.59 MEZ, so treat midday as the real cutoff. Decisions are communicated at the end of March.",
+        "application_cycle": "2027/28 academic year (start in the Master programme in HS27)",
+        "status": "OPEN",
+        "status_note": "The next application window is announced as 1-30 November 2026 for a start in the Master programme in HS27; approximately 60 ESOP scholarships will be assigned for the start in academic year 2027/28, with the exact number depending on availability of funds.",
+        "tuition_coverage_note": "The ESOP consists of a scholarship covering living and study expenses (CHF 13,500 per semester from HS27 onwards, previously CHF 12,000) as well as a tuition fee waiver; the waiver is awarded for the regular duration of the Master's programme (three or four semesters).",
+        "funding_amount": 13500,
+        "funding_currency": "CHF",
+        "funding_period": "per semester",
+        "tuition_coverage": true,
+        "living_cost_coverage": true,
+        "travel_coverage": null,
+        "fully_funded": true,
+        "benefits": [
+          "Scholarship covering living and study expenses of CHF 13,500 per semester (CHF 12,000 per semester before HS27)",
+          "Tuition fee waiver for the regular duration of the Master's programme (three or four semesters)",
+          "Mentorship and a network of the ETH Foundation",
+          "The scholarship covers the full study and living costs during the Master's degree course"
+        ],
+        "eligibility": [
+          "Very good result in Bachelor's degree programme (top 10% of Bachelor's degree programme = grade A; based on self-assessment)",
+          "Application must be submitted within the first application window, November 1-30, for a start in the Master programme in HS27",
+          "Applicants already enrolled in a Master's degree programme at ETH Zurich, or holding a Master's degree, are not eligible for ESOP",
+          "ETH Bachelor students applying for a consecutive Master programme must also apply via eApply within the first window"
+        ],
+        "requirements": [
+          "Submit the ESOP application via eApply (the online Master application)",
+          "Upload a pre-proposal for the Master's thesis in addition to the documents for the Master admission",
+          "The pre-proposal must be developed by yourself and use established scientific citation practice; plagiarism, negligent or intentional misinformation leads to exclusion from the admission process or revocation of the admission and of any scholarship",
+          "Be reachable under the telephone number specified in your CV, as the selection process might include a phone/VC interview in February; if unavailable, inform the study programme coordinator",
+          "If your study programme does not ask for references, name two reference persons (professors) who upload a reference letter after an email from the system"
+        ],
+        "documents": [
+          "Completed Master's application submitted via eApply",
+          "Bachelor's degree certificate and official transcripts (Master admission documents)",
+          "CV",
+          "Letter of motivation",
+          "Pre-proposal for the Master's thesis (per the published guidelines, PDF 86 KB)",
+          "Two professor reference letters, if your study programme does not require references"
+        ],
+        "selection_criteria": [
+          "Applications are evaluated by the Admissions Committees of the respective Master's programmes",
+          "The final decision for awarding scholarships rests with the Rector of ETH Zurich",
+          "The exact number of annual scholarships depends on the availability of funds; decisions are communicated at the end of March",
+          "The selection process might include a phone/VC interview in February"
+        ],
+        "coverage": [
+          "Living and study expenses: CHF 13,500 per semester for a start from HS27 onwards (CHF 12,000 per semester previously)",
+          "Tuition fees: full waiver for the regular duration of the Master's programme (three or four semesters)",
+          "ETH states the scholarship covers the full study and living costs during the Master's degree course"
+        ],
+        "application_method": [
+          "Indicate ESOP in the eApply online Master application during the first application window, 1-30 November 2026"
+        ],
+        "application_route": "Apply through ETH's eApply online Master application in the first window (1-30 November 2026) with the ESOP selected and the thesis pre-proposal uploaded.",
+        "study_mode": null,
+        "citizenship_residency": "No citizenship or residency restriction is stated; eligibility is defined by Bachelor performance and the application window.",
+        "international_eligibility": "International applicants admitted to an ETH Zurich Master's programme are eligible; the published criteria contain no nationality restriction.",
+        "subject_or_agency_requirement": "Open to excellent Master's students (no MAS) across ETH Zurich Master's programmes; only ETH Bachelor students may start the ESOP with a leave of absence.",
+        "research_requirement": "A pre-proposal for the Master's thesis must be developed by the applicant and uploaded in addition to the Master admission documents.",
+        "duration": "Regular duration of the Master's programme (three or four semesters)",
+        "description": "ETH Zurich's Excellence Scholarship & Opportunity Programme (ESOP) supports excellent Master's students with a scholarship covering living and study expenses, a tuition fee waiver, mentorship and the network of the ETH Foundation. ETH states the scholarship covers the full study and living costs during the Master's degree course.",
+        "region": "Europe",
+        "program_type": "University scholarship (ETH Zurich and ETH Zurich Foundation)",
+        "english_requirement": "Most Master's degree programmes at ETH Zurich are taught in English; some require both English and German, and some are taught in German. A language certificate recognised by ETH Zurich must be submitted by the application deadline at the latest - applications with an invalid, insufficient or missing certificate are not evaluated and are rejected on formal grounds. Applicants who completed a Bachelor's degree programme completely taught in English are exempt, if the language of instruction is officially confirmed by the university (no confirmation required for Bachelor's degrees from Australia, Ireland, New Zealand, the United Kingdom and the United States). TOEFL, IELTS and C1 Advanced certificates must be no more than two years old."
+      },
+      "verification": {
+        "source_citations": [
+          "https://ethz.ch/students/en/studies/financial/scholarships/excellencescholarship.html",
+          "https://ethz.ch/en/studies/master/application/language-requirements.html"
+        ],
+        "last_verified_date": "2026-10-10",
+        "verification_status": "confirmed",
+        "confidence": "high",
+        "not_confirmed": [
+          "travel_coverage (no travel or installation allowance published)",
+          "study_mode (not stated on the scholarship page)",
+          "specific English test score thresholds (published as recognised-certificate lists rather than a single score on the page)"
+        ],
+        "notes": "Amount (CHF 13,500 per semester from HS27 onwards), tuition waiver, duration, eligibility, window deadlines and selection wording confirmed verbatim on the live ETH ESOP page; language rules taken from ETH's Master language requirements page."
+      },
+      "applicant_utility": {
+        "summary": "ESOP is ETH Zurich's flagship Master scholarship for newcomers: roughly 60 awards per intake combining CHF 13,500 per semester with a tuition waiver, so a three-semester Master is funded at about CHF 40,500 plus tuition on top. The application is not separate - you select ESOP inside the eApply Master application during the single November window and must also upload a thesis pre-proposal, a step many applicants discover too late. Realistically only applicants who can document top-10% standing in their Bachelor's cohort should apply, and the process can include a February phone or video interview.",
+        "best_fit": "Top-10% Bachelor graduates entering an ETH Zurich Master's programme for the first time who need full study and living-cost funding.",
+        "application_readiness_checklist": [
+          "Confirm you can document top-10% standing in your Bachelor's programme before the window opens on 1 November",
+          "Draft the Master thesis pre-proposal early, following ETH's published guidelines, with correct scientific citations",
+          "Secure two professor referees willing to upload letters via the system if your programme requires no references",
+          "Check your target programme's required language certificate and its validity window before applying",
+          "Keep the phone number on your CV reachable in February, or notify the study programme coordinator in advance"
+        ],
+        "common_rejection_risks": [
+          "Applying in a later Master application window - ESOP requires the first window, 1-30 November",
+          "Missing, invalid or insufficient language certificate: the file is rejected on formal grounds without departmental evaluation",
+          "A pre-proposal that is plagiarized, ghost-written or improperly cited",
+          "Referees never uploading letters because they were not named in the system in time",
+          "Already being enrolled in a Master's at ETH or holding a Master's degree, which disqualifies outright"
+        ],
+        "estimated_uncovered_costs": "Tuition and CHF 13,500 per semester are covered, but ETH publishes no travel, installation or insurance allowance, so flights, visa fees, health insurance surpluses and any costs beyond the stipend remain self-funded.",
+        "document_audit": [
+          "The thesis pre-proposal is an extra document on top of the standard Master admission dossier - build time for it",
+          "Reference letters arrive only via a system email to named professors; forgetting to name them silently weakens the file",
+          "ETH's recognised-certificate lists are conclusive - an English test accepted elsewhere may still be refused"
+        ],
+        "alerts": [
+          "One-shot window: 1-30 November 2026 only; a Master application filed later forfeits ESOP eligibility entirely",
+          "Two closing times appear on the page (11.59h and 12.59 MEZ) - submit well before midday on 30 November",
+          "Only ETH Bachelor students may begin the ESOP with a leave of absence"
+        ],
+        "submission_workflow": "Submit the eApply Master application inside the November window with ESOP selected and the pre-proposal uploaded, then await the end-of-March decision, with a possible February interview in between."
+      }
+    },
+    {
+      "id": 15,
+      "official": {
+        "official_source_urls": [
+          "https://www.epfl.ch/education/master/master-excellence-fellowships",
+          "https://www.epfl.ch/education/master/master-excellence-fellowships/how-to-apply",
+          "https://www.epfl.ch/education/master/master-excellence-fellowships/faq"
+        ],
+        "application_link": "https://www.epfl.ch/education/master/master-excellence-fellowships/how-to-apply",
+        "catalogue_url": "https://www.epfl.ch/education/master/programs",
+        "official_updates_url": "https://www.epfl.ch/education/master/master-excellence-fellowships/how-to-apply",
+        "deadline_central": "2026-12-15",
+        "deadline_central_display": "15 December 2026",
+        "deadline_note": "For the 2027 fellowship, applications must be submitted within the first Master's application window: 15 December for applications submitted via IS-Academia (external candidates, and EPFL students changing field), and 31 January 2027 for EPFL students applying for a consecutive Master's degree in the same field (application and recommendation letters). Only applications paid for and validated by 15 December are eligible; reference letters are due one week after the application deadline, with the exact date given in the confirmation email.",
+        "application_cycle": "2027 intake (first Master's application window)",
+        "status": "OPEN",
+        "status_note": "EPFL announces an important new deadline for the 2027 Master Excellence Fellowship: applications must be submitted within the first Master's application window (15 December via IS-Academia; 31 January for consecutive EPFL students).",
+        "tuition_coverage_note": "EPFL states that students are responsible for managing all living expenses, including tuition fees and rent - the fellowship is a stipend plus a reserved room, not a fee waiver.",
+        "funding_amount": 10000,
+        "funding_currency": "CHF",
+        "funding_period": "per semester",
+        "tuition_coverage": false,
+        "living_cost_coverage": false,
+        "travel_coverage": null,
+        "fully_funded": false,
+        "benefits": [
+          "CHF 10,000 per semester, with a maximum coverage of 4 semesters",
+          "Reservation of a student room in a student residence (for external candidates only)",
+          "A certificate of excellence upon completion of the Master's programme",
+          "Fellowships are paid at the start of each semester into a Swiss bank or postal account"
+        ],
+        "eligibility": [
+          "Anyone applying to a Master's programme at EPFL is eligible; a limited number of fellowships are awarded to the most deserving candidates based on academic excellence, qualifications and motivation",
+          "Available to students who have obtained their Bachelor's degree at EPFL and to those who began their university studies at another institution",
+          "Candidates who already hold a Master's degree or are currently enrolled in a Master's programme at EPFL are not eligible",
+          "Each student may apply for only one Master's programme per year"
+        ],
+        "requirements": [
+          "External candidates: check the box on the Master's application form indicating the profile should also be considered for an excellence fellowship; no additional documents beyond those required for admission",
+          "External applications must be paid for and validated by 15 December at the latest to be considered",
+          "EPFL students continuing in the same field: submit the application directly to their section (with a copy to the fellowship office) - no IS-Academia application needed",
+          "EPFL students changing field: apply via the online application form with the fellowship box checked, plus two recommendation letters from professors familiar with the student's work",
+          "Renewal for the second year requires at least 50 ECTS credits and an overall average of 5.0/6"
+        ],
+        "documents": [
+          "Standard EPFL Master admission documents (external candidates; nothing additional)",
+          "CV and motivation letter (internal same-field candidates)",
+          "Transcript of all grades earned at EPFL (internal candidates)",
+          "Two recommendation letters from professors familiar with the student's work, submitted directly by the referees"
+        ],
+        "selection_criteria": [
+          "After an initial screening/preselection by the sections, the Excellence Fellowships Committee awards the fellowships",
+          "Academic background is crucial; experiences in research (publications, prizes or fellowships), entrepreneurship (patent applications, start-up creation) and societal commitment are also taken into account",
+          "Selected candidates are notified late March, with further notification rounds in early to mid-June per the FAQ"
+        ],
+        "coverage": [
+          "CHF 10,000 per semester stipend for living and study expenses, maximum coverage of 4 semesters",
+          "The fellowship covers two to three semesters of the Master's cycle (depending on programme duration) plus one semester for the Master's project; 90-credit programmes max 3 semesters; double degrees only for semesters spent at EPFL",
+          "Reservation of a student room in a student residence (external candidates only)",
+          "No tuition or general living-cost coverage: students are responsible for managing all living expenses, including tuition fees and rent"
+        ],
+        "application_method": [
+          "Tick the excellence fellowship box in EPFL's online Master application (IS-Academia route for external candidates)",
+          "Internal same-field candidates submit the application directly to their section"
+        ],
+        "application_route": "Check the fellowship box in the IS-Academia Master application and have it paid and validated by 15 December; EPFL consecutive students apply via their section by 31 January.",
+        "study_mode": null,
+        "citizenship_residency": "No citizenship restriction stated; open to anyone applying to a Master's programme at EPFL.",
+        "international_eligibility": "Yes - the FAQ confirms international students can apply, provided they meet the eligibility criteria for EPFL's Master's programmes; the scholarship application is integrated into the Master's application form.",
+        "subject_or_agency_requirement": "Open across EPFL Master's programmes; each student may apply for only one Master's programme per year.",
+        "research_requirement": null,
+        "duration": "Maximum 4 semesters: two to three semesters of the Master's cycle plus one semester for the Master's project (90-credit programmes: max 3 semesters)",
+        "description": "EPFL offers a limited number of Master Excellence Fellowships, worth CHF 10,000 per semester with guaranteed housing, to reward outstanding students beginning their Master's studies who combine remarkable academic results with extracurricular distinction in sport, arts, civic or entrepreneurial activities. The fellowships are part of the 'Attract Talent' pillar of EPFL's philanthropic Student Support Program.",
+        "region": "Europe",
+        "program_type": "University excellence fellowship funded by philanthropy (Student Support Program, 'Attract Talent' pillar)",
+        "english_requirement": "For the fellowship itself, EPFL states that extra documents such as TOEFL or GRE scores are welcome but not compulsory and have no influence on evaluation for the MSc Excellence Scholarship; admission language criteria are handled under EPFL's standard Master's admission requirements."
+      },
+      "verification": {
+        "source_citations": [
+          "https://www.epfl.ch/education/master/master-excellence-fellowships",
+          "https://www.epfl.ch/education/master/master-excellence-fellowships/how-to-apply",
+          "https://www.epfl.ch/education/master/master-excellence-fellowships/faq"
+        ],
+        "last_verified_date": "2026-10-10",
+        "verification_status": "confirmed",
+        "confidence": "high",
+        "not_confirmed": [
+          "travel_coverage (no travel allowance published)",
+          "study_mode (not stated on the fellowship pages)",
+          "research_requirement (no thesis proposal required; research results only weigh in selection)",
+          "exact number of fellowships per year (EPFL publishes only 'a limited number')"
+        ],
+        "notes": "Amount, coverage wording (students pay tuition and rent), deadlines, renewal thresholds, application routes and selection process confirmed on EPFL's fellowship, how-to-apply and FAQ pages; the 2027 deadline notice is published on the main fellowship page."
+      },
+      "applicant_utility": {
+        "summary": "EPFL's Master Excellence Fellowship pays CHF 10,000 per semester for up to four semesters plus a reserved student room, but it is a stipend rather than full funding - EPFL states students manage all living expenses including tuition fees and rent, so you must independently cover roughly CHF 20,000 or more per semester of other costs. Applying costs nothing extra: you check the fellowship box in the Master application, but only applications paid for and validated inside the first window (15 December for IS-Academia applicants) can be considered. Second-year renewal is mechanical - keep a 5.0/6 weighted average over at least 50 ECTS - and combining the award with another substantial scholarship requires declaring it first.",
+        "best_fit": "High-achieving students starting an EPFL Master's - especially external candidates who value guaranteed campus housing and a stipend layered on top of their own funding.",
+        "application_readiness_checklist": [
+          "Submit and pay the Master application early enough to be validated by 15 December, not merely started",
+          "Track the confirmation email for the reference-letter upload deadline, one week after the application deadline",
+          "Ask referees early: letters must come directly from professors, never routed through the applicant",
+          "Declare all scholarships already received or expected during the Master's to avoid a later conflict",
+          "Internal same-field candidates: send CV, motivation letter, transcript and two letters to the section by 31 January"
+        ],
+        "common_rejection_risks": [
+          "Application paid or validated after 15 December - it is reviewed for admission but becomes ineligible for the fellowship",
+          "Referees missing the one-week letter upload window after the deadline",
+          "Second-year renewal falling below a 5.0/6 average or 50 ECTS - EPFL grants no exceptions",
+          "Deferring or postponing admission, which forfeits the fellowship entirely",
+          "An undeclared combination with another substantial scholarship"
+        ],
+        "estimated_uncovered_costs": "Tuition fees, rent, insurance, travel and daily living costs: EPFL states fellows are responsible for all living expenses including tuition and rent; only the CHF 10,000 per semester stipend and a reserved student room are provided.",
+        "document_audit": [
+          "External candidates need no extra documents - the real trap is forgetting the fellowship checkbox in the application form",
+          "Internal candidates must have professors send letters directly to the section/fellowship mailbox; applicant-routed letters are not the published route",
+          "Only paid and validated applications qualify - a pending unpaid file on 15 December does not count as a fellowship application"
+        ],
+        "alerts": [
+          "You may apply for only one Master's programme per year, and the fellowship must be requested with that same first application",
+          "Deferring admission loses the scholarship; you must reapply through the standard process the following year",
+          "Switching study programme after the award does not guarantee the scholarship continues",
+          "Recipients must open their own Swiss bank or postal account on arrival, and should bring funds for the first month since payment processing takes time"
+        ],
+        "submission_workflow": "Check the fellowship box in the IS-Academia Master application, pay and validate before 15 December, referees upload within a week; the sections preselect and the Excellence Fellowships Committee decides, with notifications from late March."
+      }
+    }
+  ]
+}

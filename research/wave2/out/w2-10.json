@@ -1,0 +1,2252 @@
+{
+  "agent_id": "w2_10",
+  "shard": "w2-10",
+  "today": "2026-10-04",
+  "records": [
+    {
+      "outcome": "new",
+      "new_scholarship": {
+        "name": "International Excellence Entrance Scholarship",
+        "country": "Canada",
+        "region": "North America",
+        "degree_levels": "Bachelor's",
+        "funding_type": "Entrance scholarship, partial funding",
+        "program_type": "University merit entrance scholarship",
+        "official_source": "University of Manitoba",
+        "official_source_url": "https://umanitoba.ca/financial-aid-and-awards/entrance-awards/international-excellence-entrance-scholarship",
+        "catalogue_url": "https://umanitoba.ca/financial-aid-and-awards",
+        "official_updates_url": "https://umanitoba.ca/financial-aid-and-awards/entrance-awards/international-excellence-entrance-scholarship",
+        "status": "open",
+        "is_verified": true,
+        "last_verified_date": "2026-10-04",
+        "description": "The University of Manitoba awards one International Excellence Entrance Scholarship valued at $25,000 and two valued at $10,000 each to international high school graduates entering University 1 or any faculty, college or school with a direct entry option. The $25,000 award requires a minimum admission average of 90% across five senior level high school courses, while the two $10,000 awards require only the minimum admission requirements for the programme. Short-listed applicants are ranked first, second and third place using the award application and the admissions application. This is a separate application from the admissions application, although both must be completed.",
+        "duration": "Entrance award for the first year of study",
+        "deadline": "December 1 (2027/28 cycle)",
+        "deadline_date": "2026-12-01",
+        "deadline_precision": "exact",
+        "application_period": "Application for the 2027/28 International Excellence Entrance Scholarship is open now; the complete application and all required documentation must be received by December 1.",
+        "eligibility_summary": "International high school graduates applying to University 1 or any faculty, college or school at the University of Manitoba with a direct entry option, enrolled full-time in the first year of study (minimum 80% course load). The $25,000 first-place award requires a 90% minimum admission average across five senior level courses plus demonstrated leadership; the two $10,000 awards require the minimum admission requirements for the programme plus demonstrated leadership.",
+        "eligibility": [
+          "Are international students",
+          "Are enrolled full-time (minimum 80% course load) in the first year of study in University 1 or any faculty, college or school at the University of Manitoba with a direct entry option",
+          "For the $25,000 award: have achieved a minimum admission average of 90% across five of the following senior level high school courses: Math, Biology, Chemistry, Physics, Computer Sciences, English, First Language Literature, Geography, History, Music and Visual Arts",
+          "For the $10,000 awards: have achieved the minimum admission requirements for University 1 or any faculty, college or school with a direct entry option",
+          "Have demonstrated strong leadership qualities and sustained, meaningful community involvement",
+          "Have completed a University of Manitoba application for admission by December 1, including payment of the application fee"
+        ],
+        "coverage": [
+          "Cash award of $25,000 for first place",
+          "Cash award of $10,000 each for second and third place"
+        ],
+        "benefits": [
+          "One award valued at $25,000",
+          "Two awards valued at $10,000 each",
+          "Separate funding recognition from the general entrance award pool, which runs on a different deadline"
+        ],
+        "requirements": [
+          "Submit a separate award application in addition to the admission application",
+          "Nominate one recommender who is a current teacher or principal",
+          "Ensure the recommender submits their letter by the December 1 deadline"
+        ],
+        "required_documents": [
+          "Completed award application",
+          "One letter of recommendation from a current teacher or principal, translated into English if required",
+          "Completed University of Manitoba admission application with the application fee paid",
+          "The documentation package the official page collectively refers to as 'all required documentation'"
+        ],
+        "application_method": [
+          "Apply for admission to the University of Manitoba and pay the application fee by December 1",
+          "Submit the award application through the University of Manitoba application portal",
+          "Request one recommendation from a current teacher or principal, who must submit it by December 1"
+        ],
+        "english_requirement": null,
+        "selection_notes": "Short-listed applicants are ranked in first, second and third place based on the results from the award application and the admissions application.",
+        "best_fit": "International high school graduates with an exceptional academic average who can document sustained leadership and community involvement.",
+        "notes": "The official page states the deadline as 'December 1' without printing a year; it is presented under the 2027/28 cycle that the page says is now open, so the December 1 deadline is 2026-12-01. The University of Manitoba's other entrance awards run through a separate General Entrance Award application with a different deadline, so this award should not be assumed to be included in those.",
+        "funding_amount": 25000,
+        "funding_currency": "CAD",
+        "funding_period": null,
+        "image_url": "https://umanitoba.ca/themes/custom/umanitoba/images/logo.svg",
+        "image_source_url": "https://umanitoba.ca/financial-aid-and-awards/entrance-awards/international-excellence-entrance-scholarship",
+        "image_source_type": "official_university",
+        "image_alt_text": "University of Manitoba",
+        "image_verified_at": "2026-10-04T00:00:00+00:00"
+      },
+      "programme_detail_official": {
+        "official_source_urls": [
+          "https://umanitoba.ca/financial-aid-and-awards/entrance-awards/international-excellence-entrance-scholarship"
+        ],
+        "application_link": "https://apply.umanitoba.ca/portal/program-info?cmd=program-details&progTerm=0a46dda2-76cd-46bc-b8d5-5ff06bfbdbde",
+        "official_updates_url": "https://umanitoba.ca/financial-aid-and-awards/entrance-awards/international-excellence-entrance-scholarship",
+        "catalogue_url": "https://umanitoba.ca/financial-aid-and-awards",
+        "application_cycle": "2027/28 entry; applications open as of October 2026",
+        "deadline_central": "2026-12-01",
+        "deadline_central_display": "Complete application and all required documentation must be received by December 1",
+        "deadline_central_timezone": null,
+        "deadline_note": "The official page prints the deadline as 'December 1' with no year and presents it under the 2027/28 cycle it says is now open. The December 1 therefore falls on 2026-12-01. The admission application must also be completed, with the application fee paid, by December 1.",
+        "status": "OPEN",
+        "status_note": "The official page states: 'The application for the 2027/28 International Excellence Entrance Scholarship is now open.'",
+        "funding_amount": 25000,
+        "funding_currency": "CAD",
+        "funding_period": null,
+        "funding_duration": "Entrance award for the first year of study",
+        "tuition_coverage": false,
+        "tuition_coverage_note": "The official page describes the award only as being 'valued at $25,000' and '$10,000'. It does not state that tuition fees are covered, so tuition coverage is not claimed.",
+        "living_cost_coverage": null,
+        "travel_coverage": false,
+        "fully_funded": false,
+        "funding_label": "One $25,000 award plus two $10,000 awards for international high school graduates entering first-year study; the page does not state tuition coverage.",
+        "benefits": [
+          "One award valued at $25,000",
+          "Two awards valued at $10,000 each",
+          "Recognition as a separately ranked first, second and third place award"
+        ],
+        "eligibility": [
+          "International student",
+          "Enrolled full-time (minimum 80% course load) in the first year of study in University 1 or any faculty, college or school at the University of Manitoba with a direct entry option",
+          "$25,000 award: minimum admission average of 90% across five senior level high school courses drawn from Math, Biology, Chemistry, Physics, Computer Sciences, English, First Language Literature, Geography, History, Music and Visual Arts",
+          "$10,000 awards: minimum admission requirements for University 1 or any faculty, college or school with a direct entry option",
+          "Demonstrated strong leadership qualities and sustained, meaningful community involvement",
+          "Completed a University of Manitoba application for admission by December 1, including payment of the application fee"
+        ],
+        "citizenship_residency": "No citizenship is named; eligibility is defined by being an international student entering first-year study at the University of Manitoba.",
+        "international_eligibility": "Explicitly for international high school graduates. The award is ranked separately for international students, and no country or citizenship restriction is published on the official page.",
+        "degree_levels": [
+          "Bachelor's"
+        ],
+        "study_mode": "Full-time, minimum 80% course load",
+        "research_requirement": null,
+        "subject_or_agency_requirement": "Open to University 1 or any faculty, college or school at the University of Manitoba with a direct entry option",
+        "application_method": "Separate award application submitted through the University of Manitoba application portal, in addition to the admission application.",
+        "application_route": "University of Manitoba application portal; the official page links to 'Learn how to apply and view full eligibility requirements' in the portal.",
+        "requirements": [
+          "Submit a separate award application, since this is not part of the general entrance award application",
+          "Provide one recommender who is a current teacher or principal",
+          "Allow the recommender sufficient time to submit the letter before the December 1 deadline, because all portions of the application are due on December 1 regardless of when the recommendation was requested"
+        ],
+        "documents": [
+          "Completed award application",
+          "One letter of recommendation from a current teacher or principal, translated into English if required",
+          "Completed University of Manitoba admission application with the application fee paid"
+        ],
+        "english_requirement": null,
+        "english_requirement_note": "The official page states only that the recommender's letter must be 'translated into English if required'. It does not publish an English proficiency test requirement for this award.",
+        "selection_criteria": [
+          "Results of the award application",
+          "Results of the admissions application",
+          "Strong leadership qualities",
+          "Sustained, meaningful community involvement",
+          "Minimum admission average of 90% across five senior level courses for the $25,000 award"
+        ],
+        "selection_weighting": null,
+        "duration": "Entrance award for the first year of study",
+        "award_holder_conditions": [
+          "Enrol full-time in the first year of study (minimum 80% course load)",
+          "Submit the recommender's letter by the December 1 deadline, since all portions of the application are due on that date"
+        ],
+        "supplements_or_initiatives": [
+          "The University of Manitoba's other entrance awards run through a separate entrance award programme with its own deadline, so this award should be treated as distinct from it"
+        ],
+        "official_contacts": {
+          "general": "Financial Aid and Awards, Room 422 University Centre, 65 Chancellor's Circle, University of Manitoba (Fort Garry campus), Winnipeg, MB R3T 2N2",
+          "email": "awards@umanitoba.ca",
+          "phone": "204-474-9531"
+        },
+        "description": "Each year, one award valued at $25,000 and two awards valued at $10,000 are given to three exceptional international high school graduates who demonstrate outstanding leadership potential and academic giftedness. The $25,000 scholarship requires a minimum admission average of 90% across five senior level high school courses, while the two $10,000 scholarships require the minimum admission requirements for the programme. Short-listed applicants are ranked in first, second and third place based on the results from the award application and the admissions application.",
+        "program_type": "University merit entrance scholarship",
+        "region": "North America",
+        "coverage": "Cash entrance award; the official page does not state that tuition fees are covered.",
+        "last_verified_date": "2026-10-04"
+      },
+      "programme_detail_applicant_utility": {
+        "application_readiness_checklist": [
+          "Admission application submitted to the University of Manitoba with the application fee paid before December 1",
+          "Separate award application submitted, since this award is not part of the general entrance award application",
+          "Recomender identified who is a current teacher or principal and can write before December 1",
+          "Leadership and community involvement documented with dates and hours",
+          "Five senior level high school courses identified for the 90% average calculation, if applying for the $25,000 award"
+        ],
+        "common_rejection_risks": [
+          "Recommender submits the letter after December 1, because all portions of the application are due on that date regardless of when the recommendation was requested",
+          "Admission application or application fee not completed by December 1",
+          "Leadership and community involvement described without sustained, meaningful evidence",
+          "Averaging below 90% across the five senior level courses for the first-place award",
+          "Enrolling in a programme without a direct entry option"
+        ],
+        "estimated_uncovered_costs": [
+          "International tuition fees, since the official page states only an award value and no tuition coverage",
+          "Living expenses, books, supplies and health insurance, none of which the page states are covered",
+          "Travel and immigration costs to Winnipeg"
+        ],
+        "document_audit": [
+          "Recommender letter complete, signed and in English or accompanied by an English translation",
+          "All required documentation received by the portal before the December 1 cut-off",
+          "Admission application fee receipt retained"
+        ],
+        "alerts": [
+          {
+            "trigger": "Recommender deadline",
+            "message": "The official page warns that regardless of when the recommender request is sent, all portions of the application are due on December 1."
+          },
+          {
+            "trigger": "Distinct from general entrance awards",
+            "message": "This scholarship is a separate competition from the University of Manitoba's other entrance awards, which use their own application and deadline."
+          }
+        ],
+        "submission_workflow": [
+          "Choose and apply to a University of Manitoba programme with a direct entry option",
+          "Pay the admission application fee before December 1",
+          "Complete the award application in the University of Manitoba application portal",
+          "Request one recommendation from a current teacher or principal and supply supporting detail on your experience",
+          "Confirm the recommender's letter and all other documentation have landed before December 1"
+        ]
+      },
+      "programme_detail_verification": {
+        "cycle_verified": "2027/28 entrance cycle, verified 2026-10-04",
+        "verification_confidence": 0.95,
+        "official_fields_confirmed": [
+          "funding_amount",
+          "funding_currency",
+          "degree_levels",
+          "application_cycle",
+          "status",
+          "eligibility",
+          "application_method",
+          "official_contacts",
+          "description"
+        ],
+        "institution_check_required": [
+          "Confirm the direct entry status of the intended programme before applying",
+          "Confirm the current international tuition fee rate, which the award page does not cover"
+        ],
+        "unverified_or_removed_claims": [
+          "The year printed with the December 1 deadline is not stated on the page; it is attributed to the 2027/28 cycle the page says is open",
+          "The exact list of required documents is not itemised on the page; only the collective phrase 'all required documentation' is used",
+          "Any renewal or multi-year continuation of the award is not addressed on the page"
+        ],
+        "source_citations": [
+          "https://umanitoba.ca/financial-aid-and-awards/entrance-awards/international-excellence-entrance-scholarship",
+          "https://umanitoba.ca/themes/custom/umanitoba/images/logo.svg"
+        ],
+        "researched_by": "w2_10"
+      },
+      "logo_override": {
+        "url": "https://umanitoba.ca/themes/custom/umanitoba/images/logo.svg",
+        "page_url": "https://umanitoba.ca/financial-aid-and-awards/entrance-awards/international-excellence-entrance-scholarship",
+        "official_host": true,
+        "alt_text": "University of Manitoba",
+        "validation_result": "verified",
+        "validation_detail": "svg 404x196 viewBox, wordmark and bison mark filled in dark brown #502C1E with gold #F5A800, blue #00A0DF and #345D9D accents; the wordmark is dark, not white-on-transparent",
+        "image_kind": "official_logo",
+        "image_format": "svg",
+        "verified_at": "2026-10-04T00:00:00+00:00",
+        "host_evidence": "same_registrable_domain",
+        "_award": "International Excellence Entrance Scholarship"
+      },
+      "research_notes": {
+        "logo": "Probed https://umanitoba.ca/themes/custom/umanitoba/images/logo.svg, the logo file referenced by the header and footer markup of the official award page. The fetch returned SVG source bytes (xmlns viewBox 0 0 404.1 195.6), confirming HTTP 200 with an image/svg+xml payload. The 'University of Manitoba' wordmark is filled #502C1E with gold/blue accents, so it is a dark mark rather than a white-on-transparent wordmark.",
+        "unverified": [
+          "Year attached to the printed 'December 1' deadline",
+          "Itemised list of required documents",
+          "Whether the award can be renewed beyond the first year"
+        ],
+        "substitution": null,
+        "official_pages_read": [
+          "https://umanitoba.ca/financial-aid-and-awards/entrance-awards/international-excellence-entrance-scholarship",
+          "https://umanitoba.ca/themes/custom/umanitoba/images/logo.svg"
+        ],
+        "degree_level_confirmed": "\"enrolled full-time (minimum 80% course load) in the first year of study in University 1 or any faculty, college or school at the University of Manitoba with a direct entry option\" — University 1 is the first year of an undergraduate degree.",
+        "dedup_check": "Checked against existing_titles, existing_hosts and existing_official_source_urls in the shard. No University of Manitoba entry, no umanitoba.ca host and no matching award name or URL appears. The closest catalogue items are Canadian government schemes (Vanier, CGRS-D, OGS) and UBC/Trudeau/York/Pearson/Schulich awards, all of which are different awarding bodies and different funding schemes.",
+        "skeleton": false
+      }
+    },
+    {
+      "outcome": "new",
+      "new_scholarship": {
+        "name": "Killam Predoctoral Scholarship Level 2 (Doctoral)",
+        "country": "Canada",
+        "region": "North America",
+        "degree_levels": "PhD",
+        "funding_type": "Stipend",
+        "program_type": "University doctoral scholarship",
+        "official_source": "Dalhousie University, Faculty of Graduate Studies",
+        "official_source_url": "https://www.dal.ca/faculty/gradstudies/finance-your-studies/scholarships-bursaries/killam-master-doctoral.html",
+        "catalogue_url": "https://www.dal.ca/faculty/gradstudies/finance-your-studies/scholarships-bursaries/international-scholarships.html",
+        "official_updates_url": "https://www.dal.ca/faculty/gradstudies/finance-your-studies/scholarships-bursaries/killam-master-doctoral.html",
+        "status": "open",
+        "is_verified": true,
+        "last_verified_date": "2026-10-04",
+        "description": "The Faculty of Graduate Studies at Dalhousie University awards Killam Predoctoral Scholarships competitively to outstanding doctoral students across all disciplines, with a base value of $42,000 per year ($14,000 per term) for up to three years. The scholarship is open to both Canadian and international students in a full-time PhD at Dalhousie, and international recipients may only use the funds for study and research in Canada. Applicants who are not eligible to apply for a Tri-agency CGRS-D through Dalhousie in the current competition apply through the Faculty of Graduate Studies scholarship platform. The scholarship is supported by the Killam Trusts.",
+        "duration": "Up to three years",
+        "deadline": "Round one: October 16, 2026 at midnight AT. Round two: opens January 5, 2027, submissions due February 28, 2027 at midnight AT",
+        "deadline_date": "2026-10-16",
+        "deadline_precision": "exact",
+        "application_period": "Round one is open now and closes October 16, 2026 at midnight Atlantic Time; round two opens January 5, 2027 and closes February 28, 2027 at midnight AT. These rounds are stated for non-Tri-agency applicants.",
+        "eligibility_summary": "Full-time doctoral (PhD) students at Dalhousie University, Canadian or international. Applicants must demonstrate exceptional academic achievement, strong research potential and a clear likelihood of contributing to the advancement of learning in their field, with character, ethical conduct and contributions to a respectful and inclusive community also considered. The award must be taken up no later than the 7th term of the PhD, and applicants must have spent fewer than six terms (24 months) in the PhD as of May 1 of the award year.",
+        "eligibility": [
+          "Enrolled in a full-time doctoral (PhD) degree at Dalhousie University",
+          "Canadian or international student",
+          "Demonstrates exceptional academic achievement, strong research potential and a clear likelihood of contributing to the advancement of learning in their field",
+          "Award taken up no later than the 7th term in the PhD program",
+          "Has spent less than six terms (24 months) in the PhD as of May 1 of the award year; for students who transferred or intend to transfer from a Master's to a PhD without completing the Master's, time-in-program begins at the transfer date"
+        ],
+        "coverage": [
+          "Cash stipend of $42,000 per year ($14,000 per term) for up to three years",
+          "Relocation travel reimbursement for new scholars relocating to Nova Scotia, capped at the lowest cost airfare by the most direct route",
+          "Paid parental leave benefits for predoctoral Killam scholars who lack other paid parental leave support"
+        ],
+        "benefits": [
+          "Base value $42,000 per year ($14,000 per term) for up to three years",
+          "If a Tri-agency CGRS-D is awarded, the CGRS-D value of $40,000 per year is topped up to $48,000 per year ($16,000 per term) while both awards are held concurrently",
+          "If the CGRS-D expires before the end of the award holder's fourth year in the PhD, Killam funding is extended into the remaining terms of the fourth year at $14,000 per term",
+          "Relocation allowance reimbursing travel to Nova Scotia, not exceeding the lowest cost airfare available by the most direct route",
+          "Paid parental leave benefits for predoctoral Killam scholars without access to other paid parental leave support",
+          "Non-paid interruption of the award for up to 12 months for an approved leave of absence, with the end date extended by the leave duration"
+        ],
+        "requirements": [
+          "Submit the application and all accompanying materials by the stated round deadline, after which the application closes",
+          "Non-Tri-agency applicants create an application in the Faculty of Graduate Studies Scholarship Management Platform under Major Scholarship Competitions 2026/2027 and the category Major Scholarship Application for Non-Tri-Agency Applicants",
+          "Dalhousie students with a NetID access the platform using their Dalhousie NetID",
+          "Complete an annual report and submit it to fgs.slo@dal.ca by July 31 of each year the award is held",
+          "Apply for a Tri-agency CGRS-D within the first two years of holding the Killam award",
+          "Participate in Killam scholar initiatives and events whenever possible"
+        ],
+        "required_documents": [],
+        "application_method": [
+          "Applicants who submitted or intend to submit a Tri-agency CGRS-D application through Dalhousie in the current cycle are automatically considered for Killam funding",
+          "Applicants not eligible for a CGRS-D through Dalhousie create an application in the Faculty of Graduate Studies Scholarship Management Platform, selecting Major Scholarship Competitions 2026/2027 and Major Scholarship Application for Non-Tri-Agency Applicants"
+        ],
+        "english_requirement": null,
+        "selection_notes": "Awards are made competitively on the basis of exceptional academic achievement, strong research potential and a clear likelihood of contributing to the advancement of learning in the field; considerations beyond academic excellence include character, ethical conduct and contributions to a respectful and inclusive community.",
+        "best_fit": "Early-stage PhD students at Dalhousie with exceptional academic records and strong research potential who are not eligible for a CGRS-D through the university in the current cycle, or who wish to be considered for both.",
+        "notes": "The Killam scholarship becomes partially or fully honorary in terms where the recipient also holds other Faculty of Graduate Studies managed awards, including CGRS-D, Dalhousie Research Excellence Scholarships and Abdul Majid Bader Graduate Scholarships. Additional supervisor or department stipends do not directly reduce Killam funding, although departments may adjust package arrangements at their discretion. Relocation reimbursements must be claimed by the end of the first term and do not cover family members or personal effects. Funding is provided by the Killam Trusts and administered by the Dalhousie Faculty of Graduate Studies.",
+        "funding_amount": 42000,
+        "funding_currency": "CAD",
+        "funding_period": "per year",
+        "image_url": "https://www.dal.ca/content/experience-fragments/jwp/global/header/master/_jcr_content/root/wrapper/flex_wrapper/image.coreimg.svg/1654483685933/dalhousie-logo.svg",
+        "image_source_url": "https://www.dal.ca/faculty/gradstudies/finance-your-studies/scholarships-bursaries/killam-master-doctoral.html",
+        "image_source_type": "official_university",
+        "image_alt_text": "Dalhousie University",
+        "image_verified_at": "2026-10-04T00:00:00+00:00"
+      },
+      "programme_detail_official": {
+        "official_source_urls": [
+          "https://www.dal.ca/faculty/gradstudies/finance-your-studies/scholarships-bursaries/killam-master-doctoral.html",
+          "https://www.dal.ca/faculty/gradstudies/finance-your-studies/scholarships-bursaries/international-scholarships.html"
+        ],
+        "application_link": "https://dalhousiefgs.secure-platform.com/a/solicitations/24/home",
+        "official_updates_url": "https://www.dal.ca/faculty/gradstudies/finance-your-studies/scholarships-bursaries/killam-master-doctoral.html",
+        "catalogue_url": "https://www.dal.ca/faculty/gradstudies/finance-your-studies/scholarships-bursaries/international-scholarships.html",
+        "application_cycle": "2026/2027 Major Scholarship Competition; round one closes October 16, 2026 and round two closes February 28, 2027",
+        "deadline_central": "2026-10-16",
+        "deadline_central_display": "Round one – October 16, 2026 at midnight AT",
+        "deadline_central_timezone": "America/Halifax",
+        "deadline_note": "The official page publishes two rounds for non-Tri-agency applicants: round one due October 16, 2026 at midnight Atlantic Time, and round two which opens January 5, 2027 with submissions due February 28, 2027 at midnight AT. Applicants who apply for a Tri-agency CGRS-D through Dalhousie in the current cycle are considered automatically and use the CGRS-D deadlines.",
+        "status": "OPEN",
+        "status_note": "Round one of the non-Tri-agency competition is open until October 16, 2026, which is after the verification date of October 4, 2026. A second round is scheduled to open January 5, 2027.",
+        "funding_amount": 42000,
+        "funding_currency": "CAD",
+        "funding_period": "per year",
+        "funding_duration": "Up to three years",
+        "tuition_coverage": true,
+        "tuition_coverage_note": "The Killam award page itself states the base value as $42,000 per year without describing tuition, but Dalhousie's Faculty of Graduate Studies states on its President's Awards page that 'the new Killam award value which takes effect May 1, 2023, includes the cost of tuition.' Tuition coverage is therefore recorded as true on the basis of that official Dalhousie statement. Living costs are met by a fixed stipend rather than actual costs, so the award is not recorded as fully funded.",
+        "living_cost_coverage": null,
+        "travel_coverage": true,
+        "fully_funded": false,
+        "funding_label": "$42,000 per year ($14,000 per term) for up to three years, which Dalhousie states includes the cost of tuition, toppable to $48,000 per year while a CGRS-D is held concurrently; a stipend rather than full cost coverage, and holders are expected to apply for a Tri-agency CGRS-D in the first two years.",
+        "benefits": [
+          "Base value $42,000 per year ($14,000 per term) for up to three years",
+          "CGRS-D of $40,000 per year topped up to $48,000 per year while both awards are held",
+          "Killam funding extended into the fourth year at $14,000 per term if the CGRS-D expires first",
+          "Relocation allowance covering travel to Nova Scotia up to the lowest cost airfare by the most direct route",
+          "Paid parental leave benefits for predoctoral Killam scholars without other paid parental leave support",
+          "Non-paid interruption of up to 12 months for an approved leave of absence"
+        ],
+        "eligibility": [
+          "Full-time doctoral (PhD) student at Dalhousie University",
+          "Canadian or international student",
+          "Exceptional academic achievement, strong research potential and clear likelihood of contributing to the advancement of learning in the field",
+          "Award taken up no later than the 7th term in the PhD program",
+          "Fewer than six terms (24 months) spent in the PhD as of May 1 of the award year"
+        ],
+        "citizenship_residency": "Both Canadian and international students are eligible; there is no residency or nationality restriction published beyond international award holders being restricted to study and research in Canada.",
+        "international_eligibility": "Explicitly open to international students: \"This scholarship is open to both Canadian and international students pursuing a full time doctoral (PhD) degree at Dalhousie University.\" Scholarships granted to international students may only be used for study and research in Canada.",
+        "degree_levels": [
+          "PhD"
+        ],
+        "study_mode": "Full-time",
+        "research_requirement": "Strong research potential and a clear likelihood of contributing to the advancement of learning in the field; awarded across the sciences, engineering, humanities and social sciences.",
+        "subject_or_agency_requirement": "All disciplines at Dalhousie University",
+        "application_method": "Automatic consideration for applicants who submitted or intend to submit a Tri-agency CGRS-D application through Dalhousie in the current cycle; otherwise an application is created in the Faculty of Graduate Studies Scholarship Management Platform under Major Scholarship Competitions 2026/2027, category Major Scholarship Application for Non-Tri-Agency Applicants.",
+        "application_route": "Faculty of Graduate Studies Scholarship Management Platform (dalhousiefgs.secure-platform.com), accessed with a Dalhousie NetID where applicable.",
+        "requirements": [
+          "Submit the application and all accompanying materials by the round deadline, after which the application closes",
+          "Award must be taken up no later than the 7th term of the PhD",
+          "Apply for a Tri-agency CGRS-D within the first two years of holding the award",
+          "Complete an annual report and submit it to fgs.slo@dal.ca by July 31 of each year the award is held",
+          "Participate in Killam scholar initiatives and events whenever possible",
+          "Comply with the terms of any additional awards held and report other sources of funding"
+        ],
+        "documents": [],
+        "english_requirement": null,
+        "english_requirement_note": "The award page does not state an English proficiency requirement; English language admission requirements are published separately by the Faculty of Graduate Studies.",
+        "selection_criteria": [
+          "Exceptional academic achievement",
+          "Strong research potential",
+          "Clear likelihood of contributing to the advancement of learning in the field",
+          "Character and ethical conduct",
+          "Contributions to a respectful and inclusive community"
+        ],
+        "selection_weighting": null,
+        "duration": "Up to three years",
+        "award_holder_conditions": [
+          "Award must be taken up no later than the 7th term in the PhD program, with fewer than six terms completed as of May 1 of the award year",
+          "Scholarships granted to international students may only be used for study and research in Canada",
+          "Expected to apply for a Tri-agency CGRS-D within the first two years of holding the award",
+          "Annual report due to fgs.slo@dal.ca by July 31 of each year the award is held",
+          "Expected to participate in Killam scholar initiatives and events whenever possible",
+          "The award becomes partially or fully honorary in terms where other Faculty of Graduate Studies managed awards are held, including CGRS-D, Dalhousie Research Excellence Scholarships and Abdul Majid Bader Graduate Scholarships"
+        ],
+        "supplements_or_initiatives": [
+          "Relocation allowance for new Killam Scholars relocating to Nova Scotia, reimbursable up to the lowest cost airfare by the most direct route, claimable with original receipts and boarding passes no later than the end of the first term",
+          "Top-up arrangement that raises combined Killam plus CGRS-D value to $48,000 per year while both are held",
+          "Extension of Killam funding into a fourth year at $14,000 per term where the CGRS-D expires early"
+        ],
+        "official_contacts": {
+          "general": "Faculty of Graduate Studies, Henry Hicks Academic Administration Building, Room 314, PO Box 15000, Halifax, NS B3H 4R2 Canada",
+          "email": "fgs.slo@dal.ca",
+          "phone": "902-494-2485"
+        },
+        "description": "Killam Predoctoral Scholarships are awarded competitively to outstanding doctoral students across all disciplines, including the sciences, engineering, humanities and social sciences. Supported by the Killam Trusts, the base value is $42,000 per year ($14,000 per term) for up to three years, provided the award holder maintains eligibility. Successful CGRS-D applicants receive additional benefits, including a top-up of the CGRS-D value to $48,000 per year while both awards are held and extension of Killam funding into a fourth year where the CGRS-D expires first.",
+        "program_type": "University doctoral scholarship",
+        "region": "North America",
+        "coverage": "Cash stipend of $42,000 per year which Dalhousie states includes the cost of tuition, plus a capped relocation travel allowance and parental leave benefits.",
+        "last_verified_date": "2026-10-04"
+      },
+      "programme_detail_applicant_utility": {
+        "application_readiness_checklist": [
+          "Confirm eligibility for round one before October 16, 2026 at midnight Atlantic Time, or plan for round two which opens January 5, 2027",
+          "If applying for a CGRS-D through Dalhousie this cycle, note that the same application is considered automatically for Killam funding",
+          "Otherwise create a platform application under Major Scholarship Competitions 2026/2027, category Major Scholarship Application for Non-Tri-Agency Applicants",
+          "Have a Dalhousie NetID and password ready if accessing the platform as an existing student",
+          "Confirm you have spent fewer than six terms in the PhD as of May 1 of the award year and can take the award up by the 7th term",
+          "Plan to apply for a Tri-agency CGRS-D within the first two years of holding the award"
+        ],
+        "common_rejection_risks": [
+          "Missing the round deadline, after which the platform closes",
+          "Applying in the wrong platform category, which excludes non-Tri-agency applicants from consideration",
+          "More than six terms completed in the PhD as of May 1 of the award year",
+          "Taking up the award later than the 7th term of the programme",
+          "Assuming the award pays tuition, which the official page does not state",
+          "Holding concurrent Faculty of Graduate Studies managed awards that make the Killam award honorary"
+        ],
+        "estimated_uncovered_costs": [
+          "International tuition differential, since no tuition coverage is stated",
+          "Health insurance and mandatory student fees",
+          "Living costs beyond the stipend",
+          "Relocation costs above the lowest direct airfare, and all family travel or personal effects, which are not reimbursed"
+        ],
+        "document_audit": [
+          "Platform application submitted in the correct competition and category",
+          "Supporting documents uploaded before the round closes",
+          "Keep the annual report submission for each July 31 while the award is held"
+        ],
+        "alerts": [
+          {
+            "trigger": "Round two opens January 5, 2027",
+            "message": "The official page publishes a second round opening January 5, 2027 and closing February 28, 2027 at midnight AT for non-Tri-agency applicants."
+          },
+          {
+            "trigger": "International use restriction",
+            "message": "Scholarships granted to international students may only be used for study and research in Canada, unlike awards granted to Canadians."
+          },
+          {
+            "trigger": "Concurrent award interaction",
+            "message": "Holding a CGRS-D, Dalhousie Research Excellence Scholarship or Abdul Majid Bader Graduate Scholarship makes the Killam award partially or fully honorary in those terms."
+          }
+        ],
+        "submission_workflow": [
+          "Decide whether to apply through a CGRS-D submission to Dalhousie or as a non-Tri-agency applicant",
+          "Log in to the Faculty of Graduate Studies Scholarship Management Platform",
+          "Select Major Scholarship Competitions 2026/2027 and the correct category",
+          "Complete the application and upload supporting documents before the round deadline",
+          "Submit, then diarise the January 5, 2027 round two opening and the February 28, 2027 closing date as a fallback"
+        ]
+      },
+      "programme_detail_verification": {
+        "cycle_verified": "2026/2027 Major Scholarship Competition, round one verified 2026-10-04",
+        "verification_confidence": 0.95,
+        "official_fields_confirmed": [
+          "funding_amount",
+          "funding_currency",
+          "funding_period",
+          "funding_duration",
+          "deadline_central",
+          "deadline_central_timezone",
+          "status",
+          "eligibility",
+          "application_method",
+          "benefits",
+          "award_holder_conditions",
+          "official_contacts"
+        ],
+        "institution_check_required": [
+          "Confirm current international tuition differential and fee rates with the Faculty of Graduate Studies, as the award page does not cover tuition",
+          "Confirm department-level funding adjustments with the graduate coordinator, which the page says are at the department's discretion"
+        ],
+        "unverified_or_removed_claims": [
+          "The platform category and competition names are quoted from the official page but the platform itself was not opened",
+          "Required documents are not itemised on the official page",
+          "Any English proficiency requirement is not published on the award page",
+          "Selection weighting between academic achievement, research potential and community contribution is not published"
+        ],
+        "source_citations": [
+          "https://www.dal.ca/faculty/gradstudies/finance-your-studies/scholarships-bursaries/killam-master-doctoral.html",
+          "https://www.dal.ca/faculty/gradstudies/finance-your-studies/scholarships-bursaries/international-scholarships.html",
+          "https://www.dal.ca/content/experience-fragments/jwp/global/header/master/_jcr_content/root/wrapper/flex_wrapper/image.coreimg.svg/1654483685933/dalhousie-logo.svg",
+          "https://www.dal.ca/faculty/gradstudies/finance-your-studies/scholarships-bursaries/presidents-awards.html"
+        ],
+        "researched_by": "w2_10"
+      },
+      "logo_override": {
+        "url": "https://www.dal.ca/content/experience-fragments/jwp/global/header/master/_jcr_content/root/wrapper/flex_wrapper/image.coreimg.svg/1654483685933/dalhousie-logo.svg",
+        "page_url": "https://www.dal.ca/faculty/gradstudies/finance-your-studies/scholarships-bursaries/killam-master-doctoral.html",
+        "official_host": true,
+        "alt_text": "Dalhousie University",
+        "validation_result": "verified",
+        "validation_detail": "svg viewBox 0 0 500 140; wordmark 'DALHOUSIE UNIVERSITY' and eagle crest filled #242424 with a #FFD400 gold shield accent, so the mark is dark on a light background and not white-on-transparent",
+        "image_kind": "official_logo",
+        "image_format": "svg",
+        "verified_at": "2026-10-04T00:00:00+00:00",
+        "host_evidence": "same_registrable_domain",
+        "_award": "Killam Predoctoral Scholarship Level 2 (Doctoral)"
+      },
+      "research_notes": {
+        "logo": "Probed the Dalhousie University header logo SVG referenced in the masthead of the official award page. The fetch returned SVG source bytes (viewBox 0 0 500 140), confirming HTTP 200 with an image/svg+xml payload. The wordmark and eagle crest use #242424 fill with a #FFD400 shield, so it is a dark mark. The Killam Trusts fund the award, but the Faculty of Graduate Studies at Dalhousie administers and awards it, so the Dalhousie mark is the one attached.",
+        "unverified": [
+          "Itemised required documents for the platform application",
+          "English proficiency requirement, which is not published on the award page",
+          "Selection weighting between the published criteria"
+        ],
+        "substitution": null,
+        "official_pages_read": [
+          "https://www.dal.ca/faculty/gradstudies/finance-your-studies/scholarships-bursaries/killam-master-doctoral.html",
+          "https://www.dal.ca/faculty/gradstudies/finance-your-studies/scholarships-bursaries/international-scholarships.html",
+          "https://www.dal.ca/faculty/gradstudies/finance-your-studies/scholarships-bursaries/presidents-awards.html",
+          "https://www.dal.ca/content/experience-fragments/jwp/global/header/master/_jcr_content/root/wrapper/flex_wrapper/image.coreimg.svg/1654483685933/dalhousie-logo.svg"
+        ],
+        "degree_level_confirmed": "\"Degree level: Doctoral (PhD)\" and \"This scholarship is open to both Canadian and international students pursuing a full time doctoral (PhD) degree at Dalhousie University.\"",
+        "dedup_check": "Checked the shard dedup lists. No Killam entry, no dal.ca host and no Dalhousie URL appears in existing_titles, existing_hosts or existing_official_source_urls. The nearest catalogue items are the Canada Graduate Research Scholarship - Doctoral and the Vanier Canada Graduate Scholarship, which are federal tri-agency and Canada Council programmes, not a Dalhousie-administered university scholarship, so this is not a near-duplicate.",
+        "skeleton": false
+      }
+    },
+    {
+      "outcome": "new",
+      "new_scholarship": {
+        "name": "Knight-Hennessy Scholars",
+        "country": "United States",
+        "region": "North America",
+        "degree_levels": "Master's",
+        "funding_type": "Fully Funded",
+        "program_type": "University graduate fellowship",
+        "official_source": "Knight-Hennessy Scholars at Stanford University",
+        "official_source_url": "https://knight-hennessy.stanford.edu/program-overview/funding",
+        "catalogue_url": "https://knight-hennessy.stanford.edu/admission",
+        "official_updates_url": "https://knight-hennessy.stanford.edu/admission/preparing-your-applications/application-deadlines",
+        "status": "open",
+        "is_verified": true,
+        "last_verified_date": "2026-10-04",
+        "description": "Knight-Hennessy Scholars is a fully-endowed, multidisciplinary leadership development programme for graduate students at Stanford University, with scholars coming from around the globe. During each of the first three years of graduate study scholars receive a fellowship applied directly to cover tuition and associated fees, a stipend for living and academic expenses, and a travel stipend covering an economy-class ticket for one annual trip to and from Stanford. Newly enrolling scholars also receive a one-time relocation stipend, and scholars in their second and third years may apply for supplemental funds for academic enrichment activities. Admission to the funding requires separate but concurrent admission to, and enrolment in, a full-time Stanford graduate degree programme.",
+        "duration": "Up to three years of graduate study; the number of funded quarters varies by degree programme",
+        "deadline": "October 6, 2026, 1:00pm Pacific Time",
+        "deadline_date": "2026-10-06",
+        "deadline_precision": "exact",
+        "application_period": "Applications to join the 2027 cohort are open, with a single deadline of October 6, 2026 at 1:00pm Pacific Time. A separate Stanford graduate degree programme application must be submitted by the earlier of the programme's KHS deadline or December 1, 2026.",
+        "eligibility_summary": "Open to citizens and residents of all countries, with no restrictions based on age, college or university, field of study or career aspiration, and no quotas by discipline, programme or world region. Applicants must be applying to, be accepted by, and enrol in a full-time Stanford graduate degree programme, and must have earned a first bachelor's degree in January 2020 or later for the 2027 cohort.",
+        "eligibility": [
+          "Apply to Knight-Hennessy Scholars and to a full-time Stanford graduate degree programme, being accepted by that programme and enrolling in it, such that both start in the same year",
+          "Alternatively, already hold an offer of admission with deferral to a full-time Stanford graduate degree programme, or be a current Stanford graduate student adding a new full-time degree programme, or be a first-year Stanford PhD student starting the PhD in 2026 who would start KHS in the second year of the PhD",
+          "Have earned, in January 2020 or later, a U.S. bachelor's degree or its equivalent from a college or university of recognized standing; applicants who served in the military may use a January 2018 or later date",
+          "Meet the admission requirements of the Stanford graduate programme applied to",
+          "Not be applying to the Honors Cooperative Program, the Master of Liberal Arts, the JSD or MLS, a coterminate degree, or an MA or MS added by a current Stanford PhD student in their PhD discipline"
+        ],
+        "coverage": [
+          "Tuition and associated fees, via a fellowship applied directly during each of the first three years of graduate study",
+          "Stipend for living and academic expenses, including room and board, books, academic supplies, instructional materials, local transportation and reasonable personal expenses",
+          "Travel stipend intended to cover an economy-class ticket for one annual trip to and from Stanford",
+          "One-time relocation stipend for newly enrolling scholars to offset relocation costs and/or technology purchases",
+          "Supplemental funds available on application in the second and third years for academic enrichment activities such as conference travel"
+        ],
+        "benefits": [
+          "Up to three years of tuition and associated fees",
+          "Stipend for living and academic expenses",
+          "Annual travel stipend for one round trip to and from Stanford",
+          "One-time relocation stipend for newly enrolling scholars",
+          "Supplemental academic enrichment funds in years two and three"
+        ],
+        "requirements": [
+          "Submit a separate but concurrent application to a Stanford graduate degree programme by the earlier of that programme's KHS deadline or December 1, 2026",
+          "Submit the Knight-Hennessy Scholars application by the single deadline of October 6, 2026 at 1:00pm Pacific Time",
+          "Complete the KHS online application materials, which the programme lists as resume, transcripts and test scores, recommendation letters, short answers and essay, and a video statement invitation stage",
+          "Review the programme's policy on AI use in the application process",
+          "If applying to the Stanford MBA Program, submit by the Round 1 MBA deadline to meet KHS eligibility"
+        ],
+        "required_documents": [
+          "Resume",
+          "Transcripts and test scores",
+          "Recommendation letters",
+          "Short answers and essay"
+        ],
+        "application_method": [
+          "Submit one application to Knight-Hennessy Scholars through the programme's online application",
+          "Submit a completely separate application to a Stanford graduate degree programme by the earlier of the programme's KHS deadline or December 1, 2026",
+          "Complete the evaluation stages described by the programme, including a video statement invitation round"
+        ],
+        "english_requirement": null,
+        "selection_notes": "The programme publishes criteria organised as independence of thought, purposeful leadership and civic mindset, and states that applicants are encouraged to identify an excellent programme of study aligned with their goals. Selection is not restricted by discipline, programme or world region.",
+        "best_fit": "Applicants with a first bachelor's degree earned in 2020 or later who are applying to a full-time Stanford graduate degree programme starting in 2027 and who have a strong record of leadership and independent thinking.",
+        "notes": "Funding applies to the degree programme listed in the initial KHS admission letter; scholars who wish to enrol in an additional graduate programme may apply for further funding up to the three-year maximum, but this additional funding is not guaranteed. For degree programmes exceeding three years, such as MD, PhD, DMA or dual and joint degrees, funding after the KHS period follows the degree programme's standard funding commitment, which varies by department and school. Fellowship stipends are taxable but not subject to withholding except for international students from a country without a tax treaty, and Knight-Hennessy Scholars does not reimburse students for taxes.",
+        "funding_amount": null,
+        "funding_currency": "USD",
+        "funding_period": null,
+        "image_url": "https://knight-hennessy.stanford.edu/sites/g/files/sbiybj23586/files/2024-12/khs_logo_primary_rgb.png",
+        "image_source_url": "https://knight-hennessy.stanford.edu/program-overview/funding",
+        "image_source_type": "official_university",
+        "image_alt_text": "Knight-Hennessy Scholars Stanford University",
+        "image_verified_at": "2026-10-04T00:00:00+00:00"
+      },
+      "programme_detail_official": {
+        "official_source_urls": [
+          "https://knight-hennessy.stanford.edu/program-overview/funding",
+          "https://knight-hennessy.stanford.edu/admission/preparing-your-applications/application-deadlines",
+          "https://knight-hennessy.stanford.edu/admission/before-you-apply/eligibility",
+          "https://knight-hennessy.stanford.edu/"
+        ],
+        "application_link": "https://knight-hennessy.stanford.edu/admission",
+        "official_updates_url": "https://knight-hennessy.stanford.edu/admission/preparing-your-applications/application-deadlines",
+        "catalogue_url": "https://knight-hennessy.stanford.edu/admission",
+        "application_cycle": "2027 cohort; applications to join the 2027 cohort are open",
+        "deadline_central": "2026-10-06T13:00",
+        "deadline_central_display": "October 6, 2026, 1:00pm Pacific Time",
+        "deadline_central_timezone": "America/Los_Angeles",
+        "deadline_note": "The KHS application deadline is October 6, 2026 at 1:00pm Pacific Time and is the same for all applicants. Applicants must also submit a completely separate Stanford graduate degree programme application by the earlier of the programme's KHS deadline or December 1, 2026; a Stanford application submitted after December 1, 2026 removes KHS eligibility even if the graduate programme application is still before its own deadline.",
+        "status": "OPEN",
+        "status_note": "The programme homepage states 'Apply to join the 2027 cohort' and the deadlines page publishes an October 6, 2026 deadline, which falls after the verification date of October 4, 2026.",
+        "funding_amount": null,
+        "funding_currency": "USD",
+        "funding_period": null,
+        "funding_duration": "Up to three years of graduate study; funded quarters vary by degree programme, for example up to six academic quarters for MA, MBA, MFA, MPP, MS, JSM, MLS and LLM, nine academic quarters for JD, and up to twelve quarters for PhD and DMA",
+        "tuition_coverage": true,
+        "tuition_coverage_note": "The official funding page states that during each of the first three years scholars receive 'A fellowship applied directly to cover tuition and associated fees'.",
+        "living_cost_coverage": true,
+        "travel_coverage": true,
+        "fully_funded": true,
+        "funding_label": "Fully-endowed: tuition and associated fees plus a living and academic stipend and an annual travel stipend for up to three years, with a one-time relocation stipend for newly enrolling scholars; stipends are taxable and are not reimbursed by the programme.",
+        "benefits": [
+          "Fellowship applied directly to tuition and associated fees during each of the first three years of graduate study",
+          "Stipend for living and academic expenses, such as room and board, books, academic supplies, instructional materials, local transportation and reasonable personal expenses",
+          "Travel stipend intended to cover an economy-class ticket for one annual trip to and from Stanford",
+          "One-time relocation stipend for newly enrolling scholars to offset relocation costs and/or technology purchases",
+          "Supplemental funds available on application in years two and three for academic enrichment activities such as conference travel",
+          "Participation in up to three years of leadership development programming"
+        ],
+        "eligibility": [
+          "Apply to, be accepted by, and enrol in a full-time Stanford graduate degree programme, including DMA, JD, MA, MBA, MD, MFA, MPP, MS or PhD, starting in the same year as KHS",
+          "Already hold an offer of admission with deferral to a full-time Stanford graduate degree programme, applying to KHS so that both start in the same year",
+          "Be a current Stanford graduate student adding a new full-time Stanford graduate degree programme starting the same year as KHS",
+          "Be a current Stanford PhD student in the first year of enrolment, starting KHS in the second year of the PhD",
+          "Have earned a first bachelor's degree, or its equivalent, in January 2020 or later for the 2027 cohort; January 2018 or later for applicants who served in the military",
+          "Meet the minimum level of study requirements set by the Stanford graduate programme applied to, including for graduates of institutions outside the United States"
+        ],
+        "citizenship_residency": "No citizenship or residency restriction: the programme states it has no restrictions based on age, college or university, field of study or career aspiration, encourages citizens and residents of all countries to apply, and sets no quotas by discipline, programme or world region.",
+        "international_eligibility": "International applicants are explicitly eligible provided they hold the equivalent of a U.S. bachelor's degree from a college or university of recognized standing and meet the admission requirements of the Stanford graduate programme they apply to, which are set by the Office of Graduate Admissions rather than by Knight-Hennessy Scholars.",
+        "degree_levels": [
+          "Master's",
+          "PhD",
+          "Doctor of Medicine",
+          "Juris Doctor"
+        ],
+        "study_mode": "Full-time enrolment in a Stanford graduate degree programme",
+        "research_requirement": null,
+        "subject_or_agency_requirement": "Any of Stanford's seven schools, with no quotas by discipline, programme or world region",
+        "application_method": "One application to Knight-Hennessy Scholars plus a completely separate, concurrent application to a Stanford graduate degree programme.",
+        "application_route": "Knight-Hennessy Scholars online application at knight-hennessy.stanford.edu, with the supporting Stanford graduate programme application submitted through that programme.",
+        "requirements": [
+          "Submit the KHS application by the single deadline of October 6, 2026 at 1:00pm Pacific Time",
+          "Submit the separate Stanford graduate degree programme application by the earlier of the programme's KHS deadline or December 1, 2026",
+          "Submit a resume, transcripts and test scores, recommendation letters, and short answers and essay",
+          "Respond to the video statement invitation stage where invited",
+          "Review and comply with the programme's policy on AI use in the application",
+          "MBA applicants must submit by the Round 1 MBA deadline, since only the Round 1 MBA deadline aligns with the KHS admission timeline",
+          "Confirm compatibility of any existing Stanford fellowship with KHS, since some Stanford fellowships may not be combined with KHS"
+        ],
+        "documents": [
+          "Resume",
+          "Transcripts and test scores",
+          "Recommendation letters",
+          "Short answers and essay",
+          "Video statement, where invited"
+        ],
+        "english_requirement": null,
+        "english_requirement_note": "The KHS pages do not publish a separate English proficiency requirement; test scores are listed among the application materials, and English language requirements are set by the relevant Stanford graduate programme.",
+        "selection_criteria": [
+          "Independence of thought",
+          "Purposeful leadership",
+          "Civic mindset"
+        ],
+        "selection_weighting": null,
+        "duration": "Up to three years of graduate study",
+        "award_holder_conditions": [
+          "Must be accepted by and enrol in a full-time Stanford graduate degree programme",
+          "Funding applies to the degree programme listed in the initial KHS admission letter",
+          "Additional funding for an additional graduate programme may be applied for but is not guaranteed",
+          "Scholar offers cannot be deferred; a scholar unable to enrol must reapply for the intended year",
+          "Fellowship stipends are taxable, and Knight-Hennessy Scholars does not reimburse students for taxes",
+          "Some Stanford fellowships marked No may not be combined with KHS and may not be discontinued in order to apply"
+        ],
+        "supplements_or_initiatives": [
+          "One-time relocation stipend for newly enrolling scholars",
+          "Supplemental academic enrichment funds available on application in the second and third years",
+          "Up to three years of leadership development programming and KHeystone projects"
+        ],
+        "official_contacts": {
+          "general": "Knight-Hennessy Scholars, Stanford University",
+          "email": null,
+          "phone": null
+        },
+        "description": "Knight-Hennessy Scholars is a fully-endowed, multidisciplinary leadership development programme for graduate students at Stanford University. Scholars receive funding for up to three years for any graduate degree or degrees at Stanford, applying to the degrees they are preparing to enrol in at the time of scholar selection. Funding comprises a fellowship applied directly to tuition and associated fees, a stipend for living and academic expenses, and a travel stipend intended to cover an economy-class ticket for one annual trip to and from Stanford.",
+        "program_type": "University graduate fellowship",
+        "region": "North America",
+        "coverage": "Tuition and associated fees, a living and academic stipend, an annual travel stipend and a one-time relocation stipend for newly enrolling scholars.",
+        "last_verified_date": "2026-10-04"
+      },
+      "programme_detail_applicant_utility": {
+        "application_readiness_checklist": [
+          "KHS application submitted before October 6, 2026 at 1:00pm Pacific Time, since the deadline is the same for every applicant",
+          "Separate Stanford graduate degree programme application submitted by the earlier of that programme's KHS deadline or December 1, 2026",
+          "Confirm the first bachelor's degree date falls inside the eligibility window, January 2020 or later, or January 2018 or later for military service",
+          "Confirm the intended Stanford degree programme is KHS-eligible and not on the excluded list",
+          "Recommendation letters arranged, since these are a required application material",
+          "Ready to complete a video statement if invited to the finalist stage"
+        ],
+        "common_rejection_risks": [
+          "Submitting the Stanford graduate programme application after December 1, 2026, which removes KHS eligibility even if the programme's own deadline is later",
+          "First bachelor's degree earned before 2020, which makes the applicant ineligible for the 2027 cohort",
+          "Applying to an ineligible programme such as the Honors Cooperative Program, Master of Liberal Arts, JSD, MLS, a coterminate degree, or an MA or MS added by a current Stanford PhD student",
+          "Missing the single KHS deadline, since there is no second round",
+          "MBA applicants missing the Round 1 MBA deadline, since only Round 1 aligns with the KHS timeline",
+          "Holding a Stanford fellowship that may not be combined with KHS"
+        ],
+        "estimated_uncovered_costs": [
+          "Tax on fellowship stipends, which the programme does not reimburse, and which international students from countries without a tax treaty should budget for carefully",
+          "Any costs of an additional graduate degree beyond the three-year KHS maximum",
+          "Funding beyond three years for MD, PhD, DMA and dual or joint degree programmes, which follows the degree programme's standard commitment and varies by department"
+        ],
+        "document_audit": [
+          "Resume, transcripts and test scores uploaded",
+          "All recommendation letters received by the programme before the deadline",
+          "Short answers and essay submitted",
+          "Separate Stanford graduate programme application confirmation retained, showing a date on or before December 1, 2026"
+        ],
+        "alerts": [
+          {
+            "trigger": "Two-day deadline",
+            "message": "The KHS application deadline of October 6, 2026 at 1:00pm Pacific Time is the single deadline for all applicants and falls just after the current verification date."
+          },
+          {
+            "trigger": "December 1, 2026 backstop",
+            "message": "A Stanford graduate programme application submitted after December 1, 2026 keeps programme admission but removes KHS eligibility."
+          },
+          {
+            "trigger": "Stipend taxation",
+            "message": "Fellowship stipends are taxable, and Knight-Hennessy Scholars does not reimburse students for taxes."
+          }
+        ],
+        "submission_workflow": [
+          "Choose the Stanford graduate degree programme or programmes to apply to and confirm KHS eligibility for each",
+          "Prepare the KHS materials: resume, transcripts and test scores, recommendation letters, and short answers and essay",
+          "Submit the Stanford graduate programme application by the earlier of the programme's KHS deadline or December 1, 2026",
+          "Submit the KHS application before October 6, 2026 at 1:00pm Pacific Time",
+          "Track evaluation stages, including the video statement invitation, and respond within the stated window"
+        ]
+      },
+      "programme_detail_verification": {
+        "cycle_verified": "2027 cohort, verified 2026-10-04",
+        "verification_confidence": 0.95,
+        "official_fields_confirmed": [
+          "deadline_central",
+          "deadline_central_timezone",
+          "application_cycle",
+          "status",
+          "tuition_coverage",
+          "living_cost_coverage",
+          "travel_coverage",
+          "funding_duration",
+          "eligibility",
+          "benefits",
+          "application_method"
+        ],
+        "institution_check_required": [
+          "Confirm the specific Stanford graduate degree programme deadline for KHS applicants, which the page loads dynamically and instructs applicants to confirm directly with the department",
+          "Confirm the standard funding commitment for years beyond the KHS period for the intended degree programme",
+          "Confirm any English language requirement of the specific graduate programme, which KHS does not publish"
+        ],
+        "unverified_or_removed_claims": [
+          "No dollar or stipend amount is published, so funding_amount is null",
+          "The programme-by-programme KHS deadline table is loaded dynamically and was not readable in the fetched page",
+          "Stipend and relocation stipend values are not published",
+          "Selection weighting between the three published criteria is not published"
+        ],
+        "source_citations": [
+          "https://knight-hennessy.stanford.edu/",
+          "https://knight-hennessy.stanford.edu/program-overview/funding",
+          "https://knight-hennessy.stanford.edu/admission/preparing-your-applications/application-deadlines",
+          "https://knight-hennessy.stanford.edu/admission/before-you-apply/eligibility",
+          "https://knight-hennessy.stanford.edu/sites/g/files/sbiybj23586/files/2024-12/khs_logo_primary_rgb.png"
+        ],
+        "researched_by": "w2_10"
+      },
+      "logo_override": {
+        "url": "https://knight-hennessy.stanford.edu/sites/g/files/sbiybj23586/files/2024-12/khs_logo_primary_rgb.png",
+        "page_url": "https://knight-hennessy.stanford.edu/program-overview/funding",
+        "official_host": true,
+        "alt_text": "Knight-Hennessy Scholars Stanford University",
+        "validation_result": "verified",
+        "validation_detail": "png fetched successfully, roughly 1080x230; 'Knight-Hennessy Scholars' in dark charcoal above 'Stanford University' in Stanford cardinal red, so the wordmark is dark on transparent rather than white-on-transparent",
+        "image_kind": "official_logo",
+        "image_format": "png",
+        "verified_at": "2026-10-04T00:00:00+00:00",
+        "host_evidence": "same_registrable_domain",
+        "_award": "Knight-Hennessy Scholars"
+      },
+      "research_notes": {
+        "logo": "Probed https://knight-hennessy.stanford.edu/sites/g/files/sbiybj23586/files/2024-12/khs_logo_primary_rgb.png, the programme logo file served from the Stanford-hosted programme site and used in the masthead of every official page, including the funding page. The probe returned 'Image fetched successfully' with a png payload. Rendered content shows a dark charcoal 'Knight-Hennessy Scholars' line above a Stanford cardinal 'Stanford University' line, so it is a dark mark and not a white-on-transparent wordmark.",
+        "unverified": [
+          "Dollar values for the stipend, travel stipend and relocation stipend, which are not published",
+          "The per-programme KHS deadline table, which is loaded dynamically",
+          "Any English proficiency requirement, which is set by the Stanford graduate programme rather than KHS"
+        ],
+        "substitution": null,
+        "official_pages_read": [
+          "https://knight-hennessy.stanford.edu/",
+          "https://knight-hennessy.stanford.edu/program-overview/funding",
+          "https://knight-hennessy.stanford.edu/admission/preparing-your-applications/application-deadlines",
+          "https://knight-hennessy.stanford.edu/admission/before-you-apply/eligibility",
+          "https://knight-hennessy.stanford.edu/sites/g/files/sbiybj23586/files/2024-12/khs_logo_primary_rgb.png"
+        ],
+        "degree_level_confirmed": "\"you must apply to, be accepted by, and enroll in a full-time Stanford graduate degree program including, but not limited to, DMA, JD, MA, MBA, MD, MFA, MPP, MS, or PhD programs\" and the funding chart lists MA, MBA, MFA, MPP, MS, JSM, MLS, LLM, JD, MD, PhD, DMA, JD/MBA and MSTP degree programmes.",
+        "dedup_check": "Checked existing_titles, existing_hosts and existing_official_source_urls in the shard. There is no Stanford, knight-hennessy.stanford.edu or US university entry in any dedup list; all existing titles are Canadian government, UBC, Toronto, McGill, McMaster, York, Waterloo or Schulich awards, so this is not a near-duplicate.",
+        "skeleton": false
+      }
+    },
+    {
+      "outcome": "new",
+      "new_scholarship": {
+        "name": "Dalhousie Research Excellence Scholarship (DRES)",
+        "country": "Canada",
+        "region": "North America",
+        "degree_levels": "PhD",
+        "funding_type": "Stipend",
+        "program_type": "University doctoral entrance scholarship",
+        "official_source": "Dalhousie University, Faculty of Graduate Studies",
+        "official_source_url": "https://www.dal.ca/faculty/gradstudies/finance-your-studies/scholarships-bursaries/research-excellence-scholarship.html",
+        "catalogue_url": "https://www.dal.ca/faculty/gradstudies/finance-your-studies/scholarships-bursaries/international-scholarships.html",
+        "official_updates_url": "https://www.dal.ca/faculty/gradstudies/finance-your-studies/scholarships-bursaries/research-excellence-scholarship.html",
+        "status": "open",
+        "is_verified": true,
+        "last_verified_date": "2026-10-04",
+        "description": "Established in 2024, the Dalhousie Research Excellence Scholarship attracts and supports exceptional new PhD students at Dalhousie University and is valued at $35,000 per year for up to four years. Of the total, $28,000 is provided by Graduate Studies and the remaining $7,000 by the supervisor and/or programme of study. Applicants must intend to start a PhD at Dalhousie between January 2027 and January 2028, and funds are only administered after admission to and registration in the intended programme. Applicants who apply for a Tri-agency CGRS-D through Dalhousie in the current cycle are considered automatically for DRES funding.",
+        "duration": "Up to 48 months, and not past the end of the fourth year in the programme",
+        "deadline": "Round one: October 16, 2026 at midnight AT. Round two: opens January 5, 2027, submissions due February 28, 2027 at midnight AT",
+        "deadline_date": "2026-10-16",
+        "deadline_precision": "exact",
+        "application_period": "Round one of the non-Tri-agency competition is open until October 16, 2026 at midnight Atlantic Time; round two opens January 5, 2027 and closes February 28, 2027 at midnight AT. Intended PhD start must fall between January 2027 and January 2028.",
+        "eligibility_summary": "New PhD students at Dalhousie intending to enrol in or transfer to a PhD programme between January 2027 and January 2028, from Canada or abroad. Applicants must demonstrate outstanding research achievement, exceptional leadership potential, and the capacity to generate significant regional, national or international impact through their research.",
+        "eligibility": [
+          "Intent to start, meaning enrol in or transfer to, a PhD programme at Dalhousie between January 2027 and January 2028",
+          "Outstanding research achievement",
+          "Exceptional leadership potential",
+          "Capacity to generate significant regional, national or international impact through their research",
+          "Scholarship funds are only administered after admission to and registration in the intended programme of study"
+        ],
+        "coverage": [
+          "Cash funding of $35,000 per year for up to four years, of which $28,000 comes from Graduate Studies and $7,000 from the supervisor and/or programme of study",
+          "Hold period of up to 48 months, ending no later than the end of the fourth year in the programme",
+          "Top-up to the Killam value of $42,000 per year when held concurrently with a Killam Predoctoral Scholarship"
+        ],
+        "benefits": [
+          "$35,000 per year for up to four years, maintained while the award holder stays eligible",
+          "Automatic top-up to $42,000 per year while a Killam Predoctoral Scholarship is held concurrently",
+          "Possibility of additional funding beyond the award value through stipends or other sources negotiated with the supervisor or programme of study"
+        ],
+        "requirements": [
+          "Submit the application and all accompanying materials by the round deadline, after which the application form closes",
+          "Non-Tri-agency applicants create an application in the Faculty of Graduate Studies Scholarship Management Platform under Major Scholarship Competitions 2026/2027 and the category Major Scholarship Application for Non-Tri-Agency Applicants",
+          "Dalhousie students access the platform using their Dalhousie NetID",
+          "Complete an annual report and submit it to fgs.slo@dal.ca by July 31 of each year the award is held",
+          "Apply to the Tri-agency CGRS-D competition within the first two years of the PhD programme",
+          "Students planning to transfer from a master's to a PhD must apply for a doctoral scholarship before officially transferring into the doctoral programme"
+        ],
+        "required_documents": [],
+        "application_method": [
+          "Applicants who submitted or intend to submit a Tri-agency CGRS-D application through Dalhousie in the current cycle are automatically considered for DRES funding",
+          "Applicants not eligible for a CGRS-D through Dalhousie create an application in the Faculty of Graduate Studies Scholarship Management Platform, selecting Major Scholarship Competitions 2026/2027 and Major Scholarship Application for Non-Tri-Agency Applicants"
+        ],
+        "english_requirement": null,
+        "selection_notes": "The award targets applicants demonstrating outstanding research achievement, exceptional leadership potential, and the capacity to generate significant regional, national or international impact through their research. Recipients are expected to contribute innovative research with potential for significant impact.",
+        "best_fit": "Prospective doctoral students with a strong research record and leadership experience who intend to begin a PhD at Dalhousie between January 2027 and January 2028.",
+        "notes": "Time in programme for funding eligibility is based on the effective transfer date for students transferring from a master's to a PhD without completing the master's. Successful CGRS-D applicants receive the full CGRS-D value of $40,000 per year, and DRES becomes honorary while both awards are held concurrently. DRES recipients may also receive additional funding beyond the award value through stipends or other sources negotiated with their supervisor or programme of study.",
+        "funding_amount": 35000,
+        "funding_currency": "CAD",
+        "funding_period": "per year",
+        "image_url": "https://www.dal.ca/content/experience-fragments/jwp/global/header/master/_jcr_content/root/wrapper/flex_wrapper/image.coreimg.svg/1654483685933/dalhousie-logo.svg",
+        "image_source_url": "https://www.dal.ca/faculty/gradstudies/finance-your-studies/scholarships-bursaries/research-excellence-scholarship.html",
+        "image_source_type": "official_university",
+        "image_alt_text": "Dalhousie University",
+        "image_verified_at": "2026-10-04T00:00:00+00:00"
+      },
+      "programme_detail_official": {
+        "official_source_urls": [
+          "https://www.dal.ca/faculty/gradstudies/finance-your-studies/scholarships-bursaries/research-excellence-scholarship.html",
+          "https://www.dal.ca/faculty/gradstudies/finance-your-studies/scholarships-bursaries/international-scholarships.html"
+        ],
+        "application_link": "https://dalhousiefgs.secure-platform.com/a/solicitations/24/home",
+        "official_updates_url": "https://www.dal.ca/faculty/gradstudies/finance-your-studies/scholarships-bursaries/research-excellence-scholarship.html",
+        "catalogue_url": "https://www.dal.ca/faculty/gradstudies/finance-your-studies/scholarships-bursaries/international-scholarships.html",
+        "application_cycle": "2026/2027 Major Scholarship Competition for PhD entry between January 2027 and January 2028",
+        "deadline_central": "2026-10-16",
+        "deadline_central_display": "Round one – October 16, 2026 at midnight AT",
+        "deadline_central_timezone": "America/Halifax",
+        "deadline_note": "The official page publishes two rounds for non-Tri-agency applicants: round one due October 16, 2026 at midnight Atlantic Time, and round two opening January 5, 2027 with submissions due February 28, 2027 at midnight AT. Applicants who apply for a Tri-agency CGRS-D through Dalhousie in the current cycle are considered automatically and follow the CGRS-D deadlines.",
+        "status": "OPEN",
+        "status_note": "Round one of the non-Tri-agency competition is open until October 16, 2026 at midnight AT, which is after the verification date of October 4, 2026. A second round is scheduled to open January 5, 2027.",
+        "funding_amount": 35000,
+        "funding_currency": "CAD",
+        "funding_period": "per year",
+        "funding_duration": "Up to 48 months, not past the end of the fourth year in the programme",
+        "tuition_coverage": false,
+        "tuition_coverage_note": "The official page describes the award as $35,000 per year made up of $28,000 from Graduate Studies and $7,000 from the supervisor and/or programme of study, and does not state that tuition fees are covered, so tuition coverage is not claimed.",
+        "living_cost_coverage": null,
+        "travel_coverage": false,
+        "fully_funded": false,
+        "funding_label": "$35,000 per year for up to four years, split $28,000 from Graduate Studies and $7,000 from the supervisor and/or programme of study; a stipend with no tuition coverage stated, and holders are expected to apply for a Tri-agency CGRS-D within the first two years.",
+        "benefits": [
+          "$35,000 per year for up to four years provided the award holder maintains eligibility",
+          "Automatic top-up to $42,000 per year while a Killam Predoctoral Scholarship is held concurrently",
+          "Full CGRS-D value of $40,000 per year for successful applicants to the Tri-agency competition",
+          "Possibility of additional funding through stipends or other sources negotiated with the supervisor or programme of study"
+        ],
+        "eligibility": [
+          "Intent to enrol in or transfer to a PhD programme at Dalhousie between January 2027 and January 2028",
+          "Outstanding research achievement",
+          "Exceptional leadership potential",
+          "Capacity to generate significant regional, national or international impact through their research",
+          "Admitted to and registered in the intended programme of study before funds are administered"
+        ],
+        "citizenship_residency": "No citizenship or residency restriction is published beyond the award being open to Canadian and international students.",
+        "international_eligibility": "Explicitly open to international students: the award is listed on Dalhousie's Faculty of Graduate Studies page of international student scholarships and is marked available to Canadian and international students.",
+        "degree_levels": [
+          "PhD"
+        ],
+        "study_mode": "PhD enrolment at Dalhousie University",
+        "research_requirement": "Outstanding research achievement and the capacity to generate significant regional, national or international impact through the research; recipients are expected to contribute innovative research with significant impact potential.",
+        "subject_or_agency_requirement": "Any PhD programme at Dalhousie University",
+        "application_method": "Automatic consideration for applicants who submitted or intend to submit a Tri-agency CGRS-D application through Dalhousie in the current cycle; otherwise an application is created in the Faculty of Graduate Studies Scholarship Management Platform under Major Scholarship Competitions 2026/2027, category Major Scholarship Application for Non-Tri-Agency Applicants.",
+        "application_route": "Faculty of Graduate Studies Scholarship Management Platform (dalhousiefgs.secure-platform.com), accessed with a Dalhousie NetID where applicable.",
+        "requirements": [
+          "Submit the application and all accompanying materials by the round deadline, after which the application form closes",
+          "Intend to start or transfer into the PhD programme between January 2027 and January 2028",
+          "Apply to the Tri-agency CGRS-D competition within the first two years of the PhD programme",
+          "Complete an annual report and submit it to fgs.slo@dal.ca by July 31 of each year the award is held",
+          "Transferring students from a master's to a PhD must apply for a doctoral scholarship before officially transferring",
+          "Maintain eligibility for the award to continue receiving funding"
+        ],
+        "documents": [],
+        "english_requirement": null,
+        "english_requirement_note": "The award page does not state an English proficiency requirement; English language admission requirements are published separately by the Faculty of Graduate Studies.",
+        "selection_criteria": [
+          "Outstanding research achievement",
+          "Exceptional leadership potential",
+          "Capacity to generate significant regional, national or international impact through the research"
+        ],
+        "selection_weighting": null,
+        "duration": "Up to 48 months, ending no later than the end of the fourth year in the programme",
+        "award_holder_conditions": [
+          "Must be admitted to and registered in the intended programme of study before funds are administered",
+          "Must maintain eligibility for the award in order to keep receiving funding",
+          "Expected to apply to the Tri-agency CGRS-D competition within the first two years of the PhD programme",
+          "Annual report due to fgs.slo@dal.ca by July 31 of each year the award is held",
+          "DRES becomes honorary in terms where a Tri-agency CGRS-D is held concurrently",
+          "Hold period may not extend past the end of the fourth year in the programme"
+        ],
+        "supplements_or_initiatives": [
+          "Automatic top-up to the Killam value of $42,000 per year when a Killam Predoctoral Scholarship is held concurrently",
+          "Additional funding beyond the award value through stipends or other sources negotiated with the supervisor or programme of study"
+        ],
+        "official_contacts": {
+          "general": "Faculty of Graduate Studies, Henry Hicks Academic Administration Building, Room 314, PO Box 15000, Halifax, NS B3H 4R2 Canada",
+          "email": "fgs.slo@dal.ca",
+          "phone": "902-494-2485"
+        },
+        "description": "Established in 2024, the Dalhousie Research Excellence Scholarship attracts and supports exceptional new PhD students at Dalhousie University. It is awarded to individuals who demonstrate academic excellence, outstanding research potential and leadership, who are expected to contribute innovative research with the potential to create significant regional, national or global impact. The award is valued at $35,000 per year for up to four years, with $28,000 provided by Graduate Studies and $7,000 provided by the supervisor and/or programme of study.",
+        "program_type": "University doctoral entrance scholarship",
+        "region": "North America",
+        "coverage": "Cash funding of $35,000 per year for up to four years; the official page does not state that tuition fees are covered.",
+        "last_verified_date": "2026-10-04"
+      },
+      "programme_detail_applicant_utility": {
+        "application_readiness_checklist": [
+          "Confirm the intended PhD start date falls between January 2027 and January 2028",
+          "Decide whether to apply through a CGRS-D submission to Dalhousie or as a non-Tri-agency applicant",
+          "If a non-Tri-agency applicant, create a platform application under Major Scholarship Competitions 2026/2027, category Major Scholarship Application for Non-Tri-Agency Applicants",
+          "Have a Dalhousie NetID and password ready if you are an existing student",
+          "Plan for the CGRS-D application within the first two years of the PhD",
+          "Confirm your supervisor and/or programme can commit the $7,000 supervisor contribution, since it forms part of the award value"
+        ],
+        "common_rejection_risks": [
+          "Missing the round deadline, after which the application form closes",
+          "PhD start date outside the January 2027 to January 2028 window",
+          "Applying in the wrong platform category, which excludes non-Tri-agency applicants",
+          "Transferring from a master's to a PhD after the scholarship application deadline rather than before officially transferring",
+          "Assuming the award pays tuition, which the official page does not state",
+          "Failing to maintain eligibility, which ends funding"
+        ],
+        "estimated_uncovered_costs": [
+          "International tuition differential, since no tuition coverage is stated",
+          "Health insurance and mandatory student fees",
+          "Living costs beyond the fixed $35,000 per year"
+        ],
+        "document_audit": [
+          "Platform application submitted in the correct competition and category",
+          "Supporting documents uploaded before the round closes",
+          "Annual report filed for each July 31 the award is held"
+        ],
+        "alerts": [
+          {
+            "trigger": "Round two opens January 5, 2027",
+            "message": "A second round opens January 5, 2027 and closes February 28, 2027 at midnight AT for non-Tri-agency applicants."
+          },
+          {
+            "trigger": "Supervisor contribution required",
+            "message": "$7,000 of the $35,000 annual value comes from the supervisor and/or programme of study, so the funding package depends partly on the department."
+          },
+          {
+            "trigger": "Honorary when combined with CGRS-D",
+            "message": "Successful CGRS-D applicants receive the full $40,000 per year and DRES becomes honorary while both awards are held concurrently."
+          }
+        ],
+        "submission_workflow": [
+          "Identify the intended PhD programme and confirm a start date between January 2027 and January 2028",
+          "Choose the CGRS-D route or the non-Tri-agency platform route",
+          "Log in to the Faculty of Graduate Studies Scholarship Management Platform and select Major Scholarship Competitions 2026/2027 with the correct category",
+          "Complete the application and upload supporting documents before October 16, 2026 at midnight AT",
+          "Diarise the January 5, 2027 round two opening and February 28, 2027 closing date as a fallback"
+        ]
+      },
+      "programme_detail_verification": {
+        "cycle_verified": "2026/2027 Major Scholarship Competition for January 2027 to January 2028 PhD entry, verified 2026-10-04",
+        "verification_confidence": 0.95,
+        "official_fields_confirmed": [
+          "funding_amount",
+          "funding_currency",
+          "funding_period",
+          "funding_duration",
+          "deadline_central",
+          "deadline_central_timezone",
+          "status",
+          "eligibility",
+          "application_method",
+          "benefits",
+          "award_holder_conditions",
+          "official_contacts"
+        ],
+        "institution_check_required": [
+          "Confirm the supervisor and/or programme can provide the $7,000 contribution stated as part of the award value",
+          "Confirm current international tuition and fee rates with the Faculty of Graduate Studies, as the award page does not cover tuition",
+          "Confirm the CGRS-D deadline that applies to applicants using the automatic-consideration route"
+        ],
+        "unverified_or_removed_claims": [
+          "Required documents are not itemised on the official page",
+          "The platform competition and category names are quoted from the page but the platform itself was not opened",
+          "Any English proficiency requirement is not published on the award page",
+          "Selection weighting between research achievement, leadership potential and impact is not published"
+        ],
+        "source_citations": [
+          "https://www.dal.ca/faculty/gradstudies/finance-your-studies/scholarships-bursaries/research-excellence-scholarship.html",
+          "https://www.dal.ca/faculty/gradstudies/finance-your-studies/scholarships-bursaries/international-scholarships.html",
+          "https://www.dal.ca/content/experience-fragments/jwp/global/header/master/_jcr_content/root/wrapper/flex_wrapper/image.coreimg.svg/1654483685933/dalhousie-logo.svg"
+        ],
+        "researched_by": "w2_10"
+      },
+      "logo_override": {
+        "url": "https://www.dal.ca/content/experience-fragments/jwp/global/header/master/_jcr_content/root/wrapper/flex_wrapper/image.coreimg.svg/1654483685933/dalhousie-logo.svg",
+        "page_url": "https://www.dal.ca/faculty/gradstudies/finance-your-studies/scholarships-bursaries/research-excellence-scholarship.html",
+        "official_host": true,
+        "alt_text": "Dalhousie University",
+        "validation_result": "verified",
+        "validation_detail": "svg viewBox 0 0 500 140; wordmark 'DALHOUSIE UNIVERSITY' and eagle crest filled #242424 with a #FFD400 gold shield accent, a dark mark rather than white-on-transparent",
+        "image_kind": "official_logo",
+        "image_format": "svg",
+        "verified_at": "2026-10-04T00:00:00+00:00",
+        "host_evidence": "same_registrable_domain",
+        "_award": "Dalhousie Research Excellence Scholarship (DRES)"
+      },
+      "research_notes": {
+        "logo": "Reused the Dalhousie University header logo SVG already probed for this shard, referenced in the masthead of the DRES official page. The fetch returned SVG source bytes with the wordmark and crest filled #242424 and a #FFD400 shield, confirming HTTP 200 with an image/svg+xml payload and a dark mark.",
+        "unverified": [
+          "Itemised required documents for the platform application",
+          "English proficiency requirement, which is not published on the award page",
+          "Selection weighting between the published criteria"
+        ],
+        "substitution": null,
+        "official_pages_read": [
+          "https://www.dal.ca/faculty/gradstudies/finance-your-studies/scholarships-bursaries/research-excellence-scholarship.html",
+          "https://www.dal.ca/faculty/gradstudies/finance-your-studies/scholarships-bursaries/international-scholarships.html",
+          "https://www.dal.ca/content/experience-fragments/jwp/global/header/master/_jcr_content/root/wrapper/flex_wrapper/image.coreimg.svg/1654483685933/dalhousie-logo.svg"
+        ],
+        "degree_level_confirmed": "\"Scholarship type: Entrance\", \"Degree level: Doctoral\" and \"You must have an intent to start (enroll in or transfer to) a PhD program at Dalhousie between January 2027 and January 2028.\"",
+        "dedup_check": "Checked the shard dedup lists. There is no Dalhousie entry, no dal.ca host and no DRES title or URL in existing_titles, existing_hosts or existing_official_source_urls. It is a distinct scheme from the Killam Predoctoral Scholarship already recorded in this shard, with its own name, value, funding split and award terms, so the two are not near-duplicates. It is also not the Canada Graduate Research Scholarship - Doctoral, which is a federal tri-agency programme.",
+        "skeleton": false
+      }
+    },
+    {
+      "outcome": "new",
+      "new_scholarship": {
+        "name": "International Student Leadership Award (ISLA) - Fall",
+        "country": "Canada",
+        "region": "North America",
+        "degree_levels": "Bachelor's",
+        "funding_type": "Entrance scholarship, non-renewable",
+        "program_type": "University international merit scholarship",
+        "official_source": "Toronto Metropolitan University",
+        "official_source_url": "https://www.torontomu.ca/international/admissions/paying-for-your-education/scholarships-awards/",
+        "catalogue_url": "https://www.torontomu.ca/admissions/scholarships-awards/",
+        "official_updates_url": "https://www.torontomu.ca/international/admissions/paying-for-your-education/scholarships-awards/",
+        "status": "upcoming",
+        "is_verified": true,
+        "last_verified_date": "2026-10-04",
+        "description": "The International Student Leadership Award (ISLA) - Fall is a Toronto Metropolitan University entrance award for undergraduate international students beginning their first year of a full-time four-year, or five-year co-op, undergraduate degree and paying international student fees. ISLA - Fall 2027 has a value of $10,000 CAD for up to 53 recipients and is entrance-only and non-renewable. Applicants must have a final admission average of at least 86%, an A, or an equivalent, and must write a personal statement as part of the application. The award is aimed at students who do well academically, volunteer, join clubs and show leadership qualities.",
+        "duration": "Entrance award only, non-renewable",
+        "deadline": "February 16, 2027 (extended deadline). The fall 2027 awards application opens on AwardSpring on November 2, 2026",
+        "deadline_date": "2027-02-16",
+        "deadline_precision": "exact",
+        "application_period": "The application for fall 2027 awards is available on AwardSpring from November 2, 2026 until the extended deadline of February 16, 2027. The form closes promptly at 11:59 p.m. ET and applications are not accepted past the deadline under any circumstances, including technical difficulties.",
+        "eligibility_summary": "Undergraduate international students who are starting their first year at a Canadian post-secondary institution on a full-time basis, are required to pay international tuition fees, and hold a final admission average of at least 86%, an A, or an equivalent. Any gap year taken must be no longer than one academic year.",
+        "eligibility": [
+          "Be an international student starting your first year of a Canadian post-secondary institution",
+          "Be an international student starting the first year of a full-time 4-year, or 5-year co-op, undergraduate degree at Toronto Metropolitan University",
+          "Be required to pay international tuition fees",
+          "Have a final admission average of at least 86%, an A, or an equivalent",
+          "Be enrolling in a post-secondary institution for the first time",
+          "If a gap year was taken, it must be no longer than one academic year",
+          "Hold International Visa student status and authorization at the time of registration and during the semester in which the award begins",
+          "Have first-class standing and not have previously been in attendance at a Canadian post-secondary institution on a full-time basis"
+        ],
+        "coverage": [
+          "Cash award of $10,000 CAD",
+          "Up to 53 recipients for ISLA - Fall 2027"
+        ],
+        "benefits": [
+          "$10,000 CAD entrance award",
+          "Recognition as a leadership award for international undergraduates",
+          "Up to 53 recipients in the fall 2027 round"
+        ],
+        "requirements": [
+          "Write a personal statement for submission",
+          "Apply through the AwardSpring portal once the fall 2027 awards application opens on November 2, 2026",
+          "Have received a TMU Student Number and activated online identity to access AwardSpring, although applicants are eligible to apply before receiving an offer of admission",
+          "Submit before the extended deadline of February 16, 2027, as the form closes promptly at 11:59 p.m. ET"
+        ],
+        "required_documents": [
+          "Personal statement",
+          "Completed AwardSpring application"
+        ],
+        "application_method": [
+          "Register and start, or use an existing, TMU Student Number and activate the online identity",
+          "Log on to AwardSpring at torontomu.awardspring.ca",
+          "Complete the general application and then the ISLA follow-up components, including the personal statement",
+          "Submit before the deadline, monitoring email and the ChooseTMU Applicant Portal for decisions"
+        ],
+        "english_requirement": null,
+        "selection_notes": "The award targets international students who do well academically, volunteer, join clubs and show leadership qualities. Number of recipients is capped at 53 for fall 2027.",
+        "best_fit": "High-achieving international undergraduates with 86% or better final admission averages who can document volunteering, club involvement and leadership.",
+        "notes": "ISLA - Fall and ISLA - Winter are separate awards with separate deadlines; the ISLA - Winter 2027 deadline was September 14, 2026 and had already passed at the verification date, and the fall deadline explicitly does not apply to ISLA - Winter. The award is entrance-only and non-renewable.",
+        "funding_amount": 10000,
+        "funding_currency": "CAD",
+        "funding_period": null,
+        "image_url": "https://www.torontomu.ca/etc.clientlibs/ryecms/static/clientlib-site/resources/images/tmu_logo.svg",
+        "image_source_url": "https://www.torontomu.ca/international/admissions/paying-for-your-education/scholarships-awards/",
+        "image_source_type": "official_university",
+        "image_alt_text": "Toronto Metropolitan University",
+        "image_verified_at": "2026-10-04T00:00:00+00:00"
+      },
+      "programme_detail_official": {
+        "official_source_urls": [
+          "https://www.torontomu.ca/international/admissions/paying-for-your-education/scholarships-awards/",
+          "https://www.torontomu.ca/admissions/scholarships-awards/"
+        ],
+        "application_link": "https://torontomu.awardspring.ca/",
+        "official_updates_url": "https://www.torontomu.ca/international/admissions/paying-for-your-education/scholarships-awards/",
+        "catalogue_url": "https://www.torontomu.ca/admissions/scholarships-awards/",
+        "application_cycle": "Fall 2027 entry; awards application available on AwardSpring from November 2, 2026 to February 16, 2027",
+        "deadline_central": "2027-02-16",
+        "deadline_central_display": "February 16, 2027 (extended deadline), form closing at 11:59 p.m. ET",
+        "deadline_central_timezone": "America/Toronto",
+        "deadline_note": "The official page states the application for fall 2027 awards is available on AwardSpring from November 2, 2026 until the extended deadline to apply, February 16, 2027, and that the form will close promptly at 11:59 p.m. ET with no late applications accepted under any circumstances, including technical difficulties. This deadline does not apply to ISLA - Winter.",
+        "status": "UPCOMING",
+        "status_note": "At the verification date of October 4, 2026 the award's application window has not yet opened: the official page publishes an opening date of November 2, 2026, which is within the next ten months. The status is therefore recorded as upcoming rather than open.",
+        "funding_amount": 10000,
+        "funding_currency": "CAD",
+        "funding_period": null,
+        "funding_duration": "Entrance award only; entrance-only and non-renewable",
+        "tuition_coverage": false,
+        "tuition_coverage_note": "The official page states a value of $10,000 CAD for ISLA - Fall 2027 and does not state that the award covers tuition fees, so tuition coverage is not claimed.",
+        "living_cost_coverage": null,
+        "travel_coverage": false,
+        "fully_funded": false,
+        "funding_label": "$10,000 CAD one-time entrance award for up to 53 recipients, entrance-only and non-renewable, with no tuition coverage stated.",
+        "benefits": [
+          "$10,000 CAD award value",
+          "Up to 53 recipients for the fall 2027 round",
+          "Leadership-focused recognition for international undergraduates"
+        ],
+        "eligibility": [
+          "International student starting the first year of study at a Canadian post-secondary institution",
+          "First year of a full-time 4-year, or 5-year co-op, undergraduate degree at Toronto Metropolitan University",
+          "Required to pay international tuition fees",
+          "Final admission average of at least 86%, an A, or an equivalent",
+          "Enrolling in a post-secondary institution for the first time",
+          "Any gap year no longer than one academic year",
+          "International Visa student status and authorization at registration and during the semester the award begins",
+          "First-class standing and no previous full-time attendance at a Canadian post-secondary institution"
+        ],
+        "citizenship_residency": "Open to international students holding International Visa status and authorization at the time of registration and during the semester in which the award begins; no specific nationality is named.",
+        "international_eligibility": "The award is created specifically for undergraduate international students paying international tuition fees, so international eligibility is explicit rather than inferred from general eligibility language.",
+        "degree_levels": [
+          "Bachelor's"
+        ],
+        "study_mode": "Full-time undergraduate study, 4-year or 5-year co-op",
+        "research_requirement": null,
+        "subject_or_agency_requirement": "Open to international undergraduates across TMU programmes; the award is administered by Student Awards and Scholarships with the International Enrolment Office",
+        "application_method": "Application through the AwardSpring portal, which lists all awards available at the university in one place; applicants need a TMU Student Number and activated online identity, and may apply before receiving an offer of admission.",
+        "application_route": "AwardSpring at torontomu.awardspring.ca, using the TMU Student Number and online identity.",
+        "requirements": [
+          "Write a personal statement for submission",
+          "Complete the AwardSpring general application, then the ISLA follow-up questions",
+          "Apply within the published window of November 2, 2026 to February 16, 2027",
+          "Submit before the form closes at 11:59 p.m. ET on the deadline date"
+        ],
+        "documents": [
+          "Personal statement",
+          "Completed AwardSpring application and follow-up questions"
+        ],
+        "english_requirement": null,
+        "english_requirement_note": "This awards page does not publish an English language proficiency requirement; TMU publishes separate English language requirements for admission.",
+        "selection_criteria": [
+          "Final admission average of at least 86%, an A, or an equivalent",
+          "Personal statement",
+          "Academic performance",
+          "Volunteering",
+          "Club involvement",
+          "Demonstrated leadership qualities"
+        ],
+        "selection_weighting": null,
+        "duration": "Entrance award only; non-renewable",
+        "award_holder_conditions": [
+          "Must be an international student paying international tuition fees at the time of registration",
+          "Must hold International Visa student status and authorization during the semester in which the award begins",
+          "Must enrol for the first time in a Canadian post-secondary institution, with any gap year no longer than one academic year",
+          "The award is entrance-only and cannot be renewed"
+        ],
+        "supplements_or_initiatives": [
+          "The same AwardSpring portal also lists the International Student Leadership Award - Winter, a separate award with its own deadline",
+          "TMU states over $7 million is designated for entrance scholarship support in the first-year class"
+        ],
+        "official_contacts": {
+          "general": "Toronto Metropolitan University, 350 Victoria Street, Toronto, ON M5B 2K3",
+          "email": "awards@torontomu.ca",
+          "phone": "416-979-5000"
+        },
+        "description": "The International Student Leadership Award (ISLA) - Fall is for undergraduate international students enrolling in a post-secondary institution for the first time. Applicants must be starting their first year of a full-time 4-year, or 5-year co-op, undergraduate degree at Toronto Metropolitan University and paying international tuition fees. It is for students who do well academically, volunteer, join clubs and show leadership qualities. ISLA - Fall 2027 has a value of $10,000 CAD, with up to 53 recipients, and is entrance-only and non-renewable.",
+        "program_type": "University international merit scholarship",
+        "region": "North America",
+        "coverage": "Cash award of $10,000 CAD; the official page does not state that tuition fees are covered.",
+        "last_verified_date": "2026-10-04"
+      },
+      "programme_detail_applicant_utility": {
+        "application_readiness_checklist": [
+          "Final admission average of 86% or better, or an A equivalent, secured before applying",
+          "Confirm you are required to pay international tuition fees and will hold International Visa status at registration",
+          "Confirm you are enrolling in a Canadian post-secondary institution for the first time and that any gap year is no longer than one academic year",
+          "Obtain a TMU Student Number and activate your online identity so you can access AwardSpring",
+          "Draft the required personal statement",
+          "Be ready to submit from November 2, 2026, and well before February 16, 2027"
+        ],
+        "common_rejection_risks": [
+          "Missing the deadline, since the form closes promptly at 11:59 p.m. ET and no late applications are accepted under any circumstances",
+          "Applying in the AwardSpring general application window but not completing the ISLA follow-up, including the personal statement",
+          "Final admission average below 86%",
+          "Previous full-time attendance at a Canadian post-secondary institution",
+          "A gap year longer than one academic year",
+          "Applying before the fall 2027 awards application opens on November 2, 2026"
+        ],
+        "estimated_uncovered_costs": [
+          "International tuition fees beyond the $10,000 award, since the page states no tuition coverage",
+          "Living expenses, books, supplies and health insurance for the full programme, as the award is non-renewable",
+          "Travel, immigration and initial settlement costs"
+        ],
+        "document_audit": [
+          "AwardSpring general application submitted",
+          "ISLA follow-up questions and personal statement submitted",
+          "Proof of final admission average retained",
+          "Confirmation that application was submitted before 11:59 p.m. ET on February 16, 2027"
+        ],
+        "alerts": [
+          {
+            "trigger": "Application window opens November 2, 2026",
+            "message": "The fall 2027 awards application is not available before November 2, 2026, even though the deadline is in February 2027."
+          },
+          {
+            "trigger": "Hard cut-off",
+            "message": "Applications are not accepted past the deadline under any circumstances, including technical difficulties, and the form closes promptly at 11:59 p.m. ET."
+          },
+          {
+            "trigger": "Non-renewable",
+            "message": "ISLA - Fall is entrance-only and non-renewable, so it does not continue into later years."
+          }
+        ],
+        "submission_workflow": [
+          "Confirm eligibility against the 86% final admission average and international tuition fee requirements",
+          "Obtain your TMU Student Number and activate the online identity",
+          "From November 2, 2026, log in to AwardSpring and complete the general application",
+          "Complete the ISLA follow-up items, including the personal statement",
+          "Submit well before February 16, 2027 and monitor email and the ChooseTMU Applicant Portal for the decision"
+        ]
+      },
+      "programme_detail_verification": {
+        "cycle_verified": "Fall 2027 entry cycle, verified 2026-10-04",
+        "verification_confidence": 0.95,
+        "official_fields_confirmed": [
+          "funding_amount",
+          "funding_currency",
+          "funding_duration",
+          "deadline_central",
+          "deadline_central_timezone",
+          "application_cycle",
+          "status",
+          "eligibility",
+          "application_method",
+          "official_contacts"
+        ],
+        "institution_check_required": [
+          "Confirm current international tuition and fee rates for the intended programme, which the awards page does not cover",
+          "Confirm English language admission requirements for the programme, published separately by TMU",
+          "Confirm the number of recipients allocated to the intended programme or faculty, which is not published"
+        ],
+        "unverified_or_removed_claims": [
+          "Selection weighting between academic average, volunteering, clubs and leadership is not published",
+          "The AwardSpring platform itself was not opened, so its exact follow-up questions are not itemised here",
+          "The reason the deadline was extended, and its original date, are not published on the page"
+        ],
+        "source_citations": [
+          "https://www.torontomu.ca/international/admissions/paying-for-your-education/scholarships-awards/",
+          "https://www.torontomu.ca/etc.clientlibs/ryecms/static/clientlib-site/resources/images/tmu_logo.svg"
+        ],
+        "researched_by": "w2_10"
+      },
+      "logo_override": {
+        "url": "https://www.torontomu.ca/etc.clientlibs/ryecms/static/clientlib-site/resources/images/tmu_logo.svg",
+        "page_url": "https://www.torontomu.ca/international/admissions/paying-for-your-education/scholarships-awards/",
+        "official_host": true,
+        "alt_text": "Toronto Metropolitan University",
+        "validation_result": "verified",
+        "validation_detail": "svg viewBox 0 0 372.9 202.6; the wordmark 'TORONTO METROPOLITAN UNIVERSITY' is set in white #FFFFFF inside a solid #004C9B blue rectangle with a #FFDC00 yellow block, both drawn inside the same svg, so the mark is legible on a light card and is not a white-on-transparent wordmark",
+        "image_kind": "official_logo",
+        "image_format": "svg",
+        "verified_at": "2026-10-04T00:00:00+00:00",
+        "host_evidence": "same_registrable_domain",
+        "_award": "International Student Leadership Award (ISLA) - Fall"
+      },
+      "research_notes": {
+        "logo": "Probed https://www.torontomu.ca/etc.clientlibs/ryecms/static/clientlib-site/resources/images/tmu_logo.svg, the logo file referenced by the masthead image at the top of the official international scholarships page. The probe returned SVG source bytes with viewBox 0 0 372.9 202.6, confirming HTTP 200 with an image/svg+xml payload. The wordmark is white but sits on a solid blue rectangle that is part of the artwork, so it is not transparent-background white text.",
+        "unverified": [
+          "Selection weighting between the published criteria",
+          "Exact AwardSpring follow-up questions, since the portal was not opened",
+          "The original, pre-extension application deadline"
+        ],
+        "substitution": null,
+        "official_pages_read": [
+          "https://www.torontomu.ca/international/admissions/paying-for-your-education/scholarships-awards/",
+          "https://www.torontomu.ca/etc.clientlibs/ryecms/static/clientlib-site/resources/images/tmu_logo.svg"
+        ],
+        "degree_level_confirmed": "\"Applicants must be starting their first year of a full-time 4-year (or 5 year co-op) undergraduate degree at TMU and paying international tuition fees\" and \"ISLA - Fall 2027 has a value of $10,000 CAD for up to 53 recipients.\"",
+        "dedup_check": "Checked existing_titles, existing_hosts and existing_official_source_urls in the shard. There is no Toronto Metropolitan University, torontomu.ca or ISLA entry in any dedup list. The nearest catalogue item is York University's President's International Scholarship of Excellence on futurestudents.yorku.ca, which is a different institution with a different host, name and selection criteria, so this is not a near-duplicate.",
+        "skeleton": false
+      }
+    },
+    {
+      "outcome": "new",
+      "new_scholarship": {
+        "name": "President's Entrance Scholarship",
+        "country": "Canada",
+        "region": "North America",
+        "degree_levels": "Bachelor's",
+        "funding_type": "Renewable entrance scholarship",
+        "program_type": "University merit entrance scholarship",
+        "official_source": "Toronto Metropolitan University",
+        "official_source_url": "https://www.torontomu.ca/international/admissions/paying-for-your-education/scholarships-awards/",
+        "catalogue_url": "https://www.torontomu.ca/admissions/scholarships-awards/",
+        "official_updates_url": "https://www.torontomu.ca/international/admissions/paying-for-your-education/scholarships-awards/",
+        "status": "upcoming",
+        "is_verified": true,
+        "last_verified_date": "2026-10-04",
+        "description": "The President's Entrance Scholarship is awarded by Toronto Metropolitan University to secondary school graduates who demonstrate academic accomplishment, leadership qualities, original thought and creative ability. Twelve recipients are selected each year, and the award is worth $40,000 CAD in total, paid as a renewable $10,000 CAD annual amount. A minimum 90% final admission average is required for consideration, calculated from the best six Grade 12 U/M courses or the home-country equivalent. Recipients are also reserved a bed in residence, at no extra cost, limited to a Pitman Hall single bedroom with shared hallway washroom or an International Living/Learning single bedroom with private washroom.",
+        "duration": "Renewable across the degree, with a total value of $40,000 CAD",
+        "deadline": "February 16, 2027 (extended deadline). The fall 2027 awards application opens on AwardSpring on November 2, 2026",
+        "deadline_date": "2027-02-16",
+        "deadline_precision": "exact",
+        "application_period": "The application for fall 2027 awards is available on AwardSpring from November 2, 2026 until the extended deadline of February 16, 2027. The form closes promptly at 11:59 p.m. ET and applications are not accepted past the deadline under any circumstances, including technical difficulties.",
+        "eligibility_summary": "Secondary school graduates applying to Toronto Metropolitan University with a minimum 90% final admission average, calculated from the best six Grade 12 U/M courses or the home-country equivalent. Canadian citizens, permanent residents of Canada, protected persons in Canada and international students are all eligible to apply.",
+        "eligibility": [
+          "Be a secondary school graduate applying for admission to Toronto Metropolitan University",
+          "Have a minimum 90% final admission average, calculated with the best 6 Grade 12 U/M courses or the home country's equivalent",
+          "Demonstrate academic accomplishment, leadership qualities, original thought and creative ability",
+          "Be a Canadian citizen, a permanent resident of Canada, a protected person in Canada, or an international student"
+        ],
+        "coverage": [
+          "Renewable award of $10,000 CAD per year, $40,000 CAD total value",
+          "Twelve recipients per year",
+          "Reserved residence bed at no additional cost, limited to specified single rooms"
+        ],
+        "benefits": [
+          "$10,000 CAD annual amount, renewable",
+          "$40,000 CAD total value across the award",
+          "A bed in residence reserved for the recipient, with costs not included, limited to a Pitman Hall single bedroom with shared hallway washroom or an International Living/Learning single bedroom with private washroom",
+          "Recognition among TMU's most prestigious entrance scholarships"
+        ],
+        "requirements": [
+          "Submit an essay or project summary of a maximum of 500 words, which may be a piece of creative writing or a summary of a creative project, and must reflect capacity for original thought and creative ability",
+          "Provide two letters of reference: an academic reference letter confirming scholastic abilities, which may also speak to leadership or creative endeavours, and a second reference letter addressing leadership and creative endeavours, which should not verify academic achievement",
+          "Indicate the leadership activities and positions you were involved in during your final two years of secondary school",
+          "Apply through AwardSpring once the fall 2027 awards application opens on November 2, 2026",
+          "Submit before the extended deadline of February 16, 2027"
+        ],
+        "required_documents": [
+          "Essay or project summary, maximum 500 words",
+          "Academic reference letter confirming scholastic abilities",
+          "Second reference letter addressing leadership and creative endeavours",
+          "Details of leadership activities and positions from the final two years of secondary school"
+        ],
+        "application_method": [
+          "Register and start, or use an existing, TMU Student Number and activate the online identity",
+          "Log on to AwardSpring at torontomu.awardspring.ca",
+          "Complete the general application, then the President's Entrance Scholarship follow-up items",
+          "Submit before the deadline, monitoring email and the ChooseTMU Applicant Portal for the decision"
+        ],
+        "english_requirement": null,
+        "selection_notes": "Selection is based on academic accomplishment, leadership qualities, original thought and creative ability. Twelve recipients are awarded each year, and a minimum 90% final admission average is required to be considered.",
+        "best_fit": "Secondary school graduates with 90% or better final averages who can supply two strong reference letters and a documented record of original thought and leadership.",
+        "notes": "The reserved residence bed does not include housing costs and is limited to the two named single-room options, one of which has a shared hallway washroom. This award is separate from the International Student Leadership Award, which carries its own deadline, and from TMU's guaranteed and renewable entrance scholarship for students in a Canadian secondary school.",
+        "funding_amount": 10000,
+        "funding_currency": "CAD",
+        "funding_period": "per year",
+        "image_url": "https://www.torontomu.ca/etc.clientlibs/ryecms/static/clientlib-site/resources/images/tmu_logo.svg",
+        "image_source_url": "https://www.torontomu.ca/international/admissions/paying-for-your-education/scholarships-awards/",
+        "image_source_type": "official_university",
+        "image_alt_text": "Toronto Metropolitan University",
+        "image_verified_at": "2026-10-04T00:00:00+00:00"
+      },
+      "programme_detail_official": {
+        "official_source_urls": [
+          "https://www.torontomu.ca/international/admissions/paying-for-your-education/scholarships-awards/",
+          "https://www.torontomu.ca/admissions/scholarships-awards/"
+        ],
+        "application_link": "https://torontomu.awardspring.ca/",
+        "official_updates_url": "https://www.torontomu.ca/international/admissions/paying-for-your-education/scholarships-awards/",
+        "catalogue_url": "https://www.torontomu.ca/admissions/scholarships-awards/",
+        "application_cycle": "Fall 2027 entry; awards application available on AwardSpring from November 2, 2026 to February 16, 2027",
+        "deadline_central": "2027-02-16",
+        "deadline_central_display": "February 16, 2027 (extended deadline), form closing at 11:59 p.m. ET",
+        "deadline_central_timezone": "America/Toronto",
+        "deadline_note": "The official page states the application for fall 2027 awards is available on AwardSpring from November 2, 2026 until the extended deadline to apply, February 16, 2027, closing promptly at 11:59 p.m. ET with no late applications accepted under any circumstances, including technical difficulties.",
+        "status": "UPCOMING",
+        "status_note": "At the verification date of October 4, 2026 the fall 2027 awards application has not yet opened; the official page publishes an opening date of November 2, 2026, which falls within the next ten months.",
+        "funding_amount": 10000,
+        "funding_currency": "CAD",
+        "funding_period": "per year",
+        "funding_duration": "Renewable, with a total value of $40,000 CAD",
+        "tuition_coverage": false,
+        "tuition_coverage_note": "The official page describes the award as a $10,000 CAD annual amount with a $40,000 CAD total value and does not state that it covers tuition fees, so tuition coverage is not claimed.",
+        "living_cost_coverage": null,
+        "travel_coverage": false,
+        "fully_funded": false,
+        "funding_label": "$10,000 CAD per year, renewable, $40,000 CAD total value for one of twelve recipients, plus a reserved residence bed with costs not included; no tuition coverage stated.",
+        "benefits": [
+          "$10,000 CAD annual amount that is renewable",
+          "$40,000 CAD total scholarship value",
+          "A bed in residence reserved for recipients, costs not included, limited to a Pitman Hall single bedroom with shared hallway washroom or an International Living/Learning single bedroom with private washroom"
+        ],
+        "eligibility": [
+          "Secondary school graduate",
+          "Minimum 90% final admission average, calculated with the best 6 Grade 12 U/M courses or the home country's equivalent",
+          "Demonstrated academic accomplishment",
+          "Demonstrated leadership qualities",
+          "Demonstrated original thought and creative ability",
+          "Canadian citizen, permanent resident of Canada, protected person in Canada, or international student"
+        ],
+        "citizenship_residency": "Explicitly open to four categories: Canadian citizens, permanent residents of Canada, protected persons in Canada, and international students. No nationality or country-of-origin restriction is published.",
+        "international_eligibility": "The official page states in a note that Canadian citizens, permanent residents of Canada, protected persons in Canada and international students are eligible to apply for this award, and the award is listed on TMU Global's international scholarships and awards page.",
+        "degree_levels": [
+          "Bachelor's"
+        ],
+        "study_mode": "Full-time undergraduate entry; the terms and conditions page covers entrance scholarships for students admitted for the relevant intake",
+        "research_requirement": null,
+        "subject_or_agency_requirement": "Open across TMU programmes; administered by Student Awards and Scholarships",
+        "application_method": "Application through the AwardSpring portal, which requires a TMU Student Number and activated online identity and allows applicants to apply before receiving an offer of admission.",
+        "application_route": "AwardSpring at torontomu.awardspring.ca",
+        "requirements": [
+          "Submit an essay or project summary of a maximum of 500 words reflecting capacity for original thought and creative ability",
+          "Submit an academic reference letter confirming scholastic abilities, which may also address leadership or creative endeavours",
+          "Submit a second reference letter addressing leadership and creative endeavours, which should not verify academic achievement",
+          "List leadership activities and positions held during the final two years of secondary school",
+          "Apply within the November 2, 2026 to February 16, 2027 window"
+        ],
+        "documents": [
+          "Essay or project summary, maximum 500 words",
+          "Academic reference letter",
+          "Leadership and creative endeavours reference letter",
+          "Leadership activities and positions from the final two years of secondary school"
+        ],
+        "english_requirement": null,
+        "english_requirement_note": "This awards page does not publish an English language proficiency requirement; TMU publishes separate English language requirements for admission, and the essay and reference letters are submitted in English through AwardSpring.",
+        "selection_criteria": [
+          "Academic accomplishment",
+          "Leadership qualities",
+          "Original thought",
+          "Creative ability",
+          "Minimum 90% final admission average as an eligibility threshold"
+        ],
+        "selection_weighting": null,
+        "duration": "Renewable across the degree; $40,000 CAD total value",
+        "award_holder_conditions": [
+          "Must maintain the terms and conditions for entrance scholarship renewal, which TMU publishes separately",
+          "The reserved residence bed does not include housing costs and is limited to the two named single-room options",
+          "Renewal beyond the first year is conditional and is governed by TMU's published entrance scholarship terms and conditions"
+        ],
+        "supplements_or_initiatives": [
+          "TMU states that over $7 million is designated for entrance scholarship support for the incoming first-year class",
+          "The same portal also lists the International Student Leadership Award and TMU's guaranteed and renewable entrance scholarship for international students in Canadian secondary schools"
+        ],
+        "official_contacts": {
+          "general": "Toronto Metropolitan University, 350 Victoria Street, Toronto, ON M5B 2K3",
+          "email": "awards@torontomu.ca",
+          "phone": "416-979-5000"
+        },
+        "description": "The President's Entrance Scholarship is awarded to secondary school graduates who demonstrate academic accomplishment, leadership qualities, original thought and creative ability. Twelve recipients are selected, and the award carries a value of $40,000 CAD in total, delivered as a renewable annual amount of $10,000 CAD. Recipients are reserved a bed in residence, at no additional cost, limited to a Pitman Hall single bedroom with shared hallway washroom or an International Living/Learning single bedroom with private washroom.",
+        "program_type": "University merit entrance scholarship",
+        "region": "North America",
+        "coverage": "Renewable cash award of $10,000 CAD per year plus a reserved residence bed with costs not included; the official page does not state that tuition fees are covered.",
+        "last_verified_date": "2026-10-04"
+      },
+      "programme_detail_applicant_utility": {
+        "application_readiness_checklist": [
+          "Final admission average of 90% or better across the best six Grade 12 U/M courses or home-country equivalent",
+          "Draft the essay or project summary of a maximum of 500 words before the window opens",
+          "Request an academic reference letter from someone who can confirm scholastic abilities",
+          "Request a second reference letter focused on leadership and creative endeavours, not academic verification",
+          "Compile leadership activities and positions from the final two years of secondary school",
+          "Have a TMU Student Number and activated online identity ready for AwardSpring from November 2, 2026"
+        ],
+        "common_rejection_risks": [
+          "Final admission average below the 90% minimum",
+          "Missing the February 16, 2027 deadline, since the form closes promptly at 11:59 p.m. ET with no exceptions",
+          "Submitting only one reference letter, or using a second letter that merely verifies academics instead of addressing leadership",
+          "Exceeding the 500-word limit on the essay or project summary",
+          "Applying before the fall 2027 awards application opens on November 2, 2026",
+          "Assuming the residence benefit includes housing costs, which the page explicitly excludes"
+        ],
+        "estimated_uncovered_costs": [
+          "International tuition and fees beyond the $10,000 CAD annual award, since no tuition coverage is stated",
+          "Housing costs, which the reserved bed explicitly does not cover",
+          "Books, supplies, health insurance and living expenses beyond the award amount"
+        ],
+        "document_audit": [
+          "Essay or project summary within the 500-word limit",
+          "Two distinct reference letters received, one academic and one leadership-focused",
+          "Leadership activities documented with dates and roles for the final two years of secondary school",
+          "Final admission average calculation confirmed against the best six courses"
+        ],
+        "alerts": [
+          {
+            "trigger": "Application window opens November 2, 2026",
+            "message": "The fall 2027 awards application is not available before November 2, 2026, even though the deadline falls in February 2027."
+          },
+          {
+            "trigger": "Residence benefit scope",
+            "message": "Recipients are reserved a bed in residence with costs not included, and only the two named single-room options qualify."
+          },
+          {
+            "trigger": "Hard cut-off",
+            "message": "Applications are not accepted past the deadline under any circumstances, including technical difficulties."
+          }
+        ],
+        "submission_workflow": [
+          "Confirm the 90% final admission average requirement and calculate it from the best six courses",
+          "Obtain a TMU Student Number and activate the online identity",
+          "Prepare the essay and secure both reference letters before the window opens",
+          "From November 2, 2026, log in to AwardSpring and complete the general application and the President's Entrance Scholarship follow-up",
+          "Submit before February 16, 2027 and track the decision by email and the ChooseTMU Applicant Portal"
+        ]
+      },
+      "programme_detail_verification": {
+        "cycle_verified": "Fall 2027 entry cycle, verified 2026-10-04",
+        "verification_confidence": 0.92,
+        "official_fields_confirmed": [
+          "funding_amount",
+          "funding_currency",
+          "funding_period",
+          "funding_duration",
+          "deadline_central",
+          "deadline_central_timezone",
+          "application_cycle",
+          "status",
+          "eligibility",
+          "benefits",
+          "requirements",
+          "official_contacts"
+        ],
+        "institution_check_required": [
+          "Confirm current international tuition and fee rates for the intended programme, which the awards page does not cover",
+          "Confirm renewal conditions in TMU's separate fall 2027 and winter 2028 entrance scholarship terms and conditions page",
+          "Confirm English language admission requirements for the programme, published separately by TMU",
+          "Confirm current residence availability and costs for the two named room options"
+        ],
+        "unverified_or_removed_claims": [
+          "Selection weighting between academic accomplishment, leadership, original thought and creative ability is not published",
+          "The renewal conditions themselves were not read, since they sit on a separate terms and conditions page, so the duration is stated only as renewable",
+          "The exact AwardSpring follow-up questions are not itemised here, since the portal was not opened"
+        ],
+        "source_citations": [
+          "https://www.torontomu.ca/international/admissions/paying-for-your-education/scholarships-awards/",
+          "https://www.torontomu.ca/etc.clientlibs/ryecms/static/clientlib-site/resources/images/tmu_logo.svg"
+        ],
+        "researched_by": "w2_10"
+      },
+      "logo_override": {
+        "url": "https://www.torontomu.ca/etc.clientlibs/ryecms/static/clientlib-site/resources/images/tmu_logo.svg",
+        "page_url": "https://www.torontomu.ca/international/admissions/paying-for-your-education/scholarships-awards/",
+        "official_host": true,
+        "alt_text": "Toronto Metropolitan University",
+        "validation_result": "verified",
+        "validation_detail": "svg viewBox 0 0 372.9 202.6; the wordmark 'TORONTO METROPOLITAN UNIVERSITY' is white #FFFFFF inside a solid #004C9B blue rectangle with a #FFDC00 yellow block, all drawn within the same svg, so the mark is legible on a light card and is not a white-on-transparent wordmark",
+        "image_kind": "official_logo",
+        "image_format": "svg",
+        "verified_at": "2026-10-04T00:00:00+00:00",
+        "host_evidence": "same_registrable_domain",
+        "_award": "President's Entrance Scholarship"
+      },
+      "research_notes": {
+        "logo": "Reused the TMU logo SVG already probed for this shard, the file referenced by the masthead image of the official international scholarships page. The probe returned SVG source bytes with viewBox 0 0 372.9 202.6, and the white wordmark sits inside a solid blue rectangle that is part of the artwork.",
+        "unverified": [
+          "Selection weighting between the published criteria",
+          "Renewal conditions, which sit on a separate terms and conditions page",
+          "Exact AwardSpring follow-up questions"
+        ],
+        "substitution": null,
+        "official_pages_read": [
+          "https://www.torontomu.ca/international/admissions/paying-for-your-education/scholarships-awards/",
+          "https://www.torontomu.ca/etc.clientlibs/ryecms/static/clientlib-site/resources/images/tmu_logo.svg"
+        ],
+        "degree_level_confirmed": "Listed by TMU under 'Prestigious entrance scholarships for September', awarded to secondary school graduates entering a bachelor's programme, with the eligibility table describing secondary school study and Grade 12 U/M courses.",
+        "dedup_check": "Checked existing_titles, existing_hosts and existing_official_source_urls in the shard. There is no Toronto Metropolitan University, torontomu.ca or President's Entrance Scholarship entry in any dedup list. The nearest catalogue item is York University's President's International Scholarship of Excellence on futurestudents.yorku.ca: that is a different institution, a different host, a different award name and different published selection criteria, so this is not a near-duplicate. It is also distinct from the ISLA - Fall award recorded separately in this shard.",
+        "skeleton": false
+      }
+    },
+    {
+      "outcome": "new",
+      "new_scholarship": {
+        "name": "Beca al Talento Académico Internacional",
+        "country": "Mexico",
+        "region": "North America",
+        "degree_levels": "Bachelor's",
+        "funding_type": "Partial tuition waiver",
+        "program_type": "University international merit scholarship",
+        "official_source": "Tecnológico de Monterrey",
+        "official_source_url": "https://tec.mx/es/profesional/becas/internacional",
+        "catalogue_url": "https://tec.mx/es/profesional/becas",
+        "official_updates_url": "https://tec.mx/es/profesional/becas/internacional",
+        "status": "open",
+        "is_verified": true,
+        "last_verified_date": "2026-10-04",
+        "description": "The Beca al Talento Académico Internacional is the Tecnológico de Monterrey scholarship for international applicants, reserved for candidates coming from secondary schools in a named group of Latin American and Caribbean countries. It recognises students with an outstanding academic record and can award support of between 40% and 60% of the tuition cost, valid for the campus to which the applicant has been admitted. The call is published once a year for new entrants to the August–December semester, requires a minimum average of 90/100 in bachillerato or high school study, and is limited to candidates under 21 years of age at the time of application. Applicants must be admitted to a professional programme starting in August 2027 and must present the Prueba de Aptitud Académica with a minimum score of 1,360 points, or an equivalent SAT or ACT score converted to that scale.",
+        "duration": "Entrance scholarship for a professional degree beginning in August 2027, subject to annual conservation requirements",
+        "deadline": "January 22, 2027 (Cierre de convocatoria). Applications open from August 24, 2026; admission deadline January 20, 2027; results February 18, 2027",
+        "deadline_date": "2027-01-22",
+        "deadline_precision": "exact",
+        "application_period": "Applications are accepted from August 24, 2026 and the call closes on January 22, 2027. The general admission deadline is January 20, 2027, although some programmes have earlier deadlines of December 10, 2026 or January 13, 2027, and a second PAA sitting may be taken up to January 16, 2027.",
+        "eligibility_summary": "Candidates in their final year of, or who have completed, bachillerato or high school study in a named Latin American or Caribbean country, who are under 21 at the time of application, hold an average of at least 90/100, have been admitted to a professional programme at the Tecnológico de Monterrey starting in August 2027, and score at least 1,360 on the PAA or the equivalent converted SAT or ACT.",
+        "eligibility": [
+          "Be applying from an institution in one of the listed countries: El Salvador, Colombia, Bolivia, Nicaragua, Peru, Costa Rica, Panama, Dominican Republic, Brazil, Argentina, Chile, Venezuela, Honduras, Ecuador, Guatemala, Paraguay, Uruguay, Cuba, Trinidad and Tobago, Puerto Rico or Haiti",
+          "Be in the last year of bachillerato or high school, or have already completed those studies",
+          "Be under 21 years of age at the time of application",
+          "Have an average of at least 90/100 over the complete or accumulated grades of the first two years of bachillerato or high school study, in the case of three-year programmes, or the equivalent for other study modalities",
+          "Have been admitted to begin a professional programme or career at the Tecnológico de Monterrey in August 2027",
+          "Present the Prueba de Aptitud Académica and obtain a minimum score of 1,360 points, with up to two attempts allowed",
+          "Apply within the official dates of the call"
+        ],
+        "coverage": [
+          "Tuition support of between 40% and 60% of the tuition cost (colegiatura), valid for the campus to which the applicant was admitted",
+          "Possible complement of up to a further 30% through the Beca Socioeconómica, without exceeding 80% total support, subject to evaluation by the Scholarships Committee"
+        ],
+        "benefits": [
+          "Between 40% and 60% of tuition cost, valid for the admitted campus",
+          "Option of a socioeconomic complement of up to 30% additional support, capped at 80% in total",
+          "Recognition as an academic talent award in the university's international scholarships portfolio"
+        ],
+        "requirements": [
+          "Sit the Prueba de Aptitud Académica and reach at least 1,360 points, or an equivalent SAT or ACT score converted to that scale",
+          "Upload an official copy of the graded transcripts issued by the relevant authority",
+          "Submit the scholarship application through the admission application on solicitud.tec.mx, in the Becas y Apoyos Educativos section",
+          "Pay the place reservation (Reserva de lugar al Tec) by February 25, 2027, since failure to do so cancels the award",
+          "Accept the award by March 4, 2027",
+          "Meet the conservation requirements in each academic period to keep the support"
+        ],
+        "required_documents": [
+          "Official copy of the bachillerato or high school transcript",
+          "Prueba de Aptitud Académica result of at least 1,360 points, or the converted SAT or ACT equivalent",
+          "Completed scholarship application within the admission application"
+        ],
+        "application_method": [
+          "Register and start, or use an existing, Solicitud de Admisión at solicitud.tec.mx",
+          "Schedule and sit the Prueba de Aptitud Académica at the relevant campus",
+          "Confirm that the published eligibility requirements are met",
+          "From August 24, 2026, open the Becas y Apoyos Educativos section, run the profile evaluation and select the scholarship option",
+          "Submit the application on a single date and only for the campus to which admission was granted"
+        ],
+        "english_requirement": null,
+        "selection_notes": "Winners are selected from among applicants who meet the published requirements, using the PAA score and the average of previous studies as the basis, with ties decided by the holistic evaluation of the Admissions office. The number of awards is limited, the Tecnológico de Monterrey reserves the right to declare the award deserted, and the evaluation and allocation decision is final and non-appealable with no feedback process after results are published. Matters not foreseen in the call are resolved by the Scholarships Committee.",
+        "best_fit": "High-achieving students from a listed Latin American or Caribbean country who are under 21, hold an average of at least 90/100, have a strong PAA or converted SAT or ACT score, and have been admitted to a professional programme at the Tecnológico de Monterrey for August 2027.",
+        "notes": "This is the international variant of the university's academic talent scholarship and is reserved for applicants from the listed countries; it is distinct from the domestic Beca al Talento Académico and from Líderes del Mañana LATAM. Winners must pay the place reservation payment by February 25, 2027 or the scholarship is cancelled. A complement through the Beca Socioeconómica can be requested until March 30, 2027, is exclusive to this award and cannot be combined with other talent awards, and remains subject to evaluation and approval by the Scholarships Committee.",
+        "funding_amount": null,
+        "funding_currency": "MXN",
+        "funding_period": null,
+        "image_url": null,
+        "image_source_url": "https://tec.mx/es/profesional/becas/internacional",
+        "image_source_type": "official_university",
+        "image_alt_text": "Tecnológico de Monterrey",
+        "image_verified_at": null
+      },
+      "programme_detail_official": {
+        "official_source_urls": [
+          "https://tec.mx/es/profesional/becas/internacional",
+          "https://tec.mx/es/profesional/becas"
+        ],
+        "application_link": "https://solicitud.tec.mx/",
+        "official_updates_url": "https://tec.mx/es/profesional/becas/internacional",
+        "catalogue_url": "https://tec.mx/es/profesional/becas",
+        "application_cycle": "August–December 2027 semester entry; call published once a year, applications open from August 24, 2026",
+        "deadline_central": "2027-01-22",
+        "deadline_central_display": "22 de enero de 2027 (Cierre de convocatoria)",
+        "deadline_central_timezone": "America/Mexico_City",
+        "deadline_note": "The official page publishes a staged timetable: applications may be submitted from August 24, 2026; the general admission deadline is January 20, 2027, with earlier deadlines of December 10, 2026 for Médico Cirujano in Monterrey and B.A. in Finance, B.A. in Strategy and Business Transformation and B.S. in Financial Engineering in Monterrey, and January 13, 2027 for a list of other programmes; the call closes on January 22, 2027; a second PAA sitting may be taken until January 16, 2027; results are emailed on February 18, 2027; the place reservation payment is due February 25, 2027; and acceptance of the award is due March 4, 2027.",
+        "status": "OPEN",
+        "status_note": "The official page states that applications may be submitted from August 24, 2026 and that the call closes on January 22, 2027, so the window is open at the verification date of October 4, 2026.",
+        "funding_amount": null,
+        "funding_currency": "MXN",
+        "funding_period": null,
+        "funding_duration": "Entrance scholarship for a professional degree beginning August 2027, maintained while the conservation requirements are met",
+        "tuition_coverage": true,
+        "tuition_coverage_note": "The official page states that the scholarship 'puede otorgar un apoyo de entre 40% y 60% sobre el costo de la colegiatura', so it is recorded as partial tuition coverage rather than full tuition coverage. Because it is a percentage of tuition rather than the whole cost of study, fully_funded is recorded as false.",
+        "living_cost_coverage": null,
+        "travel_coverage": false,
+        "fully_funded": false,
+        "funding_label": "Partial tuition support of 40% to 60% of the colegiatura for the admitted campus, with an optional socioeconomic complement of up to 30% additional support capped at 80% in total; no living cost or travel coverage is stated.",
+        "benefits": [
+          "Between 40% and 60% of the tuition cost, valid for the campus of admission",
+          "Transfer not applicable; the award applies only to the campus of admission",
+          "Optional socioeconomic complement of up to a further 30%, without exceeding 80% total support",
+          "Recognised within the university as an academic talent award"
+        ],
+        "eligibility": [
+          "Apply from a secondary institution in one of the listed countries: El Salvador, Colombia, Bolivia, Nicaragua, Peru, Costa Rica, Panama, Dominican Republic, Brazil, Argentina, Chile, Venezuela, Honduras, Ecuador, Guatemala, Paraguay, Uruguay, Cuba, Trinidad and Tobago, Puerto Rico or Haiti",
+          "Be in the final year of bachillerato or high school, or have completed those studies",
+          "Be under 21 years of age at the moment of application",
+          "Hold an average of at least 90/100 over the full or accumulated grades of the first two years of bachillerato or high school, or the equivalent for other modalities",
+          "Be admitted to a professional programme or career at the Tecnológico de Monterrey starting in August 2027",
+          "Score at least 1,360 on the Prueba de Aptitud Académica, or the equivalent SAT or ACT score converted to that scale, with up to two attempts",
+          "Apply within the official dates of the call"
+        ],
+        "citizenship_residency": "Restricted by school provenance rather than citizenship: the call is directed at candidates coming from institutions in 21 named Latin American and Caribbean countries, including Puerto Rico.",
+        "international_eligibility": "Explicitly a scholarship for international applicants: the official page maintains a dedicated section for international students and states that the call is directed at candidates from institutions in the listed countries, with a minimum average of 90/100 in bachillerato or high school study.",
+        "degree_levels": [
+          "Bachelor's"
+        ],
+        "study_mode": "Full-time professional programmes; applicants must carry the complete academic load to keep the award",
+        "research_requirement": null,
+        "subject_or_agency_requirement": "Any professional programme or career at the Tecnológico de Monterrey for which admission is granted, except that Médico Cirujano, B.A. in Finance and B.A. in Strategy and Business Transformation have a specific quota of scholarships",
+        "application_method": "One application inside the admission application on solicitud.tec.mx, following the PAA sitting and a profile evaluation, selecting the academic talent scholarship option. The application must be made on a single date and only for the campus to which admission was granted.",
+        "application_route": "Solicitud de Admisión at solicitud.tec.mx, in the Becas y Apoyos Educativos section.",
+        "requirements": [
+          "Sit the PAA and reach at least 1,360 points, with a second attempt permitted up to January 16, 2027",
+          "Provide an official copy of the graded transcript",
+          "Apply from August 24, 2026 and before the call closes on January 22, 2027",
+          "Pay the place reservation (Reserva de lugar al Tec) by February 25, 2027, which includes the tuition payment coverage, or the scholarship is cancelled",
+          "Accept the support offered by March 4, 2027",
+          "Apply only once, on a single date, and only for the campus of admission"
+        ],
+        "documents": [
+          "Official copy of bachillerato or high school transcript",
+          "Prueba de Aptitud Académica result of at least 1,360 points, or the converted SAT or ACT equivalent",
+          "Completed scholarship application within the admission application"
+        ],
+        "english_requirement": null,
+        "english_requirement_note": "The official page states no English language proficiency requirement for this scholarship. The SAT or ACT route exists as an alternative to the PAA, and the Tec application process is conducted in Spanish.",
+        "selection_criteria": [
+          "Prueba de Aptitud Académica score",
+          "Average of previous studies",
+          "Holistic evaluation by the Admissions office, used to break ties"
+        ],
+        "selection_weighting": "Selection is based on the PAA score and the previous study average, with the holistic Admissions evaluation as the tie-breaker. No numeric weighting is published.",
+        "duration": "Entrance scholarship for the professional degree, renewable while the conservation requirements are met",
+        "award_holder_conditions": [
+          "Pass every subject or unit of formation taken during the academic period and the intensive courses",
+          "Participate satisfactorily in the Programa de Becarios by carrying out the academic or formative activities related to the enrolled academic programme",
+          "Enrol the complete academic load",
+          "Obtain a final grade average of at least 85/100 in the academic period and the intensive courses completed",
+          "Pay the place reservation payment by February 25, 2027, failing which the scholarship is cancelled",
+          "Accept the support by March 4, 2027"
+        ],
+        "supplements_or_initiatives": [
+          "A complement through the Beca Socioeconómica of up to 30% additional support, without exceeding 80% in total, may be requested until March 30, 2027; it is exclusive to this award, cannot be combined with other talent awards, and is subject to evaluation and approval by the Scholarships Committee",
+          "The university reserves the right to declare the award deserted, and the allocation decision is final and non-appealable"
+        ],
+        "official_contacts": {
+          "general": "Tecnológico de Monterrey, Directorate of Scholarships (Dirección de Becas) on campus; applications are handled through the admission application",
+          "email": null,
+          "phone": null
+        },
+        "description": "The Beca al Talento Académico Internacional has the aim of recognising young people with an outstanding academic record during their studies. The call is published once a year for new entrants to the August–December semester. It is aimed at students with an average of 90/100 in their bachillerato or high school studies, the scholarship can grant support of between 40% and 60% of the tuition cost, valid for the campus to which the applicant was admitted, the number of scholarships available is limited, applicants must be under 21 at the time of applying, and the call is directed at candidates from institutions in a named group of Latin American and Caribbean countries.",
+        "program_type": "University international merit scholarship",
+        "region": "North America",
+        "coverage": "Partial tuition support of 40% to 60% of the colegiatura, with an optional socioeconomic complement capped at 80% total support.",
+        "last_verified_date": "2026-10-04"
+      },
+      "programme_detail_applicant_utility": {
+        "application_readiness_checklist": [
+          "Confirm you completed the final year of, or all of, bachillerato or high school in one of the 21 listed countries",
+          "Confirm you are under 21 years old on the date of application",
+          "Secure an average of at least 90/100 and obtain an official copy of the transcript",
+          "Register and sit the PAA, targeting at least 1,360 points, or use an equivalent SAT or ACT score",
+          "Apply for admission to a professional programme for August 2027 and note the programme-specific admission deadlines",
+          "From August 24, 2026, run the profile evaluation in the Becas y Apoyos Educativos section of solicitud.tec.mx and submit before January 22, 2027"
+        ],
+        "common_rejection_risks": [
+          "Not being from one of the listed countries, since the international call is closed to applicants from elsewhere",
+          "Being 21 or older at the time of application",
+          "Failing to reach 1,360 on the PAA or the converted SAT or ACT equivalent",
+          "Missing the programme-specific admission deadline of December 10, 2026 or January 13, 2027 for the listed high-selectivity programmes",
+          "Missing the January 22, 2027 call closing date",
+          "Failing to pay the place reservation payment by February 25, 2027, which cancels the award",
+          "Missing the March 4, 2027 acceptance deadline"
+        ],
+        "estimated_uncovered_costs": [
+          "The remaining 40% to 60% of the tuition not covered by the scholarship",
+          "All fees and charges not forming part of the colegiatura percentage",
+          "Living expenses, books, materials and health insurance",
+          "Travel, visa and settlement costs"
+        ],
+        "document_audit": [
+          "Official transcript copy uploaded",
+          "PAA or converted SAT or ACT score of at least 1,360 recorded in the application",
+          "Scholarship application submitted on a single date for the correct campus",
+          "Place reservation payment receipt retained"
+        ],
+        "alerts": [
+          {
+            "trigger": "Programme-specific admission deadlines",
+            "message": "Médico Cirujano in Monterrey and the B.A. in Finance, B.A. in Strategy and Business Transformation and B.S. in Financial Engineering programmes in Monterrey have an admission deadline of December 10, 2026, and a further list of programmes has January 13, 2027."
+          },
+          {
+            "trigger": "Scholarship cancellation risk",
+            "message": "Winners must pay the place reservation payment by February 25, 2027 and accept the support by March 4, 2027, otherwise the scholarship is cancelled."
+          },
+          {
+            "trigger": "Complement cap",
+            "message": "Any socioeconomic complement adds up to 30% at most and total support may not exceed 80%."
+          }
+        ],
+        "submission_workflow": [
+          "Check eligibility against the country list, age limit and 90/100 average requirement",
+          "Sit the PAA, or arrange the SAT or ACT conversion, before the relevant deadline",
+          "Apply for admission to the intended programme, watching the programme-specific deadlines",
+          "From August 24, 2026, log in to solicitud.tec.mx, open Becas y Apoyos Educativos, complete the profile evaluation and submit the academic talent scholarship application",
+          "Track results on February 18, 2027, pay the place reservation by February 25, 2027 and accept by March 4, 2027"
+        ]
+      },
+      "programme_detail_verification": {
+        "cycle_verified": "August–December 2027 semester entry cycle, verified 2026-10-04",
+        "verification_confidence": 0.9,
+        "official_fields_confirmed": [
+          "deadline_central",
+          "deadline_central_timezone",
+          "application_cycle",
+          "status",
+          "eligibility",
+          "selection_criteria",
+          "application_method",
+          "award_holder_conditions",
+          "benefits"
+        ],
+        "institution_check_required": [
+          "Confirm the applicable tuition percentage with the campus Scholarships office, since the official page states a 40% to 60% range rather than a fixed figure",
+          "Confirm the PAA sitting dates for the intended campus with an Admissions adviser, which the official page says to check locally",
+          "Confirm the current program-specific admission deadlines, which the page notes can vary by career"
+        ],
+        "unverified_or_removed_claims": [
+          "No peso amount is published, so funding_amount is null",
+          "The scholarship is described on the page under a general 'Beca al Talento Académico' label within the international students section, so the exact label to select in the application was not independently confirmed",
+          "No contact email or phone number is published for the Scholarships office on this page",
+          "No English proficiency requirement is published"
+        ],
+        "source_citations": [
+          "https://tec.mx/es/profesional/becas/internacional",
+          "https://tec.mx/es/profesional/becas"
+        ],
+        "researched_by": "w2_10"
+      },
+      "research_notes": {
+        "logo": "No logo recorded. Two candidate logo paths on the official domain were probed, https://tec.mx/themes/custom/tec/logo.svg and https://tec.mx/sites/default/files/repositorio/Logos_footer/Logo-Tec-de-Monterrey.png, and both returned a 400x300 placeholder svg containing the text 'Image Not Found' rather than the university's mark. The Tecnológico de Monterrey header mark on the official page is an inline svg that the fetch does not expose as a separate image URL, and the only standalone logo files referenced by the page belong to third-party partner organisations, which the brief forbids. image_url is therefore set to null rather than guessed.",
+        "unverified": [
+          "Any peso amount for the 40% to 60% tuition support",
+          "The exact award label to select inside solicitud.tec.mx, since the page uses the general academic talent name inside the international section",
+          "PAA sitting dates, which the official page directs applicants to confirm with an Admissions adviser"
+        ],
+        "substitution": "No logo substitution was attempted: third-party partner logos and unverified placeholder paths were rejected, and no third-party mark was used.",
+        "official_pages_read": [
+          "https://tec.mx/es/profesional/becas/internacional",
+          "https://tec.mx/es/profesional/becas"
+        ],
+        "degree_level_confirmed": "\"Estar admitida o admitido para iniciar un programa o carrera profesional en agosto de 2027 en el Tecnológico de Monterrey\" and the page's international students section covers Becas y Apoyos Educativos for professional (carrera profesional) admission.",
+        "dedup_check": "Checked existing_titles, existing_hosts and existing_official_source_urls in the shard. There is no Tecnológico de Monterrey, tec.mx or Mexican university entry in any dedup list, and the dedup lists hold no Mexican hosts at all, so this is not a duplicate. It is also distinct from the Canadian and US records in this shard by awarding body and country.",
+        "skeleton": false
+      }
+    },
+    {
+      "outcome": "new",
+      "new_scholarship": {
+        "name": "Carlos and Clara Quintanilla Scholarship",
+        "country": "United States",
+        "region": "North America",
+        "degree_levels": "Bachelor's",
+        "funding_type": "Need-based scholarship",
+        "program_type": "University need-based scholarship for international students",
+        "official_source": "The University of Texas at Austin, Texas Global (International Student and Scholar Services)",
+        "official_source_url": "https://global.utexas.edu/isss/advising-services/scholarships",
+        "catalogue_url": "https://global.utexas.edu/isss/advising-services/scholarships",
+        "official_updates_url": "https://global.utexas.edu/isss/advising-services/scholarships",
+        "status": "open",
+        "is_verified": true,
+        "last_verified_date": "2026-10-04",
+        "description": "The Carlos and Clara Quintanilla Scholarship is a $5,000 spring tuition scholarship from the University of Texas at Austin that recognises an undergraduate or graduate student enrolled in the Cockrell School of Engineering. Eligibility is tied to having resided in Mexico immediately before enrolling at the Cockrell School, to good academic standing with a minimum cumulative GPA of 2.0, and to demonstrable financial need, and recipients must intend to return to Mexico after graduation. It is one of the scholarships listed by Texas Global for international students, which accepts applications for spring and summer term scholarships between October 1 and November 1 each year.",
+        "duration": "One-time award for the spring semester; recipients are not guaranteed the scholarship in subsequent years",
+        "deadline": "November 1, 2026 (spring and summer term scholarship applications)",
+        "deadline_date": "2026-11-01",
+        "deadline_precision": "exact",
+        "application_period": "Scholarship applications for international students are open twice a year. Applications for Spring 2027 and Summer 2027 scholarships are accepted from October 1, 2026 to November 1, 2026; applications for fall 2027 and the 2027-2028 academic year are accepted from February 1, 2027 to March 1, 2027.",
+        "eligibility_summary": "Undergraduate or graduate students in the Cockrell School of Engineering who resided in Mexico immediately prior to enrolling there, are enrolled full-time during the award semester, are in good academic standing with a minimum cumulative GPA of 2.0, can demonstrate financial need, and intend to return to Mexico after graduating.",
+        "eligibility": [
+          "Be an undergraduate or graduate student in the Cockrell School of Engineering at the University of Texas at Austin",
+          "Be enrolled full-time during the award semester",
+          "Have resided in Mexico immediately prior to enrolling in the Cockrell School of Engineering",
+          "Be in good academic standing with a minimum cumulative GPA of 2.0",
+          "Be able to demonstrate financial need",
+          "Intend to return to Mexico post-graduation"
+        ],
+        "coverage": [
+          "Cash award of $5,000 USD applied to spring tuition"
+        ],
+        "benefits": [
+          "$5,000 USD spring tuition scholarship",
+          "Recognition within the international student scholarship portfolio of Texas Global"
+        ],
+        "requirements": [
+          "Submit the application through the LASSO university-wide scholarship system using the keyword search 'ISSS'",
+          "Meet all eligibility criteria to apply",
+          "Be prepared to answer questions about estimated annual expenses",
+          "Be prepared to write essays related to the scholarship's intent or to your own experiences and background",
+          "Apply within the October 1 to November 1 window for spring and summer term scholarships"
+        ],
+        "required_documents": [
+          "Completed LASSO scholarship application",
+          "Answers about estimated annual expenses",
+          "Essay relating to the scholarship's intent or the applicant's experiences and background"
+        ],
+        "application_method": [
+          "Log in to the LASSO university-wide scholarship system at utexas.scholarships.ngwebsolutions.com",
+          "Use the keyword search 'ISSS' to find the relevant scholarships",
+          "Open the application from the Task section and start or continue the application",
+          "Submit before the window closes, noting that applications are not accepted after the deadline"
+        ],
+        "english_requirement": null,
+        "selection_notes": "Certain scholarship opportunities are open to international students who meet eligibility criteria, and applicants must meet all eligibility criteria to apply. Scholarships are one-time awards, and recipients are not guaranteed to receive the scholarship in subsequent years. Application deadlines are subject to change.",
+        "best_fit": "Students from Mexico who enrolled in a Cockrell School of Engineering programme, hold at least a 2.0 cumulative GPA, can document financial need and plan to return to Mexico after graduating.",
+        "notes": "Applications for spring and summer term scholarships and applications for fall term and academic year scholarships run in separate windows, so the October to November window applies to this spring award and not to the fall STEM Scholarship or the fall academic-year awards. The scholarship is administered by Texas Global's International Student and Scholar Services and applied through LASSO, the university-wide scholarship system. Preference-style weighting between applicants is not published.",
+        "funding_amount": 5000,
+        "funding_currency": "USD",
+        "funding_period": null,
+        "image_url": "https://global.utexas.edu/themes/txg/txglobal/foundation/dist/assets/img/logo.svg",
+        "image_source_url": "https://global.utexas.edu/isss/advising-services/scholarships",
+        "image_source_type": "official_university",
+        "image_alt_text": "Texas Global, The University of Texas at Austin",
+        "image_verified_at": "2026-10-04T00:00:00+00:00"
+      },
+      "programme_detail_official": {
+        "official_source_urls": [
+          "https://global.utexas.edu/isss/advising-services/scholarships"
+        ],
+        "application_link": "https://utexas.scholarships.ngwebsolutions.com/CMXAdmin/Cmx_Content.aspx?cpId=1564",
+        "official_updates_url": "https://global.utexas.edu/isss/advising-services/scholarships",
+        "catalogue_url": "https://global.utexas.edu/isss/advising-services/scholarships",
+        "application_cycle": "Spring 2027 and Summer 2027 term scholarships; applications accepted October 1, 2026 to November 1, 2026",
+        "deadline_central": "2026-11-01",
+        "deadline_central_display": "November 1, 2026 (applications for spring and summer term scholarships close)",
+        "deadline_central_timezone": "America/Chicago",
+        "deadline_note": "Texas Global publishes two windows: applications for Spring 2027 and Summer 2027 scholarships are accepted October 1, 2026 to November 1, 2026, and applications for Fall 2027 and the 2027-2028 academic year are accepted February 1, 2027 to March 1, 2027. This award is a spring term scholarship, so the October to November window applies. The page also states that application deadlines are subject to change and that applicants should always check criteria and due dates in the application.",
+        "status": "OPEN",
+        "status_note": "The official page states that applications for Spring 2027 and Summer 2027 scholarships are accepted October 1, 2026 to November 1, 2026, so the window is open at the verification date of October 4, 2026.",
+        "funding_amount": 5000,
+        "funding_currency": "USD",
+        "funding_period": null,
+        "funding_duration": "One-time award for the spring semester; recipients are not guaranteed to receive the scholarship in subsequent years",
+        "tuition_coverage": null,
+        "tuition_coverage_note": "The official page calls this a $5,000 spring tuition scholarship, which is a fixed partial amount applied to spring tuition. It does not state that the award covers tuition fees, and the amount is well below a full tuition bill, so tuition coverage is not claimed.",
+        "living_cost_coverage": false,
+        "travel_coverage": false,
+        "fully_funded": false,
+        "funding_label": "$5,000 USD one-time spring tuition scholarship for students from Mexico in the Cockrell School of Engineering; a partial cash award with no living or travel coverage and a stated intention to return to Mexico after graduation.",
+        "benefits": [
+          "$5,000 USD spring tuition scholarship",
+          "One of the scholarships Texas Global lists as open to international students who meet the eligibility criteria"
+        ],
+        "eligibility": [
+          "Undergraduate or graduate student in the Cockrell School of Engineering",
+          "Enrolled full-time during the award semester",
+          "Resided in Mexico immediately prior to enrolling in the Cockrell School of Engineering",
+          "In good academic standing with a minimum cumulative GPA of 2.0",
+          "Able to demonstrate financial need",
+          "Intends to return to Mexico post-graduation"
+        ],
+        "citizenship_residency": "Defined by prior residence rather than citizenship: the applicant must have resided in Mexico immediately before enrolling in the Cockrell School of Engineering.",
+        "international_eligibility": "Explicitly for international students. The award is published on Texas Global's International Student and Scholar Services scholarships page under 'Scholarships for International Students', and criterion 2 requires prior residence in Mexico immediately prior to enrolling at the Cockrell School of Engineering.",
+        "degree_levels": [
+          "Bachelor's",
+          "Master's",
+          "PhD"
+        ],
+        "study_mode": "Full-time enrolment in the Cockrell School of Engineering during the award semester",
+        "research_requirement": null,
+        "subject_or_agency_requirement": "Cockrell School of Engineering at the University of Texas at Austin; administered by Texas Global's International Student and Scholar Services",
+        "application_method": "Applications are submitted through LASSO, the university-wide scholarship system. Applicants log in, use the keyword search 'ISSS', and start or continue the application from the Task section. Applicants must meet all eligibility criteria and should be prepared to answer questions about estimated annual expenses and write essays.",
+        "application_route": "LASSO at utexas.scholarships.ngwebsolutions.com, using the keyword search 'ISSS'",
+        "requirements": [
+          "Meet all eligibility criteria to apply",
+          "Submit through LASSO within the October 1 to November 1 window for spring and summer term scholarships",
+          "Answer questions about estimated annual expenses",
+          "Write essays related to the scholarship's intent or to your own experiences and background",
+          "Log in with a UT account, since the platform prompts applicants to authenticate"
+        ],
+        "documents": [
+          "Completed LASSO scholarship application",
+          "Responses on estimated annual expenses",
+          "Essay on the scholarship's intent or on the applicant's experiences and background"
+        ],
+        "english_requirement": null,
+        "english_requirement_note": "The official page states no English language proficiency requirement for this award. Because the application is submitted in English through LASSO and the award is limited to students who already resided in Mexico, English proficiency is not published as a selection criterion.",
+        "selection_criteria": [
+          "Enrolment in the Cockrell School of Engineering as an undergraduate or graduate student",
+          "Full-time enrolment during the award semester",
+          "Prior residence in Mexico immediately before enrolling in the Cockrell School",
+          "Good academic standing with a minimum cumulative GPA of 2.0",
+          "Demonstrable financial need",
+          "Stated intention to return to Mexico after graduation"
+        ],
+        "selection_weighting": null,
+        "duration": "One-time award for the spring semester",
+        "award_holder_conditions": [
+          "Must intend to return to Mexico post-graduation, which is an eligibility criterion rather than a monitored service commitment, and is recorded here so it is not overlooked",
+          "Must remain enrolled full-time in the Cockrell School of Engineering during the semester for which the award is granted",
+          "Must maintain good academic standing and a minimum cumulative GPA of 2.0",
+          "Scholarships are one-time awards, and recipients are not guaranteed to receive the scholarship in subsequent years"
+        ],
+        "supplements_or_initiatives": [
+          "Texas Global also lists a fall and academic-year window, from February 1 to March 1, for a different set of international scholarships including the STEM Scholarship, the General ISSS Financial Aid and the International Education Fee Scholarship",
+          "The Viva Travel Grant offers complimentary flights to Mexico on the same Texas Global site for eligible faculty and students, which is a travel grant rather than a scholarship"
+        ],
+        "official_contacts": {
+          "general": "Texas Global, International Student and Scholar Services, 2400 Nueces St., Suite B, Austin, Texas 78705",
+          "email": "intlfinaid@austin.utexas.edu",
+          "phone": "512-471-1211"
+        },
+        "description": "The Carlos and Clara Quintanilla Scholarship is a $5,000 spring tuition scholarship that recognises an undergraduate or graduate student enrolled in the Cockrell School of Engineering. Applicants must have resided in Mexico immediately prior to enrolling in the Cockrell School, be in good academic standing with a minimum cumulative GPA of 2.0, be able to demonstrate financial need, and intend to return to Mexico post-graduation.",
+        "program_type": "University need-based scholarship for international students",
+        "region": "North America",
+        "coverage": "Cash award of $5,000 USD for the spring semester; the official page does not state that it covers tuition fees.",
+        "last_verified_date": "2026-10-04"
+      },
+      "programme_detail_applicant_utility": {
+        "application_readiness_checklist": [
+          "Confirm you resided in Mexico immediately before enrolling in the Cockrell School of Engineering",
+          "Confirm full-time enrolment in a Cockrell School of Engineering programme during the spring award semester",
+          "Hold a cumulative GPA of at least 2.0 and be in good academic standing",
+          "Prepare evidence of financial need and your estimated annual expenses",
+          "Draft the essay on the scholarship's intent or on your experiences and background",
+          "Log in to LASSO and search the keyword 'ISSS' before November 1, 2026"
+        ],
+        "common_rejection_risks": [
+          "Applying in the February to March window, which covers fall term and academic-year awards rather than this spring award",
+          "Not having resided in Mexico immediately prior to enrolling in the Cockrell School",
+          "Cumulative GPA below 2.0 or loss of good academic standing",
+          "Missing the November 1, 2026 deadline, since the page warns that deadlines are subject to change and applications are not accepted late",
+          "Failing to answer the estimated annual expenses questions or the essay",
+          "Not meeting all eligibility criteria, since applicants must meet all of them to apply"
+        ],
+        "estimated_uncovered_costs": [
+          "The large majority of non-resident tuition, since the award is a fixed $5,000 and does not cover the tuition bill",
+          "All fees and charges, including the ISSS Support Services fee and health insurance",
+          "Living expenses and books",
+          "Return travel to Mexico after graduation"
+        ],
+        "document_audit": [
+          "LASSO application submitted before the deadline",
+          "Estimated annual expenses completed",
+          "Essay submitted",
+          "Evidence of financial need supplied as requested in the application"
+        ],
+        "alerts": [
+          {
+            "trigger": "Two separate application windows",
+            "message": "This spring award is applied for between October 1 and November 1, while fall term and academic-year awards are applied for between February 1 and March 1."
+          },
+          {
+            "trigger": "One-time award",
+            "message": "Scholarships are one-time awards and recipients are not guaranteed to receive the scholarship in subsequent years."
+          },
+          {
+            "trigger": "Deadlines subject to change",
+            "message": "The official page states that application deadlines are subject to change and advises checking the due dates inside the application."
+          }
+        ],
+        "submission_workflow": [
+          "Verify the residence-in-Mexico and Cockrell School eligibility criteria",
+          "Log in to LASSO and use the keyword search 'ISSS' to locate the scholarship",
+          "Complete the estimated annual expenses questions and the essay",
+          "Submit the application before November 1, 2026",
+          "Monitor email and the LASSO dashboard for the outcome"
+        ]
+      },
+      "programme_detail_verification": {
+        "cycle_verified": "Spring 2027 and Summer 2027 term cycle, verified 2026-10-04",
+        "verification_confidence": 0.95,
+        "official_fields_confirmed": [
+          "funding_amount",
+          "funding_currency",
+          "funding_duration",
+          "deadline_central",
+          "deadline_central_timezone",
+          "application_cycle",
+          "status",
+          "eligibility",
+          "application_method",
+          "award_holder_conditions",
+          "official_contacts"
+        ],
+        "institution_check_required": [
+          "Confirm the current non-resident tuition rate for the Cockrell School programme, which the page does not cover",
+          "Confirm the exact LASSO application questions and any document upload requirements, since the platform was not opened",
+          "Confirm whether the return-to-Mexico intention is verified after graduation, as the page states it only as an eligibility criterion"
+        ],
+        "unverified_or_removed_claims": [
+          "The 14% tax withholding note published on this page applies to the General ISSS Financial Aid, the International Education Fee Scholarship and the SIAWE Scholarship, not to this award, so it is not claimed here",
+          "Selection weighting between the six published criteria is not published",
+          "No English proficiency requirement is published for this award"
+        ],
+        "source_citations": [
+          "https://global.utexas.edu/isss/advising-services/scholarships",
+          "https://global.utexas.edu/themes/txg/txglobal/foundation/dist/assets/img/logo.svg"
+        ],
+        "researched_by": "w2_10"
+      },
+      "logo_override": {
+        "url": "https://global.utexas.edu/themes/txg/txglobal/foundation/dist/assets/img/logo.svg",
+        "page_url": "https://global.utexas.edu/isss/advising-services/scholarships",
+        "official_host": true,
+        "alt_text": "Texas Global, The University of Texas at Austin",
+        "validation_result": "verified",
+        "validation_detail": "svg width 270 height 51; the Texas Global wordmark and the University of Texas at Austin line are drawn in burnt orange #BF5700 with a dark slate #252F38 element, so the mark is dark on a transparent background and is not white-on-transparent",
+        "image_kind": "official_logo",
+        "image_format": "svg",
+        "verified_at": "2026-10-04T00:00:00+00:00",
+        "host_evidence": "same_registrable_domain",
+        "_award": "Carlos and Clara Quintanilla Scholarship"
+      },
+      "research_notes": {
+        "logo": "Probed https://global.utexas.edu/themes/txg/txglobal/foundation/dist/assets/img/logo.svg, the masthead logo file of the official Texas Global scholarships page, served from the utexas.edu domain. The probe returned SVG source bytes (270x51) with fills of #bf5700 burnt orange and #252f38 dark slate, confirming HTTP 200 with an image/svg+xml payload and a dark mark. Texas Global, the university office that administers this scholarship for international students, is a unit of the University of Texas at Austin, so the mark is the awarding body's own and not a third party's.",
+        "unverified": [
+          "Exact LASSO application questions and document requirements, since the platform was not opened",
+          "Whether the return-to-Mexico intention is verified after graduation",
+          "Selection weighting between the published criteria"
+        ],
+        "substitution": null,
+        "official_pages_read": [
+          "https://global.utexas.edu/isss/advising-services/scholarships",
+          "https://global.utexas.edu/themes/txg/txglobal/foundation/dist/assets/img/logo.svg"
+        ],
+        "degree_level_confirmed": "\"recognizes an undergraduate or graduate student enrolled in the Cockrell School of Engineering\" with the eligibility criterion \"You are an undergraduate or graduate student in the Cockrell School of Engineering and enrolled full-time during the award semester.\"",
+        "dedup_check": "Checked existing_titles, existing_hosts and existing_official_source_urls in the shard. There is no University of Texas, UT Austin, global.utexas.edu or Quintanilla entry in any dedup list, and the dedup lists contain no US hosts, so this is not a duplicate.",
+        "skeleton": false
+      }
+    }
+  ],
+  "rejected": [
+    {
+      "candidate": "Dalhousie University - The President's Awards",
+      "url": "https://www.dal.ca/faculty/gradstudies/finance-your-studies/scholarships-bursaries/presidents-awards.html",
+      "reason": "discontinued: the official page states \"Please note that the President's Award was discontinued as of the 2026 graduate scholarship award cycle due to a decrease in scholarship budgets\", so there is no current cycle to record"
+    },
+    {
+      "candidate": "UNAM - Becas UNAM institutional programmes (Becas para Estudios de Posgrado, PAEP, Extension of Posgrado, Mobilidad Internacional DGECI)",
+      "url": "https://www.becas.unam.mx/",
+      "reason": "no current cycle open to international applicants: the portal's 'Convocatorias vigentes' on 2026-10-04 are limited to UNAM students in named internal groups (student athletes, children of academic staff, Indigenous and Afro-Mexican students, degree-completion stimulus), and the international mobility calls are outbound awards for UNAM students"
+    },
+    {
+      "candidate": "University of Waterloo / University of British Columbia / McGill / McMaster / York / University of Toronto international scholarship programmes",
+      "url": "https://uwaterloo.ca/future-students/financing/international-scholarships",
+      "reason": "already in catalogue: these hosts and schemes appear in the shard dedup lists (uwaterloo.ca, you.ubc.ca, future.mcmaster.ca, futurestudents.yorku.ca, future.utoronto.ca, sgs.utoronto.ca)"
+    },
+    {
+      "candidate": "Dalhousie University in-program bursaries open to international students (BHASHA Bursary, John and Lena Graham Commonwealth Bursary, Ken Saunders Bursary, Harold A Robertson Scholarship, Glendon Chase McCormick Scholarship)",
+      "url": "https://www.dal.ca/faculty/gradstudies/finance-your-studies/scholarships-bursaries/international-scholarships.html",
+      "reason": "in-programme awards restricted to students already enrolled in a Dalhousie graduate programme, so they are not open awards for new international applicants; several also close on October 31"
+    },
+    {
+      "candidate": "Baylor University - Financial Assistance for International Students (merit-based scholarships and the BIFAA institutional need-based application)",
+      "url": "https://admissions.web.baylor.edu/admission/international/financial-assistance-international-students",
+      "reason": "logo rejected and no record written: the only Baylor mark on the official page is https://admissions.web.baylor.edu/themes/custom/baylor_united_2/logo.svg, which probes as an svg whose wordmark paths are filled #FFFFFF with a #FFB81C gold accent on a transparent background, i.e. a white-on-transparent logo, which the brief forbids. The page also publishes no award value, with merit-based scholarships awarded automatically on admission and need-based aid assessed through the BIFAA form."
+    },
+    {
+      "candidate": "Tecnologico de Monterrey - site logo files",
+      "url": "https://tec.mx/themes/custom/tec/logo.svg",
+      "reason": "logo probe rejected: both probed paths returned a 400x300 placeholder svg containing the text 'Image Not Found' rather than the university mark, and the only standalone logo files referenced by the official page belong to third-party partner organisations, so image_url was left null for the Tecnologico de Monterrey record"
+    },
+    {
+      "candidate": "York University - President's International Scholarship of Excellence (PISE)",
+      "url": "https://futurestudents.yorku.ca/financing-your-degree/international-scholarships",
+      "reason": "already in catalogue: futurestudents.yorku.ca appears in the shard existing_hosts dedup list and the award is listed in existing_titles"
+    },
+    {
+      "candidate": "Government of Mexico Excellence Scholarships for Foreign Students (AMEXCID)",
+      "url": "https://www.gob.mx/amexcid/acciones-y-programas/becas-para-extranjeros-29785",
+      "reason": "out of theme: this is a Mexican federal government scholarship from the Secretariat of Foreign Affairs, not a university-funded award, and the brief's theme is university funding"
+    }
+  ]
+}

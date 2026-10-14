@@ -1,0 +1,401 @@
+{
+  "generated": "2026-10-03T16:24:28.169Z",
+  "unique_review_records": 13,
+  "total_review_flags": 20,
+  "flag_counts_by_category": {
+    "CITATIONS": 4,
+    "SINGLE_SOURCE": 4,
+    "CURRENCY_GBP": 3,
+    "LOGO_HOST": 1,
+    "PLACEHOLDER": 1,
+    "STALE_SKELETON_FLAG": 1,
+    "DECLARED_CONFLICT": 6
+  },
+  "items": [
+    {
+      "id": "42",
+      "file": "42-australia-monash-kc-kuok.json",
+      "name": "K.C. Kuok Scholarship",
+      "region": "Australia",
+      "route": "HISTORICAL",
+      "verification_state": "VERIFIED",
+      "flag_count": 2,
+      "review_reasons": [
+        "only 1 citation(s)",
+        "evidence rests on one official page"
+      ],
+      "review_categories": [
+        "CITATIONS",
+        "SINGLE_SOURCE"
+      ],
+      "flag_details": [
+        {
+          "category": "CITATIONS",
+          "reasons": [
+            "only 1 citation(s)"
+          ]
+        },
+        {
+          "category": "SINGLE_SOURCE",
+          "reasons": [
+            "evidence rests on one official page"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "57",
+      "file": "57-pte-universiti-malaya-scholarship.json",
+      "name": "PTE x Universiti Malaya Scholarship 2026",
+      "region": "Malaysia",
+      "route": "INSERT",
+      "verification_state": "VERIFIED",
+      "flag_count": 2,
+      "review_reasons": [
+        "new_scholarship.funding_currency=GBP",
+        "programme_detail_official.funding_currency=GBP",
+        "logo host um.edu.my vs source host pearsonpte.com"
+      ],
+      "review_categories": [
+        "CURRENCY_GBP",
+        "LOGO_HOST"
+      ],
+      "flag_details": [
+        {
+          "category": "CURRENCY_GBP",
+          "reasons": [
+            "new_scholarship.funding_currency=GBP",
+            "programme_detail_official.funding_currency=GBP"
+          ]
+        },
+        {
+          "category": "LOGO_HOST",
+          "reasons": [
+            "logo host um.edu.my vs source host pearsonpte.com"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "b18",
+      "file": "b18-international-scholarship-ug-students-swansea.json",
+      "name": "International Excellence Scholarship",
+      "region": "Europe",
+      "route": "UNVERIFIED",
+      "verification_state": "UNVERIFIED",
+      "flag_count": 3,
+      "review_reasons": [
+        "programme_detail_official.deadline_note",
+        "programme_detail_official.status_note",
+        "programme_detail_official.tuition_coverage_note",
+        "programme_detail_official.citizenship_residency",
+        "programme_detail_official.international_eligibility",
+        "programme_detail_official.application_method",
+        "programme_detail_official.application_route",
+        "programme_detail_official.english_requirement_note",
+        "programme_detail_official.duration",
+        "programme_detail_official.description",
+        "programme_detail_official.coverage",
+        "new_scholarship.funding_currency=GBP",
+        "programme_detail_official.funding_currency=GBP",
+        "skeleton=true"
+      ],
+      "review_categories": [
+        "PLACEHOLDER",
+        "CURRENCY_GBP",
+        "STALE_SKELETON_FLAG"
+      ],
+      "flag_details": [
+        {
+          "category": "PLACEHOLDER",
+          "reasons": [
+            "programme_detail_official.deadline_note",
+            "programme_detail_official.status_note",
+            "programme_detail_official.tuition_coverage_note",
+            "programme_detail_official.citizenship_residency",
+            "programme_detail_official.international_eligibility",
+            "programme_detail_official.application_method",
+            "programme_detail_official.application_route",
+            "programme_detail_official.english_requirement_note",
+            "programme_detail_official.duration",
+            "programme_detail_official.description",
+            "programme_detail_official.coverage"
+          ]
+        },
+        {
+          "category": "CURRENCY_GBP",
+          "reasons": [
+            "new_scholarship.funding_currency=GBP",
+            "programme_detail_official.funding_currency=GBP"
+          ]
+        },
+        {
+          "category": "STALE_SKELETON_FLAG",
+          "reasons": [
+            "skeleton=true"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "b22",
+      "file": "b22-global-excellence-scholarships.json",
+      "name": "International Excellence Scholarship",
+      "region": "Europe",
+      "route": "INSERT",
+      "verification_state": "VERIFIED",
+      "flag_count": 1,
+      "review_reasons": [
+        "new_scholarship.funding_currency=GBP",
+        "programme_detail_official.funding_currency=GBP"
+      ],
+      "review_categories": [
+        "CURRENCY_GBP"
+      ],
+      "flag_details": [
+        {
+          "category": "CURRENCY_GBP",
+          "reasons": [
+            "new_scholarship.funding_currency=GBP",
+            "programme_detail_official.funding_currency=GBP"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "b133",
+      "file": "b133-charles-sturt-university-international-student-merit-scholarship.json",
+      "name": "International Student Merit Scholarship",
+      "region": "Australia",
+      "route": "INSERT",
+      "verification_state": "VERIFIED",
+      "flag_count": 2,
+      "review_reasons": [
+        "only 1 citation(s)",
+        "evidence rests on one official page"
+      ],
+      "review_categories": [
+        "CITATIONS",
+        "SINGLE_SOURCE"
+      ],
+      "flag_details": [
+        {
+          "category": "CITATIONS",
+          "reasons": [
+            "only 1 citation(s)"
+          ]
+        },
+        {
+          "category": "SINGLE_SOURCE",
+          "reasons": [
+            "evidence rests on one official page"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "b134",
+      "file": "b134-sutd-trailblazers-international-scholarship.json",
+      "name": "SUTD Trailblazers (International) Scholarship",
+      "region": "Singapore",
+      "route": "REFRESH",
+      "verification_state": "VERIFIED",
+      "flag_count": 2,
+      "review_reasons": [
+        "only 1 citation(s)",
+        "evidence rests on one official page"
+      ],
+      "review_categories": [
+        "CITATIONS",
+        "SINGLE_SOURCE"
+      ],
+      "flag_details": [
+        {
+          "category": "CITATIONS",
+          "reasons": [
+            "only 1 citation(s)"
+          ]
+        },
+        {
+          "category": "SINGLE_SOURCE",
+          "reasons": [
+            "evidence rests on one official page"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "w4-bowdoin-general-scholarship.json",
+      "file": "w4-bowdoin-general-scholarship.json",
+      "name": "Bowdoin Scholarship",
+      "region": "United States",
+      "route": "INSERT",
+      "verification_state": "VERIFIED",
+      "flag_count": 1,
+      "review_reasons": [
+        "CONFLICT RECORDED: an older international aid page still describes the International Student Financial Aid Application (ISFAA) as an alternative to th"
+      ],
+      "review_categories": [
+        "DECLARED_CONFLICT"
+      ],
+      "flag_details": [
+        {
+          "category": "DECLARED_CONFLICT",
+          "reasons": [
+            "CONFLICT RECORDED: an older international aid page still describes the International Student Financial Aid Application (ISFAA) as an alternative to th"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "w4-carleton-international-scholarships.json",
+      "file": "w4-carleton-international-scholarships.json",
+      "name": "President's Welcome Award for International Students",
+      "region": "Canada",
+      "route": "INSERT",
+      "verification_state": "VERIFIED",
+      "flag_count": 1,
+      "review_reasons": [
+        "CONFLICT RECORDED: the dedicated President's Welcome page states September 2026 entry while the entrance scholarships page states September 2027 for t",
+        "CONFLICT RECORDED: one official page describes the renewable entrance scholarship as up to $16,000 over four years while the 2027 international viewbo"
+      ],
+      "review_categories": [
+        "DECLARED_CONFLICT"
+      ],
+      "flag_details": [
+        {
+          "category": "DECLARED_CONFLICT",
+          "reasons": [
+            "CONFLICT RECORDED: the dedicated President's Welcome page states September 2026 entry while the entrance scholarships page states September 2027 for t",
+            "CONFLICT RECORDED: one official page describes the renewable entrance scholarship as up to $16,000 over four years while the 2027 international viewbo"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "w4-guelph-international-scholarships.json",
+      "file": "w4-guelph-international-scholarships.json",
+      "name": "President's International Entrance Scholarship",
+      "region": "Canada",
+      "route": "INSERT",
+      "verification_state": "VERIFIED",
+      "flag_count": 1,
+      "review_reasons": [
+        "Value contradiction between official pages: the admission funding page publishes the 2027 entry cycle (year 1 $10,000-$20,000 by band, plus $7,500 per",
+        "Second contradiction: the registrar page's International/Non-Canadian overview states \"Renewable international scholarships ranging in total value fro"
+      ],
+      "review_categories": [
+        "DECLARED_CONFLICT"
+      ],
+      "flag_details": [
+        {
+          "category": "DECLARED_CONFLICT",
+          "reasons": [
+            "Value contradiction between official pages: the admission funding page publishes the 2027 entry cycle (year 1 $10,000-$20,000 by band, plus $7,500 per",
+            "Second contradiction: the registrar page's International/Non-Canadian overview states \"Renewable international scholarships ranging in total value fro"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "w4-saskatchewan-international-scholarships.json",
+      "file": "w4-saskatchewan-international-scholarships.json",
+      "name": "University of Saskatchewan International Excellence Award",
+      "region": "Canada",
+      "route": "INSERT",
+      "verification_state": "VERIFIED",
+      "flag_count": 1,
+      "review_reasons": [
+        "CONFLICT RECORDED: the Fall 2027 viewbook entrance-deadline table shows 15 January 31 for these awards while the awards page states February 15. Both "
+      ],
+      "review_categories": [
+        "DECLARED_CONFLICT"
+      ],
+      "flag_details": [
+        {
+          "category": "DECLARED_CONFLICT",
+          "reasons": [
+            "CONFLICT RECORDED: the Fall 2027 viewbook entrance-deadline table shows 15 January 31 for these awards while the awards page states February 15. Both "
+          ]
+        }
+      ]
+    },
+    {
+      "id": "w4-trent-international-scholarships.json",
+      "file": "w4-trent-international-scholarships.json",
+      "name": "Trent University International Entrance Scholarships",
+      "region": "Canada",
+      "route": "INSERT",
+      "verification_state": "VERIFIED",
+      "flag_count": 1,
+      "review_reasons": [
+        "CONFLICT RECORDED AND NOT AVERAGED: https://www.trentu.ca/futurestudents/scholarships-tuition/international-scholarships-awards states the Prestigious"
+      ],
+      "review_categories": [
+        "DECLARED_CONFLICT"
+      ],
+      "flag_details": [
+        {
+          "category": "DECLARED_CONFLICT",
+          "reasons": [
+            "CONFLICT RECORDED AND NOT AVERAGED: https://www.trentu.ca/futurestudents/scholarships-tuition/international-scholarships-awards states the Prestigious"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "w4-uottawa-international-scholarships.json",
+      "file": "w4-uottawa-international-scholarships.json",
+      "name": "International English Admission Scholarship",
+      "region": "Canada",
+      "route": "INSERT",
+      "verification_state": "VERIFIED",
+      "flag_count": 1,
+      "review_reasons": [
+        "NAMING AMBIGUITY RECORDED: the overview page describes a renewable award reducing tuition by $15,000 per year as the \"International Admission Entrance"
+      ],
+      "review_categories": [
+        "DECLARED_CONFLICT"
+      ],
+      "flag_details": [
+        {
+          "category": "DECLARED_CONFLICT",
+          "reasons": [
+            "NAMING AMBIGUITY RECORDED: the overview page describes a renewable award reducing tuition by $15,000 per year as the \"International Admission Entrance"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "w4-windsor-international-scholarships.json",
+      "file": "w4-windsor-international-scholarships.json",
+      "name": "International Student Entrance Awards/Scholarships (University of Windsor)",
+      "region": "Canada",
+      "route": "UNVERIFIED",
+      "verification_state": "UNVERIFIED",
+      "flag_count": 2,
+      "review_reasons": [
+        "only 1 citation(s)",
+        "evidence rests on one official page"
+      ],
+      "review_categories": [
+        "CITATIONS",
+        "SINGLE_SOURCE"
+      ],
+      "flag_details": [
+        {
+          "category": "CITATIONS",
+          "reasons": [
+            "only 1 citation(s)"
+          ]
+        },
+        {
+          "category": "SINGLE_SOURCE",
+          "reasons": [
+            "evidence rests on one official page"
+          ]
+        }
+      ]
+    }
+  ]
+}

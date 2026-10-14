@@ -5,6 +5,7 @@ from sqlalchemy.orm import Session
 
 from ..models import Scholarship
 from ..schemas import ScholarshipQuery, ScholarshipSort
+from ..services.taxonomy import degree_filter_bucket, funding_filter_bucket
 
 
 def _normalise_optional_filter(value: str | None) -> str | None:
@@ -18,6 +19,49 @@ def _normalise_optional_filter(value: str | None) -> str | None:
 def _escape_like(value: str) -> str:
     """Treat LIKE wildcard characters as literal search text."""
     return value.replace("\\", "\\\\").replace("%", "\\%").replace("_", "\\_")
+
+
+def _funding_conditions(column, requested: str) -> list:
+    """Match a requested funding filter against stored funding labels.
+
+    A filter value is a question, not a stored string: the catalogue
+    holds 96 distinct labels, and comparing with ``==`` returned 3 of 84
+    master's programmes for a degree filter and 0 rows for
+    ``funding=Tuition Waiver``. The taxonomy maps the request onto the
+    words that state the aspect it asks about, so every row that offers
+    that aspect answers.
+
+    A request the taxonomy does not recognise keeps exact matching - it
+    is a verbatim stored label, a facet name or a typo, and guessing a
+    bucket for it would silently widen a filter the caller did not ask
+    to widen.
+    """
+    lowered = func.lower(column)
+    bucket = funding_filter_bucket(requested)
+    if bucket is None:
+        return [lowered == requested.casefold()]
+
+    include, exclude = bucket
+    conditions = [or_(*[lowered.like(f"%{_escape_like(word)}%") for word in include])]
+    if exclude:
+        conditions.append(
+            ~or_(*[lowered.like(f"%{_escape_like(word)}%") for word in exclude])
+        )
+    return conditions
+
+
+def _degree_conditions(column, requested: str) -> list:
+    """Match a requested degree filter against stored degree labels.
+
+    Same contract as :func:`_funding_conditions`: canonical level words
+    ("Master", "Bachelor") match every row offering that level, and an
+    unrecognised request keeps exact matching.
+    """
+    lowered = func.lower(column)
+    bucket = degree_filter_bucket(requested)
+    if bucket is None:
+        return [lowered == requested.casefold()]
+    return [or_(*[lowered.like(f"%{_escape_like(word)}%") for word in bucket])]
 
 
 def public_visibility_conditions() -> list:
@@ -82,9 +126,9 @@ def _filter_conditions(query: ScholarshipQuery):
     if country:
         conditions.append(func.lower(Scholarship.country) == country.casefold())
     if degree:
-        conditions.append(func.lower(Scholarship.degree) == degree.casefold())
+        conditions.extend(_degree_conditions(Scholarship.degree, degree))
     if funding:
-        conditions.append(func.lower(Scholarship.funding) == funding.casefold())
+        conditions.extend(_funding_conditions(Scholarship.funding, funding))
     if query.deadline_month is not None:
         conditions.append(func.extract("month", Scholarship.deadline_date) == query.deadline_month)
     if query.status is not None:

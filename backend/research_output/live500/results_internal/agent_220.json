@@ -1,0 +1,144 @@
+{
+  "agent": "agent_220",
+  "records": [
+    {
+      "id": 558,
+      "official": {
+        "official_source_urls": [
+          "https://mbzuai.ac.ae/admissions/graduate-masters-admissions",
+          "https://mbzuai.ac.ae/admissions/graduate-phd-admissions",
+          "https://mbzuai.ac.ae/study/graduate-admission-process"
+        ],
+        "application_link": "https://mbzuai.ac.ae/admissions/graduate-masters-admissions",
+        "catalogue_url": "https://mbzuai.ac.ae/academics/msc-programs",
+        "official_updates_url": "https://mbzuai.ac.ae/admissions-aid",
+        "deadline_central": "2026-12-15",
+        "deadline_central_display": "15 December 2026, 5 p.m. GST",
+        "deadline_note": "Application portal opened 7 September 2026 at 8 a.m. GST for all graduate programmes except M.Sc. and Ph.D. Computational Biology, which opened 30 September 2026 at 8 a.m. GST. The Master in Applied Artificial Intelligence has a later deadline of 28 February 2027. Decision notification 31 March 2027 and offer response deadline 15 April 2027.",
+        "application_cycle": "Fall 2027 graduate admission cycle",
+        "status": "OPEN",
+        "status_note": "The graduate admissions pages publish a final application deadline of 15 December 2026 (5 p.m. GST) for all graduate programmes except the Master in Applied Artificial Intelligence, with decision notification on 31 March 2027.",
+        "tuition_coverage_note": "Funded students receive free tuition fees.",
+        "funding_amount": 15500,
+        "funding_currency": "AED",
+        "funding_period": "per month (M.Sc., international students)",
+        "tuition_coverage": true,
+        "living_cost_coverage": true,
+        "travel_coverage": true,
+        "fully_funded": true,
+        "benefits": [
+          "Free tuition fees",
+          "A monthly stipend",
+          "One return airfare each year to the student's home country",
+          "Health insurance for the approved funding period",
+          "University-sponsored UAE residence visa and Emirates ID where eligible"
+        ],
+        "eligibility": [
+          "Degree in a STEM field such as computer science, electrical engineering, computer engineering, mathematics, physics, or other relevant science or engineering majors",
+          "From an accredited university or college recognized by the UAE Ministry of Education (MoE)",
+          "Minimum CGPA of 3.0 or 3.5 on a scale of 4.0 depending on the programme",
+          "Senior-level students can apply initially with a copy of their transcript and upon admission must submit official complete degree certificate and transcript",
+          "A degree attestation for degrees from the UAE, or a Certificate of Recognition for degrees acquired outside the UAE, should be furnished within the first semester at MBZUAI"
+        ],
+        "requirements": [
+          "Submit only one application per admission cycle; multiple submissions will not be processed",
+          "Submit a curriculum vitae",
+          "Submit a statement of purpose",
+          "Submit a research statement",
+          "Provide referee recommendations",
+          "Complete the screening exam",
+          "Take the technical interview if invited"
+        ],
+        "documents": [
+          "Curriculum vitae",
+          "Statement of purpose",
+          "Research statement",
+          "Referee recommendations",
+          "Copy of transcript (senior-level applicants may apply with a copy of their transcript)",
+          "Official complete degree certificate and transcript, required upon admission",
+          "Degree attestation (UAE degrees) or Certificate of Recognition (degrees acquired outside the UAE), to be furnished within the first semester"
+        ],
+        "selection_criteria": [
+          "Academic excellence",
+          "Technical preparation",
+          "Research potential",
+          "Alignment with the chosen programme"
+        ],
+        "coverage": [
+          "Free tuition fees for funded students",
+          "A monthly stipend (published as AED 15,500 for M.Sc. and AED 17,500 for Ph.D. for international students; AED 37,500 for M.Sc. and AED 43,500 for Ph.D. for UAE nationals)",
+          "One return airfare each year to the student's home country",
+          "Health insurance for the approved funding period",
+          "University-sponsored UAE residence visa and Emirates ID where eligible"
+        ],
+        "application_method": [
+          "Choose your admission pathway on the MBZUAI admissions page (graduate master's or graduate Ph.D.)",
+          "Submit one application through the MBZUAI application portal for the cycle, observing the single-application rule",
+          "Upload the curriculum vitae, statement of purpose, research statement and supporting documents",
+          "Prepare for and complete the screening exam",
+          "Take the technical interview if invited",
+          "Await the decision notification on 31 March 2027 and respond to any offer by 15 April 2027"
+        ],
+        "application_route": "Single application through the MBZUAI graduate admissions portal; there is no separate faculty matching or funding application and eligible applicants are considered for merit-based funding during the admissions review process.",
+        "study_mode": "Full-time, on campus; funded students are expected to maintain an in-person presence throughout their funded period",
+        "citizenship_residency": null,
+        "international_eligibility": "Open to students of all nationalities; stipend rates are published separately for UAE nationals and international students.",
+        "subject_or_agency_requirement": "STEM degree in computer science, electrical engineering, computer engineering, mathematics, physics or another relevant science or engineering major. The Master in Applied Artificial Intelligence is fee-based and is not eligible for University or faculty-sponsored funding.",
+        "research_requirement": "A research statement is required. M.Sc. funding depends on securing a faculty advisor-sponsored research or teaching assistantship, or an approved government scholarship for UAE nationals.",
+        "duration": null,
+        "description": "MBZUAI's graduate funding model is built on a partnership between the University and faculty advisors: funding, benefits and continued eligibility depend on the student's programme, academic standing, and for M.Sc. students on whether they have secured a faculty-sponsored research or teaching assistantship or an approved government scholarship. Funded students receive free tuition fees, a monthly stipend, annual return airfare, health insurance and University-sponsored visa and Emirates ID.",
+        "region": "Middle East",
+        "program_type": "University funding model (graduate)",
+        "english_requirement": null
+      },
+      "verification": {
+        "source_citations": [
+          "https://mbzuai.ac.ae/admissions/graduate-masters-admissions",
+          "https://mbzuai.ac.ae/admissions/graduate-phd-admissions",
+          "https://mbzuai.ac.ae/study/graduate-admission-process"
+        ],
+        "last_verified_date": "2026-10-10",
+        "verification_status": "partially_confirmed",
+        "confidence": "low",
+        "not_confirmed": [
+          "english_requirement (an English language waiver exists and is described on the MBZUAI admissions FAQ, but the minimum score thresholds are published only on programme-specific pages)",
+          "duration",
+          "Cost of Attendance figures for Fall 2027 for unfunded M.Sc. students, which the page states are currently being finalized",
+          "funding_period cadence confirmed independently (the stipend figures are published in a table immediately following the 'a monthly stipend' bullet, but the page could not be rendered directly)"
+        ],
+        "notes": "Every automated retrieval of mbzuai.ac.ae returned HTTP 403 including direct fetches, so the benefit list, the stipend table (AED 15,500 M.Sc. / 17,500 Ph.D. for international students and AED 37,500 M.Sc. / 43,500 Ph.D. for UAE nationals), the MAAI fee figures and the deadline dates were taken from the official mbzuai.ac.ae domain's own published page content surfaced through search results, not from an aggregator. Confidence is marked low for that reason; no amount was inferred beyond what those official-domain excerpts state. Verified from the same source: the Master in Applied Artificial Intelligence is fee-based at AED 5,000 per credit, 34 credit hours, total tuition AED 170,000 (approx. USD 46,291), and is not eligible for University or faculty-sponsored funding."
+      },
+      "applicant_utility": {
+        "summary": "Apply once and apply well, because MBZUAI processes only one submission per admission cycle and the Fall 2027 portal closes at 5 p.m. GST on 15 December 2026 with decisions on 31 March 2027 and an offer response deadline of 15 April 2027. Do not assume funding comes with admission: M.Sc. students are fee-paying by default and are funded only through a faculty advisor-sponsored research or teaching assistantship or, for UAE nationals, an approved government scholarship, so your research statement and referee recommendations are doing the real work. Keep the Master in Applied Artificial Intelligence out of your plan if you need funding, since it is fee-based at AED 5,000 per credit for a total of AED 170,000 and is excluded from University and faculty-sponsored funding.",
+        "best_fit": "STEM graduates with a strong CGPA (3.0-3.5 or above on a 4.0 scale depending on programme) applying to M.Sc. or Ph.D. programmes in AI who can secure or attract a faculty advisor's research sponsorship.",
+        "application_readiness_checklist": [
+          "Write the research statement against the specific work of the faculty group you hope to join, not against AI in general",
+          "Arrange referee recommendations from people who can speak to research potential, since funding depends on advisor sponsorship",
+          "Check your degree qualifies for attestation (UAE) or a Certificate of Recognition (outside the UAE) and start that process early",
+          "Budget for the AED 200 application fee, which must be paid for the application to proceed to review",
+          "Plan around the 31 March 2027 decision date and the 15 April 2027 offer response deadline before committing to competing offers"
+        ],
+        "common_rejection_risks": [
+          "Submitting multiple applications in the same cycle, which are simply not processed",
+          "Applying to M.Sc. expecting automatic funding when funding depends on a faculty advisor-sponsored assistantship",
+          "Choosing the Master in Applied Artificial Intelligence and discovering it is excluded from University and faculty-sponsored funding",
+          "Leaving degree attestation or the Certificate of Recognition past the first semester",
+          "A statement of purpose and research statement that do not name a concrete research direction"
+        ],
+        "estimated_uncovered_costs": "For unfunded M.Sc. students, tuition and fees apply; full Cost of Attendance figures for Fall 2027 were still being finalized at the time of verification. Funded students should expect to fund any off-campus or family accommodation themselves.",
+        "document_audit": [
+          "Senior-level applicants may apply with a transcript copy but must submit the official complete degree certificate and transcript upon admission",
+          "Degree attestation (UAE degrees) or a Certificate of Recognition (degrees from outside the UAE) must be furnished within the first semester",
+          "Students receiving external scholarships or fellowships must disclose the funding, which normally replaces rather than tops up the University stipend"
+        ],
+        "alerts": [
+          "Funded students must maintain an in-person on-campus presence throughout the funded period and need approval before being away",
+          "Ph.D. Year 1 funding is centrally funded by the University while a faculty advisor match is arranged, and moves to the faculty advisor's funding no later than the start of Year 2",
+          "M.Sc. and Ph.D. Computational Biology opened a month later than other graduate programmes, on 30 September 2026",
+          "Admission is highly competitive with limited places in each incoming cohort, and MBZUAI states that 43% of its incoming graduate students for 2026-2027 came from the world's top computer science universities"
+        ],
+        "submission_workflow": "One portal application with CV, statement of purpose, research statement and referees, then a screening exam and technical interview if invited, with the decision published on 31 March 2027."
+      }
+    }
+  ]
+}

@@ -1,0 +1,99 @@
+{
+ "agent": "agent_316",
+ "assignment_count": 1,
+ "scholarships": [
+  {
+   "id": 705,
+   "title": "Allama Muhammad Iqbal Scholarships for Students from Bangladesh (Pak-Bangladesh Knowledge Corridor, Higher Education Commission Pakistan)",
+   "country": "Bangladesh",
+   "degree": "Bachelor's, Master's, PhD",
+   "funding_label": "Fully Funded",
+   "status": "upcoming",
+   "official_source": "Higher Education Commission (HEC), Government of Pakistan",
+   "official_source_url": "https://www.hec.gov.pk/english/scholarshipsgrants/PBKC/Pages/AISB.aspx",
+   "application_link": "https://www.hec.gov.pk/english/scholarshipsgrants/PBKC/Pages/AISB.aspx",
+   "catalogue_url": "https://www.hec.gov.pk/english/scholarshipsgrants/PBKC/Pages/default.aspx",
+   "official_updates_url": "https://www.hec.gov.pk/english/scholarshipsgrants/PBKC/Pages/Contact-us.aspx",
+   "existing": {
+    "funding_amount": null,
+    "funding_currency": null,
+    "funding_period": null,
+    "tuition_coverage": 1,
+    "living_cost_coverage": 1,
+    "travel_coverage": 1,
+    "fully_funded": 0,
+    "description": "The Allama Muhammad Iqbal Scholarships for Students from Bangladesh are the student component of the Government of Pakistan's Pak-Bangladesh Knowledge Corridor, a bilateral initiative to strengthen ties between the two countries. HEC awards fully funded places to Bangladeshi citizens to study medicine, engineering, computer science, business administration, mass communication, media studies, and basic and social sciences at Pakistani public and private universities, across Bachelor's, Master's and PhD levels. Coverage includes full tuition, a stipend, hostel and mess charges, a settlement allowance, an air ticket, and books and stationery. Recipients are contractually required to serve Bangladesh after completing their education in Pakistan.",
+    "eligibility": [
+     "Bangladeshi citizens only",
+     "Bachelor's Degree programme: 12 years of education in the required subjects with at least 60% marks",
+     "Medicine, Dentistry and Pharmacy: F.Sc. or equivalent examination (Pre-Medical) with at least 65% marks",
+     "Engineering: F.Sc. or equivalent examination (Pre-Engineering) with at least 65% marks",
+     "Master's Degree programme: 16 years of education in relevant subjects with at least 3.00 CGP or 65% marks",
+     "Doctoral Degree programme: 18 years of education in relevant subjects with at least 3.00 CGP or 65% marks",
+     "Age limit of 17 to 23 years for BS programmes",
+     "Maximum age limit of 35 years for doctoral programmes",
+     "Must have acquired the requisite qualification on or before the last date of application submission",
+     "Candidates holding a foreign qualification must provide an Equivalence Certificate from IBCC and HEC"
+    ],
+    "eligibility_summary": null,
+    "benefits": [
+     "Full tuition fee",
+     "Monthly stipend",
+     "Hostel and mess charges covered",
+     "Settlement allowance",
+     "Air ticket",
+     "Books and stationery allowance",
+     "International travel covered"
+    ],
+    "coverage": [
+     "Full tuition fee",
+     "Stipend",
+     "Hostel and mess charges",
+     "Settlement allowance",
+     "Air ticket",
+     "Books and stationery",
+     "International travel"
+    ],
+    "requirements": [
+     "Apply through the HEC scholarship portal",
+     "Provide an Equivalence Certificate from IBCC and HEC where the qualification is foreign",
+     "Hold Bangladeshi citizenship",
+     "Accept the obligation to serve Bangladesh after completing education in Pakistan"
+    ],
+    "documents": [
+     "Evidence of the qualifying examination result at the stated mark threshold",
+     "IBCC and HEC Equivalence Certificate where the qualification is foreign",
+     "Proof of Bangladeshi citizenship"
+    ],
+    "english_requirement": null,
+    "application_method": [
+     "Apply through the Higher Education Commission's scholarship portal",
+     "For queries, contact the Pak-Bangladesh Knowledge Corridor desk at HEC, Sector H-9, Islamabad"
+    ],
+    "selection_notes": "HEC frames the awards as a bilateral capacity-building instrument for Bangladeshi youth, with 500 scholar places across medicine, engineering, computer science, business administration, mass communication, media studies, and basic and social sciences.",
+    "best_fit": null,
+    "notes": "This scholarship is the student element of the Pak-Bangladesh Knowledge Corridor, whose other activities are an annual Pakistan Higher Education Expo in Bangladesh and leadership training for Bangladeshi civil servants in Pakistan. The award is for study in Pakistan; it is recorded here under Bangladesh because eligibility is restricted to Bangladeshi citizenship.",
+    "duration": "Not published on the pages read; 500 scholar places are part of a five-year bilateral programme.",
+    "application_period": "Continuing bilateral programme; applications go through the HEC scholarship portal and HEC publishes no closing date on the pages read",
+    "deadline_display": "No deadline published; HEC operates this as a continuing bilateral scholarship programme",
+    "deadline_date": null,
+    "region": "Asia",
+    "program_type": "Government scholarship",
+    "applicant_utility": null,
+    "official_details": null
+   },
+   "missing_fields": [
+    "funding_amount",
+    "funding_currency",
+    "funding_period",
+    "eligibility_summary",
+    "english_requirement",
+    "best_fit",
+    "deadline_date",
+    "applicant_utility",
+    "official_details"
+   ]
+  }
+ ],
+ "result_file": "C:\\Users\\GopaL\\Desktop\\Projects folder\\ScholarZone\\backend\\research_output\\live500\\results\\agent_316.json"
+}

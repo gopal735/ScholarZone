@@ -1,0 +1,78 @@
+{
+ "agent": "agent_069",
+ "assignment_count": 1,
+ "scholarships": [
+  {
+   "id": 189,
+   "title": "Umeå University Scholarship for International Students",
+   "country": "Sweden",
+   "degree": "Bachelor's, Master's",
+   "funding_label": "Tuition Fee Waiver",
+   "status": "upcoming",
+   "official_source": "Umeå University",
+   "official_source_url": "https://www.umu.se/en/education/scholarships",
+   "application_link": "https://www.umu.se/en/education/scholarships",
+   "catalogue_url": null,
+   "official_updates_url": "https://www.umu.se/en/education/application-and-admission/scholarships",
+   "existing": {
+    "funding_amount": null,
+    "funding_currency": null,
+    "funding_period": null,
+    "tuition_coverage": 1,
+    "living_cost_coverage": 0,
+    "travel_coverage": 0,
+    "fully_funded": 0,
+    "description": "The Umeå University Scholarship for International Students is awarded each autumn semester alongside the autumn admission to academically talented applicants who are required to pay tuition fees. Scholarships take the form of tuition waivers, and selected candidates receive a full or partial waiver of the tuition fee for their programme; no living-cost component is published. Applicants must be citizens of countries outside the EU/EEA and Switzerland, have applied for a full bachelor's or master's programme, paid the application fee, and have a Umeå University programme as priority 1 on University Admissions by 15 January. Invitations to register interest are emailed in early February and the interest deadline falls in early March - 4 March 2026 at 23:59 CET in the last published cycle - with results announced by email in mid-April. Selection is made by faculty committees on academic merit.",
+    "eligibility": [
+     "Be a citizen of a country outside of the EU/EEA and Switzerland",
+     "Have applied for a full programme at Umeå University (Bachelor's or Master's)",
+     "Have completed the programme application before the application deadline (15 January in the 2026 cycle)",
+     "Have paid the application fee by 2 February (students exempt from the fee but liable for tuition are also eligible)",
+     "Have chosen a Umeå University programme as priority 1 on the University Admissions website by 15 January at the latest",
+     "Not be applying to the Master's Programme in Sustainability Reporting and Financial Analysis, which is a double degree programme and not eligible",
+     "For current students: have paid the tuition fee for the spring semester and be a registered student; students on study leave are not eligible"
+    ],
+    "eligibility_summary": "Citizens of countries outside the EU/EEA and Switzerland who have applied for a full Umeå University bachelor's or master's programme, completed the application by the 15 January deadline, paid the application fee by 2 February, and have a Umeå University programme as priority 1 on University Admissions. Second-year master's students and registered students who have paid the spring semester tuition fee may also register interest.",
+    "benefits": [
+     "A full or partial waiver of the tuition fee for the programme"
+    ],
+    "coverage": [
+     "A full or partial waiver of the tuition fee for the programme"
+    ],
+    "requirements": [],
+    "documents": [],
+    "english_requirement": null,
+    "application_method": [
+     "Apply for a Umeå University programme at University Admissions and set a Umeå University programme as priority 1 before the deadline",
+     "Pay the application fee by the stated February deadline",
+     "Register interest using the form linked from the personal invitation email sent in early February",
+     "Await the result, announced by email on the published announcement date"
+    ],
+    "selection_notes": "After the interest registration deadline, a committee within each respective faculty selects candidates. The selections are based on the applicant's academic merit, as well as any other relevant information shared in the registration form.",
+    "best_fit": null,
+    "notes": "Separate Umeå University scholarships funded by a donation from Umeå municipality cover academically talented design students in the same tuition-waiver form; the Swedish Institute's Pioneering Women in STEM and Global Professionals scholarships, which include full tuition plus a SEK 12,000 monthly stipend and a SEK 15,000 travel grant, are administered by the Swedish Institute rather than by Umeå University.",
+    "duration": "Full or partial waiver of the tuition fee for the autumn semester programme",
+    "application_period": "Annual, tied to the autumn semester admission: priority 1 must be set by 15 January, the application fee paid by early February, invitations sent in early February, and interest registered by the early-March deadline (4 March 2026 at 23:59 CET in the published cycle)",
+    "deadline_display": "Official wording, timeline for 2026: \"15 January: Deadline to have a Umeå University programme as priority 1 on University Admissions\", \"2 February: Deadline to pay application fee on University Admissions\", \"4-9 February: A personal invitation will be sent out via email to all eligible students\", \"4 March (23:59 CET): Deadline to register interest for a scholarship\", \"17 April: Scholarship results are announced via email\". The page for the next cycle is not yet published and the university notes the dates are preliminary and subject to change.",
+    "deadline_date": null,
+    "region": "Europe",
+    "program_type": "University-administered tuition-fee waiver for fee-paying bachelor's and master's students",
+    "applicant_utility": null,
+    "official_details": null
+   },
+   "missing_fields": [
+    "funding_amount",
+    "funding_currency",
+    "funding_period",
+    "requirements",
+    "documents",
+    "english_requirement",
+    "best_fit",
+    "deadline_date",
+    "applicant_utility",
+    "official_details"
+   ]
+  }
+ ],
+ "result_file": "C:\\Users\\GopaL\\Desktop\\Projects folder\\ScholarZone\\backend\\research_output\\live500\\results\\agent_069.json"
+}

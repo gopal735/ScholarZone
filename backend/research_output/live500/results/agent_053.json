@@ -1,0 +1,141 @@
+{
+  "agent": "agent_053",
+  "records": [
+    {
+      "id": 162,
+      "official": {
+        "official_source_urls": [
+          "https://studienpraeses.univie.ac.at/stipendien/",
+          "https://studienpraeses.univie.ac.at/stipendien/leistungsstipendium-nach-dem-studfg/",
+          "https://studienpraeses.univie.ac.at/stipendien/foerderungsstipendien-nach-dem-studfg/",
+          "https://studieren.univie.ac.at/en/abc-of-terminology/related-entries?cHash=dc6c9dc2432550f2466303879cfc5f49&tx_irfaq_pi1%5BshowUid%5D=31972",
+          "https://studieren.univie.ac.at/en/student-life-who-can-help-me-with"
+        ],
+        "application_link": "https://uspace.univie.ac.at/web/gast/home",
+        "catalogue_url": null,
+        "official_updates_url": "https://studienpraeses.univie.ac.at/stipendien/",
+        "deadline_central": "2026-11-03",
+        "deadline_central_display": "3 November 2026",
+        "deadline_note": "Merit scholarship (Leistungsstipendium): electronic filing via u:space from 1 October 2026, 00:00 to 3 November 2026, 23:59; support scholarship (Förderungsstipendium, second half of 2026): email filing in the same window. Late-arriving individual documents are accepted by email to claudia.fritz-larott@univie.ac.at until 5 November 2026, 16:00 in both schemes; queries on grade averages/ECTS/study duration for the merit call until 7 January 2027; decisions by end of January/beginning of February 2027.",
+        "application_cycle": "Study year 2025/26 call (announced in the University's Mitteilungsblatt of 14 September 2026, 44th issue, nos. 306 and 307); the support-scholarship round covers the second half of 2026",
+        "status": "OPEN",
+        "status_note": "The university's stipendien hub currently flags both the merit scholarship and the support scholarship as 'aktuell ausgeschrieben' (currently announced), with filing windows running 1 October to 3 November 2026.",
+        "tuition_coverage_note": null,
+        "funding_amount": 750,
+        "funding_currency": "EUR",
+        "funding_period": "one-off per academic year (range 750-1,500)",
+        "tuition_coverage": false,
+        "living_cost_coverage": false,
+        "travel_coverage": true,
+        "fully_funded": false,
+        "benefits": [
+          "Leistungsstipendium (merit scholarship, §57-61 StudFG): a one-off cash award of at least EUR 750 and at most EUR 1,500 for the study year, granted for outstanding exam results, independently of the student's income",
+          "Förderungsstipendium (support scholarship, §63-67 StudFG): a one-off cash award of at least EUR 750 and at most EUR 3,600 per study year, intended to cover the extra costs of completing an unfinished diploma, master's or doctoral thesis",
+          "Both schemes can be applied for independently of other scholarships, are awarded by the Studienpräses out of the funds of the Federal Ministry for Science, Research and Economics, and confer no legal entitlement",
+          "The support scholarship explicitly funds research travel (second-class rail, economy flights; separate justification needed for car travel) and, with proof, conference participation fees and justified lab material, copies or equipment costs",
+          "Support-scholarship awards are reporting-based: a report plus original invoices must be submitted by 14 June 2027, and one quarter of the grant is only paid afterwards"
+        ],
+        "eligibility": [
+          "Austrian citizenship, or equal status with Austrian citizens under §4 StudFG; EEA citizens (including Swiss citizens) are to be treated like Austrian students in the application, with no additional proof of nationality or residence law required",
+          "Third-country nationals and stateless persons only have equal status if they hold the right of permanent residence in Austria (at least five years' uninterrupted lawful residence; a 'Aufenthaltstitel Studierender'/student residence permit is not sufficient), or are family members of EU citizens who are migrant workers or self-employed in Austria, or are family members of Austrian citizens; Convention refugees are equal to Austrian citizens",
+          "An ordinary degree programme at the University of Vienna with a study code beginning 'UA', and compliance with the claim duration under §18-19 StudFG",
+          "Merit scholarship: at least 40 ECTS passed (or the degree completed) in study year 2025/26 and an ECTS-weighted grade average not worse than 1.70; the diploma/master thesis must be graded 'Sehr gut' and the final examination or defensio 'Sehr gut' or 'Gut'; for doctoral/PhD programmes the degree must be completed, with dissertation 'Sehr gut' and rigosum/defensio 'Sehr gut' or 'Gut'",
+          "Support scholarship: a not yet completed scientific thesis (diploma thesis, master's thesis or dissertation), its funding-worthiness, an above-average high financial burden, and excellent study progress (weighted average not worse than 2.50 for 1.10.2025-30.9.2026)"
+        ],
+        "requirements": [
+          "Merit scholarship: electronic application via u:space after identification through your u:account; IBAN and BIC must be entered or updated under 'Persönliche Daten' before filing, otherwise the application cannot be processed",
+          "Support scholarship: application by email using the official form (German or English version), including at least one expert opinion from the thesis supervisor or another habilitated university teacher of the University of Vienna confirming both the likely above-average success and the plausibility of the cost statement",
+          "The application must be filed within the deadline even if, for example, not all grades have appeared in the Sammelzeugnis yet; incomplete applications cannot be considered once the filing period and late-addition period have ended",
+          "Contact is exclusively via the u:account email stating your Matrikelnummer; personal submission and postal submissions are not possible for the support scholarship, and telephone enquiries about the application cannot be answered"
+        ],
+        "documents": [
+          "Merit scholarship: Sammelzeugnis data in u:space, plus by email where applicable - recognition decision (Anerkennungsbescheid) with the foreign grade conversion key if grades/ECTS are missing, Auflagenbescheid for any imposed conditions, certificates not shown in u:space (e.g. co-registration at another university), proof of justified study delay (§18-19 StudFG), and proof of equal status (§4 StudFG) for non-Austrian applicants",
+          "Support scholarship: completed application form (German or English), CV, self-description of the scientific thesis (max. 2 pages) with bibliography, cost statement and financing plan, at least one expert opinion, and a current Studienblatt (a Studienbestätigung is explicitly not sufficient)",
+          "Support scholarship, thesis-specific: for doctoral projects proof of the approved topic and the faculty-public presentation plus progress reports; for master's/diploma programmes proof of the topic registration (Themenmeldung)",
+          "Non-Austrian applicants (§4 StudFG): EU long-term residence card ('Daueraufenthaltskarte-EU'), or birth/marriage certificate plus passport and social-insurance data extract of the EU worker, or birth/marriage certificate plus citizenship proof of the family member; Convention refugees submit the refugee status (passport or Bescheid)"
+        ],
+        "selection_criteria": [
+          "Merit scholarship: ranking first by ECTS-weighted grade average; ties are decided by the number of completed ECTS; if eligible applications exceed available places per degree programme, the award amount varies with the budget and the number of applications; there is no legal entitlement",
+          "Support scholarship: decision by the Studienpräses according to the funds allocated by the Federal Ministry, based on the funding-worthiness of the thesis, outstanding study progress, and a cost statement whose plausibility the expert opinion must confirm",
+          "Both schemes: applicants are informed of the decision by end of January/beginning of February 2027 via u:space (merit) or by email to the u:account address (support); enquiries before publication of results cannot be answered for administrative reasons"
+        ],
+        "coverage": [
+          "Merit scholarship: a cash amount between EUR 750 and EUR 1,500 per study year, awarded for academic merit irrespective of income; it does not cover tuition fees or living costs",
+          "Support scholarship: research-related costs only - travel for research outside Vienna (second-class rail or economy flight; car only with separate justification), conference/congress fees with proof of abstract acceptance, and lab material, copies or hard/software only with a special justification",
+          "Explicitly not funded by the support scholarship: living costs, per diems, continued rent payments, Vienna public transport tickets, printing and binding of the thesis, books borrowable at the institute or university library, office supplies and mobile phone costs"
+        ],
+        "application_method": [
+          "Merit scholarship: log in with your u:account at https://uspace.univie.ac.at/web/gast/home, update IBAN and BIC under 'Persönliche Daten', then file the application electronically between 1 October and 3 November 2026",
+          "Support scholarship: email the complete application (form, German or English version) to claudia.fritz-larott@univie.ac.at between 1 October and 3 November 2026, 23:59; personal or postal submission is not possible",
+          "Late documents: email to claudia.fritz-larott@univie.ac.at until 5 November 2026, 16:00, provided the application itself was filed on time and it is noted that documents will follow",
+          "Exceptions for the merit scholarship: students who credibly show that electronic filing is unreasonable or impossible due to a disability, or whose u:account was withdrawn due to abuse, may request an exception by email and apply in person by appointment"
+        ],
+        "application_route": "Merit scholarship: electronic application via u:space; support scholarship: email submission of the official form to the Studienpräses office - both within the annual autumn call",
+        "study_mode": null,
+        "citizenship_residency": "Austrian citizens and persons equal to them under §4 StudFG: EEA/Swiss citizens without further proof; third-country nationals only with an EU long-term residence card (five years' uninterrupted lawful residence - a student residence permit does not count), as family members of an EU migrant worker/self-employed person in Austria, or as family members of Austrian citizens; stateless persons under the same conditions as third-country nationals; Convention refugees equal to Austrian citizens",
+        "international_eligibility": "Restricted by law: open to EEA/Swiss citizens and §4 StudFG equal-status persons only; the university's own guidance states its grants and scholarships are offered to students with EU/EEA/CH citizenship or equal status, so most third-country students on a student residence permit are not eligible",
+        "subject_or_agency_requirement": "No subject restriction for the merit and support scholarships - open to all ordinary degree programmes at the University of Vienna; separate field-specific schemes exist (LL.M. scholarships for incoming and outgoing students, scholarships of the university foundation for law students, and a support scholarship for students with disabilities)",
+        "research_requirement": "Support scholarship: a not yet completed scientific thesis (diploma, master's or doctoral thesis) that is being actively carried out - doctoral projects additionally need the approved topic, the faculty-public presentation and progress reports, master's/diploma projects proof of topic registration; the merit scholarship requires no research proposal, only completed graded performances",
+        "duration": "Merit scholarship: one award for study year 2025/26 (1.10.2025-30.9.2026), once per academic year; support scholarship: one award to support completion of the thesis in the second half of 2026, with report and invoices due by 14 June 2027",
+        "description": "Under the Studienförderungsgesetz (StudFG), the University of Vienna awards merit scholarships for outstanding academic achievements and support scholarships that help students complete an unfinished academic thesis; both are administered by the Studienpräses and funded from federal ministry money. The university's own pages present these schemes to students with EU/EEA/CH citizenship or equal status, not as a general international-student funding programme.",
+        "region": "Vienna, Austria (Europe)",
+        "program_type": "Merit scholarship (Leistungsstipendium nach dem StudFG, §57-61) and support/advancement scholarship (Förderungsstipendium nach dem StudFG, §63-67)",
+        "english_requirement": null
+      },
+      "verification": {
+        "source_citations": [
+          "https://mtbl.univie.ac.at/storage/media/mtbl02/2025_2026/2025_2026_306.pdf",
+          "https://mtbl.univie.ac.at/storage/media/mtbl02/2025_2026/2025_2026_307.pdf",
+          "https://studienpraeses.univie.ac.at/stipendien/",
+          "https://studienpraeses.univie.ac.at/stipendien/leistungsstipendium-nach-dem-studfg/",
+          "https://studienpraeses.univie.ac.at/stipendien/foerderungsstipendien-nach-dem-studfg/",
+          "https://studienpraeses.univie.ac.at/fileadmin/user_upload/p_studienpraeses/Studienpraeses_Neu/Stipendien/Leistungs-_und_Foerderungsstip._nach_StudFG/Infoblatt_Gleichstellung_BM_2023_verb_2025.pdf",
+          "https://studieren.univie.ac.at/en/tuition-fee/amount-tuition-fee"
+        ],
+        "last_verified_date": "2026-10-10",
+        "verification_status": "confirmed",
+        "confidence": "high",
+        "not_confirmed": [
+          "tuition_coverage - the official pages publish no tuition waiver for these schemes",
+          "living_cost_coverage - living costs are explicitly excluded from the support scholarship",
+          "english_requirement - no English requirement is published for the scholarships themselves (only an English application form exists for the support scholarship)",
+          "study_mode - the official pages do not use full-time/part-time wording",
+          "catalogue_url - the university publishes no catalogue entry for these schemes"
+        ],
+        "notes": "Amounts (EUR 750-1,500 merit; EUR 750-3,600 support), deadlines, eligibility and document lists were read from the University of Vienna's official Mitteilungsblatt announcements of 14 September 2026 (nos. 306 and 307) and the Studienpräses stipendien hub. The URL recorded in the catalogue (studieren.univie.ac.at/en/scholarships) returns 404 and the stored 'existing' data referenced an unrelated Portuguese university, so it was discarded."
+      },
+      "applicant_utility": {
+        "summary": "These are the University of Vienna's own merit and support scholarships for students who are already enrolled: a one-off EUR 750-1,500 award for excellent grades (Leistungsstipendium) and a one-off EUR 750-3,600 award for students completing a thesis with unusually high research costs (Förderungsstipendium). Despite the 'for International Students' label, §4 StudFG restricts both to Austrian citizens, EEA/Swiss citizens and narrowly defined equal-status persons, so most third-country students on a student residence permit cannot apply. Neither scheme waives tuition or funds living costs, and the current call closes on 3 November 2026, with late documents accepted only to 5 November 16:00.",
+        "best_fit": "Enrolled University of Vienna students with EEA/Swiss citizenship (or qualifying §4 equal status) who have a strong ECTS-weighted record, or thesis students with costly off-site research and a supportive supervisor.",
+        "application_readiness_checklist": [
+          "Settle your §4 StudFG status first: EEA/Swiss is sufficient, but third-country applicants need the EU long-term residence card (five years), qualifying family-member documents, or refugee status - a student residence permit does not count and cost weeks to resolve.",
+          "Confirm your study code starts with 'UA', you are within the claim duration (§18-19 StudFG), and you have at least 40 ECTS in the 2025/26 study year with a weighted average of 1.70 or better (2.50 for the support scholarship).",
+          "Before the window opens, update IBAN and BIC under 'Persönliche Daten' in u:space and re-check every grade and ECTS in your Sammelzeugnis; later corrections and repetitions of positively graded courses must be fixed with your SSC in advance.",
+          "For the support scholarship, agree in September with your supervisor on the expert opinion and build a defensible cost statement and financing plan (second-class rail/economy flights; conference fees need abstract acceptance) so the whole package can be emailed by 3 November.",
+          "Assemble the §4 proof documents for your variant early (Daueraufenthaltskarte-EU, birth/marriage certificates plus passport and social-insurance extract, or refugee status proof) and hand in anything missing by email before 5 November 16:00."
+        ],
+        "common_rejection_risks": [
+          "Missing the hard cut-off: applications filed after 3 November 23:59 cannot be submitted at all, and applications still incomplete after the 5 November 16:00 late-document window are excluded from the round.",
+          "Grade averages outside the threshold - worse than 1.70 (merit) or 2.50 (support) - including cases where a repeated positive course still counts the first grade because the SSC was not asked to delete it.",
+          "Support-scholarship applications rejected on costs: living expenses, per diems, rent, Vienna transport tickets, printing/binding, borrowable books, office supplies or phone costs are never fundable, and equipment or conference costs lacking the required written justification or abstract acceptance.",
+          "Citizenship/equal-status proof missing or wrong: a student residence permit, or evidence of family-member status without the passport and social-insurance extract, leads to exclusion even with perfect grades.",
+          "Budget disappointment rather than rejection: the office warns amounts vary each year with the budget and applicant numbers, and there is no legal entitlement to an award."
+        ],
+        "estimated_uncovered_costs": "Tuition (EUR 726.72 per semester for non-EU/EEA citizens from the first semester; EU/EEA/CH students pay EUR 363.36 only after the tuition-free period plus two tolerance semesters), plus the EUR 26.20 Students' Union fee, rent and living costs, Vienna transport, printing and binding of the thesis, and any thesis cost the commission does not accept",
+        "document_audit": [
+          "The support scholarship requires a current Studienblatt - the office explicitly rejects a Studienbestätigung, and degree programmes also need proof of topic registration (Themenmeldung) or, for doctorates, the approved topic plus faculty-public presentation.",
+          "The expert opinion must come from your thesis supervisor or another habilitated University of Vienna lecturer and must expressly confirm both your prospect of above-average success and that the cost statement is plausible - a generic letter fails this test.",
+          "For non-Austrian applicants attach the exact proof for your §4 variant: 'Daueraufenthaltskarte-EU', or birth/marriage certificate with the family member's passport and social-insurance data extract, or the family member's Austrian citizenship proof; Convention refugees submit the refugee-status document.",
+          "If exams taken at another university or abroad count, include the Anerkennungsbescheid - and when it shows neither grades nor ECTS, also the transcript and the foreign grade conversion key."
+        ],
+        "alerts": [
+          "The 'for International Students' framing is misleading: the university states its grants and scholarships are for students with EU/EEA/CH citizenship or equal status, so check your §4 StudFG situation before investing effort - others should look at OeAD grants, home-country funding, or faculty-level awards.",
+          "The merit call is retrospective: it rewards the study year 1.10.2025-30.9.2026, so you apply in autumn 2026 for grades already earned, and the 1-3 November window will not move; applying while on leave of absence (beurlaubt) or right after graduation is still possible.",
+          "Support-scholarship money is closer to a reimbursement than a stipend: one quarter is paid only after the 14 June 2027 report and original invoices, missing reports trigger repayment, and approved equipment becomes university property.",
+          "Watch the fee payment period separately (winter semester 2026/27: 13 July-31 October 2026) - non-payment automatically closes your studies, and equal-status tuition waivers must be applied for and take about two weeks."
+        ],
+        "submission_workflow": "File the merit application yourself in u:space during the 1-3 November window (bank details pre-entered), email late documents to claudia.fritz-larott@univie.ac.at by 5 November 16:00, and track processing status in u:space; support applications go in as one email package, with both outcomes announced via u:space or u:account email by end of January 2027."
+      }
+    }
+  ]
+}

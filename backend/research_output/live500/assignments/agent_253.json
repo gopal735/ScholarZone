@@ -1,0 +1,80 @@
+{
+ "agent": "agent_253",
+ "assignment_count": 1,
+ "scholarships": [
+  {
+   "id": 611,
+   "title": "John Allwright Fellowship",
+   "country": "Australia",
+   "degree": "Master's, PhD",
+   "funding_label": "Fully Funded",
+   "status": "open",
+   "official_source": "Australian Centre for International Agricultural Research (ACIAR)",
+   "official_source_url": "https://www.aciar.gov.au/scholarships/john-allwright-fellowship",
+   "application_link": "https://www.aciar.gov.au/scholarships/john-allwright-fellowship",
+   "catalogue_url": "https://www.aciar.gov.au/scholarships",
+   "official_updates_url": "https://www.aciar.gov.au/scholarships/john-allwright-fellowship",
+   "existing": {
+    "funding_amount": null,
+    "funding_currency": null,
+    "funding_period": null,
+    "tuition_coverage": null,
+    "living_cost_coverage": null,
+    "travel_coverage": null,
+    "fully_funded": 0,
+    "description": "The John Allwright Fellowship (JAF) is a competitive, merit-based postgraduate scholarship for scientists or economists from ACIAR partner countries who are currently or recently involved in ACIAR research projects. It funds Masters by Research or PhD study at an Australian tertiary institution and is administered through the Australia Awards system, with ACIAR providing additional pastoral care and professional development. The Fellowship is the largest investment in ACIAR's Capacity Development Program.",
+    "eligibility": [
+     "Be a scientist or economist from an ACIAR partner country",
+     "Be currently or recently involved in an ACIAR research project",
+     "Seek admission to postgraduate study (Masters by Research or PhD) at an Australian tertiary institution"
+    ],
+    "eligibility_summary": "Scientists or economists from ACIAR partner countries who are currently or recently involved in ACIAR research projects, seeking postgraduate qualifications at an Australian tertiary institution.",
+    "benefits": [
+     "Masters by Research or PhD scholarship administered through the Australia Awards system",
+     "Pastoral care and development opportunities from ACIAR during the scholarship"
+    ],
+    "coverage": [],
+    "requirements": [
+     "Register an account in the Online Australia Scholarships Information System (OASIS)",
+     "Select the ACIAR John Allwright Fellowships award program when starting an application in OASIS",
+     "Sign a contract with the Commonwealth of Australia agreeing to comply with the conditions of the scholarship"
+    ],
+    "documents": [],
+    "english_requirement": null,
+    "application_method": [
+     "Register an account in the Online Australia Scholarships Information System (OASIS)",
+     "Log on, create and complete an OASIS application form",
+     "Select the ACIAR John Allwright Fellowships award program"
+    ],
+    "selection_notes": "ACIAR states the Fellowship is merit-based and that, in line with its gender equity commitment, women now comprise at least half of new Fellowship holders. The programme has also been allocating places in the 2026 intake round specifically for research on climate change, climate adaptation or strengthening resilience to climate change impacts.",
+    "best_fit": null,
+    "notes": "Award holders are subject to a two-year post-study obligation: they must leave Australia for a minimum of two years after completing the scholarship, and failure to do so results in the scholar incurring a debt for the total accrued cost of the scholarship. An offer is only valid for the Australian academic year following the calendar year in which the offer is made.",
+    "duration": null,
+    "application_period": "Annual cycle. The ACIAR page showed 'Applications closed' on 2026-10-04; the next intake is expected to open in the same pattern as previous years, with applications historically opening early in the calendar year.",
+    "deadline_display": "Applications closed for the current round; the programme reopens annually",
+    "deadline_date": null,
+    "region": "Oceania",
+    "program_type": "Government scholarship",
+    "applicant_utility": null,
+    "official_details": null
+   },
+   "missing_fields": [
+    "funding_amount",
+    "funding_currency",
+    "funding_period",
+    "tuition_coverage",
+    "living_cost_coverage",
+    "travel_coverage",
+    "coverage",
+    "documents",
+    "english_requirement",
+    "best_fit",
+    "duration",
+    "deadline_date",
+    "applicant_utility",
+    "official_details"
+   ]
+  }
+ ],
+ "result_file": "C:\\Users\\GopaL\\Desktop\\Projects folder\\ScholarZone\\backend\\research_output\\live500\\results\\agent_253.json"
+}

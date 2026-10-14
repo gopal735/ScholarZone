@@ -1,0 +1,133 @@
+{
+  "agent": "agent_070",
+  "records": [
+    {
+      "id": 192,
+      "official": {
+        "official_source_urls": [
+          "https://www.eacea.ec.europa.eu/scholarships/erasmus-mundus-catalogue_en",
+          "https://erasmus-plus.ec.europa.eu/opportunities/individuals/students/erasmus-mundus-joint-masters",
+          "https://erasmus-plus.ec.europa.eu/programme-guide/part-b/key-action-2/erasmus-mundus-action"
+        ],
+        "application_link": "https://www.eacea.ec.europa.eu/scholarships/erasmus-mundus-catalogue_en",
+        "catalogue_url": "https://www.eacea.ec.europa.eu/scholarships/erasmus-mundus-catalogue_en",
+        "official_updates_url": "https://www.eacea.ec.europa.eu/scholarships_en",
+        "deadline_central": null,
+        "deadline_central_display": null,
+        "deadline_note": "In most cases applications are submitted between October and January for courses starting the following academic year; the exact date is set by each consortium and published on that master's own website.",
+        "application_cycle": "Annual intake; each master's website publishes its own application deadline",
+        "status": "OPEN",
+        "status_note": "The EACEA Erasmus Mundus Catalogue is live and updated annually, listing the master's programmes currently supported by the EU (218 projects listed at the time of checking). The catalogue notes that some programmes offer no Erasmus Mundus scholarships because they are reaching the end of their funding period or are using the name temporarily after funding.",
+        "tuition_coverage_note": "Programme Guide: 'Selected projects cannot charge student application fees. Moreover, projects cannot charge tuition fees or other mandatory costs related to student participation in the course to Erasmus Mundus scholarship holders.'",
+        "funding_amount": 1400,
+        "funding_currency": "EUR",
+        "funding_period": "per month (max. 24 months)",
+        "tuition_coverage": true,
+        "living_cost_coverage": true,
+        "travel_coverage": true,
+        "fully_funded": true,
+        "benefits": [
+          "EU scholarship for individuals: EUR 1,400 per month, for a maximum of 24 months",
+          "The scholarship covers travel, visa, installation and subsistence costs",
+          "Coverage of participation costs; tuition fees and other mandatory participation costs cannot be charged to Erasmus Mundus scholarship holders",
+          "Either a joint degree (one certificate issued on behalf of at least two institutions) or multiple degrees from consortium institutions",
+          "Compulsory physical mobility with at least two study periods in two countries, each of at least one academic semester (30 ECTS)"
+        ],
+        "eligibility": [
+          "You must have a bachelor's degree (first degree), or be in your last year of bachelor studies",
+          "You must graduate before the master's programme starts",
+          "You may also apply if you demonstrate a bachelor's equivalent level of learning, officially recognised according to national legislation and practices in the degree awarding country",
+          "Students who have previously obtained an EMJM scholarship are not eligible to apply for an additional scholarship under the EMJM",
+          "EMJM scholarships are offered to students from all over the world, but consortia should ensure geographical balance - no more than 10% of the total number of scholarships awarded during project implementation should be awarded to candidates from the same nationality"
+        ],
+        "requirements": [
+          "Application submitted directly to the consortium running the chosen programme, not to the European Commission",
+          "Entry requirements are set by each master's own website",
+          "All steps of the application process (with and without scholarship) are published by each master's website",
+          "Scholarships are awarded to the best-ranked students",
+          "A Student Agreement must be signed by the enrolled student and the EMJM consortium upon enrolment"
+        ],
+        "documents": [],
+        "selection_criteria": [
+          "Scholarships are awarded to the best-ranked students",
+          "Each consortium publishes its own entry requirements and selection process",
+          "Compulsory physical mobility of at least two study periods in two countries, each of at least one academic semester (30 ECTS credits or equivalent)",
+          "Geographical balance - no more than 10% of scholarships awarded during project implementation to candidates from the same nationality"
+        ],
+        "coverage": [
+          "Participation costs (tuition fees and other mandatory participation costs cannot be charged to scholarship holders)",
+          "Travel, visa, installation and subsistence costs",
+          "The scholarship is a monthly unit cost of EUR 1,400 for the entire period needed to complete the programme, pro-rata of the actual number of days"
+        ],
+        "application_method": [
+          "Search the Erasmus Mundus Catalogue for a suitable programme",
+          "Visit that programme's official website",
+          "Contact the consortium directly for courses, application procedures and scholarship availability",
+          "Apply directly to the institution running the chosen programme, within the window it publishes"
+        ],
+        "application_route": "Choose a programme from the EACEA catalogue, then apply directly to that consortium through the programme's own website - there is no central EU application.",
+        "study_mode": "Full-time",
+        "citizenship_residency": "Open to students from all over the world; no nationality restriction.",
+        "international_eligibility": "Open to master's-level students from all over the world.",
+        "subject_or_agency_requirement": "Programmes currently supported by the EU across all disciplines; the catalogue is filterable by country, duration and credits, university and field of study.",
+        "research_requirement": null,
+        "duration": "1 to 2 academic years (60, 90 or 120 ECTS credits); the scholarship is awarded for 12, 18 or 24 months depending on the duration of the programme, with a minimum of one academic year where prior learning is recognised",
+        "description": "Erasmus Mundus Joint Master programmes are master's degrees jointly designed and delivered by a group of higher education institutions involving at least three institutions from at least three different countries, plus academic and non-academic associated partners. The European Commission's Erasmus Mundus Catalogue, maintained by EACEA and updated annually, lists the programmes currently supported by the EU, and scholarships are available for outstanding students at participating programmes.",
+        "region": "Europe (Sweden is one of the catalogue's country filters; the scheme is pan-European and worldwide for students)",
+        "program_type": "Erasmus Mundus Joint Master (EMJM) - jointly designed master's delivered by an international consortium",
+        "english_requirement": null
+      },
+      "verification": {
+        "source_citations": [
+          "https://erasmus-plus.ec.europa.eu/programme-guide/part-b/key-action-2/erasmus-mundus-action",
+          "https://www.eacea.ec.europa.eu/scholarships/erasmus-mundus-catalogue_en",
+          "https://erasmus-plus.ec.europa.eu/opportunities/individuals/students/erasmus-mundus-joint-masters"
+        ],
+        "last_verified_date": "2026-10-10",
+        "verification_status": "confirmed",
+        "confidence": "high",
+        "not_confirmed": [
+          "deadline_central",
+          "english_requirement",
+          "programme-specific scholarship availability",
+          "number of scholarships available for any individual master"
+        ],
+        "notes": "Live-fetched three official European Commission / EACEA pages: the Erasmus Mundus Catalogue (218 listed programmes, filterable by country including Sweden), the student-facing Erasmus Mundus Joint Masters page, and the Erasmus+ Programme Guide section on the Erasmus Mundus action. The EUR 1,400 per month figure and its funding rules are taken verbatim from the Programme Guide: 'The scholarship is calculated as: 1 400 Euros/month x DS' where DS is the duration of the master programme, with the maximum duration of 12, 18 or 24 months, and the statement that the scholarship 'shall cover travel, visa, installation and subsistence costs'. Tuition non-charging for scholarship holders and the October-January application window are from the same official set. The catalogue URL given in the assignment (eacea.ec.europa.eu/scholarships/emjmd-catalogue_en/sweden) returns 404; the working catalogue URL is the one cited. No single programme deadline, English score or per-programme scholarship count is published centrally - those sit with each consortium."
+      },
+      "applicant_utility": {
+        "summary": "There is no central Erasmus Mundus application: you apply to one consortium, for one programme, through that programme's own website, which means each programme is a separate deadline, a separate document set and a separate selection panel. The money is a single published rate - EUR 1,400 per month for the full duration of the programme, up to 24 months - plus coverage of participation costs and travel, visa, installation and subsistence, so tuition cannot be charged to you if you hold the scholarship. Because the EU caps any one nationality at 10% of a consortium's scholarships, students from heavily applied countries face the hardest competition, so apply to more than one programme rather than betting on a single consortium. Read each catalogue entry carefully, since the catalogue itself warns that some listed programmes offer no scholarships because their EU funding has run out and only the name is being used temporarily.",
+        "best_fit": "Final-year or recent bachelor's graduates who want a multi-country European master's and can absorb a full-time, application-heavy process between October and January.",
+        "application_readiness_checklist": [
+          "Shortlist several programmes from the EACEA catalogue and confirm on each programme's own website whether it currently offers Erasmus Mundus scholarships, not just the Erasmus Mundus label",
+          "Diarise each consortium's deadline separately - the October-January window is a norm, not a shared cutoff",
+          "Check the mobility design: at least two study periods in two countries you have not lived in, each of at least one semester or 30 ECTS",
+          "Confirm you will hold your bachelor's degree before the programme starts, since enrolment depends on it",
+          "Open the programme's Student Agreement template on its website so you know the obligations before you accept"
+        ],
+        "common_rejection_risks": [
+          "Applying to the European Commission instead of the consortium, which is never the route",
+          "Assuming every catalogue programme still funds scholarships; some are in a temporary name-use period",
+          "Being over the 10% nationality cap within a consortium without realising the quota exists",
+          "Applying for a programme whose mobility design conflicts with your personal situation",
+          "Missing the individual consortium deadline because the only date you tracked was the general October-January window"
+        ],
+        "estimated_uncovered_costs": "Costs beyond the monthly allowance and the participation, travel, visa, installation and subsistence coverage, including anything the consortium charges non-scholarship holders, pre-departure relocation from home, and personal spending.",
+        "document_audit": [
+          "Each programme's website publishes its own document list and its own steps for applying with and without a scholarship - read both, because the scholarship route often adds an evaluation stage",
+          "A Student Agreement must be signed with the consortium at enrolment, so review it before committing",
+          "The degree can be a joint single diploma or multiple national diplomas - check which one your target programmes award before applying",
+          "A reduced scholarship duration applies where prior learning is recognised, but never below one academic year",
+          "If you already held an EMJM scholarship you cannot apply for another one under EMJM"
+        ],
+        "alerts": [
+          "Prior EMJM scholarship holders are excluded from applying again, so first-time applicants only",
+          "The scholarship is only paid in full and only to full-time students",
+          "Compulsory physical mobility cannot be replaced with virtual or distance learning",
+          "Top-up scholarships exist for students from specified world regions funded by other EU instruments, so regional priorities may matter to your ranking",
+          "Selected projects cannot charge application fees to students, so any fee demand is a red flag"
+        ],
+        "submission_workflow": "Pick a programme from the EACEA catalogue, apply through that programme's own website within its own deadline, and sign the consortium's Student Agreement on enrolment."
+      }
+    }
+  ]
+}

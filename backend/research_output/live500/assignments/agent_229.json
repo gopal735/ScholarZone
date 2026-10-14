@@ -1,0 +1,79 @@
+{
+ "agent": "agent_229",
+ "assignment_count": 1,
+ "scholarships": [
+  {
+   "id": 576,
+   "title": "World Changers Glasgow Scholarship",
+   "country": "United Kingdom",
+   "degree": "Master's",
+   "funding_label": "Tuition Fee Waiver",
+   "status": "open",
+   "official_source": "University of Glasgow",
+   "official_source_url": "https://www.gla.ac.uk/scholarships/worldchangersglasgowscholarship",
+   "application_link": "https://www.gla.ac.uk/scholarships/worldchangersglasgowscholarship",
+   "catalogue_url": "https://www.gla.ac.uk/scholarships",
+   "official_updates_url": "https://www.gla.ac.uk/scholarships/worldchangersglasgowscholarship",
+   "existing": {
+    "funding_amount": null,
+    "funding_currency": null,
+    "funding_period": null,
+    "tuition_coverage": null,
+    "living_cost_coverage": null,
+    "travel_coverage": null,
+    "fully_funded": 0,
+    "description": null,
+    "eligibility": [
+     "Enrolled on an eligible postgraduate programme for the September 2027 or January 2028 intake",
+     "National of one of the eligible countries: Brazil, Chile, Colombia, India, Indonesia, Israel, Jordan, Kenya, Lebanon, Malaysia, Mexico, Nigeria, Pakistan, Palestine, Singapore, Syria, Thailand, Vietnam or Yemen",
+     "International fee status"
+    ],
+    "eligibility_summary": "Applicants must be enrolled on an eligible University of Glasgow postgraduate programme for the September 2027 or January 2028 intake, hold nationality of one of 19 listed countries, and have international fee status.",
+    "benefits": [
+     "£5,000 tuition fee discount"
+    ],
+    "coverage": [
+     "£5,000 tuition fee discount"
+    ],
+    "requirements": [
+     "Meet the entry criteria for one of the listed eligible postgraduate programmes",
+     "Hold international fee status and an eligible nationality"
+    ],
+    "documents": [],
+    "english_requirement": null,
+    "application_method": [
+     "No separate application; the tuition fee discount is applied at registration and confirmed by email after the programme offer"
+    ],
+    "selection_notes": "Awarded automatically to all applicants who meet the entry criteria; the University publishes no separate selection process or academic threshold.",
+    "best_fit": null,
+    "notes": "This is the postgraduate World Changers award; the University also runs a separate undergraduate World Changers Global Excellence Scholarship, which is a distinct scheme.",
+    "duration": null,
+    "application_period": "September 2027 or January 2028 postgraduate intake",
+    "deadline_display": null,
+    "deadline_date": null,
+    "region": "Europe",
+    "program_type": "University country-specific tuition scholarship",
+    "applicant_utility": null,
+    "official_details": null
+   },
+   "missing_fields": [
+    "funding_amount",
+    "funding_currency",
+    "funding_period",
+    "tuition_coverage",
+    "living_cost_coverage",
+    "travel_coverage",
+    "description",
+    "documents",
+    "english_requirement",
+    "best_fit",
+    "duration",
+    "deadline_display",
+    "deadline_date",
+    "applicant_utility",
+    "official_details"
+   ]
+  }
+ ],
+ "result_file": "C:\\Users\\GopaL\\Desktop\\Projects folder\\ScholarZone\\backend\\research_output\\live500\\results\\agent_229.json"
+}

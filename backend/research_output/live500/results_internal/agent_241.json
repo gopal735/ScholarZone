@@ -1,0 +1,137 @@
+{
+  "agent": "agent_241",
+  "records": [
+    {
+      "id": 597,
+      "official": {
+        "official_source_urls": [
+          "https://www.pronabec.gob.pe/beca-generacion-bicentenario",
+          "https://cdn.www.gob.pe/uploads/document/file/10618627/8594676-rde-n-149-2026-minedu-vmgi-pronabec.pdf"
+        ],
+        "application_link": "https://www.pronabec.gob.pe/beca-generacion-bicentenario",
+        "catalogue_url": "https://www.pronabec.gob.pe/concursos-becas-creditos",
+        "official_updates_url": "https://www.pronabec.gob.pe/beca-generacion-bicentenario",
+        "deadline_central": "2026-11-13",
+        "deadline_central_display": "13 November 2026, 23:59",
+        "deadline_note": "Subsanación (correction of application defects) runs 03/11/2026 to 24/11/2026; results 15/12/2026; acceptance 16/12/2026 to 21/12/2026; final list from 22/12/2026.",
+        "application_cycle": "Convocatoria extraordinaria 2026 ('El Perú cuenta con tu talento'), 20 integral scholarships",
+        "status": "OPEN",
+        "status_note": "The official page publishes the application window 30/10/2026 to 13/11/2026 (23:59) and states studies financed by the scholarship must start between 1 July 2026 and 31 December 2027.",
+        "tuition_coverage_note": "The official page lists 'Matrícula' as the first funded benefit; the bases clause 8.1 states benefits subsidise matrícula, pensión de estudios, degree/title obtention, thesis research, international transport, lodging, food, local mobility, medical insurance and administrative costs.",
+        "funding_amount": null,
+        "funding_currency": null,
+        "funding_period": null,
+        "tuition_coverage": true,
+        "living_cost_coverage": true,
+        "travel_coverage": true,
+        "fully_funded": true,
+        "benefits": [
+          "Matrícula (tuition/enrolment)",
+          "Pensión de estudios (study payments / mandatory academic fees)",
+          "Obtención del grado y/o título respectivo (degree and title costs)",
+          "Trabajo de investigación para la obtención del grado (thesis research costs)",
+          "Transporte internacional (international transport, only at the start and end of the programme)",
+          "Alojamiento, alimentación y movilidad local (lodging, food and local mobility)",
+          "Seguro médico (health, life, accident and repatriation cover)",
+          "Costos administrativos per the 'Normas para la Ejecución de Subvenciones para estudios en el extranjero' in force during the scholarship"
+        ],
+        "eligibility": [
+          "Peruvian nationality",
+          "Professionals seeking a master's or doctorate abroad",
+          "Alto rendimiento académico (high academic performance)",
+          "Insuficientes recursos académicos/económicos (insufficient academic resources)",
+          "No age limit to apply (no hay límite de edad para postular)",
+          "Programme of study must start between 1 July 2026 and 31 December 2027"
+        ],
+        "requirements": [
+          "Apply within 30/10/2026 to 13/11/2026 (23:59)",
+          "Meet the general and specific requirements for master's or doctoral study in the contest bases (RDE n. 149-2026)",
+          "Study only at institutions on the eligible higher-education institutions list (RJ n. 2953-2026)",
+          "Benefits are granted from 1 January 2027; no benefits are recognised for study time already completed"
+        ],
+        "documents": [
+          "Documentation listed in the general and specific requirements for master's or doctoral study in the bases (RDE n. 149-2026)",
+          "Sworn statement of the average gross monthly income of each household member (income test for 'insuficientes recursos')",
+          "Documents supporting additional scoring points published in the bases"
+        ],
+        "selection_criteria": [
+          "General and specific requirements for master's or doctoral study",
+          "Ponderación criteria in the bases designed to target high academic performance with insufficient resources",
+          "Additional scoring documents listed in the bases"
+        ],
+        "coverage": [
+          "Matrícula (tuition/enrolment)",
+          "Pensión académica covering all obligatory fees required by the destination institution (e.g. mandatory services, student fees, student services)",
+          "Grado y/o título respectivo - double qualification funding is not included",
+          "Trabajo de investigación para the thesis, in amounts approved by the Office of Administration and Finance",
+          "Transporte internacional only at the start and end of the academic programme",
+          "Alojamiento, alimentación and movilidad local from 15 days before classes start until 15 days after studies end, conditioned on the scholar's presence in the destination country",
+          "Seguro médico with health, life, accident and repatriation cover",
+          "Costos administrativos per the execution norms"
+        ],
+        "application_method": [
+          "Apply online through PRONABEC ('Postula aquí')",
+          "Correct any defects during the subsanación phase 03/11/2026-24/11/2026",
+          "Accept the scholarship between 16/12/2026 and 21/12/2026 if selected"
+        ],
+        "application_route": "Online application through PRONABEC's official page ('Postula aquí'), following the requirements of bases RDE n. 149-2026.",
+        "study_mode": "Full-time postgraduate study abroad (presencial)",
+        "citizenship_residency": "Peruvian nationality required",
+        "international_eligibility": null,
+        "subject_or_agency_requirement": "Programme must appear on the eligible institutions list (RJ n. 2953-2026); prioritised and non-prioritised career/programme lists apply per EDO focus for master's and doctoral applicants",
+        "research_requirement": "Doctoral applicants frame research for the degree; the thesis research work is a funded concept",
+        "duration": "Master's or doctoral programme abroad starting between 1 July 2026 and 31 December 2027; benefits granted from 1 January 2027",
+        "description": "PRONABEC, Peru's National Scholarships and Educational Credit Programme, offers 20 integral scholarships for Peruvian professionals with high academic performance and insufficient resources to study a master's or doctorate abroad and turn their knowledge into development opportunities for Peru, with no age limit.",
+        "region": "Latin America",
+        "program_type": "Government scholarship (extraordinary call)",
+        "english_requirement": null
+      },
+      "verification": {
+        "source_citations": [
+          "https://www.pronabec.gob.pe/beca-generacion-bicentenario",
+          "https://cdn.www.gob.pe/uploads/document/file/10618627/8594676-rde-n-149-2026-minedu-vmgi-pronabec.pdf"
+        ],
+        "last_verified_date": "2026-10-10",
+        "verification_status": "confirmed",
+        "confidence": "high",
+        "not_confirmed": [
+          "funding_amount",
+          "funding_currency",
+          "funding_period",
+          "english_requirement"
+        ],
+        "notes": "The official PRONABEC page and the full contest bases (RDE n. 149-2026) were read. No per-scholar amount in soles or any other currency is published on either: benefits are coverage categories executed per the 'Normas para la Ejecución de Subvenciones', and the only figure in the bases is the whole-programme budget of S/ 4,650,946 for up to 20 new scholarships, which is not an individual award, so funding_amount stays null. Deadline, phases, coverage and exclusions (no installation costs, no language levelling courses, no double qualification) verified against the bases."
+      },
+      "applicant_utility": {
+        "summary": "With only 20 integral scholarships nationwide, this is a high-competition call where the application window is short (30 October to 13 November 2026) and everything hinges on the bases: eligible institution list, income test and the additional-scoring documents. Get your study programme started no earlier than the funded window - benefits run from 1 January 2027 and previous study time is never paid back. Because the scholarship pays categories rather than a fixed figure, keep the admission offer and fee schedule from a listed institution ready.",
+        "best_fit": "Peruvian degree-holding professionals who can prove both strong academic records and limited household income and want a funded master's or doctorate at a listed foreign university.",
+        "application_readiness_checklist": [
+          "Confirm your target programme is on the eligible institutions list (RJ n. 2953-2026) and check the prioritised/non-prioritised programme lists for your degree level",
+          "Collect household income documents early for the sworn statement of average gross monthly income per member",
+          "Prepare the admission documentation for a programme starting between 1 July 2026 and 31 December 2027",
+          "Collect the extra documents in the bases that carry additional scoring points before the window opens",
+          "Diary the subsanación window (03-24/11/2026) so a missing file can still be fixed"
+        ],
+        "common_rejection_risks": [
+          "Applying to a university or programme not on the eligible institutions list",
+          "Failing the income test for 'insuficientes recursos' - the household declaration must be exact",
+          "Applying for a programme that already started well before 1 January 2027",
+          "Missing the 23:59 cut-off on 13 November 2026 or ignoring the subsanación notices",
+          "Assuming installation costs, dependents' costs or language courses are funded - the bases explicitly exclude them"
+        ],
+        "estimated_uncovered_costs": "Installation and personal expenses, dependants' costs, language levelling courses, double qualification fees and any application/admission fees at the destination institution - the bases state none of these are financed.",
+        "document_audit": [
+          "The income sworn statement must cover every household member and match the amounts requested per month",
+          "Admission evidence must match the eligible university list exactly, not a similar-sounding campus",
+          "Any document in a language other than Spanish must be presented in the form the bases require"
+        ],
+        "alerts": [
+          "Results are published 15/12/2026 and acceptance closes 21/12/2026 - be reachable in mid-December",
+          "Benefits never cover study time already completed, so time your programme start",
+          "The call is extraordinary and limited to 20 scholarships - do not rely on a second round"
+        ],
+        "submission_workflow": "Apply online via 'Postula aquí' during the window, fix defects in the subsanación phase, then accept the scholarship in the December acceptance phase to appear on the final list from 22/12/2026."
+      }
+    }
+  ]
+}

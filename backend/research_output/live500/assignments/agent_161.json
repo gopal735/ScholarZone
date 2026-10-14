@@ -1,0 +1,86 @@
+{
+ "agent": "agent_161",
+ "assignment_count": 1,
+ "scholarships": [
+  {
+   "id": 429,
+   "title": "MHA Civilian Scholarship",
+   "country": "Singapore",
+   "degree": "Undergraduate",
+   "funding_label": "Fully Funded",
+   "status": "open",
+   "official_source": "Ministry of Home Affairs, Singapore",
+   "official_source_url": "https://www.mha.gov.sg/careers/mha-scholarships/mha-civilian-scholarships",
+   "application_link": "https://www.mha.gov.sg/careers/mha-scholarships/mha-civilian-scholarships",
+   "catalogue_url": null,
+   "official_updates_url": "https://www.mha.gov.sg/careers/mha-scholarships",
+   "existing": {
+    "funding_amount": null,
+    "funding_currency": null,
+    "funding_period": "per month",
+    "tuition_coverage": 1,
+    "living_cost_coverage": 1,
+    "travel_coverage": 1,
+    "fully_funded": 0,
+    "description": "The MHA Civilian Scholarship is offered by the Ministry of Home Affairs to Singapore citizens and permanent residents for a civilian appointment in the Home Team, with Generalist and Specialist tracks in Commercial Affairs, Intelligence, Internal Security and Psychology. It covers tuition fees and other approved charges, a monthly overseas or local maintenance allowance including accommodation, a pre-studies allowance, and return economy class airfare for selected tiers. The scholarship may be awarded at the Singapore Government Scholarship, Local Merit Scholarship or Home Team Local Study Award tier, and carries a bond of four years for local studies.",
+    "eligibility": [
+     "Singapore Citizen or Singapore Permanent Resident who is intending to take up Singapore Citizenship",
+     "Strong leadership qualities and potential",
+     "Strong interest in safeguarding the safety and security of Singapore",
+     "Good academic and Co-Curricular Activities (CCA) records",
+     "GCE A-Levels, International Baccalaureate, Polytechnic, NUS High School or other high school diploma/certificate",
+     "Current undergraduate students who are not in the final year of studies may apply for the mid-term scholarship"
+    ],
+    "eligibility_summary": "Singapore citizen or permanent resident intending to take up Singapore citizenship, with strong leadership qualities and potential, a strong interest in safeguarding Singapore's safety and security, good academic and co-curricular activities records, and a GCE A-Level, International Baccalaureate, Polytechnic, NUS High School or other high school diploma or certificate. Current undergraduates who are not in their final year may apply for the mid-term scholarship.",
+    "benefits": [
+     "Tuition fees and other approved charges",
+     "Monthly overseas or local maintenance allowance (including accommodation)",
+     "Pre-studies allowance e.g. settling in, warm clothing, computer",
+     "Return economy class airfare for selected scholarship tiers",
+     "Sponsorship of Master's and exchange programmes if requirements are met",
+     "Vacation Attachment Programme",
+     "Placement on the Home Team Leaders-in Development Programme where criteria are met"
+    ],
+    "coverage": [
+     "Tuition fees and other approved charges",
+     "Monthly overseas or local maintenance allowance (including accommodation)",
+     "Pre-studies allowance e.g. settling in, warm clothing, computer",
+     "Return economy class airfare (for selected scholarship tiers)",
+     "Sponsorship of Master's and exchange programmes (if requirements are met)"
+    ],
+    "requirements": [
+     "Indicate a preferred career track (Generalist or one of the Specialist tracks) at the point of interview",
+     "If converting from Civilian to Uniformed scheme or changing specialisation after award, strong justifications must be provided and MHA will consider the appeal case by case",
+     "Study at a local or overseas university in most disciplines except medicine, dentistry and architecture",
+     "Law degree holders will not be called to the Bar while serving in the Home Team"
+    ],
+    "documents": [],
+    "english_requirement": "speaking countries",
+    "application_method": [
+     "Follow the MHA Scholarships application process steps published at https://www.mha.gov.sg/careers/mha-scholarships/",
+     "Submit through the Public Service Commission scholarship portal at https://www.psc.gov.sg/scholarships/apply-for-scholarship/psc-scholarships/"
+    ],
+    "selection_notes": "There is no difference in promotion prospects between overseas and local scholars; promotions are based on potential and performance in service. Applicants must indicate their preferred specialisation track at interview.",
+    "best_fit": "Singapore citizen or permanent resident school leavers or mid-term undergraduates seeking a non-uniformed Home Team career in policy, research, communications, HR, finance, commercial affairs enforcement, intelligence, internal security or psychology.",
+    "notes": null,
+    "duration": "Full-time undergraduate degree; bond of 4 years for local studies, 5 years for studies in non-English speaking countries and 6 years for studies in English speaking countries",
+    "application_period": "Applications for the 2027 intake are open until 15 March 2027",
+    "deadline_display": "'Applications are open now till 15 March 2027!'",
+    "deadline_date": "2027-03-15",
+    "region": "Asia",
+    "program_type": "Civilian public service undergraduate scholarship, Generalist and Specialist tracks",
+    "applicant_utility": null,
+    "official_details": null
+   },
+   "missing_fields": [
+    "funding_amount",
+    "funding_currency",
+    "documents",
+    "notes",
+    "applicant_utility",
+    "official_details"
+   ]
+  }
+ ],
+ "result_file": "C:\\Users\\GopaL\\Desktop\\Projects folder\\ScholarZone\\backend\\research_output\\live500\\results\\agent_161.json"
+}

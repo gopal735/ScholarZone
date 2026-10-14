@@ -1,0 +1,438 @@
+{
+  "new_scholarship": {
+    "name": "Scholarships for talented students from all over the world",
+    "country": "Slovakia",
+    "region": "Europe",
+    "degree_levels": "Bachelor's",
+    "funding_type": "Partially Funded",
+    "program_type": "Government scholarship",
+    "official_source": "Ministry of Education, Research, Development and Youth of the Slovak Republic",
+    "official_source_url": "https://scholarships.portalvs.sk/",
+    "catalogue_url": null,
+    "official_updates_url": "https://scholarships.portalvs.sk/",
+    "duration": "3 academic years — ten monthly payments in each of the first three academic years of full-time bachelor's or combined bachelor's and master's study (academic years 2026/2027 to 2028/2029)",
+    "deadline": "The application deadline for the 2026/2027 round was extended to \"8 September 2026, 23:59 CEST\". The published original deadline in the official application-procedure guide was 31 July 2026, 16:00 CEST. Registration is now closed.",
+    "deadline_date": "2026-09-08",
+    "deadline_precision": "day_and_time",
+    "application_period": "The 2026/2027 call opened during 2026 and closed on 8 September 2026 at 23:59 CEST, extended from the original deadline of 31 July 2026 at 16:00 CEST. No opening or closing date for a 2027/2028 round was published at the time of verification.",
+    "application_method": "Separate competitive application submitted by the student exclusively online through the information system at https://scholarships.portalvs.sk/registration. The award is not automatic on admission, and the ministry states that it is not possible to request the scholarship via email. The applicant must separately apply for admission directly to the chosen higher education institution, because receiving the scholarship does not mean acceptance or enrolment at a higher education institution.",
+    "status": "closed",
+    "is_verified": true,
+    "last_verified_date": "2026-10-03",
+    "description": "The Ministry of Education, Research, Development and Youth of the Slovak Republic awards national scholarships to talented students from all over the world, including Slovaks living abroad, to study at selected public and state higher education institutions in Slovakia. For the 2026/2027 round the ministry allocated 170 bachelor's-level scholarships: 110 financed from the EU co-financed national project for institutions outside the Bratislava region and 60 financed from the state budget for institutions in the Bratislava region. The award is a living allowance of EUR 500 per month paid for ten months in each of the first three academic years of full-time bachelor's or combined bachelor's and master's study, up to EUR 15,000 in total. Selection is made solely on the applicant's percentile score on either the SAT or the SCIO tests, and the study programme must appear on the published SK RIS3 2021+ list.",
+    "best_fit": "Applicants holding citizenship of a country other than Slovakia, or Slovaks living abroad holding the certificate under Section 7 of Act No. 474/2005 Coll., who completed their secondary education outside Slovakia, have sat the SAT or the SCIO tests, and intend to enrol in a full-time SK RIS3 2021+ programme at a Slovak public or state higher education institution. It suits applicants who can fund tuition fees, health insurance, travel and living costs beyond a EUR 500 monthly allowance, and who are willing to study in Slovak or in a foreign-language programme at an institution that may lie outside the Bratislava region. It does not suit applicants who need a scholarship that covers tuition, who want to study a field outside the SK RIS3 list, who have previously studied at a Slovak secondary school or higher education institution, or who cannot sit a standardised test.",
+    "funding_amount": 500,
+    "funding_currency": "EUR",
+    "funding_period": "per month",
+    "eligibility_summary": "Eligibility is decided by nationality, residence, prior study history and a standardised-test threshold, not by financial need or by a broader merit review. The applicant must hold citizenship of a country other than Slovakia, evidenced by a notarised copy of a passport or, for citizens of the European Union, the European Economic Area and Switzerland, a national identity card; dual nationality that includes Slovak is allowed, and Slovaks living abroad may qualify by submitting the certificate issued under Section 7 of Act No. 474/2005 Coll. on Slovaks Living Abroad. The applicant must have had no permanent residence in Slovakia between 1 January 2021 and the application deadline, must not have been a pupil or graduate of a secondary school located in Slovakia, and, at the bachelor's level, must not previously have studied at a higher education institution in Slovakia other than through academic mobility. The applicant must apply to a public or state higher education institution in Slovakia for a supported full-time, in-person study programme on the SK RIS3 2021+ list, and must meet one of two test thresholds: an SAT total score of at least 1100 points, or an average percentile of at least 63 across the two SCIO tests in Mathematics (MAT) and General Academic Prerequisites (VŠP). There is no upper age limit; applicants under 18 need a hand-signed consent from their legal guardian, and the ministry states that exceptions to these conditions cannot be granted.",
+    "eligibility": [
+      "Citizenship of a country other than Slovakia, evidenced by a notarised copy of the passport, or by a notarised copy of a national identity card for citizens of the European Union, the European Economic Area and Switzerland",
+      "Slovaks living abroad with Slovak citizenship who submit a certified copy of the certificate issued under Section 7 of Act No. 474/2005 Coll. on Slovaks Living Abroad",
+      "Dual nationality that includes Slovak alongside another nationality, or two foreign nationalities, is permitted",
+      "No permanent residence in Slovakia at any time between 1 January 2021 and the application deadline, demonstrated by a solemn declaration",
+      "Never a pupil or graduate of a secondary school located in Slovakia, other than Slovaks living abroad submitting the Section 7 certificate",
+      "At the bachelor's level, no previous study as a student of a higher education institution located in Slovakia, including study at a detached workplace of such an institution abroad; academic mobility is the only exception",
+      "Completed secondary education outside Slovakia, for applicants to the bachelor's or combined bachelor's and master's level",
+      "Application to a public or state higher education institution in Slovakia for a supported study programme; at the time of the scholarship application it is sufficient to have applied to the institution",
+      "Full-time, in-person form of study only; part-time or external study is not supported",
+      "Study programme must be one of the selected programmes falling under the Smart Specialisation Strategy of the Slovak Republic (SK RIS3 2021+)",
+      "Minimum standardised-test result: SAT total score of at least 1100 points, or an average percentile of at least 63 across the SCIO Mathematics (MAT) and General Academic Prerequisites (VŠP) tests",
+      "No upper age limit; applicants under the age of 18 must upload a hand-signed consent of the legal guardian for processing of the minor applicant's personal data"
+    ],
+    "coverage": [
+      "Living allowance of EUR 500 per month",
+      "Ten monthly payments in each of the first three academic years of full-time bachelor's or combined bachelor's and master's study, paid from September to June",
+      "Up to EUR 5,000 per academic year and up to EUR 15,000 in total over the three supported years",
+      "Not covered: tuition fees of the host higher education institution",
+      "Not covered: accommodation, dormitory rent and general living costs beyond the monthly allowance",
+      "Not covered: travel to and from Slovakia and travel expenses",
+      "Not covered: public health insurance, although a scholarship holder may be publicly insured under Act No. 580/2004 Coll. if not insured in another EU, EEA or Swiss state",
+      "Not covered: residence permit, visa and relocation costs"
+    ],
+    "benefits": [
+      "Monthly living allowance of EUR 500 paid in full for any month in which the holder is enrolled as a full-time student, paid retroactively in arrears",
+      "No July or August payment; the allowance covers the ten months from September to June in each academic year",
+      "Award may be combined with other scholarships and mobility funding, including state-budget scholarships, institutional scholarships, social, motivational or pregnancy scholarships, Erasmus and academic mobility schemes, provided there is no duplicate support for the same purpose",
+      "For a holder who is not insured in another EU, EEA or Swiss state, publicly health-insured status is available under Act No. 580/2004 Coll. if the programme is approved by the Government of the Slovak Republic",
+      "Eligibility for Erasmus+ and other mobility programmes as an enrolled student of a Slovak higher education institution",
+      "Possible waiver of the tuition fee for a programme taught in a foreign language, granted solely at the discretion of the higher education institution under Section 96(15) of Act No. 300/2025 Coll. on Higher Education"
+    ],
+    "requirements": [
+      "Register and submit the application completely online through the official information system before the deadline; an application left in progress is not assessed",
+      "Upload the SAT or SCIO test certificate before the deadline, since the result cannot be submitted later and no other test or the secondary school leaving examination may be substituted",
+      "Pass the minimum test threshold of an SAT total score of 1100 or an average SCIO percentile of 63 across the Mathematics and General Academic Prerequisites tests",
+      "Upload a notarised copy of the identity document or passport, since a plain scan or photograph of the original document is not sufficient",
+      "Sign the solemn declarations by hand, using the templates downloaded from the system",
+      "Upload a structured CV in English and a motivation letter in English, using the templates provided, explaining the motivation for studying in Slovakia and demonstrating talent characteristics",
+      "Apply separately for admission to a public or state higher education institution, and later be officially enrolled in the first year of a supported full-time SK RIS3 2021+ programme"
+    ],
+    "required_documents": [
+      "Notarised copy of a valid passport, or a notarised copy of a national identity card for citizens of the European Union, the European Economic Area and Switzerland",
+      "Hand-signed solemn declaration of permanent residence, confirming no permanent residence in Slovakia between 1 January 2021 and the application deadline",
+      "Certificate issued under Section 7 of Act No. 474/2005 Coll. on Slovaks Living Abroad, for Slovak applicants living abroad",
+      "Hand-signed consent of the legal guardian for the processing of the minor applicant's personal data, for applicants under the age of 18",
+      "Certificate showing the SAT result, or the two official SCIO certificates for the Mathematics (MAT) and General Academic Prerequisites (VŠP) tests",
+      "Acceptance letter from the higher education institution, if already available at the time of application",
+      "Structured curriculum vitae in English, on the template provided in the system",
+      "Motivation letter in English, on the template provided in the system"
+    ],
+    "english_requirement": null,
+    "selection_notes": "Selection is decided exclusively by the standardised-test result, which the ministry states is the only criterion for awarding the scholarship. The SAT and SCIO results are converted to a common percentile scale of 0 to 100 so that applicants who sat different tests are ranked together, and the ministry publishes the conversion table in Annex 12 of the methodological document. Within each funding source, applicants are first ranked by percentile score inside their regional subgroup: 10 per cent of the allocated scholarships of that source, that is 50 per cent of the total across the five subgroups, is awarded to the highest-ranked applicant of each subgroup, and the remaining 50 per cent is then awarded by percentile score alone with no regional redressement. Regional redistribution is applied only where the number of eligible applications exceeds the number of scholarships allocated for the level and funding source, and each funding source is ranked separately. The scholarship is paid only after enrolment, and the ministry or the higher education institution verifies eligibility and the authenticity of documents; falsified or altered documents result in withdrawal from the scholarship and repayment of amounts already awarded.",
+    "image_url": "https://www.minedu.sk/assets/default/img/logo-minedu-en.svg",
+    "image_source_url": "https://www.minedu.sk/7507-en/study-in-slovakia/",
+    "image_source_type": "official_logo",
+    "image_alt_text": "Ministry of Education, Research, Development and Youth of the Slovak Republic",
+    "image_verified_at": "2026-10-03",
+    "notes": "SCOPE AND IDENTITY. The official award name is \"Scholarships for talented students from all over the world\", which is the heading of the call page and the wording used by the ministry; the ministry's own Slovak-language scheme title translates as scholarships for foreign talented students from all corners of the world including Slovaks living abroad. No acronym or short form is in general official use, so short_title-level naming is given in notes rather than invented: the ministry's own national project title is \"Provision of scholarships for talented domestic and international students for the purpose of their studies at Higher Education Institutions in Slovakia\". The award is a national government scheme, not a university award, and it is not listed in the do-not-duplicate protocol. THE SLOT 03 OVERLAP. A separate record, b01, covers the MAECI scholarships for foreign students of Italian citizenship abroad (research/bachelor/b01-maeci-scholarships-foreign-students-italian-citizens-abroad.json). It is a different award, a different country and a different awarding body; this file leaves that record untouched and holds no reference to it beyond this note. DEGREE LEVEL. The scheme funds three levels of study. The recorded level is bachelor's, because the call page states three years of support for full-time bachelor's studies or for the first three years of a full-time joint bachelor's and master's degree programme, and two years of support for full-time master's studies. The master's coverage is recorded in programme_detail_official.degree_levels and in the description, not presented as this record's level; doctoral study is expressly excluded. STATUS. Registration for the 2026/2027 academic year is closed and the evaluation process is under way, so status is closed and no next-cycle dates are asserted. AMOUNTS. The only published amounts are EUR 500 per month, EUR 5,000 per academic year and a EUR 15,000 upper total; no other figure was computed. FAUNDING INVARIANTS. tuition_coverage is false because the scholarship is a living allowance and the scholarship page states that any tuition-fee waiver for foreign-language programmes is granted solely at the discretion of the higher education institution under Section 96(15) of Act No. 300/2025 Coll.; fully_funded is therefore false and living_cost_coverage is true. UNVERIFIED OR NOT READ. The official SK RIS3 2021+ programme list PDF and the country-category PDF linked from the call page returned 403 to direct fetching from this machine, so the lists are taken instead from the methodological document itself, which reproduces the five regional subgroups in Annex 13 and names the eligible higher education institutions. Language of instruction per programme, the individual admission requirements and deadlines of each higher education institution, and the fee amounts for foreign-language programmes were not read from an official source and are not stated here."
+  },
+  "programme_detail_official": {
+    "official_source_urls": [
+      "https://scholarships.portalvs.sk/",
+      "https://www.minedu.sk/7507-en/study-in-slovakia/",
+      "https://scholarships.portalvs.sk/public_files/f8ef510905f6fe45c811c764957288f5.pdf",
+      "https://www.minedu.sk/stipendia-pre-zahranicnych-talentovanych-studentov-z-celeho-sveta-np-v-ramci-programu-slovensko-rocnik-2025/",
+      "https://scholarships.portalvs.sk/public_files/6505569cabd9f13d37d7254a8d53c3e8.pdf"
+    ],
+    "application_link": "https://scholarships.portalvs.sk/registration",
+    "official_updates_url": "https://scholarships.portalvs.sk/",
+    "catalogue_url": null,
+    "application_cycle": "Academic year 2026/2027 round, closed on 8 September 2026. The scheme began under the predecessor Recovery and Resilience Plan scholarship call on 24 June 2025 and continued as the national project under the Slovakia Programme; the 2026/2027 methodological document was issued on 11 June 2026 in version 1.0.",
+    "deadline_central": "2026-09-08T23:59",
+    "deadline_central_display": "8 September 2026, 23:59 CEST (extended). The official application-procedure guide states the original deadline of 31 July 2026, 16:00 CEST.",
+    "deadline_central_timezone": "Europe/Bratislava",
+    "deadline_institutional": null,
+    "deadline_note": "The call page states that the application deadline was extended until 8 September 2026, 23:59 CEST, and the official application-procedure guide states the deadline of 31 July 2026, 16:00 CEST with the note that applications submitted after it cannot be accepted. CEST is the daylight-saving time in force on that date in Slovakia, recorded as Europe/Bratislava. deadline_institutional is null because the scholarship scheme itself sets no institutional deadline; each higher education institution sets its own admission deadlines in a separate admission procedure, and an applicant must apply to the institution directly and separately from this scholarship, so no institutional date is claimed. Evaluation takes place only after the applicants have been officially enrolled.",
+    "status": "CLOSED",
+    "status_note": "Registration for the academic year 2026/2027 is officially closed and the evaluation process is under way; the ministry states that selected recipients will be informed by the email address given at registration, through announcements published on the scholarship website, and through the status of the application in the applicant's personal account. Applicants must have enrolled by around September 2026 for the payments to begin. No opening date for a 2027/2028 round was published at the time of verification, so no next-cycle date is asserted; the predecessor call opened on 24 June 2025, which is the only published precedent.",
+    "funding_amount": 500,
+    "funding_currency": "EUR",
+    "funding_period": "per month",
+    "funding_duration": "Ten monthly payments in each academic year, from September to June. At the first level of study the scholarship is limited to the first three years of bachelor's study, or of a programme combining the first and second levels, that is academic years 2026/2027 to 2028/2029; for a standard four-year bachelor's programme only the first three years are funded. At the second level the scholarship is limited to two years of master's study, that is academic years 2026/2027 to 2027/2028.",
+    "tuition_coverage": false,
+    "tuition_coverage_note": "The scholarship is a living allowance and does not pay tuition fees. The call page states that scholarship recipients enrolled on a full-time programme taught in a foreign language at a public higher education institution may have their tuition fees waived in accordance with Section 96(15) of Act No. 300/2025 Coll. on Higher Education, but the waiver is granted exclusively at the decision of the higher education institution, so it cannot be counted as coverage of this award. Because tuition is not covered by the award itself, fully_funded is false and tuition_coverage is false.",
+    "living_cost_coverage": true,
+    "travel_coverage": false,
+    "fully_funded": false,
+    "funding_label": "EUR 500 per month, ten months per academic year, EUR 5,000 per academic year and up to EUR 15,000 in total. A living allowance only: no tuition is paid by the award, any fee waiver for a foreign-language programme is at the discretion of the higher education institution, and travel, insurance, visa, accommodation and living costs above the allowance remain with the student. No bond or service obligation is published, but the award is tied to a specific full-time study programme at a specific higher education institution and cannot be transferred between institutions.",
+    "benefits": [
+      "Monthly allowance of EUR 500 paid by the higher education institution, normally in arrears, in the full monthly amount for any month in which the holder is enrolled as a full-time student, even for a single day of the month",
+      "Payments run from September to June, with no payment for July or August, for ten months in each academic year",
+      "Retroactive payment of all eligible months of the first academic year in the first instalment where eligibility is verified during the year",
+      "Possibility of public health insurance under Act No. 580/2004 Coll. for a holder who is not insured in another European Union member state, a contracting state of the European Economic Area Agreement or the Swiss Confederation and who holds a scholarship under a programme approved by the Government of the Slovak Republic",
+      "Concurrent receipt of other scholarships, and of mobility funding such as Erasmus, BIP, academic mobility programmes, government scholarships for foreign students and scholarships financed from the state budget or the higher education institution's own resources, provided there is no duplicate support for the same purpose",
+      "Possible waiver of the tuition fee for a foreign-language programme, granted solely at the discretion of the higher education institution under Section 96(15) of Act No. 300/2025 Coll.",
+      "Free travel on trains in Slovakia for students enrolled in bachelor's and master's degree programmes who obtain an International Student Identification Card from a Slovak higher education institution and register with the Slovak Railway Company"
+    ],
+    "eligibility": [
+      "Citizenship of a country other than Slovakia, evidenced by a notarised copy of the passport, or by a notarised copy of the national identity card for citizens of the European Union, the European Economic Area and Switzerland; a plain scan or photograph of the original document is not sufficient",
+      "Slovaks living abroad with Slovak citizenship, who submit a certified copy of the certificate issued under Section 7 of Act No. 474/2005 Coll. on Slovaks Living Abroad",
+      "Dual nationality, comprising Slovak and foreign nationality or two foreign nationalities, is permitted",
+      "No permanent residence in Slovakia between 1 January 2021 and the date of submission of the scholarship application, demonstrated by a solemn declaration",
+      "Not a pupil and not a graduate of a secondary school located in Slovakia, with the exception of Slovaks living abroad submitting the Section 7 certificate",
+      "At the first level of study, not previously a student of a higher education institution located in Slovakia, including a detached workplace of such an institution situated abroad; academic mobility is the only exception. This condition does not apply at the second level.",
+      "Completed secondary education outside Slovakia, for applicants to the first level or to a combined programme",
+      "Application to a public or state higher education institution in the Slovak Republic for a supported study programme; at the time of the scholarship application it is sufficient to have applied to the institution",
+      "Full-time, in-person form of study; the scholarship is not paid for any period in which the student is enrolled in part-time or external study",
+      "Study programme included in the list of selected programmes under the Smart Specialisation Strategy of the Slovak Republic SK RIS3 2021+",
+      "SAT total score of at least 1100 points, or an average percentile of at least 63 across the SCIO Mathematics (MAT) and General Academic Prerequisites (VŠP) tests",
+      "No upper age limit; applicants under the age of 18 must submit a hand-signed consent of the legal guardian",
+      "Not eligible: doctoral study, and private higher education institutions, which the methodology excludes from the support"
+    ],
+    "citizenship_residency": "The applicant must be a national of a country other than Slovakia. Dual nationality that includes Slovak is allowed, and Slovaks living abroad with Slovak citizenship qualify by submitting the certificate issued under Section 7 of Act No. 474/2005 Coll. on Slovaks Living Abroad. The applicant must have had no permanent residence in Slovakia between 1 January 2021 and the application deadline. Studies completed outside Slovakia are not a bar to applying. At the bachelor's level the applicant must additionally not have studied at a secondary school or a higher education institution in Slovakia, with academic mobility the only exception.",
+    "international_eligibility": "The scheme is open worldwide to nationals of any United Nations member state other than Slovakia, which the ministry describes as all international students worldwide including Slovaks living abroad. Registration with the United Nations is the criterion the methodology uses for the country lists: Annex 13 assigns every UN member state except Slovakia to one of five regional subgroups used only to structure the ranking. Applicants select their country of citizenship in the information system, which assigns them to the subgroup automatically, and territories that are not listed in any subgroup, such as unrecognised states, are assigned individually by the technical support desk on request.",
+    "degree_levels": [
+      "Bachelor's",
+      "Combined bachelor's and master's",
+      "Master's"
+    ],
+    "study_mode": "Full-time, in-person study only. The methodology states that the scholarship is tied to full-time study at a specific higher education institution, and that the entitlement ceases if the student changes from full-time to part-time or external study; no payment is made for a period of part-time enrolment.",
+    "research_requirement": null,
+    "subject_or_agency_requirement": "The study programme must be one of the selected programmes falling under the Smart Specialisation Strategy of the Slovak Republic, SK RIS3 2021+ and its five identified domains: Innovative industry for the 21st century, Mobility for the 21st century, Intelligent transformation of Slovakia, Healthy society, and Food competitiveness and food self-sufficiency. The programme may be taught in Slovak or in a foreign language. Doctoral study is excluded, and private higher education institutions are excluded.",
+    "application_method": "Separate competitive application by the student, submitted exclusively electronically online through the information system at https://scholarships.portalvs.sk/registration. It is not possible to request the scholarship by email. The award is not automatic on admission: a separate application for study must be submitted directly to the higher education institution of the applicant's choice, and the scholarship website may not be used for study applications.",
+    "application_route": "Register a user account at https://scholarships.portalvs.sk/registration, choose the level of study and the higher education institution, faculty and study programme, enter the standardised test result, upload all attachments, hand-sign and upload the solemn declarations, and submit the application before the deadline. Registration for the 2026/2027 round has closed.",
+    "requirements": [
+      "Hold citizenship of a country other than Slovakia, evidenced by a notarised copy of the passport or, for EU, EEA and Swiss citizens, a notarised copy of the national identity card",
+      "Have held no permanent residence in Slovakia between 1 January 2021 and the application deadline",
+      "Not have been a pupil or graduate of a secondary school located in Slovakia, unless a Slovak living abroad submitting the Section 7 certificate",
+      "Not previously have studied at a higher education institution located in Slovakia, for first-level applicants, excluding academic mobility",
+      "Have completed secondary education outside Slovakia, for first-level applicants",
+      "Apply to a public or state higher education institution in Slovakia for a supported full-time, in-person programme, and be officially enrolled in the first year of that programme for the scholarship to be paid",
+      "Choose a study programme from the SK RIS3 2021+ list",
+      "Sit and pass the SAT with a total score of at least 1100 points, or the two SCIO tests in Mathematics and General Academic Prerequisites with an average percentile of at least 63, and upload the certificate before the deadline",
+      "Upload a structured CV and a motivation letter in English, both completed by hand or as the system templates require",
+      "Submit the application in full before the deadline, since an application left in the status in progress is not assessed even after the deadline",
+      "Minors under the age of 18 must submit a hand-signed consent of the legal guardian for the processing of personal data"
+    ],
+    "documents": [
+      "Notarised copy of a valid passport, or a notarised copy of a national identity card for citizens of the European Union, the European Economic Area and Switzerland",
+      "Hand-signed solemn declaration of permanent residence, downloaded from the system and signed by hand",
+      "Certificate issued under Section 7 of Act No. 474/2005 Coll. on Slovaks Living Abroad, for Slovak applicants living abroad",
+      "Hand-signed consent of the legal guardian for the processing of the minor applicant's personal data, for applicants under 18",
+      "Certificate with the SAT test result, or the official certificates of the two SCIO tests, Mathematics (MAT) and General Academic Prerequisites (VŠP)",
+      "Acceptance letter from the higher education institution, if available",
+      "Structured curriculum vitae, on the template available in the system, completed in English",
+      "Motivation letter, on the template available in the system, completed in English, explaining the motivation for studying in Slovakia and demonstrating talent characteristics",
+      "Original documents uploaded in the application, such as diplomas, which successful holders must submit to the higher education institution at which they enrol"
+    ],
+    "english_requirement": null,
+    "english_requirement_note": "No English-language test, band or score is required by the scholarship scheme, and no figure of that kind is published on the pages read. The scheme does require two documents in English: the structured curriculum vitae and the motivation letter, both prepared on templates downloadable from the application system. Language requirements for admission to the study programme itself are set by the higher education institution and were not read from an official source, so no language requirement for the programme is stated here.",
+    "selection_criteria": [
+      "The standardised test result is the only criterion for the selection of successful applicants",
+      "SAT total score of at least 1100 points, equivalent to percentile 63, as the minimum threshold",
+      "Average percentile of at least 63 across the SCIO Mathematics (MAT) and General Academic Prerequisites (VŠP) tests, as the alternative minimum threshold",
+      "SAT and SCIO results converted to a common percentile scale of 0 to 100, with the conversion table published in Annex 12 of the methodological document",
+      "Ranking by percentile score within each regional subgroup, under the regional redistribution rule, then of the remaining half by percentile score without regard to region",
+      "Verification of eligibility conditions and of the authenticity of documents by the ministry or by the higher education institution",
+      "Official enrolment and commencement of the study programme in the autumn of 2026 as a condition of the scholarship being granted and paid",
+      "No interview, portfolio, recommendation letter or curriculum vitae score enters the selection, although the CV and motivation letter are described as essential documents for the evaluation of the application"
+    ],
+    "selection_weighting": "There is no academic or non-academic weighting. The only ranking input is the percentile score, and the published redistribution rule operates on the allocation rather than on merit: within each funding source, ten per cent of the allocated scholarships is awarded to the highest-ranked applicant of each of the five regional subgroups, that is fifty per cent of the scholarships in total, and the remaining fifty per cent is awarded by percentile score alone with no regional redressement. Regional redistribution is applied only when the number of eligible applications exceeds the number of scholarships allocated for that level and funding source; each funding source, the state budget and the national project, is ranked separately. Unused scholarships of a subgroup, where a subgroup has fewer eligible applicants than its primary allocation, move to the secondary selection.",
+    "duration": "Three academic years at the first level of study, academic years 2026/2027 to 2028/2029, covering the first three years of a bachelor's or a combined bachelor's and master's programme. Only three years are funded for a standard four-year bachelor's programme. Two academic years at the second level, academic years 2026/2027 to 2027/2028. Ten monthly payments in each academic year, from September to June.",
+    "award_holder_conditions": [
+      "The entitlement ceases on termination of study under Section 87(1) of the Higher Education Act, unless the student starts another selected study programme in full-time form at the same higher education institution, starting no later than the day following the end of the previous studies so that student status is not lost for even one day, and without repeating a year",
+      "A change of the selected study programme within the same higher education institution is permitted only where the studies remain continuous and the applicant does not begin the programme afresh, and no year may be repeated",
+      "The scholarship cannot be transferred between studies at different higher education institutions, and a change of higher education institution is not possible after the scholarship has been awarded",
+      "The entitlement ceases if the student changes the form of study from full-time to part-time or external, and no payment is made for the period of part-time study",
+      "The entitlement ceases on interruption of study under Section 85 of the Higher Education Act for the period of the interruption, and is automatically restored on re-enrolment under Section 90 if the interruption did not last individually or in total more than 180 days",
+      "The scholarship is not paid for July or August, and is not paid for any month in which the conditions for payment are not met",
+      "The use of the funds is not the subject of further examination or evidence by the scholarship holder",
+      "Successful holders must submit the original documents uploaded in the application, such as diplomas, to the higher education institution at which they enrol; if documents are found to be false or altered in an unauthorised manner, the holder is withdrawn from the scholarship and is obliged to repay the amounts already awarded",
+      "All applicants and successful recipients are required to accept the inspections carried out in connection with the award and payment of the scholarship"
+    ],
+    "supplements_or_initiatives": [
+      "The scheme forms part of the national project \"Provision of scholarships for talented domestic and international students for the purpose of their studies at Higher Education Institutions in Slovakia\", co-financed by the European Union under the Slovakia Programme, which also funds the domestic talent scholarships recorded in the same methodological document as groups A and C and which are outside this record",
+      "The predecessor call under the Recovery and Resilience Plan supported students at the bachelor's level who then continue without interruption to the second level, and those students remain eligible at the master's level",
+      "National Scholarship Programme of the Slovak Republic, supporting study, research, teaching and artistic mobility of international students, doctoral students, university teachers, researchers and artists at higher education institutions and research organisations, at scholarships.sk",
+      "Governmental scholarships of the Slovak Republic for students from partner countries, at vladnestipendia.sk",
+      "Erasmus+ and mobility programmes administered by the Slovak Academic Association for International Cooperation (SAAIC) and the Slovak Academic Information Agency (SAIA), for which holders remain eligible and from which concurrent funding is permitted",
+      "Public health insurance under Act No. 580/2004 Coll. for holders of a scholarship under a programme approved by the Government of the Slovak Republic",
+      "Free travel on Slovak trains for students of bachelor's and master's degree programmes who obtain an International Student Identification Card from a Slovak higher education institution and register with the Slovak Railway Company",
+      "Guidance and support from the Centres of Services for Foreigners of the Migration Office of the Ministry of the Interior, in Bratislava, Žilina and Košice, and from the International Organization for Migration in Slovakia"
+    ],
+    "official_contacts": {
+      "general": "Ministry of Education, Research, Development and Youth of the Slovak Republic, Section of Higher Education, Internationalisation and Quality of Higher Education",
+      "email": "scholarships.esif@minedu.sk",
+      "helpdesk": "scholarships@portalvs.sk",
+      "domestic_applicant_email": "stipendia.esif@minedu.sk",
+      "residence_support": "Centres of Services for Foreigners, Migration Office of the Ministry of the Interior of the Slovak Republic, CSC Bratislava, Račianska 62, 831 07 Bratislava, telephone +421 961 570 333, csc@minv.sk",
+      "migration_support": "International Organization for Migration in Slovakia, telephone +421 2 5263 0023, mic@iom.int"
+    },
+    "description": "A national scholarship scheme of the Ministry of Education, Research, Development and Youth of the Slovak Republic, funded from a national project co-financed by the European Union under the Slovakia Programme together with the state budget, and awarded to talented students from all over the world including Slovaks living abroad who study at selected public and state higher education institutions in Slovakia. In the 2026/2027 round the ministry allocated 170 scholarships at the first level of study, 110 financed from the national project for institutions outside the Bratislava region and 60 financed from the state budget for institutions in the Bratislava region, out of 1,431 talent scholarships in total and 1,040 at the first level. The scholarship is a living allowance of EUR 500 per month paid for the ten months from September to June in each of the first three academic years of full-time bachelor's or combined bachelor's and master's study, up to EUR 15,000 in total; doctoral study is excluded. Selection is made exclusively on the percentile score of the SAT, which requires a total of at least 1100 points, or of the two SCIO tests in Mathematics and General Academic Prerequisites, which require an average percentile of at least 63, and the supported programme must appear on the SK RIS3 2021+ list. Nineteen public and state higher education institutions are eligible, four of them in the Bratislava region and fifteen in other regions. Registration for the 2026/2027 round closed on 8 September 2026 and evaluation is under way.",
+    "program_type": "Government scholarship",
+    "region": "Europe",
+    "coverage": "A monthly living allowance of EUR 500 for ten months in each of the first three academic years of full-time bachelor's or combined bachelor's and master's study, up to EUR 5,000 per academic year and EUR 15,000 in total. Tuition fees are not paid by the award and any waiver of the fee for a foreign-language programme is at the sole discretion of the higher education institution; travel, health insurance, residence permit and visa costs, accommodation and living costs above the allowance all remain with the student. No installation allowance, travel allowance, research allowance, book or equipment allowance, family allowance or accommodation support is published.",
+    "last_verified_date": "2026-10-03"
+  },
+  "programme_detail_applicant_utility": {
+    "application_readiness_checklist": [
+      "Confirm the round is open before relying on any date: registration for 2026/2027 is closed, so every date below applies to the 2027/2028 round only once the ministry announces it.",
+      "Book the SAT or the two SCIO tests early and make sure the certificate exists in hand before the deadline, because the certificate must be uploaded by the deadline and the result cannot be added afterwards.",
+      "Check that your SAT total is at least 1100 or your average SCIO percentile across Mathematics and General Academic Prerequisites is at least 63; below either threshold the application is not considered.",
+      "Confirm your SAT was taken on or after 1 January 2021 and before the application deadline; older scores are not accepted.",
+      "Get your passport or national identity card notarised before you start the online form; a plain scan or photograph of the original document is not accepted.",
+      "Write the curriculum vitae and the motivation letter in English in advance, and use the templates downloadable from the system, since both are described as essential documents.",
+      "Prepare the solemn declaration of permanent residence on the system template and sign it by hand, since only hand-signed declarations downloaded from the system are accepted.",
+      "If you are under 18 at the time of application, have your legal guardian complete and hand-sign the consent for the processing of your personal data, without which the application cannot be processed.",
+      "If you are a Slovak citizen living abroad, obtain the certificate under Section 7 of Act No. 474/2005 Coll. and have it notarised before applying.",
+      "Confirm you have had no permanent residence in Slovakia at any point between 1 January 2021 and the deadline, because there is no discretion for this condition.",
+      "If you studied at a Slovak secondary school or higher education institution, stop here: the award is closed to you except for academic mobility and for Slovaks living abroad with the Section 7 certificate.",
+      "Start a separate application for admission to the higher education institution in parallel, and start it early, because enrolling by around September is required for the scholarship to be paid at all.",
+      "Choose the institution and study programme from the published SK RIS3 2021+ list and from the nineteen eligible higher education institutions, and contact that institution's admissions office directly to confirm the language of instruction and its own admission requirements and deadlines.",
+      "Budget for everything the allowance does not cover, above all tuition fees if you are admitted to a foreign-language programme and the institution does not waive them, plus living costs, accommodation, health insurance, visa and residence permit costs and travel.",
+      "Submit the application fully before the deadline; an application left in the status in progress, even after the deadline, is never assessed."
+    ],
+    "common_rejection_risks": [
+      "Leaving the application in the status in progress, which the ministry states is not accepted and is not assessed even after the deadline.",
+      "Submitting the test certificate after the deadline, or submitting a different test, since the scheme accepts only the SAT and the two SCIO tests and refuses AP, EST, CLT, ACT, GED, PSAT, NMSQT, PSAT 10, PSAT 8/9 and the secondary school leaving examination as substitutes.",
+      "Sitting only one of the two SCIO tests. The scheme requires both Mathematics (MAT) and General Academic Prerequisites (VŠP), and the average of the two percentiles must reach 63.",
+      "An SAT below 1100 or an average SCIO percentile below 63, which the ministry states excludes the applicant from consideration.",
+      "An SAT taken before 1 January 2021, which is outside the accepted period.",
+      "Uploading a plain scan or photograph of the passport instead of a notarised copy, which the ministry states is not sufficient.",
+      "A solemn declaration that is not hand-signed, or not downloaded from the system, since only hand-signed declarations downloaded from the system are accepted.",
+      "Choosing a study programme that is not on the SK RIS3 2021+ list, because the scholarship is granted only if the applicant enrols on a listed programme.",
+      "Applying to a private higher education institution, which the methodology excludes from the support.",
+      "Holding permanent residence in Slovakia at any point between 1 January 2021 and the deadline.",
+      "Having studied at a Slovak secondary school or, at the bachelor's level, at a Slovak higher education institution, with academic mobility the only exception.",
+      "Enrolling part-time or external, which ends the entitlement and stops payment for that period.",
+      "Failing to enrol by the autumn of the intake year, since the scholarship is paid only to an officially enrolled student and the evaluation takes place after enrolment.",
+      "Transferring to another higher education institution after the award, which the ministry states is not possible.",
+      "Repeating a year or restarting the selected programme, which the methodology states cannot be paid.",
+      "Any falsified or altered document, which results in withdrawal from the scholarship and an obligation to repay the amounts already awarded.",
+      "Assuming the scholarship guarantees admission, when the ministry states that receiving it does not mean acceptance or enrolment at a higher education institution."
+    ],
+    "estimated_uncovered_costs": [
+      "Tuition fees. The award pays a living allowance only. Where the applicant enrols on a programme taught in a foreign language, a waiver may be granted at the sole discretion of the higher education institution under Section 96(15) of Act No. 300/2025 Coll., so plan as if tuition is payable and confirm the fee and the waiver decision in writing with the chosen institution before committing.",
+      "Living costs above EUR 500 per month. The ministry describes the scholarship as a motivational tool intended, for example but not exclusively, to cover living costs, so the full cost of living in the study city must be met from other funds.",
+      "Accommodation and dormitory rent, which the award does not cover and which the student must arrange directly with the institution or on the private market.",
+      "Public health insurance for applicants not insured in another EU, EEA or Swiss state. Coverage is conditional under Act No. 580/2004 Coll. on the programme being approved by the Government of the Slovak Republic, so verify the position with the chosen institution rather than assuming cover.",
+      "Visa and residence costs for non-EU nationals: the ministry recommends a 120-day national D visa applied for at the Embassy of the Slovak Republic abroad or through an accredited external service provider, followed by temporary residence for the purpose of study within those 120 days.",
+      "Travel to and from Slovakia in both directions, which the award does not cover.",
+      "Study materials, equipment and any laboratory, fieldwork or practice costs, none of which is published as covered.",
+      "Admission-related costs at the higher education institution, including recognition of the foreign secondary-school certificate and any language or preparatory course, which are governed by the institution's own admission procedure and not by this scheme.",
+      "Lost earnings or opportunity cost during the three years of funded study, which no allowance of this size addresses."
+    ],
+    "document_audit": [
+      "This list is derived guidance for assembling the official checklist, not an official requirement in itself; the official list is the eight items published on the call page.",
+      "Passport for most nationalities, or national identity card for citizens of the European Union, the European Economic Area and Switzerland, and it must be a notarised copy, not a scan or photograph.",
+      "Solemn declaration of permanent residence, downloaded from the system template and hand-signed, stating no permanent residence in Slovakia between 1 January 2021 and the application deadline.",
+      "SAT certificate showing the date, the total score and the partial scores in Evidence-Based Reading and Writing and in Mathematics, or the two official SCIO certificates showing the date and percentile for Mathematics (MAT) and for General Academic Prerequisites (VŠP).",
+      "Curriculum vitae in English, structured and on the template from the system, which the ministry states is an essential document for the evaluation of the application.",
+      "Motivation letter in English on the template from the system, explaining the motivation for studying in Slovakia and describing the applicant's talent characteristics, which the ministry also states is essential.",
+      "Consent of the legal guardian for the processing of the minor applicant's personal data, for applicants under 18, completed and hand-signed by the legal guardian.",
+      "Certificate under Section 7 of Act No. 474/2005 Coll. on Slovaks Living Abroad, certified, for Slovak applicants living abroad.",
+      "Acceptance letter from the higher education institution, if one is already available, since the call page lists it as an optional attachment.",
+      "Keep proof of submission, since the ministry states that once an application is submitted it can no longer be edited and attachments cannot be added or removed, and request any correction through technical support."
+    ],
+    "alerts": [
+      {
+        "trigger": "Registration closed",
+        "message": "Registration for the academic year 2026/2027 closed on 8 September 2026 at 23:59 CEST and the evaluation is under way. Nothing can be submitted for this round; monitor https://scholarships.portalvs.sk/ for the next call, and note that no opening date for the next round had been published as at 3 October 2026."
+      },
+      {
+        "trigger": "Test is the only criterion",
+        "message": "The ministry states that the result of the chosen standardised test is the only criterion for the selection of successful applicants. A strong academic record, a strong motivation letter or a strong CV cannot compensate for a test score below the threshold of an SAT total of 1100 or an average SCIO percentile of 63."
+      },
+      {
+        "trigger": "Admission is separate",
+        "message": "Applying to this scholarship does not apply you to the institution, and the scholarship may not be used for study applications. Apply directly to the higher education institution of your choice, and enrol by around September, because the scholarship is paid only after enrolment and the evaluation takes place after enrolment."
+      },
+      {
+        "trigger": "Programme must be on the SK RIS3 list",
+        "message": "The scholarship is granted only if you enrol on a programme from the SK RIS3 2021+ list. You may apply with a preferred programme that is not on the list, but the scholarship will then not be granted, so check the published list before you choose."
+      },
+      {
+        "trigger": "Tuition is not covered",
+        "message": "This award is a living allowance. Any waiver of the tuition fee for a foreign-language programme is at the exclusive discretion of the higher education institution under Section 96(15) of Act No. 300/2025 Coll. and is not guaranteed by this scholarship, so treat tuition as payable until the institution confirms otherwise."
+      },
+      {
+        "trigger": "Bratislava versus elsewhere",
+        "message": "The 60 state-budget scholarships are reserved for students at institutions in the Bratislava region and the 110 national-project scholarships for institutions outside it. Each pool is ranked separately, so a strong applicant may be funded in one pool and not the other; your choice of institution can therefore change the outcome."
+      },
+      {
+        "trigger": "Tied to one institution",
+        "message": "The scholarship is tied to a specific full-time programme at a specific higher education institution, and a change of institution is not possible after the award. Choose your institution before applying, because you cannot shop between institutions after receiving the scholarship."
+      },
+      {
+        "trigger": "Prior study in Slovakia",
+        "message": "If you were ever a pupil or graduate of a Slovak secondary school, or a student of a Slovak higher education institution at the bachelor's level, you are not eligible. The only exception is academic mobility, and the only further exception is for Slovaks living abroad submitting the Section 7 certificate."
+      },
+      {
+        "trigger": "Documents cannot be edited after submission",
+        "message": "Once the application is submitted it can no longer be edited and attachments cannot be added or removed. Check every field and every attachment before submitting, and contact technical support during the application period if you spot an error."
+      }
+    ],
+    "submission_workflow": [
+      "Monitor https://scholarships.portalvs.sk/ for the announcement that registration is open for the next academic year, since no opening date was published for the round after 2026/2027 at the time of verification.",
+      "Sit the SAT or the two SCIO tests early, and confirm the score meets the threshold of an SAT total of 1100 or an average SCIO percentile of 63 before the round opens.",
+      "Create a user account at https://scholarships.portalvs.sk/registration when the round opens.",
+      "Select the level of study, then the preferred higher education institution, faculty and study programme, checking first that the programme appears on the SK RIS3 2021+ list and that the institution is one of the nineteen eligible public or state higher education institutions.",
+      "Enter the standardised test result: for the SAT, the date, the total score and the partial scores in Evidence-Based Reading and Writing and in Mathematics; for the SCIO tests, the date and percentile for each of the Mathematics (MAT) and General Academic Prerequisites (VŠP) tests, which the system averages automatically.",
+      "Upload the notarised identity document, the hand-signed solemn declaration of permanent residence, and where applicable the Section 7 certificate for Slovaks living abroad and the guardian's consent for minors.",
+      "Upload the structured curriculum vitae in English and the motivation letter in English, both on the system templates.",
+      "Review the application summary, then press submit. The application is valid only once it has been submitted and will remain unassessed if it stays in progress.",
+      "Watch for the automatic confirmation email, and note that the application cannot be edited after submission, so any correction must be requested through technical support during the application period.",
+      "After the deadline, the ministry verifies eligibility and the authenticity of documents and compiles the final ranking, which is published on https://scholarships.portalvs.sk/ and communicated by email and through the status of the application account.",
+      "Enrol in the first year of the supported full-time programme by around September, because the ministry or the higher education institution verifies and evaluates applications only after enrolment and the institution then issues the Decision on the Award of the Scholarship.",
+      "Sign the scholarship contract, then receive the payments from the higher education institution, normally in arrears, with all eligible September months paid retroactively in the first instalment if there has been a delay."
+    ]
+  },
+  "programme_detail_verification": {
+    "cycle_verified": "Academic year 2026/2027 round of the Scholarships for talented students from all over the world, closed 8 September 2026, verified 2026-10-03",
+    "verification_confidence": 0.88,
+    "official_fields_confirmed": [
+      "award identity and official full name, from the call page heading \"Scholarships for talented students from all over the world (academic year 2026/2027)",
+      "administering authority: Ministry of Education, Research, Development and Youth of the Slovak Republic",
+      "funding instrument and sources: national project co-financed by the European Union under the Slovakia Programme together with the state budget, with separate pools for institutions inside and outside the Bratislava region",
+      "allocation at the first level: 170 scholarships, 110 financed from the national project for institutions outside the Bratislava region and 60 from the state budget for institutions in the Bratislava region, from the allocation table in the methodological document",
+      "allocation at the second level: 55 scholarships, 35 and 20 respectively, and the scheme-wide totals of 1431 talent scholarships, 1040 at the first level and 391 at the second",
+      "amount: EUR 500 per month, paid for ten months in each academic year, EUR 5,000 per academic year, up to EUR 15,000 in total",
+      "duration at the first level: first three academic years of bachelor's or combined bachelor's and master's study, academic years 2026/2027 to 2028/2029, with only three years funded for a four-year bachelor's programme",
+      "payment mechanics: paid in the full monthly amount for any month of enrolment, in arrears, retroactively in the first instalment where needed, with no payment for July or August",
+      "geographic grouping: five regional subgroups B1 Europe, B2 United States, Canada, Australia and Oceania, B3 Central and South America, B4 Africa and B5 Asia, with the full country lists in Annex 13",
+      "regional redistribution rule: ten per cent of the allocated scholarships per funding source awarded per subgroup, that is fifty per cent in total, with the remaining fifty per cent by percentile score without regional redressement",
+      "selection criterion: the standardised test result is the only criterion, converted to a common percentile scale of 0 to 100",
+      "test requirement: SAT total of at least 1100 points, or an average percentile of at least 63 across the SCIO Mathematics (MAT) and General Academic Prerequisites (VŠP) tests, with no substitution or waiver",
+      "test validity: SAT results accepted from 1 January 2021 until the application deadline; SCIO results must be evidenced by an official SCIO certificate",
+      "deadline: 8 September 2026 at 23:59 CEST, extended from 31 July 2026 at 16:00 CEST",
+      "status: registration for 2026/2027 closed, evaluation under way",
+      "supported fields of study: only programmes on the SK RIS3 2021+ list, across the five smart specialisation domains, with doctoral study excluded",
+      "eligible institutions: nineteen public and state higher education institutions, four in the Bratislava region and fifteen in other regions, with private institutions excluded",
+      "eligible countries: nationals of any United Nations member state other than Slovakia, with Slováks living abroad qualifying through the Section 7 certificate and dual nationality including Slovak permitted",
+      "eligibility conditions: notarised identity document, no permanent residence in Slovakia since 1 January 2021, no prior secondary or higher education study in Slovakia except academic mobility, full-time in-person study, no upper age limit, guardian consent for minors",
+      "required documents: the eight items published on the call page",
+      "renewal and loss conditions: the entitlement ceases on termination of study, transfer to another institution, change to part-time study, or interruption of study exceeding 180 days in individual or total duration",
+      "concurrent funding: the scholarship may be held with other scholarships and with mobility funding, provided there is no duplicate support for the same purpose",
+      "health insurance: public insurance available under Act No. 580/2004 Coll. for holders of a scholarship under a programme approved by the Government of the Slovak Republic who are not insured in another EU, EEA or Swiss state",
+      "tuition: not covered; a waiver for foreign-language programmes is at the sole discretion of the higher education institution under Section 96(15) of Act No. 300/2025 Coll.",
+      "application method: exclusively online through the official information system, not by email, and separate from the study application at the institution",
+      "logo bytes served by the awarding body's own domain",
+      "degree level: the call page funds three years of full-time bachelor's or combined bachelor's and master's study, so bachelor's is the level recorded"
+    ],
+    "institution_check_required": [
+      "The official SK RIS3 2021+ programme list, to confirm that your chosen programme at your chosen institution is eligible, since the linked PDF returned 403 to direct fetching",
+      "Whether your chosen higher education institution will waive the tuition fee for your foreign-language programme, which the ministry states is at the exclusive discretion of the institution",
+      "The admission requirements, deadlines and language of instruction of your chosen higher education institution, which are set by the institution and are separate from this scholarship",
+      "Recognition of your foreign secondary-school certificate by the chosen institution",
+      "The exact admission or enrolment deadline at your chosen institution, since the scholarship scheme sets none and the scholarship is paid only after enrolment",
+      "Whether your programme is approved for public health insurance under Act No. 580/2004 Coll.",
+      "The opening and closing dates of the next round, which had not been published as at 3 October 2026"
+    ],
+    "unverified_or_removed_claims": [
+      "The SK RIS3 2021+ programme list PDF linked from the call page, at https://scholarships.portalvs.sk/public_files/1d9a5bc1fc58ad3a71e779044699ac30.pdf, returned 403 to direct fetching, so the field restriction is taken from the methodological document, which names the five domains and states that the programme list is published on the ministry website and updated annually. No individual programme is named in this record.",
+      "The country-category PDF linked from the call page, at https://scholarships.portalvs.sk/public_files/a23cf723f639ab291e948b77ae856107.pdf, likewise returned 403; the country lists used instead are those reproduced in Annex 13 of the methodological document, which lists every United Nations member state except Slovakia across the five subgroups.",
+      "No application opening date for the next round after 2026/2027 is published, so application_cycle records the closed 2026/2027 round only and no next-cycle date is claimed.",
+      "english_requirement is null: no English test, band or score is published for the scholarship scheme. Only the curriculum vitae and the motivation letter are required in English.",
+      "research_requirement is null: the scheme funds taught degree study and publishes no research requirement.",
+      "catalogue_url is null: the ministry publishes the SK RIS3 programme list as a PDF attachment rather than a searchable catalogue, and that PDF could not be fetched, so no catalogue URL is recorded.",
+      "No travel allowance, installation allowance, research allowance, book or equipment allowance, family allowance or accommodation support is published for this scheme, so none is recorded.",
+      "The exact amount of the EUR 5,000 per academic year is derived from the published monthly amount of EUR 500 paid for the ten months from September to June; the ministry publishes both the monthly figure and the statement that the programme grants up to EUR 15,000, so no total has been invented.",
+      "The free train travel benefit for students with an International Student Identification Card is published by the ministry on its Study in Slovakia page rather than on the scholarship call page, and is recorded here as a general student benefit rather than a scholarship benefit.",
+      "The 2025/2026 round is described from the ministry's page for that round, which states a deadline of 31 July 2025 at 23:59 CEST and a launch on 24 June 2025; no 2027/2028 round is described, and none is recorded here."
+    ],
+    "source_citations": [
+      "https://scholarships.portalvs.sk/",
+      "https://www.minedu.sk/7507-en/study-in-slovakia/",
+      "https://scholarships.portalvs.sk/public_files/f8ef510905f6fe45c811c764957288f5.pdf",
+      "https://www.minedu.sk/stipendia-pre-zahranicnych-talentovanych-studentov-z-celeho-sveta-np-v-ramci-programu-slovensko-rocnik-2025/",
+      "https://scholarships.portalvs.sk/public_files/6505569cabd9f13d37d7254a8d53c3e8.pdf",
+      "https://www.minedu.sk/assets/default/img/logo-minedu-en.svg"
+    ],
+    "researched_by": "bachelor_01"
+  },
+  "logo_override": {
+    "url": "https://www.minedu.sk/assets/default/img/logo-minedu-en.svg",
+    "page_url": "https://www.minedu.sk/7507-en/study-in-slovakia/",
+    "official_host": true,
+    "alt_text": "Ministry of Education, Research, Development and Youth of the Slovak Republic",
+    "validation_result": "verified",
+    "validation_detail": "Probed live on 2026-10-03: HTTP 200, Content-Type image/svg+xml, Content-Length 18867. The saved body begins with an XML prologue and a DOCTYPE followed by <svg width=\"100%\" height=\"100%\" viewBox=\"0 0 1912 511\" version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\">, so the bytes are SVG markup and not an HTML error or WAF interstitial. Colour audit of the eight path elements: six fill rgb(0,76,152), the ministry dark blue, two fill rgb(227,6,19), red, and one fill rgb(218,218,218), light grey, plus a single white detail. The mark is dark-coloured throughout and is not a white-on-transparent wordmark, so it is legible on a light card. The URL is referenced as /assets/default/img/logo-minedu-en.svg in the header markup of the ministry's English pages, and the white counterpart logo-minedu-en-white.svg was deliberately not used.",
+    "image_kind": "official_logo",
+    "image_format": "svg",
+    "verified_at": "2026-10-03T13:52:34+00:00",
+    "host_evidence": "same_registrable_domain"
+  },
+  "research_notes": {
+    "logo": "The awarding body is the Ministry of Education, Research, Development and Youth of the Slovak Republic, so the logo was taken from the ministry's own domain rather than from the scholarship portal. The ministry's English pages render their own mark as /assets/default/img/logo-minedu-en.svg in the header, and that URL was probed live and returned HTTP 200 with Content-Type image/svg+xml and 18867 bytes, with an SVG body that begins with an XML prologue and a DOCTYPE, satisfying the rule that a host whose logo URL returns HTML rather than image bytes is excluded. Rule 6 was checked rather than assumed: a colour audit of the eight path elements found six filled rgb(0,76,152) ministry blue, two rgb(227,6,19) red and one rgb(218,218,218) light grey, with a single white detail, so this is a dark mark safe on a light card, not a white-on-transparent wordmark; the white counterpart logo-minedu-en-white.svg that the ministry also publishes was deliberately not used. Host is the awarding body's own registrable domain minedu.sk, so official_host is true and host_evidence is same_registrable_domain. ATTEMPTED AND FAILED: the scholarship programme's own brand marks on the portal domain, at https://scholarships.portalvs.sk/images/Studujem_Doma_EN.png and https://scholarships.portalvs.sk/images/foreign/logo_scholarships_2.png, both returned 403 from this machine, so they could not be confirmed as image bytes and are not used. DEDUPLICATION: backend/config/official_logo_overrides.json holds no minedu.sk key, so this is a new host entry and not a duplicate. It does hold a portalvs.sk key pointing at https://portalvs.sk/_thumbs/134/134/uk-logo-s-textom-bp-horizontal_70642.png, but that is the PortalVS higher-education portal's own logo, a different body from the ministry that awards this scholarship, so it is a provenance mismatch for this record and was not reused.",
+    "unverified": [
+      "The official SK RIS3 2021+ programme list PDF linked from the call page could not be fetched and returned 403, so no individual eligible study programme is named; the field restriction is stated from the five smart specialisation domains named in the methodological document.",
+      "The country-category PDF linked from the call page could not be fetched and returned 403; the eligible-country lists are taken from Annex 13 of the methodological document, which reproduces the five regional subgroups.",
+      "No opening or closing date for a round after 2026/2027 is published, so no next-cycle deadline is recorded and application_cycle describes only the closed 2026/2027 round.",
+      "No English-language test, band or score is published for the scholarship scheme, so english_requirement is null; only the curriculum vitae and the motivation letter are required in English.",
+      "Language of instruction, admission requirements, admission deadlines and tuition fee amounts at each of the nineteen eligible higher education institutions were not read from an official source and are not stated.",
+      "Whether a given institution will waive the tuition fee for a foreign-language programme is at the exclusive discretion of that institution and was not confirmed for any institution.",
+      "Travel allowance, installation allowance, research allowance, book or equipment allowance, family allowance and accommodation support are not published for this scheme, so none is recorded.",
+      "The outcome of the 2026/2027 evaluation, and the final list of successful applicants, were not available at the time of verification.",
+      "The free train travel benefit for students with an International Student Identification Card is published on the ministry's Study in Slovakia page rather than on the scholarship call page, and is recorded as a general student benefit rather than a scholarship benefit."
+    ],
+    "substitution": null,
+    "official_pages_read": [
+      "https://scholarships.portalvs.sk/",
+      "https://www.minedu.sk/7507-en/study-in-slovakia/",
+      "https://scholarships.portalvs.sk/public_files/f8ef510905f6fe45c811c764957288f5.pdf",
+      "https://www.minedu.sk/stipendia-pre-zahranicnych-talentovanych-studentov-z-celeho-sveta-np-v-ramci-programu-slovensko-rocnik-2025/",
+      "https://scholarships.portalvs.sk/public_files/6505569cabd9f13d37d7254a8d53c3e8.pdf"
+    ],
+    "degree_level_confirmed": "The scholarship call page states three years of support for the applicant's full-time bachelor's degree studies or for the first three years of a full-time joint bachelor's and master's degree study programme, alongside two years of support for full-time master's studies, and the ministry's own page for the previous round describes the scheme as intended for applicants planning study in bachelor's, combined bachelor's and master's, or master's programmes. The methodological document allocates 170 scholarships to subgroup B1, the foreign talented students at the first level of study, which is the bachelor's or combined level, and 55 to subgroup B2 at the second level, and it restricts first-level support to the first three years of bachelor's or combined study, funding only three years even where the standard length of the bachelor's programme is four years. Doctoral study is expressly excluded. Bachelor's is therefore the level recorded in new_scholarship.degree_levels, with the master's and combined coverage recorded in programme_detail_official.degree_levels and in the description rather than presented as this record's level.",
+    "skeleton": false
+  }
+}

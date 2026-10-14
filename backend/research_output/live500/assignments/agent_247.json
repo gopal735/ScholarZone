@@ -1,0 +1,98 @@
+{
+ "agent": "agent_247",
+ "assignment_count": 1,
+ "scholarships": [
+  {
+   "id": 603,
+   "title": "PEC-PG - Brazilian Program for Exchange Students, Postgraduate Level (PEC-PG 2027)",
+   "country": "Brazil",
+   "degree": "Master's, PhD",
+   "funding_label": "Stipend",
+   "status": "upcoming",
+   "official_source": "Ministry of Foreign Affairs of Brazil (Itamaraty) with Conselho Nacional de Desenvolvimento Cientifico e Tecnologico (CNPq)",
+   "official_source_url": "https://www.gov.br/mre/en/subjects/culture-and-education/educational-themes/study-opportunities-for-international-applicants/pec-pg-graduate/selection-process-2",
+   "application_link": "https://www.gov.br/mre/en/subjects/culture-and-education/educational-themes/study-opportunities-for-international-applicants/pec-pg-graduate/selection-process-2",
+   "catalogue_url": "https://www.gov.br/mre/en/subjects/culture-and-education/educational-themes/study-opportunities-for-international-applicants",
+   "official_updates_url": "https://www.gov.br/mre/en/subjects/culture-and-education/educational-themes/study-opportunities-for-international-applicants/pec-pg-graduate",
+   "existing": {
+    "funding_amount": null,
+    "funding_currency": "BRL",
+    "funding_period": "per month",
+    "tuition_coverage": 0,
+    "living_cost_coverage": 1,
+    "travel_coverage": null,
+    "fully_funded": 0,
+    "description": "PEC-PG is the Brazilian postgraduate exchange programme funded by the Ministry of Foreign Affairs and administered through CNPq, open to nationals of participating countries who are not Brazilian and do not hold Brazilian permanent residence. For the 2027 cycle the Call Notice was released on 29 June 2026 and CNPq publishes the list of eligible Brazilian institutions in December 2026, after which each institution runs its own candidate selection. Scholarships are paid from March 2027 to March 2028 at R$ 2,100 per month for a master's and R$ 3,100 per month for a doctorate, with access to the SUS public health system and possible MRE-funded return travel aid.",
+    "eligibility": [
+     "Be a national of one of the countries participating in the PEC-PG programme",
+     "Live in one of the countries participating in the programme",
+     "Not have Brazilian nationality, including dual Brazilian nationality or the right to it",
+     "Not hold a permanent residence permit for Brazil",
+     "Have completed a higher education course equivalent to an undergraduate degree (graduacao)",
+     "Not be taking in Brazil another course at the same level as the intended one",
+     "Have a clean record, with no debts to CAPES or the Brazilian government",
+     "Be able to start the course within the postgraduate programme's deadline",
+     "Have an updated CV on the Lattes platform",
+     "Not hold a doctorate degree",
+     "Have spent at least two years in their country after obtaining a Brazilian diploma or a master's degree funded by a Brazilian funding agency, where applicable",
+     "For a master's: not have held a full or sandwich master's scholarship from a Brazilian federal public entity",
+     "For a doctorate: not have held a full or sandwich doctoral scholarship from a Brazilian federal public entity",
+     "Meet the specific requirements of the chosen graduate programme (PPG), including language requirements"
+    ],
+    "eligibility_summary": "Nationals and residents of countries participating in the PEC-PG programme, without Brazilian nationality (including dual nationality or a right to it) and without Brazilian permanent residence, holding a completed higher education course equivalent to a bachelor's degree, with an updated Lattes CV, and with no debts to CAPES or the Brazilian government.",
+    "benefits": [
+     "Monthly stipend: R$ 2,100 for Master's degree, R$ 3,100 for Doctorate degree",
+     "Access to the SUS public health system throughout Brazil without discrimination based on nationality or immigration status",
+     "Financial aid to return to the country of origin, paid by the Ministry of Foreign Affairs depending on budgetary availability, with amounts set in the table annexed to MRE Ordinance No. 572/2024"
+    ],
+    "coverage": [
+     "Monthly scholarship stipend of R$ 2,100 (master's, 24 months) or R$ 3,100 (doctorate, 48 months)",
+     "Access to the Brazilian public health system (SUS) on the same terms as Brazilian citizens",
+     "Possible return-to-country-of-origin travel aid paid by the Ministry of Foreign Affairs, subject to budget availability"
+    ],
+    "requirements": [
+     "Application is free of charge",
+     "Wait for CNPq to publish the list of eligible institutions in December 2026",
+     "Contact the institutions of interest and apply through their own selection process",
+     "Submit the documents required by the chosen institution and by the Call Notice",
+     "Comply with the Call Notice and the specific requirements of the graduate programme"
+    ],
+    "documents": [
+     "Digital copy of the personal information page of your passport",
+     "Proof of CPF (Brazilian Individual Taxpayer Registry) registration status",
+     "Proof of residence abroad, such as a water or electricity bill",
+     "Valid ORCID number",
+     "Research project in Portuguese, Spanish or English",
+     "Statement of employment, where applicable, issued by the employer, confirming the stay in Brazil will not exceed the period allowed for the thesis or dissertation defence"
+    ],
+    "english_requirement": "No general English requirement is published; language requirements are set by each specific graduate programme (PPG) the applicant chooses.",
+    "application_method": [
+     "From December 2026, consult the CNPq list of eligible higher education and science and technology institutions",
+     "Check the graduate programmes (PPGs) included and their specific requirements",
+     "Contact the chosen institution and apply directly to its PEC-PG selection process",
+     "Await the institution's result and prepare to start activities in Brazil between March 2027 and March 2028"
+    ],
+    "selection_notes": "Selection is two-stage: CNPq first approves institutions, then each institution selects and implements candidates. Applicants are assessed only by the receiving institution, not by CNPq or the Ministry of Foreign Affairs, and the Ministry states it does not receive applications for PEC-PG.",
+    "best_fit": "Master's and doctoral students from Latin American and other participating countries without Brazilian nationality or residence who want to study at a Brazilian postgraduate programme and can wait for institution-level selection from December 2026.",
+    "notes": "Regional and multi-country: eligibility is defined by nationality and residence in any country participating in the programme rather than by a single host or home country. The award is a stipend, not a tuition waiver, so fully_funded is false; institutional eligibility may carry its own funding rules. Schedule dates are published as indicative and the page warns they may change.",
+    "duration": "24 months for a master's; 48 months for a doctorate",
+    "application_period": "Call Notice released 29 June 2026; list of eligible institutions published December 2026; institution-level candidate selection runs from December 2026; scholarships paid March 2027 to March 2028",
+    "deadline_display": null,
+    "deadline_date": null,
+    "region": "Latin America",
+    "program_type": "Government scholarship (Brazilian postgraduate exchange programme run by the Ministry of Foreign Affairs with CNPq)",
+    "applicant_utility": null,
+    "official_details": null
+   },
+   "missing_fields": [
+    "funding_amount",
+    "travel_coverage",
+    "deadline_display",
+    "deadline_date",
+    "applicant_utility",
+    "official_details"
+   ]
+  }
+ ],
+ "result_file": "C:\\Users\\GopaL\\Desktop\\Projects folder\\ScholarZone\\backend\\research_output\\live500\\results\\agent_247.json"
+}

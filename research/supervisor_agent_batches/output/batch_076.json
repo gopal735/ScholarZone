@@ -1,0 +1,254 @@
+[
+  {
+    "scholarship_id": 611,
+    "outcome": "not_applicable",
+    "professors": [],
+    "notes": "Official ACIAR page verified live at https://www.aciar.gov.au/scholarships/john-allwright-fellowship (rendered in a browser; direct webfetch returned HTTP 403 but the page itself is readable and complete). The John Allwright Fellowship is an Australian Government (ACIAR) merit-based scheme: 'It provides Masters by Research or PhD scholarships to agricultural researchers, administered through the Australia Awards system.' Fellows are nominated out of ACIAR research projects and then study at an Australian tertiary institution of their choosing; no university, department or supervising professor is attached to the scholarship itself, and the word 'supervisor' does not appear anywhere on the official page. Per batch rules this is a national/government scheme with no attached institution -> not_applicable. Official contact details on the page are administrative only (ACIAR, 38 Sydney Ave, Forrest ACT 2603, phone 61 2 6217 0500)."
+  },
+  {
+    "scholarship_id": 612,
+    "outcome": "no_verified_supervisor_found",
+    "professors": [],
+    "notes": "Official Griffith University page verified live and readable at https://www.griffith.edu.au/international/scholarships-finance/scholarships/vice-chancellors-international-scholarship. This is a university-wide, competitive 50% coursework tuition-fee waiver for commencing international undergraduate and postgraduate coursework students; selection is by 'a University panel' on GPA, offer of place, academic records and a personal statement, and the page explicitly excludes 'students enrolling in Higher Degree Research'. No faculty supervisor, research group or named academic is attached to the award; the only contact route is the administrative 'Enquire' link (https://www.griffith.edu.au/international/contact-us). Because no faculty tie exists on any official Griffith page, no supervisor could be verified without inventing one."
+  },
+  {
+    "scholarship_id": 613,
+    "outcome": "no_verified_supervisor_found",
+    "professors": [],
+    "notes": "Official Griffith University page verified live and readable at https://www.griffith.edu.au/international/scholarships-finance/scholarships/international-academic-merit-scholarship. This is an automatic 20% coursework tuition-fee reduction ('You don't need to apply for the scholarship... Just apply to study at Griffith and we will let you know if you are successful') for international undergraduate and postgraduate coursework students, assessed purely on prior GPA and entry requirements, with an explicit exclusion of Higher Degree Research enrolment. No faculty supervisor, programme director or research group is attached to the award; the page's only contact route is the administrative 'Enquire' link (https://www.griffith.edu.au/international/contact-us). No supervised-research component exists, so no professor could be tied to this scholarship from official Griffith sources."
+  },
+  {
+    "scholarship_id": 614,
+    "outcome": "not_applicable",
+    "professors": [],
+    "notes": "Official Immigration New Zealand (MBIE) page verified live and readable at https://www.immigration.govt.nz/about-us/our-strategies-and-programmes/supporting-refugees-and-asylum-seekers/new-zealand-refugee-health-scholarship-programme, together with the administering body's page at https://www.universitiesnz.ac.nz/scholarships/new-zealand-refugee-health-scholarship. The programme was 'developed in 2025 by the National Leadership and Coordination Service (NLCS), a joint function established through a partnership between the Ministry of Business Innovation and Employment (MBIE) | Immigration New Zealand, the Ministry of Health, and the Health New Zealand | Te Whatu Ora'. It is a government-partnership scheme; recipients 'commence or complete their undergraduate, post-graduate or other health-related education and training' at any 'NZQA-accredited tertiary provider' of their own choosing, and applications are lodged through the Universities New Zealand Community Force portal. No institution, department or supervising professor is attached to the scholarship itself - the only published contacts are administrative (nzrefugeehealthscholarships@mbie.govt.nz and scholarships-cf@universitiesnz.ac.nz). Per batch rules, a national/government scheme with no attached institution -> not_applicable."
+  },
+  {
+    "scholarship_id": 615,
+    "outcome": "verified_supervisors",
+    "professors": [
+      {
+        "canonical_name": "Jeroen Douwes",
+        "title": "Professor of Public Health; Director, Centre for Public Health Research; Doctoral Mentor Supervisor",
+        "institution_name": "Massey University",
+        "department_name": "Centre for Public Health Research, College of Health",
+        "official_profile_url": "https://www.massey.ac.nz/massey/expertise/profile.cfm?stref=410830",
+        "official_email": "J.Douwes@massey.ac.nz",
+        "official_email_verified": true,
+        "lab_url": null,
+        "personal_academic_url": null,
+        "research_areas": [
+          "Environmental and occupational health epidemiology",
+          "Public health",
+          "Respiratory health, allergies and asthma",
+          "Environmental exposure assessment",
+          "Microbiota and chronic disease"
+        ],
+        "research_keywords": [
+          "epidemiology",
+          "public health",
+          "respiratory health",
+          "allergies",
+          "occupational and environmental health",
+          "exposure assessment"
+        ],
+        "relationship_type": "potential_supervisor",
+        "evidence_source_url": "https://www.massey.ac.nz/massey/expertise/profile.cfm?stref=410830",
+        "evidence_source_type": "official_university_profile",
+        "evidence_quote_or_summary": "Massey University official expertise profile states 'Doctoral Mentor Supervisor / Centre for Public Health Research' and 'Jeroen Douwes is Professor of Public Health and Director of Massey University's Centre for Public Health Research... leads a comprehensive programme of public health research with a focus on respiratory disease and environmental and occupational health.' The same page publishes the institutional address in a 'Request Academic Output' mailto link (J.Douwes@massey.ac.nz). The Massey University Doctoral Scholarship page (https://www.massey.ac.nz/study/scholarships-and-awards/massey-university-doctoral-scholarship) requires that 'A completed Supervisor Support Template. Your primary supervisor must complete the above linked form', so accredited Massey doctoral supervisors such as Douwes are the faculty the award is built around; selection considers 'the alignment of your research to the strategic priorities of the University, College and research supervisor(s)'.",
+        "confidence": 92,
+        "availability": {
+          "scope": "phd_supervision",
+          "state": "verified_yes",
+          "source_url": "https://www.massey.ac.nz/massey/expertise/profile.cfm?stref=410830"
+        }
+      },
+      {
+        "canonical_name": "Jonathan Procter",
+        "title": "Professor in Natural Hazards; Group Leader Earth Science; Doctoral Supervisor",
+        "institution_name": "Massey University",
+        "department_name": "School of Agriculture and Environment, College of Sciences",
+        "official_profile_url": "https://www.massey.ac.nz/massey/expertise/profile.cfm?stref=818930",
+        "official_email": "J.N.Procter@massey.ac.nz",
+        "official_email_verified": true,
+        "lab_url": null,
+        "personal_academic_url": null,
+        "research_areas": [
+          "Volcanology and volcanic hazards",
+          "Volcanic mass-flow transport and emplacement modelling",
+          "Geomorphology and remote sensing / GIS",
+          "Emergency management",
+          "Mātauranga Māori and natural resource management"
+        ],
+        "research_keywords": [
+          "volcanology",
+          "volcanic hazards",
+          "computational modelling",
+          "geomorphology",
+          "GIS/remote sensing",
+          "emergency management"
+        ],
+        "relationship_type": "potential_supervisor",
+        "evidence_source_url": "https://www.massey.ac.nz/massey/expertise/profile.cfm?stref=818930",
+        "evidence_source_type": "official_university_profile",
+        "evidence_quote_or_summary": "Massey University official expertise profile lists him as 'Doctoral Supervisor / School of Agriculture and Environment' alongside 'Associate Dean - Maori, College of Sciences', and his research interests are given as 'Volcanology; volcanic hazards; computational modelling; geomorphology; emergency management; GIS/Remote sensing; Maori environmental participation; Maori natural resource management; Treaty of Waitangi historical research.' The same page publishes the institutional address in a 'Request Academic Output' mailto link (J.N.Procter@massey.ac.nz). He is also an accredited Massey doctoral supervisor, which is the faculty requirement of the Massey University Doctoral Scholarship ('Your primary supervisor must complete the... form'; applicants must 'have a GPA of 7.0 or higher' and 'be researching a topic of strategic value to the University').",
+        "confidence": 90,
+        "availability": {
+          "scope": "phd_supervision",
+          "state": "verified_yes",
+          "source_url": "https://www.massey.ac.nz/massey/expertise/profile.cfm?stref=818930"
+        }
+      },
+      {
+        "canonical_name": "Kristin Stock",
+        "title": "Associate Professor of Computer Science and Information Technology; Director, Massey Geoinformatics Collaboratory; Doctoral Supervisor",
+        "institution_name": "Massey University",
+        "department_name": "School of Mathematical and Computational Sciences, College of Sciences",
+        "official_profile_url": "https://www.massey.ac.nz/massey/expertise/profile.cfm?stref=993350",
+        "official_email": "K.Stock@massey.ac.nz",
+        "official_email_verified": true,
+        "lab_url": "https://geocollaboratory.massey.ac.nz/",
+        "personal_academic_url": null,
+        "research_areas": [
+          "Geospatial natural language processing",
+          "Semantics, ontologies and extraction of geographic knowledge from text",
+          "Geoinformatics and GIS",
+          "Natural hazards and QuakeCoRE research"
+        ],
+        "research_keywords": [
+          "semantics",
+          "ontologies",
+          "geoinformatics",
+          "natural language processing",
+          "environment"
+        ],
+        "relationship_type": "potential_supervisor",
+        "evidence_source_url": "https://www.massey.ac.nz/massey/expertise/profile.cfm?stref=993350",
+        "evidence_source_type": "official_university_profile",
+        "evidence_quote_or_summary": "Massey University official expertise profile lists 'Doctoral Supervisor / School of Mathematical and Computational Sciences' and states 'Dr Kristin Stock is an Associate Profssor of Computer Science and Information Technology and has been Director of the Massey Geoinformatics Collaboratory since 2014. She leads the MBIE Funded BioWhere project, developing methods to georeference biological collections and the QuakeCoRE funded...' with research interests 'Geospatial natural language processing, semantics, ontologies and extraction of geographic knowledge from text.' The same page publishes the institutional address in a 'Request Academic Output' mailto link (K.Stock@massey.ac.nz), and links to the lab site https://geocollaboratory.massey.ac.nz/ ('Massey Geoinformatics Collaboratory is a network of researchers in different departments and campuses of Massey University who work with geographic information and conduct research in geoinformatics'). She is named as a supervisor on Massey's official doctoral student profile for Kalana Wijegunarathna (2026), tying her to doctoral supervision at Massey, which is the faculty requirement of the Massey University Doctoral Scholarship.",
+        "confidence": 90,
+        "availability": {
+          "scope": "phd_supervision",
+          "state": "verified_yes",
+          "source_url": "https://www.massey.ac.nz/massey/expertise/profile.cfm?stref=993350"
+        }
+      }
+    ],
+    "notes": "Official scholarship page verified live at https://www.massey.ac.nz/study/scholarships-and-awards/massey-university-doctoral-scholarship ($90,000 plus fees over three years; status Closed for the current round, applications open 1 August and close 1 October). The award is a university-wide doctoral scholarship, so there is no single named supervisor; however, the page makes a Massey supervisor mandatory: 'When you apply you need to ask your supervisor to complete the Supervisor Support Template... A completed Supervisor Support Template. Your primary supervisor must complete the above linked form.' Supervisors were therefore sourced from Massey's official staff expertise directory, where each carries an explicit 'Doctoral Supervisor' / 'Doctoral Mentor Supervisor' designation plus a published massey.ac.nz email address (both seen on the institutional profile pages themselves). Massey's official College of Health 'Health thesis topics & supervisors' page (https://www.massey.ac.nz/about/colleges-schools-and-institutes/college-of-health/study-with-the-college-of-health/health-thesis-topics-and-supervisors) further links doctoral projects directly back to the Massey University Doctoral Scholarship ('To be eligible for a Massey University Doctoral Scholarship, a minimum New Zealand GPA of 7.5 is required'), with Dr Barry Palmer (B.Palmer@massey.ac.nz) listed as the contact supervisor for one such project - additional supervisors exist beyond the 3-professor cap. Applicant-level administrative contacts published by Massey are doctoral.applications@massey.ac.nz and Scholarships@massey.ac.nz."
+  },
+  {
+    "scholarship_id": 616,
+    "outcome": "verified_supervisors",
+    "professors": [
+      {
+        "canonical_name": "Matt Raskovic",
+        "title": "Full Professor of International Business & Strategy; Associate Dean Postgraduate, Faculty of Business, Economics and Law",
+        "institution_name": "Auckland University of Technology (AUT)",
+        "department_name": "Department of Marketing and International Business, Faculty of Business, Economics and Law",
+        "official_profile_url": "https://academics.aut.ac.nz/matt.raskovic",
+        "official_email": "matt.raskovic@aut.ac.nz",
+        "official_email_verified": true,
+        "lab_url": null,
+        "personal_academic_url": null,
+        "research_areas": [
+          "International business and strategy",
+          "Economic sociology of corruption, populism and identity politics",
+          "Diversity, equity and inclusion",
+          "Blue Economy"
+        ],
+        "research_keywords": [
+          "international business",
+          "sociology",
+          "multicultural, intercultural and cross-cultural studies",
+          "strategy, management and organisational behaviour",
+          "business ethics"
+        ],
+        "relationship_type": "potential_supervisor",
+        "evidence_source_url": "https://academics.aut.ac.nz/matt.raskovic",
+        "evidence_source_type": "official_university_profile",
+        "evidence_quote_or_summary": "Official AUT academic profile (academics.aut.ac.nz) lists him as 'PROFESSOR / Matt Raskovic / Associate Dean Postgraduate / Postgraduate Research Office / matt.raskovic@aut.ac.nz', with 'FACULTY Faculty of Business, Economics and Law', an explicit 'AVAILABILITY Masters Research or PhD student supervision', and 'FIELDS OF RESEARCH International business; Sociology; Multicultural, intercultural and cross-cultural studies; Strategy, management and organisational behaviour; Business ethics'. The AUT doctoral scholarship page (https://www.aut.ac.nz/study/fees-and-scholarships/scholarships-and-awards-at-aut/doctoral-scholarships) requires that 'If your proposed AUT primary supervisor or head of school isn't one of your referees, provide a letter or evidence of AUT faculty support... Your application will not be provided to the panel unless you can demonstrate that the AUT faculty support your application', and AUT's official Faculty Postgraduate Contacts page names 'Associate Dean (Postgraduate) / Professor Matt Raskovic / matt.raskovic@aut.ac.nz' for 'Business research programmes (PhD, MPhil, MBus, BBus (Hons), PGDipBus, PGCertBus)'.",
+        "confidence": 88,
+        "availability": {
+          "scope": "phd_supervision",
+          "state": "verified_yes",
+          "source_url": "https://academics.aut.ac.nz/matt.raskovic"
+        }
+      },
+      {
+        "canonical_name": "Tracy Berno",
+        "title": "Professor; Associate Dean Postgraduate, Faculty of Culture and Society",
+        "institution_name": "Auckland University of Technology (AUT)",
+        "department_name": "Faculty of Culture and Society",
+        "official_profile_url": "https://academics.aut.ac.nz/tracy.berno",
+        "official_email": "tracy.berno@aut.ac.nz",
+        "official_email_verified": true,
+        "lab_url": null,
+        "personal_academic_url": null,
+        "research_areas": [
+          "Resilient and sustainable food systems in Aotearoa New Zealand and the Pacific",
+          "Cultural geography and social change",
+          "Health geography",
+          "Food sustainability"
+        ],
+        "research_keywords": [
+          "food sustainability",
+          "cultural geography",
+          "health geography",
+          "political economy and social change",
+          "multicultural, intercultural and cross-cultural studies"
+        ],
+        "relationship_type": "potential_supervisor",
+        "evidence_source_url": "https://academics.aut.ac.nz/tracy.berno",
+        "evidence_source_type": "official_university_profile",
+        "evidence_quote_or_summary": "Official AUT academic profile (academics.aut.ac.nz) lists 'PROFESSOR / Tracy Berno / Professor / Hospitality & Tourism / tracy.berno@aut.ac.nz' with 'ACADEMIC POSITIONS Associate Dean Postgraduate, Auckland University of Technology, Faculty of Culture and Society', an explicit 'AVAILABILITY Masters Research or PhD student supervision', and 'FIELDS OF RESEARCH Multicultural, intercultural and cross-cultural studies; Political economy and social change; Cultural geography; Health geography; Political geography; Social geography; Food sustainability'. Her bio states 'The overall aim of my research is to contribute to resilient and sustainable food systems in Aotearoa/New Zealand and the broader Pacific region'. AUT's official Faculty Postgraduate Contacts page separately lists 'Associate Dean (Postgraduate) / Professor Tracy Berno / tracy.berno@aut.ac.nz' for the Faculty of Culture and Society, the faculty contact point for the doctoral scholarship route.",
+        "confidence": 88,
+        "availability": {
+          "scope": "phd_supervision",
+          "state": "verified_yes",
+          "source_url": "https://academics.aut.ac.nz/tracy.berno"
+        }
+      },
+      {
+        "canonical_name": "John Tookey",
+        "title": "Professor; Associate Dean (Higher Degrees by Research), Faculty of Design and Creative Technologies",
+        "institution_name": "Auckland University of Technology (AUT)",
+        "department_name": "School of Future Environments, Faculty of Design and Creative Technologies",
+        "official_profile_url": "https://academics.aut.ac.nz/john.tookey",
+        "official_email": "john.tookey@aut.ac.nz",
+        "official_email_verified": true,
+        "lab_url": null,
+        "personal_academic_url": null,
+        "research_areas": [
+          "Automation and technology in building and construction",
+          "Construction management and engineering project management",
+          "Housing and construction industry issues in New Zealand",
+          "Design management in construction"
+        ],
+        "research_keywords": [
+          "automation and technology in building and construction",
+          "building",
+          "retail",
+          "commercial services",
+          "construction management"
+        ],
+        "relationship_type": "potential_supervisor",
+        "evidence_source_url": "https://academics.aut.ac.nz/john.tookey",
+        "evidence_source_type": "official_university_profile",
+        "evidence_quote_or_summary": "Official AUT academic profile (academics.aut.ac.nz) lists 'PROFESSOR / John Tookey / Associate Dean Postgraduate / Design & Creative Technologies / john.tookey@aut.ac.nz', 'FACULTY Faculty of Design & Creative Technologies', 'FIELDS OF RESEARCH Automation and technology in building and construction; Building; Retail; Commercial services', and in his biography: 'Typically at any one time I will have 6-7 PhD students under supervision'. AUT's official Faculty Postgraduate Contacts page names 'Associate Dean (Higher Degrees by Research) / Professor John Tookey / john.tookey@aut.ac.nz' for the Faculty of Design and Creative Technologies - the faculty office that handles doctoral admissions and scholarship support. The AUT Doctoral Scholarships page requires an Offer of Place in the AUT doctoral programme plus 'a letter or evidence of AUT faculty support', which is exactly the role this faculty leadership holds for AUT Doctoral Scholarships.",
+        "confidence": 90,
+        "availability": {
+          "scope": "phd_supervision",
+          "state": "verified_yes",
+          "source_url": "https://academics.aut.ac.nz/john.tookey"
+        }
+      }
+    ],
+    "notes": "Official scholarship page verified live at https://www.aut.ac.nz/study/fees-and-scholarships/scholarships-and-awards-at-aut/doctoral-scholarships (AUT Doctoral Scholarship: $34,737 annual stipend plus tuition fees for up to three years full-time, or $17,368.50 part-time for up to six years; three closing dates - 1 March, 15 July, 1 November). The award is university-wide rather than tied to one project, but it is explicitly supervisor-dependent: applicants must hold 'an unconditional Offer of Place in the AUT doctoral programme' and 'If your proposed AUT primary supervisor or head of school isn't one of your referees, provide a letter or evidence of AUT faculty support... Your application will not be provided to the panel unless you can demonstrate that the AUT faculty support your application.' Supervisors were therefore taken from AUT's official postgraduate-research faculty leadership, each with an official academics.aut.ac.nz profile page carrying a published @aut.ac.nz email address. AUT's academics.aut.ac.nz profile pages are JavaScript-rendered (the raw HTML is an empty SPA shell titled 'Discovery'); each profile was therefore loaded and read in a browser, and every email recorded above was seen on the rendered institutional page itself. AUT's official Faculty Postgraduate Contacts page (https://www.aut.ac.nz/research/faculty-postgraduate-contacts) independently publishes the same names and @aut.ac.nz addresses. Many further AUT doctoral supervisors exist beyond the 3-professor cap; the general admissions contact published by AUT is doctoral.and.mphil.admissions@aut.ac.nz and the scholarships contact is stefania.patrone@aut.ac.nz."
+  },
+  {
+    "scholarship_id": 617,
+    "outcome": "not_applicable",
+    "professors": [],
+    "notes": "Official Ministry of Education page verified live and readable at https://www.moe.gov.sa/en/education/ResidentsAndvisitors/pages/publicuniversitiesscholarships.aspx. The scheme is a Saudi Government (Ministry of Education) scholarship for non-Saudi students to study at any of the Kingdom's 27 public universities: 'you can apply by entering the website of the university you want to apply for to study', and 'The scholarship application can be submitted in an easy way through public universities for international scholarship students... Apply to the Saudi Cultural Attache in your country.' Admission, supervision and any faculty supervisor are handled individually by whichever Saudi public university admits the applicant, and the Ministry page publishes no institution, department or professor. The only administrative portal referenced is the Government University Scholarships application system (https://dschp.moe.gov.sa/login.aspx). Per batch rules, a national/government scheme with no attached institution -> not_applicable."
+  }
+]

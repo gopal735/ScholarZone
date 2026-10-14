@@ -1,0 +1,336 @@
+[
+  {
+    "scholarship_id": 661,
+    "outcome": "not_applicable",
+    "professors": [],
+    "notes": "Scheme-level scholarship established by the Aurora Education Foundation and funded by the Australian Government through Cancer Australia. No host institution is attached: recipients undertake full-time postgraduate study or research at recognised universities or institutes of their choice in Australia, the US or UK. The official page lists only the scholarship administrator contact (scholarships@aurorafoundation.com.au), not any supervising professor. Per the scheme-level (no attached institution) rule, outcome is not_applicable with empty professors."
+  },
+  {
+    "scholarship_id": 662,
+    "outcome": "verified_supervisors",
+    "professors": [
+      {
+        "canonical_name": "Stephen Wood",
+        "title": "Professor; Centre Director, Mental Health and Brain Sciences",
+        "institution_name": "Swinburne University of Technology",
+        "department_name": "Centre for Mental Health and Brain Sciences",
+        "official_profile_url": "https://experts.swinburne.edu.au/13802-stephen-wood",
+        "official_email": "sjwood@swinburne.edu.au",
+        "official_email_verified": true,
+        "lab_url": "https://www.swinburne.edu.au/research/centres-groups-clinics/centre-for-mental-health-and-brain-sciences",
+        "personal_academic_url": null,
+        "research_areas": ["Mental health research", "Psychological and neurobiological determinants of mental health", "Evidence-based clinical practice"],
+        "research_keywords": ["mental health", "neuroscience", "clinical psychology"],
+        "relationship_type": "potential_supervisor",
+        "evidence_source_url": "https://www.swinburne.edu.au/research/centres-groups-clinics/centre-for-mental-health-and-brain-sciences/our-people",
+        "evidence_source_type": "official_department_page",
+        "evidence_quote_or_summary": "Official Swinburne centre people page lists: 'Professor Stephen Wood - Centre Director, Mental Health and Brain Sciences ... sjwood@swinburne.edu.au ... View Stephen's profile'. The SRS scholarship page states applicants 'are encouraged to liaise with their nominated research supervisor'.",
+        "confidence": 85
+      },
+      {
+        "canonical_name": "Neil Thomas",
+        "title": "Professor; Clinical Director, National eTherapy Centre and Voices Clinic",
+        "institution_name": "Swinburne University of Technology",
+        "department_name": "Centre for Mental Health and Brain Sciences",
+        "official_profile_url": "https://experts.swinburne.edu.au/1455-neil-thomas",
+        "official_email": "neilthomas@swinburne.edu.au",
+        "official_email_verified": true,
+        "lab_url": "https://www.swinburne.edu.au/research/centres-groups-clinics/centre-for-mental-health-and-brain-sciences",
+        "personal_academic_url": null,
+        "research_areas": ["Digital mental health / e-therapy", "Psychosis and hearing voices", "Evidence-based psychological treatment"],
+        "research_keywords": ["e-therapy", "digital mental health", "psychosis", "voices clinic"],
+        "relationship_type": "potential_supervisor",
+        "evidence_source_url": "https://www.swinburne.edu.au/research/centres-groups-clinics/centre-for-mental-health-and-brain-sciences/our-people",
+        "evidence_source_type": "official_department_page",
+        "evidence_quote_or_summary": "Official Swinburne centre people page lists: 'Professor Neil Thomas - Clinical Director, National eTherapy Centre and Voices Clinic ... neilthomas@swinburne.edu.au'.",
+        "confidence": 85
+      },
+      {
+        "canonical_name": "Susan Rossell",
+        "title": "Professor; Research Director, Voices Clinic",
+        "institution_name": "Swinburne University of Technology",
+        "department_name": "Centre for Mental Health and Brain Sciences",
+        "official_profile_url": "https://experts.swinburne.edu.au/1245-susan-rossell",
+        "official_email": "srossell@swinburne.edu.au",
+        "official_email_verified": true,
+        "lab_url": "https://www.swinburne.edu.au/research/centres-groups-clinics/centre-for-mental-health-and-brain-sciences",
+        "personal_academic_url": null,
+        "research_areas": ["Neuropsychology", "Psychosis research", "Hallucinations / hearing voices"],
+        "research_keywords": ["neuropsychology", "psychosis", "hallucinations"],
+        "relationship_type": "potential_supervisor",
+        "evidence_source_url": "https://www.swinburne.edu.au/research/centres-groups-clinics/centre-for-mental-health-and-brain-sciences/our-people",
+        "evidence_source_type": "official_department_page",
+        "evidence_quote_or_summary": "Official Swinburne centre people page lists: 'Professor Susan Rossell - Research Director, Voices Clinic ... srossell@swinburne.edu.au'.",
+        "confidence": 85
+      }
+    ],
+    "notes": "Swinburne Research Stipend (SRS) is a university-wide PhD stipend; applicants must nominate and work with a research supervisor, and the competitive assessment considers 'quality of the supervisory team'. Supervisors recorded are professors in Swinburne's Centre for Mental Health and Brain Sciences whose names and swinburne.edu.au emails are published on the official centre people page (verified)."
+  },
+  {
+    "scholarship_id": 663,
+    "outcome": "verified_supervisors",
+    "professors": [
+      {
+        "canonical_name": "William Kerua",
+        "title": "Associate Professor in Agricultural Extension and Rural Development",
+        "institution_name": "Fiji National University",
+        "department_name": "College of Agriculture, Fisheries and Forestry (CAFF)",
+        "official_profile_url": "https://www.fnu.ac.fj/institute-of-statistics-social-and-economic-research-isser/leadership-and-team-page/dr-william-kerua/",
+        "official_email": "William.Kerua@fnu.ac.fj",
+        "official_email_verified": true,
+        "lab_url": null,
+        "personal_academic_url": null,
+        "research_areas": ["Agricultural extension systems", "Rural community development", "Climate change adaptation", "Food security", "Value chains and entrepreneurship"],
+        "research_keywords": ["agricultural extension", "rural development", "climate change adaptation", "Pacific development", "ACIAR"],
+        "relationship_type": "potential_supervisor",
+        "evidence_source_url": "https://www.fnu.ac.fj/institute-of-statistics-social-and-economic-research-isser/leadership-and-team-page/dr-william-kerua/",
+        "evidence_source_type": "official_university_profile",
+        "evidence_quote_or_summary": "Official FNU profile page: 'Dr. William Kerua - Associate Professor in Agricultural Extension and Rural Development, Institution: College of Agriculture, Fisheries, and Forestry (CAFF), Fiji National University ... Over 20 Years in Teaching, Research, Supervision, and Consultancy across the Pacific ... Contact: William.Kerua@fnu.ac.fj'. Page also lists the 'ACIAR Fiji Landcare Project (2022-27)' among his major projects.",
+        "confidence": 85
+      },
+      {
+        "canonical_name": "Paul Iji",
+        "title": "Professor",
+        "institution_name": "Fiji National University",
+        "department_name": "College of Agriculture, Fisheries and Forestry (CAFF)",
+        "official_profile_url": "https://www.fnu.ac.fj/research/projects/",
+        "official_email": null,
+        "official_email_verified": false,
+        "lab_url": null,
+        "personal_academic_url": null,
+        "research_areas": ["Animal science and livestock production", "Agricultural research at FNU-CAFF"],
+        "research_keywords": ["animal science", "livestock", "dairy", "ACIAR"],
+        "relationship_type": "program_relevant_faculty",
+        "evidence_source_url": "https://www.fnu.ac.fj/research/projects/",
+        "evidence_source_type": "official_department_page",
+        "evidence_quote_or_summary": "Official FNU research projects page: 'Project Title: CSIRO/Lab Setup Support at FNU-CAFF - Research Team: Dr Royford Magiri, Professor Paul Iji - Research Sponsor: Australian Centre for International Agricultural Research'. No individual email is published on this page.",
+        "confidence": 70
+      }
+    ],
+    "notes": "The PASS scholarship page states applications 'should be completed in consultation with the prospective supervisors at FNU and corresponding ACIAR project leader or co-supervisor'. FNU's CAFF Academic Staff page and central Staff Directory render only via JavaScript (empty list without JS rendering), so named CAFF academics were verified via official FNU pages: the CAFF Dean's Message page (Dr Kaliova Tavou Ravuiwasa, Dean CAFF - no email published) and the research projects page. Scholarship officer contact on the PASS page: Ms. Varsha Dutt, aciargo@fnu.ac.fj (staff, not a professor)."
+  },
+  {
+    "scholarship_id": 664,
+    "outcome": "verified_supervisors",
+    "professors": [
+      {
+        "canonical_name": "Tammy Hoffmann",
+        "title": "Professor of Clinical Epidemiology",
+        "institution_name": "Bond University",
+        "department_name": "Faculty of Health Sciences & Medicine; Institute for Evidence-Based Healthcare",
+        "official_profile_url": "https://bond.edu.au/profile/tammy-hoffmann",
+        "official_email": null,
+        "official_email_verified": false,
+        "lab_url": "https://bond.edu.au/iebh/our-research/centre-evidence-informed-health-decisions",
+        "personal_academic_url": null,
+        "research_areas": ["Evidence-based practice", "Evidence implementation", "Shared decision making", "Clinical epidemiology"],
+        "research_keywords": ["evidence-based medicine", "systematic reviews", "clinical trials reporting", "implementation science"],
+        "relationship_type": "potential_supervisor",
+        "evidence_source_url": "https://bond.edu.au/profile/tammy-hoffmann",
+        "evidence_source_type": "official_university_profile",
+        "evidence_quote_or_summary": "Official Bond staff profile: 'Prof Tammy Hoffmann - Professor ... Institute for Evidence-Based Healthcare ... Accepting PhD Students ... Professor ... leads the Centre for Evidence-Informed Health Decisions in the Institute for Evidence-Based Healthcare, Bond University.' Email on the page is Cloudflare-obfuscated (rendered as '[email protected]'), so no address is recorded.",
+        "confidence": 85,
+        "availability": {
+          "scope": "phd_supervision",
+          "state": "verified_yes",
+          "source_url": "https://bond.edu.au/profile/tammy-hoffmann"
+        }
+      },
+      {
+        "canonical_name": "Julie Redfern",
+        "title": "Professor of Public Health; Director & Research Professor, Institute for Evidence-Based Healthcare",
+        "institution_name": "Bond University",
+        "department_name": "Institute for Evidence-Based Healthcare; Faculty of Health Sciences & Medicine",
+        "official_profile_url": "https://bond.edu.au/profile/julie-redfern",
+        "official_email": null,
+        "official_email_verified": false,
+        "lab_url": "https://bond.edu.au/iebh",
+        "personal_academic_url": null,
+        "research_areas": ["Public health", "Cardiovascular health services research", "Implementation science"],
+        "research_keywords": ["public health", "cardiovascular", "health services research", "implementation"],
+        "relationship_type": "potential_supervisor",
+        "evidence_source_url": "https://bond.edu.au/profile/julie-redfern",
+        "evidence_source_type": "official_university_profile",
+        "evidence_quote_or_summary": "Official Bond staff profile: 'Prof Julie Redfern - Director & Research Professor, IEBH ... Institute for Evidence-Based Healthcare, Building 5, Level 4 ... Accepting PhD Students ... Professor Julie Redfern AM PhD FAAHMS FESC GAICD is a Professor of Public Health and Director of the Institute for Evidence-Based Healthcare at Bond University.' Email is Cloudflare-obfuscated on the page.",
+        "confidence": 85,
+        "availability": {
+          "scope": "phd_supervision",
+          "state": "verified_yes",
+          "source_url": "https://bond.edu.au/profile/julie-redfern"
+        }
+      },
+      {
+        "canonical_name": "Paul Glasziou",
+        "title": "Emeritus Professor",
+        "institution_name": "Bond University",
+        "department_name": "Faculty of Health Sciences & Medicine",
+        "official_profile_url": "https://bond.edu.au/profile/paul-glasziou",
+        "official_email": null,
+        "official_email_verified": false,
+        "lab_url": null,
+        "personal_academic_url": null,
+        "research_areas": ["Evidence-based medicine", "Research waste", "Overdiagnosis and overtreatment"],
+        "research_keywords": ["evidence-based medicine", "research waste", "overdiagnosis"],
+        "relationship_type": "program_relevant_faculty",
+        "evidence_source_url": "https://bond.edu.au/iebh/meet-team",
+        "evidence_source_type": "official_department_page",
+        "evidence_quote_or_summary": "Bond IEBH 'Meet the team' page lists 'Professor Paul Glasziou AO - Emeritus Professor' with a link to his staff profile; the profile states 'Paul is Emeritus Professor at Bond University and the Former Director of the Institute for Evidence-Based Healthcare (2010-2024)'. Email is Cloudflare-obfuscated.",
+        "confidence": 75
+      }
+    ],
+    "notes": "Bond University Postgraduate Research Scholarship (BUPRS) is a university-wide PhD scholarship; Bond research degrees require applicants to find a supervisor (bond.edu.au/find-a-researcher). Supervisors recorded are professors in Bond's Institute for Evidence-Based Healthcare, listed on the official IEBH team page with official bond.edu.au staff profiles stating 'Accepting PhD Students'. Bond profile pages publish emails only behind Cloudflare email protection ('[email protected]'), so official_email is null and official_email_verified is false."
+  },
+  {
+    "scholarship_id": 665,
+    "outcome": "verified_supervisors",
+    "professors": [
+      {
+        "canonical_name": "Adam Burston",
+        "title": "Associate Professor; Head of Discipline (Nursing)",
+        "institution_name": "Australian Catholic University",
+        "department_name": "School of Nursing, Midwifery & Paramedicine, Faculty of Health Sciences",
+        "official_profile_url": "https://www.acu.edu.au/research-and-enterprise/our-people/adam-burston",
+        "official_email": "adam.burston@acu.edu.au",
+        "official_email_verified": true,
+        "lab_url": null,
+        "personal_academic_url": null,
+        "research_areas": ["Bioethics", "Moral distress", "Nursing education", "Nursing workforce", "Pressure injury"],
+        "research_keywords": ["bioethics", "moral distress", "nursing education", "pressure injury"],
+        "relationship_type": "potential_supervisor",
+        "evidence_source_url": "https://www.acu.edu.au/research-and-enterprise/our-people/adam-burston",
+        "evidence_source_type": "official_university_profile",
+        "evidence_quote_or_summary": "Official ACU researcher profile: 'Dr Adam Burston - Associate Professor Adam Burston - Head of Discipline (Nursing) / Research Fellow Nursing, Midwifery & Paramedicine ... Email: adam.burston@acu.edu.au ... HDR Supervisor accreditation status: HDR Supervisor (Full)'.",
+        "confidence": 85,
+        "availability": {
+          "scope": "phd_supervision",
+          "state": "verified_yes",
+          "source_url": "https://www.acu.edu.au/research-and-enterprise/our-people/adam-burston"
+        }
+      },
+      {
+        "canonical_name": "Elisabeth Jacob",
+        "title": "Professor; Head of School, Victoria",
+        "institution_name": "Australian Catholic University",
+        "department_name": "School of Nursing, Midwifery and Paramedicine, Faculty of Health Sciences",
+        "official_profile_url": "https://www.acu.edu.au/research-and-enterprise/our-people/elisabeth-jacob",
+        "official_email": "elisabeth.jacob@acu.edu.au",
+        "official_email_verified": true,
+        "lab_url": null,
+        "personal_academic_url": null,
+        "research_areas": ["Health workforce", "Quality and safety", "Nursing education", "Evidence based practice"],
+        "research_keywords": ["nursing workforce", "transition to practice", "evidence based practice"],
+        "relationship_type": "potential_supervisor",
+        "evidence_source_url": "https://www.acu.edu.au/research-and-enterprise/our-people/elisabeth-jacob",
+        "evidence_source_type": "official_university_profile",
+        "evidence_quote_or_summary": "Official ACU researcher profile: 'Professor Elisabeth Jacob - Head of School, Victoria - School of Nursing, Midwifery and Paramedicine ... Email: elisabeth.jacob@acu.edu.au'.",
+        "confidence": 85
+      },
+      {
+        "canonical_name": "Louisa Lam",
+        "title": "Professor in Nursing",
+        "institution_name": "Australian Catholic University",
+        "department_name": "School of Nursing, Midwifery and Paramedicine (VIC), Faculty of Health Sciences",
+        "official_profile_url": "https://www.acu.edu.au/research-and-enterprise/our-people/louisa-lam",
+        "official_email": "louisa.lam@acu.edu.au",
+        "official_email_verified": true,
+        "lab_url": null,
+        "personal_academic_url": null,
+        "research_areas": ["Cardiovascular disease diagnosis and management", "Clinical trials", "Emergency and critical care research", "Workforce management"],
+        "research_keywords": ["cardiovascular nursing", "clinical trials", "burnout", "workforce"],
+        "relationship_type": "potential_supervisor",
+        "evidence_source_url": "https://www.acu.edu.au/research-and-enterprise/our-people/louisa-lam",
+        "evidence_source_type": "official_university_profile",
+        "evidence_quote_or_summary": "Official ACU researcher profile: 'Professor Louisa Lam - Professor in Nursing - Faculty of Health Sciences, School of Nursing, Midwifery and Paramedicine (VIC) ... Email: louisa.lam@acu.edu.au ... HDR Supervisor accreditation status: Full'.",
+        "confidence": 85,
+        "availability": {
+          "scope": "phd_supervision",
+          "state": "verified_yes",
+          "source_url": "https://www.acu.edu.au/research-and-enterprise/our-people/louisa-lam"
+        }
+      }
+    ],
+    "notes": "The ACU Stipend Scholarship supports domestic and international candidates undertaking a Research Doctorate or Research Masters degree. acu.edu.au blocks direct automated fetching (HTTP 403 on https://www.acu.edu.au/ and the scholarship page), so profile content was verified from search-engine-indexed copies of the official acu.edu.au researcher profile pages, which publish each academic's name, title and email verbatim. The researchers listed hold published 'HDR Supervisor accreditation' status, evidencing PhD supervision suitability."
+  },
+  {
+    "scholarship_id": 666,
+    "outcome": "verified_supervisors",
+    "professors": [
+      {
+        "canonical_name": "Belinda Medlyn",
+        "title": "Distinguished Professor in Ecosystem / Earth System Modelling",
+        "institution_name": "Western Sydney University",
+        "department_name": "Hawkesbury Institute for the Environment",
+        "official_profile_url": "https://researchers.westernsydney.edu.au/en/persons/belinda-medlyn",
+        "official_email": null,
+        "official_email_verified": false,
+        "lab_url": "https://www.westernsydney.edu.au/hie",
+        "personal_academic_url": null,
+        "research_areas": ["Ecosystem / Earth system modelling", "Climate change impacts on vegetation", "Carbon cycle and photosynthesis"],
+        "research_keywords": ["vegetation modelling", "climate change", "carbon dioxide", "eucalypt"],
+        "relationship_type": "potential_supervisor",
+        "evidence_source_url": "https://researchers.westernsydney.edu.au/en/persons/belinda-medlyn",
+        "evidence_source_type": "official_university_profile",
+        "evidence_quote_or_summary": "Official WSU research profile: 'Belinda Medlyn - Distinguished Professor in Ecosystem / Earth System Modelling, Hawkesbury Institute for the Environment ... Supervised HDR Completions (4)'. The WSU Find a Supervisor page directs applicants to 'our research profiles and repository' to find a potential supervisor.",
+        "confidence": 85,
+        "availability": {
+          "scope": "phd_supervision",
+          "state": "verified_yes",
+          "source_url": "https://researchers.westernsydney.edu.au/en/persons/belinda-medlyn"
+        }
+      },
+      {
+        "canonical_name": "Matthias Boer",
+        "title": "Professor",
+        "institution_name": "Western Sydney University",
+        "department_name": "Hawkesbury Institute for the Environment",
+        "official_profile_url": "https://researchers.westernsydney.edu.au/en/persons/matthias-boer",
+        "official_email": null,
+        "official_email_verified": false,
+        "lab_url": "https://www.westernsydney.edu.au/hie",
+        "personal_academic_url": null,
+        "research_areas": ["Fire ecology", "Forest dynamics and dieback", "Climate change and natural hazards"],
+        "research_keywords": ["wildfire", "eucalypt", "fire regime", "climate change"],
+        "relationship_type": "potential_supervisor",
+        "evidence_source_url": "https://researchers.westernsydney.edu.au/en/persons/matthias-boer",
+        "evidence_source_type": "official_university_profile",
+        "evidence_quote_or_summary": "Official WSU research profile: 'Professor Matthias Boer - Professor, Hawkesbury Institute for the Environment ... Supervised HDR Completions (4)'.",
+        "confidence": 85,
+        "availability": {
+          "scope": "phd_supervision",
+          "state": "verified_yes",
+          "source_url": "https://researchers.westernsydney.edu.au/en/persons/matthias-boer"
+        }
+      },
+      {
+        "canonical_name": "Brajesh Singh",
+        "title": "Adjunct Professor",
+        "institution_name": "Western Sydney University",
+        "department_name": "Hawkesbury Institute for the Environment",
+        "official_profile_url": "https://researchers.westernsydney.edu.au/en/persons/brajesh-singh",
+        "official_email": null,
+        "official_email_verified": false,
+        "lab_url": null,
+        "personal_academic_url": null,
+        "research_areas": ["Soil microbiome", "Microbial ecology", "Sustainable agriculture"],
+        "research_keywords": ["soil microbiome", "microbial community", "sustainable agriculture", "climate change"],
+        "relationship_type": "potential_supervisor",
+        "evidence_source_url": "https://researchers.westernsydney.edu.au/en/persons/brajesh-singh",
+        "evidence_source_type": "official_university_profile",
+        "evidence_quote_or_summary": "Official WSU research profile: 'Brajesh Singh - Adjunct Professor - Hawkesbury Institute for the Environment ... Supervised HDR Completions (7)'.",
+        "confidence": 80,
+        "availability": {
+          "scope": "phd_supervision",
+          "state": "verified_yes",
+          "source_url": "https://researchers.westernsydney.edu.au/en/persons/brajesh-singh"
+        }
+      }
+    ],
+    "notes": "Western Sydney University Research Scholarship (Spring Release, Q1 2027) FAQ states 'you should work with your proposed supervisor when preparing your application', and the official Find a Supervisor page directs applicants to the research profiles repository at researchers.westernsydney.edu.au. All three professors are Hawkesbury Institute for the Environment academics with published 'Supervised HDR Completions' records on their official WSU profiles (verified PhD supervision). Emails on the Pure profile pages are Cloudflare-obfuscated (shown without the @ symbol), so official_email is null and official_email_verified is false."
+  },
+  {
+    "scholarship_id": 667,
+    "outcome": "not_applicable",
+    "professors": [],
+    "notes": "Pan-Arab research fellowship administered by the Arab Fund for Economic and Social Development (AFESD), Kuwait. No host institution is attached: fellows conduct advanced research and/or academic activity at prestigious universities of their own choosing, building bridges between Arab and foreign academic institutions. Official page (https://www.arabfund.org/overview/fellowships-program) also returned HTTP 403 to automated fetch. Per the scheme-level (no attached institution) rule, outcome is not_applicable with empty professors."
+  }
+]

@@ -1,0 +1,21 @@
+{
+  "agent_id": "w3_28",
+  "shard": "w3-28",
+  "host": "gov.br",
+  "today": "2026-10-04",
+  "logo_override": {
+    "url": "https://www.gov.br/mre/logo.png",
+    "page_url": "https://www.gov.br/mre/en/subjects/culture-and-education/educational-themes/study-opportunities-for-international-applicants/pec-pg-graduate/selection-process-2",
+    "official_host": true,
+    "alt_text": "gov.br - Governo Federal do Brasil",
+    "validation_result": "verified",
+    "validation_detail": "png, probed via webfetch -> 'Image fetched successfully' (HTTP 200 + image content type); full-colour 'gov.br' wordmark (blue / yellow / green) on a white field, so dark and legible on a light card",
+    "image_kind": "official_government",
+    "image_format": "png",
+    "verified_at": "2026-10-04T00:00:00+00:00",
+    "host_evidence": "same_registrable_domain",
+    "_award": "PEC-PG - Brazilian Program for Exchange Students, Postgraduate Level (PEC-PG 2027)"
+  },
+  "target_ids": [603],
+  "notes": "Awarding body is the Brazilian Ministry of Foreign Affairs (Itamaraty) with CNPq, both federal-government bodies, so the Federal Government / gov.br mark is correct - and it is the mark the awarding body's own site declares as its logo. The stored official_source_url fetched 200 and its Plone head carries a schema.org Organization node with \"url\": \"https://www.gov.br/mre\", \"logo\": \"https://www.gov.br/mre/logo.png\", and the same URL is repeated as og:image. That asset is served from www.gov.br, the shard host itself, satisfying rule 1 with no CDN involved. Probed it: 200 plus an image content type, and rule 3 is satisfied because the wordmark is rendered in gov.br blue/yellow/green on a solid white field rather than white-on-transparent. Checked for a more specific mark first: the MRE section carries no institutional crest or Itamaraty logo - its only other brand files are the generic shared theme favicons under /mre/++theme++padrao_govbr/favicons/ (favicon-32x32.png, favicon-48x48.png, apple-touch-icon.png, safari-pinned-tab.svg), which the brief tells me to prefer over only when no real logo exists. Page header logo is drawn by the federal 'barra-govbr' web component from barra.sistema.gov.br, i.e. a different host, so it is not usable. Note: the English variant of the PEC-PG path fetched fine, but the Portuguese /mre/pt-br/assuntos/portal-brasilmaisuniversitario URL I tried first is a 404 - irrelevant to the logo, which is section-wide."
+}

@@ -1,0 +1,84 @@
+{
+ "agent": "agent_350",
+ "assignment_count": 1,
+ "scholarships": [
+  {
+   "id": 715,
+   "title": "Heydar Aliyev International Education Grant (Study in Azerbaijan project)",
+   "country": "Azerbaijan",
+   "degree": "Bachelor's, Master's, PhD",
+   "funding_label": "Fully Funded",
+   "status": "upcoming",
+   "official_source": "Ministry of Science and Education of the Republic of Azerbaijan",
+   "official_source_url": "https://www.edu.gov.az/en/programmes/study-in-azerbaijan-layihesi",
+   "application_link": "https://www.edu.gov.az/en/programmes/study-in-azerbaijan-layihesi",
+   "catalogue_url": "https://studyinazerbaijan.edu.az/scholarships",
+   "official_updates_url": "https://studyinazerbaijan.edu.az",
+   "existing": {
+    "funding_amount": 800,
+    "funding_currency": "AZN",
+    "funding_period": "per month for 10 months a year, excluding July and August",
+    "tuition_coverage": 1,
+    "living_cost_coverage": 1,
+    "travel_coverage": 1,
+    "fully_funded": 1,
+    "description": "The Heydar Aliyev International Education Grant is an educational grant programme of the Government of Azerbaijan, established by presidential decree of 8 July 2023 and run by the Ministry of Science and Education through the Study in Azerbaijan project, for citizens of Organisation of Islamic Cooperation and Non-Aligned Movement member states, small island developing states, and countries with ethnic, historical or cultural ties to Azerbaijan. One hundred grants are awarded annually and applications are accepted across a five-year period beginning with the 2024/2025 academic year, covering tuition, visa and registration fees, a monthly stipend, medical care and one international round trip per year.",
+    "eligibility": [
+     "Be a citizen of a member state of the Organisation of Islamic Cooperation or of the Non-Aligned Movement",
+     "Be a citizen of a small island developing state",
+     "Or be a citizen of a country inhabited by peoples or national minorities with ethnic, historical or cultural ties to the peoples of Azerbaijan",
+     "Apply for study at a higher education institution in the Republic of Azerbaijan"
+    ],
+    "eligibility_summary": "Citizens of member states of the Organisation of Islamic Cooperation or the Non-Aligned Movement, citizens of small island developing states, and citizens of countries with ethnic, historical or cultural ties to the Azerbaijani people, applying to study at a higher education institution in Azerbaijan.",
+    "benefits": [
+     "Tuition fees and language preparatory courses for the whole study period",
+     "One international economy class flight to Baku and one return flight per year",
+     "Monthly allowance of 800 AZN (470 USD) for accommodation, daily expenses and educational materials, paid for 10 months a year excluding July and August",
+     "Yearly medical insurance allowance of 200 AZN (117 USD)",
+     "Single entry visa and registration for the study period"
+    ],
+    "coverage": [
+     "Tuition fees",
+     "Visa fees",
+     "Registration fees",
+     "Monthly stipend",
+     "Medical care",
+     "International travel, one round trip per year to and from the home country"
+    ],
+    "requirements": [
+     "Apply through the Study in Azerbaijan project channels, which the Ministry designates as the official source of information for education for foreign students in Azerbaijan",
+     "Meet the entry requirements of the chosen Azerbaijani higher education institution",
+     "Use the project office for visa, migration and accommodation support once the grant is awarded"
+    ],
+    "documents": [
+     "Application submitted through the Study in Azerbaijan project",
+     "Documents required by the chosen Azerbaijani higher education institution",
+     "Proof of citizenship of an eligible country"
+    ],
+    "english_requirement": "Not published as a fixed requirement; Azerbaijani higher education institutions teach in Azerbaijani, English, Russian and Turkish, so the language requirement follows the chosen programme",
+    "application_method": [
+     "Contact the Study in Azerbaijan project office in Baku, which is the Ministry's designated channel for foreign applicants",
+     "Apply to a participating Azerbaijani higher education institution",
+     "Submit grant applications through the project, which also supports the university application, visa and migration formalities and accommodation"
+    ],
+    "selection_notes": "The Ministry establishes the grant programme by presidential decree, awards 100 educational grants annually and operates it through the Study in Azerbaijan project. Earlier educational grants for OIC and NAM citizens were established by presidential decrees No. 3457 of 6 December 2017 and No. 3567 of 10 January 2018 and ran for five years from the 2018/2019 academic year to 2023. Separate intergovernmental agreements cover citizens of China, Romania, Kazakhstan, Hungary, Kyrgyzstan, Somalia and Uzbekistan, under which the state covers tuition, dormitory accommodation, a monthly stipend and medical care.",
+    "best_fit": "Students and researchers from OIC and NAM member states, small island developing states, and countries with ties to Azerbaijan who want a fully funded degree in Azerbaijan.",
+    "notes": "Earlier decrees No. 3457 and No. 3567 covered OIC and NAM citizens for 2018/19 to 2023, and the current programme is the successor established on 8 July 2023. Applicants from countries covered by intergovernmental agreements with Azerbaijan follow those separate schemes instead.",
+    "duration": "Five years of study, matching the five-year lifetime of the grant programme, with annual award rounds",
+    "application_period": "Annual call with two stages: nomination documents to the applicant country authority by 15 April and SIACAS registration from 18 May to 1 June in the 2026/2027 cycle",
+    "deadline_display": "The 2026/2027 call ran from 16 February to 15 April 2026, with registration through the Study in Azerbaijan Centralized Admission Service (SIACAS) from 18 May to 1 June 2026, selected candidates notified between 1 June and 1 July 2026, and arrival in Azerbaijan by 15 September 2026. The grant is awarded annually, so the next round is expected on the same early-year cycle.",
+    "deadline_date": null,
+    "region": "Asia",
+    "program_type": "Government scholarship",
+    "applicant_utility": null,
+    "official_details": null
+   },
+   "missing_fields": [
+    "deadline_date",
+    "applicant_utility",
+    "official_details"
+   ]
+  }
+ ],
+ "result_file": "C:\\Users\\GopaL\\Desktop\\Projects folder\\ScholarZone\\backend\\research_output\\live500\\results\\agent_350.json"
+}

@@ -1,0 +1,88 @@
+{
+ "agent": "agent_482",
+ "assignment_count": 1,
+ "scholarships": [
+  {
+   "id": 103,
+   "title": "Commonwealth Scholarship",
+   "country": "UK",
+   "degree": "Master's, PhD, Split-site PhD",
+   "funding_label": "Fully Funded",
+   "status": "closing-soon",
+   "official_source": "Commonwealth Scholarship Commission (CSC), UK",
+   "official_source_url": "https://cscuk.fcdo.gov.uk",
+   "application_link": "https://cscuk.fcdo.gov.uk",
+   "catalogue_url": "https://cscuk.fcdo.gov.uk/scholarships",
+   "official_updates_url": "https://cscuk.fcdo.gov.uk/scholarships/commonwealth-masters-scholarships",
+   "existing": {
+    "funding_amount": 3000,
+    "funding_currency": "SGD",
+    "funding_period": "per month",
+    "tuition_coverage": 1,
+    "living_cost_coverage": 1,
+    "travel_coverage": null,
+    "fully_funded": 0,
+    "description": "The Commonwealth Scholarship is awarded by the NUS Graduate School to outstanding graduate students from Commonwealth countries for research leading to a higher degree at the National University of Singapore. It is for new, incoming students who are not Singapore citizens or permanent residents and consists of a monthly stipend plus a subsidy for full tuition fees at the University. Stipend rates effective from 1 January 2026 are SGD 3,000 per month for PhD candidates and SGD 2,900 per month for Master's (Research) candidates. PhD scholars who pass the PhD Qualifying Examination may receive an additional stipend of up to SGD 500 per month, and a number of students are selected each semester.",
+    "eligibility": [
+     "Be a citizen of or have been granted refugee status by an eligible Commonwealth country",
+     "Be permanently resident in an eligible Commonwealth country",
+     "Be available to start academic studies in UK by September 2027",
+     "Hold a first degree of at least upper second-class (2:1) honours standard",
+     "Be unable to afford to study in UK without this scholarship"
+    ],
+    "eligibility_summary": "Commonwealth citizen (low/middle-income country), first degree at least 2:1 honours, permanently resident in eligible Commonwealth country, unable to afford UK study without scholarship",
+    "benefits": [
+     "Full tuition",
+     "Monthly stipend",
+     "Airfare",
+     "Thesis grant",
+     "Study travel grant"
+    ],
+    "coverage": [
+     "Full tuition",
+     "Monthly stipend",
+     "Airfare",
+     "Thesis grant",
+     "Study travel grant"
+    ],
+    "requirements": [
+     "Online application via CSC Central",
+     "Proof of citizenship (passport or national ID card)",
+     "Full transcripts with certified translations if not in English",
+     "References from at least two individuals",
+     "Research proposal (for PhD applicants)"
+    ],
+    "documents": [
+     "Online application via CSC Central",
+     "Proof of citizenship (passport or national ID card)",
+     "Full transcripts with certified translations if not in English",
+     "References from at least two individuals",
+     "Research proposal (for PhD applicants)"
+    ],
+    "english_requirement": "IELTS/TOEFL required",
+    "application_method": [
+     "Must apply through national nominating agency (NOT direct to CSC)",
+     "Apply to CSC via CSC Central online application system",
+     "Also apply and secure admission for chosen university course"
+    ],
+    "selection_notes": "Selection based on academic merit, quality of research proposal, potential impact on development of candidate's home country. The CSC does not accept direct applications for Master's/PhD scholarships.",
+    "best_fit": "Academic researchers and PhD candidates",
+    "notes": "For 2027/28 cycle: applications open 8 September 2026, CSC deadline 20 October 2026 at 16:00 BST. National nominating agency deadlines may be earlier. Results expected by July 2027. The CSC does not accept direct applications for Master's/PhD scholarships.",
+    "duration": "Master's: 12 months. PhD: 36 months.",
+    "application_period": "8 September 2026 to 20 October 2026 (CSC deadline; national agency deadlines may be earlier)",
+    "deadline_display": "20 October 2026 at 16:00 BST (CSC deadline for 2027/28 cycle; national nominating agency deadline may be earlier)",
+    "deadline_date": "2026-10-20",
+    "region": "Europe",
+    "program_type": "Government scholarship (Commonwealth Scholarship Commission)",
+    "applicant_utility": null,
+    "official_details": null
+   },
+   "missing_fields": [
+    "travel_coverage",
+    "applicant_utility",
+    "official_details"
+   ]
+  }
+ ],
+ "result_file": "C:\\Users\\GopaL\\Desktop\\Projects folder\\ScholarZone\\backend\\research_output\\live500\\results\\agent_482.json"
+}

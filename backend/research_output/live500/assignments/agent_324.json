@@ -1,0 +1,86 @@
+{
+ "agent": "agent_324",
+ "assignment_count": 1,
+ "scholarships": [
+  {
+   "id": 717,
+   "title": "National Scholarship Programme of the Slovak Republic (Národný štipendijný program SR, NŠP)",
+   "country": "Slovakia",
+   "degree": "Not applicable (mobility scholarship for study, research or artistic stays; no degree is awarded)",
+   "funding_label": "Stipend",
+   "status": "open",
+   "official_source": "National Scholarship Programme of the Slovak Republic, administered by SAIA (Slovak Academic and Information Agency) under an agreement with the Ministry of Education, Research, Development and Youth of the Slovak Republic",
+   "official_source_url": "https://www.stipendia.sk",
+   "application_link": "https://www.stipendia.sk",
+   "catalogue_url": "https://www.stipendia.sk/sk/main/podmienky-pre-predkladanie-ziadosti",
+   "official_updates_url": "https://www.stipendia.sk/sk/main/vysledky-vyberovych-konani",
+   "existing": {
+    "funding_amount": null,
+    "funding_currency": null,
+    "funding_period": null,
+    "tuition_coverage": null,
+    "living_cost_coverage": null,
+    "travel_coverage": null,
+    "fully_funded": 0,
+    "description": null,
+    "eligibility": [
+     "Outgoing track: be a student, doctoral candidate or postdoctoral of a Slovak higher education institution or research organisation",
+     "Outgoing track: hold permanent residence in Slovakia",
+     "Incoming track: be a foreign student, doctoral candidate, university teacher, researcher or artist invited to a Slovak higher education institution or research organisation",
+     "Have a selected foreign higher education institution or research workplace, or a Slovak host institution, for the proposed stay",
+     "Apply within the published round for the intended semester"
+    ],
+    "eligibility_summary": "Students, doctoral candidates and postdoctorals of Slovak higher education institutions and research organisations applying to cover living costs during a study and/or research or artistic stay at a selected foreign institution (outgoing track), or foreign students, doctoral candidates, university teachers, researchers and artists hosted by a Slovak institution (incoming track).",
+    "benefits": [
+     "Living costs during the study, research or artistic stay",
+     "Separate travel grant for eligible Slovak applicants"
+    ],
+    "coverage": [
+     "Living costs during the study, research or artistic stay",
+     "Separate travel grant for eligible Slovak applicants"
+    ],
+    "requirements": [
+     "Submit the application within the published round for the relevant semester",
+     "Have an eligible sending or host institution, since the programme operates as secondments for Slovak applicants and hosts for incoming participants",
+     "For Slovak applicants, hold permanent residence in Slovakia to be eligible for the travel grant",
+     "Follow the conditions approved by the Ministry of Education, Research, Development and Youth on 17 March 2025, which apply from the 30 April 2025 deadline onwards"
+    ],
+    "documents": [
+     "Application submitted through the programme's application channel",
+     "Confirmation of the sending or host institution",
+     "Documents required by SAIA for the relevant track and round"
+    ],
+    "english_requirement": "The programme site is published in Slovak; English-language material and international administration are provided for the incoming track",
+    "application_method": [
+     "Check which track applies: outgoing secondments for Slovak applicants, or incoming hosts for foreign participants",
+     "Agree the stay with the sending or host institution",
+     "Submit the application within the open round on the programme's application page",
+     "Slovak applicants may submit a travel grant request at the same time as the scholarship application"
+    ],
+    "selection_notes": "The programme is financed by the Ministry of Education, Research, Development and Youth from the state budget and administered by SAIA, n.o. Conditions for applicants from Slovakia (secondments) and applicants from abroad (hosted stays) are published separately and apply from the 30 April 2025 deadline onwards, in line with the conditions approved by the ministry on 17 March 2025. Scholarships awarded in earlier rounds remain governed by the conditions in force when they were granted. Results of the selection rounds are published on the programme's results page.",
+    "best_fit": "Slovak students, doctoral candidates and postdoctorals needing to fund a stay abroad, and foreign students, researchers, teachers and artists hosted by a Slovak institution.",
+    "notes": "The programme funds living costs rather than tuition, so it is recorded as a stipend with tuition coverage false. Monetary amounts sit in the downloadable conditions documents rather than on the pages read, so no funding_amount is asserted.",
+    "duration": "Length of the approved study, research or artistic stay abroad or, for the incoming track, in Slovakia",
+    "application_period": "Two annual rounds closing 30 April and 31 October, for winter and summer semester stays in the following academic year",
+    "deadline_display": "31 October 2026 for the call for the summer semester of the 2026/2027 academic year; the previous call closed on 30 April 2026, and the programme publishes two rounds a year for winter and summer semesters",
+    "deadline_date": "2026-10-31",
+    "region": "Europe",
+    "program_type": "Government scholarship",
+    "applicant_utility": null,
+    "official_details": null
+   },
+   "missing_fields": [
+    "funding_amount",
+    "funding_currency",
+    "funding_period",
+    "tuition_coverage",
+    "living_cost_coverage",
+    "travel_coverage",
+    "description",
+    "applicant_utility",
+    "official_details"
+   ]
+  }
+ ],
+ "result_file": "C:\\Users\\GopaL\\Desktop\\Projects folder\\ScholarZone\\backend\\research_output\\live500\\results\\agent_324.json"
+}

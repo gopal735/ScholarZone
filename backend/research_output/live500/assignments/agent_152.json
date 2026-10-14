@@ -1,0 +1,78 @@
+{
+ "agent": "agent_152",
+ "assignment_count": 1,
+ "scholarships": [
+  {
+   "id": 398,
+   "title": "University of Amsterdam Scholarships",
+   "country": "Netherlands",
+   "degree": "Bachelor's, Master's",
+   "funding_label": "Partially Funded",
+   "status": "open",
+   "official_source": "University of Amsterdam",
+   "official_source_url": "https://www.uva.nl/en/education/your-studies/financing-your-studies/scholarships/scholarships.html",
+   "application_link": "https://www.uva.nl/en/education/your-studies/financing-your-studies/scholarships/scholarships.html",
+   "catalogue_url": null,
+   "official_updates_url": null,
+   "existing": {
+    "funding_amount": null,
+    "funding_currency": null,
+    "funding_period": null,
+    "tuition_coverage": 1,
+    "living_cost_coverage": null,
+    "travel_coverage": null,
+    "fully_funded": 0,
+    "description": "The University of Amsterdam runs several scholarship programmes for talented and motivated international students, published from one official Fees and funding hub. The flagship is the Amsterdam Merit Scholarship for outstanding students from outside the EU/EEA planning a Master's programme at the UvA. Each faculty also runs its own scholarships for international Master's students, covering Economics and Business, Humanities, Law, Science and Social and Behavioural Sciences, and a separate set of Bachelor's scholarships exists. The Amsterdam Merit Scholarship equals the tuition fee but the UvA states it cannot be used as a partial tuition waiver, so the recipient still pays the full tuition, payable in monthly instalments. Amounts are set annually and are published by each faculty.",
+    "eligibility": [
+     "For the Amsterdam Merit Scholarship: hold a non-EU/EEA nationality and plan to do a Master's programme at the University of Amsterdam",
+     "Be an outstanding student with excellent study results; the UvA states the programme is highly selective and that only applicants with excellent study results and motivation might be eligible",
+     "Meet the admission requirements of the chosen UvA degree programme",
+     "Satisfy the additional criteria set by the specific faculty scheme, which differ per faculty"
+    ],
+    "eligibility_summary": "The umbrella covers several schemes, so eligibility is scheme-specific. The Amsterdam Merit Scholarship requires outstanding academic results and is open to students from outside the EU/EEA who plan a Master's at the UvA. Individual faculty schemes add their own criteria, and the UvA directs applicants to the relevant faculty page for details.",
+    "benefits": [
+     "Amsterdam Merit Scholarship covering an amount equal to the tuition fee",
+     "Faculty-specific scholarships for Master's students in Economics and Business, Humanities, Law, Science and Social and Behavioural Sciences",
+     "Separate scholarship programmes for Bachelor's students"
+    ],
+    "coverage": [
+     "Amsterdam Merit Scholarship equals the tuition fee, but the UvA states it cannot be used as a (partial) tuition waiver and the recipient must still pay the full tuition due",
+     "Faculty scholarships, whose amounts are determined and published by each faculty each year",
+     "External financial aid sources are listed separately and are not part of the UvA's own awards"
+    ],
+    "requirements": [],
+    "documents": [],
+    "english_requirement": null,
+    "application_method": [
+     "Apply through the relevant faculty or scheme page listed on the official Fees and funding hub",
+     "For faculty schemes that use the Amsterdam Merit Scholarship, the application is normally part of the Master's programme application, where applicants indicate they wish to be considered for a scholarship"
+    ],
+    "selection_notes": "The UvA describes the Amsterdam Merit Scholarship as highly selective and states that only applicants with excellent study results and motivation might be eligible to receive it. Selection, award volumes and assessment criteria are set and published by each faculty, and the Faculty of Science states it selects in March and informs applicants in April.",
+    "best_fit": "Outstanding international students from outside the EU/EEA seeking a Master's at the University of Amsterdam who meet their chosen programme's admission requirements and can satisfy the Dutch visa and financial-proof conditions.",
+    "notes": "Amounts are set annually and published by each faculty, and the UvA warns that no rights can be derived from information about previous years. The hub also lists external financial aid (other scholarships, the Direct Loan Program and other loans) plus Studiefinanciering and Beurzen for Dutch students, which are not part of this award.",
+    "duration": "1-3 years depending on programme",
+    "application_period": "Annual. The main Amsterdam Merit Scholarship round opens at the beginning of October with a 15 January deadline and results at the end of April; individual faculties publish their own rounds, amounts and deadlines, and amounts are published in late autumn.",
+    "deadline_display": "The umbrella hub page publishes no single deadline. Deadlines are set per scheme and per faculty: faculty scholarship pages for the Amsterdam Merit Scholarship give an application deadline of 15 January, with results announced at the end of April, while some faculties run a later round with a 2 February deadline. Amounts are determined each year and published in late autumn.",
+    "deadline_date": null,
+    "region": "Europe",
+    "program_type": "University scholarship programmes for international students (Amsterdam Merit Scholarship plus faculty-specific schemes)",
+    "applicant_utility": null,
+    "official_details": null
+   },
+   "missing_fields": [
+    "funding_amount",
+    "funding_currency",
+    "funding_period",
+    "living_cost_coverage",
+    "travel_coverage",
+    "requirements",
+    "documents",
+    "english_requirement",
+    "deadline_date",
+    "applicant_utility",
+    "official_details"
+   ]
+  }
+ ],
+ "result_file": "C:\\Users\\GopaL\\Desktop\\Projects folder\\ScholarZone\\backend\\research_output\\live500\\results\\agent_152.json"
+}

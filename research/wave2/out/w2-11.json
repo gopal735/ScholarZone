@@ -1,0 +1,580 @@
+{
+  "agent_id": "w2_11",
+  "shard": "w2-11",
+  "today": "2026-10-04",
+  "records": [
+    {
+      "outcome": "new",
+      "new_scholarship": {
+        "name": "National Humanities Center Residential Fellowship",
+        "country": "United States",
+        "region": "United States",
+        "degree_levels": "PhD (terminal degree required; postdoctoral researchers and doctoral candidates are not eligible)",
+        "funding_type": "Stipend (partial salary replacement)",
+        "program_type": "Independent humanities institute research fellowship (private nonprofit)",
+        "official_source": "National Humanities Center",
+        "official_source_url": "https://nationalhumanitiescenter.org/residential-fellowships/",
+        "catalogue_url": "https://nationalhumanitiescenter.org/research-fellowships-programs/",
+        "official_updates_url": "https://nationalhumanitiescenter.org/residential-fellowships/",
+        "status": "upcoming",
+        "is_verified": true,
+        "last_verified_date": "2026-10-04",
+        "duration": "Academic year (September-May), or fall semester (September-December) or spring semester (January-May)",
+        "deadline": "Applications open July 1; deadline October 1; letters of recommendation due October 8",
+        "deadline_date": "2027-10-01",
+        "deadline_precision": "exact",
+        "application_period": "Opens July 1, closes October 1 (letters of recommendation October 8)",
+        "eligibility_summary": "Holders of a PhD or equivalent terminal degree earned at least five years before applying, engaged in humanities research that will result in publication, with a substantial record of peer-reviewed scholarship beyond the dissertation. Faculty at research universities, liberal arts and teaching colleges, HBCUs, HSIs, tribal colleges and universities and international institutions, as well as independent scholars, may apply. Applicants of any citizenship are eligible and the Center sponsors J-1 Research Scholar visas.",
+        "coverage": [
+          "Individually determined stipend (the Center seeks to provide about half of the Fellow's salary)",
+          "Round-trip travel to Durham, North Carolina and back for the Fellow and immediate family living with the Fellow"
+        ],
+        "benefits": [
+          "Private study in the Center's building for the fellowship term",
+          "Library and reference support, including procurement of research materials",
+          "Breakfast and lunch on weekdays in the Teachers' Commons",
+          "Fellowship term in a residential community of humanities researchers"
+        ],
+        "requirements": [
+          "1,000-word project proposal",
+          "Short bibliography",
+          "Brief curriculum vitae (maximum four pages)",
+          "One-page tentative outline of the project structure",
+          "Three letters of recommendation (due October 8)"
+        ],
+        "application_method": [
+          "Submit the online application through the Center's application portal",
+          "Upload the proposal, bibliography, CV and outline",
+          "Provide names and contact details of three references, who are emailed a link to upload their letters"
+        ],
+        "english_requirement": "Fluency in written and spoken English is required.",
+        "selection_notes": "Applicants are informed by email in February; the fellowship class is typically announced in early April; all applicants receive final notification by the end of March. Alternates are offered fellowships by telephone.",
+        "best_fit": "Mid-career or senior humanities scholars with a published book or substantial peer-reviewed record who need a residential writing term.",
+        "funding_amount": null,
+        "funding_currency": null,
+        "funding_period": null,
+        "notes": "The Center does not fund post-docs, doctoral research, creative writing (fiction or poetry), edited volumes, collections of primary sources, textbooks or projects derivative of a dissertation. Stipends are taxable and are salary replacement only; no indirect costs or fringe benefits are included and institutional overhead is not allowed.",
+        "description": "The National Humanities Center, an independent humanities institute in Durham, North Carolina, awards residential fellowships of an academic year or a semester to scholars in advanced humanities research. The stipend is set individually and is intended to cover roughly half of the Fellow's salary, with the home institution covering the remainder, and the Center additionally pays round-trip travel for the Fellow and accompanying immediate family. Applicants of any nationality may apply and the Center sponsors eligible international scholars on J-1 Research Scholar Exchange Visitor visas. Applications for the 2028-29 academic year open on July 1, 2027 with an October 1, 2027 deadline."
+      },
+      "programme_detail_official": {
+        "official_source_urls": [
+          "https://nationalhumanitiescenter.org/residential-fellowships/",
+          "https://nationalhumanitiescenter.org/research-fellowships-programs/",
+          "https://nationalhumanitiescenter.org/residential-fellowships-faqs/"
+        ],
+        "application_link": "https://www.onlineapplicationportal.com/nhc",
+        "official_updates_url": "https://nationalhumanitiescenter.org/residential-fellowships/",
+        "catalogue_url": "https://nationalhumanitiescenter.org/research-fellowships-programs/",
+        "application_cycle": "2028-29 academic year; applications open July 1, 2027 and close October 1, 2027",
+        "deadline_central": "2027-10-01",
+        "deadline_central_display": "All materials are due October 1, 2027, except for letters of recommendation, which are due October 8.",
+        "deadline_central_timezone": "America/New_York",
+        "deadline_note": "The Center publishes a fixed annual pattern: applications open July 1 and close October 1, with recommendation letters due October 8. The page read on 2026-10-04 states the Center 'will begin accepting applications for the 2028-29 academic year on July 1, 2027 with a deadline of October 1, 2027', so the 2027-28 cycle has already closed.",
+        "status": "UPCOMING",
+        "status_note": "The 2027-28 competition closed on October 1, 2026, three days before this verification. The next published window opens July 1, 2027.",
+        "funding_amount": null,
+        "funding_currency": null,
+        "funding_period": null,
+        "funding_duration": "Academic year (September-May) or one semester (fall September-December or spring January-May)",
+        "tuition_coverage": false,
+        "tuition_coverage_note": "The fellowship pays a stipend as salary replacement and pays round-trip travel; it does not fund tuition, and it does not fund research travel, document collections, moving, shipping or living expenses.",
+        "living_cost_coverage": false,
+        "travel_coverage": true,
+        "fully_funded": false,
+        "funding_label": "Individually determined stipend, generally about half the Fellow's academic salary, plus round-trip travel to Durham for the Fellow and immediate family; the home institution is expected to cover the remaining salary",
+        "benefits": [
+          "Individually determined stipend, sized to provide about half of the Fellow's salary",
+          "Round-trip travel for the Fellow and any immediate family members living with the Fellow in North Carolina",
+          "Private study for the fellowship term",
+          "Library services and research material procurement",
+          "Weekday breakfasts and lunches",
+          "Residential community of humanities researchers"
+        ],
+        "eligibility": [
+          "Hold a PhD or equivalent terminal degree (such as an MFA) earned at least five years before applying",
+          "Be working on a significant project beyond the dissertation, with at least one single-authored book or a substantial body of peer-reviewed scholarship",
+          "Be engaged in humanities research that will result in publication",
+          "Hold a continuing academic appointment, or be an independent scholar",
+          "Not be a postdoctoral researcher; the Center does not fund post-docs",
+          "Not be a doctoral candidate; the Center does not fund doctoral research"
+        ],
+        "citizenship_residency": "No citizenship or residency restriction; the Center welcomes applications from scholars engaged in advanced humanities research regardless of citizenship or national origin and sponsors eligible international applicants on J-1 Research Scholar Exchange Visitor visas.",
+        "international_eligibility": "International scholars are eligible, including accompanying legal spouses and unmarried children under 21 who may be sponsored on J-2 visas. Exchange visitors must satisfy English proficiency and medical insurance requirements.",
+        "degree_levels": [
+          "Terminal degree holders (PhD or equivalent such as MFA)",
+          "Mid-career and senior faculty",
+          "Independent scholars"
+        ],
+        "study_mode": "Residential, in person at the Center in Durham, North Carolina",
+        "research_requirement": "A specific, well-defined humanities research project, typically a single-authored book, that is not a collection of primary sources, an edited volume, a dissertation derivative, creative writing, a pedagogical work or a policy report.",
+        "subject_or_agency_requirement": "Humanities research, including interdisciplinary work; projects from the natural and social sciences, arts, professions and public life are accepted only where they are informed by and contribute to humanities scholarship.",
+        "application_method": "Complete the online application in the Center's portal and upload all documents; three references are emailed a link to upload their letters separately.",
+        "application_route": "Direct application to the National Humanities Center.",
+        "requirements": [
+          "1,000-word project proposal describing objectives, significance, sources and methodology, plus current project status and projected timeline",
+          "Short bibliography",
+          "Curriculum vitae of no more than four pages",
+          "One-page tentative outline of the structure of the project, indicating stage of completion",
+          "Names and contact information for three references"
+        ],
+        "documents": [
+          "Project proposal (1,000 words, uploaded to the portal)",
+          "Bibliography",
+          "Curriculum vitae (maximum four pages)",
+          "Tentative project outline (one page)",
+          "Three letters of recommendation (uploaded by referees, due October 8)"
+        ],
+        "english_requirement": "Fluency in written and spoken English is required.",
+        "english_requirement_note": "Application materials must be submitted through the online portal, which converts uploads to PDF; the Center advises saving files as PDF first because some non-Latin characters may not survive conversion.",
+        "selection_criteria": [
+          "Strength and significance of the project proposal",
+          "Scholarly qualifications of the applicant",
+          "Humanities contribution of the work",
+          "Stage of completion and feasibility of the plan",
+          "Non-fiction, publication-oriented humanities scholarship"
+        ],
+        "selection_weighting": "NHC Fellows are chosen based on the strength of the project proposal and its supporting documents rather than on the length of the CV; the letter of recommendation should speak to the merits of the project.",
+        "duration": "Academic year (September through May), fall semester (September through December) or spring semester (January through May); partial terms cannot be accommodated.",
+        "award_holder_conditions": [
+          "Resident at the Center for the fellowship term; travel requiring an absence of three or more weekdays must be approved in advance",
+          "Long absences of ten or more consecutive days may not be approved",
+          "Attend two mandatory orientation sessions and project presentations in the first three weeks, and lunches with the Board of Trustees in October and March",
+          "Submit a fellowship evaluation and a summary of scholarly work at the end of the term",
+          "Complete a fellowship evaluation and, for former Fellows, a published project before reapplying"
+        ],
+        "supplements_or_initiatives": [
+          "Dedicated fellowship support for HBCU faculty",
+          "Support for UNCF/Mellon Faculty Residency Program participants",
+          "Dedicated support for scholars of early modern China, early-career female philosophers and at-risk scholars"
+        ],
+        "official_contacts": {
+          "general": "fellowships@nationalhumanitiescenter.org",
+          "application_portal_support": "nhc@onlineapplicationportal.com",
+          "phone": "+1 919 293 3329"
+        },
+        "description": "Residential fellowship of the National Humanities Center, an independent nonprofit humanities institute in Durham, North Carolina, for mid-career and senior scholars in all areas of the humanities. The award provides an individually determined stipend intended to cover about half the Fellow's salary and pays round-trip travel to Durham for the Fellow and accompanying immediate family. It is a research and writing award: it does not fund tuition, postdoctoral positions or doctoral research, and it requires full-time residence at the Center.",
+        "program_type": "Independent humanities institute research fellowship",
+        "region": "United States",
+        "coverage": "Stipend of roughly half salary plus round-trip travel; no tuition, research travel, document purchase, moving, shipping or living costs.",
+        "last_verified_date": "2026-10-04"
+      },
+      "programme_detail_applicant_utility": {
+        "application_readiness_checklist": [
+          "Confirm you held your PhD or equivalent terminal degree at least five years before the application deadline",
+          "Have a published book or a substantial peer-reviewed body of scholarship beyond the dissertation ready to list in the CV",
+          "Draft a 1,000-word proposal that states the project's current stage and projected timeline in the final paragraph",
+          "Prepare a one-page chapter outline showing the stage of completion of each section",
+          "Choose three referees who can speak to the merits of the project, ideally not from your own institution or dissertation committee",
+          "Ask your home institution's grants office to confirm it will cover the salary portion the Center will not fund"
+        ],
+        "common_rejection_risks": [
+          "Projects that are derivative of the applicant's dissertation",
+          "Creative writing such as fiction or poetry, which the Center cannot fund",
+          "Projects that are collections of primary sources, edited volumes, textbooks or syllabi",
+          "Non-humanities work such as white papers or policy reports",
+          "Proposals that do not describe the project's current status and projected timeline, which may be deemed ineligible",
+          "Insufficiently developed scholarly record beyond the dissertation",
+          "Missing letters of recommendation, which makes an application incomplete and ineligible for review"
+        ],
+        "estimated_uncovered_costs": [
+          "Roughly the remaining half of your academic salary, which the Center expects your home institution to cover",
+          "Living expenses in North Carolina, including housing, which Fellows arrange themselves",
+          "Research travel beyond the trip to Durham",
+          "Primary source document collections, editing costs, moving and shipping",
+          "Institutional overhead, indirect costs and fringe benefits, which are not permitted"
+        ],
+        "document_audit": [
+          "Proposal within the 1,000-word limit",
+          "CV within the four-page limit and focused on relevant publications",
+          "Tentative outline limited to one page and showing stage of completion",
+          "Bibliography complete for the proposed project",
+          "Three referees who will upload letters by October 8",
+          "All files uploaded as PDF to avoid conversion damage to non-English characters"
+        ],
+        "alerts": [
+          {
+            "trigger": "Proposal word limit",
+            "message": "The project description cannot exceed 1,000 words; the system converts submissions to PDF, so re-check the converted file for the final word count."
+          },
+          {
+            "trigger": "Institutional salary commitment",
+            "message": "With rare exceptions the Center cannot pay full salary, so secure your institution's commitment before applying."
+          },
+          {
+            "trigger": "Alternate status",
+            "message": "If you are notified as an alternate, you have one week to 10 days from the offer date to accept or decline."
+          }
+        ],
+        "submission_workflow": [
+          "Start preparing in the spring before the July 1 opening, when references are least busy",
+          "Submit the online application on or before October 1",
+          "Give referees the contact details immediately so their letters arrive before October 8",
+          "Confirm the portal shows the application and all three letters as received; the Center does not chase missing letters",
+          "Expect a status email in February and the public class announcement in early April"
+        ]
+      },
+      "programme_detail_verification": {
+        "cycle_verified": "2028-29 academic year cycle, published 2026-10-04: applications open July 1, 2027, deadline October 1, 2027, letters due October 8, 2027",
+        "verification_confidence": 0.92,
+        "official_fields_confirmed": [
+          "application_cycle",
+          "deadline_central",
+          "application_period",
+          "duration",
+          "eligibility",
+          "international_eligibility",
+          "requirements",
+          "documents",
+          "selection_criteria",
+          "award_holder_conditions",
+          "coverage",
+          "travel_coverage"
+        ],
+        "institution_check_required": [
+          "Confirm the current stipend formula and cohort budget with the Center, as stipends are individually determined and no fixed amount is published",
+          "Confirm that your home institution will release the salary share the Center does not cover",
+          "Confirm current J-1 Research Scholar Exchange Visitor requirements before accepting"
+        ],
+        "unverified_or_removed_claims": [
+          "No fixed stipend amount is published; the Center states stipends are individually determined, so funding_amount is null",
+          "Exact dates for the 2027-28 cycle were not read; only the current cycle status is published",
+          "Application portal URL was read from the Residential Fellowships page link but the portal itself was not opened"
+        ],
+        "source_citations": [
+          "https://nationalhumanitiescenter.org/residential-fellowships/",
+          "https://nationalhumanitiescenter.org/residential-fellowships-faqs/",
+          "https://nationalhumanitiescenter.org/research-fellowships-programs/",
+          "https://nationalhumanitiescenter.org/wp-content/uploads/2026/02/nhc-logo.svg"
+        ],
+        "researched_by": "w2_11"
+      },
+      "logo_override": {
+        "url": "https://nationalhumanitiescenter.org/wp-content/uploads/2026/02/nhc-logo.svg",
+        "page_url": "https://nationalhumanitiescenter.org/residential-fellowships-faqs/",
+        "official_host": true,
+        "alt_text": "National Humanities Center",
+        "validation_result": "verified",
+        "validation_detail": "Probed 2026-10-04: webfetch returned the SVG source (HTTP 200, image/svg+xml), 200x64 viewBox, dark navy #323B76 wordmark 'NATIONAL HUMANITIES CENTER' with light blue #9FC3D9 mark on an explicit white background rect",
+        "image_kind": "official_logo",
+        "image_format": "svg",
+        "verified_at": "2026-10-04T00:00:00+00:00",
+        "host_evidence": "same_registrable_domain",
+        "_award": "National Humanities Center Residential Fellowship"
+      },
+      "research_notes": {
+        "logo": "Extracted the site header logo img src on the Center's own homepage and on the FAQ page, then probed it: webfetch on https://nationalhumanitiescenter.org/wp-content/uploads/2026/02/nhc-logo.svg returned the SVG source, confirming HTTP 200 plus an image content type. The markup is dark navy (#323B76) on a white rect, so it is not white-on-transparent.",
+        "unverified": [
+          "Stipend amount is not published as a fixed figure",
+          "Advisory phone number and internal portal support contacts were read from page footers and FAQ text but not confirmed by a separate contact page"
+        ],
+        "substitution": null,
+        "official_pages_read": [
+          "https://nationalhumanitiescenter.org/research-fellowships-programs/",
+          "https://nationalhumanitiescenter.org/residential-fellowships/",
+          "https://nationalhumanitiescenter.org/residential-fellowships-faqs/",
+          "https://nationalhumanitiescenter.org/wp-content/uploads/2026/02/nhc-logo.svg"
+        ],
+        "degree_level_confirmed": "FAQ, Eligibility: 'Successful candidates earned a PhD or an equivalent terminal degree in their discipline, such as the MFA, at least five years prior to applying for the fellowship. The NHC does not fund post-docs'",
+        "dedup_check": "Checked research/wave2/shards/w2-11.json dedup (no NHC entry) and grepped verification/live_catalogue.json (386 items) plus research/wave1/merged/new_scholarships.append.json (150 records) for 'Humanities Center', 'National Humanities', 'NHC' and 'Guggenheim' - zero matches, so this is not a duplicate or near-duplicate of an existing row.",
+        "skeleton": false
+      }
+    },
+    {
+      "outcome": "new",
+      "new_scholarship": {
+        "name": "Benjamin A. Gilman International Scholarship",
+        "country": "United States",
+        "region": "United States",
+        "degree_levels": "Undergraduate",
+        "funding_type": "Partially Funded",
+        "program_type": "Government scholarship (U.S. Department of State, Bureau of Educational and Cultural Affairs)",
+        "official_source": "Benjamin A. Gilman International Scholarship Program (U.S. Department of State, Bureau of Educational and Cultural Affairs; administered by the Institute of International Education)",
+        "official_source_url": "https://www.gilmanscholarship.org/program/program-overview/",
+        "catalogue_url": "https://www.gilmanscholarship.org/applicants/deadlines-and-timeline/",
+        "official_updates_url": "https://www.gilmanscholarship.org/applicants/deadlines-and-timeline/",
+        "status": "upcoming",
+        "is_verified": true,
+        "last_verified_date": "2026-10-04",
+        "duration": "One academic term, a summer, or an academic year abroad, depending on the programme start date",
+        "deadline": "Spring 2027 cycle: applications open mid-January 2027; student deadline February 25, 2027 at 11:59pm Pacific Time; advisor certification deadline March 4, 2027",
+        "deadline_date": "2027-02-25",
+        "deadline_precision": "exact",
+        "application_period": "Mid-January 2027 to February 25, 2027 (Spring 2027 cycle, for programmes starting May 1, 2027 to April 30, 2028)",
+        "eligibility_summary": "U.S. citizen undergraduates enrolled at a two-year or four-year college or university who receive, or will receive during the study abroad term, a Federal Pell Grant. The award supports credit-bearing academic study and career-oriented internships abroad in any field and world region.",
+        "coverage": [
+          "Programme tuition",
+          "Room and board",
+          "Books",
+          "Local transportation",
+          "Insurance",
+          "International airfare",
+          "Passport and visa fees"
+        ],
+        "benefits": [
+          "Up to $5,000 merit-based award",
+          "12 months of noncompetitive eligibility (NCE) hiring status within the U.S. federal government"
+        ],
+        "requirements": [
+          "Federal Pell Grant eligibility during the application or the study abroad term",
+          "Study abroad or internship programme of at least four weeks for the standard Gilman award",
+          "Certification of the application by a Study Abroad and Financial Aid Advisor",
+          "Statement of purpose and statement of past study abroad participation",
+          "At least one academic reference and, for some fields, an additional reference"
+        ],
+        "application_method": [
+          "Apply online through the Gilman application portal during the open cycle",
+          "Have a Study Abroad and Financial Aid Advisor certify the submitted application before the certification deadline",
+          "Submit required statements and reference requests as part of the online application"
+        ],
+        "english_requirement": "Applicants must be able to communicate effectively in the language of the host country; the programme requires demonstrated proficiency appropriate to the programme of study abroad.",
+        "selection_notes": "Applications are screened for eligibility, reviewed by selection panelists and recommended awards are approved by the U.S. Department of State. Advisors see award status in the advisor account; all applicants are notified by email in the cycle's stated month.",
+        "best_fit": "Pell-Grant-receiving U.S. undergraduates needing help defraying the cost of a credit-bearing study abroad programme or internship.",
+        "funding_amount": 5000,
+        "funding_currency": "USD",
+        "funding_period": "per award (one-time, up to the stated maximum)",
+        "notes": "The award is not a full funding package: it is applied to eligible programme costs and does not cover the entire cost of study abroad. The Fall 2026 cycle closed on October 1, 2026, so the next applicable cycle is Spring 2027.",
+        "description": "The Benjamin A. Gilman International Scholarship is a congressionally funded programme of the U.S. Department of State's Bureau of Educational and Cultural Affairs, administered by the Institute of International Education, that awards up to $5,000 to Pell-Grant-receiving U.S. undergraduates for credit-bearing study abroad and career-oriented internships. The award may be used to defray programme tuition, room and board, books, local transportation, insurance, international airfare, passport and visa fees. Recipients also receive 12 months of noncompetitive eligibility for certain U.S. federal jobs. Applications for the Spring 2027 cycle open in mid-January 2027 with a February 25, 2027 deadline."
+      },
+      "programme_detail_official": {
+        "official_source_urls": [
+          "https://www.gilmanscholarship.org/program/program-overview/",
+          "https://www.gilmanscholarship.org/applicants/deadlines-and-timeline/"
+        ],
+        "application_link": "https://apply.gilmanapplication.org/",
+        "official_updates_url": "https://www.gilmanscholarship.org/applicants/deadlines-and-timeline/",
+        "catalogue_url": "https://www.gilmanscholarship.org/applicants/deadlines-and-timeline/",
+        "application_cycle": "Spring 2027 cycle; applications open mid-January 2027, for programmes starting May 1, 2027 to April 30, 2028",
+        "deadline_central": "2027-02-25",
+        "deadline_central_display": "The application deadline is Thursday, February 25, 2027, at 11:59pm Pacific Time, and the advisor certification deadline is Thursday, March 4, 2027.",
+        "deadline_central_timezone": "America/Los_Angeles",
+        "deadline_note": "The Fall 2026 cycle closed on October 1, 2026 (certification October 8, 2026) and is no longer applicable. The Fall 2026 cycle encompassed Winter/January 2027 through academic year 2027-2028 programmes; the Spring 2027 cycle is the next open window, opening mid-January 2027 with the same eligible programme start range.",
+        "status": "UPCOMING",
+        "status_note": "The published next window is the Spring 2027 application, opening mid-January 2027 with a February 25, 2027 student deadline and March 4, 2027 advisor certification deadline; all applicants are notified in May 2027.",
+        "funding_amount": 5000,
+        "funding_currency": "USD",
+        "funding_period": "per award (one-time, up to maximum)",
+        "funding_duration": "One academic term, summer or academic year abroad",
+        "tuition_coverage": true,
+        "tuition_coverage_note": "Award recipients 'must use the award to defray eligible study or intern abroad costs', and programme tuition is listed first among those eligible costs; the award is up to $5,000 and is not stated to cover tuition in full.",
+        "living_cost_coverage": true,
+        "travel_coverage": true,
+        "fully_funded": false,
+        "funding_label": "Up to $5,000 merit-based award applied to eligible study abroad costs (tuition, room and board, books, local transport, insurance, airfare, passport and visa fees), plus 12 months of federal noncompetitive eligibility; not full funding",
+        "benefits": [
+          "Up to $5,000 merit-based scholarship",
+          "12 months of noncompetitive eligibility (NCE) hiring status within the U.S. federal government",
+          "Access to a nationwide network of Gilman Scholars and alumni"
+        ],
+        "eligibility": [
+          "U.S. citizen",
+          "Enrolled in a two-year or four-year college or university as an undergraduate",
+          "Receiving a Federal Pell Grant at the time of application, or able to show the Pell Grant will be received during the study abroad term",
+          "Participating in a credit-bearing academic study abroad programme or career-oriented internship abroad",
+          "Programme must meet the minimum length and academic-credit requirements of the relevant cycle"
+        ],
+        "citizenship_residency": "U.S. citizens only; the programme funds American undergraduates studying abroad.",
+        "international_eligibility": "Not applicable as a grant to non-U.S. citizens; the award is for U.S. citizen undergraduates, regardless of the destination country, which may be in any world region.",
+        "degree_levels": [
+          "Undergraduate (two-year and four-year college students)"
+        ],
+        "study_mode": "Credit-bearing academic study abroad or career-oriented internship abroad",
+        "research_requirement": "No research proposal is required; academic coursework and, for internships, career-oriented placement is funded in any field.",
+        "subject_or_agency_requirement": "All academic fields, all world regions and all U.S. states are eligible; separate supplemental funding exists for STEM coursework and for critical-need languages.",
+        "application_method": "Submit the online application in the Gilman portal during the open cycle, then have a Study Abroad and Financial Aid Advisor certify it before the certification deadline.",
+        "application_route": "Direct online application to the Gilman Programme, with institutional advisor certification.",
+        "requirements": [
+          "Federal Pell Grant eligibility",
+          "Admission to or enrolment in a credit-bearing study abroad or internship programme of qualifying length",
+          "Advisor certification of the application",
+          "Statement of purpose",
+          "Statement of past study abroad participation",
+          "Academic reference (and additional references in some fields)"
+        ],
+        "documents": [
+          "Online application form",
+          "Federal Pell Grant verification",
+          "Study abroad programme acceptance or enrolment documentation",
+          "Statement of purpose",
+          "Statement of past study abroad participation",
+          "Reference request(s)"
+        ],
+        "english_requirement": "Applicants must be able to study or intern in the language of the destination; proficiency appropriate to the programme is expected.",
+        "english_requirement_note": "The programme is open to all fields and destinations, so the language requirement follows the host programme rather than a single programme-wide test score.",
+        "selection_criteria": [
+          "Demonstrated financial need through Pell Grant eligibility",
+          "Academic merit and quality of the proposed study abroad or internship programme",
+          "Quality of the applicant essays and recommendations",
+          "Adherence to programme and submission requirements"
+        ],
+        "selection_weighting": "Applications pass an eligibility screen, are reviewed by selection panelists, and recommended awards are approved by the U.S. Department of State; weights for individual criteria are not published.",
+        "duration": "Varies by term: spring, summer, fall, winter or academic year, matched to the programme start date",
+        "award_holder_conditions": [
+          "Award must be used only for eligible study abroad or internship costs",
+          "Applications must be certified by a Study Abroad and Financial Aid Advisor",
+          "Programme start date must fall inside the eligible range for the cycle applied for"
+        ],
+        "supplements_or_initiatives": [
+          "STEM Supplemental Award for STEM coursework or internships abroad",
+          "Critical Need Language Award for languages important to U.S. national security",
+          "Gilman-McCain Scholarship for veterans and their family members",
+          "Gilman Skills for America Scholarship for two-year college students, with up to $5,000 and no minimum programme length"
+        ],
+        "official_contacts": {
+          "general": "gilman@iie.org",
+          "website": "https://www.gilmanscholarship.org/contact-us/"
+        },
+        "description": "A congressionally funded programme of the U.S. Department of State's Bureau of Educational and Cultural Affairs, administered by the Institute of International Education since 2001, awarding up to $5,000 to Pell-Grant-receiving U.S. undergraduates for credit-bearing study abroad and career-oriented internships. Nearly 3,000 awards are made each academic year, and 72% of scholars come from small towns or rural communities. Award recipients may defray programme tuition, room and board, books, local transportation, insurance, international airfare, passport and visa fees, and they gain 12 months of federal noncompetitive eligibility.",
+        "program_type": "Government scholarship (federal, congressionally funded)",
+        "region": "United States",
+        "coverage": "Up to $5,000 usable against programme tuition, room and board, books, local transportation, insurance, international airfare, passport and visa fees; no living-cost or full-tuition guarantee.",
+        "last_verified_date": "2026-10-04"
+      },
+      "programme_detail_applicant_utility": {
+        "application_readiness_checklist": [
+          "Confirm you are a U.S. citizen enrolled as an undergraduate at a two-year or four-year institution",
+          "Document your Federal Pell Grant status for the application year or the study abroad term",
+          "Match your programme start date to the correct cycle: Spring 2027 covers programmes starting May 1, 2027 to April 30, 2028",
+          "Meet with your Study Abroad and Financial Aid Advisor early, because certification closes March 4, 2027",
+          "Draft the statement of purpose and the statement of past study abroad participation",
+          "Request academic references before mid-January 2027"
+        ],
+        "common_rejection_risks": [
+          "Missing or late advisor certification, which invalidates an otherwise complete application",
+          "Applying in the wrong cycle for the programme start date",
+          "Not receiving or not able to demonstrate Federal Pell Grant eligibility",
+          "Submitting after the 11:59pm Pacific Time deadline, which is firm and not extended",
+          "Proposals or internships that are not credit-bearing or not career-oriented",
+          "Missing the programme minimum length requirement for the standard award"
+        ],
+        "estimated_uncovered_costs": [
+          "Most of the total cost of study abroad, since the award is capped at $5,000",
+          "Any programme cost not on the eligible list",
+          "Costs for a term or programme length not covered by the cycle applied for",
+          "Living costs beyond room and board already charged by the programme"
+        ],
+        "document_audit": [
+          "Pell Grant verification for the correct academic year",
+          "Study abroad or internship programme details with confirmed start date",
+          "Statement of purpose",
+          "Statement of past study abroad participation",
+          "Advisor certification completed before March 4, 2027",
+          "Reference submissions received before the deadline"
+        ],
+        "alerts": [
+          {
+            "trigger": "Timezone",
+            "message": "All Gilman deadlines are Pacific Time; convert if you are in another zone and treat 11:59pm PT as final."
+          },
+          {
+            "trigger": "Cycle choice",
+            "message": "Applying in the wrong cycle for your programme start date disqualifies the application; check the eligible start-date range for the cycle you are in."
+          },
+          {
+            "trigger": "Certification deadline",
+            "message": "Advisor certification closes March 4, 2027, one week after the student deadline; an uncertified application is not reviewable."
+          }
+        ],
+        "submission_workflow": [
+          "Apply for admission to a qualifying study abroad or internship programme early enough to have documentation before mid-January 2027",
+          "Start the online application as soon as the cycle opens in mid-January 2027 and complete every essay",
+          "Submit the application by February 25, 2027 at 11:59pm Pacific Time",
+          "Send your advisor the certification request immediately and confirm certification before March 4, 2027",
+          "Watch for the award notification email in May 2027"
+        ]
+      },
+      "programme_detail_verification": {
+        "cycle_verified": "Fall 2026 cycle closed October 1, 2026; Spring 2027 cycle published as opening mid-January 2027 with a February 25, 2027 deadline, verified 2026-10-04",
+        "verification_confidence": 0.9,
+        "official_fields_confirmed": [
+          "funding_amount",
+          "funding_currency",
+          "deadline_central",
+          "application_cycle",
+          "application_period",
+          "eligibility",
+          "coverage",
+          "benefits",
+          "supplements_or_initiatives"
+        ],
+        "institution_check_required": [
+          "Confirm your institution's internal campus deadline, which is set by your Study Abroad and Financial Aid Advisor and is not published by the Gilman Programme",
+          "Confirm the study abroad programme meets the credit-bearing and minimum-length requirements for the cycle",
+          "Confirm current eligible-cost rules, which the programme publishes only as a linked expense document"
+        ],
+        "unverified_or_removed_claims": [
+          "The separate Gilman Skills for America Scholarship details were read only from the programme overview and are reported as a supplement, not as a separate record",
+          "The English/proficiency wording is inferred from the programme's destination-anywhere scope; no single test score is published on the pages read",
+          "The eligible/non-eligible expenses document linked on the overview page points to an external canva.com view, which was not read"
+        ],
+        "source_citations": [
+          "https://www.gilmanscholarship.org/program/program-overview/",
+          "https://www.gilmanscholarship.org/applicants/deadlines-and-timeline/",
+          "https://www.gilmanscholarship.org/wp-content/uploads/2023/10/DOS-gilman-logo.webp"
+        ],
+        "researched_by": "w2_11"
+      },
+      "logo_override": {
+        "url": "https://www.gilmanscholarship.org/wp-content/uploads/2023/10/DOS-gilman-logo.webp",
+        "page_url": "https://www.gilmanscholarship.org/program/program-overview/",
+        "official_host": true,
+        "alt_text": "Benjamin A. Gilman International Scholarship - U.S. Department of State seal lockup",
+        "validation_result": "verified",
+        "validation_detail": "Probed 2026-10-04: webfetch returned 'Image fetched successfully' for the header mark on the programme's own domain; rendered image shows a dark navy 'Benjamin A. Gilman International Scholarship' wordmark beside the U.S. flag and Department of State seal, all dark on a light background (not white-on-transparent)",
+        "image_kind": "official_logo",
+        "image_format": "webp",
+        "verified_at": "2026-10-04T00:00:00+00:00",
+        "host_evidence": "same_registrable_domain",
+        "_award": "Benjamin A. Gilman International Scholarship"
+      },
+      "research_notes": {
+        "logo": "Took the programme's own header mark from the site header img on its own page (DOS-gilman-logo.webp, served from the gilmanscholarship.org domain), then probed it: webfetch returned 'Image fetched successfully', confirming HTTP 200 plus an image content type. The rendered lockup is dark navy on light, so the white-on-transparent ban does not apply. I deliberately avoided the cookie-law CDN copy and the IIE footer logo, which are either third-party hosted or a different body's mark.",
+        "unverified": [
+          "Institutional campus deadlines are not published centrally",
+          "The eligible-expense detail lives in a linked external document that was not read",
+          "Minimum programme length for the standard award is not stated on the pages read"
+        ],
+        "substitution": null,
+        "official_pages_read": [
+          "https://www.gilmanscholarship.org/program/program-overview/",
+          "https://www.gilmanscholarship.org/applicants/deadlines-and-timeline/",
+          "https://www.gilmanscholarship.org/wp-content/uploads/2023/10/DOS-gilman-logo.webp"
+        ],
+        "degree_level_confirmed": "Programme Overview: 'provides up to $5,000 in merit-based scholarships to outstanding American undergraduate students with high financial need to pursue credit-bearing academic studies and career-oriented internships abroad'",
+        "dedup_check": "Checked the shard dedup list (no Gilman entry) and grepped verification/live_catalogue.json for 'Gilman' (0 matches). Checked the neighbouring 'Fulbright U.S. Student Program 2027-2028' and 'Boren Awards' rows: both are different awarding programmes, so this is not a duplicate. No wave1 appended record matches Gilman.",
+        "skeleton": false
+      }
+    }
+  ],
+  "rejected": [
+    {
+      "candidate": "Boren Awards (Boren Scholarships and Boren Fellowships)",
+      "url": "https://www.borenawards.org/",
+      "reason": "already in catalogue (verification/live_catalogue.json id 477, verified 2026-10-03)"
+    },
+    {
+      "candidate": "Hubert H. Humphrey Fellowship Program",
+      "url": "https://www.humphreyfellowship.org/",
+      "reason": "already in catalogue (verification/live_catalogue.json id 53, verified 2026-10-03)"
+    },
+    {
+      "candidate": "Fulbright U.S. Student Program 2027-2028",
+      "url": "https://us.fulbrightonline.org/",
+      "reason": "already in catalogue (verification/live_catalogue.json id 470)"
+    },
+    {
+      "candidate": "John Simon Guggenheim Memorial Foundation Fellowships",
+      "url": "https://www.gf.org/program/how-to-apply",
+      "reason": "cycle closed before today: official page states the 2027 application was due September 15, 2026 and 'The 2027 United States and Canada competition is now closed'; next window opens mid-August 2027, beyond the ~10 month horizon"
+    },
+    {
+      "candidate": "Thomas J. Watson Fellowship",
+      "url": "https://www.watsonfellowship.org/apply/",
+      "reason": "official domain no longer serves the programme: renders a parked-domain sales page ('Buy this domain'), so no verifiable official award page"
+    },
+    {
+      "candidate": "Mitacs Globalink Research Internship (GRI) 2027",
+      "url": "https://www.mitacs.ca/our-programs/globalink-research-internship-students",
+      "reason": "student call closed September 16, 2026 per the programme's own announcement; next student window opens around August 2027"
+    }
+  ]
+}

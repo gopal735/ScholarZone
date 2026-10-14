@@ -1,0 +1,82 @@
+{
+ "agent": "agent_008",
+ "assignment_count": 1,
+ "scholarships": [
+  {
+   "id": 41,
+   "title": "AECID Spanish Government Scholarship",
+   "country": "Spain",
+   "degree": "Master's, PhD, Research",
+   "funding_label": "Partially Funded",
+   "status": "open",
+   "official_source": "Agencia Española de Cooperación Internacional para el Desarrollo (AECID)",
+   "official_source_url": "https://www.aecid.es/es/becas-y-lectorados",
+   "application_link": "https://www.aecid.es/es/becas-y-lectorados",
+   "catalogue_url": "https://www.aecid.es/becas-lectorados",
+   "official_updates_url": "https://www.aecid.es/es/becas-y-lectorados",
+   "existing": {
+    "funding_amount": null,
+    "funding_currency": null,
+    "funding_period": "per month",
+    "tuition_coverage": 0,
+    "living_cost_coverage": 1,
+    "travel_coverage": null,
+    "fully_funded": 0,
+    "description": "The MAEC-AECID programme family (Becas Cooperación Española) is run by the Spanish Agency for International Development Cooperation (AECID) and funds training for Spanish citizens and for citizens of Spanish-cooperation partner countries, both in Spain and abroad. The official page groups the live 2026/2027 calls into four blocks: scholarships for young Spaniards, readerships (Lectorados) for Spaniards teaching Spanish abroad, scholarships for citizens of Latin America, Africa and Asia, and artistic or research residencies at the Real Academia de España en Roma. As of 2026-10-04 every 2026/2027 sub-programme listed on the official pages is marked \"Plazo cerrado\", so the next cycle is upcoming. Awards are financial support (a monthly stipend plus, for some programmes, Social Security registration or health insurance); the official pages reviewed do not state that tuition fees are paid.",
+    "eligibility": [
+     "Programme-specific: Spanish citizenship for theBecas para jóvenes españoles and Lectorados programmes",
+     "Programme-specific: citizenship of listed partner countries in Latin America, Africa, the Middle East, the Philippines and Ukraine for the corresponding programmes",
+     "Programme-specific: university degree (Licenciado/Grado) as the minimum study level, or admission to the target master's programme",
+     "Programme-specific: age ceilings stated in each Convocatoria (e.g. not over 27 at 31/12/2026 for Programa COE)"
+    ],
+    "eligibility_summary": "University degree, Spanish language proficiency for most programmes, citizen of eligible country",
+    "benefits": [
+     "Monthly stipend EUR 1,100",
+     "Some tuition support",
+     "Travel allowance"
+    ],
+    "coverage": [
+     "Monthly stipend EUR 1,100",
+     "Some tuition support",
+     "Travel allowance"
+    ],
+    "requirements": [
+     "Applications are filed telematically through the AECID Electronic Office (www.aecid.gob.es); deadlines run to 23:59:59 on the closing day, Madrid time",
+     "The complete bases and annexes are published in the Convocatoria text on the AECID Electronic Office"
+    ],
+    "documents": [
+     "Online application",
+     "Transcripts",
+     "Spanish language certificate",
+     "Motivation letter",
+     "References"
+    ],
+    "english_requirement": "Spanish required for most programmes, some in English",
+    "application_method": [
+     "Telematic application via the AECID Electronic Office (Sede electrónica AECID)"
+    ],
+    "selection_notes": "Selection rules are set in each programme's Convocatoria (Apartado 6 and the annexes); the umbrella page does not publish a common scoring scheme.",
+    "best_fit": "Spanish-speaking applicants or those willing to learn Spanish",
+    "notes": "This database row is an umbrella record covering the whole MAEC-AECID programme family rather than a single award; each sub-programme (COE, COOPERACIÓN, CULT, MASTER, ÁFRICA-MED, ESCUELA DIPLOMÁTICA, ASALE, MÚSICA, ROMA/ROMAUE/ROMAIB, Lectorados) has its own Convocatoria, dates and budget.",
+    "duration": null,
+    "application_period": "Convocatoria 2026/2027; each sub-programme opens and closes on its own dates (2026 sub-programmes closed between April and July 2026)",
+    "deadline_display": "Typically March-April each year",
+    "deadline_date": null,
+    "region": "Europe",
+    "program_type": "Government scholarship programme family (umbrella of sub-programmes)",
+    "applicant_utility": null,
+    "official_details": null
+   },
+   "missing_fields": [
+    "funding_amount",
+    "funding_currency",
+    "travel_coverage",
+    "duration",
+    "deadline_date",
+    "applicant_utility",
+    "official_details"
+   ]
+  }
+ ],
+ "result_file": "C:\\Users\\GopaL\\Desktop\\Projects folder\\ScholarZone\\backend\\research_output\\live500\\results\\agent_008.json"
+}

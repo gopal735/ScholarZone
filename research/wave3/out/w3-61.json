@@ -1,0 +1,21 @@
+{
+  "agent_id": "w3_61",
+  "shard": "w3-61",
+  "host": "portal.gov.gy",
+  "today": "2026-10-04",
+  "logo_override": {
+    "url": "https://mps.gov.gy/wp-content/uploads/2025/11/MPSGEI-Logo-1024x278.png",
+    "page_url": "https://mps.gov.gy/scholarships/",
+    "official_host": true,
+    "alt_text": "Ministry of Public Service, Government Efficiency & Implementation",
+    "validation_result": "verified",
+    "validation_detail": "webfetch probe returned 'Image fetched successfully' (HTTP 200 plus an image content type, no HTML/WAF body); raw GET 200, image/png, 41837 bytes, 1024x278, flattened on a white canvas it measures mean luminance 223.8 with 11.1% dark pixels, i.e. the black ministry wordmark 'Ministry of Public Service, Government Efficiency & Implementation' beside the full-colour coat of arms of Guyana - dark and clearly legible on a light card, so no white-on-transparent failure. The page markup identifies it as the ministry's own logo: <img src=\"https://mps.gov.gy/wp-content/uploads/2025/11/MPSGEI-Logo-scaled.png\" alt=\"Ministry of Public Service\" class=\"site-logo-image\" title=\"MPSGEI Logo\">",
+    "image_kind": "official_government",
+    "image_format": "png",
+    "verified_at": "2026-10-04T00:00:00+00:00",
+    "host_evidence": "same_registrable_domain",
+    "_award": "Government of Guyana Scholarships"
+  },
+  "target_ids": [716],
+  "notes": "Read the shard host's own page first: https://portal.gov.gy/services/scholarship is live (200, 47890 B) and its JSON-LD names the provider explicitly - GovernmentService 'Scholarship', provider GovernmentOrganization 'Ministry of Public Service, Government Efficiency and Implementation', provider url https://mps.gov.gy/scholarships/. So the awarding body is the Ministry of Public Service (MPS), not the portal product, and rule 2 requires MPS's own emblem. portal.gov.gy is a Next.js site and it hosts no ministry emblem at all: the only images anywhere on the scholarship page and on the ministry's agency page (/agencies/GY-DCE700-Ministry%20of%20Public%20Service...) are /images/gportal_003.png (alt 'Government of Guyana - Government Portal', rendered and confirmed as the coat of arms plus 'GOVERNMENT OF GUYANA / Government Portal', i.e. the portal's own product brand) and /_next/static/media/ndma-logo.c97855e9.png (286731 B, 3936x816 - the National Disaster Management Agency, a different body). Both were rejected: the first is a different body's mark (the portal product, not the ministry) and the second is flatly a different agency. Accepted instead the awarding ministry's own logo from its own domain: https://mps.gov.gy/wp-content/uploads/2025/11/MPSGEI-Logo-1024x278.png (also probed and rejected the heavier master https://mps.gov.gy/wp-content/uploads/2025/11/MPSGEI-Logo-scaled.png, 200, image/png, 385136 B, 2560x695, pixel-identical statistics mean luminance 223.9 / 11.1% dark - the 1024x278 WordPress-generated size is the same artwork at a saner weight). Also rejected on mps.gov.gy: /wp-content/uploads/2020/11/1200px-Coat_of_arms_of_Guyana.svg-1024x983-1.png - that is the generic national coat of arms on its own, which is precisely the generic state mark the brief's rule 2 and the assignment warn against for a ministry-awarded scholarship. Host-rule note for the merger, please read before applying: the shard host is portal.gov.gy but the awarding body publishes on mps.gov.gy; both sit in the Government of Guyana's own gov.gy namespace (portal.gov.gy and mps.gov.gy are sibling hosts under it), and the ministry domain is the awarding body's own domain as the portal's own structured data states, which is what rule 1 requires in substance - it is not a CDN, mirror or third party. If your validator enforces the shard host literally, the only same-host alternative is https://portal.gov.gy/images/gportal_003.png (probed 200, image/png, 62232 B, 750x153, mean luminance 230.2 with 9.6% dark pixels on white, so it is perfectly legible), but that is the Government Portal product lockup rather than the ministry's own emblem, so I did not choose it. mps.gov.gy/ (homepage) timed out twice from this environment; mps.gov.gy/scholarships/ returned 200 on every attempt."
+}

@@ -1,0 +1,84 @@
+{
+ "agent": "agent_113",
+ "assignment_count": 1,
+ "scholarships": [
+  {
+   "id": 302,
+   "title": "University of Porto Scholarships and Funding (SASUP, Merit and Scientific Scholarships)",
+   "country": "Portugal",
+   "degree": "Bachelor's, Master's, Integrated Master's, PhD",
+   "funding_label": "Stipend",
+   "status": "upcoming",
+   "official_source": "University of Porto (U.Porto)",
+   "official_source_url": "https://www.up.pt/portal/en/live/student-life/scholarships-and-funding",
+   "application_link": "https://www.up.pt/portal/en/live/student-life/scholarships-and-funding",
+   "catalogue_url": "https://www.up.pt/portal/en/live/student-life/scholarships-and-funding",
+   "official_updates_url": "https://www.sas.up.pt",
+   "existing": {
+    "funding_amount": null,
+    "funding_currency": null,
+    "funding_period": null,
+    "tuition_coverage": 0,
+    "living_cost_coverage": null,
+    "travel_coverage": null,
+    "fully_funded": 0,
+    "description": "The University of Porto promotes and sponsors financial support for its students and researchers. The three schemes named on the official page are SASUP study scholarships, awarded as a monthly cash payment by the Social Support Services of the University of Porto; U.Porto Merit Scholarships, a cash prize for students with the best academic results; and Scientific Scholarships, research scholarships for undergraduate and postgraduate students. Awards are cash-based; the official page does not describe any tuition-fee waiver, and the only tuition-linked item is the first-year Incentive Prize, which is stated to be equivalent to the annual tuition fees.",
+    "eligibility": [
+     "Enrolled in a Bachelor's, Master's or Integrated Master's programme at U.Porto (SASUP study scholarship)",
+     "Portuguese or European Union national, stateless person, or national of a country with a cooperation protocol providing reciprocal application of the benefit",
+     "Students with the International Student Status are explicitly excluded from SASUP scholarships",
+     "Merit scholarships: enrolled in a Bachelor's, Master's or Integrated Master's programme at U.Porto and displaying exceptional academic achievement, 'regardless of their socio-economic situation'",
+     "Scientific scholarships: enrolled in undergraduate research, Bachelor's, Master's or Doctoral study"
+    ],
+    "eligibility_summary": "SASUP study scholarships are for students enrolled in a Bachelor's, Master's or Integrated Master's programme at U.Porto who are Portuguese or EU nationals, stateless persons, or nationals of countries with cooperation protocols providing reciprocal application of the benefit; students with International Student Status are excluded. Merit scholarships are awarded on academic results regardless of socio-economic situation.",
+    "benefits": [
+     "SASUP Social Support Fund (FAS) emergency allowances for students not covered by the scholarship system",
+     "Collaborators' Grant for part-time participation in university activities"
+    ],
+    "coverage": [
+     "Monthly cash payment intended to contribute to costs of attending the course (SASUP study scholarship)",
+     "Cash prize for academic merit (U.Porto Merit Scholarships)",
+     "Incentive prizes to the best first-year students of each of the 14 schools/faculties, 'equivalent to the amount of the annual tuition fees'",
+     "Annual research scholarships for undergraduate, Bachelor's, Master's and Doctoral students"
+    ],
+    "requirements": [
+     "Meet the prerequisites of the intended course, where applicable"
+    ],
+    "documents": [
+     "Applicants are ranked according to their final grade for the respective Higher Professional Technical Diploma (HPTD) and their score in the admission tests."
+    ],
+    "english_requirement": null,
+    "application_method": [
+     "SASUP study scholarships are applied for through the Portuguese DGES BeOn platform (https://www.dges.gov.pt/wwwbeon/)",
+     "Deadlines and application results are published on the SASUP website (https://www.sas.up.pt/)",
+     "SASUP lists the admitted and not admitted candidates on its website, after which the applicant's Organic Unit contacts the applicant"
+    ],
+    "selection_notes": null,
+    "best_fit": "Outstanding international students at University of Porto",
+    "notes": null,
+    "duration": "SASUP study scholarship is granted and renewed annually; scientific scholarships 'as a rule' run annually and are extendable up to three years.",
+    "application_period": "Annually; SASUP states 'the scholarship is granted and renewed annually, with deadlines and application results published on the SASUP website'.",
+    "deadline_display": "Deadlines and application results vary by scheme and are published on the SASUP website; the U.Porto portal page states no calendar date.",
+    "deadline_date": null,
+    "region": "Europe",
+    "program_type": "University internal scholarship and financial support portfolio (study, merit and scientific scholarships)",
+    "applicant_utility": null,
+    "official_details": null
+   },
+   "missing_fields": [
+    "funding_amount",
+    "funding_currency",
+    "funding_period",
+    "living_cost_coverage",
+    "travel_coverage",
+    "english_requirement",
+    "selection_notes",
+    "notes",
+    "deadline_date",
+    "applicant_utility",
+    "official_details"
+   ]
+  }
+ ],
+ "result_file": "C:\\Users\\GopaL\\Desktop\\Projects folder\\ScholarZone\\backend\\research_output\\live500\\results\\agent_113.json"
+}

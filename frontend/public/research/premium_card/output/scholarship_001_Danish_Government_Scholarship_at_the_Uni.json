@@ -1,0 +1,104 @@
+{
+  "source_title": "Danish Government Scholarship at the University of Copenhagen",
+  "source_provider": "University of Copenhagen (UCPH), funded by the Danish Ministry of Higher Education and Science",
+  "source_file": "denmark_scholarships.json",
+  "researched_at": "2026-10-06T13:40:43.234262+00:00",
+  "data": {
+    "id": "research-001",
+    "title": "Danish Government Scholarship at the University of Copenhagen",
+    "provider": "University of Copenhagen (UCPH), funded by the Danish Ministry of Higher Education and Science",
+    "record_type": "scholarship",
+    "official_sources": [
+      {
+        "url": "https://www.ku.dk/studies/masters/application-and-admission/scholarships",
+        "title": "Danish Government Scholarship at the University of Copenhagen",
+        "source_type": "official_provider",
+        "source_domain": "www.ku.dk",
+        "publication_date": null,
+        "last_modified_date": null,
+        "checked_at": "2026-10-06T13:40:42.404390+00:00",
+        "source_priority": 1
+      }
+    ],
+    "image": {
+      "url": "https://www.ku.dk/fileadmin/_processed_/7/b/csm_Tuition_fees_and_scholarships_NEGATIV_cb3ae2bdeb.png",
+      "source_type": "official_provider",
+      "source_url": "https://www.ku.dk/studies/masters/application-and-admission/scholarships",
+      "alt_text": "Danish Government Scholarship at the University of Copenhagen"
+    },
+    "funding": {
+      "funding_type": "Full or partial tuition fee waiver and/or monthly living expense grant",
+      "fully_funded": false,
+      "award_amount": {
+        "minimum": null,
+        "maximum": null,
+        "fixed": null,
+        "period": "unknown"
+      },
+      "currency": null
+    },
+    "eligibility": {
+      "citizenship": {
+        "required": null,
+        "eligible_countries": [],
+        "excluded_countries": [],
+        "worldwide": null
+      },
+      "age": {
+        "minimum": null,
+        "maximum": null
+      },
+      "degree": {
+        "minimum_degree": null,
+        "required_degree_field": [],
+        "final_year_allowed": null,
+        "equivalent_degree_allowed": null
+      },
+      "language": {
+        "required": true,
+        "teaching_language": [
+          "English"
+        ],
+        "accepted_tests": [],
+        "minimum_scores": {},
+        "moi_accepted": "unknown"
+      }
+    },
+    "application": {
+      "application_method": "direct",
+      "official_application_url": "https://www.ku.dk/studies/masters/application-and-admission/scholarships",
+      "application_fee": {
+        "required": null,
+        "amount": null,
+        "currency": null,
+        "waiver_available": null
+      }
+    },
+    "deadlines": {
+      "status": "unknown",
+      "deadline_date": "January 15 (September semester intake); September 1 (February semester intake). For the 2027/2028 cycle: January 15, 2027 (September intake).",
+      "deadline_display": "January 15 (September semester intake); September 1 (February semester intake). For the 2027/2028 cycle: January 15, 2027 (September intake).",
+      "deadline_precision": "unknown"
+    },
+    "verification": {
+      "is_verified": true,
+      "verification_status": "active",
+      "last_verified_date": "2026-10-06",
+      "verified_by": "automated_research"
+    },
+    "data_quality": {
+      "coverage_level": "medium",
+      "missing_key_fields": [],
+      "unknown_fields": [],
+      "estimated_fields": [
+        "funding",
+        "eligibility",
+        "application"
+      ]
+    },
+    "research_notes": [
+      "Automated research pass completed with page fetch"
+    ],
+    "research_errors": []
+  }
+}

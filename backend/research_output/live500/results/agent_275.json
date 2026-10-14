@@ -1,0 +1,147 @@
+{
+  "agent": "agent_275",
+  "records": [
+    {
+      "id": 642,
+      "official": {
+        "official_source_urls": [
+          "https://www.cecipu.gob.cl/becas-de-estudios",
+          "https://www.cecipu.gob.cl/postulaciones-cecipu",
+          "https://www.cecipu.gob.cl/cursos-ofrecidos",
+          "https://www.cecipu.gob.cl/media/2026/05/informativo-postulaciones-cecipu-2027-1.pdf",
+          "https://cecipu.interior.gob.cl/"
+        ],
+        "application_link": "https://cecipu.interior.gob.cl/",
+        "catalogue_url": "https://www.cecipu.gob.cl/cursos-ofrecidos",
+        "official_updates_url": "https://www.cecipu.gob.cl/becas-de-estudios",
+        "deadline_central": "2026-10-30",
+        "deadline_central_display": "30 October 2026, 23:59",
+        "deadline_note": "Single national deadline published by the Executive Secretariat; applications are institutional, since the Director or Commander General of the applicant's police institution must authorise each nomination in writing.",
+        "application_cycle": "2026 application call for the 2027 course offerings",
+        "status": "OPEN",
+        "status_note": "The official page states the application period opens on 1 August and closes on 30 October 2026 at 23:59.",
+        "tuition_coverage_note": "Las Becas ofrecidas por el Programa CECIPU se otorgan para realizar estudios de Formacion, Perfeccionamiento y Especializacion Policial, en planteles docentes de las Fuerzas de Orden y Seguridad de Chile (Carabineros de Chile y de la Policia de Investigaciones de Chile), conforme al ofrecimiento que se hace anualmente.",
+        "funding_amount": null,
+        "funding_currency": null,
+        "funding_period": "per month",
+        "tuition_coverage": true,
+        "living_cost_coverage": true,
+        "travel_coverage": false,
+        "fully_funded": false,
+        "benefits": [
+          "Gastos de arriendo y alimentacion (externado) - rent and food for day-attendance courses",
+          "Gastos de alojamiento y alimentacion (internado) - accommodation and food for residential courses",
+          "Cobertura medica y dental primaria (solo ante circunstancias derivadas de actividades propias del curso) - primary medical and dental cover, only for circumstances arising from the course's own activities",
+          "Vestuario y equipo necesario (solo cursos de formacion) - clothing and necessary equipment, formation courses only",
+          "La beca del programa para este curso considera una asignacion mensual en moneda nacional, para gastos de alojamiento y alimentacion - a monthly allowance in national currency for accommodation and food (course portal)"
+        ],
+        "eligibility": [
+          "Las Becas estan dirigidas a Oficiales, Suboficiales o Tropa de las Policias Uniformadas de los paises interesados en incorporarse al Programa",
+          "No se aceptaran postulantes de instituciones policiales civiles - applicants from civilian police institutions are not accepted",
+          "Los postulantes no hispanoparlantes deberan poseer un dominio medio/medio alto del idioma castellano, con comprension y expresion oral y escrita satisfactoria",
+          "Para ingresar a Chile, todos los becarios deberan hacerlo obligatoriamente con pasaporte oficial y seguro de vida",
+          "Cumplir los requisitos especificos del curso al que postula, incluidos los examenes medicos y psicologicos"
+        ],
+        "requirements": [
+          "Los interesados deben ingresar a la pagina www.cecipu.gob.cl, donde encontraran los cursos ofrecidos y todos los requisitos exigidos para cada uno",
+          "En el link Postulacion completar el formulario de postulacion y una Carpeta Digital con los antecedentes requeridos, remitiendola por el mismo medio a la Secretaria Ejecutiva del Programa",
+          "Los documentos deben ser escaneados en un solo archivo PDF, independiente del numero de paginas, para que el sistema permita el envio de la postulacion",
+          "Documento esencial para aceptar la postulacion: autorizacion escrita del Director o Comandante General de la institucion policial del postulante (modelo en la pagina inicial del programa), exigible a todos los postulantes",
+          "El hecho de formalizar la postulacion se entiende que conoce y acepta en todas sus partes los Requisitos de Postulacion, el Instructivo de Postulacion y la informacion publicada en la pagina web del programa"
+        ],
+        "documents": [
+          "Hoja de vida institucional (modelo oficial)",
+          "Certificado medico que acredite salud fisica y psicologica compatible con el servicio policial, con fichas medicas fisica y psicologica oficiales",
+          "Carta o nota firmada por el Director Nacional o Comandante General autorizando la postulacion al curso",
+          "Una fotografia a color de 9 x 12 cm, de 300 dpi, cuerpo entero, de frente, con uniforme y sin cubre cabeza",
+          "Certificado o partida de nacimiento",
+          "Certificado de antecedentes penales, apostillado o legalizado",
+          "Certificados de estudios (ensenanza media o equivalente, tecnicos y/o universitarios)",
+          "Pasaporte oficial y seguro de vida, obligatorios para ingresar a Chile"
+        ],
+        "selection_criteria": [
+          "La Secretaria Ejecutiva del Programa CECIPU efectua la evaluacion de los antecedentes y la seleccion de los postulantes a los diferentes cursos; decision que es inapelable",
+          "La Secretaria se reserva el derecho de aceptar o rechazar las solicitudes recibidas conforme a la disponibilidad de cupos y el cumplimiento de requisitos",
+          "No se notificara a quienes no resulten beneficiados con beca",
+          "Los examenes medicos y psicologicos deben ser realizados o visados por un profesional de salud de la institucion policial del postulante y podran ser ratificados en Chile"
+        ],
+        "coverage": [
+          "Gastos de arriendo y alimentacion (externado)",
+          "Gastos de alojamiento y alimentacion (internado)",
+          "Cobertura medica y dental primaria, solo ante circunstancias derivadas de actividades propias del curso",
+          "Vestuario y equipo necesario, solo cursos de formacion",
+          "La beca NO considera el financiamiento de pasajes de traslado de los becarios desde y hacia su pais de origen, los cuales deben ser de cargo de la institucion o el pais patrocinante",
+          "La beca NO considera giras culturales y/o de estudios en el extranjero para ningun curso"
+        ],
+        "application_method": [
+          "Completar el formulario electronico en la pagina del programa con antecedentes personales, academicos e institucionales",
+          "Adjuntar la Carpeta Digital con toda la documentacion escaneada en un solo archivo PDF",
+          "Remitir la postulacion por la misma via web (https://cecipu.interior.gob.cl/) a la Secretaria Ejecutiva del Programa",
+          "La comunicacion de resultados se realiza en la segunda quincena de diciembre, primero al Director o Comandante General de la institucion y luego directamente al becario"
+        ],
+        "application_route": "Apply online through the CECIPU website (www.cecipu.gob.cl, Postulacion section, portal cecipu.interior.gob.cl): complete the electronic form and upload a single merged PDF dossier to the Executive Secretariat.",
+        "study_mode": "Full-time (cursos con dedicacion exclusiva), externado or internado",
+        "citizenship_residency": "Oficiales, Suboficiales o Tropa of the uniformed police forces of countries interested in joining the Programme; civilian police institutions are not accepted.",
+        "international_eligibility": "Exclusively for foreign police officers: the programme grants scholarships to extranjeros (officers, non-commissioned officers and enlisted personnel of uniformed police forces outside Chile).",
+        "subject_or_agency_requirement": "Applicants must belong to a uniformed police institution; courses are delivered only at the teaching schools of Carabineros de Chile and the Policia de Investigaciones de Chile, and several courses specify rank (Oficiales y Suboficiales).",
+        "research_requirement": null,
+        "duration": "Follows each course: 8 semesters (Formacion de Oficiales de Orden y Seguridad; Carrera Profesional de Investigador(a) Policial), 4 semesters (Oficial Graduado en Ciencias Policiales), 2 semesters (specialities and Oficial Graduado en Investigacion Criminalistica)",
+        "description": "Chile's international cooperation programme granting scholarships to foreign uniformed police officers for Formacion, Perfeccionamiento and Especializacion Policial studies at the teaching schools of Carabineros de Chile and the Policia de Investigaciones de Chile. Since its creation in 1995 the programme has awarded 2,647 scholarships.",
+        "region": "Latin America (studies in Chile; applicants from uniformed police forces of interested countries)",
+        "program_type": "Government cooperation scholarship - police Formacion, Perfeccionamiento y Especializacion courses",
+        "english_requirement": null
+      },
+      "verification": {
+        "source_citations": [
+          "https://www.cecipu.gob.cl/becas-de-estudios",
+          "https://www.cecipu.gob.cl/postulaciones-cecipu",
+          "https://www.cecipu.gob.cl/media/2026/05/informativo-postulaciones-cecipu-2027-1.pdf",
+          "https://cecipu.interior.gob.cl/"
+        ],
+        "last_verified_date": "2026-10-10",
+        "verification_status": "confirmed",
+        "confidence": "high",
+        "not_confirmed": [
+          "funding_amount - the programme pages publish the benefit items but no monetary figure in any currency",
+          "funding_currency - only the wording 'asignacion mensual en moneda nacional' is published, with no amount",
+          "english_requirement - no English test or MOI rule is published by the programme",
+          "course-specific bases (edad, health, size and academic requisites per course) - published in the 2027 prospectus PDF, which could not be downloaded in full from the slow official server"
+        ],
+        "notes": "Checked the official CECIPU pages (becas-de-estudios, postulaciones-cecipu, cursos-ofrecidos), the official 'Informativo Postulaciones 2026 - para 2027' PDF and the application portal cecipu.interior.gob.cl; all benefit, deadline, document and selection wording comes from those pages, and no monetary value is published for the monthly allowance."
+      },
+      "applicant_utility": {
+        "summary": "CECIPU is a hosted police training award, not a cash scholarship: while you study at Carabineros de Chile or PDI schools the programme pays your lodging and food (asignacion mensual en moneda nacional), primary medical and dental cover, and on formation courses your uniform and equipment. You must fund your own flights in both directions, because the bursa explicitly excludes travel tickets and foreign study trips, and you enter Chile on an official passport with life insurance already in force. The call runs 1 August to 30 October 2026 and every document must be merged into a single PDF before upload. Without the written authorisation of your Director or Commander General the file is not accepted at all.",
+        "best_fit": "Serving officers, NCOs and enlisted personnel of a partner country's uniformed police force, with medium-high Spanish, whose command has nominated them, and who want multi-year formation or specialist policing credentials in Chile.",
+        "application_readiness_checklist": [
+          "Secure the written authorisation letter from your Director or Commander General first, on the programme's official model - no letter, no application",
+          "Start the apostille or legalisation of your police clearance certificate early; it is the slowest document in the file",
+          "Have the medical and psychological tests performed or countersigned by a health professional of your own police institution",
+          "Merge CV, certificates, letter, photo, birth certificate, police clearance and study certificates into ONE PDF regardless of page count",
+          "Confirm your target course's rank, health and size requirements on the Cursos Ofrecidos page before selecting it"
+        ],
+        "common_rejection_risks": [
+          "Missing, unsigned or wrongly addressed authorisation from the highest police authority",
+          "Applying from a civilian police institution, which the programme does not accept",
+          "Uploading documents as several separate files instead of a single merged PDF, so the portal refuses the submission",
+          "Non-Spanish-speaking applicants below the required medium/medium-high command of Spanish",
+          "Incomplete course-specific requirements or health exams not countersigned by the institution's own professional"
+        ],
+        "estimated_uncovered_costs": "International air travel to and from Chile (borne by the applicant's institution or sponsoring country), any complementary insurance beyond the primary medical and dental cover, foreign cultural or study trips, and personal expenses outside the scholarship.",
+        "document_audit": [
+          "The photograph must be exactly 9 x 12 cm, 300 dpi, full body, facing front, in uniform and without headwear",
+          "The police clearance certificate must be apostilled or legalised, not a plain copy",
+          "The medical certificate must carry the official physical and psychological forms attached",
+          "Birth certificate (certificado o partida de nacimiento) is required in addition to the passport",
+          "Study certificates must cover secondary, technical and/or university education as applicable"
+        ],
+        "alerts": [
+          "Results are communicated only in the second half of December and go first to your Commander or Director; unsuccessful applicants are never notified, so treat silence as a rejection",
+          "The Secretariat's selection decision is unappealable and can reject a compliant application purely on place availability",
+          "The window closes 30 October 2026 at 23:59, and the apostille plus single-PDF preparation makes this a six-to-eight week job",
+          "You cannot enter Chile to take up the scholarship without the official passport and life insurance already in place"
+        ],
+        "submission_workflow": "Fill the electronic form on the CECIPU portal, upload the single-PDF dossier and submit by 30 October 23:59; the Executive Secretariat evaluates all files centrally and reports the selection to your command in the second half of December."
+      }
+    }
+  ]
+}

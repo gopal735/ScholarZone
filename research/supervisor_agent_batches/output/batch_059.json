@@ -1,0 +1,44 @@
+[
+  {
+    "scholarship_id": 480,
+    "outcome": "not_applicable",
+    "professors": [],
+    "notes": "Harvard College need-based financial aid (official page verified live: https://college.harvard.edu/financial-aid/apply-financial-aid/prospective-students) is administered by the Harvard College Admissions Office and Griffin Financial Aid Office as office-based, means-tested aid: applicants submit the CSS Profile, IDOC and (US applicants) FAFSA, and aid decisions are issued with admissions decisions. No research programme, lab or supervising professor is attached to the award, so supervisor enrichment is not applicable. Published contact is the administrative office (86 Brattle Street, Griffin Financial Aid Office), not a faculty supervisor."
+  },
+  {
+    "scholarship_id": 481,
+    "outcome": "not_applicable",
+    "professors": [],
+    "notes": "Yale College need-based financial aid (official page verified live: https://finaid.yale.edu/apply/prospective) is administered by the Yale Undergraduate Financial Aid office and is assessed as part of the Yale College admission application (CSS Profile code 3987, FAFSA, IDOC). It is office-based, means-tested aid with no research programme or supervising professor attached, so supervisor enrichment is not applicable. Published contact is the Undergraduate Financial Aid office, not a faculty supervisor."
+  },
+  {
+    "scholarship_id": 482,
+    "outcome": "not_applicable",
+    "professors": [],
+    "notes": "MIT undergraduate need-based aid / MIT Scholarship (official page verified live: https://sfs.mit.edu/undergraduate-students/apply-for-aid/international) is administered by MIT Student Financial Services. The page states 'International students are considered for aid using the same process that we use for all applicants. We are committed to meeting 100% of demonstrated financial need for international students, just as we are for domestic students.' The MIT Scholarship is a needs-based, office-adjudicated grant determined via CSS Profile/IDOC; no supervising professor or research group is attached, so supervisor enrichment is not applicable. Published contact is the SFS office email (sfs@mit.edu), not a faculty supervisor."
+  },
+  {
+    "scholarship_id": 483,
+    "outcome": "not_applicable",
+    "professors": [],
+    "notes": "UT Austin international student scholarships (official page verified live: https://global.utexas.edu/isss/advising-services/scholarships) are administered by Texas Global / International Student and Scholar Services (ISSS): need-, merit- and country-restricted awards (e.g. General ISSS Financial Aid, International Education Fee Scholarship, Carlos and Clara Quintanilla Scholarship, Good Neighbor Scholarship, TAMS) awarded through the LASSO system in twice-yearly windows. The page names no supervising professor or research group; published contacts are ISSS administrative offices (intlfinaid@austin.utexas.edu, sponsoredstudent@austin.utexas.edu). Awards are office-administered financial support for enrolled students, not supervisor-linked funding, so supervisor enrichment is not applicable."
+  },
+  {
+    "scholarship_id": 484,
+    "outcome": "not_applicable",
+    "professors": [],
+    "notes": "UChicago international student financial aid is administered by the University of Chicago Office of Financial Aid / College Admissions as office-based need-based aid plus automatic merit-scholarship consideration; the source URL in the batch (uchicago.edu/admissions/undergraduate/financial-aid/international-students) now returns HTTP 404, and the equivalent official pages were verified live at https://financialaid.uchicago.edu/undergraduate/the-application-process/international/ and https://collegeadmissions.uchicago.edu/financial-support/international-financial-aid/ ('We are committed to meeting 100% of your demonstrated need with a loan-free financial aid package if you are admitted and applied for funding'). No research programme or supervising professor is attached to the award, so supervisor enrichment is not applicable. Published contact is the Office of Financial Aid (Walker 101), not a faculty supervisor."
+  },
+  {
+    "scholarship_id": 485,
+    "outcome": "no_verified_supervisor_found",
+    "professors": [],
+    "notes": "The Mastercard Foundation Scholars Program at CMU-Africa (official page verified live: https://africa.engineering.cmu.edu/impact/mastercard-foundation-scholars.html) is a fully funded, needs-based scholarship supporting admitted MS students in Information Technology, Electrical and Computer Engineering or Engineering Artificial Intelligence in Kigali. It is administered by the Mastercard Foundation Scholars Program office, not by individual supervisors: the official page names only the programme manager, Olga Gikundiro Buki (listed in the official CMU-Africa directory, https://www.africa.engineering.cmu.edu/about/contact/directory/index.html, as 'Mastercard Foundation Scholars Program Manager', email gbuki@andrew.cmu.edu) - a staff administrator rather than a professor, so she is not listed as a professor. The degree programme pages (MSIT, MS ECE, MS EAI) and the CMU-Africa faculty directory list CMU-Africa faculty generally, but no official page ties any named professor or lab to this scholarship, and the award is needs-based rather than supervision-based. No professor entry could be evidence-verified."
+  },
+  {
+    "scholarship_id": 486,
+    "outcome": "not_applicable",
+    "professors": [],
+    "notes": "Google PhD Fellowship Program (official page verified live: https://research.google/programs-and-events/phd-fellowship) is an industry-sponsored fellowship with no attached university institution: 'PhD students ... must be nominated for the fellowship by their university. Applications must be submitted by an official representative of the university during the application window. Please contact your department or graduate school for more information on the internal nomination process.' Application materials require the CV of the nominee's own primary PhD advisor and advisor letters, i.e. supervision remains with the student's home-university advisor, whom Google does not name. The past-recipients page (research.google/programs-and-events/phd-fellowship/recipients/) lists only student fellows and their home universities, with no supervising professors or Google host/mentor faculty. The only published contact is the programme team (phdfellowship@google.com). Per the enrichment rules for schemes with no attached institution, the outcome is not_applicable with empty professors."
+  }
+]

@@ -1,0 +1,15 @@
+{
+ "batch": "batch_60",
+ "agents": [
+  497,
+  499
+ ],
+ "assignment_files": [
+  "assignments/agent_497.json",
+  "assignments/agent_499.json"
+ ],
+ "result_files": [
+  "results_internal/agent_497.json",
+  "results_internal/agent_499.json"
+ ]
+}

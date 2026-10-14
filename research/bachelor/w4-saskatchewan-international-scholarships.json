@@ -1,0 +1,303 @@
+{
+  "new_scholarship": {
+    "name": "University of Saskatchewan International Excellence Award",
+    "country": "Canada",
+    "region": "Canada",
+    "degree_levels": "Bachelor's",
+    "funding_type": "Entrance scholarship",
+    "program_type": "Entrance scholarship",
+    "official_source": "University of Saskatchewan",
+    "official_source_url": "https://admissions.usask.ca/money/scholarships.php",
+    "catalogue_url": "https://admissions.usask.ca/money/search-awards.php",
+    "official_updates_url": "https://admissions.usask.ca/money/scholarships.php",
+    "duration": null,
+    "deadline": "15 February",
+    "deadline_date": "2027-02-15",
+    "deadline_precision": "day_and_month",
+    "application_period": "15 February is the deadline to apply for admission in order to be eligible for consideration for this award. Consideration is automatic once the admission application is submitted by that date; no separate award application is described.",
+    "application_method": "Automatic - considered upon admission, subject to the admission application deadline",
+    "status": "upcoming",
+    "is_verified": true,
+    "last_verified_date": "2026-10-03",
+    "description": "The University of Saskatchewan International Excellence Award is a competitive entrance award of $10,000 offered to an international student, awarded on academic achievement and considered automatically upon admission. One award is offered per year, and admission must be applied for by 15 February to be eligible.",
+    "best_fit": "An international applicant to an undergraduate programme at the University of Saskatchewan with strong academic achievement who applies for admission by the published deadline.",
+    "funding_amount": 10000,
+    "funding_currency": "CAD",
+    "funding_period": null,
+    "eligibility_summary": "International students are considered automatically for this award based on academic achievement upon admission. Applying for admission by 15 February is required to be eligible for consideration.",
+    "eligibility": [
+      "International student",
+      "Applying for admission to the University of Saskatchewan by 15 February",
+      "Academic achievement sufficient to be ranked for a single annual award"
+    ],
+    "coverage": [
+      "Award value toward undergraduate tuition",
+      "The page does not publish a per-year or multi-year breakdown"
+    ],
+    "benefits": [
+      "Value of $10,000",
+      "Number offered: 1"
+    ],
+    "requirements": [
+      "Submit the admission application by 15 February",
+      "Meet the academic achievement standard required for the award"
+    ],
+    "required_documents": [],
+    "english_requirement": null,
+    "selection_notes": "Consideration is automatic and based on academic achievement upon admission. With only one award offered, admission alone does not secure it.",
+    "image_url": null,
+    "image_source_url": null,
+    "image_source_type": null,
+    "image_alt_text": null,
+    "image_verified_at": null,
+    "notes": "The published deadline is stated as 15 February without a year. The year recorded here is inferred from the current Fall 2027 viewbook and today's date; this is flagged for verification."
+  },
+  "programme_detail_official": {
+    "official_source_urls": [
+      "https://admissions.usask.ca/money/scholarships.php",
+      "https://admissions.usask.ca/requirements/international.php",
+      "https://admissions.usask.ca/money/search-awards.php",
+      "https://admissions.usask.ca/documents/brochures/general_viewbook.pdf"
+    ],
+    "application_link": null,
+    "official_updates_url": "https://admissions.usask.ca/money/scholarships.php",
+    "catalogue_url": "https://admissions.usask.ca/money/search-awards.php",
+    "application_cycle": "Fall 2027 entry, per the current undergraduate viewbook",
+    "deadline_central": "2027-02-15",
+    "deadline_central_display": "15 February - deadline to apply for admission to be eligible for consideration",
+    "deadline_central_timezone": null,
+    "deadline_institutional": "2027-02-15",
+    "deadline_note": "The page states 'February 15 is the deadline to apply for admission to be eligible for consideration for these awards'. The year is not printed alongside the date. The Fall 2027 viewbook lists 15 January 31 in its entrance-deadline table, which does not match the 15 February stated on the awards page. Both figures are recorded and the discrepancy is flagged for verification.",
+    "status": "upcoming",
+    "status_note": "The awards page lists this award as available to students who apply for admission by the published deadline. The next 15 February falls after the date of verification.",
+    "funding_amount": 10000,
+    "funding_currency": "CAD",
+    "funding_period": null,
+    "funding_duration": "Not published on the awards page",
+    "tuition_coverage": true,
+    "tuition_coverage_note": "The awards page gives a single award value and does not describe what it covers or over what period.",
+    "living_cost_coverage": false,
+    "travel_coverage": false,
+    "fully_funded": false,
+    "funding_label": "$10,000, one award per year",
+    "benefits": [
+      "University of Saskatchewan International Excellence Award: $10,000, number offered: 1, automatic consideration on admission",
+      "International Baccalaureate (IB) Excellence Award for international students: $20,000, number offered: 1, automatic on admission",
+      "International student from Saskatchewan award: $15,000, number offered: 4, for temporary residents applying from Saskatchewan high schools, admission deadline 1 May",
+      "International student from Manitoba award: $10,000, for a top international student applying from a Manitoba high school, admission deadline 1 May",
+      "International student from Alberta award: $10,000, for a top international student applying from an Alberta high school, admission deadline 1 May",
+      "International student from British Columbia award: $10,000, for a top international student applying from a British Columbia high school, admission deadline 1 May",
+      "Indigenous students from USA awards: $10,000, number offered: 2, for Indigenous students from the United States, with Indigenous membership verification required",
+      "Separate IB Diploma Programme Excellence Award for domestic students: $3,000, which is a distinct award and not applicable to international applicants"
+    ],
+    "eligibility": [
+      "International student applying for admission to the University of Saskatchewan",
+      "Admission application submitted by 15 February for eligibility for consideration",
+      "Academic achievement strong enough to be ranked among applicants for a single award",
+      "Separate admission deadline of 1 May applies to the Saskatchewan, Manitoba, Alberta and British Columbia international student awards"
+    ],
+    "citizenship_residency": "International students",
+    "international_eligibility": "The international student awards page states that unless otherwise noted most awards are open to international applicants, and several are designated specifically for international students. The Saskatchewan, Manitoba, Alberta and British Columbia awards additionally require the applicant to be a temporary resident in Canada during their first year of study and to be applying from a high school in the named province.",
+    "degree_levels": ["Bachelor's"],
+    "study_mode": "Full-time",
+    "research_requirement": null,
+    "subject_or_agency_requirement": "Open to all colleges; no subject restriction published for this award",
+    "application_method": "Automatic - considered upon admission; the admission application deadline governs eligibility",
+    "application_route": "Submit the University of Saskatchewan admission application by 15 February. No separate award application is described for this award.",
+    "requirements": [
+      "Apply for admission by 15 February",
+      "Demonstrate the academic achievement required for the award"
+    ],
+    "documents": [],
+    "english_requirement": null,
+    "english_requirement_note": "Not published on the awards page. A separate international admission requirements page exists but was not read in this pass, so no English requirement is asserted.",
+    "selection_criteria": [
+      "Academic achievement",
+      "Automatic consideration on admission; no additional assessment or application described"
+    ],
+    "selection_weighting": null,
+    "duration": "Not published on the awards page",
+    "award_holder_conditions": [
+      "Only one award is offered per year",
+      "Admission must be applied for by the published deadline to remain eligible"
+    ],
+    "supplements_or_initiatives": [
+      "Guaranteed Entrance Scholarships, distributed on admission against published average bands - $3,000 at 95%+, $2,000 at 93-94.9%, $1,000 at 90-92.9%, $500 at 85-89.9% (2024-25 distribution)",
+      "Competitive Entrance Awards, which require a separate application and include renewable prestige awards such as the George and Marsha Ivany President's First and Best Scholarships at $40,000 over four years and the Chancellors' Scholarship at $30,000 over four years",
+      "Separate transfer scholarship track; students transferring to a direct entry college are not eligible for entrance awards",
+      "Research College and College of Education hold separate entrance-award allocations, as shown in the University Council distribution tables"
+    ],
+    "official_contacts": {
+      "unit": "Admissions, University of Saskatchewan",
+      "site": "https://admissions.usask.ca/requirements/international.php"
+    },
+    "description": "The University of Saskatchewan publishes a distinct set of international student entrance awards. The flagship is the International Excellence Award, worth $10,000 and offered once per year on academic achievement, considered automatically on admission provided the admission application arrives by 15 February. Separate awards exist for International Baccalaureate completers and for temporary residents applying from Saskatchewan, Manitoba, Alberta and British Columbia high schools.",
+    "program_type": "Entrance scholarship",
+    "region": "Canada",
+    "coverage": "Award value toward undergraduate tuition; covered expenses and period not published",
+    "last_verified_date": "2026-10-03"
+  },
+  "programme_detail_applicant_utility": {
+    "application_readiness_checklist": [
+      "Apply for admission by 15 February to remain eligible for consideration",
+      "Aim for the academic achievement range that wins a single annual award - this is the only published criterion",
+      "If you are a temporary resident applying from a Saskatchewan, Manitoba, Alberta or British Columbia high school, note the separate 1 May deadline for those provincial awards",
+      "If completing the IB Diploma, check the separate $20,000 IB Excellence Award, which is a different award with different terms",
+      "No separate award application is required"
+    ],
+    "common_rejection_risks": [
+      "Missing the 15 February admission deadline, after which the award cannot be considered",
+      "Assuming admission guarantees the award - only one is offered per year",
+      "Applying from outside the four named provinces and expecting the provincial awards, which require temporary resident status and a high school in the named province",
+      "Confusing the international IB Excellence Award at $20,000 with the domestic IB award at $3,000",
+      "Expecting a multi-year award, since no renewal term is published"
+    ],
+    "estimated_uncovered_costs": [
+      "Living expenses and accommodation",
+      "Books and supplies",
+      "Student health insurance",
+      "Any funding beyond the single published award value",
+      "Travel, immigration and permanent residence costs"
+    ],
+    "document_audit": [
+      "Standard admission application documents only",
+      "No award-specific document checklist is published for this award",
+      "Indigenous students from the USA must verify Indigenous membership or citizenship with documentation for the separate Indigenous awards"
+    ],
+    "alerts": [
+      { "trigger": "Deadline is stated as 15 February with no year", "message": "The awards page prints the date without a year. The year recorded here is inferred from the current Fall 2027 viewbook and should be verified before publication." },
+      { "trigger": "The viewbook and the awards page disagree", "message": "The Fall 2027 viewbook lists 15 January 31 in its entrance-deadline table while the awards page says 15 February. Both are recorded; confirm which governs." },
+      { "trigger": "Only one award per year", "message": "This is a small, highly competitive award. Admission does not secure it." },
+      { "trigger": "Provincial awards have a different deadline", "message": "The Saskatchewan, Manitoba, Alberta and British Columbia international awards use a 1 May admission deadline, not 15 February." },
+      { "trigger": "Renewal terms are not published", "message": "The page gives a single $10,000 value with no period or renewal statement." }
+    ],
+    "submission_workflow": [
+      "Choose an undergraduate programme and college at the University of Saskatchewan",
+      "Submit the admission application by 15 February",
+      "Meet the academic achievement standard for the award",
+      "No separate award submission is made",
+      "Consideration happens automatically on admission"
+    ]
+  },
+  "programme_detail_verification": {
+    "cycle_verified": "Fall 2027 entry cycle per the current viewbook; deadline published as 15 February, verified 2026-10-03",
+    "verification_confidence": 0.78,
+    "official_fields_confirmed": [
+      "name",
+      "country",
+      "region",
+      "degree_levels",
+      "funding_type",
+      "program_type",
+      "official_source",
+      "official_source_url",
+      "catalogue_url",
+      "official_updates_url",
+      "deadline",
+      "deadline_date",
+      "deadline_precision",
+      "application_period",
+      "application_method",
+      "status",
+      "is_verified",
+      "last_verified_date",
+      "funding_amount",
+      "funding_currency",
+      "eligibility_summary",
+      "eligibility",
+      "coverage",
+      "benefits",
+      "requirements",
+      "selection_notes",
+      "official_source_urls",
+      "application_cycle",
+      "deadline_central",
+      "deadline_central_display",
+      "deadline_institutional",
+      "deadline_note",
+      "status_note",
+      "funding_duration",
+      "tuition_coverage",
+      "tuition_coverage_note",
+      "living_cost_coverage",
+      "travel_coverage",
+      "fully_funded",
+      "funding_label",
+      "citizenship_residency",
+      "international_eligibility",
+      "study_mode",
+      "subject_or_agency_requirement",
+      "application_method",
+      "application_route",
+      "documents",
+      "selection_criteria",
+      "award_holder_conditions",
+      "supplements_or_initiatives",
+      "description",
+      "program_type",
+      "region",
+      "coverage",
+      "application_readiness_checklist",
+      "common_rejection_risks",
+      "estimated_uncovered_costs",
+      "document_audit",
+      "alerts",
+      "submission_workflow"
+    ],
+    "institution_check_required": [
+      "Resolve the 15 January versus 15 February admission deadline discrepancy between the viewbook and the awards page",
+      "Confirm which cycle year the 15 February deadline belongs to",
+      "Confirm whether the $10,000 is a single payment or renewable",
+      "Confirm the minimum academic average required, which is not published"
+    ],
+    "unverified_or_removed_claims": [
+      "assigned target name 'University of Saskatchewan International Scholarships' is a programme label; the published award name is 'University of Saskatchewan International Excellence Award'",
+      "deadline_date year is inferred: the page prints 'February 15' with no year, so 2027 was derived from the current Fall 2027 viewbook and today's date. This is flagged, not asserted as published.",
+      "CONFLICT RECORDED: the Fall 2027 viewbook entrance-deadline table shows 15 January 31 for these awards while the awards page states February 15. Both values are preserved; neither was averaged or discarded.",
+      "duration and funding_period left null: no renewal term or payment period is published",
+      "required_documents and documents left empty: no award-specific document checklist is published",
+      "english_requirement left null: the international admission requirements page was not read, so no score is asserted",
+      "selection_weighting left null: only 'academic achievement' is published, with no weighting or threshold",
+      "research_requirement left null: no research component published",
+      "deadline_central_timezone left null: no timezone is published",
+      "image_url left null: no official-domain logo was verified in this pass"
+    ],
+    "source_citations": [
+      "https://admissions.usask.ca/money/scholarships.php",
+      "https://admissions.usask.ca/requirements/international.php",
+      "https://admissions.usask.ca/money/search-awards.php",
+      "https://admissions.usask.ca/documents/brochures/general_viewbook.pdf"
+    ],
+    "researched_by": "wave4_direct_usask"
+  },
+  "logo_override": {
+    "url": null,
+    "page_url": "https://admissions.usask.ca/money/scholarships.php",
+    "official_host": true,
+    "alt_text": "University of Saskatchewan logo",
+    "validation_result": "not_attempted",
+    "validation_detail": "No logo fetch was performed for this record within the fetch budget. Null is the honest value; a guessed or third-party asset is worse than none.",
+    "image_kind": null,
+    "image_format": null,
+    "verified_at": null,
+    "host_evidence": "admissions.usask.ca is the University of Saskatchewan's own admissions domain and hosts the cited scholarships page."
+  },
+  "research_notes": {
+    "logo": "Not verified in this pass - logo_override.url is null by design rather than guessed",
+    "unverified": [
+      "The governing admission deadline, given the 15 January versus 15 February discrepancy",
+      "The minimum academic average required for the International Excellence Award",
+      "Whether the $10,000 is payable once or renewable"
+    ],
+    "substitution": "Award name corrected: the assigned label 'University of Saskatchewan International Scholarships' is a programme label. The university publishes a set of distinct international awards; the general flagship is recorded here and the provincial and IB variants are listed under supplements_or_initiatives.",
+    "official_pages_read": [
+      "https://admissions.usask.ca/money/scholarships.php",
+      "https://admissions.usask.ca/requirements/international.php",
+      "https://admissions.usask.ca/money/search-awards.php",
+      "https://admissions.usask.ca/documents/brochures/general_viewbook.pdf",
+      "https://governance.usask.ca/documents/council/agenda/2024-2025/11.1_scol.pdf"
+    ],
+    "degree_level_confirmed": "CONFIRMED at bachelor's level. The awards page groups this award under 'International student awards' alongside International Baccalaureate awards and separately lists 'Graduate student awards' as its own category. The University Council award-cycles document describes entrance awards as those 'available to students who are entering the University of Saskatchewan with no previous post-secondary experience', which is undergraduate entry, and excludes transfer students to direct entry colleges from the entrance track.",
+    "skeleton": false
+  }
+}

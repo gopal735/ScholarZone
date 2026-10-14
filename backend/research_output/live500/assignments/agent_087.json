@@ -1,0 +1,81 @@
+{
+ "agent": "agent_087",
+ "assignment_count": 1,
+ "scholarships": [
+  {
+   "id": 263,
+   "title": "Aalto University Excellence Scholarship",
+   "country": "Finland",
+   "degree": "Bachelor's, Master's",
+   "funding_label": "Tuition Fee Waiver",
+   "status": "upcoming",
+   "official_source": "Aalto University",
+   "official_source_url": "https://www.aalto.fi/en/admission-services/scholarships-and-tuition-fees",
+   "application_link": "https://www.aalto.fi/en/admission-services/scholarships-and-tuition-fees",
+   "catalogue_url": "https://www.aalto.fi/en/study-options",
+   "official_updates_url": "https://www.aalto.fi/en/admission-services/apply-to-masters-programmes",
+   "existing": {
+    "funding_amount": null,
+    "funding_currency": null,
+    "funding_period": "per academic year, for the normative period of study",
+    "tuition_coverage": 1,
+    "living_cost_coverage": 0,
+    "travel_coverage": 0,
+    "fully_funded": 0,
+    "description": "The Aalto University Excellence Scholarship is a merit-based tuition fee waiver awarded to a very limited number of applicants who are liable to pay Aalto's English-taught programme tuition fees. The waiver covers 100% of the tuition fee for the normative period of study and does not cover living costs, which Aalto puts at a minimum of EUR 800 per month. The scholarship is applied for through the same application form as the degree programme, inside the programme's application period, and the decision is issued together with the admission decision.",
+    "eligibility": [
+     "Admitted to, or applying to, an Aalto University bachelor's or master's programme taught in English",
+     "Liable to pay tuition fees - EU/EEA citizens are not eligible because they do not pay tuition",
+     "Tick the scholarship question on the admission application form inside the application period; no separate scholarship application exists",
+     "Not admitted from the waiting list - scholarship decisions are finalised before admission results",
+     "Scholarship candidates are screened against the EU sanctions lists"
+    ],
+    "eligibility_summary": "Students who are liable to pay Aalto University tuition fees, i.e. nationals of countries outside the EU, EEA and Switzerland applying to an English-taught bachelor's or master's programme, who apply for the scholarship inside the application period.",
+    "benefits": [
+     "Full tuition fee waiver (master's tuition fees are EUR 15,000-20,000 per academic year depending on field)",
+     "Scholarship continues during an exchange period or internship abroad at another university",
+     "Scholarship decision is issued together with the admission decision"
+    ],
+    "coverage": [
+     "100% of the tuition fee for the normative period of study",
+     "No living costs",
+     "No travel costs"
+    ],
+    "requirements": [
+     "Complete the admission application form inside the application period",
+     "Upload all obligatory documents by the document deadline",
+     "Pay the EUR 100 application fee if not an EU/EEA or Swiss citizen"
+    ],
+    "documents": [
+     "Admission application form for the chosen Aalto study option",
+     "Bachelor's degree certificate for master's applications",
+     "Official transcript of records",
+     "Proof of English language proficiency",
+     "Passport or official government-issued photo ID showing citizenship"
+    ],
+    "english_requirement": "Aalto requires an accepted proof of language proficiency for the language of instruction of the study option; master's programmes are taught in English.",
+    "application_method": [
+     "Answer the scholarship question on the Aalto/Studyinfo.fi admission application form during the application period"
+    ],
+    "selection_notes": "In the master's admissions, scholarships are allocated during the academic evaluation stage as part of the admissions process, ranked on the study option's published evaluation criteria. The number per programme is highly limited and programmes may award none.",
+    "best_fit": "Top non-EU applicants to Aalto University bachelor's and master's programmes",
+    "notes": "Separate, smaller Aalto schemes exist and must not be confused with this one: the Pekka Mattila Excellence Scholarship (EUR 3,000 relocation grant for the Master's Programme in Marketing and International Management), and 25% tuition discounts for FUNED (Mexico) and COLFUTURO (Colombia) scholarship holders.",
+    "duration": "Scholarships are granted for the normative period of study: three years full-time for a bachelor's degree and two years full-time for a master's degree",
+    "application_period": "Master's programmes beginning autumn 2027: 7 December 2026 to 5 January 2027; document deadline 12 January 2027. The scholarship question is on the master's application form in the same period.",
+    "deadline_display": "\"Scholarship must be applied during the application period. You cannot apply for a scholarship after the application period.\" For the master's round for studies beginning in autumn 2027 the application form closes 5 January 2027 at 15.00 (UTC +2).",
+    "deadline_date": "2027-01-05",
+    "region": "Europe",
+    "program_type": "Merit-based tuition fee waiver awarded with admission",
+    "applicant_utility": null,
+    "official_details": null
+   },
+   "missing_fields": [
+    "funding_amount",
+    "funding_currency",
+    "applicant_utility",
+    "official_details"
+   ]
+  }
+ ],
+ "result_file": "C:\\Users\\GopaL\\Desktop\\Projects folder\\ScholarZone\\backend\\research_output\\live500\\results\\agent_087.json"
+}

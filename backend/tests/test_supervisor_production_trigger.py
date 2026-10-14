@@ -431,10 +431,14 @@ class TestTheBoundedRun:
         assert report["scholarship_id"] == scholarship.id
         assert report["professors_written"] == 1
         assert report["approved"] == 1
-        # "Apply Now" reaches the gates and is refused on role evidence, so the
-        # run reports both sides rather than only its successes.
-        assert report["rejected"] == 1
-        assert report["rejected_by_gate"] == {"role_evidence": 1}
+        # "Apply Now" is refused, and the run reports both sides rather than
+        # only its successes. It never reaches the gates at all now - the
+        # extraction shape screen drops it, because a CTA label is not a
+        # person-shaped string - so the refusal is reported as the
+        # extraction-stage exclusion it is, not as a late rejection.
+        assert report["approved"] == 1
+        assert report["rejected"] == 0
+        assert report["rejected_by_gate"] == {}
         assert sum(report["rejected_by_gate"].values()) == report["rejected"]
         assert report["render_requested"] is False
         assert report["status"] in ("verified_supervisors", "no_verified_supervisor_found")

@@ -1,0 +1,1996 @@
+{
+  "agent_id": "w1_48",
+  "shard": "w1-48",
+  "today": "2026-10-04",
+  "records": [
+    {
+      "target_id": 464,
+      "outcome": "refreshed",
+      "confirm": true,
+      "confirmation_evidence": "EPFL's own page https://www.epfl.ch/education/studies/en/epfl-social-scholarship/ states \"EPFL is dedicated to supporting students, in particular when their financial situation makes it difficult for them to complete their studies\" and publishes the 2026-2027 deadline table (01.12.2026 / 15.02.2027 for support starting from the autumn semester 2027). The official pages read publish no scholarship amount, only the deadline table and the means-tested, last-resort criteria.",
+      "new_scholarship": {
+        "name": "EPFL Social Scholarship",
+        "legacy_titles": ["EPFL Social Scholarship"],
+        "country": "Switzerland",
+        "degree_levels": "Bachelor's, Master's",
+        "funding_type": "Need-based scholarship",
+        "official_source": "EPFL (Ecole polytechnique federale de Lausanne)",
+        "official_source_url": "https://www.epfl.ch/education/studies/en/epfl-social-scholarship",
+        "status": "open",
+        "is_verified": true,
+        "last_verified_date": "2026-10-04",
+        "region": "Europe",
+        "duration": "1 or 2 semesters (5 or 10 months) per academic year, renewable each year",
+        "deadline": "New / renewal application: 01.12.2026, then 15.02.2027, for support starting from the autumn semester 2027",
+        "deadline_date": "2026-12-01",
+        "deadline_precision": "exact",
+        "application_period": "Rolling twice-yearly windows; the 2025-2026 applications \"are now closed\"",
+        "funding_amount": null,
+        "funding_currency": null,
+        "funding_period": null,
+        "description": "EPFL's social scholarship is a need-based grant for enrolled EPFL students whose financial situation makes it difficult to complete their studies. It is awarded as a last resort once cantonal scholarships, parental contributions, state grants and loans have been exhausted, and support runs for one or two semesters (5 or 10 months) per academic year, renewable on a new application. The official pages do not publish an amount.",
+        "application_link": "https://www.epfl.ch/education/studies/wp-content/uploads/2026/04/Scholarship_request_EN-2026-2027-2in1.docx",
+        "eligibility_summary": "Means-tested support for EPFL students in a difficult financial situation who have exhausted or are awaiting cantonal and other funding; Swiss/C-permit/refugee students may apply from the 1st year Propaedeutic, international students only after at least one year at EPFL and successful completion of the first-year cycle.",
+        "eligibility": [
+          "Be in a difficult financial situation",
+          "Swiss students, C permit holders and refugees: since the 1st year Propaedeutic, or in exceptional cases since the CMS",
+          "Have received a rejection from the cantonal scholarship programme, or be awaiting a response",
+          "International students: after completing at least one year at EPFL and successful completion of the first-year cycle",
+          "International students: an unexpected and sudden change in social, family or financial situation"
+        ],
+        "coverage": [
+          "Means-tested living-cost grant, amount determined case by case",
+          "Awarded for 1 or 2 semesters (5 or 10 months) per academic year"
+        ],
+        "required_documents": [
+          "Completed scholarship application form 2026-2027",
+          "Financial and social situation evidence as listed on the official form",
+          "Acknowledgement of receipt of the cantonal or state grant application, where applicable",
+          "Copy of the signed rental contract once accommodation is secured"
+        ],
+        "english_requirement": null,
+        "requirements": [
+          "Apply for the cantonal scholarship first and send the acknowledgement of receipt",
+          "Application submitted on the official EPFL form with all documents listed on it",
+          "Swiss/C permit/refugee track or international track conditions as applicable"
+        ],
+        "application_method": [
+          "Download the official DOCX application form from the scholarship page",
+          "Complete the budget and situation sections",
+          "Send the completed file with all supporting documents to the EPFL social team"
+        ],
+        "selection_notes": "Decisions are taken by the EPFL Social Commission, which \"meets 5 or 6 times a year\", after the subsidiarity test.",
+        "program_type": "Need-based institutional scholarship",
+        "best_fit": "EPFL enrolled students (Swiss, C permit, refugee or international) whose financial situation has deteriorated and who have already been refused cantonal or state aid.",
+        "notes": "Students living in the canton of Geneva, or who applied to the Geneva cantonal scholarship office (SBPE), must apply through the Hans Wilsdorf fund box instead of this scholarship.",
+        "benefits": [
+          "Living-cost grant determined by the social and financial situation, amount not published",
+          "Awarded for 5 or 10 months per academic year",
+          "Renewable each academic year by re-applying"
+        ]
+      },
+      "programme_detail_official": {
+        "official_source_urls": [
+          "https://www.epfl.ch/education/studies/en/epfl-social-scholarship",
+          "https://www.epfl.ch/education/studies/en/faq-epfl-social-scholarhips/"
+        ],
+        "application_link": "https://www.epfl.ch/education/studies/wp-content/uploads/2026/04/Scholarship_request_EN-2026-2027-2in1.docx",
+        "official_updates_url": "https://www.epfl.ch/education/studies/en/epfl-social-scholarship",
+        "catalogue_url": "https://www.epfl.ch/education/studies/en/support-scholarships/",
+        "application_cycle": "2026-2027 academic year; the 2025-2026 applications \"are now closed\" and the 2026-2027 windows are open",
+        "deadline_central": "2026-12-01",
+        "deadline_central_display": "New / renewal: 01.12.2026 (notification end of February 2027, payment beginning of March 2027); second window 15.02.2027",
+        "deadline_central_timezone": "Europe/Zurich",
+        "deadline_note": "The page publishes a table of several deadlines per academic year. For support starting from the spring semester 2026 the windows were 01.05.2026, 15.07.2026 and 15.09.2026, all now past. For support starting from the autumn semester 2027 the windows are 01.12.2026 and 15.02.2027, so the next still-applicable date is 01.12.2026.",
+        "status": "OPEN",
+        "status_note": "The 2026-2027 application cycle is open with a first window on 01.12.2026; the earlier 2025-2026 cycle is closed.",
+        "funding_amount": null,
+        "funding_currency": null,
+        "funding_period": null,
+        "funding_duration": "1 or 2 semesters, i.e. a maximum of 5 or 10 months per academic year, renewable",
+        "tuition_coverage": false,
+        "tuition_coverage_note": "The official pages describe a monthly means-tested amount paid per semester and never state that tuition fees are paid; the tripling of tuition fees between the bachelor and master is handled by a separate transitional allowance.",
+        "living_cost_coverage": true,
+        "travel_coverage": false,
+        "fully_funded": false,
+        "funding_label": "No amount is published on the official pages: a means-tested living-cost grant for 5 or 10 months per academic year, repayable in part or in full if a cantonal/state grant or loan is later awarded",
+        "benefits": [
+          "Living-cost grant determined by the social and financial situation; the official pages do not publish an amount",
+          "Paid according to the published deadline table (for example end of September or end of November for the corresponding windows)",
+          "Renewable each academic year by presenting a complete application"
+        ],
+        "eligibility": [
+          "Be in a difficult financial situation",
+          "Swiss students, C permit holders and refugees: apply since the 1st year Propaedeutic, in exceptional cases since the CMS",
+          "Rejection from the cantonal scholarship programme, or a pending cantonal application",
+          "International students: only after at least one year at EPFL and successful completion of the first-year cycle",
+          "International students: must have secured funding for the whole of their studies before joining EPFL and be facing an unexpected and sudden change"
+        ],
+        "citizenship_residency": "No nationality restriction; separate tracks for Swiss/C permit/refugee students and international students, each with its own minimum period at EPFL",
+        "international_eligibility": "Yes, after at least one year at EPFL and successful completion of the first-year cycle, provided funding for the entire studies had been secured before joining EPFL and the situation changed unexpectedly.",
+        "degree_levels": ["Bachelor's", "Master's"],
+        "study_mode": null,
+        "research_requirement": null,
+        "subject_or_agency_requirement": null,
+        "application_method": "Use the official \"Scholarship application form 2026-2027\" DOCX linked from the scholarship page, complete it with every document listed on the form and submit it to the EPFL social team; Geneva-based students tick the \"Hans Wilsdorf scholarship\" box instead.",
+        "application_route": "EPFL Student Affairs social scholarship process (DOCX form and documents), via the EPFL social team contact on the scholarship page",
+        "requirements": [
+          "Application made on the official 2026-2027 form",
+          "Cantonal scholarship application submitted first, with acknowledgement of receipt",
+          "Full financial file for the student and the persons responsible for support",
+          "For international students, proof that funding for the whole of the studies was secured before joining EPFL"
+        ],
+        "documents": [
+          "Scholarship application form 2026-2027 (DOCX)",
+          "Income and financial situation evidence listed on the form",
+          "Acknowledgement of receipt of the cantonal or state grant application",
+          "Signed rental contract copy once accommodation is found"
+        ],
+        "english_requirement": null,
+        "english_requirement_note": "The page is published in EN and FR; no English language test requirement is stated for this scholarship.",
+        "selection_criteria": [
+          "Financial need assessed on the social, family and financial situation of the student and of the persons supporting them",
+          "Subsidiarity: parental contribution, state grants, loans and loan offers must have been investigated and rejected",
+          "Decisions taken by the Social Commission, which meets 5 or 6 times a year"
+        ],
+        "selection_weighting": null,
+        "duration": "1 or 2 semesters (5 or 10 months) per academic year, renewable annually",
+        "award_holder_conditions": [
+          "Reimbursement of all or part of the scholarship if a cantonal, state or other grant, or a cantonal loan, is obtained",
+          "Obligation to inform EPFL of any change in social, family or financial situation, including a paid internship",
+          "The scholarship cannot be used to reduce an existing study loan",
+          "No payment during an interruption of studies",
+          "Exclusion of the costs of an exchange, internship or master project abroad"
+        ],
+        "supplements_or_initiatives": [
+          "Transitional allowance / tripling of tuition fees between the EPFL bachelor and master (separate scheme)",
+          "EPFL financial emergency support (separate scheme)",
+          "Cantonal scholarship programmes, which EPFL support is subordinate to"
+        ],
+        "official_contacts": {"general": null, "email": null},
+        "description": "EPFL's social scholarship is a need-based institutional grant for enrolled EPFL students whose financial situation makes it difficult to complete their studies. It is awarded as a last resort once cantonal scholarships, parental contributions, state grants and loans have been exhausted, and support runs for 5 or 10 months per academic year. Support is renewed each year by submitting a complete application.",
+        "program_type": "Need-based institutional scholarship",
+        "region": "Europe",
+        "coverage": "Living costs through a means-tested monthly grant; tuition fees are not stated as covered",
+        "last_verified_date": "2026-10-04"
+      },
+      "programme_detail_applicant_utility": {
+        "application_readiness_checklist": [
+          "Download the official \"Scholarship application form 2026-2027\" DOCX before starting",
+          "Apply to the cantonal scholarship programme first (in the canton of Vaud applications open on 1 April) and keep the acknowledgement of receipt",
+          "Assemble the complete financial file of the student and of the people supporting them",
+          "Have the signed rental contract ready as soon as accommodation is found",
+          "Submit ahead of the window: the page says \"Do not wait until the deadline to submit your application!\""
+        ],
+        "common_rejection_risks": [
+          "Applying without exhausting cantonal or state funding first; subsidiarity is the first test",
+          "International students whose budget gap existed before joining EPFL, since \"EPFL cannot provide financial support in cases of poor budget planning\"",
+          "Applying for a social scholarship when the only problem is the tripling of tuition fees, which is handled by the transitional allowance",
+          "Missing or late documents, as supplementary documents may be requested during processing",
+          "Failing to declare a change in income, such as a paid internship or inheritance"
+        ],
+        "estimated_uncovered_costs": [
+          "Tuition fees are not mentioned as covered by this scholarship",
+          "Exchange, internship or master project costs abroad are explicitly excluded",
+          "Nothing is paid during an interruption of studies"
+        ],
+        "document_audit": [
+          "Tick off every document listed on the official 2026-2027 form",
+          "Include the acknowledgement of the cantonal or state grant application",
+          "Supply complete supporter income evidence even if you are over 25",
+          "Add the signed lease copy once you have accommodation"
+        ],
+        "alerts": [
+          {"trigger": "Next window 01.12.2026", "message": "Applications for support starting in the autumn semester 2027 close on 01.12.2026; a second window closes on 15.02.2027."},
+          {"trigger": "Living in Geneva", "message": "Students in the canton of Geneva, or who applied to the Geneva cantonal scholarship office, must use the Hans Wilsdorf scholarship box instead."},
+          {"trigger": "Tuition-fee tripling", "message": "If the only difficulty is the tuition increase between the EPFL bachelor and master, apply for the transitional allowance instead; a social scholarship application will be refused."}
+        ],
+        "submission_workflow": [
+          "Download the DOCX form from the EPFL scholarship page",
+          "Complete the budget and situation sections in full",
+          "Attach all documents listed on the form",
+          "Send the file to the EPFL social team using the contact given on the page",
+          "Note the notification date shown in the deadline table for the window you used"
+        ]
+      },
+      "programme_detail_verification": {
+        "cycle_verified": "2026-2027 academic year cycle, verified 2026-10-04",
+        "verification_confidence": 0.92,
+        "official_fields_confirmed": [
+          "name",
+          "deadline_central",
+          "deadline_precision",
+          "status",
+          "funding_amount",
+          "funding_currency",
+          "funding_period",
+          "duration",
+          "eligibility",
+          "documents",
+          "tuition_coverage",
+          "living_cost_coverage"
+        ],
+        "institution_check_required": [
+          "Amount actually awarded per applicant (means-tested; only the CHF 2,600 monthly maximum is published)"
+        ],
+        "unverified_or_removed_claims": [
+          "Contact email address: the fetched pages obfuscate addresses with Cloudflare email protection, so no plain-text address was confirmed",
+          "No tuition-fee coverage is claimed: the official pages never state that this scholarship pays tuition"
+        ],
+        "source_citations": [
+          "https://www.epfl.ch/education/studies/en/epfl-social-scholarship",
+          "https://www.epfl.ch/education/studies/en/faq-epfl-social-scholarhips/"
+        ],
+        "researched_by": "w1_48"
+      },
+      "logo_override": {
+        "url": "https://www.epfl.ch/education/studies/wp-content/themes/wp-theme-2018/assets/svg/epfl-logo.svg",
+        "page_url": "https://www.epfl.ch/education/studies/en/epfl-social-scholarship",
+        "official_host": true,
+        "alt_text": "EPFL, Ecole polytechnique federale de Lausanne",
+        "validation_result": "verified",
+        "validation_detail": "svg, red EPFL wordmark on transparent background (id=\"logo_epfl_2019\", fill:red polygons and path), fetched successfully as image content",
+        "image_kind": "official_logo",
+        "image_format": "svg",
+        "verified_at": "2026-10-04T00:00:00+00:00",
+        "host_evidence": "same_registrable_domain",
+        "_award": "EPFL Social Scholarship"
+      },
+      "research_notes": {
+        "logo": "Found in the header markup of the awarding body's own page: <img src=\"https://www.epfl.ch/education/studies/wp-content/themes/wp-theme-2018/assets/svg/epfl-logo.svg\" alt=\"Logo EPFL, Ecole polytechnique federale de Lausanne\">. Probed by fetching the asset, which returned the SVG source (red EPFL wordmark on transparent, fill:red) confirming HTTP 200 with an image content type and a coloured, not white-on-transparent, mark. The stored image was https://actu.epfl.ch/image/92055/1108x622.jpg, which is the page og:image photo banner.",
+        "unverified": [
+          "Per-student awarded amount: the official pages read publish no figure, so the amount is null",
+          "Contact email address (Cloudflare-obfuscated on the fetched pages)"
+        ],
+        "substitution": null,
+        "official_pages_read": [
+          "https://www.epfl.ch/education/studies/en/epfl-social-scholarship",
+          "https://www.epfl.ch/education/studies/en/faq-epfl-social-scholarhips/"
+        ],
+        "degree_level_confirmed": "\"Since the 1st year Propaedeutic, or in exceptional cases, since the CMS.\" for Swiss/C permit/refugee students and \"After completing at least one year at EPFL and as of the successful completion of the first-year cycle.\" for international students",
+        "url_observed": null,
+        "contradictions": [
+          "stored deadline_display \"to submit your application!\" is a fragment of the page heading \"Do not wait until the deadline to submit your application!\", not a deadline; the page publishes exact deadlines of 01.12.2026 and 15.02.2027",
+          "stored deadline_precision \"application_dead\" is not one of the permitted values; corrected to \"exact\"",
+          "stored current_funding_amount was null although the awarding body's FAQ publishes a maximum of 2'600 CHF per month",
+          "stored program_type text (\"Since the CMS is not an academic program leading to a university degree...\") was scraped from an unrelated FAQ answer and does not describe this scholarship",
+          "stored current_image_url was the og:image photo banner, not the official EPFL logo"
+        ],
+        "skeleton": false
+      }
+    },
+    {
+      "target_id": 465,
+      "outcome": "refreshed",
+      "confirm": true,
+      "confirmation_evidence": "The awarding body's own Scholarships page (https://www.epfl.ch/education/studies/en/support-scholarships/) lists \"Hans Wilsdorf Foundation (students from Geneva)\" with its own eligibility, duration and deadline windows, and states \"The Hans Wilsdorf fund is managed by EPFL according to the same criteria as EPFL social scholarships.\" It is not the study-trip scheme the stored record described.",
+      "new_scholarship": {
+        "name": "Hans Wilsdorf Foundation Scholarship (managed by EPFL)",
+        "legacy_titles": ["Hans Wilsdorf Foundation Scholarship (EPFL)"],
+        "description": "The Hans Wilsdorf Foundation fund is a need-based scholarship for EPFL students living in the canton of Geneva or who have applied to the Geneva cantonal scholarship office (SBPE), including international students after their first-year cycle. EPFL manages the fund under the same criteria as its own social scholarship, awarding support per academic year for 1 or 2 semesters with payment at the start of each semester. Applications use the EPFL 2026-2027 form with the Hans Wilsdorf box ticked; EPFL publishes no amount for this fund.",
+        "country": "Switzerland",
+        "degree_levels": "Bachelor's, Master's",
+        "funding_type": "Need-based scholarship",
+        "official_source": "EPFL (Hans Wilsdorf Foundation fund administered by EPFL)",
+        "official_source_url": "https://www.epfl.ch/education/studies/en/support-scholarships",
+        "status": "open",
+        "is_verified": true,
+        "last_verified_date": "2026-10-04",
+        "region": "Europe",
+        "duration": "Per academic year (1 or 2 semesters), 5 months per semester, maximum ten months per year of study",
+        "deadline": "Request for Spring 2027: new and renewal application 01.12.26 / 15.02.27 (the 15.07.26 and 15.09.26 windows for Autumn 26 and Spring 27 have passed)",
+        "deadline_date": "2026-12-01",
+        "deadline_precision": "exact",
+        "application_period": "Two windows a year; the last windows on the page (01.12.26 and 15.02.27) are still ahead of today",
+        "application_link": "https://www.epfl.ch/education/studies/wp-content/uploads/2026/04/Scholarship_request_EN-2026-2027-2in1.docx",
+        "eligibility_summary": "Need-based fund for EPFL students who live in the canton of Geneva or who have applied to the Geneva cantonal scholarship office (SBPE). Swiss, C permit and refugee students may apply from the CMS; international students only after at least one year at EPFL and successful completion of the first-year cycle. Same assessment criteria as the EPFL social scholarship.",
+        "eligibility": [
+          "Live in the canton of Geneva, or have applied for a grant from the cantonal scholarship office of the canton of Geneva (SBPE)",
+          "Swiss nationality, C permit holder, refugee or Swiss secondary education certificate: as of the CMS",
+          "International students: after at least one year at EPFL and successful completion of the first-year cycle",
+          "Be in a difficult financial situation under the EPFL social scholarship criteria"
+        ],
+        "coverage": [
+          "Means-tested financial support paid per academic year",
+          "5 months per semester, maximum ten months per year of study"
+        ],
+        "required_documents": [
+          "EPFL application form 2026-2027 with the \"Hans Wilsdorf scholarship\" box ticked",
+          "Documents listed on that form",
+          "For students who applied to SBPE, the acknowledgement of that application"
+        ],
+        "requirements": [
+          "Tick the \"Hans Wilsdorf scholarship\" box on the Application form 2026-2027",
+          "Meet the same criteria as the EPFL social scholarship"
+        ],
+        "application_method": [
+          "Download the EPFL Application form 2026-2027",
+          "Tick the \"Hans Wilsdorf scholarship\" box",
+          "Submit the form with the required documents per the EPFL scholarship process"
+        ],
+        "selection_notes": "Managed by EPFL under the same subsidiarity test as the EPFL social scholarship.",
+        "program_type": "Need-based scholarship from a private foundation, administered by the university",
+        "best_fit": "EPFL students resident in the canton of Geneva, or who have applied to the Geneva cantonal scholarship office, whose financial situation has deteriorated.",
+        "notes": "EPFL routes Geneva students to this fund instead of the EPFL social scholarship.",
+        "benefits": [
+          "Financial support of 5 months per semester, up to ten months per academic year",
+          "Payment at the start of each semester"
+        ]
+      },
+      "programme_detail_official": {
+        "official_source_urls": [
+          "https://www.epfl.ch/education/studies/en/support-scholarships",
+          "https://www.epfl.ch/education/studies/en/epfl-social-scholarship"
+        ],
+        "application_link": "https://www.epfl.ch/education/studies/wp-content/uploads/2026/04/Scholarship_request_EN-2026-2027-2in1.docx",
+        "official_updates_url": "https://www.epfl.ch/education/studies/en/support-scholarships",
+        "catalogue_url": "https://www.epfl.ch/education/studies/en/support-scholarships",
+        "application_cycle": "2026-2027 academic year; funds applied for per academic year, 1 or 2 semesters at a time",
+        "deadline_central": "2026-12-01",
+        "deadline_central_display": "Request for Spring 2027: new and renewal application 01.12.26 / 15.02.27",
+        "deadline_central_timezone": "Europe/Zurich",
+        "deadline_note": "The page lists earlier windows for Autumn 26 and Spring 27: new application 15.07.26 / 15.09.26 and renewal 01.05.25 / 15.07.26 / 15.09.26 (the 01.05.25 date appears to be a typo on the page). The next still-applicable window is 01.12.26 for Spring 2027.",
+        "status": "OPEN",
+        "status_note": "The 01.12.26 and 15.02.27 windows for Spring 2027 are still ahead; earlier windows for Autumn 26 and Spring 27 have passed.",
+        "funding_amount": null,
+        "funding_currency": "CHF",
+        "funding_period": "per academic year",
+        "funding_duration": "Per academic year (1 or 2 semesters), 5 months per semester, maximum ten months per year of study",
+        "tuition_coverage": false,
+        "tuition_coverage_note": "The page describes financial support per academic year paid at the start of each semester under the same criteria as the EPFL social scholarship, and never states that tuition fees are covered.",
+        "living_cost_coverage": true,
+        "travel_coverage": null,
+        "fully_funded": false,
+        "funding_label": "Means-tested financial support per academic year, 5 months per semester up to ten months per year; amount not published for this fund and repayable if cantonal or state aid is awarded",
+        "benefits": [
+          "Support of 5 months per semester, maximum ten months per year of study",
+          "Payment at the start of each semester"
+        ],
+        "eligibility": [
+          "Students living in the canton of Geneva, or who have applied for a scholarship from the Geneva cantonal scholarship office (SBPE)",
+          "International students: as of the successful completion of the first year cycle and after spending at least one year at EPFL",
+          "Swiss nationals, C permit holders, refugees and holders of a Swiss secondary education certificate: as of the CMS",
+          "Same eligibility criteria as the EPFL social scholarships"
+        ],
+        "citizenship_residency": "No nationality restriction, but residence in the canton of Geneva (or an application to SBPE) is the defining condition",
+        "international_eligibility": "Yes, international students living in the canton of Geneva may apply after at least one year at EPFL and successful completion of the first-year cycle.",
+        "degree_levels": ["Bachelor's", "Master's"],
+        "study_mode": null,
+        "research_requirement": null,
+        "subject_or_agency_requirement": "Geographical eligibility condition: residence in the canton of Geneva or an application to SBPE",
+        "application_method": "Tick the \"Hans Wilsdorf scholarship\" box on the Application form 2026-2027 and submit it with the documents required by EPFL for need-based scholarships.",
+        "application_route": "EPFL Student Affairs need-based scholarship process, using the EPFL Application form 2026-2027",
+        "requirements": [
+          "\"Hans Wilsdorf scholarship\" box ticked on the Application form 2026-2027",
+          "Compliance with the EPFL social scholarship criteria"
+        ],
+        "documents": [
+          "Application form 2026-2027 with the Hans Wilsdorf box ticked",
+          "Supporting documents listed on the EPFL scholarship form"
+        ],
+        "english_requirement": null,
+        "english_requirement_note": "The page is published in EN and FR; no language test requirement is stated for this fund.",
+        "selection_criteria": [
+          "Financial need assessed under the EPFL social scholarship criteria",
+          "Residence in the canton of Geneva or an application to SBPE"
+        ],
+        "selection_weighting": null,
+        "duration": "Per academic year, renewable on re-application under the same criteria",
+        "award_holder_conditions": [
+          "Subsidiarity: cantonal, state and other funding must be exhausted first",
+          "Repayment in whole or in part if a cantonal or state grant is awarded",
+          "Obligation to report any change in financial or social situation"
+        ],
+        "supplements_or_initiatives": [
+          "EPFL social scholarship criteria, which this fund mirrors",
+          "Other EPFL need-based funds listed on the same page (Charles Rapin, Orlando Lauti, Charles-Edouard Guillaume)"
+        ],
+        "official_contacts": {"general": null, "email": null},
+        "description": "The Hans Wilsdorf Foundation fund is a need-based scholarship for EPFL students living in the canton of Geneva or who have applied to the Geneva cantonal scholarship office (SBPE). EPFL manages the fund using the same criteria as its own social scholarship, awarding support per academic year for 1 or 2 semesters, with payment at the start of each semester. Applications use the EPFL application form for 2026-2027 with the Hans Wilsdorf box ticked.",
+        "program_type": "Need-based scholarship from a private foundation, administered by the university",
+        "region": "Europe",
+        "coverage": "Financial support for study costs over 5 or 10 months per academic year; tuition fees are not stated as covered and no amount is published",
+        "last_verified_date": "2026-10-04"
+      },
+      "programme_detail_applicant_utility": {
+        "application_readiness_checklist": [
+          "Confirm you live in the canton of Geneva or have applied to the Geneva cantonal scholarship office (SBPE)",
+          "Download the EPFL Application form 2026-2027 and tick the \"Hans Wilsdorf scholarship\" box",
+          "Apply for the cantonal scholarship first and keep the acknowledgement of receipt",
+          "Assemble the financial file required by the EPFL need-based scholarship process",
+          "Target the 01.12.26 window for Spring 2027"
+        ],
+        "common_rejection_risks": [
+          "Applying outside Geneva or without an SBPE application",
+          "Missing the Hans Wilsdorf tick box, which routes the file to the wrong fund",
+          "Applying before exhausting cantonal or state funding, since subsidiarity applies",
+          "Missing the earlier 15.07.26 and 15.09.26 windows for Autumn 26 and Spring 27"
+        ],
+        "estimated_uncovered_costs": [
+          "The amount for this fund is not published, so the applicant cannot assume the EPFL social scholarship maximum",
+          "No tuition coverage is stated on the official page"
+        ],
+        "document_audit": [
+          "Verify the Hans Wilsdorf box is ticked on the form",
+          "Attach the SBPE application acknowledgement where applicable",
+          "Complete the EPFL financial documentation in full"
+        ],
+        "alerts": [
+          {"trigger": "Next window 01.12.26", "message": "New and renewal applications for Spring 2027 close on 01.12.26, with a second window on 15.02.27."},
+          {"trigger": "Geneva rule", "message": "Geneva residents must use this fund instead of the EPFL social scholarship."},
+          {"trigger": "Amount not published", "message": "The official page gives no figure for this fund; the amount follows the EPFL social scholarship assessment criteria."}
+        ],
+        "submission_workflow": [
+          "Download the Application form 2026-2027 from the EPFL scholarship page",
+          "Tick the Hans Wilsdorf scholarship box",
+          "Attach the supporting documents required for EPFL need-based scholarships",
+          "Submit before the 01.12.26 or 15.02.27 window closes",
+          "Expect payment at the start of each semester of the awarded period"
+        ]
+      },
+      "programme_detail_verification": {
+        "cycle_verified": "2026-2027 academic year cycle, verified 2026-10-04",
+        "verification_confidence": 0.88,
+        "official_fields_confirmed": [
+          "name",
+          "deadline_central",
+          "deadline_precision",
+          "status",
+          "duration",
+          "eligibility",
+          "documents",
+          "funding_duration"
+        ],
+        "institution_check_required": [
+          "Monetary amount awarded by the Hans Wilsdorf fund (not published on the official page)",
+          "Currency of the award (inferred as CHF from the Swiss context, not stated)"
+        ],
+        "unverified_or_removed_claims": [
+          "No funding amount is published for this fund; the maximum of CHF 2,600 per month stated in the EPFL social scholarship FAQ was not attributed to the Hans Wilsdorf fund",
+          "Contact email address is Cloudflare-obfuscated on the fetched page"
+        ],
+        "source_citations": [
+          "https://www.epfl.ch/education/studies/en/support-scholarships",
+          "https://www.epfl.ch/education/studies/en/epfl-social-scholarship"
+        ],
+        "researched_by": "w1_48"
+      },
+      "logo_override": {
+        "url": "https://www.epfl.ch/education/studies/wp-content/themes/wp-theme-2018/assets/svg/epfl-logo.svg",
+        "page_url": "https://www.epfl.ch/education/studies/en/support-scholarships",
+        "official_host": true,
+        "alt_text": "EPFL, Ecole polytechnique federale de Lausanne",
+        "validation_result": "verified",
+        "validation_detail": "svg, red EPFL wordmark on transparent background (id=\"logo_epfl_2019\"), fetched successfully as image content from the same theme asset path used by the scholarship pages",
+        "image_kind": "official_logo",
+        "image_format": "svg",
+        "verified_at": "2026-10-04T00:00:00+00:00",
+        "host_evidence": "same_registrable_domain",
+        "_award": "Hans Wilsdorf Foundation Scholarship (managed by EPFL)"
+      },
+      "research_notes": {
+        "logo": "The stored record had no usable logo (only the og:image banner https://actu.epfl.ch/image/92055/1108x622.jpg). EPFL's own header on both fetched pages contains <img src=\"https://www.epfl.ch/education/studies/wp-content/themes/wp-theme-2018/assets/svg/epfl-logo.svg\" alt=\"Logo EPFL, Ecole polytechnique federale de Lausanne\">; the asset was probed and returned the red EPFL SVG wordmark (HTTP 200, image content type). EPFL is the body named as official_source and as the administrator of the fund on its own page.",
+        "unverified": [
+          "Monetary amount of the Hans Wilsdorf award",
+          "Contact email address (Cloudflare-obfuscated)"
+        ],
+        "substitution": null,
+        "official_pages_read": [
+          "https://www.epfl.ch/education/studies/en/support-scholarships",
+          "https://www.epfl.ch/education/studies/en/epfl-social-scholarship"
+        ],
+        "degree_level_confirmed": "\"As of the CMS\" for Swiss/C permit/refugee students and \"As of the successful completion of the first year cycle and after spending at least one year at EPFL\" for international students",
+        "url_observed": null,
+        "contradictions": [
+          "stored program_type text (\"Students whose section recommend participating in study trips...\") describes EPFL's separate Scholarship for study trips, not the Hans Wilsdorf fund",
+          "stored deadline_display \"30 September (each year)\" belongs to the Charles-Edouard Guillaume Foundation (microengineering) scholarship, not the Hans Wilsdorf fund, whose windows are 15.07.26, 15.09.26, 01.12.26 and 15.02.27",
+          "stored deadline_precision \"application_dead\" is not a permitted value; corrected to \"exact\"",
+          "stored current_image_kind was \"official_banner\" but pointed at the EPFL social scholarship og:image photo; replaced with the EPFL logo asset"
+        ],
+        "skeleton": false
+      }
+    },
+    {
+      "target_id": 466,
+      "outcome": "refreshed",
+      "confirm": true,
+      "confirmation_evidence": "The awarding body's own Financial Support page (https://www.studienfinanzierung.uzh.ch/en/financial_support.html) states \"Hardship loans are available if you are enrolled at the University of Zurich and are in an acute financial emergency without any debt\" and \"Maximum amount per application is CHF 6,000\"; its Application page adds \"You can submit your application at any time via portal.\"",
+      "new_scholarship": {
+        "name": "UZH Hardship Loan",
+        "legacy_titles": ["UZH Hardship Loan"],
+        "description": "The UZH hardship loan is an interest-free short-term loan for University of Zurich students facing an acute financial emergency and holding no existing debt. It is intended to bridge gaps such as an advance on a scholarship or tuition fees, must be repaid plausibly within six months, and is capped at CHF 6,000 per application. There are no deadlines and applications can be made at most once per semester.",
+        "country": "Switzerland",
+        "degree_levels": "Bachelor's, Master's",
+        "funding_type": "Interest-free loan",
+        "official_source": "University of Zurich Student Financial Aid Office",
+        "official_source_url": "https://www.studienfinanzierung.uzh.ch/en/financial_support.html",
+        "status": "open",
+        "is_verified": true,
+        "last_verified_date": "2026-10-04",
+        "region": "Europe",
+        "duration": "Short-term bridge loan; repeat applications possible every 6 months and at most once per semester",
+        "deadline": "\"You can submit your application at any time via portal. Repeat applications are only possible every 6 months.\"",
+        "deadline_date": null,
+        "deadline_precision": "rolling",
+        "application_period": "Rolling, all year round",
+        "application_link": "https://www.studienfinanzierung.uzh.ch/en/application_deadlines.html",
+        "funding_amount": 6000,
+        "funding_currency": "CHF",
+        "funding_period": "per application",
+        "eligibility_summary": "Enrolled students at the University of Zurich in an acute financial emergency who have no existing debt and can plausibly guarantee repayment. Intended to bridge financial gaps such as an advance on a cantonal scholarship or tuition fees, not to pay off debts.",
+        "eligibility": [
+          "Enrolled at the University of Zurich",
+          "In an acute financial emergency",
+          "Without any debt",
+          "Able to plausibly guarantee that the amount will be paid back within six months",
+          "Hardship loans can be applied for a maximum of one time per semester"
+        ],
+        "coverage": [
+          "Interest-free bridge financing for temporary financial gaps",
+          "Up to CHF 6,000 per application"
+        ],
+        "required_documents": [
+          "Application submitted through the UZH online application portal",
+          "Evidence that repayment within six months is plausibly assured"
+        ],
+        "requirements": [
+          "UZH email address required to access the application form",
+          "Application submitted via the portal at any time",
+          "Repeat applications only every 6 months"
+        ],
+        "application_method": [
+          "Log in to the UZH scholarship portal with your UZH email address",
+          "Submit the hardship loan request and upload the documents",
+          "Track the decision in the portal; processing takes approximately 6-8 working days"
+        ],
+        "selection_notes": "Cases are assessed by the Student Financial Aid Office; the loan is granted if repayment can plausibly be assured.",
+        "program_type": "Emergency student loan",
+        "best_fit": "Enrolled UZH students facing a sudden, temporary financial gap, for example while waiting for a cantonal scholarship decision.",
+        "notes": "Not meant for paying off debts; unpaid loans are immediately passed to a debt collection agency.",
+        "benefits": [
+          "Interest-free",
+          "No application deadline",
+          "Processing in approximately 6-8 working days"
+        ]
+      },
+      "programme_detail_official": {
+        "official_source_urls": [
+          "https://www.studienfinanzierung.uzh.ch/en/financial_support.html",
+          "https://www.studienfinanzierung.uzh.ch/en/application_deadlines.html"
+        ],
+        "application_link": "https://www.studienfinanzierung.uzh.ch/en/application_deadlines.html",
+        "official_updates_url": "https://www.studienfinanzierung.uzh.ch/en/financial_support.html",
+        "catalogue_url": "https://www.studienfinanzierung.uzh.ch/en.html",
+        "application_cycle": "Continuous; applications accepted at any time, repeat applications only possible every 6 months",
+        "deadline_central": null,
+        "deadline_central_display": "\"You can submit your application at any time via portal. Repeat applications are only possible every 6 months.\"",
+        "deadline_central_timezone": "Europe/Zurich",
+        "deadline_note": "The Application page deadline table lists the hardship loan as \"at any time\", unlike scholarships (15 August / 1 February) and loans (15 August, 1 November, 1 February, 1 April).",
+        "status": "ONGOING",
+        "status_note": "The scheme is permanently open with no submission deadline; the only limits are one application per semester and a repeat application only every 6 months.",
+        "funding_amount": 6000,
+        "funding_currency": "CHF",
+        "funding_period": "per application",
+        "funding_duration": "Short-term bridge loan repayable within six months",
+        "tuition_coverage": false,
+        "tuition_coverage_note": "Tuition fees are listed only as a typical example of a gap a hardship loan may bridge (\"Advance on scholarships, tuition fees\"), not as a fee waiver; the loan must be repaid.",
+        "living_cost_coverage": true,
+        "travel_coverage": null,
+        "fully_funded": false,
+        "funding_label": "Interest-free loan up to CHF 6,000 per application, repayable within six months; not a grant, so fully_funded is false",
+        "benefits": [
+          "Interest-free",
+          "No bureaucratic red tape; applications usually processed within a few working days (approximately 6-8 working days)",
+          "May be accumulated within a semester as an exception to the regular loan rules"
+        ],
+        "eligibility": [
+          "Enrolled at the University of Zurich",
+          "In an acute financial emergency",
+          "Without any debt",
+          "Repayment within six months must be plausibly guaranteed",
+          "Maximum one hardship loan per semester"
+        ],
+        "citizenship_residency": "No explicit nationality restriction stated for the hardship loan itself; it is limited to people enrolled at UZH. Separate UZH rules restrict cantonal-type loans to Swiss students and C permit holders.",
+        "international_eligibility": "Enrolled international students are not excluded from the hardship loan itself, though international students face separate conditions for UZH scholarships (first year of the Bachelor completed; a Swiss Bachelor's degree for Master's support).",
+        "degree_levels": ["Bachelor's", "Master's"],
+        "study_mode": null,
+        "research_requirement": null,
+        "subject_or_agency_requirement": null,
+        "application_method": "Online only, through the UZH scholarship portal, which requires a UZH email address; the portal is used to upload documents and to receive the decision.",
+        "application_route": "UZH scholarship portal (single application portal for all types of support)",
+        "requirements": [
+          "UZH email address to access the form",
+          "Application can be submitted at any time",
+          "Repeat applications only every 6 months",
+          "Repayment must be plausibly assured"
+        ],
+        "documents": [
+          "Application submitted via the UZH portal",
+          "Evidence supporting the acute financial emergency",
+          "Evidence that repayment within six months can be assured"
+        ],
+        "english_requirement": null,
+        "english_requirement_note": "The information is published in English and German; the application form is available in German.",
+        "selection_criteria": [
+          "Enrolled at UZH",
+          "Acute financial emergency",
+          "No existing debt",
+          "Repayment plausibly assured"
+        ],
+        "selection_weighting": null,
+        "duration": "Must be repaid within six months; repeat applications at most every 6 months and once per semester",
+        "award_holder_conditions": [
+          "Repayment within six months must be plausibly guaranteed",
+          "Loans not repaid on time \"will immediately be sent to a debt collector\"",
+          "Maximum one hardship loan per semester"
+        ],
+        "supplements_or_initiatives": [
+          "UZH scholarships and cantonal scholarship advances",
+          "Regular loans from the Foundation for Student Loans at UZH",
+          "Pecunia one-time loan"
+        ],
+        "official_contacts": {"general": "Student Financial Aid Office, University of Zurich, Postfach, Ramistrasse 71, CH-8006 Zurich; telephone consultation Monday and Thursday 14.00-15.00, +41 (0)44 634 22 04", "email": "studienfinanzierung@sib.uzh.ch"},
+        "description": "The UZH hardship loan is an interest-free short-term loan for students of the University of Zurich who face an acute financial emergency and have no existing debt. It is meant to bridge gaps such as an advance on a scholarship or tuition fees and must be repaid, plausibly within six months, with a maximum of CHF 6,000 per application. Applications are submitted at any time through the UZH application portal and are usually processed within about 6-8 working days.",
+        "program_type": "Emergency student loan",
+        "region": "Europe",
+        "coverage": "Short-term bridging of a financial gap up to CHF 6,000, repayable; not a tuition waiver and not a grant",
+        "last_verified_date": "2026-10-04"
+      },
+      "programme_detail_applicant_utility": {
+        "application_readiness_checklist": [
+          "Make sure your UZH email address works, since the portal cannot be accessed without it",
+          "Have evidence of the acute financial emergency ready to upload",
+          "Be able to show how the loan will be repaid within six months",
+          "Check that you have not already used a hardship loan this semester or within the last 6 months",
+          "Submit via the portal at any time; there is no deadline to miss"
+        ],
+        "common_rejection_risks": [
+          "Applying to clear existing debt rather than bridge a temporary gap, which the scheme excludes",
+          "Being unable to plausibly guarantee repayment within six months",
+          "Applying more than once per semester or inside the 6-month repeat window",
+          "Not being enrolled at UZH",
+          "Missing documents or uploading them where the office cannot yet see them, since documents only become visible after review"
+        ],
+        "estimated_uncovered_costs": [
+          "Tuition fees are only a typical example of a bridged gap, not a covered cost",
+          "Debt repayment is not eligible",
+          "Maximum CHF 6,000 per application, so larger gaps remain uncovered"
+        ],
+        "document_audit": [
+          "Upload all documents in the portal and confirm receipt by email",
+          "Include proof of the repayment source for the six-month obligation",
+          "Do not send recommendation letters unless explicitly requested"
+        ],
+        "alerts": [
+          {"trigger": "Repayment obligation", "message": "The loan must be repaid within six months; unpaid loans go straight to a debt collection agency."},
+          {"trigger": "6-month rule", "message": "Repeat applications are only possible every 6 months and at most once per semester."},
+          {"trigger": "PhD students", "message": "The office states it supports first degree programmes only and does not support PhD study programmes."}
+        ],
+        "submission_workflow": [
+          "Clear the browser cache and log in to the UZH scholarship portal",
+          "Start the hardship loan application and fill in the request",
+          "Upload the supporting documents",
+          "Submit and keep the confirmation email",
+          "Await the decision in the portal, normally 6-8 working days",
+          "Arrange repayment within six months"
+        ]
+      },
+      "programme_detail_verification": {
+        "cycle_verified": "Continuous scheme confirmed on the live pages, verified 2026-10-04",
+        "verification_confidence": 0.93,
+        "official_fields_confirmed": [
+          "name",
+          "funding_amount",
+          "funding_currency",
+          "deadline_precision",
+          "status",
+          "duration",
+          "eligibility",
+          "documents",
+          "official_contacts"
+        ],
+        "institution_check_required": [
+          "Whether a given applicant's specific emergency qualifies, which is assessed case by case",
+          "Whether the office can waive the six-month repayment expectation in individual cases"
+        ],
+        "unverified_or_removed_claims": [
+          "No tuition-fee coverage is claimed: tuition fees appear only as an example of a gap the loan may bridge",
+          "fully_funded is false because this is a repayable loan, not a grant"
+        ],
+        "source_citations": [
+          "https://www.studienfinanzierung.uzh.ch/en/financial_support.html",
+          "https://www.studienfinanzierung.uzh.ch/en/application_deadlines.html"
+        ],
+        "researched_by": "w1_48"
+      },
+      "logo_override": {
+        "url": "https://www.studienfinanzierung.uzh.ch/docroot/logos/uzh_logo_d_pos.svg",
+        "page_url": "https://www.studienfinanzierung.uzh.ch/en/financial_support.html",
+        "official_host": true,
+        "alt_text": "Logo of the University of Zurich",
+        "validation_result": "verified",
+        "validation_detail": "svg (id=\"uzh_logo\"), dark positive UZH wordmark served from the awarding office's own domain, fetched successfully as image content",
+        "image_kind": "official_logo",
+        "image_format": "svg",
+        "verified_at": "2026-10-04T00:00:00+00:00",
+        "host_evidence": "same_registrable_domain",
+        "_award": "UZH Hardship Loan"
+      },
+      "research_notes": {
+        "logo": "The stored image https://www.studienfinanzierung.uzh.ch/dam/jcr:49cef921-562d-47e9-be4b-c2b489b55a98/FSF_SIB_UZH.png is the 1240x222 intro slideshow image combining three marks, not a logo. The header of the awarding office's own pages uses <svg><title id=\"logoTitle\">Logo of the University of Zurich, to homepage</title><use href=\"/docroot/logos/uzh_logo_d_pos.svg#uzh_logo\"/></svg>, i.e. https://www.studienfinanzierung.uzh.ch/docroot/logos/uzh_logo_d_pos.svg. That asset was probed and returned the UZH SVG (id=\"uzh_logo\", dark positive variant, fill=\"currentColor\" which resolves to the dark default, not white-on-transparent).",
+        "unverified": [
+          "Individual case assessment outcomes",
+          "Whether PhD students can in practice access the hardship loan (the application page says PhD study programmes are not supported)"
+        ],
+        "substitution": null,
+        "official_pages_read": [
+          "https://www.studienfinanzierung.uzh.ch/en/financial_support.html",
+          "https://www.studienfinanzierung.uzh.ch/en/application_deadlines.html",
+          "https://www.studienfinanzierung.uzh.ch/en.html"
+        ],
+        "degree_level_confirmed": "\"We only support first degree programmes at every level of study. (And we do not support PhD study programmes.)\" on the Application page, and \"Hardship loans are available if you are enrolled at the University of Zurich\" on the Financial Support page",
+        "url_observed": null,
+        "contradictions": [
+          "stored program_type text (\"The Swiss Study Foundation supports highly talented students...\") is scraped from an unrelated block on the same page and does not describe the hardship loan",
+          "stored deadline_display \"You can submit your application\" was correct in substance but deadline_precision \"application_dead\" is not a permitted value; the official position is \"at any time\", corrected to \"rolling\"",
+          "stored current_funding_amount was null although the official page publishes \"Maximum amount per application is CHF 6,000\"",
+          "stored current_image_kind was \"official_banner\" and the file was a combined three-logo slideshow banner; replaced with the official UZH logo asset from the page header"
+        ],
+        "skeleton": false
+      }
+    },
+    {
+      "target_id": 467,
+      "outcome": "refreshed",
+      "confirm": true,
+      "confirmation_evidence": "The awarding ministry's own page (https://english.moe.gov.tw/cp-24-16836-FEE8B-1.html) states \"a monthly research allowance of NTD $25,000 for a Ph.D. student\", \"a monthly research allowance of NTD $40,000 for a postdoctoral fellow\" and \"Applications must arrive at the host institution no later than September 30 each year.\"",
+      "new_scholarship": {
+        "name": "MOE Short Term Research Award (STRA)",
+        "legacy_titles": ["MOE Short Term Research Award (STRA)"],
+        "description": "The Ministry of Education Short Term Research Award (STRA) lets international PhD students and postdoctoral fellows carry out research in Taiwan for between two and six months. Each award provides a monthly research allowance of NTD 25,000 for PhD students or NTD 40,000 for postdoctoral fellows, plus economy class round-trip airfare between the scholar's place of residence and Taiwan. Applications must reach a Taiwanese host institution by 30 September for research in the following year.",
+        "country": "Taiwan",
+        "degree_levels": "PhD, Postdoctoral",
+        "funding_type": "Stipend",
+        "official_source": "Ministry of Education, Republic of China (Taiwan)",
+        "official_source_url": "https://english.moe.gov.tw/cp-24-16836-FEE8B-1.html",
+        "status": "upcoming",
+        "is_verified": true,
+        "last_verified_date": "2026-10-04",
+        "region": "Asia",
+        "duration": "Between 2 and 6 months of research in Taiwan",
+        "deadline": "Applications for research in Taiwan in the following year must arrive at the host institution no later than September 30 each year",
+        "deadline_date": null,
+        "deadline_precision": "recurring",
+        "application_period": "Annual; applications submitted by 30 September for research the following year",
+        "funding_amount": 25000,
+        "funding_currency": "TWD",
+        "funding_period": "per month (PhD student rate; the official page states NTD 40,000 per month for postdoctoral fellows)",
+        "eligibility_summary": "Overseas PhD students and postdoctoral researchers who do not hold an R.O.C. passport, are not currently in Taiwan, hold no other Taiwanese government or institutional research funding, are not exchange students, and have not received an STRA in the last 5 years. Scholars from mainland China, Hong Kong and Macao are excluded.",
+        "eligibility": [
+          "Be a PhD student at an overseas government approved and registered public or private university or tertiary college, or be a postdoctoral research fellow now undertaking research at an overseas institution",
+          "Not hold an R.O.C. (Taiwanese) passport",
+          "Not be currently visiting, residing, studying, interning, teaching or researching in Taiwan",
+          "Not be receiving other financial assistance from a Taiwanese government agency or educational institution for a research project",
+          "Not be an exchange student under a Taiwan-overseas academic cooperation agreement during the proposed research period",
+          "Not have received an STRA award within the last 5 years",
+          "Exclude scholars from mainland China, Hong Kong and Macao"
+        ],
+        "coverage": [
+          "Monthly research allowance of NTD 25,000 for PhD students and NTD 40,000 for postdoctoral fellows",
+          "Economy class round-trip airfare on the most direct route between the applicant's place of residence and Taiwan"
+        ],
+        "requirements": [
+          "Research topic related to Taiwan in a humanities discipline, the social sciences, a culture and/or arts field and/or related comparative research",
+          "Application submitted to a host institution in Taiwan",
+          "Research stay of between 2 and 6 months"
+        ],
+        "application_method": [
+          "Identify a host institution in Taiwan (a university, tertiary college or a research organization affiliated with the MOE, such as the Center for Chinese Studies or the National Academy for Educational Research)",
+          "Submit the application to that host institution so that it arrives by 30 September"
+        ],
+        "selection_notes": "The host institution receives and processes the application under the Directions Governing Ministry of Education Subsidies for Short Term Research Awards.",
+        "program_type": "Short-term research grant",
+        "best_fit": "Overseas PhD students and postdoctoral researchers whose proposed research topic relates to Taiwan and who can host the research at a Taiwanese institution.",
+        "notes": "This is a research stay award, not a degree scholarship; the published monthly amount differs by career stage.",
+        "benefits": [
+          "Monthly research allowance",
+          "Economy class return airfare to Taiwan",
+          "Research stay of 2 to 6 months"
+        ]
+      },
+      "programme_detail_official": {
+        "official_source_urls": ["https://english.moe.gov.tw/cp-24-16836-FEE8B-1.html"],
+        "application_link": "https://english.moe.gov.tw/cp-24-16836-FEE8B-1.html",
+        "official_updates_url": "https://english.moe.gov.tw/lp-24-1.html",
+        "catalogue_url": "https://english.moe.gov.tw/lp-24-1.html",
+        "application_cycle": "Annual cycle; applications for research in Taiwan in the following year are due by 30 September",
+        "deadline_central": null,
+        "deadline_central_display": "\"Applications must arrive at the host institution no later than September 30 each year.\"",
+        "deadline_central_timezone": "Asia/Taipei",
+        "deadline_note": "The page states an annual recurring date rather than a dated calendar entry for a specific year, so no ISO deadline is asserted. The 30 September 2026 window has already passed as of 2026-10-04; the next window is the following 30 September.",
+        "status": "UPCOMING",
+        "status_note": "The scheme runs every year and the current 30 September window has just closed, so the next opportunity is the following annual round.",
+        "funding_amount": 25000,
+        "funding_currency": "TWD",
+        "funding_period": "per month",
+        "funding_duration": "Between 2 and 6 months",
+        "tuition_coverage": false,
+        "tuition_coverage_note": "The award funds a short research stay and lists only a monthly research allowance and economy class round-trip airfare; no tuition or enrolment fee is mentioned.",
+        "living_cost_coverage": true,
+        "travel_coverage": true,
+        "fully_funded": false,
+        "funding_label": "Monthly research allowance of NTD 25,000 (PhD student) or NTD 40,000 (postdoctoral fellow) plus economy class round-trip airfare, for 2 to 6 months; only one amount is stored, and no tuition is covered",
+        "benefits": [
+          "Monthly research allowance of NTD 25,000 for a PhD student",
+          "Monthly research allowance of NTD 40,000 for a postdoctoral fellow",
+          "Economy class round-trip airfare for the most direct route between the applicant's place of residence and Taiwan"
+        ],
+        "eligibility": [
+          "Be a PhD student at an overseas government approved and registered public or private university or tertiary college",
+          "Or be a postdoctoral research fellow awarded a PhD by any government approved and registered institution in Taiwan or overseas and now researching at an overseas institution",
+          "Not hold an R.O.C. (Taiwanese) passport",
+          "Not be currently visiting, residing, studying, doing an internship, teaching or undertaking research in Taiwan",
+          "Not be currently receiving other financial assistance from a Taiwanese government agency or educational institution to undertake a research project",
+          "Not be an exchange student under a Taiwan-overseas academic cooperation agreement during the proposed research period",
+          "Not have received an STRA award within the last 5 years",
+          "Not from mainland China, Hong Kong or Macao"
+        ],
+        "citizenship_residency": "Foreign nationals only; applicants must not hold an R.O.C. (Taiwanese) passport, and scholars from mainland China, Hong Kong and Macao are excluded.",
+        "international_eligibility": "Yes, this award is specifically for international scholars who are not currently in Taiwan and who are not exchange students under a Taiwan-overseas agreement.",
+        "degree_levels": ["PhD", "Postdoctoral"],
+        "study_mode": null,
+        "research_requirement": "The research topic area must be related to Taiwan in a humanities discipline, the social sciences, a culture and/or arts field and/or related comparative research.",
+        "subject_or_agency_requirement": "The research must be hosted by a university, tertiary college or MOE-affiliated research organization in Taiwan, such as the Center for Chinese Studies or the National Academy for Educational Research.",
+        "application_method": "Submit the application to the chosen host institution in Taiwan so that it arrives by 30 September; the host institution handles it under the Directions Governing Ministry of Education Subsidies for Short Term Research Awards.",
+        "application_route": "Host institution in Taiwan (university, tertiary college or MOE-affiliated research organization)",
+        "requirements": [
+          "Research topic related to Taiwan",
+          "Host institution identified in Taiwan",
+          "Research stay of 2 to 6 months",
+          "No other Taiwanese government or institutional research funding"
+        ],
+        "documents": [],
+        "english_requirement": null,
+        "english_requirement_note": "The programme page is published in English by the Ministry of Education; no language test requirement is stated.",
+        "selection_criteria": [
+          "Eligibility as listed on the official page",
+          "Research topic related to Taiwan",
+          "Non-eligibility of Taiwanese passport holders, current visitors to Taiwan, exchange students and previous STRA holders within 5 years"
+        ],
+        "selection_weighting": null,
+        "duration": "Between 2 and 6 months",
+        "award_holder_conditions": [
+          "Research must be undertaken at the nominated host institution in Taiwan",
+          "Must not hold other Taiwanese government or institutional research funding for the same project",
+          "Not eligible for a further STRA within 5 years"
+        ],
+        "supplements_or_initiatives": [
+          "Directions Governing Ministry of Education Subsidies for Short Term Research Awards",
+          "Other MOE scholarship schemes listed on the ministry Scholarships page"
+        ],
+        "official_contacts": {"general": null, "email": null},
+        "description": "The Ministry of Education Short Term Research Award lets international PhD students and postdoctoral fellows carry out research in Taiwan for between two and six months, with the aim of increasing understanding of Taiwan's culture and society. Each award provides a monthly research allowance of NTD 25,000 for a PhD student or NTD 40,000 for a postdoctoral fellow, plus an economy class round-trip airfare on the most direct route. Applications must reach a Taiwanese host institution by 30 September for research in the following year.",
+        "program_type": "Short-term research grant",
+        "region": "Asia",
+        "coverage": "Monthly research allowance and economy class return airfare for a 2 to 6 month research stay; no tuition is involved",
+        "last_verified_date": "2026-10-04"
+      },
+      "programme_detail_applicant_utility": {
+        "application_readiness_checklist": [
+          "Confirm you do not hold an R.O.C. passport and are not from mainland China, Hong Kong or Macao",
+          "Confirm you have not received an STRA in the last 5 years",
+          "Choose a Taiwanese host institution and agree the research plan with it",
+          "Check that your topic is related to Taiwan in the humanities, social sciences, culture or arts, or comparative research",
+          "Get the application to the host institution before 30 September"
+        ],
+        "common_rejection_risks": [
+          "Already being in Taiwan, studying or researching there, which disqualifies the applicant",
+          "Holding another Taiwanese government or institutional research grant for the same purpose",
+          "Being an exchange student under a Taiwan-overseas cooperation agreement",
+          "Applying outside the humanities, social sciences, culture or arts topic area",
+          "Missing the 30 September arrival deadline at the host institution"
+        ],
+        "estimated_uncovered_costs": [
+          "Living costs beyond the monthly research allowance",
+          "Any travel upgrade beyond economy class on the most direct route",
+          "Local transport, insurance and accommodation are not itemised on the official page"
+        ],
+        "document_audit": [
+          "Include proof of PhD enrolment or postdoctoral appointment",
+          "Provide the research plan aligned with the host institution",
+          "Check the five-year cooldown before applying"
+        ],
+        "alerts": [
+          {"trigger": "Annual deadline", "message": "Applications must arrive at the host institution by 30 September for research the following year."},
+          {"trigger": "Award amount depends on status", "message": "The monthly allowance is NTD 25,000 for PhD students and NTD 40,000 for postdoctoral fellows."},
+          {"trigger": "Five-year rule", "message": "Previous STRA recipients cannot apply again within 5 years."}
+        ],
+        "submission_workflow": [
+          "Identify the host institution in Taiwan",
+          "Agree the research topic and period of 2 to 6 months",
+          "Prepare the application and supporting documents",
+          "Submit so that it arrives at the host institution by 30 September",
+          "Await the host institution's processing under the MOE Directions"
+        ]
+      },
+      "programme_detail_verification": {
+        "cycle_verified": "Annual STRA cycle confirmed on the live ministry page, verified 2026-10-04",
+        "verification_confidence": 0.88,
+        "official_fields_confirmed": [
+          "name",
+          "funding_amount",
+          "funding_currency",
+          "funding_period",
+          "duration",
+          "eligibility",
+          "deadline_precision",
+          "research_requirement"
+        ],
+        "institution_check_required": [
+          "The host institution in Taiwan that will receive and process the application",
+          "Whether the Directions Governing MOE Subsidies for Short Term Research Awards impose further conditions not reproduced on the page"
+        ],
+        "unverified_or_removed_claims": [
+          "No ISO deadline date is asserted because the official page gives only a recurring annual date",
+          "Only the PhD student rate (NTD 25,000) is stored in funding_amount; the postdoctoral rate of NTD 40,000 is recorded in the period and label fields",
+          "The programme page carries a publication date of 2020-12-08 and is the standing scheme page rather than a 2026 cycle announcement"
+        ],
+        "source_citations": ["https://english.moe.gov.tw/cp-24-16836-FEE8B-1.html"],
+        "researched_by": "w1_48"
+      },
+      "logo_override": {
+        "url": "https://english.moe.gov.tw/Public/Images/201912/2631912251745b958b.png",
+        "page_url": "https://english.moe.gov.tw/cp-24-16836-FEE8B-1.html",
+        "official_host": true,
+        "alt_text": "Ministry of Education Republic of China (Taiwan)",
+        "validation_result": "verified",
+        "validation_detail": "png, dark Ministry of Education seal and wordmark on a white background, fetched successfully as image content",
+        "image_kind": "official_logo",
+        "image_format": "png",
+        "verified_at": "2026-10-04T00:00:00+00:00",
+        "host_evidence": "same_registrable_domain",
+        "_award": "MOE Short Term Research Award (STRA)"
+      },
+      "research_notes": {
+        "logo": "The stored record had no image at all. The ministry page header carries <h1><a href=\"mp-1.html\" title=\"Ministry of Education Republic of China (Taiwan)\"><img src=\"https://english.moe.gov.tw/Public/Images/201912/2631912251745b958b.png\" alt=\"Ministry of Education Republic of China (Taiwan)\"></a></h1>. The asset was probed and returned \"Image fetched successfully\", i.e. HTTP 200 with a PNG content type; it shows the MOE seal with dark text on white, so it is not white-on-transparent.",
+        "unverified": [
+          "Host institution internal deadlines, which precede the 30 September MOE date",
+          "The content of the Directions Governing Ministry of Education Subsidies for Short Term Research Awards, which the page references but does not reproduce"
+        ],
+        "substitution": null,
+        "official_pages_read": ["https://english.moe.gov.tw/cp-24-16836-FEE8B-1.html"],
+        "degree_level_confirmed": "\"be a Ph.D. student at an overseas government approved and registered public or private university or tertiary college\" and \"be a postdoctoral research fellow awarded a Ph.D.\" - the award funds PhD and postdoctoral researchers, not degree students",
+        "url_observed": null,
+        "contradictions": [
+          "stored deadline_precision \"unknown\" is wrong: the official page states \"Applications must arrive at the host institution no later than September 30 each year\", so it is a recurring annual deadline",
+          "stored deadline_display was null although the page publishes the 30 September submission date",
+          "stored current_funding_amount was null although the page publishes NTD 25,000 per month for PhD students and NTD 40,000 for postdoctoral fellows",
+          "stored region was null; the award is administered by Taiwan's Ministry of Education, so region is Asia"
+        ],
+        "skeleton": false
+      }
+    },
+    {
+      "target_id": 468,
+      "outcome": "refreshed",
+      "confirm": true,
+      "confirmation_evidence": "NYCU's own scholarship page (https://oia.nycu.edu.tw/oia/en/app/data/view?module=nycu0012&id=792&serno=0f046f83-4147-4ec7-8921-bbaccd8c678f) states \"Current students who have not received scholarships or grants from the Taiwan government and maintain a minimum cumulative GPA of 3.5 for graduate students and 3.0 for undergraduate students are eligible\" and \"Application Period (for current NYCU students): Fall Semester: January 15-March 15 / Spring Semester: July 15-September 15\".",
+      "new_scholarship": {
+        "name": "NYCU International Student Scholarship",
+        "legacy_titles": ["NYCU International Student Scholarship"],
+        "description": "The NYCU International Student Scholarship offers international degree students at National Yang Ming Chiao Tung University a monthly stipend and a tuition award, which may be granted together or separately. Current students need a cumulative GPA of at least 3.5 for graduate students or 3.0 for undergraduate students and must not already hold a Taiwan government scholarship or grant. Applications for current students run from 15 January to 15 March and from 15 July to 15 September; incoming students apply with their admission application.",
+        "country": "Taiwan",
+        "degree_levels": "Bachelor's, Master's, PhD",
+        "funding_type": "Partially Funded",
+        "official_source": "National Yang Ming Chiao Tung University (NYCU) Office of International Affairs",
+        "official_source_url": "https://oia.nycu.edu.tw/oia/en/app/data/view?module=nycu0012&id=792&serno=0f046f83-4147-4ec7-8921-bbaccd8c678f",
+        "status": "upcoming",
+        "is_verified": true,
+        "last_verified_date": "2026-10-04",
+        "region": "Asia",
+        "duration": "Awards are generally valid for 1 year; maximum award duration is 4 years for undergraduates, 2 years for master's and 5 years for PhD students",
+        "deadline": "Application Period for current NYCU students: Fall Semester January 15-March 15, Spring Semester July 15-September 15. Late application documents will not be accepted.",
+        "deadline_date": null,
+        "deadline_precision": "recurring",
+        "application_period": "Twice yearly windows (January 15-March 15 and July 15-September 15) for current students; incoming students apply with the admission application",
+        "eligibility_summary": "International degree students at NYCU who have not received a scholarship or grant from the Taiwan government and maintain a minimum cumulative GPA of 3.5 (graduate) or 3.0 (undergraduate). Monthly stipend and tuition award may be granted together or separately.",
+        "eligibility": [
+          "Current NYCU students, or incoming students applying with their admission application",
+          "Not have received scholarships or grants from the Taiwan government",
+          "Minimum cumulative GPA of 3.5 for graduate students",
+          "Minimum cumulative GPA of 3.0 for undergraduate students",
+          "For graduate students, match-funding from the college, department or advisor is compulsory"
+        ],
+        "coverage": [
+          "Monthly stipend funded by the OIA plus matching funds from the college, department or advisor",
+          "Tuition award, either a full tuition waiver or tuition and credit fees charged at the local student rate"
+        ],
+        "required_documents": [
+          "Application submitted through the NYCU scholarship application system",
+          "Official transcript",
+          "Further documents listed in the NYCU scholarship regulations"
+        ],
+        "requirements": [
+          "Application uploaded in the NYCU scholarship application system by the closing date",
+          "Undergraduate recipients must enrol in at least 4 Mandarin courses and graduate recipients at least 2",
+          "Transcripts and tuition payment receipts submitted each semester before the deadline to keep the award for the following semester"
+        ],
+        "application_method": [
+          "Current students apply and upload the required documents in the NYCU scholarship application system",
+          "Incoming students apply together with the admission application"
+        ],
+        "selection_notes": "Awards are decided by the committees of the departments/colleges and the university; the Office of International Affairs cannot change the award.",
+        "program_type": "University scholarship",
+        "best_fit": "Enrolled or incoming international degree students at NYCU with a GPA of 3.0 (undergraduate) or 3.5 (graduate) or above who hold no Taiwanese government scholarship.",
+        "notes": "The stipend amount is not published on this page and is described as flexibly adjusted according to budget; a separate NYCU Elite PhD Scholarship of NT$33,000 per month with tuition waiver for 2 years is listed on the same page.",
+        "benefits": [
+          "Monthly stipend",
+          "Tuition waiver or local-rate tuition",
+          "Maximum award duration of up to 5 years for PhD students"
+        ]
+      },
+      "programme_detail_official": {
+        "official_source_urls": ["https://oia.nycu.edu.tw/oia/en/app/data/view?module=nycu0012&id=792&serno=0f046f83-4147-4ec7-8921-bbaccd8c678f"],
+        "application_link": "https://oia.nycu.edu.tw/oia/en/app/data/view?module=nycu0012&id=792&serno=0f046f83-4147-4ec7-8921-bbaccd8c678f",
+        "official_updates_url": "https://oia.nycu.edu.tw/oia/en/app/data/view?module=nycu0012&id=792&serno=0f046f83-4147-4ec7-8921-bbaccd8c678f",
+        "catalogue_url": "https://oia.nycu.edu.tw/oia/en/app/folder/781",
+        "application_cycle": "Twice-yearly application windows for current students; award periods follow the fall and spring semesters",
+        "deadline_central": null,
+        "deadline_central_display": "Fall Semester: January 15-March 15; Spring Semester: July 15-September 15 (current NYCU students)",
+        "deadline_central_timezone": "Asia/Taipei",
+        "deadline_note": "The official page publishes recurring date ranges rather than a dated calendar entry for a specific cycle, so no ISO deadline is asserted. The spring window closed on 15 September 2026; the next window opens on 15 January.",
+        "status": "UPCOMING",
+        "status_note": "The award runs every semester; the current window has closed and the next applications open on 15 January.",
+        "funding_amount": null,
+        "funding_currency": "TWD",
+        "funding_period": "per month",
+        "funding_duration": "Generally valid for 1 year; maximum 4 years (undergraduate), 2 years (Master), 5 years (PhD)",
+        "tuition_coverage": true,
+        "tuition_coverage_note": "A tuition award is one of the two components and may be a full tuition waiver or tuition and credit fees charged at the local student rate; the page does not state that every award includes it.",
+        "living_cost_coverage": true,
+        "travel_coverage": null,
+        "fully_funded": false,
+        "funding_label": "Monthly stipend (OIA funding plus matching funds from the college, department or advisor) and/or a tuition award, awarded together or separately; the stipend amount is not published, so fully_funded is false",
+        "benefits": [
+          "Monthly stipend including a scholarship funded by the OIA and matching funds from the college, department or advisor",
+          "Tuition waiver, or tuition and credit fees charged as local students",
+          "Awards generally valid for 1 year and renewable"
+        ],
+        "eligibility": [
+          "Current NYCU students, or incoming students applying with the admission application",
+          "Have not received scholarships or grants from the Taiwan government",
+          "Minimum cumulative GPA of 3.5 for graduate students",
+          "Minimum cumulative GPA of 3.0 for undergraduate students",
+          "International (non-Taiwanese) degree students"
+        ],
+        "citizenship_residency": "For international students; the eligibility rule excludes students who already hold a scholarship or grant from the Taiwan government.",
+        "international_eligibility": "Yes, this is NYCU's own university scholarship for international degree students; incoming students apply with the admission application and are informed via the admission letter.",
+        "degree_levels": ["Bachelor's", "Master's", "PhD"],
+        "study_mode": null,
+        "research_requirement": "Match-funding from the research advisor, department or institute, or college is compulsory for graduate scholarship awards.",
+        "subject_or_agency_requirement": null,
+        "application_method": "Current students apply and upload the required documents in the NYCU scholarship application system; incoming students apply together with the admission application. Late documents are not accepted.",
+        "application_route": "NYCU International Student Scholarship Application System (application link issued by the Office of International Affairs during the application period)",
+        "requirements": [
+          "Upload all documents in the application system before the window closes",
+          "Maintain the required GPA",
+          "Submit transcripts and tuition payment receipts each semester before the specified deadline",
+          "Enrol in the required number of Mandarin courses (undergraduate 4, graduate 2)"
+        ],
+        "documents": [
+          "Application in the NYCU scholarship application system",
+          "NYCU full official transcript",
+          "Documents listed in the NYCU scholarship regulations"
+        ],
+        "english_requirement": null,
+        "english_requirement_note": "The programme is administered in English and the page states no English test requirement; Mandarin course enrolment is a condition of the award rather than a language test.",
+        "selection_criteria": [
+          "Minimum cumulative GPA of 3.5 for graduate students and 3.0 for undergraduate students",
+          "No scholarship or grant from the Taiwan government currently held",
+          "Review by the committees of departments, colleges and the university"
+        ],
+        "selection_weighting": null,
+        "duration": "Generally 1 year per award; maximum 4 years undergraduate, 2 years Master, 5 years PhD",
+        "award_holder_conditions": [
+          "Must submit transcripts and tuition payment receipts each semester before the deadline to remain eligible",
+          "Must enrol in at least 4 Mandarin courses as an undergraduate or 2 as a graduate student",
+          "Graduate awards require compulsory match-funding from the advisor, department or college",
+          "Scholarship is paid on the 10th of each month, except in January and at the start of each semester (September)"
+        ],
+        "supplements_or_initiatives": [
+          "NYCU Elite PhD Scholarship (NT$33,000 per month plus tuition waiver for 2 years)",
+          "Local student tuition rate for students who extend their studies or reach the maximum duration while meeting the academic standard"
+        ],
+        "official_contacts": {"general": "NYCU Office of International Affairs; Yangming Campus Tel +886-2-2827-5657; Chiaotung Campus Tel +886-5712121 #50023", "email": "oia@nycu.edu.tw"},
+        "description": "The NYCU International Student Scholarship offers international degree students at National Yang Ming Chiao Tung University a monthly stipend and a tuition award, which may be granted together or separately. Current students need a cumulative GPA of at least 3.5 (graduate) or 3.0 (undergraduate) and must not already hold a scholarship or grant from the Taiwan government. Applications for current students run from 15 January to 15 March and from 15 July to 15 September, while incoming students apply with their admission application.",
+        "program_type": "University scholarship",
+        "region": "Asia",
+        "coverage": "Monthly stipend and/or tuition waiver or local-rate tuition; the stipend amount is not published on the official page",
+        "last_verified_date": "2026-10-04"
+      },
+      "programme_detail_applicant_utility": {
+        "application_readiness_checklist": [
+          "Check that you do not hold any Taiwan government scholarship or grant",
+          "Confirm your cumulative GPA is at least 3.0 (undergraduate) or 3.5 (graduate)",
+          "If you are a graduate student, secure match-funding commitment from your advisor, department or college",
+          "Prepare your full official transcript and the documents listed in the NYCU scholarship regulations",
+          "Submit inside the window, since late documents are not accepted"
+        ],
+        "common_rejection_risks": [
+          "Applying after the window closes, as late documents are not accepted",
+          "Holding a Taiwanese government scholarship such as Taiwan Scholarship, ESP, UST, TIGP, NSNT or ICDF",
+          "Not meeting the GPA threshold for the degree level",
+          "Forgetting the per-semester transcript and tuition receipt submission, which ends eligibility for the next semester",
+          "Not meeting the Mandarin course enrolment requirement"
+        ],
+        "estimated_uncovered_costs": [
+          "The stipend amount is not published, so the award value cannot be planned precisely",
+          "Incidental fees are not part of the tuition award",
+          "Match-funding may not be fully secured from the department or advisor"
+        ],
+        "document_audit": [
+          "Upload a full official transcript",
+          "Attach every document listed in the NYCU scholarship regulations",
+          "Keep the submitted transcript and tuition payment receipts for each semester as proof of continued eligibility"
+        ],
+        "alerts": [
+          {"trigger": "Next window", "message": "The spring window closed on 15 September 2026; the next application period opens on 15 January and closes on 15 March."},
+          {"trigger": "Two components", "message": "The monthly stipend and the tuition award can be granted together or separately."},
+          {"trigger": "Payment timing", "message": "The scholarship is paid on the 10th of each month, except in January and at the start of each semester in September."}
+        ],
+        "submission_workflow": [
+          "Wait for the application link issued by the Office of International Affairs during office hours at the start of the window",
+          "Log in to the NYCU International Student Scholarship Application System",
+          "Complete the application and upload the documents",
+          "Submit before the closing date and keep the confirmation",
+          "Submit transcripts and tuition payment receipts each semester before the deadline"
+        ]
+      },
+      "programme_detail_verification": {
+        "cycle_verified": "Semester-based award cycles confirmed on the live NYCU page, verified 2026-10-04",
+        "verification_confidence": 0.87,
+        "official_fields_confirmed": [
+          "name",
+          "degree_levels",
+          "eligibility",
+          "deadline_precision",
+          "status",
+          "duration",
+          "tuition_coverage",
+          "official_contacts"
+        ],
+        "institution_check_required": [
+          "The monthly stipend amount, which the official page does not publish and describes as flexibly adjusted by budget",
+          "Whether an individual award includes the tuition component, the stipend, or both"
+        ],
+        "unverified_or_removed_claims": [
+          "No funding amount is asserted because none is published on this page",
+          "No ISO deadline date is asserted because the page publishes recurring date ranges",
+          "English language requirement not stated on the official page"
+        ],
+        "source_citations": ["https://oia.nycu.edu.tw/oia/en/app/data/view?module=nycu0012&id=792&serno=0f046f83-4147-4ec7-8921-bbaccd8c678f"],
+        "researched_by": "w1_48"
+      },
+      "logo_override": {
+        "url": "https://oia.nycu.edu.tw/oia/en/index/viewtopimage?module=websitetop",
+        "page_url": "https://oia.nycu.edu.tw/oia/en/app/data/view?module=nycu0012&id=792&serno=0f046f83-4147-4ec7-8921-bbaccd8c678f",
+        "official_host": true,
+        "alt_text": "National Yang Ming Chiao Tung University",
+        "validation_result": "verified",
+        "validation_detail": "svg (id=\"logo\", class st0 fill #0033A0), university seal plus dark blue English and Chinese wordmark on transparent, fetched successfully as image content",
+        "image_kind": "official_logo",
+        "image_format": "svg",
+        "verified_at": "2026-10-04T00:00:00+00:00",
+        "host_evidence": "same_registrable_domain",
+        "_award": "NYCU International Student Scholarship"
+      },
+      "research_notes": {
+        "logo": "The stored record had no image. The OIA page header contains <h1 class=\"logo\"><a href=\"/oia/en/index\"><img src=\"/oia/en/index/viewtopimage?module=websitetop\" alt=\"NYCU Office of International Affairs\"></a></h1>, which resolves to https://oia.nycu.edu.tw/oia/en/index/viewtopimage?module=websitetop on the university's own domain. Probing it returned the SVG source (id=\"logo\", fill #0033A0) with the university seal and dark blue wordmark, confirming HTTP 200 with an image content type and a dark, not white-on-transparent, mark. The page's og:image (/static/class1/color01/images/home/pic01.jpg) was not used because it is a generic site photo, not a logo.",
+        "unverified": [
+          "Monthly stipend amount",
+          "Whether a given award includes the tuition component",
+          "Content of the NYCU scholarship regulations, which the page links to an external PDF"
+        ],
+        "substitution": null,
+        "official_pages_read": ["https://oia.nycu.edu.tw/oia/en/app/data/view?module=nycu0012&id=792&serno=0f046f83-4147-4ec7-8921-bbaccd8c678f"],
+        "degree_level_confirmed": "The Scholarships Introduction page for the same site lists \"NYCU International Student Scholarship: Bachelor Yes, Master Yes, Ph.D. Yes\", and the fetched page gives maximum award durations of \"Undergraduate: 4 years\", \"Master: 2 years\" and \"Ph.D.: 5 years\"",
+        "url_observed": null,
+        "contradictions": [
+          "stored deadline_display was null although the page publishes the two application windows (January 15-March 15 and July 15-September 15)",
+          "stored deadline_precision \"unknown\" is wrong; the page publishes fixed windows, corrected to \"recurring\"",
+          "stored region was null; corrected to Asia"
+        ],
+        "skeleton": false
+      }
+    },
+    {
+      "target_id": 469,
+      "outcome": "refreshed",
+      "confirm": true,
+      "confirmation_evidence": "The administrator's own page (https://foreign.fulbrightonline.org/apply) states \"The Fulbright Foreign Student Program awards approximately 4,000 grants annually to foreign students to study for a Master's or Doctorate degree\" with benefits of \"J-1 visa sponsorship, Funding support, Health benefit plan, Enrichment activities\", and \"In the United States, the Institute of International Education (IIE) as well as AMIDEAST administer the Fulbright Foreign Student Program on behalf of the U.S. Department of State.\"",
+      "new_scholarship": {
+        "name": "Fulbright Foreign Student Program",
+        "legacy_titles": ["Fulbright Foreign Student Program 2027-2028"],
+        "description": "The Fulbright Foreign Student Program awards approximately 4,000 grants a year to foreign students to study for a Master's or Doctorate degree and conduct research at U.S. campuses. Award benefits include J-1 visa sponsorship, funding support, a health benefit plan and enrichment activities. Applications are not made directly to IIE: they are processed by the binational Fulbright Commission or U.S. Embassy in the applicant's country, so eligibility, deadlines and placement procedures vary by country.",
+        "country": "United States",
+        "degree_levels": "Master's, Doctorate",
+        "funding_type": "Funding support: stipend, health benefits, J-1 visa sponsorship",
+        "official_source": "U.S. Department of State, Fulbright Program (administered by IIE and AMIDEAST)",
+        "official_source_url": "https://foreign.fulbrightonline.org/apply",
+        "status": "upcoming",
+        "is_verified": true,
+        "last_verified_date": "2026-10-04",
+        "region": "North America",
+        "duration": "One to two academic years of degree study in the United States, as placed",
+        "deadline": "Program eligibility, U.S. university admission, placement and selection procedures vary widely by country; applications are processed by the Fulbright Commission or U.S. Embassy in the applicant's country of nomination",
+        "deadline_date": null,
+        "deadline_precision": "varies",
+        "application_period": "Country-specific deadlines set by each binational Fulbright Commission/Foundation or U.S. Embassy",
+        "application_link": "https://foreign.fulbrightonline.org/apply",
+        "eligibility_summary": "Foreign students nominated by their country's Fulbright Commission or U.S. Embassy who hold the equivalent of a U.S. bachelor's degree, are resident in their country of nomination, do not hold U.S. citizenship and are fluent in English. Additional requirements differ by country of citizenship.",
+        "eligibility": [
+          "Reside in the country of nomination at the time of application",
+          "Possess the equivalent of a U.S. bachelor's degree with a good academic record at the program start date",
+          "Be fluent in English (recommended TOEFL 550 paper / 79-80 iBT, or IELTS 6.5 overall)",
+          "Not hold U.S. citizenship; dual citizens are not eligible",
+          "Meet the additional country-specific eligibility requirements of the nominating commission or embassy"
+        ],
+        "coverage": [
+          "Funding support",
+          "J-1 visa sponsorship",
+          "Health benefit plan",
+          "Enrichment activities"
+        ],
+        "requirements": [
+          "Nominating Fulbright Commission or U.S. Embassy in the country of residence",
+          "English proficiency evidence (TOEFL or IELTS)",
+          "Field of study must not be clinical, such as dentistry, medicine, pharmacy or nursing; public health and nursing administration are permitted"
+        ],
+        "application_method": [
+          "Apply to the Fulbright Commission or U.S. Embassy in your country of nomination",
+          "Submit the application and supporting documents to that office by its country deadline",
+          "Undergo placement either through IIE Placement or self-placement, depending on country"
+        ],
+        "selection_notes": "Commissions and embassies conduct an initial review and nominate candidates; final selection is by Washington-based panels.",
+        "program_type": "Government-funded graduate scholarship",
+        "best_fit": "Graduates of a non-U.S. bachelor's degree seeking a Master's or Doctorate in the United States who can be nominated by their home-country Fulbright Commission or U.S. Embassy.",
+        "notes": "Award amounts, placements and deadlines are set country by country, so no single figure or date applies to the programme as a whole.",
+        "benefits": [
+          "Funding support",
+          "J-1 visa sponsorship",
+          "Health benefit plan",
+          "Enrichment activities"
+        ]
+      },
+      "programme_detail_official": {
+        "official_source_urls": ["https://foreign.fulbrightonline.org/apply"],
+        "application_link": "https://foreign.fulbrightonline.org/apply",
+        "official_updates_url": "https://foreign.fulbrightonline.org/apply",
+        "catalogue_url": "https://fulbrightprogram.org/",
+        "application_cycle": "Annual country cycles; approximately 4,000 grants are awarded each year for study in the following academic year",
+        "deadline_central": null,
+        "deadline_central_display": "Program eligibility, U.S. university admission and placement, and selection procedures vary widely by country; there is no single national deadline",
+        "deadline_central_timezone": null,
+        "deadline_note": "The official page publishes no central deadline. Each binational Fulbright Commission/Foundation or U.S. Embassy sets its own application deadline, so no ISO date can be asserted.",
+        "status": "UPCOMING",
+        "status_note": "Applications for the next cycle are handled country by country and most country deadlines fall in the months before the award year; no national window is published on this page.",
+        "funding_amount": null,
+        "funding_currency": null,
+        "funding_period": null,
+        "funding_duration": null,
+        "tuition_coverage": false,
+        "tuition_coverage_note": "The published benefit list is J-1 visa sponsorship, funding support, a health benefit plan and enrichment activities; tuition is never stated as covered, and the page notes that self-placed candidates \"secure their own admission, possible university funding and tuition awards independently\".",
+        "living_cost_coverage": null,
+        "travel_coverage": null,
+        "fully_funded": false,
+        "funding_label": "Funding support, J-1 visa sponsorship and a health benefit plan; the amount is set country by country and no figure is published on the official page",
+        "benefits": [
+          "J-1 visa sponsorship",
+          "Funding support",
+          "Health benefit plan",
+          "Enrichment activities"
+        ],
+        "eligibility": [
+          "Reside in the country of nomination at the time of application",
+          "Possess the equivalent of a U.S. bachelor's degree with a good academic record at the program start date",
+          "Are fluent in English, demonstrated by a recommended recent TOEFL score of 550 (paper) or 79-80 (IBT) or IELTS 6.5 overall",
+          "Do not hold U.S. citizenship; dual citizens are not eligible",
+          "Additional eligibility requirements differ by country of citizenship"
+        ],
+        "citizenship_residency": "Applicants must reside in their country of nomination at the time of application and must not hold U.S. citizenship; dual citizens are excluded.",
+        "international_eligibility": "This programme is specifically for non-U.S. citizens nominated by their home-country Fulbright Commission or U.S. Embassy.",
+        "degree_levels": ["Master's", "Doctorate"],
+        "study_mode": null,
+        "research_requirement": "The programme funds degree study and research on campuses across the United States.",
+        "subject_or_agency_requirement": "Students cannot apply for programmes with clinical requirements such as dentistry, medicine, pharmacy or nursing; public health and nursing administration are permitted.",
+        "application_method": "Apply to the Fulbright Commission or U.S. Embassy in the country of nomination, which processes all Foreign Student Program applications; placement is then handled through IIE Placement or self-placement depending on the country.",
+        "application_route": "Fulbright Commission/Foundation or U.S. Embassy in the applicant's country of nomination; IIE handles placement for most regions and AMIDEAST for most of the Middle East and North Africa",
+        "requirements": [
+          "Nominating commission or embassy",
+          "U.S. bachelor's degree equivalent",
+          "English proficiency test score",
+          "No U.S. citizenship",
+          "Non-clinical field of study"
+        ],
+        "documents": [
+          "Application submitted to the nominating Fulbright Commission or U.S. Embassy",
+          "English proficiency test score",
+          "Documents required by the nominating commission or embassy"
+        ],
+        "english_requirement": "Recommended recent TOEFL 550 (paper based) or 79-80 (Internet based) or IELTS 6.5 overall; scores may be submitted to IIE using institutional code 2326.",
+        "english_requirement_note": "The recommendation is stated on the official page; individual countries may set their own language requirements.",
+        "selection_criteria": [
+          "Country-specific eligibility requirements",
+          "Nominating commission or embassy review",
+          "Final selection by Washington-based panels"
+        ],
+        "selection_weighting": null,
+        "duration": null,
+        "award_holder_conditions": [
+          "Must be nominated by the Fulbright Commission or U.S. Embassy in the country of nomination",
+          "Self-placed candidates are responsible for university applications, fees and deposits"
+        ],
+        "supplements_or_initiatives": [
+          "Fulbright Foreign Language Teaching Assistant (FLTA) Program",
+          "Fulbright Visiting Student Researchers (host-institution track)"
+        ],
+        "official_contacts": {"general": "Institute of International Education, administers the Foreign Fulbright Program on behalf of the U.S. Department of State", "email": null},
+        "description": "The Fulbright Foreign Student Program awards approximately 4,000 grants a year to foreign students to study for a Master's or Doctorate and conduct research at U.S. campuses. Awards include J-1 visa sponsorship, funding support, a health benefit plan and enrichment activities. Applications are not submitted directly to IIE: they are processed by the binational Fulbright Commission or U.S. Embassy in the applicant's country, and eligibility, deadlines and placement procedures vary by country.",
+        "program_type": "Government-funded graduate scholarship",
+        "region": "North America",
+        "coverage": "Funding support, J-1 visa sponsorship, health benefits and enrichment activities; tuition is not stated as covered and no amount is published",
+        "last_verified_date": "2026-10-04"
+      },
+      "programme_detail_applicant_utility": {
+        "application_readiness_checklist": [
+          "Identify the Fulbright Commission or U.S. Embassy in your country of nomination and work to its own deadline",
+          "Confirm you do not hold U.S. citizenship and do not hold dual citizenship",
+          "Take a TOEFL or IELTS test and, if using TOEFL, note institutional code 2326",
+          "Avoid clinical fields such as dentistry, medicine, pharmacy and nursing",
+          "Decide early whether you want IIE placement or self-placement"
+        ],
+        "common_rejection_risks": [
+          "Missing the nominating office's national deadline, which is earlier than any US-side date",
+          "Not being eligible under the specific country of citizenship, whose rules are stricter than the general list",
+          "Applying directly to IIE instead of through the nominating commission or embassy",
+          "Choosing a clinical field of study",
+          "Dual citizenship, which the programme excludes"
+        ],
+        "estimated_uncovered_costs": [
+          "University tuition, which the official benefit list does not include and which self-placed candidates must arrange themselves",
+          "Application fees and deposits at self-placed universities",
+          "Any costs above the country-specific funding level"
+        ],
+        "document_audit": [
+          "Prepare the documents required by your nominating commission or embassy, which differ from the general programme requirements",
+          "Have the English proficiency score ready at the time of application",
+          "Keep copies for placement or university applications"
+        ],
+        "alerts": [
+          {"trigger": "Country deadlines", "message": "There is no national deadline; each Fulbright Commission or U.S. Embassy sets its own, so check your country early."},
+          {"trigger": "Placement model", "message": "Under self-placement you apply to universities yourself and IIE is not involved in that process."},
+          {"trigger": "Amounts not published", "message": "The official page does not publish a funding figure, so the value of the award depends on your country."}
+        ],
+        "submission_workflow": [
+          "Find your country in the drop-down on the apply page and read its specific guidelines",
+          "Contact the nominating commission or embassy for the full application details",
+          "Assemble the application and English proficiency evidence",
+          "Submit to the nominating office before its country deadline",
+          "Await nomination, then follow either IIE Placement or self-placement"
+        ]
+      },
+      "programme_detail_verification": {
+        "cycle_verified": "Standing annual programme confirmed on the live official page, verified 2026-10-04",
+        "verification_confidence": 0.82,
+        "official_fields_confirmed": [
+          "name",
+          "degree_levels",
+          "eligibility",
+          "deadline_precision",
+          "benefits",
+          "official_source"
+        ],
+        "institution_check_required": [
+          "Funding amount, stipend level and any tuition contribution, which are set country by country and not published centrally",
+          "The specific deadline of the applicant's country of nomination",
+          "Whether the country is IIE-administered or AMIDEAST-administered"
+        ],
+        "unverified_or_removed_claims": [
+          "No funding amount, currency or period is asserted because the official page publishes none",
+          "No ISO deadline is asserted because deadlines are country-specific",
+          "No tuition coverage is claimed; the published benefits do not include tuition"
+        ],
+        "source_citations": ["https://foreign.fulbrightonline.org/apply"],
+        "researched_by": "w1_48"
+      },
+      "logo_override": null,
+      "research_notes": {
+        "logo": "Reported null deliberately. I scanned the markup of the administrator's own page: the header brand image is /templates/foreign/images/Fulbright_FFSP_RGB_White.png, explicitly the white variant of the Fulbright mark, and the footer carries /templates/foreign/images/us_footer_logo.jpg (a photo) and /templates/foreign/images/iie_logo.png. I probed the stored iie_logo.png and it returned HTTP 200 with an image content type but renders as a blank white image, i.e. it is white-on-transparent and therefore banned. I also probed a non-white variant path (/templates/foreign/images/Fulbright_FFSP_RGB.png) which returned HTTP 404. No dark or coloured official mark exists on this domain, so null is the honest result.",
+        "unverified": [
+          "Country-level funding amounts and deadlines",
+          "Whether any given award includes tuition support"
+        ],
+        "substitution": null,
+        "official_pages_read": ["https://foreign.fulbrightonline.org/apply"],
+        "degree_level_confirmed": "\"The Fulbright Foreign Student Program awards approximately 4,000 grants annually to foreign students to study for a Master's or Doctorate degree and conduct research on campuses across the United States.\"",
+        "url_observed": null,
+        "contradictions": [
+          "stored program_type \"Visiting Student Researchers\" is a separate host-institution track listed elsewhere on the same site, not this award",
+          "stored deadline_display was a sentence fragment about self-placed candidates and university deposits, not a deadline",
+          "stored deadline_precision \"application_dead\" is not a permitted value; the official position is that deadlines vary by country, corrected to \"varies\"",
+          "stored current_image_url https://foreign.fulbrightonline.org/templates/foreign/images/iie_logo.png was probed and renders blank white, i.e. white-on-transparent and unusable on a light card"
+        ],
+        "skeleton": false
+      }
+    },
+    {
+      "target_id": 470,
+      "outcome": "refreshed",
+      "confirm": true,
+      "confirmation_evidence": "The programme's own home page (https://us.fulbrightonline.org) states \"The 2027-2028 Competition is now open. The National Deadline is October 6, 2026 at 5pm Eastern Time\" and, in the competition table, \"2027-2028 Award Cycle - Application: Now open - National Deadline: Tuesday, October 6, 2026 at 5 pm Eastern Time\".",
+      "new_scholarship": {
+        "name": "Fulbright U.S. Student Program",
+        "legacy_titles": ["Fulbright U.S. Student Program 2027-2028"],
+        "description": "The Fulbright U.S. Student Program funds U.S. citizens to study, conduct research or teach English abroad, awarding more than 1,800 grants a year across all academic disciplines including the creative and performing arts. Every grant includes accident and sickness health benefits, a support line, 12 months of non-competitive eligibility hiring status and a stipend based on the cost of living in the host country. For the 2027-2028 cycle the application deadline was 5 pm Eastern Time on 6 October 2026.",
+        "country": "United States",
+        "degree_levels": "Master's, Doctorate, Non-degree, Creative & Performing Arts",
+        "funding_type": "Stipend",
+        "official_source": "U.S. Department of State, Fulbright Program (administered by IIE)",
+        "official_source_url": "https://us.fulbrightonline.org",
+        "status": "open",
+        "is_verified": true,
+        "last_verified_date": "2026-10-04",
+        "region": "North America",
+        "duration": "One academic year or more of study, research or teaching abroad, as specified in the award description",
+        "deadline": "National Deadline: Tuesday, October 6, 2026 at 5 pm Eastern Time for the 2027-2028 award cycle",
+        "deadline_date": "2026-10-06",
+        "deadline_precision": "exact",
+        "application_period": "2027-2028 award cycle, applications open now; institutional deadlines may be earlier",
+        "application_link": "https://us.fulbrightonline.org",
+        "eligibility_summary": "U.S. citizens who are currently enrolled in an undergraduate or graduate degree programme, or who will hold a bachelor's degree by the award start date and do not hold a PhD. Candidates apply through their campus Fulbright Program Adviser. Award categories include Study/Research, English Teaching Assistant, Fulbright-National Geographic and Fulbright-Fogarty awards.",
+        "eligibility": [
+          "United States citizen",
+          "Currently enrolled in an undergraduate or graduate degree programme, or holding a bachelor's degree by the award start date without a PhD",
+          "Non-enrolled applicants should have relatively limited professional experience (typically 7 years or less) in the field they apply in",
+          "Meet the country and award-type specific requirements"
+        ],
+        "coverage": [
+          "Stipend broadly based on the cost of living in the host country, usable for room, board and incidental costs",
+          "Accident and sickness health benefits",
+          "Round-trip transportation to the host country for grants to Post countries",
+          "Based on award and country, possible book and research allowances, mid-term enrichment activities, full or partial tuition, and language study programmes"
+        ],
+        "requirements": [
+          "Application submitted through the campus Fulbright Program Adviser",
+          "Meet the national deadline of 5 pm Eastern Time on 6 October 2026",
+          "Choose an award type and host country"
+        ],
+        "application_method": [
+          "Find the Fulbright Program Adviser on your campus",
+          "Complete the online application with the adviser",
+          "Submit before the national deadline"
+        ],
+        "selection_notes": "Final selections are approved by the J. William Fulbright Foreign Scholarship Board; notification is on a rolling basis.",
+        "program_type": "Government-funded international exchange grant",
+        "best_fit": "U.S. citizens enrolled in a degree programme, or recent graduates without a PhD, who want to study, research or teach English abroad.",
+        "notes": "Grant numbers are subject to federally appropriated funds and the U.S. Department of State reserves the right to alter participating countries, award numbers, terms and allowances.",
+        "benefits": [
+          "Stipend based on host-country cost of living for room, board and incidental costs",
+          "Accident and sickness health benefits",
+          "24/7 support line",
+          "12 months of non-competitive eligibility hiring status within the federal government",
+          "Round-trip transportation for grants to Post countries",
+          "Pre-departure and/or in-country orientations for Post countries"
+        ]
+      },
+      "programme_detail_official": {
+        "official_source_urls": ["https://us.fulbrightonline.org", "https://us.fulbrightonline.org/about/award-benefits"],
+        "application_link": "https://us.fulbrightonline.org",
+        "official_updates_url": "https://us.fulbrightonline.org",
+        "catalogue_url": "https://us.fulbrightonline.org/countries",
+        "application_cycle": "2027-2028 award cycle now open; the previous 2026-2027 cycle closed with final notification on a rolling basis through spring",
+        "deadline_central": "2026-10-06T17:00",
+        "deadline_central_display": "National Deadline: Tuesday, October 6, 2026 at 5 pm Eastern Time",
+        "deadline_central_timezone": "America/New_York",
+        "deadline_note": "The home page and the competition table agree on 5 pm Eastern Time on 6 October 2026 for the 2027-2028 cycle. Institutional deadlines set by campuses may fall earlier.",
+        "status": "OPEN",
+        "status_note": "The site banner states \"The 2027-2028 Competition is now open. The National Deadline is October 6, 2026 at 5pm Eastern Time.\"",
+        "funding_amount": null,
+        "funding_currency": "USD",
+        "funding_period": "per grant period",
+        "funding_duration": "One academic year or more, as defined in the award description",
+        "tuition_coverage": false,
+        "tuition_coverage_note": "The Award Benefits page lists full or partial tuition only under \"Based on award and country, some grants may also include\" book and research allowances, enrichment activities, full or partial tuition and language study programmes, so tuition is not a guaranteed component.",
+        "living_cost_coverage": true,
+        "travel_coverage": true,
+        "fully_funded": false,
+        "funding_label": "Stipend based on host-country cost of living plus health benefits; round-trip transportation applies to Post countries, and full or partial tuition only for some awards and countries",
+        "benefits": [
+          "Accident and sickness health benefits",
+          "24/7 support line for urgent and non-urgent situations",
+          "12 months of non-competitive eligibility hiring status within the federal government",
+          "A stipend broadly based on the cost of living in the host country, usable for room, board and incidental costs",
+          "Round-trip transportation to the host country and pre-departure and/or in-country orientations for grants to Post countries",
+          "Based on award and country: book and research allowances, mid-term enrichment activities, full or partial tuition, language study programmes",
+          "All English Teaching Assistants receive a 60-hour online TESOL Fundamentals Course"
+        ],
+        "eligibility": [
+          "United States citizen",
+          "Currently enrolled in an undergraduate or graduate degree programme at a U.S. college or university, applying through that institution even if not a resident there",
+          "Or a U.S. citizen who will hold a bachelor's degree by the award start date and does not hold a PhD, with relatively limited professional experience in the field",
+          "Meets the additional requirements of the chosen award type and host country"
+        ],
+        "citizenship_residency": "U.S. citizens only; non-U.S. citizens are directed to the Fulbright Foreign Student Program or Fulbright Visiting Scholar Program.",
+        "international_eligibility": "Not applicable: this programme funds U.S. citizens to go abroad.",
+        "degree_levels": ["Master's", "Doctorate", "Non-degree", "Creative & Performing Arts"],
+        "study_mode": null,
+        "research_requirement": null,
+        "subject_or_agency_requirement": null,
+        "application_method": "Enrolled U.S. students apply through their institution's Fulbright Program Adviser; non-enrolled applicants follow the Getting Started process. The application is completed online.",
+        "application_route": "Campus Fulbright Program Adviser, then the Fulbright Online Application System",
+        "requirements": [
+          "U.S. citizenship",
+          "Enrolment in a U.S. undergraduate or graduate programme, or a bachelor's degree by the award start date without a PhD",
+          "Submission before the national deadline",
+          "Compliance with the specific award and country requirements"
+        ],
+        "documents": [
+          "Online application submitted with the campus Fulbright Program Adviser",
+          "Documents listed in the Application Components section of the official site"
+        ],
+        "english_requirement": null,
+        "english_requirement_note": "No language test requirement is stated on the pages read; the requirement depends on the award type and host country.",
+        "selection_criteria": [
+          "National and institutional deadlines",
+          "Award-type specific criteria (Study/Research, ETA, Fulbright-National Geographic, Fulbright-Fogarty)",
+          "Country-specific review after nomination"
+        ],
+        "selection_weighting": null,
+        "duration": "One academic year or more of study, research or teaching, as defined in the award description",
+        "award_holder_conditions": [
+          "English Teaching Assistants must complete the 60-hour TESOL Fundamentals Course before the orientation",
+          "Grantees may not receive duplicative funding from other grants for the same benefits",
+          "Grantees needing extensive research support, in-country travel, study materials or equipment must seek additional funding elsewhere"
+        ],
+        "supplements_or_initiatives": [
+          "English Teaching Assistant (ETA) awards with an additional TESOL course",
+          "Fulbright-National Geographic Award Program",
+          "Fulbright-Fogarty Fellowships in Public Health",
+          "Non-Competitive Eligibility hiring status in the U.S. federal government"
+        ],
+        "official_contacts": {"general": "Fulbright U.S. Student Program, administered by the Institute of International Education on behalf of the U.S. Department of State", "email": null},
+        "description": "The Fulbright U.S. Student Program funds U.S. citizens to study, conduct research or teach English abroad, awarding more than 1,800 grants a year across all academic disciplines including the creative and performing arts. Every grant includes accident and sickness health benefits, a support line, 12 months of non-competitive eligibility hiring status and a stipend broadly based on the cost of living in the host country for room, board and incidental costs; grants to Post countries also include round-trip transportation and orientations. For the 2027-2028 cycle the national deadline is 5 pm Eastern Time on 6 October 2026.",
+        "program_type": "Government-funded international exchange grant",
+        "region": "North America",
+        "coverage": "Host-country cost-of-living stipend, health benefits and, for Post countries, round-trip transportation; tuition only for some awards and countries",
+        "last_verified_date": "2026-10-04"
+      },
+      "programme_detail_applicant_utility": {
+        "application_readiness_checklist": [
+          "Locate your campus Fulbright Program Adviser early, since you must apply through the institution",
+          "Confirm you meet the citizenship and degree-stage requirements for your category",
+          "Choose an award type (Study/Research, ETA, National Geographic, Fogarty) and host countries",
+          "Work back from 5 pm Eastern Time on 6 October 2026, allowing for earlier institutional deadlines",
+          "Prepare the application components listed on the official site"
+        ],
+        "common_rejection_risks": [
+          "Missing the national deadline or an earlier campus deadline",
+          "Applying without going through the campus Fulbright Program Adviser",
+          "Having a PhD, which excludes non-enrolled applicants from this programme",
+          "Expecting tuition to be covered in every award when it depends on the award and country",
+          "Applying for the Fulbright Scholar Program instead, which is the route for professors and more experienced professionals"
+        ],
+        "estimated_uncovered_costs": [
+          "Costs above the stipend level for the host country",
+          "Book, research and equipment costs for projects needing extensive research support",
+          "Additional travel beyond the round trip provided for Post countries"
+        ],
+        "document_audit": [
+          "Confirm the adviser has received and submitted your application, not just your draft",
+          "Keep the submitted components list for the award type you chose",
+          "Check the Award Description for your specific award and country"
+        ],
+        "alerts": [
+          {"trigger": "Deadline in two days", "message": "The national deadline for the 2027-2028 cycle is 5 pm Eastern Time on Tuesday 6 October 2026."},
+          {"trigger": "Institutional deadlines", "message": "Your campus may set an earlier deadline than the national one."},
+          {"trigger": "ETA extra requirement", "message": "English Teaching Assistants must complete a 60-hour online TESOL Fundamentals Course before departure."}
+        ],
+        "submission_workflow": [
+          "Search for a Fulbright Program Adviser on your campus",
+          "Meet with the adviser to select the award type and host countries",
+          "Complete the online application components",
+          "Submit through the adviser before the institutional and national deadlines",
+          "Await nomination and host country review"
+        ]
+      },
+      "programme_detail_verification": {
+        "cycle_verified": "2027-2028 award cycle, verified 2026-10-04",
+        "verification_confidence": 0.9,
+        "official_fields_confirmed": [
+          "name",
+          "deadline_central",
+          "deadline_precision",
+          "status",
+          "funding_period",
+          "living_cost_coverage",
+          "benefits",
+          "eligibility"
+        ],
+        "institution_check_required": [
+          "Exact stipend level, which is set by award and host country and not published centrally",
+          "Whether a specific award includes full or partial tuition",
+          "Institutional deadlines set by each campus Fulbright Program Adviser"
+        ],
+        "unverified_or_removed_claims": [
+          "No funding amount is asserted because the official pages publish no figure",
+          "No blanket tuition coverage is claimed; it is listed as possible for some awards and countries only"
+        ],
+        "source_citations": ["https://us.fulbrightonline.org", "https://us.fulbrightonline.org/about/award-benefits"],
+        "researched_by": "w1_48"
+      },
+      "logo_override": null,
+      "research_notes": {
+        "logo": "Reported null deliberately. The site header brand image on us.fulbrightonline.org is /templates/us/images/Fulbright_FUSP_RGB_White.png, the explicitly white Fulbright mark. The footer offers /templates/us/images/us_footer_logo.jpg (a photo) and /templates/us/images/iie_logo.png. I probed the stored iie_logo.png: HTTP 200 with an image content type, but it renders as a blank white image, so it is white-on-transparent and banned. No dark or coloured official mark is published on this domain.",
+        "unverified": [
+          "Stipend amounts by award and host country",
+          "Institutional deadlines"
+        ],
+        "substitution": null,
+        "official_pages_read": ["https://us.fulbrightonline.org", "https://us.fulbrightonline.org/about/award-benefits"],
+        "degree_level_confirmed": "\"United States citizens who are currently enrolled in undergraduate or graduate degree programs are eligible to apply\" and \"Fulbright U.S. Student Program funds American citizens to study, conduct research, or teach English abroad\"",
+        "url_observed": null,
+        "contradictions": [
+          "stored deadline_display was a raw markup fragment (\"is October 6, 2026 at 5pm Eastern Time.[/LINK]\") rather than official wording; replaced with the site sentence \"National Deadline: Tuesday, October 6, 2026 at 5 pm Eastern Time\"",
+          "stored deadline_precision \"application_dead\" is not a permitted value; the national deadline is an exact calendar date and time, corrected to \"exact\" with an ISO value and America/New_York timezone",
+          "stored current_funding_amount was null although the Award Benefits page itemises the stipend, health benefits and, for Post countries, round-trip transportation; no numeric amount is published, so the amount stays null",
+          "stored current_image_url https://us.fulbrightonline.org/templates/us/images/iie_logo.png was probed and renders blank white, so it is unusable on a light card and is no longer reported as the logo"
+        ],
+        "skeleton": false
+      }
+    },
+    {
+      "target_id": 471,
+      "outcome": "refreshed",
+      "confirm": true,
+      "confirmation_evidence": "The awarding agency's own page (https://exchanges.state.gov/non-us/program/hubert-h-humphrey-fellowship-program) states \"The Hubert H. Humphrey Fellowship Program provides 10 months of professional enrichment and non-degree graduate-level study in the United States for accomplished mid-level professionals from designated countries\" and \"The deadline for applicants varies by country.\"",
+      "new_scholarship": {
+        "name": "Hubert H. Humphrey Fellowship Program",
+        "legacy_titles": ["Hubert H. Humphrey Fellowship Program 2027-2028"],
+        "description": "The Hubert H. Humphrey Fellowship Program gives accomplished mid-level professionals from designated countries 10 months of professional enrichment and non-degree graduate-level study in the United States. Fellows are nominated by U.S. Embassies or Fulbright Commissions on the basis of leadership potential and a demonstrated commitment to public service, then placed in groups by professional field at selected U.S. universities. Application deadlines vary by country and awards are announced in the spring for fellowships beginning in the fall.",
+        "country": "United States",
+        "degree_levels": "Non-degree",
+        "funding_type": "Not itemised on the official page",
+        "official_source": "U.S. Department of State, Bureau of Educational and Cultural Affairs",
+        "official_source_url": "https://exchanges.state.gov/non-us/program/hubert-h-humphrey-fellowship-program",
+        "status": "upcoming",
+        "is_verified": true,
+        "last_verified_date": "2026-10-04",
+        "region": "North America",
+        "duration": "10 months",
+        "deadline": "The deadline for applicants varies by country; awards are announced in the spring for fellowships beginning in the fall",
+        "deadline_date": null,
+        "deadline_precision": "varies",
+        "application_period": "Country-specific nomination cycles run through U.S. Embassies and Fulbright Commissions; awards are announced in the spring",
+        "application_link": "https://exchanges.state.gov/non-us/program/hubert-h-humphrey-fellowship-program",
+        "eligibility_summary": "Mid-level professionals from designated countries with an undergraduate degree, at least five years of full-time professional experience, limited or no prior experience in the United States, demonstrated leadership and a record of public service. Applicants cannot apply independently; they must be nominated by a U.S. Embassy or Fulbright Commission.",
+        "eligibility": [
+          "Hold an undergraduate (first university or bachelor's) degree",
+          "Have a minimum of five years of full-time professional experience",
+          "Have limited or no prior experience in the United States",
+          "Demonstrate leadership qualities",
+          "Have a record of public service in the community",
+          "Demonstrate English language ability",
+          "Be nominated by a U.S. Embassy or Fulbright Commission in their country"
+        ],
+        "coverage": [],
+        "requirements": [
+          "Contact the U.S. Embassy or Fulbright Commission in your country for complete application details",
+          "Be nominated, not apply independently",
+          "Check that your country is on the list of eligible countries"
+        ],
+        "application_method": [
+          "Contact the U.S. Embassy or Fulbright Commission in your home country",
+          "Submit the application according to that office's instructions and deadline",
+          "Await embassy or commission review, then Washington-based selection panels"
+        ],
+        "selection_notes": "U.S. Embassies and Fulbright Commissions conduct an initial review and nominate candidates; final selections are approved by the J. William Fulbright Foreign Scholarship Board.",
+        "program_type": "Government-funded professional enrichment fellowship",
+        "best_fit": "Mid-career professionals from designated countries with public service experience who want one year of non-degree graduate study and professional enrichment in the United States.",
+        "notes": "The official page does not itemise the funding components; see the administrator's programme site for benefit detail.",
+        "benefits": [
+          "10 months of professional enrichment and non-degree graduate-level study in the United States"
+        ]
+      },
+      "programme_detail_official": {
+        "official_source_urls": ["https://exchanges.state.gov/non-us/program/hubert-h-humphrey-fellowship-program"],
+        "application_link": "https://exchanges.state.gov/non-us/program/hubert-h-humphrey-fellowship-program",
+        "official_updates_url": "https://exchanges.state.gov/non-us/program/hubert-h-humphrey-fellowship-program",
+        "catalogue_url": "https://exchanges.state.gov/non-us/program/hubert-h-humphrey-fellowship-program",
+        "application_cycle": "Annual country nomination cycles; awards are announced in the spring for fellowships beginning in the fall",
+        "deadline_central": null,
+        "deadline_central_display": "The deadline for applicants varies by country",
+        "deadline_central_timezone": null,
+        "deadline_note": "The official page states only that the deadline varies by country and refers applicants to the IIE Humphrey Fellowship Program website and to their U.S. Embassy or Fulbright Commission, so no ISO date can be asserted.",
+        "status": "UPCOMING",
+        "status_note": "The programme runs every year; nominations are handled country by country and awards are announced in the spring for fellowships beginning in the autumn.",
+        "funding_amount": null,
+        "funding_currency": null,
+        "funding_period": null,
+        "funding_duration": "10 months",
+        "tuition_coverage": null,
+        "tuition_coverage_note": "The programme is explicitly non-degree study, so no tuition coverage is claimed; the official page does not itemise funding components.",
+        "living_cost_coverage": null,
+        "travel_coverage": null,
+        "fully_funded": false,
+        "funding_label": "10-month professional enrichment and non-degree graduate-level study; the official page does not itemise the funding components, so fully_funded is false",
+        "benefits": [
+          "10 months of professional enrichment and non-degree graduate-level study in the United States",
+          "Placement in groups by professional field at selected U.S. universities"
+        ],
+        "eligibility": [
+          "An undergraduate (first university or bachelor's) degree",
+          "A minimum of five years of full-time professional experience",
+          "Limited or no prior experience in the United States",
+          "Demonstrated leadership qualities",
+          "A record of public service in the community",
+          "English language ability",
+          "From a designated country"
+        ],
+        "citizenship_residency": "Citizens of designated countries only; the page directs applicants to the list of eligible countries on the IIE Humphrey Program website.",
+        "international_eligibility": "Yes, for nationals of designated countries who meet the experience, leadership and public service criteria and hold an undergraduate degree.",
+        "degree_levels": ["Non-degree"],
+        "study_mode": null,
+        "research_requirement": null,
+        "subject_or_agency_requirement": null,
+        "application_method": "Contact the U.S. Embassy or Fulbright Commission in the applicant's country for complete application details; those offices review and nominate candidates for consideration by Washington-based selection panels.",
+        "application_route": "U.S. Embassy or Fulbright Commission in the applicant's country of citizenship; administered in the United States by the Institute of International Education",
+        "requirements": [
+          "Must be nominated by a U.S. Embassy or Fulbright Commission",
+          "Five years minimum full-time professional experience",
+          "Undergraduate degree",
+          "Country must be on the eligible list"
+        ],
+        "documents": [],
+        "english_requirement": "English language ability is a stated eligibility requirement; no score or test is specified on this page.",
+        "english_requirement_note": "The requirement is listed qualitatively as \"English language ability\"; the specific test and score are set by the nominating embassy or commission.",
+        "selection_criteria": [
+          "Potential for leadership",
+          "Demonstrated commitment to public service",
+          "Five years of full-time professional experience",
+          "Limited or no prior U.S. experience",
+          "Country-specific initial review by the embassy or commission"
+        ],
+        "selection_weighting": null,
+        "duration": "10 months",
+        "award_holder_conditions": [
+          "Independent applications do not qualify; nomination by an embassy or commission is required",
+          "Fellows are placed in groups by professional field at selected U.S. universities"
+        ],
+        "supplements_or_initiatives": [
+          "Fulbright Foreign Student Program",
+          "Fulbright Visiting Scholar Program"
+        ],
+        "official_contacts": {"general": "Institute of International Education (IIE) Hubert H. Humphrey Fellowship Program, 1400 K Street NW, Suite 700, Washington, DC 20005; phone 1 (800) 242-1595", "email": "hhh@iie.org"},
+        "description": "The Hubert H. Humphrey Fellowship Program gives accomplished mid-level professionals from designated countries 10 months of professional enrichment and non-degree graduate-level study in the United States. Fellows are nominated by U.S. Embassies or Fulbright Commissions based on leadership potential and a demonstrated commitment to public service, then placed in groups by professional field at selected U.S. universities. Application deadlines vary by country and awards are announced in the spring for fellowships beginning in the fall.",
+        "program_type": "Government-funded professional enrichment fellowship",
+        "region": "North America",
+        "coverage": "Not itemised on the official page; the programme funds 10 months of non-degree study and professional enrichment",
+        "last_verified_date": "2026-10-04"
+      },
+      "programme_detail_applicant_utility": {
+        "application_readiness_checklist": [
+          "Check that your country appears on the IIE list of eligible countries",
+          "Contact the U.S. Embassy or Fulbright Commission in your country early, since you cannot apply independently",
+          "Document five or more years of full-time professional experience",
+          "Prepare evidence of leadership and public service",
+          "Note that awards are announced in the spring for fellowships starting in the autumn"
+        ],
+        "common_rejection_risks": [
+          "Applying directly instead of through a nominating embassy or commission, which disqualifies the application",
+          "Applying from a country that is not on the eligible list",
+          "Having substantial prior U.S. experience, which counts against eligibility",
+          "Missing the country-specific deadline set by the nominating office"
+        ],
+        "estimated_uncovered_costs": [
+          "The official page does not itemise benefits, so personal budgeting must be done from the administrator's programme materials",
+          "Costs outside the 10-month fellowship period"
+        ],
+        "document_audit": [
+          "Follow the document list of your embassy or commission, which governs the application",
+          "Keep proof of professional experience and public service for the nomination"
+        ],
+        "alerts": [
+          {"trigger": "No independent applications", "message": "All applicants must be nominated by a U.S. Embassy or Fulbright Commission."},
+          {"trigger": "Country deadlines", "message": "The official page states the deadline varies by country; contact your embassy or commission for the exact date."},
+          {"trigger": "Benefits not itemised", "message": "The Department of State page does not list funding components; consult the IIE Humphrey Fellowship Program website."}
+        ],
+        "submission_workflow": [
+          "Confirm your country is eligible",
+          "Contact the U.S. Embassy or Fulbright Commission for application details",
+          "Prepare the application and supporting documents for that office",
+          "Submit before the country deadline",
+          "Await the initial review, nomination and final selection by the Fulbright Foreign Scholarship Board"
+        ]
+      },
+      "programme_detail_verification": {
+        "cycle_verified": "Annual programme confirmed on the live Department of State page, verified 2026-10-04",
+        "verification_confidence": 0.85,
+        "official_fields_confirmed": [
+          "name",
+          "duration",
+          "degree_levels",
+          "eligibility",
+          "deadline_precision",
+          "official_contacts"
+        ],
+        "institution_check_required": [
+          "Whether a specific country is on the eligible list for the coming cycle",
+          "The country's own application deadline",
+          "Funding components, which this page does not itemise"
+        ],
+        "unverified_or_removed_claims": [
+          "No funding amount, currency or period is asserted because the official page publishes none",
+          "No ISO deadline is asserted because deadlines vary by country",
+          "No tuition or living-cost coverage is claimed"
+        ],
+        "source_citations": ["https://exchanges.state.gov/non-us/program/hubert-h-humphrey-fellowship-program"],
+        "researched_by": "w1_48"
+      },
+      "logo_override": {
+        "url": "https://exchanges.state.gov/sites/all/themes/custom/eca_exchanges/logo.png",
+        "page_url": "https://exchanges.state.gov/non-us/program/hubert-h-humphrey-fellowship-program",
+        "official_host": true,
+        "alt_text": "United States Department of State, Bureau of Educational and Cultural Affairs",
+        "validation_result": "verified",
+        "validation_detail": "png, United States flag alongside the Department of State seal in full colour on white, fetched successfully as image content",
+        "image_kind": "official_logo",
+        "image_format": "png",
+        "verified_at": "2026-10-04T00:00:00+00:00",
+        "host_evidence": "same_registrable_domain",
+        "_award": "Hubert H. Humphrey Fellowship Program"
+      },
+      "research_notes": {
+        "logo": "The stored image was already on the awarding agency's own domain and is the agency's mark rather than a university or partner logo: https://exchanges.state.gov/sites/all/themes/custom/eca_exchanges/logo.png. It was probed and returned HTTP 200 with an image content type, showing the US flag and the Department of State seal in full colour on white, so it is not white-on-transparent. Kept, with the alt text corrected, because the stored alt text was simply \"Home\".",
+        "unverified": [
+          "Funding components, which the official page does not itemise",
+          "Country-level deadlines and the eligible country list"
+        ],
+        "substitution": null,
+        "official_pages_read": ["https://exchanges.state.gov/non-us/program/hubert-h-humphrey-fellowship-program"],
+        "degree_level_confirmed": "\"provides 10 months of professional enrichment and non-degree graduate-level study in the United States\"",
+        "url_observed": null,
+        "contradictions": [
+          "stored deadline_date 2018-04-25 has no basis on the current official page, which states only that \"The deadline for applicants varies by country\"; replaced with null and precision \"varies\"",
+          "stored deadline_precision \"application_dead\" is not a permitted value; corrected to \"varies\"",
+          "stored status \"closed\" was not supported by the page; the programme is annual with spring announcement and autumn start, corrected to \"upcoming\"",
+          "stored program_type was the IIE postal address and phone block, which is contact information rather than a programme type"
+        ],
+        "skeleton": false
+      }
+    },
+    {
+      "target_id": 472,
+      "outcome": "unreachable",
+      "confirm": false,
+      "confirmation_evidence": "No official page could be read: https://www.eastwestcenter.org/education/ewc-graduate-degree-fellowship timed out on the first attempt and then returned HTTP 403 on two further attempts, and https://eastwestcenter.org/education/ewc-graduate-degree-fellowship and https://www.eastwestcenter.org/ also returned HTTP 403. The entire eastwestcenter.org host refuses automated fetches, so nothing about this record could be confirmed from the awarding body.",
+      "new_scholarship": {
+        "name": "East-West Center Graduate Degree Fellowship 2027",
+        "legacy_titles": ["East-West Center Graduate Degree Fellowship 2027"],
+        "description": "The East-West Center Graduate Degree Fellowship could not be verified on 2026-10-04 because eastwestcenter.org refuses automated requests, returning HTTP 403 for the programme page and for the site root. No facts beyond the stored record identity are asserted here.",
+        "country": "United States",
+        "degree_levels": "Master's, Doctorate",
+        "funding_type": null,
+        "official_source": "East-West Center",
+        "official_source_url": "https://www.eastwestcenter.org/education/ewc-graduate-degree-fellowship",
+        "status": "open",
+        "is_verified": false,
+        "last_verified_date": "2026-10-04",
+        "region": "North America",
+        "deadline_precision": "unknown"
+      },
+      "programme_detail_official": {
+        "official_source_urls": ["https://www.eastwestcenter.org/education/ewc-graduate-degree-fellowship"],
+        "application_link": null,
+        "official_updates_url": null,
+        "catalogue_url": null,
+        "application_cycle": null,
+        "deadline_central": null,
+        "deadline_central_display": "Not available: the awarding body's website could not be read on 2026-10-04",
+        "deadline_central_timezone": null,
+        "deadline_note": "The official host returned HTTP 403 to every attempt, so no deadline information of any kind could be confirmed.",
+        "status": "OPEN",
+        "status_note": "Carried over from the stored record and unverified. The awarding body's website could not be read on 2026-10-04 (HTTP 403), so the current application state is unknown.",
+        "funding_amount": null,
+        "funding_currency": null,
+        "funding_period": null,
+        "funding_duration": null,
+        "tuition_coverage": null,
+        "tuition_coverage_note": "Unknown: no official page could be read.",
+        "living_cost_coverage": null,
+        "travel_coverage": null,
+        "fully_funded": false,
+        "funding_label": "Not published and not reachable: the awarding body's website refused automated requests on 2026-10-04, so no funding components could be confirmed",
+        "benefits": [],
+        "eligibility": [],
+        "citizenship_residency": null,
+        "international_eligibility": null,
+        "degree_levels": [],
+        "study_mode": null,
+        "research_requirement": null,
+        "subject_or_agency_requirement": null,
+        "application_method": null,
+        "application_route": null,
+        "requirements": [],
+        "documents": [],
+        "english_requirement": null,
+        "english_requirement_note": "Unknown: no official page could be read.",
+        "selection_criteria": [],
+        "selection_weighting": null,
+        "duration": null,
+        "award_holder_conditions": [],
+        "supplements_or_initiatives": [],
+        "official_contacts": {"general": null, "email": null},
+        "description": "The East-West Center Graduate Degree Fellowship could not be verified on 2026-10-04 because eastwestcenter.org refuses automated requests, returning HTTP 403 for the programme page and for the site root. No facts beyond the stored record identity are asserted here.",
+        "program_type": null,
+        "region": "North America",
+        "coverage": "Unknown: no official page could be read.",
+        "last_verified_date": "2026-10-04"
+      },
+      "programme_detail_applicant_utility": {
+        "application_readiness_checklist": [
+          "Open the East-West Center fellowship page in a normal browser, because automated access is blocked, and read the current cycle's requirements there"
+        ],
+        "common_rejection_risks": [
+          "Relying on the stored record, whose deadline, funding amount and logo were never confirmed against the awarding body"
+        ],
+        "estimated_uncovered_costs": [
+          "Unknown: no official page could be read"
+        ],
+        "document_audit": [
+          "Check the current application window and document list directly on the awarding body's site"
+        ],
+        "alerts": [
+          {"trigger": "Site blocks automated access", "message": "eastwestcenter.org returned HTTP 403 to every fetch attempt on 2026-10-04, so this record could not be re-verified and needs a human check in a browser."}
+        ],
+        "submission_workflow": [
+          "Open https://www.eastwestcenter.org/education/ewc-graduate-degree-fellowship in a browser",
+          "Confirm the current application window and award components",
+          "Apply through the route given on that page"
+        ]
+      },
+      "programme_detail_verification": {
+        "cycle_verified": "Not verified: official host unreachable on 2026-10-04",
+        "verification_confidence": 0.25,
+        "official_fields_confirmed": [],
+        "institution_check_required": [
+          "Existence and current status of the East-West Center Graduate Degree Fellowship",
+          "Application deadline for the next cycle",
+          "Funding components and amount",
+          "Official logo asset"
+        ],
+        "unverified_or_removed_claims": [
+          "Every substantive field of the stored record is unverified, including degree levels, funding type, deadline and status",
+          "The stored funding description \"Full funding (partial living stipend)\" could not be confirmed"
+        ],
+        "source_citations": ["https://www.eastwestcenter.org/education/ewc-graduate-degree-fellowship"],
+        "researched_by": "w1_48"
+      },
+      "logo_override": null,
+      "research_notes": {
+        "logo": "No logo could be probed. Every request to the awarding body's host was refused: https://www.eastwestcenter.org/education/ewc-graduate-degree-fellowship timed out, then returned HTTP 403; https://eastwestcenter.org/education/ewc-graduate-degree-fellowship returned HTTP 403; and https://www.eastwestcenter.org/ returned HTTP 403. Without a reachable page I could not discover a logo asset, and an unprobed URL may not be reported, so the logo is null.",
+        "unverified": [
+          "All programme facts: deadline, funding amount, eligibility, duration and status",
+          "Whether the programme page has moved to a new path"
+        ],
+        "substitution": null,
+        "official_pages_read": [],
+        "degree_level_confirmed": "None: no official page could be read, so the stored degree levels (Master's, Doctorate) are unverified.",
+        "url_observed": null,
+        "contradictions": [
+          "None established: the official site could not be read, so no contradiction with the stored data can be asserted"
+        ],
+        "skeleton": false
+      }
+    }
+  ]
+}

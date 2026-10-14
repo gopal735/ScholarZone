@@ -1,0 +1,78 @@
+{
+ "agent": "agent_235",
+ "assignment_count": 1,
+ "scholarships": [
+  {
+   "id": 589,
+   "title": "National Humanities Center Residential Fellowship",
+   "country": "United States",
+   "degree": "PhD (terminal degree required; postdoctoral researchers and doctoral candidates are not eligible)",
+   "funding_label": "Stipend (partial salary replacement)",
+   "status": "open",
+   "official_source": "National Humanities Center",
+   "official_source_url": "https://nationalhumanitiescenter.org/residential-fellowships",
+   "application_link": "https://nationalhumanitiescenter.org/residential-fellowships",
+   "catalogue_url": "https://nationalhumanitiescenter.org/research-fellowships-programs",
+   "official_updates_url": "https://nationalhumanitiescenter.org/residential-fellowships",
+   "existing": {
+    "funding_amount": null,
+    "funding_currency": null,
+    "funding_period": null,
+    "tuition_coverage": null,
+    "living_cost_coverage": null,
+    "travel_coverage": null,
+    "fully_funded": 0,
+    "description": null,
+    "eligibility": [],
+    "eligibility_summary": "Holders of a PhD or equivalent terminal degree earned at least five years before applying, engaged in humanities research that will result in publication, with a substantial record of peer-reviewed scholarship beyond the dissertation. Faculty at research universities, liberal arts and teaching colleges, HBCUs, HSIs, tribal colleges and universities and international institutions, as well as independent scholars, may apply. Applicants of any citizenship are eligible and the Center sponsors J-1 Research Scholar visas.",
+    "benefits": [
+     "Individually determined stipend (the Center seeks to provide about half of the Fellow's salary)",
+     "Round-trip travel to Durham, North Carolina and back for the Fellow and immediate family living with the Fellow"
+    ],
+    "coverage": [
+     "Individually determined stipend (the Center seeks to provide about half of the Fellow's salary)",
+     "Round-trip travel to Durham, North Carolina and back for the Fellow and immediate family living with the Fellow"
+    ],
+    "requirements": [
+     "1,000-word project proposal",
+     "Short bibliography",
+     "Brief curriculum vitae (maximum four pages)",
+     "One-page tentative outline of the project structure",
+     "Three letters of recommendation (due October 8)"
+    ],
+    "documents": [],
+    "english_requirement": "Fluency in written and spoken English is required.",
+    "application_method": [
+     "Submit the online application through the Center's application portal",
+     "Upload the proposal, bibliography, CV and outline",
+     "Provide names and contact details of three references, who are emailed a link to upload their letters"
+    ],
+    "selection_notes": "Applicants are informed by email in February; the fellowship class is typically announced in early April; all applicants receive final notification by the end of March. Alternates are offered fellowships by telephone.",
+    "best_fit": "Mid-career or senior humanities scholars with a published book or substantial peer-reviewed record who need a residential writing term.",
+    "notes": "The Center does not fund post-docs, doctoral research, creative writing (fiction or poetry), edited volumes, collections of primary sources, textbooks or projects derivative of a dissertation. Stipends are taxable and are salary replacement only; no indirect costs or fringe benefits are included and institutional overhead is not allowed.",
+    "duration": "Academic year (September-May), or fall semester (September-December) or spring semester (January-May)",
+    "application_period": "Opens July 1, closes October 1 (letters of recommendation October 8)",
+    "deadline_display": "Applications open July 1; deadline October 1; letters of recommendation due October 8",
+    "deadline_date": "2027-10-01",
+    "region": "North America",
+    "program_type": "Independent humanities institute research fellowship (private nonprofit)",
+    "applicant_utility": null,
+    "official_details": null
+   },
+   "missing_fields": [
+    "funding_amount",
+    "funding_currency",
+    "funding_period",
+    "tuition_coverage",
+    "living_cost_coverage",
+    "travel_coverage",
+    "description",
+    "eligibility",
+    "documents",
+    "applicant_utility",
+    "official_details"
+   ]
+  }
+ ],
+ "result_file": "C:\\Users\\GopaL\\Desktop\\Projects folder\\ScholarZone\\backend\\research_output\\live500\\results\\agent_235.json"
+}

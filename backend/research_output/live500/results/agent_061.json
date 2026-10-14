@@ -1,0 +1,156 @@
+{
+  "agent": "agent_061",
+  "records": [
+    {
+      "id": 175,
+      "official": {
+        "official_source_urls": [
+          "https://www.eur.nl/en/education/practical-matters/scholarships-grants",
+          "https://www.eur.nl/en/education/practical-matters/scholarships-grants/students-coming-rotterdam",
+          "https://www.studyinnl.org/finances/nl-scholarship",
+          "https://www.eur.nl/en/media/2023-02-regulations-financial-support-fund-total-2019",
+          "https://www.eur.nl/en/ese/education/master/fees-and-scholarships/scholarships-and-grants/erasmus-trustfonds-scholarship",
+          "https://www.eur.nl/en/esl/education/scholarships",
+          "https://www.eur.nl/en/euc/application-admissions/financial-support/euc-scholarship"
+        ],
+        "application_link": "https://www.eur.nl/en/education/practical-matters/scholarships-grants",
+        "catalogue_url": null,
+        "official_updates_url": "https://www.studyinnl.org/finances/nl-scholarship",
+        "deadline_central": "2027-01-31",
+        "deadline_central_display": "31 January 2027",
+        "deadline_note": "Date shown is the currently published Erasmus Trustfonds Scholarship 2027-2028 deadline at EUR (application window 1 December 2026 to 31 January 2027, 23:59; outcome e-mail by 13 March 2027). EUR's central Scholarships & grants page states the previous round's deadline has passed and information for 2027-2028 will be available in autumn 2026. The Holland Scholarship (NL Scholarship) deadline is set by each participating institution, and Erasmus University Rotterdam is not listed among the 2026-2027 participating research universities published by Study in NL. Talent-programme deadlines in the most recently closed EUR round were 1 April (Erasmus Trustfonds, Erasmus Trustfonds-TSH Changemaker, Ter Kulve) and 1 May (EUC Scholarship).",
+        "application_cycle": "2027-2028 cycle; EUC states applications for 2027/2028 open on 1 October 2026, the Erasmus Trustfonds window runs 1 December 2026 to 31 January 2027",
+        "status": "OPEN",
+        "status_note": "EUR's Scholarships & grants page states: 'The deadline for applications has passed. Information for 2027-2028 will be available in the autumn.' The 2027-2028 talent round is published on the school pages (Erasmus Trustfonds 2027-2028, Erasmus School of Economics), while the Holland Scholarship round at EUR for 2027-2028 is not yet announced on EUR's site.",
+        "tuition_coverage_note": "The Holland Scholarship is explicitly not a tuition scholarship: 'The scholarship amounts to EUR 5,000. You will receive this in the first year of your studies. Please note that this is not a full-tuition scholarship' (Study in NL). Talent programmes are different: the Erasmus Trustfonds Scholarship waives the tuition fee in full (statutory or institutional), and the EUC Scholarship is awarded as a tuition fee waiver with no cash transfer.",
+        "funding_amount": 5000,
+        "funding_currency": "EUR",
+        "funding_period": "one-off, paid in the first year of study",
+        "tuition_coverage": false,
+        "living_cost_coverage": false,
+        "travel_coverage": false,
+        "fully_funded": false,
+        "benefits": [
+          "Holland Scholarship (NL Scholarship): EUR 5,000, received in the first year of studies; the grant is awarded for 1 year and can only be received once; 'this is not a full-tuition scholarship'",
+          "Erasmus Trustfonds Scholarship 2027-2028: maximum EUR 17,500, split into a full tuition fee waiver, a living allowance of EUR 1,200 per month (EUR 14,400 for one academic year), a personal allowance of EUR 249 granted once, and a EUR 228 immigration fee waiver where applicable",
+          "Erasmus Trustfonds and TSH Changemaker Scholarship: the Erasmus Trustfonds scholarship covers the statutory tuition fee and a monthly living allowance of EUR 600; the TSH Changemaker Scholarship provides one year of housing in a Social Hub Residence",
+          "Ter Kulve Scholarship: maximum EUR 17,500 plus a tuition fee waiver made available by the school",
+          "EUC Scholarship (Erasmus University College): minimum EUR 1,000 and maximum EUR 6,000 per year, awarded as a tuition fee waiver with no transfer of funds, in principle for three years of study",
+          "EUR's own Financial Support Fund regulation allocates Holland Scholarship in batches of EUR 5,000, which faculties may combine up to a maximum of EUR 15,000 (three batches) per student"
+        ],
+        "eligibility": [
+          "Holland Scholarship: your nationality is non-EEA; you are applying for a full-time bachelor's or master's programme at one of the participating Dutch higher education institutions; you meet the specific requirements of the institution of your choice; you do not have a degree from an education institution in the Netherlands",
+          "Erasmus Trustfonds Scholarship 2027-2028 (Erasmus School of Economics): full-time first-year master students with excellent results, both from EEA and non-EEA countries; never enrolled before as a full degree Master student at an educational institution in the Netherlands",
+          "Erasmus Trustfonds and TSH Changemaker Scholarship: unconditionally admitted master students belonging to one or more disadvantaged or underrepresented groups (limited financial, educational, social or health resources; refugee or newcomer status; ethnic or religious marginalisation; disabilities; first-generation; LGBTQI+ with safety risks; reduced social capital), with demonstrated community involvement and commitment to the Changemaker alumni network",
+          "Ter Kulve Scholarship: nationality in a World Bank income-level country classification, excellent student standard (average grade equivalent to Dutch grade 8.0 on a 1-10 scale), recent relevant work experience after the bachelor's degree, applying for a full-time master at EUR",
+          "EUC Scholarship: highly qualified students from any country who can prove that they require financial aid to be able to study at EUC (Liberal Arts & Sciences Bachelor)"
+        ],
+        "requirements": [
+          "Erasmus Trustfonds Scholarship (ESE 2027-2028): motivation letter of max two A4 (Arial 11) covering motivation, evidence of excellence and why the scholarship expands the opportunity to study at ESE",
+          "Erasmus Trustfonds Scholarship (ESE 2027-2028): a detailed financial statement (max one A4, Arial 11) describing the financial situation and the need for the scholarship",
+          "Erasmus Trustfonds Scholarship (ESE 2027-2028): budget plan completed using EUR's own 'Budget plan' template",
+          "Erasmus Trustfonds Scholarship (ESE 2027-2028): certified copy of the most recent academic transcript with a wet stamp and signature of a school official (portal screenshots are not accepted) plus a certified GPA statement on EUR's template",
+          "Trustfonds, Changemaker and Ter Kulve Scholarships (Erasmus School of Law): motivation letter including intended career path, CV, and proof of excellence (certified copy of the bachelor's degree including grade list, or current-year average grade if the bachelor is unfinished), submitted by e-mail to the LL.M. Office",
+          "EUC Scholarship: apply for the Liberal Arts & Sciences Bachelor programme by the regular deadline (15 January 2026) or the late deadline (1 May 2026); the scholarship application is submitted during that application process"
+        ],
+        "documents": [
+          "Motivation letter (max two A4 for the Erasmus Trustfonds Scholarship)",
+          "Curriculum vitae",
+          "Certified academic transcript / grade list bearing an original signature and stamp",
+          "Certified GPA statement following EUR's template wording",
+          "Budget plan on EUR's template, plus a one-page financial statement explaining financial need",
+          "Passport / proof of ID and nationality uploaded in the admission application proof-of-ID section"
+        ],
+        "selection_criteria": [
+          "Academic excellence: average final result of at least grade 7.50 on a 1-10 scale for the Erasmus Trustfonds Scholarship (ESE) and an equivalent of Dutch grade 8.0 for the Erasmus Trustfonds and Ter Kulve Scholarships (Erasmus School of Law)",
+          "Demonstrated financial need: a detailed financial statement and a budget plan showing how studies would be financed without the award",
+          "Motivation: quality of the motivation letter, including intended career path and community contribution for the Changemaker and Ter Kulve awards",
+          "For the Ter Kulve Scholarship: commitment to return to the home country after graduation to contribute to its social and economic development",
+          "EUR states that only one type of scholarship is awarded to one applicant: applicants may apply for multiple scholarships, but a combination of multiple scholarships will not be awarded"
+        ],
+        "coverage": [
+          "Holland Scholarship: EUR 5,000 cash grant received in the first year of studies; awarded for 1 year and can only be received once; explicitly not a full-tuition scholarship",
+          "Erasmus Trustfonds Scholarship (ESE 2027-2028): tuition fee waived for students paying the statutory fee (EUR 2,695) or the institutional fee (EUR 21,000); living allowance of EUR 1,200 per month (EUR 14,400 per academic year); personal allowance of EUR 249 once; immigration fee of EUR 228 waived where applicable",
+          "Erasmus Trustfonds and TSH Changemaker Scholarship: statutory tuition fee plus a monthly living allowance of EUR 600, plus one year of housing in a Social Hub Residence",
+          "Ter Kulve Scholarship: maximum EUR 17,500 plus a tuition fee waiver made available by Erasmus School of Law",
+          "EUC Scholarship: EUR 1,000 to EUR 6,000 per year as a tuition fee waiver; no transfer of funds; in principle eligible for a waiver during three years"
+        ],
+        "application_method": [
+          "Step 1: apply for the degree programme - register in Studielink and submit the application documents in the EUR Application Portal (EUC applicants apply for the Liberal Arts & Sciences Bachelor through the EUC application procedure)",
+          "Step 2: once admitted or applied, submit the scholarship application: online via Osiris student (Cases) for the Erasmus Trustfonds Scholarship at Erasmus School of Economics, or by e-mail with the listed documents to the faculty scholarship office (LL.M. Office at Erasmus School of Law, researchmasters@esphil.eur.nl at Erasmus School of Philosophy); the EUC Scholarship is requested inside the EUC application",
+          "Step 3: follow the application instructions on the scholarship detail page, accessible from the Scholarships & grants overview for students from abroad",
+          "Step 4: complete the immigration procedure (immigration application plus transfer of tuition fee, deposit for living costs and IND handling fee) - the deadline to complete it is 10 July, and scholarship applicants are instructed to send the immigration application by May at the latest"
+        ],
+        "application_route": "Apply for the degree programme first (Studielink plus the EUR Application Portal / EUC application), then file the scholarship application through Osiris Cases or the faculty scholarship mailbox as specified on each scholarship's detail page.",
+        "study_mode": "full-time",
+        "citizenship_residency": "Holland Scholarship: non-EEA nationality and no degree from a Dutch education institution. Erasmus Trustfonds Scholarship: open to both EEA and non-EEA students. Ter Kulve Scholarship: nationality from a World Bank income-level country. EUC Scholarship: students from any country.",
+        "international_eligibility": "Yes. The Holland Scholarship is designed for international students from outside the EEA, while the Erasmus Trustfonds Scholarship explicitly welcomes applicants from both EEA and non-EEA countries and the EUC Scholarship is open to students from any country.",
+        "subject_or_agency_requirement": "Award- and school-specific: the Erasmus Trustfonds Scholarship at Erasmus School of Economics is limited to the Master Accounting, Auditing and Control, Master Econometrics and Management Science, and Master Economics and Business; at Erasmus School of Law to the master Commercial Law (and specialisations), International and European Union Law, and Law and Technology; the EUC Scholarship requires enrolment in the Liberal Arts & Sciences Bachelor programme; the Changemaker award requires demonstrable community involvement.",
+        "research_requirement": null,
+        "duration": "Holland Scholarship: 1 year, received once. Erasmus Trustfonds Scholarship: one academic year, received once, with the award restricted to the programme for which it was granted. EUC Scholarship: in principle a tuition fee waiver during three years of study.",
+        "description": "Erasmus University Rotterdam does not operate a single university-wide scholarship: it administers the Dutch Ministry-funded Holland Scholarship (NL Scholarship) of EUR 5,000 for first-year students from outside the EEA, alongside its own talent programmes - the Erasmus Trustfonds Scholarship (maximum EUR 17,500 including a tuition waiver and living allowance), the Erasmus Trustfonds-TSH Changemaker Scholarship for underrepresented students (statutory tuition fee plus EUR 600 per month plus housing), the Ter Kulve Scholarship (maximum EUR 17,500 plus a tuition fee waiver) and the EUC Scholarship (EUR 1,000-6,000 per year as a tuition fee waiver). EUR states that the latest application deadline has passed and that information for 2027-2028 will be available in autumn 2026.",
+        "region": "Europe (Netherlands, Rotterdam)",
+        "program_type": "Government-financed merit scholarship (Holland Scholarship / NL Scholarship) combined with university talent and need-based scholarships",
+        "english_requirement": "English proficiency is set per programme rather than per scholarship. Commonly published EUR master requirements: IELTS Academic 6.5 with minimum subscores 6.5, TOEFL iBT total 90-91 (new scale 5.0, subscore 4.5) or Cambridge C1 Advanced/C2 Proficiency 176-180; bachelor-level programmes commonly require IELTS 6.0 or TOEFL iBT 80. Tests must be taken in an examination centre - online, Home Edition and MyBest scores are not accepted for visa and residence permit purposes; native speakers of listed countries and certain English-taught diploma backgrounds are exempt."
+      },
+      "verification": {
+        "source_citations": [
+          "https://www.studyinnl.org/finances/nl-scholarship",
+          "https://www.eur.nl/en/media/2023-02-regulations-financial-support-fund-total-2019",
+          "https://www.eur.nl/en/ese/education/master/fees-and-scholarships/scholarships-and-grants/erasmus-trustfonds-scholarship",
+          "https://www.eur.nl/en/esl/education/scholarships",
+          "https://www.eur.nl/en/euc/application-admissions/financial-support/euc-scholarship",
+          "https://www.eur.nl/en/education/practical-matters/scholarships-grants"
+        ],
+        "last_verified_date": "2026-10-10",
+        "verification_status": "confirmed",
+        "confidence": "high",
+        "not_confirmed": [
+          "The Holland Scholarship deadline and participation at EUR for the 2027-2028 cycle: EUR's Scholarships & grants page says 2027-2028 information will be available in autumn 2026, and EUR is not listed among the 2026-2027 participating research universities on the official NL Scholarship page",
+          "A single funding amount covering the whole grouped Holland Scholarship plus talent-programme entry; published values range from EUR 1,000 to EUR 17,500 depending on the award, so the EUR 5,000 Holland Scholarship figure is recorded as the headline amount",
+          "catalogue_url and official_updates_url were not supplied with the assignment",
+          "The brief's original URLs (/en/education/scholarships and /en/euc/application-admissions/financial-support/nl-scholarship) return 404 and were replaced with the current official pages"
+        ],
+        "notes": "Holland Scholarship value (EUR 5,000, one-off in the first year, explicitly not a full-tuition scholarship, awarded for 1 year and received once) confirmed on the official Study in NL page and on EUR's own Financial Support Fund regulation, which allocates Holland Scholarship in batches of EUR 5,000 (maximum EUR 15,000 / three batches per student). Talent-programme amounts, windows and documents confirmed on EUR school pages: ESE Erasmus Trustfonds 2027-2028 (max EUR 17,500: tuition waived, EUR 1,200/month living allowance, EUR 249 personal, EUR 228 immigration; window 1 December 2026 - 31 January 2027), ESL Erasmus Trustfonds-TSH Changemaker (statutory fee plus EUR 600/month plus Social Hub housing) and Ter Kulve (max EUR 17,500 plus fee waiver), EUC Scholarship (EUR 1,000-6,000 tuition fee waiver, 1 May deadline, decision by 1 June)."
+      },
+      "applicant_utility": {
+        "summary": "EUR has no single big scholarship; it layers the Ministry-funded Holland Scholarship (EUR 5,000, first year only, non-EEA only) on top of faculty talent funds whose value and rules differ per school. The concrete opportunity for the coming cycle is the 2027-2028 talent round: the Erasmus Trustfonds Scholarship window runs 1 December 2026 to 31 January 2027 for the specified ESE master programmes, with decisions e-mailed by 13 March 2027, while EUC opens 2027/2028 applications on 1 October 2026. Because EUR awards only one scholarship type per applicant, the winning move is to pick the single award whose eligibility you genuinely meet rather than spraying applications. Unless you land an Erasmus Trustfonds-type award, you should plan to self-fund non-EEA institutional tuition, housing, insurance and visa costs for the whole programme.",
+        "best_fit": "High-achieving non-EEA applicants (and EEA applicants for the Trustfonds-type awards) who can document both top grades and genuine financial need, and who can hit a winter scholarship window while their admission application is already filed.",
+        "application_readiness_checklist": [
+          "Identify which awards your faculty and nationality actually offer by working through EUR's 'Scholarships & grants for students from abroad' overview rather than relying on generic listings",
+          "Order a certified transcript early - EUR requires an original wet stamp and signature from a school official, and portal screenshots are rejected",
+          "Obtain a certified GPA statement using EUR's template so the grading scale and average are unambiguous",
+          "Build the budget plan with EUR's own template and write the one-page financial statement around why the award decides whether you can enrol",
+          "Book an in-centre IELTS or TOEFL test well ahead of the deadline; online and Home Edition results are not accepted for visa purposes",
+          "File the Studielink registration and EUR Application Portal documents before the scholarship window closes, since only admitted applicants are considered"
+        ],
+        "common_rejection_risks": [
+          "Missing the winter window - the ESE Erasmus Trustfonds round closes 31 January at 23:59 and late or incomplete files are explicitly not considered",
+          "Submitting an uncertified transcript or a GPA statement that does not contain the required information",
+          "A motivation letter that exceeds two A4 pages or never explains the financial need behind the application",
+          "Assuming awards stack - EUR awards only one scholarship type per applicant, so a weak second application cannot compensate for a poor first one",
+          "Holding a Dutch degree or a previous full-degree master enrolment in the Netherlands, which disqualifies the Erasmus Trustfonds route",
+          "Treating the Holland Scholarship as full funding - it is explicitly not a tuition scholarship and pays nothing after year one"
+        ],
+        "estimated_uncovered_costs": "For most awards the applicant still funds non-EEA institutional tuition (EUR publishes about EUR 21,000 per year for the Erasmus School of Economics institutional fee), housing, health insurance, visa/residence-permit fees and day-to-day living costs; only the Erasmus Trustfonds-type awards waive tuition and add a living allowance, and the Holland Scholarship contributes a single EUR 5,000 payment in year one.",
+        "document_audit": [
+          "Transcript must carry an original signature and stamp from a school official - scans of online student portals are not accepted",
+          "GPA statement must follow EUR's template wording (a home-university statement is acceptable only if it contains the same information)",
+          "Budget plan must use EUR's provided template, not a self-made spreadsheet",
+          "Motivation letter is capped at two A4 pages in Arial 11 and must address both excellence and financial need",
+          "Non-ESE schools such as Erasmus School of Law and Erasmus School of Philosophy take applications by e-mail with certified copies - check the exact mailbox and required attachments on the school page",
+          "Proof of ID and nationality must be uploaded in the proof-of-ID section of the admission application so the university sets the correct tuition-fee rate"
+        ],
+        "alerts": [
+          "EUR does not appear on the 2026-2027 participating-universities list published on the official NL Scholarship page, so treat a Holland Scholarship round at EUR for 2027-2028 as unconfirmed until EUR publishes its autumn 2026 information",
+          "The Holland Scholarship is a one-off paid in the first year only - there is no renewal for years two, three or four of a bachelor's programme",
+          "Erasmus Trustfonds awards cover one academic year only, are tied to the programme listed in the application, and cannot be combined with another scholarship type",
+          "Non-EEA scholarship applicants must complete the immigration procedure (application plus tuition, living-cost deposit and IND fee) by 10 July at the latest, and are instructed to file the immigration application by May",
+          "EUC Scholarship decisions arrive by 1 June for the 15 January / 1 May application deadlines, so a late EUC application materially reduces your scholarship prospects",
+          "EUR's central scholarships page currently states the application deadline has passed and that 2027-2028 information will appear in autumn 2026 - diarise an early-October check rather than assuming the round is still open"
+        ],
+        "submission_workflow": "Apply to the degree programme first (Studielink plus the EUR Application Portal, or the EUC application for Liberal Arts & Sciences), then file the scholarship application via Osiris Cases (ESE) or the faculty scholarship mailbox (Law, Philosophy) or inside the EUC application, and await the committee decision - 13 March 2027 for the ESE Erasmus Trustfonds round, 1 June for the EUC Scholarship."
+      }
+    }
+  ]
+}

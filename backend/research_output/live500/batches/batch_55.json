@@ -1,0 +1,30 @@
+{
+ "batch": "batch_55",
+ "agents": [
+  442,
+  443,
+  444,
+  445,
+  446,
+  448,
+  449
+ ],
+ "assignment_files": [
+  "assignments/agent_442.json",
+  "assignments/agent_443.json",
+  "assignments/agent_444.json",
+  "assignments/agent_445.json",
+  "assignments/agent_446.json",
+  "assignments/agent_448.json",
+  "assignments/agent_449.json"
+ ],
+ "result_files": [
+  "results_internal/agent_442.json",
+  "results_internal/agent_443.json",
+  "results_internal/agent_444.json",
+  "results_internal/agent_445.json",
+  "results_internal/agent_446.json",
+  "results_internal/agent_448.json",
+  "results_internal/agent_449.json"
+ ]
+}

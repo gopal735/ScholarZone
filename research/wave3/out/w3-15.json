@@ -1,0 +1,21 @@
+{
+  "agent_id": "w3_15",
+  "shard": "w3-15",
+  "host": "bond.edu.au",
+  "today": "2026-10-04",
+  "logo_override": {
+    "url": "https://bond.edu.au/themes/custom/bond_theme/favicon/apple-touch-icon.png",
+    "page_url": "https://bond.edu.au/our-university",
+    "official_host": true,
+    "alt_text": "Bond University coat of arms",
+    "validation_result": "verified",
+    "validation_detail": "webfetch returned 'Image fetched successfully', confirming HTTP 200 plus a real image content type. Declared by the site as <link rel=\"apple-touch-icon\" href=\"/themes/custom/bond_theme/favicon/apple-touch-icon.png\" sizes=\"180x180\">. Decoded and rendered: the Bond University coat of arms (shield, Southern Cross, waratah and book) as white line-art on an OPAQUE dark navy #1D304E rounded-square field. Because the navy field is opaque rather than transparent, the pale artwork still reads clearly on a light card, and as a png it carries no conditional CSS that could recolour it.",
+    "image_kind": "official_university",
+    "image_format": "png",
+    "verified_at": "2026-10-04T00:00:00+00:00",
+    "host_evidence": "same_registrable_domain",
+    "_award": "Bond University Postgraduate Research Scholarship"
+  },
+  "target_ids": [664],
+  "notes": "Bond required real digging and the obvious answer is not reportable. The header brand is an INLINE svg with no src, so there is no URL to probe: <a href=\"/\" class=\"global-header-logo\"><svg width=\"132\" height=\"52\" class=\"bond-logo-colour\" fill=\"#003663\" viewBox=\"0 0 163 63\"> ...paths... </svg></a>, with a second .bond-logo-outline variant toggled by CSS. Per rule 5 I will not manufacture a URL for an inline asset. Rejected og:image / link rel=image_src on both pages tried (https://bond.edu.au/scholarship/bond-university-postgraduate-research-scholarship and https://bond.edu.au/our-university): both point at campus photography, e.g. /sites/default/files/2022-07/2020_FSD_Building%20Exterior_CAV_1.jpg and /sites/default/files/2022-08/2016_Bond_Campus_Aerial_Quad.jpg - not a mark. Also rejected /themes/custom/bond_theme/favicon/icon.svg even though it probes HTTP 200 image/svg+xml and is a proper navy crest: its first line is <style>@media (prefers-color-scheme: dark) { .a { fill: #fff } }</style>, so a visitor whose OS is in dark mode gets a WHITE crest - invisible on a light card, which is exactly the rule 3 failure. An SVG referenced from an <img> evaluates prefers-color-scheme against the reader's OS, not the card, so that risk is real and cannot be designed away. The apple-touch-icon.png has no such conditional styling and an opaque background, so it is the only probeable Bond asset that is unconditionally safe on a light card; it is a crest rather than a wordmark, which is the lesser compromise the brief allows. Provenance: Bond University's own coat of arms, on its own bond.edu.au domain, for a Bond University award - rule 2 satisfied. Third-party logo repositories that dominate search results for this logo (brandfetch.com, seeklogo, brands of the world, vectorseek, iconlogovector) were deliberately not used, per rule 6."
+}

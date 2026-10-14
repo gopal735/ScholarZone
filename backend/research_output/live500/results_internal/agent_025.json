@@ -1,0 +1,140 @@
+{
+  "agent": "agent_025",
+  "records": [
+    {
+      "id": 85,
+      "official": {
+        "official_source_urls": [
+          "https://you.ubc.ca/financial-planning/scholarships-awards-international-students/international-scholars",
+          "https://you.ubc.ca/applying-ubc/dates-deadlines"
+        ],
+        "application_link": "https://undergraduatescholarships.ubc.ca/prog/2027_international_scholars_program_application/",
+        "catalogue_url": "https://you.ubc.ca/financial-planning/scholarships-awards-international-students",
+        "official_updates_url": "https://you.ubc.ca/applying-ubc/dates-deadlines",
+        "deadline_central": "2026-11-15",
+        "deadline_central_display": "November 15, 2026 (11:59 p.m. PST)",
+        "deadline_note": "Award application due November 15 for the September 2027 intake; required admission documents and English language results are due January 31, 2027; video interviews run January-March 2027 and results are released on a rolling basis February-April 2027",
+        "application_cycle": "September 2027 intake",
+        "status": "OPEN",
+        "status_note": "UBC states 'Applications for the September 2027 are open'; the application opened October 5, 2026",
+        "tuition_coverage_note": null,
+        "funding_amount": null,
+        "funding_currency": null,
+        "funding_period": null,
+        "tuition_coverage": null,
+        "living_cost_coverage": null,
+        "travel_coverage": null,
+        "fully_funded": false,
+        "benefits": [
+          "Financial support determined by assessed financial need - the amount of support required to live and study at UBC after all resources are accounted for",
+          "Dedicated advising and support from International Scholars Program advisors",
+          "Skill-building workshops and retreats",
+          "Option to participate in exchange and co-op",
+          "Access to unique learning opportunities within a cohort of 680+ International Scholars from 111+ countries since 2001"
+        ],
+        "eligibility": [
+          "An international student who will be studying in Canada on a Canadian study permit",
+          "Entering UBC directly from an accredited secondary school; applicants for the 2027 Winter session must have graduated no earlier than June 2026",
+          "Applying for a first undergraduate degree",
+          "Able to prove a significant level of financial need, with the family unable to afford a significant level of educational costs and without access to external funding",
+          "Meet UBC's admission requirements including general and degree-specific requirements, with superior academic achievement (all As or equivalent standard)",
+          "Meet UBC's English Language Admission Standard, or be eligible for UBC Vantage College and the Vantage One Excellence Award",
+          "Nominated by a high school or qualifying registered non-profit organization, with an academic referee who is a different person from the nominator"
+        ],
+        "requirements": [
+          "All eligibility criteria must be met; UBC states there are no exceptions to the eligibility criteria",
+          "Submit the UBC Admissions application before starting the award application; the award application requests confirmation of UBC application submission",
+          "Complete the in-depth financial information sections and calculate family contributions and financial need using UBC's cost estimator",
+          "Complete 4 essay questions of approximately 150-250 words each, and a video interview if invited (one week to complete)",
+          "Submit any admission documents required to evaluate the UBC application, and English language results, by January 31, 2027"
+        ],
+        "documents": [
+          "Official documents demonstrating financial need: family gross income, expenses and family assets",
+          "Nominator's completed nomination form and teacher referee's completed reference form, submitted a few days before November 15",
+          "Transcripts and high school academic certificates",
+          "Official English language test results, if an English language test is required",
+          "Four written essay responses of approximately 150-250 words each"
+        ],
+        "selection_criteria": [
+          "Documented significant financial need, assessed through the financial assessment of family gross income, expenses and assets",
+          "Demonstrated leadership qualities and exceptional contributions to communities",
+          "Outstanding academic performance (all As or equivalent standard)",
+          "Video interview performance, if invited"
+        ],
+        "coverage": [
+          "Financial support determined by UBC's financial need assessment, described as the amount representing how much support you would require to live and study at UBC after all your resources have been accounted for",
+          "For the Vantage One Excellence Award only, value stated as ranging up to the full cost of a student's academic program and living expenses"
+        ],
+        "application_method": [
+          "Decide on academic program and campus in mid-September (first choice program determines award consideration; still select a second choice)",
+          "Discuss the nomination with your school in late September; confirm one nominator and one teacher referee who must be different people",
+          "Apply to UBC in early October via the UBC Admissions application, then create the award application account and invite nominator and referee",
+          "Complete the financial sections, extracurricular information, awards and 4 essays in mid-October; submit the completed award application by November 15",
+          "Submit required admission documents and English language results by January 31, and complete the video interview if invited"
+        ],
+        "application_route": "UBC Admissions application first, then the International Scholars Program award application account with nominator and teacher referee forms completed before the November 15 deadline",
+        "study_mode": "Full-time",
+        "citizenship_residency": "International students who will study in Canada on a Canadian study permit",
+        "international_eligibility": "Open only to international students on a Canadian study permit",
+        "subject_or_agency_requirement": "The following degrees are not eligible: Bachelor of Nursing (Okanagan and Vancouver), Bachelor of Dental Science in Dental Hygiene, Bachelor of Medical Laboratory Science, Bachelor + Master of Management, dual degrees, joint degrees between UBC Okanagan and UBC Vancouver, and joint degrees with other post-secondary institutions",
+        "research_requirement": null,
+        "duration": null,
+        "description": "The UBC International Scholars Program is for international students who have demonstrated leadership qualities, exceptional contributions to their communities, have outstanding academic performance, and require meaningful financial support to attend UBC. It brings together Scholars from diverse countries and cultures to foster a vibrant and globally connected learning community.",
+        "region": "North America",
+        "program_type": "Need-and-merit-based undergraduate award program within UBC's International Scholars Program, requiring high school nomination",
+        "english_requirement": "You must meet UBC's English Language Admission Standard. If you do not satisfy this requirement for direct entry, you may be eligible for UBC Vantage College and the Vantage One Excellence Award, which requires the English language requirement for UBC Vantage College. If required to take an English language test, complete it early enough for UBC Admissions to receive official results by January 31."
+      },
+      "verification": {
+        "source_citations": [
+          "https://you.ubc.ca/financial-planning/scholarships-awards-international-students/international-scholars"
+        ],
+        "last_verified_date": "2026-10-10",
+        "verification_status": "confirmed",
+        "confidence": "high",
+        "not_confirmed": [
+          "funding_amount",
+          "funding_currency",
+          "funding_period",
+          "tuition_coverage",
+          "living_cost_coverage",
+          "travel_coverage",
+          "duration"
+        ],
+        "notes": "The official International Scholars page on you.ubc.ca was read directly; no dollar value is published for the program or its categories because support is set by assessed financial need, and per-category pages are accordion sections on this single official page."
+      },
+      "applicant_utility": {
+        "summary": "This is a need-and-merit program, not a fixed-amount prize: UBC pays whatever its financial needs assessment says you lack after counting all family resources, so a wealthier family with perfect grades can receive less than a poorer applicant who is nearly as strong. The binding constraints are the nomination and the calendar - your school can nominate only two students for UBC Vancouver and one for the Okanagan, and your nominator and teacher referee forms must land a few days before November 15, 2026, while admission documents drag into January 31, 2027. Applying here removes you from UBC's merit-based awards, so choose the program that matches your profile rather than hedging.",
+        "best_fit": "International students finishing secondary school abroad, holding an all-As or equivalent record, with genuine documented financial need and a school or qualifying non-profit willing to nominate them.",
+        "application_readiness_checklist": [
+          "Confirm by mid-September whether your high school can nominate you, and whether it still has an unused nomination slot for your campus",
+          "Submit the UBC Admissions application in early October - the award application will not start without it",
+          "Collect family income, expense and asset documents early; the financial section is deliberately in-depth",
+          "Alert your nominator and teacher referee in early October so their forms clear well before the November 15 cutoff",
+          "Draft the four 150-250 word essays before mid-October rather than during deadline week",
+          "Book any required English test so official results reach UBC Admissions by January 31, 2027"
+        ],
+        "common_rejection_risks": [
+          "Starting the award application in November and being caught when nominator or referee forms are incomplete - you cannot submit until both are in",
+          "Applying for one of the explicitly excluded degrees such as Nursing, Dental Hygiene or Medical Laboratory Science",
+          "Submitting admission documents on the date in the 'Your UBC Application - Next Steps' email instead of January 31",
+          "Also expecting consideration for merit-based awards, which is excluded once you apply to this program",
+          "Treating the all-As requirement loosely - it is stated as superior academic achievement with no exceptions"
+        ],
+        "estimated_uncovered_costs": "Support equals your assessed need, so it covers at most your calculated cost of living and studying; flights, visa costs, and costs for family members are not addressed, and award renewability is not published on the program page.",
+        "document_audit": [
+          "Financial documents must show gross income, expenses and assets at family level, not only the applicant's own finances",
+          "The nominator and teacher referee must be two different people - a single teacher signing both forms invalidates the file",
+          "Non-profit nominations are only for organizations acting in place of a high school or serving students from war-torn, politically unstable or severely disadvantaged areas",
+          "Your document deadline is January 31, not the date in the automated 'Next Steps' email"
+        ],
+        "alerts": [
+          "Applications started shortly before the deadline are described by UBC as less likely to succeed - begin by early October",
+          "You do not choose which of the four award categories you receive; the team assigns you automatically",
+          "Wait for award decisions before applying for UBC Housing, whose deadline is May 1",
+          "Results arrive on a rolling basis February-April 2027, so silence in March is not necessarily a rejection"
+        ],
+        "submission_workflow": "UBC Admissions application, then the online award application with nominator and referee forms, submitted by November 15; documents and English evidence by January 31; video interview if invited; rolling decisions February-April."
+      }
+    }
+  ]
+}

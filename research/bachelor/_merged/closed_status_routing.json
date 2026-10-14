@@ -1,0 +1,87 @@
+{
+  "_about": "Routing decisions for records that are complete research but cannot take the INSERT route. Factual lifecycle status is preserved in every case; no status was altered to make do_add() accept a record.",
+  "_generated": "2026-10-03",
+  "pipeline_constraint": {
+    "stage": "backend/app/jobs/scholarzone_maintenance.py :: do_add()",
+    "guard": "if status not in (\"open\", \"upcoming\"): reject",
+    "verdict": "The guard is CORRECT and must not be relaxed.",
+    "evidence": [
+      "Scholarship.status is documented in models.py as answering 'is this round open right now', and flips back to open when a new cycle is published.",
+      "public_visibility_conditions() gates the public directory, and routers/scholarships.py counts only status open / closing-soon / upcoming. A closed row is visible in total but in none of those buckets.",
+      "The pipeline already produces status='closed' itself: scholarzone_maintenance.py:989-1006 auto-archives any row whose deadline_date < today and sets status='closed', with the comment 'Status is derived from the same date, so leaving it open would make a filter on status contradict the archive.'",
+      "A sibling stage already reopens rows whose official facts report OPEN/UPCOMING (scholarzone_maintenance.py:2253-2256), which is the mechanism these recurring schemes should re-enter through."
+    ],
+    "conclusion": "closed is a real, supported, pipeline-produced state. Relaxing the guard would publish a stale cycle as live, which is the exact failure the auto-close stage prevents. The missing piece is not the guard, it is a route for a recurring scheme whose current cycle has passed."
+  },
+  "decisions": [
+    {
+      "award": "Borse di studio offerte dal Governo italiano a studenti stranieri e italiani residenti all'estero (IRE)",
+      "file": "b01-maeci-scholarships-foreign-students-italian-citizens-abroad.json",
+      "official_url": "https://www.esteri.it/it/servizi-opportunita/opportunita/borse-di-studio/per-cittadini-stranieri/borsestudio_stranieri/",
+      "route": "BLOCKED",
+      "status_preserved": "closed",
+      "cycle_evidence": "The official MAECI page states applications for the 2026-2027 call must be submitted by 14:00 Italian time on 26 March 2026. That date has passed.",
+      "reasons": [
+        "Current cycle is closed, so the INSERT route is unavailable by design.",
+        "SECOND, MORE SERIOUS: bachelor's eligibility was never confirmed from the official source. research_notes.degree_level_confirmed reads 'PARTIAL - assignment says 1st cycle/bachelor included; bando text still to be read'. programme_detail_official.degree_levels is an empty array, eligibility is an empty array, and benefits is empty. The 'Bachelor's' value in new_scholarship is an inference carried over from the assignment pool, not evidence from MAECI.",
+        "In a catalogue scoped to bachelor's awards, an unverified degree level is disqualifying on its own, independently of the closed cycle."
+      ],
+      "not_a_duplicate": "Distinct from LIVE id 133 'Invest Your Talent in Italy (IYT)'. Different programme, different portal (Study in Italy vs the IYT portal), different legal basis (Legge 288/55 vs MAECI/ICE/Uni-Italia), different beneficiary population. They share only the sponsoring ministry and the esteri.it domain.",
+      "required_to_unblock": [
+        "Read the official bando on studyinitaly.esteri.it/ListaBandi and confirm whether first-cycle (laurea) students are eligible.",
+        "If bachelor's eligibility is confirmed, route the record as HISTORICAL for the 2026-2027 cycle and re-evaluate when the next call opens.",
+        "Populate programme_detail_official.eligibility and benefits from the bando rather than leaving them empty."
+      ]
+    },
+    {
+      "award": "Exemption from Tuition Fees for International Students under the Heidelberg University Charter of 28 July 2017",
+      "file": "21-germany-university-fee-waiver.json",
+      "official_url": "https://www.uni-heidelberg.de/en/study/management-of-studies/semester-fees/tuition-fees-for-international-students",
+      "route": "HISTORICAL",
+      "status_preserved": "closed",
+      "cycle_evidence": "Standing scheme with two fixed annual deadlines, 15 January and 15 July. As of 2026-10-03 the 15 July 2026 window has passed and the next is 15 January 2027.",
+      "reasons": [
+        "The programme has not ended. It is a standing, recurring scheme, so 'closed' means 'this cycle has passed', not 'discontinued'.",
+        "Degree level, eligibility and benefits are verified, so nothing blocks the record apart from the lifecycle state.",
+        "Correct handling is to hold it for the next cycle rather than to publish the closed one, and rather than to relabel it open."
+      ],
+      "not_a_duplicate": "uni-heidelberg.de does not appear in the duplicate index.",
+      "required_to_unblock": [
+        "No product change is strictly required: the record can simply be re-researched when the 15 January 2027 window is confirmed open.",
+        "The durable fix is a recurring-closed holding route in the ingestion stage so this class of record does not need re-research each cycle. That is a production change and was NOT made."
+      ]
+    },
+    {
+      "award": "K.C. Kuok Scholarship",
+      "file": "42-australia-monash-kc-kuok.json",
+      "official_url": "https://www.monash.edu/study/fees-scholarships/scholarships/find-a-scholarship/kc-kuok-scholarship-6073",
+      "route": "HISTORICAL",
+      "status_preserved": "closed",
+      "cycle_evidence": "The official page states the 2026 award closed on 20 July 2026 and that the award cannot be deferred.",
+      "reasons": [
+        "Single-award, single-cycle annual scholarship. The 2026 round is closed and explicitly cannot be carried forward.",
+        "Distinct from LIVE id 52 'Monash International Leadership Scholarship', which shares monash.edu but is a different award; the INSERT_NEW decision is recorded in REFRESH_OVERRIDES.json.",
+        "Degree level and benefits are verified; only the lifecycle state blocks it."
+      ],
+      "required_to_unblock": [
+        "Re-research when the 2027 round opens, at which point status becomes open or upcoming and the INSERT route applies.",
+        "The durable fix is the same recurring-closed holding route. NOT made."
+      ]
+    }
+  ],
+  "alternative_routes_considered": [
+    {
+      "option": "A. Keep excluded from insertion",
+      "verdict": "Partially true but incomplete as a description. It is the current state, but it conflates a deferred-but-valid record with an unverifiable one."
+    },
+    {
+      "option": "B. Historical/closed route",
+      "verdict": "Correct for Heidelberg and K.C. Kuok. Not sufficient for MAECI, whose bachelor's eligibility is unverified, so MAECI is BLOCKED rather than HISTORICAL."
+    },
+    {
+      "option": "C. The pipeline condition is unnecessarily restrictive",
+      "verdict": "Rejected. The condition is deliberate and correct. status='closed' is produced by the pipeline's own auto-close stage, and relaxing the guard would surface a past cycle in public listings that count only open, upcoming and closing-soon."
+    }
+  ],
+  "no_status_was_altered": true
+}

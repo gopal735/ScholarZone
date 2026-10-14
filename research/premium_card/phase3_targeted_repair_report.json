@@ -1,0 +1,726 @@
+{
+  "report": "Phase 3 Targeted Premium-Card Contamination Repair",
+  "generated_at_utc": "2026-10-06T16:01:45.314752+00:00",
+  "final_verdict": "REPAIR_COMPLETE",
+  "repository": {
+    "toplevel": "C:/Users/GopaL/Desktop/Projects folder/ScholarZone",
+    "branch": "integrate/ci-tuition-p0-clean",
+    "head": "bac50bf55816bfdea02df1b78c219f7df7be1771"
+  },
+  "database": {
+    "path": "C:\\Users\\GopaL\\Desktop\\Projects folder\\ScholarZone\\backend\\scholarzone.db",
+    "sha256_before": "7132743819d439465f7ae052003e8e91b5ec34a6c7f054d7d887e378156d20e7",
+    "sha256_after": "c9a969d24fbabbc3e15579616e700457a21dfc23d95f55be57ccb63527b9092d",
+    "size_before": 16142336,
+    "size_after": 16142336,
+    "row_count_before": 691,
+    "row_count_after": 691
+  },
+  "repair_field_count": {
+    "exact_count": 13,
+    "derivation": "14 effective value changes from the 2026-10-06 merge MINUS 1 SAFE_KEEP field (299.deadline_date) = 13",
+    "discrepancy_explained": {
+      "audit_claimed": "11 incorrect writes + 2 uncertain writes = 13 fields, while also asserting 'all 14 repair values provable'",
+      "root_cause": "The figure 14 in the Phase 2 prose was the count of EFFECTIVE VALUE CHANGES in the original merge, not the repair set. The audit's own JSON field 'all_14_restorable_values_recoverable' was mis-derived and is superseded.",
+      "resolution": "14 (effective changes) - 1 (299.deadline_date, SAFE_KEEP) = 13 repair fields. Verified programmatically: 14 - 1 == 13 == 11 proven + 2 snapshot-verified.",
+      "assumption_rejected": "14 was NOT assumed. The count was recomputed from the audit's two explicit field lists."
+    },
+    "breakdown": {
+      "high_confidence_proven_contamination": 11,
+      "snapshot_verified_additional": 2,
+      "safe_keep_untouched": 1
+    }
+  },
+  "dry_run_table": [
+    {
+      "db_id": 162,
+      "field": "deadline_date",
+      "research_id": "research-065",
+      "tier": "HI",
+      "current": "Varies by admission cycle (ongoing for enrolled students)",
+      "premerge": null,
+      "status": "PROVEN_CONTAMINATION",
+      "evidence": "3/3 snapshots agree=None; current matches audit",
+      "snapshot_values": {
+        "authoritative": null,
+        "wave13_local": null,
+        "pre_wave13_master": null
+      },
+      "snapshots_agree": true,
+      "expected_current_from_audit": "Varies by admission cycle (ongoing for enrolled students)"
+    },
+    {
+      "db_id": 162,
+      "field": "funding_period",
+      "research_id": "research-065",
+      "tier": "HI",
+      "current": "unknown",
+      "premerge": null,
+      "status": "PROVEN_CONTAMINATION",
+      "evidence": "3/3 snapshots agree=None; current matches audit",
+      "snapshot_values": {
+        "authoritative": null,
+        "wave13_local": null,
+        "pre_wave13_master": null
+      },
+      "snapshots_agree": true,
+      "expected_current_from_audit": "unknown"
+    },
+    {
+      "db_id": 271,
+      "field": "deadline_date",
+      "research_id": "research-001",
+      "tier": "HI",
+      "current": "January 15 (September semester intake); September 1 (February semester intake). For the 2027/2028 cycle: January 15, 2027 (September intake).",
+      "premerge": null,
+      "status": "PROVEN_CONTAMINATION",
+      "evidence": "3/3 snapshots agree=None; current matches audit",
+      "snapshot_values": {
+        "authoritative": null,
+        "wave13_local": null,
+        "pre_wave13_master": null
+      },
+      "snapshots_agree": true,
+      "expected_current_from_audit": "January 15 (September semester intake); September 1 (February semester intake). For the 2027/2028 cycle: January 15, 2027 (September intake)."
+    },
+    {
+      "db_id": 272,
+      "field": "deadline_date",
+      "research_id": "research-002",
+      "tier": "HI",
+      "current": "January 15 (summer/September intake); September 15 (winter/February intake). For 2027/2028 cycle: January 15, 2027.",
+      "premerge": null,
+      "status": "PROVEN_CONTAMINATION",
+      "evidence": "3/3 snapshots agree=None; current matches audit",
+      "snapshot_values": {
+        "authoritative": null,
+        "wave13_local": null,
+        "pre_wave13_master": null
+      },
+      "snapshots_agree": true,
+      "expected_current_from_audit": "January 15 (summer/September intake); September 15 (winter/February intake). For 2027/2028 cycle: January 15, 2027."
+    },
+    {
+      "db_id": 272,
+      "field": "funding_period",
+      "research_id": "research-002",
+      "tier": "HI",
+      "current": "unknown",
+      "premerge": null,
+      "status": "PROVEN_CONTAMINATION",
+      "evidence": "3/3 snapshots agree=None; current matches audit",
+      "snapshot_values": {
+        "authoritative": null,
+        "wave13_local": null,
+        "pre_wave13_master": null
+      },
+      "snapshots_agree": true,
+      "expected_current_from_audit": "unknown"
+    },
+    {
+      "db_id": 273,
+      "field": "deadline_date",
+      "research_id": "research-004",
+      "tier": "HI",
+      "current": "Master's: February 1 (annually). Bachelor's: March 15 (with uniTEST). For 2027 intake: Master's February 1, 2027.",
+      "premerge": null,
+      "status": "PROVEN_CONTAMINATION",
+      "evidence": "3/3 snapshots agree=None; current matches audit",
+      "snapshot_values": {
+        "authoritative": null,
+        "wave13_local": null,
+        "pre_wave13_master": null
+      },
+      "snapshots_agree": true,
+      "expected_current_from_audit": "Master's: February 1 (annually). Bachelor's: March 15 (with uniTEST). For 2027 intake: Master's February 1, 2027."
+    },
+    {
+      "db_id": 273,
+      "field": "funding_period",
+      "research_id": "research-004",
+      "tier": "HI",
+      "current": "unknown",
+      "premerge": null,
+      "status": "PROVEN_CONTAMINATION",
+      "evidence": "3/3 snapshots agree=None; current matches audit",
+      "snapshot_values": {
+        "authoritative": null,
+        "wave13_local": null,
+        "pre_wave13_master": null
+      },
+      "snapshots_agree": true,
+      "expected_current_from_audit": "unknown"
+    },
+    {
+      "db_id": 285,
+      "field": "deadline_date",
+      "research_id": "research-031",
+      "tier": "HI",
+      "current": "15 January 2026, 14:00 CET",
+      "premerge": null,
+      "status": "PROVEN_CONTAMINATION",
+      "evidence": "3/3 snapshots agree=None; current matches audit",
+      "snapshot_values": {
+        "authoritative": null,
+        "wave13_local": null,
+        "pre_wave13_master": null
+      },
+      "snapshots_agree": true,
+      "expected_current_from_audit": "15 January 2026, 14:00 CET"
+    },
+    {
+      "db_id": 285,
+      "field": "english_requirement",
+      "research_id": "?",
+      "tier": "UN",
+      "current": "English",
+      "premerge": null,
+      "status": "PROVEN_CONTAMINATION",
+      "evidence": "3/3 snapshots agree=None; current matches audit",
+      "snapshot_values": {
+        "authoritative": null,
+        "wave13_local": null,
+        "pre_wave13_master": null
+      },
+      "snapshots_agree": true,
+      "expected_current_from_audit": "English"
+    },
+    {
+      "db_id": 285,
+      "field": "funding_period",
+      "research_id": "research-031",
+      "tier": "HI",
+      "current": "unknown",
+      "premerge": null,
+      "status": "PROVEN_CONTAMINATION",
+      "evidence": "3/3 snapshots agree=None; current matches audit",
+      "snapshot_values": {
+        "authoritative": null,
+        "wave13_local": null,
+        "pre_wave13_master": null
+      },
+      "snapshots_agree": true,
+      "expected_current_from_audit": "unknown"
+    },
+    {
+      "db_id": 299,
+      "field": "english_requirement",
+      "research_id": "?",
+      "tier": "UN",
+      "current": "English",
+      "premerge": null,
+      "status": "PROVEN_CONTAMINATION",
+      "evidence": "3/3 snapshots agree=None; current matches audit",
+      "snapshot_values": {
+        "authoritative": null,
+        "wave13_local": null,
+        "pre_wave13_master": null
+      },
+      "snapshots_agree": true,
+      "expected_current_from_audit": "English"
+    },
+    {
+      "db_id": 356,
+      "field": "deadline_date",
+      "research_id": "research-032",
+      "tier": "HI",
+      "current": "19 February 2026, 23:00 CET (27 February 2026, 17:00 for summer courses)",
+      "premerge": null,
+      "status": "PROVEN_CONTAMINATION",
+      "evidence": "3/3 snapshots agree=None; current matches audit",
+      "snapshot_values": {
+        "authoritative": null,
+        "wave13_local": null,
+        "pre_wave13_master": null
+      },
+      "snapshots_agree": true,
+      "expected_current_from_audit": "19 February 2026, 23:00 CET (27 February 2026, 17:00 for summer courses)"
+    },
+    {
+      "db_id": 356,
+      "field": "funding_period",
+      "research_id": "research-032",
+      "tier": "HI",
+      "current": "unknown",
+      "premerge": null,
+      "status": "PROVEN_CONTAMINATION",
+      "evidence": "3/3 snapshots agree=None; current matches audit",
+      "snapshot_values": {
+        "authoritative": null,
+        "wave13_local": null,
+        "pre_wave13_master": null
+      },
+      "snapshots_agree": true,
+      "expected_current_from_audit": "unknown"
+    },
+    {
+      "db_id": 299,
+      "field": "deadline_date",
+      "research_id": "research-058",
+      "tier": "SAFE",
+      "current": "2026-03-31",
+      "premerge": "(n/a)",
+      "status": "SAFE_KEEP",
+      "evidence": "the merge's only valid ISO deadline write; matches the row's verified deadline_display",
+      "snapshot_values": {},
+      "snapshots_agree": true,
+      "expected_current_from_audit": "2026-03-31"
+    }
+  ],
+  "write_gate": {
+    "passed": true,
+    "assertions": [
+      {
+        "name": "current DB row count is still 691",
+        "pass": true,
+        "detail": "(actual 691)"
+      },
+      {
+        "name": "all 7 target DB ids exist in current DB",
+        "pass": true,
+        "detail": "[162, 271, 272, 273, 285, 299, 356]"
+      },
+      {
+        "name": "all 7 target DB ids exist in authoritative snapshot",
+        "pass": true,
+        "detail": ""
+      },
+      {
+        "name": "repair-field count resolved to 13",
+        "pass": true,
+        "detail": "(actual 13)"
+      },
+      {
+        "name": "every candidate field has 3/3 snapshot agreement",
+        "pass": true,
+        "detail": ""
+      },
+      {
+        "name": "every current value matches the audit's expected contaminated value",
+        "pass": true,
+        "detail": ""
+      },
+      {
+        "name": "299.deadline_date is still 2026-03-31",
+        "pass": true,
+        "detail": "(actual '2026-03-31')"
+      },
+      {
+        "name": "Coimbra string still present in DB162 (proves contamination is live)",
+        "pass": true,
+        "detail": ""
+      },
+      {
+        "name": "no prose deadline_date among the 13 repair rows beyond the audited 6",
+        "pass": true,
+        "detail": ""
+      }
+    ]
+  },
+  "transaction": {
+    "mode": "BEGIN IMMEDIATE ... COMMIT",
+    "statements": 13,
+    "guard": "WHERE id = <exact numeric id> AND <field> IS <expected contaminated value>",
+    "rowcount_check": "asserted == 1 after every UPDATE",
+    "rollback_triggered": false,
+    "safety_copy_taken": true,
+    "safety_copy_path_outside_repo": "C:\\Users\\GopaL\\AppData\\Local\\Temp\\opencode\\scholarzone.PRE-PHASE3-REPAIR.db"
+  },
+  "repairs": [
+    {
+      "db_id": 162,
+      "field": "deadline_date",
+      "sql": "UPDATE scholarships SET deadline_date = ? WHERE id = ? AND deadline_date IS ?",
+      "params_repr": "(None, 162, 'Varies by admission cycle (ongoing for enrolled students)')",
+      "rowcount": 1,
+      "from_value": "Varies by admission cycle (ongoing for enrolled students)",
+      "to_value": null
+    },
+    {
+      "db_id": 162,
+      "field": "funding_period",
+      "sql": "UPDATE scholarships SET funding_period = ? WHERE id = ? AND funding_period IS ?",
+      "params_repr": "(None, 162, 'unknown')",
+      "rowcount": 1,
+      "from_value": "unknown",
+      "to_value": null
+    },
+    {
+      "db_id": 271,
+      "field": "deadline_date",
+      "sql": "UPDATE scholarships SET deadline_date = ? WHERE id = ? AND deadline_date IS ?",
+      "params_repr": "(None, 271, 'January 15 (September semester intake); September 1 (February semester intake). For the 2027/2028 cycle: January 15, 2027 (September intake).')",
+      "rowcount": 1,
+      "from_value": "January 15 (September semester intake); September 1 (February semester intake). For the 2027/2028 cycle: January 15, 2027 (September intake).",
+      "to_value": null
+    },
+    {
+      "db_id": 272,
+      "field": "deadline_date",
+      "sql": "UPDATE scholarships SET deadline_date = ? WHERE id = ? AND deadline_date IS ?",
+      "params_repr": "(None, 272, 'January 15 (summer/September intake); September 15 (winter/February intake). For 2027/2028 cycle: January 15, 2027.')",
+      "rowcount": 1,
+      "from_value": "January 15 (summer/September intake); September 15 (winter/February intake). For 2027/2028 cycle: January 15, 2027.",
+      "to_value": null
+    },
+    {
+      "db_id": 272,
+      "field": "funding_period",
+      "sql": "UPDATE scholarships SET funding_period = ? WHERE id = ? AND funding_period IS ?",
+      "params_repr": "(None, 272, 'unknown')",
+      "rowcount": 1,
+      "from_value": "unknown",
+      "to_value": null
+    },
+    {
+      "db_id": 273,
+      "field": "deadline_date",
+      "sql": "UPDATE scholarships SET deadline_date = ? WHERE id = ? AND deadline_date IS ?",
+      "params_repr": "(None, 273, \"Master's: February 1 (annually). Bachelor's: March 15 (with uniTEST). For 2027 intake: Master's February 1, 2027.\")",
+      "rowcount": 1,
+      "from_value": "Master's: February 1 (annually). Bachelor's: March 15 (with uniTEST). For 2027 intake: Master's February 1, 2027.",
+      "to_value": null
+    },
+    {
+      "db_id": 273,
+      "field": "funding_period",
+      "sql": "UPDATE scholarships SET funding_period = ? WHERE id = ? AND funding_period IS ?",
+      "params_repr": "(None, 273, 'unknown')",
+      "rowcount": 1,
+      "from_value": "unknown",
+      "to_value": null
+    },
+    {
+      "db_id": 285,
+      "field": "deadline_date",
+      "sql": "UPDATE scholarships SET deadline_date = ? WHERE id = ? AND deadline_date IS ?",
+      "params_repr": "(None, 285, '15 January 2026, 14:00 CET')",
+      "rowcount": 1,
+      "from_value": "15 January 2026, 14:00 CET",
+      "to_value": null
+    },
+    {
+      "db_id": 285,
+      "field": "english_requirement",
+      "sql": "UPDATE scholarships SET english_requirement = ? WHERE id = ? AND english_requirement IS ?",
+      "params_repr": "(None, 285, 'English')",
+      "rowcount": 1,
+      "from_value": "English",
+      "to_value": null
+    },
+    {
+      "db_id": 285,
+      "field": "funding_period",
+      "sql": "UPDATE scholarships SET funding_period = ? WHERE id = ? AND funding_period IS ?",
+      "params_repr": "(None, 285, 'unknown')",
+      "rowcount": 1,
+      "from_value": "unknown",
+      "to_value": null
+    },
+    {
+      "db_id": 299,
+      "field": "english_requirement",
+      "sql": "UPDATE scholarships SET english_requirement = ? WHERE id = ? AND english_requirement IS ?",
+      "params_repr": "(None, 299, 'English')",
+      "rowcount": 1,
+      "from_value": "English",
+      "to_value": null
+    },
+    {
+      "db_id": 356,
+      "field": "deadline_date",
+      "sql": "UPDATE scholarships SET deadline_date = ? WHERE id = ? AND deadline_date IS ?",
+      "params_repr": "(None, 356, '19 February 2026, 23:00 CET (27 February 2026, 17:00 for summer courses)')",
+      "rowcount": 1,
+      "from_value": "19 February 2026, 23:00 CET (27 February 2026, 17:00 for summer courses)",
+      "to_value": null
+    },
+    {
+      "db_id": 356,
+      "field": "funding_period",
+      "sql": "UPDATE scholarships SET funding_period = ? WHERE id = ? AND funding_period IS ?",
+      "params_repr": "(None, 356, 'unknown')",
+      "rowcount": 1,
+      "from_value": "unknown",
+      "to_value": null
+    }
+  ],
+  "rows_affected": [
+    162,
+    271,
+    272,
+    273,
+    285,
+    299,
+    356
+  ],
+  "row_deltas": {
+    "rows_created": 0,
+    "rows_deleted": 0,
+    "rows_repaired": 7,
+    "fields_repaired": 13,
+    "rows_outside_target_changed": 0
+  },
+  "post_commit_verification": {
+    "row_count_still_691": true,
+    "every_repaired_field_equals_premerge": true,
+    "d299_deadline_date_preserved": true,
+    "d299_value": "2026-03-31",
+    "rows_outside_target_unchanged": true,
+    "no_prose_in_deadline_date": true,
+    "prose_deadline_rows_remaining": 0,
+    "no_unjustified_funding_period_unknown": true,
+    "funding_period_unknown_rows_remaining": 0,
+    "pragma_integrity_check": [
+      "ok"
+    ],
+    "before_vs_after_counts": {
+      "prose_deadline_date_rows": {
+        "before": 6,
+        "after": 0
+      },
+      "funding_period_unknown_rows": {
+        "before": 5,
+        "after": 0
+      },
+      "rows_total": {
+        "before": 691,
+        "after": 691
+      }
+    }
+  },
+  "db_162_verification": {
+    "coimbra_leakage_present_after_repair": false,
+    "row": {
+      "title": "University of Vienna Scholarships for International Students",
+      "official_source": "University of Vienna",
+      "country": "Austria",
+      "official_source_url": "https://studieren.univie.ac.at/en/scholarships",
+      "application_link": "https://studieren.univie.ac.at/en/scholarships",
+      "deadline_date": null,
+      "deadline_display": "Varies (typically March-May for winter semester)",
+      "deadline_precision": "varies",
+      "funding_period": null,
+      "funding": "Partially Funded"
+    },
+    "verification": [
+      "title remains 'University of Vienna Scholarships for International Students' - unchanged",
+      "official_source remains 'University of Vienna' - unchanged",
+      "country remains 'Austria' - unchanged",
+      "official_source_url remains https://studieren.univie.ac.at/en/scholarships - unchanged",
+      "deadline_date restored to NULL, the value proven identically by 3 pre-merge snapshots; the Coimbra string 'Varies by admission cycle (ongoing for enrolled students)' is GONE",
+      "funding_period restored to NULL (was the literal 'unknown')",
+      "deadline_display still holds the original Vienna text 'Varies (typically March-May for winter semester)' and was not touched",
+      "no 'uc.pt' and no 'Coimbra' string anywhere in the row"
+    ],
+    "residual_risk": "None. DB 162 now carries only Vienna data. The row's deadline information lives in deadline_display, exactly as it did before the merge."
+  },
+  "english_requirement_decision": {
+    "decision": "RESTORED_TO_NULL_IN_BOTH_CASES",
+    "rule_applied": "Restore the pre-merge value ONLY if the snapshots independently prove it; never invent a requirement.",
+    "db_285": {
+      "field": "english_requirement",
+      "value_removed": "English",
+      "restored_to": null,
+      "premerge_proven_by": "3/3 snapshots (pre_integrity_repair_20261005_143934.db, wave13_local.db, pre_wave13_master_20261004_201056.db) all return NULL",
+      "manual_review_required": false,
+      "rationale": "The snapshots independently prove the pre-merge value is NULL, so the merge's unverified 'English' was removed. No requirement was invented in either direction."
+    },
+    "db_299": {
+      "field": "english_requirement",
+      "value_removed": "English",
+      "restored_to": null,
+      "premerge_proven_by": "3/3 snapshots all return NULL",
+      "manual_review_required": false,
+      "rationale": "Same reasoning. FCT publishes calls bilingually, so 'English' was an unproven assertion planted into an empty field."
+    },
+    "note": "Because a value planted in an EMPTY field makes every future merge run skip that field (merge_execute.py:94), leaving 'English' in place would have made the contamination self-perpetuating. Removing it restores the field to a state a future, evidence-backed merge can legitimately populate."
+  },
+  "safe_keep": {
+    "db_id": 299,
+    "field": "deadline_date",
+    "value": "2026-03-31",
+    "action": "NOT TOUCHED",
+    "verified_still_present_after_repair": true,
+    "rationale": "The merge's only structurally valid ISO-8601 deadline write; agrees with the row's verified deadline_display and with a byte-identical official_source_url. Preserved as instructed."
+  },
+  "snapshot_evidence": {
+    "authoritative_pre_integrity": {
+      "file": "backend\\scholarzone.pre_integrity_repair_20261005_143934.db",
+      "row_count": 722,
+      "agrees_on_all_13_repair_fields": true
+    },
+    "corroborating_1": {
+      "file": "backend\\wave13_local.db",
+      "row_count": 722,
+      "agrees_on_all_13_repair_fields": true
+    },
+    "corroborating_2": {
+      "file": "backend\\scholarzone.pre_wave13_master_20261004_201056.db",
+      "row_count": 722,
+      "agrees_on_all_13_repair_fields": true
+    }
+  },
+  "safety_rules_upheld": [
+    "No whole-database restore. The snapshot was never copied over scholarzone.db.",
+    "No snapshot file was modified; all three were opened read-only via mode=ro&immutable=1.",
+    "No rows inserted. rows_created = 0.",
+    "No rows deleted. rows_deleted = 0.",
+    "No unrelated field altered; verified by per-row hash diff of all 691 rows before and after, excluding updated_at.",
+    "Research JSON files untouched.",
+    "Application code untouched (git status shows no modified backend or frontend file).",
+    "Frontend files untouched (the 5 pre-existing unstaged modifications are unchanged).",
+    "No other backup touched.",
+    "No git checkout/reset/pull/push/merge/commit.",
+    "No deployment.",
+    "Single transaction used; rollback was not needed and was never partially applied.",
+    "No value guessed: all 13 restored values are NULL proven by 3 independent snapshots.",
+    "Updates keyed by exact numeric DB id only, never by title/URL/provider."
+  ],
+  "tests": {
+    "targeted_data_path_suite": {
+      "files": [
+        "test_scholarships.py",
+        "test_programme_details.py",
+        "test_public_detail_visibility.py",
+        "test_quarantine_visibility.py",
+        "test_public_trust_visibility.py",
+        "test_public_verification_contract.py",
+        "test_retention_engine.py",
+        "test_retention_invariants.py",
+        "test_retention_dry_run_safety.py",
+        "test_retention_admin_review_protection.py",
+        "test_circular_and_deadline_semantics.py",
+        "test_list_column_repair.py",
+        "test_visibility_count_consistency.py"
+      ],
+      "result": "432 passed, 0 failed, 2 warnings",
+      "outcome": "PASS"
+    },
+    "full_suite_excluding_two_broken_collections": {
+      "excluded": {
+        "tests/test_supervisor_production_trigger.py": "ModuleNotFoundError: No module named 'yaml' (missing dependency in .venv_test)",
+        "tests/test_wave13_hardening.py": "ImportError: cannot import name 'assess_image_evidence' from app.services.image_validator (stale import)"
+      },
+      "result": "6397 passed, 108 failed, 2 skipped, 1 xfailed",
+      "outcome": "MIXED"
+    },
+    "pre_existing_failure_proof": {
+      "method": "The same 108 failing tests were re-run with SCHOLARZONE_DATABASE_URL pointed at the PRE-REPAIR safety copy of the database.",
+      "result": "108 failed, 277 passed",
+      "outcome": "IDENTICAL FAILURE SET",
+      "conclusion": "All 108 failures are pre-existing and independent of the Phase 3 repair. Confirmed by inspection: test_taxonomy.py greps app/data/*.py source for country = \"USA\"/\"UK\"; test_supervisor_personhood_gate.py (87 of the 108) exercises the pure-Python _looks_like_a_person_name() heuristic; test_test_isolation_boundary.py spawns nested pytest subprocesses. None reads a scholarship row.",
+      "failing_files": {
+        "tests/test_supervisor_personhood_gate.py": 87,
+        "tests/test_test_isolation_boundary.py": 11,
+        "tests/test_final_verification_audit.py": 4,
+        "tests/test_taxonomy.py": 2,
+        "tests/test_maintenance_slots.py": 2,
+        "tests/test_efficiency_safety.py": 1,
+        "tests/test_maintenance_dispatch_phase_b.py": 1
+      }
+    },
+    "note_on_side_effects": "The pytest runs performed for this phase are believed to be unrelated to the concurrent writer incident described in `concurrent_writer_incident`. That finding is material and is reported in full."
+  },
+  "audit_input": "research/premium_card/phase2_contamination_audit.json",
+  "concurrent_writer_incident": {
+    "headline": "Concurrent writer detected: repository files and the production DB changed during this session by a writer that is NOT the Phase 3 repair.",
+    "detected_at_utc": "2026-10-06T16:05:44.034175+00:00",
+    "db_integrity_of_my_repair": {
+      "all_13_repaired_fields_still_null": true,
+      "target_rows_touched_by_the_concurrent_writer": 0,
+      "evidence": "All 7 target rows still carry updated_at = 2026-10-05T14:39:34.* and none appears in the set of rows with updated_at >= 2026-10-06T14:47. Query 'SELECT COUNT(*) FROM scholarships WHERE id IN (162,271,272,273,285,299,356) AND updated_at >= 2026-10-06T14:47' returned 0.",
+      "db_row_count": 691,
+      "integrity_check": "ok",
+      "deadline_299_preserved": "2026-03-31",
+      "prose_deadline_rows": 0,
+      "funding_period_unknown_rows": 0,
+      "conclusion": "The Phase 3 repair is intact and was NOT affected by the concurrent activity."
+    },
+    "what_changed_that_was_not_this_repair": {
+      "database": {
+        "note": "backend/scholarzone.db mtime advanced to 2026-10-06 22:01:21 local, AFTER the repair commit at 22:07... correction: the repair COMMIT was 21:47:08 local; the later writes are separate.",
+        "file_sha256_at_repair_commit": "c9a969d24fbabbc3e15579616e700457a21dfc23d95f55be57ccb63527b9092d",
+        "file_sha256_now": "066f228cf27f660b0dc867fb483fe2dd56bee6f6cd65af7ad275881c3f0176b4",
+        "scholarship_rows_modified": 67,
+        "modified_row_ids_updated_at_window": "2026-10-06T15:39:03Z .. 2026-10-06T16:01:21Z  (21:39 .. 22:01 local)",
+        "fields_changed_on_those_rows": "updated_at, status, verification_status, verification_notes, official_source_url, official_details, applicant_utility, programme_verification",
+        "examples": [
+          "id 16 MSCA Postdoctoral Fellowships: status -> closed, verification_status -> outdated",
+          "id 50 ANU Chancellor's International Scholarship: status -> closed, verification_status -> quarantined",
+          "id 230 DAAD Helmut-Schmidt-Programme: status -> closed, official_source_url changed",
+          "id 288 BME Scholarships: verification_status -> conflicting",
+          "id 317-321 Chinese/Asian scholarship programmes: status -> closed, verification_status -> outdated"
+        ],
+        "scholarship_verification_history_rows_inserted": 61,
+        "verification_history_before": 662,
+        "verification_history_after": 723,
+        "inserted_rows_detail": {
+          "field_name": "bulk_official_fetch",
+          "change_type": "updated",
+          "new_value": "fetched_ok",
+          "created_at": "2026-10-06 15:39:03",
+          "sample_evidence_text": "bulk fetch fetched_ok audit=no_DB_deadline_must_extract_official_only_no_fake"
+        },
+        "none_of_the_7_repaired_rows_were_involved": true
+      },
+      "working_tree": {
+        "tracked_files_modified_before_this_phase": 5,
+        "tracked_files_modified_now": 23,
+        "newly_modified_frontend_files": 18,
+        "frontend_files": [
+          "frontend/index.html",
+          "frontend/package.json",
+          "frontend/src/App.css",
+          "frontend/src/index.css",
+          "frontend/src/main.jsx",
+          "frontend/src/theme.css",
+          "frontend/src/hooks/useScrollRegion.js",
+          "frontend/src/styles/tokens.css",
+          "frontend/src/styles/glass.css",
+          "frontend/src/styles/responsive.css",
+          "frontend/src/components/Layout.jsx",
+          "frontend/src/components/Navigation.jsx",
+          "frontend/src/components/Navigation.css",
+          "frontend/src/components/AppErrorBoundary.jsx",
+          "frontend/src/components/AppErrorBoundary.css",
+          "frontend/src/components/match/MatchCompare.jsx",
+          "frontend/src/components/dashboard/DeadlineWatch.jsx",
+          "frontend/src/pages/HomePage.css",
+          "frontend/src/pages/ComparePage.jsx",
+          "frontend/src/pages/ComparePage.css",
+          "frontend/src/pages/AdminPage.css"
+        ],
+        "production_build_ran": "frontend/dist/index.html and frontend/dist/assets/* rewritten at 22:00:54 local",
+        "backend_config_files_modified": "16 files under backend/config/country_intelligence/ (AT, AU, CA, CH, DE, FI, FR, GB, IE, IT, JP, NL, NZ, PL, SE, SG) at 21:51:35-36",
+        "git_diff_stat_frontend": "28 files changed, 1992 insertions(+), 1013 deletions(-)"
+      },
+      "attribution": {
+        "definitively_the_phase3_repair": false,
+        "evidence_against_pytest_being_the_cause": [
+          "No test module invokes npm, vite or any build - verified by grep across backend/tests.",
+          "The literal strings 'bulk_official_fetch', 'fetched_ok' and 'must_extract_official_only_no_fake' appear NOWHERE in the repository (searched all .py/.ps1/.bat/.sh/.md/.json, excluding node_modules and .git).",
+          "A production vite build ran at 22:00:54; no pytest module builds the frontend."
+        ],
+        "most_likely_cause": "A concurrent agent/session. Process inspection at the time showed a 'codex' process (started 20:53:26 local) plus multiple node (20:53:30, 20:53:32) and Code processes (20:53:21-27) already running, all started BEFORE Phase 3 began.",
+        "confidence": "MEDIUM-HIGH that a concurrent writer is responsible; the exact process is not proven."
+      },
+      "relationship_to_the_test_run": {
+        "targeted_432_test_suite": "ran 21:36-21:38 local; the earliest frontend change is 21:45:16 and the earliest DB write 21:39:03",
+        "conclusion": "The pytest runs are NOT the source of either the frontend edits, the dist build, the config writes, or the 61 verification_history inserts."
+      },
+      "explicit_honesty_note": "Running the test suite was part of the instructed Phase 3 verification. I initially attributed the post-repair file change to the suite; on investigation that attribution is not supported by the evidence. The write happened, it is real, and it is not attributable to the Phase 3 repair, which remains intact and fully verified."
+    },
+    "required_follow_up_for_the_user": [
+      "Do NOT trust the current working tree as a clean baseline: 18 extra frontend files are modified and frontend/dist has been rebuilt by a writer other than this session.",
+      "The 5 originally-reported unstaged frontend modifications (ScholarshipCard.css/.jsx, ScholarshipList.css/.jsx, ScholarshipDetailsPage.jsx) are still present and are mixed into the same files, so 'git checkout -- frontend' would destroy the user's own uncommitted work. No restore was performed for this reason.",
+      "The production DB now carries 67 rows re-verified by an unidentified writer plus 61 verification_history audit rows. Decide whether to roll those back using the pre-repair safety copy, which is deliberately NOT to be restored wholesale (it predates the 31-row retention deletion).",
+      "Any future 'run the tests' instruction on this repository should be treated as potentially non-hermetic until the concurrent writer is stopped."
+    ],
+    "safety_copy_available": {
+      "path": "C:\\Users\\GopaL\\AppData\\Local\\Temp\\opencode\\scholarzone.PRE-PHASE3-REPAIR.db",
+      "state": "exact pre-repair byte copy of backend/scholarzone.db",
+      "warning": "It is 691 rows and predates nothing; it is a valid rollback point for THIS session only. It must not be copied over the live database wholesale because the retention engine's 31 deletions are not represented in the older 722-row snapshots."
+    }
+  }
+}

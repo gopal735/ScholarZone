@@ -1,0 +1,21 @@
+{
+  "agent_id": "w3_32",
+  "shard": "w3-32",
+  "host": "international.colostate.edu",
+  "today": "2026-10-04",
+  "logo_override": {
+    "url": "https://international.colostate.edu/wp-content/uploads/2019/12/ramhead.png",
+    "page_url": "https://international.colostate.edu/",
+    "official_host": true,
+    "alt_text": "Colorado State University",
+    "validation_result": "verified",
+    "validation_detail": "png 512x512, probed via webfetch -> 'Image fetched successfully' (HTTP 200 + image content type); the CSU ram-head crest in full colour - dark CSU green disc (#1e4d2b) inside a CSU gold ring (#c8c372) - on an opaque field, so it reads clearly on a light card",
+    "image_kind": "official_university",
+    "image_format": "png",
+    "verified_at": "2026-10-04T00:00:00+00:00",
+    "host_evidence": "same_registrable_domain",
+    "_award": "Organization of American States (OAS) Scholarship at Colorado State University"
+  },
+  "target_ids": [636],
+  "notes": "Awarding body for this record is Colorado State University's International Enrollment Center, which administers the OAS Scholarship at CSU, so the CSU mark is the correct one; the OAS's own logo lives on oas.org, a different registrable domain, so rule 1 puts it out of scope and the co-brand partner is deliberately not used. Rule 3 is what shaped the answer. Every horizontal CSU wordmark I could find is white-on-transparent: the shard host's own theme logos /wp-content/themes/international-programs/inc/logos/csu-linear.svg, csu-stacked.svg and csu-mobile.svg all define the lettering as fill #FFFFFF (only the ram disc is colour), as do the parent domain's /wp-content/themes/hello-csu/assets/img/csu-full.svg, csu-full-stacked.svg (both fill=\"#fefefe\") and static.colostate.edu/logo/reslogo-v2/assets/img/csu-responsive-symbol.min.svg (.cls-1/.cls-4/.cls-5/.cls-6 all fill #fff) - they are built for the dark CSU-green header. The only dark file is .../hello-csu/assets/img/csu-logo-vertical.svg (fill #1e4d2b), but its viewBox is 0 0 16 295: I rendered it and it is the wordmark rotated 90 degrees to run down a narrow sidebar, which is unusable as a card logo. So I took the crest instead. The shard host publishes the CSU ram-head crest in wp-content/uploads/2019/12/ as ramhead.png plus the cropped ramhead-32x32/180x180/192x192/270x270 favicon and apple-touch-icon set; I probed ramhead.png and cropped-ramhead-270x270.png (both 200 + image content type) and chose the uncropped 512x512 original as the highest-resolution copy of the same crest. Note this is the crest device itself - identical artwork to the ram group inside the official csu-full.svg - served from the awarding body's own host, not a third-party or social asset."
+}

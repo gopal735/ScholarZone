@@ -1,0 +1,21 @@
+{
+  "agent_id": "w3_26",
+  "shard": "w3-26",
+  "host": "globalhealth.unc.edu",
+  "today": "2026-10-04",
+  "logo_override": {
+    "url": "https://globalhealth.unc.edu/wp-content/uploads/sites/1109/2020/03/Institute-for-Global-Health-and-Infectious-Diseases_logo_rgb_h.png",
+    "page_url": "https://globalhealth.unc.edu/ujmt-fogarty-global-health-fellowship-2",
+    "official_host": true,
+    "alt_text": "UNC School of Medicine - Institute for Global Health and Infectious Diseases",
+    "validation_result": "verified",
+    "validation_detail": "png, probed via webfetch -> 'Image fetched successfully' (HTTP 200 + image content type); full-colour horizontal institutional lockup - UNC dome-and-columns mark, rule, 'School of Medicine' and 'Institute for Global Health and Infectious Diseases', all in Carolina blue on transparent, so dark on a light card",
+    "image_kind": "official_logo",
+    "image_format": "png",
+    "verified_at": "2026-10-04T00:00:00+00:00",
+    "host_evidence": "same_registrable_domain",
+    "_award": "UJMT LAUNCH: Building Research Capacity through Mentored Training (UJMT Fogarty Global Health Fellowship) - 2027-2028 cohort"
+  },
+  "target_ids": [534],
+  "notes": "Awarding body is UNC's Institute for Global Health and Infectious Diseases, so the IGHD institutional mark is correct. Do not trust this site's Yoast JSON-LD: its Organization node advertises logo 'institute-logo-wide-blue.png' (939x157) and that URL is a hard HTTP 404 - stale metadata. The homepage's own visible IGHD logo, WHITE-IGHIDLOGO-1.png, probed 200 but renders as pure white-on-transparent, i.e. blank on a light card, which is exactly the rule 3 failure the brief tells me to hunt past. So I queried the site's own WordPress media API (/wp-json/wp/v2/media?search=logo, a read-only on-domain discovery route) and read the full list of 38 logo assets, then probed the two real institutional candidates. Chose Institute-for-Global-Health-and-Infectious-Diseases_logo_rgb_h.png: the canonical '_logo_rgb_h' full-colour horizontal lockup in Carolina blue. Also probed and acceptable but not chosen: IGHID-logo-horizontal.png (2023/07, same lockup with a paler UNC wordmark and heavier condensed type), institute-unc-logo-square-blue.png and IGHID.png (2022/08, square/stacked variants). The media library also holds 17-5076-GID-UJMT-Fogarty-Global-Health-Fellowship-Program-Logo_mint_rgb-1.png, the UJMT/Fogarty programme lockup - deliberately NOT used, because rule 2 wants the awarding body's own mark and that lockup is a multi-party co-brand (UJMT consortium plus NIH Fogarty) rather than the awarding institution."
+}

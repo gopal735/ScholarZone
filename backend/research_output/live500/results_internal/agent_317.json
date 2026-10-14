@@ -1,0 +1,127 @@
+{
+  "agent": "agent_317",
+  "records": [
+    {
+      "id": 706,
+      "official": {
+        "official_source_urls": [
+          "https://www.hec.gov.pk/english/scholarshipsgrants/pshecp/aiss/Pages/default.aspx",
+          "https://www.hec.gov.pk/english/scholarshipsgrants/pshecp/Pages/default.aspx"
+        ],
+        "application_link": "https://www.hec.gov.pk/english/scholarshipsgrants/pshecp/aiss/Pages/default.aspx",
+        "catalogue_url": "https://www.hec.gov.pk/english/scholarshipsgrants/pshecp/Pages/default.aspx",
+        "official_updates_url": "https://www.hec.gov.pk/english/scholarshipsgrants/pshecp/Pages/Contact-Us.aspx",
+        "deadline_central": null,
+        "deadline_central_display": null,
+        "deadline_note": "The catalogue records that the last round's online applications closed on 5 July 2026 after an extension; the page itself could not be re-read on 2026-10-10, so the next window's date is unconfirmed.",
+        "application_cycle": null,
+        "status": null,
+        "status_note": "hec.gov.pk returned transport errors on every attempt on 2026-10-10, so the live status could not be confirmed; the catalogue records the 2026 round as having closed on 5 July 2026 after an extension, with the next window expected on the same annual pattern.",
+        "tuition_coverage_note": "Could not be re-read live on 2026-10-10. The catalogue's earlier record of the HEC page states full programme tuition, an accommodation allowance, a study allowance, a books allowance and a one-time return air ticket, with HEC describing 800 of the 1,000 places as fully funded and 200 as partially funded.",
+        "funding_amount": null,
+        "funding_currency": null,
+        "funding_period": null,
+        "tuition_coverage": true,
+        "living_cost_coverage": true,
+        "travel_coverage": true,
+        "fully_funded": true,
+        "benefits": [
+          "Full tuition fee for the programme in Pakistan",
+          "Accommodation allowance",
+          "Study allowance",
+          "Books allowance",
+          "One-time return air ticket"
+        ],
+        "eligibility": [
+          "Sri Lankan national",
+          "Applying to an undergraduate, postgraduate or doctoral programme in Engineering Science, Basic and Natural Sciences, or Social Sciences",
+          "Applying to a top-ranked Pakistani university",
+          "Women candidates are highly encouraged to apply"
+        ],
+        "requirements": [
+          "Submit an online application within the published window",
+          "Meet the admission requirements of the chosen Pakistani university",
+          "Select a discipline in Engineering Science, Basic and Natural Sciences, or Social Sciences"
+        ],
+        "documents": null,
+        "selection_criteria": [
+          "Admission to a top-ranked Pakistani university in one of the three eligible discipline groups",
+          "HEC frames selection around candidates who will learn about Pakistani society and values, acquire leadership skills and help educate fellow students and community groups about Sri Lankan culture"
+        ],
+        "coverage": [
+          "Full tuition fee of the programme",
+          "Accommodation allowance",
+          "Study allowance",
+          "Books allowance",
+          "One-time return air ticket"
+        ],
+        "application_method": [
+          "Apply online through the Higher Education Commission's portal for the advertised cycle",
+          "Contact the programme desk at info.paksl@hec.gov.pk for queries"
+        ],
+        "application_route": "Online through HEC's portal for the advertised cycle of the Pak-Sri Lanka Higher Education Cooperation Programme.",
+        "study_mode": null,
+        "citizenship_residency": "Sri Lankan nationals",
+        "international_eligibility": "Open to Sri Lankan nationals for study at Pakistani universities",
+        "subject_or_agency_requirement": "Engineering Science, Basic and Natural Sciences, or Social Sciences at a top-ranked Pakistani university",
+        "research_requirement": null,
+        "duration": null,
+        "description": "The Allama Iqbal Scholarships for Srilankan Students are the student component of the Government of Pakistan's Pak-Sri Lanka Higher Education Cooperation Programme, run by HEC with the Pakistan High Commission in Colombo, under which 1,000 places for undergraduate, postgraduate and doctoral study are spread over five years.",
+        "region": "Asia",
+        "program_type": "Government scholarship",
+        "english_requirement": null
+      },
+      "verification": {
+        "source_citations": [
+          "https://www.hec.gov.pk/english/scholarshipsgrants/pshecp/aiss/Pages/default.aspx",
+          "https://www.hec.gov.pk/english/scholarshipsgrants/pshecp/Pages/default.aspx"
+        ],
+        "last_verified_date": "2026-10-10",
+        "verification_status": "unverified",
+        "confidence": "low",
+        "not_confirmed": [
+          "funding_amount",
+          "funding_currency",
+          "funding_period",
+          "deadline_central",
+          "application_cycle",
+          "status",
+          "english_requirement",
+          "duration",
+          "study_mode",
+          "documents",
+          "live wording of benefits, coverage and selection criteria"
+        ],
+        "notes": "hec.gov.pk was unreachable from the research environment on 2026-10-10 (repeated transport errors on https and http, including the site root) and the web-search provider was unavailable, so nothing could be re-verified live; fields are carried from the catalogue's earlier record of HEC's own pages. fully_funded is retained as true because that record states full tuition plus accommodation, study and books allowances and a return air ticket, but note HEC describes only 800 of the 1,000 places as fully funded, with 200 partially funded, and no monetary value is published."
+      },
+      "applicant_utility": {
+        "summary": "This scheme sends Sri Lankan undergraduates, postgraduates and doctoral candidates to top-ranked Pakistani universities in Engineering Science, Basic and Natural Sciences, or Social Sciences, and it is worth preparing for only if your intended degree sits inside those three discipline groups. One thing to plan around: HEC describes the programme as 1,000 places over five years, of which 800 are fully funded and 200 are only partially funded, so a successful application does not guarantee the complete package. Because the last round closed in July 2026 and HEC announces the window on its own portal, the practical move is to have your university admission documents ready before the next notice appears rather than waiting for it. Women applicants are explicitly encouraged, so do not treat that as a reason to self-select out.",
+        "best_fit": "Sri Lankan nationals who want a degree in engineering, basic or natural sciences, or social sciences at a Pakistani university and can move when the annual window opens.",
+        "application_readiness_checklist": [
+          "Confirm your intended degree falls in Engineering Science, Basic and Natural Sciences, or Social Sciences before doing anything else",
+          "Shortlist top-ranked Pakistani universities in your discipline and check each one's own admission requirements, since meeting them is part of eligibility",
+          "Prepare academic transcripts, degree certificates and your passport in advance, because the window historically closes within weeks of opening",
+          "Check the HEC Pak-Sri Lanka programme pages and the info.paksl@hec.gov.pk desk address for the next round's announcement",
+          "If you are a woman applicant, note that HEC explicitly encourages applications from women"
+        ],
+        "common_rejection_risks": [
+          "Choosing a discipline outside the three eligible groups, which disqualifies the application regardless of grades",
+          "Failing to meet the admission requirements of the chosen Pakistani university, which is a separate hurdle from the scholarship",
+          "Missing the online window entirely, since the previous round closed in July 2026 after an extension and offers are tied to that window",
+          "Assuming a fully funded package when 200 of the 1,000 places are described as partially funded"
+        ],
+        "estimated_uncovered_costs": "HEC publishes no monetary value for the allowances, so the size of the accommodation, study and books allowances cannot be checked against living costs in Pakistan. Applicants should budget for personal spending, visa and documentation costs, and any travel beyond the single one-time return air ticket.",
+        "document_audit": [
+          "Academic documents must satisfy both HEC and the specific Pakistani university, so mismatched transcripts or missing degree certificates stall the application at the admission stage",
+          "The page read did not publish a document list, so confirm the required uploads with the programme desk at info.paksl@hec.gov.pk before the window opens"
+        ],
+        "alerts": [
+          "The scheme runs as an annual round with a short window; the previous round closed on 5 July 2026 after an extension",
+          "Only 800 of the 1,000 places are described as fully funded, so ask which stream your offer falls into before accepting",
+          "hec.gov.pk was unreachable on 2026-10-10, so treat all figures here as unconfirmed until you can open the HEC page yourself"
+        ],
+        "submission_workflow": "Watch for HEC's advertised cycle, apply online through the HEC portal within the window, and route queries to the programme desk at info.paksl@hec.gov.pk while the application is assessed."
+      }
+    }
+  ]
+}

@@ -1,0 +1,269 @@
+{
+  "agent": {
+    "agent_id": "agent_358",
+    "batch": "r2_05",
+    "researched_at": "2026-10-10T18:58:20Z",
+    "research_mode": "LIVE",
+    "coverage": 2
+  },
+  "id": 310,
+  "records": [
+    {
+      "id": 310,
+      "identity": {
+        "name": "Canada Postdoctoral Research Award Program",
+        "awarding_body": "Social Sciences and Humanities Research Council (SSHRC/CRSH)",
+        "issuing_authority": "Social Sciences and Humanities Research Council of Canada",
+        "official_source_urls": [
+          "https://sshrc-crsh.canada.ca/en/funding/opportunities/canada-postdoctoral-research-award-program.aspx"
+        ],
+        "application_link": "https://sshrc-crsh.canada.ca/en/funding/opportunities/canada-postdoctoral-research-award-program/application.aspx",
+        "catalogue_url": "https://sshrc-crsh.canada.ca/en/funding-opportunities/",
+        "official_updates_url": "https://sshrc-crsh.canada.ca/en/funding/opportunities/canada-postdoctoral-research-award-program/updates-and-changes.aspx",
+        "status": "closed",
+        "verifiable_urls": [
+          {
+            "url": "https://sshrc-crsh.canada.ca/en/funding/opportunities/canada-postdoctoral-research-award-program.aspx",
+            "publisher": "Social Sciences and Humanities Research Council (SSHRC/CRSH)",
+            "kind": "programme notice"
+          }
+        ]
+      },
+      "description": "The Canada Postdoctoral Research Award (CPRA) Program is SSHRC's investment in the most promising emerging scholars in Canada and around the world, made through a competitive award of $70,000 per year for two years. The award is held with a sponsoring institution, includes supplementary funding options such as the CGRS-Priegi-Stipend, the Canada Graduate Scholarships-Doctoral supplemental award and the Michael Smith Foreign Study Supplement, and provides the funding and flexibility needed to support fellows' contributions to building world-class research capacity.",
+      "official": {
+        "program_type": "Postdoctoral fellowship",
+        "eligibility": [
+          "A promising emerging scholar holding a PhD or equivalent, in Canada or abroad",
+          "Application held with a sponsoring institution in Canada",
+          "Academic discipline must fall within one of SSHRC's three funding areas: Insight, Connection and Talent"
+        ],
+        "benefits": [
+          "$70,000 per year for 2 years",
+          "Supplements: CGRS-Priegi-Stipend, Canada Graduate Scholarships-Doctoral supplemental award, Michael Smith Foreign Study Supplement",
+          "Supplementary funding from other Tri-agency programmes is not permitted (see programme page for details)"
+        ],
+        "selection_criteria": [
+          "Research capacity and excellence of the applicant's research programme",
+          "Annual institutional commitment and nomination"
+        ],
+        "application_process": "Applications are submitted through SSHRC's online system and require a letter of appraisal from a referee, a research appraisal from the supervisor, an institutional nomination and commitment form, plus the applicant's form. The indicative date the call opens is in early July, and the indicative deadline is in early September.",
+        "duration": "2 years",
+        "key_dates": [
+          "Indicative application opening: early July",
+          "Indicative deadline: the 10th day of September (the previous competition closed 8:00 p.m. Eastern Time on September 10, 2026)",
+          "Previous competition: deadline was 8:00 p.m. Eastern Time on September 11, 2025"
+        ]
+      },
+      "verification": {
+        "confidence": "high",
+        "deadlines": [
+          {
+            "label": "Previous competition deadline (reference)",
+            "date": "2026-09-10",
+            "date_display": "8:00 p.m. Eastern Time, 10 September 2026",
+            "note": "The 2025 competition deadline was 8:00 p.m. Eastern Time on September 11, 2025. The 2026 competition closed on 10 September 2026. SSHRC publishes only the month ('the 10th day of September'), so this is a reference date, not a currently open cycle."
+          }
+        ],
+        "deadline_central": null,
+        "deadline_display": null,
+        "deadline_note": "No new cycle date is published after the 10 September 2026 competition closed. The last published deadline was 8:00 p.m. Eastern Time on 10 September 2026 (the year before it was 8:00 p.m. Eastern Time on September 11, 2025).",
+        "application_cycle": "Annual; the 2026 competition closed on 10 September 2026 and no next-cycle date has been published.",
+        "funding_amount": 70000,
+        "funding_currency": "CAD",
+        "funding_period": "per year",
+        "tuition_coverage_note": "Not stated. The programme page describes the award as funding and flexibility for research; it does not say tuition is covered.",
+        "living_cost_coverage": null,
+        "travel_coverage": null,
+        "tuition_coverage": null,
+        "fully_funded": false,
+        "english_requirement": null,
+        "status_note": "Status computed at research time (10 October 2026). The September 2026 competition deadline has passed and no next-cycle date is published, so the programme is marked CLOSED.",
+        "source_citations": [
+          {
+            "url": "https://sshrc-crsh.canada.ca/en/funding/opportunities/canada-postdoctoral-research-award-program.aspx",
+            "claim": "The CPRA Program provides a competitive award of $70,000 per year for 2 years, includes the CGRS-Priegi-Stipend, CGS-D supplemental award and Michael Smith Foreign Study Supplement, and publishes the deadline as the 10th day of September (previous competition: 8:00 p.m. Eastern Time on September 10, 2026; the cycle before: September 11, 2025).",
+            "retrieved_at": "2026-10-10T18:58:20Z"
+          }
+        ],
+        "not_confirmed": [
+          "Tuition, living cost and travel coverage - the programme page does not state what the $70,000 per year covers",
+          "Score minimums - not published on the programme page (see the Funding Regulations and Competitiveness Guidance)",
+          "Deadline for the next competition - not published at research time"
+        ],
+        "documents": [
+          "Applicant's SSHRC online form",
+          "Letter of appraisal from a referee",
+          "Research appraisal from the supervisor",
+          "Institutional nomination and commitment form"
+        ]
+      },
+      "applicant_utility": {
+        "description": "The CPRA is a $70,000-per-year, two-year award, and the single largest constraint in your calendar is that the deadline is the 10th day of September at 8:00 p.m. Eastern Time - a date that has already passed for 2026. Your institutional supervisor and the administration office are part of your application file, not observers, so start building both long before the call opens in early July.",
+        "eligibility_tips": [
+          "The discipline requirement is not just thematic: your doctoral degree must be in a field supported by one of SSHRC's three funding areas (Insight, Connection, Talent). Check before you contact potential supervisors.",
+          "Because the award is held with a sponsoring institution, choose the host university and supervisor first; the institutional nomination and commitment form is a required part of your file."
+        ],
+        "application_tips": [
+          "Assemble the two referees early. The referee writes a letter of appraisal and your supervisor writes a research appraisal; missing either makes the file incomplete at the deadline.",
+          "Security awareness: protect the login credentials of your SSHRC account and handle account recovery through SSHRC directly. The programme's security notices remind applicants that SSHRC will never ask for your password.",
+          "Supplement options such as the CGRS-Priegi-Stipend and the Michael Smith Foreign Study Supplement change the total value of an award, so model the funding you will actually receive before signing a research budget.",
+          "Do not stack Tri-agency supplementary funding: the programme page states that supplementary funding from other Tri-agency programmes is not permitted, which is easy to violate by accident if you hold other grants."
+        ],
+        "documents": [
+          "Applicant's online form completed in SSHRC's system",
+          "Letter of appraisal from a referee",
+          "Research appraisal from the supervisor",
+          "Institutional nomination and commitment form"
+        ],
+        "mistakes_to_avoid": [
+          "Applying to a discipline outside SSHRC's scope (Insight, Connection, Talent) - it will be screened out.",
+          "Waiting for the institutional nomination: it is a required document inside your file, so negotiate it with the host university before you build the rest of the application.",
+          "Assuming a rolling deadline - the competition closes on the 10th day of September, once a year.",
+          "Combining Tri-agency supplementary funding with this award."
+        ],
+        "deadline_notes": "The next cycle opens indicatively in early July with a deadline on the 10th day of September (8:00 p.m. Eastern Time). The 2026 cycle closed on 10 September 2026, so use the intervening months to secure the supervisor letter and institutional nomination rather than to write the application from scratch."
+      }
+    },
+    {
+      "id": 311,
+      "identity": {
+        "name": "Short-Term Exchange Award - Studying in Canada",
+        "awarding_body": "Global Affairs Canada / IRCC",
+        "issuing_authority": "Global Affairs Canada (EduCanada) and Immigration, Refugees and Citizenship Canada",
+        "official_source_urls": [
+          "https://www.educanada.ca/scholarships-bourses/can/institutions/seed-bpeed.aspx?lang=eng"
+        ],
+        "application_link": "https://www.educanada.ca/scholarships-bourses/can/institutions/seed-bpeed.aspx?lang=eng",
+        "catalogue_url": "https://www.educanada.ca/scholarships-bourses/index.aspx?lang=eng",
+        "official_updates_url": "https://www.educanada.ca/scholarships-bourses/can/institutions/seed-bpeed.aspx?lang=eng",
+        "status": "closed",
+        "verifiable_urls": [
+          {
+            "url": "https://www.educanada.ca/scholarships-bourses/can/institutions/seed-bpeed.aspx?lang=eng",
+            "publisher": "Global Affairs Canada / EduCanada",
+            "kind": "programme page"
+          }
+        ]
+      },
+      "description": "The Short-Term Exchange Award for studying in Canada (SEED-2) finances an academic semester at a Canadian institution for undergraduate and graduate students from the eligible countries and territories listed in Annex I. Canadian host institutions must charge no tuition fees to award holders, while the award itself covers visa fees, airfare, ground transport, living expenses such as accommodation, utilities and food, health insurance, and books and supplies required for the study programme, excluding computers and other equipment. Award values depend on the level and length of the exchange, and recipients must arrive in Canada between 1 August 2026 and 1 February 2027.",
+      "official": {
+        "program_type": "International exchange scholarship",
+        "eligibility": [
+          "Citizen of an eligible country or territory listed in Annex I of the programme page",
+          "Enrolled full time at a post-secondary institution abroad and in good academic standing during both application and the exchange",
+          "New bachelor's applicants must be 18 years of age or older on arrival in Canada",
+          "Applicants must be in Canada for the full length of the award and complete all missed work or obtain a leave of absence from their home institution",
+          "Canadian passport holders, dual citizens of Canada, and applicants already present in Canada are not eligible"
+        ],
+        "benefits": [
+          "$10,200 CAD for a 4-month college or undergraduate exchange",
+          "$15,900 CAD for an 8-month college or undergraduate exchange",
+          "$10,200 CAD for a 4-month graduate exchange",
+          "$12,700 CAD for a 5-6 month graduate exchange",
+          "No tuition fees charged by the Canadian host institution",
+          "Living expenses including accommodation, utilities and food",
+          "Ground transport in Canada and airfare via the most direct and economical route",
+          "Health insurance",
+          "Books, supplies and equipment, a computer not included",
+          "Visa application fees and study permit fees",
+          "Ground transport, books and supplies, and personal effects are covered only up to the limits published on the programme page"
+        ],
+        "selection_criteria": [
+          "Written statement of interest and motivation",
+          "Academic performance and research proposal quality",
+          "Letter of support from the home institution and a strong academic transcript",
+          "Motivation and commitment to return, and clear objectives for the benefit of the home country"
+        ],
+        "application_process": "The online application opens in January, and applications must be submitted through the Global Affairs Canada portal by the published deadline (the previous cycle closed at 11:59 p.m. EDT on March 24, 2026). Applicants must place their home institution's international office or academic adviser as a cryptographic signatory. Required documents include the recommendation letter, most recent transcript, Canada itinerary and parental consent form where applicable. Applicants receive an admission decision from their host institution and Global Affairs Canada separately.",
+        "duration": "One semester (4 to 8 months)",
+        "key_dates": [
+          "Application opening: January",
+          "Previous cycle deadline: 11:59 p.m. EDT on March 24, 2026",
+          "Previous cycle application period: 2026-27 (closed)",
+          "Arrival window for the previous cycle: 1 August 2026 to 1 February 2027"
+        ]
+      },
+      "verification": {
+        "confidence": "high",
+        "deadlines": [
+          {
+            "label": "Previous cycle deadline",
+            "date": "2026-03-24",
+            "date_display": "11:59 p.m. EDT, 24 March 2026",
+            "note": "The 2026-27 application period is closed; no next-cycle date is published on the programme page at research time."
+          }
+        ],
+        "deadline_central": null,
+        "deadline_display": null,
+        "deadline_note": "No date published for a new cycle. The previous application period was 2026-27 and closed on 24 March 2026.",
+        "application_cycle": "Annual cycle; the 2026-27 application period is closed. Applications open in January.",
+        "funding_amount": null,
+        "funding_currency": "CAD",
+        "funding_period": null,
+        "tuition_coverage_note": "Tuition fees are charged by the host institution, not covered by the scholarship: Canadian host institutions must charge no tuition fees to SEED-2 award holders, so the cost of tuition is effectively removed for the exchange.",
+        "living_cost_coverage": true,
+        "travel_coverage": true,
+        "tuition_coverage": true,
+        "fully_funded": true,
+        "english_requirement": null,
+        "status_note": "Status computed at research time (10 October 2026). The programme page states the 2026-27 application period is closed, so the programme is marked CLOSED.",
+        "source_citations": [
+          {
+            "url": "https://www.educanada.ca/scholarships-bourses/can/institutions/seed-bpeed.aspx?lang=eng",
+            "claim": "Award components by level and duration (4-month, 8-month, 5-6 month), eligible expenses (visa fees, airfare, ground transport, living expenses, health insurance, books and supplies), arrival window of 1 August 2026 to 1 February 2027, application deadline of 11:59 p.m. EDT on March 24, 2026, and the statement that the 2026-27 application period is closed.",
+            "retrieved_at": "2026-10-10T18:58:20Z"
+          }
+        ],
+        "not_confirmed": [
+          "funding_amount - the official page publishes four separate component values ($10,200, $10,200, $12,700 and $15,900 CAD) by level and duration rather than a single award figure, so no single number is recorded",
+          "funding_period - the programme is defined by undergraduate/college and graduate levels and by 4-month, 5-6 month and 8-month durations, not by a single period",
+          "English language requirement - not published on the programme page",
+          "Next cycle deadline - not published at research time"
+        ],
+        "documents": [
+          "Letter of recommendation addressed to Global Affairs Canada",
+          "Most recent transcript",
+          "Written statement of interest and research proposal",
+          "Letter of support from the home institution",
+          "Canada itinerary",
+          "Parental consent form (where applicable)",
+          "Passport"
+        ]
+      },
+      "applicant_utility": {
+        "description": "SEED-2 is a highly specific exchange award, not a general scholarship: the amount you receive is fixed by your level and the length of your exchange, not by your academic record. Undergraduate and college students get $10,200 for a four-month exchange or $15,900 for an eight-month exchange, while graduate students get $10,200 for four months or $12,700 for five to six months - so the graduate values can be lower than the undergraduate ones, and choosing an eight-month semester is worth $5,700 more to an undergraduate.",
+        "eligibility_tips": [
+          "Confirm your nationality is on the Annex I list before doing anything else; the list of eligible countries and territories is the first hard filter, and Canadian citizens and dual citizens are excluded.",
+          "You must be in Canada for the entire length of the award, and you must return to your home institution afterwards - plan the semester so that you can make up the work you miss at home or obtain a formal leave of absence.",
+          "New bachelor's applicants must be at least 18 years old when they arrive in Canada, so check your age against the arrival window (1 August 2026 to 1 February 2027 for the closed cycle)."
+        ],
+        "application_tips": [
+          "Apply through January-March: the application opens in January and closes on 24 March at 11:59 p.m. EDT, so have your transcript and your letter of recommendation ready before the portal opens.",
+          "Make sure your home institution's international office or academic adviser is registered in the system as the cryptographic signatory for your application, because the platform requires that designated signatory to validate it.",
+          "Decide the length of your exchange before you apply, because the award value changes with it: an eight-month undergraduate exchange pays $15,900 versus $10,200 for four months.",
+          "Submit your Canada itinerary with the application. The host institution's admission decision and Global Affairs Canada's funding decision arrive separately, and both must be in place before you travel.",
+          "Budget for what the award excludes: computers and other equipment are not covered, and living expenses, transport, books and personal effects are reimbursed only within the published limits.",
+          "Health insurance is included, but you must respect the programme's conditions, including abstaining from clinical training and professional activity, and the commitment to return to your home institution."
+        ],
+        "documents": [
+          "Online application in the Global Affairs Canada portal",
+          "Letter of recommendation addressed to Global Affairs Canada",
+          "Most recent transcript",
+          "Written statement of interest and research proposal",
+          "Letter of support from the home institution",
+          "Canada itinerary",
+          "Parental consent form (where applicable)",
+          "Passport"
+        ],
+        "mistakes_to_avoid": [
+          "Assuming the graduate values are always higher than undergraduate ones - a graduate 5-6 month exchange pays $12,700 while an undergraduate 8-month exchange pays $15,900.",
+          "Choosing an exchange length that ends outside the published arrival window (1 August 2026 to 1 February 2027 for the last cycle).",
+          "Forgetting the cryptographic signatory from your home institution, which is a technical requirement of the platform and not a courtesy recommendation.",
+          "Applying as a Canadian passport holder or dual citizen, or while already in Canada.",
+          "Using the award for clinical training or professional work, which the programme conditions prohibit."
+        ],
+        "deadline_notes": "The 2026-27 application period is closed. Applications open in January and the deadline is 24 March, so watch the EduCanada page from December. Arrival must fall in the window published for that cycle (1 August 2026 to 1 February 2027 for the last one)."
+      }
+    }
+  ]
+}

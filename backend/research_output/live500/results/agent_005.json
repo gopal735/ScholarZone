@@ -1,0 +1,274 @@
+{
+  "agent": "agent_005",
+  "records": [
+    {
+      "id": 33,
+      "official": {
+        "official_source_urls": [
+          "https://www.campuschina.org",
+          "https://be.china-embassy.gov.cn/sghd/202511/P020251111863531034311.pdf",
+          "https://ee.china-embassy.gov.cn/eng/tzygg/202511/t20251108_11749274.htm"
+        ],
+        "application_link": "https://www.campuschina.org",
+        "catalogue_url": null,
+        "official_updates_url": null,
+        "deadline_central": "2026-02-20",
+        "deadline_central_display": "20 February 2026 (2026/2027 cycle; each dispatching authority sets its own date)",
+        "deadline_note": "Deadlines are set per dispatching authority, not centrally: for the 2026/2027 round they were 8 February 2026 (Estonia), 16 February 2026 (USA) and 20 February 2026 (Belgium), with the embassy reviewing and forwarding applications to CSC afterwards.",
+        "application_cycle": "2026/2027 (applications November 2025 to February 2026; September 2026 enrolment)",
+        "status": "CLOSED",
+        "status_note": "The 2026/2027 round closed on the authority-specific February 2026 deadlines and results were published in the system in July-August 2026; the China Scholarship Council typically opens the next cycle on campuschina.org/CGSIS each November.",
+        "tuition_coverage_note": "The official application guide lists 'Tuition fees' first under Scholarship Coverage, i.e. tuition is waived in full for CGS recipients.",
+        "funding_amount": 3000,
+        "funding_currency": "CNY",
+        "funding_period": "per month (CNY 2,500-3,500 by study level)",
+        "tuition_coverage": true,
+        "living_cost_coverage": true,
+        "travel_coverage": false,
+        "fully_funded": true,
+        "benefits": [
+          "Tuition fees",
+          "Free university dormitory or accommodation subsidy",
+          "Monthly stipend: undergraduates CNY 2,500 per month; master's students/general scholars CNY 3,000 per month; doctoral students/senior scholars CNY 3,500 per month",
+          "Comprehensive medical insurance: CNY 800 per person per year (CNY 400 per person for programmes lasting less than six months)",
+          "Full scholarship under the official embassy wording, 'Does not include international travel expenses'"
+        ],
+        "eligibility": [
+          "Be a citizen of a country other than the People's Republic of China, and be in good health both mentally and physically",
+          "Bachelor programmes: high school graduate, under the age of 25",
+          "Master's programmes: bachelor's degree holder, under the age of 35",
+          "Doctoral programmes: master's degree holder, under the age of 40",
+          "General scholar programmes: high school graduate (at least), under the age of 45",
+          "Senior scholar programmes: master's degree holder or associate professor (or above), under the age of 50"
+        ],
+        "requirements": [
+          "Register and submit the application in the Chinese Government Scholarship Information System (CGSIS) before the dispatching authority's deadline; incomplete application documents lead to automatic rejection",
+          "Meet the admission requirements of the applied universities in terms of academic ability, language proficiency and other relevant criteria",
+          "Bachelor applicants must register for and take the 'China Scholastic Competency Assessment (CSCA)' before the application deadline and upload a valid score report (sittings of 21 December 2025 or 25 January 2026 for September 2026 enrolment)",
+          "Chinese-taught programmes: HSK Level 3 for general/senior scholar programmes (Chinese-language study exempted) and HSK Level 4 for master's or doctoral programmes",
+          "Programmes taught in other languages: relevant language proficiency certificates such as IELTS or TOEFL score reports, in accordance with the requirements of each university",
+          "Passport validity of at least 12 months calculated from the expected start date of study"
+        ],
+        "documents": [
+          "Application Form for Chinese Government Scholarship (in Chinese or English), downloaded and printed from CGSIS",
+          "Passport home page: clear scanned copy of the information page of the ordinary passport",
+          "Notarized highest diploma (prospective diploma winners submit official proof of student status) and academic transcripts, with notarized Chinese or English translations",
+          "Language qualification certificates (valid HSK reports; IELTS/TOEFL for other-language programmes) and a CSCA score report for bachelor applicants",
+          "Pre-admission document issued by the applied university (pre-admission notice, or invitation letter from the school or professors) - all applicants must provide at least one",
+          "A study plan or research proposal in Chinese or English (minimum 200 words undergraduates / 500 words non-degree / 800 words postgraduates), two letters of recommendation from professors or associate professors for graduate and senior scholar programmes, the Foreigner Physical Examination Form for stays over 6 months (valid 6 months), and a non-criminal record certificate issued by the local public security authority within 6 months of application"
+        ],
+        "selection_criteria": [
+          "Examination of application documents by the dispatching authority, with organisation of an interview if necessary",
+          "Submission of all applications to the China Scholarship Council (CSC) for final review and admission",
+          "Admission requirements of the applied universities in academic ability, language proficiency and other relevant criteria"
+        ],
+        "coverage": [
+          "Tuition fees",
+          "Free university dormitory or accommodation subsidy",
+          "Monthly stipend: CNY 2,500 (undergraduates), CNY 3,000 (master's students/general scholars), CNY 3,500 (doctoral students/senior scholars)",
+          "Comprehensive medical insurance: CNY 800 per person per year; CNY 400 per person for programmes lasting less than six months",
+          "International travel expenses are not included"
+        ],
+        "application_method": [
+          "Online application through the Chinese Government Scholarship Information System (CGSIS) at www.campuschina.org ('Scholarship Application for Students')",
+          "Type A applicants: create an account, select Program Category 'Type A' and enter the dispatching authority's Agency Number (e.g. 0561 for the Embassy of China in Belgium, 2331 for Estonia), then submit; the authority's name appears automatically once the number is entered",
+          "No paper materials need to be sent to the embassy; the embassy reviews and forwards all applications to CSC"
+        ],
+        "application_route": "Apply online via CGSIS at www.campuschina.org under the correct Program Category and the dispatching authority's Agency Number, before that authority's national deadline.",
+        "study_mode": "Full-time",
+        "citizenship_residency": "Applicants must be citizens of a country other than the People's Republic of China and be in good health both mentally and physically.",
+        "international_eligibility": "Open to non-Chinese citizens only, routed through the applicant's country's dispatching authority (embassy/consulate, university, or education department).",
+        "subject_or_agency_requirement": "Program Category must match the dispatching authority (Type A embassy, Type B, or Type C university) with the correct Agency Number; bachelor applicants must take the CSCA in the test subjects required for the applied major.",
+        "research_requirement": "A study plan or research proposal in Chinese or English: minimum 200 words for undergraduates, 500 words for non-degree students, 800 words for postgraduates.",
+        "duration": "Funded for the length of the enrolled programme; the 2026/2027 award covers only academic year 2026/2027 - any period beyond must be covered by the host university.",
+        "description": "The Chinese Government Scholarship (CGS), administered by the China Scholarship Council entrusted by China's Ministry of Education, supports talented non-Chinese students and scholars to pursue undergraduate, master's, doctoral, general scholar or senior scholar programmes at Chinese universities, in order to strengthen mutual understanding and friendship between the Chinese people and people around the world.",
+        "region": "Asia",
+        "program_type": "Full government scholarship (CSC Study in China) administered by the China Scholarship Council",
+        "english_requirement": null
+      },
+      "verification": {
+        "source_citations": [
+          "https://be.china-embassy.gov.cn/sghd/202511/P020251111863531034311.pdf",
+          "https://ee.china-embassy.gov.cn/eng/tzygg/202511/t20251108_11749274.htm",
+          "https://www.campuschina.org"
+        ],
+        "last_verified_date": "2026-10-10",
+        "verification_status": "confirmed",
+        "confidence": "high",
+        "not_confirmed": [
+          "campuschina.org could not be fetched directly (HTTP 412 block on automated access); its content was verified through the official 2026/2027 application guide published on the PRC government/embassy domain",
+          "2027/2028 cycle dates (not yet published)"
+        ],
+        "notes": "Stipend rates, coverage and insurance amounts were read in full from the official 'Chinese Government Scholarship Application 2026/2027' guide on the Chinese embassy domain; eligibility, documents and timeline cross-checked against the official embassy notices; no aggregator values used."
+      },
+      "applicant_utility": {
+        "summary": "The Chinese Government Scholarship pays tuition, gives you a free university dormitory bed (or accommodation subsidy), a CNY 2,500-3,500 monthly stipend depending on your level, and CNY 800 per year of medical insurance - but you must fund your own flight to China. Applications run through the CGSIS portal on campuschina.org between November and February on a schedule set by your country's dispatching authority, and every single applicant needs a pre-admission letter from a Chinese university before applying.",
+        "best_fit": "Non-Chinese applicants under the level-specific age caps (25/35/40/45/50) who can win a pre-admission letter from a Chinese university during the autumn before their country's deadline.",
+        "application_readiness_checklist": [
+          "Email the international admissions offices of your target universities in September-October to request the pre-admission notice or professor invitation letter that is mandatory for every applicant",
+          "If applying for a bachelor's degree, register for one of the two CSCA sittings (21 December or 25 January) and confirm with the university which test subjects your major requires",
+          "Get your highest diploma and transcripts notarized and translated into Chinese or English",
+          "Check that your passport is valid at least 12 months beyond the expected September study start date, and renew it before applying if it is not",
+          "Book the Foreigner Physical Examination Form late enough to stay inside its 6-month validity, and request the non-criminal record certificate within 6 months of submitting",
+          "Confirm your exact Program Category and Agency Number with your embassy before submitting CGSIS, because a wrong code silently removes you from the review"
+        ],
+        "common_rejection_risks": [
+          "Wrong Program Category or Agency Number - the application is never received by the processing authority",
+          "Incomplete application documents, which the official FAQ states lead to automatic rejection",
+          "A physical examination form missing the attending physician's signature, hospital stamp or sealed photograph, or older than 6 months",
+          "Passport valid less than 12 months from the expected start date of study",
+          "Holding or applying for another Chinese government scholarship at the same time - grounds for cancellation, repayment and a three-year ban"
+        ],
+        "estimated_uncovered_costs": "International airfare to and from China, visa and residence permit fees, CSCA/HSK/IELTS registration fees, notarization and translation costs, and any living or housing costs beyond the free dormitory or accommodation subsidy.",
+        "document_audit": [
+          "Every applicant, including PhD and senior scholar candidates, must upload at least one pre-admission document from the university (notice, school or professor invitation letter)",
+          "Bachelor applicants must upload a valid CSCA score report from the 21 December 2025 or 25 January 2026 sitting for September 2026 enrolment",
+          "Graduate and senior scholar programmes require exactly two recommendation letters, in Chinese or English, from professors or associate professors",
+          "Study plans must meet the word minimums: 200 (undergraduate), 500 (non-degree), 800 (postgraduate)",
+          "Art and design applicants can upload their own works via 'Example of Art/Other Supporting Documents' in the system"
+        ],
+        "alerts": [
+          "Embassy deadlines differ by country and come earlier than most applicants expect: 8 February 2026 (Estonia), 16 February 2026 (USA), 20 February 2026 (Belgium) for the 2026/2027 round",
+          "This round's funding covers only academic year 2026/2027 - if your study plan runs longer, the extra years must be funded by the host university",
+          "The official notice states the scholarship does not include international travel expenses",
+          "Results only appear in the system in July-August, leaving a tight window to enrol, download the admission notice and obtain the JW201 visa form",
+          "No paper materials should be sent to the embassy, and CSC warns that it never entrusts individuals or intermediary agents to process applications"
+        ],
+        "submission_workflow": "Register in CGSIS on campuschina.org, select the correct Program Category and Agency Number, upload all documents, then the embassy reviews (interviewing if necessary) and forwards applications to CSC, whose final results appear in the system in July-August."
+      }
+    },
+    {
+      "id": 36,
+      "official": {
+        "official_source_urls": [
+          "https://www.esteri.it/en/servizi-opportunita/opportunita/borse-di-studio/per-cittadini-stranieri/borsestudio_stranieri/",
+          "https://www.esteri.it/wp-content/uploads/2026/03/Bando-26-27-ENG.pdf",
+          "https://studyinitaly.esteri.it/ListaBandi"
+        ],
+        "application_link": "https://studyinitaly.esteri.it",
+        "catalogue_url": "https://studyinitaly.esteri.it/ListaBandi",
+        "official_updates_url": "https://www.esteri.it/en/servizi-opportunita/opportunita/borse-di-studio/per-cittadini-stranieri/borsestudio_stranieri/",
+        "deadline_central": "2026-03-26",
+        "deadline_central_display": "26 March 2026, 14:00 Italian time (2026-2027 cycle)",
+        "deadline_note": "Supplementary documents, only where expressly requested, must be uploaded by 14:00 on 1 July 2026; the 2027-2028 call had not been published as of 10 October 2026.",
+        "application_cycle": "2026-2027 academic year",
+        "status": "CLOSED",
+        "status_note": "The ministry's page still presents the 2026-2027 call, whose deadline of 2 p.m. CET on 26 March 2026 has passed; a new call is expected to be published on the Study in Italy portal.",
+        "tuition_coverage_note": "Art. 9: 'Some universities exempt scholarship recipients from the payment of enrolment and tuition fees' under university autonomy (Legislative Decree 68/2012); recipients must inquire with their institution, any tuition fees that apply are paid by the student and are not refundable by MAECI, and regional fees are due in any case.",
+        "funding_amount": 10800,
+        "funding_currency": "EUR",
+        "funding_period": "one-off total for 9 months, paid in 3 instalments",
+        "tuition_coverage": false,
+        "living_cost_coverage": true,
+        "travel_coverage": null,
+        "fully_funded": false,
+        "benefits": [
+          "Total amount of 10,800 euros for the 9-month scholarships, disbursed to the recipient's Italian current account in 3 instalments: 5,500 euros from November 2026 (arrival and settling-in), 2,300 euros from February 2027, 3,000 euros from June 2027 on verification of academic progress",
+          "Collective health insurance contracted by MAECI in case of expenses due to illness or accident, exclusively for the duration of the scholarship",
+          "Italofonia scholarships for intensive Italian language and culture courses: total amount of 3,600 euros in a single instalment at the end of the 3-month period",
+          "Potential tuition fee exemption only where the chosen university's own regulations grant it"
+        ],
+        "eligibility": [
+          "Citizenship of one of the countries on the eligible-countries list published on the Study in Italy portal; selection is based on citizenship and applicants may apply for one country only",
+          "Age limits set against the call deadline: born starting from 27 March 1997 for study programmes (1.1, 1.2, 1.5, 1.6), from 27 March 1995 for PhD programmes (1.3), from 27 March 1985 for research projects (1.4), renewals excepted",
+          "IRE scholarships are reserved to holders of Italian citizenship only, resident in Argentina, Australia, Brazil, Chile, Colombia, Egypt, Ethiopia, France, Germany, Kenya, Lebanon, Morocco, Peru, United Kingdom, Senegal, South Africa, Tunisia, Uruguay or Venezuela",
+          "Not being enrolled in and not having obtained a secondary school diploma or a degree (Italian or foreign) on the Italian territory, and not having conducted a research project with a MAECI scholarship in the academic years 2021-2022 to 2025-2026 inclusive",
+          "Not enrolled beyond the legal duration of the degree programme (fuori corso) and not a part-time student; employees of the Italian Public Administration and their first-degree descendants are excluded",
+          "Valid passport or identity document, uploaded legibly at registration, under penalty of exclusion"
+        ],
+        "requirements": [
+          "Online application, after prior registration, submitted exclusively through the Study in Italy portal (studyinitaly.esteri.it); only applications and documents submitted through the portal are considered valid",
+          "Academic qualification required for enrolment at the chosen programme, uploaded at application or declared and uploaded later if requested (art. 7.2)",
+          "Language proficiency: B2 CEFR Italian certificate or document for Italian-taught programmes; B2 CEFR English certificate or document for English-taught programmes; A2 CEFR Italian for Italofonia language courses",
+          "PhD applicants must upload the admission letter to the PhD programme (pre-admission letters are not considered valid under any circumstances) or, if not yet admitted, the supervisor's invitation letter",
+          "Research-project applicants must submit the invitation letter from their supervisor and their research project; no supplementary upload is possible after submission for programmes 1.4, 1.5, 1.6 and renewals",
+          "Applications must be received by 14:00 (Italian time) on 26 March 2026"
+        ],
+        "documents": [
+          "Legible copy of a valid passport or identity document, uploaded at registration on the Study in Italy portal",
+          "Certificate confirming the award of the academic qualification valid for admission, or the declaration on the portal if not yet held",
+          "Proof of Italian citizenship (valid passport, ID card or citizenship certificate) for applicants who also hold Italian citizenship",
+          "Admission letter to the PhD programme (or supervisor's invitation letter where admission is pending)",
+          "Language proficiency certificate or document (Italian B2, English B2, or Italian A2 for language courses); MOI document or self-declaration routes as published",
+          "For research grants: the supervisor's invitation letter and the research project; for renewals: enrolment certificate or hand-signed self-declaration certifying at least 15 university credits (CFU)"
+        ],
+        "selection_criteria": [
+          "Comparative evaluation of applications received through the Study in Italy portal on fulfilment of the requirements and on criteria related to the merit of the applicant's educational background, for potential admission to the interview",
+          "Interview with only those applicants who have successfully passed the comparative evaluation stage",
+          "Publication of the merit ranking of winners and reserves by the relevant Italian diplomatic representation; the ranking is unquestionable",
+          "Potential uploading of supplementary documents only if expressly requested, by 14:00 on 1 July 2026; acceptance/decline of the scholarship; receipt and acceptance of the awarding letter (Dichiarazione di assegnazione)"
+        ],
+        "coverage": [
+          "Monthly living allowance: 10,800 euros in total for the 9-month scholarships (5,500 + 2,300 + 3,000 euros instalments)",
+          "Collective health insurance for illness or accident expenses for the duration of the scholarship",
+          "3,600 euros in a single instalment for the 3-month Italofonia language and culture course scholarships",
+          "Tuition fees are NOT covered by MAECI: exemption depends on each university's own regulations and regional fees are always payable by the student"
+        ],
+        "application_method": [
+          "Register on the Study in Italy portal (studyinitaly.esteri.it) using an email address checked regularly, as all subsequent communications are sent there",
+          "Complete and submit the application online with all required documents before 14:00 (Italian time) on the deadline; only portal submissions are valid",
+          "No independent supplementary uploads are possible after submission unless the applicant is in the merit ranking and expressly authorised"
+        ],
+        "application_route": "One online application through the Study in Italy portal before 14:00 CET on the call deadline; selection by beneficiary country, one country per applicant.",
+        "study_mode": "Full-time only - scholarships are not granted to part-time students or to students enrolled beyond the legal duration of their programme.",
+        "citizenship_residency": "Citizens of the countries on the eligible-countries list published on the Study in Italy portal; IRE scholarships only for holders of Italian citizenship only, resident in the listed countries; dual citizens apply through the foreign beneficiary country's selection.",
+        "international_eligibility": "Yes - the scheme is designed for foreign students (and Italian citizens resident abroad); selection is by beneficiary country.",
+        "subject_or_agency_requirement": "Study, training or research at public or legally recognised private Italian institutions on Italian territory only. Excluded: 1st-cycle bachelor's degree programmes (except AFAM programmes and renewals under art. 1.6), single-cycle degrees, first- and second-level Master Universitari, specialisation courses, one-year university courses and single courses.",
+        "research_requirement": "Research-project applicants must submit the supervisor's invitation letter and their research project; PhD applicants need the full admission letter - pre-admission letters are explicitly invalid.",
+        "duration": "9 months, from 1 November 2026 to 31 July 2027 for programmes 1.1, 1.2, 1.3, 1.4 and 1.6; 3 months for Italofonia language courses (1.5), starting 1 January 2027 at the earliest and ending by 30 September 2027.",
+        "description": "The Italian Ministry of Foreign Affairs and International Cooperation (MAECI) offers scholarships to foreign students and Italian citizens living abroad (IRE) for the 2026-2027 academic year to foster cooperation in cultural, scientific and technological fields, support Italy's economic system in the world and promote Italian language and culture, under Italian Law 288/55, exclusively for on-site academic courses on Italian territory.",
+        "region": "Europe",
+        "program_type": "Government scholarship of the Italian Republic (legal basis Law 288/55)",
+        "english_requirement": "B2 CEFR certificate or document for English-taught programmes; applicants who completed an entirely English-taught bachelor's degree may upload a document stating this, and applicants from countries where English is an official language may self-declare B2; no specific IELTS/TOEFL score is published."
+      },
+      "verification": {
+        "source_citations": [
+          "https://www.esteri.it/wp-content/uploads/2026/03/Bando-26-27-ENG.pdf",
+          "https://www.esteri.it/en/servizi-opportunita/opportunita/borse-di-studio/per-cittadini-stranieri/borsestudio_stranieri/",
+          "https://studyinitaly.esteri.it/ListaBandi"
+        ],
+        "last_verified_date": "2026-10-10",
+        "verification_status": "confirmed",
+        "confidence": "high",
+        "not_confirmed": [
+          "2027-2028 call deadline and any revised amounts (the next call had not been published as of 10 October 2026)"
+        ],
+        "notes": "Amount, instalments, funding period, insurance, age limits and deadline were read in full from the official 2026-2027 Call for Applications PDF (Bando 26-27 ENG) and the ministry's scholarships page; the existing EUR 900/month figure was superseded by the current call's published total of EUR 10,800 over 9 months."
+      },
+      "applicant_utility": {
+        "summary": "MAECI's 2026-27 grants paid EUR 10,800 over nine months (1 November 2026 - 31 July 2027) in three instalments gated on your arrival in Italy, your enrolment and your earned credits, plus MAECI-contracted health insurance - but tuition is only waived if your university chooses to exempt it, and regional fees are always on you. Applications run exclusively through the Study in Italy portal, and selection is by citizenship against a published eligible-country list, so your passport decides which race you are in long before your CV does.",
+        "best_fit": "Graduates aged 28 or under (30 for PhD, 40 for research) from eligible countries with B2 Italian or English, targeting a second-cycle degree, PhD or supervised research project in Italy.",
+        "application_readiness_checklist": [
+          "Check that your country appears on the eligible-countries list on the Study in Italy portal before investing any time - selection is purely by citizenship",
+          "Test your age eligibility against the call deadline date itself: born on/after 27 March 1997 for study grants, 27 March 1995 for PhD, 27 March 1985 for research",
+          "For research grants, secure the supervisor's invitation letter and draft the research project early - both are mandatory and cannot be added after submission",
+          "For PhD, obtain the full admission letter, not a pre-admission letter, or upload the supervisor's invitation letter and declare the gap",
+          "Open an Italian current account (IBAN) and obtain your codice fiscale in advance - the scholarship is paid only to an Italian account in your name",
+          "Plan to be physically in Italy by 15 November 2026, because later arrival reduces the grant proportionally"
+        ],
+        "common_rejection_risks": [
+          "Applying for a 1st-cycle bachelor's degree programme - the current call excludes them (except AFAM and renewals under art. 1.6)",
+          "Part-time enrolment or fuori corso status (beyond the legal programme duration)",
+          "Submitting a pre-admission letter instead of the PhD admission letter, which is invalid under any circumstances",
+          "Missing the legible passport/ID upload at registration - exclusion is automatic",
+          "Leaving the submission to the final days; portal slowdowns under load are explicitly not accepted as grounds for failure to submit"
+        ],
+        "estimated_uncovered_costs": "Tuition wherever the university does not exempt it, regional fees, flights to Italy, visa and residence permit costs, and dental care or pre-existing conditions excluded from the MAECI insurance.",
+        "document_audit": [
+          "PhD applicants need the admission letter at application time, or the supervisor's invitation letter plus a declaration that admission is pending",
+          "English-taught applicants from non-Anglophone countries need a B2 English certificate; an entirely English-taught bachelor's degree document, or a self-declaration where English is an official language, are the published alternatives",
+          "Research (1.4), language course (1.5), renewal (1.6) and PhD applicants cannot upload anything after submission - their dossiers must be complete at the deadline",
+          "Renewals require a hand-signed certificate or self-declaration downloadable from the university website showing at least 15 CFU credits"
+        ],
+        "alerts": [
+          "Despite catalogue listings that include bachelor's degrees, the 2026-27 call excludes 1st-cycle bachelor programmes outside AFAM",
+          "The first 5,500 euro instalment is only released after the university certifies your presence in Italy and your enrolment",
+          "The final 3,000 euro instalment requires 27 university credits (CFU) in 2026-27, or a supervisor's statement for PhD and research grants",
+          "The scholarship is incompatible with any other Italian government or public-institution scholarship, including regional right-to-study support, though Erasmus periods remain compatible",
+          "The 2026-27 call closed at 14:00 CET on 26 March 2026 - watch studyinitaly.esteri.it/ListaBandi for the next call"
+        ],
+        "submission_workflow": "Register on studyinitaly.esteri.it, complete the online application with uploads before 14:00 CET on the deadline, then the diplomatic representation's committee screen, interview shortlisted candidates, publish the ranking, and issue the Dichiarazione di assegnazione awarding letter."
+      }
+    }
+  ]
+}

@@ -1,0 +1,155 @@
+{
+  "agent": "agent_195",
+  "records": [
+    {
+      "id": 504,
+      "official": {
+        "official_source_urls": [
+          "https://anr.fr/fr/france-2030/france2030/call/france-2030-pepr-propsy-psychiatrie-de-precision-appel-a-projets-2026",
+          "https://anr.fr/fileadmin/aap/2026/france2030-aap-pepr-propsy-2026.pdf",
+          "https://anr.fr/fileadmin/aap/2026/france2030-aap-pepr-propsy-2026-FAQ.pdf",
+          "https://france2030.agencerecherche.fr/PEPR-PROPSY-AAP-2026-dossier/accueil.php?",
+          "https://anr.fr/fr/france-2030/appels"
+        ],
+        "application_link": "https://france2030.agencerecherche.fr/PEPR-PROPSY-AAP-2026-dossier",
+        "catalogue_url": null,
+        "official_updates_url": "https://anr.fr/fr/france-2030/appels",
+        "deadline_central": "2026-11-10",
+        "deadline_central_display": "10 November 2026, 11:00 CET",
+        "deadline_note": "The ANR call page and the ANR submission platform both publish the extended closing date: the deposit deadline, initially 15 October 2026 at 11:00, is now 10 November 2026 at 11:00 (CET). The AAP PDF itself (page 1 and page 3) still states 15 octobre 2026 à 11h (heure de Paris), so the call page and the submission platform are the operative sources.",
+        "application_cycle": "2026 cycle - opened 24/06/2026 at 09:00 CEST, closes 10/11/2026 at 11:00 CET",
+        "status": "OPEN",
+        "status_note": "The ANR call page shows status 'Ouvert - 2026' (Open - 2026) and lists Ouverture : 24/06/2026 à 09:00 CEST and Fermeture : 10/11/2026 à 11:00 CET. The submission platform displays 'Date de cloture de l'appel : 10 novembre 2026 à 11h'.",
+        "tuition_coverage_note": "No tuition coverage is published. The aid finances project expenditure only: equipment (including large instruments), personnel, running costs, service provision and internal billing, as detailed in the PEPR financial regulation. For permanent staff, only the project leader's salary is eligible and it may not exceed 40% of the total aid requested; teaching-relief substitution costs are eligible up to 50 000 EUR per year.",
+        "funding_amount": 9600000,
+        "funding_currency": "EUR",
+        "funding_period": "one-off total envelope; per project 500 000-2 000 000 EUR",
+        "tuition_coverage": false,
+        "living_cost_coverage": false,
+        "travel_coverage": true,
+        "fully_funded": false,
+        "benefits": [
+          "Indicative total budget envelope of about 9 600 000 EUR for this 2026 call, intended to fund 8 to 16 projects.",
+          "Per-project aid bands: 500 000 to 800 000 EUR for the pre-clinical axis, 800 000 to 1 500 000 EUR for the clinical axis, 800 000 to 2 000 000 EUR for the mixed axis, with indicative per-axis envelopes of about 3 M EUR, 3.5 M EUR and 3.1 M EUR.",
+          "The aid is paid as a grant (dotation) disbursed by the ANR to the project's coordinating establishment according to the schedule set in the aid contract over the project duration.",
+          "The coordinating establishment may allocate a share of the aid to partner establishments through a convention de reversement.",
+          "Funding is exceptional and additional to the recurrent funding of universities and research establishments; it is intended to launch new research actions.",
+          "The existence of public and/or private, national or international co-funding is encouraged, although not mandatory."
+        ],
+        "eligibility": [
+          "The submission file must be deposited complete on the ANR submission site before the closing date and time, and the administrative and financial document signed by each partner institution and scanned must be deposited at the date and time indicated in the call document.",
+          "The project scientific document must follow the template published on the call website and be deposited in unprotected PDF format.",
+          "Project duration must be between 24 and 48 months for the pre-clinical axis and between 36 and 48 months for the clinical and mixed axes.",
+          "Aid requested must be a minimum of 500 000 EUR and maximum of 800 000 EUR for the pre-clinical axis, 800 000 to 1 500 000 EUR for the clinical axis, and 800 000 to 2 000 000 EUR for the mixed axis.",
+          "The coordinating establishment must be a French higher education and research establishment, a research organisation, or a foundation of scientific cooperation.",
+          "For the clinical and mixed axes, projects are necessarily collaborative, with a minimum of two different French research structures (each identified by an RNSR number)."
+        ],
+        "requirements": [
+          "Beneficiaries are research organisms, higher education and research establishments, and recognised foundations of scientific cooperation described as 'organismes de recherche et de diffusion des connaissances'.",
+          "Companies and foreign institutions may be associated with projects as partners but cannot receive funding for that participation.",
+          "A single project leader may carry only one project; teams of the PROPSY 'Projets Cibles' are eligible as partners, but their coordinators are not authorised to coordinate a project in this call.",
+          "Private institutions contributing to public-service missions in higher education and research under article L.732-1 of the Code de l'Education may be financed after ANR analysis, MESRE opinion and SGPI validation.",
+          "Respect the PROPSY thematic scope: projects mainly on addictions are not eligible, unless those conditions are addressed within precision psychiatry as secondary phenomena or comorbidities of one of the four targeted disorders.",
+          "Integrate the sharing of data, results and knowledge in an open-science logic, and signal any overlap with an already funded or submitted project with the justifications showing the absence of duplication."
+        ],
+        "documents": [
+          "Scientific document (document scientifique): maximum 15 pages, written in English, describing the proposed project on the published template, with in annex the list of scientific publications of the last three years of the researchers/teams proposing the project.",
+          "Administrative and financial document (document administratif et financier): Excel format, covering the administrative and budget description of the project, with the signed commitment letters of the partner institutions integrated.",
+          "Templates supplied by the ANR on the call page: Trame document scientifique (.docx), Trame de l'annexe publication (.docx) and Trame du document administratif et financier (.xlsx).",
+          "Data Management Plan (Plan de gestion des données, PGD): a first version within the 6 months following project start, according to the ANR modalities.",
+          "Consortium agreement (accord de consortium) where required - mandatory when companies are involved - to be supplied by the coordinating establishment to the ANR within a maximum of 12 months of contract signature.",
+          "An electronic acknowledgement of receipt is sent to the project leader on deposit and should be retained."
+        ],
+        "selection_criteria": [
+          "Clarity of the research objectives and hypotheses.",
+          "Innovative character, ambition, originality, methodological or conceptual rupture against the state of the art; relevance of the methodology; preliminary data; feasibility of the project.",
+          "Competence, expertise and involvement of the project leader: capacity to coordinate ambitious multidisciplinary projects or consortia, academic track record, international recognition.",
+          "Quality and complementarity of the scientific consortium; adequacy between the human and financial means mobilised and the objectives; relevance of the schedule, management of scientific risks with alternative solutions and credible milestones; relevance and efficiency of governance, including patient associations and links with industrial partners or other programmes.",
+          "Impact and outcomes: capacity to address precision-psychiatry issues; active strategy for measuring economic and/or societal impact; contribution to solutions for physiopathological, diagnostic or therapeutic issues; dissemination and valorisation strategy with adherence to FAIR and Open Science principles."
+        ],
+        "coverage": [
+          "Equipment purchases in direct link with the project, including large instruments, classified according to each partner's accounting capitalisation rules.",
+          "Personnel expenditure: salaries of contractual (non-civil-servant) staff; for permanent staff, only the project leader's salary, capped at 40% of the total aid requested; teaching-relief substitution costs up to 50 000 EUR per year across all partner establishments requesting it.",
+          "Running costs associated with the projects.",
+          "Service provision (prestations de service) executed by third parties outside the project, subject to ANR agreement and, where applicable, public-procurement rules; internal billing (facturation interne) between entities of the same establishment.",
+          "Project-related mission expenses (depenses de mission) of foreign partners, charged by the eligible French partner establishment, with no transfer of funds to foreign institutions."
+        ],
+        "application_method": [
+          "Open an account (identifiant and mot de passe) on the ANR submission site as early as possible and confirm the account via the link received by email; prior registration is necessary to be able to deposit a project.",
+          "Download the scientific document template, the publications annex template and the administrative and financial Excel template from the ANR call page, then draft the scientific document in English, 15 pages maximum, on the published template, including the three-year publication list annex, the axis chosen, the duration, the data sets mobilised and any co-funding declared.",
+          "Complete the administrative and financial Excel document, with the aid amount inside the band for the chosen axis.",
+          "Obtain the signed commitment letters of all partner institutions and the legal representative's signature on the administrative and financial document, then scan them as required.",
+          "Upload the documents into the “documents de dépôt” and “documents signés” sections and validate the deposit electronically before 10/11/2026 at 11:00 CET, keeping the electronic acknowledgement of receipt.",
+          "Optionally contact the PEPR PROPSY direction team at aap@pepr-propsy.fr before submitting to check that the topic and project structure fit the call; use PEPR-PROPSY@anr.fr for administrative and eligibility questions."
+        ],
+        "application_route": "Electronic submission by the single project leader through the ANR France 2030 submission platform, which requires a prior confirmed account; nothing is accepted by email or post, and no element can be added after the closing time.",
+        "study_mode": null,
+        "citizenship_residency": "No personal citizenship or residency rule is published. The beneficiaries are legal entities: research organisms, French higher education and research establishments, and recognised foundations of scientific cooperation. Companies and foreign institutions may take part as partners but cannot receive funding for that participation.",
+        "international_eligibility": "International and foreign research institutions are welcome as partners contributing means to the project, but they cannot receive funding under the PEPR. Expenditure of scientists affiliated to French research and higher education establishments remains eligible even when their place of work is abroad; personnel employed by foreign partner establishments cannot be financed except as service providers.",
+        "subject_or_agency_requirement": "Projects must address at least one of the four PEPR PROPSY disorders: bipolar disorders, resistant and/or recurrent depressions, psychotic disorders, and autism spectrum disorders. For this call the autism scope is widened to the whole autism spectrum, with or without intellectual disability; projects exclusively on another neurodevelopmental disorder without a link to the four targeted disorders are out of scope. The coordinator must be a single project leader who is not the coordinator of a PROPSY Projet Cible, and the coordinating establishment must be French.",
+        "research_requirement": "The scientific document must present the project objectives and hypotheses, the methodology, preliminary data, milestones and feasibility, and annex the scientific publications of the last three years of the proposing researchers/teams. For clinical and mixed projects, the data sets mobilised (cohorts, national or international databases, SNDS or health data warehouse data) must be identified and documented from submission to guarantee feasibility within the granted duration, and included patients must present at least one disorder of interest to PEPR PROPSY.",
+        "duration": "24 to 48 months for the pre-clinical axis; 36 to 48 months for the clinical and mixed axes.",
+        "description": "The PEPR PROPSY is a national programme funded by France 2030 to the tune of 80 million euros over 7 years, piloted by Inserm and the CNRS in partnership with the Fondation FondaMental, aiming to transform care for four disabling disorders (bipolar disorders, resistant depressions, psychotic disorders and autism spectrum disorders). Its 2026 call for projects funds 8 to 16 precision-psychiatry projects - pre-clinical studies, clinical studies, clinical trials and mixed translational projects - with a total envelope of about 9 600 000 EUR.",
+        "region": "France",
+        "program_type": "Research project grant (France 2030 / PEPR) - institutional funding, not a personal scholarship",
+        "english_requirement": "The scientific document must be written in English (rédigé en anglais), maximum 15 pages, on the published template and deposited in unprotected PDF; the FAQ confirms this is because projects are assessed by an international evaluation committee, and that any audition is held in English. No English test score or MOI rule is published."
+      },
+      "verification": {
+        "source_citations": [
+          "https://anr.fr/fr/france-2030/france2030/call/france-2030-pepr-propsy-psychiatrie-de-precision-appel-a-projets-2026",
+          "https://anr.fr/fileadmin/aap/2026/france2030-aap-pepr-propsy-2026.pdf",
+          "https://anr.fr/fileadmin/aap/2026/france2030-aap-pepr-propsy-2026-FAQ.pdf",
+          "https://france2030.agencerecherche.fr/PEPR-PROPSY-AAP-2026-dossier/accueil.php?"
+        ],
+        "last_verified_date": "2026-10-10",
+        "verification_status": "confirmed",
+        "confidence": "high",
+        "not_confirmed": [
+          "A single per-project award amount: the official page publishes only axis-specific minimum and maximum bands (500 000-800 000, 800 000-1 500 000 and 800 000-2 000 000 EUR), so the headline figure recorded is the published total call envelope of about 9 600 000 EUR.",
+          "Study mode (full-time or part-time): not published for this institutional research grant.",
+          "Tuition, living-cost or installation coverage for an individual: the call funds institutional project expenditure only and publishes no individual allowance.",
+          "The final number of projects to be funded, published only as 8 to 16."
+        ],
+        "notes": "Checked the ANR call page in French and English, the full 19-page AAP PDF, the 11-page webinar FAQ PDF and the ANR France 2030 submission platform. The extended closing date of 10 November 2026 at 11:00 CET is confirmed on both the call page and the submission platform, while the AAP PDF still shows 15 October 2026. All amounts, aid bands, durations, eligibility rules and evaluation criteria were read directly from the awarding body's own PDFs."
+      },
+      "applicant_utility": {
+        "summary": "This is institutional project money, not a student scholarship: a French host institution applies and the funds are booked by that establishment for equipment, staff and running costs, so a PhD applicant should read this page only as background on the group they might join. The single highest-value move before drafting anything is to email the PROPSY direction team with a one-page concept to have the axis and consortium shape validated, because the aid bands and the collaboration rules are hard recevability criteria rather than guidelines. Watch two specific traps: coordinators of existing PROPSY 'Projets Cibles' are barred from coordinating this call, and the AAP PDF still prints the old 15 October deadline while the platform runs on 10 November. Since this call does not count against the generic ANR call (AAPG) submission limits, a parallel application is possible provided the scientific content and the expenses stay clearly distinct.",
+        "best_fit": "A senior or permanent researcher at a French university, a CNRS/Inserm-type research organisation or a recognised scientific-cooperation foundation, who can assemble a funded precision-psychiatry consortium and does not already coordinate a PROPSY targeted project.",
+        "application_readiness_checklist": [
+          "Create and confirm the ANR submission-platform account now: confirmation is by email and no file can be uploaded before the account exists.",
+          "Choose the axis first and lock the budget inside its band - 500 000-800 000 EUR over 24-48 months (pre-clinical), 800 000-1 500 000 EUR over 36-48 months (clinical), 800 000-2 000 000 EUR over 36-48 months (mixed).",
+          "For the clinical and mixed axes, secure at least two partner establishments with distinct RNSR numbers and register them at establishment level, not laboratory or team level.",
+          "Chase the signed commitment letters early: the scanned administrative and financial document signed by every partner is a recevability item and cannot be repaired after the deadline.",
+          "Document the data sets at submission (existing cohorts, SNDS, health data warehouse, French Minds samples) and check sample or data availability against your own project calendar.",
+          "If you plan a teaching-relief request, budget it against the 50 000 EUR per year ceiling; for permanent staff remember only the project leader's salary is eligible and is capped at 40% of the requested aid."
+        ],
+        "common_rejection_risks": [
+          "Failing recevability: a file that is not complete at 11:00 CET on 10 November 2026, or whose signed and scanned administrative and financial document is missing, is never transmitted to the evaluation committee.",
+          "Requesting an aid amount or a duration outside the chosen axis band, or submitting a clinical/mixed project without two distinct French RNSR structures - each is an automatic eligibility failure.",
+          "A project leader who already coordinates a PROPSY 'Projet Cible', or who appears as leader on more than one submission.",
+          "Scope drift: a proposal that is really about addictions, or about a non-autism neurodevelopmental disorder, or that never engages one of the four targeted disorders.",
+          "A budget that does not match the science - the committee explicitly scores the adequacy between the means mobilised and the objectives and may give an opinion on the amount requested.",
+          "Writing the scientific document in French, off-template, over 15 pages, or relying on links to external storage for supplementary material."
+        ],
+        "estimated_uncovered_costs": "The grant is paid to the coordinating institution, so an individual applicant funds nothing directly from it; institutions and teams must cover costs outside the eligible categories, plus any non-eligible overheads, and companies and foreign institutions receive no funding for their participation.",
+        "document_audit": [
+          "The scientific document must be exactly on the ANR template, in English, in unprotected PDF, and 15 pages maximum counting figures and tables.",
+          "The publications annex must list only the last three years of the proposing researchers/teams, on the ANR annex template - older work does not count.",
+          "The administrative and financial Excel file is where the partner commitment letters live; an unsigned file sinks the whole submission.",
+          "A company partner makes the consortium agreement mandatory, and its absence can stop the funding and trigger repayment under article 6.6 of the Financial Regulation.",
+          "Foreign partners cannot receive a transfer of funds, so their mission costs have to be booked by the eligible French establishment.",
+          "An in-preparation paper may be annexed to support preliminary findings, but only with an open-access reference such as bioRxiv, never via a link to private storage."
+        ],
+        "alerts": [
+          "Deadline trap: the AAP PDF still prints 15 October 2026, but the ANR call page and the submission platform both publish 10 November 2026 at 11:00 CET - build your timeline around the earlier date until you have checked the platform's own counter.",
+          "The audition is optional, not systematic, is held in English, and questions are circulated in advance; the accompanying delegation can run to roughly three to five people.",
+          "Results are only published after State validation through a Prime Minister decision following SGPI opinion, so neither the funding date nor the project start date is fixed at closure.",
+          "Open-science obligations bite from day one after award: immediate CC-BY open access, HAL deposit of the accepted manuscript or publisher version, and a first data management plan within 6 months of start.",
+          "If a PROPSY targeted-project coordinator is involved, they must step out of the coordination role rather than the partnership, or the file fails recevability.",
+          "A benchmark call can only use French Minds samples subject to the cohort's governance and recruitment calendar, so confirm sample volume and type before promising the timeline."
+        ],
+        "submission_workflow": "The single named project leader opens and confirms an account on the ANR France 2030 platform, uploads the English scientific document and the Excel administrative and financial document with signed letters into the 'documents de depot' and 'documents signes' sections, validates the deposit electronically, and keeps the automatic acknowledgement - nothing may be added after 11:00 CET on 10 November 2026."
+      }
+    }
+  ]
+}

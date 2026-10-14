@@ -1,0 +1,85 @@
+{
+ "agent": "agent_164",
+ "assignment_count": 1,
+ "scholarships": [
+  {
+   "id": 432,
+   "title": "PSC Master's Scholarships",
+   "country": "Singapore",
+   "degree": "Master's",
+   "funding_label": "Fully Funded",
+   "status": "open",
+   "official_source": "Public Service Commission, Singapore",
+   "official_source_url": "https://www.psc.gov.sg/scholarships/postgraduate-scholarships/psc-master's-scholarship",
+   "application_link": "https://www.psc.gov.sg/scholarships/postgraduate-scholarships/psc-master's-scholarship",
+   "catalogue_url": null,
+   "official_updates_url": "https://www.psc.gov.sg/scholarships/apply-for-scholarship/psc-masters-scholarships",
+   "existing": {
+    "funding_amount": null,
+    "funding_currency": null,
+    "funding_period": null,
+    "tuition_coverage": 1,
+    "living_cost_coverage": 1,
+    "travel_coverage": 1,
+    "fully_funded": 0,
+    "description": "The PSC Master's Scholarships are postgraduate awards for those who wish to pursue a Master's degree and a career in Public Administration and Sustainability in the Singapore Public Service. Applicants choose between the PSC Master's Scholarship and the PSC Master's Scholarship (Sustainability). The award covers tuition fees and other approved charges, return airfare for overseas degrees, maintenance and other allowances, and a series of sponsored development programmes including student exchange and summer opportunities. Holders serve a three-year bond and study for a maximum of two years in any country.",
+    "eligibility": [
+     "Be a Singapore Citizen",
+     "Demonstrate strong leadership qualities and potential",
+     "Be well-rounded with good academic and non-academic records",
+     "Hold a GCE A-level, International Baccalaureate, NUS High School Diploma, Polytechnic Diploma or other high school diploma or equivalent, plus university results",
+     "Be in the final year of undergraduate studies, or a fresh graduate with no more than 3 years of working experience in the private or non-government sector only",
+     "Be prepared to start the Master's programme in the academic year immediately following the offer"
+    ],
+    "eligibility_summary": "Applicants must be Singapore Citizens who demonstrate strong leadership qualities and potential and present themselves as well-rounded individuals with good academic and non-academic records. They may apply during the final year of their undergraduate studies, or as a fresh graduate with no more than three years of working experience in the private or non-government sector only. Academic requirements are a GCE A-level, International Baccalaureate, NUS High School Diploma, Polytechnic Diploma or other high school diploma or equivalent, plus university results.",
+    "benefits": [
+     "Tuition fees and other approved charges",
+     "Return airfare for overseas degrees",
+     "Maintenance and other allowances",
+     "A series of sponsored development programmes including student exchange and summer opportunities"
+    ],
+    "coverage": [
+     "Tuition fees and other approved charges",
+     "Return airfare for overseas degrees",
+     "Maintenance and other allowances",
+     "Sponsored development programmes including student exchange and summer opportunities"
+    ],
+    "requirements": [
+     "Choose either the PSC Master's Scholarship or the PSC Master's Scholarship (Sustainability)",
+     "For the Sustainability variant, intend to read a Master's in a field related to sustainability and circularity",
+     "Choose courses relevant to the Public Service and obtain PSC approval",
+     "MBA programmes are not allowed",
+     "Complete the online application with supporting documents, an essay and a video interview"
+    ],
+    "documents": [],
+    "english_requirement": null,
+    "application_method": [
+     "Submit an online application with supporting documents, an essay and a video interview",
+     "Check the PSC Apply page at https://www.psc.gov.sg/scholarships/apply-for-scholarship/psc-masters-scholarships/ for the full process"
+    ],
+    "selection_notes": "On graduation, holders are emplaced on the Public Service Leadership Programme and developed for multi-sectoral or sectoral leadership positions. Sustainability variant holders take a first posting in a sustainability and circularity role.",
+    "best_fit": "Singapore Citizen final-year undergraduates or fresh graduates with up to three years of private or non-government sector experience who intend to enter public administration, and who want an approved Public Service-relevant Master's outside MBA disciplines.",
+    "notes": null,
+    "duration": "Maximum 2 years of study in any country, followed by a 3-year bond",
+    "application_period": "2027 cycle: applications open and closing 15 March 2027",
+    "deadline_display": "'Applications for PSC Master's Scholarships for 2027 are now open and will close on 15 March 2027.'",
+    "deadline_date": "2027-03-15",
+    "region": "Asia",
+    "program_type": "Government postgraduate scholarship for the Singapore Public Service, Public Administration track",
+    "applicant_utility": null,
+    "official_details": null
+   },
+   "missing_fields": [
+    "funding_amount",
+    "funding_currency",
+    "funding_period",
+    "documents",
+    "english_requirement",
+    "notes",
+    "applicant_utility",
+    "official_details"
+   ]
+  }
+ ],
+ "result_file": "C:\\Users\\GopaL\\Desktop\\Projects folder\\ScholarZone\\backend\\research_output\\live500\\results\\agent_164.json"
+}

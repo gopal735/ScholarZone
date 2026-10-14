@@ -1,0 +1,47 @@
+{
+  "id": "666",
+  "verdict": "active",
+  "confidence": "high",
+  "checked_at": "2026-10-12T19:20:00Z",
+  "sources": [
+    {
+      "url": "https://www.westernsydney.edu.au/schools/grs/scholarships/main-round-scholarships",
+      "kind": "official",
+      "note": "Western Sydney University Graduate Research School's own page (westernsydney.edu.au domain) listing research scholarship releases, including the Western Sydney University Scholarship Spring Release for Quarter 1 2027 commencement."
+    }
+  ],
+  "findings": {
+    "awarding_body": {
+      "status": "confirmed",
+      "detail": "The page is hosted on westernsydney.edu.au and published by Western Sydney University's Graduate Research School; it is the awarding university's own page, not an aggregator.",
+      "quote": "Western Sydney University supports higher degree research candidates with a range of scholarship opportunities."
+    },
+    "deadline": {
+      "status": "confirmed",
+      "detail": "The Spring Release for Quarter 1 2027 commencement closed-to-be cycle matches the record exactly: applications opened Friday 18 September 2026 and close 11.59pm (AEDT) Sunday 18 October 2026. Checked on 12 October 2026, the cycle is currently open (deadline six days away).",
+      "quote": "Applications open: Friday 18 September 2026. Applications close: 11.59pm (AEDT) Sunday 18 October 2026. Applications received after the closing date will not be considered in this round."
+    },
+    "eligibility": {
+      "status": "confirmed",
+      "detail": "Confirmed: domestic applicants (Australian citizens, permanent residents and New Zealand citizens) plus international applicants who completed (2025 or 2026) or are currently completing an MPhil or MRes at Western Sydney University, applying to commence a doctoral program in Q1 2027 or having commenced one in 2026, full-time, onshore in Australia at scholarship commencement. The page also accepts applicants holding an offer to commence in Q1 2027, which is consistent with the record's summary.",
+      "quote": "Domestic applicants (Australian citizens, permanent residents and New Zealand citizens) and international applicants are eligible to apply if they meet the following criteria. To be eligible for a scholarship, you must: be a new applicant applying to commence a doctoral program; or have commenced a doctoral program in 2026; or have received an offer to commence a doctoral program in Q1 2027. For international applicants, you must also: have completed a Master of Philosophy (MPhil) or Master of Research (MRes) degree at Western Sydney University in 2025 or 2026; or be currently enrolled and under examination in a Master of Philosophy (MPhil) or Master of Research (MRes) degree at Western Sydney University."
+    },
+    "funding": {
+      "status": "confirmed",
+      "detail": "The award covers a living stipend of $38,707 (AUD) per annum for three years plus tuition fees covered by the Australian Government Research Training Program (RTP), so the 'Fully Funded' claim stands (it is not tuition-only). Travel costs, visa costs, relocation expenses and other expenses are excluded.",
+      "quote": "Scholarship inclusions: Scholarships include: $38,707 (AUD) stipend per annum for three (3) years; and Tuition fees covered by the Australian Government Research Training Program (RTP). Scholarship exclusions: Scholarships exclude: Travel costs, visa costs, relocation expenses and other expenses."
+    },
+    "degree_levels": {
+      "status": "confirmed",
+      "detail": "PhD is confirmed: the page lists Doctor of Philosophy (PhD) under program eligibility and the recipient criteria specify a full-time PhD program commencing in Q1 2027. Note the page's program-eligibility list also names Professional Doctorate (DCA, DCR or EdD), which the record's 'PhD'-only degree levels do not mention.",
+      "quote": "Scholarships may be awarded for: Doctor of Philosophy (PhD) Professional Doctorate (DCA, DCR or EdD). ... All scholarship recipients must: be able to study a full-time PhD program commencing in Q1 2027."
+    }
+  },
+  "recommended_field_updates": {
+    "official_source_url": null,
+    "deadline_text": "11.59pm (AEDT) Sunday 18 October 2026",
+    "deadline_date": "2026-10-18",
+    "verification_notes": "Re-read the westernsydney.edu.au GRS main-round-scholarships page on 12 October 2026. Awarding body, deadline, eligibility and funding match the record exactly; the cycle is open (applications opened 18 September 2026, close 18 October 2026). Two nuances for the next re-check: the page's 'Program eligibility' also lists Professional Doctorate (DCA, DCR or EdD) alongside PhD, and an FAQ says scholarships may be awarded for full-time or part-time study (part-time awards taxable) even though the Spring Release recipient criteria require full-time study. Cycle ends 18 October 2026; the Autumn Release is expected to open March/April 2027."
+  },
+  "notes_for_reviewer": "Deadline is six days after the check date, so the 'currently open cycle' framing expires on 19 October 2026 and the record should be re-dated to the next release (Autumn Release, expected March/April 2027). Human decision needed: the record's degree levels say 'PhD' only, while the page's program-eligibility text also names Professional Doctorate (DCA, DCR or EdD)."
+}

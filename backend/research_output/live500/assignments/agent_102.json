@@ -1,0 +1,90 @@
+{
+ "agent": "agent_102",
+ "assignment_count": 1,
+ "scholarships": [
+  {
+   "id": 290,
+   "title": "Poland My First Choice NAWA",
+   "country": "Poland",
+   "degree": "Master's",
+   "funding_label": "Fully Funded",
+   "status": "upcoming",
+   "official_source": "Polish National Agency for Academic Exchange (NAWA)",
+   "official_source_url": "https://nawa.gov.pl/en/students/foreign-students/poland-my-first-choice-programme/about-the-programme",
+   "application_link": "https://nawa.gov.pl/en/students/foreign-students/poland-my-first-choice-programme/about-the-programme",
+   "catalogue_url": "https://nawa.gov.pl/en/students/foreign-students/poland-my-first-choice-programme/about-the-programme",
+   "official_updates_url": "https://nawa.gov.pl/en/students/foreign-students/poland-my-first-choice-programme",
+   "existing": {
+    "funding_amount": null,
+    "funding_currency": null,
+    "funding_period": null,
+    "tuition_coverage": 1,
+    "living_cost_coverage": 1,
+    "travel_coverage": null,
+    "fully_funded": 1,
+    "description": "The Poland My First Choice NAWA programme encourages young talented people from a list of eligible countries to study at Polish university-type higher education institutions, awarding a scholarship for the statutory period of full-time second-cycle studies at academic institutions, both public and non-public, supervised by the Minister of Science and Higher Education, and in addition providing an exemption from tuition fees at public universities. Applicants choose their university and field of study independently from the offer of universities listed in the call for applications, and NAWA explicitly does not act as an intermediary in admission. The programme does not cover fields of study offered only by institutions supervised by other ministries. Eligibility is by citizenship of one of the listed countries and territories.",
+    "eligibility": [
+     "Citizenship of one of the listed countries and territories (45 in total on the page read)",
+     "Applying to full-time second-cycle studies at an academic HEI supervised by the Minister of Science and Higher Education",
+     "Both public and non-public academic HEIs are eligible as study venues, though the tuition exemption applies only at public universities",
+     "The field of study must not be offered only by HEIs supervised by other ministries"
+    ],
+    "eligibility_summary": "Citizens of one of the listed countries and territories: Australia, Finland, Japan, Republic of Korea, Austria, France, Latvia, Romania, Belgium, Germany, Liechtenstein, Singapore, Bulgaria, Great Britain, Lithuania, Slovakia, Canada, Greece, Luxembourg, Slovenia, Chile, Hong Kong SAR, Macau SAR, Spain, Croatia, Hungary, Malta, Sweden, Cyprus, Iceland, Netherlands, Switzerland, Czech Republic, Ireland, New Zealand, Taiwan, Denmark, Israel, Norway, United States of America, Estonia, Italy, Portugal and Uruguay. Applicants must be seeking full-time second-cycle studies at an academic higher education institution supervised by the Minister of Science and Higher Education. Fields offered only by institutions supervised by other ministries are excluded.",
+    "benefits": [
+     "Scholarship covering the statutory period of full-time second-cycle studies",
+     "Tuition fee exemption at public universities",
+     "Access to any eligible Polish university and field listed in the call",
+     "Independent choice of university and field of study"
+    ],
+    "coverage": [
+     "Scholarship for the statutory period of full-time second-cycle studies",
+     "Exemption from tuition fees at public universities",
+     "Studies at both public and non-public academic higher education institutions"
+    ],
+    "requirements": [
+     "Hold citizenship of one of the listed eligible countries or territories",
+     "Apply to a full-time second-cycle programme at an academic HEI supervised by the Minister of Science and Higher Education",
+     "Apply independently to the university of your choice, separately from the NAWA application",
+     "Choose from the offer of universities and fields listed in the call for applications",
+     "Note that fields offered only by HEIs supervised by other ministries are not covered"
+    ],
+    "documents": [
+     "Application submitted through the NAWA system",
+     "Academic certificates for the level applied for, as required by the call",
+     "Language certificate as required by the chosen university",
+     "Documents listed in the current call for applications"
+    ],
+    "english_requirement": "Not stated on the programme page read; language requirements follow the chosen university's rules and are set out in the call for applications.",
+    "application_method": [
+     "Check that your citizenship is on the eligible list",
+     "Choose a university and field from the offer published in the call for applications",
+     "Apply for admission directly at the university, independently of NAWA",
+     "Submit the scholarship application through the NAWA system before the deadline in the call",
+     "Complete the university's own admission process, including any language or entry requirements"
+    ],
+    "selection_notes": "Because NAWA does not act as an intermediary in admission, applicants face two separate processes: the university's admission decision and the NAWA scholarship decision. Places are limited per university and field as set out in the call, so early application at the chosen institution matters.",
+    "best_fit": "Young applicants from any of the 45 listed developed and emerging countries who hold or are completing a first degree and want a full-time master's programme at a Polish academic HEI, and who are prepared to handle university admission separately from the scholarship application.",
+    "notes": "The scholarship amount and any travel allowance are set out in the call for applications, which could not be read: the stored call-for-applications URL returns HTTP 404 and the amounts were not published on the programme page. funding_amount is therefore left null rather than guessed.",
+    "duration": "from 1 to 10 months.",
+    "application_period": "One call per academic year, published on NAWA's Poland My First Choice programme page. The stored call-for-applications URL for this programme returns HTTP 404 on 2026-10-04, so no current deadline could be read.",
+    "deadline_display": null,
+    "deadline_date": null,
+    "region": "Europe",
+    "program_type": "Government scholarship programme",
+    "applicant_utility": null,
+    "official_details": null
+   },
+   "missing_fields": [
+    "funding_amount",
+    "funding_currency",
+    "funding_period",
+    "travel_coverage",
+    "deadline_display",
+    "deadline_date",
+    "applicant_utility",
+    "official_details"
+   ]
+  }
+ ],
+ "result_file": "C:\\Users\\GopaL\\Desktop\\Projects folder\\ScholarZone\\backend\\research_output\\live500\\results\\agent_102.json"
+}

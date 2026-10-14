@@ -1,0 +1,44 @@
+[
+  {
+    "scholarship_id": 338,
+    "outcome": "no_verified_supervisor_found",
+    "professors": [],
+    "notes": "Official UEF page confirms this is an institution-wide tuition-fee scheme (30% Early Bird discount for the 2027 intake plus 30% academic-progress waivers for later years) for non-EU/EEA fee-paying students in English-taught Bachelor's/Master's programmes. Award criteria are purely administrative (acceptance of admission + payment deadline, 55 ECTS credit completion), so no supervising professor, research group, or faculty member is tied to the scholarship. Only contact published is the UEF admission services email. Evidence quote: 'The University of Eastern Finland (UEF) offers an Early Bird discount and tuition waivers for tuition fee-paying students.'"
+  },
+  {
+    "scholarship_id": 339,
+    "outcome": "no_verified_supervisor_found",
+    "professors": [],
+    "notes": "Official University of Turku page confirms the Merit Scholarship is a merit-based tuition-fee scholarship (50% of the following academic year's tuition) for already-enrolled fee-paying students, tied to credit/grade/Finnish-language requirements decided by admission services. No supervisor or programme faculty is attached to the scholarship. Evidence quote: 'The University of Turku Merit Scholarship is awarded based on studies at the University of Turku and the programme the student has been admitted to... The scholarships are awarded based on academic merits only.'"
+  },
+  {
+    "scholarship_id": 340,
+    "outcome": "no_verified_supervisor_found",
+    "professors": [],
+    "notes": "Official Åbo Akademi page confirms the scheme is an automatic EUR 4,000 early-commitment discount (first year) plus an automatic EUR 4,000 reduction (second year) for admitted students in international master's programmes; eligibility depends only on accepting the study place and paying by the deadline. No supervising professor or research group is tied to the scholarship. The only published contact is Admissions services (admission@abo.fi), an admissions office rather than faculty. Evidence quote: 'Åbo Akademi University grants an early commitment offer for students liable to pay tuition fees... The early commitment offer is a discount of 4000 EUR.'"
+  },
+  {
+    "scholarship_id": 342,
+    "outcome": "no_verified_supervisor_found",
+    "professors": [],
+    "notes": "Official Hanken page confirms the GBSN Honor Scholarship is a 100% tuition-fee waiver (2 scholarships/year) for Master's applicants who are current students or alumni of GBSN member schools in listed developing countries; it is applied for on the admission form and decided together with the admission decision. No professor, lab, or programme faculty member is named or tied to the scholarship. The only published contact is Hanken Admissions Services (admissions@hanken.fi). Evidence quote: 'GBSN Honor Scholarship (2 scholarships only): tuition fee waiver 100 % for duration of first degree at Hanken.'"
+  },
+  {
+    "scholarship_id": 343,
+    "outcome": "not_applicable",
+    "professors": [],
+    "notes": "Nokia Scholarship is granted by the Nokia Foundation, an independent private foundation with no attached institution; it may support doctoral studies at any Finnish university or abroad. The official page requires the applicant's own principal supervisor to submit a commitment statement, but no specific professor is named or tied to the scholarship (each applicant brings their own supervisor and the Foundation makes the decision). Per guidance for schemes with no attached institution, outcome is not_applicable. Evidence quote: 'The applicant must receive a commitment statement from his/her principal supervisor, who must be a professor, docent, or senior scientist at the university at which the student is pursuing their degree.' Contact published on page: nokia.foundation@nokia.com (Foundation office, not faculty)."
+  },
+  {
+    "scholarship_id": 344,
+    "outcome": "not_applicable",
+    "professors": [],
+    "notes": "Nokia Foundation Fellow is a PI-initiated EUR 75,000 research-project grant administered by the Nokia Foundation (no attached institution); projects must be carried out in Finnish universities, but the application is open to any tenured associate or full professor who proposes their own project. No named principal investigator is tied to the scheme, so no professor can be listed without inventing a person. Per guidance for schemes with no attached institution, outcome is not_applicable. Evidence quote: 'The grant application is submitted and the project to be funded by the grant is led by a tenured associate or full professor (Principal Investigator) as their own project.' Contact published on page: nokia.foundation@nokia.com (Foundation office, not faculty)."
+  },
+  {
+    "scholarship_id": 345,
+    "outcome": "not_applicable",
+    "professors": [],
+    "notes": "Jorma Ollila Grants are 6-12 month research-visit travel grants administered by the Nokia Foundation (no attached institution) for doctoral/postdoctoral/tenure-track researchers at Finnish universities. The official page lists past grantees (e.g. 'Djelouat Hamza, University of Oulu, Host: University of California, San Diego') with their own visit hosts, but these are grant recipients, not supervising professors tied to the scheme; no supervisor is named anywhere on the page. Per guidance for schemes with no attached institution, outcome is not_applicable. Contact published on page: nokia.foundation@nokia.com (Foundation office, not faculty)."
+  }
+]

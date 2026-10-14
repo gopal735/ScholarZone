@@ -1,0 +1,80 @@
+{
+ "agent": "agent_305",
+ "assignment_count": 1,
+ "scholarships": [
+  {
+   "id": 685,
+   "title": "GETFund Postgraduate Local Scholarship (2026/27)",
+   "country": "Ghana",
+   "degree": "Master's, PhD",
+   "funding_label": "Tuition, Accommodation and Materials",
+   "status": "upcoming",
+   "official_source": "Ghana Education Trust Fund (GETFund)",
+   "official_source_url": "https://www.getfund.gov.gh/news/getfund-opens-applications-for-2026-27-undergraduate-and-postgraduate-local-scholarships",
+   "application_link": "https://www.getfund.gov.gh/news/getfund-opens-applications-for-2026-27-undergraduate-and-postgraduate-local-scholarships",
+   "catalogue_url": "https://www.getfund.gov.gh/scholarships/overview",
+   "official_updates_url": "https://www.getfund.gov.gh/news",
+   "existing": {
+    "funding_amount": null,
+    "funding_currency": null,
+    "funding_period": null,
+    "tuition_coverage": 1,
+    "living_cost_coverage": 1,
+    "travel_coverage": null,
+    "fully_funded": 0,
+    "description": "The Ghana Education Trust Fund, a statutory Ghanaian education fund, has announced that applications for its 2026/27 Postgraduate Local Scholarship will open on Monday 5 October 2026 and close on Friday 27 November 2026. The scheme covers candidates pursuing Master's and PhD programmes within Ghana and is separate from the Fund's foreign scholarship programme. The Fund states that financial support to Scholars includes tuition fees, accommodation and scholastic materials. Applications are made only through the GETFund Scholarship Portal at scholarships.getfund.gov.gh.",
+    "eligibility": [
+     "Pursuing a Master's programme in the 2026/27 academic year",
+     "Pursuing a PhD programme in the 2026/27 academic year",
+     "Applying through the official GETFund Scholarship Portal at scholarships.getfund.gov.gh",
+     "Uploading scanned copies of all required supporting documents for vetting and shortlisting"
+    ],
+    "eligibility_summary": "Applicants must be pursuing a Master's or PhD programme in the 2026/27 academic year and apply through the official GETFund Scholarship Portal, which carries the detailed eligibility criteria, documentation requirements and application process. The Fund describes its postgraduate support as covering candidates described as 'brilliant but needy'.",
+    "benefits": [
+     "Tuition fees",
+     "Accommodation",
+     "Scholastic materials",
+     "Social and academic support to Scholars alongside the financial support"
+    ],
+    "coverage": [
+     "Tuition fees",
+     "Accommodation",
+     "Scholastic materials"
+    ],
+    "requirements": [],
+    "documents": [],
+    "english_requirement": null,
+    "application_method": [
+     "Visit the official GETFund Scholarship Portal at scholarships.getfund.gov.gh",
+     "Create an account and complete the online application form with accurate information",
+     "Upload scanned copies of the relevant supporting documents",
+     "Submit through the portal before the closing date; submissions sent through any other channel will not be processed"
+    ],
+    "selection_notes": "GETFund states that the selection process is rigorous and transparent, with shortlisted applicants contacted after vetting and shortlisting is completed. The Fund also warns that all official correspondence is directly between the Fund and the applicant.",
+    "best_fit": "Ghanaian postgraduate candidates in the 2026/27 academic year who need tuition, accommodation and study materials to complete a Master's or PhD within Ghana.",
+    "notes": "Announced in a single notice together with the GETFund Undergraduate Local Scholarship, which runs on the same 5 October to 27 November 2026 timeline. A separate GETFund Postgraduate Foreign Scholarship for 2026/27 was announced on 14 April 2026 with a window of 13 to 30 April 2026 and is not open.",
+    "duration": null,
+    "application_period": "Monday 5 October 2026 to Friday 27 November 2026 for the 2026/27 academic year",
+    "deadline_display": "Friday, 27th November 2026",
+    "deadline_date": "2026-11-27",
+    "region": "Africa",
+    "program_type": "Government scholarship (statutory education trust fund)",
+    "applicant_utility": null,
+    "official_details": null
+   },
+   "missing_fields": [
+    "funding_amount",
+    "funding_currency",
+    "funding_period",
+    "travel_coverage",
+    "requirements",
+    "documents",
+    "english_requirement",
+    "duration",
+    "applicant_utility",
+    "official_details"
+   ]
+  }
+ ],
+ "result_file": "C:\\Users\\GopaL\\Desktop\\Projects folder\\ScholarZone\\backend\\research_output\\live500\\results\\agent_305.json"
+}

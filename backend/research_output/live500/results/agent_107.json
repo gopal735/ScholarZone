@@ -1,0 +1,123 @@
+{
+  "agent": "agent_107",
+  "records": [
+    {
+      "id": 295,
+      "official": {
+        "official_source_urls": [
+          "https://cuni.cz/UKEN-1617.html",
+          "https://phd.cuni.cz/PHDEN-39.html",
+          "https://natur.cuni.cz/en/students/doctoral-study/scholarship-and-bursary/doctoral-study-income",
+          "https://phd.fhs.cuni.cz/FHSDSEN-31.html"
+        ],
+        "application_link": "https://cuni.cz/UKEN-1617.html",
+        "catalogue_url": null,
+        "official_updates_url": "https://phd.cuni.cz/PHDEN-39.html",
+        "deadline_central": null,
+        "deadline_central_display": null,
+        "deadline_note": "No application deadline is published - the doctoral study income is a standing entitlement for full-time doctoral students; the doctoral scholarship application must be submitted to the faculty at the start of each academic year (the 2026/2027 application window opened on 1 October 2026).",
+        "application_cycle": "2026/2027 academic year; application required at the start of each academic year",
+        "status": "OPEN",
+        "status_note": "In force for the 2026/2027 academic year: Charles University states that from 2026/2027 onwards all students are eligible for the guaranteed amount of 1.2 times the minimum wage, and the Faculty of Science publishes CZK 26,880 per month for 2026/2027, with applications open via SIS from 1 October 2026.",
+        "tuition_coverage_note": null,
+        "funding_amount": 26880,
+        "funding_currency": "CZK",
+        "funding_period": "per month",
+        "tuition_coverage": false,
+        "living_cost_coverage": true,
+        "travel_coverage": null,
+        "fully_funded": false,
+        "benefits": [
+          "A doctoral study income in a guaranteed minimum amount of 1.2 times the minimum wage in Czechia during the standard length of your studies (4 years)",
+          "The doctoral study income may consist of a doctoral scholarship; a salary or a wage for creative activities directly related to the preparation of the dissertation; a combination of both",
+          "This general income is often supplemented by other sources of income, e.g. by awards for participation in research projects, remuneration for teaching undergraduates etc."
+        ],
+        "eligibility": [
+          "Enrolled as a full-time doctoral student at Charles University",
+          "Within the standard length of the doctoral study programme (4 years)",
+          "Students in the combined form of study are not eligible for the doctoral study income, as the income is tied to the full-time form"
+        ],
+        "requirements": [
+          "Submit the application for the doctoral scholarship to the relevant faculty at the start of each academic year for which the scholarship is to be granted; the scholarship cannot be awarded retrospectively",
+          "Full-time doctoral students within the standard length of study are granted the doctoral study income provided there are no obstacles pursuant to Article 18(1), (4) and (5) of the Scholarship Regulations of Charles University",
+          "The application for the doctoral scholarship is submitted electronically via the Student Information System (SIS)"
+        ],
+        "documents": [
+          "Electronic application for a doctoral scholarship in SIS ('application for a doctoral scholarship (E)' in the Study charges and petitions module)",
+          "Bank account listed in the Student Information System - the income is paid by bank transfer to the account listed there at the time of payment"
+        ],
+        "selection_criteria": [
+          "A doctoral bursary is awarded to all students enrolled in a full-time doctoral programme whose study does not exceed the standard length of study of the given programme of study",
+          "The application is available in SIS only to full-time students who have not exceeded the standard period of study",
+          "The new amount of doctoral study income does not result in increased study obligations"
+        ],
+        "coverage": [
+          "A doctoral study income in a guaranteed minimum amount of 1.2 times the minimum wage in Czechia - CZK 26,880 per month in the 2026/2027 academic year",
+          "Paid as a doctoral scholarship, a salary or a wage for creative activities directly related to the preparation of the dissertation, or a combination of the two",
+          "Paid by bank transfer to the bank account listed in the Student Information System"
+        ],
+        "application_method": [
+          "In the SIS 'Study charges and petitions' module, go to the 'New request' tab, select 'application for a doctoral scholarship (E)' as the type of request and submit it by clicking 'Send request'",
+          "Applications for doctoral scholarships for the 2026/2027 academic year may be submitted starting October 1, 2026",
+          "You will be informed about the correct procedure by your faculty"
+        ],
+        "application_route": "Enrol full-time in a doctoral programme, then file the doctoral scholarship application in SIS at the start of each academic year; the faculty awards and pays the monthly income to the bank account listed in SIS.",
+        "study_mode": "full-time",
+        "citizenship_residency": null,
+        "international_eligibility": "Open to all full-time doctoral students at Charles University - the official pages publish no nationality or residency restriction for the doctoral study income.",
+        "subject_or_agency_requirement": null,
+        "research_requirement": null,
+        "duration": "The standard length of the doctoral study programme (4 years)",
+        "description": "As a full-time doctoral student you receive a doctoral study income in a guaranteed minimum amount of 1.2 times the minimum wage in Czechia during the standard length of your studies (4 years). The income may consist of a doctoral scholarship, a salary or wage for creative activities directly related to the preparation of the dissertation, or a combination of both, and is often supplemented by awards for participation in research projects and remuneration for teaching undergraduates.",
+        "region": "Europe (Czech Republic)",
+        "program_type": "Institutional guaranteed doctoral study income for full-time doctoral students (doctoral scholarship and/or salary for dissertation-related work)",
+        "english_requirement": null
+      },
+      "verification": {
+        "source_citations": [
+          "https://cuni.cz/UKEN-1617.html",
+          "https://phd.cuni.cz/PHDEN-39.html",
+          "https://natur.cuni.cz/en/students/doctoral-study/scholarship-and-bursary/doctoral-study-income",
+          "https://phd.fhs.cuni.cz/FHSDSEN-31.html"
+        ],
+        "last_verified_date": "2026-10-10",
+        "verification_status": "confirmed",
+        "confidence": "high",
+        "not_confirmed": [
+          "english_requirement - none published for the doctoral study income",
+          "travel_coverage - no travel allowance is published for the doctoral study income",
+          "supporting documents beyond the electronic SIS application - none published",
+          "tuition_coverage_note - the official pages publish no tuition wording for this benefit"
+        ],
+        "notes": "Central CU pages state 1.2 times the Czech minimum wage for 2026/2027; the Faculty of Science page publishes the exact figure CZK 26,880 per month (1.2 x CZK 22,400 minimum wage effective from 1 January 2026), consistent across official CU domains; pages checked live on 2026-10-10."
+      },
+      "applicant_utility": {
+        "summary": "Treat this as a guaranteed income floor rather than a competitive scholarship: every full-time doctoral student within the standard length of study receives it, but only if the doctoral scholarship application is filed in SIS at the start of the academic year - it cannot be awarded retrospectively, so one missed window costs a full year of income. For 2026/2027 the guaranteed minimum is CZK 26,880 per month (1.2 times the Czech minimum wage), delivered either as a doctoral scholarship, salary for dissertation-related work, or a faculty-specific mix of the two. Nothing extra is attached - no tuition coverage or travel allowance is published - so Prague living costs above the floor still need project awards, teaching pay, or personal funds. International students are covered on the same terms as Czech students.",
+        "best_fit": "Full-time PhD candidates at Charles University, including internationals, who want a guaranteed monthly income floor rather than a merit contest.",
+        "application_readiness_checklist": [
+          "Confirm SIS access and full-time enrolment before the application window opens (the 2026/2027 window opened on 1 October 2026).",
+          "File the application in the first weeks of the academic year via SIS: Study charges and petitions - New request - 'application for a doctoral scholarship (E)'.",
+          "Keep the bank account in SIS accurate - payment is made by bank transfer to the account listed there.",
+          "Ask the faculty doctoral studies office how your income will be composed (scholarship vs salary) and what supplements exist, since the mix is faculty-specific."
+        ],
+        "common_rejection_risks": [
+          "Missing the annual SIS application - the scholarship cannot be awarded retrospectively.",
+          "Studying in the combined form - the income is tied to full-time study.",
+          "Exceeding the standard length of study, or a Subject-Area Board finding that individual curriculum requirements were not met, which can block, reduce or withdraw the bursary.",
+          "Assuming the guarantee pays out automatically with no application filed."
+        ],
+        "estimated_uncovered_costs": "Everything above the monthly floor: Prague accommodation and living costs beyond CZK 26,880 per month, travel, and any other expenses - the published benefit carries no tuition coverage or travel allowance.",
+        "document_audit": [
+          "No supporting documents are published - the SIS application is the entire submission, so an outdated bank account or a wrong request type in SIS is the real trap.",
+          "The application option appears in SIS only for full-time students who have not exceeded the standard period - if it is missing, eligibility rather than paperwork is the issue."
+        ],
+        "alerts": [
+          "Applications for the 2026/2027 academic year opened on 1 October 2026; awards cannot be backdated, so apply in the first weeks of the academic year.",
+          "The guaranteed amount is recalculated each academic year from the Czech minimum wage (CZK 26,880 = 1.2 x CZK 22,400 for 2026/2027).",
+          "Combined-form students are excluded, and the income ends once the standard length of study is exceeded."
+        ],
+        "submission_workflow": "Student files the doctoral scholarship application in SIS at the start of the academic year; the faculty decides the award and pays the income monthly by bank transfer to the account listed in SIS."
+      }
+    }
+  ]
+}

@@ -1,0 +1,138 @@
+{
+  "agent": "agent_165",
+  "records": [
+    {
+      "id": 434,
+      "official": {
+        "official_source_urls": [
+          "https://www.moe.gov.sg/careers/teaching-scholarships-sponsorships/moe-teaching-scholarships-full-term/scholarship-and-award-details",
+          "https://www.moe.gov.sg/careers/teaching-scholarships-sponsorships/moe-teaching-scholarships-full-term/moe-application"
+        ],
+        "application_link": "https://www.moe.gov.sg/careers/teaching-scholarships-sponsorships/moe-teaching-scholarships-full-term/moe-application",
+        "catalogue_url": "https://www.moe.gov.sg/financial-matters/awards-scholarships",
+        "official_updates_url": "https://www.moe.gov.sg/careers/teaching-scholarships-sponsorships/moe-teaching-scholarships-full-term",
+        "deadline_central": "2027-03-19",
+        "deadline_central_display": "19 March 2027 (Singapore-Cambridge GCE A Level window)",
+        "deadline_note": "MOE runs a separate window per qualification type: International Baccalaureate and international/other qualifications open mid-October 2026; NUS High School Diploma opens early December 2026; Polytechnic Diploma opens early February 2027; Singapore-Cambridge GCE A Level runs from the release of results to 19 March 2027.",
+        "application_cycle": "Per qualification type for the intake following the 2027 A-Level results release",
+        "status": "OPEN",
+        "status_note": "MOE states the International Baccalaureate and international/other qualifications window 'is currently closed and will open in mid-October 2026', the NUS High School Diploma window 'will open in early December 2026', the Polytechnic Diploma window 'will open in early February 2027', and the GCE A Level window 'will open from the date of the release of the GCE A-Level results to 19 March 2027 (Friday)'.",
+        "tuition_coverage_note": "Scholarship column: 'Tuition fees and other approved charges'. The Scholarship (PSC-administered) additionally lists 'Return economy airfare, if you are studying overseas' and a 'Monthly maintenance and pre-service allowance'; the MOE-administered Teaching Award lists 'Tuition fees and other approved charges' and a 'Monthly maintenance allowance' without airfare.",
+        "funding_amount": null,
+        "funding_currency": null,
+        "funding_period": null,
+        "tuition_coverage": true,
+        "living_cost_coverage": true,
+        "travel_coverage": true,
+        "fully_funded": true,
+        "benefits": [
+          "Tuition fees and other approved charges",
+          "Monthly maintenance and pre-service allowance (Scholarship) / monthly maintenance allowance (Award)",
+          "Return economy airfare, if you are studying overseas (Scholarship track)",
+          "Developmental programmes, during your undergraduate studies",
+          "Approved student exchange programmes, summer programmes and CCAs",
+          "Possibility of sponsorship of Master's degree (if requirements are met)"
+        ],
+        "eligibility": [
+          "Singapore Citizen at point of offer",
+          "A well-rounded individual with good academic and co-curricular activities (CCA) records",
+          "GCE A-Level, International Baccalaureate (IB) Diploma, Polytechnic Diploma, NUS High School Diploma or equivalent",
+          "Demonstrates strong leadership qualities",
+          "Possesses excellent interpersonal and communication skills",
+          "Course of study should be of relevance to a teaching subject",
+          "Country of study: reputable overseas or local universities (Scholarship); reputable local universities including the NTU-NIE BABSc programme (Award)"
+        ],
+        "requirements": [
+          "All applicants will be considered for the full range of MOE Teaching Scholarships and Award",
+          "Submit an online application form complete with the necessary supporting documents during the relevant window",
+          "Shortlisted applicants will be invited for an interview and may be scheduled for other selection processes as well"
+        ],
+        "documents": [
+          "Online application form complete with the necessary supporting documents"
+        ],
+        "selection_criteria": [
+          "All scholars and award holders receive sponsorship for their undergraduate tuition fees and other approved programmes, a maintenance allowance, and the opportunity to undergo MOE developmental programmes to prepare them as future educators",
+          "Applicants can generally expect to hear from MOE within 4 weeks of the close of the application window",
+          "Following the interview, all interviewed candidates are carefully evaluated; if you have not heard within 3 weeks after your interview, your application is still being actively considered"
+        ],
+        "coverage": [
+          "Tuition fees and other approved charges",
+          "Monthly maintenance and pre-service allowance (Scholarship) / monthly maintenance allowance (Award)",
+          "Return economy airfare if studying overseas (Scholarship)",
+          "Developmental programmes during undergraduate studies",
+          "Approved student exchange programmes, summer programmes and CCAs",
+          "Possibility of sponsorship of Master's degree (if requirements are met)"
+        ],
+        "application_method": [
+          "Apply directly to MOE via the links published on the MOE application page, in the window matching your qualification type",
+          "Alternatively, apply for the PSC Scholarship (Teaching Service) via the PSC Gateway Portal",
+          "Submit an online application form complete with the necessary supporting documents",
+          "Attend an interview and any other selection processes if shortlisted"
+        ],
+        "application_route": "Apply directly to MOE online in the window matching your qualification type; PSC Scholarship (Teaching Service) applicants apply via the PSC Gateway Portal.",
+        "study_mode": "Full-time",
+        "citizenship_residency": "Singapore Citizen at the point of offer.",
+        "international_eligibility": "No. The published criterion is Singapore Citizen at the point of offer.",
+        "subject_or_agency_requirement": "The course of study should be of relevance to a teaching subject, such as Art and Music, Humanities, Languages, Mathematics, Physical Education and Sports Science, Sciences or Social Sciences. Applicants who wish to pursue other similar courses may still apply.",
+        "research_requirement": null,
+        "duration": "Full-time undergraduate degree; bond of 4 years for local studies, 5 years for studies in non-English speaking countries, 6 years for studies in English speaking countries. Those enrolled in the PGDE programme at NIE also serve a concurrent 3-year bond.",
+        "description": "MOE describes the full-term teaching scholarships and award as sponsorship for undergraduate tuition fees and other approved programmes, a maintenance allowance, and MOE developmental programmes that prepare recipients as future educators, with all applicants considered for the full range of awards.",
+        "region": "Asia",
+        "program_type": "Teaching scholarship and award for entry to the Singapore Education Service, undergraduate",
+        "english_requirement": null
+      },
+      "verification": {
+        "source_citations": [
+          "https://www.moe.gov.sg/careers/teaching-scholarships-sponsorships/moe-teaching-scholarships-full-term/scholarship-and-award-details",
+          "https://www.moe.gov.sg/careers/teaching-scholarships-sponsorships/moe-teaching-scholarships-full-term/moe-application"
+        ],
+        "last_verified_date": "2026-10-10",
+        "verification_status": "confirmed",
+        "confidence": "high",
+        "not_confirmed": [
+          "funding_amount",
+          "funding_currency",
+          "funding_period",
+          "english_requirement",
+          "research_requirement",
+          "the specific list of supporting documents beyond the online application form",
+          "an exact closing date for the non-A-Level qualification windows"
+        ],
+        "notes": "Read both MOE official pages (Scholarship/Award details and Application). MOE publishes the benefit columns for the PSC-administered Education Merit Scholarship/Teaching Scholarship and the MOE-administered Teaching Award, the bond schedule and the per-qualification-type windows, but publishes no monetary figures."
+      },
+      "applicant_utility": {
+        "summary": "This is not one deadline but five, because MOE opens a separate window for each qualification type and the only fixed date in the set is 19 March 2027 for GCE A-Level holders. A single application puts you in the running for both the PSC-administered Education Merit Scholarship/Teaching Scholarship and the MOE-administered Teaching Award, so there is nothing extra to file for the richer package, but which one you can be offered depends on where you study, since the Award track is restricted to reputable local universities including the NTU-NIE BABSc. Bond length then tracks that choice: four years locally, five for a non-English-speaking country, six for an English-speaking one.",
+        "best_fit": "Singapore Citizen school leavers with a strong CCA and leadership record who are certain they want to teach in an MOE school and can act inside their own qualification window.",
+        "application_readiness_checklist": [
+          "Identify your qualification type first and diarise that specific window; A-Level, IB/international, NUS High School Diploma and Polytechnic Diploma all open on different dates.",
+          "Submit as early as your window allows, because MOE says those who apply earlier and are shortlisted are scheduled for interviews sooner.",
+          "Check that your intended course maps to a teaching subject; if it is unusual, MOE says you may still apply and will advise what you can be assigned to teach.",
+          "Prepare the supporting documents before the window opens, since the form and its attachments are submitted together.",
+          "If you actually want the PSC Scholarship (Teaching Service) rather than the MOE-administered awards, file separately through the PSC Gateway Portal by 15 March 2027."
+        ],
+        "common_rejection_risks": [
+          "Missing your own qualification-type window entirely, because the headline date is the A-Level one.",
+          "A course of study with no clear teaching subject link, which leaves MOE unable to place you.",
+          "Not being a Singapore Citizen at the point of offer, which is a hard requirement rather than a preference.",
+          "Reading silence after an interview as a rejection, when MOE says three weeks of silence still means active consideration.",
+          "Assuming the richer Scholarship benefits if your offer turns out to be the local-only Teaching Award."
+        ],
+        "estimated_uncovered_costs": "No allowance or fee figures are published, so the size of the maintenance allowance cannot be gauged from the page; overseas living costs beyond the stated allowance and pre-service costs are the scholar's own.",
+        "document_audit": [
+          "Only the online application form with the necessary supporting documents is specified, so the form itself carries the evidence burden; keep certificates and CCA records ready to attach.",
+          "The Award column covers local universities only, so an overseas offer reclassifies what you can be offered rather than adding documents.",
+          "BABSc enrollees are not required to complete the PGDE, but anyone who does take the PGDE at NIE picks up an additional concurrent 3-year bond.",
+          "There is no published document checklist, so contact MOE's recruitment team if unsure what counts as a necessary supporting document."
+        ],
+        "alerts": [
+          "Interviews and selection processes start as soon as you are shortlisted, so your window effectively closes earlier than its nominal end date.",
+          "MOE's first contact can take four weeks after the window closes, and the outcome only follows after the interview.",
+          "Bond length changes with where you study: 4 years locally, 5 years in a non-English-speaking country, 6 years in an English-speaking one.",
+          "Two administering bodies are involved, so status updates and offers arrive through different channels.",
+          "The Singapore-Cambridge GCE A Level window opens only on results release day, so there is no lead time to prepare documents."
+        ],
+        "submission_workflow": "One online MOE application in your qualification window, then shortlisting, then an interview and possible further selection processes, then a bond on appointment."
+      }
+    }
+  ]
+}

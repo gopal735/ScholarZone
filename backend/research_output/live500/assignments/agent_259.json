@@ -1,0 +1,82 @@
+{
+ "agent": "agent_259",
+ "assignment_count": 1,
+ "scholarships": [
+  {
+   "id": 618,
+   "title": "Presidential West African Scholarship Initiative (PWASI) 2026",
+   "country": "Ghana",
+   "degree": "Bachelor's, Master's, PhD",
+   "funding_label": "Scholarship (coverage not itemised in the official notice)",
+   "status": "upcoming",
+   "official_source": "Ghana Scholarships Authority (Government of the Republic of Ghana)",
+   "official_source_url": "https://scholarships.gov.gh/opportunities/presidential-west-african-scholarship-initiative-pwasi-2026",
+   "application_link": "https://scholarships.gov.gh/opportunities/presidential-west-african-scholarship-initiative-pwasi-2026",
+   "catalogue_url": "https://scholarships.gov.gh/opportunities",
+   "official_updates_url": "https://scholarships.gov.gh/opportunities",
+   "existing": {
+    "funding_amount": null,
+    "funding_currency": null,
+    "funding_period": null,
+    "tuition_coverage": 0,
+    "living_cost_coverage": null,
+    "travel_coverage": null,
+    "fully_funded": 0,
+    "description": "The Government of the Republic of Ghana awards scholarships for full-time, on-campus undergraduate and postgraduate study at public tertiary education institutions in Ghana to qualified nationals of ECOWAS member states other than Ghana for the 2026/2027 academic year. Awards are made in priority fields aligned with regional development priorities, including medicine, nursing, public health, biomedical sciences, engineering, computer science, artificial intelligence, data science, cybersecurity, renewable energy, agribusiness, crop science, animal science, food technology, law and climate studies. Applications run through each applicant's home-country nominating agency, which is subject to a quota of three nominees per ECOWAS member state, so applicants cannot apply directly.",
+    "eligibility": [
+     "Be a citizen of an ECOWAS member state other than Ghana",
+     "Meet the admission requirements of the participating university applied to",
+     "Demonstrate academic excellence and leadership potential",
+     "Demonstrate commitment to contributing to national or regional development",
+     "Meet immigration and visa requirements for international students studying in Ghana"
+    ],
+    "eligibility_summary": "Citizens of an ECOWAS member state other than Ghana, meeting the admission requirements of a listed participating Ghanaian public tertiary institution, with academic excellence, leadership potential and commitment to national or regional development, plus immigration and visa compliance.",
+    "benefits": [
+     "Scholarship award covering study at a participating Ghanaian public tertiary institution for the 2026/2027 academic year"
+    ],
+    "coverage": [
+     "Scholarship award for full-time, on-campus study at a public tertiary education institution in Ghana"
+    ],
+    "requirements": [
+     "Apply for at least one full-time on-campus programme at a Ghanaian public tertiary institution and attach either a conditional offer/admission letter or an acknowledgement notice that the application was made and the application fee paid",
+     "Submit academic credentials, admission letters and supporting documents via the Ghana Scholarships Authority online portal",
+     "Be nominated by the nominating agency of your ECOWAS member state; individual applicants cannot self-nominate"
+    ],
+    "documents": [
+     "Conditional offer / letter of admission, or acknowledgement notice of a paid application from a Ghanaian public tertiary institution",
+     "Academic credentials",
+     "Completed National Endorsement Form (processed by the nominating agency)"
+    ],
+    "english_requirement": null,
+    "application_method": [
+     "Apply to a participating Ghanaian public tertiary institution using that institution's own admissions portal",
+     "Submit credentials and admission evidence through the Ghana Scholarships Authority online portal at https://www.scholarships.gov.gh",
+     "Wait for the Authority's initial review and onward submission to the designated nominating agency in your ECOWAS member state"
+    ],
+    "selection_notes": "Selection criteria are not set out in the published notice. Nominating agencies are instructed to use the section 1.0 eligibility criteria and the section 3.0 priority fields of study when deciding whom to nominate. Total quota across all 14 ECOWAS member states is 42 nominees (3 per state).",
+    "best_fit": "ECOWAS nationals with an already-secured or in-progress admission to a participating Ghanaian public university in a listed priority field (health sciences, engineering and computing, agriculture and food systems, law and governance, or environment and climate).",
+    "notes": "Direct individual application is not possible: the notice requires nomination by an official nominating agency in the applicant's ECOWAS member state, submitted through the Ministry of Foreign Affairs (Ghana). The published 2026 cycle is closed for individual applicants because the nominating-agency deadline of 30 August 2026 has passed. The notice does not itemise whether the award covers tuition, living costs or both.",
+    "duration": "Undergraduate: 4 years; Masters: 2 years; Ph.D.: 4 years (maximum duration stated in the notice)",
+    "application_period": "2026/2027 academic year",
+    "deadline_display": "30 August 2026 for ECOWAS nominating agencies to return National Endorsement Forms (2026 cycle); deadline shown as 'Not specified' on the Authority notice",
+    "deadline_date": null,
+    "region": "Africa",
+    "program_type": "Regional government scholarship",
+    "applicant_utility": null,
+    "official_details": null
+   },
+   "missing_fields": [
+    "funding_amount",
+    "funding_currency",
+    "funding_period",
+    "living_cost_coverage",
+    "travel_coverage",
+    "english_requirement",
+    "deadline_date",
+    "applicant_utility",
+    "official_details"
+   ]
+  }
+ ],
+ "result_file": "C:\\Users\\GopaL\\Desktop\\Projects folder\\ScholarZone\\backend\\research_output\\live500\\results\\agent_259.json"
+}

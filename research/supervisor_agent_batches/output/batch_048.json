@@ -1,0 +1,68 @@
+[
+  {
+    "scholarship_id": 382,
+    "outcome": "no_verified_supervisor_found",
+    "professors": [],
+    "notes": "VU Fellowship Programme (VUFP) is a university-wide, merit-based tuition fee waiver for incoming non-EU/EEA Master's students applying to any full-time English-taught Master's programme at Vrije Universiteit Amsterdam. Applications are reviewed by the faculty of the applied-for programme and nominated to the Central Scholarship Committee; no supervising professor or faculty member is tied to the scholarship. Official page lists only administrative scholarships officers (María del Pilar Jimenez Galindo, Catarina de Sa Barreto Callou) and the contact mailbox scholarships.incoming@vu.nl - these are student-facing admin staff, not supervising professors, so they are not recorded. Source: https://vu.nl/en/education/more-about/incoming-master-scholarships"
+  },
+  {
+    "scholarship_id": 383,
+    "outcome": "no_verified_supervisor_found",
+    "professors": [],
+    "notes": "Erasmus Trustfonds Scholarship (Erasmus School of Economics) is a school-administered merit/need award for prospective first-year Master's students admitted to one of three named ESE programmes (Master Accounting, Auditing and Control; Master Econometrics and Management Science; Master Economics and Business). Selection is by the school's scholarship committee; applications go through the ESE Information Desk (administrative contact). No supervising professor or named faculty is attached to the scholarship on the official page. Source: https://www.eur.nl/en/ese/education/master/fees-and-scholarships/scholarships-and-grants/erasmus-trustfonds-scholarship (URL in batch contained a typo, 'fees-and-solarships'; corrected page fetched and verified)."
+  },
+  {
+    "scholarship_id": 384,
+    "outcome": "verified_supervisors",
+    "professors": [
+      {
+        "canonical_name": "Marcel de Jeu",
+        "title": "Dr.",
+        "institution_name": "Erasmus University Rotterdam (Erasmus MC)",
+        "department_name": "Department of Neuroscience, Erasmus MC Graduate School",
+        "official_profile_url": "https://www.eur.nl/en/research-master/neuroscience/contact",
+        "official_email": null,
+        "official_email_verified": false,
+        "lab_url": null,
+        "personal_academic_url": null,
+        "research_areas": ["Neuroscience"],
+        "research_keywords": ["research master programme leadership", "neuroscience"],
+        "relationship_type": "program_faculty",
+        "evidence_source_url": "https://www.eur.nl/en/research-master/neuroscience/contact",
+        "evidence_source_type": "official_programme_page",
+        "evidence_quote_or_summary": "Official EUR page for the Research Master Neuroscience lists 'Program director: Dr. Marcel de Jeu' with the programme mailbox masterneuroscience@erasmusmc.nl and phone +31 (0)10 - 704 3560. The Neuroscience Research Master is one of the three programmes eligible for the Erasmus Trustfonds Scholarship / TSH Changemaker Scholarship at Erasmus MC.",
+        "confidence": 80,
+        "availability": {
+          "scope": "masters_supervision",
+          "state": "unknown",
+          "source_url": "https://www.eur.nl/en/research-master/neuroscience/contact"
+        }
+      }
+    ],
+    "notes": "The Erasmus Trustfonds Scholarship / TSH Changemaker Scholarship (Erasmus MC) is tied to three full-time Research Master's programmes: Health Sciences, Neuroscience, and Molecular Medicine. Named programme faculty verified on official eur.nl pages: Dr. Marcel de Jeu, Program director of the Research Master Neuroscience (personal email not published; only the shared programme mailbox masterneuroscience@erasmusmc.nl, so official_email is null and unverified). The Molecular Medicine programme names only an Educational Advisor/Programme Coordinator (Marjoleine van Berckel Bik, staff, no doctoral title stated), and the Health Sciences programme contact page lists no named individual, so neither is recorded as a professor. The scholarship itself is awarded by the faculty/scholarship committee, not by an individual supervisor. Sources: https://www.eur.nl/en/erasmusmc/programmes/practical-matters/scholarships/erasmus-trustfonds-scholarship-tsh-changemaker-scholarship ; https://www.eur.nl/en/research-master/neuroscience/contact ; https://www.eur.nl/en/research-master/molecular-medicine/contact ; https://www.eur.nl/en/research-master/health-sciences/contact"
+  },
+  {
+    "scholarship_id": 385,
+    "outcome": "no_verified_supervisor_found",
+    "professors": [],
+    "notes": "LUF - Lutfia Rabbani Scholarship Fund is a named university-wide fund for exceptional Master's students from Arab-region countries, spanning many Leiden faculties (Archaeology, Humanities, Medicine/LUMC, Law, Social and Behavioural Sciences, Science, etc.). It is administered by Leiden University in partnership with the Lutfia Rabbani Foundation; the official page directs applicants to the Foundation (info@rabbanifoundation.org, an external foundation contact). No supervising professor or faculty member is attached to the scholarship. Source: https://www.student.universiteitleiden.nl/en/scholarships/sea/leiden-university-fund---lutfia-rabbani-scholarship-fund"
+  },
+  {
+    "scholarship_id": 386,
+    "outcome": "no_verified_supervisor_found",
+    "professors": [],
+    "notes": "Justus & Louise van Effen Excellence Scholarships are university-wide excellence awards (2 per faculty) for incoming international students admitted to any 2-year regular TU Delft MSc programme, funded by the Justus & Louise van Effen Excellence Foundation and awarded by TU Delft (applicants notified by email by end of March 2027). No supervising professor or named faculty is tied to the scholarship on the official TU Delft scholarships page. Source: https://www.tudelft.nl/en/education/study-programme-orientation/practical-matters/scholarships (batch URL .../justus-louise-van-effen-excellence-scholarships returned 404; the van Effen scholarship content is published on this official TU Delft scholarships page)."
+  },
+  {
+    "scholarship_id": 387,
+    "outcome": "no_verified_supervisor_found",
+    "professors": [],
+    "notes": "Wageningen University Excellence Programme (WU Excellence Scholarship) is an invitation-based, nationality-limited full tuition fee waiver for outstanding applicants admitted to any eligible on-campus two-year MSc programme; selection is coordinated by the WU Scholarship Selection Committee with a final-stage lottery. No supervising professor or named faculty is tied to the scholarship. Source: https://www.wur.nl/en/education/master/study-expenses-masters/scholarships"
+  },
+  {
+    "scholarship_id": 388,
+    "outcome": "not_applicable",
+    "professors": [],
+    "notes": "Embassy Science Fellowship (ESF-NL) 2027 is a national government-funded research secondment fellowship run by the Dutch Research Council (NWO) and the Ministry of Foreign Affairs. It places PhD graduates (and 'lectoren'/senior researchers) from any Dutch research organisation at Dutch diplomatic missions abroad for 1-3 months; it is not attached to a specific university, department, or supervising professor. Official page lists only NWO programme officers (Uyoyo Onemu, Laura Trijsburg; SDF@NWO.NL) as administrative contacts, not supervisors. Source: https://www.nwo.nl/en/calls/embassy-science-fellowship-esf-nl-2027"
+  }
+]

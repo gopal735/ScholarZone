@@ -1,0 +1,85 @@
+{
+ "agent": "agent_317",
+ "assignment_count": 1,
+ "scholarships": [
+  {
+   "id": 706,
+   "title": "Allama Iqbal Scholarships for Srilankan Students (Pak-Sri Lanka Higher Education Cooperation Programme, Higher Education Commission Pakistan)",
+   "country": "Sri Lanka",
+   "degree": "Bachelor's, Master's, PhD",
+   "funding_label": "Fully Funded",
+   "status": "upcoming",
+   "official_source": "Higher Education Commission (HEC), Government of Pakistan",
+   "official_source_url": "https://www.hec.gov.pk/english/scholarshipsgrants/pshecp/aiss/Pages/default.aspx",
+   "application_link": "https://www.hec.gov.pk/english/scholarshipsgrants/pshecp/aiss/Pages/default.aspx",
+   "catalogue_url": "https://www.hec.gov.pk/english/scholarshipsgrants/pshecp/Pages/default.aspx",
+   "official_updates_url": "https://www.hec.gov.pk/english/scholarshipsgrants/pshecp/Pages/Contact-Us.aspx",
+   "existing": {
+    "funding_amount": null,
+    "funding_currency": null,
+    "funding_period": null,
+    "tuition_coverage": 1,
+    "living_cost_coverage": 1,
+    "travel_coverage": 1,
+    "fully_funded": 1,
+    "description": "The Allama Iqbal Scholarships for Srilankan Students are the student component of the Government of Pakistan's Pak-Sri Lanka Higher Education Cooperation Programme, which HEC runs with the Pakistan High Commission in Colombo and Pakistan's Ministry of Foreign Affairs. Spread over five years the programme provides 1,000 places for Sri Lankan students to pursue undergraduate, postgraduate and doctoral degrees in Engineering Science, Basic and Natural Sciences, and Social Sciences at top-ranked Pakistani universities. HEC describes the allocation as 800 fully funded and 200 partially funded places. Benefits are full programme tuition, an accommodation allowance, a study allowance, a books allowance and a one-time return air ticket, and HEC explicitly encourages women candidates to apply.",
+    "eligibility": [
+     "Sri Lankan national",
+     "Applying to an undergraduate, postgraduate or doctoral programme in Engineering Science, Basic and Natural Sciences, or Social Sciences",
+     "Applying to a top-ranked Pakistani university",
+     "Women candidates are highly encouraged to apply"
+    ],
+    "eligibility_summary": null,
+    "benefits": [
+     "Full tuition fee for the programme in Pakistan",
+     "Accommodation allowance",
+     "Study allowance",
+     "Books allowance",
+     "One-time return air ticket"
+    ],
+    "coverage": [
+     "Full tuition fee of the programme",
+     "Accommodation allowance",
+     "Study allowance",
+     "Books allowance",
+     "One-time return air ticket"
+    ],
+    "requirements": [
+     "Submit an online application within the published window",
+     "Meet the admission requirements of the chosen Pakistani university",
+     "Select a discipline in Engineering Science, Basic and Natural Sciences, or Social Sciences"
+    ],
+    "documents": [],
+    "english_requirement": null,
+    "application_method": [
+     "Apply online through the Higher Education Commission's portal for the advertised cycle",
+     "Contact the programme desk at info.paksl@hec.gov.pk for queries"
+    ],
+    "selection_notes": "HEC states that selected candidates will study at top-ranked Pakistani universities, learn about Pakistani society and values, acquire leadership skills, and help educate fellow Pakistani students and community groups about Sri Lankan culture. The programme forms part of HEC's internationalisation initiative to encourage international students to study in Pakistan.",
+    "best_fit": null,
+    "notes": "The wider cooperation programme also covers a university faculty exchange of up to two weeks in each direction, short trainings for Sri Lankan government officials nominated each year, an annual Pakistan Higher Education Expo in Colombo, and a Centre of Asian Civilizations and Cultures at a Sri Lankan university.",
+    "duration": "Spread over five years across 1,000 places; individual award duration is not published on the pages read.",
+    "application_period": "Annual cycle advertised by HEC; the 2026 cycle closed on 5 July 2026 after an extension, so the next window is expected in 2027",
+    "deadline_display": "Last date for submission of online applications was 5 July 2026; the next cycle is expected on the same annual pattern",
+    "deadline_date": null,
+    "region": "Asia",
+    "program_type": "Government scholarship",
+    "applicant_utility": null,
+    "official_details": null
+   },
+   "missing_fields": [
+    "funding_amount",
+    "funding_currency",
+    "funding_period",
+    "eligibility_summary",
+    "documents",
+    "english_requirement",
+    "best_fit",
+    "deadline_date",
+    "applicant_utility",
+    "official_details"
+   ]
+  }
+ ],
+ "result_file": "C:\\Users\\GopaL\\Desktop\\Projects folder\\ScholarZone\\backend\\research_output\\live500\\results\\agent_317.json"
+}

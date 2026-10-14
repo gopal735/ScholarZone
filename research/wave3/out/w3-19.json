@@ -1,0 +1,21 @@
+{
+  "agent_id": "w3_19",
+  "shard": "w3-19",
+  "host": "conservationleadershipprogramme.org",
+  "today": "2026-10-04",
+  "logo_override": {
+    "url": "https://www.conservationleadershipprogramme.org/wp-content/uploads/2025/01/clp-icon-200x200.jpg",
+    "page_url": "https://www.conservationleadershipprogramme.org/awards-opportunities/team-awards/future-conservationist-award/",
+    "official_host": true,
+    "alt_text": "Conservation Leadership Programme",
+    "validation_result": "verified",
+    "validation_detail": "Verified in-browser per brief section 2.4, because this host is captcha-gated. The page returned HTTP 200 with title 'Future Conservationist Award - Conservation Leadership Programme', and the asset was fetched by the browser as a real image (naturalWidth 200, naturalHeight 200) and decoded to a canvas, which proves HTTP 200 plus genuine image bytes rather than an HTML interstitial. Pixel analysis of the decoded bitmap: 200x200, 0.0% transparent (jpg, so no alpha channel exists at all), 66.2% near-white background, 29.4% mid-tone and 4.4% dark - i.e. a coloured CLP mark on an opaque white field, with no white-on-transparent variant possible.",
+    "image_kind": "official_logo",
+    "image_format": "jpg",
+    "verified_at": "2026-10-04T00:00:00+00:00",
+    "host_evidence": "same_registrable_domain",
+    "_award": "CLP Future Conservationist Awards 2027"
+  },
+  "target_ids": [535],
+  "notes": "webfetch cannot read this host at all: the page returns a SiteGround bot interstitial, <meta http-equiv=\"refresh\" content=\"0;/.well-known/sgcaptcha/?r=%2Fawards-opportunities%2Fteam-awards%2Ffuture-conservationist-award&y=...\">, and the image paths are gated identically, so a direct webfetch of the chosen asset returns the same captcha redirect rather than image bytes. I therefore used the Playwright route the brief explicitly permits, opening the real page (HTTP 200) and reading the asset out of the rendered document. Candidates found and how I chose: /wp-content/uploads/2025/01/clp-icon-200x200.jpg is named for the programme and is the Conservation Leadership Programme brand mark, 200x200, opaque, coloured artwork on white - selected. /wp-content/uploads/2024/11/cropped-icon-192x192.png is WordPress's auto-generated site icon (declared as link rel=icon and msapplication-TileImage); pixel stats 45.2% transparent, 0.0% white opaque, 14.5% dark + 85.5% mid would also have passed rule 3, but it is the older cropped site icon rather than the current programme mark. /wp-content/uploads/2025/01/fca.png (552x552, 21.2% transparent, avg luminance 106.7) is Future Conservationist Award artwork - per-award promotional art, not the awarding body's identity, so rejected under rule 2. Rule 2 reasoning: CLP is the joint programme of BirdLife International, Fauna & Flora International and the Wildlife Conservation Society, and it is the CLP programme brand - served from the shard host itself - that awards the Future Conservationist Awards, so the CLP mark is the correct body mark rather than any single partner's logo. No partner logo and no third-party asset was substituted."
+}

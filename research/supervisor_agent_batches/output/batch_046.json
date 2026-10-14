@@ -1,0 +1,114 @@
+[
+  {
+    "scholarship_id": 368,
+    "outcome": "not_applicable",
+    "professors": [],
+    "notes": "Royal Society - Research Ireland University Research Fellowship is a portable national research fellowship awarded to early-career researchers themselves (not students), hosted at any Research Ireland Eligible Research Body in Ireland. No specific supervising professor is attached to the scheme; the applicant builds an independent research career. Official sources checked: researchireland.ie/funding/royal-society-university and the Royal Society scheme notes PDF. Treated as not_applicable per national/foundation scheme guidance."
+  },
+  {
+    "scholarship_id": 369,
+    "outcome": "not_applicable",
+    "professors": [],
+    "notes": "Sapienza Universita di Roma scholarship portfolio is a student benefits scheme (study materials reimbursement, housing, international thesis scholarships, post-degree scholarships, paid student collaborations; regional benefits via Disco Lazio). No supervising professors or research groups are attached. The URL in the input (https://www.uniroma1.it/en/pagina/straniieri-borse-di-studio) returned 404; the live official portfolio page is https://www.uniroma1.it/en/pagina/scholarships."
+  },
+  {
+    "scholarship_id": 370,
+    "outcome": "not_applicable",
+    "professors": [],
+    "notes": "Padua International Excellence Scholarship Programme is a merit-based tuition scholarship (EUR 8,000/year plus fee exemption) for international students entering English-taught bachelor's or master's degrees at the University of Padua. It is a student scholarship with no attached supervising professors or research programme. Official homepage https://www.unipd.it/en verified live."
+  },
+  {
+    "scholarship_id": 371,
+    "outcome": "not_applicable",
+    "professors": [],
+    "notes": "University of Bologna study grants and subsidies are a financial-support portfolio (ERGO fee reductions and study grants, merit-based fee exemptions, accommodation support, national scheme signposting) administered by student services. No supervising professors are attached to the portfolio. Official page https://www.unibo.it/en/study verified live."
+  },
+  {
+    "scholarship_id": 372,
+    "outcome": "verified_supervisors",
+    "professors": [
+      {
+        "canonical_name": "Sandra Covino",
+        "title": "Professor (Professore ordinario / full professor, Italian linguistics)",
+        "institution_name": "University for Foreigners of Perugia (Universita per Stranieri di Perugia)",
+        "department_name": "Department of Italian Language, Literature and Arts in the World (LILAIM)",
+        "official_profile_url": "https://www.unistrapg.it/sandra-covino",
+        "official_email": "sandra.covino@unistrapg.it",
+        "official_email_verified": true,
+        "lab_url": null,
+        "personal_academic_url": null,
+        "research_areas": ["Italian linguistics", "History of the Italian language", "Language policies", "Italian abroad in historical perspective", "Teaching Italian as L1 and L2"],
+        "research_keywords": ["linguistica italiana", "storia della lingua italiana", "politiche linguistiche", "italiano all'estero", "didattica dell'italiano L2"],
+        "relationship_type": "program_faculty",
+        "evidence_source_url": "https://www.unistrapg.it/en/educational-offer/bachelors-and-masters-degree-programs/masters-degree-programme-italian-language-teaching-foreigners-itas",
+        "evidence_source_type": "official_programme_page",
+        "evidence_quote_or_summary": "ItAS Master's Degree Programme info box: 'Programme Chair: Prof. Sandra Covino sandra.covino@unistrapg.it'. Her profile also confirms she teaches 'Storia della lingua italiana e italiano fuori d'Italia' on the Italiano per l'insegnamento a stranieri course.",
+        "confidence": 95,
+        "availability": {
+          "scope": "masters_supervision",
+          "state": "verified_yes",
+          "source_url": "https://www.unistrapg.it/en/educational-offer/bachelors-and-masters-degree-programs/masters-degree-programme-italian-language-teaching-foreigners-itas"
+        }
+      },
+      {
+        "canonical_name": "Sabrina Stroppa",
+        "title": "Professor (Professore ordinario / full professor, Italian literature)",
+        "institution_name": "University for Foreigners of Perugia (Universita per Stranieri di Perugia)",
+        "department_name": "Department of Italian Language, Literature and Arts in the World (LILAIM)",
+        "official_profile_url": "https://www.unistrapg.it/sabrina-stroppa",
+        "official_email": "sabrina.stroppa@unistrapg.it",
+        "official_email_verified": true,
+        "lab_url": null,
+        "personal_academic_url": null,
+        "research_areas": ["Italian studies", "Petrarch and Petrarchism", "Contemporary Italian poetry", "Literature didactics"],
+        "research_keywords": ["italianistica", "Petrarca", "poesia contemporanea italiana", "didattica della letteratura"],
+        "relationship_type": "program_faculty",
+        "evidence_source_url": "https://www.unistrapg.it/en/educational-offer/bachelors-and-masters-degree-programs/masters-degree-programme-italian-language-teaching-foreigners-itas",
+        "evidence_source_type": "official_programme_page",
+        "evidence_quote_or_summary": "ItAS Master's Degree Programme info box: 'Tutor: Prof. Sabrina Stroppa sabrina.stroppa@unistrapg.it'. She also teaches 'Letteratura italiana' and the 'Laboratorio di scrittura della tesi' on the ItAS programme.",
+        "confidence": 95,
+        "availability": {
+          "scope": "masters_supervision",
+          "state": "verified_yes",
+          "source_url": "https://www.unistrapg.it/en/educational-offer/bachelors-and-masters-degree-programs/masters-degree-programme-italian-language-teaching-foreigners-itas"
+        }
+      },
+      {
+        "canonical_name": "Daniele Beltrame",
+        "title": "Associate Professor (Professore associato, Chinese language and culture)",
+        "institution_name": "University for Foreigners of Perugia (Universita per Stranieri di Perugia)",
+        "department_name": "Department of Italian Language, Literature and Arts in the World (LILAIM)",
+        "official_profile_url": "https://www.unistrapg.it/daniele-beltrame",
+        "official_email": "daniele.beltrame@unistrapg.it",
+        "official_email_verified": true,
+        "lab_url": null,
+        "personal_academic_url": null,
+        "research_areas": ["Modern and contemporary Chinese literature", "History of cultural exchange between China and Europe", "Gender studies"],
+        "research_keywords": ["letteratura cinese moderna e contemporanea", "scambi culturali Cina-Europa", "gender studies"],
+        "relationship_type": "program_faculty",
+        "evidence_source_url": "https://www.unistrapg.it/en/educational-offer/bachelors-and-masters-degree-programs/masters-degree-programme-italian-language-teaching-foreigners-itas",
+        "evidence_source_type": "official_programme_page",
+        "evidence_quote_or_summary": "ItAS Master's Degree Programme info box: 'Tutor: ... Prof. Daniele Beltrame daniele.beltrame@unistrapg.it' and 'Double Degree Coordinator: Prof. Daniele Beltrame daniele.beltrame@unistrapg.it'. He teaches 'Lingua e cultura cinese' on the ItAS programme.",
+        "confidence": 95,
+        "availability": {
+          "scope": "masters_supervision",
+          "state": "verified_yes",
+          "source_url": "https://www.unistrapg.it/en/educational-offer/bachelors-and-masters-degree-programs/masters-degree-programme-italian-language-teaching-foreigners-itas"
+        }
+      }
+    ],
+    "notes": "ITALYOU is a MAECI scholarship tied to a specific named programme: the ItAS Master's degree in Italian for Teaching to Foreigners at the University for Foreigners of Perugia. The official ItAS course page publishes the Programme Chair, academic tutors and double-degree coordinator with institutional @unistrapg.it emails; these are the programme faculty relevant to scholarship holders (selection coordinated by the University per esteri.it). Max 3 professors recorded."
+  },
+  {
+    "scholarship_id": 373,
+    "outcome": "not_applicable",
+    "professors": [],
+    "notes": "Japanese Government (MEXT) Undergraduate Scholarship (embassy recommendation) is a national government scheme; students are placed at Japanese national universities determined by MEXT, with no attached supervising professor. Official source: studyinjapan.go.jp. Treated as not_applicable per national/government scheme guidance."
+  },
+  {
+    "scholarship_id": 374,
+    "outcome": "not_applicable",
+    "professors": [],
+    "notes": "Japanese Government (MEXT) Research Students Scholarship (embassy recommendation) is a national government scheme; the accepting university and any prospective supervisor are determined after selection and are not attached to the scholarship. Official source: studyinjapan.go.jp / MEXT FY2027 Research Guidelines. Treated as not_applicable per national/government scheme guidance."
+  }
+]

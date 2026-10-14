@@ -1,0 +1,161 @@
+{
+ "agent": "agent_374",
+ "assignment_count": 2,
+ "scholarships": [
+  {
+   "id": 267,
+   "title": "LUT Scholarship and Early Bird Discount (master's studies)",
+   "country": "Finland",
+   "degree": "Master's",
+   "funding_label": "Tuition Fee Waiver",
+   "status": "open",
+   "official_source": "LUT University",
+   "official_source_url": "https://www.lut.fi/en/tuition-fees-and-scholarships",
+   "application_link": "https://www.lut.fi/en/tuition-fees-and-scholarships",
+   "catalogue_url": "https://www.lut.fi/en/studies/technology/masters-programmes-technology",
+   "official_updates_url": "https://www.lut.fi/en/studies/apply-lut/applying-masters-programmes",
+   "existing": {
+    "funding_amount": 5000,
+    "funding_currency": "EUR",
+    "funding_period": null,
+    "tuition_coverage": 1,
+    "living_cost_coverage": 0,
+    "travel_coverage": 0,
+    "fully_funded": 0,
+    "description": "LUT University reduces tuition for fee-paying students of its two-year master's programmes in two automatic steps. In the first academic year every tuition-liable student who accepts the study place and pays the remaining EUR 10,000 of the first-year fee within 21 days of the official admission email receives an early bird discount of EUR 5,000. In the second academic year every tuition-liable student who has completed at least 60 ECTS credits in accordance with their personal study plan, with those credits recorded on the Transcript of Records by 31 July, and who pays the second-year fee on time receives a LUT scholarship of EUR 5,000. Neither award requires a separate application and neither covers living costs.",
+    "eligibility": [
+     "Admitted to a LUT two-year master's programme taught in English and liable to pay tuition fees",
+     "Early bird discount: accept the study place and pay the remaining first-year tuition fee of EUR 10,000 within 21 days of the official admission email",
+     "LUT scholarship: complete at least 60 ECTS credits in the first academic year in accordance with the personal study plan",
+     "LUT scholarship: the required 60 ECTS must be on the Transcript of Records by 31 July",
+     "LUT scholarship: pay the second-year tuition fee on time",
+     "Partner (joint) programmes have separate scholarship policies and are not covered by these terms"
+    ],
+    "eligibility_summary": "Fee-paying students in LUT's two-year English-language master's programmes: all admitted tuition-liable students receive the early bird discount if they accept and pay within 21 days, and those who complete at least 60 ECTS in the first academic year receive the second-year LUT scholarship.",
+    "benefits": [
+     "Automatic EUR 5,000 first-year tuition discount for fee-paying students who pay within 21 days",
+     "Automatic EUR 5,000 second-year LUT scholarship for students who reach 60 ECTS",
+     "Progress is checked automatically from the Transcript of Records"
+    ],
+    "coverage": [
+     "EUR 5,000 reduction of the first-year tuition fee as an early bird discount",
+     "EUR 5,000 LUT scholarship towards the second-year tuition fee",
+     "No living costs",
+     "No travel costs"
+    ],
+    "requirements": [],
+    "documents": [
+     "None specific to the scholarship; the award follows from admission and payment records",
+     "Transcript of Records showing the 60 ECTS by 31 July"
+    ],
+    "english_requirement": null,
+    "application_method": [
+     "No separate application. Accept the study place and pay the tuition fee within 21 days for the early bird discount; the second-year scholarship follows from the automatic ECTS check"
+    ],
+    "selection_notes": "There is no competitive selection: LUT states that every fee-paying student who accepts and pays within 21 days gets the early bird discount, and every student who reaches 60 ECTS gets the second-year scholarship.",
+    "best_fit": "Fee-paying international students at LUT University (energy, sustainability, business)",
+    "notes": "A separate page exists for bachelor's studies ('Early bird discount and scholarships for Bachelor's studies' at /en/studies/apply-lut/applying-bachelors-programmes/early-bird-discount-and-scholarships-bachelors) which I could not read within the fetch budget, so this record covers only the master's terms I verified. A separate Fulbright-LUT University Graduate Award exists for US citizens and is administered by the Fulbright Finland Foundation.\nFunding period: per academic year (first year early bird discount, second year LUT scholarship)",
+    "duration": "The early bird discount applies to the first academic year and the LUT scholarship to the second academic year of a two-year master's programme",
+    "application_period": null,
+    "deadline_display": "No scholarship application deadline exists: the awards are automatic. The early bird discount requires that you 'accept your study place and pay the remaining first-year tuition fee of EUR 10,000 within 21 days of your official admission email'. The LUT scholarship requires 60 ECTS recorded on your Transcript of Records by 31 July. LUT's own homepage states applications to English-language master's programmes are open until 31 March 2027 under rolling admission.",
+    "deadline_date": null,
+    "region": "Europe",
+    "program_type": "Automatic tuition fee discount and merit/study-progress tuition scholarship",
+    "applicant_utility": null,
+    "official_details": null
+   },
+   "missing_fields": [
+    "funding_period",
+    "requirements",
+    "english_requirement",
+    "application_period",
+    "deadline_date",
+    "applicant_utility",
+    "official_details"
+   ]
+  },
+  {
+   "id": 333,
+   "title": "RESDOC Doctoral Researcher Positions - Resilient and Just Systems Doctoral Project (MSCA COFUND)",
+   "country": "Finland",
+   "degree": "PhD",
+   "funding_label": "Salaried employment contract",
+   "status": "upcoming",
+   "official_source": "University of Helsinki",
+   "official_source_url": "https://www.helsinki.fi/en/research/doctoral-school/resdoc-project",
+   "application_link": "https://www.helsinki.fi/en/research/doctoral-school/resdoc-project",
+   "catalogue_url": "https://jobs.helsinki.fi/job/Helsinki-Doctoral-Researchers-%2830-positions%29-in-various-disciplines-at-the-University-of-Helsinki%2C-Finland/1362391657",
+   "official_updates_url": "https://www.helsinki.fi/en/research/doctoral-school/resdoc-project/how-apply",
+   "existing": {
+    "funding_amount": 2900,
+    "funding_currency": "EUR",
+    "funding_period": "per month",
+    "tuition_coverage": 0,
+    "living_cost_coverage": 1,
+    "travel_coverage": 1,
+    "fully_funded": 0,
+    "description": "RESDOC (Resilient and Just Systems Doctoral Project) is an international doctoral training project at the University of Helsinki, co-funded by the Marie Skłodowska-Curie Actions COFUND scheme under Horizon Europe and the University itself. It recruits 30 doctoral researchers for four-year, 100% employment contracts running 2027-2030, at a gross salary of approximately EUR 2,900 per month including a mobility allowance, plus an annual travel allowance for conferences and secondments. Research must fit one of four interdisciplinary themes: Infectious Diseases and Antimicrobial Resistance in Changing Environment; Biodiversity and Nature's Resilience; Secure and Sustainable Food and Water Systems; and Just Socio-Ecological Transition. The 2026 call closed on 31 August 2026 with 2,159 applications, and evaluation by external evaluators was under way in September 2026.",
+    "eligibility": [
+     "Master's degree or equivalent qualifying for doctoral studies, fully completed and dated on the certificate by the call deadline (31 August 2026)",
+     "No PhD degree held",
+     "Early-stage researcher: fewer than 4 years of full-time-equivalent research experience after the Master's degree",
+     "Not permanently employed by the University of Helsinki",
+     "MSCA mobility rule: no more than 12 months of residence or main activity in Finland in the 36 months before the call deadline (1 September 2023 - 31 August 2026)",
+     "Meets the University of Helsinki's English language requirements",
+     "Willing to reside in Finland for the full four-year duration",
+     "Proposes a research topic fitting one of the four RESDOC themes with available supervision"
+    ],
+    "eligibility_summary": "Early-stage researchers who hold a completed Master's degree (or equivalent) qualifying for doctoral studies, dated on the certificate by the call deadline, do not already hold a PhD, have less than four years of full-time-equivalent research experience after the Master's degree, are not permanently employed by the University of Helsinki, satisfy the MSCA mobility rule, and are willing to reside in Finland for the full four years.",
+    "benefits": [
+     "Full-time 100% employment contract for four years under the Finnish university collective agreement",
+     "Approximately EUR 2,900 gross per month",
+     "Mobility allowance within the salary to cover relocation costs",
+     "Annual travel allowance for conferences and secondments",
+     "Structured doctoral training in AI, systems thinking, innovation and intersectoral collaboration"
+    ],
+    "coverage": [
+     "Gross salary of approximately EUR 2,900 per month including a mobility allowance for relocation costs",
+     "Annual travel allowance budget for international conferences and secondments",
+     "Employee occupational health care and staff benefits"
+    ],
+    "requirements": [
+     "Use the University of Helsinki's predefined templates exactly - non-template applications are disqualified at the eligibility stage",
+     "Respect the given font size and page limits",
+     "File names in Latin alphabet and Arabic numerals only",
+     "Each PDF must not exceed 5 MB",
+     "No additional attachments - only the mandatory documents are evaluated"
+    ],
+    "documents": [
+     "Europass CV using the predefined template (PDF, max 5 MB)",
+     "Letter of Motivation and doctoral study plan using the predefined template (PDF)",
+     "Research proposal, ethics self-assessment and intersectoral mobility plan using the predefined template (PDF)",
+     "Scanned copy of the master's degree certificate and transcript of records, with official translations if not in Finnish, Swedish or English",
+     "Proof of English language skills (optional at application; required by 31 December 2026 for shortlisted candidates)"
+    ],
+    "english_requirement": "Applications must be submitted in English; shortlisted candidates must provide a valid proof of English language skills accepted by the University of Helsinki by 31 December 2026.",
+    "application_method": [
+     "Apply through the University of Helsinki online recruitment system only",
+     "Submit in English by the call deadline",
+     "Attach the mandatory Europass CV, motivation/study plan and research proposal templates"
+    ],
+    "selection_notes": "Applications are not processed first-come, first-served; all are evaluated after the call closes. Written application carries 70% weight and interview 30%; each criterion is scored 0-5 with a pass threshold of 3.",
+    "best_fit": "Early-career researchers (fewer than four years of research experience after a Master's degree) who meet the MSCA mobility rule and want a salaried PhD in sustainability, biodiversity, food and water systems, infectious diseases or just socio-ecological transition.",
+    "notes": "RESDOC is co-funded by the MSCA COFUND programme under Horizon Europe and the University of Helsinki (Marie Skłodowska-Curie Grant Agreement No 101261796). The RESDOC project is not a funding option for an already-running doctoral study.",
+    "duration": "Four years, 2027-2030, full-time (100%) fixed-term employment contract including a six-month trial period",
+    "application_period": "One annual call; the 2026 call closed on 31 August 2026 and evaluation began in September 2026",
+    "deadline_display": "Applications for the 2026 RESDOC call had to be submitted \"by 31 August 2026 at latest 11:59 PM (Finnish time EET)\". The call is now closed and no date for the next RESDOC call has been published.",
+    "deadline_date": null,
+    "region": "Europe",
+    "program_type": "Employment-based doctoral training grant (MSCA COFUND / Horizon Europe)",
+    "applicant_utility": null,
+    "official_details": null
+   },
+   "missing_fields": [
+    "deadline_date",
+    "applicant_utility",
+    "official_details"
+   ]
+  }
+ ],
+ "result_file": "C:\\Users\\GopaL\\Desktop\\Projects folder\\ScholarZone\\backend\\research_output\\live500\\results\\agent_374.json"
+}

@@ -1,0 +1,103 @@
+{
+ "agent": "agent_250",
+ "assignment_count": 1,
+ "scholarships": [
+  {
+   "id": 608,
+   "title": "Asian University for Women Scholarships and Financial Aid (full and partial need-based aid)",
+   "country": "Bangladesh",
+   "degree": "Pre-Undergraduate, Undergraduate",
+   "funding_label": "Fully Funded, Partially Funded",
+   "status": "open",
+   "official_source": "Asian University for Women (AUW), Chittagong",
+   "official_source_url": "https://asian-university.org/admissions/scholarships-financial-aid",
+   "application_link": "https://asian-university.org/admissions/scholarships-financial-aid",
+   "catalogue_url": null,
+   "official_updates_url": "https://asian-university.org/admissions",
+   "existing": {
+    "funding_amount": null,
+    "funding_currency": null,
+    "funding_period": null,
+    "tuition_coverage": null,
+    "living_cost_coverage": null,
+    "travel_coverage": null,
+    "fully_funded": 0,
+    "description": null,
+    "eligibility": [
+     "Completed 10+2, a total of 12 years of education",
+     "60% of marks or equivalent grades in the final examinations of Grade X and Grade XII, including a minimum 60% in English and in Maths individually",
+     "For IB candidates, a minimum of 24 points out of 45 in the IB examination",
+     "Demonstrated leadership potential and a commitment to work for positive social change",
+     "Age within 22 years",
+     "For financial aid: submit AUW's Self-Assessment Form (SAF-Bangladesh or SAF-International) with supporting financial documents",
+     "Scholarship holders must maintain a CGPA of 2.5 each year",
+     "Transfer students are ineligible for financial aid"
+    ],
+    "eligibility_summary": "Women who have completed 12 years of schooling (10+2) with at least 60% in their final Grade X and Grade XII examinations, including at least 60% in English and in Maths individually, and are within 22 years of age. The university is required under its Charter to recruit primarily from South, Southeast and West Asia and the Middle East, and also accepts stateless students and applicants from outside Asia. Financial aid is decided separately by the Financial Aid Committee on assessed family circumstances, not on admission merit.",
+    "benefits": [
+     "Tuition: USD 9,000 per year",
+     "Room and board: USD 3,000 per year",
+     "Books, course supplies and student activities: USD 3,000 per year",
+     "Primary healthcare",
+     "Annual registration fee of USD 600, waivable at the Financial Aid Committee's discretion",
+     "A one-time admission fee of USD 600 and a USD 200 caution deposit apply to admitted students and are not covered by default",
+     "Possible one-way travel grant to Chittagong and a ticket home after graduation for qualifying international students on financial aid"
+    ],
+    "coverage": [
+     "Tuition: USD 9,000 per year",
+     "Room and board: USD 3,000 per year",
+     "Books, course supplies and student activities: USD 3,000 per year",
+     "Primary healthcare",
+     "Annual registration fee of USD 600, waivable at the Financial Aid Committee's discretion",
+     "A one-time admission fee of USD 600 and a USD 200 caution deposit apply to admitted students and are not covered by default",
+     "Possible one-way travel grant to Chittagong and a ticket home after graduation for qualifying international students on financial aid"
+    ],
+    "requirements": [
+     "Submit the scholarship self-assessment form with the admission application",
+     "Provide bank statements, tax return documents and salary certificates of salaried parents",
+     "Provide further documents if the Financial Aid Committee requests them",
+     "Maintain a CGPA of 2.5 each year",
+     "The Financial Aid Committee may investigate and verify all submitted information and documents"
+    ],
+    "documents": [
+     "AUW Self-Assessment Form (SAF-Bangladesh for applicants from Bangladesh, SAF-International for others)",
+     "Bank statements",
+     "Tax return documents",
+     "Salary certificates of salaried parent(s)",
+     "Other documents the Financial Aid Committee deems necessary"
+    ],
+    "english_requirement": "A minimum of 60% in English in the final Grade XII examination, or the equivalent for other examination systems.",
+    "application_method": [
+     "Apply through AUW's online admission portal at https://apps.auw.edu.bd/admission",
+     "Submit the applicable Self-Assessment Form with all supporting financial documents as part of the admission application",
+     "Complete eKYC-equivalent identity verification through the admission portal",
+     "Financial aid awards are confirmed in the offer letter and are assessed before the start of the academic programme"
+    ],
+    "selection_notes": "Admission is need-blind; the university states it seeks women who show high potential, leadership qualities and motivation regardless of economic background. Financial aid is then assessed by the Financial Aid Committee, which considers family composition, parental education and income, earnings of other family members, number of non-earning dependants, movable and immovable property, community assessment of the family's socio-economic status, the cost of schooling attended by the student or her siblings, the socio-economic situation of the area of residence, and luxury items owned. The Committee may investigate and verify all submitted information.",
+    "best_fit": "Women from low-income households in South, Southeast and West Asia and the Middle East who have completed secondary school with 60% or better and cannot afford the USD 15,000 annual cost of attendance, including first-in-family university entrants and Pathways for Promise students.",
+    "notes": "Financial aid is awarded directly by AUW and is not a separate national or international scholarship programme; it forms part of the admission application. Amounts are awarded individually and are not published in a fixed table. A campus work-study programme lets eligible undergraduates earn wages on campus, and students needing travel support for summer trips home may fund them through work-study. Travel to Chittagong and the trip home after graduation may be covered only for qualifying international students on financial aid.",
+    "duration": "Financial aid is assessed before the start of each academic programme and continued year by year; students must maintain a CGPA of 2.5 each year to retain it.",
+    "application_period": "Recurs with each annual admissions cycle. As of 2026-10-04 every AUW admissions page carries the banner \"ADMISSIONS ARE OPEN!\" and no closing date is stated.",
+    "deadline_display": "No closing date is published; applications run with the annual admissions cycle and the official pages state that admissions are open",
+    "deadline_date": null,
+    "region": "Asia",
+    "program_type": "University need-based scholarship and financial aid",
+    "applicant_utility": null,
+    "official_details": null
+   },
+   "missing_fields": [
+    "funding_amount",
+    "funding_currency",
+    "funding_period",
+    "tuition_coverage",
+    "living_cost_coverage",
+    "travel_coverage",
+    "description",
+    "deadline_date",
+    "applicant_utility",
+    "official_details"
+   ]
+  }
+ ],
+ "result_file": "C:\\Users\\GopaL\\Desktop\\Projects folder\\ScholarZone\\backend\\research_output\\live500\\results\\agent_250.json"
+}

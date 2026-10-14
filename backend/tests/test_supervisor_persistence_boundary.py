@@ -530,7 +530,14 @@ class TestBatchComposition:
         assert _counts(db)["links"] == 1
         # The run reported both sides of the ledger, not just the happy path.
         assert plan.approved_count == 1
-        assert plan.rejected_count >= 2
+        # One rejection reaches the ledger: Ada Lovelace is a person with no
+        # role evidence and no personal-profile path. Academic Staff and
+        # Apply Now are excluded by the extraction gate before they become
+        # candidates, so they are not part of this reconciliation - the plan
+        # reports what the approval stage judged, not what extraction
+        # discarded. Both are recorded in their own suite.
+        assert plan.rejected_count >= 1
+        assert plan.rejection_reasons["role_evidence"] >= 1
 
     def test_f_a_wholly_invalid_run_creates_no_supervisor_rows(self, db, monkeypatch):
         """F. Every candidate fails: zero professors, zero relationships."""

@@ -1,0 +1,104 @@
+{
+ "agent": "agent_275",
+ "assignment_count": 1,
+ "scholarships": [
+  {
+   "id": 642,
+   "title": "Programa de Cooperacion Internacional del Gobierno de Chile para Policias Extranjeras Uniformadas (CECIPU)",
+   "country": "Chile",
+   "degree": "Other",
+   "funding_label": "Partially Funded",
+   "status": "open",
+   "official_source": "Programa CECIPU - Secretaria Ejecutiva, Ministerio de Seguridad Publica de Chile",
+   "official_source_url": "https://www.cecipu.gob.cl/becas-de-estudios",
+   "application_link": "https://www.cecipu.gob.cl/becas-de-estudios",
+   "catalogue_url": "https://www.cecipu.gob.cl/cursos-ofrecidos",
+   "official_updates_url": "https://www.cecipu.gob.cl/postulaciones-cecipu",
+   "existing": {
+    "funding_amount": null,
+    "funding_currency": null,
+    "funding_period": null,
+    "tuition_coverage": null,
+    "living_cost_coverage": null,
+    "travel_coverage": null,
+    "fully_funded": 0,
+    "description": null,
+    "eligibility": [
+     "Be an Officer, Non-commissioned Officer or enlisted member (Oficial, Suboficial or Tropa) of a uniformed police force in a participating country",
+     "Belong to a uniformed police institution; applications from civilian police institutions are not accepted",
+     "Where the applicant is not a Spanish speaker, hold a medium to medium-high command of Spanish, enough for satisfactory oral and written comprehension and expression",
+     "Hold a valid official passport, which is mandatory",
+     "Hold life insurance, which is mandatory",
+     "Meet the specific requirements of the course applied for, including any health requirements set in the bases",
+     "Obtain authorisation from the highest-ranking police authority in the applicant's own institution"
+    ],
+    "eligibility_summary": "Serving officers, non-commissioned officers and enlisted personnel of the uniformed police forces of countries participating in CECIPU who apply to join the programme. Civil police institutions are not accepted. Applicants who do not speak Spanish must have a medium to medium-high command of Spanish, sufficient to understand and express themselves adequately in speech and writing. A valid official passport is mandatory, and life insurance is compulsory.",
+    "benefits": [
+     "Rent and food costs for courses delivered as externado (day attendance)",
+     "Accommodation and food for courses delivered as internado (residential)",
+     "Primary medical and dental coverage, only for circumstances arising from the course's own activities",
+     "Clothing and necessary equipment, for formation courses only",
+     "Not covered: international air tickets, complementary insurance, and personal expenses outside the scholarship"
+    ],
+    "coverage": [
+     "Rent and food costs for courses delivered as externado (day attendance)",
+     "Accommodation and food for courses delivered as internado (residential)",
+     "Primary medical and dental coverage, only for circumstances arising from the course's own activities",
+     "Clothing and necessary equipment, for formation courses only",
+     "Not covered: international air tickets, complementary insurance, and personal expenses outside the scholarship"
+    ],
+    "requirements": [
+     "Apply exclusively through the CECIPU official portal, completing the electronic form and attaching all documentation before the deadline",
+     "Read the Requisitos de Postulacion, the Instructivo de Postulacion and the official prospectus in full before applying, since formalising an application is taken as accepting all the terms",
+     "Confirm the specific requirements of the course selected, as they vary by course",
+     "Watch for the confirmation email with the registration number, which the portal generates automatically on submission",
+     "Consult the official CECIPU prospectus for the detailed list of courses, benefits, requirements and conditions"
+    ],
+    "documents": [
+     "Official passport, mandatory",
+     "Life insurance, mandatory",
+     "Application form",
+     "Institutional curriculum vitae",
+     "Official medical certificate and psychological test",
+     "Authorisation letter from the highest police authority in the applicant's institution",
+     "Institutional photograph",
+     "Birth certificate or certificate of birth record",
+     "Apostilled or legalised police clearance certificate",
+     "Certificates of technical and/or university studies",
+     "Any additional documents required for the specific course"
+    ],
+    "english_requirement": null,
+    "application_method": [
+     "Apply through the CECIPU portal only, by completing the electronic form and attaching the full documentation",
+     "Receive an automatic confirmation email with the registration number on submission",
+     "The Executive Secretariat reports the selection to the applicant's Director or Commander General in the second half of December; unsuccessful applicants are not notified",
+     "The Secretariat reserves the right to accept or reject applications based on available places and requirement compliance, and its decision is unappealable"
+    ],
+    "selection_notes": "Selection is managed centrally by the CECIPU Executive Secretariat rather than by a published scoring system. The Secretariat communicates results in the second half of December directly to each applicant's police command, does not notify applicants who were not awarded a place, and reserves the right to accept or reject applications according to available places, compliance with requirements and its own unappealable criteria. Non-Spanish-speaking applicants must demonstrate a medium to medium-high level of Spanish.",
+    "best_fit": "Serving officers, NCOs and enlisted personnel of uniformed police forces in Latin American and other participating countries who want police training, specialisation or advanced study in Chile and can satisfy the Spanish-language requirement.",
+    "notes": "This is a professional police training award rather than a university degree scholarship, so degree_levels is recorded as Other; Paraguay's MEF portal labels the level GRADO/POSTGRADO because some CECIPU courses sit at that level, but the Chilean programme page describes them as Formación, Perfeccionamiento y Especialización Policial courses at the teaching schools of the police forces. The scholarship is not fully funded: international air tickets, complementary insurance and personal expenses are excluded, and life insurance must be arranged by the applicant. The programme depends on annual course offerings, so the precise benefits vary with the course selected.",
+    "duration": "Follows the calendar set for each selected course; the 2027-1 cycle runs from 2 February to 30 November 2027 as listed on Paraguay's MEF scholarship portal",
+    "application_period": "1 August 2026 to 30 October 2026 at 23:59",
+    "deadline_display": "30 October 2026, 23:59",
+    "deadline_date": "2026-10-30",
+    "region": "Latin America",
+    "program_type": "Government scholarship",
+    "applicant_utility": null,
+    "official_details": null
+   },
+   "missing_fields": [
+    "funding_amount",
+    "funding_currency",
+    "funding_period",
+    "tuition_coverage",
+    "living_cost_coverage",
+    "travel_coverage",
+    "description",
+    "english_requirement",
+    "applicant_utility",
+    "official_details"
+   ]
+  }
+ ],
+ "result_file": "C:\\Users\\GopaL\\Desktop\\Projects folder\\ScholarZone\\backend\\research_output\\live500\\results\\agent_275.json"
+}

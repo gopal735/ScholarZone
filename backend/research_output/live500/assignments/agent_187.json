@@ -1,0 +1,89 @@
+{
+ "agent": "agent_187",
+ "assignment_count": 1,
+ "scholarships": [
+  {
+   "id": 487,
+   "title": "Trinity University International Academic Scholarships and Financial Aid for International Undergraduate Students",
+   "country": "United States",
+   "degree": "Undergraduate",
+   "funding_label": "Partially Funded",
+   "status": "open",
+   "official_source": "Trinity University (listed by EducationUSA, U.S. Department of State)",
+   "official_source_url": "https://educationusa.state.gov/scholarships/trinity-university-offers-international-academic-scholarships-and-financial-aid",
+   "application_link": "https://educationusa.state.gov/scholarships/trinity-university-offers-international-academic-scholarships-and-financial-aid",
+   "catalogue_url": "https://trinity.edu/admissions/aid/types/international",
+   "official_updates_url": "https://trinity.edu/directory/departments-offices/student-financial-services/financial-aid/international-financial-aid",
+   "existing": {
+    "funding_amount": null,
+    "funding_currency": "USD",
+    "funding_period": "per academic year",
+    "tuition_coverage": 1,
+    "living_cost_coverage": null,
+    "travel_coverage": 0,
+    "fully_funded": 0,
+    "description": "A: MBA programs typically last one to two years.",
+    "eligibility": [
+     "Applies for admission to Trinity University as an international undergraduate applicant, entering first-year or transfer",
+     "Submits the Statement of Financial Responsibility form in the Trinity admissions portal; the application cannot be reviewed without it",
+     "For need-based aid only: submits the CSS Profile for International Students or the Trinity International Student Financial Aid Application with the admission application",
+     "Merit scholarships are assessed on secondary school coursework rigor and performance, standardized test scores, essay strength, involvement outside the classroom and recommendations from school officials",
+     "International transfer students are not eligible for Trinity financial aid"
+    ],
+    "eligibility_summary": "International applicants to Trinity University seeking a bachelor's degree. All international applicants are automatically considered for general merit-based scholarships; need-based aid is additional, limited, competitive and reviewed through a need-aware admissions process.",
+    "benefits": [
+     "Automatic consideration for general merit-based scholarships with no separate application",
+     "Renewable merit scholarships for four years or eight semesters",
+     "Need-based grant aid for applicants who demonstrate financial need and submit the required aid forms",
+     "Eligibility for Trinity on-campus employment"
+    ],
+    "coverage": [
+     "Merit scholarships historically ranging from USD 5,000 to USD 35,000 per year, renewable for four years or eight semesters",
+     "Need-based financial aid stated by EducationUSA to be up to the cost of attendance",
+     "All international financial aid is in the form of grants; Trinity does not offer loans to international students",
+     "On-campus employment eligibility for all international students regardless of financial need, though a job is not guaranteed"
+    ],
+    "requirements": [
+     "Complete the Statement of Financial Responsibility form in the Trinity admissions portal before the application can be reviewed",
+     "Submit financial aid materials by Trinity's published application deadlines; incomplete applications are not reviewed",
+     "For need-based aid, submit either the CSS Profile for International Students or the Trinity International Student Financial Aid Application",
+     "Complete all fields of the Trinity International Student Financial Aid Application in English using USD for all calculations",
+     "Remain enrolled full-time and meet Satisfactory Academic Progress to keep need-based aid"
+    ],
+    "documents": [
+     "Statement of Financial Responsibility form completed in the Trinity admissions portal",
+     "International Student Financial Aid Agreement completed in the Trinity application portal",
+     "For need-based aid: CSS Profile for International Students (Trinity CSS code 6831) or the Trinity International Student Financial Aid Application",
+     "Admission application materials assessed for merit scholarship consideration"
+    ],
+    "english_requirement": null,
+    "application_method": [
+     "Submit the Trinity admission application for the chosen decision plan",
+     "Complete the International Student Financial Aid Agreement in the Trinity application portal",
+     "Complete the Statement of Financial Responsibility",
+     "If seeking need-based aid, submit the CSS Profile for International Students or the Trinity International Student Financial Aid Application",
+     "Submit all financial aid materials by the deadline for the chosen admission round"
+    ],
+    "selection_notes": "Trinity is need-aware in its review of international applications and states that applying for need-based financial aid places an applicant in its most competitive applicant pool. It states that applicants who can contribute at least USD 45,000 per year toward their educational expenses are the most competitive for admission. The admit rate for all international students enrolling in Fall 2025 was approximately 7%.",
+    "best_fit": "International applicants to Trinity University with strong secondary school records who can apply for aid in the same cycle as admission; need-based aid suits applicants who can contribute at least USD 45,000 per year.",
+    "notes": "Trinity offered more than USD 7 million in merit-based scholarships and need-based financial assistance to international students admitted to the Class of 2029. As an NCAA Division III institution, Trinity does not offer athletic scholarships, and students are not required to play sports to receive aid. Trinity does not offer CSS Profile fee waivers.",
+    "duration": "Merit scholarships are renewable for four years, or eight semesters. Need-based aid must be re-applied for annually and is awarded on the same eight-semester basis.",
+    "application_period": "Annual cycle tied to Trinity's admission plans. Early Decision I and Early Action applications are due November 1, Early Decision II and Regular Decision applications February 1. The CSS Profile for International Students becomes available October 1, and need-based aid materials must be submitted by the corresponding application deadline.",
+    "deadline_display": "Financial aid materials are due by Trinity's published application deadlines: Early Decision I and Early Action November 1, Early Decision II February 1, Regular Decision February 1. The EducationUSA listing records 'Scholarship deadline same as application deadline: February 1, 2026' for the previous cycle.",
+    "deadline_date": "2027-02-01",
+    "region": "North America",
+    "program_type": "University-awarded merit scholarships plus competitive need-based grant aid for international undergraduates.",
+    "applicant_utility": null,
+    "official_details": null
+   },
+   "missing_fields": [
+    "funding_amount",
+    "living_cost_coverage",
+    "english_requirement",
+    "applicant_utility",
+    "official_details"
+   ]
+  }
+ ],
+ "result_file": "C:\\Users\\GopaL\\Desktop\\Projects folder\\ScholarZone\\backend\\research_output\\live500\\results\\agent_187.json"
+}

@@ -1,0 +1,277 @@
+{
+  "agent": {
+    "agent_id": "agent_364",
+    "batch": "r2_05",
+    "researched_at": "2026-10-10T18:58:20Z",
+    "research_mode": "LIVE",
+    "coverage": 2
+  },
+  "id": 701,
+  "records": [
+    {
+      "id": 701,
+      "identity": {
+        "name": "Beca para hijas e hijos de Profesionales de la Educación",
+        "awarding_body": "Ministerio de Educación (Mineduc) de Chile",
+        "issuing_authority": "Ministerio de Educación de Chile - División de Educación Superior",
+        "official_source_urls": [
+          "https://www.chileatiende.gob.cl/fichas/15134-beca-para-hijas-e-hijos-de-profesionales-de-la-educacion"
+        ],
+        "application_link": "https://www.chileatiende.gob.cl/fichas/15134-beca-para-hijas-e-hijos-de-profesionales-de-la-educacion",
+        "catalogue_url": "https://www.chileatiende.gob.cl/temas/becas",
+        "official_updates_url": "https://www.chileatiende.gob.cl/fichas/15134-beca-para-hijas-e-hijos-de-profesionales-de-la-educacion",
+        "status": "open",
+        "verifiable_urls": [
+          {
+            "url": "https://www.chileatiende.gob.cl/fichas/15134-beca-para-hijas-e-hijos-de-profesionales-de-la-educacion",
+            "publisher": "ChileAtiende - Gobierno de Chile",
+            "kind": "official benefit ficha"
+          }
+        ]
+      },
+      "description": "Chile's Beca para hijas e hijos de Profesionales de la Educación finances the annual tuition fee (arancel anual) of eligible higher-education students. It is aimed at regular students who belong to the 80 percent of the most vulnerable population, according to the Registro Social de Hogares (RSH) or the basic income subsidiary of Calificación Socioeconómica, and who are children of teachers of basic, high-school or pre-school education, and who are studying in the education or children's services sector.",
+      "official": {
+        "program_type": "Undergraduate tuition scholarship",
+        "eligibility": [
+          "Regular students at a university, instituto profesional or centro de formación técnica accredited as of 31 December 2026",
+          "Belong to the 80 percent most vulnerable population according to the Registro Social de Hogares (RSH) or the basic income subsidiario de Calificación Socioeconómica",
+          "Daughters and sons of teachers of basic, high-school or pre-school education, or of teaching assistants, education workers or teachers of secondary education",
+          "Children of workers in educative or childhood services whose degree contains the segments 1 (asistencial), 3 (práctica, técnica, educativa y social y afín), 4 (educación salud y afín), 5 (otra), 6 (educación y afín) or 7 (básico/general)",
+          "New students: score 510 or more on the university admission test (PAES) and an average of their NEM (Notas de Enseñanza Media) of 5.5 or higher",
+          "Continuing students who took PAES/PT from 2012: score 510 or more on PAES (or 500 or more on PDT/PSU) and an NEM average of 5.5 or higher",
+          "Already studying from the first year of the degree: have passed at least 60 percent of the subjects of the academic year",
+          "From the second year onwards: have passed at least 70 percent of the subjects of the academic year",
+          "If you enter higher education through the PACE programme, you are exempted from the admissibility requirements"
+        ],
+        "benefits": [
+          "Financing of the annual tuition fee (arancel anual, including gratuidad for students in the 60 percent of the lower segment)"
+        ],
+        "selection_criteria": [
+          "Preselección based on the socioeconomic information reported in the Registro Social de Hogares (RSH)",
+          "Priority set: how many regular students counted in a given academic year may choose this benefit over another",
+          "Interruption matrícula, publication of results preselección, appeal, ranking and final results are processed by Mineduc"
+        ],
+        "application_process": "Application is made through the Formulario Único de Acreditación Socioeconómica (FUAS) at ficas.cl or at the financial aid offices of universities, CFT, IP and CES centres. The application window for the 2027 admission is from 1 to 22 October 2026, and it can be completed online or downloaded from the Ayuda Mineduc page. For the 2026 admission the results are published from 15 October 2026 onwards on the Beneficios Estudiantiles site for preselected and not preselected applications. Applications are processed by the institution of higher education, with questions directed to Ayuda Mineduc (600 600 2626).",
+        "duration": "Per academic year",
+        "key_dates": [
+          "Application window (admission 2027): 1 to 22 October 2026",
+          "Information level socioeconomico for the 2027 admission process: 17 December 2026",
+          "Results preselección benfanes: 15 January 2027",
+          "Final results assignment of scholarships of the Educación cohort: 10 March 2027",
+          "Appeals period: 10 March 2027 to 25 March 2027",
+          "Results of 2026 admission: from 15 October 2026"
+        ]
+      },
+      "verification": {
+        "confidence": "high",
+        "deadlines": [
+          {
+            "label": "Application window (admission 2027)",
+            "date": "2026-10-22",
+            "date_display": "1 to 22 October 2026",
+            "note": "Application through FUAS for 1 to 22 October 2026. The last day of the window is the operative deadline."
+          },
+          {
+            "label": "Appeals period",
+            "date": "2027-03-25",
+            "date_display": "10 to 25 March 2027",
+            "note": "The appeal must be submitted by 25 March 2027."
+          }
+        ],
+        "deadline_central": "2026-10-22",
+        "deadline_display": "Application window 1-22 October 2026 (admission 2027)",
+        "deadline_note": "No fixed application cycle: the page publishes the dates for the 2026 admission (results from 15 October 2026) and for the 2027 admission (application window 1-22 October 2026, results preselección 15 January 2027, final results 10 March 2027, appeals 10-25 March 2027).",
+        "application_cycle": "Annual. The page publishes dates for the 2026 admission (results from 15 October 2026) and the 2027 admission (application 1-22 October 2026; preselección results 15 January 2027; assignment results 10 March 2027; appeals 10-25 March 2027).",
+        "funding_amount": 500000,
+        "funding_currency": "CLP",
+        "funding_period": "per academic year",
+        "tuition_coverage_note": "The benefit finances the annual tuition fee (arancel anual), which incorporates the gratuidad for students in the 60 percent of the lower segment of the parents.",
+        "living_cost_coverage": false,
+        "travel_coverage": false,
+        "tuition_coverage": true,
+        "fully_funded": false,
+        "english_requirement": null,
+        "status_note": "Status computed at research time (10 October 2026). The application window for admission 2027 is 1-22 October 2026 and is currently open, so the programme is marked OPEN.",
+        "source_citations": [
+          {
+            "url": "https://www.chileatiende.gob.cl/fichas/15134-beca-para-hijas-e-hijos-de-profesionales-de-la-educacion",
+            "claim": "Beca para hijas e hijos de Profesionales de la Educación: $500.000 CLP as a monetary contribution towards the arancel anual; target group of students in the 80 percent most vulnerable population; application through FUAS from 1 to 22 October 2026 for admission 2027; information level económico 17 December 2026; results preselección 15 January 2027; final results assignment 10 March 2027; appeals from 10 March 2027; 2026 admission results from 15 October 2026; PACE students are exempted from the admissibility requirements.",
+            "retrieved_at": "2026-10-10T18:58:20Z"
+          }
+        ],
+        "not_confirmed": [
+          "The scholarship value is stated in the page's summary table; the page states 'The scholarship considers 500.000 pesos as a monetary contribution towards the arancel anual', so the amount is recorded per year as published",
+          "The list of eligible 2026 and 2027 institutions is published via the links 'Link del lugar de matrícula del proceso 2026/2027', which were not readable as text",
+          "English language requirement - not published on the page"
+        ],
+        "documents": [
+          "Application through FUAS (Formulario Único de Acreditación Socioeconómica)",
+          "Supporting documents for the socioeconomic accreditation"
+        ]
+      },
+      "applicant_utility": {
+        "description": "This benefit targets two things at once: your family profile (a parent who is a teacher, teaching assistant, education worker or education/childhood service worker) and your socioeconomic standing (the 80 percent most vulnerable in the RSH). It pays $500.000 a year toward the arancel anual, so it supports tuition rather than living costs, and the whole process runs through the FUAS.",
+        "eligibility_tips": [
+          "If you are entering through the PACE programme, you are exempted from the admissibility requirements (the PAES 510 / PSU 500 and NEM 5.5 thresholds), which is the single most useful exemption in the ficha.",
+          "New students must have 510 or more on the PAES and a 5.5 or higher NEM average; continuing students who sat PAES/PDT from 2012 need the same thresholds, and already-enrolled students must pass 60 percent of first-year subjects and 70 percent from second year onwards.",
+          "Check your parent's degree against the segment list in the ficha (segments 1, 3, 4, 5, 6, 7); a match on the segment code is what makes you eligible, not the job title."
+        ],
+        "application_tips": [
+          "Fill in the FUAS in the window of 1 to 22 October 2026 for admission 2027 - the application is made through ficas.cl or the financial aid offices of universities, CFT, IP and CES centres.",
+          "Before applying, verify that the institution is accredited as of 31 December 2026 and that it appears on the Link of the place of matrícula for the 2026/2027 process.",
+          "After applying, monitor the 2027 calendar: socioeconomic information on 17 December 2026, preselección results on 15 January 2027, final assignment results on 10 March 2027 and appeals from 10 March 2027.",
+          "If you are not preselected, you can challenge your admissibility through the appeal stage (10 March-25 March 2027), so keep your grade certificates ready.",
+          "Check whether the benefit is more valuable to you than another in the priority set, because only a limited number of regular students counted in an academic year may choose this benefit over another."
+        ],
+        "documents": [
+          "FUAS application form",
+          "Documents supporting the socioeconomic accreditation"
+        ],
+        "mistakes_to_avoid": [
+          "Applying after 22 October 2026 for the 2027 admission; the FUAS window closes then.",
+          "Being enrolled at a centre that is not accredited as of 31 December 2026.",
+          "Assuming the exemption applies generally: only applicants who enter through PACE are exempted from the requirements.",
+          "Using the benefit as a living subsidy; it is a contribution towards the annual tuition fee only.",
+          "Failing the subject-pass thresholds once enrolled (60 percent in first year, 70 percent from second year onwards)."
+        ],
+        "deadline_notes": "Application 1-22 October 2026 (FUAS). Then: socioeconomic information 17 December 2026; preselección results 15 January 2027; assignment results 10 March 2027; appeals 10-25 March 2027. Ayuda Mineduc 600 600 2626."
+      }
+    },
+    {
+      "id": 702,
+      "identity": {
+        "name": "Beca Nuevo Milenio",
+        "awarding_body": "Ministerio de Educación (Mineduc) de Chile",
+        "issuing_authority": "Ministerio de Educación de Chile - División de Educación Superior",
+        "official_source_urls": [
+          "https://www.chileatiende.gob.cl/fichas/15118-beca-nuevo-milenio"
+        ],
+        "application_link": "https://www.chileatiende.gob.cl/fichas/15118-beca-nuevo-milenio",
+        "catalogue_url": "https://www.chileatiende.gob.cl/temas/becas",
+        "official_updates_url": "https://www.chileatiende.gob.cl/fichas/15118-beca-nuevo-milenio",
+        "status": "open",
+        "verifiable_urls": [
+          {
+            "url": "https://www.chileatiende.gob.cl/fichas/15118-beca-nuevo-milenio",
+            "publisher": "ChileAtiende - Gobierno de Chile",
+            "kind": "official benefit ficha"
+          }
+        ]
+      },
+      "description": "Chile's Beca Nuevo Milenio benefits ordinary students of low socioeconomic status who study in a higher-education institution accredited as of 31 December 2026, or which the Ministry of Education has exempted from this requirement. It provides a monetary contribution towards tuition fees (arancel) and its two programmes, NM I and NM II, pay between $600.000 and $860.000. NM II gives up to $860 mil to students from the 50 percent lowest-income families who study at institutions accredited for three years, and reserved places exist for students with a disability.",
+      "official": {
+        "program_type": "Undergraduate tuition scholarship",
+        "eligibility": [
+          "New or continuing students at a CFT, instituto profesional, university or school of the armed forces/institutions accredited as of 31 December 2026 (or exempted from that requirement by Mineduc)",
+          "Belong to the 70 percent most vulnerable population according to the Registro Social de Hogares (RSH) or the basic income subsidiario de Calificación Socioeconómica",
+          "Have an average of the Notas de Enseñanza Media (NEM) of 5.0 or higher, for both first-year and higher-year admissions",
+          "Be Chilean (nationality requirement)",
+          "First-year students must not hold a professional or technical title of higher education, nor a terminal licenciatura",
+          "Students already studying must not hold a technologist certificate",
+          "Must not have received Mineduc tuition scholarships in the first year of the degree on two separate occasions",
+          "Students with a disability: must submit a certificate of disability, joint resolution No. 12/2023 of the Ministry of Education and the Ministry of Social Development"
+        ],
+        "benefits": [
+          "Monetary contribution towards the arancel, between $600.000 and $860.000 per year (admission 2026 figures)",
+          "Beca Nuevo Milenio: $600.000 contribution to the arancel for students in the 70 percent most vulnerable",
+          "Nuevo Milenio II (NM II): up to $860 mil for students of the 50 percent lowest-income families studying at institutions accredited for three years",
+          "250 reserved places for students with a disability, awarded according to the ranking at the institutional level, with a maximum of one per institution",
+          "Values are updated annually according to ministerial decisions, so the published figures correspond to admission 2026"
+        ],
+        "selection_criteria": [
+          "Not being included in the 70 percent lowest-income households in the registry of a required election of the year before",
+          "Not having a professional or technical title of higher education, nor a terminal licenciatura (for first-year students), or a technologist certificate (for continuing students)",
+          "Not having received Mineduc tuition scholarships in the first year of the degree on two separate occasions"
+        ],
+        "application_process": "The application is made in the FUAS between 1 and 22 October for the following admission, which may be completed through the university's financial aid or the online platform of Beneficios Estudiantiles (ficfusion.phl.cl.fioc.cl). For the 2026 admission, results are published from 18 October 2025 onwards on the Beneficios Estudiantiles site for preselected and not preselected applications. Applications are resolved by the institution of higher education, and questions go to Ayuda Mineduc 600 600 2626.",
+        "duration": "Per academic year",
+        "key_dates": [
+          "Application window (admission 2027): 1 to 22 October 2026 (fuas.cl)",
+          "Results of 2026 admission: from 18 October 2025, published on the Beneficios Estudiantiles site for preselected and not preselected applications",
+          "Publication of information level socioeconomic of the 2027 admission process: 17 December 2026",
+          "Interruption matrícula and publication of results: 15 January 2027",
+          "Appeals period: 10 to 25 March 2027"
+        ]
+      },
+      "verification": {
+        "confidence": "high",
+        "deadlines": [
+          {
+            "label": "Application window (admission 2027)",
+            "date": "2026-10-22",
+            "date_display": "1 to 22 October 2026",
+            "note": "Application through FUAS between 1 and 22 October 2026 for admission 2027."
+          },
+          {
+            "label": "Appeals period",
+            "date": "2027-03-25",
+            "date_display": "10 March 2027 to 25 March 2027",
+            "note": "The appeal must be submitted by 25 March 2027."
+          }
+        ],
+        "deadline_central": "2026-10-22",
+        "deadline_display": "Application window 1-22 October 2026 (admission 2027)",
+        "deadline_note": "No fixed application cycle. The page publishes dates for the 2026 admission (results from 18 October 2025) and for the 2027 admission (application 1-22 October 2026, interruption matrícula and publication of results 15 January 2027, appeals 10-25 March 2027).",
+        "application_cycle": "Annual; the page publishes the 2027 admission dates (application 1-22 October 2026, results 15 January 2027, appeals 10-25 March 2027) and the 2026 admission results from 18 October 2025.",
+        "funding_amount": 860000,
+        "funding_currency": "CLP",
+        "funding_period": "per academic year",
+        "tuition_coverage_note": "The award is a monetary contribution towards the arancel (tuition fee), paid per academic year and updated by ministerial decision.",
+        "living_cost_coverage": false,
+        "travel_coverage": false,
+        "tuition_coverage": true,
+        "fully_funded": false,
+        "english_requirement": null,
+        "status_note": "Status computed at research time (10 October 2026). The application window for admission 2027 is open (1-22 October 2026), so the programme is marked OPEN.",
+        "source_citations": [
+          {
+            "url": "https://www.chileatiende.gob.cl/fichas/15118-beca-nuevo-milenio",
+            "claim": "Beca Nuevo Milenio: between $600.000 and $860.000 as a monetary contribution towards the arancel; NM II up to $860 mil for the 50 percent lowest-income families at institutions accredited for three years; target group is the 70 percent most vulnerable; nationality requirement (Chilean); NEM average of 5.0 or higher; 250 special places for students with a disability; application through FUAS between 1 and 22 October for the following admission.",
+            "retrieved_at": "2026-10-10T18:58:20Z"
+          }
+        ],
+        "not_confirmed": [
+          "The upper end of the published range ($860.000) is recorded as the headline amount; the page publishes a range of $600.000 to $860.000 that depends on NM I versus NM II and on the 2026 admission figures, so the exact figure for a given year may differ",
+          "English language requirement - not published on the page",
+          "The specific institutions accredited as of 31 December 2026 - published via linked lists not readable as text"
+        ],
+        "documents": [
+          "FUAS application form",
+          "Notas de Enseñanza Media (NEM) evidence",
+          "Certificate of disability (for applicants using the special places)",
+          "Documents supporting the socioeconomic accreditation"
+        ]
+      },
+      "applicant_utility": {
+        "description": "Nuevo Milenio has two tiers with different money: the base Nuevo Milenio pays $600.000 toward the arancel, while NM II pays up to $860.000 to students from the 50 percent lowest-income families who study at institutions accredited for three years. It is Chilean-resident, NEM-5.0-or-higher and 70-percent-most-vulnerable, applied through the FUAS between 1 and 22 October for the following admission.",
+        "eligibility_tips": [
+          "Nationality is a hard requirement: you must be Chilean.",
+          "The academic filter is a NEM average of 5.0 or higher, for both first-year admission and admissions for higher years - lower than the PAES/PDT thresholds used by other Mineduc scholarships, so Nuevo Milenio is more accessible on grades.",
+          "If you are in the 50 percent lowest-income band and your institution is accredited for three years, you fall under NM II, which raises the award to $860.000.",
+          "Students with a disability have 250 reserved places, awarded by ranking at the institutional level with a maximum of one per institution, and must submit the joint certificate of disability No. 12/2023."
+        ],
+        "application_tips": [
+          "Apply through the FUAS between 1 and 22 October for the 2027 admission; the same form is used by several Mineduc scholarships, so apply once and let the system rank you.",
+          "Check the institution's accreditation as of 31 December 2026 (or Mineduc's exemption) before applying, since this is a stated requirement.",
+          "Keep your NEM certificate ready; a 5.0 average is the stated minimum and it is checked in your file.",
+          "For the 2026 admission the results (preselected and not preselected) were published on the Beneficios Estudiantiles site from 18 October 2025, so for the 2027 admission watch the same site for the interruption matrícula and results published on 15 January 2027.",
+          "If you are not preselected you can challenge your admissibility in the appeal stage (10 March-25 March 2027)."
+        ],
+        "documents": [
+          "FUAS application form",
+          "Notas de Enseñanza Media (NEM) evidence",
+          "Certificate of disability (for the special places)",
+          "Documents supporting the socioeconomic accreditation"
+        ],
+        "mistakes_to_avoid": [
+          "Assuming the $600.000 figure always applies: NM II pays up to $860.000, so identify which tier you fall under.",
+          "Applying while holding a higher-education professional or technical title, or a terminal licenciatura, as a first-year student - that excludes you.",
+          "Forgetting that the figure corresponds to admission 2026 and is updated annually by ministerial decision.",
+          "Missing the 1-22 October window of the FUAS for admission 2027.",
+          "Interpreting the requirement for continuation wrongly: you must pass 60 percent of your subjects in the first year and 70 percent of the subjects taken in the year if you are in your second year or beyond."
+        ],
+        "deadline_notes": "Application: 1-22 October 2026 (FUAS) for admission 2027; socioeconomic information 17 December 2026; interruption matrícula and results 15 January 2027; appeals 10-25 March 2027. Ayuda Mineduc 600 600 2626."
+      }
+    }
+  ]
+}

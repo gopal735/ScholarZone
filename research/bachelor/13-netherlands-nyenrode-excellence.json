@@ -1,0 +1,521 @@
+[
+  {
+    "id": "nyenrode-business-university-revolving-scholarship",
+    "title": "Nyenrode Revolving Scholarship Program",
+    "short_title": "Revolving Scholarship",
+    "legacy_titles": ["Revolving Scholarship", "Nyenrode Fund Scholarship"],
+    "country": "Netherlands",
+    "host_region": "Europe",
+    "degree": "Bachelor's",
+    "degree_levels": ["Bachelor's", "ISCED Level 6 equivalent"],
+    "study_level": "Undergraduate",
+    "program_type": "University-managed partial tuition-fee scholarship, awarded after admission on the basis of motivation and demonstrated financial need, funded by alumni donations",
+    "funding_type": "Tuition-fee contribution only (partial, alumni-funded; no stipend)",
+    "administering_authority": "Stichting Nyenrode Fonds (Nyenrode Fund), Nyenrode Business University",
+    "implementing_agency": "Stichting Nyenrode Fonds (Nyenrode Fund), Nyenrode Business University",
+    "programme_action": "Nyenrode Fund Scholarship Fund - revolving (alumni-donor funded) scholarship portfolio for the BScBA and the full-time MSc in Management",
+    "description": "The Nyenrode Revolving Scholarship Program is the official scholarship route administered by Stichting Nyenrode Fonds (Nyenrode Fund) for students admitted to the full-time Bachelor of Science in Business Administration (BScBA) and the full-time MSc in Management at Nyenrode Business University. A BScBA scholarship amounts generally to a maximum of EUR 10,000 per year and is never more than 50% of the tuition fee for the entire duration of the bachelor's degree. Applicants must already hold an acceptance letter for the programme; early scholarship applications without admission are not considered. Scholarships are awarded on the basis of motivation and demonstrated financial need, assessed by Nyenrode Fund staff, programme management and the alumni donors, and confirmed by a selection interview.",
+    "programme_structure": {
+      "award_types": [
+        "Umbrella programme administered by the Nyenrode Fund, comprising individually donor-funded named awards (1958 Legacy Scholarship, American Friends of Nyenrode University Scholarship, Class of 1964 Scholarship, Class of 1976 Scholarship, Class of 1989 Scholarship, Joost van Gestel Scholarship for Entrepreneurs, Scholarship for Alumni of the Exchange Program)",
+        "Program Scholarship - a number of scholarships each year for students with special motivations and backgrounds (maximum EUR 10,000 per year)"
+      ],
+      "award_types_detail": "The programme application page titles the route 'Nyenrode Revolving Scholarship Program' and states that the scholarships for the academic year are described below and can be applied for if the candidate meets the requirements. Individual donor funds add their own conditions (for example residence on the Breukelen campus, intended membership of the NCV or JCV student association, or a special entrepreneurial mission), and some funds are BScBA-only while others are MScM-only. The 'Scholarships & Financial Aid' page also lists the Program Scholarship alongside the Revolving Scholarship for the BScBA, and states that a candidate may apply for multiple scholarships but can only be granted a single one.",
+      "renewable": true,
+      "renewal_criteria": "The award is expressed as a maximum of EUR 10,000 per year and the official pages state it applies for the entire duration of the bachelor's degree. Nyenrode does not publish the per-year re-application procedure, academic-progress conditions or ECTS/continuation conditions attached to renewal, so renewal mechanics are unverified.",
+      "application_required": true,
+      "automatic_consideration": false,
+      "intake": "Annual, one intake: the BScBA starts mid-August (mid-August 2027 for the cycle published at the time of verification). Scholarship applications are accepted only after the applicant has been admitted."
+    },
+    "status": "UPCOMING",
+    "status_label": "Upcoming cycle - 2027-2028 intake dates published",
+    "status_note": "The official dates published on nyenrode.nl for the next cycle are: first programme application deadline 15 January 2027, final programme application deadline 1 May 2027, scholarship application deadline 1 June 2027, programme start mid-August 2027. As at 2026-10-03 all of these dates are in the future, so the programme is treated as UPCOMING for the 2027-2028 entry. The programme page simultaneously notes that 'a few spots are still available' for the current intake, indicating that rolling admission continues while places remain; the cycle dates above are the only ones published and are expected to roll forward by roughly one year for the following intake.",
+    "is_verified": true,
+    "verification_status": "active",
+    "verification_type": "direct official-website verification by fetching nyenrode.nl scholarship, fund and programme pages",
+    "last_verified_at": "2026-10-03T11:05:00+02:00",
+    "last_verified_date": "2026-10-03",
+    "verified_by": "ScholarZone research agent (automated verification against nyenrode.nl)",
+    "verification_notes": "Eight official nyenrode.nl pages were fetched directly: the international 'Scholarships & Financial Aid' page, the Nyenrode Fund 'Scholarships' landing page, the BScBA programme page, the 'Scholarship application' page and its 'Terms and conditions', 'Dates and Deadlines' and 'Financial Plans' sub-pages. The logo asset on the official domain was additionally confirmed to return HTTP 200 with content type image/svg+xml. No award named 'Excellence Scholarship' or 'International Undergraduate Scholarship' for non-EEA students exists on nyenrode.nl; the only award containing the word 'Excellence' is the GMAT Excellence scholarship of EUR 9,750, which requires a GMAT score of 650 or higher and belongs to the full-time MSc in Management, i.e. master's level and out of scope for a bachelor's record. The bachelor's-level scholarship actually open to non-EEA applicants is therefore the Nyenrode Revolving Scholarship Program, which is recorded here instead. No statement about the award could not be checked against a live official page.",
+    "next_verification_due": "2026-12-15",
+    "source_last_updated": null,
+    "current_programme_guide_checked": true,
+    "application_deadline": {
+      "single_central_deadline": false,
+      "deadline_date": "2027-06-01",
+      "deadline_timezone": null,
+      "deadline_precision": "exact",
+      "typical_application_window": "Programme application opens in the autumn and closes with a first deadline of 15 January 2027 and a final deadline of 1 May 2027; the scholarship application, which can only be made after admission, closes 1 June 2027 for the mid-August 2027 intake.",
+      "application_period": "2027-2028 entry (BScBA, mid-August 2027 start)",
+      "official_rule": "The 'Dates and Deadlines' page states: 'Deadline for program application (MSc and BScBA full-time) 1 May 2027' and 'Deadline for Scholarship application 1 June 2027'. The BScBA programme page states 'First application deadline: January 15th, 2027' and 'Final application deadline: May 1st, 2027'. No time zone is published for either deadline, so deadline_timezone is left null rather than assumed.",
+      "deadline_warning": "The scholarship application is strictly secondary to programme admission: the official terms state 'you must be admitted to the respective program... Early scholarship applications without admission to the program will not be considered.' A candidate who leaves the programme application to the 1 May 2027 final deadline has only about four weeks to submit the scholarship application before 1 June 2027, and places in the programme are limited, so applying at the 15 January 2027 first deadline is materially safer.",
+      "next_verification_due": "2026-12-15"
+    },
+    "programme_duration": {
+      "official_range": "3 years, full-time (BScBA)",
+      "duration_years": 3,
+      "normal_duration_years": 3,
+      "duration_months": 36,
+      "renewable": true,
+      "renewal_note": "The official pages state that a BScBA scholarship 'amounts generally to a maximum of EUR 10,000 per year and is never more than 50% of the tuition fee for the entire duration of your bachelor's degree', which implies an award covering each of the three years. No per-year re-application requirement, academic-progress condition or ECTS threshold for renewal is published."
+    },
+    "funding": {
+      "scholarship_available": true,
+      "scholarship_type": "Partial tuition-fee contribution (revolving scholarship funded by alumni donations)",
+      "scholarship_currency": "EUR",
+      "monthly_amount": null,
+      "monthly_amount_note": "No monthly stipend is published. The award is a contribution towards tuition fees only; Nyenrode states that 'the scholarships are specifically intended as a contribution towards the tuition fees'.",
+      "travel_support": false,
+      "visa_support": false,
+      "installation_support": false,
+      "living_allowance": false,
+      "insurance": false,
+      "travel_amount": null,
+      "travel_amount_note": "No travel allowance is published on any official Nyenrode scholarship page.",
+      "institutional_costs": false,
+      "fully_funded": false,
+      "fully_funded_note": "Nyenrode states explicitly: 'We do not offer any fully funded scholarships.' Recipients must 'at least cover the costs of half of the tuition fee, living expenses, housing, student associations and other matters'."
+    },
+    "funding_breakdown": {
+      "tuition": {
+        "available": true,
+        "amount": 10000,
+        "currency": "EUR",
+        "conditions": "Maximum EUR 10,000 per year; 'never more than 50% of the tuition fee for the entire duration of your bachelor's degree'. Applied as a contribution towards tuition fees, not as a stipend."
+      },
+      "monthly_stipend": { "available": false, "note": "Not published in official source" },
+      "travel_allowance": { "available": false, "note": "Not published in official source" },
+      "installation_allowance": { "available": false, "note": "Not published in official source" },
+      "visa_support": { "available": false, "note": "Not published in official source" },
+      "insurance": { "available": false, "note": "Not published in official source" },
+      "research_allowance": { "available": false, "note": "Not published in official source" },
+      "book_allowance": { "available": false, "note": "Not published in official source; course materials are a separate student cost of EUR 750-900." },
+      "equipment_allowance": { "available": false, "note": "Not published in official source" },
+      "family_allowance": { "available": false, "note": "Not published in official source" },
+      "accommodation_support": { "available": false, "note": "Not published in official source for scholarship recipients; housing remains a separate student cost (EUR 360-700 per month in Breukelen, EUR 900-1,200 in Amsterdam)." },
+      "bond": {
+        "available": false,
+        "note": "No contractual service bond is published. Recipients accept a 'moral obligation' to give back what they once received by becoming donors to the Nyenrode Scholarship Fund once they have graduated and are financially able to do so. Individual named funds repeat a willingness to contribute to their own fund after graduation. This is a tradition, not a legal term."
+      },
+      "total_estimated_value": {
+        "available": false,
+        "note": "Nyenrode publishes no total award value and no aggregate value is computed here. The only published figure is the annual maximum of EUR 10,000, itself capped at 50% of tuition across the degree."
+      }
+    },
+    "coverage": [
+      "Contribution towards BScBA tuition fees, to a maximum of EUR 10,000 per year",
+      "Never more than 50% of the tuition fee for the entire duration of the bachelor's degree"
+    ],
+    "coverage_limitations": [
+      "Nyenrode states explicitly: 'We do not offer any fully funded scholarships.'",
+      "The scholarships are 'specifically intended as a contribution towards the tuition fees'.",
+      "Recipients must 'at least cover the costs of half of the tuition fee, living expenses, housing, student associations and other matters' themselves.",
+      "No living allowance, travel allowance, installation allowance, insurance or accommodation subsidy is published.",
+      "Only a maximum is published (EUR 10,000 per year); actual awards are individually set, so a candidate cannot rely on receiving the maximum.",
+      "A candidate may apply for multiple scholarships but 'it is only possible to be granted a single scholarship'.",
+      "The number of awards available in any given year is not published as a fixed quota; only a fund-level ambition is stated."
+    ],
+    "eligible_applicants": [
+      "Applicants admitted to the full-time BScBA at Nyenrode Business University (acceptance letter required)",
+      "Applicants who cannot finance the programme without financial support (demonstrated need)",
+      "Applicants of any nationality - the award is listed under 'Scholarship for all' for the BScBA and is explicitly relevant for students who are not eligible for DUO support, i.e. in practice non-EEA students",
+      "Applicants who can produce a completed financial plan and a motivation letter in English",
+      "For some individual donor funds, applicants who intend to become an active member of NCV (Breukelen) or JCV (Amsterdam) and are open to contact with and mentoring by the donors"
+    ],
+    "citizenship_restriction": false,
+    "worldwide_eligibility": true,
+    "bachelor_requirement": false,
+    "final_year_bachelor_allowed": false,
+    "final_year_condition": "Not applicable in the usual sense: this award funds entry into a bachelor's programme, so the relevant 'final year' is the final year of secondary school. A candidate must hold or be completing a qualifying secondary qualification in order to be admitted to the BScBA, and must hold the acceptance letter before applying for the scholarship.",
+    "equivalent_degree_allowed": true,
+    "equivalent_degree_note": "Nyenrode publishes a per-country list of accepted secondary qualifications for the BScBA: Dutch VWO diploma (Mathematics A or B and English, each sufficient grade 6), Dutch HBO propaedeutic (minimum 6 in Math and English on the HAVO diploma plus the additional OMPT-A mathematics test), European Baccalaureate, GCE/International A-Levels, International Baccalaureate (full diploma only, predicted grades accepted with conditional acceptance), Belgian ASO / CESS, German Abitur, South African National Senior Certificate, and the American High School Diploma (minimum four AP exams with a grade of 4, including Calculus AB or BC). Qualifications not on the list can be discussed with admissions, and exceptional cases may be considered through the colloquium doctum procedure.",
+    "age_limit": {
+      "minimum_age": null,
+      "maximum_age": null,
+      "age_calculation_date": null,
+      "official_source": null
+    },
+    "gender_restriction": false,
+    "nationality_quota": "No quota is published for any individual award. The Nyenrode Fund publishes a fund-level ambition, not a rule: 'we aim to significantly expand the existing number of scholarships. Our ambition is to be able to offer 30 scholarships each year by 2027, of which 20 are reserved for international students and 10 for students with limited financial means from the Netherlands.' This is a stated target rather than an allocation published for the current cycle.",
+    "previous_emjm_scholarship_ineligible": false,
+    "eligibility": {
+      "citizenship": "No nationality restriction. The award is listed under 'Scholarship for all' for the BScBA. DUO student finance, by contrast, is limited to Dutch nationals and EU/EEA citizens, which is why the Fund explicitly addresses 'students who are not eligible to apply for DUO support' - the practical category in which non-EEA applicants fall.",
+      "residence_requirement": null,
+      "age_limit": null,
+      "secondary_school_requirement": "Required: a qualifying secondary school qualification is a precondition of admission to the BScBA, which is itself a precondition of the scholarship application.",
+      "academic_requirements": "Mathematics and English requirements set per secondary qualification, plus an additional mathematics test (OMPT-A with a minimum score of 75%, Boswell-Beta or Korteweg-de Vries) where the qualification does not meet the mathematics requirement. The official pages state that passing these exams means the mathematics requirement is met 'but doesn't guarantee a place in the program'.",
+      "gpa_requirement": null,
+      "language_requirement": "English proficiency at minimum B2 level, demonstrated either through the secondary qualification (some nationalities are listed with a minimum English grade; South African applicants must have been educated entirely in English) or through one of the accepted English tests.",
+      "work_experience": "Not required.",
+      "extracurricular_requirement": "Not required for the umbrella programme. Several individual donor funds require that the recipient intends to become an active member of the NCV (Breukelen) or JCV (Amsterdam) student association, and the Joost van Gestel Scholarship for Entrepreneurs requires the candidate to have started a business or have concrete plans to do so.",
+      "leadership_requirement": "No formal leadership requirement is published for the umbrella programme. The official text states that 'Every candidate admitted to Nyenrode demonstrates a unique ability to become a leader', that 'admission to the program is based on merit, financial support is awarded based on motivation and demonstrated need'.",
+      "financial_need": "Required. Applicants must show that they cannot study at Nyenrode without the scholarship, must submit a completed official financial plan, and must have researched DUO options and explained in the motivation letter why those options are not used where applicable.",
+      "previous_scholarship_restriction": "No restriction on holding another scholarship is published, but 'you can apply for multiple scholarships, but it is only possible to be granted a single scholarship'. The Scholarship for Alumni of the Exchange Program is specifically limited to alumni of Nyenrode's exchange programme who completed their BScBA exchange within the past three years.",
+      "enrolment_status_requirement": "Must be admitted to the full-time BScBA before applying for the scholarship: 'To be eligible for a scholarship, you must be admitted to the respective program... Early scholarship applications without admission to the program will not be considered.' Some funds additionally require residence on the Breukelen campus.",
+      "health_requirement": "Not published.",
+      "field_restrictions": "The route covers the full-time BScBA and the full-time MSc in Management only. Not open to Impact MBA, Modular Executive MBA, PhD, executive education or exchange students.",
+      "official_source": "https://www.nyenrode.nl/en/about-us/nyenrode-fund/scholarships/scholarship-application"
+    },
+    "academic_requirements": {
+      "fixed_percentage_requirement": null,
+      "percentage_note": "Nyenrode publishes no single percentage, GPA or average mark requirement for the BScBA. Admission requirements are set per secondary qualification (for example IB Analysis & Approaches SL minimum grade 5, IB Applications & Interpretations SL requires the additional mathematics test, A-Level mathematics minimum grade B, American AP exams minimum grade 4, German Abitur mathematics and English minimum grade 10, Belgian ASO economy/mathematics profile minimum 70% mathematics). Separately, the scholarship itself is capped at 50% of tuition for the whole degree, which is a cap on the award, not a requirement on the applicant.",
+      "programme_specific_requirements": "BScBA-specific secondary qualification requirements are published per country, together with the additional mathematics test options (OMPT-A minimum 75% with two attempts, Boswell-Beta maximum two attempts, Korteweg-de Vries maximum two attempts).",
+      "selection_factors_may_include": [
+        "Motivation letter content and fit with the specific scholarship chosen",
+        "Demonstrated financial need as evidenced by the completed financial plan",
+        "Contribution the candidate intends to make to student life (Breukelen or Amsterdam)",
+        "Special qualities, talents or skills that distinguish the candidate",
+        "For some named funds, willingness to be mentored by and in contact with the donors"
+      ],
+      "holistic_selection_note": "Selection is holistic and donor-involved: 'the Nyenrode Fund staff, program management of the BScBA and MSc programs, and the donors (alumni) of the various scholarships will read and assess your application', followed by a selection interview. No numerical score, weighting or ranking formula is published."
+    },
+    "english_requirement": {
+      "universal_requirement": true,
+      "minimum_ielts": 6.0,
+      "minimum_toefl": 4.5,
+      "minimum_pte": 61,
+      "minimum_duolingo": null,
+      "moi_rule": "Applicants whose entire education was in English satisfy the English requirement through their secondary qualification (the official text requires, for South Africa, that the 'entire education must be in English'); applicants taught in another language take a minimum English grade route or an accepted English test.",
+      "moi_accepted": true,
+      "test_score_note": "Scores published on the official BScBA admission page for the additional English test: TOEFL iBT overall minimum 4.5; IELTS Academic overall band minimum 6.0; Cambridge English Qualifications (C1 Advanced / C2 Proficiency) minimum 176; LanguageCert International ESOL Academic minimum 65; PTE Academic minimum 61; TOEIC (Listening & Reading + Speaking & Writing) minimum 865 Listening & Reading plus 335 Speaking & Writing. The programme FAQ states the requirement as a minimum B2 level. The published TOEFL iBT figure of 4.5 is quoted verbatim from the official page and is not consistent with the standard 0-120 iBT scale, so it should be confirmed with the admissions office before being relied upon.",
+      "test_validity_months": null,
+      "accepted_tests": [
+        "TOEFL iBT",
+        "IELTS Academic",
+        "Cambridge C1 Advanced",
+        "Cambridge C2 Proficiency",
+        "LanguageCert International ESOL Academic",
+        "Pearson Test of English (PTE) Academic",
+        "TOEIC (Listening & Reading + Speaking & Writing)"
+      ]
+    },
+    "language_of_instruction": {
+      "programme_specific": false,
+      "possible_languages": ["English"],
+      "bilingual_programmes": false,
+      "language_note": "The BScBA is taught entirely in English; Nyenrode states 'Our intensive three-year academic program has an international focus and is taught in English.'"
+    },
+    "application_method": {
+      "direct_student_application": true,
+      "central_application": false,
+      "application_route": "Apply directly to Nyenrode: submit the online BScBA application form and complete the application in the Nyenrode Admissions Portal (Osiris), complete the LTP personality test and attend the personal interview; only after receiving the acceptance letter, apply for the scholarship through the Nyenrode Fund's scholarship application route with a financial plan, motivation letter and CV.",
+      "portal_url": null,
+      "application_steps": [
+        "STEP 1: Check the BScBA admission requirements against the candidate's secondary qualification, including mathematics and English requirements and any additional mathematics test.",
+        "STEP 2: Press the online APPLY button and complete the form, then complete the application in the Nyenrode Admissions Portal (Osiris).",
+        "STEP 3: Complete Nyenrode's LTP personality test online at home.",
+        "STEP 4: Send the test results and schedule a personal interview with a programme manager.",
+        "STEP 5: Await the outcome - directly admitted (with registration form to upload), conditionally admitted, or rejected.",
+        "STEP 6: Once the acceptance letter has been received, select the scholarship that best fits and submit the financial plan (using the official template), a motivation letter in English and a curriculum vitae in English.",
+        "STEP 7: Attend the selection interview, which may be with donors or with Nyenrode staff, on the Breukelen campus or online."
+      ],
+      "application_fee": "EUR 175 (BScBA programme application fee, payable by all applicants; no waiver for scholarship applicants is published)",
+      "multiple_applications_allowed": true,
+      "paper_application_available": false
+    },
+    "official_application_documents": {
+      "universal_documents": [
+        "Financial plan, completed on the official BScBA Amsterdam or BScBA Breukelen template (formulas and format must not be changed)",
+        "Motivation letter, in English, explaining which scholarship(s) have been chosen",
+        "Curriculum vitae, in English"
+      ],
+      "commonly_requested_documents": [
+        "For students who are not eligible for DUO support: a statement of the type of financial support to be received from the home country (student loan, government grant or any other financial contribution towards study and living expenses)"
+      ],
+      "two_recommendation_letters": false,
+      "secondary_school_documents": "Secondary school qualification documents are required as part of the programme admission that must precede the scholarship application, but they are not listed among the Nyenrode Fund's own scholarship documents.",
+      "document_language": "The motivation letter and curriculum vitae must be in English.",
+      "document_format": "The financial plan must use the official Excel template published by the Fund; the official text asks candidates not to change the formulas or format.",
+      "transcript_requirement": "Secondary school transcripts and the final qualification are required for admission to the BScBA as part of the application in the admissions portal.",
+      "certified_translation_requirement": "Not published for the scholarship application. Secondary documents in another language should be assumed to require translation; this should be confirmed with the admissions office."
+    },
+    "document_checklist": {
+      "identity_documents": [
+        { "document": "Passport / identity details", "required": true, "source": "https://www.nyenrode.nl/en/programs/p/bachelor-of-science-in-business-administration" }
+      ],
+      "academic_documents": [
+        { "document": "Secondary school qualification (diploma and transcripts) for the relevant country", "required": true, "source": "https://www.nyenrode.nl/en/programs/p/bachelor-of-science-in-business-administration" },
+        { "document": "Additional mathematics test result (OMPT-A minimum 75%, Boswell-Beta or Korteweg-de Vries) where the qualification does not meet the mathematics requirement", "required": false, "source": "https://www.nyenrode.nl/en/programs/p/bachelor-of-science-in-business-administration" }
+      ],
+      "language_documents": [
+        { "document": "English test certificate (IELTS Academic 6.0, TOEFL iBT 4.5 as published, Cambridge C1/C2 176, LanguageCert 65, PTE Academic 61, or TOEIC 865 + 335) where the secondary qualification does not satisfy the English requirement", "required": false, "source": "https://www.nyenrode.nl/en/programs/p/bachelor-of-science-in-business-administration" },
+        { "document": "LTP personality test result", "required": true, "source": "https://www.nyenrode.nl/en/programs/p/bachelor-of-science-in-business-administration" }
+      ],
+      "recommendation_documents": [
+        { "document": "Recommendation letters", "required": false, "source": "https://www.nyenrode.nl/en/about-us/nyenrode-fund/scholarships/scholarship-application/terms-and-conditions" }
+      ],
+      "application_essays": [
+        { "document": "Motivation letter in English explaining the scholarship(s) chosen", "required": true, "source": "https://www.nyenrode.nl/en/about-us/nyenrode-fund/scholarships/scholarship-application/terms-and-conditions" }
+      ],
+      "financial_documents": [
+        { "document": "Completed financial plan on the official 2026-2027 BScBA Amsterdam or Breukelen template", "required": true, "source": "https://www.nyenrode.nl/en/about-us/nyenrode-fund/scholarships/scholarship-application/financial-plans" },
+        { "document": "Statement of home-country financial support for applicants not eligible for DUO", "required": false, "source": "https://www.nyenrode.nl/en/about-us/nyenrode-fund/scholarships/scholarship-application/terms-and-conditions" }
+      ],
+      "additional_documents": [
+        { "document": "Curriculum vitae in English", "required": true, "source": "https://www.nyenrode.nl/en/about-us/nyenrode-fund/scholarships/scholarship-application/terms-and-conditions" },
+        { "document": "GMAT transcript (GMAT Excellence award only, MSc programme - not applicable to the BScBA)", "required": false, "source": "https://www.nyenrode.nl/en/about-us/about-nyenrode/internationals/students/scholarships-financial-aid" }
+      ]
+    },
+    "required_documents": [
+      "Acceptance letter for the full-time BScBA (eligibility precondition)",
+      "Completed financial plan on the official BScBA template",
+      "Motivation letter in English",
+      "Curriculum vitae in English",
+      "Secondary school qualification documents (for programme admission)",
+      "Additional mathematics test result, if applicable",
+      "English test certificate, if applicable",
+      "LTP personality test result",
+      "Statement of home-country financial support for applicants not eligible for DUO"
+    ],
+    "selection_process": {
+      "decision_maker": "Nyenrode Fund staff, the programme management of the BScBA and MSc programmes, and the alumni donors of the individual scholarship funds",
+      "selection_type": "Document assessment by a committee followed by a selection interview; some named funds are co-selected by representatives of the relevant class year",
+      "central_selection": false,
+      "possible_stages": [
+        "Admission to the full-time BScBA, including the LTP personality test and a personal interview",
+        "Selection of the scholarship fund that best fits the candidate",
+        "Submission of the financial plan, motivation letter and CV",
+        "Assessment of the written application by Fund staff, programme management and donors",
+        "Invitation to a selection interview with donors or Nyenrode staff, on the Breukelen campus or online",
+        "Award decision"
+      ],
+      "official_universal_weighting": null,
+      "weighting_note": "No numerical weighting or scoring formula is published. The only stated principle is: 'Every candidate admitted to Nyenrode demonstrates a unique ability to become a leader... While admission to the program is based on merit, financial support is awarded based on motivation and demonstrated need.'",
+      "interview_possible": true,
+      "results_timing": "Not published for the scholarship decision. For the programme itself, the Admission Days take place every 2-4 weeks and the registration letter is issued within two weeks of a decision. Scholarship interviews are scheduled on the dates published on the dates-and-deadlines page.",
+      "scholarship_rank_note": "No ranking, shortlist size or waiting list is published. Because the number of awards is not published and only one scholarship may be granted per student, candidates should not assume selection."
+    },
+    "selection_criteria": {
+      "academic_excellence": "Admission to the programme is based on merit; academic strength is assessed through the secondary qualification requirements and the admission interview rather than through a separate scholarship grade threshold.",
+      "leadership": "Leadership potential is part of the programme's framing ('Every candidate admitted to Nyenrode demonstrates a unique ability to become a leader') and is addressed through the Personal Leadership and Development Journey, but it is not published as a scored scholarship criterion.",
+      "community_service": "Not published as a formal criterion. The official tips ask 'How do you plan to contribute to student life, both in Breukelen and Amsterdam?', and several donor funds require intended active membership of NCV or JCV.",
+      "extracurricular_achievement": "Not published as a scored criterion, but the official tips invite candidates to describe 'special qualities, talents, or other skills that distinguish you from others'.",
+      "financial_need": "Decisive. Financial support is awarded based on 'motivation and demonstrated need', evidenced by the completed financial plan and by having researched DUO options and explained in the motivation letter why they are not used.",
+      "additional_factors": [
+        "Fit with the specific donor fund (for example the Joost van Gestel Scholarship for Entrepreneurs requires having started a business or having concrete plans to do so)",
+        "Willingness to be in contact with and mentored by the donors",
+        "For Breukelen-based funds, residence on campus and a positive contribution to student life and the NCV"
+      ],
+      "interview_required": true,
+      "portfolio_required": false,
+      "source": "https://www.nyenrode.nl/en/about-us/nyenrode-fund/scholarships/scholarship-application/terms-and-conditions"
+    },
+    "degree_outcome": {
+      "awarded_qualification": "Bachelor of Science in Business Administration (BScBA)",
+      "typical_programme_length": "3 years full-time, approximately 40 hours per week",
+      "possible_awards": ["Bachelor of Science in Business Administration"],
+      "degree_note": "The BScBA is a three-year academic bachelor's taught in English at the Amsterdam or Breukelen campus. It is accredited and Nyenrode holds AACSB, EQUIS and AMBA accreditation. Progression to the second year requires meeting minimum ECTS requirements.",
+      "credit_transfer": "The third year includes an international exchange period at a partner university, and a second-year Company Project gives academic credit for applied work. Credit transfer rules for entry into the BScBA are not published."
+    },
+    "student_rights_and_cost_protection": {
+      "tuition_fee_for_recipients": "EUR 25,000 in the first year, EUR 26,500 in the second year and EUR 28,000 in the third year (academic year 2027-2028 figures; the programme page also quotes an 'average of EUR 25,500 per year'). Recipients continue to pay tuition and are never relieved of more than 50% of tuition across the degree, capped at EUR 10,000 per year.",
+      "application_fee_for_recipients": "EUR 175 for all applicants; no waiver or refund for scholarship applicants or recipients is published.",
+      "student_agreement": "The General Terms and Conditions of Education of Nyenrode apply to the programme and are included with the offer (official PDF: https://www.nyenrode.nl/docs/default-source/voorwaarden-en-reglementen/algemeen/general-terms-and-conditions-of-education-nyenrode-version-april-1-2026.pdf).",
+      "programme_website": "https://www.nyenrode.nl/en/programs/p/bachelor-of-science-in-business-administration",
+      "common_services": "Career and Personal Development services (career events, network events, career and personal development workshops, CV and cover letter advice, LinkedIn support, career coaching and mock interviews), plus library, sports facilities, student association (NCV in Breukelen, JCV in Amsterdam) and on-campus housing in Breukelen.",
+      "bond_requirement": "No contractual bond. The revolving tradition means recipients accept the 'moral obligation' to give back what they once received by becoming donors to the Nyenrode Scholarship Fund once they have graduated and are financially able to do so.",
+      "bond_breach_consequence": "No contractual consequence is published; the obligation is described as a tradition and an expectation, not as a legal term of the award."
+    },
+    "practical_application_data": {
+      "application_readiness_checklist": [
+        "Confirm the secondary qualification is on the accepted list, or plan for the colloquium doctum route",
+        "Check the mathematics requirement for the specific qualification and schedule the OMPT-A if needed (two attempts allowed, minimum 75%)",
+        "Book the English test early if the secondary qualification does not cover English (IELTS 6.0 or another accepted test)",
+        "Budget for the EUR 175 application fee",
+        "Complete the online application form and then the Osiris admissions portal steps",
+        "Take the LTP personality test and schedule the personal interview",
+        "Apply at the first deadline (15 January 2027) rather than the final one (1 May 2027)",
+        "Download the correct BScBA finance template for Amsterdam or Breukelen and complete it without altering the formulas",
+        "Research DUO and home-country support first, so the financial plan is complete",
+        "Write the motivation letter only after the acceptance letter is received, and target it to the specific donor fund"
+      ],
+      "programme_comparison_fields": [
+        "Award type: partial tuition contribution, no stipend",
+        "Maximum amount: EUR 10,000 per year, never more than 50% of tuition for the whole degree",
+        "Application basis: motivation and demonstrated need, not merit alone",
+        "Admission required before scholarship application",
+        "One scholarship per student, even if several are applied for",
+        "Deadline separation: programme application 1 May 2027, scholarship application 1 June 2027"
+      ],
+      "motivation_letter_strategy": "The official guidance is personal rather than formulaic: explain what makes you the right candidate for that specific scholarship, describe the special qualities, talents or skills that distinguish you, explain how you will contribute to student life in Breukelen or Amsterdam and why you chose that location, use the motivation letter to explain any blank fields in the financial plan, and keep it authentic. The stated advice is 'do not use big words, but just be yourself' and 'Surprise us and make it personal. It is your story'. Because several donor funds are named after alumni year groups, naming the fund and speaking to its specific conditions is essential.",
+      "profile_fit_labels": [
+        "Non-EEA applicant without access to DUO student finance",
+        "Applicant with demonstrated financial need and a credible financing plan",
+        "Applicant who wants a residential student-community experience (Breukelen) or city experience (Amsterdam)",
+        "Applicant aiming at an English-taught business bachelor with an exchange semester",
+        "Applicant willing to accept a moral pay-forward obligation",
+        "Young entrepreneur (for the Joost van Gestel Scholarship for Entrepreneurs)"
+      ],
+      "common_mistakes": [
+        "Applying for the scholarship before being admitted - such applications are not considered",
+        "Assuming an automatic award: the scholarship requires a separate application after admission",
+        "Assuming a full scholarship is available - Nyenrode states it does not offer fully funded scholarships",
+        "Expecting a living allowance, travel or installation grant - none is published",
+        "Applying for several funds and expecting more than one award - only a single scholarship can be granted",
+        "Missing the 1 June 2027 scholarship deadline after a late programme admission",
+        "Altering the finance template formulas or format, which the Fund explicitly asks candidates not to do",
+        "Writing a generic motivation letter instead of one aimed at the specific named donor fund",
+        "Assuming the published EUR 10,000 is guaranteed rather than a maximum",
+        "Ignoring the mathematics entry test until late, when only two attempts are allowed"
+      ]
+    },
+    "risk_flags": [
+      {
+        "risk": "The assigned award name ('Excellence Scholarship' / 'International Undergraduate Scholarship for non-EEA students') does not exist on nyenrode.nl.",
+        "impact": "A record built on the assumed name would be unverifiable and could mislead applicants searching for an award that is not offered.",
+        "mitigation": "The record documents the closest official bachelor's award open to non-EEA applicants, the Nyenrode Revolving Scholarship Program, and the naming discrepancy is stated in database_notes and verification_notes."
+      },
+      {
+        "risk": "Only a maximum amount (EUR 10,000 per year) is published, not the actual range of awards or the number of awards per cycle.",
+        "impact": "Applicants may plan on receiving the maximum and on a specific number of places existing.",
+        "mitigation": "All amounts are recorded as maximums, total_estimated_value is marked unavailable, and coverage_limitations states that only a maximum is published."
+      },
+      {
+        "risk": "The award is not fully funded and provides no living costs, travel, installation or insurance support.",
+        "impact": "Applicants from lower-income countries may be unable to fund the unfunded portion of roughly EUR 15,000+ per year in tuition plus living and housing costs.",
+        "mitigation": "fully_funded is set to false with the direct official quotation, and unsupported benefit lines are explicitly marked 'Not published in official source'."
+      },
+      {
+        "risk": "Scholarship eligibility depends entirely on prior programme admission, and programme places are limited.",
+        "impact": "A candidate admitted at the final deadline has very little time to apply for the scholarship, and rejection from the programme ends the scholarship route.",
+        "mitigation": "document_checklist, application_steps and deadline_warning all flag that admission must precede the scholarship application and that the first deadline is safer."
+      },
+      {
+        "risk": "Renewal mechanics for the award across the three years are not published.",
+        "impact": "A recipient may assume the amount is guaranteed for all three years without re-application.",
+        "mitigation": "programme_duration.renewal_note records that the official pages state the award applies for the duration of the degree but publish no re-application or progress conditions, and this is flagged as unverified."
+      },
+      {
+        "risk": "The published TOEFL iBT minimum of 4.5 is inconsistent with the standard 0-120 iBT scale.",
+        "impact": "Applicants may take the test believing a 4.5 score is sufficient and waste the fee.",
+        "mitigation": "The figure is quoted verbatim with a test_score_note flagging the inconsistency and advising confirmation with the admissions office."
+      },
+      {
+        "risk": "No deadline time zone is published for the 1 June 2027 scholarship deadline.",
+        "impact": "Late-evening submissions from other time zones could be missed if a cut-off is applied silently.",
+        "mitigation": "deadline_timezone is left null rather than assumed, and the official_rule states that no time zone is published."
+      },
+      {
+        "risk": "The revolving 'moral obligation' could be mistaken for a contractual bond.",
+        "impact": "Applicants may fear, or conversely disregard, a repayment obligation.",
+        "mitigation": "funding_breakdown.bond and student_rights_and_cost_protection.bond_requirement both record it explicitly as a tradition with no contractual breach consequence."
+      }
+    ],
+    "application_status_workflow": [
+      "RESEARCH_REQUIREMENTS",
+      "APPLY_TO_PROGRAMME",
+      "COMPLETE_LTP_TEST",
+      "PERSONAL_INTERVIEW",
+      "ADMITTED",
+      "SUBMIT_SCHOLARSHIP_DOCUMENTS",
+      "SCHOLARSHIP_INTERVIEW",
+      "SCHOLARSHIP_AWARD_DECISION",
+      "REGISTER_AND_PAY_TUITION",
+      "START_BSCBA"
+    ],
+    "best_fit": "A non-EEA international student with a qualifying secondary qualification, credible English and mathematics results, demonstrated financial need and a credible financing plan, who wants an English-taught three-year business bachelor in the Netherlands and can apply early enough to secure admission well before the 1 June scholarship deadline.",
+    "not_best_fit": [
+      "Students seeking a fully funded award covering tuition and living costs - Nyenrode states it does not offer fully funded scholarships",
+      "Students seeking a master's, MBA or PhD scholarship",
+      "Students who cannot provide evidence of financial need",
+      "Students without a qualifying secondary qualification and unwilling to take the additional mathematics test",
+      "Students who need a scholarship without first being admitted to the BScBA",
+      "Students looking for a merit-only award based solely on grades",
+      "Exchange students (covered only by the separate Scholarship for Alumni of the Exchange Program)"
+    ],
+    "image": {
+      "logo_url": "https://www.nyenrode.nl/img/logo_nyenrode.svg",
+      "logo_source_url": "https://www.nyenrode.nl/en/about-us/nyenrode-fund/scholarships/scholarship-application",
+      "logo_source_type": "official_provider_page",
+      "logo_verified": true,
+      "logo_verified_at": "2026-10-03",
+      "logo_verification_method": "The logo asset is referenced as the site header mark on every nyenrode.nl page read during this research (alt text 'Universiteit Nyenrode B.V.', linking to https://www.nyenrode.nl/en/). A HEAD request to the asset URL returned HTTP 200 with content type image/svg+xml and a content length of 35,815 bytes, confirming the file exists on the provider's own domain and is a vector logo rather than a third-party copy.",
+      "image_url": "https://www.nyenrode.nl/images/default-source/programs/bachelors/bachelor-students.jpg?sfvrsn=5acd4a13_3",
+      "image_source_url": "https://www.nyenrode.nl/en/programs/p/bachelor-of-science-in-business-administration",
+      "image_source_type": "official_provider_page",
+      "image_verified": true,
+      "image_verified_at": "2026-10-03",
+      "image_alt_text": "Bachelor of Science in Business Administration students at Nyenrode Business University",
+      "image_usage_note": "Photo of students on the official BScBA programme page on the awarding university's own domain; used as illustrative programme imagery, not as the award logo."
+    },
+    "official_source": "Stichting Nyenrode Fonds (Nyenrode Fund), Nyenrode Business University",
+    "official_source_url": "https://www.nyenrode.nl/en/about-us/nyenrode-fund/scholarships/scholarship-application",
+    "official_programme_guide_url": null,
+    "official_catalogue_url": "https://www.nyenrode.nl/en/about-us/nyenrode-fund/scholarships",
+    "official_application_route": "Apply online to the full-time BScBA through the Nyenrode admissions form and the Osiris admissions portal, and after receiving the acceptance letter submit the scholarship application (financial plan, motivation letter and CV) to the Nyenrode Fund.",
+    "official_updates_url": "https://www.nyenrode.nl/en/about-us/nyenrode-fund/scholarships/scholarship-application/dates-and-deadlines",
+    "verification": {
+      "is_verified": true,
+      "verification_status": "active",
+      "last_verified_at": "2026-10-03T11:05:00+02:00",
+      "last_verified_date": "2026-10-03",
+      "verification_date_meaning": "Date on which the cited nyenrode.nl pages were fetched and read directly, and the logo and image assets were confirmed by HTTP request.",
+      "verified_by": "ScholarZone research agent (automated verification against nyenrode.nl)",
+      "source_type": "official_university",
+      "source_domain": "www.nyenrode.nl",
+      "verification_confidence": 0.92,
+      "official_fields_confirmed": [
+        "Award name: Nyenrode Revolving Scholarship Program (scholarship-application page title)",
+        "Maximum amount EUR 10,000 per year",
+        "Cap of never more than 50% of the tuition fee for the entire duration of the bachelor's degree",
+        "No fully funded scholarships offered",
+        "Admission (acceptance letter) required before applying; early applications without admission not considered",
+        "Application documents: financial plan, motivation letter in English, CV in English",
+        "Selection process: Fund staff, programme management and alumni donors assess the file, followed by a selection interview on campus or online",
+        "Deadlines: programme application 1 May 2027 (first deadline 15 January 2027), scholarship application 1 June 2027",
+        "Only one scholarship may be granted even if several are applied for",
+        "Revolving moral obligation to become a donor after graduating",
+        "Fund-level ambition of 30 scholarships per year by 2027, 20 for international students",
+        "BScBA tuition fees EUR 25,000 / 26,500 / 28,000 and application fee EUR 175",
+        "English test minimums including IELTS Academic 6.0 and PTE Academic 61",
+        "Programme duration 3 years, English-taught, Amsterdam or Breukelen",
+        "Logo asset on the official domain verified as image/svg+xml"
+      ],
+      "programme_check_required": [
+        "Per-year renewal procedure and progression conditions for the scholarship",
+        "Actual number of awards and the distribution of amounts awarded in the current cycle",
+        "Deadline time zone (not published)",
+        "Validity period of accepted English tests",
+        "Translation/certification requirements for non-English secondary documents",
+        "The published TOEFL iBT minimum of 4.5, which does not match the standard iBT scale"
+      ],
+      "unverified_or_removed_claims": [
+        "The assigned target name 'Nyenrode Business University Excellence Scholarship' does not appear anywhere on nyenrode.nl; no such bachelor's award exists.",
+        "The assigned target name 'International Undergraduate Scholarship for non-EEA students' does not appear anywhere on nyenrode.nl; no scholarship is restricted to non-EEA nationals, and the official listing places the award under 'Scholarship for all'.",
+        "The only award containing the word 'Excellence' is the GMAT Excellence scholarship of EUR 9,750 requiring a GMAT score of 650+, which belongs to the full-time MSc in Management and is therefore master's level and out of scope.",
+        "No scholarship percentage of tuition (for example 25%, 50% or 100%) is published; only the EUR 10,000 maximum and the 50%-of-tuition cap.",
+        "No award count, shortlist size or award range is published for the current cycle."
+      ],
+      "source_citations": [
+        "https://www.nyenrode.nl/en/about-us/about-nyenrode/internationals/students/scholarships-financial-aid",
+        "https://www.nyenrode.nl/en/about-us/nyenrode-fund/scholarships",
+        "https://www.nyenrode.nl/en/about-us/nyenrode-fund/scholarships/scholarship-application",
+        "https://www.nyenrode.nl/en/about-us/nyenrode-fund/scholarships/scholarship-application/terms-and-conditions",
+        "https://www.nyenrode.nl/en/about-us/nyenrode-fund/scholarships/scholarship-application/dates-and-deadlines",
+        "https://www.nyenrode.nl/en/about-us/nyenrode-fund/scholarships/scholarship-application/financial-plans",
+        "https://www.nyenrode.nl/en/programs/p/bachelor-of-science-in-business-administration",
+        "https://www.nyenrode.nl/en/programs/bachelor",
+        "https://www.nyenrode.nl/en/landing/snf/snf--scholarships"
+      ]
+    },
+    "database_notes": [
+      "SUBSTITUTION / NAMING CORRECTION: the assigned target was 'Netherlands - Nyenrode Business University Excellence Scholarship / International Undergraduate Scholarship for non-EEA students'. No award of that name exists on nyenrode.nl. Searches of the official domain return only the Revolving Scholarship and the Program Scholarship for the BScBA, plus MSc and MBA awards. The bachelor's-level scholarship actually open to non-EEA applicants is the Nyenrode Revolving Scholarship Program (Stichting Nyenrode Fonds), which is recorded here in the same slot (file 13-netherlands-nyenrode-excellence.json). The filename was kept as assigned.",
+      "The only official Nyenrode award containing the word 'Excellence' is the GMAT Excellence scholarship (EUR 9,750, GMAT 650+), which belongs to the full-time MSc in Management. It is master's level and was therefore not substituted, in line with the degree-level rule.",
+      "There is no nationality restriction on this award. It is listed under 'Scholarship for all' for the BScBA. Non-EEA applicants are the relevant group only because DUO student finance is limited to Dutch nationals and EU/EEA citizens, and the Fund therefore addresses 'students who are not eligible to apply for DUO support' separately. worldwide_eligibility is set to true rather than implying a non-EEA-only restriction.",
+      "The official page wording 'The scholarships for the academic year 2026-2027 are described below' appears on the scholarship-application page while the fund's finance templates are labelled 2026-2027 and the dates-and-deadlines page and programme page publish 2027 deadlines. The dates published for the relevant cycle are 15 January 2027 (first programme deadline), 1 May 2027 (final programme deadline) and 1 June 2027 (scholarship deadline) for a mid-August 2027 start. These are recorded verbatim without adjustment.",
+      "No time zone is published for the scholarship deadline of 1 June 2027, so deadline_timezone is null rather than assumed to be Dutch local time.",
+      "No official scholarship rulebook or handbook PDF exists. The General Terms and Conditions of Education PDF (version 1 April 2026) applies to the programme and is cited in student_rights_and_cost_protection, but official_programme_guide_url is left null because it is not a guide for this award.",
+      "The logo URL https://www.nyenrode.nl/img/logo_nyenrode.svg is the provider's own site-header mark, served from the nyenrode.nl domain and confirmed as image/svg+xml (35,815 bytes). No logo was taken from any third-party source.",
+      "The programme page quotes both 'Investment: EUR 25,500 average per year' and year-by-year tuition of EUR 25,000 / 26,500 / 28,000 for academic year 2027-2028. Both figures are reproduced; no average or total value was computed by this research.",
+      "Only a maximum award amount is published (EUR 10,000 per year). No total estimated value is computed or presented as an award, per the accuracy rules.",
+      "The fund-level ambition of 30 scholarships per year by 2027 (20 international, 10 Dutch students with limited financial means) is a stated target, not a published quota for the current cycle, and is recorded as such.",
+      "The revolving 'moral obligation' to become a donor after graduation is recorded as a tradition, not as a contractual bond, and no bond breach consequence is published.",
+      "The published TOEFL iBT minimum of 4.5 is quoted verbatim from the official page. It does not match the standard 0-120 iBT scale and should be confirmed with the admissions office before it is relied upon."
+    ],
+    "_source_domain": "www.nyenrode.nl",
+    "_source_type": "official_provider",
+    "_cycle": "2027-2028 entry (BScBA, mid-August 2027 start)",
+    "_verification_timestamp": "2026-10-03T11:05:00+02:00",
+    "_completeness_score": 0.93
+  }
+]

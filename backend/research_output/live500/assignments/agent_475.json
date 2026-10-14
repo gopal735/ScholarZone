@@ -1,0 +1,158 @@
+{
+ "agent": "agent_475",
+ "assignment_count": 2,
+ "scholarships": [
+  {
+   "id": 466,
+   "title": "UZH Hardship Loan",
+   "country": "Switzerland",
+   "degree": "Bachelor's, Master's",
+   "funding_label": "Interest-free loan",
+   "status": "open",
+   "official_source": "University of Zurich Student Financial Aid Office",
+   "official_source_url": "https://www.studienfinanzierung.uzh.ch/en/financial_support.html",
+   "application_link": "https://www.studienfinanzierung.uzh.ch/en/financial_support.html",
+   "catalogue_url": "https://www.studienfinanzierung.uzh.ch/en/faq/faq_scholarships_loans_requests.html",
+   "official_updates_url": null,
+   "existing": {
+    "funding_amount": 6000,
+    "funding_currency": "CHF",
+    "funding_period": "per application",
+    "tuition_coverage": 0,
+    "living_cost_coverage": 1,
+    "travel_coverage": null,
+    "fully_funded": 0,
+    "description": "The Swiss Study Foundation supports highly talented students by providing network opportunities and scholarships: Swiss Study Foundation",
+    "eligibility": [
+     "Enrolled at the University of Zurich",
+     "In an acute financial emergency",
+     "Without any debt",
+     "Able to plausibly guarantee that the amount will be paid back within six months",
+     "Hardship loans can be applied for a maximum of one time per semester"
+    ],
+    "eligibility_summary": "Enrolled students at the University of Zurich in an acute financial emergency who have no existing debt and can plausibly guarantee repayment. Intended to bridge financial gaps such as an advance on a cantonal scholarship or tuition fees, not to pay off debts.",
+    "benefits": [
+     "Interest-free",
+     "No application deadline",
+     "Processing in approximately 6-8 working days"
+    ],
+    "coverage": [
+     "Interest-free bridge financing for temporary financial gaps",
+     "Up to CHF 6,000 per application"
+    ],
+    "requirements": [
+     "UZH email address required to access the application form",
+     "Application submitted via the portal at any time",
+     "Repeat applications only every 6 months"
+    ],
+    "documents": [
+     "Application submitted through the UZH online application portal",
+     "Evidence that repayment within six months is plausibly assured"
+    ],
+    "english_requirement": null,
+    "application_method": [
+     "Log in to the UZH scholarship portal with your UZH email address",
+     "Submit the hardship loan request and upload the documents",
+     "Track the decision in the portal; processing takes approximately 6-8 working days"
+    ],
+    "selection_notes": "Cases are assessed by the Student Financial Aid Office; the loan is granted if repayment can plausibly be assured.",
+    "best_fit": "Enrolled UZH students facing a sudden, temporary financial gap, for example while waiting for a cantonal scholarship decision.",
+    "notes": "Not meant for paying off debts; unpaid loans are immediately passed to a debt collection agency.",
+    "duration": "Short-term bridge loan; repeat applications possible every 6 months and at most once per semester",
+    "application_period": "Rolling, all year round",
+    "deadline_display": "\"You can submit your application at any time via portal. Repeat applications are only possible every 6 months.\"",
+    "deadline_date": null,
+    "region": "Europe",
+    "program_type": "Emergency student loan",
+    "applicant_utility": null,
+    "official_details": null
+   },
+   "missing_fields": [
+    "travel_coverage",
+    "english_requirement",
+    "deadline_date",
+    "applicant_utility",
+    "official_details"
+   ]
+  },
+  {
+   "id": 565,
+   "title": "Swiss Government Excellence Scholarships (ESKAS)",
+   "country": "Switzerland",
+   "degree": "PhD, Master's",
+   "funding_label": "Stipend",
+   "status": "open",
+   "official_source": "State Secretariat for Education, Research and Innovation (SERI) - Federal Commission for Scholarships for Foreign Students (FCS / ESKAS), Switzerland",
+   "official_source_url": "https://www.sbfi.admin.ch",
+   "application_link": "https://www.sbfi.admin.ch",
+   "catalogue_url": "https://www.go.eskas.ch",
+   "official_updates_url": "https://www.sbfi.admin.ch/en/swiss-government-excellence-scholarships",
+   "existing": {
+    "funding_amount": 2450,
+    "funding_currency": "CHF",
+    "funding_period": "per month",
+    "tuition_coverage": 0,
+    "living_cost_coverage": 1,
+    "travel_coverage": 0,
+    "fully_funded": 0,
+    "description": "The Swiss Government Excellence Scholarships are awarded annually by the Swiss Confederation to encourage international exchange and research cooperation between Switzerland and more than 180 other countries. Recipients are selected by the Federal Commission for Scholarships for Foreign Students (FCS, also known as ESKAS), an independent decentralised federal body that is not bound by directives. The programme has two components: research scholarships for talented early career researchers from abroad who have already completed a Master's degree, and art scholarships for students from a limited number of countries wishing to pursue an initial Master's degree in an artistic field in Switzerland. Applicants are aged 35 or less and the scholarship pays CHF 2,450 per month.",
+    "eligibility": [
+     "Maximum age 35 (date of birth after 31 December 1991 for the 2027-2028 cycle)",
+     "Master's degree or equivalent completed by 31 July 2027 (30 June 2027 for ETH Zurich)",
+     "Applicants from one of the 183 eligible countries of origin",
+     "For PhD scholarships at graduate schools only: confirmation of admission to a doctoral school must be submitted together with the application",
+     "Letter of support from an academic supervisor in Switzerland, with a short CV of that supervisor",
+     "Applicants already residing in Switzerland must have entered Switzerland no earlier than 1 August 2026, evidenced by the registration confirmation or residence permit",
+     "For art scholarships: initial Master's degree in an artistic field in Switzerland, and nationality of one of the limited number of eligible countries"
+    ],
+    "eligibility_summary": "Open to applicants from 183 countries who are aged 35 or less and already hold a Master's degree or equivalent. Applicants must not have been living, studying or working in Switzerland for more than 13 months before the scholarship start, must not already have held a Swiss Government Excellence Scholarship, and every research scholarship application must be backed by an academic supervisor at a Swiss higher education institution.",
+    "benefits": [
+     "CHF 2,450 per month to cover basic living expenses for one person",
+     "Official note that the scholarship is not a salary and must not be treated as equivalent to regular remuneration, financially or legally",
+     "PhD scholarships renewable twice for up to 36 months, subject to academic progress"
+    ],
+    "coverage": [
+     "Monthly stipend of CHF 2,450 to cover basic living expenses for one person",
+     "Valid only for full-time research in Switzerland"
+    ],
+    "requirements": [],
+    "documents": [
+     "Complete CV including educational background, degrees, awards, positions, publications, teaching and practical experience",
+     "Letter of motivation, maximum 2 pages",
+     "Research proposal on the FCS/ESKAS form, maximum 5 pages including a summary for non-specialists",
+     "Letter of support from an academic supervisor at a Swiss higher education institution",
+     "Short CV (max. 2 pages) of that academic supervisor",
+     "For research fellowships: short CV of the academic supervisor at the home university",
+     "E-mail addresses of two different professors in the relevant field, who upload recommendation letters through the application system",
+     "Copies of certificates and transcripts from previous universities, with certified translations if not in English, French, Italian or German",
+     "Copy of passport (both passports for dual citizens)",
+     "Copy of residence permit or registration confirmation if already residing in Switzerland",
+     "For PhD scholarships at graduate schools only: confirmation of admission to the doctoral school"
+    ],
+    "english_requirement": null,
+    "application_method": [],
+    "selection_notes": "Applications are submitted to the applicant's Swiss diplomatic representation. The Federal Commission for Scholarships for Foreign Students assesses applications against three criteria: candidate profile, quality of the research project or artistic work, and synergies and potential for future research cooperation. Art scholarships are reviewed in consultation with the Federal Office of Culture.",
+    "best_fit": null,
+    "notes": "Host institutions for research scholarships are Swiss cantonal universities, universities of applied sciences, ETH Zurich or EPFL, and the four research institutes within the ETH Domain (PSI, WSL, Empa, Eawag). Official phishing warning: the State Secretariat for Education, Research and Innovation warns against fake Swiss Government scholarship offers sent by e-mail or published on social media, and the application for a Swiss Government Scholarship is free of charge.",
+    "duration": "Research fellowships: maximum 12 months (minimum 6 months), no extension possible, start 1 September 2027. PhD scholarships: 12 months, renewable twice for up to 36 months subject to academic progress, start 1 September 2027.",
+    "application_period": "Annual cycle. Applications open on 20 August 2026, country-specific deadlines apply between August and December 2026, and the Federal Commission announces its award decisions by the end of May at the latest for the following academic year.",
+    "deadline_display": "Applications are open from 20 August 2026. Applications are submitted to the applicant's Swiss diplomatic representation, and the deadline is set country by country: information on application deadlines and scholarship opportunities by country of origin is published by the Federal Commission in August each year.",
+    "deadline_date": null,
+    "region": "Europe",
+    "program_type": "Government research scholarship (Federal Commission for Scholarships for Foreign Students, FCS/ESKAS)",
+    "applicant_utility": null,
+    "official_details": null
+   },
+   "missing_fields": [
+    "requirements",
+    "english_requirement",
+    "application_method",
+    "best_fit",
+    "deadline_date",
+    "applicant_utility",
+    "official_details"
+   ]
+  }
+ ],
+ "result_file": "C:\\Users\\GopaL\\Desktop\\Projects folder\\ScholarZone\\backend\\research_output\\live500\\results\\agent_475.json"
+}

@@ -1,0 +1,160 @@
+{
+ "agent": "agent_363",
+ "assignment_count": 2,
+ "scholarships": [
+  {
+   "id": 699,
+   "title": "Beca para estudiantes en situación de discapacidad",
+   "country": "Chile",
+   "degree": "Bachelor's",
+   "funding_label": "Tuition Fee Waiver",
+   "status": "closing-soon",
+   "official_source": "Ministerio de Educación de Chile (Mineduc), published on ChileAtiende, the official portal of the Government of Chile",
+   "official_source_url": "https://www.chileatiende.gob.cl/fichas/36380-beca-para-estudiantes-en-situacion-de-discapacidad",
+   "application_link": "https://www.chileatiende.gob.cl/fichas/36380-beca-para-estudiantes-en-situacion-de-discapacidad",
+   "catalogue_url": "https://www.chileatiende.gob.cl/buscar?query=beca",
+   "official_updates_url": "https://www.chileatiende.gob.cl/fichas/36380-beca-para-estudiantes-en-situacion-de-discapacidad",
+   "existing": {
+    "funding_amount": 1150000,
+    "funding_currency": "CLP",
+    "funding_period": "per academic year",
+    "tuition_coverage": 1,
+    "living_cost_coverage": 0,
+    "travel_coverage": 0,
+    "fully_funded": 0,
+    "description": null,
+    "eligibility": [
+     "Chilean nationality (\"Tener la nacionalidad chilena\")",
+     "Registered in the Registro Nacional de Discapacidad (RND) of the Servicio de Registro Civil e Identificación as at 31 December 2026",
+     "Belong to the 70% lowest-income group of the country according to the Registro Social de Hogares (RSH)",
+     "No higher-education technical or professional degree already held (\"No contar con un título profesional o técnico de nivel superior\")",
+     "Secondary-school (enseñanza media) average of 5.0 or above",
+     "Not have received a Mineduc tuition scholarship as a first-year student on two separate occasions",
+     "Matriculate at an institution accredited as at 31 December 2026"
+    ],
+    "eligibility_summary": "Chilean students registered in the Registro Nacional de Discapacidad, from the 70% lowest-income segment of the population according to the Registro Social de Hogares, with a secondary-school average of 5.0 or above and no existing higher-education technical or professional qualification.",
+    "benefits": [
+     "Economic support financing all or part of the annual tuition of a regular degree programme",
+     "One of three amounts depending on the type of institution and degree",
+     "250 places in each of the three underlying scholarships"
+    ],
+    "coverage": [
+     "At Council of Rectors universities: the annual reference tuition (arancel de referencia anual) of the degree, through 250 places of the Beca Bicentenario",
+     "At accredited private institutions (universities, technical training centres and professional institutes): up to CLP 1,150,000 of the annual tuition, through 250 places of the Beca Juan Gómez Millas",
+     "For technical or professional degrees taught by institutes: between CLP 600,000 and CLP 860,000 of the annual tuition, through 250 places of the Beca Nuevo Milenio"
+    ],
+    "requirements": [
+     "File the application through the FUAS website of Beneficios Estudiantiles using RUT and password or ClaveÚnica",
+     "Upload the supporting documents during the document-upload dates set by Mineduc",
+     "Note that the scholarship may only be used for a degree other than the one in which the applicant already used the Gratuidad"
+    ],
+    "documents": [
+     "Completed FUAS socioeconomic accreditation form",
+     "Proof of registration in the Registro Nacional de Discapacidad as at 31 December 2026",
+     "RSH household registration data",
+     "Proof of enrolment and the tuition amount for the admission year"
+    ],
+    "english_requirement": null,
+    "application_method": [
+     "Online application through the Formulario Único de Acreditación Socioeconómica (FUAS) at https://postulacion.beneficiosestudiantiles.cl/fuas/",
+     "Results checked on the Beneficios Estudiantiles site at https://resultados.beneficiosestudiantiles.cl/login"
+    ],
+    "selection_notes": "The official page does not publish a scoring formula; it states that the benefit is granted on the basis of the data supplied in the FUAS plus information held by the State.",
+    "best_fit": "Chilean students with a registered disability who come from the lowest-income 70% of households and are entering or continuing an undergraduate degree at an accredited institution.",
+    "notes": "Institutional accreditation is the pivot for the amount: degrees at Council of Rectors universities receive the full reference tuition, while private and technical institutions are capped. Applicants may not combine this benefit with the Gratuidad for the same degree.",
+    "duration": "Annual, tied to the Chilean academic year; the benefit is assigned per admission cycle (admisión) and renewed on the same basis as the underlying scholarship.",
+    "application_period": "1 to 22 October 2026 for the 2027 admission cycle (official wording: \"Postulación: del 1 al 22 de octubre 2026\"), filed through the Formulario Único de Acreditación Socioeconómica (FUAS) website.",
+    "deadline_display": "Applications for the 2027 admission cycle close on 22 October 2026.",
+    "deadline_date": "2026-10-22",
+    "region": "Latin America",
+    "program_type": "Government scholarship",
+    "applicant_utility": null,
+    "official_details": null
+   },
+   "missing_fields": [
+    "description",
+    "english_requirement",
+    "applicant_utility",
+    "official_details"
+   ]
+  },
+  {
+   "id": 700,
+   "title": "Beca de Reparación Valech",
+   "country": "Chile",
+   "degree": "Bachelor's",
+   "funding_label": "Tuition Fee Waiver",
+   "status": "closing-soon",
+   "official_source": "Ministerio de Educación de Chile (Mineduc), published on ChileAtiende, the official portal of the Government of Chile",
+   "official_source_url": "https://www.chileatiende.gob.cl/fichas/2278-beca-de-reparacion-valech",
+   "application_link": "https://www.chileatiende.gob.cl/fichas/2278-beca-de-reparacion-valech",
+   "catalogue_url": "https://www.chileatiende.gob.cl/buscar?query=beca",
+   "official_updates_url": "https://www.chileatiende.gob.cl/fichas/2278-beca-de-reparacion-valech",
+   "existing": {
+    "funding_amount": 1150000,
+    "funding_currency": "CLP",
+    "funding_period": "per academic year",
+    "tuition_coverage": 1,
+    "living_cost_coverage": 0,
+    "travel_coverage": 0,
+    "fully_funded": 0,
+    "description": null,
+    "eligibility": [
+     "Be named in the Informe Comisión Valech (the beneficiary holder), or be the transferee of a Valech holder's benefit",
+     "The benefit may be transferred to a child, grandchild or great-grandchild (hijos, nietos or bisnietos)",
+     "For second-year and later study, or for a transferred benefit, the institution must be accredited as at 31 December 2026",
+     "If the transferee enrols in Medicine, Pedagogy or Dentistry, the degree itself must also be accredited or in the accreditation process as at 31 January 2027"
+    ],
+    "eligibility_summary": "People named in the Informe Comisión Valech — the official list of victims of Chile's military dictatorship — or, where the holder does not take up the benefit, their child, grandchild or great-grandchild to whom the benefit is transferred.",
+    "benefits": [
+     "Full annual tuition plus enrolment fee for the named Valech holder",
+     "Transferable to a child, grandchild or great-grandchild if the holder does not use it",
+     "Capped amounts of CLP 1,150,000 or CLP 600,000 apply only in the transfer route outside the university sector"
+    ],
+    "coverage": [
+     "Beneficiary holders (titulares): the enrolment fee (matrícula) and the whole annual tuition of the degree",
+     "Transfer to a child, grandchild or great-grandchild at a Council of Rectors university: the enrolment fee plus the annual reference tuition",
+     "Transfer at a private university or for a professional degree at a professional institute: the enrolment fee plus annual tuition up to a maximum of CLP 1,150,000",
+     "Transfer for a technical degree at a technical training centre or a technical degree at a professional institute: the enrolment fee plus annual tuition up to a maximum of CLP 600,000"
+    ],
+    "requirements": [
+     "File the application through the FUAS website of Beneficios Estudiantiles",
+     "Upload the documents for the relevant route: titular, transfer with a living holder, transfer with a deceased holder, and the variants with or without efectiva posesión",
+     "Notarise the transfer form (anexos N° 1, 2 or 3) where the route requires it",
+     "For Medicine, Pedagogy or Dentistry in the transfer route, verify that the degree is accredited or in process as at 31 January 2027"
+    ],
+    "documents": [
+     "Formulario de aceptación del beneficio educacional under Ley N° 19.992, or anexo N° 4",
+     "Cédula de identidad",
+     "Licencia de enseñanza media or a legalised photocopy",
+     "Proof of enrolment showing the degree and the tuition for the year",
+     "For transfers: birth certificate, transfer form notarised, and where the holder is deceased, the death certificate and, if applicable, the court decision or Registro Civil grant of posesión efectiva",
+     "Carta de aceptación del beneficio, anexo N° 5"
+    ],
+    "english_requirement": null,
+    "application_method": [
+     "Online application and document upload through the FUAS website of Beneficios Estudiantiles",
+     "Results checked on the Beneficios Estudiantiles site"
+    ],
+    "selection_notes": "This is a reparations entitlement created by Ley N° 19.992 rather than a competitive selection; the official page does not publish ranking criteria.",
+    "best_fit": "Victims of Chile's military dictatorship named in the Valech Commission report who want to study in higher education, and their children, grandchildren or great-grandchildren if the benefit is transferred.",
+    "notes": "The transfer route has four documented document variants depending on whether the Valech holder is living and whether posesión efectiva has been granted; picking the wrong variant is the main documentary risk. The benefit covers tuition and enrolment only, not living costs.",
+    "duration": "Annual, tied to the Chilean academic year and to the admission cycle in which the benefit is assigned.",
+    "application_period": "1 to 22 October 2026 for the 2027 admission cycle (official wording: \"Postulación: del 1 al 22 de octubre 2026\"), filed through the FUAS website; supporting documents are uploaded on the dates set by Mineduc.",
+    "deadline_display": "Applications for the 2027 admission cycle close on 22 October 2026.",
+    "deadline_date": "2026-10-22",
+    "region": "Latin America",
+    "program_type": "Government reparations scholarship",
+    "applicant_utility": null,
+    "official_details": null
+   },
+   "missing_fields": [
+    "description",
+    "english_requirement",
+    "applicant_utility",
+    "official_details"
+   ]
+  }
+ ],
+ "result_file": "C:\\Users\\GopaL\\Desktop\\Projects folder\\ScholarZone\\backend\\research_output\\live500\\results\\agent_363.json"
+}

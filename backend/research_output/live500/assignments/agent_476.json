@@ -1,0 +1,166 @@
+{
+ "agent": "agent_476",
+ "assignment_count": 2,
+ "scholarships": [
+  {
+   "id": 34,
+   "title": "Taiwan Scholarship Program",
+   "country": "Taiwan",
+   "degree": "Bachelor's, Master's, PhD",
+   "funding_label": "Fully Funded",
+   "status": "upcoming",
+   "official_source": "Ministry of Education, Republic of China (Taiwan)",
+   "official_source_url": "https://www.edutwscholarship.moe.gov.tw",
+   "application_link": "https://www.edutwscholarship.moe.gov.tw",
+   "catalogue_url": "https://taiwanscholarship.moe.gov.tw/web/pages.aspx?p=7",
+   "official_updates_url": "https://taiwanscholarship.moe.gov.tw/web/index.aspx",
+   "existing": {
+    "funding_amount": 20000,
+    "funding_currency": "TWD",
+    "funding_period": "per month",
+    "tuition_coverage": 1,
+    "living_cost_coverage": 1,
+    "travel_coverage": 0,
+    "fully_funded": 0,
+    "description": "The Taiwan Scholarship Program is administered by the Ministry of Education of the Republic of China (Taiwan) for outstanding foreign students, and is distinct from the MOFA Taiwan Scholarship and the MOE Huayu Enrichment Scholarship. It pays tuition and miscellaneous expenses up to NTD 40,000 each semester and a monthly living allowance of NTD 15,000 for bachelor's students and NTD 20,000 for master's and doctoral students. Applications go to the Taiwan Representative Office responsible for the applicant's country and a separate application to a Taiwanese university is also required. The 2026 round ran from 1 February to 31 March 2026 and has closed; the next round falls in early 2027.",
+    "eligibility": [
+     "Foreign national with at least a secondary school graduation diploma, or post-secondary degree(s)",
+     "Excellent academic record and good character",
+     "Mainland China, Hong Kong and Macao students are not eligible",
+     "Not already holding student status, or registered to begin studies, at a Taiwanese university or college, unless completing a degree and graduating that year",
+     "Not already studied in Taiwan for a degree at the same level as the one applied for",
+     "Not an exchange or dual/joint degree student admitted under a cooperation agreement",
+     "Has not held a Taiwan Scholarship for a total of five years",
+     "Has never had a Taiwan Scholarship or MOE Huayu Enrichment Scholarship revoked",
+     "Has not received another scholarship or subsidy from a Taiwan government agency or a Taiwanese institution, excluding university discounts that top up the scholarship's tuition payment"
+    ],
+    "eligibility_summary": "Non-Taiwan citizen, strong academic record, not currently studying in Taiwan",
+    "benefits": [
+     "NTD 15,000-20,000/month stipend",
+     "Tuition up to NTD 40,000/semester"
+    ],
+    "coverage": [
+     "NTD 15,000-20,000/month stipend",
+     "Tuition up to NTD 40,000/semester"
+    ],
+    "requirements": [
+     "Be a foreign national holding at least a secondary school graduation diploma, or post-secondary degree(s)",
+     "Show excellent academic performance and be of good moral character",
+     "Submit the scholarship application to the Taiwan Representative Office responsible for the applicant's country",
+     "Apply separately for admission to a university or college in Taiwan within that institution's own deadline",
+     "Sign the MOE Taiwan Scholarship Terms of Agreement",
+     "Obtain a health certificate meeting the programme's required items"
+    ],
+    "documents": [
+     "Application form",
+     "Transcripts",
+     "Recommendation letters x2",
+     "Study plan",
+     "Passport copy"
+    ],
+    "english_requirement": "English or Chinese depending on programme",
+    "application_method": [
+     "Contact the local Taiwan Representative Office for the country-specific application form and deadline",
+     "Submit the scholarship application and required documents to that Representative Office",
+     "Apply separately for admission to the intended university or college in Taiwan"
+    ],
+    "selection_notes": "Selection is delegated by the MOE to the local Taiwan Representative Offices, which may work with local government agencies, universities and colleges and cultural institutions. Each Representative Office publishes the number of scholarships, selection criteria, procedure and time schedule in Chinese and the local language by 31 January each year. Recipients must sign the Terms of Agreement; the scholarship may be suspended or revoked.",
+    "best_fit": "Students interested in Mandarin learning or STEM fields",
+    "notes": "Do not confuse this award with the MOFA Taiwan Scholarship, which is limited to countries with diplomatic relations or friendly relations recognised by MOFA and provides one-way economy-class air tickets, or with the MOE Huayu Enrichment Scholarship, which has no tuition component. The MOE Taiwan Scholarship itself provides no air ticket.",
+    "duration": "4 years for a bachelor's programme, 2 years for a master's programme, 4 years for a doctoral programme; total scholarship period cannot exceed five years",
+    "application_period": "Annual cycle, in principle 1 February to 31 March, with the actual window set by each Taiwan Representative Office; the scholarship year runs 1 September to 31 August",
+    "deadline_display": "Typically March-April, varies by embassy",
+    "deadline_date": null,
+    "region": "Asia",
+    "program_type": "Government scholarship (Ministry of Education, Republic of China (Taiwan))",
+    "applicant_utility": null,
+    "official_details": null
+   },
+   "missing_fields": [
+    "deadline_date",
+    "applicant_utility",
+    "official_details"
+   ]
+  },
+  {
+   "id": 144,
+   "title": "MOFA Taiwan Scholarship (Taiwan Scholarship Program)",
+   "country": "Taiwan",
+   "degree": "Bachelor's, Master's, PhD, plus pre-degree Mandarin Language Enrichment Program (LEP)",
+   "funding_label": "Stipend",
+   "status": "upcoming",
+   "official_source": "Ministry of Foreign Affairs, Republic of China (Taiwan)",
+   "official_source_url": "https://en.mofa.gov.tw/cp.aspx?n=1325",
+   "application_link": "https://en.mofa.gov.tw/cp.aspx?n=1325",
+   "catalogue_url": null,
+   "official_updates_url": null,
+   "existing": {
+    "funding_amount": 33000,
+    "funding_currency": "TWD",
+    "funding_period": "per month",
+    "tuition_coverage": 0,
+    "living_cost_coverage": 1,
+    "travel_coverage": 1,
+    "fully_funded": 0,
+    "description": "The Taiwan Scholarship Program of the Ministry of Foreign Affairs, Republic of China (Taiwan), funds international students for degree programmes or a pre-degree Mandarin Language Enrichment Program at Mandarin-teaching institutions affiliated with MOE-accredited universities. Recipients receive a monthly stipend of NT$33,000 for degree programmes or NT$28,000 for the LEP, plus one-way economy-class air tickets for direct flights to and from Taiwan, and must cover all other expenses themselves. The award period is one year for the LEP, up to four years for undergraduate and doctoral study and two years for a master's, with a five-year total cap. Applications are accepted from 1 February to 31 March each year, and the programme is open to students of any country except mainland China, Hong Kong and Macau, in principle prioritising Taiwan's diplomatic partners.",
+    "eligibility": [
+     "Is a high school graduate or above with an excellent academic record, of good moral character and has no criminal record.",
+     "Is not a national of the Republic of China (Taiwan).",
+     "Is not an overseas compatriot student.",
+     "Has never attended an educational institution in Taiwan at the same level of degree or LEP that he/she intends to apply for.",
+     "Is not an exchange student through any cooperation agreement between a foreign university/college and an educational institute in Taiwan while receiving the Scholarship.",
+     "Has not previously had a Scholarship revoked by an ROC government agency or other relevant institution.",
+     "In principle, holds citizenship of a country that has diplomatic relations with Taiwan; special consideration may be given to students from other countries.",
+     "The programme is not applicable to students from mainland China, Hong Kong or Macau."
+    ],
+    "eligibility_summary": "High school graduates or above with an excellent academic record and good moral character, who are not nationals of the Republic of China (Taiwan), are not overseas compatriot students, and have never studied in Taiwan at the same level they are applying for. In principle granted to students from countries that have diplomatic relations with Taiwan, with special consideration possible for students from other countries. Not applicable to students from mainland China, Hong Kong or Macau.",
+    "benefits": [
+     "NT$33,000 per month stipend for degree programmes.",
+     "NT$28,000 per month stipend for the pre-degree LEP.",
+     "One-way economy-class air tickets for direct flights to and from Taiwan.",
+     "Possible university-level tuition and miscellaneous fee reductions, at each institution's discretion."
+    ],
+    "coverage": [
+     "Monthly stipend of NT$33,000 for degree programmes.",
+     "Monthly stipend of NT$28,000 for the pre-degree Mandarin Language Enrichment Program (LEP).",
+     "One-way economy-class plane tickets for direct flights to and from Taiwan.",
+     "Recipients are responsible for all other expenses during their stay in Taiwan; MOFA will in principle not provide any other subsidies.",
+     "Universities and colleges may offer reduced tuition and miscellaneous fees, but this is discretionary and not guaranteed."
+    ],
+    "requirements": [
+     "High school graduate or above with an excellent academic record and good moral character.",
+     "No criminal record.",
+     "Not a national of the Republic of China (Taiwan) and not an overseas compatriot student.",
+     "No prior study in Taiwan at the level being applied for.",
+     "Not simultaneously an exchange student under a university cooperation agreement while holding the Scholarship.",
+     "No previous Scholarship revocation by an ROC government agency or other relevant institution."
+    ],
+    "documents": [],
+    "english_requirement": null,
+    "application_method": [
+     "Consult the Taiwan Scholarships and Huayu Enrichment Scholarships website, which the MOFA guidelines page names as the source of further information.",
+     "Submit the application within the 1 February to 31 March window for the relevant cycle."
+    ],
+    "selection_notes": "The Scholarship is in principle granted to students from countries that have diplomatic relations with Taiwan; special consideration may also be given to students from other countries. Selection follows the programme guidelines published by MOFA and administered for applicants through the Taiwan Scholarships portal.",
+    "best_fit": "Students from Taiwan's diplomatic partners (and, with special consideration, other countries) seeking a funded degree or a pre-degree Mandarin year in Taiwan who can satisfy the good-character and academic-record requirements and who are not from mainland China, Hong Kong or Macau.",
+    "notes": "The MOFA stipend is a living allowance, not a tuition waiver: the guidelines state that recipients are responsible for all expenses during their stay in Taiwan and that MOFA will in principle not provide any other subsidies. Tuition reduction is only discretionary ('Universities and colleges may offer Scholarship recipients reduced tuition and miscellaneous fees'). The MOFA guidelines page points to a separate Taiwan Scholarships and Huayu Enrichment Scholarships website for full application detail; that deep URL was not captured on the page as read.",
+    "duration": "Pre-degree LEP: one year. Degree programmes: undergraduate maximum four years, master's maximum two years, doctoral maximum four years. Award periods must be continuous with no breaks and cannot exceed five years in total.",
+    "application_period": "Annual window from 1 February to 31 March, applying to the Taiwan Scholarship cycle for the following academic year. The February-March 2026 window has closed; the next is expected 1 February to 31 March 2027.",
+    "deadline_display": "The official guidelines state only 'from February 1 to March 31' for the application period, with no year attached. As of 2026-10-04 that window has passed for the most recent cycle and the next is expected between 1 February and 31 March 2027.",
+    "deadline_date": null,
+    "region": "Asia",
+    "program_type": "Government scholarship (Taiwan Scholarship Program of the Ministry of Foreign Affairs)",
+    "applicant_utility": null,
+    "official_details": null
+   },
+   "missing_fields": [
+    "documents",
+    "english_requirement",
+    "deadline_date",
+    "applicant_utility",
+    "official_details"
+   ]
+  }
+ ],
+ "result_file": "C:\\Users\\GopaL\\Desktop\\Projects folder\\ScholarZone\\backend\\research_output\\live500\\results\\agent_476.json"
+}

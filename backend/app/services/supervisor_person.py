@@ -73,6 +73,55 @@ HONORIFICS: frozenset[str] = frozenset(
     }
 )
 
+#: Phrase-level CTA and navigation labels. A two-word capitalised string
+#: is otherwise person-shaped - "Read More" and "Apply Now" both look
+#: like "John Smith" at the token level - so the only thing separating a
+#: button from a person is that the words are the label of the button.
+#: Matched case-insensitively against the whole collapsed string.
+CTA_LABEL_PHRASES: frozenset[str] = frozenset(
+    {
+        "read more",
+        "view more",
+        "view all",
+        "see all",
+        "see more",
+        "learn more",
+        "click here",
+        "view profile",
+        "view details",
+        "view detail",
+        "apply now",
+        "apply",
+        "apply here",
+        "find out more",
+        "more info",
+        "show more",
+        "continue reading",
+        "back to top",
+        "next",
+        "previous",
+        "submit",
+        "send",
+        "download",
+        "print",
+        "share",
+        "filter",
+        "sort by",
+        "clear all",
+        "reset",
+        "close",
+        "menu",
+        "home",
+        "about",
+        "contact",
+        "search",
+        "login",
+        "sign in",
+        "register",
+        "subscribe",
+    }
+)
+
 #: Tokens that may appear inside a personal slug but never identify a person on
 #: their own. This is a *navigational* set, not a geographic one: it lists words
 #: that describe a section of a site rather than a human being. It is small,
@@ -106,7 +155,12 @@ NAME_PARTICLES: frozenset[str] = frozenset(
 )
 
 MIN_NAME_TOKENS = 2
-MAX_NAME_TOKENS = 5
+#: Four, not five. "John Smith Williams Jones Brown" is a name-shaped
+#: string of the kind a directory navigation menu produces when it joins
+#: headings, and every real two-to-four-token name still fits. A
+#: five-token "name" is a fragment with a person in it somewhere, which
+#: is not what the storage gate is claiming to have found.
+MAX_NAME_TOKENS = 4
 MAX_LABEL_LENGTH = 120
 
 #: Characters that indicate the text is not a name at all.
@@ -115,6 +169,11 @@ _MARKUP_CHARACTERS = "<>{}[]|/\\@#$%^&*+=~`\"'"
 #: Separators that split "Jane Smith - Professor of Computing" into its two claims.
 _SEGMENT_SPLIT = re.compile(r"\s+[—–-]\s+|\s+[|]\s+|\s+[•·]\s+")
 
+#: Words inside a candidate string. Only the letters of the Latin
+#: alphabet and their accented forms: a string carrying a digit is
+#: rejected whole (below), so there is no need to accept "2" as part of
+#: a token and then test for it — the old pattern silently split
+#: "John2 Smith" into "John" and "Smith" and passed the name test.
 _TOKEN_PATTERN = re.compile(r"[A-Za-zÀ-ÿ'’-]+")
 
 
@@ -158,6 +217,26 @@ def _tokens(text: str) -> list[str]:
 
 def _is_person_shaped(text: str) -> bool:
     """Return whether ``text`` has the surface form of one person's name."""
+    if not text:
+        return False
+    # A digit anywhere means the string is an identifier, a year, a code
+    # or a mangled heading — never a name. This is checked before the
+    # tokens are extracted, because the token pattern would otherwise
+    # split "John2" into "John" and lose the evidence entirely.
+    if any(character.isdigit() for character in text):
+        return False
+    if any(character in _MARKUP_CHARACTERS for character in text):
+        return False
+
+    # A CTA label is person-shaped in every way except meaning: "Read
+    # More" is two capitalised words. The only thing that distinguishes
+    # it from "John Smith" is that its words are a known button label,
+    # so that is what this checks. Case and punctuation are folded away
+    # first, because "Apply Now" and "apply now" are the same button.
+    collapsed = " ".join(_tokens(text)).lower()
+    if collapsed in CTA_LABEL_PHRASES:
+        return False
+
     tokens = _tokens(text)
     if not MIN_NAME_TOKENS <= len(tokens) <= MAX_NAME_TOKENS:
         return False

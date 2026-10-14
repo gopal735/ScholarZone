@@ -1,0 +1,102 @@
+{
+ "agent": "agent_100",
+ "assignment_count": 1,
+ "scholarships": [
+  {
+   "id": 285,
+   "title": "Stipendium Hungaricum Scholarship Programme",
+   "country": "Hungary",
+   "degree": "Bachelor's, Master's, One-tier Master's, Doctoral, Non-degree",
+   "funding_label": "Fully Funded",
+   "status": "upcoming",
+   "official_source": "Hungarian Government / Tempus Public Foundation",
+   "official_source_url": "https://stipendiumhungaricum.hu",
+   "application_link": "https://stipendiumhungaricum.hu",
+   "catalogue_url": "https://stipendiumhungaricum.hu/study-finder",
+   "official_updates_url": "https://stipendiumhungaricum.hu/news",
+   "existing": {
+    "funding_amount": null,
+    "funding_currency": null,
+    "funding_period": null,
+    "tuition_coverage": 1,
+    "living_cost_coverage": 1,
+    "travel_coverage": null,
+    "fully_funded": 0,
+    "description": "The Stipendium Hungaricum is a Hungarian Government scholarship programme, implemented by Tempus Public Foundation, to promote the internationalisation of Hungarian higher education and to attract international students. Applicants must be nominated by the responsible Sending Partner in their own country or region and apply through the Tempus Public Foundation online system, which lists 30 Hungarian universities and colleges and more than 900 study programmes, with a maximum of two programme choices. Holders have their tuition fees covered and receive a monthly stipend plus an accommodation contribution, and must reside in Hungary during the study period. The programme runs a single annual application round, and for 2026/2027 the deadline was 15 January 2026, 2 p.m. CET.",
+    "eligibility": [
+     "Nominated by the responsible Sending Partner in the applicant's country or region; only nominated applicants can proceed",
+     "Applying only to programmes supported by the cooperation agreement between Hungary and the applicant's sending country or region",
+     "Entrance examination score of at least 56 out of 100 points to be considered for the final list of scholarship awardees",
+     "No admission offer from the university is required by the application deadline; admission examinations take place later, between March and May",
+     "Applicants who were self-financed students at a Hungarian institution at the deadline and apply at the same study level are eligible only with a host-university recommendation and a corrected credit average above the programme average",
+     "Applicants must habitually reside in Hungary during the study period and must not hold another scholarship that prevents them from using the award"
+    ],
+    "eligibility_summary": "Applicants must be nominated by the responsible Sending Partner (for example the Hungarian Embassy, the relevant ministry or council in their country) and may apply only to study programmes supported by the cooperation agreement between Hungary and their country or region. Selection requires nomination by the sending partner, a successful institutional entrance examination scoring at least 56 out of 100 points, and the agreed minimum credit requirement.",
+    "benefits": [
+     "All tuition fees covered",
+     "Monthly stipend",
+     "Accommodation contribution",
+     "Free Hungarian as a foreign language and culture course",
+     "Access to more than 900 study programmes at 30 Hungarian universities and colleges"
+    ],
+    "coverage": [
+     "Full tuition fee coverage for the scholarship holder's programme",
+     "Monthly stipend",
+     "Accommodation contribution",
+     "Free compulsory Hungarian as a foreign language course for full-time bachelor, master and one-tier master students"
+    ],
+    "requirements": [
+     "Register in the online application system at apply.stipendiumhungaricum.hu and upload all required documents by the deadline",
+     "Contact the responsible Sending Partner in December, as sending partners may set different deadlines and requirements",
+     "Select a maximum of two study programmes relevant to the applicant's field",
+     "For doctoral programmes, find a supervisor if the chosen Doctoral School requires a supervisor statement by 15 March 2026",
+     "Sit the institutional entrance examination between March and May, scoring at least 56 out of 100",
+     "After the award, obtain a valid passport and the mandatory medical certificate before arrival in Hungary"
+    ],
+    "documents": [
+     "Statement for application",
+     "Documents for all applicants listed in the Call for Applications (Section 3.2), varying by study level and nationality",
+     "Diaspora-style sending-partner nomination, obtained from the responsible authority in the applicant's country",
+     "Academic and language certificates for the level applied for",
+     "Medical certificate on the mandatory official template (for all awardees, presented on arrival)"
+    ],
+    "english_requirement": null,
+    "application_method": [
+     "Contact the responsible Sending Partner (Hungarian Embassy, ministry, council or equivalent) in the applicant's country and obtain nomination",
+     "Register in the Tempus Public Foundation online application system and choose up to two eligible programmes",
+     "Upload all required documents and submit the complete application before the deadline",
+     "Sit the institutional entrance examination when contacted by the host university between March and May"
+    ],
+    "selection_notes": "The Sending Partner nominates the best applicants by the end of February; nominated applications are forwarded to the chosen Hungarian higher education institutions. Institutions run entrance exams from mid-March to end of May, and the applicant must score at least 56 out of 100 points. Tempus Public Foundation then informs applicants of the official results by the end of June or beginning of July.",
+    "best_fit": "Students from any country with an active bilateral education cooperation agreement with Hungary who can obtain nomination from their Sending Partner and are nominated for a programme at a Hungarian higher education institution.",
+    "notes": "The stipend and accommodation contribution amounts are set out in the Call for Applications PDF. That PDF was fetched from the official site on 2026-10-04 but the fetch tool returned raw PDF bytes that could not be read as text, so no amount is asserted here rather than guessing. A separate Stipendium Hungaricum Dissertation Scholarship runs on its own call and timetable.",
+    "duration": null,
+    "application_period": "There is only one application deadline each year. For 2026/2027: find the chosen programme November-December 2025, contact the Sending Partner and register/upload documents in December 2025, submit by 15 January 2026, 2 p.m. CET; Sending Partner nomination lists February 2026; supervisor statement for doctoral applicants until 15 March 2026; entrance exams March-May 2026; results by end of June/beginning of July 2026.",
+    "deadline_display": "15th January 2026, 2 pm (CET) - APPLICATION DEADLINE (2026/2027 cycle)",
+    "deadline_date": null,
+    "region": "Europe",
+    "program_type": "National government scholarship programme",
+    "applicant_utility": null,
+    "official_details": {
+     "official_source_urls": [
+      "https://stipendiumhungaricum.hu/"
+     ],
+     "application_link": "https://stipendiumhungaricum.hu/",
+     "official_updates_url": "https://stipendiumhungaricum.hu/",
+     "application_cycle": "15 January 2026, 14:00 CET"
+    }
+   },
+   "missing_fields": [
+    "funding_amount",
+    "funding_currency",
+    "funding_period",
+    "travel_coverage",
+    "english_requirement",
+    "duration",
+    "deadline_date",
+    "applicant_utility"
+   ]
+  }
+ ],
+ "result_file": "C:\\Users\\GopaL\\Desktop\\Projects folder\\ScholarZone\\backend\\research_output\\live500\\results\\agent_100.json"
+}

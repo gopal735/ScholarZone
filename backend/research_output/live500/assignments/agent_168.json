@@ -1,0 +1,73 @@
+{
+ "agent": "agent_168",
+ "assignment_count": 1,
+ "scholarships": [
+  {
+   "id": 446,
+   "title": "SUTD Undergraduate Merit Scholarship",
+   "country": "Singapore",
+   "degree": "Bachelor's",
+   "funding_label": "Tuition Fee Waiver",
+   "status": "upcoming",
+   "official_source": "Singapore University of Technology and Design (SUTD)",
+   "official_source_url": "https://www.sutd.edu.sg/admissions/undergraduate/scholarship/sutd-administered/sutd-undergraduate-merit-scholarship",
+   "application_link": "https://www.sutd.edu.sg/admissions/undergraduate/scholarship/sutd-administered/sutd-undergraduate-merit-scholarship",
+   "catalogue_url": null,
+   "official_updates_url": "https://www.sutd.edu.sg/news-listing/single-actuator-drone-modeled-on-maple-seeds-flies-with-43-5-less-error-study-finds/",
+   "existing": {
+    "funding_amount": null,
+    "funding_currency": null,
+    "funding_period": null,
+    "tuition_coverage": 1,
+    "living_cost_coverage": null,
+    "travel_coverage": null,
+    "fully_funded": 0,
+    "description": "The SUTD Undergraduate Merit Scholarship is an academic merit award for applicants to SUTD bachelor's degree programmes. It pays the subsidised tuition fees, after the Tuition Grant, for the normal duration of the programme, up to four years. It carries no bond, but the recipient must take up the Singapore Government's Tuition Grant Scheme to enjoy subsidised fees. Recipients must maintain good academic standing, reviewed every term, and complete at least 20 hours of service to the University. Applications are made as part of the SUTD admission application.",
+    "eligibility": [
+     "Singapore Citizen applying for admission to an SUTD undergraduate degree programme",
+     "Outstanding Singapore-Cambridge GCE A Level, Local Polytechnic Diploma, NUS High School Diploma, IB Diploma or Year 12 equivalent qualifications",
+     "Have a passion for technology and design",
+     "As a special concession, may be awarded to Singapore Permanent Residents or International Students who have demonstrated exceptional and outstanding achievements"
+    ],
+    "eligibility_summary": "Open to Singapore Citizens applying for admission to an SUTD undergraduate degree programme with outstanding GCE A-Level, Local Polytechnic Diploma, NUS High School Diploma, IB Diploma or Year 12 equivalent qualifications and a passion for technology and design. As a special concession it may also be awarded to Singapore Permanent Residents or International Students with exceptional achievements.",
+    "benefits": [
+     "Subsidised tuition fees (after Tuition Grant) for the normal duration, up to four years, of the relevant bachelor degree programme"
+    ],
+    "coverage": [
+     "Subsidised tuition fees after the Tuition Grant, for up to four years"
+    ],
+    "requirements": [
+     "have outstanding Singapore-Cambridge GCE ‘A’ Level, Local Polytechnic Diploma, NUS High School Diploma, IB Diploma or Year 12 equivalent qualifications"
+    ],
+    "documents": [],
+    "english_requirement": "model to generate a design structure matrix in less than five minutes.",
+    "application_method": [
+     "Apply for admission to SUTD and indicate interest in applying for the SUTD scholarships in the admission application"
+    ],
+    "selection_notes": "Scholarships are awarded on the basis of competition among eligible applicants. SUTD reserves the right not to award the scholarship if there are no candidates of sufficient merit, and the decision of the selection committee is final.",
+    "best_fit": "Singapore Citizen high school leavers with top A-Level, Polytechnic Diploma or IB results seeking a design-and-technology undergraduate degree at SUTD.",
+    "notes": "For awards made to Singapore Permanent Residents or International Students, tuition fees coverage is capped at the fees payable by a Singapore Citizen.",
+    "duration": "Up to four years (the normal duration of the relevant SUTD bachelor degree programme)",
+    "application_period": "Annual, tied to the SUTD undergraduate admissions cycle (the published 2026 window was 2 January to 2 March 2026, and to 19 March 2026 for A-Level holders)",
+    "deadline_display": "There is no separate scholarship deadline. SUTD states 'Application for the scholarships is made at the same time as application for admission to SUTD', and the published 2026 admissions application window ran 2 January to 2 March 2026 for most qualifications, and from the release of A-Level results to 19 March 2026 for Singapore-Cambridge GCE A-Level qualification.",
+    "deadline_date": null,
+    "region": "Asia",
+    "program_type": "Merit-based tuition scholarship for new undergraduate admission applicants",
+    "applicant_utility": null,
+    "official_details": null
+   },
+   "missing_fields": [
+    "funding_amount",
+    "funding_currency",
+    "funding_period",
+    "living_cost_coverage",
+    "travel_coverage",
+    "documents",
+    "deadline_date",
+    "applicant_utility",
+    "official_details"
+   ]
+  }
+ ],
+ "result_file": "C:\\Users\\GopaL\\Desktop\\Projects folder\\ScholarZone\\backend\\research_output\\live500\\results\\agent_168.json"
+}

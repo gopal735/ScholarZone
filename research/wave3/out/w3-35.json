@@ -1,0 +1,21 @@
+{
+  "agent_id": "w3_35",
+  "shard": "w3-35",
+  "host": "lut.fi",
+  "today": "2026-10-04",
+  "logo_override": {
+    "url": "https://www.lut.fi/themes/custom/lut/images/icons/favicons/android-chrome-192x192.png",
+    "page_url": "https://www.lut.fi/en",
+    "official_host": true,
+    "alt_text": "LUT University",
+    "validation_result": "verified",
+    "validation_detail": "png 192x192, probed HTTP 200 with content-type image/png (4224 bytes). Rendered on a white background and visually confirmed as LUT University's brand symbol: the interlocking crossing strokes in LUT magenta (#ED174D), green (#23B900) and orange (#FF8621) over transparency. Pixel analysis: 72.5% transparent, 0.0% near-white and 0.0% near-black among opaque pixels, mean opaque rgb(208,99,59) - i.e. saturated brand colour, so it reads clearly on a light card.",
+    "image_kind": "official_university",
+    "image_format": "png",
+    "verified_at": "2026-10-04T11:20:00+00:00",
+    "host_evidence": "same_registrable_domain",
+    "_award": "LUT Scholarship and Early Bird Discount (master's studies)"
+  },
+  "target_ids": [267],
+  "notes": "Awarding body is LUT University, so a LUT mark is correct. LUT's site is Drupal 11 and fetches cleanly, no WAF. The blocker is rule 3. The only wordmark LUT serves is /themes/custom/lut/images/logos/lut-logo-nega.svg (referenced twice in the header block) plus lut-logo-nega-420.svg in the footer. Both are the negative/inverted variant for LUT's dark header: reading the SVG fills gives fill=\"#FFF\" for the wordmark alongside the three brand colours. That is a white-on-transparent wordmark and is rejected outright. I then probed for a positive variant in the same directory - lut-logo.svg, lut-logo-pos.svg, lut-logo-vektor.svg, lut-logo-420.svg, lut-logo-black.svg, lut-logo-pos-nega.svg, lut-logo-white.svg, LUT_logo_horizontal_web.svg - and all eight returned HTTP 404, so LUT publishes no non-white wordmark on lut.fi. I also grepped LUT's own aggregated CSS bundle for any logo asset reference and it returned an empty list, and I checked the official brand page https://www.lut.fi/en/news/media, which offers only the two nega wordmarks plus a download link to lut.pictures.fi. That host is a different registrable domain from the shard host lut.fi, so under rule 1 I did not use it even though it is LUT-operated. What is reported is therefore the coloured symbol mark from LUT's own icon set rather than a wordmark: brief section 2 prefers a wordmark over a bare favicon when both exist, and here no acceptable wordmark exists at all, so the symbol mark is the strongest verifiable asset. Rejected sibling icons: favicon-32x32.png and favicon.ico (same symbol but only 32x32 / 48x48), mstile-150x150.png (93.9% transparent, symbol only), and apple-touch-icon.png (180x180 but opaque with a 77.0% near-white pale-peach field, mean rgb(252,219,205) - effectively a washed-out tile). android-chrome-192x192.png was chosen as the highest-resolution non-white LUT mark served by lut.fi."
+}

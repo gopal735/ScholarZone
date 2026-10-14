@@ -1,0 +1,139 @@
+{
+  "agent": "agent_081",
+  "records": [
+    {
+      "id": 225,
+      "official": {
+        "official_source_urls": [
+          "https://www.fwf.ac.at/en/funding/portfolio/careers/docfunds",
+          "https://www.fwf.ac.at/en/funding/steps-to-your-fwf-project/further-information/personnel-costs",
+          "https://www.fwf.ac.at/en/funding/steps-to-your-fwf-project/further-information/applying-from-abroad",
+          "https://www.fwf.ac.at/en/news/job-openings"
+        ],
+        "application_link": "https://www.fwf.ac.at/en/funding/portfolio/careers/docfunds",
+        "catalogue_url": null,
+        "official_updates_url": null,
+        "deadline_central": null,
+        "deadline_central_display": null,
+        "deadline_note": "doc.funds grants are applied for by universities, not by doctoral candidates, and the FWF page states submissions are currently not possible for this round. The doc.funds jury meets on 12-13 November 2026 and the FWF Scientific Board decides in late November 2026. Doctoral candidates instead enter through positions advertised by the individual doctoral colleges on their own year-round deadlines.",
+        "application_cycle": "2026 call cycle; submissions currently closed, decisions late November 2026",
+        "status": "CLOSED",
+        "status_note": "The FWF doc.funds page lists 'Currently no submissions'. The 2026 round is under review: doc.funds jury recommendations are prepared at its meeting on 12-13 November 2026, with approval by the FWF Scientific Board in late November 2026. About 5 projects with a total volume of about EUR 2.5 million are funded per call.",
+        "tuition_coverage_note": null,
+        "funding_amount": 50220,
+        "funding_currency": "EUR",
+        "funding_period": "per year (gross, 30 h/week doctoral candidate)",
+        "tuition_coverage": null,
+        "living_cost_coverage": true,
+        "travel_coverage": null,
+        "fully_funded": false,
+        "benefits": [
+          "Personnel costs for 5 to 10 doctoral candidates plus training costs of up to EUR 5,000 per doctoral candidate position per year",
+          "Maximum funding period of 48 months",
+          "Doctoral candidate personnel cost rate valid from January 2026: EUR 2,832.10 per month / EUR 50,220.00 per year gross, including the employer's contribution, at 30 hours per week",
+          "FWF standard personnel cost rates are automatically increased by 4.25% p.a. from the second project year onwards",
+          "Call volume about EUR 2.5 million, about 5 projects funded per call"
+        ],
+        "eligibility": [
+          "Aimed at all Austrian research institutions entitled to grant doctoral degrees, where at least 5 researchers or arts-based researchers join to form a consortium",
+          "Consortium of at least 5 researchers from universities and universities of applied sciences with outstanding research records by FWF standards",
+          "The existing doctoral program must have been running for at least 2 years on the date of the application deadline",
+          "Balanced gender distribution in the consortium; at least one third of the consortium should be made up of the underrepresented gender",
+          "Binding basic funding by the lead research institution (and any partner research institution(s))"
+        ],
+        "requirements": [
+          "Involvement of doctoral students in a focused and consistent research framework; education through research",
+          "Existing structures and procedures for admission and selection of doctoral candidates, for supervision and monitoring with suitable working conditions, and for completion of the doctoral program",
+          "Based on and oriented towards international standards",
+          "No applications accepted for additional funding for ongoing FWF-funded projects from the Doctoral Programs, doc.funds, or doc.funds.connect programs",
+          "Principal investigators or consortium members must be employed at the Austrian research institution applying for funding when the project begins; applicants from abroad follow the same rules"
+        ],
+        "documents": [
+          "Checklist doc.funds (PDF, published by FWF)",
+          "Template publication record of the principal investigator (DOCX, FWF template)",
+          "Information on accounting for career breaks, checklist career breaks, and form for accounting for career interruptions",
+          "Funding for equity measures (PDF) and scientific disciplines / Statistics Austria code list (PDF)",
+          "FWF regulations on research collaborations (PDF)"
+        ],
+        "selection_criteria": [
+          "International peer review and hearings by the doc.funds jury, which prepares recommendations on 12-13 November 2026",
+          "The composition of the consortium, including its balanced gender distribution, is one of the deciding factors in the review and evaluation process",
+          "Outstanding research records of consortium members by FWF standards",
+          "Final approval by the FWF Scientific Board in late November 2026 based on the jury's recommendation"
+        ],
+        "coverage": [
+          "Personnel costs for 5 to 10 doctoral candidates (employment at the FWF standard doctoral candidate rate)",
+          "Training costs of up to EUR 5,000 per doctoral candidate position per year",
+          "Funding period of up to 48 months"
+        ],
+        "application_method": [
+          "Application submitted through the FWF application portal elane",
+          "The lead research institution files the application for the consortium of at least 5 researchers",
+          "No submissions accepted from individual doctoral candidates; candidates are recruited to positions within already funded doctoral colleges"
+        ],
+        "application_route": "Lead research institution applies via the FWF elane portal for a consortium; individual doctoral candidates apply directly to the doctoral college's own advertised positions",
+        "study_mode": "Doctoral candidate positions funded for up to 30 hours per week",
+        "citizenship_residency": "No citizenship or residency rule is published for doctoral candidates; the FWF states its portfolio is aimed at highly qualified researchers from all disciplines working at Austrian research institutions and that applications from abroad follow the same application guidelines",
+        "international_eligibility": "Yes; the FWF publishes guidance for applying from abroad and states no nationality restriction for funded researchers, provided the work is carried out at an Austrian research institution",
+        "subject_or_agency_requirement": null,
+        "research_requirement": "For the applying consortium: involvement of doctoral students in a focused and consistent research framework; education through research",
+        "duration": "Maximum 48 months",
+        "description": "doc.funds is the FWF programme behind Austria's doctoral colleges: it strengthens structured doctoral training by funding personnel costs for 5 to 10 doctoral candidates plus training costs of up to EUR 5,000 per position per year for up to 48 months. Grants are awarded to consortia of at least five researchers at Austrian institutions entitled to grant doctoral degrees whose doctoral programme has been running for at least two years, with about five projects and a volume of about EUR 2.5 million funded per call.",
+        "region": "Austria",
+        "program_type": "Career funding programme for structured doctoral training (doctoral college funding)",
+        "english_requirement": null
+      },
+      "verification": {
+        "source_citations": [
+          "https://www.fwf.ac.at/en/funding/portfolio/careers/docfunds",
+          "https://www.fwf.ac.at/en/funding/steps-to-your-fwf-project/further-information/personnel-costs",
+          "https://www.fwf.ac.at/en/funding/steps-to-your-fwf-project/further-information/applying-from-abroad",
+          "https://www.fwf.ac.at/en/news/job-openings"
+        ],
+        "last_verified_date": "2026-10-10",
+        "verification_status": "confirmed",
+        "confidence": "high",
+        "not_confirmed": [
+          "Tuition or fee coverage; the FWF pages publish no tuition statement for doctoral candidates",
+          "Travel or installation allowance coverage; only training costs of up to EUR 5,000 per doctoral candidate position per year are published",
+          "English language requirement for doctoral candidates; not published on the FWF pages and set individually by each university and doctoral college",
+          "A central application deadline, for the next doc.funds call or for individual doctoral positions; the page states submissions are currently not possible",
+          "Take-home pay; the published rates are gross personnel costs including the employer's contribution",
+          "The catalogue's previous 'EUR 1,960 per month, renewable twice' figure; this wording does not appear on any current FWF page and was therefore not reused"
+        ],
+        "notes": "Verified against the FWF doc.funds programme page and the FWF standard personnel cost table valid from January 2026; the assignment URL /funding/funding-portfolio/doctoral-programmes returns 404 and was replaced by the live /funding/portfolio/careers/docfunds page."
+      },
+      "applicant_utility": {
+        "summary": "You cannot apply to doc.funds yourself: the grant is awarded to a consortium of at least five researchers at an Austrian degree-granting institution, so your way in is an advertised position inside an already funded doctoral college. If you land one you are employed as a doctoral candidate at the FWF standard rate, currently EUR 2,832.10 per month gross for a 30-hour week (EUR 50,220 per year, valid from January 2026, with rates rising 4.25% a year from the second project year), plus up to EUR 5,000 a year of programme training costs, for up to four years. Intake is not centrally scheduled: only about five colleges worth about EUR 2.5 million are funded per call, so vacancies appear whenever the universities advertise them, often with short notice, rather than on one shared deadline.",
+        "best_fit": "Candidates who want a salaried, structured four-year PhD embedded in a funded doctoral college in Austria rather than an individual fellowship.",
+        "application_readiness_checklist": [
+          "List the doc.funds-funded doctoral colleges in your field at Austrian universities and monitor their own job pages plus the FWF Job Exchange, since there is no single application window",
+          "Match your master's topic and methods to the specific college's research framework before applying, because placement is thematic rather than freestanding",
+          "Check the advertised weekly hours: FWF funds doctoral candidates at up to 30 hours per week, which limits how much other work you can take on",
+          "Confirm the position is genuinely paid from the FWF-funded project and ask which project covers the salary before you accept an offer",
+          "Keep degree certificates, transcripts, CV and referee contacts ready for immediate use, because individual college ads often run for only a few weeks",
+          "If you are on the institutional side: the doctoral programme must have run for at least two years and the lead research institution must guarantee binding basic funding before the call opens"
+        ],
+        "common_rejection_risks": [
+          "Trying to submit an individual application to the FWF; only the lead research institution can file through elane",
+          "Poor fit with the specific college's theme: supervisors recruit into an existing research framework, so a generic application reads as off-topic",
+          "A thin record next to supervisors selected for outstanding research records by FWF standards",
+          "Reacting late, since each college hires on its own short timeline and popular positions close early"
+        ],
+        "estimated_uncovered_costs": "The FWF pages publish no coverage for tuition or fees, visa and residence-permit costs, relocation and installation, health insurance shortfalls, or conference travel beyond the college's up-to-EUR-5,000-per-year training budget, so applicants should plan to cover these themselves.",
+        "document_audit": [
+          "Individual college ads typically ask for a CV, motivation letter, transcripts and referee contacts rather than a full research proposal, but requirements differ between colleges, so read each ad literally",
+          "Allow time for certified translations and legalisation of non-English/German degrees, since employment usually starts with the fixed contract date",
+          "Institutional applicants must use the current FWF doc.funds checklist and templates; outdated or missing templates are a routine technical failure"
+        ],
+        "alerts": [
+          "The program-level call is closed right now ('Currently no submissions'); the 2026 round is decided in late November 2026, so vacancies come from colleges already funded or newly refilled, not from waiting for the next call",
+          "There is no central deadline to calendar for a doctoral position; each college advertises on its own schedule, often at short notice",
+          "The published EUR 2,832.10 per month is a gross personnel cost rate including employer contributions at 30 hours per week, so it is not your take-home salary",
+          "Funding is for a maximum of 48 months, so plan a doctoral timeline that can realistically finish inside four years"
+        ],
+        "submission_workflow": "You apply in response to the college's own position ad and are then employed by the university; the grant itself is filed by the lead institution through elane, reviewed with international peer review and hearings, and decided by the FWF Scientific Board in late November."
+      }
+    }
+  ]
+}

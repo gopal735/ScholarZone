@@ -1,0 +1,44 @@
+[
+  {
+    "scholarship_id": 205,
+    "outcome": "not_applicable",
+    "professors": [],
+    "notes": "University-administered tuition-fee scholarship for international COURSEWORK students (Bachelor's/Master's), not a research degree with a supervision model. Official page (unsw.edu.au/study/your-future/international-scholarships): 'The prestigious International Scientia Coursework Scholarship rewards students with high academic achievement, leadership skills...' and 'Application is required for this scholarship.' Selection is central and merit-based; no supervising professor or faculty is attached to the award. The scholarships.online.unsw.edu.au URL in the input now returns HTTP 404; current official description is at https://www.unsw.edu.au/study/your-future/international-scholarships with term-by-term listings at https://www.scholarships.unsw.edu.au/scholarships/id/1957 (Term 3, 2026 round). Enquiries go through the central Scholarships office, not academic staff."
+  },
+  {
+    "scholarship_id": 206,
+    "outcome": "not_applicable",
+    "professors": [],
+    "notes": "Western Australian state-government scheme (Department of Energy and Economic Diversification) with no attached institution or faculty; administered by five participating universities. Official page (wa.gov.au/organisation/department-of-energy-and-economic-diversification/international-education-western-australian-premiers-university-scholarship-program): 'The Western Australian Premier's University Scholarship provides 10 successful students with a $50,000 scholarship towards their course fees and other university costs' and 'Prospective, offshore international students must apply directly through their chosen university to receive this scholarship.' Published contact is the administrative government mailbox scholarships@deed.wa.gov.au; the 2026 Guidelines PDF confirms 'The application and decision process... will be administered by each participating Western Australian University.' No professor is tied to the scheme. The input URL (wa.gov.au/service/...) now returns HTTP 404; the current official programme page is the organisation URL above."
+  },
+  {
+    "scholarship_id": 207,
+    "outcome": "not_applicable",
+    "professors": [],
+    "notes": "Automatic tuition-fee discount for high-achieving international COURSEWORK students; no supervision or faculty component. Official page (latrobe.edu.au/study/scholarships/other/la-trobe-high-achiever-scholarship): 'Applicants will be automatically considered for the scholarship after submitting an application for an Approved course' and 'The scholarship will be included in the Letter of Offer.' Recipients are 'selected by the University based on their: WAM / ATAR Equivalent'. The only published contact is an online enquiry form for prospective/current students (https://www.latrobe.edu.au/international/contact/question), i.e. central admissions/scholarships administration, not a professor."
+  },
+  {
+    "scholarship_id": 208,
+    "outcome": "no_verified_supervisor_found",
+    "professors": [],
+    "notes": "University-wide doctoral fellowship administered centrally by SNU (Office of Admissions / Office of Global Affairs); open to PhD admission in any SNU department, so no specific supervising professor is attached to the award. Official page (en.snu.ac.kr/admission/graduate/scholarships/before_application): eligibility is 'a faculty member of a major university in a developing country WITHOUT a Ph.D. degree' and 'a newly admitted student to SNU as Ph.D. student'; selection: 'Application for SPF scholarship made at the same time for online application for admission to SNU's Office of Admissions... -> SNU Admission Results -> Interview -> Decision'. Published contact: 'SNU staff in charge: 82-2-880-2519, intlscholarship@snu.ac.kr' (administrative staff mailbox, not a professor). The SPF application form itself (eng.snu.ac.kr notice) requires the applicant to name their own college/department at SNU; supervisors are arranged at department level after admission, so no professor entry could be evidenced without inventing a tie. Searches of snu.ac.kr found no published SPF supervisor list."
+  },
+  {
+    "scholarship_id": 209,
+    "outcome": "no_verified_supervisor_found",
+    "professors": [],
+    "notes": "University-wide graduate scholarship (Master's/PhD) selected by each participating college/school; no faculty attached to the award. Official page (en.snu.ac.kr/admission/graduate/scholarships/before_application, which now carries the GSFS content; the input URL .../scholarships/gsfs returns HTTP 404): eligibility is 'Non-Korean applicants currently enrolled or graduated from eligible countries... who applied and is accepted into SNU' and 'Those who applied for the designated college/school participating in the GSFS Program'; selection: 'Selection made by respective Colleges/Schools based on the admission Documents'. Published contact: 'SNU staff in charge: 82-2-880-2519, intlscholarship@snu.ac.kr' (administrative staff mailbox, not a professor). Because the fellowship spans all colleges/schools and selection is document-based, no supervising professor could be evidenced without inventing a tie."
+  },
+  {
+    "scholarship_id": 210,
+    "outcome": "not_applicable",
+    "professors": [],
+    "notes": "Automatic scholarship awarded to every admitted international UNDERGRADUATE student; no supervision or faculty component. Official page (admission.kaist.ac.kr/intl-undergraduate/support/scholarships/kaist): 'We offer KAIST Scholarships to admitted students', 'There is no separate process for applying scholarship - Just check \"KAIST scholarship\" on the Statement of Financial Resources section on online application for admission', and 'All applications will be thoroughly and equally reviewed during the admission process. Upon being selected for admission, you will automatically be entitled to the KAIST Scholarship.' Published contact is the administrative Office of Admissions mailbox creative.adm@kaist.ac.kr, not academic staff; no professor is attached to the award."
+  },
+  {
+    "scholarship_id": 211,
+    "outcome": "no_verified_supervisor_found",
+    "professors": [],
+    "notes": "University-wide automatic scholarship for international graduate (Master's/PhD) students, covering all departments; no supervising professor is attached to the award. Official page (admission.kaist.ac.kr/intl-graduate/FinancialSupport/Scholarship/KAISTScholarship): 'KAIST offers a simple yet generous scholarship program specifically designed for international students... benefiting 94% of our international student body'; tiers are recommended institutionally - 'only highly competitive applicants will be recommended by the department head' (KGPS) and 'recommendations from the department head, with final selection by the college dean' (KPS). Published contact is the administrative Office of Admissions mailbox advanced.adm@kaist.ac.kr. Because the scholarship spans all departments and is awarded with admission, no professor entry could be evidenced without inventing a tie (advisor/supervisor matching happens after admission, per individual departments such as gsai.kaist.ac.kr, and is an admission requirement, not part of this scholarship)."
+  }
+]

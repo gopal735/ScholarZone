@@ -1,0 +1,141 @@
+{
+  "agent": "agent_322",
+  "records": [
+    {
+      "id": 714,
+      "official": {
+        "official_source_urls": [
+          "https://scholarships.gov.gh/opportunities/scholarship-oppurtunities-in-the-kingdom-of-saudi-arabia",
+          "https://studyinsaudi.sa/en",
+          "https://studyinsaudi.sa/en/VisaOptions",
+          "https://studyinsaudi.sa/en/Faq"
+        ],
+        "application_link": "https://studyinsaudi.sa/en",
+        "catalogue_url": "https://scholarships.gov.gh/opportunities/scholarship-oppurtunities-in-the-kingdom-of-saudi-arabia",
+        "official_updates_url": "https://scholarships.gov.gh/opportunities",
+        "deadline_central": "2026-10-28",
+        "deadline_central_display": "28 October 2026",
+        "deadline_note": "Ghana Scholarships Authority notice deadline; the Study in Saudi platform separately publishes a second-semester 2026 application window for international and resident students of 16 September to 6 October 2026, which closes earlier than the Ghana deadline.",
+        "application_cycle": "2026 round - notice published 28 September 2026, applications close 28 October 2026",
+        "status": "OPEN",
+        "status_note": "The Ghana Scholarships Authority notice is marked 'Status: Open', published 28 September 2026 with a 28 October 2026 deadline.",
+        "tuition_coverage_note": "The Saudi Ministry of Education's Study in Saudi platform describes Full Scholarships as 'Tuition, housing & living - all covered'. The Ghana notice itself publishes no tuition, stipend or benefit figure for this allocation.",
+        "funding_amount": null,
+        "funding_currency": null,
+        "funding_period": null,
+        "tuition_coverage": true,
+        "living_cost_coverage": true,
+        "travel_coverage": null,
+        "fully_funded": false,
+        "benefits": [
+          "Scholarship awards at six selected universities in the Kingdom of Saudi Arabia: University of Taif, University of Madinah, University of Jazan, University of Najran, University of Tabuk and Fahad Bin Sultan University",
+          "Study in Saudi platform full scholarships: 'Tuition, housing & living - all covered'",
+          "Platform describes students from over 170 countries studying in Saudi Arabia under its schemes"
+        ],
+        "eligibility": [
+          "Be Ghanaian citizens resident in Ghana",
+          "Must have a genuine birth certificate",
+          "Must have Passport",
+          "Study in Saudi platform study requirements: applicant must be 16 years of age or older"
+        ],
+        "requirements": [
+          "Interested applicants must visit https://studyinsaudi.sa/en to apply",
+          "Applicants are advised to carefully review the eligibility requirements, terms and conditions before applying",
+          "Submit a valid passport (platform rule: at least 6 months validity remaining)",
+          "Submit a medical report proving freedom from infectious diseases",
+          "Attested certificates and required documents per the educational institution's requirements"
+        ],
+        "documents": [
+          "Genuine birth certificate",
+          "Passport",
+          "Medical report proving freedom from infectious diseases",
+          "Attested certificates and required documents per the educational institution's requirements"
+        ],
+        "selection_criteria": [
+          "After submission, the application is forwarded to the selected educational institution for review; the institution issues an admission decision",
+          "Once approved by the institution, it is processed by both the institution and the Ministry of Education to complete the final admission procedures",
+          "Applications are rejected when one or more of the admission requirements for the programme or educational institution are not met",
+          "A student cannot receive two scholarships for the same academic degree"
+        ],
+        "coverage": [
+          "Full Scholarships on the Study in Saudi platform: 'Tuition, housing & living - all covered'",
+          "Six named Saudi universities: University of Taif, University of Madinah, University of Jazan, University of Najran, University of Tabuk and Fahad Bin Sultan University",
+          "Nine fields: Technology Management, Business Management, Islamic Economics, Marketing, Engineering, Technology, Medicine, Education and Architecture"
+        ],
+        "application_method": [
+          "Register on the official Study in Saudi platform and complete the student profile ('Your profile is incomplete. Complete it to apply to academic programs.')",
+          "Select the institution and programme and submit the admission application",
+          "Track application status on the platform until a final decision (acceptance or rejection) is issued"
+        ],
+        "application_route": "Apply online through the Saudi Ministry of Education's Study in Saudi platform at https://studyinsaudi.sa/en, as directed by the Ghana Scholarships Authority notice.",
+        "study_mode": null,
+        "citizenship_residency": "Open to Ghanaian citizens resident in Ghana.",
+        "international_eligibility": "Yes - open to Ghanaian citizens (outside Saudi Arabia) through the Ghana Scholarships Authority allocation, applied for on the Study in Saudi platform which serves international and resident students.",
+        "subject_or_agency_requirement": "Programmes available in nine fields at the six named universities: Technology Management, Business Management, Islamic Economics, Marketing, Engineering, Technology, Medicine, Education and Architecture. Announced by the Ghana Scholarships Authority for the Government of the Kingdom of Saudi Arabia.",
+        "research_requirement": null,
+        "duration": null,
+        "description": "The Government of the Kingdom of Saudi Arabia, through the Study in Saudi platform of its Ministry of Education, offers scholarship awards at six selected universities - University of Taif, University of Madinah, University of Jazan, University of Najran, University of Tabuk and Fahad Bin Sultan University - in nine fields. The Ghana Scholarships Authority has announced the Ghana allocation, open to Ghanaian citizens resident in Ghana, with applications closing on 28 October 2026.",
+        "region": "Middle East / Saudi Arabia",
+        "program_type": "Government scholarship",
+        "english_requirement": null
+      },
+      "verification": {
+        "source_citations": [
+          "https://scholarships.gov.gh/opportunities/scholarship-oppurtunities-in-the-kingdom-of-saudi-arabia",
+          "https://studyinsaudi.sa/en/VisaOptions",
+          "https://studyinsaudi.sa/en/Faq"
+        ],
+        "last_verified_date": "2026-10-10",
+        "verification_status": "confirmed",
+        "confidence": "high",
+        "not_confirmed": [
+          "funding_amount",
+          "funding_currency",
+          "funding_period",
+          "travel_coverage",
+          "fully_funded classification (the Ghana notice does not state whether each allocation is a Full, Partial or self-funded award)",
+          "duration",
+          "study_mode",
+          "english_requirement",
+          "research_requirement"
+        ],
+        "notes": "Ghana notice verified live on scholarships.gov.gh (deadline 28 Oct 2026, six universities, three eligibility conditions, nine fields, apply via studyinsaudi.sa/en); coverage wording and application/visa rules verified on the Saudi Ministry of Education's studyinsaudi.sa (home, VisaOptions, FAQ). No SAR figure is published on any official page, so amount fields are null."
+      },
+      "applicant_utility": {
+        "summary": "This is a bilateral-style Saudi government route for Ghanaians: the Ghana Scholarships Authority publishes the notice, but you register and apply yourself on the Ministry of Education's Study in Saudi platform (studyinsaudi.sa), picking one of six universities and one of nine fields. The platform labels its full scholarships as covering tuition, housing and living costs, yet neither the Ghana notice nor the platform publishes a SAR figure for this allocation, so treat visa fees, flights, attestation and personal spending as out-of-pocket until an award letter states the package. Eligibility is narrow and document-based: Ghanaian citizen, resident in Ghana, genuine birth certificate, valid passport. With a 28 October 2026 close only a month after publication, passport checks, certificate attestation and medical clearance need to start the day you read this.",
+        "best_fit": "Ghanaian citizens resident in Ghana who hold a valid passport and birth certificate and want a Saudi university placement in business, technology, engineering, medicine, education or architecture.",
+        "application_readiness_checklist": [
+          "Create your account on studyinsaudi.sa and complete the student profile first - the platform marks applications as blocked until the profile is complete",
+          "Check passport validity runs well past your intended entry date (platform visa rule: at least 6 months remaining) and that the number you type is correct, because it cannot be changed once an application is submitted",
+          "Obtain a medical report proving freedom from infectious diseases",
+          "Get your academic certificates attested to the standard the chosen university requires",
+          "Confirm your birth certificate particulars match your passport exactly before submitting",
+          "Monitor the platform for 'Under Process' status and the institution's admission decision rather than assuming submission equals review"
+        ],
+        "common_rejection_risks": [
+          "Applying through aggregator or intermediary sites instead of the official studyinsaudi.sa portal named in the notice",
+          "Basic data errors after registration - residency number, passport or Gulf ID number, gender and nationality cannot be updated",
+          "Applying while holding another scholarship for the same academic degree, which the platform prohibits outright",
+          "Not meeting the specific institution's admission requirements - the FAQ states rejections happen when one or more programme or institution admission requirements are unmet",
+          "Mismatched or unattested certificates that fail the institution's document checks"
+        ],
+        "estimated_uncovered_costs": "No stipend or tuition figure is published for this allocation, so budget for international flights, visa and residence-permit fees, certificate attestation/apostille, medical reports and personal items until the award letter confirms what is covered.",
+        "document_audit": [
+          "Passport number is permanent after submission - a typo cannot be corrected once you apply",
+          "Birth certificate must be genuine and agree with passport name and date of birth",
+          "Certificates must be attested per the educational institution's requirements; un-attested documents are a common institution-side rejection cause",
+          "A medical report proving freedom from infectious diseases is required for study and for the long-term educational visa",
+          "Contact details can be edited after submission, but all other application data cannot"
+        ],
+        "alerts": [
+          "Deadline is 28 October 2026, only a month after the 28 September 2026 publication - late attestation or passport renewal will kill the application",
+          "The platform's own published second-semester 2026 window for international students ended 6 October 2026, before the Ghana deadline - apply via the route in the Ghana notice and confirm with the Ghana Scholarships Authority which intake you are competing for",
+          "You cannot hold two scholarships for the same academic degree, so withdraw or defer any existing award before applying",
+          "Long-term study visa rules add requirements: age 16 or over, passport with 6+ months validity, medical report, medical insurance and proof of proficiency in the language of study except for Arabic-medium study",
+          "Only contact information can be updated after submission - everything else is locked at click-of-submit"
+        ],
+        "submission_workflow": "Register on studyinsaudi.sa, complete the student profile, submit the admission application to your chosen university, then wait for the institution's review and admission decision before the institution and Ministry of Education finalise admission - track status in your platform account."
+      }
+    }
+  ]
+}

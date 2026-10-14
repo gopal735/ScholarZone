@@ -1,0 +1,110 @@
+[
+  {
+    "scholarship_id": 576,
+    "outcome": "not_applicable",
+    "professors": [],
+    "notes": "Automatic GBP 5,000 tuition-fee discount for nationals of 19 listed countries on any of ~150 eligible postgraduate TAUGHT programmes (September 2027 / January 2028 intake); awarded at registration with no separate application and combinable with no other University scholarship. No programme, department, supervisor or research group is attached to the award, so no supervising faculty can be identified. Verified on the official Glasgow scholarships page (https://www.gla.ac.uk/scholarships/worldchangersglasgowscholarship), which lists eligible countries and eligible programmes but names no faculty; scholarship enquiries go through a generic enquiry form (https://www.gla.ac.uk/scholarships/contact/)."
+  },
+  {
+    "scholarship_id": 577,
+    "outcome": "verified_supervisors",
+    "professors": [
+      {
+        "canonical_name": "Sergio Puig De La Parra",
+        "title": "Professor (Full-time Professor - Joint Chair, International Economic Law) and Director of the Max Weber Programme for Postdoctoral Studies",
+        "institution_name": "European University Institute (EUI)",
+        "department_name": "Max Weber Programme for Postdoctoral Studies; Department of Law; Robert Schuman Centre for Advanced Studies",
+        "official_profile_url": "https://www.eui.eu/people?id=sergio-puig-de-la-parra",
+        "official_email": "sergio.puig@eui.eu",
+        "official_email_verified": true,
+        "lab_url": null,
+        "personal_academic_url": null,
+        "research_areas": [
+          "International economic law",
+          "Trade law",
+          "Business and human rights",
+          "Empirical legal methods",
+          "International human rights law",
+          "Development"
+        ],
+        "research_keywords": [
+          "investment and trade law",
+          "business and human rights",
+          "empirical legal methods",
+          "globalization",
+          "international adjudication"
+        ],
+        "relationship_type": "program_faculty",
+        "evidence_source_url": "https://www.eui.eu/en/academic-units/max-weber-programme-for-postdoctoral-studies/people-of-the-max-weber-programme",
+        "evidence_source_type": "official_programme_page",
+        "evidence_quote_or_summary": "Official Max Weber Programme 'People' page lists him under 'Director': 'Sergio Puig de la Parra is a specialist in international economic law, holding the Joint Chair at EUI and directing the Max Weber Programme since March 2025.' His EUI profile (https://www.eui.eu/people?id=sergio-puig-de-la-parra) confirms 'Director - Max Weber Programme for Postdoctoral Studies', publishes the email sergio.puig@eui.eu, and lists him under 'Mentor for' a Max Weber Fellow, matching the programme statement that 'Each Fellow is assigned a mentor within their academic unit of affiliation'.",
+        "confidence": 85,
+        "availability": {
+          "scope": "postdoc_supervision",
+          "state": "verified_yes",
+          "source_url": "https://www.eui.eu/people?id=sergio-puig-de-la-parra"
+        }
+      }
+    ],
+    "notes": "Centrally awarded EUI postdoctoral programme: ~65 Fellows per cohort are distributed across the EUI Departments of Economics, History, Law and Political and Social Sciences, the Robert Schuman Centre and the Florence School of Transnational Governance. No supervisor is named or required at application time; the programme states 'Each Fellow is assigned a mentor within their academic unit of affiliation' and mentors are allocated after selection, so no list of potential supervisors is published. The only officially published faculty tied to the programme is its Director, Prof. Sergio Puig De La Parra (Joint Chair in International Economic Law, EUI Law Department and Robert Schuman Centre), whose institutional email is published on his EUI profile. Administrative contacts published by the programme: applyfellow@eui.eu (Academic Service) and MWP@eui.eu. Sources: https://www.eui.eu/apply?id=max-weber-fellowships and https://www.eui.eu/en/academic-units/max-weber-programme-for-postdoctoral-studies/about-the-max-weber-programme."
+  },
+  {
+    "scholarship_id": 578,
+    "outcome": "not_applicable",
+    "professors": [],
+    "notes": "Professional-association (EASL) fellowship administered from Geneva; only 3 awards of up to EUR 25,000 for 6 months. The applicant nominates their own host institute and supervisor/mentor: required documents include a 'Recommendation letter from a supervisor or mentor supporting the application' and, for Mobility Fellowships, a 'Letter from host institute confirming the ability to host the applicant'. Selection is by an expert review panel appointed by the EASL Governing Board. No institution or named professor is attached to the scheme itself, so no supervising faculty can be verified (source: https://easl.eu/fellowship/mobility-research-fellowship-programme; general office contact easloffice@easloffice.eu is administrative only)."
+  },
+  {
+    "scholarship_id": 579,
+    "outcome": "not_applicable",
+    "professors": [],
+    "notes": "National scholarship foundation (Studienstiftung des deutschen Volkes), not a university programme: doctoral candidates apply 'together with their supervisors' for support at any German university, so no institution or supervising professor is attached to the award. The foundation's academic support package (summer academies, research groups, language courses, workshops and 'supervision by liaison professors') is described on https://www.studienstiftung.de/en/doctoral-scholarships/doctoral-scholarships, but no individual liaison professor is named on the scholarship pages and liaison professors are scholarship-holder advisers, not doctoral supervisors. Current call 1-14 October 2026, applications by post only."
+  },
+  {
+    "scholarship_id": 580,
+    "outcome": "not_applicable",
+    "professors": [],
+    "notes": "HFA-ESC research/training grant with mandatory mobility: the applicant secures their own future supervisor and host laboratory or clinical centre. The application pack requires 'A document to be completed by the future supervisor' and a project description 'to be prepared jointly with the proposed supervisor', and applicants are merely directed towards HFA ICARe-HF Accredited Centres (the centre list is published at https://www.escardio.org/Education/Career-Development/Accreditation/icare-hf-accredited-centres but names no individual supervisors). Host centre and supervisor are only known once the applicant has arranged the placement; past grantees' host centres are listed retrospectively on the programme page. No supervising professor is attached to the award itself (source: https://www.escardio.org/education/career-development/grants/hfa-grants-programme)."
+  },
+  {
+    "scholarship_id": 581,
+    "outcome": "verified_supervisors",
+    "professors": [
+      {
+        "canonical_name": "Erik Jones",
+        "title": "Professor and Director of the Robert Schuman Centre for Advanced Studies",
+        "institution_name": "European University Institute (EUI)",
+        "department_name": "Robert Schuman Centre for Advanced Studies",
+        "official_profile_url": "https://www.eui.eu/people?id=erik-jones",
+        "official_email": "erik.jones@eui.eu",
+        "official_email_verified": true,
+        "lab_url": null,
+        "personal_academic_url": null,
+        "research_areas": [
+          "European politics",
+          "Political economy",
+          "Economic and Monetary Union"
+        ],
+        "research_keywords": [
+          "Economic and Monetary Union",
+          "European sovereign debt",
+          "ECB monetary policy",
+          "transatlantic trade",
+          "European crisis"
+        ],
+        "relationship_type": "program_faculty",
+        "evidence_source_url": "https://www.eui.eu/people?id=erik-jones",
+        "evidence_source_type": "official_university_profile",
+        "evidence_quote_or_summary": "Official EUI profile states 'Erik Jones - Director, Robert Schuman Centre for Advanced Studies' and 'Erik Jones is Director of the Robert Schuman Centre for Advanced Studies at the European University Institute', with the email erik.jones@eui.eu published on the page. The Jean Monnet Fellowships call states 'Jean Monnet Fellows are based at the Robert Schuman Centre and associated with one of the Centre's projects and programmes', making the Centre's Director the officially published faculty lead for the host unit of this fellowship.",
+        "confidence": 65
+      }
+    ],
+    "notes": "Centrally awarded senior fellowship (up to 20 per year) at the EUI Robert Schuman Centre for Advanced Studies, Villa Schifanoia. No supervisor or mentor is assigned: fellows are selected on CV plus research-proposal fit with one of the Centre's research themes, programmes and projects, and the published contact is the EUI Academic Service (applyfellow@eui.eu). Applicants whose doctorate is less than five years old are redirected to the Max Weber Programme. Prof. Erik Jones is listed as programme faculty in his capacity as Director of the hosting Centre; applicants should in addition approach the directors of the specific RSC research programme their proposal fits (Florence School of Regulation, Florence School of Banking & Finance, Migration Policy Centre, Centre for Media Pluralism and Media Freedom, Centre for a Digital Society, European Governance and Politics Programme, Global Governance Programme, Centre for Judicial Cooperation and the Padoa-Schioppa / Werner / Haas chairs), listed at https://www.eui.eu/en/academic-units/robert-schuman-centre-for-advanced-studies/research-at-the-robert-schuman-centre-for-advanced-studies. Source: https://www.eui.eu/apply?id=jean-monnet-fellowships."
+  },
+  {
+    "scholarship_id": 582,
+    "outcome": "not_applicable",
+    "professors": [],
+    "notes": "EMBO Postdoctoral Fellowships are applicant-driven: the candidate identifies and secures their own host laboratory and supervisor, with international mobility as a key requirement. EMBO notes that 'a host laboratory may support a maximum of one candidate per selection round', confirming that hosts are chosen case by case rather than attached to the scheme. EMBO publishes only fellowship programme staff (Head of Fellowship Programme Karin Dumstrei; Programme Officers Elsie Chan, Ghulam Rasool and Daniele Viarisio; Programme Assistant Kate Le Vezouet), who are administrators rather than supervising professors. No institution or supervising professor is attached to the fellowship (source: https://www.embo.org/funding/fellowships-grants-and-career-support/postdoctoral-fellowships)."
+  }
+]

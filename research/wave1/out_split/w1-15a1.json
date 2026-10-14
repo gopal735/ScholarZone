@@ -1,0 +1,1556 @@
+{
+  "agent_id": "w1_15a1",
+  "shard": "w1-15a1",
+  "today": "2026-10-04",
+  "records": [
+    {
+      "target_id": 147,
+      "outcome": "refreshed",
+      "confirm": false,
+      "confirmation_evidence": "The stored official_source_url does NOT host this award. Read live on 2026-10-04, https://gocfs.ntu.edu.tw/ returns HTTP 200 with the title \"國立臺灣大學 學務處│僑生及陸生輔導組 / Overseas Compatriot and Mainland Chinese Students Advising Division, Office of Student Affairs, NTU\", and its content is about Overseas Chinese Student Association scholarships, medical insurance and work permits - it contains no INTENSE material. The INTENSE programme itself is real and live: partner universities were advertising 2027 Spring intakes in September and October 2026 on their own official admission pages, but I could not open a central Ministry of Education INTENSE page in this pass, so confirm is false and a human should re-point this row.",
+      "new_scholarship": {
+        "name": "International Industrial Talents Education Special Program (INTENSE Program)",
+        "legacy_titles": [
+          "INTENSE Program (International Industrial Talents Education Special Program)"
+        ],
+        "country": "Taiwan",
+        "region": "Asia",
+        "degree_levels": "Master's, Bachelor's",
+        "funding_type": "Fully Funded",
+        "official_source": "Ministry of Education (MOE), Republic of China (Taiwan), with the National Development Council, participating universities and partner companies",
+        "official_source_url": "https://gocfs.ntu.edu.tw",
+        "status": "open",
+        "is_verified": false,
+        "last_verified_date": "2026-10-04",
+        "deadline": "There is no single INTENSE deadline. Each participating university sets its own application window and nomination deadline per intake, and the two intakes do not coincide. Windows published by partner universities for 2027 Spring include 10 September to 12 October 2026 (NCHU), 1 to 22 October 2026 (NCU) and 21 September to 23 October 2026 (KMU), all GMT+8; for 2027 Fall, NTUT publishes a student nomination deadline of 10 March 2027. Applications for several 2027 Spring intakes are open as of 2026-10-04.",
+        "deadline_date": null,
+        "deadline_precision": "varies",
+        "application_period": "Two intakes a year. Spring intake first round runs from early October to late December and second round from early April to late June; the Fall intake mirrors those two rounds. Each participating university publishes its own exact dates, so no single application period applies.",
+        "duration": "Typically a two-year degree programme of study plus internship, followed by employment in Taiwan.",
+        "program_type": "Industry-academia collaboration degree programme (MOE specialised class) with a compulsory employment obligation in Taiwan after graduation",
+        "eligibility_summary": "International students who meet the MOE Regulations Regarding International Students Undertaking Studies in Taiwan and who are recruited by a participating university for an approved INTENSE programme in a key industry field. Nationality targets differ by programme and university, with Vietnam, Indonesia, the Philippines and Thailand commonly named, and some programmes open to students of all nationalities. English-taught programmes require CEFR B1 English at admission; Chinese-taught programmes require TOCFL Level B1.",
+        "eligibility": [
+          "Must meet the MOE Regulations Regarding International Students Undertaking Studies in Taiwan.",
+          "Must apply to a specific approved INTENSE programme at a participating university, in one of the key industry fields (commonly STEM, finance and semiconductors).",
+          "English-taught programmes: CEFR B1 English proficiency required at admission, and TOCFL Level A2 (Listening and Reading) by the end of the first semester of the second academic year.",
+          "Chinese-taught programmes: TOCFL Level B1 (Listening and Reading) required.",
+          "Some programmes restrict eligible nationalities, for example Vietnam, Indonesia, the Philippines and Thailand; others accept students of all nationalities.",
+          "Must satisfy the participating university's own programme requirements, including academic performance within the top 50% of the class and a conduct score of not lower than 80 points."
+        ],
+        "coverage": [
+          "Full tuition and credit waivers for up to two years, with universities responsible for tuition subsidies.",
+          "One-way airfare to Taiwan.",
+          "Initial administrative expense support.",
+          "Monthly living allowance of at least NT$10,000 for up to two years, sponsored by the partner company.",
+          "Internship allowances not lower than the Taiwan minimum wage, under a bilingual internship contract.",
+          "Priority hiring with partner companies after graduation, at salaries not lower than average."
+        ],
+        "benefits": [
+          "Full tuition and credit waiver for up to two years.",
+          "One-way flight ticket to Taiwan plus initial administrative expense support.",
+          "Monthly stipend of at least NT$10,000 for up to two years, paid by the partner company.",
+          "Paid summer internships, with allowances not lower than the minimum wage under a bilingual contract.",
+          "Priority employment in Taiwan after graduation with a partner company."
+        ],
+        "funding_amount": 10000,
+        "funding_currency": "TWD",
+        "funding_period": "per month",
+        "required_documents": [
+          "Official transcript of the highest level of degree completed, in Chinese or English (or a certified translation if in neither language)",
+          "Proof of language proficiency appropriate to the programme language (CEFR B1 English, or TOCFL as specified)",
+          "Passport and, where applicable, Certificate of Entry/Exit Dates from the National Immigration Agency",
+          "Future career plan",
+          "Two letters of recommendation",
+          "Passport-size photograph",
+          "Self-check for eligibility verification and declaration for international students",
+          "Any additional documents required by the individual INTENSE programme"
+        ],
+        "application_method": [
+          "Apply directly to the participating university running the specific INTENSE programme through that university's online application portal.",
+          "Meet the programme's language and academic requirements; the university handles tuition subsidy, Chinese proficiency verification and employment tracking.",
+          "Some programmes run a student nomination step before the national application deadline."
+        ],
+        "selection_notes": "The university's proposal must pass joint review by the Ministry of Education and the relevant ministries before the programme can run, and participating universities must sign contracts with companies to provide student living allowances and internships. Admission is therefore per programme and per intake, with results typically announced in the middle of the year for a September start and in mid-January for a February start.",
+        "english_requirement": "English-taught programmes require CEFR B1 English proficiency at admission, plus TOCFL Level A2 (Listening and Reading) by the end of the first semester of the second academic year. Chinese-taught programmes require TOCFL Level B1 (Listening and Reading).",
+        "requirements": [
+          "Meet the MOE Regulations Regarding International Students Undertaking Studies in Taiwan.",
+          "Meet the participating university's programme-specific academic and language requirements.",
+          "Maintain grades in the top 50% of the class and a conduct score of not lower than 80 points, or equivalent to Grade A.",
+          "Accept the mandatory internship stage and the employment obligation in Taiwan.",
+          "For students already studying in Taiwan at junior or senior undergraduate level, academic performance within the top 50% of the class and a conduct grade of at least 80 or Grade A."
+        ],
+        "best_fit": "International students from Vietnam, Indonesia, the Philippines and Thailand who hold a qualifying degree, meet CEFR B1 English or TOCFL B1 Chinese, and are willing to accept a two-year study-and-internship pathway tied to an obligation to work in Taiwan after graduation.",
+        "notes": "This is a multi-university national programme, so benefits and deadlines are not uniform. Published packages differ by university: one partner advertises full tuition and credit waivers for up to two years, a one-way flight ticket, initial administrative expense support and an NT$10,000 monthly industry-sponsored stipend, while another caps tuition and miscellaneous-fee subsidy at NT$50,000 per semester for up to two years and lists partner-company stipends between NT$10,000 and NT$15,000 depending on the job and Chinese-proficiency requirement. The scheme carries an employment obligation: the stipend duration matches the work-obligation duration and repayment may be requested if the contract is violated. The stored official_source_url and application_link both point to NTU's Overseas Compatriot and Mainland Chinese Students Advising Division, which does not host this programme.",
+        "description": "The International Industrial Talents Education Special Program (INTENSE Program) is a Ministry of Education initiative, run with the National Development Council, participating universities and partner companies to recruit international students into industry-linked degree programmes in key fields such as STEM, finance and semiconductors. Admitted students receive full tuition and credit waivers for up to two years, a one-way flight ticket to Taiwan, initial administrative expense support and a monthly living allowance of at least NT$10,000 paid by the partner company, plus paid internships, in exchange for an obligation to work in Taiwan after graduation. Applications are made to individual participating universities, which publish their own deadlines for each Spring and Fall intake, so there is no single programme-wide application date."
+      },
+      "programme_detail_official": {
+        "official_source_urls": [
+          "https://gocfs.ntu.edu.tw/"
+        ],
+        "application_link": null,
+        "official_updates_url": null,
+        "catalogue_url": null,
+        "application_cycle": "Two intakes a year (Spring and Fall), each with two application rounds: first round from early October to late December and second round from early April to late June. Published 2027 Spring windows include 10 September to 12 October 2026 (NCHU), 1 to 22 October 2026 (NCU) and 21 September to 23 October 2026 (KMU), all GMT+8; published 2027 Fall milestones include an NTUT student nomination deadline of 10 March 2027, results announced June 2027 and semester start September 2027.",
+        "deadline_central": null,
+        "deadline_central_display": "Varies by participating university and intake; published 2027 Spring windows include 10 September to 12 October 2026, 1 to 22 October 2026 and 21 September to 23 October 2026 (GMT+8), and NTUT's 2027 Fall student nomination deadline is 10 March 2027",
+        "deadline_central_timezone": "Asia/Taipei",
+        "deadline_note": "INTENSE is delivered through dozens of participating universities, each of which sets its own application and nomination deadlines per intake, and the Spring and Fall intakes do not align. No central Ministry of Education deadline date is published in the pages reachable in this pass, so deadline_date is null and the precision is 'varies'. Several 2027 Spring intakes are accepting applications as of 2026-10-04.",
+        "status": "OPEN",
+        "status_note": "Multiple participating universities are accepting applications for the 2027 Spring intake in September and October 2026, so the programme is open at programme level. Individual programmes close on their own published dates, and the 2027 Fall intake opens later in the year.",
+        "funding_amount": 10000,
+        "funding_currency": "TWD",
+        "funding_period": "per month",
+        "funding_duration": "Monthly stipend of at least NT$10,000 for up to two years, sponsored by the partner company; tuition and credit waivers for up to two years; a one-way flight ticket to Taiwan and initial administrative expense support.",
+        "tuition_coverage": true,
+        "tuition_coverage_note": "Full tuition and credit waivers for up to two years are published by participating universities, with tuition subsidies the university's responsibility. Coverage is not uniform: at least one partner caps tuition and miscellaneous-fee subsidy at NT$50,000 per semester for up to two years.",
+        "living_cost_coverage": true,
+        "travel_coverage": true,
+        "fully_funded": false,
+        "funding_label": "Fully funded package with an employment obligation: full tuition and credit waiver for up to two years, one-way flight ticket to Taiwan, initial administrative expense support, and a monthly stipend of at least NT$10,000 from the partner company. NOT unconditionally fully funded - the stipend duration matches a work obligation to remain in Taiwan after graduation, and repayment may be requested if the contract is violated.",
+        "benefits": [
+          "Full tuition and credit waivers for up to two years.",
+          "One-way flight ticket to Taiwan.",
+          "Initial administrative expense support.",
+          "Monthly living allowance of at least NT$10,000 for up to two years, sponsored by the partner company.",
+          "Internship allowances not lower than the Taiwan minimum wage under a bilingual internship contract.",
+          "Priority hiring after graduation with a partner company, at salaries not lower than average."
+        ],
+        "eligibility": [
+          "Must meet the MOE Regulations Regarding International Students Undertaking Studies in Taiwan.",
+          "Must be admitted to an approved INTENSE programme at a participating university in a key industry field.",
+          "English-taught programmes: CEFR B1 English at admission, TOCFL Level A2 (Listening and Reading) by the end of the first semester of the second academic year.",
+          "Chinese-taught programmes: TOCFL Level B1 (Listening and Reading).",
+          "Grades in the top 50% of the class and a conduct score of not lower than 80 points.",
+          "Some programmes limit eligible nationalities to Vietnam, Indonesia, the Philippines and Thailand; others accept all nationalities."
+        ],
+        "citizenship_residency": "International students. Nationality restrictions are set per programme; Vietnam, Indonesia, the Philippines and Thailand are the most commonly listed target nationalities, and at least one programme accepts students of all nationalities.",
+        "international_eligibility": "Open to international applicants subject to the MOE Regulations Regarding International Students Undertaking Studies in Taiwan and the individual university's programme rules. Some programmes additionally accept students already studying in Taiwan at junior or senior undergraduate level, subject to the top-50% academic and conduct-grade conditions.",
+        "degree_levels": [
+          "Master's",
+          "Bachelor's"
+        ],
+        "study_mode": "Full-time study combined with a compulsory internship stage, followed by employment in Taiwan. Chinese-taught and English-taught programme variants exist.",
+        "research_requirement": null,
+        "subject_or_agency_requirement": "Programmes must be in a key industry field identified by the Ministry of Education, commonly STEM, finance and semiconductors. Examples published by partners include International Master Program in Smart Manufacturing, INTENSE Overseas Master's Program in Semiconductor, Advanced Mechanical Engineering, an International Master's Program in Talent Cultivation in Electronic Materials, and an International Master's Program in Mechanical and Automation Engineering.",
+        "application_method": "Application to the individual participating university's online application portal for the specific INTENSE programme, with some universities operating a prior student nomination step.",
+        "application_route": "Participating university international admissions office, under the Ministry of Education and National Development Council INTENSE framework.",
+        "requirements": [
+          "Meet the MOE Regulations Regarding International Students Undertaking Studies in Taiwan.",
+          "Meet the programme-specific language requirement (CEFR B1 English or TOCFL B1 Chinese).",
+          "Meet the university's academic requirements, including top-50% class standing and a conduct score of at least 80.",
+          "Submit an official transcript of the highest completed degree, in Chinese or English or with a certified translation.",
+          "Submit proof of language proficiency, a future career plan, two letters of recommendation, a passport-size photograph and the eligibility self-check declaration.",
+          "Accept the internship requirement and the obligation to work in Taiwan after graduation."
+        ],
+        "documents": [
+          "Official transcript of the highest level of degree completed (Chinese or English, or certified translation)",
+          "Proof of language proficiency (CEFR B1 English certificate, or TOCFL result)",
+          "Future career plan",
+          "Two letters of recommendation",
+          "Passport-size photograph",
+          "Self-check for eligibility verification and declaration for international students",
+          "Certificate of Entry/Exit Dates issued by the National Immigration Agency, where applicable",
+          "Any additional documents required by the individual INTENSE programme"
+        ],
+        "english_requirement": "English-taught programmes require CEFR B1 English proficiency at admission, with TOCFL Level A2 (Listening and Reading) required by the end of the first semester of the second academic year.",
+        "english_requirement_note": "The language requirement depends on the teaching language of the individual programme. Chinese-taught programmes require TOCFL Level B1 (Listening and Reading) instead, and both requirements are set per programme rather than centrally.",
+        "selection_criteria": [
+          "Compliance with the MOE Regulations Regarding International Students Undertaking Studies in Taiwan.",
+          "Meeting the participating university's programme-specific academic, language and conduct requirements.",
+          "Top-50% class standing and a conduct score of not lower than 80 points (or Grade A).",
+          "Programme-level review, following joint Ministry of Education and relevant-ministry approval of the programme itself."
+        ],
+        "selection_weighting": null,
+        "duration": "Typically two years of degree study plus internship, followed by employment in Taiwan.",
+        "award_holder_conditions": [
+          "Mandatory employment obligation in Taiwan after graduation, with partner companies given priority hiring.",
+          "The stipend duration equals the work-obligation duration, and repayment may be requested if the contract is violated.",
+          "Internships are compulsory and are performed under a bilingual internship contract with an allowance not lower than the minimum wage.",
+          "Grades must remain within the top 50% of the class and the conduct score at not lower than 80 points.",
+          "English-taught students must reach TOCFL Level A2 (Listening and Reading) by the end of the first semester of the second academic year.",
+          "Stipends may be increased based on performance assessment."
+        ],
+        "supplements_or_initiatives": [
+          "International Talent Circulation Base (INTACT) offices, including bases in Vietnam and Indonesia, which support recruitment into INTENSE programmes."
+        ],
+        "official_contacts": {
+          "general": "INTENSE Program Office, R222, 2nd Floor, Second Administration Building, No. 1, Section 4, Roosevelt Road, Taipei 10617, Taiwan (R.O.C.) - address as listed by participating universities. Enquiries are directed to the participating university's own international admissions office.",
+          "email": null
+        },
+        "description": "The International Industrial Talents Education Special Program (INTENSE Program) is a Ministry of Education initiative run with the National Development Council, participating universities and partner companies to recruit international students into industry-linked degree programmes, particularly in STEM, finance and semiconductors. Students receive full tuition and credit waivers for up to two years, a one-way flight ticket to Taiwan, initial administrative expense support and a monthly stipend of at least NT$10,000 from the partner company, together with paid internships, in exchange for an obligation to work in Taiwan after graduation. Applications are made to individual participating universities, each publishing its own Spring and Fall intake deadlines, and English-taught programmes require CEFR B1 English while Chinese-taught programmes require TOCFL B1.",
+        "program_type": "Industry-academia collaboration degree programme (MOE specialised class) with a compulsory employment obligation in Taiwan after graduation",
+        "region": "Asia",
+        "coverage": "Full tuition and credit waivers for up to two years (one partner caps the subsidy at NT$50,000 per semester), a one-way flight ticket to Taiwan, initial administrative expense support, and a monthly stipend of at least NT$10,000 for up to two years from the partner company. Conditional on an employment obligation in Taiwan after graduation, with repayment possible on breach.",
+        "last_verified_date": "2026-10-04"
+      },
+      "programme_detail_applicant_utility": {
+        "application_readiness_checklist": [
+          "Identify which participating university and which specific INTENSE programme you want, because funding, language and nationality rules differ between them.",
+          "Check the programme's eligibility window for its Spring or Fall intake - partner universities publish different dates and they do not align.",
+          "Confirm you satisfy the MOE Regulations Regarding International Students Undertaking Studies in Taiwan.",
+          "Confirm your nationality is accepted by that specific programme; several restrict it to Vietnam, Indonesia, the Philippines and Thailand.",
+          "Get CEFR B1 English evidence for an English-taught programme, or TOCFL B1 for a Chinese-taught one.",
+          "Have official transcripts of your highest completed degree ready in Chinese or English, or with a certified translation.",
+          "Prepare a future career plan, two letters of recommendation, a passport-size photo and the eligibility self-check declaration.",
+          "Read the signed internship and employment contract carefully: the stipend duration equals your work-obligation duration and repayment may be requested on breach.",
+          "Apply through the participating university's own online portal, not through any central INTENSE site."
+        ],
+        "common_rejection_risks": [
+          "Missing the participating university's own deadline, which differs from every other INTENSE programme.",
+          "Applying to the wrong intake - Spring and Fall rounds are roughly six months apart and do not coincide.",
+          "Not holding the required language level: CEFR B1 for English-taught, TOCFL B1 for Chinese-taught.",
+          "Being outside the programme's nationality restriction when it is limited to specific Southeast Asian countries.",
+          "Falling outside the top 50% of the class or scoring below 80 on conduct.",
+          "Underestimating the employment obligation - it is attached to the stipend and is contractually enforceable.",
+          "Assuming the funding package is identical across universities: at least one caps tuition subsidy at NT$50,000 per semester."
+        ],
+        "estimated_uncovered_costs": [
+          "Tuition above any per-semester cap, where a participating university caps the subsidy (one published cap is NT$50,000 per semester).",
+          "The return airfare: only a one-way ticket to Taiwan is covered.",
+          "Living costs beyond the monthly stipend of at least NT$10,000, particularly in Taipei.",
+          "Any cost of the mandatory internship beyond the published minimum-wage allowance."
+        ],
+        "document_audit": [
+          "Official transcript of the highest completed degree, in Chinese or English or with a certified translation.",
+          "CEFR B1 English certificate or TOCFL result, as required by the programme language.",
+          "Future career plan.",
+          "Two letters of recommendation.",
+          "Passport and Certificate of Entry/Exit Dates from the National Immigration Agency, where applicable.",
+          "Passport-size photograph.",
+          "Self-check for eligibility verification and declaration for international students.",
+          "Copies of the signed internship and employment contract, once issued."
+        ],
+        "alerts": [
+          {
+            "trigger": "No central deadline or central application portal",
+            "message": "INTENSE has no programme-wide application deadline. Every participating university publishes its own dates for each Spring and Fall intake, and some add a student nomination step. Check the specific university's page rather than a generic INTENSE calendar."
+          },
+          {
+            "trigger": "The funding is tied to a work obligation",
+            "message": "The stipend duration equals the duration of your obligation to work in Taiwan after graduation, and repayment may be requested if the contract is violated. Treat this as a conditional award, not a free grant."
+          },
+          {
+            "trigger": "Stored source URL does not host this programme",
+            "message": "The official_source_url on this row points to NTU's Overseas Compatriot and Mainland Chinese Students Advising Division, which publishes Overseas Chinese Student Association scholarships and contains no INTENSE content. Verify details against the Ministry of Education or the participating university before applying."
+          }
+        ],
+        "submission_workflow": [
+          "Shortlist participating universities and INTENSE programmes by field, language and nationality eligibility.",
+          "Read that specific programme's admission guidelines and confirm its application window for the intake you are targeting.",
+          "Complete the language requirement (CEFR B1 or TOCFL B1) and gather transcripts, references and the eligibility declaration.",
+          "Apply through the university's online application portal within its window, observing any nomination step.",
+          "Undertake assessment and, where required, an interview with the programme.",
+          "On offer, review and sign the internship and employment contract before accepting, checking the repayment clause.",
+          "Complete the study and internship plan, then meet the employment obligation in Taiwan."
+        ]
+      },
+      "programme_detail_verification": {
+        "cycle_verified": "Multi-university national programme with Spring and Fall intakes; 2027 Spring intakes open September-October 2026 at several participating universities, verified 2026-10-04",
+        "verification_confidence": 0.6,
+        "official_fields_confirmed": [
+          "programme existence and identity (INTENSE / International Industrial Talents Education Special Program)",
+          "awarding body (Ministry of Education with the National Development Council, universities and partner companies)",
+          "status (open - 2027 Spring intakes accepting applications in September and October 2026)",
+          "employment obligation after graduation",
+          "deadline structure (varies by participating university and intake)"
+        ],
+        "institution_check_required": [
+          "The correct central Ministry of Education INTENSE programme URL, which I could not reach in this pass; the stored NTU URL is wrong.",
+          "Which specific university and programme an applicant is applying to, and that programme's own deadline, tuition cap and stipend.",
+          "The current tuition subsidy cap at each participating university.",
+          "The exact employment-obligation length and the repayment formula in the signed contract.",
+          "Whether PhD-level INTENSE places exist; no PhD programme was evidenced in the pages read, so degree levels were narrowed to Master's and Bachelor's."
+        ],
+        "unverified_or_removed_claims": [
+          "Stored official_source_url https://gocfs.ntu.edu.tw does NOT host the INTENSE Programme. Read live it is NTU's Overseas Compatriot and Mainland Chinese Students Advising Division, with content about OCAC scholarships, medical insurance and work permits. Retained as the row identity per the brief; a human should re-point it to the Ministry of Education INTENSE page.",
+          "Stored current_application_link was a stylesheet URL (https://gocfs.ntu.edu.tw/template/6/stylesheets/application.css), a scraping artefact rather than an application page. Applications are made to each participating university's own portal, so application_link is null.",
+          "Stored current_image_url was https://gocfs.ntu.edu.tw/template/6/assets/ntu-calligraphy-w.png, which is NTU's calligraphy mark, not the awarding body's logo; the '-w' naming also suggests a white variant.",
+          "Stored deadline_display 'Varies by university (NTU 2026: closed April 15, 2026)' - the 'varies' part is correct and confirmed, but the specific NTU 15 April 2026 date could not be confirmed, because the stored host does not document INTENSE at all. deadline_date remains null.",
+          "Stored degree 'Master's and PhD' - PhD could not be evidenced. All published INTENSE programmes found were Master's programmes, and the programme catalogue lists Bachelor's and Master's systems, so degree levels were changed to Master's, Bachelor's.",
+          "Stored funding 'Fully Funded' retains that label because tuition, airfare and a stipend are all published, but fully_funded is false: the award carries a contractual employment obligation in Taiwan with repayment possible on breach, which the brief requires be named in funding_label.",
+          "Stored verification_status was needs_review; is_verified remains false because no central official INTENSE page was opened in this pass.",
+          "The stipend amount varies by partner company: NT$10,000 is the published floor, with one partner role at NT$15,000 subject to intermediate Chinese proficiency. funding_amount is therefore recorded as the published minimum."
+        ],
+        "source_citations": [
+          "https://gocfs.ntu.edu.tw/"
+        ],
+        "researched_by": "w1_15a1"
+      },
+      "logo_override": {
+        "url": "https://english.moe.gov.tw/Public/Images/201912/2631912251745b958b.png",
+        "page_url": "https://english.moe.gov.tw/cp-24-24284-3ea37-1.html",
+        "official_host": true,
+        "alt_text": "Ministry of Education, Republic of China (Taiwan) official logo",
+        "validation_result": "verified",
+        "validation_detail": "png 22159+B, image/png, HTTP 200, probed on 2026-10-04 on the awarding ministry's own domain (english.moe.gov.tw) with img alt='Ministry of Education Republic of China (Taiwan)'. Chosen because the true awarding body of the INTENSE Programme is Taiwan's Ministry of Education, not NTU; NTU is only one of many participating universities. The row's stored official_host (gocfs.ntu.edu.tw) is mis-attributed, so host_evidence is stated relative to the actual awarding body.",
+        "image_kind": "official_logo",
+        "image_format": "png",
+        "verified_at": "2026-10-04T00:00:00+00:00",
+        "host_evidence": "same_registrable_domain",
+        "_award": "International Industrial Talents Education Special Program (INTENSE Program)"
+      },
+      "research_notes": {
+        "logo": "The stored image https://gocfs.ntu.edu.tw/template/6/assets/ntu-calligraphy-w.png probes 200 image/png 28082 B, but it is National Taiwan University's calligraphy mark, and NTU is only a participating university in the INTENSE Programme, not the awarding body - using it would be exactly the provenance error the brief bans. Its '-w' filename also suggests a white variant. The awarding body is Taiwan's Ministry of Education, so I used MOE's own logo, https://english.moe.gov.tw/Public/Images/201912/2631912251745b958b.png, already probed on 2026-10-04 (HTTP 200, image/png, 22159 B, alt='Ministry of Education Republic of China (Taiwan)') on the ministry's own domain. Rejected on gocfs.ntu.edu.tw: /template/6/assets/gocfs-logo@2x.png (the division's own mark, not the awarding body), /images/apple-touch-icon-144.png (a favicon/touch icon) and the news and icon images under /cm/. Also rejected as unreachable: www.intactbase.org, intense.moe.gov.tw and www.education.gov.tw (all DNS ENOTFOUND from this environment).",
+        "unverified": [
+          "No central Ministry of Education INTENSE programme page could be opened in this pass, so all programme details come from official participating-university pages surfaced through the search index rather than pages I fetched directly.",
+          "The specific 'NTU 2026: closed April 15, 2026' deadline in the stored record could not be confirmed.",
+          "Whether any PhD-level INTENSE place exists.",
+          "The tuition cap and stipend at each specific participating university.",
+          "The precise wording of the employment-obligation and repayment clauses, which live in each signed contract.",
+          "No INTENSE application portal URL is recorded because applications run through each university's own portal and none was verified."
+        ],
+        "substitution": null,
+        "official_pages_read": [
+          "https://gocfs.ntu.edu.tw/"
+        ],
+        "degree_level_confirmed": "Degree levels could NOT be positively confirmed for this record from a page I opened. The stored 'Master's and PhD' is not supported: every published INTENSE programme found was a Master's programme, and the programme catalogue lists Post-Baccalaureate, Two-Year, Bachelor and Master systems, so the levels were narrowed to Master's, Bachelor's and PhD removed. This needs human verification.",
+        "url_observed": "https://gocfs.ntu.edu.tw/",
+        "contradictions": [
+          "MAJOR: stored official_source_url https://gocfs.ntu.edu.tw does not host the INTENSE Programme. Read live it is titled '國立臺灣大學 學務處│僑生及陸生輔導組 / Overseas Compatriot and Mainland Chinese Students Advising Division, Office of Student Affairs, NTU' and covers Overseas Chinese Student Association scholarships, medical insurance and work permits. A human should re-point this row to the Ministry of Education INTENSE page.",
+          "Stored current_application_link is a CSS file (https://gocfs.ntu.edu.tw/template/6/stylesheets/application.css), a scraping artefact, not an application page.",
+          "Stored current_image_url is NTU's calligraphy mark, a participating university's logo rather than the awarding ministry's, so it is a provenance error for this award.",
+          "Stored degree 'Master's and PhD' is not supported by any published INTENSE programme found; all were Master's programmes.",
+          "Stored funding 'Fully Funded' needs qualification: the award carries a contractual employment obligation in Taiwan and repayment may be requested on breach, so fully_funded is false and the obligation is named in funding_label.",
+          "Stored deadline_display attributes an NTU 15 April 2026 date to the programme, which could not be confirmed and which is implausible given that the NTU host does not document INTENSE at all. The 'varies by university' part is confirmed correct.",
+          "Stored region was null although the host country is plainly Asia (Taiwan)."
+        ],
+        "skeleton": false
+      }
+    },
+    {
+      "target_id": 148,
+      "outcome": "refreshed",
+      "confirm": true,
+      "confirmation_evidence": "Confirmed the award exists on NTU's own domain. NTU's International Student Services page https://isss.ntu.edu.tw/finances/scholarships lists \"NTU International Outstanding Graduate Student Scholarship (Graduate)\" with the application period \"April 23, 2026 - May 15, 2026\" and required materials \"Past years Transcripts or Advisor Evaluation Form\", \"Recommend Letter for Outstanding International Graduate Student Scholarship\" and \"Curriculum Vitae\", applied for via the International Degree Current Student System. NTU's College of Social Sciences describes the scheme as \"a matching fund scholarship comprised of tuition waiver from the university and research assistant salary from the student's thesis/dissertation supervisor\".",
+      "new_scholarship": {
+        "name": "NTU International Outstanding Graduate Student Scholarship",
+        "legacy_titles": [
+          "NTU International Outstanding Student Scholarship"
+        ],
+        "country": "Taiwan",
+        "region": "Asia",
+        "degree_levels": "Master's, PhD",
+        "funding_type": "Partially Funded",
+        "official_source": "National Taiwan University (NTU), Office of International Affairs",
+        "official_source_url": "https://oia.ntu.edu.tw/en/current-students/international-degree-and-dual-degree-students-wpwq/scholarships-6v27",
+        "status": "upcoming",
+        "is_verified": true,
+        "last_verified_date": "2026-10-04",
+        "deadline": "The published application period on NTU's International Student Services scholarships page is April 23, 2026 - May 15, 2026, submitted through the International Degree Current Student System. The 2026 window has closed; the same window is expected for the next cycle.",
+        "deadline_date": null,
+        "deadline_precision": "recurring",
+        "application_period": "Annual, with a published application period of 23 April to 15 May for existing international degree students at NTU, applying through the International Degree Current Student System.",
+        "duration": "Minimum monthly support for two years for master's students and three years for PhD students, subject to passing an annual review.",
+        "program_type": "University merit scholarship with a matching-fund structure (university tuition waiver plus a thesis supervisor's research-assistant salary)",
+        "eligibility_summary": "Current international (non-overseas-Chinese, non-Mainland-Chinese) graduate students already enrolled at NTU. Because the award is a matching fund, a graduate student also needs a thesis or dissertation supervisor who is willing to sponsor them and sign the university's word form; scholars must pass an annual review to keep the award.",
+        "eligibility": [
+          "Must be a current international graduate student at NTU.",
+          "Overseas Chinese students and Mainland Chinese students are excluded.",
+          "Must have a thesis or dissertation supervisor willing to sponsor the award and sign the university's word form.",
+          "Must pass the annual review to continue receiving the scholarship."
+        ],
+        "coverage": [
+          "Tuition waiver from the university.",
+          "Monthly payment from the student's thesis or dissertation supervisor as a research-assistant salary.",
+          "Published minimum monthly payment: TWD 6,000 per month for master's students for two years, and TWD 8,000 per month for PhD students for three years, before tax."
+        ],
+        "benefits": [
+          "NTU tuition waiver.",
+          "Supervisor-paid monthly research-assistant salary, minimum TWD 6,000 per month for master's students (two years) and TWD 8,000 per month for PhD students (three years), before tax.",
+          "Renewal for up to two years for master's students and three years for PhD students, subject to annual review."
+        ],
+        "funding_amount": 6000,
+        "funding_currency": "TWD",
+        "funding_period": "per month",
+        "required_documents": [
+          "Past years' transcripts, or an Advisor Evaluation Form for graduate students who do not have transcripts",
+          "Recommendation letter for the Outstanding International Graduate Student Scholarship",
+          "Curriculum vitae",
+          "Any other documents that strengthen the application, such as award records, proof of outstanding performance or publications",
+          "A signed word form from the sponsoring professor"
+        ],
+        "application_method": [
+          "Submit the application through the International Degree Current Student System during the published application period.",
+          "Ask a professor to agree to sponsor the award and have them sign the attached word form, then submit it to the College office.",
+          "About half of applicants are awarded the scholarship."
+        ],
+        "selection_notes": "Decision on NTU scholarships is made by the professors of the department to which the applicant belongs. NTU's scholarship FAQ states that about half of applicants receive scholarships. Renewal requires passing review each year.",
+        "english_requirement": null,
+        "requirements": [
+          "Be a current international graduate student at NTU (overseas Chinese and Mainland Chinese students are excluded).",
+          "Secure a sponsoring thesis or dissertation supervisor who will sign the word form and pay the research-assistant salary.",
+          "Submit past years' transcripts or an Advisor Evaluation Form.",
+          "Submit a recommendation letter for the Outstanding International Graduate Student Scholarship and a curriculum vitae.",
+          "Pass the annual review to retain the award."
+        ],
+        "best_fit": "Current international master's or PhD students at NTU who have secured, or can secure, a thesis supervisor willing to sponsor them and commit to a research-assistant salary, and who can pass the annual performance review.",
+        "notes": "This is not a standalone NTU grant: it is a matching-fund scholarship, so the tuition waiver comes from the university but the monthly income comes from the applicant's own supervisor. Applicants should approach potential supervisors before applying. Do not confuse it with NTU's other awards on the same pages, which have different amounts: the NTU Scholarship for International Degree Student (undergraduate) carries a tuition waiver plus a monthly stipend of NTD 8,000, with tuition fees waived up to NTD 65,000; the NTU Loyalty Award pays NTD 100,000 for master's and NTD 200,000 for PhD places; and the Financial Assistance Grant for International Students is a tuition waiver plus a TWD 6,000 monthly stipend. The stored official_source_url points to NTU's 'Scholarships for Current Students' hub page, whose own content is stale (footer 'Last update : 2024 / 04 / 23') and which does not list this award.",
+        "description": "The NTU International Outstanding Graduate Student Scholarship supports current international graduate students at National Taiwan University through a matching-fund structure: NTU waives the student's tuition, while the student's thesis or dissertation supervisor pays a monthly research-assistant salary, with published minimums of TWD 6,000 per month for two years for master's students and TWD 8,000 per month for three years for PhD students, before tax. Applicants must first secure a professor willing to sponsor them and sign the university's word form, and must pass an annual review to keep the award. The published application period is 23 April to 15 May, through NTU's International Degree Current Student System, and roughly half of applicants are awarded."
+      },
+      "programme_detail_official": {
+        "official_source_urls": [
+          "https://isss.ntu.edu.tw/finances/scholarships",
+          "https://oia.ntu.edu.tw/en/current-students/international-degree-and-dual-degree-students-wpwq/scholarships-6v27"
+        ],
+        "application_link": "https://isss.ntu.edu.tw/finances/scholarships",
+        "official_updates_url": "https://isss.ntu.edu.tw/finances/scholarships",
+        "catalogue_url": null,
+        "application_cycle": "Annual award for existing international degree students at NTU, with a published application period of 23 April to 15 May and submission through the International Degree Current Student System. The 2026 window closed on 15 May 2026; the next cycle is expected in the same late-April to mid-May window for 2027.",
+        "deadline_central": null,
+        "deadline_central_display": "April 23, 2026 - May 15, 2026",
+        "deadline_central_timezone": "Asia/Taipei",
+        "deadline_note": "NTU's International Student Services page publishes the application period as 'April 23, 2026 - May 15, 2026'. Because no year-stamped date has yet been published for the next cycle, deadline_date is null and the precision is 'recurring'. The stored 'April 23 - May 15, 2026 (current students)' matches the official wording but describes the completed 2026 cycle.",
+        "status": "UPCOMING",
+        "status_note": "The published application window of 23 April to 15 May 2026 has closed as of 2026-10-04. The award is conferred annually on existing international students, so the next cycle is treated as upcoming.",
+        "funding_amount": 6000,
+        "funding_currency": "TWD",
+        "funding_period": "per month",
+        "funding_duration": "Minimum two years for master's students and three years for PhD students, subject to passing an annual review.",
+        "tuition_coverage": true,
+        "tuition_coverage_note": "NTU waives the student's tuition as one half of the matching fund. The published description does not state a per-semester cap for this award, unlike the separate NTU Scholarship for International Degree Student, where tuition fees are waived up to NTD 65,000.",
+        "living_cost_coverage": false,
+        "travel_coverage": null,
+        "fully_funded": false,
+        "funding_label": "Partially funded and conditional: NTU tuition waiver plus a supervisor-paid research-assistant salary of at least TWD 6,000/month for master's students (two years) or TWD 8,000/month for PhD students (three years), before tax. The monthly component is only available if the student's own thesis or dissertation supervisor agrees to sponsor and sign the word form, so it is not guaranteed by NTU alone.",
+        "benefits": [
+          "NTU tuition waiver.",
+          "Supervisor-paid research-assistant salary, minimum TWD 6,000 per month for master's students and TWD 8,000 per month for PhD students, before tax.",
+          "Up to two years for master's students and three years for PhD students, subject to annual review."
+        ],
+        "eligibility": [
+          "Must be a current international graduate student at NTU.",
+          "Overseas Chinese students and Mainland Chinese students are excluded.",
+          "Must have a thesis or dissertation supervisor willing to sponsor the scholarship and sign the word form.",
+          "Must pass an annual review to continue receiving the scholarship."
+        ],
+        "citizenship_residency": "International degree students already studying at NTU. Overseas Chinese students and Mainland Chinese students are not eligible.",
+        "international_eligibility": "For international (non-Chinese) graduate students already enrolled at NTU. Dual degree students admitted under agreements between NTU and their home universities are not qualified for NTU scholarships.",
+        "degree_levels": [
+          "Master's",
+          "PhD"
+        ],
+        "study_mode": "Full-time on-campus graduate study at NTU, with the award tied to a thesis or dissertation.",
+        "research_requirement": "The award is tied to a thesis or dissertation: the monthly component is a research-assistant salary paid by the student's thesis or dissertation supervisor, who must sign the university's word form.",
+        "subject_or_agency_requirement": "Applications are decided by the professors of the applicant's own department or college, so a sponsoring supervisor within the department is required.",
+        "application_method": "Online submission through NTU's International Degree Current Student System, together with a word form signed by the sponsoring professor and submitted to the College office.",
+        "application_route": "NTU Office of International Affairs / International Student Services, with the applicant's department or college office.",
+        "requirements": [
+          "Be a current international graduate student at NTU.",
+          "Secure a sponsoring professor who will sign the word form and pay the research-assistant salary.",
+          "Submit past years' transcripts, or an Advisor Evaluation Form if transcripts are unavailable.",
+          "Submit a recommendation letter for the Outstanding International Graduate Student Scholarship.",
+          "Submit a curriculum vitae and any supporting award records, performance evidence or publications.",
+          "Pass the annual review to retain the award."
+        ],
+        "documents": [
+          "Past years' transcripts, or Advisor Evaluation Form",
+          "Recommendation letter for the Outstanding International Graduate Student Scholarship",
+          "Curriculum vitae",
+          "Other supporting materials such as award records, proof of outstanding performance or publications",
+          "Word form signed by the sponsoring professor"
+        ],
+        "english_requirement": null,
+        "english_requirement_note": "No English-language requirement is stated for this award on the NTU pages read. The programme of study at NTU determines any language requirement.",
+        "selection_criteria": [
+          "Departmental professors decide who is awarded.",
+          "Academic merit and supporting materials such as award records and publications.",
+          "Passing the annual review to continue receiving the scholarship."
+        ],
+        "selection_weighting": "Not published. NTU's scholarship FAQ states that about half of applicants receive scholarships.",
+        "duration": "Two years for master's students and three years for PhD students, based on the published minimum monthly payment terms, with annual review.",
+        "award_holder_conditions": [
+          "The monthly research-assistant salary depends on the student's own supervisor sponsoring the award and signing the word form.",
+          "Students need to pass review each year in order to keep receiving the scholarship.",
+          "Must maintain active student status; the scholarship is terminated once a student graduates or is no longer actively enrolled.",
+          "Applications must follow the published document sequence and submission channel, or they will not be processed.",
+          "Overseas Chinese and Mainland Chinese students are not eligible."
+        ],
+        "supplements_or_initiatives": [
+          "Separate NTU awards that must not be confused with this one: the NTU Scholarship for International Degree Student (undergraduate tuition waiver plus NTD 8,000 monthly stipend, tuition waived up to NTD 65,000), the NTU Loyalty Award (NTD 100,000 for master's and NTD 200,000 for PhD), and the Financial Assistance Grant for International Students (tuition waiver plus TWD 6,000 monthly stipend)."
+        ],
+        "official_contacts": {
+          "general": "Office of International Affairs, National Taiwan University, 7th floor, Lixian Hall, No. 1, Sec. 4, Roosevelt Road, Taipei City 106319, Taiwan; +886-2-3366-2007. College contact named in the award description: Ms. Shiau-ying Hung, Tel +886 2 3366-8434.",
+          "email": null
+        },
+        "description": "The NTU International Outstanding Graduate Student Scholarship is a matching-fund award for current international graduate students at National Taiwan University: NTU waives tuition while the student's own thesis or dissertation supervisor pays a monthly research-assistant salary, with published minimums of TWD 6,000 per month for two years for master's students and TWD 8,000 per month for three years for PhD students, before tax. Applicants must first secure a professor willing to sponsor them and sign the university's word form, and must pass an annual review to keep the award. The published application period is 23 April to 15 May, submitted through NTU's International Degree Current Student System.",
+        "program_type": "University merit scholarship with a matching-fund structure (university tuition waiver plus a thesis supervisor's research-assistant salary)",
+        "region": "Asia",
+        "coverage": "NTU tuition waiver plus a supervisor-paid monthly research-assistant salary of at least TWD 6,000 for master's students (two years) or TWD 8,000 for PhD students (three years), before tax. The monthly component is conditional on securing a sponsoring supervisor, so the award is not fully funded by the university.",
+        "last_verified_date": "2026-10-04"
+      },
+      "programme_detail_applicant_utility": {
+        "application_readiness_checklist": [
+          "Confirm you are a current international (not overseas Chinese, not Mainland Chinese) graduate student at NTU - dual degree students admitted under NTU home-university agreements are not qualified.",
+          "Identify and approach a potential thesis or dissertation supervisor BEFORE applying, because they must agree to sponsor the award, pay the research-assistant salary and sign the word form.",
+          "Have past years' transcripts ready, or request an Advisor Evaluation Form if you do not have transcripts.",
+          "Ask a professor to sign the recommendation letter for the Outstanding International Graduate Student Scholarship.",
+          "Prepare a one-page curriculum vitae and gather supporting award records, performance evidence and publications.",
+          "Submit through the International Degree Current Student System between 23 April and 15 May.",
+          "Expect an annual review - passing it is a condition of renewal, not a formality.",
+          "Check whether the tuition waiver alone or the waiver plus supervisor salary best matches your funding need, since only the university half is automatic."
+        ],
+        "common_rejection_risks": [
+          "No supervisor willing to sponsor, which makes the monthly component impossible.",
+          "Applying without getting the sponsoring professor's signature on the word form.",
+          "Being an overseas Chinese or Mainland Chinese student, which is an outright exclusion.",
+          "Missing the 23 April to 15 May window, which is the only published application period for existing students.",
+          "Failing the annual review, which terminates an existing award.",
+          "Submitting documents out of the published sequence or via the wrong channel - NTU states applications that do not follow the steps will not be processed.",
+          "Assuming the stipend comes from NTU: the monthly amount is paid by your own supervisor, and only the tuition half is university-funded."
+        ],
+        "estimated_uncovered_costs": [
+          "All living costs beyond the supervisor's monthly research-assistant salary, which is a minimum rather than a full living allowance.",
+          "Books, health insurance, internet and accommodation costs, none of which are mentioned as covered.",
+          "Any tuition or fees outside the scope of the university's waiver.",
+          "Costs arising if no supervisor sponsors the award, in which case only the tuition waiver remains."
+        ],
+        "document_audit": [
+          "Past years' transcripts, or an Advisor Evaluation Form.",
+          "Recommendation letter for the Outstanding International Graduate Student Scholarship.",
+          "Curriculum vitae.",
+          "Supporting materials: award records, proof of outstanding performance, publications.",
+          "Word form signed by the sponsoring professor.",
+          "Confirmation of your international-student status at NTU."
+        ],
+        "alerts": [
+          {
+            "trigger": "The stipend is not paid by NTU",
+            "message": "This is a matching fund. NTU waives tuition; your thesis or dissertation supervisor pays the monthly research-assistant salary and must sign the word form. Secure a supervisor first or you will only get the tuition half."
+          },
+          {
+            "trigger": "Stored source URL is a stale hub page",
+            "message": "The official_source_url on this row points to NTU's 'Scholarships for Current Students' page, whose own footer reads 'Last update : 2024 / 04 / 23' and which does not list this award. Use NTU's International Student Services scholarships page instead."
+          },
+          {
+            "trigger": "Easily confused with sibling NTU awards",
+            "message": "NTU runs several awards with overlapping names and different amounts on the same pages. This one pays a supervisor salary plus tuition waiver; the undergraduate NTU Scholarship pays a tuition waiver plus NTD 8,000 per month; the Loyalty Award pays NTD 100,000 (master's) or NTD 200,000 (PhD)."
+          }
+        ],
+        "submission_workflow": [
+          "Read your department's and the International Student Services pages for this award and the current cycle's dates.",
+          "Approach one or more professors to ask whether they will sponsor a master's or PhD student on a research-assistant salary and sign the word form.",
+          "Once a supervisor agrees, collect their signature and the recommendation letter.",
+          "Compile transcripts (or an Advisor Evaluation Form), a one-page CV and supporting award or publication evidence.",
+          "Submit everything through the International Degree Current Student System within the 23 April to 15 May window.",
+          "Await the departmental decision; NTU states roughly half of applicants are awarded.",
+          "Complete the annual review each year to retain the award, and keep your student status active throughout."
+        ]
+      },
+      "programme_detail_verification": {
+        "cycle_verified": "2026 cycle for existing international students (application period 23 April to 15 May 2026, now closed); next cycle expected in the same window, verified 2026-10-04",
+        "verification_confidence": 0.82,
+        "official_fields_confirmed": [
+          "award name and existence on NTU's own domain",
+          "degree_levels (Master's and PhD)",
+          "application period (23 April to 15 May)",
+          "application channel (International Degree Current Student System)",
+          "required_documents (transcripts or Advisor Evaluation Form, recommendation letter, CV, other supporting materials)",
+          "tuition_coverage (NTU tuition waiver as the university half of a matching fund)",
+          "funding structure (matching fund with the thesis/dissertation supervisor paying the monthly research-assistant salary)",
+          "duration (two years master's, three years PhD, subject to annual review)",
+          "eligibility (current international graduate students; overseas Chinese and Mainland Chinese excluded)",
+          "status (annual award, currently between cycles)"
+        ],
+        "institution_check_required": [
+          "The current stipend amounts. The published minimums (TWD 6,000/month master's, TWD 8,000/month PhD) come from NTU's College of Social Sciences description of the scheme dated 2022 and must be re-confirmed for the 2026/2027 cycle.",
+          "Whether the tuition waiver has a per-semester cap for this award; none is stated.",
+          "The exact next-cycle application dates; the site publishes 'April 23, 2026 - May 15, 2026' without a forward-looking year.",
+          "Whether departmental professors still require the word form, and the current process for renewal review."
+        ],
+        "unverified_or_removed_claims": [
+          "Stored official_source_url https://oia.ntu.edu.tw/.../scholarships-6v27 is live but is a different, stale page: its own footer reads 'Last update : 2024 / 04 / 23', it does not list this award, and its listed application deadlines are from 2020 and 2021. Retained as the row identity per the brief; the live authoritative page is recorded in url_observed.",
+          "Stored program_type 'Subsidy for EMI Courses Subsidy for EMI Courses Application EMI TA Subsidy Application Postdoctoral Fellow as Course Lecturer Subsidy Application' is scraped navigation text, not a programme type, and has been replaced.",
+          "Stored current_image_alt_text was 'NTU OIA' but the stored image https://oia.ntu.edu.tw/cm/index_img/1/1/000001_0628.png is a 2,217,809-byte content/carousel image rather than a logo; replaced with NTU's own logo asset.",
+          "Stored deadline_display 'April 23 - May 15, 2026 (current students)' is confirmed correct in wording but describes the completed 2026 cycle, so status is now upcoming rather than open.",
+          "Stored deadline_precision 'varies' is wrong; a single fixed annual window applies, so 'recurring' is correct.",
+          "Stored deadline_date was null and correctly remains null: no year-stamped date is published for the next cycle.",
+          "Stored region was null; set to Asia.",
+          "Stored funding 'Partial' is confirmed correct: the tuition half is university-funded but the monthly half is supervisor-paid and conditional.",
+          "The award's own section on the ISSS page sits in a collapsed panel and did not appear in the rendered page text; its content was read from the official page's own indexed text rather than a fresh render.",
+          "No English-language requirement is published for this award, so english_requirement is null."
+        ],
+        "source_citations": [
+          "https://isss.ntu.edu.tw/finances/scholarships",
+          "https://oia.ntu.edu.tw/en/current-students/international-degree-and-dual-degree-students-wpwq/scholarships-6v27"
+        ],
+        "researched_by": "w1_15a1"
+      },
+      "logo_override": {
+        "url": "https://www.ntu.edu.tw/images/icon-logo-header.svg",
+        "page_url": "https://www.ntu.edu.tw/",
+        "official_host": true,
+        "alt_text": "National Taiwan University official logo",
+        "validation_result": "verified",
+        "validation_detail": "svg 107402+B, image/svg+xml, HTTP 200; found in the awarding university's own homepage markup at www.ntu.edu.tw with img alt='國立臺灣大學' (National Taiwan University), in the site header. This is the university's own mark, not a college or programme graphic.",
+        "image_kind": "official_logo",
+        "image_format": "svg",
+        "verified_at": "2026-10-04T00:00:00+00:00",
+        "host_evidence": "same_registrable_domain",
+        "_award": "NTU International Outstanding Graduate Student Scholarship"
+      },
+      "research_notes": {
+        "logo": "Used National Taiwan University's own logo from the university's homepage: https://www.ntu.edu.tw/images/icon-logo-header.svg, probed 2026-10-04 as HTTP 200 image/svg+xml 107402 bytes with img alt='國立臺灣大學'. Rejected the stored image https://oia.ntu.edu.tw/cm/index_img/1/1/000001_0628.png, which probes 200 image/png but is 2,217,809 bytes of content/carousel artwork and is not a mark (its stored alt text 'NTU OIA' was also wrong). Also rejected https://oia.ntu.edu.tw/template/11/assets/logo@2x.png (200 image/png 22079 B, alt 'Office of International Affairs, National Taiwan University') because that is the administering office's logo rather than the university mark that awards the scholarship; it is recorded here in case the pipeline prefers the OIA variant. Rejected www.ntu.edu.tw/images/photo/ntugate.jpg (a photograph of the campus gate), /images/favicon/* (favicons) and the social/search icon SVGs.",
+        "unverified": [
+          "The stipend minimums (TWD 6,000/month master's, TWD 8,000/month PhD) come from NTU's College of Social Sciences page describing the scheme, which is dated 2022; they must be re-confirmed for the current cycle.",
+          "The award's section on the ISSS scholarships page is in a collapsed panel and was read from the official page's own indexed text, not from a fresh render.",
+          "No per-semester tuition-waiver cap is stated for this award.",
+          "No forward-looking application dates are published for the next cycle.",
+          "No English-language requirement is published."
+        ],
+        "substitution": null,
+        "official_pages_read": [
+          "https://isss.ntu.edu.tw/finances/scholarships",
+          "https://oia.ntu.edu.tw/en/current-students/international-degree-and-dual-degree-students-wpwq/scholarships-6v27",
+          "https://www.ntu.edu.tw/"
+        ],
+        "degree_level_confirmed": "NTU's own page titles the award 'NTU International Outstanding Graduate Student Scholarship (Graduate)' and its eligibility is 'Current international graduate student at NTU'; NTU's College of Social Sciences description sets minimum payments 'for master students' and 'for PhD students', confirming both graduate levels.",
+        "url_observed": "https://isss.ntu.edu.tw/finances/scholarships",
+        "contradictions": [
+          "Stored official_source_url is a different, stale page that does not list this award: its own footer reads 'Last update : 2024 / 04 / 23' and its listed deadlines are from 2020 and 2021. The award is documented at https://isss.ntu.edu.tw/finances/scholarships.",
+          "Stored program_type was scraped navigation text ('Subsidy for EMI Courses Subsidy for EMI Courses Application EMI TA Subsidy Application Postdoctoral Fellow as Course Lecturer Subsidy Application') and has been replaced with a real programme type.",
+          "Stored current_image_url was a 2.2 MB content/carousel image rather than a logo, and its stored alt text 'NTU OIA' did not match it.",
+          "Stored deadline_precision 'varies' is wrong; a single fixed annual window of 23 April to 15 May applies, so 'recurring' is correct.",
+          "Stored status 'open' is wrong as of 2026-10-04; the published window closed on 15 May 2026, so the award is upcoming.",
+          "Stored region was null although the host country is plainly Asia (Taiwan).",
+          "Stored funding 'Partial' and stored degree 'Master's and PhD' are both confirmed correct by NTU's own pages."
+        ],
+        "skeleton": false
+      }
+    },
+    {
+      "target_id": 149,
+      "outcome": "refreshed",
+      "confirm": true,
+      "confirmation_evidence": "Read National Tsing Hua University's own scholarship page https://apply.nthu.edu.tw/en/article/102-nthu-scholarship (HTTP 200), which states \"Doctoral students: NTD 20,000~40,000 per month\", \"Master students: NTD 5,000 per month\", \"Bachelor students: NTD 5,000 per month\" and \"Tuition and Credit fee waived\", with the source given as \"Office of Global Affairs at NTHU\" and the instruction to \"Apply scholarship through the same online system for international degree programs\".",
+      "new_scholarship": {
+        "name": "NTHU International Student Scholarship",
+        "legacy_titles": [
+          "NTHU International Student Scholarship"
+        ],
+        "country": "Taiwan",
+        "region": "Asia",
+        "degree_levels": "Bachelor's, Master's, PhD",
+        "funding_type": "Tuition Fee Waiver",
+        "official_source": "National Tsing Hua University (NTHU), Office of Global Affairs",
+        "official_source_url": "https://apply.nthu.edu.tw/en/article/102-nthu-scholarship",
+        "status": "upcoming",
+        "is_verified": true,
+        "last_verified_date": "2026-10-04",
+        "deadline": "The scholarship has no separate deadline: NTHU instructs applicants to 'Apply scholarship through the same online system for international degree programs', so the deadline is the admission deadline for the relevant intake. NTHU's published Spring 2027 international degree application period was 3 August to 30 September 2026 at 15:00 Taiwan time, which has closed.",
+        "deadline_date": null,
+        "deadline_precision": "varies",
+        "application_period": "Applied for together with the international degree programme admission, in NTHU's published intake windows. The published Spring 2027 international degree application period was 3 August to 30 September 2026 (15:00 Taiwan time), with admission results on 1 December 2026 and scholarship results in late December 2026.",
+        "duration": "Follows the duration of the degree programme enrolled in; no separate award period is published.",
+        "program_type": "University scholarship for international degree students combining a full tuition and credit-fee waiver with a tiered monthly stipend",
+        "eligibility_summary": "International applicants, admitted by NTHU under the MOE Regulations Regarding International Students Undertaking Studies in Taiwan. Applicants and their parents must all hold foreign nationality and have never held Taiwan nationality, and must not have previously studied in Taiwan as an overseas Chinese student. The scholarship is not available for the College of Semiconductor and ICDF programmes.",
+        "eligibility": [
+          "Applicants and their parents must all hold foreign nationality and have never held Republic of China (Taiwan) nationality.",
+          "Must not have studied in Taiwan under overseas Chinese student status.",
+          "Those who previously studied in Taiwan under the Regulations Regarding International Students Undertaking Studies in Taiwan may reapply, but only once, and only for NTHU undergraduate programmes.",
+          "Applicants may not apply for programmes in Medicine, Dentistry or Traditional Chinese Medicine; this limitation does not apply to graduate programmes.",
+          "Foreign students currently studying in Taiwan who meet these criteria may apply through the same process as overseas international applicants.",
+          "The scholarship is not available for the College of Semiconductor and for ICDF programmes.",
+          "Admission to the chosen NTHU degree programme is required, since the scholarship is applied for through the admission system."
+        ],
+        "coverage": [
+          "Full tuition and credit fee waiver.",
+          "Monthly stipend of NTD 5,000 for bachelor students.",
+          "Monthly stipend of NTD 5,000 for master students.",
+          "Monthly stipend of NTD 20,000 to 40,000 for doctoral students.",
+          "Monthly stipend of NTD 10,000 for doctoral students in the College of Humanities and Social Sciences, or in the International Intercollegiate PhD Program whose supervisors are from that college."
+        ],
+        "benefits": [
+          "Tuition and credit fee waived.",
+          "Doctoral students: NTD 20,000 to 40,000 per month.",
+          "Doctoral students in the College of Humanities and Social Sciences, or in the International Intercollegiate PhD Program with supervisors from that college: NTD 10,000 per month.",
+          "Master students: NTD 5,000 per month.",
+          "Bachelor students: NTD 5,000 per month."
+        ],
+        "funding_amount": 5000,
+        "funding_currency": "TWD",
+        "funding_period": "per month",
+        "required_documents": [
+          "All documents required for admission to the international degree programme, uploaded through the NTHU International Student Online Application System",
+          "Proof of awarded scholarship, where the applicant already holds one"
+        ],
+        "application_method": [
+          "Apply through the NTHU International Student Online Application System used for international degree programme applications.",
+          "Tick the portal option 'Apply for NTHU international student scholarship' when submitting the application.",
+          "Scholarship results are announced separately from admission results, in late December for the published Spring 2027 intake."
+        ],
+        "selection_notes": "The scholarship is applied for through the admission system, so admission and scholarship decisions are linked. Applicants admitted to an ICDF-funded programme only cannot receive this scholarship; applicants admitted to both an ICDF and a non-ICDF programme may receive it for the non-ICDF programme only, subject to the admitted list.",
+        "english_requirement": null,
+        "requirements": [
+          "Apply through the NTHU International Student Online Application System for an international degree programme.",
+          "Select 'Apply for NTHU international student scholarship' in the application.",
+          "Meet NTHU's international applicant nationality and residency conditions.",
+          "Not apply for Medicine, Dentistry or Traditional Chinese Medicine programmes at undergraduate level, nor for the College of Semiconductor or ICDF programmes.",
+          "Upload and submit all required documents before the intake's application deadline."
+        ],
+        "best_fit": "International applicants admitted to an NTHU degree programme outside Medicine, Dentistry, Traditional Chinese Medicine, the College of Semiconductor and ICDF programmes, with doctoral candidates attracting by far the largest award.",
+        "notes": "The stipend is strongly tiered by degree level: doctoral students receive NTD 20,000 to 40,000 per month, master and bachelor students only NTD 5,000 per month. The tuition and credit-fee waiver is the common component across all levels. Scholarship results are published separately from admission results. Applicants to ICDF-funded programmes should note the interaction rules: an ICDF scholarship holder cannot also receive this award, and someone admitted to both an ICDF and a non-ICDF programme may receive it only for the non-ICDF programme. NTHU publishes a financial-certificate requirement of more than USD 4,000 equivalent for applicants who are not ICDF scholarship holders.",
+        "description": "The NTHU International Student Scholarship, funded by the Office of Global Affairs at National Tsing Hua University, is applied for through the same online system as admission to an NTHU international degree programme. It provides a full tuition and credit-fee waiver plus a tiered monthly stipend: NTD 20,000 to 40,000 per month for doctoral students, NTD 10,000 per month for doctoral students in the College of Humanities and Social Sciences or the International Intercollegiate PhD Program with supervisors from that college, and NTD 5,000 per month for master and bachelor students. It is restricted to applicants who and whose parents have always held foreign nationality and never held Taiwan nationality, excludes overseas Chinese student status, and is not available for Medicine, Dentistry, Traditional Chinese Medicine, the College of Semiconductor or ICDF programmes."
+      },
+      "programme_detail_official": {
+        "official_source_urls": [
+          "https://apply.nthu.edu.tw/en/article/102-nthu-scholarship"
+        ],
+        "application_link": "https://apply.nthu.edu.tw/en/article/102-nthu-scholarship",
+        "official_updates_url": "https://apply.nthu.edu.tw/en/article/102-nthu-scholarship",
+        "catalogue_url": "https://apply.nthu.edu.tw/en/article/146-tuition-fees",
+        "application_cycle": "Applied for together with admission to an NTHU international degree programme, in NTHU's published intake windows. Published Spring 2027 international degree application period: 3 August to 30 September 2026 at 15:00 Taiwan time, with admission results on 1 December 2026, scholarship results in late December 2026, enrolment confirmation by 20 December 2026 and classes beginning in early February 2027. That window has closed as of 2026-10-04, so the next cycle is upcoming.",
+        "deadline_central": null,
+        "deadline_central_display": "Same as the international degree programme admission deadline for the relevant intake; published Spring 2027 deadline was 3:00 p.m., September 30, 2026 (Taiwan Time)",
+        "deadline_central_timezone": "Asia/Taipei",
+        "deadline_note": "The scholarship page publishes no deadline of its own: NTHU instructs applicants to 'Apply scholarship through the same online system for international degree programs'. The deadline is therefore the admission deadline of the relevant intake, which differs between Spring and Fall, so deadline_date is null and the precision is 'varies'. The stored deadline_date of 2026-10-15 corresponds to NTHU's deadline for Overseas Compatriot, Hong Kong and Macao students on the Fall 2027 direct-admission route, not to this scholarship.",
+        "status": "UPCOMING",
+        "status_note": "The published Spring 2027 international degree application window closed at 15:00 on 30 September 2026 and scholarship results for that intake are due in late December 2026. As of 2026-10-04 the scholarship is between cycles, and the next application window follows the next international degree intake.",
+        "funding_amount": 5000,
+        "funding_currency": "TWD",
+        "funding_period": "per month",
+        "funding_duration": "Monthly stipend for the duration of the enrolled degree programme; no separate maximum award period is published.",
+        "tuition_coverage": true,
+        "tuition_coverage_note": "The scholarship explicitly states 'Tuition and Credit fee waived', so both tuition and the per-credit fee are covered at all degree levels. No cap is published.",
+        "living_cost_coverage": false,
+        "travel_coverage": null,
+        "fully_funded": false,
+        "funding_label": "Partially funded: full tuition and credit-fee waiver at all levels, plus a tiered monthly stipend - NTD 20,000 to 40,000 for doctoral students, NTD 10,000 for doctoral students in the College of Humanities and Social Sciences or the International Intercollegiate PhD Program with supervisors from that college, and NTD 5,000 for master and bachelor students. No housing, insurance or travel funding is stated, so this is not fully funded.",
+        "benefits": [
+          "Tuition and credit fee waived.",
+          "Doctoral students: NTD 20,000 to 40,000 per month.",
+          "Doctoral students in the College of Humanities and Social Sciences, or in the International Intercollegiate PhD Program with supervisors from that college: NTD 10,000 per month.",
+          "Master students: NTD 5,000 per month.",
+          "Bachelor students: NTD 5,000 per month."
+        ],
+        "eligibility": [
+          "Applicants and their parents must all hold foreign nationality and have never held Taiwan nationality.",
+          "Must not have studied in Taiwan under overseas Chinese student status.",
+          "Prior students under the MOE Regulations may reapply only once, and only for undergraduate programmes.",
+          "May not apply for Medicine, Dentistry or Traditional Chinese Medicine programmes; no such limitation for graduate programmes.",
+          "Not available for the College of Semiconductor or for ICDF programmes.",
+          "Must be applying for admission to an NTHU degree programme, as the scholarship uses the admission system."
+        ],
+        "citizenship_residency": "Applicants and their parents must all hold foreign nationality and have never held Republic of China (Taiwan) nationality, and the applicant must not have studied in Taiwan under overseas Chinese student status. Foreign students currently studying in Taiwan who meet these criteria may apply through the same process.",
+        "international_eligibility": "For international applicants to NTHU degree programmes. Overseas Chinese students, Hong Kong and Macau students and Mainland Chinese students apply through separate routes and are not covered by this award.",
+        "degree_levels": [
+          "Bachelor's",
+          "Master's",
+          "PhD"
+        ],
+        "study_mode": "Full-time degree study at National Tsing Hua University.",
+        "research_requirement": null,
+        "subject_or_agency_requirement": "The scholarship is not available for programmes in Medicine, Dentistry or Traditional Chinese Medicine (undergraduate level), nor for the College of Semiconductor or for ICDF programmes.",
+        "application_method": "Submit the international degree programme application through the NTHU International Student Online Application System and select the option 'Apply for NTHU international student scholarship'.",
+        "application_route": "Office of Global Affairs at National Tsing Hua University, via the NTHU International Student Online Application System.",
+        "requirements": [
+          "Apply through the NTHU International Student Online Application System for an international degree programme.",
+          "Select 'Apply for NTHU international student scholarship' in the application.",
+          "Hold foreign nationality, as do your parents, and never have held Taiwan nationality.",
+          "Not have studied in Taiwan under overseas Chinese student status.",
+          "Avoid Medicine, Dentistry, Traditional Chinese Medicine, College of Semiconductor and ICDF programmes.",
+          "Upload and submit all required documents before the intake's admission deadline."
+        ],
+        "documents": [
+          "Documents required for admission to the NTHU international degree programme, uploaded through the online application system",
+          "Proof of any scholarship already awarded, where applicable",
+          "Financial certificate of more than USD 4,000 equivalent issued by the bank within three months, for applicants who are not ICDF scholarship holders"
+        ],
+        "english_requirement": null,
+        "english_requirement_note": "No English-language requirement is stated for this scholarship on the pages read. Language requirements are set by the individual NTHU degree programme.",
+        "selection_criteria": [
+          "Admission to the chosen NTHU international degree programme.",
+          "Not being restricted to the excluded programmes listed by NTHU."
+        ],
+        "selection_weighting": null,
+        "duration": "Coextensive with the enrolled degree programme; no separate maximum award period is published.",
+        "award_holder_conditions": [
+          "The applicant must be admitted to an eligible NTHU degree programme; the scholarship is applied for through the admission system.",
+          "Not available for the College of Semiconductor or for ICDF programmes.",
+          "An ICDF scholarship holder cannot also receive this award; an applicant admitted to both an ICDF and a non-ICDF programme may receive it only for the non-ICDF programme, subject to the admitted list.",
+          "Applicants must satisfy NTHU's nationality and residency conditions throughout."
+        ],
+        "supplements_or_initiatives": [
+          "Taipei School of Economics and Politics scholarships, which NTHU describes as offering a full tuition waiver plus a monthly stipend, are listed separately on the same site and must not be confused with this award."
+        ],
+        "official_contacts": {
+          "general": "Division of International Talent Cultivation, National Tsing Hua University; Tel +886-3-5162453; office hours Monday to Friday 8:30-12:00 and 13:30-17:00 Taiwan Time",
+          "email": "itc@my.nthu.edu.tw"
+        },
+        "description": "The NTHU International Student Scholarship, funded by the Office of Global Affairs at National Tsing Hua University, is applied for through the same online system as admission to an NTHU international degree programme. It provides a full tuition and credit-fee waiver at every level, plus a monthly stipend that is strongly tiered by degree level: NTD 20,000 to 40,000 for doctoral students, NTD 10,000 for doctoral students in the College of Humanities and Social Sciences or the International Intercollegiate PhD Program with supervisors from that college, and NTD 5,000 for master and bachelor students. Eligibility requires the applicant and their parents to hold foreign nationality and never have held Taiwan nationality, excludes overseas Chinese student status and prior overseas Chinese study in Taiwan, and the award is not available for Medicine, Dentistry, Traditional Chinese Medicine, the College of Semiconductor or ICDF programmes.",
+        "program_type": "University scholarship for international degree students combining a full tuition and credit-fee waiver with a tiered monthly stipend",
+        "region": "Asia",
+        "coverage": "Full tuition and credit-fee waiver at all degree levels, plus a tiered monthly stipend: NTD 20,000 to 40,000 (doctoral), NTD 10,000 (doctoral in the College of Humanities and Social Sciences or the International Intercollegiate PhD Program with supervisors from that college), and NTD 5,000 (master and bachelor). No housing, insurance or travel coverage is stated.",
+        "last_verified_date": "2026-10-04"
+      },
+      "programme_detail_applicant_utility": {
+        "application_readiness_checklist": [
+          "Apply through the NTHU International Student Online Application System during the intake's admission window - there is no separate scholarship round.",
+          "Tick 'Apply for NTHU international student scholarship' on the application, or you will not be considered.",
+          "Confirm you and both of your parents hold foreign nationality and have never held Taiwan nationality.",
+          "Confirm you have not studied in Taiwan under overseas Chinese student status.",
+          "Check your programme is eligible: Medicine, Dentistry, Traditional Chinese Medicine, the College of Semiconductor and ICDF programmes are excluded.",
+          "Know which stipend tier you are competing for: doctoral NTD 20,000-40,000 versus master and bachelor NTD 5,000.",
+          "Prepare a financial certificate of more than USD 4,000 equivalent issued by your bank within three months, unless you are an ICDF scholarship holder.",
+          "Note that scholarship results are announced separately from admission results, in late December for the published Spring 2027 intake."
+        ],
+        "common_rejection_risks": [
+          "Applying to an excluded programme - Medicine, Dentistry, Traditional Chinese Medicine, College of Semiconductor or ICDF.",
+          "Forgetting to select the scholarship option in the admission application.",
+          "Failing the nationality condition, including a parent who holds or has held Taiwan nationality.",
+          "Having studied in Taiwan previously as an overseas Chinese student.",
+          "Reapplying after prior study under the MOE Regulations more than once, or applying to a graduate programme in that situation.",
+          "Assuming the award is the same across levels: master and bachelor students receive only NTD 5,000 per month.",
+          "Holding an ICDF scholarship, which makes this award unavailable for the ICDF programme.",
+          "Missing the admission deadline because it was assumed to be a separate scholarship deadline."
+        ],
+        "estimated_uncovered_costs": [
+          "Housing, dormitory and meal costs - not covered by this scholarship.",
+          "Books, laboratory materials and field-trip costs.",
+          "National Health Insurance and any compulsory fees outside tuition and credit fees.",
+          "Round-trip international airfare and visa costs.",
+          "Living costs beyond the monthly stipend, which at NTD 5,000 per month is a substantial shortfall for master and bachelor students."
+        ],
+        "document_audit": [
+          "Completed NTHU International Student Online Application System submission with the scholarship option selected.",
+          "Passport and evidence of nationality for the applicant and both parents.",
+          "Official academic transcripts and certificates required by the chosen programme.",
+          "Bank-issued financial certificate of more than USD 4,000 equivalent, dated within three months, if not an ICDF scholarship holder.",
+          "Proof of any scholarship already awarded.",
+          "Language proficiency documents required by the individual programme."
+        ],
+        "alerts": [
+          {
+            "trigger": "No separate scholarship deadline",
+            "message": "The scholarship is applied for through the admission system, so its deadline is the admission deadline of the intake you are targeting. Track NTHU's published intake dates instead of looking for a scholarship round."
+          },
+          {
+            "trigger": "The stipend varies fivefold by degree level",
+            "message": "Doctoral students receive NTD 20,000-40,000 per month, doctoral students in the College of Humanities and Social Sciences or the International Intercollegiate PhD Program receive NTD 10,000, and master and bachelor students receive NTD 5,000. The tuition and credit-fee waiver is the only component common to all levels."
+          },
+          {
+            "trigger": "ICDF interaction",
+            "message": "If you hold an ICDF scholarship you cannot receive this award for the ICDF programme. If you are admitted to both an ICDF and a non-ICDF programme, you may receive this award only for the non-ICDF programme, subject to the admitted list."
+          }
+        ],
+        "submission_workflow": [
+          "Read the NTHU international applicant eligibility conditions and confirm your nationality and residency status qualify.",
+          "Choose an eligible degree programme, avoiding Medicine, Dentistry, Traditional Chinese Medicine, the College of Semiconductor and ICDF programmes.",
+          "Wait for the intake's application window to open and prepare all admission documents plus the bank financial certificate.",
+          "Submit through the NTHU International Student Online Application System and select 'Apply for NTHU international student scholarship'.",
+          "Confirm submission before the intake deadline, since all documents must be uploaded and submitted by then.",
+          "Await admission results, then scholarship results, which are announced separately in late December for the published Spring 2027 intake.",
+          "On award, complete enrolment confirmation by the published deadline."
+        ]
+      },
+      "programme_detail_verification": {
+        "cycle_verified": "Spring 2027 international degree intake (applications 3 August to 30 September 2026, closed; scholarship results due late December 2026), verified 2026-10-04",
+        "verification_confidence": 0.88,
+        "official_fields_confirmed": [
+          "funding_amount and full tiered stipend table (NTD 20,000-40,000 doctoral; NTD 10,000 CHASS/International Intercollegiate PhD doctoral; NTD 5,000 master; NTD 5,000 bachelor)",
+          "funding_currency (TWD)",
+          "funding_period (per month)",
+          "tuition_coverage (tuition and credit fee waived)",
+          "degree_levels (Bachelor's, Master's, PhD)",
+          "funding source (Office of Global Affairs at NTHU)",
+          "application_method (same online system as international degree admission, selecting 'Apply for NTHU international student scholarship')",
+          "programme exclusions (College of Semiconductor and ICDF programmes)",
+          "nationality eligibility (applicant and parents foreign nationality, never Taiwan nationality)",
+          "status (between cycles as of 2026-10-04)"
+        ],
+        "institution_check_required": [
+          "The Fall 2027 international degree application window, which had not been published on the admission news pages as of 2026-10-04.",
+          "The current stipend bands, which are published on the web page but governed by the NTHU International Student Scholarship Regulation dated 20250418, a PDF that was not opened.",
+          "Whether the NTD 5,000 master and bachelor stipend is still current, given the tiered doctoral bands.",
+          "Whether any accommodation or living-cost supplement exists alongside the stipend."
+        ],
+        "unverified_or_removed_claims": [
+          "Stored deadline_date '2026-10-15' is WRONG for this award. NTHU publishes no standalone scholarship deadline; that date corresponds to NTHU's Fall 2027 direct-admission deadline for Overseas Compatriot, Hong Kong and Macao students on a different route. deadline_date is now null.",
+          "Stored deadline_display 'New students apply during admission; current students late June (Fall) or late January (Spring)' could not be confirmed anywhere on NTHU's pages and is not published as such; the correct statement is that the scholarship follows the international degree admission deadline.",
+          "Stored status 'closing-soon' is not a valid status value and is also wrong: the published Spring 2027 window closed on 30 September 2026, so the award is upcoming.",
+          "Stored program_type 'Financial Certificate & Scholarship' is a category label rather than a programme type and has been replaced.",
+          "Stored funding 'Partial to Fully Funded' is not supported: tuition and credit fees are fully waived, but no housing, insurance or travel funding is stated, so fully_funded is now false and funding_type is 'Tuition Fee Waiver'.",
+          "Stored current_image_url https://apply.nthu.edu.tw/assets/images/og-image.png probes 200 image/png 316814 B but is an Open Graph banner image, not the university's logo; replaced with NTHU's own logo asset.",
+          "Stored region was null; set to Asia.",
+          "Stored verification_status was needs_review; is_verified is now true, verified on NTHU's own domain.",
+          "No English-language requirement is published for this scholarship, so english_requirement is null."
+        ],
+        "source_citations": [
+          "https://apply.nthu.edu.tw/en/article/102-nthu-scholarship"
+        ],
+        "researched_by": "w1_15a1"
+      },
+      "logo_override": {
+        "url": "https://apply.nthu.edu.tw/assets/images/nthu-logo.svg",
+        "page_url": "https://apply.nthu.edu.tw/en/article/102-nthu-scholarship",
+        "official_host": true,
+        "alt_text": "National Tsing Hua University official logo",
+        "validation_result": "verified",
+        "validation_detail": "svg 335069+B, image/svg+xml, HTTP 200; found in the awarding university's own scholarship page markup with alt='LOGO' at /assets/images/nthu-logo.svg, i.e. the university's own mark rather than programme artwork.",
+        "image_kind": "official_logo",
+        "image_format": "svg",
+        "verified_at": "2026-10-04T00:00:00+00:00",
+        "host_evidence": "same_registrable_domain",
+        "_award": "NTHU International Student Scholarship"
+      },
+      "research_notes": {
+        "logo": "Scanned the awarding university's own scholarship page markup for /logo/i assets and og:image. Found https://apply.nthu.edu.tw/assets/images/nthu-logo.svg with alt='LOGO'. Probed: HTTP 200, content-type image/svg+xml, 335069 bytes. Rejected the stored image https://apply.nthu.edu.tw/assets/images/og-image.png (200 image/png 316814 B), which is an Open Graph share banner rather than the university mark. Also rejected /assets/images/favicon.png (200 image/png 30262 B, a favicon) and /assets/images/front/home/ic-apply.svg and apply-arrow.svg, which are application-interface icons.",
+        "unverified": [
+          "The NTHU International Student Scholarship Regulation PDF dated 20250418 was not opened, so the governing stipend bands and renewal rules are unverified.",
+          "The Fall 2027 international degree application window had not been published on NTHU's admission news pages as of 2026-10-04.",
+          "No accommodation, insurance or travel provision is stated for this scholarship.",
+          "No English-language requirement is published.",
+          "The per-credit fee amounts published on NTHU's tuition-fee pages were not needed for this record and were not separately verified."
+        ],
+        "substitution": null,
+        "official_pages_read": [
+          "https://apply.nthu.edu.tw/en/article/102-nthu-scholarship"
+        ],
+        "degree_level_confirmed": "The awarding university's own page sets a separate monthly stipend for each level - 'Doctoral students: NTD 20,000~40,000 per month', 'Master students: NTD 5,000 per month', 'Bachelor students: NTD 5,000 per month' - confirming the award funds bachelor's, master's and doctoral study.",
+        "url_observed": "https://apply.nthu.edu.tw/en/article/102-nthu-scholarship",
+        "contradictions": [
+          "Stored deadline_date '2026-10-15' is wrong: the scholarship has no standalone deadline and that date belongs to NTHU's Fall 2027 direct-admission deadline for Overseas Compatriot, Hong Kong and Macao students.",
+          "Stored deadline_display could not be confirmed and misdescribes the process; the scholarship is applied for through the international degree admission system.",
+          "Stored status 'closing-soon' is an invalid status value and is factually wrong; the published Spring 2027 window closed on 30 September 2026, so the award is upcoming.",
+          "Stored deadline_precision 'varies' is confirmed correct, because the deadline follows the admission deadline of the chosen intake.",
+          "Stored funding 'Partial to Fully Funded' is not supported; tuition and credit fees are fully waived but no living, housing or travel costs are covered, so fully_funded is false.",
+          "Stored current_image_url was an Open Graph banner image rather than the university logo.",
+          "Stored program_type 'Financial Certificate & Scholarship' was a category label, not a programme type.",
+          "Stored region was null although the host country is plainly Asia (Taiwan)."
+        ],
+        "skeleton": false
+      }
+    },
+    {
+      "target_id": 150,
+      "outcome": "refreshed",
+      "confirm": true,
+      "confirmation_evidence": "Read National Yang Ming Chiao Tung University's own scholarship pages. NYCU OIA's University Scholarships page (https://oia.nycu.edu.tw/oia/en/app/data/view?id=792&module=nycu0012) states under Elite Ph.D. Scholarship: \"The scholarship is awarded based on recommendations from the college and a review by the scholarship committee, not through the application submitted by the students\", eligible \"New Ph.D. students with outstanding grades and who have no received scholarships or grants from the Taiwan government\", with \"Scholarship Content and Duration: Monthly stipends NT$ 33,000 and the tuition waiver for 2 years\". NYCU's own application system states that the tuition waiver \"covers your basic tuition. However, you still need to pay for other incidental fees, such as dormitory, insurance and campus\" fees.",
+      "new_scholarship": {
+        "name": "NYCU Elite Ph.D. Scholarship for New Students",
+        "legacy_titles": [
+          "NYCU Elite Ph.D. Scholarship for New Students Award"
+        ],
+        "country": "Taiwan",
+        "region": "Asia",
+        "degree_levels": "PhD",
+        "funding_type": "Partially Funded",
+        "official_source": "National Yang Ming Chiao Tung University (NYCU), Office of International Affairs, Division of International Talent Cultivation",
+        "official_source_url": "https://oia-scholarship.nycu.edu.tw",
+        "status": "upcoming",
+        "is_verified": true,
+        "last_verified_date": "2026-10-04",
+        "deadline": "No application deadline exists for this award. NYCU states that the Elite Ph.D. Scholarship \"is awarded based on recommendations from the college and a review by the scholarship committee, not through the application submitted by the students\". The only recurring dates are the per-semester deadline by which existing recipients must submit transcripts and tuition payment receipts to stay eligible the following semester.",
+        "deadline_date": null,
+        "deadline_precision": "varies",
+        "application_period": "Not student-applied. New Ph.D. places are nominated by the candidate's college and reviewed by the scholarship committee within NYCU's doctoral admission cycle. Existing recipients must submit transcripts and tuition payment receipts each semester before a per-semester deadline to remain eligible in the following semester, and renewals are handled in the application period announced by the OIA.",
+        "duration": "Two years of monthly stipend plus tuition waiver, per NYCU's published 'Scholarship Content and Duration'.",
+        "program_type": "University nomination-based doctoral scholarship (college recommendation and scholarship committee review, not a direct student application)",
+        "eligibility_summary": "New PhD students at NYCU with outstanding grades who have not received any scholarship or grant from the Taiwan government. Because the award is nomination-based, eligibility is assessed through the college rather than by direct application.",
+        "eligibility": [
+          "Must be a new Ph.D. student at National Yang Ming Chiao Tung University.",
+          "Must have outstanding grades.",
+          "Must not have received any scholarship or grant from the Taiwan government.",
+          "Must be nominated by the candidate's college and selected by the scholarship committee; students cannot apply directly."
+        ],
+        "coverage": [
+          "Monthly stipend of NT$33,000.",
+          "Tuition waiver for 2 years.",
+          "Not covered: dormitory, insurance and campus facility incidental fees, which remain payable by the student."
+        ],
+        "benefits": [
+          "Monthly stipend of NT$33,000.",
+          "Full tuition waiver for two years.",
+          "In principle, the monthly stipend is deposited on the 10th of each month."
+        ],
+        "funding_amount": 33000,
+        "funding_currency": "TWD",
+        "funding_period": "per month",
+        "required_documents": [
+          "Semester transcripts (submitted each semester to remain eligible)",
+          "Tuition payment receipts (submitted each semester to remain eligible)"
+        ],
+        "application_method": [
+          "There is no student application. The candidate is nominated by their college and the award is decided by the NYCU scholarship committee.",
+          "Existing recipients submit semester transcripts and tuition payment receipts before the specified per-semester deadline to be eligible in the following semester.",
+          "Renewal is processed during the application period announced by the OIA, during which applicants must complete the scholarship renewal requirements."
+        ],
+        "selection_notes": "The award is based on recommendations from the college and a review by the scholarship committee, not on a student application. Full terms are set out in NYCU's scholarship regulations.",
+        "english_requirement": null,
+        "requirements": [
+          "Be a new Ph.D. student at NYCU with outstanding grades.",
+          "Not hold any scholarship or grant from the Taiwan government.",
+          "Be nominated by the college and selected by the scholarship committee.",
+          "As a recipient, submit transcripts and tuition payment receipts every semester before the specified deadline.",
+          "Renew during the application period announced by the OIA."
+        ],
+        "best_fit": "New doctoral candidates admitted to NYCU with outstanding academic records who hold no other Taiwan government scholarship or grant, and whose college is willing to nominate them.",
+        "notes": "This is a nomination-based award, so applicants cannot apply for it and cannot select it on an application form. It is distinct from the general NYCU International Student Scholarship, which students apply for through the OIA application system in published windows (the Spring 2027 New Students Scholarship window published on the system was 10 August 2026 to 13 November 2026) and whose stipend amounts are flexibly adjusted. The tuition waiver covers basic tuition only: NYCU's own system states that dormitory, insurance and campus facility fees must still be paid, so this award should not be presented as fully funded. Holders of Taiwan Scholarships, ESP, UST, TIGP, NSNT, ICDF or NYCU Elite Ph.D. scholarships are all treated as government-funded and are mutually exclusive for the general NYCU scholarship.",
+        "description": "The NYCU Elite Ph.D. Scholarship for New Students awards a monthly stipend of NT$33,000 together with a tuition waiver for two years to new doctoral students at National Yang Ming Chiao Tung University who have outstanding grades and hold no other scholarship or grant from the Taiwan government. It is not open to direct application: NYCU states that the award is made on the basis of recommendations from the college and a review by the scholarship committee. Recipients must submit semester transcripts and tuition payment receipts before a per-semester deadline to remain eligible, and the stipend is in principle deposited on the 10th of each month. The tuition waiver covers basic tuition only, with dormitory, insurance and campus facility fees remaining payable."
+      },
+      "programme_detail_official": {
+        "official_source_urls": [
+          "https://oia.nycu.edu.tw/oia/en/app/data/view?id=792&module=nycu0012&serno=0f046f83-4147-4ec7-8921-bbaccd8c678f",
+          "https://oia-scholarship.nycu.edu.tw/"
+        ],
+        "application_link": "https://oia-scholarship.nycu.edu.tw/",
+        "official_updates_url": "https://oia.nycu.edu.tw/oia/en/app/data/list?id=799&module=nycu0015",
+        "catalogue_url": null,
+        "application_cycle": "Nomination-based award tied to NYCU's doctoral admission cycle; there is no student application window. Existing recipients must submit transcripts and tuition payment receipts each semester before a per-semester deadline, and renewals are processed during the application period announced by the OIA. As of 2026-10-04 NYCU's published open window (10 August 2026 to 13 November 2026, announcement 14 November 2026) is for the separate Spring 2027 NYCU New Students Scholarship, so the Elite Ph.D. award is between rounds.",
+        "deadline_central": null,
+        "deadline_central_display": null,
+        "deadline_central_timezone": null,
+        "deadline_note": "No application deadline is published, because NYCU states the award 'is awarded based on recommendations from the college and a review by the scholarship committee, not through the application submitted by the students'. The stored 'Typically Dec 20 - Mar 15 (for Fall entry)' is NYCU's Fall international degree admission window, not an Elite Ph.D. Scholarship deadline. The only recurring dates are the per-semester transcript and tuition-receipt deadlines for existing recipients, so deadline_date is null and the precision is 'varies'.",
+        "status": "UPCOMING",
+        "status_note": "The award is conferred per admissions cycle and cannot be applied for while it is being decided. As of 2026-10-04 no Elite Ph.D. Scholarship round is open for nominations; the published open window on NYCU's application system is for the separate general NYCU scholarship, and this award is treated as upcoming.",
+        "funding_amount": 33000,
+        "funding_currency": "TWD",
+        "funding_period": "per month",
+        "funding_duration": "Two years of monthly stipend plus tuition waiver, per NYCU's published Scholarship Content and Duration. In principle the stipend is deposited on the 10th of each month.",
+        "tuition_coverage": true,
+        "tuition_coverage_note": "NYCU's own application system states: 'The tuition waiver award covers your basic tuition. However, you still need to pay for other incidental fees, such as dormitory, insurance and campus' facility fees. Basic tuition is therefore waived, but dormitory, insurance and campus facility charges are excluded.",
+        "living_cost_coverage": true,
+        "travel_coverage": null,
+        "fully_funded": false,
+        "funding_label": "Substantial but not complete: NT$33,000 per month plus a full basic-tuition waiver for two years. Dormitory, insurance and campus facility fees are explicitly not covered, so this is not fully funded.",
+        "benefits": [
+          "Monthly stipend of NT$33,000, in principle deposited on the 10th of each month.",
+          "Tuition waiver for two years on basic tuition.",
+          "Two-year award duration."
+        ],
+        "eligibility": [
+          "Must be a new Ph.D. student at NYCU.",
+          "Must have outstanding grades.",
+          "Must not have received any scholarship or grant from the Taiwan government.",
+          "Must be nominated by the college and selected by the scholarship committee; students cannot apply."
+        ],
+        "citizenship_residency": "No separate nationality restriction is stated for the Elite Ph.D. Scholarship beyond it being an NYCU award for new doctoral students; it is administered within NYCU's international student scholarship framework.",
+        "international_eligibility": "Administered by the Division of International Talent Cultivation alongside NYCU's international student scholarships, but the published Elite Ph.D. eligibility wording restricts on award status and grades rather than nationality. Holders of Taiwan Scholarships, ESP, UST, TIGP, NSNT, ICDF or NYCU Elite Ph.D. scholarships count as government-funded and are mutually exclusive for the general NYCU scholarship.",
+        "degree_levels": [
+          "PhD"
+        ],
+        "study_mode": "Full-time doctoral study at National Yang Ming Chiao Tung University.",
+        "research_requirement": null,
+        "subject_or_agency_requirement": "Nomination is made by the candidate's college and confirmed by the NYCU scholarship committee, so the award is decided within the admitting college.",
+        "application_method": "No student application. The candidate is nominated by the college and selected by the scholarship committee; recipients then submit semester transcripts and tuition payment receipts before the per-semester deadline and renew during the period announced by the OIA.",
+        "application_route": "NYCU Office of International Affairs, Division of International Talent Cultivation, via the candidate's college nomination.",
+        "requirements": [
+          "Be a new Ph.D. student at NYCU with outstanding grades.",
+          "Hold no scholarship or grant from the Taiwan government.",
+          "Be nominated by the college and selected by the scholarship committee.",
+          "As a recipient, submit transcripts and tuition payment receipts every semester before the specified deadline.",
+          "Renew within the application period announced by the OIA."
+        ],
+        "documents": [
+          "Semester transcripts",
+          "Tuition payment receipts"
+        ],
+        "english_requirement": null,
+        "english_requirement_note": "No English-language requirement is stated for this award on the NYCU pages read. Requirements for NYCU doctoral programmes are set by the admitting department.",
+        "selection_criteria": [
+          "Outstanding grades.",
+          "College recommendation.",
+          "Review by the NYCU scholarship committee.",
+          "No current Taiwan government scholarship or grant."
+        ],
+        "selection_weighting": null,
+        "duration": "Two years.",
+        "award_holder_conditions": [
+          "Scholarship recipients are required to submit transcripts and tuition payment receipts for each semester before the specified deadline to be eligible for the scholarship in the following semester.",
+          "Renewal must be completed during the application period announced by the OIA.",
+          "Must not simultaneously hold a Taiwan government scholarship or grant.",
+          "Dormitory, insurance and campus facility fees are not covered and must be paid by the student."
+        ],
+        "supplements_or_initiatives": [
+          "Separate NYCU award: Scholarship and Grant for Ukrainian Students.",
+          "The general NYCU International Student Scholarship, which is student-applied through the OIA system in published windows and carries a flexibly adjusted monthly stipend plus a tuition award."
+        ],
+        "official_contacts": {
+          "general": "Division of International Talent Cultivation, Office of International Affairs, National Yang Ming Chiao Tung University, 1001 University Road, Hsinchu, Taiwan 300; Tel +886-3-571-2121 ext.50023; Fax +886-3-513-1473. Contacts named on the University Scholarships page: Jessica Hsieh and Trudy Wu.",
+          "email": "scholarshipoia@nycu.edu.tw"
+        },
+        "description": "The NYCU Elite Ph.D. Scholarship for New Students provides a monthly stipend of NT$33,000 and a tuition waiver for two years to new doctoral students at National Yang Ming Chiao Tung University who have outstanding grades and have received no scholarship or grant from the Taiwan government. It is awarded on the basis of a college recommendation and scholarship committee review rather than a student application, so candidates cannot apply for it directly. Recipients must submit semester transcripts and tuition payment receipts before a per-semester deadline to remain eligible, and the stipend is in principle deposited on the 10th of each month. The tuition waiver applies to basic tuition only; dormitory, insurance and campus facility fees remain payable.",
+        "program_type": "University nomination-based doctoral scholarship (college recommendation and scholarship committee review, not a direct student application)",
+        "region": "Asia",
+        "coverage": "NT$33,000 monthly stipend plus a two-year waiver of basic tuition and credit fees. Dormitory, insurance and campus facility incidental fees are explicitly excluded and remain payable by the student.",
+        "last_verified_date": "2026-10-04"
+      },
+      "programme_detail_applicant_utility": {
+        "application_readiness_checklist": [
+          "Understand that you cannot apply for this award: it is decided on a college nomination and scholarship committee review.",
+          "Ensure you are a new Ph.D. student at NYCU, since the award is limited to new doctoral students.",
+          "Ensure you hold no scholarship or grant from the Taiwan government, including Taiwan Scholarships, ESP, UST, TIGP, NSNT or ICDF awards.",
+          "Build the strongest possible academic record before admission, since selection turns on outstanding grades.",
+          "Raise your standing with your prospective college early, because the nomination originates there.",
+          "Once awarded, submit transcripts and tuition payment receipts every semester before the stated deadline or you lose eligibility for the following semester.",
+          "Watch for the OIA's renewal announcement and complete the renewal in that window.",
+          "Budget for dormitory, insurance and campus facility fees, which the tuition waiver does not cover."
+        ],
+        "common_rejection_risks": [
+          "Trying to apply through the OIA scholarship system - this award cannot be applied for and is not listed as an option there.",
+          "Already holding a Taiwan government scholarship or grant, which is an outright exclusion.",
+          "Not being a new Ph.D. student, since continuing doctoral students are outside this award.",
+          "Missing the per-semester transcript and tuition-receipt deadline, which terminates eligibility for the following semester even after an award.",
+          "Assuming the tuition waiver covers everything: NYCU states dormitory, insurance and campus facility fees are still payable.",
+          "Confusing this with the general NYCU International Student Scholarship, which is student-applied and has a flexibly adjusted stipend."
+        ],
+        "estimated_uncovered_costs": [
+          "Dormitory fees, explicitly excluded from the tuition waiver.",
+          "Insurance fees, explicitly excluded from the tuition waiver.",
+          "Campus facility fees, explicitly excluded from the tuition waiver.",
+          "Books, laboratory materials, conferences and fieldwork.",
+          "Living costs beyond the NT$33,000 monthly stipend, and round-trip international airfare."
+        ],
+        "document_audit": [
+          "Semester transcripts, for each semester of the award.",
+          "Tuition payment receipts, for each semester of the award.",
+          "Confirmation that no Taiwan government scholarship or grant is held.",
+          "Any renewal documentation requested by the OIA in the announced renewal period."
+        ],
+        "alerts": [
+          {
+            "trigger": "This is not an application-based award",
+            "message": "NYCU states the Elite Ph.D. Scholarship 'is awarded based on recommendations from the college and a review by the scholarship committee, not through the application submitted by the students'. If a source tells you to apply for it, that source is wrong."
+          },
+          {
+            "trigger": "Ongoing paperwork is mandatory",
+            "message": "The award is conditional. Recipients must submit transcripts and tuition payment receipts every semester before the specified deadline to remain eligible in the following semester."
+          },
+          {
+            "trigger": "Tuition waiver is narrower than it sounds",
+            "message": "NYCU's own system states the tuition waiver covers basic tuition only, and that dormitory, insurance and campus facility fees must still be paid. Budget accordingly."
+          }
+        ],
+        "submission_workflow": [
+          "Apply to an NYCU doctoral programme through the normal international admission route and secure admission as a new Ph.D. student.",
+          "Ensure you are not holding any Taiwan government scholarship or grant for the period.",
+          "Build your academic record and standing so your college will nominate you.",
+          "Await the college nomination and scholarship committee decision; there is no application to submit.",
+          "On award, note the per-semester deadline for submitting transcripts and tuition payment receipts.",
+          "Submit those documents every semester to keep the award.",
+          "Renew during the application period announced by the OIA, and arrange payment of dormitory, insurance and campus facility fees separately."
+        ]
+      },
+      "programme_detail_verification": {
+        "cycle_verified": "Nomination-based award tied to NYCU doctoral admissions; verified 2026-10-04 against NYCU OIA's University Scholarships page (page update date 2024-01-11) and NYCU's application system",
+        "verification_confidence": 0.85,
+        "official_fields_confirmed": [
+          "funding_amount (NT$33,000 per month)",
+          "funding_currency (TWD)",
+          "funding_period (per month)",
+          "funding_duration (2 years)",
+          "tuition_coverage (tuition waiver for 2 years, basic tuition only)",
+          "degree_levels (PhD)",
+          "eligibility (new Ph.D. students with outstanding grades and no Taiwan government scholarship or grant)",
+          "selection mechanism (college recommendation plus scholarship committee review, not a student application)",
+          "ongoing condition (semester transcripts and tuition payment receipts each semester)",
+          "stipend payment timing (in principle the 10th of each month)",
+          "excluded incidental fees (dormitory, insurance, campus facility fees)",
+          "status (between rounds as of 2026-10-04)"
+        ],
+        "institution_check_required": [
+          "The current NYCU scholarship regulations PDF, which sets the full Elite Ph.D. terms, was not opened.",
+          "Which colleges actually nominate for the Elite Ph.D. Scholarship in the current cycle.",
+          "Whether the NT$33,000 stipend and two-year duration have changed since the page's 2024-01-11 update date.",
+          "The exact per-semester deadline for submitting transcripts and tuition payment receipts.",
+          "Whether the award is open to non-international doctoral students, since the published eligibility wording does not mention nationality."
+        ],
+        "unverified_or_removed_claims": [
+          "Stored deadline_display 'Typically Dec 20 - Mar 15 (for Fall entry)' is WRONG as a scholarship deadline: those are NYCU's Fall international degree admission dates. NYCU publishes no application window for the Elite Ph.D. Scholarship because it cannot be applied for, so deadline_date is null and deadline_precision is 'varies'.",
+          "Stored status 'open' is not supportable as of 2026-10-04: the award is nomination-based and no round is open; it is now upcoming.",
+          "Stored funding 'Fully Funded' needs correction: NYCU's own application system states that the tuition waiver covers basic tuition only and that dormitory, insurance and campus facility fees must still be paid, so fully_funded is false and funding_type is 'Partially Funded'.",
+          "Stored current_image_url was null; NYCU's own logo asset has now been located and probed.",
+          "Stored region was null; set to Asia.",
+          "Stored verification_status was active and is confirmed: the award is real, live and correctly attributed to NYCU.",
+          "The Elite Ph.D. Scholarship section sits behind a tab on NYCU's University Scholarships page and did not render in a fresh page load; its wording was read from the official page's own indexed text rather than a fresh render of that tab.",
+          "No English-language requirement is published for this award, so english_requirement is null."
+        ],
+        "source_citations": [
+          "https://oia.nycu.edu.tw/oia/en/app/data/view?id=792&module=nycu0012&serno=0f046f83-4147-4ec7-8921-bbaccd8c678f",
+          "https://oia-scholarship.nycu.edu.tw/"
+        ],
+        "researched_by": "w1_15a1"
+      },
+      "logo_override": {
+        "url": "https://oia-scholarship.nycu.edu.tw/images/NYCU_LOGO/NYCU_LOGO_black_resize.png",
+        "page_url": "https://oia-scholarship.nycu.edu.tw/",
+        "official_host": true,
+        "alt_text": "National Yang Ming Chiao Tung University official logo",
+        "validation_result": "verified",
+        "validation_detail": "png 41298+B, image/png, HTTP 200; found in the awarding university's own International Student Scholarship Application System markup at /images/NYCU_LOGO/NYCU_LOGO_black_resize.png, on the record's own stored official host. Chose the black variant over NYCU_LOGO_white_resize.png (also 200 image/png 31326 B) because the white variant is white-on-transparent and would be invisible on a light card.",
+        "image_kind": "official_logo",
+        "image_format": "png",
+        "verified_at": "2026-10-04T00:00:00+00:00",
+        "host_evidence": "same_registrable_domain",
+        "_award": "NYCU Elite Ph.D. Scholarship for New Students"
+      },
+      "research_notes": {
+        "logo": "Scanned both the OIA description page and the International Student Scholarship Application System markup for /logo/i assets and og:image. The application system (which sits on the record's own stored official host, https://oia-scholarship.nycu.edu.tw) carries two NYCU logo assets: NYCU_LOGO_black_resize.png and NYCU_LOGO_white_resize.png. Probed both: black 200 image/png 41298 bytes, white 200 image/png 31326 bytes. Reported the black variant as required by the brief's white-on-transparent ban. Rejected the OIA page assets https://oia.nycu.edu.tw/static/images/oia/icon.ico (a favicon), /static/class1/color01/images/home/pic01.jpg and the viewtopimage/viewleftitemimage generator endpoints, plus all social and font-size icons. No image was stored for this record previously.",
+        "unverified": [
+          "NYCU's scholarship regulations PDF, which sets the full Elite Ph.D. terms, was not opened.",
+          "Which colleges nominate for this award in the current cycle.",
+          "Whether the NT$33,000 stipend and two-year duration have changed since the page's 2024-01-11 update date.",
+          "The exact per-semester deadline for transcripts and tuition payment receipts.",
+          "Whether the award is restricted to international doctoral students; the published eligibility wording does not mention nationality.",
+          "No nationality or English-language requirement is published."
+        ],
+        "substitution": null,
+        "official_pages_read": [
+          "https://oia.nycu.edu.tw/oia/en/app/data/view?id=792&module=nycu0012&serno=0f046f83-4147-4ec7-8921-bbaccd8c678f",
+          "https://oia-scholarship.nycu.edu.tw/"
+        ],
+        "degree_level_confirmed": "NYCU's own page heads the award 'Elite Ph.D. Scholarship' and restricts eligibility to 'New Ph.D. students with outstanding grades', confirming the award funds doctoral study only.",
+        "url_observed": "https://oia.nycu.edu.tw/oia/en/app/data/view?id=792&module=nycu0012&serno=0f046f83-4147-4ec7-8921-bbaccd8c678f",
+        "contradictions": [
+          "Stored deadline_display 'Typically Dec 20 - Mar 15 (for Fall entry)' conflated NYCU's Fall degree ADMISSION window with a scholarship deadline. The award has no application window at all, because NYCU states it is awarded on college recommendation and committee review, not by student application.",
+          "Stored funding 'Fully Funded' is wrong as an unqualified claim: NYCU's own application system states the tuition waiver covers basic tuition only, and that dormitory, insurance and campus facility fees must still be paid.",
+          "Stored status 'open' is not supportable; the award is between rounds and cannot be applied for, so it is now upcoming.",
+          "Stored current_image_url was null; NYCU's own logo has now been located and probed.",
+          "Stored region was null although the host country is plainly Asia (Taiwan).",
+          "Stored degree 'PhD' and stored title 'NYCU Elite Ph.D. Scholarship for New Students Award' are confirmed correct in substance; NYCU's own wording is 'Elite Ph.D. Scholarship' with 'New Ph.D. students' as the eligibility, so the name was trimmed to the official form.",
+          "The stored official_source_url https://oia-scholarship.nycu.edu.tw is the application system root, which does not describe this award; the authoritative description is on the OIA page recorded in url_observed."
+        ],
+        "skeleton": false
+      }
+    },
+    {
+      "target_id": 151,
+      "outcome": "refreshed",
+      "confirm": true,
+      "confirmation_evidence": "Confirmed the award exists and is MOE-funded. Read Taipei Tech's own official implementation page https://oia.ntut.edu.tw/p/404-1032-150286.php (HTTP 200), which states \"The 'MOE Elite Scholarship Program for Lecturers' is funded by the Ministry of Education (MOE), Taiwan\" and describes the mechanics: \"OIA will deduct the full tuition amount from the total MOE-Elite scholarship and divide the remaining amount evenly into a 6-month stipend plan\". National Tsing Hua University states the headline rate directly: \"the Ministry of Education (MOE) provides each awardee with a monthly stipend of NT$25,000\" with \"a maximum duration of support is 2 years for a master's program and 3 years for a doctoral program\".",
+      "new_scholarship": {
+        "name": "MOE Elite Scholarship Program for Lecturers from South and Southeast Asian and African Countries",
+        "legacy_titles": [
+          "MOE Elite Scholarship for University Lecturers from South & Southeast Asia"
+        ],
+        "country": "Taiwan",
+        "region": "Asia",
+        "degree_levels": "Master's, PhD",
+        "funding_type": "Fully Funded",
+        "official_source": "Ministry of Education (MOE), Republic of China (Taiwan)",
+        "official_source_url": "https://oia.ncku.edu.tw",
+        "status": "upcoming",
+        "is_verified": true,
+        "last_verified_date": "2026-10-04",
+        "deadline": "There is no single ministry deadline. Applicants apply through the participating university's admission application, and the published application windows have been mid-December to mid-March for Fall entry (National Cheng Kung University's AY2026/27 window was mid-December 2025 to mid-March 2026). After admission results, the university emails the MOE-Elite guidelines, forms and upload links, and applicants must submit by the deadline stated in that email. MOE then announces recipients, around late October for Fall intake and late April for the African Spring intake.",
+        "deadline_date": null,
+        "deadline_precision": "varies",
+        "application_period": "Tied to each participating university's admission cycle, with published Fall application windows running from around mid-December to mid-March, followed by a post-admission document submission stage with its own email-stated deadline. MOE announces recipient lists around late October for Fall and late April for the African Spring intake. The AY2026/27 Fall window closed in mid-March 2026; the next is expected to open around mid-December 2026 for 2027 Fall entry.",
+        "duration": "Up to 2 years for a master's programme and up to 3 years for a doctoral programme under the standard MOE terms, reviewed annually. Some participating universities extend this, and Taipei Tech runs the award for up to 4 years.",
+        "program_type": "Government graduate scholarship for university lecturers from South, Southeast Asia and Africa to study in Taiwan (Ministry of Education, New Southbound Policy talent development)",
+        "eligibility_summary": "Citizens and current university lecturers (or assistant professors and professors) at a public or private higher education institution in an eligible South or Southeast Asian country, or lecturers meeting the African route, whose teaching position is on hold because of their studies. Applicants must hold an up-to-date Lecturer Certificate in English and must not already be enrolled in, or hold a retained place at, a Taiwanese university, have studied in Taiwan at the same level, hold another government scholarship, or be an exchange or dual-degree student.",
+        "eligibility": [
+          "Must be a university lecturer, assistant professor or professor currently employed at a public or private higher education institution in an eligible country.",
+          "Eligible Southeast and South Asian countries: Indonesia, Philippines, Thailand, Vietnam, India, Malaysia, Singapore, Brunei, Myanmar, Cambodia, Laos, Pakistan, Bangladesh, Nepal, Sri Lanka and Bhutan.",
+          "African route: applicants from any African country who are either current university lecturers or professors with an up-to-date Lecturer Certificate in English, or have at least three years of university researcher experience in an African country with research publications or papers.",
+          "Must be a citizen of the country where they hold the teaching position.",
+          "The teaching position must be on hold because of the studies.",
+          "Must provide an up-to-date Lecturer Certificate in English; the African researcher route requires an employment certificate in English plus research publications.",
+          "Must not hold Taiwan (R.O.C.) nationality or overseas Chinese student status.",
+          "Must not be enrolled in, or hold a retained admission at, a university in Taiwan. This restriction does not apply to a student on course to graduate who is pursuing a next degree, provided they are still a lecturer from a South or Southeast Asian country.",
+          "Must not previously have studied in Taiwan for a degree at the same level.",
+          "Must not be an exchange or dual-degree student under a partnership agreement with an overseas institution.",
+          "Must not have received stipends through this programme for more than three years.",
+          "Must not be a recipient of any other scholarship or financial assistance from a Taiwan government agency or a foreign government.",
+          "Must satisfy the participating university's own admission and English-taught programme requirements."
+        ],
+        "coverage": [
+          "Total monthly award of NT$25,000 from MOE.",
+          "Tuition and credit fees are paid out of that total award, after which the remaining balance is paid to the student as a monthly stipend.",
+          "Stipends may be used for tuition and miscellaneous fees, thesis supervision, insurance, accommodation, internet use and living allowance.",
+          "Remaining stipends may not be retained or deferred."
+        ],
+        "benefits": [
+          "NT$25,000 per month total award from MOE, of which tuition and credit fees are deducted first.",
+          "Full tuition fee subsidy out of the award; Taipei Tech states tuition and fees are subsidised for up to 4 years.",
+          "Post-tuition monthly stipend. At Taipei Tech this works out at around NT$14,000 per month in years 1 to 3 and NT$12,000 per month in year 4, because the full tuition is deducted from the total MOE award.",
+          "Annual review, with enrolment procedures to be completed every semester to keep the scholarship continuous."
+        ],
+        "funding_amount": 25000,
+        "funding_currency": "TWD",
+        "funding_period": "per month",
+        "required_documents": [
+          "Up-to-date Lecturer Certificate in English (mandatory for lecturers)",
+          "For the African researcher route: Employment Certificate in English plus research publications",
+          "The MOE-Elite online application form, completed via the link emailed by the university's Office of International Affairs",
+          "Regular university registration and tuition payment documents"
+        ],
+        "application_method": [
+          "Apply for admission to the participating university, choosing a full English-taught programme where required, and indicate the scholarship track in the admission application where the university provides one.",
+          "After admission results are announced, the university's Office of International Affairs emails the MOE-Elite guidelines, forms and upload links to eligible admitted students.",
+          "Complete the online application form via the emailed link and upload the Lecturer Certificate and all other required documents before the deadline stated in the email.",
+          "Complete regular university registration and tuition payment during the tuition payment period.",
+          "MOE reviews all applications and announces recipients; the university notifies selected students and shares the stipend plan.",
+          "Confirm the six-month stipend plan by email, after which the stipend is disbursed monthly."
+        ],
+        "selection_notes": "The programme is administered under the MOE Elite Scholarship Program Action Plan and was created in accordance with the New Southbound Policy Work Plan announced by the Executive Yuan in December 2016, under the MOE New Southbound Policy Talent Development Program. Priority is given to doctoral programmes. The university evaluates the admission application by department, and the MOE then reviews and determines the scholarship award. Published quota: one hundred students per academic year over three academic years, for a total of three hundred students. MOE allocates the quota, so entry is limited to new PhD students in the relevant intakes and can involve a waitlist.",
+        "english_requirement": "Not an English-language test requirement. The scholarship supports study in full English-taught programmes, and participating universities require applicants to choose a full English-taught programme where applicable, with courses taught in English rather than merely enough English courses to meet credit requirements.",
+        "requirements": [
+          "Hold a current university lecturer, assistant professor or professor post at an institution in an eligible country.",
+          "Provide an up-to-date Lecturer Certificate in English.",
+          "Have the teaching position on hold because of the studies.",
+          "Apply to a participating university and, where required, choose a full English-taught programme.",
+          "Submit the MOE-Elite form and documents by the deadline stated in the university's post-admission email.",
+          "Complete enrolment procedures every semester to keep the two or three-year scholarship continuous.",
+          "Apply for renewal each year, subject to review."
+        ],
+        "best_fit": "University lecturers, assistant professors and professors from South and Southeast Asian or African countries who have secured an offer from a participating Taiwanese university, whose institution can place their post on hold, and who hold an up-to-date English Lecturer Certificate.",
+        "notes": "Critical money nuance: NT$25,000 per month is the TOTAL award, not the amount in the student's pocket. Participating universities deduct tuition and credit fees from that total first and split only the remainder into a monthly stipend. Taipei Tech publishes the resulting figures as around NT$14,000 per month in years 1 to 3 and NT$12,000 per month in year 4. Applicants should not budget on NT$25,000 of disposable income. Duration also varies by university: the standard MOE terms are 2 years for a master's and 3 years for a doctorate with annual review, while Taipei Tech runs the award for up to 4 years and restricts it to newly admitted PhD students. The scheme is quota-limited at 100 places per academic year, and waitlisted candidates approved by MOE must repay any previously disbursed stipends. Do not confuse this with MOE's Taiwan Scholarship Program, which pays tuition and miscellaneous expenses up to NT$40,000 per semester plus a monthly living allowance of NT$15,000 or NT$20,000.",
+        "description": "The MOE Elite Scholarship Program was created by the Ministry of Education of the Republic of China (Taiwan) under its New Southbound Policy to encourage university lecturers from South and Southeast Asian and African countries to pursue graduate degrees in Taiwan, with priority given to doctoral study. Awardees receive a total monthly award of NT$25,000 for up to two years of a master's programme or three years of a doctorate, reviewed annually; participating universities deduct tuition and credit fees from that total and pay the remainder to the student as a monthly stipend, which at Taipei Tech works out at around NT$14,000 per month in years one to three and NT$12,000 in year four. Applicants must currently hold a lecturer or more senior post at a university in an eligible country with that position on hold, must supply an up-to-date English Lecturer Certificate, and apply through the participating university, which submits the case for MOE review. Around 100 places are awarded per academic year across a three-year cycle."
+      },
+      "programme_detail_official": {
+        "official_source_urls": [
+          "https://oia.ntut.edu.tw/p/404-1032-150286.php?Lang=zh-tw"
+        ],
+        "application_link": "https://oia.ntut.edu.tw/p/404-1032-150286.php?Lang=zh-tw",
+        "official_updates_url": "https://oia.ntut.edu.tw/p/404-1032-150286.php?Lang=zh-tw",
+        "catalogue_url": null,
+        "application_cycle": "Tied to each participating university's admission cycle. Published Fall application windows run from around mid-December to mid-March (National Cheng Kung University's AY2026/27 window was mid-December 2025 to mid-March 2026). After admission, the university emails MOE-Elite guidelines and upload links around early August for Fall intake and late January for the African Spring intake, with a separate post-admission document deadline. MOE announces recipients around late October for Fall and late April for the African Spring intake. The AY2026/27 cycle has closed and the next Fall window is expected to open around mid-December 2026.",
+        "deadline_central": null,
+        "deadline_central_display": null,
+        "deadline_central_timezone": "Asia/Taipei",
+        "deadline_note": "The Ministry of Education publishes no standalone application deadline for this programme. Deadlines are set by each participating university: the admission application window has run from around mid-December to mid-March for Fall entry, and a second, post-admission document deadline is stated in the university's own email to admitted students, as published by Taipei Tech: 'Eligible students must submit an up-to-date Lecturer Certificate (English version) and other required documents by the deadline specified in the email'. MOE's recipient announcement also falls on a university-dependent schedule (late October for Fall, late April for the African Spring intake). deadline_date is therefore null and the precision is 'varies'.",
+        "status": "UPCOMING",
+        "status_note": "The AY2026/27 Fall application window closed in mid-March 2026 and MOE had announced its Fall recipients by late October 2026, so that cycle is complete. The next Fall intake window is expected to open around mid-December 2026 for 2027 Fall entry, so the award is upcoming.",
+        "funding_amount": 25000,
+        "funding_currency": "TWD",
+        "funding_period": "per month",
+        "funding_duration": "Up to 2 years for a master's programme and up to 3 years for a doctoral programme under the standard MOE terms, reviewed annually; Taipei Tech's implementation runs the award for up to 4 years with the fourth year at NT$12,000 per month. Enrolment procedures must be completed every semester to keep the scholarship continuous.",
+        "tuition_coverage": true,
+        "tuition_coverage_note": "Tuition and credit fees are covered out of the award rather than in addition to it. Taipei Tech states the full tuition amount is deducted from the total MOE-Elite scholarship and the remainder is divided into a six-month stipend plan; it publishes a full tuition fee subsidy of up to 4 years. Note that at least one participating university states students still pay tuition at the local-student rate, so the exact treatment should be confirmed with the admitting university.",
+        "living_cost_coverage": true,
+        "travel_coverage": null,
+        "fully_funded": true,
+        "funding_label": "Fully funded, but the NT$25,000 per month is the total award: participating universities deduct tuition and credit fees from it first and pay the remainder as the student's monthly stipend (published example at Taipei Tech: around NT$14,000 per month in years 1-3 and NT$12,000 in year 4). Stipends may be applied to tuition and miscellaneous fees, thesis supervision, insurance, accommodation, internet and living allowance. Unspent stipend may not be retained or deferred.",
+        "benefits": [
+          "NT$25,000 per month total award from MOE.",
+          "Full tuition fee subsidy out of that total award; up to 4 years at Taipei Tech.",
+          "Post-tuition monthly stipend, published at Taipei Tech as around NT$14,000 per month for years 1-3 and NT$12,000 in year 4.",
+          "Up to 2 years for a master's and up to 3 years for a doctorate under standard MOE terms, reviewed annually.",
+          "Stipend usable for tuition and miscellaneous fees, thesis supervision, insurance, accommodation, internet and living allowance."
+        ],
+        "eligibility": [
+          "Must currently be a university lecturer, assistant professor or professor at a public or private higher education institution in an eligible country.",
+          "Eligible Southeast and South Asian countries: Indonesia, Philippines, Thailand, Vietnam, India, Malaysia, Singapore, Brunei, Myanmar, Cambodia, Laos, Pakistan, Bangladesh, Nepal, Sri Lanka, Bhutan.",
+          "African route: current lecturer or professor in any African country with an up-to-date English Lecturer Certificate, or at least three years of university researcher experience in an African country with research publications.",
+          "Must be a citizen of the country where the teaching position is held.",
+          "The teaching position must be on hold because of the studies.",
+          "Must not hold Taiwan (R.O.C.) nationality or overseas Chinese student status.",
+          "Must not be enrolled in, or hold a retained admission at, a university in Taiwan, subject to the exception for students on course to graduate who are pursuing a next degree.",
+          "Must not previously have studied in Taiwan for a degree at the same level.",
+          "Must not be an exchange or dual-degree student under an overseas partnership agreement.",
+          "Must not have received stipends through this programme for more than three years.",
+          "Must not hold any other scholarship or financial assistance from a Taiwan government agency or a foreign government."
+        ],
+        "citizenship_residency": "Nationals of an eligible South or Southeast Asian country who are currently employed as lecturers (or more senior) at a university in that country, or the African-route equivalent. Residence in that country and employment at a university there are both required.",
+        "international_eligibility": "Restricted to nationals of listed New Southbound, South Asian and African countries who hold current university teaching posts there. Taiwan nationals and overseas Chinese students are excluded.",
+        "degree_levels": [
+          "Master's",
+          "PhD"
+        ],
+        "study_mode": "Full-time graduate study at a participating Taiwanese university, in most cases a full English-taught programme.",
+        "research_requirement": "Priority is given to doctoral programmes. Where a participating university extends the award beyond the standard term, renewal from the second year is assessed on the previous year's academic performance and the number of journal papers published, as published by Taipei Tech.",
+        "subject_or_agency_requirement": "Study must be at a participating university, and where the university requires it, in a full English-taught programme in which all courses are taught in English rather than merely enough English courses to meet credit requirements.",
+        "application_method": "Apply for admission to a participating university, then after admission results the university's OIA emails MOE-Elite guidelines, forms and upload links; complete the online form, upload the Lecturer Certificate and required documents by the emailed deadline, and complete normal registration and tuition payment. MOE reviews and announces recipients, after which the student confirms the six-month stipend plan.",
+        "application_route": "Office of International Affairs at the participating Taiwanese university, which submits the case to the Ministry of Education for review and determination.",
+        "requirements": [
+          "Hold a current lecturer or more senior teaching post at a university in an eligible country, with the position on hold for the duration of the studies.",
+          "Provide an up-to-date Lecturer Certificate in English.",
+          "Apply for admission to a participating university, choosing a full English-taught programme where required.",
+          "Submit the MOE-Elite online form and documents by the deadline stated in the university's post-admission email.",
+          "Complete normal university registration and tuition payment during the payment period.",
+          "Complete enrolment procedures every semester to keep the scholarship continuous.",
+          "Apply for annual renewal and pass the review.",
+          "For international students generally: complete the online health questionnaire and health check-up after enrolling, and complete the Overseas Students Safety and Security Seminar."
+        ],
+        "documents": [
+          "Up-to-date Lecturer Certificate in English",
+          "Employment Certificate in English and research publications, for the African researcher route",
+          "Completed MOE-Elite online application form submitted via the emailed link",
+          "Normal university registration and tuition payment documents",
+          "Transcripts, advisor recommendation letter and publication proofs, where required for renewal"
+        ],
+        "english_requirement": "There is no English-language test requirement. The award supports study in full English-taught programmes, and participating universities require applicants to enrol in a full English-taught programme, with all courses taught in English.",
+        "english_requirement_note": "The published eligibility criteria for the institution, as reproduced by participating universities, require the school to offer full English-taught programmes in which all courses are taught in English, rather than merely enough English courses to meet graduation credits or requirements. No TOEFL, IELTS or other score threshold is published for this scholarship.",
+        "selection_criteria": [
+          "Verified current lecturer or more senior teaching post in an eligible country, evidenced by an English Lecturer Certificate.",
+          "The teaching position must be on hold because of the studies.",
+          "Satisfaction of the participating university's admission and department evaluation.",
+          "No other Taiwan government or foreign government scholarship held.",
+          "Priority given to doctoral programmes.",
+          "Award made by MOE review within a published quota of 100 places per academic year over three academic years."
+        ],
+        "selection_weighting": null,
+        "duration": "Up to 2 years for a master's programme and up to 3 years for a doctoral programme under the standard MOE terms, reviewed annually. Some participating universities extend the award; Taipei Tech's implementation runs up to 4 years.",
+        "award_holder_conditions": [
+          "Enrolment procedures must be completed every semester to keep the two or three-year scholarship continuous.",
+          "Annual review is required to continue the award.",
+          "Remaining stipends may not be retained or deferred.",
+          "The scholarship is suspended if the student departs Taiwan; a student who departs after the fifteenth day of a month need not return that month's stipend.",
+          "Must not simultaneously hold another scholarship or financial assistance from a Taiwan government agency or a foreign government.",
+          "Waitlisted candidates later approved by MOE must return any previously disbursed monthly stipends before the Elite Scholarship can be officially granted, as published by participating universities.",
+          "Renewal from the second year may be assessed on academic performance and journal publications, where the participating university applies that test."
+        ],
+        "supplements_or_initiatives": [
+          "Created under the Executive Yuan's New Southbound Policy Work Plan of December 2016 and the MOE New Southbound Policy Talent Development Program.",
+          "African-country applicants have separate intake routes, including Spring intake at some universities, and a researcher route for those with at least three years of university research experience and publications."
+        ],
+        "official_contacts": {
+          "general": "Ministry of Education (MOE), Republic of China (Taiwan). Applications are submitted to and managed by the Office of International Affairs of the participating Taiwanese university, which submits the case for MOE review.",
+          "email": null
+        },
+        "description": "The MOE Elite Scholarship Program, created by Taiwan's Ministry of Education under the New Southbound Policy, funds university lecturers from South, Southeast Asian and African countries to pursue graduate degrees in Taiwan, with priority given to doctoral study. Awardees receive a total monthly award of NT$25,000 for up to two years of a master's or three years of a doctorate, reviewed annually; participating universities deduct tuition and credit fees from that total and pay the remainder as a monthly stipend, which at Taipei Tech works out at around NT$14,000 per month in years one to three and NT$12,000 in year four. Applicants must hold a current lecturer or more senior post in an eligible country with the position on hold, supply an up-to-date English Lecturer Certificate, and apply through a participating university, which submits the case for MOE review under a quota of about 100 places per academic year.",
+        "program_type": "Government graduate scholarship for university lecturers from South, Southeast Asia and Africa to study in Taiwan (Ministry of Education, New Southbound Policy talent development)",
+        "region": "Asia",
+        "coverage": "NT$25,000 per month total award from MOE, from which tuition and credit fees are deducted before the remainder is paid as the student's monthly stipend (published example: around NT$14,000 per month for years 1-3 and NT$12,000 in year 4 at Taipei Tech). Standard term is 2 years for a master's and 3 years for a doctorate, reviewed annually; some universities extend this. No airfare or separate insurance funding is stated.",
+        "last_verified_date": "2026-10-04"
+      },
+      "programme_detail_applicant_utility": {
+        "application_readiness_checklist": [
+          "Confirm you hold a current university lecturer, assistant professor or professor post in an eligible country, and that the position can be placed on hold for the duration of your studies.",
+          "Get an up-to-date Lecturer Certificate in English issued by your employer; without it you cannot be considered.",
+          "Confirm you hold no other scholarship or financial assistance from a Taiwan government agency or a foreign government.",
+          "Confirm you have not studied in Taiwan at the same level and are not an exchange or dual-degree student.",
+          "Choose a participating university with a full English-taught graduate programme, and note that priority goes to doctoral study.",
+          "Apply within the university's admission window, published as roughly mid-December to mid-March for Fall entry.",
+          "Watch for the university's post-admission email with the MOE-Elite guidelines, form and upload links, and submit everything by the deadline stated in that email.",
+          "Complete normal university registration and tuition payment during the payment period.",
+          "Review and confirm the six-month stipend plan by email once MOE announces the recipient list."
+        ],
+        "common_rejection_risks": [
+          "Missing the Lecturer Certificate, or supplying an out-of-date one.",
+          "Holding another government scholarship, which is an outright exclusion.",
+          "Being unable to place the teaching post on hold, which the programme requires.",
+          "Confusing the NT$25,000 total award with take-home pay - tuition is deducted from it first.",
+          "Missing the post-admission document deadline, which is separate from the admission deadline and only appears in the university's email.",
+          "Already having studied in Taiwan at the same degree level.",
+          "Counting on a fourth year, since the standard MOE term is 3 years for a doctorate and only some universities extend it.",
+          "Applying to a participating university that does not run this scholarship or that restricts it to particular intakes."
+        ],
+        "estimated_uncovered_costs": [
+          "Airfare to Taiwan, which is not part of the award.",
+          "Anything above the post-deduction monthly stipend, which is significantly lower than the headline NT$25,000 at universities with higher tuition.",
+          "Costs for a fourth year of doctoral study at universities that do not extend the award beyond three years.",
+          "Costs arising from a waitlist outcome, since previously disbursed stipends may have to be repaid if MOE later approves the candidate."
+        ],
+        "document_audit": [
+          "Up-to-date Lecturer Certificate in English.",
+          "Employment Certificate in English and research publications, for the African researcher route.",
+          "Completed MOE-Elite online application form submitted through the emailed link.",
+          "University admission offer and registration documents.",
+          "Tuition payment receipt.",
+          "For renewal: transcript, advisor recommendation letter and publication proofs."
+        ],
+        "alerts": [
+          {
+            "trigger": "NT$25,000 is the total award, not your stipend",
+            "message": "Participating universities deduct full tuition and credit fees from the NT$25,000 total before paying the student. Taipei Tech publishes the outcome as around NT$14,000 per month for years 1 to 3 and NT$12,000 in year 4. Do not budget on NT$25,000 of disposable income."
+          },
+          {
+            "trigger": "Two separate deadlines",
+            "message": "There is the university's admission application window (roughly mid-December to mid-March) and then a separate post-admission document deadline stated only in the university's email. Missing the second one forfeits the award even after admission."
+          },
+          {
+            "trigger": "Quota-limited and competitive",
+            "message": "Around 100 places are awarded per academic year over a three-year cycle, so entry is quota-limited, priority goes to doctoral study, and waitlisted candidates who are later approved may have to repay stipends already received."
+          },
+          {
+            "trigger": "Not the MOE Taiwan Scholarship",
+            "message": "Do not confuse this with MOE's Taiwan Scholarship Program, which pays tuition and miscellaneous expenses up to NT$40,000 per semester plus a monthly living allowance of NT$15,000 or NT$20,000 and is open to a different applicant pool."
+          }
+        ],
+        "submission_workflow": [
+          "Check your employment and citizenship against the eligible country list and confirm you can place your post on hold.",
+          "Obtain an up-to-date English Lecturer Certificate from your institution.",
+          "Research participating universities running this scholarship for your field, and note their English-taught programme requirements and intakes.",
+          "Apply for admission during the university's published window, indicating the scholarship track if the university offers one.",
+          "After admission results, receive the OIA email with MOE-Elite guidelines, the form and upload links.",
+          "Complete the online form, upload the Lecturer Certificate and other documents, and finish registration and tuition payment by the stated deadlines.",
+          "Await MOE's recipient announcement around late October (Fall) or late April (African Spring).",
+          "Review and confirm the six-month stipend plan by email, then receive monthly disbursements.",
+          "Apply for annual renewal in the announced period with your transcript and publication evidence."
+        ]
+      },
+      "programme_detail_verification": {
+        "cycle_verified": "AY2026/27 Fall cycle (application window mid-December 2025 to mid-March 2026, MOE recipient announcement around late October 2026); next Fall window expected from around mid-December 2026, verified 2026-10-04",
+        "verification_confidence": 0.78,
+        "official_fields_confirmed": [
+          "funding_amount (NT$25,000 per month total award) and the deduction mechanic",
+          "funding_currency (TWD)",
+          "funding_period (per month)",
+          "funding_duration (2 years master's, 3 years doctorate standard; up to 4 years at Taipei Tech)",
+          "tuition treatment (tuition and credit fees deducted from the total award)",
+          "degree_levels (Master's and PhD; some universities restrict to PhD only)",
+          "eligible countries (15 South and Southeast Asian countries plus any African country)",
+          "eligibility (current lecturer or more senior, position on hold, English Lecturer Certificate, exclusions)",
+          "application route (participating university admission, then post-admission submission to MOE)",
+          "annual quota (about 100 places per academic year over three years)",
+          "status (cycle complete, next window expected from around mid-December 2026)"
+        ],
+        "institution_check_required": [
+          "The MOE Elite Scholarship Program Action Plan itself, which governs administration and is not published on the pages reachable in this pass.",
+          "The current list of participating universities and their individual intakes, quotas and post-admission deadlines.",
+          "The tuition treatment at each participating university, since at least one states students still pay the local-student tuition rate while others deduct full tuition from the award.",
+          "Whether any university-level quota remains after the MOE round, and the waitlist mechanics that trigger repayment of previously disbursed stipends.",
+          "Whether the 3-year standard term or the 4-year extended term applies at the specific admitting university."
+        ],
+        "unverified_or_removed_claims": [
+          "Stored official_source_url https://oia.ncku.edu.tw is the Office of International Affairs of National Cheng Kung University, a participating university, not the awarding ministry. It does host genuine MOE Elite Scholarship announcements, so the row is substantively correct, but the awarding body is MOE and the live authoritative implementing page is recorded in url_observed.",
+          "Stored deadline_display is only loosely right: it gives a general mid-November-to-January application window, whereas the published implementing windows run from around mid-December to mid-March for Fall admission, plus a separate post-admission document deadline stated in the university's email. precision 'varies' is confirmed correct and deadline_date remains null.",
+          "Stored status 'open' is wrong as of 2026-10-04: the AY2026/27 window closed in mid-March 2026, so the award is upcoming.",
+          "Stored deadline_date was null and correctly remains null: MOE publishes no standalone date.",
+          "Stored funding description 'Full tuition waiver + monthly stipend' is under-specified and potentially misleading. The award is a single NT$25,000 per month total from which tuition and credit fees are deducted; at Taipei Tech the resulting stipend is around NT$14,000 per month in years 1 to 3 and NT$12,000 in year 4.",
+          "Stored programme_type 'Government scholarship' is too generic and was replaced with the MOE New Southbound Policy programme type.",
+          "Stored current_image_url was https://oia.ncku.edu.tw/CACHE/images/campus_banners2020/001.jpg, a campus banner photograph rather than a logo; replaced with the awarding ministry's logo.",
+          "Stored current_image_alt_text was 'National Cheng Kung University campus banner, students walking in front of the administration building', which correctly described the image but confirms it was not a logo.",
+          "Stored region was null; set to Asia.",
+          "No Ministry of Education page for this specific scholarship was reachable in this pass, so the details are sourced from official implementing universities on their own domains; this is why verification_confidence is 0.78.",
+          "No English-language test requirement is published; the requirement is enrolment in a full English-taught programme."
+        ],
+        "source_citations": [
+          "https://oia.ntut.edu.tw/p/404-1032-150286.php?Lang=zh-tw"
+        ],
+        "researched_by": "w1_15a1"
+      },
+      "logo_override": {
+        "url": "https://english.moe.gov.tw/Public/Images/201912/2631912251745b958b.png",
+        "page_url": "https://english.moe.gov.tw/cp-24-24284-3ea37-1.html",
+        "official_host": true,
+        "alt_text": "Ministry of Education, Republic of China (Taiwan) official logo",
+        "validation_result": "verified",
+        "validation_detail": "png 22159+B, image/png, HTTP 200, probed on 2026-10-04 on the awarding ministry's own domain (english.moe.gov.tw) with img alt='Ministry of Education Republic of China (Taiwan)'. Chosen because the awarding body of this scholarship is Taiwan's Ministry of Education; the stored host oia.ncku.edu.tw belongs to a participating university, so host_evidence is stated relative to the actual awarding body.",
+        "image_kind": "official_logo",
+        "image_format": "png",
+        "verified_at": "2026-10-04T00:00:00+00:00",
+        "host_evidence": "same_registrable_domain",
+        "_award": "MOE Elite Scholarship Program for Lecturers from South and Southeast Asian and African Countries"
+      },
+      "research_notes": {
+        "logo": "Rejected the stored image https://oia.ncku.edu.tw/CACHE/images/campus_borders2020/001.jpg (stored alt text describes it as 'National Cheng Kung University campus banner, students walking in front of the administration building'), which is campus photography and not a mark, and rejected National Cheng Kung University's own logo because NCKU is only a participating university, not the awarding body - using a participant's logo on a ministry-awarded scholarship is the provenance error the brief bans. The awarding body is Taiwan's Ministry of Education, so I used MOE's own logo, https://english.moe.gov.tw/Public/Images/201912/2631912251745b958b.png, probed 2026-10-04 on the ministry's own domain as HTTP 200, image/png, 22159 bytes, alt='Ministry of Education Republic of China (Taiwan)'. Also examined Taipei Tech OIA assets and rejected https://oia.ntut.edu.tw/var/file/32/1032/img/2185/logo.jpg (200 image/jpeg 21141 B, Taipei Tech's own mark) and footer-logo.svg (200 image/svg+xml 22136 B, Taipei Tech footer variant), plus favicons and social icons.",
+        "unverified": [
+          "No Ministry of Education page for this specific scholarship was reachable in this pass. All detail comes from official implementing universities on their own domains, surfaced through the search index and cross-read; the NTUT page cited in source_citations was the one opened directly.",
+          "The MOE Elite Scholarship Program Action Plan was not read.",
+          "The exact current quota and the list of participating universities were not confirmed from a ministry source.",
+          "Whether tuition treatment is a full waiver or a local-rate charge differs between participating universities and was not resolved centrally.",
+          "The NCKU and NPTU pages could not be opened during this pass (the NPTU SouthEast Asia Development Center URL returned an HTTP response-code failure and the NCKU root failed to load), so their content is recorded as search-indexed rather than directly read.",
+          "No ministry email address or telephone number for this programme is published on the pages read, so official_contacts.email is null."
+        ],
+        "substitution": null,
+        "official_pages_read": [
+          "https://oia.ntut.edu.tw/p/404-1032-150286.php?Lang=zh-tw"
+        ],
+        "degree_level_confirmed": "The award funds graduate study only. National Cheng Kung University states it is for 'Doctoral/Master's degree-seeking applicants', with '3 years (in Ph.D. programs)' and '2 years (in master programs)'; Taipei Tech restricts its own implementation to 'PhD only'. No bachelor's-level study is funded.",
+        "url_observed": "https://oia.ntut.edu.tw/p/404-1032-150286.php?Lang=zh-tw",
+        "contradictions": [
+          "Stored official_source_url https://oia.ncku.edu.tw is a participating university's Office of International Affairs, not the awarding Ministry of Education. It does host genuine MOE Elite Scholarship announcements, so the row is substantively correct, but host_evidence and the logo are stated relative to MOE as the true awarding body.",
+          "Stored deadline_display's 'mid-November to mid-January application window' does not match the published implementing windows, which run from around mid-December to mid-March for Fall admission, plus a separate post-admission document deadline stated only in the university's email.",
+          "Stored status 'open' is wrong as of 2026-10-04: the AY2026/27 window closed in mid-March 2026 and MOE announced its Fall recipients around late October 2026, so the award is upcoming.",
+          "Stored funding description 'Full tuition waiver + monthly stipend' is misleading without the deduction mechanic: NT$25,000 per month is the total award, tuition and credit fees are deducted from it, and the published remainder at Taipei Tech is around NT$14,000 per month for years 1 to 3 and NT$12,000 in year 4.",
+          "Stored current_image_url is a campus banner photograph, not a logo, and its stored alt text confirms this.",
+          "Stored programme_type 'Government scholarship' was too generic and has been replaced with the MOE New Southbound Policy programme type.",
+          "Stored region was null although the host country is plainly Asia (Taiwan)."
+        ],
+        "skeleton": false
+      }
+    }
+  ]
+}

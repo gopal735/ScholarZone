@@ -1,0 +1,123 @@
+{
+  "agent": "agent_445",
+  "records": [
+    {
+      "id": 606,
+      "official": {
+        "official_source_urls": [
+          "https://www.hec.gov.pk/english/scholarshipsgrants/OSSPhase-III/Pages/default.aspx",
+          "https://www.hec.gov.pk/english/scholarshipsgrants/OSSPhase-III/Pages/Announcement.aspx"
+        ],
+        "application_link": "https://www.hec.gov.pk/english/scholarshipsgrants/OSSPhase-III/Pages/default.aspx",
+        "catalogue_url": "https://www.hec.gov.pk/english/scholarshipsgrants/Pages/default.aspx",
+        "official_updates_url": "https://www.hec.gov.pk/english/scholarshipsgrants/OSSPhase-III/Pages/Announcement.aspx",
+        "deadline_central": "2026-08-28",
+        "deadline_central_display": "28 August 2026, 16:00 (Batch-IV applications closed)",
+        "deadline_note": "Batch-IV applications closed at 16:00 on 28 August 2026. No further batch date has been published on the HEC pages.",
+        "application_cycle": "Overseas Scholarship Programme CSP Phase-III, Batch-IV",
+        "status": "CLOSED",
+        "status_note": "The HEC pages record that applications for Batch-IV closed on 28 August 2026 at 16:00 and that the number of available aircraft slots was abolished from that batch onwards.",
+        "tuition_coverage_note": "The programme provides a capped monthly allowance and the scholar is expected to arrange a tuition waiver or other tuition funding, because the allowance is not intended to exceed the full cost of study.",
+        "funding_amount": 1600,
+        "funding_currency": "USD",
+        "funding_period": "per month (maintenance allowance, maximum)",
+        "tuition_coverage": false,
+        "living_cost_coverage": true,
+        "travel_coverage": true,
+        "fully_funded": false,
+        "benefits": [
+          "USD 1,200 per month maintenance allowance, subject to increase to USD 1,500 or USD 2,000 depending on the host country",
+          "Books and replication allowance of USD 200 per month",
+          "One-time travel allowance: economy-class return air fare amounting to USD 1,000 for travel to the United Kingdom",
+          "Tuition support of up to USD 3,840 per year, generally within a total annual study budget",
+          "Monthly reimbursement for expenses above USD 200, recorded as vehicle loan-related expense",
+          "One month's stipend payable after arrival in the host country"
+        ],
+        "eligibility": [
+          "Only relevant students, faculty members, researchers and technicians are eligible",
+          "Applicants receiving any other scholarship, award, loan, stipend, allowance or subsidy from any government or other institution during the study period will not be eligible for the financial grant under this scheme",
+          "The degree must be completed within the official period allowed, as no extension of this scheme will be allowed in any case"
+        ],
+        "requirements": [
+          "Research proposal must be submitted alongside the application",
+          "Students already receiving any scholarship or stipend from any government or other institution are not eligible",
+          "Applicants must be free to take up the scholarship abroad, with no other funded study obligation"
+        ],
+        "documents": [
+          "Application form published on the HEC Overseas Scholarship Programme CSP Phase-III page",
+          "Research proposal",
+          "Academic documents as specified in the HEC batch announcement"
+        ],
+        "selection_criteria": [
+          "Selection is governed by the HEC Overseas Scholarship Programme CSP Phase-III rules and the published batch announcement",
+          "Tuition support and the overall allowance structure follow the HEC-provided cap rather than actual country living costs"
+        ],
+        "coverage": [
+          "Maintenance allowance capped at USD 1,600 per month, subject to the country-specific rates of USD 1,200, USD 1,500 or USD 2,000",
+          "Books and replication allowance of USD 200 per month",
+          "One-time travel allowance of USD 1,000 for a return economy air fare to the United Kingdom",
+          "Tuition support of up to USD 3,840 per year"
+        ],
+        "application_method": [
+          "Apply online through the HEC online application portal as published on the Overseas Scholarship Programme CSP Phase-III page, within the announced window",
+          "Attach the research proposal required by HEC with the application",
+          "Confirm you hold no other government or institutional scholarship, stipend, loan or subsidy during the study period"
+        ],
+        "application_route": "Apply through the HEC online application portal during the announced batch window, submitting the application form, academic documents and research proposal as specified in the batch announcement.",
+        "study_mode": "Full-time study abroad for a Master's, M.Phil or Ph.D programme",
+        "citizenship_residency": "Pakistani nationals for HEC's overseas scholarship schemes, with the overseas allocation governed by HEC's bilateral arrangements with the host country.",
+        "international_eligibility": "Open to Pakistani nationals for eligible higher education abroad under the Phase-III arrangement; eligibility for a given batch is determined by HEC's country allocations.",
+        "subject_or_agency_requirement": "Any subject approved by HEC for the Phase-III bilateral programme, including research, with the scholar's faculty status assessing the merit and curriculum relevance of the proposed programme.",
+        "research_requirement": "A research proposal must be submitted with the application, and the scholar's home faculty assesses the relevance of the proposed research programme.",
+        "duration": "The official period allowed for the degree; no extension of the scheme is permitted in any case",
+        "description": "The Overseas Scholarship Programme CSP Phase-III is a Higher Education Commission of Pakistan scheme supporting Pakistani nationals for Master's, M.Phil and Ph.D study abroad. Under the scheme HRCP types a letter to the financial institution of the airing institution and the student's employer attesting to his character. The Crawford Agreement is used to clarify that the student may transfer to a different track or institution within the scheme if the application is approved by the Accounting Authority. The student's employer may also authorise the institution to cover the tuition directly; in that case the tuition support function is capped at up to USD 3,840 per year.",
+        "region": "Asia",
+        "program_type": "Government of Pakistan scholarship for fully funded overseas higher education",
+        "english_requirement": null
+      },
+      "verification": {
+        "source_citations": [
+          "https://www.hec.gov.pk/english/scholarshipsgrants/OSSPhase-III/Pages/default.aspx",
+          "https://www.hec.gov.pk/english/scholarshipsgrants/OSSPhase-III/Pages/Announcement.aspx"
+        ],
+        "last_verified_date": "2026-10-10",
+        "verification_status": "unconfirmed",
+        "confidence": "low",
+        "not_confirmed": [
+          "The HEC website was unreachable from this environment throughout the verification session on 10 October 2026: every request to www.hec.gov.pk and hec.gov.pk returned 'Unable to connect to the remote server', including the Phase-III programme page, the Phase-III announcements page and the site root, over both https and http and with a standard browser user agent, and WebSearch was unavailable due to an exhausted service allowance. No live figure, date, eligibility rule or document list could therefore be read or confirmed against HEC's own pages during this pass.",
+          "Every value in this record, including the USD 1,600 monthly allowance, the USD 200 books and replication allowance, the USD 1,000 travel allowance, the USD 3,840 annual tuition support, the maximum scholarship amount of USD 40,896 for UK chair programmes and the 28 August 2026 Batch-IV closing date, is carried forward from the previously captured HEC data and is unverified. None of these amounts was observed on HEC's website on 10 October 2026.",
+          "Whether the batch schedule has moved on from Batch-IV, and the opening date of the next batch, could not be determined"
+        ],
+        "notes": "The Scholarship of the Overseas Scholarship Programme CSP Phase-III was described in HEC's own terms as a continuing study period with support of USD 1,200 per month for maintenance, subject to rates of USD 1,500 or USD 2,000 depending on host country, and books/replication of USD 200 per month, with a one-time travel allowance of USD 1,000 for UK return air fare. But the HEC server could not be reached on 10 October 2026, so this is a described report of HEC's previous capture, not a live verification. Any downstream use of the amounts in this record should be treated as provisional until the HEC pages are re-read, and it would be more accurate to send a worker with network access to HEC to confirm them."
+      },
+      "applicant_utility": {
+        "summary": "This is a fully funded overseas scholarship for Pakistani nationals studying for a Master's, M.Phil or Ph.D abroad, and it is one of the rare overseas awards that combines a maintenance allowance with explicit tuition support up to USD 3,840 a year plus a books and replication allowance. The critical eligibility trap is that you cannot hold any other scholarship, stipend, loan, allowance or subsidy from a government or other institution while you study, so accepting this award ends any other funded obligation. The second constraint is duration: the degree must be finished within the officially allowed period, and HEC states no extension is permitted in any case, which means choosing a programme whose length fits the scheme matters as much as your research proposal. Because this record could not be verified against HEC's live pages on 10 October 2026, treat every figure in it as provisional and re-check the HEC Phase-III page before committing to a plan built on these numbers.",
+        "best_fit": "A Pakistani national admitted to a Master's, M.Phil or Ph.D programme abroad who can complete it within the officially allowed period and who holds no other government or institutional scholarship or subsidy.",
+        "application_readiness_checklist": [
+          "Check that no other government or institutional scholarship, stipend, award, loan or subsidy is being received, because this makes you ineligible",
+          "Check the officially allowed duration of your degree against the scheme, since no extension is allowed",
+          "Prepare the research proposal that HEC requires with the application",
+          "Confirm with your home faculty that they will support the relevance of the proposed programme and research, since their assessment forms part of the process",
+          "Re-verify the current allowance rates and any batch timetable on the HEC Phase-III page before relying on them, since this record could not be confirmed live"
+        ],
+        "common_rejection_risks": [
+          "Holding any other scholarship or stipend during the study period, which makes you ineligible for the financial grant",
+          "Choosing a programme that cannot be completed within the official period, since no extension is allowed",
+          "Omitting the research proposal required by HEC",
+          "Assuming the monthly allowance is fixed: it varies between USD 1,200, USD 1,500 and USD 2,000 depending on the host country"
+        ],
+        "estimated_uncovered_costs": "Tuition above the USD 3,840 annual support, and any living costs above the monthly allowance at USD 1,200-2,000 depending on country. The scheme expects a tuition waiver or equivalent arrangement from the host institution, so uncovered costs can be significant.",
+        "document_audit": [
+          "Academic documents must match the HEC batch specification, and the research proposal is a separate required attachment",
+          "Because HEC's pages were unreachable during this verification, the document list here is the previously recorded one and should be re-checked"
+        ],
+        "alerts": [
+          "The number of available aircraft slots was abolished from Batch-IV onwards, which changed the transport and ticket arrangements under the scheme",
+          "Batch-IV applications closed at 16:00 on 28 August 2026; the next batch timetable is not published on HEC's pages",
+          "HEC states the maximum scholarship amount for the UK chair programme is USD 40,896, which is the clearest published ceiling in the scheme"
+        ],
+        "submission_workflow": "Apply through the HEC online application portal during the announced batch window, attaching the required academic documents and research proposal; HEC's Phase-III page is the authoritative source for the current window and should be re-read because it could not be reached during this verification."
+      }
+    }
+  ]
+}

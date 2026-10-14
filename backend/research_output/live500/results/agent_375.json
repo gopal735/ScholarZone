@@ -1,0 +1,265 @@
+{
+  "agent": "agent_375",
+  "records": [
+    {
+      "id": 336,
+      "official": {
+        "official_source_urls": [
+          "https://www.tuni.fi/en/tau/financial-matters/tuition-fees-and-scholarships",
+          "https://www.tuni.fi/en/tampere-university/study-right-and-annual-enrolment/tuition-fees-and-scholarships/scholarships-fee-paying-students-admitted-2026-or-later",
+          "https://www.tuni.fi/en/tau/masters-programmes/applying",
+          "https://www.tuni.fi/en/tau/bachelors-programmes/applying",
+          "https://www.tuni.fi/en/tau/masters-programmes/language-requirements",
+          "https://www.tuni.fi/en/tau/masters-programmes/application-documents"
+        ],
+        "application_link": "https://www.tuni.fi/en/tau/financial-matters/tuition-fees-and-scholarships",
+        "catalogue_url": "https://www.tuni.fi/en/tau/bachelors-programmes",
+        "official_updates_url": "https://www.tuni.fi/en/tau/financial-matters/tuition-fees-and-scholarships",
+        "deadline_central": "2027-01-07",
+        "deadline_central_display": "7 January 2027 (master's round); 21 January 2027 (bachelor's round)",
+        "deadline_note": "The scholarship must be requested inside the admission application, so the admission deadlines govern: master's applications for autumn 2027 close 7 January 2027 at 23.59 UTC+2 and bachelor's applications close 21 January 2027 at 15.00 UTC+2. Attachment deadlines are 14 January 2027 (master's) and 28 January 2027 (bachelor's). The early bird offer runs on a separate three-week window: accept the study place and pay the reduced first-year fee within three weeks (21 days) of receiving admission information.",
+        "application_cycle": "Admission 2027, studies starting August 2027",
+        "status": "UPCOMING",
+        "status_note": "The university already publishes the 2027 tuition fee levels and the scholarship terms; the application periods themselves open 14 December 2026 (master's) and 7 January 2027 (bachelor's).",
+        "tuition_coverage_note": "Tampere University tuition fee scholarships awarded at admission cover 50% of the tuition fees for the programme duration. The tuition fee covers educational expenses such as courses, academic supervision, exams, counselling and university support services such as student services, use of library and IT services. It does not cover personal study-related costs such as study materials, the mandatory Student Union TREY membership fee or the student healthcare fee, and all students must fund their own living costs.",
+        "funding_amount": 6000,
+        "funding_currency": "EUR",
+        "funding_period": "per academic year",
+        "tuition_coverage": true,
+        "living_cost_coverage": false,
+        "travel_coverage": false,
+        "fully_funded": false,
+        "benefits": [
+          "Tampere University tuition fee scholarship: covers 50% of the tuition fees for the programme duration (EUR 6,000 per year against the EUR 12,000 master's fee, EUR 5,000 per year against the EUR 10,000 bachelor's fee for students admitted in 2027)",
+          "Early bird offer: EUR 2,000 reduction on the programme tuition fee during the first year of studies, available without a separate application to all fee-paying students who have not been awarded a tuition fee scholarship",
+          "Graduation Scholarship: EUR 2,000 reduction on the tuition fee for the first year of Master's degree studies at Tampere University for students who complete a Bachelor's degree at Tampere University within three academic years"
+        ],
+        "eligibility": [
+          "Citizen of a country outside the European Union, the European Economic Area or Switzerland, i.e. liable to pay tuition fees",
+          "Studying in a Tampere University bachelor's or master's degree programme taught in English",
+          "Merited, high-achieving and motivated fee-paying students; scholarships are awarded on the basis of an academic overall assessment",
+          "Scholarships are not awarded in all programmes and are not available in the open university route or transfer applications"
+        ],
+        "requirements": [
+          "Apply for the scholarship as part of the application for admission at Studyinfo.fi during the application period for admission",
+          "Language test must be completed by the application deadline of 7 January 2027, with older scores still valid at that date",
+          "Pay the 100 EUR application fee by the deadline given in the automatic Studyinfo.fi email, or the application is deactivated",
+          "Upload all required attachments by 14 January 2027 (master's, 23.59 UTC+2) or 28 January 2027 (bachelor's, 15.00 UTC+2); incomplete documentation means the application will not proceed to academic evaluation"
+        ],
+        "documents": [
+          "A copy of the original bachelor's degree certificate in the original language",
+          "A copy of the official transcript of records of the bachelor's degree in the original language",
+          "An official translation of the bachelor's degree certificate and of the transcript of records",
+          "Proof of English language proficiency (uploaded to the online application; Tampere University verifies all language tests electronically)",
+          "Motivation letter or video",
+          "Curriculum Vitae (CV) / Resume",
+          "Copy of the passport's ID page or EU/EEA/Swiss identity card, and any residence permit to Finland"
+        ],
+        "selection_criteria": [
+          "Academic overall assessment of all application information and educational documents, together with the scholarship application letter (if applicable), which can be decisive",
+          "For programme admission: success in previous studies, English language proficiency and motivation to study in the programme",
+          "A student found guilty of plagiarism is not eligible for any Tampere University scholarships; a scholarship holder found guilty receives a warning and a second finding cancels the scholarship"
+        ],
+        "coverage": [
+          "Tampere University tuition fee scholarship: 50% of the tuition fees for the programme duration, within the normative study time (three academic years for a Bachelor's, two for a Master's), calculated on semesters enrolled as attending",
+          "Early bird offer: EUR 2,000 reduction on the programme tuition fee during the first year of studies only",
+          "Living costs, study materials, Student Union TREY membership and the student healthcare fee are not covered by the tuition fee or the scholarship"
+        ],
+        "application_method": [
+          "Fill in the single online application at Studyinfo.fi during the application period (master's 14 December 2026 - 7 January 2027; bachelor's 7 - 21 January 2027)",
+          "Request the Tampere University scholarship in the same online application used for admission; no separate scholarship form exists",
+          "To use the early bird offer, accept the offered study place and pay the reduced first-year tuition fee within three weeks (21 days) after receiving information on admission"
+        ],
+        "application_route": "One Studyinfo.fi application per round with the scholarship request included in the admission application; the early bird offer needs no application at all.",
+        "study_mode": "Full-time",
+        "citizenship_residency": "Citizens of countries outside the EU, EEA and Switzerland are liable to pay tuition fees and are the group the scholarships and discounts are aimed at",
+        "international_eligibility": "Yes - the scheme exists specifically for fee-paying students from outside the EU, EEA and Switzerland",
+        "subject_or_agency_requirement": "Scholarships are not awarded in all programmes; none are available through the open university route or transfer applications",
+        "research_requirement": null,
+        "duration": "Programme duration within the normative study time: three academic years for a Bachelor's degree and two academic years for a Master's degree, counted in semesters enrolled as attending. The early bird offer is valid only for the first year of studies.",
+        "description": "Tampere University offers a limited number of partial scholarships plus an early bird discount to support fee-paying students from outside the EU, EEA and Switzerland studying in English-taught bachelor's and master's programmes. The tuition fee scholarship covers 50% of the tuition fees for the programme duration, while the early bird offer gives a EUR 2,000 first-year reduction to fee-paying students who were not awarded a scholarship.",
+        "region": "Finland",
+        "program_type": "Merit-based partial tuition fee scholarship with an automatic early bird tuition discount",
+        "english_requirement": "TOEFL iBT 92 overall with no section below 20 (or 4.5 overall with no section below 4); IELTS Academic 6.5 overall with no section below 6; PTE Academic 68 overall with no section in Communicative Skills below 61; Cambridge C1 Advanced or C2 Proficiency; or the Finnish National Certificate of Language Proficiency (YKI) at level 5 in all subtests. The test must be completed by the application deadline of 7 January 2027 and older scores must still be valid at that date. Exemptions based on specified previous studies taught in English are possible. Bachelor's applicants in admission group I may use the SAT or ACT (only tests taken after 1 January 2025 count, and December 2026 is the last sitting for this round)."
+      },
+      "verification": {
+        "source_citations": [
+          "https://www.tuni.fi/en/tau/financial-matters/tuition-fees-and-scholarships",
+          "https://www.tuni.fi/en/tampere-university/study-right-and-annual-enrolment/tuition-fees-and-scholarships/scholarships-fee-paying-students-admitted-2026-or-later",
+          "https://www.tuni.fi/en/tau/masters-programmes/applying",
+          "https://www.tuni.fi/en/tau/masters-programmes/language-requirements"
+        ],
+        "last_verified_date": "2026-10-10",
+        "verification_status": "confirmed",
+        "confidence": "high",
+        "not_confirmed": [
+          "The number of tuition fee scholarships available at admission in 2027 (only the admission 2026 figure of nine across all programmes is published)",
+          "Which specific programmes award scholarships in the 2027 round"
+        ],
+        "notes": "The 50% coverage rate, the EUR 2,000 early bird and graduation amounts, and the 2027 fee levels (EUR 12,000 master's / EUR 10,000 bachelor's) were all read from the same tuni.fi scholarships page; the EUR 6,000 per academic year figure is that 50% applied to the published master's fee. Deadlines were taken from the master's and bachelor's applying pages."
+      },
+      "applicant_utility": {
+        "summary": "This is a discount package, not a full ride: only nine tuition fee scholarships were awarded across all programmes in admission 2026, while every other fee payer who accepts on time automatically gets EUR 2,000 off year one. Your scholarship application is not a separate form - it is judged from the same Studyinfo.fi application you file for admission, so transcripts, motivation letter and CV have to do double duty in one shot. Plan to self-fund the remaining half of the fee plus living costs, which the university states plainly are not covered.",
+        "best_fit": "Non-EU/EEA/Swiss applicants with a strong bachelor's record who can cover the remaining tuition half and Finnish living costs from their own funds.",
+        "application_readiness_checklist": [
+          "Assemble degree certificate, transcript, authorised translations, language test, motivation letter and CV before 14 December 2026, because the master's round slams shut on 7 January 2027.",
+          "Sit the English test early enough that the score is valid through 7 January 2027 and the result can be sent to Tampere University in time.",
+          "Pay the 100 EUR application fee from the Studyinfo.fi confirmation email - an unpaid fee deactivates the application.",
+          "Upload every attachment by 14 January 2027 (master's) or 28 January 2027 (bachelor's); incomplete files stop academic evaluation before it starts.",
+          "Check whether your target programme actually awards a scholarship, because not all programmes do.",
+          "Diarise the 21-day early bird window once admission information arrives, and have the first-year fee money ready to move."
+        ],
+        "common_rejection_risks": [
+          "Incomplete attachments - the university states the application will not proceed to academic evaluation if required documentation is missing.",
+          "A language test score that expires before the 7 January 2027 deadline - expired scores are not accepted.",
+          "Applying through the open university route or a transfer application, where scholarships are not available at all.",
+          "Banking on the scholarship itself: nine awards across all programmes in the previous cycle means most strong applicants will only ever see the EUR 2,000 early bird.",
+          "Conditional acceptances: final-year students must deliver certified documents by the set deadline or forfeit the place."
+        ],
+        "estimated_uncovered_costs": "The remaining 50% of tuition (about EUR 6,000 per year at master's level and EUR 5,000 at bachelor's level under the 2027 fees), or EUR 10,000-12,000 per year if only the early bird offer applies, plus all living costs - rent, meals, transport, insurance - study materials, the Student Union TREY membership fee and the student healthcare fee.",
+        "document_audit": [
+          "Scan original documents as high-quality colour PDFs using the prescribed file names (e.g. 'lastname firstname transcript.pdf') and merge each category into one file.",
+          "Authorised translations are required for both the degree certificate and the transcript when the originals are not in an accepted language.",
+          "Scan both sides of any page carrying serial numbers or stamps, and never photograph documents.",
+          "Programme-specific attachments sit on top of the general seven, so re-read your programme's Studyinfo criteria before submitting."
+        ],
+        "alerts": [
+          "The master's round closes on 7 January 2027, two weeks before the bachelor's round on 21 January 2027 - do not plan one application date for both.",
+          "Only the newest application counts if you submit more than one, so never let a second form overwrite a better first one.",
+          "The scholarship decision arrives together with admission information with no appeal stage, and a later plagiarism finding ends eligibility.",
+          "Scholarship duration is capped at the normative study time (3 years bachelor's, 2 years master's), counted in semesters actually enrolled."
+        ],
+        "submission_workflow": "File one application at Studyinfo.fi inside the intake window, pay the fee, upload attachments by the stated date, then receive admission and scholarship decisions together in spring."
+      }
+    },
+    {
+      "id": 340,
+      "official": {
+        "official_source_urls": [
+          "https://www.abo.fi/en/study/apply/international-master-programmes/scholarship-programme-for-master-students",
+          "https://www.abo.fi/en/study/tuition-fees/",
+          "https://www.abo.fi/en/study/apply/international-master-programmes/application-process/",
+          "https://www.abo.fi/en/study/apply/language-requirements/"
+        ],
+        "application_link": "https://www.abo.fi/en/study/apply/international-master-programmes/scholarship-programme-for-master-students",
+        "catalogue_url": "https://www.abo.fi/en/study/apply/international-master-programmes",
+        "official_updates_url": "https://www.abo.fi/en/study/apply/international-master-programmes/scholarship-programme-for-master-students",
+        "deadline_central": "2027-01-21",
+        "deadline_central_display": "21 January 2027, 3.00 pm Helsinki time",
+        "deadline_note": "The application period for studies starting in August 2027 runs 7 January (8.00) to 21 January 2027 (15.00 Helsinki time); enclosures are due by 28 January 2027 at 15.00. Admission results and scholarship offers are emailed from the beginning of April, and the study place must be accepted by 13 July 2027. The early commitment offer is claimed by accepting the study place and paying the tuition fee within the deadline specified in the admissions letter - a date set individually per admitted student, so the letter, not a published date, governs.",
+        "application_cycle": "August 2027 intake (one admission round per year)",
+        "status": "UPCOMING",
+        "status_note": "The university publishes the 2027 admissions timeline (7-21 January 2027) and the scholarship terms cover students admitted for studies starting in autumn 2026 or later; the fee schedule is published as the 2027 fee of EUR 12,000 per year.",
+        "tuition_coverage_note": "The early commitment offer is a discount of 4000 EUR, which means that the remaining tuition fee for the first academic year is 8000 EUR. For the second year, all admitted students are awarded a tuition fee reduction of 4000 EUR, leaving the remaining annual tuition fee at 8000 EUR. The tuition fee scholarships (waivers) are granted only for the first two years of studies at the university.",
+        "funding_amount": 4000,
+        "funding_currency": "EUR",
+        "funding_period": "per academic year",
+        "tuition_coverage": true,
+        "living_cost_coverage": false,
+        "travel_coverage": false,
+        "fully_funded": false,
+        "benefits": [
+          "Early commitment offer: a discount of 4000 EUR for students liable to pay tuition fees admitted for studies starting in autumn 2026 or later, leaving 8000 EUR of tuition for the first academic year",
+          "Second year: an automatic tuition fee reduction of 4000 EUR for all admitted students, leaving the remaining annual tuition fee at 8000 EUR, with no separate application needed",
+          "Admitted students who do not accept their study place and pay within the early commitment deadline need to pay the full amount of 12000 EUR"
+        ],
+        "eligibility": [
+          "Admitted to one of the university's international master's degree programmes for studies starting in autumn 2026 or later",
+          "Liable to pay a tuition fee, i.e. a citizen of a non-EU/EEA country (EU/EEA/Swiss citizens are exempt from fees)",
+          "For the first-year offer: accept the study place and pay the tuition fee within the deadline specified in the admissions letter",
+          "Students exempted from paying tuition fees are not eligible for the scholarship"
+        ],
+        "requirements": [
+          "One application per application period, submitted through the Studyinfo.fi online portal during the 7-21 January 2027 window",
+          "All application form questions answered in English, including the programme-specific questions on skills and motivation",
+          "Enclosures uploaded to the application form within one week after the application deadline, i.e. by 28 January 2027 at 15.00 Helsinki time",
+          "Application fee applies to applicants from countries outside the EU/EEA"
+        ],
+        "documents": [
+          "Original bachelor's degree certificate",
+          "Original transcript of records of all higher education studies completed so far, including present studies",
+          "Diploma supplement, if available",
+          "Translations of original documents into Swedish, Finnish or English where the originals are not in one of those languages",
+          "Proof of English language skills (test report uploaded as PDF or, for TOEFL, shared with institution code 9880)",
+          "Passport containing name, date of birth, nationality and photo",
+          "Residence permit showing both sides, required of non-EU/EEA applicants already residing in Finland or another EU country on a permanent basis"
+        ],
+        "selection_criteria": [
+          "The early commitment offer is granted to admitted students liable to pay tuition fees; it is claimed by accepting the study place and paying within the admissions letter deadline rather than won competitively",
+          "The second-year reduction of 4000 EUR is awarded to all admitted students and needs no application",
+          "Decisions regarding all scholarships mentioned are final and may not be appealed"
+        ],
+        "coverage": [
+          "Early commitment offer: a 4000 EUR tuition discount, leaving 8000 EUR for the first academic year against the published 2027 fee of 12000 EUR per year",
+          "Second year: a 4000 EUR tuition fee reduction for all admitted students, leaving 8000 EUR for that year",
+          "No tuition fee reduction is granted beyond the second year of studies",
+          "Living costs are not covered - the university states that students themselves need to provide for their living costs"
+        ],
+        "application_method": [
+          "Apply to an international master's degree programme via Studyinfo.fi during the single annual application round (7-21 January 2027)",
+          "Upload all enclosures as colour PDF scans of original documents by 28 January 2027 at 15.00",
+          "Claim the early commitment offer by accepting the study place and paying the tuition fee within the deadline specified in the admissions letter",
+          "No separate application is needed for the second-year reduction"
+        ],
+        "application_route": "A single Studyinfo.fi application in the January round; the discount is claimed through timely acceptance and payment, not a separate scholarship form.",
+        "study_mode": "Full-time",
+        "citizenship_residency": "Citizens of non-EU/EEA countries are liable to pay tuition fees; holders of certain Finnish permits (permanent residence card P, P-EU, temporary protection, EU blue card, Brexit residence documents) are exempt, while a continuous A permit granted for study keeps the fee liability",
+        "international_eligibility": "Yes - the scheme targets non-EU/EEA fee-paying students admitted to the English-taught international master's programmes; EU/EEA/Swiss citizens pay no tuition and receive no discount",
+        "subject_or_agency_requirement": "The published 2027 fee of EUR 12,000 per year and the reduction apply to the international master's degree programmes; international joint and double degree programmes set their own tuition fees and scholarships",
+        "research_requirement": null,
+        "duration": "Scholarships (waivers) are granted only for the first two years of studies at the university",
+        "description": "For students liable to pay tuition fees and admitted to international master's degree programmes for studies starting in autumn 2026 or later, the university grants an early commitment offer of 4000 EUR plus an automatic 4000 EUR reduction in the second year, replacing the former 100% and 80% waiver scheme that applied to students admitted in 2025 or earlier.",
+        "region": "Finland",
+        "program_type": "Early commitment tuition fee discount plus automatic second-year tuition reduction",
+        "english_requirement": "IELTS Academic with a minimum overall band score of 6.5 and no band below 6.0; TOEFL iBT with a minimum score of 92 (tests completed before 21 January 2026) or a minimum score of 4.5 with no band below 4 (tests completed after 21 January 2026), with Home Edition accepted; PTE Academic 68 overall with 61 in writing; Cambridge C1 Advanced at pass level C or C2 Proficiency at C1; the Finnish National Certificate of Language Proficiency (YKI) passed at level 5 in all subparts; a higher education degree taught and assessed entirely in English in an accepted country; or former exchange study at the university with at least 20 ECTS of English-taught coursework. Test scores are valid for two years and must not expire before the application deadline."
+      },
+      "verification": {
+        "source_citations": [
+          "https://www.abo.fi/en/study/apply/international-master-programmes/scholarship-programme-for-master-students",
+          "https://www.abo.fi/en/study/tuition-fees/",
+          "https://www.abo.fi/en/study/apply/international-master-programmes/application-process/"
+        ],
+        "last_verified_date": "2026-10-10",
+        "verification_status": "confirmed",
+        "confidence": "high",
+        "not_confirmed": [
+          "The individual early commitment payment deadline for each admitted student (the page states only 'a deadline specified in their admissions letter')",
+          "The number of students receiving the early commitment offer (the page describes no cap)"
+        ],
+        "notes": "The EUR 4,000 first-year and second-year reductions and the EUR 12,000 full fee were cross-checked between the scholarship page and the 2027 fee table on abo.fi; the 2027 admission timeline, document list and enclosure rules came from the application process page, and the test score thresholds from the language requirements page."
+      },
+      "applicant_utility": {
+        "summary": "This is no longer a competitive waiver: since the 2026 intake the university has replaced its 100% and 80% scholarships with a EUR 4,000 early commitment discount that you claim simply by accepting your place and paying within the deadline in your admissions letter, plus an automatic EUR 4,000 cut in year two. Treat the discount as a payment deadline, not an award you wait for - miss the acceptance-and-payment window and the full EUR 12,000 falls due. Over two years a fee payer spends EUR 16,000 instead of EUR 24,000, and nothing at all is provided for living costs.",
+        "best_fit": "Non-EU/EEA applicants who can put roughly EUR 8,000 on the table within weeks of an April offer and want a near-automatic, predictable fee reduction.",
+        "application_readiness_checklist": [
+          "Diarise 7-21 January 2027 now: there is one admission round a year and applying outside the window is impossible.",
+          "Upload every enclosure by 28 January 2027 at 15.00 Helsinki time, as colour PDF scans of original documents.",
+          "Book IELTS, TOEFL or PTE early enough that results arrive in time and stay valid for the whole application period.",
+          "Line up about EUR 8,000 plus the application fee (non-EU/EEA applicants) so you can pay inside the admissions-letter deadline rather than scramble for funds.",
+          "If you graduate after the January deadline, state your expected graduation date on the application and plan to deliver the original certificate by 31 July 2027."
+        ],
+        "common_rejection_risks": [
+          "Missing the 28 January enclosure deadline - late enclosures are not guaranteed to be considered at all.",
+          "Failing to accept and pay within the admissions-letter deadline, which forfeits the EUR 4,000 and makes the full EUR 12,000 payable.",
+          "Attaching scans of photocopies instead of original documents, which the university explicitly refuses.",
+          "Giving incorrect or false information or withholding required documentation, which leads to direct cancellation of admission.",
+          "Ignoring a Studyinfo request for additional enclosures - you have only seven days to comply."
+        ],
+        "estimated_uncovered_costs": "EUR 8,000 tuition per year for the first two years, all living costs (the university states students themselves need to provide for these), the application fee charged to non-EU/EEA applicants, residence permit and insurance costs, and the full annual fee again from the third year when no reduction applies.",
+        "document_audit": [
+          "Only scans of original documents count - a scan of a copy is rejected, so borrow or request originals well in advance.",
+          "Any document not in English, Swedish or Finnish needs both the original and a translation uploaded together.",
+          "Non-EU/EEA applicants already living in Finland or another EU country must upload both sides of the residence permit.",
+          "An English-taught degree only proves language eligibility if the language of instruction appears on the certificate or transcript; otherwise a separate statement from the awarding institution is required."
+        ],
+        "alerts": [
+          "The reduction covers only the first two years of study - budget years three and beyond at the full fee.",
+          "The one study place per term provision means you can accept only one Finnish bachelor's or master's place per semester.",
+          "All scholarship decisions are final and cannot be appealed, so there is no recourse if an offer is refused.",
+          "Your first Finnish residence permit determines fee liability permanently - later permits do not retroactively exempt you, and a study-based A permit keeps you liable for fees."
+        ],
+        "submission_workflow": "Submit one Studyinfo.fi application during the January window, file enclosures within the following week, then claim the discount by accepting and paying tuition inside the admissions-letter deadline after the April results."
+      }
+    }
+  ]
+}

@@ -1,0 +1,55 @@
+{
+ "base": "https://scholarzone-fwzj.vercel.app",
+ "public_ids": 387,
+ "stats": {
+  "total": 387,
+  "verified_active": 364,
+  "countries": 47
+ },
+ "status_distribution": {
+  "200": 387
+ },
+ "http_500_count": 0,
+ "http_500_ids": [],
+ "non_200_count": 0,
+ "shape_error_count": 0,
+ "shape_error_ids": [],
+ "unparseable_bodies": 0,
+ "verification_status_vs_legacy": {
+  "active|legacy=True": 364,
+  "needs_review|legacy=False": 23
+ },
+ "active_without_legacy_true": 0,
+ "unresolved": [
+  {
+   "id": 79,
+   "http": 200,
+   "verification_status": "needs_review",
+   "legacy_verified": false,
+   "shape_ok": true
+  },
+  {
+   "id": 113,
+   "http": 200,
+   "verification_status": "needs_review",
+   "legacy_verified": false,
+   "shape_ok": true
+  },
+  {
+   "id": 134,
+   "http": 200,
+   "verification_status": "needs_review",
+   "legacy_verified": false,
+   "shape_ok": true
+  },
+  {
+   "id": 140,
+   "http": 200,
+   "verification_status": "needs_review",
+   "legacy_verified": false,
+   "shape_ok": true
+  }
+ ],
+ "invariant_http500_is_zero": true,
+ "invariant_all_386_valid": true
+}

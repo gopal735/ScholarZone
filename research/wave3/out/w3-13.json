@@ -1,0 +1,21 @@
+{
+  "agent_id": "w3_13",
+  "shard": "w3-13",
+  "host": "arabfund.org",
+  "today": "2026-10-04",
+  "logo_override": {
+    "url": "https://www.arabfund.org/wp-content/uploads/2023/10/Logo-1ldpi-Copy.png",
+    "page_url": "https://www.arabfund.org/",
+    "official_host": true,
+    "alt_text": "Arab Fund for Economic and Social Development",
+    "validation_result": "verified",
+    "validation_detail": "webfetch returned 'Image fetched successfully', which per the brief confirms HTTP 200 plus a real image content type rather than a WAF interstitial or HTML error page. Declared by the site itself in Yoast JSON-LD as width 321 x height 346. The asset was decoded and rendered for inspection: a full-colour geometric crest in green/teal/blue on a white field, with no transparency and no white-on-transparent wordmark, so it is legible on a light card. Byte size could not be measured a second way because raw HttpWebRequest to this host is refused with HTTP 403 by the site's WAF even with browser User-Agent/Referer/Accept headers; the webfetch confirmation and the successful render are the verification.",
+    "image_kind": "official_logo",
+    "image_format": "png",
+    "verified_at": "2026-10-04T00:00:00+00:00",
+    "host_evidence": "same_registrable_domain",
+    "_award": "Arab Fund Fellowship for Academic Excellence"
+  },
+  "target_ids": [667],
+  "notes": "Found the mark from the awarding body's own homepage markup rather than by guessing paths. www.arabfund.org serves Yoast SEO JSON-LD whose Organization node names 'Arab Fund for Economic and Social Development' (the AFESD fellowship-awarding body, rule 2 satisfied) and points its 'logo' property at https://www.arabfund.org/wp-content/uploads/2023/10/Logo-1ldpi-Copy.png with caption 'Arab Fund for Economic and Social Development' - this is the site's own authoritative logo declaration, i.e. the mark the organisation itself publishes as its logo, served from its own wp-content uploads on the same registrable domain (rule 1 satisfied). Rejected og:image = https://www.arabfund.org/wp-content/uploads/2023/11/project-management.svg: that is programme/thematic artwork, not the corporate mark, so it is the wrong asset for a fellowship card. Probed and rejected: /favicon.ico HTTP 404, /apple-touch-icon.png HTTP 404, /en HTTP 404. Note the record's stored official_source_url https://www.arabfund.org/overview/fellowships-program timed out on three separate fetches (default and timeout=120), and https://arabfund.org/overview/fellowships-program also timed out; other paths on the same host answer normally, so this is a slow or blocked path rather than a dead host. That does not affect this shard - the logo comes from the homepage, so page_url is recorded as the homepage where the logo is actually declared."
+}

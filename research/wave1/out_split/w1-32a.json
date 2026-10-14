@@ -1,0 +1,620 @@
+{
+  "agent_id": "w1_32a",
+  "shard": "w1-32a",
+  "today": "2026-10-04",
+  "records": [
+    {
+      "target_id": 314,
+      "outcome": "refreshed",
+      "confirm": true,
+      "confirmation_evidence": "Read the live UCAS call page 'CAS-ANSO Scholarship (Degree Program) 2026 Call for Applications to Study at UCAS' at the stored URL, which states 'The 2026 CAS-ANSO Scholarship is open for application on 15th October 2025' and 'Deadline for Applicants and Referees: 31st January 2026 (Beijing Time)', and confirms UCAS is 'responsible for the enrollment and management of the master's and doctoral candidates of the CAS-ANSO Scholarship Program admitted by UCAS'. The itemised 2026 coverage table was read from the page's own image asset.",
+      "new_scholarship": {
+        "name": "CAS-ANSO Scholarship (Degree Program) 2026",
+        "legacy_titles": ["CAS-ANSO Scholarship (Degree Program) 2026"],
+        "country": "China",
+        "degree_levels": "Master's, PhD",
+        "funding_type": "Fully Funded",
+        "official_source": "University of Chinese Academy of Sciences (UCAS)",
+        "official_source_url": "https://english.ucas.ac.cn/index.php/admission/international-students/financial-aid/6657-cas-anso-scholarship-degree-program-2026-call-for-applications-to-study-at-ucas",
+        "status": "upcoming",
+        "is_verified": true,
+        "last_verified_date": "2026-10-04",
+        "region": "Asia",
+        "program_type": "Degree program (postgraduate research training)",
+        "description": "The CAS-ANSO Scholarship (Degree Program), previously the ANSO Scholarship for Young Talents, is the postgraduate scholarship of the Alliance of National and International Science Organizations for the Belt and Road Regions (ANSO), sponsored by the Chinese Academy of Sciences (CAS) and administered at the University of Chinese Academy of Sciences (UCAS) for master's and PhD study. The 2026 call opened for application on 15 October 2025 and closed for applicants and referees on 31 January 2026 Beijing Time; results were announced in June 2026 and the 2027 call was not yet published on 2026-10-04. The 2026 coverage table published on the call page lists tuition waiver, a monthly stipend of CNY 6,000 or 7,000 for PhD candidates and CNY 3,000 for master's candidates, health insurance, application fee waiver, one international travel allowance and a one-time visa/residence permit allowance. A sub-category, the ANSO-CAS-TWAS/UNESCO PhD Scholarship, selects up to 40 PhD students from developing countries each year, with 10 scholarships prioritised for recipients engaged in climate-related research.",
+        "duration": "PhD: monthly stipend for up to 48 months. Master's: monthly stipend for up to 36 months. The official page states the scholarship duration explicitly in the Admission Notice.",
+        "deadline": "Deadline for Applicants and Referees: 31st January 2026 (Beijing Time) for the 2026 cycle, which has now closed. The 2027 call was not published on the UCAS site on 2026-10-04.",
+        "deadline_date": null,
+        "deadline_precision": "recurring",
+        "application_period": "15 October 2025 to 31 January 2026 (Beijing Time) for the 2026 cycle. The 2027 window was not published on 2026-10-04.",
+        "eligibility_summary": "Applicants must not hold Chinese citizenship, must hold a valid foreign passport, must be proficient in English or Chinese, and must meet the UCAS admission criteria for international students. Master's applicants must be born after 1 January 1996 (inclusive) and PhD applicants after 1 January 1991 (inclusive). Applicants currently pursuing a master's or doctoral degree at any institution in China are barred from the corresponding level of this scholarship, and applying through both USTC and UCAS simultaneously leads to disqualification.",
+        "eligibility": [
+          "Does NOT hold Chinese citizenship and holds a valid foreign passport",
+          "Friendly to China and abiding by Chinese laws and decrees and UCAS rules and regulations",
+          "Proficient in English or Chinese",
+          "Master's program: born after 1 January 1996 (inclusive)",
+          "PhD program: born after 1 January 1991 (inclusive)",
+          "Meets the admission criteria for international students of UCAS",
+          "Not currently pursuing a master's degree at any university/institution in China (for the master's program) or a doctoral degree (for the PhD program)",
+          "Does not take up other assignments during the scholarship period",
+          "Is not applying for the CAS-ANSO Scholarship through both USTC and UCAS simultaneously"
+        ],
+        "coverage": [
+          "Tuition waiver for both the PhD program and the Master's program",
+          "PhD monthly stipend: CNY 6,000 or 7,000 per month depending on whether the qualification test has been passed, of which CNY 1,000 is provided by the CAS Institute, up to 48 months",
+          "Master's monthly stipend: CNY 3,000 per month, up to 36 months",
+          "Health insurance",
+          "Application fee waiver",
+          "International travel allowance from the awardee's home country to China, one trip per awarded candidate",
+          "One-time visa/residence permit allowance"
+        ],
+        "benefits": [
+          "Full tuition waiver",
+          "Monthly stipend of CNY 6,000 or 7,000 for PhD candidates",
+          "Monthly stipend of CNY 3,000 for master's candidates",
+          "Health insurance",
+          "Application fee waiver",
+          "One international travel allowance from home country to China",
+          "One-time visa/residence permit allowance"
+        ],
+        "official_updates_url": "https://english.ucas.ac.cn/index.php/admission/international-students/financial-aid",
+        "english_requirement": "Proficiency in English or Chinese",
+        "requirements": [
+          "Meet the admission criteria for international students of UCAS for 2026 Programs for International Students",
+          "Select 'the CAS-ANSO Scholarship' in the UCAS online application",
+          "Tick the additional box if consideration as an ANSO-CAS-TWAS/UNESCO PhD Scholarship candidate is wanted",
+          "Submit the file and application in the UCAS Online Admission System before the deadline"
+        ],
+        "application_method": [
+          "Apply through the UCAS Online Admission System for International Students at https://is.ucas.ac.cn/#/login",
+          "Choose 'the CAS-ANSO Scholarship' in the application form",
+          "Tick the ANSO-CAS-TWAS/UNESCO PhD Scholarship box if relevant",
+          "File and submit the application in the system before the deadline"
+        ],
+        "selection_notes": "Any awardee who fails annual assessments faces consequences including termination of the scholarship, discontinuity of study, and being provided with a certificate of attendance for the period of study undertaken in China but not a formal degree. Awardees must complete centralised training in Chinese language, Chinese culture and all required credits plus practical research and a degree thesis at UCAS colleges and schools or CAS institutes.",
+        "funding_amount": null,
+        "funding_currency": "CNY",
+        "funding_period": "per month",
+        "notes": "The itemised 2026 coverage table on the official page is published as an image (/images/2025/202510/133327_766014_1.png), not as HTML text. It gives two different stipend rates by degree level, so no single funding_amount figure is published; both rates are recorded in coverage[] and benefits[]. For ANSO-CAS-TWAS/UNESCO PhD Scholarship awardees, coverage items 1 to 4 are sponsored by CAS and items 5 and 6, if eligible, are sponsored by TWAS/UNESCO; for all other CAS-ANSO Scholarship awardees items 1 to 6 are covered by CAS.",
+        "catalogue_url": null
+      },
+      "programme_detail_official": {
+        "official_source_urls": [
+          "https://english.ucas.ac.cn/index.php/admission/international-students/financial-aid/6657-cas-anso-scholarship-degree-program-2026-call-for-applications-to-study-at-ucas",
+          "https://english.ucas.ac.cn/images/2025/202510/133327_766014_1.png"
+        ],
+        "application_link": "https://is.ucas.ac.cn/#/login",
+        "official_updates_url": "https://english.ucas.ac.cn/index.php/admission/international-students/financial-aid",
+        "catalogue_url": null,
+        "application_cycle": "2026 cycle: applications opened 15 October 2025 and closed 31 January 2026 (Beijing Time); results announced June 2026. The 2027 call was not published on the UCAS site as of 2026-10-04.",
+        "deadline_central": null,
+        "deadline_central_display": "Deadline for Applicants and Referees: 31st January 2026 (Beijing Time)",
+        "deadline_central_timezone": "Asia/Shanghai",
+        "deadline_note": "The official page publishes one exact deadline for both applicants and referees, 31st January 2026 Beijing Time, for the 2026 cycle. That cycle has closed and no 2027 deadline is published, so no ISO date is carried forward as the next still-applicable cycle. The page also warns that 'The exact dates might be slightly different, please check their websites for details' because USTC runs its own call.",
+        "status": "CLOSED",
+        "status_note": "The 2026 cycle closed on 31 January 2026 and UCAS announced the results in June 2026. The award is annual, so the row is carried as upcoming; the 2027 call was not on the site on 2026-10-04.",
+        "funding_amount": null,
+        "funding_currency": "CNY",
+        "funding_period": "per month",
+        "funding_duration": "PhD stipend for up to 48 months; master's stipend for up to 36 months",
+        "tuition_coverage": true,
+        "tuition_coverage_note": "Item 1 of the published 2026 coverage table reads 'Tuition waiver' in both the PhD program and the Master's program columns.",
+        "living_cost_coverage": true,
+        "travel_coverage": true,
+        "fully_funded": true,
+        "funding_label": "Fully funded for CAS-ANSO awardees: full tuition waiver, monthly stipend (PhD CNY 6,000 or 7,000; master's CNY 3,000), health insurance, application fee waiver, one international travel allowance and a one-time visa/residence permit allowance.",
+        "benefits": [
+          "Full tuition waiver",
+          "PhD monthly stipend CNY 6,000 or 7,000 (CNY 1,000 of which is provided by the CAS Institute), up to 48 months",
+          "Master's monthly stipend CNY 3,000, up to 36 months",
+          "Health insurance",
+          "Application fee waiver",
+          "International travel allowance from home country to China, one trip per awardee",
+          "One-time visa/residence permit allowance"
+        ],
+        "eligibility": [
+          "Should NOT hold Chinese citizenship, with a valid foreign passport",
+          "Friendly to China and abiding by the laws and decrees of China and UCAS rules and regulations",
+          "Proficient in English or Chinese",
+          "Master's program: born after 1 January 1996 (inclusive)",
+          "PhD program: born after 1 January 1991 (inclusive)",
+          "Meets the admission criteria for international students of UCAS",
+          "Not currently pursuing a master's degree at any institution in China (master's program) or a doctoral degree (PhD program)",
+          "Does not take up other assignments during the scholarship period",
+          "Not applying through USTC and UCAS simultaneously"
+        ],
+        "citizenship_residency": "Applicants must NOT hold Chinese citizenship and must hold a valid foreign passport.",
+        "international_eligibility": "Open to non-Chinese-citizen international applicants worldwide; the ANSO-CAS-TWAS/UNESCO PhD sub-category is limited to up to 40 PhD students from developing countries per year.",
+        "degree_levels": ["Master's", "PhD"],
+        "study_mode": "Full-time",
+        "research_requirement": "All awardees are required to finish centralised training in Chinese language, Chinese culture and all required credits as well as practical research and completion of a degree thesis at colleges and schools of UCAS or CAS institutes.",
+        "subject_or_agency_requirement": null,
+        "application_method": "Log in to the Online Admission System for International Students at UCAS (https://is.ucas.ac.cn/#/login) and complete all required application procedures, then file and submit the application in the system before the deadline. When applying, first choose 'the CAS-ANSO Scholarship' in the application, and second check the additional box if the applicant wants to be considered for the ANSO-CAS-TWAS/UNESCO PhD Scholarship.",
+        "application_route": "UCAS Online Admission System for International Students (https://is.ucas.ac.cn/#/login)",
+        "requirements": [
+          "Application materials per the Call for 2026 Master's/Doctoral Degree Programs for International Students",
+          "Select 'the CAS-ANSO Scholarship' in the application",
+          "Check the ANSO-CAS-TWAS/UNESCO PhD Scholarship box if relevant",
+          "Submit the file and application in the system before the deadline"
+        ],
+        "documents": [
+          "Application materials as specified in the Call for 2026 Master's/Doctoral Degree Programs for International Students on the UCAS International Students notice page; the scholarship page itself defers to that call and does not enumerate the document list"
+        ],
+        "english_requirement": "Proficiency in English or Chinese",
+        "english_requirement_note": "The eligibility section states only that 'Eligible applicants should be proficient in English or Chinese'. No minimum TOEFL, IELTS or HSK score and no test-only route are specified on this page.",
+        "selection_criteria": [
+          "Meets the admission criteria for international students of UCAS",
+          "Master's applicants born after 1 January 1996; PhD applicants born after 1 January 1991",
+          "Applications are assessed by UCAS together with the host institute/supervisor"
+        ],
+        "selection_weighting": null,
+        "duration": "The duration of the scholarship is stated explicitly in the Admission Notice. Published stipend ceilings imply up to 48 months for PhD and up to 36 months for master's study.",
+        "award_holder_conditions": [
+          "Must register at the time and place indicated in the Admission Notice, or apply for an extension of registration",
+          "Must abide by relevant UCAS rules and regulations and attend reviews and examinations such as qualifying tests on time; awardees who fail review or examination will be deprived of the scholarship or the scholarship will be suspended",
+          "Must not take up other assignments during the scholarship period",
+          "Any work produced and published during the funding period must be credited to the institute/school and university where the awardee is enrolled, and awardees must acknowledge 'Sponsored by CAS-ANSO Scholarship for Young Talents'",
+          "Must complete centralised Chinese language and cultural training and all required credits",
+          "Awardees on site in China, the host country, at the time of application are not eligible for any travel subsidy"
+        ],
+        "supplements_or_initiatives": [
+          "ANSO-CAS-TWAS/UNESCO PhD Scholarship sub-category: up to 40 PhD students from developing countries selected each year, with 10 scholarships prioritised for recipients engaged in climate-related research",
+          "Special (non-exclusive) consideration for Least Developed Countries (LDCs) and women, aligning with TWAS/UNESCO priority areas"
+        ],
+        "official_contacts": {
+          "general": "CAS-ANSO Scholarship UCAS Office, University of Chinese Academy of Sciences, 80 Zhongguancun East Road, Beijing, 100190, China. Tel +86 10 82674900, Fax +86 10 82672900",
+          "email": "phd@ucas.ac.cn (PhD Program, Ms. Yuchen XIE); master@ucas.ac.cn (Master's Program, Ms. Lisha ZHOU)"
+        },
+        "description": "The CAS-ANSO Scholarship (Degree Program), launched in 2019 as the ANSO Scholarship for Young Talents, trains young scientists from all over the world through postgraduate study. CAS is the major sponsor; the degree program supports 100 to 200 master's students and 300 PhD students every year at USTC, UCAS and CAS institutes. UCAS is responsible for the enrolment and management of the master's and doctoral candidates it admits. The 2026 coverage table published by UCAS itemises tuition waiver, a degree-level-dependent monthly stipend, health insurance, application fee waiver, one international travel allowance and a one-time visa/residence permit allowance.",
+        "program_type": "Degree program",
+        "region": "Asia",
+        "coverage": "Tuition waiver, monthly stipend, health insurance, application fee waiver, international travel allowance, one-time visa/residence permit allowance",
+        "last_verified_date": "2026-10-04"
+      },
+      "programme_detail_applicant_utility": {
+        "application_readiness_checklist": [
+          "Confirm the next call year on the UCAS Financial Aids listing; the 2027 call was not published on 2026-10-04",
+          "Hold a valid foreign passport and confirm you do not hold Chinese citizenship",
+          "Check the age cut-off: born after 1 January 1996 for the master's program, after 1 January 1991 for the PhD program",
+          "Secure a supervisor or host institute at UCAS or a CAS institute before applying",
+          "Prepare the documents listed in the Call for Master's/Doctoral Degree Programs for International Students, because the scholarship page defers to that call",
+          "Have your referee submit the referee assessment by the same date as your own application",
+          "Create an account in the UCAS Online Admission System for International Students and select 'the CAS-ANSO Scholarship' in the form",
+          "Tick the ANSO-CAS-TWAS/UNESCO PhD Scholarship box if you want to be considered for that sub-category"
+        ],
+        "common_rejection_risks": [
+          "Applying through both USTC and UCAS simultaneously, which the page says leads to disqualification from admission",
+          "Holding Chinese citizenship or applying without a valid foreign passport",
+          "Already studying for a master's in China when applying to the master's program, or a doctorate in China when applying to the PhD program",
+          "Missing the single joint deadline for applicants and referees, 31 January in the 2026 cycle",
+          "Failing the annual assessment or qualifying test, which terminates the scholarship and the degree",
+          "Not crediting the host institute and university, or not acknowledging 'Sponsored by CAS-ANSO Scholarship for Young Talents', on published work"
+        ],
+        "estimated_uncovered_costs": [
+          "Living costs beyond the published stipend: the table gives CNY 3,000 per month for master's and CNY 6,000 or 7,000 for PhD, with no separate accommodation allowance listed",
+          "Costs of travel beyond the single home-country-to-China trip covered by the travel allowance",
+          "Personal expenses, books, insurance top-ups and any costs of dependants",
+          "Deposits or fees not covered by the application fee waiver and the one-time visa/residence permit allowance"
+        ],
+        "document_audit": [
+          "Valid foreign passport (Chinese citizens are not eligible)",
+          "Evidence of date of birth against the level-specific cut-off",
+          "Transcripts and degree certificates per the Call for Master's/Doctoral Degree Programs for International Students",
+          "Evidence of English or Chinese proficiency",
+          "Supervisor or host institute contact and acceptance",
+          "Referee assessment submitted by the same deadline as the application"
+        ],
+        "alerts": [
+          {
+            "trigger": "2026 cycle closed",
+            "message": "The 2026 call closed on 31 January 2026 Beijing Time and results were announced in June 2026. Do not attempt to submit to the 2026 round."
+          },
+          {
+            "trigger": "2027 dates not published",
+            "message": "No 2027 opening date or deadline was on the UCAS site on 2026-10-04. Past cycles opened mid-October and closed at the end of January or mid-February, but that is a historical pattern, not a published 2027 date."
+          },
+          {
+            "trigger": "Dual application bar",
+            "message": "Applying for the CAS-ANSO Scholarship through both USTC and UCAS at the same time results in disqualification from admission."
+          },
+          {
+            "trigger": "Coverage table is an image",
+            "message": "The itemised 2026 coverage table is published as an image on the call page. Verify the stipend figures against that image rather than any text summary."
+          }
+        ],
+        "submission_workflow": [
+          "Read the UCAS Financial Aids listing to find the current call and the linked Call for Master's/Doctoral Degree Programs for International Students",
+          "Register in the UCAS Online Admission System for International Students at https://is.ucas.ac.cn/#/login",
+          "Identify a supervisor or host institute and agree the study plan before submitting",
+          "Upload the required documents and submit the application with 'the CAS-ANSO Scholarship' selected",
+          "Tick the ANSO-CAS-TWAS/UNESCO PhD Scholarship box if relevant",
+          "Coordinate with the referee so their assessment reaches UCAS by the same deadline",
+          "Save the submitted application for your records and monitor the admission system and email for the outcome",
+          "On award, register at the time and place in the Admission Notice and acknowledge the sponsorship in all published work"
+        ]
+      },
+      "programme_detail_verification": {
+        "cycle_verified": "2026 cycle verified 2026-10-04: call page live at the stored URL, deadline 31 January 2026 Beijing Time already passed, results announced June 2026",
+        "verification_confidence": 0.92,
+        "official_fields_confirmed": [
+          "name",
+          "official_source",
+          "country",
+          "degree_levels",
+          "funding_type",
+          "tuition_coverage",
+          "living_cost_coverage",
+          "travel_coverage",
+          "fully_funded",
+          "funding_currency",
+          "funding_period",
+          "coverage",
+          "benefits",
+          "eligibility",
+          "deadline",
+          "deadline_precision",
+          "application_period",
+          "application_method",
+          "duration",
+          "selection_notes",
+          "award_holder_conditions",
+          "status"
+        ],
+        "institution_check_required": [
+          "Re-check the UCAS Financial Aids listing for a published 2027 CAS-ANSO call, including whether the 2026 opening date of 15 October and 31 January deadline shift in the next cycle",
+          "Confirm the stipend rates for the 2027 cycle, since the 2026 coverage table is published only as an image on the call page"
+        ],
+        "unverified_or_removed_claims": [
+          "No single funding_amount is published: the 2026 coverage table gives CNY 6,000 or 7,000 per month for PhD and CNY 3,000 per month for master's, so funding_amount is null and both rates are recorded in coverage[] and benefits[]",
+          "The 2027 cycle dates are not published; deadline_date is therefore null and deadline_precision is recurring rather than exact",
+          "The required document list is not enumerated on the scholarship page; it defers to the Call for 2026 Master's/Doctoral Degree Programs for International Students, so required_documents is not asserted",
+          "The ANSO-CAS-TWAS/UNESCO PhD Scholarship sub-category is only partially CAS-funded, so the blanket 'Fully Funded' label applies to CAS-ANSO awardees, not to that sub-category",
+          "No English test score threshold (TOEFL/IELTS/HSK) is published on the page; only 'proficient in English or Chinese' is stated",
+          "Study mode is stated as full-time by implication of the admission requirement rather than in explicit words"
+        ],
+        "source_citations": [
+          "https://english.ucas.ac.cn/index.php/admission/international-students/financial-aid/6657-cas-anso-scholarship-degree-program-2026-call-for-applications-to-study-at-ucas",
+          "https://english.ucas.ac.cn/images/2025/202510/133327_766014_1.png"
+        ],
+        "researched_by": "w1_32a"
+      },
+      "logo_override": {
+        "url": "https://english.ucas.ac.cn/images/home/logo_ucas5.png",
+        "page_url": "https://english.ucas.ac.cn/index.php/admission/international-students/financial-aid/6657-cas-anso-scholarship-degree-program-2026-call-for-applications-to-study-at-ucas",
+        "official_host": true,
+        "alt_text": "University of Chinese Academy of Sciences",
+        "validation_result": "verified",
+        "validation_detail": "png, webfetch returned 'Image fetched successfully' confirming HTTP 200 with an image content type; renders as the dark-blue UCAS circular seal plus the red bilingual wordmark 'UNIVERSITY OF CHINESE ACADEMY OF SCIENCES' on white, so it is legible on a light card",
+        "image_kind": "official_logo",
+        "image_format": "png",
+        "verified_at": "2026-10-04T00:00:00+00:00",
+        "host_evidence": "same_registrable_domain",
+        "_award": "CAS-ANSO Scholarship (Degree Program) 2026"
+      },
+      "research_notes": {
+        "logo": "The scholarship page's own header markup contains the site logo: <img src=\"/images/home/logo_ucas5.png\" title=\"University of Chinese Academy of Sciences\"> linking to the site home. Resolved against the stored official_source_url host and probed directly: webfetch returned 'Image fetched successfully', which confirms HTTP 200 with an image content type. The rendered image is the dark-blue circular UCAS seal with the red bilingual wordmark, i.e. a dark/coloured variant that stays visible on a light card, not white-on-transparent. The stored current_image_url (https://english.ucas.ac.cn/media/system/images/arrow.png) is the breadcrumb arrow icon, not a logo, so it was replaced.",
+        "unverified": [
+          "2027 cycle opening date and deadline (not published on 2026-10-04)",
+          "Required document list (page defers to the Call for Master's/Doctoral Degree Programs for International Students)",
+          "English/Chinese language test thresholds (only 'proficient in English or Chinese' is stated)"
+        ],
+        "substitution": null,
+        "official_pages_read": [
+          "https://english.ucas.ac.cn/index.php/admission/international-students/financial-aid/6657-cas-anso-scholarship-degree-program-2026-call-for-applications-to-study-at-ucas",
+          "https://english.ucas.ac.cn/images/2025/202510/133327_766014_1.png"
+        ],
+        "degree_level_confirmed": "The page states that 'The degree program supports 100 to 200 Master's students and 300 PhD students every year to pursue postgraduate education at the University of Science and Technology of China (USTC), the University of Chinese Academy of Sciences (UCAS) and institutes of Chinese Academy of Sciences (CAS) around China', and sets separate age cut-offs for 'For Master's program applicants' and 'For PhD program applicants'.",
+        "url_observed": null,
+        "contradictions": [
+          "stored current_image_url https://english.ucas.ac.cn/media/system/images/arrow.png is the breadcrumb arrow icon, not the official logo; replaced with the site's own /images/home/logo_ucas5.png",
+          "stored deadline_display 'for Applicants and Referees:' is a truncated fragment of the label; the official full wording is 'Deadline for Applicants and Referees: 31st January 2026 (Beijing Time)'",
+          "stored deadline_precision 'application_dead' is not one of the allowed values",
+          "stored status 'open' is wrong: the 2026 call opened 15 October 2025 and closed 31 January 2026 Beijing Time, and results were announced in June 2026, so the row is now upcoming",
+          "stored deadline_date was null although the official page does publish an exact date for the 2026 cycle; that cycle is closed so no ISO date is carried forward, but the deadline text is now recorded verbatim",
+          "stored funding 'Full scholarship' is imprecise: the official coverage table itemises tuition waiver, stipend, health insurance, application fee waiver, one travel allowance and a one-time visa/residence permit allowance, and the ANSO-CAS-TWAS/UNESCO PhD sub-category is only partially CAS-funded"
+        ],
+        "skeleton": false
+      }
+    },
+    {
+      "target_id": 315,
+      "outcome": "refreshed",
+      "confirm": true,
+      "confirmation_evidence": "Read the live PKU International Students Division notice '2026 Scholarship Applications Are Now Open for Prospective International Graduate Students of Peking University' at the stored URL, whose section I is headed 'Chinese Government Scholarship for Advanced Graduate Program' and states 'Full or partial tuition waiver, living stipend, housing, and medical insurance' and 'The institution code of Peking University is 10001, and the type of application program is Type B'. Cross-checked against the standing programme page isd.pku.edu.cn/en/detail.php?id=18, which repeats the same scope and duration.",
+      "new_scholarship": {
+        "name": "Chinese Government Scholarship for Advanced Graduate Program (Type B) at Peking University",
+        "legacy_titles": ["Chinese Government Scholarship for Advanced Graduate Program at Peking University (CSC Type B)"],
+        "country": "China",
+        "degree_levels": "Master's, PhD",
+        "funding_type": "Tuition Waiver + Stipend",
+        "official_source": "Peking University",
+        "official_source_url": "https://isd.pku.edu.cn/en/detail.php?id=819",
+        "status": "upcoming",
+        "is_verified": true,
+        "last_verified_date": "2026-10-04",
+        "region": "Asia",
+        "program_type": "Government scholarship administered by the China Scholarship Council, Type B (university nomination), awarded through Peking University",
+        "description": "The Chinese Government Scholarship for Advanced Graduate Program is a merit-based award from the China Scholarship Council for international students with outstanding academic backgrounds, awarded through Peking University under Type B. Peking University's 2026 notice states the scope as 'Full or partial tuition waiver, living stipend, housing, and medical insurance' for a duration of 2 to 3 years at master's level and 4 to 5 years at doctoral level. Applicants must first secure admission to a self-funded full-time international graduate programme and then apply twice: once in the Peking University International Student Service System and once in the China Scholarship Council system. The 2026 cycle closed at 9:00 a.m. Beijing Time on 9 March 2026 for the PKU form and 24:00 Beijing Time on 17 March 2026 for the CSC form, and the 2027 notice had not been published on 2026-10-04.",
+        "duration": "Master's degree: 2 - 3 years. Doctoral degree: 4 - 5 years. Renewable on an annual basis provided the holder passes the annual scholarship review.",
+        "deadline": "For the 2026 cycle the Peking University online scholarship application was 'open now until Beijing Time at 9:00 a.m. on March 9' and the China Scholarship Council application 'open now until Beijing Time at 24:00 on March 17'. Both dates have passed; the 2027 notice was not published on 2026-10-04.",
+        "deadline_date": null,
+        "deadline_precision": "recurring",
+        "application_period": "The standing programme page states 'Application Time: Generally in January and March each year'. The 2026 cycle ran from the notice date of 12 January 2026 to 9 March 2026 (PKU) and 17 March 2026 (CSC).",
+        "eligibility_summary": "Applicants must meet the admission requirements for international students of Peking University, must have successfully submitted an application for the current year's full-time self-funded graduate programme as an international student, must not have received any other scholarship from the Chinese government or Peking University (except one-time non-renewable merit awards), and must not be a candidate in a joint training programme.",
+        "eligibility": [
+          "Meets the pertinent admission requirements for international students of Peking University",
+          "Has successfully submitted an application for the current year's full-time self-funded graduate programme as an international student of Peking University",
+          "Has not received any other scholarship from the Chinese government or Peking University (with the exception of one-time non-renewable merit awards)",
+          "Is not a candidate in a joint training programme"
+        ],
+        "coverage": [
+          "Full or partial tuition waiver",
+          "Living stipend",
+          "Housing",
+          "Medical insurance"
+        ],
+        "benefits": [
+          "Full or partial tuition waiver",
+          "Living stipend",
+          "Housing",
+          "Medical insurance",
+          "Annual renewal subject to passing the annual scholarship review"
+        ],
+        "official_updates_url": "https://isd.pku.edu.cn/en/detail.php?id=18",
+        "catalogue_url": "https://isd.pku.edu.cn/en/detail.php?id=18",
+        "english_requirement": null,
+        "requirements": [
+          "Secure admission to a full-time self-funded international graduate programme at Peking University first",
+          "Complete the Peking University online scholarship application in the Peking University International Student Service System",
+          "Complete the China Scholarship Council application in the CSC system; the CSC system allows only one major per applicant",
+          "Use institution code 10001 and application programme type Type B",
+          "Upload official transcripts of past educational experiences and other supporting documents",
+          "Download item 6 of the materials, the Certificate for CSC Advanced Graduate Program Application, from the Application Status page of the PKU International Student Service System from 25 February"
+        ],
+        "application_method": [
+          "Log on to the Peking University International Student Service System at http://www.studyatpku.com, select Home - Scholarship Application - Application for Prospective Students, fill in information, upload official transcripts and supporting documents and submit",
+          "Log on to the China Scholarship Council system at http://www.campuschina.org, complete and submit, and save the completed form",
+          "Apply only once at PKU; the single PKU application is considered for multiple scholarship categories"
+        ],
+        "selection_notes": "Scholarship is renewable on an annual basis provided scholarship recipients have participated in and passed the annual scholarship review. Admission result will be indicated by the Admission Letter from Peking University, not any interim processing record in the CSC system.",
+        "funding_amount": null,
+        "funding_currency": null,
+        "funding_period": null,
+        "notes": "Amounts are not published by Peking University; the scope is described only as a full or partial tuition waiver plus living stipend, housing and medical insurance. Because the tuition waiver can be full or partial, this row is not treated as fully funded. The China Scholarship Council administers the award (Type B) while Peking University is the nominating institution; the stored row credits Peking University, which is the page publishing the application instructions."
+      },
+      "programme_detail_official": {
+        "official_source_urls": [
+          "https://isd.pku.edu.cn/en/detail.php?id=819",
+          "https://isd.pku.edu.cn/en/detail.php?id=18"
+        ],
+        "application_link": "https://www.studyatpku.com",
+        "official_updates_url": "https://isd.pku.edu.cn/en/detail.php?id=18",
+        "catalogue_url": "https://isd.pku.edu.cn/en/detail.php?id=18",
+        "application_cycle": "2026 cycle: the Peking University notice is dated 12 January 2026 and opened scholarship applications for 2026 prospective international graduate students; PKU form deadline 9 March 2026 09:00 Beijing Time, CSC form deadline 17 March 2026 24:00 Beijing Time. The 2027 notice was not published on isd.pku.edu.cn as of 2026-10-04.",
+        "deadline_central": null,
+        "deadline_central_display": "Peking University online scholarship application 'open now until Beijing Time at 9:00 a.m. on March 9'; China Scholarship Council application 'open now until Beijing Time at 24:00 on March 17'",
+        "deadline_central_timezone": "Asia/Shanghai",
+        "deadline_note": "There are two separate deadlines in the same cycle: the PKU internal scholarship form closes first at 09:00 Beijing Time on 9 March and the CSC national form closes later at 24:00 Beijing Time on 17 March. Both 2026 dates have passed and no 2027 dates are published, so no ISO date is carried forward. The standing programme page states only 'Application Time: Generally in January and March each year'.",
+        "status": "CLOSED",
+        "status_note": "The 2026 application window closed on 17 March 2026 Beijing Time. The programme is annual, so the row is carried as upcoming; PKU publishes the next cycle's notice in January.",
+        "funding_amount": null,
+        "funding_currency": null,
+        "funding_period": null,
+        "funding_duration": "Master's 2 - 3 years; doctoral 4 - 5 years, renewable annually subject to the annual scholarship review",
+        "tuition_coverage": true,
+        "tuition_coverage_note": "The scope is stated as 'Full or partial tuition waiver, living stipend, housing, and medical insurance'. Tuition is therefore covered but not necessarily in full.",
+        "living_cost_coverage": true,
+        "travel_coverage": null,
+        "fully_funded": false,
+        "funding_label": "Full or partial tuition waiver plus living stipend, housing and medical insurance; because the waiver may be only partial, this is not a guaranteed fully funded award.",
+        "benefits": [
+          "Full or partial tuition waiver",
+          "Living stipend",
+          "Housing",
+          "Medical insurance"
+        ],
+        "eligibility": [
+          "Must meet the pertinent admission requirements for international students of Peking University",
+          "Has successfully submitted an application for the current year's full-time self-funded graduate programmes for international students of Peking University",
+          "Has not received any other scholarship from the Chinese government or Peking University (with the exception of one-time non-renewable merit awards)",
+          "Should not be a candidate in a joint training programme"
+        ],
+        "citizenship_residency": "For international students who do not hold Chinese citizenship and are applying as international graduate students of Peking University; Peking University requires evidence of foreign nationality status.",
+        "international_eligibility": "Open to international (non-Chinese-citizen) applicants who hold an offer of a full-time self-funded international graduate programme at Peking University.",
+        "degree_levels": ["Master's", "PhD"],
+        "study_mode": "Full-time",
+        "research_requirement": null,
+        "subject_or_agency_requirement": null,
+        "application_method": "Complete the Peking University online scholarship application in the Peking University International Student Service System (Home - Scholarship Application - Application for Prospective Students), uploading official transcripts and supporting documents, and separately complete the China Scholarship Council application, saving the completed form. At PKU a single scholarship application is considered for multiple categories.",
+        "application_route": "Peking University International Student Service System (studyatpku.com) plus China Scholarship Council system (campuschina.org); Peking University institution code 10001, application programme Type B",
+        "requirements": [
+          "Admission to a full-time self-funded international graduate programme at Peking University",
+          "One PKU online scholarship application covering all applicable scholarship categories",
+          "One CSC application; the CSC system permits only one major per applicant",
+          "Official transcripts of past educational experiences and other supporting documents uploaded in the PKU system",
+          "No other Chinese government or PKU scholarship held, except one-time non-renewable merit awards",
+          "Not a candidate in a joint training programme"
+        ],
+        "documents": [
+          "Official transcripts of past educational experiences uploaded through the PKU International Student Service System",
+          "Certificate for CSC Advanced Graduate Program Application (item 6 of the CSC material list), downloadable from the Application Status page of the PKU system from 25 February",
+          "Foreign Physical Examination Statement and No Criminal Record Self-Declaration (personal signature required) where the listed items are not applicable",
+          "Further materials listed in Attachment 2: List of Application Materials for Chinese Government Scholarship, referenced by the notice but not reproduced on the page"
+        ],
+        "english_requirement": null,
+        "english_requirement_note": "The scholarship notice states no language requirement. English-taught and Chinese-taught programme admission requirements are set separately in the Peking University international graduate admission information, not in this notice.",
+        "selection_criteria": [
+          "Outstanding academic background, professional ability and potential for future advancement",
+          "Meets Peking University international admission requirements",
+          "Merit-based review combining reviews of individual applications and institutional recommendations"
+        ],
+        "selection_weighting": null,
+        "duration": "Master's degree 2 - 3 years; doctoral degree 4 - 5 years",
+        "award_holder_conditions": [
+          "Renewable on an annual basis provided the recipient has participated in and passed the annual scholarship review",
+          "Must not hold any other scholarship from the Chinese government or Peking University, except one-time non-renewable merit awards",
+          "Must not be a candidate in a joint training programme",
+          "Final award is based on the selected major in the CSC system when applying for multiple majors"
+        ],
+        "supplements_or_initiatives": [
+          "Beijing Government Scholarship (BGS) and Peking University Scholarship for International Students (PKUS) are announced in the same notice and are applied for through the same single PKU scholarship application"
+        ],
+        "official_contacts": {
+          "general": "International Students Division (New Sun Student Center), Office of International Relations, Peking University, Haidian District, Beijing. Tel 86-10-62751230",
+          "email": null
+        },
+        "description": "The Chinese Government Scholarship for Advanced Graduate Program is a merit-based China Scholarship Council award for international students, administered through Peking University under Type B. The scope published by Peking University is a full or partial tuition waiver, living stipend, housing and medical insurance, for 2 to 3 years at master's level and 4 to 5 years at doctoral level. Applicants must already hold a self-funded international graduate admission, then submit one PKU scholarship application and one CSC application, using institution code 10001 and Type B. The award is renewable annually if the holder passes the annual scholarship review.",
+        "program_type": "Government scholarship, Type B (university nomination)",
+        "region": "Asia",
+        "coverage": "Full or partial tuition waiver, living stipend, housing and medical insurance",
+        "last_verified_date": "2026-10-04"
+      },
+      "programme_detail_applicant_utility": {
+        "application_readiness_checklist": [
+          "Secure an admission offer for a full-time self-funded international graduate programme at Peking University before the scholarship window, because the eligibility rule requires it",
+          "Watch the PKU scholarship notice, which is published in January each year, and note that application time is generally in January and March",
+          "Create a Peking University International Student Service System account and complete the single scholarship application covering all applicable categories",
+          "Prepare a separate CSC application; the CSC system allows only one major, and that selected major drives the award evaluation",
+          "Use institution code 10001 and application programme Type B in the CSC form",
+          "Upload official transcripts of past educational experiences and supporting documents in the PKU system",
+          "Download the Certificate for CSC Advanced Graduate Program Application from the PKU system's Application Status page once it appears, from 25 February in the 2026 cycle",
+          "Submit the PKU form well before the CSC deadline, since the PKU deadline falls about a week earlier"
+        ],
+        "common_rejection_risks": [
+          "Holding another Chinese government or Peking University scholarship, which bars the application unless it is a one-time non-renewable merit award",
+          "Being a candidate in a joint training programme",
+          "Applying before admission to a self-funded full-time international graduate programme is confirmed",
+          "Missing the earlier PKU internal deadline (9 March 2026 in the 2026 cycle) and assuming the later CSC deadline covers both",
+          "Selecting different majors in the PKU and CSC systems, so the award is evaluated on a major the applicant did not intend",
+          "Reading the CSC system's interim processing record as the result; the official result is the Peking University Admission Letter"
+        ],
+        "estimated_uncovered_costs": [
+          "The tuition shortfall if the waiver granted is only partial",
+          "Living costs above the CSC stipend rate, which Peking University does not publish",
+          "Any costs associated with dependants",
+          "Travel costs to Beijing; no travel component is listed in the published scope"
+        ],
+        "document_audit": [
+          "Passport and evidence of foreign nationality status",
+          "Admission documentation for a full-time self-funded international graduate programme",
+          "Official transcripts of past educational experiences",
+          "Certificate for CSC Advanced Graduate Program Application (CSC material list item 6)",
+          "Foreign Physical Examination Statement and No Criminal Record Self-Declaration with personal signature where the listed items do not apply",
+          "The remaining items in Attachment 2: List of Application Materials for Chinese Government Scholarship"
+        ],
+        "alerts": [
+          {
+            "trigger": "2026 window closed",
+            "message": "The 2026 cycle closed at 09:00 Beijing Time on 9 March for the PKU form and 24:00 Beijing Time on 17 March for the CSC form. Both have passed as of 2026-10-04."
+          },
+          {
+            "trigger": "No 2027 notice yet",
+            "message": "The latest scholarship notice on isd.pku.edu.cn is the 2026 cycle. Peking University has published this notice in January in prior years, so monitor the site from January."
+          },
+          {
+            "trigger": "Two separate deadlines",
+            "message": "Do not treat the CSC deadline as the only one. The PKU internal scholarship application closes roughly a week earlier."
+          },
+          {
+            "trigger": "Only one CSC major allowed",
+            "message": "The CSC system permits only one major per applicant, and the award is evaluated on that major. Coordinate your PKU and CSC major selection."
+          }
+        ],
+        "submission_workflow": [
+          "Obtain and confirm admission to a full-time self-funded international graduate programme at Peking University",
+          "Read the January scholarship notice on isd.pku.edu.cn and the attached instructions for the Chinese Government Scholarship Information System",
+          "Log on to the Peking University International Student Service System and submit one scholarship application for all applicable categories",
+          "Upload official transcripts and supporting documents in the PKU system",
+          "Download the Certificate for CSC Advanced Graduate Program Application from the PKU system's Application Status page when it becomes available",
+          "Submit the PKU application before its 09:00 Beijing Time deadline",
+          "Log on to the China Scholarship Council system, complete and submit the Type B application under institution code 10001, and save the completed form",
+          "Submit the CSC application before its 24:00 Beijing Time deadline",
+          "Await the Peking University Admission Letter rather than relying on CSC system status"
+        ]
+      },
+      "programme_detail_verification": {
+        "cycle_verified": "2026 cycle verified 2026-10-04: PKU scholarship notice of 12 January 2026 live at the stored URL, both 2026 deadlines passed; standing programme page also read",
+        "verification_confidence": 0.9,
+        "official_fields_confirmed": [
+          "name",
+          "official_source",
+          "country",
+          "degree_levels",
+          "funding_type",
+          "tuition_coverage",
+          "living_cost_coverage",
+          "coverage",
+          "benefits",
+          "eligibility",
+          "duration",
+          "deadline",
+          "deadline_precision",
+          "application_period",
+          "application_method",
+          "application_route",
+          "requirements",
+          "documents",
+          "selection_criteria",
+          "selection_notes",
+          "award_holder_conditions",
+          "status"
+        ],
+        "institution_check_required": [
+          "Confirm the 2027 notice date on the PKU International Students Division scholarship notices list when it is published, since the 2026 notice was dated 12 January 2026",
+          "Confirm whether the CSC stipend and housing rates for Type B change for the 2027 cycle; Peking University publishes no amounts"
+        ],
+        "unverified_or_removed_claims": [
+          "No funding amount, currency or period is published by Peking University, so funding_amount, funding_currency and funding_period are null",
+          "No 2027 deadline is published; deadline_date is null and deadline_precision is recurring",
+          "Travel coverage is not mentioned in the published scope, so travel_coverage is null rather than false",
+          "No language requirement is stated in the scholarship notice, so english_requirement is null",
+          "The full CSC document list lives in Attachment 2, which is referenced but not published as text on the page; only the items named in the notice are listed",
+          "stored status 'open' is wrong: both 2026 deadlines passed in March 2026, so the row is now upcoming",
+          "stored deadline_precision 'unknown' is wrong: Peking University publishes two exact deadlines per cycle plus the standing 'Generally in January and March each year' note"
+        ],
+        "source_citations": [
+          "https://isd.pku.edu.cn/en/detail.php?id=819",
+          "https://isd.pku.edu.cn/en/detail.php?id=18"
+        ],
+        "researched_by": "w1_32a"
+      },
+      "logo_override": {
+        "url": "https://isd.pku.edu.cn/en/Uploads/Bdlb/Picture/2021/12/02/s61a8973c3de37.png",
+        "page_url": "https://isd.pku.edu.cn/en/detail.php?id=819",
+        "official_host": true,
+        "alt_text": "Peking University International Students Division, Office of International Relations",
+        "validation_result": "verified",
+        "validation_detail": "png, webfetch returned 'Image fetched successfully' confirming HTTP 200 with an image content type; renders as the Peking University mark with 'PEKING UNIVERSITY / 北京大学' and 'International Students Division, Office of International Relations, Peking University' on a solid dark panel, so the white lettering stays legible on a light card",
+        "image_kind": "official_logo",
+        "image_format": "png",
+        "verified_at": "2026-10-04T00:00:00+00:00",
+        "host_evidence": "same_registrable_domain",
+        "_award": "Chinese Government Scholarship for Advanced Graduate Program (Type B) at Peking University"
+      },
+      "research_notes": {
+        "logo": "The stored page's own header markup contains the Peking University International Students Division logo at the relative path ./Uploads/Bdlb/Picture/2021/12/02/s61a8973c3de37.png. Resolved against the page directory this is /en/Uploads/Bdlb/Picture/2021/12/02/s61a8973c3de37.png; the root-relative guess without /en returned HTTP 404 and was discarded. The /en/ path was probed and returned 'Image fetched successfully', confirming HTTP 200 with an image content type. The asset is Peking University's own mark served from the awarding body's own host (isd.pku.edu.cn), rendered as white lettering on a solid dark panel rather than white-on-transparent, so it remains visible on a light card. The stored record had no image at all.",
+        "unverified": [
+          "Stipend, housing and insurance amounts (not published by Peking University)",
+          "2027 cycle notice date and deadlines",
+          "Complete CSC document list (Attachment 2 is referenced but not published as page text)",
+          "Language requirements (not stated in the scholarship notice)"
+        ],
+        "substitution": null,
+        "official_pages_read": [
+          "https://isd.pku.edu.cn/en/detail.php?id=819",
+          "https://isd.pku.edu.cn/en/detail.php?id=18"
+        ],
+        "degree_level_confirmed": "The 2026 notice states '3. Scholarship Duration Master's degree: 2 - 3 years / Doctoral degree: 4 - 5 years', and the standing programme page repeats 'Master degree candidates: 2 - 3 years / Doctoral degree candidates: 4 - 5 years'.",
+        "url_observed": null,
+        "contradictions": [
+          "stored status 'open' is wrong: the 2026 cycle closed at 09:00 Beijing Time on 9 March 2026 (PKU form) and 24:00 on 17 March 2026 (CSC form); the row is now upcoming",
+          "stored deadline_precision 'unknown' is wrong: Peking University publishes two exact deadlines per cycle, and the standing programme page adds 'Application Time: Generally in January and March each year'",
+          "stored deadline_display was null although the official page publishes the deadline wording verbatim",
+          "stored funding label 'Full or partial scholarship' understated the package: the official scope is 'Full or partial tuition waiver, living stipend, housing, and medical insurance'",
+          "stored current_image_url was null (no image at all); the awarding body's own header logo was located and probed"
+        ],
+        "skeleton": false
+      }
+    }
+  ]
+}

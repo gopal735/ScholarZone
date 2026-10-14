@@ -1,0 +1,81 @@
+{
+ "agent": "agent_159",
+ "assignment_count": 1,
+ "scholarships": [
+  {
+   "id": 425,
+   "title": "CEEPUS Exchange Programme",
+   "country": "Multiple",
+   "degree": "Varies by network (undergraduate, master's or doctoral level, following the sending institution's programme)",
+   "funding_label": "Fully Funded",
+   "status": "open",
+   "official_source": "Gov.Pl",
+   "official_source_url": "https://study.gov.pl/ceepus-exchange-programme-central-and-eastern-europe",
+   "application_link": "https://study.gov.pl/ceepus-exchange-programme-central-and-eastern-europe",
+   "catalogue_url": "https://www.ceepus.info",
+   "official_updates_url": "https://www.ceepus.info",
+   "existing": {
+    "funding_amount": null,
+    "funding_currency": null,
+    "funding_period": null,
+    "tuition_coverage": 1,
+    "living_cost_coverage": 1,
+    "travel_coverage": null,
+    "fully_funded": 1,
+    "description": "CEEPUS is a multilateral exchange programme with Central and Eastern Europe, organised as a transnational university network of subject-specific networks, each containing at least three higher education institutions from at least two different CEEPUS contractual countries. Exchanges last 3 to 10 months. Within a network, incoming students are exempted from paying tuition fees and receive a comprehensive grant from the host country sized according to local living costs. Eligibility requires CEEPUS-country nationality and participation through a member institution.",
+    "eligibility": [
+     "National of a CEEPUS country",
+     "Enrolled at a higher education institution that participates in a CEEPUS network",
+     "Applying within a network of at least three institutions from at least two different CEEPUS contractual countries"
+    ],
+    "eligibility_summary": "Exchange students must be nationals of a CEEPUS country and must apply within a network that links at least three higher education institutions from at least two CEEPUS contractual countries. CEEPUS unites universities from 16 Central and Eastern European countries. Incoming students are exempted from tuition fees and receive a grant from the host country sized according to local living costs.",
+    "benefits": [
+     "Exemption from tuition fees at the host institution for incoming students within a network",
+     "Comprehensive grant from the host country, amount depending on the living costs in the host country"
+    ],
+    "coverage": [
+     "Exemption from tuition fees at the host institution for incoming students within a network",
+     "Comprehensive grant from the host country, amount depending on the living costs in the host country"
+    ],
+    "requirements": [
+     "Home institution must participate in a CEEPUS network",
+     "Apply through the network, not through a central scholarship portal",
+     "Check the current network list on ceepus.info"
+    ],
+    "documents": [
+     "Application within the relevant CEEPUS network",
+     "Proof of nationality (CEEPUS-country citizenship required)",
+     "Documents required by the sending and receiving institutions for the network",
+     "Signed letters for the network application round"
+    ],
+    "english_requirement": null,
+    "application_method": [
+     "Application through the sending and receiving institutions within the relevant CEEPUS network",
+     "Network applications submitted with the network's required signed documents"
+    ],
+    "selection_notes": "Not published on the pages read; CEEPUS selection runs at network level.",
+    "best_fit": "Students from CEEPUS countries whose home university participates in a CEEPUS network in their field, seeking a 3-10 month tuition-free exchange with a host-country living grant.",
+    "notes": "CEEPUS expands 'Central European Exchange Program for University Studies' and unites universities from 16 Central and Eastern European countries (Albania, Austria, Bosnia and Herzegovina, Bulgaria, Croatia, the Czech Republic, Hungary, Macedonia, Moldova, Montenegro, Poland, Romania, Serbia, the Slovak Republic and Slovenia, with Prishtina/Kosovo also participating). The grant is paid by the host country and its amount varies, so no single figure can be quoted for the whole programme.",
+    "duration": "3 to 10 months of exchange within a CEEPUS network",
+    "application_period": "Annual cycles. The network application round for 2027/28 closed on 30 November 2026 (signed letters by 15 December 2026); student scholarship calls follow the network rounds and are announced per network.",
+    "deadline_display": "The programme's own site announced on 21 September 2026 that the 'Network Application Round 2027/28' is enabled with a 'Deadline: 30th November, 2026, 23:59 CET' and an 'Extended deadline for signed documents (letters): 15th December, 2026, 23:59 CET'. That is the network (institution) application round; the student scholarship call runs separately per network and per direction, and no central student deadline is published on the pages read.",
+    "deadline_date": null,
+    "region": "Global",
+    "program_type": "Multilateral university exchange programme",
+    "applicant_utility": null,
+    "official_details": null
+   },
+   "missing_fields": [
+    "funding_amount",
+    "funding_currency",
+    "funding_period",
+    "travel_coverage",
+    "english_requirement",
+    "deadline_date",
+    "applicant_utility",
+    "official_details"
+   ]
+  }
+ ],
+ "result_file": "C:\\Users\\GopaL\\Desktop\\Projects folder\\ScholarZone\\backend\\research_output\\live500\\results\\agent_159.json"
+}

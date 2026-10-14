@@ -1,0 +1,44 @@
+[
+  {
+    "scholarship_id": 703,
+    "outcome": "not_applicable",
+    "professors": [],
+    "notes": "Beca de Articulacion (BAR) is a national Government of Chile scholarship administered by Mineduc via the FUAS/Beneficios Estudiantiles system. Live-fetched official ChileAtiende page (https://www.chileatiende.gob.cl/fichas/17226-beca-de-articulacion-bar, HTTP 200) confirms the award is a tuition (arancel) fee waiver of up to $750,000 for graduates of technical careers continuing into professional degrees at any accredited institution: 'Si eres una persona egresada o titulado de carreras tecnicas durante el 2025 y 2026, que desea continuar los estudios para obtener un titulo profesional... financia total o parcialmente el arancel anual'. No host institution, department, programme or supervising professor is attached to the award; the beneficiary applies through FUAS and enrolls at whichever accredited institution is chosen. Central national scheme with no attached institution, so no supervisor research applies. Contact published on the official page is the Ayuda Mineduc call center (600 600 26 26), not faculty email."
+  },
+  {
+    "scholarship_id": 704,
+    "outcome": "not_applicable",
+    "professors": [],
+    "notes": "Allama Muhammad Iqbal Scholarship for Central Asia & Friendly Countries is a central Government of Pakistan initiative administered by the Higher Education Commission (HEC), not a single-institution award. The official HEC page (https://www.hec.gov.pk/english/scholarshipsgrants/CAFC/AMIC/Pages/default.aspx) repeatedly returned transport errors (site unreachable to automated fetches on both http and https; no Wayback Machine snapshot available), so per-batch metadata: the scheme places 350 scholars over five years across undergraduate, postgraduate and doctoral programmes at multiple top-ranked Pakistani universities, with students choosing/being allocated to host universities. As a national/government scheme with no attached institution, no specific supervising professor can be tied to the scholarship and none is named on any official page reachable during this research."
+  },
+  {
+    "scholarship_id": 705,
+    "outcome": "not_applicable",
+    "professors": [],
+    "notes": "Allama Muhammad Iqbal Scholarships for Students from Bangladesh are the student component of the Pak-Bangladesh Knowledge Corridor, a central Government of Pakistan scheme administered by HEC. The official HEC page (https://www.hec.gov.pk/english/scholarshipsgrants/PBKC/Pages/AISB.aspx) repeatedly returned transport errors (site unreachable to automated fetches; no Wayback Machine snapshot available). Per official programme framing, awardees study across many Pakistani public and private universities (medicine, engineering, computer science, business administration, mass communication/media studies, basic and social sciences) at Bachelor's, Master's and PhD levels; no host institution or supervising professor is attached to the award itself. Central national/bilateral government scheme with no attached institution, so supervisor research is not applicable; no professor is named on any reachable official page."
+  },
+  {
+    "scholarship_id": 706,
+    "outcome": "not_applicable",
+    "professors": [],
+    "notes": "Allama Iqbal Scholarships for Sri Lankan Students are the student component of the Pak-Sri Lanka Higher Education Cooperation Programme, run centrally by the Government of Pakistan's Higher Education Commission with the Pakistan High Commission in Colombo and the Ministry of Foreign Affairs. The official HEC page (https://www.hec.gov.pk/english/scholarshipsgrants/pshecp/aiss/Pages/default.aspx) repeatedly returned transport errors (site unreachable to automated fetches; no Wayback Machine snapshot available). The programme provides 1,000 places (800 fully funded, 200 partially funded) over five years at top-ranked Pakistani universities in Engineering Science, Basic and Natural Sciences, and Social Sciences at undergraduate, postgraduate and doctoral levels; host university is not fixed by the award. Central national/bilateral government scheme with no attached institution, so no supervising professor can be tied to the scholarship and none is named on any reachable official page."
+  },
+  {
+    "scholarship_id": 707,
+    "outcome": "no_verified_supervisor_found",
+    "professors": [],
+    "notes": "Live-fetched the official HKUST page (https://join.hkust.edu.hk/global-learners-scholarship, HTTP 200). The Global Learners Scholarship is a university-wide, needs-blind admission scholarship: 'All undergraduate program applicants from underrepresented nationalities are automatically considered' and awardees receive 'a full tuition waiver, renewable for normal duration of study (subject to satisfactory academic performance)'. It is open across all HKUST undergraduate programmes (School of Science, School of Engineering, School of Business and Management, School of Humanities and Social Science, Academy of Interdisciplinary Studies) with only a possible generic top-up 'offered by School/Program Office'. As an undergraduate admission scholarship tied to no specific department, programme or professor, no supervising professor or faculty page is attached to the award; no individual faculty or supervisor is named on the official scholarship page (enquiries route via the Scholarship & Financial Aid Office, https://sfao.hkust.edu.hk). No verified supervisor found."
+  },
+  {
+    "scholarship_id": 708,
+    "outcome": "source_requires_rendering",
+    "professors": [],
+    "notes": "The official source (https://finaid.itb.ac.id/itb-international-undergraduate-scholarship) is a JavaScript-only page: every fetch attempt (direct page, https://finaid.itb.ac.id/, and https://finaid.itb.ac.id/scholarship) returned only the app shell title 'ITB FinAid' with no rendered body content, and no Wayback Machine snapshot exists for the URL. Supervisor research could not be performed from the official page because its content requires client-side rendering (source_requires_rendering). Programme structure per the scholarship listing is an Institut Teknologi Bandung financial-aid office award for S1 (undergraduate) study from partner countries; no supervising faculty are named on any page reachable without rendering."
+  },
+  {
+    "scholarship_id": 709,
+    "outcome": "no_verified_supervisor_found",
+    "professors": [],
+    "notes": "Live-fetched the official Curtin scholarship record (https://scholarships.curtin.edu.au/Scholarship/?id=7985, HTTP 200). The John Curtin Global Excellence Scholarship is an automatically-assessed admissions merit scholarship: 'There is no separate scholarship application required... All qualifying applications to Curtin are automatically assessed for the John Curtin Global Excellence Scholarship. Global Admissions will assess each application accordingly.' It spans all four Curtin faculties (Business and Law, Health Sciences, Humanities, Science & Engineering incl. WASM) and essentially all undergraduate degrees and coursework Master's degrees, awarding 40% tuition credit. No specific programme, department, supervisor or professor is attached to the award anywhere on the official record; the published enquiry contact is the Global Curtin admissions office (study@curtin.edu.au), not faculty. No verified supervisor found."
+  }
+]

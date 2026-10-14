@@ -1,0 +1,257 @@
+{
+  "agent": {
+    "agent_id": "agent_359",
+    "batch": "r2_05",
+    "researched_at": "2026-10-10T18:58:20Z",
+    "research_mode": "LIVE",
+    "coverage": 2
+  },
+  "id": 312,
+  "records": [
+    {
+      "id": 312,
+      "identity": {
+        "name": "Schulich Leader Scholarships",
+        "awarding_body": "Schulich Leader Scholarships (Schulich Foundation and UJA Federation of Greater Toronto)",
+        "issuing_authority": "Schulich Foundation, co-administered by UJA Federation of Greater Toronto",
+        "official_source_urls": [
+          "https://schulichleaders.com"
+        ],
+        "application_link": "https://schulichleaders.com",
+        "catalogue_url": "https://schulichleaders.com",
+        "official_updates_url": "https://schulichleaders.com",
+        "status": "upcoming",
+        "verifiable_urls": [
+          {
+            "url": "https://schulichleaders.com",
+            "publisher": "Schulich Leader Scholarships",
+            "kind": "programme home page"
+          }
+        ]
+      },
+      "description": "Schulich Leader Scholarships are awarded to graduating high school students entering one of 20 partner universities to study science, technology, engineering or mathematics, or to study science, technology, engineering or mathematics as a minor. Half of the 100 annual scholarships are valued at $120,000 for engineering and half at $100,000 for science and mathematics. The programme is funded by the Schulich Foundation and co-administered by UJA Federation of Greater Toronto, and Schulich Leaders can devote their full time and attention to their studies because all of their financial needs are covered over the course of their bachelor degree.",
+      "official": {
+        "program_type": "Undergraduate entrance scholarship",
+        "eligibility": [
+          "Graduating high school students (Student Leader Nominees) entering one of the 20 partner universities",
+          "Student entrepreneurs with the drive to launch their own ventures may also apply",
+          "Students who qualify must demonstrate academic excellence, leadership, charitableness and financial need",
+          "STUDENT LEADERS: applicants must be nominated by their high school",
+          "Student Place Holders who apply after their graduating year must be enrolled at one of the 20 partner universities"
+        ],
+        "benefits": [
+          "$120,000 each for engineering scholarships and $100,000 each for science and mathematics scholarships",
+          "100 awards each year across 20 partner universities",
+          "All of the recipient's financial needs are covered over the course of their bachelor degree"
+        ],
+        "selection_criteria": [
+          "Academic excellence",
+          "Leadership",
+          "Charitableness",
+          "Financial need",
+          "Two letters of recommendation, an essay and a transcript are required as part of the nominee's application"
+        ],
+        "application_process": "Every high school in Canada may submit one graduating student per year for the Schulich Leader Nominee Award (nominations open in September). High schools submit their nominee between 11 January and 27 January 2027; the nominee then submits the scholarship application by 17 February 2027. Universities make offers to the strongest applicants between 8 March and 15 June 2027. Applications outside the nomination window are handled as Student Place Holder applications.",
+        "duration": "Full bachelor degree",
+        "key_dates": [
+          "Nomination registration opens: 2026",
+          "High school submits nominee: by 27 January 2027",
+          "Nominee submits scholarship application: by 17 February 2027",
+          "Universities make offers: 8 March to 15 June 2027"
+        ]
+      },
+      "verification": {
+        "confidence": "high",
+        "deadlines": [
+          {
+            "label": "High school submits nominee",
+            "date": "2027-01-27",
+            "date_display": "By 27 January 2027",
+            "note": "Nominated by the high school between 11 January and 27 January 2027."
+          },
+          {
+            "label": "Nominee submits scholarship application",
+            "date": "2027-02-17",
+            "date_display": "By 17 February 2027",
+            "note": "The applicant-facing deadline after nomination."
+          }
+        ],
+        "deadline_central": "2027-01-27",
+        "deadline_display": "High school submits nominee by 27 January 2027; nominee submits application by 17 February 2027",
+        "deadline_note": "The 2027 cycle registration is open. If your school has not nominated you by 27 January 2027, the route is a Student Place Holder application once you are enrolled at a partner university.",
+        "application_cycle": "Annual; 2027 registration open with key dates of 27 January 2027 (school nomination), 17 February 2027 (application) and 8 March - 15 June 2027 (university offers).",
+        "funding_amount": 120000,
+        "funding_currency": "CAD",
+        "funding_period": "over the full bachelor degree",
+        "tuition_coverage_note": "The programme states that all of a Schulich Leader's financial needs are covered over the course of their bachelor degree.",
+        "living_cost_coverage": true,
+        "travel_coverage": null,
+        "tuition_coverage": true,
+        "fully_funded": true,
+        "english_requirement": null,
+        "status_note": "Status computed at research time (10 October 2026). Registration is open for the 2027 cycle and the first key date (27 January 2027) has not yet passed, so the programme is marked UPCOMING.",
+        "source_citations": [
+          {
+            "url": "https://schulichleaders.com",
+            "claim": "Schulich Leader Scholarships are for graduating high school students and student entrepreneurs entering 20 partner universities; 100 awards each year, half valued at $120,000 for engineering and half at $100,000 for science and mathematics; financial needs are covered over the bachelor degree; two letters of recommendation, an essay and a transcript are required; key dates of 11-27 January 2027 (high school submits nominee), 17 February 2027 (nominee submits application) and 8 March - 15 June 2027 (universities make offers); funded by the Schulich Foundation and co-administered by UJA Federation of Greater Toronto.",
+            "retrieved_at": "2026-10-10T18:58:20Z"
+          }
+        ],
+        "not_confirmed": [
+          "English language requirement - not published on the programme page (each partner university sets its own admission language requirements)",
+          "Whether travel to and from Canada is included - the page states 'all of their financial needs' without itemising categories",
+          "Programme-specific admission requirements of the 20 partner universities - published by each university"
+        ],
+        "documents": [
+          "Nomination by the high school",
+          "Two letters of recommendation",
+          "Essay",
+          "Transcript"
+        ]
+      },
+      "applicant_utility": {
+        "description": "Schulich is a nomination-based award, so the first thing to secure is a high school willing to nominate you: each Canadian high school can nominate only one graduating student per year. The 2027 cycle already has its dates set, with the school submitting the nominee by 27 January 2027 and you submitting the full scholarship application by 17 February 2027.",
+        "eligibility_tips": [
+          "Every high school in Canada may nominate one graduating student per year, so ask early in the autumn term rather than after the winter holidays; the nomination window itself is 11-27 January 2027.",
+          "The award is aimed at STEM (science, technology, engineering and mathematics as a major or minor) - confirm that the programme you will enter at the partner university is in scope before you are nominated.",
+          "Student entrepreneurs are explicitly eligible, and Student Place Holders who apply after their graduating year must already be enrolled at one of the 20 partner universities."
+        ],
+        "application_tips": [
+          "Prepare the three nominee documents (two letters of recommendation, an essay and a transcript) between 27 January and 17 February 2027: that three-week window is the only time you have.",
+          "Make the essay and the recommendation letters carry the three personal criteria the programme names - academic excellence, leadership, charitableness and financial need - rather than a generic achievement list.",
+          "Universities make offers between 8 March and 15 June 2027, so keep that evening window free in your own calendar and do not commit to other institutions before you have a decision.",
+          "If you missed the nomination deadline, the Student Place Holder route keeps you eligible once you are enrolled, so do not abandon the goal in your first year at a partner university."
+        ],
+        "documents": [
+          "High school nomination (one per school per year)",
+          "Two letters of recommendation",
+          "Essay",
+          "Transcript"
+        ],
+        "mistakes_to_avoid": [
+          "Waiting for your school to nominate you after 27 January 2027, when the nomination window has closed.",
+          "Treating the school nomination as the end of the process - your own application is due on 17 February 2027, only three weeks later.",
+          "Assuming a business or humanities degree qualifies; the scholarship targets STEM majors or minors at the 20 partner universities.",
+          "Expecting a response before 8 March 2027: university offers are only issued between 8 March and 15 June 2027."
+        ],
+        "deadline_notes": "Registration for the 2027 cycle is open now. Diary 27 January 2027 (school nomination), 17 February 2027 (your application) and 8 March - 15 June 2027 (offers)."
+      }
+    },
+    {
+      "id": 586,
+      "identity": {
+        "name": "International Excellence Entrance Scholarship",
+        "awarding_body": "University of Manitoba",
+        "issuing_authority": "University of Manitoba",
+        "official_source_urls": [
+          "https://umanitoba.ca/financial-aid-and-awards/entrance-awards/international-excellence-entrance-scholarship"
+        ],
+        "application_link": "https://umanitoba.ca/financial-aid-and-awards/entrance-awards/international-excellence-entrance-scholarship",
+        "catalogue_url": "https://umanitoba.ca/financial-aid-and-awards/entrance-awards",
+        "official_updates_url": "https://umanitoba.ca/financial-aid-and-awards/entrance-awards/international-excellence-entrance-scholarship",
+        "status": "open",
+        "verifiable_urls": [
+          {
+            "url": "https://umanitoba.ca/financial-aid-and-awards/entrance-awards/international-excellence-entrance-scholarship",
+            "publisher": "University of Manitoba",
+            "kind": "award page"
+          }
+        ]
+      },
+      "description": "The University of Manitoba International Excellence Entrance Scholarship provides international students with support for their undergraduate studies, offering one award of $25,000 and two awards of $10,000 for the 2027/28 admission cycle. Awards are based on demonstrated academic achievement, leadership and community involvement. Applications open in September and all portions of the application, including the required admission application with fee, must be complete by December 1.",
+      "official": {
+        "program_type": "Undergraduate entrance scholarship",
+        "eligibility": [
+          "International students entering an undergraduate degree programme at the University of Manitoba",
+          "$25,000 award: an average of 90 percent across five senior-level courses at the Grade 12 level",
+          "$10,000 awards: minimum requirements for admission",
+          "Demonstrated involvement in leadership and community activities"
+        ],
+        "benefits": [
+          "One award of $25,000",
+          "Two awards of $10,000",
+          "Support for undergraduate studies at the University of Manitoba"
+        ],
+        "selection_criteria": [
+          "Demonstrated academic achievement (90 percent average across five senior-level courses for the $25,000 award; minimum admission requirements for the $10,000 awards)",
+          "Demonstrated involvement in leadership and community activities",
+          "Applications of short-listed applicants are ranked 1st, 2nd and 3rd based on the award application and the admission application"
+        ],
+        "application_process": "Applications open in September and are made through the award application in addition to the admission application. All portions of the application must be complete by December 1, including the admission application and application fee, so students are encouraged to apply as early as possible. A letter of recommendation from a current teacher or principal (translated into English, if the original is not in English) is also required and is due by December 1.",
+        "duration": "One-time entrance award",
+        "key_dates": [
+          "Application opening: September",
+          "Complete application deadline (all portions): December 1",
+          "2027/28 application cycle: currently open"
+        ]
+      },
+      "verification": {
+        "confidence": "high",
+        "deadlines": [
+          {
+            "label": "Complete application deadline",
+            "date": "2026-12-01",
+            "date_display": "December 1 (2027/28 cycle)",
+            "note": "The page states all portions of the application must be complete by December 1, including the admission application with fee; the page does not publish a separate scholarship deadline."
+          }
+        ],
+        "deadline_central": "2026-12-01",
+        "deadline_display": "December 1, 2026 (2027/28 cycle) - all portions of the application",
+        "deadline_note": "The page does not publish the application deadline in a date field; the deadline is stated as December 1 for all portions of the application, which is read as the 2027/28 cycle's date of 1 December 2026.",
+        "application_cycle": "Applications open in September for the following academic year; the 2027/28 cycle is currently open.",
+        "funding_amount": 25000,
+        "funding_currency": "CAD",
+        "funding_period": "one-off entrance award",
+        "tuition_coverage_note": "Not a tuition waiver. The award is a cash prize ($25,000 or $10,000); the page does not state that tuition fees are covered.",
+        "living_cost_coverage": null,
+        "travel_coverage": null,
+        "tuition_coverage": false,
+        "fully_funded": false,
+        "english_requirement": null,
+        "status_note": "Status computed at research time (10 October 2026). The page states the 2027/28 application cycle is open, so the programme is marked OPEN.",
+        "source_citations": [
+          {
+            "url": "https://umanitoba.ca/financial-aid-and-awards/entrance-awards/international-excellence-entrance-scholarship",
+            "claim": "Support for international students for undergraduate studies; one $25,000 award and two $10,000 awards; 90 percent average across five senior-level courses for the $25,000 award and minimum requirements for admission for the $10,000 awards; leadership and community involvement required; applications open in September; all portions of the application including the admission application with fee due by December 1; letter of recommendation from a current teacher or principal, translated into English if required, also due December 1; short-listed applications ranked 1st, 2nd and 3rd; 2027/28 application cycle open.",
+            "retrieved_at": "2026-10-10T18:58:20Z"
+          }
+        ],
+        "not_confirmed": [
+          "English language requirement - the page only states that the recommendation letter must be translated into English if the original is not in English; no separate English language requirement is published for this award",
+          "Number of awards per year - the page says one $25,000 award and two $10,000 awards without stating the cycle",
+          "Whether the $10,000 awards are renewable - not published on the page"
+        ],
+        "documents": [
+          "Award application",
+          "Admission application with application fee",
+          "Letter of recommendation from a current teacher or principal (translated into English if the original is not in English)"
+        ]
+      },
+      "applicant_utility": {
+        "description": "There is no separate scholarship competition here: the International Excellence Entrance Scholarship sits behind an admission application with a fee, and both must be complete by December 1. The award is one-time cash - $25,000 for a 90 percent average across five senior-level courses, or $10,000 if you meet the minimum admission requirements - so treat it as money toward your degree rather than a promise of free tuition.",
+        "eligibility_tips": [
+          "For the $25,000 award the cut-off is an average of 90 percent across five senior-level courses at the Grade 12 level; for the $10,000 awards you need only the minimum requirements for admission, which changes how much of your effort should go into the scholarship file.",
+          "Your leadership and community involvement is a selection criterion in its own right, so document it specifically rather than as an afterthought."
+        ],
+        "application_tips": [
+          "Apply as soon as applications open in September: the page encourages early application, and the deadline covers every part of the file, not just the scholarship form.",
+          "Pay the admission application fee during the application process. The scholarship application is separate from, and additional to, the admission application.",
+          "Line up your teacher or principal early: the recommendation letter must arrive by the same December 1 date, and if it is not already in English you must have it translated.",
+          "Understand the ranking mechanism: short-listed applicants are ranked 1st, 2nd and 3rd based on the award application together with the admission application, so both files must be strong and consistent."
+        ],
+        "documents": [
+          "Award application (in addition to the admission application)",
+          "Admission application with application fee",
+          "Letter of recommendation from a current teacher or principal (translated into English if required)"
+        ],
+        "mistakes_to_avoid": [
+          "Submitting only the scholarship application and forgetting the admission application and its fee, which is required for the file to be complete on 1 December.",
+          "Assuming the recommendation letter can arrive after the deadline; it is also due by December 1.",
+          "Sending an original-language recommendation letter without an English translation, which would make it unusable.",
+          "Waiting for the December deadline: ranking is based on the entire award and admission application, so early, complete files are favoured."
+        ],
+        "deadline_notes": "Applications open in September. Everything - award application, admission application, fee and recommendation letter - must be complete by December 1 (1 December 2026 for the 2027/28 cycle)."
+      }
+    }
+  ]
+}

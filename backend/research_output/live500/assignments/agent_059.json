@@ -1,0 +1,78 @@
+{
+ "agent": "agent_059",
+ "assignment_count": 1,
+ "scholarships": [
+  {
+   "id": 171,
+   "title": "Modul University Vienna Scholarships",
+   "country": "Austria",
+   "degree": "Bachelor's, Master's",
+   "funding_label": "Partially Funded",
+   "status": "open",
+   "official_source": "Modul University Vienna",
+   "official_source_url": "https://www.modul.ac.at/scholarships",
+   "application_link": "https://www.modul.ac.at/scholarships",
+   "catalogue_url": null,
+   "official_updates_url": null,
+   "existing": {
+    "funding_amount": null,
+    "funding_currency": null,
+    "funding_period": null,
+    "tuition_coverage": null,
+    "living_cost_coverage": null,
+    "travel_coverage": null,
+    "fully_funded": 0,
+    "description": null,
+    "eligibility": [],
+    "eligibility_summary": "International students at Modul University Vienna. Merit-based scholarships for outstanding international students.",
+    "benefits": [
+     "Tuition reduction",
+     "Monthly stipend varies"
+    ],
+    "coverage": [
+     "Tuition reduction",
+     "Monthly stipend varies"
+    ],
+    "requirements": [],
+    "documents": [],
+    "english_requirement": null,
+    "application_method": [],
+    "selection_notes": null,
+    "best_fit": null,
+    "notes": null,
+    "duration": null,
+    "application_period": null,
+    "deadline_display": "Varies (check official website)",
+    "deadline_date": null,
+    "region": "Europe",
+    "program_type": null,
+    "applicant_utility": null,
+    "official_details": null
+   },
+   "missing_fields": [
+    "funding_amount",
+    "funding_currency",
+    "funding_period",
+    "tuition_coverage",
+    "living_cost_coverage",
+    "travel_coverage",
+    "description",
+    "eligibility",
+    "requirements",
+    "documents",
+    "english_requirement",
+    "application_method",
+    "selection_notes",
+    "best_fit",
+    "notes",
+    "duration",
+    "application_period",
+    "deadline_date",
+    "program_type",
+    "applicant_utility",
+    "official_details"
+   ]
+  }
+ ],
+ "result_file": "C:\\Users\\GopaL\\Desktop\\Projects folder\\ScholarZone\\backend\\research_output\\live500\\results\\agent_059.json"
+}

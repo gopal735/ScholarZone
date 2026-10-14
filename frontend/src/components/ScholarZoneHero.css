@@ -36,6 +36,40 @@
   max-width: 660px;
 }
 
+/* The cap's column. It shares the right column with the showcase card and
+   sits above it, and it keeps its own layout box rather than being a
+   background element because a WebGL object needs a real size, not a
+   decorative one. It is also the hero's centre of mass: the eye reaches
+   the moving object first, which is why the type stays on the left and the
+   ledger stays underneath. */
+.sz-hero__cap {
+  grid-column: 2;
+  grid-row: 1;
+  width: 100%;
+  max-width: 360px;
+  margin: 0;
+  justify-self: center;
+  align-self: start;
+}
+
+.sz-hero__cap-note {
+  margin: -18px 0 0;
+  font-size: var(--text-xs);
+  font-weight: 500;
+  letter-spacing: var(--track-meta);
+  text-align: center;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  transition: opacity var(--duration-hover) var(--timing-smooth);
+}
+
+/* The caption is a hint, not a label: it dims while the cap is being
+   dragged, because an instruction for how to grab something is noise once
+   you are already grabbing it. */
+.sz-hero__cap:active .sz-hero__cap-note {
+  opacity: 0.35;
+}
+
 .sz-hero__eyebrow {
   display: inline-flex;
   align-items: center;
@@ -70,9 +104,44 @@
   text-wrap: balance;
 }
 
+/* The emphasised word in the headline carries the reference's
+   hand-drawn underline: a single stroke of the accent sweeping in
+   left-to-right under an italic serif. It is masked from an SVG squiggle
+   rather than drawn as a border, so the line has a hand's wobble in it,
+   and it animates once after the headline settles — never on hover,
+   because an underline that redraws under the cursor is noise. */
 .sz-hero__heading em {
-  color: var(--sz-accent-deep);
+  position: relative;
+  color: var(--sz-accent);
   font-style: italic;
+  white-space: nowrap;
+}
+
+.sz-hero__heading em::after {
+  content: '';
+  position: absolute;
+  left: -1%;
+  right: -1%;
+  bottom: -0.08em;
+  height: 0.3em;
+  background: var(--sz-accent);
+  -webkit-mask: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 12' preserveAspectRatio='none'><path d='M2 8 C 22 2, 42 11, 62 6 S 98 3, 118 7' fill='none' stroke='black' stroke-width='2.4' stroke-linecap='round'/></svg>") center / 100% 100% no-repeat;
+  mask: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 12' preserveAspectRatio='none'><path d='M2 8 C 22 2, 42 11, 62 6 S 98 3, 118 7' fill='none' stroke='black' stroke-width='2.4' stroke-linecap='round'/></svg>") center / 100% 100% no-repeat;
+  clip-path: inset(0 100% 0 0);
+  animation: sz-hero-underline 1100ms var(--timing-spring) 900ms forwards;
+}
+
+@keyframes sz-hero-underline {
+  to {
+    clip-path: inset(0 0 0 0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .sz-hero__heading em::after {
+    clip-path: none;
+    animation: none;
+  }
 }
 
 .sz-hero__description {
@@ -138,9 +207,111 @@
 }
 
 /* ── Calls to action ─────────────────────────────────────────────
-   Graphite inverts its primary to a light fill with dark text so the
-   conversion control becomes the brightest object on the hero. The
-   secondary stays a plain outline, so the accent is not spent twice. */
+   The primary is `.p-btn` — the reference's gradient button with its
+   four-layer shadow and spring press, including the magnetic offset
+   from the shell pointer listener. This block only adds the hero's
+   geometry and the secondary's outline, so the accent is not spent
+   twice. */
+/* -- The one-sentence panel ---------------------------------------
+   The reference's hero panel: a soft blurred surface with a conic
+   gradient border that rotates through the two accents on a 5s cycle.
+   The border is the only spun element in the hero, and it sits here
+   because this is the one act the hero asks for.
+
+   The textarea is a sunken well, not a raised field: the reference
+   paints a well and gives it focus depth, because a place you write
+   into is a hole in the surface. It also keeps its own label above
+   it, which is what makes the control legible without a placeholder
+   that vanishes when someone starts typing. */
+.sz-hero__panel {
+  margin-top: var(--space-6);
+}
+
+.sz-hero__panel-label {
+  display: block;
+  margin-bottom: var(--space-2);
+  font-size: var(--text-xs);
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+.sz-hero__panel-well {
+  border-radius: var(--radius-lg);
+  background: var(--p-well);
+  box-shadow: var(--p-well-sh);
+}
+
+.sz-hero__panel-well:focus-within {
+  box-shadow: var(--p-well-sh), 0 0 0 2px var(--accent-border);
+}
+
+.sz-hero__panel-input {
+  display: block;
+  width: 100%;
+  min-height: 84px;
+  padding: var(--space-4);
+  color: var(--text-primary);
+  font-family: var(--font-body);
+  font-size: var(--text-base);
+  line-height: 1.55;
+  letter-spacing: -0.003em;
+  background: transparent;
+  border: 0;
+  resize: vertical;
+  outline: none;
+}
+
+.sz-hero__panel-input::placeholder {
+  color: var(--text-faint);
+}
+
+.sz-hero__panel-row {
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+  margin-top: var(--space-4);
+}
+
+.sz-hero__panel-action {
+  min-height: 46px;
+  padding: 0 var(--space-6);
+}
+
+.sz-hero__panel-action:disabled {
+  cursor: not-allowed;
+  /* A disabled control keeps its shape but loses its claim on the
+     eye: no lift, no brightness, and the ink steps back a tier. */
+  filter: grayscale(0.4);
+  opacity: 0.55;
+  box-shadow: none;
+  transform: none;
+}
+
+.sz-hero__panel-hint {
+  margin: 0;
+  font-size: var(--text-xs);
+  color: var(--text-muted);
+}
+
+.sz-hero__panel-hint kbd {
+  font-family: var(--font-body);
+  font-size: 0.72rem;
+  padding: 1px 6px;
+  color: var(--text-secondary);
+  background: var(--p-well);
+  border-radius: var(--radius-xs);
+  box-shadow: inset 0 1px 2px rgba(14, 26, 51, 0.12);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  /* The border stops turning; the surface does not go anywhere. */
+  .sz-hero__panel::before {
+    --a: 0deg;
+    animation: none;
+  }
+}
 .sz-hero__cta {
   position: relative;
   display: inline-flex;
@@ -148,7 +319,7 @@
   justify-content: center;
   gap: 6px;
   min-height: 52px;
-  padding: 0 var(--space-7);
+  padding: var(--space-3) var(--space-7);
   font-size: var(--text-base);
   font-weight: 600;
   letter-spacing: 0.005em;
@@ -162,25 +333,14 @@
     color var(--duration-hover) var(--timing-smooth);
 }
 
-/* One solid primary, one quiet outline. Graphite inverts its primary
-   to a light fill with dark text, which makes the conversion control
-   the brightest object on the hero. That is the pattern used here:
-   the primary is a near-white plane rather than a coloured one, so
-   the accent stays available for emphasis instead of being spent on
-   every button in the product. */
+/* One solid primary, one quiet outline. The primary takes the
+   reference's `.p-btn` material — the gradient, the four-layer shadow
+   and the spring press all come from there, so this block only sets
+   the hero's own geometry. A near-white plane rather than a coloured
+   one, so the accent stays available for emphasis instead of being
+   spent on every button in the product. */
 .sz-hero__cta--primary {
   color: var(--sz-solid-ink);
-  background: var(--sz-solid-bg);
-  border-color: var(--sz-solid-border);
-  box-shadow: var(--sz-solid-shadow);
-}
-
-.sz-hero__cta--primary:hover {
-  color: var(--sz-solid-ink-hover);
-  background: var(--sz-solid-bg-hover);
-  border-color: var(--sz-solid-border-hover);
-  transform: translateY(-2px);
-  box-shadow: var(--sz-solid-shadow-hover);
 }
 
 .sz-hero__cta--primary svg {
@@ -201,20 +361,20 @@
 
 .sz-hero__cta--secondary:hover {
   color: var(--sz-ink);
-  background: rgba(15, 25, 40, 0.05);
+  background: var(--sz-mist-soft);
   border-color: var(--text-faint);
   transform: translateY(-2px);
 }
 
 [data-theme='dark'] .sz-hero__cta--primary {
   box-shadow:
-    0 1px 0 rgba(196, 216, 240, 0.16) inset,
+    inset 0 1px 0 var(--sz-glass-edge),
     0 12px 30px rgba(0, 0, 0, 0.42);
 }
 
 [data-theme='dark'] .sz-hero__cta--primary:hover {
   box-shadow:
-    0 1px 0 rgba(196, 216, 240, 0.2) inset,
+    inset 0 1px 0 var(--sz-glass-edge),
     0 18px 40px rgba(0, 0, 0, 0.5);
 }
 
@@ -224,7 +384,7 @@
 }
 
 [data-theme='dark'] .sz-hero__cta--secondary:hover {
-  background: rgba(196, 216, 240, 0.06);
+  background: var(--sz-mist-soft);
   border-color: var(--text-faint);
 }
 

@@ -1,0 +1,84 @@
+{
+ "agent": "agent_146",
+ "assignment_count": 1,
+ "scholarships": [
+  {
+   "id": 387,
+   "title": "Wageningen University Excellence Programme (WU Excellence Scholarship)",
+   "country": "Netherlands",
+   "degree": "Master's",
+   "funding_label": "Tuition Fee Waiver",
+   "status": "open",
+   "official_source": "Wageningen University & Research",
+   "official_source_url": "https://www.wur.nl/en/education/master/study-expenses-masters/scholarships",
+   "application_link": "https://www.wur.nl/en/education/master/study-expenses-masters/scholarships",
+   "catalogue_url": "https://www.wur.nl/en/education/master/programmes",
+   "official_updates_url": "https://www.wur.nl/en/education/master/study-expenses-masters/scholarships",
+   "existing": {
+    "funding_amount": null,
+    "funding_currency": null,
+    "funding_period": null,
+    "tuition_coverage": 1,
+    "living_cost_coverage": 0,
+    "travel_coverage": 0,
+    "fully_funded": 0,
+    "description": "Everything you need to know about applying for a bachelor’s degree at Wageningen University & Research.",
+    "eligibility": [
+     "Hold the nationality of at least one of: Argentina, Australia, Brazil, Canada, Chile, Colombia, Costa Rica, Cuba, Ecuador, Guatemala, Japan, Malaysia, Mexico, New Zealand, Peru, Singapore, South Korea, Thailand, Turkey, United Kingdom or United States of America",
+     "Do not hold EU or EFTA nationality; applicants who also hold an EU or EFTA nationality are not eligible",
+     "Be unconditionally admitted to an eligible on-campus WUR MSc programme starting September 2027",
+     "Have submitted a complete application, including all required supporting documents, before 1 December 2026",
+     "Have a high GPA of 80% or higher, with a First Class Honours BSc graduation or equivalent",
+     "Have completed the Bachelor's degree before 1 December 2026 and uploaded the Bachelor's diploma as part of the complete MSc application",
+     "Have official English language test results available before 1 December 2026 and uploaded them with the MSc application"
+    ],
+    "eligibility_summary": "International MSc applicants who hold the nationality of at least one of 21 listed non-EU/EFTA countries, do not hold EU or EFTA nationality, hold unconditional admission to an eligible on-campus WUR MSc programme starting September 2027, and have a GPA of 80% or higher (First Class Honours BSc or equivalent).",
+    "benefits": [
+     "Tuition fee waiver for the full 24 months of the programme"
+    ],
+    "coverage": [
+     "Tuition fee waiver for the duration of the programme (24 months)"
+    ],
+    "requirements": [
+     "Submit the complete MSc application before 1 December 2026",
+     "Be unconditionally admitted to the MSc programme",
+     "Hold a high GPA of 80% or higher and a First Class Honours BSc or equivalent",
+     "Complete the Bachelor's degree and upload the diploma before 1 December 2026",
+     "Have official English language test results available for upload before 1 December 2026",
+     "Pay the revised first-year invoice, approximately EUR 16,500, before 1 July 2027 after accepting the scholarship"
+    ],
+    "documents": [
+     "Complete MSc application for an eligible on-campus WUR programme, including all required supporting documents",
+     "Bachelor's diploma, uploaded before 1 December 2026",
+     "Official English language test results, available and uploaded before 1 December 2026"
+    ],
+    "english_requirement": "You must meet the English language requirements before 1 December 2026. Official English language test results must be available before that date so they can be uploaded as part of the Master's application.",
+    "application_method": [
+     "Apply for an eligible on-campus WUR MSc programme for September 2027 through the standard MSc application procedure",
+     "Submit all supporting documents, including the Bachelor's diploma and official English test results, before 1 December 2026",
+     "Wait to be invited to the selection process, since the scholarship is awarded by invitation",
+     "If selected for the final stage, take part in the lottery that determines the recipients"
+    ],
+    "selection_notes": "The scholarship is based on invitation. The WU Scholarship Selection Committee coordinates selection, and around March-April 2027 a number of applicants are informed by email that they have reached the final stage, at which point a lottery determines the recipients. On 7 April 2027 the scholarship is offered to the selected students and the remaining candidates are placed on a waiting list. Receiving the scholarship is conditional on fulfilling all admission criteria.",
+    "best_fit": "Applicants from the 21 listed countries who do not hold EU/EFTA nationality, already hold unconditional admission to a September 2027 on-campus WUR MSc, and can fund roughly EUR 16,500 of remaining first-year costs themselves.",
+    "notes": "The WU Excellence Scholarship consists of a tuition fee waiver only. Students who are offered and accept the scholarship receive a revised first-year invoice which still includes the living allowance, health and liability insurance, and the residence permit fee; based on the current fee structure that invoice is approximately EUR 16,500 and must be paid before 1 July 2027. WUR's scholarship programmes are for prospective students only, are for the MSc September start only, and WUR does not offer scholarship programmes to students currently enrolled at Wageningen University.",
+    "duration": "24 months (two-year MSc programme), September start only",
+    "application_period": "Academic year 2027-2028; complete MSc application for a September 2027 on-campus programme must be in place before 1 December 2026",
+    "deadline_display": "MSc application deadline: Before 1 December 2026. Only MSc applications that have been submitted before this deadline will be assessed by the WU Scholarship Selection Committee.",
+    "deadline_date": "2026-12-01",
+    "region": "Europe",
+    "program_type": "Invitation-based, nationality-limited full tuition fee waiver for outstanding international applicants to two-year on-campus MSc programmes",
+    "applicant_utility": null,
+    "official_details": null
+   },
+   "missing_fields": [
+    "funding_amount",
+    "funding_currency",
+    "funding_period",
+    "applicant_utility",
+    "official_details"
+   ]
+  }
+ ],
+ "result_file": "C:\\Users\\GopaL\\Desktop\\Projects folder\\ScholarZone\\backend\\research_output\\live500\\results\\agent_146.json"
+}

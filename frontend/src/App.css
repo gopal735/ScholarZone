@@ -21,13 +21,13 @@
     /* Warm paper, not the cool grey ramp. #F6F7F9/#F0F2F5 are Tailwind
        gray-50/100 - the exact cast that made this read as a generic agency
        page no matter what the theme tokens said. */
-    linear-gradient(180deg, #FDFCF9 0%, #FBFAF6 44%, #F6F3EA 100%);
+    linear-gradient(180deg, #FBFAF6 0%, #F6F5F1 44%, #EFEDE6 100%);
 }
 
 [data-theme='dark'] .app-atmosphere {
   background:
-    radial-gradient(120% 62% at 50% -18%, rgba(64, 82, 108, 0.34) 0%, rgba(10, 12, 16, 0) 58%),
-    linear-gradient(180deg, #0B0D11 0%, #08090B 46%, #050608 100%);
+    radial-gradient(120% 62% at 50% -18%, rgba(99, 205, 180, 0.1) 0%, rgba(5, 7, 13, 0) 58%),
+    linear-gradient(180deg, #0A0F1C 0%, #070B16 46%, #05070D 100%);
 }
 
 /* One organic body.
@@ -70,7 +70,7 @@
   right: -34vw;
   width: 94vw;
   height: 104vh;
-  --sz-atmo-color: rgba(150, 186, 230, 0.16);
+  --sz-atmo-color: rgba(106, 116, 217, 0.1);
   --sz-atmo-extent: 58% 54%;
   --sz-atmo-cx: 52%;
   --sz-atmo-cy: 52%;
@@ -84,7 +84,7 @@
   left: -22vw;
   width: 92vw;
   height: 86vh;
-  --sz-atmo-color: rgba(168, 196, 232, 0.11);
+  --sz-atmo-color: rgba(15, 127, 107, 0.07);
   --sz-atmo-extent: 56% 52%;
   --sz-atmo-cx: 50%;
   --sz-atmo-cy: 50%;
@@ -92,15 +92,15 @@
 }
 
 [data-theme='dark'] .app-atmosphere__wash--key {
-  --sz-atmo-color: rgba(104, 146, 200, 0.16);
+  --sz-atmo-color: rgba(142, 153, 230, 0.12);
 }
 
 [data-theme='dark'] .app-atmosphere__wash--rim {
-  --sz-atmo-color: rgba(72, 116, 172, 0.15);
+  --sz-atmo-color: rgba(106, 116, 217, 0.12);
 }
 
 [data-theme='dark'] .app-atmosphere__wash--deep {
-  --sz-atmo-color: rgba(46, 78, 120, 0.13);
+  --sz-atmo-color: rgba(99, 205, 180, 0.1);
 }
 
 /* A single very slow sheen. It is the only element allowed to read as
@@ -178,12 +178,12 @@
   bottom: -28px;
   left: 0;
   height: 28px;
-  background: linear-gradient(180deg, rgba(246, 247, 249, 0.7) 0%, rgba(246, 247, 249, 0) 100%);
+  background: linear-gradient(180deg, rgba(246, 245, 241, 0.7) 0%, rgba(246, 245, 241, 0) 100%);
   pointer-events: none;
 }
 
 [data-theme='dark'] .site-header.is-scrolled::after {
-  background: linear-gradient(180deg, rgba(8, 9, 11, 0.7) 0%, rgba(8, 9, 11, 0) 100%);
+  background: linear-gradient(180deg, rgba(5, 7, 13, 0.7) 0%, rgba(5, 7, 13, 0) 100%);
 }
 
 .site-header.is-scrolled .nav-bar {

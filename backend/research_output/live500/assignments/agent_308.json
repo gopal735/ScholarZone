@@ -1,0 +1,81 @@
+{
+ "agent": "agent_308",
+ "assignment_count": 1,
+ "scholarships": [
+  {
+   "id": 689,
+   "title": "Apoyo Complementario de Maternidad y Paternidad Nacional, en el Extranjero y de Consolidación 2026",
+   "country": "Mexico",
+   "degree": "Master's, PhD",
+   "funding_label": "Partially Funded",
+   "status": "open",
+   "official_source": "Secretaría de Ciencia, Humanidades y Tecnología (SECIHTI), Gobierno de México",
+   "official_source_url": "https://secihti.mx/convocatoria/becas-nacionales/convocatoria-2026-apoyo-complementario-de-maternidad-y-paternidad-nacional-en-el-extranjero-y-de-consolidacion",
+   "application_link": "https://secihti.mx/convocatoria/becas-nacionales/convocatoria-2026-apoyo-complementario-de-maternidad-y-paternidad-nacional-en-el-extranjero-y-de-consolidacion",
+   "catalogue_url": "https://secihti.mx/convocatoria_categoria/becas-nacionales",
+   "official_updates_url": "https://secihti.mx/convocatoria/becas-nacionales/convocatoria-2026-apoyo-complementario-de-maternidad-y-paternidad-nacional-en-el-extranjero-y-de-consolidacion",
+   "existing": {
+    "funding_amount": null,
+    "funding_currency": null,
+    "funding_period": null,
+    "tuition_coverage": null,
+    "living_cost_coverage": null,
+    "travel_coverage": null,
+    "fully_funded": 0,
+    "description": null,
+    "eligibility": [
+     "National track: Mexican national benefiting from a SECIHTI Beca de Posgrado Nacional who becomes a parent",
+     "Abroad track: Mexican national benefiting from a SECIHTI Beca de Posgrado Nacional who is studying abroad and becomes a parent",
+     "Consolidation track: beneficiary of a SECIHTI Beca de Consolidación who becomes a parent",
+     "The detailed definition of the maternity/paternity condition and the eligible Leave periods are in the published Guías, which are PDFs"
+    ],
+    "eligibility_summary": "Mexican beneficiaries who already hold a SECIHTI national postgraduate scholarship (Beca de Posgrado Nacional) and are expecting a child or are parents of a young child, in any of three tracks: national, abroad, or consolidation (becas de consolidación).",
+    "benefits": [
+     "Supplementary support ('Apoyo Complementario') paid in bimestres while the beneficiary is on maternity or paternity leave",
+     "The covered items and the amount per bimestre are in the Convocatoria PDF and the Guías de Postulación, which could not be read as text"
+    ],
+    "coverage": [
+     "Supplementary support ('Apoyo Complementario') paid in bimestres while the beneficiary is on maternity or paternity leave",
+     "The covered items and the amount per bimestre are in the Convocatoria PDF and the Guías de Postulación, which could not be read as text"
+    ],
+    "requirements": [
+     "Hold an active SECIHTI Beca de Posgrado Nacional (national or abroad track) or a SECIHTI Beca de Consolidación (consolidation track)",
+     "Submit through the SECIHTI BECAS platform using the published Postulación guide for your track",
+     "Follow the published formalisation and bank-account-registration procedures"
+    ],
+    "documents": [
+     "Application filed through the SECIHTI BECAS platform per the published Guía de Postulación",
+     "Bank account registered in the beneficiary's own name"
+    ],
+    "english_requirement": null,
+    "application_method": [
+     "Online application through the SECIHTI BECAS platform, following the published postulación guides"
+    ],
+    "selection_notes": "The official page does not publish selection criteria; the Convocatoria PDF does.",
+    "best_fit": "Mexican postgraduate scholarship holders who are about to take maternity or paternity leave and need their scholarship topped up during that period.",
+    "notes": "Two Avisos (1 and 2 June 2026) adjusted the calendar for the Becas de Consolidación track only. The page publishes results by bimestre, with the first results list dated 31 July 2026 and the second ('Segundo Bimestre') dated 30 September 2026, and the call remains open for later bimestres.",
+    "duration": "Paid in bimestres (two-monthly instalments) — the official page publishes two separate results lists, the second labelled 'Segundo Bimestre', dated 30 September 2026.",
+    "application_period": "23 February 2026 to 3 December 2026 (official wording: \"Inicio de recepción de solicitudes: lunes, 23 febrero 2026 - 12:00 PM\"; \"Conclusión de recepción de solicitudes: jueves, 3 diciembre 2026 - 11:59 PM\" hora local CDMX).",
+    "deadline_display": "Applications close 3 December 2026 at 23:59 Mexico City time.",
+    "deadline_date": "2026-12-03",
+    "region": "Latin America",
+    "program_type": "Government scholarship support scheme",
+    "applicant_utility": null,
+    "official_details": null
+   },
+   "missing_fields": [
+    "funding_amount",
+    "funding_currency",
+    "funding_period",
+    "tuition_coverage",
+    "living_cost_coverage",
+    "travel_coverage",
+    "description",
+    "english_requirement",
+    "applicant_utility",
+    "official_details"
+   ]
+  }
+ ],
+ "result_file": "C:\\Users\\GopaL\\Desktop\\Projects folder\\ScholarZone\\backend\\research_output\\live500\\results\\agent_308.json"
+}

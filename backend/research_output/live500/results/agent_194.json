@@ -1,0 +1,154 @@
+{
+  "agent": "agent_194",
+  "records": [
+    {
+      "id": 503,
+      "official": {
+        "official_source_urls": [
+          "https://anr.fr/fr/france-2030/france2030/call/france-2030-pepr-gfm-grands-fonds-marins-appel-a-projets-2026",
+          "https://anr.fr/fileadmin/aap/2026/france2030-aap-pepr-gfm-2026.pdf",
+          "https://anr.fr/fileadmin/aap/2026/france2030-aap-pepr-gfm-2026-FAQ.pdf",
+          "https://france2030.agencerecherche.fr/PEPR-GFM-AAP-2026-dossier",
+          "https://anr.fr/fr/france-2030/rf-pepr-2024/"
+        ],
+        "application_link": "https://france2030.agencerecherche.fr/PEPR-GFM-AAP-2026-dossier",
+        "catalogue_url": null,
+        "official_updates_url": "https://anr.fr/fr/france-2030/appels",
+        "deadline_central": "2026-11-17",
+        "deadline_central_display": "17 November 2026, 11:00 (Paris time)",
+        "deadline_note": null,
+        "application_cycle": "2026 round: opened 21 July 2026 at 09:00 CEST, closes 17 November 2026 at 11:00 CET; single-phase call; the call's FAQ document was last updated 01/10/2026",
+        "status": "OPEN",
+        "status_note": "The ANR lists the call as 'Ouvert - 2026' (open); opened 21/07/2026 at 09:00 CEST; single-phase appraisal by an international committee set up by the ANR; closing 17/11/2026 at 11:00 CET, a date repeated on the ANR submission site.",
+        "tuition_coverage_note": null,
+        "funding_amount": 800000,
+        "funding_currency": "EUR",
+        "funding_period": "one-off, per project",
+        "tuition_coverage": false,
+        "living_cost_coverage": false,
+        "travel_coverage": true,
+        "fully_funded": false,
+        "benefits": [
+          "A grant (dotation) of between 800 k€ and 3 M€ per project; no funding level is privileged inside this range - the chosen sizing must be explicitly justified and coherent with the size of the consortium, the involvement of permanent staff and the scientific ambition.",
+          "A total envelope (dotation globale) of about 17.5 M€ for this first PEPR GFM call for projects.",
+          "Eligible expenditure per the PEPR financial regulation: equipment (including grand instruments), personnel, running costs, service provision and internal billing; the funding may for example finance equipment purchases, personnel expenditure specifically assigned to the projects and associated running costs.",
+          "Salaries of contractual staff (post-doctoral researchers, doctoral students, technical staff, students) recruited on the project are eligible; for permanent (fonctionnaire) staff only the project leader's salary is eligible, capped at 40% of the total aid requested, and a teaching-load reduction (décharge d'enseignement) is eligible up to 50,000 euros per year across all partner establishments making such a request.",
+          "The mission budget must fund active participation in PEPR GFM programme animation: two in-person meetings every 18 months in metropolitan France for project leaders and three to four trips every two years for workpackage leaders or staff in training."
+        ],
+        "eligibility": [
+          "The complete submission file must be deposited on the ANR submission site before the closing date and time, including the administrative and financial document signed and scanned by each partner institution.",
+          "The scientific document must imperatively follow the template published on the call website and be deposited as an unprotected PDF.",
+          "The project must have a duration between 36 and 54 months.",
+          "The amount of aid requested must be between 0.8 M€ and 3 M€.",
+          "A single project leader may carry only one PEPR GFM project; a project has one named project leader and one coordinating institution (a co-responsable may only be described in the scientific document).",
+          "Members of the programme direction, the Scientific Council and the Stakeholder and Citizen Forum may take part in submitted projects with limited responsibility but may not lead a project or be workpackage leaders.",
+          "The coordinating institution must be a French higher education and research establishment; private institutions contributing to public-service missions in higher education and research under article L.732-1 of the Code de l'Education may coordinate after ANR analysis, MESRE opinion and SGPI validation.",
+          "The project must fit within one or several of the five PEPR GFM challenges and require a wide interdisciplinary and/or transdisciplinary approach as defined in the AAP.",
+          "Projects that would cause significant environmental harm (DNSH - Do No Significant Harm - principle, article 17 of the European taxonomy regulation) are excluded.",
+          "Companies and foreign institutions may have partner status in the projects but receive no funding for that participation."
+        ],
+        "requirements": [
+          "Open an account (login and password) on the ANR submission site as early as possible; prior registration is required to be able to deposit.",
+          "Scientific document: maximum 15 pages, written in English, on the published template, including in annex the list of the scientific publications of the last three years of the proposing researchers/teams; images and tables count towards the page limit and links or QR codes to external document storage are not allowed.",
+          "Administrative and financial document (Excel template): administrative and budget description of the project integrating the commitment letters of the partner institutions, signed and scanned by each partner institution.",
+          "Define a structured maturation phase at the start of the project, with duration, budget and responsible persons, delivering an operational roadmap, an analysis of ethical issues, an internal consortium ethics charter and a Data Management Plan.",
+          "Designate a data referent who drafts and updates the PGD (first version due within the 6 months following project start), a referent for ethical issues, and a person responsible for monitoring equity and inclusion.",
+          "Explicitly justify the mission budget, including participation of project leaders in two in-person meetings every 18 months in metropolitan France and of three to four trips every two years for workpackage leaders or staff in training.",
+          "For data or samples to be acquired at sea on French oceanographic fleet (IR* Flotte) means not yet programmed: justify why non-realisation would not undermine the project, follow the upstream operational feasibility study procedure of the IR* Flotte (FOF naval operations pole) and supply the minutes of the ad hoc commission (CNFH or CNFC).",
+          "Data management must rely on the research e-Infrastructures (Data-Terra, Huma-Num, Progedo) following FAIR and, where relevant, CARE principles, with deposit in a reference thematic repository or in recherche.data.gouv."
+        ],
+        "documents": [
+          "Scientific document (document scientifique): maximum 15 pages, written in English, following the published template, with in annex the list of the scientific publications of the last three years of the proposing researchers/teams, deposited as an unprotected PDF.",
+          "Administrative and financial document (document administratif et financier): Excel template with the budget (between 0.8 M€ and 3 M€, duration 36-54 months) integrating the commitment letters of the partner institutions, signed and scanned by each partner institution's legal representative.",
+          "Data Management Plan (Plan de Gestion de Données, PGD): first version within the 6 months following project start, per the ANR modalities.",
+          "Internal consortium ethics charter (charte éthique interne au consortium), written during the maturation phase.",
+          "Minutes of the ad hoc commission (CNFH or CNFC) of the IR* Flotte evaluations, where a not-yet-programmed sea campaign is integrated into the project.",
+          "Consortium agreement (accord de consortium), or a copy of an existing framework contract covering the same provisions, when required - to be supplied by the coordinating institution within a maximum of 12 months from signature of the aid contract."
+        ],
+        "selection_criteria": [
+          "Scientific ambition and excellence: the research question goes beyond the documented state of the art and is not a simple continuation of already-addressed questions; the combination of disciplines is justified by the research question and each discipline alone cannot answer it; conceptual frameworks are put in dialogue; ethics questions are an integral part of the ambition.",
+          "Quality of the consortium, resources mobilised and governance: recognised complementary expertise of the project leader and co-leaders; a clearly defined role for every partner with substantial permanent-staff involvement and a precise career benefit for each contractual worker; a structured maturation phase; concrete mechanisms for shared appropriation of the research questions; a data and samples inventory/acquisition/management strategy; recurrent ethical monitoring mechanisms; explicit choices to minimise the environmental footprint.",
+          "Fit with the PEPR GFM challenges and impact: clear fit with at least one challenge and the programme's strategic priorities; described scientific, economic, environmental and societal impacts; the requested amount, between 0.8 and 3 M€, is argued and coherent with the size of the consortium, the involvement of permanent staff and the scientific ambitions.",
+          "Only proposals satisfying the eligibility criteria (critères de recevabilité) are transmitted to the evaluation committee and can in no case be funded; the independent international committee may hear project leaders, with the project representatives, after sending questions in advance; the committee produces a list of projects recommended for funding and a list proposed for non-funding with written justification, and may give an opinion on the amount requested; programme directors then propose to the SGPI which projects could be financed and at what amount, and the Prime Minister, after opinion of the CPMo and the SGPI, decides beneficiaries and amounts."
+        ],
+        "coverage": [
+          "A one-off grant (dotation) of between 800 k€ and 3 M€ per project, disbursed by the ANR to the coordinating institution according to the schedule set in the aid contract; the coordinating institution then transfers to the eligible partner establishments the amounts attributed to them.",
+          "Equipment purchases (including grand instruments), personnel expenditure specifically assigned to the project - post-doctoral researchers, doctoral students, technical staff and, for the project leader only, permanent-staff salary up to 40% of the aid - plus associated running costs, service provision and internal billing.",
+          "Project running costs including the maturation phase, interaction with the Scientific Council and the Stakeholder and Citizen Forum, participation in PEPR GFM actions, the Data Management Plan, and travel connected with reducing the project's environmental footprint.",
+          "Total envelope of about 17.5 M€ for this first call; this is a grant to institutions, not an individual scholarship: no tuition, living-cost or travel allowance is paid to individual students, and individuals hired on a project are salaried employees of their host institution."
+        ],
+        "application_method": [
+          "Open an account (login and password) on the ANR submission site as early as possible.",
+          "Prepare the scientific document strictly on the published template, in English, 15 pages maximum, including the three-year publication list annex, as an unprotected PDF.",
+          "Collect the commitment letters of every partner institution, signed and stamped by the legal representative, and embed them in the administrative and financial Excel document.",
+          "Complete the administrative and financial document (budget between 0.8 M€ and 3 M€, duration between 36 and 54 months) and upload both documents into the dedicated 'documents de dépôt' and 'documents signés' spaces of the call entry on the submission site.",
+          "Validate the submission electronically before 17 November 2026 at 11:00 Paris time; an electronic acknowledgement of receipt is sent to the project leader.",
+          "Wait for evaluation by the international committee convened by the ANR; results are published only after validation of the projects by the State through the Prime Minister's decision, and coordinators are notified by the ANR scientific evaluation pole before being contacted by the contracting service."
+        ],
+        "application_route": "The project leader registers on the ANR submission site and deposits the scientific document plus the signed administrative and financial document electronically before 17 November 2026, 11:00 Paris time.",
+        "study_mode": null,
+        "citizenship_residency": "No personal nationality or residency rule is published: the constraint is institutional - the coordinating institution must be a French higher education and research establishment, while companies and foreign institutions may only join as partners without funding.",
+        "international_eligibility": "Indirectly only: foreign establishments cannot receive PEPR funding, but they may participate as partners and appear in the consortium agreement; eligible French establishments may request aid for the missions of foreign partners strictly linked to the project, and the expenses of scientists affiliated to French establishments are eligible even when their workplace is abroad.",
+        "subject_or_agency_requirement": "Deep-sea research within one or several of the five challenges: Défi 1 - deep-sea biodiversity and ecosystem services in link with natural and anthropogenic forcings; Défi 2 - transfers of matter and energy between the solid Earth, the biosphere and the water column, and the role of the deep ocean for the planet's habitability; Défi 3 - representations, knowledge and uses of the deep sea between local/indigenous knowledge and the construction and uses of scientific knowledge; Défi 4 - the political and environmental economy of the deep sea between exploitation and protection; Défi 5 - multi-level governance of the deep sea.",
+        "research_requirement": "A full research proposal on the published scientific template, written in English, maximum 15 pages, with a three-year publication annex, a structured maturation phase (operational roadmap, ethical issues analysis, internal ethics charter, Data Management Plan) and an explicitly justified budget between 0.8 M€ and 3 M€ for a 36-54 month project.",
+        "duration": "Between 36 and 54 months.",
+        "description": "The France 2030 PEPR 'Grands Fonds Marins : savoirs, usages, communs' aims to produce knowledge on the deep sea - broadly defined, from the ocean floor and its substratum to the water column below 200 m - as places of energy and matter exchange, habitats for marine organisms and environments linked to human activities and imaginaries. This first call for projects stimulates the creation of new, wide-interdisciplinary and/or transdisciplinary research consortia addressing one or more of the programme's five challenges, with a particular attention to data and samples valorisation and to the French overseas territories. The aid is an exceptional one-off grant to a consortium coordinated by a French higher education or research institution, distinct from recurrent institutional funding - not a personal scholarship.",
+        "region": "France (ANR France 2030 programme, with CNRS, Ifremer and IRD as programme directors); projects may concern deep-sea areas worldwide, with particular attention to French overseas territories",
+        "program_type": "Research grant - consortium funding under a France 2030 priority research programme and equipment (PEPR)",
+        "english_requirement": "The scientific document must be written in English (rédigé en anglais), maximum 15 pages, on the published template and as an unprotected PDF; because projects are evaluated by an international committee, the proposal must be written in English and any audition by the jury takes place in English."
+      },
+      "verification": {
+        "source_citations": [
+          "https://anr.fr/fr/france-2030/france2030/call/france-2030-pepr-gfm-grands-fonds-marins-appel-a-projets-2026",
+          "https://anr.fr/fileadmin/aap/2026/france2030-aap-pepr-gfm-2026.pdf",
+          "https://anr.fr/fileadmin/aap/2026/france2030-aap-pepr-gfm-2026-FAQ.pdf",
+          "https://france2030.agencerecherche.fr/PEPR-GFM-AAP-2026-dossier"
+        ],
+        "last_verified_date": "2026-10-10",
+        "verification_status": "confirmed",
+        "confidence": "high",
+        "not_confirmed": [
+          "Study mode (full-time/part-time) - not published for this call",
+          "Per-person stipend or salary figures for doctoral or post-doctoral hires - the AAP publishes only the project-level envelope (800 k€-3 M€, ~17.5 M€ total)",
+          "Any institutional deadline differing from the ANR closing date - the AAP sets a single closing date and time for all submission elements, including signed documents"
+        ],
+        "notes": "Amount (800 k€-3 M€ per project, ~17.5 M€ envelope), 36-54 month duration, opening date and the 17/11/2026 11:00 Paris deadline were verified on the ANR call page and cross-checked against the AAP text PDF, the 01/10/2026 FAQ PDF and the ANR submission site; eligibility criteria, submission documents, English-language rule and eligible-expenditure rules were read in the AAP text and FAQ; the award is an institutional grant to the coordinating establishment, so no individual tuition, living-cost or travel allowance is published and fully_funded is false."
+      },
+      "applicant_utility": {
+        "summary": "Treat this as an institutional consortium grant, not a personal scholarship: the only route in is a French higher-education or research establishment submitting through a named project leader, with ANR paying the money to that institution and any salaries contracted by it. You have until 17 November 2026 at 11:00 Paris time to file a single-phase proposal, so the first moves are to secure your institution's legal-representative signature and open the submission-site account now, because nothing can be added after closing. Size the request between 800 k€ and 3 M€ and place every doctoral or post-doctoral position you need inside that budget, since the programme's separate doctoral call - expected late 2026 or early 2027 - will not fund thesis subjects already carried by funded projects.",
+        "best_fit": "A researcher who can genuinely convene French laboratories from both natural-science and human/social-science backgrounds, plus non-academic stakeholders, around one deep-sea research question, backed by an institution willing to run a 36-54 month, 0.8-3 M€ submission.",
+        "application_readiness_checklist": [
+          "Confirm early which establishment can act as coordinating institution and obtain the research directorate's agreement and legal-representative signature.",
+          "Create the submission-site account and download the current templates (scientific template, financial annex, publications annex) and the updated FAQ before drafting.",
+          "Map the proposal to a named challenge (Défi 1-5) and show explicitly why no single discipline could answer the question alone.",
+          "Budget the maturation phase deliverables, the Data Management Plan, programme meetings and mission costs as visible lines.",
+          "Collect signed and scanned commitment letters from every partner, including companies and foreign institutions that contribute but cannot be funded.",
+          "If the project needs ship time, open the IR* Flotte upstream feasibility procedure with the FOF naval operations pole early and attach the CNFH/CNFC commission minutes."
+        ],
+        "common_rejection_risks": [
+          "Administrative ineligibility: an incomplete file, a missing signed administrative and financial document, a protected or off-template PDF, or a late upload - such files never reach the evaluation committee and can never be funded.",
+          "A consortium that is interdisciplinary only on paper, with no real dialogue between conceptual frameworks and no genuine stakeholder co-construction.",
+          "A budget not argued against consortium size and permanent-staff involvement, or a request outside the 0.8-3 M€ window or 36-54 month duration.",
+          "Ship-dependent science without the IR* Flotte feasibility step and the CNFH/CNFC minutes.",
+          "A project leader already carrying another PEPR GFM project, or a programme direction / Scientific Council / FPPC member trying to lead or run a workpackage.",
+          "Any risk of significant environmental harm (DNSH), which excludes the project outright."
+        ],
+        "estimated_uncovered_costs": "The grant covers only the categories of the PEPR financial regulation: partners self-fund their own contributions (staff time, equipment, premises), salaries of permanent staff other than the project leader are not eligible (only the leader's salary, up to 40% of the aid, and teaching reduction up to 50,000 euros/year), costs of foreign partner institutions themselves are not eligible, and any expenditure outside the contract schedule or outside France 2030 rules is borne by the institutions.",
+        "document_audit": [
+          "The scientific document must be an unprotected PDF on the exact published template - password-protected, restructured or converted files risk ineligibility.",
+          "The 15-page limit counts images and tables, and links or QR codes to external document storage are forbidden - everything must sit inside the file.",
+          "The administrative and financial Excel must carry each partner institution's commitment letter, signed and scanned by its legal representative, due at the same closing date as the rest of the file.",
+          "Both dedicated spaces on the submission site - 'documents de dépôt' and 'documents signés' - must be complete or the submission cannot be validated, and only what stands on the server at 11:00 Paris time is evaluated."
+        ],
+        "alerts": [
+          "Single-phase call with a hard 17 November 2026, 11:00 Paris deadline: no element can be added after closing and only the electronic version on the submission site counts.",
+          "Auditions, if the jury calls them, are held in English with a delegation that can generally go up to three to five people designated by the scientific leader and the coordinating institution.",
+          "Results are published only after State validation through the Prime Minister's decision, so contractualisation and project start dates can slip - do not commit recruitments before contract signature.",
+          "Where a consortium agreement is required (consortia including companies), it must reach the ANR within 12 months of contract signature, otherwise funding can stop and be repaid under article 6.6 of the Financial Regulation.",
+          "Beneficiaries commit to immediate open access under CC-BY with HAL deposit and the ANR project reference, and to a first PGD within 6 months of project start - budget the publication and data-management workload accordingly."
+        ],
+        "submission_workflow": "The project leader creates a submission-site account, completes the online form and uploads both documents to the dedicated spaces, validates electronically before the 17 November 2026 11:00 Paris cut-off and receives an electronic acknowledgement; the ANR international committee then evaluates the file, with any audition in English, before State validation and contracting."
+      }
+    }
+  ]
+}

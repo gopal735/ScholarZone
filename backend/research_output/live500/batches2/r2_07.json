@@ -1,0 +1,45 @@
+{
+ "batch": "r2_07",
+ "agents": [
+  437,
+  438,
+  439,
+  440,
+  465,
+  477,
+  478,
+  479,
+  480,
+  481,
+  482,
+  484
+ ],
+ "assignment_files": [
+  "assignments/agent_437.json",
+  "assignments/agent_438.json",
+  "assignments/agent_439.json",
+  "assignments/agent_440.json",
+  "assignments/agent_465.json",
+  "assignments/agent_477.json",
+  "assignments/agent_478.json",
+  "assignments/agent_479.json",
+  "assignments/agent_480.json",
+  "assignments/agent_481.json",
+  "assignments/agent_482.json",
+  "assignments/agent_484.json"
+ ],
+ "result_files": [
+  "results_internal/agent_437.json",
+  "results_internal/agent_438.json",
+  "results_internal/agent_439.json",
+  "results_internal/agent_440.json",
+  "results_internal/agent_465.json",
+  "results_internal/agent_477.json",
+  "results_internal/agent_478.json",
+  "results_internal/agent_479.json",
+  "results_internal/agent_480.json",
+  "results_internal/agent_481.json",
+  "results_internal/agent_482.json",
+  "results_internal/agent_484.json"
+ ]
+}

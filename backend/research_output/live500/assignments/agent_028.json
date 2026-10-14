@@ -1,0 +1,78 @@
+{
+ "agent": "agent_028",
+ "assignment_count": 1,
+ "scholarships": [
+  {
+   "id": 95,
+   "title": "Institut Polytechnique de Paris (IP Paris) PhD Track & Master's Excellence Scholarships",
+   "country": "France",
+   "degree": "Master's and PhD (PhD Track program is a 5-year integrated Master's→PhD)",
+   "funding_label": "Partially Funded",
+   "status": "open",
+   "official_source": "Institut Polytechnique de Paris",
+   "official_source_url": "https://www.ip-paris.fr/en/education/useful-information/scholarships",
+   "application_link": "https://www.ip-paris.fr/en/education/useful-information/scholarships",
+   "catalogue_url": null,
+   "official_updates_url": null,
+   "existing": {
+    "funding_amount": null,
+    "funding_currency": null,
+    "funding_period": null,
+    "tuition_coverage": null,
+    "living_cost_coverage": null,
+    "travel_coverage": null,
+    "fully_funded": 0,
+    "description": null,
+    "eligibility": [],
+    "eligibility_summary": "International students admitted to IP Paris Master's or PhD Track programs. Highly selective (~top STEM/research candidates).",
+    "benefits": [
+     "Excellence Scholarship €10,000/yr",
+     "Reduced tuition (from ~€7,000 to €243/yr for first 2 years)"
+    ],
+    "coverage": [
+     "Excellence Scholarship €10,000/yr",
+     "Reduced tuition (from ~€7,000 to €243/yr for first 2 years)"
+    ],
+    "requirements": [],
+    "documents": [],
+    "english_requirement": null,
+    "application_method": [],
+    "selection_notes": null,
+    "best_fit": null,
+    "notes": null,
+    "duration": null,
+    "application_period": null,
+    "deadline_display": "Session 1: 8 January 2026; Session 2: 26 March 2026; Session 3: 28 May 2026",
+    "deadline_date": null,
+    "region": "Europe",
+    "program_type": null,
+    "applicant_utility": null,
+    "official_details": null
+   },
+   "missing_fields": [
+    "funding_amount",
+    "funding_currency",
+    "funding_period",
+    "tuition_coverage",
+    "living_cost_coverage",
+    "travel_coverage",
+    "description",
+    "eligibility",
+    "requirements",
+    "documents",
+    "english_requirement",
+    "application_method",
+    "selection_notes",
+    "best_fit",
+    "notes",
+    "duration",
+    "application_period",
+    "deadline_date",
+    "program_type",
+    "applicant_utility",
+    "official_details"
+   ]
+  }
+ ],
+ "result_file": "C:\\Users\\GopaL\\Desktop\\Projects folder\\ScholarZone\\backend\\research_output\\live500\\results\\agent_028.json"
+}

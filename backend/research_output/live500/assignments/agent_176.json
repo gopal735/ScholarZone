@@ -1,0 +1,80 @@
+{
+ "agent": "agent_176",
+ "assignment_count": 1,
+ "scholarships": [
+  {
+   "id": 465,
+   "title": "Hans Wilsdorf Foundation Scholarship (managed by EPFL)",
+   "country": "Switzerland",
+   "degree": "Bachelor's, Master's",
+   "funding_label": "Need-based scholarship",
+   "status": "open",
+   "official_source": "EPFL (Hans Wilsdorf Foundation fund administered by EPFL)",
+   "official_source_url": "https://www.epfl.ch/education/studies/en/support-scholarships",
+   "application_link": "https://www.epfl.ch/education/studies/en/support-scholarships",
+   "catalogue_url": "https://www.epfl.ch/education/studies/en/support-scholarships/",
+   "official_updates_url": "https://www.epfl.ch/about/news-and-media/",
+   "existing": {
+    "funding_amount": null,
+    "funding_currency": null,
+    "funding_period": null,
+    "tuition_coverage": 0,
+    "living_cost_coverage": 1,
+    "travel_coverage": null,
+    "fully_funded": 0,
+    "description": "Students whose section recommend participating in study trips, with an educational purpose can ask for financial support. Exchange students are not entitled to it.",
+    "eligibility": [
+     "Live in the canton of Geneva, or have applied for a grant from the cantonal scholarship office of the canton of Geneva (SBPE)",
+     "Swiss nationality, C permit holder, refugee or Swiss secondary education certificate: as of the CMS",
+     "International students: after at least one year at EPFL and successful completion of the first-year cycle",
+     "Be in a difficult financial situation under the EPFL social scholarship criteria"
+    ],
+    "eligibility_summary": "Need-based fund for EPFL students who live in the canton of Geneva or who have applied to the Geneva cantonal scholarship office (SBPE). Swiss, C permit and refugee students may apply from the CMS; international students only after at least one year at EPFL and successful completion of the first-year cycle. Same assessment criteria as the EPFL social scholarship.",
+    "benefits": [
+     "Financial support of 5 months per semester, up to ten months per academic year",
+     "Payment at the start of each semester"
+    ],
+    "coverage": [
+     "Means-tested financial support paid per academic year",
+     "5 months per semester, maximum ten months per year of study"
+    ],
+    "requirements": [
+     "Tick the \"Hans Wilsdorf scholarship\" box on the Application form 2026-2027",
+     "Meet the same criteria as the EPFL social scholarship"
+    ],
+    "documents": [
+     "EPFL application form 2026-2027 with the \"Hans Wilsdorf scholarship\" box ticked",
+     "Documents listed on that form",
+     "For students who applied to SBPE, the acknowledgement of that application"
+    ],
+    "english_requirement": null,
+    "application_method": [
+     "Download the EPFL Application form 2026-2027",
+     "Tick the \"Hans Wilsdorf scholarship\" box",
+     "Submit the form with the required documents per the EPFL scholarship process"
+    ],
+    "selection_notes": "Managed by EPFL under the same subsidiarity test as the EPFL social scholarship.",
+    "best_fit": "EPFL students resident in the canton of Geneva, or who have applied to the Geneva cantonal scholarship office, whose financial situation has deteriorated.",
+    "notes": "EPFL routes Geneva students to this fund instead of the EPFL social scholarship.",
+    "duration": "Per academic year (1 or 2 semesters), 5 months per semester, maximum ten months per year of study",
+    "application_period": "Two windows a year; the last windows on the page (01.12.26 and 15.02.27) are still ahead of today",
+    "deadline_display": "Request for Spring 2027: new and renewal application 01.12.26 / 15.02.27 (the 15.07.26 and 15.09.26 windows for Autumn 26 and Spring 27 have passed)",
+    "deadline_date": "2026-12-01",
+    "region": "Europe",
+    "program_type": "Need-based scholarship from a private foundation, administered by the university",
+    "applicant_utility": null,
+    "official_details": null
+   },
+   "missing_fields": [
+    "funding_amount",
+    "funding_currency",
+    "funding_period",
+    "travel_coverage",
+    "english_requirement",
+    "applicant_utility",
+    "official_details"
+   ]
+  }
+ ],
+ "result_file": "C:\\Users\\GopaL\\Desktop\\Projects folder\\ScholarZone\\backend\\research_output\\live500\\results\\agent_176.json"
+}

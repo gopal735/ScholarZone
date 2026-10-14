@@ -1,0 +1,88 @@
+{
+ "agent": "agent_249",
+ "assignment_count": 1,
+ "scholarships": [
+  {
+   "id": 607,
+   "title": "IUJ Nakayama Premium Scholarship",
+   "country": "Japan",
+   "degree": "Master's, PhD",
+   "funding_label": "Tuition Fee Waiver, Stipend",
+   "status": "open",
+   "official_source": "International University of Japan (IUJ)",
+   "official_source_url": "https://www.iuj.ac.jp/admissions/cost",
+   "application_link": "https://www.iuj.ac.jp/admissions/cost",
+   "catalogue_url": null,
+   "official_updates_url": "https://www.iuj.ac.jp/admissions",
+   "existing": {
+    "funding_amount": null,
+    "funding_currency": null,
+    "funding_period": null,
+    "tuition_coverage": null,
+    "living_cost_coverage": null,
+    "travel_coverage": null,
+    "fully_funded": 0,
+    "description": null,
+    "eligibility": [
+     "Non-Japanese (international) applicant; IUJ publishes this scheme in its 'Scholarship Guidelines for Non-Japanese Applicants'",
+     "Must hold or receive an offer of admission to an IUJ degree programme (Master's in GSIR or GSIM, or the PhD programme)",
+     "Must register the online application with sponsorship status 'Non-Sponsored'",
+     "Must complete the Scholarship Section of the Phase 2 online application to be considered",
+     "IUJ states that most of its scholarships require recipients to hold a Japan Student Visa"
+    ],
+    "eligibility_summary": "Applicants must already be applying to a degree programme at the International University of Japan and be admitted through one of IUJ's published application rounds; the scholarship is awarded competitively at the point of admission. The IUJ page states that most of its scholarships require recipients to hold a Japan Student Visa.",
+    "benefits": [
+     "100% of tuition fees",
+     "Partial admissions fee",
+     "Monthly living stipend of JPY 100,000"
+    ],
+    "coverage": [
+     "100% of tuition fees",
+     "Partial admissions fee",
+     "Monthly living stipend of JPY 100,000"
+    ],
+    "requirements": [
+     "Apply to an IUJ degree programme through the IUJ Online Application System",
+     "Select 'Non-Sponsored' as the sponsorship status when registering",
+     "Complete the Scholarship Section in Phase 2 of the online application",
+     "Meet the admission requirements of the chosen IUJ graduate school, including its interview"
+    ],
+    "documents": [
+     "Completed IUJ Online Application System registration and Phase 1 application",
+     "Completed Scholarship Section of the Phase 2 online application",
+     "Academic credentials and language evidence required for IUJ admission (IUJ does not restate a separate Nakayama Premium document list on the pages read)"
+    ],
+    "english_requirement": "TOEFL, IELTS or TOEIC, unless the applicant falls within IUJ's published English Test Exemption Policy",
+    "application_method": [
+     "Create an account in the IUJ Online Application System",
+     "Register with sponsorship status 'Non-Sponsored'",
+     "Complete Phase 2 and the Scholarship Section to apply for scholarships",
+     "Await the admission result; scholarship decisions are made at the time of admission"
+    ],
+    "selection_notes": "IUJ states that scholarships are awarded competitively at the time of admission, based on the goals of its partner organisations, companies and foundations. There is no separate selection committee, panel or interview published for the Nakayama Premium scholarship on the pages read.",
+    "best_fit": "Applicants to an IUJ Master's (development studies, public management, MBA or digital transformation) or PhD place who are not sponsored and can meet IUJ's admission and English requirements.",
+    "notes": "IUJ publishes a simplified scholarship list on its Tuition & Scholarships page and directs applicants to the Scholarship Guidelines PDF for the detailed eligibility of each scholarship. The page also states that applicants should note most scholarships require recipients to hold a Japan Student Visa.",
+    "duration": "Master's programmes at IUJ run one academic year (GSIM MBA / Digital Transformation) or two academic years (GSIM two-year MBA, GSIR International Development and Public Management); the PhD route is a separate programme with its own application rounds",
+    "application_period": "Open now for IUJ's September 2027 admission cycle. Master's programmes (GSIR and GSIM): 1st round deadline 10 December 2026, 2nd round 11 February 2027, 3rd round 14 April 2027. PhD programme: 1st round deadline 16 November 2026, 2nd round 16 February 2027, 3rd round 16 April 2027.",
+    "deadline_display": "IUJ September 2027 entry, 1st application round: 10 December 2026 for Master's programmes and 16 November 2026 for the PhD programme",
+    "deadline_date": "2026-12-10",
+    "region": "Asia",
+    "program_type": "University-funded admission scholarship",
+    "applicant_utility": null,
+    "official_details": null
+   },
+   "missing_fields": [
+    "funding_amount",
+    "funding_currency",
+    "funding_period",
+    "tuition_coverage",
+    "living_cost_coverage",
+    "travel_coverage",
+    "description",
+    "applicant_utility",
+    "official_details"
+   ]
+  }
+ ],
+ "result_file": "C:\\Users\\GopaL\\Desktop\\Projects folder\\ScholarZone\\backend\\research_output\\live500\\results\\agent_249.json"
+}

@@ -1,0 +1,94 @@
+{
+ "agent": "agent_022",
+ "assignment_count": 1,
+ "scholarships": [
+  {
+   "id": 69,
+   "title": "Cambridge Trust International Scholarship",
+   "country": "United Kingdom",
+   "degree": "Master's, PhD",
+   "funding_label": "Fully Funded",
+   "status": "open",
+   "official_source": "The Cambridge Trust (Cambridge Commonwealth, European & International Trust)",
+   "official_source_url": "https://www.cambridgetrust.org",
+   "application_link": "https://www.cambridgetrust.org",
+   "catalogue_url": "https://www.postgraduate.study.cam.ac.uk/courses",
+   "official_updates_url": "https://www.cambridgetrust.org/news",
+   "existing": {
+    "funding_amount": null,
+    "funding_currency": null,
+    "funding_period": "per year",
+    "tuition_coverage": 1,
+    "living_cost_coverage": 1,
+    "travel_coverage": null,
+    "fully_funded": 1,
+    "description": "The Cambridge Trust provides scholarships and grants for study and research at the University of Cambridge.",
+    "eligibility": [
+     "Be from a country other than the United Kingdom or Ireland",
+     "Be highly ranked by the prospective Cambridge department",
+     "Apply to a degree level funded by the Trust: Master's (MPhil, MASt, LLM, MCL, MAcc, MRes, MEd, MCEP, MLitt, MCHIR, MPhil+PhD, MRes+PhD) or PhD",
+     "Not apply to a premium level course such as the MBA or MFin, or to levels the Trust does not fund such as AdvDip, BusD, EMBA, Global EMBA, MSt, MV, PGCert, PGDip or the six-year part-time MD",
+     "Not already hold a degree at or above the level of the course applied for, except a second MPhil required by a department before PhD consideration",
+     "Not be part-way through a course at Cambridge, unless applying for a higher degree after graduation",
+     "Indicate a wish to be considered for funding in the admissions application funding section",
+     "Hold a conditional offer of admission by the time the Trust awards"
+    ],
+    "eligibility_summary": "Open to applicants from countries other than the United Kingdom or Ireland who are highly ranked by their prospective Cambridge department. Selection is on academic ability and research potential, examination results and references; for this scholarship the financial situation of applicants does not affect selection. Tenable at any College and in any subject except premium rate courses.",
+    "benefits": [
+     "University tuition fee at the International rate",
+     "Annual maintenance sufficient for a single person",
+     "Student visa cost covered",
+     "Student Immigration Health Surcharge covered",
+     "Additional benefits as specified in the award",
+     "Membership of the Cambridge Trust scholar community"
+    ],
+    "coverage": [
+     "University tuition fee at the International rate",
+     "Annual maintenance sufficient for a single person",
+     "Student visa cost",
+     "Student Immigration Health Surcharge",
+     "Various additional benefits as specified in the award"
+    ],
+    "requirements": [
+     "Submit the Cambridge admission application by the funding deadline for your course, not the application deadline",
+     "Complete the funding section of the application form to express the wish to be considered for funding",
+     "Provide full details of income from all sources",
+     "Hold a conditional offer of admission by the awarding period",
+     "Study at the University of Cambridge only; the Trust cannot fund study at other universities",
+     "Choose up to two Colleges, or leave the section blank to be considered by any College"
+    ],
+    "documents": [
+     "University of Cambridge admission application submitted through the Applicant portal",
+     "Completed funding section of the admissions application form",
+     "Details of significant income from all sources, including salaries, business profit, rents and dividends, as many Trust scholarships require evidence of financial need",
+     "References and academic history as required by the University"
+    ],
+    "english_requirement": null,
+    "application_method": [
+     "University of Cambridge Applicant portal, single application covering admission and funding"
+    ],
+    "selection_notes": "The scholarships are awarded on the basis of academic ability and research potential, examination results and references, and only applicants who are highly ranked by their prospective department are considered. Unlike most Trust postgraduate scholarships, the financial situation of applicants does not affect selection for this award. The Trust plays no part in admissions or in College selection, cannot influence admission chances, cannot discuss departmental rankings, and cannot help find a supervisor or pay application fees.",
+    "best_fit": "Applicants from outside the UK and Ireland who are top-ranked by their Cambridge department, applying to a funded postgraduate degree at Cambridge and able to meet the course funding deadline.",
+    "notes": "The Trust publishes no monetary figure for this scholarship; the value is described only in components. Applications after the funding deadline are not considered for the majority of University funds. Because the Trust reallocates unclaimed awards throughout its February-to-July awarding period, applicants remain under consideration until the end of July.",
+    "duration": "For the duration of the funded course; the Trust does not publish a fixed term because it follows the course",
+    "application_period": "The Trust's awarding period runs from the middle of February to the end of July each year, with most awards made in February and March and unclaimed awards reallocated during the period. Applicants remain under consideration until the end of July.",
+    "deadline_display": "No separate scholarship application exists. The University of Cambridge admission application must be submitted by the funding deadline specific to your course, which is different from the application deadline and is listed in the Postgraduate Course Directory. The funding section of the application must be completed to be considered for funding.",
+    "deadline_date": null,
+    "region": "Europe",
+    "program_type": "Full-cost postgraduate scholarship at the University of Cambridge awarded on academic merit",
+    "applicant_utility": null,
+    "official_details": null
+   },
+   "missing_fields": [
+    "funding_amount",
+    "funding_currency",
+    "travel_coverage",
+    "english_requirement",
+    "deadline_date",
+    "applicant_utility",
+    "official_details"
+   ]
+  }
+ ],
+ "result_file": "C:\\Users\\GopaL\\Desktop\\Projects folder\\ScholarZone\\backend\\research_output\\live500\\results\\agent_022.json"
+}

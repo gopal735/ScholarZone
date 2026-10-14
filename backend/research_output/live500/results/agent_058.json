@@ -1,0 +1,164 @@
+{
+  "agent": "agent_058",
+  "records": [
+    {
+      "id": 169,
+      "official": {
+        "official_source_urls": [
+          "https://www.ceu.edu/admissions/financial-aid",
+          "https://www.ceu.edu/admissions/master",
+          "https://www.ceu.edu/admissions/doctoral",
+          "https://www.ceu.edu/admissions/tuition-fees",
+          "https://www.ceu.edu/admissions/financial-aid/student-scholarships",
+          "https://www.ceu.edu/admissions/financial-aid/enrolled",
+          "https://documents.ceu.edu/"
+        ],
+        "application_link": "https://sits.ceu.edu/urd/sits.urd/run/siw_ipp_lgn.login?process=siw_ipp_app_crs",
+        "catalogue_url": null,
+        "official_updates_url": "https://www.ceu.edu/admissions/faq",
+        "deadline_central": "2026-10-15",
+        "deadline_central_display": "15 October 2026 (23:59 Central European Time)",
+        "deadline_note": "Master's applicants choose from four rounds: Round 1 - 15 October 2026 (financial aid open, all applicants); Round 2 - 2 February 2027 (financial aid open, not applicable to visa-sensitive-country applicants); Round 3 - 15 April 2027 and Round 4 - 15 July 2027 (financial aid closed). Doctoral applicants have a single deadline: 15 January 2027 (23:59 CET), with CEU financial aid available.",
+        "application_cycle": "CEU master's admission is organised into four rounds for the current cycle, with institutional financial aid awards made in the first two rounds only; the doctoral round closes 15 January 2027",
+        "status": "OPEN",
+        "status_note": "As of 10 October 2026 the master's Round 1 deadline (15 October 2026) is five days away with financial aid applications open, and the doctoral deadline of 15 January 2027 is also open with CEU financial aid available",
+        "tuition_coverage_note": "Master's: 'Master's Tuition Award (may cover 50% - up to 80% of the tuition fee). Full Tuition Award is possible only in exceptional cases.' Doctoral: the CEU Doctoral Scholarship covers 'the full cost of tuition'.",
+        "funding_amount": 2002,
+        "funding_currency": "EUR",
+        "funding_period": "per month (CEU Doctoral Scholarship stipend, gross)",
+        "tuition_coverage": true,
+        "living_cost_coverage": true,
+        "travel_coverage": false,
+        "fully_funded": false,
+        "benefits": [
+          "CEU Doctoral Scholarship: covering the full cost of tuition, complete with a monthly stipend to assist with housing and living costs",
+          "Doctoral Stipend is 2,002 EUR/gross/month, and it is awarded for a period of 48 months in total",
+          "Master's Tuition Award (may cover 50% - up to 80% of the tuition fee); Full Tuition Award is possible only in exceptional cases",
+          "Master's Stipend Award (300 EUR/month up to 750 EUR/month)",
+          "The monthly stipend is transferred to the student's bank account by the 4th day of each month",
+          "Open Society Scholarship (donor-funded, first master's only): a full tuition award, along with a monthly stipend and/or housing benefits, valued at EUR 8,000 per academic year"
+        ],
+        "eligibility": [
+          "Candidates from any country can apply for CEU financial aid",
+          "Financial aid is granted on the basis of academic merit and is available for most of CEU's programs (only full-time programs)",
+          "Applicants who want to be considered for these awards must apply by the appropriate deadline",
+          "Master's applicants must hold a bachelor's degree or equivalent and have collected a minimum of 180 ECTS credits for two-year programs or 240 ECTS credits for one-year programs",
+          "Doctoral applicants must hold a bachelor's degree and a master's degree (or equivalent) in a related field and have accumulated a total of 300 ECTS credits",
+          "CEU master's students wishing to enter doctoral programs must have a GPA of 3.3 or higher in their master's coursework"
+        ],
+        "requirements": [
+          "To be considered, indicate your interest for financial aid in the CEU Application Form ('Funding' section)",
+          "Candidates who apply by the financial aid deadline are automatically considered for the CEU Doctoral Scholarship",
+          "Complete official academic records in English (transcripts and diplomas) must be uploaded with the application",
+          "Two confidential letters of recommendation for master's applicants; two or three for doctoral applicants, written in English and submitted by the recommenders themselves",
+          "Application fee of EUR 30 for each candidate, irrespective of the number of programs applied to in the given admissions cycle, non-refundable and cannot be waived",
+          "Applicants are expected to prepare all written materials independently, without the use of generative AI tools, except for basic grammar and spelling checks"
+        ],
+        "documents": [
+          "Academic records: complete official bachelor's transcript and diploma in English (doctoral applicants: bachelor's and master's transcripts and diplomas)",
+          "Proof of English proficiency (standardized test score report) or an official university letter confirming the degree was taught exclusively in English",
+          "Curriculum vitae or resume, including a publication list if available",
+          "Academic writing submission(s): statement of purpose, research proposal, academic essay on a given subject, or writing sample",
+          "Two (doctoral: two or three) confidential letters of recommendation submitted by a faculty member or job supervisor",
+          "Standard test scores where required by the program - some programs of the Department of Economics require GRE or GMAT scores as an entry condition"
+        ],
+        "selection_criteria": [
+          "Past academic achievement",
+          "Strength of recommendations",
+          "English language competency",
+          "Intellectual merit",
+          "Work experience, expectations of the program, future plans, and general compatibility with the goals of the academic unit",
+          "Most departments interview pre-selected candidates prior to making the final decision"
+        ],
+        "coverage": [
+          "CEU Doctoral Scholarship covers the full cost of tuition, complete with a monthly stipend to assist with housing and living costs",
+          "Master's Tuition Award may cover 50% - up to 80% of the tuition fee",
+          "Master's Stipend Award: 300 EUR/month up to 750 EUR/month",
+          "CEU Master's Scholarships cover up to 100% of the tuition fee, health insurance, and a monthly stipend to assist with housing and living costs on campus for the duration of the program",
+          "CEU Doctoral Scholarships cover the full cost of tuition and health insurance, and include a monthly stipend that covers housing and living costs",
+          "Students need to budget additionally for travel, recreation, and incidentals, which can vary with the individual"
+        ],
+        "application_method": [
+          "Apply online through the CEU online application form and indicate interest for financial aid in the 'Funding' section",
+          "Pay the application fee of EUR 30 per candidate via the online application form (payments are processed by Flywire)",
+          "Register referees in the online application and submit the application so a link to the recommendation form is emailed to each recommender",
+          "For the Open Society Scholarship: apply for an eligible MA program in Round 1 by 15 October 2026, then complete the Open Society Scholarship Application Form received by email after passing the first stage of admission",
+          "Track the application, documents and references in the CEU Applicant Portal"
+        ],
+        "application_route": "Apply through the CEU online application form in SITS with interest in financial aid indicated in the 'Funding' section; doctoral candidates who apply by the financial aid deadline are automatically considered for the CEU Doctoral Scholarship",
+        "study_mode": "Financial aid is granted on the basis of academic merit and is available for most of CEU's programs (only full-time programs)",
+        "citizenship_residency": "Candidates from any country can apply for CEU financial aid - no nationality restriction on the institutional awards. Some donor-funded scholarships do restrict citizenship: the Postgraduate Opportunity Scholarship is open to citizens of 30 listed countries primarily in Central and Eastern Europe and the former Soviet Union",
+        "international_eligibility": "Yes - candidates from any country can apply for CEU financial aid. Non-EU/EEA citizens must apply for a residency permit or study visa after acceptance, and applicants from visa-sensitive countries (countries with a very long visa/residence permit application process) can apply in the first admission round only",
+        "subject_or_agency_requirement": "No general field restriction on institutional financial aid. Some programs have their own admissions calendars: MESPOM, Mundus MAPP, GEMMA, and the MA in International Relations - New York City Track. The Open Society Scholarship is not available for MESPOM, MATILDA, History in the Public Sphere, MA in International Relations - New York City Track (1 Year), Mundus MAPP, or the part-time MS in Business Data Analytics and AI and MS in Finance, Data and AI",
+        "research_requirement": "Academic writing submission(s) are required with the application - a statement of purpose, research proposal, academic essay on a given subject, or writing sample - with each academic program specifying its own writing requirement(s)",
+        "duration": "Master's programs: 1 or 2 years. Doctoral programs: standard duration 4 years, with stipends given for a total of 48 months (4 years)",
+        "description": "CEU grants institutional financial aid on the basis of academic merit across most of its full-time programs. Master's students can receive a tuition award covering 50% to 80% of the tuition fee plus a monthly stipend of 300 to 750 EUR, while doctoral candidates who apply by the financial aid deadline are automatically considered for the CEU Doctoral Scholarship, which covers the full cost of tuition complete with a monthly stipend to assist with housing and living costs.",
+        "region": "Europe - Vienna, Austria",
+        "program_type": "Institutional merit-based financial aid (Master's Tuition Award, Master's Stipend Award, CEU Doctoral Scholarship) plus donor-funded scholarships",
+        "english_requirement": "Master's: TOEFL iBT 88 (4.5 for tests taken after 21 January 2026), IELTS Academic 6.5, Pearson Test of English (Academic) 59, Cambridge English C1 Advanced or C2 Proficiency 180, Euroexam Academic English C1 Pass, or Duolingo English Test 120. Doctoral: TOEFL iBT 100 (5), IELTS Academic 7.0, Pearson Test of English (Academic) 76, Cambridge English C1 Advanced or C2 Proficiency 190, Euroexam Academic English C1 Pass with distinction, or Duolingo English Test 130. Tests must be within the stated validity window (two years for TOEFL/IELTS/Euroexam, five years for PTE and Cambridge, one year for Duolingo). Exemption applies if English is your first language or you hold a degree taught exclusively in English; if the language of instruction is not clearly stated in your academic records, upload an official letter from your university. The Admissions Office reserves the right to request an English test result even if you otherwise qualify for exemption. Mundus MAPP and MESPOM have different language requirements"
+      },
+      "verification": {
+        "source_citations": [
+          "https://www.ceu.edu/admissions/financial-aid",
+          "https://www.ceu.edu/admissions/master",
+          "https://www.ceu.edu/admissions/doctoral",
+          "https://www.ceu.edu/admissions/tuition-fees",
+          "https://www.ceu.edu/admissions/financial-aid/student-scholarships",
+          "https://www.ceu.edu/admissions/financial-aid/enrolled",
+          "https://dpp.ceu.edu/financial-aid",
+          "https://www.ceu.edu/studentlife/onlineorientation/costofliving"
+        ],
+        "last_verified_date": "2026-10-10",
+        "verification_status": "confirmed",
+        "confidence": "high",
+        "not_confirmed": [
+          "No travel, installation or relocation allowance is published; CEU's financial aid policy states students must budget additionally for travel, recreation, and incidentals, so travel_coverage is recorded as false",
+          "The number of awards and the per-department distribution of master's tuition awards and stipends are not published",
+          "Health insurance coverage is stated in CEU's financial aid regulations and department pages rather than on the central financial-aid page",
+          "No acceptance rate, award statistics, or stipend tier list for master's applicants is published per program"
+        ],
+        "notes": "All figures and deadlines were read directly from CEU's own pages on ceu.edu and its subdomains (financial-aid, master, doctoral, tuition-fees, student-scholarships, enrolled-student support, cost of living, and the Public Policy department's financial-aid page). The doctoral stipend of 2,002 EUR gross/month over 48 months and the master's tuition award range of 50-80% and stipend range of 300-750 EUR/month all come from the live central financial-aid page. Note that a departmental page and older policy revisions quote lower doctoral stipends, so the central page figure is the current institutional one."
+      },
+      "applicant_utility": {
+        "summary": "CEU is one of the few European schemes where admission to a doctorate is effectively a funded package: every doctoral applicant who applies by 15 January 2027 is automatically considered for a full-tuition scholarship plus a gross monthly stipend of EUR 2,002 for up to 48 months. Master's applicants face a different reality - aid is merit-only, tuition awards normally land between 50% and 80% of a EUR 12,000-15,000 annual fee, and a full waiver happens only in exceptional cases, so most master's students should plan to fund part of tuition themselves. Timing is the highest-leverage decision a master's applicant makes: institutional aid is decided in Rounds 1 and 2 only, and applicants from visa-sensitive countries can enter in Round 1 (15 October 2026) alone. There is no separate application form for the institutional awards - everything hinges on the 'Funding' section of the single online application.",
+        "best_fit": "PhD applicants holding a completed master's degree with 300 ECTS and a concrete research proposal, plus competitive one- or two-year master's applicants who can absorb a partial tuition bill",
+        "application_readiness_checklist": [
+          "Confirm your programme is full-time - CEU states financial aid is available only for full-time programs",
+          "Map your ECTS before choosing a programme length: 180 for a two-year master's, 240 for a one-year master's, 300 total for doctoral entry",
+          "Book an English test early if you do not hold an English-taught degree; scores must be under two years old (five for PTE/Cambridge, one year for Duolingo)",
+          "Line up your referees before submitting - the recommendation link is only emailed after submission and they have one week to respond",
+          "Prepare English-language transcripts and diplomas issued by your institution or translated by a registered translator, and secure a certificate of enrollment with your expected graduation date if you are still studying",
+          "Pay the EUR 30 fee by card and submit at least a week before the deadline so Flywire can clear the payment in time"
+        ],
+        "common_rejection_risks": [
+          "Incomplete or non-conforming academic records - CEU states applications that fail general or programme-specific entry requirements are immediately rejected by the Admissions Office",
+          "A referee link expiring unused: recommendations must be received within one week of the application being received, and late references may or may not be considered",
+          "Choosing a one-year master's programme with only 180 ECTS, or a doctoral path with fewer than 300 ECTS",
+          "Applying in Round 3 or 4 expecting institutional aid, when financial aid is closed from Round 3 onward",
+          "Leaving the 'Funding' section of the application form blank, which removes you from consideration entirely",
+          "Submitting a writing sample that reads as generated - CEU asks for independent preparation and tests your spoken English at interview"
+        ],
+        "estimated_uncovered_costs": "CEU's own cost-of-living guidance puts a Vienna student's average budget at about EUR 1,000 per month covering accommodation, utilities, meals, city transport, instructional materials and incidentals; dormitory rooms run roughly EUR 350-600 with utilities included, while private rent starts around EUR 450 plus utilities. CEU's aid policy explicitly requires students to budget separately for travel, recreation and incidentals. Add the EUR 30 application fee, a one-time EUR 500 registration fee (EUR 1,000 for MS in Social Data Science; EUR 3,000 for MS in Finance and MS in Business Analytics), a EUR 200 enrollment fee for master's students, and the Austrian Student Union fee - all of which are payable at or before enrollment.",
+        "document_audit": [
+          "Transcripts and diplomas must be in English and issued or translated by your university or a registered translator - self-translations are not accepted",
+          "If you are still studying, an official interim transcript plus a certificate of enrollment stating your expected graduation date stands in for the diploma",
+          "A Diploma Supplement is acceptable as a transcript but is not valid without an official copy of the diploma",
+          "If your name differs across transcript, diploma and travel document, you must supply official documentation of the name change with a certified English translation",
+          "For enrollment, records must be sent by the issuing institution through a transcript-sharing platform (Gradintelligence, eDocuments, Parchment) or institutional email - copies forwarded by you are refused",
+          "Referees must submit through the online recommendation form; a letter emailed directly to CEU does not count",
+          "Hard copies are only accepted if certified by a notary public or the institution itself, and CEU never returns documents"
+        ],
+        "alerts": [
+          "As of the verification date the master's Round 1 deadline (15 October 2026) is five days away - it is the round where financial aid is open to all applicants and the only round open to visa-sensitive-country applicants",
+          "Master's institutional financial aid is awarded in Rounds 1 and 2 only; Rounds 3 (15 April 2027) and 4 (15 July 2027) have financial aid closed, and Round 4 is subject to space availability",
+          "A full master's tuition award is possible only in exceptional cases - do not build a budget around a full waiver",
+          "PhD stipends are taxable in Austria and treated as self-employed income; doctoral students must register with SVS, pay taxes and social security contributions, so take-home pay is below the EUR 2,002 gross figure",
+          "Stipends are pro-rated from your actual arrival on the Vienna campus and are never paid retroactively - arriving late after the orientation week loses money",
+          "You cannot be simultaneously enrolled at another higher-education institution while receiving CEU financial aid unless you hold an official leave of absence for the whole CEU period",
+          "Every CEU degree programme is on-site and requires physical presence on campus for the whole programme, which also gates stipend release"
+        ],
+        "submission_workflow": "Submit the online CEU application with the Funding section completed and the EUR 30 fee cleared, which triggers the referee links; monitor documents and references in the Applicant Portal, then respond to the posted Study Agreement within 14 calendar days by signing the DocuSign link and paying the registration fee"
+      }
+    }
+  ]
+}

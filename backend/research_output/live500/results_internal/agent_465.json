@@ -1,0 +1,164 @@
+[
+  {
+    "id": 208,
+    "title": "Seoul National University Scholarship for Developing Countries",
+    "country": "South Korea",
+    "university": "Seoul National University",
+    "degree_level": "PhD",
+    "discipline": "All",
+    "official_source_urls": [
+      "https://en.snu.ac.kr/admission/graduate/scholarships/before_application",
+      "https://en.snu.ac.kr/admission/graduate/admission-process"
+    ],
+    "application_link": "https://en.snu.ac.kr/application/international-student-admission",
+    "catalogue_url": "https://en.snu.ac.kr/admission/graduate/scholarships/before_application",
+    "official_updates_url": "https://en.snu.ac.kr/admission/graduate/scholarships/before_application",
+    "deadline_central": null,
+    "deadline_central_display": "No fixed date - applications follow the international student admission period every semester",
+    "deadline_note": "Each fall term has one round of admissions and each spring term two rounds. Check for announcements on the application schedule and application guide for each admission round. The application period is around September and October for January enrolment (spring admissions) and around March and April for September enrolment (fall admissions).",
+    "application_cycle": "Every semester during the admission period for international students",
+    "status": "OPEN",
+    "status_note": "The scholarship is listed on Seoul National University's graduate scholarship pages for prospective international applicants, with the application period tied to each semester's admissions round.",
+    "tuition_coverage_note": "The page states 'Full tuition exemption for a maximum of 6 semesters'.",
+    "funding_amount": null,
+    "funding_currency": "KRW",
+    "funding_period": "per month",
+    "tuition_coverage": true,
+    "living_cost_coverage": true,
+    "travel_coverage": true,
+    "fully_funded": true,
+    "benefits": [
+      "Full tuition exemption for a maximum of 6 semesters",
+      "Living expenses of 1,500,000 KRW to 2,000,000 KRW per month for 3 to 4 years",
+      "Round-trip airfare (economy class based on GTS system)",
+      "Korean language training - only evening classes during regular semesters",
+      "National Health Insurance fee reimbursement",
+      "Number of recipients: approximately 8 each semester"
+    ],
+    "eligibility": [
+      "A faculty member of a major university in a developing country WITHOUT a Ph.D. degree",
+      "A newly admitted student to SNU as a Ph.D. student",
+      "Priority is given to faculty members from major universities in developing countries in Asia, Africa and South America"
+    ],
+    "requirements": [
+      "Check the box for 'Application for Scholarship' when completing the online admission application",
+      "Submit evidential documents to the SNU Office of Global Affairs",
+      "Attend an interview",
+      "Apply by the applicable admission round - each fall term has one round of admissions and each spring term two rounds"
+    ],
+    "coverage": [
+      "Full tuition exemption for a maximum of 6 semesters",
+      "Living expenses of 1,500,000 KRW to 2,000,000 KRW per month",
+      "Round-trip economy class airfare",
+      "Korean language training (evening classes only)",
+      "National Health Insurance fee reimbursement"
+    ],
+    "application_method": [
+      "Online admission application with the 'Application for Scholarship' box checked",
+      "Evidential documents submitted to the SNU Office of Global Affairs",
+      "Interview"
+    ],
+    "application_route": "Apply for SNU international graduate admission online, check 'Application for Scholarship', submit evidential documents to SNU OGA and attend an interview.",
+    "study_mode": null,
+    "duration": "Tuition exemption for a maximum of 6 semesters; living expenses for 3 to 4 years",
+    "description": "The Seoul National University Scholarship for Developing Countries supports faculty members of major universities in developing countries from Asia, Africa and South America to undertake PhD study at SNU, with full tuition exemption, monthly living expenses and round-trip airfare.",
+    "verification": {
+      "source_citations": [
+        "https://en.snu.ac.kr/admission/graduate/scholarships/before_application",
+        "https://en.snu.ac.kr/admission/graduate/admission-process"
+      ],
+      "last_verified_date": "2026-10-10",
+      "verification_status": "confirmed",
+      "confidence": "medium",
+      "not_confirmed": [
+        "funding_amount (the page publishes a range of 1,500,000 to 2,000,000 KRW per month, so a single bare number cannot be recorded)",
+        "documents",
+        "english_requirement",
+        "citizenship_residency",
+        "selection criteria beyond the interview and document steps",
+        "child care support, which the catalogue attributes to the 2027 spring application guidelines but which is not stated on this page"
+      ],
+      "notes": "Benefits, eligibility, application process, quarterly assessment and contact details were read directly from SNU's graduate scholarship page for prospective international applicants. The page footer states 'Last updated in 2023', so the 2027 spring application guidelines may carry additional detail. The monthly living expense figure is published only as a range of 1,500,000 to 2,000,000 KRW, so funding_amount is recorded as null rather than guessed. Note also that SNU publishes a separate, differently structured SNU Global Initiative Scholarship (fully registered foreign students, full or partial funding for 4-6 semesters with no independent application) and a Foreign Scholarship for exchange/visiting students - these should not be confused with this award."
+    },
+    "applicant_utility": "The defining feature of this award is who it is for: you must currently be a faculty member at a major university in a developing country without a PhD, so if you are an independent self-funded applicant this is not your route. Around eight students each semester receive it, which makes it very competitive. Support is genuinely broad - full tuition exemption for up to six semesters, monthly living expenses published as a range between 1.5 and 2 million KRW for three to four years, economy-class round-trip airfare, evening Korean language classes and reimbursement of your National Health Insurance premiums. Two caveats worth planning around. The tuition exemption is capped at six semesters, which is the standard SNU PhD coursework period, so expect to be funding yourself beyond that. And the Korean language training is evening classes only during regular semesters, so do not expect intensive daytime study."
+  },
+  {
+    "id": 210,
+    "title": "KAIST International Student Scholarship",
+    "country": "South Korea",
+    "university": "Korea Advanced Institute of Science and Technology (KAIST)",
+    "degree_level": "Undergraduate",
+    "discipline": "All",
+    "official_source_urls": [
+      "https://admission.kaist.ac.kr/intl-undergraduate/support/scholarships/kaist",
+      "https://admission.kaist.ac.kr/intl-undergraduate/support/coa",
+      "https://admission.kaist.ac.kr/intl-undergraduate/support/coa/service"
+    ],
+    "application_link": "https://admission.kaist.ac.kr/intl-undergraduate/apply",
+    "catalogue_url": "https://admission.kaist.ac.kr/intl-undergraduate/support/scholarships/kaist",
+    "official_updates_url": "https://admission.kaist.ac.kr/intl-undergraduate/support/scholarships/kaist",
+    "deadline_central": "2026-10-22",
+    "deadline_central_display": "22 October 2026, 6:00 PM KST (Early Admissions, Spring Track); Regular Admissions (Fall Track) closes 14 January 2027",
+    "deadline_note": "There is no separate scholarship deadline - the scholarship application period is the same as the admission application period. Early Admissions (Spring Track) runs 22 September to 22 October 2026 and Regular Admissions (Fall Track) runs 3 November 2026 to 14 January 2027.",
+    "application_cycle": "Two admission rounds a year: Early Admissions (Spring Track) and Regular Admissions (Fall Track)",
+    "status": "OPEN",
+    "status_note": "The Early Admissions (Spring Track) window is open as of 10 October 2026 and closes 22 October 2026 at 6:00 PM KST, with results announced on 10 December 2026.",
+    "tuition_coverage_note": "KAIST lists the subsidy as 'Full tuition fee: tuition exemption for 8 semesters'.",
+    "funding_amount": 350000,
+    "funding_currency": "KRW",
+    "funding_period": "per month",
+    "tuition_coverage": true,
+    "living_cost_coverage": true,
+    "travel_coverage": false,
+    "fully_funded": false,
+    "benefits": [
+      "Tuition exemption for 8 semesters",
+      "Living expenses of 350,000 KRW per month",
+      "Medical Health insurance"
+    ],
+    "eligibility": [
+      "Applicants of International Student Admission",
+      "The scholarship is offered to admitted students",
+      "Maintain a GPA over 2.7 out of 4.3 after completing the freshman year"
+    ],
+    "requirements": [
+      "No separate application process - the scholarship is awarded automatically upon being selected for admission",
+      "Check 'KAIST scholarship' in the Statement of Financial Resources when completing the admission application",
+      "Complete the online application with documents including a recommendation letter by 6:00 PM KST on the application deadline",
+      "All students who apply to KAIST will be considered for the KAIST Scholarship and, upon being selected for admission, are automatically entitled to it"
+    ],
+    "coverage": [
+      "Tuition exemption for 8 semesters",
+      "Monthly living expenses of 350,000 KRW",
+      "Medical Health insurance"
+    ],
+    "application_method": [
+      "Apply for international student admission and tick 'KAIST scholarship' in the Statement of Financial Resources - there is no separate scholarship application"
+    ],
+    "application_route": "Apply to KAIST International Student Admission, tick 'KAIST scholarship' in the Statement of Financial Resources, and the award is granted automatically on selection for admission.",
+    "study_mode": "Full-time undergraduate study",
+    "duration": "Tuition exemption for 8 semesters",
+    "description": "KAIST awards its scholarship automatically to every admitted international undergraduate student - all applications are thoroughly and equally reviewed during the admission process, and upon being selected for admission the applicant is automatically entitled to the KAIST Scholarship.",
+    "verification": {
+      "source_citations": [
+        "https://admission.kaist.ac.kr/intl-undergraduate/support/scholarships/kaist",
+        "https://admission.kaist.ac.kr/intl-undergraduate/support/coa",
+        "https://admission.kaist.ac.kr/intl-undergraduate/support/coa/service",
+        "https://admission.kaist.ac.kr/intl-undergraduate/application/ApplicationGuide/ApplicationTimeline"
+      ],
+      "last_verified_date": "2026-10-10",
+      "verification_status": "confirmed",
+      "confidence": "high",
+      "not_confirmed": [
+        "documents",
+        "english_requirement",
+        "citizenship_residency",
+        "number of awards on offer",
+        "tuition exemption and stipend terms for the freshman year specifically (the 'Maintain GPA over 2.7 / after the freshman year' condition is stated as a scholarship requirement)",
+        "travel_coverage"
+      ],
+      "notes": "Subsidy, requirement, application period, selection procedure and contact details were read directly from KAIST's official scholarship page, and the cost of attendance figures from KAIST's official COA page. The essential cost of attendance for the 2025-2026 academic year was NT 14,885,680, of which the scholarship covers 6,866,000 in tuition fees, 4,200,000 in monthly stipends and 916,680 in National Health Insurance premiums, a subtotal of 11,738,360 - leaving a uncovered balance of 3,359,000 per year even for a student on this award. The Early Admissions (Spring Track) deadline of 22 October 2026 at 6:00 PM KST is the nearest closing date as of 10 October 2026."
+    },
+    "applicant_utility": "The single most useful thing to know about KAIST is that there is no separate scholarship application: you tick 'KAIST scholarship' in the Statement of Financial Resources and, if you are admitted, you get it. That makes admission and the award the same decision, so put all your effort into the admission application rather than preparing a second portfolio. The scholarship covers 8 semesters of tuition, 350,000 KRW a month in living expenses and your Medical Health insurance. Do not, however, read that as fully funded. KAIST's own cost-of-attendance page puts the essential annual budget at 14,885,680 KRW while the scholarship contributes 11,738,360 of it, leaving 3,359,000 a year for housing, food and books that you must cover yourself. One condition to watch: you need to keep a GPA above 2.7 out of 4.3 after your freshman year. The current Early Admissions (Spring Track) window closes 22 October 2026 at 6:00 PM KST, with results on 10 December 2026."
+  }
+]

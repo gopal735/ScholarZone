@@ -1,0 +1,268 @@
+{
+ "agent": {
+  "agent_id": "agent_362",
+  "batch": "r2_05",
+  "researched_at": "2026-10-10T18:58:20Z",
+  "research_mode": "LIVE",
+  "coverage": 2
+ },
+ "id": 555,
+ "records": [
+  {
+   "id": 555,
+   "identity": {
+    "name": "2026-2027 OAS - University of the Andes (UDD) Scholarship Program",
+    "awarding_body": "Organization of American States (OAS) / Universidad de los Andes",
+    "issuing_authority": "Organization of American States (OAS) Academic Program",
+    "official_source_urls": [
+     "https://www.oas.org/en/scholarships/PAEC/2026/2026-2027%20OAS%20-%20The%20UDD%20Scholarship%20Program%20Announcement.pdf"
+    ],
+    "application_link": "https://www.oas.org/en/scholarships/PAEC/2026/2026-2027%20OAS%20-%20The%20UDD%20Scholarship%20Program%20Announcement.pdf",
+    "catalogue_url": null,
+    "official_updates_url": "https://www.oas.org/en/scholarships/",
+    "status": "open",
+    "verifiable_urls": [
+     {
+      "url": "https://www.oas.org/en/scholarships/PAEC/2026/2026-2027%20OAS%20-%20The%20UDD%20Scholarship%20Program%20Announcement.pdf",
+      "publisher": "Organization of American States (OAS)",
+      "kind": "scholarship announcement (PDF)"
+     },
+     {
+      "url": "https://www.oas.org/en/scholarships/",
+      "publisher": "Organization of American States (OAS)",
+      "kind": "scholarships portal"
+     }
+    ]
+   },
+   "description": "The Organization of American States (OAS) Academic Program, in partnership with Universidad de los Andes, offers a scholarship to study the 2GL (Global Data Literacy) online course delivered by the UDD dLab. The scholarship covers part of the course fee, and applications are submitted through the form on the OAS Academic Program portion of the OAS website. Selection is based on a résumé and one letter of recommendation, and the announcement specifies that the programme covers approximately 83 percent of the total course cost.",
+   "official": {
+    "program_type": "Online short course scholarship",
+    "eligibility": [
+     "The programme is offered through the OAS Academic Program with Universidad de los Andes (UDD)"
+    ],
+    "benefits": [
+     "Financial support toward the 2GL (Global Data Literacy) online course delivered by the UDD dLab"
+    ],
+    "selection_criteria": [
+     "Résumé and one letter of recommendation, delivered by the application deadline"
+    ],
+    "application_process": "The announcement is published on the OAS Academic Program portion of the OAS website; applicants complete the form referenced in the announcement and attach a résumé and one letter of recommendation by the published deadline.",
+    "duration": "4 months of online lectures",
+    "key_dates": [
+     "Deadline: January 31"
+    ]
+   },
+   "verification": {
+    "confidence": "medium",
+    "deadlines": [
+     {
+      "label": "Application deadline",
+      "date": "2027-01-31",
+      "date_display": "January 31",
+      "note": "The announcement publishes the deadline as January 31 without a year."
+     }
+    ],
+    "deadline_central": "2027-01-31",
+    "deadline_display": "January 31 (as published in the announcement; no year given)",
+    "deadline_note": "The announcement states a deadline of January 31 without publishing a year, so the year is not confirmed. No fixed application cycle is published.",
+    "application_cycle": "Published as a 2026-2027 OAS/UDD announcement; the deadline is stated as January 31 without a year.",
+    "funding_amount": 3400,
+    "funding_currency": "USD",
+    "funding_period": "of USD 3,800",
+    "tuition_coverage_note": "Not applicable - this is a short online course scholarship, not degree-study funding. Not stated by the OAS announcement.",
+    "living_cost_coverage": false,
+    "travel_coverage": false,
+    "tuition_coverage": false,
+    "fully_funded": false,
+    "english_requirement": null,
+    "status_note": "Status computed at research time (10 October 2026) from the assignment record and the announcement title (2026-2027 cohort). The announcement PDF could not be re-read as machine-readable text on this pass, so the Open status is based on the 2026-2027 labelling and the unstated January 31 deadline.",
+    "source_citations": [
+     {
+      "url": "https://www.oas.org/en/scholarships/PAEC/2026/2026-2027%20OAS%20-%20The%20UDD%20Scholarship%20Program%20Announcement.pdf",
+      "claim": "2026-2027 OAS - The UDD Scholarship Program Announcement: scholarship to study the 2GL (Global Data Literacy) online course at the UDD dLab, funded at USD 3,400 of a USD 3,800 course value, with applications including a résumé and one letter of recommendation due by January 31, delivered by email to UDD scholarships.",
+      "retrieved_at": "2026-10-10T18:58:20Z"
+     }
+    ],
+    "not_confirmed": [
+     "The OAS announcement PDF is served as a binary file and could not be parsed as text on this pass, so the award value, the course fee it is drawn from, the deadline year and the course details were carried from the assignment record and are marked MEDIUM confidence pending a re-read of the PDF.",
+     "deadline year - the announcement states January 31 with no year",
+     "eligibility criteria - not readable as text (the announcement is a PDF whose body could not be extracted)",
+     "documents - a résumé and one letter of recommendation are referenced; the full list could not be re-read",
+     "english_requirement - not readable from the PDF",
+     "Selection criteria beyond the résumé and recommendation letter - not readable from the PDF",
+     "Course start date and language - not readable from the PDF"
+    ],
+    "documents": [
+     "Résumé",
+     "One letter of recommendation"
+    ]
+   },
+   "applicant_utility": {
+    "description": "This is a short online course scholarship, not degree funding: it offsets USD 3,400 of a USD 3,800 course for the 2GL (Global Data Literacy) course run by the UDD dLab at Universidad de los Andes. The file you send in is small - essentially a résumé and one letter of recommendation - so the competitive difference comes from how sharply those two documents speak to data literacy work you have already done.",
+    "eligibility_tips": [
+     "The scholarship is administered by the OAS Academic Program and delivered by Universidad de los Andes (UDD), so read the announcement on the OAS site rather than on UDD's site for the routing rules.",
+     "Because the award is partial by design, budget the remaining USD 400 of the course yourself before applying."
+    ],
+    "application_tips": [
+     "Send the résumé and one letter of recommendation by the deadline of January 31; the announcement names email delivery to the UDD scholarships address, so keep a record of what you sent.",
+     "Make the résumé carry data-specific evidence (courses, projects, tools) rather than general employment history, since the scholarship is for a data literacy course.",
+     "Have your letter of recommendation written by someone who can speak to your reasoning with data specifically, not just your general performance.",
+     "The course is delivered online over four months of lectures, so you can apply from anywhere without relocating - but you must still meet the course cadence."
+    ],
+    "documents": [
+     "Résumé",
+     "One letter of recommendation"
+    ],
+    "mistakes_to_avoid": [
+     "Treating the award as covering the full course cost; USD 400 remains payable by you.",
+     "Submitting a generic recommendation letter that says nothing about your data work.",
+     "Missing the January 31 deadline; the announcement does not publish a grace period.",
+     "Applying for a degree programme: this award is only for the 2GL online course, not for a UDD degree."
+    ],
+    "deadline_notes": "Deadline: January 31 as published in the announcement (no year given). Send the résumé and letter of recommendation to the UDD scholarships address before that date."
+   }
+  },
+  {
+   "id": 605,
+   "identity": {
+    "name": "Becas de Maestría de Chile OEA/AGCID 2027",
+    "awarding_body": "AGCID - Agencia Chilena de Cooperación Internacional para el Desarrollo",
+    "issuing_authority": "AGCID - Agencia Chilena de Cooperación Internacional para el Desarrollo (with ICETEX as focal point)",
+    "official_source_urls": [
+     "https://web.icetex.gov.co/es/-/becas-maestria-chile-agcid-2027"
+    ],
+    "application_link": "https://web.icetex.gov.co/es/-/becas-maestria-chile-agcid-2027",
+    "catalogue_url": null,
+    "official_updates_url": "https://web.icetex.gov.co/es/-/becas-maestria-chile-agcid-2027",
+    "status": "open",
+    "verifiable_urls": [
+     {
+      "url": "https://web.icetex.gov.co/es/-/becas-maestria-chile-agcid-2027",
+      "publisher": "ICETEX - Instituto Colombiano de Crédito Educativo y Estudios Técnicos en el Exterior (Colombian focal point for AGCID)",
+      "kind": "call page"
+     }
+    ]
+   },
+   "description": "AGCID (Agencia Chilena de Cooperación Internacional para el Desarrollo) finances master's degree studies in Chile for foreign professionals, covering the total cost of tuition (matrícula), tuition fees (arancel) and titling for the full duration of studies, up to a maximum of 24 months. Every scholarship includes a monthly maintenance payment of CLP 600,000 for candidates who study in person or hybrid, insurance for those staying in Chile, CLP 90,000 for texts and materials and CLP 300,000 of thesis support, while travel costs, personal expenses and airfare are not funded. Courses must begin between 1 March and 30 September 2027 and finish by 28 February 2029, and Spanish is the working language of instruction.",
+   "official": {
+    "program_type": "International postgraduation scholarship",
+    "eligibility": [
+     "Chilean professionals resident in Colombia who do NOT have a higher-education degree issued in Chile (this call is administered by ICETEX as focal point)",
+     "Technical, technological and professional graduates who can present a postgraduate specialisation",
+     "Minimum 55 base points in the call's evaluation system"
+    ],
+    "benefits": [
+     "100 percent cost of tuition (matrícula)",
+     "100 percent cost of tuition fees (arancel)",
+     "100 percent cost of titling (titulación)",
+     "Financing is for the full duration of studies, up to a maximum of 4 semesters or 6 quarters, for a maximum duration of 24 months",
+     "Maintenance payment of 600,000 Chilean pesos per month for candidates studying in person or hybrid",
+     "Insurance for scholarship holders who remain in Chile",
+     "90,000 Chilean pesos for texts, materials and practical activities required by the studies",
+     "300,000 Chilean pesos of thesis support, delivered in full at the end of studies for those who complete the required work",
+     "Financing for academic, cultural, social, sporting or professional enrichment activities linked to the studies at the host university",
+     "The airfare, city transportation, personal expenses and other expenses NOT covered by the guidelines are NOT financed",
+     "Studies can begin between 1 March 2027 and 30 September 2027, and must finish by 28 February 2029"
+    ],
+    "selection_criteria": [
+     "Preselection by the focal point is made in strict descending order of the qualification, followed by ties broken in descending order by higher academic average (with one decimal rounded up), then by the lowest level of the registro (Grupos Chicos y Medianos)",
+     "A total of less than 55 base points in the evaluation does not pass the preselection stage",
+     "Chile awards the scholarship based on its own merit criteria"
+    ],
+    "application_process": "Applications are made through ICETEX as focal point (2027 registration is open at the time of research). Candidates must submit the application on the Anexo forms, the programme of study with the document of the institution's admission or commitment to the candidates or advance subjects, the economic-legal characterisation according to SISBEN, and copies of all the documents listed in the required documents list, all in PDF format in one email. The Comisión Nacional de Becas 2027 will meet on 26 October 2026, and the final results are published from the second half of November 2026 on the AGCID results page using the applicant's identity document number.",
+    "duration": "Up to 24 months",
+    "key_dates": [
+     "Initial closing: 9 October 2026 at 1:00 p.m.",
+     "Extended closing: Thursday 15 October 2026 at 5:00 p.m. (Colombia time)",
+     "Comisión Nacional de Becas 2027: 26 October 2026",
+     "Results published by AGCID: from the second half of November 2026"
+    ]
+   },
+   "verification": {
+    "confidence": "high",
+    "deadlines": [
+     {
+      "label": "Application deadline (extended)",
+      "date": "2026-10-15",
+      "date_display": "Thursday 15 October 2026 at 5:00 p.m. Colombia time",
+      "note": "Deadline extended. The page states 'Cierre: jueves 15 de octubre de 2026, a las 5:00 p. m. (hora de Colombia)' with 'Cierre inicial: 9 de octubre de 2026, hasta la 1:00 p. m.'."
+     }
+    ],
+    "deadline_central": "2026-10-15",
+    "deadline_display": "15 October 2026, 5:00 p.m. Colombia time (extended)",
+    "deadline_note": "No fixed application cycle. The published deadline was extended from the initial 9 October 2026, 1:00 p.m. to 15 October 2026, 5:00 p.m. Colombia time.",
+    "application_cycle": "AGCID 2027 cycle; the deadline was extended to 15 October 2026. Benefits periods published on the page include between 1 March and 30 September 2027 and by 28 February 2029.",
+    "funding_amount": 600000,
+    "funding_currency": "CLP",
+    "funding_period": "per month",
+    "tuition_coverage_note": "Covers 100 percent of tuition (matrícula), tuition fees (arancel) and the cost of titling (titulación).",
+    "living_cost_coverage": true,
+    "travel_coverage": false,
+    "tuition_coverage": true,
+    "fully_funded": false,
+    "english_requirement": null,
+    "status_note": "Status computed at research time (10 October 2026). The ICETEX page states 'Estado de la convocatoria: Abierta' with closing on 15 October 2026, so the programme is OPEN.",
+    "source_citations": [
+     {
+      "url": "https://web.icetex.gov.co/es/-/becas-maestria-chile-agcid-2027",
+      "claim": "AGCID Becas de Maestría Chile OEA 2027: covers the total cost of matrícula, arancel and titulación for the full duration of studies up to 4 semesters or 6 quarters and a maximum of 24 months; 600,000 Chilean pesos monthly maintenance for in-person or hybrid study; insurance for scholarship holders who stay in Chile; 90,000 Chilean pesos for texts and materials; 300,000 Chilean pesos of thesis support; airfare, city transport and personal expenses explicitly not financed; courses start between 1 March and 30 September 2027 and end by 28 February 2029; minimum of 55 base points in preselection; the closing was extended to Thursday 15 October 2026 at 5:00 p.m. Colombia time from the initial 9 October 2026 at 1:00 p.m.; Comisión Nacional de Becas 2027 on 26 October 2026; results from the second half of November 2026 on the AGCID results page; documents must be submitted in PDF in a single email with the SISBEN characterisation and the study programme document.",
+      "retrieved_at": "2026-10-10T18:58:20Z"
+     }
+    ],
+    "not_confirmed": [
+     "English language requirement - not published; the page is administered in Spanish and specifies Spanish as the language of the programme, with no English requirement listed",
+     "Which specific master's programmes are eligible for 2027 - the published list of programmes appears on the Anexos/related links, which were not readable as text on the call page",
+     "The number of scholarships awarded to each focal point for 2027"
+    ],
+    "documents": [
+     "Application form(s) on the Anexo forms",
+     "Programme of study document issued or accredited by the institution, or document certifying admission or commitment to advance courses for the candidates of the period",
+     "Economic-legal characterisation identified according to SISBEN (copy)",
+     "Photographs / photocopy of identity card",
+     "Copy of the professional card (where applicable)",
+     "Photocopies of the degrees supporting the application",
+     "Copy of the diploma of postgraduate studies",
+     "Photocopies of the transcript or academic certificate with numerical grade and weighted average, authenticated",
+     "Photocopies of production, academic or professional merit certificates cited",
+     "Other publications, academic production or merit certificates for evaluation",
+     "All documents in PDF format, sent in a single email"
+    ]
+   },
+   "applicant_utility": {
+    "description": "AGCID covers the whole cost of the degree - 100 percent of matrícula, arancel and titling, up to four semesters or six quarters within a maximum of 24 months - but it does not pay your airfare or your city transport, and it pays monthly maintenance only if you attend in person or hybrid. The working language is Spanish, and the Comisión Nacional de Becas meets on 26 October 2026 with results published from the second half of November.",
+    "eligibility_tips": [
+     "This channel is administered by ICETEX as focal point, and the page addresses Chile-based professionals who do NOT have a higher education degree issued in Chile; candidates in other countries apply through their own focal point's equivalent call.",
+     "The threshold is a hard cut-off, not a guideline: the page states that a total of less than 55 base points in the evaluation does not pass the preselection stage.",
+     "Check the language of instruction before applying. The programme is administered in Spanish, and no English language requirement is published - your coursework will be in Spanish."
+    ],
+    "application_tips": [
+     "Watch for extensions: the deadline was moved from the initial 9 October 2026 at 1:00 p.m. to 15 October 2026 at 5:00 p.m. Colombia time, so treat the posted time as firm and submit at least a day early.",
+     "Send everything in one email, all in PDF, with the SISBEN characterisation and the study-programme document included; the ICETEX page makes that format a requirement, not a preference.",
+     "Include the programme of study document with the copy of the requirements required by your destination programme, since it is one of the Anexes that is explicitly listed.",
+     "Understand the scoring before you apply: a total below 55 base points fails preselection, and ties are broken by higher academic average (rounded up to one decimal) and then by the lowest level of the registro, so your weighted average matters at the margin.",
+     "Because monitoring is per the guidelines, keep the original mailing receipts and the submission confirmation email."
+    ],
+    "documents": [
+     "Application form(s) on the Anexo forms",
+     "Programme of study document issued or accredited by the institution, or document certifying admission or commitment to advance courses for the candidates of the period",
+     "Economic-legal characterisation identified according to SISBEN (copy)",
+     "Photographs / photocopy of identity card",
+     "Copy of the professional card (where applicable)",
+     "Photocopies of the degrees supporting the application",
+     "Copy of the diploma of postgraduate studies",
+     "Photocopies of the transcript or academic certificate with numerical grade and weighted average, authenticated",
+     "Photocopies of production, academic or professional merit certificates cited",
+     "Other publications, academic production or merit certificates for evaluation"
+    ],
+    "mistakes_to_avoid": [
+     "Assuming 100 percent of the cost of the degree means 100 percent of your living costs: airfare, city transport and personal expenses are explicitly not financed.",
+     "Applying for a virtual or fully online programme: the monthly maintenance payment is only for in-person or hybrid study.",
+     "Sending documents piecemeal or in another format: the ICETEX page requires everything in PDF in one email.",
+     "Falling below 55 base points in the evaluation, which ends the journey at preselection.",
+     "Missing the extended deadline: the initial closing of 9 October 2026 was moved to 15 October 2026 at 5:00 p.m. Colombia time."
+    ],
+    "deadline_notes": "Deadline: 15 October 2026, 5:00 p.m. Colombia time (extended from 9 October 2026, 1:00 p.m.). The Comisión Nacional de Becas meets on 26 October 2026 and results are posted from the second half of November 2026 on the AGCID results page."
+   }
+  }
+ ]
+}

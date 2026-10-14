@@ -1,0 +1,87 @@
+/* ═══════════════════════════════════════════════════════════════════
+   Crash screen
+
+   The one screen a person sees when the app has already failed, so it is
+   built from tokens rather than literals. The previous version carried
+   light-mode colours inline, which meant that in dark mode the crash
+   screen rendered a white panel with grey body copy.
+   ═══════════════════════════════════════════════════════════════════ */
+
+.app-crash {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-block-size: 60vh;
+  padding: var(--gutter);
+}
+
+.app-crash__card {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--space-4);
+  inline-size: min(100%, var(--sz-container-narrow));
+  padding: var(--space-8);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-panel);
+}
+
+.app-crash__eyebrow {
+  color: var(--danger-text);
+  font-size: var(--fs-xs);
+  --weight: var(--weight-label);
+  letter-spacing: var(--track-xs);
+  text-transform: uppercase;
+}
+
+.app-crash__title {
+  margin: 0;
+  color: var(--text-primary);
+  font-family: var(--font-display);
+  font-size: var(--fs-2xl);
+  --weight: var(--weight-section);
+  line-height: var(--lh-2xl);
+  letter-spacing: var(--track-2xl);
+}
+
+.app-crash__body {
+  max-inline-size: var(--measure);
+  margin: 0;
+  color: var(--text-secondary);
+  font-size: var(--fs-base);
+  line-height: var(--lh-base);
+}
+
+.app-crash__detail {
+  inline-size: 100%;
+  max-inline-size: 100%;
+  margin: 0;
+  padding: var(--space-4);
+  overflow-x: auto;
+  color: var(--text-secondary);
+  font-family: var(--font-mono);
+  font-size: var(--fs-sm);
+  line-height: var(--lh-sm);
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+  background: var(--surface-sunken);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+}
+
+.app-crash__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+}
+
+@media (max-width: 480px) {
+  .app-crash__card {
+    padding: var(--space-6) var(--space-5);
+  }
+
+  .app-crash__actions > * {
+    inline-size: 100%;
+  }
+}

@@ -1,0 +1,96 @@
+{
+ "agent": "agent_252",
+ "assignment_count": 1,
+ "scholarships": [
+  {
+   "id": 610,
+   "title": "ACIAR Pacific Agriculture Scholarships and Support Program (PASS)",
+   "country": "Fiji",
+   "degree": "Master's, PhD",
+   "funding_label": "Fully Funded",
+   "status": "closing-soon",
+   "official_source": "Australian Centre for International Agricultural Research (ACIAR)",
+   "official_source_url": "https://www.aciar.gov.au/scholarships/pass",
+   "application_link": "https://www.aciar.gov.au/scholarships/pass",
+   "catalogue_url": "https://www.aciar.gov.au/scholarships",
+   "official_updates_url": "https://www.aciar.gov.au/scholarships/pass",
+   "existing": {
+    "funding_amount": null,
+    "funding_currency": "FJD",
+    "funding_period": "per annum",
+    "tuition_coverage": 1,
+    "living_cost_coverage": 1,
+    "travel_coverage": 1,
+    "fully_funded": 1,
+    "description": "The Pacific Agriculture Scholarships and Support (PASS) Program funds postgraduate research scholarships in agriculture, forestry and fisheries at the University of the South Pacific (USP) and Fiji National University (FNU). It is an Australian Government programme delivered by ACIAR, an Australian Government statutory authority, and is described by ACIAR as part of the Australian Government's support to Pacific neighbours. Scholarships are for Pacific Islander nationals and are awarded for up to two years at Master's level and up to three years for PhD candidates, with study available from Semester 1 2027.",
+    "eligibility": [
+     "Be a citizen of and currently reside in Fiji, Kiribati, Samoa, Solomon Islands, Tonga, Tuvalu or Vanuatu",
+     "Meet the eligibility criteria for postgraduate study at USP or FNU",
+     "Directly align the research proposal with a research topic in the PASS compendium, or develop a unique research proposal aligned with the compendium's broader research themes",
+     "Be able to meet government and university mandated requirements for travel to Fiji for study at FNU or USP Laucala, or to Samoa for study at USP Alafua",
+     "USP route: relevant Bachelor's degree with a GPA of 4.0 or above for Master's entry, or relevant Postgraduate Diploma plus Bachelor's with GPA 3.5 or over for both; or a relevant Bachelor's with GPA 4.5, a Master's by research, or a Master's with 25% or more independent research and a mini-thesis for PhD entry",
+     "USP route: 35 years or below when applying for Master's and 45 years or below for PhD, with flexibility considered in exceptional cases"
+    ],
+    "eligibility_summary": "Pacific Island country nationals who are citizens of and currently reside in Fiji, Kiribati, Samoa, Solomon Islands, Tonga, Tuvalu or Vanuatu (USP also lists the 12 USP member countries), who meet USP or FNU postgraduate entry requirements and can satisfy mandated travel requirements to Fiji or Samoa.",
+    "benefits": [
+     "Full tuition coverage",
+     "Living allowance varying by degree level and whether the scholar is accompanied",
+     "Medical insurance",
+     "Books allowance",
+     "Establishment/relocation allowance",
+     "Funds to present research at an international conference",
+     "Professional development, peer-to-peer learning, research collaboration and higher degree research supervision training from the ACIAR PASS administration team",
+     "Student work placements and career development included under the PASS Program"
+    ],
+    "coverage": [
+     "Full tuition coverage for the relevant program of study",
+     "Living allowance for Master's students (FJD 21,450 per annum unaccompanied; FJD 32,472 per annum accompanied)",
+     "Living allowance for PhD candidates (FJD 24,000 per annum unaccompanied; FJD 34,000 per annum accompanied)",
+     "Medical insurance at the prevailing rate",
+     "Books allowance, currently a one-off payment",
+     "Establishment/relocation allowance, currently a one-off payment if applicable",
+     "Funds to present research results at an international conference",
+     "Student research grant costs shared between ACIAR and USP or FNU"
+    ],
+    "requirements": [
+     "Prepare the research intent in consultation with the relevant USP supervisor and co-supervisor named in the compendium",
+     "Pre-select a compendium research topic or propose a unique topic aligned with the broader compendium themes",
+     "Complete the PASS/ACIAR scholarship application form",
+     "Attach the required documentation to the completed application form",
+     "USP advises checking 200-level and 300-level GPA with the ACIAR Graduate Officer before applying"
+    ],
+    "documents": [
+     "Completed ACIAR/PASS scholarship application form",
+     "Research intent document including the research proposal, signed by the USP/FNU supervisor and co-supervisor",
+     "Certified copies of academic transcripts",
+     "Evidence of meeting USP or FNU postgraduate entry requirements"
+    ],
+    "english_requirement": null,
+    "application_method": [
+     "Apply through the host university: USP for Master's by Research and PhD in Agriculture, or FNU for its approved research degrees",
+     "Submit the completed application form with the required attachments to the ACIAR Graduate Officer at the host university, as directed on the host university's ACIAR scholarship page",
+     "Applications are submitted as a single scanned PDF by email to the ACIAR Graduate Officer"
+    ],
+    "selection_notes": "Applications are aligned to regional priorities identified in the PASS compendium of research topics and themes and may also be associated with an ACIAR research project. USP states that projects addressing gender, social systems, youth engagement, food systems and climate adaptation are also welcome.",
+    "best_fit": null,
+    "notes": "ACIAR states that Papua New Guinea is not currently included in the PASS program and that PNG researchers are encouraged to register for updates on future opportunities. ACIAR directs applicants to the USP and FNU websites for application details, since the programme is delivered through the host universities. A 2027 research topics and themes compendium is published by USP.",
+    "duration": "Up to 2 years for Master's students; 3 years (or over, if applicable) for PhD candidates",
+    "application_period": "2027 intake: applications open 20 August 2026 and close 21 October 2026, for scholarships available from Semester 1 2027. ACIAR states scholarships are advertised annually through USP and FNU for commencement the following year.",
+    "deadline_display": "21 October 2026",
+    "deadline_date": "2026-10-21",
+    "region": "Oceania",
+    "program_type": "Government scholarship",
+    "applicant_utility": null,
+    "official_details": null
+   },
+   "missing_fields": [
+    "funding_amount",
+    "english_requirement",
+    "best_fit",
+    "applicant_utility",
+    "official_details"
+   ]
+  }
+ ],
+ "result_file": "C:\\Users\\GopaL\\Desktop\\Projects folder\\ScholarZone\\backend\\research_output\\live500\\results\\agent_252.json"
+}

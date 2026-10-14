@@ -1,0 +1,114 @@
+{
+  "agent": "agent_013",
+  "records": [
+    {
+      "id": 52,
+      "official": {
+        "official_source_urls": [
+          "https://www.monash.edu/study/fees-scholarships/scholarships/find-a-scholarship/monash-international-leadership-scholarship-5571Z"
+        ],
+        "application_link": "https://www.monash.edu/study/fees-scholarships/scholarships/find-a-scholarship/monash-international-leadership-scholarship-5571Z",
+        "catalogue_url": null,
+        "official_updates_url": "https://www.monash.edu/study/fees-scholarships/scholarships/find-a-scholarship/monash-international-leadership-scholarship-5571Z",
+        "deadline_central": null,
+        "deadline_central_display": null,
+        "deadline_note": null,
+        "application_cycle": null,
+        "status": "OPEN",
+        "status_note": "No application is required: international students who have received an undergraduate course offer from Monash are automatically considered.",
+        "tuition_coverage_note": "100% course fees paid until the minimum number of points for your degree are completed (excludes OSHC, accommodation and living costs).",
+        "funding_amount": null,
+        "funding_currency": null,
+        "funding_period": null,
+        "tuition_coverage": true,
+        "living_cost_coverage": false,
+        "travel_coverage": false,
+        "fully_funded": false,
+        "benefits": [
+          "100% course fees paid until the minimum number of points for your degree are completed (excludes OSHC, accommodation and living costs)",
+          "Invitation to apply for a place in Monash Minds, a leadership program for first-year students",
+          "Four scholarships are available"
+        ],
+        "eligibility": [
+          "You must be an International student",
+          "You must have received a full Monash course offer with no conditions",
+          "You must intend to enrol full-time in an undergraduate degree at a Monash campus in Australia",
+          "Not eligible: current Monash students; students studying an Australian Year 12; students commencing the Bachelor of Medical Science and Doctor of Medicine (MD); students in Monash Pathway programs (e.g. Monash College and Monash University Foundation Year); students transferring from another Monash campus or applying from another Australian university"
+        ],
+        "requirements": [
+          "To retain the scholarship you must maintain a Weighted Average Mark (WAM) of 70 each semester",
+          "On request, you are required to provide a student profile for use in Monash marketing, recruitment and promotional materials and/or events"
+        ],
+        "documents": [
+          "Apply for admission to Monash University undergraduate program; no separate scholarship application is required"
+        ],
+        "selection_criteria": [
+          "Based on academic achievement"
+        ],
+        "coverage": [
+          "100% of course fees until the minimum number of points for the degree are completed",
+          "Excludes OSHC, accommodation and living costs"
+        ],
+        "application_method": [
+          "No applications required; students that have received an undergraduate course offer from Monash will automatically be considered"
+        ],
+        "application_route": "Receive a full, unconditional undergraduate offer from Monash; consideration is automatic. The scholarship can be deferred within the same calendar year only.",
+        "study_mode": "full-time",
+        "citizenship_residency": "International student status required (domestic students are not eligible for this scholarship)",
+        "international_eligibility": "Open to international students from all countries",
+        "subject_or_agency_requirement": null,
+        "research_requirement": null,
+        "duration": "For the duration of your degree, until the minimum number of points for the degree are completed",
+        "description": "International students from all countries who have received an undergraduate course offer from Monash are automatically considered for the Monash International Leadership Scholarship. Recipients receive a 100% tuition sponsorship for the duration of their degree and the opportunity to develop learning and leadership skills as an ambassador for Monash University.",
+        "region": "Oceania",
+        "program_type": "Automatic-consideration undergraduate tuition scholarship for international students",
+        "english_requirement": null
+      },
+      "verification": {
+        "source_citations": [
+          "https://www.monash.edu/study/fees-scholarships/scholarships/find-a-scholarship/monash-international-leadership-scholarship-5571Z"
+        ],
+        "last_verified_date": "2026-10-10",
+        "verification_status": "confirmed",
+        "confidence": "high",
+        "not_confirmed": [
+          "funding_amount",
+          "funding_currency",
+          "funding_period",
+          "english_requirement",
+          "deadline_date",
+          "application_cycle"
+        ],
+        "notes": "The official Monash scholarship page was fetched directly. Key finding: the award covers 100% of course fees only and explicitly excludes OSHC, accommodation and living costs, so it is a tuition-only award rather than a fully funded package; four scholarships are offered per year."
+      },
+      "applicant_utility": {
+        "summary": "Four of these are awarded each year to international undergraduates who already hold a full, unconditional Monash offer, so nothing can be submitted to compete - the offer you already hold is the application. It pays 100% of course fees until your degree's minimum points are complete, but explicitly excludes OSHC, accommodation and living costs, so budget for health cover and Melbourne living expenses separately. Retention is academic: a WAM of 70 every semester, with a promotional student profile on request.",
+        "best_fit": "Academically outstanding international students with an unconditional first-year undergraduate offer at an Australian Monash campus",
+        "application_readiness_checklist": [
+          "Convert your offer to full and unconditional as early as possible, since conditional offers are not considered",
+          "Check the exclusion list: current Monash students, Australian Year 12 students, Bachelor of Medical Science and MD students, and Monash College or Foundation Year pathway students are ineligible",
+          "Plan for a first-semester WAM of 70 or above from day one, since retention is assessed every semester",
+          "Confirm you are applying direct to a Monash campus degree, not an internal transfer or interstate transfer, which are excluded",
+          "Budget for OSHC and living costs, which the award does not touch"
+        ],
+        "common_rejection_risks": [
+          "Holding a conditional offer at selection time",
+          "Dropping below a WAM of 70 in any semester, which puts the ongoing award at risk",
+          "Entering through Monash College or a pathway program, which is excluded from consideration",
+          "Assuming the four awards cover living costs because the scheme is marketed as a flagship 'full fee' scholarship"
+        ],
+        "estimated_uncovered_costs": "OSHC, accommodation and all living costs are explicitly excluded and must be self-funded for the duration of the degree.",
+        "document_audit": [
+          "There is no scholarship document set; the decisive document is the unconditional course offer itself",
+          "Be prepared to supply a student profile and photo for Monash marketing on request, as the terms require it"
+        ],
+        "alerts": [
+          "Only four scholarships per year are awarded, so an offer does not come close to guaranteeing selection",
+          "The scholarship can be deferred only within the same calendar year",
+          "Selection is based purely on academic achievement; no interview, essay or leadership portfolio is solicited"
+        ],
+        "submission_workflow": "Secure a full, unconditional undergraduate offer at an Australian Monash campus; selection then happens automatically on academic achievement, with no application step."
+      }
+    }
+  ]
+}

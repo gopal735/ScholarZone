@@ -1,0 +1,122 @@
+{
+  "agent": "agent_158",
+  "records": [
+    {
+      "id": 423,
+      "official": {
+        "official_source_urls": [
+          "https://study.gov.pl/erasmus",
+          "https://erasmusplus.org.pl/"
+        ],
+        "application_link": "https://study.gov.pl/erasmus",
+        "catalogue_url": "https://study.gov.pl/erasmus",
+        "official_updates_url": "https://erasmusplus.org.pl/",
+        "deadline_central": null,
+        "deadline_central_display": null,
+        "deadline_note": "No central deadline is published. Erasmus+ mobility is arranged through the sending institution and calls are announced by each university and by the National Agency, so the deadline varies by institution and by call.",
+        "application_cycle": "Continuous programme with institution-level calls announced each academic year; no single national window is published",
+        "status": "OPEN",
+        "status_note": "The Polish National Agency's site (erasmusplus.org.pl) is live and publishing current calls and news for the 2021-2027 financial perspective. The study.gov.pl Erasmus+ page is still live but still describes the 2014-2020 programme period.",
+        "tuition_coverage_note": "Erasmus+ Higher Education allows students to undertake a part of their studies in another country without additional costs of tuition, registration or examination.",
+        "funding_amount": null,
+        "funding_currency": null,
+        "funding_period": null,
+        "tuition_coverage": true,
+        "living_cost_coverage": true,
+        "travel_coverage": null,
+        "fully_funded": false,
+        "benefits": [
+          "Undertaking part of your studies in another country without additional costs of tuition, registration or examination",
+          "A scholarship that covers the costs of living abroad",
+          "Work placements in companies abroad",
+          "Academic staff mobility",
+          "A new option of graduate mobility for the purpose of practical training or work placement"
+        ],
+        "eligibility": [
+          "Enrolled student or employed staff member at a participating higher education institution",
+          "Sending and receiving institutions must hold an inter-institutional agreement under the programme",
+          "Mobility must take place within the Erasmus+ Programme Countries, which involve all EU countries as well as Iceland, Liechtenstein, Norway and Turkey",
+          "The home institution must accept the time spent studying abroad and the courses completed"
+        ],
+        "requirements": [
+          "Mobility must be agreed between the sending and receiving institutions and recognised by the home institution",
+          "Applications are made through the sending higher education institution, not directly to the National Agency"
+        ],
+        "documents": null,
+        "selection_criteria": null,
+        "coverage": [
+          "Part of your studies abroad without additional costs of tuition, registration or examination",
+          "A scholarship covering the costs of living abroad (the amount is set nationally and is not published on the pages read)",
+          "Work placements in companies abroad and academic staff mobility"
+        ],
+        "application_method": [
+          "Apply through the sending higher education institution's international or Erasmus+ office",
+          "In Poland the programme is implemented by the Foundation for the Development of the Education System, appointed as the Polish National Agency"
+        ],
+        "application_route": "Apply through your sending university's international or Erasmus+ office; in Poland the Foundation for the Development of the Education System acts as National Agency and does not take individual student applications.",
+        "study_mode": null,
+        "citizenship_residency": "No citizenship or residency restriction is published; mobility is arranged between participating institutions in Programme Countries",
+        "international_eligibility": true,
+        "subject_or_agency_requirement": null,
+        "research_requirement": null,
+        "duration": null,
+        "description": "Erasmus+ is the European Union programme which supports projects, partnerships, events and mobility in the areas of education, training, youth and sport. Its higher education strand is mainly a student exchange programme which also includes work placements in companies abroad and academic staff mobility, letting students undertake part of their studies in another country at no additional cost of tuition, registration or examination.",
+        "region": "Europe",
+        "program_type": "EU-funded academic mobility programme",
+        "english_requirement": null
+      },
+      "verification": {
+        "source_citations": [
+          "https://study.gov.pl/erasmus",
+          "https://erasmusplus.org.pl/"
+        ],
+        "last_verified_date": "2026-10-10",
+        "verification_status": "confirmed",
+        "confidence": "high",
+        "not_confirmed": [
+          "funding_amount",
+          "funding_currency",
+          "funding_period",
+          "deadline_date",
+          "duration",
+          "documents",
+          "selection_criteria",
+          "travel_coverage",
+          "english_requirement"
+        ],
+        "notes": "The URL stored in the catalogue (study.gov.pl/erasmus-plus-programme) returns HTTP 404; the live page is study.gov.pl/erasmus, which was read directly along with the live Polish National Agency site erasmusplus.org.pl. Neither publishes a scholarship amount or a deadline. Note the study.gov.pl page still describes the 2014-2020 programme period and links to a dead URL, while the National Agency site is current for 2021-2027."
+      },
+      "applicant_utility": {
+        "summary": "Erasmus+ in Poland is not something you apply for centrally - your university's international office decides who goes and how much they get, so the National Agency's site is background rather than an application route. The one hard rule that bites people is recognition: the time abroad and the courses you complete must be accepted by your home institution, and mobility only exists where an inter-institutional agreement is in place, so check that your destination actually has one before you plan around it. No amount or deadline is published on the official pages, so the number that matters is whatever your own university's Erasmus office quotes for the current year.",
+        "best_fit": "Enrolled students and employed staff at a Polish higher education institution whose university holds an Erasmus+ inter-institutional agreement with the destination they want.",
+        "application_readiness_checklist": [
+          "Contact your university's international or Erasmus+ office first - they set the internal deadline, the selection process and the grant rate",
+          "Confirm your destination university actually holds an inter-institutional Erasmus+ agreement with yours, since without it no mobility can be arranged",
+          "Check your destination is in the Erasmus+ Programme Countries - the EU plus Iceland, Liechtenstein, Norway and Turkey",
+          "Get the recognition of your study period and courses agreed in writing with your home institution before you leave",
+          "Ask your office whether graduate mobility for a practical training or work placement is available at your institution"
+        ],
+        "common_rejection_risks": [
+          "Choosing a destination with no inter-institutional agreement with your university, which makes the mobility impossible regardless of your application",
+          "Leaving the recognition of courses until after the mobility, which is exactly what the programme rules require you to settle in advance",
+          "Missing your own university's internal deadline because you were watching the National Agency's site for a national one",
+          "Assuming a fixed national grant rate, when the living-cost scholarship is set nationally and is not published on the official pages",
+          "Treating staff mobility and student exchange as the same process - they run through different routes at the institution"
+        ],
+        "estimated_uncovered_costs": "Not published. The programme covers living costs through a scholarship and removes additional tuition, registration and examination fees at the receiving institution, but travel costs and the gap between the grant and actual living costs are not stated on the official pages read.",
+        "document_audit": [
+          "No document list is published on study.gov.pl/erasmus or on the National Agency's site - your sending institution's Erasmus office defines the required paperwork",
+          "You will need proof of enrolment or employment at the sending institution and evidence that the study period and courses are recognised by your home institution",
+          "Be careful with the study.gov.pl page: it still describes the 2014-2020 programme period and links to a dead URL, so use erasmusplus.org.pl for current information"
+        ],
+        "alerts": [
+          "There is no central Erasmus+ deadline in Poland - every deadline you encounter is an institutional one",
+          "The study.gov.pl Erasmus+ page is out of date (2014-2020) and its linked National Agency URL is dead; the live National Agency site is erasmusplus.org.pl",
+          "The Polish National Agency is the Foundation for the Development of the Education System (FRSE), not NAWA",
+          "Recognition of the study period and completed courses by the home institution is a condition, not an administrative afterthought"
+        ],
+        "submission_workflow": "Apply through your sending university's international or Erasmus+ office, have the study period and courses recognised by your home institution, then receive the grant from the sending institution."
+      }
+    }
+  ]
+}

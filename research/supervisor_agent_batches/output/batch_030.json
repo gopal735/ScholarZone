@@ -1,0 +1,44 @@
+[
+  {
+    "scholarship_id": 235,
+    "outcome": "not_applicable",
+    "professors": [],
+    "notes": "Central political foundation scheme (Heinrich Boll Foundation, boell.de, funded by BMBF/Federal Foreign Office) with no attached university; applicants apply directly to the foundation's Scholarship Department (studienwerk@boell.de). Verified live at https://www.boell.de/en/scholarships: 'International students who have completed their first degree abroad can apply prior to starting a Master's degree program in Germany.' Analogous to DAAD-type central schemes, so no supervising professor exists."
+  },
+  {
+    "scholarship_id": 236,
+    "outcome": "not_applicable",
+    "professors": [],
+    "notes": "Japanese Government (MEXT) national scholarship administered by the Ministry of Education, Culture, Sports, Science and Technology via embassy recommendation. Verified live at the official MEXT STUDY in JAPAN page (https://www.mext.go.jp/en/policy/education/highered/title02/detail02/sdetail02/1373897.htm): 'Japanese government scholarship supports foreign students who study in higher education institutions, selected on the recommendation of Japanese Embassy/Consulate General, University, or Authority.' National government scheme with no attached institution, so no supervising professor exists."
+  },
+  {
+    "scholarship_id": 237,
+    "outcome": "not_applicable",
+    "professors": [],
+    "notes": "Japanese Government (MEXT) Research Student scholarship under the university-recommendation route, governed by MEXT national application guidelines (https://www.mext.go.jp/content/20251205-mxt_kotokoku01-000046164_2.pdf; the PDF is encrypted/binary and could not be text-extracted by the fetch tool, but it is the official MEXT guidelines document). A national government scheme spanning all participating Japanese universities with no single attached institution, so no supervising professor exists."
+  },
+  {
+    "scholarship_id": 239,
+    "outcome": "not_applicable",
+    "professors": [],
+    "notes": "Young Leaders Program (YLP) is the seventh type of the Japanese Government (MEXT) Scholarship, a national scheme recruited by MEXT. Verified live at https://www.studyinjapan.go.jp/en/planning/scholarships/about-scholarships: 'There are seven types of the Japanese Government (MEXT) Scholarship programs. They are research students, teacher training students, undergraduate students, Japanese studies students, college of technology students, specialized training college students, and Young Leaders Program (YLP) students.' National government scheme with no attached institution, so no supervising professor exists."
+  },
+  {
+    "scholarship_id": 240,
+    "outcome": "not_applicable",
+    "professors": [],
+    "notes": "JASSO (Japan Student Services Organization) national reservation programme; applications are made through the enrolling school, not to any professor. Verified live at https://www.jasso.go.jp/en/ryugaku/scholarship_j/shoreihi/yoyaku_tonichimae.html: 'Please ask school you plan to enroll in. We do not accept applications directly from students.' National organization scheme with no attached institution, so no supervising professor exists."
+  },
+  {
+    "scholarship_id": 241,
+    "outcome": "no_verified_supervisor_found",
+    "professors": [],
+    "notes": "Kyushu University does not operate a single named 'International Scholarship'; it publishes a list of external private-foundation scholarships for enrolled international students, administered by the International Student Exchange Division (Global Gateways). The input URL (https://www.kyushu-u.ac.jp/en/admission/financial_aid/scholarship) now returns 404; the current official page is https://www.kyushu-u.ac.jp/en/admission/fees/scholarship, which links to the Global Gateways page https://www.isc.kyushu-u.ac.jp/intlweb/en/student/page-012. That page confirms the awards are foundation scholarships handled administratively: 'If you find a scholarship that you would like to apply for, be sure to contact the International Student Exchange Division ... intlr-pscholar@jimu.kyushu-u.ac.jp.' The administration contact is an office email, not a faculty supervisor; no supervising professor is tied to this scholarship listing, so no professor entries could be verified."
+  },
+  {
+    "scholarship_id": 243,
+    "outcome": "not_applicable",
+    "professors": [],
+    "notes": "MOFCOM Scholarship is a Chinese central government aid programme run by the Ministry of Commerce of China jointly with the China Scholarship Council (CSC), applied for via Chinese embassies/CSC portal (https://sl.china-embassy.gov.cn/eng/xwdt/202604/P020260403009201102513.pdf; the embassy PDF is image-based and not text-extractable). Like other CSC-type central schemes it has no single attached institution or supervising professor, so none exists to verify."
+  }
+]

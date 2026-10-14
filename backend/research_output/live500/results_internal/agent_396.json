@@ -1,0 +1,259 @@
+{
+  "agent": "agent_396",
+  "records": [
+    {
+      "id": 117,
+      "official": {
+        "official_source_urls": [
+          "https://ir.iith.ac.in/#/first",
+          "https://ir.iith.ac.in/docs/FIRST@IITH INFORMATION.docx",
+          "https://ir.iith.ac.in/#/intadm"
+        ],
+        "application_link": "https://ir.iith.ac.in/#/first",
+        "catalogue_url": "https://ir.iith.ac.in/",
+        "official_updates_url": "https://ir.iith.ac.in/#/intadm",
+        "deadline_central": "2026-10-31",
+        "deadline_central_display": "31 October 2026, 17:00 hrs IST (last date to send the application by email for the January 2027 intake)",
+        "deadline_note": "The January 2027 call was announced on 1 October 2026 with an email submission deadline of 31 October 2026; the previous July 2026 intake closed on 30 April 2026, 17:00 hrs IST.",
+        "application_cycle": "January 2027 intake (announced 1 October 2026)",
+        "status": "OPEN",
+        "status_note": "The International Relations Cell's news section of 1 October 2026 announces the Fellowship for International Research Scholars in Technology (FIRST@IITH) for January 2027 admissions; the official information document sets the email submission deadline at 31 October 2026, 17:00 hrs IST.",
+        "tuition_coverage_note": "The official page frames the scheme as support for 'pursuing PhD at IIT Hyderabad with full financial support'; the published components are the monthly fellowship and the annual contingency support, while IITH publishes its fee structure separately at iith.ac.in.",
+        "funding_amount": 60000,
+        "funding_currency": "INR",
+        "funding_period": "per month",
+        "tuition_coverage": true,
+        "living_cost_coverage": true,
+        "travel_coverage": null,
+        "fully_funded": true,
+        "benefits": [
+          "Fellowship Amount: 60,000 INR per month",
+          "Contingency Support: 1,00,000 INR per year",
+          "Full financial support for a four-year PhD at IIT Hyderabad",
+          "No application fee",
+          "Doctoral placement in departments including Artificial Intelligence, Biomedical, Biotechnology, Chemical, Climate Change, Civil, Computer Science, Electrical, Materials Science and Metallurgical, Mechanical and Aerospace, Chemistry, Physics, Mathematics, Liberal Arts, Design, Entrepreneurship and Management, and Heritage Science and Technology"
+        ],
+        "eligibility": [
+          "Foreign Nationals (except OCI/NRI) with excellent academic qualifications",
+          "Master's degree in Engineering/Technology in the relevant disciplines with a minimum CGPA of 8.5 on a 10-point scale or equivalent",
+          "Candidates must complete both the Bachelor's and the Master's degree in foreign universities"
+        ],
+        "requirements": [
+          "Email the completed application form with electronic copies of the testimonials and one reference letter to ia.ir@iith.ac.in",
+          "Use the subject line 'Application for FIRST@IITH fellowship - January-2027'",
+          "Send the application before the last date of 31 October 2026, 17:00 hrs IST; there is no application fee"
+        ],
+        "documents": [
+          "Completed FIRST@IITH application form downloaded from the IITH International Relations site",
+          "Electronic copies of the testimonials",
+          "One reference letter"
+        ],
+        "selection_criteria": [
+          "Shortlisting on the basis of academic qualifications in the relevant engineering or technology disciplines",
+          "Desirable qualifications given weightage during shortlisting: a degree from a topline university in the candidate's own country and research output such as publications or patents"
+        ],
+        "coverage": [
+          "Fellowship of INR 60,000 per month",
+          "Contingency support of INR 1,00,000 per year",
+          "Full financial support for the four-year doctoral programme"
+        ],
+        "application_method": [
+          "Download the January 2027 application form from the IITH International Relations site",
+          "Complete the form and gather electronic copies of the testimonials and one reference letter",
+          "Email everything to ia.ir@iith.ac.in with the subject line 'Application for FIRST@IITH fellowship - January-2027'",
+          "Send well before 31 October 2026, 17:00 hrs IST; no application fee applies"
+        ],
+        "application_route": "Email the completed form with electronic testimonials and one reference letter to ia.ir@iith.ac.in",
+        "study_mode": null,
+        "citizenship_residency": "Foreign nationals only; OCI and NRI candidates are excluded",
+        "international_eligibility": "Yes - restricted to foreign nationals (excluding OCI/NRI) whose bachelor's and master's degrees are both obtained from foreign universities",
+        "subject_or_agency_requirement": "Master's degree in relevant engineering or technology disciplines; PhD in one of the departments offered by IITH",
+        "research_requirement": "Research output such as publications or patents is a desirable qualification that is given weightage during shortlisting",
+        "duration": "Four years",
+        "description": "FIRST@IITH supports outstanding international scholars - foreign nationals excluding OCI and NRI holders with a master's degree in engineering or technology and a minimum CGPA of 8.5 on a 10-point scale - to pursue a four-year PhD at IIT Hyderabad with full financial support, paying a fellowship of INR 60,000 per month and contingency support of INR 1,00,000 per year with no application fee.",
+        "region": "Asia",
+        "program_type": "Fully funded doctoral fellowship for international research scholars",
+        "english_requirement": null
+      },
+      "verification": {
+        "source_citations": [
+          "https://ir.iith.ac.in/#/first",
+          "https://ir.iith.ac.in/docs/FIRST@IITH INFORMATION.docx"
+        ],
+        "last_verified_date": "2026-10-10",
+        "verification_status": "confirmed",
+        "confidence": "high",
+        "not_confirmed": [
+          "travel_coverage",
+          "english_requirement",
+          "study_mode"
+        ],
+        "notes": "The fellowship (INR 60,000 per month), contingency support (INR 1,00,000 per year), four-year duration, the CGPA 8.5 eligibility benchmark, the foreign-universes degree rule, the document set and the email procedure were confirmed on the IITH International Relations FIRST page and in the official FIRST@IITH information document linked from the International Relations news section for the January 2027 intake; the underlying FIRST page still carries the closed July 2026 deadline of 30 April 2026, while the current call sets 31 October 2026."
+      },
+      "applicant_utility": {
+        "summary": "This is an e-mail application, not a portal one: the form, testimonials and a single reference letter must reach ia.ir@iith.ac.in before 17:00 IST on 31 October 2026, with the exact subject line for the January 2027 intake. The academic filter is unusually explicit - a master's in engineering or technology with CGPA 8.5/10 or equivalent, and both bachelor's and master's from foreign universities - so OCI/NRI holders and Indian-qualified students cannot use this route. The stipend is 60,000 INR per month with 1,00,000 INR per year contingency, described by IITH as full financial support for the PhD, but the published package itemises only those two components, so confirm fee treatment in writing when you correspond.",
+        "best_fit": "Non-OCI international master's graduates in engineering or technology with a strong CGPA and both degrees from foreign universities who want a funded PhD in India.",
+        "application_readiness_checklist": [
+          "Confirm both your bachelor's and master's degrees are from foreign universities and that you hold neither OCI nor NRI status",
+          "Convert your CGPA to the 10-point scale and check it clears 8.5 or an accepted equivalent",
+          "Download the current January 2027 application form from the IITH International Relations site rather than reusing an old PDF",
+          "Ask your referee for the single reference letter early and make sure the subject line in your e-mail matches the prescribed wording exactly",
+          "Prepare electronic copies of testimonials in a readable format, ready as attachments",
+          "Send several days before 31 October 2026, 17:00 hrs IST and keep the sent e-mail as proof"
+        ],
+        "common_rejection_risks": [
+          "Holding OCI or NRI status, which excludes the applicant regardless of qualifications",
+          "One of the two degrees earned at an Indian university",
+          "A CGPA below 8.5 on the 10-point scale or an unconverted equivalent",
+          "E-mailing after the 17:00 IST cut-off on the deadline day",
+          "Missing the prescribed subject line, which can derail automated routing of the application",
+          "Submitting the July 2026 intake form or references instead of the January 2027 version"
+        ],
+        "estimated_uncovered_costs": "Any study fee, travel and settlement items not included in the published fellowship and contingency components; the page directs applicants to IITH's public fee structure for this information.",
+        "document_audit": [
+          "The form must be the January 2027 version linked from the news section, not the older July 2026 PDF",
+          "Only one reference letter is requested - more do not help",
+          "Electronic copies of testimonials must accompany the form; there is no courier stage",
+          "Publications or patents are not mandatory uploads but strengthen shortlisting, so attach them if available"
+        ],
+        "alerts": [
+          "The January 2027 call was published on 1 October 2026 and closes 31 October 2026 - a four-week window, so start immediately",
+          "No application fee is charged, which makes this one of the lowest-cost international PhD applications available",
+          "IITH runs a separate self-financing PhD route for foreign nationals for the same January 2027 intake - do not confuse the two and pay fees you need not pay"
+        ],
+        "submission_workflow": "Download the form, complete it with testimonials and one reference letter, e-mail to ia.ir@iith.ac.in with the prescribed subject line before 31 October 2026, 17:00 IST."
+      }
+    },
+    {
+      "id": 361,
+      "official": {
+        "official_source_urls": [
+          "https://www.anrfonline.in/ANRF/Ramanujan_fellowship"
+        ],
+        "application_link": "https://www.anrfonline.in/ANRF/Ramanujan_fellowship",
+        "catalogue_url": "https://www.anrfonline.in/ANRF/Ramanujan_fellowship",
+        "official_updates_url": "https://www.anrfonline.in/ANRF/Ramanujan_fellowship",
+        "deadline_central": null,
+        "deadline_central_display": null,
+        "deadline_note": null,
+        "application_cycle": "Continuous - nominations are submitted through the ANRF portal year-round and selections are made periodically",
+        "status": "OPEN",
+        "status_note": "ANRF states that nominations may be sent through the online portal at any time of the year and that selection is made periodically by an empowered Selection Committee, so no application deadline applies.",
+        "tuition_coverage_note": null,
+        "funding_amount": 135000,
+        "funding_currency": "INR",
+        "funding_period": "per month (consolidated, incl. HRA)",
+        "tuition_coverage": false,
+        "living_cost_coverage": true,
+        "travel_coverage": true,
+        "fully_funded": false,
+        "benefits": [
+          "Consolidated fellowship of Rs. 1,35,000 per month, including House Rent Allowance",
+          "Research grant of Rs. 7.00 lakh per annum for consumables, travel, research personnel and contingencies. There is no provision for equipment or laboratory/agency overheads",
+          "Overhead charges of Rs. 60,000 per annum to the host institute for providing infrastructural facilities",
+          "One international travel per year",
+          "Eligibility to receive regular research grants through the extramural funding schemes of various S&T agencies of the Government of India, and TA/DA entitlement equivalent to Scientist-D",
+          "The grant is taxable as per Income Tax rules and may be subject to taxation at source"
+        ],
+        "eligibility": [
+          "Brilliant Indian or Indian-origin scientists and engineers from abroad, below 40 years of age",
+          "Higher degree or equivalent such as PhD in Science/Engineering, Masters in Engineering or Technology/MD in Medicine, with adequate professional experience",
+          "Proven or outstanding track record evident from research publications and recognitions",
+          "Working abroad at the time of nomination",
+          "Not holding any permanent, tenure track or contractual position in any Indian institute or university, and without any position or employment in India",
+          "Nomination is accepted from the head of the host organisation, university or institute or from an authorised official; nominations from the candidate's PhD guides or from the institute where the PhD was pursued are not considered"
+        ],
+        "requirements": [
+          "Register on the ANRF online portal (www.anrfonline.in) and fill all mandatory fields in Profile Details - an incomplete profile invalidates the submission",
+          "Be nominated by the head of the host organisation, university or institution",
+          "Upload the proposed area of research and the brief outline of the proposal as a single PDF of no more than 5 pages",
+          "Join the host institute within six months of the date of the selection intimation letter, otherwise the award is cancelled"
+        ],
+        "documents": [
+          "Nomination Letter on the letterhead of the host institute, duly signed and stamped, in the official NML_RJF template",
+          "CV of the Nominee",
+          "Plagiarism Undertaking in the official PUT_RJF template",
+          "Other Technical Document in the official OTD_RJF template",
+          "Proposed area of research and brief outline of the proposal in a single PDF of no more than 5 pages"
+        ],
+        "selection_criteria": [
+          "Selection is made periodically by an empowered Selection Committee specially appointed for the purpose",
+          "The fellowship is scientist-specific and very selective; only candidates with a proven or outstanding track record as evident from research publications and recognitions are eligible",
+          "The host institution must be willing to provide the necessary administrative and R&D basic infrastructural support"
+        ],
+        "coverage": [
+          "Fellowship of Rs. 1,35,000 per month consolidated, including HRA",
+          "Research grant of Rs. 7.00 lakh per annum for consumables, travel, research personnel and contingencies",
+          "Overheads of Rs. 60,000 per annum to the host institute",
+          "One international travel per year"
+        ],
+        "application_method": [
+          "Register on the ANRF portal and complete Profile Details in full",
+          "Under Form Submission choose Scheme: Ramanujan Fellowship and complete the nomination form",
+          "Upload the proposed area of research and brief outline as a single PDF of no more than five pages, plus the Nominee CV, Plagiarism Undertaking and Nomination Letter",
+          "Click 'Send to Nominator' and have the nominator review and submit the nomination; thereafter the candidate is informed by email about progress",
+          "On receiving the selection intimation letter, join the host institute within six months and forward the acceptance letter so that ANRF issues the Sanction Order to the institute"
+        ],
+        "application_route": "Host-institution nomination submitted through the ANRF online portal by the nominee and verified by the nominator",
+        "study_mode": null,
+        "citizenship_residency": "Indian or Indian-origin scientists and engineers working abroad at the time of nomination; the awardee may not hold any position or employment in India and no salary from the institute may be drawn",
+        "international_eligibility": "Yes - designed for the reverse brain drain: Indian and Indian-origin researchers returning from abroad to take up positions in India",
+        "subject_or_agency_requirement": "All areas of science in the broadest terms, including mathematical sciences, life sciences, chemical sciences, earth and atmospheric sciences, engineering sciences and physical sciences; the fellowship is meant for working in new areas and in laboratories other than the one where the candidate obtained the doctorate",
+        "research_requirement": "Proposed area of research and brief outline of the proposal in a single PDF of no more than five pages, uploaded with the nomination; the research should be conducted in an environment other than the one where the doctorate was obtained",
+        "duration": "Five years, not extendable",
+        "description": "The Ramanujan Fellowship is ANRF's reverse-brain-drain scheme for brilliant Indian and Indian-origin scientists and engineers working abroad to take up research positions in India, paying a consolidated fellowship of Rs. 1,35,000 per month including HRA, a research grant of Rs. 7.00 lakh per annum and overheads of Rs. 60,000 per annum to the host institute for five years.",
+        "region": "Asia",
+        "program_type": "Research fellowship (reverse brain drain)",
+        "english_requirement": null
+      },
+      "verification": {
+        "source_citations": [
+          "https://www.anrfonline.in/ANRF/Ramanujan_fellowship"
+        ],
+        "last_verified_date": "2026-10-10",
+        "verification_status": "confirmed",
+        "confidence": "high",
+        "not_confirmed": [
+          "deadline_date (nomination is a continuous year-round process)",
+          "tuition_coverage",
+          "english_requirement",
+          "study_mode"
+        ],
+        "notes": "The consolidated fellowship of Rs. 1,35,000 per month including HRA, the research grant of Rs. 7.00 lakh per annum, overheads of Rs. 60,000 per annum, the five-year non-extendable duration, the one international travel per year, the below-40 age rule and the full nomination workflow were confirmed on ANRF's official Ramanujan Fellowship page."
+      },
+      "applicant_utility": {
+        "summary": "The blocking condition is that you must be working abroad at nomination and hold no position or employment in India, so secure yourself abroad first and use the fellowship to move, not to supplement. The nomination has to come from the head of your intended Indian host institution, not from your PhD guide, so the institution has to be successfully courted before you touch the portal. Everything runs through the ANRF portal with prescribed PDF templates (NML_RJF, PUT_RJF, OTD_RJF), and joining must happen within six months of the selection intimation letter.",
+        "best_fit": "Indian-origin researchers under 40 with an outstanding publication record and no Indian position, who have lined up a willing Indian host institution.",
+        "application_readiness_checklist": [
+          "Confirm you hold no permanent, tenure track, contractual or any other position or employment in India",
+          "Negotiate with the head of the intended Indian host institute to confirm they will submit the nomination and host you",
+          "Register on www.anrfonline.in and complete every mandatory Profile Details field before starting the form",
+          "Compress the proposal into a single PDF of five pages or fewer - a longer document is a formal fault",
+          "Download and use the official NML_RJF, PUT_RJF and OTD_RJF templates rather than drafting your own versions",
+          "Diarise the six-month window after the selection intimation letter to join and forward the acceptance"
+        ],
+        "common_rejection_risks": [
+          "Any affiliation with an Indian institute at the time of nomination",
+          "Nomination routed through your PhD guide or the institute that awarded your PhD, both explicitly excluded",
+          "Drawal of a salary from the host institute on top of the fellowship, which is not permitted",
+          "Age 40 or above, or failing to demonstrate a track record through publications and recognitions",
+          "Incomplete portal profile, which voids the submission",
+          "Missing the six-month deadline to join after the selection intimation letter, which cancels the award"
+        ],
+        "estimated_uncovered_costs": "Equipment purchases and laboratory or agency overheads, which the research grant explicitly does not cover, plus tax on the taxable grant.",
+        "document_audit": [
+          "The Nomination Letter must be on the host institute's letterhead, signed and stamped, using the official template",
+          "The Plagiarism Undertaking (PUT_RJF) and Other Technical Document (OTD_RJF) are prescribed formats, not free-form letters",
+          "The nominee submits the form and the nominator only reviews and forwards it, so keep the nominee side fully prepared first",
+          "The proposal PDF limit is strict: no more than five pages in a single file"
+        ],
+        "alerts": [
+          "There is no deadline but selection is periodic, so a complete application can wait for a committee cycle - chase progress through the portal notifications",
+          "The grant is taxable as per Income Tax rules, so model the net amount rather than the gross 1,35,000 per month",
+          "TA/DA entitlement is equivalent to Scientist-D level, which is relevant for travel claims"
+        ],
+        "submission_workflow": "Complete the ANRF portal profile, submit the nomination form with templates and five-page proposal, then nominator review and submission, then periodic selection."
+      }
+    }
+  ]
+}

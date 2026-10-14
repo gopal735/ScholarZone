@@ -137,6 +137,18 @@ def approve_image_review(
         result.error = f"scholarship {review.scholarship_id} not found"
         return result
 
+    # An archived record is out of the catalogue, and nothing may write an
+    # image onto it: approving a review here would publish a mark for a
+    # programme no reader can see, and it would un-retire the row by giving
+    # it data the archive rule says it should not have. The review stays
+    # pending so a later restore can still act on it.
+    if scholarship.is_archived:
+        result.error = (
+            f"scholarship {review.scholarship_id} is archived; an image cannot "
+            "be approved onto an archived record"
+        )
+        return result
+
     # An operator approving an image is a writer distinct from any maintenance
     # stage, so the mutation audit records it under its own label. Delegating
     # keeps the existing flow and its return paths completely untouched.

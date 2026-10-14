@@ -1,0 +1,47 @@
+# What Vercel must not upload to the backend function bundle.
+#
+# Measured, not guessed: the backend directory is ~700 MB on disk and
+# Vercel's bundle is ~550 MB, which is the whole tree rather than the
+# code. The cause is .venv — 207 MB of an interpreter and the packages
+# Vercel installs itself anyway from requirements.txt — plus pytest's
+# caches and the local database, none of which a serverless function
+# needs. Excluding them takes the uploaded set from ~700 MB to the
+# application itself, and the deployed function stays far inside the
+# size limit.
+#
+# Keep this list tied to measurement: an entry here that stops being
+# large should be removed, and a new large directory (a corpus, a
+# fixtures bundle) belongs here the moment it appears.
+.venv
+venv
+env
+ENV
+
+# Bytecode caches. They are per-interpreter and wrong on any other.
+__pycache__/
+*.py[cod]
+*$py.class
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+.coverage
+htmlcov/
+
+# The local database and its journals. On the server the database is
+# provisioned from SCHOLARZONE_DATABASE_URL; a checked-out copy of the
+# dev catalogue would ship 17 MB of rows (and, in the wrong hands, the
+# whole directory) inside a bundle.
+*.db
+*.db-journal
+*.db-wal
+*.db-shm
+
+# The test suite runs in CI, not in the function. tests/ imports
+# pytest, and its fixtures would otherwise drag the dependency in
+# through the import graph even when nothing calls them.
+tests/
+
+# Local and editor state that is not the application.
+.idea/
+.vscode/
+.DS_Store

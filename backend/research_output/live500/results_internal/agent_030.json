@@ -1,0 +1,144 @@
+{
+  "agent": "agent_030",
+  "records": [
+    {
+      "id": 98,
+      "official": {
+        "official_source_urls": [
+          "https://www.ie.edu/financial-aid/masters/awardsandscholarships",
+          "https://www.ie.edu/financial-aid/masters/how-to-apply/",
+          "https://www.ie.edu/financial-aid/masters/frequently-asked-questions/"
+        ],
+        "application_link": "https://my.ie.edu/applymasfaid/",
+        "catalogue_url": "https://www.ie.edu/financial-aid/scholarship-list/",
+        "official_updates_url": "https://www.ie.edu/financial-aid/masters/awardsandscholarships",
+        "deadline_central": null,
+        "deadline_central_display": "No standalone scholarship deadline: the IE Awards deadline is the programme start date, and each IE Foundation Scholarship carries its own deadline.",
+        "deadline_note": "Most financial aid applications are accepted and evaluated on a rolling basis and can be submitted once admission has been applied for and always before the start of the programme.",
+        "application_cycle": null,
+        "status": "OPEN",
+        "status_note": "Applications are accepted on a rolling basis from the moment the admission application is submitted until the programme start date; the application is not evaluated until the applicant is admitted.",
+        "tuition_coverage_note": "IE Awards 'may cover between 10% and 40% of tuition fees'. Some full scholarships and awards offered through IE Foundation, partnering organizations and generous donors 'can cover up to 100% of tuition and living costs'.",
+        "funding_amount": null,
+        "funding_currency": "EUR",
+        "funding_period": null,
+        "tuition_coverage": true,
+        "living_cost_coverage": false,
+        "travel_coverage": false,
+        "fully_funded": false,
+        "benefits": [
+          "Direct Awards: merit-based awards granted automatically upon admission, with no separate financial aid application required",
+          "IE Awards: tuition-fee coverage of between 10% and 40%, assessed on both merit and financial need",
+          "IE Foundation Scholarships: partner-funded awards with their own eligibility criteria, deadlines and application requirements",
+          "Some full IE Foundation and donor awards can cover up to 100% of tuition and living costs",
+          "Interest-free tuition payment plans spreading the balance over consecutive uniform monthly payments (a one-time non-refundable administrative fee of EUR 400 applies when payments span more than three months)",
+          "Access to private student loan programmes through agreements with financial institutions"
+        ],
+        "eligibility": [
+          "Applicant to, or admitted candidate of, an IE University master's programme",
+          "Direct Awards: all applicants are considered automatically as part of the admissions process",
+          "IE Awards: assessed on both merit and financial need, with financial need considered particularly for high-potential candidates with limited access to alternative funding",
+          "IE Foundation Scholarships: the specific eligibility criteria set by each partner organization",
+          "Meeting the minimum eligibility criteria does not guarantee a favourable resolution",
+          "IE University alumni, Dual Degree students and financially dependent candidates may all apply"
+        ],
+        "requirements": [
+          "Submit the online admission application for the master's programme(s) first - the financial aid application can only be completed after that",
+          "Submit the IE Financial Aid Application for any IE Award: 'All IE Awards require the submission of a financial aid application'",
+          "Provide accurate details and documentation that accredits your financial situation",
+          "Apply for up to three awards and scholarships; only one award can be granted, the one of highest value",
+          "Complete the enrolment process to secure any award offered",
+          "Applications must be submitted before the programme start date"
+        ],
+        "documents": [
+          "A short essay covering your financial situation, how you plan to cover all programme costs, and why you are a standout candidate for the specific awards applied for",
+          "Financial documentation such as the last three pay slips and the most recent income tax declaration, in English or Spanish",
+          "If not working, the financial documentation of parents or tutors",
+          "Where you list yourself as financially dependent, your tutor(s) must also accredit their economic situation",
+          "A scholarship-specific essay in the 'Additional Documentation' section where the named IE Foundation award requires one"
+        ],
+        "selection_criteria": [
+          "Merit and financial need for all application-based aid",
+          "Merit alone for Direct Awards",
+          "The specific criteria of each partner organization for IE Foundation Scholarships",
+          "Financial aid is competitive and funding is limited, so early submission is encouraged",
+          "Awards are not transferable between programmes or intakes"
+        ],
+        "coverage": [
+          "Tuition fees (10% to 40% for IE Awards)",
+          "Awards are applied to outstanding tuition fees and cannot be used to pay the place reservation fee, with the exception of some full scholarships and awards from partnering organizations and donors, which can cover up to 100% of tuition and living costs"
+        ],
+        "application_method": [
+          "Apply for admission to the master's programme of your choice",
+          "Explore the financial aid options and select up to three awards and/or scholarships",
+          "Log in to the online financial aid platform with the same email and password used for the admission application",
+          "Complete the financial aid application, upload the documentation and press SUBMIT",
+          "Once admitted, the application is checked for completeness and further information may be requested",
+          "The IE Financial Aid Committee issues a resolution by email, usually one to three weeks after admission"
+        ],
+        "application_route": "Apply for admission first, then complete the IE Financial Aid Application on the online platform; Direct Awards need no application, and IE Foundation awards have their own routes and deadlines.",
+        "study_mode": null,
+        "citizenship_residency": null,
+        "international_eligibility": "IE University's financial aid pages are published for applicants across all master's programmes and do not state a nationality or residence restriction; IE University runs campuses in Madrid and Segovia.",
+        "subject_or_agency_requirement": "Awards are tied to the specific master's programme applied for and to individual IE Foundation partner organizations; some partner awards are filtered by programme, nationality or country of residence.",
+        "research_requirement": null,
+        "duration": "Assessed within one admission cycle; awards apply to the tuition fees of the enrolled programme and are not transferable between programmes or intakes.",
+        "description": "IE University offers three routes to funding for master's students: Direct Awards granted automatically on admission, IE Awards covering between 10% and 40% of tuition fees and assessed on both merit and financial need, and IE Foundation Scholarships funded by partner organizations with their own criteria and deadlines. Meeting the minimum eligibility criteria does not guarantee a favourable resolution.",
+        "region": "Europe",
+        "program_type": "Automatic merit awards, merit-and-need tuition awards, and partner-funded scholarships for admitted master's students",
+        "english_requirement": null
+      },
+      "verification": {
+        "source_citations": [
+          "https://www.ie.edu/financial-aid/masters/awardsandscholarships",
+          "https://www.ie.edu/financial-aid/masters/frequently-asked-questions/"
+        ],
+        "last_verified_date": "2026-10-10",
+        "verification_status": "confirmed",
+        "confidence": "high",
+        "not_confirmed": [
+          "funding_amount (IE publishes only the 10%-40% tuition coverage range, never a euro value)",
+          "funding_period",
+          "deadline_central (no calendar date is published; the deadline is the programme start date)",
+          "english_requirement (not stated on any IE financial aid page)",
+          "study_mode",
+          "citizenship_residency"
+        ],
+        "notes": "Read the live IE awards and scholarships page, the step-by-step how-to-apply page and the financial aid FAQ. Confirmed the three award routes, the 10%-40% IE Awards coverage range, the rolling process with the programme start date as the deadline, the essay plus pay-slip and tax-declaration documentation, the up-to-three-awards rule, the EUR 150 application fee with no waiver, and the EUR 400 payment-plan administrative fee."
+      },
+      "applicant_utility": {
+        "summary": "IE splits its money three ways, and only one of the three is automatic: Direct Awards are decided inside the admissions process with no extra form, while every IE Award forces you to file a separate financial aid application with real income evidence. That application is not even read until you have been admitted, so the practical order is admission first, aid second - and because assessment runs on a rolling basis with the programme start date as the cut-off, waiting costs you money. Plan on a partial award of 10-40% of tuition rather than a full ride, and treat loans and interest-free payment plans as part of the same funding conversation.",
+        "best_fit": "Candidates already admitted (or about to be) to an IE master's who can document genuine financial need and are comfortable writing a candid essay about it.",
+        "application_readiness_checklist": [
+          "Submit the admission application first and use the same email and password for the financial aid platform",
+          "Prepare three months of pay slips and your latest income tax declaration in English or Spanish before opening the form",
+          "If you are not working, brief your parents or tutor now - they must submit their own financial documentation and, for dependents, their link has to be actioned before your file is reviewed",
+          "Write the essay around two axes: your actual financial position and your plan to cover every programme cost, then the case for you specifically",
+          "Shortlist a maximum of three awards and check each partner's own deadline, since only the highest-value one can be granted",
+          "Diarise the programme start date as your real deadline and submit well before it"
+        ],
+        "common_rejection_risks": [
+          "Expecting an evaluation before admission - the file simply sits unreviewed until you are admitted",
+          "Submitting financial documents in a language other than English or Spanish",
+          "Leaving a financially dependent marker on the form without telling your tutor, which stalls the review indefinitely",
+          "Assuming a Direct Award blocks you from applying again - it does not, but a single award is all you can hold",
+          "Trying to use the award to cover the place reservation fee, which almost no award permits",
+          "Assuming the award travels with you if you switch programme or intake - it never does"
+        ],
+        "estimated_uncovered_costs": "Living costs in Madrid or Segovia, the place reservation fee (which aid cannot normally cover), the EUR 150 application fee with no waiver available, and any EUR 400 payment-plan administrative fee.",
+        "document_audit": [
+          "Pay slips must cover the last three months precisely - older statements get queried",
+          "Income tax declarations must be the most recent one, not the previous cycle",
+          "If you mark yourself financially dependent, the tutor's documentation is a separate submission that you do not control, so start it early",
+          "Some IE Foundation awards need an extra essay in 'Additional Documentation'; missing it can sink an otherwise strong application"
+        ],
+        "alerts": [
+          "Your application cannot be modified in substance once submitted, and the committee will only revisit a decision if you can show a significant and unexpected change in circumstances - and only before the programme start date",
+          "Awards cannot be used for the place reservation fee, so you need cash for that step regardless of the outcome",
+          "You cannot apply for financial aid once the programme has started, so the whole funding question must be settled before day one"
+        ],
+        "submission_workflow": "Admission application, then log in to the IE financial aid platform with the same credentials, complete the form, upload documents and essays, hit SUBMIT, and wait for the committee resolution by email (typically 1-3 weeks after admission) before finishing enrolment."
+      }
+    }
+  ]
+}

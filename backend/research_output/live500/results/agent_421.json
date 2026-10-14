@@ -1,0 +1,254 @@
+{
+  "agent": "agent_421",
+  "records": [
+    {
+      "id": 419,
+      "official": {
+        "official_source_urls": [
+          "https://www.visegradfund.org/visegrad-scholarship-program-apply",
+          "https://www.visegradfund.org/faq-scholarships",
+          "https://www.visegradfund.org/scholarships"
+        ],
+        "application_link": "http://my.visegradfund.org/Account/Login",
+        "catalogue_url": "https://www.visegradfund.org/visegrad-scholarship-program-apply",
+        "official_updates_url": "https://www.visegradfund.org/news",
+        "deadline_central": "2027-04-15",
+        "deadline_central_display": "15 April 2027, 12:00 PM (noon)",
+        "deadline_note": "Official timeline: call opens 1 January 2027 at 12:00 PM; results announced by 31 May 2027 at 12:00 PM (FAQ: all applicants notified within 45 working days of the deadline at the latest).",
+        "application_cycle": "2027/2028 academic year cycle",
+        "status": "UPCOMING",
+        "status_note": "The Fund's page states 'Opens on Jan 1, 2027 at 12:00 PM' - the call is announced with fixed dates but not yet open as of the verification date.",
+        "tuition_coverage_note": "FAQ answer to 'Does the scholarship cover tuition fees?': not directly - host institutions receive EUR 2,000 per semester per scholar; for master's studies this covers tuition or administrative costs, and excess fees remain the scholar's responsibility.",
+        "funding_amount": 3500,
+        "funding_currency": "EUR",
+        "funding_period": "per semester (scholar stipend; EUR 2,000/semester to host)",
+        "tuition_coverage": false,
+        "living_cost_coverage": true,
+        "travel_coverage": false,
+        "fully_funded": false,
+        "benefits": [
+          "EUR 3,500 per semester paid to each scholar's bank account and at the scholar's full disposal",
+          "EUR 2,000 per semester per scholar paid to the host institution",
+          "Paid in advance for each semester (5-month period) once the host university confirms the scholar's arrival in writing",
+          "The Fund issues a scholarship confirmation usable as an enclosure for visa applications"
+        ],
+        "eligibility": [
+          "Hold a bachelor's or master's degree",
+          "Citizenship or residence in Czechia, Hungary, Poland, Slovakia or an EaP/WB country (Albania, Armenia, Azerbaijan, Belarus, Bosnia and Herzegovina, Georgia, Kosovo, Moldova, Montenegro, Northern Macedonia, Serbia, Ukraine)",
+          "Country of citizenship differs from the country of the host institution",
+          "Previous levels of university studies must be completed in a country other than the country of application",
+          "Distance between the current employer/university or permanent residence and the host university must exceed 150 km",
+          "Full-time master's-level study or full-time post-master's (doctoral, postdoctoral) study or research"
+        ],
+        "requirements": [
+          "Language certificates are not required; the application form must be filled out in English",
+          "Documents in English or accompanied by a translation certified by a sworn translator or university official",
+          "One application per scholar, to one host institution and one study programme/research project per deadline",
+          "Any concurrent scholarships must be disclosed; the Fund may withdraw its offer",
+          "Recipients must acknowledge the Fund's support, including the logo, in scholarly documentation and public events"
+        ],
+        "documents": [
+          "Scanned valid national ID or passport",
+          "Master's level: scanned transcript of records covering at least the last two completed semesters, or a diploma supplement",
+          "Master's level: scanned letter of acceptance from the host university (or proof of applying if not yet accepted)",
+          "Post-Master's level: scanned letter of acceptance with a detailed working plan",
+          "PDF format recommended; no documents or hard copies are sent by post"
+        ],
+        "selection_criteria": [
+          "Preference is given to applicants not previously supported by the Fund",
+          "Preference is given to applicants with study/research topics relevant to the V4 region",
+          "Results for approved, rejected and reserve-list applicants are published no later than 45 working days after the deadline"
+        ],
+        "coverage": [
+          "EUR 3,500 per semester paid directly to the scholar, to be used at the scholar's own discretion",
+          "EUR 2,000 per semester to the host institution - tuition or administrative costs for master's studies, institutional hosting expenses for post-master's"
+        ],
+        "application_method": [
+          "Submit online via the My Visegrad system (my.visegradfund.org), which opens approximately 45 days before the deadline",
+          "Upload all required documents in a single submission by 15 April 2027, 12:00 PM (noon) - late applications are not accepted"
+        ],
+        "application_route": "Online via the My Visegrad system with an English application form and all scans uploaded by 15 April 2027, 12:00 PM.",
+        "study_mode": "full-time",
+        "citizenship_residency": "Citizens of the Visegrad Four (Czechia, Hungary, Poland, Slovakia) or of Eastern Partnership / Western Balkans countries; the host institution must be in a country different from the applicant's citizenship.",
+        "international_eligibility": "Yes - V4 citizens study in another V4 or WB/EaP country; EaP/WB citizens study in a V4 country",
+        "subject_or_agency_requirement": "All disciplines, in any language; the application form offers 25 selectable disciplines and there is no age limit",
+        "research_requirement": "Post-Master's applicants must submit a letter of acceptance with a detailed working plan (approved by the host institution)",
+        "duration": "1-2 semesters of full-time master's or post-master's study/research",
+        "description": "The Visegrad Scholarship Program funds 1-2 semesters of full-time master's-level study or full-time post-master's (doctoral/postdoctoral) study or research at more than 190 accredited higher-education institutions across Central and Eastern Europe, awarding EUR 3,500 per semester to the scholar and EUR 2,000 per semester to the host institution.",
+        "region": "Global (Visegrad Four plus Western Balkans and Eastern Partnership countries)",
+        "program_type": "Postgraduate academic exchange scholarship (Master's and post-Master's)",
+        "english_requirement": null
+      },
+      "verification": {
+        "source_citations": [
+          "https://www.visegradfund.org/visegrad-scholarship-program-apply",
+          "https://www.visegradfund.org/faq-scholarships"
+        ],
+        "last_verified_date": "2026-10-10",
+        "verification_status": "confirmed",
+        "confidence": "high",
+        "not_confirmed": [
+          "Number of scholarships awarded per cycle",
+          "Any English language test score requirement - the Fund states language certificates are not required, so no score is published"
+        ],
+        "notes": "Amounts, timeline, tuition treatment, payment mechanics and documents confirmed on the International Visegrad Fund's own apply and FAQ pages. The mvcr.cz URL from the brief returned a transport error twice, so the Fund's own visegradfund.org pages were used instead."
+      },
+      "applicant_utility": {
+        "summary": "Budget around EUR 3,500 per semester plus whatever tuition your host charges above the EUR 2,000 institutional grant, because the Fund pays the stipend to you but explicitly does not arrange travel, insurance or accommodation. Start early: the online system opens only about 45 days before the 15 April deadline and you must already hold, or be able to prove you applied for, a place at the host institution. Since the host must sit in a different country from your citizenship and more than 150 km from your home base, shortlist universities in the autumn and chase the acceptance letter before the window opens.",
+        "best_fit": "Master's and doctoral/postdoctoral students and researchers from the V4 or Western Balkans/Eastern Partnership countries seeking a funded one- or two-semester stay at an institution in another participating country.",
+        "application_readiness_checklist": [
+          "Confirm your citizenship and previous degree countries differ from the target host country and that the 150 km rule is met",
+          "Obtain a letter of acceptance, or documented proof of applying, from the host institution",
+          "Scan your ID/passport plus transcripts covering the last two completed semesters, or a diploma supplement",
+          "Arrange certified translations for any non-English documents and upload everything as PDFs before the deadline",
+          "Register on my.visegradfund.org as soon as the system opens and submit days ahead of the 12:00 PM cutoff"
+        ],
+        "common_rejection_risks": [
+          "Missing the strict 12:00 PM deadline - the Fund accepts no application past it",
+          "Host country equal to the applicant's citizenship country, or within 150 km of home, which breaks a core condition",
+          "Uploading uncertified translations of non-English documents",
+          "Applying with no acceptance letter and no proof of application to a host institution",
+          "Submitting more than one application, or to several hosts, for a single deadline"
+        ],
+        "estimated_uncovered_costs": "Travel to the host country, insurance, accommodation and living costs beyond the EUR 3,500 per semester stipend, plus any tuition or administrative fees exceeding the EUR 2,000 per semester paid to the host institution.",
+        "document_audit": [
+          "The acceptance letter may be preliminary or replaced by proof of applying only if admission results arrive after the deadline; the final letter is required before contract signing",
+          "Transcripts must cover at least the last two completed semesters - a single recent semester is insufficient",
+          "A second-semester instalment requires transcripts showing 30+ ECTS credits and enrolment confirmation (progress reports signed by supervisors for post-master's scholars)"
+        ],
+        "alerts": [
+          "Results arrive only at the end of May, so the funded stay cannot begin before September/October at the earliest - align this with your home institution's calendar",
+          "The submission system opens roughly 45 days before the deadline, creating a short upload window",
+          "Any concurrent scholarship must be disclosed, and the Fund may withdraw its offer on that basis"
+        ],
+        "submission_workflow": "Register on my.visegradfund.org, complete the English form for one host institution and programme, upload all scans, and submit before 15 April 2027, 12:00 PM; the contract then arrives by post for signature, and payment starts after the host confirms arrival."
+      }
+    },
+    {
+      "id": 475,
+      "official": {
+        "official_source_urls": [
+          "https://www.worldbank.org/en/programs/scholarships/jj-wbgsp",
+          "https://www.worldbank.org/en/programs/scholarships/brief/jjwbgsp-participating-programs-2022-2024-application-window-1",
+          "https://www.worldbank.org/en/programs/scholarships/brief/countries-eligible-for-jjwbgsp-scholarship"
+        ],
+        "application_link": "https://www.worldbank.org/en/programs/scholarships/jj-wbgsp",
+        "catalogue_url": "https://www.worldbank.org/en/programs/scholarships/brief/jjwbgsp-participating-programs-2022-2024-application-window-1",
+        "official_updates_url": "https://www.worldbank.org/en/programs/scholarships",
+        "deadline_central": "2027-02-26",
+        "deadline_central_display": "26 February 2027 (close of Application Window #1)",
+        "deadline_note": "Application Window #2 runs from 29 March to 21 May 2027; each participating university sets its own admission deadlines, which fall before the JJ/WBGSP window closes.",
+        "application_cycle": "2027 cycle - two application windows: #1 from 18 January to 26 February 2027, #2 from 29 March to 21 May 2027",
+        "status": "UPCOMING",
+        "status_note": "The World Bank has announced the 2027 window dates; Window #1 opens on 18 January 2027. The 2026 application window for Japanese nationals closed on 17 April 2026.",
+        "tuition_coverage_note": "The scholarship provides tuition for the graduate program and the cost of basic medical insurance obtained through the university.",
+        "funding_amount": 600,
+        "funding_currency": "USD",
+        "funding_period": "per trip (arrival and departure travel allowance)",
+        "tuition_coverage": true,
+        "living_cost_coverage": true,
+        "travel_coverage": true,
+        "fully_funded": true,
+        "benefits": [
+          "Tuition for the graduate program and the cost of basic medical insurance obtained through the university",
+          "Monthly subsistence allowance covering all living expenses while on campus (accommodations, food, books); the amount varies depending on the host country",
+          "Economy class air travel between the home country and the host university at the start and end of the scholarship period, plus a US$600 travel allowance for each trip",
+          "Coverage for the duration of the graduate program or two years, whichever is less",
+          "Membership in the JJ/WBGSP alumni community of more than 7,000 mid-career professionals from 160 developing countries and Japan"
+        ],
+        "eligibility": [
+          "National of a World Bank member developing country on the published 2027 eligible list, and not holding dual citizenship of any developed country",
+          "In good health",
+          "Bachelor's (or equivalent) degree earned at least 3 years prior to the application deadline date",
+          "Paid full-time development-related employment at the time of application, with at least 3 years of paid development-related employment since earning the bachelor's degree, acquired within the past 6 years from the application deadline (exception for nationals of Fragile and Conflict States)",
+          "Unconditional admission (except for funding) for the upcoming academic year to a JJ/WBGSP participating master's program located outside the applicant's country of citizenship and residence, with the letter of admission uploaded before submitting the application",
+          "Not an Executive Director, alternate or staff member of the World Bank Group or a close relative; not a previous decliner of a JJ/WBGSP offer or a recipient who did not graduate"
+        ],
+        "requirements": [
+          "Be admitted unconditionally (except for finance) to one of the 44 participating master's programs and be shortlisted as an eligible JJ/WBGSP applicant by the participating university",
+          "The link to the JJ/WBGSP application form is communicated only to shortlisted candidates by the participating university",
+          "The letter of admission must be uploaded before submitting the scholarship application",
+          "All eligibility criteria are strictly adhered to with no exceptions and do not change during an open call",
+          "Any other scholarship or fellowship must be declared to the Secretariat - the JJ/WBGSP may only supplement, not duplicate, other financial support"
+        ],
+        "documents": [
+          "Letter of admission from a JJ/WBGSP participating master's program, uploaded before submitting the scholarship application",
+          "JJ/WBGSP application form, accessed through the link communicated only to shortlisted candidates"
+        ],
+        "selection_criteria": [
+          "Two qualified assessors independently score each eligible application from 1 to 10 on professional experience (30% weight), professional recommendations (30%), commitment to the home country (30%) and education background (10%)",
+          "The Secretariat weighs the average score together with reasonably wide geographical and gender distribution of awards, unusual circumstances or hardships, and applicants with limited access to funding for graduate studies abroad",
+          "Finalists are presented to the JJ/WBGSP Steering Committee, composed of World Bank Board of Directors members and Bank management, for approval"
+        ],
+        "coverage": [
+          "Tuition for the graduate program and university-provided basic medical insurance",
+          "Monthly subsistence allowance for all living expenses while on campus (amount varies by host country and is not published)",
+          "Economy class round-trip airfare plus a US$600 travel allowance for each of the two trips"
+        ],
+        "application_method": [
+          "Choose a target from the 44 participating master's programs and apply directly to that university, meeting its admission requirements and internal deadlines",
+          "Obtain unconditional (except for funding) admission and ask the university whether you will be shortlisted as an eligible JJ/WBGSP applicant",
+          "Submit the JJ/WBGSP application via the link the university communicates, uploading the admission letter, within the application window"
+        ],
+        "application_route": "Two-step route: first secure unconditional admission (except for funding) and university shortlisting at a participating programme, then submit the JJ/WBGSP form through the link the university provides during the window.",
+        "study_mode": null,
+        "citizenship_residency": "Nationals of World Bank member developing countries on the 2027 eligible list; no dual citizenship of any developed country; the host programme must be outside the applicant's country of citizenship and residence as listed when the call opened.",
+        "international_eligibility": "Open only to nationals of the listed World Bank developing countries; developed-country nationals are not eligible",
+        "subject_or_agency_requirement": "Admission to a development-related master's program among the 44 JJ/WBGSP participating programs in 24 universities in the U.S., Europe, Africa, Oceania and Japan; applicants not admitted to a participating program are not eligible for a 2027 scholarship",
+        "research_requirement": null,
+        "duration": "The duration of the graduate program or two years, whichever is less",
+        "description": "The Joint Japan/World Bank Graduate Scholarship Program, funded by the Government of Japan, supports mid-career professionals from listed developing countries to study a development-related master's degree at one of 44 participating programs, providing tuition, a monthly subsistence allowance, round-trip economy airfare with a US$600 per-trip allowance, and basic medical insurance, subject to available funding.",
+        "region": "Global",
+        "program_type": "Development bank graduate scholarship (master's)",
+        "english_requirement": null
+      },
+      "verification": {
+        "source_citations": [
+          "https://www.worldbank.org/en/programs/scholarships/jj-wbgsp",
+          "https://www.worldbank.org/en/programs/scholarships/brief/jjwbgsp-participating-programs-2022-2024-application-window-1"
+        ],
+        "last_verified_date": "2026-10-10",
+        "verification_status": "confirmed",
+        "confidence": "high",
+        "not_confirmed": [
+          "Amount of the monthly subsistence allowance - the World Bank states it varies by host country and is not published",
+          "English language test requirement - not published on the programme page; participating universities set their own admission requirements",
+          "Study mode (full-time/part-time) - not stated on the programme page"
+        ],
+        "notes": "Benefits, exclusions, eligibility criteria, selection process, participating-programme list, eligible-country list and both 2027 window dates were confirmed on the World Bank's own JJ/WBGSP page and its briefs; the 2027 Window #1 Application Guidelines and FAQ PDFs are linked from the page but their contents could not be extracted."
+      },
+      "applicant_utility": {
+        "summary": "This award has two gates: you must first win unconditional admission (except for funding) to one of only 44 participating master's programmes and then be shortlisted by that university before the World Bank even sends you an application link, so university admission deadlines rather than the scholarship window drive your calendar. Target Window #1 (18 January - 26 February 2027) if your programme admits for the upcoming academic year, and remember the admission letter must be uploaded before you submit. The package covers tuition, living costs, insurance and travel, but not visas, family costs, equipment or research extras, and scholars commit to returning home after graduation.",
+        "best_fit": "Mid-career development professionals from listed developing countries with at least three years of relevant paid work experience and the profile to be admitted to one of the 44 participating programmes.",
+        "application_readiness_checklist": [
+          "Check your country on the 2027 eligible-country list and confirm you hold no developed-country dual citizenship",
+          "Work backwards from each target programme's own admission deadline, which falls before the scholarship window",
+          "Secure an unconditional (except for funding) admission letter and upload it before submitting the application",
+          "Ask the university explicitly whether it will shortlist you as an eligible JJ/WBGSP applicant and send the form link",
+          "Prepare to declare any other scholarship or fellowship you hold, since the award only supplements existing support"
+        ],
+        "common_rejection_risks": [
+          "Applying to a non-participating programme - explicitly not eligible for a 2027 scholarship",
+          "Bachelor's degree earned less than three years before the deadline, or work experience falling outside the 6-year window",
+          "Failing to hold unconditional (except for funding) admission by the scholarship deadline",
+          "Holding dual citizenship of a developed country",
+          "Having previously declined a JJ/WBGSP offer or received the award without graduating - a permanent bar to reapplying",
+          "Expecting coverage of visa fees, family costs or equipment - these are explicitly excluded"
+        ],
+        "estimated_uncovered_costs": "Visa application and resident permit fees, expenses to bring or support family members, language training not provided by the programme, additional travel during study, research and supplementary educational materials, field trips, workshops, seminars, internships, and educational equipment such as computers.",
+        "document_audit": [
+          "The admission letter must be unconditional except for funding - conditional offers do not qualify",
+          "The application form link is sent only after the university shortlists you, so it cannot be downloaded in advance",
+          "Part-time employment has specific counting rules toward the 3-year requirement - check the Window FAQ before assuming your experience qualifies"
+        ],
+        "alerts": [
+          "Two windows exist: Window #2 (29 March - 21 May 2027) suits participating programmes with later admission cycles",
+          "Awards are subject to available funding, and final selection depends on Steering Committee approval after the window closes",
+          "Scholars commit to returning to their home country after earning their degree to apply their new skills",
+          "If you are awarded any other scholarship or fellowship, you must send the documents to the JJ/WBGSP Secretariat"
+        ],
+        "submission_workflow": "Admission first, scholarship second: apply to the university, win unconditional admission and shortlisting, then complete the JJ/WBGSP form via the university-communicated link inside the window with the admission letter uploaded."
+      }
+    }
+  ]
+}

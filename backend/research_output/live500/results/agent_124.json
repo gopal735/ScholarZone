@@ -1,0 +1,150 @@
+{
+  "agent": "agent_124",
+  "records": [
+    {
+      "id": 322,
+      "official": {
+        "official_source_urls": [
+          "https://bd.china-embassy.gov.cn/eng/sghd/202512/t20251219_11776194.htm",
+          "https://bd.china-embassy.gov.cn/eng/sghd",
+          "https://be.china-embassy.gov.cn/eng/sghd/202511/P020251111863531034311.pdf"
+        ],
+        "application_link": "https://bd.china-embassy.gov.cn/eng/sghd/202512/t20251219_11776194.htm",
+        "catalogue_url": null,
+        "official_updates_url": "https://bd.china-embassy.gov.cn/eng/sghd",
+        "deadline_central": "2026-01-10",
+        "deadline_central_display": "10 January 2026",
+        "deadline_note": "The Embassy's announcement of 19 December 2025 set a single closing date of 10 January 2026 for all degree levels and the language programme; no later-cycle date has been published on the Embassy's Press Release page as of 10 October 2026.",
+        "application_cycle": "Round announced 19 December 2025 (2026/2027 intake)",
+        "status": "CLOSED",
+        "status_note": "The Embassy's most recent CGS Type A announcement (19 December 2025) closed on 10 January 2026; the Press Release page carries no newer CGS notice, so the next round is expected on the same annual December-to-January cycle.",
+        "tuition_coverage_note": "The announcement lists 'Full tuition fees' as the first item of scholarship coverage.",
+        "funding_amount": 2500,
+        "funding_currency": "CNY",
+        "funding_period": "per month (CNY 2,500-3,500 by level)",
+        "tuition_coverage": true,
+        "living_cost_coverage": true,
+        "travel_coverage": true,
+        "fully_funded": true,
+        "benefits": [
+          "Full tuition fees",
+          "On-campus accommodation (free university dormitory or accommodation subsidy)",
+          "Comprehensive medical insurance",
+          "Monthly living allowance of approximately CNY 2,500-3,500, depending on programme level",
+          "International round-trip airfare (the poster wording is 'Flight Tickets: 2 times')",
+          "The Embassy describes the award as a 'FULLY FUNDED scholarship' with 'All-Inclusive Support for Your Studies in China'"
+        ],
+        "eligibility": [
+          "Bangladeshi citizen",
+          "Strong academic record",
+          "Bachelor's applicants: under 25 years of age",
+          "Master's applicants: under 35 years of age",
+          "Doctoral (PhD) applicants: under 40 years of age",
+          "Eligible levels: Bachelor's, Master's, Doctoral (PhD) and One-Year Chinese Language Program"
+        ],
+        "requirements": [
+          "Online application completed through the official China Scholarship Council website",
+          "Language Proficiency Certificate (HSK / IELTS / TOEFL) is on the Embassy's document checklist",
+          "Bachelor's applicants are required to submit a valid CSCA (China Scholastic Competency Assessment) score report",
+          "Applicants are advised to follow the instructions and submit all required documents within the stipulated time",
+          "The Embassy lists an interview as the final step of its 4-step process"
+        ],
+        "documents": [
+          "CSC application form",
+          "University application form",
+          "Acceptance letter or pre-admission letter from the university",
+          "Academic transcripts and certificates (notarised)",
+          "Study plan / research proposal",
+          "Two letters of recommendation",
+          "Passport copy",
+          "Language proficiency certificate (HSK/IELTS/TOEFL)",
+          "Bachelor's applicants: certificate of the CSCA test",
+          "Foreigner physical examination form"
+        ],
+        "selection_criteria": [
+          "Strong academic record, as stated in the Embassy's published eligibility criteria",
+          "Degree-holding and age thresholds for the chosen level (under 25 / 35 / 40)",
+          "The Embassy's 4-step process ends in an interview"
+        ],
+        "coverage": [
+          "Full tuition fees",
+          "On-campus accommodation",
+          "Comprehensive medical insurance",
+          "Monthly living allowance (approximately CNY 2,500-3,500, depending on program level)",
+          "International round-trip airfare"
+        ],
+        "application_method": [
+          "Choose the university and programme",
+          "Prepare the documents on the Embassy's checklist",
+          "Apply through the online CSC portal",
+          "Attend the interview"
+        ],
+        "application_route": "Apply online through the China Scholarship Council portal at www.campuschina.org (Type A / Embassy channel), then complete the Embassy's interview step.",
+        "study_mode": null,
+        "citizenship_residency": "The announcement is addressed to Bangladeshi students; the award is for citizens of countries other than the People's Republic of China.",
+        "international_eligibility": "Open to Bangladeshi citizens; as a Chinese Government Scholarship it is restricted to non-Chinese citizens.",
+        "subject_or_agency_requirement": "No subject restriction is published; the Embassy lists Engineering, Medicine, Business, Agriculture, Arts, Humanities, Law, Science and more as fields of study.",
+        "research_requirement": "A study plan / research proposal is on the Embassy's document checklist for applicants.",
+        "duration": "Length of the chosen degree programme; the Chinese language programme is one year.",
+        "description": "The Government of the People's Republic of China invites outstanding Bangladeshi students to apply for the Chinese Government Scholarship (CGS) - Type A, administered by the China Scholarship Council, to study at Chinese universities at Bachelor's, Master's, Doctoral (PhD) or one-year Chinese language level. The Embassy frames the award as a fully funded scholarship providing full tuition fees, on-campus accommodation, comprehensive medical insurance, a monthly living allowance and international round-trip airfare.",
+        "region": "Asia (Bangladesh to China)",
+        "program_type": "Chinese Government Scholarship (CGS) / CSC Type A - bilateral Embassy-channel government scholarship",
+        "english_requirement": null
+      },
+      "verification": {
+        "source_citations": [
+          "https://bd.china-embassy.gov.cn/eng/sghd/202512/t20251219_11776194.htm",
+          "https://bd.china-embassy.gov.cn/eng/sghd/202512/W020251219028022826933_ORIGIN.jpg",
+          "https://be.china-embassy.gov.cn/eng/sghd/202511/P020251111863531034311.pdf"
+        ],
+        "last_verified_date": "2026-10-10",
+        "verification_status": "confirmed",
+        "confidence": "high",
+        "not_confirmed": [
+          "english_requirement (no minimum IELTS/TOEFL or MOI score is published)",
+          "study_mode (full-time or part-time status is not stated)",
+          "funding_amount broken out by level on the Bangladesh page (only the CNY 2,500-3,500 range is published there)",
+          "instrumental deadline for the next cycle",
+          "catalogue_url (no catalogue page exists)"
+        ],
+        "notes": "Coverage, stipend range and the 10 January 2026 deadline were taken from the Embassy of the PRC in Bangladesh's own 19 December 2025 announcement and the announcement images hosted on that page; the CSC stipend tiers and age limits were cross-checked against CSC guidance published on a Chinese embassy domain."
+      },
+      "applicant_utility": {
+        "summary": "This is the CSC Type A channel for Bangladeshi nationals: you apply online at www.campuschina.org, the Embassy of China in Dhaka nominates you, and the award pays full tuition, on-campus housing, medical insurance, a CNY 2,500-3,500 monthly allowance plus a round-trip airfare. The last published round closed on 10 January 2026, so Bangladeshi applicants should expect the next call to appear on the Embassy's Press Release page around December and to close roughly three weeks later. Eligibility hinges on hard age caps - under 25 for Bachelor's, under 35 for Master's and under 40 for PhD - and on producing a notarised academic file plus an acceptance or pre-admission letter from a Chinese university. No minimum IELTS or TOEFL score is published, but a language certificate (HSK/IELTS/TOEFL) sits on the Embassy's own document checklist, and Bachelor's applicants must add a valid CSCA score report.",
+        "best_fit": "Recent Bangladeshi school leavers and early-career graduates with strong grades and a clear university choice in China who can work to a short December-to-January window.",
+        "application_readiness_checklist": [
+          "Check your age against the published cap for your level the day the call opens, not just at graduation",
+          "Shortlist universities and supervisors on campuschina.org early and secure an acceptance or pre-admission letter, which is a listed document",
+          "Book the CSCA test in time if applying at Bachelor's level so a valid score report exists before submission",
+          "Arrange notarisation and English translation of transcripts, certificates and the two recommendation letters",
+          "Complete the Foreigner Physical Examination Form at an authorised hospital, since it has a fixed validity window",
+          "Register a Chinese-language-capable email, since CSC portal verification and admission notices arrive through it"
+        ],
+        "common_rejection_risks": [
+          "Missing an acceptance or pre-admission letter from the university, which the checklist treats as mandatory",
+          "Falling outside the age ceiling for the applied level - the caps are published and are not waived",
+          "Submitting an un-notarised or untranslated transcript bundle, or a photocopy instead of a passport copy",
+          "Applying for a Chinese-taught programme without the language certificate the checklist asks for",
+          "Leaving the CSCA score report absent at Bachelor's level",
+          "Losing the interview slot after an incomplete online CSC submission"
+        ],
+        "estimated_uncovered_costs": "The scholarship itself charges no application fee, but applicants must fund their own visa and medical costs, notarisation/translation of academic documents, CSCA or HSK test fees, the medical examination, the trip to Dhaka for the Embassy interview, and any personal spending above the CNY 2,500-3,500 monthly allowance plus what the free dormitory covers.",
+        "document_audit": [
+          "The 'Academic Transcripts & Certificates (Notarized)' entry means both documents, notarised together, in the format CSC's portal accepts",
+          "Two separate letters of recommendation are expected - one generic letter does not satisfy the checklist",
+          "The Foreigner Physical Examination Form is only valid for a limited period, so do not complete it months before submission",
+          "The document checklist names both a CSC form and a university form; forgetting the second is a common failure",
+          "Study plan / research proposal is a listed document, so blank or templated versions stand out"
+        ],
+        "alerts": [
+          "The deadline is a single date for every level - 10 January 2026 for the last round - so late applications ship nothing to the Embassy",
+          "The Embassy's own poster names a commercial education agency as its promotional partner; the scholarship has no application fee and no agent is required, so treat paid 'guaranteed admission' offers with caution",
+          "Age caps are absolute and measured at application, so repeat or delayed applicants can age out of the level they want",
+          "The Embassy's announcement is the only Bangladeshi source for this round; there is no separate CSC Bangladesh page to check",
+          "Volunteer support is published as 01332-511837 between 9:00 AM and 6:00 PM for queries about the application process"
+        ],
+        "submission_workflow": "Create a CSC account at www.campuschina.org, upload the full notarised document set under the Type A (Embassy) channel, submit before the Embassy's deadline, then appear for the interview stage the Embassy lists."
+      }
+    }
+  ]
+}

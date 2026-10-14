@@ -1,0 +1,109 @@
+{
+  "agent": "agent_084",
+  "records": [
+    {
+      "id": 247,
+      "official": {
+        "official_source_urls": [
+          "https://cis.chinese.cn",
+          "https://cis.chinese.cn/ui/start/"
+        ],
+        "application_link": "https://cis.chinese.cn",
+        "catalogue_url": null,
+        "official_updates_url": null,
+        "deadline_central": null,
+        "deadline_central_display": null,
+        "deadline_note": null,
+        "application_cycle": null,
+        "status": null,
+        "status_note": "On 2026-10-10 the awarding body's public scholarship pages could not be reached: cis.chinese.cn returns HTTP 404 for its root and common information paths, and only the application platform at cis.chinese.cn/ui/start/ remains, so no current round, window or status could be confirmed.",
+        "tuition_coverage_note": null,
+        "funding_amount": null,
+        "funding_currency": null,
+        "funding_period": null,
+        "tuition_coverage": null,
+        "living_cost_coverage": null,
+        "travel_coverage": null,
+        "fully_funded": false,
+        "benefits": null,
+        "eligibility": null,
+        "requirements": null,
+        "documents": null,
+        "selection_criteria": null,
+        "coverage": null,
+        "application_method": null,
+        "application_route": null,
+        "study_mode": null,
+        "citizenship_residency": null,
+        "international_eligibility": null,
+        "subject_or_agency_requirement": null,
+        "research_requirement": null,
+        "duration": null,
+        "description": null,
+        "region": "Asia",
+        "program_type": null,
+        "english_requirement": null
+      },
+      "verification": {
+        "source_citations": [
+          "https://cis.chinese.cn",
+          "https://cis.chinese.cn/ui/start/"
+        ],
+        "last_verified_date": "2026-10-10",
+        "verification_status": "unverified",
+        "confidence": "low",
+        "not_confirmed": [
+          "funding_amount",
+          "funding_currency",
+          "funding_period",
+          "deadline_central",
+          "status",
+          "benefits",
+          "eligibility",
+          "requirements",
+          "documents",
+          "selection_criteria",
+          "coverage",
+          "application_method",
+          "duration",
+          "english_requirement",
+          "tuition_coverage",
+          "living_cost_coverage",
+          "travel_coverage",
+          "application_cycle"
+        ],
+        "notes": "Multiple attempts (well over two) were made on the awarding body's official domain on 2026-10-10: cis.chinese.cn, /en/, /en/index.html, /cis, /home, /robots.txt and /sitemap.xml all return HTTP 404; only https://cis.chinese.cn/ui/start/ responds, and it serves only the project-management platform login shell with no public programme content. The web-search fallback prescribed for unreachable official pages could not be used because the search tool was unavailable in this session, so no official-domain content could be recovered. No amount was invented and all unverified fields remain null."
+      },
+      "applicant_utility": {
+        "summary": "Treat this record as a routing stub rather than a funding fact sheet: the official route for the Confucius Institute Scholarship runs through the platform at cis.chinese.cn, which today exposes only a login page with no published programme details, amounts or deadlines. The practical first step is to write to the Confucius Institute or Confucius Classroom nearest to you and ask three things: whether it holds scholarship allocations for the current cycle, what the current categories and amounts are, and when its internal nomination deadline falls. Do not budget against figures you find on aggregator sites - with the awarding body's public pages offline, amounts and windows can only be confirmed through your local Confucius Institute or the Confucius Institute administration itself.",
+        "best_fit": "Applicants who already have a working relationship with a Confucius Institute or Confucius Classroom that receives scholarship allocations and can nominate them.",
+        "application_readiness_checklist": [
+          "Email your local Confucius Institute or Confucius Classroom to confirm it holds allocations for the current cycle and to request the current category list, amounts and window",
+          "Ask which scholarship categories are open this cycle (language study, teaching Chinese to speakers of other languages and similar tracks usually have separate rules)",
+          "Confirm the current eligibility rules in writing with the institute, including age limits, nationality and Chinese-language requirements",
+          "Prepare notarised translations of diplomas and transcripts and a recent non-criminal record certificate, which Chinese-side scholarship applications of this kind routinely require",
+          "Keep HSK/HSKK evidence current if you are pursuing Chinese-language or Chinese-teaching tracks"
+        ],
+        "common_rejection_risks": [
+          "Applying directly to a Chinese university instead of going through the Confucius Institute/Classroom route - the nomination step is the programme's structure",
+          "Applying through an institute without allocations, which produces no nomination regardless of merit",
+          "Waiting for the local nomination cycle to be announced before preparing documents, leaving too little time before the internal deadline",
+          "Relying on outdated figures copied from third-party listing sites"
+        ],
+        "estimated_uncovered_costs": null,
+        "document_audit": [
+          "Because public requirements are not currently published, have the local Confucius Institute confirm in writing which documents are mandatory this cycle",
+          "If a Chinese-language track applies, verify HSK/HSKK validity dates with the institute before applying",
+          "Keep notarised translations ready, since applications of this type are cross-language sensitive"
+        ],
+        "alerts": [
+          "The awarding body's public scholarship pages are currently unreachable (404): verify any detail you read elsewhere directly with your local Confucius Institute before acting on it",
+          "Never pay an 'application fee' through an unofficial portal - the official application platform is cis.chinese.cn",
+          "Allocations are distributed through Confucius Institutes and Classrooms, so availability is unevenly spread; absence of a local partner is itself an eligibility barrier",
+          "This record was produced on 2026-10-10 and will need re-verification as soon as the official site publishes programme pages again"
+        ],
+        "submission_workflow": "Applications proceed through the official platform at cis.chinese.cn with the involvement of a local Confucius Institute or Confucius Classroom, which nominates candidates for the scholarship."
+      }
+    }
+  ]
+}

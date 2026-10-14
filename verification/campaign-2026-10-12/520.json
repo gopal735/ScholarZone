@@ -1,0 +1,87 @@
+{
+  "id": "520",
+  "verdict": "needs_review",
+  "confidence": "high",
+  "checked_at": "2026-10-12T19:13:09Z",
+  "sources": [
+    {
+      "url": "https://www.afdb.org/en/about-us/careers/japan-africa-dream-scholarship-jads-program",
+      "kind": "official",
+      "note": "African Development Bank's own JADS programme page: background, what the scholarship covers and does not cover, JADS Secretariat. Footer: 'Last updated: 11-Sep-2024'."
+    },
+    {
+      "url": "https://www.afdb.org/en/about-us/careers/japan-africa-dream-scholarship-jads-program/who-is-eligible-to-apply",
+      "kind": "official",
+      "note": "AfDB JADS Eligibility Criteria page. Footer: 'Last updated: 09-Nov-2022'."
+    },
+    {
+      "url": "https://www.afdb.org/en/about-us/careers/japan-africa-dream-scholarship-jads-program/application-procedures",
+      "kind": "official",
+      "note": "AfDB JADS Application Procedures page. Confirms applications go only through partner universities. Footer: 'Last updated: 09-Nov-2022'."
+    },
+    {
+      "url": "https://www.afdb.org/en/about-us/careers/japan-africa-dream-scholarship-jads-program/list-of-universities",
+      "kind": "official",
+      "note": "AfDB JADS List of Universities page with each partner's 'Month of Intake / Deadline of Application'. This table is the source of the record's deadline quotes. Footer: 'Last updated: 09-Nov-2022'."
+    },
+    {
+      "url": "https://www.afdb.org/en/about-us/careers/japan-africa-dream-scholarship-jads-program/scholarship-benefits",
+      "kind": "official",
+      "note": "AfDB JADS Scholarship Benefits page: what the award covers and its explicit exclusions. Footer: 'Last updated: 26-Oct-2021'."
+    },
+    {
+      "url": "https://admissions.apu.ac.jp/graduate/how_to_apply/external_scholarship/AfDB_JADS",
+      "kind": "official",
+      "note": "Ritsumeikan Asia Pacific University (JADS partner, admissions.apu.ac.jp) AfDB-JADS page. Carries the live 2027 enrollment dates used to test the record's APU deadline quote."
+    },
+    {
+      "url": "https://www.hiroshima-u.ac.jp/en/iao/JADS",
+      "kind": "official",
+      "note": "Hiroshima University (JADS partner, hiroshima-u.ac.jp) JADS page. Carries the live October 2027 enrollment deadline used to test the record's Hiroshima deadline quote."
+    },
+    {
+      "url": "https://www.k.u-tokyo.ac.jp/en/exam/master/foreign_research_students/afdb_jads",
+      "kind": "official",
+      "note": "University of Tokyo Graduate School of Frontier Sciences (JADS partner, u-tokyo.ac.jp) JADS page with Schedule A / Schedule B application windows."
+    },
+    {
+      "url": "https://piloti.sophia.ac.jp/eng/studyabroad/jads",
+      "kind": "official",
+      "note": "Sophia University (JADS partner, sophia.ac.jp) JADS page, 'Last Updated: May, 2025'. September entry only."
+    }
+  ],
+  "findings": {
+    "awarding_body": {
+      "status": "confirmed",
+      "detail": "The official AfDB JADS page is the awarding body's own page and names exactly the two bodies the record gives. The wording is cross-confirmed by three of the partner universities (APU, Hiroshima, UTokyo), each of which repeats it verbatim.",
+      "quote": "The Japan Africa Dream Scholarship (JADS) is a capacity building program by the African Development Bank and the Government of Japan."
+    },
+    "deadline": {
+      "status": "unconfirmed",
+      "detail": "The record's structural claim is confirmed: the AfDB publishes no central JADS call opening or closing date, and applications go only through the partner universities. However, no deadline for the cycle that is open today can be confirmed from the awarding body's page. The AfDB 'List of Universities' page that the record quotes was last updated 09-Nov-2022 and its partner windows are now superseded by the partners' own pages: APU states its April 2027 deadline was September 15, 2026 (already past) and its September 2027 deadline is November 5, 2026 or January 8, 2027, whereas the AfDB table says 'April Enrollment: October / September Enrollment: April'; and Hiroshima states 'JADS at Hiroshima University is only available for October enrollment' with an October 2027 deadline of January 29, 2027, whereas the AfDB table lists April intake windows for Hiroshima. The record carries no deadline date at all (deadline_date is null), so a currently-open deadline is simply absent from it.",
+      "quote": "Important: All applications should go through the partner universities, no separate application to the African Development Bank is necessary. Only candidates who have been offered admission and endorsed by the university will be considered for the JADS Program."
+    },
+    "eligibility": {
+      "status": "confirmed",
+      "detail": "Every distinct claim in the record's eligibility summary is confirmed verbatim on the AfDB Eligibility Criteria page: age 35 or younger and in good health; citizenship of an AfDB regional member country; a relevant bachelor's degree with excellent academic records; at least one year of paid employment within the past three years; and admission to an approved master's course at a JADS partner university. APU's own eligibility list independently repeats the age and employment requirements.",
+      "quote": "Candidates should be 35 years old or younger, and in good health. ... Applicants should have at least 1 year of paid employment in their home country or in other African countries after receiving their Bachelors (or equivalent university) degree within the past 3 years. ... Must  be a citizen of one of the African Development Bank's regional member countries. ... Candidates should gain admission to an approved master's degree course at a Japanese or African partner university – application for admission to be done directly through the partner universities (Refer to list of universities and approved courses)."
+    },
+    "funding": {
+      "status": "confirmed",
+      "detail": "The record's 'Partially Funded' classification is consistent with the official pages. The award covers tuition, a monthly subsistence allowance, economy-class air travel and basic medical insurance, but the AfDB lists an explicit set of exclusions (visa application costs, family expenses, additional travel, supplementary materials, field trips, workshops/seminars, internships, educational equipment such as computers), and caps coverage at 'the duration of the graduate program or two years at most'. APU's own page itemises the same package at JPY 150,000 per month. The award is therefore not tuition-only, but it is not an unconditional full ride either.",
+      "quote": "The JADS Scholarship provides the recipient with the following benefits: Economy class air travel between a recipient's home country and the host university at the start of the study program and immediately following the end of the scholarship period. Tuition for a graduate program and the cost of basic medical insurance, usually obtained through the university. A monthly subsistence allowance to cover living expenses, including books. ... Please note that all JADS scholarships cover the duration of the graduate program or two years at most."
+    },
+    "degree_levels": {
+      "status": "confirmed",
+      "detail": "The official page states the programme funds post-graduate study at master's level only, matching the record's 'Master's'. All partner pages agree: Sophia accepts 'Master program of Autumn Intake (SEPTEMBER entry ONLY)', Hiroshima lists Master's Programmes in four graduate schools, and APU lists master's programmes and an MBA.",
+      "quote": "The program offers high-achieving African students a two-year scholarship opportunity to pursue post-graduate studies at master's level in energy, agriculture, health, environmental sustainability, and engineering."
+    }
+  },
+  "recommended_field_updates": {
+    "official_source_url": null,
+    "deadline_text": "No central AfDB deadline is published; all applications go through the JADS partner universities. As at 12 October 2026 the currently open cycle is 2027 enrollment: APU Ritsumeikan Asia Pacific University - 'For September 2027 enrollment, please submit your application by November 5, 2026 or January 8, 2027.' (the April 2027 enrollment deadline of September 15, 2026 has passed); Hiroshima University - 'The application deadline for IAAS for October 2027 enrollment is January 29, 2027, at 17:00 (JST).' (October enrollment only); The University of Tokyo Graduate School of Frontier Sciences - 'Schedule B / Application Period: November' for October enrollment of the following year (Schedule A is June, for April enrollment); Sophia University - September entry only, 'The web entry period is from middle of March to early April' (next window falls in 2027, not currently open). Kyoto University and Kogakuin University publish no JADS deadline on the AfDB page.",
+    "deadline_date": null,
+    "verification_notes": "Awarding body, eligibility, funding and degree levels are all confirmed against the AfDB's own JADS pages; the record's official_source_url is unchanged and still live. The only unresolved item is the deadline for the currently-open cycle. Do NOT reuse the AfDB 'List of Universities' table quoted in the current deadline_label: that page is 'Last updated: 09-Nov-2022' and its partner windows have been overtaken by events. Its APU window ('April Enrollment: October / September Enrollment: April') is contradicted by APU's live page (April 2027 deadline was September 15, 2026; September 2027 deadline is November 5, 2026 or January 8, 2027), and its Hiroshima windows list April intake although Hiroshima states JADS there is October enrollment only with an October 2027 deadline of January 29, 2027. Only the Sophia window (web entry mid-March to early April) still matches its university's page. AfDB page freshness at check time: main page 11-Sep-2024; Eligibility Criteria, Application Procedures and List of Universities 09-Nov-2022; Scholarship Benefits 26-Oct-2021. Note also that the AfDB list still contains only Japanese universities and says it 'will be completed with African universities once the Bank finalizes the agreement process', while the Eligibility Criteria page already accepts 'a Japanese or African partner university' and an AfDB press release of 14-Sep-2026 describes JADS as supporting study 'at both African and Japanese universities' - that press release could not be read (HTTP 403), so treat the African partner expansion as unverified. One minor record defect: the deadline_label attributes 'Please refer to the program website.' to Kogakuin University, but on the AfDB page that sentence sits under Kyoto University's approved-course list; Kogakuin appears only with a contact and a brochure PDF link."
+  },
+  "notes_for_reviewer": "Two decisions are needed from a human before this record can go active. First, the deadline: the record has no deadline date and the only deadline text it carries is a 2022-vintage table from the AfDB site that two of the four live partners now contradict. The currently open windows (APU 2026-11-05 or 2027-01-08; Hiroshima 2027-01-29 17:00 JST; UTokyo Schedule B in November) are real and were read on the partners' own pages, but they are set by the universities rather than by the awarding body, so 'deadline_date' stays null and the deadline wording needs rewriting. Second, the funding label: the AfDB page describes a broad package (tuition, monthly stipend, economy air travel, basic medical insurance) alongside an explicit exclusion list (visa costs, family, additional travel, supplementary materials, equipment) capped at the programme duration or two years, so 'Partially Funded' is defensible, but a reviewer should confirm it is the label ScholarZone wants for an award that does cover tuition plus living costs."
+}

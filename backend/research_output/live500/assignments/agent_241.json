@@ -1,0 +1,97 @@
+{
+ "agent": "agent_241",
+ "assignment_count": 1,
+ "scholarships": [
+  {
+   "id": 597,
+   "title": "Beca Generación Bicentenario (Convocatoria extraordinaria 2026)",
+   "country": "Peru",
+   "degree": "Master's, PhD",
+   "funding_label": "Fully Funded",
+   "status": "open",
+   "official_source": "PRONABEC - Programa Nacional de Becas y Crédito Educativo, Ministerio de Educación del Perú",
+   "official_source_url": "https://www.pronabec.gob.pe/beca-generacion-bicentenario",
+   "application_link": "https://www.pronabec.gob.pe/beca-generacion-bicentenario",
+   "catalogue_url": "https://www.pronabec.gob.pe/concursos-becas-creditos",
+   "official_updates_url": "https://www.pronabec.gob.pe/beca-generacion-bicentenario",
+   "existing": {
+    "funding_amount": null,
+    "funding_currency": null,
+    "funding_period": null,
+    "tuition_coverage": null,
+    "living_cost_coverage": null,
+    "travel_coverage": null,
+    "fully_funded": 0,
+    "description": null,
+    "eligibility": [
+     "Peruvian nationality",
+     "Professionals seeking to undertake a master's or doctoral degree abroad",
+     "Alto rendimiento académico (high academic performance)",
+     "Insuficientes recursos académicos (insufficient academic resources)",
+     "No hay límite de edad para postular (no age limit)"
+    ],
+    "eligibility_summary": "Peruvian professionals with high academic performance and insufficient academic resources seeking a postgraduate degree abroad; no age limit.",
+    "benefits": [
+     "Matrícula (tuition/enrolment)",
+     "Pensión de estudios (study payments)",
+     "Obtención del grado y/o título respectivo (costs of obtaining the degree)",
+     "Trabajo de investigación para la obtención del grado",
+     "Transporte internacional",
+     "Alojamiento",
+     "Alimentación",
+     "Movilidad local",
+     "Seguro médico",
+     "Costos administrativos (subject to the Normas para la Ejecución de Subvenciones para estudios en el extranjero)"
+    ],
+    "coverage": [
+     "Matrícula (tuition/enrolment)",
+     "Pensión de estudios (study payments)",
+     "Obtención del grado y/o título respectivo (costs of obtaining the degree)",
+     "Trabajo de investigación para la obtención del grado",
+     "Transporte internacional",
+     "Alojamiento",
+     "Alimentación",
+     "Movilidad local",
+     "Seguro médico",
+     "Costos administrativos (subject to the Normas para la Ejecución de Subvenciones para estudios en el extranjero)"
+    ],
+    "requirements": [
+     "Complete the application within 30/10/2026–13/11/2026 (23:59)",
+     "Meet the general and specific requirements for master's or doctoral study set out in the contest bases",
+     "Programme of study must start between 1 July 2026 and 31 December 2027"
+    ],
+    "documents": [
+     "Documentation listed in the general and specific requirements for master's or doctoral study in the contest bases (RDE n. 149-2026), which the official page links but does not reproduce"
+    ],
+    "english_requirement": null,
+    "application_method": [
+     "Online application through PRONABEC (official page: 'Postula aquí')"
+    ],
+    "selection_notes": "The official page states the scholarship targets professionals with high academic performance and insufficient academic resources; it does not publish a scoring grid, which is contained in the contest bases.",
+    "best_fit": "Peruvian graduates holding a professional degree who need funded postgraduate study abroad and can document both strong academic results and limited means.",
+    "notes": "Extraordinary call announced as 'Convocatoria extraordinaria 2026' with the slogan 'El Perú cuenta con tu talento'. Benefits are granted from 1 January 2027 and prior study time is not recognised. Title of the bases: 'RDE n. 149-2026 – Bases del concurso'.",
+    "duration": "Programme of studies abroad must start between 2026-07-01 and 2027-12-31; no benefits are recognised for study time already completed",
+    "application_period": "Postulación 30/10/2026–13/11/2026 (23:59); subsanación 03/11/2026–24/11/2026; selection results published 15/12/2026; acceptance 16/12/2026–21/12/2026; final scholarship-holder list from 22/12/2026",
+    "deadline_display": "13/11/2026, 23:59 horas",
+    "deadline_date": "2026-11-13",
+    "region": "Latin America",
+    "program_type": "Government scholarship",
+    "applicant_utility": null,
+    "official_details": null
+   },
+   "missing_fields": [
+    "funding_amount",
+    "funding_currency",
+    "funding_period",
+    "tuition_coverage",
+    "living_cost_coverage",
+    "travel_coverage",
+    "description",
+    "english_requirement",
+    "applicant_utility",
+    "official_details"
+   ]
+  }
+ ],
+ "result_file": "C:\\Users\\GopaL\\Desktop\\Projects folder\\ScholarZone\\backend\\research_output\\live500\\results\\agent_241.json"
+}

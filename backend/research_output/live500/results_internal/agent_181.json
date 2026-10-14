@@ -1,0 +1,135 @@
+{
+  "agent": "agent_181",
+  "records": [
+    {
+      "id": 480,
+      "official": {
+        "official_source_urls": [
+          "https://college.harvard.edu/financial-aid/apply-financial-aid/prospective-students",
+          "https://college.harvard.edu/financial-aid/how-aid-works",
+          "https://college.harvard.edu/admissions/why-harvard/affordability"
+        ],
+        "application_link": "https://college.harvard.edu/financial-aid/apply-financial-aid/prospective-students",
+        "catalogue_url": null,
+        "official_updates_url": null,
+        "deadline_central": "2026-11-01",
+        "deadline_central_display": "November 1, 2026 (Restrictive Early Action and QuestBridge Match); February 1, 2027 (Regular Decision); March 1, 2027 (Transfer)",
+        "deadline_note": "The same deadlines apply to the CSS Profile, FAFSA and IDOC; late applications are accepted but the aid decision is delayed.",
+        "application_cycle": "2027-2028 school year (instructions on the official page are for 2027-2028)",
+        "status": "OPEN",
+        "status_note": "The financial aid application process for the 2027-2028 school year is published and open on the official site.",
+        "tuition_coverage_note": "Published wording: \"For families with incomes up to $200,000, financial aid will cover at least the full cost of tuition\" and, for families with annual incomes below $100,000, \"the expected parent contribution is zero.\"",
+        "funding_amount": null,
+        "funding_currency": null,
+        "funding_period": null,
+        "tuition_coverage": true,
+        "living_cost_coverage": true,
+        "travel_coverage": true,
+        "fully_funded": false,
+        "benefits": [
+          "Need-blind admissions: financial need and the aid application never affect the chance of admission",
+          "100% of demonstrated financial need met with an individualized package of scholarship funds, student employment and outside awards",
+          "Families with annual incomes below $100,000 pay nothing: aid covers all billed expenses plus a $2,000 start-up grant (first year), health insurance if needed, travel costs between campus and home, winter gear and event fees, and a $2,000 launch grant (junior year)",
+          "Families with incomes up to $200,000: financial aid covers at least the full cost of tuition",
+          "Loans are never required to attend Harvard"
+        ],
+        "eligibility": [
+          "All applicants regardless of citizenship; international students are eligible for exactly the same amount of aid as U.S. students",
+          "Submit a CSS Profile and an IDOC packet; U.S. citizens and permanent residents also submit the FAFSA",
+          "Apply by the deadline for your admission round, following the instructions for the 2027-2028 school year"
+        ],
+        "requirements": [
+          "File the online 2027-2028 CSS Profile via the College Board including Harvard as a recipient (code 3434)",
+          "File the 2027-2028 FAFSA (Harvard code E00468) - only U.S. citizens, permanent residents and other eligible non-citizens file it",
+          "Submit parents' 2025 income tax documents for both parents through College Board IDOC, including all pages and schedules",
+          "Submit the student's 2025 income tax document, or a Tax Non-Filer Statement plus W-2 forms if applicable",
+          "Translate any non-English documents into English (unofficial, self-written translations are acceptable)"
+        ],
+        "documents": [
+          "CSS Profile (College Board) with Harvard code 3434",
+          "IDOC packet: parents' 2025 income tax document for both parents (in the U.S. usually the signed 1040 with all schedules and W-2s) and the student's 2025 income tax document",
+          "Tax Non-Filer Statement plus wage statement, salary certificate or employer letter for parents or students who do not file",
+          "Business/Farm Supplement and 2025 business tax return (1065, 1120 S or 1120 with K-1 statements) for each business or farm interest",
+          "Full trust tax return plus a letter explaining the trust or estate's contents, value and accessibility, for beneficiaries"
+        ],
+        "selection_criteria": [
+          "Aid is need-based only - there are no merit-based awards at Harvard College",
+          "Need is determined from family income, assets, size and unusual expenses; home equity and retirement assets are typically not considered",
+          "Late applications are accepted; a late application pushes back the aid decision but does not affect eligibility for aid"
+        ],
+        "coverage": [
+          "Billed costs: tuition, fees, housing and food (2026-2027 subtotal $91,634)",
+          "Estimated allowances for personal expenses ($2,500), books ($1,000) and transportation ($0-$5,000); total cost of attendance $95,134-$100,134 for 2026-2027",
+          "For families with income up to $100,000: travel costs between campus and home, health insurance if needed, winter gear, event fees and other activities, plus the $2,000 start-up and $2,000 launch grants",
+          "Health insurance is required at a cost of $4,954 (2026-27) unless the student is covered under a family health plan"
+        ],
+        "application_method": [
+          "File the online 2027-2028 CSS Profile via the College Board with Harvard code 3434",
+          "File the 2027-2028 FAFSA with Harvard code E00468 if you are a U.S. citizen, permanent resident or other eligible non-citizen",
+          "Upload tax and other documents through College Board IDOC once the CSS Profile is complete",
+          "Track submissions through your College Board account; aid decisions come mid-December (Restrictive Early Action and QuestBridge) or around April 1 (Regular Decision)"
+        ],
+        "application_route": "CSS Profile plus IDOC for everyone, FAFSA for U.S. citizens and permanent residents, submitted alongside the admission application by your round's deadline.",
+        "study_mode": "Full-time",
+        "citizenship_residency": "No citizenship or residency restriction - all applicants, including international students, follow the same aid process",
+        "international_eligibility": "Yes - international students are eligible for the same amount of aid as U.S. students",
+        "subject_or_agency_requirement": null,
+        "research_requirement": null,
+        "duration": "Four years; aid is reviewed annually and re-applied for each year based on need",
+        "description": "Harvard College is need-blind and meets 100% of demonstrated financial need for every admitted student regardless of citizenship, building individual packages of scholarship funds, student employment and outside awards and never requiring loans.",
+        "region": "North America",
+        "program_type": "Need-based institutional financial aid",
+        "english_requirement": null
+      },
+      "verification": {
+        "source_citations": [
+          "https://college.harvard.edu/financial-aid/apply-financial-aid/prospective-students",
+          "https://college.harvard.edu/financial-aid/how-aid-works",
+          "https://college.harvard.edu/admissions/why-harvard/affordability"
+        ],
+        "last_verified_date": "2026-10-10",
+        "verification_status": "confirmed",
+        "confidence": "high",
+        "not_confirmed": [
+          "funding_amount",
+          "funding_currency",
+          "funding_period",
+          "english_requirement"
+        ],
+        "notes": "Need-blind admission, 100% need-met commitment, 2026-2027 cost of attendance, income thresholds and the Nov 1 / Feb 1 / Mar 1 deadlines were read directly from college.harvard.edu pages on 2026-10-10. No award amount is published because aid is calculated per family. fully_funded is not asserted: Harvard expects every student to cover about $3,500 of personal expenses through work-study."
+      },
+      "applicant_utility": {
+        "summary": "Harvard is need-blind and meets 100% of demonstrated need for everyone admitted, international students included, so the aid application cannot hurt your admission chances. File the CSS Profile plus IDOC - and the FAFSA if you are a U.S. citizen - by your round's deadline: November 1 for Restrictive Early Action and QuestBridge Match, February 1 for Regular Decision, March 1 for Transfer. Families earning under $100,000 with typical assets pay nothing, but every student is still expected to cover about $3,500 of personal expenses through work-study.",
+        "best_fit": "Admitted students of any nationality whose families cannot cover the full cost of attendance and can document income and assets thoroughly.",
+        "application_readiness_checklist": [
+          "File taxes early - IDOC needs the actual 2025 return as filed, not drafts or estimates",
+          "Gather both parents' documents; separated or divorced parents each complete their own CSS Profile",
+          "Double-check the SSN and use your full legal name on every submission - nicknames break matching",
+          "Compare IDOC's document list against Harvard's own list; IDOC shows only the common basics",
+          "International families: translate foreign tax documents yourself; official translation is not required"
+        ],
+        "common_rejection_risks": [
+          "Sending tax returns with missing pages or schedules - a documented common mistake",
+          "Emailing documents to the office instead of uploading through IDOC",
+          "Applying late and expecting an on-time aid decision",
+          "Non-filing parents submitting nothing - a Tax Non-Filer Statement plus wage or employer documentation is required",
+          "International students filing the FAFSA, which they do not need"
+        ],
+        "estimated_uncovered_costs": "About $3,500 per year in personal expenses is expected from the student via work-study, plus any costs beyond the published allowances.",
+        "document_audit": [
+          "Every page and schedule of the federal or national return must be included (Schedule 1, A, B and so on); state returns are not needed",
+          "Trust or estate beneficiaries need the full trust return plus an explanatory letter on contents, value and accessibility",
+          "Canadian families must submit the T-1 General (the corporate return is the T-2)",
+          "Business-owning parents need one Business/Farm Supplement and the full business return per entity"
+        ],
+        "alerts": [
+          "IDOC cannot be opened until the CSS Profile is submitted - sequence the two steps",
+          "If parents file for a tax extension, submit documents when available; lateness delays the decision, not eligibility",
+          "Aid is re-determined each year - keep income documentation current",
+          "Health insurance costs $4,954 in 2026-27 unless waived under a family plan"
+        ],
+        "submission_workflow": "CSS Profile, FAFSA (where applicable) and IDOC documents are submitted online alongside the admission application; decisions arrive mid-December for early rounds and around April 1 for Regular Decision."
+      }
+    }
+  ]
+}

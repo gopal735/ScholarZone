@@ -1,0 +1,141 @@
+{
+  "agent": "agent_043",
+  "records": [
+    {
+      "id": 127,
+      "official": {
+        "official_source_urls": [
+          "https://admission.princeton.edu/apply/international-students",
+          "https://admission.princeton.edu/cost-aid",
+          "https://admission.princeton.edu/cost-aid/fees-payment-options",
+          "https://admission.princeton.edu/apply/first-year-application-dates-deadlines"
+        ],
+        "application_link": "https://admission.princeton.edu/apply",
+        "catalogue_url": "https://admission.princeton.edu/academics/minors-and-certificate-programs",
+        "official_updates_url": "https://admission.princeton.edu/apply/first-year-application-dates-deadlines",
+        "deadline_central": "2026-11-09",
+        "deadline_central_display": "9 November 2026 (Princeton Financial Aid Application, single-choice early action)",
+        "deadline_note": "Regular Decision applicants file the Princeton Financial Aid Application by 1 February 2027 and transfer applicants by 9 March. The admission application itself is due 1 November 2026 for single-choice early action and 1 January 2027 for regular decision.",
+        "application_cycle": "Entry cycle opening mid-August, running through the 1 May candidate's reply date",
+        "status": "OPEN",
+        "status_note": "Princeton states that the full need of all admitted international students is met the same as it is for students from the United States, and that Princeton admission is need-blind.",
+        "tuition_coverage_note": "Financial aid awards cover the difference between Princeton's costs and the amount the family is expected to contribute. The 2026-27 student budget lists tuition of $68,140 within an estimated cost of attendance of $94,624.",
+        "funding_amount": 83000,
+        "funding_currency": "USD",
+        "funding_period": "per year (estimated average grant, aid student)",
+        "tuition_coverage": true,
+        "living_cost_coverage": true,
+        "travel_coverage": null,
+        "fully_funded": false,
+        "benefits": [
+          "If offered admission, Princeton will meet 100% of your demonstrated financial need with grant aid",
+          "Princeton has the same financial aid policy for all students regardless of citizenship, citizenship status and their ability to pay the cost of attendance",
+          "Since 2001, grants have replaced student loans in the Princeton financial aid package for all aid recipients",
+          "The Princeton Financial Aid Application (PFAA) is free and easy to use for both U.S. and international applicants"
+        ],
+        "eligibility": [
+          "Admitted Princeton undergraduate student, international or domestic",
+          "Same financial aid policy regardless of citizenship, citizenship status and ability to pay the cost of attendance",
+          "Princeton admission is need-blind, so applying for aid carries no disadvantage in the admission process",
+          "Princeton does not offer academic or athletic merit scholarships"
+        ],
+        "requirements": [
+          "Submit the Common Application with the Princeton-specific Questions",
+          "Submit the Princeton Financial Aid Application (PFAA)",
+          "Submit parent's 2025 federal income tax return and W-2 statements",
+          "Submit the FAFSA and a noncustodial parent form or waiver request form where applicable",
+          "Current undergraduates must apply for financial aid each year"
+        ],
+        "documents": [
+          "Common Application with Princeton-specific Questions",
+          "Princeton Financial Aid Application (PFAA)",
+          "Parent's 2025 federal income tax return and W-2 statements",
+          "FAFSA",
+          "Noncustodial parent form or waiver request form",
+          "Graded Written Paper submitted in English",
+          "School Report, School Counselor Letter, Transcript and Final Report",
+          "Teacher Evaluation Form 1 and Teacher Evaluation Form 2",
+          "TOEFL, IELTS Academic, Duolingo English Test or PTE Academic results if applicable",
+          "Official translations of non-English recommendations and school reports"
+        ],
+        "selection_criteria": [
+          "Financial aid is awarded on demonstrated need only",
+          "The parental contribution is based on Princeton's evaluation of the financial aid application",
+          "Admission is need-blind, so financial need plays no part in the admission decision"
+        ],
+        "coverage": [
+          "Tuition",
+          "Housing",
+          "Food",
+          "Fees",
+          "Books, course materials, supplies and equipment",
+          "Miscellaneous personal expenses"
+        ],
+        "application_method": [
+          "Apply for admission and create the Princeton Applicant Portal account",
+          "Complete the free Princeton Financial Aid Application in the portal",
+          "Submit the supporting tax return, FAFSA and noncustodial forms by the same deadline",
+          "Have school officials submit the School Report, counselor letter, transcript and Final Report"
+        ],
+        "application_route": "Apply through the Common Application with the Princeton-specific Questions, then file the free Princeton Financial Aid Application in the Princeton Applicant Portal.",
+        "study_mode": "Full-time",
+        "citizenship_residency": "Princeton has the same financial aid policy for all students regardless of citizenship, citizenship status and their ability to pay the cost of attendance.",
+        "international_eligibility": "International students are eligible on identical terms; the full need of all admitted international students is met the same as it is for students from the United States.",
+        "subject_or_agency_requirement": null,
+        "research_requirement": null,
+        "duration": "Four-year bachelor's degree; financial aid must be re-applied for each year",
+        "description": "Princeton operates a need-based undergraduate financial aid programme that it applies identically to international and domestic students, meeting 100% of demonstrated need with grant aid rather than loans.",
+        "region": "North America",
+        "program_type": "Need-based undergraduate financial aid programme (grant aid, no merit scholarships)",
+        "english_requirement": "If English is not your native language and you are attending a school where English is not the language of instruction, you must take the TOEFL, IELTS Academic, the Duolingo English Test (DET) or the Pearson Test of English Academic (PTE Academic). These tests are not required if English is your native language or if you have spent at least three years at a secondary school where English is the primary language of instruction."
+      },
+      "verification": {
+        "source_citations": [
+          "https://admission.princeton.edu/apply/international-students",
+          "https://admission.princeton.edu/cost-aid",
+          "https://admission.princeton.edu/cost-aid/fees-payment-options",
+          "https://admission.princeton.edu/apply/first-year-application-dates-deadlines"
+        ],
+        "last_verified_date": "2026-10-10",
+        "verification_status": "confirmed",
+        "confidence": "high",
+        "not_confirmed": [
+          "travel_coverage - the student budget lists transportation as varying between $50 and $5,000 but the pages do not state whether aid covers it",
+          "a fixed award amount - Princeton publishes an estimated average grant for an aid student, not a set award value; individual awards are calculated per family"
+        ],
+        "notes": "Princeton's own admission pages were read for the aid policy for international students, the 100%-of-demonstrated-need grant commitment, the 2026-27 student budget and cost-of-attendance breakdown, and the financial aid form deadlines."
+      },
+      "applicant_utility": {
+        "summary": "Princeton's aid route is unusually predictable for international applicants: the same need-based policy applies regardless of citizenship, admission is need-blind, and the Princeton Financial Aid Application is free, so filing for aid costs nothing and cannot disadvantage your admission chances. Plan against a published 2026-27 cost of attendance of $94,624, of which $68,140 is tuition; Princeton's own figures put the estimated average grant for an aid student at about $83,000, leaving roughly $7,574 as an average net cost for aid recipients. The aid form is a separate deadline from the admission application, so treat 9 November (single-choice early action) and 1 February (regular decision) as hard dates in their own right. Expect to re-file every year, because Princeton re-evaluates need annually and aid amounts can move with your family's circumstances.",
+        "best_fit": "International applicants from families who cannot meet the full U.S. cost of attendance and who want a package with no required borrowing.",
+        "application_readiness_checklist": [
+          "Confirm which round you are filing in and diary both the admission deadline and the aid deadline for that round",
+          "Gather your parents' full 2025 federal income tax return plus every W-2 or equivalent wage statement before the portal opens",
+          "Ask your school official early for the School Report, counselor letter, transcript and the two teacher evaluations, since school-side items are the usual bottleneck",
+          "Secure a graded written paper that was actually written in English rather than translated, with the rubric if one exists",
+          "Check whether you are exempt from English testing under the native-language or three-years-of-English-instruction rule before booking a test"
+        ],
+        "common_rejection_risks": [
+          "Filing the admission application on time but missing the separate aid deadline, which forfeits need-based consideration for that round",
+          "Submitting tax documents in a local currency without the translation or the U.S. equivalents Princeton expects, delaying verification",
+          "Leaving the noncustodial parent form or waiver request until late in the cycle when the other parent is unreachable",
+          "Assuming a merit or athletic scholarship exists, when Princeton states it offers neither",
+          "Treating the first-year award as permanent and not re-applying in later years"
+        ],
+        "estimated_uncovered_costs": "Any amount above demonstrated need, plus transportation, which the student budget leaves as a varying $50 to $5,000, and the Student Health Plan for students not covered by a family policy. Families who voluntarily borrow for the calculated family contribution take that on themselves.",
+        "document_audit": [
+          "The graded written paper and its teacher comments must have been written in English originally, not translated from another language",
+          "Any recommendation or school report completed in another language must be officially translated before submission",
+          "Parent tax documents must cover the full 2025 tax year, not the most recent payslip period",
+          "If your school has no counselor, a principal, vice principal or dean must complete the School Report instead"
+        ],
+        "alerts": [
+          "Single-choice early action restricts you from applying to an early programme at any other U.S. private college or university",
+          "The estimated average grant of $83,000 is a published average, not a floor; your award is calculated from your own family's finances",
+          "Princeton's Net Price Calculator is limited to United States and Canada residents, so international families cannot use it to pre-estimate an award"
+        ],
+        "submission_workflow": "Common Application plus Princeton-specific Questions and school-side documents first, then the free Princeton Financial Aid Application in the applicant portal, with the award communicated at the same time as the admission decision."
+      }
+    }
+  ]
+}

@@ -1,0 +1,131 @@
+{
+  "agent": "agent_077",
+  "records": [
+    {
+      "id": 209,
+      "official": {
+        "official_source_urls": [
+          "https://en.snu.ac.kr/admission/graduate/scholarships/before_application",
+          "https://en.snu.ac.kr/admission/graduate/application"
+        ],
+        "application_link": "https://en.snu.ac.kr/admission/graduate/scholarships/before_application",
+        "catalogue_url": "https://en.snu.ac.kr/admission/graduate/scholarships/before_application",
+        "official_updates_url": "https://en.snu.ac.kr/admission/overview/notice",
+        "deadline_central": null,
+        "deadline_central_display": null,
+        "deadline_note": "SNU publishes the application period as \"During admission period for international students every semester\" and gives no calendar date. The scholarship application is made at the same time as the online application for admission to SNU's Office of Admissions, so the admission deadline is the effective deadline.",
+        "application_cycle": "Every semester, alongside the SNU international graduate admission cycle",
+        "status": "OPEN",
+        "status_note": "The GSFS entry remains published on SNU's graduate scholarships page for prospective applicants. SNU marks that page as last updated in 2023, and states that the list of eligible countries and participating colleges/schools differs every semester.",
+        "tuition_coverage_note": "Tuition fee: full tuition exemption for a maximum of 4 semesters. Living expenses: minimum of 500,000 KRW per month (different according to recipients' majors).",
+        "funding_amount": 500000,
+        "funding_currency": "KRW",
+        "funding_period": "per month (minimum living expenses)",
+        "tuition_coverage": true,
+        "living_cost_coverage": true,
+        "travel_coverage": false,
+        "fully_funded": true,
+        "benefits": [
+          "Tuition fee: full tuition exemption for a maximum of 4 semesters.",
+          "Living expenses: minimum of 500,000 KRW per month, different according to recipients' majors.",
+          "Approximately 20 recipients.",
+          "Selection is made by the respective Colleges/Schools based on the admission documents."
+        ],
+        "eligibility": [
+          "Non-Korean applicants currently enrolled or graduated from eligible countries, who have applied and been accepted into SNU.",
+          "Those who applied for the designated college/school participating in the GSFS Program.",
+          "The list of eligible countries and participating colleges/schools differs every semester, so applicants must check the current list in the guide sent out each semester by the SNU Office of Global Affairs."
+        ],
+        "requirements": [
+          "Apply to a designated college or school participating in the GSFS Program for the relevant semester.",
+          "Check the 'Application for Scholarship' box during the online admission application to SNU's Office of Admissions.",
+          "Submit the admission documents required by the participating college or school for selection.",
+          "If selected by both the GSFS and the SNU President Fellowship Program, the applicant must choose only one."
+        ],
+        "documents": [
+          "SNU admission application with the 'Application for Scholarship' box checked.",
+          "Admission documents submitted to the relevant SNU college or school for selection.",
+          "Evidence of current enrolment or graduation from an eligible country."
+        ],
+        "selection_criteria": [
+          "Selection is made by the respective Colleges/Schools based on the admission documents.",
+          "Approximately 20 recipients.",
+          "Applicants must be accepted into SNU and must have applied to a college or school participating in the GSFS Program for that semester.",
+          "The GSFS and the SNU President Fellowship Program (SPF) are alternatives rather than combinable - an applicant selected by both must choose only one."
+        ],
+        "coverage": [
+          "Full tuition exemption for a maximum of 4 semesters.",
+          "Living expenses of a minimum of 500,000 KRW per month, different according to the recipient's major."
+        ],
+        "application_method": [
+          "Confirm your country of enrolment or graduation and your target college or school appear on the current GSFS list.",
+          "Apply for admission to that college or school through SNU's Office of Admissions online application.",
+          "Check the 'Application for Scholarship' box during the online application.",
+          "The relevant college or school selects candidates based on the admission documents, and the decision is then notified."
+        ],
+        "application_route": "Apply for admission to a participating SNU college or school through the SNU Office of Admissions online application during the international student admission period, checking the 'Application for Scholarship' box - there is no separate scholarship application.",
+        "study_mode": "Full-time graduate study (Master's or PhD)",
+        "citizenship_residency": "Non-Korean applicants currently enrolled or graduated from eligible countries, as listed for the relevant semester.",
+        "international_eligibility": "Open to non-Korean (foreign) applicants from the listed eligible countries.",
+        "subject_or_agency_requirement": "Applicants must apply to a designated college or school participating in the GSFS Program; the participating list changes every semester.",
+        "research_requirement": "Selection is made by the respective Colleges/Schools based on the admission documents submitted with the admission application.",
+        "duration": "Full tuition exemption for a maximum of 4 semesters",
+        "description": "The Graduate Scholarship for Excellent Foreign Students (GSFS) supports non-Korean applicants currently enrolled or graduated from eligible countries who apply and are accepted into SNU and who apply for a designated college or school participating in the GSFS Program. It provides full tuition exemption for a maximum of 4 semesters and living expenses of a minimum of 500,000 KRW per month, with approximately 20 recipients selected each semester.",
+        "region": "Asia",
+        "program_type": "University-funded graduate scholarship for international students",
+        "english_requirement": null
+      },
+      "verification": {
+        "source_citations": [
+          "https://en.snu.ac.kr/admission/graduate/scholarships/before_application"
+        ],
+        "last_verified_date": "2026-10-10",
+        "verification_status": "confirmed",
+        "confidence": "high",
+        "not_confirmed": [
+          "english_requirement - no English score or MOI rule is stated on the GSFS page",
+          "deadline_central - SNU publishes only 'During admission period for international students every semester' with no calendar date",
+          "the exact monthly living expense for any given major, since SNU states it is a minimum of 500,000 KRW and differs according to recipients' majors",
+          "the current list of eligible countries and participating colleges/schools, which changes every semester and is distributed in the SNU Office of Global Affairs guide",
+          "whether airfare, insurance or settlement costs are covered, which the GSFS entry does not state"
+        ],
+        "notes": "The URL given in the assignment (en.snu.ac.kr/admission/graduate/scholarships/gsfs) returns 404; SNU's current graduate scholarships page is en.snu.ac.kr/admission/graduate/scholarships/before_application, which was live-fetched and read in full. All GSFS figures - full tuition exemption for a maximum of 4 semesters, minimum living expenses of 500,000 KRW per month varying by major, approximately 20 recipients, selection by the respective colleges/schools on admission documents, and the 'check the Application for Scholarship box' route - come from that page. SNU marks the page 'Last updated in 2023'. funding_amount is the published minimum monthly living expense only; no tuition dollar figure is published. Note that the GSFS entry does not state coverage of airfare, insurance or settlement costs."
+      },
+      "applicant_utility": {
+        "summary": "This scholarship is decided by whichever SNU college or school you apply to, not by a central committee, which means your admission documents are doing double duty as your scholarship application and there is nothing extra to submit. The two hard gates are both institutional: you must be a non-Korean applicant enrolled or graduated from one of SNU's currently listed eligible countries, and you must be applying to a college or school that is actually participating in the GSFS for that semester. Both lists change every semester, so a scheme that was open to your country and your department last intake may not be this one - check the guide SNU's Office of Global Affairs circulates each semester rather than relying on last year's information. The money is full tuition exemption for up to four semesters plus a minimum of 500,000 KRW a month for living costs, with the exact amount varying by major, but there is no published airfare or insurance component so you will need to fund your own travel. Roughly 20 people get it each semester, and if you are also selected for the SNU President Fellowship Program you must pick one and give up the other.",
+        "best_fit": "Non-Korean applicants from SNU's currently listed eligible countries applying to a participating SNU graduate college or school, with strong admission documents.",
+        "application_readiness_checklist": [
+          "Get the current semester's GSFS guide from the SNU Office of Global Affairs and confirm both your country and your target college/school are on the lists",
+          "Check the 'Application for Scholarship' box during the online admission application to SNU's Office of Admissions - miss this and you are not considered at all",
+          "Prepare the admission documents for your target college or school to selection standard, since those documents are the entire basis of the scholarship decision",
+          "Confirm the admission application period for the semester you want to enter and treat it as your scholarship deadline",
+          "Decide in advance how you would choose between GSFS and the SNU President Fellowship Program if both were offered",
+          "Budget for airfare, insurance and settlement yourself, since no travel or insurance component is published for GSFS"
+        ],
+        "common_rejection_risks": [
+          "Failing to tick the 'Application for Scholarship' box in the online admission application, which silently removes you from consideration",
+          "Applying to a college or school that is not participating in the GSFS Program for that semester",
+          "Being from a country that is not on the current eligible-country list, which changes every semester",
+          "Assuming last semester's eligible-country or participating-college list still applies",
+          "Submitting weak admission documents, since the college or school selects purely on those",
+          "Expecting airfare or insurance to be covered, which GSFS does not state"
+        ],
+        "estimated_uncovered_costs": "Airfare to and from Korea, health insurance, settlement and arrival costs, and any shortfall between the minimum 500,000 KRW monthly living expense and your actual costs. SNU's Office of Global Affairs publishes separate budget guidance for international students.",
+        "document_audit": [
+          "There is no separate scholarship document set - the admission documents submitted to your college or school are the scholarship evidence, so they must be complete and selection-grade",
+          "The 'Application for Scholarship' checkbox in the online admission application is the single mechanism for entering the running, so confirm it before submitting",
+          "The eligible-country and participating-college lists live in the per-semester guide from the Office of Global Affairs, not permanently on the website",
+          "If you are selected for both GSFS and the SNU President Fellowship Program you must choose one, so understand both offers before deciding"
+        ],
+        "alerts": [
+          "The eligible-country and participating-college lists change every semester, so verify them fresh for your intended intake",
+          "SNU marks this page as last updated in 2023, so figures should be reconfirmed against the current semester's guide",
+          "Approximately 20 recipients per semester means the pool is small relative to applicant numbers",
+          "GSFS and the SNU President Fellowship Program are mutually exclusive if you are selected for both",
+          "The living expense is a minimum of 500,000 KRW per month and varies by major, so do not budget on the minimum if your field pays more"
+        ],
+        "submission_workflow": "Apply for admission to a participating SNU graduate college or school through the SNU Office of Admissions online application during the international student admission period, tick the 'Application for Scholarship' box, and let the college or school select on your admission documents."
+      }
+    }
+  ]
+}

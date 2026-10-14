@@ -1,0 +1,86 @@
+{
+ "agent": "agent_066",
+ "assignment_count": 1,
+ "scholarships": [
+  {
+   "id": 184,
+   "title": "Uppsala University Global Scholarship",
+   "country": "Sweden",
+   "degree": "Master's",
+   "funding_label": "Tuition Fee Waiver",
+   "status": "open",
+   "official_source": "Uppsala University",
+   "official_source_url": "https://www.uu.se/en/admissions/scholarships",
+   "application_link": "https://www.uu.se/en/admissions/scholarships",
+   "catalogue_url": "https://www.uu.se/en/study/masters-studies/scholarships/uppsala-university-scholarships",
+   "official_updates_url": "https://www.uu.se/en/study/masters-studies/scholarships",
+   "existing": {
+    "funding_amount": null,
+    "funding_currency": null,
+    "funding_period": null,
+    "tuition_coverage": 1,
+    "living_cost_coverage": 0,
+    "travel_coverage": null,
+    "fully_funded": 0,
+    "description": "The Uppsala University Global Scholarship is awarded to a limited number of international fee-paying Master's students each year and covers the full tuition fee of the programme, but not living expenses. It is funded by the Swedish Council for Higher Education and is open to citizens of countries outside the EU/EEA and Switzerland. Selection is merit-based and financial need is not considered; Uppsala states that only about 2% of applicants are granted a scholarship. The most recent application period was 16 January to 2 February 2026 for autumn 2026 studies, and the next round opens in early 2027.",
+    "eligibility": [
+     "Citizen of a country outside the EU/EEA and Switzerland",
+     "Demonstrate academic talent and show interest in being in an educational environment",
+     "Only one Uppsala University Global Scholarship can be awarded, for the Master's programme ranked as first priority of the four choices allowed at University Admissions",
+     "Must have applied for the Master's programme before the University Admissions deadline",
+     "Must meet the entry requirements of the Master's programme applied for",
+     "Application fee and complete supporting documents must be received by University Admissions before the deadline",
+     "Must not be admitted to one of the listed ineligible programmes"
+    ],
+    "eligibility_summary": "Applicants must be citizens of countries outside the EU/EEA and Switzerland, demonstrate academic talent and an interest in being in an educational environment, and be applying for a Master's programme at Uppsala University ranked as their first priority among the four programmes allowed at University Admissions. They must have applied before the University Admissions deadline, met the entry requirements of the programme applied for, and had the application fee and complete supporting documents received by University Admissions before the deadline.",
+    "benefits": [
+     "Full tuition fee for an international Master's programme at Uppsala University"
+    ],
+    "coverage": [
+     "Full tuition fee of the international Master's programme",
+     "Living expenses are explicitly not covered"
+    ],
+    "requirements": [
+     "Apply for an Uppsala University programme at universityadmissions.se as your first priority before the University Admissions deadline",
+     "Ensure the application fee and all supporting documents reach University Admissions before the deadline",
+     "Submit the separate scholarship application - applying for the programme and applying for the scholarship are two separate procedures",
+     "Write a motivation letter of no more than 350 words",
+     "There is no application fee for the scholarship application"
+    ],
+    "documents": [
+     "Motivation letter of maximum 350 words reflecting the eligibility criteria of the scholarship programme",
+     "Complete national application through universityadmissions.se with the application fee",
+     "Complete supporting documents required by University Admissions"
+    ],
+    "english_requirement": "The programme applied for must be an international (English-taught) Bachelor's or Master's programme at Uppsala University meeting the programme's entry requirements",
+    "application_method": [
+     "Apply for an international Master's programme at Uppsala University as first priority through www.universityadmissions.se",
+     "Pay the application fee and submit all supporting documents before the University Admissions deadline",
+     "Note the eight-digit personal application number issued by University Admissions",
+     "Complete the separate online Uppsala University scholarship application and upload the motivation letter"
+    ],
+    "selection_notes": "Selection is merit-based and financial need is not a factor. Applicants must meet both the general and programme-specific entry requirements of the study programme and all eligibility criteria of the scholarship programme. The scholarship selection process runs at the same time as the programme admission selection process. Applicants who submit incomplete applications or apply late are not considered. Only about 2% of those who apply are granted a scholarship, and the scholarships available for application may vary from year to year. Applicants may apply for more than one scholarship but can only be awarded one Uppsala University scholarship.",
+    "best_fit": "Academically talented citizens of countries outside the EU/EEA and Switzerland who can cover their own living costs and who rank their chosen Uppsala University Master's programme first at University Admissions.",
+    "notes": "The scholarship is funded by the Swedish Council for Higher Education, the government agency responsible for overseeing Swedish higher education. Students admitted to the Joint Nordic Master's Programme in Environmental Law, the Master's Programme in Biology NABiS, Master's Programme in Evolutionary Biology - MEME, Master's Programme in Implementation, Transformative Learning and Sustainability, Master's Programme in Religion in Peace and Conflict, Master's Programme in Transformative Game Design and Master's Programme in Turkic Studies are not eligible. The University also runs the Anders Wall Scholarship (full tuition fee for international Bachelor's or Master's students who are citizens of an African country, supported by The Beijer Foundation and Uppsala University). Uppsala runs a separate, much larger scholarship system for current students and researchers from affiliated foundations, which in 2025 distributed 79.5 million SEK across more than 500 scholarships.",
+    "duration": "One academic year, covering the full tuition fee of the international Master's programme applied for",
+    "application_period": "Annual round. The most recent published window was 16 January to 2 February 2026 for autumn 2026 studies; the next round opens in early 2027 for students applying to Uppsala University.",
+    "deadline_display": "The scholarship application for studies starting in autumn 2026 is now closed. The application period was 16 January-2 February 2026, and late applications cannot be accepted. The next scholarship round will open in early 2027.",
+    "deadline_date": null,
+    "region": "Europe",
+    "program_type": "Merit-based tuition fee scholarship for international fee-paying students",
+    "applicant_utility": null,
+    "official_details": null
+   },
+   "missing_fields": [
+    "funding_amount",
+    "funding_currency",
+    "funding_period",
+    "travel_coverage",
+    "deadline_date",
+    "applicant_utility",
+    "official_details"
+   ]
+  }
+ ],
+ "result_file": "C:\\Users\\GopaL\\Desktop\\Projects folder\\ScholarZone\\backend\\research_output\\live500\\results\\agent_066.json"
+}

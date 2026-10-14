@@ -1,0 +1,63 @@
+{
+  "id": 125,
+  "official": {
+    "name": "Harvard College Need-Based Financial Aid (International Students)",
+    "country": "United States",
+    "host_org": "Harvard College Office of Admissions and Financial Aid",
+    "url": "https://college.harvard.edu/financial-aid/how-aid-works",
+    "verified_date": "2026-10-10"
+  },
+  "verification": {
+    "funding_amount": null,
+    "funding_currency": "USD",
+    "funding_note": "Aid is need-based and individualized; Harvard meets 100% of demonstrated financial need without requiring loans. For scale, the 2026-27 cost of attendance is $95,134-$100,134 ($91,634 billed costs, plus health insurance of $4,954 unless covered by a family plan).",
+    "funding_period": null,
+    "covered_expenses": "100% of demonstrated financial need; aid packages may include scholarship (grant) funds, student employment and outside awards, and loans are never required. For families with annual incomes below $100,000 the expected parent contribution is zero, and for families up to $200,000 financial aid covers at least the full cost of tuition. Students on aid may also receive a travel allowance; aid is identical for international and domestic students.",
+    "tuition_coverage": true,
+    "living_cost_coverage": true,
+    "travel_coverage": true,
+    "fully_funded": true,
+    "degree_level": "Bachelors (A.B./S.B.)",
+    "language_requirement": null,
+    "eligibility": [
+      "All admitted students regardless of nationality or citizenship - international students are eligible for exactly the same aid as American students",
+      "Need-blind admissions; aid decisions do not affect admission, and admission decisions are made without regard to whether an applicant applied for financial aid",
+      "First-year applicants who completed secondary school and seek a first bachelor's degree; transfer applicants who completed at least one and not more than two years of full-time college study",
+      "No citizenship quotas or limits"
+    ],
+    "required_docs": [
+      "Common Application with Harvard College Questions and supplements, activities list, personal essay",
+      "SAT or ACT scores (self-reported acceptable; AP/IB/GCSE/A-Level or national leaving exams accepted only in exceptional access cases)",
+      "School Report with counselor letter and high school transcript; two teacher recommendations; Midyear and Final School Reports",
+      "$95 application fee or fee waiver request (waivers for hardship, including international students)",
+      "CSS Profile (College Board code 3434) - a paper alternate application exists for international students with unreliable access",
+      "College Board IDOC submission of 2024 tax documents (full national tax returns, or wage/salary statements or a Tax Non-Filer Statement if parents do not file), with English translations if needed",
+      "Financial Aid Activity and Demographic Supplement (FAADS) completed by the student",
+      "FAFSA (Harvard code E00468) for US citizens, permanent residents and other eligible non-citizens only"
+    ],
+    "deadline_central": "2027-01-01",
+    "deadline_note": "Restrictive Early Action: November 1 (test scores by end of November/October). Regular Decision: January 1 at 11:59pm local time, with the financial aid application due by February 1 for RD applicants. Transfer applications and financial aid materials: March 1. Current students renew by May 1. Reply deadline for admitted students: early May.",
+    "application_process": "Apply through the Common Application and request financial aid from the Griffin Financial Aid Office. Aid officers review family income, assets, expenses and circumstances to determine demonstrated need, and build an individualized package of scholarship, work and (optional) outside or borrowing options. NOTE: the recorded Regular Decision application deadline of February 1 has been re-verified on the live page as January 1, with February 1 now applying to the financial aid application for regular decision applicants.",
+    "contact_info": "Harvard College Admissions Office and Griffin Financial Aid Office, 86 Brattle Street, Cambridge, MA 02138, USA; faoinfo@fas.harvard.edu",
+    "english_test_requirement": "Not required. First-year and transfer applicants are not required to take an English proficiency exam such as TOEFL or IELTS, though scores may be submitted for review; English proficiency tests cannot be used to meet the SAT/ACT requirement.",
+    "interview_requirement": "Alumni interviews are offered when available; the absence of an interview will not adversely affect a candidacy.",
+    "documented_student_count": "25% of Harvard families pay nothing; average parent contribution $13,000; 100% of demonstrated need met",
+    "status_note": "Verified on college.harvard.edu financial aid and admissions pages (how-aid-works, apply-financial-aid, first-year applicants, transfer applicants, international applicants), retrieved 2026-10-10. There are no merit-based awards - all aid is need-based."
+  },
+  "applicant_utility": {
+    "exciting_but_honest_wins": "Harvard is one of the few places where an international student can be funded to the same degree as an American: need-blind admission, identical aid for every nationality, and 100% of demonstrated need met without ever requiring a loan. If your family earns under $100,000 you owe no parent contribution at all, and up to $200,000 aid covers full tuition. Around a quarter of Harvard families pay nothing, and the aid office handles students without Social Security numbers through a paper process - the system is built for you.",
+    "good_fit_if": "You are a top student from any country with genuine financial need who can either take the SAT/ACT (or, in exceptional access cases, AP/IB/A-Level or national leaving exams) and whose family can document income through a national tax return, wage statement or employer letter. The route works if you treat the financial aid application as a second application: complete, translated, and in early, with the student-completed FAADS form handled by you personally.",
+    "potential_drawbacks": "Anything above $200,000 of family income sees need assessed with less generosity, and the package is not pure scholarship: most packages include a student employment expectation plus outside awards and optional borrowing. Required US health insurance costs $4,954 in 2026-27 if you are not on a family plan. There is no merit-based money at all, so brilliance without need produces no award. Every year you reapply.",
+    "document_checklist": [
+      "Common App + Harvard questions, essay, activities list",
+      "SAT or ACT scores (self-reported) - or AP/IB/GCSE/national results if test access is exceptional",
+      "School Report, counselor letter, transcript, two teacher evaluations",
+      "Midyear and Final School Reports (international school report supplement as needed)",
+      "CSS Profile (code 3434) or the paper alternate application",
+      "IDOC: parents' full 2024 national tax returns or wage/employer statements, translated to English",
+      "FAADS supplement completed by the student",
+      "FAFSA only if you are a US citizen/permanent resident/eligible non-citizen"
+    ],
+    "playbook_for_working_applicants": "Submit the aid application as early as the admission round allows - November 1 with the REA, January 1 with the RD application, and no later than February 1 for the aid file - because families who file early get clean, timely awards. Prepare the financial documents in parallel with your school forms: many international families need weeks to produce full tax-year documents plus translations, and a missing translation is the most common processing delay. Request the application fee waiver if it is a hardship; asking never counts against you. Use the Net Price Calculator with your family's real income to calibrate expectations, and remember the interview is optional: its absence neither helps nor hurts you. Once admitted, keep the family's income documents current, because demonstrated need is re-evaluated each year."
+  }
+}

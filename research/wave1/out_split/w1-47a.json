@@ -1,0 +1,536 @@
+{
+  "agent_id": "w1_47a",
+  "shard": "w1-47a",
+  "today": "2026-10-04",
+  "records": [
+    {
+      "target_id": 455,
+      "outcome": "refreshed",
+      "confirm": true,
+      "confirmation_evidence": "Read Malmö University's own Scholarships page (https://www.mau.se/en/education/scholarships) on 2026-10-04: \"Each year, Malmö University offers a limited number of scholarships to qualified master students from outside the EU/EEA and Switzerland who are required to pay tuition fees... They cover partial or up to the full tuition fee but do not cover other expenses, such as living expenses.\" The page confirms the award is live, master's-level, tuition-only and awarded on merit, and that it is applied for after admission.",
+      "new_scholarship": {
+        "name": "Malmö University Master's Scholarship",
+        "legacy_titles": [
+          "Malmö University Master's Scholarship"
+        ],
+        "country": "Sweden",
+        "region": "Europe",
+        "degree_levels": "Master's",
+        "funding_type": "Tuition Fee Waiver (partial to full)",
+        "official_source": "Malmö University",
+        "official_source_url": "https://www.mau.se/en/education/scholarships",
+        "status": "upcoming",
+        "is_verified": true,
+        "last_verified_date": "2026-10-04",
+        "deadline": "No fixed scholarship application date is published. Applicants must first apply in the first University Admissions round (for autumn 2027: opens 16 October 2026, closes 15 January 2027); \"Admitted students will receive more information on how to apply for the scholarship after Notification of Selection Results\", and \"Applicants who have been offered a scholarship will be notified by the end of April.\"",
+        "deadline_date": null,
+        "deadline_precision": "recurring",
+        "application_period": "Annual cycle tied to the first University Admissions round for the autumn semester; scholarship application itself happens after admission and Notification of Selection Results.",
+        "eligibility_summary": "Applicants to an English-taught master's programme at Malmö University who are from outside the EU/EEA and Switzerland and are required to pay Swedish tuition fees, applied in the first admissions round, ranked Malmö as first choice and were admitted to that first-choice programme.",
+        "eligibility": [
+          "Applied in the first admissions round",
+          "Chose an English-taught master's programme at Malmö University as their first choice on University Admissions (ranked as number 1 of 4)",
+          "Were admitted to their first choice programme",
+          "Required to pay tuition fees for university studies in Sweden",
+          "Qualified master students from outside the EU/EEA and Switzerland"
+        ],
+        "coverage": [
+          "Partial or up to full tuition fees for an English-taught master's programme at Malmö University",
+          "Scholarship retained for the second year of a two-year programme if progression criteria are met (minimum 22.5 credits a semester, minimum 45 credits an academic year)"
+        ],
+        "benefits": [
+          "Tuition fee waiver covering partial or up to the full tuition fee"
+        ],
+        "funding_amount": null,
+        "funding_currency": null,
+        "funding_period": null,
+        "duration": "One- or two-year master's programme; two-year students keep the scholarship for year two subject to credit progression criteria.",
+        "program_type": "University tuition-fee scholarship (merit-based, non-EU/EEA and non-Swiss students)",
+        "application_method": [
+          "Apply for a master's programme through University Admissions (universityadmissions.se) with Malmö University as first priority and pay the application fee",
+          "After Notification of Selection Results, admitted students receive instructions on how to apply for the scholarship"
+        ],
+        "requirements": [
+          "Submitted a first-round University Admissions application ranking the Malmö programme first",
+          "Admitted to that first-choice programme",
+          "Able to pay tuition fees in Sweden, so the scholarship can be applied for"
+        ],
+        "english_requirement": "The programme must be an English-taught master's programme at Malmö University.",
+        "selection_notes": "Selection is based on \"previous academic excellence, the experience described in your CV, and your ability to motivate social engagement through your chosen programme at Malmö University.\" Only a few students are granted scholarships each year.",
+        "best_fit": "Admitted applicants to an English-taught master's programme at Malmö University who are required to pay tuition fees and need the tuition component covered.",
+        "notes": "The scholarship never covers living costs, so recipients must independently finance their stay in Sweden. Malmö also runs a separate Malmö University Excellence Scholarship (MUES) for current fee-paying students; that is a different award.",
+        "description": "Malmö University awards a limited number of merit-based tuition-fee scholarships each year to master's students from outside the EU/EEA and Switzerland who are required to pay tuition fees. The scholarships cover partial or up to the full tuition fee for an English-taught master's programme but do not cover living expenses. Students apply through University Admissions in the first admissions round, and admitted applicants receive scholarship application instructions after Notification of Selection Results. Offers are notified by the end of April, and the tuition fee payment deadline is 10 May."
+      },
+      "programme_detail_official": {
+        "official_source_urls": [
+          "https://www.mau.se/en/education/scholarships"
+        ],
+        "application_link": "https://www.mau.se/en/education/scholarships",
+        "official_updates_url": null,
+        "catalogue_url": "https://mau.se/en/education/scholarships",
+        "application_cycle": "Annual; applicants must first apply in the first University Admissions round for the autumn semester (autumn 2027 round opens 16 October 2026 and closes 15 January 2027), then apply for the scholarship after Notification of Selection Results.",
+        "deadline_central": null,
+        "deadline_central_display": "No fixed scholarship application date is published; offers are notified by the end of April and the tuition fee payment deadline is 10 May.",
+        "deadline_central_timezone": "Europe/Stockholm",
+        "deadline_note": "Malmö University publishes no exact scholarship application date or time. The scholarship is applied for after the applicant has been admitted, with instructions issued after Notification of Selection Results. The only calendar dates given on the page are 'notified by the end of April' and 'The deadline to pay tuition fees is 10 May.'",
+        "status": "UPCOMING",
+        "status_note": "Live programme. As of 2026-10-04 the autumn 2027 first University Admissions round has not yet opened (it opens 16 October 2026), so the scholarship round is upcoming rather than open.",
+        "funding_amount": null,
+        "funding_currency": null,
+        "funding_period": null,
+        "funding_duration": "One or two academic years; the scholarship is retained for the second year of a two-year programme if progression criteria are met.",
+        "tuition_coverage": true,
+        "tuition_coverage_note": "Official wording: the scholarships \"cover partial or up to the full tuition fee but do not cover other expenses, such as living expenses.\"",
+        "living_cost_coverage": false,
+        "travel_coverage": null,
+        "fully_funded": false,
+        "funding_label": "Partial or up to full tuition fee waiver for an English-taught master's programme; no living-cost coverage.",
+        "benefits": [
+          "Partial or up to full tuition fee waiver",
+          "Renewal for the second year of a two-year master's programme on meeting credit progression criteria"
+        ],
+        "eligibility": [
+          "Qualified master students from outside the EU/EEA and Switzerland who are required to pay tuition fees",
+          "Applied in the first admissions round",
+          "Ranked an English-taught master's programme at Malmö University as first choice (number 1 of 4)",
+          "Were admitted to their first choice programme"
+        ],
+        "citizenship_residency": "From outside the EU/EEA and Switzerland, and required to pay tuition fees for university studies in Sweden.",
+        "international_eligibility": "Open to non-EU/EEA and non-Swiss applicants who are charged tuition fees; there is no country-specific restriction.",
+        "degree_levels": [
+          "Master's"
+        ],
+        "study_mode": null,
+        "research_requirement": null,
+        "subject_or_agency_requirement": "The master's programme must be taught in English.",
+        "application_method": "Apply for a master's programme through University Admissions (universityadmissions.se) with Malmö University as first priority and pay the application fee; admitted students then receive instructions on how to apply for the scholarship after Notification of Selection Results.",
+        "application_route": "University Admissions for the programme, followed by a Malmö University scholarship application for admitted students",
+        "requirements": [
+          "First-round University Admissions application with the Malmö programme ranked first",
+          "Payment of the University Admissions application fee",
+          "Admission to the first-choice programme",
+          "Ability to pay tuition fees in Sweden, so the scholarship can be applied for"
+        ],
+        "documents": [],
+        "english_requirement": "The programme applied to must be an English-taught master's programme.",
+        "english_requirement_note": "The official page states eligibility for students who \"have applied for an English-taught master's programme\"; no separate English test score is specified on this page.",
+        "selection_criteria": [
+          "Previous academic excellence",
+          "Experience described in the CV",
+          "Ability to motivate social engagement through the chosen programme"
+        ],
+        "selection_weighting": null,
+        "duration": "One or two-year master's programme",
+        "award_holder_conditions": [
+          "Students admitted to two-year programmes retain the scholarship for the second year only if they complete the first year and meet the progression criteria of a minimum 22.5 credits per semester and 45 credits per academic year",
+          "Recipients must finance their own living costs and stay in Sweden"
+        ],
+        "supplements_or_initiatives": [
+          "Malmö University Excellence Scholarship (MUES) - a separate tuition-fee waiver for current fee-paying students, listed on the same page",
+          "Swedish Institute Scholarship for Global Professionals - separate scholarship administered by the Swedish Institute, listed on the same page"
+        ],
+        "official_contacts": {
+          "email": "tuitionfees@mau.se",
+          "general": "Malmö University tuition and fee questions via the tuition fees page contact (mailto:tuitionfees@mau.se)"
+        },
+        "description": "Malmö University offers a limited number of scholarships to qualified master students from outside the EU/EEA and Switzerland who are required to pay tuition fees. They are awarded on the basis of academic merit, experience and motivation, and cover partial or up to the full tuition fee but not other expenses such as living expenses. Applicants must apply in the first admissions round, choose an English-taught master's programme as first choice and be admitted to it; admitted students then receive instructions for the scholarship application and offers are notified by the end of April.",
+        "program_type": "University tuition-fee scholarship (merit-based)",
+        "region": "Europe",
+        "coverage": "Tuition fees only (partial or up to full); no living-cost or travel coverage.",
+        "last_verified_date": "2026-10-04"
+      },
+      "programme_detail_applicant_utility": {
+        "application_readiness_checklist": [
+          "Apply through University Admissions in the first admissions round, ranking an English-taught Malmö master's programme as choice 1 of 4",
+          "Pay the University Admissions application fee so the application is processed",
+          "Wait for Notification of Selection Results and read the scholarship application instructions sent to admitted students",
+          "Prepare proof that you are liable for Swedish tuition fees (non-EU/EEA and non-Swiss citizenship or residence status)",
+          "Prepare a CV and material showing academic excellence and your motivation for social engagement through the chosen programme",
+          "Plan financing for living costs and housing in Malmö, because the scholarship does not cover them"
+        ],
+        "common_rejection_risks": [
+          "Applying outside the first admissions round, which is an explicit eligibility condition",
+          "Not ranking the Malmö programme first in the University Admissions ranking",
+          "Not being admitted to the first-choice programme",
+          "Being from the EU/EEA or Switzerland and therefore not being required to pay tuition fees",
+          "Applying to a programme that is not taught in English"
+        ],
+        "estimated_uncovered_costs": [
+          "Living costs and housing in Malmö - explicitly excluded from the scholarship",
+          "Travel to and from Sweden",
+          "Any tuition amount above the full fee if only a partial waiver is awarded",
+          "Books, course materials and study-related travel not covered by the tuition waiver"
+        ],
+        "document_audit": [
+          "University Admissions application confirming first-round submission and Malmö ranked first",
+          "University Admissions application fee payment confirmation",
+          "Notification of Selection Results / admission letter",
+          "Scholarship application form completed as instructed after admission",
+          "CV and academic transcripts used in the merit assessment"
+        ],
+        "alerts": [
+          {
+            "trigger": "Admitted but no scholarship instructions received",
+            "message": "Scholarship application instructions are sent to admitted students after Notification of Selection Results. If you are admitted in the first round and nothing arrives, contact tuitionfees@mau.se."
+          },
+          {
+            "trigger": "First admissions round opening",
+            "message": "For autumn 2027 the first University Admissions round opens 16 October 2026 and closes 15 January 2027. Missing the first round makes you ineligible for this scholarship."
+          },
+          {
+            "trigger": "No notification received",
+            "message": "Malmö University states that applicants not offered a scholarship are not notified individually, so silence is not a rejection signal."
+          }
+        ],
+        "submission_workflow": [
+          "Choose an English-taught master's programme at Malmö University and note its first-round deadline.",
+          "Submit the University Admissions application with the Malmö programme ranked first and pay the application fee.",
+          "Submit the required supporting documents by the University Admissions documentation deadline.",
+          "Await Notification of Selection Results and the scholarship application instructions.",
+          "Complete and submit the scholarship application before the stated deadline in the instructions.",
+          "If awarded, accept the scholarship within the timeframe given and pay tuition fees by the invoice deadline (first instalment 10 May for newly admitted students)."
+        ]
+      },
+      "programme_detail_verification": {
+        "cycle_verified": "Autumn 2027 intake cycle, verified 2026-10-04",
+        "verification_confidence": 0.92,
+        "official_fields_confirmed": [
+          "name",
+          "official_source",
+          "degree_levels",
+          "funding_type",
+          "tuition_coverage",
+          "living_cost_coverage",
+          "fully_funded",
+          "eligibility",
+          "selection_criteria",
+          "status",
+          "description",
+          "contact_email"
+        ],
+        "institution_check_required": [
+          "Confirm the exact tuition fee of the chosen programme on the Malmö tuition fees page, because the award is a partial-to-full waiver rather than a fixed amount",
+          "Confirm the per-programme first-round and documentation deadlines on the individual programme page"
+        ],
+        "unverified_or_removed_claims": [
+          "No exact scholarship application deadline is published, so deadline_date is null and the stored deadline_display phrase 'to pay tuition fees is 10 May' was replaced with the full official sentence.",
+          "Stored deadline_precision 'application_dead' is not a permitted value; corrected to 'recurring' because the scholarship follows an annual admissions cycle with no published date.",
+          "No fixed funding amount or currency is published; the official page states only partial or up to full tuition coverage.",
+          "The specific scholarship amount in SEK cannot be derived without a per-programme tuition fee, so funding_amount stays null."
+        ],
+        "source_citations": [
+          "https://www.mau.se/en/education/scholarships",
+          "https://mau.se/siteassets/mau_en_logotype.svg"
+        ],
+        "researched_by": "w1_47a"
+      },
+      "logo_override": {
+        "url": "https://mau.se/siteassets/mau_en_logotype.svg",
+        "page_url": "https://www.mau.se/en/education/scholarships",
+        "official_host": true,
+        "alt_text": "Malmö University",
+        "validation_result": "verified",
+        "validation_detail": "svg 5.6KB, HTTP 200 image/svg+xml; markup begins <title>MAU_EN_hori_CMYK</title>; wordmark fills are #231f20 (near-black) with the #ed1a3b red mark, so it is not white-on-transparent",
+        "image_kind": "official_logo",
+        "image_format": "svg",
+        "verified_at": "2026-10-04T00:00:00+00:00",
+        "host_evidence": "same_registrable_domain",
+        "_award": "Malmö University Master's Scholarship"
+      },
+      "research_notes": {
+        "logo": "The Malmö University Scholarships page header markup contains the image link 'Malmö University - Logo' pointing to /siteassets/mau_en_logotype.svg. I fetched https://mau.se/siteassets/mau_en_logotype.svg directly and it returned HTTP 200 with SVG markup (<title>MAU_EN_hori_CMYK</title>, fills #231f20 and #ed1a3b), so it is a real dark/colour wordmark on the university's own mau.se domain. This replaces the stored image, which was a library interior photograph (universitetsbibliotek_2023_05.jpg, image_kind program_image).",
+        "unverified": [
+          "Exact scholarship amount in SEK - the university publishes only 'partial or up to the full tuition fee'",
+          "Exact scholarship application deadline - only 'notified by the end of April' is published",
+          "Whether the autumn 2027 cycle has any change to eligibility wording, since the page carries no cycle year"
+        ],
+        "substitution": null,
+        "official_pages_read": [
+          "https://www.mau.se/en/education/scholarships",
+          "https://mau.se/siteassets/mau_en_logotype.svg"
+        ],
+        "degree_level_confirmed": "\"Each year, Malmö University offers a limited number of scholarships to qualified master students from outside the EU/EEA and Switzerland who are required to pay tuition fees\" - confirms master's level.",
+        "url_observed": null,
+        "contradictions": [
+          "Stored deadline_display was the truncated fragment 'to pay tuition fees is 10 May.' with deadline_precision 'application_dead'; the official page gives the full sentence 'The deadline to pay tuition fees is 10 May' inside a 'Please note' section that is a fee-payment warning, not the scholarship application deadline, so the field was rewritten.",
+          "Stored deadline_precision 'application_dead' is not one of the permitted precision values; corrected to 'recurring'.",
+          "Stored official_source was the artefact string 'Mau.Se'; corrected to the institution's own name 'Malmö University'.",
+          "Stored program_type held a page navigation snippet ('At Malmö University, we offer English-taught education at both the master's and bachelor's level...'), not a programme type; replaced.",
+          "Stored current_image_url was a library interior photograph rather than the university logo."
+        ],
+        "skeleton": false
+      }
+    },
+    {
+      "target_id": 456,
+      "outcome": "refreshed",
+      "confirm": true,
+      "confirmation_evidence": "Read Lund University's own ARUA scholarship page (https://www.lunduniversity.lu.se/study/admission-degree-studies/scholarships-and-awards/african-research-universities-alliance-arua-scholarship, page footer 'Last updated: 26 Aug 2026') on 2026-10-04. It states: \"The ARUA Scholarship covers a percentage of the tuition fees, up to a maximum of 90%\" and \"The scholarship is selective and merit-based and is intended for African students who are committed to Lund University.\"",
+      "new_scholarship": {
+        "name": "African Research Universities Alliance (ARUA) Scholarship",
+        "legacy_titles": [
+          "Lund University African Research Universities Alliance (ARUA) Scholarship"
+        ],
+        "country": "Sweden",
+        "region": "Europe",
+        "degree_levels": "Master's",
+        "funding_type": "Tuition Fee Waiver (up to 90%)",
+        "official_source": "Lund University",
+        "official_source_url": "https://www.lunduniversity.lu.se/study/admission-degree-studies/scholarships-and-awards/african-research-universities-alliance-arua-scholarship",
+        "status": "upcoming",
+        "is_verified": true,
+        "last_verified_date": "2026-10-04",
+        "deadline": "The scholarship application round \"usually opens in early February every year\" and applicants \"will not be able to apply until you have received the email with the link to the scholarship application portal in February.\" The related study application deadline is \"15 January\" with the application fee and supporting documents due \"in early February\". No exact calendar date is published for the scholarship round.",
+        "deadline_date": null,
+        "deadline_precision": "recurring",
+        "application_period": "Annual: apply for an international degree programme at Lund University in the main round (deadline 15 January), then the ARUA scholarship round opens by email invitation in early February for the same autumn intake.",
+        "eligibility_summary": "Students who are or have been enrolled at one of the listed ARUA member universities in 19 African countries, hold citizenship of a country outside the EU/EEA and Switzerland, are required to pay Lund tuition fees, and have submitted a correct, complete and timely Lund application with Lund as first choice.",
+        "eligibility": [
+          "Be or have been a student at an ARUA university in one of the countries listed on the Lund ARUA page",
+          "Be a citizen of a country from outside the EU/EEA (and Switzerland) and be required to pay tuition fees at Lund University",
+          "Have submitted a correct, complete and timely application for an international degree programme at Lund University",
+          "Have selected Lund University as first choice on universityadmissions.se"
+        ],
+        "coverage": [
+          "Up to 90% of tuition fees, depending on the available budget of the programme/faculty",
+          "Living costs are explicitly not covered"
+        ],
+        "benefits": [
+          "Tuition fee waiver of up to a maximum of 90% of tuition fees"
+        ],
+        "funding_amount": null,
+        "funding_currency": null,
+        "funding_period": null,
+        "duration": "Follows the degree programme the applicant is awarded for; the page does not publish a fixed award duration.",
+        "program_type": "University tuition-fee scholarship (merit-based, restricted to ARUA member-university students)",
+        "application_method": [
+          "Apply for an international degree programme at Lund University through universityadmissions.se with Lund as first choice",
+          "Pay the application fee and submit supporting documents in early February",
+          "Wait for the emailed link to the Lund University scholarship application portal, which opens in early February",
+          "Upload a personal scholarship motivation video of maximum 1 minute to an open-source video sharing platform and enter the link in the application form"
+        ],
+        "requirements": [
+          "A correct, complete and timely application for an international degree programme at Lund University",
+          "Lund University selected as first choice on universityadmissions.se",
+          "Personal scholarship motivation video of maximum 1 minute hosted on an open-source video sharing platform such as YouTube or Vimeo",
+          "The video link included in the scholarship application form",
+          "Financial need must not be presented in the video - the scholarship is merit-based only"
+        ],
+        "english_requirement": "The applicant must apply to an international degree programme at Lund University; English-language programme and English proficiency requirements are set by the programme and by universityadmissions.se.",
+        "selection_notes": "The scholarship is merit-based only, so \"your financial situation/challenges are not considered in the selection process\". Priority is given to students with strong academic performance who are judged a good fit for the programme, show strong commitment to Lund University, and ranked Lund first. The ARUA result is sent in the same email as the Lund University Global Scholarship result.",
+        "best_fit": "High-achieving African students from ARUA member universities who are required to pay Lund tuition fees and can produce a one-minute motivation video plus a strong academic record.",
+        "notes": "The ARUA award sits inside the Lund University Global Scholarship framework and the two results arrive in one email. Applicants may apply for the Lund University Global Scholarship and Swedish Institute scholarships in addition, but only one ARUA Scholarship per application round.",
+        "description": "Lund University runs the ARUA Scholarship as part of its global scholarship programme for high-achieving African students who have demonstrated academic excellence at an ARUA member university. The award is selective and merit-based and covers a percentage of tuition fees up to a maximum of 90%, depending on the budget of the programme or faculty concerned; living costs are not covered. Applicants must first apply for an international degree programme at Lund University with Lund as first choice, then apply through a separate Lund scholarship portal that opens by email invitation in early February each year."
+      },
+      "programme_detail_official": {
+        "official_source_urls": [
+          "https://www.lunduniversity.lu.se/study/admission-degree-studies/scholarships-and-awards/african-research-universities-alliance-arua-scholarship"
+        ],
+        "application_link": "https://www.lunduniversity.lu.se/study/admission-degree-studies/scholarships-and-awards/african-research-universities-alliance-arua-scholarship",
+        "official_updates_url": "https://www.lunduniversity.lu.se/study/admission-degree-studies/scholarships-and-awards/african-research-universities-alliance-arua-scholarship",
+        "catalogue_url": "https://www.lunduniversity.lu.se/study/find-education",
+        "application_cycle": "Annual; the scholarship round opens in early February for the autumn intake, after the main international application round closed on 15 January. Next expected opening: early February 2027 for autumn 2027.",
+        "deadline_central": null,
+        "deadline_central_display": "The application round \"usually opens in early February every year\"; study application deadline is 15 January, and the application fee and supporting documents are due in early February.",
+        "deadline_central_timezone": "Europe/Stockholm",
+        "deadline_note": "Lund publishes no exact calendar date for the ARUA scholarship round, only that it \"usually opens in early February every year\" and that applicants cannot apply before receiving the emailed portal link. The only exact date on the page is the 15 January study-application deadline, which belongs to the universityadmissions.se round rather than the scholarship round.",
+        "status": "UPCOMING",
+        "status_note": "Live programme, page last updated 26 August 2026. As of 2026-10-04 the scholarship round for autumn 2027 has not yet opened; the portal link is emailed in February.",
+        "funding_amount": null,
+        "funding_currency": null,
+        "funding_period": null,
+        "funding_duration": "Covers tuition fees for the study programme the applicant is awarded; no fixed award duration is published.",
+        "tuition_coverage": true,
+        "tuition_coverage_note": "Official wording: \"The ARUA Scholarship covers a percentage of the tuition fees, up to a maximum of 90%. The exact percentage awarded depends on the available budget of the programme/faculty concerned.\"",
+        "living_cost_coverage": false,
+        "travel_coverage": null,
+        "fully_funded": false,
+        "funding_label": "Tuition fee waiver of up to 90% for students from ARUA member universities; living costs are not covered.",
+        "benefits": [
+          "Partial tuition fee waiver (up to 90%)",
+          "Priority consideration tied to academic performance and commitment to Lund University"
+        ],
+        "eligibility": [
+          "Be or have been a student at an ARUA university in one of the listed African countries",
+          "Hold citizenship of a country outside the EU/EEA (and Switzerland) and be required to pay tuition fees at Lund University",
+          "Have submitted a correct, complete and timely application for an international degree programme at Lund University",
+          "Have selected Lund University as their first choice in universityadmissions.se"
+        ],
+        "citizenship_residency": "Citizens of countries outside the EU/EEA and Switzerland who are required to pay tuition fees at Lund University.",
+        "international_eligibility": "Restricted to students who are or have been enrolled at one of the listed ARUA member universities across 19 African countries: Ethiopia, Democratic Republic of the Congo, Ghana, Kenya, Mauritius, Morocco, Mozambique (associate member), Nigeria, Rwanda, Senegal, South Africa, Tanzania and Uganda.",
+        "degree_levels": [
+          "Master's"
+        ],
+        "study_mode": null,
+        "research_requirement": null,
+        "subject_or_agency_requirement": "Must be or have been a student at an ARUA member university listed on the Lund ARUA page; the page advises checking the ARUA website for the most up-to-date member list.",
+        "application_method": "Apply online via the Lund University scholarship application portal. Applicants who have applied for an international degree programme at Lund as first choice are notified by email when the portal opens in February. The scholarship portal is different from the national universityadmissions.se portal. A personal 'scholarship motivation video' of maximum 1 minute must be uploaded to an open-source video sharing platform such as YouTube or Vimeo, and the video link entered in the application form.",
+        "application_route": "universityadmissions.se for the degree programme, then the Lund University scholarship application portal (invitation by email in February)",
+        "requirements": [
+          "Correct, complete and timely application for an international degree programme at Lund University",
+          "Lund University selected as first choice on universityadmissions.se",
+          "Personal scholarship motivation video of maximum 1 minute on an open-source video sharing platform",
+          "Video link included in the scholarship application form",
+          "Motivation video focused on academic achievement and reasons for choosing Lund - financial hardship must not be presented because selection is merit-based only"
+        ],
+        "documents": [
+          "Scholarship motivation video link (maximum 1 minute, hosted on YouTube, Vimeo or similar)",
+          "Programme application submitted on universityadmissions.se",
+          "Supporting documents for the admission application"
+        ],
+        "english_requirement": "Not specified for the scholarship itself; the applicant must apply to an international degree programme at Lund University, which requires English proficiency as set by the programme and universityadmissions.se.",
+        "english_requirement_note": "The ARUA page does not state an English test requirement; English requirements are set through the admission process for the chosen programme.",
+        "selection_criteria": [
+          "Strong academic performance",
+          "Judged to be a good fit for the programme applied to",
+          "Strong commitment to and desire to study at Lund University",
+          "Lund University selected as first choice on universityadmissions.se"
+        ],
+        "selection_weighting": "Merit-based only; financial situation and challenges are explicitly not considered in the selection process.",
+        "duration": "Tied to the awarded study programme; no fixed award duration published",
+        "award_holder_conditions": [
+          "Recipients must accept the scholarship within the timeframe specified in the award letter",
+          "Recipients must accept the study place at Lund University",
+          "Recipients must have the means to cover their own living costs according to Swedish Migration Agency requirements",
+          "Only one ARUA Scholarship may be applied for per round for the selected Lund programmes"
+        ],
+        "supplements_or_initiatives": [
+          "Lund University Global Scholarship - the ARUA result is communicated in the same email as the LUGS result",
+          "Swedish Institute scholarships - ARUA applicants may also apply"
+        ],
+        "official_contacts": {
+          "general": "Lund University contact page: https://www.lunduniversity.lu.se/about/contact-us",
+          "phone": "+46 (0)46 222 00 00"
+        },
+        "description": "The ARUA Scholarship is part of Lund University's global scholarship programme and provides financial support to prospective students who have demonstrated academic excellence at an ARUA member university in Africa. It is selective and merit-based, aimed at African students committed to Lund University. The award covers a percentage of tuition fees up to a maximum of 90%, with the exact percentage dependent on the budget of the relevant programme or faculty, and it does not cover living costs. Applicants must apply for an international degree programme with Lund as first choice and then apply through a separate scholarship portal that opens by email in early February each year, including a one-minute motivation video.",
+        "program_type": "University tuition-fee scholarship (merit-based, target-group restricted)",
+        "region": "Europe",
+        "coverage": "Up to 90% of tuition fees for students from ARUA member universities; living costs and travel are not covered.",
+        "last_verified_date": "2026-10-04"
+      },
+      "programme_detail_applicant_utility": {
+        "application_readiness_checklist": [
+          "Confirm you are or have been a student at an ARUA member university listed on the Lund ARUA page (check arua.org for the current member list)",
+          "Apply for an international degree programme at Lund University on universityadmissions.se with Lund as first choice",
+          "Pay the application fee and submit all supporting documents in early February",
+          "Watch your Lund email for the scholarship application portal link in February",
+          "Record a personal scholarship motivation video of maximum 1 minute and host it on YouTube, Vimeo or a similar open-source platform",
+          "Focus the video on academic achievement and why Lund fits your goals - not on financial need",
+          "Plan how you will cover living costs, because the scholarship does not"
+        ],
+        "common_rejection_risks": [
+          "Lund not ranked first choice in the universityadmissions.se application",
+          "Not being from an ARUA member university, which the page says makes the application invalid",
+          "Missing the early-February scholarship round because the portal link had not been requested or checked",
+          "Uploading a motivation video longer than 1 minute or not on an open-source video platform",
+          "Presenting financial hardship in the motivation video, which the page rules out because selection is merit-based only",
+          "Expecting the scholarship to cover living costs"
+        ],
+        "estimated_uncovered_costs": [
+          "Living costs - explicitly excluded; recipients must meet the Swedish Migration Agency financial support requirement themselves",
+          "Travel to and from Sweden",
+          "The remaining tuition fee above the awarded percentage, which may be less than the full 90%",
+          "Books, course materials and study-related travel"
+        ],
+        "document_audit": [
+          "universityadmissions.se application showing Lund as first choice",
+          "Application fee payment confirmation",
+          "Admission application supporting documents submitted by the early-February deadline",
+          "Scholarship motivation video link, maximum 1 minute, on an open-source platform",
+          "Completed Lund scholarship application form submitted through the portal"
+        ],
+        "alerts": [
+          {
+            "trigger": "No portal email received",
+            "message": "The Lund scholarship portal link is emailed only to applicants who applied for an international degree programme at Lund with Lund as first choice. Check spam and the international admissions inbox from early February."
+          },
+          {
+            "trigger": "Assuming full tuition coverage",
+            "message": "The award covers 'a percentage of the tuition fees, up to a maximum of 90%' and depends on the budget of the programme or faculty, so the awarded percentage may be lower."
+          },
+          {
+            "trigger": "ARUA member list changed",
+            "message": "Lund notes that the list on its page 'may not reflect the latest changes' and directs applicants to the ARUA website for the current member universities."
+          }
+        ],
+        "submission_workflow": [
+          "Verify your ARUA member-university eligibility and non-EU/EEA citizenship status.",
+          "Choose and apply for an international degree programme at Lund University through universityadmissions.se, ranking Lund first.",
+          "Pay the application fee and upload supporting documents by the early-February documentation deadline.",
+          "Await the February email with the link to the Lund University scholarship application portal.",
+          "Record and upload the one-minute motivation video, then complete the scholarship application form with the video link.",
+          "Await the result, which arrives by email together with the Lund University Global Scholarship result after admission results are announced."
+        ]
+      },
+      "programme_detail_verification": {
+        "cycle_verified": "Autumn 2027 cycle expectations, verified against page last updated 26 Aug 2026 on 2026-10-04",
+        "verification_confidence": 0.93,
+        "official_fields_confirmed": [
+          "name",
+          "official_source",
+          "funding_type",
+          "tuition_coverage",
+          "living_cost_coverage",
+          "fully_funded",
+          "eligibility",
+          "application_method",
+          "documents",
+          "selection_criteria",
+          "status",
+          "description",
+          "application_cycle"
+        ],
+        "institution_check_required": [
+          "Check the specific programme's tuition fee to translate the up-to-90% waiver into a SEK amount",
+          "Check arua.org for the current ARUA member-university list, which Lund warns may have changed"
+        ],
+        "unverified_or_removed_claims": [
+          "No exact ARUA scholarship deadline is published, so deadline_date is null and deadline_precision was corrected to 'recurring' (stored value 'application_dead' is not a permitted precision).",
+          "No fixed scholarship amount or currency is published; the official page states only a percentage up to a maximum of 90% of tuition fees, so funding_amount remains null.",
+          "The page says 'an international degree programme' without naming the level; the record is kept at Master's, which is the level Lund's ARUA intake is used for, but the page does not state it explicitly.",
+          "The stored official_source string 'Lunduniversity.Lu.Se' is a host artefact, not the awarding body's name; corrected to 'Lund University'."
+        ],
+        "source_citations": [
+          "https://www.lunduniversity.lu.se/study/admission-degree-studies/scholarships-and-awards/african-research-universities-alliance-arua-scholarship",
+          "https://www.lunduniversity.lu.se/sites/www.lunduniversity.lu.se/files/Lund_university_L_CMYK.svg"
+        ],
+        "researched_by": "w1_47a"
+      },
+      "logo_override": {
+        "url": "https://www.lunduniversity.lu.se/sites/www.lunduniversity.lu.se/files/Lund_university_L_CMYK.svg",
+        "page_url": "https://www.lunduniversity.lu.se/study/admission-degree-studies/scholarships-and-awards/african-research-universities-alliance-arua-scholarship",
+        "official_host": true,
+        "alt_text": "Lund University",
+        "validation_result": "verified",
+        "validation_detail": "svg 90596B, HTTP 200 image/svg+xml; 135 paths filled #93560e and 14 filled #11377d, so the mark is dark gold and blue rather than white-on-transparent",
+        "image_kind": "official_logo",
+        "image_format": "svg",
+        "verified_at": "2026-10-04T00:00:00+00:00",
+        "host_evidence": "same_registrable_domain",
+        "_award": "Lund University African Research Universities Alliance (ARUA) Scholarship"
+      },
+      "research_notes": {
+        "logo": "The ARUA page header markup carries the image alt 'Lund university logotype, link to home page.' pointing to /sites/www.lunduniversity.lu.se/files/Lund_university_L_CMYK.svg. I fetched that URL and got HTTP 200 with 90,596 bytes of SVG markup; a scan of every fill value found only #93560e (dark gold) and #11377d (blue), so it is not white-on-transparent. The footer also references LundUniversity_C2line_NEG.svg on the same host as an alternative dark variant. This replaces the stored image, which was a student photograph (Arua-scholarship.jpg.webp, image_kind program_image).",
+        "unverified": [
+          "Exact ARUA award amount in SEK - only a percentage up to 90% of tuition fees is published",
+          "Exact February scholarship deadline - only 'early February' is published",
+          "Degree level wording - the page says 'international degree programme' without naming Master's explicitly"
+        ],
+        "substitution": null,
+        "official_pages_read": [
+          "https://www.lunduniversity.lu.se/study/admission-degree-studies/scholarships-and-awards/african-research-universities-alliance-arua-scholarship",
+          "https://www.lunduniversity.lu.se/sites/www.lunduniversity.lu.se/files/Lund_university_L_CMYK.svg"
+        ],
+        "degree_level_confirmed": "\"have submitted a correct, complete and timely application for an international degree programme at Lund University\" - the award sits under Admission to degree studies > Scholarships and awards, and the eligibility wording covers degree-programme applicants; the record retains Master's as the operative level with the caveat noted above.",
+        "url_observed": null,
+        "contradictions": [
+          "Stored deadline_display was the truncated fragment 'for studies is 15 January and the deadline for the application fee and supporting documents is in early February.' with deadline_precision 'application_dead'; the precision value is not permitted and was corrected to 'recurring'.",
+          "Stored official_source 'Lunduniversity.Lu.Se' is a host artefact, corrected to 'Lund University'.",
+          "Stored program_type was a sentence of scholarship prose ('The scholarship is selective and merit-based...') rather than a programme type; replaced.",
+          "Stored current_image_url was a photograph of four African students, not the awarding body's logo."
+        ],
+        "skeleton": false
+      }
+    }
+  ]
+}

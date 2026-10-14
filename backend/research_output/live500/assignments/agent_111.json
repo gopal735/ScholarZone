@@ -1,0 +1,83 @@
+{
+ "agent": "agent_111",
+ "assignment_count": 1,
+ "scholarships": [
+  {
+   "id": 300,
+   "title": "Erasmus Mundus Joint Master Degrees — Portuguese Universities",
+   "country": "Portugal",
+   "degree": "Master's (joint degree across 2+ European countries)",
+   "funding_label": "Fully Funded",
+   "status": "open",
+   "official_source": "European Commission / Portuguese Universities",
+   "official_source_url": "https://erasmus-plus.ec.europa.eu/opportunities/individuals/students/erasmus-mundus-joint-masters/portugal",
+   "application_link": "https://erasmus-plus.ec.europa.eu/opportunities/individuals/students/erasmus-mundus-joint-masters/portugal",
+   "catalogue_url": null,
+   "official_updates_url": null,
+   "existing": {
+    "funding_amount": null,
+    "funding_currency": null,
+    "funding_period": null,
+    "tuition_coverage": null,
+    "living_cost_coverage": null,
+    "travel_coverage": null,
+    "fully_funded": 0,
+    "description": null,
+    "eligibility": [],
+    "eligibility_summary": "Open to students from all countries worldwide. Joint Master's programmes delivered by international consortia including Portuguese universities (Lisbon, Porto, NOVA, Coimbra). Study in at least two European countries. Full scholarships available for best-ranked students. No nationality restrictions. Cannot have previously received an Erasmus Mundus scholarship.",
+    "benefits": [
+     "Full tuition fees",
+     "Monthly stipend ~€1,400 for up to 24 months",
+     "Travel allowance",
+     "Health insurance",
+     "Installation costs"
+    ],
+    "coverage": [
+     "Full tuition fees",
+     "Monthly stipend ~€1,400 for up to 24 months",
+     "Travel allowance",
+     "Health insurance",
+     "Installation costs"
+    ],
+    "requirements": [],
+    "documents": [],
+    "english_requirement": null,
+    "application_method": [],
+    "selection_notes": null,
+    "best_fit": "Top-ranked international students for joint European Master's programmes with Portuguese partners",
+    "notes": null,
+    "duration": null,
+    "application_period": null,
+    "deadline_display": "Varies by programme (typically October-February)",
+    "deadline_date": null,
+    "region": "Europe",
+    "program_type": null,
+    "applicant_utility": null,
+    "official_details": null
+   },
+   "missing_fields": [
+    "funding_amount",
+    "funding_currency",
+    "funding_period",
+    "tuition_coverage",
+    "living_cost_coverage",
+    "travel_coverage",
+    "description",
+    "eligibility",
+    "requirements",
+    "documents",
+    "english_requirement",
+    "application_method",
+    "selection_notes",
+    "notes",
+    "duration",
+    "application_period",
+    "deadline_date",
+    "program_type",
+    "applicant_utility",
+    "official_details"
+   ]
+  }
+ ],
+ "result_file": "C:\\Users\\GopaL\\Desktop\\Projects folder\\ScholarZone\\backend\\research_output\\live500\\results\\agent_111.json"
+}

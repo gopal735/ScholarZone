@@ -1,0 +1,88 @@
+{
+ "agent": "agent_236",
+ "assignment_count": 1,
+ "scholarships": [
+  {
+   "id": 590,
+   "title": "Convocatoria de Becas Nacionales para Estudios de Posgrado 2026 (National Postgraduate Scholarships 2026)",
+   "country": "Mexico",
+   "degree": "Master's, PhD",
+   "funding_label": "Stipend",
+   "status": "open",
+   "official_source": "Secretaría de Ciencia, Humanidades, Tecnología e Innovación (SECIHTI) - Dirección General de Becas y Apoyos a la Comunidad Científica y Humanista",
+   "official_source_url": "https://www.secihti.mx/convocatoria/becas-nacionales/convocatoria-de-becas-nacionales-para-estudios-de-posgrado-2026",
+   "application_link": "https://www.secihti.mx/convocatoria/becas-nacionales/convocatoria-de-becas-nacionales-para-estudios-de-posgrado-2026",
+   "catalogue_url": "https://www.secihti.mx/becas-nacionales",
+   "official_updates_url": "https://www.secihti.mx/convocatoria_categoria/becas-nacionales",
+   "existing": {
+    "funding_amount": null,
+    "funding_currency": null,
+    "funding_period": null,
+    "tuition_coverage": null,
+    "living_cost_coverage": null,
+    "travel_coverage": null,
+    "fully_funded": 0,
+    "description": null,
+    "eligibility": [
+     "Mexican nationality, or foreign nationals resident in Mexico",
+     "Enrolled in a full-time (escolarizado) postgraduate programme registered in the Sistema Nacional de Posgrados (SNP) and eligible for scholarship allocation",
+     "Prior SECIHTI/CONAHCyT scholarship holders must have completed the conclusion formalities of the previous award before registering a new application",
+     "Must hold a valid Clave Única de Registro de Población (CURP); foreign nationals use the CURP on their temporary resident card and must keep it valid",
+     "Must satisfy all requirements at the time of the ordinary application period, or apply during the inconsistencies period if the call provides one"
+    ],
+    "eligibility_summary": "Mexican or foreign nationals enrolled in a full-time (escolarizado) postgraduate programme registered in the Sistema Nacional de Posgrados and eligible for scholarship allocation, who still hold a previous SECIHTI/CONAHCyT scholarship must first complete the conclusion formalities of that award.",
+    "benefits": [
+     "Monthly economic support (apoyo económico mensual) set by the Tabulador de Becas Nacionales 2026",
+     "Medical service through ISSSTE (Instituto de Seguridad y Servicios Sociales de los Trabajadores del Estado), registered as a beneficiary (derechohabiente)"
+    ],
+    "coverage": [
+     "Monthly economic support (apoyo económico mensual) set by the Tabulador de Becas Nacionales 2026",
+     "Medical service through ISSSTE (Instituto de Seguridad y Servicios Sociales de los Trabajadores del Estado), registered as a beneficiary (derechohabiente)"
+    ],
+    "requirements": [
+     "Create, update or validate the CVU (currículum vitae) in the Perfil Único at https://rizoma.secihti.mx/",
+     "Register and submit the scholarship application following the Guía para la postulación de Becas Nacionales",
+     "Sign the application electronically with the CURP e-signature",
+     "Pay the registration and formalisation guides' procedural steps in the Apeiron system after an award is assigned",
+     "Register a bank account (Guía para el Registro de Cuenta Bancaria BNP)"
+    ],
+    "documents": [
+     "Valid official identification with photograph",
+     "CURP (Mexican citizens) or the CURP contained in the temporary resident card (foreign nationals)",
+     "CVU generated in the Perfil Único",
+     "Evidence of registration in the postgraduate programme (the SNP registry record)",
+     "Prior CONAHCyT/SECIHTI completion or non-debt letter where applicable (Carta de Reconocimiento o Carta de No Adeudo)"
+    ],
+    "english_requirement": "Spanish. The call, the guides and the Rizoma/Apeiron systems are published in Spanish only.",
+    "application_method": [
+     "Register the CVU in the Perfil Único / Rizoma portal",
+     "Submit the scholarship request electronically with CURP e-signature during the published window",
+     "After an award is assigned, complete formalisation, sign the electronic documents and register the bank account in Apeiron"
+    ],
+    "selection_notes": "Selection is carried out by SECIHTI over two periods of applicant eligibility; proposals are evaluated against the eligibility rules published in the call and its Términos de Referencia.",
+    "best_fit": "Mexican citizens, or foreign nationals legally resident in Mexico, already enrolled (or about to be enrolled) in a SNP-registered postgraduate programme who need a monthly stipend to complete a master's or doctorate.",
+    "notes": "Applicants enrolled in non-schooled (no escolarizados) eligible programmes are covered by the parallel Términos de Referencia B and the separate postulation guides linked from the same official page. Selection is made in two periods, with eligibility windows covering studies starting between January and June 2026 and between August and November 2026.",
+    "duration": "Full length of the registered postgraduate programme, in complete months, without exceeding the maximum term set in the scholarship regulation",
+    "application_period": "Published 23 February 2026; applications accepted 23 February 2026 20:00 to 28 November 2026 23:59 (America/Mexico_City)",
+    "deadline_display": "28 November 2026, 23:59 (hora local CDMX)",
+    "deadline_date": "2026-11-28",
+    "region": "Latin America",
+    "program_type": "Government scholarship",
+    "applicant_utility": null,
+    "official_details": null
+   },
+   "missing_fields": [
+    "funding_amount",
+    "funding_currency",
+    "funding_period",
+    "tuition_coverage",
+    "living_cost_coverage",
+    "travel_coverage",
+    "description",
+    "applicant_utility",
+    "official_details"
+   ]
+  }
+ ],
+ "result_file": "C:\\Users\\GopaL\\Desktop\\Projects folder\\ScholarZone\\backend\\research_output\\live500\\results\\agent_236.json"
+}

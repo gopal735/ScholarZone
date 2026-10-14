@@ -1,0 +1,127 @@
+{
+  "agent": "agent_281",
+  "records": [
+    {
+      "id": 652,
+      "official": {
+        "official_source_urls": [
+          "https://www.inter.chula.ac.th/funding-opportunity/40290",
+          "https://www.inter.chula.ac.th/wp-content/uploads/2026/09/Chula-Link-Scholarship-2026-Timeline.pdf",
+          "https://www.inter.chula.ac.th/funding-opportunity/?funding_type=scholarship"
+        ],
+        "application_link": "https://forms.gle/gU5oe1FgwqZZLXNn9",
+        "catalogue_url": "https://www.inter.chula.ac.th/funding-opportunity/?funding_type=scholarship",
+        "official_updates_url": "https://www.inter.chula.ac.th/funding-opportunity",
+        "deadline_central": "2026-10-31",
+        "deadline_central_display": "31 October 2026",
+        "deadline_note": "The university's published timeline adds dates after the applicant deadline: faculties submit endorsement lists by 7 November, committee review runs 8-10 November, announcement 12 November, and contract signing/visa processing runs from 12 November.",
+        "application_cycle": "Second semester, academic year 2026",
+        "status": "OPEN",
+        "status_note": "The Office of International Affairs and Global Network funding-opportunity page lists the call with Status 'Open', Deadline '31 Oct 2026' and application window 'Now - 31 October 2026'.",
+        "tuition_coverage_note": "The call page states 'Chula LINK Scholarship Includes: Tuition Fees' without publishing the amount or the share of tuition covered.",
+        "funding_amount": null,
+        "funding_currency": null,
+        "funding_period": null,
+        "tuition_coverage": true,
+        "living_cost_coverage": true,
+        "travel_coverage": true,
+        "fully_funded": true,
+        "benefits": [
+          "Tuition Fees",
+          "Monthly Living Allowance",
+          "Round-Trip Airfare"
+        ],
+        "eligibility": [
+          "International Students (Not Holding a Thai Passport)",
+          "Admitted to or currently studying in the first semester at Chulalongkorn University",
+          "Master's or Doctoral Degree Programs"
+        ],
+        "requirements": [
+          "Apply online at the form published on the call page (https://forms.gle/gU5oe1FgwqZZLXNn9)",
+          "Application: Now - 31 October 2026"
+        ],
+        "documents": [
+          "Online application submitted through the Google Forms link published on the OIA call page"
+        ],
+        "selection_criteria": [
+          "Faculty Endorsement - faculties submit their endorsement lists (by 7 Nov)",
+          "Committee Review - evaluation by the scholarship committee (8 - 10 Nov)",
+          "Announcement - successful applicants are announced on the OIA website (12 Nov)"
+        ],
+        "coverage": [
+          "Tuition Fees",
+          "Monthly Living Allowance",
+          "Round-Trip Airfare"
+        ],
+        "application_method": [
+          "Apply online at https://forms.gle/gU5oe1FgwqZZLXNn9 as published on the call page",
+          "Application period per the university's timeline: 1 September - 31 October 2026",
+          "Inquiries: Office of International Affairs and Global Network, int.off@chula.ac.th, +66 2 218 3101 ext. 8335"
+        ],
+        "application_route": "Submit the online application form (Google Forms link) published on the OIA funding-opportunity call page before 31 October 2026.",
+        "study_mode": null,
+        "citizenship_residency": "Open to international students who do not hold a Thai passport",
+        "international_eligibility": "Yes - the call is explicitly for international students not holding a Thai passport",
+        "subject_or_agency_requirement": "Master's or doctoral degree programme at Chulalongkorn University; no subject-area restriction is published",
+        "research_requirement": null,
+        "duration": "Second semester of academic year 2026",
+        "description": "The Chula LINK Scholarship (Chulalongkorn Leaders in International Networks and Knowledge Scholarship) is a Chulalongkorn University award advertised by the Office of International Affairs and Global Network for international students who do not hold a Thai passport and are admitted to or currently studying in their first semester in a Master's or doctoral programme. The published award covers tuition fees, a monthly living allowance and round-trip airfare for the second semester of academic year 2026, with the semester beginning in January 2027.",
+        "region": "Asia (Thailand)",
+        "program_type": "Scholarship (funding type: Scholarship; supported by Chulalongkorn University)",
+        "english_requirement": null
+      },
+      "verification": {
+        "source_citations": [
+          "https://www.inter.chula.ac.th/funding-opportunity/40290",
+          "https://www.inter.chula.ac.th/wp-content/uploads/2026/09/Chula-Link-Scholarship-2026-Timeline.pdf"
+        ],
+        "last_verified_date": "2026-10-10",
+        "verification_status": "confirmed",
+        "confidence": "high",
+        "not_confirmed": [
+          "funding_amount",
+          "funding_currency",
+          "funding_period",
+          "english_requirement",
+          "award quota or selection weighting",
+          "required documents list",
+          "study_mode",
+          "award period beyond the second semester of academic year 2026"
+        ],
+        "notes": "The OIA call page (fetched and confirmed twice) and the university's own timeline PDF hosted on inter.chula.ac.th were both checked; neither publishes monetary values for tuition, the monthly allowance or the airfare, so those fields stay null."
+      },
+      "applicant_utility": {
+        "summary": "This is an internally funded Chulalongkorn University award for non-Thai-passport students already inside a Master's or PhD programme, and it pays tuition, a monthly living allowance and round-trip airfare for the second semester of academic year 2026. The university publishes the benefit categories but no figures, so budget planning must be done without a stated amount. Applying is a single Google Form submitted by 31 October 2026, but your own submission is only stage one - your faculty must then put you on its endorsement list by 7 November for you to reach the committee. Treat the faculty relationship as the real gate: a student who submits the form but is never endorsed by their faculty is not evaluated.",
+        "best_fit": "Non-Thai-passport Master's and doctoral students already admitted to Chulalongkorn University who need tuition, living-cost and airfare support for one semester starting January 2027.",
+        "application_readiness_checklist": [
+          "Confirm your passport is not a Thai passport before anything else - the call excludes Thai-passport holders outright",
+          "Confirm you are admitted to, or currently studying in, your first semester at Chulalongkorn University in a Master's or doctoral programme",
+          "Find and open the current Google Form from the official call page rather than a cached or forwarded link, since the form URL is the only application route published",
+          "Speak to your faculty or graduate office early about endorsement, because faculties must submit endorsement lists by 7 November and you cannot control that step after the 31 October deadline",
+          "Keep the submitted-form confirmation (screenshot or email response) as your own proof of submission",
+          "Email int.off@chula.ac.th with any eligibility doubt before submitting rather than after the deadline"
+        ],
+        "common_rejection_risks": [
+          "Holding a Thai passport while assuming 'international student' is judged by nationality of study or residence - it is not; the published rule is passport-based",
+          "Applying too late in your studies: only students admitted to or currently in their FIRST semester qualify, so a second-year student who is otherwise strong is simply outside the call",
+          "Missing the faculty step: the form reaches the scholarship committee only through faculty endorsement, so a complete form with no faculty backing goes nowhere",
+          "Applying for a programme level outside the call (bachelor's, diploma or non-degree study)",
+          "Assuming next semester's round exists - this call is specifically for the second semester of academic year 2026"
+        ],
+        "estimated_uncovered_costs": "The published components are tuition fees, a monthly living allowance and round-trip airfare only; the call page lists no other covered items and no figures. Applicants should still expect to fund their own visa and extension fees, health insurance if their programme requires it, accommodation deposits and setup, local transport, books and research materials, and any additional home-country travel beyond the single round trip.",
+        "document_audit": [
+          "The call page publishes no document list at all - the entire intake is one online form, so do not wait for a document checklist that will not be issued and do not assume transcripts, references or an English certificate will be requested; anything your faculty needs for its endorsement is separate from this form",
+          "The online form is the only published route - there is no email or in-person application path, and a form saved but not submitted before 31 October 2026 counts as no application",
+          "Your passport details in the form must match the non-Thai-passport rule; a mismatch discovered after the faculty stages wastes the whole cycle"
+        ],
+        "alerts": [
+          "Deadline is 31 October 2026 with no published extension or late window, and the form link can change between rounds - always start from the official OIA page",
+          "The internal pipeline is fast: faculty endorsement by 7 November, committee review 8-10 November, results 12 November, contract signing and visa processing from 12 November, semester start January 2027 - successful applicants have only weeks to complete contract and visa steps",
+          "The round-trip airfare and monthly allowance are listed without amounts, so the actual value of the award cannot be compared with other offers from the official page alone",
+          "This is a university-internal award, not a government or external scholarship - eligibility comes from being admitted to Chulalongkorn, not from applying separately for admission through this scholarship"
+        ],
+        "submission_workflow": "Applicant submits the Google Form by 31 October 2026; faculty compiles and submits its endorsement list by 7 November; the scholarship committee reviews 8-10 November; OIA posts results on its website on 12 November; winners sign the contract and start visa processing from 12 November; orientation and classes begin January 2027."
+      }
+    }
+  ]
+}

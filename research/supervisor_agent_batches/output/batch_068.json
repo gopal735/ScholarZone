@@ -1,0 +1,184 @@
+[
+  {
+    "scholarship_id": 555,
+    "outcome": "not_applicable",
+    "professors": [],
+    "notes": "OAS/PAEC partial tuition grant for a 4-month online certificate course (dLab Global 2026, Universidad del Desarrollo, Chile). Inter-governmental scholarship scheme for a short non-research online certificate with no supervising professor; no thesis or supervision structure. Official announcement is an OAS PDF (oas.org); the linked UDD dLab page (icubo.udd.cl) returned HTTP 403 to automated fetching."
+  },
+  {
+    "scholarship_id": 556,
+    "outcome": "not_applicable",
+    "professors": [],
+    "notes": "SG/OAS mass tuition-discount scheme (up to 885 places) for online taught master's and undergraduate programmes at UNIR (Spain), EP NEWMAN (Peru) and UNIR Mexico. Fee reduction only, with no supervising professor or research supervision attached to the award; applicants are distance-learning taught-programme students. Official announcement is an OAS PDF (oas.org)."
+  },
+  {
+    "scholarship_id": 557,
+    "outcome": "verified_supervisors",
+    "professors": [
+      {
+        "canonical_name": "Jürgen Schmidhuber",
+        "title": "Professor, Computer Science",
+        "institution_name": "King Abdullah University of Science and Technology (KAUST)",
+        "department_name": "Computer Science Program, Computer, Electrical and Mathematical Sciences and Engineering (CEMSE) Division",
+        "official_profile_url": "https://cemse.kaust.edu.sa/profiles/jurgen-schmidhuber",
+        "official_email": "juergen.schmidhuber@kaust.edu.sa",
+        "official_email_verified": true,
+        "lab_url": "https://j-schmidhuber.kaust.edu.sa",
+        "personal_academic_url": null,
+        "research_areas": ["Artificial intelligence", "Machine learning", "Deep learning neural networks", "Generative AI"],
+        "research_keywords": ["artificial intelligence", "machine learning", "generative AI", "LSTM", "self-improving AI"],
+        "relationship_type": "potential_supervisor",
+        "evidence_source_url": "https://cemse.kaust.edu.sa/profiles/jurgen-schmidhuber",
+        "evidence_source_type": "official_university_profile",
+        "evidence_quote_or_summary": "Profile page: 'Jürgen Schmidhuber - Professor, Computer Science - Co-Chair, Center of Excellence for Generative AI - Principal Investigator, Juergen Schmidhuber Research Group' with the published contact 'juergen.schmidhuber@kaust.edu.sa'.",
+        "confidence": 95,
+        "availability": {
+          "scope": "phd_supervision",
+          "state": "not_published",
+          "source_url": "https://cs.kaust.edu.sa/profiles/by-profile-group/faculty"
+        }
+      },
+      {
+        "canonical_name": "Panagiotis Kalnis",
+        "title": "Professor, Computer Science",
+        "institution_name": "King Abdullah University of Science and Technology (KAUST)",
+        "department_name": "Computer Science Program, Computer, Electrical and Mathematical Sciences and Engineering (CEMSE) Division",
+        "official_profile_url": "https://cemse.kaust.edu.sa/profiles/panagiotis-kalnis",
+        "official_email": "panos.kalnis@kaust.edu.sa",
+        "official_email_verified": true,
+        "lab_url": "https://cloud.kaust.edu.sa",
+        "personal_academic_url": null,
+        "research_areas": ["Big data", "Cloud computing", "Parallel and distributed systems", "Data mining privacy"],
+        "research_keywords": ["supercomputing", "infoclouds", "large graphs", "machine learning systems", "privacy"],
+        "relationship_type": "potential_supervisor",
+        "evidence_source_url": "https://cemse.kaust.edu.sa/profiles/panagiotis-kalnis",
+        "evidence_source_type": "official_university_profile",
+        "evidence_quote_or_summary": "Profile page: 'Panagiotis Kalnis - Professor, Computer Science - Principal Investigator, InfoCloud' with the published contact 'panos.kalnis@kaust.edu.sa'; biography states 'Panos Kalnis is a professor of Computer Science at KAUST'.",
+        "confidence": 95,
+        "availability": {
+          "scope": "phd_supervision",
+          "state": "not_published",
+          "source_url": "https://cs.kaust.edu.sa/profiles/by-profile-group/faculty"
+        }
+      },
+      {
+        "canonical_name": "Mohamed Elhoseiny",
+        "title": "Associate Professor, Computer Science",
+        "institution_name": "King Abdullah University of Science and Technology (KAUST)",
+        "department_name": "Computer Science Program, Computer, Electrical and Mathematical Sciences and Engineering (CEMSE) Division",
+        "official_profile_url": "https://cemse.kaust.edu.sa/profiles/mohamed-elhoseiny",
+        "official_email": "mohamed.elhoseiny@kaust.edu.sa",
+        "official_email_verified": true,
+        "lab_url": "https://vision-cair.kaust.edu.sa",
+        "personal_academic_url": null,
+        "research_areas": ["Computer vision", "Affective AI", "Zero-shot and few-shot learning", "Vision and language"],
+        "research_keywords": ["artificial intelligence", "computer vision", "generative AI", "multimodal learning"],
+        "relationship_type": "potential_supervisor",
+        "evidence_source_url": "https://cemse.kaust.edu.sa/profiles/mohamed-elhoseiny",
+        "evidence_source_type": "official_university_profile",
+        "evidence_quote_or_summary": "Profile page: 'Mohamed Elhoseiny - Associate Professor, Computer Science - Principal Investigator, Computer Vision- Core Artificial Intelligence Research' with the published contact 'mohamed.elhoseiny@kaust.edu.sa'; biography states 'Mohamed Elhoseiny is an associate professor in the Computer Science (CS) Program at KAUST ... principal investigator of the KAUST Vision-CAIR Research Group'.",
+        "confidence": 95,
+        "availability": {
+          "scope": "phd_supervision",
+          "state": "not_published",
+          "source_url": "https://cs.kaust.edu.sa/profiles/by-profile-group/faculty"
+        }
+      }
+    ],
+    "notes": "The KAUST Fellowship is awarded automatically to every admitted MS/PhD student (https://admissions.kaust.edu.sa/fees-funding), so potential supervisors are the faculty of the 17 STEM programs. Sample verified from the official KAUST Computer Science Program faculty directory (https://cs.kaust.edu.sa/profiles/by-profile-group/faculty), which reaches the official CEMSE profile pages where institutional emails are published. Faculty from other KAUST programs (e.g. AMCS, ECE, Statistics, PSE, BESE) equally serve as fellowship supervisors."
+  },
+  {
+    "scholarship_id": 558,
+    "outcome": "source_blocked",
+    "professors": [],
+    "notes": "Every fetch to mbzuai.ac.ae (homepage, /admissions/graduate-masters-admissions, /study, www and http variants, and even /robots.txt) returned HTTP 403, so the official MBZUAI admissions/funding and faculty pages could not be read. The funding model described in the scholarship record explicitly ties funded PhD students to a faculty advisor ('funding moves to the faculty advisor's funding no later than the start of Year 2'), so named faculty advisors exist, but they cannot be verified from an accessible official page. No professors recorded because no official evidence could be retrieved."
+  },
+  {
+    "scholarship_id": 559,
+    "outcome": "verified_supervisors",
+    "professors": [
+      {
+        "canonical_name": "Abdesselam Bouzerdoum",
+        "title": "Professor and Associate Provost for Academic Affairs",
+        "institution_name": "Hamad Bin Khalifa University (HBKU)",
+        "department_name": "College of Science and Engineering",
+        "official_profile_url": "https://www.hbku.edu.qa/en/staff/abdesselam-bouzerdoum",
+        "official_email": "abouzerdoum@hbku.edu.qa",
+        "official_email_verified": true,
+        "lab_url": null,
+        "personal_academic_url": null,
+        "research_areas": ["Signal and image processing", "Machine learning", "Radar imaging", "Vision and visual processing"],
+        "research_keywords": ["signal processing", "image processing", "pattern recognition", "radar imaging", "machine learning"],
+        "relationship_type": "potential_supervisor",
+        "evidence_source_url": "https://www.hbku.edu.qa/en/staff/abdesselam-bouzerdoum",
+        "evidence_source_type": "official_university_profile",
+        "evidence_quote_or_summary": "Official staff biography page: 'Dr. Abdesselam Bouzerdoum - Professor and Associate Provost for Academic Affairs' with 'Entity: College of Science and Engineering', published email 'abouzerdoum@hbku.edu.qa' and listed research interests.",
+        "confidence": 95,
+        "availability": {
+          "scope": "phd_supervision",
+          "state": "not_published",
+          "source_url": "https://www.hbku.edu.qa/en/scholarship"
+        }
+      },
+      {
+        "canonical_name": "Amine Bermak",
+        "title": "Distinguished Professor and Associate Dean",
+        "institution_name": "Hamad Bin Khalifa University (HBKU)",
+        "department_name": "College of Science and Engineering, Division of Computing and Electrical Engineering",
+        "official_profile_url": "https://www.hbku.edu.qa/en/staff/amine-bermak",
+        "official_email": "abermak@hbku.edu.qa",
+        "official_email_verified": true,
+        "lab_url": null,
+        "personal_academic_url": null,
+        "research_areas": ["Integrated circuit design and VLSI systems", "CMOS image sensors", "Wearable and printed electronics", "Edge intelligence and AI circuits and systems"],
+        "research_keywords": ["VLSI", "CMOS image sensors", "edge AI", "microsystems", "lab-on-a-CMOS"],
+        "relationship_type": "potential_supervisor",
+        "evidence_source_url": "https://www.hbku.edu.qa/en/staff/amine-bermak",
+        "evidence_source_type": "official_university_profile",
+        "evidence_quote_or_summary": "Official staff biography page: 'Prof. Amine Bermak - Distinguished Professor and Associate Dean' with 'Entity: College of Science and Engineering', 'Division: Division of Computing and Electrical Engineering', published email 'abermak@hbku.edu.qa' and listed research interests.",
+        "confidence": 95,
+        "availability": {
+          "scope": "phd_supervision",
+          "state": "not_published",
+          "source_url": "https://www.hbku.edu.qa/en/scholarship"
+        }
+      },
+      {
+        "canonical_name": "Khalid A. Qaraqe",
+        "title": "Professor",
+        "institution_name": "Hamad Bin Khalifa University (HBKU)",
+        "department_name": "College of Science and Engineering",
+        "official_profile_url": "https://www.hbku.edu.qa/en/staff/khalid-qaraqe",
+        "official_email": "kqaraqe@hbku.edu.qa",
+        "official_email_verified": true,
+        "lab_url": null,
+        "personal_academic_url": null,
+        "research_areas": ["Wireless communication systems", "Broadband wireless access", "Cognitive radio and cooperative networks", "6G and beyond systems"],
+        "research_keywords": ["wireless communications", "mmWave", "THz", "visible light communication", "reconfigurable intelligent surfaces", "AI for wireless"],
+        "relationship_type": "potential_supervisor",
+        "evidence_source_url": "https://www.hbku.edu.qa/en/staff/khalid-qaraqe",
+        "evidence_source_type": "official_university_profile",
+        "evidence_quote_or_summary": "Official staff biography page: 'Dr. Khalid Qaraqe - Professor', 'Entity: College of Science and Engineering', with published email 'kqaraqe@hbku.edu.qa' and research interests in communication theory and wireless systems design.",
+        "confidence": 95,
+        "availability": {
+          "scope": "phd_supervision",
+          "state": "not_published",
+          "source_url": "https://www.hbku.edu.qa/en/scholarship"
+        }
+      }
+    ],
+    "notes": "Tie to the scholarship: the official HBKU scholarship page (https://www.hbku.edu.qa/en/scholarship) states 'Students receiving a stipend shall work as research assistants (RAs) with their primary supervisors for 10 hours per week', and lists 100% tuition waivers for PhD STEM (CSE and CHLS) programmes with stipends over 45 months. Faculty verified from the official HBKU College of Science and Engineering People page (https://www.hbku.edu.qa/en/cse/people) and the individual official staff biography pages where the emails are published. Equivalent faculty exist in the College of Health and Life Sciences (CHLS) for PhD STEM supervision."
+  },
+  {
+    "scholarship_id": 560,
+    "outcome": "not_applicable",
+    "professors": [],
+    "notes": "UAE Ministry of Foreign Affairs government scheme for Emirati high-school graduates to study a Bachelor's degree abroad at any university on the MOFA-approved list. No institution is attached to the award: the applicant must already hold an unconditional acceptance from an approved university, and the ministry covers tuition only. There is no supervising professor tied to the scholarship. Verified from https://www.mofa.gov.ae/en/Scholarship."
+  },
+  {
+    "scholarship_id": 561,
+    "outcome": "not_applicable",
+    "professors": [],
+    "notes": "Royal Society Career Development Fellowship is a four-year postdoctoral research funding scheme run by the Royal Society (a learned society, not a degree-awarding institution). No host institution or supervising professor is attached to the award - the fellow applies to establish their research at a UK institution of their own choosing ('Support talented early career researchers ... in taking the first step towards establishing their research in a UK institution'). Assessment is by a Royal Society panel, not programme faculty. Verified from https://royalsociety.org/grants/career-development-fellowship."
+  }
+]

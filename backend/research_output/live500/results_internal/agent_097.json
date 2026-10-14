@@ -1,0 +1,131 @@
+{
+  "agent": "agent_097",
+  "records": [
+    {
+      "id": 276,
+      "official": {
+        "official_source_urls": [
+          "https://www.bi.no/en/programmes-and-individual-courses/scholarships/bi-international-baccalaureate-scholarship"
+        ],
+        "application_link": "https://www.bi.no/en/programmes-and-individual-courses/scholarships/bi-international-baccalaureate-scholarship",
+        "catalogue_url": null,
+        "official_updates_url": "https://www.bi.no/en/programmes-and-individual-courses/scholarships/bi-international-baccalaureate-scholarship",
+        "deadline_central": "2027-03-01",
+        "deadline_central_display": "1 March 2027",
+        "deadline_note": "Norwegian citizens and international citizens enrolled in a Norwegian high school or who are residents of Norway apply for admission by 15 April instead, and must then submit their final diploma no later than 7 July.",
+        "application_cycle": "Bachelor of Business Administration, Bachelor of Data Science for Business or Bachelor of Digital Business commencing Autumn 2027; awards made in two rounds, end of April (international applicants) and July (Norwegian and international applicants)",
+        "status": "UPCOMING",
+        "status_note": "The published page cycle covers candidates admitted to the three eligible bachelor's programmes commencing Autumn 2026, with first-round awards by the end of April 2026 and second-round awards in July. The next cycle repeats the same March and April deadlines.",
+        "tuition_coverage_note": "'BI International Baccalaureate Scholarship will cover 100% of tuition fees for up to three years if the student maintains the academic progression requirements for scholarship recipients.'",
+        "funding_amount": null,
+        "funding_currency": null,
+        "funding_period": null,
+        "tuition_coverage": true,
+        "living_cost_coverage": false,
+        "travel_coverage": false,
+        "fully_funded": false,
+        "benefits": [
+          "100% of tuition fees for up to three years, conditional on maintaining the academic progression requirements",
+          "Recognition as a BI Ambassador, acting as a spokesperson, assisting in recruitment efforts and promoting a good study environment",
+          "Automatic consideration for the Bachelor International Scholarship and the Women in Finance and Tech Scholarship, if eligible, with no separate letter required"
+        ],
+        "eligibility": [
+          "Candidates with the highest IB grades; the minimum grade for consideration is 33 IB points, final or predicted",
+          "Candidates with Norwegian citizenship or international citizenship",
+          "An offer of admission to the Bachelor of Business Administration, Bachelor of Data Science for Business, or Bachelor of Digital Business programme",
+          "Only candidates seeking their first bachelor's degree are considered for scholarships for bachelor's degrees",
+          "Awards are based on academic excellence rather than financial need"
+        ],
+        "requirements": [
+          "Always apply for the scholarship at the same time as you apply for admission on the online application portal, and upload it to the section marked 'Scholarship'",
+          "Upload a CV/resume and a scholarship application letter of maximum one page outlining why you should be considered, combined into one PDF file",
+          "A complete application for admission must be submitted for the scholarship application to be considered",
+          "Applicants currently in the final year of high school must provide final transcripts as soon as they are available in June/July, no later than the end of the first week of July",
+          "Norwegian and resident applicants must submit their final diploma no later than 7 July",
+          "Full study progression of 30 ECTS in each semester and a minimum cumulative GPA of 'B' on the BI ECTS scale after each academic semester"
+        ],
+        "documents": [
+          "CV/resume",
+          "Scholarship application letter of maximum one page, combined with the CV into a single PDF",
+          "All documentation required to be evaluated for admission",
+          "Final transcripts once available in June/July, no later than the end of the first week of July, for applicants in the final year of high school",
+          "Final diploma no later than 7 July for Norwegian citizens and residents"
+        ],
+        "selection_criteria": [
+          "Scholarships are awarded based on academic excellence rather than financial need, assessed on transcripts and application letters",
+          "Other factors that may influence awarding include other academic achievements, extracurricular achievements and special personal achievements",
+          "BI ensures distribution of scholarships across bachelor's programmes and reserves the right to prioritise specific programmes, diversity and gender distribution, or countries",
+          "Applicants who do not receive a scholarship offer in the first round are considered in the second round"
+        ],
+        "coverage": [
+          "100% of tuition fees for up to three years",
+          "No living-expense stipend is stated for this scholarship",
+          "No travel, housing or insurance coverage is stated"
+        ],
+        "application_method": [
+          "Applications for scholarship are not accepted by email; always apply at the same time as for admission on the online application portal and upload to the section marked 'Scholarship'"
+        ],
+        "application_route": "Submit the bachelor's admission application on BI's online portal with the combined CV and one-page letter in the 'Scholarship' section, by 1 March (international) or 15 April (Norwegian and resident).",
+        "study_mode": "Full-time",
+        "citizenship_residency": "Open to candidates with Norwegian or international citizenship; Norwegian citizens and international citizens enrolled in Norwegian high school or resident in Norway follow the 15 April track",
+        "international_eligibility": "International applicants not residing in Norway are eligible and face the earlier 1 March deadline",
+        "subject_or_agency_requirement": "Restricted to the Bachelor of Business Administration, Bachelor of Data Science for Business, and Bachelor of Digital Business programmes",
+        "research_requirement": null,
+        "duration": "Up to three years of 100% tuition fees",
+        "description": "The BI International Baccalaureate Scholarship covers 100% of tuition fees for up to three years for applicants graduating with the top International Baccalaureate grades, with a minimum of 33 IB points, final or predicted, who hold an offer of admission to one of three BI bachelor's programmes. Awards are made on academic excellence rather than financial need, in two rounds each year.",
+        "region": "Europe",
+        "program_type": "Merit-based tuition fee scholarship for IB graduates entering BI bachelor's programmes",
+        "english_requirement": null
+      },
+      "verification": {
+        "source_citations": [
+          "https://www.bi.no/en/programmes-and-individual-courses/scholarships/bi-international-baccalaureate-scholarship"
+        ],
+        "last_verified_date": "2026-10-10",
+        "verification_status": "confirmed",
+        "confidence": "high",
+        "not_confirmed": [
+          "funding_amount",
+          "funding_currency",
+          "funding_period",
+          "english_requirement",
+          "number of scholarships available",
+          "tuition fee amount"
+        ],
+        "notes": "The 33 IB point threshold, the three eligible programmes, the two-track deadlines, the 7 July diploma date, the two-round award process and the progression requirements were all read directly from BI's own scholarship page. No monetary figure is published, since the award is a tuition waiver rather than a stipend."
+      },
+      "applicant_utility": {
+        "summary": "Your IB point total is the gate here: 33 points is the published minimum for consideration, and the award is described as being for applicants who graduate with the top grades, so anything near the floor needs other achievements to carry it. Two different deadlines apply depending on where you live, with international non-residents pushed to 1 March and Norwegian citizens and residents to 15 April followed by a 7 July diploma deadline. The award is tuition only, so a three-year Norwegian living budget still has to come from somewhere else.",
+        "best_fit": "High-scoring IB graduates, ideally above 40 points, entering Business Administration, Data Science for Business or Digital Business at BI.",
+        "application_readiness_checklist": [
+          "Establish which deadline track applies to you, 1 March if you do not reside in Norway and 15 April if you are a Norwegian citizen, a Norwegian high school student or a Norway resident",
+          "Confirm your IB total clears 33 points using final or predicted grades, and be ready to evidence it",
+          "Merge the CV and one-page letter into one PDF and upload it in the 'Scholarship' section of the admission application",
+          "Diarise the July milestones: final transcripts by the end of the first week of July, and the final diploma by 7 July on the Norwegian and resident track",
+          "Arrange living-cost funding independently, because no stipend is attached"
+        ],
+        "common_rejection_risks": [
+          "Applying on the wrong deadline track and missing the round entirely",
+          "Failing to upload final transcripts or the diploma by the July cut-offs, which is fatal for applicants still in their final year",
+          "Emailing the scholarship materials instead of uploading them in the portal",
+          "Only being considered in the first round and assuming the second round does not exist, or conversely assuming the second round always rescues you",
+          "Dropping below 30 ECTS in a semester or under a cumulative 'B' during the programme"
+        ],
+        "estimated_uncovered_costs": "All living costs, travel, housing deposits and insurance across the full three years. The scholarship covers 100% of tuition fees only and no stipend is stated.",
+        "document_audit": [
+          "The letter is capped at one page and must be merged with the CV into a single PDF",
+          "Final-year applicants must send final transcripts as soon as they are available in June/July, so keep your school's issuing timetable in view",
+          "Nothing can be added to the application after submission, so the admission file must be complete at the outset"
+        ],
+        "alerts": [
+          "Applying for this scholarship also puts you forward for the Bachelor International Scholarship and the Women in Finance and Tech Scholarship if you are eligible, with no separate letter needed",
+          "Only applicants who receive a scholarship offer are notified of the result, due to the volume of applications",
+          "You may apply for more than one BI scholarship but only one is ever awarded per applicant",
+          "Awarded scholarships are tied to a designated programme and cannot be transferred",
+          "Second-round awards land in July, so a first-round silence is not a rejection"
+        ],
+        "submission_workflow": "A single portal submission combining admission and scholarship, with awards decided in two rounds (end of April for international applicants, July for Norwegian and international applicants) and offers accepted inside a stated window."
+      }
+    }
+  ]
+}

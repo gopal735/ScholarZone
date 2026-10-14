@@ -1,0 +1,51 @@
+{
+ "findings": [
+  {
+   "file": "pages/ScholarshipDetailsPage.jsx",
+   "line": 384,
+   "pattern": "scholarship\\.verified\\b",
+   "why": "reads the legacy boolean directly",
+   "source_line": "// body's own page. It used to read `scholarship.verified`, the legacy boolean"
+  }
+ ],
+ "api": {
+  "stats_status": 200,
+  "list_status": 200,
+  "authoritative_field": "verification_status",
+  "stats": {
+   "total": 386,
+   "verified_active": 364,
+   "countries": 47,
+   "open": 291,
+   "with_official_source": 445
+  },
+  "list_item_keys": [
+   "country",
+   "deadline",
+   "deadline_date",
+   "deadline_precision",
+   "degree",
+   "degree_levels",
+   "funding",
+   "funding_type",
+   "id",
+   "image_kind",
+   "image_source_type",
+   "image_url",
+   "last_verified_at",
+   "name",
+   "next_verification_due",
+   "status",
+   "title",
+   "updated_at",
+   "verification_notes",
+   "verification_status",
+   "verified",
+   "verified_by"
+  ],
+  "legacy_verified_true_on_first_page": 100,
+  "verification_status_counts_first_page": {
+   "active": 100
+  }
+ }
+}

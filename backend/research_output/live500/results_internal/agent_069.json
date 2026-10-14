@@ -1,0 +1,131 @@
+{
+  "agent": "agent_069",
+  "records": [
+    {
+      "id": 189,
+      "official": {
+        "official_source_urls": [
+          "https://www.umu.se/en/education/application-and-admission/scholarships"
+        ],
+        "application_link": "https://www.umu.se/en/education/application-and-admission/scholarships",
+        "catalogue_url": null,
+        "official_updates_url": "https://www.umu.se/en/education/application-and-admission/scholarships",
+        "deadline_central": null,
+        "deadline_central_display": null,
+        "deadline_note": "The published 2026 timeline was: 15 January priority-1 deadline, 2 February application fee deadline, 4-9 February invitations, 4 March 23:59 CET interest deadline, 17 April results. The page still displays the 2026 timeline and its latest update is 18 December 2025, so the next cycle's dates are not yet published.",
+        "application_cycle": "Annual round tied to the autumn semester admission",
+        "status": "CLOSED",
+        "status_note": "The page displays the 'Timeline for 2026', with scholarship results announced by email on 17 April. Latest update shown on the page is 18 December 2025 and the page carries a separate FAQ for scholarships.",
+        "tuition_coverage_note": "Official wording: 'Scholarships are offered in the form of tuition-waivers. Selected candidates receive a full or partial waiver of the tuition fee.' No living-cost component is published.",
+        "funding_amount": null,
+        "funding_currency": null,
+        "funding_period": null,
+        "tuition_coverage": true,
+        "living_cost_coverage": false,
+        "travel_coverage": false,
+        "fully_funded": false,
+        "benefits": [
+          "A full or partial waiver of the tuition fee for the programme",
+          "No separate application fee or document upload - registration of interest is done through a form linked from an invitation email",
+          "Second-year master's students who have paid the spring tuition fee and are registered may also register interest"
+        ],
+        "eligibility": [
+          "You are a citizen of a country outside of the EU/EEA and Switzerland",
+          "You have applied for a full programme at Umeå University (Bachelor's or Master's)",
+          "You completed your application for programme studies before the application deadline on 15 January 2026",
+          "You have paid the application fee by 2 February 2026; students exempt from the application fee who are required to pay tuition fees are also considered eligible",
+          "You have chosen a Umeå University programme as priority 1 on the University Admissions website by 15 January 2026 at the latest",
+          "The Master's Programme in Sustainability Reporting and Financial Analysis is not eligible as it is a double degree programme",
+          "Current students must have paid the tuition fee for the Spring semester and be registered students; students on study leave are not eligible"
+        ],
+        "requirements": [
+          "A Umeå University programme must be set as priority 1 on University Admissions by the 15 January deadline",
+          "Eligible students must register interest using the form linked from the personal invitation email sent in early February",
+          "Current students must have paid the spring semester tuition fee and be registered students",
+          "Second-year master's students at Umeå University may register interest for a scholarship"
+        ],
+        "documents": [
+          "The interest registration form linked from the personal invitation email",
+          "No separate scholarship documents are requested; academic merit evidence comes from the admission file"
+        ],
+        "selection_criteria": [
+          "Academic merit",
+          "Any other relevant information shared in the registration form",
+          "Selection by a committee within each respective faculty"
+        ],
+        "coverage": [
+          "A full or partial waiver of the tuition fee for the programme",
+          "No living-cost component is published"
+        ],
+        "application_method": [
+          "Apply for a full Umeå University programme at University Admissions and set a Umeå University programme as priority 1 by the 15 January deadline",
+          "Pay the application fee by the 2 February deadline",
+          "Receive the personal invitation email (sent to the address registered on University Admissions) and register interest using the linked form by the early-March deadline",
+          "Receive the result by email on the published announcement date"
+        ],
+        "application_route": "Application at University Admissions with a Umeå programme as priority 1, fee paid by the February deadline, then an emailed invitation to register interest within the short window.",
+        "study_mode": "Full-time",
+        "citizenship_residency": "Citizen of a country outside of the EU/EEA and Switzerland.",
+        "international_eligibility": "Open to non-EU/EEA/Swiss citizens applying for a full programme at Umeå University.",
+        "subject_or_agency_requirement": "Full Bachelor's or Master's programmes at Umeå University, excluding the Master's Programme in Sustainability Reporting and Financial Analysis (a double degree programme).",
+        "research_requirement": null,
+        "duration": "Full or partial waiver of the tuition fee for the autumn semester programme",
+        "description": "Umeå University awards scholarships each autumn semester, in conjunction with the autumn admission, to academically talented and high-achieving students required to pay tuition fees. Scholarships take the form of tuition waivers and selected candidates receive a full or partial waiver of the tuition fee, decided on academic merit by a committee in each faculty.",
+        "region": "Europe (Sweden)",
+        "program_type": "University-administered tuition-fee waiver for fee-paying bachelor's and master's students",
+        "english_requirement": null
+      },
+      "verification": {
+        "source_citations": [
+          "https://www.umu.se/en/education/application-and-admission/scholarships"
+        ],
+        "last_verified_date": "2026-10-10",
+        "verification_status": "confirmed",
+        "confidence": "high",
+        "not_confirmed": [
+          "funding_amount",
+          "funding_currency",
+          "funding_period",
+          "english_requirement",
+          "travel_coverage",
+          "next-cycle application dates"
+        ],
+        "notes": "Live-fetched the Umeå University scholarships page. The umu.se/en/education/scholarships URL given in the catalogue returns 404; the working official page is umu.se/en/education/application-and-admission/scholarships, which is also the page the catalogue lists as official_updates_url. Confirmed the tuition-waiver form with a full or partial waiver, the non-EU/EEA-and-Switzerland citizenship rule, the 15 January priority-1 deadline, the 2 February fee deadline, the early-February invitation emails, the 4 March 23:59 CET interest deadline and the 17 April result date for the 2026 cycle, the exclusion of the Sustainability Reporting and Financial Analysis master's, and the faculty-committee selection on academic merit. The page still shows the 2026 timeline with latest update 18 December 2025, so no monetary amount and no 2027 dates are published; funding_amount stays null."
+      },
+      "applicant_utility": {
+        "summary": "The scholarship here is invitation-driven: nothing is uploaded and no form is public, so if the email in early February does not reach you, you cannot apply at all. Make sure the address on your University Admissions account is one you actively check, because the university explicitly tells applicants to look in spam before contacting them. Two dates genuinely bind you in advance - a Umeå programme must be priority 1 by 15 January and the application fee paid by 2 February - and both are national University Admissions deadlines you can miss without realising the scholarship route has closed. The award is a full or partial tuition waiver only, with no stipend, so budget for the whole of living in Umeå yourself. Note that the invitation is tied to your priority-1 programme: if you are admitted to a different Umeå programme instead, you cannot redirect the scholarship.",
+        "best_fit": "Non-EU/EEA applicants who have committed to Umeå as their priority-1 choice and can self-finance living costs while studying.",
+        "application_readiness_checklist": [
+          "Set a Umeå University programme as priority 1 on University Admissions by 15 January and do not change it afterwards",
+          "Pay the University Admissions application fee by 2 February (fee-exempt but tuition-liable applicants are still eligible)",
+          "Verify the email address on your University Admissions account and monitor it including the spam folder from 4 February",
+          "Exclude the Master's Programme in Sustainability Reporting and Financial Analysis from consideration, as it is ineligible",
+          "Register interest as soon as the form opens - the published window closed 23:59 CET on 4 March 2026"
+        ],
+        "common_rejection_risks": [
+          "Umeå not being priority 1 by 15 January, which removes eligibility for the invitation",
+          "Not receiving or not spotting the invitation email, since the form is not publicly available",
+          "Being admitted to a different Umeå programme and expecting to transfer the scholarship to it",
+          "Applying for the Sustainability Reporting and Financial Analysis master's, which is excluded as a double degree",
+          "Current students on study leave, who are explicitly not considered eligible"
+        ],
+        "estimated_uncovered_costs": "Any tuition not covered by a partial waiver, plus accommodation, food, insurance, travel and residence-permit costs - no living-cost allowance is published.",
+        "document_audit": [
+          "There is no document upload; the registration form plus your admission file are the entire evidence base",
+          "The invitation email goes to the address held by University Admissions, not to a Umeå-issued address",
+          "Only priority-1 applicants and second-year master's students receive invitations",
+          "Current students must prove they paid the spring semester tuition fee and are registered",
+          "A separate Design by Umeå stream exists for design master's programmes, funded by a donation from Umeå municipality"
+        ],
+        "alerts": [
+          "The university notes its dates are preliminary and subject to change, and the page still shows the 2026 timeline at the time of checking",
+          "If you get a place on a Umeå programme other than your priority-1 first choice, you cannot register interest for that programme instead",
+          "Second-year master's students are eligible, so current students should not assume the scheme is new-applicants only",
+          "The Swedish Institute Global Professionals and Pioneering Women in STEM scholarships (full tuition plus a SEK 12,000 monthly stipend and a SEK 15,000 travel grant) are separate, Swedish Institute-run awards with full tuition and a stipend",
+          "Students on study leave are not eligible"
+        ],
+        "submission_workflow": "University Admissions application with Umeå as priority 1 and fee paid, then registration of interest through the link in the personal invitation email, with the outcome sent by email in mid-April."
+      }
+    }
+  ]
+}

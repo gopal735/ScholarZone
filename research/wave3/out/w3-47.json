@@ -1,0 +1,21 @@
+{
+  "agent_id": "w3_47",
+  "shard": "w3-47",
+  "host": "unibocconi.it",
+  "today": "2026-10-04",
+  "logo_override": {
+    "url": "https://www.unibocconi.it/themes/contrib/bocconi_ds/logo.svg",
+    "page_url": "https://www.unibocconi.it/en/applying-bocconi/bachelor-and-law-programs/funding/isu-bocconi-scholarship-first-year-students-ay-2027-28",
+    "official_host": true,
+    "alt_text": "Bocconi University",
+    "validation_result": "verified",
+    "validation_detail": "HTTP 200, content-type image/svg+xml, 3057 bytes, root <svg id=\"logo-bocconi\" viewBox=\"0 0 188 40\"> with a single fill=\"#0046AD\" (Bocconi blue) and no white fills; byte-identical path data to the wordmark the site header inlines, so it is the full horizontal wordmark, not a favicon",
+    "image_kind": "official_university",
+    "image_format": "svg",
+    "verified_at": "2026-10-04T00:00:00+00:00",
+    "host_evidence": "same_registrable_domain",
+    "_award": "Bocconi University - ISU Bocconi Scholarship / Bocconi4Access to Education"
+  },
+  "target_ids": [139],
+  "notes": "The ISU Bocconi Scholarship is awarded by Universita Bocconi, so the university mark is correct under rule 2. The header of every unibocconi.it page renders the wordmark as an INLINE <svg id=\"logo-bocconi\" width=\"148\" height=\"32\" viewBox=\"0 0 188 40\"> with fill=\"#0046AD\" - inline SVG has no probeable URL, so I looked for the file-backed copy of the same mark. Found it in the base theme: /themes/contrib/bocconi_ds/logo.svg = HTTP 200, image/svg+xml, 3057 B, root element id=\"logo-bocconi\", viewBox 0 0 188 40, identical 'd' data to the inline version, single fill #0046AD -> ACCEPTED. Probed and rejected: /themes/custom/bocconi_ds_corporate/logo.svg (200 but only 351 B and is a placeholder card graphic - a rounded rect stroked #187bb8 with style fill #f5f5ff around a centred <text>, not the logo); /themes/contrib/bocconi_ds/favicon/favicon.svg (200, 471 B, fill #0046AD but only the 34x35 'B' monogram, no wordmark - would have been the fallback); /themes/custom/bocconi_ds_corporate/images/logo.svg, .../images/logo-bocconi.svg and .../img/logo.svg (all 404); /sites/default/files/logo.svg (403 HTML, rejected per rule 4). A homepage scan found no logo-bearing <img> at all, because the mark is always inline - so an img-only scan returns nothing on this site."
+}

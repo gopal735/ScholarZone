@@ -1,0 +1,154 @@
+{
+  "agent": "agent_198",
+  "records": [
+    {
+      "id": 508,
+      "official": {
+        "official_source_urls": [
+          "https://www.vlaanderen.be/en/studying/flanders-trainee-programme",
+          "https://www.vlaanderen.be/en/studying/flanders-trainee-programme/flanders-trainee-programme-terms-and-conditions",
+          "https://www.vlaanderen.be/en/studying/flanders-trainee-programme/flanders-trainee-programme-amounts",
+          "https://www.vlaanderen.be/en/studying/flanders-trainee-programme/flanders-trainee-programme-application-and-procedure",
+          "https://www.vlaanderen.be/en/studying/flanders-trainee-programme/flanders-trainee-programme-internships",
+          "https://www.vlaanderen.be/onderwijs-en-vorming/naar-school-gaan-studeren-of-een-stage-volgen-in-het-buitenland/flanders-trainee-programme/bedragen-flanders-trainee-programme"
+        ],
+        "application_link": "https://www.vlaanderen.be/onderwijs-en-vorming/naar-school-gaan-studeren-of-een-stage-volgen-in-het-buitenland/flanders-trainee-programme/aanvraag-en-verloop-flanders-trainee-programme/aanvraagformulier-flanders-trainee-programme",
+        "catalogue_url": null,
+        "official_updates_url": "https://www.vlaanderen.be/en/studying/flanders-trainee-programme",
+        "deadline_central": null,
+        "deadline_central_display": null,
+        "deadline_note": "No fixed calendar deadline is published. The programme is budget-limited and rolling: 'In principle, you can apply for a grant at any time of the year, but you can only get a grant if there is still budget available.' Applications may be submitted up to six months in advance and until one day before the internship starts, or after it has started (paid only for the remaining period, which must be at least two months). For the current round the site states there is no more budget for 2026 and that applications reopen for internships taking place in 2027 as from January 2027.",
+        "application_cycle": "Rolling, budget-limited; 2026 budget exhausted, 2027 applications reopen from January 2027",
+        "status": "CLOSED",
+        "status_note": "The programme's own banner reads: 'No more grants for 2026. You can no longer apply for a grant for internships continuing into 2026. There is no more budget available for 2026. A budget will be available again in 2027. You can reapply for internships taking place in 2027 as from January 2027.' Applications submitted when no budget remains are not processed and are not held for a new budget. Inside a funded year the window is open at any time of the year.",
+        "tuition_coverage_note": "The programme publishes no tuition benefit. The grant 'consists of a one-off amount for travel expenses and a monthly amount for living expenses', both lump sums set in advance; no tuition, course fee or enrolment fee is covered.",
+        "funding_amount": 1669.92,
+        "funding_currency": "EUR",
+        "funding_period": "per month, varies by host city",
+        "tuition_coverage": false,
+        "living_cost_coverage": true,
+        "travel_coverage": true,
+        "fully_funded": false,
+        "benefits": [
+          "A one-off payment of EUR 200 for travel expenses if the internship is within Europe (all Council of Europe member states, Belarus and Kosovo), EUR 500 if the internship is located outside Europe, and no travel reimbursement if the internship is in Belgium.",
+          "Monthly lump-sum amounts for living expenses (accommodation and subsistence), set annually and multiplied by the number of months the internship is active, paid per host city.",
+          "Payment in two instalments by bank transfer: 85% of the total grant after the application is approved and the remaining 15% after the internship, once the internship report and the supervisor's evaluation report are submitted.",
+          "The grant is not a salary but a lump-sum reimbursement of expenses actually borne, so it does not block the Flemish Growth Package/child benefit that continues for 12 months after finishing studies (conditions: under 25 and receiving no salary from the host organisation).",
+          "The internship can be extended up to a total duration of six months, or nine months where the internship concerns a project funded by the Government of Flanders.",
+          "Any remuneration or financial allowance received for the same internship from another Belgian or foreign government or from the multilateral organisation itself reduces the grant by that amount."
+        ],
+        "eligibility": [
+          "You are younger than 35 on the start date of your internship.",
+          "You have obtained a secondary or higher education diploma in Flanders (list of recognised higher education institutions published by the Government of Flanders). So your nationality and official place of residence are irrelevant.",
+          "You have secured an internship with a multilateral organisation from the published qualifying list, at its headquarters or a field office located in the areas of jurisdiction of the Diplomatic Representations of Flanders.",
+          "The grant covers at least two and up to six months of internship.",
+          "A remote internship is not allowed; the entire internship must be completed at the post described in the supervisor's letter of confirmation.",
+          "No grant is available for an internship with a political group, an embassy or a country's permanent representation office."
+        ],
+        "requirements": [
+          "Be under 35 on the internship start date and hold a secondary or higher education diploma obtained at a Flemish educational institution.",
+          "Have already secured the internship before applying (application up to six months before the start, or after it has started with at least two months remaining).",
+          "The internship supervisor must complete the attestation regarding the internship offer and submit it to stages.dkbuza@vlaanderen.be.",
+          "Take part in an intake interview with the programme coordinator, stay in contact during the internship and provide visual material.",
+          "Submit the personal evaluation form (in Dutch) and the supervisor's evaluation form, plus the internship report, at the latest two months after the internship ends, and take part in a follow-up conversation.",
+          "Inform the programme if the internship ends early; part of the grant may have to be repaid, based on the number of days effectively worked."
+        ],
+        "documents": [
+          "Copy of your identity card",
+          "Diploma obtained at a Flemish educational institution",
+          "Letter of acceptance from the organisation, or another certificate proving acceptance for the internship",
+          "Attestation regarding the internship offer, completed by the internship supervisor and sent to stages.dkbuza@vlaanden.be (English template published by the programme)",
+          "Personal evaluation form (in Dutch) and the internship supervisor's evaluation form, both due within two months of the internship ending",
+          "Internship report, required for the second instalment (extension certificate only when extending the internship)"
+        ],
+        "selection_criteria": [
+          "Meeting all published eligibility conditions (age, Flemish diploma, qualifying multilateral organisation, internship length).",
+          "Complete application file: application form, copy of the identity card, Flemish diploma, proof of acceptance and the supervisor's attestation.",
+          "Budget availability for the current year; the official page states a grant is only granted while budget remains and that applications submitted without remaining budget are not processed.",
+          "Approval of the application and participation in the intake interview with the programme coordinator."
+        ],
+        "coverage": [
+          "One-off travel allowance: EUR 200 within Europe (all Council of Europe member states, Belarus and Kosovo), EUR 500 outside Europe, none for an internship in Belgium.",
+          "Monthly accommodation and living-expense allowance set annually by host city and multiplied by the number of active internship months: Antwerp, Bruges, Brussels and Luxembourg EUR 1,669.92; Barcelona EUR 1,903.70; Bonn EUR 1,970.51; Copenhagen EUR 2,304.49; Geneva EUR 2,721.97; Lilongwe EUR 1,047.60; London EUR 2,087.40; Madrid EUR 1,836.91; Maputo EUR 1,720.02; Midrand EUR 1,202.34; Montreal EUR 1,586.42; Nairobi EUR 1,720.02; New York EUR 2,220.99; Paris EUR 2,037.30; Pretoria EUR 1,202.34; Rome EUR 1,853.61; Stockholm EUR 1,753.42; Strasbourg EUR 1,903.71; The Hague EUR 2,003.90; Vienna EUR 2,137.50; Warsaw EUR 1,392.20; Washington D.C. EUR 2,037.30.",
+          "No tuition, course fees or other study costs are covered; the published grant consists only of the travel allowance and the monthly living allowance."
+        ],
+        "application_method": [
+          "Check that you meet the eligibility conditions (under 35, Flemish diploma, qualifying organisation).",
+          "Secure an internship at a qualifying multilateral organisation, either via the vacancies page or by spontaneous application to an organisation on the published list.",
+          "Complete the online application form (in Dutch) and attach the identity card copy, the Flemish diploma and the acceptance letter or other proof of acceptance, while the supervisor emails the attestation to stages.dkbuza@vlaanderen.be.",
+          "Receive approval once all documents are provided and the requirements are met (average administrative turnaround three weeks), then take part in the intake interview with the coordinator.",
+          "During the internship stay in contact with the coordinator and provide visual material.",
+          "After the internship, submit the personal evaluation form (Dutch), the supervisor's evaluation form and the internship report within two months, then attend the follow-up conversation to release the final 15%."
+        ],
+        "application_route": "Online application form in Dutch on vlaanderen.be, submitted after the internship is secured, with the supervisor's attestation sent separately to stages.dkbuza@vlaanderen.be; approval is granted on eligibility plus available budget.",
+        "study_mode": null,
+        "citizenship_residency": "Nationality and official place of residence are irrelevant; the only location rule is that the secondary or higher education diploma must have been obtained in Flanders.",
+        "international_eligibility": "Open to any nationality, provided the diploma was obtained at a Flemish educational institution; the internship itself must be at the headquarters or a field office of a listed multilateral organisation within the areas of jurisdiction of the Diplomatic Representations of Flanders.",
+        "subject_or_agency_requirement": "The internship must be with a multilateral organisation from the programme's published list (UN bodies, EU institutions, Council of Europe, OSCE, OECD, ILO, WHO, ICRC, World Bank, NATO-adjacent bodies, Benelux institutions, etc.), at its headquarters or a field office; political groups, embassies and permanent representations are excluded, and remote internships are not allowed.",
+        "research_requirement": null,
+        "duration": "Grant for an internship of at least two and up to six months, extendable to a total of six months (nine months for an internship concerning a project funded by the Government of Flanders).",
+        "description": "The Flanders Trainee Programme offers young global citizens financial support for an internship with a multilateral organisation. The grant is a lump-sum reimbursement of the one-off travel allowance plus a monthly allowance for accommodation and living expenses, set in advance and multiplied by the number of months the internship runs.",
+        "region": "Europe (Flanders, Belgium) - internship host cities listed by the programme",
+        "program_type": "Government of Flanders grant for internships with multilateral organisations",
+        "english_requirement": null
+      },
+      "verification": {
+        "source_citations": [
+          "https://www.vlaanderen.be/en/studying/flanders-trainee-programme/flanders-trainee-programme-amounts",
+          "https://www.vlaanderen.be/en/studying/flanders-trainee-programme/flanders-trainee-programme-terms-and-conditions",
+          "https://www.vlaanderen.be/en/studying/flanders-trainee-programme/flanders-trainee-programme-application-and-procedure",
+          "https://www.vlaanderen.be/en/studying/flanders-trainee-programme/flanders-trainee-programme-internships",
+          "https://www.vlaanderen.be/en/studying/flanders-trainee-programme"
+        ],
+        "last_verified_date": "2026-10-10",
+        "verification_status": "confirmed",
+        "confidence": "high",
+        "not_confirmed": [
+          "A single flat funding_amount: the official amounts page publishes a city matrix, so the EUR 1,669.92 figure recorded here is the Belgian/Luxembourg city rate (Antwerp, Bruges, Brussels, Luxembourg) used as the anchor; the published range is EUR 1,047.60 (Lilongwe) to EUR 2,721.97 (Geneva) per month.",
+          "The year the current city matrix applies to is not stated on the page, only that the amounts are set annually.",
+          "A fixed calendar deadline date - the programme publishes no dated deadline, only the rolling budget rule.",
+          "study_mode - the official pages do not describe the internship as full-time or part-time.",
+          "english_requirement - no English test or MOI rule is published; the application form and the personal evaluation form are in Dutch only.",
+          "research_requirement - no research proposal is published for this programme."
+        ],
+        "notes": "All figures and rules were taken from the Government of Flanders' own vlaanderen.be pages for the programme (main page, terms and conditions, grant amounts, application and procedure, internships), cross-checked against the Dutch-language equivalents, which publish the identical city matrix and conditions."
+      },
+      "applicant_utility": {
+        "summary": "This is a reimbursement grant, not a study scholarship: you must already hold a diploma from a Flemish institution and have an internship offer in hand at a listed multilateral organisation before you can apply. Money arrives as EUR 200/500 for travel plus a city-based monthly living allowance (EUR 1,047.60-2,721.97), paid 85% on approval and 15% after you file the report and evaluation forms. Because the scheme is budget-limited rather than deadline-limited, your real deadline is the moment the annual budget runs out - the 2026 pot is already empty and applications restart in January 2027 for 2027 internships. Apply within two months of starting the internship at the latest, or up to six months ahead.",
+        "best_fit": "Under-35 graduates of a Flemish secondary or higher-education institution, of any nationality, who have just landed (or are about to land) a 2-6 month internship at a UN body, EU institution, Council of Europe, OECD, ILO, WHO, ICRC, World Bank or similar multilateral organisation.",
+        "application_readiness_checklist": [
+          "Confirm your diploma was issued by a Flemish institution and keep a scannable copy plus your ID card ready.",
+          "Get the acceptance letter or another certificate from the host organisation naming the exact post and start date - remote work is explicitly not allowed, so the post must match where you will actually be.",
+          "Send the supervisor the programme's Dutch/English attestation template early; the application is not complete until the supervisor returns it to stages.dkbuza@vlaanderen.be, and that step depends on someone else's calendar.",
+          "Budget roughly three weeks for administrative turnaround and do not plan travel or deposits around an earlier approval.",
+          "Diarise the post-internship deadlines: personal evaluation form, supervisor's evaluation form and internship report within two months of finishing - the final 15% is held back until these land.",
+          "Check whether your host city appears in the published amounts table; if it does not, ask the coordinator which rate applies before committing to the placement."
+        ],
+        "common_rejection_risks": [
+          "Submitting after the annual budget is exhausted - such applications are not processed and are not carried over to the next budget, so the effort is simply lost.",
+          "Missing the two-month minimum remaining period when applying after the internship has already started.",
+          "Applying for a political group, an embassy or a permanent representation post, all of which are excluded, or for a fully remote internship.",
+          "An internship placed at an organisation or office outside the jurisdiction of the Diplomatic Representations of Flanders, even when the organisation itself is on the list.",
+          "An incomplete file because the supervisor's attestation or the diploma copy never arrived, which stops approval dead.",
+          "Turning 35 before the internship start date."
+        ],
+        "estimated_uncovered_costs": "Everything beyond travel and the city-based living allowance: visa and residence-permit fees, health and travel insurance, relocation and shipping costs, local transport, and any tuition or course fees. Because the monthly allowance is a fixed lump sum, shortfalls in expensive posts (Geneva, New York, London, Washington) and gaps below the local cost of living in cheaper posts are both borne by the applicant.",
+        "document_audit": [
+          "The application form itself is only published in Dutch, as is the personal evaluation form - plan for translation support if you do not read Dutch.",
+          "The supervisor attestation, the supervisor evaluation form and the extension certificate must be emailed by the supervisor directly to stages.dkbuza@vlaanderen.be; you cannot upload them yourself.",
+          "Proof of acceptance must state the actual post of work, since the entire internship has to be served there and remote work disqualifies the grant.",
+          "The diploma must be a Flemish one; a foreign diploma of equivalent level is not accepted even if the applicant lives in Flanders.",
+          "Keep the internship report and the supervisor's evaluation form until after the follow-up conversation - the second 15% instalment is conditional on them."
+        ],
+        "alerts": [
+          "The 2026 budget is exhausted and applications cannot be processed now; the next window opens in January 2027 for internships taking place in 2027, and late-2026 internship vacancies will be published on the programme's internships page.",
+          "There is no rolling grace period: once the current year's budget is gone, an application is neither processed nor banked for the next round.",
+          "If you also receive a salary or allowance for the same internship from the host organisation or another government, the grant is reduced by that amount, and taking a salary would also put your Flemish Growth Package/child benefit at risk if you are under 25.",
+          "Ending the internship early triggers a partial repayment calculated on the days actually worked, and you are obliged to notify the programme.",
+          "Applications can only be made from six months before the internship start; anything earlier must wait."
+        ],
+        "submission_workflow": "Secure the placement first, then submit the Dutch online form with your ID copy, Flemish diploma and acceptance letter while your supervisor emails the attestation separately; approval (about three weeks) plus an intake interview releases 85%, and the report and evaluation forms release the remaining 15%."
+      }
+    }
+  ]
+}

@@ -1,0 +1,80 @@
+{
+ "agent": "agent_173",
+ "assignment_count": 1,
+ "scholarships": [
+  {
+   "id": 456,
+   "title": "African Research Universities Alliance (ARUA) Scholarship",
+   "country": "Sweden",
+   "degree": "Master's",
+   "funding_label": "Tuition Fee Waiver (up to 90%)",
+   "status": "open",
+   "official_source": "Lund University",
+   "official_source_url": "https://www.lunduniversity.lu.se/study/admission-degree-studies/scholarships-and-awards/african-research-universities-alliance-arua-scholarship",
+   "application_link": "https://www.lunduniversity.lu.se/study/admission-degree-studies/scholarships-and-awards/african-research-universities-alliance-arua-scholarship",
+   "catalogue_url": "https://www.lunduniversity.lu.se/current-students/international-opportunities/grants-and-scholarships-studies-and-traineeships-abroad",
+   "official_updates_url": "https://www.lunduniversity.lu.se/alumni/alumni-news-and-stories",
+   "existing": {
+    "funding_amount": null,
+    "funding_currency": null,
+    "funding_period": null,
+    "tuition_coverage": 1,
+    "living_cost_coverage": 0,
+    "travel_coverage": null,
+    "fully_funded": 0,
+    "description": "Lund University runs the ARUA Scholarship as part of its global scholarship programme for high-achieving African students who have demonstrated academic excellence at an ARUA member university. The award is selective and merit-based and covers a percentage of tuition fees up to a maximum of 90%, depending on the budget of the programme or faculty concerned; living costs are not covered. Applicants must first apply for an international degree programme at Lund University with Lund as first choice, then apply through a separate Lund scholarship portal that opens by email invitation in early February each year.",
+    "eligibility": [
+     "Be or have been a student at an ARUA university in one of the countries listed on the Lund ARUA page",
+     "Be a citizen of a country from outside the EU/EEA (and Switzerland) and be required to pay tuition fees at Lund University",
+     "Have submitted a correct, complete and timely application for an international degree programme at Lund University",
+     "Have selected Lund University as first choice on universityadmissions.se"
+    ],
+    "eligibility_summary": "Students who are or have been enrolled at one of the listed ARUA member universities in 19 African countries, hold citizenship of a country outside the EU/EEA and Switzerland, are required to pay Lund tuition fees, and have submitted a correct, complete and timely Lund application with Lund as first choice.",
+    "benefits": [
+     "Tuition fee waiver of up to a maximum of 90% of tuition fees"
+    ],
+    "coverage": [
+     "Up to 90% of tuition fees, depending on the available budget of the programme/faculty",
+     "Living costs are explicitly not covered"
+    ],
+    "requirements": [
+     "A correct, complete and timely application for an international degree programme at Lund University",
+     "Lund University selected as first choice on universityadmissions.se",
+     "Personal scholarship motivation video of maximum 1 minute hosted on an open-source video sharing platform such as YouTube or Vimeo",
+     "The video link included in the scholarship application form",
+     "Financial need must not be presented in the video - the scholarship is merit-based only"
+    ],
+    "documents": [],
+    "english_requirement": "The applicant must apply to an international degree programme at Lund University; English-language programme and English proficiency requirements are set by the programme and by universityadmissions.se.",
+    "application_method": [
+     "Apply for an international degree programme at Lund University through universityadmissions.se with Lund as first choice",
+     "Pay the application fee and submit supporting documents in early February",
+     "Wait for the emailed link to the Lund University scholarship application portal, which opens in early February",
+     "Upload a personal scholarship motivation video of maximum 1 minute to an open-source video sharing platform and enter the link in the application form"
+    ],
+    "selection_notes": "The scholarship is merit-based only, so \"your financial situation/challenges are not considered in the selection process\". Priority is given to students with strong academic performance who are judged a good fit for the programme, show strong commitment to Lund University, and ranked Lund first. The ARUA result is sent in the same email as the Lund University Global Scholarship result.",
+    "best_fit": "High-achieving African students from ARUA member universities who are required to pay Lund tuition fees and can produce a one-minute motivation video plus a strong academic record.",
+    "notes": "The ARUA award sits inside the Lund University Global Scholarship framework and the two results arrive in one email. Applicants may apply for the Lund University Global Scholarship and Swedish Institute scholarships in addition, but only one ARUA Scholarship per application round.",
+    "duration": "Follows the degree programme the applicant is awarded for; the page does not publish a fixed award duration.",
+    "application_period": "Annual: apply for an international degree programme at Lund University in the main round (deadline 15 January), then the ARUA scholarship round opens by email invitation in early February for the same autumn intake.",
+    "deadline_display": "The scholarship application round \"usually opens in early February every year\" and applicants \"will not be able to apply until you have received the email with the link to the scholarship application portal in February.\" The related study application deadline is \"15 January\" with the application fee and supporting documents due \"in early February\". No exact calendar date is published for the scholarship round.",
+    "deadline_date": null,
+    "region": "Europe",
+    "program_type": "University tuition-fee scholarship (merit-based, restricted to ARUA member-university students)",
+    "applicant_utility": null,
+    "official_details": null
+   },
+   "missing_fields": [
+    "funding_amount",
+    "funding_currency",
+    "funding_period",
+    "travel_coverage",
+    "documents",
+    "deadline_date",
+    "applicant_utility",
+    "official_details"
+   ]
+  }
+ ],
+ "result_file": "C:\\Users\\GopaL\\Desktop\\Projects folder\\ScholarZone\\backend\\research_output\\live500\\results\\agent_173.json"
+}

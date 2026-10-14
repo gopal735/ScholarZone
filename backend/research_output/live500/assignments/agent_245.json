@@ -1,0 +1,78 @@
+{
+ "agent": "agent_245",
+ "assignment_count": 1,
+ "scholarships": [
+  {
+   "id": 601,
+   "title": "Beca Interna Postdoctoral - Convocatoria Becas 2026 (CONICET)",
+   "country": "Argentina",
+   "degree": "Postdoctoral",
+   "funding_label": "Stipend",
+   "status": "open",
+   "official_source": "CONICET - Consejo Nacional de Investigaciones Científicas y Técnicas, Argentina",
+   "official_source_url": "https://convocatorias.conicet.gov.ar/becas/convocatoria-vigente",
+   "application_link": "https://convocatorias.conicet.gov.ar/becas/convocatoria-vigente",
+   "catalogue_url": "https://convocatorias.conicet.gov.ar/becas",
+   "official_updates_url": "https://convocatorias.conicet.gov.ar/becas/convocatoria-vigente",
+   "existing": {
+    "funding_amount": null,
+    "funding_currency": null,
+    "funding_period": null,
+    "tuition_coverage": null,
+    "living_cost_coverage": null,
+    "travel_coverage": null,
+    "fully_funded": 0,
+    "description": null,
+    "eligibility": [
+     "Candidatas/os que deseen perfeccionar su formación académica y desarrollar tareas de investigación",
+     "Haber aprobado la tesis doctoral antes de la fecha establecida para el inicio de la beca",
+     "Haber realizado la entrega definitiva de los ejemplares de la tesis doctoral o la defensa de la misma al momento de la presentación",
+     "Postular a la Comisión Asesora correspondiente a su disciplina"
+    ],
+    "eligibility_summary": "Candidates who hold a completed and defended doctoral thesis and who want to develop research activities, applying to a CONICET Advisory Commission aligned with their field.",
+    "benefits": [],
+    "coverage": [],
+    "requirements": [
+     "Apply within 18 February to 5 March 2027",
+     "Have defended the doctoral thesis, or delivered the final copies, before submitting",
+     "Submit through the electronic system described in the official presentation instructivo for the 2026 call",
+     "Frame the research plan against the call's priority themes list and priority regions/thematic areas matrix"
+    ],
+    "documents": [
+     "The documentation listed in the official bases for Becas Internas Postdoctorales (BASES-PD-2026) and its presentation instructivo, both linked from the call page",
+     "Any supporting documents required by the presentation instructivo, including digital letters of endorsement"
+    ],
+    "english_requirement": null,
+    "application_method": [
+     "Electronic submission following the official 'Instructivo para la presentación de solicitudes' published with the 2026 call"
+    ],
+    "selection_notes": "The call states that within each Advisory Commission 70 per cent of the available places go to proposals matching the priority themes or the priority regions and thematic areas, and the remaining 30 per cent to eligible applicants in order of merit within that Commission. If a Commission does not receive enough eligible applications meeting those criteria, the leftover places are not reassigned to other Commissions and stay pending allocation in a second round.",
+    "best_fit": "Doctorate holders seeking three years of funded postdoctoral research in Argentina, particularly in a strategic sector or knowledge area on CONICET's priority list for 2026.",
+    "notes": "The 2026 call as a whole provides 1,000 internal doctoral places, 300 internal doctoral-completion places and 800 internal postdoctoral places. Applications for the doctoral lines ran in July and August 2026 and are closed; this record covers the postdoctoral line, whose window opens on 18 February 2027.",
+    "duration": "Thirty-six (36) months from 01/08/2027",
+    "application_period": "18/02/2027 to 05/03/2027",
+    "deadline_display": "05/03/2027",
+    "deadline_date": "2027-03-05",
+    "region": "Latin America",
+    "program_type": "National research council postdoctoral fellowship",
+    "applicant_utility": null,
+    "official_details": null
+   },
+   "missing_fields": [
+    "funding_amount",
+    "funding_currency",
+    "funding_period",
+    "tuition_coverage",
+    "living_cost_coverage",
+    "travel_coverage",
+    "description",
+    "benefits",
+    "coverage",
+    "english_requirement",
+    "applicant_utility",
+    "official_details"
+   ]
+  }
+ ],
+ "result_file": "C:\\Users\\GopaL\\Desktop\\Projects folder\\ScholarZone\\backend\\research_output\\live500\\results\\agent_245.json"
+}

@@ -1,0 +1,44 @@
+[
+  {
+    "scholarship_id": 562,
+    "outcome": "not_applicable",
+    "professors": [],
+    "notes": "Wellcome Early-Career Award is a charitable foundation grant scheme with no attached institution: applicants apply through their own eligible administering organisation (UK, Republic of Ireland, or LMICs apart from India/mainland China) and nominate their own sponsor and mentor. Verified live at https://wellcome.org/grant-funding/schemes/early-career-awards: 'Your sponsor must be an individual at your administering organisation' and 'You should also identify a mentor for the period of your award.' No supervising professor or faculty is tied to the award itself."
+  },
+  {
+    "scholarship_id": 563,
+    "outcome": "not_applicable",
+    "professors": [],
+    "notes": "UNESCO/Japan Young Researchers' Fellowships (Keizo Obuchi) is a UN agency fellowship co-funded by the Government of Japan; the host Japanese university/research institution and its academic supervisor are chosen by the applicant, not attached to the fellowship. Verified live at https://www.unesco.org/en/fellowships/keizo-obuchi: applicants must 'have obtained acceptance from an academic supervisor at a Japanese university or research institution, who will oversee the proposed research.' Fellowship facts are published by UNESCO (unesco.org) only, so no institutional supervising professor can be tied to the award."
+  },
+  {
+    "scholarship_id": 564,
+    "outcome": "not_applicable",
+    "professors": [],
+    "notes": "Joint Japan/World Bank Graduate Scholarship Program (Japanese Nationals track) is a development-bank scheme fully funded by the Government of Japan; it funds a master's or PhD at a graduate programme of the scholar's choice outside Japan and is not attached to any single institution or supervisor. Verified live at https://www.worldbank.org/en/programs/scholarships/japanese-nationals: scholars must be 'admitted unconditionally (except for financing) or currently enrolled full-time in a graduate program outside of Japan.' Although the World Bank publishes a list of participating programmes (worldbank.org), the award has no institutional supervising professor of its own."
+  },
+  {
+    "scholarship_id": 565,
+    "outcome": "not_applicable",
+    "professors": [],
+    "notes": "Swiss Government Excellence Scholarships (ESKAS, administered by SERI/FCS) is a federal government scholarship scheme with no attached institution: the applicant must secure their own supervisor at a Swiss cantonal university, university of applied sciences, ETHZ/EPFL or an ETH Domain institute. Verified live at https://www.sbfi.admin.ch/sbfi/en/home/education/scholarships-and-grants/swiss-government-excellence-scholarships.html: 'Prerequisite: the scholarship application must be backed by an academic supervisor in Switzerland who is willing to direct and guide the applicant's proposed research.' No supervisors are published on the SERI/FCS scheme pages, so no professor can be tied to the award."
+  },
+  {
+    "scholarship_id": 566,
+    "outcome": "not_applicable",
+    "professors": [],
+    "notes": "Swiss-European Mobility Programme (SEMP) outgoing mobility is a national Swiss government mobility programme (SERI-funded, Movetia-implemented, Swiss solution to Erasmus+); mobilities are administered by accredited Swiss institutions' International Relations Offices with partner institutions abroad, with no supervising professor attached to the programme itself. Live checks: https://outgoing.sbfi.admin.ch returned a transport error to automated fetching; the equivalent SERI/Movetia SEMP programme content was verified at https://movetia.ch/en/how-to/guidance-and-funding-practice/planning-your-project/swiss-european-mobility-programme ('Hochschulen und Höhere Fachschulen können im Rahmen des SEMP eigene Studierende und Mitarbeitende ins Ausland schicken (Outgoing)'). Treated as a government mobility scheme with no attached institution/supervisor."
+  },
+  {
+    "scholarship_id": 567,
+    "outcome": "not_applicable",
+    "professors": [],
+    "notes": "SEMP incoming mobility to Switzerland is the same national Swiss government mobility programme implemented by Movetia; students remain enrolled at their home institution and study at partner Swiss institutions chosen through inter-institutional agreements, with no supervising professor attached to the award itself. Live check: the URL in the batch record (https://movetia.ch/en/funding-opportunities/study-in-switzerland) returned HTTP 404 (page moved); the programme was verified on the official Movetia domain at https://movetia.ch/en/how-to/guidance-and-funding-practice/planning-your-project/swiss-european-mobility-programme ('Personen aus dem Ausland empfangen (Incoming)'). No institutional supervising professor is published for the programme."
+  },
+  {
+    "scholarship_id": 568,
+    "outcome": "not_applicable",
+    "professors": [],
+    "notes": "Türkiye Bursları (Türkiye Scholarships) is the Republic of Türkiye's government scholarship run by YTB with university and department placement rather than a fellowship at a chosen institution; no supervising professor is attached to the award. Verified live at https://www.turkiyeburslari.gov.tr (new official domain; https://scholarship.turkiye.gov.tr returned a transport error to automated fetching): 'Türkiye Scholarships not only provides financial support but also ensures university placement' and covers associate, bachelor's, master's, PhD and research degrees at Turkish universities. Placement, programmes and supervisors are determined after selection by YTB, so no professor can be tied to the scholarship."
+  }
+]

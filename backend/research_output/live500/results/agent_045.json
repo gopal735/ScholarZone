@@ -1,0 +1,146 @@
+{
+  "agent": "agent_045",
+  "records": [
+    {
+      "id": 129,
+      "official": {
+        "official_source_urls": [
+          "https://admissions.dartmouth.edu/afford/how-aid-works",
+          "https://financialaid.dartmouth.edu/how-aid-works/how-much-help-will-i-get",
+          "https://financialaid.dartmouth.edu/apply-aid/international-students",
+          "https://financialaid.dartmouth.edu/apply-aid/prospective-transfer-students/how-apply-aid",
+          "https://financialaid.dartmouth.edu/apply-aid/prospective-transfer-students/how-apply-aid/international-students",
+          "https://financialaid.dartmouth.edu/apply-aid/prospective-transfer-students/types-financial-aid/grants-scholarships",
+          "https://financialaid.dartmouth.edu/cost-attendance/cost-attendance-2026-2027",
+          "https://financialaid.dartmouth.edu/faqs/general-faqs",
+          "https://admissions.dartmouth.edu/estimate-your-cost/cost-attendance",
+          "https://admissions.dartmouth.edu/estimate-your-cost/apply-financial-aid",
+          "https://admissions.dartmouth.edu/news/2022/01/dartmouth-adopts-need-blind-international-admissions",
+          "https://admissions.dartmouth.edu/glossary-question/if-english-not-my-first-language-am-i-required-submit-language-proficiency-test"
+        ],
+        "application_link": "https://admissions.dartmouth.edu/estimate-your-cost/apply-financial-aid",
+        "catalogue_url": null,
+        "official_updates_url": "https://financialaid.dartmouth.edu/policies-resources/news-and-announcements",
+        "deadline_central": "2026-11-01",
+        "deadline_central_display": "1 November 2026 (Early Decision)",
+        "deadline_note": "Early Decision: CSS Profile and IDOC due 1 November 2026, FAFSA due 1 February 2027. Regular Decision: CSS Profile, FAFSA and IDOC all due 1 February 2027. Transfer applicants: all documents due 1 March 2027.",
+        "application_cycle": "2027-2028 cycle (entry fall 2027); the 2027-2028 FAFSA opens 1 October 2026 and parents' 2025 tax documents are used",
+        "status": "OPEN",
+        "status_note": "The Office of Financial Aid's prospective-student pages list the 2027-2028 cycle as active: CSS Profile and supporting documents are being accepted, and the 2027-2028 FAFSA becomes available October 1. The renewal (continuing-student) 2026-2027 application is also open, with offers released on a rolling basis beginning mid-May.",
+        "tuition_coverage_note": "Published wording: 'Direct expenses are tuition, fees, food, and housing' and 'A family earning between $125,000 and $175,000 USD with typical assets can expect a scholarship and/or grants that cover the full cost of tuition per year.' For all qualifying families, 'Dartmouth meets this \"Need\" with a combination of work and scholarships. Financial aid packages will not include a student loan.'",
+        "funding_amount": 78590,
+        "funding_currency": "USD",
+        "funding_period": "per year",
+        "tuition_coverage": true,
+        "living_cost_coverage": true,
+        "travel_coverage": true,
+        "fully_funded": true,
+        "benefits": [
+          "100% of demonstrated need met for all admitted financial aid applicants, regardless of citizenship or entry round",
+          "Financial aid packages will not include a required student loan",
+          "Dartmouth Scholarships are need-based, range from $1,000 to over $80,000 depending on eligibility, and the average scholarship offer for the Class of 2030 was $78,590",
+          "No parent contribution for families with total annual income below $125,000 USD with typical assets",
+          "Scholarship and/or grants covering the full cost of tuition per year for families earning between $125,000 and $175,000 USD with typical assets",
+          "Students receiving need-based aid pay the same net price for a term on a Dartmouth off-campus program as for a term in Hanover"
+        ],
+        "eligibility": [
+          "Admitted Dartmouth undergraduate applicant of any citizenship; the need-blind admissions policy covers all applicants regardless of citizenship, effective with the Class of 2026",
+          "Financial aid must be applied for at the same time as admission; the Financial Aid Office determines need after the Admissions Office selects students to admit",
+          "There is no income cut-off for scholarship consideration at Dartmouth",
+          "Parents' country of residence determines which financial documents an applicant must submit"
+        ],
+        "requirements": [
+          "File the CSS Profile (Dartmouth school code 3351) by the financial aid deadline, or submit the International Student Financial Aid Application (ISFAA) directly to the Financial Aid Office if the CSS fee is a serious hardship - completing the ISFAA is considered equivalent to the CSS Profile and does not change eligibility",
+          "Submit signed copies of all pages of parents' 2025 income tax statements for their country of residence, in English and kept in home currency, with the student's name at the top of each page (employer income statement in English if parents do not file)",
+          "Reapply for financial aid every year of enrollment; renewal requirements are posted in the fall and all materials are due by April 1",
+          "Submit the FAFSA (Dartmouth code 002573) if a U.S. citizen or permanent resident"
+        ],
+        "documents": [
+          "CSS Profile with Dartmouth school code 3351, or the ISFAA submitted directly to the Financial Aid Office",
+          "Signed copies of all pages of parents' income tax statements for the country of residence, in English and in home currency (a separate copy for each parent if they file separately)",
+          "Non-custodial PROFILE Waiver Request Form and Non-Filing Statement for Parents 2027-2028 where applicable",
+          "FAFSA for U.S. citizens and permanent residents (Dartmouth school code 002573)"
+        ],
+        "selection_criteria": [
+          "Cost of Attendance minus Family Contribution equals demonstrated need; each application is evaluated individually and annually",
+          "Families with total annual income below $125,000 USD with typical assets receive a package with no parent contribution",
+          "Aid is awarded only after admission, so financial need plays no part in the admission decision"
+        ],
+        "coverage": [
+          "Direct expenses: tuition, fees, food and housing (billed by Dartmouth)",
+          "Indirect expenses: travel costs, books, supplies, laundry and other personal costs, averaged per student when determining aid eligibility",
+          "A minimum $250 travel allowance is included in the cost of attendance, and international aid packages include an allowance for travel to the U.S.",
+          "Students who receive need-based aid and purchase the Group Health Insurance Plan ($5,216 in 2026-2027) receive at least half of the plan cost in additional scholarship funds"
+        ],
+        "application_method": [
+          "Apply for admission and financial aid at the same time, filing the CSS Profile under code 3351 (or the ISFAA straight to the Financial Aid Office)",
+          "Send parents' income tax documents for the country of residence directly to the Financial Aid Office, using encrypted email, mail or fax for sensitive documents",
+          "Track the file in Dartmouth's Application Management System, where the full financial aid application status becomes visible in late November"
+        ],
+        "application_route": "Admission application plus the CSS Profile (code 3351) or ISFAA filed with the Financial Aid Office; there is no separate scholarship application.",
+        "study_mode": "Full-time undergraduate enrollment on the D-Plan; a standard academic year is three terms and the cost of attendance is published on that basis, with aid prorated for 2-term or 4-term enrollment",
+        "citizenship_residency": "No citizenship restriction: aid is available to admitted students regardless of citizenship or entry round, and parents' country of residence determines the required documents",
+        "international_eligibility": "Yes - Dartmouth extended need-blind admissions to all international citizens beginning with the Class of 2026, making it one of six U.S. institutions to pair need-blind admissions for all applicants with meeting 100% of demonstrated need regardless of citizenship",
+        "subject_or_agency_requirement": "None published - Dartmouth Scholarships are need-based and not restricted by field of study; all aid recipients complete one survey for endowed-fund pairings, with no separate application",
+        "research_requirement": null,
+        "duration": "Full undergraduate degree; aid is awarded annually and must be renewed each year (renewal applications due April 1)",
+        "description": "Dartmouth College meets 100% of the demonstrated need of every admitted financial aid applicant, regardless of citizenship or entry round, using a package of scholarship or grant funding plus student employment that never includes a required student loan. Need equals the cost of attendance minus the family contribution, with no income cut-off for scholarship consideration.",
+        "region": "North America (Hanover, New Hampshire, United States)",
+        "program_type": "Need-based undergraduate financial aid (Dartmouth Scholarship)",
+        "english_requirement": "An English proficiency exam score from TOEFL, IELTS, Duolingo or Cambridge English is required if the applicant's first language is not English and their curriculum has not been delivered in English for at least two years. Dartmouth states no minimum scores; most successful applicants score above 7 on IELTS, above 135 on Duolingo, above 185 on Cambridge English, or above 100 on TOEFL taken before January 21, 2026 (a 5 or above on TOEFL taken on or after that date). TOEFL iBT Special Home Edition and IELTS Indicator are accepted; TOEFL MyBest scores and TOEFL Essentials are not. An InitialView interview is not required."
+      },
+      "verification": {
+        "source_citations": [
+          "https://financialaid.dartmouth.edu/how-aid-works/how-much-help-will-i-get",
+          "https://financialaid.dartmouth.edu/apply-aid/prospective-transfer-students/types-financial-aid/grants-scholarships",
+          "https://admissions.dartmouth.edu/estimate-your-cost/cost-attendance",
+          "https://financialaid.dartmouth.edu/apply-aid/prospective-transfer-students/how-apply-aid",
+          "https://financialaid.dartmouth.edu/cost-attendance/cost-attendance-2026-2027",
+          "https://admissions.dartmouth.edu/afford/how-aid-works"
+        ],
+        "last_verified_date": "2026-10-10",
+        "verification_status": "confirmed",
+        "confidence": "high",
+        "not_confirmed": [
+          "Final 2027-2028 cost of attendance (only the 2026-2027 figures are published at this point in the cycle)",
+          "An individual applicant's award amount, which Dartmouth states is calculated case by case"
+        ],
+        "notes": "All figures were read directly from Dartmouth's own admissions and financial aid domains: the 100% need-met/no-loan policy and income thresholds, the CSS Profile and ISFAA routes, the November 1 / February 1 / March 1 financial aid deadlines, the 2026-2027 cost of attendance, the Class of 2030 average scholarship offer, and the English proficiency rules."
+      },
+      "applicant_utility": {
+        "summary": "This is not a standalone scholarship you apply for separately: you request aid inside your Dartmouth admission application, so the money is won or lost with the admission file. The binding document is the CSS Profile (Dartmouth code 3351) due 1 November for Early Decision and 1 February for Regular Decision, with parents' tax papers from your country of residence following in English and in home currency. Because Dartmouth is need-blind for international applicants and meets full need with no loans, a family income under $125,000 means no parent contribution at all, while $125,000-$175,000 typically yields a full-tuition grant package.",
+        "best_fit": "Applicants from any country whose families cannot meet Dartmouth's roughly $98,000 annual cost of attendance, particularly families with income under $125,000 and typical assets.",
+        "application_readiness_checklist": [
+          "Submit the CSS Profile with Dartmouth code 3351 on the same day you file the admission application, not after a decision arrives",
+          "Collect signed copies of all pages of both parents' most recent tax statements, translated to English but left in home currency, with your name written at the top of every page",
+          "If your parents do not file taxes, request an employer statement verifying annual income in English before the deadline",
+          "Request a counselor or school-official confirmation early if you need predicted IB or A-Level scores to satisfy the testing requirement",
+          "Register for TOEFL, IELTS, Duolingo or Cambridge English only if your prior curriculum was not taught in English for at least two years"
+        ],
+        "common_rejection_risks": [
+          "Filing an incomplete aid application: the CSS Profile (or ISFAA) missing the November 1 or February 1 deadline removes you from need-based funding for that round",
+          "Tax documents that are unsigned, partly missing, converted into USD, or not in English, which stall the file past the offer date",
+          "Assuming no filing is needed when parents are non-filers and skipping the Non-Filing Statement for Parents",
+          "Forgetting that aid is re-evaluated every year and missing the April 1 renewal deadline, which can shrink or void a sophomore-year award",
+          "Reporting outside or private scholarships late, since they first cut your work expectation and then reduce Dartmouth scholarship dollar for dollar"
+        ],
+        "estimated_uncovered_costs": "The calculated family contribution remains with the family, including the expected student contribution from summer or leave-term earnings (about $1,000-$2,500 per year, and a $1,500 student work contribution in later years for most international students). Out-of-pocket items not billed by the College - a required computer ($1,700 in 2026-2027), health insurance if you do not certify comparable coverage ($5,216, with at least half added as scholarship for aid recipients who buy it), and personal expenses - still need cash on hand, and any loan for these is at the family's discretion rather than required.",
+        "document_audit": [
+          "Parents filing separately means a full set of documents for each parent, not one combined packet",
+          "Documents sent by ordinary email risk exposure; Dartmouth requires encrypted transfer, mail or fax for sensitive financial records",
+          "CSS Profile corrections can be made only once after submission, so review household income and asset figures with a parent before filing",
+          "The ISFAA route exists only where the CSS Profile fee is a serious hardship, and the form still goes directly to the Financial Aid Office",
+          "Keep every tax document from the correct year: 2025 statements for the 2027-2028 cycle"
+        ],
+        "alerts": [
+          "Early Decision is binding, and its November 1 aid deadline arrives before most Regular Decision applicants even start the CSS Profile",
+          "The 2027-2028 FAFSA opens October 1 but only matters for U.S. citizens and permanent residents - international applicants should not wait for it",
+          "The published average scholarship offer of $78,590 is an average for the Class of 2030, not a guaranteed amount; individual awards are calculated case by case",
+          "There is no income cut-off for aid consideration, so higher-income families with unusual circumstances should still apply",
+          "Aid travels with you on Dartmouth off-campus programs, but transfer terms (non-partner schools) receive no Dartmouth scholarship, so plan those carefully"
+        ],
+        "submission_workflow": "File the admission application and CSS Profile (or ISFAA) together, send tax documents to the Financial Aid Office, watch the Application Management System from late November for outstanding items, then receive the aid offer alongside the admission decision."
+      }
+    }
+  ]
+}

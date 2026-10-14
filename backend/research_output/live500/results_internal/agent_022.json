@@ -1,0 +1,134 @@
+{
+  "agent": "agent_022",
+  "records": [
+    {
+      "id": 69,
+      "official": {
+        "official_source_urls": [
+          "https://www.cambridgetrust.org/scholarship/cambridge-international-scholarship",
+          "https://www.cambridgetrust.org/postgraduate-applicants/",
+          "https://www.cambridgetrust.org/find-a-scholarship/"
+        ],
+        "application_link": "https://www.postgraduate.study.cam.ac.uk/application-process/applicant-portal-and-self-service-account",
+        "catalogue_url": "https://www.postgraduate.study.cam.ac.uk/courses",
+        "official_updates_url": "https://www.cambridgetrust.org/postgraduate-applicants/",
+        "deadline_central": null,
+        "deadline_central_display": null,
+        "deadline_note": "No separate scholarship application exists; the University admission application must be submitted by the funding deadline specific to your course, which is different from the application deadline and is listed in the Postgraduate Course Directory. The Trust's awarding period runs from mid-February to the end of July.",
+        "application_cycle": "2027/28 (courses starting in the academic year 2027/28)",
+        "status": "OPEN",
+        "status_note": "The Trust's Find a scholarship page is currently listing awards for courses starting in the academic year 2027/28; funding decisions run from mid-February to the end of July each year",
+        "tuition_coverage_note": "Published value: 'University tuition fee (International rate)' together with 'Annual maintenance (sufficient for a single person)', student visa and Student Immigration Health Surcharge",
+        "funding_amount": null,
+        "funding_currency": null,
+        "funding_period": null,
+        "tuition_coverage": true,
+        "living_cost_coverage": true,
+        "travel_coverage": null,
+        "fully_funded": true,
+        "benefits": [
+          "University tuition fee at the International rate",
+          "Annual maintenance sufficient for a single person",
+          "Student visa cost",
+          "Student Immigration Health Surcharge",
+          "Various additional benefits"
+        ],
+        "eligibility": [
+          "From a country other than the United Kingdom or Ireland",
+          "Highly ranked by the prospective Cambridge department",
+          "Applying at Masters (MPhil, MASt, LLM, MCL, MAcc, MRes, MEd, MCEP, MLitt, MPhil+PhD, MRes+PhD) or PhD level",
+          "Not applying to premium level courses such as the MBA or MFin, or to levels the Trust does not fund such as AdvDip, BusD, EMBA, Global EMBA, MSt, MV, PGCert, PGDip or the six-year part-time MD",
+          "Not already holding a degree at or above the level applied for, except a second MPhil required by a department before PhD consideration",
+          "Not part-way through a course at Cambridge, unless applying for a higher degree after graduation"
+        ],
+        "requirements": [
+          "Submit the Cambridge admission application by the funding deadline for your course, not the application deadline",
+          "Complete the funding section of the application form to express the wish to be considered for funding",
+          "Provide details of significant income from all sources, including salaries, business profit, rents and dividends",
+          "Hold a conditional offer of admission by the time the Trust awards"
+        ],
+        "documents": [
+          "University of Cambridge admission application submitted through the Applicant portal",
+          "Completed funding section of the admissions application form",
+          "References and academic history as required by the University"
+        ],
+        "selection_criteria": [
+          "Academic ability and research potential",
+          "Examination results",
+          "References",
+          "High ranking by the prospective department; the financial situation of applicants does not affect selection for this scholarship"
+        ],
+        "coverage": [
+          "University tuition fee at the International rate",
+          "Annual maintenance sufficient for a single person",
+          "Student visa cost",
+          "Student Immigration Health Surcharge",
+          "Various additional benefits"
+        ],
+        "application_method": [
+          "No separate scholarship application is required",
+          "Apply for admission to the University of Cambridge via the Applicant portal, submitting by the funding deadline for your course and completing the funding section"
+        ],
+        "application_route": "Single University of Cambridge admission application through the Applicant portal with the funding section completed; no separate Trust application",
+        "study_mode": "Full-time (the Trust also considers part-time study where the University offers it)",
+        "citizenship_residency": "Applicants from countries other than the United Kingdom or Ireland",
+        "international_eligibility": "Open to applicants from outside the UK and Ireland",
+        "subject_or_agency_requirement": "Any subject available at Cambridge except premium rate courses and the degree levels the Trust does not fund",
+        "research_requirement": null,
+        "duration": "For the duration of the funded course; the Trust does not publish a fixed term because it follows the course",
+        "description": "The Cambridge Trust International Scholarships are offered to applicants from countries other than the United Kingdom or Ireland who are highly ranked by their prospective departments within the University, and are awarded on the basis of academic ability and research potential, examination results and references. The scholarships are tenable at any College and in any subject, excluding premium rate courses.",
+        "region": "Europe",
+        "program_type": "Full-cost postgraduate scholarship at the University of Cambridge awarded on academic merit",
+        "english_requirement": null
+      },
+      "verification": {
+        "source_citations": [
+          "https://www.cambridgetrust.org/scholarship/cambridge-international-scholarship",
+          "https://www.cambridgetrust.org/postgraduate-applicants/",
+          "https://www.cambridgetrust.org/find-a-scholarship/"
+        ],
+        "last_verified_date": "2026-10-10",
+        "verification_status": "confirmed",
+        "confidence": "high",
+        "not_confirmed": [
+          "funding_amount",
+          "funding_currency",
+          "funding_period",
+          "travel_coverage",
+          "deadline_central",
+          "english_requirement"
+        ],
+        "notes": "Scholarship listing, postgraduate applicants guidance and Find a scholarship pages were read directly on cambridgetrust.org; value is published in components only with no monetary figure, and deadlines are course-specific in the Postgraduate Course Directory."
+      },
+      "applicant_utility": {
+        "summary": "This award pays the full international-rate tuition fee, annual maintenance for a single person, plus visa and health surcharge costs, and unusually for a major scholarship your own finances play no part in selection - only academic ability, research potential, results and references. Because there is no separate form, everything depends on submitting the University admission application by your course's funding deadline with the funding section completed; miss that deadline and you are out of the running for most University funds. Competition runs through departmental ranking, so your transcript and references must place you near the top of your course cohort.",
+        "best_fit": "Top-ranked applicants from outside the UK and Ireland admitted to a funded Masters or PhD course at Cambridge who can meet their course's funding deadline.",
+        "application_readiness_checklist": [
+          "Look up your exact course funding deadline in the Postgraduate Course Directory - it is earlier than the application deadline and varies by course",
+          "Tick the funding section in the Applicant portal; without it you cannot be considered at all",
+          "Prepare income details from all sources including salaries, business profit, rents and dividends before starting the form",
+          "Brief referees early so references land before the funding deadline, not just the admissions deadline",
+          "Keep a conditional offer alive by meeting any outstanding conditions promptly once decisions begin"
+        ],
+        "common_rejection_risks": [
+          "Submitting by the application deadline instead of the earlier, course-specific funding deadline",
+          "Leaving the funding section blank because it looks optional",
+          "Applying for a premium rate course (MBA, MFin) or a level the Trust does not fund",
+          "Applying when you already hold a degree at or above the level sought, other than the permitted second MPhil route"
+        ],
+        "estimated_uncovered_costs": "Not stated as covered: flights and travel to the UK beyond any 'additional benefits' specified in the award letter, dependants' costs, and anything above single-person maintenance such as family accommodation.",
+        "document_audit": [
+          "Income disclosure must cover all sources including business profit, rents and dividends, not just salary",
+          "If you hold a higher degree you must check the Trust's exception rules before assuming eligibility",
+          "Do not wait for a separate scholarship call - there is none; missing the funding deadline in the admissions form is the single fatal error"
+        ],
+        "alerts": [
+          "The Trust cannot discuss your departmental ranking, so no amount of email will reveal your position",
+          "Unsuccessful applicants are not notified; if you have not heard by the end of July, assume no award",
+          "Unclaimed awards are reallocated until the end of July, so staying eligible and responsive matters even late in the cycle"
+        ],
+        "submission_workflow": "One University admission application via the Applicant portal with the funding section completed by the course funding deadline; the Trust awards from mid-February to the end of July."
+      }
+    }
+  ]
+}

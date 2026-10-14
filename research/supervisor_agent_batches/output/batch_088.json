@@ -1,0 +1,153 @@
+[
+  {
+    "scholarship_id": 696,
+    "outcome": "not_applicable",
+    "professors": [],
+    "notes": "Binational government exchange scholarship administered by COMEXUS (Comision Mexico-Estados Unidos para el Intercambio Educativo y Cultural) together with the Fulbright Program. No host institution is attached to the award and no supervising professor is named anywhere on the official programme page: the official page states that 'Candidates will be responsible for applying to a graduate degree program at a Mexican university or academic institution' and must secure an affiliation letter and admission themselves, so supervision is determined only after enrolment at whatever Mexican institution the individual grantee selects. Verified live on https://www.comexus.org.mx/becas_para_estadounidenses/degree (HTTP 200)."
+  },
+  {
+    "scholarship_id": 697,
+    "outcome": "verified_supervisors",
+    "professors": [
+      {
+        "canonical_name": "Zachary Lippman",
+        "title": "Professor and HHMI Investigator; Jacob Goldfield Professor of Genetics; Director of Graduate Studies, School of Biological Sciences",
+        "institution_name": "Cold Spring Harbor Laboratory",
+        "department_name": "School of Biological Sciences (SBS), Cold Spring Harbor Laboratory Graduate School",
+        "official_profile_url": "https://www.cshl.edu/research/faculty-staff/zachary-lippman/",
+        "official_email": "lippman@cshl.edu",
+        "official_email_verified": true,
+        "lab_url": "http://lippmanlab.cshl.edu/",
+        "personal_academic_url": null,
+        "research_areas": [
+          "Plant developmental genetics",
+          "Meristem and stem cell biology",
+          "Genome editing and crop improvement"
+        ],
+        "research_keywords": [
+          "plant developmental genetics",
+          "phase transitions",
+          "flowering time",
+          "inflorescence branching",
+          "heterosis",
+          "meristems",
+          "crop yield",
+          "genome editing"
+        ],
+        "relationship_type": "program_faculty",
+        "evidence_source_url": "https://www.cshl.edu/phd-program/research-faculty/",
+        "evidence_source_type": "official_programme_page",
+        "evidence_quote_or_summary": "SBS Research Faculty listing on the CSHL Ph.D. Programme site: 'Professor & HHMI Investigator Jacob Goldfield Professor of Genetics Director of Graduate Studies plant developmental genetics, mechanisms of phase transitions for flowering time and inflorescence branching, heterosis Zachary Lippman'. His official CSHL faculty profile confirms 'Zachary Lippman, Professor & HHMI Investigator, Jacob Goldfield Professor of Genetics, Director of Graduate Studies' and describes the lab: 'My research team studies when and where, and how many branches, flowers, and fruits are produced on plants.'",
+        "confidence": 95,
+        "availability": {
+          "scope": "phd_supervision",
+          "state": "verified_yes",
+          "source_url": "https://www.cshl.edu/phd-program/research-faculty/"
+        }
+      },
+      {
+        "canonical_name": "Lloyd Trotman",
+        "title": "Professor; Cancer Center Associate Director of Education",
+        "institution_name": "Cold Spring Harbor Laboratory",
+        "department_name": "School of Biological Sciences (SBS), Cold Spring Harbor Laboratory Graduate School",
+        "official_profile_url": "https://www.cshl.edu/research/faculty-staff/lloyd-trotman/",
+        "official_email": "trotman@cshl.edu",
+        "official_email_verified": true,
+        "lab_url": "https://www.trotmanlab.org/",
+        "personal_academic_url": null,
+        "research_areas": [
+          "Cancer modelling and treatment",
+          "Tumour progression and metastasis",
+          "Metabolism and signal transduction"
+        ],
+        "research_keywords": [
+          "cancer modeling and treatment",
+          "senescence",
+          "tumor progression",
+          "cancer visualization",
+          "PTEN regulation",
+          "metastatic prostate cancer",
+          "whole organ imaging",
+          "redox homeostasis"
+        ],
+        "relationship_type": "potential_supervisor",
+        "evidence_source_url": "https://www.cshl.edu/phd-program/research-faculty/",
+        "evidence_source_type": "official_programme_page",
+        "evidence_quote_or_summary": "SBS Research Faculty listing on the CSHL Ph.D. Programme site: 'Professor Cancer Center Associate Director of Education cancer modeling and treatment, senescence and tumor progression, cancer visualization, PTEN regulation Lloyd Trotman Cancer Center Member'. His official CSHL faculty profile restates the title and lab focus: 'We pioneered generation of a unique genetic mouse model for therapy and analysis of metastatic prostate cancer.'",
+        "confidence": 88,
+        "availability": {
+          "scope": "phd_supervision",
+          "state": "verified_yes",
+          "source_url": "https://www.cshl.edu/phd-program/how-to-apply/"
+        }
+      },
+      {
+        "canonical_name": "Anthony Zador",
+        "title": "Professor; The Alle Davis and Maxine Harrison Professor of Neurosciences",
+        "institution_name": "Cold Spring Harbor Laboratory",
+        "department_name": "School of Biological Sciences (SBS), Cold Spring Harbor Laboratory Graduate School",
+        "official_profile_url": "https://www.cshl.edu/research/faculty-staff/anthony-zador/",
+        "official_email": "zador@cshl.edu",
+        "official_email_verified": true,
+        "lab_url": "http://zadorlab.cshl.edu/",
+        "personal_academic_url": null,
+        "research_areas": [
+          "Neural circuits and systems neuroscience",
+          "Connectomics",
+          "Molecular tool development"
+        ],
+        "research_keywords": [
+          "neural circuits",
+          "sensory processing",
+          "attention and decision making",
+          "connectomics",
+          "auditory cortex",
+          "autism",
+          "in vivo electrophysiology",
+          "sequencing-based mapping"
+        ],
+        "relationship_type": "potential_supervisor",
+        "evidence_source_url": "https://www.cshl.edu/phd-program/research-faculty/",
+        "evidence_source_type": "official_programme_page",
+        "evidence_quote_or_summary": "SBS Research Faculty listing on the CSHL Ph.D. Programme site: 'Professor The Alle Davis and Maxine Harrison Professor of Neurosciences neural circuits, sensory processing, attention and decision making, attention, molecular tool development, connectomics Anthony Zador'. His official CSHL faculty profile restates the title and lab focus: 'My lab studies how circuitry in the brain gives rise to complex behaviors ... We study how the auditory cortex processes sound, and how it is interrupted in autism.'",
+        "confidence": 88,
+        "availability": {
+          "scope": "phd_supervision",
+          "state": "verified_yes",
+          "source_url": "https://www.cshl.edu/phd-program/how-to-apply/"
+        }
+      }
+    ],
+    "notes": "Funding is institution-specific (CSHL endowment pays all tuition and provides a ~$50,000/yr stipend), so the supervising pool is the SBS Research Faculty listed on the Ph.D. Programme's own faculty page. Max 3 professors recorded. NOTE ON EMAILS: CSHL publishes addresses behind Cloudflare email protection; the address is embedded in, and rendered from, the institutional profile page itself (data-cfemail attribute), e.g. lippman@cshl.edu, trotman@cshl.edu, zador@cshl.edu - no address was guessed or constructed. NOTE ON AVAILABILITY: the programme admits centrally, per the official FAQ ('All students must be admitted through the Program; an individual professor cannot offer a student admission to the School'), and students later join a research lab ('Once students join a research lab, they receive an $2,000 per year research cost allowance, intended to help support their thesis work, paid to their lab'), so these are potential thesis supervisors rather than pre-assigned supervisors. The SBS Research Faculty page states 'Current faculty members lead cutting-edge laboratories in a broad range of topics.'"
+  },
+  {
+    "scholarship_id": 698,
+    "outcome": "not_applicable",
+    "professors": [],
+    "notes": "The Posse Foundation is a non-profit foundation that awards full-tuition scholarships distributed across 60+ partner colleges and universities reached through a high-school/BCO Dynamic Assessment Process nomination. No single institution is attached to the award and no supervising professor is named on the official Posse nomination page. Verified live on https://www.possefoundation.org/recruiting-students/the-nomination-process (HTTP 200); no @ professor email or named academic appears on that page."
+  },
+  {
+    "scholarship_id": 699,
+    "outcome": "not_applicable",
+    "professors": [],
+    "notes": "National government tuition-benefit scheme of the Ministerio de Educacion de Chile (Mineduc), published on ChileAtiende and administered nationally through the FUAS. Benefit is delivered as reserved places (cupos) of Beca Bicentenario, Beca Juan Gomez Millas and Beca Nuevo Milenio across any accredited Chilean higher-education institution; no institution is attached to the award and no supervising professor is identified. Verified live on https://www.chileatiende.gob.cl/fichas/36380-beca-para-estudiantes-en-situacion-de-discapacidad (HTTP 200)."
+  },
+  {
+    "scholarship_id": 700,
+    "outcome": "not_applicable",
+    "professors": [],
+    "notes": "National government reparations scholarship of the Ministerio de Educacion de Chile (Mineduc), created by Ley N 19.992 and published on ChileAtiende. It funds the enrolment fee and annual tuition of any officially recognised undergraduate degree and may be transferred to a child or grandchild; no institution is attached to the award and no supervising professor is identified. Verified live on https://www.chileatiende.gob.cl/fichas/2278-beca-de-reparacion-valech (HTTP 200)."
+  },
+  {
+    "scholarship_id": 701,
+    "outcome": "not_applicable",
+    "professors": [],
+    "notes": "National government tuition-benefit scheme of the Ministerio de Educacion de Chile (Mineduc), published on ChileAtiende and administered nationally through the FUAS. It provides a $500,000 arancel benefit for children of education professionals at any accredited Chilean higher-education institution; no institution is attached to the award and no supervising professor is identified. Verified live on https://www.chileatiende.gob.cl/fichas/15134-beca-para-hijas-e-hijos-de-profesionales-de-la-educacion (HTTP 200)."
+  },
+  {
+    "scholarship_id": 702,
+    "outcome": "not_applicable",
+    "professors": [],
+    "notes": "National government tuition-fee-waiver scheme of the Ministerio de Educacion de Chile (Mineduc), published on ChileAtiende and administered nationally through the FUAS. It covers enrolment at any CFT, IP, university or Armed Forces school, allocated per admission cycle; no institution is attached to the award and no supervising professor is identified. Verified live on https://www.chileatiende.gob.cl/fichas/15118-beca-nuevo-milenio (HTTP 200)."
+  }
+]

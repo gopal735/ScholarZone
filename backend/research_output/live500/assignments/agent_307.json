@@ -1,0 +1,84 @@
+{
+ "agent": "agent_307",
+ "assignment_count": 1,
+ "scholarships": [
+  {
+   "id": 688,
+   "title": "Becas Nacionales de Inclusión 2026 (A. Becas de Licenciatura para Jefas de Familia; B. Apoyos Complementarios para Personas Indígenas; C. Apoyos Complementarios para Personas con Discapacidad)",
+   "country": "Mexico",
+   "degree": "Bachelor's, Master's, PhD",
+   "funding_label": "Partially Funded",
+   "status": "upcoming",
+   "official_source": "Secretaría de Ciencia, Humanidades y Tecnología (SECIHTI), Gobierno de México",
+   "official_source_url": "https://secihti.mx/convocatoria/becas-nacionales/convocatoria-becas-nacionales-de-inclusion-2026",
+   "application_link": "https://secihti.mx/convocatoria/becas-nacionales/convocatoria-becas-nacionales-de-inclusion-2026",
+   "catalogue_url": "https://secihti.mx/convocatoria_categoria/becas-nacionales",
+   "official_updates_url": "https://secihti.mx/convocatoria/becas-nacionales/convocatoria-becas-nacionales-de-inclusion-2026",
+   "existing": {
+    "funding_amount": null,
+    "funding_currency": null,
+    "funding_period": null,
+    "tuition_coverage": 0,
+    "living_cost_coverage": null,
+    "travel_coverage": null,
+    "fully_funded": 0,
+    "description": null,
+    "eligibility": [
+     "Track A: Mexican nationality, Heads of Family (Jefas de Familia) — see Términos de Referencia A for the full definition",
+     "Track B: Mexican nationality, self-identified as indigenous, and current holder of a SECIHTI Beca de Posgrado Nacional",
+     "Track C: Mexican nationality, person with a disability, and current holder of a SECIHTI Beca de Posgrado Nacional"
+    ],
+    "eligibility_summary": "Three separate tracks, each with its own Términos de Referencia: (A) bachelor's scholarships for Mexican single mothers who head the family; (B) supplementary support for Mexican indigenous people who already hold a SECIHTI national postgraduate scholarship; (C) supplementary support for Mexican people with disabilities who already hold a SECIHTI national postgraduate scholarship.",
+    "benefits": [
+     "Track A: Becas de Licenciatura para Jefas de Familia de Nacionalidad Mexicana",
+     "Track B: Apoyos Complementarios para Personas Indígenas de Nacionalidad Mexicana]",
+     "Track C: Apoyos Complementarios para Personas con Discapacidad de Nacionalidad Mexicana"
+    ],
+    "coverage": [
+     "Track A: unspecified on the convocatoria page — the amounts and what they pay for are set out in Términos de Referencia A, which is a PDF that could not be read",
+     "Track B: supplementary ('Apoyo Complementario') on top of an existing SECIHTI national postgraduate scholarship; coverage set out in Términos de Referencia B (PDF, not read)",
+     "Track C: supplementary ('Apoyo Complementario') on top of an existing SECIHTI national postgraduate scholarship; coverage set out in Términos de Referencia C (PDF, not read)"
+    ],
+    "requirements": [
+     "Complete the SECIHTI online application process described in the published user manuals (Proceso de Solicitud de Becas y Apoyos Complementarios Nacionales Inclusión 2026)",
+     "Submit the official application formats: Formato MBP-MJF for Track A applicants",
+     "Submit the reporting formats FAC-MMJF, FAC-PI and FAC-PDISC as applicable",
+     "Register a bank account through the SECIHTI account-registration procedure before any payment",
+     "Meet the specific requirements of the relevant Términos de Referencia"
+    ],
+    "documents": [
+     "Formato MBP-MJF (application formats, published as PDF on the convocatoria page)",
+     "SECIHTI bank-account registration, via the published Proceso de Registro de Cuentas Bancarias manual"
+    ],
+    "english_requirement": null,
+    "application_method": [
+     "Online application using the SECIHTI BECAS platform, following the published user manuals"
+    ],
+    "selection_notes": "The convocatoria page does not publish selection criteria; they are in the three Términos de Referencia PDFs.",
+    "best_fit": "Mexican single mothers entering a bachelor's programme (Track A), and Mexican indigenous people or people with disabilities who already hold a SECIHTI national postgraduate scholarship and need a top-up (Tracks B and C).",
+    "notes": "The official page still displays 'Estatus de la convocatoria: Abierta' even though the stated closing date (25 September 2026) has passed, so treat the status label as stale. Three Avisos were published (18 August 2026 and two on 17 September 2026) adjusting the calendar for Tracks A, B and C respectively; those PDFs adjust dates but do not extend the window past 25 September 2026.",
+    "duration": "One academic cycle per award; renewal is handled through the SECIHTIbecas programme manuals (Trámite de Conclusión de la Beca / Proceso de Renovación), which are published as PDFs on the convocatoria page and were not read.",
+    "application_period": "2026 cycle: 29 June 2026 to 25 September 2026 (official wording: \"Inicio de recepción de solicitudes: lunes, 29 junio 2026\"; \"Conclusión de recepción de solicitudes: viernes, 25 septiembre 2026 - 11:59 PM\" hora local CDMX).",
+    "deadline_display": "The 2026 call closed on 25 September 2026; the official page shows no date for the next cycle.",
+    "deadline_date": null,
+    "region": "Latin America",
+    "program_type": "Government scholarship",
+    "applicant_utility": null,
+    "official_details": null
+   },
+   "missing_fields": [
+    "funding_amount",
+    "funding_currency",
+    "funding_period",
+    "living_cost_coverage",
+    "travel_coverage",
+    "description",
+    "english_requirement",
+    "deadline_date",
+    "applicant_utility",
+    "official_details"
+   ]
+  }
+ ],
+ "result_file": "C:\\Users\\GopaL\\Desktop\\Projects folder\\ScholarZone\\backend\\research_output\\live500\\results\\agent_307.json"
+}

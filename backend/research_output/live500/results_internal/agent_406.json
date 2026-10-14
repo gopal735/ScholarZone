@@ -1,0 +1,231 @@
+{
+  "agent": "agent_406",
+  "records": [
+    {
+      "id": 370,
+      "official": {
+        "official_source_urls": [
+          "https://www.unipd.it/en/padua-international-excellence-scholarship-programme"
+        ],
+        "application_link": "https://www.unipd.it/en/padua-international-excellence-scholarship-programme",
+        "catalogue_url": "https://www.unipd.it/en/second-cycle-degrees-taught-english",
+        "official_updates_url": "https://www.unipd.it/en/news",
+        "deadline_central": null,
+        "deadline_central_display": null,
+        "deadline_note": "There is no dedicated deadline: applicants who apply to an English-taught degree at the University of Padova within the deadline set for admission are automatically considered for the scholarship. The 2026-2027 call for applications for scholarships for international students enrolling in English-taught degree programmes is published on the University website, and the University states that more information about Padua International Excellence Scholarships will be available in the Calls for Applications that will be published in November 2026, with the first application window for the 2027/28 academic year closing on 15 November 2026.",
+        "application_cycle": "Annual, tied to the degree programme admission calls; awards are available in all English-taught degree programmes including single-cycle second-cycle",
+        "status": "OPEN",
+        "status_note": "The University publishes the call for applications for scholarships for international students enrolling in English-taught degree programmes at the University of Padua (A.Y. 2026/2027) and states that 'Available scholarships: Call for applications for Scholarships for international students enrolling in English-taught Degree programmes at the University of Padua (A.Y. 2026/2027)'.",
+        "tuition_coverage_note": "The University states that beneficiaries of a Padua International Excellence Scholarship are only required to pay the regional fee and the revenue stamp for each academic year.",
+        "funding_amount": 8000,
+        "funding_currency": "EUR",
+        "funding_period": "per academic year",
+        "tuition_coverage": true,
+        "living_cost_coverage": true,
+        "travel_coverage": false,
+        "fully_funded": true,
+        "benefits": [
+          "A scholarship worth €8,000.00 (gross)",
+          "Exemption from student fees for each academic year",
+          "Recipients pay only the regional fee and the revenue stamp for each academic year"
+        ],
+        "eligibility": [
+          "Applicants who do not hold Italian citizenship, and who have not applied for Italian citizenship; applicants with dual citizenship, one of which is Italian, are not eligible",
+          "Applicants who hold a non-Italian secondary diploma for bachelor's and single-cycle degree programmes, or a non-Italian academic qualification for master's degree programmes",
+          "Applicants who are not currently resident in Italy",
+          "Applicants who apply to an English-taught degree at the University of Padova within the deadline set for admission: there is no separate application procedure, so eligibility for the scholarship depends on eligibility for admission"
+        ],
+        "requirements": [
+          "Apply to an English-taught degree at the University of Padova within the admission deadline",
+          "Accept both the admission offer and the scholarship offer",
+          "Move the place of residence to Padua and hold an IBAN linked to a bank account or prepaid card held or co-held by the student, as payment is made by bank transfer"
+        ],
+        "documents": [
+          "The degree programme admission application and its supporting documents; no separate scholarship file is requested"
+        ],
+        "selection_criteria": [
+          "Selection by the Teaching Committee of each degree programme on the basis of academic excellence",
+          "Mainly reserved for applicants who apply in the first call for admission, or secondarily the second call if places remain",
+          "Evaluation of the quality and results of the previous academic career"
+        ],
+        "coverage": [
+          "€8,000.00 gross per academic year, paid in two instalments of €4,000.00 gross each",
+          "Exemption from student fees for each academic year"
+        ],
+        "application_method": [
+          "Submit the degree programme admission application, which doubles as the scholarship application",
+          "Wait for the selection by the Teaching Committee of the degree programme",
+          "Accept the admission offer and the scholarship offer",
+          "Transfer residence to Padua and provide the IBAN to receive the instalments"
+        ],
+        "application_route": "Apply to an English-taught degree programme; the degree application is the scholarship application, with no separate form.",
+        "study_mode": null,
+        "citizenship_residency": "Applicants must not hold Italian citizenship, including dual citizenship with Italy, and must not currently reside in Italy",
+        "international_eligibility": "Yes - the scholarship is reserved for international applicants without Italian citizenship who are not currently resident in Italy",
+        "subject_or_agency_requirement": "English-taught degree programmes at the University of Padova, including single-cycle second-cycle programmes, as identified in the relevant call for applications",
+        "research_requirement": null,
+        "duration": "The duration of the degree programme: 2 years for master's, 3 years for bachelor's and single-cycle degree programmes",
+        "description": "The University of Padua awards up to 76 Padua International Excellence Scholarships worth €8,000.00 gross each, plus exemption from student fees, to talented applicants who enrol in bachelor's, master's or single-cycle degree programmes taught in English, including English-taught single-cycle second-cycle programmes.",
+        "region": "Europe",
+        "program_type": "University excellence scholarship for international students on English-taught degree programmes",
+        "english_requirement": null
+      },
+      "verification": {
+        "source_citations": [
+          "https://www.unipd.it/en/padua-international-excellence-scholarship-programme"
+        ],
+        "last_verified_date": "2026-10-10",
+        "verification_status": "confirmed",
+        "confidence": "high",
+        "not_confirmed": [
+          "english_requirement, which the programme page does not state",
+          "eligible_course_list and eligible_subjects, which the call for applications publishes but the programme page does not",
+          "deadline_central, which follows the degree programme admission deadlines rather than the scholarship"
+        ],
+        "notes": "This is a second catalogue entry for the same University of Padua programme as id 136. Award value, number of scholarships, fee exemption, citizenship and residency conditions, the absence of a separate application form, selection by Teaching Committees and the two €4,000 instalments were read from the University of Padua programme page on 2026-10-10. The pre-existing value of english_requirement in the catalogue was the placeholder text 'Branch', which the official pages do not support; it has been set to null and listed under not_confirmed."
+      },
+      "applicant_utility": {
+        "summary": "Up to 76 awards of €8,000 gross a year plus a student-fee waiver for international students admitted to an English-taught Padua degree, paid in two €4,000 instalments, and available across English-taught including single-cycle second-cycle programmes. Because there is no scholarship application, the whole competition is your degree application, so the deadline that matters is the admission deadline of the programme you choose and applying in the first call is a real advantage. You must be ready to accept both offers and to move your residence to Padua with an Italian or SEPA IBAN before any cash reaches you.",
+        "best_fit": "Non-Italian, non-Italy-resident applicants with an outstanding academic record applying in the first admission call to an English-taught Padua degree, including single-cycle second-cycle programmes.",
+        "application_readiness_checklist": [
+          "Confirm that your chosen programme is listed as English-taught in the relevant call, including whether it is a single-cycle second-cycle programme",
+          "Apply within the first call for admission, because Teaching Committees start from first-call applicants and only use later calls if places remain",
+          "Prepare to accept the admission offer and the scholarship offer separately, since declining either loses the award",
+          "Plan the transfer of residence to Padua and open an Italian or SEPA bank account, or a prepaid card in your own or joint name",
+          "Reserve the regional fee and the revenue stamp for each academic year"
+        ],
+        "common_rejection_risks": [
+          "Applying only in a later call, which pushes you behind first-call applicants",
+          "Holding Italian citizenship, including dual citizenship, or currently residing in Italy",
+          "Failing to accept both the admission offer and the scholarship offer",
+          "Earning fewer than 20 credits by 30 November of the following academic year, which revokes the scholarship",
+          "Transferring to another degree programme or university, or withdrawing from studies, which obliges repayment of the amount received",
+          "Being unable to provide an Italian or SEPA IBAN, which blocks disbursement"
+        ],
+        "estimated_uncovered_costs": "The regional fee and revenue stamp for each academic year, living costs in Padua, and travel from home.",
+        "document_audit": [
+          "No separate scholarship file, essay or reference is required - the degree application is the only file",
+          "The non-Italian secondary diploma or non-Italian academic qualification requirement applies at application stage, matching the non-Italian citizenship rule"
+        ],
+        "alerts": [
+          "The 2027/28 call is expected in November 2026 with a first application window closing on 15 November 2026, which is a narrow turnaround for such a substantial award",
+          "Results are published on the University website rather than sent individually",
+          "The 20-credit rule is absolute: fewer than 20 CFU by 30 November revokes the award even after the first instalment has been paid"
+        ],
+        "submission_workflow": "Apply to the English-taught degree within its admission deadline, check the University's admissions results page for the Teaching Committee ranking, accept both the admission and the scholarship, then transfer residence to Padua and register an IBAN to begin receiving the €4,000 instalments."
+      }
+    },
+    {
+      "id": 372,
+      "official": {
+        "official_source_urls": [
+          "https://www.esteri.it/en/servizi-opportunita/opportunita/borse-di-studio/per-cittadini-stranieri/progetti-speciali/italyou-litalia-nel-tuo-futuro/",
+          "https://studyinitaly.esteri.it/ListaBandi"
+        ],
+        "application_link": "https://studyinitaly.esteri.it/ListaBandi",
+        "catalogue_url": "https://www.unistrapg.it/it/studiare-in-un-ateneo-internazionale/corsi-di-laurea-e-laurea-magistrale/italiano-per-l-insegnamento-a-stranieri-itas",
+        "official_updates_url": "https://studyinitaly.esteri.it/ListaBandi",
+        "deadline_central": null,
+        "deadline_central_display": null,
+        "deadline_note": "The Ministry does not publish a closing date on the ITALYOU page. The selection process for scholarship recipients is coordinated by the University for Foreigners of Perugia with the support of its Partner institutions in each target country, and Italian diplomatic missions in those countries play an active role through designated representatives, so the closing date is communicated through those channels. Successful candidates begin on 1 October 2026 for the a.y. 2026-2027 fourth edition.",
+        "application_cycle": "4th Edition, Academic Year 2026-2027; scholarships start on 1 October 2026",
+        "status": "OPEN",
+        "status_note": "The Ministry states that the 4th edition for a.y. 2026-2027 confirms the awarding of 70 new annual scholarships worth €8,000 each, disbursed over 12 monthly instalments, to students from Algeria, Cameroon, Egypt, Libya, Morocco, Senegal and Tunisia, starting 1 October 2026.",
+        "tuition_coverage_note": null,
+        "funding_amount": 8000,
+        "funding_currency": "EUR",
+        "funding_period": "per academic year, paid in 12 monthly instalments",
+        "tuition_coverage": null,
+        "living_cost_coverage": null,
+        "travel_coverage": null,
+        "fully_funded": false,
+        "benefits": [
+          "70 new annual scholarships worth €8,000 each in the 4th edition",
+          "Disbursement over 12 monthly instalments",
+          "Renewal for the following academic year for students who have passed exams worth at least 40 university credits (CFU)"
+        ],
+        "eligibility": [
+          "Young scholars from the programme's target countries: Algeria, Cameroon, Egypt, Ethiopia, Libya, Morocco, Senegal, Somalia, South Africa and Tunisia",
+          "For the 4th edition a.y. 2026-2027, scholarships are awarded to students from Algeria, Cameroon, Egypt, Libya, Morocco, Senegal and Tunisia",
+          "Intention to teach the Italian language in the country of origin on completion of the master's degree",
+          "Enrolment in the master's degree programme ItAS - Italian for Teaching to Foreigners at the University for Foreigners of Perugia"
+        ],
+        "requirements": [
+          "Participate in the selection process coordinated by the University for Foreigners of Perugia",
+          "For renewal in the following academic year, pass exams worth at least 40 university credits (CFU)"
+        ],
+        "documents": [
+          "The documents requested by the selection process coordinated by the University for Foreigners of Perugia and its partner institutions"
+        ],
+        "selection_criteria": [
+          "The selection process is coordinated by the University for Foreigners of Perugia with the support of its Partner institutions in each of the programme's target countries",
+          "Italian diplomatic missions in those countries play an active role in the selection process through designated representatives"
+        ],
+        "coverage": [
+          "€8,000 per annual scholarship, disbursed over 12 monthly instalments"
+        ],
+        "application_method": [
+          "Follow the selection process run by the University for Foreigners of Perugia and its partner institutions in the target country",
+          "Italian diplomatic missions in the target country are involved through designated representatives"
+        ],
+        "application_route": "Apply through the selection process coordinated by the University for Foreigners of Perugia and its partner institutions, with Italian diplomatic missions involved through designated representatives.",
+        "study_mode": null,
+        "citizenship_residency": "The programme targets young scholars from Algeria, Cameroon, Egypt, Ethiopia, Libya, Morocco, Senegal, Somalia, South Africa and Tunisia; the 4th edition covers Algeria, Cameroon, Egypt, Libya, Morocco, Senegal and Tunisia",
+        "international_eligibility": "Yes - the programme is exclusively for young scholars from the listed target countries",
+        "subject_or_agency_requirement": "The master's degree programme ItAS - Italian for Teaching to Foreigners at the University for Foreigners of Perugia",
+        "research_requirement": null,
+        "duration": "One academic year, renewable for the following academic year on passing exams worth at least 40 CFU",
+        "description": "ITALYOU - Italy in your future is a scholarship programme launched by the Ministry of Foreign Affairs and International Cooperation (MAECI) in collaboration with the University for Foreigners of Perugia, within the framework of the Mattei Plan for Africa, offering scholarships to attend the master's degree programme ItAS - Italian for Teaching to Foreigners and to train students who will teach the Italian language in their countries of origin.",
+        "region": "Africa",
+        "program_type": "Government-funded scholarship under the Italian Foreign Ministry's cultural diplomacy programme",
+        "english_requirement": null
+      },
+      "verification": {
+        "source_citations": [
+          "https://www.esteri.it/en/servizi-opportunita/opportunita/borse-di-studio/per-cittadini-stranieri/progetti-speciali/italyou-litalia-nel-tuo-futuro/",
+          "https://studyinitaly.esteri.it/ListaBandi"
+        ],
+        "last_verified_date": "2026-10-10",
+        "verification_status": "confirmed",
+        "confidence": "medium",
+        "not_confirmed": [
+          "deadline_central, which the Ministry does not publish and which is set through the University for Foreigners of Perugia, its partner institutions and the Italian diplomatic missions",
+          "tuition_coverage, living_cost_coverage and travel_coverage, which the ITALYOU page does not state",
+          "english_requirement, which the page does not state",
+          "the 10 target countries on the page versus the 7 countries covered in the 4th edition, so the country list in force for any given edition should be checked with the University for Foreigners of Perugia"
+        ],
+        "notes": "Award value, number of scholarships, 12-monthly-instalment disbursement, 1 October 2026 start, the renewal credit requirement, the target country list, the ItAS master's route and the selection mechanism were all read from the ITALYOU page on esteri.it on 2026-10-10. The official_source_url given in the assignment, https://studyinitaly.esteri.it/en/italyou, returns a 404; the Ministry's ITALYOU page at the URL cited here is the live equivalent."
+      },
+      "applicant_utility": {
+        "summary": "A ministry-funded MAECI scholarship of €8,000 for one academic year, paid in 12 monthly instalments, to study the ItAS master's in Italian for Teaching to Foreigners at the University for Foreigners of Perugia. It is a cultural diplomacy instrument of the Mattei Plan for Africa, designed explicitly to produce Italian teachers in the graduates' home countries, so the intended career path of teaching Italian abroad should be visible in your motivation. Selection is run by Perugia with its partner institutions and designated representatives of the Italian diplomatic mission in your country, which means the route to an application is local and personal rather than a portal you can simply download.",
+        "best_fit": "Young graduates from Algeria, Cameroon, Egypt, Ethiopia, Libya, Morocco, Senegal, Somalia, South Africa or Tunisia who want to teach Italian and can commit to the ItAS master's in Perugia.",
+        "application_readiness_checklist": [
+          "Contact the University for Foreigners of Perugia directly, since the selection process it coordinates is the only route and it is not a MAECI online portal application",
+          "Check with the Italian diplomatic mission or its designated representative in your country whether your country is in the current edition, since the 4th edition lists seven countries while the programme page lists ten",
+          "Prepare a motivation that makes explicit your intention to teach Italian in your country of origin, which is the stated purpose of the programme",
+          "Confirm you can enrol in the ItAS master's at Perugia, since the scholarship is tied to that specific programme",
+          "If you hold a scholarship from the 3rd edition, confirm you have passed exams worth at least 40 CFU to renew for a.y. 2026-2027"
+        ],
+        "common_rejection_risks": [
+          "Coming from a country not included in the edition in force, since the country list has varied from ten countries to seven",
+          "Applying to the Ministry rather than to the university-run selection process, which delays you past the local deadlines",
+          "Missing the locally communicated closing date, since the Ministry does not publish one on the ITALYOU page",
+          "Failing to secure a place on the ItAS master's, without which the scholarship cannot be used",
+          "For 3rd-edition holders, not reaching 40 CFU, which blocks renewal"
+        ],
+        "estimated_uncovered_costs": "The Ministry page does not state what the €8,000 covers, so tuition, accommodation, flights and living costs should all be budgeted from the €8,000 until the selection process confirms otherwise.",
+        "document_audit": [
+          "The document set is defined by the selection process coordinated by the University for Foreigners of Perugia rather than published on the Ministry page",
+          "The programme is run in collaboration with the University for Foreigners of Perugia, so university-level admission documents are part of the file",
+          "The renewal rule is a credit threshold of at least 40 CFU, which is unusually explicit for a third-year continuation"
+        ],
+        "alerts": [
+          "The 4th edition opens with awards starting 1 October 2026, so the local selection must have concluded by late summer",
+          "64 students from the 3rd edition renewed for 2026-2027, which shows the scheme is continuing rather than one-off",
+          "Because it sits inside the Mattei Plan for Africa, the programme's profile and country coverage may shift between editions, so verify the current list rather than relying on this record alone"
+        ],
+        "submission_workflow": "Approach the University for Foreigners of Perugia and its partner institution in your country to learn the local deadline and document set, complete the selection coordinated by Perugia with the Italian diplomatic mission involved, then enrol in the ItAS master's for the 1 October 2026 start."
+      }
+    }
+  ]
+}

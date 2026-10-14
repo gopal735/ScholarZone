@@ -1,0 +1,119 @@
+{
+  "agent": "agent_055",
+  "records": [
+    {
+      "id": 165,
+      "official": {
+        "official_source_urls": [
+          "https://www.uibk.ac.at/studium/organisation/kosten-foerderungen/stipendien/index.html.en",
+          "https://www.uibk.ac.at/studium/organisation/kosten-foerderungen/stipendien/leistungsstipendien/index.html.en"
+        ],
+        "application_link": "https://www.uibk.ac.at/studium/organisation/kosten-foerderungen/stipendien/index.html.en",
+        "catalogue_url": null,
+        "official_updates_url": null,
+        "deadline_central": null,
+        "deadline_central_display": null,
+        "deadline_note": "The page still shows the 2023/24 call: performance-based scholarships were open from 2 September to 4 October 2024; scholarships for scientific theses from 6 to 24 May 2024 and from 16 September to 4 October 2024.",
+        "application_cycle": "2023/2024 academic year (most recent published call)",
+        "status": "CLOSED",
+        "status_note": "The most recent published call is for the 2023/24 academic year and its windows have closed; the page has not yet published the next call.",
+        "tuition_coverage_note": null,
+        "funding_amount": null,
+        "funding_currency": null,
+        "funding_period": null,
+        "tuition_coverage": null,
+        "living_cost_coverage": null,
+        "travel_coverage": null,
+        "fully_funded": false,
+        "benefits": [
+          "Performance-based scholarships awarded under Section 57 of the Austrian Student Support Act (StudFG) to recognise exceptional academic performance",
+          "Scholarships for scientific theses supporting unfinished scientific work",
+          "Application through the LFU:online student platform"
+        ],
+        "eligibility": [
+          "Performance-based scholarships: Austrian citizens, citizens from EEA states and stateless persons granted equal status",
+          "Admission to or enrolment in a degree programme at the University of Innsbruck",
+          "Grade point average no lower than 2.0 for the examinations, courses and written pieces submitted",
+          "A minimum number of semester hours/ECTS credits completed in the year prior to the application, set per faculty"
+        ],
+        "requirements": [
+          "Grade point average of at least 2.0 for the submitted examinations and work",
+          "Faculty-specific ECTS minimums and maximum grade thresholds for the academic year prior to the application"
+        ],
+        "documents": [
+          "Application form for the respective scholarship",
+          "For scholarships for scientific theses: overview of costs, description of the written thesis, financing plan and expert opinion of the thesis supervisor"
+        ],
+        "selection_criteria": [
+          "Exceptional academic performance under Section 57 StudFG and faculty-specific grade thresholds"
+        ],
+        "coverage": [
+          "Performance-based scholarships for exceptional academic performance under Section 57 StudFG",
+          "Financial support for scientific theses (Foerderungsstipendien)"
+        ],
+        "application_method": [
+          "Submit via the students' platform LFU:online within the published window",
+          "Students unable to apply via LFU:online can submit the application personally at the College Service Center"
+        ],
+        "application_route": "Apply via LFU:online (or in person at the College Service Center) during the published call window",
+        "study_mode": null,
+        "citizenship_residency": "Austrian citizens, citizens from EEA states and stateless persons granted equal status",
+        "international_eligibility": "Yes for EEA citizens and stateless persons granted equal status; third-country nationals are not covered by these schemes",
+        "subject_or_agency_requirement": null,
+        "research_requirement": "Scholarships for scientific theses support unfinished Diplom/Master's theses or dissertations and require the expert opinion of the thesis supervisor",
+        "duration": null,
+        "description": "The University of Innsbruck awards performance-based scholarships under Section 57 of the Austrian Student Support Act and scholarships for scientific theses, both applied for through the LFU:online platform, with faculty-specific ECTS minimums and grade thresholds published in the call.",
+        "region": "Europe",
+        "program_type": "University-administered performance-based and thesis scholarships under StudFG",
+        "english_requirement": null
+      },
+      "verification": {
+        "source_citations": [
+          "https://www.uibk.ac.at/studium/organisation/kosten-foerderungen/stipendien/index.html.en",
+          "https://www.uibk.ac.at/studium/organisation/kosten-foerderungen/stipendien/leistungsstipendien/index.html.en"
+        ],
+        "last_verified_date": "2026-10-10",
+        "verification_status": "confirmed",
+        "confidence": "high",
+        "not_confirmed": [
+          "funding_amount - no figure is published on the official pages",
+          "funding_currency",
+          "funding_period",
+          "tuition_coverage",
+          "living_cost_coverage",
+          "travel_coverage",
+          "deadline_date for the current cycle - the page still shows the 2023/24 windows",
+          "english_requirement",
+          "study_mode"
+        ],
+        "notes": "The scholarships hub confirms the two schemes, the LFU:online route and the thesis-scholarship document list (cost overview, thesis description, financing plan, supervisor opinion). The performance-scholarship call page confirms the Section 57 StudFG basis, eligibility groups, the 2.0 GPA rule, faculty-specific ECTS and grade thresholds and the 2 September - 4 October 2024 window. No award amount is published, and the visible call is still for academic year 2023/24."
+      },
+      "applicant_utility": {
+        "summary": "Innsbruck runs two StudFG schemes: performance-based scholarships (Section 57) for a GPA of at least 2.0 with faculty-specific ECTS and grade thresholds, and scholarships for scientific theses that require a cost overview and financing plan. Both go through LFU:online; the published page still shows the 2023/24 call (2 September - 4 October 2024), so check for the current window before applying.",
+        "best_fit": "Austrian and EEA nationals (and equal-status stateless persons) with consistently strong grades, or thesis-stage students who can document thesis-related costs.",
+        "application_readiness_checklist": [
+          "Check that your GPA on the exams you submit is at least 2.0 and inside your faculty's grade threshold",
+          "Confirm the ECTS minimum for the prior year in your faculty's rules - it differs by faculty",
+          "Prepare the thesis-scholarship pack: cost overview, thesis description, financing plan and supervisor opinion",
+          "Watch the scholarships page for the current call - the visible one is still 2023/24"
+        ],
+        "common_rejection_risks": [
+          "Applying as a third-country national - these schemes cover Austrian, EEA and equal-status stateless persons",
+          "Exceeding the maximum study period for performance scholarships (Section 18 StudFG) without a documented reason",
+          "Counting the dissertation inside the ECTS, which the rules exclude",
+          "Submitting outside LFU:online without first contacting the College Service Center"
+        ],
+        "estimated_uncovered_costs": "Living costs and tuition; the thesis scholarship covers defined thesis costs, not general living expenses.",
+        "document_audit": [
+          "Thesis scholarships require the supervisor's expert opinion on the correct faculty-specific form",
+          "Only exams completed between 1 October and 30 September of the relevant window count towards the application"
+        ],
+        "alerts": [
+          "The visible call is for academic year 2023/24 - the current cycle may have different dates",
+          "Joint study programmes with UMIT must be filed at the University of Innsbruck"
+        ],
+        "submission_workflow": "Verify GPA and ECTS thresholds -> apply via LFU:online in the call window -> College Service Center processes -> decision by the responsible working groups."
+      }
+    }
+  ]
+}

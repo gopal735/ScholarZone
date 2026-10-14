@@ -1,0 +1,1368 @@
+{
+  "agent_id": "w1_26a",
+  "shard": "w1-26a",
+  "today": "2026-10-04",
+  "records": [
+    {
+      "target_id": 255,
+      "outcome": "refreshed",
+      "confirm": true,
+      "confirmation_evidence": "Official scholarship page https://www.auckland.ac.nz/en/study/scholarships-and-awards/find-a-scholarship/university-of-auckland-international-student-excellence-scholarship-844-all.html states \"Eligible new international Master's students who receive a conditional or unconditional programme offer for Semester One or Quarter Two 2027 by 20 October 2026 will be invited to apply for this scholarship\" and \"Value: 25% of the value of one year of tuition fees\". The international-students page adds \"21 October 2026 (Semester 1/Quarter 2 2027 intake) - Invitations will be issued on this date to eligible students holding a valid offer.\"",
+      "new_scholarship": {
+        "name": "University of Auckland International Student Excellence Scholarship",
+        "legacy_titles": ["University of Auckland International Student Excellence Scholarship"],
+        "country": "New Zealand",
+        "region": "Oceania",
+        "degree_levels": "Master's",
+        "funding_type": "Partially Funded",
+        "official_source": "University of Auckland",
+        "official_source_url": "https://www.auckland.ac.nz/en/study/scholarships-and-awards/find-a-scholarship/university-of-auckland-international-student-excellence-scholarship-844-all.html",
+        "status": "upcoming",
+        "is_verified": true,
+        "last_verified_date": "2026-10-04",
+        "application_link": "https://www.auckland.ac.nz/en/study/scholarships-and-awards/find-a-scholarship/university-of-auckland-international-student-excellence-scholarship-844-all.html",
+        "official_updates_url": "https://www.auckland.ac.nz/en/study/international-students/scholarships-loans-and-funding/extensive-range-of-scholarships-available.html",
+        "catalogue_url": "https://www.auckland.ac.nz/assets/study/scholarships-and-funding/find-a-scholarship-or-award/regulations/university-of-auckland-international-student-excellence-scholarship.pdf",
+        "program_type": "Tuition fee credit for new international master's students",
+        "duration": "One year",
+        "funding_amount": null,
+        "funding_currency": null,
+        "funding_period": "per year",
+        "deadline": "Invitations will be issued on 21 October 2026 to eligible students to complete a supplementary application form. Supplementary application forms must be submitted online by 4 November 2026 to be considered.",
+        "deadline_date": "2026-11-04",
+        "deadline_precision": "exact",
+        "application_period": "Semester One / Quarter Two 2027 intake; invitations issued 21 October 2026, supplementary forms due 4 November 2026",
+        "eligibility_summary": "New international students who hold a conditional or unconditional offer of admission to an eligible master's programme at Waipapa Taumata Rau by 20 October 2026, with an Admissions GPE of at least 7.0. Excludes students who have already commenced study at the University or have undertaken tertiary study in New Zealand (other than exchange), distance/online enrolments, and most Graduate School of Management programmes.",
+        "eligibility": [
+          "Be an international student",
+          "Have received a conditional or unconditional offer of admission to an eligible masters programme at the University",
+          "Have an Admissions GPE of at least 7.0",
+          "Not have already commenced study at the University",
+          "Not have undertaken any tertiary level study in New Zealand, excluding a student exchange programme",
+          "Not be enrolling as a distance education student, including University of Auckland Online",
+          "Graduate School of Management applicants only eligible for the Master of Applied Finance, Master of Business Analytics or Master of Professional Accounting"
+        ],
+        "coverage": [
+          "Tuition fees credit of up to 25% of the recipient's tuition fees for the first two semesters of their masters degree"
+        ],
+        "benefits": [
+          "Tuition fee credit of up to 25% of one year of tuition fees",
+          "Offered twice a year (Semester One and Semester Two intakes)"
+        ],
+        "required_documents": [
+          "Supplementary scholarship application form submitted through the online application portal",
+          "Personal statement (assessed as a selection criterion)"
+        ],
+        "english_requirement": "Not stated as a separate scholarship requirement on the official scholarship page; international admission English language requirements apply through the offer of admission.",
+        "requirements": [
+          "Hold an offer or conditional offer of admission by 20 October 2026",
+          "Accept the scholarship offer by the date stated in the awarding notification, otherwise the offer is forfeited",
+          "Enrol full-time in the applicable masters programme",
+          "Complete at least two consecutive semesters of study at the University"
+        ],
+        "application_method": [
+          "No separate scholarship application at the time of programme application",
+          "Invited applicants complete a supplementary application form in the online application portal"
+        ],
+        "selection_notes": "Granted by the Vice-Chancellor after receiving a recommendation from a selection committee comprising the Director International (or nominee) and two faculty Associate Deans (International). Selection criteria are academic merit as assessed by the Admissions GPE and the quality of the applicant's personal statement; the applicant's country of origin and alignment of the intended programme with the University's strategic objectives may also inform selection.",
+        "best_fit": "High-achieving new international master's applicants with an Admissions GPE of 7.0 or above who already hold or will hold a conditional offer for Semester One or Quarter Two 2027.",
+        "description": "The University of Auckland International Student Excellence Scholarship is a tuition fee credit of up to 25% of one year of tuition fees for new international master's students at Waipapa Taumata Rau. There is no separate application: eligible students who hold a conditional or unconditional programme offer by 20 October 2026 are invited by the Scholarships Office on 21 October 2026 to complete a supplementary application form, which must be submitted by 4 November 2026. Applicants must be international students with an Admissions GPE of at least 7.0 and must complete at least two consecutive semesters of study or repay the value. The award is made on the recommendation of a selection committee and granted by the Vice-Chancellor."
+      },
+      "programme_detail_official": {
+        "official_source_urls": [
+          "https://www.auckland.ac.nz/en/study/scholarships-and-awards/find-a-scholarship/university-of-auckland-international-student-excellence-scholarship-844-all.html",
+          "https://www.auckland.ac.nz/en/study/international-students/scholarships-loans-and-funding/extensive-range-of-scholarships-available.html",
+          "https://www.auckland.ac.nz/assets/study/scholarships-and-funding/find-a-scholarship-or-award/regulations/university-of-auckland-international-student-excellence-scholarship.pdf"
+        ],
+        "application_link": "https://www.auckland.ac.nz/en/study/scholarships-and-awards/find-a-scholarship/university-of-auckland-international-student-excellence-scholarship-844-all.html",
+        "official_updates_url": "https://www.auckland.ac.nz/en/study/international-students/scholarships-loans-and-funding/extensive-range-of-scholarships-available.html",
+        "catalogue_url": "https://www.auckland.ac.nz/assets/study/scholarships-and-funding/find-a-scholarship-or-award/regulations/university-of-auckland-international-student-excellence-scholarship.pdf",
+        "application_cycle": "Semester One / Quarter Two 2027 intake; invitations issued 21 October 2026, supplementary forms due 4 November 2026",
+        "deadline_central": "2026-11-04",
+        "deadline_central_display": "Supplementary application forms must be submitted online by 4 November 2026 to be considered",
+        "deadline_central_timezone": "Pacific/Auckland",
+        "deadline_note": "No open application exists at the time of verification: invitations are issued on 21 October 2026 only to students who already hold a conditional or unconditional programme offer by 20 October 2026. The scholarship is offered twice a year; the Semester One / Quarter Two 2027 round is the next applicable cycle.",
+        "status": "UPCOMING",
+        "status_note": "Cycle not yet open on 2026-10-04. Invitations go out 21 October 2026 and the supplementary application window closes 4 November 2026. Successful applicants are notified from 30 November 2026 and waitlisted applicants from 14 December 2026.",
+        "funding_amount": null,
+        "funding_currency": null,
+        "funding_period": "per year",
+        "funding_duration": "One year of full-time enrolment (one year of FTE)",
+        "tuition_coverage": true,
+        "tuition_coverage_note": "Partial tuition coverage only: the regulations state the scholarship comprises \"A tuition fees credit of up to 25% of the recipients tuition fees for the first two semesters of their masters degree.\" Living costs, fees and travel are not covered.",
+        "living_cost_coverage": false,
+        "travel_coverage": false,
+        "fully_funded": false,
+        "funding_label": "Tuition fee credit of up to 25% of one year of tuition fees; not a full tuition waiver and no living-cost stipend",
+        "benefits": [
+          "Tuition fee credit of up to 25% of the recipient's tuition fees for the first two semesters of the masters degree",
+          "Number on offer varies; offered twice a year"
+        ],
+        "eligibility": [
+          "Be an international student",
+          "Have received a conditional or unconditional offer of admission to an eligible masters programme at the University",
+          "Have an Admissions GPE of at least 7.0",
+          "Not have already commenced study at the University",
+          "Not have undertaken any tertiary level study in New Zealand, excluding a student exchange programme",
+          "Not be enrolling as a distance education student, including University of Auckland Online",
+          "Graduate School of Management applicants only eligible for Master of Applied Finance, Master of Business Analytics or Master of Professional Accounting"
+        ],
+        "citizenship_residency": "International students only — students who are neither citizens, permanent residents nor resident visa holders of New Zealand or Australia.",
+        "international_eligibility": "Open to new international students from any country; the applicant's country of origin may inform selection.",
+        "degree_levels": ["Master's"],
+        "study_mode": "Full-time on-campus enrolment",
+        "research_requirement": null,
+        "subject_or_agency_requirement": "Faculty/LSRI: All. Any eligible masters programme at Waipapa Taumata Rau, University of Auckland.",
+        "application_method": "No separate application. Eligible applicants are invited by the Scholarships Office on 21 October 2026 and complete a supplementary application form in the online application portal by 4 November 2026.",
+        "application_route": "Online application portal, by invitation only, after holding a conditional or unconditional programme offer",
+        "requirements": [
+          "Hold an offer or conditional offer of admission for Semester One or Quarter Two 2027 by 20 October 2026",
+          "Meet the minimum Admissions GPE of 7.0",
+          "Accept the scholarship offer by the date prescribed in the awarding notification, otherwise the scholarship offer is forfeited",
+          "Receive confirmation of unconditional enrolment in full-time study and pay all tuition and other fees by the last date for adding or deleting courses without a late enrolment fee",
+          "Enrol full-time in the applicable programme during the term of the scholarship"
+        ],
+        "documents": [
+          "Supplementary scholarship application form via the online application portal",
+          "Personal statement"
+        ],
+        "english_requirement": null,
+        "english_requirement_note": "The official scholarship page and current regulations do not state a separate English language requirement for this scholarship; English language proficiency is assessed through admission to the programme.",
+        "selection_criteria": [
+          "Academic merit as assessed by the Admissions GPE",
+          "Quality of the applicant's personal statement"
+        ],
+        "selection_weighting": "Not published; the regulations state academic merit (Admissions GPE) and personal statement quality are the selection criteria, and that country of origin and strategic alignment of the intended programme may also inform selection.",
+        "duration": "One year",
+        "award_holder_conditions": [
+          "Must accept the scholarship offer by the date stated in the awarding notification or the offer is forfeited",
+          "Must complete at least two consecutive semesters of study at the University, otherwise normally required to pay back the full value",
+          "Must use the scholarship funds for costs directly related to study at the University",
+          "Must remain enrolled full-time in the applicable programme for the term of the scholarship"
+        ],
+        "supplements_or_initiatives": [],
+        "official_contacts": {
+          "general": "University of Auckland Scholarships Office via AskAuckland student support: https://uoa.custhelp.com/app/ask/p/307",
+          "email": null
+        },
+        "description": "The University of Auckland International Student Excellence Scholarship provides a tuition fees credit of up to 25% of one year of tuition fees to new international master's students at Waipapa Taumata Rau. Applicants do not apply directly: those holding a conditional or unconditional programme offer for Semester One or Quarter Two 2027 by 20 October 2026 are invited on 21 October 2026 to complete a supplementary application form, due 4 November 2026. Eligibility requires an Admissions GPE of at least 7.0 and exclusion of prior study at the University, prior tertiary study in New Zealand (other than exchange), distance enrolment, and most Graduate School of Management programmes. Selection is by a committee recommendation to the Vice-Chancellor on academic merit and personal statement, and recipients must complete at least two consecutive semesters or repay the value.",
+        "program_type": "Tuition fee scholarship for new international master's students",
+        "region": "Oceania",
+        "coverage": "Partial tuition fees only",
+        "last_verified_date": "2026-10-04"
+      },
+      "programme_detail_applicant_utility": {
+        "application_readiness_checklist": [
+          "Secure a conditional or unconditional offer of admission to an eligible masters programme before 20 October 2026",
+          "Achieve an Admissions GPE of at least 7.0 in your admission assessment",
+          "Watch for the scholarship invitation email on 21 October 2026, including spam and junk folders",
+          "Complete the supplementary application form in the online application portal before 4 November 2026",
+          "Prepare a strong personal statement, which is one of only two named selection criteria",
+          "Confirm your programme is not an excluded Graduate School of Management programme unless it is the Master of Applied Finance, Master of Business Analytics or Master of Professional Accounting"
+        ],
+        "common_rejection_risks": [
+          "Missing the 20 October 2026 offer deadline, which means no invitation is issued",
+          "Admissions GPE below 7.0",
+          "Prior tertiary study in New Zealand (other than a student exchange programme)",
+          "Already having commenced study at the University",
+          "Enrolling as a distance or University of Auckland Online student",
+          "Enrolling in a Graduate School of Management programme other than the three eligible master's programmes",
+          "Failing to accept the scholarship by the date in the awarding notification"
+        ],
+        "estimated_uncovered_costs": [
+          "75% or more of tuition fees, since the award is capped at 25% of one year of tuition",
+          "Student Services Fee beyond the credited amount",
+          "Living costs, accommodation and travel — not covered by this scholarship",
+          "Cost of enrolment in more than one year of study if the programme is longer than one year"
+        ],
+        "document_audit": [
+          "Supplementary application form submitted in the online application portal (not an email attachment)",
+          "Personal statement that directly evidences academic merit and fit with the intended programme",
+          "Conditional or unconditional offer letter dated on or before 20 October 2026",
+          "Passport or evidence of international student status used for admission"
+        ],
+        "alerts": [
+          {
+            "trigger": "Invitation date",
+            "message": "Invitations are issued on 21 October 2026 only. Check spam and junk folders on that date."
+          },
+          {
+            "trigger": "Closing date",
+            "message": "Supplementary application forms must be submitted online by 4 November 2026 to be considered."
+          },
+          {
+            "trigger": "Repayment condition",
+            "message": "Recipients who do not complete at least two consecutive semesters of study normally have to pay back the full value of the scholarship."
+          }
+        ],
+        "submission_workflow": [
+          "Apply for admission and obtain a conditional or unconditional programme offer by 20 October 2026",
+          "Monitor email on 21 October 2026 for the scholarship invitation",
+          "Open the invitation link and complete the supplementary application form in the online portal",
+          "Submit the form before 4 November 2026",
+          "Await outcome notification from 30 November 2026 (successful applicants) or from 14 December 2026 (waitlisted applicants)",
+          "Accept the scholarship by the date stated in the awarding notification"
+        ]
+      },
+      "programme_detail_verification": {
+        "cycle_verified": "Semester One / Quarter Two 2027 intake cycle, verified 2026-10-04",
+        "verification_confidence": 0.92,
+        "official_fields_confirmed": [
+          "name",
+          "degree_levels",
+          "funding_type",
+          "status",
+          "deadline_date",
+          "deadline_precision",
+          "eligibility",
+          "selection_criteria",
+          "duration",
+          "official_source_url"
+        ],
+        "institution_check_required": [
+          "Confirm the applicant's Admissions GPE is 7.0 or above at the point of offer",
+          "Confirm the intended programme is an eligible masters programme and not an excluded Graduate School of Management programme",
+          "Confirm the tuition fee amount for the applicant's programme to calculate the 25% credit"
+        ],
+        "unverified_or_removed_claims": [
+          "funding_amount not published as a currency figure — the official page states only \"25% of the value of one year of tuition fees\", so funding_amount and funding_currency remain null",
+          "Number on offer is published only as \"Varies\"",
+          "No official English language requirement is stated for the scholarship itself",
+          "Stored degree_levels \"Bachelor's, Postgraduate Diploma, Master's\" is contradicted by the current official page, which states \"Applicable study: Masters degree at Waipapa Taumata Rau\"",
+          "Stored deadline_display \"21 October 2026 (Sem 1), 1 April 2026 (Sem 2)\" is contradicted: the current official closing date is 4 November 2026 for the Semester One / Quarter Two 2027 intake",
+          "Stored status \"open\" corrected to \"upcoming\" because invitations are not issued until 21 October 2026",
+          "Stored program_type was an unrelated undergraduate career-pathways marketing sentence and was replaced"
+        ],
+        "source_citations": [
+          "https://www.auckland.ac.nz/en/study/scholarships-and-awards/find-a-scholarship/university-of-auckland-international-student-excellence-scholarship-844-all.html",
+          "https://www.auckland.ac.nz/en/study/international-students/scholarships-loans-and-funding/extensive-range-of-scholarships-available.html",
+          "https://www.auckland.ac.nz/assets/study/scholarships-and-funding/find-a-scholarship-or-award/regulations/university-of-auckland-international-student-excellence-scholarship.pdf"
+        ],
+        "researched_by": "w1_26a"
+      },
+      "logo_override": {
+        "url": "https://www.auckland.ac.nz/etc.clientlibs/uoa-digital/clientlibs/resources/svg/favicon.svg",
+        "page_url": "https://www.auckland.ac.nz/en/study/international-students/scholarships-loans-and-funding/extensive-range-of-scholarships-available.html",
+        "official_host": true,
+        "alt_text": "University of Auckland (Waipapa Taumata Rau) crest",
+        "validation_result": "verified",
+        "validation_detail": "svg, dark navy (#0C0C48) University of Auckland crest served from the University's own domain and declared in the page head as `<link rel=\"icon\" type=\"image/svg+xml\" href=\"/etc.clientlibs/uoa-digital/clientlibs/resources/svg/favicon.svg\"/>`; probe returned the SVG source, confirming HTTP 200 with an image content type and a dark (not white-on-transparent) mark",
+        "image_kind": "official_logo",
+        "image_format": "svg",
+        "verified_at": "2026-10-04T00:00:00+00:00",
+        "host_evidence": "same_registrable_domain",
+        "_award": "University of Auckland International Student Excellence Scholarship"
+      },
+      "research_notes": {
+        "logo": "Scanned the official scholarship page and the official international-students scholarships page markup for logo assets. The site header renders the University wordmark from the shared icon sprite `/etc.clientlibs/uoa-digital/clientlibs/resources/img/sprite.svg#logo-small-new`, which is a fragment reference and not a standalone image, and `/etc.clientlibs/uoa-digital/clientlibs/resources/svg/logo.svg` returned HTTP 404. The page head declares `<link rel=\"icon\" type=\"image/svg+xml\" href=\"/etc.clientlibs/uoa-digital/clientlibs/resources/svg/favicon.svg\"/>`, and that asset was probed and returned the full SVG source of the University's crest filled with #0C0C48 (dark navy) on a transparent background, so it is visible on a light card. Used as the official logo; it is the awarding body's own mark on its own domain.",
+        "unverified": [
+          "Funding is published only as a percentage of tuition fees, so no numeric funding_amount or funding_currency is available",
+          "Number on offer is published as \"Varies\"",
+          "Semester Two intake dates for the next cycle are not published on the pages read"
+        ],
+        "substitution": null,
+        "official_pages_read": [
+          "https://www.auckland.ac.nz/en/study/scholarships-and-awards/find-a-scholarship/university-of-auckland-international-student-excellence-scholarship-844-all.html",
+          "https://www.auckland.ac.nz/en/study/international-students/scholarships-loans-and-funding/extensive-range-of-scholarships-available.html",
+          "https://www.auckland.ac.nz/etc.clientlibs/uoa-digital/clientlibs/resources/svg/favicon.svg"
+        ],
+        "degree_level_confirmed": "Official page \"Applicable study: Masters degree at Waipapa Taumata Rau | University of Auckland (University)\" and the regulations header \"Applicable Programme: Masters degree at Waipapa Taumata Rau | University of Auckland (University)\".",
+        "url_observed": null,
+        "contradictions": [
+          "Stored degree \"Bachelor's, Postgraduate Diploma, Master's\" is wrong for the current cycle: the official page states the scholarship is applicable to a Masters degree only (an older regulation archived under /content/dam/uoa/Scholarships/regulations/ still refers to undergraduate, PGDip and masters).",
+          "Stored deadline_display \"21 October 2026 (Sem 1), 1 April 2026 (Sem 2)\" is wrong: the official closing date is 4 November 2026, and 21 October 2026 is the invitation issue date, not a Semester 2 deadline.",
+          "Stored status \"open\" is wrong as of 2026-10-04: no invitation has been issued yet (invitations go out 21 October 2026), so the status is \"upcoming\".",
+          "Stored program_type was unrelated undergraduate career-pathways marketing text and has been replaced.",
+          "Stored funding label \"Partial\" is consistent with the official value of 25% of one year of tuition fees; retained as \"Partially Funded\"."
+        ],
+        "skeleton": false
+      }
+    },
+    {
+      "target_id": 256,
+      "outcome": "refreshed",
+      "confirm": true,
+      "confirmation_evidence": "The stored URL https://www.auckland.ac.nz/en/study/scholarships-and-awards/scholarship-types/scholarships-for-postgraduate-students/doctoral-scholarships.html now returns HTTP 404. The live official record page https://www.auckland.ac.nz/en/study/scholarships-and-awards/find-a-scholarship/university-of-auckland-doctoral-scholarship-43-all.html states \"Applicable study: PhD, DMedSc, DClinPsy, DocFA, EdD or DHSc\", \"Closing date: 1 February, 1 May, 1 August, 1 November\", \"Tenure: Up to 42 months FTE\". The scheme page https://www.auckland.ac.nz/en/study/scholarships-and-awards/scholarship-types/postgraduate-scholarships/doctoral-scholarships.html states \"In 2026 the University of Auckland Scholarship comprises: a tax-free stipend of $35,468 per annum with an annual CPI adjustment to the stipend value for up to 42 months FTE; tuition fees for up to 42 months FTE; single student Health Insurance compulsory charge, if applicable\" and its 2027 dates table gives \"Apply by 1 November 2026\".",
+      "new_scholarship": {
+        "name": "University of Auckland Doctoral Scholarship",
+        "legacy_titles": ["University of Auckland Doctoral Scholarship"],
+        "country": "New Zealand",
+        "region": "Oceania",
+        "degree_levels": "PhD, DMedSc, DClinPsy, DocFA, EdD, DHSc",
+        "funding_type": "Fully Funded",
+        "official_source": "University of Auckland",
+        "official_source_url": "https://www.auckland.ac.nz/en/study/scholarships-and-awards/scholarship-types/scholarships-for-postgraduate-students/doctoral-scholarships.html",
+        "status": "open",
+        "is_verified": true,
+        "last_verified_date": "2026-10-04",
+        "application_link": "https://www.auckland.ac.nz/en/study/scholarships-and-awards/scholarship-types/postgraduate-scholarships/doctoral-scholarships.html",
+        "official_updates_url": "https://www.auckland.ac.nz/en/study/scholarships-and-awards/scholarship-types/postgraduate-scholarships/doctoral-scholarships.html",
+        "catalogue_url": "https://www.auckland.ac.nz/assets/study/scholarships-and-funding/find-a-scholarship-or-award/regulations/university-of-auckland-doctoral-scholarship.pdf",
+        "program_type": "Doctoral stipend and tuition scholarship",
+        "duration": "Up to 42 months full-time equivalent",
+        "funding_amount": 35468,
+        "funding_currency": "NZD",
+        "funding_period": "per annum",
+        "deadline": "The scheme runs four awarding rounds each year. In the 2027 dates table the next applicable round is \"Apply by 1 November 2026\"; the record page also lists the closing dates as 1 February, 1 May, 1 August and 1 November.",
+        "deadline_date": "2026-11-01",
+        "deadline_precision": "exact",
+        "application_period": "Four awarding rounds each year. For 2027 entry the rounds are 1 November 2026, 1 February 2027, 1 May 2027 and 1 August 2027 (apply-by dates).",
+        "eligibility_summary": "High-achieving candidates applying for admission to an approved doctoral programme at Waipapa Taumata Rau. There is no separate scholarship application: the candidate indicates in the doctoral programme application that they wish to be considered for the scholarship, and must not enrol in the programme before scholarship consideration has concluded and the outcome has been advised.",
+        "eligibility": [
+          "Be applying for admission to an approved doctoral programme (PhD, DMedSc, DClinPsy, DocFA, EdD or DHSc) at Waipapa Taumata Rau",
+          "Indicate in the doctoral programme application that you wish to be considered for the scholarship",
+          "Not enrol in the doctoral programme before the University has considered you for the scholarship and advised you of the outcome",
+          "Be prepared to take up the scholarship by one of the enrolment dates prescribed in the letter of award"
+        ],
+        "coverage": [
+          "Tax-free stipend of $35,468 per annum in 2026 with annual CPI adjustment, for up to 42 months FTE",
+          "Compulsory tuition fees and Student Services Fee for prescribed study in the doctoral programme, up to 42 months FTE",
+          "Single student Health Insurance compulsory charge for international students, where applicable"
+        ],
+        "benefits": [
+          "Tax-free stipend of $35,468 per annum in 2026, adjusted annually by CPI from 1 January each year",
+          "Full compulsory tuition fees and Student Services Fee for up to 42 months FTE",
+          "Single student health insurance charge for international students",
+          "International students can request a funding confirmation letter through Student Services Online for visa purposes"
+        ],
+        "required_documents": [
+          "Doctoral programme application form, including the confirmation that the applicant wishes to be considered for the scholarship",
+          "Records of prior study and research proposal assessed as part of doctoral admission (not separately published for the scholarship)"
+        ],
+        "english_requirement": "Not stated on the official doctoral scholarship pages; English language proficiency is assessed through admission to the doctoral programme.",
+        "requirements": [
+          "Indicate the wish to be considered for a University of Auckland Doctoral Scholarship in the doctoral programme application",
+          "Do not enrol in the doctoral programme before scholarship consideration has concluded and the outcome has been advised",
+          "Take up the scholarship by one of the dates prescribed in the letter of award, otherwise the offer is forfeited",
+          "Enrol by the prescribed date, which differs for domestic candidates and international candidates"
+        ],
+        "application_method": [
+          "Apply for a doctoral programme at the University of Auckland and tick the scholarship consideration option in the application form",
+          "There is no separate scholarship application and no online scholarship application form"
+        ],
+        "selection_notes": "Any student offered a place in a doctoral programme is considered for the scholarship. Scholarship selection committees consider the University's equity, diversity and inclusion objectives and the applicant's gender and ethnicity, plus any voluntarily disclosed disability, Rainbow community or refugee background information, when making their recommendations. Guaranteed scholarships exist for Māori and Pacific applicants with a New Zealand university qualifying programme GPA of 7.0 or above who are offered a place in a doctoral programme.",
+        "best_fit": "Doctoral candidates who are applying for admission to an approved doctoral programme at Waipapa Taumata Rau and can meet the scholarship's enrolment deadlines, including international candidates needing tuition, stipend and health insurance support.",
+        "description": "The University of Auckland Doctoral Scholarship is a competitive scheme run in four awarding rounds each year for high-achieving candidates applying for admission to an approved doctoral programme at Waipapa Taumata Rau. In 2026 it provides a tax-free stipend of $35,468 per annum with an annual CPI adjustment for up to 42 months full-time equivalent, compulsory tuition fees and the Student Services Fee for the same period, and the single student health insurance charge where applicable. No separate scholarship application is needed — the candidate confirms in the doctoral programme application that they wish to be considered, and must not enrol before the outcome is advised. The 2027 dates table gives the next apply-by date as 1 November 2026."
+      },
+      "programme_detail_official": {
+        "official_source_urls": [
+          "https://www.auckland.ac.nz/en/study/scholarships-and-awards/find-a-scholarship/university-of-auckland-doctoral-scholarship-43-all.html",
+          "https://www.auckland.ac.nz/en/study/scholarships-and-awards/scholarship-types/postgraduate-scholarships/doctoral-scholarships.html",
+          "https://www.auckland.ac.nz/assets/study/scholarships-and-funding/find-a-scholarship-or-award/regulations/university-of-auckland-doctoral-scholarship.pdf"
+        ],
+        "application_link": "https://www.auckland.ac.nz/en/study/scholarships-and-awards/scholarship-types/postgraduate-scholarships/doctoral-scholarships.html",
+        "official_updates_url": "https://www.auckland.ac.nz/en/study/scholarships-and-awards/scholarship-types/postgraduate-scholarships/doctoral-scholarships.html",
+        "catalogue_url": "https://www.auckland.ac.nz/assets/study/scholarships-and-funding/find-a-scholarship-or-award/regulations/university-of-auckland-doctoral-scholarship.pdf",
+        "application_cycle": "Four awarding rounds each year. For 2027 entry the apply-by dates are 1 November 2026, 1 February 2027, 1 May 2027 and 1 August 2027; the next applicable round is 1 November 2026.",
+        "deadline_central": "2026-11-01",
+        "deadline_central_display": "Apply by 1 November 2026 (2027 dates table)",
+        "deadline_central_timezone": "Pacific/Auckland",
+        "deadline_note": "The record page lists the closing dates as 1 February, 1 May, 1 August and 1 November with an offer rate of up to four times a year, and the scheme page publishes full 2026 and 2027 date tables. The next still-applicable round closes 1 November 2026. There is no fixed single deadline; applications are made as part of doctoral programme applications, which run continuously.",
+        "status": "OPEN",
+        "status_note": "Ongoing with four rounds per year. The most recent listed round closed 1 August 2026 and the next round closes 1 November 2026. Candidates may still submit a doctoral programme application at any time; the University reserves the right to determine an application in a later round if a matter cannot be concluded by the published dates.",
+        "funding_amount": 35468,
+        "funding_currency": "NZD",
+        "funding_period": "per annum",
+        "funding_duration": "Up to 42 months full-time equivalent; stipend duration varies by doctoral programme, and DHSc/EdD thesis components are funded for up to 24 months FTE with the compulsory coursework component separately fee-funded",
+        "tuition_coverage": true,
+        "tuition_coverage_note": "The official page states the scholarship comprises \"tuition fees for up to 42 months FTE\" in addition to the stipend; the 2026 terms also cover the Student Services Fee.",
+        "living_cost_coverage": true,
+        "travel_coverage": false,
+        "fully_funded": true,
+        "funding_label": "Fully funded doctoral award: tax-free stipend of NZ$35,468 per annum in 2026 (CPI-adjusted annually) plus compulsory tuition fees and Student Services Fee for up to 42 months FTE, and the single student health insurance charge for international students",
+        "benefits": [
+          "Tax-free stipend of $35,468 per annum in 2026, adjusted annually by CPI on 1 January each year",
+          "Compulsory tuition fees and Student Services Fee for prescribed study for up to 42 months FTE",
+          "Single student Health Insurance compulsory charge for international students",
+          "Part-time awardees are paid pro-rata",
+          "Funding confirmation letter available through Student Services Online for international visa applications"
+        ],
+        "eligibility": [
+          "Be applying for admission to an approved doctoral programme (PhD, DMedSc, DClinPsy, DocFA, EdD or DHSc) at Waipapa Taumata Rau",
+          "Indicate in the doctoral programme application that you wish to be considered for the scholarship",
+          "Not enrol in the doctoral programme before scholarship consideration has concluded and the outcome has been advised",
+          "Be prepared to take up the scholarship by one of the enrolment dates prescribed in the letter of award"
+        ],
+        "citizenship_residency": "Open to domestic and international candidates; international candidates receive the same stipend and have the single student health insurance charge included.",
+        "international_eligibility": "International doctoral candidates are eligible. The scholarship includes the single student Health Insurance compulsory charge for international students, and international candidates have a later prescribed enrolment window than domestic candidates.",
+        "degree_levels": ["PhD", "DMedSc", "DClinPsy", "DocFA", "EdD", "DHSc"],
+        "study_mode": "Full-time or part-time; part-time stipends are paid pro-rata",
+        "research_requirement": "Enrolment in a doctoral programme at Waipapa Taumata Rau, University of Auckland; selection committees consider the University's doctoral scholarship strategy of research excellence and impact.",
+        "subject_or_agency_requirement": "Open across all faculties, Large Scale Research Institutes and University Research Centres; each faculty advertises its own selection strategy and may prioritise its Signature Research Areas.",
+        "application_method": "No separate scholarship application. In the doctoral programme application the candidate confirms whether or not they also wish to be considered for a University of Auckland Doctoral Scholarship; if they already hold scholarship funding or do not want to be considered they say so in the form.",
+        "application_route": "Doctoral programme application form for the University of Auckland",
+        "requirements": [
+          "Indicate the wish to be considered for the scholarship in the doctoral programme application",
+          "Do not enrol in the doctoral programme before scholarship consideration has concluded and the outcome has been advised",
+          "Meet the apply-by date of the round you are targeting (1 November 2026 for the next round)",
+          "Take up the scholarship by one of the dates prescribed in the letter of award, otherwise the offer is forfeited",
+          "Enrol by the prescribed enrolment date for domestic or international candidates"
+        ],
+        "documents": [
+          "Doctoral programme application form including the scholarship consideration declaration"
+        ],
+        "english_requirement": null,
+        "english_requirement_note": "The official doctoral scholarship pages do not state a separate English language requirement; English proficiency is assessed through admission to the doctoral programme.",
+        "selection_criteria": [
+          "Academic standing assessed through the doctoral admission decision",
+          "The University's equity, diversity and inclusion objectives, using gender and ethnicity data already shared with the University as an applicant",
+          "Any voluntarily disclosed disability, Rainbow community or refugee background information",
+          "The faculty or Large Scale Research Institute doctoral scholarship selection strategy"
+        ],
+        "selection_weighting": null,
+        "duration": "Up to 42 months FTE",
+        "award_holder_conditions": [
+          "Must take up the scholarship by one of the dates prescribed in the letter of award, otherwise the offer is forfeited",
+          "Must enrol by the prescribed enrolment date for the round, which differs for domestic and international candidates",
+          "Must not enrol in the doctoral programme before scholarship consideration has concluded",
+          "The award is tied to enrolment in a doctoral programme at Waipapa Taumata Rau"
+        ],
+        "supplements_or_initiatives": [
+          "University of Auckland Māori Doctoral Scholarship — guaranteed for Māori applicants with a New Zealand university qualifying programme GPA of 7.0 or above who are offered a place in a doctoral programme",
+          "University of Auckland Pacific Doctoral Scholarship — guaranteed for Pacific applicants with a New Zealand university qualifying programme GPA of 7.0 or above who are offered a place in a doctoral programme",
+          "University of Auckland Doctoral Scholarship Extension",
+          "Doctoral research and travel scholarships"
+        ],
+        "official_contacts": {
+          "general": "University of Auckland scholarships help centre: https://uoa.custhelp.com/app/answers/list/p/307/~/scholarships",
+          "email": null
+        },
+        "description": "The University of Auckland Doctoral Scholarship is a competitive scheme run in four awarding rounds each year for high-achieving candidates applying for admission to an approved doctoral programme at Waipapa Taumata Rau. In 2026 the award comprises a tax-free stipend of $35,468 per annum with an annual CPI adjustment for up to 42 months full-time equivalent, compulsory tuition fees and the Student Services Fee for the same period, and the single student health insurance charge for international students. Candidates do not apply separately: they confirm in the doctoral programme application that they wish to be considered, and must not enrol before the outcome is advised. The 2027 dates table gives the next apply-by date as 1 November 2026, with scholarship offers made by 1 February 2027.",
+        "program_type": "Doctoral stipend and tuition scholarship",
+        "region": "Oceania",
+        "coverage": "Tax-free stipend plus compulsory tuition fees, Student Services Fee and the single student health insurance charge where applicable",
+        "last_verified_date": "2026-10-04"
+      },
+      "programme_detail_applicant_utility": {
+        "application_readiness_checklist": [
+          "Choose your target round early — for 2027 entry the apply-by dates are 1 November 2026, 1 February 2027, 1 May 2027 and 1 August 2027",
+          "Submit a doctoral programme application and tick the scholarship consideration option in the form",
+          "Do not enrol in the programme until the scholarship outcome has been advised",
+          "Be ready to enrol by the prescribed date, which is earlier for domestic candidates than for international candidates",
+          "If you are an international student, plan to request a funding confirmation letter via Student Services Online for your visa application",
+          "If you are Māori or Pacific with a New Zealand university qualifying programme GPA of 7.0 or above, check the guaranteed Māori and Pacific Doctoral Scholarships"
+        ],
+        "common_rejection_risks": [
+          "Missing the apply-by date of the target round",
+          "Enrolling in the doctoral programme before scholarship consideration concludes",
+          "Failing to take up the scholarship by the date prescribed in the letter of award, which forfeits the offer",
+          "Missing the prescribed enrolment date",
+          "Holding other scholarship funding without declaring it in the application form",
+          "Assuming the stipend is fixed — it is CPI-adjusted annually and the University reserves the right to adjust or reduce it"
+        ],
+        "estimated_uncovered_costs": [
+          "Living costs beyond the stipend, including accommodation over the funded period",
+          "Doctoral fees beyond 42 months FTE",
+          "Thesis or research costs not covered by the scholarship",
+          "Student visa and travel costs",
+          "The DHSc/EdD compulsory coursework component stipend, which is not stipend-funded"
+        ],
+        "document_audit": [
+          "Doctoral programme application submitted with the scholarship consideration declaration completed",
+          "Academic transcripts and qualifications supporting the admission application",
+          "Research proposal or thesis concept prepared for the doctoral admission assessment",
+          "Evidence of a New Zealand university qualifying programme GPA of 7.0 or above if relying on the guaranteed Māori or Pacific doctoral scholarship"
+        ],
+        "alerts": [
+          {
+            "trigger": "Next apply-by date",
+            "message": "1 November 2026 for the first 2027 round; offers are made by 1 February 2027."
+          },
+          {
+            "trigger": "Enrolment timing",
+            "message": "Do not enrol in the doctoral programme before the University has considered you for the scholarship and advised you of the outcome."
+          },
+          {
+            "trigger": "Stipend adjustment",
+            "message": "The stipend is adjusted annually by CPI from 1 January using the RBNZ November Monetary Policy Statement forecast; the 2026 rate is $35,468 per annum."
+          },
+          {
+            "trigger": "Forfeiture",
+            "message": "Scholarships must be taken up by one of the dates prescribed in the letter of award, otherwise the scholarship offer is forfeited."
+          }
+        ],
+        "submission_workflow": [
+          "Pick the round that matches your intended enrolment date",
+          "Apply for the doctoral programme at Waipapa Taumata Rau and indicate in the form that you wish to be considered for a University of Auckland Doctoral Scholarship",
+          "If you already hold other scholarship funding, declare it so your application can be processed quickly",
+          "Do not enrol; wait for the scholarship outcome to be advised",
+          "Enrol by the prescribed date for your candidate type",
+          "If you are an international student, request a funding confirmation letter through Student Services Online"
+        ]
+      },
+      "programme_detail_verification": {
+        "cycle_verified": "2027 doctoral entry rounds, verified 2026-10-04; next apply-by date 1 November 2026",
+        "verification_confidence": 0.93,
+        "official_fields_confirmed": [
+          "funding_amount",
+          "funding_currency",
+          "funding_period",
+          "tuition_coverage",
+          "duration",
+          "deadline_central",
+          "degree_levels",
+          "application_method",
+          "region",
+          "status"
+        ],
+        "institution_check_required": [
+          "Confirm eligibility to pay the applicable tuition fees for the doctoral programme, which is a condition referenced in the award terms for international candidates",
+          "Confirm the applicant's programme-specific stipend duration, which the official page states varies by doctoral programme",
+          "Confirm the faculty-level selection strategy for the applicant's faculty or research institute"
+        ],
+        "unverified_or_removed_claims": [
+          "The stored official_source_url returns HTTP 404; the live official pages are the record page (…/find-a-scholarship/university-of-auckland-doctoral-scholarship-43-all.html) and the scheme page (…/scholarship-types/postgraduate-scholarships/doctoral-scholarships.html). The stored URL was kept unchanged as required and the working URLs are recorded in research_notes.url_observed.",
+          "The stored current_image_url was a student lunch photograph (program_image), not the University's logo; replaced with the University's own crest asset.",
+          "The 2026 terms PDF was read via search snippets rather than opened in full, so any clause-level conditions (including the domestic-fees-eligibility note and stipend-reduction clause referenced in earlier terms) are not confirmed here.",
+          "Selection weighting is not published; the official page describes the equity, diversity and inclusion objectives considered by selection committees but gives no weighting",
+          "Travel costs are not covered by the scholarship, so travel_coverage is recorded as false on the basis that no travel component is listed in the official value"
+        ],
+        "source_citations": [
+          "https://www.auckland.ac.nz/en/study/scholarships-and-awards/find-a-scholarship/university-of-auckland-doctoral-scholarship-43-all.html",
+          "https://www.auckland.ac.nz/en/study/scholarships-and-awards/scholarship-types/postgraduate-scholarships/doctoral-scholarships.html",
+          "https://www.auckland.ac.nz/assets/study/scholarships-and-funding/find-a-scholarship-or-award/regulations/university-of-auckland-doctoral-scholarship.pdf"
+        ],
+        "researched_by": "w1_26a"
+      },
+      "logo_override": {
+        "url": "https://www.auckland.ac.nz/etc.clientlibs/uoa-digital/clientlibs/resources/svg/favicon.svg",
+        "page_url": "https://www.auckland.ac.nz/en/study/scholarships-and-awards/scholarship-types/postgraduate-scholarships/doctoral-scholarships.html",
+        "official_host": true,
+        "alt_text": "University of Auckland (Waipapa Taumata Rau) crest",
+        "validation_result": "verified",
+        "validation_detail": "svg, dark navy (#0C0C48) University of Auckland crest served from the University's own domain and declared in the head of every auckland.ac.nz page as `<link rel=\"icon\" type=\"image/svg+xml\" href=\"/etc.clientlibs/uoa-digital/clientlibs/resources/svg/favicon.svg\"/>`; probed directly and returned the SVG source (HTTP 200, image/svg+xml), dark mark on transparent background",
+        "image_kind": "official_logo",
+        "image_format": "svg",
+        "verified_at": "2026-10-04T00:00:00+00:00",
+        "host_evidence": "same_registrable_domain",
+        "_award": "University of Auckland Doctoral Scholarship"
+      },
+      "research_notes": {
+        "logo": "Same awarding body as record 255 (University of Auckland), so the crest asset already probed for this domain was reused: https://www.auckland.ac.nz/etc.clientlibs/uoa-digital/clientlibs/resources/svg/favicon.svg. It is declared in the head of the doctoral scholarship pages as the site icon, returned the full SVG source on probe (HTTP 200, image/svg+xml), and is filled #0C0C48 (dark navy) so it is visible on a light card. The standalone wordmark at /etc.clientlibs/uoa-digital/clientlibs/resources/svg/logo.svg returned 404 and the header wordmark is only a fragment reference into the shared sprite, so neither was used.",
+        "unverified": [
+          "Clause-level conditions in the 2026 University of Auckland Doctoral Scholarship Terms PDF were not read in full",
+          "Selection weighting is not published by the University",
+          "Number on offer is published only as \"Varies\"",
+          "Specific faculty-level selection strategies were listed but not opened"
+        ],
+        "substitution": null,
+        "official_pages_read": [
+          "https://www.auckland.ac.nz/en/study/scholarships-and-awards/scholarship-types/scholarships-for-postgraduate-students/doctoral-scholarships.html",
+          "https://www.auckland.ac.nz/en/study/scholarships-and-awards/find-a-scholarship/university-of-auckland-doctoral-scholarship-43-all.html",
+          "https://www.auckland.ac.nz/en/study/scholarships-and-awards/scholarship-types/postgraduate-scholarships/doctoral-scholarships.html",
+          "https://www.auckland.ac.nz/etc.clientlibs/uoa-digital/clientlibs/resources/svg/favicon.svg"
+        ],
+        "degree_level_confirmed": "Official record page \"Applicable study: PhD, DMedSc, DClinPsy, DocFA, EdD or DHSc\" and the regulations header \"Applicable Programme: PhD, DMedSc, DClinPsy, DocFA, EdD or DHSc\".",
+        "url_observed": "https://www.auckland.ac.nz/en/study/scholarships-and-awards/scholarship-types/postgraduate-scholarships/doctoral-scholarships.html (live scheme page, also cross-linked from the record page https://www.auckland.ac.nz/en/study/scholarships-and-awards/find-a-scholarship/university-of-auckland-doctoral-scholarship-43-all.html). The stored URL 404s.",
+        "contradictions": [
+          "Stored current_official_source_url .../scholarship-types/scholarships-for-postgraduate-students/doctoral-scholarships.html returns HTTP 404; the scholarship now lives under .../scholarship-types/postgraduate-scholarships/doctoral-scholarships.html and .../find-a-scholarship/university-of-auckland-doctoral-scholarship-43-all.html.",
+          "Stored current_image_url is a photograph of students eating lunch, not a logo; replaced with the University's crest.",
+          "Stored deadline_display \"Varies by faculty (annual round)\" is wrong: the scholarship is a central University scheme with four fixed rounds closing 1 February, 1 May, 1 August and 1 November, and the next apply-by date is 1 November 2026.",
+          "Stored region was null; corrected to Oceania.",
+          "Stored funding amount was null; the official page publishes a tax-free stipend of $35,468 per annum in 2026."
+        ],
+        "skeleton": false
+      }
+    },
+    {
+      "target_id": 257,
+      "outcome": "refreshed",
+      "confirm": true,
+      "confirmation_evidence": "Official page https://www.otago.ac.nz/international/future-students/fees-scholarships/international-scholarships#global-scholarship states \"University of Otago Global Scholarships — For new international Bachelor degree students commencing full-time undergraduate study and who hold one of the following passports\" and \"Scholarship value: NZD $15,000. Unlimited offers.\" The official detail page https://www.otago.ac.nz/international/future-students/subjects-courses/postgraduate-study/scholarships/global-scholarships states \"The value of the scholarship is $15,000 with a one-year tenure\" and \"Payment of the scholarship will be made as a credit towards tuition fees only.\"",
+      "new_scholarship": {
+        "name": "University of Otago Global Scholarships",
+        "legacy_titles": ["University of Otago Global Scholarship"],
+        "country": "New Zealand",
+        "region": "Oceania",
+        "degree_levels": "Bachelor's",
+        "funding_type": "Partially Funded",
+        "official_source": "University of Otago",
+        "official_source_url": "https://www.otago.ac.nz/international/future-students/fees-scholarships/international-scholarships#global-scholarship",
+        "status": "open",
+        "is_verified": true,
+        "last_verified_date": "2026-10-04",
+        "application_link": "https://www.otago.ac.nz/international/future-students/fees-scholarships/international-scholarships#global-scholarship",
+        "official_updates_url": "https://www.otago.ac.nz/international/future-students/fees-scholarships/international-scholarships",
+        "catalogue_url": "https://www.otago.ac.nz/international/future-students/subjects-courses/postgraduate-study/scholarships/global-scholarships",
+        "program_type": "Undergraduate entrance tuition fee scholarship",
+        "duration": "One year",
+        "funding_amount": 15000,
+        "funding_currency": "NZD",
+        "funding_period": "one-year tenure, paid as a single tuition fee credit",
+        "deadline": "Opening date 1 May in year prior to study for offshore students, 1 July for onshore students. Closing dates 10 December for semester 1 (February) start, 30 April for semester 2 (July) start for offshore students, 15 August for onshore students.",
+        "deadline_date": null,
+        "deadline_precision": "recurring",
+        "application_period": "Applications open 1 May in the year prior to study for offshore students (1 July for onshore students) and close 10 December for a Semester 1 (February) start, or 30 April for a Semester 2 (July) start for offshore students.",
+        "eligibility_summary": "New international students from nominated countries who hold a passport from Bangladesh, China, Hong Kong, India, Indonesia, Macau, Malaysia, Singapore, South Korea, Sri Lanka, Taiwan, Thailand or Vietnam and are commencing full-time undergraduate degree-level study at the University of Otago from 100 level through to degree. Applicants must be studying on campus throughout their studies and cannot be sponsored by their home government or the New Zealand government.",
+        "eligibility": [
+          "Have completed secondary (high) school, or studied at another approved institution that grants University Entrance either overseas or within New Zealand",
+          "Intend to enrol or have enrolled in full-time undergraduate degree-level study, or in an approved foundation diploma programme, with the objective of progressing into an undergraduate degree at the University of Otago",
+          "Intend to study at the University of Otago from 100-level (first year) through to degree attainment",
+          "Be applying to study at the University of Otago from a nominated country (Bangladesh, China, Hong Kong, India, Indonesia, Macau, Malaysia, Singapore, South Korea, Sri Lanka, Taiwan, Thailand, Vietnam) and/or be undertaking a specified programme of study at Otago",
+          "Study on campus throughout the duration of their studies",
+          "Not be sponsored by their home government or the New Zealand government"
+        ],
+        "coverage": [
+          "NZD $15,000 credited towards tuition fees only, for a one-year tenure"
+        ],
+        "benefits": [
+          "NZD $15,000 tuition fee credit",
+          "Unlimited number of offers",
+          "Semester 2 (July) starters receive NZD $7,500 in the year of commencement and NZD $7,500 in Semester 1 of the following year"
+        ],
+        "required_documents": [
+          "eVision application for study with the agreement to be considered for international scholarships ticked",
+          "Evidence of qualifying study and University Entrance, assessed through the admission application"
+        ],
+        "english_requirement": "Not stated on the official scholarship pages; English language proficiency is assessed through admission to the programme.",
+        "requirements": [
+          "Agree in the eVision application for study to be considered for international scholarships at the University of Otago",
+          "Actively accept the scholarship offer by the deadline indicated in the scholarship offer letter, in addition to accepting the admission offer",
+          "Commence study by the enrolment date stated in the Offer of Place"
+        ],
+        "application_method": [
+          "No extra scholarship application is required; applicants are automatically assessed during the admission process",
+          "Offshore applicants tick the agreement to be considered for international scholarships in their eVision application for study"
+        ],
+        "selection_notes": "Selection of recipients is based on academic potential as demonstrated by programme admission, together with holding a passport from one of the nominated countries. The University reserves the right to amend the nominated countries and programmes of study lists at its discretion.",
+        "best_fit": "New international undergraduate students from one of the twelve nominated countries who are commencing a full-time on-campus degree at Otago and can take up the scholarship from the semester for which they are offered a place.",
+        "description": "The University of Otago Global Scholarships provide NZD $15,000 towards tuition fees to new international Bachelor degree students who hold a passport from one of twelve nominated countries — Bangladesh, China, Hong Kong, India, Indonesia, Macau, Malaysia, Singapore, South Korea, Sri Lanka, Taiwan, Thailand or Vietnam. There is no separate scholarship application: candidates are automatically assessed during the admission process and must tick the agreement to be considered for international scholarships in their eVision application for study. The scholarship is paid only as a credit towards tuition fees with a one-year tenure, is not deferrable, and becomes invalid if study does not commence by the enrolment date in the Offer of Place. Applicants must study on campus, and students sponsored by their home government or the New Zealand government are not eligible."
+      },
+      "programme_detail_official": {
+        "official_source_urls": [
+          "https://www.otago.ac.nz/international/future-students/fees-scholarships/international-scholarships",
+          "https://www.otago.ac.nz/international/future-students/subjects-courses/postgraduate-study/scholarships/global-scholarships",
+          "https://www.otago.ac.nz/__data/assets/pdf_file/0032/568355/Global-Scholarship-Regulations.pdf"
+        ],
+        "application_link": "https://www.otago.ac.nz/international/future-students/fees-scholarships/international-scholarships#global-scholarship",
+        "official_updates_url": "https://www.otago.ac.nz/international/future-students/fees-scholarships/international-scholarships",
+        "catalogue_url": "https://www.otago.ac.nz/__data/assets/pdf_file/0032/568355/Global-Scholarship-Regulations.pdf",
+        "application_cycle": "Annual entrance scholarship cycle tied to programme admission; applications open 1 May in the year prior to study for offshore students and 1 July for onshore students",
+        "deadline_central": null,
+        "deadline_central_display": "Closing dates 10 December for semester 1 (February) start, 30 April for semester 2 (July) start for offshore students, 15 August for onshore students",
+        "deadline_central_timezone": "Pacific/Auckland",
+        "deadline_note": "The official pages publish recurring calendar closing dates without attaching a year to them, so no exact next-cycle date can be stated without inference. Applicants do not submit a scholarship application; they must have an admission application in progress and accept the scholarship offer by the deadline printed in the scholarship offer letter.",
+        "status": "OPEN",
+        "status_note": "Open for the 2027 entry cycle: offshore applications opened 1 May 2026 and the semester 1 closing date is 10 December. Offers are made during admission processing and must be actively accepted by the deadline in the scholarship offer letter.",
+        "funding_amount": 15000,
+        "funding_currency": "NZD",
+        "funding_period": "one-year tenure, paid as a single tuition fee credit",
+        "funding_duration": "One year",
+        "tuition_coverage": true,
+        "tuition_coverage_note": "Partial tuition coverage: \"Payment of the scholarship will be made as a credit towards tuition fees only\" and the value is a fixed NZD $15,000, which does not equal full tuition for an international undergraduate. No living-cost component is published.",
+        "living_cost_coverage": false,
+        "travel_coverage": false,
+        "fully_funded": false,
+        "funding_label": "NZD $15,000 tuition fee credit for one year, unlimited offers; repayable in part or full if enrolment ends or residency status changes, and not deferrable",
+        "benefits": [
+          "NZD $15,000 credit towards tuition fees",
+          "Unlimited number of offers",
+          "Semester 2 starters receive NZD $7,500 in the commencement year and NZD $7,500 in Semester 1 of the following year"
+        ],
+        "eligibility": [
+          "Have completed secondary (high) school, or studied at another approved institution that grants University Entrance either overseas or within New Zealand",
+          "Intend to enrol or have enrolled in full-time undergraduate degree-level study, or in an approved foundation diploma programme, with the objective of progressing into an undergraduate degree",
+          "Intend to study at the University of Otago from 100-level (first year) through to degree attainment",
+          "Be applying to study from a nominated country (Bangladesh, China, Hong Kong, India, Indonesia, Macau, Malaysia, Singapore, South Korea, Sri Lanka, Taiwan, Thailand, Vietnam) and/or be undertaking a specified programme of study at Otago",
+          "Study on campus throughout the duration of their studies",
+          "Not be enrolled in a foundation certificate programme, which is ineligible for this scholarship",
+          "Not be sponsored by their home government or the New Zealand government"
+        ],
+        "citizenship_residency": "International students holding a passport from one of twelve nominated countries. Students whose residency status changes from international to domestic during the tenure may have the scholarship suspended, terminated and repaid.",
+        "international_eligibility": "Open to new international Bachelor degree students from Bangladesh, China, Hong Kong, India, Indonesia, Macau, Malaysia, Singapore, South Korea, Sri Lanka, Taiwan, Thailand and Vietnam. The University reserves the right to amend the nominated country and programme lists at its discretion.",
+        "degree_levels": ["Bachelor's"],
+        "study_mode": "Full-time, on campus",
+        "research_requirement": null,
+        "subject_or_agency_requirement": "Applicants must be studying from 100-level through to degree attainment; a specified-programme route also exists for nominated countries.",
+        "application_method": "No extra scholarship application required; applicants are automatically assessed during the admission process. Offshore applicants agree in their eVision application for study to be considered for international scholarships at the University of Otago.",
+        "application_route": "eVision application for study (student management system), or the online Entrance Scholarship application for applicants who completed secondary school or foundation study in New Zealand",
+        "requirements": [
+          "Agree in the eVision application for study to be considered for international scholarships",
+          "Meet University Entrance requirements through the admission application",
+          "Actively accept the scholarship offer by the deadline indicated in the scholarship offer letter, in addition to accepting the admission offer",
+          "Commence study by the enrolment date stated in the Offer of Place"
+        ],
+        "documents": [
+          "eVision application for study with the international scholarship consideration agreement ticked",
+          "Evidence of qualifying study assessed through the admission application"
+        ],
+        "english_requirement": null,
+        "english_requirement_note": "No separate English language requirement is stated for this scholarship; English language proficiency is assessed through admission.",
+        "selection_criteria": [
+          "Academic potential, as demonstrated by programme admission",
+          "Holding a passport from one of the nominated countries"
+        ],
+        "selection_weighting": null,
+        "duration": "One year",
+        "award_holder_conditions": [
+          "Payment is made only as a credit towards tuition fees",
+          "Deferral of the scholarship is not possible",
+          "The scholarship is no longer valid if study does not commence by the enrolment date stated in the Offer of Place",
+          "The scholarship may not normally be held at the same time as another University of Otago Undergraduate Entrance Scholarship; where another UES is awarded the recipient normally receives the scholarship of the highest value",
+          "If a student's residency status changes from international to domestic during the tenure, the University may suspend or terminate the scholarship and require the return of funds in part or in full",
+          "Upon termination of enrolment, withdrawal or stopping study, entitlement to scholarship funding is cancelled and the University may require repayment in part or full",
+          "Students sponsored by their home government or the New Zealand government are not eligible for this scholarship"
+        ],
+        "supplements_or_initiatives": [],
+        "official_contacts": {
+          "general": "University of Otago AskOtago service portal: https://ask.otago.ac.nz",
+          "email": null
+        },
+        "description": "The University of Otago Global Scholarships award NZD $15,000 towards tuition fees to new international Bachelor degree students from twelve nominated countries: Bangladesh, China, Hong Kong, India, Indonesia, Macau, Malaysia, Singapore, South Korea, Sri Lanka, Taiwan, Thailand and Vietnam. Applicants are automatically assessed during the admission process and simply agree in their eVision application for study to be considered for international scholarships; no separate scholarship application exists. The award has a one-year tenure, is paid only as a credit towards tuition fees, cannot be deferred, and is forfeited if study has not commenced by the enrolment date in the Offer of Place. Applicants must study on campus and cannot be government sponsored, and the value is repayable if enrolment ends or residency status changes.",
+        "program_type": "Undergraduate entrance tuition fee scholarship",
+        "region": "Oceania",
+        "coverage": "Tuition fees only, fixed NZD $15,000 credit for one year",
+        "last_verified_date": "2026-10-04"
+      },
+      "programme_detail_applicant_utility": {
+        "application_readiness_checklist": [
+          "Confirm your passport is from one of the twelve nominated countries",
+          "Submit your eVision application for study with the agreement to be considered for international scholarships ticked",
+          "Target the 10 December closing date for a Semester 1 (February) start, or 30 April for a Semester 2 (July) start",
+          "Be ready to accept the scholarship offer by the deadline printed in the scholarship offer letter, separately from accepting the admission offer",
+          "Plan to study on campus for the full duration, and to start on the enrolment date in your Offer of Place",
+          "Check whether the scholarship can be combined with others — it normally cannot be held with another Undergraduate Entrance Scholarship"
+        ],
+        "common_rejection_risks": [
+          "Passport not from a nominated country",
+          "Not ticking the scholarship consideration agreement in the eVision application",
+          "Missing the scholarship offer acceptance deadline in the offer letter",
+          "Enrolling in a foundation certificate programme, which is ineligible",
+          "Failure to commence study by the enrolment date in the Offer of Place",
+          "Being sponsored by your home government or the New Zealand government",
+          "Changing residency status from international to domestic during the tenure"
+        ],
+        "estimated_uncovered_costs": [
+          "The balance of international tuition fees above NZD $15,000",
+          "Student Services Fee if not covered by the tuition fee credit",
+          "Living costs and accommodation",
+          "Travel, visa and insurance costs",
+          "Costs of later years of study beyond the one-year tenure"
+        ],
+        "document_audit": [
+          "eVision application for study submitted with the international scholarship consideration agreement completed",
+          "Passport page evidencing a nominated country",
+          "Evidence of University Entrance qualification",
+          "Acceptance of the scholarship offer recorded before the deadline in the offer letter"
+        ],
+        "alerts": [
+          {
+            "trigger": "Semester 1 closing date",
+            "message": "Offshore applications close 10 December for a February start; onshore applicants close 15 August."
+          },
+          {
+            "trigger": "Offer acceptance",
+            "message": "Scholarship offers must be actively accepted by the deadline in the scholarship offer letter, in addition to accepting the admission offer."
+          },
+          {
+            "trigger": "Repayment risk",
+            "message": "Funding is repayable in part or full if enrolment ends early or if your residency status changes from international to domestic."
+          }
+        ],
+        "submission_workflow": [
+          "Apply for admission through eVision for study",
+          "Tick the agreement to be considered for international scholarships in the application",
+          "Wait for the admission and scholarship assessment outcome",
+          "Accept the scholarship offer by the deadline in the scholarship offer letter and accept the admission offer",
+          "Enrol and commence study by the enrolment date in your Offer of Place"
+        ]
+      },
+      "programme_detail_verification": {
+        "cycle_verified": "2027 entry cycle (applications open 1 May in the year prior to study), verified 2026-10-04",
+        "verification_confidence": 0.88,
+        "official_fields_confirmed": [
+          "funding_amount",
+          "funding_currency",
+          "degree_levels",
+          "eligibility",
+          "application_method",
+          "duration",
+          "tuition_coverage",
+          "status"
+        ],
+        "institution_check_required": [
+          "Confirm the applicant holds a passport from a currently nominated country, since the University reserves the right to amend the list",
+          "Confirm the applicant's programme tuition fee to work out the proportion covered by NZD $15,000",
+          "Confirm the applicant is not government sponsored"
+        ],
+        "unverified_or_removed_claims": [
+          "The official pages publish closing dates as recurring calendar dates (10 December, 30 April, 15 August) without a year, so deadline_date is null rather than guessing a 2026 date",
+          "The Global Scholarship Regulations PDF was linked from the official page but not opened, so clause-level terms beyond the page text are unverified",
+          "Selection weighting is not published; only 'academic potential as demonstrated by programme admission' and passport country are stated",
+          "No official English language requirement is stated for the scholarship"
+        ],
+        "source_citations": [
+          "https://www.otago.ac.nz/international/future-students/fees-scholarships/international-scholarships",
+          "https://www.otago.ac.nz/international/future-students/subjects-courses/postgraduate-study/scholarships/global-scholarships",
+          "https://www.otago.ac.nz/__data/assets/image/0028/568108/1869-emblem.png"
+        ],
+        "researched_by": "w1_26a"
+      },
+      "logo_override": {
+        "url": "https://www.otago.ac.nz/__data/assets/image/0028/568108/1869-emblem.png",
+        "page_url": "https://www.otago.ac.nz/international/future-students/fees-scholarships/international-scholarships",
+        "official_host": true,
+        "alt_text": "University of Otago (Ōtākou Whakaihu Waka) emblem with 1869",
+        "validation_result": "verified",
+        "validation_detail": "png, probed and returned \"Image fetched successfully\" confirming HTTP 200 with an image content type; gold (#F4B142-family) University of Otago coat-of-arms emblem with the founding date 1869, served from the University's own domain and embedded in the official scholarships page footer",
+        "image_kind": "official_logo",
+        "image_format": "png",
+        "verified_at": "2026-10-04T00:00:00+00:00",
+        "host_evidence": "same_registrable_domain",
+        "_award": "University of Otago Global Scholarships"
+      },
+      "research_notes": {
+        "logo": "Scanned the official page markup for logo assets. The site header wordmark https://www.otago.ac.nz/__data/assets/file/0034/568366/UoO_Logo_RGB_Horz_Gold-REV.svg was probed and REJECTED: its stylesheet is `.st0{fill:#FFFFFF;}` with only `.st1{fill:#F4B142;}` for the tohu, so the wordmark is white-on-transparent and would be invisible on a light card. The University's Wordmark (logo) files on its Brand Guide page are restricted to University staff login, and no dark or coloured wordmark variant is published publicly. The footer emblem https://www.otago.ac.nz/__data/assets/image/0028/568108/1869-emblem.png was probed instead: it returned \"Image fetched successfully\" (HTTP 200, image content type) and shows the University's gold coat-of-arms emblem with 1869 — the awarding body's own mark, on its own domain, in a colour rather than white. That emblem is used for this record and for the two other University of Otago records in this shard.",
+        "unverified": [
+          "Year-specific closing dates are not published; the official pages give recurring dates only",
+          "The Global Scholarship Regulations PDF was not opened",
+          "Number offered is published only as \"Varies\" on the detail page and \"Unlimited offers\" on the international page"
+        ],
+        "substitution": null,
+        "official_pages_read": [
+          "https://www.otago.ac.nz/international/future-students/fees-scholarships/international-scholarships",
+          "https://www.otago.ac.nz/international/future-students/subjects-courses/postgraduate-study/scholarships/global-scholarships",
+          "https://www.otago.ac.nz/__data/assets/file/0034/568366/UoO_Logo_RGB_Horz_Gold-REV.svg",
+          "https://www.otago.ac.nz/__data/assets/image/0028/568108/1869-emblem.png"
+        ],
+        "degree_level_confirmed": "Official page \"For new international Bachelor degree students commencing full-time undergraduate study\" and the detail page \"Are intending to enrol or have enrolled in full-time undergraduate degree-level study... with the objective of progressing into an undergraduate degree at the University of Otago\".",
+        "url_observed": null,
+        "contradictions": [
+          "Stored deadline_display \"Automatic with admission — no separate application\" is only half true: the official page confirms no extra scholarship application is required but also states \"Scholarship offers must be actively accepted by the deadline indicated in the scholarship offer letter\", and the detail page publishes real closing dates (10 December for semester 1 offshore, 30 April for semester 2 offshore, 15 August onshore).",
+          "Stored funding amount was null; the official pages publish NZD $15,000 with a one-year tenure.",
+          "Stored region was null; corrected to Oceania.",
+          "Stored deadline_precision \"varies\" replaced with \"recurring\" — the official pages publish fixed annual closing dates.",
+          "The official heading is plural, \"University of Otago Global Scholarships\"; the stored title is singular."
+        ],
+        "skeleton": false
+      }
+    },
+    {
+      "target_id": 258,
+      "outcome": "refreshed",
+      "confirm": true,
+      "confirmation_evidence": "Official page https://www.otago.ac.nz/international/future-students/fees-scholarships/international-scholarships#vice-chancellors states \"Vice-Chancellor's Scholarships for International Students — For new international Bachelor degree students commencing full-time undergraduate study\" and \"Scholarship value: NZD$10,000 for tuition fees\". The official detail page confirms \"The value of the scholarship is $10,000 with a one-year tenure\" and \"Payment of the scholarship will be made as a credit towards tuition fees only.\"",
+      "new_scholarship": {
+        "name": "Vice-Chancellor's Scholarships for International Students",
+        "legacy_titles": ["University of Otago Vice-Chancellor's Scholarship for International Students"],
+        "country": "New Zealand",
+        "region": "Oceania",
+        "degree_levels": "Bachelor's",
+        "funding_type": "Partially Funded",
+        "official_source": "University of Otago",
+        "official_source_url": "https://www.otago.ac.nz/international/future-students/fees-scholarships/international-scholarships#vice-chancellors",
+        "status": "open",
+        "is_verified": true,
+        "last_verified_date": "2026-10-04",
+        "application_link": "https://www.otago.ac.nz/international/future-students/fees-scholarships/international-scholarships#vice-chancellors",
+        "official_updates_url": "https://www.otago.ac.nz/international/future-students/fees-scholarships/international-scholarships",
+        "catalogue_url": "https://www.otago.ac.nz/international/future-students/subjects-courses/postgraduate-study/scholarships/vice-chancellors-scholarship-for-international-students",
+        "program_type": "Undergraduate entrance tuition fee scholarship",
+        "duration": "One year",
+        "funding_amount": 10000,
+        "funding_currency": "NZD",
+        "funding_period": "one-year tenure, paid as a single tuition fee credit",
+        "deadline": "Opening date 1 May in year prior to study for offshore students, 1 July for onshore students. Closing dates 10 December for semester 1 (February) start, 30 April for semester 2 (July) start for offshore students, 15 August for onshore students.",
+        "deadline_date": null,
+        "deadline_precision": "recurring",
+        "application_period": "Applications open 1 May in the year prior to study for offshore students (1 July for onshore students) and close 10 December for a Semester 1 (February) start, or 30 April for a Semester 2 (July) start for offshore students.",
+        "eligibility_summary": "New international students who have completed secondary school or another approved institution granting University Entrance, intending to enrol in full-time undergraduate degree-level study (or an approved foundation diploma programme) at the University of Otago from 100 level through to degree, studying on campus throughout. Students sponsored by their home government or the New Zealand government are not eligible.",
+        "eligibility": [
+          "Have completed secondary (high) school, or studied at another approved institution that grants University Entrance either overseas or within New Zealand",
+          "Intend to enrol or have enrolled in full-time undergraduate degree-level study, or in an approved foundation diploma programme, with the objective of progressing into an undergraduate degree at the University of Otago",
+          "Intend to study at the University of Otago from 100-level (first year) through to degree attainment",
+          "Study on campus throughout the duration of their studies",
+          "Not be enrolled in a foundation certificate programme, which is ineligible for this scholarship",
+          "Not be sponsored by their home government or the New Zealand government"
+        ],
+        "coverage": [
+          "NZD $10,000 credited towards tuition fees only, for a one-year tenure"
+        ],
+        "benefits": [
+          "NZD $10,000 tuition fee credit",
+          "Semester 2 (July) starters receive NZD $5,000 in the year of commencement and NZD $5,000 in Semester 1 of the following year"
+        ],
+        "required_documents": [
+          "eVision application for study with the agreement to be considered for international scholarships ticked",
+          "Evidence of qualifying study and University Entrance, assessed through the admission application"
+        ],
+        "english_requirement": "Not stated on the official scholarship pages; English language proficiency is assessed through admission to the programme.",
+        "requirements": [
+          "Agree in the eVision application for study to be considered for international scholarships at the University of Otago",
+          "Actively accept the scholarship offer by the deadline indicated in the scholarship offer letter, in addition to accepting the admission offer",
+          "Commence study by the enrolment date stated in the Offer of Place"
+        ],
+        "application_method": [
+          "No extra scholarship application required; applicants are automatically assessed during the admission process",
+          "Offshore applicants tick the agreement to be considered for international scholarships in their eVision application for study"
+        ],
+        "selection_notes": "Selection of recipients is based on academic potential, as demonstrated by programme admission. The scholarship is awarded once only: students who apply for more than one programme may receive multiple Offer of Place notifications, but only one scholarship will be awarded.",
+        "best_fit": "New international undergraduate applicants to the University of Otago who meet University Entrance requirements and can take up a place from the semester in which they are offered one.",
+        "description": "The Vice-Chancellor's Scholarships for International Students provide NZD $10,000 towards tuition fees to new international students entering full-time undergraduate study at the University of Otago. There is no separate scholarship application: applicants are automatically assessed during the admission process and agree in their eVision application for study to be considered for international scholarships. The award has a one-year tenure, is paid only as a credit towards tuition fees, cannot be deferred, and is forfeited if study does not commence by the enrolment date in the Offer of Place. Applicants must study on campus, and students sponsored by their home government or the New Zealand government are not eligible."
+      },
+      "programme_detail_official": {
+        "official_source_urls": [
+          "https://www.otago.ac.nz/international/future-students/fees-scholarships/international-scholarships",
+          "https://www.otago.ac.nz/international/future-students/subjects-courses/postgraduate-study/scholarships/vice-chancellors-scholarship-for-international-students",
+          "https://www.otago.ac.nz/__data/assets/pdf_file/0035/568376/VCSIS-Regulations.pdf"
+        ],
+        "application_link": "https://www.otago.ac.nz/international/future-students/fees-scholarships/international-scholarships#vice-chancellors",
+        "official_updates_url": "https://www.otago.ac.nz/international/future-students/fees-scholarships/international-scholarships",
+        "catalogue_url": "https://www.otago.ac.nz/__data/assets/pdf_file/0035/568376/VCSIS-Regulations.pdf",
+        "application_cycle": "Annual entrance scholarship cycle tied to programme admission; applications open 1 May in the year prior to study for offshore students and 1 July for onshore students",
+        "deadline_central": null,
+        "deadline_central_display": "Closing dates 10 December for semester 1 (February) start, 30 April for semester 2 (July) start for offshore students, 15 August for onshore students",
+        "deadline_central_timezone": "Pacific/Auckland",
+        "deadline_note": "The official pages publish recurring calendar closing dates without attaching a year, so no exact next-cycle date is stated rather than guessing. There is no scholarship application form; the operative deadline for the applicant is the acceptance date printed in the scholarship offer letter.",
+        "status": "OPEN",
+        "status_note": "Open for the 2027 entry cycle: offshore applications opened 1 May 2026 and the semester 1 closing date is 10 December. Offers are made during admission processing and must be actively accepted by the deadline in the scholarship offer letter.",
+        "funding_amount": 10000,
+        "funding_currency": "NZD",
+        "funding_period": "one-year tenure, paid as a single tuition fee credit",
+        "funding_duration": "One year",
+        "tuition_coverage": true,
+        "tuition_coverage_note": "Partial tuition coverage: \"Payment of the scholarship will be made as a credit towards tuition fees only\" at a fixed NZD $10,000, which does not equal full tuition for an international undergraduate. No living-cost component is published.",
+        "living_cost_coverage": false,
+        "travel_coverage": false,
+        "fully_funded": false,
+        "funding_label": "NZD $10,000 tuition fee credit for one year; repayable in part or full if enrolment ends or residency status changes, and not deferrable",
+        "benefits": [
+          "NZD $10,000 credit towards tuition fees",
+          "Semester 2 starters receive NZD $5,000 in the commencement year and NZD $5,000 in Semester 1 of the following year"
+        ],
+        "eligibility": [
+          "Have completed secondary (high) school, or studied at another approved institution that grants University Entrance either overseas or within New Zealand",
+          "Intend to enrol or have enrolled in full-time undergraduate degree-level study, or in an approved foundation diploma programme, with the objective of progressing into an undergraduate degree",
+          "Intend to study at the University of Otago from 100-level (first year) through to degree attainment",
+          "Study on campus throughout the duration of their studies",
+          "Not be enrolled in a foundation certificate programme, which is ineligible for this scholarship",
+          "Not be sponsored by their home government or the New Zealand government"
+        ],
+        "citizenship_residency": "International students. Students whose residency status changes from international to domestic during the tenure may have the scholarship suspended, terminated and repaid.",
+        "international_eligibility": "Open to all international students who have completed secondary school or another approved institution granting University Entrance, whether that study was overseas or within New Zealand. Students sponsored by their home government or the New Zealand government are not eligible.",
+        "degree_levels": ["Bachelor's"],
+        "study_mode": "Full-time, on campus",
+        "research_requirement": null,
+        "subject_or_agency_requirement": "Applicants must be studying from 100-level through to degree attainment; no subject restriction is published.",
+        "application_method": "No extra scholarship application required; applicants are automatically assessed during the admission process. Offshore applicants agree in their eVision application for study to be considered for international scholarships at the University of Otago.",
+        "application_route": "eVision application for study (student management system), or the online Entrance Scholarship application for applicants who completed secondary school or foundation study in New Zealand",
+        "requirements": [
+          "Agree in the eVision application for study to be considered for international scholarships",
+          "Meet University Entrance requirements through the admission application",
+          "Actively accept the scholarship offer by the deadline indicated in the scholarship offer letter, in addition to accepting the admission offer",
+          "Commence study by the enrolment date stated in the Offer of Place"
+        ],
+        "documents": [
+          "eVision application for study with the international scholarship consideration agreement ticked",
+          "Evidence of qualifying study assessed through the admission application"
+        ],
+        "english_requirement": null,
+        "english_requirement_note": "No separate English language requirement is stated for this scholarship; English language proficiency is assessed through admission.",
+        "selection_criteria": [
+          "Academic potential, as demonstrated by programme admission"
+        ],
+        "selection_weighting": null,
+        "duration": "One year",
+        "award_holder_conditions": [
+          "Payment is made only as a credit towards tuition fees",
+          "Deferral of the scholarship is not possible",
+          "The scholarship is no longer valid if study does not commence by the enrolment date stated in the Offer of Place",
+          "The scholarship is formally awarded only once, even where multiple programmes generate Offer of Place notifications",
+          "The scholarship may not normally be held at the same time as another University of Otago Undergraduate Entrance Scholarship; where another UES is awarded the recipient normally receives the scholarship of the highest value",
+          "If a student's residency status changes from international to domestic during the tenure, the University may suspend or terminate the scholarship and require the return of funds in part or in full",
+          "Upon termination of enrolment, withdrawal or stopping study, entitlement to scholarship funding is cancelled and the University may require repayment in part or full",
+          "Students sponsored by their home government or the New Zealand government are not eligible for this scholarship"
+        ],
+        "supplements_or_initiatives": [],
+        "official_contacts": {
+          "general": "University of Otago AskOtago service portal: https://ask.otago.ac.nz",
+          "email": null
+        },
+        "description": "The Vice-Chancellor's Scholarships for International Students award NZD $10,000 towards tuition fees to new international students commencing full-time undergraduate study at the University of Otago. Applicants do not submit a separate scholarship application: they are automatically assessed during the admission process after agreeing in their eVision application for study to be considered for international scholarships. The award has a one-year tenure, is paid only as a credit towards tuition fees, cannot be deferred, and lapses if study has not commenced by the enrolment date in the Offer of Place. Students must study on campus, government sponsored students are ineligible, and the funding is repayable if enrolment ends or residency status changes from international to domestic.",
+        "program_type": "Undergraduate entrance tuition fee scholarship",
+        "region": "Oceania",
+        "coverage": "Tuition fees only, fixed NZD $10,000 credit for one year",
+        "last_verified_date": "2026-10-04"
+      },
+      "programme_detail_applicant_utility": {
+        "application_readiness_checklist": [
+          "Submit your eVision application for study with the agreement to be considered for international scholarships ticked",
+          "Target the 10 December closing date for a Semester 1 (February) start, or 30 April for a Semester 2 (July) start if you are an offshore applicant",
+          "Be ready to accept the scholarship offer by the deadline printed in the scholarship offer letter, separately from accepting the admission offer",
+          "Confirm you can study on campus for the whole duration and start on the enrolment date in your Offer of Place",
+          "Check you are not sponsored by your home government or the New Zealand government, which makes you ineligible"
+        ],
+        "common_rejection_risks": [
+          "Not ticking the scholarship consideration agreement in the eVision application",
+          "Missing the scholarship offer acceptance deadline in the offer letter",
+          "Enrolling in a foundation certificate programme, which is ineligible",
+          "Failure to commence study by the enrolment date in the Offer of Place",
+          "Being sponsored by your home government or the New Zealand government",
+          "Changing residency status from international to domestic during the tenure"
+        ],
+        "estimated_uncovered_costs": [
+          "The balance of international tuition fees above NZD $10,000",
+          "Student Services Fee if not covered by the tuition fee credit",
+          "Living costs and accommodation",
+          "Travel, visa and insurance costs",
+          "Costs of later years of study beyond the one-year tenure"
+        ],
+        "document_audit": [
+          "eVision application for study submitted with the international scholarship consideration agreement completed",
+          "Evidence of University Entrance qualification",
+          "Acceptance of the scholarship offer recorded before the deadline in the offer letter"
+        ],
+        "alerts": [
+          {
+            "trigger": "Semester 1 closing date",
+            "message": "Offshore applications close 10 December for a February start; onshore applicants close 15 August."
+          },
+          {
+            "trigger": "Offer acceptance",
+            "message": "Scholarship offers must be actively accepted by the deadline in the scholarship offer letter, in addition to accepting the admission offer."
+          },
+          {
+            "trigger": "One award only",
+            "message": "If you are offered multiple programmes you may get multiple Offer of Place notifications, but only one scholarship will be awarded."
+          },
+          {
+            "trigger": "Repayment risk",
+            "message": "Funding is repayable in part or full if enrolment ends early or if your residency status changes from international to domestic."
+          }
+        ],
+        "submission_workflow": [
+          "Apply for admission through eVision for study",
+          "Tick the agreement to be considered for international scholarships in the application",
+          "Wait for the admission and scholarship assessment outcome",
+          "Accept the scholarship offer by the deadline in the scholarship offer letter and accept the admission offer",
+          "Enrol and commence study by the enrolment date in your Offer of Place"
+        ]
+      },
+      "programme_detail_verification": {
+        "cycle_verified": "2027 entry cycle (applications open 1 May in the year prior to study), verified 2026-10-04",
+        "verification_confidence": 0.88,
+        "official_fields_confirmed": [
+          "funding_amount",
+          "funding_currency",
+          "degree_levels",
+          "eligibility",
+          "application_method",
+          "duration",
+          "tuition_coverage",
+          "status"
+        ],
+        "institution_check_required": [
+          "Confirm the applicant's programme tuition fee to work out the proportion covered by NZD $10,000",
+          "Confirm the applicant is not government sponsored",
+          "Confirm the applicant's intended study start matches a published closing date"
+        ],
+        "unverified_or_removed_claims": [
+          "The official pages publish closing dates as recurring calendar dates (10 December, 30 April, 15 August) without a year, so deadline_date is null rather than guessing a 2026 date",
+          "The Vice-Chancellor's Scholarships for International Students Regulations PDF was linked from the official page but not opened, so clause-level terms beyond the page text are unverified",
+          "Selection weighting is not published; only 'academic potential, as demonstrated by programme admission' is stated",
+          "No official English language requirement is stated for the scholarship",
+          "Number offered is published only as \"Varies\""
+        ],
+        "source_citations": [
+          "https://www.otago.ac.nz/international/future-students/fees-scholarships/international-scholarships",
+          "https://www.otago.ac.nz/international/future-students/subjects-courses/postgraduate-study/scholarships/vice-chancellors-scholarship-for-international-students",
+          "https://www.otago.ac.nz/__data/assets/image/0028/568108/1869-emblem.png"
+        ],
+        "researched_by": "w1_26a"
+      },
+      "logo_override": {
+        "url": "https://www.otago.ac.nz/__data/assets/image/0028/568108/1869-emblem.png",
+        "page_url": "https://www.otago.ac.nz/international/future-students/fees-scholarships/international-scholarships",
+        "official_host": true,
+        "alt_text": "University of Otago (Ōtākou Whakaihu Waka) emblem with 1869",
+        "validation_result": "verified",
+        "validation_detail": "png, probed and returned \"Image fetched successfully\" confirming HTTP 200 with an image content type; gold University of Otago coat-of-arms emblem with the founding date 1869, served from the University's own domain and embedded in the official scholarships page footer",
+        "image_kind": "official_logo",
+        "image_format": "png",
+        "verified_at": "2026-10-04T00:00:00+00:00",
+        "host_evidence": "same_registrable_domain",
+        "_award": "Vice-Chancellor's Scholarships for International Students"
+      },
+      "research_notes": {
+        "logo": "Same awarding body and same verified asset as records 257 and 259: the University of Otago footer emblem https://www.otago.ac.nz/__data/assets/image/0028/568108/1869-emblem.png, probed and returning \"Image fetched successfully\" (HTTP 200, image content type). The site header wordmark UoO_Logo_RGB_Horz_Gold-REV.svg was probed and rejected because its wordmark paths use `.st0{fill:#FFFFFF;}`, i.e. white-on-transparent; the University's wordmark downloads require a staff login and no coloured variant is published publicly.",
+        "unverified": [
+          "Year-specific closing dates are not published; the official pages give recurring dates only",
+          "The Vice-Chancellor's Scholarships for International Students Regulations PDF was not opened",
+          "Number offered is published only as \"Varies\""
+        ],
+        "substitution": null,
+        "official_pages_read": [
+          "https://www.otago.ac.nz/international/future-students/fees-scholarships/international-scholarships",
+          "https://www.otago.ac.nz/international/future-students/subjects-courses/postgraduate-study/scholarships/vice-chancellors-scholarship-for-international-students",
+          "https://www.otago.ac.nz/__data/assets/file/0034/568366/UoO_Logo_RGB_Horz_Gold-REV.svg",
+          "https://www.otago.ac.nz/__data/assets/image/0028/568108/1869-emblem.png"
+        ],
+        "degree_level_confirmed": "Official page \"For new international Bachelor degree students commencing full-time undergraduate study\" and the detail page \"Are intending to enrol or have enrolled in full-time undergraduate degree-level study, or in an approved foundation diploma programme, with the objective of progressing into an undergraduate degree at the University of Otago\".",
+        "url_observed": null,
+        "contradictions": [
+          "Stored deadline_display \"Automatic with admission — no separate application\" omits the published closing dates (10 December for semester 1 offshore, 30 April for semester 2 offshore, 15 August onshore) and the requirement to actively accept the offer by the deadline in the scholarship offer letter.",
+          "Stored funding amount was null; the official pages publish NZD $10,000 with a one-year tenure.",
+          "Stored region was null; corrected to Oceania.",
+          "Stored deadline_precision \"varies\" replaced with \"recurring\" — the official pages publish fixed annual closing dates.",
+          "The official award name is \"Vice-Chancellor's Scholarships for International Students\"; the stored title prefixes it with the university name."
+        ],
+        "skeleton": false
+      }
+    },
+    {
+      "target_id": 259,
+      "outcome": "refreshed",
+      "confirm": true,
+      "confirmation_evidence": "Official page https://www.otago.ac.nz/international/future-students/fees-scholarships/international-scholarships#academic-excellence states \"University of Otago International Academic Excellence Scholarships — For high achieving international students who have studied overseas and will be commencing a full-time Bachelor degree at Otago\", \"Scholarship value: NZD~$35,000 (comprising first year accommodation and tuition scholarships in year 2 and year 3)\" and \"Application: Invited to apply in eVision, after you have accepted any previous scholarship offer (e.g. Vice Chancellor's International Scholarship, Global Scholarship). Required to complete scholarship application questions and information as requested. This is a competitive selection scholarship.\"",
+      "new_scholarship": {
+        "name": "University of Otago International Academic Excellence Scholarships",
+        "legacy_titles": ["University of Otago International Academic Excellence Scholarship"],
+        "country": "New Zealand",
+        "region": "Oceania",
+        "degree_levels": "Bachelor's",
+        "funding_type": "Partially Funded",
+        "official_source": "University of Otago",
+        "official_source_url": "https://www.otago.ac.nz/international/future-students/fees-scholarships/international-scholarships#academic-excellence",
+        "status": "open",
+        "is_verified": true,
+        "last_verified_date": "2026-10-04",
+        "application_link": "https://www.otago.ac.nz/international/future-students/fees-scholarships/international-scholarships#academic-excellence",
+        "official_updates_url": "https://www.otago.ac.nz/international/future-students/fees-scholarships/international-scholarships",
+        "catalogue_url": "https://www.otago.ac.nz/international/future-students/subjects-courses/postgraduate-study/scholarships/international-academic-excellence-scholarship",
+        "program_type": "Undergraduate competitive selection scholarship (accommodation and tuition fees)",
+        "duration": "Spans first year accommodation plus tuition scholarship in the second and third years",
+        "funding_amount": 35000,
+        "funding_currency": "NZD",
+        "funding_period": "across the first three years of the degree",
+        "deadline": "Invited to apply in eVision, after you have accepted any previous scholarship offer (e.g. Vice Chancellor's International Scholarship, Global Scholarship). Required to complete scholarship application questions and information as requested.",
+        "deadline_date": null,
+        "deadline_precision": "varies",
+        "application_period": "Invitation-based, following acceptance of an earlier Otago international scholarship offer during admission processing",
+        "eligibility_summary": "High achieving international students who have studied overseas and will be commencing a full-time Bachelor degree at the University of Otago. Applicants are invited to apply in eVision only after accepting a previous scholarship offer, and must complete the scholarship application questions.",
+        "eligibility": [
+          "Be an international student who has studied overseas",
+          "Be commencing a full-time Bachelor degree at the University of Otago",
+          "Have accepted a previous University of Otago international scholarship offer, such as the Vice-Chancellor's Scholarship for International Students or the Global Scholarship",
+          "Respond to an invitation to apply in eVision and complete the scholarship application questions and information as requested"
+        ],
+        "coverage": [
+          "First-year accommodation scholarship in a University residential college",
+          "Tuition scholarship in the second and third years of the degree"
+        ],
+        "benefits": [
+          "Total value of approximately NZD $35,000",
+          "First-year residential college accommodation scholarship",
+          "Tuition fee scholarship in years two and three"
+        ],
+        "required_documents": [
+          "eVision scholarship application questions completed in response to the invitation",
+          "Evidence of prior study and admission to a full-time Bachelor degree, assessed through the admission and scholarship process"
+        ],
+        "english_requirement": "Not stated on the official page read; English language proficiency is assessed through admission to the programme.",
+        "requirements": [
+          "Accept a previous University of Otago international scholarship offer to receive the invitation",
+          "Apply through eVision in response to the invitation",
+          "Complete the scholarship application questions and information as requested"
+        ],
+        "application_method": [
+          "Invitation only: applicants are invited to apply in eVision after accepting a previous scholarship offer",
+          "Complete the scholarship application questions and information as requested; this is a competitive selection scholarship"
+        ],
+        "selection_notes": "The official page describes this as a competitive selection scholarship. The University of Otago International Academic Excellence Scholarship is an Entrance Scholarship and is subject to the standard Undergraduate Entrance Scholarship terms and conditions, except where superseded by the specific terms of this award.",
+        "best_fit": "High-achieving international students who already hold an offer of a University of Otago international entrance scholarship and are prepared to complete a competitive supplementary application in eVision.",
+        "description": "The University of Otago International Academic Excellence Scholarships are awarded to high achieving international students who have studied overseas and will be commencing a full-time Bachelor degree at Otago, with a total value of approximately NZD $35,000 made up of a first-year residential college accommodation scholarship and tuition scholarships in the second and third years. The scholarship is invitation-based: applicants are invited to apply in eVision only after they have accepted a previous scholarship offer such as the Vice-Chancellor's Scholarship for International Students or a Global Scholarship, and must complete the scholarship application questions as requested. It is a competitive selection award and is subject to the standard Undergraduate Entrance Scholarship terms and conditions except where superseded."
+      },
+      "programme_detail_official": {
+        "official_source_urls": [
+          "https://www.otago.ac.nz/international/future-students/fees-scholarships/international-scholarships"
+        ],
+        "application_link": "https://www.otago.ac.nz/international/future-students/fees-scholarships/international-scholarships#academic-excellence",
+        "official_updates_url": "https://www.otago.ac.nz/international/future-students/fees-scholarships/international-scholarships",
+        "catalogue_url": "https://www.otago.ac.nz/international/future-students/subjects-courses/postgraduate-study/scholarships/international-academic-excellence-scholarship",
+        "application_cycle": "Annual cycle running alongside admission processing; invitations are issued to applicants who have accepted a previous University of Otago international scholarship offer",
+        "deadline_central": null,
+        "deadline_central_display": "Invited to apply in eVision, after you have accepted any previous scholarship offer (e.g. Vice Chancellor's International Scholarship, Global Scholarship). Required to complete scholarship application questions and information as requested.",
+        "deadline_central_timezone": "Pacific/Auckland",
+        "deadline_note": "There is no public closing date because the scholarship is invitation-based: the applicant is invited in eVision after accepting a previous scholarship offer and then has to complete the scholarship application questions. The dedicated detail page for this award (…/scholarships/international-academic-excellence-scholarship) returned a connection timeout on three attempts on 2026-10-04, so no dated deadline could be read.",
+        "status": "OPEN",
+        "status_note": "Live and running: the University continues to offer this scholarship as part of its international undergraduate scholarships, with invitations issued during admission processing. Because the trigger is acceptance of an earlier scholarship offer rather than a public deadline, applicants cannot apply directly.",
+        "funding_amount": 35000,
+        "funding_currency": "NZD",
+        "funding_period": "across the first three years of the degree",
+        "funding_duration": "First-year accommodation component plus tuition component in the second and third years",
+        "tuition_coverage": true,
+        "tuition_coverage_note": "Partial: the official page describes the value as \"NZD~$35,000 (comprising first year accommodation and tuition scholarships in year 2 and year 3)\", so tuition support applies in years two and three while year one support is an accommodation scholarship rather than a tuition waiver. Living costs beyond residential accommodation fees are not covered.",
+        "living_cost_coverage": false,
+        "travel_coverage": false,
+        "fully_funded": false,
+        "funding_label": "Approximately NZD $35,000 total: residential college accommodation scholarship in year one plus tuition scholarship in years two and three; competitive selection, invitation-based application",
+        "benefits": [
+          "First-year accommodation scholarship in a University of Otago residential college",
+          "Tuition fee scholarship in the second and third years",
+          "Total value of approximately NZD $35,000"
+        ],
+        "eligibility": [
+          "Be an international student who has studied overseas",
+          "Be commencing a full-time Bachelor degree at the University of Otago",
+          "Have accepted a previous University of Otago international scholarship offer, such as the Vice-Chancellor's Scholarship for International Students or a Global Scholarship",
+          "Respond to the invitation to apply in eVision and complete the scholarship application questions and information as requested"
+        ],
+        "citizenship_residency": "International students. The University's international entrance scholarship terms note that if a student's residency status changes from international to domestic during the tenure of a scholarship, the University may suspend or terminate it and require the return of funds.",
+        "international_eligibility": "Open to high achieving international students who have studied overseas and are commencing a full-time Bachelor degree at the University of Otago.",
+        "degree_levels": ["Bachelor's"],
+        "study_mode": "Full-time",
+        "research_requirement": null,
+        "subject_or_agency_requirement": null,
+        "application_method": "Invitation only. Applicants are invited to apply in eVision after they have accepted a previous scholarship offer, and must complete the scholarship application questions and information as requested. The award is a competitive selection scholarship.",
+        "application_route": "eVision (student management system), by invitation",
+        "requirements": [
+          "Hold and have accepted a previous University of Otago international scholarship offer",
+          "Apply through eVision in response to the invitation",
+          "Complete the scholarship application questions and information as requested"
+        ],
+        "documents": [
+          "Completed eVision scholarship application questions submitted in response to the invitation"
+        ],
+        "english_requirement": null,
+        "english_requirement_note": "The official page read does not state an English language requirement for this scholarship; English proficiency is assessed through admission.",
+        "selection_criteria": [
+          "Outstanding academic ability (the official page describes the award as being for high achieving international students)",
+          "Competitive selection against other invited applicants"
+        ],
+        "selection_weighting": null,
+        "duration": "First-year accommodation component plus tuition scholarship in the second and third years of the degree",
+        "award_holder_conditions": [
+          "Must be enrolled full-time in a Bachelor degree at the University of Otago",
+          "Application is invitation-based and conditional on having accepted a previous Otago international scholarship offer"
+        ],
+        "supplements_or_initiatives": [
+          "Vice-Chancellor's Scholarships for International Students (usual qualifying award)",
+          "University of Otago Global Scholarships (usual qualifying award)",
+          "New Zealand Universities Awards (NZUA) – Vietnam, which the official page states can be held alongside an Otago Global Scholarship and this scholarship for a total value of up to NZD $65,000"
+        ],
+        "official_contacts": {
+          "general": "University of Otago AskOtago service portal: https://ask.otago.ac.nz",
+          "email": null
+        },
+        "description": "The University of Otago International Academic Excellence Scholarships are for high achieving international students who have studied overseas and are commencing a full-time Bachelor degree at Otago. The official page gives a value of approximately NZD $35,000, made up of a first-year residential college accommodation scholarship and tuition scholarships in the second and third years. It is a competitive selection award with no public application route: applicants are invited to apply in eVision only after accepting a previous scholarship offer such as the Vice-Chancellor's Scholarship for International Students or a Global Scholarship, and must complete the scholarship application questions as requested. The award sits within the University's standard Undergraduate Entrance Scholarship terms and conditions except where superseded.",
+        "program_type": "Undergraduate competitive selection scholarship (accommodation and tuition fees)",
+        "region": "Oceania",
+        "coverage": "Residential college accommodation fees in year one and tuition fees in years two and three",
+        "last_verified_date": "2026-10-04"
+      },
+      "programme_detail_applicant_utility": {
+        "application_readiness_checklist": [
+          "Apply for admission as an international undergraduate and hold an offer of a place at Otago",
+          "Apply for an earlier Otago international scholarship such as the Vice-Chancellor's Scholarship for International Students or a Global Scholarship, since acceptance of one triggers this invitation",
+          "Watch eVision for the invitation to apply for the International Academic Excellence Scholarship",
+          "Complete all scholarship application questions in eVision within the window given in the invitation",
+          "Plan for the first-year component to be residential college accommodation rather than a tuition waiver, and budget tuition fees separately for year one"
+        ],
+        "common_rejection_risks": [
+          "Not holding a previous Otago international scholarship offer, so no invitation is issued",
+          "Missing the eVision invitation window and not completing the scholarship application questions",
+          "Weaker academic record than other invited applicants, since this is a competitive selection scholarship",
+          "Assuming the award is a full tuition waiver in year one when the first-year component is accommodation"
+        ],
+        "estimated_uncovered_costs": [
+          "First-year tuition fees, since the year-one component is an accommodation scholarship",
+          "Student Services Fee if not included in the accommodation or tuition scholarship",
+          "Living costs beyond residential college accommodation fees",
+          "Travel, visa and insurance costs",
+          "Costs beyond the third year of the degree"
+        ],
+        "document_audit": [
+          "eVision scholarship application questions completed and submitted in response to the invitation",
+          "Evidence of the earlier scholarship offer acceptance that triggered the invitation",
+          "Evidence of the study completed overseas referenced in the scholarship application"
+        ],
+        "alerts": [
+          {
+            "trigger": "Invitation dependency",
+            "message": "There is no public application form or date; the invitation follows acceptance of an earlier Otago international scholarship offer."
+          },
+          {
+            "trigger": "Component structure",
+            "message": "Approximately NZD $35,000 in total, split between first-year residential college accommodation and tuition support in years two and three."
+          },
+          {
+            "trigger": "Detail page unavailable",
+            "message": "The dedicated International Academic Excellence Scholarship detail page timed out on three attempts on 2026-10-04; recheck it for the current selection criteria and continuation conditions before relying on this record."
+          }
+        ],
+        "submission_workflow": [
+          "Secure an admission offer for a full-time Bachelor degree at the University of Otago",
+          "Apply for and accept the Vice-Chancellor's Scholarship for International Students or a Global Scholarship",
+          "Wait for the invitation to apply for the International Academic Excellence Scholarship in eVision",
+          "Complete the scholarship application questions and information as requested within the invitation window",
+          "Await the competitive selection outcome"
+        ]
+      },
+      "programme_detail_verification": {
+        "cycle_verified": "2027 entry cycle invitation round, verified 2026-10-04",
+        "verification_confidence": 0.72,
+        "official_fields_confirmed": [
+          "funding_amount",
+          "funding_currency",
+          "degree_levels",
+          "application_method",
+          "eligibility",
+          "status"
+        ],
+        "institution_check_required": [
+          "Confirm the applicant's residential college accommodation fee for the year-one component against the total ~NZD $35,000",
+          "Confirm whether the applicant's earlier scholarship offer is one of the qualifying Otago international entrance scholarships",
+          "Confirm the current year-two and year-three continuation conditions with the University, as the dedicated detail page could not be read"
+        ],
+        "unverified_or_removed_claims": [
+          "The dedicated detail page https://www.otago.ac.nz/international/future-students/subjects-courses/postgraduate-study/scholarships/international-academic-excellence-scholarship timed out on three attempts on 2026-10-04, so its published opening date (1 May in year prior to study), closing date (2 weeks upon invitation to apply) and per-year breakdown (accommodation fees around $19,000 in year one, $7,000 towards tuition in each of years two and three) could not be confirmed and are therefore not recorded as verified fields",
+          "Year-two and year-three continuation conditions, including any GPA threshold, are unverified",
+          "Selection criteria beyond \"high achieving\" and \"competitive selection\" are unverified",
+          "No official English language requirement could be confirmed",
+          "The exact three-year tenure wording is not confirmed; only the year one accommodation plus years two and three tuition structure is confirmed"
+        ],
+        "source_citations": [
+          "https://www.otago.ac.nz/international/future-students/fees-scholarships/international-scholarships",
+          "https://www.otago.ac.nz/__data/assets/image/0028/568108/1869-emblem.png"
+        ],
+        "researched_by": "w1_26a"
+      },
+      "logo_override": {
+        "url": "https://www.otago.ac.nz/__data/assets/image/0028/568108/1869-emblem.png",
+        "page_url": "https://www.otago.ac.nz/international/future-students/fees-scholarships/international-scholarships",
+        "official_host": true,
+        "alt_text": "University of Otago (Ōtākou Whakaihu Waka) emblem with 1869",
+        "validation_result": "verified",
+        "validation_detail": "png, probed and returned \"Image fetched successfully\" confirming HTTP 200 with an image content type; gold University of Otago coat-of-arms emblem with the founding date 1869, served from the University's own domain and embedded in the official scholarships page footer",
+        "image_kind": "official_logo",
+        "image_format": "png",
+        "verified_at": "2026-10-04T00:00:00+00:00",
+        "host_evidence": "same_registrable_domain",
+        "_award": "University of Otago International Academic Excellence Scholarships"
+      },
+      "research_notes": {
+        "logo": "Same awarding body and same verified asset as records 257 and 258: the University of Otago footer emblem https://www.otago.ac.nz/__data/assets/image/0028/568108/1869-emblem.png, probed and returning \"Image fetched successfully\" (HTTP 200, image content type). The site header wordmark UoO_Logo_RGB_Horz_Gold-REV.svg was probed and rejected because its wordmark paths use `.st0{fill:#FFFFFF;}`, i.e. white-on-transparent and therefore invisible on a light card; no coloured wordmark variant is published publicly.",
+        "unverified": [
+          "The dedicated detail page for this award timed out on three attempts, so its dates, per-year value breakdown and continuation conditions are unverified",
+          "Year-two and year-three GPA continuation conditions are unverified",
+          "No exact deadline exists publicly because the award is invitation-based"
+        ],
+        "substitution": null,
+        "official_pages_read": [
+          "https://www.otago.ac.nz/international/future-students/fees-scholarships/international-scholarships",
+          "https://www.otago.ac.nz/__data/assets/file/0034/568366/UoO_Logo_RGB_Horz_Gold-REV.svg",
+          "https://www.otago.ac.nz/__data/assets/image/0028/568108/1869-emblem.png"
+        ],
+        "degree_level_confirmed": "Official page \"For high achieving international students who have studied overseas and will be commencing a full-time Bachelor degree at Otago.\"",
+        "url_observed": null,
+        "contradictions": [
+          "Stored funding amount was null; the official page publishes NZD~$35,000 comprising first year accommodation and tuition scholarships in year 2 and year 3.",
+          "Stored region was null; corrected to Oceania.",
+          "Stored funding label \"Partial\" is consistent with the official value; recorded as \"Partially Funded\".",
+          "Stored deadline_display \"Invitation to apply after accepting prior scholarship offer\" is confirmed by the official page but is incomplete: the applicant must also \"complete scholarship application questions and information as requested\"."
+        ],
+        "skeleton": false
+      }
+    }
+  ]
+}

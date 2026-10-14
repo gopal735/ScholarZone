@@ -1,0 +1,114 @@
+[
+  {
+    "scholarship_id": 70,
+    "outcome": "verified_supervisors",
+    "professors": [
+      {
+        "canonical_name": "George Jackson",
+        "title": "Professor of Chemical Physics",
+        "institution_name": "Imperial College London",
+        "department_name": "Department of Chemical Engineering, Faculty of Engineering",
+        "official_profile_url": "https://profiles.imperial.ac.uk/g.jackson",
+        "official_email": "g.jackson@imperial.ac.uk",
+        "official_email_verified": true,
+        "lab_url": "http://www.imperial.ac.uk/process-systems-engineering",
+        "personal_academic_url": null,
+        "research_areas": ["Physical chemistry", "Thermodynamics and statistical physics", "Theoretical and computational chemistry", "Chemical engineering", "Statistical mechanics"],
+        "research_keywords": ["chemical physics", "statistical mechanics", "thermodynamics", "molecular systems engineering", "SAFT"],
+        "relationship_type": "potential_supervisor",
+        "evidence_source_url": "https://www.imperial.ac.uk/study/fees-and-funding/postgraduate-doctoral/grants-scholarships/presidents-phd/supervisors/",
+        "evidence_source_type": "official_programme_page",
+        "evidence_quote_or_summary": "The scholarship's official 'President's PhD Scholarships - Unavailable Supervisors' page states: 'Before applying for a President's PhD Scholarship, candidates must have made contact with a supervisor in an academic department at Imperial College London who has agreed to supervise their research project' and lists under Chemical Engineering: 'Professor George Jackson' among supervisors currently unavailable to new students.",
+        "confidence": 95,
+        "availability": {
+          "scope": "phd_supervision",
+          "state": "verified_no",
+          "source_url": "https://www.imperial.ac.uk/study/fees-and-funding/postgraduate-doctoral/grants-scholarships/presidents-phd/supervisors/"
+        }
+      },
+      {
+        "canonical_name": "Alexei Kornyshev",
+        "title": "Chair of Chemical Physics",
+        "institution_name": "Imperial College London",
+        "department_name": "Department of Chemistry, Faculty of Natural Sciences",
+        "official_profile_url": "https://profiles.imperial.ac.uk/a.kornyshev",
+        "official_email": "a.kornyshev@imperial.ac.uk",
+        "official_email_verified": true,
+        "lab_url": null,
+        "personal_academic_url": null,
+        "research_areas": ["Condensed matter physics", "Physical chemistry", "Theoretical and computational chemistry", "Nanotechnology", "Electrochemistry"],
+        "research_keywords": ["electrochemistry", "supercapacitors", "fuel cells", "ionic liquids", "DNA biophysics", "nanophotonics"],
+        "relationship_type": "potential_supervisor",
+        "evidence_source_url": "https://www.imperial.ac.uk/study/fees-and-funding/postgraduate-doctoral/grants-scholarships/presidents-phd/supervisors/",
+        "evidence_source_type": "official_programme_page",
+        "evidence_quote_or_summary": "The scholarship's official 'President's PhD Scholarships - Unavailable Supervisors' page lists, under the Faculty of Natural Sciences / Chemistry department, 'Professor Alexei Kornyshev' among supervisors currently unavailable to new President's PhD Scholarship students.",
+        "confidence": 95,
+        "availability": {
+          "scope": "phd_supervision",
+          "state": "verified_no",
+          "source_url": "https://www.imperial.ac.uk/study/fees-and-funding/postgraduate-doctoral/grants-scholarships/presidents-phd/supervisors/"
+        }
+      },
+      {
+        "canonical_name": "Aron Walsh",
+        "title": "Chair in Materials Design",
+        "institution_name": "Imperial College London",
+        "department_name": "Department of Materials, Faculty of Engineering",
+        "official_profile_url": "https://profiles.imperial.ac.uk/a.walsh",
+        "official_email": "a.walsh@imperial.ac.uk",
+        "official_email_verified": true,
+        "lab_url": "http://wmd-group.github.io/",
+        "personal_academic_url": null,
+        "research_areas": ["Theory and design of materials", "Solid state chemistry", "Condensed matter physics", "Theoretical and computational chemistry", "Machine learning"],
+        "research_keywords": ["materials informatics", "machine learning", "semiconductors", "solar cells", "batteries", "thermoelectrics"],
+        "relationship_type": "potential_supervisor",
+        "evidence_source_url": "https://www.imperial.ac.uk/study/fees-and-funding/postgraduate-doctoral/grants-scholarships/presidents-phd/supervisors/",
+        "evidence_source_type": "official_programme_page",
+        "evidence_quote_or_summary": "The scholarship's official 'President's PhD Scholarships - Unavailable Supervisors' page lists, under the Faculty of Engineering / Materials department, 'Professor Aron Walsh' among supervisors currently unavailable to new President's PhD Scholarship students.",
+        "confidence": 95,
+        "availability": {
+          "scope": "phd_supervision",
+          "state": "verified_no",
+          "source_url": "https://www.imperial.ac.uk/study/fees-and-funding/postgraduate-doctoral/grants-scholarships/presidents-phd/supervisors/"
+        }
+      }
+    ],
+    "notes": "The President's PhD Scholarship is a centrally funded Imperial College London scheme: applicants must first secure a supervisor in an academic department. Imperial's official scholarship sub-page publishes the named 'Unavailable Supervisors' list (primary supervisors may supervise only one scholar at a time), so the three professors above are officially tied to the scheme but are currently listed as unavailable to new students. Emails and titles were verified on each professor's official Imperial profile (profiles.imperial.ac.uk)."
+  },
+  {
+    "scholarship_id": 71,
+    "outcome": "no_verified_supervisor_found",
+    "professors": [],
+    "notes": "UCL Global Master's Scholarship is a centrally administered, needs-based award run by the UCL Student Funding Office (per ucl.ac.uk/scholarships/ucl-global-masters-scholarship) for any full-time postgraduate taught programme. Selection is by the Student Funding Office on financial need; no department, professor, or supervisor is named or attached to the award, so no supervising faculty can be verified."
+  },
+  {
+    "scholarship_id": 72,
+    "outcome": "no_verified_supervisor_found",
+    "professors": [],
+    "notes": "UCL Humanitarian Scholarship is a centrally administered award decided by the 'UCL Humanitarian Scholarship panel' upon recommendation of the Student Funding Office (per ucl.ac.uk/scholarships/ucl-humanitarian-scholarship) for conflict-displaced students on full-time taught master's programmes. No professor or supervisor is named or tied to the award on the official page."
+  },
+  {
+    "scholarship_id": 73,
+    "outcome": "no_verified_supervisor_found",
+    "professors": [],
+    "notes": "LSE PhD Studentships are a school-wide funding scheme at LSE. The official page (lse.ac.uk/study-at-lse/Graduate/fees-and-funding/phd-studentships) states 'Academic departments nominate students for consideration by a School panel for all PhD funding opportunities' and names no individual supervisor, programme director, or faculty member. No tied professor could be verified from official sources."
+  },
+  {
+    "scholarship_id": 74,
+    "outcome": "no_verified_supervisor_found",
+    "professors": [],
+    "notes": "The LSE Excellence Scholarship (under LSE Master's Awards, lse.ac.uk/study-at-lse/graduate/fees-and-funding/lse-masters-awards) is a centrally administered merit award for postgraduate taught programmes, decided inside the admissions process by LSE's Financial Support Office. No professor, supervisor, or named faculty is attached to the award on the official page."
+  },
+  {
+    "scholarship_id": 75,
+    "outcome": "no_verified_supervisor_found",
+    "professors": [],
+    "notes": "The University of Manchester Global Futures Scholarship (South Asia master's award) is a regional, partial tuition-fee merit scholarship administered by the International Office (international@manchester.ac.uk) and applied for via a form sent to offer-holders (per manchester.ac.uk/study/international/finance-and-scholarships/funding/global-futures-scholarship and the country profile/document referenced by the source URL). No professor, supervisor, or department faculty is named or tied to the award."
+  },
+  {
+    "scholarship_id": 76,
+    "outcome": "no_verified_supervisor_found",
+    "professors": [],
+    "notes": "The University of Manchester GREAT Scholarship for Bangladesh is a British Council GREAT Britain Campaign partnership award for one-year taught master's programmes, administered by the International Office (international@manchester.ac.uk) and applied for via a form emailed to offer-holders (per manchester.ac.uk/study/international/finance-and-scholarships/funding/great-scholarships). It is a tuition-fee discount with no attached academic supervisor or named faculty."
+  }
+]

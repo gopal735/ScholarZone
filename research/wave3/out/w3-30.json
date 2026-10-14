@@ -1,0 +1,21 @@
+{
+  "agent_id": "w3_30",
+  "shard": "w3-30",
+  "host": "gulbenkian.pt",
+  "today": "2026-10-04",
+  "logo_override": {
+    "url": "https://gulbenkian.pt/wp-content/themes/fcg-common/public/images/favicon/icon-512x512.png",
+    "page_url": "https://gulbenkian.pt/en/",
+    "official_host": true,
+    "alt_text": "Fundacao Calouste Gulbenkian",
+    "validation_result": "verified",
+    "validation_detail": "png 512x512, probed via webfetch -> 'Image fetched successfully' (HTTP 200 + image content type); the Foundation's own crest - the black 'G' enclosing Calouste Sarkis Gulbenkian's quadriga - near-black on an opaque white rounded square, so it stays legible on a light card",
+    "image_kind": "official_logo",
+    "image_format": "png",
+    "verified_at": "2026-10-04T00:00:00+00:00",
+    "host_evidence": "same_registrable_domain",
+    "_award": "Gulbenkian Institute for Advanced Study Fellowships 2027/28"
+  },
+  "target_ids": [628],
+  "notes": "Awarding body is Fundacao Calouste Gulbenkian, so the Foundation's own mark is correct. Rule 3 drove this result. The site header logo, https://gulbenkian.pt/wp-content/uploads/2018/12/01_logotipo_web_fundacao_EN_50px.svg (alt 'Fundacao Calouste Gulbenkian', in <header class='fcg-header' style='background-color: #111111'>), probed 200 but I read the SVG source and EVERY path is style=\"fill:#fff\" on a transparent field - the exact white-on-transparent failure rule 3 forbids, since the site only ever draws it on the black header. I then hunted for a dark variant as rule 3 directs: enumerated every image the page references (only that one logo, the favicon set, article thumbnails and two footer certification marks ISO-14001_preto.svg / livro_reclamacoes_preto-01.svg, which are not the Foundation's logo); read the theme stylesheet /wp-content/themes/fcg-common/dist/assets/style-B05ln7Nj.css and it contains no url(...) logo reference at all, because the logo is a plain <img> in markup; and the WordPress media REST API (/wp-json/wp/v2/media?search=logotipo) is closed to anonymous callers with HTTP 401. So no dark wordmark is published on gulbenkian.pt. Falling back to the favicon family, which the brief allows as a last resort: the site's own manifest.webmanifest names icon-192x192.png and icon-512x512.png, and these are not generic browser icons but the Foundation's crest itself. I probed both icon-512x512.png (chosen, highest resolution) and apple-icon-180x180.png - both returned 200 with an image content type. Note the asset sits under the theme's .../favicon/ directory, but it is the identical artwork that the white wordmark wraps around the text of, so it is the body's mark and not a browser glyph."
+}

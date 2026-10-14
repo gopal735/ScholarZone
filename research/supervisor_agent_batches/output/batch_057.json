@@ -1,0 +1,44 @@
+[
+  {
+    "scholarship_id": 463,
+    "outcome": "not_applicable",
+    "professors": [],
+    "notes": "UZH Student Financial Aid Office page (studienfinanzierung.uzh.ch/en.html) is a means-tested financial aid office (scholarships, loans, hardship loans) administered by UZH central services; it also links out to the Swiss Study Foundation (studyfoundation.ch). No research programme and no supervising professor is attached to this aid. The only published contact is an administrative office address (studienfinanzierung@sib.uzh.ch), not a faculty supervisor, so no professor entries are applicable."
+  },
+  {
+    "scholarship_id": 464,
+    "outcome": "not_applicable",
+    "professors": [],
+    "notes": "EPFL social scholarship (epfl.ch/education/studies/en/epfl-social-scholarship) is a need-based, last-resort social scholarship for enrolled Bachelor's/Master's students, decided by EPFL study administration. No supervising professor or research group is attached to the award, so supervisor enrichment is not applicable."
+  },
+  {
+    "scholarship_id": 465,
+    "outcome": "not_applicable",
+    "professors": [],
+    "notes": "Hans Wilsdorf Foundation Scholarship (epfl.ch/education/studies/en/support-scholarships) is a need-based scholarship from a private foundation, administered by EPFL under the same criteria as the EPFL social scholarship. No supervising professor or research group is attached to the award, so supervisor enrichment is not applicable."
+  },
+  {
+    "scholarship_id": 466,
+    "outcome": "not_applicable",
+    "professors": [],
+    "notes": "UZH hardship loan (studienfinanzierung.uzh.ch/en/financial_support.html) is an interest-free short-term bridge loan for enrolled UZH students in acute financial emergency, administered by the Student Financial Aid Office. No supervising professor is attached, so supervisor enrichment is not applicable."
+  },
+  {
+    "scholarship_id": 467,
+    "outcome": "not_applicable",
+    "professors": [],
+    "notes": "MOE Short Term Research Award (english.moe.gov.tw/cp-24-16836-FEE8B-1.html) is a national government grant of Taiwan's Ministry of Education. The official page states applications must be submitted to 'a university, or tertiary college in Taiwan, or a research organization affiliated with the MOE—such as the Center for Chinese Studies, or the National Academy for Educational Research—at which the applicant would like to undertake research (referred to below as \"the host institution\")', i.e. the scholar chooses and arranges the host institution themselves. The scheme has no attached institution or named supervising professor, so per the enrichment rules the outcome is not_applicable with empty professors."
+  },
+  {
+    "scholarship_id": 468,
+    "outcome": "no_verified_supervisor_found",
+    "professors": [],
+    "notes": "The NYCU International Student Scholarship official page (oia.nycu.edu.tw, Unit: Division of International Talent Cultivation) describes a university-wide institutional scholarship for degree-seeking international students (monthly stipend plus tuition award; Elite Ph.D. Scholarship NT$33,000/month awarded by college recommendation and scholarship committee review). The page names no supervising professor: published contacts are OIA administrative staff (Jessica Hsieh jessicahsieh@nycu.edu.tw, Trudy Wu trudy@nycu.edu.tw), who are program administrators rather than faculty supervisors, so they are not listed as professors. Advisor involvement appears only generically ('matching funds from their college, department, or advisor') with no named individual. No official page ties any professor to this scholarship."
+  },
+  {
+    "scholarship_id": 470,
+    "outcome": "not_applicable",
+    "professors": [],
+    "notes": "Fulbright U.S. Student Program (us.fulbrightonline.org) is a U.S. Department of State exchange grant administered by IIE. It funds U.S. citizens to study, research, or teach abroad in any academic discipline across all participating countries; no single institution or supervising professor is attached to the program, so supervisor enrichment is not_applicable."
+  }
+]

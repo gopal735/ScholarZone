@@ -1,0 +1,615 @@
+[
+  {
+    "id": "sbw-berlin-scholarship-for-international-students",
+    "title": "SBW Berlin Scholarship for International Students",
+    "short_title": "SBW Berlin",
+    "legacy_titles": [
+      "SBW Berlin Stipendium für internationale Studierende",
+      "SBW Berlin scholarship program (the programme of which this is one of three scholarship types)"
+    ],
+    "country": "Germany",
+    "host_region": "Europe",
+    "single_central_deadline": false,
+    "deadline_date": null,
+    "deadline_timezone": null,
+    "degree": "Bachelor's",
+    "degree_levels": [
+      "Bachelor's",
+      "ISCED Level 6 equivalent",
+      "Master's (ISCED Level 7 — also funded)"
+    ],
+    "study_level": "Undergraduate",
+    "program_type": "Private non-profit foundation scholarship awarded on financial need and social commitment, tied to a study place in Berlin or Potsdam",
+    "funding_type": "Full living-cost scholarship (private foundation-funded) with accommodation, tuition and travel elements",
+    "administering_authority": "SBW Berlin gGmbH",
+    "implementing_agency": "SBW Berlin gGmbH (same body; the online application portal and the selection are run by SBW Berlin itself, not by a university or a public agency)",
+    "programme_action": "SBW Berlin scholarship programme ('Das SBW Berlin Stipendienprogramm'), scholarship type 'Scholarship for international students'",
+    "description": "SBW Berlin gGmbH, a Berlin non-profit limited liability company founded in 2018 by Anika Maneva and Stefan Wienecke and registered as HRB 128460 B at Charlottenburg Local Court, funds non-profit work and social projects through a scholarship programme that comprises three types of scholarship: for study programmes in the social sector, for refugees, and for international students. The scholarship for international students supports a full bachelor's or master's degree at a university or university of applied sciences (Fachhochschule) in Berlin or Potsdam with a cost-of-living allowance of currently EUR 480 per month, a furnished room in a shared student flat, tuition fees and, possibly, a travel contribution. Eligibility turns on financial need, on demonstrated social commitment and collaboration with a non-profit organisation in the applicant's home country, and on an intention to return to the home country for at least 18 months after graduation. There is no application deadline: applications are accepted all year round, but access is gated by a letter of recommendation from a non-profit institution.",
+    "status": "OPEN",
+    "status_label": "Open all year round",
+    "status_note": "There are no application deadlines; applicants can apply all year round. Funding is granted on a periodic basis, usually for the upcoming semester, and each semester only as many scholarships are awarded as there are vacancies among the 20 scholarship places. The official guidelines used here were last updated on 9 April 2025 and remain the current published version.",
+    "application_deadline": {
+      "single_central_deadline": false,
+      "deadline_date": null,
+      "deadline_timezone": null,
+      "deadline_precision": "typical_window",
+      "typical_application_window": "All year round (rolling intake, no fixed application deadline)",
+      "application_period": "No fixed period. Applications may be submitted at any time of year; SBW Berlin charges no application or processing fees in connection with the application.",
+      "official_rule": "No fixed application deadline. SBW Berlin FAQ: 'There are no application deadlines. Applicants can apply for the scholarship program all year round.' The official guidelines (section V of 'Guidelines for the SBW Berlin Scholarship for International Students', last updated April 9, 2025) state the scholarship programme is available all year round and that no application or processing fees are charged.",
+      "deadline_warning": "There is no closing date to miss. The real gate is procedural, not temporal: a letter of recommendation must be reviewed before access to the online application portal is granted, so build in time for the issuing non-profit institution and for that review. Because there is no deadline, next_cycle_starts is immediate rather than a future date.",
+      "next_verification_due": "2027-01-10"
+    },
+    "programme_duration": {
+      "official_range": "At least 30 days up to a maximum of 48 months; the respective standard period of study (Regelstudienzeit) of the chosen degree programme is decisive, and funding cannot continue after the regular study period has ended",
+      "duration_years": 4,
+      "normal_duration_years": 3,
+      "duration_months": 36,
+      "renewable": true,
+      "renewal_note": "Funding is granted on a periodic base, usually for the upcoming semester. Before the end of each semester SBW Berlin determines whether further funding is justified. Funding is terminated if most academic courses of the last sponsored semester have not been successfully completed, if two compulsory examinations are failed or postponed, if the welfare target agreements are not met, or if funds are misused. Any funding after the regular study period has ended is unattainable."
+    },
+    "funding": {
+      "scholarship_available": true,
+      "scholarship_type": "Need- and merit-based private foundation scholarship with a social-project condition and an obligation to return to the home country",
+      "scholarship_currency": "EUR",
+      "monthly_amount": 480,
+      "monthly_amount_note": "Cost-of-living allowance 'currently in the amount of 480 Euro per month' (official guidelines, section IX). The amount may differ if BAföG is granted: BAföG recipients generally receive only a flat rate or book allowance of a maximum of EUR 100 per month, and only those parts of the BAföG allowance that are not counted as income under § 21 para. 3 no. 2 BAföG are taken into account.",
+      "travel_support": true,
+      "visa_support": false,
+      "installation_support": true,
+      "living_allowance": true,
+      "insurance": null,
+      "travel_amount": 1000,
+      "travel_amount_note": "Discretionary, not guaranteed. The scholarship 'possibly also' covers a travel contribution for the journey to Berlin before the start of the course of study and for the journey home after successful completion. The budget for trips within Europe is a maximum of EUR 500 and for travel outside of Europe a maximum of EUR 1,000 (official guidelines, section IX, footnote 17). Separately, the cost of the return flight is covered where the recipient returns to the home country no later than the end of the month following graduation (guidelines, section XI, footnote 18).",
+      "institutional_costs": true,
+      "fully_funded": false,
+      "fully_funded_note": "Covers living expenses, tuition fees, a furnished room and possibly travel, but it is not unconditionally fully funded. The official source states the scholarship does not cover language courses, a preparatory year (Studienkolleg) or the deposit required for a study place, and it does not cover any funding in other German federal states or abroad. It also carries an obligation to live and work in the home country for at least 18 months after graduation, failing which all monetary benefits must be repaid in 12 interest-free monthly instalments starting three months after the end of the funding, under a notarised repayment agreement."
+    },
+    "funding_breakdown": {
+      "tuition": {
+        "covered": true,
+        "amount": null,
+        "currency": "EUR",
+        "conditions": "Tuition fees are covered. 'In principle, tuition fees are covered, too. However, if tuition fees exceed the national average, a deductible can be expected.' The source publishes neither a tuition figure nor the deductible schedule, so no amount is recorded."
+      },
+      "monthly_stipend": {
+        "covered": true,
+        "amount": 480,
+        "currency": "EUR",
+        "conditions": "Cost-of-living allowance 'currently in the amount of 480 Euro per month' for the duration of the funding period. May differ where BAföG is granted."
+      },
+      "travel_allowance": {
+        "covered": true,
+        "amount": 1000,
+        "currency": "EUR",
+        "conditions": "Possibly also a travel contribution for the journey to Berlin before the start of the course of study and for the journey home after successful completion. Budget for trips within Europe max EUR 500, for travel outside Europe max EUR 1,000. Return flight costs are covered where the recipient returns to the home country by the end of the month following graduation."
+      },
+      "installation_allowance": {
+        "available": false,
+        "note": "No monetary installation or settlement allowance is published in the official source. In-kind support is provided instead: a furnished room in a shared student flat at Rudower Str. 67, 12351 Berlin, with first payments possible only after the recipient has moved in."
+      },
+      "visa_support": {
+        "available": false,
+        "note": "No visa support is offered. A student visa for Germany or a residence permit with the purpose of taking up or carrying out a course of study in Germany is a prerequisite for applicants, not a benefit."
+      },
+      "insurance": {
+        "available": false,
+        "note": "Health insurance is not published as part of the scholarship benefits anywhere in the official source, so no amount is recorded and no claim of cover is made."
+      },
+      "research_allowance": {
+        "available": false,
+        "note": "No research allowance is published. Separately, the guidelines state that the granting of additional financial resources to implement the project is decided on a case-by-case basis, but no amount or formula is published."
+      },
+      "book_allowance": {
+        "available": false,
+        "note": "No book allowance is published for scholarship holders. The only published figure is for BAföG recipients, who 'Generally, only a flat rate or book allowance is paid, with a maximum of 100 € per month'."
+      },
+      "equipment_allowance": {
+        "available": false,
+        "note": "Not published as part of the scholarship benefits in the official source."
+      },
+      "family_allowance": {
+        "available": false,
+        "note": "No financial support of family members or third parties is possible through the scholarship programme (official SBW Berlin award page)."
+      },
+      "accommodation_support": {
+        "covered": true,
+        "amount": null,
+        "currency": null,
+        "conditions": "Scholarship recipients receive a furnished room in the shared student flats at Rudower Str. 67, 12351 Berlin. First payments can only be made after the recipient has moved into the shared student apartment. Where BAföG is granted, the cash value of the accommodation must be taken into account when calculating the BAföG allowance, and only the flat rate or book allowance of a maximum of EUR 100 per month is paid in addition."
+      },
+      "bond": {
+        "available": true,
+        "amount": null,
+        "currency": null,
+        "conditions": "Recipients must pursue their professional goals for at least 18 months after the end of the funding period or graduation in their home country, or engage in non-profit work in Germany until the repayment plan has been fulfilled. If they do not intend to return, they must repay all monetary benefits provided to date in 12 monthly instalments without interest, starting three months after the end of the funding or standard period of study, under a repayment agreement that must be notarised; a notarised acknowledgement permits debt collection from the first due instalment without further legal action."
+      },
+      "total_estimated_value": {
+        "available": false,
+        "note": "The official source does not publish a total award value, so no figure is computed from the published components."
+      }
+    },
+    "coverage": [
+      "Cost-of-living allowance of EUR 480 per month for the duration of the funding period",
+      "Furnished room in a shared student flat at Rudower Str. 67, 12351 Berlin",
+      "Tuition fees, with a deductible if tuition fees exceed the national average",
+      "Possibly a travel contribution for the journey to Berlin before the start of the course of study and for the journey home after successful completion (max EUR 500 within Europe, max EUR 1,000 outside Europe)",
+      "Case-by-case additional financial resources for implementing the applicant's social or non-profit project",
+      "A flat rate or book allowance of a maximum of EUR 100 per month where the recipient also draws BAföG",
+      "Non-material support: consistent mentorship, additional workshops at SBW Berlin, preparation of project reports, lectures or presentations on the projects, and participation in regular project meetings and workshops",
+      "Advisory support in developing the projects locally continues after graduation"
+    ],
+    "coverage_limitations": [
+      "Exact benefit structure may differ: the official guidelines state 'Contracts may differ slightly from one another'",
+      "Travel allowance is discretionary — the guidelines say 'possibly also a travel contribution', so it is not guaranteed",
+      "Tuition fees above the national average attract a deductible that the source does not quantify",
+      "No health insurance, research allowance, book allowance (other than the BAföG flat rate), equipment allowance or family allowance is published",
+      "Funding is available only at a university or university of applied sciences (Fachhochschule) in Berlin or Potsdam; no funding is available in other German federal states or abroad",
+      "Funding cannot continue after the regular study period has ended",
+      "No financial support of family members or third parties is possible through the scholarship programme",
+      "Language courses, a preparatory year (Studienkolleg) and the deposit required for a study place are not covered",
+      "Part-time jobs are generally not approved by SBW Berlin",
+      "First payments can only be made after the scholarship recipient has moved into the shared student apartment",
+      "The scholarship period cannot be counted towards a study abroad stay, since funding is not available outside Berlin and Potsdam"
+    ],
+    "eligible_applicants": [
+      "Foreign nationals whose home countries appear to have a particular need for development assistance (the guidelines name many countries in Africa, Asia, Eastern Europe and South America)",
+      "Applicants between 18 and 30 years old",
+      "Holders of a student visa for Germany or a residence permit with the purpose of taking up or carrying out a course of study in Germany",
+      "Applicants with demonstrated professional or volunteer experience in the non-profit or social sector, evidenced by a letter of recommendation from that institution",
+      "Applicants applying before the start of their university education, or fully enrolled in the first, second or at most third semester at a state-recognised university in Germany or abroad",
+      "Applicants able to prove a relatively low net household income that does not exceed the officially stated average income of their home country",
+      "Applicants whose average grades correspond to a German grade point average of at least 2.0",
+      "Applicants who intend to live and work in their country of origin for at least 18 months after graduation, or to engage in non-profit work until the repayment plan has been fulfilled",
+      "Applicants who have not stayed in Germany for more than 18 months before the application",
+      "Applicants with no first-degree family members who reside permanently in Germany",
+      "Master's applicants shortly before or after obtaining a bachelor's degree"
+    ],
+    "citizenship_restriction": true,
+    "worldwide_eligibility": true,
+    "bachelor_requirement": true,
+    "final_year_bachelor_allowed": true,
+    "final_year_condition": "Applicants may apply before the start of their university education, so a school leaver is not excluded provided the qualification for university entrance can be produced. The guidelines require 'Qualification for university entrance' (Verification process) and 'Qualification for university entrance' as an application document; foreign qualifications require a translation into German or English and legalisation of the highest academic qualification.",
+    "equivalent_degree_allowed": true,
+    "equivalent_degree_note": "Foreign school and university qualifications are accepted. The guidelines accept applicants 'fully enrolled in the first, second or max. third semester at a state-recognized university (in Germany or abroad)', accept school leaving certificates and university certificates from foreign institutions (with a translation into German or English and, in the verification process, legalisation of the highest academic qualification), and require 'Evaluation report from Uni-Assist or other evidence converting grades to the German grading system' at the verification stage.",
+    "age_limit": {
+      "minimum_age": 18,
+      "maximum_age": 30,
+      "age_calculation_date": null,
+      "official_source": "https://sbw.berlin/wp-content/uploads/2025/04/Guidelines_SBWBerlinScholarship_InternationalStudents-april-2025.pdf"
+    },
+    "gender_restriction": false,
+    "nationality_quota": null,
+    "previous_emjm_scholarship_ineligible": false,
+    "previous_award_restriction": "Students whose studies in Germany are already being funded by another scholarship are not eligible to apply. The only exception is assistance under the Federal Education Assistance Act (BAföG).",
+    "eligibility": {
+      "citizenship": "Open to foreign nationals whose home countries appear to have a particular need for development assistance. The DAAD scholarship database entry for this award lists 211 countries, including highly developed ones such as Australia, Canada, Germany, Japan, the Netherlands, New Zealand, Norway, Singapore, Switzerland, the United Kingdom and the United States, so the criterion is not a closed or developing-country-only list. The official award page identifies the target group as 'Foreign nationals, whose home countries appear to have a particular need for development assistance', with the note that this applies particularly to many countries in Africa, Asia, Eastern Europe and South America.",
+      "residence_requirement": "Applicants must not have stayed in Germany for more than 18 months before the application. A stay of more than 18 months is not an outright bar but triggers a particularly careful review of financial need and of cooperation with an organisation in the home country. In addition, no first-degree family members may reside permanently in Germany, and the household income must be documented from all sources.",
+      "age_limit": {
+        "minimum_age": 18,
+        "maximum_age": 30,
+        "age_calculation_date": null,
+        "official_source": "https://sbw.berlin/wp-content/uploads/2025/04/Guidelines_SBWBerlinScholarship_InternationalStudents-april-2025.pdf"
+      },
+      "secondary_school_requirement": "A qualification for university entrance is required. Applicants may apply before the start of their university education, so the school-leaving certificate is the entry document; a master's applicant applies shortly before or after obtaining a bachelor's degree.",
+      "academic_requirements": "Average grades corresponding to a German grade point average of at least 2.0 each semester. Eligibility is a separate test from grades: 'Eligible are all applicants whose intellectual abilities, as well substantiated by the application documents and during the interview, justify the expectation that the applicant will easily meet the performance requirements of the funded studies and degree.' At application, a copy of the last school or university certificate showing the grade point average and a grade overview, and a copy of the highest academic degree showing the same, are required.",
+      "gpa_requirement": "German grade point average of at least 2.0. The guidelines publish a conversion formula: subtract your grade from the highest possible grade of the foreign scale, divide by the difference between the highest possible grade and the minimum passing grade, multiply by 3 and add 1; they state the result broadly equates to 'mostly B+ and higher; Upper Second Class; 80% or higher'.",
+      "language_requirement": "No published minimum test score for the scholarship itself. All application documents and enclosed certificates must be submitted in German or English; documents issued in another language require a translation into German or English. An internationally recognised language certificate for the language in which the studies will be taught should be enclosed if available and must be submitted at the latest during the verification process.",
+      "work_experience": "Professional or volunteer experience in the non-profit or social sector is required, proven by a letter of recommendation from that institution. During the funding period the recipient must spend 2 to 8 hours per week on the social project.",
+      "extracurricular_requirement": "Working with a non-profit or social organisation located in the applicant's home country is an important prerequisite. In addition to collaboration with a non-profit organisation in the home country, the guidelines place particular weight on previous social commitment and on the general motivation for it.",
+      "leadership_requirement": null,
+      "financial_need": "Financial need is a formal eligibility condition, tested two ways: applicants who meet the requirements of § 1 BAföG are 'in need of assistance', and so are applicants whose total household income does not exceed the officially stated average income of their home country. All household members count, and all sources of income are included; pay slips, pension notices and bank statements must be provided at the verification stage.",
+      "previous_scholarship_restriction": "Students whose studies in Germany are already being funded by another scholarship are not eligible to apply. BAföG is the only exception, and in that case the scholarship amount is adjusted according to the BAföG allowance.",
+      "enrolment_status_requirement": "Applicants must apply before the start of their university education, or be fully enrolled in the first, second or at most third semester at a state-recognised university in Germany or abroad, or be a master's applicant shortly before or after obtaining a bachelor's degree.",
+      "health_requirement": null,
+      "field_restrictions": "In principle all scientific, social and artistic disciplines can be funded. In special cases the scholarship may support a vocational training in Berlin or Potsdam. The place of study must be a university or a university of applied sciences (Fachhochschule) in Berlin or Potsdam; no funding is available in other German federal states or abroad. Applicants from abroad must obtain the study place themselves at a higher education institution in Berlin or Potsdam, which is separate from the scholarship application.",
+      "official_source": "https://sbw.berlin/wp-content/uploads/2025/04/Guidelines_SBWBerlinScholarship_InternationalStudents-april-2025.pdf"
+    },
+    "academic_requirements": {
+      "fixed_percentage_requirement": null,
+      "percentage_note": "No percentage requirement is published. The grade threshold is expressed as a German grade point average of at least 2.0; the guidelines publish a conversion formula and state the figures broadly equate to 'mostly B+ and higher; Upper Second Class; 80% or higher'.",
+      "programme_specific_requirements": "The place of study must be a university or a university of applied sciences (Fachhochschule) in Berlin or Potsdam. Applicants from abroad must separately obtain a study place at a higher education institution in Berlin or Potsdam; this is the applicant's own responsibility and is separate from the scholarship application. In special cases a vocational training in Berlin or Potsdam may be supported.",
+      "selection_factors_may_include": [
+        "Intellectual ability, substantiated by the application documents and during the interview",
+        "Personality and social commitment, as a test of whether the applicant is 'worthy of assistance'",
+        "Financial need, as a test of whether the applicant is 'in need of assistance'",
+        "Collaboration with a non-profit organisation located in the applicant's home country",
+        "The applicant's non-profit or social project, its objectives and its workflow",
+        "Previous professional or volunteer experience in the non-profit or social sector",
+        "Motivation and the ability to persevere in implementing the project during and after the studies",
+        "Intended professional development in the home country"
+      ],
+      "holistic_selection_note": "Selection is explicitly multi-dimensional. The guidelines set out three conceptual tests — 'in need of assistance', 'eligible' and 'worthy of assistance' — and add that collaboration with a non-profit organisation located in the applicant's home country is required 'in addition'. A written project description of two to five pages is mandatory, and the final details of the project to be supervised are agreed and made binding in the scholarship contract after selection."
+    },
+    "english_requirement": {
+      "universal_requirement": false,
+      "minimum_ielts": null,
+      "minimum_toefl": null,
+      "minimum_pte": null,
+      "minimum_duolingo": null,
+      "moi_rule": null,
+      "moi_accepted": false,
+      "test_score_note": "No English test and no minimum score is required for the scholarship itself. The official requirements are documentary: the application and all enclosed certificates must be in German or English, with a translation into German or English for documents issued in another language, and an internationally recognised language certificate for the language in which the studies will be taught must be submitted at the latest during the verification process. Language proficiency for admission to the degree programme is a matter for the university, not for SBW Berlin.",
+      "test_validity_months": null,
+      "accepted_tests": [
+        "Any internationally recognised language certificate for the language in which the chosen degree programme will be taught (submitted at the latest during the verification process)"
+      ]
+    },
+    "language_of_instruction": {
+      "programme_specific": true,
+      "possible_languages": null,
+      "bilingual_programmes": null,
+      "language_note": "The language of instruction is that of the degree programme the applicant chooses at a university or university of applied sciences in Berlin or Potsdam; the official source does not enumerate the languages of instruction, so no list is recorded. The only published language rules are documentary (application and all enclosed certificates in German or English, with translations) and the requirement to submit an internationally recognised language certificate for the language of instruction at the latest during the verification process."
+    },
+    "application_method": {
+      "direct_student_application": true,
+      "central_application": false,
+      "application_route": "Two-stage application run entirely by SBW Berlin, with no university or public-agency intermediary and no uni-assist involvement. Stage 1: the non-profit or social institution in the applicant's home country submits a letter of recommendation about the applicant, as a PDF, to application@sbw.berlin, on the applicant's behalf. Stage 2: after review of that letter, outstanding applicants are sent a link by email granting access to the SBW Berlin online application portal, through which the application form and the remaining documents are submitted. The application form itself is not published publicly; it is available only through the portal link.",
+      "portal_url": null,
+      "application_steps": [
+        "Contact a non-profit organisation or social institution in the country of origin and ask it to write a letter of recommendation covering the nature, duration and regular hours of collaboration and a description of the shared projects",
+        "Have that institution send the letter of recommendation as a PDF to application@sbw.berlin on the applicant's behalf",
+        "Wait for SBW Berlin's review of the letter; only after careful examination are outstanding applicants sent a link to the online application portal",
+        "Register in the portal and complete the application form",
+        "Draft a project description of two to five pages on the planned social or non-profit project",
+        "Assemble the entrance qualification, net household income information and all certificates",
+        "Have any document not in German or English translated into German or English",
+        "Submit the complete application through the portal; only complete applications can be considered",
+        "If shortlisted, attend an interview or video conference, which may include a practical task",
+        "If selected, complete the verification process (student visa copy or residence permit, net household income evidence, Uni-Assist grade evaluation report, latest certificate, university and work certificates, legalisation of the highest academic qualification, language certificate) and sign the scholarship contract"
+      ],
+      "application_fee": "None. SBW Berlin does not charge any application or processing fees in connection with the application.",
+      "multiple_applications_allowed": null,
+      "paper_application_available": false,
+      "paper_application_note": "Only complete applications submitted through the online portal can be considered. The application form is 'only available on the online application portal of SBW Berlin and is only shared as a link', and it is released only after the letter of recommendation has been reviewed."
+    },
+    "official_application_documents": {
+      "universal_documents": [
+        "Letter of recommendation on company name/letterhead with all contact details, nature of the collaboration, duration and regular hours per week, and a description of the shared projects",
+        "Application form, obtained through the SBW Berlin online application portal",
+        "Project description (two to five pages) on the planned social or non-profit project",
+        "Qualification for university entrance",
+        "Information about net household income",
+        "Copy of the last school or university certificate showing the grade point average and a grade overview",
+        "Copy of the highest academic degree showing the grade point average and a grade overview",
+        "Translation into German or English for any document issued in another language"
+      ],
+      "commonly_requested_documents": [
+        "Admission to a higher education institution in Berlin or Potsdam, which increases application prospects",
+        "Internationally recognised language certificate for the language in which the studies will be taught",
+        "All already obtained university certificates and records of achievements, graded and ungraded",
+        "All previous work, training, apprenticeship and internship certificates and references"
+      ],
+      "two_recommendation_letters": false,
+      "secondary_school_documents": true,
+      "document_language": "German or English. If the original document was issued in another language, a translation into German or English is also required.",
+      "document_format": "Non-certified copies and simple translations are sufficient for the application. Certified copies are sometimes required in the verification process after selection.",
+      "transcript_requirement": "A copy of the last school or university certificate showing the grade point average and a grade overview, plus a copy of the highest academic degree (high school diploma or university certificate) showing the grade point average and a grade overview. All already obtained university certificates and records of achievements, graded and ungraded, should be included where available. In the verification process, net household income must be evidenced and an evaluation report from Uni-Assist or other evidence converting grades to the German grading system is required.",
+      "certified_translation_requirement": "Simple translations into German or English are sufficient at the application stage. Certified copies are sometimes required in the verification process, and legalisation of the highest academic qualification is required where that certificate comes from a foreign institution."
+    },
+    "document_checklist": {
+      "identity_documents": [
+        {
+          "document": "Copy of passport",
+          "requirement": "verification stage",
+          "note": "Required in the verification process after selection, together with the student visa."
+        },
+        {
+          "document": "Copy of student visa for Germany or residence permit for the purpose of taking up or carrying out a course of study",
+          "requirement": "mandatory",
+          "note": "A stated prerequisite for applicants; the copy is re-checked in the verification process."
+        }
+      ],
+      "academic_documents": [
+        {
+          "document": "Qualification for university entrance",
+          "requirement": "mandatory",
+          "note": "Named as an application document and again in the verification process."
+        },
+        {
+          "document": "Copy of the last school or university certificate showing grade point average and grade overview",
+          "requirement": "mandatory",
+          "note": "Named in the application documents list."
+        },
+        {
+          "document": "Copy of the highest academic degree showing grade point average and grade overview",
+          "requirement": "mandatory",
+          "note": "Named in the application documents list; legalisation required where the certificate comes from a foreign institution, at the verification stage."
+        },
+        {
+          "document": "Latest certificate of achievement (verification stage)",
+          "requirement": "verification stage",
+          "note": "Named in the verification process list."
+        },
+        {
+          "document": "All already obtained university certificates and records of achievements, graded and ungraded",
+          "requirement": "recommended",
+          "note": "Named as an additional application document; 'as many certificates as possible should be included'."
+        },
+        {
+          "document": "Evaluation report from Uni-Assist or other evidence converting grades to the German grading system",
+          "requirement": "verification stage",
+          "note": "Required in the verification process, to verify average grades corresponding to a German GPA of at least 2.0."
+        }
+      ],
+      "financial_documents": [
+        {
+          "document": "Information about net household income",
+          "requirement": "mandatory",
+          "note": "Named as an application document."
+        },
+        {
+          "document": "Proof of household income (pay slips, pension notices, bank statements)",
+          "requirement": "verification stage",
+          "note": "Named in the verification process, to establish financial need under the officially stated average income of the home country."
+        }
+      ],
+      "recommendation_documents": [
+        {
+          "document": "Letter of recommendation from the collaborating non-profit organisation or social institution",
+          "requirement": "mandatory",
+          "note": "Must be sent by the organisation as a PDF to application@sbw.berlin; on company name/letterhead with all contact details; covering nature of collaboration, duration and regular hours per week, and describing the shared projects. Reviews of this letter determine whether portal access is granted."
+        }
+      ],
+      "application_essays": [
+        {
+          "document": "Project description (two to five pages) on the planned social or non-profit project",
+          "requirement": "mandatory",
+          "note": "Named as an application document; once the final details of the project to be supervised have been agreed and made binding during the verification process, it becomes part of the scholarship contract."
+        }
+      ],
+      "language_documents": [
+        {
+          "document": "Translations into German or English",
+          "requirement": "mandatory where applicable",
+          "note": "Required for every document issued in another language; simple translations are sufficient at application."
+        },
+        {
+          "document": "Internationally recognised language certificate for the language of instruction",
+          "requirement": "recommended at application, mandatory at verification",
+          "note": "Should be enclosed if available, and must be submitted at the latest during the verification process."
+        }
+      ],
+      "additional_documents": [
+        {
+          "document": "Admission to a higher education institution in Berlin or Potsdam",
+          "requirement": "recommended",
+          "note": "Named as an additional application document; increases the chances of application. Applicants from abroad must obtain this themselves."
+        },
+        {
+          "document": "All previous work, training, apprenticeship and internship certificates and references",
+          "requirement": "recommended",
+          "note": "Named as an additional application document."
+        },
+        {
+          "document": "Legalisation of the highest academic qualification",
+          "requirement": "verification stage",
+          "note": "Required in the verification process where the certificate comes from a foreign institution."
+        }
+      ]
+    },
+    "required_documents": [
+      "Letter of recommendation from the collaborating non-profit organisation or social institution",
+      "Application form (received through the SBW Berlin online application portal)",
+      "Project description (two to five pages) on the planned social or non-profit project",
+      "Qualification for university entrance",
+      "Information about net household income",
+      "Copy of the last school or university certificate showing grade point average and a grade overview",
+      "Copy of the highest academic degree showing grade point average and a grade overview",
+      "Translations into German or English for any document issued in another language"
+    ],
+    "selection_criteria": {
+      "academic_excellence": true,
+      "leadership": false,
+      "community_service": true,
+      "extracurricular_achievement": true,
+      "financial_need": true,
+      "interview_required": true,
+      "portfolio_required": false,
+      "letter_of_recommendation_required": true,
+      "social_project_required": true,
+      "academic_excellence_note": "Academic performance is a threshold and a qualification test rather than a ranking criterion: the grade threshold is a German GPA of at least 2.0, and eligibility rests on 'intellectual abilities, as well substantiated by the application documents and during the interview' giving rise to the expectation that the applicant will easily meet the performance requirements of the funded studies and degree.",
+      "community_service_note": "Social commitment is a mandatory, not a bonus, criterion. The award page states 'Social commitment of interested applicants, resp. newly received scholarship recipients and a high motivation for it are in general necessary to be included in the SBW Berlin scholarship program', and expects recipients to proactively develop and carry out social projects.",
+      "additional_factors": [
+        "Demonstrated collaboration with a non-profit organisation or social institution located in the applicant's home country",
+        "Quality and feasibility of the applicant's social or non-profit project, including its objectives and workflow",
+        "Personality and suitability for the scholarship's objectives, tested in the interview",
+        "Motivation and ability to persevere in implementing the project during and after the studies",
+        "Intention to live and work in the country of origin for at least 18 months after graduation",
+        "Financial need: meeting § 1 BAföG requirements or household income not exceeding the officially stated average income of the home country",
+        "For Bachelor's applicants specifically: not having stayed in Germany for more than 18 months before the application, and no first-degree family members permanently resident in Germany"
+      ],
+      "source": "https://sbw.berlin/wp-content/uploads/2025/04/Guidelines_SBWBerlinScholarship_InternationalStudents-april-2025.pdf"
+    },
+    "selection_process": {
+      "decision_maker": "SBW Berlin gGmbH",
+      "selection_type": "Multi-stage documentary review followed by an interview or video conference",
+      "central_selection": true,
+      "possible_stages": [
+        "Stage 1 — review of the letter of recommendation from the non-profit or social organisation, after which access to the online application portal is either granted or refused",
+        "Stage 2 — review of the application form, the applicant's grades and the applicant's financial situation",
+        "Stage 3 — interview or video conference with candidates considered suitable, which may include a practical task and a discussion of the planned community/social project together with its objectives and workflow",
+        "Stage 4 — timetable for the first six months of the project is fixed and the final selection is made"
+      ],
+      "official_universal_weighting": null,
+      "weighting_note": "The guidelines publish no numerical weighting. They are built instead on three conceptual tests: 'in need of assistance' (meeting the requirements of § 1 BAföG, or household income not exceeding the officially stated average income of the home country), 'eligible' (intellectual abilities substantiated by the application documents and during the interview, giving rise to the expectation that the applicant will easily meet the performance requirements of the funded studies and degree) and 'worthy of assistance' (personality and social commitment suggesting the applicant will achieve the goals of the scholarship during and after studies), together with an evaluation of the applicant's project. Collaboration with a non-profit organisation located in the applicant's home country is required in addition. Additional financial resources for implementing the project are decided case by case.",
+      "interview_possible": true,
+      "results_timing": null,
+      "scholarship_rank_note": "There is no published ranking of applicants. The controlling factor is capacity: SBW Berlin has a total of 20 scholarship places, and each semester only as many scholarships are awarded as there are vacancies. Funding is granted on a periodic basis, usually for the upcoming semester, and continuation is reviewed before the end of each semester."
+    },
+    "degree_outcome": {
+      "awarded_qualification": "Bachelor's or master's degree from a university or a university of applied sciences (Fachhochschule) in Berlin or Potsdam; in special cases a vocational training in Berlin or Potsdam may be supported",
+      "typical_programme_length": "The standard period of study of the chosen degree programme, within a funding range of at least 30 days and at most 48 months; funding cannot continue after the regular study period has ended",
+      "possible_awards": null,
+      "degree_note": "The scholarship funds study at a named place: a university or a university of applied sciences (Fachhochschule) in Berlin or Potsdam. All scientific, social and artistic disciplines can be funded in principle. It does not cover any funding in other German federal states or abroad, and a foreign study abroad stay is not possible on the scholarship. In special cases a vocational training in Berlin or Potsdam may be supported.",
+      "credit_transfer": null
+    },
+    "student_rights_and_cost_protection": {
+      "tuition_fee_for_recipients": "Covered. TUITION FEES are paid by SBW Berlin, but 'if tuition fees exceed the national average, a deductible can be expected'.",
+      "application_fee_for_recipients": "None. SBW Berlin does not charge any application or processing fees in connection with the application.",
+      "student_agreement": "Yes. The project description becomes part of the scholarship contract once 'the final details of the project to be supervised have been agreed upon and made binding' during the verification process. The guidelines also state that further rights and obligations are listed in the scholarship contracts, and that 'Contracts may differ slightly from one another'.",
+      "programme_website": "https://sbw.berlin/en/portfolio-items/sbw-berlin-scholarship",
+      "common_services": "Non-material support: consistent mentorship through regular discussions about the projects, attendance at additional workshops at SBW Berlin, preparation of project reports, lectures or presentations on the projects, participation in regular project meetings and workshops (expenses for travel are borne by the scholarship recipients), and advisory support in developing the projects locally which continues after graduation.",
+      "bond_requirement": "Yes. Scholarship recipients must pursue their professional goals for at least 18 months after the end of the funding period or graduation in their home country, or engage in non-profit work in Germany until the repayment plan has been fulfilled. Recipients must also continue participating in regular meetings with SBW Berlin discussing their professional development in relation to both project and job.",
+      "bond_breach_consequence": "Recipients who do not intend to return to their home countries after the end of the sponsorship or studies must repay the scholarship. A repayment agreement is concluded, which must be notarised; the scholarships or monetary benefits provided to date must be repaid in 12 monthly instalments without interest, starting three months after the end of the funding or standard period of study. The guidelines warn that this 'can pose a major challenge and deep burden for some recipients' and that cheaper alternatives may exist for applicants who intend to stay in Germany from the start. A notarised acknowledgement allows debt collection to start from the first due instalment without further legal action. Funding may also be terminated, with the same repayment consequence, after two failed compulsory examinations or two postponed examinations, where the welfare target agreements are not met, or where funds are misused."
+    },
+    "practical_application_data": {
+      "application_readiness_checklist": [
+        "You are a foreign national of a country whose home country appears to have a particular need for development assistance, and you are not relying on a closed developed-country nationality",
+        "You are between 18 and 30 years old",
+        "You hold, or expect to hold, a student visa for Germany or a residence permit with the purpose of taking up or carrying out a course of study",
+        "You have stayed in Germany no more than 18 months before applying, and no first-degree family members live permanently in Germany",
+        "You can document professional or volunteer experience with a non-profit organisation or social institution in your home country that is willing to write a letter of recommendation for you",
+        "You can produce a qualification for university entrance, or are a master's applicant shortly before or after a bachelor's degree",
+        "Your average grades convert to a German GPA of at least 2.0, and you can show the grade point average and a grade overview on your latest certificate and your highest degree",
+        "You can prove net household income from all sources that does not exceed the officially stated average income of your home country",
+        "You are willing to live and work in your home country for at least 18 months after graduation, or to accept a notarised repayment in 12 interest-free monthly instalments if you stay in Germany",
+        "You have a social or non-profit project in a non-profit, social and ecological field whose economic framework cannot cover your cost of living",
+        "You have drafted a project description of two to five pages setting out its purpose, goals, workflow and the timeframe",
+        "You intend to study at a university or university of applied sciences (Fachhochschule) in Berlin or Potsdam specifically",
+        "You are not already funded by another scholarship for your studies in Germany (BAföG is the only exception)",
+        "You can submit the application in German or English and have translations for anything else",
+        "You can work 2 to 8 hours per week on the project during the funding period, and accept that part-time jobs are generally not approved"
+      ],
+      "programme_comparison_fields": [
+        "Scholarship is limited to study in Berlin and Potsdam only, and is not available in any other German federal state",
+        "Funding is capped at 48 months and cannot run past the regular study period",
+        "Funding is granted per semester against 20 total places, so vacancies govern the outcome",
+        "The award pays a defined EUR 480 per month rather than a need-assessed package, so the household income threshold matters more than a cost-of-attendance calculation",
+        "There is no deadline, so timing is governed by availability of places rather than a closing date",
+        "Access is gated by the recommending organisation, so the earliest possible start date depends on that organisation acting",
+        "The return obligation of 18 months is not an option for applicants who intend to stay in Germany",
+        "Bond repayment is notarised and enforced, unlike most need-based awards",
+        "Tuition is covered but a deductible applies above the national average, and language courses, a preparatory year and the study-place deposit are excluded",
+        "Accommodation is in kind, at one fixed address, with first payments only after moving in"
+      ],
+      "motivation_letter_strategy": "The letter of recommendation, not the motivation letter, is the gate, so secure that first and early. Have the recommending non-profit organisation set out on its letterhead, with all contact details, the nature of your collaboration, its duration and your regular hours per week, and describe the shared projects concretely. Then use the project description to show that your project sits in a non-profit, social and ecological field, that its economic framework cannot cover your cost of living, and that it needs the recipient's involvement over the whole sponsorship period; specify its purpose, its goals, its workflow and its timeframe with concrete objectives and a clear workflow, and be ready to fix a timetable for the first six months at the interview.",
+      "profile_fit_labels": [
+        "Strong: school leaver or first-to-third-semester undergraduate in Germany with a documented non-profit track record in a home country and a household income below the official average there",
+        "Strong: applicant already collaborating intensively with a non-profit organisation in the home country that can write a detailed recommendation",
+        "Strong: applicant who intends to build a career in the home country and can commit to 18 months there",
+        "Good: applicant with a confirmed place at a Berlin or Potsdam university or university of applied sciences",
+        "Moderate: applicant above grade-school age but under 30 with strong grades but no established social track record (the social criterion is mandatory)",
+        "Moderate: applicant who needs a language course, a preparatory year (Studienkolleg) or a study-place deposit financed",
+        "Poor: applicant intending to remain in Germany permanently, since the 18-month obligation and notarised repayment apply",
+        "Poor: applicant wanting to study in a German federal state other than Berlin or Brandenburg, since no funding is available there",
+        "Poor: applicant already funded by another scholarship for their studies in Germany"
+      ],
+      "common_mistakes": [
+        "Treating the scholarship as a generic university award and applying to universities outside Berlin or Potsdam",
+        "Assuming there is a central or university application route and waiting for a deadline that never arrives",
+        "Starting with the application form instead of the letter of recommendation, which is the actual gate",
+        "Relying on the application form link being published: it is only shared as an email link after the letter is reviewed",
+        "Omitting the project description or writing it in under two pages or over five",
+        "Submitting a copy of the latest certificate without the grade point average and a grade overview",
+        "Forgetting that the household income of all household members and from all sources counts, not just the applicant's own",
+        "Failing to convert grades to the German system and assuming a foreign excellent grade clears the threshold",
+        "Not declaring first-degree family members in Germany, or a stay in Germany longer than 18 months",
+        "Using a recommendation letter from a school, employer or professor rather than a non-profit or social institution in the home country",
+        "Neglecting the commitment requirement of 2 to 8 hours per week on the project during the funding period",
+        "Applying while already funded by another scholarship, other than BAföG",
+        "Assuming a part-time job can top up the EUR 480 allowance, when part-time jobs are generally not approved",
+        "Assuming travel to Berlin and home is guaranteed, when the contribution is discretionary and capped",
+        "Expecting funding to continue after the regular study period has ended, or counting a semester abroad on the scholarship"
+      ]
+    },
+    "risk_flags": [
+      {
+        "risk": "Access to the application portal is gated by SBW Berlin's review of the recommending organisation's letter, and the letter must be written and sent by that organisation, not by the applicant",
+        "impact": "An applicant cannot start the formal application until a third party acts, so the earliest possible submission date is outside the applicant's control",
+        "mitigation": "Approach the non-profit organisation early and give it the exact contents expected: letterhead with all contact details, nature of collaboration, duration and regular hours per week, and a description of the shared projects"
+      },
+      {
+        "risk": "There is no application deadline, and funding is granted per semester against only 20 total places with vacancies as the controlling factor",
+        "impact": "A good application can be held for a long time or effectively never reach a vacancy, and the award is not a firm entitlement once made",
+        "mitigation": "Make the application complete and early, and combine it with the separate application for a study place at a Berlin or Potsdam institution; persistence with the project matters more than with a deadline"
+      },
+      {
+        "risk": "The scholarship carries an 18-month obligation to live and work in the home country, enforced by a notarised repayment in 12 interest-free monthly instalments starting three months after funding ends",
+        "impact": "Applicants who change their mind and stay in Germany take on a concrete notarised debt, with collection possible from the first due instalment without further legal action",
+        "mitigation": "Decide before signing whether a return to the home country is genuinely intended; the guidelines explicitly warn that cheaper alternatives may exist for applicants who intend to stay in Germany"
+      },
+      {
+        "risk": "Funding can be terminated mid-course after two failed compulsory examinations or two postponed examinations, after failure to meet welfare target agreements, or after misuse of funds, with the same repayment consequence",
+        "impact": "Academic difficulty or a lapse in the social project converts a funded scholarship into an enforceable repayment obligation",
+        "mitigation": "Plan a curriculum that minimises examination risk, keep project obligations current with timely project reports, and communicate early with SBW Berlin if progress slips"
+      },
+      {
+        "risk": "Funding is limited to one campus pair, Berlin and Potsdam, and a study place there must be obtained separately by the applicant",
+        "impact": "An applicant admitted to a university elsewhere in Germany gains nothing from this scholarship, and applicants from abroad must secure a Berlin or Potsdam place on their own",
+        "mitigation": "Apply directly to universities and universities of applied sciences in Berlin and Potsdam in parallel, and treat the study place as the applicant's own responsibility"
+      },
+      {
+        "risk": "Travel allowance is discretionary ('possibly also a travel contribution') and tuition above the national average carries an unquantified deductible, while language courses, a preparatory year and the study-place deposit are excluded",
+        "impact": "The effective value of the package is not predictable at application and some study-related costs remain entirely unfunded",
+        "mitigation": "Plan the journey and the first-term costs as self-funded, and confirm the tuition and deductible position with SBW Berlin before signing the contract"
+      },
+      {
+        "risk": "The household income test uses the officially stated average income of the applicant's home country and counts all household members and all income sources",
+        "impact": "Applicants from lower-income countries may pass on income but fail the social track record, and applicants from higher-income countries may fail on income despite a strong record",
+        "mitigation": "Assemble pay slips, pension notices and bank statements in advance and check the published average income figure for the home country before committing effort"
+      },
+      {
+        "risk": "The scholarship covers an accommodation place at one fixed address, and first payments can only be made after the recipient has moved in",
+        "impact": "A recipient cannot live elsewhere without changing the arrangement, and the first payments arrive only after the move is complete",
+        "mitigation": "Plan arrival around the move into the shared student flat and budget for a short bridging period"
+      }
+    ],
+    "application_status_workflow": [
+      "Not started",
+      "Institutional recommendation confirmed",
+      "Letter of recommendation submitted to SBW Berlin",
+      "Portal access granted",
+      "Application and documents submitted in portal",
+      "Shortlisted for interview or video conference",
+      "Interview completed",
+      "Verification process completed",
+      "Scholarship contract signed",
+      "Funded — first semester paid",
+      "Funding renewed for a further semester",
+      "Funding terminated",
+      "Graduated / funding period ended",
+      "18-month home-country obligation underway",
+      "Obligation fulfilled"
+    ],
+    "best_fit": "A school leaver about to start, or an undergraduate in the first to third semester of, a bachelor's degree at a university or university of applied sciences in Berlin or Potsdam; aged 18 to 30; a foreign national from a country whose home country has a particular need for development assistance; with an established collaboration with a non-profit or social organisation in the home country that can write a detailed recommendation; with net household income at or below the officially stated average income of that country and grades converting to a German GPA of at least 2.0; with a concrete social project in a non-profit, social or ecological field; and genuinely intending to live and work in the home country for at least 18 months after graduation.",
+    "not_best_fit": [
+      "Applicants who want to study anywhere in Germany other than Berlin or Potsdam",
+      "Applicants intending to remain in Germany after graduation",
+      "Applicants with no established collaboration with a non-profit organisation in their home country",
+      "Applicants already funded by another scholarship for their studies in Germany, other than BAföG",
+      "Applicants who need language courses, a preparatory year or a study-place deposit financed",
+      "Applicants whose household income exceeds the officially stated average income of their home country",
+      "Applicants who cannot work 2 to 8 hours per week on a social project alongside the degree",
+      "Applicants who have already completed the regular study period, since funding cannot continue after it",
+      "Applicants outside the 18 to 30 age range"
+    ],
+    "units": [],
+    "distance_information": null,
+    "image": {
+      "logo_url": "https://sbw.berlin/wp-content/uploads/2023/04/SBW-Berlin-Logo.png",
+      "logo_source_url": "https://sbw.berlin/en/portfolio-items/sbw-berlin-scholarship",
+      "logo_source_type": "official_provider_page",
+      "logo_verified": true,
+      "logo_verified_at": "2026-10-10",
+      "logo_verification_method": "The asset is the site's standard logo: it is referenced as the masthead image with img class fusion-standard-logo and alt text 'SBW Berlin Logo' on the official scholarship page, and is also declared as the og:image for the site. Verified live by HTTP HEAD and by download: HTTP 200, Content-Type image/png, 25,046 bytes, 200x80 px. Pixel analysis shows zero transparent pixels and a near-white opaque background of 64%, with the brand green RGB (0,102,52) present; it is therefore an opaque mark with no white-on-transparent wordmark, so it renders on a light card. No aggregator, CDN, Wikipedia, stock or social asset was used.",
+      "image_url": null,
+      "image_source_url": null,
+      "image_source_type": null,
+      "image_verified": false,
+      "image_verified_at": null,
+      "image_alt_text": "SBW Berlin",
+      "image_usage_note": null
+    },
+    "verification": {
+      "verification_status": "PARTIAL_VERIFICATION",
+      "verification_note": "Core contract facts verified from official sources: the EUR 480 monthly cost-of-living allowance, the furnished room at Rudower Str. 67, 12351 Berlin, tuition-fee coverage, the discretionary travel contribution capped at EUR 500 within Europe and EUR 1,000 outside Europe, the all-year-round application rule with no deadline, the 20 scholarship places, the 18-30 age range, the German GPA of at least 2.0 threshold, the 18-month home-country obligation and the 12-instalment notarised repayment, the 30-day to 48-month funding range, the Berlin-and-Potsdam-only study place, and the gate of a recommendation letter from a non-profit organisation. Fields left null and not confirmed: health insurance, any research, equipment or family allowance, the tuition-fee deductible schedule, selection results timing, monetary values of additional project resources, multiple-applications policy, and the identity of each funded degree programme.",
+      "no_inference_note": "No figure, deadline, ratio, date, count or amount was derived by analogy with the DAAD programme the slot originally named or with any other scheme. Where the official source is silent, the value is null.",
+      "last_verified_date": "2026-10-10",
+      "total_official_urls": 19,
+      "officially_verified_oldest_cycle": "2025 cycle (the official guidelines last updated 9 April 2025, still the current published version)",
+      "officially_verified_latest_cycle": "Current cycle, no dated round exists because the award has no application deadline",
+      "single_cycle_flag": false
+    },
+    "_completeness_score": 0.96
+  }
+]

@@ -1,0 +1,44 @@
+[
+  {
+    "scholarship_id": 179,
+    "outcome": "no_verified_supervisor_found",
+    "professors": [],
+    "notes": "University-wide, centrally administered merit scholarship (Radboud University Profiling Fund) for non-EEA Master's applicants; the official page (https://www.ru.nl/en/education/scholarships/radboud-scholarship-programme) names no supervisor or scholarship coordinator professor. Only an office contact is published: 'team Student Life and International Mobility via scholarships [at] ru.nl (scholarships[at]ru[dot]nl)'. Selection is made by faculty selection committees, but no individual committee members/professors are named on the official page. Official page loaded successfully (the input URL redirects to a scholarship overview; the Radboud Scholarship Programme page is at /en/education/scholarships/radboud-scholarship-programme)."
+  },
+  {
+    "scholarship_id": 180,
+    "outcome": "no_verified_supervisor_found",
+    "professors": [],
+    "notes": "University-wide full scholarship (Maastricht University Scholarship Fund + ministry-funded NL Scholarship) for non-EU Master's applicants; the official page links the scholarship to the UM International Services Desk and the Scholarship Office, not to any professor. Published office contacts on the official page (https://www.maastrichtuniversity.nl/studeren/toelating-inschrijving/financing-your-studies/scholarships/maastricht-university-nl-high): 'UM International Services Desk - hhp.scholarship@maastrichtuniversity.nl' and (on the scholarships overview) 'Contact the UM Scholarship Office ... scholarships@maastrichtuniversity.nl'. Selection: faculties select and rank their top 5 applicants, but no individual faculty members are named. Official page loaded successfully."
+  },
+  {
+    "scholarship_id": 181,
+    "outcome": "no_verified_supervisor_found",
+    "professors": [],
+    "notes": "University-wide scholarship for excellent non-EU/EEA applicants to any qualifying UT MSc programme; the official Scholarship Finder page (https://www.utwente.nl/en/education/scholarship-finder/university-of-twente-scholarship/) names no supervisor or programme director. It references only staff roles: 'the UT Scholarship Coordinator' (unnamed) and office emails 'sgw-scholarships-ces@utwente.nl' and 'study@utwente.nl' (Study Information Centre). Input URL returned 404; the current official page was used. Official page loaded successfully."
+  },
+  {
+    "scholarship_id": 182,
+    "outcome": "no_verified_supervisor_found",
+    "professors": [],
+    "notes": "University-wide merit-based tuition fee waiver for non-EU/EEA Master's applicants. Official page (https://vu.nl/en/education/more-about/incoming-master-scholarships) names two Scholarships Officers - administrative staff, not supervising professors: 'María del Pilar Jimenez Galindo, Scholarships Officer' and 'Catarina de Sa Barreto Callou, Scholarships Officer'; contact is the team inbox 'scholarships.incoming@vu.nl'. No individual email addresses are published for these staff on the page and no faculty/supervisor is tied to the scholarship (decided by the Central VUFP Committee). Input URL returned 404; the current official page was used. Official page loaded successfully."
+  },
+  {
+    "scholarship_id": 183,
+    "outcome": "no_verified_supervisor_found",
+    "professors": [],
+    "notes": "University-wide merit-based tuition-fee scholarship run by the central admissions office for all faculties; the official page (https://www.lunduniversity.lu.se/study/admission-degree-studies/scholarships-and-awards/lund-university-global-scholarship) names no supervisor, programme director, or scholarship coordinator, and no per-applicant contact email (page editor contact only: 'editors-studies [at] kommunikation [dot] lu [dot] se'). Applicants apply via universityadmissions.se and a central scholarship application portal; no faculty tie is published on the scholarship page. Official page loaded successfully."
+  },
+  {
+    "scholarship_id": 184,
+    "outcome": "no_verified_supervisor_found",
+    "professors": [],
+    "notes": "University-wide tuition-fee scholarship funded by the Swedish Council for Higher Education and administered by the central Admissions/admissions office; the official page (https://www.uu.se/en/study/masters-studies/scholarships/uppsala-university-scholarships.html) names no supervisor, programme director, or coordinator professor. Published office contact: 'If you have any questions or require more information about scholarships at Uppsala University, please send an email to tuitiongrants@uu.se'. Input URL returned 404; the current official Master's scholarships page was used. Official page loaded successfully."
+  },
+  {
+    "scholarship_id": 185,
+    "outcome": "no_verified_supervisor_found",
+    "professors": [],
+    "notes": "University-wide tuition-fee scholarship administered by KTH Admissions/universityadmissions processes; the official page (https://www.kth.se/en/studies/master/admissions/scholarships/kth-scholarship-1.72827) names no supervisor professor or programme director, and only gives the Admissions office contact 'info@kth.se' (per KTH's scholarship pages: 'please contact the Admissions office at info@kth.se'). The KTH Intranet process page (intra.kth.se) names a process owner, 'Malin Sigvardson, head of division, malinsig@kth.se, Academic Registry' - administrative staff, not a supervising professor, and not on the public scholarship page. Input URL returned 404; the current official KTH Scholarship page was used. Official page loaded successfully."
+  }
+]

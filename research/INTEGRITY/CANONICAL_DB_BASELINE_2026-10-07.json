@@ -1,0 +1,116 @@
+{
+  "audit_date": "2026-10-07",
+  "auditor": "Kilo (read-only)",
+  "mode": "READ_ONLY",
+  "database": {
+    "file": "backend/scholarzone.db",
+    "sha256": "a957afb0e32594df90ddce7d881dbd53790a881a559f6818866f2cc95c2eb66a",
+    "size_bytes": 16142336,
+    "modified_utc": "2026-10-06T23:49:43Z",
+    "modified_epoch": 1791308983,
+    "integrity_check": "ok"
+  },
+  "counts": {
+    "scholarships": 691,
+    "verification_history": 723,
+    "max_scholarship_id": 725
+  },
+  "status_distribution": {
+    "open": 417,
+    "upcoming": 215,
+    "closing_soon": 44,
+    "closed": 15
+  },
+  "verification_status_distribution": {
+    "active": 529,
+    "needs_review": 89,
+    "quarantined": 51,
+    "outdated": 12,
+    "pending": 5,
+    "conflicting": 2,
+    "unverified": 1,
+    "suspended": 1,
+    "partial": 1
+  },
+  "archive_visibility": {
+    "archived_count": 52,
+    "public_count": 361,
+    "deletion_protected_count": 52
+  },
+  "closed_scholarships": [
+    {"id": 16, "title": "Marie Skłodowska-Curie Actions (MSCA) Postdoctoral...", "status": "closed", "is_archived": 0, "verification_status": "outdated"},
+    {"id": 30, "title": "Australia Awards Scholarships...", "status": "closed", "is_archived": 0, "verification_status": "outdated"},
+    {"id": 46, "title": "Destination Australia Program (DAP)...", "status": "closed", "is_archived": 1, "verification_status": "outdated"},
+    {"id": 50, "title": "ANU Chancellor's International Scholarship...", "status": "closed", "is_archived": 1, "verification_status": "quarantined"},
+    {"id": 80, "title": "Rhodes Scholarship (Global Constituency)...", "status": "closed", "is_archived": 1, "verification_status": "suspended"},
+    {"id": 83, "title": "McCall MacBain Scholarships at McGill University...", "status": "closed", "is_archived": 0, "verification_status": "outdated"},
+    {"id": 230, "title": "DAAD Helmut-Schmidt-Programme...", "status": "closed", "is_archived": 0, "verification_status": "outdated"},
+    {"id": 317, "title": "Asian Future Leaders Scholarship Program (AFLSP) 2026...", "status": "closed", "is_archived": 0, "verification_status": "outdated"},
+    {"id": 318, "title": "Atomic Energy Scholarship Program of China 2026...", "status": "closed", "is_archived": 0, "verification_status": "outdated"},
+    {"id": 319, "title": "Chinese Government Scholarship (Chinese University...", "status": "closed", "is_archived": 0, "verification_status": "outdated"},
+    {"id": 320, "title": "Chinese Government Scholarship (Youth of Excellence...", "status": "closed", "is_archived": 0, "verification_status": "outdated"},
+    {"id": 321, "title": "Shanghai Government Scholarship at Fudan University...", "status": "closed", "is_archived": 0, "verification_status": "outdated"},
+    {"id": 360, "title": "MEXT Scholarship for 2027 - Embassy Recommendation...", "status": "closed", "is_archived": 0, "verification_status": "outdated"},
+    {"id": 451, "title": "Swedish Institute Scholarship Pioneering Women in STEM", "status": "closed", "is_archived": 1, "verification_status": "quarantined"},
+    {"id": 486, "title": "Google PhD Fellowship Program...", "status": "closed", "is_archived": 0, "verification_status": "outdated"}
+  ],
+  "missing_31_ids": [
+    6, 7, 22, 29, 38, 91, 142, 143, 186, 233, 249, 253,
+    281, 286, 316, 346, 347, 351, 357, 433, 454, 457, 461,
+    471, 490, 491, 506, 530, 533, 534, 635
+  ],
+  "missing_31_status": {
+    "missing_from_current_db": true,
+    "present_in_all_three_snapshots": true,
+    "exact_set_matches_safe_delete": true,
+    "additional_missing_ids": 0,
+    "documented_deletion_operation": false,
+    "retention_engine_deletions": 0
+  },
+  "id_451": {
+    "id": 451,
+    "title": "Swedish Institute Scholarship Pioneering Women in STEM",
+    "status": "closed",
+    "snapshot_is_archived": 1,
+    "snapshot_archived_at": "2026-10-04T08:07:28.816738",
+    "snapshot_deletion_protected": 0,
+    "current_is_archived": 1,
+    "current_deletion_protected": 1,
+    "blocked_from_deletion": true,
+    "reason": "Already archived at snapshot time; classified as KEEP_HISTORICAL by closed_record_audit.py"
+  },
+  "active_writers": [
+    {
+      "pid": 5756,
+      "command": "uvicorn app.main:app --host 127.0.0.1 --port 8000",
+      "assessment": "Legitimate application server"
+    }
+  ],
+  "safety_confirmation": {
+    "database_writes": 0,
+    "data_restored": 0,
+    "git_mutations": 0
+  },
+  "canonical_baseline_statement": "CURRENT CANONICAL SCHOLARSHIP COUNT = 691. The 31 missing IDs are retained as historical deletion records and are NOT to be restored unless separate authoritative recovery evidence is found.",
+  "final_classification": "CANONICAL_BASELINE_ESTABLISHED",
+  "snapshots": {
+    "pre_integrity_repair": {
+      "file": "scholarzone.pre_integrity_repair_20261005_143934.db",
+      "size_bytes": 15974400,
+      "modified": "2026-10-05T20:39:00Z",
+      "rows": 722
+    },
+    "wave13_local": {
+      "file": "wave13_local.db",
+      "size_bytes": 15974400,
+      "modified": "2026-10-04T20:10:00Z",
+      "rows": 722
+    },
+    "pre_wave13_master": {
+      "file": "pre_wave13_master_20261004_201056.db",
+      "size_bytes": 15904768,
+      "modified": "2026-10-04T20:09:00Z",
+      "rows": 722
+    }
+  }
+}

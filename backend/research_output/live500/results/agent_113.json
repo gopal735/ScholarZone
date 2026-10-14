@@ -1,0 +1,156 @@
+{
+  "agent": "agent_113",
+  "records": [
+    {
+      "id": 302,
+      "official": {
+        "official_source_urls": [
+          "https://www.up.pt/portal/en/live/student-life/scholarships-and-funding",
+          "https://www.up.pt/portal/en/sasup/scholarships/applications-dges/",
+          "https://www.up.pt/portal/en/sasup/faq/scholarships/",
+          "https://www.up.pt/portal/pt/sasup/Informacoes-uteis/",
+          "https://sigarra.up.pt/up/pt/legislacao_geral.ver_legislacao?p_nr=13816"
+        ],
+        "application_link": "https://www.dges.gov.pt/wwwBeOn/",
+        "catalogue_url": "https://www.up.pt/portal/en/live/student-life/scholarships-and-funding",
+        "official_updates_url": "https://www.sas.up.pt",
+        "deadline_central": "2026-10-02",
+        "deadline_central_display": "2 October 2026",
+        "deadline_note": "SASUP notice for 2026/2027: the study-scholarship request must be submitted (a) between 14 August and 2 October; (b) a student who enrols before 2 October always has 20 working days to submit, even if that runs past 2 October; (c) it may still be submitted between 3 October and 31 May, but the award is then proportional to the period between the month after submission and the end of the term or traineeship. Residence applications for 2026/2027 ran 24 August-4 September (1st phase) and 30 September-5 October (2nd phase); the extra July accommodation month must be requested by 15 October.",
+        "application_cycle": "2026/2027 academic year (IES, I.P. / DGES study scholarship)",
+        "status": "OPEN",
+        "status_note": "The main 2026/2027 window closed on 2 October 2026, but the SASUP notice still accepts applications between 3 October and 31 May at a proportional value. The 2026/2027 first-semester Collaborators' Grant call ran 8-21 September 2026 (second-semester calls open in February); the 2026/2027 Incentive Scholarship and residence rounds are already running.",
+        "tuition_coverage_note": "U.Porto publishes no tuition-fee waiver for these awards. The only tuition-linked item is the Incentive Prize, described as 'equivalent to the amount of the annual tuition fees', given to the best first-year students of each of U.Porto's 14 schools/faculties; the SASUP study scholarship, merit scholarships and scientific scholarships are all described as cash payments, prizes or research grants.",
+        "funding_amount": null,
+        "funding_currency": null,
+        "funding_period": null,
+        "tuition_coverage": false,
+        "living_cost_coverage": true,
+        "travel_coverage": false,
+        "fully_funded": false,
+        "benefits": [
+          "SASUP study scholarship: 'These scholarships consist of a monthly cash payment intended to contribute to costs related to attending the course', granted and renewed annually.",
+          "Merit Scholarship: paid by bank transfer in a single instalment, 'corresponding to five times the value of the guaranteed minimum monthly wage in force at the start of the academic year in which it is awarded' (art. 7, U.Porto General Regulation on the Awarding of Merit Scholarships).",
+          "Incentive Prizes to the best first-year students of each of U.Porto's 14 schools/faculties, 'equivalent to the amount of the annual tuition fees', presented on University Day.",
+          "FAS Collaborators' Grant: a compensation proportional to the hours of collaboration, published at 5.37 EUR per hour of collaboration for the 2026/2027 academic year.",
+          "Accommodation support: State funding of public residences rises from 134 EUR to 161 EUR per bed occupied by a scholarship student (about a 20% increase), and the accommodation complement passes to 161 EUR monthly, regardless of whether the student chooses a public residence or private housing.",
+          "New Incentive Scholarship for 2026/2027: 1,075 EUR per year for students entering higher education for the first time who held the 1st tier of the child allowance on 31 May 2026, attributed automatically and renewable subject to academic performance (final grade among the top 25%)."
+        ],
+        "eligibility": [
+          "SASUP study scholarship: enrolled in a Bachelor's, Master's or Integrated Master's programme at U.Porto.",
+          "Portuguese and European Union nationals, stateless persons and nationals of countries that have cooperation protocols that foresee the reciprocal application of the benefit; students with the International Student Status are excluded.",
+          "Merit scholarships: enrolled in a Bachelor's, Master's or Integrated Master's programme at U.Porto in the year of award, with exceptional academic achievement 'regardless of their socio-economic situation'.",
+          "Scientific scholarships: enrolled in undergraduate research, Bachelor's, Master's or Doctoral study, for scientific training in research projects or institutions of science and technology in Portugal.",
+          "Collaborators' Grant (FAS): enrolled at U.Porto in a 1st, 2nd or integrated master's cycle, with an annual per capita income not exceeding 27 times the Social Support Index set for the year in course (14,502.51 EUR for 2026/2027); international students may apply, but displaced (mobile) students may not.",
+          "Social Support Fund: students who did not meet the scholarship eligibility criteria and temporarily find themselves in a difficult economic situation."
+        ],
+        "requirements": [
+          "Complete the online application form on the IES, I.P. BeOn portal, filling in all mandatory fields.",
+          "Scan, upload and attach the compulsory documents to the online application, then submit it.",
+          "Hold BeOn access credentials, which differ from the Concurso Nacional de Acesso and SASUP SIGARRA credentials; recover them through the e-mail and NIF associated with the scholarship application, or request them through the SASUP pre-registration form.",
+          "Collaborators' Grant: Curriculum Vitae, income declaration (IRS model 3 or proof of exemption), declaration under oath about how the household sustains itself, proof of IBAN and proof of enrolment at U.Porto (a SIGARRA print serves as proof).",
+          "Study scholarship: the R.SB support declarations (household composition, household expenses and income sources, professional activity, movable assets) published by SASUP.",
+          "Additional month of the accommodation complement (July): request after the academic activities of that month, with documentary evidence dated July or later, presented by 15 October."
+        ],
+        "documents": [
+          "R.SB.30 - Declaration, composition of the household (Portuguese only)",
+          "R.SB.31 - Declaration under oath, household expenses and sources of household income (Portuguese only)",
+          "R.SB.32 - Declaration under oath, professional activity (Portuguese only)",
+          "R.SB.34 - Declaration under oath, movable assets (Portuguese only)",
+          "R.SB.43 - Request for an additional month of the accommodation complement, art. 19(6), due by 15 October (Portuguese only)",
+          "Collaborators' Grant: CV, IRS model 3 or proof of exemption (foreign students substitute an equivalent income declaration), declaration under oath, IBAN proof, SIGARRA enrolment print"
+        ],
+        "selection_criteria": [
+          "Collaborators' Grant, 2026/2027 call: cumulative criteria - the economic situation, with priority of access to the most economically needy students, and the candidate's profile through curriculum evaluation and experience, with a possible interview.",
+          "Merit scholarships, exceptional achievement: approval in all curricular units of the previous curricular year (respecting the 60 ECTS credits of that year) and an average not below Muito Bom (16).",
+          "Merit scholarships ranking: descending order of the ECTS-credit-weighted average, calculated to two decimal places; ties broken by lower total number of enrolments, then younger age; the award is indivisible, so there are no ex aequo results.",
+          "Merit scholarships volume: the number annually communicated by the Directorate-General for Higher Education; each organic unit with fewer than 500 eligible students receives one, and the remainder is distributed by dividing the previous year's enrolled total by 500, rounded down.",
+          "Study scholarship: awarded under the Regulation for Awarding Scholarships to Higher Education Students (RABEEES), on household means-testing.",
+          "Scientific scholarships: awarded for scientific training in research projects or science and technology institutions in Portugal."
+        ],
+        "coverage": [
+          "Monthly cash payment intended to contribute to costs related to attending the course (SASUP study scholarship).",
+          "Cash prize for students who display exceptional academic achievement, regardless of their socio-economic situation (merit scholarships).",
+          "Incentive prizes 'equivalent to the amount of the annual tuition fees' for the best first-year students of each of the 14 schools/faculties.",
+          "Scientific scholarships aimed at scientific training in research projects or institutions of science and technology in Portugal.",
+          "Accommodation complement of 161 EUR monthly and State funding of 161 EUR per bed occupied by a scholarship student in public residences.",
+          "Travel allowance for scholarship students residing in Madeira or the Azores, claimed by e-mail with proof of ticket payment and the CTT social mobility subsidy voucher (in Madeira, an Island Student Programme travel agency voucher can replace the CTT voucher)."
+        ],
+        "application_method": [
+          "Fill in the online application form on the IES, I.P. BeOn portal, completing all mandatory fields.",
+          "Attach the compulsory documents by scanning, uploading and delivering them with the application.",
+          "Submit the application; after submission the BeOn private area is the exclusive contact and consultation channel for the case.",
+          "If you hold no BeOn credentials, pre-register on the SASUP form and wait for the user code and password by e-mail.",
+          "SASUP publishes the list of admitted and not admitted candidates on its website, after which the applicant's Organic Unit contacts the applicant.",
+          "Collaborators' Grant: submit the Microsoft Forms link published in the SASUP notice with the CV and supporting documents attached."
+        ],
+        "application_route": "Study scholarship online through the IES, I.P. (DGES) BeOn portal using credentials obtained via the SASUP pre-registration form; Collaborators' Grant through the Microsoft Forms link published in the SASUP notice.",
+        "study_mode": null,
+        "citizenship_residency": "Portuguese and European Union nationals, stateless persons and nationals of countries that have cooperation protocols that foresee the reciprocal application of the benefit; students with the International Student Status are excluded (SASUP study scholarship).",
+        "international_eligibility": "No for the SASUP study scholarship (students holding the International Student Status are excluded). Merit and scientific scholarships are awarded on academic and research grounds with no published nationality bar. International students may apply for the FAS Collaborators' Grant, and students in a humanitarian emergency situation under Decreto-Lei 36/2014 may access emergency support as well.",
+        "subject_or_agency_requirement": "No field or agency restriction for the study and merit scholarships. Scientific scholarships are tied to research projects or institutions of science and technology in Portugal.",
+        "research_requirement": "Scientific scholarships are awarded for scientific training in research projects or institutions of science and technology in Portugal; no research-proposal requirement is published for the study or merit scholarships.",
+        "duration": "SASUP study scholarship is granted and renewed annually. Scientific scholarships: 'as a rule' the duration is annual and extendable up to three years and cannot be awarded for periods of less than three consecutive months. Merit scholarship is paid as a single instalment in the year of award.",
+        "description": "The University of Porto promotes and sponsors a wide range of financial support for its students and researchers in order to ensure equal opportunity regarding access to its courses and to reward the merit of those students who have displayed exceptional academic achievement. The portfolio comprises SASUP study scholarships, monthly cash payments for students enrolled in Bachelor's, Master's and Integrated Master's programmes; U.Porto Merit Scholarships, a cash prize for the best academic results; and Scientific Scholarships, research scholarships for undergraduate and postgraduate students. It is completed by a Social Support Fund and by study and research scholarships offered by external institutions, government entities or partner institutions of the University.",
+        "region": "Porto, Portugal (catalogue region: Europe)",
+        "program_type": "University internal scholarship and financial support portfolio (study, merit and scientific scholarships)",
+        "english_requirement": null
+      },
+      "verification": {
+        "source_citations": [
+          "https://www.up.pt/portal/en/live/student-life/scholarships-and-funding",
+          "https://www.up.pt/portal/pt/sasup/Informacoes-uteis/",
+          "https://www.up.pt/portal/en/sasup/scholarships/applications-dges/",
+          "https://www.up.pt/portal/en/sasup/faq/scholarships/",
+          "https://sigarra.up.pt/up/pt/legislacao_geral.ver_legislacao?p_nr=13816",
+          "https://www.up.pt/portal/documents/97/regulamento_no_370_2020.pdf"
+        ],
+        "last_verified_date": "2026-10-10",
+        "verification_status": "confirmed",
+        "confidence": "high",
+        "not_confirmed": [
+          "funding_amount",
+          "funding_currency",
+          "funding_period",
+          "english_requirement",
+          "study_mode"
+        ],
+        "notes": "Checked the U.Porto portal scholarships page, the SASUP application, FAQ and Useful Information pages, the U.Porto merit scholarship regulation (SIGARRA) and the U.Porto Social Support Fund regulation (up.pt PDF). No single stipend figure is published: the study scholarship is calculated under the national RABEEES and the merit scholarship is defined as five times the guaranteed minimum monthly wage, so no euro amount is stated. The only fixed amounts published are 5.37 EUR per collaboration hour, 1,075 EUR per year for the new national Incentive Scholarship, and a 161 EUR monthly accommodation complement. 2026/2027 application dates (14 August to 2 October 2026, with a late window to 31 May 2027 paid pro rata) come from the SASUP notice on the U.Porto domain."
+      },
+      "applicant_utility": {
+        "summary": "If you are already enrolled at U.Porto in a Bachelor's, Master's or Integrated Master's degree and you are Portuguese, an EU national, stateless or from a reciprocity country, the SASUP study scholarship is the main cash support and you apply for it on the national BeOn portal, not through your faculty. International-status students are shut out of that scholarship, so they should aim at the FAS Collaborators' Grant or external funders such as FCT, Camões or Santander. U.Porto publishes no euro figure for the study scholarship because the amount is calculated from your household's finances under the national regulation, so the only hard numbers you can plan against are 5.37 EUR per collaboration hour, 1,075 EUR for the national incentive scholarship and a 161 EUR monthly accommodation complement.",
+        "best_fit": "Enrolled U.Porto students from low-to-moderate income Portuguese or EU households who need monthly cash, and high-performing students who want a one-off merit payment; researchers who can attach themselves to an FCT-style scientific scholarship.",
+        "application_readiness_checklist": [
+          "Get BeOn credentials before the window opens: submit the SASUP pre-registration form and wait for the user code and password, which are separate from your SIGARRA and admissions credentials.",
+          "Collect the whole family's IRS model 3 for the previous calendar year first - this is a means test, not a merit test, so missing income paperwork stalls the file.",
+          "Make sure you are actually enrolled at U.Porto in the year of award; you need a SIGARRA enrolment print for several of the forms.",
+          "If you need a residence place, apply in the residence round rather than waiting for the scholarship result; SASUP gives accommodation priority to students who meet the scholarship conditions.",
+          "Declare every household member, income source and movable asset, and use the R.SB forms rather than a free-text explanation."
+        ],
+        "common_rejection_risks": [
+          "Holding International Student Status, which disqualifies you from the SASUP study scholarship outright, whatever your financial need.",
+          "Filing after 2 October: applications are still accepted until 31 May but the award is computed only from the month after submission, so you silently lose months of money.",
+          "Undisclosed movable assets or household income above the per-capita threshold, which the regulation screens alongside income.",
+          "Claiming displaced-student status without the R.SB.48 form when you live within 50 km of Porto.",
+          "For the Collaborators' Grant, being a displaced (mobile) student, which the FAQ rules out, and assuming admission guarantees work - admission to the pool does not oblige any unit to give you hours."
+        ],
+        "estimated_uncovered_costs": "Tuition fees, since no waiver is published for any of these awards; rent in a private flat if you are not awarded a residence place or the accommodation complement; travel, apart from the island-student travel allowance for scholarship holders resident in Madeira or the Azores; and course materials. These are cash stipends and prizes, not full funding.",
+        "document_audit": [
+          "The R.SB support declarations are published in Portuguese only, so budget time for translation if you do not read the language.",
+          "The household composition, expenses/income sources, professional activity and movable-asset declarations are four separate forms; the online form alone is not enough.",
+          "Foreign students applying for the Collaborators' Grant submit an equivalent income declaration instead of IRS model 3, so confirm with SASUP what counts.",
+          "The July accommodation complement needs documentary evidence dated July or later and must be filed by 15 October on form R.SB.43.",
+          "BeOn credentials expire in practice into a new account: if you applied in a previous year, reuse those credentials instead of pre-registering again."
+        ],
+        "alerts": [
+          "The main 2026/2027 window closed on 2 October 2026; anything filed from 3 October to 31 May is paid pro rata from the month after submission.",
+          "U.Porto's English FAQ still states a Collaborators' Grant income cap of 25 times the Social Support Index while the live 2026/2027 notice states 27 times (14,502.51 EUR) - follow the newer notice and confirm with SASUP before relying on either.",
+          "From 2027/2028 the study-scholarship calculation model switches to the actual local cost of attendance with progressive tapering, so expect award levels to move.",
+          "Merit scholarships are decided and published by each school or faculty on its own page and a public notice board - there is no central U.Porto application form to watch.",
+          "Deadlines differ per scheme, so the SASUP website and its Facebook and Instagram accounts are the only reliable place to catch the two Collaborators' Grant calls, in September and February."
+        ],
+        "submission_workflow": "Pre-register for BeOn credentials if you have none, then complete the online form, upload the compulsory documents and submit; afterwards the BeOn private area is the only contact channel, results are posted in the private area and on the SASUP website, and your Organic Unit contacts you with the outcome."
+      }
+    }
+  ]
+}

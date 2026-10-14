@@ -1,0 +1,114 @@
+[
+  {
+    "scholarship_id": 141,
+    "outcome": "no_verified_supervisor_found",
+    "professors": [],
+    "notes": "Official source page https://www.unito.it/avvisi/progetto-unicore-80-university-corridors-refugees-bando-3-borse-di-studio returned HTTP 403 (blocked to automated fetch) on two live attempts. The UNICORE 8.0 University of Turin scholarship is a university-wide, two-year cash-and-services Master's scholarship for English-taught Laurea Magistrale programmes (taught degrees, no scholarship-tied thesis supervisor), and no professor is named in the call. No supervisor applies to this scheme; source was bot-blocked rather than JS-only."
+  },
+  {
+    "scholarship_id": 144,
+    "outcome": "not_applicable",
+    "professors": [],
+    "notes": "Central government scheme: Taiwan Scholarship Program of the Ministry of Foreign Affairs, ROC (Taiwan), verified at https://en.mofa.gov.tw/cp.aspx?n=1325. Recipients may apply to any MOE-accredited degree programme or Mandarin training institution in Taiwan; no single institution or supervising professor is attached. The MOFA page lists only an administrative contact (Ms. Tina Shen, tina98@mail.mcu.edu.tw), who is not a professor/supervisor."
+  },
+  {
+    "scholarship_id": 145,
+    "outcome": "not_applicable",
+    "professors": [],
+    "notes": "Central government scheme: Ministry of Education, ROC (Taiwan) non-degree Mandarin language scholarship awarded through ROC overseas missions; applicants must apply separately to a Chinese language centre of their choice, so no institution or supervising professor is attached to the scholarship. (The listed english.moe.gov.tw URL currently renders the MOE 'Taiwan Scholarship Program' page; both are MOE central government schemes with no professor tie.)"
+  },
+  {
+    "scholarship_id": 146,
+    "outcome": "verified_supervisors",
+    "professors": [
+      {
+        "canonical_name": "Hsou-min Li",
+        "title": "Distinguished Research Fellow",
+        "institution_name": "Academia Sinica",
+        "department_name": "Institute of Molecular Biology",
+        "official_profile_url": "https://www.imb.sinica.edu.tw/en/faculty/profile/mbhmli.html",
+        "official_email": "mbhmli@gate.sinica.edu.tw",
+        "official_email_verified": true,
+        "lab_url": "https://www.imb.sinica.edu.tw/~mbhmli/",
+        "personal_academic_url": null,
+        "research_areas": ["Plant Biology", "Mechanism of Protein Import into Plastids", "Structural Biology"],
+        "research_keywords": ["plastid protein import", "chloroplast", "translocon", "transit peptide", "protein trafficking"],
+        "relationship_type": "program_faculty",
+        "evidence_source_url": "https://tigp.sinica.edu.tw/pages/2791",
+        "evidence_source_type": "official_programme_page",
+        "evidence_quote_or_summary": "TIGP Molecular and Cell Biology (MCB) programme page: 'Coordinator: Dr. Hsou-min Li 李秀敏特聘研究員, Distinguished Research Fellow, Institute of Molecular Biology ... Email: mbhmli@gate.sinica.edu.tw'",
+        "confidence": 95,
+        "availability": {
+          "scope": "phd_supervision",
+          "state": "verified_yes",
+          "source_url": "https://www.imb.sinica.edu.tw/en/faculty/profile/mbhmli.html"
+        }
+      },
+      {
+        "canonical_name": "Hung-Chih Kuo",
+        "title": "Research Fellow & Acting Director",
+        "institution_name": "Academia Sinica",
+        "department_name": "Institute of Cellular and Organismic Biology (Deputy Director, Institute of Biomedical Sciences)",
+        "official_profile_url": "http://icob.sinica.edu.tw/Eng/Faculty/faculty_more?id=75136ff1d6644b5fbc9d3a5af91c08e0",
+        "official_email": "kuohuch@gate.sinica.edu.tw",
+        "official_email_verified": true,
+        "lab_url": "http://icob.sinica.edu.tw/Eng/Faculty/faculty_lab?id=75136ff1d6644b5fbc9d3a5af91c08e0",
+        "personal_academic_url": null,
+        "research_areas": ["Stem Cell Biology", "Regenerative Medicine", "RNA Biology", "Interdisciplinary Neuroscience"],
+        "research_keywords": ["iPSC", "neurodegenerative disease modeling", "organoid", "non-coding RNA", "CNS neurodevelopment"],
+        "relationship_type": "program_faculty",
+        "evidence_source_url": "https://tigp.sinica.edu.tw/pages/2797",
+        "evidence_source_type": "official_programme_page",
+        "evidence_quote_or_summary": "TIGP Interdisciplinary Neuroscience (INS) programme page: 'Coordinator: Dr. Hung-Chih Kuo 郭紘志研究員, Research Fellow and Deputy Director, Institute of Biomedical Sciences ... Email: kuohuch@gate.sinica.edu.tw'",
+        "confidence": 95,
+        "availability": {
+          "scope": "phd_supervision",
+          "state": "verified_yes",
+          "source_url": "http://npas.programs.sinica.edu.tw/ins/research-f-as.html"
+        }
+      },
+      {
+        "canonical_name": "Cheng-Chung Wang",
+        "title": "Research Fellow",
+        "institution_name": "Academia Sinica",
+        "department_name": "Institute of Biological Chemistry (CBMB faculty profile hosted at the Institute of Chemistry)",
+        "official_profile_url": "https://www.chem.sinica.edu.tw/faculty/index.php?piName=wangcc&lang=ch&lang=en",
+        "official_email": "wangcc7280@gate.sinica.edu.tw",
+        "official_email_verified": true,
+        "lab_url": "https://tigpcbmb.ibc.sinica.edu.tw/",
+        "personal_academic_url": null,
+        "research_areas": ["Carbohydrate Chemistry", "Chemical Biology and Molecular Biophysics"],
+        "research_keywords": ["carbohydrate chemistry", "chemical biology", "molecular biophysics", "drug discovery"],
+        "relationship_type": "program_faculty",
+        "evidence_source_url": "https://tigpcbmb.ibc.sinica.edu.tw/announcementSingle.php?id=5",
+        "evidence_source_type": "official_programme_page",
+        "evidence_quote_or_summary": "Official TIGP-CBMB announcement 'CBMB Faculty as Supervisor (updated on 2026/09/08)': 'The CBMB faculty on the list can take a student(s)' - the list includes Cheng-Chung Wang. Role evidence on TIGP site (https://tigp.sinica.edu.tw/pages/2788): 'Coordinator: Dr. Cheng-Chung Wang 王正中研究員, Research Fellow, CBMB Program Executive Officer, Institute of Biological Chemistry ... Email: wangcc7280@gate.sinica.edu.tw'. CBMB administration page lists him as Coordinator; institutional profile linked from the official CBMB Molecular Biophysics faculty page.",
+        "confidence": 95,
+        "availability": {
+          "scope": "phd_supervision",
+          "state": "verified_yes",
+          "source_url": "https://tigpcbmb.ibc.sinica.edu.tw/announcementSingle.php?id=5"
+        }
+      }
+    ],
+    "notes": "TIGP (Academia Sinica) runs 14 English-taught PhD programmes in partnership with Taiwan national universities; thesis supervisors are Academia Sinica institute researchers and partner-university faculty. Verified three named program coordinators/faculty with institutional emails published on official sinica.edu.tw / as.edu.tw domains. Programme office contact: tigp@as.edu.tw. Note: TIGP applicants are admitted to a programme first and rotate/choose a thesis advisor afterwards; the three named faculty are programme leaders confirmed able to supervise CBMB/MCB/INS students."
+  },
+  {
+    "scholarship_id": 147,
+    "outcome": "no_verified_supervisor_found",
+    "professors": [],
+    "notes": "The INTENSE Program (國際產業人才教育專班) is an MOE specialised class run with the National Development Council, participating universities and partner companies: a taught, industry-linked degree programme with paid internships and a compulsory post-graduation employment obligation in Taiwan. No supervising professor is attached to the scholarship. The official source domain gocfs.ntu.edu.tw is NTU's Overseas Compatriot and Mainland Chinese Students Advising Division, which publishes only administrative contacts (ntugocfs@ntu.edu.tw, +886-2-3366-3232), no programme professor or supervisor."
+  },
+  {
+    "scholarship_id": 148,
+    "outcome": "no_verified_supervisor_found",
+    "professors": [],
+    "notes": "University-wide merit scholarship with a matching-fund structure: NTU waives tuition while the student's thesis/dissertation supervisor (any professor in any NTU department) pays a monthly research-assistant salary, so applicants must first secure a sponsoring professor - but the university names no specific professor for this scholarship. The official OIA scholarships page (fetched) lists only university-level current-student scholarships with the administrative contact intstudent@ntu.edu.tw; no faculty or supervisor tied to this scholarship is published."
+  },
+  {
+    "scholarship_id": 149,
+    "outcome": "no_verified_supervisor_found",
+    "professors": [],
+    "notes": "University-wide scholarship from the NTHU Office of Global Affairs, applied for through the same online system as international degree admission; it provides a full tuition/credit-fee waiver plus a tiered monthly stipend (doctoral NTD 20,000-40,000; NTD 10,000 for doctoral students in the College of Humanities and Social Sciences or the International Intercollegiate PhD Program whose supervisors are from that college; master/bachelor NTD 5,000). The scholarship rules reference supervisors only as a stipend-tier condition and name no individual professor. Administrative contact published: itc@my.nthu.edu.tw."
+  }
+]

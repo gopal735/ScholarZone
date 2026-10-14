@@ -52,13 +52,13 @@
   width: 30px;
   height: 30px;
   place-items: center;
-  color: #E8EEF6;
+  color: #EDF3EF;
   font-family: var(--font-body);
   font-size: 0.8125rem;
   font-weight: 800;
   letter-spacing: -0.05em;
-  background: linear-gradient(150deg, #232A33 0%, #0E141C 100%);
-  border: 1px solid rgba(94, 147, 214, 0.32);
+  background: linear-gradient(150deg, #1B2C55 0%, #0E1A33 100%);
+  border: 1px solid var(--accent-border);
   border-radius: 9px;
   box-shadow:
     0 1px 0 rgba(196, 216, 240, 0.1) inset,
@@ -71,7 +71,7 @@
 
 .nav-brand:hover .nav-brand__mark {
   transform: translateY(-1px);
-  border-color: rgba(94, 147, 214, 0.55);
+  border-color: var(--accent);
   box-shadow:
     0 1px 0 rgba(196, 216, 240, 0.14) inset,
     0 4px 12px rgba(15, 25, 40, 0.24);
@@ -82,9 +82,9 @@
 }
 
 [data-theme='dark'] .nav-brand__mark {
-  color: #CFE0F5;
-  background: linear-gradient(150deg, #1B222B 0%, #0A0E13 100%);
-  border-color: rgba(94, 147, 214, 0.4);
+  color: #EDF3EF;
+  background: linear-gradient(150deg, #22345F 0%, #101827 100%);
+  border-color: var(--accent-border);
   box-shadow:
     0 1px 0 rgba(196, 216, 240, 0.12) inset,
     0 2px 8px rgba(0, 0, 0, 0.4);
@@ -136,23 +136,25 @@
 
 .nav-links a:hover {
   color: var(--sz-ink);
-  background: rgba(15, 25, 40, 0.05);
+  background: var(--sz-mist-soft);
 }
 
-/* Active = a soft fill only. No border, no inset highlight, no
-   shadow — a second material weight here is what made the bar read as
-   heavy. */
+/* Active = a soft tinted fill only, in the accent family so the current
+   page is named by hue rather than by weight. No border, no inset
+   highlight, no shadow — a second material weight here is what made
+   the bar read as heavy. */
 .nav-links a.active {
-  color: var(--sz-ink);
-  background: rgba(15, 25, 40, 0.09);
+  color: var(--accent);
+  background: var(--accent-soft);
 }
 
 [data-theme='dark'] .nav-links a:hover {
-  background: rgba(196, 216, 240, 0.06);
+  background: var(--sz-mist-soft);
 }
 
 [data-theme='dark'] .nav-links a.active {
-  background: rgba(196, 216, 240, 0.1);
+  color: var(--accent);
+  background: var(--accent-soft);
 }
 
 .nav-links a:focus-visible {
@@ -187,12 +189,12 @@
 
 .nav-utility-link:hover {
   color: var(--sz-ink);
-  background: rgba(15, 25, 40, 0.05);
+  background: var(--sz-mist-soft);
 }
 
 .nav-utility-link.active {
   color: var(--sz-ink);
-  background: rgba(15, 25, 40, 0.09);
+  background: var(--sz-mist-soft);
 }
 
 .nav-utility-link span {
@@ -226,13 +228,13 @@
 
 .nav-sign-in:hover {
   color: var(--sz-ink);
-  background: rgba(15, 25, 40, 0.05);
+  background: var(--sz-mist-soft);
   border-color: var(--text-faint);
 }
 
 .nav-sign-in.active {
   color: var(--sz-ink);
-  background: rgba(15, 25, 40, 0.09);
+  background: var(--sz-mist-soft);
   border-color: var(--border-strong);
 }
 
@@ -305,31 +307,36 @@
 
 /* ── Theme toggle ─────────────────────────────────────────────────
    ThemeToggle ships no stylesheet of its own, so the control is
-   styled here with the utility cluster it belongs to. It is a plain
-   ghost control — no fill, no inset highlight, no lift. */
+   styled here with the utility cluster it belongs to. It takes the
+   reference's `.p-tg` raised-sphere treatment: a specular highlight
+   at the upper left, a contact shade below, and a 25° rotation on
+   hover — the control is physical, so it responds like one. */
 .theme-toggle {
   display: inline-flex;
   align-items: center;
   gap: 6px;
   min-height: 36px;
   padding: var(--space-2) var(--space-3);
-  color: var(--sz-ink-soft);
+  color: var(--text-primary);
   font-family: var(--font-body);
   font-size: var(--text-xs);
   font-weight: 600;
   cursor: pointer;
-  background: transparent;
-  border: 1px solid transparent;
+  background: var(--p-well);
+  border: 1px solid var(--border);
   border-radius: var(--radius-pill);
+  box-shadow: var(--p-well-sh);
   transition:
     color var(--duration-micro) var(--timing-micro),
     background-color var(--duration-micro) var(--timing-micro),
-    border-color var(--duration-micro) var(--timing-micro);
+    border-color var(--duration-micro) var(--timing-micro),
+    transform 0.5s cubic-bezier(0.2, 0.7, 0.2, 1);
 }
 
 .theme-toggle:hover {
   color: var(--sz-ink);
-  background: rgba(15, 25, 40, 0.05);
+  border-color: var(--border-strong);
+  transform: translateY(-1px);
 }
 
 .theme-toggle:focus-visible {

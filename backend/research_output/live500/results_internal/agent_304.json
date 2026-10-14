@@ -1,0 +1,121 @@
+{
+  "agent": "agent_304",
+  "records": [
+    {
+      "id": 683,
+      "official": {
+        "official_source_urls": [
+          "https://www.mfa.gov.bn/Pages/scholarship.aspx",
+          "https://apps.katalyst.gov.bn/mfa/BDGS-V3/loginApplicant",
+          "https://ubd.edu.bn/admission/scholarship"
+        ],
+        "application_link": "https://apps.katalyst.gov.bn/mfa/BDGS-V3/loginApplicant",
+        "catalogue_url": "https://ubd.edu.bn/admission/scholarship",
+        "official_updates_url": "https://www.moe.gov.bn/department-of-scholarship-management",
+        "deadline_central": null,
+        "deadline_central_display": "The 2026/2027 session applicant portal displays 'This application is now closed. Thank you for your interest.'; the scheme is announced annually and no next-cycle date is published yet",
+        "deadline_note": "Applications are handled per annual announcement through the Ministry of Foreign Affairs applicant portal and the Brunei Darussalam mission in the applicant's country of origin; the Department of Scholarship Management page publishes current application forms only for the separate schemes for Bruneian citizens.",
+        "application_cycle": "Academic session 2026/2027 (closed); scheme announced annually",
+        "status": "CLOSED",
+        "status_note": "The Ministry of Foreign Affairs page lists the BDGS academic session 2026/2027 with a link to the applicant portal, and the portal itself states 'This application is now closed. Thank you for your interest.'",
+        "tuition_coverage_note": "UBD's scholarships page states that 'apart from tuitions borne by the government, the scholarship will also include the bursaries for accommodation, books, food, personal spending as well as complementary medical treatment at any Brunei Government hospital whilst travel expenses will be arranged by the Brunei Darussalam Foreign Mission at the scholar's country of origin or the closest Brunei Darussalam Mission to their country.'",
+        "funding_amount": null,
+        "funding_currency": null,
+        "funding_period": null,
+        "tuition_coverage": true,
+        "living_cost_coverage": true,
+        "travel_coverage": true,
+        "fully_funded": true,
+        "benefits": [
+          "Tuition borne by the government",
+          "Bursaries for accommodation, books, food and personal spending",
+          "Complementary medical treatment at any Brunei Government hospital",
+          "Travel expenses arranged by the Brunei Darussalam Foreign Mission in the scholar's country of origin or the closest Brunei Darussalam mission"
+        ],
+        "eligibility": [
+          "International (foreign) students - Brunei Darussalam citizens apply under the separate BDGS (LS) scheme",
+          "Study at Bachelor's or Master's level in Brunei Darussalam (UBD's scholarship table lists BDGS (IS) for these levels)",
+          "Doctor of Philosophy study at UBD is covered by the UBD Graduate Research Scholarship rather than BDGS",
+          "Application is made through the Brunei Darussalam mission in the applicant's country of origin or the Ministry of Foreign Affairs applicant portal"
+        ],
+        "requirements": [
+          "Apply through the Ministry of Foreign Affairs BDGS applicant portal (apps.katalyst.gov.bn) for the announced academic session",
+          "Meet the academic and English entry requirements of the chosen institution and programme",
+          "Submit the supporting documents requested in the annual government announcement",
+          "Coordinate with the Brunei Darussalam mission in the country of origin, which arranges travel"
+        ],
+        "documents": null,
+        "selection_criteria": null,
+        "coverage": [
+          "Tuition fees at institutions in Brunei Darussalam, borne by the government",
+          "Bursaries for accommodation, books, food and personal spending",
+          "Complementary medical treatment at any Brunei Darussalam government hospital",
+          "Travel expenses arranged by the Brunei Darussalam Foreign Mission in the scholar's country of origin or the closest mission"
+        ],
+        "application_method": [
+          "Register on the Ministry of Foreign Affairs BDGS applicant portal (apps.katalyst.gov.bn/mfa/BDGS-V3)",
+          "Complete the BDGS application for the announced academic session and submit supporting documents",
+          "Liaise with the Brunei Darussalam mission in the country of origin for travel arrangements"
+        ],
+        "application_route": "Apply through the Ministry of Foreign Affairs BDGS applicant portal (Katalyst), in coordination with the Brunei Darussalam mission in your country of origin.",
+        "study_mode": null,
+        "citizenship_residency": "Open to students who are not citizens of Brunei Darussalam; Brunei Darussalam nationals apply under the separate BDGS scheme for locals administered by the Ministry of Education.",
+        "international_eligibility": "Yes - the scheme is specifically for foreign students (BDGS (IS)) tenable in Brunei Darussalam.",
+        "subject_or_agency_requirement": null,
+        "research_requirement": null,
+        "duration": null,
+        "description": "The Brunei Darussalam Government Scholarship for Foreign Students Tenable in Brunei Darussalam (BDGS (IS)) is the Government of Brunei Darussalam's scheme for international students to study at Bachelor's and Master's level in Brunei Darussalam, with tuition borne by the government plus bursaries for accommodation, books, food and personal spending, complementary medical treatment at government hospitals, and travel arranged through the Brunei Darussalam mission.",
+        "region": "Asia",
+        "program_type": "Government scholarship for foreign students tenable in Brunei Darussalam",
+        "english_requirement": null
+      },
+      "verification": {
+        "source_citations": [
+          "https://www.mfa.gov.bn/Pages/scholarship.aspx",
+          "https://apps.katalyst.gov.bn/mfa/BDGS-V3/loginApplicant",
+          "https://ubd.edu.bn/admission/scholarship"
+        ],
+        "last_verified_date": "2026-10-10",
+        "verification_status": "confirmed",
+        "confidence": "high",
+        "not_confirmed": [
+          "funding_amount - no monetary figure is published on the official pages",
+          "funding_currency",
+          "funding_period",
+          "exact application deadline dates for the next session - the 2026/2027 portal is closed and no new dates are published",
+          "documents - the itemised document list is not published on the pages checked",
+          "english_requirement - the published IELTS 6.5 rule belongs to the BDGS scheme for Bruneian citizens, not to BDGS (IS)",
+          "study_mode and duration - not published on the pages checked"
+        ],
+        "notes": "Read the MFA scholarship page (lists BDGS academic session 2026/2027 and links the applicant portal), the Katalyst applicant portal ('This application is now closed'), and UBD's scholarships page (benefit wording, BDGS (IS) levels, PhD covered by UBD Graduate Research Scholarship). The MOE Department of Scholarship Management page covers schemes for Bruneian citizens, not BDGS (IS)."
+      },
+      "applicant_utility": {
+        "summary": "BDGS (IS) is one of the few genuinely full awards in the region - government-borne tuition plus bursaries for accommodation, books, food and personal spending, government-hospital medical treatment and mission-arranged travel - but it is administered by annual announcement through the Ministry of Foreign Affairs portal rather than an open rolling form. The 2026/2027 portal now reads 'This application is now closed', so the practical move is to register interest with your country's Brunei Darussalam mission and watch the MFA page for the next announcement rather than applying on a fixed calendar. Note the level ceiling: PhD places at UBD run through the separate UBD Graduate Research Scholarship, so BDGS fits Bachelor's and Master's plans.",
+        "best_fit": "International students from any country who want a fully funded Bachelor's or Master's degree in Brunei Darussalam and can work through their Brunei Darussalam mission.",
+        "application_readiness_checklist": [
+          "Identify the Brunei Darussalam mission covering your country of origin and confirm it handles BDGS applications and travel",
+          "Research eligible Brunei institutions (UBD is the listed example) and your target programme's entry requirements and intake dates before the announcement",
+          "Prepare certified academic certificates, transcripts, identity/nationality proof and English proficiency evidence expected by the institution",
+          "Watch mfa.gov.bn/Pages/scholarship.aspx and apps.katalyst.gov.bn for the next session to open, and apply inside that window"
+        ],
+        "common_rejection_risks": [
+          "Being a Bruneian citizen and applying to the foreign-student scheme instead of BDGS (LS)",
+          "Aiming at PhD level, which sits under the UBD Graduate Research Scholarship rather than BDGS (IS)",
+          "Waiting for a publicised deadline - dates are not published in advance, they arrive with the annual announcement",
+          "Missing the institution's own entry requirements, since the award presupposes a place at an eligible Brunei institution"
+        ],
+        "estimated_uncovered_costs": "No amount figures are published, so budget for anything beyond the listed bursaries - personal extras, dependants' costs, and any expenses the mission-arranged travel does not include.",
+        "document_audit": [
+          "The itemised document list is not published on the MFA or portal pages; the annual announcement and your mission define it - ask early",
+          "Nationality evidence matters: the scheme hinges on not being a Bruneian citizen"
+        ],
+        "alerts": [
+          "The 2026/2027 session is closed; the next window is expected to follow the same annual announcement pattern but carries no published date",
+          "The English proficiency thresholds published on MOE/UBD pages (for example IELTS 6.5) belong to the Bruneian-citizens scheme; BDGS (IS) applicants follow the institution's requirements",
+          "Travel is arranged through the mission, so build lead time for mission processing into any relocation plan"
+        ],
+        "submission_workflow": "Annual Ministry of Education / Ministry of Foreign Affairs announcement, then application through the MFA Katalyst portal with mission coordination; the award is tied to admission at the chosen Brunei institution."
+      }
+    }
+  ]
+}

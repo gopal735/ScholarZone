@@ -1,0 +1,21 @@
+{
+  "shard": "w3-02",
+  "agent_id": "w3_02",
+  "today": "2026-10-04",
+  "host": "ean.org",
+  "records": [
+    {
+      "target_id": 625,
+      "title": "Clinical Fellowship 2027 — European Academy of Neurology",
+      "official_source": "European Academy of Neurology (EAN)",
+      "official_source_url": "https://www.ean.org/learn/fellowships-and-funding/clinical-fellowship"
+    },
+    {
+      "target_id": 627,
+      "title": "Research Fellowship 2027 — European Academy of Neurology",
+      "official_source": "European Academy of Neurology (EAN)",
+      "official_source_url": "https://www.ean.org/learn/fellowships-and-funding/research-fellowship"
+    }
+  ],
+  "added_later": false
+}

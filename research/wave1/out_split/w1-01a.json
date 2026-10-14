@@ -1,0 +1,1460 @@
+{
+  "agent_id": "w1_01a",
+  "shard": "w1-01a",
+  "today": "2026-10-04",
+  "records": [
+    {
+      "target_id": 1,
+      "outcome": "refreshed",
+      "confirm": true,
+      "confirmation_evidence": "Read the European Commission's own Erasmus+ page https://erasmus-plus.ec.europa.eu/opportunities/individuals/students/erasmus-mundus-joint-masters, which states \"Erasmus Mundus Joint Masters are prestigious international masters, jointly designed and delivered by a group of higher education institutions\" and \"They involve at least 3 institutions from at least 3 different countries\". The companion official page for organisations states \"EU scholarship for individuals: EUR 1,400 per month (max. 24 months)\", which supplies the missing funding amount.",
+      "new_scholarship": {
+        "name": "Erasmus Mundus Joint Masters (EMJM)",
+        "legacy_titles": [
+          "Erasmus Mundus Joint Masters (EMJM)"
+        ],
+        "country": "European Union",
+        "degree_levels": "Master's",
+        "funding_type": "Fully Funded",
+        "official_source": "European Commission (Erasmus+ programme)",
+        "official_source_url": "https://erasmus-plus.ec.europa.eu",
+        "status": "open",
+        "is_verified": true,
+        "last_verified_date": "2026-10-04",
+        "description": "Erasmus Mundus Joint Masters are high-level, fully integrated master's programmes designed and delivered jointly by at least three higher education institutions in at least three different countries, and they award either a joint degree or multiple degrees. The European Commission funds both the programmes and competitive scholarships for the best students worldwide. Applicants apply directly to the institution running their chosen programme, and each master's own website sets its own entry requirements and deadlines. Individual scholarships are worth EUR 1,400 per month for a maximum of 24 months.",
+        "region": "Europe and worldwide",
+        "duration": "1 to 2 academic years (60, 90 or 120 ECTS credits)",
+        "deadline": "In most cases, you should submit your application between October and January for courses starting the following academic year",
+        "deadline_date": null,
+        "deadline_precision": "recurring",
+        "application_period": "Applications are generally submitted between October and January for courses starting the following academic year; each consortium sets its own exact dates",
+        "eligibility_summary": "Applicants must hold a bachelor's degree (first degree) or be in their final year of bachelor's study and graduate before the master's programme starts. Applicants who demonstrate a bachelor's-equivalent level of learning may also apply, provided this is officially recognised in the degree-awarding country.",
+        "eligibility": [
+          "Hold a bachelor's degree (first degree), or be in the last year of bachelor's studies and graduate before the master's programme starts",
+          "Alternatively demonstrate a bachelor's-equivalent level of learning that is officially recognised in the degree-awarding country",
+          "Apply to the consortium's own admission process, including where a scholarship is sought",
+          "Students from all over the world are welcome"
+        ],
+        "coverage": [
+          "Participation/tuition costs at the consortium institutions",
+          "Living allowance",
+          "Contribution to travel costs",
+          "Contribution to visa costs"
+        ],
+        "benefits": [
+          "EUR 1,400 per month scholarship for up to 24 months",
+          "Coverage of participation costs",
+          "Living allowance",
+          "Contribution towards travel and visa costs",
+          "Joint degree certificate or multiple degree certificates"
+        ],
+        "funding_amount": 1400,
+        "funding_currency": "EUR",
+        "funding_period": "per month",
+        "catalogue_url": "https://www.eacea.ec.europa.eu/scholarships/erasmus-mundus-catalogue_en",
+        "official_updates_url": "https://erasmus-plus.ec.europa.eu/opportunities/individuals/students/erasmus-mundus-joint-masters",
+        "english_requirement": "Not stated as a separate requirement on the Erasmus+ page; individual consortia set their own language requirements",
+        "requirements": [
+          "Bachelor's degree or proof of being in the final year of bachelor's study",
+          "Bachelor's-equivalent learning recognised in the degree-awarding country (alternative route)",
+          "Admission to the chosen EMJM consortium, including its selection procedures",
+          "Study periods in at least two different countries as part of the integrated curriculum"
+        ],
+        "application_method": [
+          "Search the Erasmus Mundus Catalogue for the chosen programme",
+          "Apply directly to the institution running the chosen programme, following the master's own application steps with and without scholarship",
+          "Each master's website lists participating universities, entry requirements and all application steps"
+        ],
+        "selection_notes": "Scholarships are competitive and awarded to the best-ranked students worldwide by each consortium; the number of scholarships available varies per programme.",
+        "program_type": "Joint Master Programme",
+        "best_fit": "Applicants seeking a fully funded, jointly delivered European (and beyond) master's degree who hold, or are about to complete, a bachelor's degree and can apply directly to individual consortium admission processes.",
+        "notes": "The Erasmus+ umbrella action covers the whole EMJM family; individual consortia decide whether they offer scholarships, how many, and the exact application window. A new batch of selected Erasmus Mundus Masters is added to the list each year."
+      },
+      "programme_detail_official": {
+        "official_source_urls": [
+          "https://erasmus-plus.ec.europa.eu/opportunities/individuals/students/erasmus-mundus-joint-masters",
+          "https://erasmus-plus.ec.europa.eu/opportunities/organisations/cooperation-among-organisations-and-institutions/erasmus-mundus-joint-masters",
+          "https://www.eacea.ec.europa.eu/scholarships/erasmus-mundus-catalogue_en"
+        ],
+        "application_link": "https://erasmus-plus.ec.europa.eu/opportunities/individuals/students/erasmus-mundus-joint-masters",
+        "official_updates_url": "https://erasmus-plus.ec.europa.eu/opportunities/individuals/students/erasmus-mundus-joint-masters",
+        "catalogue_url": "https://www.eacea.ec.europa.eu/scholarships/erasmus-mundus-catalogue_en",
+        "application_cycle": "Annual cycle; applications generally submitted October to January for programmes starting the following academic year",
+        "deadline_central": null,
+        "deadline_central_display": "In most cases, you should submit your application between October and January for courses starting the following academic year",
+        "deadline_central_timezone": null,
+        "deadline_note": "There is no single central deadline. Each Erasmus Mundus master's website sets its own application dates and the number of scholarships it offers, so an exact date can only be established on the individual consortium's site.",
+        "status": "OPEN",
+        "status_note": "Open in the sense that new intakes are recruiting now: applications for programmes starting the next academic year are submitted between October and January. On the organisations page the Commission states \"There are no calls open at the moment. The next round of funding will open towards the end of the year\", which refers to institutional grant calls rather than student applications.",
+        "funding_amount": 1400,
+        "funding_currency": "EUR",
+        "funding_period": "per month",
+        "funding_duration": "Up to 24 months",
+        "tuition_coverage": true,
+        "tuition_coverage_note": "The official page states that Erasmus Mundus scholarships \"cover your participation costs and contribute to travel, visa, a living allowance\", so programme participation/tuition costs are covered at consortium level. The precise fee arrangements are set by each consortium.",
+        "living_cost_coverage": true,
+        "travel_coverage": true,
+        "fully_funded": true,
+        "funding_label": "EUR 1,400 per month for up to 24 months, covering participation costs plus a living allowance and contributing to travel and visa costs",
+        "benefits": [
+          "EUR 1,400 per month for up to 24 months",
+          "Participation costs covered",
+          "Living allowance",
+          "Contribution to travel costs",
+          "Contribution to visa costs",
+          "Joint degree or multiple degrees awarded"
+        ],
+        "eligibility": [
+          "Hold a bachelor's degree (first degree), or be in the last year of bachelor's studies and graduate before the master's programme starts",
+          "Or demonstrate a bachelor's-equivalent level of learning officially recognised in the degree-awarding country",
+          "Apply directly to the institution running the chosen programme",
+          "Students from all over the world are welcome"
+        ],
+        "citizenship_residency": "No citizenship or residency restriction is stated; the official page says students from all over the world are welcome. Consortium-level and Erasmus+ funding agreements may impose nationality limits on some scholarships.",
+        "international_eligibility": "Open to students from all countries worldwide; the programme is explicitly international and jointly delivered.",
+        "degree_levels": [
+          "Master's"
+        ],
+        "study_mode": "Full-time joint master's with study, research, traineeship, thesis preparation and defence periods across at least three countries",
+        "research_requirement": "Not mandatory; programmes typically include periods of study, research, traineeship, thesis preparation and defence",
+        "subject_or_agency_requirement": "At least three higher education institutions from at least three different countries must jointly deliver the programme, of which at least two are EU Member States or countries associated to the Programme",
+        "application_method": "Apply directly to the institution running the chosen programme, using the master's own application steps for applications with and without scholarship",
+        "application_route": "Direct to the consortium institution via its own admissions process; the Erasmus+ site is the entry point and catalogue, not the application form",
+        "requirements": [
+          "Bachelor's degree, or final-year bachelor's study with graduation before the master's starts",
+          "Bachelor's-equivalent learning officially recognised in the degree-awarding country (alternative)",
+          "Entry requirements of the individual consortium",
+          "Completion of the consortium's full application process including any scholarship-specific steps"
+        ],
+        "documents": [
+          "Not specified centrally; each consortium publishes its own required documents"
+        ],
+        "english_requirement": null,
+        "english_requirement_note": "The Erasmus+ pages do not state a central English requirement; language requirements are set by each individual consortium.",
+        "selection_criteria": [
+          "Best-ranked students worldwide at consortium level",
+          "Admission to the individual consortium's selection process",
+          "Balanced nationality distribution across each project's scholarships"
+        ],
+        "selection_weighting": null,
+        "duration": "1 to 2 academic years (60, 90 or 120 ECTS credits)",
+        "award_holder_conditions": [
+          "Apply through the consortium's own admissions and scholarship process, not directly to the European Commission",
+          "Programme participation and mobility across the consortium's partner institutions are required by the integrated curriculum"
+        ],
+        "supplements_or_initiatives": [
+          "Erasmus Mundus Design Measures (EMDM) exist in the same action but are not student scholarships",
+          "Erasmundus student associations and the Erasmus Mundus Association provide applicant support resources"
+        ],
+        "official_contacts": {
+          "general": "Contact EACEA — https://www.eacea.ec.europa.eu/contact-us, or the national Erasmus+ office in your country of residence",
+          "email": null
+        },
+        "description": "Erasmus Mundus Joint Masters are high-level integrated study programmes at master's level, designed and delivered by an international partnership of higher education institutions involving at least three institutions from three different countries. The European Commission funds the running of these programmes and offers competitive scholarships to the best students worldwide, worth EUR 1,400 per month for up to 24 months. Students apply directly to the institution running their chosen programme, and each edition runs over 1 to 2 academic years (60, 90 or 120 ECTS credits) with periods of study, research, traineeship, thesis preparation and defence.",
+        "program_type": "Joint Master Programme",
+        "region": "Europe and worldwide",
+        "coverage": "Participation costs plus a living allowance, with contributions to travel and visa costs",
+        "last_verified_date": "2026-10-04"
+      },
+      "programme_detail_applicant_utility": {
+        "application_readiness_checklist": [
+          "Pick a specific Erasmus Mundus master's from the annual Erasmus Mundus Catalogue before preparing documents",
+          "Confirm on that master's own website whether it actually offers Erasmus Mundus scholarships and how many",
+          "Confirm you hold a bachelor's degree or will graduate before the master's starts",
+          "Use the consortium's own application form and its stated deadlines, not the Erasmus+ page",
+          "Have your bachelor transcripts and recognition documents ready, including recognition of any non- bachelor's-equivalent learning"
+        ],
+        "common_rejection_risks": [
+          "Missing the consortium's own deadline, which is often earlier than the October-January general window",
+          "Applying for a programme that no longer offers Erasmus Mundus scholarships because it is close to the end of its EU funding period",
+          "Not meeting the consortium's subject, language or academic-admission requirements",
+          "Not graduating before the master's programme starts",
+          "Applying to a country-restricted scholarship when you hold a nationality outside the eligible group"
+        ],
+        "estimated_uncovered_costs": [
+          "Consortium-specific participation fees not covered by the individual grant arrangement",
+          "Travel beyond the contribution included in the scholarship",
+          "Visa and residence-permit costs above the stated contribution",
+          "Optional project, internship or fieldwork costs set by the individual consortium"
+        ],
+        "document_audit": [
+          "Bachelor's degree certificate or an official proof of expected graduation",
+          "Official transcript of records",
+          "Proof of recognition of non- bachelor's-equivalent learning where applicable",
+          "Language certificates required by the specific consortium",
+          "Passport or national identity documentation required by the consortium",
+          "Consortium-specific statement of purpose, references or research proposal"
+        ],
+        "alerts": [
+          {
+            "trigger": "No central deadline",
+            "message": "The European Commission publishes no single EMJM deadline. The only binding date is the one on your chosen master's own website."
+          },
+          {
+            "trigger": "Programme without scholarships",
+            "message": "The official catalogue notes that while many programmes offer Erasmus Mundus scholarships, some do not because they are near the end of their funding period. Verify before investing in the application."
+          },
+          {
+            "trigger": "Annual catalogue update",
+            "message": "A new batch of selected Erasmus Mundus Masters is added each year, so the programme list changes. Re-check the catalogue for the intake you intend."
+          }
+        ],
+        "submission_workflow": [
+          "Search the Erasmus Mundus Catalogue for programmes matching your field",
+          "Open the chosen master's own website for entry requirements, participating universities and application steps",
+          "Prepare the consortium's required documents and language evidence",
+          "Apply through the consortium's own system, selecting the scholarship option where offered",
+          "Track the consortium's own admission and scholarship communication for the outcome"
+        ]
+      },
+      "programme_detail_verification": {
+        "cycle_verified": "2027 intake applications opening October 2026, verified 2026-10-04",
+        "verification_confidence": 0.95,
+        "official_fields_confirmed": [
+          "name",
+          "official_source",
+          "status",
+          "degree_levels",
+          "duration",
+          "funding_amount",
+          "funding_currency",
+          "funding_period",
+          "deadline",
+          "deadline_precision",
+          "eligibility",
+          "catalogue_url",
+          "application_method",
+          "application_cycle"
+        ],
+        "institution_check_required": [
+          "Number of Erasmus Mundus scholarships actually available from the specific consortium",
+          "The specific consortium's admission requirements, language requirements and exact deadline",
+          "The consortium's tuition/participation fee arrangement and any fees not covered by the grant"
+        ],
+        "unverified_or_removed_claims": [
+          "Stored funding_amount was null and is now set to 1400 EUR per month from the official organisations page",
+          "Stored deadline_precision 'unknown' is corrected to 'recurring': the official page publishes a recurring October-to-January application window, not a single fixed date",
+          "Stored image (a campus hero photo) was a banner, not the awarding body's logo",
+          "No exact deadline_date is published centrally, so deadline_date remains null",
+          "Travel and visa costs are only contributions, not full coverage, per the official wording"
+        ],
+        "source_citations": [
+          "https://erasmus-plus.ec.europa.eu/opportunities/individuals/students/erasmus-mundus-joint-masters",
+          "https://erasmus-plus.ec.europa.eu/opportunities/organisations/cooperation-among-organisations-and-institutions/erasmus-mundus-joint-masters",
+          "https://www.eacea.ec.europa.eu/scholarships/erasmus-mundus-catalogue_en"
+        ],
+        "researched_by": "w1_01a"
+      },
+      "logo_override": {
+        "url": "https://erasmus-plus.ec.europa.eu/themes/contrib/oe_theme/dist/ec/images/logo/positive/logo-ec--en.svg",
+        "page_url": "https://erasmus-plus.ec.europa.eu/opportunities/individuals/students/erasmus-mundus-joint-masters",
+        "official_host": true,
+        "alt_text": "European Commission",
+        "validation_result": "verified",
+        "validation_detail": "svg 22322+B, probed HTTP 200 with content-type image/svg+xml; the 'positive' variant is the dark-on-transparent European Commission wordmark used in the site header (the 'negative' variant on the same host is white and was rejected)",
+        "image_kind": "official_logo",
+        "image_format": "svg",
+        "verified_at": "2026-10-04T00:00:00+00:00",
+        "host_evidence": "same_registrable_domain",
+        "_award": "Erasmus Mundus Joint Masters (EMJM)"
+      },
+      "research_notes": {
+        "logo": "Scanned the awarding page's own markup for /logo/i assets on erasmus-plus.ec.europa.eu. The header uses the European Commission's own logo set: logo/positive/logo-ec--en.svg, logo/logo-ec--mute.svg and logo/negative/logo-ec--en.svg. Probed all: positive = HTTP 200 image/svg+xml 22322 B (accepted, dark wordmark), mute = HTTP 200 image/svg+xml 10212 B (grey variant, not used), negative = the white-on-transparent variant and was rejected per the hard ban.",
+        "unverified": [
+          "Any single central deadline or deadline_date",
+          "The number of scholarships available from any individual consortium",
+          "Central English language requirement"
+        ],
+        "substitution": null,
+        "official_pages_read": [
+          "https://erasmus-plus.ec.europa.eu/opportunities/individuals/students/erasmus-mundus-joint-masters",
+          "https://erasmus-plus.ec.europa.eu/opportunities/organisations/cooperation-among-organisations-and-institutions/erasmus-mundus-joint-masters",
+          "https://www.eacea.ec.europa.eu/scholarships/erasmus-mundus-catalogue_en"
+        ],
+        "degree_level_confirmed": "\"Erasmus Mundus Joint Masters are high-level integrated study programmes, at master level\" and \"Type of degree awarded: either a joint degree (recommended) or multiple degrees\"; each edition is \"1 to 2 academic years (60, 90 or 120 ECTS credits)\".",
+        "url_observed": "The stored official_source_url https://erasmus-plus.ec.europa.eu is a live, valid site root and was not changed. The specific programme page used as the application link is https://erasmus-plus.ec.europa.eu/opportunities/individuals/students/erasmus-mundus-joint-masters, and the official course catalogue resolves from https://ec.europa.eu/erasmus-mundus to https://www.eacea.ec.europa.eu/scholarships/erasmus-mundus-catalogue_en.",
+        "contradictions": [
+          "Stored funding_amount was null with no funding figure; the official organisations page publishes \"EU scholarship for individuals: EUR 1,400 per month (max. 24 months)\" — corrected.",
+          "Stored deadline_precision was 'unknown'; the official page publishes a recurring application window (\"between October and January for courses starting the following academic year\"), so 'recurring' is correct, not 'unknown'.",
+          "Stored deadline_display implied 'typically Dec-Feb'; the official wording is October to January — corrected.",
+          "Stored image_url was a campus hero photo (official_banner), not the awarding body's logo — replaced with the European Commission mark."
+        ],
+        "skeleton": false
+      }
+    },
+    {
+      "target_id": 2,
+      "outcome": "refreshed",
+      "confirm": true,
+      "confirmation_evidence": "Read ICCR's own Scholarship Schemes page at https://a2ascholarships.iccr.gov.in/home/getAllSchemeList, which lists \"Suborno Jayanti Scholarship Scheme [A1218]\" and states \"The Government of India through ICCR is providing scholarship at the level of UG/PG/Ph.D in Indian Universities for Bangladesh nationals.\" The live portal root on 2026-10-04 shows the status banner \"Registration Closed — Scholarship registration for the academic year 2026-27 is closed.\", confirming the scheme exists but this cycle has ended.",
+      "new_scholarship": {
+        "name": "Suborno Jayanti Scholarship Scheme (ICCR)",
+        "legacy_titles": [
+          "ICCR Scholarship (Suborno Jayanti Scheme)"
+        ],
+        "country": "India",
+        "degree_levels": "Bachelor's, Master's, PhD",
+        "funding_type": "Fully Funded",
+        "official_source": "Indian Council for Cultural Relations (ICCR), Government of India",
+        "official_source_url": "https://a2ascholarships.iccr.gov.in",
+        "status": "upcoming",
+        "is_verified": true,
+        "last_verified_date": "2026-10-04",
+        "description": "The Suborno Jayanti Scholarship Scheme is scheme code A1218 in ICCR's scholarship schemes list. ICCR states that the scholarship to Bangladesh nationals is offered under this single scheme, which subsumes the schemes previously used for that purpose. The Government of India, through ICCR, funds undergraduate, postgraduate and doctoral study at Indian universities for nationals of Bangladesh. Applications are made through ICCR's A2A scholarship portal, and registration for the academic year 2026-27 is now closed, with the next cycle to be announced by ICCR.",
+        "region": "South Asia",
+        "deadline": "Registration for the academic year 2026-27 is closed; ICCR publishes the next application window on its A2A scholarship portal",
+        "deadline_date": null,
+        "deadline_precision": "recurring",
+        "application_period": "Annual cycle announced on the A2A scholarship portal; the AY 2026-27 registration window has closed",
+        "eligibility_summary": "The scheme is for nationals of Bangladesh. ICCR provides the scholarship at undergraduate, postgraduate and PhD level in Indian universities.",
+        "eligibility": [
+          "National of Bangladesh",
+          "Applying to study at an Indian university or institution",
+          "Seeking admission at undergraduate, postgraduate or PhD level",
+          "Registering through ICCR's A2A scholarship portal"
+        ],
+        "coverage": [
+          "Study at Indian universities at UG, PG and PhD level (specific components are set in ICCR's award terms)"
+        ],
+        "benefits": [
+          "Government of India scholarship administered by ICCR for study in Indian universities"
+        ],
+        "catalogue_url": "https://a2ascholarships.iccr.gov.in/home/getAllSchemeList",
+        "official_updates_url": "https://a2ascholarships.iccr.gov.in/home/getAllSchemeList",
+        "application_method": [
+          "Register on ICCR's A2A scholarship portal",
+          "Provide correct information matching the supporting documents to be uploaded during the application",
+          "Have the information verified by the Indian Mission and by the university or institution at the time of admission and joining"
+        ],
+        "selection_notes": "ICCR states that application information must match the supporting documents and be verified by the Indian Mission and the admitting university; incorrect information leads to rejection without intimation, and falsification or multiple applications lead to automatic rejection.",
+        "program_type": "Government scholarship administered by ICCR on behalf of the Government of India",
+        "best_fit": "Bangladeshi nationals seeking Government of India-funded undergraduate, postgraduate or doctoral study at an Indian university.",
+        "notes": "The portal footer states it is 'Content Owned by Indian Council for Cultural Relations, Government of India'. ICCR reports administering roughly 3000 scholarships a year under 21 schemes to students from about 180 countries, of which six are funded by ICCR and the rest are administered on behalf of MEA and the Ministry of Ayush."
+      },
+      "programme_detail_official": {
+        "official_source_urls": [
+          "https://a2ascholarships.iccr.gov.in",
+          "https://a2ascholarships.iccr.gov.in/home/getAllSchemeList",
+          "https://a2ascholarships.iccr.gov.in/home/page/about-us",
+          "https://a2ascholarships.iccr.gov.in/home/page/terms-conditions"
+        ],
+        "application_link": "https://a2ascholarships.iccr.gov.in",
+        "official_updates_url": "https://a2ascholarships.iccr.gov.in/home/getAllSchemeList",
+        "catalogue_url": "https://a2ascholarships.iccr.gov.in/home/getAllSchemeList",
+        "application_cycle": "Annual; the A2A portal displays the cycle status directly (AY 2026-27 registration closed as of 2026-10-04)",
+        "deadline_central": null,
+        "deadline_central_display": "Registration Closed — Scholarship registration for the academic year 2026-27 is closed",
+        "deadline_central_timezone": "Asia/Kolkata",
+        "deadline_note": "ICCR does not publish a forward-looking deadline on the portal. As of 2026-10-04 the A2A portal shows registration for AY 2026-27 closed and no AY 2027-28 window is announced, so no exact date can be recorded.",
+        "status": "UPCOMING",
+        "status_note": "The scheme is a recurring annual award and remains in ICCR's active scheme list as A1218, but the current cycle's registration window has closed. The next cycle's dates are not yet published on the portal.",
+        "funding_amount": null,
+        "funding_currency": null,
+        "funding_period": null,
+        "funding_duration": "Duration follows the degree programme; not stated on the scheme page",
+        "tuition_coverage": null,
+        "tuition_coverage_note": "ICCR's public scheme page confirms a Government of India scholarship at UG/PG/PhD level in Indian universities but does not publish a breakdown of the individual components, so tuition coverage is not confirmed on the official page.",
+        "living_cost_coverage": null,
+        "travel_coverage": null,
+        "fully_funded": false,
+        "funding_label": "Fully Government of India-funded scholarship at UG/PG/PhD level in Indian universities; no amount or component breakdown is published on ICCR's scheme page",
+        "benefits": [
+          "Government of India scholarship administered by ICCR",
+          "Undergraduate, postgraduate and doctoral study at Indian universities"
+        ],
+        "eligibility": [
+          "National of Bangladesh",
+          "Admission to an Indian university or institution",
+          "Undergraduate, postgraduate or PhD level of study"
+        ],
+        "citizenship_residency": "Nationals of Bangladesh",
+        "international_eligibility": "Not open to other nationalities; the Suborno Jayanti scheme is specific to Bangladesh nationals and is separate from ICCR's schemes for Nepal, Sri Lanka, the Maldives, the ASEAN region, Africa and others.",
+        "degree_levels": [
+          "Bachelor's",
+          "Master's",
+          "PhD"
+        ],
+        "study_mode": null,
+        "research_requirement": "Applicable only to PhD-level awardees; no central research requirement is published on the scheme page",
+        "subject_or_agency_requirement": "Indian university or institution admission required; Bangladesh Scholarship Scheme language appears on the ICCR site",
+        "application_method": "Register and apply through ICCR's A2A scholarship portal; information must match supporting documents and be verified by the Indian Mission and the admitting institution",
+        "application_route": "ICCR A2A scholarship portal (a2ascholarships.iccr.gov.in)",
+        "requirements": [
+          "Bangladesh nationality",
+          "Admission offer or application at an Indian university or institution",
+          "Registration on the A2A portal with information matching supporting documents",
+          "Verification by the Indian Mission and the admitting university at the time of admission"
+        ],
+        "documents": [
+          "Supporting documents uploaded during the A2A application (ICCR does not enumerate a fixed central document list on the scheme page)"
+        ],
+        "english_requirement": null,
+        "english_requirement_note": "Not stated on ICCR's Suborno Jayanti scheme page; study is at Indian universities, so language requirements are set by the admitting institution.",
+        "selection_criteria": [
+          "Correctness and consistency of the information provided with the supporting documents",
+          "Verification by the Indian Mission and the admitting university or institution"
+        ],
+        "selection_weighting": null,
+        "duration": "Not stated centrally; follows the degree programme applied for",
+        "award_holder_conditions": [
+          "Information must match the supporting documents uploaded during the application",
+          "Verification by the Indian Mission and the university or institution at the time of award of scholarship, admission and joining",
+          "Falsification of data or multiple applications result in automatic rejection at any stage"
+        ],
+        "supplements_or_initiatives": [],
+        "official_contacts": {
+          "general": "ICCR Scholarship Portal — https://a2ascholarships.iccr.gov.in (portal advises: \"Please contact the Indian Mission for any scholarship updates.\")",
+          "email": null
+        },
+        "description": "The Suborno Jayanti Scholarship Scheme (A1218) is ICCR's umbrella scholarship for nationals of Bangladesh. ICCR states that the scholarship to Bangladesh nationals is offered under this one scheme, subsuming all other schemes previously used, and that the Government of India through ICCR is providing scholarship at undergraduate, postgraduate and PhD level in Indian universities. Applications run through ICCR's A2A scholarship portal, which on 2026-10-04 displayed that registration for the academic year 2026-27 is closed. ICCR reports administering about 3000 scholarships a year across 21 schemes.",
+        "program_type": "Government scholarship administered by ICCR on behalf of the Government of India",
+        "region": "South Asia",
+        "coverage": "Government of India scholarship for UG, PG and PhD study at Indian universities; component breakdown not published",
+        "last_verified_date": "2026-10-04"
+      },
+      "programme_detail_applicant_utility": {
+        "application_readiness_checklist": [
+          "Confirm you hold Bangladeshi nationality; this scheme is not open to other nationalities",
+          "Identify the Indian university or institution and the degree level you are applying to",
+          "Create your account on ICCR's A2A scholarship portal before the registration window opens",
+          "Gather supporting documents now, because information on the portal must match them exactly",
+          "Track the A2A portal for the next cycle announcement, since the AY 2026-27 window is already closed"
+        ],
+        "common_rejection_risks": [
+          "Information on the A2A portal that does not match the uploaded supporting documents, which ICCR says leads to rejection without intimation",
+          "Falsification of data or submitting multiple applications, which ICCR says leads to automatic rejection at any stage",
+          "Missing the registration window, which opens only for the announced academic year",
+          "Applying for the wrong scheme, since ICCR's Suborno Jayanti scheme is specific to Bangladesh"
+        ],
+        "estimated_uncovered_costs": [
+          "Not determinable from ICCR's public scheme page, which publishes no component breakdown",
+          "Living, travel and documentation costs not named in any published ICCR award terms for this scheme"
+        ],
+        "document_audit": [
+          "Passport or Bangladeshi nationality evidence",
+          "Academic transcripts and certificates for the degree applied for",
+          "Admission or offer evidence from the Indian university or institution",
+          "Passport photographs in ICCR's required format",
+          "Any additional supporting documents ICCR lists when the window opens"
+        ],
+        "alerts": [
+          {
+            "trigger": "Registration closed",
+            "message": "ICCR's A2A portal displayed 'Scholarship registration for the academic year 2026-27 is closed' on 2026-10-04. Do not attempt to register until the next window is announced."
+          },
+          {
+            "trigger": "Single-scheme consolidation",
+            "message": "ICCR states this one scheme subsumes all previously used schemes for Bangladeshi students, so there is no separate Bangladesh Scholarship Scheme or India Scholarship (Bangladesh) Scheme to apply to."
+          },
+          {
+            "trigger": "Data accuracy is enforced",
+            "message": "ICCR states incorrect information in any manner leads to rejection without intimation, and falsification or multiple applications lead to automatic rejection. Check every field against your documents."
+          }
+        ],
+        "submission_workflow": [
+          "Monitor the A2A scholarship portal for the next registration window",
+          "Register on the A2A portal and read the guidelines before entering data",
+          "Upload supporting documents that match every field you enter",
+          "Submit before the window closes and save your registration and login credentials",
+          "Respond to any request from ICCR or the Indian Mission for verification"
+        ]
+      },
+      "programme_detail_verification": {
+        "cycle_verified": "AY 2026-27 registration window closed; verified 2026-10-04",
+        "verification_confidence": 0.88,
+        "official_fields_confirmed": [
+          "name",
+          "official_source",
+          "status",
+          "degree_levels",
+          "eligibility",
+          "application_link",
+          "catalogue_url",
+          "application_method",
+          "award_holder_conditions"
+        ],
+        "institution_check_required": [
+          "Whether the specific Indian university or institution still hosts ICCR awardees for the next cycle",
+          "The component breakdown and amount of the award, which ICCR does not publish on the scheme page",
+          "The next cycle's registration and last-date, which are announced only on the A2A portal"
+        ],
+        "unverified_or_removed_claims": [
+          "Stored deadline_date 2026-04-22 was the AY 2026-27 last date and that cycle is now closed, so deadline_date is set to null rather than retaining a past date",
+          "Stored deadline_precision 'exact' corrected to 'recurring': ICCR publishes an annual cycle with no published forward date, not a fixed calendar date",
+          "Stored program_type claim of '500 seats' is not supported by ICCR's scheme page; ICCR publishes no seat count for A1218, so seat numbers are omitted",
+          "Funding amount and currency remain null: no amount, component breakdown or currency is published on ICCR's public scheme or terms pages",
+          "fully_funded is set to false because ICCR's public pages do not confirm tuition coverage for this specific scheme, even though the record is a funded government scholarship",
+          "Travel and living-cost coverage not confirmed on any official page read and therefore left null",
+          "A search snippet indicated Bangladeshi applicants must first register on the Suborno Jayanti Portal (sjsdhaka.gov.in) before the A2A portal; I did not open that page, so this step is recorded as unverified rather than asserted"
+        ],
+        "source_citations": [
+          "https://a2ascholarships.iccr.gov.in",
+          "https://a2ascholarships.iccr.gov.in/home/getAllSchemeList",
+          "https://a2ascholarships.iccr.gov.in/home/page/about-us",
+          "https://a2ascholarships.iccr.gov.in/home/page/terms-conditions"
+        ],
+        "researched_by": "w1_01a"
+      },
+      "logo_override": {
+        "url": "https://a2ascholarships.iccr.gov.in/assets/site/main/images/logos/iccr-logo.png",
+        "page_url": "https://a2ascholarships.iccr.gov.in/home/getAllSchemeList",
+        "official_host": true,
+        "alt_text": "Indian Council for Cultural Relations (ICCR)",
+        "validation_result": "verified",
+        "validation_detail": "png 48339+B, probed HTTP 200 with content-type image/png; element screenshot of the logo as rendered in ICCR's own page header confirmed a dark navy circular ICCR emblem on a light background, not white-on-transparent",
+        "image_kind": "official_logo",
+        "image_format": "png",
+        "verified_at": "2026-10-04T00:00:00+00:00",
+        "host_evidence": "same_registrable_domain",
+        "_award": "Suborno Jayanti Scholarship Scheme (ICCR)"
+      },
+      "research_notes": {
+        "logo": "Scanned the ICCR A2A portal's own markup across the root page, the scholarship schemes list and the About Us page for logo assets. Found /assets/site/main/images/logos/iccr-logo.png (HTTP 200, image/png, 48339 B) plus mea-logo.png (11163 B, Ministry of External Affairs mark) and logos/national-emblem-india.png (148272 B, national emblem) — both of those belong to other bodies, and the national emblem is a state emblem rather than ICCR's mark, so all three of those alternatives were rejected. Probed the two remaining candidates logos/logo.png (200, png, 19471 B) and logos/_logo.jpg (200, jpeg, 25051 B) but could not confirm either is the ICCR mark from a rendered view, so the header emblem iccr-logo.png is used.",
+        "unverified": [
+          "Funding amount, currency and component breakdown — not published on ICCR's scheme, About Us or Terms pages",
+          "The next cycle's registration dates",
+          "Any seat count for the Suborno Jayanti scheme",
+          "The requirement to register on the Suborno Jayanti Portal (sjsdhaka.gov.in) before the A2A portal — seen only in a search snippet, page not opened"
+        ],
+        "substitution": null,
+        "official_pages_read": [
+          "https://a2ascholarships.iccr.gov.in",
+          "https://a2ascholarships.iccr.gov.in/home/getAllSchemeList",
+          "https://a2ascholarships.iccr.gov.in/home/page/about-us",
+          "https://a2ascholarships.iccr.gov.in/home/page/terms-conditions"
+        ],
+        "degree_level_confirmed": "ICCR's scheme list states for Suborno Jayanti Scholarship Scheme [A1218]: \"The Government of India through ICCR is providing scholarship at the level of UG/PG/Ph.D in Indian Universities for Bangladesh nationals.\"",
+        "url_observed": "The stored official_source_url https://a2ascholarships.iccr.gov.in is live (HTTP 200) and was not changed. The specific official pages used are the scheme catalogue at /home/getAllSchemeList and the About Us page at /home/page/about-us.",
+        "contradictions": [
+          "Stored status was 'closed'; the record is set to 'upcoming' because the scheme remains in ICCR's active list as A1218 and recurs annually, while the portal banner confirms only the current cycle's registration is closed",
+          "Stored deadline_date 2026-04-22 with precision 'exact' is a past date for a cycle now closed; corrected to null with precision 'recurring' because ICCR publishes no forward calendar date",
+          "Stored program_type asserted '500 seats for Bangladesh'; ICCR's scheme page publishes no seat figure — removed rather than repeated",
+          "Stored image_url was a header banner photo (official_banner), not ICCR's mark — replaced with ICCR's own emblem"
+        ],
+        "skeleton": false
+      }
+    },
+    {
+      "target_id": 3,
+      "outcome": "refreshed",
+      "confirm": true,
+      "confirmation_evidence": "DAAD's main site www.daad.de returned HTTP 503 'Wartungsarbeiten / Maintenance' on every attempt on 2026-10-04, but DAAD's own official scholarship database at www2.daad.de is live (HTTP 200, title 'Scholarship Database - DAAD - Deutscher Akademischer Austauschdienst'). Read the live programme page 'Study Scholarships - Master Studies for All Academic Disciplines' (detail=50026200), which states \"Scholarship payments of 992 euros a month\" and \"Duration of the funding ... between 10 and 24 months\".",
+      "new_scholarship": {
+        "name": "DAAD Scholarships (Deutscher Akademischer Austauschdienst Scholarship Database)",
+        "legacy_titles": [
+          "DAAD Scholarship"
+        ],
+        "country": "Germany",
+        "degree_levels": "Bachelor's, Master's, PhD",
+        "funding_type": "Stipend",
+        "official_source": "Deutscher Akademischer Austauschdienst (DAAD)",
+        "official_source_url": "https://www.daad.de",
+        "status": "open",
+        "is_verified": true,
+        "last_verified_date": "2026-10-04",
+        "description": "DAAD administers a family of scholarship programmes for international students and researchers funded largely by the German Federal Foreign Office, listed in its official Scholarship Database at www2.daad.de. The flagship Study Scholarship for postgraduate study states scholarship payments of 992 euros a month, payments towards health, accident and personal liability insurance, a travel allowance, and an annual study allowance of EUR 460. Funding is awarded for the standard period of study of the chosen programme, up to a maximum of 24 months, and must begin in 2027. Each individual programme in the database sets its own eligibility, deadline and award value, and application deadlines are updated annually in the second quarter.",
+        "region": "Europe",
+        "duration": "Between 10 and 24 months depending on the chosen programme; the standard period of study of the programme applies, up to a maximum of 24 months",
+        "deadline": "Application deadlines are updated annually in the second quarter. In most cases, they are in the same period as the previous year.",
+        "deadline_date": null,
+        "deadline_precision": "varies",
+        "application_period": "Each programme opens its own window; for many study programmes applications run from 1 June to the stated deadline, and the DAAD portal is only accessible while the current application period is running",
+        "eligibility_summary": "For the flagship Study Scholarship, DAAD states 'You can apply if you have completed your first degree (e.g. Bachelor's or Diplom) at the latest by the time the funding period begins.' Individual programmes in the database add country, discipline and status restrictions.",
+        "eligibility": [
+          "Completed a first degree (e.g. Bachelor's or Diplom) by the time the funding period begins, for the Study Scholarship programme",
+          "Meet any country restriction attached to the individual DAAD programme",
+          "Meet the academic and subject requirements of the individual programme",
+          "Not resident in Germany for longer than 15 months at the application deadline for study and research programmes"
+        ],
+        "coverage": [
+          "Monthly scholarship payments",
+          "Payments towards health, accident and personal liability insurance cover",
+          "Travel allowance on application",
+          "Annual study allowance",
+          "Online language course fees and, where funded, a German language course before the stay",
+          "Green Mobility Top Up or reimbursement of carbon offset payments for air travel"
+        ],
+        "benefits": [
+          "EUR 992 per month for the flagship Study Scholarship programme",
+          "Payments towards health, accident and personal liability insurance",
+          "Travel allowance (upon application only)",
+          "Annual study allowance of EUR 460",
+          "Monthly rent subsidy available on application in certain circumstances",
+          "Monthly allowance for accompanying family members available on application",
+          "Disability or chronic illness subsidy on application, reviewed case by case",
+          "Green Mobility Top Up for climate-friendly travel or air travel carbon offset reimbursement",
+          "Payment of online language course fees and possible funding of a 2, 4 or 6 month German language course"
+        ],
+        "funding_amount": 992,
+        "funding_currency": "EUR",
+        "funding_period": "per month",
+        "catalogue_url": "https://www2.daad.de/deutschland/stipendium/datenbank/en/21148-scholarship-database/",
+        "official_updates_url": "https://www2.daad.de/deutschland/stipendium/datenbank/en/21148-scholarship-database/",
+        "english_requirement": "Not stated as a formal requirement; DAAD offers German language course funding, implying English-language study is available at most host institutions",
+        "requirements": [
+          "Completed first degree by the start of the funding period",
+          "Letter of admission to the study programme at the host university in Germany, or submission before the funding period begins if not yet received",
+          "Proof that credits gained in Germany will be recognised by the home university where studying abroad as part of a second degree",
+          "Satisfaction of any country or discipline restrictions on the individual programme"
+        ],
+        "required_documents": [
+          "Full curriculum vitae in tabular form (max. 3 pages)",
+          "Statement about academic and personal reasons for the planned study project in Germany (letter of motivation; 1-3 pages)",
+          "Letter of admission to the study programme at the host university in Germany",
+          "Form 'Information about your preferred master programmes' for a second or Master's programme in Germany",
+          "Proof of recognition of credits by the home university where relevant",
+          "Current overview of grades / transcript of records with individual grades",
+          "University degree certificate indicating final grades",
+          "German or English translations of any documents submitted in a national language"
+        ],
+        "application_method": [
+          "Register on the DAAD portal",
+          "Complete the online application in full",
+          "Upload the listed application documents to the DAAD portal in the 'Attachments' section",
+          "Submit all required documents by the programme's application deadline; the application is only valid if complete",
+          "Note that the DAAD portal closes at 24:00 CET/CEST on the last application day"
+        ],
+        "selection_notes": "Applications are assessed by DAAD selection committees; for the flagship study scholarship academic achievements are assessed after the first year to confirm continuation of funding.",
+        "program_type": "Government-funded scholarship database administered by a national exchange organisation",
+        "best_fit": "International students and researchers seeking DAAD-funded postgraduate or doctoral study or research in Germany, who can identify a specific programme in the DAAD Scholarship Database.",
+        "notes": "The umbrella database covers programmes for undergraduates, graduates, doctoral candidates, postdoctoral researchers and faculty. Award values differ between programmes, so the EUR 992 per month figure recorded here is the value of the flagship Study Scholarship for Master's-level study and must not be applied to doctoral or postdoctoral research grants."
+      },
+      "programme_detail_official": {
+        "official_source_urls": [
+          "https://www2.daad.de/deutschland/stipendium/datenbank/en/21148-scholarship-database/",
+          "https://www2.daad.de/deutschland/stipendium/datenbank/en/21148-scholarship-database/?detail=50026200"
+        ],
+        "application_link": "https://www2.daad.de/deutschland/stipendium/datenbank/en/21148-scholarship-database/",
+        "official_updates_url": "https://www2.daad.de/deutschland/stipendium/datenbank/en/21148-scholarship-database/",
+        "catalogue_url": "https://www2.daad.de/deutschland/stipendium/datenbank/en/21148-scholarship-database/",
+        "application_cycle": "Annual; DAAD states application deadlines are updated annually in the second quarter and are usually in the same period as the previous year. Funding for the flagship study programme must begin in 2027, normally from 1 October 2027.",
+        "deadline_central": null,
+        "deadline_central_display": "Application deadlines are updated annually in the second quarter. In most cases, they are in the same period as the previous year.",
+        "deadline_central_timezone": "Europe/Berlin",
+        "deadline_note": "There is no single central deadline. Each programme in the DAAD Scholarship Database publishes its own date, and the DAAD portal for a given programme is only accessible while that programme's application period is running. The live HTML render of the flagship programme page showed the deadline heading with the stated quarterly-update rule but the date value itself did not render in the page text I could read, so no exact date is recorded.",
+        "status": "OPEN",
+        "status_note": "The Scholarship Database is live and DAAD's current application periods are running as of 2026-10-04. Note that the main www.daad.de website was returning HTTP 503 maintenance pages throughout 2026-10-04, while the www2.daad.de database remained fully available.",
+        "funding_amount": 992,
+        "funding_currency": "EUR",
+        "funding_period": "per month",
+        "funding_duration": "10 to 24 months depending on the programme; funding is awarded for the standard period of study of the chosen programme up to a maximum of 24 months",
+        "tuition_coverage": null,
+        "tuition_coverage_note": "The programme page I read does not state that DAAD pays tuition or course fees for the degree programme. It lists the monthly scholarship payment, insurance contributions, travel allowance, annual study allowance and language course fees only. Tuition coverage is therefore not confirmed and must not be claimed.",
+        "living_cost_coverage": true,
+        "travel_coverage": true,
+        "fully_funded": false,
+        "funding_label": "Monthly scholarship payment (EUR 992 per month for the flagship Master's-level Study Scholarship) plus insurance contributions, travel allowance on application and an annual study allowance of EUR 460; this is a maintenance scholarship, not a confirmed full tuition waiver",
+        "benefits": [
+          "EUR 992 per month (flagship Study Scholarship)",
+          "Payments towards health, accident and personal liability insurance cover",
+          "Travel allowance (upon application only)",
+          "Annual study allowance of EUR 460",
+          "Monthly rent subsidy on application in certain circumstances",
+          "Monthly allowance for accompanying family members",
+          "Disability or chronic illness subsidy on application",
+          "Green Mobility Top Up or air travel carbon offset reimbursement",
+          "Online language course fees paid and possible German language course funding"
+        ],
+        "eligibility": [
+          "Completed a first degree (e.g. Bachelor's or Diplom) at the latest by the time the funding period begins",
+          "Country eligibility determined by the individual DAAD programme",
+          "Academic and subject requirements of the individual programme",
+          "Not resident in Germany for more than 15 months at the application deadline for study and research programmes"
+        ],
+        "citizenship_residency": "Varies by individual DAAD programme; some programmes are restricted to specific countries and others are open worldwide",
+        "international_eligibility": "The database is explicitly for international students and researchers applying from outside Germany; eligibility is set programme by programme through the database's country filter.",
+        "degree_levels": [
+          "Bachelor's",
+          "Master's",
+          "PhD",
+          "Postdoctoral research"
+        ],
+        "study_mode": "Full-time on-campus postgraduate study at a state or state-recognised university in Germany for the flagship study scholarship; research programmes are project based",
+        "research_requirement": "Not required for the study scholarship; the database separately lists doctoral and postdoctoral research grant programmes",
+        "subject_or_agency_requirement": "Some programmes are discipline-specific; the database separates Architecture, Fine Art/Design/Film, Performing Art and Music into their own programmes with different terms",
+        "application_method": "Online through the DAAD portal: register, complete the online application in full, upload the listed documents in the 'Attachments' section, and submit by the programme deadline",
+        "application_route": "DAAD Scholarship Database at www2.daad.de, then the DAAD application portal; the portal is only available during the current application period and closes at 24:00 CET/CEST on the last application day",
+        "requirements": [
+          "First degree completed by the start of the funding period",
+          "Letter of admission to the German host university study programme, or before funding begins if not yet issued",
+          "Form 'Information about your preferred master programmes' where a second or Master's programme in Germany is planned",
+          "Proof that credits gained in Germany will be recognised by the home university where relevant",
+          "All required documents uploaded by the deadline, otherwise the application is invalid"
+        ],
+        "documents": [
+          "Full curriculum vitae in tabular form (max. 3 pages)",
+          "Letter of motivation (1-3 pages)",
+          "Letter of admission to the host university study programme in Germany",
+          "Form 'Information about your preferred master programmes'",
+          "Proof of credit recognition by the home university where relevant",
+          "Transcript of records with individual grades",
+          "University degree certificate with final grades",
+          "German or English translations of documents submitted in a national language",
+          "Optional: certificates of employment and proof of extracurricular engagement"
+        ],
+        "english_requirement": null,
+        "english_requirement_note": "DAAD does not state a formal English requirement on the programme page; it funds online language courses and German language courses, and German research grants in some fields, so the working language depends on the programme and host institution.",
+        "selection_criteria": [
+          "Academic qualifications and fit with the chosen programme",
+          "Adequacy of the proposed study project in Germany",
+          "Country and discipline eligibility of the individual programme",
+          "For continuation after year one, assessment of academic achievements"
+        ],
+        "selection_weighting": null,
+        "duration": "10 to 24 months, matching the standard period of study of the chosen programme up to a maximum of 24 months; funding must begin in 2027",
+        "award_holder_conditions": [
+          "Award is for the standard period of study of the chosen programme; academic achievements are assessed after the first year before funding continues",
+          "Applications are only valid if all required documents are submitted by the deadline",
+          "Residence in Germany longer than 15 months at the application deadline makes the application ineligible for study and research programmes",
+          "Funding is not possible for a Master's programme that has already begun in Germany"
+        ],
+        "supplements_or_initiatives": [
+          "Green Mobility Top Up supporting climate-friendly travel",
+          "German language course funding of 2, 4 or 6 months before the study visit",
+          "Online language course fees paid on receipt of the Scholarship Award Letter"
+        ],
+        "official_contacts": {
+          "general": "DAAD Scholarship Database — https://www2.daad.de/deutschland/stipendium/datenbank/en/21148-scholarship-database/ (each programme page has its own 'Contact and consulting' section)",
+          "email": "webmaster@daad.de (published on the www.daad.de maintenance notice; the DAAD portal lists a named programme contact on each programme page)"
+        },
+        "description": "DAAD's Scholarship Database lists the German Academic Exchange Service's scholarship programmes for international students and researchers, funded largely by the German Federal Foreign Office. The flagship Study Scholarship for postgraduate study funds a whole Master's programme at a state or state-recognised German university, or one study year in Germany as part of a second or Master's degree completed at the home university. It pays 992 euros a month, contributes to health, accident and personal liability insurance, provides a travel allowance on application and an annual study allowance of EUR 460, and can support rent, accompanying family members, disability-related costs and climate-friendly travel. Funding is awarded for the standard period of study up to 24 months and must begin in 2027. Applications are made through the DAAD portal, which is only accessible during each programme's application period.",
+        "program_type": "Government-funded scholarship database administered by a national exchange organisation",
+        "region": "Europe",
+        "coverage": "Monthly stipend, insurance contributions, travel allowance, annual study allowance and language course support; no tuition coverage is stated",
+        "last_verified_date": "2026-10-04"
+      },
+      "programme_detail_applicant_utility": {
+        "application_readiness_checklist": [
+          "Identify the exact DAAD programme in the Scholarship Database before preparing anything, because eligibility, deadline and award value are programme-specific",
+          "Check the programme's country filter against your nationality before investing time",
+          "Register on the DAAD portal and complete the online application in full",
+          "Prepare a tabular CV of no more than 3 pages and a 1-3 page letter of motivation",
+          "Secure a letter of admission from the German host university, or be ready to supply it before the funding period begins",
+          "Have German or English translations ready for any document submitted in your national language"
+        ],
+        "common_rejection_risks": [
+          "Applying through the umbrella DAAD name without checking the individual programme's own country and discipline restrictions",
+          "Missing the programme deadline, because the DAAD portal for a programme disappears once its application period has expired",
+          "Submitting an incomplete application, which DAAD states is only valid if all required documents are uploaded by the deadline",
+          "Having resided in Germany for more than 15 months at the application deadline",
+          "Applying for funding of a Master's programme that has already begun in Germany, which DAAD says cannot be funded",
+          "Missing the late submission of the degree certificate, which may not exist yet at the time of application"
+        ],
+        "estimated_uncovered_costs": [
+          "Living costs beyond the monthly scholarship, rent subsidy and annual study allowance, which are application-based and not automatic",
+          "Any tuition or course fees for the degree programme itself, which the page read does not state DAAD pays",
+          "Costs associated with accompanying family members beyond the application-based monthly allowance",
+          "Travel costs beyond the travel allowance obtainable on application"
+        ],
+        "document_audit": [
+          "Tabular curriculum vitae, maximum 3 pages",
+          "Letter of motivation on academic and personal reasons for the study project in Germany, 1-3 pages",
+          "Letter of admission to the German host university study programme",
+          "Form 'Information about your preferred master programmes' if planning a second or Master's programme in Germany",
+          "Proof that credits gained in Germany will be recognised by the home university where relevant",
+          "Transcript of records with individual grades",
+          "University degree certificate with final grades",
+          "German or English translations of all documents not in those languages",
+          "Optional supporting documents such as employment certificates and proof of extracurricular engagement"
+        ],
+        "alerts": [
+          {
+            "trigger": "www.daad.de maintenance page",
+            "message": "On 2026-10-04 the main www.daad.de website returned HTTP 503 'Wartungsarbeiten / Maintenance' for the root and all deep pages. Use www2.daad.de, which remained fully available, and retry www.daad.de later."
+          },
+          {
+            "trigger": "Deadlines move in Q2",
+            "message": "DAAD states application deadlines are updated annually in the second quarter, so do not rely on a date copied from an earlier year."
+          },
+          {
+            "trigger": "Portal availability",
+            "message": "The DAAD portal for a given programme is only accessible while that programme's application period is running, and closes at 24:00 CET/CEST on the last application day."
+          },
+          {
+            "trigger": "Award value is programme-specific",
+            "message": "EUR 992 per month applies to the flagship Master's-level Study Scholarship. Other DAAD programmes, including doctoral and postdoctoral research grants, have different values."
+          }
+        ],
+        "submission_workflow": [
+          "Search the DAAD Scholarship Database and fix the exact programme",
+          "Read the programme's own Objective, Application Requirements and Application Procedure tabs",
+          "Register on the DAAD portal",
+          "Complete the online application and upload every listed document to the Attachments section",
+          "Submit before the programme deadline, leaving time for the portal to process at 24:00 CET/CEST",
+          "Upload the admission letter and degree certificate later if they are issued after the deadline but before the funding period begins"
+        ]
+      },
+      "programme_detail_verification": {
+        "cycle_verified": "2027 funding year applications, verified 2026-10-04 on DAAD's live Scholarship Database",
+        "verification_confidence": 0.82,
+        "official_fields_confirmed": [
+          "name",
+          "official_source",
+          "degree_levels",
+          "funding_amount",
+          "funding_currency",
+          "funding_period",
+          "duration",
+          "eligibility",
+          "required_documents",
+          "application_method",
+          "catalogue_url",
+          "deadline",
+          "deadline_precision",
+          "benefits"
+        ],
+        "institution_check_required": [
+          "Whether the individual DAAD programme chosen is open for the current cycle and accepts the applicant's nationality",
+          "The individual programme's own exact deadline, which varies per programme",
+          "Whether the host university charges any fees the scholarship would not cover",
+          "The award value of any doctoral or postdoctoral programme, which differs from the study scholarship rate"
+        ],
+        "unverified_or_removed_claims": [
+          "No exact deadline_date is recorded: the live HTML page rendered the deadline heading and the quarterly-update rule but not the date value, so deadline_date stays null and precision is set to 'varies' because each programme has its own date",
+          "Tuition coverage is set to null and fully_funded to false because the official page read lists only the monthly payment, insurance, travel allowance, study allowance and language course fees, and makes no tuition statement",
+          "Stored funding_type 'Fully Funded' is corrected to 'Stipend' for the same reason: no official statement of tuition or full-cost coverage was found",
+          "Stored deadline_display claimed Master's deadlines '~30 Oct' and PhD deadlines of 3 Sept or 21 Oct; DAAD's own wording is only that deadlines are updated annually in the second quarter and are usually in the same period as the previous year, so the specific stored dates are not confirmed and are not repeated",
+          "Award values for DAAD doctoral and postdoctoral research grants differ from EUR 992 per month and were not verified on a live page, so they are not asserted",
+          "www.daad.de itself could not be read (HTTP 503 maintenance on 2026-10-04), so the site's general scholarship landing page, guidelines pages and contact details were not verified live"
+        ],
+        "source_citations": [
+          "https://www2.daad.de/deutschland/stipendium/datenbank/en/21148-scholarship-database/",
+          "https://www2.daad.de/deutschland/stipendium/datenbank/en/21148-scholarship-database/?detail=50026200",
+          "https://www.daad.de/assets/img/logo.svg"
+        ],
+        "researched_by": "w1_01a"
+      },
+      "logo_override": {
+        "url": "https://www2.daad.de/dist/logo-dark-DQgPj0vI.svg",
+        "page_url": "https://www2.daad.de/deutschland/stipendium/datenbank/en/21148-scholarship-database/",
+        "official_host": true,
+        "alt_text": "Deutscher Akademischer Austauschdienst (DAAD)",
+        "validation_result": "verified",
+        "validation_detail": "svg 35539+B, probed HTTP 200 with content-type image/svg+xml; rendered the asset on a white card and confirmed the blue DAAD wordmark is dark-on-light and fully visible, so the 'light' variant (logo-light-1I6xeyd5.svg, white wordmark) was rejected",
+        "image_kind": "official_logo",
+        "image_format": "svg",
+        "verified_at": "2026-10-04T00:00:00+00:00",
+        "host_evidence": "same_registrable_domain",
+        "_award": "DAAD Scholarships (Deutscher Akademischer Austauschdienst Scholarship Database)"
+      },
+      "research_notes": {
+        "logo": "DAAD's www.daad.de was in maintenance, so the logo was taken from the live www2.daad.de Scholarship Database markup, which lists /dist/logo-dark-DQgPj0vI.svg and /dist/logo-light-1I6xeyd5.svg in its own header. Both probed HTTP 200 image/svg+xml (35539 B dark, 34715 B light). Rendered the dark variant on a white background and confirmed the blue DAAD wordmark is visible; the light variant is the white-on-transparent form and was rejected. As a cross-check, https://www.daad.de/assets/img/logo.svg also probed HTTP 200 image/svg+xml 42546 B and rendered as DAAD's blue circular emblem with strapline on white, so both hosts serve the same body's mark.",
+        "unverified": [
+          "Any exact application deadline date, which the live HTML render did not expose",
+          "Award values for DAAD doctoral and postdoctoral research grant programmes",
+          "Whether any specific DAAD programme pays tuition or course fees",
+          "Content of the www.daad.de main site, which returned HTTP 503 maintenance throughout 2026-10-04"
+        ],
+        "substitution": null,
+        "official_pages_read": [
+          "https://www2.daad.de/deutschland/stipendium/datenbank/en/21148-scholarship-database/",
+          "https://www2.daad.de/deutschland/stipendium/datenbank/en/21148-scholarship-database/?detail=50026200",
+          "https://www.daad.de/assets/img/logo.svg"
+        ],
+        "degree_level_confirmed": "The live programme page 'Study Scholarships - Master Studies for All Academic Disciplines' states 'You can apply if you have completed your first degree (e.g. Bachelor's or Diplom) at the latest by the time the funding period begins' and funds 'a whole postgraduate or Master's degree programme completed at a state or state-recognised university in Germany'. The database's own programme filters list Undergraduates, Graduates, Doctoral candidates/PhD students and Postdoctoral researchers.",
+        "url_observed": "The stored official_source_url https://www.daad.de was unreachable on 2026-10-04 (HTTP 503 maintenance, redirected to /de/) and was NOT changed. DAAD's own live Scholarship Database, which served all content and the logo used here, is at https://www2.daad.de/deutschland/stipendium/datenbank/en/21148-scholarship-database/. Anyone refreshing this row should know www2.daad.de is the working host while www.daad.de is in maintenance.",
+        "contradictions": [
+          "Stored funding_type 'Fully Funded' is wrong as stated: the official page publishes a monthly stipend of EUR 992 plus allowances and makes no tuition-coverage claim, so funding_type is corrected to 'Stipend' and fully_funded set to false",
+          "Stored funding_amount/currency were null; the official page states 'Scholarship payments of 992 euros a month', so EUR 992 per month is recorded, with an explicit note that this is the flagship study scholarship rate and not the doctoral or postdoctoral rate",
+          "Stored deadline_display asserted specific dates ('Master's typically ~30 Oct; PhD 3 Sept or 21 Oct'); DAAD's official wording is that deadlines are updated annually in the second quarter and are usually in the same period as the previous year, with a different date per programme — the stored specifics are not corroborated and deadline_precision is corrected from 'unknown' to 'varies'",
+          "Stored image_url was a campus photo banner, not DAAD's logo — replaced with DAAD's own dark wordmark SVG from www2.daad.de",
+          "Stored verification_status 'needs_review' is now supportable: the scholarship database is live and serving current 2027-cycle content"
+        ],
+        "skeleton": false
+      }
+    },
+    {
+      "target_id": 4,
+      "outcome": "refreshed",
+      "confirm": true,
+      "confirmation_evidence": "Read NIIED's official Study in Korea scholarship page live at https://www.studyinkorea.go.kr/en/plan/scholarship.do (HTTP 200), which states \"Selection Quota: Approximately 280 undergraduate students (including associate degree students) + 1,600 graduate students\" and \"Scholarship Benefits: airfare, Korean language training fee, tuition fee and monthly allowance\". It also states \"More than 80 GKS universities\" have been established across the country, and lists the Embassy Track and University Track application routes.",
+      "new_scholarship": {
+        "name": "Global Korea Scholarship (GKS)",
+        "legacy_titles": [
+          "Global Korea Scholarship (GKS)"
+        ],
+        "country": "South Korea",
+        "degree_levels": "Associate, Bachelor's, Master's, PhD",
+        "funding_type": "Fully Funded",
+        "official_source": "National Institute for International Education (NIIED), Korean Government",
+        "official_source_url": "https://www.studyinkorea.go.kr",
+        "status": "open",
+        "is_verified": true,
+        "last_verified_date": "2026-10-04",
+        "description": "The Global Korea Scholarship is South Korea's representative government scholarship programme, designed to attract talented international students by supporting them in pursuing degrees and broader study in Korea. NIIED publishes a selection quota of approximately 280 undergraduate students including associate degree students, plus 1,600 graduate students. Awarded scholarship comprises one year of Korean language training followed by an associate degree (2-3 years), a bachelor's degree (4-6 years), a master's degree (2 years) or a doctoral degree (3 years). Benefits include airfare, Korean language training fees, tuition fees and a monthly stipend. Applications are made either through a Korean embassy or consulate (Embassy Track) or directly to a designated university (University Track).",
+        "region": "Asia",
+        "duration": "One year of Korean language training followed by the degree programme: associate degree 2-3 years, bachelor's degree 4-6 years, master's degree 2 years, or doctoral degree 3 years",
+        "deadline": "Selection schedules vary by programme and track; for the Embassy Track the official selection schedule runs Announcement, then application submission, then review, then final results, with the cycle repeated across the year. Applicants must follow the specific announcement for their programme.",
+        "deadline_date": null,
+        "deadline_precision": "varies",
+        "application_period": "Embassy Track: applications are submitted online through the Study in Korea website or to the Korean embassy or consulate in the applicant's country. University Track: the application is submitted directly to a GKS-designated university.",
+        "eligibility_summary": "The official selection schedule lists 'Under 40 years of age', 'Master's Degree Applicants: Graduated (or expected to graduate) from a bachelor's program' and 'Doctoral Degree Applicants: Graduated (or expected to graduate) from a master's program'. NIIED notes that selection schedules vary by programme and directs applicants to the specific announcement.",
+        "eligibility": [
+          "Under 40 years of age",
+          "Master's degree applicants: graduated or expected to graduate from a bachelor's programme",
+          "Doctoral degree applicants: graduated or expected to graduate from a master's programme",
+          "Meet the track-specific route, either through a Korean embassy or consulate or directly to a designated university",
+          "Satisfy the nationality, academic and language requirements of the individual GKS programme announcement"
+        ],
+        "coverage": [
+          "Tuition fees",
+          "Monthly stipend (monthly allowance)",
+          "Korean language training fees",
+          "Airfare",
+          "One year of Korean language training"
+        ],
+        "benefits": [
+          "Full tuition fees",
+          "Monthly stipend / allowance",
+          "Round-trip airfare",
+          "Korean language training fees",
+          "One year of Korean language training before the degree programme"
+        ],
+        "catalogue_url": "https://www.studyinkorea.go.kr/en/plan/scholarship.do",
+        "official_updates_url": "https://www.studyinkorea.go.kr/en/plan/scholarship.do",
+        "english_requirement": "NIIED indicates that some master's programmes are taught in English only; language requirements are set per programme and are stated in the individual announcement",
+        "requirements": [
+          "Meet the age limit of under 40",
+          "Hold or be expecting the qualifying prior degree for the programme level applied for",
+          "Apply through the correct track: Embassy Track or University Track",
+          "Follow the specific application guidelines and announcement for the chosen programme"
+        ],
+        "required_documents": [
+          "Not enumerated centrally by NIIED; the required documents are listed in each programme's application announcement and guidelines"
+        ],
+        "application_method": [
+          "Embassy Track: apply online through the Study in Korea website (www.studyinkorea.go.kr) or through the Korean embassy or consulate in your country",
+          "University Track: submit the application directly to a GKS-designated university",
+          "Research programmes: submit the application to a GKS-designated university",
+          "Read the application guidelines and announcements posted on the GKS notice board"
+        ],
+        "selection_notes": "The official selection process is Scholarship Announcement, then Application Submission, then Screening, then Final Selection. NIIED states that selection schedules vary by programme and that applicants should refer to the announcements on the Korea Study Abroad Comprehensive System. Some programmes also involve screening and an oral interview.",
+        "program_type": "Government scholarship (Korean Government, administered by NIIED)",
+        "best_fit": "International students under 40 who want to study in Korea and can meet the track-specific route and the individual programme's academic and language requirements.",
+        "notes": "The Embassy Track quota on the official page covers 88 universities for the General track plus 7 for R-GKS, and the University Track covers 61 UIC universities plus 30 offering associate degree programmes, for 156 universities in total across the tracks.",
+        "funding_amount": null,
+        "funding_currency": null,
+        "funding_period": null
+      },
+      "programme_detail_official": {
+        "official_source_urls": [
+          "https://www.studyinkorea.go.kr/en/plan/scholarship.do"
+        ],
+        "application_link": "https://www.studyinkorea.go.kr/en/plan/scholarship.do",
+        "official_updates_url": "https://www.studyinkorea.go.kr/en/plan/scholarship.do",
+        "catalogue_url": "https://www.studyinkorea.go.kr/en/plan/scholarship.do",
+        "application_cycle": "Annual, with the cycle differing by programme and track. The official page publishes a four-stage selection schedule (Announcement, Application Submission, Review/Screening, Final Results) and states that selection schedules vary by programme.",
+        "deadline_central": null,
+        "deadline_central_display": "Selection schedules vary by program. Please refer to the announcements on the Korea Study Abroad Comprehensive System.",
+        "deadline_central_timezone": "Asia/Seoul",
+        "deadline_note": "There is no single central deadline. The official scholarship page states that selection schedules vary by programme and directs applicants to the programme-specific announcements, and the GKS notice board is published only in Korean at /ko/notice/scholarshipsList.do with no English equivalent (/en/notice/scholarshipsList.do returns HTTP 404). No exact date is therefore recorded.",
+        "status": "OPEN",
+        "status_note": "The GKS notice board was publishing 2027-cycle announcements as of late September 2026, and the official page shows Embassy Track application submission and review stages running across the September-December and February-June windows, so at least one 2027 track is currently in its application or screening phase on 2026-10-04.",
+        "funding_amount": null,
+        "funding_currency": null,
+        "funding_period": null,
+        "funding_duration": "One year of Korean language training plus the degree programme (associate 2-3 years, bachelor's 4-6 years, master's 2 years, doctoral 3 years)",
+        "tuition_coverage": true,
+        "tuition_coverage_note": "The official page lists 'tuition fee' among the scholarship benefits, so tuition is covered by the GKS award.",
+        "living_cost_coverage": true,
+        "travel_coverage": true,
+        "fully_funded": true,
+        "funding_label": "Fully funded: tuition fees, monthly stipend, Korean language training fees and airfare, plus one year of Korean language training before the degree programme",
+        "benefits": [
+          "Full tuition fees",
+          "Monthly stipend / allowance",
+          "Round-trip airfare",
+          "Korean language training fees",
+          "One year of Korean language training"
+        ],
+        "eligibility": [
+          "Under 40 years of age",
+          "Master's applicants: graduated or expected to graduate from a bachelor's programme",
+          "Doctoral applicants: graduated or expected to graduate from a master's programme",
+          "Apply through the Embassy Track or the University Track as specified for the programme",
+          "Research programmes require application to a GKS-designated university"
+        ],
+        "citizenship_residency": "Open to international applicants; the Embassy Track requires application through the Korean embassy or consulate in the applicant's country of residence",
+        "international_eligibility": "The programme is explicitly for international students; individual GKS programme announcements may set nationality and language conditions, and the official page flags that some master's programmes are taught in English only.",
+        "degree_levels": [
+          "Associate",
+          "Bachelor's",
+          "Master's",
+          "PhD"
+        ],
+        "study_mode": "On-campus degree study at a GKS-designated university, preceded by one year of Korean language training",
+        "research_requirement": "Applicable to doctoral degree applicants only; the doctoral track requires graduation from or expected graduation from a master's programme",
+        "subject_or_agency_requirement": "University-industry-cooperation (UIC) specialised science and engineering programmes and Associate Degree programmes are available only within the University Track and only for associate and bachelor's degree applicants",
+        "application_method": "Embassy Track: online application through the Study in Korea website or through the Korean embassy or consulate. University Track: submit the application directly to a GKS-designated university. Research programmes: submit to a GKS-designated university.",
+        "application_route": "Study in Korea (www.studyinkorea.go.kr) for the Embassy Track, or direct to a GKS-designated university for the University Track and research programmes",
+        "requirements": [
+          "Age under 40",
+          "Qualifying prior degree for the programme level",
+          "Correct application track for the chosen programme",
+          "Compliance with the application guidelines and announcement for the specific programme",
+          "Screening and, for some programmes, an oral interview"
+        ],
+        "documents": [
+          "NIIED does not publish a single central document list; documents are specified in each programme's application announcement and guidelines"
+        ],
+        "english_requirement": "The official page notes that some master's degree programmes are English only; otherwise language requirements are set per programme in the announcement",
+        "english_requirement_note": "Because the award includes one year of Korean language training, Korean ability is developed as part of the scholarship rather than required at application for most tracks, but individual programme announcements may set their own language conditions.",
+        "selection_criteria": [
+          "Screening of the application by NIIED or the designated university",
+          "For some programmes an oral interview",
+          "Track-specific assessment under the individual programme announcement"
+        ],
+        "selection_weighting": null,
+        "duration": "One year of Korean language training plus the degree programme: associate degree 2-3 years, bachelor's degree 4-6 years, master's degree 2 years, doctoral degree 3 years",
+        "award_holder_conditions": [
+          "Begin with the one year of Korean language training before the degree programme",
+          "Enrol at a GKS-designated university",
+          "Follow the conditions in the individual programme announcement and the study agreement issued on award"
+        ],
+        "supplements_or_initiatives": [
+          "University-industry-cooperation (UIC) specialised programmes in science and engineering through industry-university collaboration",
+          "Associate Degree programmes operated by universities",
+          "R-GKS track for eligible developing-country applicants"
+        ],
+        "official_contacts": {
+          "general": "GKS Centre, National Institute for International Education (NIIED) — listed on the official scholarship page as gksniied@korea.kr; system issues: 02-3668-1460 / 02-3668-1374",
+          "email": "gksniied@korea.kr"
+        },
+        "description": "The Global Korea Scholarship (GKS) is South Korea's representative scholarship programme, created to attract talented international students and help them pursue higher education in Korea. NIIED publishes a selection quota of approximately 280 undergraduate students including associate degree students plus 1,600 graduate students, across more than 80 GKS-designated universities. The award comprises one year of Korean language training followed by an associate degree (2-3 years), a bachelor's degree (4-6 years), a master's degree (2 years) or a doctoral degree (3 years). Benefits listed by NIIED are airfare, Korean language training fees, tuition fees and a monthly stipend. Applicants apply either through the Embassy Track, via the Korean embassy or consulate or online through the Study in Korea website, or through the University Track directly to a designated university. The selection process runs announcement, application submission, screening and final selection, with schedules varying by programme.",
+        "program_type": "Government scholarship (Korean Government, administered by NIIED)",
+        "region": "Asia",
+        "coverage": "Tuition fees, monthly stipend, Korean language training fees and airfare",
+        "last_verified_date": "2026-10-04"
+      },
+      "programme_detail_applicant_utility": {
+        "application_readiness_checklist": [
+          "Confirm you are under 40 and hold, or will hold, the qualifying degree for the level you are applying to",
+          "Choose your track: Embassy Track through a Korean embassy or consulate or the online Study in Korea route, or University Track direct to a designated university",
+          "Pick a GKS-designated university from the programme list, noting that University Track UIC and associate degree places are restricted to those tracks",
+          "Read the specific programme announcement and application guidelines for your cycle, because schedules and quotas vary by programme",
+          "Budget for the year of Korean language training, which is part of the award and comes before the degree programme"
+        ],
+        "common_rejection_risks": [
+          "Applying through the wrong track for the chosen programme",
+          "Missing the programme-specific announcement date, since NIIED states selection schedules vary by programme",
+          "Not meeting the under-40 age requirement",
+          "Applying for a University Track UIC or associate degree place at a level or through a track that is not eligible, as UIC specialisations are available only for associate and bachelor's degree programmes",
+          "Overlooking that the award begins with a year of Korean language training before the degree"
+        ],
+        "estimated_uncovered_costs": [
+          "Costs not named in NIIED's published benefit list, such as personal expenses beyond the monthly allowance",
+          "Any university-specific charges not covered by the GKS tuition fee benefit",
+          "Costs associated with dependants, which are not mentioned in the published benefits"
+        ],
+        "document_audit": [
+          "Passport and evidence of nationality",
+          "Academic transcripts and degree certificate or proof of expected graduation for the prior degree",
+          "Language certificates required by the chosen programme",
+          "Study and research proposal where the programme requires one",
+          "Recommendation letters and personal statement as specified in the programme announcement",
+          "All documents listed in the individual programme's application guidelines"
+        ],
+        "alerts": [
+          {
+            "trigger": "No English GKS notice board",
+            "message": "The GKS announcements are published only in Korean at /ko/notice/scholarshipsList.do; the English equivalent /en/notice/scholarshipsList.do returns HTTP 404. You will need the Korean announcement or the university's own guidance for exact dates."
+          },
+          {
+            "trigger": "Schedules vary by programme",
+            "message": "NIIED states selection schedules vary by program and that applicants should refer to the announcements, so there is no single deadline you can rely on."
+          },
+          {
+            "trigger": "Two different cycles",
+            "message": "The official schedule page shows different application and result windows for different tracks, so confirm which cycle your programme is recruiting for before preparing documents."
+          },
+          {
+            "trigger": "Contact for guidance",
+            "message": "NIIED lists gksniied@korea.kr as the contact for announcements on the scholarship page."
+          }
+        ],
+        "submission_workflow": [
+          "Identify the specific GKS programme, track and host university",
+          "Read that programme's announcement and application guidelines in full",
+          "Prepare the documents listed in the guidelines",
+          "Submit through the correct route: online via Study in Korea or the Korean embassy or consulate for the Embassy Track, or directly to the university for the University Track",
+          "Track the screening stage and respond to any request for an interview or further documents",
+          "Await the final selection result and the study agreement before the Korean language training year"
+        ]
+      },
+      "programme_detail_verification": {
+        "cycle_verified": "2027 GKS cycle, verified 2026-10-04 on NIIED's official Study in Korea scholarship page",
+        "verification_confidence": 0.86,
+        "official_fields_confirmed": [
+          "name",
+          "official_source",
+          "status",
+          "degree_levels",
+          "funding_type",
+          "duration",
+          "coverage",
+          "benefits",
+          "eligibility",
+          "application_method",
+          "application_route",
+          "catalogue_url",
+          "official_contacts"
+        ],
+        "institution_check_required": [
+          "The individual programme's exact application dates, published only in that programme's announcement",
+          "Whether the host institution is still a designated GKS university for the 2027 cycle",
+          "The specific academic and language requirements of the chosen university and programme",
+          "The monthly stipend amount, which NIIED's public page does not quantify"
+        ],
+        "unverified_or_removed_claims": [
+          "Stored degree_levels said 'UG (Bachelor's/Associate)' only; the official page confirms GKS also funds master's (2 years) and doctoral (3 years) programmes, and the selection quota of approximately 1,600 graduate students corroborates this — corrected",
+          "Stored deadline_display was null and deadline_precision 'unknown'; corrected to 'varies' with precision 'varies' because the official page states selection schedules vary by programme and no central date exists",
+          "No exact deadline_date is recorded: the programme-specific announcements are published only on the Korean-language notice board and no English version exists (HTTP 404)",
+          "Funding amount, currency and period remain null because NIIED's public page lists the benefit categories (tuition, monthly stipend, airfare, language training) without quantifying the stipend",
+          "The exact numeric quota figures for the individual tracks were read from the live page but the official page states the umbrella quota only as approximately 280 undergraduate plus 1,600 graduate students"
+        ],
+        "source_citations": [
+          "https://www.studyinkorea.go.kr/en/plan/scholarship.do",
+          "https://www.studyinkorea.go.kr/public/v3/images/plan/logo-gks-blue.svg"
+        ],
+        "researched_by": "w1_01a"
+      },
+      "logo_override": {
+        "url": "https://www.studyinkorea.go.kr/public/v3/images/plan/logo-gks-blue.svg",
+        "page_url": "https://www.studyinkorea.go.kr/en/plan/scholarship.do",
+        "official_host": true,
+        "alt_text": "Global Korea Scholarship (GKS), National Institute for International Education",
+        "validation_result": "verified",
+        "validation_detail": "svg 3467+B, probed HTTP 200 with content-type image/svg+xml; rendered on a white card and confirmed the GKS graduation-cap mark with blue 'GKS' lettering, visible on light backgrounds and not white-on-transparent",
+        "image_kind": "official_logo",
+        "image_format": "svg",
+        "verified_at": "2026-10-04T00:00:00+00:00",
+        "host_evidence": "same_registrable_domain",
+        "_award": "Global Korea Scholarship (GKS)"
+      },
+      "research_notes": {
+        "logo": "Scanned NIIED's own Study in Korea scholarship page markup for /logo/i and icon assets. The page references three logo candidates: the site header logo at /images/common/toplogo.gif (this is the Study in Korea site mark, 'run by Korean Government', which I confirmed visually in the header screenshot but whose file path returns HTTP 404 on direct request over both http and https, so it is not probeable and was rejected), and /public/v3/images/plan/logo-gks-blue.svg. The GKS SVG probed HTTP 200 image/svg+xml 3467 B and was rendered on white to confirm a blue graduation-cap mark with blue GKS lettering, so it is visible on a light card. That mark is the Global Korea Scholarship programme's own logo published by NIIED, the body that administers the award, on its own official domain.",
+        "unverified": [
+          "Any exact programme-level application deadline, since the GKS notice board has no English version",
+          "The monthly stipend amount and other benefit values, which NIIED's public page does not quantify",
+          "Which specific track is open on the day of verification"
+        ],
+        "substitution": null,
+        "official_pages_read": [
+          "https://www.studyinkorea.go.kr/en/plan/scholarship.do"
+        ],
+        "degree_level_confirmed": "The live page states 'Selection Quota: Approximately 280 undergraduate students (including associate degree students) + 1,600 graduate students' and 'Scholarship Duration: Korean language training (1 year) + associate degree programs (2-3 years), bachelor's degree programs (4-6 years), master's degrees (2 years), doctoral degrees (3 years)', and lists benefit columns for 'Undergraduate Degree (including associate)', 'Graduate Degree (Master's and doctoral degree)' and 'Doctoral Degree'.",
+        "url_observed": "The stored official_source_url https://www.studyinkorea.go.kr is live and was not changed. The GKS announcements themselves sit only on the Korean-language notice board at https://www.studyinkorea.go.kr/ko/notice/scholarshipsList.do?boardSort=3; the English equivalent https://www.studyinkorea.go.kr/en/notice/scholarshipsList.do returns HTTP 404, so an English-speaking applicant cannot read the dated programme guidelines from this site.",
+        "contradictions": [
+          "Stored degree_levels said 'UG (Bachelor's/Associate)' only, which understated the award; the official page confirms graduate master's and doctoral awards and a quota of about 1,600 graduate students — corrected",
+          "Stored program_type was not a programme type at all but a single university's freshman admission notice string ('Spring 2027 Undergraduate Freshman Admissions for International Students 2026.09.16~2026.10.07 MOKWON UNIVERSITY'), which does not describe the GKS scheme itself — replaced with the actual GKS programme description",
+          "Stored deadline_display was null and deadline_precision 'unknown'; the official page does publish a selection schedule structure and states schedules vary by programme, so precision is corrected to 'varies' and the recurring cycle is documented",
+          "Stored image_url was a GKS banner photo of students, not the awarding body's mark — replaced with NIIED's own GKS logo SVG",
+          "Stored verification_status 'needs_review' is now resolved: the official NIIED page is live and confirms the programme, quota, duration and benefits"
+        ],
+        "skeleton": false
+      }
+    },
+    {
+      "target_id": 5,
+      "outcome": "refreshed",
+      "confirm": true,
+      "confirmation_evidence": "Read the official Study in Japan page run by MEXT at https://www.studyinjapan.go.jp/en/planning/scholarships/mext-scholarships/ (HTTP 200, title 'Japanese Government (MEXT) Scholarship｜Study in Japan Official Website'). It states \"there are seven types of the Japanese Government (Monbukagakusho) Scholarship program. They are Research students, Teacher training students, Undergraduate students, Japanese studies students, college of technology students, Specialized training college students, and Young Leaders Program (YLP) students\", and publishes monthly rates, \"Tuition Exempted\" and \"Round-trip travel expenses (airfare) provided\".",
+      "new_scholarship": {
+        "name": "Japanese Government (MEXT / Monbukagakusho) Scholarship",
+        "legacy_titles": [
+          "MEXT (Monbukagakusho) Scholarship"
+        ],
+        "country": "Japan",
+        "degree_levels": "Bachelor's, Master's, PhD",
+        "funding_type": "Fully Funded",
+        "official_source": "Ministry of Education, Culture, Sports, Science and Technology (MEXT), Japan",
+        "official_source_url": "https://www.studyinjapan.go.jp",
+        "status": "upcoming",
+        "is_verified": true,
+        "last_verified_date": "2026-10-04",
+        "description": "The Japanese Government (Monbukagakusho) Scholarship is offered in seven types: Research students, Teacher training students, Undergraduate students, Japanese studies students, College of technology students, Specialized training college students, and the Young Leaders Program. Applicants apply either through embassy recommendation or, for most types, university recommendation. The published benefits are a monthly scholarship, tuition exemption, and round-trip travel expenses (airfare). Each type has its own age limit, academic qualification, field of study and duration, and MEXT directs applicants to the latest edition of the application guidelines because detailed requirements are established separately.",
+        "region": "East Asia",
+        "duration": "Varies by type: research students up to 2 years for the irregular course or the standard school year for the regular course; teacher training within 1 year and 6 months including Japanese language education; undergraduate students 5 years including Japanese language training (7 years for medicine, dentistry, pharmacy and veterinary science); Japanese studies students 4 years including Japanese language training (4 years and 6 months for merchant marine studies); college of technology students 3 years including Japanese language training; specialized training college students 1 year. Under university recommendation the duration depends on each school's quota, up to a standard school year",
+        "deadline": "With regard to application qualifications and procedures, in addition to the actual contents, there are also cases when detailed requirements are established. Because of this, be sure to confirm the latest edition of the application guidelines. If the application qualifications differ from the application guidelines, the contents of the guidelines should be followed.",
+        "deadline_date": null,
+        "deadline_precision": "varies",
+        "application_period": "Embassy recommendation and university recommendation cycles are set per scholarship type and published in the MEXT application guidelines; the official page publishes no single central date",
+        "eligibility_summary": "Each type has its own eligibility. Research students must be under 35 and eligible for admission to a master's or doctoral programme at a Japanese graduate school. Teacher training students must be under 35, be graduates of a college or teacher training college, and have at least five years of active teaching experience in a primary, secondary or teacher training college in their home country. Undergraduate students must be under 25 and have completed 12 years of schooling or comparable study. Japanese studies students must be between 18 and 29 and be enrolled in a Japanese-language or Japanese-culture faculty at a university outside Japan. College of technology students must be under 25 with 11 or more years of education. Specialized training college students must be under 25 with 12 years of schooling.",
+        "eligibility": [
+          "Research students: under 35 years of age and eligible for admission to a master's or doctoral programme (first or second stage) at a Japanese graduate school",
+          "Teacher training students: under 35, graduate of a college or teacher training college, with at least five years of active teaching experience in a primary, secondary or teacher training college in their home country; college and university teachers currently in active service are not eligible",
+          "Undergraduate students: under 25 years of age and have completed 12 years of school education or comparable study, including prospective graduates",
+          "Japanese studies students: between 18 and 29 years old, enrolled as an undergraduate in a faculty or school related to Japanese language or Japanese culture at a university outside Japan, and must remain enrolled on return",
+          "College of technology students: under 25 years of age and have completed education for 11 or more years, including prospective graduates",
+          "Specialized training college students: under 25 years of age and have completed 12 years of schooling or comparable study, including prospective graduates",
+          "Young Leaders Program: not available through embassy recommendation"
+        ],
+        "coverage": [
+          "Monthly scholarship",
+          "Tuition fees exempted",
+          "Round-trip travel expenses (airfare)",
+          "Japanese language training where included in the scholarship duration"
+        ],
+        "benefits": [
+          "Monthly scholarship of JPY 143,000 to 145,000 for research students",
+          "Monthly scholarship of JPY 117,000 for teacher training students",
+          "Monthly scholarship of JPY 242,000 for undergraduate students",
+          "Tuition exemption",
+          "Round-trip travel expenses (airfare) provided"
+        ],
+        "funding_amount": 143000,
+        "funding_currency": "JPY",
+        "funding_period": "per month",
+        "catalogue_url": "https://www.studyinjapan.go.jp/en/planning/scholarships/mext-scholarships/",
+        "official_updates_url": "https://www.studyinjapan.go.jp/en/planning/scholarships/mext-scholarships/",
+        "requirements": [
+          "Meet the age and academic qualifications for the specific scholarship type",
+          "Apply through either the embassy recommendation route or the university recommendation route available for that type",
+          "Take the Applicant Qualifying Examinations - Subject Test where required for the embassy recommendation route",
+          "Follow the latest edition of the MEXT application guidelines, which take precedence over the summary page"
+        ],
+        "application_method": [
+          "Those who wish to study abroad apply in one of two ways: embassy recommendation or university recommendation",
+          "Embassy recommendation runs through the Japanese embassy or consulate in the applicant's country",
+          "University recommendation runs directly through a Japanese university, and not all universities maintain their own recommendation quotas",
+          "Confirm the latest edition of the application guidelines before applying"
+        ],
+        "selection_notes": "The selection process for each route is set out in the MEXT application guidelines. MEXT states that detailed requirements are established in the guidelines and that where the application qualifications differ from the guidelines, the guidelines take precedence.",
+        "program_type": "Government scholarship (Ministry of Education, Culture, Sports, Science and Technology)",
+        "best_fit": "International applicants seeking Japanese government funding at undergraduate or graduate level who can satisfy one of the seven scholarship types and apply through the embassy or university recommendation route available for it.",
+        "notes": "The monthly rate differs by scholarship type: JPY 143,000 to 145,000 for research students, JPY 117,000 for teacher training students and JPY 242,000 for undergraduate students. The Young Leaders Program accepts only official overseas recommending organisations and is not open to embassy recommendation."
+      },
+      "programme_detail_official": {
+        "official_source_urls": [
+          "https://www.studyinjapan.go.jp/en/planning/scholarships/mext-scholarships/"
+        ],
+        "application_link": "https://www.studyinjapan.go.jp/en/planning/scholarships/mext-scholarships/",
+        "official_updates_url": "https://www.studyinjapan.go.jp/en/planning/scholarships/mext-scholarships/",
+        "catalogue_url": "https://www.studyinjapan.go.jp/en/planning/scholarships/mext-scholarships/",
+        "application_cycle": "Annual, with separate cycles for each of the seven scholarship types and for each of the two application routes. MEXT publishes no single cycle date and directs applicants to the latest edition of the application guidelines.",
+        "deadline_central": null,
+        "deadline_central_display": "be sure to confirm the latest edition of the application guidelines. If the application qualifications differ from the application guidelines, the contents of the guidelines should be followed.",
+        "deadline_central_timezone": "Asia/Tokyo",
+        "deadline_note": "The official MEXT scholarship page publishes no dates at all. It states that detailed requirements are established separately and that applicants must confirm the latest edition of the application guidelines. Deadlines differ by scholarship type, by application route and by host university, so deadline_date stays null and precision is 'varies'.",
+        "status": "UPCOMING",
+        "status_note": "The programme is a permanent annual Japanese government scholarship and is actively recruiting, but the official page I read publishes no current application window, so no cycle could be confirmed as open on 2026-10-04. Status is recorded as upcoming rather than open because an open window could not be verified from the awarding body's own page; applicants must check the current MEXT application guidelines or their embassy or host university.",
+        "funding_amount": 143000,
+        "funding_currency": "JPY",
+        "funding_period": "per month",
+        "funding_duration": "Monthly for the duration of the scholarship, which ranges from one year for specialized training college students to five years including Japanese language training for undergraduate students (seven years for medicine, dentistry, pharmacy and veterinary science)",
+        "tuition_coverage": true,
+        "tuition_coverage_note": "The official benefits table states 'Tuition Exempted' as a benefit of the scholarship.",
+        "living_cost_coverage": true,
+        "travel_coverage": true,
+        "fully_funded": true,
+        "funding_label": "Fully funded: monthly scholarship (JPY 143,000-145,000 research, JPY 117,000 teacher training, JPY 242,000 undergraduate), tuition exempted, and round-trip airfare provided; no service obligation or bond is stated",
+        "benefits": [
+          "Monthly scholarship",
+          "Tuition exemption",
+          "Round-trip travel expenses (airfare) provided",
+          "Japanese language training included within the scholarship duration for several types"
+        ],
+        "eligibility": [
+          "Research students: under 35, eligible for a master's or doctoral programme at a Japanese graduate school",
+          "Teacher training students: under 35, college or teacher training college graduate, at least five years of active teaching experience in their home country",
+          "Undergraduate students: under 25, 12 years of schooling completed or comparable, including prospective graduates",
+          "Japanese studies students: 18 to 29 years old, enrolled in a Japanese-language or Japanese-culture faculty at a university outside Japan and remaining enrolled on return",
+          "College of technology students: under 25, 11 or more years of education completed, including prospective graduates",
+          "Specialized training college students: under 25, 12 years of schooling completed or comparable, including prospective graduates",
+          "Young Leaders Program: official overseas recommending organisations only, not embassy recommendation"
+        ],
+        "citizenship_residency": "Open to foreign nationals; applicants under the embassy recommendation route apply through the Japanese embassy or consulate in their country of residence",
+        "international_eligibility": "The programme is for international students from outside Japan studying in Japan, with eligibility determined by scholarship type, age and prior education.",
+        "degree_levels": [
+          "Bachelor's",
+          "Master's",
+          "PhD",
+          "Teacher training",
+          "College of technology",
+          "Specialized training college"
+        ],
+        "study_mode": "On-campus study in Japan, for most types preceded by Japanese language training as part of the scholarship duration",
+        "research_requirement": "Applicable to research students, who must be eligible for a master's or doctoral programme at a Japanese graduate school and study a major in their field of specialty",
+        "subject_or_agency_requirement": "College of technology students transfer to the third year; Japanese studies students study Japanese language or culture; specialized training college students take specialised courses; the Young Leaders Program requires an official overseas recommending organisation",
+        "application_method": "Apply either through embassy recommendation or university recommendation, following the latest edition of the MEXT application guidelines; applicants under the embassy recommendation route also take the Applicant Qualifying Examinations - Subject Test where required",
+        "application_route": "Embassy recommendation via the Japanese embassy or consulate in the applicant's country, or university recommendation directly with a Japanese university (not all universities maintain their own recommendation quotas)",
+        "requirements": [
+          "Meet the age limit and academic qualifications for the chosen scholarship type",
+          "Use the application route available for that type (embassy recommendation or university recommendation)",
+          "Sit the Applicant Qualifying Examinations - Subject Test where required",
+          "Follow the latest application guidelines, which take precedence over the summary page"
+        ],
+        "documents": [
+          "MEXT does not publish a central document list on this page; required documents are specified in the application guidelines for each type and route"
+        ],
+        "english_requirement": null,
+        "english_requirement_note": "No central English requirement is stated. Japanese language training is included in the scholarship duration for several types, indicating Japanese study placement.",
+        "selection_criteria": [
+          "Eligibility for the chosen scholarship type by age, prior education and field of study",
+          "Embassy recommendation route selection by the embassy or consulate, or university recommendation selection by the host university",
+          "Performance in the Applicant Qualifying Examinations - Subject Test where required"
+        ],
+        "selection_weighting": null,
+        "duration": "Research students: within 2 years (irregular course) or the standard school year (regular course, plus 6 months preliminary education if necessary); teacher training: within 1 year and 6 months including Japanese language education; undergraduate: 5 years including Japanese language training, 7 years for medicine, dentistry, pharmacy and veterinary science; Japanese studies: 4 years including Japanese language training, 4 years and 6 months for merchant marine studies; college of technology: 3 years including Japanese language training; specialized training college: 1 year. University-recommended durations depend on each school's quota, up to a standard school year",
+        "award_holder_conditions": [
+          "Follow the latest edition of the MEXT application guidelines, which take precedence over the summary page",
+          "Japanese studies students must remain enrolled at their home institution on returning to their home country",
+          "Preliminary training of Japanese providers may change, so the assigned institution is not guaranteed in advance"
+        ],
+        "supplements_or_initiatives": [
+          "Japanese language training funded as part of the scholarship for undergraduate, Japanese studies and college of technology types",
+          "Preliminary training of Japanese provided by institutions such as ABK College, Osaka University, JASSO Tokyo Japanese Language Education Center and Bunka Institute of Language",
+          "Young Leaders Program (YLP) accepting nominations from official overseas recommending organisations"
+        ],
+        "official_contacts": {
+          "general": "Japanese Embassy or Consulate in the applicant's country (embassy recommendation route), or the host Japanese university (university recommendation route)",
+          "email": null
+        },
+        "description": "The Japanese Government (MEXT / Monbukagakusho) Scholarship is offered in seven types: Research students, Teacher training students, Undergraduate students, Japanese studies students, College of technology students, Specialized training college students, and the Young Leaders Program. Applicants must apply either through embassy recommendation or, for most types, university recommendation. Published benefits are a monthly scholarship, tuition exemption, and round-trip travel expenses (airfare) provided. Eligibility is set per type, with research students required to be under 35 and eligible for a master's or doctoral programme, undergraduate students under 25 with 12 years of schooling completed, and Japanese studies students aged 18 to 29 and enrolled in a Japanese-language or Japanese-culture faculty abroad. MEXT states that detailed requirements are established in the application guidelines and that applicants must confirm the latest edition, which takes precedence over the summary page.",
+        "program_type": "Government scholarship (Ministry of Education, Culture, Sports, Science and Technology)",
+        "region": "East Asia",
+        "coverage": "Monthly scholarship, tuition exemption, round-trip airfare and Japanese language training where included in the duration",
+        "last_verified_date": "2026-10-04"
+      },
+      "programme_detail_applicant_utility": {
+        "application_readiness_checklist": [
+          "Identify which of the seven scholarship types fits your age, prior education and field of study, because each has its own limits",
+          "Work out whether embassy recommendation or university recommendation is available for that type, since the Young Leaders Program takes neither",
+          "Download the latest edition of the MEXT application guidelines for your type, because they override the summary page",
+          "If applying by embassy recommendation, check with your Japanese embassy or consulate early, since they run their own selection",
+          "If applying by university recommendation, confirm the university actually has a recommendation quota, as MEXT notes not all universities maintain one",
+          "Plan for Japanese language training as part of the scholarship, which for several types comes before the degree programme"
+        ],
+        "common_rejection_risks": [
+          "Applying to the wrong scholarship type for your age or prior education, for example over 25 for undergraduate students or over 35 for research students",
+          "Assuming a central MEXT deadline exists, when dates are set per type, per route and by the host university",
+          "Relying on the summary page when the application guidelines set stricter or different requirements",
+          "Applying by university recommendation to a university with no recommendation quota",
+          "Applying to the Young Leaders Program directly, since nominations come only from official overseas recommending organisations",
+          "Missing that Japanese studies students must remain enrolled at their home institution when they return"
+        ],
+        "estimated_uncovered_costs": [
+          "Personal expenses beyond the monthly scholarship and airfare, which the official page does not itemise",
+          "Any university-specific charges not covered by the tuition exemption",
+          "Costs of the applicant's own preliminary Japanese training where it is not part of the scholarship duration"
+        ],
+        "document_audit": [
+          "Proof of age for the type's limit",
+          "Academic certificates and transcripts for the qualifying prior degree or schooling",
+          "Teacher training applicants: evidence of at least five years of active teaching experience",
+          "Japanese studies applicants: enrolment certificate from the home university's Japanese-language or Japanese-culture faculty",
+          "Passport and any embassy- or university-specific forms required by the route chosen",
+          "All additional documents listed in the latest application guidelines for the chosen type"
+        ],
+        "alerts": [
+          {
+            "trigger": "Guidelines override the summary page",
+            "message": "MEXT states that detailed requirements are established separately and that if the application qualifications differ from the application guidelines, the contents of the guidelines should be followed. Always work from the latest guidelines."
+          },
+          {
+            "trigger": "No central deadline",
+            "message": "The official page publishes no dates. Deadlines come from the embassy or consulate for embassy-recommended applicants and from the host university for university-recommended applicants."
+          },
+          {
+            "trigger": "Rates differ by type",
+            "message": "The monthly scholarship is JPY 143,000-145,000 for research students, JPY 117,000 for teacher training students and JPY 242,000 for undergraduate students. Do not assume one rate for all types."
+          },
+          {
+            "trigger": "Preliminary training providers may change",
+            "message": "MEXT notes that the institutions offering preliminary training of Japanese may change, so do not rely on a specific preparatory school."
+          }
+        ],
+        "submission_workflow": [
+          "Choose your scholarship type and confirm the application route available for it",
+          "Obtain the latest MEXT application guidelines for that type",
+          "Assemble the documents listed in the guidelines and, for embassy recommendation, your embassy or consulate's own forms",
+          "If taking the Applicant Qualifying Examinations - Subject Test, register and sit it in time",
+          "Submit through the embassy or consulate, or directly to the university for university recommendation",
+          "Wait for selection and, on award, complete Japanese language training where the scholarship includes it"
+        ]
+      },
+      "programme_detail_verification": {
+        "cycle_verified": "Programme structure and benefits verified 2026-10-04; no specific application cycle could be confirmed from the official page",
+        "verification_confidence": 0.85,
+        "official_fields_confirmed": [
+          "name",
+          "official_source",
+          "degree_levels",
+          "funding_type",
+          "funding_amount",
+          "funding_currency",
+          "funding_period",
+          "duration",
+          "tuition_coverage",
+          "travel_coverage",
+          "living_cost_coverage",
+          "eligibility",
+          "application_method",
+          "application_route",
+          "benefits",
+          "requirements",
+          "catalogue_url"
+        ],
+        "institution_check_required": [
+          "The current application dates for the specific type and route, which only the application guidelines, embassy or host university publish",
+          "Whether the host university maintains a university-recommendation quota for the type",
+          "Whether the applicant meets the track-specific requirements in the latest guidelines rather than the summary page",
+          "The specific Japanese language training arrangement for the award"
+        ],
+        "unverified_or_removed_claims": [
+          "Stored deadline_display claimed 'For 2027 cycle, recruitment is April-May 2026'; the official page I read publishes no dates whatsoever, so this claim is not repeated and deadline_date is null",
+          "Stored deadline_precision 'approximate' corrected to 'varies', because MEXT sets dates per scholarship type, per application route and per host university rather than giving an approximate single window",
+          "Stored status 'open' changed to 'upcoming' because no open application window could be confirmed from the awarding body's own page on 2026-10-04",
+          "Stored funding_amount was null; the official benefits table publishes three monthly rates and the research-student rate of JPY 143,000 is recorded as the single figure, with all three stated in funding_label, benefits and notes so the variation is explicit",
+          "The mapping of the three published monthly rates to individual scholarship types is read from the row order of the official benefits table (research students, teacher training students, undergraduate students); the table is rendered as a horizontally flattened matrix, so applicants should confirm the rate for their type in the guidelines",
+          "No central document list or English language requirement is published on the official page, so both are left unstated rather than inferred",
+          "The official page's own contact channel is the embassy or consulate for the embassy route and the host university for the university route; no central MEXT scholarship email is published on the page read"
+        ],
+        "source_citations": [
+          "https://www.studyinjapan.go.jp/en/planning/scholarships/mext-scholarships/",
+          "https://www.studyinjapan.go.jp/en/assets/images/common/logo_mext_en.svg"
+        ],
+        "researched_by": "w1_01a"
+      },
+      "logo_override": {
+        "url": "https://www.studyinjapan.go.jp/en/assets/images/common/logo_mext_en.svg",
+        "page_url": "https://www.studyinjapan.go.jp/en/planning/scholarships/mext-scholarships/",
+        "official_host": true,
+        "alt_text": "Ministry of Education, Culture, Sports, Science and Technology (MEXT), Japan",
+        "validation_result": "verified",
+        "validation_detail": "svg 26956+B, probed HTTP 200 with content-type image/svg+xml; rendered on a white card and confirmed the MEXT circular mark in dark navy and teal with the black 'MEXT / MINISTRY OF EDUCATION, CULTURE, SPORTS, SCIENCE AND TECHNOLOGY-JAPAN' wordmark, fully visible on a light background and not white-on-transparent",
+        "image_kind": "official_logo",
+        "image_format": "svg",
+        "verified_at": "2026-10-04T00:00:00+00:00",
+        "host_evidence": "same_registrable_domain",
+        "_award": "Japanese Government (MEXT / Monbukagakusho) Scholarship"
+      },
+      "research_notes": {
+        "logo": "Scanned the MEXT-run Study in Japan scholarship page's own markup for logo assets. Three candidates appeared: /en/assets/images/common/logo_mext_en.svg, /ja/assets/images/common/study_in_Japan_logo.svg (the Study in Japan site mark rather than the awarding ministry's) and /ja/assets/images/common/gaimusyo.svg (the Ministry of Foreign Affairs mark, a different body from the awarding MEXT and therefore rejected). Probed the first two: both HTTP 200 image/svg+xml, 26956 B and 23665 B respectively. Rendered logo_mext_en.svg on white and confirmed it is MEXT's own ministry logo, dark navy and teal on white, so it is visible on a light card. The Ministry of Foreign Affairs logo was excluded because MOFA is not the awarding body for this scholarship.",
+        "unverified": [
+          "Any application deadline, because the official page publishes no dates",
+          "Whether a specific 2027 cycle is currently open",
+          "Which monthly rate applies to which individual scholarship type beyond the table row order",
+          "The document list and English language requirement, neither of which is published centrally",
+          "Any central MEXT scholarship contact email"
+        ],
+        "substitution": null,
+        "official_pages_read": [
+          "https://www.studyinjapan.go.jp/en/planning/scholarships/mext-scholarships/"
+        ],
+        "degree_level_confirmed": "The official page states eligibility per type: 'Research students: You must be under 35 years of age and be eligible for admission to a master's program or a doctoral program (first or second stage) at a Japanese graduate school'; 'Undergraduate students: You must be under 25 years of age and have completed 12 years of school education or have completed courses in a school comparable to a Japanese high school'; 'Japanese studies students: You must be between 18 and 29 years old.' It also confirms tuition exemption as a benefit.",
+        "url_observed": "The stored official_source_url https://www.studyinjapan.go.jp is live and was not changed. The specific MEXT scholarship page used throughout is https://www.studyinjapan.go.jp/en/planning/scholarships/mext-scholarships/, which is the page the stored image_source_url already pointed to.",
+        "contradictions": [
+          "Stored deadline_display claimed 'For 2027 cycle, recruitment is April-May 2026'; the official MEXT page publishes no dates at all, so the claim is not corroborated and is not repeated — deadline_date is null",
+          "Stored deadline_precision 'approximate' corrected to 'varies' because dates are set per type, per route and by host university",
+          "Stored status 'open' changed to 'upcoming': no open application window could be confirmed on the awarding body's own page on 2026-10-04",
+          "Stored funding_amount and currency were null; the official benefits table publishes monthly rates of JPY 143,000-145,000, JPY 117,000 and JPY 242,000, so funding_amount 143000 JPY per month is recorded with all three rates stated explicitly",
+          "Stored degree list omitted the college of technology and specialized training college types that the official page lists among its seven types, and omitted the Young Leaders Program — all recorded now",
+          "Stored image_url was a photo of students in Japan, not the awarding ministry's mark — replaced with MEXT's own logo SVG",
+          "Stored verification_status 'needs_review' is now resolved: the official page is live and confirms the programme's structure, eligibility, rates and benefits"
+        ],
+        "skeleton": false
+      }
+    }
+  ]
+}

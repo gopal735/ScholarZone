@@ -1,0 +1,88 @@
+{
+ "agent": "agent_119",
+ "assignment_count": 1,
+ "scholarships": [
+  {
+   "id": 315,
+   "title": "Chinese Government Scholarship for Advanced Graduate Program (Type B) at Peking University",
+   "country": "China",
+   "degree": "Master's, PhD",
+   "funding_label": "Tuition Waiver + Stipend",
+   "status": "upcoming",
+   "official_source": "Peking University",
+   "official_source_url": "https://isd.pku.edu.cn/en/detail.php?id=819",
+   "application_link": "https://isd.pku.edu.cn/en/detail.php?id=819",
+   "catalogue_url": "https://isd.pku.edu.cn/en/detail.php?id=18",
+   "official_updates_url": "https://isd.pku.edu.cn/en/detail.php?id=18",
+   "existing": {
+    "funding_amount": null,
+    "funding_currency": null,
+    "funding_period": null,
+    "tuition_coverage": 1,
+    "living_cost_coverage": 1,
+    "travel_coverage": null,
+    "fully_funded": 0,
+    "description": "The Chinese Government Scholarship for Advanced Graduate Program is a merit-based award from the China Scholarship Council for international students with outstanding academic backgrounds, awarded through Peking University under Type B. Peking University's 2026 notice states the scope as 'Full or partial tuition waiver, living stipend, housing, and medical insurance' for a duration of 2 to 3 years at master's level and 4 to 5 years at doctoral level. Applicants must first secure admission to a self-funded full-time international graduate programme and then apply twice: once in the Peking University International Student Service System and once in the China Scholarship Council system. The 2026 cycle closed at 9:00 a.m. Beijing Time on 9 March 2026 for the PKU form and 24:00 Beijing Time on 17 March 2026 for the CSC form, and the 2027 notice had not been published on 2026-10-04.",
+    "eligibility": [
+     "Meets the pertinent admission requirements for international students of Peking University",
+     "Has successfully submitted an application for the current year's full-time self-funded graduate programme as an international student of Peking University",
+     "Has not received any other scholarship from the Chinese government or Peking University (with the exception of one-time non-renewable merit awards)",
+     "Is not a candidate in a joint training programme"
+    ],
+    "eligibility_summary": "Applicants must meet the admission requirements for international students of Peking University, must have successfully submitted an application for the current year's full-time self-funded graduate programme as an international student, must not have received any other scholarship from the Chinese government or Peking University (except one-time non-renewable merit awards), and must not be a candidate in a joint training programme.",
+    "benefits": [
+     "Full or partial tuition waiver",
+     "Living stipend",
+     "Housing",
+     "Medical insurance",
+     "Annual renewal subject to passing the annual scholarship review"
+    ],
+    "coverage": [
+     "Full or partial tuition waiver",
+     "Living stipend",
+     "Housing",
+     "Medical insurance"
+    ],
+    "requirements": [
+     "Secure admission to a full-time self-funded international graduate programme at Peking University first",
+     "Complete the Peking University online scholarship application in the Peking University International Student Service System",
+     "Complete the China Scholarship Council application in the CSC system; the CSC system allows only one major per applicant",
+     "Use institution code 10001 and application programme type Type B",
+     "Upload official transcripts of past educational experiences and other supporting documents",
+     "Download item 6 of the materials, the Certificate for CSC Advanced Graduate Program Application, from the Application Status page of the PKU International Student Service System from 25 February"
+    ],
+    "documents": [],
+    "english_requirement": null,
+    "application_method": [
+     "Log on to the Peking University International Student Service System at http://www.studyatpku.com, select Home - Scholarship Application - Application for Prospective Students, fill in information, upload official transcripts and supporting documents and submit",
+     "Log on to the China Scholarship Council system at http://www.campuschina.org, complete and submit, and save the completed form",
+     "Apply only once at PKU; the single PKU application is considered for multiple scholarship categories"
+    ],
+    "selection_notes": "Scholarship is renewable on an annual basis provided scholarship recipients have participated in and passed the annual scholarship review. Admission result will be indicated by the Admission Letter from Peking University, not any interim processing record in the CSC system.",
+    "best_fit": null,
+    "notes": "Amounts are not published by Peking University; the scope is described only as a full or partial tuition waiver plus living stipend, housing and medical insurance. Because the tuition waiver can be full or partial, this row is not treated as fully funded. The China Scholarship Council administers the award (Type B) while Peking University is the nominating institution; the stored row credits Peking University, which is the page publishing the application instructions.",
+    "duration": "Master's degree: 2 - 3 years. Doctoral degree: 4 - 5 years. Renewable on an annual basis provided the holder passes the annual scholarship review.",
+    "application_period": "The standing programme page states 'Application Time: Generally in January and March each year'. The 2026 cycle ran from the notice date of 12 January 2026 to 9 March 2026 (PKU) and 17 March 2026 (CSC).",
+    "deadline_display": "For the 2026 cycle the Peking University online scholarship application was 'open now until Beijing Time at 9:00 a.m. on March 9' and the China Scholarship Council application 'open now until Beijing Time at 24:00 on March 17'. Both dates have passed; the 2027 notice was not published on 2026-10-04.",
+    "deadline_date": null,
+    "region": "Asia",
+    "program_type": "Government scholarship administered by the China Scholarship Council, Type B (university nomination), awarded through Peking University",
+    "applicant_utility": null,
+    "official_details": null
+   },
+   "missing_fields": [
+    "funding_amount",
+    "funding_currency",
+    "funding_period",
+    "travel_coverage",
+    "documents",
+    "english_requirement",
+    "best_fit",
+    "deadline_date",
+    "applicant_utility",
+    "official_details"
+   ]
+  }
+ ],
+ "result_file": "C:\\Users\\GopaL\\Desktop\\Projects folder\\ScholarZone\\backend\\research_output\\live500\\results\\agent_119.json"
+}

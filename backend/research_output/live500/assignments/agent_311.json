@@ -1,0 +1,81 @@
+{
+ "agent": "agent_311",
+ "assignment_count": 1,
+ "scholarships": [
+  {
+   "id": 693,
+   "title": "Errol Walton Barrow Scholarships",
+   "country": "Barbados",
+   "degree": "Bachelor's, Master's",
+   "funding_label": "Tuition Fee Waiver, Living Allowance and Airfare (bonded)",
+   "status": "upcoming",
+   "official_source": "Ministry of Education Transformation, Government of Barbados",
+   "official_source_url": "https://education.gov.bb/2026-errol-walton-barrow-scholarships",
+   "application_link": "https://education.gov.bb/2026-errol-walton-barrow-scholarships",
+   "catalogue_url": "https://education.gov.bb/news",
+   "official_updates_url": "https://education.gov.bb/news",
+   "existing": {
+    "funding_amount": null,
+    "funding_currency": null,
+    "funding_period": "per annum",
+    "tuition_coverage": 1,
+    "living_cost_coverage": 1,
+    "travel_coverage": 1,
+    "fully_funded": 0,
+    "description": "The Errol Walton Barrow Scholarships are a Government of Barbados award administered by the Ministry of Education Transformation for Barbadian students of the country's newer secondary schools studying marine studies, aeronautics or culinary arts at undergraduate and postgraduate level. The award covers full tuition paid directly to the university, a return economy airfare and a per-annum living allowance. Winners must enter a bond with sureties to return and work in Barbados for one year for each year of the award, so the 2026 applications closed on 6 August 2026 and the next annual round is expected in the same cycle.",
+    "eligibility": [
+     "Be citizens of Barbados",
+     "Have been accepted at an accredited institution",
+     "Be students of the newer secondary schools on the Ministry's published list",
+     "Apply in one of the funded areas: Marine Studies, Aeronautics, or Culinary Arts"
+    ],
+    "eligibility_summary": "Citizens of Barbados who have been accepted at an accredited institution and attended one of the listed newer secondary schools.",
+    "benefits": [
+     "One (1) direct economy class ticket to the country of study at the commencement of the course, and one (1) return ticket to Barbados on completion of the programme",
+     "Full tuition fees, payable directly to the University",
+     "Living allowance of $6,300.00 per annum for studies in the USA",
+     "Living allowance of $5,880.00 per annum for studies in Canada",
+     "Living allowance of $7,560.00 per annum for studies in the United Kingdom"
+    ],
+    "coverage": [
+     "One direct economy class ticket to the country of study at the commencement of the course and one return ticket to Barbados on completion",
+     "Full tuition fees payable directly to the University",
+     "Living allowance payable per annum"
+    ],
+    "requirements": [
+     "Submit the completed Scholarship_Fellowship_Application_Form obtained from the Ministry",
+     "Submit before the published closing date; incomplete applications will not be accepted"
+    ],
+    "documents": [],
+    "english_requirement": null,
+    "application_method": [
+     "Download the Scholarship_Fellowship_Application_Form PDF from the Ministry's scholarship page",
+     "Obtain the list of eligible newer secondary schools from the Ministry",
+     "Submit the completed form to the Tertiary Section, Ministry of Education Transformation, or by email to tertiary@mes.gov.bb"
+    ],
+    "selection_notes": "Awards are made in three named fields only - Marine Studies, Aeronautics and Culinary Arts - and only for students of the Ministry's listed newer secondary schools.",
+    "best_fit": "Barbadian students from the listed newer secondary schools who have secured an offer in marine studies, aeronautics or culinary arts.",
+    "notes": "Award holders must enter a bond with sureties to return and work in Barbados, at one year of service for each year of the award. Living allowances are published in dollars with no currency stated, so funding_currency is left null.",
+    "duration": null,
+    "application_period": "The 2026 cycle closed on 6 August 2026. The Ministry publishes a new call each year on its Latest News page, so the next round is expected in the same annual cycle.",
+    "deadline_display": "6 August 2026 (2026 cycle, now closed)",
+    "deadline_date": null,
+    "region": "Latin America",
+    "program_type": "Government scholarship",
+    "applicant_utility": null,
+    "official_details": null
+   },
+   "missing_fields": [
+    "funding_amount",
+    "funding_currency",
+    "documents",
+    "english_requirement",
+    "duration",
+    "deadline_date",
+    "applicant_utility",
+    "official_details"
+   ]
+  }
+ ],
+ "result_file": "C:\\Users\\GopaL\\Desktop\\Projects folder\\ScholarZone\\backend\\research_output\\live500\\results\\agent_311.json"
+}

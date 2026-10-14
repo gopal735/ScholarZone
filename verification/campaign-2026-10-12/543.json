@@ -1,0 +1,47 @@
+{
+  "id": "543",
+  "verdict": "active",
+  "confidence": "high",
+  "checked_at": "2026-10-12T20:02:02.239Z",
+  "sources": [
+    {
+      "url": "https://www.daad.de/rise/en/rise-germany",
+      "kind": "official",
+      "note": "DAAD RISE Germany page carrying the published 2027 deadlines"
+    }
+  ],
+  "findings": {
+    "awarding_body": {
+      "status": "confirmed",
+      "detail": "The source URL resolves to DAAD RISE Germany sub-site (daad.de/rise/en). DAAD runs the programme and states it is funded by the German Federal Foreign Office. Official.",
+      "quote": "RISE Germany is funded by the German Federal Foreign Office."
+    },
+    "deadline": {
+      "status": "confirmed",
+      "detail": "The page publishes the exact cycle: applications 15 October - 30 November 2026 (11:59 pm CET) and letters of reference 15 October - 15 December 2026. That matches the record deadline_label word for word and deadline_date 2026-11-30, and the round is currently open (today is 12 October 2026; applications open in three days).",
+      "quote": "Applications: October 15 – November 30, 2026 (11:59 pm CET – Central European Time) - Letters of reference: October 15 – December 15, 2026"
+    },
+    "eligibility": {
+      "status": "confirmed",
+      "detail": "Undergraduate students from North American, British and Irish universities. The record adds \"completed at least two years of study\", which is not on this page (it is in the applicant guidance) but is not contradicted here either.",
+      "quote": "RISE Germany offers undergraduate students from North American, British and Irish universities the opportunity to complete a summer research internship at top German universities and research institutions."
+    },
+    "funding": {
+      "status": "confirmed",
+      "detail": "DAAD provides a monthly stipend for three months to help cover living expenses; hosts provide housing assistance. A stipend, not a fully funded award - which matches the record.",
+      "quote": "DAAD provides students a monthly stipend for three months to help cover living expenses - Host universities ... provide housing assistance"
+    },
+    "degree_levels": {
+      "status": "confirmed",
+      "detail": "The programme is a research internship for undergraduates; the record correctly lists Undergraduate.",
+      "quote": "undergraduate students from North American, British and Irish universities"
+    }
+  },
+  "recommended_field_updates": {
+    "official_source_url": null,
+    "deadline_text": "Applications: October 15 – November 30, 2026 (11:59 pm CET); letters of reference: October 15 – December 15, 2026; ranking by providers January 14 – January 27, 2027; announcement of positions around February/March 2027",
+    "deadline_date": "2026-11-30",
+    "verification_notes": "Verified live on daad.de/rise on 2026-10-12 against DAAD own page. The deadline is published verbatim on the page and the 2027 round is open. Keep the exact date 2026-11-30; the reference letters run two weeks later, so an applicant-facing deadline note should mention both."
+  },
+  "notes_for_reviewer": null
+}

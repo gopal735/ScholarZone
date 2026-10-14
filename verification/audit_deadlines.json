@@ -1,0 +1,2838 @@
+[
+ {
+  "id": 1,
+  "title": "Erasmus Mundus Joint Masters (EMJM)",
+  "deadline_display": "Varies by consortium/programme - typically Dec-Feb for a Sept/Oct intake; no single central deadline",
+  "deadline_date": null,
+  "deadline_precision": "application_dead",
+  "application_period": "Varies by consortium/programme - typically Dec-Feb for a Sept/Oct intake; no single central deadline",
+  "flags": [
+   "precision_not_in_vocabulary:application_dead",
+   "prose_without_month_or_policy"
+  ]
+ },
+ {
+  "id": 8,
+  "title": "France Excellence Charpak Scholarship Program",
+  "deadline_display": "Varies by track (typically spring/summer)",
+  "deadline_date": null,
+  "deadline_precision": "month",
+  "application_period": "Varies by track - typically spring/summer",
+  "flags": [
+   "prose_without_month_or_policy"
+  ]
+ },
+ {
+  "id": 9,
+  "title": "MOPGA Visiting Fellowship Program",
+  "deadline_display": "15 December 2026",
+  "deadline_date": "2026-12-15",
+  "deadline_precision": "day",
+  "application_period": "Calls for application launched yearly in September; applicants notified by email in May; fellowship starts between September and December",
+  "flags": [
+   "precision_not_in_vocabulary:day"
+  ]
+ },
+ {
+  "id": 10,
+  "title": "Deutschlandstipendium (Germany Scholarship)",
+  "deadline_display": "Varies by university (typically spring/summer for winter semester)",
+  "deadline_date": null,
+  "deadline_precision": "unknown",
+  "application_period": "Varies by university - check directly with the university's scholarship office",
+  "flags": [
+   "prose_without_month_or_policy"
+  ]
+ },
+ {
+  "id": 12,
+  "title": "JASSO Monbukagakusho Honors Scholarship",
+  "deadline_display": "Varies by institution",
+  "deadline_date": null,
+  "deadline_precision": "unknown",
+  "application_period": "Varies by educational institution - inquire at the international student office of the enrolled institution",
+  "flags": [
+   "prose_without_month_or_policy"
+  ]
+ },
+ {
+  "id": 13,
+  "title": "POSCO TJ Park Foundation Global Scholarship",
+  "deadline_display": "Typically May annually",
+  "deadline_date": null,
+  "deadline_precision": "month",
+  "application_period": "",
+  "flags": [
+   "month_claimed_but_no_date"
+  ]
+ },
+ {
+  "id": 15,
+  "title": "EPFL Master Excellence Fellowships",
+  "deadline_display": "December 15 for applications submitted via IS-Academia. January 31 for EPFL students applying for a consecutive Master's degree.",
+  "deadline_date": "2026-12-15",
+  "deadline_precision": "day",
+  "application_period": "December 15.",
+  "flags": [
+   "precision_not_in_vocabulary:day"
+  ]
+ },
+ {
+  "id": 16,
+  "title": "Marie Skłodowska-Curie Actions (MSCA) Postdoctoral Fellowships",
+  "deadline_display": "Typically September/October annually",
+  "deadline_date": null,
+  "deadline_precision": "month",
+  "application_period": "can be submitted at any time from the opening date of the chosen call",
+  "flags": [
+   "month_claimed_but_no_date"
+  ]
+ },
+ {
+  "id": 17,
+  "title": "Erasmus+ Student Exchange (Studying Abroad)",
+  "deadline_display": "Varies by university (typically 1–3 months before departure)",
+  "deadline_date": null,
+  "deadline_precision": "application_dead",
+  "application_period": "For the decentralised activities managed by National Agencies , please apply using the Erasmus+ and European Solidarity Corps page .",
+  "flags": [
+   "precision_not_in_vocabulary:application_dead",
+   "prose_without_month_or_policy"
+  ]
+ },
+ {
+  "id": 20,
+  "title": "France Excellence Major Scholarship",
+  "deadline_display": "Typically February-March annually (2026 campaign: 16 February - 12 March 2026)",
+  "deadline_date": null,
+  "deadline_precision": "month",
+  "application_period": "February-March annually",
+  "flags": [
+   "month_claimed_but_no_date"
+  ]
+ },
+ {
+  "id": 24,
+  "title": "Humboldt Research Fellowship",
+  "deadline_display": "Rolling in three calls per year, each opening approximately eight months before the selection meeting and closing when 800 applications are received. The next call opens on 15 November 2026 for the July 2027 selection meeting, with the earliest possible fellowship start in September 2027. The current call has reached the maximum of 800 applications and no new applications can be created.",
+  "deadline_date": "2026-11-15",
+  "deadline_precision": "day",
+  "application_period": "Three calls per year: opened 15 March 2026 (selection meeting November 2026, earliest start February 2027), 15 July 2026 (selection meeting March 2027, earliest start May 2027), and next on 15 November 2026 (selection meeting July 2027, earliest start September 2027). Each call closes automatically once 800 applications are received.",
+  "flags": [
+   "precision_not_in_vocabulary:day"
+  ]
+ },
+ {
+  "id": 25,
+  "title": "JASSO Student Exchange Support Program",
+  "deadline_display": "Varies by Japanese host university",
+  "deadline_date": null,
+  "deadline_precision": "unknown",
+  "application_period": "Varies by host university agreement",
+  "flags": [
+   "prose_without_month_or_policy"
+  ]
+ },
+ {
+  "id": 31,
+  "title": "Netherlands Fellowship Programme (NFP/OTS)",
+  "deadline_display": "Varies by programme — check Nuffic website",
+  "deadline_date": null,
+  "deadline_precision": "month",
+  "application_period": "",
+  "flags": [
+   "prose_without_month_or_policy"
+  ]
+ },
+ {
+  "id": 34,
+  "title": "Taiwan Scholarship Program",
+  "deadline_display": "Typically March-April, varies by embassy",
+  "deadline_date": null,
+  "deadline_precision": "month",
+  "application_period": "",
+  "flags": [
+   "month_claimed_but_no_date"
+  ]
+ },
+ {
+  "id": 36,
+  "title": "MAECI Italian Government Scholarship",
+  "deadline_display": "Typically April-May each year",
+  "deadline_date": null,
+  "deadline_precision": "month",
+  "application_period": "",
+  "flags": [
+   "month_claimed_but_no_date"
+  ]
+ },
+ {
+  "id": 39,
+  "title": "Pearson International Scholarship (University of Toronto)",
+  "deadline_display": "2026-11-06",
+  "deadline_date": "2026-11-06",
+  "deadline_precision": "day",
+  "application_period": "",
+  "flags": [
+   "precision_not_in_vocabulary:day",
+   "prose_without_month_or_policy"
+  ]
+ },
+ {
+  "id": 40,
+  "title": "ARES Scholarships (Belgium)",
+  "deadline_display": "2026-09-18",
+  "deadline_date": "2026-09-18",
+  "deadline_precision": "day",
+  "application_period": "",
+  "flags": [
+   "precision_not_in_vocabulary:day",
+   "prose_without_month_or_policy"
+  ]
+ },
+ {
+  "id": 41,
+  "title": "AECID Spanish Government Scholarship",
+  "deadline_display": "Typically March-April each year",
+  "deadline_date": null,
+  "deadline_precision": "month",
+  "application_period": "",
+  "flags": [
+   "month_claimed_but_no_date"
+  ]
+ },
+ {
+  "id": 48,
+  "title": "University of Sydney Vice-Chancellor's International Scholarships Scheme",
+  "deadline_display": "associated with their scholarship offer round, and remain enrolled after census date.",
+  "deadline_date": "2026-12-16",
+  "deadline_precision": "month",
+  "application_period": "Round-dependent; e.g., Semester 1 2027: Round 1 closes 17 Aug 2026, Round 2 closes 5 Oct 2026, Round 3 closes 16 Nov 2026",
+  "flags": [
+   "prose_without_month_or_policy"
+  ]
+ },
+ {
+  "id": 51,
+  "title": "UWA Global Excellence Scholarship",
+  "deadline_display": "indicated in your offer.",
+  "deadline_date": null,
+  "deadline_precision": "month",
+  "application_period": "Automatic consideration upon application; assessed upon final transcript submission",
+  "flags": [
+   "prose_without_month_or_policy"
+  ]
+ },
+ {
+  "id": 53,
+  "title": "Hubert H. Humphrey Fellowship Program",
+  "deadline_display": "Varies by country — U.S. Embassies/Fulbright Commissions must submit nominations by mid-September",
+  "deadline_date": null,
+  "deadline_precision": "month",
+  "application_period": "Varies by country; nominations due mid-September, fellowships begin August-September",
+  "flags": [
+   "month_claimed_but_no_date"
+  ]
+ },
+ {
+  "id": 58,
+  "title": "Brandeis University Wien International Scholarship",
+  "deadline_display": "Published Brandeis first-year deadlines (admission application deadline, with the same date for the CSS Profile and FAFSA financial aid deadline): Spring Admission (for Jan. 2027 semester) - Nov. 2, notification Rolling (December); Early Decision I - Nov.",
+  "deadline_date": "2027-01-15",
+  "deadline_precision": "day",
+  "application_period": "Automatic consideration upon admission application",
+  "flags": [
+   "precision_not_in_vocabulary:day"
+  ]
+ },
+ {
+  "id": 61,
+  "title": "Clark University Presidential Scholarship",
+  "deadline_display": "Early Decision I and Early Action: November 1; Early Decision II: January 15; Regular Decision: January 15. Transfer - Fall Semester Start: rolling, February 1 - June 1; Transfer - Spring Semester Start: rolling, September 1 - November 1.",
+  "deadline_date": "2026-11-01",
+  "deadline_precision": "day",
+  "application_period": "Separate essay required in addition to admission application",
+  "flags": [
+   "precision_not_in_vocabulary:day"
+  ]
+ },
+ {
+  "id": 63,
+  "title": "Michigan State University International Merit Scholarships",
+  "deadline_display": "Nov. 1 early action deadline (guarantees a decision by January 15)",
+  "deadline_date": "2026-11-01",
+  "deadline_precision": "day",
+  "application_period": "Automatic consideration upon admission application",
+  "flags": [
+   "precision_not_in_vocabulary:day"
+  ]
+ },
+ {
+  "id": 64,
+  "title": "University of Oregon International Cultural Service Program",
+  "deadline_display": "2027-02-01",
+  "deadline_date": "2027-02-01",
+  "deadline_precision": "day",
+  "application_period": "Fall admission; separate ICSP application required",
+  "flags": [
+   "precision_not_in_vocabulary:day",
+   "prose_without_month_or_policy"
+  ]
+ },
+ {
+  "id": 68,
+  "title": "Gates Cambridge Scholarship",
+  "deadline_display": "Same as course funding deadline (varies by department)",
+  "deadline_date": "2026-10-31",
+  "deadline_precision": "varies",
+  "application_period": "Gates Cambridge manages two selection rounds each year; full details are below.",
+  "flags": [
+   "prose_without_month_or_policy"
+  ]
+ },
+ {
+  "id": 69,
+  "title": "Cambridge Trust International Scholarship",
+  "deadline_display": "Same as course funding deadline",
+  "deadline_date": null,
+  "deadline_precision": "varies",
+  "application_period": "",
+  "flags": [
+   "prose_without_month_or_policy"
+  ]
+ },
+ {
+  "id": 70,
+  "title": "President's PhD Scholarships — Imperial College London",
+  "deadline_display": "Applicants who apply by 23:59 (UK time) 2 November 2026 and are awarded a scholarship will be notified by 31 January 2027. Applicants who apply by 23:59 (UK time) 11 January 2027 will be notified by 15 April 2027. Applicants who apply by 23:59 (UK time) 1",
+  "deadline_date": "2026-11-02",
+  "deadline_precision": "day_and_time",
+  "application_period": "Scholarship-specific instructions for the admissions process are below; you must also meet any additional application requirements stated by your department of choice.",
+  "flags": [
+   "precision_not_in_vocabulary:day_and_time"
+  ]
+ },
+ {
+  "id": 73,
+  "title": "LSE PhD Studentships",
+  "deadline_display": "information.",
+  "deadline_date": null,
+  "deadline_precision": "varies",
+  "application_period": "",
+  "flags": [
+   "prose_without_month_or_policy"
+  ]
+ },
+ {
+  "id": 75,
+  "title": "Global Futures Scholarship (South Asia) — University of Manchester",
+  "deadline_display": "Applicants must apply for the scholarship via an online form by 25th April 2027",
+  "deadline_date": "2027-04-25",
+  "deadline_precision": "day",
+  "application_period": "",
+  "flags": [
+   "precision_not_in_vocabulary:day"
+  ]
+ },
+ {
+  "id": 78,
+  "title": "GREAT Scholarship 2026 — University of Edinburgh (Bangladesh)",
+  "deadline_display": "Varies by institution (2026/27 cycle)",
+  "deadline_date": null,
+  "deadline_precision": "varies",
+  "application_period": "",
+  "flags": [
+   "prose_without_month_or_policy"
+  ]
+ },
+ {
+  "id": 84,
+  "title": "UBC International Major Entrance Scholarship (IMES)",
+  "deadline_display": "2027-01-15",
+  "deadline_date": "2027-01-15",
+  "deadline_precision": "day",
+  "application_period": "If you apply to UBC by the admissions deadline , you will automatically be considered for the International Major Entrance Scholarship and the Outstanding International Student Award.",
+  "flags": [
+   "precision_not_in_vocabulary:day",
+   "prose_without_month_or_policy"
+  ]
+ },
+ {
+  "id": 85,
+  "title": "UBC International Scholars Program",
+  "deadline_display": "Applications for the September 2027 intake will open on October 5, 2026. The International Scholars Program application is due November 15 (11:59 p.m. PST). Required admission documents and proof of meeting UBC's English Language Admission Standard are due January 31, 2027.",
+  "deadline_date": "2026-11-15",
+  "deadline_precision": "day",
+  "application_period": "Opens October 5, 2026 and closes November 15, 2026 (11:59 p.m. PST) for the September 2027 intake. Supporting admission documents and English language results due January 31, 2027. Video interviews January to March 2027. Results released on a rolling basis February to April 2027, with decisions confirmed by early to mid-April 2027.",
+  "flags": [
+   "precision_not_in_vocabulary:day"
+  ]
+ },
+ {
+  "id": 90,
+  "title": "University of Waterloo International Student Entrance Scholarship",
+  "deadline_display": "Application deadline (most programs other than Engineering) - February 1. Application deadline for Engineering programs (excluding Architecture) - January 15. Documents deadline for Engineering programs - February 1. Deadline to submit documents (programs",
+  "deadline_date": "2027-02-01",
+  "deadline_precision": "day",
+  "application_period": "If you suspect that you do not meet the English proficiency requirements, you should take a test as soon as possible to meet the document deadline.",
+  "flags": [
+   "precision_not_in_vocabulary:day"
+  ]
+ },
+ {
+  "id": 94,
+  "title": "INSEAD MBA / Master in Management / Master in Finance Scholarships",
+  "deadline_display": "Tied to admissions rounds (MBA has 4 rounds; MIM/MIF Aug intake)",
+  "deadline_date": null,
+  "deadline_precision": "varies",
+  "application_period": "",
+  "flags": [
+   "prose_without_month_or_policy"
+  ]
+ },
+ {
+  "id": 97,
+  "title": "Barcelona School of Economics (BSE) Master's Scholarships",
+  "deadline_display": "Applications open in October for the next academic year's intake. First round of admissions deadline: January 15 - candidates who submit a completed application before January 15 will be considered for all funding opportunities, while those who apply afte",
+  "deadline_date": "2027-01-15",
+  "deadline_precision": "day",
+  "application_period": "Payment can be done via the application platform. The application fee is payable by credit card or Flywire.",
+  "flags": [
+   "precision_not_in_vocabulary:day"
+  ]
+ },
+ {
+  "id": 98,
+  "title": "IE University – Master's Awards & Scholarships",
+  "deadline_display": "Rolling – automatic upon admission application; foundation scholarships have separate deadlines",
+  "deadline_date": null,
+  "deadline_precision": "varies",
+  "application_period": "",
+  "flags": [
+   "prose_without_month_or_policy"
+  ]
+ },
+ {
+  "id": 100,
+  "title": "University of Barcelona (UB) Master's Degree+UB Scholarships",
+  "deadline_display": "Applications for 2026-2027 intake; check official page for current round",
+  "deadline_date": null,
+  "deadline_precision": "varies",
+  "application_period": "",
+  "flags": [
+   "prose_without_month_or_policy"
+  ]
+ },
+ {
+  "id": 101,
+  "title": "A*STAR Graduate Scholarship (AGS)",
+  "deadline_display": "Application period: 1 November to 1 February & 1 June to 10 August. First application cycle opens on 1 November and closes on 1 February of the following year; second application cycle opens on 1 June and closes on 10 August of the following year.",
+  "deadline_date": "2027-02-01",
+  "deadline_precision": "day",
+  "application_period": "Two cycles a year: 1 November to 1 February (outcomes from mid-April) and 1 June to 10 August (outcomes from mid-November). A*GA may consider off-cycle applications on a case-by-case basis.",
+  "flags": [
+   "precision_not_in_vocabulary:day"
+  ]
+ },
+ {
+  "id": 103,
+  "title": "NUS Commonwealth Scholarship",
+  "deadline_display": "~Nov 2026 for Aug 2027 intake (verify official site)",
+  "deadline_date": null,
+  "deadline_precision": "varies",
+  "application_period": "",
+  "flags": [
+   "prose_without_month_or_policy"
+  ]
+ },
+ {
+  "id": 104,
+  "title": "NUS President's Graduate Fellowship (PGF)",
+  "deadline_display": "Aligns with PhD admission intake",
+  "deadline_date": null,
+  "deadline_precision": "varies",
+  "application_period": "",
+  "flags": [
+   "prose_without_month_or_policy"
+  ]
+ },
+ {
+  "id": 105,
+  "title": "NUS International Undergraduate Scholarship",
+  "deadline_display": "Based on UG admission cycle (Feb–Mar for Aug intake); automatic consideration with admission application",
+  "deadline_date": null,
+  "deadline_precision": "varies",
+  "application_period": "Latest by May",
+  "flags": [
+   "prose_without_month_or_policy"
+  ]
+ },
+ {
+  "id": 107,
+  "title": "NTU Nanyang President's Graduate Scholarship (NPGS)",
+  "deadline_display": "Varies by programme",
+  "deadline_date": null,
+  "deadline_precision": "varies",
+  "application_period": "",
+  "flags": [
+   "prose_without_month_or_policy"
+  ]
+ },
+ {
+  "id": 108,
+  "title": "SMU Lee Kong Chian Scholars' Programme (LKCSP)",
+  "deadline_display": "With UG admission (Jan–Mar)",
+  "deadline_date": null,
+  "deadline_precision": "varies",
+  "application_period": "Academic Year 2026-27 Application Opening Date",
+  "flags": [
+   "prose_without_month_or_policy"
+  ]
+ },
+ {
+  "id": 109,
+  "title": "SUTD President's Graduate Fellowship (PGF)",
+  "deadline_display": "30 Oct 2026 (January 2027 intake)",
+  "deadline_date": "2026-10-30",
+  "deadline_precision": "day",
+  "application_period": "",
+  "flags": [
+   "precision_not_in_vocabulary:day"
+  ]
+ },
+ {
+  "id": 117,
+  "title": "IIT Hyderabad FIRST Fellowship (Fully-funded International Research Scholars in Technology)",
+  "deadline_display": "2026-10-31",
+  "deadline_date": "2026-10-31",
+  "deadline_precision": "day",
+  "application_period": "",
+  "flags": [
+   "precision_not_in_vocabulary:day",
+   "prose_without_month_or_policy"
+  ]
+ },
+ {
+  "id": 120,
+  "title": "Alan and Jane Handler Endowed Scholarship — University of Rochester",
+  "deadline_display": "30 November 2026",
+  "deadline_date": "2026-11-30",
+  "deadline_precision": "day",
+  "application_period": "",
+  "flags": [
+   "precision_not_in_vocabulary:day"
+  ]
+ },
+ {
+  "id": 122,
+  "title": "Karsh International Scholars Program — Duke University",
+  "deadline_display": "There is no separate Karsh Scholarship deadline. The operative deadline is the Duke admission decision-plan deadline for the CSS Profile: November 3 for Early Decision and February 1 for Regular Decision. As at the 2026-10-01 verification date the next bi",
+  "deadline_date": "2026-11-03",
+  "deadline_precision": "day",
+  "application_period": "",
+  "flags": [
+   "precision_not_in_vocabulary:day"
+  ]
+ },
+ {
+  "id": 125,
+  "title": "Harvard University Financial Aid (International)",
+  "deadline_display": "CSS Profile, FAFSA and IDOC all due: November 1 (Restrictive Early Action and QuestBridge Match), February 1 (Regular Decision), March 1 (Transfer).",
+  "deadline_date": "2026-11-01",
+  "deadline_precision": "day",
+  "application_period": "",
+  "flags": [
+   "precision_not_in_vocabulary:day"
+  ]
+ },
+ {
+  "id": 127,
+  "title": "Princeton University Financial Aid (International)",
+  "deadline_display": "Jan. 1 Application with Princeton-specific Questions Due",
+  "deadline_date": "2027-01-01",
+  "deadline_precision": "day",
+  "application_period": "If you choose to submit testing, applicants should take the SAT or the ACT by the October test date for single-choice early action and the December date for regular decision.",
+  "flags": [
+   "precision_not_in_vocabulary:day",
+   "prose_without_month_or_policy"
+  ]
+ },
+ {
+  "id": 135,
+  "title": "Politecnico di Milano — Merit Based International Scholarships",
+  "deadline_display": "A valid certificate of English language proficiency is required. To be considered for a scholarship, this certificate must be submitted by February 21st 2026",
+  "deadline_date": "2026-12-01",
+  "deadline_precision": "day",
+  "application_period": "",
+  "flags": [
+   "precision_not_in_vocabulary:day"
+  ]
+ },
+ {
+  "id": 139,
+  "title": "Bocconi University — ISU Bocconi Scholarship / Bocconi4Access to Education",
+  "deadline_display": "First year BSc and law programmes, Early session and HEC 1st round for international candidates: November 12 - 30 November 2026",
+  "deadline_date": "2026-11-30",
+  "deadline_precision": "day",
+  "application_period": "",
+  "flags": [
+   "precision_not_in_vocabulary:day"
+  ]
+ },
+ {
+  "id": 140,
+  "title": "University of Turin — Talent 4 UniTo",
+  "deadline_display": "Not specified in source (verify on portal for current cycle)",
+  "deadline_date": null,
+  "deadline_precision": "varies",
+  "application_period": "",
+  "flags": [
+   "prose_without_month_or_policy"
+  ]
+ },
+ {
+  "id": 141,
+  "title": "University of Turin — UNICORE 8.0 (University Corridors for Refugees)",
+  "deadline_display": "Not specified in source",
+  "deadline_date": null,
+  "deadline_precision": "varies",
+  "application_period": "",
+  "flags": [
+   "prose_without_month_or_policy"
+  ]
+ },
+ {
+  "id": 144,
+  "title": "MOFA Taiwan Scholarship",
+  "deadline_display": "from February 1 to March 31",
+  "deadline_date": "2027-03-31",
+  "deadline_precision": "day",
+  "application_period": "",
+  "flags": [
+   "precision_not_in_vocabulary:day"
+  ]
+ },
+ {
+  "id": 150,
+  "title": "NYCU Elite Ph.D. Scholarship for New Students Award",
+  "deadline_display": "Application time 2026/08/10 00:00 - 2026/11/13 11:59",
+  "deadline_date": "2026-11-13",
+  "deadline_precision": "day_and_time",
+  "application_period": "",
+  "flags": [
+   "precision_not_in_vocabulary:day_and_time",
+   "prose_without_month_or_policy"
+  ]
+ },
+ {
+  "id": 151,
+  "title": "MOE Elite Scholarship for University Lecturers from South & Southeast Asia",
+  "deadline_display": "No central deadline is published. The scholarship site publishes guidelines, forms and comparison tables, and directs every applicant to their local Taiwan Representative Office, which owns the application timing.",
+  "deadline_date": "2026-10-12",
+  "deadline_precision": "day",
+  "application_period": "",
+  "flags": [
+   "precision_not_in_vocabulary:day",
+   "prose_without_month_or_policy"
+  ]
+ },
+ {
+  "id": 154,
+  "title": "University of St.Gallen (HSG) Excellence Scholarships for Bachelor Students",
+  "deadline_display": "Varies (typically after admission)",
+  "deadline_date": null,
+  "deadline_precision": "varies",
+  "application_period": "",
+  "flags": [
+   "prose_without_month_or_policy"
+  ]
+ },
+ {
+  "id": 157,
+  "title": "CERN Doctoral Student Programme",
+  "deadline_display": "Before 16/10/2026 at 23:59 (Geneva Time)",
+  "deadline_date": "2026-10-16",
+  "deadline_precision": "day_and_time",
+  "application_period": "",
+  "flags": [
+   "precision_not_in_vocabulary:day_and_time",
+   "prose_without_month_or_policy"
+  ]
+ },
+ {
+  "id": 158,
+  "title": "CERN Research Fellowship",
+  "deadline_display": "Rolling",
+  "deadline_date": null,
+  "deadline_precision": "varies",
+  "application_period": "",
+  "flags": [
+   "prose_without_month_or_policy"
+  ]
+ },
+ {
+  "id": 159,
+  "title": "IMD MBA Scholarships",
+  "deadline_display": "Varies (aligned with MBA admissions)",
+  "deadline_date": null,
+  "deadline_precision": "varies",
+  "application_period": "",
+  "flags": [
+   "prose_without_month_or_policy"
+  ]
+ },
+ {
+  "id": 161,
+  "title": "WIPO Fellowship Program",
+  "deadline_display": "Rolling (specific vacancies announced periodically)",
+  "deadline_date": null,
+  "deadline_precision": "varies",
+  "application_period": "",
+  "flags": [
+   "prose_without_month_or_policy"
+  ]
+ },
+ {
+  "id": 163,
+  "title": "TU Wien Scholarships for International Students",
+  "deadline_display": "Varies (check official website for current calls)",
+  "deadline_date": null,
+  "deadline_precision": "varies",
+  "application_period": "",
+  "flags": [
+   "prose_without_month_or_policy"
+  ]
+ },
+ {
+  "id": 166,
+  "title": "Johannes Kepler University Linz (JKU) Scholarships",
+  "deadline_display": "Varies (check official website)",
+  "deadline_date": null,
+  "deadline_precision": "varies",
+  "application_period": "",
+  "flags": [
+   "prose_without_month_or_policy"
+  ]
+ },
+ {
+  "id": 169,
+  "title": "CEU Scholarships (Central European University) — Vienna",
+  "deadline_display": "2026-10-15",
+  "deadline_date": "2026-10-15",
+  "deadline_precision": "day",
+  "application_period": "",
+  "flags": [
+   "precision_not_in_vocabulary:day",
+   "prose_without_month_or_policy"
+  ]
+ },
+ {
+  "id": 170,
+  "title": "Webster University Vienna Scholarships",
+  "deadline_display": "Nov. 30 at 13:00 CET",
+  "deadline_date": "2026-11-30",
+  "deadline_precision": "day_and_time",
+  "application_period": "",
+  "flags": [
+   "precision_not_in_vocabulary:day_and_time",
+   "prose_without_month_or_policy"
+  ]
+ },
+ {
+  "id": 171,
+  "title": "Modul University Vienna Scholarships",
+  "deadline_display": "Varies (check official website)",
+  "deadline_date": null,
+  "deadline_precision": "varies",
+  "application_period": "",
+  "flags": [
+   "prose_without_month_or_policy"
+  ]
+ },
+ {
+  "id": 174,
+  "title": "Delft University of Technology (TU Delft) Justus & Louise van Effen Scholarship",
+  "deadline_display": "1 December 2026 (23:59 CET)",
+  "deadline_date": "2026-12-01",
+  "deadline_precision": "day_and_time",
+  "application_period": "",
+  "flags": [
+   "precision_not_in_vocabulary:day_and_time"
+  ]
+ },
+ {
+  "id": 176,
+  "title": "Leiden University Excellence Scholarship (LExS)",
+  "deadline_display": "Deadline 1 December 2026",
+  "deadline_date": "2026-12-01",
+  "deadline_precision": "day",
+  "application_period": "",
+  "flags": [
+   "precision_not_in_vocabulary:day"
+  ]
+ },
+ {
+  "id": 179,
+  "title": "Radboud University Scholarship Programme",
+  "deadline_display": "your application needs to be complete by 14 February 2027 23:59 CET at the latest",
+  "deadline_date": "2027-02-14",
+  "deadline_precision": "day_and_time",
+  "application_period": "",
+  "flags": [
+   "precision_not_in_vocabulary:day_and_time"
+  ]
+ },
+ {
+  "id": 180,
+  "title": "Maastricht University Holland High Potential Scholarship",
+  "deadline_display": "Applications are open from 1 October 2026 until 1 February 2027 23:59 hrs.",
+  "deadline_date": "2027-02-01",
+  "deadline_precision": "day_and_time",
+  "application_period": "Keep in mind that it takes us time to evaluate your documents, so please begin applying well before the deadline.",
+  "flags": [
+   "precision_not_in_vocabulary:day_and_time"
+  ]
+ },
+ {
+  "id": 181,
+  "title": "University of Twente Scholarship (UTS)",
+  "deadline_display": "Application forms closes per 1 April 2027, 16.00 CET",
+  "deadline_date": "2027-04-01",
+  "deadline_precision": "day_and_time",
+  "application_period": "",
+  "flags": [
+   "precision_not_in_vocabulary:day_and_time"
+  ]
+ },
+ {
+  "id": 185,
+  "title": "KTH Royal Institute of Technology — KTH Scholarship",
+  "deadline_display": "15 January 2027: Application closes",
+  "deadline_date": "2027-01-15",
+  "deadline_precision": "day",
+  "application_period": "",
+  "flags": [
+   "precision_not_in_vocabulary:day"
+  ]
+ },
+ {
+  "id": 186,
+  "title": "Chalmers University of Technology — IPOET Scholarship",
+  "deadline_display": "The application period for scholarships administered by Chalmers is open from late November 2026 until mid-January 2027. Chalmers states the scholarship deadline aligns with the programme application deadline, not the deadline for submitting supporting do",
+  "deadline_date": "2027-01-15",
+  "deadline_precision": "day",
+  "application_period": "",
+  "flags": [
+   "precision_not_in_vocabulary:day"
+  ]
+ },
+ {
+  "id": 194,
+  "title": "UQ International Excellence Scholarship",
+  "deadline_display": "Automatic consideration with admission",
+  "deadline_date": null,
+  "deadline_precision": "varies",
+  "application_period": "",
+  "flags": [
+   "prose_without_month_or_policy"
+  ]
+ },
+ {
+  "id": 197,
+  "title": "University of Sydney International Scholarship (USydIS)",
+  "deadline_display": "Research Period 3 and 4, 2027 - Submission deadline 18 December 2026; Outcomes Issued from 26 February 2027, Off-Shore Applicants 18 May 2027, On-Shore Applicants 30 June 2027",
+  "deadline_date": "2026-12-18",
+  "deadline_precision": "day",
+  "application_period": "",
+  "flags": [
+   "precision_not_in_vocabulary:day"
+  ]
+ },
+ {
+  "id": 199,
+  "title": "Deakin International Vice-Chancellor's Scholarship 100% (South Asia)",
+  "deadline_display": "Rolling (apply 1+ month before start)",
+  "deadline_date": null,
+  "deadline_precision": "varies",
+  "application_period": "",
+  "flags": [
+   "prose_without_month_or_policy"
+  ]
+ },
+ {
+  "id": 202,
+  "title": "RMIT Future Leaders Scholarship",
+  "deadline_display": "Automatic consideration",
+  "deadline_date": null,
+  "deadline_precision": "varies",
+  "application_period": "Key dates and intake information for international students",
+  "flags": [
+   "prose_without_month_or_policy"
+  ]
+ },
+ {
+  "id": 207,
+  "title": "La Trobe High Achiever Scholarship",
+  "deadline_display": "CLOSING DATE 31/12/2027 (opening date 10/02/2026)",
+  "deadline_date": "2027-12-31",
+  "deadline_precision": "day",
+  "application_period": "",
+  "flags": [
+   "precision_not_in_vocabulary:day",
+   "prose_without_month_or_policy"
+  ]
+ },
+ {
+  "id": 209,
+  "title": "Seoul National University Graduate Scholarship for Excellent Foreign Students (GSFS)",
+  "deadline_display": "During admission period for international students every semester",
+  "deadline_date": null,
+  "deadline_precision": "varies",
+  "application_period": "",
+  "flags": [
+   "prose_without_month_or_policy"
+  ]
+ },
+ {
+  "id": 210,
+  "title": "KAIST Scholarship (KAIST International Undergraduate Admission)",
+  "deadline_display": "Early Admissions (Spring Track, 2027): Application Period and Document Submission September 22 - October 22, 2026, 6:00 PM (KST); Recommendation Letter Submission October 29, 2026, 6:00 PM (KST). Regular Admissions (Fall Track / Fall Track Only, 2027): November 10, 2026 - January 14, 2027, 6:00 PM (KST); Recommendation Letter Submission January 21, 2027, 6:00 PM (KST).",
+  "deadline_date": "2026-10-22",
+  "deadline_precision": "day",
+  "application_period": "Early Admissions for the Spring 2027 semester run 2026-09-22 to 2026-10-22 (6:00 PM KST), so on 2026-10-01 this window is open. Regular Admissions for the Fall 2027 semester run 2026-11-10 to 2027-01-14 (6:00 PM KST). There is no separate scholarship application: the application period is the same as the admission application period.",
+  "flags": [
+   "precision_not_in_vocabulary:day"
+  ]
+ },
+ {
+  "id": 212,
+  "title": "KAIST Prestige Scholarship for International PhD Students (KPS)",
+  "deadline_display": "Spring/Fall Early/Fall Regular",
+  "deadline_date": null,
+  "deadline_precision": "varies",
+  "application_period": "",
+  "flags": [
+   "prose_without_month_or_policy"
+  ]
+ },
+ {
+  "id": 213,
+  "title": "Yonsei University Underwood International College (UIC) Admissions Scholarship",
+  "deadline_display": "Automatic consideration during admission evaluation (no separate application)",
+  "deadline_date": null,
+  "deadline_precision": "varies",
+  "application_period": "",
+  "flags": [
+   "prose_without_month_or_policy"
+  ]
+ },
+ {
+  "id": 214,
+  "title": "Yonsei University International Student Companion Scholarship",
+  "deadline_display": "No separate application; automatic consideration for eligible students",
+  "deadline_date": null,
+  "deadline_precision": "varies",
+  "application_period": "",
+  "flags": [
+   "prose_without_month_or_policy"
+  ]
+ },
+ {
+  "id": 215,
+  "title": "KOICA Scholarship Program (Korea International Cooperation Agency)",
+  "deadline_display": "2026-07-10",
+  "deadline_date": "2026-07-10",
+  "deadline_precision": "day",
+  "application_period": "",
+  "flags": [
+   "precision_not_in_vocabulary:day",
+   "prose_without_month_or_policy"
+  ]
+ },
+ {
+  "id": 216,
+  "title": "GIST (Gwangju Institute of Science and Technology) Government-Sponsored Scholarship",
+  "deadline_display": "Application Period: September 7, 10:00 â€“ October 7, 17:00, 2026 (KST)",
+  "deadline_date": "2026-10-07",
+  "deadline_precision": "day_and_time",
+  "application_period": "",
+  "flags": [
+   "precision_not_in_vocabulary:day_and_time"
+  ]
+ },
+ {
+  "id": 219,
+  "title": "University of Innsbruck Doctoral Scholarship",
+  "deadline_display": "from August 24, 2026 to October 9, 2026 inclusive",
+  "deadline_date": "2026-10-09",
+  "deadline_precision": "day",
+  "application_period": "Admission Period for non-EEA citizens and stateless persons",
+  "flags": [
+   "precision_not_in_vocabulary:day"
+  ]
+ },
+ {
+  "id": 223,
+  "title": "FWF ESPRIT Career Program",
+  "deadline_display": "Varies (check FWF website)",
+  "deadline_date": null,
+  "deadline_precision": "varies",
+  "application_period": "",
+  "flags": [
+   "prose_without_month_or_policy"
+  ]
+ },
+ {
+  "id": 224,
+  "title": "FWF ASTRA Awards",
+  "deadline_display": "Varies (check FWF website)",
+  "deadline_date": null,
+  "deadline_precision": "varies",
+  "application_period": "",
+  "flags": [
+   "prose_without_month_or_policy"
+  ]
+ },
+ {
+  "id": 225,
+  "title": "FWF Doctoral Programs DK",
+  "deadline_display": "Varies (positions advertised individually)",
+  "deadline_date": null,
+  "deadline_precision": "varies",
+  "application_period": "",
+  "flags": [
+   "prose_without_month_or_policy"
+  ]
+ },
+ {
+  "id": 235,
+  "title": "Heinrich Böll Foundation Scholarship",
+  "deadline_display": "Spring 2027: 15 January 2027 to 1 March 2027. Autumn 2027: 15 July 2027 to 1 September 2027.",
+  "deadline_date": "2027-03-01",
+  "deadline_precision": "day",
+  "application_period": "As a first step, check whether you will be able to submit your application in time for the next deadline and whether you meet the formal requirements.",
+  "flags": [
+   "precision_not_in_vocabulary:day"
+  ]
+ },
+ {
+  "id": 240,
+  "title": "JASSO Reservation Program for Monbukagakusho Honors Scholarship by Pre-arrival Admission",
+  "deadline_display": "Through university (before enrollment)",
+  "deadline_date": null,
+  "deadline_precision": "varies",
+  "application_period": "",
+  "flags": [
+   "deadline_display:administrative",
+   "prose_without_month_or_policy"
+  ]
+ },
+ {
+  "id": 241,
+  "title": "Kyushu University International Scholarship",
+  "deadline_display": "Varies (check Kyushu University admissions)",
+  "deadline_date": null,
+  "deadline_precision": "varies",
+  "application_period": "",
+  "flags": [
+   "prose_without_month_or_policy"
+  ]
+ },
+ {
+  "id": 244,
+  "title": "Chinese Government Scholarship - Tsinghua University Program (Type B)",
+  "deadline_display": "Mid-December 2025 for September 2026 enrollment (varies by department)",
+  "deadline_date": null,
+  "deadline_precision": "varies",
+  "application_period": "2.Please scan the original or notarized application documents in color using a scanner. Images captured by mobile phone or camera are not acceptable. Scans of copies are also not acceptable.",
+  "flags": [
+   "deadline_display:administrative"
+  ]
+ },
+ {
+  "id": 256,
+  "title": "University of Auckland Doctoral Scholarship",
+  "deadline_display": "1 November 2026 (2027 dates table, Apply by)",
+  "deadline_date": "2026-11-01",
+  "deadline_precision": "day",
+  "application_period": "",
+  "flags": [
+   "precision_not_in_vocabulary:day"
+  ]
+ },
+ {
+  "id": 257,
+  "title": "University of Otago Global Scholarship",
+  "deadline_display": "Opening date: 1 May in the year prior to study for offshore students; 1 July for onshore students. Closing dates: 10 December for a semester 1 (February) start; 30 April for a semester 2 (July) start for offshore students; 15 August for onshore students.",
+  "deadline_date": "2026-12-10",
+  "deadline_precision": "day",
+  "application_period": "",
+  "flags": [
+   "precision_not_in_vocabulary:day"
+  ]
+ },
+ {
+  "id": 258,
+  "title": "University of Otago Vice-Chancellor's Scholarship for International Students",
+  "deadline_display": "10 December for semester 1 (February) start",
+  "deadline_date": "2026-12-10",
+  "deadline_precision": "day",
+  "application_period": "",
+  "flags": [
+   "precision_not_in_vocabulary:day"
+  ]
+ },
+ {
+  "id": 259,
+  "title": "University of Otago International Academic Excellence Scholarship",
+  "deadline_display": "Invitation to apply after accepting prior scholarship offer",
+  "deadline_date": null,
+  "deadline_precision": "varies",
+  "application_period": "",
+  "flags": [
+   "prose_without_month_or_policy"
+  ]
+ },
+ {
+  "id": 260,
+  "title": "VUW Postgraduate International Scholarship (Victoria University of Wellington)",
+  "deadline_display": "Automatic with admission — assessed at point of offer",
+  "deadline_date": null,
+  "deadline_precision": "varies",
+  "application_period": "We recommend double-checking the scholarship's closing date and time, so you're certain about when you'll need to apply. Closing dates are not flexible.",
+  "flags": [
+   "prose_without_month_or_policy"
+  ]
+ },
+ {
+  "id": 261,
+  "title": "VUW Undergraduate International Scholarship (Victoria University of Wellington)",
+  "deadline_display": "Automatic with admission — assessed at point of offer",
+  "deadline_date": null,
+  "deadline_precision": "varies",
+  "application_period": "",
+  "flags": [
+   "prose_without_month_or_policy"
+  ]
+ },
+ {
+  "id": 263,
+  "title": "Aalto University Excellence Scholarship",
+  "deadline_display": "Application period ends; application form closes. Application form must be submitted before this deadline. 5 January 2027 at 15.00/3pm (UTC +2)",
+  "deadline_date": "2027-01-05",
+  "deadline_precision": "day_and_time",
+  "application_period": "",
+  "flags": [
+   "precision_not_in_vocabulary:day_and_time"
+  ]
+ },
+ {
+  "id": 267,
+  "title": "LUT University Scholarships",
+  "deadline_display": "With admission application",
+  "deadline_date": null,
+  "deadline_precision": "varies",
+  "application_period": "",
+  "flags": [
+   "prose_without_month_or_policy"
+  ]
+ },
+ {
+  "id": 269,
+  "title": "DTU Excellence Scholarship (Technical University of Denmark)",
+  "deadline_display": "2027-01-15",
+  "deadline_date": "2027-01-15",
+  "deadline_precision": "day",
+  "application_period": "Please note that your application will not be processed until the application fee payment has been registered at DTU.",
+  "flags": [
+   "precision_not_in_vocabulary:day",
+   "prose_without_month_or_policy"
+  ]
+ },
+ {
+  "id": 270,
+  "title": "Copenhagen Business School Danish Government Scholarship",
+  "deadline_display": "15 October at 23:59 (CET)",
+  "deadline_date": "2026-10-15",
+  "deadline_precision": "day_and_time",
+  "application_period": "",
+  "flags": [
+   "precision_not_in_vocabulary:day_and_time"
+  ]
+ },
+ {
+  "id": 271,
+  "title": "University of Copenhagen Danish Government Scholarship",
+  "deadline_display": "With admission application",
+  "deadline_date": null,
+  "deadline_precision": "varies",
+  "application_period": "If you are unsure whether you must pay the application deposit fee, please contact the student guidance before the application deadline.",
+  "flags": [
+   "prose_without_month_or_policy"
+  ]
+ },
+ {
+  "id": 272,
+  "title": "Aarhus University Danish State Scholarship",
+  "deadline_display": "Only applicants who have applied for a Master's degree programme no later than 15 January (summer admission) and 15 September (winter admission) will be considered for a tuition waiver/scholarship",
+  "deadline_date": "2027-01-15",
+  "deadline_precision": "day",
+  "application_period": "If you submit your application by the specified deadline, the university will automatically assess you for a scholarship.",
+  "flags": [
+   "precision_not_in_vocabulary:day"
+  ]
+ },
+ {
+  "id": 274,
+  "title": "BI Presidential Scholarship",
+  "deadline_display": "2026-03-01",
+  "deadline_date": "2026-03-01",
+  "deadline_precision": "day",
+  "application_period": "The application deadline is March 1.",
+  "flags": [
+   "precision_not_in_vocabulary:day",
+   "prose_without_month_or_policy"
+  ]
+ },
+ {
+  "id": 275,
+  "title": "BI Master International Scholarship – Bergen",
+  "deadline_display": "2026-03-01",
+  "deadline_date": "2026-03-01",
+  "deadline_precision": "day",
+  "application_period": "Application deadline is March 1.",
+  "flags": [
+   "precision_not_in_vocabulary:day",
+   "prose_without_month_or_policy"
+  ]
+ },
+ {
+  "id": 288,
+  "title": "Budapest University of Technology and Economics (BME) Scholarships",
+  "deadline_display": "Varies by programme (typically aligned with admissions)",
+  "deadline_date": null,
+  "deadline_precision": "varies",
+  "application_period": "",
+  "flags": [
+   "prose_without_month_or_policy"
+  ]
+ },
+ {
+  "id": 292,
+  "title": "Jagiellonian University Rector's Scholarship for International Students",
+  "deadline_display": "The deadline for submitting the application for the Rector's scholarship is October 20 of the academic year for which the scholarship is to be awarded",
+  "deadline_date": "2026-10-20",
+  "deadline_precision": "day_and_time",
+  "application_period": "The deadline for submitting the application for the Rector's scholarship is October 20 of the academic year for which the scholarship is to be awarded.",
+  "flags": [
+   "precision_not_in_vocabulary:day_and_time"
+  ]
+ },
+ {
+  "id": 294,
+  "title": "Czech Government Scholarships — Developing Countries (AY 2026/27)",
+  "deadline_display": "2026-09-30",
+  "deadline_date": "2026-09-30",
+  "deadline_precision": "day",
+  "application_period": "",
+  "flags": [
+   "precision_not_in_vocabulary:day",
+   "prose_without_month_or_policy"
+  ]
+ },
+ {
+  "id": 295,
+  "title": "Charles University Scholarships — International Students",
+  "deadline_display": "Varies by faculty and scholarship type",
+  "deadline_date": null,
+  "deadline_precision": "varies",
+  "application_period": "",
+  "flags": [
+   "prose_without_month_or_policy"
+  ]
+ },
+ {
+  "id": 297,
+  "title": "Masaryk University International Scholarships",
+  "deadline_display": "2027-03-15",
+  "deadline_date": "2027-03-15",
+  "deadline_precision": "day",
+  "application_period": "",
+  "flags": [
+   "precision_not_in_vocabulary:day",
+   "prose_without_month_or_policy"
+  ]
+ },
+ {
+  "id": 305,
+  "title": "Canada Graduate Research Scholarship – Master's (CGRS-M)",
+  "deadline_display": "December 1, 2026 (8:00 p.m. eastern)",
+  "deadline_date": "2026-12-01",
+  "deadline_precision": "day",
+  "application_period": "Annual competition; December deadline",
+  "flags": [
+   "precision_not_in_vocabulary:day"
+  ]
+ },
+ {
+  "id": 306,
+  "title": "Canada Graduate Research Scholarship – Doctoral (CGRS-D)",
+  "deadline_display": "October 19, 2026",
+  "deadline_date": "2026-10-19",
+  "deadline_precision": "day",
+  "application_period": "Annual competition; October deadline",
+  "flags": [
+   "precision_not_in_vocabulary:day"
+  ]
+ },
+ {
+  "id": 317,
+  "title": "Asian Future Leaders Scholarship Program (AFLSP) 2026",
+  "deadline_display": "2026-03-01",
+  "deadline_date": "2026-03-01",
+  "deadline_precision": "day",
+  "application_period": "2.Please scan the original or notarized application documents in color using a scanner. Images captured by mobile phone or camera are not acceptable. Scans of copies are also not acceptable.",
+  "flags": [
+   "precision_not_in_vocabulary:day",
+   "prose_without_month_or_policy"
+  ]
+ },
+ {
+  "id": 318,
+  "title": "Atomic Energy Scholarship Program of China 2026",
+  "deadline_display": "and application batches vary among different departments and schools. Please refer to the \"Remarks of Application\" in the",
+  "deadline_date": null,
+  "deadline_precision": "application_dead",
+  "application_period": "2.Please scan the original or notarized application documents in color using a scanner. Images captured by mobile phone or camera are not acceptable. Scans of copies are also not acceptable.",
+  "flags": [
+   "precision_not_in_vocabulary:application_dead",
+   "prose_without_month_or_policy"
+  ]
+ },
+ {
+  "id": 325,
+  "title": "Czech Government Scholarship – Developing Countries for AY 2027/28",
+  "deadline_display": "is",
+  "deadline_date": "2027-02-28",
+  "deadline_precision": "application_dead",
+  "application_period": "The application fee must be paid in full either by card or via bank transfer . No cash payments are possible. You will find the payment instructions at the end of your online application form.",
+  "flags": [
+   "application_period:payment",
+   "precision_not_in_vocabulary:application_dead",
+   "prose_without_month_or_policy"
+  ]
+ },
+ {
+  "id": 326,
+  "title": "Václav Havel Bursary",
+  "deadline_display": "Applications are submitted twice a year, by 31 March and 31 October of the calendar year.",
+  "deadline_date": "2026-10-31",
+  "deadline_precision": "day",
+  "application_period": "",
+  "flags": [
+   "precision_not_in_vocabulary:day"
+  ]
+ },
+ {
+  "id": 327,
+  "title": "Visegrad Scholarship Program 2027",
+  "deadline_display": "May 31, 2027 at 12:00 PM",
+  "deadline_date": "2027-05-31",
+  "deadline_precision": "application_dead",
+  "application_period": "You do not need to send any documents or hard copies by post. All documents must be uploaded to the online system by the deadline.",
+  "flags": [
+   "precision_not_in_vocabulary:application_dead"
+  ]
+ },
+ {
+  "id": 328,
+  "title": "CTU Scholarship for Foreign Students of English Master's Degree Study Programmes",
+  "deadline_display": "for Winter Semester and the whole Academic Year:",
+  "deadline_date": null,
+  "deadline_precision": "application_dead",
+  "application_period": "b, Language Certificate The printed out forms are to be checked and confirmed/signed by the relevant coordinators at your home university. Upload the document into the registration database.",
+  "flags": [
+   "precision_not_in_vocabulary:application_dead",
+   "prose_without_month_or_policy"
+  ]
+ },
+ {
+  "id": 335,
+  "title": "Aalto University Excellence Scholarship (100% Tuition Fee Waiver)",
+  "deadline_display": "The application period for studies starting in autumn 2027 is 7 December 2026 09:00 - 5 January 2027 15:00 (UTC+2)",
+  "deadline_date": "2027-01-05",
+  "deadline_precision": "day_and_time",
+  "application_period": "",
+  "flags": [
+   "precision_not_in_vocabulary:day_and_time"
+  ]
+ },
+ {
+  "id": 336,
+  "title": "Tampere University Scholarships (Tuition Fee Waiver + International Advancement Scholarship)",
+  "deadline_display": "for accepting their study place.",
+  "deadline_date": null,
+  "deadline_precision": "application_dead",
+  "application_period": "",
+  "flags": [
+   "precision_not_in_vocabulary:application_dead",
+   "prose_without_month_or_policy"
+  ]
+ },
+ {
+  "id": 337,
+  "title": "University of Oulu Tuition Fee Waivers and Early Bird Discount",
+  "deadline_display": "and a link to the payment portal. You may also request a payment link from Admissions Services by email. Please follow the payment instructions provided in the email and in the payment portal.",
+  "deadline_date": null,
+  "deadline_precision": "month",
+  "application_period": "Cooperation Services for companies and organisations Alumni activities Cooperation networks Donate Get enchanted by science",
+  "flags": [
+   "month_claimed_but_no_date"
+  ]
+ },
+ {
+  "id": 338,
+  "title": "University of Eastern Finland (UEF) Tuition Waivers (30% or 50%)",
+  "deadline_display": "(end of December), the university has no obligation to return the tuition fee.",
+  "deadline_date": null,
+  "deadline_precision": "month",
+  "application_period": "",
+  "flags": [
+   "month_claimed_but_no_date"
+  ]
+ },
+ {
+  "id": 339,
+  "title": "University of Turku Tuition Fee Waivers and Early Bird Discount",
+  "deadline_display": "can also be 31 December.",
+  "deadline_date": null,
+  "deadline_precision": "month",
+  "application_period": "",
+  "flags": [
+   "month_claimed_but_no_date"
+  ]
+ },
+ {
+  "id": 340,
+  "title": "Åbo Akademi University Tuition Fee Scholarships (Early Commitment + Fee Waivers)",
+  "deadline_display": "specified in their admissions letter. Admitted students who do not accept their study place and do not pay the tuition fee within the deadline for the early commitment offer need to pay the full amount of 12000 €.",
+  "deadline_date": null,
+  "deadline_precision": "application_dead",
+  "application_period": "",
+  "flags": [
+   "precision_not_in_vocabulary:application_dead",
+   "prose_without_month_or_policy"
+  ]
+ },
+ {
+  "id": 342,
+  "title": "Hanken School of Economics Premium Scholarship",
+  "deadline_display": "for the discounted payment will be stated in your tuition fee payment information given upon admission.",
+  "deadline_date": null,
+  "deadline_precision": "application_dead",
+  "application_period": "If you are exempted from tuition fees on the grounds of your residence permit, upload copies of both the front and back sides of your residence permit card to your application form.",
+  "flags": [
+   "precision_not_in_vocabulary:application_dead",
+   "prose_without_month_or_policy"
+  ]
+ },
+ {
+  "id": 344,
+  "title": "Nokia Foundation Fellow (ICT Research Project Funding)",
+  "deadline_display": "2026-09-15",
+  "deadline_date": "2026-09-15",
+  "deadline_precision": "day",
+  "application_period": "",
+  "flags": [
+   "precision_not_in_vocabulary:day",
+   "prose_without_month_or_policy"
+  ]
+ },
+ {
+  "id": 352,
+  "title": "France-South Africa Scholarship Programme 2027",
+  "deadline_display": "Application deadline: 8 October 2026 at 23:59 (South Africa time)",
+  "deadline_date": "2026-10-08",
+  "deadline_precision": "day_and_time",
+  "application_period": "",
+  "flags": [
+   "precision_not_in_vocabulary:day_and_time"
+  ]
+ },
+ {
+  "id": 354,
+  "title": "InLife Sorbonne Université International Mobility Grants 2026-2027",
+  "deadline_display": "2026-11-02",
+  "deadline_date": "2026-11-02",
+  "deadline_precision": "day",
+  "application_period": "",
+  "flags": [
+   "precision_not_in_vocabulary:day",
+   "prose_without_month_or_policy"
+  ]
+ },
+ {
+  "id": 355,
+  "title": "Sciences Po Mastercard Foundation Scholars Program 2027",
+  "deadline_display": "for submitting your online application). Obtaining certain documents can take a significant amount of time.",
+  "deadline_date": null,
+  "deadline_precision": "application_dead",
+  "application_period": "Depending on your circumstances, you will receive by email:",
+  "flags": [
+   "precision_not_in_vocabulary:application_dead",
+   "prose_without_month_or_policy"
+  ]
+ },
+ {
+  "id": 358,
+  "title": "Hungarian Diaspora Scholarship",
+  "deadline_display": "and it is a missing document and you uploaded a declaration beforehand. However, it is not possible to edit your priorities in your online application. You cannot add new courses and you cannot edit the order of the priorities. Also, please do not delete any of the selected courses. In this way, you would only lessen your own chances to get into a university.",
+  "deadline_date": null,
+  "deadline_precision": "application_dead",
+  "application_period": "",
+  "flags": [
+   "precision_not_in_vocabulary:application_dead",
+   "prose_without_month_or_policy"
+  ]
+ },
+ {
+  "id": 359,
+  "title": "Semmelweis Pannonia In Excellence Scholarship",
+  "deadline_display": "The application period starts on 1 October 2026. Applications must be submitted by 15 October 2026, via the Requests interface of the Neptun system.",
+  "deadline_date": "2026-10-15",
+  "deadline_precision": "day",
+  "application_period": "",
+  "flags": [
+   "precision_not_in_vocabulary:day"
+  ]
+ },
+ {
+  "id": 370,
+  "title": "University of Padua International Excellence Scholarship",
+  "deadline_display": "First application window for the majority of Unipd degree programmes for 2027/28 closes on 15 November 2026",
+  "deadline_date": "2026-12-01",
+  "deadline_precision": "day_and_time",
+  "application_period": "The initiatives must take place in the 2026 calendar year. They must be reported by 31 January 2027.",
+  "flags": [
+   "precision_not_in_vocabulary:day_and_time"
+  ]
+ },
+ {
+  "id": 371,
+  "title": "University of Bologna Study Grants and Fees",
+  "deadline_display": "Income documentation for a.y. 2026/27 must be submitted by 30 October 2026 at 18:00, or by 16 November 2026 at 18:00 with a EUR 100 late submission fee",
+  "deadline_date": "2026-10-30",
+  "deadline_precision": "day",
+  "application_period": "",
+  "flags": [
+   "precision_not_in_vocabulary:day"
+  ]
+ },
+ {
+  "id": 380,
+  "title": "Rotary Yoneyama Memorial Scholarship 2027 (Overseas Candidates)",
+  "deadline_display": "From: 13:00 JST, October 1, 2026 To: 13:00 JST, October 31, 2026",
+  "deadline_date": "2026-10-31",
+  "deadline_precision": "day_and_time",
+  "application_period": "",
+  "flags": [
+   "precision_not_in_vocabulary:day_and_time"
+  ]
+ },
+ {
+  "id": 382,
+  "title": "VU Fellowship Programme (VUFP)",
+  "deadline_display": "Master's programme application:",
+  "deadline_date": "2026-11-01",
+  "deadline_precision": "application_dead",
+  "application_period": "Follow the VUFP scholarship application (from 1 November 2026) Please follow the VUFP application process as described above. Deadline: 1 February 2027 (23:59 CET)",
+  "flags": [
+   "precision_not_in_vocabulary:application_dead",
+   "prose_without_month_or_policy"
+  ]
+ },
+ {
+  "id": 385,
+  "title": "Lutfia Rabbani Scholarship Fund (LUF)",
+  "deadline_display": "31 March 23:59 CET annually (applications open 1 January annually)",
+  "deadline_date": "2027-03-31",
+  "deadline_precision": "day_and_time",
+  "application_period": "Once a decision on your application has been made, you will receive a formal statement from the faculty by email.",
+  "flags": [
+   "precision_not_in_vocabulary:day_and_time"
+  ]
+ },
+ {
+  "id": 387,
+  "title": "Wageningen University Excellence Programme",
+  "deadline_display": "Before 1 December 2026. Only MSc applications that have been submitted before this deadline will be assessed by the WU Scholarship Selection Committee.",
+  "deadline_date": "2026-12-01",
+  "deadline_precision": "application_dead",
+  "application_period": "Before 1 December 2026. Only MSc applications that have been submitted before this deadline will be assessed by the WU Scholarship Selection Committee.",
+  "flags": [
+   "precision_not_in_vocabulary:application_dead"
+  ]
+ },
+ {
+  "id": 388,
+  "title": "NWO Embassy Science Fellowship (ESF-NL) 2027",
+  "deadline_display": "2026-09-10",
+  "deadline_date": "2026-09-10",
+  "deadline_precision": "day",
+  "application_period": "Deadline for proposals",
+  "flags": [
+   "precision_not_in_vocabulary:day",
+   "prose_without_month_or_policy"
+  ]
+ },
+ {
+  "id": 392,
+  "title": "Eric Bleumink Fellowship",
+  "deadline_display": "It is not possible to",
+  "deadline_date": null,
+  "deadline_precision": "application_dead",
+  "application_period": "",
+  "flags": [
+   "precision_not_in_vocabulary:application_dead",
+   "prose_without_month_or_policy"
+  ]
+ },
+ {
+  "id": 394,
+  "title": "Tilburg University Waiver",
+  "deadline_display": "April 1, 2027",
+  "deadline_date": "2027-04-01",
+  "deadline_precision": "day",
+  "application_period": "",
+  "flags": [
+   "precision_not_in_vocabulary:day"
+  ]
+ },
+ {
+  "id": 395,
+  "title": "Radboud Scholarship Programme",
+  "deadline_display": "2027-02-14",
+  "deadline_date": "2027-02-14",
+  "deadline_precision": "day",
+  "application_period": "If you wish to apply for a Master’s programme, you need submit your enrolment request via Studielink before the application deadline. Find out which deadlines apply to your application and enrolment.",
+  "flags": [
+   "application_period:administrative",
+   "precision_not_in_vocabulary:day",
+   "prose_without_month_or_policy"
+  ]
+ },
+ {
+  "id": 416,
+  "title": "NAWA TOP200 Programme (Excellence Initiative)",
+  "deadline_display": "2026-02-27",
+  "deadline_date": "2026-02-27",
+  "deadline_precision": "day",
+  "application_period": "",
+  "flags": [
+   "precision_not_in_vocabulary:day",
+   "prose_without_month_or_policy"
+  ]
+ },
+ {
+  "id": 418,
+  "title": "NAWA Walczak Programme (Internships)",
+  "deadline_display": "Applicants register (submit applications) in the Agency's IT System",
+  "deadline_date": null,
+  "deadline_precision": "application_dead",
+  "application_period": "1.2 “III. Annexes” of the Announcement is replaced by the following:",
+  "flags": [
+   "precision_not_in_vocabulary:application_dead",
+   "prose_without_month_or_policy"
+  ]
+ },
+ {
+  "id": 425,
+  "title": "CEEPUS Exchange Programme",
+  "deadline_display": "Network Application Round 2027/28 enabled - Deadline: 30th November, 2026, 23:59 CET. Extended deadline for signed documents (letters): 15th December, 2026, 23:59 CET.",
+  "deadline_date": "2026-11-30",
+  "deadline_precision": "day_and_time",
+  "application_period": "",
+  "flags": [
+   "precision_not_in_vocabulary:day_and_time"
+  ]
+ },
+ {
+  "id": 428,
+  "title": "SAF Merit Scholarship",
+  "deadline_display": "For male applicants: Application Window: 1 Sep 2026 - 30 Apr 2027, Status: OPEN",
+  "deadline_date": "2027-04-30",
+  "deadline_precision": "day",
+  "application_period": "",
+  "flags": [
+   "precision_not_in_vocabulary:day",
+   "prose_without_month_or_policy"
+  ]
+ },
+ {
+  "id": 429,
+  "title": "MHA Civilian Scholarship",
+  "deadline_display": "Applications are open now till 15 March 2027!",
+  "deadline_date": "2027-03-15",
+  "deadline_precision": "day_and_time",
+  "application_period": "",
+  "flags": [
+   "precision_not_in_vocabulary:day_and_time"
+  ]
+ },
+ {
+  "id": 430,
+  "title": "Singapore Police Force Scholarship",
+  "deadline_display": "Applications are open now till 15 March 2027!",
+  "deadline_date": "2027-03-15",
+  "deadline_precision": "day_and_time",
+  "application_period": "",
+  "flags": [
+   "precision_not_in_vocabulary:day_and_time"
+  ]
+ },
+ {
+  "id": 431,
+  "title": "PSC Undergraduate Scholarship",
+  "deadline_display": "Applications for PSC Scholarships for 2027 are now open and will close on 15 March 2027.",
+  "deadline_date": "2027-03-15",
+  "deadline_precision": "day",
+  "application_period": "",
+  "flags": [
+   "precision_not_in_vocabulary:day"
+  ]
+ },
+ {
+  "id": 434,
+  "title": "MOE Teaching Scholarship (Full-Term)",
+  "deadline_display": "19 March 2027 (Friday)",
+  "deadline_date": "2027-03-19",
+  "deadline_precision": "day",
+  "application_period": "",
+  "flags": [
+   "precision_not_in_vocabulary:day"
+  ]
+ },
+ {
+  "id": 439,
+  "title": "NUS Undergraduate Scholarship (incl. Global Merit, Merit, AI Talent, Sports, Performing & Visual Arts)",
+  "deadline_display": "Application for NUS Scholarships for AY2027 commences from 1 February to 19 March 2027",
+  "deadline_date": "2027-03-19",
+  "deadline_precision": "day_and_time",
+  "application_period": "Latest by May",
+  "flags": [
+   "precision_not_in_vocabulary:day_and_time"
+  ]
+ },
+ {
+  "id": 442,
+  "title": "SMU Global Impact Scholarship Award",
+  "deadline_display": "(for 1st window offers)",
+  "deadline_date": null,
+  "deadline_precision": "application_dead",
+  "application_period": "Academic Year 2026-27 Application Opening Date",
+  "flags": [
+   "precision_not_in_vocabulary:application_dead",
+   "prose_without_month_or_policy"
+  ]
+ },
+ {
+  "id": 452,
+  "title": "KTH Scholarship",
+  "deadline_display": "15 January 2027: Application closes",
+  "deadline_date": "2027-01-15",
+  "deadline_precision": "day",
+  "application_period": "The following joint master's programmes have separate application processes and deadlines.",
+  "flags": [
+   "precision_not_in_vocabulary:day"
+  ]
+ },
+ {
+  "id": 455,
+  "title": "Malmö University Master's Scholarship",
+  "deadline_display": "to pay tuition fees is 10 May.",
+  "deadline_date": null,
+  "deadline_precision": "month",
+  "application_period": "Applicants who have been offered a scholarship will be notified by the end of April. Those who are not offered a scholarship will not be notified individually.",
+  "flags": [
+   "month_claimed_but_no_date"
+  ]
+ },
+ {
+  "id": 456,
+  "title": "Lund University African Research Universities Alliance (ARUA) Scholarship",
+  "deadline_display": "for studies is 15 January and the deadline for the application fee and supporting documents is in early February.",
+  "deadline_date": null,
+  "deadline_precision": "month",
+  "application_period": "The application round for the ARUA Scholarship usually opens in early February every year.",
+  "flags": [
+   "month_claimed_but_no_date"
+  ]
+ },
+ {
+  "id": 458,
+  "title": "KTH India Scholarship",
+  "deadline_display": "2027-01-15",
+  "deadline_date": "2027-01-15",
+  "deadline_precision": "day",
+  "application_period": "The following joint master's programmes have separate application processes and deadlines.",
+  "flags": [
+   "precision_not_in_vocabulary:day",
+   "prose_without_month_or_policy"
+  ]
+ },
+ {
+  "id": 459,
+  "title": "EPFL Bachelor Excellence Fellowships",
+  "deadline_display": "15 December 2026",
+  "deadline_date": "2026-12-15",
+  "deadline_precision": "day",
+  "application_period": "",
+  "flags": [
+   "precision_not_in_vocabulary:day"
+  ]
+ },
+ {
+  "id": 463,
+  "title": "UZH Student Financial Aid Office – Scholarships",
+  "deadline_display": "2027-02-01",
+  "deadline_date": "2027-02-01",
+  "deadline_precision": "day",
+  "application_period": "Deadlines",
+  "flags": [
+   "precision_not_in_vocabulary:day",
+   "prose_without_month_or_policy"
+  ]
+ },
+ {
+  "id": 464,
+  "title": "EPFL Social Scholarship",
+  "deadline_display": "15 December 2026",
+  "deadline_date": "2026-12-15",
+  "deadline_precision": "day",
+  "application_period": "After completing at least one year at EPFL and as of the successful completion of the first-year cycle.",
+  "flags": [
+   "precision_not_in_vocabulary:day"
+  ]
+ },
+ {
+  "id": 465,
+  "title": "Hans Wilsdorf Foundation Scholarship (EPFL)",
+  "deadline_display": "15 December 2026",
+  "deadline_date": "2026-12-15",
+  "deadline_precision": "day",
+  "application_period": "30 September (each year)",
+  "flags": [
+   "precision_not_in_vocabulary:day"
+  ]
+ },
+ {
+  "id": 466,
+  "title": "UZH Hardship Loan",
+  "deadline_display": "You can submit your application",
+  "deadline_date": null,
+  "deadline_precision": "application_dead",
+  "application_period": "Deadlines",
+  "flags": [
+   "precision_not_in_vocabulary:application_dead",
+   "prose_without_month_or_policy"
+  ]
+ },
+ {
+  "id": 468,
+  "title": "NYCU International Student Scholarship",
+  "deadline_display": "to be eligible for the scholarship in the following semester.",
+  "deadline_date": null,
+  "deadline_precision": "application_dead",
+  "application_period": "",
+  "flags": [
+   "precision_not_in_vocabulary:application_dead",
+   "prose_without_month_or_policy"
+  ]
+ },
+ {
+  "id": 470,
+  "title": "Fulbright U.S. Student Program 2027-2028",
+  "deadline_display": "is October 6, 2026 at 5pm Eastern Time.[/LINK]",
+  "deadline_date": "2026-10-06",
+  "deadline_precision": "application_dead",
+  "application_period": "You are responsible for submitting your own application before the National Deadline; your Fulbright Program Adviser cannot do this on your behalf.",
+  "flags": [
+   "precision_not_in_vocabulary:application_dead"
+  ]
+ },
+ {
+  "id": 475,
+  "title": "Joint Japan/World Bank Graduate Scholarship Program (JJ/WBGSP) 2027 - Application Window #1 (Developing Country Nationals)",
+  "deadline_display": "Application Window #1 from January 18 to February 26, 2027. The programme also runs Application Window #2 from March 29 to May 21, 2027. The link to the JJ/WBGSP application form is only communicated to candidates admitted unconditionally (except for funding) to a participating master's programme and shortlisted as eligible by that university.",
+  "deadline_date": "2027-02-26",
+  "deadline_precision": "day",
+  "application_period": "Two application rounds per cycle, organised to match the academic calendars of the participating programmes. For the 2027 cycle: Application Window #1 January 18 - February 26, 2027; Application Window #2 March 29 - May 21, 2027. Each participating university sets its own admission deadlines, which fall before the JJ/WBGSP window closes.",
+  "flags": [
+   "precision_not_in_vocabulary:day"
+  ]
+ },
+ {
+  "id": 477,
+  "title": "Boren Awards (Boren Scholarships and Boren Fellowships)",
+  "deadline_display": "National deadlines for the 2027 Boren Awards: Boren Fellowships January 20, 2027; Boren Scholarships January 27, 2027 - both 5pm Eastern time.",
+  "deadline_date": "2027-01-20",
+  "deadline_precision": "day",
+  "application_period": "The 2027-2028 Boren Scholarship and Boren Fellowship application cycle is open as of 2026-10-01. National deadlines are January 20, 2027 (Fellowships) and January 27, 2027 (Scholarships), 5pm Eastern time. Selected applicants are notified in mid-to-late April. Campus representatives may set earlier campus deadlines that applicants are asked to respect.",
+  "flags": [
+   "precision_not_in_vocabulary:day"
+  ]
+ },
+ {
+  "id": 478,
+  "title": "Phi Kappa Phi Fellowship 2026",
+  "deadline_display": "April 15, 2027: National deadline",
+  "deadline_date": "2027-04-15",
+  "deadline_precision": "day",
+  "application_period": "",
+  "flags": [
+   "precision_not_in_vocabulary:day"
+  ]
+ },
+ {
+  "id": 479,
+  "title": "NSF Graduate Research Fellowship Program (NSF GRFP)",
+  "deadline_display": "Reference letters due October 16, 2026 by 8:00 p.m. Eastern time. Application deadlines: October 19, 2026 (Life Sciences); October 20, 2026 (Computer and Information Science and Engineering; Materials Research; Psychology; Social Sciences); October 22, 2026 (Engineering); October 23, 2026 (Chemistry; Geosciences; Mathematical Sciences; Physics and Astronomy). All applications must be received by 8:00 p.m. Eastern Time on the deadline date for the Major Field of Study selected. November 15, 2026 is the last day to withdraw an application without it counting towards the number of times an individual may apply.",
+  "deadline_date": "2026-10-16",
+  "deadline_precision": "day",
+  "application_period": "The GRFP Application Module usually opens in July or August; applications for the 2027 competition close between October 19 and October 23, 2026 depending on Major Field of Study, with reference letters due October 16, 2026. The module opened in time for the 2026 application cycle; the 2027 application deadlines were published August 25, 2026.",
+  "flags": [
+   "precision_not_in_vocabulary:day"
+  ]
+ },
+ {
+  "id": 480,
+  "title": "Harvard College Need-Based Financial Aid 2027-2028",
+  "deadline_display": "Financial Aid Application Deadlines: Restrictive Early Action and QuestBridge Match - November 1; Regular Decision - February 1; Transfer - March 1",
+  "deadline_date": "2026-11-01",
+  "deadline_precision": "day",
+  "application_period": "",
+  "flags": [
+   "precision_not_in_vocabulary:day"
+  ]
+ },
+ {
+  "id": 481,
+  "title": "Yale College Need-Based Financial Aid 2027-2028",
+  "deadline_display": "Regular Decision: February 15, 2027",
+  "deadline_date": "2027-02-15",
+  "deadline_precision": "day",
+  "application_period": "",
+  "flags": [
+   "precision_not_in_vocabulary:day"
+  ]
+ },
+ {
+  "id": 482,
+  "title": "MIT Undergraduate Financial Aid for International Students 2026-2027",
+  "deadline_display": "Regular Action: February 15; Early Action: November 30; Transfer: February 15",
+  "deadline_date": "2027-02-15",
+  "deadline_precision": "day",
+  "application_period": "",
+  "flags": [
+   "precision_not_in_vocabulary:day"
+  ]
+ },
+ {
+  "id": 483,
+  "title": "UT Austin International Student Scholarships (Spring 2027 and Fall 2027)",
+  "deadline_display": "Applications for Spring 2027 and Summer 2027 scholarships will be accepted October 1, 2026 - November 1, 2026; Applications for Fall 2027 and 2027-2028 academic year scholarships will be accepted February 1, 2027 - March 1, 2027",
+  "deadline_date": "2026-11-01",
+  "deadline_precision": "day",
+  "application_period": "",
+  "flags": [
+   "precision_not_in_vocabulary:day"
+  ]
+ },
+ {
+  "id": 484,
+  "title": "University of Chicago International Scholarships for Undergraduates",
+  "deadline_display": "Early Decision I and Early Action: Nov 2, 2026; Early Decision II and Regular Decision: Jan 4, 2027",
+  "deadline_date": "2026-11-02",
+  "deadline_precision": "day",
+  "application_period": "",
+  "flags": [
+   "precision_not_in_vocabulary:day",
+   "prose_without_month_or_policy"
+  ]
+ },
+ {
+  "id": 486,
+  "title": "Google PhD Fellowship Program 2027 (anticipated)",
+  "deadline_display": "April 30, 2026",
+  "deadline_date": "2026-10-31",
+  "deadline_precision": "application_dead",
+  "application_period": "Applications are currently closed for the 2026 cycle.",
+  "flags": [
+   "precision_not_in_vocabulary:application_dead"
+  ]
+ },
+ {
+  "id": 494,
+  "title": "Scholarships | Study In Latvia",
+  "deadline_display": "From 1 February to 1 April",
+  "deadline_date": "2027-04-01",
+  "deadline_precision": "day",
+  "application_period": "",
+  "flags": [
+   "precision_not_in_vocabulary:day"
+  ]
+ },
+ {
+  "id": 496,
+  "title": "Bilateral programme grants Wallonia-Brussels Federation/Quebec | Wallonie-Bruxelles Campus",
+  "deadline_display": "Springtime",
+  "deadline_date": null,
+  "deadline_precision": "application_dead",
+  "application_period": "",
+  "flags": [
+   "precision_not_in_vocabulary:application_dead",
+   "prose_without_month_or_policy"
+  ]
+ },
+ {
+  "id": 498,
+  "title": "Other funding opportunities - swissuniversities",
+  "deadline_display": "Alerts.",
+  "deadline_date": null,
+  "deadline_precision": "application_dead",
+  "application_period": "",
+  "flags": [
+   "precision_not_in_vocabulary:application_dead",
+   "prose_without_month_or_policy"
+  ]
+ },
+ {
+  "id": 500,
+  "title": "Grants for the USA - swissuniversities",
+  "deadline_display": "August 2027 for the 2028-2029 academic year",
+  "deadline_date": "2027-08-31",
+  "deadline_precision": "application_dead",
+  "application_period": "",
+  "flags": [
+   "precision_not_in_vocabulary:application_dead"
+  ]
+ },
+ {
+  "id": 506,
+  "title": "OIC Scholarships at Islamic University of Technology (IUT) Dhaka, Bangladesh OIC Scholarships at Islamic University of Technology (IUT) Dhaka, Bangladesh",
+  "deadline_display": "to submit online application on HEC portal",
+  "deadline_date": null,
+  "deadline_precision": "application_dead",
+  "application_period": "",
+  "flags": [
+   "precision_not_in_vocabulary:application_dead",
+   "prose_without_month_or_policy"
+  ]
+ },
+ {
+  "id": 507,
+  "title": "Our programmes from A to Z",
+  "deadline_display": "for applications:",
+  "deadline_date": null,
+  "deadline_precision": "application_dead",
+  "application_period": "",
+  "flags": [
+   "precision_not_in_vocabulary:application_dead",
+   "prose_without_month_or_policy"
+  ]
+ },
+ {
+  "id": 508,
+  "title": "FAQ - Ernst Mach Grant ASEA-UNINET",
+  "deadline_display": "Closing date for applications: 1st March",
+  "deadline_date": "2027-03-01",
+  "deadline_precision": "day",
+  "application_period": "",
+  "flags": [
+   "precision_not_in_vocabulary:day"
+  ]
+ },
+ {
+  "id": 509,
+  "title": "Commonwealth Master’s Scholarships - Commonwealth Scholarship Commission in the UK",
+  "deadline_display": "20 October 2026",
+  "deadline_date": "2026-10-20",
+  "deadline_precision": "day",
+  "application_period": "Confirm what their award objectives are and how each of them will be met by the Scholarship programme.",
+  "flags": [
+   "precision_not_in_vocabulary:day"
+  ]
+ },
+ {
+  "id": 510,
+  "title": "Commonwealth Shared Scholarships - Commonwealth Scholarship Commission in the UK",
+  "deadline_display": "20 October 2026",
+  "deadline_date": "2026-10-20",
+  "deadline_precision": "day",
+  "application_period": "Candidates are advised to complete and submit applications as early as possible because the online application system will be very busy in the days leading up to the application deadline.",
+  "flags": [
+   "precision_not_in_vocabulary:day"
+  ]
+ },
+ {
+  "id": 511,
+  "title": "Commonwealth Scholarships Frequently Asked Questions - Commonwealth Scholarship Commission in the UK",
+  "deadline_display": "20 October 2026",
+  "deadline_date": "2026-10-20",
+  "deadline_precision": "day",
+  "application_period": "If a scholarship or fellowship is not currently open for applications on our website, please wait until the website is updated, as all relevant information will be made available then.",
+  "flags": [
+   "precision_not_in_vocabulary:day"
+  ]
+ },
+ {
+  "id": 512,
+  "title": "Commonwealth Shared Scholarships - Commonwealth Scholarship Commission in the UK",
+  "deadline_display": "20 October 2026",
+  "deadline_date": "2026-10-20",
+  "deadline_precision": "day",
+  "application_period": "Candidates are advised to complete and submit applications as early as possible because the online application system will be very busy in the days leading up to the application deadline.",
+  "flags": [
+   "precision_not_in_vocabulary:day"
+  ]
+ },
+ {
+  "id": 513,
+  "title": "CSC Disability Support Statement - Commonwealth Scholarship Commission in the UK",
+  "deadline_display": "20 October 2026",
+  "deadline_date": "2026-10-20",
+  "deadline_precision": "day",
+  "application_period": "by Alumni Team | Sep 22, 2026 | News",
+  "flags": [
+   "precision_not_in_vocabulary:day"
+  ]
+ },
+ {
+  "id": 514,
+  "title": "Van Gogh program 2023 | Campus France",
+  "deadline_display": "15 December 2026",
+  "deadline_date": "2026-12-15",
+  "deadline_precision": "day",
+  "application_period": "Parcoursup is the French platform dedicated to registrations in first year in trainings of the 1st cycle of higher education (1st year fo Bachelor's)",
+  "flags": [
+   "precision_not_in_vocabulary:day"
+  ]
+ },
+ {
+  "id": 515,
+  "title": "Applied Computer Science and Software Development - FPV - UMB | Portal VS",
+  "deadline_display": "for the first round is 28 February 2027, and for the second round from 1 May to 31 May 2027.",
+  "deadline_date": "2027-02-28",
+  "deadline_precision": "application_dead",
+  "application_period": "",
+  "flags": [
+   "precision_not_in_vocabulary:application_dead"
+  ]
+ },
+ {
+  "id": 516,
+  "title": "Applied Informatics - FPV - UMB | Portal VS",
+  "deadline_display": "for the first round is 28 February 2027, and for the second round from 1 May to 31 May 2027.",
+  "deadline_date": "2027-02-28",
+  "deadline_precision": "application_dead",
+  "application_period": "",
+  "flags": [
+   "precision_not_in_vocabulary:application_dead"
+  ]
+ },
+ {
+  "id": 517,
+  "title": "Applied Informatics - FPV - UMB | Portal VS",
+  "deadline_display": "for the first round is 28 February 2027, and for the second round from 1 May to 31 May 2027.",
+  "deadline_date": "2027-02-28",
+  "deadline_precision": "application_dead",
+  "application_period": "",
+  "flags": [
+   "precision_not_in_vocabulary:application_dead"
+  ]
+ },
+ {
+  "id": 518,
+  "title": "Applied Geosciences - FPV - UMB | Portal VS",
+  "deadline_display": "for the first round is 28 February 2027, and for the second round from 1 May to 31 May 2027.",
+  "deadline_date": "2027-02-28",
+  "deadline_precision": "application_dead",
+  "application_period": "",
+  "flags": [
+   "precision_not_in_vocabulary:application_dead"
+  ]
+ },
+ {
+  "id": 519,
+  "title": "Applied Geosciences - FPV - UMB | Portal VS",
+  "deadline_display": "for the first round is 28 February 2027, and for the second round from 1 May to 31 May 2027.",
+  "deadline_date": "2027-02-28",
+  "deadline_precision": "application_dead",
+  "application_period": "",
+  "flags": [
+   "precision_not_in_vocabulary:application_dead"
+  ]
+ },
+ {
+  "id": 520,
+  "title": "University of Fort Hare | Together in Excellence",
+  "deadline_display": "for submission of internally moderated exam papers",
+  "deadline_date": null,
+  "deadline_precision": "application_dead",
+  "application_period": "Deadline for the submission of internally moderated examination papers to ensure all assessments are reviewed and finalised in line with",
+  "flags": [
+   "precision_not_in_vocabulary:application_dead",
+   "prose_without_month_or_policy"
+  ]
+ },
+ {
+  "id": 521,
+  "title": "applied Geosciences - FPV - UMB | Portal VS",
+  "deadline_display": "for the first round is 28 February 2027, and for the second round from 1 May to 31 May 2027.",
+  "deadline_date": "2027-02-28",
+  "deadline_precision": "application_dead",
+  "application_period": "",
+  "flags": [
+   "precision_not_in_vocabulary:application_dead"
+  ]
+ },
+ {
+  "id": 522,
+  "title": "Applied Geosciences - FPV - UMB | Portal VS",
+  "deadline_display": "for the first round is 28 February 2027, and for the second round from 1 May to 31 May 2027.",
+  "deadline_date": "2027-02-28",
+  "deadline_precision": "application_dead",
+  "application_period": "",
+  "flags": [
+   "precision_not_in_vocabulary:application_dead"
+  ]
+ },
+ {
+  "id": 523,
+  "title": "Commonwealth Shared Scholarships - Commonwealth Scholarship Commission in the UK",
+  "deadline_display": "20 October 2026",
+  "deadline_date": "2026-10-20",
+  "deadline_precision": "day",
+  "application_period": "Candidates are advised to complete and submit applications as early as possible because the online application system will be very busy in the days leading up to the application deadline.",
+  "flags": [
+   "precision_not_in_vocabulary:day"
+  ]
+ },
+ {
+  "id": 525,
+  "title": "Staff Exchanges - Marie Skłodowska-Curie Actions",
+  "deadline_display": "of the chosen call.",
+  "deadline_date": null,
+  "deadline_precision": "application_dead",
+  "application_period": "All eligible proposals are evaluated by external experts.",
+  "flags": [
+   "precision_not_in_vocabulary:application_dead",
+   "prose_without_month_or_policy"
+  ]
+ },
+ {
+  "id": 527,
+  "title": "Ibrahim Leadership Fellowships 2027",
+  "deadline_display": "Applications for the 2027 Fellowships are open until 20 November 2026",
+  "deadline_date": "2026-11-20",
+  "deadline_precision": "day",
+  "application_period": "Opened 22 September 2026; closes 20 November 2026 for the 2027 cycle",
+  "flags": [
+   "precision_not_in_vocabulary:day"
+  ]
+ },
+ {
+  "id": 528,
+  "title": "Mandela Rhodes Scholarship (Class of 2028)",
+  "deadline_display": "Applications for 2028 will open 9 March 2027. Applications close by the end of Wednesday, 14 April 2027 23:59 GMT+2.",
+  "deadline_date": "2027-04-14",
+  "deadline_precision": "day",
+  "application_period": "The applications timeline runs from March to November of each year for the following year's intake. For the Class of 2028: applications open Tuesday 9 March 2027 and close 14 April 2027 23:59 GMT+2.",
+  "flags": [
+   "precision_not_in_vocabulary:day"
+  ]
+ },
+ {
+  "id": 529,
+  "title": "TEF Entrepreneurship Programme",
+  "deadline_display": "Every year, the application portal for our flagship TEF Entrepreneurship Programme opens on the 1st of January till midnight on the 1st of March at Midnight, on our digital platform, www.TEFConnect.com.",
+  "deadline_date": "2027-03-01",
+  "deadline_precision": "day",
+  "application_period": "The application window opens on 1 January and closes at midnight on 1 March each year, for that year's cohort. The next published window after 2026-10-01 is 1 January 2027 to midnight 1 March 2027.",
+  "flags": [
+   "precision_not_in_vocabulary:day"
+  ]
+ },
+ {
+  "id": 531,
+  "title": "The Inlaks Fellowship for Social Engagement",
+  "deadline_display": "Applications for the fellowship can be submitted latest by 15th November 2026 by 11.59 PM IST; both the Mentor and Referee letters must also be submitted by 15th November 2026, 11:59pm",
+  "deadline_date": "2026-11-15",
+  "deadline_precision": "day",
+  "application_period": "Applications open for the 2027 cohort (opening date not published on the page); closing 15 November 2026, 11:59pm IST. Shortlisted candidates announced by the last week of February 2027, final interview within a fortnight, final fellows announced by the last week of March, fellows expected to begin work from 1 May 2027",
+  "flags": [
+   "precision_not_in_vocabulary:day"
+  ]
+ },
+ {
+  "id": 532,
+  "title": "RISE Germany - Research Internships in Science and Engineering",
+  "deadline_display": "Applications: October 15 - November 30, 2026 (11:59 pm CET - Central European Time); Letters of reference: October 15 - December 15, 2026",
+  "deadline_date": "2026-11-30",
+  "deadline_precision": "day",
+  "application_period": "Applications run from October 15 to November 30, 2026; ranking by providers January 14 - January 25, 2027; internship positions announced around February/March 2027.",
+  "flags": [
+   "precision_not_in_vocabulary:day"
+  ]
+ },
+ {
+  "id": 533,
+  "title": "Grundförderung für Ausländer:innen",
+  "deadline_display": "Master: before or at the start of the first university semester of the master's programme (winter semester: by 30.11.; summer semester: by 31.05.). Bachelor / Diplom / Magister / Staatsexamen: after the first semester and up to three semesters before the end of the standard period of study.",
+  "deadline_date": "2026-11-30",
+  "deadline_precision": "day",
+  "application_period": "Rolling within the published degree-stage windows; for Master's programmes starting in the winter semester, applications are due by 30 November.",
+  "flags": [
+   "precision_not_in_vocabulary:day",
+   "prose_without_month_or_policy"
+  ]
+ },
+ {
+  "id": 534,
+  "title": "Scholarships for Refugees (Studien- und Promotionsförderung)",
+  "deadline_display": "Apply online on campus.kas.de until 15 January or 15 July annually.",
+  "deadline_date": "2027-01-15",
+  "deadline_precision": "day",
+  "application_period": "Two annual rounds: applications close on 15 January and 15 July each year; the next round after 2026-10-01 closes on 15 January 2027.",
+  "flags": [
+   "precision_not_in_vocabulary:day"
+  ]
+ },
+ {
+  "id": 535,
+  "title": "Friedrich-Ebert-Stiftung Promotionsförderung für Ausländer:innen (FES doctoral scholarship for international doctoral candidates)",
+  "deadline_display": "No fixed calendar deadline is published. The programme page states the right time to apply is up to about two years before submission of the dissertation ('bis circa zwei Jahre vor Abgabe der Dissertation'), and the application page directs applicants to the individual scholarship programme for the deadlines. The online application form for Promotionsförderung für Ausländer:innen is published and open.",
+  "deadline_date": null,
+  "deadline_precision": "varies",
+  "application_period": "Continuous/rolling: applications are accepted while the doctoral thesis can still be completed within the funding period, in principle from about two years before submission of the dissertation. The selection committee meets eight to ten times a year and the final decision is communicated at the latest one week after the relevant meeting.",
+  "flags": [
+   "prose_without_month_or_policy"
+  ]
+ },
+ {
+  "id": 536,
+  "title": "Development-Related Postgraduate Courses (EPOS)",
+  "deadline_display": "Depending on chosen study programme; please check the DAAD list of application deadlines or the website of the chosen study programme. Applications are sent directly to the course, not to the DAAD.",
+  "deadline_date": null,
+  "deadline_precision": "varies",
+  "application_period": "Cycle-based: applicants apply directly to a listed EPOS postgraduate course for the published intake year (the current DAAD programme list is headed 'List of Application Deadlines for Intake 2027/2028'); the course's own committee then nominates candidates, who are invited to upload to the DAAD portal for the final selection.",
+  "flags": [
+   "prose_without_month_or_policy"
+  ]
+ },
+ {
+  "id": 537,
+  "title": "MOPGA 2027: Visiting Fellowship Program for Early Career Researchers",
+  "deadline_display": "Application deadline: 15 December 2026",
+  "deadline_date": "2026-12-15",
+  "deadline_precision": "day",
+  "application_period": "Applications open 15 September 2026 and close 15 December 2026. Results are notified May-June 2027, and successful applicants arrive in France between September and December 2027.",
+  "flags": [
+   "precision_not_in_vocabulary:day"
+  ]
+ },
+ {
+  "id": 538,
+  "title": "AAPG - Appel à projets générique 2027 (ANR Generic Call for Proposals 2027)",
+  "deadline_display": "Clôture du dépôt et enregistrement Etape I : 13/10/2026 à 17:00 CEST",
+  "deadline_date": "2026-10-13",
+  "deadline_precision": "day",
+  "application_period": "Call opened 16 July 2026 at 09:00 CEST. Step 1 submission and registration closes 13 October 2026 at 17:00 Paris time. Step 1 results are notified mid-February 2027; step 2 runs from end February 2027 (template and IRIS opening) with submission closing end March 2027; selected projects are announced July 2027.",
+  "flags": [
+   "precision_not_in_vocabulary:day",
+   "prose_without_month_or_policy"
+  ]
+ },
+ {
+  "id": 539,
+  "title": "PhD Position F/M Spatio-temporal analysis of remote sensing data at large scales (Inria offer 2026-10352)",
+  "deadline_display": "Deadline to apply: 2026-11-30",
+  "deadline_date": "2026-11-30",
+  "deadline_precision": "day",
+  "application_period": "Applications are accepted online on the Inria website until 30 November 2026. The contract starts on 1 December 2026 and runs for 3 years.",
+  "flags": [
+   "precision_not_in_vocabulary:day",
+   "prose_without_month_or_policy"
+  ]
+ },
+ {
+  "id": 540,
+  "title": "Institut Pascal (IPa) Call for Proposals 2026",
+  "deadline_display": "Next deadline: 20th November 2026",
+  "deadline_date": "2026-11-20",
+  "deadline_precision": "day",
+  "application_period": "The 2026 call is open with a submission deadline of 20 November 2026. A first draft is strongly recommended to institut-pascal@universite-paris-saclay.fr by 28 October 2026 so the IPa board can give early feedback. Interview and selection by the Scientific Council takes place at the end of February / beginning of March 2027.",
+  "flags": [
+   "precision_not_in_vocabulary:day"
+  ]
+ },
+ {
+  "id": 541,
+  "title": "JSPS Postdoctoral Fellowship for Research in Japan (Standard Program)",
+  "deadline_display": "FY2027 2nd recruitment: April 23, 2027, 5 p.m. JST, submission from the Japanese host institution to JSPS. FY2027 1st recruitment closed on August 28, 2026.",
+  "deadline_date": "2027-04-23",
+  "deadline_precision": "day",
+  "application_period": "Two open calls per year. FY2027 1st: application deadline August 28, 2026 (5 p.m. JST), results late December 2026, arrival windows April 1 - September 30, 2027, 120 fellowships. FY2027 2nd: application deadline April 23, 2027 (5 p.m. JST), results early August 2027, arrival windows September 1 - November 30, 2027, 120 fellowships.",
+  "flags": [
+   "precision_not_in_vocabulary:day"
+  ]
+ },
+ {
+  "id": 542,
+  "title": "JSPS Postdoctoral Fellowship for Research in Japan (Short-term Program for North American and European Researchers, PE)",
+  "deadline_display": "FY2027 2nd recruitment: January 8, 2027, 5 p.m. JST, submission from the Japanese host institution to JSPS. FY2027 3rd recruitment: June 4, 2027, 5 p.m. JST. The FY2027 1st recruitment closed on September 25, 2026.",
+  "deadline_date": "2027-01-08",
+  "deadline_precision": "day",
+  "application_period": "Three open calls per year. FY2027 2nd: application deadline January 8, 2027 (5 p.m. JST), results mid-May 2027, arrival August 1, 2027 - March 31, 2028, 20 fellowships. FY2027 3rd: application deadline June 4, 2027 (5 p.m. JST), results late September 2027, arrival December 1, 2027 - March 31, 2028, 20 fellowships. The JSPS Electronic Application System opens approximately two months before each period.",
+  "flags": [
+   "precision_not_in_vocabulary:day"
+  ]
+ },
+ {
+  "id": 544,
+  "title": "POSCO Global Scholarship in Korea (Global Future Leaders Scholarship Program)",
+  "deadline_display": "Selection cycle: graduate school admission around November, recommendation submission by the graduate school around December, foundation interview around January, final selection announcement around February. The page publishes month-level timing only, with no day-level deadline, and applications are submitted by the admitting institution rather than by the applicant.",
+  "deadline_date": null,
+  "deadline_precision": "month",
+  "application_period": "Graduate school admission around November, graduate school recommendation submission around December, foundation interview around January, final selection announcement around February, certificate award ceremony in March. The cycle's first step is admission to a graduate school, so an applicant who has not been admitted cannot yet apply for the current round.",
+  "flags": [
+   "month_claimed_but_no_date"
+  ]
+ },
+ {
+  "id": 545,
+  "title": "Apoyo Complementario SECIHTI-OEA 2026",
+  "deadline_display": "Fecha de cierre del proceso: 30 de noviembre de 2026",
+  "deadline_date": "2026-11-30",
+  "deadline_precision": "day",
+  "application_period": "Publicación de la convocatoria: 28 de agosto de 2026. Secihti sends the compliant list to the OAS on 28 August 2026; award committee deliberates 3 September 2026; direct notification 4-10 September 2026; formalisation 7-18 September 2026; process closes 30 November 2026.",
+  "flags": [
+   "precision_not_in_vocabulary:day",
+   "prose_without_month_or_policy"
+  ]
+ },
+ {
+  "id": 546,
+  "title": "2026-2027 OAS - Universidad del Desarrollo Scholarship Opportunity (dLab Global)",
+  "deadline_display": "New Deadline: January 31, 2027",
+  "deadline_date": "2027-01-31",
+  "deadline_precision": "day",
+  "application_period": "Applications accepted through the OAS online application link until 31 January 2027; results published at www.oas.org/scholarships by February 2027; course runs 16 March to 22 June 2027.",
+  "flags": [
+   "application_period:award_notification",
+   "precision_not_in_vocabulary:day"
+  ]
+ },
+ {
+  "id": 547,
+  "title": "Convocatoria de Becas OEA - UNIR, EP NEWMAN y UNIR Mexico (Curso Academico 2026, 2a convocatoria)",
+  "deadline_display": "2a convocatoria: 19 de octubre de 2026 (UNIR Maestrías Oficiales y Grados Oficiales, and EP NEWMAN); 26 de octubre de 2026 (UNIR Mexico); 30 de octubre de 2026 (UNIR Formacion Permanente)",
+  "deadline_date": "2026-10-19",
+  "deadline_precision": "day",
+  "application_period": "Two calls in the 2026 academic course. 1a convocatoria (Primavera 2026) deadlines ran 16 March to 10 April 2026 and are closed. 2a convocatoria (Otono 2026) is open with deadlines of 19, 26 and 30 October 2026 depending on the institution and programme; selected candidates are announced in November 2026 and programmes start in October/November 2026 depending on the programme.",
+  "flags": [
+   "precision_not_in_vocabulary:day",
+   "prose_without_month_or_policy"
+  ]
+ },
+ {
+  "id": 548,
+  "title": "KAUST Fellowship (Master's, Ph.D. and M.S./Ph.D. Pathway)",
+  "deadline_display": "Fall 2027 Round 2 application deadline 3 January 2027 (Round 2 opened 28 September 2026); decisions released 14 February 2027",
+  "deadline_date": "2027-01-03",
+  "deadline_precision": "day",
+  "application_period": "Fall 2027 Round 2 applications open 28 September 2026 and close 3 January 2027; Spring 2027 entry (PhD only) had a Round 1 deadline of 27 September 2026 with decisions on 8 November 2026",
+  "flags": [
+   "precision_not_in_vocabulary:day"
+  ]
+ },
+ {
+  "id": 550,
+  "title": "HBKU Graduate Tuition Waiver and Stipend",
+  "deadline_display": "Online graduate admission application opens to the public 1 October 2026; admission application deadline for international graduate applicants 1 February 2027; admission application deadline for Qatari and resident applicants who wish to apply for funding 15 March 2027",
+  "deadline_date": "2027-02-01",
+  "deadline_precision": "day",
+  "application_period": "Online applications open to the public on 1 October 2026 and close on 1 February 2027 for international graduate applicants. Qatari and resident applicants who wish to apply for funding have a later deadline of 15 March 2027. No separate scholarship application is needed; candidates are considered during the admissions process.",
+  "flags": [
+   "precision_not_in_vocabulary:day"
+  ]
+ },
+ {
+  "id": 551,
+  "title": "MOFA Scholarship Program",
+  "deadline_display": "No application deadline is published on the program page; applications are registered through the online service and the review and final approval process typically takes between 3 to 5 months, with updates communicated by email or SMS",
+  "deadline_date": null,
+  "deadline_precision": "year",
+  "application_period": "No published opening or closing dates. Applicants register through the MOFA scholarship service form and are notified of results by email or SMS; amendments after submission are handled through the call centre at +971 80044444.",
+  "flags": [
+   "application_period:award_notification",
+   "prose_without_month_or_policy"
+  ]
+ },
+ {
+  "id": 553,
+  "title": "Career Development Fellowship",
+  "deadline_display": "18 November 2026 (2027 round; opened 22 September 2026)",
+  "deadline_date": "2026-11-18",
+  "deadline_precision": "day",
+  "application_period": "2027 round opens 22 September 2026 and closes 18 November 2026; decision by 30 June 2027.",
+  "flags": [
+   "precision_not_in_vocabulary:day"
+  ]
+ },
+ {
+  "id": 555,
+  "title": "UNESCO/Japan Young Researchers' Fellowships Programme (UNESCO/Keizo Obuchi Research Fellowships Programme) - Cycle 2026",
+  "deadline_display": "Deadline for candidate submission is now extended to 15 October 2026, midnight Paris time. Letters of nomination and all application documents must reach UNESCO from the National Commissions no later than 15 October 2026, and candidates must submit to their own National Commission at least 2 weeks before the required deadline.",
+  "deadline_date": "2026-10-15",
+  "deadline_precision": "day",
+  "application_period": "Cycle 2026 call is open (page last updated 28 September 2026, stating the application for the Cycle 2026 is open and the deadline is now extended to 15 October 2026). Because the National Commission needs at least two weeks, the practical national deadline falls around 1 October 2026. Fellowship period in Japan from February 2027 onwards, to be completed no later than December 2027.",
+  "flags": [
+   "precision_not_in_vocabulary:day"
+  ]
+ },
+ {
+  "id": 556,
+  "title": "Joint Japan/World Bank Graduate Scholarship Program (JJ/WBGSP) 2027 - Application Window for Japanese Nationals",
+  "deadline_display": "The 2027 application window for Japanese nationals will open from February 15 to April 16, 2027. As from February 15, 2027, prospective candidates are invited to express their interest to the JJ/WBGSP Secretariat with an email to scholarshipapplicants@worldbank.org. Winners are informed by mid-July, after the JJ/WBGSC approval. The 2026 application window for Japanese nationals closed on Friday 17 April 2026.",
+  "deadline_date": "2027-04-16",
+  "deadline_precision": "day",
+  "application_period": "A single application window for the 2027 cycle for Japanese nationals, from February 15 to April 16, 2027. From the opening date, prospective candidates are invited to register interest with the Secretariat by email. Results are communicated by mid-July 2027.",
+  "flags": [
+   "application_period:award_notification",
+   "precision_not_in_vocabulary:day"
+  ]
+ },
+ {
+  "id": 557,
+  "title": "Albert Einstein Distinguished Educator Fellowship (AEF) Program",
+  "deadline_display": "Application deadline 8:00pm Eastern, November 5, 2026. Online application opened August 3, 2026. The application period typically opens in mid-August, with applications due in mid-November.",
+  "deadline_date": "2026-11-05",
+  "deadline_precision": "day",
+  "application_period": "Online application opens August 3, 2026 and closes 8:00pm Eastern on November 5, 2026 for the 2027-2028 programme. Semi-finalist notifications with travel arrangements are made by February 24, 2027; interviews in Washington, DC February 27 - March 1, 2027; finalist notifications March 9, 2027; congressional fellows placement interviews mid-June 2027; fellows arrive in Washington, DC mid-August 2027.",
+  "flags": [
+   "precision_not_in_vocabulary:day"
+  ]
+ },
+ {
+  "id": 558,
+  "title": "Office of Science Graduate Student Research (SCGSR) Program",
+  "deadline_display": "Applications are due November 4, 2026, at 5:00PM ET. This is 2026 Solicitation 2. The online application system closes at 5:00 PM Eastern Time and no additional materials will be accepted after it. 2027 Solicitation 1 dates are published but all tentative: application opens February 2027, applications due May 2027.",
+  "deadline_date": "2026-11-04",
+  "deadline_precision": "day",
+  "application_period": "2026 Solicitation 2: online application opened August 12, 2026 and closes 5:00 PM ET on November 4, 2026. Offer notifications April 1 - 16, 2027. Proposed project periods may start as early as June 7, 2027 and must start no later than October 4, 2027. 2027 Solicitation 1 (tentative): application opens February 2027, applications due May 2027, offers September 2027, project periods starting November 2027 and ending no later than March 2028.",
+  "flags": [
+   "precision_not_in_vocabulary:day"
+  ]
+ },
+ {
+  "id": 559,
+  "title": "Chevening ASEAN Scholarship",
+  "deadline_display": "Applications for Chevening Scholarships are now open! Applications close at 11:00 UTC on 6 October 2026. 'The deadline for applications is 6 October 2026 at 11:00 UTC. You will not be able to access the online application system after this date.'",
+  "deadline_date": "2026-10-06",
+  "deadline_precision": "day",
+  "application_period": "Opened at 11:00 UTC on 4 August 2026 and closes at 11:00 UTC on 6 October 2026, for the 2027-28 Chevening Scholarship cycle. Studies begin in the UK in September/October 2027.",
+  "flags": [
+   "precision_not_in_vocabulary:day"
+  ]
+ },
+ {
+  "id": 560,
+  "title": "Chevening SIDS Scholarship",
+  "deadline_display": "Applications for Chevening Scholarships are now open! Applications close at 11:00 UTC on 6 October 2026. 'The deadline for applications is 6 October 2026 at 11:00 UTC. You will not be able to access the online application system after this date.'",
+  "deadline_date": "2026-10-06",
+  "deadline_precision": "day",
+  "application_period": "Opened at 11:00 UTC on 4 August 2026 and closes at 11:00 UTC on 6 October 2026, for the 2027-28 Chevening Scholarship cycle. Studies begin in the UK in September/October 2027.",
+  "flags": [
+   "precision_not_in_vocabulary:day"
+  ]
+ },
+ {
+  "id": 561,
+  "title": "Chevening Europe Defence and Security Fellowship",
+  "deadline_display": "Open for applications until 12 October 2026, at 11:00 (UTC)",
+  "deadline_date": "2026-10-12",
+  "deadline_precision": "day",
+  "application_period": "Applications are open and close at 11:00 (UTC) on 12 October 2026. The programme itself runs in two cohorts in 2027: 25 January - 5 March 2027 and 15 March - 23 April 2027.",
+  "flags": [
+   "precision_not_in_vocabulary:day"
+  ]
+ },
+ {
+  "id": 562,
+  "title": "Pierre Elliott Trudeau Foundation PhD Scholarship (2027 competition)",
+  "deadline_display": "November 6, 2026, at 5:00 p.m. ET (deadline to submit the complete application); October 2, 2026 (deadline to request eligibility confirmation); October 30, 2026 at 9:00 a.m. ET (deadline for receipt of all three references)",
+  "deadline_date": "2026-11-06",
+  "deadline_precision": "day",
+  "application_period": "Applications open September 1, 2026 and close November 6, 2026 at 5:00 p.m. ET. Two-step process: eligibility verification form must be submitted by October 2, 2026; references received by October 30, 2026 at 9:00 a.m. ET; mandatory information sessions in the weeks of October 5 and October 12, 2026.",
+  "flags": [
+   "precision_not_in_vocabulary:day"
+  ]
+ },
+ {
+  "id": 564,
+  "title": "Hanns-Seidel-Stiftung Scholarship – Förderung internationaler Studierender und Promovierender (Scholarship for Studies / PhDs for international students and doctoral candidates)",
+  "deadline_display": "Application portal open 15 December 2026 to 15 January 2027 inclusive (12:00 CET) for Internationale Studierende und Promovierende (Ausländer); a further window 15 June 2027 to 15 July 2027 (12:00 CEST). Applications possible only via the HSS online application portal.",
+  "deadline_date": "2027-01-15",
+  "deadline_precision": "day",
+  "application_period": "15 December 2026 – 15 January 2027 (12:00 CET) and, for the same programme, 15 June 2027 – 15 July 2027 (12:00 CEST); the Institute informs applicants by email about the outcome of their application approximately four weeks after the application deadline",
+  "flags": [
+   "precision_not_in_vocabulary:day"
+  ]
+ },
+ {
+  "id": 565,
+  "title": "Deutschlandstipendium",
+  "deadline_display": "There is no central deadline. The programme page states that students apply to their university and that they should find out the procedure and deadlines directly from the university ('Zum jeweiligen Verfahren und den Fristen erkundigen Sie sich direkt an Ihrer Hochschule'). Deadlines are set by each participating university.",
+  "deadline_date": null,
+  "deadline_precision": "varies",
+  "application_period": "No central application period. Applications run through the individual university's own call for applications; universities publish their own deadlines, which the federal programme deliberately does not centralise.",
+  "flags": [
+   "prose_without_month_or_policy"
+  ]
+ },
+ {
+  "id": 566,
+  "title": "France 2030 - PEPR GFM \"Grands Fonds Marins\" - Appel à projets - 2026",
+  "deadline_display": "Limite de dépôt des projets : 17/11/2026 à 11:00 CET. The application PDF cover states: \"L'appel à projets est ouvert jusqu'au 17/11/2026 à 11h00 (heure de Paris)\". Section \"Dates importantes\" repeats: all submission elements, including the documents signed by the legal representative of each partner, must be deposited electronically before 17 Novembre 2026 à 11h00 (heure de Paris).",
+  "deadline_date": "2026-11-17",
+  "deadline_precision": "day",
+  "application_period": "Ouverture : 21/07/2026 à 09:00 CEST. Clôture : 17/11/2026 à 11:00 CET. Single-phase call (l'appel à projets se déroule en une seule phase): full proposals are submitted and evaluated by an international committee set up by the ANR.",
+  "flags": [
+   "precision_not_in_vocabulary:day",
+   "prose_without_month_or_policy"
+  ]
+ },
+ {
+  "id": 567,
+  "title": "France 2030 - PEPR PROPSY – \"Psychiatrie de précision\" - Appel à projets - 2026",
+  "deadline_display": "Fermeture : 10/11/2026 à 11:00 CET. The ANR call page carries a published extension notice: \"Attention : La date limite de dépôt des projets, initialement prévue le 15 octobre 2026 à 11h00, est désormais fixée au 10 novembre 2026 à 11h00 (CET).\" The original AAP PDF still shows 15 Octobre 2026 à 11h.",
+  "deadline_date": "2026-11-10",
+  "deadline_precision": "day",
+  "application_period": "Ouverture : 24/06/2026 à 09:00 CEST. Fermeture : 10/11/2026 à 11:00 CET (extended from 15/10/2026). The call page shows status \"Ouvert – 2026\". A webinar was held on 26/08/2026 with presentation and FAQ published.",
+  "flags": [
+   "precision_not_in_vocabulary:day",
+   "prose_without_month_or_policy"
+  ]
+ },
+ {
+  "id": 568,
+  "title": "Appel à projets M-ERA.NET 2026/27 - Science et ingénierie des matériaux pour l'innovation en Europe (édition 2027 pour l'ANR)",
+  "deadline_display": "Limite de dépôt des projets : 18/11/2026 à 12:00 CET. The two-step schedule is: \"Étape 1 : 12/05/2026, 12 h 00 (CEST)\" (pre-proposals, closed) and \"Étape 2 : 18/11/2026, 12 h 00 (CET)\" (detailed proposals). Only coordinators whose pre-proposal was recommended by at least three funding agencies from at least three different participating countries and who received the M-ERA.NET invitation may deposit a detailed proposal in step 2. Partners requesting ANR aid must additionally deposit their detailed proposal on the ANR submission site, with the exact link and deadline communicated later by email.",
+  "deadline_date": "2026-11-18",
+  "deadline_precision": "day",
+  "application_period": "Ouverture : 31/03/2026 à 09:00 CEST. Limite de dépôt des pré-dossiers : 12/05/2026 à 12:00 CEST (step 1, closed). Limite de dépôt des projets : 18/11/2026 à 12:00 CET (step 2, open on 2026-10-01). An information webinar was held on 18 March 2026, 12:00-14:00 CET, with presentations and the recording available on the M-ERA.NET call site.",
+  "flags": [
+   "precision_not_in_vocabulary:day"
+  ]
+ },
+ {
+  "id": 570,
+  "title": "Estonian Scholarship Programme for international students, researchers and academic staff — Scholarship for degree and exchange study in Estonia",
+  "deadline_display": "2026 application period will be open from 1st of October 2026 until October 31st 2026 (23:59, Estonian time)",
+  "deadline_date": "2026-10-31",
+  "deadline_precision": "day",
+  "application_period": "Applications accepted 1 October 2026 to 31 October 2026 (23:59 Estonian time); results announced personally by email",
+  "flags": [
+   "application_period:award_notification",
+   "precision_not_in_vocabulary:day"
+  ]
+ },
+ {
+  "id": 571,
+  "title": "Nordic Scholarship Programme (Nordic Africa Institute)",
+  "deadline_display": "Closing date 11 October 2026",
+  "deadline_date": "2026-10-11",
+  "deadline_precision": "day",
+  "application_period": "Open now for scholarships in 2027, closing 11 October 2026; applicants informed of the outcome by the end of November 2026 at the latest",
+  "flags": [
+   "precision_not_in_vocabulary:day"
+  ]
+ },
+ {
+  "id": 574,
+  "title": "JSPS Invitational Fellowships for Research in Japan - Short-term (FY2027, 2nd Recruitment)",
+  "deadline_display": "FY2027 2nd Recruitment (Short-term): Application deadline (from host institution to JSPS) April 23, 2027 (by 5 p.m. (JST)). The first FY2027 recruitment deadline was August 28, 2026. Note that host institutions set their own internal deadlines, which 'depending on the institution, it may have its own deadline more than one month before the application deadline set by JSPS'.",
+  "deadline_date": "2027-04-23",
+  "deadline_precision": "day",
+  "application_period": "FY2027 2nd recruitment: host-institution submissions to JSPS by 5 p.m. JST on 23 April 2027; selection results published in early August 2027; periods for arrival in Japan 1 October 2027 - 31 March 2028. The JSPS Electronic Application System becomes available approximately two months before each JSPS deadline.",
+  "flags": [
+   "precision_not_in_vocabulary:day"
+  ]
+ },
+ {
+  "id": 575,
+  "title": "Young Leaders' Program (YLP) - Japanese Government (MEXT) Scholarship, GRIPS School of Government and School of Local Governance",
+  "deadline_display": "No central deadline is published. MEXT states that all application procedures for Japanese Government (MEXT) Scholarships are conducted through Japanese embassies, consulates in your countries, or institutions of higher education in Japan, and candidates should ask their own embassy/consulate. GRIPS publishes the application window as a historical reference only: application acceptance period (last year's result) July to October, with results announced the following April.",
+  "deadline_date": null,
+  "deadline_precision": "varies",
+  "application_period": "GRIPS publishes that for the cycle it runs, application acceptance runs July to October (last year's result), enrolment is in October and graduation the following September, with results announced the following April. GRIPS has published the YLP Brochure for 2027-2028. The nominating authority in the applicant's own country sets the operative date; no central deadline exists.",
+  "flags": [
+   "application_period:administrative"
+  ]
+ },
+ {
+  "id": 578,
+  "title": "University of Sharjah Research Assistant (RA) and Teaching Assistant (TA) Scholarship for Master's Students",
+  "deadline_display": "Applications for Master's programs will be open from 5 October 2026 to 12 November 2026.",
+  "deadline_date": "2026-11-12",
+  "deadline_precision": "day",
+  "application_period": "Master's applications are open 5 October 2026 to 12 November 2026 for the published 2026/2027 intake. The University publishes no separate RA/TA scholarship application window; it states that meeting the minimum eligibility requirements does not guarantee a scholarship and that selection is subject to departmental evaluation, availability and approval.",
+  "flags": [
+   "precision_not_in_vocabulary:day"
+  ]
+ },
+ {
+  "id": 579,
+  "title": "Programa Portugal-Berkeley (Visiting Student Researchers at UC Berkeley)",
+  "deadline_display": "Applications are accepted on a continuous basis until 17:00 on 30 December 2027 (Portuguese Continental time), or until the maximum number of Visiting Student Researchers planned for each calendar year has been selected, whichever occurs first",
+  "deadline_date": "2027-12-30",
+  "deadline_precision": "day",
+  "application_period": "Opened 01 January 2026 at 09:00; closes 30 December 2027 at 17:00, or earlier once the annual quota of selected Visiting Student Researchers is filled. Assessment runs in quarterly windows, grouped by submission date (first window: applications received up to 31/03/2026; second window starting 30/06/2026; and so on until the call closes).",
+  "flags": [
+   "precision_not_in_vocabulary:day"
+  ]
+ },
+ {
+  "id": 601,
+  "title": "SA-TIED Request for Research Proposals: Public revenue mobilization; Poverty, inequality, and labour markets",
+  "deadline_display": "Closing date: 15 October 2026, 23:59 (UTC+2). Submit questions by 8 October 2026.",
+  "deadline_date": "2026-10-15",
+  "deadline_precision": "day",
+  "application_period": "Launched 17 September 2026; proposals close 15 October 2026 at 23:59 UTC+2. Questions on the proposal process were due by 8 October 2026, with queries and responses published on the RfRP announcement page and updated on a rolling basis.",
+  "flags": [
+   "precision_not_in_vocabulary:day"
+  ]
+ },
+ {
+  "id": 602,
+  "title": "AFdoc – Aides à la formation doctorale (FNR PhD funding scheme)",
+  "deadline_display": "First call: 'a deadline on Wednesday, 25 November 2026 at 14:00 CET'. From 2027 there will be two calls per year: the first call launched mid-February closes on the last Wednesday of April at 14:00 CET, and the second call launched mid-September closes on the last Wednesday of November at 14:00 CET.",
+  "deadline_date": "2026-11-25",
+  "deadline_precision": "day",
+  "application_period": "The very first call was launched mid-September 2026 with a deadline on Wednesday, 25 November 2026 at 14:00 CET, so the scheme is open on 2026-10-01. From 2027 there will be two calls per year: the first call launched mid-February closes on the last Wednesday of April at 14:00 CET, funding decisions are communicated in July and funded projects must start no later than 1 February of the following year; the second call launched mid-September closes on the last Wednesday of November at 14:00 CET, decisions are communicated in March of the following year and funded projects must start no later than 1 October.",
+  "flags": [
+   "precision_not_in_vocabulary:day"
+  ]
+ },
+ {
+  "id": 603,
+  "title": "Flanders Trainee Programme (Flanders Traineeship Programme)",
+  "deadline_display": "No more grants for 2026: 'You can no longer apply for a grant for internships continuing into 2026. There is no more budget available for 2026. A budget will be available again in 2027. You can reapply for internships taking place in 2027 as from January 2027.' Within a funded budget year: 'You can submit your grant application up to six months in advance until one day before the start of your internship.'",
+  "deadline_date": null,
+  "deadline_precision": "month",
+  "application_period": "The 2026 budget is exhausted and applications for 2026 are closed. The 2027 budget reopens for applications in January 2027 for internships taking place in 2027, and new internship vacancies will be published on the programme's internships page from late 2026 onwards. Inside a funded budget year the published rule is that you may apply at any time of the year until one day before your internship starts, up to six months in advance, but a grant is only granted while budget remains.",
+  "flags": [
+   "month_claimed_but_no_date"
+  ]
+ },
+ {
+  "id": 605,
+  "title": "ANU Vice-Chancellor's International Achievement Award",
+  "deadline_display": "Application period: Open for applications. ANU publishes no closing date for this award; consideration is automatic with the admissions application.",
+  "deadline_date": null,
+  "deadline_precision": "rolling",
+  "application_period": "Continuous. ANU's scholarship page shows the application period as 'Open for applications' with no closing date, because no separate scholarship application is required: all eligible students applying for admission to commence at the University are considered automatically.",
+  "flags": [
+   "prose_without_month_or_policy"
+  ]
+ },
+ {
+  "id": 607,
+  "title": "Japan Africa Dream Scholarship (JADS) Program",
+  "deadline_display": "The African Development Bank publishes no central JADS call opening or closing date, so there is no central deadline to quote. Applications go only through the partner universities, and the AfDB's own \"List of Universities\" page publishes each partner's intake and application window: Ritsumeikan Asia Pacific University - \"Application Deadlines are as following: April Enrollment: October / September Enrollment: April\"; Hiroshima University Graduate School of Advanced Science and Engineering - \"Month of Intake: April - Preliminary Survey: Oct 18-29 - Application period: Nov 8-19 - Exam. Period: Nov 29-Dec 8\" and, for its second course, \"Preliminary Evaluation for Apr. Oct 4-8, Preliminary Evaluation for Oct.: Mar. 7-11, Application Period for Apr.: Nov 4-15, Application Period for Oct.: Apr. 4-22\"; The University of Tokyo Graduate School of Frontier Sciences - \"Month of Intake: April or October / Examination: Schedule A (application period: mid June) Schedule B (application period: mid November)\"; Sophia University - \"Month of Intake: September / Deadline of Application: Web entry: Mid of March ~ Early April; Application: Mid of April\". Kyoto University and Kogakuin University are listed with \"Please refer to the program website\".",
+  "deadline_date": null,
+  "deadline_precision": "varies",
+  "application_period": "Annual partner-university admissions cycle. As published by AfDB on 2026-10-01, the next windows relative to that date are: Ritsumeikan Asia Pacific University April-intake deadline in October 2026; Hiroshima University preliminary survey 18-29 October 2026 and application period 8-19 November 2026; Hiroshima University second course preliminary evaluation 4-8 October 2026; The University of Tokyo Schedule B application period in mid November 2026. AfDB states there is no separate application to the Bank and no central JADS window.",
+  "flags": [
+   "deadline_display:administrative"
+  ]
+ },
+ {
+  "id": 610,
+  "title": "UNHCR Tertiary Refugee Scholarship Programme (DAFI) - Albert Einstein German Academic Refugee Initiative",
+  "deadline_display": "No single global deadline is published. Deadlines are set per country operation and published on the UNHCR country help pages (published 2026/2027 examples: Rwanda 7 August 2026; Kyrgyzstan 21 August 2026; Slovakia 31 August 2026). Applicants must check their own country operation's call.",
+  "deadline_date": null,
+  "deadline_precision": "month",
+  "application_period": "Country-specific. The 2026/2027 cycle ran on country-published windows in July-August 2026 (Rwanda 15 July-7 August 2026; Kyrgyzstan 7 July-21 August 2026; Slovakia 1 July-31 August 2026). New country calls for the next cycle are announced on the relevant UNHCR country help page and applications are submitted through the DAFI Programme Management Platform.",
+  "flags": [
+   "month_claimed_but_no_date"
+  ]
+ },
+ {
+  "id": 612,
+  "title": "University of Glasgow Sanctuary Scholarship",
+  "deadline_display": "Applications for this scholarship for the 2027-28 academic session will open soon. In the meantime please provide your details and we will be in touch when the scholarship is open for applications.",
+  "deadline_date": null,
+  "deadline_precision": "month",
+  "application_period": "For the 2027/28 academic year the scholarship is announced and not yet open for applications: the University states applications 'will open soon' and invites applicants to register their interest in the meantime. No opening date or closing date has been published for the 2027/28 cycle.",
+  "flags": [
+   "prose_without_month_or_policy"
+  ]
+ },
+ {
+  "id": 614,
+  "title": "Programa RESTART — 4ª Edição (FCT research funding after parental leave)",
+  "deadline_display": "Applications open 01 October 2026 at 14h and close 13 November 2026 at 17h (Portuguese time)",
+  "deadline_date": "2026-11-13",
+  "deadline_precision": "day",
+  "application_period": "01 October 2026 (14h) to 13 November 2026 (17h). The 2026 FCT contest calendar lists the opening notice for October 2026, provisional results in April 2027, and the programme page shows 'Atualizado em 1 Outubro 2026'.",
+  "flags": [
+   "precision_not_in_vocabulary:day"
+  ]
+ },
+ {
+  "id": 616,
+  "title": "Nanyang President's Graduate Scholarship (NPGS)",
+  "deadline_display": "The NPGS application window is open annually from October/November to December. The application period for Academic Year 2027-2028 will be announced in due course. The application period for National Institute of Education (NIE) will also be announced in due course. (NTU Research Programmes Admission Guide: for the August intake the application portal opens on 1 October and the last day for submission of the online application with supporting documents is 31 January, with school-specific deadlines of 15 November for ADM, SoH, SSS and WKWSCI, and 31 December for LKCMedicine and RSIS.)",
+  "deadline_date": null,
+  "deadline_precision": "month",
+  "application_period": "Annually from October/November to December for NPGS, with outcomes sent by email together with the offer of admissions. This sits inside NTU's research degree application periods: August (Semester 1) intake - portal opens 1 October, university last day 31 January; January (Semester 2) intake - portal opens 1 June, university last day 31 July.",
+  "flags": [
+   "month_claimed_but_no_date"
+  ]
+ },
+ {
+  "id": 617,
+  "title": "Gates Cambridge Scholarship (entry in the academic year 2027/8)",
+  "deadline_display": "Applications for entry in the academic year 2027/8 are now open. Two rounds. US citizens resident in the USA must apply in October - Application deadline Wednesday 14th October 2026 (Full application must be submitted by 11:59pm UK time on the date given). All other eligible applicants - Application deadline dependent on your course, either Tuesday 8th December 2026 or Wednesday 6th January 2027 (Full application must be submitted by 11:59pm UK time).",
+  "deadline_date": "2026-10-14",
+  "deadline_precision": "day",
+  "application_period": "Applications opened 11th September 2026 for entry in the academic year 2027/8. Round 1 (US citizens resident in the USA only): open 11 September 2026, deadline 14 October 2026. Round 2 (all other eligible applicants): open 11 September 2026, deadline set by the Course Funding Deadline for the specific course, either 8 December 2026 or 6 January 2027.",
+  "flags": [
+   "precision_not_in_vocabulary:day"
+  ]
+ },
+ {
+  "id": 620,
+  "title": "CLP Future Conservationist Awards 2027",
+  "deadline_display": "Stage 1 concept notes must be submitted by Friday, October 30, 2026 (23:59 GMT). Late, incomplete or ineligible submissions will not be considered.",
+  "deadline_date": "2026-10-30",
+  "deadline_precision": "day",
+  "application_period": "Stage 1: concept notes due 30 October 2026, 23:59 GMT. Stage 2: only shortlisted (highest-scoring) concept note applicants are notified and invited to submit a full application via the CLP online application portal; detailed guidelines for the full application are provided to those who reach this stage.",
+  "flags": [
+   "precision_not_in_vocabulary:day"
+  ]
+ },
+ {
+  "id": 623,
+  "title": "Ernst Mach Grant – worldwide",
+  "deadline_display": "Closing date for applications: 01.12.2026. Online application is possible from September to December 1st; the application deadline for this grant is December 1st, 2026, 23:59 (CET) for all applications for stays during the academic year 2027/28.",
+  "deadline_date": "2026-12-01",
+  "deadline_precision": "day",
+  "application_period": "Online application open from September 2026 and closing 1 December 2026, 23:59 CET, for research stays during the Austrian academic year 2027/28 (starting September 2027). Expert evaluation takes place after the deadline; results are expected to be published at the beginning of July 2027.",
+  "flags": [
+   "precision_not_in_vocabulary:day"
+  ]
+ }
+]

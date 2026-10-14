@@ -1,0 +1,52 @@
+{
+  "id": "668",
+  "verdict": "needs_review",
+  "confidence": "high",
+  "checked_at": "2026-10-13T01:18:05Z",
+  "sources": [
+    {
+      "url": "https://comstech.org/comstech-fellowships-for-research-and-trainings-in-human",
+      "kind": "official",
+      "note": "COMSTECH's own programme page for the Fellowships for Research and Trainings in Human Nutrition, Nutraceuticals and Food Sciences, read in full (comstech.org is the organisation's own domain; the page carries the Secretariat's Constitution Avenue, Islamabad address and @comstech.org contacts)."
+    },
+    {
+      "url": "https://drive.google.com/file/d/1MIUGUB8WHnvR3REz8JMwpnR9-c1CJapB/view?usp=drive_link",
+      "kind": "other",
+      "note": "The 'Flyer attached' PDF linked from the official page. NOT read: Google Drive returned a sign-in wall, so no deadline or detail from the flyer was used as evidence."
+    }
+  ],
+  "findings": {
+    "awarding_body": {
+      "status": "confirmed",
+      "detail": "The page is hosted on COMSTECH's own domain and names OIC-COMSTECH as an awarder, jointly with the host institutions' scholarship committee, matching the record's awarding body. The page describes the programme as offered 'COMSTECH and prestigious CCoE member institutions jointly'.",
+      "quote": "Research fellowships are awarded by OIC-COMSTECH, as well as by the Joint Scholarship Committee of the host institutions, based on scientific merit."
+    },
+    "deadline": {
+      "status": "confirmed",
+      "detail": "No closing date is published; the page describes a rolling, yearly-intake call and states under 'Call Status' that the call is currently open (checked 12 October 2026). This matches the record's rolling deadline label, including the 10-fellowship first-come, first-served wording. The flyer PDF linked on the page could not be read (Google sign-in wall), so a cycle-specific closing date published only in the flyer cannot be ruled out.",
+      "quote": "COMSTECH will accept applications on a yearly basis and select the candidates based on the pre-approved selection criteria."
+    },
+    "eligibility": {
+      "status": "confirmed",
+      "detail": "All record claims confirmed verbatim: open to citizens of all OIC member states (the page additionally names 21 OIC least-developed countries); at least a Bachelor's degree with a Master's or Ph.D. an asset; academic background in food security, agriculture, food science, food safety or a related field; experience requirements that differ by degree level (5 years for Bachelor's holders, 3 years for Master's/Ph.D. holders); fluent English; available full time for the whole fellowship. The page adds constraints the record omits: age limits of 35 (MS/Ph.D.) and 45 (post-doc).",
+      "quote": "The fellowship program is open to citizens of all OIC member states and the OIC least-developed countries: Afghanistan, Bangladesh, Benin, Burkina Faso, Chad, Comoros, Djibouti, Gambia, Guinea, Guinea-Bissau, Mali, Mauritania, Mozambique, Niger, Senegal, Sierra Leone, Somalia, Sudan, Togo, Uganda and Yemen."
+    },
+    "funding": {
+      "status": "confirmed",
+      "detail": "Partially funded, as the record says. COMSTECH covers only low-cost international airfare and visa fees; accommodation and subsistence come from the host institution. There is no tuition, stipend or full-cost coverage, so this is correctly not 'Fully Funded'.",
+      "quote": "COMSTECH will cover, low-cost international airfare and visa fees, if applicable. Host institutions are expected to provide accommodation, subsistence supervision and mentoring of local training."
+    },
+    "degree_levels": {
+      "status": "unconfirmed",
+      "detail": "The record's single 'PhD' level cannot be confirmed as stated. The page is internally inconsistent: its summary blocks state 'Minimum qualification held: MS/Ph.D.' and 'Minimum diploma held: MS/Ph.D. or equivalent', the call details give an age limit of 'Maximum 35 years (for Master's studies), 45 years (for doctoral studies)' (i.e. two tracks, Master's and doctoral), while the eligibility section accepts a Bachelor's degree plus 5 years of professional experience. No degree is awarded: the fellowship is a 3-6 month research placement.",
+      "quote": "Minimum qualification held: MS/Ph.D."
+    }
+  },
+  "recommended_field_updates": {
+    "official_source_url": null,
+    "deadline_text": "No closing date published. Call Status: 'The call is currently open.' 'COMSTECH will accept applications on a yearly basis and select the candidates based on the pre-approved selection criteria.' 'Only 10 fellowships are available and will be awarded on a first-come, first-served basis, subject to eligibility.'",
+    "deadline_date": null,
+    "verification_notes": "Page read live on the campaign date; the recorded URL is still the live, canonical official page and needs no change. Awarding body, rolling open call, eligibility and partial funding all match the record verbatim. The single unresolved item is degree_levels: the record says 'PhD', but the page states a minimum qualification of MS/Ph.D., applies age limits of 35 (Master's studies) and 45 (doctoral studies), and also accepts Bachelor's holders with 5 years' professional experience. Also note for any re-check: (a) the flyer PDF on the page is behind a Google Drive login wall and was not read, so a cycle-specific closing date published only in the flyer would be missed; (b) the record's 'region: Africa' understates the scope, which is all OIC member states across Africa, the Middle East and Asia; (c) the record's eligibility summary omits the age limits (35 / 45) and the named 21-country OIC LDC list, both of which are stated on the page."
+  },
+  "notes_for_reviewer": "A human should decide the degree_levels value: the page supports something like 'MS/Ph.D. (short research fellowship, no degree awarded); Bachelor's plus 5 years' professional experience also accepted' rather than 'PhD' alone, so the record is too narrow to be marked active. Nothing else contradicts the record."
+}

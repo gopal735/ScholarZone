@@ -1,0 +1,79 @@
+{
+ "agent": "agent_108",
+ "assignment_count": 1,
+ "scholarships": [
+  {
+   "id": 297,
+   "title": "Visegrad Scholarship Programme — study or research stay hosted by Masaryk University",
+   "country": "Czech Republic",
+   "degree": "Master's, Post-Master's",
+   "funding_label": "Stipend",
+   "status": "upcoming",
+   "official_source": "International Visegrad Fund (host institution: Masaryk University, Brno)",
+   "official_source_url": "https://czs.muni.cz/en/student-from-abroad/other-possibilities/visegrad-grant",
+   "application_link": "https://czs.muni.cz/en/student-from-abroad/other-possibilities/visegrad-grant",
+   "catalogue_url": "https://www.muni.cz/en/admissions/bachelors-and-masters-studies",
+   "official_updates_url": "https://www.muni.cz/en/about-us/official-notice-board/annual-reports",
+   "existing": {
+    "funding_amount": null,
+    "funding_currency": null,
+    "funding_period": null,
+    "tuition_coverage": 0,
+    "living_cost_coverage": null,
+    "travel_coverage": null,
+    "fully_funded": 0,
+    "description": "This page is Masaryk University's guidance for students who want to come to Brno under the International Visegrad Fund's scholarship programme. The Fund, not Masaryk University, awards and funds the scholarship; the university acts as host and supplies the letter of acceptance needed for the application. The Fund's scholarships are designed for students at the Master's or post-Master's level and are intended for study or research projects abroad, allowing stays of one to four semesters. Applicants must have completed at least four semesters of university by the time they apply, and Masaryk University states that it has hosted several Visegrad scholarship holders in recent years and is open to receiving more.",
+    "eligibility": [
+     "Citizen of the Czech Republic, Hungary, Poland or Slovakia",
+     "Or citizen of Albania, Armenia, Azerbaijan, Belarus, Bosnia and Herzegovina, Georgia, Kosovo, Macedonia, Moldova, Montenegro, Serbia or Ukraine",
+     "At Master's or post-Master's level",
+     "At least four semesters of university study completed by the time of application"
+    ],
+    "eligibility_summary": "Open to citizens of the V4 countries (Czech Republic, Hungary, Poland, Slovakia) and of selected non-V4 countries (Albania, Armenia, Azerbaijan, Belarus, Bosnia and Herzegovina, Georgia, Kosovo, Macedonia, Moldova, Montenegro, Serbia and Ukraine). Applicants must be at Master's or post-Master's level and must have completed at least four semesters of university at the time of applying.",
+    "benefits": [],
+    "coverage": [],
+    "requirements": [
+     "Contact the international office of the specific Masaryk University faculty to obtain the letter of acceptance",
+     "Submit the Visegrad Fund application by the annual 15 March deadline",
+     "Have completed at least four semesters of university study at the time of applying",
+     "Submit to the International Visegrad Fund, not to Masaryk University"
+    ],
+    "documents": [
+     "Letter of acceptance from the international office of the specific Masaryk University faculty, which the university states is needed for the application"
+    ],
+    "english_requirement": null,
+    "application_method": [
+     "Contact the international office of the target Masaryk University faculty",
+     "Obtain the letter of acceptance",
+     "Apply to the International Visegrad Fund before the annual 15 March deadline"
+    ],
+    "selection_notes": "Masaryk University states only that it has hosted several Visegrad scholarship holders in recent years and is very open to receiving more; selection is done by the International Visegrad Fund, whose criteria are published on visegradfund.org.",
+    "best_fit": "International students at Masaryk University Brno",
+    "notes": "Masaryk University also runs separate internal schemes for its own students and staff, listed on the same site as MU scholarships for research placements, Special Grant for Short-term Placements, STELLA and Utrecht Network Young Researchers Grant. Those are distinct awards and are not covered by this row.",
+    "duration": null,
+    "application_period": "Annual, with an application deadline of 15 March. The Masaryk University contact step should be completed well before that so the letter of acceptance is ready.",
+    "deadline_display": "Official wording on the Masaryk University page: \"Annual deadline for applications: 15 March\". The page states no year, and the 2026 occurrence has already passed.",
+    "deadline_date": null,
+    "region": "Europe",
+    "program_type": "Regional study/research mobility scholarship of the International Visegrad Fund, used here to describe a stay hosted by Masaryk University",
+    "applicant_utility": null,
+    "official_details": null
+   },
+   "missing_fields": [
+    "funding_amount",
+    "funding_currency",
+    "funding_period",
+    "living_cost_coverage",
+    "travel_coverage",
+    "benefits",
+    "coverage",
+    "english_requirement",
+    "duration",
+    "deadline_date",
+    "applicant_utility",
+    "official_details"
+   ]
+  }
+ ],
+ "result_file": "C:\\Users\\GopaL\\Desktop\\Projects folder\\ScholarZone\\backend\\research_output\\live500\\results\\agent_108.json"
+}

@@ -1,0 +1,21 @@
+{
+  "agent_id": "w3_12",
+  "shard": "w3-12",
+  "host": "apply.ruffordsmallgrants.org",
+  "today": "2026-10-04",
+  "logo_override": {
+    "url": "https://apply.ruffordsmallgrants.org/static/img/rufford_logo_transbg.png",
+    "page_url": "https://apply.ruffordsmallgrants.org/help/criteria",
+    "official_host": true,
+    "alt_text": "Rufford logo",
+    "validation_result": "verified",
+    "validation_detail": "png 25471 B, 300x122, HTTP 200 with content-type image/png. Pixel analysis of the decoded bitmap: 73.0% fully transparent background, and the opaque pixels average luminance 54.4 with 76.4% below L=60 and 0.0% above L=230 - i.e. a DARK/coloured wordmark, not white-on-transparent, so it renders correctly on a light card.",
+    "image_kind": "official_logo",
+    "image_format": "png",
+    "verified_at": "2026-10-04T00:00:00+00:00",
+    "host_evidence": "same_registrable_domain",
+    "_award": "Rufford Small Grants Programme"
+  },
+  "target_ids": [536],
+  "notes": "Read the markup of the awarding body's own application portal (apply.ruffordsmallgrants.org, HTTP 200, full HTML retrieved). The site header carries the Rufford mark as <a href=\"/\" class=\"navbar-brand\"><img src=\"/static/img/rufford_logo_transbg.png\" width=\"80\" alt=\"Rufford logo\"> - same registrable domain as the shard host, so rule 1 satisfied without needing the parent domain. Because the filename says 'transbg' I did NOT trust the name: I downloaded the file and analysed every pixel with System.Drawing to settle rule 3. Result 300x122, 25471 B, 73% transparent, opaque-pixel mean luminance 54.4, zero near-white pixels -> dark wordmark, safe on a light card. Chose this over the other candidates because the brief prefers a full-colour wordmark over a bare icon: /static/img/rsg_apple_touch_180_180.png (HTTP 200, image/png, 42403 B, 180x180, 0% transparent, mean luminance 153, 35.7% white) is a square app tile, not the wordmark. /static/img/favicon.ico and the guessed /static/img/rufford_logo.png, /static/img/logo.png were not needed once the in-markup src was confirmed. Provenance check: this is The Rufford Foundation's own mark, and the same page's footer credits 'The Rufford Foundation', which is the body that awards the Rufford Small Grant (1st RSG up to GBP 7,000 / 2nd RSG / Booster / Completion) - rule 2 satisfied. Note www.ruffordsmallgrants.org and the linked www.rufford.org were NOT used: rufford.org is a different registrable domain and would fail rule 1."
+}

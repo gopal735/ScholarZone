@@ -1,0 +1,18 @@
+{
+  "country_tested": "USA",
+  "production_db_before": 487,
+  "production_db_after": 487,
+  "inserted_count": 0,
+  "duplicates": 1,
+  "rejected": 0,
+  "errors": 1,
+  "scholarships_unchanged_during_dry_run": true,
+  "candidates_created_during_dry_run": 0,
+  "idempotency_holds": true,
+  "telemetry_events": 9,
+  "image_reviews_created": 0,
+  "existing_records_affected": false,
+  "production_operational": true,
+  "dry_run_runtime_ms": 5045.2,
+  "live_runtime_ms": 4756.5
+}

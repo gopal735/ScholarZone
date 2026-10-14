@@ -1,0 +1,2052 @@
+{
+  "agent_id": "w1_28",
+  "shard": "w1-28",
+  "today": "2026-10-04",
+  "records": [
+    {
+      "target_id": 272,
+      "outcome": "refreshed",
+      "confirm": true,
+      "confirmation_evidence": "Read masters.au.dk/scholarships-and-grants (Aarhus University's own Master's site, page footered 'Revised 08.07.2026'). It states 'Aarhus University offers a limited number of Danish state scholarships for non-EU students' and 'Only applicants who have applied for a Master's degree programme no later than 15 January (summer admission) and 15 September (winter admission) will be considered for a tuition waiver/scholarship.'",
+      "new_scholarship": {
+        "name": "Aarhus University Danish State Scholarship",
+        "legacy_titles": ["Aarhus University Danish State Scholarship"],
+        "country": "Denmark",
+        "degree_levels": "Master's",
+        "funding_type": "Tuition Fee Waiver (full or part; some faculties add a monthly living-expense grant)",
+        "official_source": "Aarhus University",
+        "official_source_url": "https://masters.au.dk/scholarships-and-grants",
+        "status": "upcoming",
+        "is_verified": true,
+        "last_verified_date": "2026-10-04",
+        "region": "Europe",
+        "program_type": "Danish state scholarship (tuition waiver)",
+        "duration": "Duration of the Master's programme (monthly grant 'typically but not always' for the programme)",
+        "deadline": "Only applicants who have applied for a Master's degree programme no later than 15 January (summer admission) and 15 September (winter admission) will be considered for a tuition waiver/scholarship.",
+        "deadline_date": null,
+        "deadline_precision": "recurring",
+        "application_period": "Assessed automatically with the admission application; 15 January for summer admission and 15 September for winter admission.",
+        "eligibility_summary": "Non-EU/EEA/Swiss applicants liable to pay tuition fees who apply for a specific AU Master's programme by the deadline. EU/EEA/Swiss students cannot apply.",
+        "eligibility": [
+          "Not a citizen of the EU, EEA or Switzerland: 'EU/EEA/Swiss students cannot apply for scholarships at AU.'",
+          "Liable to pay tuition fees at Aarhus University: 'Scholarships can only be awarded to applicants who are liable to pay tuition fees.'",
+          "Applied for a Master's degree programme by 15 January (summer admission) or 15 September (winter admission)",
+          "Not eligible for the Danish State Educational Grant and Loan Scheme (SU) is not stated as a bar, but SU eligibility is directed elsewhere"
+        ],
+        "coverage": [
+          "Full or partial tuition fee waiver (depends on faculty)",
+          "Monthly grant towards living expenses (Faculty of Arts and Aarhus BSS only)",
+          "No travel coverage stated",
+          "No accommodation or insurance coverage stated"
+        ],
+        "required_documents": [],
+        "catalogue_url": null,
+        "official_updates_url": "https://masters.au.dk/scholarships-and-grants",
+        "english_requirement": null,
+        "requirements": [
+          "Submit the regular admission application by the scholarship deadline",
+          "Do not upload additional scholarship documentation: 'You should not upload any additional documentation to your application for admission.'",
+          "Accept the scholarship/tuition waiver offer within the very short deadline given in the offer letter"
+        ],
+        "application_method": "No separate scholarship application. Scholarship assessment is automatic when the admission application is submitted by the deadline.",
+        "application_method_note": "The official page states: 'You do not need to complete a separate application.'",
+        "selection_notes": "Priority is given to applicants with excellent academic qualifications; typically only one or two scholarships are offered per Master's programme, and some faculties focus on selected programmes or applicants from specific countries.",
+        "benefits": [
+          "Full or partial tuition fee waiver",
+          "Monthly grant towards living expenses at the Faculty of Arts and Aarhus BSS",
+          "Some faculties may assist tuition-waiver recipients in finding a relevant student job"
+        ],
+        "funding_amount": null,
+        "funding_currency": null,
+        "funding_period": null,
+        "description": "Aarhus University administers a limited number of Danish state scholarships for non-EU/EEA applicants liable to pay tuition fees. The award takes the form of a full or partial tuition waiver; the Faculty of Arts and Aarhus BSS add a monthly grant towards living expenses, while the Faculty of Natural Sciences and the Faculty of Technical Sciences offer tuition waivers only. No separate scholarship application exists: applicants are assessed automatically when they apply for admission to a Master's programme by 15 January (summer admission) or 15 September (winter admission). The scholarship is tied to the specific Master's programme and cannot be transferred to another AU degree programme."
+      },
+      "programme_detail_official": {
+        "official_source_urls": ["https://masters.au.dk/scholarships-and-grants"],
+        "application_link": "https://masters.au.dk/how-to-apply",
+        "official_updates_url": "https://masters.au.dk/scholarships-and-grants",
+        "catalogue_url": null,
+        "application_cycle": "Annual cycle with two intakes: summer admission (application deadline 15 January) and winter admission (application deadline 15 September)",
+        "deadline_central": null,
+        "deadline_central_display": "15 January (summer admission) and 15 September (winter admission)",
+        "deadline_central_timezone": null,
+        "deadline_note": "The official page gives day-and-month deadlines only, with no calendar year and no named rounds, so no ISO deadline date can be published. As of 2026-10-04 the 15 September winter-admission deadline has passed and the next applicable deadline is the 15 January summer-admission deadline.",
+        "status": "UPCOMING",
+        "status_note": "The scheme runs every year. The most recent deadline quoted on the page (15 September, winter admission) fell before the verification date, so the next cycle is expected to reopen for the 15 January summer-admission deadline. The page itself gives no explicit opening date.",
+        "funding_amount": null,
+        "funding_currency": null,
+        "funding_period": null,
+        "funding_duration": "Full or partial tuition waiver tied to the Master's programme; the monthly living-expense grant, where offered, is 'typically but not always for the duration of your Master's degree programme'",
+        "tuition_coverage": true,
+        "tuition_coverage_note": "'In some cases, the scholarship is a full or partly tuition waiver.' Faculty of Natural Sciences and Faculty of Technical Sciences: tuition fee waiver only. Faculty of Arts and Aarhus BSS: tuition fee waiver plus a monthly grant towards living expenses.",
+        "living_cost_coverage": null,
+        "travel_coverage": false,
+        "fully_funded": false,
+        "funding_label": "Full or partial tuition fee waiver; Faculty of Arts and Aarhus BSS also add a monthly living-expense grant. Living costs are not fully covered and no monetary amount is published.",
+        "benefits": [
+          "Full or partial tuition fee waiver",
+          "Monthly grant towards living expenses (Faculty of Arts, Aarhus BSS)",
+          "Possible help finding a student job at faculties that award tuition waivers only"
+        ],
+        "eligibility": [
+          "Applicants from outside the EU/EEA/Switzerland",
+          "Liability to pay tuition fees at Aarhus University",
+          "Admission application submitted by 15 January (summer) or 15 September (winter)",
+          "Academic qualification strong enough for admission to the chosen Master's programme"
+        ],
+        "citizenship_residency": "Non-EU/EEA/Swiss citizens only. The page states: 'EU/EEA/Swiss students cannot apply for scholarships at AU.'",
+        "international_eligibility": "Open to applicants liable to pay tuition fees at AU who are not from the EU/EEA/Switzerland; the page headline describes them as 'the most talented applicants from outside Europe'.",
+        "degree_levels": ["Master's"],
+        "study_mode": null,
+        "research_requirement": null,
+        "subject_or_agency_requirement": "The scholarship is connected very specifically to the Master's programme applied for and cannot be transferred to another degree programme at Aarhus University. Some faculties place strategic focus on selected degree programmes or applicants from specific countries.",
+        "application_method": "No separate scholarship application. Scholarship assessment is automatic when the admission application is submitted by the stated deadline.",
+        "application_route": "Aarhus University online admission application portal (masters.au.dk/how-to-apply)",
+        "requirements": [
+          "Submit the admission application for a Master's degree programme by 15 January (summer admission) or 15 September (winter admission)",
+          "Do not upload extra scholarship documentation to the admission application",
+          "Accept the tuition waiver/scholarship offer within the very short deadline given with the offer",
+          "If only a tuition waiver is offered, demonstrate sufficient funds to support yourself during your stay in Denmark to obtain a student residence permit"
+        ],
+        "documents": [
+          "No additional scholarship documents are required: 'You should not upload any additional documentation to your application for admission.'"
+        ],
+        "english_requirement": null,
+        "english_requirement_note": "The scholarships and grants page states no English language requirement; AU's general English language requirements are published on a separate admissions page that was not read for this record.",
+        "selection_criteria": [
+          "Academic qualifications assessed on admission",
+          "Priority given to applicants with excellent academic qualifications",
+          "For Natural and Technical Sciences: the most qualified and talented students are awarded the 100% tuition fee waivers"
+        ],
+        "selection_weighting": "In selecting scholarship recipients among the academically qualified applicants, priority will be given to applicants with excellent academic qualifications.",
+        "duration": "Duration of the Master's degree programme",
+        "award_holder_conditions": [
+          "Must have submitted the admission application by the 15 January or 15 September deadline",
+          "Must be liable to pay tuition fees at Aarhus University",
+          "Scholarship cannot be transferred to another AU degree programme",
+          "Must accept the offer within the very short deadline given; if the waiver has not arrived by 1 April (summer) or 1 November (winter) the student is liable for tuition fees",
+          "Scholarship holders pay regular Danish income tax unless exempt as students from so-called developing countries",
+          "A tuition-waiver-only holder must show sufficient funds for the residence permit"
+        ],
+        "supplements_or_initiatives": [
+          "Indonesian LPDP Regular Scholarship (Beasiswa Reguler LPDP) is listed on the same page as an external scheme open to Indonesian Master's students at AU in all subject areas, covering tuition fees and living costs"
+        ],
+        "official_contacts": {
+          "general": "Aarhus University, Nordre Ringgade 1, 8000 Aarhus, Denmark",
+          "email": "studieguide@au.dk",
+          "phone": "+45 8715 0000"
+        },
+        "description": "Aarhus University offers a limited number of Danish state scholarships for non-EU students liable to pay tuition fees. Awards are either a full or partial tuition waiver, sometimes with a monthly grant towards living expenses: the Faculty of Arts and Aarhus BSS offer the waiver plus a monthly grant, while Natural Sciences and Technical Sciences offer tuition waivers only. Applicants are assessed automatically as part of the admission application; no separate scholarship application or additional documentation is required. Deadlines are 15 January for summer admission and 15 September for winter admission, and priority goes to applicants with excellent academic qualifications, with typically only one or two scholarships per Master's programme.",
+        "program_type": "Danish state scholarship (tuition waiver)",
+        "region": "Europe",
+        "coverage": "Tuition fees in full or part; monthly living-expense grant at two faculties; no stated travel, accommodation or insurance coverage",
+        "last_verified_date": "2026-10-04"
+      },
+      "programme_detail_applicant_utility": {
+        "application_readiness_checklist": [
+          "Confirm you are a non-EU/EEA/Swiss citizen and are liable to pay AU tuition fees",
+          "Pick the specific Master's programme you want, remembering the scholarship is bound to that programme",
+          "Have your admission application ready to submit before 15 January (summer admission) or 15 September (winter admission)",
+          "Prepare strong academic documentation for the admission application, since selection is by academic merit",
+          "Plan how you will fund living costs, because only two faculties add a monthly grant and a tuition-wafer-only award still requires proof of sufficient funds for the residence permit"
+        ],
+        "common_rejection_risks": [
+          "Missing the deadline - late applications are not considered for a tuition waiver or scholarship at all",
+          "EU/EEA/Swiss nationality, which is categorically excluded",
+          "Being admitted but not academically strong enough, as priority goes to applicants with excellent academic qualifications",
+          "Uploading extra scholarship documents that were not requested",
+          "Missing the very short acceptance deadline attached to the offer",
+          "Assuming the waiver covers living costs and applying for the residence permit without sufficient funds"
+        ],
+        "estimated_uncovered_costs": [
+          "Living costs if the offer is a tuition waiver only (Natural Sciences, Technical Sciences)",
+          "The portion of tuition not covered when the award is a partial waiver",
+          "Travel, housing deposit, furniture, bicycle and bus card costs, which the university explicitly does not assist with"
+        ],
+        "document_audit": [
+          "No separate scholarship document list exists - the official page states no additional documentation should be uploaded",
+          "Admission application documents only, submitted in the regular AU portal",
+          "Residence permit self-sufficiency evidence if the offer is a tuition waiver only"
+        ],
+        "alerts": [
+          {
+            "trigger": "15 September deadline just passed",
+            "message": "The winter-admission scholarship deadline has passed, so the next applicable deadline is 15 January for summer admission. Watch the AU Master's deadlines page for the next cycle opening."
+          },
+          {
+            "trigger": "Tax on scholarship payments",
+            "message": "Until a Danish tax card is set up, 55% of the scholarship is withheld as tax. Students from so-called developing countries may be exempt."
+          },
+          {
+            "trigger": "Natural and Technical Sciences process continues into March",
+            "message": "For these faculties a late tuition waiver can still arrive before the acceptance deadline of 1 April (summer) or 1 November (winter), so do not decline your admission offer immediately if the waiver is what you need."
+          }
+        ],
+        "submission_workflow": [
+          "Choose the Master's programme and check whether your faculty offers the waiver plus grant or the waiver only",
+          "Complete the regular AU admission application in full",
+          "Submit before 15 January (summer) or 15 September (winter) - scholarship consideration is automatic",
+          "Wait for the admission and scholarship decision, which arrives together in the application system",
+          "If offered, read the very short acceptance deadline carefully and accept within it",
+          "After arrival, register for the monthly grant via the Danish Easy Account (NemKonto) and set up a Danish tax card"
+        ]
+      },
+      "programme_detail_verification": {
+        "cycle_verified": "2027 summer-admission cycle implied by the annual 15 January deadline; verified 2026-10-04",
+        "verification_confidence": 0.92,
+        "official_fields_confirmed": [
+          "award exists and is Danish state financed",
+          "degree level (Master's only)",
+          "eligibility (non-EU/EEA/Swiss, liable to pay tuition)",
+          "deadline wording (15 January summer / 15 September winter)",
+          "funding type (full or partial tuition waiver; monthly grant at two faculties)",
+          "no separate scholarship application",
+          "selection principle (academic merit)",
+          "contact details"
+        ],
+        "institution_check_required": [
+          "Faculty-specific scholarship type must be checked for the target programme (Arts and BSS include a monthly grant; Natural and Technical Sciences do not)",
+          "Exact opening date of the next application period is not published on this page",
+          "Monthly grant amount is not published and must be confirmed with the faculty if it matters to the applicant"
+        ],
+        "unverified_or_removed_claims": [
+          "funding_amount - no monetary figure is published; stored current_funding_amount null confirmed correct",
+          "deadline_date - the official page gives no calendar year, so no ISO date can be stored",
+          "Named 'Round 1' / 'Round 2' deadline labels in the stored record are not used by the official page",
+          "Programme-level details such as study mode, English requirement and research requirements are not stated on this page"
+        ],
+        "source_citations": [
+          "https://masters.au.dk/scholarships-and-grants"
+        ],
+        "researched_by": "w1_28"
+      },
+      "logo_override": null,
+      "research_notes": {
+        "logo": "Rejected. The only logo asset on the awarding body's own domain referenced by the scholarship page markup is https://cdn.au.dk/2016/assets/img/au_segl.svg ('Official seal for Aarhus University'). I probed it: HTTP 200 and a real image/svg+xml document, but its first group is hard-coded fill=\"#FFF\", i.e. the white-on-transparent variant meant for dark headers - invisible on a light card, so rejected under the white-on-transparent ban. I then probed a guessed sibling path https://cdn.au.dk/2016/assets/img/au_logo.svg, which returned HTTP 404. Aarhus University's blue/black seal and logo variants are only distributed as packaged downloads (BLUE/BLACK/WHITE, PDF/EPS/PNG) from medarbejdere.au.dk/en/administration/communication/guidelines/seal, i.e. archives, not single image URLs, and a Playwright scan of au.dk failed with ERR_SOCKET_NOT_CONNECTED. Wikimedia/Wikimedia-hosted copies of the AU wordmark were rejected as third-party hosts. logo_override is null.",
+        "unverified": [
+          "Monthly grant amount for the Faculty of Arts and Aarhus BSS (not published)",
+          "Whether tuition waivers are full or partial for any individual Master's programme",
+          "The exact date the next application cycle opens",
+          "English language requirement (not stated on this page)"
+        ],
+        "substitution": null,
+        "official_pages_read": ["https://masters.au.dk/scholarships-and-grants"],
+        "degree_level_confirmed": "The page is inside AU's Master's section and states 'Only applicants who have applied for a Master's degree programme no later than 15 January (summer admission) and 15 September (winter admission) will be considered for a tuition waiver/scholarship.' and 'When you apply for a Master's degree programme at Aarhus University, you also apply for a scholarship.'",
+        "url_observed": null,
+        "contradictions": [
+          "Stored deadline_display '15 January 2026 (Round 1) / 15 September 2026 (Round 2)' attaches calendar years and round names that do not appear on the official page; the page states only '15 January (summer admission) and 15 September (winter admission)'. Corrected to deadline_precision 'recurring' with deadline_date null.",
+          "Stored funding 'Partial to Full' is imprecise; the official wording is 'a full or partly tuition waiver' at some faculties and 'tuition fee waiver' only at others, with a monthly living-expense grant only at the Faculty of Arts and Aarhus BSS.",
+          "Stored deadline_precision 'varies' corrected to 'recurring': it is one annual rule with two fixed intake deadlines, not per-applicant variation.",
+          "Stored status 'open' corrected to 'upcoming': the 15 September winter-admission deadline has already passed as of 2026-10-04."
+        ],
+        "skeleton": false
+      }
+    },
+    {
+      "target_id": 273,
+      "outcome": "refreshed",
+      "confirm": true,
+      "confirmation_evidence": "Read sdu.dk/en/uddannelse/fees_and_funding/scholarships, the University of Southern Denmark's own scholarships page. It states 'The scholarship is granted as a full tuition fee waiver and will cover the tuition fee for two years (MSc programmes) or three years (BSc programmes)' and 'You must submit your application for admission no later than February 1' (master) / 'no later than March 15' (bachelor).",
+      "new_scholarship": {
+        "name": "University of Southern Denmark (SDU) Danish Government Scholarship",
+        "legacy_titles": ["University of Southern Denmark (SDU) Danish Government Scholarship"],
+        "country": "Denmark",
+        "degree_levels": "Bachelor's, Master's",
+        "funding_type": "Tuition Fee Waiver",
+        "official_source": "University of Southern Denmark (SDU)",
+        "official_source_url": "https://www.sdu.dk/en/uddannelse/tuition-fees-and-scholarships",
+        "status": "open",
+        "is_verified": true,
+        "last_verified_date": "2026-10-04",
+        "region": "Europe",
+        "program_type": "Danish Government Scholarship (tuition fee waiver)",
+        "duration": "Two years for MSc programmes, three years for BSc programmes",
+        "deadline": "Master's: 'You must submit your application for admission no later than February 1 - even if you have a Danish residence permit'. Bachelor's: 'You must submit your application for admission no later than March 15'.",
+        "deadline_date": null,
+        "deadline_precision": "recurring",
+        "application_period": "Applications are submitted through the regular DANS admission portal; Master's interviews run 19-27 February and Bachelor's interviews in early June.",
+        "eligibility_summary": "Non-EU/EEA citizens applying to one of seven named SDU programmes - three MSc Engineering programmes at the Sønderborg campus and four BSc programmes at the Vejle campus.",
+        "eligibility": [
+          "Non-EU/EEA citizen",
+          "Enrolling in one of the listed SDU master's programmes at Sønderborg or bachelor's programmes at Vejle",
+          "Submission of the admission application by the level-specific deadline with all documentation already uploaded",
+          "For the master's level: the programme applied for must be the applicant's highest priority if more than one is applied for",
+          "Not eligible for the Danish State Grant (SU): 'If you are eligible to receive the Danish State Grant, you cannot be considered for the scholarship.'"
+        ],
+        "coverage": [
+          "Full tuition fee waiver for two years (MSc) or three years (BSc)",
+          "Up to 30 ECTS per semester; courses beyond 30 ECTS are not covered",
+          "Living costs are not covered",
+          "No travel, accommodation or insurance coverage stated"
+        ],
+        "required_documents": [
+          "Application deposit fee receipt",
+          "Official Bachelor's transcripts and diploma in English, Danish, Swedish or Norwegian, including grades and ECTS/units/credits for each course",
+          "Verified course descriptions for the courses on the transcripts",
+          "Self-assessment form (Electronics or Mechatronics) for master's applicants",
+          "Proof of English language proficiency"
+        ],
+        "catalogue_url": null,
+        "official_updates_url": "https://www.sdu.dk/en/uddannelse/fees_and_funding/scholarships",
+        "english_requirement": "Proof of English language proficiency must be included in the online application for the master's level.",
+        "requirements": [
+          "Demonstrate satisfactory academic progress each semester, as a guideline completing at least 30 ECTS per semester",
+          "Upload all documents in the online application at the time of application; SDU does not accept documents sent by email",
+          "Submit the master's application by 1 February even if you hold a Danish residence permit",
+          "Attend the online interview if invited"
+        ],
+        "application_method": "No separate scholarship application. Applicants simply apply for admission to one or more of the relevant programmes through the online application portal.",
+        "selection_notes": "Scholarships are awarded to the best-qualified candidates. Bachelor's selection is based on the uniTEST online admission test plus an online interview; master's selection is based on the bachelor's grade point average plus an online interview with key persons from the master's programme consisting of a few technical questions.",
+        "benefits": [
+          "Full tuition fee waiver for the standard length of the programme",
+          "Fee waiver covers up to 30 ECTS per semester"
+        ],
+        "funding_amount": null,
+        "funding_currency": null,
+        "funding_period": null,
+        "description": "The University of Southern Denmark awards a limited number of Danish government scholarships to highly qualified non-EU/EEA citizens. Eligibility is restricted to seven specific programmes: MSc in Engineering in Electronics/Electrical Engineering, Mechanical Engineering and Mechatronics at the Sønderborg campus, and BSc in Artificial Intelligence, Computer Science, Interactive Technology Engineering and Software Engineering at the Vejle campus. The award is a full tuition fee waiver covering two years for MSc and three years for BSc programmes, limited to 30 ECTS per semester, and it does not cover living costs. Applicants need no separate scholarship application; the admission application is submitted by 1 February for master's and 15 March for bachelor's programmes, followed by an online interview for shortlisted candidates."
+      },
+      "programme_detail_official": {
+        "official_source_urls": [
+          "https://www.sdu.dk/en/uddannelse/fees_and_funding/scholarships",
+          "https://www.sdu.dk/en/nyheder/presserummet/logo_og_designguide"
+        ],
+        "application_link": "https://www.sdu.dk/en/uddannelse/kandidat/kandidat-erhvervskandidat/non-eu-admission",
+        "official_updates_url": "https://www.sdu.dk/en/uddannelse/fees_and_funding/scholarships",
+        "catalogue_url": null,
+        "application_cycle": "Annual cycle: master's applications due 1 February with interviews 19-27 February; bachelor's applications due 15 March with interviews in early June",
+        "deadline_central": null,
+        "deadline_central_display": "Master's: 'no later than February 1'; Bachelor's: 'no later than March 15'",
+        "deadline_central_timezone": null,
+        "deadline_note": "The official page states day-and-month deadlines with no calendar year, so no ISO deadline date can be published. Both dates fall after the 2026-10-04 verification date, so the next cycle is still open.",
+        "status": "OPEN",
+        "status_note": "The 1 February (master's) and 15 March (bachelor's) deadlines for the next cycle are still ahead as of 2026-10-04, so the scheme is open. The page does not state when the application portal opens.",
+        "funding_amount": null,
+        "funding_currency": null,
+        "funding_period": null,
+        "funding_duration": "Full tuition fee waiver for two years (MSc programmes) or three years (BSc programmes), capped at 30 ECTS per semester",
+        "tuition_coverage": true,
+        "tuition_coverage_note": "'The scholarship is granted as a full tuition fee waiver and will cover the tuition fee for two years (MSc programmes) or three years (BSc programmes).' 'Note that fee waiver covers 30 ECTS per semester. If the number of courses exceed 30 ECTS they are not covered by the fee waiver.'",
+        "living_cost_coverage": false,
+        "travel_coverage": false,
+        "fully_funded": false,
+        "funding_label": "Full tuition fee waiver for two years (MSc) or three years (BSc), up to 30 ECTS per semester; living costs are not covered and no monetary amount is published.",
+        "benefits": [
+          "Full tuition fee waiver for the standard length of the programme",
+          "Waiver covers up to 30 ECTS per semester"
+        ],
+        "eligibility": [
+          "Non-EU/EEA citizen enrolling in one of the listed SDU master's programmes at Sønderborg or bachelor's programmes at Vejle",
+          "MSc Engineering - Electronics/Electrical Engineering (Sønderborg)",
+          "MSc Engineering - Mechanical Engineering (Sønderborg)",
+          "MSc Engineering - Mechatronics (Sønderborg)",
+          "BSc Artificial Intelligence (Vejle)",
+          "BSc Computer Science (Vejle)",
+          "BSc Interactive Technology Engineering (Vejle)",
+          "BSc Software Engineering (Vejle)",
+          "Not eligible for the Danish State Grant (SU)",
+          "Master's: the programme applied for must be the applicant's highest priority"
+        ],
+        "citizenship_residency": "Non-EU/EEA citizenship required: 'you must be a non-EU/EEA citizen enrolling in one of the following master programmes at our campus in Sønderborg or bachelor programmes at our campus in Vejle'.",
+        "international_eligibility": "Open to highly qualified citizens outside the EU/EEA; no nationality list is published, but eligibility is capped by the very small number of qualifying programmes.",
+        "degree_levels": ["Bachelor's", "Master's"],
+        "study_mode": "Full-time degree programmes at the Sønderborg and Vejle campuses",
+        "research_requirement": null,
+        "subject_or_agency_requirement": "Restricted to seven named SDU programmes in Engineering (Sønderborg, MSc) and four named Vejle bachelor's programmes; scholarships can only be awarded for specific programmes offered on those campuses.",
+        "application_method": "No separate scholarship application is needed. Applicants simply apply for admission to one or more of the relevant programmes and are considered for the scholarship automatically.",
+        "application_route": "SDU online application portal (DANS) via sdu.dk admission pages",
+        "requirements": [
+          "Submit the admission application by 1 February (master's) or 15 March (bachelor's)",
+          "Include all necessary documentation at the time of submission, so SDU does not need to request further documentation",
+          "Upload all documents to the online application; documents sent by email are not accepted",
+          "Master's: apply by 1 February even if you have a Danish residence permit",
+          "Master's: if applying to more than one SDU master's programme, only the highest-priority programme is considered for the scholarship",
+          "Demonstrate satisfactory academic progress each semester, with at least 30 ECTS per semester as a guideline, or scholarship funding may be discontinued"
+        ],
+        "documents": [
+          "Application deposit fee receipt",
+          "Official Bachelor's transcripts and diploma in English, Danish, Swedish or Norwegian, including grades and ECTS/units/credits for each course",
+          "Verified course descriptions for the courses on the transcripts",
+          "Self-assessment form for Electronics or Mechatronics (master's)",
+          "Proof of English language proficiency"
+        ],
+        "english_requirement": "Proof of English language proficiency is a required document for the master's level application.",
+        "english_requirement_note": "The scholarships page links to SDU's language requirements page for the master's admission but does not state a score threshold itself.",
+        "selection_criteria": [
+          "Bachelor's: highest score in the online admission test (uniTEST) leads to an invitation to interview",
+          "Bachelor's: online interview with key people from the study programme, consisting of a few mathematical questions and a brief talk about motivation",
+          "Master's: grade point average of the bachelor's degree",
+          "Master's: online interview with key persons from the master's programme, consisting of a few technical questions related to the entry requirements",
+          "Scholarships are awarded to the best-qualified candidates"
+        ],
+        "selection_weighting": "Best-qualified candidates based on the uniTEST result (bachelor's) or bachelor's grade point average (master's) combined with an online interview.",
+        "duration": "Two years for MSc programmes, three years for BSc programmes",
+        "award_holder_conditions": [
+          "Must demonstrate satisfactory academic progress each semester, with at least 30 ECTS per semester as a guideline",
+          "Scholarship funding may be discontinued for the following semester if progress is unsatisfactory",
+          "Fee waiver only covers up to 30 ECTS per semester",
+          "Must be a non-EU/EEA citizen and must not be eligible for the Danish State Grant (SU)",
+          "Must enrol in one of the listed programmes at the Sønderborg or Vejle campus"
+        ],
+        "supplements_or_initiatives": [],
+        "official_contacts": {
+          "general": "University of Southern Denmark, Admissions Office, +45 6550 1000",
+          "email": "sdu@sdu.dk",
+          "phone": "+45 6550 1000"
+        },
+        "description": "The University of Southern Denmark offers a limited number of Danish government scholarships to highly qualified non-EU/EEA citizens. Only seven specific programmes qualify: three MSc Engineering programmes at the Sønderborg campus and four BSc programmes at the Vejle campus. The scholarship is a full tuition fee waiver covering two years for MSc and three years for BSc programmes, up to 30 ECTS per semester, and it does not cover living costs. No separate scholarship application exists - the admission application itself is the application - and it must be submitted by 1 February for master's programmes or 15 March for bachelor's programmes, with interviews held 19-27 February for master's candidates and in early June for bachelor's candidates.",
+        "program_type": "Danish Government Scholarship (tuition fee waiver)",
+        "region": "Europe",
+        "coverage": "Tuition fees only, up to 30 ECTS per semester, for two years (MSc) or three years (BSc); living costs, travel and insurance are not covered",
+        "last_verified_date": "2026-10-04"
+      },
+      "programme_detail_applicant_utility": {
+        "application_readiness_checklist": [
+          "Check that your target programme is one of the seven qualifying SDU programmes and the correct campus",
+          "Upload every required document to the online application in one pass, since SDU will not chase missing documents and does not accept emailed documents",
+          "Pay the application deposit fee and keep the receipt, as the fee receipt is a required document",
+          "Prepare verified course descriptions for every course on your transcripts",
+          "For Electronics or Mechatronics, complete the relevant self-assessment form",
+          "Book the master's application so it lands before 1 February, or the bachelor's application before 15 March"
+        ],
+        "common_rejection_risks": [
+          "Applying to a programme that is not on the qualifying list, which makes scholarship consideration impossible",
+          "Missing the 1 February master's deadline, which applies even to holders of a Danish residence permit",
+          "Uploading documents after submitting, since 'All documents must be uploaded to your online application at the time of application'",
+          "Applying to more than one master's programme where the scholarship-relevant programme is not the applicant's highest priority",
+          "Failing the uniTEST threshold at bachelor's level, which decides who is invited to interview",
+          "Being eligible for the Danish State Grant (SU), which disqualifies the applicant from this scholarship"
+        ],
+        "estimated_uncovered_costs": [
+          "All living costs - the waiver is tuition only",
+          "Courses above 30 ECTS per semester",
+          "Residence permit fees and related costs",
+          "Travel, books and equipment"
+        ],
+        "document_audit": [
+          "Application deposit fee receipt",
+          "Official Bachelor's transcripts and diploma in English, Danish, Swedish or Norwegian with grades and ECTS/units/credits per course",
+          "Verified course descriptions for the transcript courses",
+          "Self-assessment form (Electronics / Mechatronics) for master's applicants",
+          "Proof of English language proficiency"
+        ],
+        "alerts": [
+          {
+            "trigger": "Interview invitations arrive by email with short notice",
+            "message": "Master's invitations are sent after 15 February for interviews between 19 and 27 February; bachelor's invitations come in late May for interviews in early June. Check your email regularly in those windows."
+          },
+          {
+            "trigger": "Only one interview even if multiple programmes are applied for",
+            "message": "If you apply to more than one of the four programmes you will only be interviewed for one of them, so prioritise carefully."
+          },
+          {
+            "trigger": "Scholarship can be stopped mid-programme",
+            "message": "Funding may be discontinued for the following semester if you do not complete at least 30 ECTS per semester."
+          }
+        ],
+        "submission_workflow": [
+          "Choose your qualifying SDU programme and campus",
+          "Gather transcripts, diploma, verified course descriptions, deposit receipt, self-assessment form and English proof",
+          "Submit the DANS admission application with all documents uploaded before 1 February (master's) or 15 March (bachelor's)",
+          "Wait for the admission outcome and, if shortlisted, the interview invitation",
+          "Complete the online interview (mathematical questions plus motivation talk at bachelor's level; technical questions at master's level)",
+          "On admission, track 30 ECTS per semester to keep the waiver"
+        ]
+      },
+      "programme_detail_verification": {
+        "cycle_verified": "2027 entry cycle, verified 2026-10-04",
+        "verification_confidence": 0.93,
+        "official_fields_confirmed": [
+          "programme existence and awarding body",
+          "eligible programmes (7) and campuses",
+          "degree levels (Bachelor's and Master's)",
+          "funding type (full tuition fee waiver, 2 years MSc / 3 years BSc, 30 ECTS cap)",
+          "deadlines (1 February master's, 15 March bachelor's)",
+          "selection method (uniTEST/GPA plus interview)",
+          "required documents",
+          "living costs not covered",
+          "official logo and logo usage rules"
+        ],
+        "institution_check_required": [
+          "Number of scholarships actually available each year is not published",
+          "The tuition fee amount thereby waived is not stated on the scholarships page; SDU publishes fee rates on a separate tuition page",
+          "Exact opening date of the DANS portal for the cycle"
+        ],
+        "unverified_or_removed_claims": [
+          "funding_amount - no monetary figure published, stored current_funding_amount null confirmed correct",
+          "deadline_date - no calendar year on the official page, so no ISO date stored",
+          "region was missing in the stored record and has been set to Europe"
+        ],
+        "source_citations": [
+          "https://www.sdu.dk/en/uddannelse/fees_and_funding/scholarships",
+          "https://www.sdu.dk/en/nyheder/presserummet/logo_og_designguide"
+        ],
+        "researched_by": "w1_28"
+      },
+      "logo_override": {
+        "url": "https://www.sdu.dk/-/media/files/nyheder/logoer/sdulogo-uk-sort-feb2019.png?la=da&h=107&w=200&hash=39A9D9E9F250FE97F4D01B8C884AD84A",
+        "page_url": "https://www.sdu.dk/en/nyheder/presserummet/logo_og_designguide",
+        "official_host": true,
+        "alt_text": "University of Southern Denmark (SDU) logo",
+        "validation_result": "verified",
+        "validation_detail": "png 200x107, probed 2026-10-04 - HTTP 200 with image content type; black 'SDU / University of Southern Denmark' monogram and apple-branch symbol on a light background, i.e. the dark variant, not white-on-transparent",
+        "image_kind": "official_logo",
+        "image_format": "png",
+        "verified_at": "2026-10-04T00:00:00+00:00",
+        "host_evidence": "same_registrable_domain",
+        "_award": "University of Southern Denmark (SDU) Danish Government Scholarship"
+      },
+      "research_notes": {
+        "logo": "Found on the awarding body's own site via its official press-room logo guide, https://www.sdu.dk/en/nyheder/presserummet/logo_og_designguide, which states 'SDU's logo is black, regardless of the background colour, and may only be used in white against a black background.' That page embeds the official black English logo file sdulogo-uk-sort-feb2019.png on www.sdu.dk. I probed that exact URL and got 'Image fetched successfully' (HTTP 200, image/png), and the returned bytes render as the black SDU monogram with the apple-branch symbol above the words 'University of Southern Denmark' on white. So it is the dark variant, acceptable on a light card. No third-party host, no white-on-transparent variant.",
+        "unverified": [
+          "Number of scholarships awarded per year",
+          "Monetary value of the tuition fee waived (SDU publishes fee rates separately)",
+          "Exact portal opening date for the next cycle"
+        ],
+        "substitution": null,
+        "official_pages_read": [
+          "https://www.sdu.dk/en/uddannelse/fees_and_funding/scholarships",
+          "https://www.sdu.dk/en/nyheder/presserummet/logo_og_designguide"
+        ],
+        "degree_level_confirmed": "The page lists eligible programmes at both levels and states 'You must be a non-EU/EEA citizen enrolling in one of the following master programmes at our campus in Sonderborg or bachelor programmes at our campus in Vejle', with 'three years (BSc programmes)' and 'two years (MSc programmes)'.",
+        "url_observed": "https://www.sdu.dk/en/uddannelse/fees_and_funding/scholarships",
+        "contradictions": [
+          "The stored official_source_url https://www.sdu.dk/en/uddannelse/tuition-fees-and-scholarships did not surface as a live page in a site: search; the live official scholarships page is https://www.sdu.dk/en/uddannelse/fees_and_funding/scholarships. Per the brief the stored URL is kept as the row identity and the live page is reported here and used as official_updates_url.",
+          "Stored deadline_display '1 February 2026 (Master's) / 15 March 2026 (Bachelor's)' — the day-and-month pattern is confirmed by the official page but the year is not published; deadline_date is therefore null and precision is 'recurring'.",
+          "Stored funding 'Partial to Full' is wrong: the official page says the scholarship is granted as a full tuition fee waiver, and the level of variation is 30 ECTS per semester rather than a partial waiver. Corrected to funding_type 'Tuition Fee Waiver'.",
+          "Stored deadline_precision 'varies' corrected to 'recurring' - two fixed annual intake deadlines, not per-applicant variation.",
+          "Stored current_image_url https://www.sdu.dk/-/media/genereltsystem/p-persp-solid.png with alt text 'Syddansk Universitet Map' was a programme/page image, not the official logo. Replaced with SDU's own black logo asset."
+        ],
+        "skeleton": false
+      }
+    },
+    {
+      "target_id": 274,
+      "outcome": "refreshed",
+      "confirm": true,
+      "confirmation_evidence": "Read BI Norwegian Business School's own page https://www.bi.no/en/programmes-and-individual-courses/scholarships/bi-presidential-scholarships/. It states 'The application deadline is March 1.' and 'International Applicants: Scholarships will cover full tuition fees for up to two years and a stipend for living expenses of NOK 50,000 per semester, if the student achieves the academic progression requirements.'",
+      "new_scholarship": {
+        "name": "BI Presidential Scholarship",
+        "legacy_titles": ["BI Presidential Scholarship"],
+        "country": "Norway",
+        "degree_levels": "Master's",
+        "funding_type": "Fully Funded (full tuition up to two years; international applicants also receive a NOK 50,000 per semester living-expense stipend)",
+        "official_source": "BI Norwegian Business School",
+        "official_source_url": "https://www.bi.no/en/programmes-and-individual-courses/scholarships/bi-presidential-scholarships",
+        "status": "upcoming",
+        "is_verified": true,
+        "last_verified_date": "2026-10-04",
+        "region": "Europe",
+        "program_type": "Merit-based tuition fee scholarship",
+        "duration": "Up to two years of full tuition fees",
+        "deadline": "The application deadline is March 1. A complete application for admission, including the scholarship application, must be uploaded to the online application portal. Scholarship applications are not accepted by email. Late applications will not be considered.",
+        "deadline_date": null,
+        "deadline_precision": "recurring",
+        "application_period": "Annual: scholarship materials are uploaded with the admission application before 1 March; offers are notified by the end of April.",
+        "eligibility_summary": "Minimum overall GPA of 'A' on the ECTS scale (or equivalent top grade); Norwegian or international citizenship; admitted to the first year of a BI master's programme at campus Oslo or Bergen, excluding the BI-Luiss Joint Masters in Marketing; first master's degree only. Third-year Siviloekonom (Sivøk) students may also apply.",
+        "eligibility": [
+          "Minimum overall GPA of 'A' on the ECTS scale or the equivalent top-level grade on international grade scales",
+          "Students in the 3rd year of the Sivøk (Siviløkonom) programme are eligible to apply",
+          "Norwegian or international citizenship; international citizens who completed a bachelor's degree in Norway count as residents of Norway for this scholarship",
+          "Admission to the first year of a master's degree programme at campus Oslo or campus Bergen, except the BI-Luiss Joint Masters in Marketing",
+          "Only candidates seeking their first master's degree are considered"
+        ],
+        "coverage": [
+          "Full tuition fees for each semester for up to two years (Norwegian and international applicants resident in Norway, and Sivøk applicants)",
+          "Full tuition fees for up to two years plus a living-expense stipend of NOK 50,000 per semester (international applicants)",
+          "No travel, housing or insurance coverage stated"
+        ],
+        "required_documents": [
+          "CV/resume",
+          "Scholarship application letter of a maximum of one page explaining why the candidate should be considered, combined with the CV into a single PDF",
+          "All documentation required for admission evaluation, submitted at the same time",
+          "For third-year Sivøk applicants only: CV and scholarship letter emailed to info@bi.no with subject line 'BI Presidential Scholarship Application'"
+        ],
+        "catalogue_url": null,
+        "official_updates_url": "https://www.bi.no/en/programmes-and-individual-courses/scholarships/bi-presidential-scholarships",
+        "english_requirement": null,
+        "requirements": [
+          "Apply for the scholarship at the same time as the admission application on BI's online application portal",
+          "Upload the combined CV and one-page scholarship letter to the section marked 'Scholarship'",
+          "Accept the offer of admission, since the scholarship application is only considered if the admission offer is accepted",
+          "Submit everything at the time of application - no additional documentation is accepted afterwards",
+          "Maintain 30 ECTS of study progression per semester and a cumulative GPA of at least 'B' on the BI ECTS scale after each semester"
+        ],
+        "application_method": "Scholarship materials are uploaded in the 'Scholarship' section of the same online application used for admission. Email applications are not accepted, except for third-year Sivøk students.",
+        "selection_notes": "Awarded on academic merit, not financial need. All candidates are assessed on the ECTS scale, with international bachelor's grades converted by BI. BI ensures distribution of scholarships across master's programmes and reserves the right to prioritise specific programmes, diversity, gender distribution or partner schools. International applicants who apply for this scholarship are also considered for the Master's International Scholarship. Scholarship decisions are final and cannot be appealed.",
+        "benefits": [
+          "Full tuition fees for up to two years",
+          "NOK 50,000 per semester living-expense stipend for international applicants",
+          "Recognition as a BI Ambassador with recruitment and ambassador responsibilities"
+        ],
+        "funding_amount": 50000,
+        "funding_currency": "NOK",
+        "funding_period": "per semester",
+        "description": "The BI Presidential Scholarship is awarded to applicants with superior academic records admitted to a master's degree programme at BI's Oslo or Bergen campus. It covers full tuition fees for each semester for up to two years, and international applicants additionally receive a stipend for living expenses of NOK 50,000 per semester, in both cases conditional on meeting the academic progression requirements. Applicants must hold a minimum overall GPA of 'A' on the ECTS scale and submit the scholarship materials together with the admission application by 1 March, as late applications are not considered. Recipients must act as BI Ambassadors and are tied to a specific programme at a designated campus."
+      },
+      "programme_detail_official": {
+        "official_source_urls": ["https://www.bi.no/en/programmes-and-individual-courses/scholarships/bi-presidential-scholarships/"],
+        "application_link": "https://apply.bi.no/applicant",
+        "official_updates_url": "https://www.bi.no/en/programmes-and-individual-courses/scholarships/bi-presidential-scholarships",
+        "catalogue_url": null,
+        "application_cycle": "Annual master's admission cycle; the published cycle covers programmes commencing Autumn 2026 and the scholarship deadline is 1 March, with all decisions notified by the end of April",
+        "deadline_central": null,
+        "deadline_central_display": "The application deadline is March 1",
+        "deadline_central_timezone": null,
+        "deadline_note": "The official page states only 'March 1' with no calendar year, so no ISO deadline date can be published. The 1 March 2026 deadline has passed as of 2026-10-04 and the page's current text covers Autumn 2026 entrants, so the next cycle is the Autumn 2027 intake.",
+        "status": "UPCOMING",
+        "status_note": "The scheme is annual. As of 2026-10-04 the published cycle (1 March 2026 deadline, Autumn 2026 commencement) is over, so the next application window is expected around 1 March 2027 for Autumn 2027 entry. The page does not name an exact next date.",
+        "funding_amount": 50000,
+        "funding_currency": "NOK",
+        "funding_period": "per semester",
+        "funding_duration": "Full tuition fees for each semester for up to two years; stipend for up to two years for international applicants",
+        "tuition_coverage": true,
+        "tuition_coverage_note": "Norwegian and international applicants resident in Norway and Sivøk applicants: 'Scholarships will cover full tuition fees for each semester, for up to two years, if the student achieves the academic progression requirements.' International applicants: full tuition for up to two years plus a stipend.",
+        "living_cost_coverage": true,
+        "travel_coverage": false,
+        "fully_funded": true,
+        "funding_label": "Full tuition fees for up to two years; international applicants also receive a living-expense stipend of NOK 50,000 per semester. Conditional on academic progression and tied to a specific programme and campus. Award is on academic merit, not financial need.",
+        "benefits": [
+          "Full tuition fees for up to two years",
+          "NOK 50,000 per semester stipend for international applicants",
+          "BI Ambassador role"
+        ],
+        "eligibility": [
+          "Minimum overall GPA of 'A' on the ECTS scale or equivalent top-level grade on international scales",
+          "3rd-year Sivøk (Siviløkonom) students are eligible",
+          "Norwegian or international citizenship; international citizens with a Norwegian bachelor's degree count as residents of Norway",
+          "Admission to the first year of a master's programme at campus Oslo or campus Bergen, excluding BI-Luiss Joint Masters in Marketing",
+          "Only candidates seeking their first master's degree"
+        ],
+        "citizenship_residency": "Norwegian and international citizenship accepted. International candidates who are eligible for tuition fee reduction and/or a student loan in Norway from Lånekassen are treated as domestic applicants for scholarship purposes, which affects whether the stipend applies.",
+        "international_eligibility": "Open to international applicants admitted to a BI master's programme at Oslo or Bergen; international applicants are additionally considered for the Master's International Scholarship with no separate letter required.",
+        "degree_levels": ["Master's"],
+        "study_mode": "Full-time",
+        "research_requirement": null,
+        "subject_or_agency_requirement": "Tied to a specific master's programme at BI's Oslo or Bergen campus; the BI-Luiss Joint Masters in Marketing is excluded.",
+        "application_method": "Upload the scholarship application to the section marked 'Scholarship' in the online admission application portal. Email applications are not accepted, except for third-year Sivøk students who email CV and letter to info@bi.no.",
+        "application_route": "BI online application portal at apply.bi.no, in the same application as admission",
+        "requirements": [
+          "Apply for the scholarship at the same time as the admission application",
+          "Upload a single PDF combining CV/resume and a one-page scholarship application letter to the 'Scholarship' section",
+          "Include all admission documentation in the same submission",
+          "Accept the offer of admission for the scholarship application to be considered",
+          "No documentation submitted after the application is submitted will be accepted",
+          "Maintain 30 ECTS per semester and a cumulative GPA of at least 'B' on the BI ECTS scale",
+          "Be prepared to act as a BI Ambassador"
+        ],
+        "documents": [
+          "CV/resume",
+          "Scholarship application letter, maximum one page, combined with the CV into one PDF",
+          "Complete admission application documentation"
+        ],
+        "english_requirement": null,
+        "english_requirement_note": "The scholarship page does not state an English language requirement; BI's admission pages set the language requirement for the programme.",
+        "selection_criteria": [
+          "Academic excellence - 'Scholarships are awarded based on excellent academic grades, not on financial need'",
+          "All candidates assessed on the ECTS scale, with international bachelor's degrees converted by BI",
+          "Only applicants who have been admitted to a master's programme and applied as instructed are considered",
+          "Scholarship applications considered only after the offer of admission has been accepted",
+          "BI ensures distribution across master's programmes and may prioritise specific programmes, diversity, gender distribution or partner schools",
+          "Other academic achievements, GMAT/GRE/CAT scores, extracurricular and special personal achievements may also influence awarding"
+        ],
+        "selection_weighting": "Academic merit is the stated basis; the page gives no numeric weighting between the listed factors.",
+        "duration": "Up to two years",
+        "award_holder_conditions": [
+          "Full study progression of 30 ECTS in each semester",
+          "Minimum cumulative GPA of 'B' on the BI ECTS scale after each academic semester, as detailed in the Scholarship Agreement",
+          "Scholarship is tied to a specific academic programme at a designated campus and cannot be transferred",
+          "Must act as a BI Ambassador, acting as spokesperson, assisting recruitment and promoting a good study environment",
+          "Only one BI scholarship will be awarded per applicant even if several are applied for",
+          "Scholarship offer must be accepted by the date stated on the offer or it is withdrawn and awarded to another candidate",
+          "Scholarship decisions are final and non-negotiable and cannot be appealed"
+        ],
+        "supplements_or_initiatives": [
+          "International applicants applying for this scholarship are automatically considered for the Master's International Scholarship without a separate letter"
+        ],
+        "official_contacts": {
+          "general": "BI Norwegian Business School, Scholarships, Oslo/Bergen campuses, Norway",
+          "email": "info@bi.no",
+          "phone": null
+        },
+        "description": "The BI Presidential Scholarship is awarded to applicants with superior academic records admitted to a master's degree programme at BI's campus in Oslo or Bergen. Norwegian and international applicants resident in Norway, and Sivøk applicants, receive full tuition fees for each semester for up to two years; international applicants receive full tuition for up to two years plus a stipend for living expenses of NOK 50,000 per semester. Both are conditional on meeting the academic progression requirements of 30 ECTS per semester and a cumulative 'B' on the BI ECTS scale. Selection is on academic merit rather than financial need, the deadline is 1 March, and scholarship offers are notified by the end of April.",
+        "program_type": "Merit-based tuition fee scholarship",
+        "region": "Europe",
+        "coverage": "Full tuition fees for up to two years; a NOK 50,000 per semester living-expense stipend for international applicants only",
+        "last_verified_date": "2026-10-04"
+      },
+      "programme_detail_applicant_utility": {
+        "application_readiness_checklist": [
+          "Secure an admission offer or apply simultaneously to a BI master's programme at Oslo or Bergen, excluding BI-Luiss",
+          "Target an overall GPA of 'A' on the ECTS scale or the equivalent, since that is the stated minimum for consideration",
+          "Write a one-page scholarship application letter explaining why you should be considered",
+          "Combine your CV and the letter into a single PDF",
+          "Prepare all admission documentation at the same time, because nothing can be added later",
+          "Upload everything to the 'Scholarship' section of the BI portal before 1 March"
+        ],
+        "common_rejection_risks": [
+          "Missing the 1 March deadline - 'Late applications will not be considered'",
+          "Emails instead of portal upload, which is not accepted",
+          "Not accepting the admission offer, which voids the scholarship application",
+          "Below an 'A' overall on the ECTS scale",
+          "Applying to BI-Luiss Joint Masters in Marketing, which is excluded",
+          "Adding documents after submission",
+          "Assuming financial need matters - awards are made on academic merit only"
+        ],
+        "estimated_uncovered_costs": [
+          "Living costs for Norwegian-resident and Sivøk awardees, who receive tuition only with no stipend",
+          "Housing, travel, insurance and all costs outside the published tuition and stipend"
+        ],
+        "document_audit": [
+          "CV/resume",
+          "One-page scholarship application letter (combined with the CV into one PDF)",
+          "Full admission documentation submitted in the same application",
+          "Third-year Sivøk applicants only: CV and letter emailed to info@bi.no with the subject line 'BI Presidential Scholarship Application'"
+        ],
+        "alerts": [
+          {
+            "trigger": "Scholarship offers are not sent with admission offers",
+            "message": "You receive the admission offer first and must accept it while awaiting the scholarship decision; all applicants, including rejected ones, are informed by the end of April."
+          },
+          {
+            "trigger": "Accept-by date on the scholarship offer",
+            "message": "Unaccepted scholarships are withdrawn and given to another candidate, and decisions cannot be appealed."
+          },
+          {
+            "trigger": "Only one BI scholarship per applicant",
+            "message": "You may apply for several BI scholarships but BI will award only one, so choose your primary application carefully."
+          },
+          {
+            "trigger": "International applicant also considered for other BI scholarships",
+            "message": "International applicants applying for the Presidential Scholarship are also considered for the Master's International Scholarship without a separate letter."
+          }
+        ],
+        "submission_workflow": [
+          "Apply for admission to a BI master's programme at Oslo or Bergen",
+          "Prepare CV plus one-page scholarship letter as a single PDF",
+          "Upload the PDF to the 'Scholarship' section of the same online application before 1 March",
+          "Submit the complete admission application at the same time",
+          "Accept the admission offer when it arrives",
+          "Await the scholarship notification by the end of April and accept it by the stated date",
+          "Maintain 30 ECTS per semester and a 'B' cumulative GPA, and expect BI Ambassador duties"
+        ]
+      },
+      "programme_detail_verification": {
+        "cycle_verified": "Autumn 2026 master's entry cycle as published by BI; verified 2026-10-04, next cycle expected 1 March 2027",
+        "verification_confidence": 0.93,
+        "official_fields_confirmed": [
+          "programme existence and awarding body",
+          "degree level (Master's)",
+          "funding split by applicant group (tuition only vs tuition + NOK 50,000 per semester stipend)",
+          "deadline wording (1 March, no year)",
+          "eligibility (ECTS 'A', campuses, first master's degree)",
+          "required documents (CV plus one-page letter in one PDF)",
+          "application route (BI portal, Scholarship section)",
+          "academic progression conditions (30 ECTS, 'B' cumulative)",
+          "notification timing (end of April)"
+        ],
+        "institution_check_required": [
+          "Number of Presidential Scholarships available for the next cycle is not published",
+          "Exact calendar year for the 1 March deadline must be confirmed with BI admissions each cycle",
+          "Whether Sivøk applicants receive the stipend (page lists them in the tuition-only group)"
+        ],
+        "unverified_or_removed_claims": [
+          "deadline_date - the official page states only 'March 1' with no year, so no ISO date stored",
+          "funding_amount previously null now populated only for the international-applicant stipend (NOK 50,000 per semester); the tuition amount itself is not published",
+          "Programme-level English language requirement is not stated on this page"
+        ],
+        "source_citations": [
+          "https://www.bi.no/en/programmes-and-individual-courses/scholarships/bi-presidential-scholarships/"
+        ],
+        "researched_by": "w1_28"
+      },
+      "logo_override": {
+        "url": "https://www.bi.no/dist/styles/international-D6eI8E60.svg",
+        "page_url": "https://www.bi.no/en/programmes-and-individual-courses/scholarships/bi-presidential-scholarships/",
+        "official_host": true,
+        "alt_text": "BI Norwegian Business School logo",
+        "validation_result": "verified",
+        "validation_detail": "svg 271x96 viewBox, probed 2026-10-04 - HTTP 200 with image/svg+xml content type; wordmark paths use fill #002341 (dark navy) and the mark uses a blue gradient (#24a5e2 to #066cb4), i.e. the dark/colour variant legible on a light card, not white-on-transparent",
+        "image_kind": "official_logo",
+        "image_format": "svg",
+        "verified_at": "2026-10-04T00:00:00+00:00",
+        "host_evidence": "same_registrable_domain",
+        "_award": "BI Presidential Scholarship"
+      },
+      "research_notes": {
+        "logo": "Extracted from the awarding body's own page. The BI header logo is a CSS background on <span class=\"bi-logo\">; scanning bi.no's own stylesheets showed two variants, international-dark-CcqyNbbM.svg (dark header) and international-D6eI8E60.svg (light header). I probed the dark one first and rejected it: its wordmark paths are fill=\"#fff\", i.e. white-on-transparent. I then probed https://www.bi.no/dist/styles/international-D6eI8E60.svg, which returned HTTP 200 image/svg+xml with fill=\"#002341\" wordmark and a blue-gradient mark - the dark/colour variant. It is on bi.no's own domain, so accepted. The stored image (media.bi.no/.../Marked-Heltid-internasjonal-FW25-07.jpg) is actually BI's og:image, a campaign photo, not a logo - rejected.",
+        "unverified": [
+          "Exact calendar year of the 1 March deadline",
+          "Number of scholarships awarded per year",
+          "Tuition fee amount covered (BI does not publish it on this page)",
+          "English language requirement"
+        ],
+        "substitution": null,
+        "official_pages_read": [
+          "https://www.bi.no/en/programmes-and-individual-courses/scholarships/bi-presidential-scholarships/"
+        ],
+        "degree_level_confirmed": "Page states 'Only candidates seeking their first master's degree are considered for master's scholarships' and 'Candidates admitted to the first year of a master's degree programme at campus Oslo or campus Bergen'.",
+        "url_observed": "https://www.bi.no/en/programmes-and-individual-courses/scholarships/bi-presidential-scholarships/",
+        "contradictions": [
+          "Stored deadline_display '1 March 2026' attaches a year that the official page does not state; the page says only 'The application deadline is March 1.' Corrected to deadline_date null with deadline_precision 'recurring'.",
+          "Stored deadline_precision 'varies' corrected to 'recurring' - it is one annual deadline, not per-applicant variation.",
+          "Stored funding 'Fully Funded' with no amount is incomplete: the official page splits the award by applicant group. Norwegian/international residents of Norway and Sivøk applicants get full tuition only, while international applicants get full tuition for up to two years plus a NOK 50,000 per semester stipend. funding_amount 50000 NOK per semester has been recorded for the stipend only.",
+          "Stored current_image_url (media.bi.no Marked-Heltid-internasjonal-FW25-07.jpg) is BI's og:image campaign photo, not the official logo. Replaced with BI's own dark wordmark SVG.",
+          "Stored status 'open' corrected to 'upcoming': the 1 March 2026 deadline passed before the verification date and the published cycle covers Autumn 2026 entrants."
+        ],
+        "skeleton": false
+      }
+    },
+    {
+      "target_id": 275,
+      "outcome": "refreshed",
+      "confirm": true,
+      "confirmation_evidence": "Read BI's own page https://www.bi.no/en/programmes-and-individual-courses/scholarships/master-of-science-international-scholarship--bergen/. It states 'The scholarship will cover full tuition fees for up to two years if the student maintains the academic progression requirements for scholarship recipients.' and 'Application deadline is March 1.'",
+      "new_scholarship": {
+        "name": "Master International Scholarship – Bergen",
+        "legacy_titles": ["BI Master International Scholarship – Bergen"],
+        "country": "Norway",
+        "degree_levels": "Master's",
+        "funding_type": "Fully Funded",
+        "official_source": "BI Norwegian Business School",
+        "official_source_url": "https://www.bi.no/en/programmes-and-individual-courses/scholarships/master-of-science-international-scholarship--bergen",
+        "status": "upcoming",
+        "is_verified": true,
+        "last_verified_date": "2026-10-04",
+        "region": "Europe",
+        "program_type": "Merit-based tuition fee scholarship",
+        "duration": "Up to two years of full tuition fees",
+        "deadline": "Application deadline is March 1. International applicants must upload a complete application for admission, including the scholarship application, to the online application portal. Applications for scholarship are not accepted by email. Late applications will not be considered.",
+        "deadline_date": null,
+        "deadline_precision": "recurring",
+        "application_period": "Annual: scholarship materials uploaded with the admission application before 1 March; results notified by the end of April.",
+        "eligibility_summary": "International citizens who are not residents of Norway, with a minimum overall GPA of 4.0 on the ECTS scale, admitted to an MSc programme at BI's Bergen campus, seeking their first master's degree.",
+        "eligibility": [
+          "International citizenship and not a resident of Norway",
+          "Strong academic record with a minimum overall GPA of 4.0 on the ECTS scale (international grades converted by BI)",
+          "Admission to a Master of Science degree programme at campus Bergen",
+          "Only candidates seeking their first master's degree are considered",
+          "International citizens who completed a bachelor's degree in Norway are treated as domestic applicants and are not eligible for this scholarship"
+        ],
+        "coverage": [
+          "Full tuition fees for up to two years",
+          "No living-expense stipend is stated for this scholarship",
+          "No travel, housing or insurance coverage stated"
+        ],
+        "required_documents": [
+          "CV/resume",
+          "Scholarship application letter of a maximum one page, combined with the CV into a single PDF",
+          "All documentation required for admission evaluation to an MSc programme"
+        ],
+        "catalogue_url": null,
+        "official_updates_url": "https://www.bi.no/en/programmes-and-individual-courses/scholarships/master-of-science-international-scholarship--bergen",
+        "english_requirement": null,
+        "requirements": [
+          "Apply for the scholarship at the same time as the admission application on BI's online portal",
+          "Upload the combined CV and one-page scholarship letter to the section marked 'Scholarship'",
+          "Submit the complete admission documentation in the same application",
+          "Accept the offer of admission for the scholarship application to be considered",
+          "No documentation submitted after the application will be accepted",
+          "Maintain 30 ECTS per semester and a cumulative GPA of at least 'B' on the BI ECTS scale"
+        ],
+        "application_method": "Scholarship materials are uploaded to the 'Scholarship' section of the same online application used for admission. Applications for scholarship are not accepted by email.",
+        "selection_notes": "Awarded on academic merit, not financial need, assessed on the ECTS scale with international grades converted by BI. BI ensures distribution across MSc programmes and reserves the right to prioritise specific programmes, diversity, gender distribution or partner schools. Applicants who also apply for the BI Presidential Scholarship are considered for this scholarship without a separate letter. Decisions are final and cannot be appealed.",
+        "benefits": [
+          "Full tuition fees for up to two years",
+          "Recognition as a BI Ambassador"
+        ],
+        "funding_amount": null,
+        "funding_currency": null,
+        "funding_period": null,
+        "description": "The Master International Scholarship – Bergen is awarded to applicants with a strong academic record admitted to any MSc programme at BI's Bergen campus. It covers full tuition fees for up to two years provided the student maintains the scholarship recipients' academic progression requirements, and no living-expense stipend is stated for this award. Eligibility requires international citizenship without Norwegian residency and a minimum overall GPA of 4.0 on the ECTS scale, and only candidates seeking their first master's degree are considered. Applications are submitted through the BI online portal together with the admission application before 1 March."
+      },
+      "programme_detail_official": {
+        "official_source_urls": ["https://www.bi.no/en/programmes-and-individual-courses/scholarships/master-of-science-international-scholarship--bergen/"],
+        "application_link": "https://apply.bi.no/applicant",
+        "official_updates_url": "https://www.bi.no/en/programmes-and-individual-courses/scholarships/master-of-science-international-scholarship--bergen",
+        "catalogue_url": null,
+        "application_cycle": "Annual master's admission cycle; the published cycle covers MSc programmes at Bergen commencing Autumn 2026, with the scholarship deadline 1 March and decisions by the end of April",
+        "deadline_central": null,
+        "deadline_central_display": "Application deadline is March 1",
+        "deadline_central_timezone": null,
+        "deadline_note": "The official page states only 'March 1' with no calendar year, so no ISO deadline date can be published. The 1 March 2026 deadline has passed as of 2026-10-04.",
+        "status": "UPCOMING",
+        "status_note": "Annual scheme. The published cycle (1 March 2026 deadline, Autumn 2026 Bergen start) is over, so the next window is expected around 1 March 2027 for Autumn 2027 entry.",
+        "funding_amount": null,
+        "funding_currency": null,
+        "funding_period": null,
+        "funding_duration": "Full tuition fees for up to two years",
+        "tuition_coverage": true,
+        "tuition_coverage_note": "'The scholarship will cover full tuition fees for up to two years if the student maintains the academic progression requirements for scholarship recipients.'",
+        "living_cost_coverage": false,
+        "travel_coverage": false,
+        "fully_funded": true,
+        "funding_label": "Full tuition fees for up to two years at BI's Bergen campus. No living-expense stipend is published for this scholarship, and no monetary tuition figure is given.",
+        "benefits": [
+          "Full tuition fees for up to two years",
+          "BI Ambassador role"
+        ],
+        "eligibility": [
+          "International citizenship and not a resident of Norway",
+          "Strong academic record; minimum overall GPA of 4.0 on the ECTS scale, with international grades converted by BI",
+          "Admission to a Master of Science degree programme at campus Bergen",
+          "First master's degree only",
+          "Applicants who completed a bachelor's degree in Norway are classified as domestic and are not eligible"
+        ],
+        "citizenship_residency": "International citizenship required, and the candidate must not be a resident of Norway. International candidates eligible for Norwegian tuition fee reduction or a Lånekassen loan, for example a 180 ECTS bachelor's degree from a Norwegian institution, count as domestic applicants and are excluded.",
+        "international_eligibility": "Open to non-Norwegian-resident international citizens admitted to an MSc programme at BI's Bergen campus; candidates who also apply for the BI Presidential Scholarship are considered for this award without a separate letter.",
+        "degree_levels": ["Master's"],
+        "study_mode": "Full-time",
+        "research_requirement": null,
+        "subject_or_agency_requirement": "Any MSc programme at BI's campus Bergen; the award is tied to a specific academic programme at a designated campus and cannot be transferred.",
+        "application_method": "Upload the scholarship application to the section marked 'Scholarship' in the online admission application portal. Applications for scholarship are not accepted by email.",
+        "application_route": "BI online application portal at apply.bi.no, in the same application as admission",
+        "requirements": [
+          "Apply for the scholarship at the same time as the admission application",
+          "Upload a single PDF combining CV/resume and a one-page scholarship application letter to the 'Scholarship' section",
+          "Include all admission documentation for MSc evaluation in the same submission",
+          "Accept the offer of admission for the scholarship application to be considered",
+          "No documentation submitted after the application will be accepted",
+          "Maintain 30 ECTS per semester and a cumulative GPA of at least 'B' on the BI ECTS scale",
+          "Be prepared to act as a BI Ambassador"
+        ],
+        "documents": [
+          "CV/resume",
+          "Scholarship application letter, maximum one page, combined with the CV into one PDF",
+          "Complete admission application documentation"
+        ],
+        "english_requirement": null,
+        "english_requirement_note": "The scholarship page does not state an English language requirement; BI's admission pages set the language requirement for the specific programme.",
+        "selection_criteria": [
+          "Strong academic record; minimum overall GPA of 4.0 on the ECTS scale",
+          "Only applicants admitted to an MSc programme who applied as instructed are considered",
+          "Scholarship applications considered only after the admission offer is accepted",
+          "BI ensures distribution across MSc programmes and may prioritise specific programmes, diversity, gender distribution or partner schools",
+          "All candidates assessed on the ECTS scale, with international bachelor's degrees converted by BI",
+          "Other academic achievements, GMAT/GRE/CAT scores and extracurricular achievements may influence awarding"
+        ],
+        "selection_weighting": "Academic merit is the stated basis; the page gives no numeric weighting.",
+        "duration": "Up to two years",
+        "award_holder_conditions": [
+          "Full study progression of 30 ECTS in each semester",
+          "Minimum cumulative GPA of 'B' on the BI ECTS scale after each academic semester, as detailed in the Scholarship Agreement",
+          "Scholarship is tied to a specific academic programme at campus Bergen and cannot be transferred",
+          "Must act as a BI Ambassador",
+          "Only one BI scholarship is awarded per applicant",
+          "Scholarship offer must be accepted by the date stated on the offer",
+          "Scholarship decisions are final and non-negotiable and cannot be appealed"
+        ],
+        "supplements_or_initiatives": [
+          "Applicants who apply for the BI Presidential Scholarship are also considered for the MSc International Scholarship without a separate letter"
+        ],
+        "official_contacts": {
+          "general": "BI Norwegian Business School, campus Bergen, Scholarships",
+          "email": "info@bi.no",
+          "phone": null
+        },
+        "description": "The Master International Scholarship – Bergen is awarded to applicants with a strong academic record admitted to any MSc programme at BI's Bergen campus and covers full tuition fees for up to two years, conditional on maintaining the academic progression requirements for scholarship recipients. Applicants must be international citizens who are not residents of Norway with a minimum overall GPA of 4.0 on the ECTS scale, and only candidates seeking their first master's degree are considered. No stipend is published for this award. The scholarship application is uploaded with the admission application by 1 March and results are notified by the end of April.",
+        "program_type": "Merit-based tuition fee scholarship",
+        "region": "Europe",
+        "coverage": "Full tuition fees for up to two years only; no living-expense stipend, travel, housing or insurance coverage stated",
+        "last_verified_date": "2026-10-04"
+      },
+      "programme_detail_applicant_utility": {
+        "application_readiness_checklist": [
+          "Confirm you are an international citizen and not a resident of Norway - a Norwegian bachelor's degree makes you a domestic applicant and ineligible",
+          "Reach a minimum overall GPA of 4.0 on the ECTS scale",
+          "Apply to an MSc programme at BI's Bergen campus and apply for admission in the same cycle",
+          "Prepare CV plus a one-page scholarship letter as a single PDF",
+          "Have all admission documentation ready to upload at the same time",
+          "Upload to the 'Scholarship' section before 1 March"
+        ],
+        "common_rejection_risks": [
+          "Missing the 1 March deadline",
+          "Being classified as a domestic applicant because of a Norwegian bachelor's degree or Lånekassen eligibility",
+          "GPA below 4.0 on the ECTS scale",
+          "Emails instead of portal upload",
+          "Not accepting the admission offer",
+          "Trying to transfer the scholarship to another BI programme or campus"
+        ],
+        "estimated_uncovered_costs": [
+          "All living costs - no stipend is published for this scholarship",
+          "Housing, travel, insurance and every non-tuition cost"
+        ],
+        "document_audit": [
+          "CV/resume",
+          "One-page scholarship application letter combined with the CV into one PDF",
+          "Complete admission documentation"
+        ],
+        "alerts": [
+          {
+            "trigger": "No stipend for this award",
+            "message": "Unlike the BI Presidential Scholarship and the Future African Leader Scholarship, the Bergen Master International Scholarship page mentions only full tuition fees, so plan living costs yourself."
+          },
+          {
+            "trigger": "Scholarship decision arrives after admission",
+            "message": "You get the admission offer first, must accept it, and will be informed of the scholarship decision by the end of April."
+          },
+          {
+            "trigger": "Already applying for the BI Presidential Scholarship",
+            "message": "You will also be considered for this scholarship without a separate letter, but BI awards only one scholarship per applicant."
+          }
+        ],
+        "submission_workflow": [
+          "Apply for admission to an MSc programme at BI Bergen",
+          "Write the one-page scholarship letter and combine it with your CV into one PDF",
+          "Upload the PDF in the 'Scholarship' section of the same online application before 1 March",
+          "Submit the complete admission application together with it",
+          "Accept the admission offer",
+          "Await the scholarship notification by the end of April and accept by the stated date",
+          "Keep 30 ECTS per semester and a 'B' cumulative GPA throughout"
+        ]
+      },
+      "programme_detail_verification": {
+        "cycle_verified": "Autumn 2026 MSc Bergen entry cycle as published by BI; verified 2026-10-04, next cycle expected 1 March 2027",
+        "verification_confidence": 0.93,
+        "official_fields_confirmed": [
+          "programme existence and awarding body",
+          "campus restriction (Bergen)",
+          "degree level (Master's)",
+          "funding (full tuition fees for up to two years, no stipend stated)",
+          "deadline wording (1 March, no year)",
+          "eligibility (non-Norwegian-resident international citizens, ECTS 4.0)",
+          "required documents",
+          "academic progression conditions"
+        ],
+        "institution_check_required": [
+          "Number of scholarships available per year is not published",
+          "Exact calendar year for the 1 March deadline",
+          "Whether any living-cost support exists outside this page"
+        ],
+        "unverified_or_removed_claims": [
+          "funding_amount - BI publishes no monetary figure for this scholarship, so funding_amount stays null",
+          "deadline_date - no calendar year published",
+          "English language requirement not stated on this page"
+        ],
+        "source_citations": [
+          "https://www.bi.no/en/programmes-and-individual-courses/scholarships/master-of-science-international-scholarship--bergen/"
+        ],
+        "researched_by": "w1_28"
+      },
+      "logo_override": {
+        "url": "https://www.bi.no/dist/styles/international-D6eI8E60.svg",
+        "page_url": "https://www.bi.no/en/programmes-and-individual-courses/scholarships/master-of-science-international-scholarship--bergen/",
+        "official_host": true,
+        "alt_text": "BI Norwegian Business School logo",
+        "validation_result": "verified",
+        "validation_detail": "svg 271x96 viewBox, probed 2026-10-04 - HTTP 200 with image/svg+xml content type; wordmark fill #002341 (dark navy) with blue-gradient mark, the dark/colour variant legible on a light card",
+        "image_kind": "official_logo",
+        "image_format": "svg",
+        "verified_at": "2026-10-04T00:00:00+00:00",
+        "host_evidence": "same_registrable_domain",
+        "_award": "BI Master International Scholarship – Bergen"
+      },
+      "research_notes": {
+        "logo": "Same awarding body as target 274 (BI Norwegian Business School), so the same verified logo applies: the light-header variant served from BI's own stylesheets at https://www.bi.no/dist/styles/international-D6eI8E60.svg, probed and confirmed HTTP 200 image/svg+xml with dark navy (#002341) wordmark paths. The dark-header sibling international-dark-CcqyNbbM.svg was rejected because its wordmark is fill=\"#fff\". The stored image (media.bi.no Marked-Heltid-internasjonal-FW25-07.jpg) is BI's og:image campaign photo, not a logo.",
+        "unverified": [
+          "Exact calendar year of the 1 March deadline",
+          "Number of scholarships awarded per year",
+          "Tuition fee amount covered (not published)"
+        ],
+        "substitution": null,
+        "official_pages_read": [
+          "https://www.bi.no/en/programmes-and-individual-courses/scholarships/master-of-science-international-scholarship--bergen/"
+        ],
+        "degree_level_confirmed": "Page states 'Only candidates seeking their first master's degree are considered for Master of Science scholarships' and 'Candidates must be admitted to a Master of Science degree programme at campus Bergen'.",
+        "url_observed": "https://www.bi.no/en/programmes-and-individual-courses/scholarships/master-of-science-international-scholarship--bergen/",
+        "contradictions": [
+          "Stored funding 'Partial' is wrong. The official page states 'The scholarship will cover full tuition fees for up to two years' with no partial element; corrected to funding_type 'Fully Funded'.",
+          "Stored deadline_display '1 March 2026' attaches an unpublished year; corrected to deadline_date null with precision 'recurring'.",
+          "Stored deadline_precision 'varies' corrected to 'recurring'.",
+          "Stored current_image_url is BI's og:image campaign photo, not the official logo; replaced with BI's own dark wordmark SVG.",
+          "Stored status 'open' corrected to 'upcoming' - the 1 March 2026 deadline has passed and the page's current text covers Autumn 2026 entrants."
+        ],
+        "skeleton": false
+      }
+    },
+    {
+      "target_id": 276,
+      "outcome": "refreshed",
+      "confirm": true,
+      "confirmation_evidence": "Read BI's own page https://www.bi.no/en/programmes-and-individual-courses/scholarships/bi-international-baccalaureate-scholarship/. It states 'BI International Baccalaureate Scholarship will cover 100% of tuition fees for up to three years if the student maintains the academic progression requirements for scholarship recipients.' and 'The minimum grade for consideration is 33 IB points (final or predicted grades).'",
+      "new_scholarship": {
+        "name": "BI International Baccalaureate Scholarship",
+        "legacy_titles": ["BI International Baccalaureate Scholarship"],
+        "country": "Norway",
+        "degree_levels": "Bachelor's",
+        "funding_type": "Fully Funded",
+        "official_source": "BI Norwegian Business School",
+        "official_source_url": "https://www.bi.no/en/programmes-and-individual-courses/scholarships/bi-international-baccalaureate-scholarship",
+        "status": "upcoming",
+        "is_verified": true,
+        "last_verified_date": "2026-10-04",
+        "region": "Europe",
+        "program_type": "Merit-based tuition fee scholarship",
+        "duration": "Up to three years of 100% tuition fees",
+        "deadline": "March 1 for international applicants who do not reside in Norway. April 15 for Norwegian citizens and international citizens enrolled in Norwegian high school or who are residents of Norway; those applicants apply for admission by April 15 and must then submit their final diploma no later than July 7.",
+        "deadline_date": null,
+        "deadline_precision": "varies",
+        "application_period": "Annual: 1 March for international applicants not resident in Norway; 15 April for Norwegian citizens and residents, with the final diploma due by 7 July. Bachelor's scholarships are awarded in two rounds, end of April and July.",
+        "eligibility_summary": "Graduates with the top IB grades - minimum 33 IB points, final or predicted - who hold Norwegian or international citizenship and receive an offer of admission to the Bachelor of Business Administration, Bachelor of Data Science for Business, or Bachelor of Digital Business programme.",
+        "eligibility": [
+          "Minimum 33 IB points (final or predicted grades)",
+          "Norwegian citizenship or international citizenship",
+          "Offer of admission to the Bachelor of Business Administration, Bachelor of Data Science for Business, or Bachelor of Digital Business programme",
+          "Only candidates seeking their first bachelor's degree are considered",
+          "Scholarships are awarded on academic excellence, not financial need"
+        ],
+        "coverage": [
+          "100% of tuition fees for up to three years",
+          "No living-expense stipend stated for this scholarship",
+          "No travel, housing or insurance coverage stated"
+        ],
+        "required_documents": [
+          "CV/resume",
+          "Scholarship application letter of a maximum one page, combined with the CV into a single PDF",
+          "All documentation required for admission evaluation",
+          "Final transcripts once available in June/July, no later than the end of the first week of July, for applicants in the final year of high school",
+          "Final diploma no later than July 7 for the Norwegian/resident track"
+        ],
+        "catalogue_url": null,
+        "official_updates_url": "https://www.bi.no/en/programmes-and-individual-courses/scholarships/bi-international-baccalaureate-scholarship",
+        "english_requirement": null,
+        "requirements": [
+          "Apply for the scholarship at the same time as the admission application on BI's online portal",
+          "Upload the combined CV and one-page scholarship letter to the section marked 'Scholarship'",
+          "Submit all admission documentation at the time of application; nothing can be added later",
+          "Applicants in the final year of high school must provide final transcripts as soon as they are available in June/July, no later than the end of the first week of July",
+          "Residents and Norwegian high school students must submit the final diploma no later than July 7",
+          "Maintain 30 ECTS per semester and a cumulative GPA of at least 'B' on the BI ECTS scale"
+        ],
+        "application_method": "Scholarship materials are uploaded to the 'Scholarship' section of the same online application used for admission. Applications for scholarship are not accepted by email and late applications are not considered.",
+        "selection_notes": "Awarded based on academic excellence rather than financial need, assessed on transcripts and application letters. BI ensures distribution across bachelor's programmes and reserves the right to prioritise specific programmes, diversity, gender distribution or countries. Applicants not selected in the first round are considered in the second round. International applicants are also considered for the Bachelor International Scholarship and the Women in Finance and Tech Scholarship if eligible. Decisions are final and cannot be appealed.",
+        "benefits": [
+          "100% of tuition fees for up to three years",
+          "Recognition as a BI Ambassador"
+        ],
+        "funding_amount": null,
+        "funding_currency": null,
+        "funding_period": null,
+        "description": "The BI International Baccalaureate Scholarship is awarded to applicants who graduate with the top grades from the International Baccalaureate programme and covers 100% of tuition fees for up to three years provided the student maintains the academic progression requirements. Applicants need a minimum of 33 IB points, final or predicted, and an offer of admission to the Bachelor of Business Administration, Bachelor of Data Science for Business or Bachelor of Digital Business programme. The deadline is 1 March for international applicants who do not reside in Norway and 15 April for Norwegian citizens and residents, who must then submit their final diploma by 7 July. Awards are made on academic excellence, not financial need."
+      },
+      "programme_detail_official": {
+        "official_source_urls": ["https://www.bi.no/en/programmes-and-individual-courses/scholarships/bi-international-baccalaureate-scholarship/"],
+        "application_link": "https://apply.bi.no/applicant",
+        "official_updates_url": "https://www.bi.no/en/programmes-and-individual-courses/scholarships/bi-international-baccalaureate-scholarship",
+        "catalogue_url": null,
+        "application_cycle": "Annual bachelor's admission cycle; published cycle covers programmes commencing Autumn 2026, with deadlines 1 March (international applicants not resident in Norway) and 15 April (Norwegian citizens and residents), and awards in two rounds in late April and July",
+        "deadline_central": null,
+        "deadline_central_display": "March 1 for international applicants who do not reside in Norway; April 15 for Norwegian citizens and international citizens enrolled in Norwegian high school or who are residents of Norway",
+        "deadline_central_timezone": null,
+        "deadline_note": "Two different deadlines apply depending on applicant group and neither carries a calendar year, so no ISO deadline date can be published. For the residents/Norwegian track an additional hard date of July 7 applies for the final diploma.",
+        "status": "UPCOMING",
+        "status_note": "Annual scheme. As of 2026-10-04 the March and April deadlines for the Autumn 2026 cycle have passed; the next applications are expected to open for the Autumn 2027 cycle with the same March 1 and April 15 deadlines. Applicants not selected in the first round are considered in a second round in July.",
+        "funding_amount": null,
+        "funding_currency": null,
+        "funding_period": null,
+        "funding_duration": "100% of tuition fees for up to three years",
+        "tuition_coverage": true,
+        "tuition_coverage_note": "'BI International Baccalaureate Scholarship will cover 100% of tuition fees for up to three years if the student maintains the academic progression requirements for scholarship recipients.'",
+        "living_cost_coverage": false,
+        "travel_coverage": false,
+        "fully_funded": true,
+        "funding_label": "100% of tuition fees for up to three years. No living-expense stipend is published and no monetary figure is given.",
+        "benefits": [
+          "100% of tuition fees for up to three years",
+          "BI Ambassador role"
+        ],
+        "eligibility": [
+          "Minimum 33 IB points (final or predicted grades)",
+          "Norwegian citizenship or international citizenship",
+          "Offer of admission to the Bachelor of Business Administration, Bachelor of Data Science for Business or Bachelor of Digital Business programme",
+          "First bachelor's degree only",
+          "Applicants must apply from the final year of high school or hold the required IB points"
+        ],
+        "citizenship_residency": "Both Norwegian and international citizenship are accepted, but the deadline and award round differ: 1 March for international applicants not resident in Norway, 15 April for Norwegian citizens and international citizens enrolled in Norwegian high school or resident in Norway.",
+        "international_eligibility": "Open to International Baccalaureate graduates worldwide who secure an offer on one of the three named BI bachelor's programmes; international applicants are also considered for the Bachelor International Scholarship and the Women in Finance and Tech Scholarship if eligible.",
+        "degree_levels": ["Bachelor's"],
+        "study_mode": "Full-time",
+        "research_requirement": null,
+        "subject_or_agency_requirement": "Restricted to the Bachelor of Business Administration, Bachelor of Data Science for Business and Bachelor of Digital Business programmes at BI.",
+        "application_method": "Upload the scholarship application to the section marked 'Scholarship' in the online admission application portal. Applications for scholarship are not accepted by email and late applications will not be considered.",
+        "application_route": "BI online application portal at apply.bi.no, in the same application as admission",
+        "requirements": [
+          "Apply for the scholarship at the same time as the admission application",
+          "Upload a single PDF combining CV/resume and a one-page scholarship application letter to the 'Scholarship' section",
+          "Include all admission documentation at the time of application; no additional documentation is accepted later",
+          "Final-year high school applicants must provide final transcripts as soon as available in June/July, no later than the end of the first week of July",
+          "Norwegian citizens and residents must submit the final diploma no later than July 7",
+          "Maintain 30 ECTS per semester and a cumulative GPA of at least 'B' on the BI ECTS scale"
+        ],
+        "documents": [
+          "CV/resume",
+          "Scholarship application letter, maximum one page, combined with the CV into one PDF",
+          "Complete admission application documentation",
+          "Final transcripts (June/July, by the end of the first week of July) for final-year high school applicants",
+          "Final diploma by July 7 for Norwegian citizens and residents"
+        ],
+        "english_requirement": null,
+        "english_requirement_note": "The scholarship page does not state an English language requirement. Applicants are awarded on the basis of IB subject grades rather than an English test score.",
+        "selection_criteria": [
+          "Academic excellence in the International Baccalaureate - candidates with the highest IB grades are competitive",
+          "Minimum 33 IB points for consideration, final or predicted",
+          "All applicants assessed on transcripts and application letters",
+          "Only applicants admitted to a specified bachelor's programme who applied as instructed are considered",
+          "BI ensures distribution across bachelor's programmes and may prioritise specific programmes, diversity, gender distribution or countries",
+          "Other academic achievements, extracurricular achievements and special personal achievements may influence awarding"
+        ],
+        "selection_weighting": "Academic achievement is the stated basis ('Scholarships are awarded based on academic achievement, not on financial need'); no numeric weighting is given.",
+        "duration": "Up to three years",
+        "award_holder_conditions": [
+          "Full study progression of 30 ECTS in each semester",
+          "Minimum cumulative GPA of 'B' on the BI ECTS scale after each academic semester, as detailed in the Scholarship Agreement",
+          "Scholarship is tied to a designated academic programme and cannot be transferred",
+          "Must act as a BI Ambassador; recipients will be contacted about responsibilities as they arise",
+          "Only one BI scholarship is awarded per applicant",
+          "Scholarship offer must be accepted by the date stated on the offer",
+          "Scholarship decisions are final and non-negotiable and cannot be appealed"
+        ],
+        "supplements_or_initiatives": [
+          "International applicants are also considered for the Bachelor International Scholarship and the Women in Finance and Tech Scholarship if eligible, without a separate letter",
+          "Awards run in two rounds: end of April for international applicants and July for Norwegian and international applicants"
+        ],
+        "official_contacts": {
+          "general": "BI Norwegian Business School, Scholarships, Oslo campus, Norway",
+          "email": "info@bi.no",
+          "phone": null
+        },
+        "description": "The BI International Baccalaureate Scholarship is awarded to applicants who graduate with the top grades from the International Baccalaureate programme and covers 100% of tuition fees for up to three years, provided the student maintains the academic progression requirements for scholarship recipients. Applicants need a minimum of 33 IB points, final or predicted, and must hold an offer of admission to the Bachelor of Business Administration, Bachelor of Data Science for Business or Bachelor of Digital Business programme. The application deadline is 1 March for international applicants not resident in Norway and 15 April for Norwegian citizens and residents, who must submit their final diploma by 7 July. Awards are based on academic excellence rather than financial need and recipients are expected to act as BI Ambassadors.",
+        "program_type": "Merit-based tuition fee scholarship",
+        "region": "Europe",
+        "coverage": "100% of tuition fees for up to three years only; no living-expense stipend, travel, housing or insurance coverage stated",
+        "last_verified_date": "2026-10-04"
+      },
+      "programme_detail_applicant_utility": {
+        "application_readiness_checklist": [
+          "Aim for at least 33 IB points, final or predicted, since that is the stated minimum",
+          "Target the Bachelor of Business Administration, Bachelor of Data Science for Business or Bachelor of Digital Business - other BI programmes are not covered",
+          "Confirm which deadline applies to you: 1 March if you do not reside in Norway, 15 April if you are a Norwegian citizen, enrolled in Norwegian high school, or resident in Norway",
+          "Prepare CV plus a one-page scholarship letter as a single PDF",
+          "Have all admission documentation ready at the time of application",
+          "Calendar the follow-up document dates: final transcripts in the first week of July, or the final diploma by 7 July for residents"
+        ],
+        "common_rejection_risks": [
+          "Missing the wrong deadline - residents and Norwegian high school students have 15 April, not 1 March",
+          "Missing the July 7 final diploma deadline for the residents/Norwegian track",
+          "Below 33 IB points",
+          "Applying to a BI bachelor's programme not on the eligible list",
+          "Emails instead of portal upload, or late applications",
+          "Assuming financial need counts, when awards are based on academic achievement only"
+        ],
+        "estimated_uncovered_costs": [
+          "All living costs - no stipend is published for this scholarship",
+          "Housing, travel, insurance and every non-tuition cost"
+        ],
+        "document_audit": [
+          "CV/resume",
+          "One-page scholarship application letter combined with the CV into one PDF",
+          "Complete admission documentation",
+          "Final transcripts for final-year high school applicants (by the end of the first week of July)",
+          "Final diploma by July 7 for Norwegian citizens and residents"
+        ],
+        "alerts": [
+          {
+            "trigger": "Two-round award cycle",
+            "message": "Bachelor's scholarships are awarded in two rounds, end of April for international applicants and in July for Norwegian and international applicants. Applicants not selected in round one are considered in round two."
+          },
+          {
+            "trigger": "Only successful applicants are notified",
+            "message": "Due to the volume of applications, BI states that only those who receive a scholarship offer will be notified of the result."
+          },
+          {
+            "trigger": "Resident track needs a final diploma later",
+            "message": "If you are a Norwegian citizen or a resident you apply by 15 April but must submit your final diploma no later than 7 July."
+          }
+        ],
+        "submission_workflow": [
+          "Apply for admission to one of the three eligible BI bachelor's programmes",
+          "Write the one-page scholarship letter and combine it with your CV into one PDF",
+          "Upload the PDF to the 'Scholarship' section of the same online application by your group's deadline (1 March or 15 April)",
+          "Submit the complete admission application at the same time",
+          "Accept the admission offer",
+          "If you are a final-year high school student, send final transcripts in early July",
+          "If you are a Norwegian citizen or resident, submit the final diploma by 7 July",
+          "Keep 30 ECTS per semester and a 'B' cumulative GPA"
+        ]
+      },
+      "programme_detail_verification": {
+        "cycle_verified": "Autumn 2026 bachelor's entry cycle as published by BI; verified 2026-10-04, next cycle expected March/April 2027",
+        "verification_confidence": 0.93,
+        "official_fields_confirmed": [
+          "programme existence and awarding body",
+          "degree level (Bachelor's)",
+          "eligible programmes (BBA, Bachelor of Data Science for Business, Bachelor of Digital Business)",
+          "funding (100% of tuition fees for up to three years)",
+          "IB points threshold (minimum 33)",
+          "two-group deadline structure (1 March and 15 April) and the 7 July final diploma date",
+          "required documents and follow-up transcript/diploma dates",
+          "academic progression conditions",
+          "official logo"
+        ],
+        "institution_check_required": [
+          "Number of scholarships available per year is not published",
+          "Exact calendar years for the 1 March, 15 April and 7 July dates",
+          "Whether the current-cycle page text will be updated to Autumn 2027 entrants"
+        ],
+        "unverified_or_removed_claims": [
+          "funding_amount - no monetary figure published",
+          "deadline_date - two unyear-ed group deadlines, so no single ISO date stored; precision recorded as 'varies'",
+          "English language requirement not applicable/stated on this page"
+        ],
+        "source_citations": [
+          "https://www.bi.no/en/programmes-and-individual-courses/scholarships/bi-international-baccalaureate-scholarship/"
+        ],
+        "researched_by": "w1_28"
+      },
+      "logo_override": {
+        "url": "https://www.bi.no/dist/styles/international-D6eI8E60.svg",
+        "page_url": "https://www.bi.no/en/programmes-and-individual-courses/scholarships/bi-international-baccalaureate-scholarship/",
+        "official_host": true,
+        "alt_text": "BI Norwegian Business School logo",
+        "validation_result": "verified",
+        "validation_detail": "svg 271x96 viewBox, probed 2026-10-04 - HTTP 200 with image/svg+xml content type; wordmark fill #002341 (dark navy) with blue-gradient mark, legible on a light card",
+        "image_kind": "official_logo",
+        "image_format": "svg",
+        "verified_at": "2026-10-04T00:00:00+00:00",
+        "host_evidence": "same_registrable_domain",
+        "_award": "BI International Baccalaureate Scholarship"
+      },
+      "research_notes": {
+        "logo": "Same awarding body (BI Norwegian Business School), same verified logo as targets 274, 275 and 277: https://www.bi.no/dist/styles/international-D6eI8E60.svg, taken from BI's own stylesheet variable --bic-logo-international, probed HTTP 200 image/svg+xml, dark navy #002341 wordmark. The dark-header variant international-dark-CcqyNbbM.svg was rejected as white-on-transparent (fill=\"#fff\"). Stored image was BI's og:image campaign photo, not a logo.",
+        "unverified": [
+          "Exact calendar years for 1 March, 15 April and 7 July",
+          "Number of scholarships awarded per year",
+          "Tuition fee amount covered (not published)"
+        ],
+        "substitution": null,
+        "official_pages_read": [
+          "https://www.bi.no/en/programmes-and-individual-courses/scholarships/bi-international-baccalaureate-scholarship/"
+        ],
+        "degree_level_confirmed": "Page lists eligible programmes as 'Bachelor of Business Administration', 'Bachelor of Data Science for Business' and 'Bachelor of Digital Business', and states 'Only candidates seeking their first bachelor's degree are considered for scholarships for bachelor's degrees.'",
+        "url_observed": "https://www.bi.no/en/programmes-and-individual-courses/scholarships/bi-international-baccalaureate-scholarship/",
+        "contradictions": [
+          "Stored deadline_display '1 March 2026 (international applicants not residing in Norway)' is incomplete. The official page has TWO deadlines: 'March 1 International applicants who do not reside in Norway.' and 'April 15 Norwegian citizens and international citizens enrolled in Norwegian high school or who are residents of Norway. Apply for admission by April 15 and then applicants must submit their final diploma no later than July 7.' The stored record omitted the entire 15 April / 7 July track.",
+          "Stored deadline_precision 'varies' is actually correct for this record and has been kept.",
+          "Stored funding 'Partial' corrected to 'Fully Funded' - the official wording is 'will cover 100% of tuition fees for up to three years'.",
+          "Stored current_image_url is BI's og:image campaign photo, not the official logo; replaced with BI's own dark wordmark SVG.",
+          "Stored status 'open' corrected to 'upcoming' - both March and April deadlines for the Autumn 2026 cycle have passed as of 2026-10-04."
+        ],
+        "skeleton": false
+      }
+    },
+    {
+      "target_id": 277,
+      "outcome": "refreshed",
+      "confirm": true,
+      "confirmation_evidence": "Read BI's own page https://www.bi.no/en/programmes-and-individual-courses/scholarships/future-african-leader-scholarship/. It states 'BI is offering two MSc scholarships to support these initiatives, specifically in Africa', 'Scholarships will cover full tuition fees for up to two years and a stipend for living expenses of NOK 50,000 per semester', and 'Application deadline is March 1.'",
+      "new_scholarship": {
+        "name": "Future African Leader Scholarship",
+        "legacy_titles": ["BI Future African Leader Scholarship"],
+        "country": "Norway",
+        "degree_levels": "Master's",
+        "funding_type": "Fully Funded (full tuition up to two years plus a NOK 50,000 per semester living-expense stipend)",
+        "official_source": "BI Norwegian Business School",
+        "official_source_url": "https://www.bi.no/en/programmes-and-individual-courses/scholarships/future-african-leader-scholarship",
+        "status": "upcoming",
+        "is_verified": true,
+        "last_verified_date": "2026-10-04",
+        "region": "Africa, Europe",
+        "program_type": "Merit-based tuition and stipend scholarship",
+        "duration": "Up to two years of full tuition fees plus a per-semester stipend",
+        "deadline": "Application deadline is March 1. International and domestic applicants must upload a complete application for admission, including the scholarship application, to the online application portal. Applications for scholarship are not accepted by email. Late applications will not be considered.",
+        "deadline_date": null,
+        "deadline_precision": "recurring",
+        "application_period": "Annual: scholarship materials uploaded with the admission application before 1 March; results notified by the end of April. Two MSc scholarships are offered.",
+        "eligibility_summary": "International citizens who are not residents of Norway with a minimum overall GPA of 4.0 on the ECTS scale and strong GMAT or GRE scores, admitted to the first year of an MSc programme at BI's Oslo or Bergen campus. Preference is given to candidates from a GBSN member school in Africa or African citizens who attended a GMAC Study in Europe event.",
+        "eligibility": [
+          "Preference for candidates currently enrolled at or recently graduated from a GBSN Member School in Africa, or candidates with African citizenship who participated in a GMAC Study in Europe event online or in person in Africa",
+          "International citizenship and not a resident of Norway, with a strong academic record",
+          "Strong GMAT or GRE test scores as required for admission",
+          "Minimum overall GPA of 4.0 on the ECTS scale, with international grades converted by BI",
+          "Admission to the first year of a Master of Science degree programme at campus Oslo or campus Bergen, except the BI-Luiss Joint Masters in Marketing",
+          "Only candidates seeking their first master's degree are considered"
+        ],
+        "coverage": [
+          "Full tuition fees for up to two years",
+          "Stipend for living expenses of NOK 50,000 per semester",
+          "No travel, housing or insurance coverage stated"
+        ],
+        "required_documents": [
+          "CV/resume",
+          "Scholarship application letter of a maximum one page, combined with the CV into a single PDF, which must identify either enrolment at or graduation from a GBSN member school or the GMAC Study in Europe event attended with date and place",
+          "All documentation required for admission evaluation to an MSc programme"
+        ],
+        "catalogue_url": null,
+        "official_updates_url": "https://www.bi.no/en/programmes-and-individual-courses/scholarships/future-african-leader-scholarship",
+        "english_requirement": null,
+        "requirements": [
+          "Apply for the scholarship at the same time as the admission application on BI's online portal",
+          "State in the scholarship letter that you are enrolled at or a graduate of a GBSN member school, or identify the GMAC Study in Europe event you attended with date and place",
+          "Upload the combined CV and letter to the section marked 'Scholarship'",
+          "Accept the offer of admission for the scholarship application to be considered",
+          "No documentation submitted after the application will be accepted",
+          "Maintain 30 ECTS per semester and a cumulative GPA of at least 'B' on the BI ECTS scale"
+        ],
+        "application_method": "Scholarship materials are uploaded to the 'Scholarship' section of the same online application used for admission. Applications for scholarship are not accepted by email.",
+        "selection_notes": "Awarded on academic merit, not financial need, assessed on the ECTS scale with international grades converted by BI. Two MSc scholarships are offered in support of BI's GBSN Network and GMAC Study in Europe Initiative memberships. Applicants are also considered for the BI Presidential Scholarship, the MSc International Scholarship and the Women in Finance and Tech Scholarship where applicable, and for other BI-sponsored scholarships except the A. Wilhelmsen Foundation Scholarship and the BI-Luiss Joint Masters in Marketing. Decisions are final and cannot be appealed.",
+        "benefits": [
+          "Full tuition fees for up to two years",
+          "NOK 50,000 per semester stipend for living expenses",
+          "BI Ambassador role"
+        ],
+        "funding_amount": 50000,
+        "funding_currency": "NOK",
+        "funding_period": "per semester",
+        "description": "The Future African Leader Scholarship is one of two MSc scholarships BI offers to support its membership of the GBSN Network and GMAC's Study in Europe Initiative, specifically for candidates in Africa. Each award covers full tuition fees for up to two years plus a stipend for living expenses of NOK 50,000 per semester, conditional on meeting the academic progression requirements. Applicants must be international citizens who are not residents of Norway, hold a minimum overall GPA of 4.0 on the ECTS scale, submit strong GMAT or GRE scores, and be admitted to the first year of an MSc programme at the Oslo or Bergen campus; preference goes to candidates from a GBSN member school in Africa or African citizens who attended a GMAC Study in Europe event. The deadline is 1 March and results are notified by the end of April."
+      },
+      "programme_detail_official": {
+        "official_source_urls": ["https://www.bi.no/en/programmes-and-individual-courses/scholarships/future-african-leader-scholarship/"],
+        "application_link": "https://apply.bi.no/applicant",
+        "official_updates_url": "https://www.bi.no/en/programmes-and-individual-courses/scholarships/future-african-leader-scholarship",
+        "catalogue_url": null,
+        "application_cycle": "Annual master's admission cycle; published cycle covers MSc programmes at Oslo and Bergen commencing Autumn 2026, with the scholarship deadline 1 March, two awards available, and decisions by the end of April",
+        "deadline_central": null,
+        "deadline_central_display": "Application deadline is March 1",
+        "deadline_central_timezone": null,
+        "deadline_note": "The official page states only 'March 1' with no calendar year, so no ISO deadline date can be published. The 1 March 2026 deadline passed before the 2026-10-04 verification date.",
+        "status": "UPCOMING",
+        "status_note": "Annual scheme with two awards. The published cycle (1 March 2026 deadline, Autumn 2026 start) is over, so the next window is expected around 1 March 2027 for Autumn 2027 entry.",
+        "funding_amount": 50000,
+        "funding_currency": "NOK",
+        "funding_period": "per semester",
+        "funding_duration": "Full tuition fees for up to two years plus a per-semester stipend for up to two years",
+        "tuition_coverage": true,
+        "tuition_coverage_note": "'Scholarships will cover full tuition fees for up to two years and a stipend for living expenses of NOK 50,000 per semester, if the student achieves the academic progression requirements.'",
+        "living_cost_coverage": true,
+        "travel_coverage": false,
+        "fully_funded": true,
+        "funding_label": "Full tuition fees for up to two years plus a living-expense stipend of NOK 50,000 per semester. Two awards per cycle; conditional on academic progression and tied to a specific programme and campus.",
+        "benefits": [
+          "Full tuition fees for up to two years",
+          "NOK 50,000 per semester stipend for living expenses",
+          "BI Ambassador role"
+        ],
+        "eligibility": [
+          "Preference for candidates enrolled at or recently graduated from a GBSN Member School in Africa",
+          "Or African citizenship combined with participation in a GMAC Study in Europe event online or in person in Africa",
+          "International citizenship and not a resident of Norway, with a strong academic record",
+          "Strong GMAT or GRE test scores as required for admission",
+          "Minimum overall GPA of 4.0 on the ECTS scale, with international grades converted by BI",
+          "Admission to the first year of an MSc programme at campus Oslo or campus Bergen, excluding BI-Luiss Joint Masters in Marketing",
+          "First master's degree only"
+        ],
+        "citizenship_residency": "International citizenship and non-resident status in Norway are required. Preference is given to African citizenship, or enrolment at a GBSN member school in Africa.",
+        "international_eligibility": "Open to international, non-Norwegian-resident candidates admitted to an MSc programme at BI's Oslo or Bergen campus, with preference for candidates linked to a GBSN member school in Africa or to a GMAC Study in Europe event.",
+        "degree_levels": ["Master's"],
+        "study_mode": "Full-time",
+        "research_requirement": null,
+        "subject_or_agency_requirement": "Tied to a specific MSc programme at BI's Oslo or Bergen campus; the BI-Luiss Joint Masters in Marketing is excluded.",
+        "application_method": "Upload the scholarship application to the section marked 'Scholarship' in the online admission application portal. Applications for scholarship are not accepted by email.",
+        "application_route": "BI online application portal at apply.bi.no, in the same application as admission",
+        "requirements": [
+          "Apply for the scholarship at the same time as the admission application",
+          "In the one-page scholarship letter, identify that you are enrolled at or a graduate of a GBSN member school, or identify the GMAC Study in Europe event attended with its date and place",
+          "Upload the combined CV and letter as one PDF to the 'Scholarship' section",
+          "Include all admission documentation for MSc evaluation in the same submission",
+          "Accept the offer of admission for the scholarship application to be considered",
+          "No documentation submitted after the application will be accepted",
+          "Maintain 30 ECTS per semester and a cumulative GPA of at least 'B' on the BI ECTS scale",
+          "Be prepared to act as a BI Ambassador"
+        ],
+        "documents": [
+          "CV/resume",
+          "Scholarship application letter, maximum one page, combined with the CV into one PDF, stating GBSN member school enrolment/graduation or the GMAC Study in Europe event attended with date and place",
+          "Complete admission application documentation"
+        ],
+        "english_requirement": null,
+        "english_requirement_note": "The scholarship page states no English language requirement; it does require strong GMAT or GRE scores for admission purposes.",
+        "selection_criteria": [
+          "Strong academic record with a minimum overall GPA of 4.0 on the ECTS scale",
+          "Link to a GBSN member school in Africa or to a GMAC Study in Europe event, which is the stated preference criterion",
+          "Strong GMAT or GRE test scores",
+          "Only applicants admitted to an MSc programme who applied as instructed are considered",
+          "Scholarship applications considered only after the admission offer is accepted",
+          "BI ensures distribution across MSc programmes and may prioritise specific programmes, diversity, gender distribution or partner schools",
+          "Other academic achievements, GMAT/GRE/CAT scores and extracurricular achievements may influence awarding"
+        ],
+        "selection_weighting": "Academic merit is the stated basis, with the GBSN/GMAC affiliation acting as a stated preference; no numeric weighting is published.",
+        "duration": "Up to two years",
+        "award_holder_conditions": [
+          "Full study progression of 30 ECTS in each semester",
+          "Minimum cumulative GPA of 'B' on the BI ECTS scale after each academic semester, as detailed in the Scholarship Agreement",
+          "Scholarship is tied to a specific academic programme at a designated campus and cannot be transferred",
+          "Must act as a BI Ambassador",
+          "Only one BI scholarship is awarded per applicant",
+          "Scholarship offer must be accepted by the date stated on the offer",
+          "Scholarship decisions are final and non-negotiable and cannot be appealed"
+        ],
+        "supplements_or_initiatives": [
+          "Supported by BI's membership of the GBSN Network and GMAC's Study in Europe Initiative",
+          "Eligible applicants are also considered for the BI Presidential Scholarship, the MSc International Scholarship and the Women in Finance and Tech Scholarship where applicable, and for other BI-sponsored scholarships except the A. Wilhelmsen Foundation Scholarship and the BI-Luiss Joint Masters in Marketing"
+        ],
+        "official_contacts": {
+          "general": "BI Norwegian Business School, Scholarships, Oslo and Bergen campuses, Norway",
+          "email": "info@bi.no",
+          "phone": null
+        },
+        "description": "The Future African Leader Scholarship is one of two MSc scholarships BI Norwegian Business School offers to support its memberships of the GBSN Network and GMAC's Study in Europe Initiative, specifically in Africa. Awards cover full tuition fees for up to two years plus a stipend for living expenses of NOK 50,000 per semester, conditional on meeting the academic progression requirements. Applicants must be international citizens who are not residents of Norway with a minimum overall GPA of 4.0 on the ECTS scale and strong GMAT or GRE scores, and must be admitted to the first year of an MSc programme at the Oslo or Bergen campus, with preference for candidates from a GBSN member school in Africa or African citizens who attended a GMAC Study in Europe event. Applications must be uploaded to BI's online portal by 1 March and decisions are notified by the end of April.",
+        "program_type": "Merit-based tuition and stipend scholarship",
+        "region": "Africa, Europe",
+        "coverage": "Full tuition fees for up to two years plus a NOK 50,000 per semester living-expense stipend; no travel, housing or insurance coverage stated",
+        "last_verified_date": "2026-10-04"
+      },
+      "programme_detail_applicant_utility": {
+        "application_readiness_checklist": [
+          "Document your GBSN member school enrolment or graduation, or the GMAC Study in Europe event you attended with date and place - this is the preference criterion and must appear in your letter",
+          "Confirm you are an international citizen and not resident in Norway",
+          "Reach a minimum overall GPA of 4.0 on the ECTS scale",
+          "Sit strong GMAT or GRE scores, as the page requires them for admission",
+          "Apply to an MSc programme at BI's Oslo or Bergen campus in the same cycle",
+          "Prepare CV plus a one-page letter naming your GBSN/GMAC link, as one PDF, uploaded before 1 March"
+        ],
+        "common_rejection_risks": [
+          "A letter that does not identify the GBSN member school or the GMAC event with date and place, which the page states is mandatory",
+          "Missing the 1 March deadline",
+          "Being a Norwegian resident, which makes the candidate a domestic applicant",
+          "GPA below 4.0 on the ECTS scale or weak GMAT/GRE",
+          "Emails instead of portal upload",
+          "Not accepting the admission offer, or trying to transfer the award to another programme or campus"
+        ],
+        "estimated_uncovered_costs": [
+          "The gap between the NOK 50,000 per semester stipend and actual living costs in Oslo or Bergen",
+          "Housing, travel, insurance and every cost not covered by tuition or the stipend"
+        ],
+        "document_audit": [
+          "CV/resume",
+          "One-page scholarship application letter combined with the CV into one PDF, stating GBSN member school enrolment/graduation or the GMAC Study in Europe event with date and place",
+          "Complete admission documentation",
+          "GMAT or GRE score report as required for admission"
+        ],
+        "alerts": [
+          {
+            "trigger": "Only two awards per cycle",
+            "message": "BI states it is offering two MSc scholarships for this programme, so competition is very tight even before the general BI merit competition."
+          },
+          {
+            "trigger": "Scholarship decision follows the admission offer",
+            "message": "Accept the admission offer first; all applicants are informed of the scholarship decision by the end of April, and unaccepted offers are reallocated."
+          },
+          {
+            "trigger": "Automatic consideration for other BI scholarships",
+            "message": "Applying here also gets you considered for the BI Presidential Scholarship, the MSc International Scholarship and the Women in Finance and Tech Scholarship where applicable, but BI awards only one scholarship per applicant."
+          }
+        ],
+        "submission_workflow": [
+          "Apply for admission to an MSc programme at BI Oslo or Bergen and sit the required GMAT/GRE",
+          "Write the one-page letter naming your GBSN member school status or your GMAC Study in Europe event with date and place",
+          "Combine the letter and CV into one PDF",
+          "Upload it to the 'Scholarship' section of the same online application before 1 March",
+          "Submit the complete admission application at the same time",
+          "Accept the admission offer",
+          "Await the scholarship notification by the end of April and accept by the stated date",
+          "Maintain 30 ECTS per semester and a 'B' cumulative GPA"
+        ]
+      },
+      "programme_detail_verification": {
+        "cycle_verified": "Autumn 2026 MSc Oslo/Bergen entry cycle as published by BI; verified 2026-10-04, next cycle expected 1 March 2027",
+        "verification_confidence": 0.93,
+        "official_fields_confirmed": [
+          "programme existence and awarding body",
+          "two awards per cycle",
+          "funding (full tuition up to two years plus NOK 50,000 per semester stipend)",
+          "deadline wording (1 March, no year)",
+          "GBSN/GMAC affiliation requirement and preference",
+          "eligibility (non-Norwegian-resident international citizens, ECTS 4.0, GMAT/GRE)",
+          "campuses (Oslo and Bergen)",
+          "required documents and the mandatory letter content",
+          "academic progression conditions"
+        ],
+        "institution_check_required": [
+          "Exact calendar year for the 1 March deadline",
+          "How many applications compete for the two awards in the next cycle",
+          "Whether BI continues to offer two awards in future cycles"
+        ],
+        "unverified_or_removed_claims": [
+          "deadline_date - the official page states only 'March 1'",
+          "Tuition fee amount covered is not published; funding_amount 50000 refers to the per-semester stipend only",
+          "English language requirement not stated on this page"
+        ],
+        "source_citations": [
+          "https://www.bi.no/en/programmes-and-individual-courses/scholarships/future-african-leader-scholarship/"
+        ],
+        "researched_by": "w1_28"
+      },
+      "logo_override": {
+        "url": "https://www.bi.no/dist/styles/international-D6eI8E60.svg",
+        "page_url": "https://www.bi.no/en/programmes-and-individual-courses/scholarships/future-african-leader-scholarship/",
+        "official_host": true,
+        "alt_text": "BI Norwegian Business School logo",
+        "validation_result": "verified",
+        "validation_detail": "svg 271x96 viewBox, probed 2026-10-04 - HTTP 200 with image/svg+xml content type; wordmark fill #002341 (dark navy) with blue-gradient mark, legible on a light card",
+        "image_kind": "official_logo",
+        "image_format": "svg",
+        "verified_at": "2026-10-04T00:00:00+00:00",
+        "host_evidence": "same_registrable_domain",
+        "_award": "BI Future African Leader Scholarship"
+      },
+      "research_notes": {
+        "logo": "Same awarding body (BI Norwegian Business School), so the verified light-header logo applies: https://www.bi.no/dist/styles/international-D6eI8E60.svg, from BI's own CSS variable --bic-logo-international, probed HTTP 200 image/svg+xml, dark navy #002341 wordmark with blue-gradient mark. Dark-header sibling international-dark-CcqyNbbM.svg rejected (fill=\"#fff\"). Stored image was BI's og:image campaign photo, not a logo.",
+        "unverified": [
+          "Exact calendar year of the 1 March deadline",
+          "Whether two awards continue in future cycles",
+          "Tuition fee amount covered (not published)"
+        ],
+        "substitution": null,
+        "official_pages_read": [
+          "https://www.bi.no/en/programmes-and-individual-courses/scholarships/future-african-leader-scholarship/"
+        ],
+        "degree_level_confirmed": "Page states 'Only candidates seeking their first master's degree are considered for Master of Science scholarships' and 'Candidates admitted to the first year of a Master of Science degree programme at campus Oslo or campus Bergen, except for the BI-Luiss Joint Masters in Marketing.'",
+        "url_observed": "https://www.bi.no/en/programmes-and-individual-courses/scholarships/future-african-leader-scholarship/",
+        "contradictions": [
+          "Stored funding 'Fully Funded' carried no amount; the official page quantifies the stipend as 'NOK 50,000 per semester', which has been recorded as funding_amount 50000 NOK per semester alongside full tuition for up to two years.",
+          "Stored deadline_display '1 March 2026' attaches an unpublished year; corrected to deadline_date null with precision 'recurring'.",
+          "Stored deadline_precision 'varies' corrected to 'recurring'.",
+          "Stored region 'Europe' only is incomplete: the page describes the award as being 'specifically in Africa' in support of the GBSN Network and GMAC Study in Europe Initiative, with a preference for candidates from African GBSN member schools. Region corrected to 'Africa, Europe'.",
+          "Stored current_image_url is BI's og:image campaign photo, not the official logo; replaced with BI's own dark wordmark SVG.",
+          "Stored status 'open' corrected to 'upcoming' - the 1 March 2026 deadline has passed and the page's current text covers Autumn 2026 entrants."
+        ],
+        "skeleton": false
+      }
+    },
+    {
+      "target_id": 278,
+      "outcome": "refreshed",
+      "confirm": true,
+      "confirmation_evidence": "Read NTNU's own pages ntnu.edu/phd and ntnu.edu/phd/admission-and-financing. The latter states 'Unlike in most other countries, PhD candidates in Norway are not considered students and PhD candidates are usually employees of the institution from which they receive their funding' and 'Most PhD candidates at NTNU are employed as PhD research fellows (stipendiat) at NTNU or a university college.' It also states 'Acceptance to a PhD-programme at NTNU is done continuously throughout the academic year and is not restricted to the beginning of term.'",
+      "new_scholarship": {
+        "name": "NTNU PhD Positions (Salaried Employment)",
+        "legacy_titles": ["NTNU PhD Positions (Salaried Employment)"],
+        "country": "Norway",
+        "degree_levels": "PhD",
+        "funding_type": "Fully Funded (salaried employment as a PhD research fellow / stipendiat)",
+        "official_source": "Norwegian University of Science and Technology (NTNU)",
+        "official_source_url": "https://www.ntnu.edu/jobs",
+        "status": "open",
+        "is_verified": true,
+        "last_verified_date": "2026-10-04",
+        "region": "Europe",
+        "program_type": "Doctoral employment position",
+        "duration": "Three-year full-time study as standard; some positions include a fourth year of required duties, usually teaching, as detailed in the employee contract",
+        "deadline": "Positions are advertised individually and applications are assessed continuously: 'Acceptance to a PhD-programme at NTNU is done continuously throughout the academic year and is not restricted to the beginning of term.' Each vacancy carries its own application deadline.",
+        "deadline_date": null,
+        "deadline_precision": "rolling",
+        "application_period": "Continuous - individual PhD vacancies are posted on NTNU's vacancy pages and on jobbnorge.no and are assessed as they arrive.",
+        "eligibility_summary": "Five years of higher education including a master's degree or equivalent, a strong academic record with a weighted average for the last two years of the master's degree equivalent to a B or higher on NTNU's grading scale, and a confirmed funding plan for the whole PhD period.",
+        "eligibility": [
+          "At least five years of higher education including a master's degree or other equivalent degree",
+          "A strong academic record: weighted average for the last two years of the master's degree equivalent to a B or higher in NTNU's grading scale",
+          "A funding plan covering the entire PhD period - financing is an absolute requirement for acceptance",
+          "At least two academic supervisors, at least one of whom (usually the main supervisor) must be employed at NTNU, including for externally funded candidates",
+          "Foreign education may need NOKUT recognition or a faculty-level assessment",
+          "Individual faculties or programmes may set further qualification requirements"
+        ],
+        "coverage": [
+          "Salary as an NTNU employee (PhD research fellow / stipendiat) under the Norwegian state pay scale",
+          "Pension and employee benefit schemes through employment",
+          "No separate tuition, travel or accommodation funding is published on these pages"
+        ],
+        "required_documents": [
+          "Documentation of former education qualifying you for a PhD, with diploma supplement and/or NOKUT assessment if available",
+          "Documentation of education obtained outside of Norway",
+          "Documentation of funding for the entire PhD period",
+          "Project description, complete or preliminary (a complete version within six months of admission if a preliminary one is accepted)",
+          "Details of legal or ethical issues related to the project, plus ethics committee or other approval where required",
+          "The fixed NTNU PhD application form"
+        ],
+        "catalogue_url": "https://www.ntnu.edu/vacancies",
+        "official_updates_url": "https://www.ntnu.edu/vacancies",
+        "english_requirement": null,
+        "requirements": [
+          "Secure a funding plan for the whole PhD period before acceptance",
+          "Contact the research group and identify a potential main supervisor early, with at least two academic supervisors in total",
+          "Prepare the application in cooperation with the main supervisor",
+          "Submit through the department to the faculty, using the faculty's or programme's own form where one exists",
+          "For positions in the final year of high school-equivalent entry, individual vacancy advertisements state the full requirement list"
+        ],
+        "application_method": "Apply to an individually advertised PhD vacancy. The application is written in cooperation with the main supervisor and sent to the faculty through the department. Positions are announced on NTNU's web pages and on jobbnorge.no.",
+        "selection_notes": "Assessment is continuous through the academic year and is not restricted to the start of a term. NTNU requires a strong academic record and a confirmed funding plan; at least one supervisor must be employed at NTNU.",
+        "benefits": [
+          "Salaried employment as a PhD research fellow (stipendiat) at NTNU or a university college",
+          "Norwegian public-sector pension and employee benefit schemes",
+          "Access to NTNU International Researcher Support (NIRS) for administrative and relocation help"
+        ],
+        "funding_amount": null,
+        "funding_currency": null,
+        "funding_period": null,
+        "description": "NTNU's PhD positions are salaried employment rather than scholarships: Norwegian PhD candidates are not treated as students and are normally employees of the institution that funds them. Most PhD candidates at NTNU are employed as PhD research fellows (stipendiat) at NTNU or a university college, with individual positions advertised on NTNU's vacancy pages and on jobbnorge.no. Admission requires at least five years of higher education including a master's degree, a weighted average of at least B over the last two master's years on NTNU's scale, and a funding plan for the whole PhD period. Acceptance is done continuously throughout the academic year rather than at fixed deadlines, and the standard PhD is three years full-time, sometimes extended by a fourth year of teaching duties."
+      },
+      "programme_detail_official": {
+        "official_source_urls": [
+          "https://www.ntnu.edu/phd",
+          "https://www.ntnu.edu/phd/admission-and-financing",
+          "https://www.ntnu.edu/vacancies"
+        ],
+        "application_link": "https://www.ntnu.edu/vacancies",
+        "official_updates_url": "https://www.ntnu.edu/vacancies",
+        "catalogue_url": "https://www.ntnu.edu/vacancies",
+        "application_cycle": "Continuous year-round intake; individual PhD vacancies are advertised on NTNU's vacancy pages and on jobbnorge.no, each with its own deadline",
+        "deadline_central": null,
+        "deadline_central_display": "Acceptance to a PhD-programme at NTNU is done continuously throughout the academic year and is not restricted to the beginning of term",
+        "deadline_central_timezone": null,
+        "deadline_note": "There is no programme-wide deadline. Each advertised PhD position has its own application deadline, and NTNU states that acceptance is done continuously throughout the academic year, so no ISO deadline date can be published.",
+        "status": "ONGOING",
+        "status_note": "PhD vacancies at NTNU are posted continuously and applications are assessed as they arrive. The stored official_source_url https://www.ntnu.edu/jobs now returns HTTP 404; the live equivalents are https://www.ntnu.edu/vacancies and https://www.ntnu.edu/phd.",
+        "funding_amount": null,
+        "funding_currency": null,
+        "funding_period": null,
+        "funding_duration": "Salaried employment for the duration of the PhD position; standard PhD is three years full-time, with some positions including a fourth year of required duties",
+        "tuition_coverage": null,
+        "tuition_coverage_note": "Not applicable: PhD candidates are employees rather than students, so the question of tuition does not arise. NTNU's pages state no separate tuition arrangement for PhD positions.",
+        "living_cost_coverage": null,
+        "travel_coverage": null,
+        "fully_funded": true,
+        "funding_label": "Full salary as an NTNU employee (PhD research fellow / stipendiat) under the Norwegian state pay scale. NTNU's public pages do not publish a salary figure; the exact grade and pay are set in each position's advertisement and contract. Fully funded in the sense that the employer covers the PhD period, but note this is employment with obligations, not a grant.",
+        "benefits": [
+          "Salary as a PhD research fellow (stipendiat)",
+          "Norwegian public-sector pension and employee benefits",
+          "Access to NTNU International Researcher Support (NIRS)",
+          "Possibility of a research stay or courses abroad, including through the Nordic Five Tech alliance"
+        ],
+        "eligibility": [
+          "At least five years of higher education including a master's degree or equivalent",
+          "Weighted average for the last two years of the master's degree equivalent to a B or higher in NTNU's grading scale",
+          "A funding plan for the entire PhD period",
+          "At least two academic supervisors, at least one employed at NTNU",
+          "Foreign education assessed by NOKUT or by the faculty",
+          "No nationality restriction is stated on the university-level pages; individual vacancies set their own requirements"
+        ],
+        "citizenship_residency": "No citizenship restriction is stated on NTNU's PhD admission and financing pages. Vacancies are advertised internationally and NTNU publishes an international researcher support service.",
+        "international_eligibility": "Open to international applicants; NTNU states that applicants whose education is from outside Norway may have it assessed by NOKUT or by the faculty, and points them to its International Researcher Support service. Individual vacancies may impose their own residency conditions.",
+        "degree_levels": ["PhD"],
+        "study_mode": "Full-time",
+        "research_requirement": "A PhD position requires a research project and a supervisor arrangement: the project description may be complete or preliminary at application (a complete version within six months of admission if preliminary is allowed), and at least one supervisor must be employed at NTNU.",
+        "subject_or_agency_requirement": "Each position is advertised by a specific NTNU faculty or department; the individual faculty or programme may set further qualification requirements and its own application form.",
+        "application_method": "Apply to an individually advertised PhD vacancy. The application is written in cooperation with the main supervisor and sent to the faculty through the department, using NTNU's fixed application form or the programme's own form.",
+        "application_route": "NTNU vacancy pages (ntnu.edu/vacancies) and jobbnorge.no; applications routed through the employing department to the faculty",
+        "requirements": [
+          "Confirmed funding plan for the entire PhD period",
+          "At least five years of higher education including a master's degree",
+          "Master's average of at least B (NTNU scale) over the last two years",
+          "A potential main supervisor and at least two academic supervisors in total, at least one employed at NTNU",
+          "Project description plus declaration of legal or ethical issues and any required approvals",
+          "Documentation of foreign education where applicable"
+        ],
+        "documents": [
+          "NTNU PhD application form",
+          "Documentation of qualifying education with diploma supplement and/or NOKUT assessment",
+          "Documentation of education obtained outside Norway",
+          "Documentation of funding for the entire PhD period",
+          "Project description (complete or preliminary)",
+          "Ethics committee or other approvals where the project requires them"
+        ],
+        "english_requirement": null,
+        "english_requirement_note": "NTNU's PhD admission and financing pages do not state an English language requirement for PhD positions; the requirement is set in the individual vacancy advertisement.",
+        "selection_criteria": [
+          "Strong academic record - master's average of B or higher on NTNU's grading scale over the last two years",
+          "Quality and feasibility of the project description",
+          "Supervisor availability and arrangement, with at least one NTNU-employed supervisor",
+          "Confirmed funding for the full period",
+          "Faculty- or programme-specific qualification requirements"
+        ],
+        "selection_weighting": "NTNU publishes no weighting; the stated requirements are a funding plan, five years of higher education with a master's degree, and a B-average or higher.",
+        "duration": "Three-year full-time PhD as standard; some positions include a fourth year of required duties, usually teaching, set out in the employee contract",
+        "award_holder_conditions": [
+          "Financing is an absolute requirement and must be in place for the whole PhD period",
+          "At least one supervisor, usually the main supervisor, must be employed at NTNU, including for externally funded candidates",
+          "The programme includes at least 30 ECTS of coursework and a doctoral thesis estimated at 2.5 years",
+          "The candidate is expected to contribute to international conferences and publish in international peer-reviewed journals",
+          "Employment conditions are set in the employee contract, including any fourth year of teaching duties"
+        ],
+        "supplements_or_initiatives": [
+          "Alternative funding routes named by NTNU: agreement with a regular employer, the Research Council of Norway Industrial PhD or Public Sector PhD schemes, and other national or international scholarships"
+        ],
+        "official_contacts": {
+          "general": "NTNU – Norwegian University of Science and Technology, 7491 Trondheim, Norway",
+          "email": null,
+          "phone": null
+        },
+        "description": "NTNU PhD positions are salaried employment rather than scholarships. NTNU states that unlike in most other countries, PhD candidates in Norway are not considered students and are usually employees of the institution funding them, and that most PhD candidates at NTNU are employed as PhD research fellows (stipendiat) at NTNU or a university college. Positions are advertised individually on NTNU's vacancy pages and on jobbnorge.no, and acceptance is done continuously throughout the academic year rather than only at the start of a term. Admission requires a funding plan, at least five years of higher education including a master's degree, and a weighted average of at least B over the last two master's years on NTNU's scale. The PhD is nominally three years full-time, with some positions adding a fourth year of teaching duties.",
+        "program_type": "Doctoral employment position",
+        "region": "Europe",
+        "coverage": "Salary and public-sector employee benefits for the duration of the PhD position; no separate tuition, travel or accommodation funding is published on these pages",
+        "last_verified_date": "2026-10-04"
+      },
+      "programme_detail_applicant_utility": {
+        "application_readiness_checklist": [
+          "Line up a potential main supervisor and at least one further academic supervisor, with at least one employed at NTNU, before you apply",
+          "Secure a funding plan covering the entire PhD period - NTNU treats financing as an absolute requirement",
+          "Confirm your master's average is at least B on NTNU's grading scale over the last two years",
+          "Have foreign education assessed by NOKUT or ask the faculty to assess it",
+          "Draft a project description with any legal or ethical issues and required approvals identified",
+          "Monitor ntnu.edu/vacancies and jobbnorge.no continuously, because each position has its own deadline and intake is year-round"
+        ],
+        "common_rejection_risks": [
+          "No confirmed funding plan for the whole period",
+          "A master's average below B on NTNU's scale",
+          "No supervisor attached, or none of the supervisors employed at NTNU",
+          "Missing the individual vacancy's own deadline while assuming the year-round intake makes timing irrelevant",
+          "Unassessed foreign education where the programme requires NOKUT recognition",
+          "Incomplete project description, or unresolved ethics approval"
+        ],
+        "estimated_uncovered_costs": [
+          "Nothing is deducted for tuition, since the position is employment rather than study",
+          "Any costs not covered by the salary, such as relocation and housing deposits, which are not quantified on NTNU's PhD pages"
+        ],
+        "document_audit": [
+          "NTNU PhD application form (or the faculty/programme's own form)",
+          "Documentation of qualifying education with diploma supplement",
+          "NOKUT assessment or equivalent for education obtained outside Norway",
+          "Documentation of funding for the entire PhD period",
+          "Project description",
+          "Ethics or other approval documentation where applicable"
+        ],
+        "alerts": [
+          {
+            "trigger": "Vacancies disappear without a fixed closing date",
+            "message": "NTNU assesses applications continuously, so a well-prepared early application is safer than waiting - each advertisement still has its own deadline."
+          },
+          {
+            "trigger": "Salary figure not visible on university pages",
+            "message": "The pay grade is set per position in the advertisement and contract, using the Norwegian state pay scale, so read the individual vacancy rather than relying on a single programme-wide figure."
+          },
+          {
+            "trigger": "Teaching duties in some positions",
+            "message": "Some PhD positions include a fourth year of required duties, usually teaching, which is detailed in the employee contract."
+          }
+        ],
+        "submission_workflow": [
+          "Identify a research group and contact a potential supervisor early",
+          "Agree the project outline with the main supervisor",
+          "Confirm the funding arrangement for the full three (or four) year period",
+          "Prepare documents, including NOKUT or foreign-education assessment",
+          "Apply to the specific vacancy before that advertisement's deadline",
+          "The application is sent through the department to the faculty",
+          "Complete the coursework (at least 30 ECTS) and the doctoral thesis within the employed period"
+        ]
+      },
+      "programme_detail_verification": {
+        "cycle_verified": "Continuous year-round PhD recruitment at NTNU; verified 2026-10-04",
+        "verification_confidence": 0.9,
+        "official_fields_confirmed": [
+          "employment rather than scholarship status of PhD positions",
+          "salaried employment as PhD research fellow (stipendiat)",
+          "continuous year-round acceptance",
+          "academic entry requirements including the B-average",
+          "funding plan as an absolute requirement",
+          "standard three-year full-time duration with optional fourth year of duties",
+          "vacancy channels (NTNU pages and jobbnorge.no)",
+          "official logo"
+        ],
+        "institution_check_required": [
+          "Salary grade and amount for any specific position - not published on the university-level pages",
+          "Individual vacancy deadlines and programme-specific requirements",
+          "Whether a given position is open to all nationalities"
+        ],
+        "unverified_or_removed_claims": [
+          "funding_amount - NTNU publishes no salary figure on these pages, so funding_amount stays null",
+          "deadline_date - no programme-wide deadline exists",
+          "region was missing in the stored record and has been set to Europe",
+          "The stored official_source_url returns HTTP 404; the live pages are reported in research_notes.url_observed"
+        ],
+        "source_citations": [
+          "https://www.ntnu.edu/phd",
+          "https://www.ntnu.edu/phd/admission-and-financing",
+          "https://www.ntnu.edu/vacancies"
+        ],
+        "researched_by": "w1_28"
+      },
+      "logo_override": {
+        "url": "https://www.ntnu.edu/o/ntnu-theme/images/ntnu-logo-web-v1.svg",
+        "page_url": "https://www.ntnu.edu/phd",
+        "official_host": true,
+        "alt_text": "NTNU – Norwegian University of Science and Technology logo",
+        "validation_result": "verified",
+        "validation_detail": "svg 779.67x148.06 viewBox, probed 2026-10-04 - HTTP 200 with image/svg+xml content type; NTNU wordmark paths use fill #231f20 (near-black) and the NTNU mark uses fill #00509e (NTNU blue), i.e. dark/colour on transparent, legible on a light card",
+        "image_kind": "official_logo",
+        "image_format": "svg",
+        "verified_at": "2026-10-04T00:00:00+00:00",
+        "host_evidence": "same_registrable_domain",
+        "_award": "NTNU PhD Positions (Salaried Employment)"
+      },
+      "research_notes": {
+        "logo": "Found in NTNU's own page markup: both https://www.ntnu.edu/phd and https://www.ntnu.edu/vacancies load the masthead logo <span class=\"NTNU Home\" src=\"/o/ntnu-theme/images/ntnu-logo-web-v1.svg\"> and the footer uses /o/ntnu-theme/images/logo_ntnu_tag_english.svg. I probed ntnu-logo-web-v1.svg: HTTP 200, real image/svg+xml, wordmark fill #231f20 (near-black) with the NTNU blue mark #00509e - dark on transparent, so accepted. No third-party host involved. The stored image (ntnu.edu/documents/139226/.../Vacancies_photo.jpg, alt 'Two young researchers in lab') is a photograph of researchers, not the official logo - rejected.",
+        "unverified": [
+          "Salary grade and amount for any specific PhD position",
+          "Individual vacancy deadlines and programme-specific entry requirements",
+          "Whether particular positions restrict nationality or residency"
+        ],
+        "substitution": null,
+        "official_pages_read": [
+          "https://www.ntnu.edu/vacancies",
+          "https://www.ntnu.edu/phd",
+          "https://www.ntnu.edu/phd/admission-and-financing"
+        ],
+        "degree_level_confirmed": "ntnu.edu/phd states 'A PhD degree is the highest level of formalized education in Norway' and the doctoral education 'is structured in various PhD programmes'; ntnu.edu/phd/admission-and-financing states 'To be accepted to a PhD-programme at NTNU, you must have: a funding plan; completed at least five years of higher education that includes a master's degree or other equivalent degree.'",
+        "url_observed": "https://www.ntnu.edu/vacancies",
+        "contradictions": [
+          "The stored official_source_url https://www.ntnu.edu/jobs is dead: webfetch returned HTTP 404. NTNU's live equivalents are https://www.ntnu.edu/vacancies (vacancies, including the 'Vacancies Portlet' listing PhD positions) and https://www.ntnu.edu/phd (doctoral programme pages). The stored URL is retained as the row identity per the brief and the live URLs are recorded here and in official_updates_url/catalogue_url.",
+          "Stored deadline_display 'Year-round (positions advertised individually)' with deadline_precision 'varies' is imprecise: NTNU states acceptance is done continuously throughout the academic year, so precision corrected to 'rolling'.",
+          "Stored funding 'Fully Funded (Salaried Employment)' confirmed by NTNU: 'PhD candidates in Norway are not considered students and PhD candidates are usually employees of the institution from which they receive their funding' and 'Most PhD candidates at NTNU are employed as PhD research fellows (stipendiat).' However fully_funded is recorded with the employment-obligation caveat in funding_label because this is a job, not a grant.",
+          "Stored current_image_url is a photograph of two researchers in a lab (ntnu.edu/documents/139226/1106930/Vacancies_photo.jpg), not the official logo. Replaced with NTNU's own SVG logo.",
+          "Stored region was null; set to Europe."
+        ],
+        "skeleton": false
+      }
+    },
+    {
+      "target_id": 279,
+      "outcome": "unreachable",
+      "confirm": false,
+      "confirmation_evidence": "The stored official page https://www.uhr.no/programmes-and-agreements/norpart-norwegian-partnership-programme returns HTTP 404, and uhr.no is no longer the awarding body at all: the live uhr.no English homepage identifies the organisation as 'Universities Norway (UHR)' / 'Universitets- og høgskolerådet (UHR)', Hammersborg torg 3, 0179 Oslo, organisational number 917 697 825. No official NORPART page was reachable, so nothing about this award could be confirmed.",
+      "new_scholarship": {
+        "name": "NORPART – Norwegian Partnership Programme",
+        "legacy_titles": ["NORPART – Norwegian Partnership Programme"],
+        "country": "Norway",
+        "degree_levels": "Master's, PhD",
+        "funding_type": "Fully Funded",
+        "official_source": "Norwegian Directorate for Higher Education and Skills (HK-dir)",
+        "official_source_url": "https://www.uhr.no/programmes-and-agreements/norpart-norwegian-partnership-programme",
+        "status": "upcoming",
+        "is_verified": false,
+        "last_verified_date": "2026-10-04",
+        "region": null,
+        "program_type": "Government scholarship programme for study in Norway",
+        "description": "Stored record retained without correction because the awarding body's own website could not be reached on 2026-10-04. The stored official page returned HTTP 404, and the host uhr.no now belongs to Universities Norway (UHR), a different organisation from the Norwegian Directorate for Higher Education and Skills (HK-dir) named as the awarding body in the stored record. The programme's funding, deadlines and eligibility could not be verified and a human should re-point this row at the current official programme page before it is promoted to verified."
+      },
+      "programme_detail_official": {
+        "official_source_urls": [],
+        "application_link": null,
+        "official_updates_url": null,
+        "catalogue_url": null,
+        "application_cycle": null,
+        "deadline_central": null,
+        "deadline_central_display": null,
+        "deadline_central_timezone": null,
+        "deadline_note": "No official NORPART page could be opened on 2026-10-04, so no deadline wording could be read. The stored deadline_display '15 October 2026' remains unverified and must not be treated as an official figure.",
+        "status": "UPCOMING",
+        "status_note": "Status placeholder only. The stored status was 'open' with a 15 October 2026 deadline; this could not be confirmed against any official page and no official cycle information was readable.",
+        "funding_amount": null,
+        "funding_currency": null,
+        "funding_period": null,
+        "funding_duration": null,
+        "tuition_coverage": null,
+        "tuition_coverage_note": "Not verifiable - the awarding body's page could not be opened.",
+        "living_cost_coverage": null,
+        "travel_coverage": null,
+        "fully_funded": false,
+        "funding_label": "Unverified. The stored record claims full funding but no official page could be read on 2026-10-04, so no funding claim can be confirmed.",
+        "benefits": [],
+        "eligibility": [],
+        "citizenship_residency": null,
+        "international_eligibility": null,
+        "degree_levels": [],
+        "study_mode": null,
+        "research_requirement": null,
+        "subject_or_agency_requirement": null,
+        "application_method": null,
+        "application_route": null,
+        "requirements": [],
+        "documents": [],
+        "english_requirement": null,
+        "english_requirement_note": "No official page could be opened.",
+        "selection_criteria": [],
+        "selection_weighting": null,
+        "duration": null,
+        "award_holder_conditions": [],
+        "supplements_or_initiatives": [],
+        "official_contacts": {},
+        "description": "NORPART – Norwegian Partnership Programme, stored in the database as a fully funded Master's and PhD scholarship from the Norwegian Directorate for Higher Education and Skills (HK-dir). No official page could be opened on 2026-10-04: the stored URL returns HTTP 404 and uhr.no now hosts Universities Norway (UHR), a different organisation from the awarding body named in the stored record.",
+        "program_type": null,
+        "region": null,
+        "coverage": null,
+        "last_verified_date": "2026-10-04"
+      },
+      "programme_detail_applicant_utility": {
+        "application_readiness_checklist": [
+          "Do not rely on this record until the official NORPART page has been located and the awarding body confirmed",
+          "Check whether NORPART is now administered by the Directorate for Higher Education and Skills (HK-dir) rather than by Universities Norway (UHR)",
+          "Confirm the current application portal, deadline and eligible institutions directly with the administering agency before applying"
+        ],
+        "common_rejection_risks": [
+          "The stored official page is dead (HTTP 404), so any deadline taken from this record may be wrong",
+          "The stored record attributes the award to HK-dir but points at uhr.no, which is now Universities Norway - a provenance error that can send applicants to the wrong organisation",
+          "NORPART eligibility is typically tied to specific partner institutions and nationalities, none of which could be verified here"
+        ],
+        "estimated_uncovered_costs": [
+          "Cannot be estimated: no official coverage or stipend information was readable"
+        ],
+        "document_audit": [
+          "Cannot be audited: no official document list was readable"
+        ],
+        "alerts": [
+          {
+            "trigger": "Stored deadline of 15 October 2026 is unverified",
+            "message": "That date comes from the stored record only, not from an official page. Confirm it with HK-dir before relying on it."
+          },
+          {
+            "trigger": "Wrong awarding-body host",
+            "message": "uhr.no is Universities Norway (UHR) as of 2026-10-04, not the Directorate for Higher Education and Skills. Treat the uhr.no NORPART URL as invalid."
+          }
+        ],
+        "submission_workflow": [
+          "Locate the current official NORPART programme page on the administering agency's own domain",
+          "Confirm the eligible partner institutions and applicant categories",
+          "Note the current application deadline and portal from that page",
+          "Only then treat this row as actionable"
+        ]
+      },
+      "programme_detail_verification": {
+        "cycle_verified": "Not verified - no official NORPART page could be opened on 2026-10-04",
+        "verification_confidence": 0.3,
+        "official_fields_confirmed": [],
+        "institution_check_required": [
+          "Confirm the current administering agency and official NORPART page, expected to be on the Directorate for Higher Education and Skills (HK-dir) domain rather than uhr.no",
+          "Confirm the application deadline for the next cycle",
+          "Confirm funding scope (tuition, living stipend, travel) and eligible partner institutions",
+          "Re-point official_source_url if the programme has genuinely moved, noting that a URL change risks creating a duplicate row"
+        ],
+        "unverified_or_removed_claims": [
+          "deadline '15 October 2026' - unverified, no official page readable",
+          "funding_type 'Fully Funded' - unverified",
+          "degree levels 'Master's, PhD' - unverified",
+          "region was missing in the stored record and remains null",
+          "current funding amount was null in the stored record and remains null"
+        ],
+        "source_citations": [
+          "https://www.uhr.no/en"
+        ],
+        "researched_by": "w1_28"
+      },
+      "logo_override": null,
+      "research_notes": {
+        "logo": "null. The awarding body's site could not be reached at all (four URL attempts all returned HTTP 404: uhr.no/programmes-and-agreements/norpart-norwegian-partnership-programme, uhr.no/en/norpart, uhr.no/norpart, hkdir.no/en/norpart, plus hkdir.no/en/topics/international-cooperation/norpart). uhr.no does carry an official logo image (https://www.uhr.no/handlers/bv.ashx/if155874a-4c24-430c-ac06-af27d016897b/uhr_logo_eng_positiv.jpg) but that is the mark of Universities Norway (UHR), which is NOT the body named as the awarding body for NORPART, so using it would be exactly the provenance error the brief bans. Wikimedia and aggregator copies were not considered. logo_override is null.",
+        "unverified": [
+          "Everything: deadline, funding amount, degree levels, eligibility, partner institutions, application route and contacts"
+        ],
+        "substitution": null,
+        "official_pages_read": [
+          "https://www.uhr.no/en"
+        ],
+        "degree_level_confirmed": null,
+        "url_observed": null,
+        "contradictions": [
+          "PROVENANCE ERROR: the stored record names the Norwegian Directorate for Higher Education and Skills (HK-dir) as the awarding body but stores an uhr.no URL. On 2026-10-04 uhr.no identifies itself as 'Universities Norway (UHR)' / 'Universitets- og høgskolerådet (UHR)', organisational number 917 697 825, Hammersborg torg 3, 0179 Oslo - a different organisation. UHR is a university interest and policy body, not the state directorate that runs NORPART.",
+          "The stored official_source_url returns HTTP 404.",
+          "The stored deadline_display '15 October 2026' and deadline_precision 'varies' could not be checked against any official page and remain unverified.",
+          "The stored funding_type 'Fully Funded' could not be verified."
+        ],
+        "skeleton": false
+      }
+    }
+  ]
+}

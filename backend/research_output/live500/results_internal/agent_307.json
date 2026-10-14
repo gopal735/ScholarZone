@@ -1,0 +1,128 @@
+{
+  "agent": "agent_307",
+  "records": [
+    {
+      "id": 688,
+      "official": {
+        "official_source_urls": [
+          "https://secihti.mx/convocatoria/becas-nacionales/convocatoria-becas-nacionales-de-inclusion-2026",
+          "https://secihti.mx/wp-content/uploads/2026/02/TDR_ByAMJF2026-20260223T170825.pdf",
+          "https://secihti.mx/wp-content/uploads/2026/02/TDR_ACPI2026-20260223T170915.pdf",
+          "https://secihti.mx/wp-content/uploads/2026/02/TDR_ACDISC2026-20260223T171127.pdf"
+        ],
+        "application_link": "https://secihti.mx/convocatoria/becas-nacionales/convocatoria-becas-nacionales-de-inclusion-2026",
+        "catalogue_url": "https://secihti.mx/convocatoria_categoria/becas-nacionales",
+        "official_updates_url": "https://secihti.mx/convocatoria/becas-nacionales/convocatoria-becas-nacionales-de-inclusion-2026",
+        "deadline_central": null,
+        "deadline_central_display": "Main page: applications received 29 June - 25 September 2026, 23:59 CDMX; track calendars in the Terminos de Referencia end earlier - Track A: 6 July - 27 August 2026; Tracks B and C: 10 August - 17 September 2026 (all now closed)",
+        "deadline_note": "Three Avisos adjusted the calendars: Primer Aviso (18 August 2026) for Track A, and Segundo and Tercer Avisos (17 September 2026) for Tracks B and C; none extended reception past 25 September 2026.",
+        "application_cycle": "2026 cycle",
+        "status": "CLOSED",
+        "status_note": "The official page still displays 'Estatus de la convocatoria: Abierta', but every published reception window closed on or before 25 September 2026, so the status label is stale.",
+        "tuition_coverage_note": "The Terminos de Referencia publish no tuition (colegiatura) coverage; Track A's one-off MXN 20,000 support covers operating expenses of the study programme such as inscription, materials and transport, and Tracks B/C cover operating, research, titulacion and assistive-device expenses.",
+        "funding_amount": null,
+        "funding_currency": "MXN",
+        "funding_period": null,
+        "tuition_coverage": false,
+        "living_cost_coverage": null,
+        "travel_coverage": null,
+        "fully_funded": false,
+        "benefits": [
+          "Track A (Becas de Licenciatura para Jefas de Familia): monthly economic support of MXN 4,500; annual MXN 2,000 for scholastic materials (August or September each year); one-off MXN 20,000 for operating expenses of the study programme (inscription, materials, transport); ISSSTE medical service",
+          "Track B (Apoyos Complementarios para Personas Indigenas): MXN 20,000 for study-programme operating expenses; MXN 15,000 for research-project operating expenses; up to MXN 15,000 for titulacion procedures - paid in a single exhibition",
+          "Track C (Apoyos Complementarios para Personas con Discapacidad): MXN 20,000 operating; MXN 15,000 research; up to MXN 15,000 titulacion; MXN 15,000 for assistive devices, technical aids and support systems - paid in a single exhibition"
+        ],
+        "eligibility": [
+          "Track A: Mexican woman who is the main or only economic provider of her family, responsible for the upkeep of at least one child under 18 (or an adult child with a disability), enrolled in a presencial licenciatura or tecnico superior universitario programme at a public IES",
+          "Track B: Mexican national, self-identified indigenous, holding a current SECIHTI beca de posgrado nacional",
+          "Track C: Mexican national with a disability, holding a current SECIHTI beca de posgrado nacional"
+        ],
+        "requirements": [
+          "Complete the SECIHTI online application process per the published user manuals (Proceso de Solicitud de Becas y Apoyos Complementarios Nacionales Inclusion 2026)",
+          "Track A: submit the official application format Formato MBP-MJF; Tracks B/C: apply through the BECAS platform per the published guides",
+          "Register a bank account through the SECIHTI procedure before any payment (Proceso de Registro de Cuentas Bancarias)",
+          "Meet the specific requirements of the relevant Terminos de Referencia"
+        ],
+        "documents": [
+          "Track A: birth certificate of children under 18; for adult children with a disability, their birth certificate plus a current official disability ID (both sides) issued by SNDIF; proof of non-marriage, dissolution of marriage, judicial resolution or acta de madre jefa de familia; sworn statement (per the official format) of being the main or only provider",
+          "Track B: constancia of belonging to an indigenous community (issued by traditional indigenous authorities, community representatives or municipal authorities, stating origin, self-identification, ethnicity, community, municipality and state); for the research support, a registered research project certificate on institutional letterhead with programme coordinator signature and institutional seal",
+          "Track C: copy of a current official disability ID (both sides) issued by SNDIF; for the research and titulacion supports, the registered project / titulacion procedures certificate on institutional letterhead with coordinator signature and institutional seal"
+        ],
+        "selection_criteria": null,
+        "coverage": [
+          "Track A: monthly economic support MXN 4,500; annual scholastic materials MXN 2,000; one-off study-programme operating expenses MXN 20,000 (inscription, materials, transport); ISSSTE medical service; validity 6 to 48 months set by the Carta de Asignacion (Anexo Uno)",
+          "Track B: MXN 20,000 study-programme operating expenses; MXN 15,000 research-project operating expenses; up to MXN 15,000 titulacion procedures; single payment",
+          "Track C: MXN 20,000 study-programme operating expenses; MXN 15,000 research-project operating expenses; up to MXN 15,000 titulacion procedures; MXN 15,000 assistive devices and technical aids; single payment"
+        ],
+        "application_method": [
+          "Apply online through the SECIHTI BECAS platform following the published user manuals for the Inclusion 2026 process",
+          "Tracks B/C: upload the community or disability evidence and, where applicable, the registered research project or titulacion certificate",
+          "Register the bank account through the published procedure before formalisation and payment",
+          "Formalise the scholarship (Convenio de Asignacion de Beca and Anexo Uno) within the published formalisation window"
+        ],
+        "application_route": "Online application via the SECIHTI BECAS platform under the relevant Termino de Referencia, followed by formalisation and bank-account registration before payment.",
+        "study_mode": null,
+        "citizenship_residency": "All three tracks require Mexican nationality (de nacionalidad mexicana).",
+        "international_eligibility": "No - the scheme is restricted to Mexican nationals.",
+        "subject_or_agency_requirement": "Track A: presencial licenciatura or tecnico superior universitario at public higher education institutions (IES). Tracks B and C: holders of a current SECIHTI beca de posgrado nacional.",
+        "research_requirement": "Tracks B and C: a registered research project on institutional letterhead is required for the MXN 15,000 research support.",
+        "duration": "Track A: minimum 6 and maximum 48 months, determined by the duration of the study programme; only the remaining time is funded if the programme began before the call window. Tracks B and C: paid in a single exhibition.",
+        "description": "The SECIHTI Becas Nacionales de Inclusion 2026 convocatoria groups three tracks: bachelor's scholarships for Mexican women who head their families (Track A), and complementary supports for Mexican indigenous people (Track B) and Mexican people with disabilities (Track C) who already hold a SECIHTI national postgraduate scholarship, each governed by its published Terminos de Referencia.",
+        "region": "Latin America",
+        "program_type": "Government scholarship and complementary support programme (national inclusion)",
+        "english_requirement": null
+      },
+      "verification": {
+        "source_citations": [
+          "https://secihti.mx/convocatoria/becas-nacionales/convocatoria-becas-nacionales-de-inclusion-2026",
+          "https://secihti.mx/wp-content/uploads/2026/02/TDR_ByAMJF2026-20260223T170825.pdf",
+          "https://secihti.mx/wp-content/uploads/2026/02/TDR_ACPI2026-20260223T170915.pdf",
+          "https://secihti.mx/wp-content/uploads/2026/02/TDR_ACDISC2026-20260223T171127.pdf"
+        ],
+        "last_verified_date": "2026-10-10",
+        "verification_status": "confirmed",
+        "confidence": "high",
+        "not_confirmed": [
+          "funding_amount as a single figure - the three tracks publish different amounts (Track A: MXN 4,500 monthly plus MXN 2,000 annual and MXN 20,000 one-off; Tracks B/C: MXN 20,000 + MXN 15,000 + up to MXN 15,000, plus MXN 15,000 devices in Track C)",
+          "funding_period - varies by track (monthly for Track A; single exhibition for Tracks B and C)",
+          "living_cost_coverage - the Terminos de Referencia do not describe the Track A monthly support as living-cost coverage",
+          "travel_coverage - not published",
+          "english_requirement",
+          "selection_criteria - the pages and Terminos de Referencia do not publish selection criteria",
+          "next-cycle dates - none published"
+        ],
+        "notes": "Read the official convocatoria page (period 2026, status label 'Abierta', publication 23 February 2026, reception 29 June - 25 September 2026 23:59 CDMX, three Avisos, document links) and downloaded and text-extracted the three Terminos de Referencia PDFs from the SECIHTI domain, which carry the amounts, requirements, documentation, validity and track calendars."
+      },
+      "applicant_utility": {
+        "summary": "This is three different programmes behind one page, and your route depends entirely on which track fits you: Mexican women heading a household apply for the Track A bachelor's scholarship (MXN 4,500 a month, MXN 2,000 a year for materials, a one-off MXN 20,000, plus ISSSTE medical cover), while Tracks B and C top up scholars who already hold a SECIHTI national postgraduate scholarship with one-off payments of MXN 20,000, MXN 15,000 and up to MXN 15,000 (plus MXN 15,000 for assistive devices under Track C). The 2026 windows have all closed and the page's 'Abierta' label is stale, so use the current cycle to assemble the awkward papers - community or disability certifications, registered research projects and family-status proofs - because those, not the form, are what slow applicants down. Banking registration and formalisation through the BECAS platform are mandatory steps before any payment lands.",
+        "best_fit": "Mexican single mothers who are their family's main earners and are starting or finishing a public-university bachelor's degree (Track A), and current SECIHTI postgraduate scholars who identify as indigenous (Track B) or have a disability (Track C).",
+        "application_readiness_checklist": [
+          "Identify your track first and download its Termino de Referencia PDF from the convocatoria page - the amounts, requirements and calendars differ per track",
+          "Track A: gather children's birth certificates, SNDIF disability ID for adult children with disabilities, marital-status proof and the sworn provider statement in the official format",
+          "Tracks B/C: request the indigenous-community constancia or SNDIF disability ID early, plus the signed and sealed institutional certificate of your registered research project or titulacion procedures",
+          "Register your bank account through the SECIHTI procedure and complete formalisation (CAB and Anexo Uno) inside the published window",
+          "Diarise the report deadline: the FAC-MMJF, FAC-PI or FAC-PDISC format is due to becasinclusion@secihti.mx by 31 January 2027"
+        ],
+        "common_rejection_risks": [
+          "Filing under the wrong track - Tracks B and C require an active SECIHTI beca de posgrado nacional, and Track A requires a presencial programme at a public IES",
+          "Community or disability certifications that lack the required signatories or institutional seal",
+          "Applying for the research (Apoyo 2) and titulacion (Apoyo 3) supports at the same time - the Terminos de Referencia forbid simultaneous requests",
+          "Missing the formalisation window or leaving bank-account registration unpaid/unregistered, which blocks payment"
+        ],
+        "estimated_uncovered_costs": "Tuition is not covered by these tracks (Track A's one-off MXN 20,000 covers inscription, materials and transport as operating expenses), and living costs beyond Track A's MXN 4,500 monthly support, research costs beyond the published rubros, and travel are self-funded.",
+        "document_audit": [
+          "Track B's community constancia must come from recognised indigenous traditional authorities, community representatives or municipal authorities and state origin, self-identification, ethnicity, community, municipality and state",
+          "Track C requires a current SNDIF disability ID, both sides",
+          "Research-project certificates must be on institutional letterhead with the programme coordinator's signature and institutional seal, and include the registration date and activity schedule",
+          "Once the inconsistency window closes, no changes or additions to a submitted application are accepted"
+        ],
+        "alerts": [
+          "The official page's 'Abierta' status is stale: all 2026 reception windows closed by 25 September 2026 at the latest",
+          "Three Avisos (18 August and two on 17 September 2026) moved track calendars - always read the Aviso PDFs before relying on dates",
+          "Track A validity runs 6 to 48 months and cannot be extended; only the remaining study time is funded if you started before the window"
+        ],
+        "submission_workflow": "Online application in the SECIHTI BECAS platform under your track's Termino de Referencia, an inconsistency-correction stage, then formalisation (CAB plus Anexo Uno) and bank-account registration before the single or monthly payment is released."
+      }
+    }
+  ]
+}

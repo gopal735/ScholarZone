@@ -1,0 +1,30 @@
+{
+  "note": "do_add() inserts only status open|upcoming. These records carry an honest current-cycle status of closed/upcoming-superseded, so they cannot be inserted as-is. For an award that recurs annually, setting status \"upcoming\" catalogues it correctly and the next-cycle expectation belongs in status_note. Confirm each award really recurs before flipping it; if it has lapsed for good, drop it instead of cataloguing it.",
+  "count": 2,
+  "records": [
+    {
+      "name": "Exemption from Tuition Fees for International Students under the Heidelberg University Charter of 28 July 2017",
+      "current_status": "closed",
+      "suggested_status": "upcoming",
+      "deadline_date": null,
+      "deadline": "Applications must have reached the university by \"15 July for the following winter semester / 15 January for the following summer semester\" (date of receipt). The charter calls this an exclusion deadline (Ausschlussfrist).",
+      "application_cycle": "Recurring twice-yearly cycle with fixed recurring deadlines; as at 2026-10-03 the winter semester 2026/27 round closed on 15 July 2026 and the next round, for the summer semester 2027, closes on 15 January 2027",
+      "status_note": "The winter semester 2026/27 application round closed on 15 July 2026, before the verification date of 2026-10-03, so the current cycle is closed. The scheme itself is a standing entitlement with no intake limit: the next round, for the summer semester 2027, closes on 15 January 2027, and the following winter semester 2027/28 round closes on 15 July 2027. Decisions on the summer semester round are notified in March 2027, and on the winter semester round in August.",
+      "has_next_cycle_expectation": true,
+      "rationale": "do_add() accepts only open/upcoming. If this award recurs annually, set status \"upcoming\" so it can be catalogued; the next-cycle expectation must already be in status_note. If it has genuinely lapsed for good, it does not belong in the catalogue at all.",
+      "decision": "PENDING"
+    },
+    {
+      "name": "K.C. Kuok Scholarship",
+      "current_status": "closed",
+      "suggested_status": "upcoming",
+      "deadline_date": "2026-07-20",
+      "deadline": "Applications will open 5 June and close 20 July 2026. All applicants will be advised of the outcome of their application by week beginning 17th August 2026.",
+      "application_cycle": "2027 entry; one scholarship available in 2026 for commencement in February 2027. Applications opened 5 June 2026 and closed 20 July 2026; outcomes advised by week beginning 17 August 2026.",
+      "status_note": "The published application window (5 June to 20 July 2026) closed before the verification date of 2026-10-03, and Monash has already advised all applicants of the outcome for the week beginning 17 August 2026. This is an annual award, so a 2027 round for February 2028 commencement is expected on the same June-to-July window, but Monash has not published those dates and no date is inferred here.",
+      "has_next_cycle_expectation": true,
+      "rationale": "do_add() accepts only open/upcoming. If this award recurs annually, set status \"upcoming\" so it can be catalogued; the next-cycle expectation must already be in status_note. If it has genuinely lapsed for good, it does not belong in the catalogue at all.",
+      "decision": "PENDING"
+    }
+  ]
+}

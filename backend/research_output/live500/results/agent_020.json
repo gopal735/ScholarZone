@@ -1,0 +1,148 @@
+{
+  "agent": "agent_020",
+  "records": [
+    {
+      "id": 64,
+      "official": {
+        "official_source_urls": [
+          "https://isss.uoregon.edu/icsp",
+          "https://isss.uoregon.edu/icsp/application",
+          "https://isss.uoregon.edu/scholarships",
+          "https://isss.uoregon.edu/financial-need-verification-process-international-students",
+          "https://admissions.uoregon.edu/undergraduate/find-your-path/international/students/"
+        ],
+        "application_link": "https://isss.uoregon.edu/icsp/application",
+        "catalogue_url": "https://isss.uoregon.edu/scholarships",
+        "official_updates_url": "https://isss.uoregon.edu/scholarships",
+        "deadline_central": "2027-02-01",
+        "deadline_central_display": "1 February 2027",
+        "deadline_note": "Applications and all reference letters must be submitted by February 1, 2027 at 4:00 p.m. (PST). The ICSP application page still displays the previous cycle's dates (February 13, 2026); the main ICSP page and the ISSS scholarships page both state February 1, 2027. New students must first apply for admission to UO, whose first-year regular application deadline is January 15.",
+        "application_cycle": "Round closing 1 February 2027 at 4:00 p.m. PST (fall-entry cycle; UO first-year regular admission deadline is January 15)",
+        "status": "OPEN",
+        "status_note": "The ICSP page states the application deadline as February 1, 2027 at 4:00 p.m. (PST), and the ISSS scholarships page invites applicants to 'Apply by February 1, 2027' with a live 'Go to Scholarship Dashboard' link.",
+        "tuition_coverage_note": "Official wording: 'ICSP recipients receive a scholarship covering approximately half their tuition' and 'Selected ICSP students are granted a partial tuition-waiver scholarship that is renewable annually until the completion of a UO degree'. UO Admissions describes it as 'a partial tuition scholarship. Scholarships apply to tuition only'.",
+        "funding_amount": null,
+        "funding_currency": null,
+        "funding_period": "per year",
+        "tuition_coverage": true,
+        "living_cost_coverage": false,
+        "travel_coverage": false,
+        "fully_funded": false,
+        "benefits": [
+          "A scholarship covering approximately half of tuition (partial tuition-waiver scholarship)",
+          "Renewable annually until the completion of a UO degree, contingent upon fulfilling ICSP program requirements",
+          "All students are trained to make public presentations to diverse audiences",
+          "Cultural service may include participating in international campus events",
+          "Applying for ICSP also submits you for the ISSS Endowed Scholarships through the same application"
+        ],
+        "eligibility": [
+          "Applicants must be admissible or fully admitted to the University of Oregon",
+          "New students must apply for admission to the UO for fall entry by January 15",
+          "Applicants cannot be U.S. citizens, U.S. permanent residents, or eligible to receive U.S. federal financial assistance",
+          "Applicants must demonstrate sufficient financial resources in addition to the scholarship",
+          "Applicants must meet the minimum 3.5 cumulative GPA requirement"
+        ],
+        "requirements": [
+          "Apply for admission to the University of Oregon before applying for the scholarship",
+          "Retrieve the UO Student ID (95xxxxxxx) from the Admissions Status Portal within 3 days of applying, and use it to create a UO Scholarship Dashboard account",
+          "Submit the Profile, ISSS Endowed Scholarships Application and ICSP Scholarship Application by the deadline (one application for both scholarships)",
+          "Ensure all reference letters are submitted by the deadline",
+          "Meet the minimum 3.5 cumulative GPA requirement",
+          "Complete 66-80 hours of cultural service each year",
+          "Maintain sufficient financial resources in addition to the scholarship"
+        ],
+        "documents": [
+          "University of Oregon admission application (Oregon application or Common Application)",
+          "UO Student ID (95xxxxxxx) from the Admissions Status Portal, used to open a UO Scholarship Dashboard account",
+          "Profile, ISSS Endowed Scholarships Application and ICSP Scholarship Application submitted in the dashboard",
+          "Reference letters submitted by the deadline",
+          "Statement of Financial Need completed and emailed to intl@uoregon.edu (in lieu of the FAFSA)",
+          "Academic transcripts and TOEFL, IELTS or Duolingo English Test results as required by UO international admissions"
+        ],
+        "selection_criteria": [
+          "Demonstrated financial need",
+          "Experience participating in cultural activities",
+          "Demonstrated performance and presentation skills",
+          "Strong academic records",
+          "Strong communication skills"
+        ],
+        "coverage": [
+          "Tuition only: a scholarship covering approximately half of the student's tuition",
+          "Cultural service in exchange: 66-80 hours per year, which may involve speaking or demonstrating aspects of the student's country's heritage and culture to schools or community groups, or participating in international campus events"
+        ],
+        "application_method": [
+          "Apply for admission to the University of Oregon (Oregon application or Common Application)",
+          "Find the UO Student ID (95xxxxxxx) in the Admissions Status Portal within 3 days of applying for admission",
+          "Use that ID to create a UO Scholarship Dashboard account and submit the Profile, ISSS Endowed Scholarships Application and ICSP Scholarship Application (one application for both)",
+          "Confirm all reference letters are submitted by the deadline"
+        ],
+        "application_route": "Single online application via the UO Scholarship Dashboard (Profile + ISSS Endowed Scholarships + ICSP), filed after applying for admission to UO.",
+        "study_mode": "Full-time (international students on F-1 visas must maintain full-time enrollment; undergraduates need a minimum of 12 quarter credits)",
+        "citizenship_residency": "Applicants cannot be U.S. citizens, U.S. permanent residents, or eligible to receive U.S. federal financial assistance.",
+        "international_eligibility": "Open to international students admissible or admitted to the University of Oregon; U.S. citizens, permanent residents and students eligible for U.S. federal financial aid are excluded. New and continuing international students may apply.",
+        "subject_or_agency_requirement": null,
+        "research_requirement": null,
+        "duration": "Renewable annually until the completion of a UO degree, contingent upon fulfilling ICSP program requirements",
+        "description": "The International Cultural Service Program brings together selected University of Oregon international students who act as cross-cultural ambassadors in the Eugene-Springfield area. Selected students receive a partial tuition-waiver scholarship covering approximately half their tuition, renewable annually until the completion of a UO degree, and in return complete 66-80 hours of cultural service per year by leading presentations about their home culture in local schools and community organizations.",
+        "region": "North America - University of Oregon, Eugene, Oregon (service delivered in the Eugene-Springfield area)",
+        "program_type": "Partial tuition-waiver scholarship with a cultural service (presentation) commitment",
+        "english_requirement": "The ICSP pages publish no English test score. Per UO international undergraduate admissions, applicants whose native language is not English must submit standardized language test results (TOEFL, IELTS or Duolingo English Test; UO institutional TOEFL code 4846), though conditional admission may be offered; scores are valid for two years and results should be submitted at least 12 weeks before International Student Orientation."
+      },
+      "verification": {
+        "source_citations": [
+          "https://isss.uoregon.edu/icsp",
+          "https://isss.uoregon.edu/icsp/application",
+          "https://isss.uoregon.edu/scholarships",
+          "https://isss.uoregon.edu/financial-need-verification-process-international-students",
+          "https://admissions.uoregon.edu/undergraduate/find-your-path/international/students/"
+        ],
+        "last_verified_date": "2026-10-10",
+        "verification_status": "confirmed",
+        "confidence": "high",
+        "not_confirmed": [
+          "funding_amount (no dollar figure published; official wording is 'approximately half their tuition')",
+          "funding_currency (no dollar figure published)",
+          "travel_coverage (no travel or installation allowance mentioned)",
+          "specific TOEFL/IELTS/Duolingo minimum score thresholds (thresholds sit on UO's English proficiency subpage, not on the ICSP pages)",
+          "whether the scholarship extends to graduate students in the current cycle (official wording is 'new and continuing international students'; programme members listed include both undergraduate and graduate majors)"
+        ],
+        "notes": "Award value verified from the awarding body's own ICSP pages as a partial tuition waiver of approximately half of tuition, renewable annually, with no published dollar amount. The $5,600 average on the ISSS scholarships page is an ISSS-wide average across all scholarships, not an ICSP figure, and was not used. Deadline of 1 February 2027 (4:00 p.m. PST) appears on both the ICSP page and the ISSS scholarships page; the ICSP application page still carries the prior cycle's 13 February 2026 date."
+      },
+      "applicant_utility": {
+        "summary": "ICSP waives roughly half of your UO tuition and renews each year until you finish one UO degree, but it pays nothing toward housing, food, insurance or travel, so you must still document funds for the other half of tuition plus living costs. Because selection weighs demonstrated financial need alongside academic record, your documented family finances matter as much as your grades, and the 3.5 GPA is a floor rather than a target. Treat the 66-80 annual service hours as real work: you will be presenting about your home culture to K-12 classes, elder care settings and community groups, so confidence in front of an audience is the deciding factor. Apply for admission first (January 15 regular deadline), then use the Student ID you receive within three days to open the Scholarship Dashboard and file the combined Profile/ISSS Endowed/ICSP application by 1 February at 4:00 p.m. PST.",
+        "best_fit": "International students at UO who are comfortable public speakers, want to represent their home culture in local schools, and can document both financial need and enough remaining resources to fund the rest of their degree.",
+        "application_readiness_checklist": [
+          "File the UO admission application (Oregon application or Common Application, $75 fee) ahead of the January 15 regular deadline.",
+          "Within 3 days of applying, retrieve the 95xxxxxxx UO Student ID from the Admissions Status Portal - the Scholarship Dashboard account cannot be created without it.",
+          "Ask referees early and confirm their letters are uploaded before the cut-off, not just your own form.",
+          "Prepare current bank statements or a financial certificate for the Statement of Financial Need and email it to intl@uoregon.edu; refresh it every year you reapply.",
+          "Have transcripts and TOEFL/IELTS/Duolingo scores ready at least 12 weeks before International Student Orientation.",
+          "Draft evidence of presentation and cultural-activity experience, since those are explicit selection criteria."
+        ],
+        "common_rejection_risks": [
+          "Missing the January 15 admission deadline, or letting the 3-day window lapse, so no Student ID and no scholarship application.",
+          "Reference letters arriving after 4:00 p.m. PST on 1 February, which invalidates an otherwise complete file.",
+          "Being unable to prove financial resources beyond the scholarship; applicants must show they can fund the uncovered share.",
+          "Falling below the 3.5 cumulative GPA, which both blocks selection and breaks annual renewal.",
+          "Thin evidence of performance and presentation skills, which the selection committee weights explicitly.",
+          "Applying while holding U.S. citizenship, permanent residency or eligibility for U.S. federal aid, all of which disqualify."
+        ],
+        "estimated_uncovered_costs": "Housing, meals, health insurance, transport and approximately the other half of tuition. ICSP covers tuition only and pays no living stipend, travel or installation allowance.",
+        "document_audit": [
+          "Official high school transcripts must be sent directly by the school; student-submitted copies are not accepted as official.",
+          "Financial documents must have been prepared within the last six months and must cover a full academic year of tuition and living expenses for the I-20/visa process.",
+          "The Statement of Financial Need must be re-sent to ISSS each year to stay eligible for these scholarships.",
+          "English test scores expire after two years, so an old result may need retaking.",
+          "English translations of transcripts must be literal and issued by the school, the education ministry or an NACES-accredited translator."
+        ],
+        "alerts": [
+          "Two deadlines circulate online: use 1 February 2027 (4:00 p.m. PST) from the ICSP and ISSS scholarship pages - the 13 February 2026 date on the application page is last cycle's.",
+          "Enrolment must stay full time (12+ quarter credits for undergraduates); part-time study is not permitted on an F-1 visa.",
+          "The waiver renews only while ICSP requirements, including the annual 66-80 service hours, continue to be met.",
+          "For in-person visits, the requesting school arranges transportation, so budget time for travel around Eugene-Springfield."
+        ],
+        "submission_workflow": "Admission application first, then Student ID within 3 days, then one combined Profile/ISSS Endowed/ICSP form in the Scholarship Dashboard, with reference letters and the Statement of Financial Need landing before the cut-off and ISSS notifying recipients afterwards."
+      }
+    }
+  ]
+}

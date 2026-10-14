@@ -1,0 +1,90 @@
+{
+ "agent": "agent_208",
+ "assignment_count": 1,
+ "scholarships": [
+  {
+   "id": 527,
+   "title": "Programa Portugal-Berkeley (Visiting Student Researchers at UC Berkeley)",
+   "country": "Portugal",
+   "degree": "PhD",
+   "funding_label": "Research Funding",
+   "status": "open",
+   "official_source": "Fundação para a Ciência e a Tecnologia (FCT), with FLAD and University of California, Berkeley",
+   "official_source_url": "https://www.fct.pt/concursos/programa-portugal-berkeley-1",
+   "application_link": "https://www.fct.pt/concursos/programa-portugal-berkeley-1",
+   "catalogue_url": null,
+   "official_updates_url": "https://www.fct.pt/concursos/programa-portugal-berkeley-1",
+   "existing": {
+    "funding_amount": null,
+    "funding_currency": null,
+    "funding_period": null,
+    "tuition_coverage": null,
+    "living_cost_coverage": null,
+    "travel_coverage": null,
+    "fully_funded": 0,
+    "description": "The Programa Portugal-Berkeley is an FCT call, run with FLAD and UC Berkeley, that supports doctoral students to spend a research stay as Visiting Student Researchers at UC Berkeley for up to six months. FCT launches the call to promote the internationalisation of Portuguese science and to foster research exchange between Portuguese universities and UC Berkeley in areas of mutual scientific interest. The selected candidate's home institution (CPS) is responsible for the administrative procedures to acquire the Visiting Student Researcher status and pays the University Services Fee, the DS-2019 visa processing fee and the Institute of European Studies administrative fees at UC Berkeley. The selected candidate must arrange and financially cover their own travel, accommodation and health insurance, and the call publishes no direct stipend or award figure.",
+    "eligibility": [
+     "PhD candidates enrolled in Portuguese higher education institutions",
+     "Any scientific area",
+     "Candidates must identify and obtain the agreement of a UC Berkeley professor who can act as supervisor during the stay in UC Berkeley, before submitting the application",
+     "Applications must be submitted in English"
+    ],
+    "eligibility_summary": "Doctoral students enrolled in Portuguese higher education institutions, in any scientific area, who secure a UC Berkeley professor as supervisor before submitting.",
+    "benefits": [
+     "Research stay of up to 6 months at UC Berkeley as a Visiting Student Researcher",
+     "Administrative handling of the Visiting Student Researcher status by the home institution (CPS)",
+     "Up to 8 candidates selected per year"
+    ],
+    "coverage": [
+     "Payment by the host institution (CPS) of the VSPA University Services Fee",
+     "Payment by the host institution (CPS) of the DS-2019 visa Processing Fee",
+     "Payment by the host institution (CPS) of the UC Berkeley Institute of European Studies administrative fees",
+     "For candidates admitted who already hold an FCT doctoral research scholarship, the complementary FCT supports foreseen in the FCT Research Scholarships Regulation and in the Table of Scholarship-related Subsidies (2025), requested through the myFCT platform"
+    ],
+    "requirements": [
+     "Application submitted in English through the dedicated online form linked on the call page",
+     "Applications accepted on a continuous basis until 30 December 2027 at 17:00 (Portugal Continental time) or until the annual maximum number of Visiting Student Researchers is selected, whichever comes first",
+     "Prior identification and agreement of a UC Berkeley professor to act as supervisor",
+     "The candidate must indicate the expected arrival date, taking into account that arrival cannot occur before six months have elapsed since selection for the programme",
+     "For more information, consult the expression-of-interest call published with this initiative"
+    ],
+    "documents": [
+     "Short CV (in English; maximum two pages)",
+     "Motivation letter (in English; candidates must indicate the expected arrival date, taking into account that arrival cannot occur before six months after selection)",
+     "Proof of acceptance from UC Berkeley (in English)",
+     "Proof of enrolment / attendance in the doctorate"
+    ],
+    "english_requirement": "Applications must be submitted in English; the short CV (maximum two pages), the motivation letter and the proof of acceptance from UC Berkeley must be in English. Proof of enrolment/attendance in the doctorate has no published language requirement.",
+    "application_method": [
+     "Obtain the agreement of a UC Berkeley professor who can supervise the stay, before submitting",
+     "Prepare the required documents: short CV in English (max. two pages), motivation letter in English stating the expected arrival date, UC Berkeley acceptance confirmation in English, and proof of doctoral enrolment/attendance",
+     "Access the application form via the link available in the 'Links importantes' / 'Important links' section of the call page",
+     "Complete and submit the application electronically through that form",
+     "Applications are grouped by submission date into quarterly assessment windows; each window produces a positive or negative opinion with a weighted final classification"
+    ],
+    "selection_notes": "Assessment is carried out by an academic committee appointed by FCT and FLAD. Criterion A: candidate's curriculum, considering academic grades, track record and scientific achievements including peer-reviewed publications, scholarships, prizes, conferences and project participation (40%). Criterion B: scientific quality, innovative character of the work plan and feasibility of the research activities to be developed (30%). Criterion C: motivation letter explaining the relevance of the stay and the work to be developed for the scientific ambition of the doctoral work plan, and the expected impact of the stay on the candidate's career (30%). Selection is based on the analysis of these criteria, producing a positive or negative opinion, with final classification CF = 0.4 A + 0.3 B + 0.3 C.",
+    "best_fit": "Doctoral candidates already enrolled in a Portuguese higher education institution, in any scientific area, who can obtain the agreement of a UC Berkeley professor to act as supervisor during the stay.",
+    "notes": "Applications are open on a rolling basis and are assessed in quarterly windows, so an application can be submitted at any time before closing; the call closes early if the annual quota is reached. Selected candidates must finance their own travel, accommodation and health insurance. Arrival at UC Berkeley cannot occur earlier than six months after selection for the programme. The call is governed by the published Expression of Interest Call (Chamada de Manifestação de Interesse) and the accompanying documents (Memorandum of Understanding Portugal_Berkeley_Program, FCT-CPS-Berkeley Protocol, model letter, Research Scholarships Regulation, Table of Scholarship-related Subsidies (2025), and the assessors' college).",
+    "duration": "Research stay of up to 6 months at UC Berkeley; arrival cannot occur earlier than six months after selection",
+    "application_period": "Opened 01 January 2026 at 09:00; closes 30 December 2027 at 17:00, or earlier once the annual quota of selected Visiting Student Researchers is filled. Assessment runs in quarterly windows, grouped by submission date (first window: applications received up to 31/03/2026; second window starting 30/06/2026; and so on until the call closes).",
+    "deadline_display": "Applications are accepted on a continuous basis until 17:00 on 30 December 2027 (Portuguese Continental time), or until the maximum number of Visiting Student Researchers planned for each calendar year has been selected, whichever occurs first",
+    "deadline_date": "2027-12-30",
+    "region": "Europe",
+    "program_type": "Research mobility funding",
+    "applicant_utility": null,
+    "official_details": null
+   },
+   "missing_fields": [
+    "funding_amount",
+    "funding_currency",
+    "funding_period",
+    "tuition_coverage",
+    "living_cost_coverage",
+    "travel_coverage",
+    "applicant_utility",
+    "official_details"
+   ]
+  }
+ ],
+ "result_file": "C:\\Users\\GopaL\\Desktop\\Projects folder\\ScholarZone\\backend\\research_output\\live500\\results\\agent_208.json"
+}

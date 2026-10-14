@@ -1,0 +1,84 @@
+{
+ "agent": "agent_067",
+ "assignment_count": 1,
+ "scholarships": [
+  {
+   "id": 185,
+   "title": "KTH Scholarship",
+   "country": "Sweden",
+   "degree": "Master's",
+   "funding_label": "Tuition Fee Waiver",
+   "status": "upcoming",
+   "official_source": "KTH Royal Institute of Technology",
+   "official_source_url": "https://www.kth.se/en/utbildning/scholarships",
+   "application_link": "https://www.kth.se/en/utbildning/scholarships",
+   "catalogue_url": "https://www.kth.se/en/studies/master/admissions/scholarships/kth-scholarship-1.72827",
+   "official_updates_url": "https://www.kth.se/en/studies/master/admissions/scholarships",
+   "existing": {
+    "funding_amount": null,
+    "funding_currency": null,
+    "funding_period": null,
+    "tuition_coverage": 1,
+    "living_cost_coverage": 0,
+    "travel_coverage": null,
+    "fully_funded": 0,
+    "description": "The KTH Scholarship covers the full tuition fee of a one- or two-year master's programme at KTH Royal Institute of Technology for fee-paying students, and does not include living costs. Applicants must first apply for a KTH master's programme through universityadmissions.se, ranking KTH as their first priority and paying the application fee. The 2027 round opens on 1 December 2026 and closes on 15 January 2027, with results announced on 1 April 2027. In 2026, 9% of scholarship applicants who were admitted to a programme were nominated for the scholarship (65 out of 718).",
+    "eligibility": [
+     "Be a fee-paying student at KTH",
+     "Have applied for a master's programme at KTH via universityadmissions.se as first priority",
+     "Have paid the universityadmissions.se application fee",
+     "Only applicants who fulfil the admission requirements of the programme applied for are eligible",
+     "Eligible programmes: all master's programmes with two years spent at KTH, the joint master's in Molecular Techniques in Life Science, the joint master's in Biostatistics and Data Science, and the one-year master's in Architectural Lighting Design",
+     "Not eligible: joint Erasmus+ and EIT programmes, and the joint programme Computer Simulations for Science and Engineering"
+    ],
+    "eligibility_summary": "Applicants must be fee-paying students who have applied for a master's programme at KTH as their first priority and paid the application fee. Scholarships cannot be applied for or awarded for programmes listed as second, third or fourth priority. Eligible programmes are all two-year master's programmes at KTH, the joint master's programmes in Molecular Techniques in Life Science and Biostatistics and Data Science, and the one-year master's programme in Architectural Lighting Design. Joint Erasmus+ and EIT programmes and the joint programme Computer Simulations for Science and Engineering are excluded.",
+    "benefits": [
+     "Full tuition fee for the first year of the master's programme",
+     "Full tuition fee for the second year if first-year results are satisfactory"
+    ],
+    "coverage": [
+     "Tuition fee at KTH for the first year",
+     "Tuition fee at KTH for the second year, provided first-year study results are satisfactory",
+     "Living costs are explicitly not included"
+    ],
+    "requirements": [
+     "Apply for a master's programme at KTH through universityadmissions.se before applying for the scholarship",
+     "Rank the KTH programme as first priority - second, third and fourth priority programmes are not eligible",
+     "Pay the application fee",
+     "Submit the scholarship application using the form on the KTH Scholarship page while the round is open",
+     "Submit the universityadmissions.se supporting documents by the 2 February document submission deadline, as KTH reuses them for scholarship evaluation"
+    ],
+    "documents": [
+     "No additional documents for the scholarship application itself",
+     "Complete application and supporting documents submitted to universityadmissions.se by the 2 February document submission deadline"
+    ],
+    "english_requirement": "The master's programme applied for must be an English-taught KTH programme meeting its admission requirements",
+    "application_method": [
+     "Apply for a master's programme at KTH via universityadmissions.se with KTH as first priority and pay the application fee",
+     "Submit all supporting documents to universityadmissions.se by the 2 February document deadline",
+     "From 1 December 2026 to 15 January 2027, submit the scholarship application using the form on the KTH Scholarship page"
+    ],
+    "selection_notes": "The scholarship is awarded primarily on the basis of academic excellence and the selection process runs in parallel with the admissions process; only applicants who fulfil the admission requirements of the programme applied for are eligible. Applicants are assessed on grades (GPA or equivalent), the ranking of the university that awarded their bachelor's degree, extracurricular research experiences or publications, relevant work experience, relevant teaching experience, awards from competitions and extracurricular activities, and their motivation for contributing to sustainable development with a KTH master's degree. In 2026, 9% of scholarship applicants admitted to a programme were nominated for the KTH Scholarship (65 out of 718).",
+    "best_fit": "Fee-paying applicants to an eligible KTH master's programme who ranked it first at universityadmissions.se and have strong academic results plus a demonstrable commitment to sustainable development.",
+    "notes": "Applicants to joint Erasmus+, EIT and Computer Simulations for Science and Engineering programmes may instead be considered for the KTH Joint Programme Scholarship, which covers the tuition fee for the study period spent at KTH. KTH also runs a separate KTH One-Year Scholarship for current students covering the second year of a two-year programme, and a KTH India Scholarship. Applicants to certain joint programmes may apply for the KTH Joint Programme Scholarship.",
+    "duration": "One or two-year master's programme; the scholarship covers the tuition fee for the first and the second year provided the first-year study results are satisfactory",
+    "application_period": "The application round runs 1 December 2026 to 15 January 2027, with results announced on 1 April 2027. The universityadmissions.se programme application and the document submission deadline of 2 February run on the national Swedish schedule.",
+    "deadline_display": "1 December 2026: Application opens. 15 January 2027: Application closes. 1 April 2027: Scholarship results announced.",
+    "deadline_date": "2027-01-15",
+    "region": "Europe",
+    "program_type": "Merit-based tuition fee scholarship for fee-paying international students",
+    "applicant_utility": null,
+    "official_details": null
+   },
+   "missing_fields": [
+    "funding_amount",
+    "funding_currency",
+    "funding_period",
+    "travel_coverage",
+    "applicant_utility",
+    "official_details"
+   ]
+  }
+ ],
+ "result_file": "C:\\Users\\GopaL\\Desktop\\Projects folder\\ScholarZone\\backend\\research_output\\live500\\results\\agent_067.json"
+}

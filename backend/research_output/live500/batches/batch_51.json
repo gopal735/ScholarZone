@@ -1,0 +1,30 @@
+{
+ "batch": "batch_51",
+ "agents": [
+  401,
+  402,
+  403,
+  404,
+  405,
+  406,
+  408
+ ],
+ "assignment_files": [
+  "assignments/agent_401.json",
+  "assignments/agent_402.json",
+  "assignments/agent_403.json",
+  "assignments/agent_404.json",
+  "assignments/agent_405.json",
+  "assignments/agent_406.json",
+  "assignments/agent_408.json"
+ ],
+ "result_files": [
+  "results_internal/agent_401.json",
+  "results_internal/agent_402.json",
+  "results_internal/agent_403.json",
+  "results_internal/agent_404.json",
+  "results_internal/agent_405.json",
+  "results_internal/agent_406.json",
+  "results_internal/agent_408.json"
+ ]
+}

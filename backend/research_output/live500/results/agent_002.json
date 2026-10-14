@@ -1,0 +1,283 @@
+{
+  "agent": "agent_002",
+  "records": [
+    {
+      "id": 16,
+      "official": {
+        "official_source_urls": [
+          "https://marie-sklodowska-curie-actions.ec.europa.eu/actions/postdoctoral-fellowships",
+          "https://marie-sklodowska-curie-actions.ec.europa.eu/funding/msca-postdoctoral-fellowships-2026",
+          "https://marie-sklodowska-curie-actions.ec.europa.eu/funding/msca-postdoctoral-fellowships-2027",
+          "https://ec.europa.eu/info/funding-tenders/opportunities/docs/2021-2027/horizon/wp-call/2026-2027/wp-2-marie-sklodowska-curie-actions_horizon-2026-2027_en.pdf",
+          "https://ec.europa.eu/info/funding-tenders/opportunities/docs/2021-2027/common/guidance/additional-information-on-unit-costs-and-contributions_en.pdf"
+        ],
+        "application_link": "https://marie-sklodowska-curie-actions.ec.europa.eu/actions/postdoctoral-fellowships",
+        "catalogue_url": "https://marie-sklodowska-curie-actions.ec.europa.eu/funding",
+        "official_updates_url": "https://marie-sklodowska-curie-actions.ec.europa.eu/funding",
+        "deadline_central": "2027-09-08",
+        "deadline_central_display": "8 September 2027 (indicative) for the 2027 call, which opens 7 April 2027; the 2026 call closed on 9 September 2026 at 17:00 CEST",
+        "deadline_note": "There is no separate institutional deadline: the beneficiary (host organisation) submits the completed proposal on the Funding & Tenders Portal by the call's submission deadline.",
+        "application_cycle": "2026/2027 cycle: HORIZON-MSCA-2026-PF-01 opened 9 April 2026 and closed 9 September 2026; HORIZON-MSCA-2027-PF-01 is scheduled to open 7 April 2027 with an indicative deadline of 8 September 2027, results notification February 2028 and grant agreement signature April 2028",
+        "status": "UPCOMING",
+        "status_note": "The 2026 call closed on 9 September 2026 (results expected February 2027). The Commission publishes the 2027 call for 7 April 2027, but every 2027 date is explicitly marked 'to be confirmed' (TBC) on its own pages.",
+        "tuition_coverage_note": "The published EU unit contributions for the recruited researcher are a living allowance, a mobility allowance and, where applicable, family, long-term leave and special needs allowances, plus institutional contributions for research, training and networking and for management and indirect costs; no tuition-fee category is published.",
+        "funding_amount": 6350,
+        "funding_currency": "EUR",
+        "funding_period": "per person-month (living allowance)",
+        "tuition_coverage": false,
+        "living_cost_coverage": true,
+        "travel_coverage": true,
+        "fully_funded": false,
+        "benefits": [
+          "Living allowance of EUR 6350 per person-month, a gross amount adjusted by a country correction coefficient of the country where the researcher is recruited or hosted",
+          "Mobility allowance of EUR 710 per person-month, covering the researcher's private mobility-related costs such as travel and accommodation",
+          "Family allowance of EUR 660 per person-month where applicable, plus long-term leave and special needs allowances where applicable",
+          "Institutional contributions of EUR 1000 per person-month for research, training and networking activities and EUR 650 per person-month for management and indirect costs",
+          "Additional support for a placement of up to 6 months in a non-academic organisation based in an EU Member State or Horizon Europe Associated Country at the end of the fellowship",
+          "Seals of Excellence awarded to applications with a total score of 85% or higher that cannot be funded because the call budget is exhausted"
+        ],
+        "eligibility": [
+          "PhD degree at the time of the application deadline; applicants who have successfully defended their doctoral thesis but have not yet been formally awarded the degree are also eligible",
+          "Maximum of eight years of research experience counted from the date the PhD was awarded; years spent outside research and career breaks do not count, and nor do years of research in third countries for nationals or long-term residents of EU Member States or Horizon Europe Associated Countries wishing to reintegrate to Europe",
+          "Mobility rule: the researcher must not have resided or carried out their main activity (work, studies, etc.) in the country of the beneficiary (European Postdoctoral Fellowship) or of the host organisation for the outgoing phase (Global Postdoctoral Fellowship) for more than 12 months in the 36 months immediately before the call deadline",
+          "European Postdoctoral Fellowships: researchers of any nationality",
+          "Global Postdoctoral Fellowships: only nationals or long-term residents of EU Member States or Horizon Europe Associated Countries",
+          "For research areas covered by the Euratom Research and Training Programme: the researcher must be a national or long-term resident of an EU Member State or a Euratom Associated Country, and the beneficiary organisation must be established in an EU Member State or a Euratom Associated Country",
+          "All disciplines are eligible, including research areas covered by the Euratom Research and Training Programme"
+        ],
+        "requirements": [
+          "The proposal must be developed jointly by the researcher and the host organisation (university, research institution, business, SME or other organisation based in an EU Member State or Horizon Europe Associated Country)",
+          "The beneficiary submits the proposal on the Funding & Tenders Portal during the call window; only one proposal per researcher per call",
+          "Proposal page limit of 10 pages, excluding annexes",
+          "From 2026, resubmission restrictions apply: a proposal that received a score below 80% in the previous year must not be resubmitted",
+          "The researcher must be recruited for the total period of the fellowship under an employment contract or equivalent direct contract with full social security coverage"
+        ],
+        "documents": [
+          "Administrative forms and annexes of the proposal submitted through the Funding & Tenders Portal",
+          "Part B of the application form, containing the description of the research project and the training-through-research plan",
+          "CV of the researcher",
+          "Evidence of the doctoral degree, or evidence that the doctoral thesis has been successfully defended",
+          "Call documents published on the Funding & Tenders Portal: MSCA Work Programme and general annexes, guide for applicants, specific FAQs, application and evaluation forms"
+        ],
+        "selection_criteria": [
+          "Award criteria: Excellence (weighting 50%), Impact (30%), Quality and efficiency of the implementation (20%), each scored out of 5 with a threshold of 3",
+          "Proposals scoring 70% or above are considered for funding within the limits of the available call budget",
+          "Proposals are evaluated by one of eight main evaluation panels: Chemistry, Social Sciences and Humanities, Economic Sciences, Information Science and Engineering, Environment and Geosciences, Life Sciences, Mathematics and Physics, with separate ranked lists for European and Global Postdoctoral Fellowships",
+          "Seals of Excellence for applications scoring 85% or above that cannot be funded"
+        ],
+        "coverage": [
+          "Living allowance: EUR 6350 per person-month (gross, including compulsory social security and tax deductions) before the country correction coefficient",
+          "Mobility allowance: EUR 710 per person-month, covering the researcher's private mobility-related costs such as travel and accommodation rather than professional costs of the action",
+          "Family allowance: EUR 660 per person-month where applicable",
+          "Long-term leave allowance and special needs allowance, requested when the need arises",
+          "Research, training and networking contribution: EUR 1000 per person-month (conference participation, work trips, training, language courses, seminars, lab material, books, library records, publication costs, research expenses, visa-related fees and travel)",
+          "Management and indirect contribution: EUR 650 per person-month"
+        ],
+        "application_method": [
+          "Develop the application jointly with a host organisation of your choice",
+          "The host organisation (beneficiary) is responsible for submitting the proposal to MSCA Postdoctoral Fellowships on the Funding & Tenders Portal",
+          "Hosting offers can be found on Euraxess and on job portals of research institutions interested in supporting an application"
+        ],
+        "application_route": "Find and agree a host organisation, build the proposal together, and have the host organisation submit it through the EU Funding & Tenders Portal inside the call window.",
+        "study_mode": "Full-time; part-time implementation is possible only with the prior approval of the granting authority (at least 50% of working time dedicated to the action)",
+        "citizenship_residency": "European Postdoctoral Fellowships: any nationality. Global Postdoctoral Fellowships: nationals or long-term residents of EU Member States or Horizon Europe Associated Countries. Euratom research areas: national or long-term resident of an EU Member State or Euratom Associated Country.",
+        "international_eligibility": "Yes. European Postdoctoral Fellowships are open to researchers of any nationality moving within Europe or coming to Europe; Global Postdoctoral Fellowships are restricted to EU/Horizon Europe Associated Country nationals or long-term researchers.",
+        "subject_or_agency_requirement": "All domains of research and technological development are eligible, including areas covered by the Euratom Research and Training Programme, where additional nationality and beneficiary-location rules apply.",
+        "research_requirement": "Applicants develop their own research project with the host organisation; the beneficiary must recruit the researcher for the total period of the fellowship.",
+        "duration": "European Postdoctoral Fellowships: 12 to 24 months. Global Postdoctoral Fellowships: 2 to 3 years, i.e. an outgoing phase of 12 to 24 months in a non-associated Third Country followed by a mandatory 12-month return phase.",
+        "description": "The objective of Postdoctoral Fellowships is to support researchers' careers and foster excellence in research by helping researchers holding a PhD gain experience in other countries, disciplines and non-academic sectors. Both types of fellowship may include short-term secondments anywhere in the world and an optional placement of up to six months in a non-academic organisation in the EU or a Horizon Europe Associated Country.",
+        "region": "European Union Member States and Horizon Europe Associated Countries; Global Fellowships host in non-associated Third Countries",
+        "program_type": "EU research fellowship and grant under Horizon Europe (MSCA Postdoctoral Fellowships, topic HORIZON-MSCA-PF-01), run by the European Research Executive Agency on behalf of the European Commission",
+        "english_requirement": null
+      },
+      "verification": {
+        "source_citations": [
+          "https://ec.europa.eu/info/funding-tenders/opportunities/docs/2021-2027/horizon/wp-call/2026-2027/wp-2-marie-sklodowska-curie-actions_horizon-2026-2027_en.pdf",
+          "https://ec.europa.eu/info/funding-tenders/opportunities/docs/2021-2027/common/guidance/additional-information-on-unit-costs-and-contributions_en.pdf",
+          "https://marie-sklodowska-curie-actions.ec.europa.eu/actions/postdoctoral-fellowships",
+          "https://marie-sklodowska-curie-actions.ec.europa.eu/funding/msca-postdoctoral-fellowships-2027"
+        ],
+        "last_verified_date": "2026-10-10",
+        "verification_status": "confirmed",
+        "confidence": "high",
+        "not_confirmed": [
+          "english_requirement - the Commission's Postdoctoral Fellowships pages and the MSCA Work Programme 2026-2027 publish no IELTS/TOEFL score or medium-of-instruction requirement for the researcher"
+        ],
+        "notes": "Award amounts were read from the official Horizon Europe Work Programme 2026-2027 (MSCA part, unit contributions table) and from the Commission's 'Additional information on unit costs and contributions', which states EUR 6350 living allowance for Postdoctoral Fellowships from the 2026 calls onwards; call dates were read from the Commission's MSCA 2026 and 2027 call pages."
+      },
+      "applicant_utility": {
+        "summary": "This is an EU-funded, employer-based postdoc: the Commission pays your host a fixed monthly package (EUR 6350 living allowance adjusted by the country's correction coefficient, EUR 710 mobility allowance and EUR 1650/month institutional contributions) and the host hires you on a staff contract, so there is no tuition to waive and no scholarship cheque to you. The realistic route is to secure a supervisor first, because your host must submit the proposal on the Funding & Tenders Portal - you cannot apply alone. The single most common knockout is the mobility rule, so recompute your 36-month residence history before you invest weeks in drafting, and if you are coming from a host country in which you spent longer than 12 of the last 36 months, your application is simply ineligible.",
+        "best_fit": "PhD holders with a named supervisor ready to write and submit the proposal, who genuinely need to move country (not institution in the same country).",
+        "application_readiness_checklist": [
+          "Test the mobility rule against your own CV: list every month of residence or main activity in the destination country for the 36 months before the deadline; anything over 12 months ends the bid",
+          "Calculate your research experience from the date the PhD was awarded and confirm it is 8 years or fewer, subtracting years outside research and career breaks",
+          "Agree the host in writing early - the beneficiary, not you, must submit, and it has to cover the full fellowship duration",
+          "Budget the 10-page Part B limit (annexes excluded) and write for the Excellence criterion, which carries 50% of the score",
+          "Confirm whether your host country sits in a widening country or an outermost region, which affects the correction coefficient and the opt-in to the ERA Fellowships route",
+          "Check the resubmission bar: a proposal that scored below 80% last year cannot be resubmitted, so it must be substantially rebuilt"
+        ],
+        "common_rejection_risks": [
+          "Mobility rule breach - over 12 months in the destination country in the past 36 months is an outright eligibility failure, not a scoring deduction",
+          "Exceeding the 8-year experience cap, especially for applicants who count industry or career-break years towards it",
+          "A weak or non-specific host commitment; the Implementation criterion (20%) explicitly assesses the host's capacity and hosting arrangements and the quality of supervision",
+          "A thin dissemination and exploitation plan, since Impact (30%) is scored on it",
+          "Blowing the 10-page proposal limit or leaving required administrative forms incomplete",
+          "Assuming the fellowship covers tuition fees - it does not; applicants who need a fee waiver must negotiate it with the host"
+        ],
+        "estimated_uncovered_costs": "Nothing is published as a tuition or fee entitlement under this action; the grant pays the researcher's salary and mobility costs plus EUR 1650 per person-month to the host. Personal costs beyond the mobility allowance, visa and relocation costs, and any institutional overheads the host chooses to charge remain outside the published package.",
+        "document_audit": [
+          "PhD evidence: a thesis defence certificate is acceptable before formal award, but it must be dated on or before the call deadline - an anticipated defence date is not",
+          "The host's contractual capacity to employ you must be real, because the beneficiary must recruit you for the entire fellowship period with full social security cover",
+          "The 8-year calculation is self-assessed with the Commission's own self-assessment tool; keep your working evidence, because it is checked at grant preparation",
+          "Hosting offers found on job portals often come with a pre-agreed supervisor but with a fixed research field - check the eligibility of your own idea against it before agreeing"
+        ],
+        "alerts": [
+          "The 2026 round closed on 9 September 2026; the 2027 dates (7 April opening, 8 September deadline) are still marked TBC, so verify on the Funding & Tenders Portal rather than treating them as fixed",
+          "Resubmission restriction from 2026 onwards: below 80% last year means this year's proposal cannot be a re-run of the same text",
+          "Only one proposal per researcher per call, so the panel and the fellowship type (European vs Global) cannot be hedged",
+          "Each main panel runs European and Global fellowships as separate ranked lists with separate budgets, so your panel placement affects the success rate you face"
+        ],
+        "submission_workflow": "Researcher and host build the proposal in parallel; the host beneficiary uploads and submits it through the Funding & Tenders Portal before the call deadline; evaluation by remote experts takes about five months, with results announced the following February and interview-free ranking per panel."
+      }
+    },
+    {
+      "id": 17,
+      "official": {
+        "official_source_urls": [
+          "https://erasmus-plus.ec.europa.eu/opportunities/individuals/students/studying-abroad",
+          "https://erasmus-plus.ec.europa.eu/programme-guide/part-b/key-action-1/higher-education-mobility-projects",
+          "https://erasmus-plus.ec.europa.eu/programme-guide/part-a/eligible-countries",
+          "https://erasmus-plus.ec.europa.eu/resources-and-tools/documents-and-guidelines/higher-education-institutions-holding-an-eche-2021-2027"
+        ],
+        "application_link": "https://erasmus-plus.ec.europa.eu/opportunities/individuals/students/studying-abroad",
+        "catalogue_url": "https://erasmus-plus.ec.europa.eu/resources-and-tools/documents-and-guidelines/higher-education-institutions-holding-an-eche-2021-2027",
+        "official_updates_url": "https://erasmus-plus.ec.europa.eu/about-erasmus/contacts",
+        "deadline_central": "2027-02-19",
+        "deadline_central_display": "19 February at 12:00 (midday) Brussels time - the deadline for your institution's grant application to its National Agency (next round 19 February 2027)",
+        "deadline_note": "There is no central Erasmus+ deadline for students: each sending institution applies to its National Agency by 19 February at 12:00 (midday) Brussels time for mobility projects starting 1 June of the same year, and sets and publishes its own internal deadlines for selecting students.",
+        "application_cycle": "Annual cycle: institutions apply to their National Agency by 19 February for projects starting 1 June of the same year (24 or 36 months for projects funded with external action instruments); student applications are accepted year-round against each institution's own academic-year deadlines.",
+        "status": "OPEN",
+        "status_note": "Mobility runs continuously through accredited institutions, so students can apply year-round; the Programme Guide sets the institutional application deadline at 19 February at 12:00 (midday) Brussels time. The Commission states that it is planned that Switzerland and the UK will associate to Erasmus+ in 2027, which would put learners and organisations there on the same footing as in EU Member States from the 2027 call onwards.",
+        "tuition_coverage_note": "As an Erasmus+ student, you are exempt from fees for tuition, registration, examinations, and charges for access to laboratories or libraries at the receiving institution. Small fees for insurance or student union membership may still apply.",
+        "funding_amount": 292,
+        "funding_currency": "EUR",
+        "funding_period": "per month (minimum of the published EU range)",
+        "tuition_coverage": true,
+        "living_cost_coverage": true,
+        "travel_coverage": true,
+        "fully_funded": false,
+        "benefits": [
+          "Individual support as a contribution to travel and daily living costs, set by your National Agency within published ranges: 292 to 606 EUR per month (medium range, similar living costs), 348 to 674 EUR per month (higher range), 225 to 550 EUR per month (lower range)",
+          "Exemption from tuition, registration, examination and laboratory/library access fees at the receiving institution (small insurance or student union fees may still apply)",
+          "Travel support per participant from 28 EUR (10-99 km, non-green travel) up to 1735 EUR (8000 km or more), with higher amounts for green travel up to the 2000-2999 km band",
+          "Top-up of 250 EUR per month for students and recent graduates with fewer opportunities and 150 EUR per month for traineeships (both can be combined)",
+          "786 EUR per month individual support for students from outermost regions and Overseas Countries and Territories; 700 EUR per month for long-term mobility to third countries not associated from Regions 1-3 and 5-12, and 800 to 900 EUR per month for incoming students from those regions",
+          "Short-term physical mobility (5-30 days): 79 EUR per day up to the 14th day and 56 EUR per day from the 15th to the 30th day, with a top-up of 100 EUR (5-14 days) or 150 EUR (15-30 days) for students with fewer opportunities",
+          "Access to Erasmus+ Online Language Support (OLS) to learn the language used for your studies, and additional inclusion support for participants with physical, mental or health-related conditions"
+        ],
+        "eligibility": [
+          "Students at short-cycle, Bachelor and Master levels, and doctoral candidates",
+          "Registered in a higher education institution that participates in the Erasmus+ programme (holds an Erasmus Charter for Higher Education where required)",
+          "Enrolled in studies leading to a recognised degree or tertiary-level qualification; for doctoral mobility the participant must be at EQF level 8",
+          "The study period abroad must be relevant for your degree-related learning and personal development needs",
+          "The study period abroad must be part of the study programme you are following",
+          "The sending and receiving institutions must have an inter-institutional agreement, and both must hold the Erasmus Charter for Higher Education if they are in EU Member States or third countries associated to the programme",
+          "Physical mobility must take place in a different country from that of your sending organisation and from the country where you have your accommodation during your studies"
+        ],
+        "requirements": [
+          "Higher education students and staff cannot apply directly for a grant; the selection criteria for participation are defined by your institution",
+          "Your institution must hold a valid Erasmus Charter for Higher Education and sign the participant grant agreement with you",
+          "A learning agreement for studies must be signed by you and both institutions before the mobility starts",
+          "The receiving institution must issue a transcript of records after the mobility and your study period must be fully and automatically recognised in ECTS or an equivalent system",
+          "Credit mobility must be free of charge: no tuition, registration, examination or laboratory/library access fees may be charged to incoming mobile students"
+        ],
+        "documents": [
+          "Learning agreement for studies, signed before departure by the student, the sending and the receiving institution (defining recognition, rights and responsibilities)",
+          "Participant grant agreement signed with your sending or receiving institution",
+          "Erasmus+ Student Charter issued to you before mobility",
+          "Transcript of records issued by the receiving institution at the end of the mobility",
+          "Diploma Supplement recording the mobility period, and ECTS or equivalent credit recognition"
+        ],
+        "selection_criteria": [
+          "Your sending higher education institution is obliged to select applicants in a fair and transparent way, and to award mobility grants in a fair, transparent, coherent and documented way",
+          "The selection criteria for participation in mobility activities are defined by the higher education institution in which you study",
+          "Institutional applications are assessed out of 100: relevance (30 points), quality of cooperation and composition (20), quality of activity design and implementation (20) and impact and dissemination (30), with a minimum of 60 points and at least half the points in each criterion",
+          "Selection also has to be inclusive of participants with fewer opportunities, including students with children, working students and professional athletes"
+        ],
+        "coverage": [
+          "A contribution to your travel and daily living costs during the period abroad",
+          "Travel costs from your place of origin to the venue of the activity and return, paid by distance band",
+          "Exemption from tuition, registration, examination and laboratory/library access fees at the receiving institution",
+          "Language learning support through Erasmus+ Online Language Support",
+          "Possible additional grants from your institution, government or other sources"
+        ],
+        "application_method": [
+          "Reach out to the international or Erasmus+ office of your university or higher education institution to start the process",
+          "Your sending higher education institution (or the receiving institution in some flows) signs the grant agreement, applies for funding on your behalf and selects you according to its published criteria",
+          "Check that your institution is on the official list of higher education institutions holding an Erasmus Charter for Higher Education"
+        ],
+        "application_route": "Apply through your own institution's international or Erasmus+ office; there is no central Erasmus+ application form for students.",
+        "study_mode": "Full-time: long-term physical mobility of 2 to 12 months, or short-term physical mobility of 5 to 30 days combined with a compulsory virtual component (blended)",
+        "citizenship_residency": "No citizenship or residency rule is published for student mobility; what matters is that you are registered at a higher education institution participating in the Erasmus+ programme in an EU Member State or associated third country.",
+        "international_eligibility": "Yes. Students of any nationality at a participating institution can take part, and the action also supports the international dimension of mobility to and from third countries not associated to the programme, excluding Belarus and Russia.",
+        "subject_or_agency_requirement": "Open to students in any study field and at any cycle (short-cycle, bachelor, master and doctoral); your mobility must fit your degree-related learning and personal development needs.",
+        "research_requirement": null,
+        "duration": "Long-term mobility: 2 to 12 months abroad including blended mobilities with a virtual component. Short-term mobility: 5 to 30 days abroad, which must be blended. Maximum total duration: 12 months within one study cycle, with more than one exchange possible inside that limit; for one-cycle courses such as medicine or architecture, up to 24 months.",
+        "description": "Erasmus+ helps organise student and doctoral candidate exchanges within countries fully part of the Erasmus+ programme and to and from countries associated to Erasmus+, so that you can improve your communication, language and inter-cultural skills and gain soft skills highly valued by employers. It is the EU programme for education, training, youth and sport.",
+        "region": "European Union Member States and third countries associated to the programme, plus the international dimension covering most non-associated third countries (excluding Belarus and Russia)",
+        "program_type": "EU exchange and mobility programme: Erasmus+ Key Action 1 (Learning Mobility of Individuals), mobility projects for higher education students and staff, funded by the European Commission and implemented through Erasmus+ National Agencies",
+        "english_requirement": null
+      },
+      "verification": {
+        "source_citations": [
+          "https://erasmus-plus.ec.europa.eu/opportunities/individuals/students/studying-abroad",
+          "https://erasmus-plus.ec.europa.eu/programme-guide/part-b/key-action-1/higher-education-mobility-projects"
+        ],
+        "last_verified_date": "2026-10-10",
+        "verification_status": "confirmed",
+        "confidence": "high",
+        "not_confirmed": [
+          "funding_amount - the Programme Guide publishes ranges rather than a single figure: National Agencies set the exact monthly rate within 292-606 EUR per month (medium range), 348-674 (higher range) or 225-550 (lower range), and the amount actually paid depends on your country pair; the figure recorded here is the lowest published EU range rate",
+          "english_requirement - no language test or medium-of-instruction rule is published; the language of study is set by the receiving institution and OLS offers support",
+          "research_requirement - the published rules set no research-proposal requirement for student mobility for studies"
+        ],
+        "notes": "Grant amounts, top-ups, travel bands and the institutional 19 February deadline were read from the Erasmus+ Programme Guide (Part B, Key Action 1, higher education mobility projects) on the Commission's own domain; eligibility, fee exemption and the 'no central application form' rule were read from the Studying abroad page, last updated 18 December 2025."
+      },
+      "applicant_utility": {
+        "summary": "Erasmus+ student mobility is funded through your own university, not through the Commission: your institution must hold the Erasmus Charter, hold an inter-institutional agreement with the partner, and then hand you a grant whose monthly rate it (via its National Agency) set within a published EU range - so the same exchange can pay noticeably different amounts depending on your country pair. What is genuinely guaranteed is the fee exemption at the host, full credit recognition, and a travel contribution by distance band. Plan around your institution's internal deadline, which usually sits several months before departure, because the grant cannot be arranged at short notice.",
+        "best_fit": "Enrolled students at a participating university who want a credit-bearing term or two abroad without paying tuition at the host institution, and who can absorb a modest monthly stipend rather than a full cost of living.",
+        "application_readiness_checklist": [
+          "Confirm your home institution actually holds the Erasmus Charter for Higher Education and has an inter-institutional agreement with the university you want",
+          "Get your own institution's internal deadline in writing; the EU's 19 February deadline is for institutions, and student deadlines are set locally and often much earlier",
+          "Draft the learning agreement with course equivalents before you apply, because recognition is a condition of the mobility, not an afterthought",
+          "Ask your international office which National Agency range applies to your country pair and what the monthly rate will be for your exchange",
+          "Declare any disability, health condition, childcare or work situation early, since top-ups and inclusion support are agreed in advance with the coordinator",
+          "Count your months: you have a 12-month cap per study cycle (24 months for one-cycle degrees such as medicine or architecture)"
+        ],
+        "common_rejection_risks": [
+          "Your institution has no inter-institutional agreement with the partner you want, so the exchange cannot be recognised as Erasmus+",
+          "Applying after your institution's internal selection round has closed, even though the EU-wide funding window is still open",
+          "A learning agreement that cannot be mapped to credits in your home degree",
+          "Assuming the grant covers full living costs; it is explicitly a contribution, and the amount also depends on the number of students applying",
+          "Losing fee exemption by drifting into a self-funded ('free mover') route, which forfeits tuition waiver and recognition guarantees"
+        ],
+        "estimated_uncovered_costs": "Housing deposits and rent gaps, food, local transport, health insurance and student union fees (explicitly not exempt), visa and residence permits, and the difference between the stipend and local living costs - small insurance or student union membership fees at the host may still apply even though tuition and exam fees are waived.",
+        "document_audit": [
+          "The learning agreement must be signed by all three parties before departure - a verbal agreement with the host professor is not a substitute",
+          "Credit mobility must be free of charge: if the host asks for tuition, registration or library/laboratory fees, that is a breach, not a rounding error",
+          "You need a transcript of records from the host at the end; without it your recognition cannot be completed",
+          "Blended short-term mobility requires a virtual component, and only doctoral candidates may do a short-term mobility without one",
+          "The inter-institutional agreement is between the institutions - never expect to obtain or carry it yourself as a student"
+        ],
+        "alerts": [
+          "The real deadline is your university's, not the EU's 19 February institutional deadline; ask before the autumn term starts",
+          "12 months per study cycle is a hard cap, so a long master's exchange eats the allowance you would need for a PhD-stage mobility later",
+          "Destinations to Belarus and Russia are not eligible, and mobility funded through external action instruments follows different region rules and project dates (1 August start)",
+          "The UK and Switzerland are planned to associate to Erasmus+ in 2027, so routes into those countries only open up from the 2027 call onwards and mobilities will not start before the second half of 2027",
+          "Non-associated third-country destinations are only supported inside the international dimension of the action (Regions 1-3 and 5-12), not as a general right"
+        ],
+        "submission_workflow": "You apply to your own international/Erasmus+ office, which selects fairly and transparently, signs the participant grant agreement with you (the institution applies for and holds the funding), and you then travel on a signed learning agreement and are assessed and credited by the host."
+      }
+    }
+  ]
+}

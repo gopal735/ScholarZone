@@ -1,0 +1,982 @@
+{
+  "_comment": "Records whose official address or title research disproved, but whose programme is real. Correcting these is not the same as retiring them: a rotted link must not hide a live scholarship.",
+  "_rules": [
+    "Every entry must say what was wrong with the stored value and where the correct value came from.",
+    "URLs are absolute http/https only. A correction that does not resolve is worse than the 404 it replaces.",
+    "Retiring a record is a separate, stronger decision and lives in retired_records.json. It is only for programmes that no longer exist, never for a broken link.",
+    "Allowed fields: title, official_source_url, application_link, official_source, description."
+  ],
+  "records": [
+    {
+      "id": 230,
+      "reason": "Re-verification found the official page disagrees with the stored record",
+      "source": "re-verification pass",
+      "official_source_url": "https://www.daad.de/deutschland/stipendium/datenbank/en/21148-scholarship-database/?detail=50026397"
+    },
+    {
+      "id": 174,
+      "official_source_url": "https://www.tudelft.nl/en/education/study-programme-orientation/practical-matters/scholarships",
+      "flag": "DEAD",
+      "reason": "programme still runs at a different official address",
+      "source": "research pass"
+    },
+    {
+      "id": 371,
+      "official_source_url": "https://www.unibo.it/en/study",
+      "flag": "DEAD",
+      "reason": "programme still runs at a different official address",
+      "source": "research pass"
+    },
+    {
+      "id": 418,
+      "reason": "Re-verification found the official page disagrees with the stored record",
+      "source": "re-verification pass",
+      "official_source_url": "https://nawa.gov.pl/en/scientists/the-walczak-programme/call-for-proposals"
+    },
+    {
+      "id": 175,
+      "reason": "Re-verification found the official page disagrees with the stored record",
+      "source": "re-verification pass",
+      "official_source_url": "https://www.eur.nl/en/education/practical-matters/scholarships-grants"
+    },
+    {
+      "id": 397,
+      "official_source_url": "https://www.eur.nl/en/education/practical-matters/scholarships-grants",
+      "flag": "DEAD",
+      "reason": "programme still runs at a different official address",
+      "source": "research pass"
+    },
+    {
+      "id": 329,
+      "official_source_url": "https://www.ku.dk/studies/masters/application-and-admission/scholarships",
+      "flag": "DEAD",
+      "reason": "programme still runs at a different official address",
+      "source": "research pass"
+    },
+    {
+      "id": 176,
+      "official_source_url": "https://www.universiteitleiden.nl/en/scholarships/sea/leiden-university-excellence-scholarship-lexs",
+      "flag": "DEAD",
+      "reason": "programme still runs at a different official address",
+      "source": "research pass"
+    },
+    {
+      "id": 165,
+      "reason": "Re-verification found the official page disagrees with the stored record",
+      "source": "re-verification pass",
+      "official_source_url": "https://www.uibk.ac.at/en/college-service-center/scholarships"
+    },
+    {
+      "id": 169,
+      "reason": "Re-verification found the official page disagrees with the stored record",
+      "source": "re-verification pass",
+      "official_source_url": "https://www.ceu.edu/admissions/financial-aid/student-scholarships"
+    },
+    {
+      "id": 188,
+      "official_source_url": "https://liu.se/en/article/scholarships",
+      "flag": "DEAD",
+      "reason": "programme still runs at a different official address",
+      "source": "research pass"
+    },
+    {
+      "id": 135,
+      "reason": "Re-verification found the official page disagrees with the stored record",
+      "source": "re-verification pass",
+      "official_source_url": "https://www.polimi.it/en/prospective-students/how-much-does-it-cost/scholarships"
+    },
+    {
+      "id": 181,
+      "official_source_url": "https://www.utwente.nl/en/education/scholarship-finder/university-of-twente-scholarship/",
+      "flag": "DEAD",
+      "reason": "programme still runs at a different official address",
+      "source": "research pass"
+    },
+    {
+      "id": 177,
+      "official_source_url": "https://www.rug.nl/education/scholarships/nl-scholarship?lang=en",
+      "flag": "DEAD",
+      "reason": "programme still runs at a different official address",
+      "source": "research pass"
+    },
+    {
+      "id": 186,
+      "official_source_url": "https://www.chalmers.se/en/education/application-and-admission/tuition-fees/",
+      "flag": "DEAD",
+      "reason": "programme still runs at a different official address",
+      "source": "research pass"
+    },
+    {
+      "id": 182,
+      "official_source_url": "https://vu.nl/en/education/more-about/incoming-master-scholarships",
+      "flag": "DEAD",
+      "reason": "programme still runs at a different official address",
+      "source": "research pass"
+    },
+    {
+      "id": 142,
+      "official_source_url": "https://www.unibs.it/en/opportunities-and-services/right-study/scholarship-and-awards/scholarships-international-students",
+      "flag": "DEAD",
+      "reason": "programme still runs at a different official address",
+      "source": "research pass"
+    },
+    {
+      "id": 145,
+      "official_source_url": "https://english.moe.gov.tw/cp-24-24284-3ea37-1.html",
+      "flag": "MISATTRIBUTED",
+      "reason": "the awarding body is real; the stored address is wrong",
+      "source": "research pass"
+    },
+    {
+      "id": 484,
+      "official_source_url": "https://collegeadmissions.uchicago.edu/cost-aid/international-financial-aid",
+      "flag": "DEAD",
+      "reason": "programme still runs at a different official address",
+      "source": "research pass"
+    },
+    {
+      "id": 293,
+      "official_source_url": "https://erasmus-plus.ec.europa.eu/opportunities/individuals/students/erasmus-mundus-joint-masters",
+      "flag": "DEAD",
+      "reason": "programme still runs at a different official address",
+      "source": "research pass"
+    },
+    {
+      "id": 298,
+      "official_source_url": "https://erasmus-plus.ec.europa.eu/opportunities/individuals/students/erasmus-mundus-joint-masters",
+      "flag": "DEAD",
+      "reason": "programme still runs at a different official address",
+      "source": "research pass"
+    },
+    {
+      "id": 300,
+      "official_source_url": "https://erasmus-plus.ec.europa.eu/opportunities/individuals/students/erasmus-mundus-joint-masters",
+      "flag": "DEAD",
+      "reason": "programme still runs at a different official address",
+      "source": "research pass"
+    },
+    {
+      "id": 117,
+      "reason": "Re-verification found the official page disagrees with the stored record",
+      "source": "re-verification pass",
+      "official_source_url": "https://ir.iith.ac.in/#/intadm"
+    },
+    {
+      "id": 294,
+      "reason": "Re-verification found the official page disagrees with the stored record",
+      "source": "re-verification pass",
+      "official_source_url": "https://msmt.gov.cz/eu-a-zahranici/studium-cizincu-v-cr/stipendia-vlady-cr-rozvojove-zeme-2"
+    },
+    {
+      "id": 342,
+      "official_source_url": "https://www.hanken.fi/en/node/1868145",
+      "flag": "DEAD",
+      "reason": "programme still runs at a different official address",
+      "source": "research pass"
+    },
+    {
+      "id": 134,
+      "official_source_url": "https://bandi.unibo.it/agevolazioni/opportunita",
+      "flag": "DEAD",
+      "reason": "programme still runs at a different official address",
+      "source": "research pass"
+    },
+    {
+      "id": 278,
+      "official_source_url": "https://www.ntnu.edu/vacancies",
+      "flag": "DEAD",
+      "reason": "programme still runs at a different official address",
+      "source": "research pass"
+    },
+    {
+      "id": 143,
+      "official_source_url": "https://www.uniroma1.it/en/pagina/phd-programmes",
+      "flag": "DEAD",
+      "reason": "programme still runs at a different official address",
+      "source": "research pass"
+    },
+    {
+      "id": 369,
+      "official_source_url": "https://www.uniroma1.it/en/pagina/scholarships",
+      "flag": "DEAD",
+      "reason": "programme still runs at a different official address",
+      "source": "research pass"
+    },
+    {
+      "id": 212,
+      "official_source_url": "https://admission.kaist.ac.kr/intl-graduate/FinancialSupport/Scholarship/KAISTScholarship",
+      "flag": "DEAD",
+      "reason": "programme still runs at a different official address",
+      "source": "research pass"
+    },
+    {
+      "id": 533,
+      "reason": "Re-verification found the official page disagrees with the stored record",
+      "source": "re-verification pass",
+      "official_source_url": "https://www.fes.de/studienfoerderung/stipendium/grundfoerderung-fuer-auslaender-innen"
+    },
+    {
+      "id": 210,
+      "reason": "Re-verification found the official page disagrees with the stored record",
+      "source": "re-verification pass",
+      "official_source_url": "https://admission.kaist.ac.kr/intl-undergraduate/support/scholarships/kaist"
+    },
+    {
+      "id": 605,
+      "reason": "Re-verification found the official page disagrees with the stored record",
+      "source": "re-verification pass",
+      "official_source_url": "https://study.anu.edu.au/scholarships/find-scholarship/anu-vice-chancellors-international-achievement-award"
+    },
+    {
+      "id": 621,
+      "reason": "Re-verification found the official page disagrees with the stored record",
+      "source": "re-verification pass",
+      "official_source_url": "https://apply.ruffordsmallgrants.org/help/criteria"
+    },
+    {
+      "id": 571,
+      "reason": "Re-verification found the official page disagrees with the stored record",
+      "source": "re-verification pass",
+      "official_source_url": "https://nai.uu.se/opportunities/nordic-scholarship-programme.html"
+    },
+    {
+      "id": 575,
+      "reason": "Re-verification found the official page disagrees with the stored record",
+      "source": "re-verification pass",
+      "official_source_url": "https://www.grips.ac.jp/en/education/inter_programs/leader"
+    },
+    {
+      "id": 68,
+      "reason": "Re-verification found the official page disagrees with the stored record",
+      "source": "re-verification pass",
+      "official_source_url": "https://www.gatescambridge.org/apply/timeline"
+    },
+    {
+      "id": 109,
+      "reason": "Re-verification found the official page disagrees with the stored record",
+      "source": "re-verification pass",
+      "official_source_url": "https://www.sutd.edu.sg/admissions/graduate/scholarships"
+    },
+    {
+      "id": 236,
+      "reason": "Re-verification found the official page disagrees with the stored record",
+      "source": "re-verification pass",
+      "official_source_url": "https://www.studyinjapan.go.jp/en/planning/scholarships/mext-scholarships"
+    },
+    {
+      "id": 488,
+      "reason": "Re-verification found the official page disagrees with the stored record",
+      "source": "re-verification pass",
+      "official_source_url": "https://www.jwu.edu/admissions-aid/cost-aid/scholarships-grants-loans/"
+    },
+    {
+      "id": 442,
+      "reason": "Re-verification found the official page disagrees with the stored record",
+      "source": "re-verification pass",
+      "official_source_url": "https://admissions.smu.edu.sg/financial-aid/smu-global-impact-scholarship-award"
+    },
+    {
+      "id": 344,
+      "reason": "Re-verification found the official page disagrees with the stored record",
+      "source": "re-verification pass",
+      "official_source_url": "https://www.nokiafoundation.com/foundation-fellow"
+    },
+    {
+      "id": 345,
+      "reason": "Re-verification found the official page disagrees with the stored record",
+      "source": "re-verification pass",
+      "official_source_url": "https://www.nokiafoundation.com/jorma-ollila-grants"
+    },
+    {
+      "id": 74,
+      "reason": "Re-verification found the official page disagrees with the stored record",
+      "source": "re-verification pass",
+      "official_source_url": "https://www.lse.ac.uk/study-at-lse/Graduate/fees-and-funding/LSE-Excellence-Scholarship"
+    },
+    {
+      "id": 151,
+      "reason": "Re-verification found the official page disagrees with the stored record",
+      "source": "re-verification pass",
+      "official_source_url": "https://oia.tnua.edu.tw/en/news/moe-tnua-elite-scholarship-program-scholarship-for-lecturers-from-south-and-southeast-asia-%E6%96%B0%E5%8D%97%E5%90%91%E5%9F%B9%E8%8B%B1%E5%B0%88%E6%A1%88%E2%94%80%E6%95%99%E8%82%B2%E9%83%A8%E7%8D%8E"
+    },
+    {
+      "id": 336,
+      "reason": "Re-verification found the official page disagrees with the stored record",
+      "source": "re-verification pass",
+      "official_source_url": "https://www.tuni.fi/en/tau/financial-matters/tuition-fees-and-scholarships"
+    },
+    {
+      "id": 305,
+      "reason": "Re-verification found the official page disagrees with the stored record",
+      "source": "re-verification pass",
+      "official_source_url": "https://sshrc-crsh.canada.ca/en/funding/opportunities/canada-graduate-research-scholarships/masters-program.aspx"
+    },
+    {
+      "id": 297,
+      "reason": "Re-verification found the official page disagrees with the stored record",
+      "source": "re-verification pass",
+      "official_source_url": "https://czs.muni.cz/en/student-from-abroad/other-possibilities/visegrad-grant"
+    },
+    {
+      "id": 288,
+      "reason": "Re-verification found the official page disagrees with the stored record",
+      "source": "re-verification pass",
+      "official_source_url": "https://www.bme.hu/en/scolarships"
+    },
+    {
+      "id": 275,
+      "reason": "Re-verification found the official page disagrees with the stored record",
+      "source": "re-verification pass",
+      "official_source_url": "https://www.bi.no/en/programmes-and-individual-courses/scholarships/master-of-science-international-scholarship--bergen"
+    },
+    {
+      "id": 388,
+      "reason": "Re-verification found the official page disagrees with the stored record",
+      "source": "re-verification pass",
+      "official_source_url": "https://www.nwo.nl/en/calls/embassy-science-fellowship-esf-nl-2027"
+    },
+    {
+      "id": 395,
+      "reason": "Re-verification found the official page disagrees with the stored record",
+      "source": "re-verification pass",
+      "official_source_url": "https://www.ru.nl/en/education/scholarships/radboud-scholarship-programme"
+    },
+    {
+      "id": 387,
+      "reason": "Re-verification found the official page disagrees with the stored record",
+      "source": "re-verification pass",
+      "official_source_url": "https://www.wur.nl/en/education/master/study-expenses-masters/scholarships"
+    },
+    {
+      "id": 357,
+      "reason": "Re-verification found the official page disagrees with the stored record",
+      "source": "re-verification pass",
+      "official_source_url": "https://momentummsca.mta.hu"
+    },
+    {
+      "id": 8,
+      "reason": "Re-verification found the official page disagrees with the stored record",
+      "source": "re-verification pass",
+      "official_source_url": "https://www.inde.campusfrance.org/charpak-master-s-scholarship"
+    },
+    {
+      "id": 15,
+      "reason": "Re-verification found the official page disagrees with the stored record",
+      "source": "re-verification pass",
+      "official_source_url": "https://www.epfl.ch/education/master/master-excellence-fellowships"
+    },
+    {
+      "id": 25,
+      "reason": "Re-verification found the official page disagrees with the stored record",
+      "source": "re-verification pass",
+      "official_source_url": "https://www.jasso.go.jp/en/ryugaku/scholarship_j/ukeire.html"
+    },
+    {
+      "id": 57,
+      "reason": "Re-verification found the official page disagrees with the stored record",
+      "source": "re-verification pass",
+      "official_source_url": "https://kmsp.wisc.edu"
+    },
+    {
+      "id": 90,
+      "reason": "Re-verification found the official page disagrees with the stored record",
+      "source": "re-verification pass",
+      "official_source_url": "https://uwaterloo.ca/future-students/financing/international-scholarships"
+    },
+    {
+      "id": 127,
+      "reason": "Re-verification found the official page disagrees with the stored record",
+      "source": "re-verification pass",
+      "official_source_url": "https://admission.princeton.edu/apply/international-students"
+    },
+    {
+      "id": 144,
+      "reason": "Re-verification found the official page disagrees with the stored record",
+      "source": "re-verification pass",
+      "official_source_url": "https://www.mofa.gov.tw/cp.aspx?n=72"
+    },
+    {
+      "id": 156,
+      "reason": "Re-verification found the official page disagrees with the stored record",
+      "source": "re-verification pass",
+      "official_source_url": "https://foundation.scg.ch/scholarships/werner-scholarship"
+    },
+    {
+      "id": 157,
+      "reason": "Re-verification found the official page disagrees with the stored record",
+      "source": "re-verification pass",
+      "official_source_url": "https://careers.cern/jobs/tsc-doct/"
+    },
+    {
+      "id": 202,
+      "reason": "Re-verification found the official page disagrees with the stored record",
+      "source": "re-verification pass",
+      "official_source_url": "https://www.rmit.edu.au/scholarships/international-scholarships/future-leaders-scholarship"
+    },
+    {
+      "id": 271,
+      "reason": "Re-verification found the official page disagrees with the stored record",
+      "source": "re-verification pass",
+      "official_source_url": "https://www.ku.dk/studies/masters/application-and-admission/scholarships"
+    },
+    {
+      "id": 325,
+      "reason": "Re-verification found the official page disagrees with the stored record",
+      "source": "re-verification pass",
+      "official_source_url": "https://study.fsv.cuni.cz/czech-government-scholarship-developing-countries-for-the-ay-2027-28"
+    },
+    {
+      "id": 327,
+      "reason": "Re-verification found the official page disagrees with the stored record",
+      "source": "re-verification pass",
+      "official_source_url": "https://www.visegradfund.org/visegrad-scholarship-program-apply"
+    },
+    {
+      "id": 382,
+      "reason": "Re-verification found the official page disagrees with the stored record",
+      "source": "re-verification pass",
+      "official_source_url": "https://vu.nl/en/education/more-about/incoming-master-scholarships"
+    },
+    {
+      "id": 10,
+      "reason": "Re-verification found the official page disagrees with the stored record",
+      "source": "re-verification pass",
+      "official_source_url": "https://www.deutschlandstipendium.de/deutschlandstipendium/de/stipendium/wie-es-funktioniert/wie-es-funktioniert.html"
+    },
+    {
+      "id": 13,
+      "reason": "Re-verification found the official page disagrees with the stored record",
+      "source": "re-verification pass",
+      "official_source_url": "https://www.postf.org/en/asia/abroad/business"
+    },
+    {
+      "id": 18,
+      "reason": "Re-verification found the official page disagrees with the stored record",
+      "source": "re-verification pass",
+      "official_source_url": "https://marie-sklodowska-curie-actions.ec.europa.eu/actions/doctoral-networks"
+    },
+    {
+      "id": 23,
+      "reason": "Re-verification found the official page disagrees with the stored record",
+      "source": "re-verification pass",
+      "official_source_url": "https://www2.daad.de/deutschland/stipendium/datenbank/en/21148-scholarship-database/?detail=50076777"
+    },
+    {
+      "id": 21,
+      "reason": "Re-verification found the official page disagrees with the stored record",
+      "source": "re-verification pass",
+      "official_source_url": "https://www2.daad.de/deutschland/stipendium/datenbank/en/21148-scholarship-database/?detail=50026200"
+    },
+    {
+      "id": 53,
+      "reason": "Re-verification found the official page disagrees with the stored record",
+      "source": "re-verification pass",
+      "official_source_url": "https://www.humphreyfellowship.org"
+    },
+    {
+      "id": 55,
+      "reason": "Re-verification found the official page disagrees with the stored record",
+      "source": "re-verification pass",
+      "official_source_url": "https://www.american.edu/admissions/international/au-egls-apply.cfm"
+    },
+    {
+      "id": 240,
+      "reason": "Re-verification found the official page disagrees with the stored record",
+      "source": "re-verification pass",
+      "official_source_url": "https://www.jasso.go.jp/en/ryugaku/scholarship_j/shoreihi/yoyaku_tonichimae.html"
+    },
+    {
+      "id": 268,
+      "reason": "Re-verification found the official page disagrees with the stored record",
+      "source": "re-verification pass",
+      "official_source_url": "https://studyindenmark.dk/study-options/scholarships"
+    },
+    {
+      "id": 16,
+      "reason": "Re-verification found the official page disagrees with the stored record",
+      "source": "re-verification pass",
+      "official_source_url": "https://marie-sklodowska-curie-actions.ec.europa.eu/actions/postdoctoral-fellowships"
+    },
+    {
+      "id": 34,
+      "reason": "Re-verification found the official page disagrees with the stored record",
+      "source": "re-verification pass",
+      "official_source_url": "https://taiwanscholarship.moe.gov.tw/web/pages.aspx?p=7"
+    },
+    {
+      "id": 87,
+      "reason": "Re-verification found the official page disagrees with the stored record",
+      "source": "re-verification pass",
+      "official_source_url": "https://future.mcmaster.ca/internationalawards"
+    },
+    {
+      "id": 97,
+      "reason": "Re-verification found the official page disagrees with the stored record",
+      "source": "re-verification pass",
+      "official_source_url": "https://bse.eu/masters-degrees/admissions"
+    },
+    {
+      "id": 106,
+      "reason": "Re-verification found the official page disagrees with the stored record",
+      "source": "re-verification pass",
+      "official_source_url": "https://www.ntu.edu.sg/admissions/undergraduate/scholarships/scholarship-opportunities/detail/nanyang-scholarship"
+    },
+    {
+      "id": 107,
+      "reason": "Re-verification found the official page disagrees with the stored record",
+      "source": "re-verification pass",
+      "official_source_url": "https://www.ntu.edu.sg/admissions/graduate/financialmatters/scholarships/npgs"
+    },
+    {
+      "id": 120,
+      "reason": "Re-verification found the official page disagrees with the stored record",
+      "source": "re-verification pass",
+      "official_source_url": "https://admissions.rochester.edu/handler-scholarship"
+    },
+    {
+      "id": 136,
+      "reason": "Re-verification found the official page disagrees with the stored record",
+      "source": "re-verification pass",
+      "official_source_url": "https://www.unipd.it/padua-international-excellence-scholarship-programme"
+    },
+    {
+      "id": 153,
+      "reason": "Re-verification found the official page disagrees with the stored record",
+      "source": "re-verification pass",
+      "official_source_url": "https://www.unil.ch/unil/en/home/menuinst/etudier/mobilite-et-echange/etudiantes-et-etudiants-internationaux/etudiantes-internationaux-reguliers/bourse-de-master.html"
+    },
+    {
+      "id": 154,
+      "reason": "Re-verification found the official page disagrees with the stored record",
+      "source": "re-verification pass",
+      "official_source_url": "https://funding.unisg.ch/en/programmes/1441"
+    },
+    {
+      "id": 161,
+      "reason": "Re-verification found the official page disagrees with the stored record",
+      "source": "re-verification pass",
+      "official_source_url": "https://www.wipo.int/en/web/working-at-wipo/fellowship-program"
+    },
+    {
+      "id": 180,
+      "reason": "Re-verification found the official page disagrees with the stored record",
+      "source": "re-verification pass",
+      "official_source_url": "https://www.maastrichtuniversity.nl/scholarships"
+    },
+    {
+      "id": 193,
+      "reason": "Re-verification found the official page disagrees with the stored record",
+      "source": "re-verification pass",
+      "official_source_url": "https://adelaide.edu.au/study/scholarships/int/adelaide-academic-excellence-scholarship-50"
+    },
+    {
+      "id": 220,
+      "reason": "Re-verification found the official page disagrees with the stored record",
+      "source": "re-verification pass",
+      "official_source_url": "https://phd.ista.ac.at/at-a-glance"
+    },
+    {
+      "id": 231,
+      "reason": "Re-verification found the official page disagrees with the stored record",
+      "source": "re-verification pass",
+      "official_source_url": "https://www2.daad.de/deutschland/stipendium/datenbank/en/21148-scholarship-database/?detail=57135744"
+    },
+    {
+      "id": 233,
+      "reason": "Re-verification found the official page disagrees with the stored record",
+      "source": "re-verification pass",
+      "official_source_url": "https://www2.daad.de/deutschland/stipendium/datenbank/en/21148-scholarship-database/?detail=57135743"
+    },
+    {
+      "id": 234,
+      "reason": "Re-verification found the official page disagrees with the stored record",
+      "source": "re-verification pass",
+      "official_source_url": "https://www2.daad.de/deutschland/stipendium/datenbank/en/21148-scholarship-database/?detail=50109971"
+    },
+    {
+      "id": 252,
+      "reason": "Re-verification found the official page disagrees with the stored record",
+      "source": "re-verification pass",
+      "official_source_url": "https://www.tcd.ie/study/international/scholarships/postgraduate/gexpg.php"
+    },
+    {
+      "id": 254,
+      "reason": "Re-verification found the official page disagrees with the stored record",
+      "source": "re-verification pass",
+      "official_source_url": "https://www.nzscholarships.govt.nz"
+    },
+    {
+      "id": 255,
+      "reason": "Re-verification found the official page disagrees with the stored record",
+      "source": "re-verification pass",
+      "official_source_url": "https://www.auckland.ac.nz/en/study/scholarships-and-awards/find-a-scholarship/university-of-auckland-international-student-excellence-scholarship-844-all.html"
+    },
+    {
+      "id": 260,
+      "reason": "Re-verification found the official page disagrees with the stored record",
+      "source": "re-verification pass",
+      "official_source_url": "https://www.wgtn.ac.nz/scholarships/current/vuw-postgraduate-international-scholarship"
+    },
+    {
+      "id": 98,
+      "reason": "Re-verification found the official page disagrees with the stored record",
+      "source": "re-verification pass",
+      "official_source_url": "https://www.ie.edu/financial-aid/masters/"
+    },
+    {
+      "id": 139,
+      "reason": "Re-verification found the official page disagrees with the stored record",
+      "source": "re-verification pass",
+      "official_source_url": "https://www.unibocconi.it/en/applying-bocconi/bachelor-and-law-programs/funding/isu-bocconi-scholarship-first-year-students-ay-2027-28"
+    },
+    {
+      "id": 158,
+      "reason": "Re-verification found the official page disagrees with the stored record",
+      "source": "re-verification pass",
+      "official_source_url": "https://careers.cern/programmes/research-fellowship/"
+    },
+    {
+      "id": 200,
+      "reason": "Re-verification found the official page disagrees with the stored record",
+      "source": "re-verification pass",
+      "official_source_url": "https://www.uts.edu.au/for-students/admissions-entry/scholarships/scholarships-search/uts-vice-chancellors-international-undergraduate-scholarship"
+    },
+    {
+      "id": 218,
+      "reason": "Re-verification found the official page disagrees with the stored record",
+      "source": "re-verification pass",
+      "official_source_url": "https://aai-salzburg.at/en/studies/apply"
+    },
+    {
+      "id": 244,
+      "reason": "Re-verification found the official page disagrees with the stored record",
+      "source": "re-verification pass",
+      "official_source_url": "https://yz.tsinghua.edu.cn/en/info/1027/1117.htm"
+    },
+    {
+      "id": 263,
+      "reason": "Re-verification found the official page disagrees with the stored record",
+      "source": "re-verification pass",
+      "official_source_url": "https://www.aalto.fi/en/admission-services/scholarships-and-tuition-fees"
+    },
+    {
+      "id": 274,
+      "reason": "Re-verification found the official page disagrees with the stored record",
+      "source": "re-verification pass",
+      "official_source_url": "https://www.bi.no/en/programmes-and-individual-courses/scholarships/bi-presidential-scholarships"
+    },
+    {
+      "id": 64,
+      "reason": "Re-verification found the official page disagrees with the stored record",
+      "source": "re-verification pass",
+      "official_source_url": "https://isss.uoregon.edu/icsp"
+    },
+    {
+      "id": 39,
+      "reason": "Re-verification found the official page disagrees with the stored record",
+      "source": "re-verification pass",
+      "official_source_url": "https://future.utoronto.ca/pearson"
+    },
+    {
+      "id": 168,
+      "reason": "Re-verification found the official page disagrees with the stored record",
+      "source": "re-verification pass",
+      "official_source_url": "https://www.eacea.ec.europa.eu/scholarships/erasmus-mundus-catalogue_en"
+    },
+    {
+      "id": 3,
+      "reason": "Re-verification found the official page disagrees with the stored record",
+      "source": "re-verification pass",
+      "official_source_url": "https://www.daad.de"
+    },
+    {
+      "id": 261,
+      "reason": "Re-verification found the official page disagrees with the stored record",
+      "source": "re-verification pass",
+      "official_source_url": "https://www.wgtn.ac.nz/international/scholarships-fees/scholarships"
+    },
+    {
+      "id": 20,
+      "reason": "Re-verification found the official page disagrees with the stored record",
+      "source": "re-verification pass",
+      "official_source_url": "https://aefe.gouv.fr/fr/enseignement-francais/poursuite-des-etudes-dans-le-superieur/devenir-boursier-france-excellence-major"
+    },
+    {
+      "id": 121,
+      "reason": "Re-verification found the official page disagrees with the stored record",
+      "source": "re-verification pass",
+      "official_source_url": "https://www.berea.edu/admissions"
+    },
+    {
+      "id": 69,
+      "reason": "Re-verification found the official page disagrees with the stored record",
+      "source": "re-verification pass",
+      "official_source_url": "https://www.cambridgetrust.org/postgraduate-applicants/"
+    },
+    {
+      "id": 40,
+      "reason": "Re-verification found the official page disagrees with the stored record",
+      "source": "re-verification pass",
+      "official_source_url": "https://www.ares-ac.be/en/scholarships"
+    },
+    {
+      "id": 41,
+      "reason": "Re-verification found the official page disagrees with the stored record",
+      "source": "re-verification pass",
+      "official_source_url": "https://www.aecid.es/es/becas-para-ciudadanos-de-paises-de-america-latina-africa-y-asia"
+    },
+    {
+      "id": 84,
+      "reason": "Re-verification found the official page disagrees with the stored record",
+      "source": "re-verification pass",
+      "official_source_url": "https://you.ubc.ca/financial-planning/scholarships-awards-international-students"
+    },
+    {
+      "id": 251,
+      "reason": "Re-verification found the official page disagrees with the stored record",
+      "source": "re-verification pass",
+      "official_source_url": "https://www.tcd.ie/study/international/scholarships/undergraduate/geug.php"
+    },
+    {
+      "id": 110,
+      "reason": "Re-verification found the official page disagrees with the stored record",
+      "source": "re-verification pass",
+      "official_source_url": "https://a2ascholarships.iccr.gov.in/scheme/quad-stem-scholarship"
+    },
+    {
+      "id": 111,
+      "reason": "Re-verification found the official page disagrees with the stored record",
+      "source": "re-verification pass",
+      "official_source_url": "https://a2ascholarships.iccr.gov.in/scheme/radhakrishnan-cultural-exchange"
+    },
+    {
+      "id": 269,
+      "reason": "Re-verification found the official page disagrees with the stored record",
+      "source": "re-verification pass",
+      "official_source_url": "https://www.dtu.dk/english/education/graduate/fees-and-funding/tuition_fee_waivers"
+    },
+    {
+      "id": 17,
+      "reason": "Re-verification found the official page disagrees with the stored record",
+      "source": "re-verification pass",
+      "official_source_url": "https://erasmus-plus.ec.europa.eu/opportunities/individuals/students/studying-abroad"
+    },
+    {
+      "id": 470,
+      "reason": "Re-verification found the official page disagrees with the stored record",
+      "source": "re-verification pass",
+      "official_source_url": "https://us.fulbrightonline.org/"
+    },
+    {
+      "id": 82,
+      "reason": "Re-verification found the official page disagrees with the stored record",
+      "source": "re-verification pass",
+      "official_source_url": "https://www.trudeaufoundation.ca/become-a-scholar"
+    },
+    {
+      "id": 290,
+      "reason": "Re-verification found the official page disagrees with the stored record",
+      "source": "re-verification pass",
+      "official_source_url": "https://nawa.gov.pl/en/students/foreign-students/poland-my-first-choice-programme/call-for-proposals-26"
+    },
+    {
+      "id": 289,
+      "reason": "Re-verification found the official page disagrees with the stored record",
+      "source": "re-verification pass",
+      "official_source_url": "https://nawa.gov.pl/en/students/foreign-students/the-banach-scholarship-programme/call-for-proposals"
+    },
+    {
+      "id": 62,
+      "reason": "Re-verification found the official page disagrees with the stored record",
+      "source": "re-verification pass",
+      "official_source_url": "https://knight-hennessy.stanford.edu/admission/preparing-your-applications/application-deadlines"
+    },
+    {
+      "id": 93,
+      "reason": "Re-verification found the official page disagrees with the stored record",
+      "source": "re-verification pass",
+      "official_source_url": "https://www.hec.edu/en/hec-paris-scholarships"
+    },
+    {
+      "id": 149,
+      "reason": "Re-verification found the official page disagrees with the stored record",
+      "source": "re-verification pass",
+      "official_source_url": "https://oga.site.nthu.edu.tw/p/412-1524-18035.php?Lang=en"
+    },
+    {
+      "id": 576,
+      "reason": "Re-verification found the official page disagrees with the stored record",
+      "source": "re-verification pass",
+      "official_source_url": "https://admission.kaist.ac.kr/intl-graduate/FinancialSupport/Scholarship/KAISTScholarship"
+    },
+    {
+      "id": 616,
+      "reason": "Re-verification found the official page disagrees with the stored record",
+      "source": "re-verification pass",
+      "official_source_url": "https://www.ntu.edu.sg/admissions/graduate/financialmatters/scholarships/npgs"
+    },
+    {
+      "id": 463,
+      "reason": "Re-verification found the official page disagrees with the stored record",
+      "source": "re-verification pass",
+      "official_source_url": "https://www.studienfinanzierung.uzh.ch/en/application_deadlines.html"
+    },
+    {
+      "id": 458,
+      "reason": "Re-verification found the official page disagrees with the stored record",
+      "source": "re-verification pass",
+      "official_source_url": "https://www.kth.se/en/studies/master/admissions/scholarships/kth-india-scholarship-1.422144"
+    },
+    {
+      "id": 455,
+      "reason": "Re-verification found the official page disagrees with the stored record",
+      "source": "re-verification pass",
+      "official_source_url": "https://www.mau.se/en/education/scholarships"
+    },
+    {
+      "id": 373,
+      "reason": "Re-verification found the official page disagrees with the stored record",
+      "source": "re-verification pass",
+      "official_source_url": "https://www.studyinjapan.go.jp/en/planning/scholarships/mext-scholarships"
+    },
+    {
+      "id": 358,
+      "reason": "Re-verification found the official page disagrees with the stored record",
+      "source": "re-verification pass",
+      "official_source_url": "https://diasporascholarship.hu/en/apply/"
+    },
+    {
+      "id": 354,
+      "reason": "Re-verification found the official page disagrees with the stored record",
+      "source": "re-verification pass",
+      "official_source_url": "https://inlife.sorbonne-universite.fr/en/education-1/international-mobility-grants-2026-2027"
+    },
+    {
+      "id": 619,
+      "reason": "Re-verification found the official page disagrees with the stored record",
+      "source": "re-verification pass",
+      "official_source_url": "https://nawa.gov.pl/en/students/foreign-students/poland-my-first-choice-programme/about-the-programme"
+    },
+    {
+      "id": 318,
+      "reason": "Re-verification found the official page disagrees with the stored record",
+      "source": "re-verification pass",
+      "official_source_url": "https://yz.tsinghua.edu.cn/en/info/1027/1391.htm"
+    },
+    {
+      "id": 317,
+      "reason": "Re-verification found the official page disagrees with the stored record",
+      "source": "re-verification pass",
+      "official_source_url": "https://yz.tsinghua.edu.cn/en/info/1027/1477.htm"
+    },
+    {
+      "id": 620,
+      "reason": "Re-verification found the official page disagrees with the stored record",
+      "source": "re-verification pass",
+      "official_source_url": "https://nawa.gov.pl/en/scientists/top200-nawa/about-the-programme"
+    },
+    {
+      "id": 400,
+      "reason": "Re-verification found the official page disagrees with the stored record",
+      "source": "re-verification pass",
+      "official_source_url": "https://www.mbie.govt.nz/science-and-technology/space/careers-scholarships-and-awards/new-zealand-space-scholarship"
+    },
+    {
+      "id": 355,
+      "reason": "Re-verification found the official page disagrees with the stored record",
+      "source": "re-verification pass",
+      "official_source_url": "https://www.sciencespo.fr/students/en/fees-funding/bursaries-financial-aid/mastercard-foundation-scholarships/graduate-study"
+    },
+    {
+      "id": 606,
+      "reason": "Re-verification found the official page disagrees with the stored record",
+      "source": "re-verification pass",
+      "official_source_url": "https://icssr.org/data-collection-abroad"
+    },
+    {
+      "id": 527,
+      "reason": "Re-verification found the official page disagrees with the stored record",
+      "source": "re-verification pass",
+      "official_source_url": "https://mo.ibrahim.foundation/fellowships"
+    },
+    {
+      "id": 609,
+      "reason": "Re-verification found the official page disagrees with the stored record",
+      "source": "re-verification pass",
+      "official_source_url": "https://aims.ac.za/academics/prospective_students"
+    },
+    {
+      "id": 612,
+      "reason": "Re-verification found the official page disagrees with the stored record",
+      "source": "re-verification pass",
+      "official_source_url": "https://www.gla.ac.uk/scholarships/sanctuaryscholarships"
+    },
+    {
+      "id": 56,
+      "reason": "Re-verification found the official page disagrees with the stored record",
+      "source": "re-verification pass",
+      "official_source_url": "https://www.jeffersonscholars.org/scholarships"
+    },
+    {
+      "id": 416,
+      "reason": "Re-verification found the official page disagrees with the stored record",
+      "source": "re-verification pass",
+      "official_source_url": "https://nawa.gov.pl/en/scientists/top200-nawa/about-the-programme"
+    },
+    {
+      "id": 326,
+      "reason": "Re-verification found the official page disagrees with the stored record",
+      "source": "re-verification pass",
+      "official_source_url": "https://cuni.cz/UKEN-2329.html"
+    },
+    {
+      "id": 295,
+      "reason": "Re-verification found the official page disagrees with the stored record",
+      "source": "re-verification pass",
+      "official_source_url": "https://cuni.cz/UKEN-1617.html"
+    },
+    {
+      "id": 421,
+      "reason": "Re-verification found the official page disagrees with the stored record",
+      "source": "re-verification pass",
+      "official_source_url": "https://nawa.gov.pl/en/students/foreign-students/poland-my-first-choice-programme"
+    },
+    {
+      "id": 417,
+      "reason": "Re-verification found the official page disagrees with the stored record",
+      "source": "re-verification pass",
+      "official_source_url": "https://nawa.gov.pl/en/scientists/the-bekker-programme"
+    },
+    {
+      "id": 194,
+      "reason": "Re-verification found the official page disagrees with the stored record",
+      "source": "re-verification pass",
+      "official_source_url": "https://scholarships.uq.edu.au/scholarship/uq-international-excellence-scholarship"
+    },
+    {
+      "id": 122,
+      "reason": "Re-verification found the official page disagrees with the stored record",
+      "source": "re-verification pass",
+      "official_source_url": "https://ousf.duke.edu/merit-scholarships/karsh-international-scholars-program/"
+    },
+    {
+      "id": 328,
+      "reason": "Re-verification found the official page disagrees with the stored record",
+      "source": "re-verification pass",
+      "official_source_url": "https://international.cvut.cz/students/incoming-students/ctu-scholarships/"
+    },
+    {
+      "id": 118,
+      "reason": "Re-verification found the official page disagrees with the stored record",
+      "source": "re-verification pass",
+      "official_source_url": "https://kiit.ac.in/scholarships-fellowships/"
+    },
+    {
+      "id": 215,
+      "reason": "Re-verification found the official page disagrees with the stored record",
+      "source": "re-verification pass",
+      "official_source_url": "https://ge.mofa.go.kr/ge-en/brd/m_28696/view.do?seq=118"
+    }
+  ],
+  "count": 158
+}

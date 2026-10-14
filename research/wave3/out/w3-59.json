@@ -1,0 +1,21 @@
+{
+  "agent_id": "w3_59",
+  "shard": "w3-59",
+  "host": "cshl.edu",
+  "today": "2026-10-04",
+  "logo_override": {
+    "url": "https://www.cshl.edu/wp-content/uploads/2017/04/cshllogo_standard_RGB.svg",
+    "page_url": "https://www.cshl.edu/news/logos/",
+    "official_host": true,
+    "alt_text": "Cold Spring Harbor Laboratory",
+    "validation_result": "verified",
+    "validation_detail": "raw GET 200, content-type image/svg+xml, 14879 bytes; webfetch on the same URL returned the SVG document itself (svg root, viewBox '0 0 332.48 57.89', title 'cshllogo_standard_RGB'), confirming HTTP 200 plus a real image content type and no HTML/WAF body; colour check per rule 3: every path is either class cls-1 { fill: #004982 } or class cls-2 { fill: none; stroke: #004982; stroke-width: 1.48px } - the CSHL navy, with no white fill anywhere in the file, so it renders dark on a light card; rendered it shows the navy DNA-interlace device plus the 'Cold Spring Harbor Laboratory' wordmark",
+    "image_kind": "official_logo",
+    "image_format": "svg",
+    "verified_at": "2026-10-04T00:00:00+00:00",
+    "host_evidence": "same_registrable_domain",
+    "_award": "CSHL School of Biological Sciences Ph.D. Program"
+  },
+  "target_ids": [697],
+  "notes": "Cold Spring Harbor Laboratory awards and runs the School of Biological Sciences Ph.D. Program, so CSHL's own mark is the correct logo under rule 2; CSHL is a private nonprofit research institution rather than a university or ministry, hence image_kind official_logo. CSHL publishes an official logo/download page at https://www.cshl.edu/news/logos/, which is where the accepted asset comes from - no guessing involved. The site's own header logo is this same file served through the NitroPack rewrite layer (alt=\"Logo\", nitro-lazy-src .../nitropack_static/PIZqeXISbpCcnYALLoaLxzuciMmyBMGe/assets/images/optimized/rev-b83bcae/www.cshl.edu/wp-content/uploads/2017/04/cshllogo_standard_RGB.svg); I report the original wp-content path, which serves the same bytes directly with HTTP 200 and no cache-buster hash. Probed and accepted: /wp-content/uploads/2017/04/cshllogo_standard_RGB.svg (200, image/svg+xml, 14879 B, navy #004982, viewBox 0 0 332.48 57.89). Probed and rejected: /wp-content/uploads/2018/07/cshllogo_standard_RGB_KO.png (200, image/png, 23648 B) and /wp-content/themes/cshl-coresite/logos/cshllogo_KO.svg (200, image/svg+xml, 13843 B) - both 'KO' = knockout reverse variants, and they really are white (KO svg uses fill #ffffff x2; KO png flattened on white measures mean luminance 255.0 with 0.0% dark pixels), so they are invisible on a light card and fail rule 3. Probed and rejected as lower fidelity: /wp-content/uploads/2018/07/cshllogo_standard_RGB.png (200, image/png, 26023 B, 1386x242) - the same standard navy logo as a raster, but composited on white it measures mean luminance 238 with 8.1% dark pixels (i.e. correct and dark, just a wide raster lockup with a lot of empty space), so the vector was preferred. Not used: /wp-content/themes/cshl-coresite/logos/logo-alternate-knockout.svg (knockout/white family by name) and the various CMYK/PMS .eps press files (not a web-renderable format in the brief's image_format list)."
+}

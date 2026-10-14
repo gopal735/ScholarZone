@@ -1,0 +1,218 @@
+{
+  "agent": "agent_408",
+  "records": [
+    {
+      "id": 12,
+      "official": {
+        "official_source_urls": [
+          "https://www.jasso.go.jp/en/ryugaku/scholarship_j/shoreihi/about.html",
+          "https://www.jasso.go.jp/en/ryugaku/scholarship_j/index.html",
+          "https://www.jasso.go.jp/en/ryugaku/scholarship_j/shoreihi/index.html"
+        ],
+        "application_link": "https://www.jasso.go.jp/en/ryugaku/scholarship_j/shoreihi/about.html",
+        "catalogue_url": "https://www.jasso.go.jp/en/ryugaku/scholarship_j/shoreihi/index.html",
+        "official_updates_url": "https://www.jasso.go.jp/en/ryugaku/scholarship_j/shoreihi/about.html",
+        "deadline_central": null,
+        "deadline_central_display": null,
+        "deadline_note": "The official page publishes no deadline date; it instructs applicants to ask the staff at the educational institution in which they are enrolled, so nomination timing is set by each institution.",
+        "application_cycle": "Ongoing programme; 2026 selection results published 5 June 2026",
+        "status": "OPEN",
+        "status_note": "The official page states that there are no universities or Japanese language institutes that have suspended application of this scholarship at present, and the 2026 selection results are published.",
+        "tuition_coverage_note": "The page defines the award as a monthly stipend and states only that 'Allowance (excluding enrollment fee, tuition fee, etc.) received by the candidate must not exceed an average of 90,000 yen per month'.",
+        "funding_amount": 48000,
+        "funding_currency": "JPY",
+        "funding_period": "per month",
+        "tuition_coverage": false,
+        "living_cost_coverage": true,
+        "travel_coverage": null,
+        "fully_funded": false,
+        "benefits": [
+          "Graduate/undergraduate level: 48,000 yen per month",
+          "Japanese language institutes: 30,000 yen per month",
+          "Scholarship period: 12 months (from April to next March) or 6 months (from October to next March)"
+        ],
+        "eligibility": [
+          "Privately-financed international students: enrolled in educational institutions, except the grantees of the Japanese Government (Monbukagakusho) Scholarship or any Foreign Government Scholarship, with the residence status of 'Student'",
+          "Enrolled as a full-time student in a graduate school in Japan, or holder of at least an undergraduate degree enrolled as a research student at the graduate level",
+          "Enrolled as a full-time student in an undergraduate school, junior college, college of technology (3rd year or above), or specialized course in a specialized training college in Japan",
+          "Enrolled as a full-time student in an advanced course in an undergraduate school, junior college, college of technology, or specialized training college",
+          "Enrolled in a preparatory Japanese language program, a university preparatory course, or a Japanese language institute in Japan with the objective to advance to higher education",
+          "Excellent academic and character records and facing financial difficulties"
+        ],
+        "requirements": [
+          "Must meet the grading criteria as specified in the application guidelines",
+          "Must meet the required condition of Japanese or English languages (except candidates studying at a preparatory Japanese language program, a university preparatory course, or Japanese language institutes)",
+          "After the scholarship is granted, must agree to cooperate in the career path survey conducted by JASSO through the enrolled institution or other methods",
+          "Allowance (excluding enrollment fee, tuition fee, etc.) received must not exceed an average of 90,000 yen per month",
+          "If the candidate has a financial supporter in Japan, that supporter's annual income must be less than 5 million yen",
+          "Must not be receiving a scholarship that cannot be combined with the Honors Scholarships",
+          "Must not be receiving support under JASSO's Student Exchange Support Program"
+        ],
+        "documents": null,
+        "selection_criteria": [
+          "The candidate must meet the grading criteria as specified in the application guidelines"
+        ],
+        "coverage": [
+          "Monthly stipend of 48,000 yen at graduate/undergraduate level and 30,000 yen at Japanese language institutes",
+          "Paid for 12 months (April to next March) or 6 months (October to next March)"
+        ],
+        "application_method": [
+          "Application is made through the enrolled educational institution: 'Please ask the staff at the educational institution in which you are enrolled'"
+        ],
+        "application_route": "Apply through the enrolled Japanese educational institution (the institution recommends the candidate to JASSO); direct application to JASSO is not possible",
+        "study_mode": "Full-time (eligibility is defined by full-time enrolment at the listed institution types)",
+        "citizenship_residency": "Must have the residence status of 'Student' in Japan and be a privately-financed international student (not a grantee of the Japanese Government (Monbukagakusho) Scholarship or any Foreign Government Scholarship)",
+        "international_eligibility": "Open to privately-financed international students with the residence status of 'Student' enrolled at a Japanese educational institution",
+        "subject_or_agency_requirement": null,
+        "research_requirement": null,
+        "duration": "12 months (from April to next March) or 6 months (from October to next March)",
+        "description": "JASSO's scholarship programme for privately-financed international students with excellent academic and character records who are enrolled in undergraduate schools, graduate schools, junior colleges, colleges of technology, specialized courses in specialized training colleges, university preparatory courses or Japanese language institutes in Japan and are facing financial difficulties. It pays a monthly stipend of 48,000 yen at graduate/undergraduate level and 30,000 yen at Japanese language institutes, and recipients must sign the JASSO-designated sheet monthly at the international students' office.",
+        "region": "East Asia (Japan)",
+        "program_type": "Monbukagakusho Honors Scholarship for Privately-Financed International Students, administered by the Japan Student Services Organization (JASSO)",
+        "english_requirement": "Japanese: N2 level or higher in JLPT, or a score of 200 points or more in Japanese as a Foreign Language of EJU, or a language level separately recognized by JASSO. English: B2 level or higher in CEFR. Language requirement does not apply to candidates studying at a preparatory Japanese language program, a university preparatory course, or Japanese language institutes."
+      },
+      "verification": {
+        "source_citations": [
+          "https://www.jasso.go.jp/en/ryugaku/scholarship_j/shoreihi/about.html"
+        ],
+        "last_verified_date": "2026-10-10",
+        "verification_status": "confirmed",
+        "confidence": "high",
+        "not_confirmed": [
+          "deadline_central",
+          "deadline_central_display",
+          "documents (the English page publishes no document list and directs applicants to the institution)",
+          "travel_coverage (not mentioned on the official page)"
+        ],
+        "notes": "Amounts, period, eligibility, conditions, language requirement and application route were verified directly on JASSO's official English page for this scholarship on 2026-10-10; no central deadline or document list is published on that page."
+      },
+      "applicant_utility": {
+        "summary": "The stipend is 48,000 yen per month at undergraduate/graduate level (30,000 yen at Japanese language institutes), paid for either 12 months from April or 6 months from October, and it is a living-cost stipend only. You cannot apply directly to JASSO: your school nominates you within a quota that depends on how many international students it enrolls, so the first step is your international student office. The grant is blocked if you hold a MEXT or foreign government scholarship, receive other allowances averaging over 90,000 yen a month (excluding tuition/enrollment fee), have a Japan-based supporter earning 5 million yen or more a year, or also draw on the JASSO Student Exchange Support Program. Keep the language evidence ready (JLPT N2+, EJU Japanese 200+, or B2 CEFR English) unless you study at a Japanese-language or preparatory programme, which is exempt.",
+        "best_fit": "Privately-financed students already enrolled in Japan who can survive a competitive, institution-gated nomination and need monthly living support rather than tuition.",
+        "application_readiness_checklist": [
+          "Confirm with your school's international student office that it nominates students for this scholarship, and obtain its current application guidelines and the number of recommendation slots.",
+          "Identify which window your school nominates for (12 months from April or 6 months from October) so you apply in the round that matches your enrolment stage.",
+          "Gather the supporter's income certificate if you have a financial supporter in Japan, and total your other allowances to check the 90,000 yen-per-month average cap (tuition and enrollment fee excluded).",
+          "Verify your language evidence (JLPT N2+, EJU Japanese 200+ in Japanese as a Foreign Language, or B2 CEFR English) if you are not at an exempt Japanese-language or preparatory programme."
+        ],
+        "common_rejection_risks": [
+          "Your institution fills its recommendation quota with higher-graded students, or your institution does not nominate at all for this scholarship.",
+          "Failing the grading criteria set out in the current year's application guidelines.",
+          "Other allowances (excluding tuition and enrollment fee) averaging more than 90,000 yen per month, or a Japan-based financial supporter with annual income of 5 million yen or more.",
+          "Holding a MEXT scholarship, a foreign government scholarship, or the JASSO Student Exchange Support Program, all of which bar an award.",
+          "Not meeting the Japanese/English language condition at a non-exempt institution type."
+        ],
+        "estimated_uncovered_costs": "Enrollment and tuition fees, international airfare, visa and travel costs, health-insurance costs, and any accommodation or living expenses beyond what the 48,000 yen monthly stipend covers.",
+        "document_audit": "The official English page publishes no document list, so every form comes from your institution's guidelines; obtain the current application guidelines and form directly from the international student office rather than reusing a previous round's paperwork or forms from another school.",
+        "alerts": [
+          "Institutions that have suspended this scholarship are listed on the official page (currently none), but you must confirm your own school participates before planning around the grant.",
+          "Grant recipients must sign the JASSO-designated sheet every month at the international students' office and must agree to cooperate with JASSO's career path survey after the award.",
+          "The 2026 selection results were published on 5 June 2026; if you missed that round, ask your school about the 6-month October intake instead."
+        ],
+        "submission_workflow": "You submit nothing to JASSO yourself: your institution screens and recommends you, JASSO makes the award decision for the institution's designated round, and payments follow the institution's schedule."
+      }
+    },
+    {
+      "id": 25,
+      "official": {
+        "official_source_urls": [
+          "https://www.jasso.go.jp/en/ryugaku/scholarship_j/ukeire.html",
+          "https://www.jasso.go.jp/en/ryugaku/scholarship_j/index.html"
+        ],
+        "application_link": "https://www.jasso.go.jp/en/ryugaku/scholarship_j/ukeire.html",
+        "catalogue_url": null,
+        "official_updates_url": null,
+        "deadline_central": null,
+        "deadline_central_display": null,
+        "deadline_note": "The official page publishes no deadline; applications are accepted only from the Japanese school, and each school and program has its own selection timing and designated start period, so timing must be confirmed with the home school.",
+        "application_cycle": null,
+        "status": "OPEN",
+        "status_note": "Ongoing JASSO programme; the official page is stated 'As of January 31, 2024' and JASSO continues to fund accepted exchange students through Japanese schools.",
+        "tuition_coverage_note": null,
+        "funding_amount": 80000,
+        "funding_currency": "JPY",
+        "funding_period": "per month",
+        "tuition_coverage": null,
+        "living_cost_coverage": true,
+        "travel_coverage": null,
+        "fully_funded": false,
+        "benefits": [
+          "Monthly stipend: 80,000 JPY"
+        ],
+        "eligibility": [
+          "Students from all countries that have diplomatic relations with Japan (students from Taiwan and Palestine are acceptable)",
+          "Students accepted by a Japanese school (university, graduate school, junior college, college of technology or professional training college) under a student exchange agreement or other student exchange arrangement with their home school",
+          "Students not having the financial means to study in Japan, who upon termination of the period of study in Japan will complete their studies at their home school",
+          "Students eligible for the 'Student' visa (for study in Japan for 90 days or less, the Japanese school will arrange the status of residence)",
+          "Students demonstrating excellent academic and personal records at their home school",
+          "Students receiving more than 80,000 JPY per month in total from other scholarships for study in Japan are ineligible for this scholarship"
+        ],
+        "requirements": null,
+        "documents": null,
+        "selection_criteria": [
+          "Upon screening the application documents submitted by the Japanese school, JASSO will decide the programs to support and notify the results",
+          "The selection method of scholarship recipients is different from each school and each program"
+        ],
+        "coverage": [
+          "Monthly stipend of 80,000 JPY for the period of study in Japan"
+        ],
+        "application_method": [
+          "Applications for the scholarship will be accepted only from the Japanese school; students should ask their home school for further information and inquiry"
+        ],
+        "application_route": "Apply to the exchange programme through the home school; the Japanese host university submits the scholarship application to JASSO (direct application to JASSO is not possible)",
+        "study_mode": null,
+        "citizenship_residency": "Students from all countries that have diplomatic relations with Japan (students from Taiwan and Palestine are acceptable) who are eligible for the 'Student' visa; for study in Japan of 90 days or less the Japanese school arranges the status of residence",
+        "international_eligibility": true,
+        "subject_or_agency_requirement": null,
+        "research_requirement": null,
+        "duration": "8 days to one year (short-term study in Japan under an exchange agreement or other student exchange arrangement)",
+        "description": "JASSO offers a scholarship to qualified international students accepted by a Japanese university, graduate school, junior college, college of technology or professional training college under a student exchange agreement or other student exchange arrangement on a short-term basis from 8 days to one year between the Japanese school and their home higher educational institution outside Japan. Applications are accepted only from the Japanese school, and JASSO decides which programs to support after screening the documents.",
+        "region": "Asia (Japan)",
+        "program_type": "Student Exchange Support Program (Scholarship for Study in Japan under Agreement), administered by the Japan Student Services Organization (JASSO)",
+        "english_requirement": null
+      },
+      "verification": {
+        "source_citations": [
+          "https://www.jasso.go.jp/en/ryugaku/scholarship_j/ukeire.html"
+        ],
+        "last_verified_date": "2026-10-10",
+        "verification_status": "confirmed",
+        "confidence": "high",
+        "not_confirmed": [
+          "deadline_central",
+          "deadline_central_display",
+          "application_cycle (no named cycle on the official page)",
+          "documents (no document list published on the official English page)",
+          "english_requirement (not published on the official page)",
+          "study_mode (not published on the official page)",
+          "tuition_coverage and travel_coverage (not addressed on the official page)"
+        ],
+        "notes": "Amount (80,000 JPY per month), the 8-day to 1-year exchange framework, the seven eligibility conditions, and the application route (Japanese school only) were verified directly on JASSO's official English page on 2026-10-10; the page is dated 'As of January 31, 2024' and publishes no deadline, document list, or English requirement."
+      },
+      "applicant_utility": {
+        "summary": "This is JASSO's stipend for short-term exchange students (8 days to one year) studying at a Japanese university under an exchange agreement with their home institution, paid as a flat 80,000 yen per month. You can never apply directly: only the Japanese host university can submit the scholarship application to JASSO, and the selection method differs from school to school, so your starting point is your home school's exchange office. The award only fits you if your total scholarship income for study in Japan stays at or below 80,000 yen a month and you will return to your home institution after the programme.",
+        "best_fit": "Exchange students on active partner agreements who need monthly living support for a stay of 8 days to one year and have no other Japan-study scholarship stacked on top.",
+        "application_readiness_checklist": [
+          "Confirm your home school has an exchange agreement or arrangement with the specific Japanese school and that your programme runs between 8 days and one year.",
+          "Ask the home school how the host university screens and nominates exchange students for this stipend, since JASSO accepts applications only from the Japanese school.",
+          "Total every other scholarship or allowance for study in Japan and confirm the combined monthly amount does not exceed 80,000 yen.",
+          "Match your stay length to the visa rule: 90 days or less means the Japanese school arranges your status of residence, while longer stays require 'Student' visa eligibility."
+        ],
+        "common_rejection_risks": [
+          "No exchange agreement between your home school and the Japanese school, or the Japanese school does not nominate exchange students.",
+          "Combined scholarships for study in Japan above 80,000 yen per month, which makes you ineligible regardless of need.",
+          "You cannot show that you will return to your home school and complete your studies there after the Japanese programme.",
+          "Missing the host school's exchange window, because students must start within the school's designated period and selection timing is school-specific."
+        ],
+        "estimated_uncovered_costs": "Any tuition charged by the Japanese school, international airfare, accommodation beyond the 80,000 yen monthly stipend, insurance, and other day-to-day living costs.",
+        "document_audit": "JASSO's English page lists no documents, so the paperwork is defined by your home school and the host university; the one document-point that matters is clear proof of acceptance under the exchange agreement, which is what the host school attaches when nominating you.",
+        "alerts": [
+          "Applications are accepted only from the Japanese school, so no amount of direct contact with JASSO will get you funded.",
+          "Students from Taiwan and Palestine are acceptable even though the rule is phrased as countries with diplomatic relations with Japan.",
+          "The official page is dated 'As of January 31, 2024'; confirm the current terms and amount with the host university before relying on this page."
+        ],
+        "submission_workflow": "Apply to the exchange programme through your home school; the Japanese host university screens and submits the scholarship application to JASSO, which decides which programmes to support."
+      }
+    }
+  ]
+}

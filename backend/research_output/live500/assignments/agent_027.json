@@ -1,0 +1,76 @@
+{
+ "agent": "agent_027",
+ "assignment_count": 1,
+ "scholarships": [
+  {
+   "id": 89,
+   "title": "York University President's International Scholarship of Excellence",
+   "country": "Canada",
+   "degree": "Bachelor's",
+   "funding_label": "Partially Funded",
+   "status": "open",
+   "official_source": "York University",
+   "official_source_url": "https://futurestudents.yorku.ca/financing-your-degree/international-scholarships/presidents-international-scholarship-excellence",
+   "application_link": "https://futurestudents.yorku.ca/financing-your-degree/international-scholarships/presidents-international-scholarship-excellence",
+   "catalogue_url": null,
+   "official_updates_url": null,
+   "existing": {
+    "funding_amount": null,
+    "funding_currency": null,
+    "funding_period": null,
+    "tuition_coverage": null,
+    "living_cost_coverage": null,
+    "travel_coverage": null,
+    "fully_funded": 0,
+    "description": null,
+    "eligibility": [],
+    "eligibility_summary": "International high school applicants with academic excellence + volunteer + extracurricular record.",
+    "benefits": [
+     "$45,000 CAD/year × 4 years ($180,000 total)"
+    ],
+    "coverage": [
+     "$45,000 CAD/year × 4 years ($180,000 total)"
+    ],
+    "requirements": [],
+    "documents": [],
+    "english_requirement": null,
+    "application_method": [],
+    "selection_notes": null,
+    "best_fit": null,
+    "notes": null,
+    "duration": null,
+    "application_period": null,
+    "deadline_display": "~January 26, 2026",
+    "deadline_date": null,
+    "region": "North America",
+    "program_type": null,
+    "applicant_utility": null,
+    "official_details": null
+   },
+   "missing_fields": [
+    "funding_amount",
+    "funding_currency",
+    "funding_period",
+    "tuition_coverage",
+    "living_cost_coverage",
+    "travel_coverage",
+    "description",
+    "eligibility",
+    "requirements",
+    "documents",
+    "english_requirement",
+    "application_method",
+    "selection_notes",
+    "best_fit",
+    "notes",
+    "duration",
+    "application_period",
+    "deadline_date",
+    "program_type",
+    "applicant_utility",
+    "official_details"
+   ]
+  }
+ ],
+ "result_file": "C:\\Users\\GopaL\\Desktop\\Projects folder\\ScholarZone\\backend\\research_output\\live500\\results\\agent_027.json"
+}

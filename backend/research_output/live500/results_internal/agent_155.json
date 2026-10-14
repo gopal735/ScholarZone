@@ -1,0 +1,120 @@
+{
+  "agent": "agent_155",
+  "records": [
+    {
+      "id": 413,
+      "official": {
+        "official_source_urls": [
+          "https://www.gov.pl/web/bialorus/program-im-konstantego-kalinowskiego",
+          "https://study.gov.pl/pl/stypendia-dla-student-w-z-kraj-w-partnerstwa-wschodniego-oraz-z-kraj-w-postsowieckich"
+        ],
+        "application_link": "https://www.gov.pl/web/bialorus/program-im-konstantego-kalinowskiego",
+        "catalogue_url": null,
+        "official_updates_url": null,
+        "deadline_central": null,
+        "deadline_central_display": null,
+        "deadline_note": "The Government of Poland portal states that applications are accepted from 31 August 2020 on a continuous basis until the limit of places is exhausted; no closing date is published.",
+        "application_cycle": "Continuous recruitment from 31 August 2020 until the limit of places is exhausted",
+        "status": "OPEN",
+        "status_note": "The Government of Poland portal describes a continuous recruitment that has run since 31 August 2020 until the place limit is exhausted; the announcement is dated 30 October 2020, so current availability should be confirmed directly with the Programme Director.",
+        "tuition_coverage_note": null,
+        "funding_amount": null,
+        "funding_currency": null,
+        "funding_period": null,
+        "tuition_coverage": null,
+        "living_cost_coverage": null,
+        "travel_coverage": null,
+        "fully_funded": false,
+        "benefits": [
+          "Scholarships for bachelor's, master's and doctoral studies",
+          "Research internships and postgraduate studies in all fields of study",
+          "Programme KK II: a one-year research stay in Warsaw",
+          "Possibility to undertake doctoral studies and individual research-and-teaching work within research internships"
+        ],
+        "eligibility": [
+          "Addressed in particular to socially and politically active citizens of Belarus who, because of their political activity, cannot continue their education in their own country",
+          "Open to applicants for bachelor's, master's and doctoral studies, research internships and postgraduate study, in all fields of study",
+          "Programme KK I: studies at higher education institutions across Poland; Programme KK II: a one-year research stay in Warsaw"
+        ],
+        "requirements": [
+          "Formal requirements and the necessary documents are set out in the Programme folders published on the Studium Europy Wschodniej UW website (studium.uw.edu.pl)",
+          "Direct any questions about support to bialorus.studium@uw.edu.pl"
+        ],
+        "documents": null,
+        "selection_criteria": null,
+        "coverage": [
+          "Scholarships for bachelor's, master's and doctoral studies at Polish higher education institutions",
+          "Research internships and postgraduate studies in all fields of study",
+          "Programme KK II: one-year research stays in Warsaw"
+        ],
+        "application_method": [
+          "Apply through the Programme Director's recruitment, run in agreement with the state and university authorities",
+          "Consult the Programme folders published on the Studium Europy Wschodniej UW website for formal requirements and required documents"
+        ],
+        "application_route": "Apply through the Programme Director's continuous recruitment; the Government portal directs applicants to the Programme folders on the Studium Europy Wschodniej UW website and to bialorus.studium@uw.edu.pl.",
+        "study_mode": null,
+        "citizenship_residency": "Addressed to citizens of Belarus, in particular those who cannot continue their education in Belarus because of their political activity",
+        "international_eligibility": true,
+        "subject_or_agency_requirement": "Open to all fields of study; the programme is addressed specifically to Belarusian applicants",
+        "research_requirement": "The programme offers research internships (staze naukowe) and supports doctoral studies and individual research-and-teaching work.",
+        "duration": "Programme KK II is a one-year research stay in Warsaw; the duration of Programme KK I studies is not published on the official pages reached",
+        "description": "The Konstanty Kalinowski Scholarship Programme is a Polish Government scholarship programme addressed in particular to socially and politically active citizens of Belarus who cannot continue their education in their own country because of their political activity. It offers scholarships for bachelor's, master's and doctoral studies as well as research internships and postgraduate studies in all fields of study, and runs two strands: Programme KK I for studies at institutions across Poland and Programme KK II for one-year research stays in Warsaw.",
+        "region": "Europe",
+        "program_type": "Government scholarship programme for Belarusian students unable to continue their education in Belarus",
+        "english_requirement": null
+      },
+      "verification": {
+        "source_citations": [
+          "https://www.gov.pl/web/bialorus/program-im-konstantego-kalinowskiego",
+          "https://study.gov.pl/pl/stypendia-dla-student-w-z-kraj-w-partnerstwa-wschodniego-oraz-z-kraj-w-postsowieckich"
+        ],
+        "last_verified_date": "2026-10-10",
+        "verification_status": "partially_confirmed",
+        "confidence": "medium",
+        "not_confirmed": [
+          "funding_amount",
+          "funding_currency",
+          "funding_period",
+          "tuition_coverage",
+          "living_cost_coverage",
+          "travel_coverage",
+          "documents",
+          "selection_criteria",
+          "current_round_status"
+        ],
+        "notes": "The URL stored in the catalogue (study.gov.pl/konstanty-kalinowski-scholarship-programme) returns HTTP 404. The live official pages are the Government of Poland portal and the NAWA-operated study.gov.pl scholarship overview, both of which were read directly. Neither publishes a monetary figure. The programme operator's site, studium.uw.edu.pl, was unreachable across four attempts, so the current call folder could not be checked. Note that the catalogue description listing Georgia, Ukraine, Armenia, Azerbaijan and Moldova does not match the official description: the official pages address the programme specifically to citizens of Belarus."
+      },
+      "applicant_utility": {
+        "summary": "This programme is not a general Eastern Partnership scholarship - the official pages address it specifically to citizens of Belarus who cannot continue their education because of their political activity, so check that framing before you invest time in an application. There is no published stipend figure on the Government or NAWA pages, and the actual formal requirements and document list live in the Programme folders on the Studium Europy Wschodniej UW site, so treat that folder as the real application brief. Recruitment has run continuously since 31 August 2020 until the place limit is exhausted, which means you apply when you are ready rather than waiting for a window - but it also means places can run out without notice.",
+        "best_fit": "Belarusian citizens who have been expelled from or blocked from Belarusian higher education for political reasons and want to begin or continue a degree or research stay in Poland.",
+        "application_readiness_checklist": [
+          "Confirm you fit the programme's stated target group - socially and politically active Belarusian citizens unable to continue their education in Belarus - because that framing is the eligibility gate",
+          "Locate and read the current Programme folder on studium.uw.edu.pl; it is the only place the formal requirements and required documents are published",
+          "Decide early whether you are applying for Programme KK I (degree studies across Poland) or Programme KK II (a one-year research stay in Warsaw), because they are separate recruitments",
+          "Email bialorus.studium@uw.edu.pl before submitting to confirm places are still available, since recruitment is capped by a place limit rather than a deadline",
+          "Prepare your academic record and evidence of your Belarusian study situation in advance, as these will be central to the application"
+        ],
+        "common_rejection_risks": [
+          "Assuming the programme is open to all Eastern Partnership nationals; the official pages address it specifically to Belarusian applicants",
+          "Relying on aggregator pages that quote a monthly stipend - no figure is published on the awarding body's own pages",
+          "Submitting without reading the Programme folder on studium.uw.edu.pl, which is where the formal requirements and document list actually live",
+          "Applying too late in a continuous recruitment that is capped by a place limit rather than a deadline",
+          "Confusing Programme KK I and Programme KK II and preparing for the wrong strand"
+        ],
+        "estimated_uncovered_costs": "Not published. The Government and NAWA pages reached do not state what the scholarship covers or excludes, so you cannot budget from them - confirm the coverage explicitly with the Programme Director before accepting a place.",
+        "document_audit": [
+          "No document list is published on the Government of Poland portal or on study.gov.pl - the requirements sit in the Programme folders on studium.uw.edu.pl",
+          "The Government portal points to studium.uw.edu.pl for all formal requirements; if that site is unreachable, email bialorus.studium@uw.edu.pl for the folder rather than relying on second-hand summaries",
+          "Be ready to evidence your inability to continue education in Belarus, since that is the programme's stated basis"
+        ],
+        "alerts": [
+          "The URL stored in the catalogue for this scholarship is dead (study.gov.pl/konstanty-kalinowski-scholarship-programme returns 404) - use the Government of Poland portal or study.gov.pl's scholarship overview instead",
+          "Recruitment is continuous and capped by a place limit, not a deadline, so availability can close without an announcement",
+          "The official announcement on the Government portal is dated 30 October 2020, so verify that the programme is still running before you commit time to it",
+          "Two separate strands exist (KK I for studies, KK II for a one-year Warsaw research stay) and they are recruited separately"
+        ],
+        "submission_workflow": "Read the Programme folder on studium.uw.edu.pl, then apply to the Programme Director's continuous recruitment for either Programme KK I or Programme KK II."
+      }
+    }
+  ]
+}

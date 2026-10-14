@@ -1,0 +1,303 @@
+{
+  "agent": {
+    "agent_id": "agent_374",
+    "batch": "r2_05",
+    "researched_at": "2026-10-10T20:38:29Z",
+    "research_mode": "LIVE",
+    "coverage": 2
+  },
+  "id": 267,
+  "records": [
+    {
+      "id": 267,
+      "identity": {
+        "name": "LUT Scholarship and Early Bird Discount (master's studies)",
+        "awarding_body": "LUT University",
+        "issuing_authority": "LUT University",
+        "official_source_urls": [
+          "https://www.lut.fi/en/studies/apply-lut/applying-masters-programmes/rolling-admission-masters-studies/early-bird-discount-and-scholarships-masters-studies"
+        ],
+        "application_link": "https://www.lut.fi/en/studies/apply-lut/applying-masters-programmes/rolling-admission-masters-studies/early-bird-discount-and-scholarships-masters-studies",
+        "catalogue_url": "https://www.lut.fi/en/studies/technology/masters-programmes-technology",
+        "official_updates_url": "https://www.lut.fi/en/studies/apply-lut/applying-masters-programmes/rolling-admission-masters-studies/early-bird-discount-and-scholarships-masters-studies",
+        "status": "OPEN",
+        "verifiable_urls": [
+          {
+            "url": "https://www.lut.fi/en/studies/apply-lut/applying-masters-programmes/rolling-admission-masters-studies/early-bird-discount-and-scholarships-masters-studies",
+            "publisher": "LUT University",
+            "kind": "discounts for master's programmes"
+          },
+          {
+            "url": "https://www.lut.fi/en",
+            "publisher": "LUT University",
+            "kind": "LUT homepage with application dates"
+          },
+          {
+            "url": "https://elut.lut.fi/en/completing-studies/tuition-fee/scholarship-masters-studies",
+            "publisher": "LUT University",
+            "kind": "eLUT student portal page for the master's scholarship"
+          }
+        ]
+      },
+      "description": "LUT University reduces tuition for fee-paying students in its two-year master's programmes in two automatic steps. Every tuition-liable student who accepts their study place and pays the remaining first-year fee of EUR 10,000 within 21 days of the official admission email receives an early bird discount of EUR 5,000. In the second academic year, every student who has completed at least 60 ECTS credits in accordance with their personal study plan and pays the second-year fee on time receives a LUT scholarship of EUR 5,000. Neither award covers living costs, and partner (joint) programmes follow separate scholarship policies.",
+      "official": {
+        "program_type": "Automatic tuition fee discount (early bird) and study-progress tuition scholarship",
+        "eligibility": [
+          "Required to pay tuition fees in a LUT two-year master's programme",
+          "Early bird discount: accept the study place and pay the remaining first-year tuition fee of EUR 10,000 within 21 days of the official admission email",
+          "LUT scholarship: complete at least 60 ECTS credits during the first academic year in accordance with the personal study plan",
+          "LUT scholarship: the required 60 ECTS credits must be included on the Transcript of Records by 31 July (the end of the academic year)",
+          "LUT scholarship: pay the second-year tuition fee on time",
+          "Partner (joint) programmes have separate scholarship policies and are excluded"
+        ],
+        "benefits": [
+          "Early bird discount of EUR 5,000 in the first academic year",
+          "LUT scholarship of EUR 5,000 in the second academic year",
+          "Progress is checked automatically from the Transcript of Records"
+        ],
+        "selection_criteria": [
+          "No competitive selection is applied; LUT states that fee-paying students who meet the payment or ECTS conditions will receive the discount or scholarship",
+          "Second-year eligibility is measured purely on 60 ECTS completed per the personal study plan"
+        ],
+        "application_process": [
+          "No scholarship application exists for either award",
+          "Early bird discount: accept the study place and pay the remaining first-year tuition fee of EUR 10,000 within 21 days of the official admission email",
+          "LUT scholarship: progress is checked automatically from the Transcript of Records once 60 ECTS are recorded by 31 July, provided the second-year tuition fee is paid on time"
+        ],
+        "duration": "The early bird discount applies to the first academic year and the LUT scholarship to the second academic year of a two-year master's programme",
+        "key_dates": [
+          "21 days from the official admission email: deadline to accept and pay to claim the early bird discount",
+          "31 July: deadline for the 60 ECTS to appear on the Transcript of Records",
+          "Applications to English-language master's programmes open until 31 March 2027; bachelor's programmes until 30 April 2027 (LUT homepage)"
+        ]
+      },
+      "verification": {
+        "confidence": "high",
+        "deadlines": [
+          {
+            "label": "Early bird payment window",
+            "date": null,
+            "date_display": "within 21 days of the official admission email",
+            "note": "Fixed relative deadline: accept the study place and pay the remaining first-year tuition fee of EUR 10,000 within 21 days of receiving the official admission email. No absolute calendar date is published."
+          },
+          {
+            "label": "ECTS checkpoint",
+            "date": "2027-07-31",
+            "date_display": "31 July 2027",
+            "note": "The required 60 ECTS credits must be on the Transcript of Records by 31 July, the end of the academic year."
+          }
+        ],
+        "deadline_central": null,
+        "deadline_display": null,
+        "deadline_note": "There is no scholarship deadline because there is no scholarship application. The two binding dates are the 21-day payment window after the admission email and the 31 July ECTS checkpoint.",
+        "application_cycle": "Per admission intake; LUT's homepage states applications to English-language master's programmes are open until 31 March 2027",
+        "funding_amount": 5000,
+        "funding_currency": "EUR",
+        "funding_period": "per academic year (first and second year)",
+        "tuition_coverage_note": "Both awards are reductions of the tuition fee. LUT states that tuition-liable students \"will receive\" the EUR 5,000 discount in year one and the EUR 5,000 scholarship in year two; neither is described as covering living costs.",
+        "living_cost_coverage": false,
+        "travel_coverage": null,
+        "tuition_coverage": true,
+        "fully_funded": false,
+        "english_requirement": null,
+        "status_note": "LUT describes both awards as automatic entitlements for fee-paying students who meet the payment or ECTS conditions, not as competitive awards. The information applies only to LUT's two-year master's programmes.",
+        "source_citations": [
+          "https://www.lut.fi/en/studies/apply-lut/applying-masters-programmes/rolling-admission-masters-studies/early-bird-discount-and-scholarships-masters-studies",
+          "https://www.lut.fi/en",
+          "https://elut.lut.fi/en/completing-studies/tuition-fee/scholarship-masters-studies"
+        ],
+        "not_confirmed": [
+          "living costs coverage (not part of either award)",
+          "any travel or installation allowance",
+          "English language requirements (published separately on the English proficiency page, not on the discounts page)",
+          "how the two awards interact with double degree and other partner programmes, which are explicitly carved out",
+          "whether the early bird discount is available to admitted students who miss the 21-day window but pay later"
+        ],
+        "documents": [
+          "None specific to the awards; both follow from admission, payment and Transcript of Records records"
+        ]
+      },
+      "applicant_utility": {
+        "description": "Read this as a tuition reduction scheme rather than a scholarship in the competitive sense: there is no application and no selection, so the only thing that can cost you the money is your own timing. Year one is decided inside a 21-day window after the admission email, and year two is decided by whether 60 ECTS land on your Transcript of Records by 31 July. Neither reduces your living costs at all, so if you need money to live on in Lappeenranta, this award does not help and you should be looking at Finnish student financial aid or external funders instead.",
+        "eligibility_tips": [
+          "You must be a tuition-liable student in a LUT two-year master's programme. If you are fee-exempt there is nothing to reduce.",
+          "Partner and joint programmes are explicitly excluded and run their own scholarship policies, so check your specific programme page before assuming these terms apply.",
+          "The second-year award has a genuine academic condition: 60 ECTS completed in accordance with your personal study plan, not simply credits passed."
+        ],
+        "application_tips": [
+          "Treat the admission email as a deadline notice. The 21-day window starts from that email, not from the start of the semester, so have the funds ready before offers go out.",
+          "Note that the early bird discount reduces the fee to EUR 10,000 remaining for year one - i.e. the full first-year fee is EUR 15,000 and you pay 10,000 if you are quick.",
+          "Build your personal study plan deliberately in year one: the 60 ECTS must be completed in accordance with that plan, so a plan that front-loads hard courses can put the scholarship at risk.",
+          "Check the Transcript of Records yourself in late July rather than waiting to be told. LUT says progress is checked automatically, but if credits are recorded late you are the one who loses EUR 5,000."
+        ],
+        "documents": [
+          "No scholarship documents. The only practical requirement is your Transcript of Records showing 60 ECTS by 31 July, plus proof of the second-year tuition payment."
+        ],
+        "mistakes_to_avoid": [
+          "Missing the 21-day payment window. This is the single avoidable failure that costs EUR 5,000, and it is entirely within your control.",
+          "Assuming the awards stack with living support. They are fee discounts only; living costs are not covered by either.",
+          "Enrolling in a partner or joint programme and expecting these terms. LUT carves those out explicitly.",
+          "Treating 60 ECTS as automatic. A student who drops or reshuffles courses can easily miss the requirement and forfeit the second-year award."
+        ],
+        "deadline_notes": "There is no scholarship deadline to calendar - the 21-day payment window is the only real deadline, and it is triggered by an email rather than a published date. The 31 July ECTS checkpoint is the second date to protect. Separately, LUT's homepage states applications to English-language master's programmes are open until 31 March 2027 under rolling admission, which is the date that actually governs whether you get admitted at all."
+      }
+    },
+    {
+      "id": 333,
+      "identity": {
+        "name": "RESDOC Doctoral Researcher Positions - Resilient and Just Systems Doctoral Project (MSCA COFUND)",
+        "awarding_body": "University of Helsinki",
+        "issuing_authority": "University of Helsinki, co-funded by the Marie Skłodowska-Curie Actions COFUND scheme under Horizon Europe",
+        "official_source_urls": [
+          "https://www.helsinki.fi/en/research/doctoral-school/resdoc-project",
+          "https://www.helsinki.fi/en/research/doctoral-school/resdoc-project/how-apply"
+        ],
+        "application_link": "https://jobs.helsinki.fi/job/Helsinki-Doctoral-Researchers-%2830-positions%29-in-various-disciplines-at-the-University-of-Helsinki%2C-Finland/1362391657",
+        "catalogue_url": "https://www.helsinki.fi/en/research/doctoral-school/resdoc-project/how-apply",
+        "official_updates_url": "https://www.helsinki.fi/en/research/doctoral-school/resdoc-project",
+        "status": "CLOSED",
+        "verifiable_urls": [
+          {
+            "url": "https://www.helsinki.fi/en/research/doctoral-school/resdoc-project",
+            "publisher": "University of Helsinki",
+            "kind": "RESDOC project overview"
+          },
+          {
+            "url": "https://www.helsinki.fi/en/research/doctoral-school/resdoc-project/how-apply",
+            "publisher": "University of Helsinki",
+            "kind": "RESDOC how to apply, eligibility, templates, evaluation criteria"
+          },
+          {
+            "url": "https://jobs.helsinki.fi/job/Helsinki-Doctoral-Researchers-%2830-positions%29-in-various-disciplines-at-the-University-of-Helsinki%2C-Finland/1362391657",
+            "publisher": "University of Helsinki recruitment system",
+            "kind": "job announcement for the 2026 call"
+          }
+        ]
+      },
+      "description": "RESDOC is an international doctoral training project at the University of Helsinki co-funded by the Marie Skłodowska-Curie Actions COFUND scheme. It runs from 2027 to 2031 and recruits 30 doctoral researchers on salaried, fully funded four-year contracts. Research must fit one of four interdisciplinary themes: infectious diseases and antimicrobial resistance; biodiversity and nature's resilience; secure and sustainable food and water systems; and just socio-ecological transition. The 2026 call closed on 31 August 2026 with 2,159 applications and is now in the evaluation phase.",
+      "official": {
+        "program_type": "Employment-based doctoral training grant (MSCA COFUND / Horizon Europe)",
+        "eligibility": [
+          "Hold a Master's degree or equivalent qualifying for doctoral studies, fully completed and dated in the certificate by the call deadline of 31 August 2026",
+          "Not hold a PhD degree",
+          "Be an early-stage researcher: fewer than 4 years of full-time-equivalent research experience after the Master's degree, measured from the date the degree entitling doctoral study was obtained",
+          "Fulfil the University of Helsinki English language requirements; applications must be submitted in English",
+          "Not be permanently employed by the University of Helsinki",
+          "Comply with the MSCA mobility rule: no more than 12 months of residence or main activity in Finland in the 36 months before the call deadline (1 September 2023 - 31 August 2026)",
+          "Be willing to reside in Finland for the full 4-year duration",
+          "Propose a research topic fitting the RESDOC themes and available supervision"
+        ],
+        "benefits": [
+          "A salaried, fully funded doctoral researcher position at the University of Helsinki",
+          "Four-year employment contract running from 2027 to 2031",
+          "Structured doctoral training in an international environment",
+          "Access to the RESDOC supervisor pool and intersectoral mobility"
+        ],
+        "selection_criteria": [
+          "Written application weighted 70% and interview 30%",
+          "Each criterion scored 0-5 with a pass threshold of 3; a below-threshold grade on any criterion ends the application",
+          "Research plan thematically suitable to RESDOC themes",
+          "Quality of the research plan: clarity and novelty of research objectives, suitability of the methodology, impact and potential for scientific renewal, ethical aspects",
+          "Feasibility of the research plan: realistic achievability, quality of the workplan, risks and mitigation",
+          "Study and intersectoral mobility plan supporting the dissertation and career development",
+          "Competence of the applicant as demonstrated in the CV and motivation letter",
+          "Interview: ability to present the project and answer questions, and academic alignment to available research options and supervision"
+        ],
+        "application_process": [
+          "Find the job announcement in the University of Helsinki online recruitment system and click \"apply for the post\"",
+          "Submit via the online recruitment system only, in English, by the deadline - clicking \"save\" does not submit; you must click \"Apply\"",
+          "Applications may be edited and re-edited until the call deadline",
+          "Attach the three mandatory templates as PDFs, each not exceeding 5 MB, with file names in the Latin alphabet and Arabic numerals only",
+          "Do not include any other attachments; additional attachments will not be considered in the evaluation"
+        ],
+        "duration": "Four years (2027-2031), full-time; willingness to reside in Finland for the full four-year duration is an eligibility requirement",
+        "key_dates": [
+          "2026 call deadline: 31 August 2026, 11:59 PM Finnish time (EET)",
+          "Eligibility review completed; 2,159 applications received, 1,023 (47%) found eligible",
+          "Written application evaluation to be finalised by mid-October 2026",
+          "Interview rounds in late October 2026",
+          "Proof of English language skills required by 31 December 2026 for shortlisted candidates"
+        ]
+      },
+      "verification": {
+        "confidence": "high",
+        "deadlines": [
+          {
+            "label": "2026 call deadline",
+            "date": "2026-08-31",
+            "date_display": "31 August 2026",
+            "note": "Applications had to be submitted by 31 August 2026 at the latest 11:59 PM Finnish time (EET). The call is now closed."
+          },
+          {
+            "label": "English proficiency proof deadline (shortlisted candidates)",
+            "date": "2026-12-31",
+            "date_display": "31 December 2026",
+            "note": "Optional at application, but shortlisted candidates must provide a valid proof of English language skills accepted by the University of Helsinki by 31 December 2026."
+          }
+        ],
+        "deadline_central": "2026-08-31",
+        "deadline_display": "31 August 2026",
+        "deadline_note": "The 2026 call closed on 31 August 2026 at 11:59 PM Finnish time (EET) and the project states no date for the next call. The only later fixed date is the 31 December 2026 English proof deadline for shortlisted candidates.",
+        "application_cycle": "One annual call; the 2026 call closed on 31 August 2026 and no next call date has been published",
+        "funding_amount": null,
+        "funding_currency": null,
+        "funding_period": null,
+        "tuition_coverage_note": "The project page describes the positions as \"fully funded doctoral degree\" opportunities with a salaried four-year employment contract, but does not publish a tuition fee figure or specify a doctoral tuition exemption.",
+        "living_cost_coverage": true,
+        "travel_coverage": null,
+        "tuition_coverage": null,
+        "fully_funded": false,
+        "english_requirement": "Applications must be submitted in English. Applicants must state, but need not prove, English proficiency at the application phase; shortlisted candidates must provide valid proof of English language skills in one of the forms accepted by the University of Helsinki by 31 December 2026.",
+        "status_note": "The call closed on 31 August 2026. 2,159 applications were received from 110 nationalities; after the eligibility check 1,023 (47%) proceeded to evaluation, with 1,136 (53%) failing one or more eligibility criteria or disqualified for missing or incomplete documents. Written evaluation by external evaluators was under way, targeted for completion by mid-October 2026, with interviews in late October 2026.",
+        "source_citations": [
+          "https://www.helsinki.fi/en/research/doctoral-school/resdoc-project",
+          "https://www.helsinki.fi/en/research/doctoral-school/resdoc-project/how-apply",
+          "https://jobs.helsinki.fi/job/Helsinki-Doctoral-Researchers-%2830-positions%29-in-various-disciplines-at-the-University-of-Helsinki%2C-Finland/1362391657"
+        ],
+        "not_confirmed": [
+          "the gross salary amount, currency and payment period (not published on either page read)",
+          "the mobility allowance and travel allowance amounts",
+          "tuition coverage terms",
+          "the date of the next RESDOC call",
+          "occupational health care and staff benefit specifics beyond the employment contract"
+        ],
+        "documents": [
+          "Europass CV using the predefined template (PDF, max 5 MB), named CV_Lastname_Firstname, with research experience and any Finnish residence clearly dated",
+          "Letter of Motivation and doctoral study plan using the predefined template (PDF), uploaded in the Cover Letter space, named Motivation_Lastname_Firstname",
+          "Scanned copy of the master's degree certificate and transcript of records with official translations if not in Finnish, Swedish or English",
+          "Proof of English language skills (optional at application; required by 31 December 2026 for shortlisted candidates)",
+          "Research proposal, ethics self-assessment and intersectoral mobility plan using the predefined template, named Proposal_Lastname_Firstname, suggesting 2 to 3 supervisors"
+        ]
+      },
+      "applicant_utility": {
+        "description": "RESDOC is a hiring process disguised as a scholarship: you are applying for one of 30 salaried doctoral researcher jobs, so the assessment looks like a job assessment and the documentation rules are enforced as HR compliance rather than guidance. The 53% rejection rate at the eligibility check is the headline number - more than half of 2,159 applicants were disqualified before anyone read their research, almost always for templates, formats, missing documents or mobility evidence. Treat the template rules as hard requirements and validate your mobility window in months before you write a single line of the proposal.",
+        "eligibility_tips": [
+          "Count your research experience precisely. Only research-related work after the Master's degree counts - university teaching, laboratory work, field work and research coordination do count, but four years full-time equivalent is the ceiling and exceeding it makes you ineligible.",
+          "Check the MSCA mobility rule in months, not years: more than 12 months of residence or main activity in Finland between 1 September 2023 and 31 August 2026 disqualifies you. Short stays such as holidays and refugee-status processing are excluded.",
+          "Your Master's degree must be fully completed and dated on the certificate by the call deadline. An attestation of completion of studies is explicitly not accepted - only the final diploma certificate.",
+          "You must be willing to reside in Finland for the full four years, and the project states it is not a funding option for an already-running doctoral study."
+        ],
+        "application_tips": [
+          "Use the predefined templates exactly - Europass CV, motivation/study plan, and research proposal with ethics self-assessment and intersectoral mobility plan. Any deviation, including changed font size or page limit, is disqualifying at the eligibility stage.",
+          "Name files exactly as specified with the Latin alphabet and Arabic numerals only, and keep each PDF under 5 MB. Non-Latin characters in file names interfere with processing.",
+          "Make your mobility history and research dates explicit in the CV. RESDOC warns that applications can be disqualified if eligibility cannot be assessed due to gaps in work experience or missing locations of activities in the past three years.",
+          "Write the motivation letter yourself. The project states that applications generated completely by AI do not meet expectations and that AI use must be reported in the research plan.",
+          "Submit early and confirm you clicked \"Apply\" rather than \"Save\". Applications are editable until the deadline but saving does not submit."
+        ],
+        "documents": [
+          "Master's degree certificate and transcript - if not in Finnish, Swedish or English, only official translations by an official translator or the issuing institution, stamped and signed on each page, are accepted, and translations without the originals are rejected.",
+          "Europass CV in the predefined template - the single document used to verify both the early-stage researcher rule and the MSCA mobility window.",
+          "Three mandatory template PDFs only. Recommendation letters are not evaluated even if attached."
+        ],
+        "mistakes_to_avoid": [
+          "Attaching extra documents. RESDOC says clearly that additional attachments will not be considered, and only the three mandatory templates plus degree documents are evaluated.",
+          "Altering the provided templates - font size, page limit and structure are all compliance points.",
+          "Submitting an attestation instead of a completed degree certificate.",
+          "Contacting external evaluators about your application. RESDOC states candidates must not contact panel members and that contacting them can compromise the process.",
+          "Applying for more than one RESDOC application; only one is permitted, though you may indicate interest in two themes within it."
+        ],
+        "deadline_notes": "The 2026 call closed on 31 August 2026 and no next call date is published, so this is a watch-and-wait programme rather than an imminent opportunity. If you were shortlisted, the only fixed remaining date is 31 December 2026 for English language proof. Evaluation scores each criterion 0-5 with a threshold of 3, and the written application carries 70% weight against 30% for the interview, so the research plan quality and feasibility criteria are where most of the outcome is decided."
+      }
+    }
+  ]
+}

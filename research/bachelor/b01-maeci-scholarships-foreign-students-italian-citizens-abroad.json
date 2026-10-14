@@ -1,0 +1,145 @@
+{
+  "new_scholarship": {
+    "name": "Borse di studio offerte dal Governo italiano a studenti stranieri e italiani residenti all'estero (IRE)",
+    "country": "Italy",
+    "region": "Europe",
+    "degree_levels": "Bachelor's",
+    "funding_type": "Fully Funded",
+    "program_type": "Government scholarship",
+    "official_source": "Ministero degli Affari Esteri e della Cooperazione Internazionale (MAECI)",
+    "official_source_url": "https://www.esteri.it/it/servizi-opportunita/opportunita/borse-di-studio/per-cittadini-stranieri/borsestudio_stranieri/",
+    "catalogue_url": "https://studyinitaly.esteri.it/ListaBandi",
+    "official_updates_url": "https://www.esteri.it/it/servizi-opportunita/opportunita/borse-di-studio/per-cittadini-stranieri/borsestudio_stranieri/",
+    "duration": null,
+    "deadline": "Le candidature online devono pervenire tassativamente entro le ore 14.00 (ora italiana) del 26 marzo 2026",
+    "deadline_date": "2026-03-26",
+    "deadline_precision": "day_and_time",
+    "application_period": "Annual call, published in the first quarter of the year for the following academic year; the 2026-2027 call closed at 14:00 Italian time on 26 March 2026",
+    "application_method": "Separate application, not automatic on admission: candidates may apply only through the Study in Italy portal (https://studyinitaly.esteri.it)",
+    "status": "closed",
+    "is_verified": true,
+    "last_verified_date": "2026-10-03",
+    "description": null,
+    "best_fit": null,
+    "funding_amount": null,
+    "funding_currency": null,
+    "funding_period": null,
+    "eligibility_summary": null,
+    "eligibility": [],
+    "coverage": [],
+    "benefits": [],
+    "requirements": [],
+    "required_documents": [],
+    "english_requirement": null,
+    "selection_notes": null,
+    "image_url": null,
+    "image_source_url": null,
+    "image_source_type": null,
+    "image_alt_text": null,
+    "image_verified_at": null,
+    "notes": "PARTIAL - the 2026-2027 call PDF did not extract as text from www.esteri.it; figures pending from the same bando hosted on MAECI subdomain sites."
+  },
+  "programme_detail_official": {
+    "official_source_urls": [
+      "https://www.esteri.it/it/servizi-opportunita/opportunita/borse-di-studio/per-cittadini-stranieri/borsestudio_stranieri/",
+      "https://studyinitaly.esteri.it/ListaBandi"
+    ],
+    "application_link": "https://studyinitaly.esteri.it/",
+    "official_updates_url": "https://www.esteri.it/it/servizi-opportunita/opportunita/borse-di-studio/per-cittadini-stranieri/borsestudio_stranieri/",
+    "catalogue_url": "https://studyinitaly.esteri.it/ListaBandi",
+    "application_cycle": "2026-2027 academic year call; applications due 14:00 Italian time on 26 March 2026",
+    "deadline_central": "2026-03-26T14:00",
+    "deadline_central_display": "entro le ore 14.00 (ora italiana) del 26 marzo 2026",
+    "deadline_central_timezone": "Europe/Rome",
+    "deadline_institutional": null,
+    "deadline_note": "Dead in the past as at 2026-10-03. Next cycle expected in the first quarter of 2027 for academic year 2027-2028.",
+    "status": "CLOSED",
+    "status_note": "The 2026-2027 call closed at 14:00 (ora italiana) on 26 March 2026; the Study in Italy portal states the call for applications is now closed and asks candidates to watch the site for the next academic year.",
+    "funding_amount": null,
+    "funding_currency": null,
+    "funding_period": null,
+    "funding_duration": null,
+    "tuition_coverage": null,
+    "tuition_coverage_note": null,
+    "living_cost_coverage": null,
+    "travel_coverage": null,
+    "fully_funded": false,
+    "funding_label": null,
+    "benefits": [],
+    "eligibility": [],
+    "citizenship_residency": "Foreign students resident abroad, plus Italian citizens resident abroad (IRE) who hold Italian citizenship only; selection is by nationality and candidates may compete for one country only",
+    "international_eligibility": null,
+    "degree_levels": [],
+    "study_mode": "in person on Italian territory only",
+    "research_requirement": null,
+    "subject_or_agency_requirement": null,
+    "application_method": "Not automatic on admission. Candidates may apply only through the Study in Italy portal; only applications and documents submitted through that portal are valid.",
+    "application_route": "online application via the Study in Italy portal",
+    "requirements": [],
+    "documents": [],
+    "english_requirement": null,
+    "english_requirement_note": null,
+    "selection_criteria": [
+      "Selection is based on nationality: candidates compete for one beneficiary country only"
+    ],
+    "selection_weighting": null,
+    "duration": null,
+    "award_holder_conditions": [],
+    "supplements_or_initiatives": [],
+    "official_contacts": {
+      "email": "borsedistudio@esteri.it",
+      "technical_support": "assistenza.studyinitaly@esteri.it",
+      "office": "Ministry of Foreign Affairs and International Cooperation, Directorate General for Growth and Export Promotion - Office VII, Promotion of Italophony"
+    },
+    "description": null,
+    "program_type": "Government scholarship",
+    "region": "Europe",
+    "coverage": "The ministry states the scholarship covers only attendance of courses on Italian territory.",
+    "last_verified_date": "2026-10-03"
+  },
+  "programme_detail_applicant_utility": {
+    "application_readiness_checklist": [],
+    "common_rejection_risks": [],
+    "estimated_uncovered_costs": [],
+    "document_audit": [],
+    "alerts": [],
+    "submission_workflow": []
+  },
+  "programme_detail_verification": {
+    "cycle_verified": "2026-2027 academic year call, verified 2026-10-03",
+    "verification_confidence": 0.5,
+    "official_fields_confirmed": [
+      "deadline_central",
+      "deadline_central_display",
+      "deadline_central_timezone",
+      "status",
+      "application_method",
+      "application_route",
+      "citizenship_residency",
+      "official_contacts"
+    ],
+    "institution_check_required": [],
+    "unverified_or_removed_claims": [
+      "PARTIAL RECORD - funding amounts, duration and full eligibility still to be read from the 2026-2027 bando"
+    ],
+    "source_citations": [
+      "https://www.esteri.it/it/servizi-opportunita/opportunita/borse-di-studio/per-cittadini-stranieri/borsestudio_stranieri/",
+      "https://studyinitaly.esteri.it/ListaBandi"
+    ],
+    "researched_by": "bachelor_01"
+  },
+  "logo_override": null,
+  "research_notes": {
+    "logo": "Not started",
+    "unverified": [
+      "Funding amounts, duration, full eligibility, benefits - pending"
+    ],
+    "substitution": null,
+    "official_pages_read": [
+      "https://www.esteri.it/it/servizi-opportunita/opportunita/borse-di-studio/per-cittadini-stranieri/borsestudio_stranieri/",
+      "https://studyinitaly.esteri.it/ListaBandi"
+    ],
+    "degree_level_confirmed": "PARTIAL - assignment says 1st cycle/bachelor included; bando text still to be read",
+    "skeleton": false
+  }
+}

@@ -1,0 +1,99 @@
+{
+ "agent": "agent_143",
+ "assignment_count": 1,
+ "scholarships": [
+  {
+   "id": 374,
+   "title": "Japanese Government (MEXT) Scholarship for 2027 (Research Students) - Embassy Recommendation",
+   "country": "Japan",
+   "degree": "Master's, PhD",
+   "funding_label": "Fully Funded",
+   "status": "upcoming",
+   "official_source": "Ministry of Education, Culture, Sports, Science and Technology (MEXT), Japan",
+   "official_source_url": "https://www.studyinjapan.go.jp/en/_mt/2026/04/0102-2027_Research_Guidelines_E.pdf",
+   "application_link": "https://www.studyinjapan.go.jp/en/_mt/2026/04/0102-2027_Research_Guidelines_E.pdf",
+   "catalogue_url": "https://www.studyinjapan.go.jp/en/_mt/2026/04/01-2027_Research_Guidelines_E.pdf",
+   "official_updates_url": "https://www.studyinjapan.go.jp/en/smap-stopj-applications-research.html",
+   "existing": {
+    "funding_amount": null,
+    "funding_currency": "JPY",
+    "funding_period": "per month",
+    "tuition_coverage": 1,
+    "living_cost_coverage": 1,
+    "travel_coverage": 1,
+    "fully_funded": 1,
+    "description": "The Japanese Government (MEXT) Scholarship for 2027 (Research Students) funds international students who will conduct research in a master's course, doctoral course or professional graduate course at a Japanese graduate school, or research in a specialised field at an undergraduate department or attached institute. MEXT states that it \"offers scholarships to international students who wish to study in graduate courses at Japanese universities as Research Students (either regular students or non-regular students)\". The award pays a monthly scholarship, exempts tuition and provides round-trip airfare.",
+    "eligibility": [
+     "Under 35 years of age",
+     "Eligible for admission to a master's programme or a doctoral programme (first or second stage) at a Japanese graduate school",
+     "Nationality of a country that has diplomatic relations with Japan; Japanese nationals are not eligible",
+     "Completion of at least 16 years of schooling, or an equivalent qualification, depending on academic background",
+     "Able to carry out research in a specialised field",
+     "Good health, evidenced by a physician-signed medical certificate"
+    ],
+    "eligibility_summary": "Applicants must be under 35 years of age and eligible for admission to a master's or doctoral programme at a Japanese graduate school, and must hold the nationality of a country with diplomatic relations with Japan.",
+    "benefits": [
+     "JPY 143,000 to 145,000 per month scholarship",
+     "Full tuition exemption",
+     "Round-trip airfare between the home country and Japan",
+     "Up to 6 months of preliminary Japanese education for those who need it",
+     "Research placement support and allowance for actual expenses"
+    ],
+    "coverage": [
+     "Monthly scholarship of JPY 143,000 to 145,000",
+     "Tuition exempted",
+     "Round-trip travel expenses (airfare) provided",
+     "Up to 6 months of preliminary Japanese language education where required"
+    ],
+    "requirements": [
+     "Submit the packet to the Japanese diplomatic mission of the applicant's country of nationality by the designated deadline",
+     "List no more than three universities on the Placement Preference Application Form",
+     "Obtain no more than two letters of provisional acceptance and contact no more than two universities at a time",
+     "Contact universities for a provisional acceptance letter no earlier than Wednesday 2 September 2026",
+     "Contact the division of international student affairs, not the intended supervisor",
+     "Use only the MEXT-specified format for the letter of provisional acceptance",
+     "Documents must be in Japanese or English, with a Japanese or English translation attached otherwise"
+    ],
+    "documents": [
+     "Application Form (2027 form)",
+     "Placement Preference Application Form (2027 form)",
+     "Field of Study and Research Plan (2027 form)",
+     "Academic transcripts for all academic years of university attended",
+     "Certificate of graduation or degree certificate",
+     "Recommendation letter from the president, dean or academic advisor at the current or last university attended",
+     "Medical certificate",
+     "Abstracts of theses (where applicable)",
+     "Certificate of language proficiency, 3 copies (only if held)",
+     "Recommendation letter from the present employer (only if currently employed)",
+     "Photographs of the applicant's own works of art or a digitally recorded media of musical performance (art and music applicants only)"
+    ],
+    "english_requirement": null,
+    "application_method": [
+     "Embassy recommendation: submit the full document set to the Japanese embassy or consulate general in the applicant's country of nationality",
+     "University recommendation: apply through a Japanese university that holds an MEXT recommendation quota"
+    ],
+    "selection_notes": "First screening is conducted by the diplomatic mission (documents, written examination, interview). Applicants who pass may request up to two letters of provisional acceptance from universities. MEXT then conducts the second screening and confirms placement at one of the three preferred universities.",
+    "best_fit": null,
+    "notes": null,
+    "duration": "Embassy recommendation: irregular course within 2 years, or regular course of a standard school year with up to 6 months of preliminary Japanese education added; university recommendation duration depends on each university's quota, up to a standard school year",
+    "application_period": "Recruitment runs April-May of the year before arrival; embassy first screening May-July",
+    "deadline_display": "\"Recruitment for those arriving in Japan in April 2027 or September/October 2027 is made between April and May of the previous year. First screening is conducted between May and July by the Japanese Embassies or Consulates General.\"",
+    "deadline_date": null,
+    "region": "Global",
+    "program_type": "Government scholarship - national study abroad programme (embassy recommendation)",
+    "applicant_utility": null,
+    "official_details": null
+   },
+   "missing_fields": [
+    "funding_amount",
+    "english_requirement",
+    "best_fit",
+    "notes",
+    "deadline_date",
+    "applicant_utility",
+    "official_details"
+   ]
+  }
+ ],
+ "result_file": "C:\\Users\\GopaL\\Desktop\\Projects folder\\ScholarZone\\backend\\research_output\\live500\\results\\agent_143.json"
+}

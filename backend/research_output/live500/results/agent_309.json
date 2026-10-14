@@ -1,0 +1,159 @@
+{
+  "agent": "agent_309",
+  "records": [
+    {
+      "id": 690,
+      "official": {
+        "official_source_urls": [
+          "https://fgs.science-scholarships.ph",
+          "https://science-scholarships.ph",
+          "https://science-scholarships.ph/pages/downloads.html"
+        ],
+        "application_link": "https://fgs.science-scholarships.ph",
+        "catalogue_url": "https://fgs.science-scholarships.ph",
+        "official_updates_url": "https://science-scholarships.ph",
+        "deadline_central": "2027-03-15",
+        "deadline_central_display": "15 March 2027 (August to December intake filing deadline)",
+        "deadline_note": "Two filing deadlines per year on the official sites: 15 August for the January to July intake and 15 March for the August to December intake.",
+        "application_cycle": "Two intakes a year: January to July and August to December",
+        "status": "OPEN",
+        "status_note": "The SEI portal states DOST-SEI announces the availability of Foreign Graduate Scholarships and publishes the two annual filing deadlines; no closure notice is posted.",
+        "tuition_coverage_note": "The Scholarship Privileges table on the official FGS site lists \"School Fees\" as a covered privilege for FGS scholars, alongside pre-departure expenses, roundtrip economy airfare, learning materials and/or connectivity allowance, thesis/dissertation allowance, monthly living allowance, relocation allowance, and health/accident insurance.",
+        "funding_amount": 3000000,
+        "funding_currency": "PHP",
+        "funding_period": "per academic year (maximum allotted budget)",
+        "tuition_coverage": true,
+        "living_cost_coverage": true,
+        "travel_coverage": true,
+        "fully_funded": true,
+        "benefits": [
+          "Pre-departure expenses",
+          "Roundtrip economy airfare",
+          "School fees",
+          "Learning materials and/or connectivity allowance",
+          "Thesis/dissertation allowance",
+          "Monthly living allowance",
+          "Relocation allowance",
+          "Health/accident insurance",
+          "Maximum allotted budget of Php 3,000,000.00 per scholar per academic year"
+        ],
+        "eligibility": [
+          "Must be a Filipino citizen",
+          "Not more than 50 years old at the time of application",
+          "A permanent or regular employee in any private or government institution or office in the Philippines",
+          "Endorsed by the Head of the Sending Institution or Office",
+          "Must pass the admission requirements for graduate studies in a foreign university with good track record",
+          "Must pass the interview and other screening procedures",
+          "Must have a research interest aligned with the areas under DOST's Harmonized National Research and Development Agenda (HNRDA)",
+          "Must have a viable re-entry plan"
+        ],
+        "requirements": [
+          "Must undertake the MS or PhD programme on a full-time basis for a maximum period of 24 or 36 months, respectively",
+          "No lateral entrant shall be considered",
+          "Must make a full-time commitment to the scholarship and not engage in any form of employment during the scholarship period",
+          "The scholar must not avail or enjoy any other scholarship",
+          "A scholar must enroll in a foreign university with good track record and/or a recognized higher education or research institution in the specialized S&T field to be pursued"
+        ],
+        "documents": [
+          "Application Form",
+          "Birth Certificate",
+          "Certified True Copy of Official Transcript of Records",
+          "Endorsement from two former professors in college for MS applicants or two professors from the MS program for PhD applicants",
+          "Recommendation from the Head of the Sending Institution or Office",
+          "Permission to take a leave of absence while on scholarship",
+          "Medical Certificate as to health status and fitness to study from a licensed physician with PRC license number indicated",
+          "Valid NBI Clearance",
+          "Letter of Admission to the foreign university",
+          "Program of Study",
+          "Budgetary Requirements with supporting documents for bases of rates used",
+          "Re-entry Plan, narrative"
+        ],
+        "selection_criteria": [
+          "First level screening: documentary evaluation of the application form and other requirements",
+          "Second level screening: evaluation of the research topic and re-entry plan by the concerned DOST Council",
+          "Third level screening: interview by a panel to be created by the SEI Director"
+        ],
+        "coverage": [
+          "Pre-departure expenses",
+          "Roundtrip economy airfare",
+          "School fees",
+          "Learning materials and/or connectivity allowance",
+          "Thesis/dissertation allowance",
+          "Monthly living allowance",
+          "Relocation allowance",
+          "Health/accident insurance"
+        ],
+        "application_method": [
+          "Download the application form and the list of documentary requirements from the official DOST-SEI website Downloads page (science-scholarships.ph)",
+          "Submit an advance copy of the complete application to fgs@sei.dost.gov.ph before the applicable filing deadline",
+          "Submit the original documents to DOST-SEI at the Science Heritage Building, DOST Compound, Bicutan, Taguig City",
+          "Undergo the three-level screening: documentary evaluation, DOST Council evaluation of research topic and re-entry plan, and panel interview"
+        ],
+        "application_route": "Email an advance copy to fgs@sei.dost.gov.ph before the filing deadline and submit original documents to DOST-SEI, Science Heritage Building, DOST Compound, Bicutan, Taguig City",
+        "study_mode": "Full-time",
+        "citizenship_residency": "Open to Filipino citizens who are permanent or regular employees of a private or government institution or office in the Philippines and are endorsed by the head of the sending institution or office",
+        "international_eligibility": "Not open to international students; applicants must be Filipino citizens",
+        "subject_or_agency_requirement": "Research interest must align with the areas under DOST's Harmonized National Research and Development Agenda (HNRDA) and the published priority S&T fields of study; partner-specific tracks (USask, France Excellence, UAlberta) carry their own field lists",
+        "research_requirement": "The research topic and a viable re-entry plan are evaluated by the concerned DOST Council at the second level of screening; a Program of Study and Budgetary Requirements with supporting documents form part of the application",
+        "duration": "Full-time MS for a maximum of 24 months or PhD for a maximum of 36 months",
+        "description": "The DOST-SEI Foreign Graduate Scholarships in Specialized Priority Fields in Science and Technology fund Filipino professionals to obtain MS and PhD degrees in priority science and engineering fields at reputable institutions abroad, aiming to develop a pool of high-quality human resources that contribute to the country's global competitiveness and to upgrade national research and technological innovation capabilities in advanced sciences and emerging technologies.",
+        "region": "Asia",
+        "program_type": "Government scholarship (DOST-SEI graduate scholarship)",
+        "english_requirement": null
+      },
+      "verification": {
+        "source_citations": [
+          "https://fgs.science-scholarships.ph",
+          "https://science-scholarships.ph",
+          "https://science-scholarships.ph/pages/downloads.html"
+        ],
+        "last_verified_date": "2026-10-10",
+        "verification_status": "confirmed",
+        "confidence": "high",
+        "not_confirmed": [
+          "english_requirement",
+          "exact monthly living allowance and other itemized allowance rates",
+          "open/closed wording for the current round",
+          "cycle year labels for intake deadlines"
+        ],
+        "notes": "Award amount, currency and the full benefits list were read from the Scholarship Privileges table on the live official FGS site (fgs.science-scholarships.ph); the two annual filing deadlines and the availability announcement were cross-checked on the DOST-SEI science-scholarships.ph portal, which also links the official application form. The official pages publish no IELTS/TOEFL requirement and do not itemize allowance rates within the PHP 3,000,000 per academic year budget, so those fields were left unconfirmed."
+      },
+      "applicant_utility": {
+        "summary": "This is an employer-sponsored route: you apply while holding a permanent or regular post in the Philippines, and your institution's head must both endorse you and permit a leave of absence for the whole MS (max 24 months) or PhD (max 36 months) period. The money is delivered as a budget of up to PHP 3,000,000 per academic year covering school fees, a monthly living allowance, roundtrip economy airfare, relocation, pre-departure costs, a thesis allowance and health insurance, so the funding is comprehensive but capped. Two hard gates decide most outcomes: your research topic must sit inside the published priority fields and the HNRDA, and you must already hold the foreign university's letter of admission when you file. Deadlines are fixed filing dates twice a year (15 March and 15 August), with results only announced five to seven months later.",
+        "best_fit": "Employed Filipino S&T professionals under 50 in their first five research years, with an HNRDA-aligned research topic, a foreign admission in hand, and an employer ready to sponsor a full-time study leave.",
+        "application_readiness_checklist": [
+          "Secure the foreign university's letter of admission first; the package is incomplete without it",
+          "Get the written endorsement and the permission for leave of absence from your institution head well before the 15 March or 15 August filing date",
+          "Map your intended research topic against the published priority fields list and the HNRDA, and say so explicitly in the re-entry plan",
+          "Build the Budgetary Requirements sheet with supporting documents showing the basis of every rate you use, since it is reviewed at screening",
+          "Send the advance copy to fgs@sei.dost.gov.ph early and keep proof of sending, then hand-carry or courier originals to the Science Heritage Building, Bicutan, Taguig City",
+          "Confirm you hold no other scholarship and prepare to declare a full-time, no-employment commitment"
+        ],
+        "common_rejection_risks": [
+          "Filing without the letter of admission or with a programme outside the published priority fields and HNRDA areas",
+          "A re-entry plan that reads as generic rather than a concrete commitment to return to the sending institution",
+          "Employer endorsement or leave-of-absence permission missing, unsigned, or inconsistent with the declared study period",
+          "Budgetary Requirements without supporting documents for the rates used",
+          "Being over 50, unemployed or non-regular at the time of application, being a lateral entrant, or holding another scholarship"
+        ],
+        "estimated_uncovered_costs": "Costs beyond the maximum allotted budget of PHP 3,000,000 per scholar per academic year are not covered; the official pages do not itemize allowance rates or publish what happens when tuition or living costs abroad exceed the cap, so applicants in high-cost destinations should verify feasibility with DOST-SEI before relying on the full amount.",
+        "document_audit": [
+          "The Medical Certificate must come from a licensed physician with the PRC license number written on it; a plain clinic letter is a common rejection point",
+          "The NBI Clearance must be valid on the filing date, so time its issuance close to submission",
+          "Professor endorsements differ by level: two former college professors for MS applicants, but two professors from the MS programme for PhD applicants",
+          "The Budgetary Requirements need supporting documents for the bases of the rates, not just totals",
+          "The Re-entry Plan is a narrative document, so allow drafting and employer-review time beyond the mechanical paperwork"
+        ],
+        "alerts": [
+          "You need the foreign university's letter of admission before filing, which means aligning host-university admission cycles months ahead of the 15 March or 15 August deadline",
+          "Results are announced only in December (January-July intake) and July (August-December intake), so there is a long wait between filing and starting; bridge any income gap",
+          "Employment of any kind during the scholarship is prohibited, so the employer's leave-of-absence permission is effectively a gatekeeping document",
+          "Holding any other scholarship disqualifies you, and lateral entrants are excluded, so your degree must start at entry level",
+          "The benefits table differs by track: France Excellence does not cover pre-departure expenses, school fees or health insurance, so confirm which track you are applying under before budgeting",
+          "Panel interviews happen in October (January-July intake) and May (August-December intake); treat the interview on the research topic and re-entry plan as a scored stage, not a formality"
+        ],
+        "submission_workflow": "File the advance copy by email to fgs@sei.dost.gov.ph, deliver originals to DOST-SEI at the Science Heritage Building in Bicutan, Taguig City, then pass documentary screening, DOST Council review of the research topic and re-entry plan, and a final panel interview."
+      }
+    }
+  ]
+}

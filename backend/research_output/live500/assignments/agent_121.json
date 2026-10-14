@@ -1,0 +1,80 @@
+{
+ "agent": "agent_121",
+ "assignment_count": 1,
+ "scholarships": [
+  {
+   "id": 318,
+   "title": "Atomic Energy Scholarship Program of China 2026",
+   "country": "China",
+   "degree": "Master's, Doctoral",
+   "funding_label": "Full scholarship",
+   "status": "closed",
+   "official_source": "Yz.Tsinghua University Cn",
+   "official_source_url": "https://yz.tsinghua.edu.cn/en/info/1027/1391.htm",
+   "application_link": "https://yz.tsinghua.edu.cn/en/info/1027/1391.htm",
+   "catalogue_url": "https://yz.tsinghua.edu.cn/en/Programs/Doctoral_Degrees.htm",
+   "official_updates_url": "https://yz.tsinghua.edu.cn/system/resource/style/component/news/content/format4.css",
+   "existing": {
+    "funding_amount": null,
+    "funding_currency": null,
+    "funding_period": null,
+    "tuition_coverage": null,
+    "living_cost_coverage": null,
+    "travel_coverage": null,
+    "fully_funded": 0,
+    "description": "Graduate Admissions Learn about how to apply for graduate programs at Tsinghua. How to Apply Evaluation and Admission Application Portal",
+    "eligibility": [
+     "1. Citizens of countries other than the PRC who are committed to the nuclear industry"
+    ],
+    "eligibility_summary": "Citizens of countries other than PRC committed to the nuclear industry for societal benefit, in good health. Holders of Bachelor's or Master's degree in relevant majors (nuclear engineering, nuclear technology, mechanics, energy, chemical engineering, physics) with strong scientific research capability. Proficiency in English. Master's applicants under 35 years old; PhD applicants under 40 years old. Preference given to those with work experience in nuclear or related fields.",
+    "benefits": [],
+    "coverage": [
+     "Costs Information on fees and housing costs. Application Fee Tuition Fees Miscellaneous Expenses",
+     "Information on fees and housing costs.",
+     "Application Fee"
+    ],
+    "requirements": [
+     "score, the GPA certification document issued by the university is also required."
+    ],
+    "documents": [
+     "1.Personal statement"
+    ],
+    "english_requirement": "competence requirements:",
+    "application_method": [
+     "THU Graduate Admissions for International Students",
+     "RMB 800",
+     "Please submit all the documents listed below to the application system:",
+     "Note：Use the online application to apply. The online application system offers tools for collecting and submitting some, but not all of ,the documents and information required for application.",
+     "Applicants should fill in the application information online, upload the application documents to the Online Application System , and pay the application fee online at the time of submission."
+    ],
+    "selection_notes": "font-size: 18px;\">Applicants who meet the scholarship requirements will be reviewed by the university and assessed and decided by the China Atomic Energy Authority, the Ministry of Education of the People’s Republic of China and the China Scholarship Council for acceptance.",
+    "best_fit": null,
+    "notes": null,
+    "duration": "Master's: 2-3 years; Doctoral: 3-4 years",
+    "application_period": "2.Please scan the original or notarized application documents in color using a scanner. Images captured by mobile phone or camera are not acceptable. Scans of copies are also not acceptable.",
+    "deadline_display": "and application batches vary among different departments and schools. Please refer to the \"Remarks of Application\" in the",
+    "deadline_date": null,
+    "region": "Asia",
+    "program_type": null,
+    "applicant_utility": null,
+    "official_details": null
+   },
+   "missing_fields": [
+    "funding_amount",
+    "funding_currency",
+    "funding_period",
+    "tuition_coverage",
+    "living_cost_coverage",
+    "travel_coverage",
+    "benefits",
+    "best_fit",
+    "notes",
+    "deadline_date",
+    "program_type",
+    "applicant_utility",
+    "official_details"
+   ]
+  }
+ ],
+ "result_file": "C:\\Users\\GopaL\\Desktop\\Projects folder\\ScholarZone\\backend\\research_output\\live500\\results\\agent_121.json"
+}

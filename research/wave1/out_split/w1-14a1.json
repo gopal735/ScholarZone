@@ -1,0 +1,1346 @@
+{
+  "agent_id": "w1_14a1",
+  "shard": "w1-14a1",
+  "today": "2026-10-04",
+  "records": [
+    {
+      "target_id": 138,
+      "outcome": "refreshed",
+      "confirm": true,
+      "confirmation_evidence": "The awarding body's live page en.unimib.it/study/information-international-students/bicocca-international-scholarship (title \"Bicocca International Scholarship | Universita degli Studi di Milano-Bicocca\") states \"the university is offering a total of 100 scholarships. These are distributed across our English-taught programs, with 5 scholarships dedicated to each international course\" and \"The scholarship amounts to \u20ac10,000 per year (gross), plus an exemption from tuition fees.\" The attached official call \"Call for Applications for Bicocca International Scholarship Programme A.Y. 2026/27\" on the same domain states the renewal terms and that \"Beneficiaries are not exempt from paying the administrative fee and the regional tax.\"",
+      "new_scholarship": {
+        "name": "Bicocca International Scholarship Programme (BISP) \u2014 Universit\u00e0 degli Studi di Milano-Bicocca",
+        "legacy_titles": [
+          "University of Milano-Bicocca \u2014 BISP (Bicocca International Scholarship Programme)"
+        ],
+        "country": "Italy",
+        "degree_levels": "Bachelor's, Master's, Single-Cycle Master's",
+        "funding_type": "Partially Funded",
+        "official_source": "Universit\u00e0 degli Studi di Milano-Bicocca",
+        "official_source_url": "https://en.unimib.it/study/fees-and-scholarships/bisp-bicocca-international-scholarship-programme",
+        "status": "upcoming",
+        "is_verified": true,
+        "last_verified_date": "2026-10-04",
+        "region": "Europe",
+        "program_type": "University merit scholarship for international students enrolling in English-taught degree programmes, awarded automatically through the admission ranking",
+        "description": "The Bicocca International Scholarship Programme (BISP) is a merit award from the University of Milano-Bicocca for international students who hold a foreign qualification, are not resident in Italy and are admitted to one of the University's English-taught degree programmes. Around 100 scholarships are awarded each year, with five dedicated to each eligible English-taught course, mainly at Master's level. Each scholarship is worth EUR 10,000 gross per academic year plus exemption from tuition fees, and is renewable for a maximum of three years on Bachelor's and single-cycle degree programmes and two years on Master's degree programmes. No separate application is needed: applying to an eligible programme makes the candidate automatically part of the selection, and applicants are not required to submit any further form.",
+        "duration": "Up to 3 years for Bachelor's and single-cycle degree programmes; up to 2 years for Master's degree programmes",
+        "deadline": "There is no separate scholarship application form: the deadline is the admission deadline of the chosen degree programme. For the 2026/2027 call, candidates on free entrance courses had to be admitted and confirm their admission offer by 15 March 2026, and results were published by mid-April 2026 for free-access programmes and after the admission ranking list for limited-access programmes. The 2026/2027 cycle is complete, with ranking decrees issued on 28 April 2026 and 15 July 2026.",
+        "deadline_date": null,
+        "deadline_precision": "varies",
+        "application_period": "Aligned with each degree programme's admission calls, referred to on the apply.unimib.it website. For 2026/2027 the key milestone was confirmation of admission by 15 March 2026 for free entrance courses, with a second session reflected in a further ranking decree on 15 July 2026.",
+        "eligibility_summary": "International students resident abroad who hold a non-Italian entry qualification that allows admission to the Italian university system, do not hold Italian citizenship (dual citizenship including Italian is eligible), obtained their previous degree abroad, are not resident in Italy, and are admitted to one of the programmes covered by the call.",
+        "eligibility": [
+          "Holds a non-Italian entry qualification that allows admission to the Italian university system for the desired course",
+          "Does not possess Italian citizenship, except dual citizenship that includes Italian",
+          "Obtained the previous degree abroad",
+          "Is not resident in Italy",
+          "Is admitted to one of the degree programmes specified in the call; the admission offer counts as accepted once the deposit has been received"
+        ],
+        "coverage": [
+          "EUR 10,000 per academic year (gross amount)",
+          "Exemption from tuition fees"
+        ],
+        "required_documents": [
+          "Admission application to the relevant Bachelor's, single-cycle or Master's programme through apply.unimib.it",
+          "Payment of the admission deposit, which confirms the admission offer",
+          "Documents required by the chosen degree programme's admission call"
+        ],
+        "catalogue_url": "https://apply.unimib.it",
+        "official_updates_url": "https://en.unimib.it/study/information-international-students/bicocca-international-scholarship",
+        "english_requirement": "The scholarship applies only to degree programmes taught in English. No separate English language certificate is required by the scholarship itself; admission to the programme governs any language requirement.",
+        "requirements": [
+          "Apply to an eligible English-taught programme; no separate scholarship application form is required",
+          "Be admitted and confirm the admission offer by the programme's deadline, with 15 March 2026 being the key date for free entrance courses in the 2026/2027 call",
+          "For limited-access programmes, complete all the admission steps required by the programme",
+          "Officially accept the scholarship offer by the deadline given",
+          "Confirm that the candidate is not a beneficiary of any other scholarships",
+          "Fulfil the enrolment requirements within the given deadline",
+          "For non-EU students, meet the requirements for an Italian student visa (D) for enrolment",
+          "Complete enrolment in the selected degree programme following checks on document authenticity and enrolment eligibility",
+          "Arrive in Milan by 31 October 2026 for the 2026/2027 award, otherwise the first instalment is not paid"
+        ],
+        "application_method": [
+          "Apply for admission to an eligible English-taught degree programme through the Dream Apply platform at apply.unimib.it",
+          "Pay the admission deposit, which constitutes acceptance of the admission offer",
+          "Complete the admission steps required by the chosen programme, including any limited-access ranking",
+          "No further form is submitted: the candidate is automatically included in the scholarship selection",
+          "Await the scholarship offer delivered through the Dream Apply platform and the registered email address",
+          "Accept the offer, confirm no other scholarships, complete enrolment and meet the visa requirement where applicable",
+          "Arrive in Milan by 31 October 2026 and satisfy the credit milestones to keep the award"
+        ],
+        "selection_notes": "Five scholarships are assigned to the best candidates on each eligible course, and the number may be increased at the discretion of the awarding body if additional funds become available. Selection results are published on apply.unimib.it by mid-April for free-access study programmes and following the publication of the admission ranking list for limited-access programmes. If a candidate withdraws, the Commission proceeds down the ranking and the next eligible candidate is notified through the Dream Apply messaging section. Priority is given to candidates who applied in the first Call for Admission.",
+        "funding_amount": 10000,
+        "funding_currency": "EUR",
+        "funding_period": "per academic year"
+      },
+      "programme_detail_official": {
+        "official_source_urls": [
+          "https://en.unimib.it/study/information-international-students/bicocca-international-scholarship",
+          "https://en.unimib.it/sites/sten/files/2026-01/Bando%20BISP%202026_2027.pdf"
+        ],
+        "application_link": "https://apply.unimib.it",
+        "official_updates_url": "https://en.unimib.it/study/information-international-students/bicocca-international-scholarship",
+        "catalogue_url": "https://apply.unimib.it",
+        "application_cycle": "Annual cycle tied to each degree programme's admission calls. The 2026/27 call is complete, with ranking decrees issued on 28 April 2026 and 15 July 2026; the 2027/28 call had not been published at the verification date.",
+        "deadline_central": null,
+        "deadline_central_display": "No single central deadline exists. Applicants need no separate form, and the University states \"Each course has different admission deadlines. Please refer to the apply.unimib.it webpage\". For free entrance courses in the 2026/2027 call the operative date was confirmation of admission by 15 March 2026, with results published by mid-April 2026.",
+        "deadline_central_timezone": "Europe/Rome",
+        "deadline_note": "The deadline is per degree programme because eligibility follows the admission application, so precision is 'varies' and no ISO date can be published. The 2026/2027 cycle is complete (ranking decrees of 28 April 2026 and 15 July 2026), so status is upcoming rather than open.",
+        "status": "UPCOMING",
+        "status_note": "The 2026/2027 selection is finished: the University published open-access rankings by Rectoral Decree nr 1435/2026 of 28/04/2026 and further closed- and open-access rankings by Rectoral Decree nr 2349/2026 of 15/07/2026. The programme runs every year, but the 2027/2028 call had not been published on 4 October 2026.",
+        "funding_amount": 10000,
+        "funding_currency": "EUR",
+        "funding_period": "per academic year",
+        "funding_duration": "Maximum 3 years for Bachelor's and single-cycle degree programmes, 2 years for Master's degree programmes",
+        "tuition_coverage": true,
+        "tuition_coverage_note": "The official call states each scholarship \"includes exemption from tuition fees\", and that \"Beneficiaries are not exempt from paying the administrative fee and the regional tax.\"",
+        "living_cost_coverage": true,
+        "travel_coverage": false,
+        "fully_funded": false,
+        "funding_label": "EUR 10,000 gross per academic year plus exemption from tuition fees; the administrative fee and regional tax remain payable. Renewal depends on earning 40, 60, 90 and 120 ECTS at published milestones, and the first instalment is withheld if the holder does not arrive in Milan by 31 October 2026.",
+        "benefits": [
+          "EUR 10,000 gross per academic year",
+          "Exemption from tuition fees for the awarded programme",
+          "No separate application form: admission to an eligible programme is the application",
+          "Renewal for up to two years on a Master's programme or three years on a Bachelor's or single-cycle programme",
+          "Around 100 awards a year, with five dedicated to each eligible English-taught course"
+        ],
+        "eligibility": [
+          "Holds a non-Italian entry qualification recognised for admission to the Italian university system",
+          "Does not hold Italian citizenship, unless dual citizenship includes Italian",
+          "Obtained the previous degree abroad",
+          "Is not resident in Italy",
+          "Is admitted to a programme covered by the call, with the deposit paid"
+        ],
+        "citizenship_residency": "Non-Italian citizens resident abroad who obtained their previous degree abroad. Dual citizenship including Italian is explicitly eligible.",
+        "international_eligibility": "Exclusively for international students resident outside Italy; the call is described as reserved for international students holding a foreign qualification.",
+        "degree_levels": [
+          "Bachelor's degree (Laurea)",
+          "Single-cycle Master's degree (Laurea Magistrale a Ciclo Unico)",
+          "Master's degree (Laurea Magistrale)"
+        ],
+        "study_mode": null,
+        "research_requirement": null,
+        "subject_or_agency_requirement": "The degree programme must be one of the University's programmes taught in English. Scholarships are allocated per programme, with five available on each eligible course, and the number per programme may be increased if additional funds become available.",
+        "application_method": "No separate scholarship application. Candidates apply for admission to an eligible English-taught degree programme through the Dream Apply platform at apply.unimib.it, pay the admission deposit to confirm the offer, and complete the programme's admission steps. They are then automatically included in the scholarship selection and receive the offer through Dream Apply and their registered email address.",
+        "application_route": "https://apply.unimib.it \u2014 apply to the degree programme; scholarship assignation appears in the programme's published ranking",
+        "requirements": [
+          "Admission application and deposit payment by the programme's deadline",
+          "Confirmation of admission by 15 March 2026 for free entrance courses in the 2026/2027 call",
+          "All admission steps completed for limited-access programmes",
+          "Official acceptance of the scholarship offer by the stated deadline",
+          "Confirmation of not being a beneficiary of any other scholarship",
+          "Enrolment requirements fulfilled within the given deadline",
+          "Italian student visa (D) for non-EU students",
+          "Enrolment completed after document authenticity and eligibility checks",
+          "Arrival in Milan by 31 October 2026"
+        ],
+        "documents": [
+          "Degree programme admission application through apply.unimib.it",
+          "Proof of the admission deposit payment",
+          "Admission and enrolment documents required by the chosen programme",
+          "Italian student visa documentation for non-EU students"
+        ],
+        "english_requirement": null,
+        "english_requirement_note": "The requirement is that the degree programme is taught in English; the scholarship sets no independent English test score, and language requirements follow the programme's own admission call.",
+        "selection_criteria": [
+          "Best candidates on each eligible course, with five scholarships per programme",
+          "Selection made through the programme's admission ranking",
+          "Priority given to candidates who applied in the first Call for Admission",
+          "Candidates ranked next are moved up automatically if an awardee withdraws"
+        ],
+        "selection_weighting": "Awards follow the degree programme's admission ranking. For limited-access programmes the scholarship decision follows publication of the admission ranking list; for free-access programmes results are published by mid-April. The number per programme is at the awarding body's discretion if additional funds become available.",
+        "duration": "Up to 3 years for Bachelor's and single-cycle degree programmes; up to 2 years for Master's degree programmes",
+        "award_holder_conditions": [
+          "Must officially accept the scholarship offer by the given deadline",
+          "Must confirm that they are not beneficiaries of any other scholarships",
+          "Must fulfil the enrolment requirements within the given deadline",
+          "Must meet the requirements for an Italian student visa (D) for enrolment where applicable",
+          "Must complete enrolment in the selected degree programme after document authenticity checks",
+          "Must arrive in Milan by 31 October 2026, otherwise the first instalment is not paid",
+          "Must complete 40 ECTS credits by November 2027 for the first instalment of the second year",
+          "Must complete 60 ECTS credits by March 2028 for the second instalment of the second year",
+          "For Bachelor's and single-cycle degree programmes, must complete 90 ECTS by November 2028 and 120 ECTS by March 2029 for the third year"
+        ],
+        "supplements_or_initiatives": [
+          "Bicocca for Peace, a companion University of Milano-Bicocca call for international students, run alongside the Bicocca International Scholarship",
+          "Scholars at Risk and Students at Risk calls, which the University opened for 2026 with deadlines of 6 February and 2 to 30 March respectively",
+          "The University is a partner of the UNIADRION ITALY consortium for study and training scholarships in the Western Balkans",
+          "The University participates in the Invest Your Talent in Italy programme of the Italian Ministry of Foreign Affairs and International Cooperation, for which applications for 2026/2027 closed on 11 May 2026"
+        ],
+        "official_contacts": {
+          "general": "International Global Engagement Unit, Universita degli Studi di Milano-Bicocca",
+          "email": null
+        },
+        "description": "The Bicocca International Scholarship Programme (BISP) is a merit award from the University of Milano-Bicocca for international students resident abroad who hold a foreign qualification and are admitted to an English-taught degree programme. Around 100 awards are made each year, five for each eligible course, each worth EUR 10,000 gross per academic year plus exemption from tuition fees, with the administrative fee and regional tax still payable. Applicants submit no separate form; admission to a programme places them automatically in the selection, which follows the programme's admission ranking. Awards are renewable for up to two years on a Master's programme or three years on a Bachelor's or single-cycle programme, subject to published ECTS milestones.",
+        "program_type": "University merit scholarship with tuition-fee exemption (international students)",
+        "region": "Europe",
+        "coverage": "EUR 10,000 gross per academic year plus exemption from tuition fees. The administrative fee and regional tax are not covered, and accommodation, travel and visa costs are not part of the award. Renewal and instalment payment depend on published ECTS milestones and on arrival in Milan by 31 October.",
+        "last_verified_date": "2026-10-04"
+      },
+      "programme_detail_applicant_utility": {
+        "application_readiness_checklist": [
+          "Confirm you do not hold Italian citizenship, or that any Italian citizenship is held as a dual nationality",
+          "Confirm you obtained your previous degree abroad and are not resident in Italy",
+          "Choose an English-taught programme at Milano-Bicocca from the apply.unimib.it offer",
+          "Apply through Dream Apply and pay the admission deposit, which confirms your offer",
+          "Complete every admission step the programme requires, especially for limited-access courses",
+          "Do not look for a separate scholarship form; there is none",
+          "Watch your Dream Apply messages and registered email for the scholarship offer",
+          "Accept the offer, confirm you hold no other scholarship, and enrol on time",
+          "Arrange the Italian student visa (D) if you are a non-EU student",
+          "Plan to arrive in Milan by 31 October 2026 and bank the credit milestones of 40, 60, 90 and 120 ECTS"
+        ],
+        "common_rejection_risks": [
+          "Applying to a programme not taught in English",
+          "Missing the programme's admission deadline, since the scholarship depends on the admission application",
+          "Not paying the admission deposit, so the admission offer is never confirmed",
+          "Missing the 15 March admission confirmation date on the 2026/2027 timetable",
+          "Failing to accept the scholarship offer by the stated deadline",
+          "Holding another scholarship, which is an incompatibility",
+          "Arriving in Milan after 31 October 2026 and losing the first instalment",
+          "Missing the ECTS renewal milestones and losing the scholarship for the following year"
+        ],
+        "estimated_uncovered_costs": [
+          "The University administrative fee, which scholarship holders still pay",
+          "The regional tax, which scholarship holders still pay",
+          "Accommodation in Milan or Monza",
+          "Living costs beyond EUR 10,000 gross per year",
+          "Visa, travel and health insurance costs"
+        ],
+        "document_audit": [
+          "Admission application submitted to an English-taught programme before its deadline",
+          "Admission deposit paid and confirmation received",
+          "Programme-specific admission steps completed, including limited-access ranking where applicable",
+          "Scholarship offer received through Dream Apply and formally accepted",
+          "Written confirmation of not benefiting from any other scholarship",
+          "Italian student visa (D) obtained where applicable",
+          "Enrolment completed after document authenticity checks"
+        ],
+        "alerts": [
+          {
+            "trigger": "Official site is behind a bot check",
+            "message": "en.unimib.it returned HTTP 403 with a Cloudflare challenge token to plain HTTP clients and webfetch, including for the official call PDF. The pages only render in a real browser. If a tool reports the site as down, it is probably the WAF, not the University."
+          },
+          {
+            "trigger": "Stored URL has moved",
+            "message": "The stored official URL returned a Cloudflare challenge and does not appear to be the current location. The live page is https://en.unimib.it/study/information-international-students/bicocca-international-scholarship."
+          },
+          {
+            "trigger": "Arrival deadline carries money",
+            "message": "For the 2026/2027 award the first instalment is not paid if you arrive in Milan after 31 October 2026. Book travel only after checking the arrival date."
+          },
+          {
+            "trigger": "Renewal is credit-gated",
+            "message": "40 ECTS by November 2027 and 60 by March 2028 keep the second year; 90 by November 2028 and 120 by March 2029 are needed for the third year on Bachelor's and single-cycle programmes."
+          }
+        ],
+        "submission_workflow": [
+          "Browse the English-taught programme offer on apply.unimib.it",
+          "Choose an eligible programme and submit the admission application through Dream Apply",
+          "Pay the admission deposit to confirm the admission offer",
+          "Complete the programme's admission steps and any limited-access assessment",
+          "Await the scholarship ranking for your programme",
+          "Accept the scholarship offer through Dream Apply by the stated deadline",
+          "Confirm in writing that you hold no other scholarship",
+          "Obtain the Italian student visa (D) if required and complete enrolment",
+          "Arrive in Milan by 31 October 2026",
+          "Earn 40 ECTS by November 2027, 60 by March 2028, and for longer courses 90 by November 2028 and 120 by March 2029"
+        ]
+      },
+      "programme_detail_verification": {
+        "cycle_verified": "2026/2027 call cycle confirmed complete; 2027/2028 call not yet published, verified 2026-10-04",
+        "verification_confidence": 0.8,
+        "official_fields_confirmed": [
+          "name",
+          "degree_levels",
+          "funding_amount",
+          "funding_currency",
+          "tuition_coverage",
+          "funding_duration",
+          "eligibility",
+          "deadline_precision",
+          "status",
+          "application_method"
+        ],
+        "institution_check_required": [
+          "Confirm the admission deadline for your specific English-taught programme on apply.unimib.it, since the scholarship deadline follows it",
+          "Confirm whether your programme is open-access or limited-access, because the scholarship publication date and admission steps differ"
+        ],
+        "unverified_or_removed_claims": [
+          "en.unimib.it sits behind a Cloudflare bot check: webfetch returned HTTP 403 for both the scholarship page and the official call PDF, and the first Playwright navigation returned a challenge token. Content was read only after the challenge resolved in the browser, so verification confidence is reduced",
+          "The stored official_source_url could not be status-checked because the Cloudflare challenge intercepted the request before the server answered; it appears to have moved. The live location is recorded in url_observed",
+          "The detailed renewal credit milestones, the 31 October arrival deadline and the incompatibility rules come from the official call PDF on en.unimib.it surfaced through site-scoped search of that same domain; the PDF itself returned HTTP 403 to a direct fetch",
+          "The exact number of awards is stated by the live page as a total of 100 with five per course, while the 2026/2027 call refers to allocating per programme and to possible increases if further funds become available; the discrepancy is recorded rather than resolved",
+          "Study mode and any independent English language requirement are not stated on the pages read, so both are null",
+          "No official scholarship contact email was captured from the pages read"
+        ],
+        "source_citations": [
+          "https://en.unimib.it/study/information-international-students/bicocca-international-scholarship",
+          "https://en.unimib.it/sites/sten/files/2026-01/Bando%20BISP%202026_2027.pdf",
+          "https://en.unimib.it/sites/default/files/logo.png"
+        ],
+        "researched_by": "w1_14a1"
+      },
+      "logo_override": {
+        "url": "https://en.unimib.it/sites/default/files/logo.png",
+        "page_url": "https://en.unimib.it/study/information-international-students/bicocca-international-scholarship",
+        "official_host": true,
+        "alt_text": "University of Milano-Bicocca institutional logo (site header)",
+        "validation_result": "verified",
+        "validation_detail": "png 160x172, probed by navigating to the asset in the browser after the Cloudflare challenge cleared: HTTP 200 with content-type image/png and img.complete true at natural size 160x172, confirming a decoded image rather than an HTML error page. It is the University's own header mark, not a programme banner, and not a favicon.",
+        "image_kind": "official_logo",
+        "image_format": "png",
+        "verified_at": "2026-10-04T00:00:00+00:00",
+        "host_evidence": "same_registrable_domain",
+        "_award": "Bicocca International Scholarship Programme (BISP)"
+      },
+      "research_notes": {
+        "logo": "en.unimib.it is behind a Cloudflare bot check, so the page had to be rendered in the browser before any markup was available. The resulting markup scan surfaced four candidates: a favicon at /sites/sten/files/favicon.ico, the site header logo at /sites/default/files/logo.png with alt \"Home\", a search icon, and a programme illustration at /sites/sten/files/styles/foto_paragrafo_testo_640x360/public/2025-03/BIS.png with alt \"Bicocca International Scholarship\". I selected the site header logo because it is the awarding University's institutional mark; the BIS.png file is programme artwork rather than a body logo, and the favicon is not a logo. The header logo was probed by navigating to it in the browser after the challenge cleared, returning HTTP 200 with content-type image/png and a decoded 160x172 image.",
+        "unverified": [
+          "Existence and terms of a 2027/2028 call",
+          "Direct fetch of the official call PDF (Cloudflare 403)",
+          "Official scholarship contact email",
+          "Whether the total award count stays at 100 in future cycles"
+        ],
+        "substitution": null,
+        "official_pages_read": [
+          "https://en.unimib.it/study/fees-and-scholarships/bisp-bicocca-international-scholarship-programme",
+          "https://en.unimib.it/study/information-international-students/bicocca-international-scholarship",
+          "https://en.unimib.it/sites/sten/files/2026-01/Bando%20BISP%202026_2027.pdf"
+        ],
+        "degree_level_confirmed": "The live page states the scholarship is awarded to \"the top student for each bachelor's and master's degree program taught in English, including single-cycle degree programs\", and the official call confirms renewability for \"a maximum of 3 years for Bachelor (Laurea) programmes and Single Cycle Degree programmes (Laurea Magistrale a Ciclo Unico) and 2 years for Master Degree programmes (Laurea Magistrale)\".",
+        "url_observed": "https://en.unimib.it/study/information-international-students/bicocca-international-scholarship",
+        "contradictions": [
+          "Stored deadline_display 'Admission must be confirmed by 15 March 2026' is confirmed correct for the 2026/2027 cycle, and is retained.",
+          "Stored status 'open' is wrong: the 2026/2027 selection is complete, with ranking decrees of 28 April 2026 and 15 July 2026 published on the University's own domain, so status is upcoming.",
+          "Stored deadline_precision 'varies' is confirmed correct, because the University states each course has different admission deadlines and no separate scholarship form exists.",
+          "Stored funding_amount was null; the official amount is EUR 10,000 gross per academic year, and the official call adds the detail that beneficiaries still pay the administrative fee and the regional tax, so funding_type was refined to Partially Funded with fully_funded false.",
+          "Stored degree_levels \"Bachelor's, Master's, Single-Cycle\" is confirmed correct.",
+          "Stored region null corrected to Europe."
+        ],
+        "skeleton": false
+      }
+    },
+    {
+      "target_id": 139,
+      "outcome": "refreshed",
+      "confirm": true,
+      "confirmation_evidence": "The stored official URL is live (HTTP 200, title \"ISU Bocconi Scholarship - First year students a.y. 2027-28 | Bocconi University\") and lists the benefit as \"Cash stipend\" plus \"Possible integrations\": \"Free daily meal, which corresponds to the amount defined by the Lombardy Region (amount: \u20ac 829,00*) and access to preferential rate canteen service\" and a \"200-hours work study program\". It also sets the economic thresholds \"ISEE/ISEEU Parificato no higher than \u20ac 26.887,93\" and \"ISPE/ISPEEU Parificato no higher than \u20ac 58.452,06\" and the merit requirement of \"at least 44 credits\" for Bachelor of Science and Law students and 39 credits for Master of Science students by 10 August 2028.",
+      "new_scholarship": {
+        "name": "ISU Bocconi Scholarship \u2014 First-Year Students a.y. 2027-28 (Right to University Education Scholarship)",
+        "legacy_titles": [
+          "Bocconi University \u2014 ISU Bocconi Scholarship / Bocconi4Access to Education"
+        ],
+        "country": "Italy",
+        "degree_levels": "Bachelor's, Master's",
+        "funding_type": "Partially Funded",
+        "official_source": "Universit\u00e0 Bocconi",
+        "official_source_url": "https://www.unibocconi.it/en/applying-bocconi/bachelor-and-law-programs/funding/isu-bocconi-scholarship-first-year-students-ay-2027-28",
+        "status": "upcoming",
+        "is_verified": true,
+        "last_verified_date": "2026-10-04",
+        "region": "Europe",
+        "program_type": "Need-based Right to University Education scholarship (cash stipend plus services and supplements), administered by the University and funded by the Lombardy Region and the Italian Ministry of Universities and Research",
+        "description": "The ISU Bocconi Scholarship is Bocconi University's implementation of the Italian Right to University Education Scholarship for students entering the first year of a Bachelor of Science, Integrated Master of Arts in Law or Master of Science programme in academic year 2027-2028. It combines a cash stipend with services and supplements, including a free daily meal valued at EUR 829.00 for a.y. 2026-27, access to preferential-rate canteen services and a 200-hour work-study programme. Eligibility depends on three separate tests: enrolment for the absolute first year, an economic test set annually by the Lombardy Region (ISEE/ISEEU Parificato not above EUR 26,887.93 and ISPE/ISPEEU Parificato not above EUR 58,452.06 for a.y. 2026-27), and a merit test verified after the fact through credit thresholds. International candidates apply under this call, while Bocconi and Italian applicants are directed to the separate Bocconi4Access to Education call.",
+        "duration": "One academic year per application; the benefit is not automatic and must be reapplied for each year of enrolment",
+        "deadline": "Applications are only accepted within the published windows and cannot be submitted outside them. For first-year Bachelor of Science and Law international candidates the windows are 12 to 30 November 2026 (Early Session and HEC 1st round) and 15 March to 5 April 2027 (Winter Session and HEC 2nd round). For first-year Master of Science international candidates the windows are 28 January to 8 February 2027, 4 to 18 March 2027, 13 to 27 April 2027 and 10 to 18 June 2027.",
+        "deadline_date": null,
+        "deadline_precision": "varies",
+        "application_period": "Multiple fixed windows per admission session, not yet open on the verification date: from 12 November 2026 for the first Bachelor of Science and Law international window, then 15 March to 5 April 2027, with Master of Science international rounds between 28 January and 18 June 2027. Applications submitted after the deadline or in a different modality will not be evaluated.",
+        "eligibility_summary": "Students enrolled for the absolute first year in a regular-year Bachelor of Science, Integrated Master of Arts in Law or Master of Science programme at Bocconi in a.y. 2027-2028, who satisfy the economic thresholds set annually by the Lombardy Region and the merit credit requirement. First-year Bachelor of Science and Law applicants must have previously submitted the single Bocconi4Access to Education application for a.y. 2027-2028.",
+        "eligibility": [
+          "Enrolled in a.y. 2027-2028 for the absolute first year of enrolment in a regular year of a Bachelor of Science, Integrated Master of Arts in Law or Master of Science programme",
+          "The absolute first year means any prior academic year of first enrolment in any degree programme requiring the same education qualification, at any university in Italy or abroad, even if not completed",
+          "Meets the economic requirements set annually by the Lombardy Region: for a.y. 2026-27, ISEE/ISEEU Parificato not above EUR 26,887.93 and ISPE/ISPEEU Parificato not above EUR 58,452.06",
+          "Meets the merit requirement, verified ex post: at least 44 credits by 10 August 2028 for Bachelor of Science or Integrated master of Arts in Law students, and 39 credits by 10 August 2028 for Master of Science students",
+          "First-year Bachelor of Science and Law applicants must have submitted the Bocconi4Access to Education a.y. 2027-2028 application within its deadlines",
+          "Does not fall within any of the grounds for exclusion listed in the call"
+        ],
+        "coverage": [
+          "Cash stipend (amount set annually by the Lombardy Region and not published on the call pages read)",
+          "Free daily meal, valued at EUR 829.00 for a.y. 2026-27",
+          "Access to preferential-rate canteen services",
+          "200-hour work-study programme",
+          "Possible further integrations, subject to availability"
+        ],
+        "required_documents": [
+          "Attestazione ISEE issued in 2027 for Right to University Education benefits, showing the applicant's fiscal code, its issue date and protocol number",
+          "ISEEU Parificato Certificate issued in 2027 by the CAF partnered with Bocconi University, for candidates whose family household resides and produces income outside Italy",
+          "The CAF confirmation email for Early Session international candidates, uploaded in the ISEEU section by 30 November 2026, with the corrected ISEEU Parificato Certificate uploaded separately by 11 January 2027",
+          "For candidates treated as independent: the employer's CU income declaration for 2025 and 2026, the income tax declaration for the same years, a family registration certificate for the two years prior, and a registered rental agreement in the student's name at an address different from their parents' for 2025 and 2026 with the Agenzia delle Entrati registration receipt",
+          "Document attesting completion of the enrolment procedure for a.y. 2027-2028 (enrolment form) for first-year students",
+          "All supporting documentation uploaded through the online application portal"
+        ],
+        "catalogue_url": "https://apply.unibocconi.it",
+        "official_updates_url": "https://www.unibocconi.it/en/applying-bocconi/bachelor-and-law-programs/funding/isu-bocconi-scholarship-deadlines-and-procedures-ay-2027-28",
+        "english_requirement": "The call is published in English and Italian, and Bocconi's degree programmes are taught in English. No separate English language certificate is required by this scholarship.",
+        "requirements": [
+          "Application must be submitted through the online procedure and finalised by clicking \"Complete data\" and \"Submit application\" within the final deadline",
+          "Applications submitted after the deadline or in a different modality will not be evaluated for the award",
+          "The online procedure will ask for information on requirements, status, family household, income, entrepreneurial activities and company shares",
+          "Only the deadlines published on the deadlines page are valid; dates shown inside the online procedure reflect system management and must be ignored",
+          "The submitted ISEE/ISEEU Parificato certificate is final: no supplement, rectification, replacement or update is accepted, except where the Fees, Funding and Housing Office expressly requests a correction or integration",
+          "International candidates with income and assets abroad need an ISEEU Parificato from the CAF partnered with Bocconi; submissions to the CAF open from 11 November 2026",
+          "The application must be submitted every academic year of enrolment, since the benefit is granted for the year of application and is not automatically renewed",
+          "Candidates must not fall under any of the published grounds for exclusion"
+        ],
+        "application_method": [
+          "For first-year Bachelor of Science or Law applicants, submit the single Bocconi4Access to Education a.y. 2027-2028 application first, within its own deadlines",
+          "Obtain an Attestazione ISEE issued in 2027, or an ISEEU Parificato Certificate from the CAF partnered with Bocconi if income and assets are generated outside Italy",
+          "Access the online application link published on the deadlines page when the relevant window opens",
+          "Fill in all required information about requirements, status, family household, income, entrepreneurial activities and company shares",
+          "Upload the supporting documentation, including income and independence evidence",
+          "Click \"Complete data\" and \"Submit application\" before the window closes",
+          "For Early Session international candidates, upload the CAF confirmation email by the application deadline and the corrected ISEEU Parificato by 11 January 2027"
+        ],
+        "selection_notes": "Applications are assessed against three independent requirements: enrolment, economics and merit. The economic thresholds are set each year by a resolution of the Lombardy Region, and the a.y. 2027-2028 values are expected only after the Regional Council resolution published between June and July 2027. The merit requirement is verified ex post for first-year Bachelor of Science and Integrated Master of Arts in Law students, so the benefit is confirmed only after the credit threshold is met.",
+        "funding_amount": null,
+        "funding_currency": null,
+        "funding_period": "per academic year"
+      },
+      "programme_detail_official": {
+        "official_source_urls": [
+          "https://www.unibocconi.it/en/applying-bocconi/bachelor-and-law-programs/funding/isu-bocconi-scholarship-first-year-students-ay-2027-28",
+          "https://www.unibocconi.it/en/applying-bocconi/bachelor-and-law-programs/funding/isu-bocconi-scholarship-deadlines-and-procedures-ay-2027-28"
+        ],
+        "application_link": "https://apply.unibocconi.it",
+        "official_updates_url": "https://www.unibocconi.it/en/applying-bocconi/bachelor-and-law-programs/funding/isu-bocconi-scholarship-deadlines-and-procedures-ay-2027-28",
+        "catalogue_url": "https://apply.unibocconi.it",
+        "application_cycle": "Academic year 2027-2028. First-year Bachelor of Science and Law international candidates may apply from 12 to 30 November 2026 and from 15 March to 5 April 2027. First-year Master of Science international candidates may apply between 28 January and 8 February, 4 and 18 March, 13 and 27 April and 10 and 18 June 2027. None of these windows was open on 4 October 2026.",
+        "deadline_central": null,
+        "deadline_central_display": "Applications are only accepted inside the published windows. First-year Bachelor of Science and Law (international candidates): Early Session and HEC 1st round, 12-30 November 2026; Winter Session and HEC 2nd round, 15 March-5 April 2027. First-year Master of Science (international applicants): 1st round 28 January-8 February 2027, 2nd round 4-18 March 2027, 3rd round 13-27 April 2027, 4th round 10-18 June 2027.",
+        "deadline_central_timezone": "Europe/Rome",
+        "deadline_note": "There is no single deadline: the University publishes separate final windows per admission session and per degree level, and states that applications outside them will not be evaluated. The earliest window for the next cycle opens on 12 November 2026, after the verification date, so status is upcoming and no single ISO deadline_date can be published. Precision is recorded as 'varies'.",
+        "status": "UPCOMING",
+        "status_note": "No application window was open on 4 October 2026. The earliest window for a.y. 2027-2028 opens on 12 November 2026 for first-year Bachelor of Science and Law international candidates in the Early Session and HEC 1st round.",
+        "funding_amount": null,
+        "funding_currency": null,
+        "funding_period": "per academic year",
+        "funding_duration": "One academic year per application; must be reapplied for each year of enrolment",
+        "tuition_coverage": false,
+        "tuition_coverage_note": "The benefit as described on the call page is a cash stipend plus services and supplements (free daily meal, preferential-rate canteen, 200-hour work-study). Tuition-fee benefits for a.y. 2027-2028 are handled by a separate call: the University states that students in the first year of a Bachelor of Science, Integrated master of Arts in Law or Master of Science programme who are Bocconi or Italian applicants \"must refer exclusively to the benefits assigned through the 'Bocconi4Access to Education a.y. 2027-28' application\".",
+        "living_cost_coverage": true,
+        "travel_coverage": false,
+        "fully_funded": false,
+        "funding_label": "Cash stipend of an amount set annually by the Lombardy Region and not published on the call pages read, plus a free daily meal (EUR 829.00 for a.y. 2026-27), preferential-rate canteen access and a 200-hour work-study programme. Tuition fees are not covered for international applicants, and the award is not automatic in later years.",
+        "benefits": [
+          "Cash stipend funded by the Lombardy Region and the Ministry of Universities and Research",
+          "Free daily meal, valued at EUR 829.00 for a.y. 2026-27",
+          "Access to preferential-rate canteen services",
+          "200-hour work-study programme",
+          "Possible further integrations, subject to availability"
+        ],
+        "eligibility": [
+          "Absolute first year of enrolment in a regular-year Bachelor of Science, Integrated master of Arts in Law or Master of Science programme in a.y. 2027-2028",
+          "No prior first enrolment in any programme requiring the same education qualification, at any university in Italy or abroad, even if not completed",
+          "Economic thresholds set by the Lombardy Region: ISEE/ISEEU Parificato not above EUR 26,887.93 and ISPE/ISPEEU Parificato not above EUR 58,452.06 for a.y. 2026-27",
+          "Merit requirement of 44 credits (Bachelor of Science and Law) or 39 credits (Master of Science) by 10 August 2028, verified ex post",
+          "Bocconi4Access to Education application submitted on time for first-year Bachelor of Science and Law applicants",
+          "No grounds for exclusion apply"
+        ],
+        "citizenship_residency": "Open to Bocconi and international applicants, but the tuition-related benefits are restricted: only Bocconi and Italian applicants in the first year are directed to Bocconi4Access to Education, while international applicants apply under ISU Bocconi. International candidates with income and assets generated outside Italy need an ISEEU Parificato certificate.",
+        "international_eligibility": "International candidates are explicitly served through dedicated application windows, including an Early Session and HEC 1st round window for international candidates in the Bachelor of Science and Law track, and four dedicated rounds for international Master of Science applicants.",
+        "degree_levels": [
+          "Bachelor of Science (Bachelor's degree)",
+          "Integrated Master of Arts in Law",
+          "Master of Science (Master's degree)"
+        ],
+        "study_mode": null,
+        "research_requirement": null,
+        "subject_or_agency_requirement": "Open to every Bocconi degree programme in the listed degree levels, but first-year Bachelor of Science and Law applicants must first submit the single Bocconi4Access to Education application. Separate Bocconi4Access to Education benefits handle tuition fees for Bocconi and Italian applicants.",
+        "application_method": "Online application through the link published on the deadlines page during the relevant window. Candidates fill in requirements, status, family household, income, entrepreneurial activities and company shares, upload the supporting documentation, and finalise by clicking \"Complete data\" then \"Submit application\". Applications in other modalities or after the deadline are not evaluated.",
+        "application_route": "Online application link published on the ISU Bocconi Scholarship deadlines and procedures page for a.y. 2027-28, available as each window approaches; enrolment and admission run through https://apply.unibocconi.it",
+        "requirements": [
+          "Bocconi4Access to Education application submitted first for first-year Bachelor of Science and Law students",
+          "Attestazione ISEE issued in 2027, or ISEEU Parificato Certificate from the CAF partnered with Bocconi for income generated abroad",
+          "CAF submissions open from 11 November 2026; Early Session deadline 26 November 2026 at 12:00 noon",
+          "Corrected ISEEU Parificato uploaded by 11 January 2027 for Early Session international candidates",
+          "Application finalised with \"Complete data\" and \"Submit application\" inside the published window",
+          "No correction of the submitted ISEE/ISEEU Parificato certificate accepted, except at the explicit request of the Fees, Funding and Housing Office",
+          "Application resubmitted every year of enrolment, since the benefit is not automatic",
+          "Only the deadlines on the official deadlines page are valid; dates inside the online procedure are system-management dates and must be ignored"
+        ],
+        "documents": [
+          "Attestazione ISEE 2027 for Right to University Education benefits, with fiscal code, issue date and protocol number",
+          "ISEEU Parificato Certificate 2027 issued by the CAF partnered with Bocconi University",
+          "CAF confirmation email for Early Session international candidates",
+          "CU employer income declaration for 2025 and 2026, income tax declaration for 2025 and 2026, family registration certificate for the two years prior, and registered rental agreement with Agenzia delle Entrati receipt, for candidates treated as independent",
+          "Enrolment form attesting completion of the a.y. 2027-2028 enrolment procedure for first-year students",
+          "Residence documentation supporting the declared status"
+        ],
+        "english_requirement": null,
+        "english_requirement_note": "The scholarship call is published in both English and Italian and Bocconi's degree programmes are taught in English, so no independent English test is required for this benefit.",
+        "selection_criteria": [
+          "Enrolment requirement: absolute first year of enrolment in an eligible programme",
+          "Economic requirement: ISEE/ISEEU Parificato and ISPE/ISPEEU Parificato within the Lombardy Region thresholds",
+          "Merit requirement: minimum credits achieved by 10 August 2028, verified ex post for first-year Bachelor of Science and Law students",
+          "Absence of any published ground for exclusion"
+        ],
+        "selection_weighting": "Not a competitive ranking. The benefit is granted on satisfying the enrolment, economic and merit requirements, with the economic thresholds fixed annually by a Lombardy Region resolution and the merit requirement confirmed after the credit deadline.",
+        "duration": "One academic year per application; the benefit is not automatically renewed and must be reapplied for each year of enrolment",
+        "award_holder_conditions": [
+          "Must be enrolled in a.y. 2027-2028 for the absolute first year of an eligible programme",
+          "Must hold an ISEE or ISEEU Parificato within the thresholds set by the Lombardy Region",
+          "Must achieve at least 44 credits by 10 August 2028 (Bachelor of Science and Law) or 39 credits by 10 August 2028 (Master of Science)",
+          "Must resubmit the application in every subsequent year of enrolment to keep the benefit",
+          "Must not fall under any of the grounds for exclusion",
+          "First-year Bachelor of Science and Law students must have submitted the Bocconi4Access to Education application on time"
+        ],
+        "supplements_or_initiatives": [
+          "Bocconi4Access to Education a.y. 2027-2028, the separate single application through which tuition-fee benefits are assigned to first-year Bocconi and Italian applicants in the Bachelor of Science, Integrated master of Arts in Law and Master of Science programmes",
+          "Preferential-rate student housing, which runs on its own application schedule",
+          "Preferential-rate canteen service alongside the free daily meal",
+          "ISEEU Parificato certificate service delivered through the CAF partnered with Bocconi University"
+        ],
+        "official_contacts": {
+          "general": "Fees, Funding and Housing Office, Universita Bocconi",
+          "email": null
+        },
+        "description": "The ISU Bocconi Scholarship is Bocconi University's implementation of the Italian Right to University Education Scholarship for first-year students in academic year 2027-2028. It provides a cash stipend together with a free daily meal (EUR 829.00 for a.y. 2026-27), preferential-rate canteen access and a 200-hour work-study programme. Eligibility requires absolute first-year enrolment, economic circumstances within the Lombardy Region thresholds of ISEE/ISEEU Parificato up to EUR 26,887.93 and ISPE/ISPEEU Parificato up to EUR 58,452.06, and a merit requirement of 44 credits (Bachelor of Science and Law) or 39 credits (Master of Science) by 10 August 2028. Applications run in separate final windows per admission session, and the benefit must be reapplied for each year.",
+        "program_type": "Need-based Right to University Education scholarship with cash and services",
+        "region": "Europe",
+        "coverage": "Cash stipend (amount set annually by the Lombardy Region and not published on the pages read) plus a free daily meal valued at EUR 829.00 for a.y. 2026-27, preferential-rate canteen services and a 200-hour work-study programme. Tuition fees are not covered for international applicants, and travel is not covered.",
+        "last_verified_date": "2026-10-04"
+      },
+      "programme_detail_applicant_utility": {
+        "application_readiness_checklist": [
+          "Confirm you are enrolling for the absolute first year, with no prior first enrolment in a programme requiring the same qualification",
+          "If you are a first-year Bachelor of Science or Law applicant, submit the single Bocconi4Access to Education a.y. 2027-2028 application first",
+          "Identify which of your admission sessions maps to which ISU window and diarise it",
+          "Order an Attestazione ISEE issued in 2027, or start the ISEEU Parificato process with the Bocconi-partnered CAF from 11 November 2026",
+          "If you are an Early Session international candidate, get the CAF confirmation email by 26 November 2026 at 12:00 noon and upload it with your application",
+          "Upload the corrected ISEEU Parificato Certificate by 11 January 2027 if you applied in the Early Session",
+          "Gather independence evidence if you claim independent status: CU declaration, tax return, family registration certificate and a registered rental agreement",
+          "Complete the online form, then click \"Complete data\" and \"Submit application\" before the window closes",
+          "Ignore any dates shown inside the online procedure; only the published deadlines page counts",
+          "Plan the credit load needed for 44 credits (BSc and Law) or 39 credits (MSc) by 10 August 2028"
+        ],
+        "common_rejection_risks": [
+          "Applying outside the published windows, which the University says will not be evaluated",
+          "Using the system-management dates displayed inside the online procedure instead of the official deadlines",
+          "Missing the Bocconi4Access to Education step for first-year Bachelor of Science and Law applicants",
+          "Submitting an ISEE certificate that is not the 2027 edition, or one above the ISEE or ISPE threshold",
+          "Trying to correct or replace a submitted ISEE/ISEEU Parificato certificate, which is not accepted",
+          "Missing the 26 November 2026 noon CAF deadline for Early Session international candidates",
+          "Missing the 11 January 2027 deadline to upload the corrected ISEEU Parificato",
+          "Failing the ex post merit requirement of 44 or 39 credits by 10 August 2028",
+          "Assuming the benefit renews automatically; it must be applied for every year"
+        ],
+        "estimated_uncovered_costs": [
+          "Tuition fees, which international applicants do not receive through this call",
+          "The cash stipend amount is not published, so the gap between the award and actual living costs cannot be stated from official sources",
+          "Travel and visa costs",
+          "Anything beyond the free daily meal, preferential canteen rate and work-study allocation"
+        ],
+        "document_audit": [
+          "Attestazione ISEE issued in 2027, showing the correct fiscal code, issue date and protocol number",
+          "ISEEU Parificato Certificate from the CAF partnered with Bocconi, for income and assets generated outside Italy",
+          "CAF confirmation email uploaded in the ISEEU section for Early Session candidates",
+          "Corrected ISEEU Parificato uploaded in the dedicated section by 11 January 2027",
+          "Independence evidence complete: CU declaration, tax return, family registration certificate, registered rental agreement and Agenzia delle Entrati receipt",
+          "Enrolment form for a.y. 2027-2028 attached for first-year students",
+          "Application summary printed after finalising, as proof of a complete submission"
+        ],
+        "alerts": [
+          {
+            "trigger": "Two different Bocconi schemes",
+            "message": "Bocconi4Access to Education and ISU Bocconi are separate calls. Tuition-fee benefits for first-year Bachelor of Science, Law and Master of Science applicants who are Bocconi or Italian go through Bocconi4Access to Education; international applicants apply under ISU Bocconi. Check which one you are using before submitting anything."
+          },
+          {
+            "trigger": "Nothing is open yet",
+            "message": "The first window of the a.y. 2027-2028 cycle opens on 12 November 2026 for international Bachelor of Science and Law candidates. Prepare your ISEE and ISEEU paperwork before then."
+          },
+          {
+            "trigger": "Cash amount is unpublished",
+            "message": "The University does not publish the stipend figure on the call pages; it is fixed each year by a Lombardy Region resolution. The EUR 829.00 figure on the page is the value of the free daily meal for a.y. 2026-27, not the scholarship."
+          },
+          {
+            "trigger": "ISEE cannot be corrected",
+            "message": "The submitted ISEE/ISEEU Parificato is final, with no supplement, rectification, replacement or update accepted, except where the Fees, Funding and Housing Office asks for one. Check the figures before submitting."
+          },
+          {
+            "trigger": "Merit is checked after the fact",
+            "message": "For first-year Bachelor of Science and Law students the merit requirement is verified ex post: at least 44 credits by 10 August 2028. Missing it means losing the benefit already held."
+          }
+        ],
+        "submission_workflow": [
+          "Confirm your absolute first-year status and identify your admission session",
+          "Submit the Bocconi4Access to Education application if you are a first-year Bachelor of Science or Law applicant",
+          "Order the 2027 Attestazione ISEE, or start the ISEEU Parificato request with the Bocconi-partnered CAF from 11 November 2026",
+          "Watch for the online application link on the official deadlines page",
+          "Open the application inside your window and enter requirements, status, family household, income, entrepreneurial activities and shares",
+          "Upload the ISEE or ISEEU certificate plus any independence evidence",
+          "Early Session international candidates: upload the CAF confirmation email before the deadline",
+          "Click \"Complete data\" and then \"Submit application\" inside the window",
+          "Upload the corrected ISEEU Parificato by 11 January 2027 if applicable",
+          "Print and keep the summary sheet, and reapply in later years"
+        ]
+      },
+      "programme_detail_verification": {
+        "cycle_verified": "a.y. 2027-2028 call published and not yet open; verified 2026-10-04",
+        "verification_confidence": 0.9,
+        "official_fields_confirmed": [
+          "name",
+          "degree_levels",
+          "status",
+          "deadline_precision",
+          "eligibility",
+          "benefits",
+          "official_updates_url",
+          "application_method"
+        ],
+        "institution_check_required": [
+          "Confirm with the Fees, Funding and Housing Office whether your case falls under ISU Bocconi or Bocconi4Access to Education, since tuition benefits are split between them",
+          "Confirm the a.y. 2027-2028 ISEE and ISPE thresholds once the Lombardy Region resolution is published between June and July 2027",
+          "Confirm the cash stipend amount for a.y. 2027-2028, which is not published on the call pages"
+        ],
+        "unverified_or_removed_claims": [
+          "The cash stipend amount is not published on the pages read, so funding_amount and funding_currency are null rather than guessed. The EUR 829.00 on the page is the value of the free daily meal for a.y. 2026-27, not the scholarship",
+          "The a.y. 2027-2028 economic thresholds are not yet published; the EUR 26,887.93 ISEE and EUR 58,452.06 ISPE figures on the page are explicitly referred to a.y. 2026-27 and are recorded as such",
+          "The per-session application windows were read from the University's own deadlines and procedures page for a.y. 2027-20228, which was confirmed through site-scoped search of unibocconi.it rather than fetched directly",
+          "No exact deadline_date is published because there are several distinct windows per session and none is open",
+          "Tuition coverage is recorded as false for international applicants because the call describes only a cash stipend and services, and the University directs tuition benefits to the separate Bocconi4Access to Education call",
+          "Study mode and a research requirement are not stated on the pages read, so both are null",
+          "No official contact email for the scholarship was captured"
+        ],
+        "source_citations": [
+          "https://www.unibocconi.it/en/applying-bocconi/bachelor-and-law-programs/funding/isu-bocconi-scholarship-first-year-students-ay-2027-28",
+          "https://www.unibocconi.it/en/applying-bocconi/bachelor-and-law-programs/funding/isu-bocconi-scholarship-deadlines-and-procedures-ay-2027-28",
+          "https://www.unibocconi.it/themes/contrib/bocconi_ds/logo.svg"
+        ],
+        "researched_by": "w1_14a1"
+      },
+      "logo_override": {
+        "url": "https://www.unibocconi.it/themes/contrib/bocconi_ds/logo.svg",
+        "page_url": "https://www.unibocconi.it/en/applying-bocconi/bachelor-and-law-programs/funding/isu-bocconi-scholarship-first-year-students-ay-2027-28",
+        "official_host": true,
+        "alt_text": "Bocconi University logo",
+        "validation_result": "verified",
+        "validation_detail": "svg 3057B, probed twice and confirmed: webfetch returned the full SVG source (HTTP 200, image/svg+xml) and the markup is a single path with fill=\"#0046AD\", Bocconi's blue, on a transparent field, giving strong contrast on a white card. It is byte-identical in geometry to the inline header mark on the scholarship page, whose <svg id=\"logo-bocconi\" viewBox=\"0 0 188 40\"> carries the same path data, so it is the University's own primary logo rather than a reproduction.",
+        "image_kind": "official_logo",
+        "image_format": "svg",
+        "verified_at": "2026-10-04T00:00:00+00:00",
+        "host_evidence": "same_registrable_domain",
+        "_award": "ISU Bocconi Scholarship"
+      },
+      "research_notes": {
+        "logo": "Bocconi renders its header logo as an inline SVG (id=\"logo-bocconi\", viewBox 0 0 188 40) with no src, so there was nothing to probe on the page itself. A scan of the page returned only favicons, footer social icons and a \"Bocconi Shop logo\", all of which fail the brief. Following the brief's step 2, I opened the University's own corporate-identity page on unibocconi.it and then probed the theme asset directory convention. Two candidate paths 404'd; /themes/contrib/bocconi_ds/logo.svg returned HTTP 200 with content-type image/svg+xml and 3057 bytes, and webfetch independently returned its source showing a single path filled #0046AD. Because its path data matches the inline header SVG exactly, it is confirmed to be the University's primary logo. Third-party logo repositories surfaced by search (brandfetch, Wikimedia Commons, latestlogo, TopApk) were all rejected as banned third-party hosts.",
+        "unverified": [
+          "Cash stipend amount for a.y. 2027-2028 (set annually by the Lombardy Region)",
+          "a.y. 2027-2028 ISEE and ISPE thresholds (expected June to July 2027)",
+          "Official contact email for the scholarship",
+          "The full list of grounds for exclusion"
+        ],
+        "substitution": null,
+        "official_pages_read": [
+          "https://www.unibocconi.it/en/applying-bocconi/bachelor-and-law-programs/funding/isu-bocconi-scholarship-first-year-students-ay-2027-28",
+          "https://www.unibocconi.it/en/applying-bocconi/bachelor-and-law-programs/funding/isu-bocconi-scholarship-deadlines-and-procedures-ay-2027-28",
+          "https://www.unibocconi.it/en/applying-bocconi/bachelor-and-law-programs/funding/necessary-documentation-isu-bocconi-ay-2027-28",
+          "https://www.unibocconi.it/en/applying-bocconi/bachelor-and-law-programs/funding/iseeu-parificato-certificate-ay-2027-28",
+          "https://www.unibocconi.it/it/argomento-news/corporate-identity"
+        ],
+        "degree_level_confirmed": "The live page is titled \"For students enrolled to first year in Bsc, Msc and Law programs\" and states students \"must be enrolled in the a.y. 2027-2028 for the first time (absolute first year of enrollment) in a regular year of a Bachelor of Science, Integrated master of Arts in Law and Master of Science programs\".",
+        "url_observed": null,
+        "contradictions": [
+          "Stored title merges two distinct Bocconi schemes. The official page states that students in the first year of a Bachelor of Science, Integrated master of Arts in Law or Master of Science programme who are \"Only Bocconi and Italian applicants\" \"must refer exclusively to the benefits assigned through the 'Bocconi4Access to Education a.y. 2027-28' application\". Bocconi4Access to Education is therefore a separate call, not an alternative name for ISU Bocconi, and international applicants use ISU alone. The name was corrected to ISU Bocconi only.",
+          "Stored official_source_url points to the a.y. 2027-28 page while stored current_application_link pointed to the a.y. 2026-27 page. The 2027-28 page is the live current cycle and is retained as the row identity; the deadlines page for 2027-28 is recorded as official_updates_url.",
+          "Stored deadline_display \"International rounds typically May\u2013June 2026 (check portal for exact dates)\" is wrong on both counts. The published international windows are 12-30 November 2026 and 15 March-5 April 2027 for Bachelor of Science and Law, and four rounds from 28 January to 18 June 2027 for Master of Science. Corrected.",
+          "Stored status 'open' is wrong: no window was open on 4 October 2026, the earliest opening 12 November 2026, so status is upcoming.",
+          "Stored deadline_precision 'varies' is confirmed correct, as the University publishes separate final windows per admission session.",
+          "Stored funding_amount was null and remains null, because the University does not publish the cash stipend; the EUR 829.00 on the page is the value of the free daily meal for a.y. 2026-27, a component and not the scholarship amount.",
+          "Stored verification_status 'needs_review' is resolved: the official page is live and confirms the award for a.y. 2027-2028."
+        ],
+        "skeleton": false
+      }
+    },
+    {
+      "target_id": 140,
+      "outcome": "refreshed",
+      "confirm": true,
+      "confirmation_evidence": "The awarding body's live page en.unito.it/studying-unito/scholarships-international-students (HTTP 200, title \"Scholarships for international students | University of Turin\") lists \"40 two-year scholarships to international students 'Talent 4 UniTo' a.y. 2026-2027\". The official English call PDF on the same domain, \"CALL FOR APPLICATIONS FOR 40 SCHOLARSHIPS FOR INTERNATIONAL STUDENTS ENROLLING IN POSTGRADUATE DEGREES WITHOUT RESTRICTED NUMBER OF PLACES TAUGHT IN ENGLISH a.y. 2026-2027\", states \"The total amount of the scholarship is \u20ac20,000 gross of any tax charges payable by the beneficiary (\u20ac10,000 per academic year). Scholarship holders will be exempt from the payment of university tuition fees, except for the first instalment due for enrolment in each academic year.\"",
+      "new_scholarship": {
+        "name": "Talents 4 UniTo \u2014 Two-Year Scholarships for International Students Enrolling in English-Taught Master's Degrees (University of Turin)",
+        "legacy_titles": [
+          "University of Turin \u2014 Talent 4 UniTo"
+        ],
+        "country": "Italy",
+        "degree_levels": "Master's",
+        "funding_type": "Partially Funded",
+        "official_source": "Universit\u00e0 degli Studi di Torino",
+        "official_source_url": "https://www.unito.it/en/university/what-we-do/International-relations-and-cooperation/Talent-4-UniTo",
+        "status": "upcoming",
+        "is_verified": true,
+        "last_verified_date": "2026-10-04",
+        "region": "Europe",
+        "program_type": "University merit scholarship for international students enrolling in the first year of a postgraduate degree (Laurea Magistrale) without restricted access taught in English",
+        "description": "Talents 4 UniTo is the University of Turin's programme of 40 two-year scholarships for talented international students enrolling for the first time in a postgraduate degree without a restricted number of places taught in English. Each scholarship is worth EUR 20,000 gross in total (EUR 10,000 per academic year) and holders are exempt from university tuition fees, except for the first instalment due for enrolment in each academic year. Candidates are international students who hold a qualification obtained outside the Italian system valid for admission to a postgraduate degree, do not hold Italian citizenship and are not resident in Italy. There is no separate application form: applicants are included automatically if they apply on apply.unito.it for up to two eligible programmes during the published window. Selection is carried out per programme by an Evaluation Teaching Committee on a 50-point scale with a 36-point eligibility threshold, and two scholarships are awarded per programme.",
+        "duration": "2 years (two academic years), paid in four instalments of EUR 5,000 gross",
+        "deadline": "Applications had to be submitted on apply.unito.it between 25 November 2025 and 29 January 2026 for the a.y. 2026-2027 cycle, and that call is now closed. Rankings were published from 14 May 2026, and ranking scroll was not possible after 30 November 2026. The next edition's window had not been published on 4 October 2026.",
+        "deadline_date": null,
+        "deadline_precision": "recurring",
+        "application_period": "Annual call with a fixed window. For a.y. 2026-2027 the Apply@Unito application window opened on 25 November 2025 and closed on 29 January 2026; rankings followed from 14 May 2026. The previous edition funded 38 scholarships, and the 2027-2028 call was not published at the verification date.",
+        "eligibility_summary": "Applicants who hold a qualification obtained at an institution outside the Italian education system that is valid for admission to a postgraduate degree, do not hold Italian citizenship, are not resident in Italy, apply to an English-taught postgraduate degree without restricted access at the University of Turin, and demonstrate English proficiency of at least B2 on the CEFR scale.",
+        "eligibility": [
+          "Holds a qualification obtained at an institution outside the Italian system valid for admission to the chosen postgraduate degree, or obtains it by the final enrolment deadline for the academic year",
+          "Does not hold Italian citizenship; where Italian and another citizenship are held, the Italian citizenship prevails and the candidate is excluded",
+          "Is not resident in Italy; non-EU citizens holding a residence permit that allows enrolment at an Italian university under art. 39(5) of Legislative Decree 286/98 are treated as residents and are excluded",
+          "Meets the admission requirements of the chosen programme as published on apply.unito.it",
+          "Has submitted an application for a maximum of two postgraduate degrees without restricted access taught in English during the published window",
+          "Has English language proficiency of at least B2 level on the Common European Framework of Reference",
+          "Has never been enrolled in any degree programme, single-cycle master's degree or postgraduate degree at the University of Turin or any other Italian or foreign university, including simultaneous enrolment"
+        ],
+        "coverage": [
+          "EUR 20,000 gross in total, paid as EUR 10,000 per academic year",
+          "Exemption from university tuition fees, except the first instalment due for enrolment in each academic year"
+        ],
+        "required_documents": [
+          "Application submitted on apply.unito.it for one or two eligible programmes, with all documentation required for admission to the specific course",
+          "Qualification obtained outside the Italian education system, or proof it will be obtained by the final enrolment deadline",
+          "Evidence of English language proficiency of at least B2 CEFR",
+          "Documentation required by the chosen programme's admission requirements",
+          "For non-EU visa applicants residing abroad, compliance with the annual ministerial provisions on entry, residence and enrolment of international students in Italy",
+          "Completed and signed acceptance letter, sent after the rankings are published"
+        ],
+        "catalogue_url": "https://apply.unito.it",
+        "official_updates_url": "https://en.unito.it/studying-unito/scholarships-international-students",
+        "english_requirement": "At least B2 English proficiency on the Common European Framework of Reference is mandatory. English proficiency is also one of the four scored selection criteria.",
+        "requirements": [
+          "Apply through apply.unito.it within the published window, for a maximum of two eligible programmes",
+          "Applications sent by email are not considered, and neither are applications made through multiple Apply@Unito accounts",
+          "All documentation is thoroughly checked and fraudulent declarations constitute a criminal offence",
+          "Non-EU visa applicants residing abroad must comply with the relevant visa procedures and deadlines, including the annual ministerial provisions",
+          "Accept the scholarship by emailing internationalstudents@unito.it within 10 days of the publication of the rankings, under penalty of forfeiture, and send the completed and signed acceptance letter",
+          "Confirm that the incompatibilities in the call do not apply",
+          "If successful in more than one ranking, choose one programme and, if a non-EU visa applicant, have pre-enrolled on Universitaly for that specific programme",
+          "Complete enrolment by the deadline indicated by the International Students Office and, where applicable, obtain a study visa and submit a residence permit application"
+        ],
+        "application_method": [
+          "Access the apply.unito.it online procedure during the published window",
+          "Choose the programme of interest and submit the application with all documentation required for admission to that specific course",
+          "Apply to a maximum of two eligible programmes to take part in the selection",
+          "No additional scholarship application form or documentation is required",
+          "Await the programme's ranking list, published from 14 May 2026 on the University website with no personal notification",
+          "If listed as a winner, email the signed acceptance letter to internationalstudents@unito.it within 10 days",
+          "Complete enrolment, and for non-EU applicants obtain the study visa and residence permit"
+        ],
+        "selection_notes": "Selection is carried out by the Evaluation Teaching Committee for each programme listed in the call, composed of academic staff who assess academic qualifications and personal preparation. Scholarships are awarded to the two highest-ranking candidates per programme on a maximum of 50 points, with a minimum eligibility score of 36 points. In a tie the younger candidate prevails, and scholarships not awarded by one programme cannot be reassigned to another.",
+        "funding_amount": 20000,
+        "funding_currency": "EUR",
+        "funding_period": "total over two academic years"
+      },
+      "programme_detail_official": {
+        "official_source_urls": [
+          "https://en.unito.it/studying-unito/scholarships-international-students",
+          "https://en.unito.it/sites/sten/files/documenti/2026-01/bando_talents4unito_2026_2027_en.pdf",
+          "https://www.unito.it/internazionalita/arrivare-unito-dallestero/ammissione-studenti-internazionali/borse-studenti"
+        ],
+        "application_link": "https://apply.unito.it",
+        "official_updates_url": "https://en.unito.it/studying-unito/scholarships-international-students",
+        "catalogue_url": "https://apply.unito.it",
+        "application_cycle": "Annual cycle tied to the Apply@Unito admission window. For a.y. 2026-2027, 40 scholarships; applications 25 November 2025 to 29 January 2026; rankings published from 14 May 2026; ranking scroll not possible after 30 November 2026. The previous a.y. 2025-2026 edition funded 38 scholarships and is also closed.",
+        "deadline_central": null,
+        "deadline_central_display": "For the a.y. 2026-2027 cycle the Apply@Unito application window ran from 25 November 2025 to 29 January 2026 and the call is now closed. Rankings were published from 14 May 2026, and ranking scroll was not possible after 30 November 2026. No window is open for 2027-2028.",
+        "deadline_central_timezone": "Europe/Rome",
+        "deadline_note": "The call publishes an exact opening and closing date each year, but the only edition verifiable on the awarding body's site was the 2026-2027 call, whose window closed on 29 January 2026 and whose rankings were published from 14 May 2026. The programme runs every year (the 2025-2026 edition funded 38 scholarships), but no 2027-2028 window had been published at the verification date, so deadline_date is null with precision recurring.",
+        "status": "UPCOMING",
+        "status_note": "The a.y. 2026-2027 call is closed: rankings were published from 14 May 2026 and scrolling ended on 30 November 2026. The programme is annual, but the 2027-2028 call had not been published on 4 October 2026, so the next cycle is upcoming.",
+        "funding_amount": 20000,
+        "funding_currency": "EUR",
+        "funding_period": "total over two academic years",
+        "funding_duration": "2 years, paid in four instalments of EUR 5,000 gross (first instalment of year 1, second instalment of year 1, first instalment of year 2, second instalment of year 2)",
+        "tuition_coverage": true,
+        "tuition_coverage_note": "The official call states that scholarship holders \"will be exempt from the payment of university tuition fees, except for the first instalment due for enrolment in each academic year\".",
+        "living_cost_coverage": true,
+        "travel_coverage": false,
+        "fully_funded": false,
+        "funding_label": "EUR 20,000 gross over two years (EUR 10,000 per academic year) plus exemption from university tuition fees, except the first enrolment instalment payable each academic year. The award is incompatible with any other scholarship, including EDISU regional right-to-education scholarships.",
+        "benefits": [
+          "EUR 20,000 gross in total, EUR 10,000 per academic year, paid in four instalments of EUR 5,000",
+          "Exemption from university tuition fees apart from the first enrolment instalment",
+          "Renewal for a second year subject to credit and weighted-GPA thresholds",
+          "No separate application form: admission applications on apply.unito.it are assessed automatically"
+        ],
+        "eligibility": [
+          "Qualification from outside the Italian education system valid for the chosen postgraduate degree",
+          "No Italian citizenship, with Italian citizenship prevailing in dual-citizenship cases",
+          "Not resident in Italy, including the rule that non-EU holders of an art. 39(5) residence permit count as residents",
+          "Meets the chosen programme's admission requirements",
+          "Application submitted for a maximum of two eligible programmes in the published window",
+          "English proficiency of at least B2 CEFR",
+          "No prior enrolment in any degree, single-cycle master's or postgraduate degree at any Italian or foreign university"
+        ],
+        "citizenship_residency": "Strictly for international students: qualification obtained outside the Italian system, no Italian citizenship, and not resident in Italy. Italian citizenship prevails in dual-citizenship cases, and non-EU residents of Italy are excluded.",
+        "international_eligibility": "Exclusively for non-Italian-citizen students resident outside Italy who obtained their qualification outside the Italian education system.",
+        "degree_levels": [
+          "Master's degree (Laurea Magistrale), first year"
+        ],
+        "study_mode": null,
+        "research_requirement": null,
+        "subject_or_agency_requirement": "Only English-taught postgraduate degrees without a restricted number of places are eligible. Two scholarships are allocated per programme, and scholarships not awarded by one programme cannot be reassigned to another.",
+        "application_method": "Online application through the apply.unito.it procedure during the published window, choosing the programme and attaching all documentation required for admission to that specific course. No additional scholarship form or documentation is needed: applicants meeting the requirements are automatically included in the selection.",
+        "application_route": "https://apply.unito.it \u2014 apply to one or two eligible English-taught postgraduate degrees; rankings are published at www.unito.it under Internazionalit\u00e0 \u203a Studenti e ospiti internazionali \u203a Borse per studenti internazionali",
+        "requirements": [
+          "Application submitted on apply.unito.it between 25 November 2025 and 29 January 2026 for the a.y. 2026-2027 cycle",
+          "Maximum of two programme applications",
+          "English proficiency of at least B2 CEFR",
+          "Compliance with visa procedures and deadlines for non-EU applicants residing abroad",
+          "Acceptance emailed to internationalstudents@unito.it within 10 days of the ranking publication, with the signed acceptance letter",
+          "Confirmation of the absence of the incompatibilities listed in the call",
+          "Enrolment completed by the deadline indicated by the International Students Office",
+          "Study visa obtained and residence permit application submitted where applicable",
+          "Universal pre-enrolment on Universitaly for the chosen programme where the candidate is a non-EU visa applicant"
+        ],
+        "documents": [
+          "Apply@Unito application for the chosen programme with all admission documentation",
+          "Qualification obtained outside the Italian system, or evidence of imminent completion",
+          "English language proficiency evidence at B2 CEFR or above",
+          "Programme-specific admission documents",
+          "Signed acceptance letter after the rankings are published"
+        ],
+        "english_requirement": "At least B2 level on the Common European Framework of Reference for Languages. English proficiency is also one of the four scored assessment criteria, alongside consistency with previous studies and motivation, overall CV assessment, and the admission test or interview result.",
+        "selection_criteria": [
+          "Consistency of the application with the candidate's previous studies and motivation",
+          "English proficiency",
+          "Overall assessment of the CV",
+          "Result of the admission test and/or interview"
+        ],
+        "selection_weighting": "Maximum 50 points with a minimum eligibility score of 36 points. Each programme's Evaluation Teaching Committee identifies up to ten eligible candidates and drafts a ranking list; scholarships go to the top two. Ties are resolved in favour of the younger candidate.",
+        "duration": "2 years",
+        "award_holder_conditions": [
+          "Must accept the scholarship by emailing internationalstudents@unito.it within 10 days of the publication of the rankings, under penalty of forfeiture, and send the signed acceptance letter",
+          "Must confirm that none of the incompatibilities in the call apply",
+          "Must enrol regularly by the deadline for a.y. 2026-2027, stated as 13 November 2026 in the call",
+          "Must obtain a study visa where applicable, and submit the residence permit application, failing which the scholarship is forfeited",
+          "Must inform the International Students Office if awarded any other scholarship",
+          "Must be regularly enrolled by 13 November 2026 to receive the first instalment",
+          "Must enrol in the second year and earn at least 50% of first-year credits by 30 September 2027 with a weighted GPA of at least 27/30 for the February 2028 payment",
+          "Must earn at least 80% of first-year credits by 29 February 2028 with a GPA of at least 27/30 for the March 2028 payment",
+          "Must earn 100% of first-year credits and at least 50% of second-year credits by 30 September 2028 with a GPA of at least 27/30 for the October/November 2028 payment",
+          "Acceptance deadlines, withdrawal, failure to enrol by the deadline and failure to obtain a visa all cause forfeiture and ranking scroll"
+        ],
+        "supplements_or_initiatives": [
+          "UniTo for Students at Risk, a separate call for international students from countries affected by armed conflict",
+          "Financial aid for international students from countries affected by armed conflict, a.y. 2025-2026",
+          "IUPALS Italian Universities for Palestinian Students, four scholarships for Palestinian students",
+          "Scholarships for students with international protection status, and University corridors for refugees under UNICORE 8.0",
+          "EDISU Piemonte regional right-to-education scholarships, which this award is incompatible with"
+        ],
+        "official_contacts": {
+          "general": "International Students Office, Direzione Innovazione e Internazionalizzazione \u2013 Area Internazionalizzazione, Sezione Studenti Internazionali, Complesso Aldo Moro, Palazzina D, Via Sant'Ottavio 12, 10124 Turin; telephone +39 011 6704452 (Mondays and Thursdays 2:00-4:00 p.m., Tuesdays 10:00 a.m.-12:00 p.m.)",
+          "email": "internationalstudents@unito.it"
+        },
+        "description": "Talents 4 UniTo is the University of Turin's annual programme of 40 two-year scholarships for international students enrolling for the first time in an English-taught postgraduate degree without restricted access. Each award is EUR 20,000 gross over two years (EUR 10,000 per academic year, paid in four instalments of EUR 5,000) plus exemption from university tuition fees, except the first enrolment instalment. Applicants qualify automatically through the apply.unito.it admission application, with no extra form, and are scored out of 50 points by each programme's Evaluation Teaching Committee with a 36-point eligibility threshold. Two scholarships are awarded per programme, with ties going to the younger candidate, and the award is incompatible with any other scholarship including EDISU.",
+        "program_type": "University merit scholarship with tuition-fee exemption (international Master's students)",
+        "region": "Europe",
+        "coverage": "EUR 20,000 gross over two academic years (EUR 10,000 per year) plus exemption from university tuition fees other than the first enrolment instalment each year. Travel, visa and accommodation costs are not covered, and the award cannot be combined with any other scholarship.",
+        "last_verified_date": "2026-10-04"
+      },
+      "programme_detail_applicant_utility": {
+        "application_readiness_checklist": [
+          "Confirm you obtained your qualification outside the Italian education system",
+          "Confirm you do not hold Italian citizenship, and that you are not resident in Italy",
+          "Confirm you have never enrolled in any degree programme at any university",
+          "Choose one or two English-taught postgraduate degrees without restricted access at the University of Turin",
+          "Check that programme's admission requirements on apply.unito.it",
+          "Have B2 CEFR English evidence ready, as it is both mandatory and scored",
+          "Apply through apply.unito.it inside the published window, attaching all admission documentation",
+          "Do not submit anything by email: emailed applications are not considered",
+          "Watch the University's scholarship pages from mid-May for the ranking list; there is no personal notification",
+          "If successful, email the signed acceptance letter to internationalstudents@unito.it within 10 days and enrol by the stated deadline"
+        ],
+        "common_rejection_risks": [
+          "Holding Italian citizenship, which prevails even where it is dual citizenship",
+          "Being resident in Italy, including non-EU holders of an art. 39(5) residence permit",
+          "Having any prior enrolment in a degree, single-cycle master's or postgraduate degree at any university",
+          "Applying to more than two programmes",
+          "Choosing a programme taught in Italian or with restricted access",
+          "Missing the Apply@Unito window, since eligibility depends on the admission application itself",
+          "Submitting by email or through multiple Apply@Unito accounts",
+          "Missing the 10-day acceptance window after the rankings are published",
+          "Holding another scholarship, including EDISU, which is an incompatibility",
+          "Failing to obtain a study visa or failing to enrol by the deadline"
+        ],
+        "estimated_uncovered_costs": [
+          "The first enrolment instalment of tuition fees payable in each academic year",
+          "Student visa and residence permit costs",
+          "Accommodation, which is not part of this scholarship",
+          "Living costs beyond EUR 10,000 gross per academic year",
+          "Travel to and from Italy"
+        ],
+        "document_audit": [
+          "Apply@Unito application submitted within the published window",
+          "Qualification from outside the Italian system, or proof of imminent completion by the final enrolment deadline",
+          "English proficiency certificate at B2 CEFR or above",
+          "All programme-specific admission documentation attached",
+          "Signed acceptance letter emailed to internationalstudents@unito.it within 10 days of the ranking publication",
+          "Confirmation of the absence of other scholarships, including EDISU",
+          "Universitaly pre-enrolment for the chosen programme where the candidate is a non-EU visa applicant"
+        ],
+        "alerts": [
+          {
+            "trigger": "This is a Master's scholarship, not a PhD one",
+            "message": "The official call title is \"CALL FOR APPLICATIONS FOR 40 SCHOLARSHIPS FOR INTERNATIONAL STUDENTS ENROLLING IN POSTGRADUATE DEGREES WITHOUT RESTRICTED NUMBER OF PLACES TAUGHT IN ENGLISH\", and the awards go to first-year Laurea Magistrale students. It is not a doctoral programme."
+          },
+          {
+            "trigger": "No separate form",
+            "message": "The University states applicants meeting the requirements are \"automatically included in the selection\" and that no additional application form or documentation is required. Your apply.unito.it application is the scholarship application."
+          },
+          {
+            "trigger": "Incompatible with everything",
+            "message": "The award is incompatible with any other scholarship from the Italian Government or from Italian or foreign institutions, including EDISU regional scholarships. You must declare any other award to the International Students Office."
+          },
+          {
+            "trigger": "Ranking scroll has closed",
+            "message": "For a.y. 2026-2027 the call states scrolling of the rankings was not possible after 30 November 2026, so that cycle is fully closed. Watch for the next call in the same window each year."
+          },
+          {
+            "trigger": "Renewal is credit and GPA gated",
+            "message": "Second-year payments require at least 50% of first-year credits by 30 September 2027 and a weighted GPA of at least 27/30, then 80% by 29 February 2028, then 100% plus 50% of second-year credits by 30 September 2028."
+          }
+        ],
+        "submission_workflow": [
+          "Choose up to two eligible English-taught postgraduate degrees at the University of Turin",
+          "Check each programme's admission requirements on apply.unito.it",
+          "Prepare your qualification documents and B2 English evidence",
+          "Access the apply.unito.it procedure during the published window",
+          "Submit the application for each chosen programme with all required documentation",
+          "Await the programme's ranking list, published from mid-May with no personal notification",
+          "If you are a winner, email the signed acceptance letter to internationalstudents@unito.it within 10 days",
+          "Confirm you hold no other scholarship and pre-enrol on Universitaly if you need a visa",
+          "Complete enrolment by the deadline, and obtain the study visa and residence permit where applicable",
+          "Progress the renewal by earning the required credits and maintaining a GPA of at least 27/30"
+        ]
+      },
+      "programme_detail_verification": {
+        "cycle_verified": "a.y. 2026-2027 call cycle confirmed closed; 2027-2028 call not published, verified 2026-10-04",
+        "verification_confidence": 0.85,
+        "official_fields_confirmed": [
+          "name",
+          "degree_levels",
+          "funding_amount",
+          "funding_currency",
+          "tuition_coverage",
+          "funding_duration",
+          "eligibility",
+          "status",
+          "english_requirement",
+          "selection_criteria",
+          "official_contacts"
+        ],
+        "institution_check_required": [
+          "Confirm your chosen programme is an English-taught postgraduate degree without restricted access and is listed in the call",
+          "Confirm the next Apply@Unito window once the University publishes it",
+          "Confirm the current instalment dates and the enrolment deadline communicated by the International Students Office"
+        ],
+        "unverified_or_removed_claims": [
+          "unito.it and en.unito.it sit behind a Cloudflare bot check: direct requests returned HTTP 403 with a verification interstitial, and the pages only rendered after the challenge cleared in the browser. The stored official_source_url was not status-checked and is recorded in url_observed as unverified",
+          "The 50-point scale, the 36-point eligibility threshold, the 13 November 2026 enrolment deadline and the credit and GPA renewal thresholds come from the official English and Italian call PDFs on unito.it surfaced through site-scoped search of that domain rather than opened directly",
+          "The number of instalments is described as four of EUR 5,000 gross, which is consistent with the EUR 20,000 total across two years, but the second-year instalment dates were partially truncated in the source text and are recorded at year level rather than as exact dates",
+          "Study mode is not stated on the sources read, so it is null",
+          "The scholarship amount is recorded as the EUR 20,000 two-year total because that is the figure the University headlines; the EUR 10,000 per academic year figure is carried in funding_label and funding_duration"
+        ],
+        "source_citations": [
+          "https://en.unito.it/studying-unito/scholarships-international-students",
+          "https://en.unito.it/sites/sten/files/documenti/2026-01/bando_talents4unito_2026_2027_en.pdf",
+          "https://www.unito.it/internazionalita/arrivare-unito-dallestero/ammissione-studenti-internazionali/borse-studenti",
+          "https://en.unito.it/themes/custom/unito_international/media/loghi/logo_unito_verticale.svg"
+        ],
+        "researched_by": "w1_14a1"
+      },
+      "logo_override": {
+        "url": "https://en.unito.it/themes/custom/unito_international/media/loghi/logo_unito_verticale.svg",
+        "page_url": "https://en.unito.it/studying-unito/scholarships-international-students",
+        "official_host": true,
+        "alt_text": "University of Turin logo",
+        "validation_result": "verified",
+        "validation_detail": "svg 26260B, probed by navigating to the asset in the browser after the Cloudflare challenge cleared: HTTP 200 with content-type image/svg+xml. The file is the complete vertical lockup (viewBox 0 0 333.5 417, rendered 85x127) and its only colour fills are #54565A (dark grey) and #EA0029 (the University of Turin red), so it renders dark and legible on a light card.",
+        "image_kind": "official_logo",
+        "image_format": "svg",
+        "verified_at": "2026-10-04T00:00:00+00:00",
+        "host_evidence": "same_registrable_domain",
+        "_award": "Talents 4 UniTo"
+      },
+      "research_notes": {
+        "logo": "After the Cloudflare challenge cleared, the markup scan surfaced three logo files on the awarding body's own domain: /themes/custom/unito_portale/media/loghi/logo_unitoit_negativo.svg (alt \"Vai alla Home Page\"), /themes/custom/unito_portale/media/loghi/logo_unita.svg (alt \"Home\") and /themes/custom/unito_international/media/loghi/logo_unito_verticale.svg (alt \"Home\"). I rejected logo_unitoit_negativo.svg on its filename, since \"negativo\" denotes the reversed white-on-dark variant. I probed the other two in the browser (webfetch returns 403 on en.unito.it assets). logo_unita.svg returned HTTP 200 image/svg+xml but has viewBox 0 0 60 60, so it is the square crest alone with no wordmark, which reads as a cropped fragment. logo_unito_verticale.svg returned HTTP 200 image/svg+xml with viewBox 0 0 333.5 417 and fills #54565A and #EA0029, i.e. the full lockup in dark grey and University red, and was reported.",
+        "unverified": [
+          "Existence and dates of a 2027-2028 call",
+          "HTTP status of the stored official_source_url (blocked by the Cloudflare check before the server answered)",
+          "Exact payment dates of the second-year instalments"
+        ],
+        "substitution": null,
+        "official_pages_read": [
+          "https://www.unito.it/en/university/what-we-do/International-relations-and-cooperation/Talent-4-UniTo",
+          "https://en.unito.it/studying-unito/scholarships-international-students",
+          "https://en.unito.it/sites/sten/files/documenti/2026-01/bando_talents4unito_2026_2027_en.pdf",
+          "https://www.unito.it/sites/default/files/2025-12/bando_talents4unito_2026_2027.pdf",
+          "https://www.unito.it/internazionalita/arrivare-unito-dallestero/ammissione-studenti-internazionali/borse-studenti"
+        ],
+        "degree_level_confirmed": "The official call is titled \"CALL FOR APPLICATIONS FOR 40 SCHOLARSHIPS FOR INTERNATIONAL STUDENTS ENROLLING IN POSTGRADUATE DEGREES WITHOUT RESTRICTED NUMBER OF PLACES TAUGHT IN ENGLISH a.y. 2026-2027\" and states the programme is for students who \"enroll in the first year of a postgraduate degree without a restricted number of places taught in English\", i.e. a first-year Laurea Magistrale (Master's) course.",
+        "url_observed": "https://en.unito.it/studying-unito/scholarships-international-students",
+        "contradictions": [
+          "Stored program_type \"PhD-focused\" is wrong. The official call targets first-year Laurea Magistrale (Master's) students in English-taught postgraduate degrees without restricted access; no PhD is involved. Corrected.",
+          "Stored status 'open' is wrong: the a.y. 2026-2027 window closed on 29 January 2026, rankings were published from 14 May 2026, and the call states ranking scroll was not possible after 30 November 2026. Corrected to upcoming.",
+          "Stored deadline_display \"typically January\" is confirmed in substance and sharpened to the published 25 November 2025 to 29 January 2026 window for the 2026/2027 cycle.",
+          "Stored deadline_precision 'unknown' corrected to 'recurring', since the programme is annual with a published fixed window each year.",
+          "Stored funding \"\u20ac20,000 total (\u20ac10,000/year) + tuition fee exemption\" is confirmed correct, and refined with the official qualifier that the tuition-fee exemption does not cover the first enrolment instalment each year.",
+          "Stored funding_amount 20000 EUR is confirmed correct.",
+          "Stored application_link duplicated the official page URL; replaced with https://apply.unito.it, which the official call names as the actual application platform.",
+          "Stored degree_levels 'Master's' and region 'Europe' are confirmed correct."
+        ],
+        "skeleton": false
+      }
+    },
+    {
+      "target_id": 141,
+      "outcome": "refreshed",
+      "confirm": true,
+      "confirmation_evidence": "The awarding body's own notice page on unito.it, \"PROGETTO UNICORE 8.0 UNIVERSITY CORRIDORS FOR REFUGEES - BANDO PER 3 BORSE DI STUDIO\" (published Wednesday 11 March 2026, now archived), states \"Per il progetto UNICORE 8.0, l'Universita di Torino offre 3 borse di studio per accedere ad alcuni corsi di laurea magistrale ad accesso libero in lingua inglese. La scadenza per la presentazione delle domande e fissata per venerdi 17 aprile 2026, ore 12 (mezzogiorno, ora italiana)\" and that the project is promoted by UNHCR. The official call PDF \"BANDO PER L'ATTRIBUZIONE DI 3 BORSE DI STUDIO 'UNICORE 8.0 - a.a. 2026-2027/2027-2028'\" on the same domain states \"un beneficio in denaro dell'importo annuale di \u20ac 7.000 (lordo percipiente), per gli a.a. 2026/2027 e 2027/2028\" and \"l'esonero dal pagamento di ogni importo dovuto per l'iscrizione universitaria per l'a.a. 2026/2027 e per l'a.a. 2027/2028, ad eccezione della prima rata della contribuzione\".",
+      "new_scholarship": {
+        "name": "UNICORE 8.0 University Corridors for Refugees \u2014 University of Turin Scholarship (a.y. 2026-2027 / 2027-2028)",
+        "legacy_titles": [
+          "UNICORE 8.0 (University Corridors for Refugees)"
+        ],
+        "country": "Italy",
+        "degree_levels": "Master's",
+        "funding_type": "Partially Funded",
+        "official_source": "Universit\u00e0 degli Studi di Torino (within the UNHCR-promoted UNICORE 8.0 project)",
+        "official_source_url": "https://www.unito.it/avvisi/progetto-unicore-80-university-corridors-refugees-bando-3-borse-di-studio",
+        "status": "upcoming",
+        "is_verified": true,
+        "last_verified_date": "2026-10-04",
+        "region": "Europe",
+        "program_type": "Refugee-student scholarship within the UNHCR-coordinated UNICORE 8.0 University Corridors project: a two-year Master's scholarship for refugee students resident in listed countries of Africa and Asia, run by the University of Turin",
+        "description": "UNICORE 8.0 (University Corridors for Refugees) is a project promoted by the United Nations High Commissioner for Refugees that creates educational corridors from selected countries in Africa and Asia to Italy, in partnership with MAECI, Caritas Italiana, Diaconia Valdese and a group of Italian universities. For the 2026-2027 and 2027-2028 academic years the University of Turin awards three two-year cash-and-services scholarships for refugee students to access its open-access, English-taught Master's degree programmes. Each scholarship provides a cash benefit of EUR 7,000 gross per academic year plus exemption from all amounts due for university enrolment, except the first instalment of the student contribution. The award is paid in four instalments by bank transfer to an Italian bank account, with each payment conditional on enrolment and credit milestones.",
+        "duration": "2 academic years (a.y. 2026-2027 and a.y. 2027-2028)",
+        "deadline": "Applications had to be submitted exclusively through the online procedure at https://universitycorridors.unhcr.it/ by 17 April 2026 at 12:00 (noon, Italian time, UTC+2). That window has closed and the 2026/2028 edition is complete; the next edition had not been published on 4 October 2026.",
+        "deadline_date": null,
+        "deadline_precision": "recurring",
+        "application_period": "Annual project edition with a single common deadline across participating universities. For the eighth edition the deadline was 17 April 2026 at 12:00 Italian time, with applications running from early March 2026, and students expected to arrive in Italy in September 2026.",
+        "eligibility_summary": "Refugee students residing in one of the listed countries who obtained refugee status in their country of residence in collaboration with UNHCR, hold a qualification obtained between 1 January 2021 and 17 April 2026 that gives access to one of the eligible open-access English-taught Master's programmes at the University of Turin, have a GPA of at least 3.0 (equivalent to 24/30 in the Italian system), meet the chosen programme's specific admission requirements, have never been enrolled in a degree programme at the University of Turin or any other UNICORE partner university, and have English proficiency of at least B2 CEFR.",
+        "eligibility": [
+          "Resident in Bangladesh, Burkina Faso, Cameroon, Ethiopia, India, Kenya, Mozambique, Niger, Nigeria, South Africa, Uganda, Zambia or Zimbabwe",
+          "Refugee status obtained in the country of residence in collaboration with UNHCR",
+          "Qualification valid for matriculation in a.y. 2026-2027 to one of the open-access Master's programmes listed in the call, obtained no earlier than 1 January 2021 and no later than 17 April 2026",
+          "GPA of 3.0 or higher, i.e. an average of at least 24/30, converted using the Italian Ministry of Education's official formula published at https://universitycorridors.unhcr.it/admission-criteria",
+          "Meets the specific admission requirements of the chosen degree programme",
+          "Has never been enrolled in a degree programme at the University of Turin or at another UNICORE partner university",
+          "English language proficiency of at least B2 on the Common European Framework of Reference",
+          "Not in receipt of the other study grants described in the call"
+        ],
+        "coverage": [
+          "EUR 7,000 gross per academic year for a.y. 2026/2027 and a.y. 2027/2028, paid in four instalments by bank transfer to an Italian bank account",
+          "Exemption from all amounts due for university enrolment in both academic years, except the first instalment of the student contribution"
+        ],
+        "required_documents": [
+          "Copy of a valid Refugee Identity card issued in collaboration with UNHCR, or of the Proof of Registration (PoR)",
+          "Original foreign academic title (Bachelor's degree) and the official study plan (transcript of records), bearing the stamp and signature of the foreign academic institution",
+          "Official translation into English or Italian if the documents were not originally issued in Italian, English, French or Spanish",
+          "Motivation letter in English",
+          "Curriculum vitae",
+          "English language proficiency certificate of at least B2 CEFR, if held, such as Cambridge First Certificate of English, PTE Academic, IELTS with a score of 5.5 out of 9, TOEFL iBT or Trinity College ISE II"
+        ],
+        "catalogue_url": "https://universitycorridors.unhcr.it/",
+        "official_updates_url": "https://www.unito.it/avvisi/progetto-unicore-80-university-corridors-refugees-bando-3-borse-di-studio",
+        "english_requirement": "English proficiency of at least B2 on the Common European Framework of Reference is mandatory and is assessed. Accepted evidence includes Cambridge FCE, PTE Academic, IELTS with a score of 5.5 out of 9, TOEFL iBT and Trinity College ISE II. The eligible degree programmes are taught in English.",
+        "requirements": [
+          "Submit the application exclusively through the online procedure at https://universitycorridors.unhcr.it/ by 17 April 2026 at 12:00 Italian time",
+          "Attach a valid Refugee Identity card or Proof of Registration",
+          "Attach the original foreign Bachelor's degree with its official transcript, stamped and signed by the issuing institution, plus an official translation where required",
+          "Attach a motivation letter in English and a curriculum vitae",
+          "Attach the B2 English certification if held, as it is assessed",
+          "Accept the scholarship by 10 July 2026 by sending the signed and dated acceptance letter issued by the International Students Office",
+          "Submit the Universitaly university pre-enrolment application by the deadlines set by the International Students Office",
+          "Complete matriculation by paying the first instalment of the student contribution by the deadline indicated",
+          "Obtain the appropriate visa, arrive in Italy and hold the receipt of the study residence permit application by the matriculation deadline",
+          "Declare that the applicant is not in receipt of other study grants as described in the call"
+        ],
+        "application_method": [
+          "Register and submit the application through the UNICORE portal at https://universitycorridors.unhcr.it/",
+          "Upload the Refugee Identity card or PoR, the academic title and transcript with translations, the English motivation letter, the CV and any English certificate",
+          "Await the selection, which the project protocol splits into a documentation assessment phase and an online interview phase",
+          "If selected, receive the International Students Office communication with the acceptance method and deadline",
+          "Return the signed and dated acceptance letter by 10 July 2026",
+          "Complete Universitaly pre-enrolment, matriculation, visa and residence permit procedures",
+          "Receive the four instalments by bank transfer to an Italian current account, subject to the credit milestones"
+        ],
+        "selection_notes": "The project is promoted by UNHCR with MAECI, Caritas Italiana, Diaconia Valdese and the partner universities; selection is based on merit and motivation and the project protocol runs in two phases, an assessment of the documentation and an online interview. Applications that are incomplete or not correctly filled in are not accepted. Winners are notified by the International Students Office, and if a winner withdraws the University proceeds down the ranking with the next eligible candidate.",
+        "funding_amount": 7000,
+        "funding_currency": "EUR",
+        "funding_period": "per academic year"
+      },
+      "programme_detail_official": {
+        "official_source_urls": [
+          "https://www.unito.it/avvisi/progetto-unicore-80-university-corridors-refugees-bando-3-borse-di-studio",
+          "https://www.unito.it/sites/default/files/2026-03/bando_unicore_8_it.pdf",
+          "https://en.unito.it/studying-unito/scholarships-international-students"
+        ],
+        "application_link": "https://universitycorridors.unhcr.it/",
+        "official_updates_url": "https://en.unito.it/studying-unito/scholarships-international-students",
+        "catalogue_url": "https://universitycorridors.unhcr.it/",
+        "application_cycle": "UNICORE project edition, two academic years per award. The eighth edition covered a.y. 2026-2027 and 2027-2028, with applications open from early March 2026 and closing on 17 April 2026 at 12:00 Italian time, and arrival in Italy expected in September 2026. The University of Turin allocated 3 scholarships in that edition.",
+        "deadline_central": null,
+        "deadline_central_display": "Applications had to be submitted exclusively online at https://universitycorridors.unhcr.it/ by 17 April 2026 at 12:00 (noon, Italian time, UTC+2). Winners then had to accept by 10 July 2026. That edition is closed and no next-edition window was published on 4 October 2026.",
+        "deadline_central_timezone": "Europe/Rome",
+        "deadline_note": "UNICORE runs on numbered annual editions with a single common deadline across all participating universities, so the deadline is genuinely recurring rather than per-programme. The 17 April 2026 date belongs to the completed eighth edition (a.y. 2026-2027 and 2027-2028), so no exact deadline_date can be published for the next cycle and status is upcoming.",
+        "status": "UPCOMING",
+        "status_note": "The eighth edition closed on 17 April 2026 and winners were required to accept by 10 July 2026, so the current cycle is complete. The project is an annual UNHCR initiative, but no ninth-edition call had been published by the University of Turin on 4 October 2026.",
+        "funding_amount": 7000,
+        "funding_currency": "EUR",
+        "funding_period": "per academic year",
+        "funding_duration": "2 academic years (a.y. 2026-2027 and 2027-2028)",
+        "tuition_coverage": true,
+        "tuition_coverage_note": "The official call grants \"l'esonero dal pagamento di ogni importo dovuto per l'iscrizione universitaria per l'a.a. 2026/2027 e per l'a.a. 2027/2028, ad eccezione della prima rata della contribuzione\" (exemption from every amount due for university enrolment in both years, except the first instalment of the student contribution).",
+        "living_cost_coverage": true,
+        "travel_coverage": false,
+        "fully_funded": false,
+        "funding_label": "EUR 7,000 gross per academic year for two years plus exemption from all university enrolment amounts other than the first instalment of the student contribution. The award is a bonded two-year package conditional on enrolment, visa and credit milestones, and travel, visa and accommodation costs are not stated as covered in the University of Turin call.",
+        "benefits": [
+          "EUR 7,000 gross per academic year, EUR 14,000 across the two years, paid in four instalments",
+          "Exemption from all university enrolment amounts for both academic years except the first instalment of the student contribution",
+          "Payment by bank transfer to an Italian current account in the winner's name or jointly",
+          "Access to a two-year Master's degree programme at the University of Turin",
+          "Part of an UNHCR-promoted project with a national partner network"
+        ],
+        "eligibility": [
+          "Residence in one of the 13 listed countries in the call: Bangladesh, Burkina Faso, Cameroon, Ethiopia, India, Kenya, Mozambique, Niger, Nigeria, South Africa, Uganda, Zambia, Zimbabwe",
+          "Refugee status obtained in the country of residence in collaboration with UNHCR",
+          "Qualification valid for matriculation in a.y. 2026-2027 to an eligible open-access Master's programme, obtained between 1 January 2021 and 17 April 2026",
+          "GPA of 3.0 or above (24/30 in the Italian system), converted with the Italian Ministry of Education formula",
+          "Specific admission requirements of the chosen programme met",
+          "English proficiency of at least B2 CEFR",
+          "Never previously enrolled in a degree programme at the University of Turin or any other UNICORE partner university",
+          "Not a recipient of the other study grants described in the call"
+        ],
+        "citizenship_residency": "Open to holders of international protection residing in 13 listed countries of Africa and Asia: Bangladesh, Burkina Faso, Cameroon, Ethiopia, India, Kenya, Mozambique, Niger, Nigeria, South Africa, Uganda, Zambia and Zimbabwe. Refugee status must have been granted in the country of residence in collaboration with UNHCR.",
+        "international_eligibility": "Restricted to refugee students under the UNHCR corridor scheme, not to international students generally. Refugees recognised in other countries, such as Malawi, Namibia and Tanzania, appear in the project description but not in the University of Turin call's country list, a discrepancy recorded in the research notes.",
+        "degree_levels": [
+          "Master's degree (Laurea Magistrale), open access, taught in English"
+        ],
+        "study_mode": null,
+        "research_requirement": null,
+        "subject_or_agency_requirement": "Only the open-access English-taught Master's degree programmes listed in the call are eligible. The award is for entry to the first year of one of those programmes, and the call states it is not compatible with the other study grants it describes.",
+        "application_method": "Single common online application for the whole UNICORE project, submitted exclusively through the portal at https://universitycorridors.unhcr.it/ with the required refugee, academic and language documents attached. Winners then return the signed acceptance letter to the University of Turin International Students Office and complete Universitaly pre-enrolment, matriculation, visa and residence permit procedures.",
+        "application_route": "https://universitycorridors.unhcr.it/ \u2014 the single UNICORE application portal used by all participating universities",
+        "requirements": [
+          "Application submitted through the UNICORE portal by 17 April 2026 at 12:00 Italian time",
+          "Valid Refugee Identity card or Proof of Registration attached",
+          "Original foreign Bachelor's degree and official transcript, stamped and signed by the issuing institution, with official translation where not in Italian, English, French or Spanish",
+          "Motivation letter in English and curriculum vitae attached",
+          "B2 CEFR English certificate attached if held",
+          "Qualification obtained between 1 January 2021 and 17 April 2026",
+          "GPA of at least 3.0 (24/30)",
+          "Acceptance letter returned by 10 July 2026",
+          "Universitaly pre-enrolment submitted by the deadlines set by the International Students Office",
+          "Matriculation completed with the first instalment of the student contribution paid",
+          "Appropriate visa obtained, arrival in Italy, and residence permit application receipt held by the matriculation deadline",
+          "Declaration that no other study grants described in the call are held"
+        ],
+        "documents": [
+          "Valid Refugee Identity card or Proof of Registration (PoR)",
+          "Original foreign Bachelor's degree with official transcript of records, stamped and signed by the issuing institution",
+          "Official English or Italian translation where the documents were not issued in Italian, English, French or Spanish",
+          "Motivation letter in English",
+          "Curriculum vitae",
+          "English language proficiency certificate of at least B2 CEFR, if held"
+        ],
+        "english_requirement": "At least B2 on the Common European Framework of Reference. Accepted evidence named in the call: Cambridge First Certificate of English, PTE Academic, IELTS with a score of 5.5 out of 9, TOEFL iBT and Trinity College ISE II. English proficiency is assessed as part of the selection.",
+        "selection_criteria": [
+          "Academic merit, expressed as a GPA of at least 3.0 (24/30) at the eligibility stage",
+          "Motivation, assessed through the mandatory English motivation letter and the online interview",
+          "Phase 1 assessment of the application documentation",
+          "Phase 2 online interview"
+        ],
+        "selection_weighting": "Not a published points system. The project protocol runs in two phases, documentation assessment then online interview, and selection is on merit and motivation. Applications that are incomplete or not correctly filled in are not accepted, and if a winner withdraws the University proceeds down the ranking with the next eligible candidate.",
+        "duration": "2 academic years, a.y. 2026-2027 and 2027-2028",
+        "award_holder_conditions": [
+          "Must accept the scholarship by 10 July 2026 by sending the signed and dated acceptance letter issued by the International Students Office",
+          "Must submit the Universitaly pre-enrolment application by the deadlines set by the International Students Office",
+          "Must complete matriculation by paying the first instalment of the student contribution by the indicated deadline",
+          "Must obtain the appropriate visa, arrive in Italy and hold the study residence permit application receipt by the matriculation deadline",
+          "Must declare that they are not in receipt of the other study grants described in the call",
+          "Must hold an Italian bank account in their own or joint name, since payment is by bank transfer",
+          "Each of the four instalments is conditional: the first on matriculation in a.y. 2026-2027, the second on at least two first-year exams by 31 July 2027 together with renewal of enrolment for the second year, the third on at least four first-year exams by 29 February 2028, and the fourth on all first-year exams by 30 September 2028",
+          "Withdrawal of studies forfeits the scholarship and all associated benefits"
+        ],
+        "supplements_or_initiatives": [
+          "UNICORE is a consortium project promoted by UNHCR with MAECI, Caritas Italiana, Diaconia Valdese and a group of Italian partner universities",
+          "Under the project protocol, students may apply for more than one Master's programme, indicating their preference, and receive a two-phase selection",
+          "Some partner universities add benefits beyond the University of Turin package, such as free Italian language courses, university residence accommodation, canteen cards, laptops, national health system registration and psychological support. These are documented in the individual partner calls and are not part of the University of Turin award as read",
+          "Related University of Turin calls: UniTo for Students at Risk, financial aid for students from countries affected by armed conflict, and scholarships for students with international protection status"
+        ],
+        "official_contacts": {
+          "general": "Sezione Studenti Internazionali, Direzione Ricerca, Innovazione e Internazionalizzazione, Universita degli Studi di Torino, Via Verdi 8, 10124 Torino; centralino +39 011 6706111",
+          "email": "internationalstudents@unito.it"
+        },
+        "description": "UNICORE 8.0 (University Corridors for Refugees) is an UNHCR-promoted project that creates educational corridors from 13 listed countries in Africa and Asia to Italian universities, with MAECI, Caritas Italiana and Diaconia Valdese as national partners. For a.y. 2026-2027 and 2027-2028 the University of Turin awarded three two-year scholarships for refugee students to enter open-access English-taught Master's programmes, each worth EUR 7,000 gross per academic year plus exemption from all university enrolment amounts except the first instalment of the student contribution. Applications ran through the single UNICORE portal until 17 April 2026 at noon Italian time, with winners required to accept by 10 July 2026.",
+        "program_type": "Refugee-student scholarship (UNHCR University Corridors project), University of Turin",
+        "region": "Europe",
+        "coverage": "EUR 7,000 gross per academic year for two academic years (EUR 14,000 total) plus exemption from university enrolment amounts other than the first instalment of the student contribution. Travel, visa and accommodation are not stated as covered in the University of Turin call; other partner universities provide those separately. The award is forfeited on withdrawal of studies and on failure to meet the per-instalment credit milestones.",
+        "last_verified_date": "2026-10-04"
+      },
+      "programme_detail_applicant_utility": {
+        "application_readiness_checklist": [
+          "Confirm you reside in one of the 13 countries in the call",
+          "Confirm your refugee status was granted in your country of residence in collaboration with UNHCR",
+          "Obtain a valid Refugee Identity card or Proof of Registration",
+          "Check that your qualification was obtained between 1 January 2021 and 17 April 2026 and gives access to one of the eligible open-access English-taught Master's programmes",
+          "Confirm your GPA is at least 3.0 (24/30) and convert it using the Italian Ministry of Education formula",
+          "Meet the specific admission requirements of the programme you choose",
+          "Get your Bachelor's degree and transcript stamped and signed by the issuing institution, with official translation if needed",
+          "Write the motivation letter in English and prepare your CV",
+          "Take an accepted English test if you do not already hold B2 evidence (Cambridge FCE, PTE Academic, IELTS 5.5/9, TOEFL iBT, Trinity ISE II)",
+          "Submit everything through the single UNICORE portal at https://universitycorridors.unhcr.it/ before 17 April 2026 at noon Italian time",
+          "Open an Italian bank account in your name, since the scholarship is paid by bank transfer",
+          "Return the signed acceptance letter by 10 July 2026 if selected",
+          "Plan the credit milestones: two exams by 31 July 2027, four by 29 February 2028, all first-year exams by 30 September 2028"
+        ],
+        "common_rejection_risks": [
+          "Residing in a country not covered by the University of Turin call's list, even if it appears in the wider project description",
+          "Qualification obtained before 1 January 2021 or after the 17 April 2026 cut-off",
+          "GPA below 3.0 (24/30) or a conversion that does not reach the threshold",
+          "Missing or expired Refugee Identity card or Proof of Registration",
+          "Applying through a university rather than the single UNICORE portal",
+          "Incomplete or incorrectly filled application, which the project protocol does not accept",
+          "Missing the 10 July 2026 acceptance deadline",
+          "Missing the credit milestones that release instalments 2, 3 and 4",
+          "Withdrawing from studies, which forfeits the scholarship and all benefits",
+          "Not paying the first instalment of the student contribution, which is required to complete matriculation"
+        ],
+        "estimated_uncovered_costs": [
+          "The first instalment of the student contribution, which is explicitly excluded from the fee exemption",
+          "Travel from the country of first asylum to Italy, which the University of Turin call does not cover",
+          "Visa and residence permit costs",
+          "Accommodation, which the University of Turin call does not itemise, unlike some partner universities",
+          "Living costs beyond EUR 7,000 gross per academic year"
+        ],
+        "document_audit": [
+          "Refugee Identity card or Proof of Registration, valid at the time of application",
+          "Original Bachelor's degree certificate and official transcript, stamped and signed by the issuing foreign institution",
+          "Official English or Italian translation if the documents are not in Italian, English, French or Spanish",
+          "Motivation letter in English",
+          "Curriculum vitae",
+          "English B2 CEFR certificate, if held, from an accepted test",
+          "Signed and dated acceptance letter returned by 10 July 2026",
+          "Universitaly pre-enrolment confirmation",
+          "Matriculation confirmation with the first instalment paid",
+          "Visa and study residence permit application receipt"
+        ],
+        "alerts": [
+          {
+            "trigger": "The amount is EUR 7,000, not EUR 8,000",
+            "message": "The University of Turin call for a.y. 2026/2027 and 2027/2028 states an annual cash benefit of EUR 7,000 gross per academic year. Amounts differ across partner universities (for example Brescia states EUR 6,100 a year and Chieti EUR 3,341.28), so never assume another institution's figure for the University of Turin."
+          },
+          {
+            "trigger": "One application for the whole project",
+            "message": "You apply through the single UNICORE portal at https://universitycorridors.unhcr.it/, not through a university's own system, and the project protocol lets you apply to more than one programme with stated preferences."
+          },
+          {
+            "trigger": "Fee exemption has a gap",
+            "message": "You are exempt from every amount due for enrolment in both years except the first instalment of the student contribution. Budget for that first instalment."
+          },
+          {
+            "trigger": "Payment is milestone-gated",
+            "message": "Four instalments of EUR 3,000, EUR 4,000, EUR 3,000 and EUR 4,000 gross are released only as you enrol and pass exams: two first-year exams by 31 July 2027, four by 29 February 2028 and all first-year exams by 30 September 2028."
+          },
+          {
+            "trigger": "Withdrawing costs you everything",
+            "message": "The project protocol states that students who withdraw from their studies automatically lose the scholarship, all related benefits and their study residence permit."
+          }
+        ],
+        "submission_workflow": [
+          "Confirm your country of residence and UNHCR-recognised refugee status",
+          "Obtain your Refugee Identity card or Proof of Registration",
+          "Choose an eligible open-access English-taught Master's programme at the University of Turin",
+          "Check the programme's specific admission requirements",
+          "Collect your degree and transcript with official stamping, signature and translation",
+          "Write your English motivation letter and CV",
+          "Obtain a B2 CEFR English certificate if you do not have one",
+          "Submit everything through the UNICORE portal before 17 April 2026 at noon Italian time",
+          "If selected, return the signed acceptance letter by 10 July 2026",
+          "Complete Universitaly pre-enrolment, matriculation and the first-instalment payment",
+          "Obtain your visa, arrive in Italy and file the residence permit application",
+          "Open an Italian bank account for the transfers",
+          "Hit the exam milestones of 31 July 2027, 29 February 2028 and 30 September 2028 to release each instalment"
+        ]
+      },
+      "programme_detail_verification": {
+        "cycle_verified": "UNICORE 8.0 edition for a.y. 2026-2027 and 2027-2028, confirmed closed; verified 2026-10-04",
+        "verification_confidence": 0.85,
+        "official_fields_confirmed": [
+          "name",
+          "degree_levels",
+          "funding_amount",
+          "funding_currency",
+          "tuition_coverage",
+          "funding_duration",
+          "eligibility",
+          "status",
+          "official_source",
+          "application_route",
+          "official_contacts"
+        ],
+        "institution_check_required": [
+          "Confirm which UNICORE partner universities you may apply to in the next edition and whether the University of Turin is participating again",
+          "Confirm the next edition's cash amount, country list and deadline, since these have changed between editions",
+          "Confirm with the University of Turin International Students Office which additional services, if any, are attached to its three awards"
+        ],
+        "unverified_or_removed_claims": [
+          "unito.it sits behind a Cloudflare bot check and required the browser challenge to clear before any content was readable, so the notice page was read after the challenge resolved",
+          "The detailed eligibility rules, acceptance deadline of 10 July 2026, document list and four-instalment payment schedule with credit conditions come from the official call PDF hosted on unito.it and surfaced through site-scoped search of that domain rather than opened directly",
+          "The two-phase selection protocol (documentation assessment then online interview) is documented in partner universities' official UNICORE calls and on the UNHCR project site rather than in the University of Turin sections read, so it is recorded as project-level context",
+          "Free Italian language courses, accommodation, canteen cards, laptops and health-system registration appear in other partner universities' UNICORE 8.0 calls. They are NOT stated in the University of Turin call read, so they are listed in supplements_or_initiatives as partner-level benefits rather than attributed to this award",
+          "The University of Turin announcement page lists refugee origin countries as Ethiopia, India, Kenya, Malawi, Mozambique, Namibia, Niger, Nigeria, South Africa, Tanzania, Uganda, Zambia and Zimbabwe, while the call PDF for the same edition lists Bangladesh, Burkina Faso, Cameroon, Ethiopia, India, Kenya, Mozambique, Niger, Nigeria, South Africa, Uganda, Zambia and Zimbabwe. The call list is used and the discrepancy is flagged",
+          "Study mode is not stated on the sources read, so it is null"
+        ],
+        "source_citations": [
+          "https://www.unito.it/avvisi/progetto-unicore-80-university-corridors-refugees-bando-3-borse-di-studio",
+          "https://www.unito.it/sites/default/files/2026-03/bando_unicore_8_it.pdf",
+          "https://en.unito.it/studying-unito/scholarships-international-students",
+          "https://en.unito.it/themes/custom/unito_international/media/loghi/logo_unito_verticale.svg"
+        ],
+        "researched_by": "w1_14a1"
+      },
+      "logo_override": {
+        "url": "https://en.unito.it/themes/custom/unito_international/media/loghi/logo_unito_verticale.svg",
+        "page_url": "https://www.unito.it/avvisi/progetto-unicore-80-university-corridors-refugees-bando-3-borse-di-studio",
+        "official_host": true,
+        "alt_text": "University of Turin logo",
+        "validation_result": "verified",
+        "validation_detail": "svg 26260B, re-probed in the browser after the Cloudflare challenge cleared while reading this record's official notice page: HTTP 200 with content-type image/svg+xml and fills #54565A (dark grey) and #EA0029 (University of Turin red), so it renders dark and legible on a light card. The identical asset is served from www.unito.it at /themes/custom/unito_portale/media/loghi/logo_unito_verticale.svg, so the same registrable domain serves the logo for both the Italian and English sites.",
+        "image_kind": "official_logo",
+        "image_format": "svg",
+        "verified_at": "2026-10-04T00:00:00+00:00",
+        "host_evidence": "same_registrable_domain",
+        "_award": "UNICORE 8.0 University Corridors for Refugees (University of Turin)"
+      },
+      "research_notes": {
+        "logo": "The official notice page for this record is the Italian www.unito.it announcement. Its markup scan returned /themes/custom/unito_portale/media/loghi/logo_unitoit_negativo.svg (alt \"Vai alla Home Page\"), logo_unito_verticale.svg (alt \"Home\") and logo_unita.svg (alt \"Home\"), plus a UNICORE project illustration (unicore_studenti_internazionali_CARD.png) which is programme artwork rather than a body logo, and favicons. The \"negativo\" file was rejected as the reversed white variant. I reported logo_unito_verticale.svg, the complete vertical lockup, and probed it again in the same browser session used to read this record's page: HTTP 200, image/svg+xml, 26260 bytes, fills #54565A and #EA0029. It is the same file served on en.unito.it, so host evidence is same_registrable_domain.",
+        "unverified": [
+          "Direct fetch of the official call PDF (surfaced through site-scoped search instead)",
+          "Next UNICORE edition date, amount and country list",
+          "Which additional services, if any, attach to the University of Turin awards beyond the cash benefit and fee exemption"
+        ],
+        "substitution": null,
+        "official_pages_read": [
+          "https://www.unito.it/avvisi/progetto-unicore-80-university-corridors-refugees-bando-3-borse-di-studio",
+          "https://www.unito.it/sites/default/files/2026-03/bando_unicore_8_it.pdf",
+          "https://en.unito.it/studying-unito/scholarships-international-students"
+        ],
+        "degree_level_confirmed": "The official call is titled \"BANDO PER L'ATTRIBUZIONE DI 3 BORSE DI STUDIO 'UNICORE 8.0 - a.a. 2026-2027/2027-2028'\" and Art. 1.1 states the scholarships are for students who enrol \"ad uno dei seguenti corsi di Laurea Magistrale ad accesso libero erogati in lingua inglese o con curriculum in inglese\". The University's own notice confirms \"3 borse di studio per accedere ad alcuni corsi di laurea magistrale ad accesso libero in lingua inglese\".",
+        "url_observed": null,
+        "contradictions": [
+          "Stored funding_amount 8000 EUR is contradicted by the official University of Turin call, which states \"un beneficio in denaro dell'importo annuale di \u20ac 7.000 (lordo percipiente)\" for each of a.y. 2026/2027 and 2027/2028. Corrected to 7000 EUR per academic year; the two-year total is EUR 14,000.",
+          "Stored funding \"\u20ac8,000 + tuition waiver, language course + internship\" is only partly correct. The fee exemption is confirmed but qualified (\"ad eccezione della prima rata della contribuzione\"), and neither a language course nor an internship appears in the University of Turin call read. Those benefits are documented in other partner universities' UNICORE 8.0 calls, so they were moved to supplements_or_initiatives with attribution instead of being claimed for this award.",
+          "Stored program_type \"8 post-baccalaureate/international students at 40 Italian universities\" misdescribes the scheme. UNICORE 8.0 is for refugee students under UNHCR-recognised status, and the University of Turin awards three of them. Corrected.",
+          "Stored status 'open' is wrong: applications closed at noon Italian time on 17 April 2026 and winners had to accept by 10 July 2026, so the edition is complete and status is upcoming.",
+          "Stored deadline_precision 'unknown' corrected to 'recurring', since UNICORE runs on numbered annual editions with one common project-wide deadline.",
+          "Stored deadline_display '17 April 2026 (application deadline via universitycorridors.unhcr.it)' is confirmed correct for the eighth edition and retained.",
+          "Stored degree_levels 'Master's' and region 'Europe' are confirmed correct."
+        ],
+        "skeleton": false
+      }
+    }
+  ]
+}

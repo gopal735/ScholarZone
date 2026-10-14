@@ -1,0 +1,85 @@
+{
+ "agent": "agent_373",
+ "assignment_count": 1,
+ "scholarships": [
+  {
+   "id": 509,
+   "title": "Estonian Scholarship Programme for international students, researchers and academic staff — Scholarship for degree and exchange study in Estonia",
+   "country": "Estonia",
+   "degree": "Master's, PhD, Undergraduate",
+   "funding_label": "Stipend",
+   "status": "open",
+   "official_source": "Estonian Education and Youth Board (Haridus- ja Noorteamet) and Estonian Ministry of Education and Research",
+   "official_source_url": "https://www.harno.ee/en/scholarships-and-grants/scholarships-studying-and-working-estonia/scholarships-international",
+   "application_link": "https://www.harno.ee/en/scholarships-and-grants/scholarships-studying-and-working-estonia/scholarships-international",
+   "catalogue_url": null,
+   "official_updates_url": "https://www.harno.ee/en/scholarships-and-grants/scholarships-studying-and-working-estonia/scholarships-international",
+   "existing": {
+    "funding_amount": 350,
+    "funding_currency": "EUR",
+    "funding_period": "per month",
+    "tuition_coverage": null,
+    "living_cost_coverage": null,
+    "travel_coverage": null,
+    "fully_funded": 0,
+    "description": "A monthly stipend for foreign students who already hold an admission confirmation from an Estonian higher education institution for the 2026/2027 academic year. The rate is EUR 350 per month for first-cycle (BA) and master's studies and EUR 660 per month for doctoral studies. The Board pays the scholarship to the host university, which then disburses it. The scheme is funded under bilateral intergovernmental or inter-ministerial agreements and is run through the Estonian Scholarship Programme.",
+    "eligibility": [
+     "The scholarship can be applied for by foreign students who wish to study at a higher education institution in Estonia during the 2026/2027 academic year at formal studies or as an exchange student",
+     "Applications will be accepted only from students from countries whose citizenship is in the listed countries: Armenia, Azerbaijan, Belgium, Brazil, Bulgaria, Canada, Croatia, Czech Republic, Cyprus, Egypt, Finland, France, Georgia, Germany, Great Britain, Greece, Hungary, India, Indonesia, Israel, Italy, Kazakhstan, Latvia, Lithuania, Mexico, Moldova, People's Republic of China, Philippines, Poland, Portugal, Republic of Korea, Slovenia, Spain, Sri Lanka, Thailand, Tunisia, Turkey, Ukraine, United States of America",
+     "The scholarship supports master's and PhD studies in all fields",
+     "In the first stage of higher education (BA), the scholarship can only be applied for in fields that are related to Estonian language and culture",
+     "The application should include a confirmation letter concerning the student's admission to an Estonian higher education institution with reference to 2026/27 academic year",
+     "Degree studies scholarship applicant from 2nd year upwards has to be enrolled in full time studies"
+    ],
+    "eligibility_summary": "Citizens of 38 listed countries admitted to an Estonian higher education institution for 2026/2027, with master's and PhD studies supported in all fields and BA only in Estonian language and culture.",
+    "benefits": [],
+    "coverage": [
+     "Monthly scholarship of EUR 350 at first-cycle (BA) level and at master's level",
+     "Monthly doctoral scholarship of EUR 660",
+     "For exchange students, the scholarship is paid during the period of studying in Estonia, but not more than ten (10) calendar months a year, and only for exchange studies lasting more than one month",
+     "The scholarship is paid from the first day of studies until the last day of studies according to the dates approved by the host higher education institution"
+    ],
+    "requirements": [
+     "Scholarship for degree and exchange study in Estonia (the strand applied for here)",
+     "The scholarship decision does not guarantee admission to the desired higher education institution — the applicant must separately meet the institution's own admission requirements",
+     "The final scholarship decision will be made after confirmation of admission",
+     "If the applicant does not start or continue studying in Estonia, they shall lose the right to the scholarship",
+     "Applications that are incomplete, drafted offhand, include false information, omit relevant information or have been submitted after the deadline will not be considered for assessment"
+    ],
+    "documents": [
+     "Application form in Word format (Degree_exhange study APPLCIATION FORM 2026.docx, published by the Education and Youth Board)",
+     "A copy of your passport or ID card",
+     "Estonian higher education institution confirmation letter containing information about: degree or exchange student status in 2026/27 academic year; level of study; curriculum; start and end date of study"
+    ],
+    "english_requirement": "The application is submitted in English. All submitted documents must be in English or Estonian; documents in other languages must be provided with translations into either English or Estonian.",
+    "application_method": [
+     "Secure an admission confirmation letter from the Estonian higher education institution that names degree or exchange student status for 2026/27, level of study, curriculum, and start and end date of study",
+     "Complete the Education and Youth Board's 'Degree_exhange study APPLCIATION FORM 2026' Word document (the form cannot be changed)",
+     "Prepare a copy of your passport or ID card",
+     "Send one email with all required annexes attached to the Education and Youth Board address entitled \"Scholarship for degree and exchange study in Estonia\"",
+     "The submission email is for complete applications only"
+    ],
+    "selection_notes": "Applications shall be evaluated and the proposal for awarding the scholarship shall be made by the scholarship committee, based on the provisions of the directive and the committee's rules of procedure. Applications shall be evaluated based on the applicant's motivation (based on the letter of motivation) and the overall quality of the application — these two criteria carry equal weight. The scholarship recipients shall be approved by a directive of the Director General of the Board. The page warns the programme is highly competitive: historically only about 10% of applicants receive the scholarship, and in the 2026 application round 15 scholarships will be awarded.",
+    "best_fit": "Students from the 38 listed countries who already have an Estonian university admission letter for 2026/2027 and can fund the rest of their costs from other sources",
+    "notes": "Scholarship is assigned for one academic year. Modification of scholarship periods after confirmation of the results is possible only with the written consent of the Education and Youth Board and provided that the total amount of the scholarship does not increase. Payment of the scholarship does not guarantee admission to the institution of interest. The Board has the right to check the conformity of the submitted documents with the originals. No deferrable, renewable or return-home conditions are published for this strand.",
+    "duration": "One academic year (2026/2027); scholarships are paid for undergraduate students for 12 months of the academic year, except for the final nominal year when the scholarship is paid for 10 months",
+    "application_period": "Applications accepted 1 October 2026 to 31 October 2026 (23:59 Estonian time); results announced personally by email",
+    "deadline_display": "2026 application period will be open from 1st of October 2026 until October 31st 2026 (23:59, Estonian time)",
+    "deadline_date": "2026-10-31",
+    "region": "Europe",
+    "program_type": "Government scholarship",
+    "applicant_utility": null,
+    "official_details": null
+   },
+   "missing_fields": [
+    "tuition_coverage",
+    "living_cost_coverage",
+    "travel_coverage",
+    "benefits",
+    "applicant_utility",
+    "official_details"
+   ]
+  }
+ ],
+ "result_file": "C:\\Users\\GopaL\\Desktop\\Projects folder\\ScholarZone\\backend\\research_output\\live500\\results\\agent_373.json"
+}

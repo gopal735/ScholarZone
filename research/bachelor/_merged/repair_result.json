@@ -1,0 +1,26 @@
+{
+  "pass1": {
+    "wrapped": 83,
+    "alreadyArray": 64,
+    "absent": 4,
+    "noRecord": 7,
+    "untouched": 0
+  },
+  "pass2": {
+    "wrapped": 0,
+    "alreadyArray": 147,
+    "absent": 4,
+    "noRecord": 7,
+    "untouched": 0
+  },
+  "changed": 83,
+  "records_touched": 71,
+  "text_mutations": 0,
+  "double_wrapped": 0,
+  "verification": {
+    "ok": 147,
+    "stillString": 0,
+    "absent": 4,
+    "noRec": 7
+  }
+}

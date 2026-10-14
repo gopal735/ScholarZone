@@ -1,0 +1,238 @@
+{
+  "agent": "agent_001",
+  "records": [
+    {
+      "id": 4,
+      "official": {
+        "official_source_urls": [
+          "https://www.studyinkorea.go.kr/ko/notice/scholarshipsRead.do?nttId=4522&bbsId=BBSMSTR_000000000461&boardSort=3",
+          "https://www.studyinkorea.go.kr/en/plan/scholarship.do?tab=gks-tab1"
+        ],
+        "application_link": "https://www.studyinkorea.go.kr",
+        "catalogue_url": "https://www.studyinkorea.go.kr/ko/notice/scholarshipsList.do?boardSort=3",
+        "official_updates_url": "https://www.studyinkorea.go.kr/ko/notice/scholarshipsList.do?boardSort=3",
+        "deadline_central": "2026-09-30",
+        "deadline_central_display": "30 September 2026",
+        "deadline_note": "2027 cycle Embassy Track online application deadline was 18:00 Korea Standard Time on 30 September 2026. University Track applicants apply directly to each participating university on its own schedule within a September-November 2026 window, so the target university's announcement governs.",
+        "application_cycle": "2027 intake (application guidelines announced 9 September 2026)",
+        "status": "CLOSED (Embassy Track); University Track varies by university",
+        "status_note": "The 2027 cycle is the live one: guidelines were posted on 9 September 2026 and Embassy Track online applications ran from 11:00 on 15 September to 18:00 on 30 September (KST) and have now closed. University Track applications are submitted to each university under its own method during September-November 2026, so some may still be open. Embassy first-round results were due by 16 October 2026, the NIIED second round ran in November, embassy-track third-round (university review) results were announced by 23 December 2026, and final university selection confirmation was due by 18:00 on 29 December 2026.",
+        "tuition_coverage_note": "NIIED pays up to KRW 5 million per semester; the university pays the amount that exceeds KRW 5 million plus the admission fee (published payment process: NIIED to universities, and NIIED to universities to GKS scholars).",
+        "funding_amount": 14400000,
+        "funding_currency": "KRW",
+        "funding_period": "per year (degree programme)",
+        "tuition_coverage": true,
+        "living_cost_coverage": true,
+        "travel_coverage": true,
+        "fully_funded": true,
+        "benefits": [
+          "Tuition: NIIED pays up to KRW 5 million per semester; the university pays any amount exceeding KRW 5 million plus the admission fee",
+          "Korean Language Programme Fee: KRW 5.2 million per year (paid by NIIED to universities)",
+          "Airfare: economy-class flight ticket (actual expense)",
+          "Monthly Allowance: KRW 14,400,000 per year during the degree programme; KRW 13,560,000 per year during the Korean language programme",
+          "Monthly Allowance is an all-inclusive subsidy of living expenses, accommodation, health insurance, Korean proficiency grants, TOPIK application fee, settlement allowance and degree completion grants"
+        ],
+        "eligibility": [
+          "Must hold citizenship of a designated country invited to take part in the GKS programme; the UIC Programme is open to all countries",
+          "Applicant and both parents must hold citizenship of a country other than Korea; dual Korean citizenship is not eligible and previous Korean citizenship requires proof of renunciation",
+          "Must be under 25 years of age (born on or after 1 March 2002 for the 2027 intake)",
+          "High school graduate or expected to graduate by 31 December 2026; applicants holding a bachelor's degree cannot apply, and associate-degree holders may only apply to a bachelor's programme"
+        ],
+        "requirements": [
+          "TOPIK level 5 or 6 exempts the scholar from the mandatory one-year Korean language programme; level 5/6 earned within the first six months of language study allows moving into the degree programme the following semester",
+          "Valid TOPIK (PBT 96th-109th or IBT 4th-16th) or English proficiency (TOEFL/IELTS) score reports may be submitted for additional evaluation points",
+          "The applicant's English name must match the passport exactly; any discrepancy delays visa processing",
+          "Only universities and departments listed in the official University Information file may be selected"
+        ],
+        "documents": [
+          "Application Form (in English), Personal Statement, Study Plan (English or Korean), Recommendation Letter issued within one year of the deadline, GKS Applicant Agreement, Personal Medical Assessment, Consent to Collect and Use Personal Information",
+          "Graduation certificate or certificate of expected graduation, plus academic transcript",
+          "Proof of citizenship (applicant and parents) and proof of family relationship, apostilled or consular confirmed for the second round",
+          "TOPIK score report (original) or English proficiency test score report (copy) if applicable; passport copy, awards and activity certificates (up to five) if applicable"
+        ],
+        "selection_criteria": [
+          "Eligibility review: citizenship, level of education and academic grades",
+          "Competency review: academic ability, Korean and English language proficiency, activities, contributions to society and international exchange, potential for future development, and completeness and authenticity of submitted documents"
+        ],
+        "coverage": [
+          "Korean language programme fee, tuition (NIIED up to KRW 5 million per semester plus university-paid excess and admission fee), economy-class airfare, and a monthly allowance covering living expenses, accommodation, health insurance, settlement allowance and degree completion grants"
+        ],
+        "application_method": [
+          "Embassy Track: complete and upload all application documents in the Study in Korea online application system during the announced window (15-30 September 2026 for the 2027 intake)",
+          "University Track: submit NIIED forms and required documents directly to the chosen university following its own method, schedule and additional requirements",
+          "Embassy Track runs three rounds (embassy first round, NIIED second round, university review third round); University Track runs two rounds (university first round, NIIED second round)"
+        ],
+        "application_route": "Apply through your Korean embassy via the Study in Korea online system (Embassy Track) or directly to a designated GKS university (University Track); applications cannot be sent to NIIED directly.",
+        "study_mode": "Full-time: one-year Korean language programme followed by degree study at a designated GKS university",
+        "citizenship_residency": "Applicant and both parents must be citizens of a country other than Korea; degree track requires citizenship of an NIIED-designated invited country, while the UIC Programme is open to all countries.",
+        "international_eligibility": "Yes - the programme is open to citizens of NIIED-designated invited countries (and to all countries for the UIC Programme).",
+        "subject_or_agency_restriction": "No field restriction, but only the departments listed for each GKS university in the University Information file may be selected.",
+        "research_requirement": null,
+        "duration": "Bachelor's: 5-7 years (1 year Korean language programme plus 4-6 years of degree programme); Associate: 3-4 years (1 year Korean language programme plus 2-3 years of degree programme)",
+        "description": "The Global Korea Scholarship (GKS) is the Korean government's representative government-invited scholarship, administered by the National Institute for International Education (NIIED), inviting outstanding students from invited countries to study at designated Korean universities, funding Korean language training plus the degree programme with an all-inclusive monthly allowance.",
+        "region": "Asia",
+        "program_type": "Government-invited scholarship degree programme (NIIED, Ministry of Education)",
+        "english_requirement": "Not mandatory. TOEFL or IELTS score reports (copy) may be submitted for additional evaluation points; TOPIK level 5 or 6 exempts the Korean language programme."
+      },
+      "verification": {
+        "source_citations": [
+          "https://www.studyinkorea.go.kr/ko/notice/scholarshipsRead.do?nttId=4522&bbsId=BBSMSTR_000000000461&boardSort=3",
+          "https://www.studyinkorea.go.kr/en/plan/scholarship.do?tab=gks-tab1"
+        ],
+        "last_verified_date": "2026-10-10",
+        "verification_status": "confirmed",
+        "confidence": "high",
+        "not_confirmed": [],
+        "notes": "Scholarship benefits (tuition terms, KRW 5.2 million language fee, KRW 14,400,000 and KRW 13,560,000 annual allowances, airfare) and the 15-30 September 2026 Embassy Track application window were read from the official 2027 GKS-U Application Guidelines (English) PDF attached to the NIIED notice dated 9 September 2026; eligibility, tracks and document rules were cross-checked in the same guidelines and on the NIIED Study in Korea GKS page."
+      },
+      "applicant_utility": {
+        "summary": "Plan for a long runway, not a single evening: GKS-U funds one year of Korean language training plus the entire bachelor's degree, so even a successful 2027 applicant spends the language year in Korea before moving into the degree programme in September 2027. With the Embassy Track closed on 30 September 2026, the live route now is applying directly to a GKS university during its own September-November 2026 window, each with its own documents and cutoff. Get your high-school certificates apostilled or consular-confirmed early because the second round rejects simple photocopies, and remember that the final diploma must reach NIIED by 31 December 2026 or acceptance is cancelled.",
+        "best_fit": "High-school graduates under 25 from invited countries who want a fully funded Korean bachelor's degree with language training built in and can follow either an embassy or a university calendar.",
+        "application_readiness_checklist": [
+          "Confirm your country is on the NIIED invited list, or apply under the UIC Programme which is open to all countries",
+          "Verify the department you want exists for your target university in the University Information file before writing the study plan",
+          "Arrange apostille or consular confirmation of the graduation certificate, transcript and citizenship/family documents well before the second round",
+          "Submit a valid TOPIK (PBT 96th-109th or IBT 4th-16th) report or a TOEFL/IELTS copy to earn evaluation points; TOPIK 5+ removes the mandatory language year",
+          "Match your English name to your passport exactly before locking the online application"
+        ],
+        "common_rejection_risks": [
+          "Sending the application to NIIED directly instead of to the embassy or university, which is refused outright",
+          "Leaving provisional graduation documents unresolved past the 31 December 2026 hard cutoff",
+          "Writing department names informally or not matching the University Information file, which can disqualify the evaluation",
+          "Second-round certificates submitted as simple photocopies or without apostille/consular confirmation",
+          "Passport and application name mismatches, which stall visa processing even for selected candidates"
+        ],
+        "estimated_uncovered_costs": "Domestic transport inside the home country, international travel insurance for the trip to Korea, and entry airfare for scholars already residing in Korea are not covered; withdrawing within the first three months after enrollment requires full repayment of all funds received.",
+        "document_audit": [
+          "The recommendation letter must be dated within one year of the application deadline",
+          "Family relationship must be proven by a birth certificate or family register showing both parents' citizenship; passport copies only supplement this",
+          "Documents not in English or Korean need a certified translation plus apostille or consular confirmation on either document",
+          "Second-round originals require original handwritten signatures in every signature field"
+        ],
+        "alerts": [
+          "University Track deadlines are set by each university inside a September-November 2026 window; there is no single GKS-U deadline for that track",
+          "The online portal closes hard at 18:00 Korea Standard Time and late applications cannot be recovered",
+          "TOPIK level 5/6 earned after applying had to reach NIIED by 24 December 2026 to skip the language year",
+          "The guidelines state the scholarship amount is subject to change, so re-check the current cycle notice before relying on figures"
+        ],
+        "submission_workflow": "Embassy Track: online application by 30 September, embassy first-round results by 16 October, NIIED second round in November, university review with final decision by 23 December 2026; University Track: apply straight to the university between September and November, with results announced into December 2026 and final selection expected around 7 January 2027."
+      }
+    },
+    {
+      "id": 5,
+      "official": {
+        "official_source_urls": [
+          "https://www.studyinjapan.go.jp/en/planning/scholarships/mext-scholarships",
+          "https://www.bd.emb-japan.go.jp/en/education/scholarshipNotice.html"
+        ],
+        "application_link": "https://www.studyinjapan.go.jp",
+        "catalogue_url": "https://www.studyinjapan.go.jp/en/planning/scholarships/mext-scholarships",
+        "official_updates_url": "https://www.bd.emb-japan.go.jp/en/education/scholarshipNotice.html",
+        "deadline_central": null,
+        "deadline_central_display": null,
+        "deadline_note": "The official page publishes no single deadline: dates, available types and fields are set by each Japanese embassy/consulate or recommending university, and applicants are directed to confirm with them. As an example of the published embassy cycle, the Embassy of Japan in Bangladesh advertises around April, distributes application forms in May, receives submissions in June, and holds written examinations and interviews in July, for arrival in Japan the following April.",
+        "application_cycle": "Annual cycle; embassy-route recruitment typically opens around April for arrival in April of the following year",
+        "status": "CLOSED (current intake); next recruitment expected around April 2027",
+        "status_note": "MEXT runs a recurring annual cycle rather than an always-open scheme. As of 10 October 2026 the intake arriving in 2027 is past its embassy submission window (June 2026) and is in the selection phase: provisional embassy selections around August, final Monbukagakusho selection in December 2026, university placement around January 2027 and departure in April 2027. The next recruitment round is expected to begin around April 2027, and university-recommended tracks follow each university's own schedule.",
+        "tuition_coverage_note": "Tuition: Exempted (published for all scholarship types).",
+        "funding_amount": 117000,
+        "funding_currency": "JPY",
+        "funding_period": "per month",
+        "tuition_coverage": true,
+        "living_cost_coverage": true,
+        "travel_coverage": true,
+        "fully_funded": true,
+        "benefits": [
+          "Scholarship (monthly stipend) by track: Research students JPY 143,000-145,000 per month; Teacher training students JPY 143,000-145,000 per month; Undergraduate, Japanese studies, College of technology and Specialized training college students JPY 117,000 per month; Young Leaders Program (YLP) students JPY 242,000 per month",
+          "Tuition: Exempted",
+          "Travel allowance: round-trip travel expenses (airfare) provided"
+        ],
+        "eligibility": [
+          "Research students: under 35 years of age and eligible for admission to a master's or doctoral programme at a Japanese graduate school",
+          "Undergraduate students: under 25 years of age and have completed 12 years of school education or comparable schooling (prospective graduates included)",
+          "Japanese studies students: between 18 and 29 years old and enrolled in a faculty or school related to Japanese language or culture at a university outside Japan",
+          "Teacher training students: under 35, a college or teacher-training-college graduate with at least five years of active service as a teacher in a primary, secondary or teacher-training institution",
+          "College of technology students: under 25 who have completed 11 or more years of education; Specialized training college students: under 25 with 12 years of schooling; YLP students: under 40 in principle, young public administrators and graduates with work experience"
+        ],
+        "requirements": [
+          "Written examinations for embassy recommendation: Research and Teacher training - Japanese and English; Undergraduate - Japanese, English, mathematics, science (science faculty applicants choose two of chemistry, physics, biology); Japanese studies - Japanese; College of technology - Japanese, English, mathematics, and physics or chemistry; Specialized training - Japanese, English, mathematics",
+          "The type and field of application vary by country, so applicants must check with the local Japanese embassy or consulate for openings",
+          "For university recommendation, the university must hold a MEXT recommendation quota, and not all universities maintain one",
+          "Where the official overview and the application guidelines differ, MEXT states the guidelines take precedence"
+        ],
+        "documents": [
+          "Application documents are specified and issued by the local Japanese embassy or consulate (embassy recommendation) or by the recommending Japanese university (university recommendation); the official page directs applicants to confirm the latest application guidelines and requirements with them"
+        ],
+        "selection_criteria": [
+          "Embassy recommendation: the embassy or consulate recruits and screens candidates (documents, written examinations, interviews) before final selection by MEXT",
+          "University recommendation: the MEXT-quota university screens candidates and recommends them to MEXT; university-recommended recipients usually arrive in September or October"
+        ],
+        "coverage": [
+          "Monthly stipend by track (Research and Teacher training JPY 143,000-145,000; Undergraduate/Japanese studies/College of technology/Specialized training JPY 117,000; YLP JPY 242,000), exempted tuition, round-trip travel expenses (airfare), and Japanese language preliminary education in tracks that require it"
+        ],
+        "application_method": [
+          "Embassy recommendation: apply for recruitment and screening through the Japanese embassy or consulate in your country; in several countries candidates are first nominated through the national education ministry (for example, applications in Bangladesh go to the Ministry of Education, which forwards candidates to the Embassy of Japan)",
+          "University recommendation: apply directly to a Japanese university that holds a MEXT recommendation quota, based on its student-exchange agreements; available for Research, Undergraduate, Japanese studies and College of Technology tracks only",
+          "Teacher training, Specialized training and YLP tracks are not available through university recommendation"
+        ],
+        "application_route": "Two routes only: embassy recommendation through the Japanese embassy or consulate in your country, or university recommendation from a Japanese university holding a MEXT quota; applications are never made to MEXT directly.",
+        "study_mode": "Full-time study at a Japanese university (graduate school, undergraduate, or designated programmes)",
+        "citizenship_residency": "Open to international students; available types, fields and procedures vary by country - confirm eligibility with the local Japanese embassy or consulate (some countries route nominations through their Ministry of Education).",
+        "international_eligibility": "Yes - the scholarship is MEXT's programme for international students.",
+        "subject_or_agency_requirement": "Research students must major in the field of their specialty at a Japanese graduate school, and the type and field available vary by country.",
+        "research_requirement": "Research students must be eligible for admission to, and major in their field of specialty at, a Japanese graduate school (master's or doctoral programme).",
+        "duration": "Research students: irregular course within 2 years, regular course standard school year (6 months preliminary education added when necessary). Teacher training: within 1 year and 6 months including Japanese language education. Undergraduate (embassy): 5 years including Japanese language training, 7 years for medicine, dentistry, pharmacy and veterinary science. Japanese studies: one academic year. College of technology: 4 years including Japanese language training (4 years 6 months for merchant marine studies). Specialized training college: 3 years including Japanese language training. YLP: 1 year.",
+        "description": "The Japanese Government (Monbukagakusho) Scholarship is MEXT's scholarship programme for international students, offered in seven types with two application routes (embassy or university recommendation), paying a monthly stipend, exempting tuition and providing round-trip travel expenses, with Japanese language training included in most tracks.",
+        "region": "East Asia",
+        "program_type": "Government scholarship (Ministry of Education, Culture, Sports, Science and Technology - MEXT)",
+        "english_requirement": "The official page sets written examinations by track (Japanese and English, with mathematics and science added on some tracks) rather than a pre-submitted IELTS/TOEFL score as an eligibility requirement."
+      },
+      "verification": {
+        "source_citations": [
+          "https://www.studyinjapan.go.jp/en/planning/scholarships/mext-scholarships",
+          "https://www.bd.emb-japan.go.jp/en/education/scholarshipNotice.html"
+        ],
+        "last_verified_date": "2026-10-10",
+        "verification_status": "confirmed",
+        "confidence": "high",
+        "not_confirmed": [
+          "deadline_central / deadline_central_display - the official page publishes no single deadline date; timing is set by each embassy or university",
+          "current-cycle document checklist and exact embassy examination dates - these are published per country/cycle rather than on the official overview page"
+        ],
+        "notes": "Stipend amounts (JPY 117,000 / 143,000-145,000 / 242,000 by track), tuition exemption, round-trip airfare, per-track eligibility, examination subjects and the two application routes were read from the official Study in Japan (government-approved) MEXT scholarship page; the annual cycle months were taken from the Embassy of Japan in Bangladesh scholarship notice page."
+      },
+      "applicant_utility": {
+        "summary": "Decide first which door you are using, because MEXT never receives applications directly: the embassy route funnels through your local Japanese embassy (and in some countries a national ministry screens first), while university recommendation requires a university that actually holds a MEXT quota. The money is set by track - JPY 117,000 a month for undergraduate-type tracks and JPY 143,000-145,000 for research and teacher training, with tuition fully exempted and round-trip airfare paid - so treat the stipend as your living budget and plan costs around it. Embassy-track applicants sit real written examinations in Japanese and English (plus mathematics and sciences on undergraduate science tracks) and an interview, so exam preparation is the core work, not paperwork. Finally, plan around the calendar: embassy submissions land around June, exams and interviews in July, final MEXT selection in December and departure the following April.",
+        "best_fit": "Academically strong students comfortable sitting timed written entrance examinations who can plan around their local embassy's annual cycle.",
+        "application_readiness_checklist": [
+          "Confirm with your Japanese embassy or consulate which scholarship types and fields are open for your country this cycle, and whether a national education ministry prescreens first",
+          "For university recommendation, verify in advance that the target university holds a MEXT recommendation quota and fits your exchange status",
+          "Prepare for track-specific written exams (Japanese and English; mathematics plus chemistry/physics/biology on science undergraduate tracks) using the past qualifying examination papers published on the official site",
+          "Have transcripts for every academic year and a graduation or degree certificate ready, using the embassy's current-year application forms",
+          "For the research track, align your proposed graduate-school field with your university major before applying"
+        ],
+        "common_rejection_risks": [
+          "Hunting for a single central MEXT deadline that does not exist and missing the local embassy's window",
+          "Applying through a university that holds no MEXT recommendation quota",
+          "Proposing a research field unrelated to the applicant's university specialty",
+          "Crossing the strict age limits, which are measured around the applicant's age at arrival or entry",
+          "Applying for a track or field that the local embassy is not offering that cycle"
+        ],
+        "estimated_uncovered_costs": "The published benefits are limited to tuition exemption, the monthly stipend and round-trip travel expenses, so living costs beyond the monthly stipend (JPY 117,000-242,000 depending on track) must be absorbed by the stipend itself or personal funds.",
+        "document_audit": [
+          "Embassies distribute their own application forms for the current cycle - always use the applying-year form",
+          "Medical certificates must be completed by a professional medical doctor under the embassy's guidelines",
+          "Where a ministry prescreens (for example in Bangladesh), embassy forms are only issued to shortlisted ministry nominees",
+          "MEXT states the application guidelines override the website overview where they differ, so re-check the cycle's guideline documents"
+        ],
+        "alerts": [
+          "Embassy cycles run roughly April to December for an April departure; the timing shifts slightly each year, so confirm locally",
+          "University-recommended recipients usually arrive in September or October, occasionally late March or early April",
+          "University recommendation covers Research, Undergraduate, Japanese studies and College of Technology only; Teacher training, Specialized training and YLP use embassy or official-organization routes",
+          "Requirements on the official overview can be superseded by the latest application guidelines for each cycle"
+        ],
+        "submission_workflow": "Embassy route: local advertisement and nomination (often via the national education ministry) around April, application forms distributed around May, submission to the embassy around June, written exams and interview in July, provisional embassy selection around August, final MEXT selection in December, placement around January and departure the following April; university route: the MEXT-quota university screens and recommends you, with arrival usually in September or October."
+      }
+    }
+  ]
+}

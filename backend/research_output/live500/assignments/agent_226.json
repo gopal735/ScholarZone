@@ -1,0 +1,92 @@
+{
+ "agent": "agent_226",
+ "assignment_count": 1,
+ "scholarships": [
+  {
+   "id": 568,
+   "title": "Türkiye Bursları (Türkiye Scholarships) - Turkish Government Scholarship",
+   "country": "Turkey",
+   "degree": "Associate, Bachelor's, Master's, PhD, Research",
+   "funding_label": "Fully Funded",
+   "status": "upcoming",
+   "official_source": "Presidency of Turks Abroad and Relatives of Overseas Citizens (YTB) - Türkiye Scholarships",
+   "official_source_url": "https://scholarship.turkiye.gov.tr",
+   "application_link": "https://scholarship.turkiye.gov.tr",
+   "catalogue_url": "https://www.turkiyeburslari.gov.tr/ScholarshipSearch",
+   "official_updates_url": "https://www.turkiyeburslari.gov.tr/announcements",
+   "existing": {
+    "funding_amount": null,
+    "funding_currency": "TRY",
+    "funding_period": "per month",
+    "tuition_coverage": 1,
+    "living_cost_coverage": 1,
+    "travel_coverage": 1,
+    "fully_funded": 1,
+    "description": "Türkiye Bursları is the Republic of Türkiye's government-funded, competitive scholarship programme for international students, run under the coordination of the Presidency of Turks Abroad and Relatives of Overseas Citizens (YTB). It funds associate, bachelor's, master's, PhD and research places at the most prestigious Turkish universities and is distinctive in providing university and department placement rather than a fellowship to be spent at a chosen institution. The package covers tuition, a monthly stipend, health insurance, accommodation, a one-year Turkish language course, a once-off return flight ticket and free academic and cultural programmes. Applications are submitted online, free of charge, through the Türkiye Scholarships Application System (TBBS).",
+    "eligibility": [
+     "Open to citizens of all countries",
+     "Competitive and merit-based selection with a strong emphasis on candidates' academic excellence",
+     "Candidates can select between 12 choices in the online application through TBBS",
+     "Candidates can only choose from the universities and departments offered to them in the system, which vary by educational background",
+     "Türkiye Scholarships does not award scholarships in the field of health sciences",
+     "Before applying, candidates are advised to check the equivalence and validity of the chosen fields in their own country"
+    ],
+    "eligibility_summary": "The programme is competitive and merit-based with a strong emphasis on academic excellence. It is open to applicants from all countries, and candidates choose between up to 12 university and department options in the online application, subject to what the system offers them and to the equivalence and validity of their fields in their own country. Türkiye Scholarships does not award scholarships in the field of health sciences.",
+    "benefits": [
+     "Monthly stipend of 6,500 TL at associate and bachelor's level, 9,500 TL at master's level and 13,000 TL at PhD level",
+     "Merit Scholarship Program: a monthly stipend 2 times higher than the regular payment for academically qualified students",
+     "Full tuition fee coverage at the host university",
+     "University and department placement, unlike other higher education scholarship programmes",
+     "One year of free Turkish language education through Turkish Teaching Centers (TÖMER) at universities",
+     "General health insurance for all international scholarship students",
+     "Accommodation: free dormitory for undergraduate students; dormitory in the first year for master's and doctoral students, then a housing allowance of 6,000 TL in Istanbul and Ankara and 5,000 TL in other cities",
+     "Once-off flight ticket covering travel to Türkiye and return to the home country after graduation, requested through TBBS",
+     "Access to student clubs, societies, the International Student Academy, specialisation programmes, student congresses and art competitions",
+     "Membership of the Türkiye Alumni Network of more than 150,000 members across 160 countries"
+    ],
+    "coverage": [
+     "University and department placement",
+     "Tuition fees",
+     "Monthly stipend",
+     "Accommodation (university dormitory or housing allowance)",
+     "General health insurance",
+     "One-year Turkish language course",
+     "Once-off flight ticket to Türkiye and back home after graduation",
+     "Free academic and cultural programmes"
+    ],
+    "requirements": [],
+    "documents": [
+     "Online application submitted through the Türkiye Scholarships Application System (TBBS)",
+     "Passport or identity document",
+     "Educational certificates and transcripts",
+     "Language proficiency evidence where required",
+     "Passport photograph meeting the TBBS specification"
+    ],
+    "english_requirement": null,
+    "application_method": [],
+    "selection_notes": "Applications are received in one period each year, free of charge. Candidates are given the opportunity to select between 12 choices online, and the programme assigns university and department placement.",
+    "best_fit": null,
+    "notes": "The Art Scholarship Programme funds undergraduate, graduate and PhD study in performing arts, music and fine arts at Ankara Music and Fine Arts University, Ankara Hacı Bayram Veli University and İstanbul Technical University. The Merit Scholarship Programme is designed for students with outstanding academic achievement, defined by a high grade point average and high scores in the international language proficiency and academic qualification examinations determined by the Presidency. A separate YTB - Islamic Development Bank (ISDB) Joint Scholarship Programme runs on its own announcement cycle.",
+    "duration": "One year of free Turkish language education before or alongside the degree programme; associate degree is a two-year programme, with bachelor's, master's and PhD programmes of standard length. Research Scholarships have their own application periods.",
+    "application_period": "One annual period each year: 10 January to 20 February for international applicants, for associate, bachelor's, master's and doctoral scholarships. Research Scholarships run on separate, individually announced periods.",
+    "deadline_display": "Applications for the full-time programmes (associate, bachelor's, master's, PhD and art scholarships) are received through the Türkiye Scholarships Application System (TBBS) between 10 January and 20 February, which is the application period every year. Research Scholarships have different application periods, announced regularly on the official website. For the 2026 cycle the window was 10 January to 20 February 2026, so the next cycle is expected in the same annual window.",
+    "deadline_date": null,
+    "region": "Middle East",
+    "program_type": "Government scholarship (YTB, Türkiye Scholarships)",
+    "applicant_utility": null,
+    "official_details": null
+   },
+   "missing_fields": [
+    "funding_amount",
+    "requirements",
+    "english_requirement",
+    "application_method",
+    "best_fit",
+    "deadline_date",
+    "applicant_utility",
+    "official_details"
+   ]
+  }
+ ],
+ "result_file": "C:\\Users\\GopaL\\Desktop\\Projects folder\\ScholarZone\\backend\\research_output\\live500\\results\\agent_226.json"
+}

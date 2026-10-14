@@ -1,0 +1,85 @@
+{
+ "agent": "agent_297",
+ "assignment_count": 1,
+ "scholarships": [
+  {
+   "id": 674,
+   "title": "Kingdom of Morocco – Government of Rwanda Scholarships (2026/2027)",
+   "country": "Morocco",
+   "degree": "Diploma, Bachelor's, Master's, PhD",
+   "funding_label": "Not specified",
+   "status": "upcoming",
+   "official_source": "Kingdom of Morocco, scholarship call published by the Higher Education Council (HEC) of Rwanda",
+   "official_source_url": "https://www.hec.gov.rw/fileadmin/user_upload/HEC/Scholarships/KINGDOM_OF_MOROCCO_-__GOVERNMENT_OF_RWANDA_SCHOLARSHIPS.pdf",
+   "application_link": "https://www.hec.gov.rw/fileadmin/user_upload/HEC/Scholarships/KINGDOM_OF_MOROCCO_-__GOVERNMENT_OF_RWANDA_SCHOLARSHIPS.pdf",
+   "catalogue_url": "https://www.hec.gov.rw/updates/scholarships",
+   "official_updates_url": "https://www.hec.gov.rw/updates/scholarships",
+   "existing": {
+    "funding_amount": null,
+    "funding_currency": null,
+    "funding_period": null,
+    "tuition_coverage": null,
+    "living_cost_coverage": null,
+    "travel_coverage": null,
+    "fully_funded": 0,
+    "description": "A bilateral scholarship scheme in which the Kingdom of Morocco awards places to Rwandan nationals to study at Moroccan public training institutions and universities, taught in French. The 2026/2027 call covers diploma, bachelor's, master's and PhD levels. Applications are handled by Rwanda's Higher Education Council through its HEC MIS online system rather than directly by the candidate. The published 2026/2027 application deadline was 29 August 2026, so this cycle has closed and the next call is expected in the same late-August window.",
+    "eligibility": [
+     "Rwandan national applying through the Higher Education Council (HEC) of Rwanda",
+     "Diploma (technical and vocational) candidates: completed a Technical Secondary School (TSS) STEM-related combination in 2024/2025 with at least 70% in the 2025 national examination",
+     "Bachelor's (general education) candidates: completed secondary studies in a STEM-related combination in 2024/2025 with at least 70% in the 2025 national examination",
+     "Master's and PhD candidates: at least 14/20 (2nd class upper division) or equivalent at the previous completed level"
+    ],
+    "eligibility_summary": "Rwandan nationals applying through the Higher Education Council of Rwanda. Diploma and bachelor's candidates must have completed STEM-related combinations of technical secondary school or secondary studies in 2024/2025 and scored at least 70% in the 2025 national examinations. Master's and PhD candidates must hold at least 14/20 (2nd class upper division) or equivalent from the previous completed level.",
+    "benefits": [],
+    "coverage": [
+     "Study at Diploma, bachelor's, master's and PhD level",
+     "Studies taught in French at Moroccan public training institutions and universities"
+    ],
+    "requirements": [
+     "Application letter addressed to the Director General of HEC indicating the programme the candidate wishes to study",
+     "Copy of national identity card or valid passport",
+     "Copy of transcript of the last high school year (diploma and bachelor's candidates) or transcript of the previous university level (master's and PhD candidates)",
+     "Copy of certificate or degree of the most recently completed level of study"
+    ],
+    "documents": [
+     "Application letter to the Director General of HEC",
+     "Copy of ID or valid passport",
+     "High school transcript (diploma and bachelor's applicants)",
+     "Previous university-level transcript (master's and PhD applicants)",
+     "Certificate or degree of the most recently completed level"
+    ],
+    "english_requirement": null,
+    "application_method": [
+     "Submit the complete application file online through HEC MIS at https://hecmis.hec.gov.rw/",
+     "After submitting through HEC MIS, complete the additional online form linked from the announcement"
+    ],
+    "selection_notes": "Applications are submitted to Rwanda's Higher Education Council, which forwards them under the Morocco–Rwanda bilateral scheme.",
+    "best_fit": "Rwandan students who have just completed secondary school or a first degree and want to study in French at a Moroccan public institution.",
+    "notes": "The official public announcement states the scholarship is offered \"at Diploma, Bachelors, Masters and PhD level commencing in academic year 2026/2027 taught in French from Moroccan public training institutions/ universities\". It does not publish any monetary value, so no funding amount is recorded.",
+    "duration": null,
+    "application_period": "Announced 26 August 2026 for entry in academic year 2026/2027; the 2026/2027 window closed on 29 August 2026.",
+    "deadline_display": "29 August 2026 (2026/2027 cycle)",
+    "deadline_date": null,
+    "region": "Africa",
+    "program_type": "Bilateral government scholarship",
+    "applicant_utility": null,
+    "official_details": null
+   },
+   "missing_fields": [
+    "funding_amount",
+    "funding_currency",
+    "funding_period",
+    "tuition_coverage",
+    "living_cost_coverage",
+    "travel_coverage",
+    "benefits",
+    "english_requirement",
+    "duration",
+    "deadline_date",
+    "applicant_utility",
+    "official_details"
+   ]
+  }
+ ],
+ "result_file": "C:\\Users\\GopaL\\Desktop\\Projects folder\\ScholarZone\\backend\\research_output\\live500\\results\\agent_297.json"
+}

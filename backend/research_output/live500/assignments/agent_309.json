@@ -1,0 +1,118 @@
+{
+ "agent": "agent_309",
+ "assignment_count": 1,
+ "scholarships": [
+  {
+   "id": 690,
+   "title": "DOST-SEI Foreign Graduate Scholarships in Specialized Priority Fields in Science and Technology (Philippines)",
+   "country": "Philippines",
+   "degree": "Master's, PhD",
+   "funding_label": "Fully Funded",
+   "status": "open",
+   "official_source": "Department of Science and Technology - Science Education Institute (DOST-SEI), Philippines",
+   "official_source_url": "https://fgs.science-scholarships.ph",
+   "application_link": "https://fgs.science-scholarships.ph",
+   "catalogue_url": "https://fgs.science-scholarships.ph",
+   "official_updates_url": "https://science-scholarships.ph",
+   "existing": {
+    "funding_amount": null,
+    "funding_currency": null,
+    "funding_period": null,
+    "tuition_coverage": null,
+    "living_cost_coverage": null,
+    "travel_coverage": null,
+    "fully_funded": 0,
+    "description": null,
+    "eligibility": [
+     "Filipino citizen",
+     "Not more than 50 years old at the time of application",
+     "In the first five years of their research career",
+     "A permanent or regular employee of a private or government institution or office in the Philippines",
+     "Endorsed by the Head of the Sending Institution or Office",
+     "Must pass the admission requirements of the foreign university for graduate studies",
+     "Must pass the interview and other screening procedures",
+     "Must have a research interest aligned with the areas under DOST's Harmonized National Research and Development Agenda (HNRDA)",
+     "Must have a viable re-entry plan",
+     "Must not have availed of or be enjoying any other scholarship"
+    ],
+    "eligibility_summary": null,
+    "benefits": [
+     "Maximum allotted budget of PHP 3,000,000.00 per scholar per academic year",
+     "Pre-departure expenses",
+     "Round-trip economy airfare",
+     "School fees",
+     "Learning materials and/or connectivity allowance",
+     "Thesis or dissertation allowance",
+     "Monthly living allowance",
+     "Relocation allowance",
+     "Health or accident insurance"
+    ],
+    "coverage": [
+     "Maximum allotted budget of PHP 3,000,000.00 per scholar per academic year",
+     "Pre-departure expenses",
+     "Round-trip economy airfare",
+     "School fees",
+     "Learning materials and/or connectivity allowance",
+     "Thesis or dissertation allowance",
+     "Monthly living allowance",
+     "Relocation allowance",
+     "Health or accident insurance"
+    ],
+    "requirements": [
+     "Must undertake the MS or PhD programme full-time, for a maximum of 24 or 36 months respectively",
+     "Must not be a lateral entrant",
+     "Must make a full-time commitment to the scholarship and not engage in any form of employment during the scholarship period",
+     "Must submit an advance copy of the application to fgs@sei.dost.gov.ph",
+     "Must submit original documents to DOST-SEI at the Science Heritage Building, DOST Compound, Bicutan, Taguig City"
+    ],
+    "documents": [
+     "Application Form",
+     "Birth Certificate",
+     "Certified True Copy of Official Transcript of Records",
+     "Endorsement from two former college professors for MS applicants, or two professors from the MS programme for PhD applicants",
+     "Recommendation from the Head of the Sending Institution or Office",
+     "Permission to take a leave of absence while on scholarship",
+     "Medical Certificate as to health status and fitness to study from a licensed physician with PRC license number indicated",
+     "Valid NBI Clearance",
+     "Letter of Admission to the foreign university",
+     "Program of Study",
+     "Budgetary Requirements with supporting documents for the bases of rates used",
+     "Re-entry Plan, narrative"
+    ],
+    "english_requirement": null,
+    "application_method": [
+     "Download the application form and documentary requirements checklist from the official DOST-SEI site",
+     "Email an advance copy of the complete application to fgs@sei.dost.gov.ph before the applicable filing deadline",
+     "Submit the original documents to DOST-SEI at the Science Heritage Building, DOST Compound, Bicutan, Taguig City",
+     "Undergo first-level documentary screening, second-level evaluation of the research topic and re-entry plan by the concerned DOST Council, and a third-level panel interview convened by the SEI Director"
+    ],
+    "selection_notes": "Three-stage selection: first-level documentary evaluation of the application form and requirements; second-level evaluation of the research topic and re-entry plan by the concerned DOST Council; third-level interview by a panel created by the SEI Director. Results are announced in December for the January to July intake and in July for the August to December intake.",
+    "best_fit": null,
+    "notes": "The France Excellence-DOST sub-programme is the successor to the PhilFrance-DOST Fellowship and targets students admitted to a French programme issuing a diplome national at M1, M2 or doctorate level.",
+    "duration": "Full-time MS for a maximum of 24 months or PhD for a maximum of 36 months; no lateral entrants are considered.",
+    "application_period": "Two intakes a year. January to July intake: file by 15 August, panel interview in October, results in December. August to December intake: file by 15 March, panel interview in May, results in July.",
+    "deadline_display": "Next filing deadline 15 March (August to December intake); the other annual deadline is 15 August",
+    "deadline_date": "2027-03-15",
+    "region": "Asia",
+    "program_type": "Government scholarship",
+    "applicant_utility": null,
+    "official_details": null
+   },
+   "missing_fields": [
+    "funding_amount",
+    "funding_currency",
+    "funding_period",
+    "tuition_coverage",
+    "living_cost_coverage",
+    "travel_coverage",
+    "description",
+    "eligibility_summary",
+    "english_requirement",
+    "best_fit",
+    "applicant_utility",
+    "official_details"
+   ]
+  }
+ ],
+ "result_file": "C:\\Users\\GopaL\\Desktop\\Projects folder\\ScholarZone\\backend\\research_output\\live500\\results\\agent_309.json"
+}

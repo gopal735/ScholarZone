@@ -1,0 +1,121 @@
+{
+  "agent": "agent_009",
+  "records": [
+    {
+      "id": 44,
+      "official": {
+        "official_source_urls": [
+          "https://www.dfat.gov.au/people-to-people/australia-awards/mekong-australia-partnership",
+          "https://www.dfat.gov.au/people-to-people/australia-awards/australia-awards-scholarships",
+          "https://www.dfat.gov.au/people-to-people/australia-awards/participating-countries/myanmar-information-for-intake",
+          "https://thailand.embassy.gov.au/bkok/PR2026_MAP_Scholarships.html"
+        ],
+        "application_link": "https://www.dfat.gov.au/people-to-people/australia-awards/mekong-australia-partnership",
+        "catalogue_url": null,
+        "official_updates_url": "https://www.dfat.gov.au/people-to-people/australia-awards/mekong-australia-partnership",
+        "deadline_central": "2026-04-30",
+        "deadline_central_display": "30 April 2026 (2027 intake, Thai applicants)",
+        "deadline_note": "Opening and closing dates are set per participating country; the Australian Embassy in Thailand announced applications for the 2027 intake opened 1 February 2026 and closed 30 April 2026.",
+        "application_cycle": "2027 intake",
+        "status": "CLOSED",
+        "status_note": "Applications for the 2027 Australia Awards Mekong-Australia Partnership Scholarships closed on 30 April 2026 (Thai applicants); the next round is expected in early 2027.",
+        "tuition_coverage_note": "MAP-funded scholarship benefits remain the same as the Australia Awards program, which includes full tuition fees.",
+        "funding_amount": null,
+        "funding_currency": null,
+        "funding_period": null,
+        "tuition_coverage": true,
+        "living_cost_coverage": true,
+        "travel_coverage": true,
+        "fully_funded": true,
+        "benefits": [
+          "Full tuition fees",
+          "Return air travel - payment of a single return, economy class airfare to and from Australia, via the most direct route",
+          "Establishment allowance - a once only payment as a contribution towards accommodation expenses, text books and study materials",
+          "Contribution to Living Expenses (CLE) - a fortnightly contribution to basic living expenses paid at a rate determined by the department",
+          "Introductory Academic Program (IAP) - a compulsory program prior to the commencement of formal academic studies covering information on living and studying in Australia",
+          "Exclusive access to on-award enrichment through the Mekong-Leaders Network"
+        ],
+        "eligibility": [
+          "Citizen of Thailand, Cambodia, Vietnam, Laos or Myanmar",
+          "MAP-funded scholarships provide the opportunity to obtain a Master's by research or Master's by coursework qualification at an Australian tertiary institution",
+          "From 2026, additional Australia Awards Scholarships are available for Myanmar, funded by the Mekong-Australia Partnership",
+          "Scholars must sign a contract with the Commonwealth of Australia and leave Australia for a minimum of two years after completing the scholarship"
+        ],
+        "requirements": [
+          "Apply through the OASIS portal (oasis.dfat.gov.au) within your country's intake window"
+        ],
+        "documents": null,
+        "selection_criteria": null,
+        "coverage": [
+          "Full tuition fees",
+          "Return economy air travel",
+          "Establishment allowance (accommodation, textbooks, study materials)",
+          "Fortnightly Contribution to Living Expenses",
+          "Introductory Academic Program"
+        ],
+        "application_method": [
+          "Online application via OASIS, the Australia Awards Scholarships portal"
+        ],
+        "application_route": "Apply online through OASIS during your country's intake window; Thailand's 2027 intake ran from 1 February to 30 April 2026.",
+        "study_mode": "full-time",
+        "citizenship_residency": "Citizenship of Thailand, Cambodia, Vietnam, Laos or Myanmar required",
+        "international_eligibility": "The award is for citizens of the five Mekong countries studying at Australian institutions",
+        "subject_or_agency_requirement": null,
+        "research_requirement": null,
+        "duration": "The minimum period necessary for the individual to complete the academic program specified by the Australian higher education institution, including any preparatory training",
+        "description": "The Mekong-Australia Partnership (MAP) is a five-year commitment announced at the ASEAN-Australia Special Summit in March 2024, with a second phase of $222.5 million for 2024-2029 that includes additional Master's scholarships per year. MAP-funded scholarships let citizens of Thailand, Cambodia, Vietnam, Laos and Myanmar undertake a Master's by research or coursework at an Australian tertiary institution, with benefits identical to Australia Awards plus exclusive access to the Mekong-Leaders Network.",
+        "region": "Oceania",
+        "program_type": "Government-funded Master's scholarship (Australia Awards sub-programme)",
+        "english_requirement": null
+      },
+      "verification": {
+        "source_citations": [
+          "https://www.dfat.gov.au/people-to-people/australia-awards/mekong-australia-partnership",
+          "https://www.dfat.gov.au/people-to-people/australia-awards/australia-awards-scholarships",
+          "https://thailand.embassy.gov.au/bkok/PR2026_MAP_Scholarships.html"
+        ],
+        "last_verified_date": "2026-10-10",
+        "verification_status": "confirmed",
+        "confidence": "low",
+        "not_confirmed": [
+          "funding_amount",
+          "funding_currency",
+          "funding_period",
+          "documents",
+          "selection_criteria",
+          "english_requirement",
+          "subject_or_agency_requirement"
+        ],
+        "notes": "dfat.gov.au could not be fetched directly (repeated transport errors), so content was taken from the official DFAT domain's own published listings and the Australian Embassy Thailand government press release; no monetary stipend figure is published on the accessible official pages."
+      },
+      "applicant_utility": {
+        "summary": "MAP scholarships are the Mekong-track Australia Awards: full tuition, return economy airfare, an establishment allowance and a fortnightly living contribution, plus Mekong-Leaders Network enrichment, for a Master's by research or coursework in Australia. The 2027 intake closed on 30 April 2026, so build toward the next round. Critically, the two-year home-country return rule is a binding contract term, not an informal expectation.",
+        "best_fit": "Mid-career professionals from Thailand, Cambodia, Vietnam, Laos or Myanmar who want a Master's in Australia and can commit to returning home for two years afterwards",
+        "application_readiness_checklist": [
+          "Confirm your country's specific intake window; dates are set per country and were not simultaneous in the 2027 round",
+          "Prepare English proficiency evidence and academic transcripts early, since country rounds run roughly three months",
+          "Draft a study plan that connects to MAP priority areas such as water security, climate resilience, transnational crime and economic integration",
+          "Decide between coursework and research master's before applying, as the MAP page treats them as distinct qualifications",
+          "Be ready to accept the contract conditions, including the minimum two-year departure from Australia after completion"
+        ],
+        "common_rejection_risks": [
+          "Missing your country's own closing date while watching another country's timeline",
+          "Underestimating the two-year home return requirement embedded in the signed contract",
+          "Proposing study disconnected from Mekong development priorities in a competitive field-based contest",
+          "Assuming Myanmar applicants follow the standard process: from 2026 Myanmar has dedicated MAP-funded places"
+        ],
+        "estimated_uncovered_costs": "The award covers tuition, return airfare, an establishment allowance and fortnightly living costs, but visa costs and any expenses beyond the fortnightly contribution are not itemised in the official pages and should be self-funded.",
+        "document_audit": [
+          "The OASIS portal is the only official route; documents requested differ slightly by country intake page, so check your country's instructions rather than a generic checklist",
+          "Academic transcripts and English evidence must align with the qualification level claimed in the application"
+        ],
+        "alerts": [
+          "The 2027 intake closed 30 April 2026; expect the next round around February-April 2027 but verify your country's dates",
+          "Australia Awards and MAP-funded places interact: applicants may hold or seek either, so avoid double-counting options",
+          "MAP is funded through the second phase (2024-29) of the partnership; continuation beyond that horizon depends on future government decisions"
+        ],
+        "submission_workflow": "Create an OASIS account during your country's intake window, complete the online application with study plan and references, then await selection with your country's intake process."
+      }
+    }
+  ]
+}

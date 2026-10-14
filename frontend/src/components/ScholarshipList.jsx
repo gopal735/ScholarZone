@@ -2,7 +2,7 @@ import { useEffect, useMemo, useRef, useState } from 'react'
 import ScholarshipCard from './ScholarshipCard'
 import { scholarships } from '../data/scholarships'
 import { fetchScholarships } from '../services/scholarshipService'
-import { getScholarshipStatus } from '../utils/scholarshipPresentation'
+import { getScholarshipStatus, matchesDegreeFilter, matchesFundingFilter } from '../utils/scholarshipPresentation'
 import './ScholarshipList.css'
 
 const PAGE_SIZE = 12
@@ -73,7 +73,7 @@ function sortLocalScholarships(items, sortBy) {
         case 'name-desc':
           return secondTitle.localeCompare(firstTitle, undefined, { sensitivity: 'base' })
         case 'fully-funded':
-          return Number(second.scholarship.funding === 'Fully Funded') - Number(first.scholarship.funding === 'Fully Funded')
+          return Number(matchesFundingFilter(second.scholarship.funding, 'Fully Funded')) - Number(matchesFundingFilter(first.scholarship.funding, 'Fully Funded'))
         case 'default':
         default:
           return compareNullableTimestamps(
@@ -105,8 +105,10 @@ function filterLocalScholarships(items, { search, country, degree, funding, dead
       .toLowerCase()
     const matchSearch = searchableText.includes(normalizedSearch)
     const matchCountry = country === 'All' || scholarship.country === country
-    const matchDegree = degree === 'All' || scholarship.degree === degree
-    const matchFunding = funding === 'All' || scholarship.funding === funding
+    // The same aspect matching the API applies, so the fallback and the
+    // live directory never disagree about which rows a filter selects.
+    const matchDegree = matchesDegreeFilter(scholarship.degree, degree)
+    const matchFunding = matchesFundingFilter(scholarship.funding, funding)
     const matchDeadlineMonth = deadlineMonth === 'All' || getLocalDeadlineMonth(scholarship) === Number(deadlineMonth)
     const matchStatus = status === 'All' || getScholarshipStatus(scholarship).className === status
 
@@ -254,7 +256,12 @@ export default function ScholarshipList({ items, initialCountry }) {
         </div>
 
         <div className="filter-section__controls">
-          <div className={`filter-search ${search ? 'has-value' : ''}`}>
+          {/* The reference's sunken well: a search field is a hole in the
+              surface you reach into, so it takes the well treatment rather
+              than a raised panel. The ruling lines the reference paints
+              inside its textarea are what make it read as a place to write,
+              not as a readout. */}
+          <div className={`filter-search p-well ${search ? 'has-value' : ''}`}>
             <label className="visually-hidden" htmlFor="scholarship-search">Search scholarships by name</label>
             <svg className="filter-search__icon" viewBox="0 0 24 24" aria-hidden="true">
               <path d="m21 21-4.35-4.35m2.35-5.65a8 8 0 1 1-16 0 8 8 0 0 1 16 0Z" />
@@ -287,7 +294,7 @@ export default function ScholarshipList({ items, initialCountry }) {
 
           <div className={`filter-control ${country !== 'All' ? 'is-active' : ''}`}>
             <label htmlFor="scholarship-country">Country</label>
-            <select
+            <select className="p-sel"
               id="scholarship-country"
               value={country}
               onChange={(event) => {
@@ -305,7 +312,7 @@ export default function ScholarshipList({ items, initialCountry }) {
 
           <div className={`filter-control ${degree !== 'All' ? 'is-active' : ''}`}>
             <label htmlFor="scholarship-degree">Degree</label>
-            <select
+            <select className="p-sel"
               id="scholarship-degree"
               value={degree}
               onChange={(event) => {
@@ -314,15 +321,20 @@ export default function ScholarshipList({ items, initialCountry }) {
               }}
             >
               <option value="All">All degrees</option>
-              <option value="Bachelor">Bachelor</option>
+              {/* Values are the level words the API's filter buckets match on.
+                  The catalogue stores "Master's, PhD" style labels, so a
+                  verbatim label matched nothing: "UG (Bachelor's/Associate)"
+                  used to be sent as-is and returned zero rows. */}
+              <option value="Bachelor">Bachelor / Undergraduate</option>
               <option value="Master">Master</option>
-              <option value="UG (Bachelor's/Associate)">UG (Bachelor&apos;s/Associate)</option>
+              <option value="PhD">PhD / Doctoral</option>
+              <option value="Postgraduate">Postgraduate</option>
             </select>
           </div>
 
           <div className={`filter-control ${funding !== 'All' ? 'is-active' : ''}`}>
             <label htmlFor="scholarship-funding">Funding</label>
-            <select
+            <select className="p-sel"
               id="scholarship-funding"
               value={funding}
               onChange={(event) => {
@@ -331,13 +343,20 @@ export default function ScholarshipList({ items, initialCountry }) {
               }}
             >
               <option value="All">All funding</option>
+              {/* Same contract as the degree select: the API matches the
+                  aspect, not the verbatim label, so these values are the
+                  dominant catalogue terms. */}
               <option value="Fully Funded">Fully funded</option>
+              <option value="Tuition Fee Waiver">Tuition waiver</option>
+              <option value="Stipend">Stipend</option>
+              <option value="Partially Funded">Partial funding</option>
             </select>
           </div>
 
           <div className={`filter-control ${deadlineMonth !== 'All' ? 'is-active' : ''}`}>
             <label htmlFor="scholarship-deadline-month">Deadline month</label>
             <select
+              className="p-sel"
               id="scholarship-deadline-month"
               value={deadlineMonth}
               onChange={(event) => {
@@ -354,7 +373,7 @@ export default function ScholarshipList({ items, initialCountry }) {
 
           <div className={`filter-control ${status !== 'All' ? 'is-active' : ''}`}>
             <label htmlFor="scholarship-status">Status</label>
-            <select
+            <select className="p-sel"
               id="scholarship-status"
               value={status}
               onChange={(event) => {
@@ -372,6 +391,7 @@ export default function ScholarshipList({ items, initialCountry }) {
           <div className={`filter-control filter-sort ${sortBy !== 'default' ? 'is-active' : ''}`}>
             <label htmlFor="scholarship-sort">Sort by</label>
             <select
+              className="p-sel"
               id="scholarship-sort"
               value={sortBy}
               onChange={(event) => {
@@ -429,8 +449,8 @@ export default function ScholarshipList({ items, initialCountry }) {
         </div>
       ) : (
         <div className="scholarship-grid" aria-busy={isRefreshing}>
-          {currentItems.map((scholarship) => (
-            <ScholarshipCard key={scholarship.id} scholarship={scholarship} />
+          {currentItems.map((scholarship, index) => (
+            <ScholarshipCard key={scholarship.id} scholarship={scholarship} index={index} />
           ))}
         </div>
       )}

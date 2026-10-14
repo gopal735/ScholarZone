@@ -1,0 +1,138 @@
+{
+  "agent": "agent_240",
+  "records": [
+    {
+      "id": 596,
+      "official": {
+        "official_source_urls": [
+          "https://www.cucsh.udg.mx/convocatorias/fellowships-calas-2027-costa-rica-y-ecuador",
+          "http://calas.lat/es/convocatorias/dos-becas-de-investigaci%C3%B3n-sedes-costa-rica-y-ecuador",
+          "http://calas.lat/sites/default/files/fellowships_calas_costa_rica_y_ecuador_financed_by_bielefeld_university-final.pdf"
+        ],
+        "application_link": "http://calas.lat/es/node/4062",
+        "catalogue_url": null,
+        "official_updates_url": "https://www.cucsh.udg.mx/convocatorias",
+        "deadline_central": "2026-10-12",
+        "deadline_central_display": "12 October 2026",
+        "deadline_note": "Official web pages (CUCSH and calas.lat) state 12 October 2026, but the downloadable official call PDF and the call's date field state 11 October 2026, so the earlier date should be treated as binding.",
+        "application_cycle": "2027 fellowship cycle; fellowships begin between March and June 2027",
+        "status": "OPEN",
+        "status_note": "The call opened 11 August 2026 and closes 12 October 2026; results are notified 30 November 2026; fellowships start between March and June 2027.",
+        "tuition_coverage_note": null,
+        "funding_amount": null,
+        "funding_currency": null,
+        "funding_period": null,
+        "tuition_coverage": false,
+        "living_cost_coverage": null,
+        "travel_coverage": true,
+        "fully_funded": false,
+        "benefits": [
+          "The selected fellow will receive a competitive remuneration (la persona becaria seleccionada recibira una remuneracion competitiva)",
+          "Reimbursement of the round-trip air ticket to the corresponding CALAS seat",
+          "Use of the resources of CALAS and the host institution, including office space, library access and research facilities",
+          "Possibility of publishing the research as a long essay (pocket volume of approximately 60-80 pages) in the CALAS collection 'Afrontar las Crisis - Crear Horizontes', or otherwise as a scientific article"
+        ],
+        "eligibility": [
+          "Training in the social sciences and humanities (formacion en Ciencias Sociales y Humanidades)",
+          "Minimum academic degree of a doctorate (titulo academico minimo requerido es un doctorado)",
+          "Operational command of Spanish (dominio operativo del espanol)",
+          "Ideally recognized nationally or internationally for the impact of the candidate in their research fields",
+          "Scientific work and reputation, publications, research experience and the quality of the presented project will be evaluated"
+        ],
+        "requirements": [
+          "Reside for 2 to 3 months at the chosen CALAS seat (Costa Rica or Ecuador seat)",
+          "Participate in activities and events organized at the local or digital level",
+          "Present advances of the research at the seat",
+          "Publish the research results as a long essay in the CALAS collection or as a scientific article",
+          "Report on the fellowship activities in a 5-page report at the end of the fellowship"
+        ],
+        "documents": [
+          "Cover letter explaining why the project is suitable for the specific fellowship and the candidate's expectations",
+          "Short curriculum vitae of maximum 2 pages, including a list of publications related to the project",
+          "Copy of the doctoral degree certificate",
+          "Research project proposal with research calendar, work plan and max. 10 bibliographic sources (maximum 4 pages / 2000 words)",
+          "All documents in PDF format, in Spanish or English"
+        ],
+        "selection_criteria": [
+          "Scientific work and reputation",
+          "Publications",
+          "Experience in the field of research",
+          "Quality of the presented project"
+        ],
+        "coverage": [
+          "A competitive remuneration for the fellowship period",
+          "Reimbursement of the round-trip air ticket to the corresponding CALAS seat",
+          "Office space, library access and research facilities at CALAS and the host institution",
+          "Participation in activities and events and presentation of research advances at the seat"
+        ],
+        "application_method": [
+          "Fill in the CALAS online application form",
+          "Attach the required documents in PDF format in Spanish or English"
+        ],
+        "application_route": "Complete the CALAS online application form and attach the four PDF documents (in Spanish or English) before the deadline.",
+        "study_mode": "In-person residency of 2 to 3 months at the chosen CALAS seat (Costa Rica or Ecuador)",
+        "citizenship_residency": null,
+        "international_eligibility": "The call publishes no nationality restriction; it is addressed to academics with training in the social sciences and humanities holding a doctorate, and CALAS expressly welcomes qualified applicants with severe disabilities and applies gender-parity and affirmative-action objectives.",
+        "subject_or_agency_requirement": "Training in the social sciences and humanities; the proposal must address the guiding research questions of the CALAS transdisciplinary programme 'Creando horizontes: aceleraciones, transformaciones, emergencias', with cultural and literary studies specialists particularly encouraged.",
+        "research_requirement": "A research project proposal of maximum 4 pages / 2000 words with research calendar, work plan and max. 10 bibliographic sources is required.",
+        "duration": "2 to 3 months in residence, starting between March and June 2027",
+        "description": "The Centro Maria Sibylla Merian de Estudios Latinoamericanos Avanzados (CALAS) and Bielefeld University are accepting applications for two fellowships of two to three months for qualified researchers to work in residence at one of CALAS's regional seats: Central America and the Caribbean in San Jose, Costa Rica, or the Andean seat at FLACSO, Ecuador. Candidates are expected to contribute to new methodological and analytical approaches to the changes, transformations and creation of new horizons in response to crises in Latin America.",
+        "region": "Latin America (San Jose, Costa Rica and FLACSO sede Andes, Ecuador)",
+        "program_type": "Visiting research fellowship at a research institute (Merian Centre)",
+        "english_requirement": "Documents may be submitted in Spanish or English; an operational command of Spanish is required for the fellowship itself."
+      },
+      "verification": {
+        "source_citations": [
+          "http://calas.lat/es/convocatorias/dos-becas-de-investigaci%C3%B3n-sedes-costa-rica-y-ecuador",
+          "http://calas.lat/sites/default/files/fellowships_calas_costa_rica_y_ecuador_financed_by_bielefeld_university-final.pdf",
+          "https://www.cucsh.udg.mx/convocatorias/fellowships-calas-2027-costa-rica-y-ecuador"
+        ],
+        "last_verified_date": "2026-10-10",
+        "verification_status": "confirmed",
+        "confidence": "high",
+        "not_confirmed": [
+          "funding_amount",
+          "funding_currency",
+          "funding_period",
+          "living_cost_coverage",
+          "citizenship_residency"
+        ],
+        "notes": "Award amount checked against the awarding body's own call page, the official call PDF and the CUCSH convocatoria page: CALAS publishes only a 'competitive remuneration' with no figure, so amount fields remain null."
+      },
+      "applicant_utility": {
+        "summary": "This is a short, in-residence visiting research fellowship rather than a degree scholarship: the award is a competitive remuneration plus a reimbursed round-trip flight, and CALAS states it cannot provide accommodation, so budget for two to three months of rent and living costs in San Jose or Quito. The call closes 12 October 2026 on the official page but 11 October 2026 in the downloadable PDF, so submit by the earlier date. With only two fellowships and an explicit evaluation of reputation, publications and project quality, a strong publication record is effectively the entry ticket.",
+        "best_fit": "Doctoral-trained social science and humanities researchers, especially in cultural and literary studies, with solid publications who can relocate to San Jose or Quito for a 2-3 month residency starting March-June 2027.",
+        "application_readiness_checklist": [
+          "Open the online application form linked from the CALAS call page early and confirm it accepts uploads before the cutoff",
+          "Trim the CV to a maximum of two pages and list only publications related to the project",
+          "Build the proposal to fit four pages / 2000 words with a research calendar, work plan and no more than ten bibliographic sources",
+          "Scan the doctoral degree certificate as a PDF and keep certificate wording legible",
+          "Sketch a fellowship calendar that can start anywhere between March and June 2027",
+          "Research rental options in San Jose or Quito in advance, since CALAS provides no housing"
+        ],
+        "common_rejection_risks": [
+          "Doctorate not yet completed at the time of application, since the doctorate is the minimum degree",
+          "Proposal breaching the four-page / 2000-word cap or missing the research calendar, work plan or bibliographic list",
+          "A thin publication record, as scientific work, reputation and publications are explicit selection criteria",
+          "A project that does not visibly engage the CALAS 'Creando horizontes' research questions on crisis, transformation and horizons",
+          "Late or malformed submission: documents must be PDFs in Spanish or English, and CALAS states rejections will not be justified"
+        ],
+        "estimated_uncovered_costs": "Housing (CALAS cannot accommodate fellows), local transport, daily living costs, visa or immigration expenses, and any research travel beyond the single reimbursed round-trip flight.",
+        "document_audit": [
+          "CV is capped at two pages and must carry a publication list tied to the project",
+          "A copy of the doctoral degree certificate is mandatory, so candidates near completion are at risk",
+          "The proposal's 2000-word limit is unusually tight for a four-page allowance, so count words rather than pages",
+          "Each document must be a PDF in Spanish or English; there is no MOI certificate requirement, but working Spanish is expected during the residency"
+        ],
+        "alerts": [
+          "Deadline discrepancy: the official web pages say 12 October 2026 while the downloadable call PDF says 11 October 2026, so treat 11 October as the true cutoff",
+          "CALAS will not justify rejections, so feedback cannot be expected",
+          "No accommodation is provided; local administrative staff only help fellows find suitable rentals",
+          "Results are only notified on 30 November 2026 for fellowships that can start as late as June 2027, so plan employment and travel around that window",
+          "Fellows must deliver either a long essay for the CALAS collection or a scientific article, plus a five-page final report"
+        ],
+        "submission_workflow": "Fill in the CALAS online form and upload the four PDF attachments before the 11-12 October 2026 cutoff; decisions are communicated on 30 November 2026 and the fellowship takes place between March and June 2027."
+      }
+    }
+  ]
+}

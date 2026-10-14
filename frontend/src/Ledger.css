@@ -61,13 +61,15 @@
    deadline and degree in full rather than on air. */
 
 .scholarship-grid .scholarship-card {
-  border-radius: var(--radius-lg);
-  box-shadow: none;
-  transition: border-color 200ms var(--sz-ease), transform 150ms var(--sz-ease);
-}
-
-.scholarship-grid .scholarship-card:hover {
-  transform: translate3d(0, -2px, 0);
+  border-radius: var(--radius-card);
+  /* The premium material keeps its depth in the grid. The earlier
+     density pass flattened the card to a hairline-only object, which
+     read as a table row rather than as a sheet; the reference's
+     three-layer edge and six-layer drop are what make a grid of
+     results feel like a set of physical cards, and the pointer tilt
+     from usePremiumPointer supplies the hover motion instead of the
+     old translate. */
+  transition: transform 0.25s ease-out, box-shadow 0.3s;
 }
 
 .scholarship-grid .scholarship-card .scholarship-image {
@@ -292,7 +294,9 @@ html.js-reveal .scholarship-card.is-in {
 }
 
 html.js-reveal .scholarship-card.is-in:hover {
-  transform: translate3d(0, -2px, 0);
+  /* No transform here. The 3D tilt and the glow are owned by the
+     premium pointer listener, which writes the transform inline; a
+     class-rule transform here would fight it on every hover. */
 }
 
 html.js-reveal .sz-reveal {

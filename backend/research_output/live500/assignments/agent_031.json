@@ -1,0 +1,84 @@
+{
+ "agent": "agent_031",
+ "assignment_count": 1,
+ "scholarships": [
+  {
+   "id": 99,
+   "title": "Esade Talent Scholarships (MSc and MBA)",
+   "country": "Spain",
+   "degree": "Master's, MBA",
+   "funding_label": "Partially Funded",
+   "status": "open",
+   "official_source": "Esade Ramon Llull University",
+   "official_source_url": "https://www.esade.edu/en/programs/scholarship-program-and-financial-aid",
+   "application_link": "https://www.esade.edu/en/programs/scholarship-program-and-financial-aid",
+   "catalogue_url": null,
+   "official_updates_url": "https://www.esade.edu/en/about-us/scholarship-program-and-financial-aid/scholarship-program",
+   "existing": {
+    "funding_amount": null,
+    "funding_currency": "EUR",
+    "funding_period": null,
+    "tuition_coverage": 1,
+    "living_cost_coverage": 1,
+    "travel_coverage": null,
+    "fully_funded": 0,
+    "description": null,
+    "eligibility": [
+     "Outstanding academic track record",
+     "Financial need, since Talent Scholarships are for students 'whose financial situations may represent an obstacle for them'",
+     "Meets the legally established criteria of the applicable call",
+     "For Degree Talent Scholarships, enrolment in a degree programme covered by the donor's specification (BBA, Bachelor in Law, BITLASI or a double-degree programme) or the donor's chosen student profile",
+     "For MSc and MBA Talent Scholarships, admission to an official Esade MBA or MSc programme"
+    ],
+    "eligibility_summary": "Talented students with excellent academic track records from diverse socio-economic backgrounds, for the MBA and MSc Talent Scholarships assessed by the Talent Attraction Committee on demonstrated talent and financial need.",
+    "benefits": [
+     "MSc and MBA Talent Scholarships covering between 50% and 85% of tuition fees",
+     "Degree Talent Scholarships covering between 60% and 100% of tuition fees for the whole undergraduate or double-degree programme",
+     "Esade Lodging Grants for students living outside Barcelona province",
+     "Esade Living Grants for transportation costs and general expenses",
+     "Esade Exchange Scholarships for candidates placed in an exchange programme",
+     "Esade SUD Scholarships for candidates doing a solidarity-based internship through Esade's University Development Service"
+    ],
+    "coverage": [
+     "Tuition fees (50%–85% for MSc and MBA Talent Scholarships)",
+     "Room and board grants (separate Talent Scholarship Complements)"
+    ],
+    "requirements": [
+     "Apply to an official Esade MBA or MSc programme for the MSc Talent Scholarships",
+     "Demonstrate both talent and financial need",
+     "Apply during the applicable call, whose dates are not published on the pages read"
+    ],
+    "documents": [
+     "Not enumerated on the official Scholarship Program page; the specific call documentation is not published there"
+    ],
+    "english_requirement": null,
+    "application_method": [
+     "MSc and MBA Talent Scholarships: application to Esade plus consideration by the Talent Attraction Committee, which 'will study their applications to confirm that candidates meet the established requirements'",
+     "Degree Talent Scholarships: application for the relevant degree programme with the donor's specified criteria"
+    ],
+    "selection_notes": "The Talent Attraction Committee studies applications to confirm that candidates meet the established requirements. Published programme facts: 5M€ dedicated to the Scholarship Program, 295 scholarship recipients, 84% of recipients' tuition fees covered, and 8.4% of undergraduate students are scholarship recipients.",
+    "best_fit": "Academically outstanding candidates from diverse socio-economic backgrounds applying to an official Esade MBA or MSc programme.",
+    "notes": "The stored official_source_url is the Scholarship Program and Financial Aid overview page, which publishes the funding mix: 5M€ total dedicated to scholarships in the 2022-2023 academic year, 87% from companies and foundations and 13% from alumni and the Esade community, and 70% of scholarship value from Esade's own funds with 30% from private donations. The award-level detail sits on the linked Scholarship Program page.",
+    "duration": "MSc and MBA Talent Scholarships cover the official MBA and MSc programmes; Degree Talent Scholarships run for the entire undergraduate or double-degree programme.",
+    "application_period": "Annual; application calls are described as generic and open to all candidates who meet the established criteria, with no dates published.",
+    "deadline_display": "No call date is published on the Scholarship Program or overview pages. The page states only that 'Calls for these scholarship applications are generic and targeted at all those who meet the legally established criteria.'",
+    "deadline_date": null,
+    "region": "Europe",
+    "program_type": "Merit and need-based tuition scholarships plus room-and-board grants for Esade students",
+    "applicant_utility": null,
+    "official_details": null
+   },
+   "missing_fields": [
+    "funding_amount",
+    "funding_period",
+    "travel_coverage",
+    "description",
+    "english_requirement",
+    "deadline_date",
+    "applicant_utility",
+    "official_details"
+   ]
+  }
+ ],
+ "result_file": "C:\\Users\\GopaL\\Desktop\\Projects folder\\ScholarZone\\backend\\research_output\\live500\\results\\agent_031.json"
+}

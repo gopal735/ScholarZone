@@ -35,7 +35,7 @@ export default function SavedScholarshipsPage() {
           </span>
           <h2>Build a shortlist you can return to.</h2>
           <p>Use Save on any scholarship to keep it available here.</p>
-          <Link to="/scholarships" className="saved-scholarships-page__action">
+          <Link to="/scholarships" className="p-btn saved-scholarships-page__action">
             Browse scholarships <span aria-hidden="true">&rarr;</span>
           </Link>
         </div>

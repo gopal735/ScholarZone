@@ -1,0 +1,81 @@
+{
+ "agent": "agent_023",
+ "assignment_count": 1,
+ "scholarships": [
+  {
+   "id": 79,
+   "title": "Edinburgh Global Research Scholarship",
+   "country": "United Kingdom",
+   "degree": "PhD",
+   "funding_label": "Tuition Fee Waiver",
+   "status": "upcoming",
+   "official_source": "The University of Edinburgh",
+   "official_source_url": "https://www.ed.ac.uk/student-funding/postgraduate/international",
+   "application_link": "https://www.ed.ac.uk/student-funding/postgraduate/international",
+   "catalogue_url": null,
+   "official_updates_url": "https://registryservices.ed.ac.uk/student-funding/postgraduate/uk-eu/university-scholarships/college-studentships",
+   "existing": {
+    "funding_amount": null,
+    "funding_currency": null,
+    "funding_period": null,
+    "tuition_coverage": 1,
+    "living_cost_coverage": 0,
+    "travel_coverage": 0,
+    "fully_funded": 0,
+    "description": null,
+    "eligibility": [
+     "Liable to pay tuition fees at the overseas student rate",
+     "Offered admission to a full-time PhD research programme at the University of Edinburgh",
+     "Of outstanding academic merit and research potential",
+     "Applying from outside the UK and EU, since the award addresses the overseas fee differential",
+     "Financial means, nationality and proposed field of study are not taken into account in selection"
+    ],
+    "eligibility_summary": "Open to students liable to pay overseas tuition fees who have been offered admission to a full-time PhD research programme at the University of Edinburgh and who are of outstanding academic merit and research potential, in any subject offered by the University. Financial means, nationality and the proposed field of study are not taken into account.",
+    "benefits": [
+     "Reduction of overseas research tuition fees to the UK/EU level for up to three years",
+     "Open to applicants in any subject offered by the University of Edinburgh"
+    ],
+    "coverage": [
+     "The difference between the tuition fee payable by a UK/EU postgraduate student and the fee chargeable to an overseas postgraduate student"
+    ],
+    "requirements": [],
+    "documents": [
+     "Complete PhD research application submitted through the University of Edinburgh applicant portal",
+     "Completed scholarship application, historically via the EUCLID Applicant Hub"
+    ],
+    "english_requirement": null,
+    "application_method": [
+     "Submit a full application for admission to an Edinburgh PhD research programme",
+     "Submit the Edinburgh Global Research Scholarship application by the published deadline, historically in early February"
+    ],
+    "selection_notes": "Awarded on academic merit and research potential. The award is additive with College Postgraduate Studentships, which international students must combine it with unless they can otherwise demonstrate the full overseas tuition fee.",
+    "best_fit": null,
+    "notes": null,
+    "duration": "Tenable for up to three years, subject to satisfactory progress",
+    "application_period": null,
+    "deadline_display": null,
+    "deadline_date": null,
+    "region": "Europe",
+    "program_type": "Merit-based tuition fee differential scholarship for overseas fee-paying PhD students",
+    "applicant_utility": null,
+    "official_details": null
+   },
+   "missing_fields": [
+    "funding_amount",
+    "funding_currency",
+    "funding_period",
+    "description",
+    "requirements",
+    "english_requirement",
+    "best_fit",
+    "notes",
+    "application_period",
+    "deadline_display",
+    "deadline_date",
+    "applicant_utility",
+    "official_details"
+   ]
+  }
+ ],
+ "result_file": "C:\\Users\\GopaL\\Desktop\\Projects folder\\ScholarZone\\backend\\research_output\\live500\\results\\agent_023.json"
+}

@@ -1,0 +1,21 @@
+{
+  "agent_id": "w3_56",
+  "shard": "w3-56",
+  "host": "westminster.ac.uk",
+  "today": "2026-10-04",
+  "logo_override": {
+    "url": "https://www.westminster.ac.uk/themes/uow_theme/images/navbar-westminster-logo.svg",
+    "page_url": "https://www.westminster.ac.uk/study/fees-and-funding/scholarships/postgraduate-sanctuary-scholarship",
+    "official_host": true,
+    "alt_text": "University of Westminster",
+    "validation_result": "verified",
+    "validation_detail": "HTTP 200, content-type image/svg+xml, 3600 bytes, width 170.214 height 41.049 viewBox 0 0 170.214 41.049; the file contains no fill attribute and no white value at all (regex check for #fff/#ffffff/white returned false), so all paths render default black on a transparent ground, and it was rendered on a white background showing the 'UNIVERSITY OF WESTMINSTER' wordmark in black",
+    "image_kind": "official_university",
+    "image_format": "svg",
+    "verified_at": "2026-10-04T00:00:00+00:00",
+    "host_evidence": "same_registrable_domain",
+    "_award": "Postgraduate Sanctuary Scholarship (University of Westminster)"
+  },
+  "target_ids": [524],
+  "notes": "Westminster's logo is unusually hard to reach because the page is client-rendered: ctx.request.get on the scholarship URL returns only a 24560-byte shell with ZERO <img> tags and no occurrence of the string 'logo' anywhere, and the DOM only exists after client-side JS runs. Even then the rendered page exposes no logo <img>, no logo <svg> and no JSON-LD logo - the brand mark is a pure CSS background on the navbar: computed background-image on A.navbar-brand resolves to url('https://www.westminster.ac.uk/themes/uow_theme/images/navbar-westminster-logo.svg'). Probed that exact URL: HTTP 200, image/svg+xml, 3600 B, and visually confirmed on white as the black 'UNIVERSITY OF WESTMINSTER' wordmark, so rules 1-4 all pass and rule 3 is safe because the SVG sets no fill at all and contains no white. Probed and rejected: /themes/uow_theme/logo.svg (200, image/svg+xml, 1295 B, but it is a 32x32 SVG that merely wraps an embedded base64 PNG of a purple circle with a white crescent - a decorative icon, not the university wordmark, and far too small); /themes/uow_theme/favicon.ico (ctx.request timed out on it; the favicon was not needed once the real logo was found); /themes/uow_theme/images/logo.svg, .../images/dist/images/logo.svg, .../assets/images/logo.svg, .../images/logo-white.svg, logo-dark.svg, westminster-logo.svg, footer-logo.svg and navbar-westminster-logo-white.svg (all HTTP 404); and /themes/uow_theme/images/tag-icon.png, which is a programme tag glyph rather than an institutional mark. The awarding body is the University of Westminster itself, so no provenance substitution was needed."
+}

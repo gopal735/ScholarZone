@@ -1,0 +1,90 @@
+{
+ "agent": "agent_044",
+ "assignment_count": 1,
+ "scholarships": [
+  {
+   "id": 128,
+   "title": "Brown University Financial Aid for International Applicants",
+   "country": "United States",
+   "degree": "Bachelor's",
+   "funding_label": "Need-Based",
+   "status": "open",
+   "official_source": "Brown University",
+   "official_source_url": "https://admission.brown.edu/tuition-aid/financial-aid/international-students",
+   "application_link": "https://admission.brown.edu/tuition-aid/financial-aid/international-students",
+   "catalogue_url": null,
+   "official_updates_url": null,
+   "existing": {
+    "funding_amount": null,
+    "funding_currency": null,
+    "funding_period": null,
+    "tuition_coverage": 1,
+    "living_cost_coverage": 1,
+    "travel_coverage": 1,
+    "fully_funded": 0,
+    "description": "Brown University confirms that international students are eligible to apply for University financial aid and that it meets full demonstrated need for admitted students who apply for aid at the time they apply for admission. Aid is entirely need-based and Brown offers no merit awards. Through The Brown Promise, Brown has replaced all packaged loans in all undergraduate aid packages with scholarships. Brown will be need-blind for international students beginning with the Class of 2029. Aid is normally credited directly to the student account against tuition, fees, room and meals, and also helps with travel, books and personal expenses, but not with vacation and summer expenses. Financial aid documents are due November 2, 2026 for Early Decision and February 1, 2027 for Regular Decision.",
+    "eligibility": [
+     "International student applying for admission to Brown",
+     "Must apply for financial aid at the time they apply for admission",
+     "No academic merit awards exist at Brown",
+     "Transfer students' financial need is considered in admission decisions"
+    ],
+    "eligibility_summary": "International applicants to Brown who apply for financial aid at the time they apply for admission. Brown meets full demonstrated need for admitted students who file for aid with the application, and becomes need-blind for international students beginning with the Class of 2029. Financial aid is need-based only; Brown offers no merit awards.",
+    "benefits": [
+     "Full demonstrated need met for admitted students who apply for aid with the application",
+     "The Brown Promise: no packaged loans in any financial aid package",
+     "Aid applied directly to the student account as a credit toward tuition, fees, room and meals",
+     "Need-blind admission for all first-year applicants, extending to international students from the Class of 2029"
+    ],
+    "coverage": [
+     "Tuition",
+     "Fees",
+     "Room",
+     "Meals",
+     "Travel (partial)",
+     "Books",
+     "Personal expenses (partial)"
+    ],
+    "requirements": [
+     "Indicate on the admission application that you are applying for financial aid",
+     "Submit the CSS Profile by the applicable deadline",
+     "Submit the FAFSA by the applicable deadline if a U.S. citizen or permanent resident",
+     "Provide supporting income tax forms if prompted"
+    ],
+    "documents": [
+     "CSS Profile",
+     "FAFSA (for U.S. citizens and permanent residents)",
+     "Income tax forms or other materials if prompted after submitting the CSS Profile"
+    ],
+    "english_requirement": null,
+    "application_method": [
+     "Apply for admission to Brown and indicate that financial aid is being sought",
+     "Submit the CSS Profile",
+     "Submit the FAFSA if eligible",
+     "Upload any additional supporting materials requested after the CSS Profile"
+    ],
+    "selection_notes": "All Brown financial aid is need-based; the University does not offer merit awards. If aid is applied for and the steps are completed by their deadlines, Brown includes financial aid award details with the admission decision.",
+    "best_fit": "International applicants to Brown from families who cannot afford the full cost of attendance and who file for aid with their application.",
+    "notes": "Brown advises international applicants that immigration regulations and U.S. off-campus summer work restrictions make it imperative to identify funding sources such as family resources, government grants or savings, and to consult their local education officials and EducationUSA. Brown awards will help with travel, books and personal expenses but do not assist with vacation and summer expenses. Contact: financial_aid@brown.edu.",
+    "duration": null,
+    "application_period": "Annual cycle. Early Decision financial aid documents due November 2, 2026; Regular Decision financial aid documents due February 1, 2027.",
+    "deadline_display": "Brown's official Financial Aid Filing Deadlines are: Early Decision Applicants - CSS Profile November 2, 2026 and FAFSA November 2, 2026; Regular Decision Applicants - CSS Profile February 1, 2027 and FAFSA February 1, 2027.",
+    "deadline_date": "2026-11-02",
+    "region": "North America",
+    "program_type": "Need-based undergraduate financial aid, international applicants",
+    "applicant_utility": null,
+    "official_details": null
+   },
+   "missing_fields": [
+    "funding_amount",
+    "funding_currency",
+    "funding_period",
+    "english_requirement",
+    "duration",
+    "applicant_utility",
+    "official_details"
+   ]
+  }
+ ],
+ "result_file": "C:\\Users\\GopaL\\Desktop\\Projects folder\\ScholarZone\\backend\\research_output\\live500\\results\\agent_044.json"
+}

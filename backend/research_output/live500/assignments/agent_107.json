@@ -1,0 +1,76 @@
+{
+ "agent": "agent_107",
+ "assignment_count": 1,
+ "scholarships": [
+  {
+   "id": 295,
+   "title": "Charles University Doctoral Study Income (full-time doctoral students)",
+   "country": "Czech Republic",
+   "degree": "PhD",
+   "funding_label": "Stipend",
+   "status": "open",
+   "official_source": "Charles University (Prague)",
+   "official_source_url": "https://cuni.cz/UKEN-1617.html",
+   "application_link": "https://cuni.cz/UKEN-1617.html",
+   "catalogue_url": null,
+   "official_updates_url": "https://cuni.cz/UKEN-1617.html",
+   "existing": {
+    "funding_amount": null,
+    "funding_currency": "CZK",
+    "funding_period": null,
+    "tuition_coverage": 0,
+    "living_cost_coverage": null,
+    "travel_coverage": null,
+    "fully_funded": 0,
+    "description": "Charles University guarantees every full-time doctoral student a doctoral study income of at least 1.2 times the Czech minimum wage for the standard length of the doctorate (four years). The income may take the form of a doctoral scholarship, a salary or wage for creative work directly related to preparing the dissertation, or a combination of both, and is often supplemented by research-project awards and teaching remuneration. For bachelor's and master's students the university publishes no general scholarship: its page routes applicants to Czech Ministry of Education scholarship schemes (developing-country, general international and International Visegrad Fund), the Vaclav Havel Bursary, the Institute for Language and Preparatory Studies, and faculty-level awards whose amounts are set by each faculty's own regulations.",
+    "eligibility": [
+     "Enrolled as a full-time doctoral student at Charles University",
+     "Within the standard length of the doctoral study programme (4 years)"
+    ],
+    "eligibility_summary": "Open to any student enrolled full-time in a doctoral study programme at Charles University. The benefit is described as guaranteed for all full-time doctoral students rather than awarded on merit. Separate, competitive awards (ministry scholarships, the Vaclav Havel Bursary, faculty merit scholarships and tuition fee reductions) have their own eligibility and are set by the awarding party.",
+    "benefits": [
+     "Guaranteed doctoral study income of at least 1.2 times the Czech minimum wage"
+    ],
+    "coverage": [
+     "Guaranteed doctoral study income of at least 1.2 times the Czech minimum wage"
+    ],
+    "requirements": [
+     "Enrol full-time in a doctoral study programme at Charles University",
+     "For the separate Vaclav Havel Bursary: demonstrate that studies are hindered or prevented by repression under totalitarian, authoritarian or other non-democratic regimes; it applies to foundation and degree students",
+     "For faculty awards: consult the faculty's own scholarship and bursary rules and Admission Office, because amounts are set by faculty regulations"
+    ],
+    "documents": [],
+    "english_requirement": null,
+    "application_method": [
+     "For the doctoral study income: none - it is paid as a guaranteed entitlement to enrolled full-time doctoral students",
+     "For the Vaclav Havel Bursary: apply through the Charles University page for that bursary",
+     "For faculty awards: contact the faculty Admission Office directly"
+    ],
+    "selection_notes": "The doctoral study income is not competitive; it is described as a guaranteed minimum. Merit-based scholarships and tuition fee reductions offered by faculties after the first year of study are competitive and faculty-specific.",
+    "best_fit": "Outstanding international students at Charles University Prague",
+    "notes": "Charles University's own page also lists the Czech Ministry of Education, Youth and Sport schemes (developing countries, general international, International Visegrad Fund), the Vaclav Havel Bursary, the Institute for Language and Preparatory Studies scholarships, and faculty awards (Faculty of Mathematics and Physics, Faculty of Science STARS, Faculty of Social Sciences FSV UK SCHOLARS). Those are distinct awards and are not part of this row.",
+    "duration": null,
+    "application_period": "Continuous for the standard length of the doctorate (4 years) once enrolled as a full-time doctoral student.",
+    "deadline_display": "No application deadline. The official page states the doctoral study income is received \"during the standard length of your studies (4 years)\" by every full-time doctoral student, so it is a standing entitlement rather than a competitive call.",
+    "deadline_date": null,
+    "region": "Europe",
+    "program_type": "Institutional guaranteed doctoral study income (stipend or salary) for full-time doctoral students",
+    "applicant_utility": null,
+    "official_details": null
+   },
+   "missing_fields": [
+    "funding_amount",
+    "funding_period",
+    "living_cost_coverage",
+    "travel_coverage",
+    "documents",
+    "english_requirement",
+    "duration",
+    "deadline_date",
+    "applicant_utility",
+    "official_details"
+   ]
+  }
+ ],
+ "result_file": "C:\\Users\\GopaL\\Desktop\\Projects folder\\ScholarZone\\backend\\research_output\\live500\\results\\agent_107.json"
+}

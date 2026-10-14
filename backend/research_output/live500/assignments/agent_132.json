@@ -1,0 +1,74 @@
+{
+ "agent": "agent_132",
+ "assignment_count": 1,
+ "scholarships": [
+  {
+   "id": 335,
+   "title": "Aalto University Excellence Scholarship (100% tuition fee waiver)",
+   "country": "Finland",
+   "degree": "Bachelor's, Master's",
+   "funding_label": "Full tuition fee waiver",
+   "status": "upcoming",
+   "official_source": "Aalto University",
+   "official_source_url": "https://www.aalto.fi/en/international-students/scholarships-study-right-started-on-or-after-1-august-2025",
+   "application_link": "https://www.aalto.fi/en/international-students/scholarships-study-right-started-on-or-after-1-august-2025",
+   "catalogue_url": null,
+   "official_updates_url": "https://www.aalto.fi/en/international-students/scholarships-study-right-started-on-or-after-1-august-2025",
+   "existing": {
+    "funding_amount": null,
+    "funding_currency": null,
+    "funding_period": null,
+    "tuition_coverage": 1,
+    "living_cost_coverage": 0,
+    "travel_coverage": 0,
+    "fully_funded": 0,
+    "description": "The Aalto University Excellence Scholarship is a merit-based, competitive tuition fee waiver awarded to non-EU/non-EEA applicants who are liable to pay Aalto tuition fees. It covers the full tuition fee for the target time of the degree programme - three years for a bachelor's degree and two years for a master's degree. Applications are made as part of the normal admission process, and only a very limited number of scholarships are awarded, with some programmes awarding none. The scholarship does not cover living costs in Finland, which students must fund themselves.",
+    "eligibility": [
+     "Non-EU/non-EEA student liable to pay tuition fees at Aalto University",
+     "Applying through the normal admission process for the degree programme",
+     "High academic achievement measured by the programme's evaluation criteria"
+    ],
+    "eligibility_summary": "Non-EU/non-EEA applicants who are liable to pay tuition fees at Aalto University and are applying through the normal admission process. The scholarship is merit-based and awarded on a competitive basis to the highest-achieving applicants under the programme's evaluation criteria.",
+    "benefits": [
+     "100% tuition fee waiver for the target time of the degree",
+     "Continued for the second academic year (third for a bachelor's) subject to satisfactory study progress"
+    ],
+    "coverage": [
+     "Full tuition fee for the target time of the degree programme"
+    ],
+    "requirements": [],
+    "documents": [],
+    "english_requirement": null,
+    "application_method": [
+     "Apply to the degree programme in the normal admission round",
+     "Indicate the scholarship in the same application form",
+     "Agree to the terms of the scholarship by the stated deadline after the award"
+    ],
+    "selection_notes": null,
+    "best_fit": "High-achieving non-EU/non-EEA applicants who are liable for Aalto tuition fees and who can fund their own living costs in Finland.",
+    "notes": "\"There is a very limited number of scholarships available, and programmes may also decide not to grant any scholarships.\" Aalto University does not offer any university-wide scholarship for living costs in Finland.",
+    "duration": "Target time of the degree programme: three years full-time for a bachelor's degree and two years full-time for a master's degree",
+    "application_period": "Applied for during the relevant degree programme admission round",
+    "deadline_display": "\"Tuition-fee students may apply for the scholarship during the admission process.\" The scholarship follows the admission round's application deadlines, which this page does not state, and it is only valid if the holder \"must agree to the terms of the scholarship by the given deadline.\"",
+    "deadline_date": null,
+    "region": "Europe",
+    "program_type": "Merit-based tuition fee waiver",
+    "applicant_utility": null,
+    "official_details": null
+   },
+   "missing_fields": [
+    "funding_amount",
+    "funding_currency",
+    "funding_period",
+    "requirements",
+    "documents",
+    "english_requirement",
+    "selection_notes",
+    "deadline_date",
+    "applicant_utility",
+    "official_details"
+   ]
+  }
+ ],
+ "result_file": "C:\\Users\\GopaL\\Desktop\\Projects folder\\ScholarZone\\backend\\research_output\\live500\\results\\agent_132.json"
+}

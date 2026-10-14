@@ -1,0 +1,134 @@
+{
+  "agent": "agent_101",
+  "records": [
+    {
+      "id": 288,
+      "official": {
+        "official_source_urls": [
+          "https://www.bme.hu/en/scolarships",
+          "https://www.bme.hu/en/scholarships",
+          "https://www.bme.hu/en/application_and_admission"
+        ],
+        "application_link": "https://www.bme.hu/en/scolarships",
+        "catalogue_url": null,
+        "official_updates_url": "https://www.bme.hu/en",
+        "deadline_central": null,
+        "deadline_central_display": null,
+        "deadline_note": null,
+        "application_cycle": null,
+        "status": "OPEN",
+        "status_note": "BME's admission page states that students can study at BME with a scholarship or as self-funded students by paying tuition fees, and offers an online application form for international students; no institutional scholarship with published award terms, amounts or deadlines could be found on the university's own pages.",
+        "tuition_coverage_note": "The scholarships page states that Hungarian State Scholarships cover tuition fees and help with living expenses for full training programmes, but these are government programmes administered outside the university.",
+        "funding_amount": null,
+        "funding_currency": null,
+        "funding_period": null,
+        "tuition_coverage": null,
+        "living_cost_coverage": null,
+        "travel_coverage": null,
+        "fully_funded": false,
+        "benefits": [
+          "Access to Hungarian government scholarship schemes listed by the university: the Stipendium Hungaricum Scholarship, which offers no tuition fee, a monthly stipend of HUF 43,700 per month for BA/BSc, MA/MSc and one-tier master programmes and HUF 140,000 or HUF 180,000 per month for doctoral programmes, a dormitory place or contribution to accommodation costs, and supplementary medical insurance up to HUF 65,000 a year",
+          "The Hungarian Diaspora Scholarship for applicants from Hungarian diaspora communities",
+          "The Scholarship for Christian Young People programme founded by the Government of Hungary",
+          "The Students at Risk Programme for students who began their studies in Ukraine and want to earn a bachelor's, master's or doctoral degree in Hungary",
+          "Access to ERASMUS+ and EELISA funding once you are enrolled as a BME student"
+        ],
+        "eligibility": [
+          "You can study at BME with a scholarship or as a self-funded student by paying tuition fees",
+          "Scholarship eligibility is set by the relevant Hungarian state programmes rather than by the university",
+          "Applicants must have completed 18 years of age until the time of enrolment",
+          "Applicants must complete an electronic e-admission exam or placement test"
+        ],
+        "requirements": [
+          "Fill in the university's online application form at e-admission.bme.hu",
+          "Complete an electronic e-admission exam or placement test, with sample tests available",
+          "BSc applicants found to have inadequate skills in the basic subjects are directed to the one-year Preparatory Course before the BSc programmes"
+        ],
+        "documents": [
+          "Curriculum vitae",
+          "Copy of passport",
+          "High school certificate, or BSc certificate and transcripts for MSc applicants",
+          "English language proficiency proof",
+          "Two recommendation letters for MSc applicants",
+          "Receipt of the transfer of a EUR 150 application fee",
+          "Description of subjects and transcripts of current studies for BSc or MSc transfers"
+        ],
+        "selection_criteria": [
+          "The university's scholarships page routes applicants to Hungarian state scholarship schemes and Tempus Public Foundation for terms and criteria",
+          "BSc applicants are placed according to the e-admission exam in Mathematics, Physics or Chemistry and English"
+        ],
+        "coverage": [
+          "Tuition fees and living expenses are covered by the Hungarian state scholarships the university lists, not by any BME-branded award",
+          "The Stipendium Hungaricum programme is described as offering no tuition fee, a monthly stipend, a dormitory place or additional accommodation contribution, and supplementary medical insurance up to HUF 65,000 a year",
+          "ERASMUS+ and EELISA funding are available only once you are already enrolled at BME"
+        ],
+        "application_method": [
+          "Apply for a government scholarship, usually the Stipendium Hungaricum Scholarship, through the listed administrator Tempus Public Foundation at apply.stipendiumhungaricum.hu, using BME as your host university",
+          "Or study at BME as a self-funded, fee-paying student through the online application form at e-admission.bme.hu",
+          "For preparatory and general courses, upload the CV, passport copy, high school certificate, English proof and the EUR 150 application fee receipt",
+          "For MSc programmes, also upload the BSc certificate, transcripts and two recommendation letters",
+          "BME requires a recommendation letter from your faculty if you are already enrolled there and want to apply for the scholarship"
+        ],
+        "application_route": "For university admission, use the online application at e-admission.bme.hu; for scholarship funding, apply through the listed Hungarian state schemes such as Stipendium Hungaricum, managed by Tempus Public Foundation.",
+        "study_mode": "Full-time degree programmes; part-time programmes for fee-paying students are offered as semester abroad through the university's continuing education route",
+        "citizenship_residency": "Open to students from abroad; the university describes its degrees for fee-paying students and lists state scholarships for foreign students",
+        "international_eligibility": "Yes, via Hungarian state schemes such as Stipendium Hungaricum, Hungarian Diaspora, Scholarship for Christian Young People and Students at Risk",
+        "subject_or_agency_requirement": null,
+        "research_requirement": null,
+        "duration": null,
+        "description": "Budapest University of Technology and Economics publishes a scholarships page for incoming international students, but the page does not describe any scholarship administered by the university itself. Instead it directs applicants to Hungarian state scholarship programmes administered by the Tempus Public Foundation and related agencies: the Stipendium Hungaricum Scholarship, the Hungarian Diaspora Scholarship, the Scholarship for Christian Young People and the Students at Risk Programme. The university's separate scholarships page under International covers opportunities for BME students to study abroad. Its admission page sets out the self-funded route with its own application documents and fee.",
+        "region": "Europe - Budapest, Hungary",
+        "program_type": "No inbound BME scholarship programme; the university routes incoming international students to Hungarian state scholarships",
+        "english_requirement": "Applicants must submit proof of English language proficiency with the application; specific levels are set per programme and are not published on the scholarships page read."
+      },
+      "verification": {
+        "source_citations": [
+          "https://www.bme.hu/en/scolarships",
+          "https://www.bme.hu/en/scholarships",
+          "https://www.bme.hu/en/application_and_admission"
+        ],
+        "last_verified_date": "2026-10-10",
+        "verification_status": "confirmed",
+        "confidence": "medium",
+        "not_confirmed": [
+          "funding_amount, funding_currency and funding_period - no BME award with a published amount exists on the pages read",
+          "tuition_coverage, living_cost_coverage and travel_coverage - these are stated for the listed Hungarian state schemes, not for a BME award",
+          "deadline_central, application_cycle and duration - no institutional scholarship dates are published",
+          "whether an internal BME funding scheme exists but is undocumented online, which cannot be excluded from web pages alone",
+          "tuition fee amounts, which are published on the university's admission pages rather than on the scholarships pages"
+        ],
+        "notes": "URL swap check: the URL previously recorded for this record returned a page describing BME scholarship opportunities at over 350 partner universities, which is outbound mobility content rather than an inbound scholarship. BME's inbound scholarship page is at a different address, and it lists Hungarian state schemes with no BME-branded award amount."
+      },
+      "applicant_utility": {
+        "summary": "There is no BME scholarship to apply for. The university's own pages route incoming international students to Hungarian state schemes administered by the Tempus Public Foundation, chiefly Stipendium Hungaricum, which covers tuition plus a monthly stipend of HUF 43,700 at bachelor's, master's and one-tier master level. So the decision to make first is whether you can secure Stipendium Hungaricum, which requires a sending partner nomination from your country, because your fallback is the self-funded route through BME's online application portal. That portal carries real costs of its own: a EUR 150 application fee receipt must be uploaded with your documents, and every applicant also has to pass BME's electronic e-admission exam, with BSc applicants who fall short in Mathematics, Physics, Chemistry or English directed into a one-year preparatory course instead.",
+        "best_fit": "International applicants who already hold, or can realistically obtain, Stipendium Hungaricum status and want to study engineering or economics at a technical university in Budapest.",
+        "application_readiness_checklist": [
+          "Decide early between the Stipendium Hungaricum route and the self-funded fee-paying route, since the document sets differ",
+          "For the scholarship route, use apply.stipendiumhungaricum.hu and name BME as host university, then secure your sending partner's nomination",
+          "If you are already enrolled at BME and want the scholarship, request a recommendation letter from your faculty first",
+          "For direct admission, complete the online form at e-admission.bme.hu with the EUR 150 application fee transfer receipt attached",
+          "Prepare for the electronic e-admission exam, using the sample tests on the portal",
+          "For MSc entry, obtain two recommendation letters in addition to the BSc certificate and transcripts"
+        ],
+        "common_rejection_risks": [
+          "Submitting without the EUR 150 application fee transfer receipt, which is an explicit upload requirement",
+          "Assuming BME itself awards scholarships, when its pages only list state schemes",
+          "Being placed into the one-year preparatory course after a weak e-admission result in the basic subjects",
+          "Thinking transfer into a BME Stipendium Hungaricum place is open at any time, since the university has run it only in fixed windows"
+        ],
+        "estimated_uncovered_costs": "On the self-funded route, the full tuition fee for your programme at a Hungarian public technical university, plus rent and living costs in Budapest, and the EUR 150 application fee; the Stipendium Hungaricum route also leaves a shortfall because its provisions are described as a contribution only.",
+        "document_audit": [
+          "BSc, OTM and preparatory applicants need a CV, passport copy, high school certificate, English proof and the fee receipt; MSc applicants add a BSc certificate, transcripts and two recommendation letters",
+          "Keep the fee transfer receipt as a separate upload, not embedded in another document",
+          "MSc transfer applicants must also provide a description of subjects and transcripts of their current studies"
+        ],
+        "alerts": [
+          "BME's International > Scholarships page describes study-abroad opportunities at partner universities, not inbound funding, so check the address carefully",
+          "The university describes its state-scholarship partners as Tempus Public Foundation and Hungary Helps, so terms change with those programmes rather than with BME",
+          "ERASMUS+ and EELISA funding at BME are for students already enrolled there, not for incoming applicants"
+        ],
+        "submission_workflow": "Apply through the online portal with the required documents and the EUR 150 application fee receipt, sit the electronic e-admission exam, and in parallel pursue Stipendium Hungaricum if you need a scholarship, using BME as your host university."
+      }
+    }
+  ]
+}

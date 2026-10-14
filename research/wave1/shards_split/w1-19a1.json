@@ -1,0 +1,41 @@
+{
+  "shard": "w1-19a1",
+  "agent_id": "w1_19a1",
+  "today": "2026-10-04",
+  "parent_shard": "w1-19",
+  "record_count": 1,
+  "records": [
+    {
+      "target_id": 191,
+      "current_title": "Swedish Institute Scholarships for Global Professionals (SISGP)",
+      "official_source": "Swedish Institute",
+      "current_official_source_url": "https://si.se/en/apply/scholarships/swedish-institute-scholarships-for-global-professionals",
+      "current_application_link": "https://si.se/en/apply/scholarships/swedish-institute-scholarships-for-global-professionals/",
+      "official_host": "si.se",
+      "country": "Sweden",
+      "degree": "Master's",
+      "funding": "Fully Funded",
+      "region": "Europe",
+      "program_type": "The scholarship supports full-time, one- or two-year master’s studies at Swedish universities, across a wide range of English-taught programmes. Fields of study include:",
+      "status": "closed",
+      "deadline_date": null,
+      "deadline_display": "February (varies by year)",
+      "deadline_precision": "varies",
+      "verification_status": "needs_review",
+      "last_verified_date": "2026-09-02",
+      "current_image_url": "https://si.se/app/uploads/2017/10/dsc5034-2_fb-1.jpg",
+      "current_image_kind": "program_image",
+      "current_image_source_type": "official_provider",
+      "current_image_source_url": "https://si.se/en/apply/scholarships/swedish-institute-scholarships-for-global-professionals",
+      "current_image_alt_text": "Swedish Institute Scholarships for Global Professionals (SISGP) - official Swedish Institute image",
+      "current_funding_amount": null,
+      "current_funding_currency": null,
+      "research_focus": [
+        "STORED_IMAGE_IS_A_PHOTO_OR_BANNER_NOT_THE_OFFICIAL_LOGO",
+        "VERIFICATION_STATUS_IS_NEEDS_REVIEW",
+        "NO_EXACT_DEADLINE_DATE",
+        "NO_FUNDING_AMOUNT"
+      ]
+    }
+  ]
+}

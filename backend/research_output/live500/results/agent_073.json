@@ -1,0 +1,135 @@
+{
+  "agent": "agent_073",
+  "records": [
+    {
+      "id": 199,
+      "official": {
+        "official_source_urls": [
+          "https://www.deakin.edu.au/study/fees-and-scholarships/scholarships/find-a-scholarship/international-vice-chancellors-scholarship-100-south-asia",
+          "https://www.deakin.edu.au/international-students/international-student-scholarships",
+          "https://www.deakin.edu.au/international-students/help-or-contact/support-in-your-country-or-region/south-asia",
+          "https://www.deakin.edu.au/international-students/how-to-apply"
+        ],
+        "application_link": "https://www.deakin.edu.au/study/fees-and-scholarships/scholarships/find-a-scholarship/international-vice-chancellors-scholarship-100-south-asia",
+        "catalogue_url": null,
+        "official_updates_url": null,
+        "deadline_central": null,
+        "deadline_central_display": null,
+        "deadline_note": "No closing date is published on the official scholarship page; the only date wording on the page is 'Available from Trimester 1, 2025'. The catalogue's previous 'rolling' deadline note could not be verified against the official page.",
+        "application_cycle": "Available from Trimester 1, 2025 (wording published on the official page)",
+        "status": null,
+        "status_note": "The dedicated official page for this scholarship returned HTTP 404 on every fetch attempt, and Deakin's live 'Scholarships for international students' hub no longer lists this South Asia variant (it now features the general Deakin Vice-Chancellors International Scholarship). The details in this record come from the official deakin.edu.au page as published on the awarding body's own domain via its search index. Current availability should be confirmed with the Deakin South Asia office (sa-info@deakin.edu.au).",
+        "tuition_coverage_note": "100% of your total tuition fees (as stated on your offer letter).",
+        "funding_amount": null,
+        "funding_currency": null,
+        "funding_period": null,
+        "tuition_coverage": true,
+        "living_cost_coverage": false,
+        "travel_coverage": false,
+        "fully_funded": false,
+        "benefits": [
+          "100% of your total tuition fees (as stated on your offer letter)",
+          "Participation in the Vice-Chancellor's Professional Excellence Program (VCPEP), a requirement of the scholarship",
+          "Priority access to on-campus accommodation (at your own cost and subject to availability)"
+        ],
+        "eligibility": [
+          "Be a citizen of Bangladesh, Bhutan, Mauritius, Myanmar or Nepal",
+          "Be residing in one of these countries at the time of application",
+          "Apply through a Deakin authorised agent based in the same region",
+          "Meet one of the academic criteria: 85% overall in Year 12 (CBSE, ICSE or State Board), or a score of 10 overall in GCSE / A Level, or 32 overall in the IBDP, or 80% overall in an undergraduate degree",
+          "Not available to international students enrolled in the Doctor of Medicine (H911) program",
+          "All eligibility criteria must be met; the scholarship is conditional on accepting the terms and conditions outlined in your offer acceptance form"
+        ],
+        "requirements": [
+          "Apply through a Deakin authorised agent based in the same region",
+          "Meet the minimum English language requirements for your course, published in the Entry requirements section of each course page",
+          "Submit a 300-word personal statement",
+          "Provide contact details of two referees who can comment on your community engagement and/or leadership capacity",
+          "Submit a completed application to study at Deakin, including academic transcripts"
+        ],
+        "documents": [
+          "300-word personal statement written in your own words, outlining why you want to study at Deakin, extracurricular or work experience (paid or voluntary), and what makes you a strong ambassador for the university",
+          "Contact details of two referees who can comment on your community engagement and/or leadership capacity",
+          "Completed application to study at Deakin, including academic transcripts"
+        ],
+        "selection_criteria": [
+          "Consistently high academic performance meeting one of the published academic criteria",
+          "Potential to make a meaningful contribution to Deakin and the communities we serve",
+          "Shortlisted applicants are contacted by the admissions team and may be invited to attend an interview"
+        ],
+        "coverage": [
+          "100% of your total tuition fees (as stated on your offer letter)"
+        ],
+        "application_method": [
+          "Submit a completed application to study at Deakin, including academic transcripts, through a Deakin authorised agent based in the same region",
+          "Submit a 300-word personal statement with the application",
+          "Provide contact details of two referees who can comment on your community engagement and/or leadership capacity"
+        ],
+        "application_route": "Apply to study at Deakin through a Deakin authorised agent based in your region and submit the 300-word personal statement and two referee contacts with your course application.",
+        "study_mode": null,
+        "citizenship_residency": "Must be a citizen of Bangladesh, Bhutan, Mauritius, Myanmar or Nepal and be residing in one of these countries at the time of application.",
+        "international_eligibility": "Yes - this is an international student scholarship open to citizens of Bangladesh, Bhutan, Mauritius, Myanmar or Nepal residing in one of those countries at the time of application.",
+        "subject_or_agency_requirement": "Not available to international students enrolled in the Doctor of Medicine (H911) program. Applicants must apply through a Deakin authorised agent based in the same region.",
+        "research_requirement": null,
+        "duration": null,
+        "description": "Deakin describes this scholarship as recognising students from South Asia with consistently high academic performance and the potential to make a meaningful contribution to Deakin and the communities we serve. It covers 100% of total tuition fees (as stated on the offer letter) and requires participation in the Vice-Chancellor's Professional Excellence Program (VCPEP). The official page states it was available from Trimester 1, 2025.",
+        "region": "South Asia (Bangladesh, Bhutan, Mauritius, Myanmar, Nepal); study at Deakin University, Australia",
+        "program_type": null,
+        "english_requirement": "No numeric score published; to be eligible for a Deakin scholarship you must meet the minimum language requirements for your course, which are published in the Entry requirements section of each course page."
+      },
+      "verification": {
+        "source_citations": [
+          "https://www.deakin.edu.au/study/fees-and-scholarships/scholarships/find-a-scholarship/international-vice-chancellors-scholarship-100-south-asia",
+          "https://www.deakin.edu.au/international-students/international-student-scholarships",
+          "https://www.deakin.edu.au/international-students/help-or-contact/support-in-your-country-or-region/south-asia",
+          "https://www.deakin.edu.au/international-students/how-to-apply"
+        ],
+        "last_verified_date": "2026-10-10",
+        "verification_status": "partial",
+        "confidence": "low",
+        "not_confirmed": [
+          "funding_amount, funding_currency and funding_period - no monetary figure is published; the value is expressed as 100% of tuition, which varies by course",
+          "deadline_central and any closing date - no closing date is published on the official page",
+          "duration of the award - no duration statement on the captured official page",
+          "study_mode and program_type - not stated on the official page",
+          "current open/closed status - the official page returned HTTP 404 on every attempt and the scheme is not listed on Deakin's live international scholarships hub",
+          "living-cost or travel allowance amounts - none published; on-campus accommodation priority is at the student's own cost"
+        ],
+        "notes": "The dedicated Deakin page for this scholarship (including archive-path and trailing-slash variants) returned HTTP 404 on all five fetch attempts, so value, eligibility, conditions, how-to-apply and English-language wording were taken from that same official deakin.edu.au page as published on the awarding body's own domain through its search index, per the unreachable-page rule. Cross-checked against Deakin's live international scholarships hub and South Asia office pages, which no longer list this regional variant; the catalogue's previous 'rolling' deadline note could not be verified."
+      },
+      "applicant_utility": {
+        "summary": "This is a 100% tuition scholarship for citizens of Bangladesh, Bhutan, Mauritius, Myanmar and Nepal who apply to a Deakin coursework degree through an authorised Deakin agent in their own region, with strong academic results (85% in Year 12, a GCSE/A Level score of 10, IBDP 32, or 80% in an undergraduate degree). The award pays all course tuition and includes compulsory participation in the Vice-Chancellor's Professional Excellence Program, but flights, visa, insurance, accommodation and daily living costs remain entirely on you. One caution before you plan around it: the official scholarship page is currently offline and Deakin's live scholarships hub no longer features this South Asia variant, so confirm with the Deakin South Asia office (sa-info@deakin.edu.au) that it still runs for your intake.",
+        "best_fit": "High-achieving school leavers and strong undergraduate performers from Bangladesh, Bhutan, Mauritius, Myanmar or Nepal who can apply through an in-region Deakin agent and want 100% tuition covered in Australia.",
+        "application_readiness_checklist": [
+          "Confirm with the Deakin South Asia office (sa-info@deakin.edu.au) that the South Asia 100% scholarship is still offered for your intended intake",
+          "Engage a Deakin authorised agent in your country early - applying directly to Deakin does not meet the published route",
+          "Prepare certified academic transcripts and award certificates, passport and English proficiency evidence for the course application",
+          "Draft the 300-word personal statement in your own voice, covering your motivation, extracurricular or paid/voluntary experience, and ambassador qualities",
+          "Brief two referees so they can speak specifically to community engagement and/or leadership, and confirm their contact details"
+        ],
+        "common_rejection_risks": [
+          "Applying directly to Deakin instead of through a Deakin authorised agent based in the same region, which fails the published eligibility route",
+          "Not residing in one of the five eligible countries at the time of application, or holding citizenship outside the list",
+          "Academic results below the published thresholds; meeting the minimum is not a guarantee and competition for a small number of awards is strong",
+          "A generic or ghost-written personal statement that does not reflect your own voice",
+          "Applying to the Doctor of Medicine (H911), which is explicitly excluded",
+          "Failing to accept the terms and conditions in the offer acceptance form, on which the scholarship is conditional"
+        ],
+        "estimated_uncovered_costs": "Everything except tuition: return airfares, student visa and overseas health cover, on-campus or rented accommodation (priority access is at your own cost), food, transport and day-to-day living costs in Australia.",
+        "document_audit": [
+          "The 300-word personal statement must be in your own words and specifically address why Deakin, your extracurricular or work experience, and your ambassador potential - recycled statements are easy to spot",
+          "Referees must be able to comment on community engagement and/or leadership, so give them the scholarship context before they write",
+          "Academic transcripts must accompany the course application; Deakin's international guidance requires certified copies, and non-English documents need certified translation",
+          "Be prepared for a possible interview if you are shortlisted"
+        ],
+        "alerts": [
+          "The official page for this scholarship is currently returning 404 and the scheme is absent from Deakin's live international scholarships hub - verify current availability with the Deakin South Asia office (sa-info@deakin.edu.au, +91 79 9694 9497) before committing",
+          "The captured official page only stated 'Available from Trimester 1, 2025', so the 2026-2027 route may now be the general Deakin Vice-Chancellors International Scholarship (100% or 50% tuition) or the India-specific Meritorious 100% scholarship - check which scheme covers your country",
+          "Accommodation 'priority access' is a queue position, not a fee waiver - you still pay for accommodation yourself",
+          "Participation in the VCPEP is compulsory, so factor that ongoing time commitment into your study plan"
+        ],
+        "submission_workflow": "Lodge your Deakin course application with transcripts through an authorised in-region agent, attach the 300-word statement and two referee contacts, and wait for the admissions team to shortlist; shortlisted applicants may be invited to an interview."
+      }
+    }
+  ]
+}

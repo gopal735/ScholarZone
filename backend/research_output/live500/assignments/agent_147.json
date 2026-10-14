@@ -1,0 +1,92 @@
+{
+ "agent": "agent_147",
+ "assignment_count": 1,
+ "scholarships": [
+  {
+   "id": 390,
+   "title": "KB Fellowship at NIAS",
+   "country": "Netherlands",
+   "degree": "PhD and above",
+   "funding_label": "Stipend",
+   "status": "open",
+   "official_source": "Netherlands Institute for Advanced Study (NIAS)",
+   "official_source_url": "https://nias.knaw.nl/fellowships/kb-fellowship",
+   "application_link": "https://nias.knaw.nl/fellowships/kb-fellowship",
+   "catalogue_url": "https://www.kb.nl/en/news/kb-has-new-research-agenda",
+   "official_updates_url": "https://nias.knaw.nl/our-fellowships",
+   "existing": {
+    "funding_amount": null,
+    "funding_currency": null,
+    "funding_period": null,
+    "tuition_coverage": 0,
+    "living_cost_coverage": 1,
+    "travel_coverage": 0,
+    "fully_funded": 0,
+    "description": "The Netherlands Institute for Advanced Study offers temporary fellowships at an intellectual haven to a diverse year group of international scientists, writers, journalists and artists.",
+    "eligibility": [
+     "Be a scholar with at least three years of research experience after obtaining your PhD, measured on the closing date of the call; institutional affiliation is not required",
+     "Be a creative practitioner with at least three years of independent practice since graduating, or equivalent experience; affiliation is not required",
+     "Be proposing a project that relates to the KB research agenda or extends its scope",
+     "Be able to be at NIAS four days a week for the whole semester",
+     "Have an excellent command of spoken and written English, as the working language at NIAS is English"
+    ],
+    "eligibility_summary": "Scholars, with or without an institutional affiliation, who have at least three years of research experience after obtaining their PhD on the closing date of the call, and creative practitioners, with or without an affiliation, who have at least three years of independent practice since graduating or equivalent experience.",
+    "benefits": [
+     "Five months of funded research time at NIAS in Amsterdam",
+     "Personal stipend, or a Dutch University Grant paid to the home institution",
+     "Office and research facilities at NIAS",
+     "Subsidised accommodation in Amsterdam where eligible, or reimbursement of local public transport",
+     "Membership of an international community of scholars, writers and artists",
+     "Full use of the KB's collections, facilities, services and expertise",
+     "Participation in the academic, community and outreach programme"
+    ],
+    "coverage": [
+     "Personal stipend paid directly to the fellow",
+     "Dutch University Grant paid to the home institution for scholars affiliated with a Dutch university or research institute",
+     "Office and research facilities at NIAS",
+     "Subsidised accommodation in Amsterdam where eligible, or reimbursement of local public transport"
+    ],
+    "requirements": [
+     "Submit the application through the online application form",
+     "Provide a project proposal of no more than 1,500 words excluding the bibliography",
+     "Provide an academic or artistic CV of no more than four pages",
+     "Provide a statement of no more than 300 words",
+     "Be available at NIAS four days a week from the start to the end of the semester",
+     "Be willing to publish resulting publications under the Creative Commons CC BY 4.0 licence"
+    ],
+    "documents": [
+     "Completed online application form",
+     "Project proposal of no more than 1,500 words, excluding the bibliography",
+     "Academic or artistic CV of no more than four pages, including international collaborations and a list of key publications",
+     "Statement of no more than 300 words explaining how the project relates to the applicant's work so far and why the fellowship comes at the right time"
+    ],
+    "english_requirement": "The working language at NIAS is English. Applicants should speak and write it well enough to take a full part in the life of the institute and to benefit from the responses of their peers. A test or interview may form part of the selection procedure.",
+    "application_method": [
+     "Wait for the call to open on 15 January 2027",
+     "Complete the online application form",
+     "Upload the project proposal, the CV and the statement",
+     "Submit before 15 March 2027 at 12.00 noon CET"
+    ],
+    "selection_notes": "NIAS first checks all applications for eligibility. A ranking committee appointed by the KB then ranks eligible candidates, giving preference to proposals that bring new questions or unexpected dimensions to the KB research agenda. The KB returns its ranking to NIAS, where the Fellowship Advisory Committee assesses it with a view to a cohort balanced in discipline, location, career stage and gender, and advises the NIAS Director, who makes the final decision.",
+    "best_fit": "An established researcher or creative practitioner, at least three years past the PhD or graduation, working on the future of the library as a public institution and pillar of liberal democracy, who can spend four days a week in Amsterdam for five months.",
+    "notes": "NIAS and the KB, the National Library of the Netherlands, established the current fellowship in 2025, continuing an earlier KB Fellowship that ran from 2004 to 2018. It is open to researchers in all scholarly and artistic disciplines whose project relates to the KB research agenda or extends its scope, and proposals with an international or comparative perspective are especially welcome. The funding route depends on affiliation: a personal stipend for the fellow, or a Dutch University Grant paid to the institution for scholars affiliated with a Dutch university or research institute. NIAS does not provide studios, materials or tools for artistic work, although artists may propose artistic production as a research strategy or research ahead of production. Any resulting publications must be published under CC BY 4.0.",
+    "duration": "Five months, from September to January",
+    "application_period": "Annual; the 2027-2028 call opens 15 January 2027 and closes 15 March 2027 at 12.00 noon CET, for a September-to-January fellowship",
+    "deadline_display": "The call for the academic year 2027-2028 opens on 15 January 2027 and closes on 15 March 2027, 12.00 noon CET.",
+    "deadline_date": "2027-03-15",
+    "region": "Europe",
+    "program_type": "Residual research fellowship at a national advanced-study institute, funded jointly by NIAS and the National Library of the Netherlands",
+    "applicant_utility": null,
+    "official_details": null
+   },
+   "missing_fields": [
+    "funding_amount",
+    "funding_currency",
+    "funding_period",
+    "applicant_utility",
+    "official_details"
+   ]
+  }
+ ],
+ "result_file": "C:\\Users\\GopaL\\Desktop\\Projects folder\\ScholarZone\\backend\\research_output\\live500\\results\\agent_147.json"
+}

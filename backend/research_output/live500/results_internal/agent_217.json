@@ -1,0 +1,132 @@
+{
+  "agent": "agent_217",
+  "records": [
+    {
+      "id": 550,
+      "official": {
+        "official_source_urls": [
+          "https://www.institut-pascal.universite-paris-saclay.fr/en/proposal-submissions",
+          "https://www.institut-pascal.universite-paris-saclay.fr/sites/default/files/2026-09/2026_call_IPa_final.pdf",
+          "https://www.universite-paris-saclay.fr/en/news/institut-pascal-call-proposals-scientific-programmes-2026"
+        ],
+        "application_link": "https://www.institut-pascal.universite-paris-saclay.fr/en/proposal-submission-form",
+        "catalogue_url": "https://www.universite-paris-saclay.fr/en/news/institut-pascal-call-proposals-scientific-programmes-2026",
+        "official_updates_url": "https://www.institut-pascal.universite-paris-saclay.fr/en/news",
+        "deadline_central": "2026-11-20",
+        "deadline_central_display": "20 November 2026",
+        "deadline_note": "Optional early feedback route: first draft recommended to institut-pascal@universite-paris-saclay.fr by 28 October 2026. Interview and selection by the Scientific Council takes place end of February / beginning of March 2027.",
+        "application_cycle": "Call for Proposals 2026 - Scientific programmes 2028/2029",
+        "status": "OPEN",
+        "status_note": "The Institut Pascal proposal submissions page states 'Next deadline: 20th November 2026' and links the framework of the 2026 Call and the online submission form.",
+        "tuition_coverage_note": null,
+        "funding_amount": 4000,
+        "funding_currency": "EUR",
+        "funding_period": "per programme (travel expenses cap)",
+        "tuition_coverage": false,
+        "living_cost_coverage": true,
+        "travel_coverage": true,
+        "fully_funded": false,
+        "benefits": [
+          "Financing accommodation, on-site catering, and part of travel costs",
+          "Rooms and space for meetings in a facility with 2 amphitheaters, meeting rooms equipped for videoconferencing or distant collaborative work, and 26 offices to host up to 60 visitors",
+          "Support from the IPa team for budget and registration management, booking of accommodation, organization of meetings and social events, and management of mission fees",
+          "Standard support also covers coffee breaks, weekday lunches including one buffet per week, one social dinner per week and one happy hour per week"
+        ],
+        "eligibility": [
+          "Programmes mainly related to the scientific fields covered by Universite Paris-Saclay, from Mathematics to Life Sciences, be they theoretical or experimental",
+          "Long-duration thematic programmes, typically 2-3 weeks and up to 6 weeks, favouring brainstorming sessions that lead to innovative advancements",
+          "The local organizing committee should include at least one scientist from Universite Paris-Saclay",
+          "Participants must number between a minimum of 15 and a maximum of 60; programmes with fewer than 30 or above 40 participants are favoured"
+        ],
+        "requirements": [
+          "Proposal submitted as a single PDF file online",
+          "Application composed of the programme proposal (5 pages max) plus the duly filled summary sheet (Annex 1)",
+          "Proposal must state desired start and end dates within 2028 or 2029",
+          "Gender balance in the design of the programme is one of the selection criteria",
+          "Organizers are strongly recommended to submit a first draft to institut-pascal@universite-paris-saclay.fr by 28 October 2026"
+        ],
+        "documents": [
+          "Programme proposal, maximum 5 pages, single PDF",
+          "Annex 1 summary sheet (title, acronym, scientific domain, organizers, duration, preferred year and period, participants per week, accommodation estimate, co-funding)"
+        ],
+        "selection_criteria": [
+          "Scientific importance of the topic, timeliness, intellectual challenges",
+          "Recognized leadership of the programme organizers and participants",
+          "Overlap with the research activities carried out in Paris-Saclay",
+          "Gender balance in the design of the programme",
+          "Expected deliverables at the end of the programme"
+        ],
+        "coverage": [
+          "Accommodation costs for programme participants",
+          "On-site catering: coffee breaks, weekday lunches including one buffet per week, one social dinner per week, one happy hour per week",
+          "Up to 4000 EUR in travel expenses if needed, favouring participants staying for at least 2 weeks",
+          "Meeting rooms, 2 amphitheatres, videoconference-equipped rooms and 26 offices for up to 60 visitors"
+        ],
+        "application_method": [
+          "Download the framework of the 2026 Call (2026_call_IPa_final.pdf)",
+          "Optionally send a first draft to institut-pascal@universite-paris-saclay.fr by 28 October 2026 for early board feedback",
+          "Prepare the proposal (5 pages max) together with the Annex 1 summary sheet",
+          "Submit the proposal as a single PDF through the online proposal submission form before 20 November 2026",
+          "Take part in the Scientific Council interview and selection at the end of February / beginning of March 2027"
+        ],
+        "application_route": "Programme organizers submit a single-PDF proposal through the Institut Pascal online form; individual students and researchers do not apply directly and are hosted as participants of a selected programme.",
+        "study_mode": "On-site programme at the Institut Pascal facility, Orsay (hybrid use of videoconferencing equipment possible)",
+        "citizenship_residency": null,
+        "international_eligibility": "Programmes supporting scientists and students from all over the world are welcomed; the institute can host up to 60 international and national visitors.",
+        "subject_or_agency_requirement": "Programmes must be mainly in scientific fields covered by Universite Paris-Saclay, from Mathematics to Life Sciences.",
+        "research_requirement": "Proposal must present a thematic scientific programme with a briefing on the field for non-experts, key questions to be addressed, envisaged key speakers, a week-by-week schedule, and suggestions for referees.",
+        "duration": "Typically 2-3 weeks, up to 6 weeks; minimum 2-week on-site stay expected for participants",
+        "description": "Institut Pascal promotes thematic programmes that bring scientific communities together to explore pioneering ideas and establish new collaborations, in the scientific fields covered by Universite Paris-Saclay from Mathematics to Life Sciences. The institute finances accommodation, on-site catering and part of travel costs for selected programmes held at its Orsay facility.",
+        "region": "Europe",
+        "program_type": "University research programme funding call",
+        "english_requirement": null
+      },
+      "verification": {
+        "source_citations": [
+          "https://www.institut-pascal.universite-paris-saclay.fr/en/proposal-submissions",
+          "https://www.institut-pascal.universite-paris-saclay.fr/sites/default/files/2026-09/2026_call_IPa_final.pdf",
+          "https://www.universite-paris-saclay.fr/en/news/institut-pascal-call-proposals-scientific-programmes-2026"
+        ],
+        "last_verified_date": "2026-10-10",
+        "verification_status": "confirmed",
+        "confidence": "high",
+        "not_confirmed": [
+          "funding_period for the overall package (no per-person or per-programme total envelope is published)",
+          "english_requirement",
+          "citizenship_residency"
+        ],
+        "notes": "Call page and the full framework of the 2026 Call PDF (4 pages, dated 15 September 2026) were both read on the awarding body's own domain; the travel-expense cap of up to 4000 EUR is the only monetary figure the call publishes, so no other amount is recorded. Selection criteria and application content are taken from the framework document."
+      },
+      "applicant_utility": {
+        "summary": "This is a call for programme organizers, not a personal scholarship: you assemble a scientific team, write a 5-page proposal plus the Annex 1 summary sheet, and Institut Pascal pays for your participants' accommodation, catering and up to EUR 4,000 of travel. Aim for a two-to-three week programme of 30-40 people, since the call explicitly favours groups under 30 or above 40 and requires a minimum 15 and maximum 60 participants. Send a draft to institut-pascal@universite-paris-saclay.fr before 28 October 2026 if you want board feedback that materially improves your odds before the 20 November 2026 deadline.",
+        "best_fit": "Mid-career and senior researchers who can convene an international community in a Paris-Saclay field and need a venue plus a modest travel budget rather than a salary.",
+        "application_readiness_checklist": [
+          "Confirm your local organizing committee includes at least one Paris-Saclay scientist before you write anything",
+          "Fix your dates inside 2028 or 2029 and check they do not clash with major conferences in your field",
+          "Draft the week-by-week schedule showing genuine brainstorming slots rather than a lecture series",
+          "List additional funding requested or obtained, because co-financing is not mandatory but scarce budgets reward it",
+          "Name two or three referees the Scientific Council can ask about your leadership of the topic",
+          "Prepare the Annex 1 summary sheet with participant-per-week and accommodation estimates that are internally consistent"
+        ],
+        "common_rejection_risks": [
+          "A proposal that reads like a conventional conference with back-to-back talks instead of small-group interaction time",
+          "A topic with weak or no overlap with what is actually researched at Paris-Saclay labs",
+          "An all-male organizing committee or speaker list, since gender balance is a named selection criterion",
+          "Ignoring the two-week minimum on-site expectation without flagging the exception and rationale in the proposal"
+        ],
+        "estimated_uncovered_costs": "Anything beyond accommodation, catering and the travel cap: flights above EUR 4,000, co-funding for extra participants, personal per-diem and publication or dissemination costs.",
+        "document_audit": [
+          "The proposal and the summary sheet must arrive as ONE PDF, so convert and merge before uploading rather than assuming separate uploads work",
+          "Page limit is strict: a 5-page maximum means references and figures compete with the actual programme design",
+          "If your discipline cannot keep participants on site for two weeks, you must say so in the proposal and explain why"
+        ],
+        "alerts": [
+          "The 28 October 2026 draft-review window closes roughly three weeks before the real deadline and is the cheapest way to improve your chances",
+          "This round funds programmes for 2028 and 2029, so do not budget a grant that has to run next semester",
+          "Individual students cannot apply to Institut Pascal: if you are looking for personal funding, look instead at the host programme's own schemes"
+        ],
+        "submission_workflow": "Single online PDF submission, then a Scientific Council interview at the end of February / beginning of March 2027, after which the board and organizers implement the programme together."
+      }
+    }
+  ]
+}

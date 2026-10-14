@@ -1,0 +1,91 @@
+[
+  {
+    "scholarship_id": 472,
+    "outcome": "verified_supervisors",
+    "professors": [
+      {
+        "canonical_name": "Kanika Mak-Lavy",
+        "title": "Associate Dean of Education",
+        "institution_name": "East-West Center",
+        "department_name": "Education Program",
+        "official_profile_url": "https://www.eastwestcenter.org/about/staff/kanika.mak-lavy",
+        "official_email": "MakLavyK@EastWestCenter.org",
+        "official_email_verified": true,
+        "lab_url": null,
+        "personal_academic_url": null,
+        "research_areas": ["International relations", "Human rights", "Southeast Asian studies"],
+        "research_keywords": ["Cambodia", "Khmer Rouge", "gender and development", "international education"],
+        "relationship_type": "program_faculty",
+        "evidence_source_url": "https://www.eastwestcenter.org/about/staff/kanika.mak-lavy",
+        "evidence_source_type": "official_institution_domain",
+        "evidence_quote_or_summary": "As the Associate Dean of Education, Kanika Mak-Lavy is part of the senior staff team leading the East-West Center's graduate student scholarships and residential learning community. ... she manages the Registrar's Office, which is responsible for student applications and awards, visa services, and participant records. Page also lists contact MakLavyK@EastWestCenter.org, 808.944.7750.",
+        "confidence": 90,
+        "availability": {
+          "scope": "funding",
+          "state": "verified_yes",
+          "source_url": "https://www.eastwestcenter.org/about/staff/kanika.mak-lavy"
+        }
+      },
+      {
+        "canonical_name": "Ann Hartman",
+        "title": "Director and Dean of Professional Development and Education",
+        "institution_name": "East-West Center",
+        "department_name": "Education Program",
+        "official_profile_url": "https://www.eastwestcenter.org/about/staff/ann.hartman",
+        "official_email": null,
+        "official_email_verified": false,
+        "lab_url": null,
+        "personal_academic_url": null,
+        "research_areas": ["Higher education leadership", "International educational exchange"],
+        "research_keywords": ["Asia-Pacific leadership", "graduate scholarships", "residential learning community"],
+        "relationship_type": "program_faculty",
+        "evidence_source_url": "https://www.eastwestcenter.org/about/staff/ann.hartman",
+        "evidence_source_type": "official_institution_domain",
+        "evidence_quote_or_summary": "As Director and Dean, Ann Hartman provides overall leadership for the Center's Professional Development and Education Programs... This encompasses short-term leadership, dialogue, and journalism programs, as well as the Center's graduate student scholarships and residential learning community. From 2017-2023, she served as Dean of the Education Program, which provides scholarship funding... for American and international students pursuing graduate degrees at the University of Hawai'i. No email address is published on the page (contact form only).",
+        "confidence": 85,
+        "availability": {
+          "scope": "funding",
+          "state": "verified_yes",
+          "source_url": "https://www.eastwestcenter.org/about/staff/ann.hartman"
+        }
+      }
+    ],
+    "notes": "The EWC Graduate Degree Fellowship funds study at the University of Hawai'i at Manoa across all UHM graduate departments; the official fellowship pages do not name thesis supervisors (supervision occurs within the admitted UHM department). The verified entries above are the East-West Center Education Program leadership officially tied to the scholarship programme (general contact: scholarships@eastwestcenter.org). eastwestcenter.org blocks direct fetching (HTTP 403); page content was verified via search-engine crawl of the official staff pages."
+  },
+  {
+    "scholarship_id": 473,
+    "outcome": "not_applicable",
+    "professors": [],
+    "notes": "AAUW International Fellowships is a portable national fellowship: recipients must be admitted or enrolled at any accredited U.S. institution and the award is paid directly to the fellow. No institution or supervising professor is attached to the programme, verified on the official AAUW page (https://www.aauw.org/resources/programs/fellowships-grants/aauw-international-fellowships)."
+  },
+  {
+    "scholarship_id": 475,
+    "outcome": "not_applicable",
+    "professors": [],
+    "notes": "JJ/WBGSP is a central World Bank/Government of Japan scheme. Official page states it offers scholarships for 44 Participating Master's Programs across 24 universities; supervision is provided by the host programme to which the applicant is admitted and no supervising professors are named by the scholarship. Not applicable per rules for central development-bank schemes."
+  },
+  {
+    "scholarship_id": 476,
+    "outcome": "not_applicable",
+    "professors": [],
+    "notes": "Benjamin A. Gilman International Scholarship is a U.S. Department of State programme administered by IIE, funding study/internships abroad at 1,386+ U.S. institutions. Portable scheme with no attached institution or supervising professors (official site: https://www.gilmanscholarship.org)."
+  },
+  {
+    "scholarship_id": 477,
+    "outcome": "not_applicable",
+    "professors": [],
+    "notes": "Boren Awards are an initiative of the Defense Language and National Security Education Office (NSEP), administered by IIE, funding overseas language study/research at programmes chosen by the applicant. Government scheme with no attached institution or named supervising professors (official site: https://www.borenawards.org/apply-now)."
+  },
+  {
+    "scholarship_id": 478,
+    "outcome": "not_applicable",
+    "professors": [],
+    "notes": "Phi Kappa Phi Fellowship is an honor-society award portable across any graduate/professional school; recipients are endorsed by local chapters. No institution or supervising professor is attached to the award (official page: https://www.phikappaphi.org/grants-awards/fellowship)."
+  },
+  {
+    "scholarship_id": 479,
+    "outcome": "not_applicable",
+    "professors": [],
+    "notes": "NSF GRFP is a government fellowship; fellows bring the award to an accredited nonprofit U.S. institution of their choice (500+ institutions supported historically). No supervising professors are named on the official NSF page (https://www.nsf.gov/funding/initiatives/grfp). Not applicable per rules for national government schemes."
+  }
+]

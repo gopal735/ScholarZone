@@ -72,6 +72,8 @@ from .supervisor_jsdetect import classify_shell, looks_like_directory_listing
 from .supervisor_render import render_blocking
 from .supervisor_source import RenderBudget, RenderErrorKind, SourceOutcome
 from .supervisor_person import (
+    _find_role,
+    _is_person_shaped,
     academic_role_in,
     approve_personhood,
     classify_person_candidate,
@@ -372,14 +374,24 @@ def page_requires_authentication(html: str) -> bool:
 
 
 def _looks_like_a_person_name(text: str) -> bool:
-    """Kept so existing callers and fixtures keep working.
+    """The person-name screen the extractor applies to a candidate string.
 
-    Narrower than the classifier: it answers "does this text state an academic role
-    at all", so it is ``False`` for a bare "Grace Hopper" that the classifier would
-    still accept inside a real faculty directory. Any decision that matters uses
-    :func:`classify_person_candidate`.
+    Two questions, in order. Is the string shaped like a name at all (two
+    to four capitalised tokens, particles allowed, digits and acronyms
+    not), and — if it also states an academic role — does a person survive
+    once the role is taken away? "Academic Staff" fails the second: every
+    word in it is a role phrase, and a category is not a person however
+    many capitalised words it is spelled with.
+
+    The previous body delegated to ``looks_like_a_person_name``, which
+    answers a different and much narrower question - "does this state
+    any role at all" - and therefore accepted every collective noun a
+    university directory prints as a heading.
     """
-    return looks_like_a_person_name(text)
+    role = _find_role(text)
+    if role and role_words_are_the_whole_name(text, role):
+        return False
+    return _is_person_shaped(text)
 
 
 
@@ -405,11 +417,6 @@ def page_is_javascript_shell(html: str, text: str) -> bool:
         return False
     ratio = len(text or "") / max(1, len(html))
     return ratio < JS_SHELL_TEXT_RATIO
-
-
-def _looks_like_a_person_name(text: str) -> bool:
-    """Backwards-compatible alias used by the extractor and its tests."""
-    return looks_like_a_person_name(text)
 
 
 def _clean_text(value: str | None) -> str | None:

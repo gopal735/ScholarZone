@@ -1,0 +1,106 @@
+{
+ "agent": "agent_172",
+ "assignment_count": 1,
+ "scholarships": [
+  {
+   "id": 455,
+   "title": "Malmö University Master's Scholarship",
+   "country": "Sweden",
+   "degree": "Master",
+   "funding_label": "Partial to full tuition waiver",
+   "status": "open",
+   "official_source": "Mau.Se",
+   "official_source_url": "https://www.mau.se/en/education/scholarships",
+   "application_link": "https://www.mau.se/en/education/scholarships",
+   "catalogue_url": "https://mau.se/en/education/scholarships/",
+   "official_updates_url": "https://mau.se/en/Contact/news-and-press/",
+   "existing": {
+    "funding_amount": null,
+    "funding_currency": null,
+    "funding_period": null,
+    "tuition_coverage": null,
+    "living_cost_coverage": null,
+    "travel_coverage": null,
+    "fully_funded": 0,
+    "description": "Students who have applied for an English-taught master's programme and meet all of the following conditions are eligible to apply for the Malmö University Master's Scholarship:",
+    "eligibility": [
+     "1. Find your programme and check admission requirements",
+     "Syllabus",
+     "Students who have applied for an English-taught master's programme and meet all of the following conditions are eligible to apply for the Malmö University Master's Scholarship:",
+     "Chose an English-taught master's programme at Malmö University as their first choice on University Admissions (ranked as number 1 of 4)",
+     "You can find out if they are eligible and find specific entry requirements are listed on the respective programme’s page in the online course catalogue.",
+     "Most master’s programmes require a bachelor’s degree in a relevant field; please check the programme page for more information.",
+     "Work experience",
+     "Other life experiences",
+     "Students with citizenship in the following countries can apply in the Second admissions round for the autumn semester.",
+     "All degree programmes and courses can be found on our website."
+    ],
+    "eligibility_summary": "Students from outside EU/EEA and Switzerland who have applied for an English-taught master's programme at Malmö University as first choice, been admitted, and are required to pay tuition fees. Must have applied in the first admissions round and paid the application fee.",
+    "benefits": [
+     "There are many benefits to working at Malmö University. Subsidised healthcare activities, professional development opportunities and international exchange are just some of them."
+    ],
+    "coverage": [
+     "For studies at Malmö University, some students are required to pay application and tuition fees. This website contains programm...",
+     "For programme students, the tuition fee covers:",
+     "There are many benefits to working at Malmö University. Subsidised healthcare activities, professional development opportunities and international exchange are just some of them."
+    ],
+    "requirements": [
+     "Required to pay tuition fees for university studies in Sweden",
+     "You can find out if they are eligible and find specific entry requirements are listed on the respective programme’s page in the online course catalogue.",
+     "Most master’s programmes require a bachelor’s degree in a relevant field; please check the programme page for more information.",
+     "other requirements specific to certain programmes and courses",
+     "The deadline for submitting your documents is 1 February.",
+     "Required documents for bachelor’s studies (Universityadmissions.se)",
+     "Required documents for master’s studies (Universityadmissions.se)",
+     "Make sure you have filled in and attached your documents. Before submitting your application you need to prepare the following:",
+     "If you wish to study on master’s level you will need to upload a copy of your Bachelor’s Degree Certificate as well."
+    ],
+    "documents": [
+     "If you wish to study on master’s level you will need to upload a copy of your Bachelor’s Degree Certificate as well."
+    ],
+    "english_requirement": "English language requirements (Universityadmissions.se)",
+    "application_method": [
+     "To apply for the scholarship, follow these steps:",
+     "Admitted students will receive more information on how to apply for the scholarship after Notification of Selection Results.",
+     "To apply for a federal student loan, follow the instructions on the Federal Student Aid website.",
+     "Send an email to reellkompetens@mau.se and let us know that you have applied for recognition of prior learning.",
+     "When you apply for recognition of prior learning, you should follow the directions in order for our assessment to be as good as possible. In the directions, you will receive:",
+     "Students apply to Malmö University online through the national website universityadmissions.se . Follow our step-by-step guide to the application process.",
+     "Make sure to apply by 16 January through universityadmissions.se.",
+     "Applicants with citizenship from a non-EU/EEA country are required to pay an application fee of 900 SEK for the admissions application to be processed.",
+     "EU/EEA and Swiss applicants are exempt from payment. They must provide documentation of their citizenship in order for the application to be processed.",
+     "Application fee process (Universityadmissions.se)",
+     "Late applications are processed only if time allows. Your place in the selection process will be determined by the date you send in your complete, late application.",
+     "You can get updates on your application and be notified when your documents have been registered through your account at universityadmission.se.",
+     "Here you can find information about the application process for exchange studies at Malmö University.",
+     "Create an account in our online application system and send in your application with your supporting documents."
+    ],
+    "selection_notes": "<li><span data-preserver-spaces=\"true\">Scholarship selection will be based on previous academic excellence, the experience described in your CV, and your ability to motivate social engagement through your chosen programme at Malmö University. <p>Guatefuturo is a foundation that offers financial support to talented Guatemalan students who demonstrate academic excellence, leadership potential, and a strong commitment to their country's development.",
+    "best_fit": null,
+    "notes": null,
+    "duration": "1-2 years (depending on master's programme)",
+    "application_period": "Applicants who have been offered a scholarship will be notified by the end of April. Those who are not offered a scholarship will not be notified individually.",
+    "deadline_display": "to pay tuition fees is 10 May.",
+    "deadline_date": null,
+    "region": "Europe",
+    "program_type": "At Malmö University, we offer English-taught education at both the master's and bachelor's level. Find a programme or course...",
+    "applicant_utility": null,
+    "official_details": null
+   },
+   "missing_fields": [
+    "funding_amount",
+    "funding_currency",
+    "funding_period",
+    "tuition_coverage",
+    "living_cost_coverage",
+    "travel_coverage",
+    "best_fit",
+    "notes",
+    "deadline_date",
+    "applicant_utility",
+    "official_details"
+   ]
+  }
+ ],
+ "result_file": "C:\\Users\\GopaL\\Desktop\\Projects folder\\ScholarZone\\backend\\research_output\\live500\\results\\agent_172.json"
+}

@@ -1,0 +1,133 @@
+{
+  "agent": "agent_321",
+  "records": [
+    {
+      "id": 713,
+      "official": {
+        "official_source_urls": [
+          "https://scholarships.gov.gh/opportunities/the-joint-algeriaghana-government-scholarship-awards-for-the-20262027-academic-year-tenable-in-algeria",
+          "https://scholarships.gov.gh/opportunities",
+          "https://apply.scholarships.gov.gh/"
+        ],
+        "application_link": "https://apply.scholarships.gov.gh/",
+        "catalogue_url": "https://scholarships.gov.gh/opportunities/the-joint-algeriaghana-government-scholarship-awards-for-the-20262027-academic-year-tenable-in-algeria",
+        "official_updates_url": "https://scholarships.gov.gh/opportunities",
+        "deadline_central": "2026-09-21",
+        "deadline_central_display": "21 September 2026",
+        "deadline_note": null,
+        "application_cycle": "2026/2027 academic year (notice published 5 September 2026)",
+        "status": "CLOSED",
+        "status_note": "The notice page header still displays 'Status: Open', but its published deadline of 21 September 2026 has passed and the Authority's opportunities listing now labels the notice 'Closed'; the 2026/2027 round is no longer accepting applications.",
+        "tuition_coverage_note": null,
+        "funding_amount": null,
+        "funding_currency": "DZD",
+        "funding_period": null,
+        "tuition_coverage": null,
+        "living_cost_coverage": null,
+        "travel_coverage": null,
+        "fully_funded": false,
+        "benefits": [
+          "Scholarship awards for the 2026/2027 academic year tenable in Algeria, across the four published categories: undergraduate university education, a two-year vocational/technical professional certificate, three-year Imam training, and a two-year Master's in Islamic Studies",
+          "One year of French language training for all successful candidates, after which they will be offered their main course of study",
+          "The Authority states that the services provided by the Secretariat are FREE"
+        ],
+        "eligibility": [
+          "Be Ghanaian citizens resident in Ghana",
+          "Have completed Senior High School education with current result (i.e. year 2025)",
+          "Must have obtained an aggregate score of not more than 13",
+          "Not be more than twenty-three (23) years of age",
+          "Must have a genuine birth certificate",
+          "Must have Passport",
+          "Religious Studies (Imam Training) category only: demonstrate good command of spoken and written Arabic, full or partial memorization of the Holy Quran",
+          "Masters in Islamic Studies category only: hold a Bachelor's degree or an equivalent qualification in Islamic Sciences, Humanities and Social Sciences, Law and Political Science, or Arabic Language and Literature"
+        ],
+        "requirements": [
+          "Log in to the Ghana Scholarships Authority website (www.scholarships.gov.gh)",
+          "Create an account and register under the 'Algerian Government Scholarship'",
+          "After the online application, print out the application form",
+          "Submit the printed form to the Ghana Scholarships Authority with copies of WASSCE result-slips, birth certificates and transcript",
+          "Master's category applicants must attach copies of their degree certificates and transcripts",
+          "Submit not later than 21 September 2026"
+        ],
+        "documents": [
+          "WASSCE result-slips (copies)",
+          "Birth certificates (copies)",
+          "Transcript (copies)",
+          "Printed copy of the completed online application form",
+          "Master's category only: copies of degree certificates and transcripts"
+        ],
+        "application_method": [
+          "Log in to the Ghana Scholarships Authority website at www.scholarships.gov.gh",
+          "Create an account and register under the 'Algerian Government Scholarship'",
+          "Print out the application form after completing the online application",
+          "Submit the printed form with the required documents to the Ghana Scholarships Authority - The Director-General, P.O. Box M.75, Accra; office at GES Council Building, Behind Accra High School, North Ridge",
+          "Or email apply@scholarships.gov.gh for enquiries"
+        ],
+        "application_route": "Register on the Ghana Scholarships Authority portal under the 'Algerian Government Scholarship', then submit the printed application form with certified documents to the Authority's Accra office or by mail to P.O. Box M.75, Accra.",
+        "study_mode": null,
+        "citizenship_residency": "Applicants must be Ghanaian citizens resident in Ghana.",
+        "international_eligibility": "No - the notice restricts eligibility to Ghanaian citizens resident in Ghana; it is not open to other nationals.",
+        "subject_or_agency_requirement": "Undergraduate: Science and Technology, Mathematics, Computer Science, Architecture, Medicine, Veterinary Sciences, Dentistry, Agricultural Sciences, Pharmacy, Urban Planning. Vocational Education and Technical Training: Graphic Design Layout Artist, Senior Technician in Architecture, Interior Architecture, Industrial Maintenance, Quality Control and Processing of Dairy Products, Computer Science (database management, web and mobile application developer), Computer Systems and Networks (Cybersecurity), Automotive Mechatronics. Religious Studies: three-year Imam Training. Master's: Islamic Studies only, from the listed qualifying first-degree fields.",
+        "research_requirement": null,
+        "duration": "Vocational Education and Technical Training: 2 years (Professional Certificate); Religious Studies (Imam Training): 3 years; Master's in Islamic Studies: 2 years. All successful candidates undergo one year of French language training before the main course of study.",
+        "description": "The Ghana Scholarships Authority invites applications from Ghanaians for the joint Algeria/Ghana government scholarship awards for the 2026/2027 academic year, tenable in Algeria, covering undergraduate university education in listed science and technology disciplines, a two-year vocational and technical professional certificate, three-year Imam training, and a two-year Master's in Islamic Studies. All successful candidates are required to undergo one year of French language training, after which they will be offered their main course of study.",
+        "region": "Africa (tenable in Algeria; applicants from Ghana)",
+        "program_type": "Joint Algeria/Ghana government scholarship awards (bilateral scheme administered by the Ghana Scholarships Authority)",
+        "english_requirement": null
+      },
+      "verification": {
+        "source_citations": [
+          "https://scholarships.gov.gh/opportunities/the-joint-algeriaghana-government-scholarship-awards-for-the-20262027-academic-year-tenable-in-algeria",
+          "https://scholarships.gov.gh/opportunities"
+        ],
+        "last_verified_date": "2026-10-10",
+        "verification_status": "confirmed",
+        "confidence": "high",
+        "not_confirmed": [
+          "funding_amount",
+          "funding_period",
+          "tuition_coverage",
+          "living_cost_coverage",
+          "travel_coverage",
+          "english_requirement"
+        ],
+        "notes": "The official notice page and the Authority's opportunities listing were fetched and read in full on scholarships.gov.gh; the notice publishes eligibility, the four scholarship categories, the 21 September 2026 deadline and the application route, but no monetary value, coverage breakdown or English-language requirement, so those fields are recorded as null. The listing confirms the 2026/2027 round is now closed."
+      },
+      "applicant_utility": {
+        "summary": "This is a Ghana-administered entry point into Algerian universities: you never apply to an Algerian institution directly, but register with the Ghana Scholarships Authority, which vets your file before any nomination goes to Algeria. The 2026/2027 round ran from 5 to 21 September 2026 and the Authority's listing now marks it closed, so treat this record as the template for the next bilateral intake rather than a live opening. The notice publishes no stipend figure, so do not budget around a promised allowance and confirm coverage only from the award letter you eventually receive. Every successful candidate, not just religious-studies entrants, must complete a year of French language training before the main course starts, which stretches the total study timeline significantly.",
+        "best_fit": "2025 WASSCE school leavers with an aggregate of 13 or better who want medicine, dentistry, pharmacy, engineering, architecture or computing training abroad, plus first-degree holders in Islamic Sciences, humanities, law or Arabic seeking a Master's in Islamic Studies, and Arabic-literate students drawn to Imam training.",
+        "application_readiness_checklist": [
+          "Compute your WASSCE aggregate (best six subjects) before investing time - the notice's cut-off of 13 is absolute",
+          "Have your 2025 result slip and transcript ready as certified copies: the submission is physical, so build in printing, certification and delivery time before the closing date",
+          "Check your passport expiry early - a valid passport is a hard eligibility condition and renewal queues can consume the short window",
+          "Register on the portal under the 'Algerian Government Scholarship' specifically; a generic account on the site does not enter you into this competition",
+          "Master's applicants: confirm your degree sits inside the four listed fields before preparing certificates and transcripts",
+          "Imam training applicants: be ready to evidence Arabic proficiency and Quran memorisation, since those are the category's stated entry tests"
+        ],
+        "common_rejection_risks": [
+          "Aggregate above 13 - the notice sets no discretion or waiver, so strong extracurriculars cannot rescue an over-cut-off score",
+          "Age over 23 at application, which disqualifies older repeat and mature applicants regardless of results",
+          "Applying with an older WASSCE sitting: only the current 2025 result qualifies under the notice",
+          "Submitting online without the printed form and certified documents reaching the Accra office - an incomplete file never reaches review",
+          "Category mismatch, for example a computer science graduate applying for the Islamic Studies Master's, or Imam-training applicants who cannot demonstrate Arabic and Quran memorisation",
+          "Routing documents through an intermediary: the Authority states no agent is engaged on its behalf, and third-party handling risks lost or falsified files"
+        ],
+        "estimated_uncovered_costs": "The notice publishes no award value, so the only safe assumption is that applicants self-fund passport and visa fees, document certification and authentication, travel to Algeria, and personal living costs until an award letter confirms what the Algerian side covers.",
+        "document_audit": [
+          "Names, dates of birth and index numbers must match across the WASSCE result slip, transcript, birth certificate and passport - mismatches stall vetting",
+          "The birth certificate must be genuine and consistent with the passport; the Authority explicitly lists it as a must-have and vets it",
+          "Copies of result slips, birth certificate and transcript must accompany the printed form - an online-only submission is incomplete",
+          "Master's files need both the degree certificate and the transcript; a certificate alone leaves the field-of-study check unverifiable",
+          "Keep originals of everything you submit as copies, in case the Authority or the host institution asks to sight them"
+        ],
+        "alerts": [
+          "The 21 September 2026 deadline has passed and the Authority's listing shows the round closed - watch scholarships.gov.gh/opportunities for the next Algeria/Ghana intake rather than relying on this record",
+          "All successful candidates, not only religious-studies entrants, must complete one year of French language training before the main course - build that into the total study timeline",
+          "The Authority warns that its services are free and that no individual, group or third party has been engaged to assist any applicant; anyone charging for placement is not connected to the scheme",
+          "Instruction in Algeria is largely in French and Arabic; no English test is published for this award, and the mandatory French year does the language groundwork for the main programme"
+        ],
+        "submission_workflow": "Register on the Ghana Scholarships Authority portal, complete the application under the 'Algerian Government Scholarship', print the form, then submit it with the required certified documents to the Authority in North Ridge, Accra or by mail to P.O. Box M.75, Accra; queries go to apply@scholarships.gov.gh."
+      }
+    }
+  ]
+}

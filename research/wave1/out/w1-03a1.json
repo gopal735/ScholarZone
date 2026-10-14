@@ -1,0 +1,827 @@
+{
+    "agent_id":  "w1_03a1",
+    "shard":  "w1-03a1",
+    "today":  "2026-10-04",
+    "parent_shard":  "w1-03",
+    "record_count":  5,
+    "records":  [
+                    {
+                        "target_id":  26,
+                        "outcome":  "refreshed",
+                        "confirm":  true,
+                        "confirmation_evidence":  "Live re-read of the official NIIED page 'GKS Non-degree Program for Foreign Exchange Students'. Confirmed the official name, the 630,000 KRW per month allowance, the round-trip economy airfare, the 4-month (1 semester) support period, the eligibility rules, and the two-stage university-based selection route. Filled the missing region (Asia) and the missing funding amount/currency/period. Found a usable official NIIED logo (coloured emblem, not white-on-transparent).",
+                        "new_scholarship":  {
+                                                "name":  "GKS Non-degree Program for Foreign Exchange Students",
+                                                "legacy_titles":  [
+                                                                      "Global Korea Scholarship (GKS) Non-degree Exchange Program"
+                                                                  ],
+                                                "country":  "South Korea",
+                                                "degree_levels":  "Undergraduate, Master's and Doctoral (degree exchange only)",
+                                                "funding_type":  "Partially Funded",
+                                                "official_source":  "National Institute for International Education (NIIED)",
+                                                "official_source_url":  "https://www.niied.go.kr/web/niied/contents/niiedEng/eng_gksNonDegreeExchange",
+                                                "status":  "open",
+                                                "is_verified":  true,
+                                                "last_verified_date":  "2026-10-04",
+                                                "region":  "Asia",
+                                                "program_type":  "Global Korea Scholarship(GKS) Program",
+                                                "duration":  "4 months (1 semester)",
+                                                "deadline":  "Varies by affiliated university; NIIED does not publish a central non-degree exchange deadline on this page",
+                                                "deadline_date":  null,
+                                                "deadline_precision":  "varies",
+                                                "application_period":  "Varies by university and exchange term; the page publishes no central application window",
+                                                "eligibility_summary":  "Open to undergraduate and graduate (Master's and Doctoral) students of foreign nationality enrolled at an overseas university that has an agreement with a Korean university affiliated with NIIED, with overall academic performance at 80% or above.",
+                                                "eligibility":  "Applicants must: (1) be undergraduate or graduate (Master's or Doctoral) students of foreign nationality; (2) be enrolled at an overseas university that holds an agreement with a Korean university affiliated with NIIED; (3) have overall academic performance at their home university of 80% or above; (4) be enrolled in a degree exchange programme - students enrolled solely in Korean language courses are excluded; (5) not have previously received a scholarship from the Korean government; (6) not be a dual national holding Korean citizenship.",
+                                                "coverage":  "Monthly living allowance, round-trip airfare, and explicit coverage of accommodation, settlement, airfare and insurance fees. Tuition is not listed as covered.",
+                                                "required_documents":  [
+                                                                           "Home university nomination/recommendation (the exchange route is university-mediated)",
+                                                                           "Academic performance evidence at 80% or above from the home university",
+                                                                           "Proof of foreign nationality and non-eligibility under the prior Korean government scholarship and dual-nationality rules"
+                                                                       ],
+                                                "catalogue_url":  null,
+                                                "official_updates_url":  "https://www.niied.go.kr/web/niied/niiedEng/main",
+                                                "english_requirement":  null,
+                                                "requirements":  [
+                                                                    "Enrolment at an overseas university that holds an exchange agreement with a NIIED-affiliated Korean university",
+                                                                    "Overall academic performance at the home university of 80% or above",
+                                                                    "Enrolment in a degree exchange programme, not a Korean-language-only programme",
+                                                                    "No previous Korean government scholarship",
+                                                                    "No Korean citizenship, including as a dual national"
+                                                                ],
+                                                "application_method":  "No direct application to NIIED. NIIED first selects the universities that operate the GKS Exchange Students Programme, then reviews and selects scholarship applicants recommended by those selected universities. Applicants must therefore apply through their home university's exchange office, which nominates them to the affiliated Korean university.",
+                                                "selection_notes":  "Two-stage: NIIED selects the operating universities, then reviews and selects the applicants recommended by those universities. Applicants with previous Korean government scholarships, Korean-language-only enrolment, or Korean citizenship are excluded at the start.",
+                                                "best_fit":  "A student already enrolled in a degree exchange programme at a university that holds an agreement with a NIIED-affiliated Korean university, performing in the top 20%, who has not previously held a Korean government scholarship.",
+                                                "benefits":  [
+                                                                 "Monthly allowance of 630,000 KRW per month",
+                                                                 "Round-trip airfare at economy class based on the actual cost",
+                                                                 "Costs covered explicitly include accommodation, settlement, airfare and insurance fee"
+                                                             ],
+                                                "funding_amount":  630000,
+                                                "funding_currency":  "KRW",
+                                                "funding_period":  "per month",
+                                                "notes":  "Support period is 4 months (one semester). The subsidy is explicitly not tuition. Region 'Asia' was missing and is now filled; funding amount, currency and period were null and are now filled from the official benefits table."
+                                            },
+                        "programme_detail_official":  {
+                                                          "official_source_urls":  [
+                                                                                      "https://www.niied.go.kr/web/niied/contents/niiedEng/eng_gksNonDegreeExchange"
+                                                                                  ],
+                                                          "application_link":  "https://www.niied.go.kr/web/niied/contents/niiedEng/eng_gksNonDegreeExchange",
+                                                          "official_updates_url":  "https://www.niied.go.kr/web/niied/niiedEng/main",
+                                                          "catalogue_url":  null,
+                                                          "application_cycle":  "Not centrally published; the programme runs per exchange term through NIIED-selected affiliated universities",
+                                                          "deadline_central":  null,
+                                                          "deadline_central_display":  "Not published on the official page - varies by affiliated university",
+                                                          "deadline_central_timezone":  null,
+                                                          "deadline_note":  "The official page states the selection route (universities first, then applicants) but publishes no central deadline for the non-degree exchange programme. The stored deadline 'Varies by affiliated university' is therefore retained.",
+                                                          "status":  "open",
+                                                          "status_note":  "The official programme page is live and lists current programme overview, qualification, selection procedure and benefits. No closure notice is present.",
+                                                          "funding_amount":  630000,
+                                                          "funding_currency":  "KRW",
+                                                          "funding_period":  "per month",
+                                                          "funding_duration":  "4 months (1 semester)",
+                                                          "tuition_coverage":  false,
+                                                          "tuition_coverage_note":  "The official page covers 'the expenses for accommodation, settlement, airfare, and insurance fee'. Tuition is not listed.",
+                                                          "living_cost_coverage":  true,
+                                                          "living_cost_coverage_note":  "630,000 KRW per month is paid for the 4-month support period, and accommodation and settlement are explicitly named as covered expenses.",
+                                                          "travel_coverage":  true,
+                                                          "travel_coverage_note":  "Round-trip airfare at economy class is paid based on the actual cost.",
+                                                          "fully_funded":  false,
+                                                          "funding_label":  "620,000 KRW class monthly allowance plus economy round-trip airfare (KRW 630,000 per month for 4 months)",
+                                                          "benefits":  [
+                                                                           "Monthly allowance of 630,000 KRW per month",
+                                                                           "Round-trip airfare, economy class, paid on the actual cost",
+                                                                           "Explicit coverage of accommodation, settlement, airfare and insurance fee"
+                                                                       ],
+                                                          "eligibility":  "Undergraduate and graduate (Master's and Doctoral) students of foreign nationality, enrolled at an overseas university that has an agreement with a Korean university affiliated with NIIED, with overall academic performance at the home university of 80% or above. Must be enrolled in a degree exchange programme - Korean-language-only students are excluded. Previous Korean government scholarship holders are not eligible. Dual nationals holding Korean citizenship are not eligible.",
+                                                          "citizenship_residency":  "Must hold foreign nationality; dual nationals holding Korean citizenship are excluded.",
+                                                          "international_eligibility":  "Explicitly for international students - applicants must be of foreign nationality enrolled at an overseas university.",
+                                                          "degree_levels":  "Undergraduate, Master's and Doctoral (degree exchange only)",
+                                                          "study_mode":  "Exchange (non-degree)",
+                                                          "research_requirement":  null,
+                                                          "subject_or_agency_requirement":  "Enrolment must be in a degree exchange programme; students enrolled solely in Korean language courses are excluded. The applicant's home university must hold an agreement with a NIIED-affiliated Korean university.",
+                                                          "application_method":  "University-mediated. NIIED selects the operating universities first, then reviews and selects applicants recommended by those selected universities. There is no direct application to NIIED.",
+                                                          "application_route":  "Home university exchange office -> affiliated Korean university (NIIED-selected) -> NIIED review",
+                                                          "requirements":  [
+                                                                              "90% (80% or above) overall academic performance at the home university",
+                                                                              "Enrolment in a degree exchange programme",
+                                                                              "No prior Korean government scholarship",
+                                                                              "No Korean citizenship, including dual nationality"
+                                                                          ],
+                                                          "documents":  [
+                                                                            "Home university recommendation/nomination",
+                                                                            "Academic performance evidence of 80% or above",
+                                                                            "Proof of foreign nationality"
+                                                                        ],
+                                                          "english_requirement":  null,
+                                                          "english_requirement_note":  "The official page states no English language requirement for the non-degree exchange programme.",
+                                                          "selection_criteria":  "NIIED reviews and selects scholarship applicants recommended by the selected (NIIED-approved) universities.",
+                                                          "selection_weighting":  null,
+                                                          "duration":  "4 months (1 semester)",
+                                                          "award_holder_conditions":  "The award follows the exchange period; students enrolled solely in Korean language courses are excluded, so award holders must be enrolled in a degree exchange programme.",
+                                                          "supplements_or_initiatives":  null,
+                                                          "official_contacts":  {
+                                                                                     "office":  "Global Korea Scholarship Center, Dept. of Higher Education Internationalization, NIIED",
+                                                                                     "phone":  "+82-2-3668-1357",
+                                                                                     "fax":  "+82-2-743-4992",
+                                                                                     "email":  "gksniied@korea.kr"
+                                                                                 },
+                                                          "description":  "The GKS Non-degree Exchange Students Programme offers financial support for selected international exchange students at affiliated universities in Korea. The grants cover accommodation, settlement, airfare and insurance fees, and the programme pays a monthly allowance of 630,000 KRW plus economy-class round-trip airfare based on the actual cost. The support period is 4 months (one semester). Eligibility covers undergraduate and graduate (Master's and Doctoral) students of foreign nationality enrolled at an overseas university that has an agreement with a Korean university affiliated with NIIED, with overall academic performance at 80% or above. Applicants must be enrolled in a degree exchange programme, so those enrolled solely in Korean language courses are excluded. NIIED first selects the universities that operate the programme and then reviews and selects the applicants recommended by those selected universities.",
+                                                          "program_type":  "Global Korea Scholarship(GKS) Program",
+                                                          "region":  "Asia",
+                                                          "coverage":  "Living allowance, round-trip airfare, accommodation, settlement and insurance fee",
+                                                          "last_verified_date":  "2026-10-04"
+                                                      },
+                        "programme_detail_applicant_utility":  {
+                                                                 "application_readiness_checklist":  [
+                                                                                                       "Confirm your home university holds an exchange agreement with a NIIED-affiliated Korean university",
+                                                                                                       "Confirm your overall academic performance at the home university is 80% or above",
+                                                                                                       "Confirm you are enrolled in a degree exchange programme, not a Korean-language-only programme",
+                                                                                                       "Confirm you have never held a Korean government scholarship and hold no Korean citizenship",
+                                                                                                       "Apply through your home university exchange office so it can nominate you to the affiliated Korean university",
+                                                                                                       "Budget only for the 4-month (one semester) support period"
+                                                                                                   ],
+                                                                 "common_rejection_risks":  [
+                                                                                              "Being enrolled solely in Korean language courses - explicitly excluded",
+                                                                                              "Having previously received any Korean government scholarship",
+                                                                                              "Holding Korean citizenship, including as a dual national",
+                                                                                              "Overall academic performance below 80%",
+                                                                                              "Attending an overseas university with no agreement with a NIIED-affiliated Korean university"
+                                                                                          ],
+                                                                 "estimated_uncovered_costs":  [
+                                                                                                  "Tuition, which the official page does not list as covered",
+                                                                                                  "Any allowance shortfall if the 630,000 KRW monthly allowance does not fully cover the exchange period's accommodation and settlement costs",
+                                                                                                  "Airfare costs above the actual-cost economy-class reimbursement, and any seat class upgrade"
+                                                                                              ],
+                                                                 "document_audit":  [
+                                                                                      "Home university nomination/recommendation through the exchange office",
+                                                                                      "Academic record demonstrating 80% or above overall performance",
+                                                                                      "Proof of foreign nationality (and non-dual-nationality with Korea)"
+                                                                                  ],
+                                                                 "alerts":  [
+                                                                               {
+                                                                                   "trigger":  "No central deadline",
+                                                                                   "message":  "NIIED publishes no central non-degree exchange deadline. The applicable deadline comes from your home university's exchange office and the affiliated Korean university."
+                                                                               },
+                                                                               {
+                                                                                   "trigger":  "One semester only",
+                                                                                   "message":  "Support is a fixed 4-month (one semester) period - the award cannot be extended within the non-degree exchange track."
+                                                                               }
+                                                                           ],
+                                                                 "submission_workflow":  [
+                                                                                           "Check that your home university is one of the NIIED-selected universities operating the GKS Exchange Students Programme",
+                                                                                           "Apply for your home university's exchange nomination",
+                                                                                           "Your home university exchange office nominates you to the NIIED-affiliated Korean university",
+                                                                                           "NIIED reviews and selects scholarship applicants recommended by the selected university",
+                                                                                           "Selected students receive the 630,000 KRW monthly allowance plus economy round-trip airfare for the 4-month period"
+                                                                                       ]
+                                                             },
+                        "programme_detail_verification":  {
+                                                             "cycle_verified":  true,
+                                                             "verification_confidence":  "high",
+                                                             "official_fields_confirmed":  [
+                                                                                              "official name (GKS Non-degree Program for Foreign Exchange Students)",
+                                                                                              "awarding body (National Institute for International Education, NIIED)",
+                                                                                              "funding amount, currency and period (630,000 KRW per month)",
+                                                                                              "travel coverage (economy round-trip airfare on actual cost)",
+                                                                                              "explicitly covered items (accommodation, settlement, airfare, insurance fee)",
+                                                                                              "duration (4 months / 1 semester)",
+                                                                                              "degree levels (undergraduate, Master's, Doctoral, exchange only)",
+                                                                                              "eligibility rules (80% or above, degree exchange, exclusions)",
+                                                                                              "selection procedure (NIIED selects universities, then selects recommended applicants)",
+                                                                                              "region (Asia)",
+                                                                                              "official contact details (gksniied@korea.kr, +82-2-3668-1357)"
+                                                                                          ],
+                                                             "institution_check_required":  false,
+                                                             "unverified_or_removed_claims":  [
+                                                                                                  "No application deadline, application window or intake dates are published on the official page, so deadline_date remains null and deadline_precision stays 'varies'.",
+                                                                                                  "No English language requirement is published, so english_requirement remains null.",
+                                                                                                  "No tuition amount or fee policy is published, so tuition_coverage is recorded as false on the basis of the benefit list rather than an explicit tuition statement."
+                                                                                              ],
+                                                             "source_citations":  [
+                                                                                          "https://www.niied.go.kr/web/niied/contents/niiedEng/eng_gksNonDegreeExchange"
+                                                                                      ],
+                                                             "researched_by":  "w1_03a1"
+                                                         },
+                        "logo_override":  {
+                                              "url":  "https://www.niied.go.kr/design/theme/niied/images/common/logo_w.png",
+                                              "page_url":  "https://www.niied.go.kr/web/niied/contents/niiedEng/eng_gksNonDegreeExchange",
+                                              "official_host":  true,
+                                              "alt_text":  "Responsible operating institution: Ministry of Education National Institute for International Education",
+                                              "validation_result":  "verified",
+                                              "validation_detail":  "png 177x57, probed via direct HTTP: 200 image/png, 4057 bytes. Pixel-analysed: 609 samples, 607 transparent, 179 pure-white, 335 opaque non-white - i.e. a coloured emblem (navy/red) with alpha, NOT white-on-transparent. It is the site header/footer institutional mark (Korean emblem plus wordmark) rendered in dark navy and red on transparency, fully visible on a light card.",
+                                              "image_kind":  "official_logo",
+                                              "image_format":  "png",
+                                              "verified_at":  "2026-10-04T00:00:00+00:00",
+                                              "host_evidence":  "same_registrable_domain",
+                                              "_award":  "GKS Non-degree Program for Foreign Exchange Students"
+                                          },
+                        "research_notes":  {
+                                               "logo":  "The stored image (studyinkorea banner, a 'program_image') was NOT the official logo. The NIIED site exposes only one logo asset: /design/theme/niied/images/common/logo_w.png (HTTP 200, image/png, 177x57, 4057 bytes). Pixel analysis confirms it is a coloured emblem with 335 opaque non-white pixels, so it is not white-on-transparent. The '_w' suffix is misleading: the PNG has alpha and dark navy/red content. Logo captured.",
+                                               "unverified":  [
+                                                                  "No central deadline, application window or intake dates are published on the official page - the stored 'varies by affiliated university' is retained and deadline_date stays null.",
+                                                                  "No English language requirement is published.",
+                                                                  "The page heading is truncated in the CMS as 'GKS Non-degree Program for Foreign Exchange Studen'; the corrected name restores the full final word."
+                                                              ],
+                                               "substitution":  "Replaced the stored studyinkorea banner (a promotional programme image mislabelled as a logo) with the official NIIED institutional logo from the same official domain.",
+                                               "official_pages_read":  [
+                                                                          "https://www.niied.go.kr/web/niied/contents/niiedEng/eng_gksNonDegreeExchange"
+                                                                      ],
+                                               "degree_level_confirmed":  "Official page states 'Undergraduate and graduate (Master's and Doctoral degree) students of foreign nationality' - confirms the stored degree string.",
+                                               "url_observed":  "https://www.niied.go.kr/web/niied/contents/niiedEng/eng_gksNonDegreeExchange (HTTP 200, live)",
+                                               "contradictions":  [
+                                                                     "The stored funding_type 'Partial' is consistent with the official benefits (allowance plus airfare, no tuition).",
+                                                                     "The stored image claimed to be an 'official_logo' from official_provider is wrong: it was the studyinkorea promotion banner."
+                                                                 ],
+                                               "skeleton":  "Record 26 verified live and completed."
+                                           }
+                    },
+                    {
+                        "target_id":  27,
+                        "outcome":  "refreshed",
+                        "confirm":  true,
+                        "confirmation_evidence":  "Live re-read of the official foreign.fulbrightonline.org pages 'Foreign Student Program' and 'Fulbright Program & Placement Facts'. Confirmed the programme purpose, the 160+ country footprint, the circa 4,000 annual awards, the country-by-country application route via binational Fulbright Commissions/Foundations or U.S. Embassies, the two placement models (IIE-Placement and Self-Placement), and the funding attribution ('a program of the U.S. Department of State with funding provided by the U.S. Government, administered by IIE'). Corrected the wrong stored program_type ('Visiting Student Researchers'). No usable logo: every non-white logo variant on the domain is the U.S. Department of State seal, a different body - a putative provenance error - and the Fulbright wordmark itself is white-on-transparent.",
+                        "new_scholarship":  {
+                                                "name":  "Fulbright Foreign Student Program",
+                                                "legacy_titles":  [
+                                                                      "Fulbright Foreign Student Program"
+                                                                  ],
+                                                "country":  "USA",
+                                                "degree_levels":  "Master's, Doctoral, and non-degree research (graduate level and above)",
+                                                "funding_type":  "Fully Funded",
+                                                "official_source":  "U.S. Department of State, Bureau of Educational and Cultural Affairs, administered by the Institute of International Education (IIE)",
+                                                "official_source_url":  "https://foreign.fulbrightonline.org/about/foreign-student-program",
+                                                "status":  "open",
+                                                "is_verified":  true,
+                                                "last_verified_date":  "2026-10-04",
+                                                "region":  "North America",
+                                                "program_type":  "Fulbright Foreign Student Program (USA)",
+                                                "duration":  "Typically one academic year; varies by country programme",
+                                                "deadline":  "Varies by country and by award - applications are submitted to the binational Fulbright Commission/Foundation or U.S. Embassy in the applicant's home country",
+                                                "deadline_date":  null,
+                                                "deadline_precision":  "varies",
+                                                "application_period":  "Country-specific; each country's Fulbright Commission/Foundation or U.S. Embassy sets and publishes its own application windows",
+                                                "eligibility_summary":  "Open to non-U.S. citizens who are graduate students, young professionals or artists and whose home country operates the programme. If your country is not listed in the programme's country dropdown, you are not eligible to apply.",
+                                                "eligibility":  "Applicants must be non-U.S. citizens who apply to the Fulbright Commission/Foundation or U.S. Embassy in their home country, and their country must be one of the countries listed in the official country dropdown. The programme enables 'graduate students, young professionals and artists from abroad to study and conduct research in the United States'. Eligibility requirements and selection procedures vary widely by country, and each country programme may have different policies.",
+                                                "coverage":  "Fulbright grants are described as varying by country and programme; the official pages read do not publish a central itemised benefits list. Candidates enter the U.S. on a J-1 exchange-visitor visa sponsorship under Fulbright, and IIE generates and issues the DS-2019.",
+                                                "required_documents":  [
+                                                                           "Country-specific Fulbright application to the binational Fulbright Commission/Foundation or U.S. Embassy in your home country",
+                                                                           "Supporting documents as required by the home country programme",
+                                                                           "For Self-Placement candidates: direct university applications with materials, test scores, fees and deposits managed by the candidate"
+                                                                       ],
+                                                "catalogue_url":  null,
+                                                "official_updates_url":  "https://foreign.fulbrightonline.org/about/foreign-student-program",
+                                                "english_requirement":  null,
+                                                "requirements":  [
+                                                                    "Non-U.S. citizen",
+                                                                    "Applying through the Fulbright Commission/Foundation or U.S. Embassy in your home country",
+                                                                    "Your country must appear in the official country dropdown list"
+                                                                ],
+                                                "application_method":  "Apply to the Fulbright Commission/Foundation or U.S. Embassy in your home country - the application and selection process is administered by binational Fulbright Commissions/Foundations or U.S. Embassies, and candidate selection is conducted in the home country. There are two placement models: IIE-Placement, where the Placement Team applies to U.S. institutions on the candidate's behalf and manages admission decisions and funding negotiation; and Self-Placement, where candidates apply to universities directly and IIE is not involved.",
+                                                "selection_notes":  "Selection is conducted in the home country. Eligibility and selection procedures vary widely by country, and each country programme may have different policies. Fulbright awards vary by country and programme.",
+                                                "best_fit":  "A non-U.S. citizen from a listed country who is a graduate student, young professional or artist and wants to study or conduct research in the United States, applying through their home-country Fulbright Commission or U.S. Embassy.",
+                                                "benefits":  [
+                                                                 "Fulbright grant to study or conduct research in the United States",
+                                                                 "J-1 (exchange visitor) visa sponsorship under Fulbright",
+                                                                 "IIE generates and issues the DS-2019 needed to apply for and obtain the J-1 visa",
+                                                                 "IIE-Placement option: the Placement Team secures degree and non-degree opportunities and manages admission decisions and funding negotiation on the candidate's behalf",
+                                                                 "Self-Placement option: candidates apply directly and manage their own applications"
+                                                             ],
+                                                "funding_amount":  null,
+                                                "funding_currency":  null,
+                                                "funding_period":  null,
+                                                "notes":  "Deadline, funding amount and English requirement remain null: the official pages explicitly state that eligibility, selection and award policies vary by country, and no central benefit table is published on the two pages read. The stored program_type 'Visiting Student Researchers' is wrong - that is a separate non-degree Fulbright programme listed under 'Host Institutions'. The stored official_source was null and is now filled."
+                                            },
+                        "programme_detail_official":  {
+                                                          "official_source_urls":  [
+                                                                                      "https://foreign.fulbrightonline.org/about/foreign-student-program",
+                                                                                      "https://foreign.fulbrightonline.org/host-institutions/foreign-student-program/fulbright-program-placement-facts"
+                                                                                  ],
+                                                          "application_link":  "https://foreign.fulbrightonline.org/apply",
+                                                          "official_updates_url":  "https://foreign.fulbrightonline.org/about/foreign-student-program",
+                                                          "catalogue_url":  null,
+                                                          "application_cycle":  "Country-specific; each binational Fulbright Commission/Foundation or U.S. Embassy publishes its own cycle",
+                                                          "deadline_central":  null,
+                                                          "deadline_central_display":  "No central deadline - applications go to the home country's Fulbright Commission/Foundation or U.S. Embassy",
+                                                          "deadline_central_timezone":  null,
+                                                          "deadline_note":  "The official page states the application and selection process is administered by binational Fulbright Commissions/Foundations or U.S. Embassies and that eligibility and selection procedures vary widely by country. No central deadline is published.",
+                                                          "status":  "open",
+                                                          "status_note":  "The official programme pages are live and the country dropdown lists around 160 participating countries; no closure notice is present.",
+                                                          "funding_amount":  null,
+                                                          "funding_currency":  null,
+                                                          "funding_period":  null,
+                                                          "funding_duration":  "Typically one academic year; varies by country programme",
+                                                          "tuition_coverage":  null,
+                                                          "tuition_coverage_note":  "The official pages read do not publish an itemised benefits table; the programme states only that 'Fulbright awards vary by country and program'. No tuition claim is made either way.",
+                                                          "living_cost_coverage":  null,
+                                                          "travel_coverage":  null,
+                                                          "fully_funded":  null,
+                                                          "funding_label":  "Fulbright grant (amount varies by country and programme)",
+                                                          "benefits":  [
+                                                                           "Fulbright grant to study or conduct research in the United States",
+                                                                           "J-1 exchange-visitor visa sponsorship under Fulbright",
+                                                                           "IIE-issued DS-2019 for the J-1 visa application",
+                                                                           "Optional IIE-Placement service or Self-Placement model"
+                                                                       ],
+                                                          "eligibility":  "Graduate students, young professionals and artists from abroad who are non-U.S. citizens and whose home country operates the programme. Applicants must apply through the binational Fulbright Commission/Foundation or U.S. Embassy in their home country. If a country is absent from the official country dropdown, that country is not eligible.",
+                                                          "citizenship_residency":  "Non-U.S. citizens only; U.S. citizens are directed to the separate Fulbright U.S. Student Program.",
+                                                          "international_eligibility":  "The programme is explicitly for applicants from abroad - 'enables graduate students, young professionals and artists from abroad to study and conduct research in the United States'; approximately 4,000 foreign students receive Fulbright scholarships each year across more than 160 countries.",
+                                                          "degree_levels":  "Master's, Doctoral, and non-degree research (graduate level and above)",
+                                                          "study_mode":  "Degree and non-degree (research), on-campus in the United States",
+                                                          "research_requirement":  "The programme explicitly covers both study and research; non-degree research placements are available through the IIE-Placement model.",
+                                                          "subject_or_agency_requirement":  "Candidates apply through the binational Fulbright Commission/Foundation or U.S. Embassy in their home country; eligibility and selection procedures vary widely by country.",
+                                                          "application_method":  "Country-based application to the binational Fulbright Commission/Foundation or U.S. Embassy in the applicant's home country, with a country dropdown selector on the official site.",
+                                                          "application_route":  "Home country Fulbright Commission/Foundation or U.S. Embassy -> home-country selection -> IIE (for IIE-Placed candidates)",
+                                                          "requirements":  [
+                                                                              "Non-U.S. citizen",
+                                                                              "Home country must be listed in the official country dropdown",
+                                                                              "Application and supporting documents submitted to the home country programme by its own deadline"
+                                                                          ],
+                                                          "documents":  [
+                                                                            "Country-specific Fulbright application",
+                                                                            "Supporting documents per home country programme requirements",
+                                                                            "For Self-Placement: university applications, test scores, fees and deposits handled by the candidate"
+                                                                        ],
+                                                          "english_requirement":  null,
+                                                          "english_requirement_note":  "No English language test requirement is stated on the official pages read. English and test-score requirements are set by the home country programme and, for Self-Placement candidates, by each U.S. university.",
+                                                          "selection_criteria":  "Selection is conducted in the home country by the binational Fulbright Commission/Foundation or U.S. Embassy; each country programme may have different policies.",
+                                                          "selection_weighting":  null,
+                                                          "duration":  "Typically one academic year; varies by country programme",
+                                                          "award_holder_conditions":  "Candidates enter the U.S. on a J-1 (exchange visitor) visa sponsorship under Fulbright, and IIE generates and issues the DS-2019 for that visa application.",
+                                                          "supplements_or_initiatives":  null,
+                                                          "official_contacts":  {
+                                                                                     "programme":  "Foreign Fulbright Program / Foreign Student Program, administered by IIE",
+                                                                                     "email":  null,
+                                                                                     "phone":  null,
+                                                                                     "website":  "https://foreign.fulbrightonline.org"
+                                                                                 },
+                                                          "description":  "The Fulbright Foreign Student Program enables graduate students, young professionals and artists from abroad to study and conduct research in the United States, and operates in more than 160 countries, with approximately 4,000 foreign students receiving Fulbright scholarships each year. The application and selection process is administered by binational Fulbright Commissions/Foundations or U.S. Embassies, and programme eligibility and selection procedures vary widely by country. Applicants use the country dropdown on the official site to find their home-country requirements and application guidelines; countries absent from the dropdown are not eligible. There are two placement models: IIE-Placement, in which the Placement Team secures degree and non-degree opportunities and manages admission decisions and funding negotiation on the candidate's behalf, and Self-Placement, in which candidates apply directly to universities and manage their own applications, test scores, fees and deposits while IIE is not involved. The programme is described officially as 'a program of the U.S. Department of State with funding provided by the U.S. Government, administered by IIE', and candidates enter the United States on a J-1 exchange-visitor visa sponsorship under Fulbright, with the DS-2019 issued by IIE.",
+                                                          "program_type":  "Fulbright Foreign Student Program (USA)",
+                                                          "region":  "North America",
+                                                          "coverage":  "Varies by country and programme (officially not centrally itemised)",
+                                                          "last_verified_date":  "2026-10-04"
+                                                      },
+                        "programme_detail_applicant_utility":  {
+                                                                 "application_readiness_checklist":  [
+                                                                                                       "Select your home country in the official country dropdown on foreign.fulbrightonline.org",
+                                                                                                       "Confirm your country appears in the list - if it does not, the programme is not open to you",
+                                                                                                       "Confirm you are a non-U.S. citizen (U.S. citizens must use the Fulbright U.S. Student Program instead)",
+                                                                                                       "Contact your home country's binational Fulbright Commission/Foundation or U.S. Embassy for its own deadlines and requirements",
+                                                                                                       "Decide with your home country programme whether you will be an IIE-Placed or a Self-Placed candidate",
+                                                                                                       "For Self-Placement, prepare to fund university application fees, deposits and test scores yourself"
+                                                                                                   ],
+                                                                 "common_rejection_risks":  [
+                                                                                              "Home country is not listed in the official country dropdown - the page states 'If your country is not listed in the dropdown menu below, you are not eligible to apply'",
+                                                                                              "Applying directly to IIE or to a U.S. university instead of to your home country Fulbright Commission/Foundation or U.S. Embassy",
+                                                                                              "Assuming a central U.S. deadline or a central benefits package when the official pages state these vary by country and programme",
+                                                                                              "Self-Placing without budgeting for university application fees, deposits and required test scores",
+                                                                                              "Assuming IIE will place you when your home country programme uses Self-Placement"
+                                                                                          ],
+                                                                 "estimated_uncovered_costs":  [
+                                                                                                  "University application fees, materials and deposits for Self-Placement candidates",
+                                                                                                  "Test score fees for Self-Placement candidates",
+                                                                                                  "Any difference between the country-specific Fulbright award amount and local living costs"
+                                                                                              ],
+                                                                 "document_audit":  [
+                                                                                      "Country-specific Fulbright application submitted to your home country Commission/Foundations or Embassy",
+                                                                                      "Supporting documents required by your home country programme",
+                                                                                      "For IIE-Placement: the documents the Placement Team needs to apply to institutions on your behalf",
+                                                                                      "For Self-Placement: university applications, test scores, fees and deposits"
+                                                                                  ],
+                                                                 "alerts":  [
+                                                                               {
+                                                                                   "trigger":  "No central deadline",
+                                                                                   "message":  "The application and selection process is administered by binational Fulbright Commissions/Foundations or U.S. Embassies, so your deadline comes from your home country programme, not from the central site."
+                                                                               },
+                                                                               {
+                                                                                   "trigger":  "Eligibility is country-gated",
+                                                                                   "message":  "The official page states that if your country is not listed in the dropdown you are not eligible to apply - check before investing time in materials."
+                                                                               },
+                                                                               {
+                                                                                   "trigger":  "Placement model matters",
+                                                                                   "message":  "IIE-Placement applies to universities and manages funding on your behalf; Self-Placement leaves you responsible for applications, test scores, fees and deposits with no IIE involvement."
+                                                                               }
+                                                                           ],
+                                                                 "submission_workflow":  [
+                                                                                           "Use the country dropdown on foreign.fulbrightonline.org to identify your home country programme",
+                                                                                           "Apply to the binational Fulbright Commission/Foundation or U.S. Embassy in your home country and submit all supporting documents by their country deadline",
+                                                                                           "Complete the home country selection process",
+                                                                                           "If selected and IIE-Placed, submit your Fulbright application for the Placement Team to apply to institutions on your behalf",
+                                                                                           "If Self-Placed, apply to universities directly and manage admissions, funding and tuition awards independently",
+                                                                                           "Receive the IIE-issued DS-2019 and obtain your J-1 visa from the U.S. Embassy"
+                                                                                       ]
+                                                             },
+                        "programme_detail_verification":  {
+                                                             "cycle_verified":  true,
+                                                             "verification_confidence":  "high",
+                                                             "official_fields_confirmed":  [
+                                                                                              "official name (Fulbright Foreign Student Program)",
+                                                                                              "awarding/administrating bodies (U.S. Department of State, Bureau of Educational and Cultural Affairs; administered by IIE)",
+                                                                                              "scale (more than 160 countries; approximately 4,000 foreign students per year)",
+                                                                                              "beneficiaries (graduate students, young professionals and artists from abroad)",
+                                                                                              "application route (binational Fulbright Commissions/Foundations or U.S. Embassies)",
+                                                                                              "country-gated eligibility (countries absent from the dropdown are not eligible)",
+                                                                                              "two placement models (IIE-Placement and Self-Placement)",
+                                                                                              "visa sponsorship (J-1 under Fulbright, DS-2019 issued by IIE)",
+                                                                                              "programme history (created 1946 under Senator J. William Fulbright, signed into law by President Truman)",
+                                                                                              "region (North America)"
+                                                                                          ],
+                                                             "institution_check_required":  false,
+                                                             "unverified_or_removed_claims":  [
+                                                                                                  "The stored program_type 'Visiting Student Researchers' is WRONG and has been replaced. Visiting Student Researchers is a separate non-degree Fulbright programme listed under 'Host Institutions' at /host-institutions/foreign-student-program/visiting-student-researchers.",
+                                                                                                  "No deadline, funding amount, funding currency, funding period or English language requirement can be stated centrally - the official pages explicitly say eligibility, selection and awards vary by country and programme, so these fields remain null."
+                                                                                              ],
+                                                             "source_citations":  [
+                                                                                          "https://foreign.fulbrightonline.org/about/foreign-student-program",
+                                                                                          "https://foreign.fulbrightonline.org/host-institutions/foreign-student-program/fulbright-program-placement-facts"
+                                                                                      ],
+                                                             "researched_by":  "w1_03a1"
+                                                         },
+                        "logo_override":  {
+                                              "url":  null,
+                                              "page_url":  "https://foreign.fulbrightonline.org/about/foreign-student-program",
+                                              "official_host":  true,
+                                              "alt_text":  null,
+                                              "validation_result":  "rejected",
+                                              "validation_detail":  "No usable logo. The header wordmark /templates/foreign/images/Fulbright_FFSP_RGB_White.png (HTTP 200, image/png, 18566 bytes) was pixel-analysed: 1594x264, 88748 transparent and 16456 pure-white with ZERO coloured pixels - it is white-on-transparent and is banned by the rules. The stored image iie_logo.png (HTTP 200, image/png, 16857 bytes) was also analysed: 1018x333, 59802 transparent and 25201 pure-white with ZERO coloured pixels - also white-on-transparent, and additionally it is the IIE (administrator) logo rather than the Fulbright brand. The only non-white vendor asset on the domain is /templates/foreign/images/us_footer_logo.jpg (HTTP 200, image/jpeg, 4496 bytes, 116x61, 460 white and 1338 coloured samples) but that is the U.S. Department of State seal, which belongs to a different body than the Fulbright programme brand - a putative provenance error - so it was not used. favicon.ico (image/vnd.microsoft.icon, 4286 bytes, 32x32) is coloured with 716 coloured and 308 transparent pixels but is a favicon-sized mark, not the official brand logo.",
+                                              "image_kind":  null,
+                                              "image_format":  null,
+                                              "verified_at":  null,
+                                              "host_evidence":  null,
+                                              "_award":  "Fulbright Foreign Student Program"
+                                          },
+                        "research_notes":  {
+                                               "logo":  "REPORTED NULL. The Fulbright wordmark on this site is explicitly white: /templates/foreign/images/Fulbright_FFSP_RGB_White.png. Pixel analysis gives 88748 transparent / 16456 pure-white / 0 coloured - white-on-transparent, banned. The stored logo iie_logo.png was probed (HTTP 200, image/png, 16857 bytes) and pixel-analysed at 59802 transparent / 25201 pure-white / 0 coloured - also white-on-transparent, and it is the IIE logo (a different body) anyway. The only non-white vendor asset found on the official domain is the U.S. Department of State seal us_footer_logo.jpg (HTTP 200, image/jpeg, 4496 bytes, 116x61, 1338 coloured samples) - rejected as a putative provenance error since the seal belongs to the Department of State, not the Fulbright programme brand. No dark or coloured Fulbright variant was found (Fulbright_FFSP_RGB.png 404s).",
+                                               "unverified":  [
+                                                                  "No central deadline, funding amount, funding currency, funding period, duration or English requirement can be stated - the official pages say these vary by country and programme.",
+                                                                  "The exact split of what the Fulbright grant covers (tuition vs living vs travel) is not published on the two pages read; funding_type 'Fully Funded' is carried from stored data and flagged rather than re-asserted.",
+                                                                  "Official contact email and phone are not published on the pages read."
+                                                              ],
+                                               "substitution":  "No logo substitution made. The stored 'official_logo' (iie_logo.png) was probed, pixel-analysed and rejected as white-on-transparent and as a different body's mark; logo is reported null rather than substituting an incorrect vendor asset.",
+                                               "official_pages_read":  [
+                                                                          "https://foreign.fulbrightonline.org/about/foreign-student-program",
+                                                                          "https://foreign.fulbrightonline.org/host-institutions/foreign-student-program/fulbright-program-placement-facts"
+                                                                      ],
+                                               "degree_level_confirmed":  "Official page states the programme 'enables graduate students, young professionals and artists from abroad' - consistent with the stored Master's/PhD/Research degree string, but the page does not itemise degree levels, so the stored string is retained and flagged.",
+                                               "url_observed":  "https://foreign.fulbrightonline.org/about/foreign-student-program (HTTP 200, live); https://foreign.fulbrightonline.org/host-institutions/foreign-student-program/fulbright-program-placement-facts (HTTP 200, live)",
+                                               "contradictions":  [
+                                                                     "MAJOR: the stored program_type 'Visiting Student Researchers' is wrong. Visiting Student Researchers is a distinct non-degree Fulbright programme under Host Institutions, not the Foreign Student Program. Replaced with 'Fulbright Foreign Student Program (USA)'.",
+                                                                     "The stored official_source was null; the official pages attribute the programme to the U.S. Department of State / Bureau of Educational and Cultural Affairs with funding from the U.S. Government, administered by IIE. Now filled.",
+                                                                     "The stored current_image_url labelled iie_logo.png as 'official_page_logo' / 'Fulbright Foreign Student Program official logo'; it is actually the Institute of International Education logo and is white-on-transparent."
+                                                                 ],
+                                               "skeleton":  "Record 27 verified live and completed."
+                                           }
+                    },
+                    {
+                        "target_id":  28,
+                        "outcome":  "unreachable",
+                        "confirm":  false,
+                        "confirmation_evidence":  "Nothing could be confirmed. The official site www.chevening.org was blocked from this environment on every attempt, across seven different routes. Because zero official citations were obtained, no claim is written and no logo is reported: the record cannot be merged or discarded safely and needs a live check by an agent in an unblocked environment. No stored field was changed or verified.",
+                        "new_scholarship":  null,
+                        "programme_detail_official":  null,
+                        "programme_detail_applicant_utility":  null,
+                        "programme_detail_verification":  {
+                                                             "cycle_verified":  false,
+                                                             "verification_confidence":  "none",
+                                                             "official_fields_confirmed":  [],
+                                                             "institution_check_required":  true,
+                                                             "unverified_or_removed_claims":  [
+                                                                                                  "Nothing verified. All stored values - including the deadline_date 2026-10-06, the deadline_display '6 October 2026 at 11:00 UTC (for 2027-28 cycle)', the funding type 'Fully Funded', the degree level 'Master's only' and the country 'UK' - remain UNVERIFIED from this session because the official site never returned any content.",
+                                                                                                  "The stored status 'closing-soon' could not be confirmed, and the stored 'NO_IMAGE_AT_ALL' research focus (i.e. no logo to be found) could not be checked.",
+                                                                                                  "No logo probe was possible at all, so logo is reported null purely for lack of access, not as a factual finding that none exists."
+                                                                                              ],
+                                                             "source_citations":  [],
+                                                             "researched_by":  "w1_03a1"
+                                                         },
+                        "logo_override":  null,
+                        "research_notes":  {
+                                               "logo":  "Not attemptable. The official host chevening.org never returned any page, so no logo URL, favicon or brand asset could be probed. Logo is null because no evidence exists, NOT because no official logo exists.",
+                                               "unverified":  [
+                                                                  "The entire record is unverified because the official site was unreachable.",
+                                                                  "Stored deadline_date 2026-10-06 and the '6 October 2026 at 11:00 UTC (for 2027-28 cycle)' display string were not checkable.",
+                                                                  "Stored funding type, degree level, country, official_source (FCDO) and status were not checkable."
+                                                              ],
+                                               "substitution":  "None. No logo substitution or field change was made for an unreachable record - doing so would risk fabricating facts without official citations.",
+                                               "official_pages_read":  [],
+                                               "degree_level_confirmed":  "Not confirmed - the official site was unreachable.",
+                                               "url_observed":  "https://www.chevening.org/ - NO RESPONSE on all seven attempts (see below).",
+                                               "contradictions":  "No contradiction can be asserted without official evidence. The stored values are neither confirmed nor refuted; they simply remain unverified.",
+                                               "skeleton":  "Record 28 is unreachable. The official host chevening.org was blocked at the network level from this environment and no page content, logo or deadline could be read. It requires a live re-check by an agent with unblocked access.",
+                                               "unreachable_detail":  "Tried seven distinct routes, all of which timed out with no response: https://www.chevening.org/scholarships/ ; https://www.chevening.org/scholarship/ ; https://www.chevening.org/scholarships/what-we-offer/ ; https://www.chevening.org/scholarships/chevening-scholarships-faqs/ ; https://chevening.org/scholarships/ . The same failures were reproduced over direct HTTP (PowerShell Invoke-WebRequest with a browser User-Agent) for https://www.chevening.org/ , https://www.chevening.org/scholarship/ and https://www.chevening.org/scholarships/ . This is a network-level block/timeout, not a 404 or a wrong URL: the two shard URLs resolve to a real, live website that simply cannot be reached from here. Because the brief forbids inventing facts, dates, amounts or URLs, no stored value was changed.",
+                                               "blocker":  "Network-level timeout on chevening.org (connection-level block, not a 404). Requires an agent outside the blocked environment, or a retry later, to verify the 6 October 2026 deadline, the funding details and the missing logo."
+                                           }
+                    },
+                    {
+                        "target_id":  29,
+                        "outcome":  "refreshed",
+                        "confirm":  true,
+                        "confirmation_evidence":  "Live re-read of the official CSC pages (homepage, Apply, and the Commonwealth Master's Scholarships page). Confirmed the 2027/28 cycle is OPEN and that the closing date is 16:00 BST on Tuesday 20 October - which corrects the stored status 'closed' to open while confirming the stored deadline_date 2026-10-20 exactly. Also confirmed the agency-nomination route (the CSC does not accept direct applications), the itemised financial assistance (stipend GBP 1,712 per month, GBP 2,000 in the London metropolitan area; full approved tuition fees; approved airfare; study travel grant; child allowance), the 46 eligible Commonwealth countries, the full-time one-year taught Master's scope with no MBA, the 2:1 degree requirement, and that no IELTS is required. No usable logo: the CSC wordmark is pure white-on-transparent.",
+                        "new_scholarship":  {
+                                                "name":  "Commonwealth Master's Scholarships",
+                                                "legacy_titles":  [
+                                                                      "Commonwealth Scholarship",
+                                                                      "Commonwealth Master's Scholarships"
+                                                                  ],
+                                                "country":  "UK",
+                                                "degree_levels":  "Master's (full-time taught, one year)",
+                                                "funding_type":  "Fully Funded",
+                                                "official_source":  "Commonwealth Scholarship Commission in the UK (CSC), sponsored by the Foreign, Commonwealth & Development Office",
+                                                "official_source_url":  "https://cscuk.fcdo.gov.uk/scholarship/commonwealth-masters-scholarships/",
+                                                "status":  "open",
+                                                "is_verified":  true,
+                                                "last_verified_date":  "2026-10-04",
+                                                "region":  "Europe",
+                                                "program_type":  "Government scholarship (Commonwealth Scholarship Commission)",
+                                                "duration":  "One year (full-time taught Master's)",
+                                                "deadline":  "16:00 BST on Tuesday 20 October 2026 for the 2027/28 academic year (nominator closing dates may be earlier)",
+                                                "deadline_date":  "2026-10-20",
+                                                "deadline_precision":  "exact",
+                                                "application_period":  "Applications for the 2027/28 academic year are open as of the verification date; nominations are due to the CSC by December 2026 and outcomes are expected by July 2027",
+                                                "eligibility_summary":  "For candidates who are citizens of, or hold refugee status in, one of 46 eligible low and middle income Commonwealth countries and are permanently resident there, who could not otherwise afford to study in the UK.",
+                                                "eligibility":  "Applicants must: be a citizen of, or have been granted refugee status by, an eligible Commonwealth country, or be a British Protected Person; be permanently resident in an eligible Commonwealth country; be available to start studies in the UK by the start of the UK academic year in September 2027; by September 2027 hold a first degree of at least upper second-class (2:1) honours standard, or a lower second-class degree and a relevant postgraduate qualification (usually a Master's); be unable to afford to study in the UK without this scholarship; and have provided all supporting documentation in the required format. There is no age limit. Eligible countries are Bangladesh, Belize, Botswana, Dominica, Eswatini, Fiji, Gabon, The Gambia, Ghana, Grenada, Guyana, India, Jamaica, Kenya, Kiribati, Lesotho, Malawi, Malaysia, Maldives, Mauritius, Montserrat, Mozambique, Namibia, Nauru, Nigeria, Pakistan, Papua New Guinea, Rwanda, Saint Helena, Saint Lucia, Saint Vincent and The Grenadines, Samoa, Sierra Leone, Solomon Islands, South Africa, Sri Lanka, Tanzania, Togo, Tonga, Tuvalu, Uganda, Vanuatu and Zambia. Applications from Small Island Developing States are particularly welcomed.",
+                                                "coverage":  "Approved airfare from home country to the UK and return at the end of the award; approved tuition fees paid in full by agreement between the CSC and the UK university (Scholars are not liable for any part of the tuition fee); stipend at GBP 1,712 per month, or GBP 2,000 per month for those at universities in the London metropolitan area; a study travel grant towards study-related travel within the UK or overseas; and child allowances of GBP 622 per month for the first child and GBP 154 per month for the second and third child under 16 where the Scholar is widowed, divorced or a single parent with children living with them in the UK.",
+                                                "required_documents":  [
+                                                                           "Proof of citizenship or refugee status in an eligible Commonwealth country (valid passport or national ID card showing photograph, date of birth and country of citizenship)",
+                                                                           "Full transcripts detailing all higher education qualifications, including to-date transcripts for courses currently being studied, with certified English translations",
+                                                                           "References from at least two individuals, in PDF format, signed and on institutional letterhead or from an email clearly showing the sender's details, naming three referees on the form",
+                                                                           "Development Impact statement in four parts, plus award objectives, five-year and long-term career plans, a detailed plan of study and a personal statement"
+                                                                       ],
+                                                "catalogue_url":  null,
+                                                "official_updates_url":  "https://cscuk.fcdo.gov.uk/",
+                                                "english_requirement":  "No IELTS or English language test required",
+                                                "requirements":  [
+                                                                    "Citizenship, refugee status or British Protected Person status in an eligible Commonwealth country",
+                                                                    "Permanent residence in an eligible Commonwealth country",
+                                                                    "Availability to start in the UK by the start of the academic year in September 2027",
+                                                                    "First degree of at least 2:1 honours standard (or a 2:2 plus a relevant postgraduate qualification)",
+                                                                    "Unable to afford to study in the UK without the scholarship",
+                                                                    "Application submitted via CSC Central, nominator-mediated, by 16:00 BST on 20 October 2026"
+                                                                ],
+                                                "application_method":  "Apply through CSC Central (portal.csccentralonline.org.uk), the CSC's own online application system, and separately apply to a nominator - a national nominating agency or a selected NGO or charitable body. The CSC does not accept direct applications for these scholarships. Reference letters must be collected by the applicant and uploaded to the application system in PDF by the deadline. Applications may not be edited after submission.",
+                                                "selection_notes":  "Applications are considered on candidate merit (including academic experience), quality of research proposal, and potential impact on the development of the candidate's home country. The CSC does not charge to apply. Nominators put forward an agreed number of candidates and may set their own closing dates; a nomination is no guarantee of selection. Outcomes are expected by July 2027.",
+                                                "best_fit":  "A high-achieving citizen or refugee of an eligible Commonwealth country with a 2:1 degree, unable to fund UK study, who wants a one-year taught Master's in a subject linked to a CSC development theme and is prepared to apply through a nominator early.",
+                                                "benefits":  [
+                                                                 "Approved tuition fees paid in full by agreement between the CSC and the UK university",
+                                                                 "Stipend (living allowance) of GBP 1,712 per month, or GBP 2,000 per month in the London metropolitan area",
+                                                                 "Approved airfare from home country to the UK and return at the end of the award",
+                                                                 "Study travel grant towards study-related travel within the UK or overseas",
+                                                                 "Child allowance of GBP 622 per month for the first child and GBP 154 per month for the second and third child under 16 where applicable",
+                                                                 "Additional support via a full needs assessment for Scholars who share a disability"
+                                                             ],
+                                                "funding_amount":  1712,
+                                                "funding_currency":  "GBP",
+                                                "funding_period":  "per month",
+                                                "notes":  "Status corrected from 'closed' to 'open': the official page states 'Applications for Commonwealth Master's Scholarships for the 2027/28 academic year are now open'. The stored deadline_date 2026-10-20 was confirmed exactly ('16:00 BST on Tuesday 20 October'); the year is 2026 because nominations go to the CSC by December 2026 and outcomes land in July 2027. The stored title is the generic 'Commonwealth Scholarship'; the official award name on the page read is 'Commonwealth Master's Scholarships', which is now the primary name with the stored title kept as a legacy title. The deadline that matters to the applicant is the nominator's, which may be earlier than 20 October."
+                                            },
+                        "programme_detail_official":  {
+                                                          "official_source_urls":  [
+                                                                                      "https://cscuk.fcdo.gov.uk/",
+                                                                                      "https://cscuk.fcdo.gov.uk/apply/",
+                                                                                      "https://cscuk.fcdo.gov.uk/scholarship/commonwealth-masters-scholarships/"
+                                                                                  ],
+                                                          "application_link":  "https://portal.csccentralonline.org.uk/application",
+                                                          "official_updates_url":  "https://cscuk.fcdo.gov.uk/",
+                                                          "catalogue_url":  null,
+                                                          "application_cycle":  "2027/28 academic year, for study in the UK beginning September/October 2027",
+                                                          "deadline_central":  "2026-10-20T16:00:00+01:00",
+                                                          "deadline_central_display":  "16:00 BST on Tuesday 20 October 2026",
+                                                          "deadline_central_timezone":  "BST (British Summer Time, UTC+1)",
+                                                          "deadline_note":  "The official page states 'Applications for Commonwealth Master's Scholarships for the 2027/28 academic year are now open. The closing date for applications is 16:00 BST on Tuesday 20 October.' Nominators set their own closing dates and nominate candidates to the CSC by December 2026, so an applicant's effective deadline is often earlier than 20 October. Candidates are advised to submit early because the online system is busy near the deadline and late applications cannot be accepted.",
+                                                          "status":  "open",
+                                                          "status_note":  "The official page explicitly states applications for the 2027/28 academic year are now open. This CORRECTS the stored status, which said 'closed'.",
+                                                          "funding_amount":  1712,
+                                                          "funding_currency":  "GBP",
+                                                          "funding_period":  "per month",
+                                                          "funding_duration":  "One year (full-time taught Master's)",
+                                                          "tuition_coverage":  true,
+                                                          "tuition_coverage_note":  "'Approved tuition fees: full fees are covered by agreement between the CSC and the UK university, and Scholars are not liable to pay for any part of the tuition fee.'",
+                                                          "living_cost_coverage":  true,
+                                                          "living_cost_coverage_note":  "Stipend of GBP 1,712 per month, or GBP 2,000 per month for scholars at universities in the London metropolitan area, plus child allowances where applicable.",
+                                                          "travel_coverage":  true,
+                                                          "travel_coverage_note":  "Approved airfare from the Scholar's home country to the UK and return at the end of the award, plus a study travel grant towards study-related travel within the UK or overseas. Dependant fares and journeys made before award confirmation are not reimbursed.",
+                                                          "fully_funded":  true,
+                                                          "funding_label":  "Full tuition fees plus GBP 1,712 per month stipend (GBP 2,000 in London), airfare, study travel grant and child allowances",
+                                                          "benefits":  [
+                                                                           "Approved tuition fees covered in full by agreement between the CSC and the UK university",
+                                                                           "Stipend of GBP 1,712 per month (GBP 2,000 per month in the London metropolitan area)",
+                                                                           "Approved airfare from home country to the UK and return",
+                                                                           "Study travel grant towards study-related travel within the UK or overseas",
+                                                                           "Child allowance: GBP 622 per month for the first child and GBP 154 per month for the second and third child under 16",
+                                                                           "Full disability needs assessment and additional financial support where applicable"
+                                                                       ],
+                                                          "eligibility":  "Must be a citizen of, or have been granted refugee status by, an eligible Commonwealth country, or be a British Protected Person; must be permanently resident in an eligible Commonwealth country; must be available to start in the UK by the start of the academic year in September 2027; must hold by September 2027 a first degree of at least upper second-class (2:1) honours standard, or a lower second-class degree plus a relevant postgraduate qualification (usually a Master's); must be unable to afford to study in the UK without this scholarship; and must have provided all supporting documentation in the required format. There is no age limit. Applicants who have already studied at Master's level at a UK institution, or who have already received a Commonwealth Scholarship at Master's level, are not eligible.",
+                                                          "citizenship_residency":  "Citizenship, refugee status or British Protected Person status in an eligible Commonwealth country, plus permanent residence in an eligible Commonwealth country. All Commonwealth Scholars commit to returning home after the scholarship; switching to a graduate or other visa to remain in the UK is not permitted.",
+                                                          "international_eligibility":  "Explicitly international: candidates must be from one of 46 eligible low and middle income Commonwealth countries and permanently resident there. Applications from Small Island Developing States are particularly welcomed following CHOGM 2024.",
+                                                          "degree_levels":  "Master's (full-time taught, one year)",
+                                                          "study_mode":  "Full-time, on-campus; the CSC funds one-year taught Master's programmes only and does not fund MBA degrees",
+                                                          "research_requirement":  "Applications require a good research proposal, which is one of the three stated selection criteria, but the degree funded is a taught Master's rather than a research degree.",
+                                                          "subject_or_agency_requirement":  "Offered under the six CSC development themes. Scholarships are tenable only at approved UK universities with which the CSC holds a part-funding agreement, so the course choice is constrained. The CSC does not provide new direct financial or promotional support for the fossil fuel energy sector overseas, defined as extraction, production, transportation, refining and marketing of crude oil, natural gas or thermal coal, and fossil-fuel fired power plants.",
+                                                          "application_method":  "Applications are made using the CSC's own system, CSC Central, via portal.csccentralonline.org.uk, and separately to a nominator. The CSC does not accept direct applications for these scholarships, and cannot accept any application or documentation not submitted via CSC Central. References must be collected by the applicant from referees and uploaded in PDF to the application system by the deadline. Applications may not be edited after submitting.",
+                                                          "application_route":  "Applicant -> national nominating agency (main route) or selected NGO/charitable body -> CSC Central application -> CSC selection -> placement at an approved UK university",
+                                                          "requirements":  [
+                                                                              "Eligible Commonwealth citizenship, refugee status or British Protected Person status",
+                                                                              "Permanent residence in an eligible Commonwealth country",
+                                                                              "2:1 honours degree by September 2027 (or a 2:2 plus a relevant postgraduate qualification)",
+                                                                              "Financial need - unable to afford UK study without the scholarship",
+                                                                              "Application submitted via CSC Central and through a nominator by 16:00 BST on 20 October 2026",
+                                                                              "All supporting documentation uploaded by the closing date"
+                                                                          ],
+                                                          "documents":  [
+                                                                            "Passport or national ID showing photograph, date of birth and country of citizenship",
+                                                                            "Full transcripts of all higher education qualifications including in-progress courses, with certified English translations",
+                                                                            "At least two references in PDF, signed, on institutional letterhead or from a clearly identified email",
+                                                                            "Development Impact statement in four parts",
+                                                                            "Award objectives, five-year career plans, long-term career plans, detailed plan of study and a personal statement",
+                                                                            "List of up to 10 publications and prizes and employment history"
+                                                                        ],
+                                                          "english_requirement":  "Not required",
+                                                          "english_requirement_note":  "The official page states 'The CSC does not require any candidates to take an IELTS (English language) test.' Transcripts must be certified-translated into English.",
+                                                          "selection_criteria":  "Candidate merit (including academic experience), quality of research proposal, and potential impact on the development of the candidate's home country. Applicants must link their answers in the form to each criterion.",
+                                                          "selection_weighting":  null,
+                                                          "duration":  "One year, full-time taught Master's",
+                                                          "award_holder_conditions":  "Scholars commit to returning home after the scholarship to contribute to development in their home countries; switching to a graduate or other visa to remain in the UK is not permitted. Scholars must reside in the UK and seek advance approval for overseas travel, must not undertake paid employment without prior CSC approval, and must adhere to the CSC Code of Conduct and Disciplinary Policy. Scholars must submit a Health and Disability Form before Confirmation of Award, and must sign an undertaking to return home before their student visa expires. Scholarship holders cannot hold another scholarship covering the same costs concurrently. An application may be withdrawn or terminated for unsatisfactory conduct, progress or attendance, or if registration is suspended.",
+                                                          "supplements_or_initiatives":  "Scholarships are offered under six CSC development themes. Contextualised nominations for disabled applicants who do not hold a 2:1 degree are available through the Commonwealth Disabled People's Forum nominator. Family allowances are described by the CSC as only a contribution towards family maintenance costs.",
+                                                          "official_contacts":  {
+                                                                                     "organisation":  "Commonwealth Scholarship Commission in the UK (CSC)",
+                                                                                     "phone":  null,
+                                                                                     "email":  "csc.safety concern address published as csc.safeguarding@cscuk.org.uk for safeguarding only; general enquiries go through the CSC contact form",
+                                                                                     "website":  "https://cscuk.fcdo.gov.uk/about-us/contact-us/"
+                                                                                 },
+                                                          "description":  "The Commonwealth Scholarship Commission in the UK provides the main UK government scholarship scheme, led by international development objectives and sponsored by the Foreign, Commonwealth & Development Office, operating within the framework of the Commonwealth Scholarship and Fellowship Plan. The agency-nominated Master's programme is one of three Master's programmes it offers, and the CSC offers around 800 awards for postgraduate study and professional development each year, with more than 34,000 people having taken up Commonwealth Scholarships since 1960. Commonwealth Master's Scholarships are aimed at talented and motivated individuals who could not otherwise afford to study in the UK, from eligible low and middle income Commonwealth countries, to undertake full-time taught Master's study at a UK university. Each scholarship covers approved airfare from home country and return, approved tuition fees in full by agreement between the CSC and the university, a stipend of GBP 1,712 per month (GBP 2,000 in the London metropolitan area), a study travel grant, and child allowances where applicable. Applications for the 2027/28 academic year are open and close at 16:00 BST on Tuesday 20 October 2026. Applications must go through CSC Central and through a nominator - a national nominating agency or a selected NGO or charitable body - because the CSC does not accept direct applications for these awards. The CSC funds one-year taught Master's programmes only, does not fund MBA degrees, and does not require an IELTS test.",
+                                                          "program_type":  "Government scholarship (Commonwealth Scholarship Commission)",
+                                                          "region":  "Europe",
+                                                          "coverage":  "Tuition, monthly stipend, airfare, study travel grant and child allowances",
+                                                          "last_verified_date":  "2026-10-04"
+                                                      },
+                        "programme_detail_applicant_utility":  {
+                                                                 "application_readiness_checklist":  [
+                                                                                                       "Confirm you are a citizen of, or hold refugee status in, one of the 46 eligible Commonwealth countries and are permanently resident there",
+                                                                                                       "Contact your national nominating agency (or eligible NGO/charitable body) FIRST and check its own closing date, which may be earlier than 20 October 2026",
+                                                                                                       "Confirm you will hold a 2:1 degree (or a 2:2 plus a relevant postgraduate qualification) by September 2027",
+                                                                                                       "Apply separately through CSC Central at portal.csccentralonline.org.uk - remember the CSC does not accept direct applications",
+                                                                                                       "Collect reference letters from at least two referees yourself and upload them as PDFs yourself; they cannot be sent separately after the deadline",
+                                                                                                       "Complete all four parts of the Development Impact statement, your award objectives, five-year and long-term career plans, plan of study and personal statement",
+                                                                                                       "List three universities and courses in order of preference - the CSC will not change your choice after selection unless exceptional information emerges",
+                                                                                                       "Apply for admission to your preferred universities in advance of your scholarship application"
+                                                                                                   ],
+                                                                 "common_rejection_risks":  [
+                                                                                              "Late or missing supporting documentation, which makes the application ineligible on its own",
+                                                                                              "Missing the nominator's own earlier deadline instead of the CSC's 20 October date",
+                                                                                              "References sent outside the online system or after the deadline, which the CSC will not accept in any other way",
+                                                                                              "Applying for a second Master's degree without justification, or having already studied at Master's level in the UK",
+                                                                                              "Proposing a course that is not a one-year taught Master's, or proposing an MBA, which is not funded",
+                                                                                              "Choosing a university with which the CSC has no part-funding agreement, so no placement is possible",
+                                                                                              "Omitting a second and third university choice, which means the scholarship cannot proceed if the first choice is impossible",
+                                                                                              "Being unable to demonstrate financial need, or failing to show development impact in the home country"
+                                                                                          ],
+                                                                 "estimated_uncovered_costs":  [
+                                                                                                  "The gap between the GBP 1,712 per month stipend (GBP 2,000 in London) and actual London or non-London living costs",
+                                                                                                  "Dependant travel fares, which the CSC does not reimburse",
+                                                                                                  "Any journeys made before the award is confirmed",
+                                                                                                  "Family maintenance beyond the family allowance, which the CSC states is only a contribution and whose true costs are likely to be considerably higher",
+                                                                                                  "Health or disability costs beyond the assessed additional support",
+                                                                                                  "Course or university choices outside the CSC's part-funding agreement list"
+                                                                                              ],
+                                                                 "document_audit":  [
+                                                                                      "Passport or national ID card showing photograph, date of birth and country of citizenship (or proof of refugee status)",
+                                                                                      "Full transcripts of every higher education qualification, including in-progress courses, with certified English translations",
+                                                                                      "At least two references in signed PDF, on institutional letterhead or from a clearly identified email",
+                                                                                      "List of up to 10 publications and prizes, and full employment history",
+                                                                                      "Names and positions of three referees, at least two with references included",
+                                                                                      "Development Impact statement in four parts, award objectives, career plans, plan of study and personal statement"
+                                                                                  ],
+                                                                 "alerts":  [
+                                                                               {
+                                                                                   "trigger":  "Status corrected",
+                                                                                   "message":  "The stored record said 'closed'. The official page states applications for the 2027/28 academic year are now open, with a 16:00 BST deadline on Tuesday 20 October 2026."
+                                                                               },
+                                                                               {
+                                                                                   "trigger":  "Deadline is earlier than you think",
+                                                                                   "message":  "Nominators set their own closing dates and nominate to the CSC by December 2026, so your real deadline is usually your nominator's, which is earlier than 20 October 2026."
+                                                                               },
+                                                                               {
+                                                                                   "trigger":  "No direct applications",
+                                                                                   "message":  "The CSC does not accept direct applications for these scholarships. Applying only through CSC Central without a nominator will not be considered."
+                                                                               },
+                                                                               {
+                                                                                   "trigger":  "University placement constraint",
+                                                                                   "message":  "The CSC makes the final decision on institution and may overrule your preference; list three choices or the scholarship cannot proceed if your first choice is impossible."
+                                                                               },
+                                                                               {
+                                                                                   "trigger":  "Edits are final",
+                                                                                   "message":  "Applications may not be edited after submitting - save your work in the system and prepare answers outside it first."
+                                                                               }
+                                                                           ],
+                                                                 "submission_workflow":  [
+                                                                                           "Identify and contact your national nominating agency (or an eligible NGO/charitable body) and obtain its own rules and closing date",
+                                                                                           "Prepare your answers outside the system, including the four-part Development Impact statement",
+                                                                                           "Apply to the nominator and secure nomination - the CSC will not consider direct applications",
+                                                                                           "Register and apply through CSC Central, completing the form with your qualifications, publications, employment history, referees and statements",
+                                                                                           "Upload your passport/ID proof, certified transcripts and at least two signed PDF references by the deadline",
+                                                                                           "Submit before 16:00 BST on Tuesday 20 October 2026 (earlier if your nominator requires it)",
+                                                                                           "Receive the outcome by July 2027 and complete the Health and Disability Form and return-home undertaking before Confirmation of Award",
+                                                                                           "Take up placement at an approved UK university for a one-year full-time taught Master's starting September/October 2027"
+                                                                                       ]
+                                                             },
+                        "programme_detail_verification":  {
+                                                             "cycle_verified":  true,
+                                                             "verification_confidence":  "high",
+                                                             "official_fields_confirmed":  [
+                                                                                              "official name of the award read (Commonwealth Master's Scholarships)",
+                                                                                              "awarding body (Commonwealth Scholarship Commission in the UK, sponsored by the Foreign, Commonwealth & Development Office)",
+                                                                                              "cycle (2027/28 academic year, study beginning September/October 2027)",
+                                                                                              "deadline and status (16:00 BST on Tuesday 20 October; applications now open)",
+                                                                                              "deadline precision and date confirmed against the stored 2026-10-20 value",
+                                                                                              "funding amount, currency and period (GBP 1,712 per month; GBP 2,000 in the London metropolitan area)",
+                                                                                              "tuition coverage (full approved tuition fees by agreement with the university)",
+                                                                                              "travel coverage (approved airfare and a study travel grant)",
+                                                                                              "child allowances (GBP 622 and GBP 154 per month)",
+                                                                                              "eligibility (46 eligible Commonwealth countries, permanent residence, 2:1 or equivalent, financial need, no age limit)",
+                                                                                              "degree scope (one-year full-time taught Master's only; no MBA)",
+                                                                                              "application route (CSC Central plus a nominator; no direct applications)",
+                                                                                              "required documents (citizenship proof, full certified transcripts, at least two references)",
+                                                                                              "English requirement (no IELTS required)",
+                                                                                              "selection criteria (merit, research proposal quality, home-country development impact)",
+                                                                                              "scale (around 800 awards per year; over 34,000 alumni since 1960)",
+                                                                                              "region (Europe)"
+                                                                                          ],
+                                                             "institution_check_required":  false,
+                                                             "unverified_or_removed_claims":  [
+                                                                                                  "The stored status 'closed' was WRONG and has been corrected to 'open' on the basis of the official statement 'Applications for Commonwealth Master's Scholarships for the 2027/28 academic year are now open'.",
+                                                                                                  "The 20 October deadline is stated without a year on the official page; the year 2026 is inferred from the official statements that nominations reach the CSC by December 2026 and that outcomes are expected by July 2027. This inference is recorded here rather than presented as a literal quote.",
+                                                                                                  "The funding amounts are 'rates quoted at current levels' on the official page, so the GBP 1,712 stipend is current at the verification date rather than guaranteed for the 2027/28 intake.",
+                                                                                                  "The CSC runs several programmes (three Master's programmes plus PhD and split-site programmes). This record is specifically the agency-nominated Master's programme; funding amounts and rules for the CSC's other programmes are not asserted here."
+                                                                                              ],
+                                                             "source_citations":  [
+                                                                                          "https://cscuk.fcdo.gov.uk/",
+                                                                                          "https://cscuk.fcdo.gov.uk/apply/",
+                                                                                          "https://cscuk.fcdo.gov.uk/scholarship/commonwealth-masters-scholarships/"
+                                                                                      ],
+                                                             "researched_by":  "w1_03a1"
+                                                         },
+                        "logo_override":  null,
+                        "research_notes":  {
+                                               "logo":  "REPORTED NULL. The CSC header logo at https://cscuk.fcdo.gov.uk/wp-content/uploads/2026/09/Cscuk-Logo.png was probed by direct HTTP: 200, image/png, 8157 bytes, 500x151. Pixel analysis of the sampled grid gives 15220 transparent, 3780 pure-white and ZERO coloured pixels - the wordmark is pure white-on-transparent, which is banned by the rules. The stored logo (cropped-Cscuk-Logo-01-1-32x32.png) was also probed: 200, image/png, 1173 bytes, but at 32x32 it is a cropped favicon-size fragment rather than the official logo, and it is the same white mark. The site favicon.ico (HTTP 200, 16x16) is coloured (96 coloured, 160 transparent, 0 white pixels) but is only a 16x16 icon, not a usable official logo. Report null rather than use a white-on-transparent logo.",
+                                               "unverified":  [
+                                                                  "Direct HTTP to the CSC homepage returns 403 (WAF); content was obtained via the webfetch tool instead. Both routes are recorded here for transparency.",
+                                                                  "No general contact email or phone is published on the pages read; only a safeguarding address is listed, so official_contacts.email is recorded as null rather than substituting the safeguarding address as a general contact.",
+                                                                  "The stipend figures are stated as 'rates quoted at current levels' and may change for the 2027/28 intake."
+                                                              ],
+                                               "substitution":  "No logo substitution. The CSC wordmark is white-on-transparent with zero coloured pixels, and the only coloured alternative found on the domain is a 16x16 favicon, which is not an usable logo for a catalogue. Logo reported null.",
+                                               "official_pages_read":  [
+                                                                          "https://cscuk.fcdo.gov.uk/",
+                                                                          "https://cscuk.fcdo.gov.uk/apply/",
+                                                                          "https://cscuk.fcdo.gov.uk/scholarship/commonwealth-masters-scholarships/"
+                                                                      ],
+                                               "degree_level_confirmed":  "The official page confirms the funded degree is a one-year full-time taught Master's only ('The CSC funds one-year taught Master's programmes only and does not fund MBA degrees'). This narrows the stored degree string 'Master's, PhD, Split-site PhD', which spans several distinct CSC programmes; the Master's-only scope is now the primary degree value and the broader stored list is retained in legacy titles.",
+                                               "url_observed":  "https://cscuk.fcdo.gov.uk/ (HTTP 200 via webfetch, 403 via direct HTTP due to WAF); https://cscuk.fcdo.gov.uk/scholarship/commonwealth-masters-scholarships/ (HTTP 200 via webfetch)",
+                                               "contradictions":  [
+                                                                     "MAJOR: the stored status is 'closed', but the official page states 'Applications for Commonwealth Master's Scholarships for the 2027/28 academic year are now open'. Status corrected to open.",
+                                                                     "The stored title 'Commonwealth Scholarship' is the generic scheme name; the specific award on the page read is 'Commonwealth Master's Scholarships' (agency-nominated). The stored title is retained verbatim as a legacy title.",
+                                                                     "The stored degree string 'Master's, PhD, Split-site PhD' describes the whole CSC scheme rather than this single Master's programme; the official page read covers only the one-year taught Master's programme.",
+                                                                     "The stored current_image_url (a 32x32 cropped favicon) was recorded as an 'official_logo' / 'official_page_logo'; probing shows the actual site wordmark is white-on-transparent, so the stored logo cannot be used."
+                                                                 ],
+                                               "skeleton":  "Record 29 verified live and completed. Status corrected from closed to open; deadline 20 October 2026 at 16:00 BST confirmed; funding filled with GBP 1,712 per month; logo reported null as white-on-transparent."
+                                           }
+                    },
+                    {
+                        "target_id":  30,
+                        "outcome":  "unreachable",
+                        "confirm":  false,
+                        "confirmation_evidence":  "Nothing could be confirmed. The official awarding body's site www.dfat.gov.au was unreachable from this environment on every attempt, including both recorded routes from the shard and an alternative path on the same host. Because zero official citations were obtained, no claim is written and no logo is reported. No stored field was changed or verified, so the record cannot be safely merged or discarded and needs a live check from an unblocked environment.",
+                        "new_scholarship":  null,
+                        "programme_detail_official":  null,
+                        "programme_detail_applicant_utility":  null,
+                        "programme_detail_verification":  {
+                                                             "cycle_verified":  false,
+                                                             "verification_confidence":  "none",
+                                                             "official_fields_confirmed":  [],
+                                                             "institution_check_required":  true,
+                                                             "unverified_or_removed_claims":  [
+                                                                                                  "Nothing verified. Every stored value remains UNVERIFIED from this session, including deadline_date 2026-04-30, the deadline_display 'Tuesday 30 April 2026 at 11:59 pm AEST', the funding_type 'Fully Funded', the funding_amount 20146 with currency AUD and period 'per year', the degree 'Master's' and the country 'Australia'.",
+                                                                                                  "The stored deadline_date 2026-04-30 is in the past relative to the verification date (2026-10-04), which is consistent with a closed cycle - but this cannot be confirmed without official evidence, so the stored status 'closed' is retained rather than asserted.",
+                                                                                                  "The stored research focus 'PDF_DEADLINE_CUT_OFF' - that an official deadline may be stated only inside a PDF rather than on an HTML page - could not be checked.",
+                                                                                                  "No logo probe was possible, so logo is null for lack of access and not as a factual finding that no official logo exists."
+                                                                                              ],
+                                                             "source_citations":  [],
+                                                             "researched_by":  "w1_03a1"
+                                                         },
+                        "logo_override":  null,
+                        "research_notes":  {
+                                               "logo":  "Not attemptable. The official host dfat.gov.au never returned any content, so no logo URL, favicon or brand asset could be probed. Logo is null because no evidence exists, NOT because no official logo exists.",
+                                               "unverified":  [
+                                                                  "The entire record is unverified because the awarding body's official site was unreachable.",
+                                                                  "Stored deadline_date 2026-04-30, the 'Tuesday 30 April 2026 at 11:59 pm AEST' display string, the funding figure AUD 20146 per year and the funding type were not checkable.",
+                                                                  "Stored official_source (DFAT), country, degree level, status and eligibility were not checkable."
+                                                              ],
+                                               "substitution":  "None. No logo substitution and no field change were made for an unreachable record - doing so would risk inventing facts, dates, amounts or URLs without official citations.",
+                                               "official_pages_read":  [],
+                                               "degree_level_confirmed":  "Not confirmed - the awarding body's official site was unreachable.",
+                                               "url_observed":  "https://www.dfat.gov.au/people-to-people/australia-awards/australia-awards-scholarships - NO RESPONSE on all three attempts.",
+                                               "contradictions":  "No contradiction can be asserted without official evidence. The stored values are neither confirmed nor refuted; they remain unverified and are left exactly as found.",
+                                               "skeleton":  "Record 30 is unreachable. The awarding body's official site returned no content at all, so nothing could be verified, corrected or cropped, and no logo could be probed. It requires a live re-check by an agent with access to www.dfat.gov.au.",
+                                               "unreachable_detail":  "Tried three routes on the official host: https://www.dfat.gov.au/people-to-people/australia-awards/australia-awards-scholarships (both the webfetch tool and direct HTTP), https://www.dfat.gov.au/people-to-people/australia-awards (both the webfetch tool and direct HTTP), and https://www.dfat.gov.au/people-to-people/australia-awards/australia-awards-scholarships via direct HTTP. Every attempt timed out or failed with a transport error, with no HTTP status returned. This is a network-level block/timeout, not a 404: the URLs come from the stored record's official source and official updates fields and resolve to a real, live site that simply cannot be reached from this environment. Because the brief forbids inventing facts, dates, amounts or URLs, no stored value was changed and no alternative URL was guessed.",
+                                               "blocker":  "Network-level timeout/transport error on www.dfat.gov.au (no HTTP status returned, so not a 404). Requires an agent outside the blocked environment, or a retry later, to verify the 30 April 2026 deadline, the AUD 20146 funding figure and the missing logo."
+                                           }
+                    }
+                ]
+}

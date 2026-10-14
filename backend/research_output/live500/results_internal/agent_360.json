@@ -1,0 +1,247 @@
+{
+  "agent": {
+    "agent_id": "agent_360",
+    "batch": "r2_05",
+    "researched_at": "2026-10-10T18:58:20Z",
+    "research_mode": "LIVE",
+    "coverage": 2
+  },
+  "id": 587,
+  "records": [
+    {
+      "id": 587,
+      "identity": {
+        "name": "Killam Master-Doctoral Scholarship",
+        "awarding_body": "Dalhousie University Faculty of Graduate Studies",
+        "issuing_authority": "Dalhousie University, Faculty of Graduate Studies",
+        "official_source_urls": [
+          "https://www.dal.ca/faculty/gradstudies/finance-your-studies/scholarships-bursaries/killam-master-doctoral.html"
+        ],
+        "application_link": "https://www.dal.ca/faculty/gradstudies/finance-your-studies/scholarships-bursaries/killam-master-doctoral.html",
+        "catalogue_url": "https://www.dal.ca/faculty/gradstudies/finance-your-studies/scholarships-bursaries.html",
+        "official_updates_url": "https://www.dal.ca/faculty/gradstudies/finance-your-studies/scholarships-bursaries/killam-master-doctoral.html",
+        "status": "open",
+        "verifiable_urls": [
+          {
+            "url": "https://www.dal.ca/faculty/gradstudies/finance-your-studies/scholarships-bursaries/killam-master-doctoral.html",
+            "publisher": "Dalhousie University",
+            "kind": "scholarship page"
+          }
+        ]
+      },
+      "description": "The Killam Master-Doctoral Scholarship at Dalhousie University supports doctoral students for up to three years of study, with a base value of up to $42,000 per year paid as $14,000 per term. There are two competition rounds for non-Tri-agency applicants, and eligible non-Canadian students may use the award only for study and research in Canada. The award can be topped up to $48,000 per year through the CGRS-D competition, and recipients may claim a relocation allowance that reimburses travel to Nova Scotia up to the lowest cost airfare by the most direct route.",
+      "official": {
+        "program_type": "Doctoral scholarship",
+        "eligibility": [
+          "Full-time doctoral students at Dalhousie University",
+          "Canadian students and international students are both eligible",
+          "Eligible non-Canadian students may use the award only for study and research in Canada",
+          "Eligible international applicants apply through round two only; Canadian applicants apply through round one or round two",
+          "Students holding other Tri-agency awards are not eligible, and students who have held the Killam for six terms (24 months) or more as of May 1 of the award year are not eligible to apply for a further award"
+        ],
+        "benefits": [
+          "Base value of up to $42,000 per year ($14,000 per term) for up to three years of study",
+          "Top-up from $42,000 to $48,000 per year if the recipient also receives a CGRS-D award",
+          "Relocation allowance reimbursing travel to Nova Scotia up to the lowest cost airfare by the most direct route",
+          "The award becomes partially or fully honorary in terms where the recipient also holds other Faculty of Graduate Studies-managed scholarships"
+        ],
+        "selection_criteria": [
+          "Two-round competition; round one and round two submissions are reviewed in sequence and second-round applicants may be considered for funds not awarded in round one"
+        ],
+        "application_process": "Applications are submitted to the Faculty of Graduate Studies through the scholarship platform, with an application window and a scholarship deadline for each round. Offers are sent by email; if you do not receive an offer you may submit your application again in the next round, but you may not have two separate applications in the competition simultaneously. The scholarship may be postponed for parental leave but may not be transferred to another university.",
+        "duration": "Up to 3 years",
+        "key_dates": [
+          "Round one closes: 16 October 2026 at midnight Atlantic Time",
+          "Round two opens: 1 December 2026, submissions due 31 January 2027 at midnight Atlantic Time",
+          "Award offers sent by email by: 15 May 2027"
+        ]
+      },
+      "verification": {
+        "confidence": "high",
+        "deadlines": [
+          {
+            "label": "Round one (deadline)",
+            "date": "2026-10-16",
+            "date_display": "16 October 2026 at midnight Atlantic Time",
+            "note": "Closes 16 October 2026 for Canadian and international applicants who have not received Tri-agency funding."
+          },
+          {
+            "label": "Round two (opens 1 December 2026; submissions due 31 January 2027)",
+            "date": "2027-01-31",
+            "date_display": "31 January 2027 at midnight Atlantic Time",
+            "note": "Round two opens 1 December 2026 and submissions are due 31 January 2027 at midnight Atlantic Time. Eligible international applicants apply through round two only."
+          }
+        ],
+        "deadline_central": "2027-01-31",
+        "deadline_display": "Round two submissions due 31 January 2027 at midnight Atlantic Time (round one closes 16 October 2026)",
+        "deadline_note": "No fixed application cycle. Dates are per round: round one closes 16 October 2026 at midnight AT; round two opens 1 December 2026 and submissions are due 31 January 2027 at midnight AT. Offers are emailed by 15 May 2027. IMPORTANT UPDATE: this differs from the dates previously recorded for this award, which listed January 5, 2027 and February 28, 2027; the live Dalhousie page publishes 31 January 2027 for round two.",
+        "application_cycle": "Two rounds per year; round one closes 16 October 2026 and round two runs 1 December 2026 - 31 January 2027, with offers emailed by 15 May 2027.",
+        "funding_amount": 42000,
+        "funding_currency": "CAD",
+        "funding_period": "per year",
+        "tuition_coverage_note": "Not stated. Dalhousie publishes the award value ($14,000 per term, up to $42,000 per year) without stating that tuition fees are covered.",
+        "living_cost_coverage": null,
+        "travel_coverage": true,
+        "tuition_coverage": null,
+        "fully_funded": false,
+        "english_requirement": null,
+        "status_note": "Status computed at research time (10 October 2026). Round one closes on 16 October 2026 and round two remains open until 31 January 2027, so the competition is OPEN.",
+        "source_citations": [
+          {
+            "url": "https://www.dal.ca/faculty/gradstudies/finance-your-studies/scholarships-bursaries/killam-master-doctoral.html",
+            "claim": "Killam Master-Doctoral Scholarship: base value up to $42,000 per year ($14,000 per term) for up to three years; CGRS-D top-up to $48,000 per year; round one closes 16 October 2026 at midnight AT; round two opens 1 December 2026 with submissions due 31 January 2027 at midnight AT; offers by email by 15 May 2027; eligible non-Canadian students may use the award only for study and research in Canada; relocation allowance reimbursing travel to Nova Scotia up to lowest cost airfare by most direct route, claimed by the end of the first term; award becomes honorary in terms where the recipient holds other FGS-managed scholarships; eligibility limited to students who have held the award for fewer than six terms (24 months) as of May 1 of the award year; annual report to fgs.slo@dal.ca by July 31.",
+            "retrieved_at": "2026-10-10T18:58:20Z"
+          }
+        ],
+        "not_confirmed": [
+          "tuition_coverage - the page does not state that tuition fees are covered",
+          "living_cost_coverage - the page states the award value without specifying what it covers",
+          "English language requirement - not published on the scholarship page (English language requirements are set separately at admission level by the Faculty of Graduate Studies)",
+          "documents - the scholarship page does not publish a document list; the platform application form is the required route"
+        ],
+        "documents": null
+      },
+      "applicant_utility": {
+        "description": "The Killam is worth up to $42,000 a year for three years, and the calendar matters more than the money: round one closes on 16 October 2026 at midnight Atlantic Time, and round two opens only on 1 December 2026 with submissions due 31 January 2027. Note that eligible international applicants may only apply through round two, whereas Canadians can use either round.",
+        "eligibility_tips": [
+          "Check the six-term rule: if you have already held the Killam for 24 months or more as of 1 May of the award year, you cannot apply again, so count your terms carefully before investing effort in the application.",
+          "If you hold other Tri-agency funding you are not eligible for the Killam, but if you win a CGRS-D award the Killam increases from $42,000 to $48,000 per year.",
+          "International students can only apply through round two, so do not spend time preparing a round-one application that the Faculty of Graduate Studies will not consider."
+        ],
+        "application_tips": [
+          "Use the two rounds deliberately: unsuccessful round-one applicants may be considered for funds in round two, and second-round applicants may be considered for funds not awarded in round one, so an early refusal is not a final one.",
+          "Never hold two separate applications in the competition at the same time; if your round-one bid fails, apply again in the next round.",
+          "Claim your relocation allowance before the end of your first term: it reimburses travel to Nova Scotia up to the lowest cost airfare by the most direct route and does not cover family travel or personal effects.",
+          "File the annual report with fgs.slo@dal.ca by 31 July every year, and remember that the award becomes partially or fully honorary in any term where you also hold another Faculty of Graduate Studies-managed scholarship.",
+          "The award can be postponed for parental leave but cannot be transferred to another university, so plan it with a single doctoral programme in mind."
+        ],
+        "documents": null,
+        "mistakes_to_avoid": [
+          "Applying as an international applicant in round one, when only round two is open to you.",
+          "Submitting to both rounds at once, which the rules prohibit.",
+          "Assuming the deadline is midnight local time: both rounds close at midnight Atlantic Time.",
+          "Forgetting the 31 July annual report, which is a condition of continuing support.",
+          "Counting on the relocation allowance for family members or personal effects, which it explicitly does not cover."
+        ],
+        "deadline_notes": "Round one: 16 October 2026 at midnight AT. Round two: opens 1 December 2026, submissions due 31 January 2027 at midnight AT. Offers are emailed by 15 May 2027. If you do not receive a round-one offer, submit again in round two."
+      }
+    },
+    {
+      "id": 588,
+      "identity": {
+        "name": "Dalhousie Research Excellence Scholarship (DRES)",
+        "awarding_body": "Dalhousie University Faculty of Graduate Studies",
+        "issuing_authority": "Dalhousie University, Faculty of Graduate Studies",
+        "official_source_urls": [
+          "https://www.dal.ca/faculty/gradstudies/finance-your-studies/scholarships-bursaries/research-excellence-scholarship.html"
+        ],
+        "application_link": "https://www.dal.ca/faculty/gradstudies/finance-your-studies/scholarships-bursaries/research-excellence-scholarship.html",
+        "catalogue_url": "https://www.dal.ca/faculty/gradstudies/finance-your-studies/scholarships-bursaries.html",
+        "official_updates_url": "https://www.dal.ca/faculty/gradstudies/finance-your-studies/scholarships-bursaries/research-excellence-scholarship.html",
+        "status": "open",
+        "verifiable_urls": [
+          {
+            "url": "https://www.dal.ca/faculty/gradstudies/finance-your-studies/scholarships-bursaries/research-excellence-scholarship.html",
+            "publisher": "Dalhousie University",
+            "kind": "scholarship page"
+          }
+        ]
+      },
+      "description": "The Dalhousie Research Excellence Scholarship (DRES) supports research at Dalhousie University's Department of Biochemistry and Molecular Biology, providing $35,000 annually for up to four years. The award consists of $28,000 from Graduate Studies and $7,000 from the student's supervisor or programme. Students who intend to start their PhD at Dalhousie between January 2027 and January 2028 are eligible, and the scholarship applies for up to 48 months of study and not beyond the end of the student's fourth year of doctoral study.",
+      "official": {
+        "program_type": "Doctoral research scholarship",
+        "eligibility": [
+          "Students who intend to start their PhD at Dalhousie University between January 2027 and January 2028",
+          "Awards are available for research at Dalhousie University's Department of Biochemistry and Molecular Biology"
+        ],
+        "benefits": [
+          "$35,000 annually for up to four years",
+          "$28,000 from Graduate Studies plus $7,000 from the student's supervisor or programme",
+          "Full CGRS-D value for Interdisciplinary Development awards: $28,000 from Graduate Studies plus $7,000 from the supervisor/programme, with the balance from Graduate Studies for CGRS-D applicants"
+        ],
+        "selection_criteria": [
+          "Two-round competition with offers sent by email; unsuccessful round one applicants are considered in round two"
+        ],
+        "application_process": "Applications are submitted to the Faculty of Graduate Studies, and funds are administered by Graduate Studies only after the student is admitted to Dalhousie and registered full-time. Students who indicate they will start their PhD between January 2027 and January 2028 may apply. Applications submitted in round two that are unsuccessful in round one are considered for funds by May. An annual report (available through the Student Award page) must be filed with fgs.slo@dal.ca by 31 July each year.",
+        "duration": "Up to 4 years (maximum 48 months)",
+        "key_dates": [
+          "Round one deadline: 16 October 2026",
+          "Round one offers sent by email by: 2 December 2026",
+          "Round two opens: 1 December 2026",
+          "Round two submissions due: 31 January 2027",
+          "Round two offers sent by email by: 15 May 2027"
+        ]
+      },
+      "verification": {
+        "confidence": "medium",
+        "deadlines": [
+          {
+            "label": "Round one (deadline)",
+            "date": "2026-10-16",
+            "date_display": "16 October 2026",
+            "note": "Round one deadline; offers sent by email by 2 December 2026."
+          },
+          {
+            "label": "Round two (opens 1 December 2026; submissions due 31 January 2027)",
+            "date": "2027-01-31",
+            "date_display": "31 January 2027",
+            "note": "Round two opens 1 December 2026; offers sent by email by 15 May 2027."
+          }
+        ],
+        "deadline_central": "2027-01-31",
+        "deadline_display": "Round two submissions due 31 January 2027 (round one deadline 16 October 2026)",
+        "deadline_note": "No fixed application cycle; dates are per round. Round one deadline 16 October 2026 (offers by 2 December 2026); round two opens 1 December 2026 with submissions due 31 January 2027 (offers by 15 May 2027). This differs from the dates previously recorded for this award, which listed February 28, 2027; the live Dalhousie page publishes 31 January 2027 for round two.",
+        "application_cycle": "Two rounds per year; round one deadline 16 October 2026 and round two 1 December 2026 - 31 January 2027.",
+        "funding_amount": 35000,
+        "funding_currency": "CAD",
+        "funding_period": "per year",
+        "tuition_coverage_note": "Not stated. The page publishes $28,000 from Graduate Studies plus $7,000 from the supervisor or programme without saying that tuition fees are covered.",
+        "living_cost_coverage": null,
+        "travel_coverage": null,
+        "tuition_coverage": null,
+        "fully_funded": false,
+        "english_requirement": null,
+        "status_note": "Status computed at research time (10 October 2026). Round one (16 October 2026) and round two (31 January 2027) are both still ahead, so the programme is OPEN.",
+        "source_citations": [
+          {
+            "url": "https://www.dal.ca/faculty/gradstudies/finance-your-studies/scholarships-bursaries/research-excellence-scholarship.html",
+            "claim": "DRES: $35,000 annually for up to four years, made up of $28,000 from Graduate Studies and $7,000 from the student's supervisor or programme; supports research at Dalhousie's Department of Biochemistry and Molecular Biology; for students who intend to start their PhD at Dalhousie between January 2027 and January 2028; funds administered only after admission and full-time registration; round one deadline 16 October 2026 with offers by email by 2 December 2026; round two opens 1 December 2026 with submissions due 31 January 2027 and offers by email by 15 May 2027; unsuccessful round one applications are considered in round two; annual report to fgs.slo@dal.ca by 31 July.",
+            "retrieved_at": "2026-10-10T18:58:20Z"
+          }
+        ],
+        "not_confirmed": [
+          "tuition_coverage - not stated by Dalhousie",
+          "living_cost_coverage - not stated by Dalhousie",
+          "travel_coverage - not stated by Dalhousie",
+          "documents - the scholarship page does not publish a document list",
+          "English language requirement - not published on the scholarship page (set separately at admission level)"
+        ],
+        "documents": null
+      },
+      "applicant_utility": {
+        "description": "DRES is a departmental award, not a general scholarship: it supports research at Dalhousie's Department of Biochemistry and Molecular Biology, and eligibility depends on when you intend to start your doctorate (between January 2027 and January 2028). The value is $35,000 a year, split $28,000 from Graduate Studies and $7,000 from your supervisor or programme - which means the supervisor's confirmation matters as much as your own application.",
+        "eligibility_tips": [
+          "Confirm your intended PhD start date falls between January 2027 and January 2028; the page makes that window the eligibility test.",
+          "Because the award funds work in one department, secure a supervisor in Biochemistry and Molecular Biology before applying, since $7,000 of the total has to come from that supervisor or programme.",
+          "The award is capped at 48 months and cannot continue past the end of your fourth year of doctoral study, so plan the four-year timeline in your research proposal."
+        ],
+        "application_tips": [
+          "Apply in the round you can actually complete. Round one closes on 16 October 2026 with offers by 2 December 2026; round two runs from 1 December 2026 to 31 January 2027 with offers by 15 May 2027.",
+          "If round one is unsuccessful, your application is considered again in round two for funds that were not awarded, so do not withdraw entirely.",
+          "Do not submit multiple applications in the competition: submit your application in one round only.",
+          "Funds are administered by Graduate Studies only after you are admitted to Dalhousie and registered full-time, so your first payment follows registration rather than the offer email.",
+          "File the annual report with fgs.slo@dal.ca by 31 July every year; there is a form published on the Student Award page."
+        ],
+        "documents": null,
+        "mistakes_to_avoid": [
+          "Applying with an intended start date outside the January 2027 - January 2028 window.",
+          "Expecting payment at the offer stage - administration starts only after admission and full-time registration.",
+          "Submitting to both rounds at once.",
+          "Forgetting the 31 July annual report.",
+          "Assuming the award can extend past the end of the fourth year of doctoral study; it cannot."
+        ],
+        "deadline_notes": "Round one deadline: 16 October 2026, offers emailed by 2 December 2026. Round two: opens 1 December 2026, submissions due 31 January 2027, offers emailed by 15 May 2027. Unsuccessful round one applications are considered in round two."
+      }
+    }
+  ]
+}

@@ -1,0 +1,125 @@
+{
+  "agent": "agent_132",
+  "records": [
+    {
+      "id": 335,
+      "official": {
+        "official_source_urls": [
+          "https://www.aalto.fi/en/international-students/scholarships-study-right-started-on-or-after-1-august-2025",
+          "https://www.aalto.fi/en/admission-services/scholarships-and-tuition-fees"
+        ],
+        "application_link": "https://www.aalto.fi/en/international-students/scholarships-study-right-started-on-or-after-1-august-2025",
+        "catalogue_url": "https://www.aalto.fi/en/study-options",
+        "official_updates_url": "https://www.aalto.fi/en/admission-services/scholarships-and-tuition-fees",
+        "deadline_central": null,
+        "deadline_central_display": "Applied for during the admission process; the scholarship terms must be agreed by the given deadline after the award",
+        "deadline_note": "Aalto ties the scholarship to the admission round's application period and does not state those dates on the scholarship page; after an award the holder must agree to the terms by the stated deadline or the award is not valid.",
+        "application_cycle": "Applied for during the relevant degree programme admission round (study rights starting on or after 1 August 2025)",
+        "status": "OPEN",
+        "status_note": "Aalto states that tuition-fee students may apply for the scholarship during the admission process; the scholarship page gives no admission-round dates and notes that the number of available scholarships is very limited and programmes may decide not to grant any.",
+        "tuition_coverage_note": "\"Aalto University Excellence Scholarships are awarded as tuition fee waivers, covering the full tuition fee\" for the target time of the programme; \"Aalto University Excellence Scholarships do not cover living costs\".",
+        "funding_amount": null,
+        "funding_currency": "EUR",
+        "funding_period": "per academic year",
+        "tuition_coverage": true,
+        "living_cost_coverage": false,
+        "travel_coverage": false,
+        "fully_funded": false,
+        "benefits": [
+          "100% tuition fee waiver covering the full tuition fee during the target time of the programme (three years full-time for a bachelor's, two years full-time for a master's)",
+          "Automatic continuation to the second, or third for a bachelor's, academic year after an annual study-progress check",
+          "Possible additional one-term scholarship beyond the standard duration (5th or 7th term) as a 100% waiver",
+          "Aalto Reserve Scholarships of 100% tuition fee waiver for students who become liable for fees mid-studies",
+          "Scholarship value is generally tax free up to EUR 26,269.46 per calendar year (2024 value, adjusted annually)"
+        ],
+        "eligibility": [
+          "Liable to pay tuition fees at Aalto University, i.e. a non-EU/non-EEA student in a programme taught in English",
+          "Applying through the normal admission process for the degree programme",
+          "High academic achievement measured against the programme's evaluation criteria, since the scholarship is merit-based and competitive",
+          "Full-time study and study according to the approved personal study plan (OPS) once awarded"
+        ],
+        "requirements": [
+          "Indicate the scholarship in the same application form used for the degree programme admission",
+          "Agree to the terms of the scholarship by the given deadline, without which the scholarship is not valid",
+          "Maintain satisfactory study progress, reviewed each term and confirmed by the end of March each spring",
+          "Resolve any missing credits or discontinuation risk by the end of April, in time for enrolment in May"
+        ],
+        "documents": [
+          "The degree programme admission application, in which the scholarship is requested",
+          "Signed acceptance of the scholarship terms by the stated deadline",
+          "An approved personal study plan (OPS) supporting systematic progress"
+        ],
+        "selection_criteria": [
+          "Merit-based and granted on a competitive basis to the highest-achieving applicants based on the programme's evaluation criteria",
+          "A very limited number of scholarships is available and programmes may also decide not to grant any scholarships",
+          "For bachelor's graduates continuing to an Aalto master's: bachelor's completed within target time with a weighted average grade of at least 3.50",
+          "Continuation is reviewed annually: graduation delayed by more than one term, or progress below 45 ECTS per academic year, leads to discontinuation"
+        ],
+        "coverage": [
+          "The full tuition fee for the target time of the degree programme",
+          "No coverage of living costs, travel or other study-related costs"
+        ],
+        "application_method": [
+          "Apply to the bachelor's or master's programme in the normal admission round",
+          "Indicate the Aalto University Excellence Scholarship in the same application form",
+          "Await the admission and scholarship decision, then agree to the scholarship terms by the given deadline",
+          "For bachelor's graduates continuing in an Aalto master's, apply for the scholarship in Sisu when filling in the bachelor's degree graduation request"
+        ],
+        "application_route": "One admission application form, with the scholarship requested inside it; there is no separate scholarship application.",
+        "study_mode": "Full-time study for the target time of the degree programme",
+        "citizenship_residency": "Open to non-EU/non-EEA applicants who are liable to pay tuition fees at Aalto; EU/EEA and Swiss citizens do not pay tuition fees and are outside the scheme.",
+        "international_eligibility": "Yes - the programme seeks to recognise talented non-EU/non-EEA students from across the world.",
+        "subject_or_agency_requirement": "Available for Aalto's English-taught bachelor's and master's programmes, but international joint programmes with their own tuition fees and scholarship systems follow their own regulations.",
+        "research_requirement": null,
+        "duration": "Target time of the degree programme: three years full-time for a bachelor's degree and two years full-time for a master's degree",
+        "description": "Aalto University's scholarship programme awards tuition fee waivers for academic excellence to students liable to pay tuition fees, with the Excellence Scholarship covering the full tuition fee for the target time of the degree. Aalto states plainly that it does not offer any university-wide scholarship to cover living costs in Finland.",
+        "region": "Europe",
+        "program_type": "Merit-based 100% tuition fee waiver",
+        "english_requirement": null
+      },
+      "verification": {
+        "source_citations": [
+          "https://www.aalto.fi/en/international-students/scholarships-study-right-started-on-or-after-1-august-2025",
+          "https://www.aalto.fi/en/admission-services/scholarships-and-tuition-fees"
+        ],
+        "last_verified_date": "2026-10-10",
+        "verification_status": "confirmed",
+        "confidence": "high",
+        "notes": "Read Aalto's scholarship page for study rights starting on or after 1 August 2025 and its scholarships and tuition fees page, which publishes the tuition fee schedule by school (EUR 12,000-20,000 per academic year). No single scholarship amount is published because the award is a full waiver of a fee that varies by field, so funding_amount is left null."
+      },
+      "applicant_utility": {
+        "summary": "The Excellence Scholarship is a 100% tuition waiver, worth EUR 12,000 a year for Business or Technology bachelor's and up to EUR 20,000 a year for Art and Architecture master's, but Aalto states it funds no living costs at all - so you still need roughly EUR 1,000 a month of your own money. There is no separate application: you tick the scholarship inside the admission form, and your academic record against the programme's own evaluation criteria decides the outcome. Because the award is checked every term and requires at least 45 ECTS a year, falling behind costs you the waiver and your residence permit at the same time.",
+        "best_fit": "High-achieving non-EU/EEA applicants with a strong academic record and secure personal funding of roughly EUR 1,000 a month for living costs in Finland.",
+        "application_readiness_checklist": [
+          "Confirm the tuition fee for your exact programme and field, since the waiver equals that figure rather than a fixed amount",
+          "Request the scholarship inside the admission application form - a separate application does not exist",
+          "Build a personal study plan that keeps you above 45 ECTS per academic year",
+          "Check whether your programme is an international joint programme with its own scholarship rules",
+          "Plan for the annual progress review by the end of March and fix any missing credits by the end of April",
+          "If you are an Aalto bachelor's graduate, apply for the master's scholarship in Sisu when submitting the graduation request"
+        ],
+        "common_rejection_risks": [
+          "Assuming the programme will definitely make awards - Aalto warns programmes may grant none",
+          "Relying on living-cost support, which the university explicitly does not provide",
+          "Slipping below the progress threshold after award, which triggers discontinuation of both the scholarship and the residence permit basis",
+          "Blowing the scholarship terms deadline after the award, which invalidates the scholarship",
+          "Expecting the Pekka Mattila or COLFUTURO/FUNED discounts to stack with the Excellence Scholarship, which they do not"
+        ],
+        "estimated_uncovered_costs": "All living expenses and study-related costs in Finland, including accommodation, food and transport, plus any tuition share the waiver does not touch; Aalto directs students to finance these from their own resources.",
+        "document_audit": [
+          "The only real paperwork is the admission application plus a signed acceptance of the scholarship terms by the deadline",
+          "Programme-specific tuition fees and scholarship rules must be checked on the programme page, not the central page",
+          "For the additional-term scholarship you need a supervisor's confirmation that the thesis is progressing to plan",
+          "Reserve Scholarship applicants must document a permit change or a Finnish-to-English medium switch by emailing tuitionfees@aalto.fi"
+        ],
+        "alerts": [
+          "The Finnish tax authority is notified of every scholarship; above the annual tax-free limit (EUR 26,269.46 in 2024) the excess is generally taxable, and the limit counts all Aalto awards combined",
+          "Scholarship decisions cannot be appealed under the Finnish Universities Act",
+          "Extending a bachelor's to a 7th term via tuition-fee discontinuation forfeits the route to the Excellence Scholarship for a continuing master's",
+          "Do not let an external funding award replace the waiver: central tuition waivers cannot be applied for mid-studies if another scholarship already covers part of the degree"
+        ],
+        "submission_workflow": "Admission application form including the scholarship request, programme-level evaluation of the highest-achieving applicants, then acceptance of the scholarship terms within the stated deadline."
+      }
+    }
+  ]
+}

@@ -1,0 +1,101 @@
+{
+ "agent": "agent_126",
+ "assignment_count": 1,
+ "scholarships": [
+  {
+   "id": 324,
+   "title": "2026/2027 Chinese Government Scholarship - Embassy of the People's Republic of China in the Commonwealth of The Bahamas",
+   "country": "China",
+   "degree": "Undergraduate, Master's, Doctoral, Advanced General Studies, Advanced Higher Studies",
+   "funding_label": "Fully Funded",
+   "status": "upcoming",
+   "official_source": "Embassy of the People's Republic of China in the Commonwealth of The Bahamas",
+   "official_source_url": "https://bs.china-embassy.gov.cn/eng/sggg/202510/t20251028_11742717.htm",
+   "application_link": "https://bs.china-embassy.gov.cn/eng/sggg/202510/t20251028_11742717.htm",
+   "catalogue_url": null,
+   "official_updates_url": "https://bs.china-embassy.gov.cn/eng/sggg",
+   "existing": {
+    "funding_amount": null,
+    "funding_currency": null,
+    "funding_period": null,
+    "tuition_coverage": 1,
+    "living_cost_coverage": null,
+    "travel_coverage": 1,
+    "fully_funded": 0,
+    "description": "The Embassy of the People's Republic of China in the Commonwealth of The Bahamas opened the 2026/2027 Chinese Government Scholarship, comprising one bilateral place and three unilateral places for undergraduate, master's, doctoral, advanced general studies and advanced higher studies programmes in China. Both strands are described as full scholarships; the bilateral place includes international travel expenses while the unilateral places do not. Applicants submit the online application and documents through the China Scholarship Council system at www.campuschina.org under Bahamian Program Category A, agency number 0441, and no paper material is required.",
+    "eligibility": [
+     "Be a citizen of a country other than the People's Republic of China, and be in good health both mentally and physically",
+     "High school graduate under the age of 25 when applying for undergraduate programs",
+     "Bachelor's degree holder under the age of 35 when applying for master's programs",
+     "Master's degree holder under the age of 40 when applying for doctoral programs",
+     "High school graduate (at least) under the age of 45 when applying for general scholar programs",
+     "Master's degree holder or an associate professor (or above) under the age of 50 when applying for senior scholar programs",
+     "Take the China Scholastic Competency Assessment (CSCA, www.csca.cn) and upload a valid score report when applying for bachelor programs",
+     "Chinese proficiency of HSK Level 3 for Chinese-taught general scholar programs (students of Chinese language are exempted)",
+     "Chinese proficiency of HSK Level 3 for Chinese-taught senior scholar programs",
+     "Chinese proficiency of HSK Level 4 for Chinese-taught master's or doctoral programs",
+     "Meet the admission requirements of the applied universities in terms of academic ability, language proficiency and other relevant criteria"
+    ],
+    "eligibility_summary": "Applicants must be citizens of a country other than the People's Republic of China, be in good health, and satisfy the age ceiling for their level: under 25 for undergraduate, under 35 for master's, under 40 for doctoral, under 45 for general scholar and under 50 for senior scholar.",
+    "benefits": [
+     "Bilateral Scholarship: 1 place, full scholarship, includes international travel expenses",
+     "Unilateral Scholarship: 3 places, full scholarship, does not include international travel expenses",
+     "Admission notice and JW201 visa form downloadable from the system once selected"
+    ],
+    "coverage": [
+     "Bilateral Scholarship (1 place): full scholarship including international travel expenses",
+     "Unilateral Scholarship (3 places): full scholarship excluding international travel expenses"
+    ],
+    "requirements": [
+     "Contact favourite Chinese universities and obtain the Pre-Admission Documents before submitting the online application",
+     "Take the CSCA exam on December 21, 2025 or January 25, 2026 for a September 2026 intake",
+     "Uploaded supporting documents must be clear, authentic and valid"
+    ],
+    "documents": [
+     "Application Form for Chinese Government Scholarship (in Chinese or English)",
+     "Passport home page: clear scanned copy of the information page of an ordinary passport, valid for at least 12 months from the expected start date of study",
+     "Notarized highest diploma; prospective diploma winners must submit official proof of student status from their current school",
+     "Academic transcripts, with notarized Chinese or English translations if not in Chinese or English",
+     "Language qualification certificates: valid HSK score report for Chinese-taught master's, doctoral, general scholar and senior scholar programs, or IELTS/TOEFL-type certificates for programmes taught in other languages",
+     "CSCA Score Report for applicants seeking a bachelor's degree",
+     "Pre-Admission Documents issued by the universities applied to, such as a pre-admission notice or an invitation letter",
+     "Study Plan or Research Proposal in Chinese or English (minimum 200 words for undergraduates, 500 for non-degree students, 800 for postgraduates)",
+     "Two letters of recommendation in Chinese or English from professors or associate professors, for graduate or senior scholar programs",
+     "Example of Art/Other Supporting Documents for art or design related majors",
+     "Valid documents of the applicant's legal guardians in China if the applicant is under 18",
+     "Photocopy of the completed Foreigner Physical Examination Form if staying in China for more than 6 months",
+     "Non-criminal record report issued by the local public security authority, usually issued within 6 months prior to submission"
+    ],
+    "english_requirement": "Applicants for programs taught in other languages are required to provide relevant language proficiency certificates, such as IELTS or TOEFL score reports, in accordance with the requirements of each university",
+    "application_method": [
+     "Online application and document upload in the China Scholarship Council system at www.campuschina.org, using Bahamian Program Category A, Agency Number 0441",
+     "No paper material is required"
+    ],
+    "selection_notes": null,
+    "best_fit": null,
+    "notes": null,
+    "duration": "Bachelor's: 2-4 years; Master's: 1-3 years; Doctoral: 2-4 years",
+    "application_period": "2026/2027 cycle ran from the 2025-10-28 notice to 2026-02-14; the Embassy forwarded recommended applications to the China Scholarship Council between 2026-02-24 and 2026-03-03, and results became available in the system in July-August 2026.",
+    "deadline_display": "The notice required the online application and documents to be submitted in the system \"before February 14, 2026\"; that date has passed and the Embassy has published no date for the following cycle.",
+    "deadline_date": null,
+    "region": "Asia",
+    "program_type": "1. Bilateral Scholarship",
+    "applicant_utility": null,
+    "official_details": null
+   },
+   "missing_fields": [
+    "funding_amount",
+    "funding_currency",
+    "funding_period",
+    "living_cost_coverage",
+    "selection_notes",
+    "best_fit",
+    "notes",
+    "deadline_date",
+    "applicant_utility",
+    "official_details"
+   ]
+  }
+ ],
+ "result_file": "C:\\Users\\GopaL\\Desktop\\Projects folder\\ScholarZone\\backend\\research_output\\live500\\results\\agent_126.json"
+}

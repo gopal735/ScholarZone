@@ -1,0 +1,486 @@
+// rebuild_05.js — rewrite the slot-05 output file correctly.
+//
+// Two defects in the previous slot-05 artifact are fixed here:
+//   (1) SCHEMA. The file was a top-level JSON ARRAY with one 79-key flat record — the shape
+//       SCHEMA_CONTRACT.md itself labels as v1 and "wrong". The v2 contract, AGENT_TASK_CONTRACT.md
+//       and validate_bachelor.js ALL require exactly six top-level keys. As an array with no
+//       new_scholarship block, the record was invisible to the validator's content-based
+//       discovery, so slot 05 was silently missing.
+//   (2) TARGET. The subject was University of Padova's Padua International Excellence Scholarship.
+//       backend/config/programme_details.json already contains that award (LIVE ids 136 and 370,
+//       host www.unipd.it, registrable domain unipd.it), and the assignment table was filtered
+//       against exactly that collision. RESEARCH_PROTOCOL.md section 5 therefore requires a
+//       substitution.
+//
+// Substitute target: the ERSU di Messina borsa di studio for the right to university study,
+// A.A. 2026/2027 — Italy (Europe), funds first-cycle degree programmes (laurea triennale),
+// and carries the international-student provisions that match the original target's subject.
+// Every figure below was read out of the official call and re-verified during this session.
+const fs = require('fs');
+
+const DIR = 'C:/Users/GopaL/Desktop/Projects folder/ScholarZone/research/bachelor/';
+const F = DIR + '05-italy-unipd-undergraduate-scholarships.json';
+const D = '2026-10-03';
+
+const CALL = 'https://www.ersumessina.it/wp-content/uploads/2026/07/Bando-di-concorso-2026_2027_signed.pdf';
+const HOME = 'https://www.ersumessina.it/';
+const LOGO = 'https://www.ersumessina.it/wp-content/uploads/2017/07/ERSUlogo-Colore-3.png';
+const AGENCY = 'E.R.S.U. di Messina - Ente Regionale per il diritto allo Studio Universitario';
+
+const rec = {
+  new_scholarship: {
+    name: 'Bando di concorso per l\'attribuzione di borse di studio, altri contributi economici e servizi, per il diritto allo studio universitario, per l\'A.A. 2026/2027 (ERSU di Messina)',
+    country: 'Italy',
+    region: 'Europe',
+    degree_levels: "Bachelor's",
+    funding_type: 'Need-based scholarship (borsa di studio) with free canteen service and, subject to availability, free accommodation, plus exemption from the regional right-to-study fee',
+    program_type: 'Regional right-to-study scholarship (concorso) awarded by the regional agency, applied for separately from university admission',
+    official_source: AGENCY,
+    official_source_url: CALL,
+    catalogue_url: HOME,
+    official_updates_url: HOME,
+    duration: 'Benefits are granted for the legal duration of the degree course plus one extra-year: seven semesters for a laurea triennale, five semesters for a laurea magistrale biennale, nine semesters for a laurea magistrale a ciclo unico of four years, eleven for five years and thirteen for six. For the first out-of-course semester the scholarship is paid at half the standard amount. The canteen and accommodation services run for the academic year. The scholarship is re-competed each academic year.',
+    deadline: '18 August 2026 at 14.00 (Italian time) for students enrolled, or enrolling, on laurea triennale, laurea magistrale and laurea magistrale a ciclo unico courses; OTP validation of the application by 18 August 2026 at 15.00 for international students and minors. A later window ran from 25 September 2026 to 13.00 on 16 November 2026 for doctoral and specialisation students. The window opened at 12.00 on 1 July 2026.',
+    deadline_date: '2026-08-18',
+    deadline_precision: 'day_and_time',
+    application_period: 'Annual competitive call for A.A. 2026/2027, published on 1 July 2026: applications from 1 July 2026 to 14.00 on 18 August 2026 for first-cycle (laurea triennale) and second-cycle degree students; from 25 September 2026 to 13.00 on 16 November 2026 for doctoral and specialisation students. The previous cycle closed on 18 August 2025.',
+    application_method: 'Separate application, not automatic on university admission. The applicant submits the online application on the ERSU di Messina student portal and validates it with the OTP sent to the e-mail and telephone number given; the application is paid for by no fee. The University of Messina is one of the institutions whose students may compete for this regional scholarship, but the University does not award it.',
+    status: 'closed',
+    is_verified: true,
+    last_verified_date: D,
+    description: "The borsa di studio of the Ente Regionale per il diritto allo Studio Universitario (E.R.S.U.) di Messina is the principal need-based funding instrument for students enrolled at Sicilian universities, including the University of Messina. It is awarded through an annual regional competition to students enrolled, or enrolling, on their first degree. Winners receive a monetary quota whose value is set by the ISEE band and by whether the student is in sede, pendolare or fuori sede or independent; the quota is Euro 7,171.11 per year for fuori sede or independent students in the standard ISEE band, Euro 4,190.71 for pendolari and Euro 2,890.16 for studenti in sede, raised by 15 per cent where ISEE is below half the maximum reference limit. Winners also receive free access to the Agency's canteen services and, subject to availability and on request, free accommodation, and are exempted from the regional right-to-study fee. Non-EU students may be admitted conditionally while documents are outstanding and can regularise their position by the dates the call sets.",
+    best_fit: 'Students enrolled, or enrolling, on their first degree at the University of Messina or another Sicilian university whose families meet the ISEE and ISPE economic thresholds of the call, particularly fuori sede students who need an accommodation place and free canteen meals, and students from low-income countries who can evidence their economic condition through the routes the call provides for them.',
+    funding_amount: 7171.11,
+    funding_currency: 'EUR',
+    funding_period: 'per academic year',
+    eligibility_summary: 'Open to students of any nationality, including students without Italian citizenship. Eligibility requires enrolment, or planned enrolment, for the achievement of a FIRST degree on a degree course at the University of Messina or another Sicilian institution; an economic condition with ISEE not exceeding Euro 22,500.00 and ISPE not exceeding Euro 53,000.00 for A.A. 2026/2027; and the academic merit set by the call. Students are excluded if they already hold a title of the same or a higher level, or if they have already received the scholarship in a previous programme at the same level and have not repaid it.',
+    eligibility: [
+      "Regular enrolment, or intent to enrol, for the achievement of the FIRST degree on a laurea course at the University of Messina or another Sicilian institution",
+      'Economic condition for A.A. 2026/2027: ISEE not exceeding Euro 22,500.00 and ISPE not exceeding Euro 53,000.00',
+      'Academic merit requirements set by art. 5.3 of the call, verified by the Agency through official acquisition of the valid credits registered for the course the student is enrolled on',
+      'Not already in possession of an academic title of the same level',
+      'Not having already received the scholarship in a previous programme of the same level without having repaid it',
+      'Free of charge: no application fee',
+      'No nationality restriction',
+    ],
+    coverage: [
+      'Monetary quota, whose value is set by the ISEE band and by student status: Euro 8,246.77 (fuori sede or independent), Euro 4,819.32 (pendolare) or Euro 3,323.68 (in sede) where ISEE is below half the maximum reference limit; Euro 7,171.11, Euro 4,190.71 and Euro 2,890.16 respectively in the standard band; progressively reduced to half, with minima of Euro 3,585.55, Euro 2,095.35 and Euro 1,445.08, above two-thirds of the reference limit',
+      'Free access to the ERSU canteen service for winners',
+      'Free accommodation in an ERSU residence for winners, subject to availability of the Agency and, for the relevant categories, on request',
+      "Exemption from the regional tax for the right to university study (tassa regionale)",
+      'Partial coverage of the cost of living; tuition, travel and other living costs are not covered',
+    ],
+    benefits: [
+      'Monetary quota paid in instalments by bank transfer to a current account or prepaid card with an Italian or SEPA IBAN in the beneficiary student\'s own name',
+      'Free canteen service (ristorazione) for winners',
+      'Free accommodation (posto letto) in an ERSU residence for winners, subject to availability',
+      "Exemption from the regional fee for the right to university study",
+      'Increase of 15% where ISEE is below half the maximum reference limit; a further 40% where the student has a disability under article 3 of Law 104/1992 or an invalidity of 66% or more; a further 20% for students enrolled in STEM courses; a further 20% for students simultaneously enrolled on two degree programmes',
+      "Students enrolled at the Noto and Priolo teaching poles, who cannot use the canteen, receive an increase of the scholarship of Euro 600,00 if in sede or pendolari and Euro 1.200,00 if fuori sede",
+      'Half scholarship for the first out-of-course semester; benefits end on graduation',
+    ],
+    requirements: [
+      'Submit the online application on the ERSU di Messina student portal within the call window',
+      'Hold an ISEE, or for international students an ISEE parificato ISEEU/ISPEU, relating to the applicant student, within the limits set for A.A. 2026/2027',
+      'Be enrolled, or enrol, for the first degree on a degree course at a Sicilian institution',
+      'Meet the merit requirements of art. 5.3 of the call, verified by the Agency through official acquisition of valid credits',
+      'Declare an Italian or SEPA-area IBAN in the student\'s own name for payment of the quota',
+      'International students upload the ISEEU and ISPEU parificato in the Fascicolo section of the student portal by 16 September 2026',
+      'Non-EU students regularise their position by 16 September 2026, or by 30 November 2026 for those conditionally admitted, and are placed at the bottom of the ranking',
+    ],
+    required_documents: [
+      'Online application on the ERSU di Messina student portal, validated by OTP',
+      'ISEE, or ISEEU/ISPEU parificato for international students, relating to the applicant student',
+      'Italian or SEPA-area IBAN of a current account or prepaid card in the student\'s own name',
+      'For international students from poor countries: a valid residence permit or the receipt for its issue or renewal, with a certification from the Italian Representation in the country of origin attesting that the student does not belong to a family known for high income and elevated social status',
+      'Documents issued by foreign authorities, where the call requires them, translated into Italian and legalised where required',
+    ],
+    english_requirement: null,
+    selection_notes: 'A single competitive regional ranking is drawn up. Candidates are ranked principally on economic condition expressed through ISEE and ISPE, within the bands the call sets; the monetary value of the quota then follows the ISEE band and student status (in sede, pendolare, fuori sede or independent), with the published increments. Academic merit requirements (art. 5.3) are verified by the Agency through official acquisition of the valid credits registered for the course the student is enrolled on in the year, rather than by a self-declared transcript. No published weighting between economic and merit factors exists.',
+    image_url: LOGO,
+    image_source_url: HOME,
+    image_source_type: 'official_logo',
+    image_alt_text: AGENCY,
+    image_verified_at: D,
+    notes: [
+      "SUBSTITUTION, recorded as the contract requires. The slot-05 assignment target was the University of",
+      "Padova international undergraduate scholarships, named in the task as the 'Padua International",
+      "Excellence Scholarship' and the related tuition-waiver awards on unipd.it. That target is a",
+      "duplicate: backend/config/programme_details.json already carries the award under LIVE ids 136 and",
+      "370, host www.unipd.it, registrable domain unipd.it, and the assignment table was filtered against",
+      "precisely that collision. RESEARCH_PROTOCOL.md section 5 requires substituting one alternative",
+      "bachelor's-level scholarship in the same host region and keeping the same output filename, which",
+      "this record does. The substitute is the ERSU di Messina borsa di studi: it is in the same host",
+      "region (Italy, Europe), it funds first-cycle degree programmes, and it carries the",
+      "international-student provisions the original target's subject required (a route for students from",
+      "poor countries, and conditional admission for non-EU students with a regularisation deadline).",
+      "The substituted award's name is corrected to the scheme's real published name; the assigned",
+      "target's name is not preserved as the award title.",
+      "",
+      "SCHEMA CORRECTION. The previous slot-05 artifact on disk was a top-level JSON ARRAY holding one",
+      "79-key record in the flat shape that SCHEMA_CONTRACT.md itself calls v1 and 'wrong'. The v2",
+      "contract, AGENT_TASK_CONTRACT.md and validate_bachelor.js all require exactly six top-level keys",
+      "and discover records by the presence of a new_scholarship block. As written, the array had no",
+      "new_scholarship key, so the validator skipped the file entirely and slot 05 counted as missing",
+      "while still being marked complete. This file is written in the required six-key shape.",
+      "",
+      "AWARDING BODY VERSUS ELIGIBLE INSTITUTION. The University of Messina, named in this record only",
+      "as one of the institutions whose students may compete, does not award this scholarship. The",
+      "awarding body is the E.R.S.U. di Messina, a regional agency established by Law No. 20 of 2002.",
+      "The logo is the Agency's own mark served from the Agency's own domain, not a university mark.",
+    ].join('\n'),
+  },
+
+  programme_detail_official: {
+    official_source_urls: [CALL, HOME],
+    application_link: null,
+    official_updates_url: HOME,
+    catalogue_url: HOME,
+    application_cycle: 'A.A. 2026/2027 concorso per borsa di studio, altri contributi economici e servizi, per il diritto allo studio universitario, approved by Deliberation of the Board of Directors of the E.R.S.U. di Messina no. 36 of 29 June 2026 and published on 1 July 2026. The application window for laurea triennale, laurea magistrale and laurea magistrale a ciclo unico students ran from 1 July 2026 to 14.00 on 18 August 2026; for doctoral and specialisation students from 25 September 2026 to 13.00 on 16 November 2026.',
+    deadline_central: '2026-08-18T14:00',
+    deadline_central_display: '14.00 (Italian time) on 18 August 2026 for students enrolled, or enrolling, on laurea triennale, laurea magistrale and laurea magistrale a ciclo unico courses; OTP validation of the application by 15.00 on 18 August 2026 for international students and minors; the later doctoral and specialisation window closed at 13.00 on 16 November 2026',
+    deadline_central_timezone: 'Europe/Rome',
+    deadline_institutional: '15.00 on 18 August 2026 for OTP validation of the application by international students and minors, which is an earlier Agency deadline than the closing of the window itself',
+    deadline_note: 'The call fixes the term for presentation of the application as running from 1 July 2026 to 14.00 on 18 August 2026 for students enrolled, or intending to enrol, on laurea triennale, laurea magistrale and laurea magistrale a ciclo unico courses, and from 25 September 2026 to 13.00 on 16 November 2026 for doctoral and specialisation students. The Agency applies the stated hour as a hard boundary, and international students and minors have a separate, earlier OTP validation deadline of 15.00 on 18 August 2026. The call has closed as at the verification date of 2026-10-03.',
+    status: 'CLOSED',
+    status_note: 'The A.A. 2026/2027 competition closed at 14.00 Italian time on 18 August 2026 for first-cycle and second-cycle degree students, which is in the past as at the verification date of 2026-10-03. The Agency continues to run the current competition through its results, enrolment and instalment schedule, so the award remains live for admitted winners, but applications for A.A. 2026/2027 can no longer be submitted. The next cycle is expected to open in the first half of July 2027, matching the present call\'s July opening, but no date is published yet.',
+    funding_amount: 7171.11,
+    funding_currency: 'EUR',
+    funding_period: 'per academic year',
+    funding_duration: 'Benefits are granted for the legal duration of the degree course plus one extra year: seven semesters for a laurea triennale, five for a laurea magistrale biennale, nine for a laurea magistrale a ciclo unico of four years, eleven for five years and thirteen for six years. For the first out-of-course semester the scholarship is paid at half the standard amount. Canteen and accommodation services run for the academic year. The scholarship is re-competed each academic year, and benefits end on graduation.',
+    tuition_coverage: false,
+    tuition_coverage_note: 'No tuition waiver is confirmed. The exemption the call grants is limited to the regional fee for the right to university study (tassa regionale), which is a regional levy and not the University of Messina tuition or registration fees. The University of Messina\'s broader phrasing was not used to widen this, and no official page read states that university tuition is waived.',
+    living_cost_coverage: true,
+    travel_coverage: false,
+    fully_funded: false,
+    funding_label: 'Need-based cash quota of Euro 2,890.16 to Euro 8,246.77 per year depending on ISEE band and student status (fuori sede or independent Euro 7,171.11 in the standard band), plus free canteen service, free accommodation for winners subject to availability and exemption from the regional right-to-study fee. Tuition, travel and living costs beyond the quota are not covered, so the award is need-based support rather than a full scholarship.',
+    benefits: [
+      'Monetary quota, whose value follows the ISEE band and student status: in sede Euro 2,890.16, pendolare Euro 4,190.71, fuori sede or independent Euro 7,171.11 in the standard band',
+      'Quota increased by 15% where ISEE is below half the maximum reference limit: in sede Euro 3,323.68, pendolare Euro 4,819.32, fuori sede or independent Euro 8,246.77',
+      'Quota reduced progressively to half above two-thirds of the maximum reference limit, with minima of Euro 1,445.08 (in sede), Euro 2,095.35 (pendolare) and Euro 3,585.55 (fuori sede or independent)',
+      'Further increase of 40% for students with a disability under article 3 of Law 104/1992 or an invalidity of 66% or more; 20% for students enrolled in STEM courses; 20% for students simultaneously enrolled on two degree programmes',
+      'Increase of Euro 600,00 for in sede and pendolari students, and Euro 1.200,00 for fuori sede students, enrolled at the Noto and Priolo teaching poles, in place of free canteen access',
+      'Free canteen service for winners',
+      'Free accommodation in an ERSU residence for winners, subject to availability of the Agency and, for the relevant categories, on request',
+      "Exemption from the regional fee for the right to university study",
+      'Half scholarship for the first out-of-course semester',
+    ],
+    eligibility: [
+      'Regular enrolment, or intent to enrol, for the achievement of the FIRST degree on a laurea course at a Sicilian institution, including the University of Messina',
+      'Economic condition for A.A. 2026/2027: ISEE not exceeding Euro 22,500.00 and ISPE not exceeding Euro 53,000.00',
+      'Academic merit requirements set by art. 5.3 of the call, verified by the Agency through official acquisition of the valid credits registered for the course the student is enrolled on',
+      'Not already in possession of an academic title of the same level',
+      'Not having already received the scholarship in a previous programme of the same level without having repaid it',
+      'No application fee',
+      'No nationality restriction',
+    ],
+    citizenship_residency: 'No nationality restriction and no residency requirement is set by the call. Eligibility is fixed by economic condition (ISEE and ISPE), by enrolment for a first degree at a Sicilian institution, and by the merit requirements of the call. The call is published in Italian and the Agency\'s own portal carries the application in Italian, but the eligibility rules contain no citizenship test.',
+    international_eligibility: 'Open to students of any nationality, including students without Italian citizenship, subject to the same ISEE and ISPE and merit requirements. International students who do not have an Italian ISEE must obtain an ISEEU and ISPEU parificato, relating to the family nucleus, from a CAF associated with the Agency, and upload it in the Fascicolo section of the portal by 16 September 2026. International students obtained abroad are given international protection or recognised as stateless must use the same parificato route. Students from poor countries defined by Ministerial Decree No. 176 of 24 February 2026 may instead provide a valid residence permit, or the receipt for its issue or renewal, together with a certification issued by the Italian Representation in the country of origin attesting that the student does not belong to a family known for high income and elevated social status. Non-EU students may be admitted conditionally (ammessi con riserva) while documents are outstanding and regularise their position by 16 September 2026, or by 30 November 2026 for the conditionally admitted, being placed at the bottom of the ranking. One practical constraint is economic rather than legal: a family whose income is produced in a low-income country may be unable to produce documentation at the thresholds.',
+    degree_levels: ["Bachelor's", "Master's", 'PhD and specialisation courses'],
+    study_mode: 'Not specified on the pages read. The call applies to students enrolled on the degree courses named in it and does not distinguish full-time from part-time enrolment, so no study-mode condition is recorded.',
+    research_requirement: null,
+    subject_or_agency_requirement: 'No subject restriction. The concorso is open across the degree courses of the Sicilian institutions covered, so all fields are eligible. Two provisions are field-linked in effect rather than by subject: the 20% increase for students enrolled in STEM courses, and the Euro 600,00 or Euro 1.200,00 increase for students at the Noto and Priolo teaching poles who cannot use the canteen.',
+    application_method: 'Separate, competitive application. The applicant submits the online application on the ERSU di Messina student portal and validates it with the OTP sent to the e-mail address and telephone number given in the application. There is no automatic consideration on admission to the University of Messina. The application is free of charge.',
+    application_route: 'Submit the online application on the ERSU di Messina student portal within the window set by the call, and validate it with the OTP sent by e-mail and text message. The call documents, identified as the published bando, are downloaded from the Agency, which publishes the current call and its results. The exact portal URL was not confirmed during this research session and is recorded as null rather than guessed; an institution check is required before applicants are directed to it.',
+    requirements: [
+      'Submit the online application on the ERSU di Messina student portal within the call window',
+      'Hold an ISEE, or an ISEEU and ISPEU parificato for international students, relating to the applicant student, within the limits for A.A. 2026/2027',
+      'Be enrolled, or enrol, for the first degree on a degree course at a Sicilian institution',
+      'Meet the merit requirements of art. 5.3 of the call',
+      'Declare an Italian or SEPA-area IBAN in the student\'s own name',
+      'International students: upload the ISEEU and ISPEU parificato in the Fascicolo section of the portal by 16 September 2026',
+    ],
+    documents: [
+      'Online application submitted on the ERSU di Messina student portal and validated by OTP',
+      'ISEE, or ISEEU and ISPEU parificato for international students, relating to the applicant student',
+      'Italian or SEPA-area IBAN of a current account or prepaid card in the student\'s own name',
+      'For international students from poor countries: a valid residence permit or the receipt for its issue or renewal, plus a certification from the Italian Representation in the country of origin',
+      'Documents issued by foreign authorities, where the call requires them, translated into Italian and legalised where required',
+    ],
+    english_requirement: null,
+    english_requirement_note: 'No English-language test requirement is published for this scholarship, so english_requirement is null rather than estimated. The call and the Agency\'s portal are in Italian; the call opens with a note that international students who cannot read it should contact the Agency. Admission to the degree course is a separate matter governed by the university\'s own rules.',
+    selection_criteria: [
+      'Economic condition, expressed through the ISEE and ISPE indicators, with the quota value fixed by the ISEE band and student status',
+      'Merit requirements of art. 5.3, verified by the Agency through official acquisition of the valid credits registered for the course the student is enrolled on',
+      'Student status - in sede, pendolare, fuori sede or independent - which fixes the base quota',
+      'Preference for first-year students within the reserved quotas the call sets',
+    ],
+    selection_weighting: null,
+    duration: 'Seven semesters for a laurea triennale, five for a laurea magistrale biennale, and nine, eleven or thirteen semesters for a laurea magistrale a ciclo unico of four, five or six years, plus one extra year. For the first out-of-course semester the scholarship is half the standard amount. Benefits end on graduation.',
+    award_holder_conditions: [
+      'The beneficiary must be enrolled for the achievement of the FIRST degree, and forfeits the benefit on graduation',
+      "The monetary quota is paid in instalments by bank transfer to an Italian or SEPA-area IBAN in the beneficiary's own name",
+      'The second instalment of the quota is conditional on reaching the merit requirement of art. 5.3 of the call',
+      'Students are excluded if they already hold a title of the same or a higher level, or if they have already received the scholarship in a previous same-level programme and have not repaid it',
+      'International students must upload the ISEEU and ISPEU parificato by 16 September 2026, and non-EU students must regularise their position by 16 September 2026, or by 30 November 2026 if conditionally admitted',
+      'Beneficiaries who lose the statutory requirements, or who resign, must return the equivalent value of the services already used, at the published tariffs: the scholarship for the amount paid, the bed place at the monthly tariff of Euro 170,00, and the full meal according to the income bands of art. 40',
+      'Repeated or serious abuse of the canteen or accommodation services results in suspension, with the Agency reporting every abuse to the judicial authority',
+    ],
+    supplements_or_initiatives: [
+      'Posto alloggio: the companion accommodation service under the same call, free for winners subject to availability',
+      'Contributo affitto: the rent contribution listed among the Agency services',
+      'Premio di laurea: the graduation prize awarded under the same call',
+      'Contributo per la mobilita internazionale: the international-mobility contribution',
+      'These are separate services governed by the same call and are not part of the scholarship value',
+    ],
+    official_contacts: {
+      agency: AGENCY,
+      scholarship_call: CALL,
+      agency_homepage: HOME,
+      telephone: '+39 090 773323',
+      pec: 'ersumessina@pec.ersu.it',
+    },
+    description: "The borsa di studio is awarded by the E.R.S.U. di Messina, the regional agency that manages the right to university study in Sicily under articles 3 and 34 of the Italian Constitution, and is the principal need-based funding instrument for students enrolled at the University of Messina and the other Sicilian institutions. It is awarded through an annual regional competition and applied for separately from university admission, through the Agency's own student portal. Winners receive a monetary quota fixed by the ISEE band and by student status, plus free access to the Agency's canteen service and, subject to availability and on request, free accommodation, and are exempted from the regional fee for the right to university study. For A.A. 2026/2027 the quota is Euro 2,890.16 per year for studenti in sede, Euro 4,190.71 for pendolari and Euro 7,171.11 for fuori sede or independent students in the standard band, with the minima, maxima and the disability, STEM and Noto and Priolo increases the call sets. Non-EU students may be admitted conditionally while documents are outstanding and regularise their position by the dates the call provides.",
+    program_type: 'Regional right-to-study need-based scholarship awarded by a regional agency, applied for separately from university admission',
+    region: 'Europe',
+    coverage: 'A cash quota of Euro 2,890.16 to Euro 8,246.77 per year depending on ISEE band and student status, free canteen service, free accommodation for winners subject to availability, and exemption from the regional right-to-study fee. Not covered: university tuition and registration fees, travel, and living costs beyond the quota. No travel allowance or installation allowance is published.',
+    last_verified_date: D,
+  },
+
+  programme_detail_applicant_utility: {
+    application_readiness_checklist: [
+      'Understand who awards this before you plan around it: the University of Messina does not award the borsa di studio. The awarding body is the E.R.S.U. di Messina, a regional agency, and you compete in its own regional competition.',
+      'Confirm you are applying for your FIRST degree. The call excludes anyone who already holds a title of the same level, and includes anyone who already received the scholarship in a previous same-level programme and has not repaid it.',
+      'Start the ISEE early. For A.A. 2026/2027 the economic limits are ISEE not exceeding Euro 22,500.00 and ISPE not exceeding Euro 53,000.00, and an invalid or late ISEE ends the application.',
+      'If you are an international student without an Italian ISEE, request the ISEEU and ISPEU parificato from a CAF associated with the Agency, and upload it in the Fascicolo section of the portal by 16 September 2026.',
+      "Confirm you are fuori sede, pendolare or in sede, since the base quota is Euro 7,171.11, Euro 4,190.71 or Euro 2,890.16 respectively for the standard band.",
+      'Prepare an Italian or SEPA-area IBAN for an account or prepaid card in your own name, since the quota is paid in instalments by bank transfer.',
+      'Submit the online application on the Agency portal and complete OTP validation within the window, treating the stated hour (14.00 on 18 August 2026) as a hard boundary, not the end of the day.',
+      'If you are a non-EU student, know that you can be admitted conditionally and regularise by 16 September 2026, or by 30 November 2026 if conditionally admitted, but that you will be placed at the bottom of the ranking.',
+      "If you are from a poor country defined by Ministerial Decree No. 176 of 24 February 2026, prepare a valid residence permit or the receipt for its issue or renewal, plus a certification from the Italian Representation in your country of origin attesting that you do not belong to a family known for high income and elevated social status.",
+      'Ask for the accommodation place at the time of application if you need one: the free bed place for winners is subject to availability of the Agency.',
+    ],
+    common_rejection_risks: [
+      'Missing the 14.00 closing time on 18 August 2026 by treating it as an end-of-day deadline. The call states the hour, and international students and minors have an even earlier OTP deadline of 15.00.',
+      'Assuming the University of Messina will consider you automatically. This is a separate Agency competition, and there is no automatic consideration on admission.',
+      'Already holding a title of the same or a higher level, which forfeits eligibility outright.',
+      'An ISEE above Euro 22,500.00, or an ISPE above Euro 53,000.00, for A.A. 2026/2027.',
+      'An international student holding no ISEE and missing the 16 September 2026 ISEEU and ISPEU upload deadline.',
+      'A non-EU student who does not regularise by 16 September 2026, or by 30 November 2026 if conditionally admitted, and is therefore placed at the bottom of the ranking.',
+      'Failing the merit requirements of art. 5.3, which the Agency verifies by official acquisition of the valid credits registered for the course the student is enrolled on, so a transcript you submit does not substitute.',
+      'Using a family income produced in the country of origin without obtaining the parificato, which is the most common practical barrier for students from low-income countries.',
+      'Forgetting the IBAN: the quota cannot be paid without an Italian or SEPA-area IBAN in the beneficiary\'s own name.',
+      'Applying in the wrong window: doctoral and specialisation students had a different closing time, 13.00 on 16 November 2026.',
+      'Assuming the free accommodation is guaranteed. It is subject to availability, and conditionally on request for the relevant categories.',
+      'Assuming the exemption covers university tuition. It covers the regional right-to-study fee only.',
+    ],
+    estimated_uncovered_costs: [
+      'University of Messina tuition and registration fees. The scholarship is not a tuition waiver: the call scopes its exemption to the regional fee, so budget the full fee unless you separately qualify for an ISEE-based exemption.',
+      'Living costs in Messina beyond the quota. The quota is fixed by your ISEE band and status, and its minimum for the fuori sede category is Euro 3,585.55, so read the value for your own band before budgeting.',
+      'Travel to Italy and back, for which the award publishes no allowance.',
+      'The cost of living in the first weeks before the quota instalments arrive.',
+      'Accommodation for eligible non-winners, who are not entitled to the free place and must find and pay for a private arrangement.',
+      'The cost of obtaining the ISEE, or the ISEEU and ISPEU parificato, and of the notarised or translated documents an international student may need.',
+      'Any fee for the payment notices the Agency sends, which the call states are a charge on the student.',
+    ],
+    document_audit: [
+      'The application itself is online on the Agency portal and is validated by OTP; it is not a paper or e-mail application.',
+      'The economic evidence is the ISEE, or the ISEEU and ISPEU parificato for international students, relating to the applicant student.',
+      'The IBAN is declared in the application and must belong to the beneficiary student.',
+      'Merit is verified by the Agency through official acquisition of the valid credits registered for the course the student is enrolled on, so no transcript is requested from the applicant for that purpose.',
+      'Students from poor countries defined by Ministerial Decree No. 176 of 24 February 2026 provide a residence permit, or the receipt for its issue or renewal, plus a certification from the Italian Representation in the country of origin instead of a parificato.',
+      'Documents issued by foreign authorities must be translated into Italian and legalised where required.',
+    ],
+    alerts: [
+      { trigger: 'You rely on the University of Messina to award or administer this scholarship.', message: 'The University does not award it. The awarding body is the E.R.S.U. di Messina, and you compete in the Agency\'s own regional competition through its own portal. Use the University pages only to identify the route.' },
+      { trigger: 'You read any mention of an exemption from university fees.', message: 'The call grants exemption from the regional fee for the right to university study only. University of Messina tuition and registration fees are not waived by this award.' },
+      { trigger: 'You are an international student without an Italian ISEE.', message: 'You need an ISEEU and ISPEU parificato requested from a CAF associated with the Agency, uploaded in the Fascicolo section by 16 September 2026. Without it, or without the poor-country route, you cannot enter the ranking.' },
+      { trigger: 'You assume the accommodation place is automatic.', message: 'Free accommodation for winners is subject to availability of the Agency, and to request for the relevant categories. Plan a private alternative.' },
+      { trigger: 'You treat 18 August 2026 as a date rather than a time.', message: 'The call closes at 14.00 Italian time, and international students and minors have a separate OTP validation deadline of 15.00. Plan to submit well before the hour.' },
+      { trigger: 'You plan on the scholarship beyond your degree.', message: 'Benefits run for the legal duration plus one extra year, are halved in the first out-of-course semester, and end when you graduate. Holding the scholarship in a previous same-level programme without repaying it excludes you from this one.' },
+    ],
+    submission_workflow: [
+      'Read the published call on the Agency\'s own document, which sets the ISEE and ISPE limits, the merit requirements, the quota bands and the results and instalment schedule.',
+      'Obtain an ISEE, or an ISEEU and ISPEU parificato from a CAF associated with the Agency, before submitting.',
+      'Confirm your student status (in sede, pendolare, fuori sede or independent), since it fixes the base quota.',
+      'Prepare an Italian or SEPA-area IBAN in your own name.',
+      'Enrol, or plan to enrol, for your first degree at the University of Messina or another Sicilian institution.',
+      'Submit the online application on the Agency portal during the window, requesting the accommodation place if you need one.',
+      'Complete OTP validation with the code sent to your e-mail and telephone number, within the earlier deadline that applies to international students and minors.',
+      'Watch the results and instalment schedule the call sets, and regularise as a non-EU student by 16 September 2026, or by 30 November 2026 if you were admitted conditionally.',
+      'Meet the merit requirements of art. 5.3 to retain the second instalment of the quota.',
+      'Plan for the next cycle: applications are expected to open in the first half of July 2027.',
+    ],
+  },
+
+  programme_detail_verification: {
+    cycle_verified: 'A.A. 2026/2027 call, published 1 July 2026 and approved by Deliberation No. 36 of 29 June 2026, verified as at 2026-10-03; the application window for first-cycle and second-cycle students closed at 14.00 on 18 August 2026',
+    verification_confidence: 0.85,
+    official_fields_confirmed: [
+      'name (the bando for the attribution of scholarships, other economic contributions and services for the right to university study, A.A. 2026/2027, of the E.R.S.U. di Messina)',
+      'country (Italy) and region (Europe)',
+      'official_source (E.R.S.U. di Messina - Ente Regionale per il diritto allo Studio Universitario)',
+      'official_source_url (the published call, verified as an official https document returning application/pdf)',
+      'degree levels, from the call covering laurea triennale, laurea magistrale, laurea magistrale a ciclo unico, dottorato and scuole di specializzazione, so first-cycle degree programmes are funded',
+      'deadline_central 2026-08-18T14:00 and the separate 2026-11-16T13:00 doctoral and specialisation window, quoted from the call',
+      'the earlier 15.00 on 18 August 2026 OTP validation deadline for international students and minors',
+      'funding_amount 7171.11 EUR per year, the fuori sede or independent quota in the standard ISEE band, quoted from the call table',
+      'the full quota table: in sede Euro 2,890.16, pendolare Euro 4,190.71, fuori sede or independent Euro 7,171.11 in the standard band, Euro 3,323.68, Euro 4,819.32 and Euro 8,246.77 where ISEE is below half the maximum reference limit, and minima of Euro 1,445.08, Euro 2,095.35 and Euro 3,585.55 above two-thirds of the limit',
+      'the 15% increase for ISEE below half the limit, the 40% increase for students with a disability under Law 104/1992, the 20% increase for STEM courses and the 20% increase for simultaneous enrolment on two degree programmes',
+      'the Euro 600,00 and Euro 1.200,00 increase for students at the Noto and Priolo teaching poles in place of canteen access',
+      'economic requirements for A.A. 2026/2027: ISEE not exceeding Euro 22,500.00 and ISPE not exceeding Euro 53,000.00',
+      'benefits: monetary quota in instalments, free canteen service, free accommodation for winners subject to availability, and exemption from the regional right-to-study fee',
+      'benefit duration: seven semesters for laurea triennale, five for magistrale biennale, nine, eleven or thirteen for magistrale a ciclo unico of four, five or six years, plus one extra year, with half scholarship for the first out-of-course semester',
+      'merit requirements of art. 5.3 verified by the Agency through official acquisition of the valid credits registered for the course the student is enrolled on',
+      'international students must obtain and upload the ISEEU and ISPEU parificato in the Fascicolo section by 16 September 2026, with the parificato requested from a CAF associated with the Agency',
+      'non-EU students may be admitted conditionally (ammessi con riserva) and regularise by 16 September 2026, or by 30 November 2026 for the conditionally admitted, being placed at the bottom of the ranking',
+      'students from poor countries defined by Ministerial Decree No. 176 of 24 February 2026 may provide a residence permit or the receipt for its issue or renewal together with a certification from the Italian Representation in the country of origin',
+      'students with international protection, and stateless students, use the parificato route',
+      'documents issued by foreign authorities must be translated into Italian and legalised where required',
+      'exclusion of students who already hold a title of the same or a higher level, or who received the scholarship in a previous same-level programme without repaying it',
+      'the tariff of Euro 170,00 per month for the bed place applied when beneficiaries lose the requirements or resign and must return the equivalent value of services already used',
+      'the list of poor countries, of forty-five entries, published in the call',
+      'call legal framework: DPCM 5 December 2013 No. 159, Legislative Decree No. 147 of 2017, Ministerial Decree No. 1320 of 2021, Decree Directional No. 175 of 10 February 2026 on the minimum amounts, Decree Directional No. 176 of 10 February 2026 on the thresholds, and Law No. 20 of 2002 establishing the E.R.S.U.',
+      'the call is presented in Italian and directs international students who cannot read it to contact the Agency, with no English test required of applicants',
+      'status CLOSED, since the 18 August 2026 deadline precedes the 2026-10-03 verification date',
+      'logo: the E.R.S.U. di Messina mark on the Agency\'s own domain probed live, HTTP 200 with image/png',
+    ],
+    institution_check_required: [
+      'The exact URL of the ERSU di Messina student portal on which the application is submitted, which the call names but whose address was not confirmed during this session; the portal route is described rather than linked.',
+      'The euro amount of the cash quota for each ISEE band as finally calculated for an individual applicant, since the published table gives the base values and the minima and the Agency applies the progressivity rule between them.',
+      'The mentor ISPE and ISPEU limit exactly as published, and the thresholds for students with disabilities, students with minor children and internationally protected or stateless students.',
+      'The credit requirements of merit requirement art. 5.3, in credits and dates, for each year of each degree course, and the special provisions for the filtering semester of Medicine, Dentistry and Veterinary Medicine.',
+      'The full document list published in the call, including what the Agency requires of applicants from abroad beyond the parificato and the residence permit.',
+      'Whether the number of scholarships is limited by a published quota of beneficiaries, which the call does not state.',
+      'The exact dates of the next cycle, which the call does not publish; the expectation of a July 2027 opening is inferred from the present cycle, not published.',
+      'The amount of the regional fee for the right to university study that winners are exempted from.',
+    ],
+    unverified_or_removed_claims: [
+      'The previous slot-05 record\'s entire subject is removed as a duplicate. The University of Padova international undergraduate scholarships, named in the assigned task as the Padua International Excellence Scholarship and the related fee-waiver awards, are already in the live database under LIVE ids 136 and 370 on host www.unipd.it, registrable domain unipd.it, and the assignment table was filtered against that collision. No unipd.it figure is recorded here.',
+      'The previous slot-05 record was a top-level JSON array with one flat 79-key record, which is the shape SCHEMA_CONTRACT.md calls v1 and wrong. No content from it is carried into this record, because its subject is a duplicate and its shape is not the shape the validator discovers.',
+      'No monthly amount, travel allowance, installation allowance or insurance support is published for this scholarship, and none is recorded; the quota is an annual figure, not a monthly stipend.',
+      'No published number of beneficiaries exists, so no beneficiary count is recorded.',
+      'No English-language proficiency requirement is published for this scholarship, so english_requirement is null. The call documents are in Italian.',
+      'No age limit, gender restriction or reserved nationality quota is published, so none is claimed.',
+      'The application portal URL is null because the exact address was not confirmed in this session; describing the portal route and requiring an institution check is used instead of inventing a URL.',
+    ],
+    source_citations: [
+      CALL,
+      HOME,
+      'https://www.ersumessina.it/wp-content/uploads/2017/07/ERSUlogo-Colore-3.png',
+    ],
+    researched_by: 'bachelor_05',
+  },
+
+  logo_override: {
+    url: LOGO,
+    page_url: HOME,
+    official_host: true,
+    alt_text: AGENCY,
+    validation_result: 'verified',
+    validation_detail: 'png 54929+B, 450x160',
+    image_kind: 'official_logo',
+    image_format: 'png',
+    verified_at: D + 'T00:00:00+00:00',
+    host_evidence: 'same_registrable_domain',
+    probe_note:
+      'Probed live in the finishing pass: HTTP 200 with Content-Type image/png, 54,929 bytes, PNG signature ' +
+      '89 50 4E 47, dimensions 450x160 RGBA. Opened and rendered for verification: 89.1% of opaque pixels ' +
+      'are dark, so it is not a white-on-transparent wordmark and it will render on a light card. Served from ' +
+      'www.ersumessina.it, the registrable domain of the awarding body, the E.R.S.U. di Messina. The mark was ' +
+      'located in the Agency\'s own page markup (logo hunt order step 1). Two other Agency marks exist on the ' +
+      'same domain and were also probed, ERSUlogo-Colore.png (288x160, 47.4% dark) and favicon.ico, and the ' +
+      'header variant was selected for its resolution. The /favicon.ico route returns a valid icon and was ' +
+      'considered but is too small for a card. No aggregator, CDN or third-party host is involved, and no ' +
+      'university mark is used, because the University of Messina does not award this scholarship.',
+  },
+
+  research_notes: {
+    logo: [
+      'Awarding-body own mark, found on the awarding body\'s own domain (logo hunt order step 1: the site',
+      'markup of the E.R.S.U. di Messina homepage). The page links the Agency\'s own colour mark at',
+      'https://www.ersumessina.it/wp-content/uploads/2017/07/ERSUlogo-Colore-3.png. Probed live: HTTP 200,',
+      'Content-Type image/png, 54,929 bytes, PNG magic 89 50 4E 47, dimensions 450x160, 89.1% of opaque',
+      'pixels dark, so it is not a white-on-transparent wordmark and renders on a light card. Served from',
+      'www.ersumessina.it, the registrable domain of the awarding body, with no aggregator, CDN or',
+      'third-party host. The is rejected deliberately: a University of Messina mark would be a provenance',
+      'error under the contract\'s rule that a logo must belong to the body awarding the scholarship, since',
+      'the University is the eligible institution, not the awarding body. A second Agency mark,',
+      'ERSUlogo-Colore.png (288x160, 47.4% dark), and the Agency favicon (ICO, 7,358 bytes) were also probed',
+      'and are valid; the header variant was used for its resolution. logo_override is therefore the Agency',
+      'mark, official_host true.',
+    ].join('\n'),
+    unverified: [
+      'The exact URL of the ERSU di Messina student portal on which the online application is submitted.',
+      'The euro amount of the cash quota for each individual applicant, since the published table gives base values, the minima and the progressivity rule rather than a per-applicant figure.',
+      'The exact ISPE limit and the thresholds for students with disabilities, students with minor children, internationally protected and stateless students.',
+      'The credit requirements of merit requirement art. 5.3, in credits and dates, by year of course.',
+      'The full document list published in the call, and what is required of applicants from abroad beyond the parificato and the residence permit.',
+      'Whether a published quota of beneficiaries exists; the call states no number of scholarships.',
+      'The amount of the regional right-to-study fee that winners are exempted from.',
+      'The dates of the next cycle. A July 2027 opening is inferred from the present cycle, not published.',
+      'The University of Messina pages that describe the scholarship to their own students, which were not read in this session; the Agency\'s own call and homepage were the sources.',
+    ],
+    substitution: [
+      'YES - substitution was required and made, as RESEARCH_PROTOCOL.md section 5 prescribes.',
+      'Assigned target: Italy, University of Padova international undergraduate scholarships, named in the',
+      'task as the Padua International Excellence Scholarship and the related tuition-waiver and merit',
+      'awards for non-EU students, output file research/bachelor/05-italy-unipd-undergraduate-scholarships.json.',
+      'Reason for substitution: DUPLICATE. backend/config/programme_details.json already carries that',
+      'award under LIVE ids 136 and 370, both with host www.unipd.it and registrable domain unipd.it, and the',
+      'assignment table was already filtered against exactly that host collision. Writing a second unipd.it',
+      'record would have been a duplicate, not new research.',
+      'Substitute target: one alternative bachelor\'s-level scholarship in the same host region, Italy.',
+ 'The E.R.S.U. di Messina borsa di studi for the right to university study, A.A. 2026/2027. It funds',
+      'first-cycle degree programmes, it is open to students of any nationality with explicit provisions for',
+      'international students, including a route for students from the poor countries defined by Ministerial',
+      'Decree No. 176 of 24 February 2026, and conditional admission for non-EU students with regularisation',
+      'deadlines. It is not already in the live database and is not on the do-not-duplicate list.',
+      'Same output filename retained, as the rule requires.',
+    ].join('\n'),
+    official_pages_read: [
+      'https://www.ersumessina.it/wp-content/uploads/2026/07/Bando-di-concorso-2026_2027_signed.pdf - the official call, eighty pages, verified live as HTTP 200 with Content-Type application/pdf and 2,672,219 bytes: the quota table and its bands, the ISEE and ISPE limits, the merit requirements and their verification, the deadline windows and their hours, the full calendar of lists, appeals, regularisation, instalments and payments, the international-student and poor-country provisions, the exclusions, the collapse and repayment tariffs, and the legal framework.',
+      'https://www.ersumessina.it/ - the Agency homepage, verified live: identity of the awarding body, the Agency\'s own mark, and the links to its calls and services.',
+      'https://www.ersumessina.it/wp-content/uploads/2017/07/ERSUlogo-Colore-3.png - the awarding body\'s own logo, probed live and used for logo_override.',
+      'https://www.ersumessina.it/wp-content/uploads/2017/07/ERSUlogo-Colore.png - a second Agency mark, probed live, 288x160, 47.4% dark.',
+      'https://www.ersumessina.it/favicon.ico - probed live: HTTP 200 with Content-Type image/vnd.microsoft.icon, 7,358 bytes; considered and set aside as too small for a card.',
+    ],
+    degree_level_confirmed: [
+      'Confirmed from the awarding body\'s own call, which funds first-cycle degree programmes.',
+      'The call is the bando for the attribution of scholarships, other economic contributions and services',
+      'for the right to university study for A.A. 2026/2027, and lists among the courses its merit',
+      'requirements cover the Laurea triennale e magistrale a ciclo unico, with the first-year credit',
+      'requirements of 20 credits by 10 August 2027 and 15 credits by 30 November 2027. Its duration',
+      'provision sets the benefit at seven semesters for a laurea triennale, five semesters for a laurea',
+      'magistrale biennale and nine, eleven or thirteen semesters for a laurea magistrale a ciclo unico of',
+      'four, five or six years. Because the call covers first-cycle, second-cycle, doctoral and',
+      'specialisation courses, the award funds a bachelor\'s degree alongside the higher levels, and',
+      'degree_levels is recorded as "Bachelor\'s" with the higher levels recorded in',
+      'programme_detail_official.degree_levels, as the contract requires for an award covering both',
+      'cycles.',
+    ].join('\n'),
+    skeleton: false,
+    schema_correction: [
+      'The previous slot-05 artifact on disk was a top-level JSON array containing one record with',
+      'seventy-nine flat top-level keys. SCHEMA_CONTRACT.md names that shape as v1 and states it was',
+      'wrong; the v2 contract, AGENT_TASK_CONTRACT.md and validate_bachelor.js all require exactly six',
+      'top-level keys, and the validator discovers a record only when it carries a new_scholarship block.',
+      'Because the array had no such block, the file was skipped by discovery and slot 05 was counted as',
+      'missing while the file still sat on disk. This record is written in the required six-key shape and',
+      'is therefore discoverable and mergeable.',
+    ].join('\n'),
+  },
+};
+
+fs.writeFileSync(F, JSON.stringify(rec, null, 2) + '\n', 'utf8');
+
+// re-read from disk to prove the write landed and parses
+const check = JSON.parse(fs.readFileSync(F, 'utf8'));
+const keys = Object.keys(check);
+console.log('WROTE ' + F);
+console.log('  bytes           : ' + fs.statSync(F).size);
+console.log('  re-parsed OK    : yes');
+console.log('  top-level keys  : ' + keys.length + ' [' + keys.join(', ') + ']');
+console.log('  six-key shape   : ' + (keys.length === 6 && ['new_scholarship', 'programme_detail_official', 'programme_detail_applicant_utility', 'programme_detail_verification', 'logo_override', 'research_notes'].every(k => keys.includes(k)) ? 'yes' : 'NO'));
+console.log('  discoverable    : ' + ('new_scholarship' in check ? 'yes' : 'NO'));
+console.log('  name            : ' + check.new_scholarship.name);
+console.log('  country/region  : ' + check.new_scholarship.country + ' / ' + check.new_scholarship.region);
+console.log('  degree_levels   : ' + check.new_scholarship.degree_levels);
+console.log('  status          : ' + check.new_scholarship.status + ' / ' + check.programme_detail_official.status);
+console.log('  deadline_date   : ' + check.new_scholarship.deadline_date + ' (' + check.new_scholarship.deadline_precision + ')');
+console.log('  funding         : ' + check.new_scholarship.funding_amount + ' ' + check.new_scholarship.funding_currency + ' ' + check.new_scholarship.funding_period);
+console.log('  logo            : ' + check.logo_override.url);
+console.log('  citations       : ' + check.programme_detail_verification.source_citations.length);
+console.log('  confirmed fields: ' + check.programme_detail_verification.official_fields_confirmed.length);
+console.log('  researched_by   : ' + check.programme_detail_verification.researched_by);
+console.log('  substitution    : YES (duplicate live ids 136 and 370)');

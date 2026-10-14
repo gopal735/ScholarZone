@@ -1,0 +1,1663 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Google Analytics - Production Only (client-side hostname check, excludes /admin) -->
+    <script>
+        if (window.location.hostname === 'snapdeploy.dev' && !window.location.pathname.startsWith('/admin')) {
+            var s = document.createElement('script');
+            s.async = true;
+            s.src = 'https://www.googletagmanager.com/gtag/js?id=G-QVCTL4S4FD';
+            document.head.appendChild(s);
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-QVCTL4S4FD');
+        }
+    </script>
+
+    <!-- Contentsquare removed 11 Aug 2026 — no longer used -->
+
+    <!-- Microsoft Bing UET - Production Only (excludes /admin) -->
+    <script>
+        if (window.location.hostname === 'snapdeploy.dev' && !window.location.pathname.startsWith('/admin')) {
+            (function(w,d,t,r,u){var f,n,i;w[u]=w[u]||[],f=function(){var o={ti:"187238663",enableAutoSpaTracking:true};o.q=w[u],w[u]=new UET(o),w[u].push("pageLoad")},n=d.createElement(t),n.src=r,n.async=1,n.onload=n.onreadystatechange=function(){var s=this.readyState;s&&s!=="loaded"&&s!=="complete"||(f(),n.onload=n.onreadystatechange=null)},i=d.getElementsByTagName(t)[0],i.parentNode.insertBefore(n,i)})(window,document,"script","//bat.bing.com/bat.js","uetq");
+        }
+    </script>
+
+    <!-- UTM Parameter Capture — First-Touch Attribution -->
+    <script>
+    (function(){try{if(localStorage.getItem('sd_utm'))return;var p=new URLSearchParams(window.location.search);var keys=['utm_source','utm_medium','utm_campaign','utm_term','utm_content','gclid','msclkid'];var found={};keys.forEach(function(k){var v=p.get(k);if(v)found[k]=v.substring(0,500)});if(!found.utm_source&&(found.gclid||p.get('gad_source'))){found.utm_source='google';found.utm_medium='cpc';var cid=p.get('gad_campaignid');if(cid)found.gad_campaignid=cid.substring(0,500)}if(!found.utm_source&&found.msclkid){found.utm_source='bing';found.utm_medium='cpc'}found.referrer=(document.referrer||'').substring(0,500);found.landingPage=(window.location.pathname+window.location.search).substring(0,500);found.capturedAt=new Date().toISOString();localStorage.setItem('sd_utm',JSON.stringify(found))}catch(e){}})();
+    </script>
+
+    <!-- PostHog Product Analytics (config-gated; no-ops when key empty) -->
+    <script>
+    (function(){
+        try {
+            var phKey = "phc_kHsKagiN3S28C78i5vQnTfhLRDBX2CjHQFmsMypiQPRj";
+            if (!phKey) return;
+            !function(t,e){var o,n,p,r;e.__SV||(window.posthog=e,e._i=[],e.init=function(i,s,a){function g(t,e){var o=e.split(".");2==o.length&&(t=t[o[0]],e=o[1]),t[e]=function(){t.push([e].concat(Array.prototype.slice.call(arguments,0)))}}(p=t.createElement("script")).type="text/javascript",p.crossOrigin="anonymous",p.async=!0,p.src=s.api_host.replace(".i.posthog.com","-assets.i.posthog.com")+"/static/array.js",(r=t.getElementsByTagName("script")[0]).parentNode.insertBefore(p,r);var u=e;for(void 0!==a?u=e[a]=[]:a="posthog",u.people=u.people||[],u.toString=function(t){var e="posthog";return"posthog"!==a&&(e+="."+a),t||(e+=" (stub)"),e},u.people.toString=function(){return u.toString(1)+".people (stub)"},o="init capture register register_once register_for_session unregister unregister_for_session getFeatureFlag getFeatureFlagPayload isFeatureEnabled reloadFeatureFlags updateEarlyAccessFeatureEnrollment getEarlyAccessFeatures on onFeatureFlags onSessionId getSurveys getActiveMatchingSurveys renderSurvey identify setPersonProperties group resetGroups setPersonPropertiesForFlags resetPersonPropertiesForFlags setGroupPropertiesForFlags resetGroupPropertiesForFlags reset get_distinct_id getGroups get_session_id get_session_replay_url alias set_config startSessionRecording stopSessionRecording captureException loadToolbar get_property getSessionProperty createPersonProfile opt_in_capturing opt_out_capturing has_opted_in_capturing has_opted_out_capturing clear_opt_in_out_capturing debug".split(" "),n=0;n<o.length;n++)g(u,o[n]);e._i.push([i,s,a])},e.__SV=1)}(document,window.posthog||[]);
+            posthog.init(phKey, {
+                api_host: 'https://us.i.posthog.com',
+                defaults: '2025-05-24',
+                person_profiles: 'identified_only',
+                // Store PostHog state in localStorage, NOT a cookie. The ph_* cookie is a URL-encoded
+                // JSON blob that pushes Cloudflare's OWASP anomaly score over the block threshold when
+                // combined with our other cookies (session/CSRF/GA/Reddit) → 403 on every request.
+                // localStorage sends nothing in the Cookie header, so the WAF never sees it. Session
+                // recording, funnels, surveys, flags and identity all work identically.
+                persistence: 'localStorage',
+                capture_pageleave: true
+            });
+            var phHost = window.location.hostname;
+            posthog.register({ env: (phHost === 'snapdeploy.dev' || phHost.endsWith('.snapdeploy.dev') || phHost === 'snapdeploy.app' || phHost.endsWith('.snapdeploy.app')) ? 'prod' : 'dev' });
+            var phUid = null;
+            if (phUid) { posthog.identify(phUid); }
+        } catch(e) { /* analytics must never break the page */ }
+    })();
+    </script>
+
+    <!-- Reddit Pixel — Conversion tracking for paid Reddit Ads ($5/day pilot, 28 Jun 2026) -->
+    <script>
+    (function(){
+        try {
+            var pixelId = "a2_j94v9j8d07nt";
+            if (!pixelId) return;
+            var host = window.location.hostname;
+            if (host !== 'snapdeploy.dev') return;
+            if (window.location.pathname.indexOf('/admin') === 0) return;
+            if (window.rdt) return;
+            !function(w,d){if(!w.rdt){var p=w.rdt=function(){p.sendEvent?p.sendEvent.apply(p,arguments):p.callQueue.push(arguments)};p.callQueue=[];var t=d.createElement("script");t.src="https://www.redditstatic.com/ads/pixel.js",t.async=!0;var s=d.getElementsByTagName("script")[0];s.parentNode.insertBefore(t,s)}}(window,document);
+            rdt('init', pixelId);
+            rdt('track', 'PageVisit');
+            window.fireRedditPurchase = function(amount, currency, transactionId){
+                try {
+                    if (!window.rdt) return;
+                    var payload = { value: parseFloat(amount), currency: (currency || 'USD').toUpperCase(), itemCount: 1 };
+                    if (transactionId) payload.conversionId = String(transactionId);
+                    rdt('track', 'Purchase', payload);
+                } catch(e){}
+            };
+            window.fireRedditSignUp = function(){
+                try { if (window.rdt) rdt('track', 'SignUp'); } catch(e){}
+            };
+            window.fireRedditViewContent = function(value){
+                try {
+                    if (!window.rdt) return;
+                    // Reddit flags ALL metadata (value/currency/itemCount) on ViewContent as
+                    // "unsupported" — those belong on revenue events (Purchase). Fire bare, like PageVisit.
+                    rdt('track', 'ViewContent');
+                } catch(e){}
+            };
+        } catch(e){}
+    })();
+    </script>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- iOS Smart App Banner: nudges Safari visitors to open/install the app.
+         Gated on mobile.smart-banner.enabled (off until the App Store listing is live). -->
+    
+
+    <!-- Force dark mode globally -->
+    <script>document.documentElement.classList.add('dark');</script>
+    <title>Login - SnapDeploy</title>
+    
+    <!-- SEO Meta Description -->
+    <meta name="description" content="SnapDeploy - Deploy Docker containers in minutes. The fastest, most affordable container hosting platform. Deploy free. 10 deploys a day, no credit card.">
+    <meta name="keywords" content="container hosting, docker deployment, heroku alternative, PaaS, cloud hosting, deploy containers, nodejs hosting, python hosting, java hosting">
+    <meta name="author" content="AARLABS PRIVATE LIMITED">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Open Graph Tags -->
+    <meta property="og:title" content="Login - SnapDeploy">
+    <meta property="og:description" content="Deploy Docker containers in minutes. The fastest, most affordable container hosting platform. Deploy free. 10 deploys a day, no credit card.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://snapdeploy.dev">
+    <meta property="og:site_name" content="SnapDeploy">
+    <meta property="og:image" content="https://snapdeploy.dev/images/og-snapdeploy.svg">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:locale" content="en_US">
+    
+    <!-- Twitter Card Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@SnapDeploy2025">
+    <meta name="twitter:creator" content="@SnapDeploy2025">
+    <meta name="twitter:title" content="Login - SnapDeploy">
+    <meta name="twitter:description" content="Deploy Docker containers in seconds. The fastest container hosting platform.">
+    <meta name="twitter:image" content="https://snapdeploy.dev/images/og-snapdeploy.svg">
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://snapdeploy.dev">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="manifest" href="/site.webmanifest">
+
+    <!-- Tailwind CSS (pre-compiled) -->
+    <link rel="stylesheet" href="/css/tailwind.css">
+
+    <!-- Font Awesome (async to avoid render-blocking) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" media="print" onload="this.media='all'">
+    <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"></noscript>
+
+    <!-- Chart.js: loaded only on pages that need it (dashboard, metrics, admin) via th:block -->
+    
+    <!-- Custom CSS -->
+    <style>
+        /* Dark mode support */
+        .dark {
+            color-scheme: dark;
+        }
+        
+        /* Smooth transitions for interactive elements only (avoids mobile jank from wildcard) */
+        a, button, input, select, textarea, .transition {
+            transition: background-color 0.3s ease, border-color 0.3s ease;
+        }
+        
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+        
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+        
+        ::-webkit-scrollbar-thumb {
+            background: #888;
+            border-radius: 4px;
+        }
+        
+        ::-webkit-scrollbar-thumb:hover {
+            background: #555;
+        }
+
+        /* ===== Trust strip (checkout / billing / Dedicated GPU / addons) ===== */
+        .ts-wrap {
+            border: 1px solid rgba(124, 58, 237, 0.25);
+            border-radius: 10px;
+            padding: 14px 16px;
+            background: linear-gradient(135deg, rgba(124, 58, 237, 0.06) 0%, rgba(16, 185, 129, 0.04) 100%);
+            margin: 16px 0;
+            font-size: 13px;
+            line-height: 1.5;
+            color: #d1d5db;
+        }
+        .ts-header {
+            display: flex; align-items: center; gap: 8px;
+            color: #6ee7b7;
+            font-weight: 600;
+            font-size: 13px;
+            margin-bottom: 12px;
+            letter-spacing: 0.01em;
+        }
+        .ts-header i { color: #34d399; font-size: 14px; }
+        .ts-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 10px 14px;
+        }
+        .ts-chip {
+            display: flex; align-items: flex-start; gap: 10px;
+            padding: 8px 10px;
+            background: rgba(17, 24, 39, 0.4);
+            border-radius: 6px;
+            border: 1px solid rgba(255, 255, 255, 0.04);
+        }
+        .ts-chip > i {
+            color: #a78bfa;
+            font-size: 14px;
+            flex-shrink: 0;
+            margin-top: 2px;
+            width: 16px;
+            text-align: center;
+        }
+        .ts-chip-title {
+            color: #f3f4f6;
+            font-weight: 600;
+            font-size: 12.5px;
+            line-height: 1.3;
+        }
+        .ts-chip-sub {
+            color: #9ca3af;
+            font-size: 11.5px;
+            line-height: 1.4;
+            margin-top: 2px;
+        }
+        .ts-footnote {
+            margin: 12px 0 0;
+            padding-top: 10px;
+            border-top: 1px dashed rgba(255, 255, 255, 0.08);
+            font-size: 11px;
+            color: #9ca3af;
+            line-height: 1.5;
+        }
+        .ts-footnote strong { color: #d1d5db; }
+        .ts-mono {
+            font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, monospace;
+            font-size: 10.5px;
+            color: #9ca3af;
+            background: rgba(255, 255, 255, 0.04);
+            padding: 1px 5px;
+            border-radius: 3px;
+            letter-spacing: 0.01em;
+        }
+        .ts-wrap a { color: #a78bfa; text-decoration: underline; }
+        .ts-wrap a:hover { color: #c4b5fd; }
+        .ts-wrap-compact { padding: 10px 12px; margin: 12px 0; }
+        .ts-compact-row { display: flex; flex-wrap: wrap; gap: 6px; }
+        .ts-compact-pill {
+            display: inline-flex; align-items: center; gap: 5px;
+            font-size: 11.5px;
+            padding: 4px 9px;
+            border-radius: 999px;
+            background: rgba(124, 58, 237, 0.12);
+            color: #ddd6fe;
+            border: 1px solid rgba(167, 139, 250, 0.18);
+        }
+        .ts-compact-pill i { font-size: 10.5px; color: #a78bfa; }
+        .ts-compact-details summary {
+            cursor: pointer;
+            font-size: 11.5px;
+            color: #93c5fd;
+            margin-top: 8px;
+            list-style: none;
+        }
+        .ts-compact-details summary::-webkit-details-marker { display: none; }
+        .ts-compact-details summary::before { content: "› "; transition: transform 0.15s; display: inline-block; }
+        .ts-compact-details[open] summary::before { transform: rotate(90deg); }
+        .ts-compact-list { list-style: none; padding: 6px 0 0 16px; margin: 0; }
+        .ts-compact-list li { font-size: 11.5px; color: #d1d5db; padding: 2px 0; line-height: 1.5; }
+        .ts-compact-list strong { color: #f3f4f6; }
+        @media (max-width: 640px) {
+            .ts-grid { grid-template-columns: 1fr; }
+            .ts-header { font-size: 12.5px; }
+        }
+    </style>
+    
+    <!-- CSRF Token for AJAX requests (null-safe for unauthenticated sessions) -->
+    <meta name="_csrf" content="ff6a3657-aba8-4637-ba35-8a1bf8d6aa0c"/>
+    <meta name="_csrf_header" content="X-XSRF-TOKEN"/>
+    <!-- PayPal-branded button. Uses PayPal's official brand blue (#0070BA) as a real CSS rule so it
+         always renders (the bg-[#0070ba] Tailwind utility can be purged/missed → showed as white). -->
+    <style>
+        .pp-pay { background-color:#0070ba !important; color:#ffffff !important; }
+        .pp-pay:hover { background-color:#005ea6 !important; }
+        /* Subtle pulsing glow to guide users to the Containers nav after a deploy */
+        @keyframes containerNavGlow {
+            0%,100% { box-shadow: 0 0 0 0 rgba(139,92,246,0); background-color: rgba(139,92,246,0.10); }
+            50%     { box-shadow: 0 0 12px 2px rgba(139,92,246,0.45); background-color: rgba(139,92,246,0.20); }
+        }
+        .container-nav-glow { animation: containerNavGlow 1.8s ease-in-out infinite; color:#fff !important; }
+        @media (prefers-reduced-motion: reduce) { .container-nav-glow { animation: none; background-color: rgba(139,92,246,0.18); } }
+    </style>
+</head>
+<body class="bg-gradient-to-br from-gray-900 via-purple-900 to-gray-900">
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 bg-black/20 backdrop-blur-lg border-b border-white/10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <a href="/" class="flex items-center overflow-hidden h-16">
+                    <img src="/images/snapdeploy-logo.png" alt="SnapDeploy" class="h-24 w-auto mt-2" width="96" height="96">
+                </a>
+                <div class="flex items-center space-x-4">
+                    <a href="/register" class="text-white hover:text-purple-400 transition">Don't have an account?</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Login Form -->
+    <div class="min-h-screen grid lg:grid-cols-2">
+        <!-- Left: animated live-deploy terminal (desktop only, self-contained, perf-guarded) -->
+        <div class="sd-av">
+    <style>
+        .sd-av { display: none; }
+        @media (min-width: 1024px) {
+            .sd-av {
+                display: flex;
+                flex-direction: column;
+                justify-content: flex-start;
+                position: relative;
+                overflow: hidden;
+                padding: 5rem 3rem 3rem;
+                border-right: 1px solid rgba(255, 255, 255, 0.05);
+            }
+        }
+        .sd-av__glow { position: absolute; border-radius: 9999px; filter: blur(64px); pointer-events: none; }
+        .sd-av__inner { position: relative; z-index: 10; max-width: 34rem; }
+        .sd-av__term {
+            background: #0d1117;
+            border: 1px solid rgba(255, 255, 255, 0.10);
+            border-radius: 0.75rem;
+            overflow: hidden;
+            box-shadow: 0 25px 50px -12px rgba(88, 28, 135, 0.35);
+            font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
+            font-size: 13px;
+        }
+        .sd-av__bar { display: flex; align-items: center; gap: 0.5rem; padding: 0.75rem 1rem;
+            background: rgba(255, 255, 255, 0.03); border-bottom: 1px solid rgba(255, 255, 255, 0.10); }
+        .sd-av__dot { width: 0.75rem; height: 0.75rem; border-radius: 9999px; }
+        .sd-av__body { padding: 1.25rem; min-height: 300px; color: #d1d5db; line-height: 1.7; }
+        .sd-av__body > div { margin-top: 0.25rem; }
+        .sd-av__body > div:first-child { margin-top: 0; }
+        .sd-g  { color: #4ade80; }               /* green */
+        .sd-gb { color: #4ade80; font-weight: 600; }
+        .sd-d  { color: #6b7280; }               /* dim  */
+        .sd-w  { color: #e5e7eb; }               /* bright */
+        .sd-p  { color: #c4b5fd; }               /* purple link */
+        .sd-badge { display: inline-flex; align-items: center; gap: 0.5rem; margin-top: 0.5rem;
+            padding: 0.125rem 0.6rem; border-radius: 9999px; background: rgba(34, 197, 94, 0.10);
+            color: #4ade80; font-size: 11px; }
+        .sd-badge span { width: 0.5rem; height: 0.5rem; border-radius: 9999px; background: #4ade80; }
+        .sd-av__pulse { animation: sd-pulse 1.6s ease-in-out infinite; }
+        @keyframes sd-pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.35; } }
+        .sd-av__trust { margin-top: 2rem; display: flex; flex-wrap: wrap; gap: 0.5rem 1.5rem;
+            font-size: 0.875rem; color: #9ca3af; }
+        @media (prefers-reduced-motion: reduce) { .sd-av__pulse { animation: none; } }
+    </style>
+
+    <div class="sd-av__glow" style="top:-8rem;left:-6rem;width:24rem;height:24rem;background:rgba(147,51,234,0.20);"></div>
+    <div class="sd-av__glow" style="bottom:-6rem;right:-2.5rem;width:20rem;height:20rem;background:rgba(219,39,119,0.20);"></div>
+
+    <div class="sd-av__inner">
+        <h2 class="text-4xl font-bold text-white" style="line-height:1.2;margin-bottom:0.75rem;">
+            From <span style="color:#c4b5fd;">code</span> to a live URL in under a minute.
+        </h2>
+        <p class="text-gray-400" style="margin-bottom:2rem;">
+            Deploy any container from GitHub, source, or a Docker image &mdash; no Kubernetes, no YAML, no servers to manage.
+        </p>
+
+        <div class="sd-av__term">
+            <div class="sd-av__bar">
+                <span class="sd-av__dot" style="background:rgba(239,68,68,0.7);"></span>
+                <span class="sd-av__dot" style="background:rgba(234,179,8,0.7);"></span>
+                <span class="sd-av__dot" style="background:rgba(34,197,94,0.7);"></span>
+                <span style="margin-left:0.75rem;font-size:0.75rem;color:#6b7280;">snapdeploy &mdash; deploy</span>
+            </div>
+            <div id="sdDeployTerm" class="sd-av__body" aria-hidden="true"></div>
+        </div>
+
+        <div class="sd-av__trust">
+            <span><i class="fas fa-users" style="color:#a78bfa;margin-right:0.5rem;"></i>Join <span id="sdDevCount" data-target="7166">7,166</span>+ developers</span>
+            <span><i class="fas fa-bolt" style="color:#facc15;margin-right:0.5rem;"></i>Live in ~60s</span>
+            <span><i class="fas fa-cloud" style="color:#60a5fa;margin-right:0.5rem;"></i>AWS-powered</span>
+        </div>
+    </div>
+
+    <script>
+    (function () {
+        var term = document.getElementById('sdDeployTerm');
+        if (!term) return;
+
+        var DESKTOP = window.matchMedia('(min-width: 1024px)');
+        var REDUCE  = window.matchMedia('(prefers-reduced-motion: reduce)');
+
+        var STATIC =
+            '<div class="sd-w">&#9656; Deploying <span class="sd-p">my-app</span></div>' +
+            '<div class="sd-g">&check; Image built &middot; 512 MB</div>' +
+            '<div class="sd-g">&check; Pushed to registry</div>' +
+            '<div class="sd-g">&check; Container deployed</div>' +
+            '<div class="sd-g">&check; Health check passed</div>' +
+            '<div class="sd-gb">&check; Live in 54s</div>' +
+            '<div class="sd-p">&rarr; https://my-app.containers.snapdeploy.app</div>' +
+            '<div><span class="sd-badge"><span></span>Running</span></div>';
+
+        // Not visible on mobile — skip entirely.
+        if (!DESKTOP.matches) { return; }
+        // Honor reduced-motion — show the finished frame, no animation.
+        if (REDUCE.matches) { term.innerHTML = STATIC; return; }
+
+        var SPIN = ['⠋','⠙','⠹','⠸','⠼','⠴','⠦','⠧','⠇','⠏'];
+        var timers = [];
+        var spinTimer = null;
+
+        function stop() {
+            for (var i = 0; i < timers.length; i++) clearTimeout(timers[i]);
+            timers = [];
+            if (spinTimer) { clearInterval(spinTimer); spinTimer = null; }
+        }
+        function line(html) {
+            var d = document.createElement('div');
+            d.innerHTML = html;
+            return term.appendChild(d.firstChild);
+        }
+        function at(t, fn) { timers.push(setTimeout(fn, t)); }
+
+        function run() {
+            stop();
+            term.innerHTML = '';
+            var t = 150;
+
+            at(t, function () { line('<div class="sd-w">&#9656; Deploying <span class="sd-p">my-app</span></div>'); });
+
+            t = progress(t + 450, 'Building image',        1100, '&check; Image built &middot; 512 MB');
+            t = progress(t + 250, 'Pushing to registry',    850, '&check; Pushed to registry');
+            t = progress(t + 250, 'Deploying container',     850, '&check; Container deployed');
+            t = progress(t + 250, 'Running health check',    750, '&check; Health check passed');
+
+            t += 400; at(t, function () { line('<div class="sd-gb">&check; Live in 54s</div>'); });
+            t += 300; at(t, function () { line('<div class="sd-p">&rarr; https://my-app.containers.snapdeploy.app</div>'); });
+            t += 300; at(t, function () { line('<div><span class="sd-badge"><span class="sd-av__pulse"></span>Running</span></div>'); });
+
+            // Loop (only while visible + on desktop).
+            t += 2800; at(t, function () { if (!document.hidden && DESKTOP.matches) run(); });
+
+            function progress(start, label, dur, done) {
+                var el = null;
+                at(start, function () {
+                    el = line('<div><span class="sd-sp sd-p">' + SPIN[0] + '</span> <span class="sd-w">' + label + '&hellip;</span></div>');
+                    var sp = el.querySelector('.sd-sp'), i = 0;
+                    spinTimer = setInterval(function () { i = (i + 1) % SPIN.length; if (sp) sp.textContent = SPIN[i]; }, 90);
+                });
+                at(start + dur, function () {
+                    if (spinTimer) { clearInterval(spinTimer); spinTimer = null; }
+                    if (el) el.innerHTML = '<span class="sd-g">' + done + '</span>';
+                });
+                return start + dur;
+            }
+        }
+
+        document.addEventListener('visibilitychange', function () {
+            if (document.hidden) { stop(); }
+            else if (DESKTOP.matches) { run(); }
+        });
+
+        run();
+    })();
+
+    // Live developer count — animate a count-up as a flourish. The final number is
+    // already rendered server-side (works with no JS / on mobile / reduced-motion);
+    // this only animates on desktop where the panel is visible. ~15 lines, one rAF pass.
+    (function () {
+        var el = document.getElementById('sdDevCount');
+        if (!el) return;
+        var target = parseInt((el.getAttribute('data-target') || '').replace(/[^0-9]/g, ''), 10);
+        if (!target || isNaN(target)) return;
+        var DESKTOP = window.matchMedia('(min-width: 1024px)');
+        var REDUCE  = window.matchMedia('(prefers-reduced-motion: reduce)');
+        if (!DESKTOP.matches || REDUCE.matches) return; // keep the static server-rendered value
+        var fmt = function (n) { return n.toLocaleString('en-US'); };
+        var start = Math.max(0, target - 400), dur = 1400, t0 = null;
+        function tick(ts) {
+            if (t0 === null) t0 = ts;
+            var p = Math.min(1, (ts - t0) / dur);
+            var eased = 1 - Math.pow(1 - p, 3); // easeOutCubic
+            el.textContent = fmt(Math.floor(start + (target - start) * eased));
+            if (p < 1) requestAnimationFrame(tick); else el.textContent = fmt(target);
+        }
+        requestAnimationFrame(tick);
+    })();
+    </script>
+</div>
+        <!-- Right: sign-in form -->
+        <div class="flex items-start justify-center px-4 sm:px-6 lg:px-8 pt-20 pb-12">
+        <div class="max-w-md w-full">
+            <!-- Header -->
+            <div class="text-center mb-8">
+                <h2 class="text-4xl font-bold text-white mb-2">Welcome Back</h2>
+                <p class="text-gray-400">Sign in to your account</p>
+            </div>
+
+            <!-- Form Card -->
+            <div class="bg-white/5 backdrop-blur-xl border border-white/10 rounded-2xl p-8 shadow-2xl">
+                <!-- Error/Success Messages -->
+                
+
+                
+
+                
+
+                
+
+                <!-- Login Form -->
+                <form id="loginForm" class="space-y-6">
+                    <!-- Error Message -->
+                    <div id="loginError" class="hidden p-4 bg-red-500/10 border border-red-500/20 rounded-lg">
+                        <div class="flex items-center text-red-400">
+                            <i class="fas fa-exclamation-circle mr-3"></i>
+                            <span id="loginErrorText">Invalid username or password.</span>
+                        </div>
+                    </div>
+
+                    <!-- Email -->
+                    <div>
+                        <label for="username" class="block text-sm font-medium text-gray-300 mb-2">
+                            <i class="fas fa-envelope mr-2 text-purple-400"></i>Email Address
+                        </label>
+                        <input
+                            type="email"
+                            id="username"
+                            name="username"
+                            required
+                            autofocus
+                            class="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent transition"
+                            placeholder="you@example.com">
+                    </div>
+
+                    <!-- Password -->
+                    <div>
+                        <label for="password" class="block text-sm font-medium text-gray-300 mb-2">
+                            <i class="fas fa-lock mr-2 text-purple-400"></i>Password
+                        </label>
+                        <div class="relative">
+                            <input
+                                type="password"
+                                id="password"
+                                name="password"
+                                required
+                                class="w-full px-4 py-3 pr-12 bg-white/10 border border-white/20 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent transition"
+                                placeholder="••••••••">
+                            <button
+                                type="button"
+                                onclick="togglePasswordVisibility()"
+                                class="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 hover:text-white transition">
+                                <i id="passwordToggleIcon" class="fas fa-eye"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Forgot Password -->
+                    <div class="flex items-center justify-end">
+                        <a href="/forgot-password" class="text-sm font-medium text-purple-400 hover:text-purple-300 transition">
+                            Forgot password?
+                        </a>
+                    </div>
+
+                    <!-- Cloudflare Turnstile (conditional — only when turnstile.enabled=true) -->
+                    <div class="flex justify-center">
+                        <div class="bg-white/10 backdrop-blur-sm border border-white/20 rounded-lg p-2 inline-block">
+                            <div class="cf-turnstile"
+                                 data-action="login"
+                                 data-callback="onTurnstileLoginReady"
+                                 data-theme="dark" data-sitekey="0x4AAAAAADrnJLa_ltiUHOJk"></div>
+                        </div>
+                    </div>
+
+                    <!-- Submit Button -->
+                    <button
+                        type="submit"
+                        id="loginBtn"
+                        class="w-full bg-gradient-to-r from-purple-600 to-pink-600 text-white py-3 rounded-lg text-lg font-semibold hover:from-purple-700 hover:to-pink-700 transition transform hover:scale-105 shadow-xl shadow-purple-500/50">
+                        <i class="fas fa-sign-in-alt mr-2"></i>Login
+                    </button>
+                </form>
+
+                <!-- Divider -->
+                <div class="relative my-6">
+                    <div class="absolute inset-0 flex items-center">
+                        <div class="w-full border-t border-white/10"></div>
+                    </div>
+                    <div class="relative flex justify-center text-sm">
+                        <span class="px-4 bg-transparent text-gray-400">Don't have an account?</span>
+                    </div>
+                </div>
+
+                <!-- Register Link -->
+                <a href="/register" class="block w-full text-center bg-white/10 border border-white/20 text-white py-3 rounded-lg font-semibold hover:bg-white/20 transition">
+                    <i class="fas fa-rocket mr-2"></i>Create Account
+                </a>
+            </div>
+
+            <!-- Features -->
+            <div class="mt-8 grid grid-cols-3 gap-4 text-center">
+                <div class="text-gray-400 text-sm">
+                    <i class="fas fa-bolt text-yellow-400 mb-1"></i>
+                    <div>Fast Deploy</div>
+                </div>
+                <div class="text-gray-400 text-sm">
+                    <i class="fas fa-shield-alt text-blue-400 mb-1"></i>
+                    <div>Secure</div>
+                </div>
+                <div class="text-gray-400 text-sm">
+                    <i class="fas fa-cloud text-purple-400 mb-1"></i>
+                    <div>AWS Powered</div>
+                </div>
+            </div>
+        </div>
+        </div>
+    </div>
+
+    <!-- 2FA Verification Modal -->
+    <div id="twoFactorModal" class="hidden fixed inset-0 bg-black/70 backdrop-blur-sm z-50 overflow-y-auto">
+        <div class="flex items-center justify-center min-h-full p-4">
+            <div class="bg-white/5 backdrop-blur-xl border border-white/10 rounded-2xl p-8 shadow-2xl max-w-md w-full">
+                <div class="text-center mb-6">
+                    <div class="inline-flex items-center justify-center w-16 h-16 bg-purple-500/20 rounded-full mb-4">
+                        <i class="fas fa-shield-alt text-3xl text-purple-400"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-white">Two-Factor Authentication</h3>
+                    <p class="text-gray-400 mt-2">Enter the code from your authenticator app</p>
+                </div>
+
+                <form id="twoFactorForm" class="space-y-6">
+                    <div>
+                        <input
+                            type="text"
+                            id="twoFactorCode"
+                            maxlength="8"
+                            placeholder="Enter code"
+                            class="w-full px-4 py-4 bg-white/10 border border-white/20 rounded-lg text-white text-center text-2xl tracking-widest placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent transition"
+                            oninput="this.value = this.value.replace(/[^0-9A-Za-z]/g, '').toUpperCase()">
+                    </div>
+
+                    <div id="twoFactorError" class="hidden p-3 bg-red-500/10 border border-red-500/20 rounded-lg">
+                        <div class="flex items-center text-red-400 text-sm">
+                            <i class="fas fa-exclamation-circle mr-2"></i>
+                            <span id="twoFactorErrorText">Invalid code</span>
+                        </div>
+                    </div>
+
+                    <button
+                        type="submit"
+                        id="twoFactorBtn"
+                        class="w-full bg-gradient-to-r from-purple-600 to-pink-600 text-white py-3 rounded-lg text-lg font-semibold hover:from-purple-700 hover:to-pink-700 transition transform hover:scale-105 shadow-xl shadow-purple-500/50">
+                        <i class="fas fa-check mr-2"></i>Verify
+                    </button>
+                </form>
+
+                <div class="mt-4 text-center">
+                    <button onclick="showBackupCodeInput()" id="useBackupCodeBtn" class="text-sm text-purple-400 hover:text-purple-300 transition">
+                        Use a backup code instead
+                    </button>
+                    <button onclick="showTotpCodeInput()" id="useTotpCodeBtn" class="hidden text-sm text-purple-400 hover:text-purple-300 transition">
+                        Use authenticator app instead
+                    </button>
+                </div>
+
+                <div class="mt-6 pt-6 border-t border-white/10">
+                    <button onclick="cancelTwoFactor()" class="w-full text-gray-400 hover:text-white text-sm transition">
+                        <i class="fas fa-arrow-left mr-2"></i>Back to login
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div>
+        <!-- Timezone Utilities (global) - converts UTC to user's local timezone -->
+        <script src="/js/timezone-utils.js"></script>
+        <!-- Toast Notification System (global) -->
+        <script src="/js/toast-utils.js"></script>
+
+        <script>
+            // User dropdown toggle
+            const userMenuButton = document.getElementById('user-menu-button');
+            const userMenu = document.getElementById('user-menu');
+            const notificationsToggle = document.getElementById('notifications-toggle');
+            const notificationsMenu = document.getElementById('notifications-menu');
+            const resourceUsageToggle = document.getElementById('resource-usage-toggle');
+            const resourceUsageMenu = document.getElementById('resource-usage-menu');
+
+            if (userMenuButton && userMenu) {
+                userMenuButton.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    e.preventDefault();
+                    const isHidden = userMenu.classList.contains('hidden');
+                    userMenu.classList.toggle('hidden', !isHidden);
+                    notificationsMenu?.classList.add('hidden');
+                    resourceUsageMenu?.classList.add('hidden');
+                });
+            }
+
+            // Notifications dropdown toggle
+            if (notificationsToggle && notificationsMenu) {
+                notificationsToggle.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    e.preventDefault();
+                    const isHidden = notificationsMenu.classList.contains('hidden');
+                    notificationsMenu.classList.toggle('hidden', !isHidden);
+                    userMenu?.classList.add('hidden');
+                    resourceUsageMenu?.classList.add('hidden');
+                });
+            }
+
+            // Resource Usage dropdown toggle
+            if (resourceUsageToggle && resourceUsageMenu) {
+                resourceUsageToggle.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    e.preventDefault();
+                    const isHidden = resourceUsageMenu.classList.contains('hidden');
+                    resourceUsageMenu.classList.toggle('hidden', !isHidden);
+                    userMenu?.classList.add('hidden');
+                    notificationsMenu?.classList.add('hidden');
+                });
+            }
+
+            // Mobile navigation toggle
+            const mobileNavBtn = document.getElementById('mobile-nav-btn');
+            const mobileNavMenu = document.getElementById('mobile-nav-menu');
+
+            function closeMobileNav() {
+                if (mobileNavMenu) {
+                    mobileNavMenu.classList.add('hidden');
+                    const icon = mobileNavBtn?.querySelector('i');
+                    if (icon) {
+                        icon.classList.remove('fa-times');
+                        icon.classList.add('fa-bars');
+                    }
+                }
+            }
+            // Make closeMobileNav globally accessible for onclick handlers
+            window.closeMobileNav = closeMobileNav;
+
+            if (mobileNavBtn && mobileNavMenu) {
+                mobileNavBtn.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    const isHidden = mobileNavMenu.classList.contains('hidden');
+                    mobileNavMenu.classList.toggle('hidden', !isHidden);
+                    // Toggle icon
+                    const icon = mobileNavBtn.querySelector('i');
+                    if (isHidden) {
+                        icon.classList.remove('fa-bars');
+                        icon.classList.add('fa-times');
+                    } else {
+                        icon.classList.remove('fa-times');
+                        icon.classList.add('fa-bars');
+                    }
+                    // Close other dropdowns
+                    userMenu?.classList.add('hidden');
+                    notificationsMenu?.classList.add('hidden');
+                    resourceUsageMenu?.classList.add('hidden');
+                });
+            }
+
+            // Close dropdowns when clicking outside
+            document.addEventListener('click', (e) => {
+                if (userMenu && !userMenu.contains(e.target) && !userMenuButton?.contains(e.target)) {
+                    userMenu.classList.add('hidden');
+                }
+                if (notificationsMenu && !notificationsMenu.contains(e.target) && !notificationsToggle?.contains(e.target)) {
+                    notificationsMenu.classList.add('hidden');
+                }
+                if (resourceUsageMenu && !resourceUsageMenu.contains(e.target) && !resourceUsageToggle?.contains(e.target)) {
+                    resourceUsageMenu.classList.add('hidden');
+                }
+                if (mobileNavMenu && !mobileNavMenu.contains(e.target) && !mobileNavBtn?.contains(e.target)) {
+                    closeMobileNav();
+                }
+            });
+
+            // CSRF token for AJAX requests — read LIVE from the XSRF-TOKEN cookie on every request.
+            // The cookie is the source of truth (CookieCsrfTokenRepository); reading it fresh (instead of
+            // caching the <meta> value at page load) means the token can never go stale when the cookie
+            // rotates → fixes intermittent 403s ("Deployment failed", etc.). Falls back to the <meta>
+            // only for the very first request before any cookie exists.
+            const csrfHeaderName = document.querySelector('meta[name="_csrf_header"]')?.getAttribute('content') || 'X-XSRF-TOKEN';
+            function readLiveCsrfToken() {
+                const m = document.cookie.match(/(?:^|;\s*)XSRF-TOKEN=([^;]+)/);
+                if (m) return decodeURIComponent(m[1]);
+                return document.querySelector('meta[name="_csrf"]')?.getAttribute('content') || null;
+            }
+            if (csrfHeaderName) {
+                const originalFetch = window.fetch;
+                window.fetch = function(...args) {
+                    if (args[1] && args[1].method && args[1].method !== 'GET') {
+                        const liveToken = readLiveCsrfToken();
+                        if (liveToken) {
+                            args[1].headers = {
+                                ...args[1].headers,
+                                [csrfHeaderName]: liveToken
+                            };
+                        }
+                    }
+                    return originalFetch.apply(this, args);
+                };
+            }
+
+            // Feedback Modal Functions
+            window.openFeedbackModal = function() {
+                const modal = document.getElementById('feedbackModal');
+                if (modal) {
+                    modal.classList.remove('hidden');
+                }
+            };
+
+            window.closeFeedbackModal = function() {
+                const modal = document.getElementById('feedbackModal');
+                if (modal) {
+                    modal.classList.add('hidden');
+                    document.getElementById('feedbackForm')?.reset();
+                    const resultEl = document.getElementById('feedbackResult');
+                    if (resultEl) resultEl.classList.add('hidden');
+                }
+            };
+
+            window.submitFeedback = async function(event) {
+                event.preventDefault();
+
+                const message = document.getElementById('feedbackMessage').value;
+                const category = document.getElementById('feedbackCategory').value;
+
+                const submitBtn = event.target.querySelector('button[type="submit"]');
+                submitBtn.disabled = true;
+                submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin mr-2"></i>Submitting...';
+
+                try {
+                    const response = await fetch('/web/api/feedback/submit', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify({ message, category })
+                    });
+
+                    const result = await response.json();
+                    const resultEl = document.getElementById('feedbackResult');
+
+                    if (response.ok && result.success) {
+                        resultEl.innerHTML = `
+                            <div class="bg-green-900/30 border border-green-500 text-green-200 px-4 py-3 rounded">
+                                <p class="font-semibold">${result.message}</p>
+                                <!-- Bonus hours display hidden (Free Deploy model) -->
+                            </div>
+                        `;
+                        document.getElementById('feedbackForm').reset();
+                        setTimeout(() => location.reload(), 2000);
+                    } else {
+                        resultEl.innerHTML = `
+                            <div class="bg-red-900/30 border border-red-500 text-red-200 px-4 py-3 rounded">
+                                ${result.message || 'Failed to submit feedback'}
+                            </div>
+                        `;
+                    }
+                    resultEl.classList.remove('hidden');
+                } catch (error) {
+                    console.error('Error submitting feedback:', error);
+                    const resultEl = document.getElementById('feedbackResult');
+                    resultEl.innerHTML = `
+                        <div class="bg-red-900/30 border border-red-500 text-red-200 px-4 py-3 rounded">
+                            Error submitting feedback. Please try again.
+                        </div>
+                    `;
+                    resultEl.classList.remove('hidden');
+                } finally {
+                    submitBtn.disabled = false;
+                    submitBtn.innerHTML = '<i class="fas fa-paper-plane mr-2"></i>Submit Feedback';
+                }
+            };
+
+            // Bug Report Modal Functions
+            window.openBugReportModal = function() {
+                const modal = document.getElementById('bugReportModal');
+                if (modal) {
+                    modal.classList.remove('hidden');
+                }
+            };
+
+            window.closeBugReportModal = function() {
+                const modal = document.getElementById('bugReportModal');
+                if (modal) {
+                    modal.classList.add('hidden');
+                    document.getElementById('bugReportForm')?.reset();
+                    const resultEl = document.getElementById('bugReportResult');
+                    if (resultEl) resultEl.classList.add('hidden');
+                }
+            };
+
+            window.submitBugReport = async function(event) {
+                event.preventDefault();
+
+                const title = document.getElementById('bugTitle').value;
+                const description = document.getElementById('bugDescription').value;
+                const stepsToReproduce = document.getElementById('bugSteps').value;
+                const severity = document.getElementById('bugSeverity').value;
+
+                const submitBtn = event.target.querySelector('button[type="submit"]');
+                submitBtn.disabled = true;
+                submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin mr-2"></i>Submitting...';
+
+                try {
+                    const response = await fetch('/web/api/feedback/bug-report', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify({ title, description, stepsToReproduce, severity })
+                    });
+
+                    const result = await response.json();
+                    const resultEl = document.getElementById('bugReportResult');
+
+                    if (response.ok && result.success) {
+                        resultEl.innerHTML = `
+                            <div class="bg-green-900/30 border border-green-500 text-green-200 px-4 py-3 rounded">
+                                <p class="font-semibold">${result.message}</p>
+                            </div>
+                        `;
+                        document.getElementById('bugReportForm').reset();
+                        setTimeout(() => closeBugReportModal(), 3000);
+                    } else {
+                        resultEl.innerHTML = `
+                            <div class="bg-red-900/30 border border-red-500 text-red-200 px-4 py-3 rounded">
+                                ${result.message || 'Failed to submit bug report'}
+                            </div>
+                        `;
+                    }
+                    resultEl.classList.remove('hidden');
+                } catch (error) {
+                    console.error('Error submitting bug report:', error);
+                    const resultEl = document.getElementById('bugReportResult');
+                    resultEl.innerHTML = `
+                        <div class="bg-red-900/30 border border-red-500 text-red-200 px-4 py-3 rounded">
+                            Error submitting bug report. Please try again.
+                        </div>
+                    `;
+                    resultEl.classList.remove('hidden');
+                } finally {
+                    submitBtn.disabled = false;
+                    submitBtn.innerHTML = '<i class="fas fa-bug mr-2"></i>Submit Bug Report';
+                }
+            };
+
+            // Load container count for sidebar
+            async function loadContainerCount() {
+                const containerCountEl = document.getElementById('containerCount');
+                if (!containerCountEl) return;
+
+                try {
+                    const response = await fetch('/web/api/containers', {
+                        credentials: 'same-origin'
+                    });
+
+                    if (response.ok) {
+                        const containers = await response.json();
+                        containerCountEl.textContent = containers.length;
+                        // Draw the eye to the Containers nav when the user has containers but isn't
+                        // on the containers page yet (helps users find what they just deployed).
+                        try {
+                            const navLink = containerCountEl.closest('a');
+                            if (navLink) {
+                                const onContainers = window.location.pathname === '/containers';
+                                navLink.classList.toggle('container-nav-glow', containers.length >= 1 && !onContainers);
+                            }
+                        } catch (e) { /* glow is cosmetic, never break */ }
+                    } else {
+                        console.error('Failed to load container count, status:', response.status);
+                        containerCountEl.textContent = '0';
+                    }
+                } catch (error) {
+                    console.error('Error loading container count:', error);
+                    containerCountEl.textContent = '0';
+                }
+            }
+            // Load resource usage widget (header popover and mobile menu)
+            async function loadResourceUsage() {
+                // Header compact label (the "X/Y" shown in the button)
+                const headerUsageLabelEl = document.getElementById('headerUsageLabel');
+
+                // Desktop elements
+                const containerUsageEl = document.getElementById('headerContainerUsage');
+                const containerUsageBarEl = document.getElementById('headerContainerUsageBar');
+                const storageUsageEl = document.getElementById('headerStorageUsage');
+                const storageUsageBarEl = document.getElementById('headerStorageUsageBar');
+
+                // Mobile elements
+                const mobileContainerUsageEl = document.getElementById('mobileContainerUsage');
+                const mobileContainerUsageBarEl = document.getElementById('mobileContainerUsageBar');
+                const mobileStorageUsageEl = document.getElementById('mobileStorageUsage');
+                const mobileStorageUsageBarEl = document.getElementById('mobileStorageUsageBar');
+
+                // Check if at least one set of elements exists
+                const hasDesktop = containerUsageEl && containerUsageBarEl && storageUsageEl && storageUsageBarEl;
+                const hasMobile = mobileContainerUsageEl && mobileContainerUsageBarEl && mobileStorageUsageEl && mobileStorageUsageBarEl;
+
+                if (!hasDesktop && !hasMobile) return;
+
+                try {
+                    const response = await fetch('/web/api/resource-usage', {
+                        credentials: 'same-origin'
+                    });
+
+                    if (response.ok) {
+                        const usage = await response.json();
+
+                        // Update container usage
+                        const containerCount = usage.containerCount;
+                        const containerLimit = usage.containerLimit;
+                        const containerPercentage = containerLimit > 0 ? (containerCount / containerLimit) * 100 : 0;
+                        const containerText = containerCount + '/' + containerLimit;
+                        const containerBarWidth = Math.min(containerPercentage, 100) + '%';
+
+                        // Determine container bar color class
+                        let containerBarClass;
+                        if (containerPercentage >= 100) {
+                            containerBarClass = 'bg-red-600 h-2 rounded-full transition-all duration-500';
+                        } else if (containerPercentage >= 80) {
+                            containerBarClass = 'bg-yellow-600 h-2 rounded-full transition-all duration-500';
+                        } else {
+                            containerBarClass = 'bg-blue-600 h-2 rounded-full transition-all duration-500';
+                        }
+
+                        // Update header compact label
+                        if (headerUsageLabelEl) {
+                            headerUsageLabelEl.textContent = containerText;
+                        }
+
+                        // Update desktop container elements
+                        if (hasDesktop) {
+                            containerUsageEl.textContent = containerText;
+                            containerUsageBarEl.style.width = containerBarWidth;
+                            containerUsageBarEl.className = containerBarClass;
+                        }
+
+                        // Update mobile container elements
+                        if (hasMobile) {
+                            mobileContainerUsageEl.textContent = containerText;
+                            mobileContainerUsageBarEl.style.width = containerBarWidth;
+                            mobileContainerUsageBarEl.className = containerBarClass;
+                        }
+
+                        // Update storage usage
+                        const storageUsed = usage.storageUsedGb || 0;
+                        const storageLimit = usage.storageLimitGb;
+                        const storagePercentage = storageLimit > 0 ? (storageUsed / storageLimit) * 100 : 0;
+
+                        // Show in MB if less than 1 GB, otherwise show in GB
+                        let storageDisplay;
+                        if (storageUsed < 1) {
+                            const storageMB = Math.round(storageUsed * 1024);
+                            storageDisplay = storageMB + 'MB/' + storageLimit + 'GB';
+                        } else {
+                            storageDisplay = storageUsed.toFixed(1) + 'GB/' + storageLimit + 'GB';
+                        }
+                        const storageBarWidth = Math.min(storagePercentage, 100) + '%';
+
+                        // Determine storage bar color class
+                        let storageBarClass;
+                        if (storagePercentage >= 100) {
+                            storageBarClass = 'bg-red-600 h-2 rounded-full transition-all duration-500';
+                        } else if (storagePercentage >= 80) {
+                            storageBarClass = 'bg-yellow-600 h-2 rounded-full transition-all duration-500';
+                        } else {
+                            storageBarClass = 'bg-green-600 h-2 rounded-full transition-all duration-500';
+                        }
+
+                        // Update desktop storage elements
+                        if (hasDesktop) {
+                            storageUsageEl.textContent = storageDisplay;
+                            storageUsageBarEl.style.width = storageBarWidth;
+                            storageUsageBarEl.className = storageBarClass;
+                        }
+
+                        // Update mobile storage elements
+                        if (hasMobile) {
+                            mobileStorageUsageEl.textContent = storageDisplay;
+                            mobileStorageUsageBarEl.style.width = storageBarWidth;
+                            mobileStorageUsageBarEl.className = storageBarClass;
+                        }
+                    } else {
+                        if (headerUsageLabelEl) {
+                            headerUsageLabelEl.textContent = '0/2';
+                        }
+                        if (hasDesktop) {
+                            containerUsageEl.textContent = '0/2';
+                            storageUsageEl.textContent = '0MB/5GB';
+                        }
+                        if (hasMobile) {
+                            mobileContainerUsageEl.textContent = '0/2';
+                            mobileStorageUsageEl.textContent = '0MB/5GB';
+                        }
+                    }
+                } catch (error) {
+                    console.error('Error loading resource usage:', error);
+                    if (headerUsageLabelEl) {
+                        headerUsageLabelEl.textContent = '0/2';
+                    }
+                    if (hasDesktop) {
+                        containerUsageEl.textContent = '0/2';
+                        storageUsageEl.textContent = '0MB/5GB';
+                    }
+                    if (hasMobile) {
+                        mobileContainerUsageEl.textContent = '0/2';
+                        mobileStorageUsageEl.textContent = '0MB/5GB';
+                    }
+                }
+            }
+
+            // Load data on page load
+            if (document.readyState === 'loading') {
+                document.addEventListener('DOMContentLoaded', function() {
+                    loadContainerCount();
+                    loadResourceUsage();
+                });
+            } else {
+                loadContainerCount();
+                loadResourceUsage();
+            }
+        </script>
+
+        <!-- Idle Session Timeout Detection -->
+        <script>
+            (function() {
+                const IDLE_TIMEOUT_MS = 30 * 60 * 1000;    // 30 minutes in milliseconds
+                const WARNING_BEFORE_MS = 5 * 60 * 1000;  // Show warning 5 minutes before logout
+                const CHECK_INTERVAL_MS = 10 * 1000;       // Check every 10 seconds
+
+                let lastActivityTime = Date.now();
+                let warningShown = false;
+                let idleCheckInterval = null;
+
+                // Track user activity
+                function updateActivity() {
+                    lastActivityTime = Date.now();
+                    // If warning modal is shown and user becomes active, hide it
+                    if (warningShown) {
+                        hideIdleWarning();
+                        warningShown = false;
+                    }
+                }
+
+                // Activity events to track
+                const activityEvents = ['mousedown', 'mousemove', 'keydown', 'scroll', 'touchstart', 'click'];
+                activityEvents.forEach(event => {
+                    document.addEventListener(event, updateActivity, { passive: true });
+                });
+
+                // Check idle status periodically
+                function checkIdleStatus() {
+                    const idleTime = Date.now() - lastActivityTime;
+                    const timeUntilLogout = IDLE_TIMEOUT_MS - idleTime;
+
+                    if (idleTime >= IDLE_TIMEOUT_MS) {
+                        // User has been idle for 30 minutes - logout
+                        clearInterval(idleCheckInterval);
+                        window.location.href = '/logout?idle=true';
+                    } else if (timeUntilLogout <= WARNING_BEFORE_MS && !warningShown) {
+                        // Show warning 5 minutes before logout
+                        showIdleWarning(Math.ceil(timeUntilLogout / 1000));
+                        warningShown = true;
+                    } else if (warningShown && timeUntilLogout > WARNING_BEFORE_MS) {
+                        // User became active, hide warning
+                        hideIdleWarning();
+                        warningShown = false;
+                    }
+
+                    // Update countdown in warning modal if visible
+                    if (warningShown) {
+                        updateWarningCountdown(Math.ceil(timeUntilLogout / 1000));
+                    }
+                }
+
+                function showIdleWarning(secondsRemaining) {
+                    let modal = document.getElementById('idleWarningModal');
+                    if (!modal) {
+                        modal = document.createElement('div');
+                        modal.id = 'idleWarningModal';
+                        modal.className = 'fixed inset-0 bg-black/70 backdrop-blur-sm flex items-center justify-center z-[9999] p-4';
+                        modal.innerHTML = `
+                            <div class="bg-gray-800 border border-yellow-500/50 rounded-2xl shadow-2xl max-w-md w-full p-6 text-center">
+                                <div class="flex justify-center mb-4">
+                                    <div class="flex items-center justify-center w-16 h-16 bg-yellow-500/20 rounded-full">
+                                        <i class="fas fa-clock text-yellow-500 text-3xl"></i>
+                                    </div>
+                                </div>
+                                <h3 class="text-xl font-bold text-white mb-2">Session Timeout Warning</h3>
+                                <p class="text-gray-300 mb-4">You've been inactive for a while. Your session will expire in:</p>
+                                <div id="idleCountdown" class="text-4xl font-mono font-bold text-yellow-500 mb-6">5:00</div>
+                                <p class="text-gray-400 text-sm mb-6">Move your mouse or press any key to stay logged in.</p>
+                                <button onclick="document.getElementById('idleWarningModal').remove(); window.idleWarningShown = false;"
+                                        class="w-full bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-500 hover:to-blue-500 text-white font-semibold py-3 px-6 rounded-lg transition-all">
+                                    I'm Still Here
+                                </button>
+                            </div>
+                        `;
+                        document.body.appendChild(modal);
+                    } else {
+                        modal.classList.remove('hidden');
+                    }
+                    updateWarningCountdown(secondsRemaining);
+                }
+
+                function hideIdleWarning() {
+                    const modal = document.getElementById('idleWarningModal');
+                    if (modal) {
+                        modal.remove();
+                    }
+                }
+
+                function updateWarningCountdown(seconds) {
+                    const countdown = document.getElementById('idleCountdown');
+                    if (countdown) {
+                        const mins = Math.floor(seconds / 60);
+                        const secs = seconds % 60;
+                        countdown.textContent = mins + ':' + String(secs).padStart(2, '0');
+
+                        // Change color to red when under 1 minute
+                        if (seconds < 60) {
+                            countdown.classList.remove('text-yellow-500');
+                            countdown.classList.add('text-red-500');
+                        } else {
+                            countdown.classList.remove('text-red-500');
+                            countdown.classList.add('text-yellow-500');
+                        }
+                    }
+                }
+
+                // Expose warningShown for the modal button
+                window.idleWarningShown = false;
+                Object.defineProperty(window, 'idleWarningShown', {
+                    get: () => warningShown,
+                    set: (v) => { warningShown = v; }
+                });
+
+                // Start checking idle status
+                idleCheckInterval = setInterval(checkIdleStatus, CHECK_INTERVAL_MS);
+
+                // Also check on visibility change (user switches tabs and comes back)
+                document.addEventListener('visibilitychange', function() {
+                    if (document.visibilityState === 'visible') {
+                        checkIdleStatus();
+                    }
+                });
+            })();
+        </script>
+
+        <!-- Feedback Modal -->
+        <div id="feedbackModal" class="hidden fixed inset-0 bg-black/70 backdrop-blur-sm flex items-center justify-center z-50 p-4 animate-fade-in">
+            <div class="bg-gray-800 border border-gray-700 rounded-2xl shadow-2xl max-w-2xl w-full transform transition-all duration-300">
+                <div class="p-8">
+                    <div class="flex justify-between items-center mb-6">
+                        <div>
+                            <div class="flex items-center gap-3 mb-2">
+                                <div class="flex items-center justify-center w-12 h-12 bg-gradient-to-br from-green-500/20 to-emerald-500/20 backdrop-blur-sm rounded-xl">
+                                    <i class="fas fa-comment text-green-500 text-xl"></i>
+                                </div>
+                                <h2 class="text-3xl font-bold text-white">Share Your Feedback</h2>
+                            </div>
+                            <!-- Bonus hours incentive hidden (Free Deploy model — no hour tracking) -->
+                            <p class="text-sm text-gray-200 ml-15 font-medium" style="display: none;">
+                                <span class="bg-gradient-to-r from-green-500 to-emerald-500 text-white px-3 py-1 rounded-full text-xs font-semibold">
+                                    <i class="fas fa-gift mr-1"></i>+50 Bonus Hours
+                                </span>
+                                <span class="ml-2">for FREE tier users!</span>
+                            </p>
+                        </div>
+                        <button onclick="closeFeedbackModal()" class="text-gray-400 hover:text-gray-200 transition-colors hover:rotate-90 transform duration-300 p-1" aria-label="Close feedback form">
+                            <i class="fas fa-times text-2xl"></i>
+                        </button>
+                    </div>
+                    <form id="feedbackForm" onsubmit="submitFeedback(event)" class="space-y-6">
+                        <div>
+                            <label for="feedbackCategory" class="block text-sm font-semibold text-gray-100 mb-2">
+                                <i class="fas fa-tag mr-2 text-green-500"></i>Category
+                            </label>
+                            <select id="feedbackCategory" name="category" class="w-full px-4 py-3 bg-gray-800 border-2 border-gray-600 rounded-xl text-white focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent transition-all">
+                                <option value="feature" class="text-gray-900 bg-white">Feature Request</option>
+                                <option value="usability" class="text-gray-900 bg-white">Usability Improvement</option>
+                                <option value="performance" class="text-gray-900 bg-white">Performance Issue</option>
+                                <option value="other" class="text-gray-900 bg-white">Other</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label for="feedbackMessage" class="block text-sm font-semibold text-gray-100 mb-2">
+                                <i class="fas fa-pen mr-2 text-green-500"></i>Your Feedback *
+                            </label>
+                            <textarea id="feedbackMessage" name="message" required minlength="20" maxlength="1000" rows="6"
+                                      placeholder="Tell us what you think! What features would you like? What can we improve?"
+                                      class="w-full px-4 py-3 bg-gray-800 border-2 border-gray-600 rounded-xl text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent transition-all resize-none"></textarea>
+                            <p class="mt-2 text-xs text-gray-400">
+                                <i class="fas fa-info-circle mr-1"></i>Minimum 20 characters, maximum 1000
+                            </p>
+                        </div>
+                        <div id="feedbackResult" class="hidden"></div>
+                        <div class="flex justify-end space-x-3 pt-6 border-t border-white/10">
+                            <button type="button" onclick="closeFeedbackModal()" class="px-6 py-3 bg-gray-700/50 border border-white/20 rounded-xl text-gray-200 hover:bg-gray-600/50 backdrop-blur-sm transition-all transform hover:scale-105">
+                                <i class="fas fa-times mr-2"></i>Cancel
+                            </button>
+                            <button type="submit" class="group relative overflow-hidden px-8 py-3 bg-gradient-to-r from-green-600 to-emerald-600 text-white rounded-xl hover:from-green-700 hover:to-emerald-700 transition-all transform hover:scale-105 shadow-lg hover:shadow-xl">
+                                <div class="absolute inset-0 bg-white/20 transform scale-x-0 group-hover:scale-x-100 transition-transform origin-left duration-300"></div>
+                                <span class="relative flex items-center">
+                                    <i class="fas fa-paper-plane mr-2"></i>Submit Feedback
+                                </span>
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <!-- Bug Report Modal -->
+        <div id="bugReportModal" class="hidden fixed inset-0 bg-black/70 backdrop-blur-sm flex items-center justify-center z-50 p-4 animate-fade-in">
+            <div class="bg-gray-800 border border-gray-700 rounded-2xl shadow-2xl max-w-3xl w-full max-h-[90vh] overflow-y-auto transform transition-all duration-300">
+                <div class="p-8">
+                    <div class="flex justify-between items-center mb-6">
+                        <div>
+                            <div class="flex items-center gap-3 mb-2">
+                                <div class="flex items-center justify-center w-12 h-12 bg-gradient-to-br from-red-500/20 to-pink-500/20 backdrop-blur-sm rounded-xl">
+                                    <i class="fas fa-bug text-red-500 text-xl"></i>
+                                </div>
+                                <h2 class="text-3xl font-bold text-white">Report a Bug</h2>
+                            </div>
+                            <!-- Hour bonus rewards messaging hidden (Free Deploy model — no hour tracking) -->
+                            <p class="text-sm text-gray-300 ml-15" style="display: none;">
+                                <span class="bg-gradient-to-r from-red-500 to-pink-500 text-white px-3 py-1 rounded-full text-xs font-semibold">
+                                    <i class="fas fa-trophy mr-1"></i>Earn Rewards
+                                </span>
+                                <span class="ml-2 text-gray-200">0-50 hr bonus for free tier, 1 month free for starter, based on the decision of the development committee.</span>
+                            </p>
+                        </div>
+                        <button onclick="closeBugReportModal()" class="text-gray-400 hover:text-gray-200 transition-colors hover:rotate-90 transform duration-300 p-1" aria-label="Close bug report form">
+                            <i class="fas fa-times text-2xl"></i>
+                        </button>
+                    </div>
+                    <form id="bugReportForm" onsubmit="submitBugReport(event)" class="space-y-6">
+                        <div>
+                            <label for="bugTitle" class="block text-sm font-semibold text-gray-100 mb-2">
+                                <i class="fas fa-heading mr-2 text-red-500"></i>Bug Title *
+                            </label>
+                            <input type="text" id="bugTitle" name="title" required minlength="10" maxlength="200"
+                                   placeholder="Brief description of the bug"
+                                   class="w-full px-4 py-3 bg-gray-800 border-2 border-gray-600 rounded-xl text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-transparent transition-all">
+                            <p class="mt-2 text-xs text-gray-400">
+                                <i class="fas fa-info-circle mr-1"></i>10-200 characters
+                            </p>
+                        </div>
+                        <div>
+                            <label for="bugSeverity" class="block text-sm font-semibold text-gray-100 mb-2">
+                                <i class="fas fa-exclamation-triangle mr-2 text-red-500"></i>Severity
+                            </label>
+                            <select id="bugSeverity" name="severity" class="w-full px-4 py-3 bg-gray-800 border-2 border-gray-600 rounded-xl text-white focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-transparent transition-all">
+                                <option value="low" class="text-gray-900 bg-white">🟢 Low - Minor issue, workaround available</option>
+                                <option value="medium" selected class="text-gray-900 bg-white">🟡 Medium - Noticeable issue affecting functionality</option>
+                                <option value="high" class="text-gray-900 bg-white">🟠 High - Major issue blocking key features</option>
+                                <option value="critical" class="text-gray-900 bg-white">🔴 Critical - System crash or data loss</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label for="bugDescription" class="block text-sm font-semibold text-gray-100 mb-2">
+                                <i class="fas fa-align-left mr-2 text-red-500"></i>Detailed Description *
+                            </label>
+                            <textarea id="bugDescription" name="description" required minlength="30" maxlength="2000" rows="5"
+                                      placeholder="What happened? What did you expect to happen?"
+                                      class="w-full px-4 py-3 bg-gray-800 border-2 border-gray-600 rounded-xl text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-transparent transition-all resize-none"></textarea>
+                            <p class="mt-2 text-xs text-gray-400">
+                                <i class="fas fa-info-circle mr-1"></i>30-2000 characters
+                            </p>
+                        </div>
+                        <div>
+                            <label for="bugSteps" class="block text-sm font-semibold text-gray-100 mb-2">
+                                <i class="fas fa-list-ol mr-2 text-red-500"></i>Steps to Reproduce *
+                            </label>
+                            <textarea id="bugSteps" name="stepsToReproduce" required minlength="20" maxlength="1000" rows="4"
+                                      placeholder="1. Go to...&#10;2. Click on...&#10;3. See error..."
+                                      class="w-full px-4 py-3 bg-gray-800 border-2 border-gray-600 rounded-xl text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-transparent transition-all resize-none"></textarea>
+                            <p class="mt-2 text-xs text-gray-400">
+                                <i class="fas fa-info-circle mr-1"></i>20-1000 characters
+                            </p>
+                        </div>
+                        <div id="bugReportResult" class="hidden"></div>
+                        <div class="flex justify-end space-x-3 pt-6 border-t border-white/10">
+                            <button type="button" onclick="closeBugReportModal()" class="px-6 py-3 bg-gray-700/50 border border-white/20 rounded-xl text-gray-200 hover:bg-gray-600/50 backdrop-blur-sm transition-all transform hover:scale-105">
+                                <i class="fas fa-times mr-2"></i>Cancel
+                            </button>
+                            <button type="submit" class="group relative overflow-hidden px-8 py-3 bg-gradient-to-r from-red-600 to-pink-600 text-white rounded-xl hover:from-red-700 hover:to-pink-700 transition-all transform hover:scale-105 shadow-lg hover:shadow-xl">
+                                <div class="absolute inset-0 bg-white/20 transform scale-x-0 group-hover:scale-x-100 transition-transform origin-left duration-300"></div>
+                                <span class="relative flex items-center">
+                                    <i class="fas fa-bug mr-2"></i>Submit Bug Report
+                                </span>
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Cloudflare Turnstile script (conditional) -->
+    <script src="https://challenges.cloudflare.com/turnstile/v0/api.js"
+            async defer></script>
+
+    <script>
+        // Store login credentials for 2FA verification
+        let pendingTwoFactorToken = '';
+        let isUsingBackupCode = false;
+
+        // Toggle password visibility
+        function togglePasswordVisibility() {
+            const passwordInput = document.getElementById('password');
+            const toggleIcon = document.getElementById('passwordToggleIcon');
+
+            if (passwordInput.type === 'password') {
+                passwordInput.type = 'text';
+                toggleIcon.classList.remove('fa-eye');
+                toggleIcon.classList.add('fa-eye-slash');
+            } else {
+                passwordInput.type = 'password';
+                toggleIcon.classList.remove('fa-eye-slash');
+                toggleIcon.classList.add('fa-eye');
+            }
+        }
+
+        // Helper function to create session and redirect to dashboard
+        async function createSessionAndRedirect(token) {
+            try {
+                // Create server-side session from JWT token
+                const sessionResponse = await fetch('/web/auth/session', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ token: token })
+                });
+
+                if (sessionResponse.ok) {
+                    // Session created, store token and redirect
+                    localStorage.setItem('token', token);
+                    window.location.href = '/dashboard';
+                } else {
+                    throw new Error('Failed to create session');
+                }
+            } catch (error) {
+                console.error('Session creation error:', error);
+                throw error;
+            }
+        }
+
+        // Turnstile token-readiness state (Option A: queue + auto-submit when token arrives)
+        let turnstileTokenReady = false;
+        let submitQueued = false;
+
+        // Cloudflare invokes this when the widget completes its challenge
+        window.onTurnstileLoginReady = function(token) {
+            turnstileTokenReady = true;
+            if (submitQueued) {
+                submitQueued = false;
+                document.getElementById('loginForm')
+                        .dispatchEvent(new Event('submit', { cancelable: true }));
+            }
+        };
+
+        // Handle login form submission
+        document.getElementById('loginForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
+
+            const loginBtn = document.getElementById('loginBtn');
+            const errorEl = document.getElementById('loginError');
+            const errorText = document.getElementById('loginErrorText');
+            const turnstileWidget = document.querySelector('.cf-turnstile');
+
+            // Reset error state
+            errorEl.classList.add('hidden');
+
+            // If Turnstile widget is rendered but token isn't ready yet, queue the submit
+            if (turnstileWidget && !turnstileTokenReady) {
+                submitQueued = true;
+                loginBtn.disabled = true;
+                loginBtn.innerHTML = '<i class="fas fa-spinner fa-spin mr-2"></i>Verifying...';
+                return;
+            }
+
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+
+            // Disable button and show loading
+            loginBtn.disabled = true;
+            loginBtn.innerHTML = '<i class="fas fa-spinner fa-spin mr-2"></i>Signing in...';
+
+            // Capture Turnstile token from hidden input (populated by widget callback)
+            const loginBody = { email: username, password: password };
+            const turnstileInput = document.querySelector('[name="cf-turnstile-response"]');
+            if (turnstileWidget && turnstileInput && turnstileInput.value) {
+                loginBody.cfTurnstileResponse = turnstileInput.value;
+            }
+
+            // Helper to reset Turnstile so next attempt gets a fresh single-use token.
+            // Clears flags so the new token from the callback doesn't auto-resubmit.
+            const resetTurnstile = () => {
+                if (window.turnstile && turnstileWidget) {
+                    try { window.turnstile.reset(turnstileWidget); } catch(e) {}
+                    turnstileTokenReady = false;
+                    submitQueued = false;
+                }
+            };
+
+            try {
+                const response = await fetch('/api/auth/login', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(loginBody)
+                });
+
+                const result = await response.json();
+
+                if (response.ok) {
+                    if (result.requiresTwoFactor) {
+                        // 2FA required - show modal
+                        pendingTwoFactorToken = result.twoFactorToken;
+                        document.getElementById('twoFactorModal').classList.remove('hidden');
+                        document.getElementById('twoFactorCode').focus();
+                        // Re-enable button since we're showing 2FA modal
+                        loginBtn.disabled = false;
+                        loginBtn.innerHTML = '<i class="fas fa-sign-in-alt mr-2"></i>Login';
+                    } else if (result.token) {
+                        // Login successful - create session and redirect
+                        if (window.location.hostname === 'snapdeploy.dev' && typeof gtag === 'function') {
+                            gtag('event', 'login', { method: 'email', page_location: window.location.href });
+                        }
+                        await createSessionAndRedirect(result.token);
+                    } else {
+                        errorText.textContent = 'Unexpected response from server';
+                        errorEl.classList.remove('hidden');
+                        loginBtn.disabled = false;
+                        loginBtn.innerHTML = '<i class="fas fa-sign-in-alt mr-2"></i>Login';
+                        resetTurnstile();
+                    }
+                } else {
+                    // Show error message
+                    if (response.status === 423) {
+                        errorText.textContent = 'Account temporarily locked. Please try again later.';
+                    } else {
+                        errorText.textContent = result.message || result.error || 'Invalid email or password';
+                    }
+                    errorEl.classList.remove('hidden');
+                    loginBtn.disabled = false;
+                    loginBtn.innerHTML = '<i class="fas fa-sign-in-alt mr-2"></i>Login';
+                    resetTurnstile();
+                }
+            } catch (error) {
+                console.error('Login error:', error);
+                errorText.textContent = 'Network error. Please try again.';
+                errorEl.classList.remove('hidden');
+                loginBtn.disabled = false;
+                loginBtn.innerHTML = '<i class="fas fa-sign-in-alt mr-2"></i>Login';
+                resetTurnstile();
+            }
+        });
+
+        // Handle 2FA form submission
+        document.getElementById('twoFactorForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
+
+            const code = document.getElementById('twoFactorCode').value;
+            const verifyBtn = document.getElementById('twoFactorBtn');
+            const errorEl = document.getElementById('twoFactorError');
+            const errorText = document.getElementById('twoFactorErrorText');
+
+            if (!code) {
+                errorText.textContent = 'Please enter a code';
+                errorEl.classList.remove('hidden');
+                return;
+            }
+
+            // Reset error state
+            errorEl.classList.add('hidden');
+
+            // Disable button and show loading
+            verifyBtn.disabled = true;
+            verifyBtn.innerHTML = '<i class="fas fa-spinner fa-spin mr-2"></i>Verifying...';
+
+            try {
+                const response = await fetch('/api/auth/verify-2fa', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        twoFactorToken: pendingTwoFactorToken,
+                        code: code,
+                        isBackupCode: isUsingBackupCode
+                    })
+                });
+
+                const result = await response.json();
+
+                if (response.ok && result.token) {
+                    // 2FA verification successful - create session and redirect
+                    if (window.location.hostname === 'snapdeploy.dev' && typeof gtag === 'function') {
+                        gtag('event', 'login', { method: '2fa', page_location: window.location.href });
+                    }
+                    await createSessionAndRedirect(result.token);
+                } else {
+                    errorText.textContent = result.message || result.error || 'Invalid verification code';
+                    errorEl.classList.remove('hidden');
+                    verifyBtn.disabled = false;
+                    verifyBtn.innerHTML = '<i class="fas fa-check mr-2"></i>Verify';
+                }
+            } catch (error) {
+                console.error('2FA verification error:', error);
+                errorText.textContent = 'Network error. Please try again.';
+                errorEl.classList.remove('hidden');
+                verifyBtn.disabled = false;
+                verifyBtn.innerHTML = '<i class="fas fa-check mr-2"></i>Verify';
+            }
+        });
+
+        // Switch to backup code input
+        function showBackupCodeInput() {
+            isUsingBackupCode = true;
+            document.getElementById('twoFactorCode').placeholder = 'Enter backup code';
+            document.getElementById('twoFactorCode').maxLength = 8;
+            document.getElementById('useBackupCodeBtn').classList.add('hidden');
+            document.getElementById('useTotpCodeBtn').classList.remove('hidden');
+            document.getElementById('twoFactorCode').value = '';
+            document.getElementById('twoFactorCode').focus();
+        }
+
+        // Switch to TOTP code input
+        function showTotpCodeInput() {
+            isUsingBackupCode = false;
+            document.getElementById('twoFactorCode').placeholder = 'Enter code';
+            document.getElementById('twoFactorCode').maxLength = 6;
+            document.getElementById('useTotpCodeBtn').classList.add('hidden');
+            document.getElementById('useBackupCodeBtn').classList.remove('hidden');
+            document.getElementById('twoFactorCode').value = '';
+            document.getElementById('twoFactorCode').focus();
+        }
+
+        // Cancel 2FA and go back to login
+        function cancelTwoFactor() {
+            document.getElementById('twoFactorModal').classList.add('hidden');
+            document.getElementById('twoFactorCode').value = '';
+            document.getElementById('twoFactorError').classList.add('hidden');
+            pendingTwoFactorToken = '';
+            isUsingBackupCode = false;
+            showTotpCodeInput();
+        }
+    </script>
+<script type="module" src="https://static.cloudflareinsights.com/beacon.min.js/v31edd6df95cf4e85bb4c19e7a9bdbcba1788362987495" integrity="sha512-iIg7k2xntmwu6/uSb5tpc/hySgZc4eoL31yB29W6tJFo2akwjPWcEqnCEdJvGexCL0KEQwVYv5BlowfhVz26hg==" data-cf-beacon='{"version":"2024.11.0","token":"ee2d1037ca224061b154cd932ed4cc32","spa":2}' crossorigin="anonymous"></script>
+</body>
+</html>
+

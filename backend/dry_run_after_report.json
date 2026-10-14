@@ -1,0 +1,121 @@
+{
+  "pre_run_db": {
+    "total_scholarships": 303,
+    "with_image_url": 5,
+    "max_scholarship_id": 304
+  },
+  "post_run_db": {
+    "total_scholarships": 303,
+    "with_image_url": 5,
+    "max_scholarship_id": 304
+  },
+  "db_unchanged": true,
+  "total_processed": 303,
+  "runtime_seconds": 1147.0,
+  "decisions": {
+    "approved": 1,
+    "human_review": 8,
+    "rejected": 294,
+    "errors": 0
+  },
+  "approved_details": [
+    {
+      "scholarship_id": 58,
+      "scholarship_title": "Brandeis University Wien International Scholarship",
+      "image_url": "https://www.brandeis.edu/isso/images/programs/wien/wein.jpg",
+      "relevance": "high",
+      "confidence": "HIGH",
+      "source_resolution_type": "exact_program_page",
+      "licensing_status": "licensing_known",
+      "all_candidates_summary": [
+        {
+          "image_url": "https://www.brandeis.edu/isso/images/programs/wien/wein.jpg",
+          "page_url": "https://www.brandeis.edu/isso/programs/wien/index.html",
+          "discovery_method": "html-img",
+          "http_status": 200,
+          "content_type": "image/jpeg",
+          "is_valid_image": true,
+          "is_official_domain": true,
+          "is_generic_image": false,
+          "is_ui_asset": false,
+          "is_svg": false,
+          "is_svg_content_illustration": false,
+          "aspect_ratio": 1.5,
+          "is_duplicate": false,
+          "relevance_score": 1.0,
+          "confidence": "HIGH",
+          "status": "approved",
+          "rejection_reasons": [],
+          "non_content_signals": [],
+          "non_content_total_weight": 0
+        }
+      ]
+    }
+  ],
+  "human_review_details": [
+    {
+      "scholarship_id": 11,
+      "scholarship_title": "Study in India (SII) Scholarship",
+      "image_url": "https://www.studyinindia.gov.in/images/ten-reasons-image.PNG",
+      "relevance": "high",
+      "confidence": "MEDIUM",
+      "rejection_reasons": []
+    },
+    {
+      "scholarship_id": 27,
+      "scholarship_title": "Fulbright Foreign Student Program",
+      "image_url": "https://foreign.fulbrightonline.org/images/home_sliders/slide-04.jpg",
+      "relevance": "high",
+      "confidence": "MEDIUM",
+      "rejection_reasons": []
+    },
+    {
+      "scholarship_id": 62,
+      "scholarship_title": "Knight-Hennessy Scholars",
+      "image_url": "https://knight-hennessy.stanford.edu/sites/g/files/sbiybj23586/files/styles/card_1192x596/public/media/image/khs_111519_0118_1.jpg?h=c6980913&itok=60p6bIae",
+      "relevance": "high",
+      "confidence": "MEDIUM",
+      "rejection_reasons": []
+    },
+    {
+      "scholarship_id": 80,
+      "scholarship_title": "Rhodes Scholarship (Global Constituency) — University of Oxford",
+      "image_url": "https://www.rhodeshouse.ox.ac.uk/media/4etp20fx/scholars-2023-01-23-1323.jpg?rxy=0.506265664160401,0.7217103631266021&width=1200&height=630&v=1dba23ee2902090",
+      "relevance": "high",
+      "confidence": "MEDIUM",
+      "rejection_reasons": []
+    },
+    {
+      "scholarship_id": 98,
+      "scholarship_title": "IE University – Master's Awards & Scholarships",
+      "image_url": "https://images.thesaurus.ie.edu/f/jpg/w/1280/h/768/laidlawstudents-1",
+      "relevance": "high",
+      "confidence": "MEDIUM",
+      "rejection_reasons": []
+    },
+    {
+      "scholarship_id": 116,
+      "scholarship_title": "IIT Kanpur Institute Fellowship (for international students)",
+      "image_url": "https://iitk.ac.in/oir/images/cards/fact.jpg",
+      "relevance": "medium",
+      "confidence": "MEDIUM",
+      "rejection_reasons": []
+    },
+    {
+      "scholarship_id": 161,
+      "scholarship_title": "WIPO Fellowship Program",
+      "image_url": "https://www.wipo.int/documents/d/wipo/images-photos-director-general-daren-tang-with-the-young-experts-960.webp",
+      "relevance": "high",
+      "confidence": "MEDIUM",
+      "rejection_reasons": []
+    },
+    {
+      "scholarship_id": 245,
+      "scholarship_title": "UCAS Chinese Government Scholarship (University of Chinese Academy of Sciences)",
+      "image_url": "https://english.ucas.ac.cn/images/2025/welcome_to_UCAS.png",
+      "relevance": "high",
+      "confidence": "MEDIUM",
+      "rejection_reasons": []
+    }
+  ]
+}

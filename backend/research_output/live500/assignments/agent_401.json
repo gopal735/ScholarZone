@@ -1,0 +1,159 @@
+{
+ "agent": "agent_401",
+ "assignment_count": 2,
+ "scholarships": [
+  {
+   "id": 365,
+   "title": "Hardiman PhD Scholarships",
+   "country": "Ireland",
+   "degree": "PhD",
+   "funding_label": "Fully Funded",
+   "status": "open",
+   "official_source": "University of Galway",
+   "official_source_url": "https://universityofgalway.ie/hardiman-scholarships",
+   "application_link": "https://universityofgalway.ie/hardiman-scholarships",
+   "catalogue_url": "https://www.universityofgalway.ie/media/hardiman/files/Applicants_Guide_2026.docx",
+   "official_updates_url": "https://www.universityofgalway.ie/hardiman-scholarships/timeline",
+   "existing": {
+    "funding_amount": null,
+    "funding_currency": null,
+    "funding_period": null,
+    "tuition_coverage": 1,
+    "living_cost_coverage": 1,
+    "travel_coverage": 0,
+    "fully_funded": 1,
+    "description": "The Hardiman PhD Scholarships are University of Galway's flagship doctoral scholarships, fully funded for four years with a stipend of €25,000 per annum plus tuition fee cover, for students starting a full-time structured PhD on 1 September. Applicants must nominate one supervisor, submit a complete application, and have two academic reference forms filed by referees, all by the stated February deadline. The application system normally re-opens in early December for the following September intake, and the number of awards varies annually with available funding.",
+    "eligibility": [
+     "Starting a PhD at the University of Galway on 1 September of the award year",
+     "Awarded only if admitted to a full-time structured PhD at the University of Galway",
+     "Not currently registered as a PhD student",
+     "Must not have previously been awarded a PhD",
+     "Must nominate one supervisor; the proposed supervisor may not act as one of the two referees"
+    ],
+    "eligibility_summary": "For students starting a full-time structured PhD at the University of Galway on 1 September. Applicants who are currently registered PhD students or who previously held a PhD are not eligible, and part-time PhD candidates cannot be awarded the scholarship.",
+    "benefits": [
+     "Stipend €25,000 per annum",
+     "Tuition fees covered for four years",
+     "Four years of funded full-time structured PhD study"
+    ],
+    "coverage": [
+     "Stipend of €25,000 per annum for four years",
+     "Full tuition fee cover for the four-year period"
+    ],
+    "requirements": [
+     "Read the Applicant's Guide before completing the application form",
+     "Nominate one supervisor and have them submit the Supervisor Form",
+     "Ensure two referees submit the Academic Reference Forms directly",
+     "Submit a complete application; personal research statement limited to 1,000 words",
+     "Meet the PhD entry requirements of the relevant College as well as the scholarship requirements"
+    ],
+    "documents": [
+     "Applicant's Guide 2026 (must be read before completing the application form)",
+     "Hardiman scholarship application form (personal research statement maximum 1,000 words)",
+     "University of Galway Supervisor Form submitted by the proposed supervisor",
+     "Two academic reference forms submitted by referees",
+     "Transcripts of academic record and English language qualifications, if requested at a later stage"
+    ],
+    "english_requirement": "English language competency (e.g. TOEFL or IELTS) must be evidenced if the applicant progresses to later selection stages, in line with the university's English language entry requirements.",
+    "application_method": [
+     "Email submission to hrscholar@universityofgalway.ie",
+     "Supervisor form submitted directly by the proposed supervisor",
+     "Two academic reference forms submitted directly by referees"
+    ],
+    "selection_notes": "Applications are confirmed complete (application, supervisor form and two references) before assessment; incomplete or ineligible applications are rejected at that stage. There is no feedback on interview or application, and the number of scholarships available varies from year to year depending on funding.",
+    "best_fit": "Prospective full-time structured PhD researchers starting at the University of Galway on 1 September who hold a first-class or strong academic record and can secure two academic references.",
+    "notes": "There is no application fee for the Hardiman Scholarship itself, though a separate application fee applies for admission to the PhD programme. Applying for the scholarship does not constitute an application to the Structured PhD programme, which is a separate process. A proposed supervisor may have more than one applicant per year but normally only one awardee.",
+    "duration": "4 years (full-time structured PhD)",
+    "application_period": "Annual cycle: the application system normally re-opens in early December for the following September intake, with a February closing date.",
+    "deadline_display": "The 2026 round closed on 6 February 2026 at 17:00 Irish time, when the application, supervisor form and two academic reference forms were all due. The next round \"normally re-opens in early December for the following September intake\", with no exact date published.",
+    "deadline_date": null,
+    "region": "Europe",
+    "program_type": "Student Ambassador Programme",
+    "applicant_utility": null,
+    "official_details": null
+   },
+   "missing_fields": [
+    "funding_amount",
+    "funding_currency",
+    "funding_period",
+    "deadline_date",
+    "applicant_utility",
+    "official_details"
+   ]
+  },
+  {
+   "id": 367,
+   "title": "Government of Ireland Postdoctoral Fellowship Programme",
+   "country": "Ireland",
+   "degree": "Postdoctoral",
+   "funding_label": "Salary",
+   "status": "upcoming",
+   "official_source": "Research Ireland",
+   "official_source_url": "https://www.researchireland.ie/funding/government-ireland-postdoctoral",
+   "application_link": "https://www.researchireland.ie/funding/government-ireland-postdoctoral",
+   "catalogue_url": "https://media.researchireland.ie/wp-content/uploads/2026/02/Government-of-Ireland-Postdoctoral-Fellowship-2026_Call-Document_FINAL.pdf",
+   "official_updates_url": "https://www.researchireland.ie/news/",
+   "existing": {
+    "funding_amount": 47273,
+    "funding_currency": "EUR",
+    "funding_period": "per annum",
+    "tuition_coverage": 0,
+    "living_cost_coverage": null,
+    "travel_coverage": null,
+    "fully_funded": 0,
+    "description": "The Government of Ireland Postdoctoral Fellowship Programme supports suitably qualified applicants to pursue a postdoctoral fellowship at an eligible higher education institution in Ireland for one or two years. Research Ireland manages the programme on behalf of the Department of Further and Higher Education, Research, Innovation and Science. The 2026 offer is a salary of €47,273 in year one rising to €47,880 in year two, plus the employer's PRSI contribution and €5,000 per annum of eligible direct research expenses. Selection is by international, independent expert peer review.",
+    "eligibility": [
+     "Postdoctoral level applicant at an eligible research body in Ireland",
+     "All disciplines funded, from archaeology to zoology",
+     "Bottom-up, non-directed research",
+     "One-year or two-year fellowship requested via the relevant indicative application form"
+    ],
+    "eligibility_summary": "Suitably qualified applicants may pursue a postdoctoral fellowship at an eligible research body in Ireland for one or two years, across any discipline, for bottom-up, non-directed research.",
+    "benefits": [
+     "Salary €47,273 (year 1) and €47,880 (year 2)",
+     "Employer's PRSI contribution paid by the programme",
+     "€5,000 per annum eligible direct research expenses"
+    ],
+    "coverage": [
+     "Salary of €47,273 in year one and €47,880 in year two",
+     "Employer's PRSI contribution",
+     "Eligible direct research expenses of €5,000 per annum"
+    ],
+    "requirements": [
+     "Application submitted by the stated applicant deadline",
+     "Mentor form and research office endorsement before the mentor deadline"
+    ],
+    "documents": [
+     "Completed online application form (separate indicative forms for 1-year and 2-year fellowships)",
+     "Mentor details and completed indicative mentor form",
+     "Research office endorsement"
+    ],
+    "english_requirement": null,
+    "application_method": [
+     "Online application via the Research Ireland online system",
+     "Mentor and research office endorsements required"
+    ],
+    "selection_notes": "An objective selection process using international, independent expert peer review. Pioneering, innovative and interdisciplinary proposals are welcomed.",
+    "best_fit": "Postdoctoral researchers seeking one or two years of funded research at an eligible Irish research body.",
+    "notes": "Funded by the Department of Further and Higher Education, Research, Innovation and Science and managed by Research Ireland. Salary corresponds to points 1 and 2 on the Postdoctoral Researcher Level 2A of the Research Ireland team members salary scale and may change under the current national pay agreement.",
+    "duration": "12-24 months (one or two years)",
+    "application_period": "Annual call; the 2026 call ran 11 September 2025 to 23 October 2025, with award start date 1 September 2026.",
+    "deadline_display": "The 2026 call applicant deadline was \"23rd October 2025, 16:00 Irish local time\"; no date is published for the next annual call.",
+    "deadline_date": null,
+    "region": "Europe",
+    "program_type": "Government-funded postdoctoral research fellowship",
+    "applicant_utility": null,
+    "official_details": null
+   },
+   "missing_fields": [
+    "living_cost_coverage",
+    "travel_coverage",
+    "english_requirement",
+    "deadline_date",
+    "applicant_utility",
+    "official_details"
+   ]
+  }
+ ],
+ "result_file": "C:\\Users\\GopaL\\Desktop\\Projects folder\\ScholarZone\\backend\\research_output\\live500\\results\\agent_401.json"
+}

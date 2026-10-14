@@ -1,0 +1,210 @@
+{
+  "agent": "agent_004",
+  "records": [
+    {
+      "id": 30,
+      "official": {
+        "official_source_urls": [
+          "https://australiaawardssouthasiamongolia.org/scholarships/",
+          "https://australiaawardsbangladesh.org/"
+        ],
+        "application_link": "https://australiaawardssouthasiamongolia.org/scholarships/",
+        "catalogue_url": "https://scholarshipzone.org/scholarship/australia-awards-scholarships/",
+        "official_updates_url": "https://australiaawardssouthasiamongolia.org/scholarships/",
+        "deadline_central": null,
+        "deadline_central_display": null,
+        "deadline_note": "The official scholarships page states applications open on 1 February and close on 30 April each year; the Bangladesh country page (checked 10 October 2026) says applications are now closed and will reopen in early 2027.",
+        "application_cycle": "Annual round: applications open 1 February and close 30 April; the 2026 round is closed and reopens early 2027",
+        "status": "CLOSED",
+        "status_note": "The official Bangladesh page (10 October 2026) says: 'Applications are now closed. Applications for Australia Awards Scholarships will reopen in early 2027'; the regional page publishes the annual 1 February - 30 April window.",
+        "tuition_coverage_note": "Benefits include full tuition fees (as published on the Australia Awards South Asia & Mongolia scholarships page).",
+        "funding_amount": null,
+        "funding_currency": null,
+        "funding_period": null,
+        "tuition_coverage": true,
+        "living_cost_coverage": true,
+        "travel_coverage": true,
+        "fully_funded": true,
+        "benefits": [
+          "Benefits include full tuition fees, return airfares, contribution to living expenses and medical insurance",
+          "Full-time postgraduate study in Australia in specific fields, at participating institutions",
+          "Successful scholars must return home for a minimum of two years after completing their studies to contribute to development (per scholarship contract)"
+        ],
+        "eligibility": [
+          "Open to nationals of Bangladesh, Bhutan, Maldives, Nepal, Pakistan, Sri Lanka and Mongolia",
+          "Emerging leaders taking full-time postgraduate study in specific fields at participating Australian institutions",
+          "Reflects Australia's development priorities; women, people with a disability and marginalised groups are encouraged to apply"
+        ],
+        "requirements": [
+          "Submit an online application through OASIS (Online Australia Awards Scholarships Information System) during the 1 February - 30 April window",
+          "Meet the eligibility criteria for the home country as published before applications open",
+          "Accept the two-year home-country return requirement after completion"
+        ],
+        "documents": null,
+        "selection_criteria": [
+          "Selection is competitive and country-specific; the eligibility criteria are published on the programme's country pages before applications open"
+        ],
+        "coverage": [
+          "Full tuition fees",
+          "Return airfares",
+          "Contribution to living expenses",
+          "Medical insurance"
+        ],
+        "application_method": [
+          "Complete the online application in OASIS during the annual 1 February - 30 April window",
+          "Palladium manages Australia Awards in South Asia and Mongolia on behalf of the Australian Government; country-specific criteria are published before the round opens"
+        ],
+        "application_route": "Apply online through OASIS when the annual round opens (1 February-30 April), following the eligibility criteria published for your home country.",
+        "study_mode": "Full-time postgraduate study in Australia",
+        "citizenship_residency": "Nationals of Bangladesh, Bhutan, Maldives, Nepal, Pakistan, Sri Lanka and Mongolia",
+        "international_eligibility": "Yes - the award funds students from participating South Asian and Mongolian countries to study in Australia",
+        "subject_or_agency_requirement": "Study in specific fields aligned with development priorities, at participating institutions",
+        "research_requirement": null,
+        "duration": null,
+        "description": "Australia Awards Scholarships are long-term development awards funded by the Australian Government's Department of Foreign Affairs and Trade, giving emerging leaders from partnership countries the opportunity to undertake full-time postgraduate study in Australia in specific fields.",
+        "region": "South Asia and Mongolia to Australia",
+        "program_type": "Long-term development award (Australia Awards Scholarships)",
+        "english_requirement": null
+      },
+      "verification": {
+        "source_citations": [
+          "https://australiaawardssouthasiamongolia.org/scholarships/",
+          "https://australiaawardsbangladesh.org/"
+        ],
+        "last_verified_date": "2026-10-10",
+        "verification_status": "confirmed",
+        "confidence": "high",
+        "not_confirmed": [
+          "funding_amount (no stipend rate is published on the pages checked; the Scholarship Policy Handbook at dfat.gov.au was unreachable from this environment)",
+          "deadline_central for the next round (annual 1 February - 30 April window published; next round opens early 2027)",
+          "documents required",
+          "english_requirement",
+          "duration"
+        ],
+        "notes": "Benefits (full tuition fees, return airfares, contribution to living expenses, medical insurance), eligible countries and the 1 February - 30 April window from the official Australia Awards South Asia & Mongolia scholarships page; current status confirmed closed on the official Bangladesh page. dfat.gov.au itself timed out repeatedly from this environment on 10 October 2026, so the DFAT page could not be checked directly."
+      },
+      "applicant_utility": {
+        "summary": "Australia Awards pays the full package - tuition, return airfare, a contribution to living expenses and medical insurance - but it is a development award, so the final step is binding: you must go home for a minimum of two years after your degree to contribute to development in your field. Applications run only in the annual 1 February - 30 April window through OASIS, and the Bangladesh page now says applications are closed and reopen in early 2027. Because no stipend figure is published, do your own cost survey of the Australian city you intend to study in before committing.",
+        "best_fit": "Early and mid-career professionals from target sectors who intend to return and apply their degree to development work at home.",
+        "application_readiness_checklist": [
+          "Confirm your course and university are on the participating list before the February window opens",
+          "Prepare the OASIS online application and the country-specific eligibility documents before 30 April",
+          "Be ready to accept the two-year home-country return requirement in the scholarship contract",
+          "Check medical insurance is active for arrival, since insurance is part of the published award benefits"
+        ],
+        "common_rejection_risks": [
+          "Applying outside the narrow 1 February - 30 April window",
+          "Choosing a course or institution that is not a participating one for your country",
+          "Overlooking the two-year home-country return condition, which is enforced through the contract"
+        ],
+        "estimated_uncovered_costs": "Personal costs beyond the published benefits; the programme's stipend rate is not published on the pages checked, so budget independently for the receiving city.",
+        "document_audit": [
+          "Eligibility criteria are country-specific and published per country before applications open - check your country's page, not the general regional text"
+        ],
+        "alerts": [
+          "Applications for the 2026 round are closed as of 10 October 2026; the next round reopens in early 2027",
+          "The programme is managed in South Asia and Mongolia by Palladium on behalf of the Australian Government"
+        ],
+        "submission_workflow": "Watch your country's Australia Awards page from January, apply in OASIS inside the window, then follow the country selection process through interview and offer."
+      }
+    },
+    {
+      "id": 31,
+      "official": {
+        "official_source_urls": [
+          "https://www.studyinnl.org/finances/scholarships",
+          "https://www.nuffic.nl/en/",
+          "https://www.studyinnl.org/finances/ots-scholarships"
+        ],
+        "application_link": "https://www.studyinnl.org/finances/scholarships",
+        "catalogue_url": "https://scholarshipzone.org/scholarship/netherlands-fellowship-programs-nfp/",
+        "official_updates_url": "https://www.studyinnl.org/finances/scholarships",
+        "deadline_central": null,
+        "deadline_central_display": null,
+        "deadline_note": "No window is published: the Study in NL scholarships hub no longer lists a Netherlands Fellowship Programme or Orange Knowledge Programme application round.",
+        "application_cycle": null,
+        "status": "CLOSED",
+        "status_note": "The official Study in NL hub confirms the Orange Knowledge Programme ended in 2024 ('there are no new application rounds for this programme'); a Netherlands Fellowship Programme page is not listed, and the former OTS scholarships page at studyinnl.org/finances/ots-scholarships now returns HTTP 404.",
+        "tuition_coverage_note": null,
+        "funding_amount": null,
+        "funding_currency": null,
+        "funding_period": null,
+        "tuition_coverage": null,
+        "living_cost_coverage": null,
+        "travel_coverage": null,
+        "fully_funded": false,
+        "benefits": [
+          "No award benefits are published for a Netherlands Fellowship Programme or a central OTS scheme on the official Nuffic/Study in NL pages checked"
+        ],
+        "eligibility": null,
+        "requirements": null,
+        "documents": null,
+        "selection_criteria": null,
+        "coverage": null,
+        "application_method": [
+          "The Nuffic-run scholarships currently listed on the official hub are the MENA Scholarship Programme (MSP), Erasmus+ and the NL Scholarship (Holland Scholarship)"
+        ],
+        "application_route": "There is no central applying route for an NFP or central OTS scheme on the official Dutch study platform; institution-level bursaries are arranged directly with Dutch universities.",
+        "study_mode": null,
+        "citizenship_residency": null,
+        "international_eligibility": null,
+        "subject_or_agency_requirement": null,
+        "research_requirement": null,
+        "duration": null,
+        "description": "The label 'Netherlands Fellowship Programme (NFP/OTS)' refers to a former Nuffic framework: the official Study in NL platform now lists only the MENA Scholarship Programme, Erasmus+ and the NL Scholarship among Nuffic-administered awards, and states that the Orange Knowledge Programme ended in 2024.",
+        "region": null,
+        "program_type": "Former Dutch fellowship framework (successor programmes listed on the Study in NL scholarships hub)",
+        "english_requirement": null
+      },
+      "verification": {
+        "source_citations": [
+          "https://www.studyinnl.org/finances/scholarships",
+          "https://www.nuffic.nl/en/",
+          "https://www.studyinnl.org/finances/ots-scholarships"
+        ],
+        "last_verified_date": "2026-10-10",
+        "verification_status": "confirmed",
+        "confidence": "high",
+        "not_confirmed": [
+          "funding_amount",
+          "funding_period",
+          "tuition_coverage",
+          "living_cost_coverage",
+          "travel_coverage",
+          "eligibility",
+          "requirements",
+          "documents",
+          "selection_criteria",
+          "coverage",
+          "deadline_central",
+          "duration",
+          "study_mode",
+          "subject_or_agency_requirement",
+          "english_requirement"
+        ],
+        "notes": "The official Study in NL scholarships hub (studyinnl.org, Nuffic) lists Nuffic-administered scholarships as MSP, Erasmus+ and the NL Scholarship and states the Orange Knowledge Programme ended in 2024; the former OTS page now returns HTTP 404 and nuffic.nl itself carries only the Orange Knowledge Programme legacy (2017-2024) and MSP pages. No award figures or opening dates for NFP or a central OTS scheme are published anywhere on the official domains checked."
+      },
+      "applicant_utility": {
+        "summary": "This row is a duplicate label problem rather than a live scholarship: the Netherlands Fellowship Programme (and the Orange Knowledge Programme that succeeded it) no longer run - the official Study in NL hub confirms OKP ended in 2024 and lists only MSP, Erasmus+ and the NL Scholarship as Nuffic-administered awards. If your degree is not sponsored under one of those, OTS-style support is arranged directly with individual Dutch universities, without any central Nuffic page, deadline or amount. Treat any site advertising 'NFP/OTS 2027' with suspicion and go to the university's own funding page instead.",
+        "best_fit": "Students assessing current Dutch options rather than this legacy label - realistically the NL Scholarship (Holland Scholarship), Erasmus+ or a university bursary.",
+        "application_readiness_checklist": [
+          "Ignore the central-scheme question and check the funding page of the specific Dutch university that admitted you",
+          "See whether the NL Scholarship (Holland Scholarship) - listed on the official hub among the scholarships administered by Nuffic - applies to your situation",
+          "Check the MENA Scholarship Programme eligibility only if you are from an eligible MENA country"
+        ],
+        "common_rejection_risks": [
+          "Preparing an application for a programme that no longer exists",
+          "Paying an agent who promises access to 'NFP' or 'OTS' funding that has no official page"
+        ],
+        "estimated_uncovered_costs": null,
+        "document_audit": [
+          "Any OTS-style bursary is administered by the university itself, so documentation follows that university's own rules"
+        ],
+        "alerts": [
+          "The former official OTS page (studyinnl.org/finances/ots-scholarships) now returns HTTP 404 - the record's dead link reflects a dead scheme"
+        ],
+        "submission_workflow": "Confirm with your admitting Dutch university what funding actually exists; there is no central Dutch fellowship application to submit."
+      }
+    }
+  ]
+}

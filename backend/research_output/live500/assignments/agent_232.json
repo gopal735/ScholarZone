@@ -1,0 +1,77 @@
+{
+ "agent": "agent_232",
+ "assignment_count": 1,
+ "scholarships": [
+  {
+   "id": 581,
+   "title": "Jean Monnet Fellowships — Robert Schuman Centre for Advanced Studies, European University Institute",
+   "country": "Italy",
+   "degree": "Postdoctoral",
+   "funding_label": "Stipend",
+   "status": "closing-soon",
+   "official_source": "European University Institute (EUI) — Robert Schuman Centre for Advanced Studies",
+   "official_source_url": "https://www.eui.eu/apply?id=jean-monnet-fellowships",
+   "application_link": "https://www.eui.eu/apply?id=jean-monnet-fellowships",
+   "catalogue_url": "https://www.eui.eu/apply?dis_programmes%5BrefinementList%5D%5BcleanEntryData.type%5D%5B0%5D=Fellowship",
+   "official_updates_url": "https://www.eui.eu/en/public/educational-programmes",
+   "existing": {
+    "funding_amount": null,
+    "funding_currency": null,
+    "funding_period": null,
+    "tuition_coverage": 0,
+    "living_cost_coverage": null,
+    "travel_coverage": null,
+    "fully_funded": 0,
+    "description": "The Robert Schuman Centre for Advanced Studies at the European University Institute offers one-year Jean Monnet Fellowships to scholars whose doctorate was completed more than five years before the fellowship start, which for the 2027-28 academic year is 1 September 2027. The Centre awards up to 20 fellowships a year to postdocs, tenure-track academics and scholars taking a sabbatical. Fellows are based at the Centre in Villa Schifanoia, are attached to one of the Centre's projects or programmes, and participate in its academic life. The current call is open, with an application deadline of 23 October 2026 at 14:00 CEST.",
+    "eligibility": [
+     "Doctorate obtained more than five years prior to the start of the fellowship, i.e. before 1 September 2027",
+     "Open to postdocs, tenure-track academics and applicants wishing to spend a sabbatical at the Centre",
+     "Research proposal must fit one of the Centre's main research themes, programmes or projects",
+     "Applicants whose doctorate was obtained less than five years ago are directed to the EUI Max Weber Programme instead"
+    ],
+    "eligibility_summary": "Applicants must have obtained their doctorate more than five years before the fellowship start date of 1 September 2027; the fellowship is open to postdocs, tenure-track academics and those wishing to spend a sabbatical at the Centre.",
+    "benefits": [
+     "One-year residential fellowship at the Robert Schuman Centre, Villa Schifanoia",
+     "Association with one of the Centre's research projects or programmes",
+     "Participation in the Centre's academic life and access to the EUI postdoctoral programme activities"
+    ],
+    "coverage": [],
+    "requirements": [
+     "Research proposal aligned with one of the Centre's themes, programmes or projects",
+     "Curriculum vitae",
+     "Participation in the Centre's academic activities and in the project or programme to which the fellow is attached"
+    ],
+    "documents": [],
+    "english_requirement": null,
+    "application_method": [
+     "Online application through the EUI OSIRIS portal (apply.eui.eu), process JMF_APPLY"
+    ],
+    "selection_notes": "Fellows are selected on the basis of a research proposal and a CV, with the EUI's Conditions of award, Selection procedure and criteria, and FAQs tabs setting out the detailed requirements. The Centre awards up to 20 fellowships a year.",
+    "best_fit": "Established academics more than five years past their doctorate, including tenure-track researchers and those on sabbatical, whose research fits a Robert Schuman Centre programme on EU governance, law, economics or political science.",
+    "notes": "Fellows are expected to contribute actively to the academic life of the Centre and to the activities of the associated project or programme, and are encouraged to collaborate with other postdocs and EUI academic staff.",
+    "duration": "One year, from 1 September 2027 for the 2027-28 academic year",
+    "application_period": null,
+    "deadline_display": "23/10/2026 14:00 CEST",
+    "deadline_date": "2026-10-23",
+    "region": "Europe",
+    "program_type": "International research institute senior fellowship",
+    "applicant_utility": null,
+    "official_details": null
+   },
+   "missing_fields": [
+    "funding_amount",
+    "funding_currency",
+    "funding_period",
+    "living_cost_coverage",
+    "travel_coverage",
+    "coverage",
+    "documents",
+    "english_requirement",
+    "application_period",
+    "applicant_utility",
+    "official_details"
+   ]
+  }
+ ],
+ "result_file": "C:\\Users\\GopaL\\Desktop\\Projects folder\\ScholarZone\\backend\\research_output\\live500\\results\\agent_232.json"
+}

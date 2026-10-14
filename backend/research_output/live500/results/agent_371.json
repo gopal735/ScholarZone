@@ -1,0 +1,267 @@
+{
+  "agent": "agent_371",
+  "records": [
+    {
+      "id": 270,
+      "official": {
+        "official_source_urls": [
+          "https://www.cbs.dk/en/study-programmes/master-programmes/application-and-admission",
+          "https://www.cbs.dk/en/study-programmes/master-programmes"
+        ],
+        "application_link": "https://dans.stads.dk/SelfUserRegistration/faces/WelcomePage.jspx",
+        "catalogue_url": "https://www.cbs.dk/en/study-programmes/master-programmes",
+        "official_updates_url": null,
+        "deadline_central": "2027-01-15",
+        "deadline_central_display": "15 January 2027",
+        "deadline_note": "CBS publishes 15 January 23:59 CET as the admission and scholarship deadline for non-EU/EEA applicants who need a student residence permit (application group 2). A separate Winter application round, open only to the MSc in Business Administration and Digital Business, closes 15 October 2026 for study start 1 February 2027, and CBS states this is the last winter intake for that programme.",
+        "application_cycle": "September intake, application group 2 (non-EU/EEA applicants needing a student residence permit); application portal opens 15 December",
+        "status": "OPEN",
+        "status_note": "CBS states it receives a limited number of government scholarships each year to fund highly qualified full-degree students from non-EU/EEA countries. Applicants offered a scholarship are notified by 15 March at the latest via the Application Portal; applicants who are accepted but not offered a scholarship receive an invoice for the first tuition fee payment.",
+        "tuition_coverage_note": "\"Each scholarship includes a tuition fee waiver and a monthly stipend of DKK 8,000 to assist with living costs in Denmark. The grant has a maximum duration of 22 months, starting 1 September the year you are accepted (1 February if you are accepted in the Winter application round).\"",
+        "funding_amount": 8000,
+        "funding_currency": "DKK",
+        "funding_period": "per month, for a maximum of 22 months",
+        "tuition_coverage": true,
+        "living_cost_coverage": true,
+        "travel_coverage": null,
+        "fully_funded": false,
+        "benefits": [
+          "Tuition fee waiver for the full-time master programme",
+          "Monthly stipend of DKK 8,000 to assist with living costs in Denmark",
+          "Maximum grant duration of 22 months, starting 1 September the year you are accepted",
+          "Grant paid monthly in advance on the last banking day of the month",
+          "No additional tuition fee if the programme takes longer than the prescribed four semesters"
+        ],
+        "eligibility": [
+          "You must be a non-EU/non-EEA/non-Swiss citizen",
+          "You must need a student residence permit to study at CBS",
+          "You must pay the application fee by the application deadline, unless you have a bachelor degree from a Danish educational institution",
+          "You must apply online in the Application Portal and upload a personal statement",
+          "You may not receive a scholarship if you are eligible for SU (Danish State Educational Grant) or any other type of public support in Denmark"
+        ],
+        "requirements": [
+          "Indicate in the Application Portal that you wish to be considered for the CBS scholarship",
+          "Upload a personal statement of a maximum of 2 pages",
+          "Apply for admission no later than 15 January, 23:59 CET (15 October for the Winter round)",
+          "Hold a bachelor degree by study start, meet the language requirement by the application deadline and the academic requirements by study start",
+          "Remain an active student, defined as no more than 30 ECTS-points behind your study plan, and stay enrolled in the same master programme"
+        ],
+        "documents": [
+          "Passport or national ID documenting citizenship, including both passports if you hold dual citizenship and a residence permit if you live in a country you are not a citizen of",
+          "Official bachelor grade transcript with signature and stamp from the institution, an online verification code, or a valid digital signature",
+          "Bachelor diploma if the degree is completed",
+          "Personal statement of a maximum of 2 pages",
+          "Documentation for the language requirement that CBS can verify with the test provider by the deadline, or an upper secondary diploma with official stamp and signature",
+          "Official course descriptions for courses you want recognised, plus a self-assessment form if helpful"
+        ],
+        "selection_criteria": [
+          "Academic record",
+          "English proficiency",
+          "The personal statement",
+          "Life and work experience, internships and extra-curricular activities are also considered",
+          "A selection committee assesses applications and may decide to interview an applicant"
+        ],
+        "coverage": [
+          "Tuition fee waiver",
+          "Monthly stipend of DKK 8,000 to assist with living costs in Denmark"
+        ],
+        "application_method": [
+          "Apply for admission to a master programme through the Danish Application Portal",
+          "Indicate in the Application Portal that you wish to be considered for the CBS scholarship",
+          "Upload the personal statement together with the application"
+        ],
+        "application_route": "One application per programme in the Danish Application Portal: apply for admission, tick the option to be considered for the CBS scholarship, and upload a maximum 2-page personal statement by 15 January 23:59 CET.",
+        "study_mode": "full-time master programme",
+        "citizenship_residency": "Non-EU/non-EEA/non-Swiss citizens who need a student residence permit to live and study in Denmark.",
+        "international_eligibility": "Yes - the scholarship is for highly qualified full-degree students from countries outside the EU/EEA who need a student residence permit.",
+        "subject_or_agency_requirement": "Scholarships are awarded for a specific master programme and you must stay enrolled in that programme; a separate scholarship exists for the MSc in Business, Language and Culture - Business and the Global South programme for students from named African universities, covering application fee, visa costs, tuition, insurance, travel, housing and living expenses.",
+        "research_requirement": null,
+        "duration": "Maximum 22 months, starting 1 September the year you are accepted (1 February if accepted in the Winter application round).",
+        "description": "CBS receives a limited number of Danish government scholarships each year to fund highly qualified full-degree students from non-EU/EEA countries. Each scholarship combines a tuition fee waiver with a DKK 8,000 monthly stipend, and CBS states the scholarship is based on motivation and academic background, not financial needs.",
+        "region": "Europe (Denmark)",
+        "program_type": "Danish government scholarship for non-EU/EEA full-degree master students, awarded by CBS",
+        "english_requirement": "The language requirement must be fulfilled no later than the application deadline; the accepted tests, exams and required scores are defined per programme on each programme's admission page, and no single score is published for the scholarship itself."
+      },
+      "verification": {
+        "source_citations": [
+          "https://www.cbs.dk/en/study-programmes/master-programmes/application-and-admission"
+        ],
+        "last_verified_date": "2026-10-10",
+        "verification_status": "confirmed",
+        "confidence": "high",
+        "not_confirmed": [
+          "Whether travel or installation costs are covered",
+          "The number of scholarships allocated to each individual programme",
+          "A single English test score for the scholarship, since CBS sets the language requirement per programme"
+        ],
+        "notes": "Amount, 22-month duration, eligibility, deadline, selection process and terms were taken from the scholarship panel for non-EU/EEA citizens on CBS's own master application and admission page; the CBS page reached on the first attempt."
+      },
+      "applicant_utility": {
+        "summary": "Roughly 25 CBS scholarships a year are shared across every graduate programme, so your real competition is that pool of 25 rather than your own programme, and the decision rests on academic record, English proficiency and a maximum two-page personal statement rather than financial need. You have to actively tick the scholarship box in the Danish Application Portal and upload that statement by 15 January 23:59 CET, and the older winter route through the MSc in Business Administration and Digital Business closed its last intake on 15 October 2026. Winners hear by 15 March, and the DKK 8,000 arrives monthly in advance, so budget enough savings to cover your first Copenhagen months before the first banking day of September.",
+        "best_fit": "Non-EU/EEA applicants with a strong, well-documented bachelor record heading for a CBS master's who can pay the application fee and write a sharp, programme-specific personal statement.",
+        "application_readiness_checklist": [
+          "Pay the application fee before the deadline or upload exemption documentation, since a missing fee makes you ineligible for the scholarship",
+          "Book IELTS/TOEFL at least three to four weeks early so CBS can verify the result with the provider by the deadline",
+          "Prepare a bachelor transcript that is signed and stamped or carries an online verification code, showing ECTS for every course",
+          "Draft the personal statement to exactly two pages or less and tie it explicitly to the CBS programme you applied for",
+          "Check the individual programme's admission page for its ECTS and language thresholds before committing to a priority",
+          "Register early in the portal and add no-reply@umit.dk to your safe senders so you never miss a deadline message"
+        ],
+        "common_rejection_risks": [
+          "Assuming the scholarship can be added after the 15 January deadline - it cannot",
+          "Applying for admission without ticking the scholarship box, so the file is never assessed for funding",
+          "A language test result CBS cannot verify with the provider by the deadline, because no documentation can be added afterwards",
+          "Being eligible for SU or another form of Danish public support, which disqualifies you outright",
+          "Falling more than 30 ECTS behind the study plan, switching programme, or letting the student residence permit lapse, which ends the grant",
+          "Leaving the application fee unpaid when you do not hold a Danish bachelor degree"
+        ],
+        "estimated_uncovered_costs": "The application fee, the two residence-permit application fees CBS lists for non-EEA/EU students applying from abroad, flights to Denmark, a housing deposit and insurance. CBS does not publish what DKK 8,000 per month leaves uncovered in Copenhagen, so assume the gap between the stipend and real living costs is funded by you.",
+        "document_audit": [
+          "The personal statement is capped at two pages - longer submissions work against you, not for you",
+          "Transcripts must be colour scans with the university logo, stamp and signature, or digitally signed with a verification code",
+          "Course descriptions must be official university documents; ones you write yourself are not accepted",
+          "Dual citizens must upload both passports, and anyone with permanent residence elsewhere must upload that permit too",
+          "Nothing can be uploaded after the deadline, so the file has to be complete on 15 January"
+        ],
+        "alerts": [
+          "The award is merit-based, not need-based, so a strong motivation and academic story matters more than documenting hardship",
+          "About 25 awards for all graduate programmes makes the odds slim, so apply to other Danish and European funding in parallel",
+          "The 22-month cap matches the standard two years; extensions are granted only in extraordinary circumstances such as severe illness",
+          "The 22-month clock starts on the acceptance date, and the last winter-round entry point (15 October 2026, study start 1 February 2027) is a single-programme route that CBS is discontinuing"
+        ],
+        "submission_workflow": "Submit one application per programme (up to three) in the Danish Application Portal by 15 January, tick the scholarship option, upload the personal statement, then wait for the portal answer by 15 March."
+      }
+    },
+    {
+      "id": 332,
+      "official": {
+        "official_source_urls": [
+          "https://www.en.aau.dk/education/apply/master/finance-and-fees",
+          "https://www.en.aau.dk/education/apply/master/how-and-when-to-apply",
+          "https://www.en.aau.dk/education/apply/master/admission-requirements"
+        ],
+        "application_link": "https://www.en.aau.dk/education/apply/master/finance-and-fees",
+        "catalogue_url": null,
+        "official_updates_url": null,
+        "deadline_central": "2027-01-15",
+        "deadline_central_display": "15 January 2027",
+        "deadline_note": "There is no separate scholarship deadline: AAU's September-intake application deadline for fee-paying applicants (non-EU/EEA) is 15 January 23:59 CET, while non-fee-paying applicants (primarily EU/EEA) have until 1 March 23:59 CET. Scholarship decisions are communicated by the beginning of July at the latest, though they may come earlier.",
+        "application_cycle": "September intake only; scholarships are granted per September intake only and the Application Portal opens medio December",
+        "status": "OPEN",
+        "status_note": "AAU grants approximately 15 scholarships each September intake and states it will inform all applicants about the scholarship decision by the beginning of July at the latest, though it may be earlier.",
+        "tuition_coverage_note": "\"A scholarship consists of a tuition fee waiver and a monthly stipend aimed at covering living expenses during the four semesters of your master's programme.\"",
+        "funding_amount": 11225,
+        "funding_currency": "DKK",
+        "funding_period": "per month, for four semesters",
+        "tuition_coverage": true,
+        "living_cost_coverage": true,
+        "travel_coverage": null,
+        "fully_funded": false,
+        "benefits": [
+          "Tuition fee waiver for the master's programme",
+          "Monthly stipend of 11,225 DKK / 1,503 EUR per month (stipend rate for new students in 2026)",
+          "Stipend paid for four semesters, the standard duration of a master's degree",
+          "Full tuition fee refund if a fee was paid before the scholarship was granted"
+        ],
+        "eligibility": [
+          "Applicants from non-EU/EEA countries applying to a fee-paying master's programme at Aalborg University",
+          "Applicants who do not hold one of the Danish residence permits that exempt them from application and tuition fees",
+          "Applying to the September intake, since scholarships are granted per September intake only",
+          "EU/EEA students cannot apply for scholarships at AAU"
+        ],
+        "requirements": [
+          "Submit the master's programme application in the AAU Application Portal by the fee-paying deadline of 15 January 23:59 CET",
+          "Upload the receipt for the paid application fee (150 EUR / 1,150 DKK, covering up to three applications for the intake)",
+          "Upload an English test result or an official receipt confirming registration for an approved test",
+          "Upload the diploma, diploma supplement and full bachelor transcripts, signed, stamped and translated",
+          "Prioritise a maximum of three programmes, as any application with more priorities is rejected without further notice"
+        ],
+        "documents": [
+          "Passport or national ID showing full name, nationality and date of birth, uploaded when the portal profile is created",
+          "Bachelor diploma and diploma supplement if available, or a transcript if the degree is not yet completed, signed and stamped by the home university and translated into English, Danish, Swedish or Norwegian",
+          "Bachelor transcripts showing all courses and grades, signed and stamped and translated into English, Danish, Swedish or Norwegian",
+          "English test certificate or official receipt confirming registration for an approved test",
+          "Receipt for the paid application fee, uploaded to each application (non-EU applicants)",
+          "Official description of the grading system from the home university, if available",
+          "Danish residence permit card and letter, if you already hold a residence permit in Denmark"
+        ],
+        "selection_criteria": [
+          "Individually selected applicants from non-EU/EEA countries",
+          "Strategic considerations of Aalborg University",
+          "Academic qualifications, which AAU states transcend national borders and are essentially global"
+        ],
+        "coverage": [
+          "Tuition fee waiver for the master's programme",
+          "Monthly living-expense stipend aimed at covering living expenses during the four semesters"
+        ],
+        "application_method": [
+          "No separate scholarship application form",
+          "All non-EU applicants are automatically considered when applying to a master's programme",
+          "Apply through the AAU Application Portal and upload the application fee receipt to each application"
+        ],
+        "application_route": "Apply to a fee-paying master's programme in the AAU Application Portal by 15 January 23:59 CET; scholarship consideration is automatic, with no separate form.",
+        "study_mode": null,
+        "citizenship_residency": "Non-EU/EEA citizens who pay tuition and do not hold one of the Danish residence permits listed by AAU that exempt students from application and tuition fees.",
+        "international_eligibility": "Yes - the scholarship is exclusively for applicants from outside the EU/EEA; AAU states EU/EEA students cannot apply for scholarships at AAU.",
+        "subject_or_agency_requirement": "Applies to fee-paying master's programmes for the September intake only.",
+        "research_requirement": null,
+        "duration": "Four semesters, the standard duration of a master's degree; no stipend is paid beyond the first two years of study if the programme is prolonged.",
+        "description": "The scholarships are financed by the Danish Government and awarded by Aalborg University: each September intake AAU grants a limited number, approximately 15, to individually selected applicants from non-EU/EEA countries based on strategic considerations and academic qualifications.",
+        "region": "Europe (Denmark)",
+        "program_type": "Danish government-financed tuition fee waiver plus monthly living stipend, awarded by the university",
+        "english_requirement": "IELTS Academic 6.5 overall band score with a minimum of 6.0 in each section, or TOEFL iBT 85 with a minimum of 20 in each section (Cambridge C2 Proficiency at C1, C1 Advanced grade C and ECPE passed are also accepted). Tests must be less than 2 years old by the application deadline, and AAU does not accept IELTS One Skill Retake, TOEFL Essentials or MyBest scores, Duolingo or PTE."
+      },
+      "verification": {
+        "source_citations": [
+          "https://www.en.aau.dk/education/apply/master/finance-and-fees",
+          "https://www.en.aau.dk/education/apply/master/how-and-when-to-apply"
+        ],
+        "last_verified_date": "2026-10-10",
+        "verification_status": "confirmed",
+        "confidence": "high",
+        "not_confirmed": [
+          "Whether travel or installation costs are covered",
+          "Study mode (full-time or part-time) as published on the scholarship pages",
+          "How the approximately 15 scholarships are distributed across programmes or faculties",
+          "The exact calendar year printed for the 15 January deadline, which AAU states without a year on the admission pages"
+        ],
+        "notes": "Stipend rate of DKK 11,225 / EUR 1,503 for 2026, four-semester duration, roughly 15 awards, automatic consideration and the July decision date were taken from AAU's master finance and fees page; deadlines, documentation and English requirements from AAU's master admission pages. Both pages fetched successfully."
+      },
+      "applicant_utility": {
+        "summary": "There is no scholarship form to fill in: every non-EU/EEA applicant to a fee-paying AAU master's is considered automatically once the programme application is submitted, so the only thing you control is filing it, with the application-fee receipt attached, before the 15 January fee-paying deadline. Only about 15 awards exist per September intake and AAU openly warns the DKK 11,225 monthly stipend may not cover all living expenses in Denmark. Decisions arrive by the beginning of July, long after the 10 April admission answer, so you must be able to carry the first semester tuition while you wait or rely on the refund AAU promises if the scholarship is granted after you have paid.",
+        "best_fit": "Non-EU/EEA applicants to higher-tuition AAU technical and engineering master's, where the fee waiver is worth most, who can document a strong bachelor record and self-fund the first months.",
+        "application_readiness_checklist": [
+          "Pay the 150 EUR / 1,150 DKK application fee through the AAU webshop and upload the receipt to each of your applications",
+          "Hold yourself to three priorities in the portal, because more than three is rejected without further notice",
+          "Merge every multi-page document into a single PDF under the 10 MB limit before uploading",
+          "Book an approved English test early; a registration receipt is enough at application, but the final result for non-EU applicants without a Danish permit is due 20 April for the September intake",
+          "Get stamped, signed and translated transcripts and diploma ready before the portal opens in mid-December"
+        ],
+        "common_rejection_risks": [
+          "Missing the 15 January fee-paying deadline, which is months earlier than the EU/EEA 1 March deadline and is not extended",
+          "Listing more than three programme priorities, which AAU rejects without further notice",
+          "Sending documents by post or email, or uploading unmerged or oversized PDFs",
+          "Using a provisional certificate for a degree completed more than a year ago",
+          "Relying on the stipend as your full living budget, since AAU states the scholarship might not cover all living expenses",
+          "Counting on the available-study-places route later, since non-EU citizens cannot use it unless they hold an exempting residence permit"
+        ],
+        "estimated_uncovered_costs": "The non-refundable application fee, residence-permit costs, flights, accommodation deposit, insurance and any living costs above the DKK 11,225 monthly stipend, which AAU says may need to be supplemented from savings, a home-country loan or a student job.",
+        "document_audit": [
+          "Everything must be uploaded as a PDF to each application, merged per document, with a 10 MB maximum",
+          "Documents must be signed and stamped by the issuing university and translated into English, Danish, Swedish or Norwegian",
+          "Upload the fee receipt to every application, not only the first one",
+          "English tests must be under two years old at the deadline, and all section minimums must be met in a single sitting",
+          "If you hold a Danish residence permit, add both the permit card and the letter"
+        ],
+        "alerts": [
+          "The scholarship decision can land after the tuition payment deadline, so plan your cash flow and claim the refund if you have already paid",
+          "Stipend payments can be retroactive if your CPR number, NemKonto and tax registration are not in place by 1 September",
+          "Only September-intake applicants are considered; February intake applications are not part of the scholarship round",
+          "AAU explicitly advises not to rely solely on receiving a scholarship when applying",
+          "Non-EU/EEA students taking supplementary courses pay an additional fee per ECTS, ranging from DKK 287 to DKK 760 depending on the programme"
+        ],
+        "submission_workflow": "Apply in the AAU portal (dans.stads.dk) by 15 January 23:59 CET with the fee receipt attached; the admission answer follows on 10 April and the scholarship answer by the beginning of July."
+      }
+    }
+  ]
+}

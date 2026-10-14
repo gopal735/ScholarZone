@@ -1,0 +1,147 @@
+{
+  "agent": "agent_078",
+  "records": [
+    {
+      "id": 215,
+      "official": {
+        "official_source_urls": [
+          "https://www.koica.go.kr/ciat/7806/subview.do",
+          "https://www.koica.go.kr/ciat/7807/subview.do",
+          "https://www.koica.go.kr/ciat/7815/subview.do"
+        ],
+        "application_link": "https://www.koica.go.kr/ciat/7807/subview.do",
+        "catalogue_url": null,
+        "official_updates_url": "https://www.koica.go.kr/ciat/7815/subview.do",
+        "deadline_central": null,
+        "deadline_central_display": null,
+        "deadline_note": "KOICA does not publish a single central deadline: the first-round deadline is set by each applicant's own KOICA overseas office or Korean Embassy, and the university screening round then runs from April to June.",
+        "application_cycle": "Annual cycle: March overseas office / Korean Embassy screening, April to June university screening, July admission notification, August entry to Korea",
+        "status": "UPCOMING",
+        "status_note": "The CIAT notice board shows a 2027-admission programme announcement (Master's Degree Program in Tax and Fiscal Policy, Korea University, posted 28 July 2026), but KOICA states application timing is set locally by each overseas office or embassy.",
+        "tuition_coverage_note": "KOICA lists 'Full tuition fees' as the first benefit of the Scholarship Program.",
+        "funding_amount": null,
+        "funding_currency": null,
+        "funding_period": null,
+        "tuition_coverage": true,
+        "living_cost_coverage": true,
+        "travel_coverage": true,
+        "fully_funded": true,
+        "benefits": [
+          "Full tuition fees",
+          "One round-trip airfare",
+          "Settlement allowance",
+          "Dormitory accommodation",
+          "Monthly allowance",
+          "National Health Insurance fee",
+          "Private Medical Insurance fee",
+          "Scholarship Completion Grant"
+        ],
+        "eligibility": [
+          "All applicants must be citizens of designated countries selected by the Korean government (KOICA) from the OECD DAC List of ODA Recipients",
+          "All applicants must be government officials and receive an official nomination from their respective governments",
+          "Preferably under the age of 40",
+          "Good health both mentally and physically",
+          "A strong command of English, both in speaking and writing",
+          "Must meet the criteria set by the institution applied to and submit all required documents listed in that programme's Program Information",
+          "Individuals who have previously received a scholarship for a degree programme from the Korean government are not eligible (holders of a Korean government bachelor's degree scholarship are eligible)",
+          "Doctoral applicants must be KOICA SP fellows who have successfully completed the KOICA Master's Degree Program",
+          "Doctoral applicants must have no experience of receiving foreign assistance to participate in doctoral-degree scholarship programmes"
+        ],
+        "requirements": [
+          "Fill out the 'Document Checklist' for the admission package and submit the KOICA application forms by e-mail to your KOICA overseas office or Korean Embassy",
+          "Confirm your designated-country status and government nomination before applying; both are mandatory",
+          "Read the application guidelines and the programme's Program Information in their entirety",
+          "Prepare for a local medical check-up at a designated institution after passing university document screening, and for a further medical check-up in Korea"
+        ],
+        "documents": [
+          "KOICA application forms submitted by e-mail to the KOICA overseas office or Korean Embassy",
+          "Completed Document Checklist for the admission package",
+          "Institution application documents as listed in the Programme Information of each course",
+          "Original admission documents submitted to the university via DHL after document screening",
+          "Medical check-up records (local and in Korea)"
+        ],
+        "selection_criteria": [
+          "KOICA overseas office or Korean Embassy screening, including an on-site interview",
+          "University document screening, followed by an interview and, at some institutions, an additional written exam",
+          "Final selection as a KOICA SP fellow requires passing the medical check-up in Korea"
+        ],
+        "coverage": [
+          "Full tuition fees",
+          "One round-trip airfare",
+          "Settlement allowance",
+          "Dormitory accommodation",
+          "Monthly allowance",
+          "National Health Insurance fee",
+          "Private Medical Insurance fee",
+          "Scholarship Completion Grant",
+          "Pre-departure orientations, arrival briefings, and support for immigration procedures and transport to the institution",
+          "Supplementary academic experiential learning activities, expert encounters, industrial visits, international conference participation and Korean language classes"
+        ],
+        "application_method": [
+          "Stage 1 (March): prepare all required documents, fill out the Document Checklist and submit the KOICA application forms by e-mail to the KOICA overseas office or Korean Embassy",
+          "Stage 2 (March): take part in the on-site interview conducted by the overseas office or embassy",
+          "Stage 3 (April to June): submit institution documents by e-mail, undergo institution document screening, local medical check-up, original-document submission and institution interview",
+          "Stage 4 (July to August): receive the admission notification, complete visa procedures and vaccinations, pass the final screening and medical check-up in Korea, then attend orientation and start the semester"
+        ],
+        "application_route": "Apply in the first round by e-mail to your own KOICA overseas office or Korean Embassy with a government nomination; only nominated candidates go through the university screening.",
+        "study_mode": null,
+        "citizenship_residency": "All applicants must be citizens of designated countries selected by the Korean government (KOICA) from the OECD DAC List of ODA Recipients; the list of designated countries is subject to annual changes and is provided through KOICA overseas offices or Korean embassies.",
+        "international_eligibility": "Open only to citizens of KOICA-designated partner (developing) countries; the programme is not open to Korean nationals.",
+        "subject_or_agency_requirement": "The programme is specially designed for government officials; all applicants must be government officials with an official nomination from their government.",
+        "research_requirement": null,
+        "duration": "KOICA offers master's programmes that are seventeen months long; the doctoral programme duration is not stated on the pages reviewed.",
+        "description": "KOICA presents the Scholarship Program (SP) as a prestigious initiative offering post-graduate opportunities at both Master's and Doctoral levels, initiated in 1997, which has produced over 5,000 graduates of over 80 nationalities and is specially designed for government officials in partnership with leading Korean universities.",
+        "region": "Global",
+        "program_type": "Government-funded international postgraduate scholarship administered by KOICA under its CIAT fellowship programme",
+        "english_requirement": "Applicants must have a strong command of English, both in speaking and writing."
+      },
+      "verification": {
+        "source_citations": [
+          "https://www.koica.go.kr/ciat/7806/subview.do",
+          "https://www.koica.go.kr/ciat/7807/subview.do",
+          "https://www.koica.go.kr/ciat/7815/subview.do"
+        ],
+        "last_verified_date": "2026-10-10",
+        "verification_status": "confirmed",
+        "confidence": "high",
+        "not_confirmed": [
+          "funding_amount (KOICA publishes benefit categories but no monetary figures for the monthly allowance, settlement allowance or completion grant)",
+          "funding_currency",
+          "funding_period",
+          "deadline_central (KOICA states first-round deadlines are set by each overseas office or embassy)",
+          "study_mode"
+        ],
+        "notes": "KOICA's Scholarship Program Info, Application Procedure and CIAT Notice pages were read in full on 2026-10-10; benefits, eligibility, the two-stage procedure, the March-August schedule and the 2027-admission notice were confirmed. No monetary figure is published anywhere on KOICA's own pages, so none was recorded."
+      },
+      "applicant_utility": {
+        "summary": "The KOICA Scholarship Program runs through your own government, not through a Korean university: your KOICA overseas office or Korean Embassy screens and nominates you in the first round, and only nominated candidates reach the university screening. Budget months for the full chain - an e-mail application package with a completed Document Checklist, an on-site interview at the embassy or office, university document screening and interview, original documents mailed by DHL, a local medical check-up, and a final medical check-up in Korea before enrolment. Because KOICA sets no central deadline, the only date that matters is the one your own overseas office or embassy publishes.",
+        "best_fit": "Mid-career government officials from KOICA partner countries on the OECD DAC list who can secure a government nomination and sixteen to seventeen months of study leave for a master's in Korea.",
+        "application_readiness_checklist": [
+          "Confirm your passport is valid well beyond the expected entry date and that your country appears on the current list of designated countries (the list changes annually)",
+          "Secure the official government nomination early - KOICA makes it a hard requirement, not a bonus",
+          "Get your local medical check-up done only when the institution asks for it, so results stay fresh for the Korea re-check",
+          "Draft the admission package documents once and keep them in both soft and notarised form, because originals must go to the university by DHL"
+        ],
+        "common_rejection_risks": [
+          "Applying without the government nomination or to a university course before the embassy round closes",
+          "Having previously held a Korean government degree scholarship (a bachelor's-level Korean government scholarship is the only exception)",
+          "Failing the medical check-up or arriving without the vaccinations the institution specifies",
+          "Assuming your own country's deadline matches another office's - dates are set independently per overseas office and embassy"
+        ],
+        "estimated_uncovered_costs": "KOICA does not publish the amounts of the monthly allowance, settlement allowance or completion grant, so you cannot verify the stipend level from its pages; personal spending, family costs and anything outside the published benefit list come out of your own pocket.",
+        "document_audit": [
+          "The 'Document Checklist' is sent in with the admission package - incomplete checklists stall applications before review starts",
+          "Programme-specific documents are listed only in each course's Program Information, so check your chosen course's attachments rather than relying on the general procedure page",
+          "Originals go to the university by DHL only after document screening passes - hold copies for the embassy round",
+          "Two medical check-ups are required (local and in Korea), so allow enough validity time between them"
+        ],
+        "alerts": [
+          "The posted schedule (March to August) is explicitly subject to change based on KOICA's circumstances - re-check the notice board each cycle",
+          "Doctoral applicants must be KOICA SP alumni who completed KOICA's master's programme, so the PhD route is not open to outsiders",
+          "Programme lists and quotas are republished each admission year, with some institutions marked TBD until late in the cycle"
+        ],
+        "submission_workflow": "E-mail the KOICA application package to your overseas office or embassy, pass the on-site interview, then complete the university's document screening, medical check-up, original-document submission and interview before the July admission notification."
+      }
+    }
+  ]
+}
