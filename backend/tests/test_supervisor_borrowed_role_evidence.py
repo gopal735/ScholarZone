@@ -179,15 +179,26 @@ def test_a_borrowed_role_is_refused_by_the_personhood_gate(name, role, url):
 
 
 @pytest.mark.parametrize("name,role,evidence,url", NTU_PEOPLE)
-def test_the_four_real_people_are_still_approved(name, role, evidence, url):
+def test_the_four_ntu_office_holders_are_not_published(name, role, evidence, url):
+    """Real people who are office holders, and therefore not supervisors here.
+
+    These four are still people - the personhood gate passes them, and that is
+    what the earlier "must not be caught by this fix" assertion protected. What
+    changed is what the page is: each profile sits under the university's own
+    chancellery, reached from a scholarship administered by the Office of
+    Admissions. An administrative office page evidences an office, not
+    supervision, so the refusal is a role-evidence refusal and names the page.
+    """
     candidate = FacultyCandidate(
         name=name, profile_url=url, role=role,
         role_evidence=evidence, name_claims_person=True,
     )
     result = _approve(candidate)
-    assert [c.name for c in result.approved] == [name], (
-        f"{name!r} is a real person and must not be caught by this fix"
+    assert not result.approved, (
+        f"{name!r} holds an office and must not be published as a supervisor"
     )
+    assert result.reasons_for(SupervisorGate.ROLE_EVIDENCE) >= 1
+    assert result.rejection_reasons.get(str(SupervisorGate.PERSONHOOD), 0) == 0
 
 
 def test_a_candidate_that_never_recorded_a_claim_is_refused():
@@ -239,7 +250,13 @@ def test_the_whole_real_page_yields_only_its_people():
             name=name, profile_url=url, role=role,
             role_evidence=evidence, name_claims_person=True,
         )
-        assert [c.name for c in _approve(candidate).approved] == [name]
+        result = _approve(candidate)
+        # Office holders are classified as people and refused as supervisors:
+        # the personhood gate passes, the role gate does not. Both halves are
+        # asserted so a later change cannot trade one for the other.
+        assert result.rejection_reasons.get(str(SupervisorGate.PERSONHOOD), 0) == 0
+        assert result.reasons_for(SupervisorGate.ROLE_EVIDENCE) >= 1
+        assert not result.approved
 
 
 def url_of(anchor: str) -> str:

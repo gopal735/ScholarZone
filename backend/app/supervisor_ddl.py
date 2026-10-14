@@ -242,6 +242,42 @@ NEW_TABLE_DDL: dict[str, dict[str, str]] = {
             CONSTRAINT uq_professor_availability_scope UNIQUE (professor_id, scope)
         """,
     },
+    "scholarship_official_contacts": {
+        "postgresql": """
+            id INTEGER PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
+            scholarship_id INTEGER NOT NULL REFERENCES scholarships(id),
+            contact_kind VARCHAR(32) NOT NULL,
+            contact_label VARCHAR(160),
+            contact_url VARCHAR(2048) NOT NULL,
+            contact_email VARCHAR(320),
+            contact_email_verified BOOLEAN NOT NULL DEFAULT FALSE,
+            evidence_source_url VARCHAR(2048) NOT NULL,
+            evidence_source_type VARCHAR(32) NOT NULL,
+            retrieved_at TIMESTAMPTZ,
+            verified_at TIMESTAMPTZ,
+            created_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),
+            updated_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),
+            CONSTRAINT uq_scholarship_official_contact
+                UNIQUE (scholarship_id, contact_kind, contact_url)
+        """,
+        "sqlite": """
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            scholarship_id INTEGER NOT NULL REFERENCES scholarships(id),
+            contact_kind VARCHAR(32) NOT NULL,
+            contact_label VARCHAR(160),
+            contact_url VARCHAR(2048) NOT NULL,
+            contact_email VARCHAR(320),
+            contact_email_verified BOOLEAN NOT NULL DEFAULT FALSE,
+            evidence_source_url VARCHAR(2048) NOT NULL,
+            evidence_source_type VARCHAR(32) NOT NULL,
+            retrieved_at DATETIME,
+            verified_at DATETIME,
+            created_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+            updated_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+            CONSTRAINT uq_scholarship_official_contact
+                UNIQUE (scholarship_id, contact_kind, contact_url)
+        """,
+    },
     "professor_outreach_records": {
         "postgresql": """
             id INTEGER PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
@@ -324,6 +360,10 @@ NEW_TABLE_INDEXES: dict[str, list[str]] = {
     ],
     "professor_availability": [
         "ix_professor_availability_professor_id ON professor_availability (professor_id)",
+    ],
+    "scholarship_official_contacts": [
+        "ix_official_contacts_scholarship_id ON scholarship_official_contacts (scholarship_id)",
+        "ix_official_contacts_kind ON scholarship_official_contacts (contact_kind)",
     ],
     "scholarship_admin_audit": [
         "ix_admin_audit_scholarship_action ON scholarship_admin_audit (scholarship_id, action)",

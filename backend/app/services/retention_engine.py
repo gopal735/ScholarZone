@@ -74,6 +74,7 @@ from ..models import (
 )
 from ..models_supervisor import (
     ProfessorOutreachRecord,
+    ScholarshipOfficialContact,
     ScholarshipProfessorLink,
     ScholarshipSupervisorCoverage,
     SupervisorSourceEvidence,
@@ -242,6 +243,16 @@ REFERENCE_INTEGRITY: dict[str, dict[str, str]] = {
             "Any record carrying coverage data is never a deletion candidate."
         ),
     },
+    "ScholarshipOfficialContact": {
+        "table": "scholarship_official_contacts",
+        "disposition": "PRESERVE",
+        "rationale": (
+            "The official office published in place of a supervisor for one scholarship, "
+            "with the page it was read from. Removing the scholarship would destroy the "
+            "contact, and the foreign key refuses the parent delete. Any record carrying "
+            "contact data is never a deletion candidate."
+        ),
+    },
     "ScholarshipProfessorLink": {
         "table": "scholarship_professor_links",
         "disposition": "PRESERVE",
@@ -304,6 +315,7 @@ DEPENDENT_MODELS: Mapping[str, type] = {
     "SavedScholarship": SavedScholarship,
     "ApplicationRecord": ApplicationRecord,
     "ScholarshipSupervisorCoverage": ScholarshipSupervisorCoverage,
+    "ScholarshipOfficialContact": ScholarshipOfficialContact,
     "ScholarshipProfessorLink": ScholarshipProfessorLink,
     "SupervisorSourceEvidence": SupervisorSourceEvidence,
     "ProfessorOutreachRecord": ProfessorOutreachRecord,

@@ -358,10 +358,33 @@ class SupervisorCoverageResponse(BaseModel):
     discovery_pending: bool = False
 
 
+class OfficialContactResponse(BaseModel):
+    """An administrative contact published in place of a supervisor.
+
+    Deliberately shaped so it cannot be mistaken for an academic. There is no
+    ``name`` field, ``kind`` is always one of the administrative contact kinds
+    rather than a title, and the email is gated on its own verified flag exactly
+    as a professor's is. ``official_profile_url`` is absent on purpose: an
+    office has a page, not an academic profile.
+    """
+
+    kind: str
+    label: str | None = None
+    url: str
+    email: str | None = None
+    email_verified: bool = False
+    evidence_source_url: str
+    evidence_source_type: str
+    retrieved_at: str | None = None
+
+
 class SupervisorListResponse(BaseModel):
     scholarship_id: int
     coverage: SupervisorCoverageResponse
     supervisors: list[ProfessorResponse] = []
+    #: Administrative contacts for records with no supervisor answer. Never
+    #: merged into ``supervisors``: a scholarship office is not an academic.
+    official_contacts: list[OfficialContactResponse] = []
 
 
 class SupervisorSummaryResponse(BaseModel):

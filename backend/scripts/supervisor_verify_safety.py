@@ -26,6 +26,7 @@ LOOKUP_PATHS = {
     "supervisor_source_evidence": ["professor_id", "scholarship_id", "source_host"],
     "professor_availability": ["professor_id"],
     "professor_outreach_records": ["user_id", "scholarship_id", "professor_id"],
+    "scholarship_official_contacts": ["scholarship_id", "contact_kind"],
 }
 
 WORKER_BOUNDS = {
@@ -71,6 +72,7 @@ def main() -> None:
         "professor_availability": {"professor_profiles"},
         "professor_outreach_records": {"users", "scholarships", "professor_profiles", "contact_templates"},
         "contact_templates": set(),
+        "scholarship_official_contacts": {"scholarships"},
     }
     for table, parents in expected_parents.items():
         body = NEW_TABLE_DDL[table]["postgresql"]
@@ -90,6 +92,7 @@ def main() -> None:
         "supervisor_source_evidence": "professor_id, source_url, source_type",
         "professor_availability": "professor_id, scope",
         "professor_outreach_records": "user_id, scholarship_id, professor_id",
+        "scholarship_official_contacts": "scholarship_id, contact_kind, contact_url",
     }
     for table, columns in uniqueness.items():
         body = NEW_TABLE_DDL[table]["postgresql"]
@@ -104,6 +107,11 @@ def main() -> None:
         "source_url VARCHAR(2048) NOT NULL" in NEW_TABLE_DDL["professor_availability"]["postgresql"]
         and "verified_at TIMESTAMPTZ NOT NULL" in NEW_TABLE_DDL["professor_availability"]["postgresql"],
         "an availability claim cannot exist without a source and a date",
+    )
+    check(
+        "evidence_source_url VARCHAR(2048) NOT NULL" in NEW_TABLE_DDL["scholarship_official_contacts"]["postgresql"]
+        and "contact_url VARCHAR(2048) NOT NULL" in NEW_TABLE_DDL["scholarship_official_contacts"]["postgresql"],
+        "an official contact cannot exist without a contact page and a source URL",
     )
 
     # ---- Indexes support the real lookup paths -----------------------------

@@ -21,6 +21,7 @@ from sqlalchemy.orm import Session
 from ..core.rate_limit import RateLimitExceeded, supervisor_read_limiter
 from ..database import get_db
 from ..schemas import (
+    OfficialContactResponse,
     ProfessorResponse,
     SupervisorCoverageResponse,
     SupervisorListResponse,
@@ -74,7 +75,9 @@ def list_supervisors(
         )
 
     try:
-        coverage, professors = build_supervisor_list(db, scholarship_id, cleaned, limit)
+        coverage, professors, contacts = build_supervisor_list(
+            db, scholarship_id, cleaned, limit
+        )
     except ScholarshipNotPublic:
         # One answer for "absent" and "not publicly visible". A 403 here would
         # confirm that an archived or quarantined record exists at this id.
@@ -84,6 +87,9 @@ def list_supervisors(
         scholarship_id=scholarship_id,
         coverage=SupervisorCoverageResponse(**coverage),
         supervisors=[ProfessorResponse(**professor) for professor in professors],
+        official_contacts=[
+            OfficialContactResponse(**contact) for contact in contacts
+        ],
     )
 
 

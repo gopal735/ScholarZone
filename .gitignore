@@ -16,6 +16,12 @@ backend/scholarzone_test.db
 backend/migration_export.sql
 backend/migration_validation.sql
 
+# Supervisor coverage batch artifacts: per-run audit trails and the resume
+# cursor. Operator output, not source; a run can be replayed from the report.
+backend/reports/supervisor_batch_audit*.jsonl
+backend/reports/supervisor_batch_state.json
+backend/reports/supervisor_coverage_report*.json
+
 # Python
 __pycache__/
 *.py[cod]
