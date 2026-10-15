@@ -134,7 +134,7 @@ function flagFor(name) {
 }
 
 export default function HomePage() {
-  const { scholarships, isLoading, isUsingFallback } = useScholarshipDirectory()
+  const { scholarships, isLoading, isUsingFallback, fromSnapshot } = useScholarshipDirectory()
   // The catalogue total for the search snippet. The directory is paginated,
   // so its array length is one page, not the catalogue.
   const { stats, status: statsStatus } = useScholarshipStats()
@@ -351,7 +351,9 @@ export default function HomePage() {
 
       {isUsingFallback && (
         <div className="sz-home__fallback-notice" role="status">
-          <span>⚠️ Live directory unavailable — showing local data.</span>
+          {fromSnapshot
+            ? 'Browsing the snapshot catalogue — the live directory is unavailable, so saving, applying and supervisor contact are offline until the database recovers.'
+            : '⚠️ Live directory unavailable — showing local data.'}
         </div>
       )}
 

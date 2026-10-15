@@ -4,10 +4,16 @@ import { fetchScholarships } from '../services/scholarshipService'
 
 const DIRECTORY_LIMIT = 100
 
+/* The share of the catalogue a single page shows. Home's showcase, its
+   collections and its marquee all draw from this, so it needs enough rows
+   to fill those and no more — a bigger limit costs a larger response on
+   the first paint for content the visitor has to scroll to reach anyway.
+ */
 export function useScholarshipDirectory() {
   const [scholarships, setScholarships] = useState([])
   const [isLoading, setIsLoading] = useState(true)
   const [isUsingFallback, setIsUsingFallback] = useState(false)
+  const [fromSnapshot, setFromSnapshot] = useState(false)
   const [error, setError] = useState(null)
 
   useEffect(() => {
@@ -20,7 +26,13 @@ export function useScholarshipDirectory() {
         }
 
         setScholarships(directory.items)
-        setIsUsingFallback(false)
+        // A snapshot answer resolves successfully but is still a fallback:
+        // the API did not serve this page. The three flags are set together
+        // so a caller never has to infer provenance from an error that did
+        // not happen.
+        const isSnapshot = Boolean(directory.fromSnapshot)
+        setFromSnapshot(isSnapshot)
+        setIsUsingFallback(isSnapshot)
         setError(null)
       })
       .catch((error) => {
@@ -30,6 +42,7 @@ export function useScholarshipDirectory() {
 
         setScholarships(fallbackScholarships)
         setIsUsingFallback(true)
+        setFromSnapshot(false)
         setError(error)
       })
       .finally(() => {
@@ -41,5 +54,5 @@ export function useScholarshipDirectory() {
     return () => controller.abort()
   }, [])
 
-  return { scholarships, isLoading, isUsingFallback, error }
+  return { scholarships, isLoading, isUsingFallback, fromSnapshot, error }
 }

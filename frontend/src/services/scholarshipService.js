@@ -1,5 +1,14 @@
 const apiBaseUrl = (import.meta.env.VITE_API_BASE_URL || '/api').replace(/\/$/, '')
 
+// The API-independent catalogue. Imported here so the fallback is a
+// property of this service rather than something each page has to remember
+// to do: a caller that asks for scholarships gets scholarships, and the
+// provenance travels with the result.
+import {
+  fetchScholarshipsFromSnapshot,
+  fetchScholarshipStatsFromSnapshot,
+} from './staticScholarshipService'
+
 export class ScholarshipApiError extends Error {
   constructor(message, status) {
     super(message)
@@ -118,10 +127,22 @@ export async function fetchScholarships(query = {}, options) {
   // share a request and two callers asking for different pages do not.
   const key = `list:${JSON.stringify(query, Object.keys(query).sort())}`
   const send = () =>
-    request('/scholarships', query).then((payload) => ({
-      items: Array.isArray(payload.items) ? payload.items.map(normalizeScholarship) : [],
-      pagination: payload.pagination,
-    }))
+    request('/scholarships', query)
+      .then((payload) => ({
+        items: Array.isArray(payload.items) ? payload.items.map(normalizeScholarship) : [],
+        pagination: payload.pagination,
+      }))
+      // The API is the source of truth. When it cannot answer at all, the
+      // catalogue is still readable from the version-controlled snapshot,
+      // so browsing does not stop just because the database is —
+      // and the caller is told it is reading the snapshot, because a
+      // directory that quietly changes its provenance is worse than one
+      // that announces it.
+      .catch(async (error) => {
+        const fallback = await fetchScholarshipsFromSnapshot(query)
+        if (!fallback || fallback.items.length === 0) throw error
+        return { ...fallback, fromSnapshot: true }
+      })
 
   return dedupe(key, send, options?.signal)
 }
@@ -132,5 +153,13 @@ export async function fetchScholarshipById(id, options) {
 }
 
 export async function fetchScholarshipStats(options) {
-  return dedupe('stats', () => request('/scholarships/stats'), options?.signal)
+  return dedupe('stats', async () => {
+    try {
+      return await request('/scholarships/stats')
+    } catch (error) {
+      const fallback = await fetchScholarshipStatsFromSnapshot()
+      if (!fallback || fallback.total === 0) throw error
+      return { ...fallback, fromSnapshot: true }
+    }
+  }, options?.signal)
 }
