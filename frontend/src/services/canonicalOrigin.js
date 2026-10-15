@@ -23,5 +23,7 @@
  * app's own Vite base (`/`) and root vercel.json multi-service routing assume.
  */
 export const CANONICAL_ORIGIN = (
-  import.meta.env.VITE_CANONICAL_ORIGIN || 'https://scholarzone-fwzj.vercel.app'
+  import.meta.env?.VITE_CANONICAL_ORIGIN ||
+  globalThis.process?.env?.VITE_CANONICAL_ORIGIN ||
+  'https://scholarzone-fwzj.vercel.app'
 ).replace(/\/$/, '')

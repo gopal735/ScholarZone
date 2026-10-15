@@ -4,7 +4,7 @@
     "version": "0.0.0",
     "type": "module",
     "scripts": {
-        "prebuild": "node ../research/premium_card/generate_index.mjs",
+        "prebuild": "node ../research/premium_card/generate_index.mjs && node scripts/build-sitemap.mjs",
         "dev": "vite",
         "build": "vite build",
         "lint": "eslint .",
