@@ -1,0 +1,64 @@
+{
+  "schema_version": 1,
+  "patch_name": "live-upcoming-top-demand-countries",
+  "created_at": "2026-10-15T08:35:19.064503+00:00",
+  "description": "15 newly researched scholarships in top-demand countries plus 141 backfilled official logos for pre-existing records. Researched against official awarding-body pages only; no figure was invented where a source published none.",
+  "source": {
+    "research_artifact": "backend\\research_output\\live_upcoming\\research_agent_top_countries.json",
+    "research_artifact_sha256": "03aa36635f2d1728aae283b7cb95dd8b75d8177bc207fa4487510dc658298030",
+    "current_database": "backend\\scholarzone.db",
+    "current_database_sha256": "56651bbcbe7536eb078a5ee082c287dbafbda54960326cead0167df3382f0f07",
+    "baseline_database_for_logos": "backups\\scholarzone.pre_supervisor_enrichment_20261014_154140.db",
+    "baseline_database_sha256": "e8c57429db85732932db926c1a4b95b7b822636513ea9975e745d8a1f791eef2",
+    "middle_east_excluded": true,
+    "aggregator_domains_excluded": true
+  },
+  "counts": {
+    "new_records": 15,
+    "logo_updates": 141,
+    "logo_updates_that_had_a_url_before": 0,
+    "logo_updates_from_null": 141
+  },
+  "corrections": {
+    "applied_after_insertion": [
+      {
+        "scholarship_id": 737,
+        "field": "official_source_url, application_link",
+        "before": "https://www.imperial.ac.uk/study/fees-and-funding/scholarships-search/",
+        "after": "https://www.imperial.ac.uk/study/fees-and-funding/scholarships-search/commonwealth-shared-scholarship-20262027.php",
+        "reason": "The record cited Imperial's generic scholarship-search page instead of its own programme page. The other three Imperial records had already been corrected to per-scholarship URLs; this one was not, because the pass that corrected the URLs rewrote the research artifact rather than the database.",
+        "evidence": "GET the corrected URL returns 200 with document title 'Commonwealth Shared Scholarship | Study | Imperial College London'.",
+        "scripts": [
+          "backend/correct_imperial_737.py",
+          "backend/correct_imperial_737_citations.py"
+        ]
+      }
+    ]
+  },
+  "new_record_ids_reserved": [
+    730,
+    731,
+    732,
+    733,
+    734,
+    735,
+    736,
+    737,
+    738,
+    739,
+    740,
+    741,
+    742,
+    743,
+    744
+  ],
+  "apply": {
+    "script": "backend/app/data/apply_live_upcoming_patch.py",
+    "default_mode": "dry-run",
+    "apply_requires_explicit_flag": "--apply",
+    "transactional": true,
+    "refuses_duplicates": true,
+    "refuses_conflicts": true,
+    "never_writes_production": true
+  }
+}

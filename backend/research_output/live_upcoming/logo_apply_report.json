@@ -1,0 +1,910 @@
+{
+  "generated_at": "2026-10-15T12:58:26.253910",
+  "applied": 141,
+  "failed": 11,
+  "applied_records": [
+    {
+      "id": 39,
+      "title": "Pearson International Scholarship (University of Toronto)",
+      "country": "Canada",
+      "logo_url": "https://future.utoronto.ca/themes/utfs//images/icons/defy-gravity-logo.svg"
+    },
+    {
+      "id": 58,
+      "title": "Brandeis University Wien International Scholarship",
+      "country": "USA",
+      "logo_url": "https://www.brandeis.edu/_files/favicons/favicon-32x32.png"
+    },
+    {
+      "id": 63,
+      "title": "Michigan State University International Merit Scholarships",
+      "country": "USA",
+      "logo_url": "https://admissions.msu.edu/favicon.ico?favicon.2-x85vtqgh2hy.ico"
+    },
+    {
+      "id": 78,
+      "title": "GREAT Scholarships 2026 â€” University of Edinburgh (Ghana, Mexico and Thailand)",
+      "country": "United Kingdom",
+      "logo_url": "https://registryservices.ed.ac.uk/themes/upstream/wpp_theme/images/logo.png"
+    },
+    {
+      "id": 86,
+      "title": "Donald A. Wehrung International Student Award (UBC International Scholars Program)",
+      "country": "Canada",
+      "logo_url": "https://you.ubc.ca/wp-content/uploads/2026/05/international-scholars-25anniversary-150x150.jpg.webp"
+    },
+    {
+      "id": 92,
+      "title": "Émile Boutmy Scholarship",
+      "country": "France",
+      "logo_url": "https://www.sciencespo.fr/students/en/static/4e8c8b615cdf25da682418334c3751b6/sciencespo_logo_rouge_176c18a710.svg"
+    },
+    {
+      "id": 97,
+      "title": "Barcelona School of Economics Master's Tuition Funding and Scholarships",
+      "country": "Spain",
+      "logo_url": "https://bse.eu/_nuxt/logo_header.yFf_O8dp.svg"
+    },
+    {
+      "id": 101,
+      "title": "A*STAR Graduate Scholarship (AGS)",
+      "country": "Singapore",
+      "logo_url": "https://www.a-star.edu.sg/api/media/867ab78f-c433-4489-9de0-51f3937f384c/favicon.ico"
+    },
+    {
+      "id": 112,
+      "title": "India Science and Research Fellowship (ISRF) Programme",
+      "country": "India",
+      "logo_url": "https://insaindia.res.in/wp-content/uploads/2022/11/insa_logo-1-1-1.png"
+    },
+    {
+      "id": 115,
+      "title": "Netaji Subhas-ICAR International Fellowship (NS-ICAR IF)",
+      "country": "India",
+      "logo_url": "https://icar.org.in/sites/default/files/2024-06/emb-logo.png"
+    },
+    {
+      "id": 121,
+      "title": "Berea College Tuition Promise Scholarship",
+      "country": "United States",
+      "logo_url": "https://www.berea.edu/favicon-32x32.png"
+    },
+    {
+      "id": 125,
+      "title": "Harvard College Need-Based Financial Aid (International Students)",
+      "country": "United States",
+      "logo_url": "https://college.harvard.edu/core/misc/favicon.ico"
+    },
+    {
+      "id": 130,
+      "title": "Aga Khan Foundation International Scholarship Programme (AKF ISP) - Next Cycle, Opening Early 2027",
+      "country": "Multiple",
+      "logo_url": "https://akf.org/wp-content/themes/aga-khan/assets/favicon/favicon.ico"
+    },
+    {
+      "id": 136,
+      "title": "Padua International Excellence Scholarship — Università degli Studi di Padova",
+      "country": "Italy",
+      "logo_url": "https://www.unipd.it/favicon.ico?favicon.fe08e1ad.ico"
+    },
+    {
+      "id": 157,
+      "title": "CERN Doctoral Student Programme",
+      "country": "Switzerland",
+      "logo_url": "https://careers.cern/wp-content/uploads/2025/01/logo-menu.svg"
+    },
+    {
+      "id": 158,
+      "title": "CERN Research Fellowship",
+      "country": "Switzerland",
+      "logo_url": "https://careers.cern/wp-content/uploads/2025/01/logo-menu.svg"
+    },
+    {
+      "id": 163,
+      "title": "TU Wien Scholarships for International Students",
+      "country": "Austria",
+      "logo_url": "https://www.tuwien.at/favicon-32x32.png"
+    },
+    {
+      "id": 173,
+      "title": "Amsterdam Merit Scholarship (AMS)",
+      "country": "Netherlands",
+      "logo_url": "https://www.uva.nl/webfiles/1790927060797/_favicon/favicon-32x32.png"
+    },
+    {
+      "id": 180,
+      "title": "Maastricht University NL-High Potential Scholarship",
+      "country": "Netherlands",
+      "logo_url": "https://www.maastrichtuniversity.nl/sites/default/files/styles/780x520/public/2023-08/NL%20Scholarship%20logo%20RGB.jpg?itok=AoFNegCm"
+    },
+    {
+      "id": 194,
+      "title": "UQ International Excellence Scholarship",
+      "country": "Australia",
+      "logo_url": "https://scholarships.uq.edu.au/profiles/custom/uq_standard_profile/themes/custom/uq_standard_theme/favicon.ico"
+    },
+    {
+      "id": 222,
+      "title": "Helmut Veith Stipend for Female Master's Students in Computer Science",
+      "country": "Austria",
+      "logo_url": "https://www.tuwien.at/favicon-32x32.png"
+    },
+    {
+      "id": 244,
+      "title": "Chinese Government Scholarship - Tsinghua University Program (Type B)",
+      "country": "China",
+      "logo_url": "https://yz.tsinghua.edu.cn/en/image/logo.png"
+    },
+    {
+      "id": 246,
+      "title": "Nankai University Chinese Government Scholarship - Silk Road Program",
+      "country": "China",
+      "logo_url": "https://ensie.nankai.edu.cn/images/logo.png"
+    },
+    {
+      "id": 255,
+      "title": "University of Auckland International Student Excellence Scholarship",
+      "country": "New Zealand",
+      "logo_url": "https://www.auckland.ac.nz/etc.clientlibs/uoa-digital/clientlibs/resources/svg/favicon.svg"
+    },
+    {
+      "id": 267,
+      "title": "LUT Scholarship and Early Bird Discount (master's studies)",
+      "country": "Finland",
+      "logo_url": "https://www.lut.fi/themes/custom/lut/images/logos/lut-logo-nega.svg"
+    },
+    {
+      "id": 294,
+      "title": "Scholarships of the Government of the Czech Republic for Students from Developing Countries",
+      "country": "Czech Republic",
+      "logo_url": "https://msmt.gov.cz/favicon.ico?favicon.3e-91l5itci77.ico"
+    },
+    {
+      "id": 295,
+      "title": "Charles University Doctoral Study Income (full-time doctoral students)",
+      "country": "Czech Republic",
+      "logo_url": "https://cuni.cz/UKEN-1-version1-afoto2.png"
+    },
+    {
+      "id": 296,
+      "title": "International Visegrad Fund Fellowships and Scholarships (V4 mobility)",
+      "country": "Czech Republic",
+      "logo_url": "https://www.visegradfund.org/favicon.ico"
+    },
+    {
+      "id": 297,
+      "title": "Visegrad Scholarship Programme — study or research stay hosted by Masaryk University",
+      "country": "Czech Republic",
+      "logo_url": "https://czs.muni.cz/templates/czsjvs/favicon.ico"
+    },
+    {
+      "id": 302,
+      "title": "University of Porto Scholarships and Funding (SASUP, Merit and Scientific Scholarships)",
+      "country": "Portugal",
+      "logo_url": "https://www.up.pt/portal/static/images/favicons/favicon.ico"
+    },
+    {
+      "id": 309,
+      "title": "Merit Scholarship Program for Foreign Students (PBEEE) - Fonds de recherche du Quebec",
+      "country": "Canada",
+      "logo_url": "https://frq.gouv.qc.ca/app/themes/webit/assets/img/logo-qc.png"
+    },
+    {
+      "id": 315,
+      "title": "Chinese Government Scholarship for Advanced Graduate Program (Type B) at Peking University",
+      "country": "China",
+      "logo_url": "https://isd.pku.edu.cn/en/Public/static/themes/bdlb/favicon.ico"
+    },
+    {
+      "id": 317,
+      "title": "Asian Future Leaders Scholarship Program (AFLSP) 2026",
+      "country": "China",
+      "logo_url": "https://yz.tsinghua.edu.cn/en/image/logo.png"
+    },
+    {
+      "id": 318,
+      "title": "Atomic Energy Scholarship Program of China 2026",
+      "country": "China",
+      "logo_url": "https://yz.tsinghua.edu.cn/en/image/logo.png"
+    },
+    {
+      "id": 325,
+      "title": "Czech Government Scholarship - Developing Countries (AY 2027/28), Charles University Faculty of Social Sciences",
+      "country": "Czech Republic",
+      "logo_url": "https://study.fsv.cuni.cz/wp-content/uploads/sites/16/2025/04/logo-en.svg"
+    },
+    {
+      "id": 326,
+      "title": "Václav Havel Bursary - Charles University",
+      "country": "Czech Republic",
+      "logo_url": "https://cuni.cz/UKEN-1-version1-afoto2.png"
+    },
+    {
+      "id": 327,
+      "title": "Visegrad Scholarship Program 2027",
+      "country": "Czech Republic",
+      "logo_url": "https://www.visegradfund.org/favicon.ico"
+    },
+    {
+      "id": 329,
+      "title": "Danish Government Scholarship",
+      "country": "Denmark",
+      "logo_url": "https://www.ku.dk/_assets/12a46eea25fd08a7277319b85c785b6b/Icons/favicon.ico"
+    },
+    {
+      "id": 336,
+      "title": "Tampere University tuition fee scholarship (50%) and early bird offer",
+      "country": "Finland",
+      "logo_url": "https://www.tuni.fi/shared/favicon.svg"
+    },
+    {
+      "id": 352,
+      "title": "France-South Africa Scholarship Programme 2027",
+      "country": "France",
+      "logo_url": "https://southafrica-france-scholarships.com/uploads/files/_AUTOx75_crop_center-center_none/southafrica-france-scholarship-logo2.png"
+    },
+    {
+      "id": 353,
+      "title": "Pasteur-Paris University (PPU) International Doctoral Program 2027",
+      "country": "France",
+      "logo_url": "https://www.pasteur.fr/sites/default/files/medias/image/2026-07/UniversiteParisCite_logo_horizontal_couleur_CMJN.jpg"
+    },
+    {
+      "id": 354,
+      "title": "InLife International Mobility Grants 2026-2027",
+      "country": "France",
+      "logo_url": "https://inlife.sorbonne-universite.fr/sites/default/files/media/2025-01/logo_initiative_sciences_interfaces_vivant.svg"
+    },
+    {
+      "id": 355,
+      "title": "Mastercard Foundation Scholars Program at Sciences Po (Graduate Level)",
+      "country": "France",
+      "logo_url": "https://www.sciencespo.fr/students/en/static/4e8c8b615cdf25da682418334c3751b6/sciencespo_logo_rouge_176c18a710.svg"
+    },
+    {
+      "id": 360,
+      "title": "MEXT Scholarship for 2027 - Embassy Recommendation (Research Students)",
+      "country": "Japan",
+      "logo_url": "https://www.studyinjapan.go.jp/ja/assets/images/common/study_in_Japan_logo.svg"
+    },
+    {
+      "id": 380,
+      "title": "Rotary Yoneyama Memorial Scholarship 2027 (Overseas Candidates)",
+      "country": "Japan",
+      "logo_url": "https://www.rotary-yoneyama.or.jp/content/uploads/sites/2/2014/05/logo.gif"
+    },
+    {
+      "id": 384,
+      "title": "Erasmus Trustfonds Scholarship / TSH Changemaker Scholarship (Erasmus MC)",
+      "country": "Netherlands",
+      "logo_url": "https://www.eur.nl/favicon-16x16.png"
+    },
+    {
+      "id": 394,
+      "title": "Tilburg University Waiver",
+      "country": "Netherlands",
+      "logo_url": "https://www.tilburguniversity.edu/themes/custom/tiu/favicon.ico"
+    },
+    {
+      "id": 405,
+      "title": "University of Auckland Top Achiever Scholarship",
+      "country": "New Zealand",
+      "logo_url": "https://www.auckland.ac.nz/etc.clientlibs/uoa-digital/clientlibs/resources/svg/favicon.svg"
+    },
+    {
+      "id": 406,
+      "title": "University of Auckland Vaka Moana Scholarship",
+      "country": "New Zealand",
+      "logo_url": "https://www.auckland.ac.nz/etc.clientlibs/uoa-digital/clientlibs/resources/svg/favicon.svg"
+    },
+    {
+      "id": 437,
+      "title": "A*STAR International Fellowship (AIF)",
+      "country": "Singapore",
+      "logo_url": "https://www.a-star.edu.sg/api/media/867ab78f-c433-4489-9de0-51f3937f384c/favicon.ico"
+    },
+    {
+      "id": 475,
+      "title": "Joint Japan/World Bank Graduate Scholarship Program (JJ/WBGSP) 2027 - Application Window #1 (Developing Country Nationals)",
+      "country": "Multiple",
+      "logo_url": "https://www.worldbank.org/content/dam/wbr-redesign/logos/wbg-favicon.png"
+    },
+    {
+      "id": 480,
+      "title": "Harvard College Need-Based Financial Aid 2027-2028",
+      "country": "United States",
+      "logo_url": "https://college.harvard.edu/core/misc/favicon.ico"
+    },
+    {
+      "id": 482,
+      "title": "MIT Undergraduate Need-Based Financial Aid and MIT Scholarship for International Students",
+      "country": "United States",
+      "logo_url": "https://sfs.mit.edu/wp-content/themes/custom/mit-sfs-theme/static/img/favicon/android-icon-192x192.png?v=1.5.4"
+    },
+    {
+      "id": 502,
+      "title": "Friedrich-Ebert-Stiftung Promotionsförderung für Ausländer:innen (FES doctoral scholarship for international doctoral candidates)",
+      "country": "Germany",
+      "logo_url": "https://www.fes.de/_assets/9cec337f7d9b8a112ff7bc4a21068e10/Icons/General/logo-fes.svg"
+    },
+    {
+      "id": 503,
+      "title": "France 2030 - PEPR GFM \"Grands Fonds Marins\" - Appel à projets - 2026",
+      "country": "France",
+      "logo_url": "https://anr.fr/typo3conf/ext/anr_skin/Resources/Public/assets/img/RF-logo.svg"
+    },
+    {
+      "id": 504,
+      "title": "France 2030 - PEPR PROPSY – \"Psychiatrie de précision\" - Appel à projets - 2026",
+      "country": "France",
+      "logo_url": "https://anr.fr/typo3conf/ext/anr_skin/Resources/Public/assets/img/RF-logo.svg"
+    },
+    {
+      "id": 505,
+      "title": "Appel à projets M-ERA.NET 2026/27 - Science et ingénierie des matériaux pour l'innovation en Europe (édition 2027 pour l'ANR)",
+      "country": "France",
+      "logo_url": "https://anr.fr/typo3conf/ext/anr_skin/Resources/Public/assets/img/RF-logo.svg"
+    },
+    {
+      "id": 507,
+      "title": "AFdoc – Aides à la formation doctorale (FNR PhD funding scheme)",
+      "country": "Luxembourg",
+      "logo_url": "https://www.fnr.lu/wp-content/themes/fnr-v2/public/images/ESCEM_logo.fa4b64.png"
+    },
+    {
+      "id": 509,
+      "title": "Estonian Scholarship Programme for international students, researchers and academic staff — Scholarship for degree and exchange study in Estonia",
+      "country": "Estonia",
+      "logo_url": "https://www.harno.ee/sites/default/files/HARNO%20ENG.svg"
+    },
+    {
+      "id": 512,
+      "title": "Vice-Chancellor's International High Achievers Scholarship (VCIHAS)",
+      "country": "Australia",
+      "logo_url": "https://www.cdu.edu.au/themes/cdu_theme/favicon/icon.svg"
+    },
+    {
+      "id": 517,
+      "title": "ICSSR Participation in International Seminar Abroad (Travel Grant Scheme)",
+      "country": "India",
+      "logo_url": "https://icssr.org/themes/custom/icssr/images/Emblem.svg"
+    },
+    {
+      "id": 518,
+      "title": "ICSSR Financial Assistance for Data Collection Abroad",
+      "country": "India",
+      "logo_url": "https://icssr.org/themes/custom/icssr/images/Emblem.svg"
+    },
+    {
+      "id": 519,
+      "title": "University of Sharjah Research Assistant (RA) and Teaching Assistant (TA) Scholarship for Master's Students",
+      "country": "United Arab Emirates",
+      "logo_url": "https://www.sharjah.ac.ae/-/media/project/uos/sites/uos/others/settings/favicon.ico"
+    },
+    {
+      "id": 522,
+      "title": "African Institute for Mathematical Sciences (AIMS) Structured Master's Scholarship - January 2027 intake (South African applicants)",
+      "country": "South Africa",
+      "logo_url": "https://aims.ac.za/images/logo_hu4600616865369929826.webp"
+    },
+    {
+      "id": 524,
+      "title": "Postgraduate Sanctuary Scholarship - University of Westminster",
+      "country": "United Kingdom",
+      "logo_url": "https://nawa.gov.pl/images/rozszerzenia/szablony/siteb3/logo-mobilne.png"
+    },
+    {
+      "id": 536,
+      "title": "Rufford Small Grants Programme",
+      "country": "Multiple",
+      "logo_url": "https://apply.ruffordsmallgrants.org/static/img/rufford_logo_transbg.png"
+    },
+    {
+      "id": 537,
+      "title": "Whitley Awards 2027",
+      "country": "Multiple",
+      "logo_url": "https://whitleyaward.org/content/themes/whitleyaward.org/favicon.ico"
+    },
+    {
+      "id": 541,
+      "title": "Mastercard Foundation Scholars Program",
+      "country": "Multiple",
+      "logo_url": "https://mastercardfdn.org/assets/images/favicons/favicon-32x32.png"
+    },
+    {
+      "id": 544,
+      "title": "GrundfÃ¶rderung fÃ¼r AuslÃ¤nder:innen",
+      "country": "Germany",
+      "logo_url": "https://www.fes.de/_assets/9cec337f7d9b8a112ff7bc4a21068e10/Icons/General/logo-fes.svg"
+    },
+    {
+      "id": 548,
+      "title": "AAPG - Appel à projets générique 2027 (ANR Generic Call for Proposals 2027)",
+      "country": "France",
+      "logo_url": "https://anr.fr/typo3conf/ext/anr_skin/Resources/Public/assets/img/RF-logo.svg"
+    },
+    {
+      "id": 549,
+      "title": "PhD Position F/M Spatio-temporal analysis of remote sensing data at large scales (Inria offer 2026-10352)",
+      "country": "France",
+      "logo_url": "https://jobs.inria.fr/images/inr_logo_blanc.png"
+    },
+    {
+      "id": 557,
+      "title": "KAUST Fellowship (Master's, Ph.D. and M.S./Ph.D. Pathway)",
+      "country": "Saudi Arabia",
+      "logo_url": "https://admissions.kaust.edu.sa/images/default-source/interface/site-branding/KAUST_Logo.svg"
+    },
+    {
+      "id": 560,
+      "title": "MOFA Scholarship Program",
+      "country": "United Arab Emirates",
+      "logo_url": "https://www.mofa.gov.ae/MOFAAssets/images/logo.png"
+    },
+    {
+      "id": 562,
+      "title": "Wellcome Early-Career Award",
+      "country": "Multiple",
+      "logo_url": "https://wellcome.org/icons/favicon.ico"
+    },
+    {
+      "id": 564,
+      "title": "Joint Japan/World Bank Graduate Scholarship Program (JJ/WBGSP) 2027 - Application Window for Japanese Nationals",
+      "country": "Japan",
+      "logo_url": "https://www.worldbank.org/content/dam/wbr-redesign/logos/wbg-favicon.png"
+    },
+    {
+      "id": 568,
+      "title": "Türkiye Bursları (Türkiye Scholarships) - Turkish Government Scholarship",
+      "country": "Turkey",
+      "logo_url": "https://www.turkiyeburslari.gov.tr/YTB/images/logo/tb-logo.png"
+    },
+    {
+      "id": 574,
+      "title": "Masters International Excellence Scholarships",
+      "country": "United Kingdom",
+      "logo_url": "https://jaducdn.leeds.ac.uk/uol-ds/1.0.22/favicons/favicon-96x96.png"
+    },
+    {
+      "id": 577,
+      "title": "Max Weber Fellowships — European University Institute Max Weber Programme for Postdoctoral Studies",
+      "country": "Italy",
+      "logo_url": "https://www.eui.eu/web-production/code/assets/img/logo-eui.svg"
+    },
+    {
+      "id": 578,
+      "title": "EASL Mobility / Research Fellowship Programme",
+      "country": "Switzerland",
+      "logo_url": "https://easl.eu/wp-content/uploads/2025/10/logo.svg"
+    },
+    {
+      "id": 581,
+      "title": "Jean Monnet Fellowships — Robert Schuman Centre for Advanced Studies, European University Institute",
+      "country": "Italy",
+      "logo_url": "https://www.eui.eu/web-production/code/assets/img/logo-eui.svg"
+    },
+    {
+      "id": 584,
+      "title": "UM NL Global Studies Scholarship",
+      "country": "Netherlands",
+      "logo_url": "https://www.maastrichtuniversity.nl/sites/default/files/styles/1116x1116/public/2023-09/NL%20Scholarship%20logo%20RGB.jpg?itok=ZYBuAEw7"
+    },
+    {
+      "id": 585,
+      "title": "Latvian State Scholarship for Foreign Students (Scholarship for Studies in Latvia)",
+      "country": "Latvia",
+      "logo_url": "https://studyinlatvia.lv/favicon.png"
+    },
+    {
+      "id": 590,
+      "title": "Convocatoria de Becas Nacionales para Estudios de Posgrado 2026 (National Postgraduate Scholarships 2026)",
+      "country": "Mexico",
+      "logo_url": "https://www.secihti.mx/wp-content/uploads/2025/03/favicon_escudo_nacional_dorado.svg"
+    },
+    {
+      "id": 591,
+      "title": "Horatio Alger Association National Scholarship",
+      "country": "United States",
+      "logo_url": "https://horatioalger.org/wp-content/uploads/2023/08/cropped-Horatio-Alger-Favicon-US-2-48-x-48-32x32-1.webp"
+    },
+    {
+      "id": 595,
+      "title": "Bolsas Doutorado Sanduiche no Exterior - Edital Comite Gestor Fiocruz no 01/2026 (CAPES-Global.Edu)",
+      "country": "Brazil",
+      "logo_url": "https://formeditais.campusvirtual.fiocruz.br/recursos/images/logo-cvf.svg"
+    },
+    {
+      "id": 596,
+      "title": "Dos becas de investigacion: sedes Costa Rica y Ecuador (Fellowships CALAS 2027)",
+      "country": "Costa Rica",
+      "logo_url": "https://www.cucsh.udg.mx/themes/drudg8b3/images/BG_escudo-header-01.svg"
+    },
+    {
+      "id": 597,
+      "title": "Beca Generación Bicentenario (Convocatoria extraordinaria 2026)",
+      "country": "Peru",
+      "logo_url": "https://www.pronabec.gob.pe/wp-content/uploads/2022/07/Pronabec-Logo-2020.png"
+    },
+    {
+      "id": 599,
+      "title": "Beca de la Escuela Doctoral Franco-Peruana en Ciencias de la Ingeniería y Geociencias (EDFPCIG) - Convocatoria 2026",
+      "country": "Peru",
+      "logo_url": "https://posgrado.pucp.edu.pe/wp-content/uploads/2021/10/2026-1024x405.png"
+    },
+    {
+      "id": 600,
+      "title": "Becas Colombia Biodiversa - Fondo de Becas Colombia Biodiversa, Convocatoria II-2026",
+      "country": "Colombia",
+      "logo_url": "https://www.faae.org.co/colombiabiodiversa/wp-content/uploads/2025/09/Becas-Colombia-Biodiversa-logo.svg"
+    },
+    {
+      "id": 604,
+      "title": "Beca Universidad de Chile (BUCH)",
+      "country": "Chile",
+      "logo_url": "https://uchile.cl/.resources/portal-uchile/images/logo-universidad-de-chile.svg"
+    },
+    {
+      "id": 605,
+      "title": "Programa de Becas de Cooperacion Sur-Sur - Republica de Chile 2027 (AGCID)",
+      "country": "Chile",
+      "logo_url": "https://web.icetex.gov.co/documents/20122/0/logo_gov.svg/1de7136f-84f8-197a-2880-fb8461a81114?t=1760461030219"
+    },
+    {
+      "id": 617,
+      "title": "Government Scholarship in Saudi Public Universities for Non-Saudi Students (external scholarship) - Ministry of Education, Kingdom of Saudi Arabia",
+      "country": "Saudi Arabia",
+      "logo_url": "https://www.moe.gov.sa/MOECore/favicon/favicon-32x32.png"
+    },
+    {
+      "id": 618,
+      "title": "Presidential West African Scholarship Initiative (PWASI) 2026",
+      "country": "Ghana",
+      "logo_url": "https://scholarships.gov.gh/images/logo.png"
+    },
+    {
+      "id": 619,
+      "title": "Study in Saudi Scholarship Programme (Fully Funded Scholarships for International Students)",
+      "country": "Saudi Arabia",
+      "logo_url": "https://studyinsaudi.sa/images/logos/header-logo-right-colored.svg"
+    },
+    {
+      "id": 621,
+      "title": "Türkiye Scholarships (Türkiye Bursları) — Government Scholarship Programme of the Presidency of Turks Abroad and Related Communities",
+      "country": "Turkey",
+      "logo_url": "https://www.turkiyeburslari.gov.tr/YTB/images/logo/tb-logo.png"
+    },
+    {
+      "id": 622,
+      "title": "World in Serbia Project Scholarships of the Government of the Republic of Serbia",
+      "country": "Serbia",
+      "logo_url": "https://welcometoserbia.gov.rs/TheLisTheme/assets/img/logo.svg"
+    },
+    {
+      "id": 623,
+      "title": "PTDF Overseas Postgraduate Scholarship Scheme (MSc/PhD)",
+      "country": "Nigeria",
+      "logo_url": "https://scholarship.ptdf.gov.ng/images/ptdf_logo_small.png"
+    },
+    {
+      "id": 625,
+      "title": "Clinical Fellowship 2027 — European Academy of Neurology",
+      "country": "Austria",
+      "logo_url": "https://www.ean.org/typo3conf/ext/ean_base/Resources/Public/Images/Favicons/favicon.ico"
+    },
+    {
+      "id": 627,
+      "title": "Research Fellowship 2027 — European Academy of Neurology",
+      "country": "Austria",
+      "logo_url": "https://www.ean.org/typo3conf/ext/ean_base/Resources/Public/Images/Favicons/favicon.ico"
+    },
+    {
+      "id": 628,
+      "title": "Gulbenkian Institute for Advanced Study Fellowships 2027/28",
+      "country": "Portugal",
+      "logo_url": "https://cdn.gulbenkian.pt/wp-content/uploads/2018/12/01_logotipo_web_fundacao_EN_50px.svg"
+    },
+    {
+      "id": 632,
+      "title": "2026-2027 Etta Gray Memorial Scholarship Program (UNCF)",
+      "country": "United States",
+      "logo_url": "https://uncf.org/wp-content/themes/uncf-wordpress/assets/img/logo_full_whiteyellorange.svg"
+    },
+    {
+      "id": 633,
+      "title": "Frederick Douglass Bicentennial Scholarship Program (UNCF)",
+      "country": "United States",
+      "logo_url": "https://uncf.org/wp-content/themes/uncf-wordpress/assets/img/logo_full_whiteyellorange.svg"
+    },
+    {
+      "id": 637,
+      "title": "Bolsas Capacitacao de Curta Duracao no Exterior - Edital Comite Gestor Fiocruz no 02/2026 (CAPES-Global.Edu)",
+      "country": "Brazil",
+      "logo_url": "https://formeditais.campusvirtual.fiocruz.br/recursos/images/logo-cvf.svg"
+    },
+    {
+      "id": 639,
+      "title": "Becas de apoyo a la investigacion del Instituto Riva-Aguero 2027",
+      "country": "Peru",
+      "logo_url": "https://ira.pucp.edu.pe/wp-content/uploads/2020/10/cropped-isotipo.fw_-32x32.png"
+    },
+    {
+      "id": 640,
+      "title": "Beca Doctoral PUCP - Programa de Apoyo a la Investigación Doctoral",
+      "country": "Peru",
+      "logo_url": "https://posgrado.pucp.edu.pe/wp-content/uploads/2022/12/Becadoctoral_2025-1-1024x404.jpg"
+    },
+    {
+      "id": 641,
+      "title": "Becas R.P. Jorge Dintilhac SS.CC. (PUCP)",
+      "country": "Peru",
+      "logo_url": "https://admision.pucp.edu.pe/themes/custom/pucp_adm/logo.svg"
+    },
+    {
+      "id": 644,
+      "title": "Scholarships for Staff and Instructors' Knowledge Advancement Program (SIKAP), Commission on Higher Education Philippines",
+      "country": "Philippines",
+      "logo_url": "https://sikap.ched.gov.ph/favicon.ico"
+    },
+    {
+      "id": 645,
+      "title": "TaiwanICDF Scholarship Program (International Higher Education Scholarship Program), TaiwanICDF",
+      "country": "Taiwan",
+      "logo_url": "https://www.icdf.org.tw/wSite/xslGip/style2/images/logo.svg"
+    },
+    {
+      "id": 646,
+      "title": "Scholarship Program for Studying at Universities in Kazakhstan (Bolashak / Center for International Programs)",
+      "country": "Kazakhstan",
+      "logo_url": "https://bolashak.gov.kz/storage/app/media/logo.svg"
+    },
+    {
+      "id": 647,
+      "title": "International Graduate Student Scholarship (IGSS)",
+      "country": "Malaysia",
+      "logo_url": "https://sgs.upm.edu.my/assets/images/logoupm.png"
+    },
+    {
+      "id": 648,
+      "title": "APU International Students Scholarships & Merit Awards 2026",
+      "country": "Malaysia",
+      "logo_url": "https://www.apu.edu.my/themes/custom/apu/images/navbar/navbar-logo.png"
+    },
+    {
+      "id": 653,
+      "title": "TDTU Scholarship for International Students (2026-2027 Academic Year)",
+      "country": "Vietnam",
+      "logo_url": "https://admission.tdtu.edu.vn/sites/admission23/files/Admission-2023/Logo-admission.png"
+    },
+    {
+      "id": 654,
+      "title": "TaiwanICDF Scholarship Program (Taiwan International Cooperation and Development Fund International Higher Education Scholarship)",
+      "country": "Taiwan",
+      "logo_url": "https://www.icdf.org.tw/wSite/xslGip/style2/images/logo.svg"
+    },
+    {
+      "id": 664,
+      "title": "Bond University Postgraduate Research Scholarship",
+      "country": "Australia",
+      "logo_url": "https://bond.edu.au/themes/custom/bond_theme/favicon/favicon.ico"
+    },
+    {
+      "id": 673,
+      "title": "Petroleum Technology Development Fund (PTDF) In-Country Scholarship Scheme (ISS) 2026/27",
+      "country": "Nigeria",
+      "logo_url": "https://scholarship.ptdf.gov.ng/images/ptdf_logo_small.png"
+    },
+    {
+      "id": 676,
+      "title": "KINGS Master's Scholarship 2027 (KEPCO International Nuclear Graduate School, South Korea) — non-employee quota announced by Iraq's Ministry of Higher Education",
+      "country": "Iraq",
+      "logo_url": "https://mohesr.gov.iq/ar/assets/viewApp/imgs/mohser_logo/text.svg"
+    },
+    {
+      "id": 680,
+      "title": "Qatar University International Students Scholarship",
+      "country": "Qatar",
+      "logo_url": "https://www.qu.edu.qa/Style Library/Logos and Themes/Students/logo/Logo.png?rev=43"
+    },
+    {
+      "id": 681,
+      "title": "Government of Brunei Darussalam Scholarship to Foreign Students Tenable in Brunei Darussalam (BDGS)",
+      "country": "Brunei",
+      "logo_url": "https://www.mfa.gov.bn/Shared%20Documents/Brunei%20Logo.png"
+    },
+    {
+      "id": 682,
+      "title": "Nazarbayev University Financial Aid and Scholarships for International Applicants — Foundation Year and Undergraduate programmes (2027–2028 cycle)",
+      "country": "Kazakhstan",
+      "logo_url": "https://nu.edu.kz/wp-content/uploads/2025/05/logo_nu1.svg"
+    },
+    {
+      "id": 683,
+      "title": "Brunei Darussalam Government Scholarship for Foreign Students Tenable in Brunei Darussalam (BDGS)",
+      "country": "Brunei",
+      "logo_url": "https://ubd.edu.bn/wp-content/uploads/2026/07/UBD-LOGO-2026_BLUEa.png"
+    },
+    {
+      "id": 685,
+      "title": "GETFund Postgraduate Local Scholarship (2026/27)",
+      "country": "Ghana",
+      "logo_url": "https://www.getfund.gov.gh/images/logos/getfund-site-icon-32x32.png"
+    },
+    {
+      "id": 687,
+      "title": "Beca Posgrado STEM Regional (Fulbright-Garcia Robles) - COMEXUS",
+      "country": "United States",
+      "logo_url": "https://www.comexus.org.mx/images/logo.svg"
+    },
+    {
+      "id": 688,
+      "title": "Becas Nacionales de Inclusión 2026 (A. Becas de Licenciatura para Jefas de Familia; B. Apoyos Complementarios para Personas Indígenas; C. Apoyos Complementarios para Personas con Discapacidad)",
+      "country": "Mexico",
+      "logo_url": "https://secihti.mx/wp-content/uploads/2025/03/favicon_escudo_nacional_dorado.svg"
+    },
+    {
+      "id": 689,
+      "title": "Apoyo Complementario de Maternidad y Paternidad Nacional, en el Extranjero y de Consolidación 2026",
+      "country": "Mexico",
+      "logo_url": "https://secihti.mx/wp-content/uploads/2025/03/favicon_escudo_nacional_dorado.svg"
+    },
+    {
+      "id": 690,
+      "title": "DOST-SEI Foreign Graduate Scholarships in Specialized Priority Fields in Science and Technology (Philippines)",
+      "country": "Philippines",
+      "logo_url": "https://fgs.science-scholarships.ph/assets/dost-sei-logo.ico"
+    },
+    {
+      "id": 692,
+      "title": "Türkiye Scholarships - IsDB Joint Scholarship Program",
+      "country": "Turkey",
+      "logo_url": "https://www.turkiyeburslari.gov.tr/YTB/images/logo/tb-logo.png"
+    },
+    {
+      "id": 696,
+      "title": "Fulbright-Garcia Robles Graduate Degree Program (COMEXUS, Mexico)",
+      "country": "Mexico",
+      "logo_url": "https://www.comexus.org.mx/images/logo.svg"
+    },
+    {
+      "id": 707,
+      "title": "HKUST Global Learners Scholarship",
+      "country": "Hong Kong",
+      "logo_url": "https://join.hkust.edu.hk/themes/custom/usturao/img/svg/ust_logo_en.svg"
+    },
+    {
+      "id": 708,
+      "title": "ITB International Undergraduate Scholarship",
+      "country": "Indonesia",
+      "logo_url": "https://finaid.itb.ac.id/favicon-32x32.png"
+    },
+    {
+      "id": 712,
+      "title": "ILSC Humanitarian Scholarship",
+      "country": "Australia",
+      "logo_url": "https://www.ilsc.com/hubfs/Language%20School-Color-Logo-Horizontal.svg"
+    },
+    {
+      "id": 713,
+      "title": "Joint Algeria/Ghana Government Scholarship Awards 2026/2027 (tenable in Algeria)",
+      "country": "Algeria",
+      "logo_url": "https://scholarships.gov.gh/images/logo.png"
+    },
+    {
+      "id": 714,
+      "title": "Scholarship Opportunities in the Kingdom of Saudi Arabia (Study in Saudi — Ghana allocation)",
+      "country": "Saudi Arabia",
+      "logo_url": "https://scholarships.gov.gh/images/logo.png"
+    },
+    {
+      "id": 715,
+      "title": "Heydar Aliyev International Education Grant (Study in Azerbaijan project)",
+      "country": "Azerbaijan",
+      "logo_url": "https://studyinazerbaijan.edu.az/_next/image?url=%2Fimages%2Flogo.png&w=256&q=75"
+    },
+    {
+      "id": 716,
+      "title": "Government of Guyana Scholarships",
+      "country": "Guyana",
+      "logo_url": "https://portal.gov.gy/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fgportal_003.d04f4834.png&w=3840&q=75"
+    },
+    {
+      "id": 717,
+      "title": "National Scholarship Programme of the Slovak Republic (Národný štipendijný program SR, NŠP)",
+      "country": "Slovakia",
+      "logo_url": "https://www.stipendia.sk/_custom/img/logo_NS-SK.png?r=1"
+    },
+    {
+      "id": 718,
+      "title": "GETFund Postgraduate Foreign Scholarship (Ghana Education Trust Fund)",
+      "country": "Ghana",
+      "logo_url": "https://www.getfund.gov.gh/images/logos/getfund-site-icon-32x32.png"
+    },
+    {
+      "id": 723,
+      "title": "Cost Sharing Overseas PhD Scholarships Scheme with Australian Universities (TSLS, Government of Fiji)",
+      "country": "Fiji",
+      "logo_url": "https://tsls.com.fj/wp-content/uploads/2023/04/Site-Logo-302-x-86-px.png"
+    },
+    {
+      "id": 725,
+      "title": "Mastercard Foundation Scholars Program at the University of Rwanda (2026/2027 Cohort 5, Undergraduate)",
+      "country": "Rwanda",
+      "logo_url": "https://mcfsprecruitment.ur.ac.rw/ug-recruitment/assets/img/mcf-logo.png"
+    },
+    {
+      "id": 726,
+      "title": "Eiffel Excellence Scholarship",
+      "country": "France",
+      "logo_url": "https://www.campusfrance.org/modules/custom/campus_common/img/logo-republique-francaise.svg"
+    },
+    {
+      "id": 727,
+      "title": "Swiss Government Excellence Scholarship (ESKAS)",
+      "country": "Switzerland",
+      "logo_url": "https://www.sbfi.admin.ch/images/swiss-logo-flag.svg"
+    },
+    {
+      "id": 729,
+      "title": "Vanier Canada Graduate Scholarship",
+      "country": "Canada",
+      "logo_url": "https://vanier.gc.ca/dist/assets/favicon.ico"
+    }
+  ],
+  "failed_records": [
+    {
+      "id": 26,
+      "title": "Global Korea Scholarship (GKS) Non-degree Exchange Program",
+      "reason": "no candidate passed HEAD re-verification"
+    },
+    {
+      "id": 268,
+      "title": "Danish Government Scholarship for Non-EU/EEA Full-Degree Students",
+      "reason": "no candidate passed HEAD re-verification"
+    },
+    {
+      "id": 307,
+      "title": "Ontario Graduate Scholarship (OGS) - University of Toronto",
+      "reason": "no candidate passed HEAD re-verification"
+    },
+    {
+      "id": 319,
+      "title": "Chinese Government Scholarship (Chinese University Program) at Fudan University 2026",
+      "reason": "no candidate passed HEAD re-verification"
+    },
+    {
+      "id": 320,
+      "title": "Chinese Government Scholarship (Youth of Excellence Scheme) at Fudan University 2026",
+      "reason": "no candidate passed HEAD re-verification"
+    },
+    {
+      "id": 321,
+      "title": "Shanghai Government Scholarship at Fudan University 2026",
+      "reason": "no candidate passed HEAD re-verification"
+    },
+    {
+      "id": 361,
+      "title": "ANRF Ramanujan Fellowship",
+      "reason": "no candidate passed HEAD re-verification"
+    },
+    {
+      "id": 601,
+      "title": "Beca Interna Postdoctoral - Convocatoria Becas 2026 (CONICET)",
+      "reason": "no candidate passed HEAD re-verification"
+    },
+    {
+      "id": 603,
+      "title": "PEC-PG - Brazilian Program for Exchange Students, Postgraduate Level (PEC-PG 2027)",
+      "reason": "no candidate passed HEAD re-verification"
+    },
+    {
+      "id": 650,
+      "title": "Zhejiang University \"Belt and Road\" International School of Medicine Scholarship (PhD)",
+      "reason": "no candidate passed HEAD re-verification"
+    },
+    {
+      "id": 663,
+      "title": "ACIAR Pacific Agriculture Scholarship Support (PASS) Program - Fiji National University 2027 intake",
+      "reason": "no candidate passed HEAD re-verification"
+    }
+  ]
+}

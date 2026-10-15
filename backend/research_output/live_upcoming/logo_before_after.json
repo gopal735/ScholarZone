@@ -1,0 +1,729 @@
+{
+  "compared_against": "C:\\Users\\GopaL\\Desktop\\Projects folder\\ScholarZone\\backups\\scholarzone.pre_supervisor_enrichment_20261014_154140.db",
+  "current": "C:\\Users\\GopaL\\Desktop\\Projects folder\\ScholarZone\\backend\\scholarzone.db",
+  "added_ids": [
+    730,
+    731,
+    732,
+    733,
+    734,
+    735,
+    736,
+    737,
+    738,
+    739,
+    740,
+    741,
+    742,
+    743,
+    744
+  ],
+  "removed_ids": [],
+  "logo_changed": [
+    {
+      "id": 39,
+      "before": null,
+      "after": "https://future.utoronto.ca/themes/utfs//images/icons/defy-gravity-logo.svg"
+    },
+    {
+      "id": 58,
+      "before": null,
+      "after": "https://www.brandeis.edu/_files/favicons/favicon-32x32.png"
+    },
+    {
+      "id": 63,
+      "before": null,
+      "after": "https://admissions.msu.edu/favicon.ico?favicon.2-x85vtqgh2hy.ico"
+    },
+    {
+      "id": 78,
+      "before": null,
+      "after": "https://registryservices.ed.ac.uk/themes/upstream/wpp_theme/images/logo.png"
+    },
+    {
+      "id": 86,
+      "before": null,
+      "after": "https://you.ubc.ca/wp-content/uploads/2026/05/international-scholars-25anniversary-150x150.jpg.webp"
+    },
+    {
+      "id": 92,
+      "before": null,
+      "after": "https://www.sciencespo.fr/students/en/static/4e8c8b615cdf25da682418334c3751b6/sciencespo_logo_rouge_176c18a710.svg"
+    },
+    {
+      "id": 97,
+      "before": null,
+      "after": "https://bse.eu/_nuxt/logo_header.yFf_O8dp.svg"
+    },
+    {
+      "id": 101,
+      "before": null,
+      "after": "https://www.a-star.edu.sg/api/media/867ab78f-c433-4489-9de0-51f3937f384c/favicon.ico"
+    },
+    {
+      "id": 112,
+      "before": null,
+      "after": "https://insaindia.res.in/wp-content/uploads/2022/11/insa_logo-1-1-1.png"
+    },
+    {
+      "id": 115,
+      "before": null,
+      "after": "https://icar.org.in/sites/default/files/2024-06/emb-logo.png"
+    },
+    {
+      "id": 121,
+      "before": null,
+      "after": "https://www.berea.edu/favicon-32x32.png"
+    },
+    {
+      "id": 125,
+      "before": null,
+      "after": "https://college.harvard.edu/core/misc/favicon.ico"
+    },
+    {
+      "id": 130,
+      "before": null,
+      "after": "https://akf.org/wp-content/themes/aga-khan/assets/favicon/favicon.ico"
+    },
+    {
+      "id": 136,
+      "before": null,
+      "after": "https://www.unipd.it/favicon.ico?favicon.fe08e1ad.ico"
+    },
+    {
+      "id": 157,
+      "before": null,
+      "after": "https://careers.cern/wp-content/uploads/2025/01/logo-menu.svg"
+    },
+    {
+      "id": 158,
+      "before": null,
+      "after": "https://careers.cern/wp-content/uploads/2025/01/logo-menu.svg"
+    },
+    {
+      "id": 163,
+      "before": null,
+      "after": "https://www.tuwien.at/favicon-32x32.png"
+    },
+    {
+      "id": 173,
+      "before": null,
+      "after": "https://www.uva.nl/webfiles/1790927060797/_favicon/favicon-32x32.png"
+    },
+    {
+      "id": 180,
+      "before": null,
+      "after": "https://www.maastrichtuniversity.nl/sites/default/files/styles/780x520/public/2023-08/NL%20Scholarship%20logo%20RGB.jpg?itok=AoFNegCm"
+    },
+    {
+      "id": 194,
+      "before": null,
+      "after": "https://scholarships.uq.edu.au/profiles/custom/uq_standard_profile/themes/custom/uq_standard_theme/favicon.ico"
+    },
+    {
+      "id": 222,
+      "before": null,
+      "after": "https://www.tuwien.at/favicon-32x32.png"
+    },
+    {
+      "id": 244,
+      "before": null,
+      "after": "https://yz.tsinghua.edu.cn/en/image/logo.png"
+    },
+    {
+      "id": 246,
+      "before": null,
+      "after": "https://ensie.nankai.edu.cn/images/logo.png"
+    },
+    {
+      "id": 255,
+      "before": null,
+      "after": "https://www.auckland.ac.nz/etc.clientlibs/uoa-digital/clientlibs/resources/svg/favicon.svg"
+    },
+    {
+      "id": 267,
+      "before": null,
+      "after": "https://www.lut.fi/themes/custom/lut/images/logos/lut-logo-nega.svg"
+    },
+    {
+      "id": 294,
+      "before": null,
+      "after": "https://msmt.gov.cz/favicon.ico?favicon.3e-91l5itci77.ico"
+    },
+    {
+      "id": 295,
+      "before": null,
+      "after": "https://cuni.cz/UKEN-1-version1-afoto2.png"
+    },
+    {
+      "id": 296,
+      "before": null,
+      "after": "https://www.visegradfund.org/favicon.ico"
+    },
+    {
+      "id": 297,
+      "before": null,
+      "after": "https://czs.muni.cz/templates/czsjvs/favicon.ico"
+    },
+    {
+      "id": 302,
+      "before": null,
+      "after": "https://www.up.pt/portal/static/images/favicons/favicon.ico"
+    },
+    {
+      "id": 309,
+      "before": null,
+      "after": "https://frq.gouv.qc.ca/app/themes/webit/assets/img/logo-qc.png"
+    },
+    {
+      "id": 315,
+      "before": null,
+      "after": "https://isd.pku.edu.cn/en/Public/static/themes/bdlb/favicon.ico"
+    },
+    {
+      "id": 317,
+      "before": null,
+      "after": "https://yz.tsinghua.edu.cn/en/image/logo.png"
+    },
+    {
+      "id": 318,
+      "before": null,
+      "after": "https://yz.tsinghua.edu.cn/en/image/logo.png"
+    },
+    {
+      "id": 325,
+      "before": null,
+      "after": "https://study.fsv.cuni.cz/wp-content/uploads/sites/16/2025/04/logo-en.svg"
+    },
+    {
+      "id": 326,
+      "before": null,
+      "after": "https://cuni.cz/UKEN-1-version1-afoto2.png"
+    },
+    {
+      "id": 327,
+      "before": null,
+      "after": "https://www.visegradfund.org/favicon.ico"
+    },
+    {
+      "id": 329,
+      "before": null,
+      "after": "https://www.ku.dk/_assets/12a46eea25fd08a7277319b85c785b6b/Icons/favicon.ico"
+    },
+    {
+      "id": 336,
+      "before": null,
+      "after": "https://www.tuni.fi/shared/favicon.svg"
+    },
+    {
+      "id": 352,
+      "before": null,
+      "after": "https://southafrica-france-scholarships.com/uploads/files/_AUTOx75_crop_center-center_none/southafrica-france-scholarship-logo2.png"
+    },
+    {
+      "id": 353,
+      "before": null,
+      "after": "https://www.pasteur.fr/sites/default/files/medias/image/2026-07/UniversiteParisCite_logo_horizontal_couleur_CMJN.jpg"
+    },
+    {
+      "id": 354,
+      "before": null,
+      "after": "https://inlife.sorbonne-universite.fr/sites/default/files/media/2025-01/logo_initiative_sciences_interfaces_vivant.svg"
+    },
+    {
+      "id": 355,
+      "before": null,
+      "after": "https://www.sciencespo.fr/students/en/static/4e8c8b615cdf25da682418334c3751b6/sciencespo_logo_rouge_176c18a710.svg"
+    },
+    {
+      "id": 360,
+      "before": null,
+      "after": "https://www.studyinjapan.go.jp/ja/assets/images/common/study_in_Japan_logo.svg"
+    },
+    {
+      "id": 380,
+      "before": null,
+      "after": "https://www.rotary-yoneyama.or.jp/content/uploads/sites/2/2014/05/logo.gif"
+    },
+    {
+      "id": 384,
+      "before": null,
+      "after": "https://www.eur.nl/favicon-16x16.png"
+    },
+    {
+      "id": 394,
+      "before": null,
+      "after": "https://www.tilburguniversity.edu/themes/custom/tiu/favicon.ico"
+    },
+    {
+      "id": 405,
+      "before": null,
+      "after": "https://www.auckland.ac.nz/etc.clientlibs/uoa-digital/clientlibs/resources/svg/favicon.svg"
+    },
+    {
+      "id": 406,
+      "before": null,
+      "after": "https://www.auckland.ac.nz/etc.clientlibs/uoa-digital/clientlibs/resources/svg/favicon.svg"
+    },
+    {
+      "id": 437,
+      "before": null,
+      "after": "https://www.a-star.edu.sg/api/media/867ab78f-c433-4489-9de0-51f3937f384c/favicon.ico"
+    },
+    {
+      "id": 475,
+      "before": null,
+      "after": "https://www.worldbank.org/content/dam/wbr-redesign/logos/wbg-favicon.png"
+    },
+    {
+      "id": 480,
+      "before": null,
+      "after": "https://college.harvard.edu/core/misc/favicon.ico"
+    },
+    {
+      "id": 482,
+      "before": null,
+      "after": "https://sfs.mit.edu/wp-content/themes/custom/mit-sfs-theme/static/img/favicon/android-icon-192x192.png?v=1.5.4"
+    },
+    {
+      "id": 502,
+      "before": null,
+      "after": "https://www.fes.de/_assets/9cec337f7d9b8a112ff7bc4a21068e10/Icons/General/logo-fes.svg"
+    },
+    {
+      "id": 503,
+      "before": null,
+      "after": "https://anr.fr/typo3conf/ext/anr_skin/Resources/Public/assets/img/RF-logo.svg"
+    },
+    {
+      "id": 504,
+      "before": null,
+      "after": "https://anr.fr/typo3conf/ext/anr_skin/Resources/Public/assets/img/RF-logo.svg"
+    },
+    {
+      "id": 505,
+      "before": null,
+      "after": "https://anr.fr/typo3conf/ext/anr_skin/Resources/Public/assets/img/RF-logo.svg"
+    },
+    {
+      "id": 507,
+      "before": null,
+      "after": "https://www.fnr.lu/wp-content/themes/fnr-v2/public/images/ESCEM_logo.fa4b64.png"
+    },
+    {
+      "id": 509,
+      "before": null,
+      "after": "https://www.harno.ee/sites/default/files/HARNO%20ENG.svg"
+    },
+    {
+      "id": 512,
+      "before": null,
+      "after": "https://www.cdu.edu.au/themes/cdu_theme/favicon/icon.svg"
+    },
+    {
+      "id": 517,
+      "before": null,
+      "after": "https://icssr.org/themes/custom/icssr/images/Emblem.svg"
+    },
+    {
+      "id": 518,
+      "before": null,
+      "after": "https://icssr.org/themes/custom/icssr/images/Emblem.svg"
+    },
+    {
+      "id": 519,
+      "before": null,
+      "after": "https://www.sharjah.ac.ae/-/media/project/uos/sites/uos/others/settings/favicon.ico"
+    },
+    {
+      "id": 522,
+      "before": null,
+      "after": "https://aims.ac.za/images/logo_hu4600616865369929826.webp"
+    },
+    {
+      "id": 524,
+      "before": null,
+      "after": "https://nawa.gov.pl/images/rozszerzenia/szablony/siteb3/logo-mobilne.png"
+    },
+    {
+      "id": 536,
+      "before": null,
+      "after": "https://apply.ruffordsmallgrants.org/static/img/rufford_logo_transbg.png"
+    },
+    {
+      "id": 537,
+      "before": null,
+      "after": "https://whitleyaward.org/content/themes/whitleyaward.org/favicon.ico"
+    },
+    {
+      "id": 541,
+      "before": null,
+      "after": "https://mastercardfdn.org/assets/images/favicons/favicon-32x32.png"
+    },
+    {
+      "id": 544,
+      "before": null,
+      "after": "https://www.fes.de/_assets/9cec337f7d9b8a112ff7bc4a21068e10/Icons/General/logo-fes.svg"
+    },
+    {
+      "id": 548,
+      "before": null,
+      "after": "https://anr.fr/typo3conf/ext/anr_skin/Resources/Public/assets/img/RF-logo.svg"
+    },
+    {
+      "id": 549,
+      "before": null,
+      "after": "https://jobs.inria.fr/images/inr_logo_blanc.png"
+    },
+    {
+      "id": 557,
+      "before": null,
+      "after": "https://admissions.kaust.edu.sa/images/default-source/interface/site-branding/KAUST_Logo.svg"
+    },
+    {
+      "id": 560,
+      "before": null,
+      "after": "https://www.mofa.gov.ae/MOFAAssets/images/logo.png"
+    },
+    {
+      "id": 562,
+      "before": null,
+      "after": "https://wellcome.org/icons/favicon.ico"
+    },
+    {
+      "id": 564,
+      "before": null,
+      "after": "https://www.worldbank.org/content/dam/wbr-redesign/logos/wbg-favicon.png"
+    },
+    {
+      "id": 568,
+      "before": null,
+      "after": "https://www.turkiyeburslari.gov.tr/YTB/images/logo/tb-logo.png"
+    },
+    {
+      "id": 574,
+      "before": null,
+      "after": "https://jaducdn.leeds.ac.uk/uol-ds/1.0.22/favicons/favicon-96x96.png"
+    },
+    {
+      "id": 577,
+      "before": null,
+      "after": "https://www.eui.eu/web-production/code/assets/img/logo-eui.svg"
+    },
+    {
+      "id": 578,
+      "before": null,
+      "after": "https://easl.eu/wp-content/uploads/2025/10/logo.svg"
+    },
+    {
+      "id": 581,
+      "before": null,
+      "after": "https://www.eui.eu/web-production/code/assets/img/logo-eui.svg"
+    },
+    {
+      "id": 584,
+      "before": null,
+      "after": "https://www.maastrichtuniversity.nl/sites/default/files/styles/1116x1116/public/2023-09/NL%20Scholarship%20logo%20RGB.jpg?itok=ZYBuAEw7"
+    },
+    {
+      "id": 585,
+      "before": null,
+      "after": "https://studyinlatvia.lv/favicon.png"
+    },
+    {
+      "id": 590,
+      "before": null,
+      "after": "https://www.secihti.mx/wp-content/uploads/2025/03/favicon_escudo_nacional_dorado.svg"
+    },
+    {
+      "id": 591,
+      "before": null,
+      "after": "https://horatioalger.org/wp-content/uploads/2023/08/cropped-Horatio-Alger-Favicon-US-2-48-x-48-32x32-1.webp"
+    },
+    {
+      "id": 595,
+      "before": null,
+      "after": "https://formeditais.campusvirtual.fiocruz.br/recursos/images/logo-cvf.svg"
+    },
+    {
+      "id": 596,
+      "before": null,
+      "after": "https://www.cucsh.udg.mx/themes/drudg8b3/images/BG_escudo-header-01.svg"
+    },
+    {
+      "id": 597,
+      "before": null,
+      "after": "https://www.pronabec.gob.pe/wp-content/uploads/2022/07/Pronabec-Logo-2020.png"
+    },
+    {
+      "id": 599,
+      "before": null,
+      "after": "https://posgrado.pucp.edu.pe/wp-content/uploads/2021/10/2026-1024x405.png"
+    },
+    {
+      "id": 600,
+      "before": null,
+      "after": "https://www.faae.org.co/colombiabiodiversa/wp-content/uploads/2025/09/Becas-Colombia-Biodiversa-logo.svg"
+    },
+    {
+      "id": 604,
+      "before": null,
+      "after": "https://uchile.cl/.resources/portal-uchile/images/logo-universidad-de-chile.svg"
+    },
+    {
+      "id": 605,
+      "before": null,
+      "after": "https://web.icetex.gov.co/documents/20122/0/logo_gov.svg/1de7136f-84f8-197a-2880-fb8461a81114?t=1760461030219"
+    },
+    {
+      "id": 617,
+      "before": null,
+      "after": "https://www.moe.gov.sa/MOECore/favicon/favicon-32x32.png"
+    },
+    {
+      "id": 618,
+      "before": null,
+      "after": "https://scholarships.gov.gh/images/logo.png"
+    },
+    {
+      "id": 619,
+      "before": null,
+      "after": "https://studyinsaudi.sa/images/logos/header-logo-right-colored.svg"
+    },
+    {
+      "id": 621,
+      "before": null,
+      "after": "https://www.turkiyeburslari.gov.tr/YTB/images/logo/tb-logo.png"
+    },
+    {
+      "id": 622,
+      "before": null,
+      "after": "https://welcometoserbia.gov.rs/TheLisTheme/assets/img/logo.svg"
+    },
+    {
+      "id": 623,
+      "before": null,
+      "after": "https://scholarship.ptdf.gov.ng/images/ptdf_logo_small.png"
+    },
+    {
+      "id": 625,
+      "before": null,
+      "after": "https://www.ean.org/typo3conf/ext/ean_base/Resources/Public/Images/Favicons/favicon.ico"
+    },
+    {
+      "id": 627,
+      "before": null,
+      "after": "https://www.ean.org/typo3conf/ext/ean_base/Resources/Public/Images/Favicons/favicon.ico"
+    },
+    {
+      "id": 628,
+      "before": null,
+      "after": "https://cdn.gulbenkian.pt/wp-content/uploads/2018/12/01_logotipo_web_fundacao_EN_50px.svg"
+    },
+    {
+      "id": 632,
+      "before": null,
+      "after": "https://uncf.org/wp-content/themes/uncf-wordpress/assets/img/logo_full_whiteyellorange.svg"
+    },
+    {
+      "id": 633,
+      "before": null,
+      "after": "https://uncf.org/wp-content/themes/uncf-wordpress/assets/img/logo_full_whiteyellorange.svg"
+    },
+    {
+      "id": 637,
+      "before": null,
+      "after": "https://formeditais.campusvirtual.fiocruz.br/recursos/images/logo-cvf.svg"
+    },
+    {
+      "id": 639,
+      "before": null,
+      "after": "https://ira.pucp.edu.pe/wp-content/uploads/2020/10/cropped-isotipo.fw_-32x32.png"
+    },
+    {
+      "id": 640,
+      "before": null,
+      "after": "https://posgrado.pucp.edu.pe/wp-content/uploads/2022/12/Becadoctoral_2025-1-1024x404.jpg"
+    },
+    {
+      "id": 641,
+      "before": null,
+      "after": "https://admision.pucp.edu.pe/themes/custom/pucp_adm/logo.svg"
+    },
+    {
+      "id": 644,
+      "before": null,
+      "after": "https://sikap.ched.gov.ph/favicon.ico"
+    },
+    {
+      "id": 645,
+      "before": null,
+      "after": "https://www.icdf.org.tw/wSite/xslGip/style2/images/logo.svg"
+    },
+    {
+      "id": 646,
+      "before": null,
+      "after": "https://bolashak.gov.kz/storage/app/media/logo.svg"
+    },
+    {
+      "id": 647,
+      "before": null,
+      "after": "https://sgs.upm.edu.my/assets/images/logoupm.png"
+    },
+    {
+      "id": 648,
+      "before": null,
+      "after": "https://www.apu.edu.my/themes/custom/apu/images/navbar/navbar-logo.png"
+    },
+    {
+      "id": 653,
+      "before": null,
+      "after": "https://admission.tdtu.edu.vn/sites/admission23/files/Admission-2023/Logo-admission.png"
+    },
+    {
+      "id": 654,
+      "before": null,
+      "after": "https://www.icdf.org.tw/wSite/xslGip/style2/images/logo.svg"
+    },
+    {
+      "id": 664,
+      "before": null,
+      "after": "https://bond.edu.au/themes/custom/bond_theme/favicon/favicon.ico"
+    },
+    {
+      "id": 673,
+      "before": null,
+      "after": "https://scholarship.ptdf.gov.ng/images/ptdf_logo_small.png"
+    },
+    {
+      "id": 676,
+      "before": null,
+      "after": "https://mohesr.gov.iq/ar/assets/viewApp/imgs/mohser_logo/text.svg"
+    },
+    {
+      "id": 680,
+      "before": null,
+      "after": "https://www.qu.edu.qa/Style Library/Logos and Themes/Students/logo/Logo.png?rev=43"
+    },
+    {
+      "id": 681,
+      "before": null,
+      "after": "https://www.mfa.gov.bn/Shared%20Documents/Brunei%20Logo.png"
+    },
+    {
+      "id": 682,
+      "before": null,
+      "after": "https://nu.edu.kz/wp-content/uploads/2025/05/logo_nu1.svg"
+    },
+    {
+      "id": 683,
+      "before": null,
+      "after": "https://ubd.edu.bn/wp-content/uploads/2026/07/UBD-LOGO-2026_BLUEa.png"
+    },
+    {
+      "id": 685,
+      "before": null,
+      "after": "https://www.getfund.gov.gh/images/logos/getfund-site-icon-32x32.png"
+    },
+    {
+      "id": 687,
+      "before": null,
+      "after": "https://www.comexus.org.mx/images/logo.svg"
+    },
+    {
+      "id": 688,
+      "before": null,
+      "after": "https://secihti.mx/wp-content/uploads/2025/03/favicon_escudo_nacional_dorado.svg"
+    },
+    {
+      "id": 689,
+      "before": null,
+      "after": "https://secihti.mx/wp-content/uploads/2025/03/favicon_escudo_nacional_dorado.svg"
+    },
+    {
+      "id": 690,
+      "before": null,
+      "after": "https://fgs.science-scholarships.ph/assets/dost-sei-logo.ico"
+    },
+    {
+      "id": 692,
+      "before": null,
+      "after": "https://www.turkiyeburslari.gov.tr/YTB/images/logo/tb-logo.png"
+    },
+    {
+      "id": 696,
+      "before": null,
+      "after": "https://www.comexus.org.mx/images/logo.svg"
+    },
+    {
+      "id": 707,
+      "before": null,
+      "after": "https://join.hkust.edu.hk/themes/custom/usturao/img/svg/ust_logo_en.svg"
+    },
+    {
+      "id": 708,
+      "before": null,
+      "after": "https://finaid.itb.ac.id/favicon-32x32.png"
+    },
+    {
+      "id": 712,
+      "before": null,
+      "after": "https://www.ilsc.com/hubfs/Language%20School-Color-Logo-Horizontal.svg"
+    },
+    {
+      "id": 713,
+      "before": null,
+      "after": "https://scholarships.gov.gh/images/logo.png"
+    },
+    {
+      "id": 714,
+      "before": null,
+      "after": "https://scholarships.gov.gh/images/logo.png"
+    },
+    {
+      "id": 715,
+      "before": null,
+      "after": "https://studyinazerbaijan.edu.az/_next/image?url=%2Fimages%2Flogo.png&w=256&q=75"
+    },
+    {
+      "id": 716,
+      "before": null,
+      "after": "https://portal.gov.gy/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fgportal_003.d04f4834.png&w=3840&q=75"
+    },
+    {
+      "id": 717,
+      "before": null,
+      "after": "https://www.stipendia.sk/_custom/img/logo_NS-SK.png?r=1"
+    },
+    {
+      "id": 718,
+      "before": null,
+      "after": "https://www.getfund.gov.gh/images/logos/getfund-site-icon-32x32.png"
+    },
+    {
+      "id": 723,
+      "before": null,
+      "after": "https://tsls.com.fj/wp-content/uploads/2023/04/Site-Logo-302-x-86-px.png"
+    },
+    {
+      "id": 725,
+      "before": null,
+      "after": "https://mcfsprecruitment.ur.ac.rw/ug-recruitment/assets/img/mcf-logo.png"
+    },
+    {
+      "id": 726,
+      "before": null,
+      "after": "https://www.campusfrance.org/modules/custom/campus_common/img/logo-republique-francaise.svg"
+    },
+    {
+      "id": 727,
+      "before": null,
+      "after": "https://www.sbfi.admin.ch/images/swiss-logo-flag.svg"
+    },
+    {
+      "id": 729,
+      "before": null,
+      "after": "https://vanier.gc.ca/dist/assets/favicon.ico"
+    }
+  ]
+}
