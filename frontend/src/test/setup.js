@@ -15,8 +15,11 @@ import '@testing-library/jest-dom/vitest'
  * and every component using it fails for a reason unrelated to what is being
  * tested. Defaults to "no preference", which is the motion-enabled path - the
  * reduced-motion path is asserted explicitly by the tests that care about it.
+ *
+ * The guard keeps this file loadable from a node-environment test: the edge
+ * middleware is tested without a DOM, and its setup must not assume one.
  */
-if (!window.matchMedia) {
+if (typeof window !== 'undefined' && !window.matchMedia) {
   window.matchMedia = (query) => ({
     matches: false,
     media: query,
