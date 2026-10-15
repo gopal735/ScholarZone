@@ -94,11 +94,14 @@ describe('sitemap.xml', () => {
     expect(privatePaths).toEqual([])
   })
 
-  it('covers the indexable routes the router actually serves', () => {
-    // These three are the only non-detail routes in App.jsx that are public.
+  it('covers the indexable routes the app actually serves', () => {
+    // The approved design is a single-page finder, so the public non-detail
+    // routes are the homepage and the catalogue. /countries is not among
+    // them: the design has no countries section, and advertising it would
+    // point crawlers at the homepage shell under a second canonical.
     expect(locs).toContain(`${CANONICAL_ORIGIN}/`)
     expect(locs).toContain(`${CANONICAL_ORIGIN}/scholarships`)
-    expect(locs).toContain(`${CANONICAL_ORIGIN}/countries`)
+    expect(locs).not.toContain(`${CANONICAL_ORIGIN}/countries`)
   })
 
   it('covers more scholarship detail urls than any single catalogue page can show', () => {

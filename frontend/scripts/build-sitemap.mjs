@@ -39,11 +39,21 @@ const HERE = dirname(fileURLToPath(import.meta.url))
 const SNAPSHOT = join(HERE, '..', 'public', 'scholarships-snapshot.json')
 const OUTPUT = join(HERE, '..', 'public', 'sitemap.xml')
 
-/** Routes that are real public pages and belong in the sitemap. */
+/**
+ * Routes that are real public pages and belong in the sitemap.
+ *
+ * /countries is deliberately NOT listed. seoContract.test.js excludes it with a
+ * recorded reason: the approved design has no countries section, and advertising
+ * the route would point crawlers at the homepage shell under a second canonical.
+ * The React app does route /countries (CountryPage.jsx) and the homepage links to
+ * it, so that premise deserves re-checking - but it has to be re-checked against
+ * a rendered page, not asserted from a build script. Until that visual check is
+ * done the conservative choice is to leave it out: a missing sitemap entry costs
+ * nothing, while a wrong one invites a duplicate-canonical exclusion.
+ */
 const STATIC_ROUTES = [
   { path: '/', changefreq: 'daily', priority: '1.0' },
   { path: '/scholarships', changefreq: 'daily', priority: '0.9' },
-  { path: '/countries', changefreq: 'weekly', priority: '0.7' },
 ]
 
 /** Routes that must never appear, whatever the catalogue contains. */

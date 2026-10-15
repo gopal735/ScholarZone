@@ -45,10 +45,15 @@ describe('sitemap origin', () => {
     expect(locs.some((loc) => loc.includes('?'))).toBe(false)
   })
 
-  it('includes the three static public routes', () => {
-    for (const route of ['/', '/scholarships', '/countries']) {
+  it('includes the static public routes', () => {
+    // The approved design is a single-page finder, so the public non-detail
+    // routes are the homepage and the catalogue. /countries is absent on
+    // purpose: the design has no countries section, and the URL would serve
+    // the homepage shell under a second canonical.
+    for (const route of ['/', '/scholarships']) {
       expect(locs).toContain(`${CANONICAL_ORIGIN}${route}`)
     }
+    expect(locs).not.toContain(`${CANONICAL_ORIGIN}/countries`)
   })
 })
 

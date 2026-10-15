@@ -32,8 +32,16 @@
  */
 import { CANONICAL_ORIGIN } from './src/services/canonicalOrigin.js'
 
-/** Routes that are real public pages with their own SEO head. */
-const CATALOGUE_ROUTES = ['/', '/scholarships', '/countries']
+/**
+ * Routes that are real public pages with their own SEO head.
+ *
+ * /countries is deliberately absent. The approved design is a single-page
+ * finder: there is no countries section, so /countries resolves to the
+ * homepage shell and advertising it would be a soft 404 with a canonical
+ * claiming to be a page that does not exist. It is therefore neither routed
+ * here nor advertised in the sitemap.
+ */
+const CATALOGUE_ROUTES = ['/', '/scholarships']
 
 /** Detail route shape: /scholarships/<integer id> and nothing else. */
 const DETAIL_RE = /^\/scholarships\/(\d+)$/
@@ -131,25 +139,30 @@ const descriptionFor = (record) =>
     158
   )
 
-const detailStructuredData = (record, url) => ({
-  '@context': 'https://schema.org',
-  '@type': 'ScholarshipProgram',
-  name: truncate(record.name, 110),
-  url,
-  description: descriptionFor(record),
-  provider: {
-    '@type': 'Organization',
-    name: truncate(record.official_source || record.provider || record.country, 120),
-  },
-  ...(record.country ? { spatialCoverage: { '@type': 'Country', name: record.country } } : {}),
-  ...(record.degree ? { educationalCredentialAwarded: truncate(record.degree, 120) } : {}),
-  ...(record.deadline_date
-    ? { applicationDeadline: String(record.deadline_date).slice(0, 10) }
-    : {}),
-})
+const detailStructuredData = (record, url) => {
+  const providerName = record.provider || record.organization || record.provider_name
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'ScholarshipProgram',
+    name: truncate(record.name || record.title, 110),
+    url,
+    description: descriptionFor(record),
+    // Only emitted when the record actually names an awarding body. The
+    // snapshot carries no provider field, and naming the country as the
+    // provider would be a fabricated attribution rather than metadata.
+    ...(providerName
+      ? { provider: { '@type': 'Organization', name: truncate(providerName, 120) } }
+      : {}),
+    ...(record.country ? { spatialCoverage: { '@type': 'Country', name: record.country } } : {}),
+    ...(record.degree ? { educationalCredentialAwarded: truncate(record.degree, 120) } : {}),
+    ...(record.deadline_date
+      ? { applicationDeadline: String(record.deadline_date).slice(0, 10) }
+      : {}),
+  }
+}
 
 export const config = {
-  matcher: ['/scholarships/:path*', '/countries/:path*'],
+  matcher: ['/scholarships/:path*'],
 }
 
 export default async function middleware(request) {
