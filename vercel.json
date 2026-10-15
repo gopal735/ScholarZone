@@ -5,8 +5,7 @@
       "root": "backend",
       "framework": "fastapi",
       "entrypoint": "api.index:app",
-      "buildCommand": "python scripts/embed_build_revision.py",
-      "installCommand": "pip install -r requirements.txt && python scripts/embed_build_revision.py",
+      "buildCommand": "pip install --no-cache-dir -q -r requirements.txt && python scripts/embed_build_revision.py",
       "routes": [
         {
           "src": "/api/(.*)",

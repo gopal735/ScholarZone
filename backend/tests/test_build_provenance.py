@@ -305,18 +305,51 @@ class TestBuildStepIsActuallyWired:
         backend = self._vercel_config()["services"]["backend"]
         assert "embed_build_revision.py" in backend.get("buildCommand", "")
 
-    def test_install_also_embeds_and_fails_closed(self):
-        """Dependency installation definitely runs, so provenance rides along.
+    def test_provenance_rides_the_build_command(self):
+        """Provenance runs where the bundle can still be optimised.
 
-        Whether ``buildCommand`` is honoured for a ``framework: fastapi`` service
-        is not something this repository can assume. ``installCommand`` is
-        executed because dependencies have to be installed, and ``&&`` means a
-        provenance failure fails the install and therefore the build.
+        This used to assert on ``installCommand``, on the argument that
+        ``installCommand`` is guaranteed to run while ``buildCommand``
+        might not for a ``framework: fastapi`` service. It was written
+        before the bundle hit Vercel's limit.
+
+        A custom ``installCommand`` makes the platform skip its own
+        dependency analysis, and the function it then bundled measured
+        256 MB against a 225 MB hard limit — the deployment stopped
+        building at all. An unshippable build cannot carry provenance, so
+        the guarantee the old test was protecting was worth less than the
+        constraint it broke.
+
+        Provenance now rides ``buildCommand``, which is still a ``&&``
+        chain: a failure to embed fails the build, which is the
+        fail-closed behaviour the original test actually cared about.
         """
-        install = self._vercel_config()["services"]["backend"].get("installCommand", "")
-        assert "embed_build_revision.py" in install
-        assert "&&" in install, "a failure must stop the install, not be ignored"
-        assert "pip install" in install, "the default install must still happen"
+        backend = self._vercel_config()["services"]["backend"]
+        build = backend.get("buildCommand", "")
+        install = backend.get("installCommand", "")
+
+        assert "embed_build_revision.py" in build, "the build command must embed provenance"
+        assert "&&" in build, "a provenance failure must fail the build, not be ignored"
+        assert "pip install" in build, "the default install must still happen"
+        assert "installCommand" not in backend, (
+            "a custom install command defeats the platform's batching and "
+            "pushes the function past its size limit"
+        )
+        del install
+
+    def test_install_has_no_custom_command(self):
+        """The install command is left to the platform, deliberately.
+
+        Asserted separately because the previous suite had a test asserting
+        the opposite. Both cannot be true, and the platform limit is not
+        negotiable: with a custom install the API bundle exceeded 225 MB and
+        the deployment did not build.
+        """
+        backend = self._vercel_config()["services"]["backend"]
+        assert backend.get("installCommand") is None, (
+            "no custom install command: Vercel must be allowed to analyse "
+            "the dependency tree itself"
+        )
 
     def test_embedding_twice_is_idempotent(self, artifact, monkeypatch):
         monkeypatch.setenv("VERCEL", "1")

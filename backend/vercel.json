@@ -1,6 +1,6 @@
 {
   "$schema": "https://openapi.vercel.sh/vercel.json",
-  "installCommand": "pip install -r requirements.txt && python scripts/embed_build_revision.py",
+  "buildCommand": "pip install --no-cache-dir -q -r requirements.txt && python scripts/embed_build_revision.py",
   "functions": {
     "api/index.py": {
       "maxDuration": 30
