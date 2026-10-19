@@ -39,10 +39,19 @@ def _enforce_test_isolation(database_url: str) -> None:
             )
 
 
-@lru_cache
-def get_engine() -> Engine:
-    database_url = get_settings().database_url
-    _enforce_test_isolation(database_url)
+def engine_for(database_url: str) -> Engine:
+    """Build an engine for an arbitrary database URL, with the same
+    normalisation the application uses.
+
+    The repository standardised on psycopg (v3), and SQLAlchemy 2.0 resolves
+    a bare ``postgresql://`` to the psycopg2 dialect - which is not
+    installed. Every engine in this codebase is therefore built through
+    this one function rather than by calling ``create_engine`` directly, so
+    a tool that connects to a database it was handed (the restore
+    verification in the backup tooling) resolves the same driver, applies
+    the same timeout and TLS policy, and pools the same way as the
+    application.
+    """
     # SQLAlchemy 2.0 defaults postgresql:// to the psycopg2 driver.
     # The installed driver is psycopg (v3), so rewrite the URL scheme
     # to postgresql+psycopg:// when no explicit driver is specified.
@@ -62,6 +71,13 @@ def get_engine() -> Engine:
     if database_url.startswith("postgresql"):
         engine_kwargs["pool_timeout"] = 10
     return create_engine(database_url, **engine_kwargs)
+
+
+@lru_cache
+def get_engine() -> Engine:
+    database_url = get_settings().database_url
+    _enforce_test_isolation(database_url)
+    return engine_for(database_url)
 
 
 @lru_cache

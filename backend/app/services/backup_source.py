@@ -33,15 +33,25 @@ Design consequences, each of them deliberate:
 from __future__ import annotations
 
 import os
-from dataclasses import dataclass
+from dataclasses import dataclass, field
 from urllib.parse import urlsplit
 
-#: Hostnames that are refused regardless of configuration. Not a fallback for a
-#: missing allow-list - a belt over the braces: even if this host were added to
-#: an allow-list by mistake, the backup still refuses.
+#: Hostnames that are refused *as a silent non-production source*: they name
+#: production, so a backup that reaches one must be explicitly authorised as a
+#: production backup. This is not a fallback for a missing allow-list - a belt
+#: over the braces: even if this host were added to an allow-list by mistake,
+#: the backup still refuses until the authorization variable below is set.
 KNOWN_PRODUCTION_HOSTS = frozenset({
     "ep-broad-block-ayrx86zn-pooler.c-5.us-east-2.aws.neon.tech",
 })
+
+#: The variable an operator sets to record that a *production* backup is
+#: authorised, with a reference they can audit (who approved it, when). Its
+#: absence is the refusal: a production backup that nobody claimed
+#: responsibility for is exactly the unattended production access this module
+#: exists to prevent. Its value is written to the manifest as the
+#: authorization record - deliberately not the operator's secret itself.
+PRODUCTION_AUTHORIZATION_ENV = "SZ_BACKUP_PRODUCTION_AUTHORIZATION"
 
 #: Only PostgreSQL is a valid backup source. `postgres` is accepted as well as
 #: `postgresql` because libpq accepts both.
@@ -70,23 +80,62 @@ class SourceRejected(RuntimeError):
 
 
 @dataclass(frozen=True)
+class SourceParts:
+    """The connection parameters of a source URL, credentials included.
+
+    Only ``_credential_env`` in the backup script ever sees this object, and
+    it exists so that pg_dump can be told the same connection without the
+    credential appearing in argv. Nothing here is logged, returned by
+    ``parse_source_url``, or written to a manifest.
+    """
+
+    username: str | None
+    password: str | None
+    host: str
+    port: int
+    database: str
+
+
+@dataclass(frozen=True)
 class SourceIdentity:
     """What a source is, with everything secret removed."""
 
     scheme: str
     hostname: str
+    #: Set only when the caller explicitly asks for the full parts. Never
+    #: populated by ``parse_source_url``, so a manifest or a log line built
+    #: from an identity cannot leak through it.
+    _parts: SourceParts | None = field(default=None, repr=False, compare=False)
 
     def describe(self) -> str:
         """A single line safe for a manifest or a log."""
         return f"{self.scheme}://{self.hostname}"
 
+    def parts(self) -> SourceParts:
+        """The connection parameters, for callers that must connect with them.
 
-def parse_source_url(url: str) -> SourceIdentity:
+        Raises when the identity was built without them: a caller that
+        forgot it must not silently connect with an empty credential.
+        """
+        if self._parts is None:
+            raise SourceRejected(
+                "this identity carries no connection parts; ask for them explicitly"
+            )
+        return self._parts
+
+
+def parse_source_url(url: str, with_parts: bool = False) -> SourceIdentity:
     """Parse a PostgreSQL URL into its identity, refusing anything unusable.
 
-    The returned object carries the scheme and the host only. The username,
-    password, port, database name, and query string are deliberately dropped
-    here rather than stripped at the call site, so a caller cannot forget.
+    The returned object carries the scheme and the host only, when
+    ``with_parts`` is false. The username, password, port, database name and
+    query string are deliberately dropped here rather than stripped at the
+    call site, so a caller cannot forget.
+
+    ``with_parts=True`` additionally attaches the connection parts for the
+    one caller that must connect with them (the backup's credential
+    environment); the returned object still never prints them, but a caller
+    holding it can. Nothing else in the codebase asks for them.
     """
     if not url or not isinstance(url, str):
         raise SourceRejected("the source URL is empty")
@@ -136,7 +185,18 @@ def parse_source_url(url: str) -> SourceIdentity:
     except UnicodeError as exc:
         raise SourceRejected(f"the source hostname is not a valid name: {exc}") from exc
 
-    return SourceIdentity(scheme=scheme, hostname=hostname)
+    connection = None
+    if with_parts:
+        connection = SourceParts(
+            username=parts.username,
+            password=parts.password,
+            host=hostname,
+            port=parts.port or 5432,
+            # A leading "/" is libpq's default database; the name it maps
+            # to is not needed for connecting to the configured source.
+            database=(parts.path or "/").lstrip("/") or "postgres",
+        )
+    return SourceIdentity(scheme=scheme, hostname=hostname, _parts=connection)
 
 
 def _read_allow_list(raw: str | None) -> frozenset[str]:
@@ -178,44 +238,88 @@ def _is_bare_hostname(entry: str) -> bool:
     return bool(entry)
 
 
-def resolve_source(env_name: str = "SZ_BACKUP_SOURCE_URL") -> tuple[str, SourceIdentity]:
+def resolve_source(
+    env_name: str = "SZ_BACKUP_SOURCE_URL", mode: str = "scheduled"
+) -> tuple[str, SourceIdentity]:
     """Read the source URL from the environment and validate it.
 
     Returns `(url, identity)`: the URL for `pg_dump`, and the identity for
     reporting. The URL is never returned to anything that logs.
 
     Refuses, in order: a missing variable, a missing allow-list, an
-    unparseable URL, a non-PostgreSQL URL, a host matching the deny-list, and
-    a host absent from the allow-list.
+    unparseable URL, a non-PostgreSQL URL, a listed production host under
+    the scheduled policy or without an authorization record, and a host
+    absent from the allow-list.
     """
     url = os.environ.get(env_name)
     if not url:
         raise SourceRejected(f"{env_name} is not set; a backup needs an explicit source")
 
-    return url, validate_source(url)
+    return url, validate_source(url, mode=mode)
 
 
-def validate_source(url: str, allow_list_env: str = ALLOW_LIST_ENV) -> SourceIdentity:
+def source_kind(identity: SourceIdentity) -> str:
+    """Classify a source as ``production`` or ``non-production``.
+
+    The classification is explicit and host-based, never a substring guess:
+    a host named in the known-production set is production even when its
+    name contains no "prod" - which is the exact failure this module was
+    written after (the audited Neon host carries no such substring).
+    """
+    return "production" if identity.hostname in KNOWN_PRODUCTION_HOSTS else "non-production"
+
+
+def authorization_for(kind: str, mode: str = "scheduled") -> str | None:
+    """The recorded authorization for a *production* backup, if any.
+
+    Two rules that encode the policy rather than describe it:
+
+    * A production source is permitted only under the **manual** mode - a
+      human pressed the button and the repository owner recorded the
+      authorization reference. A *scheduled* run refuses a production
+      source whatever the configuration says, so a cron entry cannot
+      silently perform the production backup the policy reserves for a
+      person. The default is the fail-closed direction: a caller that does
+      not declare itself manual gets the unattended policy.
+    * A non-production source needs no authorization and must never inherit
+      one: the variable is read only when the kind is production, so setting
+      it cannot smuggle a second source in behind the non-production path.
+    """
+    if kind != "production":
+        return None
+    if mode != "manual":
+        raise SourceRejected(
+            "the source is a known production endpoint and this run is "
+            f"{mode!r}: a production backup is authorised by a person, never by "
+            "a schedule. Re-run this workflow manually (workflow_dispatch) once "
+            f"{PRODUCTION_AUTHORIZATION_ENV} names the operator's audit "
+            "reference; until then the scheduled run backs up only the "
+            "non-production sources it is allowed to reach."
+        )
+    value = os.environ.get(PRODUCTION_AUTHORIZATION_ENV, "").strip()
+    if not value:
+        raise SourceRejected(
+            "the source is a known production endpoint, so a backup of it needs an "
+            "explicit authorization: set "
+            f"{PRODUCTION_AUTHORIZATION_ENV} to the operator's audit reference "
+            "(who approved this backup and when). Refusing to back up "
+            "production unattended."
+        )
+    return value
+
+
+def validate_source(
+    url: str, allow_list_env: str = ALLOW_LIST_ENV, mode: str = "scheduled"
+) -> SourceIdentity:
     """Validate one source URL against the configured allow-list."""
     identity = parse_source_url(url)
-
-    # The production denial runs before the allow-list is even read. Its reason
-    # should not be replaceable by "the allow-list is unset", which would read
-    # as a configuration problem rather than as a decision about this host.
-    if identity.hostname in KNOWN_PRODUCTION_HOSTS:
-        raise SourceRejected(
-            f"the source host is a known production endpoint "
-            f"({identity.hostname}) and is refused regardless of configuration. "
-            "A scheduled backup must not compete with the application for the "
-            "free-tier transfer budget."
-        )
 
     allow_list = _read_allow_list(os.environ.get(allow_list_env))
     if not allow_list:
         raise SourceRejected(
             f"{allow_list_env} is not set or is empty; a backup requires an "
             "explicit hostname allow-list, and default-deny applies. Add the "
-            "non-production backup host there."
+            "backup host there."
         )
 
     if identity.hostname not in allow_list:
@@ -224,6 +328,11 @@ def validate_source(url: str, allow_list_env: str = ALLOW_LIST_ENV) -> SourceIde
             f"{allow_list_env} (default-deny: only explicitly named hosts are "
             f"permitted). Permitted hosts configured: {sorted(allow_list)}"
         )
+
+    # The kind is decided after the allow-list, so an unlisted host fails as
+    # "not permitted" and a listed production host fails as "not authorized":
+    # the two refusals mean different things to the operator.
+    authorization_for(source_kind(identity), mode=mode)
 
     return identity
 
