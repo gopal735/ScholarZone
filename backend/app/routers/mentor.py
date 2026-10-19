@@ -9,10 +9,25 @@ question before the interface has asked one:
   list that drifts away from the server's.
 * ``POST /mentor/message``   - the grounded answer.
 
-**Both require a session.** There is no public mentor route, and no handler here
-accepts a user id: ownership is resolved from the cookie by ``require_user``
-before the handler body runs, so there is no code path in which a caller can name
-whose application they want to discuss.
+**Only the message endpoint requires a session.** ``GET /mentor/overview`` is
+deliberately public, and that is a decision rather than an oversight: it performs
+no database work, takes no ``db``, no ``user`` and no ``Depends``, so it cannot
+read an account even if asked to. It answers only "which questions does the
+mentor understand, where will it redirect, and how long a message may be", which
+is interface vocabulary the page needs before anyone has signed in - hard-coding
+that list in the client is what lets it drift away from the server.
+
+Publishing it costs nothing because there is nothing private on it to protect,
+and it keeps the composer usable on a signed-out page, which the interface
+relies on: the overview is treated as a convenience and a failure to load it must
+not block the page.
+
+What must never happen is the public vocabulary route being used as a way to
+reach account data. The private surface is ``POST /mentor/message``, whose
+ownership is resolved from the cookie by ``require_user`` before the handler body
+runs, so there is no code path in which a caller can name whose application they
+want to discuss. The hardening tests pin both halves of this: the public route
+carries no account data, and the message route refuses an unauthenticated caller.
 
 **Rate limiting is scoped to this router deliberately.** The platform has no
 inbound limiter anywhere, so this adds one without changing the behaviour of any
