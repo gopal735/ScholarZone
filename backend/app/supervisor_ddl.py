@@ -153,35 +153,6 @@ NEW_TABLE_DDL: dict[str, dict[str, str]] = {
                 UNIQUE (scholarship_id, professor_id, relationship_type)
         """,
     },
-    "scholarship_admin_audit": {
-        # No REFERENCES clause on purpose: the audit row must outlive the
-        # scholarship row it describes, because a deletion is the moment the
-        # audit is actually needed. See the model's docstring.
-        "postgresql": """
-            id INTEGER PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
-            scholarship_id INTEGER NOT NULL,
-            scholarship_title VARCHAR(512),
-            action VARCHAR(24) NOT NULL,
-            changed_fields JSON NOT NULL DEFAULT '[]',
-            before_values JSON,
-            after_values JSON,
-            operator VARCHAR(120) NOT NULL,
-            reason TEXT,
-            recorded_at TIMESTAMPTZ NOT NULL DEFAULT NOW()
-        """,
-        "sqlite": """
-            id INTEGER PRIMARY KEY AUTOINCREMENT,
-            scholarship_id INTEGER NOT NULL,
-            scholarship_title TEXT,
-            action VARCHAR(24) NOT NULL,
-            changed_fields JSON NOT NULL DEFAULT '[]',
-            before_values JSON,
-            after_values JSON,
-            operator VARCHAR(120) NOT NULL,
-            reason TEXT,
-            recorded_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP
-        """,
-    },
     "supervisor_source_evidence": {
         "postgresql": """
             id INTEGER PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
@@ -240,42 +211,6 @@ NEW_TABLE_DDL: dict[str, dict[str, str]] = {
             created_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
             updated_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
             CONSTRAINT uq_professor_availability_scope UNIQUE (professor_id, scope)
-        """,
-    },
-    "scholarship_official_contacts": {
-        "postgresql": """
-            id INTEGER PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
-            scholarship_id INTEGER NOT NULL REFERENCES scholarships(id),
-            contact_kind VARCHAR(32) NOT NULL,
-            contact_label VARCHAR(160),
-            contact_url VARCHAR(2048) NOT NULL,
-            contact_email VARCHAR(320),
-            contact_email_verified BOOLEAN NOT NULL DEFAULT FALSE,
-            evidence_source_url VARCHAR(2048) NOT NULL,
-            evidence_source_type VARCHAR(32) NOT NULL,
-            retrieved_at TIMESTAMPTZ,
-            verified_at TIMESTAMPTZ,
-            created_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),
-            updated_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),
-            CONSTRAINT uq_scholarship_official_contact
-                UNIQUE (scholarship_id, contact_kind, contact_url)
-        """,
-        "sqlite": """
-            id INTEGER PRIMARY KEY AUTOINCREMENT,
-            scholarship_id INTEGER NOT NULL REFERENCES scholarships(id),
-            contact_kind VARCHAR(32) NOT NULL,
-            contact_label VARCHAR(160),
-            contact_url VARCHAR(2048) NOT NULL,
-            contact_email VARCHAR(320),
-            contact_email_verified BOOLEAN NOT NULL DEFAULT FALSE,
-            evidence_source_url VARCHAR(2048) NOT NULL,
-            evidence_source_type VARCHAR(32) NOT NULL,
-            retrieved_at DATETIME,
-            verified_at DATETIME,
-            created_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
-            updated_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
-            CONSTRAINT uq_scholarship_official_contact
-                UNIQUE (scholarship_id, contact_kind, contact_url)
         """,
     },
     "professor_outreach_records": {
@@ -360,14 +295,6 @@ NEW_TABLE_INDEXES: dict[str, list[str]] = {
     ],
     "professor_availability": [
         "ix_professor_availability_professor_id ON professor_availability (professor_id)",
-    ],
-    "scholarship_official_contacts": [
-        "ix_official_contacts_scholarship_id ON scholarship_official_contacts (scholarship_id)",
-        "ix_official_contacts_kind ON scholarship_official_contacts (contact_kind)",
-    ],
-    "scholarship_admin_audit": [
-        "ix_admin_audit_scholarship_action ON scholarship_admin_audit (scholarship_id, action)",
-        "ix_admin_audit_recorded_at ON scholarship_admin_audit (recorded_at)",
     ],
     "professor_outreach_records": [
         "ix_outreach_user_status ON professor_outreach_records (user_id, status)",

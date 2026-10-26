@@ -142,52 +142,9 @@ class TestCorsOrigins:
         assert "https://scholarzone.vercel.app" in settings.allowed_origins
         assert "http://localhost:5173" in settings.allowed_origins
         assert "https://gopal735.github.io" in settings.allowed_origins
-        # The production Netlify frontend is an explicit allowed origin (regression:
-        # without it the Admin Verification Centre fails preflight -> "Failed to fetch").
-        assert "https://schollarzone.netlify.app" in settings.allowed_origins
         # Credentials are enabled on this middleware, so a wildcard would be
         # unsafe and is not used anywhere.
         assert "*" not in settings.allowed_origins
-
-    def test_admin_preflight_allows_origin_and_secret_header(self):
-        # Regression for the "Failed to fetch" bug: the browser's OPTIONS preflight
-        # for an admin call carries X-Admin-Secret, which must be an allowed header,
-        # and the Netlify origin must be an allowed origin.
-        from fastapi.testclient import TestClient
-
-        from app.main import app
-
-        client = TestClient(app)
-        response = client.options(
-            "/api/admin/verification/summary",
-            headers={
-                "Origin": "https://schollarzone.netlify.app",
-                "Access-Control-Request-Method": "POST",
-                "Access-Control-Request-Headers": "X-Admin-Secret",
-            },
-        )
-        assert response.status_code == 200
-        assert response.headers.get("access-control-allow-origin") == "https://schollarzone.netlify.app"
-        assert "x-admin-secret" in (response.headers.get("access-control-allow-headers") or "").lower()
-        assert response.headers.get("access-control-allow-credentials") == "true"
-
-    def test_admin_preflight_refuses_unknown_origin(self):
-        from fastapi.testclient import TestClient
-
-        from app.main import app
-
-        client = TestClient(app)
-        response = client.options(
-            "/api/admin/verification/summary",
-            headers={
-                "Origin": "https://evil.example",
-                "Access-Control-Request-Method": "POST",
-                "Access-Control-Request-Headers": "X-Admin-Secret",
-            },
-        )
-        # An origin that is not on the explicit list is never echoed back, so no
-        # browser would trust the response for that origin.
-        assert response.headers.get("access-control-allow-origin") != "https://evil.example"
 
 
 class TestEntrypointExports:

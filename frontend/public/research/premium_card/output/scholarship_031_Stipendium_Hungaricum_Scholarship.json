@@ -1,0 +1,104 @@
+{
+  "source_title": "Stipendium Hungaricum Scholarship",
+  "source_provider": "Tempus Public Foundation (Hungarian Government)",
+  "source_file": "hungary_scholarships_2026_2027.json",
+  "researched_at": "2026-10-06T13:40:43.101640+00:00",
+  "data": {
+    "id": "research-031",
+    "title": "Stipendium Hungaricum Scholarship",
+    "provider": "Tempus Public Foundation (Hungarian Government)",
+    "record_type": "scholarship",
+    "official_sources": [
+      {
+        "url": "https://stipendiumhungaricum.hu/",
+        "title": "Stipendium Hungaricum Scholarship",
+        "source_type": "official_provider",
+        "source_domain": "stipendiumhungaricum.hu",
+        "publication_date": null,
+        "last_modified_date": null,
+        "checked_at": "2026-10-06T13:40:42.407017+00:00",
+        "source_priority": 1
+      }
+    ],
+    "image": {
+      "url": "https://stipendiumhungaricum.hu/includes/images/SH_logo_sziv.png",
+      "source_type": "official_provider",
+      "source_url": "https://stipendiumhungaricum.hu/",
+      "alt_text": "Stipendium Hungaricum Scholarship"
+    },
+    "funding": {
+      "funding_type": "Fully funded",
+      "fully_funded": null,
+      "award_amount": {
+        "minimum": null,
+        "maximum": null,
+        "fixed": null,
+        "period": "unknown"
+      },
+      "currency": null
+    },
+    "eligibility": {
+      "citizenship": {
+        "required": null,
+        "eligible_countries": [],
+        "excluded_countries": [],
+        "worldwide": null
+      },
+      "age": {
+        "minimum": null,
+        "maximum": null
+      },
+      "degree": {
+        "minimum_degree": null,
+        "required_degree_field": [],
+        "final_year_allowed": null,
+        "equivalent_degree_allowed": null
+      },
+      "language": {
+        "required": true,
+        "teaching_language": [
+          "English"
+        ],
+        "accepted_tests": [],
+        "minimum_scores": {},
+        "moi_accepted": "unknown"
+      }
+    },
+    "application": {
+      "application_method": "unknown",
+      "official_application_url": "https://stipendiumhungaricum.hu/",
+      "application_fee": {
+        "required": null,
+        "amount": null,
+        "currency": null,
+        "waiver_available": null
+      }
+    },
+    "deadlines": {
+      "status": "unknown",
+      "deadline_date": "15 January 2026, 14:00 CET",
+      "deadline_display": "15 January 2026, 14:00 CET",
+      "deadline_precision": "unknown"
+    },
+    "verification": {
+      "is_verified": true,
+      "verification_status": "active",
+      "last_verified_date": "2026-10-06",
+      "verified_by": "automated_research"
+    },
+    "data_quality": {
+      "coverage_level": "medium",
+      "missing_key_fields": [],
+      "unknown_fields": [],
+      "estimated_fields": [
+        "funding",
+        "eligibility",
+        "application"
+      ]
+    },
+    "research_notes": [
+      "Automated research pass completed with page fetch"
+    ],
+    "research_errors": []
+  }
+}

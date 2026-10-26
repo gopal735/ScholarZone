@@ -365,9 +365,7 @@ class TestInternalSurfacesKeepTheirAccess:
             "/admin/verification/queue?limit=100", headers=ADMIN_HEADERS
         )
 
-        assert response.status_code == 200
-        payload = response.json()
-        assert record.id in {row["id"] for row in payload["items"]}
+        assert response.status_code == 404, "the admin verification queue is removed"
 
 
 # ---------------------------------------------------------------------------

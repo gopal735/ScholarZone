@@ -1,0 +1,100 @@
+{
+  "source_title": "NORAM Graduate Scholarship (Americans to Norway)",
+  "source_provider": "Norway-America Association (NORAM)",
+  "source_file": "norway_scholarships.json",
+  "researched_at": "2026-10-06T13:41:10.248119+00:00",
+  "data": {
+    "id": "research-048",
+    "title": "NORAM Graduate Scholarship (Americans to Norway)",
+    "provider": "Norway-America Association (NORAM)",
+    "record_type": "scholarship",
+    "official_sources": [
+      {
+        "url": "https://www.noram.no/en/stipend",
+        "title": "NORAM Graduate Scholarship (Americans to Norway)",
+        "source_type": "official_provider",
+        "source_domain": "www.noram.no",
+        "publication_date": null,
+        "last_modified_date": null,
+        "checked_at": "2026-10-06T13:40:50.192420+00:00",
+        "source_priority": 1
+      }
+    ],
+    "image": {
+      "url": null,
+      "source_type": null,
+      "source_url": null,
+      "alt_text": null
+    },
+    "funding": {
+      "funding_type": "Partial funding",
+      "fully_funded": null,
+      "award_amount": {
+        "minimum": null,
+        "maximum": null,
+        "fixed": null,
+        "period": "unknown"
+      },
+      "currency": null
+    },
+    "eligibility": {
+      "citizenship": {
+        "required": null,
+        "eligible_countries": [],
+        "excluded_countries": [],
+        "worldwide": null
+      },
+      "age": {
+        "minimum": null,
+        "maximum": null
+      },
+      "degree": {
+        "minimum_degree": null,
+        "required_degree_field": [],
+        "final_year_allowed": null,
+        "equivalent_degree_allowed": null
+      },
+      "language": {
+        "required": null,
+        "teaching_language": [],
+        "accepted_tests": [],
+        "minimum_scores": {},
+        "moi_accepted": "unknown"
+      }
+    },
+    "application": {
+      "application_method": "unknown",
+      "official_application_url": "https://www.noram.no/en/stipend",
+      "application_fee": {
+        "required": null,
+        "amount": null,
+        "currency": null,
+        "waiver_available": null
+      }
+    },
+    "deadlines": {
+      "status": "unknown",
+      "deadline_date": "2027-04-01",
+      "deadline_display": "2027-04-01",
+      "deadline_precision": "unknown"
+    },
+    "verification": {
+      "is_verified": false,
+      "verification_status": "pending",
+      "last_verified_date": "2026-10-06",
+      "verified_by": "automated_research"
+    },
+    "data_quality": {
+      "coverage_level": "low",
+      "missing_key_fields": [
+        "official_page_fetch"
+      ],
+      "unknown_fields": [],
+      "estimated_fields": []
+    },
+    "research_notes": [],
+    "research_errors": [
+      "Failed to fetch official page"
+    ]
+  }
+}

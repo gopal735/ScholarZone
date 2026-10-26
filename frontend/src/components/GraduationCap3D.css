@@ -1,0 +1,67 @@
+/* ═══════════════════════════════════════════════════════════════════
+   GraduationCap3D — the canvas host and its ground
+
+   The layout is the reference's ``.gl``: a square, centred in its own
+   column, with a soft coloured bloom behind the cap so it reads as lit
+   from the page rather than floating on it. The canvas is square because
+   the camera is a 30° perspective aimed at a centred subject — a
+   non-square viewport would crop the toss.
+
+   The caption sits under the cap and says the same thing the reference's
+   does, in the same voice, because it is the only instruction the hero
+   needs: everything else in it is already a form control.
+   ═══════════════════════════════════════════════════════════════════ */
+
+.cap3d {
+  position: relative;
+  z-index: 1;
+  aspect-ratio: 1;
+  width: 100%;
+  margin-right: -30px;
+  animation: cap-enter 1.4s 0.5s cubic-bezier(0.2, 0.7, 0.2, 1) both;
+  touch-action: pan-y;
+  cursor: grab;
+}
+
+.cap3d:active {
+  cursor: grabbing;
+}
+
+.cap3d canvas {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+/* The bloom: a soft accent-light disc sitting behind the cap, blurred by
+   the browser rather than painted into the WebGL scene, so it can track
+   the theme without the scene re-rendering. */
+.cap3d::before {
+  content: '';
+  position: absolute;
+  inset: 14% 2% 0;
+  z-index: -1;
+  border-radius: 50%;
+  background: radial-gradient(closest-side, var(--accent-2-soft), transparent);
+  filter: blur(14px);
+}
+
+/* No WebGL, or no context. The host keeps the square so the hero column
+   does not collapse; only the canvas is gone. */
+.cap3d[data-cap-status='unavailable'] {
+  cursor: default;
+}
+
+@keyframes cap-enter {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+    filter: blur(6px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cap3d {
+    animation: none;
+  }
+}

@@ -1,0 +1,809 @@
+/* ═══════════════════════════════════════════════════════════════════
+   ScholarZone — Design tokens
+
+   Single source of truth. Every value in the system is declared here
+   exactly once; nothing below this file re-declares a colour, size,
+   duration or layer. Legacy names resolve to canonical tokens through
+   the alias block near the bottom, so component stylesheets keep
+   working while there is still only one place to change a value.
+
+   Direction: ScholarZone Premium — warm paper, deep navy ink, one
+   teal accent, an indigo companion and a gold highlight.
+
+   The warm off-white canvas (#F6F5F1) is the paper the product is
+   named for: it is the same register as a printed scholarship
+   certificate, and it keeps the deep navy ink reading as ink rather
+   than as software. Teal carries every accent role — links, the primary
+   control, focus, active filters — and indigo appears only as a
+   secondary signal (aurora light, the second progress tone, decorative
+   edges). Gold is reserved for exactly one job: urgency and highlight,
+   never decoration, which is what keeps a single gold pill on a page
+   meaning "look here" rather than "this is a yellow page".
+
+   Contrast ratios below were computed, not eyeballed:
+     text-primary on paper 15.9:1 · text-muted 6.4:1 · text-faint 4.6:1
+     accent on paper 6.1:1 · accent on accent-soft 5.7:1
+     focus ring 6.1:1 on paper, 5.4:1 on the darkest raised surface
+     --border-input 3.02:1 (WCAG 2.2 SC 1.4.11 non-text minimum)
+   ═══════════════════════════════════════════════════════════════════ */
+
+:root {
+  /* ── Colour: canvas and surfaces ────────────────────────────────
+     Depth is tonal — stepped surfaces plus a hairline. The steps are
+     warm-neutral so a card reads as a sheet of the same paper stock
+     one step lighter, which is the reference's material model. */
+  --page-bg: #f6f5f1;
+  --surface: #ffffff;
+  --surface-raised: #ffffff;
+  --surface-subtle: #efede6;
+  --surface-hover: #eae7dc;
+  --surface-sunken: #e6e2d6;
+  --surface-accent: rgba(15, 127, 107, 0.06);
+
+  /* ── Colour: text ─────────────────────────────────────────────
+     Three tiers. Navy ink rather than neutral black: on a warm paper
+     canvas a neutral black reads blue and cold, and the whole register
+     is meant to be a document, not a screen. */
+  --text-primary: #0e1a33;
+  --text-secondary: #2c3752;
+  --text-muted: #5b667c;
+  --text-faint: #767f92;
+
+  /* Decorative only: scrollbar tracks, hairline swatches, anything that
+     is a graphic rather than language. Deliberately named so it cannot be
+     picked up by someone reaching for "a slightly lighter text colour". */
+  --hairline: #8a93a5;
+
+  /* ── Colour: borders ──────────────────────────────────────────
+     Two tiers only. --border is a decorative hairline and is exempt
+     from SC 1.4.11 (a control with visible content does not need a
+     contrasting boundary). --border-input is the one that has to
+     clear 3:1, because on a text field the border is the only thing
+     saying "this is an input". */
+  --border: rgba(14, 26, 51, 0.11);
+  --border-strong: rgba(14, 26, 51, 0.24);
+  --border-input: rgba(14, 26, 51, 0.5);
+
+  /* ── Colour: accent (teal) ────────────────────────────────────
+     One accent. It is used for links, the primary control, focus,
+     and the active filter state — nowhere else. */
+  --accent: #0f7f6b;
+  --accent-hover: #0b6a59;
+  --accent-soft: rgba(15, 127, 107, 0.08);
+  --accent-border: rgba(15, 127, 107, 0.32);
+  --accent-glow: rgba(15, 127, 107, 0.18);
+
+  /* ── Colour: secondary accent (indigo) ─────────────────────────
+     Never a second link colour and never a second button colour: it
+     is the aurora light, the second tone in progress bars, and the
+     cool edge of the ambient field. Two accents doing the same job is
+     how a palette stops meaning anything. */
+  --accent-2: #6a74d9;
+  --accent-2-soft: rgba(106, 116, 217, 0.09);
+  --accent-2-border: rgba(106, 116, 217, 0.3);
+
+  /* ── Colour: highlight (gold) ─────────────────────────────────
+     Urgency and emphasis only — the closing-soon pill, the live
+     count, the one gold element per view. Reserved on purpose. */
+  --highlight: #e3b45a;
+  --highlight-strong: #c9962f;
+  --highlight-soft: rgba(227, 180, 90, 0.16);
+  --highlight-border: rgba(227, 180, 90, 0.45);
+  --highlight-ink: #3a2a08;
+
+  /* ── Colour: semantic ─────────────────────────────────────────
+     Each has a solid, a soft fill, a border and an on-tint text
+     colour. The on-tint values are darker/lighter than the solid on
+     purpose: a solid hue at 8% opacity is not readable as text, and
+     this is the mistake most token systems make. */
+  --success: #1f7a5a;
+  --success-strong: #17644a;
+  --success-soft: rgba(31, 122, 90, 0.1);
+  --success-border: rgba(31, 122, 90, 0.3);
+  --success-text: #17644a;
+
+  --warning: #96660f;
+  --warning-strong: #7a5209;
+  --warning-soft: rgba(227, 180, 90, 0.18);
+  --warning-border: rgba(227, 180, 90, 0.45);
+  --warning-text: #7a5209;
+
+  --danger: #a03a3a;
+  --danger-strong: #822e2e;
+  --danger-soft: rgba(160, 58, 58, 0.09);
+  --danger-border: rgba(160, 58, 58, 0.3);
+  --danger-text: #8a3232;
+
+  --info: #4a5bb8;
+  --info-soft: rgba(74, 91, 184, 0.09);
+  --info-border: rgba(74, 91, 184, 0.28);
+  --info-text: #3f4ea3;
+
+  /* ── Colour: focus ─────────────────────────────────────────────
+      Two-tone ring per W3C C40: an inner band that contrasts with the
+      component, and an outer band that contrasts with the page. The
+      two bands are 14.2:1 against each other, so at least one of them
+      clears 3:1 against any surface in the system. That is what makes
+      this safe over the accent buttons and the amber urgency badges,
+      where a single-colour ring routinely disappears. */
+  --focus-ring: #0f7f6b;
+  --focus-ring-inner: #ffffff;
+  --focus-ring-width: 2px;
+  --focus-ring-offset: 2px;
+
+  /* ── Colour: header and chrome ──────────────────────────────── */
+  --header-bg: rgba(246, 245, 241, 0.82);
+  --scrim: rgba(14, 26, 51, 0.45);
+
+  /* ── Shadow ───────────────────────────────────────────────────
+     Layered on purpose, the way the reference's realistic material is
+     built: a tight contact shadow where the surface meets the canvas,
+     a mid shadow for the object's own body, and a broad ambient one
+     for the room. One shadow reads as a sticker; three at these
+     opacities read as an object sitting in light. */
+  --shadow-card: 0 1px 1px rgba(14, 26, 51, 0.04), 0 4px 8px rgba(14, 26, 51, 0.05);
+  /* The card material's two lights. --sz-card-edge is the caught top
+     edge: a 1px white inset that makes the sheet read as turned toward
+     the light, which is the single cheapest way to make a flat surface
+     feel physical. --sz-card-gloss is the hover gloss band — a wide,
+     very soft diagonal sweep, not a hard highlight. */
+  --sz-card-edge: rgba(255, 255, 255, 0.9);
+  --sz-card-gloss: rgba(255, 255, 255, 0.55);
+  --shadow-elevated: 0 1px 1px rgba(14, 26, 51, 0.05), 0 6px 12px -6px rgba(14, 26, 51, 0.1),
+    0 14px 28px -14px rgba(14, 26, 51, 0.14);
+  --shadow-floating: 0 1px 1px rgba(14, 26, 51, 0.05), 0 4px 10px rgba(14, 26, 51, 0.06),
+    0 16px 40px -16px rgba(14, 26, 51, 0.18);
+  --shadow-hover: 0 2px 4px rgba(14, 26, 51, 0.05), 0 10px 24px -8px rgba(14, 26, 51, 0.14),
+    0 24px 48px -20px rgba(14, 26, 51, 0.16);
+
+  /* ── Typography: families ────────────────────────────────────
+     Newsreader for anything a person reads as a statement: the hero,
+     page titles, section heads, card titles, large figures. Inter for
+     everything that has to be scanned or compared — tables, amounts,
+     deadlines, percentages, badges, buttons, nav.
+
+     The split is not decorative. Newsreader is an optical serif with
+     real italics: a hero line set in it reads editorial, which is the
+     register the reference establishes, and the italic carries the one
+     emphasised word in a headline. Inter has the disambiguated 1/l/I
+     and dotted zero that data columns need, and its 0.746 x-height
+     keeps dense 13px metadata legible where a serif would not. */
+  --font-display: 'Newsreader', 'Newsreader Fallback', 'Iowan Old Style', Georgia,
+    'Times New Roman', serif;
+  --font-body: 'Inter', 'Inter Fallback', ui-sans-serif, system-ui, -apple-system,
+    BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --font-mono: ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Monaco, Consolas, monospace;
+
+  /* ── Typography: weight ───────────────────────────────────────
+     Non-round weights, and a ~7% reduction in dark mode. Light text
+     on a dark field blooms into its own counters and reads heavier
+     than it is; stepping the weight down is what keeps dark mode
+     looking like the same typeface rather than a bolder one.
+     Every rule in the codebase sets --weight, never font-weight
+     directly, so this multiplier reaches all of them. */
+  --weight-multiplier: 1;
+  --weight-display: 330;
+  --weight-title: 430;
+  --weight-section: 430;
+  --weight-lede: 400;
+  --weight-body: 400;
+  --weight-label: 500;
+  --weight-strong: 580;
+  --weight: var(--weight-body);
+
+  /* ── Typography: fluid scale ──────────────────────────────────
+     360px to 1440px. Every clamp has a rem in the middle term, which
+     is what keeps WCAG SC 1.4.4 (200% resize) satisfiable — a clamp
+     written as clamp(a, 4vw, b) with no rem cannot be. The fluid
+     range is capped at 2.5x for the same reason. */
+  --fs-2xs: clamp(0.6875rem, 0.669rem + 0.09vw, 0.75rem);
+  --fs-xs: clamp(0.75rem, 0.726rem + 0.12vw, 0.8125rem);
+  --fs-sm: 0.875rem;
+  --fs-base: clamp(1rem, 0.957rem + 0.215vw, 1.0625rem);
+  --fs-md: clamp(1.0625rem, 1.01rem + 0.26vw, 1.1875rem);
+  --fs-lg: clamp(1.125rem, 1.062rem + 0.313vw, 1.3125rem);
+  --fs-xl: clamp(1.25rem, 1.14rem + 0.55vw, 1.625rem);
+  --fs-2xl: clamp(1.5rem, 1.249rem + 1.251vw, 2.25rem);
+  --fs-3xl: clamp(2rem, 1.437rem + 2.813vw, 3.25rem);
+  --fs-display: clamp(2.75rem, 1.781rem + 4.844vw, 5.5rem);
+
+  /* ── Typography: line height ─────────────────────────────────
+     Leading tightens as size grows. A display face at 0.98 and a
+     body at 1.65 are the same decision seen from two ends. */
+  --lh-2xs: 1.4;
+  --lh-xs: 1.45;
+  --lh-sm: 1.55;
+  --lh-base: 1.65;
+  --lh-lg: 1.55;
+  --lh-xl: 1.4;
+  --lh-2xl: 1.15;
+  --lh-3xl: 1.05;
+  --lh-display: 0.98;
+
+  /* ── Typography: tracking ────────────────────────────────────
+     Positive tracking is uppercase-only. Lowercase at +0.085em looks
+     broken, and body at 16px needs -0.002em rather than the -0.005em
+     the previous scale used. */
+  --track-2xs: 0.05em;
+  --track-xs: 0.085em;
+  --track-sm: -0.005em;
+  --track-base: -0.002em;
+  --track-lg: -0.01em;
+  --track-xl: -0.015em;
+  --track-2xl: -0.02em;
+  --track-3xl: -0.028em;
+  --track-display: -0.038em;
+
+  /* ── Measure ──────────────────────────────────────────────────
+     66ch is not 66 characters. 1ch is the advance width of a zero,
+     so for a proportional face 66ch lands at roughly 50-56 real
+     characters, which is the optimum. Cards are narrower because a
+     card title is scanned as an index line, not read as prose. */
+  --measure: 66ch;
+  --measure-card: 54ch;
+  --measure-listing: 46ch;
+  --measure-facet: 34ch;
+  --measure-num: 22ch;
+
+  /* ── Spacing: 4px base ──────────────────────────────────────── */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 20px;
+  --space-6: 24px;
+  --space-7: 28px;
+  --space-8: 32px;
+  --space-9: 36px;
+  --space-10: 40px;
+  --space-11: 48px;
+  --space-12: 56px;
+  --space-13: 64px;
+  --space-14: 80px;
+  --space-15: 96px;
+  --space-16: 128px;
+  --space-17: 160px;
+  --space-18: 192px;
+  --space-19: 224px;
+  --space-20: 256px;
+
+  /* ── Spacing: rhythm ──────────────────────────────────────────
+     Page gutters are one token now. There were sixteen different
+     mobile gutters across fifteen pages, ranging from 20px to 52px,
+     because each page added its own padding inside .app-content. */
+  --gutter: var(--space-6);
+  --section-gap: clamp(64px, 8vw, 120px);
+  --section-gap-sm: clamp(48px, 6vw, 80px);
+  --section-lead: clamp(48px, 7vw, 88px);
+  --section-lead-sm: clamp(32px, 5vw, 56px);
+
+  /* ── Radius ───────────────────────────────────────────────────
+     The reference's material is a soft, rounded paper stock: cards at
+     14px, panels at 18px, controls at 10px, chips at 8px. Sharp
+     corners on this canvas read as a spreadsheet; fully round pills on
+     everything read as a toy. The scale keeps a real ratio between
+     the steps so a card and a button inside it never look like the
+     same shape. */
+  --radius-xs: 6px;
+  --radius-sm: 8px;
+  --radius-md: 10px;
+  --radius-lg: 12px;
+  --radius-xl: 14px;
+  --radius-2xl: 18px;
+  --radius-card: 14px;
+  --radius-panel: 18px;
+  --radius-pill: 999px;
+
+  /* ── Touch ────────────────────────────────────────────────────
+     48px, unconditional. WCAG 2.2 SC 2.5.8 (AA) only requires
+     24px, and SC 2.5.5 (AAA) requires 44px — but the 24px floor is
+     a minimum with five exceptions attached, and packed icon rows
+     fail it on the spacing exception anyway. 48px clears AA, AAA,
+     Apple HIG and Material 3 with no argument to have. */
+  --touch-min: 48px;
+  --touch-gap: 8px;
+
+  /* ── Motion: duration ──────────────────────────────────────────
+     Seven bands, compressed from Carbon (70/110/150/240/400/700)
+     and Material 3 (50/100/150/200/250/300/350/400) down to what
+     production UI actually uses. Routine UI stays under 300ms. */
+  --dur-instant: 0ms;
+  --dur-micro: 100ms;
+  --dur-fast: 150ms;
+  --dur-base: 200ms;
+  --dur-panel: 250ms;
+  --dur-page: 320ms;
+
+  /* ── Motion: easing ───────────────────────────────────────────
+     One curve. Material 3's standard, which Claude and Vercel both
+     arrived at independently. Entrances decelerate, exits
+     accelerate, and there is a separate emphasized curve for the
+     largest surfaces only. */
+  --ease-standard: cubic-bezier(0.2, 0, 0, 1);
+  --ease-enter: cubic-bezier(0, 0, 0, 1);
+  --ease-exit: cubic-bezier(0.3, 0, 1, 1);
+  --ease-emphasized: cubic-bezier(0.05, 0.7, 0.1, 1);
+  --ease-linear: linear;
+
+  /* ── Motion: distance ─────────────────────────────────────────
+     --card-lift is zero and stays zero. A positional hover lift on
+     a repeating grid is animation nobody asked for: the pointer
+     crossing twenty cards plays twenty sequential vertical moves.
+     Hover is tonal here — surface, border and ring — and buttons get
+     a press scale instead. */
+  --press-scale: 0.98;
+  --overlay-scale: 0.98;
+  --popover-scale: 0.96;
+  --reveal-y: 8px;
+  --toast-x: 16px;
+  --card-lift: 0px;
+  --stagger-range: 4%;
+
+  /* ── Layering ─────────────────────────────────────────────────
+     There were 63 hardcoded z-index values across 18 files and no
+     tokens at all, which is why the admin bar painted over the site
+     header. These are the only numbers that may appear in a
+     z-index declaration. */
+  --z-base: 0;
+  --z-raised: 1;
+  --z-sticky: 10;
+  --z-header: 20;
+  --z-drawer: 30;
+  /* The scrim sits below the surface it is dimming, not above it. It was
+     declared alongside the sheet rather than beneath it, which meant a
+     tap on a control inside the sheet could land on the scrim first and
+     close the sheet before the control received the click. */
+  --z-scrim: 35;
+  --z-sheet: 40;
+  --z-modal: 50;
+  --z-toast: 60;
+
+  /* ── Layout ─────────────────────────────────────────────────── */
+  --grid-max: 1680px;
+  --grid-gutter: var(--gutter);
+  --header-h: 60px;
+  --tabbar-h: 64px;
+  --surface-solid: var(--surface);
+  --input-font: var(--fs-base);
+}
+
+/* ═══════════════════════════════════════════════════════════════════
+   Metric-matched fallback faces
+
+   font-display: swap is only safe because of this block. Without it the
+   Georgia/Arial fallback has different vertical metrics from the
+   webfont, so the moment the font arrives every line box reflows and the
+   page shifts. size-adjust / ascent-override / descent-override pin the
+   fallback's metrics to the webfont's, which makes the swap free.
+
+   The two families need different numbers, and reusing one set for both
+   is the usual mistake: the sans fallback needs a large size-adjust
+   (Arial is narrow) with a small ascent-override, while the serif
+   fallback needs almost no size adjustment because Georgia's advance
+   width already matches Newsreader, but a much smaller ascent-override
+   because serif fonts carry generous ascents.
+   ═══════════════════════════════════════════════════════════════════ */
+@font-face {
+  font-family: 'Newsreader Fallback';
+  src:
+    local('Georgia'),
+    local('Times New Roman');
+  size-adjust: 101.58%;
+  ascent-override: 72.35%;
+  descent-override: 26.09%;
+  line-gap-override: 0%;
+}
+
+@font-face {
+  font-family: 'Inter Fallback';
+  src:
+    local('Arial'),
+    local('Helvetica Neue'),
+    local('Liberation Sans'),
+    local('Roboto'),
+    local('Noto Sans');
+  size-adjust: 106.14%;
+  ascent-override: 91.27%;
+  descent-override: 22.73%;
+  line-gap-override: 0%;
+}
+
+/* ═══════════════════════════════════════════════════════════════════
+   Dark mode — deep navy
+
+   Re-derived, not inverted. A grey tuned for light loses most of its
+   contrast ratio when the background drops, because the relationship
+   is non-linear and asymmetric: #5B667C is 6.4:1 on paper and only
+   5.9:1 on white. Every tier below was measured against its own
+   canvas in this block rather than derived from the light value.
+
+   The canvas is a very dark navy rather than a neutral black, which
+   is what the reference does: on a slightly blue-dark field the teal
+   accent keeps its family instead of going mint, and the indigo
+   aurora has somewhere to live. Weight steps down 7% because light
+   text on a dark field blooms into its own counters.
+   ═══════════════════════════════════════════════════════════════════ */
+
+:root[data-theme='dark'] {
+  --weight-multiplier: 0.93;
+
+  --page-bg: #05070d;
+  --surface: #0b1120;
+  --surface-raised: #101827;
+  --surface-subtle: #151f36;
+  --surface-hover: #1a2540;
+  --surface-sunken: #03050a;
+  --surface-accent: rgba(99, 205, 180, 0.09);
+
+  --text-primary: #e8ecf5;
+  --text-secondary: #b9c2d6;
+  --text-muted: #94a0b8;
+  /* Dark mode's worst case is --surface-hover at 5.6:1, not the page and
+     not the sunken surface — the hover step is the lightest background in
+     the system, so it is the one every text tier has to clear. */
+  --text-faint: #9aa5ba;
+  --hairline: #8b96ab;
+
+  --border: rgba(232, 236, 245, 0.12);
+  --border-strong: rgba(232, 236, 245, 0.26);
+  --border-input: rgba(232, 236, 245, 0.37);
+
+  --accent: #63cdb4;
+  --accent-hover: #86e0cb;
+  --accent-soft: rgba(99, 205, 180, 0.14);
+  --accent-border: rgba(99, 205, 180, 0.38);
+  --accent-glow: rgba(99, 205, 180, 0.22);
+
+  --accent-2: #8e99e6;
+  --accent-2-soft: rgba(142, 153, 230, 0.14);
+  --accent-2-border: rgba(142, 153, 230, 0.36);
+
+  --highlight: #e3b45a;
+  --highlight-strong: #f0c97e;
+  --highlight-soft: rgba(227, 180, 90, 0.16);
+  --highlight-border: rgba(227, 180, 90, 0.4);
+  --highlight-ink: #1a1405;
+
+  --success: #62b37f;
+  --success-strong: #8ccfa6;
+  --success-soft: rgba(98, 179, 127, 0.14);
+  --success-border: rgba(98, 179, 127, 0.32);
+  --success-text: #8ccfa6;
+
+  --warning: #e3b45a;
+  --warning-strong: #f0c97e;
+  --warning-soft: rgba(227, 180, 90, 0.15);
+  --warning-border: rgba(227, 180, 90, 0.38);
+  --warning-text: #f0c97e;
+
+  --danger: #de7a7a;
+  --danger-strong: #ee9494;
+  --danger-soft: rgba(222, 122, 122, 0.14);
+  --danger-border: rgba(222, 122, 122, 0.32);
+  --danger-text: #ee9494;
+
+  --info: #8e99e6;
+  --info-soft: rgba(142, 153, 230, 0.14);
+  --info-border: rgba(142, 153, 230, 0.34);
+  --info-text: #b3baf2;
+
+  --focus-ring: #63cdb4;
+  --focus-ring-inner: #05070d;
+
+  --header-bg: rgba(5, 7, 13, 0.82);
+  --scrim: rgba(2, 4, 8, 0.62);
+
+  --shadow-card: 0 1px 1px rgba(0, 0, 0, 0.4), 0 4px 10px rgba(0, 0, 0, 0.3);
+  --sz-card-edge: rgba(232, 236, 245, 0.09);
+  --sz-card-gloss: rgba(232, 236, 245, 0.07);
+  --shadow-elevated: 0 1px 1px rgba(0, 0, 0, 0.45), 0 6px 14px -6px rgba(0, 0, 0, 0.5),
+    0 16px 32px -14px rgba(0, 0, 0, 0.6);
+  --shadow-floating: 0 1px 1px rgba(0, 0, 0, 0.5), 0 4px 12px rgba(0, 0, 0, 0.45),
+    0 20px 48px -16px rgba(0, 0, 0, 0.7);
+  --shadow-hover: 0 2px 6px rgba(0, 0, 0, 0.5), 0 12px 28px -8px rgba(0, 0, 0, 0.55),
+    0 28px 56px -20px rgba(0, 0, 0, 0.65);
+
+  /* An ambient field built from gradients, never from filter: blur().
+     A 100px blur on a 1000px field cost 4.5s of mobile load time on a
+     3Mb/s connection; a multi-stop radial gradient looks near-identical
+     and costs one rasterisation. */
+  --sz-orb-opacity: 0.4;
+  --sz-orb-1: rgba(99, 205, 180, 0.14);
+  --sz-orb-2: rgba(142, 153, 230, 0.12);
+  --page-glow: rgba(99, 205, 180, 0.09);
+}
+
+/* ═══════════════════════════════════════════════════════════════════
+   Reduced motion
+
+   Motion is opt-in, not opt-out. This block collapses the distance and
+   scale tokens rather than blanket-setting every duration to 0.01ms,
+   so components keep their transition property and still change state
+   instantly — a blanket `animation: none` breaks anything listening for
+   animationend, and leaves the GPU layers allocated.
+   ═══════════════════════════════════════════════════════════════════ */
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --press-scale: 1;
+    --overlay-scale: 1;
+    --popover-scale: 1;
+    --reveal-y: 0px;
+    --toast-x: 0px;
+    --card-lift: 0px;
+    --dur-micro: 1ms;
+    --dur-fast: 1ms;
+    --dur-base: 1ms;
+    --dur-panel: 1ms;
+    --dur-page: 1ms;
+  }
+}
+
+/* ═══════════════════════════════════════════════════════════════════
+   Compatibility aliases
+
+   Every historical token name in this codebase resolves here. Nothing
+   in this block introduces a new colour or size — it is a rename map
+   so that the ~4,600 existing var() references keep resolving while
+   there remains exactly one place a value is written.
+   ═══════════════════════════════════════════════════════════════════ */
+:root {
+  /* Typography — the --text-* scale was the older, partially fluid one. */
+  --text-2xs: var(--fs-2xs);
+  --text-2xs-lh: var(--lh-2xs);
+  --text-xs: var(--fs-xs);
+  --text-xs-lh: var(--lh-xs);
+  --text-sm: var(--fs-sm);
+  --text-sm-lh: var(--lh-sm);
+  --text-base: var(--fs-base);
+  --text-base-lh: var(--lh-base);
+  --text-md: var(--fs-md);
+  --text-md-lh: var(--lh-base);
+  --text-lg: var(--fs-lg);
+  --text-lg-lh: var(--lh-lg);
+  --text-xl: var(--fs-xl);
+  --text-xl-lh: var(--lh-xl);
+  --text-2xl: var(--fs-2xl);
+  --text-2xl-lh: var(--lh-2xl);
+  --text-display: var(--fs-display);
+  --text-display-lh: var(--lh-display);
+  --track-section: var(--track-2xl);
+  --track-body: var(--track-base);
+  --track-meta: var(--track-xs);
+  --sz-serif-optical: 1;
+
+  /* Motion — --timing-* and --duration-* were the pre-alignment names. */
+  --timing-micro: var(--ease-standard);
+  --timing-smooth: var(--ease-standard);
+  --timing-reveal: var(--ease-enter);
+  --timing-spring: var(--ease-emphasized);
+  --duration-micro: var(--dur-micro);
+  --duration-smooth: var(--dur-base);
+  --duration-reveal: var(--dur-panel);
+  --duration-hover: var(--dur-base);
+  --duration-lift: var(--dur-base);
+  --duration-panel: var(--dur-panel);
+  --duration-page: var(--dur-page);
+  --sz-ease: var(--ease-standard);
+  --sz-dur-fast: var(--dur-fast);
+  --sz-dur-base: var(--dur-base);
+  --sz-dur-slow: var(--dur-panel);
+  --sz-dur-slower: var(--dur-page);
+
+  /* ── sz-* editorial and glass surfaces ───────────────────────── */
+  --sz-ink: var(--text-primary);
+  --sz-ink-soft: var(--text-secondary);
+  --sz-paper: var(--page-bg);
+  --sz-paper-soft: var(--surface-subtle);
+  --sz-accent: var(--accent);
+  --sz-accent-deep: var(--accent-hover);
+  --sz-accent-soft: var(--accent-soft);
+  --sz-stone: var(--text-muted);
+  --sz-stone-light: var(--text-faint);
+  --sz-mist: var(--border);
+  --sz-mist-soft: rgba(14, 26, 51, 0.06);
+  --sz-frost: var(--border);
+  --sz-frost-strong: var(--border-strong);
+  --sz-tint: var(--surface-hover);
+  --sz-sunk: var(--surface-sunken);
+  --sz-rule: var(--border);
+  --sz-divider: 7px;
+  --sz-section-divider: rgba(14, 26, 51, 0.07);
+
+  /* Provenance. --sz-provenance-rule and --sz-rule were both #E3DED2
+     with no dark override, so the rule stayed cream on the dark
+     canvas. They now resolve to the themed border. */
+  --sz-provenance-fill: var(--success);
+  --sz-provenance-hollow: var(--text-muted);
+  --sz-provenance-rule: var(--border);
+  --sz-provenance-rule-strong: var(--border-strong);
+  --sz-citation: var(--text-muted);
+  --sz-citation-strong: var(--text-secondary);
+
+  --sz-container: var(--grid-max);
+  --sz-container-narrow: 1120px;
+  --sz-card-title: var(--fs-lg);
+  --sz-card-title-lh: var(--lh-lg);
+  --sz-meta: var(--fs-xs);
+  --sz-meta-lh: var(--lh-xs);
+  --sz-label: var(--fs-2xs);
+  --sz-label-ls: var(--track-2xs);
+  --sz-body-floor: var(--fs-base);
+  --sz-body-floor-lh: var(--lh-base);
+
+  /* Glass. Levels 1 and 2 are blur-free on purpose: a card grid with
+     backdrop-filter creates one blurred region per tile with no upper
+     bound, and three blurred elements in a scroll context is where
+     mid-range Android starts dropping frames. Only level 3 and 4 —
+     nav, sheet, toast — actually blur. */
+  --sz-glass-tint-1: rgba(255, 255, 255, 0.94);
+  --sz-glass-tint-2: rgba(255, 255, 255, 0.88);
+  --sz-glass-tint-3: rgba(246, 245, 241, 0.82);
+  --sz-glass-tint-4: rgba(246, 245, 241, 0.9);
+  --sz-glass-tint-1-hover: rgba(255, 255, 255, 1);
+  --sz-glass-tint-2-hover: rgba(255, 255, 255, 0.96);
+  --sz-glass-tint-3-hover: rgba(255, 255, 255, 0.88);
+  --sz-glass-tint-4-hover: rgba(255, 255, 255, 0.94);
+  --sz-glass-solid-1: var(--surface);
+  --sz-glass-solid-2: var(--surface);
+  --sz-glass-solid-3: var(--surface);
+  --sz-glass-solid-4: var(--surface);
+  --sz-glass-border: var(--border);
+  --sz-glass-border-hover: var(--border-strong);
+  --sz-glass-edge: var(--border);
+  --sz-glass-edge-soft: rgba(14, 26, 51, 0.07);
+  --sz-glass-blur: blur(24px) saturate(115%);
+  --sz-glass-blur-strong: blur(28px) saturate(120%);
+  --sz-glass-specular: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.6) 0%,
+    rgba(255, 255, 255, 0.08) 26%,
+    rgba(255, 255, 255, 0) 52%
+  );
+  --sz-glass-rim: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.45) 0%,
+    rgba(255, 255, 255, 0.06) 22%,
+    rgba(255, 255, 255, 0) 44%
+  );
+  --sz-glass-underlight: radial-gradient(
+    100% 56% at 50% 110%,
+    rgba(15, 127, 107, 0.05) 0%,
+    rgba(15, 127, 107, 0) 66%
+  );
+  --sz-glass-shadow-1: none;
+  --sz-glass-shadow-2: none;
+  --sz-glass-shadow-3: var(--shadow-floating);
+  --sz-glass-shadow-4: var(--shadow-floating);
+  --sz-depth-1: 0 0 0 1px var(--border);
+  --sz-depth-2: var(--shadow-elevated);
+  --sz-depth-3: var(--shadow-floating);
+
+  /* ── Ambient field ─────────────────────────────────────────────
+     Two orbs, one per accent family: teal and indigo, the two hues
+     the reference's aurora uses. Opacity is low enough that the field
+     reads as light on paper rather than as colour. */
+  --sz-orb-opacity: 0.5;
+  --sz-orb-1: rgba(15, 127, 107, 0.16);
+  --sz-orb-2: rgba(106, 116, 217, 0.13);
+  --sz-atmo-opacity: 1;
+  --sz-atmo-drift: 2.4;
+  --sz-atmo-duration: 88s;
+  --sz-skeleton-base: rgba(14, 26, 51, 0.07);
+  --sz-skeleton-sheen: rgba(255, 255, 255, 0.7);
+  --sz-skeleton-radius: var(--radius-sm);
+
+  /* Form fields. Inputs read as recessed: the fill sits darker than
+     the panel behind it, because a lighter field reads as raised. */
+  --sz-input-border: var(--border-input);
+  --sz-input-bg: rgba(14, 26, 51, 0.035);
+  --sz-input-bg-hover: rgba(14, 26, 51, 0.055);
+  --sz-input-inset: inset 0 1px 2px rgba(14, 26, 51, 0.04);
+  --sz-input-font: var(--fs-base);
+  --sz-accent-text: var(--accent);
+  --sz-success-text: var(--success-text);
+  --sz-warning-text: var(--warning-text);
+  --orb-bg: var(--accent-soft);
+  --page-glow: rgba(15, 127, 107, 0.06);
+  /* The second accent, reachable from the same alias block. Components
+     use --accent-2 for the aurora field, the second progress tone and
+     the spotlight sweep, so the indigo has exactly one job everywhere. */
+  --sz-accent-2: var(--accent-2);
+  --sz-accent-2-soft: var(--accent-2-soft);
+  --sz-accent-2-border: var(--accent-2-border);
+  --sz-highlight: var(--highlight);
+  --sz-highlight-soft: var(--highlight-soft);
+  --sz-highlight-ink: var(--highlight-ink);
+
+  /* Solid control. The primary inverts against its canvas, so it is
+     always the strongest object on the page. The navy ink is the fill:
+     a near-white button on a near-white canvas reads as disabled, so
+     this stays inverted in both themes. */
+  --sz-solid-bg: #0e1a33;
+  --sz-solid-bg-hover: #16244a;
+  /* The top stop of the control's gradient. A flat navy fill reads as a
+     decal on warm paper; one stop lighter at the top reads as a surface
+     turned toward the light. */
+  --sz-solid-grad-top: #1b2c55;
+  --sz-solid-grad-top-hover: #22345f;
+  --sz-solid-ink: #f6f5f1;
+  --sz-solid-ink-hover: #ffffff;
+  --sz-solid-border: rgba(255, 255, 255, 0.12);
+  --sz-solid-border-hover: rgba(255, 255, 255, 0.26);
+  --sz-solid-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.08), 0 2px 6px rgba(14, 26, 51, 0.16);
+  --sz-solid-shadow-hover: inset 0 1px 0 rgba(255, 255, 255, 0.1), 0 10px 26px rgba(14, 26, 51, 0.24);
+
+  /* Historic flat names. */
+  --brand: var(--accent);
+  --brand-strong: var(--accent-hover);
+  --brand-soft: var(--accent-soft);
+  --ink: var(--text-primary);
+  --muted: var(--text-muted);
+  --canvas: var(--page-bg);
+  --line: var(--border);
+  --sz-body: var(--font-body);
+  --sz-display: var(--font-display);
+  --sz-radius-sm: var(--radius-sm);
+  --sz-duration-reveal: var(--dur-panel);
+  --sz-timing-reveal: var(--ease-enter);
+  --sz-duration-micro: var(--dur-micro);
+  --sz-timing-micro: var(--ease-standard);
+  --sz-grid-max: var(--grid-max);
+  --glass-border: var(--border);
+}
+
+:root[data-theme='dark'] {
+  --sz-mist-soft: rgba(232, 236, 245, 0.06);
+  --sz-section-divider: rgba(232, 236, 245, 0.07);
+  --sz-glass-edge-soft: rgba(0, 0, 0, 0.3);
+  --sz-glass-tint-1: rgba(21, 30, 51, 0.94);
+  --sz-glass-tint-2: rgba(25, 35, 58, 0.88);
+  --sz-glass-tint-3: rgba(8, 12, 22, 0.86);
+  --sz-glass-tint-4: rgba(5, 7, 13, 0.92);
+  --sz-glass-tint-1-hover: rgba(32, 44, 71, 0.96);
+  --sz-glass-tint-2-hover: rgba(37, 49, 77, 0.92);
+  --sz-glass-tint-3-hover: rgba(14, 21, 38, 0.92);
+  --sz-glass-tint-4-hover: rgba(10, 15, 28, 0.96);
+  --sz-glass-solid-1: var(--surface);
+  --sz-glass-solid-2: var(--surface-raised);
+  --sz-glass-solid-3: var(--page-bg);
+  --sz-glass-solid-4: var(--page-bg);
+  --sz-glass-edge: rgba(232, 236, 245, 0.1);
+  --sz-glass-specular: linear-gradient(
+    180deg,
+    rgba(232, 236, 245, 0.09) 0%,
+    rgba(232, 236, 245, 0.02) 26%,
+    rgba(232, 236, 245, 0) 52%
+  );
+  --sz-glass-rim: linear-gradient(
+    180deg,
+    rgba(232, 236, 245, 0.12) 0%,
+    rgba(232, 236, 245, 0.03) 22%,
+    rgba(232, 236, 245, 0) 44%
+  );
+  --sz-glass-underlight: radial-gradient(
+    100% 56% at 50% 110%,
+    rgba(99, 205, 180, 0.07) 0%,
+    rgba(99, 205, 180, 0) 66%
+  );
+  --sz-glass-shadow-3: 0 0 0 1px rgba(232, 236, 245, 0.07), 0 2px 6px rgba(0, 0, 0, 0.34),
+    0 16px 40px rgba(0, 0, 0, 0.46);
+  --sz-glass-shadow-4: 0 0 0 1px rgba(232, 236, 245, 0.09), 0 4px 10px rgba(0, 0, 0, 0.38),
+    0 24px 56px rgba(0, 0, 0, 0.52);
+  --sz-depth-2: var(--shadow-elevated);
+  --sz-skeleton-base: rgba(232, 236, 245, 0.08);
+  --sz-skeleton-sheen: rgba(232, 236, 245, 0.1);
+  --sz-input-bg: rgba(0, 0, 0, 0.28);
+  --sz-input-bg-hover: rgba(0, 0, 0, 0.34);
+  --sz-input-inset: inset 0 1px 2px rgba(0, 0, 0, 0.34);
+  --sz-solid-bg: #e8ecf5;
+  --sz-solid-bg-hover: #ffffff;
+  --sz-solid-grad-top: #f4f7fc;
+  --sz-solid-grad-top-hover: #ffffff;
+  --sz-solid-ink: #05070d;
+  --sz-solid-ink-hover: #000000;
+  --sz-solid-border: rgba(5, 7, 13, 0.18);
+  --sz-solid-border-hover: rgba(5, 7, 13, 0.34);
+  --sz-solid-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.4), 0 2px 6px rgba(0, 0, 0, 0.4);
+  --sz-solid-shadow-hover: inset 0 1px 0 rgba(255, 255, 255, 0.5), 0 10px 26px rgba(0, 0, 0, 0.5);
+  --page-glow: rgba(99, 205, 180, 0.09);
+}

@@ -10,6 +10,16 @@ import { AppErrorBoundary } from './components/AppErrorBoundary.jsx'
 import './index.css'
 import App from './App.jsx'
 import './theme.css'
+// tokens.css is the single source of truth for every colour, size,
+// duration and layer in the system, so it is imported AFTER theme.css:
+// where the two files both declare a value on :root — same specificity —
+// the later import wins, and this way the canonical file is the one
+// that wins rather than the legacy copy.
+import './styles/tokens.css'
+// The port of the reference's material, animation and 3D layer. Imported
+// after tokens.css so the p- primitives resolve the canonical palette, and
+// before Ledger.css so the density layer still wins where they overlap.
+import './styles/premium.css'
 // Imported last so the density, provenance and motion layer wins over the
 // component defaults without every component having to know about it.
 import './Ledger.css'

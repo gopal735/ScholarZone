@@ -23,9 +23,6 @@ CRITICAL_MODULES = {
     ],
     "routers": [
         "app.routers.scholarships",
-        "app.routers.verification",
-        "app.routers.admin_image_review",
-        "app.routers.discovery",
         "app.routers.admin_dashboard",
     ],
     "services": [
@@ -71,7 +68,6 @@ CRITICAL_MODULES = {
         "app.services.scholarship_image_verifier",
         "app.services.image_analysis",
         "app.services.image_validator",
-        "app.services.email_service",
         "app.services.official_source_fetcher",
         "app.services.next_cycle_discovery",
         "app.services.information_gain_scheduler",

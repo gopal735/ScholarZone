@@ -54,6 +54,7 @@ import sys
 import time
 from dataclasses import dataclass, field
 from datetime import date, datetime, timezone
+from pathlib import Path
 
 sys.stdout.reconfigure(encoding="utf-8", errors="replace")
 
@@ -233,6 +234,47 @@ class StageReport:
         }
 
 
+#: Where the re-verification stages read their record lists from.
+#:
+#: A module attribute rather than a literal at each call site, so the path is
+#: declared once and a run can be pointed somewhere else — the tests do exactly
+#: that, and a change to the layout is one edit rather than a search for
+#: ``parents[2] = "config"`` scattered through the file. It is read at call
+#: time, not at import, so patching it takes effect without a reload.
+CONFIG_DIR = Path(__file__).resolve().parents[2] / "config"
+
+
+def _retired_ids() -> set[int]:
+    """Record ids retired outright, read from the same file the retire stage uses.
+
+    Factorised so re-verify and retire cannot drift: they must agree about
+    which records are retired, or one stage's protection is the other stage's
+    accident. A missing or unreadable file is an empty answer rather than an
+    error, because a deployment with no retired list has simply retired
+    nothing - and re-verify must still be able to run.
+    """
+    import json
+
+    path = CONFIG_DIR / "retired_records.json"
+    try:
+        raw = json.loads(path.read_text(encoding="utf-8"))
+    except (OSError, ValueError):
+        return set()
+
+    entries = raw.get("records") if isinstance(raw, dict) else raw
+    entries = entries if isinstance(entries, list) else []
+
+    ids: set[int] = set()
+    for entry in entries:
+        if not isinstance(entry, dict):
+            continue
+        try:
+            ids.add(int(entry.get("id")))
+        except (TypeError, ValueError):
+            logger.warning("ignoring retired entry with no usable id: %r", entry)
+    return ids
+
+
 def _issuer_kind(host: str, alt_text: str | None = None) -> str:
     """Classify which kind of body serves a logo.
 
@@ -243,8 +285,13 @@ def _issuer_kind(host: str, alt_text: str | None = None) -> str:
     signal at all - ``ut.ee``, ``lu.lv`` and ``hi.is`` are universities, and no
     host pattern can tell that.
 
-    An issuer that cannot be classified falls back to official_logo, which is
-    the honest answer: it is a logo, just not attributed more precisely.
+    The fallback is ``official_provider``, not ``official_logo``: the value is
+    stored in the image's *source type* vocabulary, where ``official_logo`` is
+    not a member at all - it is an image kind. An unclassifiable issuer that
+    fell back to ``official_logo`` wrote a value no reader of the column could
+    interpret, and the public contract then had to treat the whole vocabulary as
+    meaningless. ``official_provider`` is the canonical member for "an awarding
+    body we could not classify further", which is the honest answer.
     """
     if any(token in host for token in (".gov", "-gov.", "europa.eu", "un.org", "au.int")):
         return "official_government"
@@ -253,7 +300,7 @@ def _issuer_kind(host: str, alt_text: str | None = None) -> str:
     label = (alt_text or "").lower()
     if any(token in label for token in ("university", "universität", "universitat", "univ.")):
         return "official_university"
-    return "official_logo"
+    return "official_provider"
 
 
 # Programmes that were retired outright rather than closing for a season, keyed
@@ -1823,11 +1870,7 @@ choices=["verify", "worklist", "inventory", "enrich", "programme_details", "imag
 
         from app.models import Scholarship
 
-        path = (
-            Path(__file__).resolve().parents[2]
-            / "config"
-            / "verification_confirmations.json"
-        )
+        path = CONFIG_DIR / "verification_confirmations.json"
         if not path.exists():
             return {"error": None, "confirmed": 0, "note": f"no config at {path}"}
 
@@ -1852,9 +1895,34 @@ choices=["verify", "worklist", "inventory", "enrich", "programme_details", "imag
             ).all()
             confirmed = 0
             already = 0
+            protected: list[dict] = []
+            retired_ids = _retired_ids()
             for row in rows:
                 if row.verification_status == "active":
                     already += 1
+                    continue
+                # An archived record is out of the catalogue. A live page being
+                # reachable says nothing about a programme that was retired, and
+                # confirming it would put it back in front of readers.
+                if row.is_archived:
+                    protected.append({
+                        "id": row.id,
+                        "archived_reason": (
+                            row.archived_reason
+                            or "archived record; no confirmation may promote it"
+                        ),
+                    })
+                    continue
+                # A record listed in retired_records.json was retired outright
+                # rather than closing for a season: no confirmation file can
+                # promote it, whatever its official page still answers. This is
+                # what stops a stale entry in the confirmations file from
+                # resurrecting a retired programme by accident.
+                if row.id in retired_ids:
+                    protected.append({
+                        "id": row.id,
+                        "listed_in_retired_records": True,
+                    })
                     continue
                 row.verification_status = "active"
                 # The mapped column is `is_verified`. Assigning `verified` set an
@@ -1881,6 +1949,7 @@ choices=["verify", "worklist", "inventory", "enrich", "programme_details", "imag
                     "error": None,
                     "would_confirm": confirmed,
                     "already_active": already,
+                    "protected_retired": protected,
                     "unknown_ids": missing,
                 }
 
@@ -1889,6 +1958,7 @@ choices=["verify", "worklist", "inventory", "enrich", "programme_details", "imag
                 "error": None,
                 "confirmed": confirmed,
                 "already_active": already,
+                "protected_retired": protected,
                 "unknown_ids": missing,
                 "checked_on": checked_at.isoformat(),
             }
@@ -1922,9 +1992,7 @@ choices=["verify", "worklist", "inventory", "enrich", "programme_details", "imag
         from app.models import Scholarship
         from app.services.catalogue_quarantine import QUARANTINE_STATUS
 
-        retire_path = (
-            Path(__file__).resolve().parents[2] / "config" / "retired_records.json"
-        )
+        retire_path = CONFIG_DIR / "retired_records.json"
         try:
             raw = json.loads(retire_path.read_text(encoding="utf-8"))
         except (OSError, ValueError) as exc:

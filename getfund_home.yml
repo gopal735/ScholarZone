@@ -1,0 +1,485 @@
+- generic [active] [ref=f3e1]:
+  - banner [ref=f3e2]:
+    - link "Foreign Graduate Scholarships home" [ref=f3e3] [cursor=pointer]:
+      - /url: "#top"
+      - img "DOST-SEI" [ref=f3e4]
+      - generic [ref=f3e5]:
+        - strong [ref=f3e6]: DOST-SEI
+        - generic [ref=f3e7]: SCIENCE EDUCATION INSTITUTE
+        - emphasis [ref=f3e8]: "OneDOST4U: Solutions and Opportunities for All"
+    - navigation "Primary navigation" [ref=f3e9]:
+      - link "FGS" [ref=f3e10] [cursor=pointer]:
+        - /url: "#overview"
+      - link "USask" [ref=f3e11] [cursor=pointer]:
+        - /url: "#usask"
+      - link "France Excellence" [ref=f3e12] [cursor=pointer]:
+        - /url: "#france"
+      - link "UAlberta" [ref=f3e13] [cursor=pointer]:
+        - /url: "#ualberta"
+  - main [ref=f3e105]:
+    - generic [ref=f3e106]:
+      - generic [ref=f3e107]:
+        - generic [ref=f3e108]:
+          - paragraph [ref=f3e109]: DOST-SEI Foreign Graduate Scholarships
+          - heading "Nurturing Global Experts, Building a Stronger Nation" [level=1] [ref=f3e110]
+          - link "Explore Programs" [ref=f3e112] [cursor=pointer]:
+            - /url: "#overview"
+        - complementary "Foreign Graduate Scholarship programs" [ref=f3e113]:
+          - generic [ref=f3e114]:
+            - link "FGS DOST-SEI Foreign Graduate Scholarships in Specialized Priority Fields in Science and Technology" [ref=f3e115] [cursor=pointer]:
+              - /url: "#overview"
+              - generic [ref=f3e116]: FGS
+              - strong [ref=f3e117]: DOST-SEI Foreign Graduate Scholarships in Specialized Priority Fields in Science and Technology
+            - link "USask DOST-SEI-USask Graduate Scholarship Program" [ref=f3e118] [cursor=pointer]:
+              - /url: "#usask"
+              - generic [ref=f3e119]: USask
+              - strong [ref=f3e120]: DOST-SEI-USask Graduate Scholarship Program
+            - link "France France Excellence - DOST Scholarship Program" [ref=f3e121] [cursor=pointer]:
+              - /url: "#france"
+              - generic [ref=f3e122]: France
+              - strong [ref=f3e123]: France Excellence - DOST Scholarship Program
+            - link "UAlberta DOST-SEI-UAlberta S&T Graduate Scholarship Program" [ref=f3e124] [cursor=pointer]:
+              - /url: "#ualberta"
+              - generic [ref=f3e125]: UAlberta
+              - strong [ref=f3e126]: DOST-SEI-UAlberta S&T Graduate Scholarship Program
+      - generic [ref=f3e127]:
+        - generic [ref=f3e128]:
+          - paragraph [ref=f3e129]: Overview
+          - heading "DOST-SEI Foreign Graduate Scholarships in Specialized Priority Fields in Science and Technology" [level=2] [ref=f3e130]:
+            - generic [ref=f3e131]: DOST-SEI
+            - generic [ref=f3e132]: Foreign Graduate Scholarships in Specialized Priority Fields in Science and Technology
+        - generic [ref=f3e133]:
+          - article [ref=f3e134]:
+            - heading "Objectives" [level=3] [ref=f3e135]
+            - list [ref=f3e136]:
+              - listitem [ref=f3e137]: Develop a pool of high quality human resources in science and engineering who will contribute to the country's global competitiveness and economic development.
+              - listitem [ref=f3e138]: Provide opportunities to talented and deserving students to study and obtain MS and PhD degrees in science and engineering in reputable institutions abroad.
+              - listitem [ref=f3e139]: Upgrade the country's research and technological innovation capabilities in the area of advanced sciences and emerging technologies.
+          - article [ref=f3e140]:
+            - heading "Priority Fields of Study" [level=3] [ref=f3e141]
+            - generic [ref=f3e142]:
+              - list [ref=f3e143]:
+                - listitem [ref=f3e144]: Aerospace Engineering
+                - listitem [ref=f3e145]: Agronomy
+                - listitem [ref=f3e146]: Animal Science
+                - listitem [ref=f3e147]: Artificial Intelligence
+                - listitem [ref=f3e148]: Atmospheric Science
+                - listitem [ref=f3e149]: Biochemistry
+                - listitem [ref=f3e150]: Bioinformatics
+                - listitem [ref=f3e151]: Biomechanics and Rehabilitation Engineering
+                - listitem [ref=f3e152]: Biomedical Engineering
+                - listitem [ref=f3e153]: Climate Change and Health
+                - listitem [ref=f3e154]: Combinatorial Chemistry
+                - listitem [ref=f3e155]: Critical Minerals
+                - listitem [ref=f3e156]: Cybersecurity
+                - listitem [ref=f3e157]: Data Analytics
+                - listitem [ref=f3e158]: Data Science
+                - listitem [ref=f3e159]: Disaster (Health) Risk Financing
+                - listitem [ref=f3e160]: Disaster (Health) Risk Management
+                - listitem [ref=f3e161]: Disaster Medicine/Emergency Medicine
+                - listitem [ref=f3e162]: Earth Science
+                - listitem [ref=f3e163]: Energy Engineering
+                - listitem [ref=f3e164]: Entomology
+                - listitem [ref=f3e165]: Environment and Health
+                - listitem [ref=f3e166]: Forestry
+                - listitem [ref=f3e167]: Genetic Epidemiology
+                - listitem [ref=f3e168]: Health Risk Communication
+                - listitem [ref=f3e169]: Health Science Communication
+                - listitem [ref=f3e170]: Health Technology Assessment
+                - listitem [ref=f3e171]: Horticulture
+                - listitem [ref=f3e172]: Intelligent Health Care Systems / Digital Health / eHealth
+                - listitem [ref=f3e173]: Lazer Technology
+                - listitem [ref=f3e174]: Marine Science and Management
+              - list [ref=f3e175]:
+                - listitem [ref=f3e176]: Medical Entomology
+                - listitem [ref=f3e177]: Medical Physics
+                - listitem [ref=f3e178]: Medicinal Chemistry
+                - listitem [ref=f3e179]: Meteorology
+                - listitem [ref=f3e180]: Microelectronics
+                - listitem [ref=f3e181]: Molecular Biology / Biotechnology
+                - listitem [ref=f3e182]: Nanotechnology
+                - listitem [ref=f3e183]: Natural Products Chemistry
+                - listitem [ref=f3e184]: Nuclear Medicine
+                - listitem [ref=f3e185]: Nuclear Science and Engineering
+                - listitem [ref=f3e186]: Oceanography
+                - listitem [ref=f3e187]: Physics - High Energy Physics
+                - listitem [ref=f3e188]: Photonics
+                - listitem [ref=f3e189]: Plant Breeding
+                - listitem [ref=f3e190]: Plant Pathology
+                - listitem [ref=f3e191]: Quantum Science / Engineering
+                - listitem [ref=f3e192]: Radio Chemistry
+                - listitem [ref=f3e193]: Radiopharmacy
+                - listitem [ref=f3e194]: Robotics
+                - listitem [ref=f3e195]: Software Engineering
+                - listitem [ref=f3e196]: Soil Science
+                - listitem [ref=f3e197]: Space Science and Engineering
+                - listitem [ref=f3e198]: Space Studies
+                - listitem [ref=f3e199]: Space Technology and Application
+                - listitem [ref=f3e200]: Taxonomy
+                - listitem [ref=f3e201]: Technology Management
+                - listitem [ref=f3e202]: Veterinary Entomology
+                - listitem [ref=f3e203]: Veterinary Medicine
+                - listitem [ref=f3e204]: Virology
+          - article [ref=f3e205]:
+            - heading "Study Placement" [level=3] [ref=f3e206]
+            - paragraph [ref=f3e207]: A scholar must enroll in a foreign university with good track record and/or a recognized higher education or research institution in the specialized S&T field to be pursued.
+          - article [ref=f3e208]:
+            - heading "Scholarship Privileges" [level=3] [ref=f3e209]
+            - table "Scholarship privileges by program" [ref=f3e211]:
+              - rowgroup [ref=f3e212]:
+                - row [ref=f3e213]:
+                  - columnheader "Privilege" [ref=f3e214]
+                  - columnheader "FGS" [ref=f3e215]
+                  - columnheader "France Excellence" [ref=f3e216]
+                  - columnheader "UAlberta" [ref=f3e217]
+                  - columnheader "USask" [ref=f3e218]
+              - rowgroup [ref=f3e219]:
+                - row [ref=f3e220]:
+                  - rowheader "Pre-Departure Expenses" [ref=f3e221]
+                  - cell "Available" [ref=f3e222]:
+                    - generic "Available" [ref=f3e223]: ✓
+                  - cell "Not available" [ref=f3e224]:
+                    - generic "Not available" [ref=f3e225]: ×
+                  - cell "Available" [ref=f3e226]:
+                    - generic "Available" [ref=f3e227]: ✓
+                  - cell "Available" [ref=f3e228]:
+                    - generic "Available" [ref=f3e229]: ✓
+                - row [ref=f3e230]:
+                  - rowheader "Roundtrip Economy Airfare" [ref=f3e231]
+                  - cell "Available" [ref=f3e232]:
+                    - generic "Available" [ref=f3e233]: ✓
+                  - cell "Available" [ref=f3e234]:
+                    - generic "Available" [ref=f3e235]: ✓
+                  - cell "Available" [ref=f3e236]:
+                    - generic "Available" [ref=f3e237]: ✓
+                  - cell "Available" [ref=f3e238]:
+                    - generic "Available" [ref=f3e239]: ✓
+                - row [ref=f3e240]:
+                  - rowheader "School Fees" [ref=f3e241]
+                  - cell "Available" [ref=f3e242]:
+                    - generic "Available" [ref=f3e243]: ✓
+                  - cell "Not available" [ref=f3e244]:
+                    - generic "Not available" [ref=f3e245]: ×
+                  - cell "Available" [ref=f3e246]:
+                    - generic "Available" [ref=f3e247]: ✓
+                  - cell "Available" [ref=f3e248]:
+                    - generic "Available" [ref=f3e249]: ✓
+                - row [ref=f3e250]:
+                  - rowheader "Learning Materials and/or Connectivity Allowance" [ref=f3e251]
+                  - cell "Available" [ref=f3e252]:
+                    - generic "Available" [ref=f3e253]: ✓
+                  - cell "Available" [ref=f3e254]:
+                    - generic "Available" [ref=f3e255]: ✓
+                  - cell "Not available" [ref=f3e256]:
+                    - generic "Not available" [ref=f3e257]: ×
+                  - cell "Not available" [ref=f3e258]:
+                    - generic "Not available" [ref=f3e259]: ×
+                - row [ref=f3e260]:
+                  - rowheader "Thesis/Dissertation Allowance" [ref=f3e261]
+                  - cell "Available" [ref=f3e262]:
+                    - generic "Available" [ref=f3e263]: ✓
+                  - cell "Available" [ref=f3e264]:
+                    - generic "Available" [ref=f3e265]: ✓
+                  - cell "Not available" [ref=f3e266]:
+                    - generic "Not available" [ref=f3e267]: ×
+                  - cell "Not available" [ref=f3e268]:
+                    - generic "Not available" [ref=f3e269]: ×
+                - row [ref=f3e270]:
+                  - rowheader "Monthly Living Allowance" [ref=f3e271]
+                  - cell "Available" [ref=f3e272]:
+                    - generic "Available" [ref=f3e273]: ✓
+                  - cell "Available" [ref=f3e274]:
+                    - generic "Available" [ref=f3e275]: ✓
+                  - cell "Available" [ref=f3e276]:
+                    - generic "Available" [ref=f3e277]: ✓
+                  - cell "Available" [ref=f3e278]:
+                    - generic "Available" [ref=f3e279]: ✓
+                - row [ref=f3e280]:
+                  - rowheader "Relocation Allowance" [ref=f3e281]
+                  - cell "Available" [ref=f3e282]:
+                    - generic "Available" [ref=f3e283]: ✓
+                  - cell "Available" [ref=f3e284]:
+                    - generic "Available" [ref=f3e285]: ✓
+                  - cell "Available" [ref=f3e286]:
+                    - generic "Available" [ref=f3e287]: ✓
+                  - cell "Available" [ref=f3e288]:
+                    - generic "Available" [ref=f3e289]: ✓
+                - row [ref=f3e290]:
+                  - rowheader "Health/Accident Insurance" [ref=f3e291]
+                  - cell "Available" [ref=f3e292]:
+                    - generic "Available" [ref=f3e293]: ✓
+                  - cell "Not available" [ref=f3e294]:
+                    - generic "Not available" [ref=f3e295]: ×
+                  - cell "Available" [ref=f3e296]:
+                    - generic "Available" [ref=f3e297]: ✓
+                  - cell "Available" [ref=f3e298]:
+                    - generic "Available" [ref=f3e299]: ✓
+            - paragraph [ref=f3e300]: Maximum alloted budget of Php 3,000,000.00 per scholar per academic year.
+      - region [ref=f3e301]:
+        - heading "Scholarship Programs under Foreign Graduate Scholarships" [level=2] [ref=f3e303]
+        - generic "Scholarship programs under Foreign Graduate Scholarships" [ref=f3e304]:
+          - link "USask DOST-SEI-USask Graduate Scholarship Program" [ref=f3e305] [cursor=pointer]:
+            - /url: "#usask"
+            - generic [ref=f3e306]: USask
+            - strong [ref=f3e307]: DOST-SEI-USask Graduate Scholarship Program
+          - link "France Excellence France Excellence-DOST Scholarship Program" [ref=f3e308] [cursor=pointer]:
+            - /url: "#france"
+            - generic [ref=f3e309]: France Excellence
+            - strong [ref=f3e310]: France Excellence-DOST Scholarship Program
+          - link "UAlberta DOST-SEI-UAlberta S&T Graduate Scholarship Program" [ref=f3e311] [cursor=pointer]:
+            - /url: "#ualberta"
+            - generic [ref=f3e312]: UAlberta
+            - strong [ref=f3e313]: DOST-SEI-UAlberta S&T Graduate Scholarship Program
+      - generic [ref=f3e314]:
+        - complementary [ref=f3e315]:
+          - text: Scholarship Program
+          - heading "DOST-SEI-USask Graduate Scholarship Program" [level=2] [ref=f3e316]
+        - generic [ref=f3e317]:
+          - article [ref=f3e318]:
+            - heading "Program Overview" [level=3] [ref=f3e319]
+            - paragraph [ref=f3e320]: The program aims to promote long-term collaboration and exchange in graduate education between the DOST-SEI and the University of Saskatchewan (USask) in Saskatoon, Canada in the priority S&T fields to create mechanisms for doctoral students from the Philippines to study and conduct their research at USask with support provided jointly by both institutions.
+          - article [ref=f3e321]:
+            - heading "Priority Fields of Study" [level=3] [ref=f3e322]
+            - list [ref=f3e323]:
+              - listitem [ref=f3e324]: Animal and Poultry Science
+              - listitem [ref=f3e325]: Biochemistry, Microbiology and Immunology
+              - listitem [ref=f3e326]: Chemistry
+              - listitem [ref=f3e327]: Environmental and Sustainability
+              - listitem [ref=f3e328]: Health Sciences
+              - listitem [ref=f3e329]: Physics and Engineering Physics
+              - listitem [ref=f3e330]: Soil Science
+              - listitem [ref=f3e331]: Vaccinology and Immunotherapeutics
+              - listitem [ref=f3e332]: Veterinary Biomedical Sciences
+              - listitem [ref=f3e333]: Veterinary Microbiology
+              - listitem [ref=f3e334]: Veterinary Pathology
+          - article [ref=f3e335]:
+            - heading "Criteria of Eligibility" [level=3] [ref=f3e336]
+            - paragraph [ref=f3e337]: The scholarship is open to qualified Filipino citizens who are in their first five years of their research career and meet the eligibility requirements.
+            - paragraph [ref=f3e338]: "An applicant must:"
+            - list [ref=f3e339]:
+              - listitem [ref=f3e340]: ✓ be a Filipino citizen;
+              - listitem [ref=f3e341]: ✓ not be more than 50 years old at the time of application;
+              - listitem [ref=f3e342]: ✓ be a permanent/regular employee in any private/goverment institution/office in the Philippines;
+              - listitem [ref=f3e343]: ✓ be endorsed by the Head of the Sending Institution/Office;
+              - listitem [ref=f3e344]: ✓ pass the admission requirements for graduate studies in a foreign university with good track record;
+              - listitem [ref=f3e345]: ✓ pass the interview and other screening procedures;
+              - listitem [ref=f3e346]: ✓ have a research interest aligned with the areas/programs identified under the DOST’s Harmonized National Research and Development Agenda (HNRDA); and
+              - listitem [ref=f3e347]: ✓ have a viable re-entry plan.
+          - article [ref=f3e348]:
+            - heading "Other Conditions" [level=3] [ref=f3e349]
+            - list [ref=f3e350]:
+              - listitem [ref=f3e351]: The qualified applicant will pursue MS or PhD Program on a full-time basis for a maximum period of 24 or 36 months, respectively.
+              - listitem [ref=f3e352]: No lateral entrant shall be considered.
+              - listitem [ref=f3e353]: The scholar must not avail or enjoy any other scholarships.
+              - listitem [ref=f3e354]: The scholar must make a full-time commitment to the scholarship and not engage in any form of employment during the scholarship period.
+          - article [ref=f3e355]:
+            - heading "Documentary Requirements" [level=3] [ref=f3e356]
+            - list [ref=f3e357]:
+              - listitem [ref=f3e358]: ✓ Application Form
+              - listitem [ref=f3e359]: ✓ Birth Certificate
+              - listitem [ref=f3e360]: ✓ Certified True Copy of Official Transcript of Records
+              - listitem [ref=f3e361]: ✓ Endorsement from two former professors in college for MS applicants or two professors from the MS program for PhD applicants
+              - listitem [ref=f3e362]: ✓ Recommendation from Head of the Sending Institution or Office
+              - listitem [ref=f3e363]: ✓ Permission to take a leave of absence while on scholarship
+              - listitem [ref=f3e364]: ✓ Medical Certificate as to health status and fitness to study from a licensed physician with PRC license number indicated
+              - listitem [ref=f3e365]: ✓ Valid NBI Clearance
+              - listitem [ref=f3e366]: ✓ Letter of Admission to the foreign university
+              - listitem [ref=f3e367]: ✓ Program of Study
+              - listitem [ref=f3e368]: ✓ Budgetary Requirements with supporting documents for bases of rates used
+              - listitem [ref=f3e369]: ✓ Re-entry Plan, narrative
+            - paragraph [ref=f3e370]: The downloadable form and list of other documentary requirements are available at the official DOST-SEI website.
+            - paragraph [ref=f3e371]: Interested applicants may submit an advance copy of their application at fgs@sei.dost.gov.ph.
+            - paragraph [ref=f3e372]: Original documents must be submitted to DOST-SEI at the Science Heritage Building, DOST Compound, Bicutan, Taguig City.
+          - article [ref=f3e373]:
+            - heading "Selection Procedures" [level=3] [ref=f3e374]
+            - paragraph [ref=f3e375]: "An applicant goes through the following selection procedure:"
+            - list [ref=f3e376]:
+              - listitem [ref=f3e377]:
+                - strong [ref=f3e378]: First Level Screening
+                - generic [ref=f3e379]: Documentary evaluation of application form and other requirements.
+              - listitem [ref=f3e380]:
+                - strong [ref=f3e381]: Second Level Screening
+                - generic [ref=f3e382]: Evaluation of research topic and re-entry plan by the concerned DOST Council.
+              - listitem [ref=f3e383]:
+                - strong [ref=f3e384]: Third Level Screening
+                - generic [ref=f3e385]: Interview by a panel to be created by the SEI Director.
+          - article [ref=f3e386]:
+            - heading "Important Dates" [level=3] [ref=f3e387]
+            - table [ref=f3e389]:
+              - rowgroup [ref=f3e390]:
+                - row [ref=f3e391]:
+                  - columnheader [ref=f3e392]
+                  - columnheader "January to July Intake" [ref=f3e393]
+                  - columnheader "August to December Intake" [ref=f3e394]
+              - rowgroup [ref=f3e395]:
+                - row [ref=f3e396]:
+                  - cell "Deadline for Filing of Applications" [ref=f3e397]
+                  - cell "August 15" [ref=f3e398]
+                  - cell "March 15" [ref=f3e399]
+                - row [ref=f3e400]:
+                  - cell "Panel Interview" [ref=f3e401]
+                  - cell "October" [ref=f3e402]
+                  - cell "May" [ref=f3e403]
+                - row [ref=f3e404]:
+                  - cell "Announcement of Results" [ref=f3e405]
+                  - cell "December" [ref=f3e406]
+                  - cell "July" [ref=f3e407]
+      - generic [ref=f3e408]:
+        - complementary [ref=f3e409]:
+          - text: Scholarship Program
+          - heading "France Excellence-DOST Scholarship Program" [level=2] [ref=f3e410]
+        - generic [ref=f3e411]:
+          - article [ref=f3e412]:
+            - heading "Program Overview" [level=3] [ref=f3e413]
+            - paragraph [ref=f3e414]: The France Excellence - DOST Scholarship Program is the successor of the PhilFrance-DOST Fellowship Program which aims to provide exceptional Filipino students the opportunity to obtain higher education in France every year. It is a comprehensive scholarship crafted for future leaders and key players in the Philippines’ growing research and development sector.
+            - paragraph [ref=f3e415]: The scholarship is open to students admitted into a graduate program issuing a diplome national in an M1, M2, or doctorate degree.
+          - article [ref=f3e416]:
+            - heading "Priority Fields of Study" [level=3] [ref=f3e417]
+            - list [ref=f3e418]:
+              - listitem [ref=f3e419]: Agriculture
+              - listitem [ref=f3e420]: Bioengineering
+              - listitem [ref=f3e421]: Bioinformatics (Medical)
+              - listitem [ref=f3e422]: Biological Science
+              - listitem [ref=f3e423]: Climate Change
+              - listitem [ref=f3e424]: Forestry
+              - listitem [ref=f3e425]: Health and Medical Research
+              - listitem [ref=f3e426]: Material Science
+              - listitem [ref=f3e427]: Natural Resources and Environment
+              - listitem [ref=f3e428]: Nuclear Application of Health Nuclear Medicine
+              - listitem [ref=f3e429]: Veterinary Science
+              - listitem [ref=f3e430]: Virology
+          - article [ref=f3e431]:
+            - heading "Applicant Eligibility" [level=3] [ref=f3e432]
+            - paragraph [ref=f3e433]: Applicant must complete the admission requirements for graduate studies in the selected French higher education institution, including interviews and other screening procedures.
+            - paragraph [ref=f3e434]:
+              - text: For more information, visit
+              - link "France Excellence-DOST Scholarship Program" [ref=f3e435] [cursor=pointer]:
+                - /url: https://bit.ly/DOSTFranceExcellence
+              - text: .
+      - generic [ref=f3e436]:
+        - complementary [ref=f3e437]:
+          - text: Scholarship Program
+          - heading "DOST-SEI-UAlberta S&T Graduate Scholarship Program" [level=2] [ref=f3e438]
+        - generic [ref=f3e439]:
+          - article [ref=f3e440]:
+            - heading "Program Overview" [level=3] [ref=f3e441]
+            - paragraph [ref=f3e442]: The DOST-SEI - UAlberta S&T Graduate Scholarship program aims to provide opportunities for master’s and doctoral students from the Philippines to study and conduct research at the University of Alberta (UAlberta) in Edmonton, Canada with support provided jointly through the DOST-SEI scholarships and UAlberta.
+            - paragraph [ref=f3e443]:
+              - text: Minimum admission requirements of the UAlberta departments and application procedures are outlined on the FGSR website at
+              - link "DOST-SEI-UAlberta S&T Graduate Scholarship Program" [ref=f3e444] [cursor=pointer]:
+                - /url: https://www.gradstudies.ualberta.ca
+              - text: .
+          - article [ref=f3e445]:
+            - heading "Priority Fields of Study" [level=3] [ref=f3e446]
+            - table [ref=f3e448]:
+              - rowgroup [ref=f3e449]:
+                - row [ref=f3e450]:
+                  - columnheader [ref=f3e451]
+                  - columnheader [ref=f3e452]
+              - rowgroup [ref=f3e453]:
+                - row [ref=f3e454]:
+                  - cell "Agricultural, Food, and Nutritional Science" [ref=f3e455]
+                  - cell "Animal Science; Plant Biosystems" [ref=f3e456]
+                - row [ref=f3e457]:
+                  - cell "Biochemistry" [ref=f3e458]
+                  - cell "Biochemistry; Biophysics; Cellular Biology; Molecular Biology" [ref=f3e459]
+                - row [ref=f3e460]:
+                  - cell "Cell Biology" [ref=f3e461]
+                  - cell "Virology" [ref=f3e462]
+                - row [ref=f3e463]:
+                  - cell "Chemical and Material Engineering" [ref=f3e464]
+                  - cell "Nanomaterials and Biomaterials" [ref=f3e465]
+                - row [ref=f3e466]:
+                  - cell "Computing Science" [ref=f3e467]
+                  - cell "Algorithmics; Theoretical Computing Science; Artificial Intelligence; Machine Learning; Bioinformatics; Networks and Distributed Systems; Robotics; Software Systems and Software Engineering" [ref=f3e468]
+                - row [ref=f3e469]:
+                  - cell "Earth and Atmospheric Science" [ref=f3e470]
+                  - cell "Atmospheric Science; Geology; Integrated Petroleum Geosciences" [ref=f3e471]
+                - row [ref=f3e472]:
+                  - cell "Electrical and Computer Engineering" [ref=f3e473]
+                  - cell "Biomedical Engineering; Integrated Circuits and Systems; Microsystems and Nanodevices; Software Engineering and Intelligent Systems" [ref=f3e474]
+                - row [ref=f3e475]:
+                  - cell "Renewable Resources" [ref=f3e476]
+                  - cell "Soil Science" [ref=f3e477]
+                - row [ref=f3e478]:
+                  - cell "Physics" [ref=f3e479]
+                  - cell "Astrophysics and Space Physics; Biophysics; Condensed Matter Physics and Materials Science; Geophysics; Particle Physics" [ref=f3e480]
+  - contentinfo [ref=f3e14]:
+    - generic [ref=f3e15]:
+      - img "Boy Scholar" [ref=f3e103]
+      - img "Girl Scholar" [ref=f3e104]
+      - generic [ref=f3e16]:
+        - heading "Let's build this nation together" [level=1] [ref=f3e17]
+        - generic [ref=f3e18]:
+          - heading "Data-Driven" [level=2] [ref=f3e19]
+          - heading "•" [level=2] [ref=f3e20]
+          - heading "Laser-Focused" [level=2] [ref=f3e21]
+          - heading "•" [level=2] [ref=f3e22]
+          - heading "People-Centered" [level=2] [ref=f3e23]
+      - generic [ref=f3e24]:
+        - generic [ref=f3e26]:
+          - generic [ref=f3e27]:
+            - heading "ABOUT" [level=1] [ref=f3e28]
+            - generic [ref=f3e31]:
+              - link "DOST-SEI" [ref=f3e32] [cursor=pointer]:
+                - /url: https://www.sei.dost.gov.ph/about
+              - link "Careers" [ref=f3e34] [cursor=pointer]:
+                - /url: https://apply.sei.dost.gov.ph/
+              - link "Data Privacy Policy" [ref=f3e36] [cursor=pointer]:
+                - /url: https://www.sei.dost.gov.ph/data-privacy-policy
+              - link "GAD Space" [ref=f3e38] [cursor=pointer]:
+                - /url: https://www.sei.dost.gov.ph/gad-space
+          - generic [ref=f3e40]:
+            - heading "TRANSPARENCY" [level=1] [ref=f3e41]
+            - generic [ref=f3e44]:
+              - link "Transparency Seal" [ref=f3e45] [cursor=pointer]:
+                - /url: https://transparency.sei.dost.gov.ph/
+              - link "Annual Report" [ref=f3e47] [cursor=pointer]:
+                - /url: https://annual.sei.dost.gov.ph/
+              - link "Citizen's Charter" [ref=f3e49] [cursor=pointer]:
+                - /url: https://cc.sei.dost.gov.ph/
+              - link "Procurement" [ref=f3e51] [cursor=pointer]:
+                - /url: https://procurement.sei.dost.gov.ph/
+              - link "Good Governance Conditions" [ref=f3e53] [cursor=pointer]:
+                - /url: https://governance.sei.dost.gov.ph/
+          - generic [ref=f3e55]:
+            - heading "PROGRAMS & PROJECTS" [level=1] [ref=f3e56]
+            - generic [ref=f3e59]:
+              - link "Scholarship Programs" [ref=f3e60] [cursor=pointer]:
+                - /url: https://science-scholarships.ph
+              - link "Capacity-Building" [ref=f3e62] [cursor=pointer]:
+                - /url: https://www.sei.dost.gov.ph/capacity-building
+              - link "Community-Building" [ref=f3e64] [cursor=pointer]:
+                - /url: https://www.sei.dost.gov.ph/community-building
+              - link "Recognition" [ref=f3e66] [cursor=pointer]:
+                - /url: https://www.sei.dost.gov.ph/recognition
+              - link "Learning Resources" [ref=f3e68] [cursor=pointer]:
+                - /url: https://www.sei.dost.gov.ph/learning-resources
+          - generic [ref=f3e70]:
+            - heading "RESOURCES" [level=1] [ref=f3e71]
+            - generic [ref=f3e74]:
+              - link "SEI Today" [ref=f3e75] [cursor=pointer]:
+                - /url: https://www.sei.dost.gov.ph/sei-today
+              - link "Downloads" [ref=f3e77] [cursor=pointer]:
+                - /url: https://downloads.sei.dost.gov.ph/
+              - link "Publications" [ref=f3e79] [cursor=pointer]:
+                - /url: https://www.sei.dost.gov.ph/publications
+          - generic [ref=f3e81]:
+            - heading "CONTACT US" [level=1] [ref=f3e82]
+            - generic [ref=f3e85]:
+              - link "Email Addresses" [ref=f3e86] [cursor=pointer]:
+                - /url: https://www.sei.dost.gov.ph/email-addresses
+              - link "Regional Offices" [ref=f3e88] [cursor=pointer]:
+                - /url: https://www.sei.dost.gov.ph/regional-offices
+              - link "Attached Agencies" [ref=f3e90] [cursor=pointer]:
+                - /url: https://www.sei.dost.gov.ph/attached-agencies
+              - link "Helpdesk" [ref=f3e92] [cursor=pointer]:
+                - /url: https://helpdesk.sei.dost.gov.ph/
+        - generic [ref=f3e94]:
+          - link [ref=f3e95] [cursor=pointer]:
+            - /url: https://www.sei.dost.gov.ph
+            - img "Science Education Institute Logo" [ref=f3e96]
+            - heading "Science Education Institute" [level=1] [ref=f3e97]
+          - link [ref=f3e99] [cursor=pointer]:
+            - /url: https://www.facebook.com/DOST.SEI
+            - heading "See What's New" [level=1] [ref=f3e102]

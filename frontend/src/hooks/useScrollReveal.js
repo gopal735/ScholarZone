@@ -72,21 +72,6 @@ export function useScrollReveal() {
     document.documentElement.classList.add('js-reveal')
     apply(document.querySelectorAll(SELECTOR))
 
-    // Failsafe. If a node is never intersected — an offscreen card inside a
-    // collapsed container, say — it still has to become visible. Re-armed on
-    // every batch of new content, so a card that arrives after the first paint
-    // gets a deadline of its own instead of staying at opacity 0 forever.
-    let failsafe = null
-    const armFailsafe = () => {
-      window.clearTimeout(failsafe)
-      failsafe = window.setTimeout(() => {
-        document.querySelectorAll(`${SELECTOR}:not(.is-in)`).forEach((node) => {
-          node.classList.add('is-in')
-        })
-      }, 2500)
-    }
-    armFailsafe()
-
     const mo = new MutationObserver((mutations) => {
       for (const mutation of mutations) {
         for (const node of mutation.addedNodes) {
@@ -97,12 +82,19 @@ export function useScrollReveal() {
           const inner = node.querySelectorAll ? node.querySelectorAll(SELECTOR) : []
           if (self.length || inner.length) {
             apply([...self, ...inner])
-            armFailsafe()
           }
         }
       }
     })
     mo.observe(document.body, { childList: true, subtree: true })
+
+    // Failsafe. If a node is never intersected — an offscreen card inside a
+    // collapsed container, say — it still has to become visible.
+    const failsafe = window.setTimeout(() => {
+      document.querySelectorAll(`${SELECTOR}:not(.is-in)`).forEach((node) => {
+        node.classList.add('is-in')
+      })
+    }, 2500)
 
     return () => {
       window.clearTimeout(failsafe)

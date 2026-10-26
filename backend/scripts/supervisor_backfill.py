@@ -46,7 +46,6 @@ from app.models import Scholarship  # noqa: E402
 from app.models_supervisor import (  # noqa: E402
     ProfessorAvailability,
     ProfessorProfile,
-    ScholarshipOfficialContact,
     ScholarshipProfessorLink,
     ScholarshipSupervisorCoverage,
     SupervisorSourceEvidence,
@@ -107,19 +106,6 @@ def rollback_coverage(session: Session) -> int:
     session.commit()
     logger.warning("removed %s coverage row(s); professor data left intact", count)
     return count
-
-
-def _contacts_table_present(session: Session) -> bool:
-    """Return whether this database has the contact table yet.
-
-    The schema arrives by an out-of-band migration, so a report against a
-    deployment that predates it must still produce numbers rather than a
-    ProgrammingError. Reported as absent rather than as zero, because "the table
-    is not there" and "the table is empty" are different facts.
-    """
-    from sqlalchemy import inspect
-
-    return inspect(session.get_bind()).has_table("scholarship_official_contacts")
 
 
 def data_quality_report(session: Session) -> dict:
@@ -195,54 +181,6 @@ def data_quality_report(session: Session) -> dict:
         )
     ).scalar_one()
 
-    # Official contacts, measured against the same two tests the professor side
-    # answers to: a source behind every claim, and an email published only when
-    # it was actually read off one. A contact is an office, so there is no
-    # "verified contact" count to inflate these by.
-    contacts_present = _contacts_table_present(session)
-    total_contacts = 0
-    contacts_without_evidence = 0
-    contacts_on_non_authoritative_source = 0
-    orphan_contacts = 0
-    contact_emails_verified = 0
-    contact_emails_stored_unverified = 0
-    if contacts_present:
-        total_contacts = session.execute(
-            select(func.count(ScholarshipOfficialContact.id))
-        ).scalar_one()
-        contacts_without_evidence = session.execute(
-            select(func.count(ScholarshipOfficialContact.id)).where(
-                (ScholarshipOfficialContact.evidence_source_url.is_(None))
-                | (ScholarshipOfficialContact.evidence_source_url == "")
-            )
-        ).scalar_one()
-        contacts_on_non_authoritative_source = session.execute(
-            select(func.count(ScholarshipOfficialContact.id)).where(
-                ScholarshipOfficialContact.evidence_source_type.not_in(
-                    AUTHORITATIVE_SOURCE_TYPES
-                )
-            )
-        ).scalar_one()
-        orphan_contacts = session.execute(
-            select(func.count(ScholarshipOfficialContact.id)).where(
-                ScholarshipOfficialContact.scholarship_id.not_in(select(Scholarship.id))
-            )
-        ).scalar_one()
-        contact_emails_verified = session.execute(
-            select(func.count(ScholarshipOfficialContact.id)).where(
-                ScholarshipOfficialContact.contact_email.isnot(None),
-                ScholarshipOfficialContact.contact_email_verified.is_(True),
-            )
-        ).scalar_one()
-        # An address stored but not confirmed must be zero at publish time, because
-        # nothing downstream re-checks the flag on a contact it cannot see.
-        contact_emails_stored_unverified = session.execute(
-            select(func.count(ScholarshipOfficialContact.id)).where(
-                ScholarshipOfficialContact.contact_email.isnot(None),
-                ScholarshipOfficialContact.contact_email_verified.is_(False),
-            )
-        ).scalar_one()
-
     return {
         # Coverage
         "total_scholarship_rows": invariant["total_scholarships"],
@@ -288,14 +226,6 @@ def data_quality_report(session: Session) -> dict:
         "source_evidence_rows": session.execute(
             select(func.count(SupervisorSourceEvidence.id))
         ).scalar_one(),
-        # Official contacts
-        "contacts_table_present": contacts_present,
-        "official_contacts": total_contacts,
-        "contacts_without_evidence": contacts_without_evidence,
-        "contacts_on_non_authoritative_source": contacts_on_non_authoritative_source,
-        "orphan_contacts": orphan_contacts,
-        "contact_emails_verified": contact_emails_verified,
-        "contact_emails_stored_unverified": contact_emails_stored_unverified,
     }
 
 
@@ -340,29 +270,6 @@ def evaluate(report: dict) -> list[str]:
         )
     if report["orphan_professor_links"]:
         failures.append(f"{report['orphan_professor_links']} link(s) reference a missing scholarship")
-    # Contacts are held to the same two rules: a source behind every claim, and
-    # no address stored without one.
-    if report["contacts_without_evidence"]:
-        failures.append(
-            f"{report['contacts_without_evidence']} official contact(s) have no source"
-        )
-    if report["contacts_on_non_authoritative_source"]:
-        failures.append(
-            f"{report['contacts_on_non_authoritative_source']} official contact(s) rest "
-            "on a non-authoritative source"
-        )
-    if report["orphan_contacts"]:
-        failures.append(
-            f"{report['orphan_contacts']} contact(s) reference a missing scholarship"
-        )
-    if report["contact_emails_stored_unverified"]:
-        # Not a failure of the read path - the response gates on the flag - but
-        # an address with no confirmation behind it is counted as a liability
-        # rather than ignored, exactly as an unconfirmed professor address is.
-        logger.warning(
-            "%s contact email(s) are stored but unconfirmed; none is published",
-            report["contact_emails_stored_unverified"],
-        )
     return failures
 
 

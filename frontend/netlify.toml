@@ -2,38 +2,6 @@
   command = "npm run build"
   publish = "dist"
 
-# ── API proxy ────────────────────────────────────────────────────────────
-#
-# This site is the frontend only. Every unmatched path falls through to
-# index.html below, which is the right answer for a deep link such as
-# /scholarships/12 and exactly the wrong answer for /api/...
-#
-# The supervisor panel requests /api/scholarships/{id}/supervisors, and the
-# catch-all answered it with 200 and Content-Type: text/html. The client could
-# not tell that from a success, so the panel reported "Supervisor information is
-# unavailable right now." while the real fault was never named. A single request
-# that returns HTML where JSON was asked for is indistinguishable from a working
-# API, which is why this rule is first and the fallback never sees /api.
-#
-# status = 200 makes this a server-side proxy rather than a redirect: the browser
-# URL stays on this origin, so the request is same-origin, no CORS preflight is
-# made, and the session cookie rides along. That also means no change to the
-# backend's allowed_origins is required — the cross-origin question never arises.
-#
-# :splat carries the whole matched path, including nested segments, and Netlify
-# appends the original query string, so interests, limit and pagination survive.
-[[redirects]]
-  from = "/api/*"
-  to = "https://scholarzone-fwzj.vercel.app/api/:splat"
-  status = 200
-
-# ── SPA fallback ─────────────────────────────────────────────────────────
-#
-# Kept, and kept last: it must not shadow the rule above, and it must stay a
-# rewrite rather than a redirect so a deep link resolves to the shell instead of
-# bouncing through a second round trip. It deliberately carries no `force`, so a
-# request that matches a real file — a hashed asset, the robots.txt, the
-# scholarship snapshot — is served from disk as it always was.
 [[redirects]]
   from = "/*"
   to = "/index.html"

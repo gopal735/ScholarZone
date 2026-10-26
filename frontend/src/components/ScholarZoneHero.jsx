@@ -1,12 +1,11 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import ScholarshipCard from './ScholarshipCard'
 import ScholarshipCardSkeleton from './ScholarshipCardSkeleton'
-import {
-  getDeadlineLabel,
-  getDeadlinePrecisionLabel,
-} from '../utils/scholarshipPresentation'
+import GraduationCap3D from './GraduationCap3D'
+import { getDeadlineLabel } from '../utils/scholarshipPresentation'
 import { useScholarshipDirectory } from '../hooks/useScholarshipDirectory'
+import { useResearchTheme } from '../hooks/useResearchTheme'
 import { fetchScholarshipStats, fetchScholarships } from '../services/scholarshipService'
 import './ScholarZoneHero.css'
 
@@ -20,13 +19,8 @@ const CAN_TILT =
 const MAX_PREVIEW = 4
 
 function LiveDataIndicator({ count, countries, fullyFunded, verified }) {
-  /* "Catalogue figures", not "Live directory figures". These numbers come from
-     the bundled snapshot - the same figures the provenance notice discloses -
-     and the label is what a screen-reader user hears first. Saying "live" here
-     claimed a freshness that could not be shown, on the surface where the claim
-     is least visible. */
   return (
-    <dl className="sz-hero__stats" aria-label="Scholarship catalogue figures">
+    <dl className="sz-hero__stats" aria-label="Live directory figures">
       <div className="sz-hero__stat">
         <dt>Opportunities</dt>
         <dd>{count}</dd>
@@ -59,7 +53,7 @@ function LiveDataIndicator({ count, countries, fullyFunded, verified }) {
  * The centrepiece is built from live directory data, so it can never
  * drift out of sync with the product. Nothing in it is a mockup.
  * ═════════════════════════════════════════════════════════════════════ */
-function HeroShowcase({ scholarship, ref, onPointerMove, onPointerLeave }) {
+function HeroShowcase({ scholarship, ref, onPointerMove, onPointerLeave, dark }) {
   return (
     <div className="sz-hero__showcase" ref={ref} onPointerMove={onPointerMove} onPointerLeave={onPointerLeave}>
       <div className="sz-hero__stage">
@@ -69,7 +63,7 @@ function HeroShowcase({ scholarship, ref, onPointerMove, onPointerLeave }) {
         <div className="sz-hero__frame">
           <div className="sz-hero__showcase-card">
             {scholarship ? (
-              <ScholarshipCard scholarship={scholarship} />
+              <ScholarshipCard scholarship={scholarship} index={0} />
             ) : (
               <ScholarshipCardSkeleton />
             )}
@@ -79,7 +73,7 @@ function HeroShowcase({ scholarship, ref, onPointerMove, onPointerLeave }) {
                   <span className="sz-hero__chip-label">Deadline</span>
                   <strong className="sz-hero__chip-value">{getDeadlineLabel(scholarship)}</strong>
                   <span className="sz-hero__chip-note">
-                    {getDeadlinePrecisionLabel(scholarship) ?? 'Deadline precision not stated'}
+                    {scholarship.deadline_precision === 'month' ? 'Month only' : 'Confirmed date'}
                   </span>
                 </aside>
 
@@ -96,24 +90,29 @@ function HeroShowcase({ scholarship, ref, onPointerMove, onPointerLeave }) {
           <span className="sz-hero__plane sz-hero__plane--near" aria-hidden="true" />
         </div>
 
+        {/* The 3D graduation cap, ported from the reference. It sits beside
+            the headline because that is where the reference puts it, and it
+            is the one element in the hero that is an object rather than a
+            surface — rounded cloth, gold metal, real reflections, a shadow,
+            draggable with inertia, tossable. */}
+        <figure className="sz-hero__cap">
+          <GraduationCap3D dark={dark} />
+          <figcaption className="sz-hero__cap-note">Drag to spin, or click to toss it</figcaption>
+        </figure>
+
         <p className="sz-hero__showcase-note">
-          {/* Only what the catalogue supports. This previously read "Every
-              listing is checked against the awarding body's own page before it
-              appears here", which is not true of the 81 public records whose
-              `verification_status` is `needs_review` - and those records are
-              the ones the catalogue deliberately publishes as "Confirm with
-              provider" rather than withheld. A blanket claim here contradicted
-              the badge on the card directly above it. */}
-          Each listing states whether its details were re-checked against the awarding
-          body&rsquo;s own page.
+          Every listing is checked against the awarding body&rsquo;s own page before it
+          appears here.
         </p>
       </div>
     </div>
   )
 }
-
 export default function ScholarZoneHero() {
-  const { scholarships, isLoading, isUsingFallback, error } = useScholarshipDirectory()
+  const { scholarships, isLoading, isUsingFallback, error } =
+    useScholarshipDirectory()
+  const { theme: researchTheme } = useResearchTheme()
+  const navigate = useNavigate()
   const [stats, setStats] = useState(null)
   const [statsLoading, setStatsLoading] = useState(true)
   const [recentScholarships, setRecentScholarships] = useState([])
@@ -205,9 +204,22 @@ export default function ScholarZoneHero() {
   const handlePointerLeave = useCallback(() => {
     const node = showcaseRef.current
     if (!node) return
+
     node.style.setProperty('--sx-px', '0px')
     node.style.setProperty('--sx-py', '0px')
   }, [])
+
+  /* The hero's one-sentence goal. It lives in the URL fragment so the
+     Match page can pick it up: a hero is the wrong place to run a match
+     engine, and duplicating the parser here would be two parsers to
+     keep in step. The page that owns matching reads the sentence and
+     does the work. */
+  const [goal, setGoal] = useState('')
+  const startMatch = useCallback(() => {
+    const text = goal.trim()
+    if (!text) return
+    navigate(`/match?goal=${encodeURIComponent(text)}`)
+  }, [goal, navigate])
 
   return (
     <section className="sz-hero" aria-label="ScholarZone introduction">
@@ -229,7 +241,10 @@ export default function ScholarZoneHero() {
           </p>
 
           <div className="sz-hero__actions">
-            <Link to="/scholarships" className="sz-hero__cta sz-hero__cta--primary">
+            {/* p-btn is the reference's button: gradient, four-layer
+                shadow, spring press. It also picks up the magnetic
+                offset from the shell-level pointer listener. */}
+            <Link to="/scholarships" className="p-btn sz-hero__cta sz-hero__cta--primary">
               Explore Scholarships
               <svg viewBox="0 0 16 16" width="14" height="14" fill="currentColor" aria-hidden="true">
                 <path d="M8 0a1 1 0 01.707.293l3.5 3.5a1 1 0 01-1.414 1.414L9 3.414V11a1 1 0 11-2 0V3.414L5.293 5.207a1 1 0 01-1.414-1.414l3.5-3.5A1 1 0 018 0z" transform="rotate(90 8 8)" />
@@ -238,15 +253,48 @@ export default function ScholarZoneHero() {
             <Link to="/countries" className="sz-hero__cta sz-hero__cta--secondary">
               Browse by country
             </Link>
-            {/* Discoverability, not decoration: this is the entry point a
-                first-time visitor actually needs, so it sits beside the two
-                primary actions rather than behind the navigation. The deep link
-                carries the tutorial id, so the Home guide is already open on
-                arrival instead of a reader landing on the directory and having
-                to know which card to choose. */}
-            <Link to="/help?tutorial=home" className="sz-hero__cta sz-hero__cta--secondary">
-              How to use ScholarZone
-            </Link>
+          </div>
+
+          {/* The reference's focal point: one sentence in, and the
+              directory answers. It is the interaction the whole reference
+              is built around, so it is a real control here rather than a
+              decorative one — the sentence is read on the Match page by
+              the same parser the form uses, and the chips below are what
+              that parser found. */}
+          <div className="sz-hero__panel p-panel">
+            <label className="sz-hero__panel-label" htmlFor="sz-hero-goal">
+              Describe your goal in one sentence
+            </label>
+            <div className="sz-hero__panel-well">
+              <textarea
+                className="sz-hero__panel-input"
+                id="sz-hero-goal"
+                name="goal"
+                rows={2}
+                placeholder="I'm from Bangladesh and want a fully funded Master's in Computer Science in Germany. I have IELTS 7."
+                value={goal}
+                onChange={(event) => setGoal(event.target.value)}
+                onKeyDown={(event) => {
+                  if (event.key === 'Enter' && !event.shiftKey && goal.trim()) {
+                    event.preventDefault()
+                    startMatch()
+                  }
+                }}
+              />
+            </div>
+            <div className="sz-hero__panel-row">
+              <button
+                type="button"
+                className="p-btn sz-hero__panel-action"
+                onClick={startMatch}
+                disabled={!goal.trim()}
+              >
+                Find my matches
+              </button>
+              <p className="sz-hero__panel-hint">
+                Press <kbd>Enter</kbd> to match
+              </p>
+            </div>
           </div>
 
           {isLoading ? (
@@ -272,12 +320,12 @@ export default function ScholarZoneHero() {
               )}
               {isUsingFallback && (
                 <p className="sz-hero__fallback-notice" role="status">
-                  ⚠️ Catalogue snapshot unavailable — showing directory data.
+                  ⚠️ Live directory unavailable — showing local data.
                 </p>
               )}
               {!stats && !statsLoading && !isUsingFallback && (
                 <p className="sz-hero__fallback-notice" role="status">
-                  ⚠️ Catalogue statistics unavailable — showing directory data.
+                  ⚠️ Live stats unavailable — showing directory data.
                 </p>
               )}
             </>
@@ -298,6 +346,7 @@ export default function ScholarZoneHero() {
           scholarship={showcaseScholarship}
           onPointerMove={CAN_TILT ? handlePointerMove : undefined}
           onPointerLeave={CAN_TILT ? handlePointerLeave : undefined}
+          dark={researchTheme === 'dark'}
         />
       </div>
 

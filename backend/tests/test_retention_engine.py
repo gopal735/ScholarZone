@@ -206,9 +206,7 @@ class TestReferenceIntegrity:
         assert report["integrity_uncertain"] is False
         assert report["unclassified_relationships"] == []
         assert report["verdict"] == "ALL_RELATIONSHIPS_CLASSIFIED"
-        # One per classified relationship. The official contact table added the
-        # fourteenth; a softcoded count would hide that.
-        assert report["relationship_count"] == 14
+        assert report["relationship_count"] == 13
 
     def test_the_report_is_introspected_not_hardcoded(self):
         """A table added later must appear, or it is invisible to the audit."""
@@ -237,7 +235,6 @@ class TestReferenceIntegrity:
             "SavedScholarship",
             "ApplicationRecord",
             "ScholarshipSupervisorCoverage",
-            "ScholarshipOfficialContact",
             "ScholarshipProfessorLink",
             "SupervisorSourceEvidence",
             "ProfessorOutreachRecord",

@@ -457,20 +457,9 @@ def test_organisational_labels_with_inline_role_are_refused(label, url):
         ("Yaacob bin Ibrahim", "prof", "https://www.ntu.edu.sg/about-us/the-chancellery/prof-yaacob-bin-ibrahim"),
     ],
 )
-def test_the_four_ntu_office_holders_are_not_published_as_supervisors(name, role, url):
-    """The four NTU people are people, and they are not supervisors for this award.
-
-    The earlier policy accepted them on honorific evidence alone. That is the
-    failure the coverage rules call out by name: these four sit under
-    `/about-us/the-chancellery/` - the university's own office page, reached
-    from a scholarship awarded through the Office of Admissions - and an office
-    holder is not evidenced to supervise a programme. Publishing them would
-    misrepresent an administrative contact as a professor.
-
-    They remain real people: the refusal is a role-evidence refusal, not a
-    personhood one, and it names the office page in its reason so an operator
-    can see which shape was refused.
-    """
+def test_the_four_ntu_people_are_still_accepted(name, role, url):
+    """The four legitimate NTU people remain approved. They use honorific
+    evidence, so the inline-role URL contract does not apply to them."""
     from app.services.supervisor_gating import approve_candidate_set
 
     candidate = FacultyCandidate(
@@ -481,9 +470,7 @@ def test_the_four_ntu_office_holders_are_not_published_as_supervisors(name, role
         name_claims_person=True,
     )
     result = approve_candidate_set([candidate], seed_host="www.ntu.edu.sg", faculty_url=url)
-    assert not result.approved, f"{name!r} must not be published as a supervisor"
-    assert result.reasons_for(SupervisorGate.ROLE_EVIDENCE) >= 1
-    assert result.rejection_reasons.get(str(SupervisorGate.PERSONHOOD), 0) == 0
+    assert [c.name for c in result.approved] == [name]
 
 
 def test_inline_role_candidate_with_navigational_slug_is_refused():

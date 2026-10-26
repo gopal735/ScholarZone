@@ -1,0 +1,104 @@
+{
+  "source_title": "Nova SBE Merit Scholarship (Master's Programs)",
+  "source_provider": "Nova School of Business and Economics (Nova SBE) – Universidade NOVA de Lisboa",
+  "source_file": "portugal_scholarships.json",
+  "researched_at": "2026-10-06T13:40:58.883868+00:00",
+  "data": {
+    "id": "research-067",
+    "title": "Nova SBE Merit Scholarship (Master's Programs)",
+    "provider": "Nova School of Business and Economics (Nova SBE) – Universidade NOVA de Lisboa",
+    "record_type": "scholarship",
+    "official_sources": [
+      {
+        "url": "https://www.novasbe.unl.pt/en/programs/scholarships-funding/masters",
+        "title": "Nova SBE Merit Scholarship (Master's Programs)",
+        "source_type": "official_provider",
+        "source_domain": "www.novasbe.unl.pt",
+        "publication_date": null,
+        "last_modified_date": null,
+        "checked_at": "2026-10-06T13:40:57.927435+00:00",
+        "source_priority": 1
+      }
+    ],
+    "image": {
+      "url": "https://www.novasbe.unl.pt/Portals/_default/skins/novasbe/assets/images/logo-N.svg",
+      "source_type": "official_provider",
+      "source_url": "https://www.novasbe.unl.pt/en/programs/scholarships-funding/masters",
+      "alt_text": "Nova SBE Merit Scholarship (Master's Programs)"
+    },
+    "funding": {
+      "funding_type": "Merit-based tuition fee waiver (20%, 50%, or 100%)",
+      "fully_funded": false,
+      "award_amount": {
+        "minimum": null,
+        "maximum": null,
+        "fixed": null,
+        "period": "unknown"
+      },
+      "currency": null
+    },
+    "eligibility": {
+      "citizenship": {
+        "required": null,
+        "eligible_countries": [],
+        "excluded_countries": [],
+        "worldwide": null
+      },
+      "age": {
+        "minimum": null,
+        "maximum": null
+      },
+      "degree": {
+        "minimum_degree": null,
+        "required_degree_field": [],
+        "final_year_allowed": null,
+        "equivalent_degree_allowed": null
+      },
+      "language": {
+        "required": true,
+        "teaching_language": [
+          "English"
+        ],
+        "accepted_tests": [],
+        "minimum_scores": {},
+        "moi_accepted": "unknown"
+      }
+    },
+    "application": {
+      "application_method": "direct",
+      "official_application_url": "https://www.novasbe.unl.pt/en/programs/scholarships-funding/masters",
+      "application_fee": {
+        "required": null,
+        "amount": null,
+        "currency": null,
+        "waiver_available": null
+      }
+    },
+    "deadlines": {
+      "status": "unknown",
+      "deadline_date": "2026-03-23 (for Fall Intake)",
+      "deadline_display": "2026-03-23 (for Fall Intake)",
+      "deadline_precision": "unknown"
+    },
+    "verification": {
+      "is_verified": true,
+      "verification_status": "active",
+      "last_verified_date": "2026-10-06",
+      "verified_by": "automated_research"
+    },
+    "data_quality": {
+      "coverage_level": "medium",
+      "missing_key_fields": [],
+      "unknown_fields": [],
+      "estimated_fields": [
+        "funding",
+        "eligibility",
+        "application"
+      ]
+    },
+    "research_notes": [
+      "Automated research pass completed with page fetch"
+    ],
+    "research_errors": []
+  }
+}

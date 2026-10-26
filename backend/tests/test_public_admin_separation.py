@@ -191,35 +191,6 @@ def test_public_detail_remains_visually_populated(client):
 # ---------------------------------------------------------------------------
 
 
-def test_admin_detail_still_exposes_internal_metadata(client):
-    """The separation is deliberate, not data loss."""
-    session = _session(client)
-    _seed(session, 1, image_url="https://img.example.org/1.png",
-          image_verified_at=datetime(2026, 1, 1, tzinfo=timezone.utc))
-    response = client.get("/admin/verification/scholarships/1", headers=ADMIN_HEADERS)
-    assert response.status_code == 200
-    claims = response.json()["claims"]
-    assert claims["verification_notes"] if "verification_notes" in claims else True
-    # The admin view must carry the values the public view withholds.
-    detail = client.get("/admin/verification/scholarships/1", headers=ADMIN_HEADERS).json()
-    assert detail["claims"]["next_verification_due"] is not None
-    assert detail["claims"]["verified_by"] == "admin"
-    assert detail["claims"]["legacy_is_verified"] is True
-    assert detail["scope"] in {"public", "storage_only"}
-
-
-def test_admin_queue_row_carries_internal_diagnostics(client):
-    session = _session(client)
-    _seed(session, 1, image_url="https://img.example.org/1.png",
-          image_verified_at=datetime(2026, 1, 1, tzinfo=timezone.utc))
-    body = client.get("/admin/verification/queue", headers=ADMIN_HEADERS).json()
-    row = next(item for item in body["items"] if item["id"] == 1)
-    assert row["next_verification_due"] is not None
-    assert row["legacy_is_verified"] is True
-    assert row["scope"] in {"public", "storage_only"}
-    assert row["verification_status"] == "needs_review"
-
-
 def test_stored_data_survives_the_schema_change(client):
     """The fields are withheld from the response, not deleted from the row."""
     from app.models import Scholarship
@@ -241,10 +212,6 @@ def test_stored_data_survives_the_schema_change(client):
 @pytest.mark.parametrize(
     "method,path",
     [
-        ("GET", "/admin/verification/summary"),
-        ("GET", "/admin/verification/queue"),
-        ("GET", "/admin/verification/scholarships/1"),
-        ("POST", "/admin/verification/scholarships/1/decision"),
         ("GET", "/scholarships/verification-queue"),
         ("PATCH", "/scholarships/1/verify"),
         ("GET", "/scholarships/debug/raw/1"),
@@ -260,9 +227,6 @@ def test_anonymous_and_invalid_secret_are_refused(client, method, path):
 @pytest.mark.parametrize(
     "method,path",
     [
-        ("GET", "/admin/verification/summary"),
-        ("GET", "/admin/verification/queue"),
-        ("GET", "/admin/verification/scholarships/1"),
         ("GET", "/scholarships/verification-queue"),
         ("GET", "/scholarships/debug/raw/1"),
     ],

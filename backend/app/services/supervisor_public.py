@@ -18,11 +18,6 @@ when a link to it is verified and that link names the page it was read from. A
 professor whose availability is unknown says so. There is no branch in this
 module that fills a gap with a plausible value, because a plausible value is
 indistinguishable from a sourced one once it is on a public page.
-
-The same rule governs the administrative contact offered in place of a
-professor: it is a separate list, never part of the professor list, published
-only for records that have no professor list, only from an authoritative
-source, and with its own email gated on its own verified flag.
 """
 
 from __future__ import annotations
@@ -257,13 +252,8 @@ def build_supervisor_list(
     scholarship_id: int,
     interests: list[str] | None = None,
     limit: int = DEFAULT_SUPERVISOR_LIMIT,
-) -> tuple[dict, list[dict], list[dict]]:
-    """Return ``(coverage, professors, official_contacts)`` for a publicly visible scholarship.
-
-    The third element is the administrative contact for records whose honest
-    supervisor answer is a negative. It is a separate list and never merged
-    into ``professors``: a scholarship office is not an academic, and rendering
-    one inside the professor list would misrepresent it as one.
+) -> tuple[dict, list[dict]]:
+    """Return ``(coverage, professors)`` for a publicly visible scholarship.
 
     Raises :class:`ScholarshipNotPublic` when the scholarship may not be read.
     """
@@ -323,17 +313,7 @@ def build_supervisor_list(
             }
         )
 
-    contacts: list[dict] = []
-    if not professors:
-        # Only offered where there is no professor list to dilute. A record
-        # with verified supervisors and a scholarship office both would invite
-        # a student to email the office about supervision, which is not what
-        # the office is for.
-        from .supervisor_contacts import official_contacts_for
-
-        contacts = official_contacts_for(db, scholarship_id)
-
-    return coverage_public_state(coverage, publishable_count), professors, contacts
+    return coverage_public_state(coverage, publishable_count), professors
 
 
 def coverage_requires_discovery(coverage: ScholarshipSupervisorCoverage | None) -> bool:

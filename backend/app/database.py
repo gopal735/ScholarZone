@@ -119,12 +119,23 @@ def _upgrade_maintenance_slot_schema(engine: Engine) -> None:
     # PostgreSQL, matching how the ``scholarships`` additions above are applied.
     add_if_absent = "ADD COLUMN IF NOT EXISTS" if engine.dialect.name == "postgresql" else "ADD COLUMN"
 
+    # Two reasons a run exists, recorded beside the slot. The slot says which
+    # schedule this belonged to; these say what caused it at all and how it
+    # arrived. Both must be added by the same upgrade that adds the slot, or an
+    # already-deployed database gains a column the model expects is present and
+    # every read of the table fails.
+    additive_columns = (
+        ("slot_id", "VARCHAR(64)"),
+        ("logical_source", "VARCHAR(32)"),
+        ("transport_event", "VARCHAR(64)"),
+    )
+
     with engine.begin() as connection:
-        if "slot_id" not in columns:
+        for name, ddl_type in additive_columns:
+            if name in columns:
+                continue
             connection.execute(
-                text(
-                    f"ALTER TABLE maintenance_runs {add_if_absent} slot_id VARCHAR(64)"
-                )
+                text(f"ALTER TABLE maintenance_runs {add_if_absent} {name} {ddl_type}")
             )
         # create_all only emits the indexes of the tables it creates, so on an
         # already-deployed database this index would silently never appear.

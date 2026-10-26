@@ -540,16 +540,12 @@ class TestManifestSemantics:
     def test_every_preserve_table_is_named_in_the_manifest(self):
         report = reference_integrity_report()
         assert report["integrity_uncertain"] is False
-        # 14 relationships, not 13: the official contact table added one, and it
-        # is classified rather than left unclassified. A count that failed to
-        # move when a table is added would be a test asserting a stale map.
-        assert report["relationship_count"] == 14
+        assert report["relationship_count"] == 13
         assert set(PRESERVE_MODELS) == {
             "ScholarshipReview", "ScholarshipVerificationHistory", "ScholarshipSnapshot",
             "ScholarshipRestoreRecord", "ImageReview",
             "SavedScholarship", "ApplicationRecord",
-            "ScholarshipSupervisorCoverage", "ScholarshipOfficialContact",
-            "ScholarshipProfessorLink",
+            "ScholarshipSupervisorCoverage", "ScholarshipProfessorLink",
             "SupervisorSourceEvidence", "ProfessorOutreachRecord",
         }
 

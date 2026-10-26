@@ -609,19 +609,41 @@ h2 {
   transform: translateX(2px);
 }
 
-.sz-btn--primary {
+/* The premium solid control, the way the reference builds it: a
+   vertical gradient so the surface reads as turned toward a light, a
+   top inset highlight and a bottom inset shade so it reads as thick,
+   and a spring press that physically dips. Flat fills on this paper
+   canvas read as decals; the three layers read as an object. */
+.sz-btn--primary,
+.sz-glass-button--primary {
   color: var(--sz-solid-ink);
-  background: var(--sz-solid-bg);
+  background: linear-gradient(180deg, var(--sz-solid-grad-top) 0%, var(--sz-solid-bg) 100%);
   border: 1px solid var(--sz-solid-border);
   box-shadow: var(--sz-solid-shadow);
+  transition:
+    transform 450ms var(--timing-spring),
+    box-shadow var(--duration-hover) var(--timing-smooth),
+    filter var(--duration-hover) var(--timing-smooth),
+    background var(--duration-hover) var(--timing-smooth),
+    color var(--duration-hover) var(--timing-smooth);
 }
 
-.sz-btn--primary:hover {
+.sz-btn--primary:hover,
+.sz-glass-button--primary:hover:not(:disabled):not([aria-disabled='true']) {
   color: var(--sz-solid-ink-hover);
-  background: var(--sz-solid-bg-hover);
+  background: linear-gradient(180deg, var(--sz-solid-grad-top-hover) 0%, var(--sz-solid-bg-hover) 100%);
   border-color: var(--sz-solid-border-hover);
+  filter: brightness(1.06);
   transform: translateY(-1px);
   box-shadow: var(--sz-solid-shadow-hover);
+}
+
+.sz-btn--primary:active,
+.sz-glass-button--primary:active:not(:disabled):not([aria-disabled='true']) {
+  transform: translateY(1px) scale(0.985);
+  filter: brightness(0.97);
+  transition-duration: 80ms;
+  box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.3), 0 1px 1px rgba(0, 0, 0, 0.2);
 }
 
 .sz-btn--secondary {
@@ -643,7 +665,7 @@ h2 {
 }
 
 .sz-btn--ghost:hover {
-  background: #ffffff;
+  background: var(--surface-subtle);
   border-color: var(--sz-ink);
 }
 
@@ -1393,8 +1415,11 @@ h2 {
 }
 
 /* ── Ambient Orbs ──────────────────────────────────────────────
-   The gradient and blur live on a static ::before so the drift
-   animation on the parent stays a cheap translate-only composite. */
+   The reference's atmosphere is two aurora fields — teal and indigo —
+   drifting behind the page. The gradient and blur live on a static
+   ::before so the drift animation on the parent stays a cheap
+   translate-only composite. The hues are tokens, so the field follows
+   the palette swap like everything else. */
 .sz-ambient {
   position: absolute;
   inset: 0;
@@ -1421,23 +1446,15 @@ h2 {
 }
 
 .sz-ambient__orb[data-variant='0']::before {
-  background: radial-gradient(circle, rgba(196, 164, 74, 0.4) 0%, transparent 68%);
+  background: radial-gradient(circle, var(--sz-orb-1) 0%, transparent 68%);
 }
 
 .sz-ambient__orb[data-variant='1']::before {
-  background: radial-gradient(circle, rgba(198, 176, 132, 0.3) 0%, transparent 68%);
+  background: radial-gradient(circle, var(--sz-orb-2) 0%, transparent 68%);
 }
 
 .sz-ambient__orb[data-variant='2']::before {
-  background: radial-gradient(circle, rgba(212, 184, 90, 0.24) 0%, transparent 68%);
-}
-
-[data-theme='dark'] .sz-ambient__orb[data-variant='0']::before {
-  background: radial-gradient(circle, rgba(212, 184, 90, 0.3) 0%, transparent 68%);
-}
-
-[data-theme='dark'] .sz-ambient__orb[data-variant='1']::before {
-  background: radial-gradient(circle, rgba(88, 130, 210, 0.28) 0%, transparent 68%);
+  background: radial-gradient(circle, var(--sz-orb-1) 0%, transparent 68%);
 }
 
 @keyframes sz-ambient-drift {

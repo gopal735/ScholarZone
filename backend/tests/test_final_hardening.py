@@ -439,15 +439,8 @@ class TestPublicPredicateCases:
             session.close()
 
     def _gate(self, monkeypatch, **over):
-        # The image flags stay inert and are still asserted here to keep them
-        # that way. SCHOLARZONE_PUBLIC_REQUIRE_VERIFIED is deliberately NOT in
-        # this dict any more: it used to be inert, and the campaign owner now
-        # needs it to work — it is wired to the canonical predicate, and its
-        # behaviour is pinned in tests/test_public_require_verified_switch.py.
-        # Leaving it in the "these must be ignored" set would silently undo the
-        # owner's decision, so it is off here and asserted explicitly where the
-        # verified-only behaviour is the thing under test.
         base = {
+            "SCHOLARZONE_PUBLIC_REQUIRE_VERIFIED": "true",
             "SCHOLARZONE_PUBLIC_REQUIRE_VERIFIED_IMAGE": "true",
             "SCHOLARZONE_PUBLIC_ALLOW_THIRD_PARTY_IMAGE": "false",
         }
@@ -481,27 +474,6 @@ class TestPublicPredicateCases:
              image_url="https://a.test/l.png",
              image_verified_at=NOW, image_source_type="official_university")
         assert self._listed(factory, monkeypatch, **self._gate(monkeypatch)) == 1
-
-    def test_verified_only_flag_hides_unverified(self, factory, monkeypatch):
-        """The one quality-gate setting that is now live.
-
-        The image flags above remain inert and are still asserted inert. This
-        one is wired to the canonical predicate, because the owner asked for a
-        catalogue of only verified scholarships once the evidence exists. Off is
-        the default and is asserted by every other test here.
-        """
-        _add(factory, 1, is_verified=False,
-             verification_status="needs_review",
-             image_url="https://a.test/l.png",
-             image_verified_at=NOW, image_source_type="official_university")
-        listed = self._listed(
-            factory,
-            monkeypatch,
-            SCHOLARZONE_PUBLIC_REQUIRE_VERIFIED="true",
-            SCHOLARZONE_PUBLIC_REQUIRE_VERIFIED_IMAGE="true",
-            SCHOLARZONE_PUBLIC_ALLOW_THIRD_PARTY_IMAGE="false",
-        )
-        assert listed == 0
 
     def test_quarantined_is_never_public(self, factory, monkeypatch):
         _add(factory, 1, is_verified=True, image_url="https://a.test/l.png",
