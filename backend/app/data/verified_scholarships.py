@@ -19,7 +19,6 @@ SWISS_ESKAS_OFFICIAL_SOURCE_URL = "https://www.sbfi.admin.ch/en/swiss-government
 FRANCE_CHARPAK_OFFICIAL_SOURCE_URL = "https://www.inde.campusfrance.org/france-excellence-charpak-scholarship-program"
 MOPGA_OFFICIAL_SOURCE_URL = "https://www.campusfrance.org/en/mopga-make-our-planet-great-again-funding-programs"
 DEUTSCHLANDSTIPENDIUM_OFFICIAL_SOURCE_URL = "https://www.deutschlandstipendium.de/"
-STUDY_IN_INDIA_OFFICIAL_SOURCE_URL = "https://www.studyinindia.gov.in/"
 JASSO_OFFICIAL_SOURCE_URL = "https://www.jasso.go.jp/en/ryugaku/scholarship_j/shoreihi/about.html"
 POSCO_OFFICIAL_SOURCE_URL = "https://www.postf.org/en/asia/purpose"
 ETH_ESOP_OFFICIAL_SOURCE_URL = "https://ethz.ch/students/en/studies/financial/scholarships/excellencescholarship.html"
@@ -738,67 +737,6 @@ VERIFIED_SCHOLARSHIPS = (
         ),
     ),
     ScholarshipIngestionRecord(
-        name="Study in India (SII) Scholarship",
-        country="India",
-        degree_levels="Undergraduate, Postgraduate, Diploma, Certificate",
-        funding_type="Partial",
-        deadline="Varies by institution and admission cycle",
-        deadline_date=None,
-        deadline_precision="unknown",
-        eligibility=[
-            "International students from partner countries (South Asia, South-East Asia, Middle East, Africa)",
-            "Merit-based selection",
-            "Entry-level eligibility: 10+2 years of schooling for undergraduate, Bachelor's degree for postgraduate, Master's degree for doctoral programmes",
-            "Specific eligibility criteria vary by institute and programme",
-            "NRIs are eligible for Study in India program but NOT for SII Scholarship",
-        ],
-        eligibility_summary=(
-            "International students from partner countries (South Asia, South-East Asia, Middle East, Africa); merit-based."
-        ),
-        coverage=[
-            "Tuition fee waivers/concessions up to USD 3,200 per annum at partner institutions",
-        ],
-        required_documents=[
-            "Academic transcripts",
-            "Passport",
-            "Proof of nationality",
-            "Admission offer",
-        ],
-        requirements=[
-            "Academic transcripts",
-            "Passport",
-            "Proof of nationality",
-            "Admission offer",
-        ],
-        english_requirement="Not centrally specified - varies by institution and programme",
-        duration=(
-            "Undergraduate: 3-5 years (depending on discipline). Postgraduate: 1-2 years. "
-            "Doctoral: 3-5 years. Diploma/Certificate: varies by programme."
-        ),
-        application_period="Varies by institution and admission cycle",
-        official_updates_url="https://www.studyinindia.gov.in/scholarships&fellowships",
-        region="South Asia",
-        selection_notes=(
-            "Merit-based selection. Entry-level eligibility: 10+2 years of schooling for undergraduate, "
-            "Bachelor's degree for postgraduate, Master's degree for doctoral programmes. "
-            "Specific eligibility criteria vary by institute and programme."
-        ),
-        program_type="Government scholarship (Ministry of Education, implemented by EdCIL India Limited)",
-        application_method=[
-            "Online via Study in India portal at studyinindia.gov.in",
-            "Register and get SII ID (compulsory for tracking foreign student journey)",
-            "Explore courses and submit applications to chosen institutes",
-            "Accept offer letter and apply for visa/student e-visa with SII ID",
-        ],
-        official_source_url=STUDY_IN_INDIA_OFFICIAL_SOURCE_URL,
-        official_source="Ministry of Education, Government of India (implemented by EdCIL India Limited)",
-        is_verified=True,
-        best_fit="International students from partner countries seeking partial funding for studies in India.",
-        notes=(
-            "2,000+ scholarships available across 126+ partner institutes; distinct from ICCR schemes."
-        ),
-    ),
-    ScholarshipIngestionRecord(
         name="JASSO Monbukagakusho Honors Scholarship",
         country="Japan",
         degree_levels="Undergraduate, Graduate, Japanese Language Institute, College of Technology, Specialized Training College",
@@ -1393,6 +1331,7 @@ VERIFIED_SCHOLARSHIPS = (
         notes="Apply through U.S. Embassy or Fulbright Commission in home country. Highly competitive.",
         legacy_titles=("fulbright scholarship",),
         is_verified=True,
+        preferred_id=807
     ),
     ScholarshipIngestionRecord(
         name="Chevening Scholarship",
@@ -2739,6 +2678,1122 @@ VERIFIED_SCHOLARSHIPS = (
         ),
         is_verified=True,
         last_verified_date=date(2026, 8, 31),
+    ),
+
+# =============================================================================
+# INTEGRATED 2027-CYCLE SCHOLARSHIPS (IDs 745-807)
+# Added from additional_scholarships.py to canonical verified catalogue
+# =============================================================================
+
+    ScholarshipIngestionRecord(
+        name="Université Paris-Saclay IDEX International Master's Scholarships",
+        country="France",
+        degree_levels="Master's (M1 & M2)",
+        funding_type="Partial",
+        official_source_url="https://www.universite-paris-saclay.fr/en/admission/bourses-et-aides-financieres/international-masters-scholarships-program",
+        is_verified=True,
+        deadline="25 March 2026 (programme pre-selection) / 31 March 2026 (scholarship form)",
+        deadline_precision="varies",
+        eligibility_summary="Foreign nationals, first-time enrolment in France, under 30, admitted to an eligible Master's at Paris-Saclay member institutions (AgroParisTech, CentraleSupélec, ENS Paris-Saclay, IOGS, etc.). Cannot combine with Eiffel/Europa/Erasmus Mundus.",
+        coverage=["€10,000/year", "Up to €1,000 travel/visa allowance", "CROUS fee waived", "Tuition only ~€243–380/yr"],
+        official_source="Université Paris-Saclay (Government of France / IDEX)",
+        preferred_id=745
+    ),
+
+    ScholarshipIngestionRecord(
+        name="NUS Commonwealth Scholarship",
+        country="Singapore",
+        degree_levels="Master's (Research) / PhD",
+        funding_type="Fully Funded",
+        official_source_url="https://nusgs.nus.edu.sg/scholarships/commonwealth-scholarship",
+        is_verified=True,
+        deadline="~Nov 2026 for Aug 2027 intake (verify official site)",
+        deadline_precision="varies",
+        eligibility_summary="Citizens of Commonwealth countries (Bangladesh is a Commonwealth member → eligible), min 2nd Upper Class Honours; eligible for MOE Subsidy.",
+        coverage=["SGD 3,000/month (PhD)", "SGD 2,900/month (Master's)", "Full tuition fee subsidy", "Additional SGD500/month post-QE"],
+        official_source="NUS Graduate School",
+        best_fit="Commonwealth citizens including Bangladeshi students",
+        preferred_id=746
+    ),
+
+    ScholarshipIngestionRecord(
+        name="Bocconi University — ISU Bocconi Scholarship / Bocconi4Access to Education",
+        country="Italy",
+        degree_levels="Bachelor of Science, Integrated Master of Arts in Law, Master of Science",
+        funding_type="Need-based (Partial to Full)",
+        official_source_url="https://www.unibocconi.it/en/applying-bocconi/bachelor-and-law-programs/funding/isu-bocconi-scholarship-first-year-students-ay-2026-27",
+        is_verified=True,
+        deadline="International rounds typically May–June 2026 (check portal for exact dates)",
+        deadline_precision="varies",
+        eligibility_summary="First-year students (domestic and international) meeting economic and merit requirements defined by the Lombardy Region. ISEE/ISEEU Parificato must not exceed ~€26,888.",
+        coverage=["Full or partial tuition fee waiver", "Cash grant amount determined by ISEE", "100% full tuition waivers for international first-year Bachelor's/Law students through the same scheme"],
+        official_source="Università Bocconi",
+        preferred_id=747
+    ),
+
+    ScholarshipIngestionRecord(
+        name="University of Turin — Talent 4 UniTo",
+        country="Italy",
+        degree_levels="Master's Degree (Postgraduate)",
+        funding_type="Partial",
+        official_source_url="https://en.unito.it/studying-unito/scholarships-international-students",
+        is_verified=True,
+        deadline="Not specified in source (verify on portal for current cycle)",
+        deadline_precision="varies",
+        eligibility_summary="International students enrolling for the first year of a postgraduate degree programme without restricted access, taught in English. Open to students from all nationalities.",
+        coverage=["€20,000 total over two academic years (€10,000/year gross)"],
+        official_source="Università degli Studi di Torino",
+        preferred_id=748
+    ),
+
+    ScholarshipIngestionRecord(
+        name="University of Turin — UNICORE 8.0 (University Corridors for Refugees)",
+        country="Italy",
+        degree_levels="Master's Degree (Postgraduate)",
+        funding_type="Fully Funded",
+        official_source_url="https://en.unito.it/studying-unito/scholarships-international-students/university-corridors-refugees-unicore-80",
+        is_verified=True,
+        deadline="Not specified in source",
+        deadline_precision="varies",
+        eligibility_summary="Specifically for international students who are refugees or beneficiaries of international protection from Bangladesh, Burkina Faso, Cameroon, Ethiopia, India, Kenya, Mozambique, Niger, Nigeria, South Africa, Uganda, Zambia, and Zimbabwe.",
+        coverage=["€7,000/year", "Service benefits (including accommodation and meals) for two years"],
+        official_source="Università degli Studi di Torino",
+        best_fit="Refugee students from Bangladesh pursuing Master's degrees",
+        preferred_id=749
+    ),
+
+    ScholarshipIngestionRecord(
+        name="University of Brescia — STAR Scholarships (Foundation Year + Bachelor's)",
+        country="Italy",
+        degree_levels="Foundation Year + Bachelor's Degree",
+        funding_type="Fully Funded",
+        official_source_url="https://www.unibs.it/en/study/fees-and-scholarships/scholarships-and-grants",
+        is_verified=True,
+        deadline="15 March 2026 (12:00 Italian time)",
+        deadline_precision="varies",
+        eligibility_summary="Citizens and residents of particularly poor or developing countries (including Bangladesh) or priority cooperation countries. Must be born in 2000 or later, first-time enrolment, and possess a valid secondary school diploma.",
+        coverage=["€6,132.10 + full tuition fee waiver for Foundation Year and Bachelor's", "Free accommodation in university residences"],
+        official_source="Università degli Studi di Brescia",
+        best_fit="Bangladeshi students from developing country backgrounds",
+        preferred_id=750
+    ),
+
+    ScholarshipIngestionRecord(
+        name="Sapienza University of Rome — PhD Scholarships",
+        country="Italy",
+        degree_levels="PhD (42nd Cycle, A.Y. 2026/2027)",
+        funding_type="Fully Funded",
+        official_source_url="https://www.uniroma1.it/en/study/phd/phd-programmes",
+        is_verified=True,
+        deadline="1 June 2026",
+        deadline_precision="varies",
+        eligibility_summary="All nationalities. Must hold a second-cycle degree (or equivalent foreign degree) by 31 October 2026 and not have previously benefited from a PhD scholarship in Italy.",
+        coverage=["€16,243/year (gross of student withholdings)", "Increased by 50% for authorised study/research periods abroad (up to 12 months)", "10% research budget"],
+        official_source="Sapienza Università di Roma",
+        preferred_id=751
+    ),
+
+    ScholarshipIngestionRecord(
+        name="Maastricht University Holland High Potential Scholarship",
+        country="Netherlands",
+        degree_levels="Master's",
+        funding_type="Partial",
+        official_source_url="https://www.maastrichtuniversity.nl/scholarships",
+        is_verified=True,
+        deadline="1 February (for September intake)",
+        deadline_precision="varies",
+        eligibility_summary="Non-EEA students applying for a Master's programme at Maastricht University. Must have excellent academic record and strong motivation.",
+        coverage=["Holland Scholarship: €5,000", "UM High Potential Scholarship: tuition fee waiver + living expenses + health insurance + visa costs"],
+        official_source="Maastricht University",
+        preferred_id=752
+    ),
+
+    ScholarshipIngestionRecord(
+        name="Lund University Global Scholarship",
+        country="Sweden",
+        degree_levels="Bachelor's, Master's",
+        funding_type="Partial",
+        official_source_url="https://www.lunduniversity.lu.se/admissions/scholarships-and-awards/lund-university-global-scholarship",
+        is_verified=True,
+        deadline="15 January (for September intake)",
+        deadline_precision="varies",
+        eligibility_summary="Non-EU/EEA students applying to Lund University. Merit-based scholarship for outstanding academic achievement. Covers 25% to 100% of tuition fees.",
+        coverage=["25%, 50%, 75%, or 100% tuition fee waiver"],
+        official_source="Lund University",
+        preferred_id=753
+    ),
+
+    ScholarshipIngestionRecord(
+        name="Chalmers University of Technology — IPOET Scholarship",
+        country="Sweden",
+        degree_levels="Master's",
+        funding_type="Partial",
+        official_source_url="https://www.chalmers.se/en/education/fees-finance/scholarships",
+        is_verified=True,
+        deadline="15 January (for September intake)",
+        deadline_precision="varies",
+        eligibility_summary="Non-EU/EEA students applying for a Master's programme at Chalmers. Merit-based scholarship covering 75% of tuition fees.",
+        coverage=["75% tuition fee waiver for the full 2-year programme"],
+        official_source="Chalmers University of Technology",
+        preferred_id=754
+    ),
+
+    ScholarshipIngestionRecord(
+        name="Yonsei University Underwood International College (UIC) Admissions Scholarship",
+        country="South Korea",
+        degree_levels="Bachelor's (Undergraduate)",
+        funding_type="Full Tuition",
+        official_source_url="https://uic.yonsei.ac.kr/main/admission.php?mid=m04_03_02",
+        is_verified=True,
+        deadline="Automatic consideration during admission evaluation (no separate application)",
+        deadline_precision="varies",
+        eligibility_summary="Newly-admitted international students to UIC; selected based on academic credentials. Must maintain required GPA each semester. Does NOT include monthly living expenses, accommodation, airfare, or health insurance.",
+        coverage=["Full tuition for 4 years (8 semesters)", "Automatic consideration during admission evaluation"],
+        official_source="Yonsei University (Underwood International College)",
+        preferred_id=755
+    ),
+
+    ScholarshipIngestionRecord(
+        name="TU Graz 100 / TU Graz High Potentials",
+        country="Austria",
+        degree_levels="Bachelor's, Master's",
+        funding_type="Partial to Full",
+        official_source_url="https://www.tugraz.at/en/studying-and-teaching/studying-at-tu-graz/prospective-students/financial-matters/scholarships-for-students/scholarships-tu-graz-100",
+        is_verified=True,
+        deadline="05 May – 07 July 2026",
+        deadline_precision="varies",
+        eligibility_summary="Open to international students ('Austria and abroad'); merit-based selection.",
+        coverage=["Up to €8,800 for Bachelor's students", "Up to €17,600 for Master's students", "Networking with partner companies"],
+        official_source="TU Graz",
+        preferred_id=756
+    ),
+
+    ScholarshipIngestionRecord(
+        name="DAAD Postgraduate Studies in the Field of Music",
+        country="Germany",
+        degree_levels="Master's",
+        funding_type="Fully Funded",
+        official_source_url="https://www2.daad.de/deutschland/stipendium/datenbank/en/21148-scholarship-database/?detail=57135743",
+        is_verified=True,
+        deadline="September annually",
+        deadline_precision="varies",
+        eligibility_summary="Graduates in music from developing countries. Min. GPA equivalent to German 2.5. Bachelor's degree completed within last 6 years. Language requirements as specified by the respective study programme.",
+        coverage=["Monthly stipend: €992", "Health/accident insurance", "Travel allowance", "Language course", "Study allowance"],
+        official_source="DAAD (German Academic Exchange Service)",
+        best_fit="Bangladeshi music graduates pursuing Master's in Germany",
+        preferred_id=757
+    ),
+
+    ScholarshipIngestionRecord(
+        name="Government of Ireland Postgraduate Scholarship Programme",
+        country="Ireland",
+        degree_levels="Master's (Research), PhD",
+        funding_type="Fully Funded",
+        official_source_url="https://research.ie/funding/goipg",
+        is_verified=True,
+        deadline="Annual call (typically opens August, closes October)",
+        deadline_precision="varies",
+        eligibility_summary="All disciplines. Open to Irish, EU, and non-EU applicants. Prestigious awards for excellent research. Selection by international peer review. Funded by Department of Further and Higher Education, Research, Innovation and Science.",
+        coverage=["Stipend: €22,000 per annum", "Contribution to fees (incl. non-EU fees) up to €5,750/year", "Research expenses: €3,250/year"],
+        official_source="Irish Research Council (now Taighde Éireann/Research Ireland)",
+        best_fit="Research-focused postgraduate students in any discipline",
+        preferred_id=758
+    ),
+
+    ScholarshipIngestionRecord(
+        name="University of Galway Global Scholarships",
+        country="Ireland",
+        degree_levels="Bachelor's, Master's",
+        funding_type="Partial",
+        official_source_url="https://www.universityofgalway.ie/internationalscholarships",
+        is_verified=True,
+        deadline="~May 2026 (verify on official site for current cycle)",
+        deadline_precision="varies",
+        eligibility_summary="Non-EU international students commencing study at University of Galway. Merit-based scholarships for undergraduate and postgraduate taught programmes.",
+        coverage=["Tuition fee reduction (varies by award tier)", "Global Scholarship amounts vary by region and programme"],
+        official_source="University of Galway",
+        best_fit="Merit-based funding for international students at University of Galway",
+        preferred_id=759
+    ),
+
+    ScholarshipIngestionRecord(
+        name="University of Copenhagen Danish Government Scholarship",
+        country="Denmark",
+        degree_levels="Master's",
+        funding_type="Partial",
+        official_source_url="https://www.ku.dk/studies/masters/application-and-admission/scholarships",
+        is_verified=True,
+        deadline="With admission application",
+        deadline_precision="varies",
+        eligibility_summary="Non-EU/EEA students admitted to KU MA/MSc programmes. No separate scholarship application — automatic consideration. 2–4 scholarships per faculty per year. Awarded solely on academic achievement; financial need not considered.",
+        coverage=["Full or partial tuition fee waiver", "Some faculties include basic living expense grant"],
+        official_source="University of Copenhagen",
+        best_fit="Outstanding non-EU master's applicants to University of Copenhagen",
+        preferred_id=760
+    ),
+
+    ScholarshipIngestionRecord(
+        name="KU Leuven ICP Connect Scholarship (VLIR-UOS)",
+        country="Belgium",
+        degree_levels="Master's (selected programmes)",
+        funding_type="Fully Funded",
+        official_source_url="https://www.kuleuven.be/scholarships/year/2026-2027/icp-connect-scholarship",
+        is_verified=True,
+        deadline="1 February 2026, 23:59 CET",
+        deadline_precision="varies",
+        eligibility_summary="Citizens of 28 VLIR-UOS partner countries in Africa, Asia, and Latin America. Must reside in eligible country at time of application. Age <=35 (Master's) or <=45 (Advanced Master's). Preference for candidates in higher education, government, or civil society. Cannot have previously received a Belgian government scholarship or studied at a Belgian institution. 50 scholarships across 5 programmes: Cultural Anthropology & Development Studies, Human Settlements, Food Technology, Sustainable Development, Water Resources Engineering.",
+        coverage=["Full tuition fee waiver", "Monthly allowance €1,400 (living, accommodation, meals, transport)", "Health insurance", "Installation costs", "Round-trip travel to/from Belgium", "Full standard length of programme"],
+        official_source="KU Leuven / VLIR-UOS (Flemish Interuniversity Council)",
+        best_fit="Outstanding students from developing countries in development-related Master's programmes",
+        preferred_id=761
+    ),
+
+    ScholarshipIngestionRecord(
+        name="Hungarian Diaspora Scholarship Programme",
+        country="Hungary",
+        degree_levels="Bachelor's, Master's, One-tier Master's, Doctoral, Non-degree",
+        funding_type="Fully Funded",
+        official_source_url="https://diasporascholarship.hu/en",
+        is_verified=True,
+        deadline="2 February 2026, 2 p.m. CET",
+        deadline_precision="varies",
+        eligibility_summary="For individuals with Hungarian roots/ancestors living outside EU, Serbia, and Zakarpatska Oblast (Ukraine). Must demonstrate Hungarian identity in motivation letter and have recommendation from Hungarian diaspora organization or diplomatic representation. Must have lived outside Hungary for at least 5 years. Covers all countries except EU member states. ~33 Hungarian higher education institutions engaged, ~1300 study programmes available.",
+        coverage=["Tuition-free education", "Monthly stipend: HUF 43,700 (non-degree/bachelor's/master's)", "Accommodation contribution: free dormitory or HUF 40,000/month", "Medical insurance: up to HUF 65,000/year", "Travel allowance (distance-based, HUF 330,000 if >8,000km from Budapest)", "Hungary Pass (unlimited domestic travel)"],
+        official_source="Hungarian Government / Tempus Public Foundation",
+        best_fit="Individuals with Hungarian heritage seeking to study in Hungary",
+        preferred_id=762
+    ),
+
+    ScholarshipIngestionRecord(
+        name="Nova School of Business and Economics (Nova SBE) Merit Scholarships",
+        country="Portugal",
+        degree_levels="Bachelor's, Master's, MBA",
+        funding_type="Partial to Fully Funded",
+        official_source_url="https://www.novasbe.unl.pt/en/scholarships",
+        is_verified=True,
+        deadline="Varies by programme (typically aligned with admissions rounds)",
+        deadline_precision="varies",
+        eligibility_summary="All nationalities eligible. Nova SBE is a top-ranked business school (FT MiM top 30, MBA top 40). Merit scholarships awarded based on academic excellence, leadership, and professional achievement. Covers 50-100% of tuition plus additional awards of €5,000-€15,000. Separate scholarship application may be required. Strong focus on business, economics, finance, and management.",
+        coverage=["50-100% tuition fee waiver", "Additional awards: €5,000-€15,000", "Leadership development opportunities", "Career services access"],
+        official_source="Nova School of Business and Economics (Lisbon)",
+        best_fit="Outstanding business and economics students at top-ranked Portuguese business school",
+        preferred_id=763
+    ),
+
+    ScholarshipIngestionRecord(
+        name="University of Sheffield International Postgraduate Scholarship 2027",
+        country="United Kingdom",
+        degree_levels="Master's (taught)",
+        funding_type="Partial",
+        official_source_url="https://www.sheffield.ac.uk/international/fees-and-funding/scholarships/postgraduate",
+        is_verified=True,
+        deadline="Varies by course and region (2027 entry)",
+        deadline_precision="varies",
+        eligibility_summary="Overseas fee-paying students joining taught Master's programmes in September 2027; automatic consideration on application.",
+        coverage=["Tuition fee reduction (amount varies by region)"],
+        official_source="University of Sheffield",
+        requirements=["Hold an offer for an eligible taught Master's programme", "Be classified as overseas for fee purposes", "Meet academic entry requirements"],
+        preferred_id=764
+    ),
+
+    ScholarshipIngestionRecord(
+        name="University of Portsmouth Chancellor's Global Academic Merit Scholarship (January 2027)",
+        country="United Kingdom",
+        degree_levels="Undergraduate and Postgraduate (taught)",
+        funding_type="Partial",
+        official_source_url="https://www.port.ac.uk/study/international-students/funding/scholarships",
+        is_verified=True,
+        deadline="2 November 2026 (January 2027 entry)",
+        deadline_precision="unknown",
+        eligibility_summary="Self-funded international students starting full-time on-campus courses in January 2027.",
+        coverage=["GBP 5,000 tuition fee reduction"],
+        official_source="University of Portsmouth",
+        requirements=["Apply for an eligible full-time course", "Be a new student at the University of Portsmouth", "Meet academic and English language requirements"],
+        preferred_id=765
+    ),
+
+    ScholarshipIngestionRecord(
+        name="University of Birmingham Postgraduate High Fliers Scholarship (January 2027)",
+        country="United Kingdom",
+        degree_levels="Master's",
+        funding_type="Partial",
+        official_source_url="https://www.birmingham.ac.uk/study/scholarships-funding/postgraduate-high-fliers-scholarship-for-january",
+        is_verified=True,
+        deadline="7 December 2026",
+        deadline_precision="unknown",
+        eligibility_summary="Masters students beginning eligible programmes on the Birmingham campus in January 2027 from listed countries.",
+        coverage=["Tuition fee contribution (value varies by programme)"],
+        official_source="University of Birmingham",
+        requirements=["Hold an offer for an eligible Master's programme", "Be from an eligible country", "Meet academic entry requirements"],
+        preferred_id=766
+    ),
+
+    ScholarshipIngestionRecord(
+        name="University of Calgary International Entrance Scholarship",
+        country="Canada",
+        degree_levels="Bachelor's (first year)",
+        funding_type="Partial",
+        official_source_url="https://www.ucalgary.ca/registrar/awards/university-calgary-international-entrance-scholarship",
+        is_verified=True,
+        deadline="Annual fall intake (check official page)",
+        deadline_precision="varies",
+        eligibility_summary="International students entering first year of any undergraduate degree in the upcoming fall term.",
+        coverage=["CAD 20,000 (renewable up to 4 years with GPA 2.60+)"],
+        official_source="University of Calgary",
+        requirements=["Be an international student", "Meet English language proficiency", "Achieve required GPA for renewal"],
+        preferred_id=767
+    ),
+
+    ScholarshipIngestionRecord(
+        name="University of Melbourne International Undergraduate and Graduate Scholarships (2027)",
+        country="Australia",
+        degree_levels="Bachelor's and Master's",
+        funding_type="Partial to Full",
+        official_source_url="https://study.unimelb.edu.au/study-with-us/international-scholarships",
+        is_verified=True,
+        deadline="Automatic consideration with application (2027 intake)",
+        deadline_precision="varies",
+        eligibility_summary="High-performing international students commencing in 2027 at the University of Melbourne.",
+        coverage=["Tuition fee remission (varies by scholarship)"],
+        official_source="University of Melbourne",
+        requirements=["Apply for an eligible programme", "Meet academic entry requirements", "Be an international student"],
+        preferred_id=768
+    ),
+
+    ScholarshipIngestionRecord(
+        name="DAAD Study Scholarships - Master Studies for All Academic Disciplines (2027)",
+        country="Germany",
+        degree_levels="Master's",
+        funding_type="Fully Funded",
+        official_source_url="https://www2.daad.de/deutschland/stipendium/datenbank/en/21148-scholarship-database",
+        is_verified=True,
+        deadline="Country-specific (most 21 Oct - 1 Dec 2026)",
+        deadline_precision="varies",
+        eligibility_summary="Graduates from eligible countries pursuing a Master's degree at a German university.",
+        coverage=["EUR 992 per month", "Health/accident/personal liability insurance", "Travel allowance"],
+        official_source="DAAD (German Academic Exchange Service)",
+        requirements=["Hold a recognised first degree", "Have not been resident in Germany for more than 15 months", "Meet language requirements"],
+        preferred_id=769
+    ),
+
+    ScholarshipIngestionRecord(
+        name="TU Delft Excellence Scholarships 2027",
+        country="Netherlands",
+        degree_levels="Master's",
+        funding_type="Fully Funded",
+        official_source_url="https://www.tudelft.nl/en/education/study-programme-orientation/practical-matters/scholarships",
+        is_verified=True,
+        deadline="1 December 2026 (23:59 CET)",
+        deadline_precision="unknown",
+        eligibility_summary="Outstanding international MSc applicants to TU Delft programmes.",
+        coverage=["Full tuition fee waiver", "Living expenses contribution"],
+        official_source="Delft University of Technology",
+        requirements=["Apply for an eligible MSc programme", "Meet admission requirements", "Demonstrate academic excellence"],
+        preferred_id=770
+    ),
+
+    ScholarshipIngestionRecord(
+        name="Maastricht University NL-High Potential Scholarships 2027-2028",
+        country="Netherlands",
+        degree_levels="Master's",
+        funding_type="Fully Funded",
+        official_source_url="https://www.maastrichtuniversity.nl/education/scholarships",
+        is_verified=True,
+        deadline="Scholarship opens 1 October 2026",
+        deadline_precision="varies",
+        eligibility_summary="Talented non-EU/EEA students admitted to participating full-time Master's programmes.",
+        coverage=["Full tuition", "Monthly living allowance", "Insurance", "Visa costs"],
+        official_source="Maastricht University",
+        requirements=["Be from outside EU/EEA/Switzerland/Suriname", "Be 35 or younger on 1 Sep 2027", "Have excellent academic record"],
+        preferred_id=771
+    ),
+
+    ScholarshipIngestionRecord(
+        name="JASSO Monbukagakusho Honors Scholarship 2027",
+        country="Japan",
+        degree_levels="Undergraduate and Graduate",
+        funding_type="Partial",
+        official_source_url="https://www.jasso.go.jp/en/ryugaku/scholarship_j/shoreihi/index.html",
+        is_verified=True,
+        deadline="Via university after enrolment (EJU reservation available)",
+        deadline_precision="varies",
+        eligibility_summary="Privately-financed international students enrolled in Japanese higher education institutions.",
+        coverage=["JPY 48,000 per month"],
+        official_source="Japan Student Services Organization (JASSO)",
+        requirements=["Be enrolled in an eligible Japanese institution", "Meet academic and financial need criteria", "Apply through the host university"],
+        preferred_id=772
+    ),
+
+    ScholarshipIngestionRecord(
+        name="Singapore International Graduate Award (SINGA) 2027",
+        country="Singapore",
+        degree_levels="PhD",
+        funding_type="Fully Funded",
+        official_source_url="https://www.a-star.edu.sg/scholarships/home/scholarships/singa",
+        is_verified=True,
+        deadline="Two intakes annually (check official portal)",
+        deadline_precision="varies",
+        eligibility_summary="International students pursuing PhD in science and engineering at A*STAR research institutes or partner universities.",
+        coverage=["Full tuition", "Monthly stipend (SGD 2,700+)", "Settlement allowance", "Airfare"],
+        official_source="Agency for Science, Technology and Research (A*STAR)",
+        requirements=["Hold a Bachelor's or Master's degree", "Meet English proficiency requirements", "Be an international applicant"],
+        preferred_id=773
+    ),
+
+    ScholarshipIngestionRecord(
+        name="New Zealand Scholarships (MFAT) 2027",
+        country="New Zealand",
+        degree_levels="Undergraduate, Master's, PhD",
+        funding_type="Fully Funded",
+        official_source_url="https://www.otago.ac.nz/study/scholarships",
+        is_verified=True,
+        deadline="Annual cycle (check NZ Scholarships portal)",
+        deadline_precision="varies",
+        eligibility_summary="Students from eligible developing countries to study in New Zealand.",
+        coverage=["Full tuition", "Living allowance", "Travel", "Health insurance", "Establishment grant"],
+        official_source="Ministry of Foreign Affairs and Trade, New Zealand",
+        requirements=["Be a citizen of an eligible country", "Meet academic requirements", "Return home after studies"],
+        preferred_id=774
+    ),
+
+    ScholarshipIngestionRecord(
+        name="Swiss Government Excellence Scholarships 2027-2028",
+        country="Switzerland",
+        degree_levels="PhD and Postdoctoral",
+        funding_type="Fully Funded",
+        official_source_url="https://www.sbfi.admin.ch/sbfi/en/home/education/scholarships-and-grants/swiss-government-excellence-scholarships.html",
+        is_verified=True,
+        deadline="Varies by country (typically Sep-Dec 2026)",
+        deadline_precision="varies",
+        eligibility_summary="Foreign researchers pursuing doctoral or postdoctoral research in Switzerland.",
+        coverage=["Monthly stipend", "Tuition fee exemption", "Health insurance", "Housing allowance"],
+        official_source="Swiss Confederation (SBFI)",
+        requirements=["Hold a Master's degree", "Have a research proposal and host supervisor", "Meet country-specific eligibility"],
+        preferred_id=775
+    ),
+
+    ScholarshipIngestionRecord(
+        name="Finland Scholarship 2027",
+        country="Finland",
+        degree_levels="Master's",
+        funding_type="Partial",
+        official_source_url="https://www.studyinfinland.fi/scholarships",
+        is_verified=True,
+        deadline="Varies by university (application with admission)",
+        deadline_precision="varies",
+        eligibility_summary="Non-EU/EEA students applying for Master's programmes at Finnish universities.",
+        coverage=["EUR 5,000 (first year) plus tuition fee waiver consideration"],
+        official_source="Finnish National Agency for Education (EDUFI)",
+        requirements=["Be a non-EU/EEA citizen", "Apply for an eligible Master's programme", "Meet admission requirements"],
+        preferred_id=776
+    ),
+
+    ScholarshipIngestionRecord(
+        name="Government of Ireland International Education Scholarship 2027",
+        country="Ireland",
+        degree_levels="Master's and PhD",
+        funding_type="Partial",
+        official_source_url="https://hea.ie/funding-governance-performance/funding/student-finance/government-of-ireland-international-education-scholarship",
+        is_verified=True,
+        deadline="Annual cycle (check HEA website)",
+        deadline_precision="varies",
+        eligibility_summary="High-calibre international students studying in Ireland.",
+        coverage=["EUR 10,000 stipend", "Full tuition fee waiver for one year"],
+        official_source="Higher Education Authority, Ireland",
+        requirements=["Be an international student", "Hold an offer for an eligible programme", "Meet academic requirements"],
+        preferred_id=777
+    ),
+
+    ScholarshipIngestionRecord(
+        name="Stipendium Hungaricum Scholarship 2027-2028",
+        country="Hungary",
+        degree_levels="Bachelor's, Master's, PhD, non-degree",
+        funding_type="Fully Funded",
+        official_source_url="https://stipendiumhungaricum.hu/en",
+        is_verified=True,
+        deadline="Annual cycle (typically Jan-Feb 2027 for Sep 2027 start)",
+        deadline_precision="varies",
+        eligibility_summary="International students from partner countries studying in Hungary.",
+        coverage=["Tuition fee", "Monthly stipend", "Accommodation contribution", "Health insurance"],
+        official_source="Tempus Public Foundation, Hungary",
+        requirements=["Be a citizen of an eligible partner country", "Be nominated by the home country", "Meet admission requirements"],
+        preferred_id=778
+    ),
+
+    ScholarshipIngestionRecord(
+        name="NAWA Banach Scholarship Programme 2027",
+        country="Poland",
+        degree_levels="Master's",
+        funding_type="Fully Funded",
+        official_source_url="https://nawa.gov.pl/en",
+        is_verified=True,
+        deadline="Annual cycle (check NAWA website)",
+        deadline_precision="varies",
+        eligibility_summary="Students from developing countries pursuing Master's studies in Poland.",
+        coverage=["Monthly stipend", "Tuition fee exemption", "Settlement allowance"],
+        official_source="Polish National Agency for Academic Exchange (NAWA)",
+        requirements=["Be a citizen of an eligible country", "Hold a Bachelor's degree", "Meet language requirements"],
+        preferred_id=779
+    ),
+
+    ScholarshipIngestionRecord(
+        name="Czech Government Scholarships 2027",
+        country="Czech Republic",
+        degree_levels="Bachelor's, Master's, PhD",
+        funding_type="Fully Funded",
+        official_source_url="https://www.studyin.cz",
+        is_verified=True,
+        deadline="Annual cycle (check Ministry of Education)",
+        deadline_precision="varies",
+        eligibility_summary="Students from developing countries and Czech expatriates studying in the Czech Republic.",
+        coverage=["Tuition fee", "Monthly allowance", "Accommodation", "Medical insurance"],
+        official_source="Ministry of Education, Youth and Sports, Czech Republic",
+        requirements=["Be a citizen of an eligible country", "Meet academic requirements", "Apply via Czech embassy"],
+        preferred_id=780
+    ),
+    ScholarshipIngestionRecord(
+        name="Czech Government Scholarships — Developing Countries (AY 2026/27)",
+        country="Czech Republic",
+        degree_levels="Master's (Czech-medium), Master's (English-medium), Doctoral (English-medium)",
+        funding_type="Fully Funded",
+        deadline="30 September 2025 (for AY 2026/27, closed for 2026 cycle)",
+        deadline_date=None,
+        deadline_precision="varies",
+        eligibility_summary=(
+            "For AY 2026/27 ONLY for citizens of: Belarus (democratic forces), Bosnia and Herzegovina, "
+            "Cambodia, Ethiopia, Georgia, Guatemala, Jordan, Nigeria, Rwanda, Sri Lanka, Ukraine, Zambia. "
+            "Scholarships for Czech-medium Bachelor's and Master's (preceded by 1-year language course), "
+            "English-medium Master's and Doctoral programmes. Must be officially nominated by relevant "
+            "authority in eligible country. Does not apply to summer language courses. "
+            "Monthly scholarship: CZK 16,000 (Bachelor's/Master's) or CZK 17,000 (Doctoral)."
+        ),
+        coverage=[
+            "Tuition-free education",
+            "Monthly scholarship: CZK 16,000 (Bachelor's/Master's) or CZK 17,000 (Doctoral)",
+            "Accommodation at university dormitories",
+            "Czech language course (for Czech-medium programmes)",
+            "Health insurance recommendation",
+        ],
+        official_source_url="https://msmt.gov.cz/eu-and-international-affairs/government-scholarships-developing-countries",
+        official_source="Ministry of Education, Youth and Sports (MEYS) / DZS",
+        is_verified=True,
+        best_fit="Citizens of 12 eligible developing countries for Master's/PhD in Czech Republic",
+        preferred_id=294
+    ),
+    ScholarshipIngestionRecord(
+        name="Charles University Scholarships — International Students",
+        country="Czech Republic",
+        degree_levels="Bachelor's, Master's, PhD",
+        funding_type="Partial to Fully Funded",
+        deadline="Varies by faculty and scholarship type",
+        deadline_date=None,
+        deadline_precision="varies",
+        eligibility_summary=(
+            "Charles University (Prague) offers multiple scholarship schemes: "
+            "1) Faculty of Mathematics and Physics tuition fee scholarships (up to EUR 21,600), "
+            "2) Faculty of Science STARS scholarships for talented PhD students, "
+            "3) Czech Government Scholarships for developing countries, "
+            "4) International Visegrad Fund Scholarships, "
+            "5) Vaclav Havel Bursary for students from repressive regimes. "
+            "Most faculties offer merit-based scholarships for outstanding students after first year."
+        ),
+        coverage=[
+            "Tuition fee waivers (partial to full)",
+            "Monthly stipends (varies by faculty)",
+            "Research funding (PhD)",
+            "Health insurance support",
+        ],
+        official_source_url="https://cuni.cz/UKEN-1617.html",
+        official_source="Charles University (Prague)",
+        is_verified=True,
+        best_fit="Outstanding international students at Charles University Prague",
+        preferred_id=295
+    ),
+    ScholarshipIngestionRecord(
+        name="International Visegrad Fund Scholarships — Czech Republic Host",
+        country="Czech Republic",
+        degree_levels="Master's, Post-Master's (PhD, postdoc)",
+        funding_type="Partial",
+        deadline="15 April 2027 (next cycle opens 1 January 2027)",
+        deadline_date=None,
+        deadline_precision="varies",
+        eligibility_summary=(
+            "Citizens of Visegrad countries (CZ, HU, PL, SK) studying in another V4 country, OR citizens of "
+            "Western Balkans (Albania, Bosnia and Herzegovina, Kosovo, Montenegro, North Macedonia, Serbia) OR "
+            "Eastern Partnership countries (Armenia, Azerbaijan, Belarus, Georgia, Moldova, Ukraine) studying in V4. "
+            "Must hold Bachelor's degree (for Master's) or Master's degree (for post-Master's). "
+            "Citizenship country must differ from host country. Must be >150km from permanent residence to host institution. "
+            "Up to 2 semesters support (In-Coming scheme allows up to 4 semesters)."
+        ),
+        coverage=[
+            "EUR 3,500 per semester for scholar",
+            "EUR 2,000 per semester for host institution",
+            "1-2 semesters (Master's) or 1-4 semesters (In-Coming scheme)",
+        ],
+        official_source_url="https://www.visegradfund.org/scholarships",
+        official_source="International Visegrad Fund",
+        is_verified=True,
+        best_fit="Students from V4, Western Balkans, and Eastern Partnership countries studying in Czech Republic",
+        preferred_id=296
+    ),
+    ScholarshipIngestionRecord(
+        name="Masaryk University International Scholarships",
+        country="Czech Republic",
+        degree_levels="Bachelor's, Master's, PhD",
+        funding_type="Partial",
+        deadline="Varies by faculty",
+        deadline_date=None,
+        deadline_precision="varies",
+        eligibility_summary=(
+            "Masaryk University (Brno) offers various scholarship opportunities: "
+            "Visegrad Scholarship Programme host institution, faculty-specific merit scholarships, "
+            "and need-based support. International students from all countries eligible for merit awards. "
+            "Strong focus on social sciences, natural sciences, and humanities."
+        ),
+        coverage=[
+            "Tuition fee reductions",
+            "Monthly stipends (varies)",
+            "Accommodation support",
+        ],
+        official_source_url="https://czs.muni.cz/en/student-from-abroad/other-possibilities/visegrad-grant",
+        official_source="Masaryk University (Brno)",
+        is_verified=True,
+        best_fit="International students at Masaryk University Brno",
+        preferred_id=297
+    ),
+    ScholarshipIngestionRecord(
+        name="Erasmus Mundus Joint Master Degrees — Czech Universities",
+        country="Czech Republic",
+        degree_levels="Master's (joint degree across 2+ European countries)",
+        funding_type="Fully Funded",
+        deadline="Varies by programme (typically October-February)",
+        deadline_date=None,
+        deadline_precision="varies",
+        eligibility_summary=(
+            "Open to students from all countries worldwide. Joint Master's programmes delivered by "
+            "international consortia including Czech universities (Charles University, Masaryk, CTU Prague). "
+            "Study in at least two European countries. Full scholarships available for best-ranked students. "
+            "No nationality restrictions. Cannot have previously received an Erasmus Mundus scholarship."
+        ),
+        coverage=[
+            "Full tuition fees",
+            "Monthly stipend ~EUR 1,400 for up to 24 months",
+            "Travel allowance",
+            "Health insurance",
+            "Installation costs",
+        ],
+        official_source_url="https://erasmus-plus.ec.europa.eu/opportunities/individuals/students/erasmus-mundus-joint-masters/czech-republic",
+        official_source="European Commission / Czech Universities",
+        is_verified=True,
+        best_fit="Top-ranked international students for joint European Master's programmes with Czech partners",
+        preferred_id=298
+    ),
+
+    ScholarshipIngestionRecord(
+        name="VLIR-UOS Scholarships 2027",
+        country="Belgium",
+        degree_levels="Master's",
+        funding_type="Fully Funded",
+        official_source_url="https://www.vliruos.be",
+        is_verified=True,
+        deadline="Annual cycle (check VLIR-UOS website)",
+        deadline_precision="varies",
+        eligibility_summary="Students from developing countries pursuing Master's programmes in Belgium (Flanders).",
+        coverage=["Tuition fee", "Monthly allowance", "Travel", "Insurance"],
+        official_source="VLIR-UOS, Belgium",
+        requirements=["Be a national of an eligible country", "Be admitted to an eligible programme", "Not have studied in Flanders before"],
+        preferred_id=781
+    ),
+
+    ScholarshipIngestionRecord(
+        name="OeAD Ernst Mach Grant 2027",
+        country="Austria",
+        degree_levels="Master's and PhD",
+        funding_type="Partial",
+        official_source_url="https://oead.at/en",
+        is_verified=True,
+        deadline="Annual cycle (check OeAD website)",
+        deadline_precision="varies",
+        eligibility_summary="International students and researchers pursuing studies or research in Austria.",
+        coverage=["Monthly stipend", "Health insurance", "Accommodation support"],
+        official_source="OeAD (Austrian Agency for International Cooperation in Education and Research)",
+        requirements=["Be an international applicant", "Hold required academic qualifications", "Meet language requirements"],
+        preferred_id=782
+    ),
+
+    ScholarshipIngestionRecord(
+        name="Chinese Government Scholarship (CSC) 2027",
+        country="China",
+        degree_levels="Bachelor's, Master's, PhD",
+        funding_type="Fully Funded",
+        official_source_url="https://www.csc.edu.cn",
+        is_verified=True,
+        deadline="Annual cycle (typically Dec 2026 - Apr 2027)",
+        deadline_precision="varies",
+        eligibility_summary="International students studying in China under Chinese Government Scholarship programmes.",
+        coverage=["Tuition", "Accommodation", "Monthly stipend", "Medical insurance"],
+        official_source="China Scholarship Council (CSC)",
+        requirements=["Be a non-Chinese citizen", "Meet age and academic requirements", "Apply via embassy or university"],
+        preferred_id=783
+    ),
+
+    ScholarshipIngestionRecord(
+        name="Hong Kong PhD Fellowship Scheme (HKPFS) 2027-2028",
+        country="Hong Kong",
+        degree_levels="PhD",
+        funding_type="Fully Funded",
+        official_source_url="https://www.rgc.edu.hk",
+        is_verified=True,
+        deadline="Annual cycle (typically Dec 2026)",
+        deadline_precision="varies",
+        eligibility_summary="Outstanding students pursuing PhD studies in Hong Kong.",
+        coverage=["Monthly stipend (HKD 27,600)", "Conference and research-related travel allowance"],
+        official_source="Research Grants Council, Hong Kong",
+        requirements=["Be seeking admission as a new full-time PhD student", "Meet academic requirements", "Apply via Research Grants Council"],
+        preferred_id=784
+    ),
+
+    ScholarshipIngestionRecord(
+        name="Taiwan Scholarship 2027",
+        country="Taiwan",
+        degree_levels="Undergraduate, Master's, PhD",
+        funding_type="Partial",
+        official_source_url="https://taiwanscholarship.moe.gov.tw",
+        is_verified=True,
+        deadline="Annual cycle (typically Feb-Mar 2027)",
+        deadline_precision="varies",
+        eligibility_summary="International students pursuing degree programmes in Taiwan.",
+        coverage=["Tuition fee waiver (up to NTD 40,000/semester)", "Monthly allowance"],
+        official_source="Ministry of Education, Taiwan",
+        requirements=["Be a non-Taiwanese citizen", "Meet academic requirements", "Apply via Taiwan representative office"],
+        preferred_id=785
+    ),
+
+    ScholarshipIngestionRecord(
+        name="MAEC-AECID Scholarships 2027",
+        country="Spain",
+        degree_levels="Master's and PhD",
+        funding_type="Partial",
+        official_source_url="https://www.aecid.es",
+        is_verified=True,
+        deadline="Annual cycle (check AECID website)",
+        deadline_precision="varies",
+        eligibility_summary="International students and researchers pursuing studies in Spain.",
+        coverage=["Monthly stipend", "Tuition support", "Travel allowance"],
+        official_source="Spanish Agency for International Development Cooperation (AECID)",
+        requirements=["Be an international applicant", "Meet academic requirements", "Apply via AECID"],
+        preferred_id=786
+    ),
+
+    ScholarshipIngestionRecord(
+        name="Italian Government Scholarships for Foreign Students 2027-2028",
+        country="Italy",
+        degree_levels="Master's and PhD",
+        funding_type="Partial",
+        official_source_url="https://studyinitaly.esteri.it",
+        is_verified=True,
+        deadline="Annual cycle (check Study in Italy portal)",
+        deadline_precision="varies",
+        eligibility_summary="Foreign students pursuing Master's or PhD in Italy.",
+        coverage=["Monthly allowance", "Tuition fee exemption"],
+        official_source="Ministry of Foreign Affairs and International Cooperation, Italy",
+        requirements=["Be a foreign citizen", "Meet age and academic requirements", "Apply via Study in Italy portal"],
+        preferred_id=787
+    ),
+
+    ScholarshipIngestionRecord(
+        name="Eiffel Excellence Scholarship 2027",
+        country="France",
+        degree_levels="Master's and PhD",
+        funding_type="Fully Funded",
+        official_source_url="https://www.campusfrance.org/en/eiffel-scholarship-program",
+        is_verified=True,
+        deadline="Annual cycle (typically Jan 2027, via institutions)",
+        deadline_precision="varies",
+        eligibility_summary="International students pursuing Master's or PhD in France; applications submitted by French institutions.",
+        coverage=["Monthly allowance", "Travel", "Health insurance", "Cultural activities"],
+        official_source="Campus France (French Ministry for Europe and Foreign Affairs)",
+        requirements=["Be nominated by a French higher education institution", "Be 30 or under (Master's) / 35 or under (PhD)", "Not hold French nationality"],
+        preferred_id=788
+    ),
+
+    ScholarshipIngestionRecord(
+        name="Rhodes Scholarship (Global Constituency) — University of Oxford",
+        country="United Kingdom",
+        degree_levels="Master's, DPhil (PhD) at Oxford",
+        funding_type="Fully Funded",
+        official_source_url="https://www.rhodeshouse.ox.ac.uk/scholarships/applications/global",
+        is_verified=True,
+        deadline="Varies by constituency (Global deadline ~late August/September 2026 for 2027 entry)",
+        deadline_precision="varies",
+        eligibility_summary="Citizens of countries without a dedicated Rhodes constituency (including Bangladesh) via the Global constituency. Outstanding academic merit + leadership + service commitment.",
+        coverage=["Tuition", "~£20,400 stipend", "Travel", "Visa", "IHS"],
+        official_source="Rhodes Trust",
+        best_fit="Exceptional Bangladeshi graduates with leadership potential",
+        preferred_id=789
+    ),
+
+    ScholarshipIngestionRecord(
+        name="York University Global Leader of Tomorrow Award",
+        country="Canada",
+        degree_levels="Bachelor's",
+        funding_type="Partial",
+        official_source_url="https://futurestudents.yorku.ca/financing-your-degree/international-scholarships",
+        is_verified=True,
+        deadline="January 26, 2026 (annual)",
+        deadline_precision="varies",
+        eligibility_summary="Incoming international high school graduates with 'A' average + community service/leadership record.",
+        coverage=["$20,000 CAD/year × 4 years ($80,000 total)"],
+        official_source="York University",
+        preferred_id=790
+    ),
+
+    ScholarshipIngestionRecord(
+        name="Global Undergraduate Exchange Program (Global UGRAD)",
+        country="United States",
+        degree_levels="Undergraduate (one semester exchange)",
+        funding_type="Fully Funded",
+        official_source_url="https://exchanges.state.gov/non-us/program/global-undergraduate-exchange-program-ugrad",
+        is_verified=True,
+        deadline="Typically December-January annually",
+        deadline_precision="varies",
+        eligibility_summary="Undergraduate students from UGRAD participating countries (including Bangladesh), 18-25 years, demonstrated leadership potential.",
+        coverage=["Tuition", "Housing", "Meals", "Travel", "Small incidentals"],
+        official_source="U.S. Department of State, Bureau of Educational and Cultural Affairs",
+        best_fit="Bangladeshi undergraduate students for one-semester US exchange",
+        preferred_id=791
+    ),
+
+    ScholarshipIngestionRecord(
+        name="Simmons University Kotzen Scholarship",
+        country="United States",
+        degree_levels="Bachelor's",
+        funding_type="Fully Funded",
+        official_source_url="https://www.simmons.edu/undergraduate-admission/kotzen-scholarship",
+        is_verified=True,
+        deadline="December 1",
+        deadline_precision="varies",
+        eligibility_summary="International students, merit-based, academic excellence.",
+        coverage=["Full tuition", "Housing", "$600/month stipend", "Annual return airfare", "Health insurance", "$1,000 book allowance", "Visa fee reimbursement"],
+        official_source="Simmons University",
+        preferred_id=792
+    ),
+
+    ScholarshipIngestionRecord(
+        name="Yale University Need-Based Financial Aid (International)",
+        country="United States",
+        degree_levels="Bachelor's",
+        funding_type="Need-Based",
+        official_source_url="https://admissions.yale.edu/affordability",
+        is_verified=True,
+        deadline="November 1 (Early Action), February 15 (Regular Decision)",
+        deadline_precision="varies",
+        eligibility_summary="All students including international, need-blind admission. 100% of demonstrated need met.",
+        coverage=["Families earning <$100,000 pay nothing", "Families <$200,000 get full-tuition scholarship"],
+        official_source="Yale University",
+        preferred_id=793
+    ),
+
+    ScholarshipIngestionRecord(
+        name="#YouAreWelcomeHere Scholarship",
+        country="United States",
+        degree_levels="Bachelor's",
+        funding_type="Partial",
+        official_source_url="https://www.youarewelcomehereusa.org",
+        is_verified=True,
+        deadline="Varies by institution",
+        deadline_precision="varies",
+        eligibility_summary="International first-year students, essay/video demonstrating intercultural exchange. 57 participating U.S. universities.",
+        coverage=["Minimum 50% tuition at participating universities"],
+        official_source="Various participating U.S. universities",
+        preferred_id=794
+    ),
+
+    ScholarshipIngestionRecord(
+        name="Austrian Database for Scholarships (OeAD) — Additional Programs",
+        country="Austria",
+        degree_levels="Bachelor's, Master's, PhD",
+        funding_type="Partial to Full",
+        official_source_url="https://grants.oead.at/en",
+        is_verified=True,
+        deadline="Varies by program",
+        deadline_precision="varies",
+        eligibility_summary="Various scholarship programs for international students in Austria listed in the OeAD database. Includes programs from different Austrian institutions and organizations.",
+        coverage=["Varies by program"],
+        official_source="OeAD (Austrian Agency for Education and Internationalisation)",
+        preferred_id=795
+    ),
+
+    ScholarshipIngestionRecord(
+        name="Stockholm University Scholarship Scheme",
+        country="Sweden",
+        degree_levels="Master's",
+        funding_type="Partial",
+        official_source_url="https://www.su.se/english/education/scholarships-and-fees",
+        is_verified=True,
+        deadline="15 January (for September intake)",
+        deadline_precision="varies",
+        eligibility_summary="Non-EU/EEA students applying for a Master's programme at Stockholm University. Merit-based scholarship covering full tuition fees.",
+        coverage=["100% tuition fee waiver"],
+        official_source="Stockholm University",
+        preferred_id=796
+    ),
+
+    ScholarshipIngestionRecord(
+        name="Karolinska Institutet — Global Master's Scholarship",
+        country="Sweden",
+        degree_levels="Master's (Health and Life Sciences)",
+        funding_type="Partial",
+        official_source_url="https://education.ki.se/scholarships",
+        is_verified=True,
+        deadline="15 January (for September intake)",
+        deadline_precision="varies",
+        eligibility_summary="Non-EU/EEA students applying for a Master's programme at Karolinska Institutet. Merit-based scholarship covering full tuition fees.",
+        coverage=["100% tuition fee waiver"],
+        official_source="Karolinska Institutet",
+        preferred_id=797
+    ),
+
+    ScholarshipIngestionRecord(
+        name="Swedish Institute Scholarships for Global Professionals (SISGP)",
+        country="Sweden",
+        degree_levels="Master's",
+        funding_type="Fully Funded",
+        official_source_url="https://si.se/en/apply/scholarships/swedish-institute-scholarships-for-global-professionals",
+        is_verified=True,
+        deadline="February (varies by year)",
+        deadline_precision="varies",
+        eligibility_summary="Citizens of selected developing countries including Bangladesh. Must have work experience and leadership potential. For Master's programmes in Sweden.",
+        coverage=["Tuition fees", "Living expenses (~SEK 11,000/month)", "Travel costs", "Insurance", "Grant for thesis"],
+        official_source="Swedish Institute",
+        best_fit="Bangladeshi professionals with work experience seeking Master's in Sweden",
+        preferred_id=798
+    ),
+
+    ScholarshipIngestionRecord(
+        name="Deakin Vice-Chancellor's International Scholarship",
+        country="Australia",
+        degree_levels="Bachelor's, Master's (coursework)",
+        funding_type="Full or Partial (100% or 50% tuition)",
+        official_source_url="https://www.deakin.edu.au/study/fees-and-scholarships/scholarships/find-a-scholarship/deakin-vice-chancellors-international-scholarship",
+        is_verified=True,
+        deadline="Apply at least 1 month before course start (rolling basis)",
+        deadline_precision="varies",
+        eligibility_summary="International students with 85%+ average. Personal statement + 2 references. Bangladesh eligible.",
+        coverage=["100% or 50% tuition fee reduction", "VCPEP program", "Priority accommodation"],
+        official_source="Deakin University",
+        preferred_id=799
+    ),
+
+    ScholarshipIngestionRecord(
+        name="AITHYRA-CeMM Joint International PhD Call",
+        country="Austria",
+        degree_levels="PhD",
+        funding_type="Fully Funded",
+        official_source_url="https://cemm.at",
+        is_verified=True,
+        deadline="30 January 2026",
+        deadline_precision="varies",
+        eligibility_summary="International candidates holding (or expecting) a Master's/Bachelor's in medicine, biology, chemistry, bioinformatics, computer science, engineering, physics, mathematics, or related fields.",
+        coverage=["15–20 fully funded positions", "Minimum gross monthly salary EUR 2,779.60 (14 times/year)", "Covers all research costs, university fees, work-related travel expenses for 4 years", "Full health/accident/retirement insurance"],
+        official_source="CeMM (Austrian Academy of Sciences) & AITHYRA",
+        preferred_id=800
+    ),
+
+    ScholarshipIngestionRecord(
+        name="MEXT Scholarship for Japanese Studies Students",
+        country="Japan",
+        degree_levels="Undergraduate (Japanese Studies)",
+        funding_type="Fully Funded",
+        official_source_url="https://www.mext.go.jp/content/20251222-mxt_kotokoku01-000046488_02.pdf",
+        is_verified=True,
+        deadline="Varies by Japanese embassy (typically February-March annually)",
+        deadline_precision="varies",
+        eligibility_summary="Undergraduate students majoring in Japanese language or Japanese culture at foreign universities. Must have studied Japanese Studies for at least one year as of September 1 of application year. Age: born between April 2, 1996 and April 1, 2008. Must have Japanese language ability sufficient for university education in Japan. One-year programme starting September or October.",
+        coverage=["Monthly stipend: 117,000 yen", "Tuition fees waived", "Round-trip airfare", "One-year duration"],
+        official_source="MEXT (Ministry of Education, Culture, Sports, Science and Technology)",
+        best_fit="Bangladeshi undergraduates majoring in Japanese language or culture",
+        preferred_id=801
+    ),
+
+    ScholarshipIngestionRecord(
+        name="Chinese Government Scholarship - Bilateral Program (Type A)",
+        country="China",
+        degree_levels="Bachelor's, Master's, PhD",
+        funding_type="Fully Funded",
+        official_source_url="https://ee.china-embassy.gov.cn/eng/tzygg/202511/t20251108_11749274.htm",
+        is_verified=True,
+        deadline="Varies by country (typically January-April 2026)",
+        deadline_precision="varies",
+        eligibility_summary="Non-Chinese citizens in good health. Age limits: under 25 for Bachelor's, under 35 for Master's, under 40 for PhD, under 45 for general scholar, under 50 for senior scholar. Bachelor's applicants must have high school diploma and take CSCA exam. Chinese-taught programs require HSK Level 4 (Master's/PhD) or HSK Level 3 (general/senior scholar). English-taught programs require IELTS 6.0+ or TOEFL 80+. Apply through Chinese embassy in home country.",
+        coverage=["Full tuition waiver", "Free on-campus accommodation", "Monthly stipend: CNY 2,500 (Bachelor's) / CNY 3,000 (Master's) / CNY 3,500 (PhD)", "Comprehensive medical insurance"],
+        official_source="China Scholarship Council (CSC)",
+        best_fit="Bangladeshi students applying through Chinese embassy bilateral agreement",
+        preferred_id=802
+    ),
+
+    ScholarshipIngestionRecord(
+        name="Finland Scholarship (National)",
+        country="Finland",
+        degree_levels="Master's",
+        funding_type="Partial to Full",
+        official_source_url="https://www.studyinfinland.fi/funding-your-studies/bachelors-and-masters-scholarships",
+        is_verified=True,
+        deadline="January 2026 (with admission application, varies by university)",
+        deadline_precision="varies",
+        eligibility_summary="Non-EU/EEA students newly admitted to participating Finnish universities. Outstanding academic record. Not previously enrolled in a Finnish degree programme. Coordinated by Finnish National Agency for Education. No separate scholarship application — selection via the Studyinfo.fi master's admission process.",
+        coverage=["100% of first-year tuition fee", "€5,000 relocation grant (one-time)"],
+        official_source="Finnish National Agency for Education (EDUFI)",
+        best_fit="Top non-EU master's entrants at Finnish universities",
+        preferred_id=803
+    ),
+
+    ScholarshipIngestionRecord(
+        name="Tampere University Scholarships Programme",
+        country="Finland",
+        degree_levels="Bachelor's, Master's",
+        funding_type="Partial",
+        official_source_url="https://www.tuni.fi/en/students-guide/handbook/uni/services-and-regulations-students/study-regulations/scholarships-fee-paying-students-admitted-in-2021-or-later",
+        is_verified=True,
+        deadline="With admission application (varies by intake round)",
+        deadline_precision="varies",
+        eligibility_summary="Tuition-fee-liable students (non-EU/EEA) admitted to Tampere University English-taught programmes. Scholarship application is part of the admission process. Also offers Early Bird discount for prompt offer acceptance and fee payment.",
+        coverage=["50% tuition fee scholarship", "100% tuition fee scholarship (limited, Finland Scholarship tier)", "Early Bird tuition discount"],
+        official_source="Tampere University",
+        best_fit="Fee-paying international students at Tampere University",
+        preferred_id=804
+    ),
+
+    ScholarshipIngestionRecord(
+        name="Ghent University Top-Up Grant for International Students",
+        country="Belgium",
+        degree_levels="Master's",
+        funding_type="Partial to Full",
+        official_source_url="https://www.ugent.be/en/financial/topupgrant",
+        is_verified=True,
+        deadline="Varies by programme (typically February-April)",
+        deadline_precision="varies",
+        eligibility_summary="International students from all countries applying to Master's programmes at Ghent University. Must have outstanding academic record. Students who do not receive a Master Mind scholarship may be considered for a Top-Up Grant. Covers the difference between international and EEA tuition fees.",
+        coverage=["Monthly allowance (amount varies, covers living expenses)", "Tuition fee reduction to EEE rate", "Insurance", "One-time travel allowance"],
+        official_source="Ghent University",
+        best_fit="Outstanding international Master's applicants to Ghent University",
+        preferred_id=805
+    ),
+
+ScholarshipIngestionRecord(
+        name="CEU Master's and Doctoral Scholarships — Central European University",
+        country="Hungary",
+        degree_levels="Bachelor's, Master's, PhD",
+        funding_type="Fully Funded (Master's and PhD) / Partial (Bachelor's)",
+        official_source_url="https://www.ceu.edu/admissions/financial-aid",
+        is_verified=True,
+        deadline="Round 1: October 15, 2026 (closed); Round 2: 4 February 2026",
+        deadline_precision="varies",
+        eligibility_summary="All nationalities eligible. CEU is a prestigious research institution in Budapest/Vienna. Master's and PhD programmes are fully funded (tuition + stipend). Undergraduate programmes offer partial tuition support. Multiple donor-funded scholarships available: Dr. Elemer Hantos (Central Europe/Latin America), Postgraduate Opportunity (30 CEE countries), George Soros Leadership Fund, and others. Automatic consideration upon admission application — no separate scholarship application needed.",
+        coverage=["Full tuition waiver (Master's and PhD)", "Monthly stipend €500-€1,350 depending on level and merit", "Health insurance", "Housing support", "Research funding (PhD)"],
+        official_source="Central European University (Budapest/Vienna)",
+        best_fit="Outstanding international students for social sciences, humanities, law, public policy",
+        preferred_id=806
     ),
 )
 
