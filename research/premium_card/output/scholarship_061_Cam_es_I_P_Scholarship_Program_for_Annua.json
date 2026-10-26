@@ -1,0 +1,102 @@
+{
+  "source_title": "Camões I.P. – Scholarship Program for Annual Courses in Portuguese Language and Culture 2026",
+  "source_provider": "Camões – Instituto da Cooperação e da Língua, I.P. (Ministry of Foreign Affairs)",
+  "source_file": "portugal_scholarships.json",
+  "researched_at": "2026-10-06T13:40:57.782742+00:00",
+  "data": {
+    "id": "research-061",
+    "title": "Camões I.P. – Scholarship Program for Annual Courses in Portuguese Language and Culture 2026",
+    "provider": "Camões – Instituto da Cooperação e da Língua, I.P. (Ministry of Foreign Affairs)",
+    "record_type": "scholarship",
+    "official_sources": [
+      {
+        "url": "https://www.instituto-camoes.pt/en/activity-camoes/what-we-do/scholarships/scholarships-camoes-i-p/pt-language-culture-scholarships/candidaturas-lingua-en",
+        "title": "Camões I.P. – Scholarship Program for Annual Courses in Portuguese Language and Culture 2026",
+        "source_type": "official_provider",
+        "source_domain": "www.instituto-camoes.pt",
+        "publication_date": null,
+        "last_modified_date": null,
+        "checked_at": "2026-10-06T13:40:55.928420+00:00",
+        "source_priority": 1
+      }
+    ],
+    "image": {
+      "url": "https://www.instituto-camoes.pt/images/logo.png",
+      "source_type": "official_provider",
+      "source_url": "https://www.instituto-camoes.pt/en/activity-camoes/what-we-do/scholarships/scholarships-camoes-i-p/pt-language-culture-scholarships/candidaturas-lingua-en",
+      "alt_text": "camões - instituto da cooperação e da língua"
+    },
+    "funding": {
+      "funding_type": "Fully funded scholarship (tuition + stipend + insurance)",
+      "fully_funded": null,
+      "award_amount": {
+        "minimum": null,
+        "maximum": null,
+        "fixed": null,
+        "period": "unknown"
+      },
+      "currency": null
+    },
+    "eligibility": {
+      "citizenship": {
+        "required": null,
+        "eligible_countries": [],
+        "excluded_countries": [],
+        "worldwide": null
+      },
+      "age": {
+        "minimum": null,
+        "maximum": null
+      },
+      "degree": {
+        "minimum_degree": null,
+        "required_degree_field": [],
+        "final_year_allowed": null,
+        "equivalent_degree_allowed": null
+      },
+      "language": {
+        "required": null,
+        "teaching_language": [],
+        "accepted_tests": [],
+        "minimum_scores": {},
+        "moi_accepted": "unknown"
+      }
+    },
+    "application": {
+      "application_method": "direct",
+      "official_application_url": "https://www.instituto-camoes.pt/en/activity-camoes/what-we-do/scholarships/scholarships-camoes-i-p/pt-language-culture-scholarships/candidaturas-lingua-en",
+      "application_fee": {
+        "required": null,
+        "amount": null,
+        "currency": null,
+        "waiver_available": null
+      }
+    },
+    "deadlines": {
+      "status": "unknown",
+      "deadline_date": "2026-05-18",
+      "deadline_display": "2026-05-18",
+      "deadline_precision": "unknown"
+    },
+    "verification": {
+      "is_verified": true,
+      "verification_status": "active",
+      "last_verified_date": "2026-10-06",
+      "verified_by": "automated_research"
+    },
+    "data_quality": {
+      "coverage_level": "medium",
+      "missing_key_fields": [],
+      "unknown_fields": [],
+      "estimated_fields": [
+        "funding",
+        "eligibility",
+        "application"
+      ]
+    },
+    "research_notes": [
+      "Automated research pass completed with page fetch"
+    ],
+    "research_errors": []
+  }
+}

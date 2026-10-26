@@ -1,0 +1,89 @@
+{
+  "source_title": "Erasmus Mundus EMCL Scholarship (European Master's in Clinical Linguistics)",
+  "source_provider": "European Union (Erasmus+ Programme) via Erasmus Mundus Joint Master Degree consortium",
+  "source_file": "finland-scholarships.json",
+  "researched_at": "2026-10-06T13:40:42.417463+00:00",
+  "data": {
+    "id": "research-026",
+    "title": "Erasmus Mundus EMCL Scholarship (European Master's in Clinical Linguistics)",
+    "provider": "European Union (Erasmus+ Programme) via Erasmus Mundus Joint Master Degree consortium",
+    "record_type": "scholarship",
+    "official_sources": [],
+    "image": {
+      "url": null,
+      "source_type": null,
+      "source_url": null,
+      "alt_text": null
+    },
+    "funding": {
+      "funding_type": null,
+      "fully_funded": null,
+      "award_amount": {
+        "minimum": null,
+        "maximum": null,
+        "fixed": null,
+        "period": "unknown"
+      },
+      "currency": null
+    },
+    "eligibility": {
+      "citizenship": {
+        "required": null,
+        "eligible_countries": [],
+        "excluded_countries": [],
+        "worldwide": null
+      },
+      "age": {
+        "minimum": null,
+        "maximum": null
+      },
+      "degree": {
+        "minimum_degree": null,
+        "required_degree_field": [],
+        "final_year_allowed": null,
+        "equivalent_degree_allowed": null
+      },
+      "language": {
+        "required": null,
+        "teaching_language": [],
+        "accepted_tests": [],
+        "minimum_scores": {},
+        "moi_accepted": "unknown"
+      }
+    },
+    "application": {
+      "application_method": "unknown",
+      "official_application_url": null,
+      "application_fee": {
+        "required": null,
+        "amount": null,
+        "currency": null,
+        "waiver_available": null
+      }
+    },
+    "deadlines": {
+      "status": "unknown",
+      "deadline_date": null,
+      "deadline_display": null,
+      "deadline_precision": "unknown"
+    },
+    "verification": {
+      "is_verified": false,
+      "verification_status": "pending",
+      "last_verified_date": "2026-10-06",
+      "verified_by": "automated_research"
+    },
+    "data_quality": {
+      "coverage_level": "low",
+      "missing_key_fields": [
+        "official_url"
+      ],
+      "unknown_fields": [],
+      "estimated_fields": []
+    },
+    "research_notes": [],
+    "research_errors": [
+      "No official URL provided in source file"
+    ]
+  }
+}

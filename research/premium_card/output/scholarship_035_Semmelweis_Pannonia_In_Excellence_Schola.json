@@ -1,0 +1,104 @@
+{
+  "source_title": "Semmelweis Pannonia In Excellence Scholarship",
+  "source_provider": "Semmelweis University",
+  "source_file": "hungary_scholarships_2026_2027.json",
+  "researched_at": "2026-10-06T13:40:49.181367+00:00",
+  "data": {
+    "id": "research-035",
+    "title": "Semmelweis Pannonia In Excellence Scholarship",
+    "provider": "Semmelweis University",
+    "record_type": "scholarship",
+    "official_sources": [
+      {
+        "url": "https://semmelweis.hu/registrar/information/scholarships/semmelweis-pannonia-in-excellence-scholarship/",
+        "title": "Semmelweis Pannonia In Excellence Scholarship",
+        "source_type": "official_provider",
+        "source_domain": "semmelweis.hu",
+        "publication_date": null,
+        "last_modified_date": null,
+        "checked_at": "2026-10-06T13:40:43.630652+00:00",
+        "source_priority": 1
+      }
+    ],
+    "image": {
+      "url": "https://semmelweis.hu/registrar/files/2022/02/SE_angol_szines_logo.png",
+      "source_type": "official_provider",
+      "source_url": "https://semmelweis.hu/registrar/information/scholarships/semmelweis-pannonia-in-excellence-scholarship/",
+      "alt_text": "se címer"
+    },
+    "funding": {
+      "funding_type": "Merit-based stipend (partial support)",
+      "fully_funded": null,
+      "award_amount": {
+        "minimum": null,
+        "maximum": null,
+        "fixed": null,
+        "period": "unknown"
+      },
+      "currency": null
+    },
+    "eligibility": {
+      "citizenship": {
+        "required": null,
+        "eligible_countries": [],
+        "excluded_countries": [],
+        "worldwide": null
+      },
+      "age": {
+        "minimum": null,
+        "maximum": null
+      },
+      "degree": {
+        "minimum_degree": null,
+        "required_degree_field": [],
+        "final_year_allowed": null,
+        "equivalent_degree_allowed": null
+      },
+      "language": {
+        "required": true,
+        "teaching_language": [
+          "English"
+        ],
+        "accepted_tests": [],
+        "minimum_scores": {},
+        "moi_accepted": "unknown"
+      }
+    },
+    "application": {
+      "application_method": "unknown",
+      "official_application_url": "https://semmelweis.hu/registrar/information/scholarships/semmelweis-pannonia-in-excellence-scholarship/",
+      "application_fee": {
+        "required": null,
+        "amount": null,
+        "currency": null,
+        "waiver_available": null
+      }
+    },
+    "deadlines": {
+      "status": "unknown",
+      "deadline_date": "15 October 2026",
+      "deadline_display": "15 October 2026",
+      "deadline_precision": "unknown"
+    },
+    "verification": {
+      "is_verified": true,
+      "verification_status": "active",
+      "last_verified_date": "2026-10-06",
+      "verified_by": "automated_research"
+    },
+    "data_quality": {
+      "coverage_level": "medium",
+      "missing_key_fields": [],
+      "unknown_fields": [],
+      "estimated_fields": [
+        "funding",
+        "eligibility",
+        "application"
+      ]
+    },
+    "research_notes": [
+      "Automated research pass completed with page fetch"
+    ],
+    "research_errors": []
+  }
+}

@@ -1,0 +1,104 @@
+{
+  "source_title": "Hungarian Diaspora Scholarship",
+  "source_provider": "Tempus Public Foundation (Hungarian Government)",
+  "source_file": "hungary_scholarships_2026_2027.json",
+  "researched_at": "2026-10-06T13:40:48.560803+00:00",
+  "data": {
+    "id": "research-034",
+    "title": "Hungarian Diaspora Scholarship",
+    "provider": "Tempus Public Foundation (Hungarian Government)",
+    "record_type": "scholarship",
+    "official_sources": [
+      {
+        "url": "https://diasporascholarship.hu/",
+        "title": "Hungarian Diaspora Scholarship",
+        "source_type": "official_provider",
+        "source_domain": "diasporascholarship.hu",
+        "publication_date": null,
+        "last_modified_date": null,
+        "checked_at": "2026-10-06T13:40:43.458211+00:00",
+        "source_priority": 1
+      }
+    ],
+    "image": {
+      "url": "https://diasporascholarship.hu/wp-content/uploads/diaspora_logo_h_color_en-1-300x105-2.png",
+      "source_type": "official_provider",
+      "source_url": "https://diasporascholarship.hu/",
+      "alt_text": "hungarian diaspora scholarship"
+    },
+    "funding": {
+      "funding_type": "Fully funded",
+      "fully_funded": null,
+      "award_amount": {
+        "minimum": null,
+        "maximum": null,
+        "fixed": null,
+        "period": "unknown"
+      },
+      "currency": null
+    },
+    "eligibility": {
+      "citizenship": {
+        "required": null,
+        "eligible_countries": [],
+        "excluded_countries": [],
+        "worldwide": null
+      },
+      "age": {
+        "minimum": null,
+        "maximum": null
+      },
+      "degree": {
+        "minimum_degree": null,
+        "required_degree_field": [],
+        "final_year_allowed": null,
+        "equivalent_degree_allowed": null
+      },
+      "language": {
+        "required": true,
+        "teaching_language": [
+          "English"
+        ],
+        "accepted_tests": [],
+        "minimum_scores": {},
+        "moi_accepted": "unknown"
+      }
+    },
+    "application": {
+      "application_method": "unknown",
+      "official_application_url": "https://diasporascholarship.hu/",
+      "application_fee": {
+        "required": null,
+        "amount": null,
+        "currency": null,
+        "waiver_available": null
+      }
+    },
+    "deadlines": {
+      "status": "unknown",
+      "deadline_date": "2 February 2026, 14:00 CET (missing documents accepted until 1 August 2026)",
+      "deadline_display": "2 February 2026, 14:00 CET (missing documents accepted until 1 August 2026)",
+      "deadline_precision": "unknown"
+    },
+    "verification": {
+      "is_verified": true,
+      "verification_status": "active",
+      "last_verified_date": "2026-10-06",
+      "verified_by": "automated_research"
+    },
+    "data_quality": {
+      "coverage_level": "medium",
+      "missing_key_fields": [],
+      "unknown_fields": [],
+      "estimated_fields": [
+        "funding",
+        "eligibility",
+        "application"
+      ]
+    },
+    "research_notes": [
+      "Automated research pass completed with page fetch"
+    ],
+    "research_errors": []
+  }
+}
