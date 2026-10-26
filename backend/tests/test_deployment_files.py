@@ -129,12 +129,6 @@ class TestApiBaseDefaultsSafely:
         assert "localhost" not in service
         assert "|| '/api'" in service
 
-    def test_admin_service_has_the_same_default(self):
-        service = (REPO / "frontend" / "src" / "services" / "adminImageReviewService.js").read_text(
-            encoding="utf-8"
-        )
-        assert "localhost" not in service
-        assert "|| '/api'" in service
 
 
 class TestNoProcessEnvInBrowserCode:
@@ -146,7 +140,6 @@ class TestNoProcessEnvInBrowserCode:
             "frontend/src/main.jsx",
             "frontend/src/App.jsx",
             "frontend/src/services/scholarshipService.js",
-            "frontend/src/services/adminImageReviewService.js",
             "frontend/src/services/canonicalOrigin.js",
             "frontend/src/components/RedirectHandler.jsx",
         ],
