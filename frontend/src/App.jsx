@@ -11,8 +11,6 @@ import ComparePage from './pages/ComparePage'
 import DashboardPage from './pages/DashboardPage'
 import ApplicationsPage from './pages/ApplicationsPage'
 import MentorPage from './pages/MentorPage'
-import AdminPage from './pages/AdminPage'
-import AdminVerificationPage from './pages/AdminVerificationPage'
 import CountryPage from './pages/CountryPage'
 import NotFoundPage from './pages/NotFoundPage'
 import { useScrollReveal } from './hooks/useScrollReveal'
@@ -51,8 +49,6 @@ function App() {
             a client-side guard that could only trust a browser-supplied value. */}
         <Route path="/mentor" element={<MentorPage />} />
         <Route path="/compare" element={<ComparePage />} />
-        <Route path="/admin" element={<AdminPage />} />
-        <Route path="/admin/verification" element={<AdminVerificationPage />} />
         <Route path="*" element={<NotFoundPage />} />
       </Route>
     </Routes>

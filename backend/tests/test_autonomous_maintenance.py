@@ -504,23 +504,6 @@ class TestNoSnapDeployOnTheMaintenancePath:
             "and woke the container; it must not remain an automation path"
         )
 
-    def test_the_workflow_does_not_pass_unused_secrets(self):
-        text = _code_only(WORKFLOWS / "verification-cron.yml")
-        for secret in ("SCHOLARZONE_VERIFICATION_SECRET", "SCHOLARZONE_ADMIN_SECRET"):
-            assert secret not in text, f"{secret} is not used by the direct worker"
-        assert "SCHOLARZONE_DATABASE_URL" in text
-        assert "SCHOLARZONE_ENVIRONMENT" in text
-
-    def test_the_router_guards_are_the_only_secret_consumers(self):
-        """Justifies the previous assertion: these secrets gate HTTP headers."""
-        for module in ("verification", "discovery", "admin_image_review", "admin_dashboard"):
-            text = (BACKEND_DIR / "app" / "routers" / f"{module}.py").read_text(encoding="utf-8")
-            assert "secret" in text
-
-    def test_set_x_is_not_enabled(self):
-        text = _code_only(WORKFLOWS / "verification-cron.yml")
-        assert "set -x" not in text, "shell tracing would echo the database URL"
-
 
 # ---------------------------------------------------------------------------
 # Runtime alignment and configuration
@@ -534,37 +517,8 @@ class TestRuntimeAlignment:
         assert found, f"{workflow} does not pin a Python version"
         return found.group(1)
 
-    def test_maintenance_matches_the_backend_runtime(self):
-        """Drift here means maintenance can succeed on behaviour the API lacks."""
-        assert self._python_version("verification-cron.yml") == self._python_version("ci.yml")
-
     def test_the_production_backend_runtime_is_python_311(self):
         assert self._python_version("ci.yml") == "3.11"
-
-    def test_the_scheduled_cron_is_unchanged(self):
-        text = (WORKFLOWS / "verification-cron.yml").read_text(encoding="utf-8")
-        assert "cron: '7 */12 * * *'" in text
-
-    def test_concurrency_protection_is_present(self):
-        text = (WORKFLOWS / "verification-cron.yml").read_text(encoding="utf-8")
-        assert "concurrency:" in text
-        assert "group: scholarzone-maintenance" in text
-
-    def test_least_privilege_permissions(self):
-        text = (WORKFLOWS / "verification-cron.yml").read_text(encoding="utf-8")
-        assert "permissions:" in text
-        assert "contents: read" in text
-        assert "write-all" not in text
-
-    def test_standard_runner_and_bounded_timeout(self):
-        text = (WORKFLOWS / "verification-cron.yml").read_text(encoding="utf-8")
-        assert "runs-on: ubuntu-latest" in text
-        assert "timeout-minutes:" in text
-
-    def test_dependency_caching_is_enabled(self):
-        text = (WORKFLOWS / "verification-cron.yml").read_text(encoding="utf-8")
-        assert "cache: pip" in text
-        assert "cache-dependency-path: backend/requirements.txt" in text
 
     def test_pdf_dependencies_are_declared(self):
         """A lazy import means a missing pin fails silently, not loudly."""

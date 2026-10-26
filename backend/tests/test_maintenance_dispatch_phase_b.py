@@ -161,8 +161,7 @@ class TestCronAuthentication:
         monkeypatch.setenv("GITHUB_ACTIONS_DISPATCH_TOKEN", FAKE_TOKEN)
         response = client.post("/internal/maintenance/dispatch",
                                headers={"Authorization": f"Bearer {SECRET}"})
-        assert response.status_code == 200
-        assert "dispatched" in response.json()
+        assert response.status_code == 404, "the maintenance dispatcher endpoint is removed"
 
     def test_missing_auth_is_not_discoverable(self, client, monkeypatch):
         monkeypatch.setenv("CRON_SECRET", SECRET)
@@ -177,7 +176,7 @@ class TestCronAuthentication:
     def test_a_public_arbitrary_caller_cannot_dispatch(self, client, monkeypatch):
         monkeypatch.setenv("CRON_SECRET", SECRET)
         monkeypatch.setenv("GITHUB_ACTIONS_DISPATCH_TOKEN", FAKE_TOKEN)
-        assert client.get("/internal/maintenance/dispatch").status_code == 405
+        assert client.get("/internal/maintenance/dispatch").status_code == 404
         assert client.post("/internal/maintenance/dispatch").status_code == 404
 
     def test_without_a_secret_nothing_is_authorised(self, client, monkeypatch):
@@ -548,7 +547,7 @@ class TestRecoveryAndObservability:
         try:
             response = client.post("/internal/maintenance/dispatch",
                                    headers={"Authorization": f"Bearer {SECRET}"})
-            assert response.status_code == 200
+            assert response.status_code == 404, "the maintenance dispatcher endpoint is removed"
             assert called == [], "the dispatcher must not run the maintenance worker"
         finally:
             worker.main = original

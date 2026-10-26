@@ -1,9 +1,0 @@
-{
-  "agent_id": "w3_37",
-  "shard": "w3-37",
-  "host": "master-bioceb.eu",
-  "today": "2026-10-04",
-  "logo_override": null,
-  "target_ids": [350],
-  "notes": "The host itself no longer exists, so no logo can be served by the awarding body's own domain and no amount of further probing can succeed. master-bioceb.eu is NXDOMAIN: Playwright navigation failed with net::ERR_NAME_NOT_RESOLVED, and Resolve-DnsName returned 'DNS name does not exist' for master-bioceb.eu and www.master-bioceb.eu against the default resolver and independently against both public resolvers 8.8.8.8 and 1.1.1.1. This is an authoritative negative answer, not a timeout or a local resolver filter, and it is consistent with the record being an Erasmus Mundus Joint Master Degree consortium: Bioceb was a fixed-term 2020-2024 intake consortium and its dedicated .eu site lapsed with the cohort. Because the shard host is gone I did not substitute a logo from any partner university (in particular I did not reach for a GMT, INRAE or Universite de Pau mark), since under rules 1 and 2 those are different bodies from the consortium that awarded the fellowship. Deliberately did not use an archived copy or any third-party mirror, per rules 5 and 6. Separately worth flagging to the coordinator as a data issue rather than a logo issue: the stored official_source_url for target 350 is https://www.master-bioceb.eu, which is dead, so this record's source link needs repointing or retiring even though it still carries an accurate title and awarding body."
-}

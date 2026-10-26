@@ -502,20 +502,6 @@ class TestAdminImageReviewArchiveGuard:
         assert row.image_kind == "official_logo"
         assert row.image_evaluation_status == "verified"
 
-    def test_queue_counts_exclude_archived_rows(self, session):
-        from app.routers.admin_image_review import review_queue_counts
-
-        self._review(session, 9103, archived=True)
-        session.add(Scholarship(
-            degree="PG", funding="Fully Funded", id=9104, title="Live needs review", country="X",
-            official_source_url="https://example.edu/9104",
-            deadline_precision="unknown", status="open",
-            verification_status="needs_review", is_archived=False,
-        ))
-        session.commit()
-        counts = review_queue_counts(session)
-        assert counts["scholarships_needing_review"] == 1
-
 
 # ---------------------------------------------------------------------------
 # public visibility: the function the catalogue actually publishes through

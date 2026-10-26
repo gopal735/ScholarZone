@@ -25,11 +25,7 @@ import pytest
 
 ROUTER_MODULES = [
     "app.routers.scholarships",
-    "app.routers.verification",
-    "app.routers.admin_image_review",
-    "app.routers.discovery",
     "app.routers.admin_dashboard",
-    "app.routers.enrichment",
 ]
 
 

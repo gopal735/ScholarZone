@@ -86,3 +86,6 @@ backend/gh_token.txt
 # developer machine's "dev" marker - masquerade as the identity of a real
 # deployment. The build writes it; git ignores it.
 backend/app/build_revision.txt
+
+# Local Netlify folder
+.netlify
