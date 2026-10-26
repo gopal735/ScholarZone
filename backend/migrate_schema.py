@@ -1,0 +1,468 @@
+"""Idempotent schema migration for ScholarZone PostgreSQL.
+
+Adds missing columns and tables required by the Image-Kind + Admin Review
+feature without dropping or modifying existing data.
+
+Usage:
+    python migrate_schema.py                     # Run migration
+    python migrate_schema.py --dry-run            # Show what would be executed
+    python migrate_schema.py --validate-only      # Verify schema without changes
+"""
+
+from __future__ import annotations
+
+import argparse
+import os
+import sys
+
+try:
+    sys.stdout.reconfigure(encoding="utf-8", errors="replace")
+    sys.stderr.reconfigure(encoding="utf-8", errors="replace")
+except (AttributeError, OSError):
+    pass
+
+from sqlalchemy import create_engine, inspect, text
+
+from app.supervisor_ddl import NEW_TABLE_DDL, NEW_TABLE_INDEXES
+# The supervisor-discovery DDL is described once, in app/supervisor_ddl.py, and
+# imported here rather than restated. This script is the PRODUCTION migration
+# path: app startup deliberately does not migrate in production, so these
+# tables reach Neon only by being run from here.
+from sqlalchemy.exc import NoSuchTableError
+
+
+REQUIRED_COLUMNS = {
+    "scholarships": {
+        "image_kind": "VARCHAR(32) NULL",
+    },
+    # Application Workspace 1.0. Every column below is additive and nullable or
+    # carries a default, so an existing row survives with a sensible value: a
+    # live application created before this migration gains outcome='pending',
+    # version=1 and a null note rather than becoming invalid. Nothing here
+    # rewrites or drops an existing value, which is what makes running this twice
+    # safe and running it on live data non-destructive.
+    "application_records": {
+        "outcome": "VARCHAR(16) NOT NULL DEFAULT 'pending'",
+        "version": "INTEGER NOT NULL DEFAULT 1",
+        "notes": "TEXT NULL",
+        "scholarship_name_snapshot": "VARCHAR(255) NULL",
+        "scholarship_country_snapshot": "VARCHAR(120) NULL",
+        "scholarship_degree_snapshot": "VARCHAR(255) NULL",
+        "scholarship_provider_snapshot": "VARCHAR(255) NULL",
+        "scholarship_funding_snapshot": "VARCHAR(120) NULL",
+        "scholarship_deadline_text_snapshot": "TEXT NULL",
+        "scholarship_deadline_date_snapshot": "DATE NULL",
+        "scholarship_source_url_snapshot": "VARCHAR(2048) NULL",
+    },
+}
+
+REQUIRED_TABLES = {
+    # application_records is listed here as well as having its new columns in
+    # REQUIRED_COLUMNS, and both are needed. Against a database that already has
+    # the table - production - the CREATE is a no-op and the ALTERs add what is
+    # missing. Against a fresh database the CREATE establishes the complete new
+    # shape and the ALTERs find nothing to do. Without the CREATE, the ALTERs
+    # would run against a table that does not exist yet.
+    "application_records": {
+        "postgresql": """
+            id INTEGER PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
+            user_id INTEGER NOT NULL REFERENCES users(id),
+            scholarship_id INTEGER NOT NULL REFERENCES scholarships(id),
+            state VARCHAR(16) NOT NULL DEFAULT 'saved',
+            outcome VARCHAR(16) NOT NULL DEFAULT 'pending',
+            version INTEGER NOT NULL DEFAULT 1,
+            notes TEXT NULL,
+            scholarship_name_snapshot VARCHAR(255) NULL,
+            scholarship_country_snapshot VARCHAR(120) NULL,
+            scholarship_degree_snapshot VARCHAR(255) NULL,
+            scholarship_provider_snapshot VARCHAR(255) NULL,
+            scholarship_funding_snapshot VARCHAR(120) NULL,
+            scholarship_deadline_text_snapshot TEXT NULL,
+            scholarship_deadline_date_snapshot DATE NULL,
+            scholarship_source_url_snapshot VARCHAR(2048) NULL,
+            created_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),
+            updated_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),
+            CONSTRAINT uq_application_records_user_scholarship UNIQUE (user_id, scholarship_id)
+        """,
+        "sqlite": """
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            user_id INTEGER NOT NULL REFERENCES users(id),
+            scholarship_id INTEGER NOT NULL REFERENCES scholarships(id),
+            state VARCHAR(16) NOT NULL DEFAULT 'saved',
+            outcome VARCHAR(16) NOT NULL DEFAULT 'pending',
+            version INTEGER NOT NULL DEFAULT 1,
+            notes TEXT NULL,
+            scholarship_name_snapshot VARCHAR(255) NULL,
+            scholarship_country_snapshot VARCHAR(120) NULL,
+            scholarship_degree_snapshot VARCHAR(255) NULL,
+            scholarship_provider_snapshot VARCHAR(255) NULL,
+            scholarship_funding_snapshot VARCHAR(120) NULL,
+            scholarship_deadline_text_snapshot TEXT NULL,
+            scholarship_deadline_date_snapshot DATE NULL,
+            scholarship_source_url_snapshot VARCHAR(2048) NULL,
+            created_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+            updated_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+            CONSTRAINT uq_application_records_user_scholarship UNIQUE (user_id, scholarship_id)
+        """,
+    },
+    # The checklist is a table, not a JSON column on the parent. Its integrity
+    # rules - unique key per application, ordered positions, completion
+    # timestamps, weights - are exactly what relational storage enforces and a
+    # blob would have to re-check on every read.
+    "application_checklist_items": {
+        "postgresql": """
+            id INTEGER PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
+            application_id INTEGER NOT NULL REFERENCES application_records(id),
+            key VARCHAR(64) NOT NULL,
+            label VARCHAR(200) NOT NULL,
+            description TEXT NULL,
+            action_target VARCHAR(200) NULL,
+            source VARCHAR(32) NOT NULL DEFAULT 'generic',
+            source_detail VARCHAR(120) NULL,
+            position INTEGER NOT NULL DEFAULT 0,
+            weight INTEGER NOT NULL DEFAULT 1,
+            completed BOOLEAN NOT NULL DEFAULT FALSE,
+            completed_at TIMESTAMPTZ,
+            created_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),
+            updated_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),
+            CONSTRAINT uq_application_checklist_items_application_key UNIQUE (application_id, key)
+        """,
+        "sqlite": """
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            application_id INTEGER NOT NULL REFERENCES application_records(id),
+            key VARCHAR(64) NOT NULL,
+            label VARCHAR(200) NOT NULL,
+            description TEXT NULL,
+            action_target VARCHAR(200) NULL,
+            source VARCHAR(32) NOT NULL DEFAULT 'generic',
+            source_detail VARCHAR(120) NULL,
+            position INTEGER NOT NULL DEFAULT 0,
+            weight INTEGER NOT NULL DEFAULT 1,
+            completed BOOLEAN NOT NULL DEFAULT 0,
+            completed_at DATETIME NULL,
+            created_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+            updated_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+            CONSTRAINT uq_application_checklist_items_application_key UNIQUE (application_id, key)
+        """,
+    },
+    "image_reviews": {
+        "postgresql": """
+            id INTEGER PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
+            scholarship_id INTEGER NOT NULL REFERENCES scholarships(id),
+            image_url VARCHAR(2048) NOT NULL,
+            image_kind VARCHAR(32) NOT NULL,
+            source_page VARCHAR(2048),
+            source_type VARCHAR(32),
+            relevance_evidence TEXT,
+            licensing_status VARCHAR(32),
+            licensing_evidence TEXT,
+            confidence VARCHAR(32) NOT NULL,
+            reason_for_review VARCHAR(255),
+            decision VARCHAR(16) NOT NULL DEFAULT 'pending',
+            reviewed_by VARCHAR(120),
+            reviewed_at TIMESTAMPTZ,
+            reviewer_note TEXT,
+            created_at TIMESTAMPTZ NOT NULL DEFAULT NOW()
+        """,
+        "sqlite": """
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            scholarship_id INTEGER NOT NULL REFERENCES scholarships(id),
+            image_url VARCHAR(2048) NOT NULL,
+            image_kind VARCHAR(32) NOT NULL,
+            source_page VARCHAR(2048),
+            source_type VARCHAR(32),
+            relevance_evidence TEXT,
+            licensing_status VARCHAR(32),
+            licensing_evidence TEXT,
+            confidence VARCHAR(32) NOT NULL,
+            reason_for_review VARCHAR(255),
+            decision VARCHAR(16) NOT NULL DEFAULT 'pending',
+            reviewed_by VARCHAR(120),
+            reviewed_at DATETIME,
+            reviewer_note TEXT,
+            created_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP
+        """,
+    },
+    # Student dashboard. Five new tables, none of which touches the scholarship
+    # catalogue: they hold accounts, sessions and one student's own records.
+    # Nothing here alters or reads scholarships, so applying this migration
+    # cannot change a single published fact.
+    "users": {
+        "postgresql": """
+            id INTEGER PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
+            email VARCHAR(254) NOT NULL,
+            password_hash VARCHAR(255) NOT NULL,
+            is_active BOOLEAN NOT NULL DEFAULT TRUE,
+            created_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),
+            updated_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),
+            CONSTRAINT uq_users_email UNIQUE (email)
+        """,
+        "sqlite": """
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            email VARCHAR(254) NOT NULL,
+            password_hash VARCHAR(255) NOT NULL,
+            is_active BOOLEAN NOT NULL DEFAULT 1,
+            created_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+            updated_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+            CONSTRAINT uq_users_email UNIQUE (email)
+        """,
+    },
+    "user_sessions": {
+        "postgresql": """
+            id INTEGER PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
+            user_id INTEGER NOT NULL REFERENCES users(id),
+            token_hash VARCHAR(64) NOT NULL,
+            created_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),
+            expires_at TIMESTAMPTZ NOT NULL,
+            revoked_at TIMESTAMPTZ,
+            CONSTRAINT uq_user_sessions_token_hash UNIQUE (token_hash)
+        """,
+        "sqlite": """
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            user_id INTEGER NOT NULL REFERENCES users(id),
+            token_hash VARCHAR(64) NOT NULL,
+            created_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+            expires_at DATETIME NOT NULL,
+            revoked_at DATETIME,
+            CONSTRAINT uq_user_sessions_token_hash UNIQUE (token_hash)
+        """,
+    },
+    "student_profiles": {
+        "postgresql": """
+            id INTEGER PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
+            user_id INTEGER NOT NULL REFERENCES users(id),
+            payload JSON NOT NULL DEFAULT '{}'::json,
+            created_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),
+            updated_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),
+            CONSTRAINT uq_student_profiles_user UNIQUE (user_id)
+        """,
+        "sqlite": """
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            user_id INTEGER NOT NULL REFERENCES users(id),
+            payload JSON NOT NULL DEFAULT '{}',
+            created_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+            updated_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+            CONSTRAINT uq_student_profiles_user UNIQUE (user_id)
+        """,
+    },
+    "saved_scholarships": {
+        "postgresql": """
+            id INTEGER PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
+            user_id INTEGER NOT NULL REFERENCES users(id),
+            scholarship_id INTEGER NOT NULL REFERENCES scholarships(id),
+            created_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),
+            CONSTRAINT uq_saved_scholarships_user_scholarship UNIQUE (user_id, scholarship_id)
+        """,
+        "sqlite": """
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            user_id INTEGER NOT NULL REFERENCES users(id),
+            scholarship_id INTEGER NOT NULL REFERENCES scholarships(id),
+            created_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+            CONSTRAINT uq_saved_scholarships_user_scholarship UNIQUE (user_id, scholarship_id)
+        """,
+    },
+}
+
+REQUIRED_INDEXES = {
+    "image_reviews": [
+        "ix_image_reviews_scholarship_decision ON image_reviews (scholarship_id, decision)",
+        "ix_image_reviews_created_at ON image_reviews (created_at)",
+    ],
+    "users": [
+        "ix_users_email ON users (email)",
+    ],
+    "user_sessions": [
+        "ix_user_sessions_token_hash ON user_sessions (token_hash)",
+        "ix_user_sessions_expires_at ON user_sessions (expires_at)",
+        "ix_user_sessions_user_expires ON user_sessions (user_id, expires_at)",
+    ],
+    "student_profiles": [
+        "ix_student_profiles_user_id ON student_profiles (user_id)",
+    ],
+    "saved_scholarships": [
+        "ix_saved_scholarships_user_created ON saved_scholarships (user_id, created_at)",
+    ],
+    "application_records": [
+        "ix_application_records_user_updated ON application_records (user_id, updated_at)",
+        "ix_application_records_state ON application_records (state)",
+        # The workspace orders a student's applications by state within a user,
+        # so the two-column form is what actually serves that query.
+        "ix_application_records_user_state ON application_records (user_id, state)",
+    ],
+    "application_checklist_items": [
+        "ix_application_checklist_items_application_position ON application_checklist_items (application_id, position)",
+    ],
+}
+
+
+# Sourced from the shared module so the dev upgrade path in app/database.py and
+# this production script can never describe different schemas.
+REQUIRED_TABLES.update(NEW_TABLE_DDL)
+REQUIRED_INDEXES.update(NEW_TABLE_INDEXES)
+
+
+def get_engine():
+    url = os.getenv("SCHOLARZONE_DATABASE_URL")
+    if not url:
+        print("ERROR: SCHOLARZONE_DATABASE_URL is not set.")
+        sys.exit(1)
+    if url.startswith("postgresql://"):
+        url = "postgresql+psycopg://" + url[len("postgresql://"):]
+    return create_engine(url, pool_pre_ping=True, client_encoding="UTF8")
+
+
+def column_exists(engine, table_name: str, column_name: str) -> bool:
+    inspector = inspect(engine)
+    columns = [col["name"] for col in inspector.get_columns(table_name)]
+    return column_name in columns
+
+
+def table_exists(engine, table_name: str) -> bool:
+    inspector = inspect(engine)
+    return table_name in inspector.get_table_names()
+
+
+def index_exists(engine, table_name: str, index_name: str) -> bool:
+    inspector = inspect(engine)
+    try:
+        indexes = [idx["name"] for idx in inspector.get_indexes(table_name)]
+    except NoSuchTableError:
+        return False
+    return index_name in indexes
+
+
+def _dialect_name(engine) -> str:
+    return engine.dialect.name
+
+
+def run_migration(engine, dry_run: bool = False) -> list[str]:
+    """Plan the whole migration first, then apply one statement at a time.
+
+    The planning and applying phases were previously interleaved inside a single
+    ``engine.begin()`` block. That held a write transaction open while every
+    ``table_exists``/``column_exists`` inspection ran, each of which needs its own
+    connection - so the transaction sat idle for the whole inspection phase. Neon
+    enforces ``idle_in_transaction_session_timeout`` and killed it, which is why a
+    migration with more columns to inspect failed partway with nothing applied.
+
+    Planning with no open write transaction, then applying each statement in its
+    own short transaction, fixes that and also means no lock is held across the
+    inspection work. Still idempotent: everything here is IF NOT EXISTS or is
+    guarded by an existence check.
+    """
+    changes: list[str] = []
+    dialect = _dialect_name(engine)
+    tables_to_create: set[str] = set()
+
+    # ---- plan (no write transaction open) --------------------------------
+    for table_name, columns in REQUIRED_COLUMNS.items():
+        # A column can only be added to a table that exists. When the table is
+        # absent, the CREATE below establishes the complete shape and there is
+        # nothing to ALTER - so skip rather than issuing DDL against a table the
+        # database does not have.
+        if not table_exists(engine, table_name):
+            continue
+        for column_name, definition in columns.items():
+            if column_exists(engine, table_name, column_name):
+                continue
+            if dialect == "postgresql":
+                changes.append(
+                    f"ALTER TABLE {table_name} ADD COLUMN IF NOT EXISTS {column_name} {definition}"
+                )
+            else:
+                changes.append(f"ALTER TABLE {table_name} ADD COLUMN {column_name} {definition}")
+
+    for table_name, ddl_map in REQUIRED_TABLES.items():
+        if not table_exists(engine, table_name):
+            ddl = ddl_map.get(dialect, ddl_map.get("postgresql", ""))
+            changes.append(f"CREATE TABLE IF NOT EXISTS {table_name} ({ddl})")
+            # A table this run is about to create does not exist yet, so its
+            # indexes have to be planned from this list rather than from the
+            # database. Missing this leaves a brand-new table permanently
+            # unindexed until a later run notices.
+            tables_to_create.add(table_name)
+
+    for table_name, index_defs in REQUIRED_INDEXES.items():
+        if not table_exists(engine, table_name) and table_name not in tables_to_create:
+            continue
+        for index_def in index_defs:
+            index_name = index_def.split(" ON ")[0].strip()
+            if not index_exists(engine, table_name, index_name):
+                changes.append(f"CREATE INDEX IF NOT EXISTS {index_def}")
+
+    if dry_run:
+        return changes
+
+    # ---- apply (one short transaction per statement) ----------------------
+    applied: list[str] = []
+    for sql in changes:
+        with engine.begin() as conn:
+            conn.execute(text(sql))
+        applied.append(sql)
+
+    return applied
+
+
+def validate_schema(engine) -> bool:
+    ok = True
+    for table_name, columns in REQUIRED_COLUMNS.items():
+        for column_name in columns:
+            if not column_exists(engine, table_name, column_name):
+                print(f"MISSING: {table_name}.{column_name}")
+                ok = False
+            else:
+                print(f"OK: {table_name}.{column_name}")
+
+    for table_name in REQUIRED_TABLES:
+        if not table_exists(engine, table_name):
+            print(f"MISSING TABLE: {table_name}")
+            ok = False
+        else:
+            print(f"OK TABLE: {table_name}")
+
+    for table_name, index_defs in REQUIRED_INDEXES.items():
+        for index_def in index_defs:
+            index_name = index_def.split(" ON ")[0].strip()
+            if not index_exists(engine, table_name, index_name):
+                print(f"MISSING INDEX: {index_name}")
+                ok = False
+            else:
+                print(f"OK INDEX: {index_name}")
+
+    return ok
+
+
+def main() -> None:
+    parser = argparse.ArgumentParser(description="Idempotent schema migration for ScholarZone")
+    parser.add_argument("--dry-run", action="store_true", help="Show changes without applying")
+    parser.add_argument("--validate-only", action="store_true", help="Verify schema without changes")
+    args = parser.parse_args()
+
+    engine = get_engine()
+
+    try:
+        with engine.connect() as conn:
+            version = conn.execute(text("SELECT version()")).scalar()
+            print(f"Connected to: {version[:80]}...")
+    except Exception as exc:
+        print(f"ERROR: Could not connect to database: {exc}")
+        sys.exit(1)
+
+    if args.validate_only:
+        ok = validate_schema(engine)
+        sys.exit(0 if ok else 1)
+
+    changes = run_migration(engine, dry_run=args.dry_run)
+
+    if not changes:
+        print("Schema is already up to date. No changes needed.")
+    else:
+        print(f"Migration {'would apply' if args.dry_run else 'applied'} {len(changes)} change(s):")
+        for sql in changes:
+            print(f"  -> {sql}")
+
+    engine.dispose()
+
+
+if __name__ == "__main__":
+    main()
