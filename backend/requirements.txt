@@ -1,0 +1,68 @@
+annotated-doc==0.0.5
+annotated-types==0.8.0
+anyio==4.14.2
+click==8.4.2
+colorama==0.4.6
+# Declared for the backup path. It was previously present only transitively
+# through pdfminer.six, which made the encrypted-backup fallback backend
+# depend on an unrelated library still being installed. A range rather than an
+# exact pin because the API used (AESGCM) is stable and old wheels remain
+# installable on the platforms this runs on.
+cryptography>=42,<51
+fastapi==0.141.1
+h11==0.16.0
+idna==3.18
+pydantic==2.13.4
+pydantic_core==2.46.4
+starlette==1.4.1
+typing-inspection==0.4.2
+typing_extensions==4.16.0
+uvicorn==0.52.1
+SQLAlchemy>=2.0,<2.1
+psycopg[binary]>=3.2,<4
+httpx>=0.27,<0.29
+resend
+python-dotenv
+Pillow
+beautifulsoup4
+# Test-suite dependency, imported by tests/test_efficiency_safety.py to parse
+# the GitHub Actions workflow YAML. It was previously undeclared and reached
+# runners only by accident: nothing else in this file requires it, so a clean
+# `pip install -r requirements.txt` on a fresh CI runner left the import to fail
+# with ModuleNotFoundError. That failure was invisible because the backend test
+# step piped pytest into `tee` and so reported tee's always-zero exit status;
+# with pipefail restored it would have surfaced as a confusing collection error
+# rather than a missing dependency. No application module imports yaml.
+PyYAML>=6.0,<7
+# Official scholarship circulars are published as PDFs. Both libraries are
+# imported lazily by app/services/official_pdf_extractor.py, which means a
+# missing pin did not crash the worker - it silently skipped every PDF and the
+# stage still reported success. Pinning them makes the capability real in CI
+# and in the scheduled run rather than only on the developer machine that
+# happened to have them installed.
+pypdf>=5.0,<7
+pdfplumber>=0.11,<1
+pytest
+# ---------------------------------------------------------------------------
+# Browser rendering is deliberately NOT a production dependency.
+#
+# Supervisor discovery is static-first. The browser tier is an opt-in fallback
+# for a university directory that publishes its staff list only after JavaScript
+# executes, and it is reachable only when an operator sets
+# SCHOLARZONE_SUPERVISOR_RENDER_ENABLED.
+#
+# The driver lives in requirements-supervisor-render.txt, not here. Its ~101 MB
+# pushed this function's bundle to 270.22 MB against a 225 MB platform limit, so
+# the build failed and nothing was deployed at all. A dependency that only a
+# fallback tier needs must not be able to stop the service shipping.
+#
+# Nothing below this line changes behaviour when the driver is absent:
+# supervisor_render.playwright_available() returns False, build_driver() returns
+# a null driver, and such sources are recorded as source_requires_rendering -
+# an honest inconclusive state, never a claim that a university has no staff.
+# Static discovery needs no browser and is unaffected.
+#
+# To install the browser tier:
+#   pip install -r requirements.txt -r requirements-supervisor-render.txt
+#   playwright install chromium
+# ---------------------------------------------------------------------------
