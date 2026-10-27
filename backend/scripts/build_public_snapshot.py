@@ -221,7 +221,7 @@ def build_payload(session: Session) -> dict[str, Any]:
     quarantined_count = session.scalar(
         select(func.count())
         .select_from(Scholarship)
-        .where(Scholarship.status == "quarantined")
+        .where(Scholarship.verification_status == "quarantined")
     )
 
     # The public predicate is the authority. Everything below counts what

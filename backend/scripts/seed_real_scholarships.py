@@ -10,7 +10,14 @@ if str(BACKEND_ROOT) not in sys.path:
 
 from sqlalchemy import select  # noqa: E402
 
-from app.data.verified_scholarships import (  # noqa: E402
+from app.data.verified_scholarships import (
+    EIFFEL_OFFICIAL_SOURCE_URL,
+    SWISS_ESKAS_OFFICIAL_SOURCE_URL,
+    VERIFIED_SCHOLARSHIPS,
+)
+from app.data.additional_scholarships import (
+    ADDITIONAL_VERIFIED_SCHOLARSHIPS,
+)  # noqa: E402
     EIFFEL_OFFICIAL_SOURCE_URL,
     SWISS_ESKAS_OFFICIAL_SOURCE_URL,
     VERIFIED_SCHOLARSHIPS,
@@ -32,7 +39,14 @@ def main() -> None:
             )
             for source_url in RESULT_URLS
         }
-        created_count, updated_count = upsert_verified_scholarships(session, VERIFIED_SCHOLARSHIPS)
+        # Build canonical catalogue: VERIFIED first (takes precedence), then ADDITIONAL
+    verified_urls = {s.official_source_url for s in VERIFIED_SCHOLARSHIPS}
+    additional_filtered = [s for s in ADDITIONAL_VERIFIED_SCHOLARSHIPS if s.official_source_url not in verified_urls]
+    canonical_catalogue = list(VERIFIED_SCHOLARSHIPS) + additional_filtered
+    
+    print(f"Canonical catalogue: {len(VERIFIED_SCHOLARSHIPS)} VERIFIED + {len(additional_filtered)} ADDITIONAL (filtered) = {len(canonical_catalogue)} total")
+    
+    created_count, updated_count = upsert_verified_scholarships(session, canonical_catalogue)
         resulting_rows = session.scalars(
             select(Scholarship)
             .where(Scholarship.official_source_url.in_(RESULT_URLS))
