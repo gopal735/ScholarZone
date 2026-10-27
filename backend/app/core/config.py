@@ -28,7 +28,6 @@ class Settings:
     environment: str
     database_url: str
     allowed_origins: tuple[str, ...]
-    resend_api_key: str | None = None
     verification_secret: str | None = None
     admin_secret: str | None = None
     # Public directory quality gate (OBSOLETE - no longer filters public directory).
@@ -125,7 +124,6 @@ def get_settings() -> Settings:
         environment=environment,
         database_url=database_url,
         allowed_origins=allowed_origins,
-        resend_api_key=os.getenv("RESEND_API_KEY"),
         verification_secret=os.getenv("SCHOLARZONE_VERIFICATION_SECRET"),
         # The deployment already provisions SCHOLARZONE_VERIFICATION_SECRET, but
         # only this name was ever read here, so admin_secret resolved to None and

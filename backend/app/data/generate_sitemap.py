@@ -73,7 +73,6 @@ def main() -> int:
     entries: list[tuple[str, str | None, str, float]] = [
         (f"{BASE_URL}/", None, "daily", 1.0),
         (f"{BASE_URL}/scholarships", None, "daily", 0.9),
-        (f"{BASE_URL}/countries", None, "weekly", 0.7),
     ]
     for row in rows:
         # Priority follows urgency: an open opportunity is worth more than a

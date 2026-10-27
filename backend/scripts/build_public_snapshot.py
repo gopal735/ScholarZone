@@ -18,9 +18,9 @@ The rules this script follows
   this snapshot and the live directory can never disagree about who is
   visible.
 
-* Closed, archived and quarantined records are excluded. So are records whose
-  deadline has already passed: a scholarship somebody cannot apply for any
-  more is not a scholarship, and shipping one is a false promise.
+* Closed, archived and quarantined records are excluded. Records whose
+  deadline has passed are NOT excluded — they remain visible with their
+  expired deadlines displayed honestly, per the public visibility contract.
 
 * Internal review fields are never written. ``verification_notes``,
   ``reviewed_by``, quarantine reasons and supervisor review state stay in the
@@ -232,17 +232,6 @@ def build_payload(session: Session) -> dict[str, Any]:
             select(Scholarship).where(*conditions).order_by(Scholarship.id)
         )
     )
-    public_ids = {record.id for record in records}
-    today = date.today()
-    deadline_passed = sum(
-        1
-        for record in session.scalars(select(Scholarship))
-        if record.id not in public_ids
-        and record.deadline_date is not None
-        and record.deadline_date < today
-        and record.status == "open"
-        and not record.is_archived
-    )
 
     payload = {
         "meta": {
@@ -254,7 +243,6 @@ def build_payload(session: Session) -> dict[str, Any]:
                 "closed": closed_count or 0,
                 "archived": archived_count or 0,
                 "quarantined": quarantined_count or 0,
-                "deadline_passed": deadline_passed,
             },
             #: The research tables this file deliberately does not read.
             #: Recorded so the omission is visible in the artefact.
@@ -293,7 +281,6 @@ def main() -> int:
     print(f"  closed:           {meta['excluded']['closed']}")
     print(f"  archived:         {meta['excluded']['archived']}")
     print(f"  quarantined:      {meta['excluded']['quarantined']}")
-    print(f"  deadline passed:  {meta['excluded']['deadline_passed']}")
     print(f"research tables:    excluded ({', '.join(RESEARCH_TABLES)})")
 
     if not records:
