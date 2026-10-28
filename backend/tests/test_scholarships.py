@@ -306,7 +306,7 @@ def test_search_filters_title_country_and_handles_empty_results(self):
         self.assertEqual([item["id"] for item in degree_response.json()["items"]], [2, 5])
         self.assertEqual([item["id"] for item in combined_response.json()["items"]], [3])
 
-def test_sorting_and_pagination_are_database_backed(self):
+    def test_sorting_and_pagination_are_database_backed(self):
         earliest = self.client.get("/scholarships", params={"sort": "deadline-earliest"})
         latest = self.client.get("/scholarships", params={"sort": "deadline-latest"})
         name_asc = self.client.get("/scholarships", params={"sort": "name-asc"})
@@ -318,7 +318,7 @@ def test_sorting_and_pagination_are_database_backed(self):
         self.assertEqual(page_two.json()["pagination"], {"page": 2, "limit": 1, "total": 728, "total_pages": 728})
         self.assertEqual(len(page_two.json()["items"]), 1)
 
-def test_extended_discovery_filters_and_sorting(self):
+    def test_extended_discovery_filters_and_sorting(self):
         funding_response = self.client.get("/scholarships", params={"funding": "Fully Funded"})
         month_response = self.client.get("/scholarships", params={"deadline_month": 10})
         search_response = self.client.get("/scholarships", params={"search": "master"})
