@@ -3,6 +3,7 @@
 from pathlib import Path
 import sys
 import json
+import subprocess
 from datetime import date, datetime
 
 
@@ -28,7 +29,44 @@ from app.services.scholarship_ingestion import ScholarshipIngestionRecord, upser
 RESULT_URLS = (EIFFEL_OFFICIAL_SOURCE_URL, SWISS_ESKAS_OFFICIAL_SOURCE_URL)
 
 
-def load_master_recovered(json_path: Path) -> list:
+def load_master_snapshot_ids() -> dict[str, int]:
+    """Load master snapshot from origin/master and return mapping of official_source_url -> master_id."""
+    try:
+        result = subprocess.run(
+            ['git', 'show', 'origin/master:frontend/public/scholarships-snapshot.json'],
+            capture_output=True,
+            cwd=BACKEND_ROOT.parent,
+            check=True
+        )
+        master_data = json.loads(result.stdout.decode('utf-8'))
+    except subprocess.CalledProcessError:
+        print("Warning: Could not load master snapshot from git")
+        return {}
+    
+    master_by_url = {}
+    for r in master_data.get('scholarships', []):
+        url = r.get('official_source_url')
+        if url:
+            master_by_url[url] = r['id']
+    
+    print(f"Loaded master snapshot from origin/master: {len(master_by_url)} records with URLs")
+    return master_by_url
+
+
+def apply_master_ids(records: list, master_by_url: dict[str, int]) -> int:
+    """Apply master IDs as preferred_id for records that exist in master snapshot."""
+    updated = 0
+    for record in records:
+        url = record.official_source_url
+        if url in master_by_url:
+            master_id = master_by_url[url]
+            if record.preferred_id != master_by_url[url]:
+                record.preferred_id = master_by_url[url]
+                updated += 1
+    return updated
+
+
+def load_master_recovered(json_path: Path, master_by_url: dict[str, int]) -> list:
     """Load master recovered scholarships from JSON file."""
     with open(json_path, 'r', encoding='utf-8') as f:
         data = json.load(f)
@@ -90,6 +128,15 @@ def load_master_recovered(json_path: Path) -> list:
 
 def main() -> None:
     init_database()
+    
+    # Load master snapshot IDs for legacy URL compatibility
+    master_by_url = load_master_snapshot_ids()
+    
+    # Apply master IDs to VERIFIED and ADDITIONAL records
+    verified_updated = apply_master_ids(list(VERIFIED_SCHOLARSHIPS), master_by_url)
+    additional_updated = apply_master_ids(list(ADDITIONAL_VERIFIED_SCHOLARSHIPS), master_by_url)
+    print(f"Applied master IDs: {verified_updated} VERIFIED, {additional_updated} ADDITIONAL records updated")
+    
     with get_session_factory()() as session:
         previous_ids = {
             source_url: session.scalar(
@@ -105,7 +152,7 @@ def main() -> None:
         json_path = BACKEND_ROOT / 'data' / 'master_recovered_scholarships.json'
         master_recovered_filtered = []
         if json_path.exists():
-            master_recovered = load_master_recovered(json_path)
+            master_recovered = load_master_recovered(json_path, master_by_url)
             # Filter out records already in canonical catalogue
             canonical_urls = verified_urls  # Only VERIFIED at this point
             master_recovered_filtered = [r for r in master_recovered if r.official_source_url not in canonical_urls]
@@ -116,16 +163,16 @@ def main() -> None:
         # Build canonical catalogue: MASTER RECOVERED first, then VERIFIED, then ADDITIONAL
         additional_filtered = [s for s in ADDITIONAL_VERIFIED_SCHOLARSHIPS if s.official_source_url not in verified_urls]
         canonical_catalogue = master_recovered_filtered + list(VERIFIED_SCHOLARSHIPS) + additional_filtered
-
+        
         print(f"Canonical catalogue: {len(master_recovered_filtered)} RECOVERED + {len(VERIFIED_SCHOLARSHIPS)} VERIFIED + {len(additional_filtered)} ADDITIONAL = {len(canonical_catalogue)} total")
-
+        
         created_count, updated_count = upsert_verified_scholarships(session, canonical_catalogue)
         resulting_rows = session.scalars(
             select(Scholarship)
             .where(Scholarship.official_source_url.in_(RESULT_URLS))
             .order_by(Scholarship.id)
         ).all()
-
+        
         print(f"Created {created_count} scholarship record(s); updated {updated_count} record(s).")
         for scholarship in resulting_rows:
             print(
