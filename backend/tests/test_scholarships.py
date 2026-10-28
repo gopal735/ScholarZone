@@ -280,7 +280,7 @@ class ScholarshipApiTests(unittest.TestCase):
         self.assertEqual(response.status_code, 404)
         self.assertEqual(response.json(), {"detail": "Scholarship not found"})
 
-def test_search_filters_title_country_and_handles_empty_results(self):
+    def test_search_filters_title_country_and_handles_empty_results(self):
         title_response = self.client.get("/scholarships", params={"search": "daad"})
         country_response = self.client.get("/scholarships", params={"search": "germany"})
         empty_response = self.client.get("/scholarships", params={"search": "not-a-real-scholarship"})
