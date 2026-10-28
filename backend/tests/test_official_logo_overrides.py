@@ -323,7 +323,7 @@ class TestIssuerKind:
         """
         from app.jobs.scholarzone_maintenance import _issuer_kind
 
-        assert _issuer_kind("unizg.hr") == "official_logo"
+        assert _issuer_kind("unizg.hr") == "official_provider"
         assert _issuer_kind("unizg.hr", "University of Zagreb") == "official_university"
 
     def test_national_academic_domains_need_the_alt_text(self):
@@ -335,7 +335,7 @@ class TestIssuerKind:
         from app.jobs.scholarzone_maintenance import _issuer_kind
 
         for host in ("ut.ee", "lu.lv", "hi.is"):
-            assert _issuer_kind(host) == "official_logo", (
+            assert _issuer_kind(host) == "official_provider", (
                 f"{host} has no host-level university signal"
             )
             assert _issuer_kind(host, "University of Tartu") == "official_university"
@@ -347,7 +347,7 @@ class TestIssuerKind:
         for host, entry in overrides.items():
             kind = _issuer_kind(host, entry.get("alt_text"))
             assert kind in {
-                "official_logo", "official_government", "official_university"
+                "official_provider", "official_government", "official_university"
             }, f"{host} produced an unknown issuer kind: {kind}"
 
     def test_unknown_issuer_falls_back_to_logo(self):
@@ -358,8 +358,8 @@ class TestIssuerKind:
         """
         from app.jobs.scholarzone_maintenance import _issuer_kind
 
-        assert _issuer_kind("iie.org") == "official_logo"
-        assert _issuer_kind("akdn.org") == "official_logo"
+        assert _issuer_kind("iie.org") == "official_provider"
+        assert _issuer_kind("akdn.org") == "official_provider"
 
 
 class TestRootOfHelper:

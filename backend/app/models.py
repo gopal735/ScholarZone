@@ -435,42 +435,6 @@ class ScholarshipRestoreRecord(Base):
     created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), nullable=False, server_default=func.now())
 
 
-class ScholarshipAdminAudit(Base):
-    """The administrative change trail for scholarship records.
-
-    Deliberately holds NO foreign key to ``scholarships``. The tables that
-    do (verification history, snapshots, restore records) make a hard delete
-    impossible once anything has been written about a record: the audit trail
-    its own write creates would block the deletion it is recording. An audit
-    row that cannot outlive the row it audits is not an audit trail.
-
-    So the identifier is a plain integer: the row survives the deletion of
-    the scholarship it describes, which is exactly when it is worth reading.
-    ``before_values``/``after_values`` hold the JSON of the affected fields,
-    so a delete can be undone by a human with the values in hand rather than
-    by trusting the operator's memory.
-    """
-
-    __tablename__ = "scholarship_admin_audit"
-    __table_args__ = (
-        Index("ix_admin_audit_scholarship_action", "scholarship_id", "action"),
-        Index("ix_admin_audit_recorded_at", "recorded_at"),
-    )
-
-    id: Mapped[int] = mapped_column(Integer, primary_key=True)
-    scholarship_id: Mapped[int] = mapped_column(Integer, index=True, nullable=False)
-    scholarship_title: Mapped[str | None] = mapped_column(String(512), nullable=True)
-    action: Mapped[str] = mapped_column(String(24), nullable=False)
-    changed_fields: Mapped[list[str]] = mapped_column(JSON, nullable=False, default=list)
-    before_values: Mapped[dict | None] = mapped_column(JSON, nullable=True)
-    after_values: Mapped[dict | None] = mapped_column(JSON, nullable=True)
-    operator: Mapped[str] = mapped_column(String(120), nullable=False)
-    reason: Mapped[str | None] = mapped_column(Text, nullable=True)
-    recorded_at: Mapped[datetime] = mapped_column(
-        DateTime(timezone=True), nullable=False, server_default=func.now()
-    )
-
-
 class MaintenanceCursor(Base):
     """Durable per-stream progress marker for autonomous maintenance.
 
@@ -569,6 +533,16 @@ class MaintenanceRun(Base):
     error_summary: Mapped[str | None] = mapped_column(Text, nullable=True)
     dry_run: Mapped[bool] = mapped_column(Boolean, nullable=False, default=False)
     duration_ms: Mapped[float | None] = mapped_column(Float, nullable=True)
+    #: What logically asked for this run (cron, workflow_dispatch, manual).
+    #:
+    #: Nullable because a run is first of all an execution, and the origin is
+    #: provenance about it. Read beside ``slot_id``, the two answer different
+    #: questions: the slot says which schedule this belonged to, this says what
+    #: kind of thing caused it at all. A dropped trigger leaves a slot with no
+    #: run; a manual dry run leaves a run with no slot.
+    logical_source: Mapped[str | None] = mapped_column(String(32), nullable=True)
+    #: What carried the request, when it was not the schedule.
+    transport_event: Mapped[str | None] = mapped_column(String(64), nullable=True)
 
 
 class MaintenanceSlot(Base):

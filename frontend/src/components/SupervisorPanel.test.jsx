@@ -35,7 +35,6 @@ function coverageResponse({
   count = 1,
   pending = false,
   supervisors = [],
-  officialContacts = [],
 } = {}) {
   return {
     ok: true,
@@ -50,7 +49,6 @@ function coverageResponse({
         discovery_pending: pending,
       },
       supervisors,
-      official_contacts: officialContacts,
     }),
   }
 }
@@ -225,40 +223,6 @@ describe('SupervisorPanel states', () => {
     expect(screen.getByText(/unavailable right now/i)).toBeTruthy()
   })
 
-  it('does not quote a backend parse error at the reader', async () => {
-    /* Found on the live deploy preview. When the API's host is serving the SPA
-       rather than the backend, a request to it answers 200 with the app's own
-       index.html, so `response.json()` throws `Unexpected token '<', "<!doctype
-       "... is not valid JSON`. That message was rendered into the page verbatim:
-       it names a parser, quotes the reader's HTML at them, and says nothing
-       about what actually failed - which is one optional lookup, not the
-       scholarship they are reading. */
-
-    const parseFailure = Object.assign(new Error('Unexpected token \'<\', "<!doctype "... is not valid JSON'), {
-      name: 'SyntaxError',
-    })
-    const warn = vi.spyOn(console, 'warn').mockImplementation(() => {})
-
-    mockFetch(async () => {
-      throw parseFailure
-    })
-
-    renderPanel({ scholarshipId: 7 })
-
-    const alert = await screen.findByRole('alert')
-    expect(alert.textContent).toMatch(/unavailable right now/i)
-
-    // The detail this panel is about is on the same page, and a failure here
-    // must not read as though it went missing.
-    expect(alert.textContent).toMatch(/scholarship details above are not affected/i)
-    expect(alert.textContent).not.toMatch(/doctype/i)
-    expect(alert.textContent).not.toMatch(/Unexpected token/i)
-
-    // The technical detail is kept for whoever is debugging, not for the reader.
-    expect(warn).toHaveBeenCalled()
-    warn.mockRestore()
-  })
-
   it('shows a loading state before any response arrives', () => {
     mockFetch(() => new Promise(() => {}))
 
@@ -299,81 +263,5 @@ describe('SupervisorPanel states', () => {
     await screen.findByText('Dr Ada Lovelace')
 
     expect(screen.queryByText('guess@uni1.edu')).toBeNull()
-  })
-})
-
-/* The administrative contact that stands in for a supervisor on awards where
-   supervision does not apply. What is pinned here is the distinction: the
-   contact is an office, it is labelled as one, and it never appears where a
-   professor list does. A panel that rendered the two interchangeably would be
-   telling a student to email a scholarship office about research supervision. */
-describe('SupervisorPanel official contacts', () => {
-  const scholarshipOffice = {
-    kind: 'scholarship_office',
-    label: 'Scholarships and Financial Aid',
-    url: 'https://uni1.edu/scholarships/contact',
-    email: 'scholarships@uni1.edu',
-    email_verified: true,
-    evidence_source_url: 'https://uni1.edu/scholarships/msc',
-    evidence_source_type: 'official_programme_page',
-    retrieved_at: '2026-09-01T00:00:00+00:00',
-  }
-
-  it('shows the official contact on a not-applicable award, labelled as an office', async () => {
-    mockFetch(async () =>
-      coverageResponse({
-        status: 'not_applicable',
-        count: 0,
-        supervisors: [],
-        officialContacts: [scholarshipOffice],
-      }),
-    )
-
-    renderPanel({ scholarshipId: 7 })
-
-    expect(await screen.findByText('Official contact for this award')).toBeTruthy()
-    // The office is named as what it is, and the note says what it is not.
-    expect(screen.getByText('Scholarship office')).toBeTruthy()
-    expect(screen.getByText(/administrative office, not a research supervisor/i)).toBeTruthy()
-    // And no professor-card affordances appear for it. Scoped to the badge
-    // class: the panel heading contains the word "supervisors" for every
-    // state, and an unscoped match would pass whichever of the two rendered.
-    expect(document.querySelector('.sz-supervisor__relationship')).toBeNull()
-    expect(document.querySelector('.sz-supervisor__button')).toBeNull()
-  })
-
-  it('does not render a contact email the server has not verified', async () => {
-    mockFetch(async () =>
-      coverageResponse({
-        status: 'not_applicable',
-        count: 0,
-        supervisors: [],
-        officialContacts: [{ ...scholarshipOffice, email: null, email_verified: false }],
-      }),
-    )
-
-    renderPanel({ scholarshipId: 7 })
-    await screen.findByText('Official contact for this award')
-
-    expect(screen.queryByText('scholarships@uni1.edu')).toBeNull()
-    // The page the contact was read from is still shown, so the office stays
-    // reachable without an address being invented for it.
-    expect(screen.getByText('Scholarships and Financial Aid')).toBeTruthy()
-  })
-
-  it('never shows a contact next to a verified professor list', async () => {
-    mockFetch(async () =>
-      coverageResponse({
-        count: 1,
-        supervisors: [professor()],
-        officialContacts: [scholarshipOffice],
-      }),
-    )
-
-    renderPanel({ scholarshipId: 7 })
-    await screen.findByText('Dr Ada Lovelace')
-
-    expect(screen.queryByText('Official contact for this award')).toBeNull()
-    expect(screen.queryByText('scholarships@uni1.edu')).toBeNull()
   })
 })

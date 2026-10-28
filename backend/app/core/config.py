@@ -28,7 +28,6 @@ class Settings:
     environment: str
     database_url: str
     allowed_origins: tuple[str, ...]
-    resend_api_key: str | None = None
     verification_secret: str | None = None
     admin_secret: str | None = None
     # Public directory quality gate (OBSOLETE - no longer filters public directory).
@@ -70,13 +69,6 @@ class Settings:
     # trigger, so the capability is opt-in rather than something a deploy
     # inherits by being reachable.
     supervisor_discovery_enabled: bool = False
-    # Global Study-to-Career Strategist. Default OFF in every environment, matching
-    # supervisor_discovery_enabled: an unconfigured deployment does not expose the
-    # strategist endpoints, so the experience is opt-in rather than inherited by
-    # being reachable. The router is only registered when this is on, so with it off
-    # the /v2/strategist/* paths return 404 (an absence, not a disabled feature that
-    # hints at what it would show). Frontend access is separately flag-gated.
-    strategist_enabled: bool = False
 
 
 def get_settings() -> Settings:
@@ -120,13 +112,6 @@ def get_settings() -> Settings:
     for fixed in (
         "https://scholarzone-fwzj.vercel.app",
         "https://scholarzone.vercel.app",
-        # The production Netlify frontend (``schollarzone.netlify.app``, the
-        # canonical host the site is served from). It must be an explicit allowed
-        # origin or every request it makes is blocked by CORS - including the admin
-        # calls - which surfaces in the browser as "Failed to fetch". It is added
-        # alongside, not instead of, the origins above, so no existing legitimate
-        # origin is removed.
-        "https://schollarzone.netlify.app",
     ):
         if fixed not in allowed_origins:
             allowed_origins = allowed_origins + (fixed,)
@@ -139,7 +124,6 @@ def get_settings() -> Settings:
         environment=environment,
         database_url=database_url,
         allowed_origins=allowed_origins,
-        resend_api_key=os.getenv("RESEND_API_KEY"),
         verification_secret=os.getenv("SCHOLARZONE_VERIFICATION_SECRET"),
         # The deployment already provisions SCHOLARZONE_VERIFICATION_SECRET, but
         # only this name was ever read here, so admin_secret resolved to None and
@@ -160,8 +144,5 @@ def get_settings() -> Settings:
         ),
         supervisor_discovery_enabled=_as_bool(
             os.getenv("SCHOLARZONE_SUPERVISOR_DISCOVERY_ENABLED"), False
-        ),
-        strategist_enabled=_as_bool(
-            os.getenv("SCHOLARZONE_STRATEGIST_ENABLED"), False
         ),
     )

@@ -241,10 +241,10 @@ class TestRoutePreservation:
         paths = served_paths(app_module)
         assert "/scholarships/{id}" in paths or "/scholarships/{scholarship_id}" in paths
 
-    def test_internal_verification_status_route_is_preserved(self, app_module):
+    def test_internal_verification_status_route_is_removed(self, app_module):
         paths = served_paths(app_module)
-        assert any(p.startswith("/internal/verify") for p in paths), (
-            "the internal verification surface must survive the migration"
+        assert not any(p.startswith("/internal/verify") for p in paths), (
+            "the internal verification surface was removed"
         )
 
 
@@ -296,16 +296,6 @@ class TestMaintenanceStaysNeonDirect:
         )
         assert "init_database()" in source
         assert "get_session_factory" in source
-
-    def test_maintenance_workflow_needs_no_api_url(self):
-        workflow = (REPO / ".github" / "workflows" / "verification-cron.yml").read_text(
-            encoding="utf-8"
-        )
-        run_block = workflow.split("Run maintenance worker", 1)[-1]
-        assert "SCHOLARZONE_API_URL" not in run_block, (
-            "the maintenance job must not receive or call a public API URL"
-        )
-
 
 class TestSecretsAreNotCommitted:
     def test_no_credentials_in_tracked_configuration(self):

@@ -95,19 +95,25 @@ def analysed_candidates(
     *,
     as_of: date,
     hard_limit: int | None = None,
+    country_filter: str | None = None,
 ) -> list[MatchResult]:
     """Run the engine once and keep everything it scored.
 
     The engine is scored exactly once per request; nothing downstream re-scores.
     ``include_ineligible=False`` removes records from the analysed universe rather
     than scoring and hiding them, so the eligibility states still sum to the total.
+
+    The ``country_filter`` parameter overrides any country filter from the profile
+    (including the preferred_countries fallback). Pass ``None`` to disable country
+    filtering entirely, which is the correct behaviour for the Count Intelligence
+    endpoint that must count all countries.
     """
     from ..matching.config import MATCH_CANDIDATE_HARD_LIMIT
 
     profile = normalise_profile(request)
     rows = load_candidates(
         session,
-        country_filter=profile.country_filter,
+        country_filter=country_filter,
         hard_limit=hard_limit or MATCH_CANDIDATE_HARD_LIMIT,
     )
     results = [score_record(profile, to_facts(row), as_of) for row in rows]
@@ -135,7 +141,10 @@ def count_intelligence(
     """
     requested = set(capabilities) or {"summary", "facets", "integrity"}
 
-    results = analysed_candidates(session, request, as_of=as_of)
+    # Count Intelligence must not filter by country - it counts all countries
+    # for the given profile. The profile's country_filter (with preferred_countries
+    # fallback) is only for the Match endpoint.
+    results = analysed_candidates(session, request, as_of=as_of, country_filter=None)
     total = len(results)
     scored = sum(1 for item in results if item.fit_score is not None)
 

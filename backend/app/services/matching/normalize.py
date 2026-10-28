@@ -420,7 +420,7 @@ def normalise_profile(request: MatchProfileRequest) -> NormalisedProfile:
         ),
         living_cost_support_required=request.living_cost_support_required,
         intended_intake_year=request.intended_intake_year,
-        country_filter=normalise_text(request.country_filter) or None,
+        country_filter=normalise_text(request.country_filter) if request.country_filter else None,
         limit=request.limit,
         include_ineligible=request.include_ineligible,
     )

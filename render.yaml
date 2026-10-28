@@ -31,7 +31,5 @@ services:
         sync: false
       - key: SCHOLARZONE_VERIFICATION_SECRET
         generateValue: true
-      - key: RESEND_API_KEY
-        sync: false
       - key: NOTIFICATION_EMAIL
         sync: false

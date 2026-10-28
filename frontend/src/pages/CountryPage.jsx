@@ -1,9 +1,8 @@
-﻿import { useState, useEffect, useMemo } from 'react'
+import { useState, useEffect, useMemo } from 'react'
 import { Link } from 'react-router-dom'
 import { countryImages, FALLBACK_IMAGE } from '../data/countryImages'
 import { countryThemes, defaultTheme } from '../data/countryThemes'
 import { fetchScholarships } from '../services/scholarshipService'
-import { HowToUse } from '../features/tutorials'
 import './CountryPage.css'
 import { CANONICAL_ORIGIN } from '../services/canonicalOrigin'
 
@@ -189,10 +188,6 @@ export default function CountryPage() {
 
   return (
     <div className="country-explorer">
-      {/* Contextual help, above the destination grid. The grid is the
-          destination itself, so the guide is placed above it rather than
-          inserted among the cards. */}
-      <HowToUse route="/countries" />
       <div className="country-explorer__content">
         <header className="country-explorer__header">
           <span className="country-explorer__kicker">Destinations</span>

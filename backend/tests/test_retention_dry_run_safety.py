@@ -328,9 +328,6 @@ class TestDryRunIssuesNoDestructiveStatement:
             for match in re.finditer(r"\bJOIN\s+([\w\"]+)", sql, re.IGNORECASE):
                 tables_read.add(match.group(1).strip('"').lower())
         # Nothing outside the catalogue and its evidence may be read.
-        # scholarship_official_contacts is read for the same reason the other
-        # supervisor tables are: a record carrying one is preserved rather than
-        # deleted, and the engine has to look at it to know.
         assert tables_read <= {
             "scholarships", "scholarship_reviews", "scholarship_verification_history",
             "scholarship_snapshots", "scholarship_restore_records", "image_reviews",
@@ -338,7 +335,6 @@ class TestDryRunIssuesNoDestructiveStatement:
             "saved_scholarships", "application_records",
             "scholarship_supervisor_coverage", "scholarship_professor_links",
             "supervisor_source_evidence", "professor_outreach_records",
-            "scholarship_official_contacts",
         }, sorted(tables_read)
 
     def test_bounded_statement_count(self, session, statements):

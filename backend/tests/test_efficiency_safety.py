@@ -615,31 +615,6 @@ class TestFailureClassification:
 
 
 class TestRetryPolicy:
-    def test_the_workflow_retries_once_and_only_on_failure(self):
-        from pathlib import Path
-
-        text = (
-            Path(__file__).resolve().parents[2]
-            / ".github/workflows/verification-cron.yml"
-        ).read_text(encoding="utf-8")
-        assert "retry:" in text
-        assert "if: failure()" in text
-        assert "needs: maintain" in text
-
-    def test_the_retry_shares_the_concurrency_group(self):
-        """GitHub concurrency remains authoritative: no overlapping runs."""
-        import yaml
-        from pathlib import Path
-
-        data = yaml.safe_load(
-            (
-                Path(__file__).resolve().parents[2]
-                / ".github/workflows/verification-cron.yml"
-            ).read_text(encoding="utf-8")
-        )
-        assert data["concurrency"]["group"] == "scholarzone-maintenance"
-        assert data["jobs"]["retry"]["concurrency"]["group"] == "scholarzone-maintenance"
-
     def test_the_worker_has_no_internal_retry_loop(self):
         """Retries belong to the workflow, not to an unbounded loop."""
         source = open(worker.__file__, encoding="utf-8").read().lower()

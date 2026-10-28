@@ -37,19 +37,8 @@ from app.repositories.scholarships import public_visibility_conditions
 #: The canonical public frontend. Every <loc> is built from this, so the sitemap
 #: cannot advertise one host while the page's own canonical names another.
 #: Overridable so a staging build can point at itself without editing the file.
-#:
-#: The host moved from the Vercel project to the Netlify project that deploys the
-#: frontend from `master`. The Vercel project is still live and still serves the
-#: frontend, but it is a mirror and additionally hosts the API under `/api`, so
-#: advertising it would tell a crawler to consolidate onto the mirror - the same
-#: disagreement this field exists to prevent, reintroduced one host later.
-#:
-#: That Netlify default subdomain is itself dead now: it returns HTTP 404 and
-#: serves no document, because the project was published at its current public
-#: hostname. This default therefore names the host that actually serves the
-#: site, so the sitemap cannot advertise a host that does not resolve.
 BASE_URL = os.environ.get(
-    "SCHOLARZONE_CANONICAL_ORIGIN", "https://schollarzone.netlify.app"
+    "SCHOLARZONE_CANONICAL_ORIGIN", "https://scholarzone-fwzj.vercel.app"
 ).rstrip("/")
 #: backend/app/data -> backend/app -> backend -> repo root. Resolved from this
 #: file rather than the working directory, so the script writes to the same
@@ -84,7 +73,6 @@ def main() -> int:
     entries: list[tuple[str, str | None, str, float]] = [
         (f"{BASE_URL}/", None, "daily", 1.0),
         (f"{BASE_URL}/scholarships", None, "daily", 0.9),
-        (f"{BASE_URL}/countries", None, "weekly", 0.7),
     ]
     for row in rows:
         # Priority follows urgency: an open opportunity is worth more than a

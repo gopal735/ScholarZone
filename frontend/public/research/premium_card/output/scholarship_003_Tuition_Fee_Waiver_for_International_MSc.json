@@ -1,0 +1,100 @@
+{
+  "source_title": "Tuition Fee Waiver for International MSc Students at the Technical University of Denmark (DTU)",
+  "source_provider": "Technical University of Denmark (DTU)",
+  "source_file": "denmark_scholarships.json",
+  "researched_at": "2026-10-06T13:41:02.992042+00:00",
+  "data": {
+    "id": "research-003",
+    "title": "Tuition Fee Waiver for International MSc Students at the Technical University of Denmark (DTU)",
+    "provider": "Technical University of Denmark (DTU)",
+    "record_type": "scholarship",
+    "official_sources": [
+      {
+        "url": "https://www.dtu.dk/english/education/graduate/fees-and-funding/tuition_fee_waivers",
+        "title": "Tuition Fee Waiver for International MSc Students at the Technical University of Denmark (DTU)",
+        "source_type": "official_provider",
+        "source_domain": "www.dtu.dk",
+        "publication_date": null,
+        "last_modified_date": null,
+        "checked_at": "2026-10-06T13:40:42.404826+00:00",
+        "source_priority": 1
+      }
+    ],
+    "image": {
+      "url": null,
+      "source_type": null,
+      "source_url": null,
+      "alt_text": null
+    },
+    "funding": {
+      "funding_type": "Full tuition fee waiver (100% tuition coverage; no monthly stipend)",
+      "fully_funded": null,
+      "award_amount": {
+        "minimum": null,
+        "maximum": null,
+        "fixed": null,
+        "period": "unknown"
+      },
+      "currency": null
+    },
+    "eligibility": {
+      "citizenship": {
+        "required": null,
+        "eligible_countries": [],
+        "excluded_countries": [],
+        "worldwide": null
+      },
+      "age": {
+        "minimum": null,
+        "maximum": null
+      },
+      "degree": {
+        "minimum_degree": null,
+        "required_degree_field": [],
+        "final_year_allowed": null,
+        "equivalent_degree_allowed": null
+      },
+      "language": {
+        "required": null,
+        "teaching_language": [],
+        "accepted_tests": [],
+        "minimum_scores": {},
+        "moi_accepted": "unknown"
+      }
+    },
+    "application": {
+      "application_method": "unknown",
+      "official_application_url": "https://www.dtu.dk/english/education/graduate/fees-and-funding/tuition_fee_waivers",
+      "application_fee": {
+        "required": null,
+        "amount": null,
+        "currency": null,
+        "waiver_available": null
+      }
+    },
+    "deadlines": {
+      "status": "unknown",
+      "deadline_date": "January 15 (annually, for Autumn intake). For 2027 intake: January 15, 2027.",
+      "deadline_display": "January 15 (annually, for Autumn intake). For 2027 intake: January 15, 2027.",
+      "deadline_precision": "unknown"
+    },
+    "verification": {
+      "is_verified": false,
+      "verification_status": "pending",
+      "last_verified_date": "2026-10-06",
+      "verified_by": "automated_research"
+    },
+    "data_quality": {
+      "coverage_level": "low",
+      "missing_key_fields": [
+        "official_page_fetch"
+      ],
+      "unknown_fields": [],
+      "estimated_fields": []
+    },
+    "research_notes": [],
+    "research_errors": [
+      "Failed to fetch official page"
+    ]
+  }
+}

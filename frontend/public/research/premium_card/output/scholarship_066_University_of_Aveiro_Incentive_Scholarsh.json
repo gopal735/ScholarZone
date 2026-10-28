@@ -1,0 +1,102 @@
+{
+  "source_title": "University of Aveiro Incentive Scholarships for International Students 2026/2027",
+  "source_provider": "Universidade de Aveiro (UA)",
+  "source_file": "portugal_scholarships.json",
+  "researched_at": "2026-10-06T13:40:58.987844+00:00",
+  "data": {
+    "id": "research-066",
+    "title": "University of Aveiro Incentive Scholarships for International Students 2026/2027",
+    "provider": "Universidade de Aveiro (UA)",
+    "record_type": "scholarship",
+    "official_sources": [
+      {
+        "url": "https://www.ua.pt/en/international-scholarships",
+        "title": "University of Aveiro Incentive Scholarships for International Students 2026/2027",
+        "source_type": "official_provider",
+        "source_domain": "www.ua.pt",
+        "publication_date": null,
+        "last_modified_date": null,
+        "checked_at": "2026-10-06T13:40:57.782423+00:00",
+        "source_priority": 1
+      }
+    ],
+    "image": {
+      "url": null,
+      "source_type": null,
+      "source_url": null,
+      "alt_text": null
+    },
+    "funding": {
+      "funding_type": "Tuition fee reduction/incentive",
+      "fully_funded": null,
+      "award_amount": {
+        "minimum": null,
+        "maximum": null,
+        "fixed": null,
+        "period": "unknown"
+      },
+      "currency": null
+    },
+    "eligibility": {
+      "citizenship": {
+        "required": null,
+        "eligible_countries": [],
+        "excluded_countries": [],
+        "worldwide": null
+      },
+      "age": {
+        "minimum": null,
+        "maximum": null
+      },
+      "degree": {
+        "minimum_degree": null,
+        "required_degree_field": [],
+        "final_year_allowed": null,
+        "equivalent_degree_allowed": null
+      },
+      "language": {
+        "required": null,
+        "teaching_language": [],
+        "accepted_tests": [],
+        "minimum_scores": {},
+        "moi_accepted": "unknown"
+      }
+    },
+    "application": {
+      "application_method": "unknown",
+      "official_application_url": "https://www.ua.pt/en/international-scholarships",
+      "application_fee": {
+        "required": null,
+        "amount": null,
+        "currency": null,
+        "waiver_available": null
+      }
+    },
+    "deadlines": {
+      "status": "unknown",
+      "deadline_date": "Per admission cycle (2026/2027)",
+      "deadline_display": "Per admission cycle (2026/2027)",
+      "deadline_precision": "unknown"
+    },
+    "verification": {
+      "is_verified": true,
+      "verification_status": "active",
+      "last_verified_date": "2026-10-06",
+      "verified_by": "automated_research"
+    },
+    "data_quality": {
+      "coverage_level": "medium",
+      "missing_key_fields": [],
+      "unknown_fields": [],
+      "estimated_fields": [
+        "funding",
+        "eligibility",
+        "application"
+      ]
+    },
+    "research_notes": [
+      "Automated research pass completed with page fetch"
+    ],
+    "research_errors": []
+  }
+}

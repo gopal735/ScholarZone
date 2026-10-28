@@ -98,7 +98,7 @@ def _stored_image(session: Session, *, url: str = STORED_URL, kind: str | None) 
         verification_status="active",
         image_url=url,
         image_source_url=STORED_SOURCE,
-        image_source_type="official_page_logo",
+        image_source_type="official_scholarship",
         image_alt_text="Official logo",
         image_kind=kind,
         image_verified_at=datetime(2026, 9, 1, tzinfo=timezone.utc),
@@ -152,7 +152,7 @@ class TestExplicitNullMustNotEraseStoredImage:
         after = _reload(session, row_id)
         assert after.image_url == STORED_URL
         assert after.image_source_url == STORED_SOURCE
-        assert after.image_source_type == "official_page_logo"
+        assert after.image_source_type == "official_scholarship"
         assert after.image_alt_text == "Official logo"
         assert after.image_verified_at is not None
         assert after.image_kind == kind
@@ -212,7 +212,7 @@ class TestLegitimateReplacementStillWorks:
         record = _ingestion_record(
             image_url=NEW_URL,
             image_source_url=NEW_SOURCE,
-            image_source_type="official_page_logo",
+            image_source_type="official_scholarship",
             image_alt_text="Replacement logo",
             image_verified_at=date(2026, 10, 1),
         )
@@ -239,7 +239,7 @@ class TestLegitimateReplacementStillWorks:
         record = _ingestion_record(
             image_url=NEW_URL,
             image_source_url=NEW_SOURCE,
-            image_source_type="official_page_logo",
+            image_source_type="official_scholarship",
             image_alt_text="First logo",
             image_verified_at=date(2026, 10, 1),
         )
@@ -272,7 +272,7 @@ class TestImageKindIsNeverInventedByIngestion:
         record = _ingestion_record(
             image_url=NEW_URL,
             image_source_url=NEW_SOURCE,
-            image_source_type="official_page_logo",
+            image_source_type="official_scholarship",
             image_alt_text="New",
             image_verified_at=date(2026, 10, 1),
         )
@@ -339,7 +339,7 @@ class TestMapperContractDirectly:
         fields = _ingestion_record(
             image_url=NEW_URL,
             image_source_url=NEW_SOURCE,
-            image_source_type="official_page_logo",
+            image_source_type="official_scholarship",
             image_alt_text="New",
             image_verified_at=date(2026, 10, 1),
         ).to_persistence_fields(date(2026, 10, 1))
@@ -350,8 +350,9 @@ class TestMapperContractDirectly:
         fields = _ingestion_record(
             image_url=NEW_URL,
             image_source_url=NEW_SOURCE,
-            image_source_type="official_page_logo",
+            image_source_type="official_scholarship",
             image_alt_text="New",
+            image_kind="program_image",
             image_verified_at=date(2026, 10, 1),
         ).to_persistence_fields(date(2026, 10, 1))
         assert "image_kind" not in fields

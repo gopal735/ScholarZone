@@ -256,18 +256,10 @@ class TestPublicQualityGate:
         assert True  # Placeholder - the gate logic is tested in TestExplicitQualityGate
 
     def test_an_unverified_record_is_visible_by_default(self, factory, monkeypatch):
-        """An unverified record is visible with the verification gate OFF.
-
-        ``SCHOLARZONE_PUBLIC_REQUIRE_VERIFIED`` used to be inert, so this test
-        set it to true and still expected the record to be listed. It is wired
-        to the canonical predicate now — that was the point of the campaign
-        owner's request — so the default is asserted here, and the switched-on
-        behaviour is pinned in tests/test_public_require_verified_switch.py.
-        The image gate is still inert and still set here.
-        """
+        """An unverified record is now visible by default (gates OFF)."""
         from datetime import datetime, timezone
-
-        monkeypatch.setenv("SCHOLARZONE_PUBLIC_REQUIRE_VERIFIED", "false")
+        
+        monkeypatch.setenv("SCHOLARZONE_PUBLIC_REQUIRE_VERIFIED", "true")
         monkeypatch.setenv("SCHOLARZONE_PUBLIC_REQUIRE_VERIFIED_IMAGE", "true")
         _add(
             factory, 1, url="https://a.example.org/p/1", is_verified=False,
@@ -364,15 +356,9 @@ class TestExplicitQualityGate:
     Quality gates are now an explicit opt-in feature for admin/internal use only.
     """
 
-    def test_needs_review_visible_when_verification_gate_is_off(self, factory, monkeypatch):
-        """needs_review is listed while the verification gate is off.
-
-        This used to assert the record was visible with the gate ON, which was
-        the contract before the switch was wired to the predicate. With the
-        gate on, an unverified record is withheld on purpose; that case lives
-        in tests/test_public_require_verified_switch.py.
-        """
-        monkeypatch.setenv("SCHOLARZONE_PUBLIC_REQUIRE_VERIFIED", "false")
+    def test_needs_review_visible_when_gate_enabled(self, factory, monkeypatch):
+        """needs_review record is visible even when quality gate env vars are set (gates don't affect public visibility)."""
+        monkeypatch.setenv("SCHOLARZONE_PUBLIC_REQUIRE_VERIFIED", "true")
         monkeypatch.setenv("SCHOLARZONE_PUBLIC_REQUIRE_VERIFIED_IMAGE", "true")
         
         from app.repositories.scholarships import list_scholarships

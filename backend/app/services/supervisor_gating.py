@@ -128,64 +128,6 @@ OFFICIAL_HOST_SUFFIXES = (
 )
 
 
-#: Path fragments that identify an administrative page rather than an academic
-#: one. A person whose profile sits under one of these may hold a title this
-#: product recognises - a chancellor is a "Dr", a registrar is a "Prof" - and
-#: may still not be a research supervisor for a programme. Publishing them as
-#: potential supervisors would misrepresent an administrator as an academic, so
-#: the path is treated as evidence of what the page is, in the same way a domain
-#: is evidence of who owns it: neither is sufficient alone, and both are
-#: necessary when present.
-OFFICE_PATH_MARKERS: tuple[str, ...] = (
-    "/admission",
-    "/the-chancellery",
-    "/chancellery",
-    "/registry",
-    "/registrar",
-    "/administration",
-    "/administrative",
-    "/university-management",
-    "/university-executive",
-    "/governance",
-    "/secretariat",
-    "/directorate",
-)
-
-#: Broader markers, applied only where the URL is *not* already a
-#: personal-profile path. "office" and "our-team" occur in both worlds - a
-#: research support office staff page is administrative, and so are the team
-#: pages under it - but a person's own profile is not filed under an office
-#: unless it is an office holder's, which is exactly what this refuses.
-#:
-#: Matched as whole words. "-office/" and "/office/" both count; "officer" must
-#: not, and a word boundary is what keeps it out.
-OFFICE_PATH_MARKERS_WITHOUT_PERSON_ROOT: tuple[str, ...] = (
-    r"(?<![a-z0-9])office(?![a-z0-9])",
-    r"(?<![a-z0-9])officer(?![a-z0-9])",
-    r"(?<![a-z0-9])team(?![a-z0-9])",
-    r"our-team",
-)
-
-_OFFICE_MARKER_PATTERNS = tuple(re.compile(marker) for marker in OFFICE_PATH_MARKERS_WITHOUT_PERSON_ROOT)
-
-
-def _path_is_administrative(url: str) -> bool:
-    """Return whether ``url`` sits on an administrative office page.
-
-    The check is a path read, in the same spirit as the domain read: it cannot
-    tell what a page is about by itself, and it is decisive when the path names
-    an office. A page the classifier has already established is a personal
-    profile keeps the benefit of the doubt, which is what keeps the broader
-    markers from over-reaching.
-    """
-    path = (urlparse(url or "").path or "").lower()
-    if any(marker in path for marker in OFFICE_PATH_MARKERS):
-        return True
-    if not profile_url_is_person_profile(url):
-        return any(pattern.search(path) for pattern in _OFFICE_MARKER_PATTERNS)
-    return False
-
-
 def host_is_official(host: str | None) -> bool:
     """Return whether ``host`` looks like an academic institution's own domain.
 
@@ -507,16 +449,6 @@ def verify_supervisor_candidate(
         # the value did not come from the reviewed pipeline.
         failed.append(SupervisorGate.ROLE_EVIDENCE)
         reasons.append("a role was claimed with no recorded evidence mechanism")
-
-    # 2b. Administrative pages are not faculty evidence. This is the same
-    #     distinction the contact model draws between an office and an academic,
-    #     applied to the professor side: a chancellery page is authoritative
-    #     about the office and silent about research supervision.
-    if _path_is_administrative(profile_url):
-        failed.append(SupervisorGate.ROLE_EVIDENCE)
-        reasons.append(
-            f"{profile_url} is an administrative office page, not a faculty page"
-        )
 
     # 3. Institutional domain. The awarding institution's own academic domain.
     profile_host = _profile_host(profile_url)

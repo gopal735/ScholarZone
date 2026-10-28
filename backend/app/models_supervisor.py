@@ -262,63 +262,6 @@ class ProfessorAvailability(Base):
     )
 
 
-class ScholarshipOfficialContact(Base):
-    """The official administrative contact for a scholarship with no supervisors.
-
-    A funding award, a short course or a government scheme has no research
-    supervisor to publish, and the honest replacement is the office that
-    actually administers it. This table exists so that substitution is explicit
-    rather than implied: a contact row is an *office*, it is never rendered
-    inside the supervisor list, and it carries its own source the same way a
-    professor relationship does.
-
-    The email is treated exactly as a professor's is. It is stored only when it
-    was read off a page on the awarding body's own domain, the
-    ``contact_email_verified`` flag is what the public API reads, and an address
-    that exists but is unconfirmed is never presented as verified. There is no
-    code path that constructs an address from a naming convention.
-    """
-
-    __tablename__ = "scholarship_official_contacts"
-    __table_args__ = (
-        UniqueConstraint(
-            "scholarship_id",
-            "contact_kind",
-            "contact_url",
-            name="uq_scholarship_official_contact",
-        ),
-        Index("ix_official_contacts_scholarship_id", "scholarship_id"),
-        Index("ix_official_contacts_kind", "contact_kind"),
-    )
-
-    id: Mapped[int] = mapped_column(Integer, primary_key=True)
-    scholarship_id: Mapped[int] = mapped_column(Integer, ForeignKey("scholarships.id"), nullable=False)
-    #: One of OfficialContactKind. An administrative function, never a person.
-    contact_kind: Mapped[str] = mapped_column(String(32), nullable=False)
-    #: The label the official page itself uses, when it uses one.
-    contact_label: Mapped[str | None] = mapped_column(String(160), nullable=True)
-    #: The official page the contact was published on. Required: a contact with
-    #: no page behind it could not be re-verified.
-    contact_url: Mapped[str] = mapped_column(String(2048), nullable=False)
-    contact_email: Mapped[str | None] = mapped_column(String(320), nullable=True)
-    #: Set only by an address read off the awarding domain's own page. The
-    #: public API gates on this, never on the address merely being present.
-    contact_email_verified: Mapped[bool] = mapped_column(Boolean, nullable=False, default=False)
-    #: Provenance for the claim itself, kept separate from ``contact_url`` so
-    #: "where the office is" and "where we read that" cannot silently diverge.
-    evidence_source_url: Mapped[str] = mapped_column(String(2048), nullable=False)
-    #: One of SourceType. Only authoritative types may back a published contact.
-    evidence_source_type: Mapped[str] = mapped_column(String(32), nullable=False)
-    retrieved_at: Mapped[datetime | None] = mapped_column(DateTime(timezone=True), nullable=True)
-    verified_at: Mapped[datetime | None] = mapped_column(DateTime(timezone=True), nullable=True)
-    created_at: Mapped[datetime] = mapped_column(
-        DateTime(timezone=True), nullable=False, server_default=func.now()
-    )
-    updated_at: Mapped[datetime] = mapped_column(
-        DateTime(timezone=True), nullable=False, server_default=func.now(), onupdate=func.now()
-    )
-
-
 class ContactTemplate(Base):
     """A reusable, editable outreach template.
 
@@ -411,7 +354,6 @@ __all__ = [
     "ProfessorAvailability",
     "ProfessorOutreachRecord",
     "ProfessorProfile",
-    "ScholarshipOfficialContact",
     "ScholarshipProfessorLink",
     "ScholarshipSupervisorCoverage",
     "SupervisorSourceEvidence",

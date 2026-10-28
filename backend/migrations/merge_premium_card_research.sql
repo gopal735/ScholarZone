@@ -1,0 +1,32 @@
+-- Approved merge only (no conflicts)
+-- Generated: 2026-10-06T14:07:37.943949+00:00
+BEGIN;
+UPDATE scholarships SET image_url = 'https://www.ku.dk/fileadmin/_processed_/7/b/csm_Tuition_fees_and_scholarships_NEGATIV_cb3ae2bdeb.png' WHERE id = 271;
+UPDATE scholarships SET fully_funded = 0 WHERE id = 271;
+UPDATE scholarships SET deadline_date = 'January 15 (September semester intake); September 1 (February semester intake). For the 2027/2028 cycle: January 15, 2027 (September intake).' WHERE id = 271;
+UPDATE scholarships SET official_source_url = 'https://masters.au.dk/scholarships-and-grants' WHERE id = 272;
+UPDATE scholarships SET funding_period = 'unknown' WHERE id = 272;
+UPDATE scholarships SET application_link = 'https://masters.au.dk/scholarships-and-grants' WHERE id = 272;
+UPDATE scholarships SET deadline_date = 'January 15 (summer/September intake); September 15 (winter/February intake). For 2027/2028 cycle: January 15, 2027.' WHERE id = 272;
+UPDATE scholarships SET fully_funded = 0 WHERE id = 273;
+UPDATE scholarships SET funding_period = 'unknown' WHERE id = 273;
+UPDATE scholarships SET deadline_date = 'Master''s: February 1 (annually). Bachelor''s: March 15 (with uniTEST). For 2027 intake: Master''s February 1, 2027.' WHERE id = 273;
+UPDATE scholarships SET image_url = 'https://stipendiumhungaricum.hu/includes/images/SH_logo_sziv.png' WHERE id = 285;
+UPDATE scholarships SET image_source_type = 'official_provider' WHERE id = 285;
+UPDATE scholarships SET funding_period = 'unknown' WHERE id = 285;
+UPDATE scholarships SET deadline_date = '15 January 2026, 14:00 CET' WHERE id = 285;
+UPDATE scholarships SET english_requirement = 'English' WHERE id = 285;
+UPDATE scholarships SET image_url = 'https://en.tka.hu/tka30-200x80-en.svg' WHERE id = 356;
+UPDATE scholarships SET image_source_type = 'official_provider' WHERE id = 356;
+UPDATE scholarships SET image_source_url = 'https://en.tka.hu/' WHERE id = 356;
+UPDATE scholarships SET funding_period = 'unknown' WHERE id = 356;
+UPDATE scholarships SET deadline_date = '19 February 2026, 23:00 CET (27 February 2026, 17:00 for summer courses)' WHERE id = 356;
+UPDATE scholarships SET deadline_precision = 'unknown' WHERE id = 356;
+UPDATE scholarships SET official_source_url = 'https://www.fct.pt/en/concursos/concurso-bolsas-de-doutoramento-2026-linha-de-candidatura-geral' WHERE id = 299;
+UPDATE scholarships SET image_source_type = 'official_provider' WHERE id = 299;
+UPDATE scholarships SET application_link = 'https://www.fct.pt/en/concursos/concurso-bolsas-de-doutoramento-2026-linha-de-candidatura-geral' WHERE id = 299;
+UPDATE scholarships SET deadline_date = '2026-03-31' WHERE id = 299;
+UPDATE scholarships SET english_requirement = 'English' WHERE id = 299;
+UPDATE scholarships SET funding_period = 'unknown' WHERE id = 162;
+UPDATE scholarships SET deadline_date = 'Varies by admission cycle (ongoing for enrolled students)' WHERE id = 162;
+COMMIT;

@@ -75,29 +75,7 @@ async function request(path, { method = 'GET', body, searchParams, signal } = {}
   if (response.status === 204) {
     return null
   }
-
-  /* A success that is not JSON is a routing or deployment defect, not a
-     successful call. This client defaults to `/api`, and a host whose SPA
-     rewrite answers every unmatched path with the app shell returns 200 with
-     Content-Type: text/html - so `response.ok` is true, `response.json()`
-     throws, and the student is shown a raw `SyntaxError` that names neither the
-     URL that failed nor why. That was live: the panel read "Supervisor
-     information is unavailable right now." with nothing behind it to debug.
-
-     Classify the failure from the body that actually arrived instead. A server
-     that omits Content-Type but sends valid JSON still parses, so the test is a
-     parse failure rather than a header check, and a genuine API error keeps the
-     server's own message. */
-  try {
-    return await response.json()
-  } catch {
-    const contentType = response.headers?.get?.('content-type') || 'unstated'
-    throw new SupervisorApiError(
-      `The supervisor API did not return JSON (Content-Type: ${contentType}) for ${url.pathname}. ` +
-        'The request most likely never reached the API — check the API base URL and its deployment.',
-      response.status,
-    )
-  }
+  return response.json()
 }
 
 /* ── Public ──────────────────────────────────────────────────────────────

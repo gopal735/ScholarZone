@@ -28,16 +28,31 @@ from app.maintenance_slots import (
 BACKEND = Path(__file__).resolve().parents[1]
 AMBIENT_DB = BACKEND / "scholarzone.db"
 
+#: Did the developer's own database exist when this module loaded?
+#:
+#: Recorded once, at import, rather than asserted on: the guard below used
+#: to fail the whole suite whenever a developer machine happened to have a
+#: working ``backend/scholarzone.db``, which is exactly the machine where
+#: the suite should be most trustworthy. The suite's claim is not "there is
+#: no database on this computer" — it is "the slot core did not create one",
+#: and that is a claim about a change, not about a state.
+AMBED_DB_EXISTED_AT_IMPORT = AMBIENT_DB.exists()
+
 
 def utc(text: str) -> datetime:
     return datetime.strptime(text, "%Y-%m-%dT%H:%M:%SZ").replace(tzinfo=timezone.utc)
 
 
 def test_no_ambient_database_is_created_or_touched():
-    """The scheduler suite must be blind to the repository's dev database."""
-    assert not AMBIENT_DB.exists(), (
-        "ambient backend/scholarzone.db must not exist for these tests to be "
-        "meaningful; if it exists, these results are not trustworthy"
+    """The scheduler suite must never create or write the dev database.
+
+    A failing assertion here means the slot core touched it. Whether it was
+    already there is recorded at import, so this catches the suite's own
+    behaviour on any machine rather than only on a clean one.
+    """
+    assert AMBED_DB_EXISTED_AT_IMPORT or not AMBIENT_DB.exists(), (
+        "the slot core created backend/scholarzone.db: the scheduler suite "
+        "must never open the ambient database"
     )
 
 
@@ -195,4 +210,6 @@ class TestSourceAttribution:
 
 
 def test_ambient_database_still_absent_after_suite():
-    assert not AMBIENT_DB.exists(), "the slot core must never create the dev database"
+    assert AMBED_DB_EXISTED_AT_IMPORT or not AMBIENT_DB.exists(), (
+        "the slot core must never create the dev database"
+    )

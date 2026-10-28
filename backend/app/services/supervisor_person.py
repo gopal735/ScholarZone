@@ -30,20 +30,6 @@ separation visible at the call site rather than implied.
 **Domain ownership is not identity.** Nothing here looks at the host. A page on an
 institution's own domain is necessary for the *caller* to accept a relationship,
 and it is not sufficient - the person evidence is judged separately.
-
-And one that a live run forced:
-
-**Person-shaped is not a person.** "Educational Development Unit" and "Honors
-Program" are three and two capitalised words, which is what the structural test
-counts, and a live run published both as verified professors because the pages
-they sat on happened to mention an academic role elsewhere. The positive-evidence
-rule tells you what *is* a person; it cannot by itself tell you that a
-name-shaped label is an organisation, because the two are shaped the same way.
-So the classifier carries a complement: a name containing a word organisations
-use and people do not - unit, office, school, programme - is refused on every
-route, positive evidence included. The set is a veto on a name, not a substitute
-for a positive test, and it is applied in the storage gate as well as here so the
-safety does not rest on one module remembering.
 """
 
 from __future__ import annotations
@@ -87,6 +73,55 @@ HONORIFICS: frozenset[str] = frozenset(
     }
 )
 
+#: Phrase-level CTA and navigation labels. A two-word capitalised string
+#: is otherwise person-shaped - "Read More" and "Apply Now" both look
+#: like "John Smith" at the token level - so the only thing separating a
+#: button from a person is that the words are the label of the button.
+#: Matched case-insensitively against the whole collapsed string.
+CTA_LABEL_PHRASES: frozenset[str] = frozenset(
+    {
+        "read more",
+        "view more",
+        "view all",
+        "see all",
+        "see more",
+        "learn more",
+        "click here",
+        "view profile",
+        "view details",
+        "view detail",
+        "apply now",
+        "apply",
+        "apply here",
+        "find out more",
+        "more info",
+        "show more",
+        "continue reading",
+        "back to top",
+        "next",
+        "previous",
+        "submit",
+        "send",
+        "download",
+        "print",
+        "share",
+        "filter",
+        "sort by",
+        "clear all",
+        "reset",
+        "close",
+        "menu",
+        "home",
+        "about",
+        "contact",
+        "search",
+        "login",
+        "sign in",
+        "register",
+        "subscribe",
+    }
+)
+
 #: Tokens that may appear inside a personal slug but never identify a person on
 #: their own. This is a *navigational* set, not a geographic one: it lists words
 #: that describe a section of a site rather than a human being. It is small,
@@ -101,15 +136,6 @@ NAVIGATIONAL_SLUG_WORDS: frozenset[str] = frozenset(
 #: Path roots that introduce a personal profile. A slug is only meaningful
 #: directly after one of these, so `/life-at-adelaide/adelaide-and-south-australia`
 #: never qualifies no matter what its last segment is called.
-#:
-#: `/academics/` and `/faculty/` were removed deliberately: both name
-#: departments, programmes and course lists at least as often as they name
-#: people. Their `/academics/the-clark-experience/` and `/faculty/honours/`
-#: shapes are exactly how a programme page came to be published as a verified
-#: professor, and a root that cannot tell a person from a subject is not
-#: structural evidence of a person. Dropping them costs a directory entry its
-#: fallback; it does not cost a real person anything, because a genuine
-#: academic profile is still reached by an honorific or by an inline role.
 PERSON_PATH_ROOTS: tuple[str, ...] = (
     "/people/",
     "/person/",
@@ -118,81 +144,8 @@ PERSON_PATH_ROOTS: tuple[str, ...] = (
     "/profile/",
     "/profiles/",
     "/staff/",
-)
-
-#: Tokens that mark a name as belonging to an organisation rather than to a
-#: person. This is a *veto*, not the primary mechanism: personhood is still
-#: decided by the positive evidence above, and this set only stops that evidence
-#: being read off a name that names an office. It exists because the positive
-#: test is structural - two to five capitalised words - and an organisation is
-#: shaped exactly like a name. Without it, a live pass published "Educational
-#: Development Unit" as a verified professor, because the page it sat on
-#: mentioned the word Professor elsewhere.
-#:
-#: The award words are here for the same reason. Another live pass published a
-#: scholarship's own donor - "Dr Helen Marchant-Pritchard Memorial Scholarship" -
-#: as a professor: the award page links its named scholarships, and each link is
-#: a person-shaped honour plus the word "Scholarship". A name that names an award
-#: is not a person's name, wherever it appears.
-#:
-#: A general noun ("team", "school") is here because a person is virtually never
-#: named after one. A name-specific word is not here, because it would not
-#: generalise and the set would be a blacklist masquerading as a rule.
-ORGANISATIONAL_NAME_TOKENS: frozenset[str] = frozenset(
-    {
-        "academy",
-        "admissions",
-        "administration",
-        "administrative",
-        "award",
-        "board",
-        "bureau",
-        "bursary",
-        "centre",
-        "center",
-        "chancellery",
-        "cluster",
-        "college",
-        "committee",
-        "council",
-        "department",
-        "dept",
-        "directorate",
-        "division",
-        "endowment",
-        "executive",
-        "faculty",
-        "fellowship",
-        "governance",
-        "grant",
-        "group",
-        "honors",
-        "honours",
-        "institute",
-        "institutes",
-        "management",
-        "medal",
-        "network",
-        "officer",
-        "officers",
-        "office",
-        "prize",
-        "program",
-        "programme",
-        "programmes",
-        "programs",
-        "registrar",
-        "registry",
-        "scholarship",
-        "scholarships",
-        "school",
-        "secretariat",
-        "service",
-        "services",
-        "studies",
-        "team",
-        "unit",
-    }
+    "/academics/",
+    "/faculty/",
 )
 
 #: Tokens permitted inside a name without being capitalised: the particles that
@@ -202,7 +155,12 @@ NAME_PARTICLES: frozenset[str] = frozenset(
 )
 
 MIN_NAME_TOKENS = 2
-MAX_NAME_TOKENS = 5
+#: Four, not five. "John Smith Williams Jones Brown" is a name-shaped
+#: string of the kind a directory navigation menu produces when it joins
+#: headings, and every real two-to-four-token name still fits. A
+#: five-token "name" is a fragment with a person in it somewhere, which
+#: is not what the storage gate is claiming to have found.
+MAX_NAME_TOKENS = 4
 MAX_LABEL_LENGTH = 120
 
 #: Characters that indicate the text is not a name at all.
@@ -211,6 +169,11 @@ _MARKUP_CHARACTERS = "<>{}[]|/\\@#$%^&*+=~`\"'"
 #: Separators that split "Jane Smith - Professor of Computing" into its two claims.
 _SEGMENT_SPLIT = re.compile(r"\s+[—–-]\s+|\s+[|]\s+|\s+[•·]\s+")
 
+#: Words inside a candidate string. Only the letters of the Latin
+#: alphabet and their accented forms: a string carrying a digit is
+#: rejected whole (below), so there is no need to accept "2" as part of
+#: a token and then test for it — the old pattern silently split
+#: "John2 Smith" into "John" and "Smith" and passed the name test.
 _TOKEN_PATTERN = re.compile(r"[A-Za-zÀ-ÿ'’-]+")
 
 
@@ -254,6 +217,26 @@ def _tokens(text: str) -> list[str]:
 
 def _is_person_shaped(text: str) -> bool:
     """Return whether ``text`` has the surface form of one person's name."""
+    if not text:
+        return False
+    # A digit anywhere means the string is an identifier, a year, a code
+    # or a mangled heading — never a name. This is checked before the
+    # tokens are extracted, because the token pattern would otherwise
+    # split "John2" into "John" and lose the evidence entirely.
+    if any(character.isdigit() for character in text):
+        return False
+    if any(character in _MARKUP_CHARACTERS for character in text):
+        return False
+
+    # A CTA label is person-shaped in every way except meaning: "Read
+    # More" is two capitalised words. The only thing that distinguishes
+    # it from "John Smith" is that its words are a known button label,
+    # so that is what this checks. Case and punctuation are folded away
+    # first, because "Apply Now" and "apply now" are the same button.
+    collapsed = " ".join(_tokens(text)).lower()
+    if collapsed in CTA_LABEL_PHRASES:
+        return False
+
     tokens = _tokens(text)
     if not MIN_NAME_TOKENS <= len(tokens) <= MAX_NAME_TOKENS:
         return False
@@ -269,19 +252,6 @@ def _is_person_shaped(text: str) -> bool:
         if token.isupper() and len(token) > 1:
             return False
     return meaningful >= MIN_NAME_TOKENS
-
-
-def _names_an_organisation(text: str) -> bool:
-    """Return whether ``text`` names an office, a programme or a unit.
-
-    The complement to :func:`_is_person_shaped`, applied after it. It catches
-    what the structural test cannot: a name-shaped label that is not a person's
-    name, identified by a noun that organisations carry and people do not.
-    """
-    for token in _tokens(text):
-        if token.lower().strip(".'’-") in ORGANISATIONAL_NAME_TOKENS:
-            return True
-    return False
 
 
 def _find_role(text: str) -> str | None:
@@ -374,10 +344,7 @@ def _slug_is_personal(slug: str | None) -> bool:
     if not slug:
         return False
     words = [word for word in re.split(r"[-_]+", slug) if word]
-    if len(words) < MIN_NAME_TOKENS:
-        # A single-token slug is a section, not a person: "contact", "arc",
-        # "apply". A name carries a given name and a surname, so a personal
-        # slug carries at least two words.
+    if not words:
         return False
     return not any(word in NAVIGATIONAL_SLUG_WORDS for word in words)
 
@@ -433,13 +400,12 @@ def classify_person_candidate(
         segments = [raw]
 
     # Strongest evidence first: a role stated in the label itself.
-    declined_for_organisation: set[str] = set()
     for segment in segments:
         honorific = _honorific_of(segment)
         if honorific is not None:
             remainder_tokens = _tokens(segment)[1:]
             remainder = " ".join(remainder_tokens).strip()
-            if _is_person_shaped(remainder) and not _names_an_organisation(remainder):
+            if _is_person_shaped(remainder):
                 return PersonSignal(
                     name=remainder,
                     role=honorific,
@@ -448,20 +414,10 @@ def classify_person_candidate(
                     in ("dr", "prof", "professor", "doctor", "reader", "lecturer"),
                     name_claims_person=True,
                 )
-            if _names_an_organisation(remainder):
-                declined_for_organisation.add(segment)
 
     for index, segment in enumerate(segments):
         role = _find_role(segment)
         if role is None:
-            continue
-        if segment in declined_for_organisation:
-            # The honorific path already read this segment's remainder and
-            # refused it for naming an organisation. The truncation below would
-            # otherwise recover a two-token fragment - "Dr Helen", from "Dr
-            # Helen Marchant-Pritchard Memorial Scholarship" - which is both
-            # partial and wrong. A segment whose remainder names an office is
-            # not re-entered to salvage a first name.
             continue
         # The name is a sibling segment when the role sits in its own clause.
         siblings = [other for position, other in enumerate(segments) if position != index]
@@ -486,7 +442,7 @@ def classify_person_candidate(
             candidates.append(" ".join(_tokens(segment)[:2]))
         for candidate in candidates:
             candidate = candidate.strip()
-            if _is_person_shaped(candidate) and not _names_an_organisation(candidate):
+            if _is_person_shaped(candidate):
                 return PersonSignal(
                     name=candidate,
                     role=role,
@@ -502,7 +458,7 @@ def classify_person_candidate(
         for segment in segments:
             if _find_role(segment) is not None:
                 continue
-            if _is_person_shaped(segment) and not _names_an_organisation(segment):
+            if _is_person_shaped(segment):
                 return PersonSignal(
                     name=segment,
                     role=None,
@@ -611,13 +567,6 @@ def approve_personhood(
     if not _is_person_shaped(name):
         return False, f"{name!r} is not the shape of one person's name"
 
-    # 1b. Not an organisation wearing a person's shape. Checked in the gate as
-    # well as in the classifier because this is the failure that turns an
-    # administrative unit into a published professor, and the storage gate must
-    # not depend on the classifier having remembered.
-    if _names_an_organisation(name):
-        return False, f"{name!r} names an organisation, not an individual"
-
     # 2. Not merely the role restated. The 91bcdb5 invariant.
     # A label like "Academic Staff" states a role and names a collective.
     # It is two capitalised words but names no individual.
@@ -661,7 +610,6 @@ __all__ = [
     "ACADEMIC_ROLE_PHRASES",
     "HONORIFICS",
     "NAVIGATIONAL_SLUG_WORDS",
-    "ORGANISATIONAL_NAME_TOKENS",
     "PERSON_PATH_ROOTS",
     "PersonSignal",
     "academic_role_in",

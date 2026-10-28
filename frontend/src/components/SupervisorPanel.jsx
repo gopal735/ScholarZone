@@ -35,7 +35,6 @@ import './SupervisorPanel.css'
 import {
   BAND_LABELS,
   AVAILABILITY_LABELS,
-  CONTACT_KIND_LABELS,
   OUTREACH_ACTIONS,
 } from './SupervisorPanelConstants'
 
@@ -326,52 +325,6 @@ function ProfessorCard({ professor, onTrack, tracked }) {
   )
 }
 
-/* The official administrative contact for a scholarship with no supervisor.
-
-   Rendered only where the coverage state leaves no professor list, and worded
-   so it cannot be mistaken for one: these are offices that administer an
-   award, not academics who might supervise research. The heading says so, and
-   every email carries the same verified gate the professor cards carry - an
-   address the server has not confirmed against an official page is never
-   shown, however the response was assembled. */
-function OfficialContacts({ contacts }) {
-  if (!contacts?.length) return null
-  return (
-    <div className="sz-supervisor-panel__contacts">
-      <h4>Official contact for this award</h4>
-      <p className="sz-supervisor-panel__contacts-note">
-        This is an administrative office, not a research supervisor. Contact it about the
-        award itself — eligibility, deadlines and applications — not about research supervision.
-      </p>
-      <ul className="sz-supervisor-panel__contact-list">
-        {contacts.map((contact) => (
-          <li key={`${contact.kind}-${contact.url}`}>
-            <span className="sz-supervisor-panel__contact-kind">
-              {CONTACT_KIND_LABELS[contact.kind] || contact.kind}
-            </span>
-            <a href={contact.url} target="_blank" rel="noreferrer noopener">
-              {contact.label || contact.url}
-            </a>
-            {contact.email_verified && contact.email ? (
-              <a href={`mailto:${contact.email}`} className="sz-supervisor-panel__contact-email">
-                {contact.email}
-              </a>
-            ) : null}
-            <a
-              href={contact.evidence_source_url}
-              target="_blank"
-              rel="noreferrer noopener"
-              className="sz-supervisor-panel__contact-source"
-            >
-              Source
-            </a>
-          </li>
-        ))}
-      </ul>
-    </div>
-  )
-}
-
 /* The student's private tracker for this scholarship.
  *
  * Entirely separate from the public list above it: what is rendered here is the
@@ -514,6 +467,7 @@ function OutreachTracker({ scholarshipId, trackedIds, onChanged }) {
 export default function SupervisorPanel({ scholarshipId, initialState = 'loading' }) {
   const [state, setState] = useState(initialState)
   const [payload, setPayload] = useState(null)
+  const [error, setError] = useState(null)
   const [trackedIds, setTrackedIds] = useState(() => new Set())
   const [interestsInput, setInterestsInput] = useState(() => readInterests().join(', '))
 
@@ -528,23 +482,11 @@ export default function SupervisorPanel({ scholarshipId, initialState = 'loading
       try {
         const result = await fetchSupervisors(scholarshipId, { interests, signal })
         setPayload(result)
+        setError(null)
         setState('ready')
       } catch (caught) {
         if (caught.name === 'AbortError') return
-        /* The reader gets a sentence, not the exception.
-
-           The deployed API answers a request whose service is down by returning
-           the app's own HTML with status 200, so the failure a student actually
-           sees is `Unexpected token '<', "<!doctype "... is not valid JSON`.
-           Rendering that names a parser and quotes their HTML at them, which is
-           alarming, meaningless, and a hint about the infrastructure rather than
-           an explanation. The explanation is that one optional lookup did not
-           answer - which is also what the panel says, and the scholarship
-           record is unaffected either way.
-
-           The technical detail is still recorded, to the console, so it remains
-           available to whoever is debugging without being part of the page. */
-        console.warn('Supervisor lookup failed for scholarship', scholarshipId, caught)
+        setError(caught.message || 'Could not load supervisor information.')
         setState('error')
       }
     },
@@ -560,13 +502,12 @@ export default function SupervisorPanel({ scholarshipId, initialState = 'loading
     fetchSupervisors(scholarshipId, { interests: readInterests(), signal: controller.signal })
       .then((result) => {
         setPayload(result)
+        setError(null)
         setState('ready')
       })
       .catch((caught) => {
         if (caught.name === 'AbortError') return
-        // Same reasoning as runFetch: a sentence for the reader, the detail for
-        // the console.
-        console.warn('Supervisor lookup failed for scholarship', scholarshipId, caught)
+        setError(caught.message || 'Could not load supervisor information.')
         setState('error')
       })
     return () => controller.abort()
@@ -601,10 +542,6 @@ export default function SupervisorPanel({ scholarshipId, initialState = 'loading
     ...professor,
     scholarshipId,
   }))
-  /* Only offered where there is no professor list to dilute. The server applies
-     the same rule, and the component repeats it so a hand-edited payload cannot
-     put an office next to the academics. */
-  const officialContacts = supervisors.length > 0 ? [] : payload?.official_contacts || []
 
   return (
     <section className="sz-supervisor-panel" aria-labelledby="sz-supervisor-heading">
@@ -651,9 +588,7 @@ export default function SupervisorPanel({ scholarshipId, initialState = 'loading
 
       {state === 'error' ? (
         <p className="sz-supervisor-panel__state sz-supervisor-panel__state--error" role="alert">
-          Supervisor information is unavailable right now. The scholarship details above are not
-          affected — this panel looks up published faculty information separately, and that lookup
-          did not succeed.
+          Supervisor information is unavailable right now. {error}
         </p>
       ) : null}
 
@@ -695,9 +630,7 @@ export default function SupervisorPanel({ scholarshipId, initialState = 'loading
 
           {coverage.coverage_status === 'not_applicable' ? (
             <p className="sz-supervisor-panel__state">
-              This award is not a supervised degree or research programme, so there is no research
-              supervisor to find. The official contact for the award is listed below — it is an
-              office that administers the award, not an academic.
+              This institution does not publish faculty supervision information for this award.
             </p>
           ) : null}
 
@@ -728,9 +661,7 @@ export default function SupervisorPanel({ scholarshipId, initialState = 'loading
                 ))}
               </div>
             </>
-          ) : (
-            <OfficialContacts contacts={officialContacts} />
-          )}
+          ) : null}
 
           <OutreachTracker
             scholarshipId={scholarshipId}

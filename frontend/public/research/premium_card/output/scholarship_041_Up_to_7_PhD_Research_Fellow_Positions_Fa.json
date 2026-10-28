@@ -1,0 +1,100 @@
+{
+  "source_title": "Up to 7 PhD Research Fellow Positions (Faculty of Arts and Humanities)",
+  "source_provider": "Norwegian University of Science and Technology (NTNU)",
+  "source_file": "norway_scholarships.json",
+  "researched_at": "2026-10-06T13:40:49.310980+00:00",
+  "data": {
+    "id": "research-041",
+    "title": "Up to 7 PhD Research Fellow Positions (Faculty of Arts and Humanities)",
+    "provider": "Norwegian University of Science and Technology (NTNU)",
+    "record_type": "scholarship",
+    "official_sources": [
+      {
+        "url": "https://www.jobbnorge.no/en/available-jobs/job/304877/up-to-7-phd-research-fellow-positions",
+        "title": "Up to 7 PhD Research Fellow Positions (Faculty of Arts and Humanities)",
+        "source_type": "official_provider",
+        "source_domain": "www.jobbnorge.no",
+        "publication_date": null,
+        "last_modified_date": null,
+        "checked_at": "2026-10-06T13:40:46.726277+00:00",
+        "source_priority": 1
+      }
+    ],
+    "image": {
+      "url": null,
+      "source_type": null,
+      "source_url": null,
+      "alt_text": null
+    },
+    "funding": {
+      "funding_type": "Fully funded (salary)",
+      "fully_funded": null,
+      "award_amount": {
+        "minimum": null,
+        "maximum": null,
+        "fixed": null,
+        "period": "unknown"
+      },
+      "currency": null
+    },
+    "eligibility": {
+      "citizenship": {
+        "required": null,
+        "eligible_countries": [],
+        "excluded_countries": [],
+        "worldwide": null
+      },
+      "age": {
+        "minimum": null,
+        "maximum": null
+      },
+      "degree": {
+        "minimum_degree": null,
+        "required_degree_field": [],
+        "final_year_allowed": null,
+        "equivalent_degree_allowed": null
+      },
+      "language": {
+        "required": null,
+        "teaching_language": [],
+        "accepted_tests": [],
+        "minimum_scores": {},
+        "moi_accepted": "unknown"
+      }
+    },
+    "application": {
+      "application_method": "unknown",
+      "official_application_url": "https://www.jobbnorge.no/en/available-jobs/job/304877/up-to-7-phd-research-fellow-positions",
+      "application_fee": {
+        "required": null,
+        "amount": null,
+        "currency": null,
+        "waiver_available": null
+      }
+    },
+    "deadlines": {
+      "status": "unknown",
+      "deadline_date": "2026-10-01",
+      "deadline_display": "2026-10-01",
+      "deadline_precision": "unknown"
+    },
+    "verification": {
+      "is_verified": false,
+      "verification_status": "pending",
+      "last_verified_date": "2026-10-06",
+      "verified_by": "automated_research"
+    },
+    "data_quality": {
+      "coverage_level": "low",
+      "missing_key_fields": [
+        "official_page_fetch"
+      ],
+      "unknown_fields": [],
+      "estimated_fields": []
+    },
+    "research_notes": [],
+    "research_errors": [
+      "Failed to fetch official page"
+    ]
+  }
+}

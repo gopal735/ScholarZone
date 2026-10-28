@@ -1,177 +1,93 @@
-import { NavLink } from 'react-router-dom'
-import { enabled as consistencyAuditorEnabled } from '../features/consistency-auditor'
-import { enabled as strategistEnabled } from '../features/strategist/flags.js'
-import { LazyMotion, domAnimation, m } from 'motion/react'
+import { NavLink, useLocation, useNavigate } from 'react-router-dom'
 import { useAuth } from '../hooks/useAuth'
-import { useCompare } from '../hooks/useCompare'
 import { useSavedScholarships } from '../hooks/useSavedScholarships'
-import { useReducedMotion } from '../hooks/useReducedMotion'
-import ThemeToggle from './ThemeToggle'
+import { useTheme } from '../hooks/useTheme'
 import './Navigation.css'
-
-const ENTER_TRANSITION = { duration: 0.45, ease: [0.16, 1, 0.3, 1] }
-const COUNT_SPRING = { type: 'spring', stiffness: 520, damping: 28 }
-
-function UtilityCount({ count, animate }) {
-  // A link with no real count — Applications — passes nothing. `undefined <= 0`
-  // is false, so the old guard let an absent count through and the nav rendered
-  // an empty pill whose accessible name read "Applications: undefined".
-  if (typeof count !== 'number' || count <= 0) return null
-
-  if (!animate) {
-    return <span>{count}</span>
-  }
-
-  return (
-    <m.span
-      key={count}
-      initial={{ scale: 0.72, opacity: 0 }}
-      animate={{ scale: 1, opacity: 1 }}
-      transition={COUNT_SPRING}
-    >
-      {count}
-    </m.span>
-  )
-}
-
-function CountedUtilityLink({ to, label, count, className, animate }) {
-  // The count is only part of the accessible name when there is one, so a
-  // countless link reads as its own label.
-  const hasCount = typeof count === 'number' && count > 0
-  return (
-    <NavLink
-      to={to}
-      className={({ isActive }) => `${className} ${isActive ? 'active' : ''}`}
-      aria-label={hasCount ? `${label}: ${count}` : undefined}
-    >
-      {label}
-      <UtilityCount count={count} animate={animate} />
-    </NavLink>
-  )
-}
 
 export default function Navigation() {
   const { status } = useAuth()
-  const { compareIds } = useCompare()
   const { savedIds } = useSavedScholarships()
-  const prefersReducedMotion = useReducedMotion()
+  const { theme, toggleTheme } = useTheme()
+  const location = useLocation()
+  const navigate = useNavigate()
+
+  const isHome = location.pathname === '/'
+
+  const handleAnchor = (e, id) => {
+    e.preventDefault()
+    if (isHome) {
+      const el = document.getElementById(id)
+      if (el) {
+        el.scrollIntoView({ behavior: 'smooth' })
+      }
+    } else {
+      navigate(`/#${id}`)
+    }
+  }
+
+  const handleShowreel = () => {
+    window.dispatchEvent(new CustomEvent('sz-trigger-showreel'))
+  }
 
   return (
-    <LazyMotion features={domAnimation} strict={false}>
-      <m.nav
-        className="nav-bar"
-        aria-label="Primary navigation"
-        initial={prefersReducedMotion ? false : { opacity: 0, y: -10 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={ENTER_TRANSITION}
-      >
-        <NavLink to="/" className="nav-brand">
-          <span className="nav-brand__mark" aria-hidden="true">S</span>
-          <span>ScholarZone</span>
+    <header className="sz-nav-header nav" role="banner">
+      <NavLink to="/" className="logo" aria-label="ScholarZone Home">
+        <i>
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M4 18C7 6 17 6 20 18" />
+            <circle cx="4" cy="18" r="1.7" />
+            <circle cx="20" cy="18" r="1.7" />
+          </svg>
+        </i>
+        ScholarZone
+      </NavLink>
+
+      <nav aria-label="Primary navigation">
+        <a href="#top" onClick={(e) => handleAnchor(e, 'top')}>Match</a>
+        <a href="#tools" onClick={(e) => handleAnchor(e, 'tools')}>Toolkit</a>
+        <a href="#learn" onClick={(e) => handleAnchor(e, 'learn')}>Learn</a>
+        <a href="#how" onClick={(e) => handleAnchor(e, 'how')}>How it works</a>
+        <NavLink to="/scholarships" className={({ isActive }) => (isActive ? 'active' : '')}>
+          Directory
         </NavLink>
+        <NavLink to="/saved" className={({ isActive }) => (isActive ? 'active' : '')}>
+          Saved {savedIds.length > 0 && `· ${savedIds.length}`}
+        </NavLink>
+      </nav>
 
-        <div className="nav-menu">
-          <div className="nav-links">
-            <NavLink to="/" end className={({ isActive }) => (isActive ? 'active' : '')}>Home</NavLink>
-            <NavLink to="/scholarships" className={({ isActive }) => (isActive ? 'active' : '')}>Scholarships</NavLink>
-            <NavLink to="/match" className={({ isActive }) => (isActive ? 'active' : '')}>Match</NavLink>
-            <NavLink to="/countries" className={({ isActive }) => (isActive ? 'active' : '')}>Countries</NavLink>
-            {/* The applicant journey. It sits in the primary row because it is a
-                destination in its own right, not an account utility, and the
-                "New" marker is a plain span rather than a count — there is
-                nothing to count, and a badge that says "New" forever is a lie
-                the moment the feature stops being new. It is marked
-                aria-hidden so the accessible name stays the link's own label,
-                and the route is announced as "Bangladesh Journey" alone. */}
-            <NavLink to="/bangladesh-journey" className={({ isActive }) => `nav-utility-link nav-link--journey ${isActive ? 'active' : ''}`}>
-              BD Journey
-              <span className="nav-badge nav-badge--new" aria-hidden="true">New</span>
-            </NavLink>
-          </div>
+      <div className="nav-controls">
+        <button
+          className="tg"
+          id="th"
+          type="button"
+          onClick={toggleTheme}
+          aria-label={theme === 'dark' ? 'Switch to light theme' : 'Switch to dark theme'}
+        >
+          <svg className="sun" viewBox="0 0 24 24" aria-hidden="true">
+            <circle cx="12" cy="12" r="4" />
+            <path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4" />
+          </svg>
+          <svg className="moon" viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M20 14.5A8 8 0 019.5 4 8 8 0 1020 14.5z" />
+          </svg>
+        </button>
 
-          <div className="nav-utilities">
-            <CountedUtilityLink to="/applications" label="Applications" className="nav-utility-link" animate={!prefersReducedMotion} />
-            <CountedUtilityLink to="/saved" label="Saved" count={savedIds.length} className="nav-utility-link" animate={!prefersReducedMotion} />
-            {/* The local planning surface: checklist, deadlines, notes and a
-                backup. It is the anonymous half of the workspace, so it is
-                reachable without an account. */}
-            <NavLink to="/plan" className={({ isActive }) => `nav-utility-link ${isActive ? 'active' : ''}`}>
-              Plan
-            </NavLink>
-            {/* The statement-of-purpose builder: the second browser-local
-                workspace, with no account, no server and no sync. It sits beside
-                Plan rather than under it, because it answers a different question
-                and a student drafting a statement should not have to go through
-                the checklist to reach it. */}
-            <NavLink to="/statement" className={({ isActive }) => `nav-utility-link ${isActive ? 'active' : ''}`}>
-              Statement
-            </NavLink>
-            <CountedUtilityLink to="/compare" label="Compare" count={compareIds.length} className="nav-utility-link" animate={!prefersReducedMotion} />
-            {/* The mentor is a reading surface over the records the three links
-                above already point at, so it sits with them rather than in the
-                primary row. It resolves its own access state from the server, so
-                like the dashboard this link is a convenience and never the thing
-                that decides whether someone may see it. */}
-            <NavLink to="/mentor" className={({ isActive }) => `nav-utility-link ${isActive ? 'active' : ''}`}>
-              Mentor
-            </NavLink>
-            {/* The consistency review runs entirely in the browser and is
-                gated by its own module flag, so the link is absent while the
-                feature is off - nothing dead in the navigation. */}
-            {consistencyAuditorEnabled && (
-              <NavLink
-                to="/consistency-review"
-                className={({ isActive }) => `nav-utility-link ${isActive ? 'active' : ''}`}
-              >
-                Review
-              </NavLink>
-            )}
-            {/* Tutorials and help. In the utility row rather than the primary
-                row because it is reference material rather than a destination:
-                a student comes to the catalogue to act, and to help when they
-                are unsure how.
+        <button
+          className="btn showreel-btn"
+          id="play"
+          type="button"
+          onClick={handleShowreel}
+        >
+          Watch showreel
+        </button>
 
-                The visible label is "Help & Tutorials" and it is the accessible
-                name too. A previous version showed "Help" and carried
-                "Help and tutorials:" in a screen-reader-only span, so a sighted
-                reader on a narrow viewport got a word that does not say what the
-                link is for while a screen-reader user got the full phrase. One
-                label for both, because the visible text is the label. */}
-            <NavLink to="/help" className={({ isActive }) => `nav-utility-link ${isActive ? 'active' : ''}`}>
-              Help &amp; Tutorials
-            </NavLink>
-            {/* The Study Abroad Planner compares countries on cost, funding,
-                career outcome and work route. It reads the strategist's own
-                module flag - the same one App.jsx uses for the route - so the
-                link cannot exist for a route that does not, and a route that is
-                enabled is never left undiscoverable. Both directions matter: a
-                link with no route is a dead end, a route with no link is a
-                feature nobody can find. */}
-            {strategistEnabled && (
-              <NavLink
-                to="/strategist"
-                className={({ isActive }) => `nav-utility-link ${isActive ? 'active' : ''}`}
-              >
-                Study Abroad Planner
-              </NavLink>
-            )}
-            {status === 'checking' ? (
-              <span className="nav-session-status">Checking&hellip;</span>
-            ) : status === 'authenticated' ? (
-              // An account exists, so the useful destination is the workspace
-              // rather than the sign-in form. The dashboard reads its own access
-              // state from the server, so this link is a convenience, never the
-              // thing that decides whether someone may see it.
-              <NavLink to="/dashboard" className={({ isActive }) => `nav-sign-in ${isActive ? 'active' : ''}`}>
-                Dashboard
-              </NavLink>
-            ) : (
-              <NavLink to="/login" className={({ isActive }) => `nav-sign-in ${isActive ? 'active' : ''}`}>Sign in</NavLink>
-            )}
-            <ThemeToggle />
-          </div>
-        </div>
-      </m.nav>
-    </LazyMotion>
+        {status === 'authenticated' ? (
+          <NavLink to="/dashboard" className="btn nav-auth-btn">Dashboard</NavLink>
+        ) : (
+          <NavLink to="/login" className="btn nav-auth-btn">Sign in</NavLink>
+        )}
+      </div>
+    </header>
   )
 }
+
