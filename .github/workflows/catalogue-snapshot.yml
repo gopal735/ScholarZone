@@ -49,7 +49,7 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r requirements.txt
 
-      - name: Create local SQLite database for snapshot generation
+- name: Create local SQLite database for snapshot generation
         working-directory: backend
         env:
           SCHOLARZONE_ENVIRONMENT: test
@@ -70,22 +70,7 @@ jobs:
           SCHOLARZONE_ENVIRONMENT: test
           SCHOLARZONE_DATABASE_URL: sqlite:///snapshot_test.db
         run: |
-          python -c "
-          from app.database import get_session_factory
-          from app.models import Scholarship, ApprovedSource
-          from app.seed import seed_database
-          from sqlalchemy import select
-          
-          factory = get_session_factory()
-          with factory() as session:
-              # Run the standard seed
-              seed_database()
-              
-              # Verify seed worked
-              count = session.scalar(select(Scholarship).count())
-              sources = session.scalar(select(ApprovedSource).count())
-              print(f'Seeded {count} scholarships from {sources} approved sources')
-          "
+          python scripts/seed_real_scholarships.py
 
       - name: Generate public snapshot
         working-directory: backend

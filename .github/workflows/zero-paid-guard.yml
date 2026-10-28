@@ -343,13 +343,6 @@ jobs:
 - **GHCR**: 500 MB free, then $0.008/GB/day
 - **Docker Hub**: 1 private repo free, rate limits on pulls
 
-## SnapDeploy (Current Backend Hosting)
-- **Free tier**: 1 container, 512 MB RAM, 0.5 vCPU
-- **Sleep after**: 30 min inactivity
-- **Cold start**: 10-30 seconds
-- **Custom domains**: Supported
-- **HTTPS**: Automatic
-
 ## Cloudflare Workers (Alternative Backless API)
 - **Free tier**: 100,000 requests/day
 - **CPU time**: 10 ms/request
