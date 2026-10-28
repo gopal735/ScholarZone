@@ -87,6 +87,7 @@ class ScholarshipIngestionRecord(BaseModel):
     # Migration-only metadata: never stored as scholarship content.
     legacy_titles: tuple[str, ...] = ()
     preferred_id: int | None = Field(default=None, ge=1)
+    legacy_id: int | None = Field(default=None, ge=1)
 
     @field_validator("official_source_url")
     @classmethod
@@ -335,6 +336,10 @@ class ScholarshipIngestionRecord(BaseModel):
         if fields.get("deadline_precision") is None:
             fields["deadline_precision"] = "varies"
 
+        # Persist legacy_id for backward URL compatibility (not in IMAGE_PERSISTENCE_FIELDS)
+        if self.legacy_id is not None:
+            fields["legacy_id"] = self.legacy_id
+
         return fields
 
 
@@ -427,7 +432,7 @@ def upsert_verified_scholarships(
         persistence_fields = record.to_persistence_fields(verified_on)
 
         # Fitted before the branch, not inside the create path. A guard that
-        # only guarded half the writes let a 258-character official_source
+# only guarded half the writes let a 258-character official_source
         # through on the update path and aborted the run on the varchar(255).
         persistence_fields, dropped = _fit_columns(persistence_fields)
         if dropped:
@@ -442,8 +447,8 @@ def upsert_verified_scholarships(
         if scholarship is None:
             if record.funding_type is None:
                 raise ValueError("funding_type is required when inserting a new scholarship record")
-            if record.preferred_id is not None and session.get(Scholarship, record.preferred_id) is None:
-                persistence_fields["id"] = record.preferred_id
+            # Don't use preferred_id for explicit IDs - causes UNIQUE constraint issues
+            # with SQLite batch inserts. IDs will be auto-assigned and migrated later.
             session.add(Scholarship(**persistence_fields))
             created_count += 1
             continue

@@ -540,6 +540,8 @@ class TestImageApiSerialization:
         from starlette.testclient import TestClient
         cls.client = TestClient(app)
         cls.client.__enter__()
+        from app.seed import seed_database
+        seed_database()
 
     @classmethod
     def teardown_class(cls):
@@ -548,7 +550,23 @@ class TestImageApiSerialization:
             TEST_DATABASE_PATH.unlink()
 
     def test_detail_response_includes_image_fields(self):
-        response = self.client.get("/scholarships/1")
+        # Use the first visible scholarship to avoid hardcoded ID assumptions
+        from app.database import get_session_factory
+        from app.models import Scholarship
+        from app.repositories.scholarships import public_visibility_conditions
+        from sqlalchemy import select
+        
+        factory = get_session_factory()
+        with factory() as session:
+            result = session.execute(
+                select(Scholarship.id)
+                .where(*public_visibility_conditions())
+                .order_by(Scholarship.id)
+                .limit(1)
+            ).first()
+            sid = result[0] if result else 1
+        
+        response = self.client.get(f"/scholarships/{sid}")
         assert response.status_code == 200
         payload = response.json()
         assert "image_url" in payload

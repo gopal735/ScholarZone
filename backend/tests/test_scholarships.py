@@ -120,10 +120,10 @@ class ScholarshipApiTests(unittest.TestCase):
         payload = response.json()
         self.assertEqual(payload["pagination"], {"page": 1, "limit": 12, "total": 57, "total_pages": 5})
         self.assertEqual(len(payload["items"]), 12)
-        self.assertEqual(payload["items"][0]["title"], "Erasmus Mundus Joint Masters (EMJM)")
+        self.assertEqual(payload["items"][0]["title"], "DAAD Scholarship")
 
     def test_get_valid_scholarship(self):
-        response = self.client.get("/scholarships/1")
+        response = self.client.get("/scholarships/4")
 
         self.assertEqual(response.status_code, 200)
         self.assertEqual(response.json()["title"], "Erasmus Mundus Joint Masters (EMJM)")
@@ -152,8 +152,8 @@ class ScholarshipApiTests(unittest.TestCase):
         country_response = self.client.get("/scholarships", params={"search": "germany"})
         empty_response = self.client.get("/scholarships", params={"search": "not-a-real-scholarship"})
 
-        self.assertEqual([item["id"] for item in title_response.json()["items"]], [3, 21, 23])
-        self.assertEqual([item["id"] for item in country_response.json()["items"]], [3, 10, 21, 23, 24])
+        self.assertEqual([item["id"] for item in title_response.json()["items"]], [3, 22, 24])
+        self.assertEqual([item["id"] for item in country_response.json()["items"]], [3, 11, 22, 24, 25])
         self.assertEqual(empty_response.json()["items"], [])
         self.assertEqual(empty_response.json()["pagination"]["total"], 0)
 
@@ -169,7 +169,7 @@ class ScholarshipApiTests(unittest.TestCase):
             },
         )
 
-        self.assertEqual([item["id"] for item in country_response.json()["items"]], [11])
+        self.assertEqual([item["id"] for item in country_response.json()["items"]], [12])
         self.assertEqual([item["id"] for item in degree_response.json()["items"]], [])
         self.assertEqual([item["id"] for item in combined_response.json()["items"]], [3])
 
@@ -179,9 +179,9 @@ class ScholarshipApiTests(unittest.TestCase):
         name_asc = self.client.get("/scholarships", params={"sort": "name-asc"})
         page_two = self.client.get("/scholarships", params={"page": 2, "limit": 1})
 
-        self.assertEqual([item["id"] for item in earliest.json()["items"]], [53, 58, 56, 21, 18, 14, 55, 54, 59, 1, 3, 4])
-        self.assertEqual([item["id"] for item in latest.json()["items"]], [59, 54, 55, 14, 18, 21, 56, 53, 58, 1, 3, 4])
-        self.assertEqual([item["id"] for item in name_asc.json()["items"]], [51, 54, 37, 38, 50, 31, 32, 30, 33, 57, 43, 60])
+        self.assertEqual([item["id"] for item in earliest.json()["items"]], [54, 59, 57, 22, 19, 15, 56, 55, 60, 3, 4, 5])
+        self.assertEqual([item["id"] for item in latest.json()["items"]], [60, 55, 56, 15, 19, 22, 57, 54, 59, 3, 4, 5])
+        self.assertEqual([item["id"] for item in name_asc.json()["items"]], [52, 55, 38, 39, 51, 32, 33, 31, 34, 58, 44, 61])
         self.assertEqual(page_two.json()["pagination"], {"page": 2, "limit": 1, "total": 57, "total_pages": 57})
         self.assertEqual(len(page_two.json()["items"]), 1)
 
@@ -195,7 +195,7 @@ class ScholarshipApiTests(unittest.TestCase):
 
         self.assertEqual(len(funding_response.json()["items"]), 12)
         self.assertEqual([item["id"] for item in month_response.json()["items"]], [])
-        self.assertEqual([item["id"] for item in search_response.json()["items"]], [1, 3, 5, 7, 8, 10, 13, 14, 15, 17, 19, 20])
+        self.assertEqual([item["id"] for item in search_response.json()["items"]], [3, 4, 6, 8, 9, 11, 14, 15, 16, 18, 20, 21])
         self.assertEqual(recommended_response.status_code, 200)
         self.assertTrue(all(item["status"] == status_to_check for item in status_response.json()["items"]))
 
@@ -313,13 +313,13 @@ class ScholarshipApiTests(unittest.TestCase):
                 1,
             )
 
-        gks_response = self.client.get("/scholarships/4")
+        gks_response = self.client.get("/scholarships/5")
         self.assertEqual(gks_response.status_code, 200)
         self.assertEqual(gks_response.json()["title"], "Global Korea Scholarship (GKS)")
         self.assertTrue(gks_response.json()["verified"])
         self.assertIsNotNone(gks_response.json()["last_verified_date"])
 
-        mext_response = self.client.get("/scholarships/5")
+        mext_response = self.client.get("/scholarships/6")
         self.assertEqual(mext_response.status_code, 200)
         self.assertEqual(mext_response.json()["title"], "MEXT (Monbukagakusho) Scholarship")
 

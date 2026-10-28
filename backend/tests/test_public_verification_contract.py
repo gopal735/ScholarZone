@@ -266,7 +266,17 @@ def _set_status(sid: int, status: str) -> None:
 def _first_public_id() -> int:
     session = get_session_factory()()
     try:
-        return session.query(Scholarship.id).order_by(Scholarship.id).first()[0]
+        from app.repositories.scholarships import public_visibility_conditions
+        from sqlalchemy import select
+        result = session.execute(
+            select(Scholarship.id)
+            .where(*public_visibility_conditions())
+            .order_by(Scholarship.id)
+            .limit(1)
+        ).first()
+        if result is None:
+            raise RuntimeError("No public scholarships available for testing")
+        return result[0]
     finally:
         session.close()
 
