@@ -443,8 +443,12 @@ def upsert_verified_scholarships(
             if record.funding_type is None:
                 raise ValueError("funding_type is required when inserting a new scholarship record")
             if record.preferred_id is not None and session.get(Scholarship, record.preferred_id) is None:
+                # Use explicit INSERT with explicit ID to avoid SQLAlchemy insertmanyvalues issues
+                from sqlalchemy import insert
                 persistence_fields["id"] = record.preferred_id
-            session.add(Scholarship(**persistence_fields))
+                session.execute(insert(Scholarship).values(**persistence_fields))
+            else:
+                session.add(Scholarship(**persistence_fields))
             created_count += 1
             continue
 

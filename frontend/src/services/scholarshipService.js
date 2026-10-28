@@ -31,6 +31,16 @@ export class ScholarshipApiError extends Error {
   }
 }
 
+function isRetryableError(error) {
+  // Network errors, timeouts, and 5xx are retryable
+  if (error instanceof TypeError && error.message.includes('fetch')) return true
+  if (error instanceof DOMException && error.name === 'AbortError') return false
+  if (error instanceof ScholarshipApiError) {
+    return error.status >= 500
+  }
+  return false
+}
+
 function normalizeScholarship(scholarship) {
   return {
     ...scholarship,
@@ -158,13 +168,15 @@ export async function fetchScholarships(query = {}, options) {
         items: Array.isArray(payload.items) ? payload.items.map(normalizeScholarship) : [],
         pagination: payload.pagination,
       }))
-      // The API is the source of truth. When it cannot answer at all, the
-      // catalogue is still readable from the version-controlled snapshot,
-      // so browsing does not stop just because the database is —
-      // and the caller is told it is reading the snapshot, because a
-      // directory that quietly changes its provenance is worse than one
-      // that announces it.
+      // The API is the source of truth. When it cannot answer due to a
+      // transient failure (network, timeout, 5xx), the catalogue is still
+      // readable from the version-controlled snapshot, so browsing does not
+      // stop just because the database is down — and the caller is told it is
+      // reading the snapshot. Client errors (4xx) do NOT trigger fallback;
+      // they represent invalid requests or genuinely missing resources that
+      // the snapshot should not paper over.
       .catch(async (error) => {
+        if (!isRetryableError(error)) throw error
         const fallback = await fetchScholarshipsFromSnapshot(query)
         if (!fallback || fallback.items.length === 0) throw error
         return { ...fallback, fromSnapshot: true }
@@ -179,7 +191,8 @@ export async function fetchScholarshipById(id, options) {
     const snapshot = await fetchScholarshipsFromSnapshot({ limit: 1000 })
     const record = snapshot.items.find((s) => String(s.id) === String(id))
     if (record) return normalizeScholarship(record)
-    // If not in snapshot, fall through to API (will 404 if also not there)
+    // In static mode, a missing ID is a clear not-found — never fall through to API.
+    throw new ScholarshipApiError('Scholarship not found', 404)
   }
   const payload = await request(`/scholarships/${encodeURIComponent(id)}`, undefined, options)
   return normalizeScholarship(payload)
@@ -198,6 +211,7 @@ export async function fetchScholarshipStats(options) {
     try {
       return await request('/scholarships/stats')
     } catch (error) {
+      if (!isRetryableError(error)) throw error
       const fallback = await fetchScholarshipStatsFromSnapshot()
       if (!fallback || fallback.total === 0) throw error
       return { ...fallback, fromSnapshot: true }
