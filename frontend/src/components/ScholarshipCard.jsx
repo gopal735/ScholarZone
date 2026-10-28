@@ -4,31 +4,20 @@ import ScholarshipImage from './ScholarshipImage'
 import ScholarshipActions from './ScholarshipActions'
 import SupervisorCta from './SupervisorCta'
 import { getDeadlineLabel, getLastVerifiedLabel, getScholarshipStatus, matchesDegreeFilter, matchesFundingFilter } from '../utils/scholarshipPresentation'
+import { getConfirmedOfficialLogo, getMonogramInitial } from '../utils/scholarshipLogos'
 import './ScholarshipCard.css'
 
-export default function ScholarshipCard({ scholarship, index = 0 }) {
+export default function ScholarshipCard({ scholarship, index = 0, onOpenDetails }) {
   const deadlineStatus = getScholarshipStatus(scholarship)
   const cardRef = useRef(null)
 
-  /* Verification state comes from verification_status, not from `verified`.
-
-     Every record in the catalogue has verified === true, because `verified`
-     records that a source was read at some point. It says nothing about
-     whether this record's details have since been checked: 228 of the 400
-     public listings are verification_status 'needs_review'. Reading the flag
-     made every card claim "Verified official source", which is the one claim
-     this product cannot afford to make loosely.
-
-     So: active means the record was checked and holds. Anything else says so
-     plainly instead of borrowing a pass mark. */
   const verificationState = scholarship.verification_status || 'needs_review'
   const isVerified = verificationState === 'active'
   const needsReview = !isVerified
 
-  /* Provenance, not decoration. image_kind is the honest signal: an image_url
-     exists on 400 records but only 384 are validated official_logo, and the
-     difference is exactly what this line has to tell the truth about. */
-  const hasOfficialLogo = scholarship.image_kind === 'official_logo'
+  const officialLogo = getConfirmedOfficialLogo(scholarship)
+  const hasOfficialLogo = Boolean(officialLogo)
+  const monogramInitial = getMonogramInitial(scholarship?.title)
   const verifiedOn = scholarship.last_verified_at || null
 
   /* The pointer-driven light — the gloss band, the spotlight and the 3D
@@ -79,11 +68,39 @@ export default function ScholarshipCard({ scholarship, index = 0 }) {
             the tile has a top sheen, a contact shade and a soft drop, so
             it catches the same light as the card it sits on. */}
         <div className="scholarship-card__top">
-          <div className="scholarship-card__mono" aria-hidden="true">{scholarship.title.charAt(0)}</div>
+          <div className="scholarship-card__mono" aria-label={hasOfficialLogo ? `${scholarship.title} official logo` : undefined}>
+            {officialLogo ? (
+              <img
+                src={officialLogo.url}
+                alt={officialLogo.altText}
+                className="scholarship-card__logo-img"
+                onError={(e) => {
+                  e.currentTarget.style.display = 'none'
+                  if (e.currentTarget.nextSibling) e.currentTarget.nextSibling.style.display = 'block'
+                }}
+              />
+            ) : null}
+            <span
+              className="scholarship-card__mono-fallback"
+              style={{ display: officialLogo ? 'none' : 'block' }}
+              aria-hidden="true"
+            >
+              {monogramInitial}
+            </span>
+          </div>
           <div className="scholarship-card__heading">
             <h2>{scholarship.title}</h2>
             <p className="scholarship-card__where">{scholarship.country}</p>
           </div>
+          {onOpenDetails && (
+            <button
+              type="button"
+              className="scholarship-card__dtl-btn"
+              onClick={() => onOpenDetails(scholarship)}
+            >
+              Details
+            </button>
+          )}
         </div>
 
         {/* The Provenance Rule. The square is the identity: filled when the

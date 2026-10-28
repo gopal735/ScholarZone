@@ -28,67 +28,59 @@
    ═══════════════════════════════════════════════════════════════════ */
 
 :root {
+  /* ── Core Editorial Archetype Tokens ───────────────────────── */
+  --bg: #F3EFE7;
+  --ink: #1B2320;
+  --mute: #666F69;
+  --line: rgba(27, 35, 32, 0.12);
+  --acc: #2F6F5B;
+  --acc2: #B58B3C;
+  --hl: #C9962F;
+  --cardbg: linear-gradient(150deg, rgba(255, 253, 247, 0.96), rgba(255, 250, 240, 0.66));
+  --drop: 0 1px 1px rgba(60, 45, 20, 0.07), 6px 10px 18px -10px rgba(70, 50, 20, 0.2), 14px 34px 56px -26px rgba(60, 45, 20, 0.34);
+  --edge1: rgba(255, 255, 255, 0.95);
+  --edge2: rgba(60, 45, 20, 0.08);
+  --edge3: rgba(60, 45, 20, 0.08);
+  --well: rgba(60, 45, 20, 0.05);
+  --well-sh: inset 0 2px 5px rgba(60, 45, 20, 0.13), inset 0 0 0 1px rgba(60, 45, 20, 0.05), 0 1px 0 #fff;
+  --gloss: rgba(255, 255, 255, 0.6);
+
   /* ── Colour: canvas and surfaces ────────────────────────────────
      Depth is tonal — stepped surfaces plus a hairline. The steps are
      warm-neutral so a card reads as a sheet of the same paper stock
      one step lighter, which is the reference's material model. */
-  --page-bg: #f6f5f1;
+  --page-bg: var(--bg);
   --surface: #ffffff;
   --surface-raised: #ffffff;
   --surface-subtle: #efede6;
   --surface-hover: #eae7dc;
   --surface-sunken: #e6e2d6;
-  --surface-accent: rgba(15, 127, 107, 0.06);
+  --surface-accent: rgba(47, 111, 91, 0.06);
 
-  /* ── Colour: text ─────────────────────────────────────────────
-     Three tiers. Navy ink rather than neutral black: on a warm paper
-     canvas a neutral black reads blue and cold, and the whole register
-     is meant to be a document, not a screen. */
-  --text-primary: #0e1a33;
+  /* ── Colour: text ───────────────────────────────────────────── */
+  --text-primary: var(--ink);
   --text-secondary: #2c3752;
-  --text-muted: #5b667c;
+  --text-muted: var(--mute);
   --text-faint: #767f92;
 
-  /* Decorative only: scrollbar tracks, hairline swatches, anything that
-     is a graphic rather than language. Deliberately named so it cannot be
-     picked up by someone reaching for "a slightly lighter text colour". */
-  --hairline: #8a93a5;
+  --border: var(--line);
+  --border-strong: rgba(27, 35, 32, 0.24);
+  --border-input: rgba(27, 35, 32, 0.5);
 
-  /* ── Colour: borders ──────────────────────────────────────────
-     Two tiers only. --border is a decorative hairline and is exempt
-     from SC 1.4.11 (a control with visible content does not need a
-     contrasting boundary). --border-input is the one that has to
-     clear 3:1, because on a text field the border is the only thing
-     saying "this is an input". */
-  --border: rgba(14, 26, 51, 0.11);
-  --border-strong: rgba(14, 26, 51, 0.24);
-  --border-input: rgba(14, 26, 51, 0.5);
+  --accent: var(--acc);
+  --accent-hover: #245848;
+  --accent-soft: rgba(47, 111, 91, 0.08);
+  --accent-border: rgba(47, 111, 91, 0.32);
+  --accent-glow: rgba(47, 111, 91, 0.18);
 
-  /* ── Colour: accent (teal) ────────────────────────────────────
-     One accent. It is used for links, the primary control, focus,
-     and the active filter state — nowhere else. */
-  --accent: #0f7f6b;
-  --accent-hover: #0b6a59;
-  --accent-soft: rgba(15, 127, 107, 0.08);
-  --accent-border: rgba(15, 127, 107, 0.32);
-  --accent-glow: rgba(15, 127, 107, 0.18);
+  --accent-2: var(--acc2);
+  --accent-2-soft: rgba(181, 139, 60, 0.12);
+  --accent-2-border: rgba(181, 139, 60, 0.3);
 
-  /* ── Colour: secondary accent (indigo) ─────────────────────────
-     Never a second link colour and never a second button colour: it
-     is the aurora light, the second tone in progress bars, and the
-     cool edge of the ambient field. Two accents doing the same job is
-     how a palette stops meaning anything. */
-  --accent-2: #6a74d9;
-  --accent-2-soft: rgba(106, 116, 217, 0.09);
-  --accent-2-border: rgba(106, 116, 217, 0.3);
-
-  /* ── Colour: highlight (gold) ─────────────────────────────────
-     Urgency and emphasis only — the closing-soon pill, the live
-     count, the one gold element per view. Reserved on purpose. */
-  --highlight: #e3b45a;
-  --highlight-strong: #c9962f;
-  --highlight-soft: rgba(227, 180, 90, 0.16);
-  --highlight-border: rgba(227, 180, 90, 0.45);
+  --highlight: var(--hl);
+  --highlight-strong: #9a6d16;
+  --highlight-soft: rgba(201, 150, 47, 0.16);
+  --highlight-border: rgba(201, 150, 47, 0.45);
   --highlight-ink: #3a2a08;
 
   /* ── Colour: semantic ─────────────────────────────────────────
@@ -427,26 +419,55 @@
 :root[data-theme='dark'] {
   --weight-multiplier: 0.93;
 
-  --page-bg: #05070d;
+  --bg: #1A2030;
+  --ink: #EEF0EA;
+  --mute: #A6B0AC;
+  --line: rgba(236, 239, 246, 0.13);
+  --acc: #7CCDB5;
+  --acc2: #D4A85C;
+  --hl: #E3B45A;
+  --card: rgba(255, 255, 255, 0.06);
+  --well: rgba(10, 14, 28, 0.35);
+  --well-sh: inset 0 2px 6px rgba(8, 12, 26, 0.55), inset 0 0 0 1px rgba(255, 255, 255, 0.05), 0 1px 0 rgba(255, 255, 255, 0.06);
+  --gloss: rgba(255, 255, 255, 0.07);
+  --edge1: rgba(255, 255, 255, 0.26);
+  --edge2: rgba(255, 255, 255, 0.05);
+  --edge3: rgba(8, 12, 26, 0.35);
+  --drop: 0 1px 1px rgba(6, 10, 24, 0.4), 6px 12px 22px -10px rgba(6, 10, 26, 0.45), 16px 40px 64px -28px rgba(6, 10, 30, 0.6);
+  --cardbg: linear-gradient(150deg, rgba(255, 255, 255, 0.09), rgba(255, 255, 255, 0.03));
+
+  --page-bg: var(--bg);
   --surface: #0b1120;
   --surface-raised: #101827;
   --surface-subtle: #151f36;
   --surface-hover: #1a2540;
   --surface-sunken: #03050a;
-  --surface-accent: rgba(99, 205, 180, 0.09);
+  --surface-accent: rgba(124, 205, 181, 0.09);
 
-  --text-primary: #e8ecf5;
+  --text-primary: var(--ink);
   --text-secondary: #b9c2d6;
-  --text-muted: #94a0b8;
-  /* Dark mode's worst case is --surface-hover at 5.6:1, not the page and
-     not the sunken surface — the hover step is the lightest background in
-     the system, so it is the one every text tier has to clear. */
+  --text-muted: var(--mute);
   --text-faint: #9aa5ba;
   --hairline: #8b96ab;
 
-  --border: rgba(232, 236, 245, 0.12);
-  --border-strong: rgba(232, 236, 245, 0.26);
-  --border-input: rgba(232, 236, 245, 0.37);
+  --border: var(--line);
+  --border-strong: rgba(236, 239, 246, 0.26);
+  --border-input: rgba(236, 239, 246, 0.37);
+
+  --accent: var(--acc);
+  --accent-hover: #98e0cc;
+  --accent-soft: rgba(124, 205, 181, 0.12);
+  --accent-border: rgba(124, 205, 181, 0.38);
+
+  --accent-2: var(--acc2);
+  --accent-2-soft: rgba(212, 168, 92, 0.14);
+  --accent-2-border: rgba(212, 168, 92, 0.35);
+
+  --highlight: var(--hl);
+  --highlight-strong: #f0c36b;
+  --highlight-soft: rgba(227, 180, 90, 0.16);
+  --highlight-border: rgba(227, 180, 90, 0.42);
+  --highlight-ink: #1b2320;
 
   --accent: #63cdb4;
   --accent-hover: #86e0cb;

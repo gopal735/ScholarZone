@@ -1,100 +1,93 @@
-import { NavLink } from 'react-router-dom'
-import { LazyMotion, domAnimation, m } from 'motion/react'
+import { NavLink, useLocation, useNavigate } from 'react-router-dom'
 import { useAuth } from '../hooks/useAuth'
-import { useCompare } from '../hooks/useCompare'
 import { useSavedScholarships } from '../hooks/useSavedScholarships'
-import { useReducedMotion } from '../hooks/useReducedMotion'
-import ThemeToggle from './ThemeToggle'
+import { useTheme } from '../hooks/useTheme'
 import './Navigation.css'
-
-const ENTER_TRANSITION = { duration: 0.45, ease: [0.16, 1, 0.3, 1] }
-const COUNT_SPRING = { type: 'spring', stiffness: 520, damping: 28 }
-
-function UtilityCount({ count, animate }) {
-  if (count <= 0) return null
-
-  if (!animate) {
-    return <span>{count}</span>
-  }
-
-  return (
-    <m.span
-      key={count}
-      initial={{ scale: 0.72, opacity: 0 }}
-      animate={{ scale: 1, opacity: 1 }}
-      transition={COUNT_SPRING}
-    >
-      {count}
-    </m.span>
-  )
-}
-
-function CountedUtilityLink({ to, label, count, className, animate }) {
-  return (
-    <NavLink to={to} className={({ isActive }) => `${className} ${isActive ? 'active' : ''}`} aria-label={`${label}: ${count}`}>
-      {label}
-      <UtilityCount count={count} animate={animate} />
-    </NavLink>
-  )
-}
 
 export default function Navigation() {
   const { status } = useAuth()
-  const { compareIds } = useCompare()
   const { savedIds } = useSavedScholarships()
-  const prefersReducedMotion = useReducedMotion()
+  const { theme, toggleTheme } = useTheme()
+  const location = useLocation()
+  const navigate = useNavigate()
+
+  const isHome = location.pathname === '/'
+
+  const handleAnchor = (e, id) => {
+    e.preventDefault()
+    if (isHome) {
+      const el = document.getElementById(id)
+      if (el) {
+        el.scrollIntoView({ behavior: 'smooth' })
+      }
+    } else {
+      navigate(`/#${id}`)
+    }
+  }
+
+  const handleShowreel = () => {
+    window.dispatchEvent(new CustomEvent('sz-trigger-showreel'))
+  }
 
   return (
-    <LazyMotion features={domAnimation} strict={false}>
-      <m.nav
-        className="nav-bar"
-        aria-label="Primary navigation"
-        initial={prefersReducedMotion ? false : { opacity: 0, y: -10 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={ENTER_TRANSITION}
-      >
-        <NavLink to="/" className="nav-brand">
-          <span className="nav-brand__mark" aria-hidden="true">S</span>
-          <span>ScholarZone</span>
+    <header className="sz-nav-header nav" role="banner">
+      <NavLink to="/" className="logo" aria-label="ScholarZone Home">
+        <i>
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M4 18C7 6 17 6 20 18" />
+            <circle cx="4" cy="18" r="1.7" />
+            <circle cx="20" cy="18" r="1.7" />
+          </svg>
+        </i>
+        ScholarZone
+      </NavLink>
+
+      <nav aria-label="Primary navigation">
+        <a href="#top" onClick={(e) => handleAnchor(e, 'top')}>Match</a>
+        <a href="#tools" onClick={(e) => handleAnchor(e, 'tools')}>Toolkit</a>
+        <a href="#learn" onClick={(e) => handleAnchor(e, 'learn')}>Learn</a>
+        <a href="#how" onClick={(e) => handleAnchor(e, 'how')}>How it works</a>
+        <NavLink to="/scholarships" className={({ isActive }) => (isActive ? 'active' : '')}>
+          Directory
         </NavLink>
+        <NavLink to="/saved" className={({ isActive }) => (isActive ? 'active' : '')}>
+          Saved {savedIds.length > 0 && `· ${savedIds.length}`}
+        </NavLink>
+      </nav>
 
-        <div className="nav-menu">
-          <div className="nav-links">
-            <NavLink to="/" end className={({ isActive }) => (isActive ? 'active' : '')}>Home</NavLink>
-            <NavLink to="/scholarships" className={({ isActive }) => (isActive ? 'active' : '')}>Scholarships</NavLink>
-            <NavLink to="/match" className={({ isActive }) => (isActive ? 'active' : '')}>Match</NavLink>
-            <NavLink to="/countries" className={({ isActive }) => (isActive ? 'active' : '')}>Countries</NavLink>
-          </div>
+      <div className="nav-controls">
+        <button
+          className="tg"
+          id="th"
+          type="button"
+          onClick={toggleTheme}
+          aria-label={theme === 'dark' ? 'Switch to light theme' : 'Switch to dark theme'}
+        >
+          <svg className="sun" viewBox="0 0 24 24" aria-hidden="true">
+            <circle cx="12" cy="12" r="4" />
+            <path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4" />
+          </svg>
+          <svg className="moon" viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M20 14.5A8 8 0 019.5 4 8 8 0 1020 14.5z" />
+          </svg>
+        </button>
 
-          <div className="nav-utilities">
-            <CountedUtilityLink to="/applications" label="Applications" className="nav-utility-link" animate={!prefersReducedMotion} />
-            <CountedUtilityLink to="/saved" label="Saved" count={savedIds.length} className="nav-utility-link" animate={!prefersReducedMotion} />
-            <CountedUtilityLink to="/compare" label="Compare" count={compareIds.length} className="nav-utility-link" animate={!prefersReducedMotion} />
-            {/* The mentor is a reading surface over the records the three links
-                above already point at, so it sits with them rather than in the
-                primary row. It resolves its own access state from the server, so
-                like the dashboard this link is a convenience and never the thing
-                that decides whether someone may see it. */}
-            <NavLink to="/mentor" className={({ isActive }) => `nav-utility-link ${isActive ? 'active' : ''}`}>
-              Mentor
-            </NavLink>
-            {status === 'checking' ? (
-              <span className="nav-session-status">Checking&hellip;</span>
-            ) : status === 'authenticated' ? (
-              // An account exists, so the useful destination is the workspace
-              // rather than the sign-in form. The dashboard reads its own access
-              // state from the server, so this link is a convenience, never the
-              // thing that decides whether someone may see it.
-              <NavLink to="/dashboard" className={({ isActive }) => `nav-sign-in ${isActive ? 'active' : ''}`}>
-                Dashboard
-              </NavLink>
-            ) : (
-              <NavLink to="/login" className={({ isActive }) => `nav-sign-in ${isActive ? 'active' : ''}`}>Sign in</NavLink>
-            )}
-            <ThemeToggle />
-          </div>
-        </div>
-      </m.nav>
-    </LazyMotion>
+        <button
+          className="btn showreel-btn"
+          id="play"
+          type="button"
+          onClick={handleShowreel}
+        >
+          Watch showreel
+        </button>
+
+        {status === 'authenticated' ? (
+          <NavLink to="/dashboard" className="btn nav-auth-btn">Dashboard</NavLink>
+        ) : (
+          <NavLink to="/login" className="btn nav-auth-btn">Sign in</NavLink>
+        )}
+      </div>
+    </header>
   )
 }
+
