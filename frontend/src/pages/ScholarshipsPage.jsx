@@ -8,7 +8,7 @@ import { CANONICAL_ORIGIN } from '../services/canonicalOrigin'
 export default function ScholarshipsPage() {
   const [searchParams] = useSearchParams()
   const countryParam = searchParams.get('country') || undefined
-  const { isUsingFallback } = useScholarshipDirectory()
+  const { isUsingLocalFallback } = useScholarshipDirectory()
 
   // Every variant of this route - country, degree, funding, search, sort,
   // status, page - is the same catalogue at a different offset. The clean URL is
@@ -125,9 +125,9 @@ export default function ScholarshipsPage() {
           </div>
         </div>
         <ScholarshipList initialCountry={countryParam} />
-        {isUsingFallback && (
+        {isUsingLocalFallback && (
           <div className="scholarships-page__fallback-notice" role="status">
-            <span>⚠️ Live directory unavailable — showing local data.</span>
+            <span>⚠️ Live directory and snapshot unavailable — showing minimal local data.</span>
           </div>
         )}
       </div>

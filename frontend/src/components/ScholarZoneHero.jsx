@@ -109,7 +109,7 @@ function HeroShowcase({ scholarship, ref, onPointerMove, onPointerLeave, dark })
   )
 }
 export default function ScholarZoneHero() {
-  const { scholarships, isLoading, isUsingFallback, error } =
+  const { scholarships, isLoading, isUsingLocalFallback, error } =
     useScholarshipDirectory()
   const { theme: researchTheme } = useResearchTheme()
   const navigate = useNavigate()
@@ -304,7 +304,7 @@ export default function ScholarZoneHero() {
             </div>
           ) : (
             <>
-              {stats && !isUsingFallback && (
+              {stats && !isUsingLocalFallback && (
                 <LiveDataIndicator
                   count={stats.count}
                   countries={stats.countries}
@@ -312,18 +312,18 @@ export default function ScholarZoneHero() {
                   verified={stats.verified}
                 />
               )}
-              {statsLoading && !isUsingFallback && !stats && (
+              {statsLoading && !isUsingLocalFallback && !stats && (
                 <div className="sz-hero__loading" aria-label="Loading directory figures">
                   <span className="sz-hero__loading-spinner" aria-hidden="true" />
                   <span>Loading directory figures...</span>
                 </div>
               )}
-              {isUsingFallback && (
+              {isUsingLocalFallback && (
                 <p className="sz-hero__fallback-notice" role="status">
-                  ⚠️ Live directory unavailable — showing local data.
+                  ⚠️ Live directory and snapshot unavailable — showing minimal local data.
                 </p>
               )}
-              {!stats && !statsLoading && !isUsingFallback && (
+              {!stats && !statsLoading && !isUsingLocalFallback && (
                 <p className="sz-hero__fallback-notice" role="status">
                   ⚠️ Live stats unavailable — showing directory data.
                 </p>

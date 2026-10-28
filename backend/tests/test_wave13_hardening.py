@@ -250,8 +250,9 @@ class TestIngestionImagePath:
         fields = rec.to_persistence_fields(date(2026, 10, 4))
         assert fields["image_url"] == EDU_LOGO
         assert fields["image_source_type"] == "official_university"
-        # Accepted, then not written: the kind is the pipeline's to set.
-        assert "image_kind" not in fields
+        # The kind is now persisted so the catalogue snapshot retains classification.
+        assert "image_kind" in fields
+        assert fields["image_kind"] == "official_logo"
 
     def test_upsert_persists_a_valid_image_and_refuses_a_bad_one(self, session):
         good = record(
@@ -263,10 +264,8 @@ class TestIngestionImagePath:
         row = session.query(Scholarship).filter_by(title="Good Programme").one()
         assert row.image_url == EDU_LOGO
         assert row.image_source_type == "official_university"
-        # The kind the caller carried is not written through: the pipeline
-        # owns that column, so ingestion leaving it unset is correct rather
-        # than a gap.
-        assert row.image_kind is None
+        # The kind is now persisted so the catalogue snapshot retains classification.
+        assert row.image_kind == "official_logo"
 
         with pytest.raises(ValidationError):
             record(

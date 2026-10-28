@@ -18,10 +18,6 @@ from app.data.verified_scholarships import (
 from app.data.additional_scholarships import (
     ADDITIONAL_VERIFIED_SCHOLARSHIPS,
 )  # noqa: E402
-    EIFFEL_OFFICIAL_SOURCE_URL,
-    SWISS_ESKAS_OFFICIAL_SOURCE_URL,
-    VERIFIED_SCHOLARSHIPS,
-)
 from app.database import get_session_factory, init_database  # noqa: E402
 from app.models import Scholarship  # noqa: E402
 from app.services.scholarship_ingestion import upsert_verified_scholarships  # noqa: E402
@@ -33,6 +29,10 @@ RESULT_URLS = (EIFFEL_OFFICIAL_SOURCE_URL, SWISS_ESKAS_OFFICIAL_SOURCE_URL)
 def main() -> None:
     init_database()
     with get_session_factory()() as session:
+        # Seed legacy bootstrap records first (they provide stable IDs for saved plans)
+        from app.seed import seed_scholarships
+        seed_scholarships(session)
+        
         previous_ids = {
             source_url: session.scalar(
                 select(Scholarship.id).where(Scholarship.official_source_url == source_url)
@@ -40,18 +40,18 @@ def main() -> None:
             for source_url in RESULT_URLS
         }
         # Build canonical catalogue: VERIFIED first (takes precedence), then ADDITIONAL
-    verified_urls = {s.official_source_url for s in VERIFIED_SCHOLARSHIPS}
-    additional_filtered = [s for s in ADDITIONAL_VERIFIED_SCHOLARSHIPS if s.official_source_url not in verified_urls]
-    canonical_catalogue = list(VERIFIED_SCHOLARSHIPS) + additional_filtered
-    
-    print(f"Canonical catalogue: {len(VERIFIED_SCHOLARSHIPS)} VERIFIED + {len(additional_filtered)} ADDITIONAL (filtered) = {len(canonical_catalogue)} total")
-    
-    created_count, updated_count = upsert_verified_scholarships(session, canonical_catalogue)
-        resulting_rows = session.scalars(
-            select(Scholarship)
-            .where(Scholarship.official_source_url.in_(RESULT_URLS))
-            .order_by(Scholarship.id)
-        ).all()
+        verified_urls = {s.official_source_url for s in VERIFIED_SCHOLARSHIPS}
+        additional_filtered = [s for s in ADDITIONAL_VERIFIED_SCHOLARSHIPS if s.official_source_url not in verified_urls]
+        canonical_catalogue = list(VERIFIED_SCHOLARSHIPS) + additional_filtered
+        
+        print(f"Canonical catalogue: {len(VERIFIED_SCHOLARSHIPS)} VERIFIED + {len(additional_filtered)} ADDITIONAL (filtered) = {len(canonical_catalogue)} total")
+        
+        created_count, updated_count = upsert_verified_scholarships(session, canonical_catalogue)
+    resulting_rows = session.scalars(
+        select(Scholarship)
+        .where(Scholarship.official_source_url.in_(RESULT_URLS))
+        .order_by(Scholarship.id)
+    ).all()
 
     print(f"Created {created_count} scholarship record(s); updated {updated_count} record(s).")
     for scholarship in resulting_rows:

@@ -96,6 +96,7 @@ PUBLIC_COLUMNS: tuple[str, ...] = (
     "image_url",
     "image_source_url",
     "image_source_type",
+    "image_kind",
     "image_verified_at",
     "image_alt_text",
     "fully_funded",

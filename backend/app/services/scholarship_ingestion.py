@@ -34,6 +34,7 @@ IMAGE_PERSISTENCE_FIELDS = frozenset(
         "image_url",
         "image_source_url",
         "image_source_type",
+        "image_kind",
         "image_verified_at",
         "image_alt_text",
     }
@@ -81,7 +82,6 @@ class ScholarshipIngestionRecord(BaseModel):
     image_source_type: str | None = None
     image_verified_at: date | None = None
     image_alt_text: str | None = Field(default=None, max_length=512)
-    # Accepted and validated, then never persisted: see IMAGE_PERSISTENCE_FIELDS.
     image_kind: str | None = None
 
     # Migration-only metadata: never stored as scholarship content.
@@ -189,9 +189,9 @@ class ScholarshipIngestionRecord(BaseModel):
 
         ``image_kind`` is required whenever an ``image_url`` is supplied,
         because a URL with no kind is an image nobody classified — the state
-        the public contract treats as "no evidence at all". It is still not
-        persisted through :data:`IMAGE_PERSISTENCE_FIELDS`: the pipeline owns
-        kinds, this only stops an unclassifiable payload travelling.
+        the public contract treats as "no evidence at all". It is persisted
+        through :data:`IMAGE_PERSISTENCE_FIELDS` so the catalogue snapshot
+        retains the classification.
         """
         if value is None:
             return None
@@ -220,11 +220,10 @@ class ScholarshipIngestionRecord(BaseModel):
         surfacing, and storing it with a null URL would hide that behind a row
         that merely looks image-less.
 
-        ``image_kind`` is deliberately not required here. Ingestion has no
-        producer semantics for kinds - that is what :data:`IMAGE_PERSISTENCE_FIELDS`
-        records - so demanding one would force this mapper to invent a
-        classification. The requirement lives in ``assess_image_evidence``,
-        which the pipeline stages call with ``require_kind=True``.
+        ``image_kind`` is validated here and persisted through
+        :data:`IMAGE_PERSISTENCE_FIELDS`. The requirement for a kind when an
+        image is supplied is enforced by ``assess_image_evidence`` with
+        ``require_kind=True`` in the discovery pipeline.
         """
         if self.image_url is None:
             if self.image_source_type is not None and not is_valid_source_type(
@@ -296,6 +295,7 @@ class ScholarshipIngestionRecord(BaseModel):
             "image_url": "image_url",
             "image_source_url": "image_source_url",
             "image_source_type": "image_source_type",
+            "image_kind": "image_kind",
             "image_verified_at": "image_verified_at",
             "image_alt_text": "image_alt_text",
         }
