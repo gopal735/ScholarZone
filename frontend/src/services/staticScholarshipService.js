@@ -36,7 +36,7 @@ let cachedSnapshot = null
 let snapshotLoadPromise = null
 
 /** The snapshot asset URL, resolved against the deployment's base path. */
-function getSnapshotUrl() {
+export function getSnapshotUrl() {
   const baseUrl =
     typeof import.meta !== 'undefined' && import.meta.env
       ? import.meta.env.BASE_URL
@@ -50,7 +50,7 @@ function getSnapshotUrl() {
 }
 
 /** Reject a body that cannot serve as a catalogue. */
-function assertSnapshotShape(payload) {
+export function assertSnapshotShape(payload) {
   if (payload === null || typeof payload !== 'object' || Array.isArray(payload)) {
     throw new Error('Snapshot payload is not an object.')
   }
