@@ -226,6 +226,7 @@ export default function ScholarshipList({ items, initialCountry }) {
   const isInitialLoading = isDirectory && loadState === 'loading' && apiDirectory.items.length === 0
   const isRefreshing = isDirectory && loadState === 'refreshing'
   const isUsingFallback = isDirectory && loadState === 'fallback'
+  const isStaticMode = isDirectory && Boolean(apiDirectory?.staticMode)
   /* The snapshot already answered the query — filter, sort and pagination
      are applied inside the static service, against the same semantics the
      API uses. Running the local pipeline over it as well would filter the
@@ -443,7 +444,15 @@ export default function ScholarshipList({ items, initialCountry }) {
         </div>
       </div>
 
-      {isUsingFallback && (
+      {isStaticMode && (
+        <div className="scholarship-list__static-notice" role="status">
+          <div>
+            <strong>Browsing the static public catalogue.</strong>
+            <span> No database connection required. Data from version-controlled snapshot generated at build time.</span>
+          </div>
+        </div>
+      )}
+      {isUsingFallback && !isStaticMode && (
         <div className="scholarship-list__source-notice" role="status">
           <div>
             <strong>Showing the snapshot catalogue.</strong>
@@ -459,7 +468,7 @@ export default function ScholarshipList({ items, initialCountry }) {
 
       <div className="scholarship-list__summary" aria-live="polite">
         <p><strong>{totalResults}</strong> {resultLabel} found</p>
-        <span>{isRefreshing ? 'Updating results...' : isUsingFallback ? (apiDirectory?.fromSnapshot ? 'Pagination is applied inside the snapshot, so it stays consistent. Supervisor features need the database.' : 'Local fallback does not use server pagination.') : hasActiveControls ? 'Matching your current search and filters.' : 'Compare funding, location and key dates.'}</span>
+        <span>{isRefreshing ? 'Updating results...' : isStaticMode ? 'Static catalogue — pagination, search, filters, and sort work without a database.' : isUsingFallback ? (apiDirectory?.fromSnapshot ? 'Pagination is applied inside the snapshot, so it stays consistent. Supervisor features need the database.' : 'Local fallback does not use server pagination.') : hasActiveControls ? 'Matching your current search and filters.' : 'Compare funding, location and key dates.'}</span>
       </div>
 
       {isInitialLoading ? (

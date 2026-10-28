@@ -1,6 +1,20 @@
 const apiBaseUrl = (import.meta.env.VITE_API_BASE_URL || '/api').replace(/\/$/, '')
 
-// The API-independent catalogue. Imported here so the fallback is a
+/**
+ * Static-first mode: when true, the version-controlled snapshot is the
+ * primary source for public catalogue reads. The API is not called at all.
+ *
+ * This is controlled by VITE_STATIC_CATALOGUE=true at build time, or by
+ * setting localStorage.scholarzone.staticCatalogue = 'true' at runtime.
+ * When the snapshot loads successfully, public browsing never needs the
+ * database. A distinct "static mode" indicator is shown instead of the
+ * degraded "fallback" notice.
+ */
+const STATIC_CATALOGUE =
+  import.meta.env.VITE_STATIC_CATALOGUE === 'true' ||
+  (typeof window !== 'undefined' && window.localStorage.getItem('scholarzone.staticCatalogue') === 'true')
+
+// The API-independent catalogue. Imported here so the static source is a
 // property of this service rather than something each page has to remember
 // to do: a caller that asks for scholarships gets scholarships, and the
 // provenance travels with the result.
@@ -123,6 +137,18 @@ function dedupe(key, run, signal) {
 }
 
 export async function fetchScholarships(query = {}, options) {
+  // Static-first: when enabled, the snapshot is the primary source.
+  // The API is not called at all for public catalogue reads.
+  if (STATIC_CATALOGUE) {
+    const key = `list:${JSON.stringify(query, Object.keys(query).sort())}`
+    const send = () => fetchScholarshipsFromSnapshot(query).then((fallback) => ({
+      ...fallback,
+      fromSnapshot: true,
+      staticMode: true,
+    }))
+    return dedupe(key, send, options?.signal)
+  }
+
   // The key is the resolved query, so two callers asking for the same page
   // share a request and two callers asking for different pages do not.
   const key = `list:${JSON.stringify(query, Object.keys(query).sort())}`
@@ -148,11 +174,26 @@ export async function fetchScholarships(query = {}, options) {
 }
 
 export async function fetchScholarshipById(id, options) {
+  // Static-first: try snapshot first for detail pages too.
+  if (STATIC_CATALOGUE) {
+    const snapshot = await fetchScholarshipsFromSnapshot({ limit: 1000 })
+    const record = snapshot.items.find((s) => String(s.id) === String(id))
+    if (record) return normalizeScholarship(record)
+    // If not in snapshot, fall through to API (will 404 if also not there)
+  }
   const payload = await request(`/scholarships/${encodeURIComponent(id)}`, undefined, options)
   return normalizeScholarship(payload)
 }
 
 export async function fetchScholarshipStats(options) {
+  if (STATIC_CATALOGUE) {
+    return dedupe('stats', async () => {
+      const fallback = await fetchScholarshipStatsFromSnapshot()
+      if (!fallback || fallback.total === 0) throw new Error('Empty snapshot stats')
+      return { ...fallback, fromSnapshot: true, staticMode: true }
+    }, options?.signal)
+  }
+
   return dedupe('stats', async () => {
     try {
       return await request('/scholarships/stats')
@@ -162,4 +203,27 @@ export async function fetchScholarshipStats(options) {
       return { ...fallback, fromSnapshot: true }
     }
   }, options?.signal)
+}
+
+/**
+ * Enable or disable static-first catalogue mode at runtime.
+ * Persists to localStorage so the preference survives page loads.
+ * When enabled, public browsing uses the version-controlled snapshot
+ * exclusively and never calls the database-backed API.
+ */
+export function setStaticCatalogueMode(enabled) {
+  if (typeof window !== 'undefined') {
+    if (enabled) {
+      window.localStorage.setItem('scholarzone.staticCatalogue', 'true')
+    } else {
+      window.localStorage.removeItem('scholarzone.staticCatalogue')
+    }
+  }
+}
+
+/**
+ * Check if static-first catalogue mode is currently active.
+ */
+export function isStaticCatalogueMode() {
+  return STATIC_CATALOGUE
 }

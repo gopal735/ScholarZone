@@ -1,0 +1,204 @@
+name: Catalogue Snapshot Generation
+
+on:
+  push:
+    branches: [master]
+    paths:
+      - 'backend/**'
+      - '.github/workflows/catalogue-snapshot.yml'
+  pull_request:
+    branches: [master]
+    paths:
+      - 'backend/**'
+      - '.github/workflows/catalogue-snapshot.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: catalogue-snapshot-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  generate-and-validate-snapshot:
+    name: Generate & Validate Public Catalogue Snapshot
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+          cache: pip
+          cache-dependency-path: backend/requirements.txt
+
+      - name: Install system dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y libjpeg-dev zlib1g-dev libfreetype6-dev liblcms2-dev libopenjp2-7-dev libtiff5-dev libwebp-dev
+
+      - name: Install dependencies
+        working-directory: backend
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+
+      - name: Create local SQLite database for snapshot generation
+        working-directory: backend
+        env:
+          SCHOLARZONE_ENVIRONMENT: test
+          SCHOLARZONE_DATABASE_URL: sqlite:///snapshot_test.db
+        run: |
+          python -c "
+          from app.database import init_database, get_engine
+          from sqlalchemy import text
+          init_database()
+          with get_engine().connect() as conn:
+              conn.execute(text('SELECT 1'))
+          print('Database initialized successfully')
+          "
+
+      - name: Seed test database with canonical sources
+        working-directory: backend
+        env:
+          SCHOLARZONE_ENVIRONMENT: test
+          SCHOLARZONE_DATABASE_URL: sqlite:///snapshot_test.db
+        run: |
+          python -c "
+          from app.database import get_session_factory
+          from app.models import Scholarship, ApprovedSource
+          from app.seed import seed_database
+          from sqlalchemy import select
+          
+          factory = get_session_factory()
+          with factory() as session:
+              # Run the standard seed
+              seed_database()
+              
+              # Verify seed worked
+              count = session.scalar(select(Scholarship).count())
+              sources = session.scalar(select(ApprovedSource).count())
+              print(f'Seeded {count} scholarships from {sources} approved sources')
+          "
+
+      - name: Generate public snapshot
+        working-directory: backend
+        env:
+          SCHOLARZONE_ENVIRONMENT: test
+          SCHOLARZONE_DATABASE_URL: sqlite:///snapshot_test.db
+        run: |
+          python scripts/build_public_snapshot.py --check
+
+      - name: Generate public snapshot (write)
+        working-directory: backend
+        env:
+          SCHOLARZONE_ENVIRONMENT: test
+          SCHOLARZONE_DATABASE_URL: sqlite:///snapshot_test.db
+        run: |
+          python scripts/build_public_snapshot.py
+
+      - name: Validate snapshot structure
+        working-directory: frontend
+        run: |
+          node -e "
+          const fs = require('fs');
+          const snapshot = JSON.parse(fs.readFileSync('public/scholarships-snapshot.json', 'utf8'));
+          
+          // Required top-level keys
+          if (!snapshot.meta) throw new Error('Missing meta');
+          if (!snapshot.stats) throw new Error('Missing stats');
+          if (!snapshot.scholarships) throw new Error('Missing scholarships');
+          if (!Array.isArray(snapshot.scholarships)) throw new Error('scholarships must be array');
+          if (snapshot.scholarships.length === 0) throw new Error('scholarships array is empty');
+          
+          // Verify each scholarship has required fields
+          const requiredFields = ['id', 'title', 'country', 'degree', 'funding', 'deadline_date', 'status', 'verification_status', 'official_source_url', 'application_link', 'image_url', 'verification_status'];
+          for (const s of snapshot.scholarships) {
+            for (const f of requiredFields) {
+              if (!(f in s)) throw new Error(\`Scholarship \${s.id} missing field: \${f}\`);
+            }
+            if (typeof s.id !== 'number' || s.id <= 0) throw new Error(\`Invalid id: \${s.id}\`);
+          }
+          
+          // Verify stats match
+          if (snapshot.stats.total !== snapshot.scholarships.length) {
+            throw new Error(\`stats.total (\${snapshot.stats.total}) != scholarships.length (\${snapshot.scholarships.length})\`);
+          }
+          
+          console.log('Snapshot validation passed');
+          console.log('Total records:', snapshot.scholarships.length);
+          console.log('Countries:', snapshot.stats.countries);
+          console.log('Verified active:', snapshot.stats.verified_active);
+          console.log('With image:', snapshot.stats.with_image);
+          console.log('Generated at:', snapshot.meta.generated_at);
+          "
+
+      - name: Generate sitemap from snapshot
+        working-directory: frontend
+        run: |
+          node scripts/build-sitemap.mjs
+
+      - name: Validate sitemap
+        working-directory: frontend
+        run: |
+          node -e "
+          const fs = require('fs');
+          const xml = fs.readFileSync('public/sitemap.xml', 'utf8');
+          
+          if (!xml.includes('<?xml version=\"1.0\" encoding=\"UTF-8\"?>')) throw new Error('Missing XML declaration');
+          if (!xml.includes('<urlset xmlns=\"http://www.sitemaps.org/schemas/sitemap/0.9\">')) throw new Error('Missing urlset');
+          
+          const urlCount = (xml.match(/<url>/g) || []).length;
+          console.log('Sitemap URLs:', urlCount);
+          
+          // Should have at least 2 static routes + all scholarships
+          const snapshot = JSON.parse(fs.readFileSync('public/scholarships-snapshot.json', 'utf8'));
+          const expectedMin = 2 + snapshot.scholarships.length;
+          if (urlCount < expectedMin) {
+            throw new Error(\`Sitemap has \${urlCount} URLs, expected at least \${expectedMin}\`);
+          }
+          
+          // Verify no excluded prefixes
+          const excluded = ['/admin', '/dashboard', '/applications', '/login', '/register', '/saved', '/compare', '/api/'];
+          for (const prefix of excluded) {
+            if (xml.includes(prefix)) throw new Error(\`Sitemap contains excluded prefix: \${prefix}\`);
+          }
+          
+          console.log('Sitemap validation passed');
+          "
+
+      - name: Run frontend lint
+        working-directory: frontend
+        run: npm run lint
+
+      - name: Run frontend tests
+        working-directory: frontend
+        run: npm run test
+
+      - name: Build frontend to verify static assets
+        working-directory: frontend
+        env:
+          VITE_DEPLOY_TARGET: github-pages
+          VITE_API_BASE_URL: https://scholarzone-fwzj.vercel.app/api
+        run: npm run build
+
+      - name: Commit snapshot if changed
+        if: github.ref == 'refs/heads/master' && github.event_name == 'push'
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          
+          if ! git diff --quiet frontend/public/scholarships-snapshot.json frontend/public/sitemap.xml; then
+            git add frontend/public/scholarships-snapshot.json frontend/public/sitemap.xml
+            git commit -m "chore(catalogue): regenerate public snapshot and sitemap [skip ci]"
+            git push
+            echo "Snapshot and sitemap committed"
+          else
+            echo "No changes to snapshot"
+          fi

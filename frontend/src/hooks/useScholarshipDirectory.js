@@ -14,6 +14,7 @@ export function useScholarshipDirectory() {
   const [isLoading, setIsLoading] = useState(true)
   const [isUsingFallback, setIsUsingFallback] = useState(false)
   const [fromSnapshot, setFromSnapshot] = useState(false)
+  const [staticMode, setStaticMode] = useState(false)
   const [error, setError] = useState(null)
 
   useEffect(() => {
@@ -31,8 +32,12 @@ export function useScholarshipDirectory() {
         // so a caller never has to infer provenance from an error that did
         // not happen.
         const isSnapshot = Boolean(directory.fromSnapshot)
+        const isStatic = Boolean(directory.staticMode)
         setFromSnapshot(isSnapshot)
-        setIsUsingFallback(isSnapshot)
+        setStaticMode(isStatic)
+        // Static mode is a deliberate architectural choice, not a failure.
+        // Only treat as "fallback" when we actually fell back due to API failure.
+        setIsUsingFallback(isSnapshot && !isStatic)
         setError(null)
       })
       .catch((error) => {
@@ -43,6 +48,7 @@ export function useScholarshipDirectory() {
         setScholarships(fallbackScholarships)
         setIsUsingFallback(true)
         setFromSnapshot(false)
+        setStaticMode(false)
         setError(error)
       })
       .finally(() => {
@@ -54,5 +60,5 @@ export function useScholarshipDirectory() {
     return () => controller.abort()
   }, [])
 
-  return { scholarships, isLoading, isUsingFallback, fromSnapshot, error }
+  return { scholarships, isLoading, isUsingFallback, fromSnapshot, staticMode, error }
 }

@@ -1,0 +1,37 @@
+name = "scholarzone"
+compatibility_date = "2024-10-28"
+pages_build_output_dir = "./frontend/dist"
+
+[build]
+command = "cd frontend && npm run build"
+destination = "./frontend/dist"
+
+[env.production]
+VITE_API_BASE_URL = "https://scholarzone-fwzj.vercel.app/api"
+VITE_CANONICAL_ORIGIN = "https://scholarzone.vercel.app"
+VITE_DEPLOY_TARGET = "cloudflare-pages"
+VITE_STATIC_CATALOGUE = "true"
+
+[env.preview]
+VITE_API_BASE_URL = "https://scholarzone-fwzj.vercel.app/api"
+VITE_DEPLOY_TARGET = "cloudflare-pages"
+VITE_STATIC_CATALOGUE = "true"
+
+# Functions configuration (not used for static catalogue, but available for future)
+# [functions]
+# directory = "./frontend/functions"
+
+# KV namespace for caching (if needed)
+# kv_namespaces = [
+#   { binding = "CACHE", id = "xxx", preview_id = "yyy" }
+# ]
+
+# D1 database binding (if needed for dynamic features)
+# d1_databases = [
+#   { binding = "DB", database_name = "scholarzone", database_id = "xxx" }
+# ]
+
+# R2 bucket for asset storage (if needed)
+# r2_buckets = [
+#   { binding = "ASSETS", bucket_name = "scholarzone-assets" }
+# ]
