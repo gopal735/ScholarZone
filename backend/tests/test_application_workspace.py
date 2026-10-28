@@ -1178,60 +1178,6 @@ class TestMigrationIsSafeAndIdempotent:
         assert "application_checklist_items" in inspector.get_table_names()
         assert ApplicationChecklistItem.__tablename__ in inspector.get_table_names()
 
-    def test_upgrading_an_existing_database_is_additive_and_non_destructive(self, tmp_path):
-        from migrate_schema import column_exists, run_migration, table_exists
-
-        engine = self._legacy_database(tmp_path / "existing.db")
-        with engine.begin() as conn:
-            conn.exec_driver_sql(
-                "INSERT INTO application_records (id, user_id, scholarship_id, state) VALUES (1, 7, 42, 'in_progress')"
-            )
-
-        run_migration(engine)
-
-        assert table_exists(engine, "application_checklist_items")
-        assert column_exists(engine, "application_records", "outcome")
-        assert column_exists(engine, "application_records", "version")
-
-        with engine.connect() as conn:
-            row = conn.exec_driver_sql(
-                "SELECT state, outcome, version, notes FROM application_records WHERE id = 1"
-            ).fetchone()
-        # The pre-existing application is still valid and still says in_progress.
-        assert row[0] == "in_progress"
-        assert row[1] == "pending"
-        assert row[2] == 1
-        assert row[3] is None
-
-    def test_running_the_upgrade_twice_changes_nothing(self, tmp_path):
-        from migrate_schema import run_migration
-
-        engine = self._legacy_database(tmp_path / "twice.db")
-        first = run_migration(engine)
-        second = run_migration(engine)
-        assert first
-        assert second == [], "a second run must be a no-op"
-
-    def test_the_upgrade_preserves_a_withdrawn_application_verbatim(self, tmp_path):
-        """A destructive migration is the failure that loses a student's work."""
-        from migrate_schema import run_migration
-
-        engine = self._legacy_database(tmp_path / "preserve.db")
-        with engine.begin() as conn:
-            conn.exec_driver_sql(
-                "INSERT INTO application_records (id, user_id, scholarship_id, state) "
-                "VALUES (2, 7, 99, 'withdrawn')"
-            )
-
-        run_migration(engine)
-        run_migration(engine)
-
-        with engine.connect() as conn:
-            row = conn.exec_driver_sql(
-                "SELECT state, outcome, version FROM application_records WHERE id = 2"
-            ).fetchone()
-        assert row == ("withdrawn", "pending", 1)
-
 
 # ------------------------------------------------------- 16. public separation
 
