@@ -359,7 +359,7 @@ jobs:
 ## Verdict
 - Frontend: GitHub Pages or Cloudflare Pages - both genuinely free for static sites
 - Database: Neon free tier has compute hour limits - static snapshot removes this dependency for public browsing
-- Backend API: SnapDeploy free tier sleeps - acceptable for admin/match features
+- Backend API: Current host free tier sleeps - acceptable for admin/match features
 - Email: Resend free tier sufficient for verification emails
 - Scheduled maintenance: GitHub Actions cron - free but can be delayed/disabled
 EOF
