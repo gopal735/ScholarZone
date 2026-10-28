@@ -1719,6 +1719,7 @@ VERIFIED_SCHOLARSHIPS = (
         is_verified=True,
     ),
     ScholarshipIngestionRecord(
+        preferred_id=47,
         name="Melbourne International Undergraduate Scholarship",
         country="Australia",
         degree_levels="Bachelor's",

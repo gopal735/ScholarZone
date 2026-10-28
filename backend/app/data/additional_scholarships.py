@@ -345,6 +345,7 @@ CANADA_SCHOLARSHIPS = (
         is_verified=True,
     ),
     ScholarshipIngestionRecord(
+        preferred_id=84,
         name="UBC International Major Entrance Scholarship (IMES)",
         country="Canada",
         degree_levels="Bachelor's (undergraduate direct entry)",
@@ -465,6 +466,7 @@ CANADA_SCHOLARSHIPS = (
 
 FRANCE_SCHOLARSHIPS = (
     ScholarshipIngestionRecord(
+        preferred_id=745,
         name="Université Paris-Saclay IDEX International Master's Scholarships",
         country="France",
         degree_levels="Master's (M1 & M2)",
@@ -680,6 +682,7 @@ SINGAPORE_SCHOLARSHIPS = (
         is_verified=True,
     ),
     ScholarshipIngestionRecord(
+        preferred_id=746,
         name="NUS Commonwealth Scholarship",
         country="Singapore",
         degree_levels="Master's (Research) / PhD",
@@ -1336,6 +1339,7 @@ ITALY_SCHOLARSHIPS = (
         is_verified=True,
     ),
     ScholarshipIngestionRecord(
+        preferred_id=747,
         name="Bocconi University — ISU Bocconi Scholarship / Bocconi4Access to Education",
         country="Italy",
         degree_levels="Bachelor of Science, Integrated Master of Arts in Law, Master of Science",
@@ -1353,6 +1357,7 @@ ITALY_SCHOLARSHIPS = (
         is_verified=True,
     ),
     ScholarshipIngestionRecord(
+        preferred_id=748,
         name="University of Turin — Talent 4 UniTo",
         country="Italy",
         degree_levels="Master's Degree (Postgraduate)",
@@ -1370,6 +1375,7 @@ ITALY_SCHOLARSHIPS = (
         is_verified=True,
     ),
     ScholarshipIngestionRecord(
+        preferred_id=749,
         name="University of Turin — UNICORE 8.0 (University Corridors for Refugees)",
         country="Italy",
         degree_levels="Master's Degree (Postgraduate)",
@@ -1388,6 +1394,7 @@ ITALY_SCHOLARSHIPS = (
         best_fit="Refugee students from Bangladesh pursuing Master's degrees",
     ),
     ScholarshipIngestionRecord(
+        preferred_id=750,
         name="University of Brescia — STAR Scholarships (Foundation Year + Bachelor's)",
         country="Italy",
         degree_levels="Foundation Year + Bachelor's Degree",
@@ -1406,6 +1413,7 @@ ITALY_SCHOLARSHIPS = (
         best_fit="Bangladeshi students from developing country backgrounds",
     ),
     ScholarshipIngestionRecord(
+        preferred_id=751,
         name="Sapienza University of Rome — PhD Scholarships",
         country="Italy",
         degree_levels="PhD (42nd Cycle, A.Y. 2026/2027)",
