@@ -18,22 +18,13 @@ from ..services.scholarship_image_verifier import _VALID_SOURCE_TYPES, is_valid_
 
 logger = logging.getLogger(__name__)
 
-#: Image columns this mapper may write. ``image_kind`` is deliberately absent
-#: from that set: kinds are produced by the image pipeline (``image_validator``,
-#: ``do_logos``, ``image_coverage_runner``) and ingestion has no producer
-#: semantics for them, so mapping it here would fabricate trust evidence.
-#:
-#: It is still accepted as a field, validated against the same vocabulary and
-#: then not persisted, because research and verification payloads carry the
-#: kind alongside the source URL and rejecting the key would make the record
-#: format unusable for its own pipeline. The distinction is enforced by
-#: :meth:`to_persistence_fields`, which is the single place that decides what
-#: reaches a column - the model accepting it is not the same as storing it.
+#: Image columns this mapper may write.
 IMAGE_PERSISTENCE_FIELDS = frozenset(
     {
         "image_url",
         "image_source_url",
         "image_source_type",
+        "image_kind",
         "image_verified_at",
         "image_alt_text",
     }
@@ -296,7 +287,6 @@ class ScholarshipIngestionRecord(BaseModel):
             "image_url": "image_url",
             "image_source_url": "image_source_url",
             "image_source_type": "image_source_type",
-            "image_kind": "image_kind",
             "image_verified_at": "image_verified_at",
             "image_alt_text": "image_alt_text",
         }
