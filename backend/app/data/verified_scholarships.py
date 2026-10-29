@@ -14,7 +14,7 @@ GKS_OFFICIAL_SOURCE_URL = "https://www.studyinkorea.go.kr"
 DAAD_OFFICIAL_SOURCE_URL = "https://www.daad.de"
 ICCR_OFFICIAL_SOURCE_URL = "https://a2ascholarships.iccr.gov.in"
 MEXT_OFFICIAL_SOURCE_URL = "https://www.studyinjapan.go.jp"
-EIFFEL_OFFICIAL_SOURCE_URL = "https://www.campusfrance.org/en/the-france-excellence-eiffel-scholarship-program"
+EIFFEL_OFFICIAL_SOURCE_URL = "https://www.campusfrance.org/en/eiffel-scholarship-program"
 SWISS_ESKAS_OFFICIAL_SOURCE_URL = "https://www.sbfi.admin.ch/en/swiss-government-excellence-scholarships"
 FRANCE_CHARPAK_OFFICIAL_SOURCE_URL = "https://www.inde.campusfrance.org/france-excellence-charpak-scholarship-program"
 MOPGA_OFFICIAL_SOURCE_URL = "https://www.campusfrance.org/en/mopga-make-our-planet-great-again-funding-programs"
@@ -1719,6 +1719,7 @@ VERIFIED_SCHOLARSHIPS = (
         is_verified=True,
     ),
     ScholarshipIngestionRecord(
+        preferred_id=47,
         name="Melbourne International Undergraduate Scholarship",
         country="Australia",
         degree_levels="Bachelor's",

@@ -1,7 +1,14 @@
 import os
+import sys
 from pathlib import Path
 
 BACKEND_DIR = Path(__file__).resolve().parents[1]
+TESTS_DIR = Path(__file__).resolve().parent
+
+# Ensure the tests directory is on sys.path so that test modules can import
+# from each other (e.g., test_counting_core importing test_matching_v2).
+if str(TESTS_DIR) not in sys.path:
+    sys.path.insert(0, str(TESTS_DIR))
 
 #: The single opt-in. Everything else about the target is checked against
 #: this test's own rules; this one variable is what a deliberate, informed

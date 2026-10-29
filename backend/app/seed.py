@@ -93,9 +93,29 @@ def seed_scholarships(session: Session) -> int:
 
 
 def seed_database() -> int:
+    import sys
+    from pathlib import Path
     from .database import get_session_factory
 
+    # Add backend root to path for scripts import
+    BACKEND_ROOT = Path(__file__).resolve().parents[1]
+    if str(BACKEND_ROOT) not in sys.path:
+        sys.path.insert(0, str(BACKEND_ROOT))
+
+    from scripts.seed_real_scholarships import _seed_catalogue, _load_master_id_map
+    from app.data.verified_scholarships import VERIFIED_SCHOLARSHIPS
+    from app.data.additional_scholarships import ADDITIONAL_VERIFIED_SCHOLARSHIPS
+
+    master_id_map = _load_master_id_map()
+    if master_id_map:
+        print(f"Loaded {len(master_id_map)} master IDs for backward compatibility")
+
     with get_session_factory()() as session:
-        bootstrap_created = seed_scholarships(session)
-        verified_created, _ = upsert_verified_scholarships(session, VERIFIED_SCHOLARSHIPS)
-        return bootstrap_created + verified_created
+        verified_urls = {s.official_source_url for s in VERIFIED_SCHOLARSHIPS}
+        additional_urls = {s.official_source_url for s in ADDITIONAL_VERIFIED_SCHOLARSHIPS}
+        canonical_urls = verified_urls | additional_urls
+        
+        created_count, updated_count = _seed_catalogue(session, master_id_map, verified_urls, additional_urls, canonical_urls)
+        
+        print(f"Created {created_count} scholarship record(s); updated {updated_count} record(s).")
+        return created_count

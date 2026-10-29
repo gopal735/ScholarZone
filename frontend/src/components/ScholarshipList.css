@@ -341,6 +341,26 @@
   font-size: var(--text-xs);
 }
 
+/* Static catalogue notice — distinct from fallback/error states */
+.scholarship-list__static-notice {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-3);
+  padding: var(--space-4) var(--space-5);
+  margin-top: var(--space-4);
+  background: var(--surface-2);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  color: var(--text-secondary);
+  font-size: var(--text-sm);
+  font-weight: 500;
+}
+
+.scholarship-list__static-notice strong {
+  color: var(--text-primary);
+}
+
 .scholarship-list__source-notice button,
 .empty-state__reset,
 .scholarship-pagination button {

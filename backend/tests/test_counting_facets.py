@@ -353,7 +353,6 @@ class TestFieldFacet:
         """
         from app.services.matching.engine import score_record
         from app.services.matching.normalize import normalise_profile
-
         from test_matching_v2 import AS_OF
 
         facts = make_facts(id=1, program_type=None, official_details={})

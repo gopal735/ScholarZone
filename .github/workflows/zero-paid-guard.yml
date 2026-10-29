@@ -1,0 +1,366 @@
+name: Zero-Paid Dependency Guard
+
+on:
+  push:
+    branches: [master]
+    paths:
+      - 'frontend/**'
+      - 'backend/**'
+      - 'package.json'
+      - 'package-lock.json'
+      - 'backend/requirements.txt'
+      - '.github/workflows/zero-paid-guard.yml'
+  pull_request:
+    branches: [master]
+    paths:
+      - 'frontend/**'
+      - 'backend/**'
+      - 'package.json'
+      - 'package-lock.json'
+      - 'backend/requirements.txt'
+      - '.github/workflows/zero-paid-guard.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  zero-paid-guard:
+    name: Zero-Paid Dependency Guard
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Check for paid-only Node.js dependencies
+        run: |
+          # Known paid-only or billing-dependent npm packages
+          # This list should be updated as new paid services are identified
+          PAID_PACKAGES=(
+            "@vercel/analytics"           # Requires Vercel paid plan for full features
+            "@vercel/speed-insights"      # Requires Vercel paid plan
+            "vercel"                      # Vercel CLI - deployment target, not runtime dep
+            "netlify-cli"                 # Netlify CLI - deployment target
+            "@netlify/functions"          # Netlify Functions runtime
+            "aws-sdk"                     # AWS SDK - requires AWS account
+            "@aws-sdk/*"                  # AWS SDK v3 - requires AWS account
+            "google-cloud"                # Google Cloud - requires GCP account
+            "@google-cloud/*"             # Google Cloud libraries
+            "firebase-admin"              # Firebase Admin - requires Firebase project
+            "firebase-functions"          # Firebase Functions
+            "stripe"                      # Stripe - requires paid account for live mode
+            "sendgrid"                    # SendGrid - requires paid plan for production
+            "@sendgrid/mail"              # SendGrid mail
+            "resend"                      # Resend - requires API key (has free tier but paid for volume)
+            "postmark"                    # Postmark - requires paid account
+            "mailgun-js"                  # Mailgun - requires paid account
+            "nodemailer"                  # Can be free but often used with paid SMTP
+            "twilio"                      # Twilio - requires paid account
+            "@twilio/*"                   # Twilio libraries
+            "algoliasearch"               # Algolia - requires paid plan for production
+            "meilisearch"                 # Meilisearch - self-hosted or paid cloud
+            "typesense"                   # Typesense - self-hosted or paid cloud
+            "pinecone-client"             # Pinecone - requires paid account
+            "weaviate-client"             # Weaviate - self-hosted or paid cloud
+            "qdrant-client"               # Qdrant - self-hosted or paid cloud
+            "chromadb"                    # Chroma - self-hosted
+            "langchain"                   # Often used with paid LLM APIs
+            "openai"                      # OpenAI - requires paid API key
+            "anthropic"                   # Anthropic - requires paid API key
+            "cohere-ai"                   # Cohere - requires paid API key
+            "replicate"                   # Replicate - requires paid account
+            "huggingface"                 # HuggingFace - free tier but paid for inference endpoints
+            "assemblyai"                  # AssemblyAI - requires paid API key
+            "deepgram"                    # Deepgram - requires paid API key
+            "elevenlabs"                  # ElevenLabs - requires paid API key
+            "playwright"                  # Playwright - browser automation (can be free but heavy)
+            "puppeteer"                   # Puppeteer - browser automation
+            "chromium"                    # Chromium binary
+            "@playwright/test"            # Playwright test
+            "cypress"                     # Cypress - cloud features paid
+            "sentry"                      # Sentry - free tier limited
+            "@sentry/*"                   # Sentry SDKs
+            "datadog"                     # Datadog - paid
+            "newrelic"                    # New Relic - paid
+            "logrocket"                   # LogRocket - paid
+            "fullstory"                   # FullStory - paid
+            "amplitude"                   # Amplitude - free tier limited
+            "mixpanel"                    # Mixpanel - free tier limited
+            "segment"                     # Segment - paid
+            "rudder-sdk-node"             # RudderStack
+            "posthog-node"                # PostHog - self-hosted or paid cloud
+          )
+
+          echo "Checking frontend dependencies..."
+          if [ -f "frontend/package.json" ]; then
+            cd frontend
+            npm ls --all --parseable 2>/dev/null | while read line; do
+              pkg=$(basename "$line" | sed 's/@.*//')
+              for paid in "${PAID_PACKAGES[@]}"; do
+                if [[ "$pkg" == "$paid" ]] || [[ "$line" == *"$paid"* ]]; then
+                  echo "::warning::Potential paid dependency detected: $line"
+                fi
+              done
+            done
+            cd ..
+          fi
+
+          echo "Checking backend dependencies..."
+          if [ -f "backend/requirements.txt" ]; then
+            # Check for known paid Python packages
+            PAID_PYTHON=(
+              "openai"
+              "anthropic"
+              "cohere"
+              "replicate"
+              "langchain"
+              "langchain-openai"
+              "langchain-anthropic"
+              "pinecone-client"
+              "weaviate-client"
+              "qdrant-client"
+              "chromadb"
+              "milvus"
+              "elasticsearch"
+              "opensearch-py"
+              "algoliasearch"
+              "meilisearch"
+              "typesense"
+              "stripe"
+              "sendgrid"
+              "postmark"
+              "mailgun"
+              "twilio"
+              "firebase-admin"
+              "google-cloud-*"
+              "aws-sdk"
+              "boto3"
+              "azure-*"
+              "datadog"
+              "newrelic"
+              "sentry-sdk"
+              "loguru"  # Not paid but often used with paid services
+            )
+
+            while IFS= read -r line; do
+              # Skip comments and empty lines
+              [[ "$line" =~ ^#.*$ ]] && continue
+              [[ -z "$line" ]] && continue
+              
+              # Extract package name (before ==, >=, <=, >, <, ~=, ===)
+              pkg=$(echo "$line" | sed -E 's/^([a-zA-Z0-9_-]+).*/\1/')
+              pkg_lower=$(echo "$pkg" | tr '[:upper:]' '[:lower:]')
+              
+              for paid in "${PAID_PYTHON[@]}"; do
+                paid_lower=$(echo "$paid" | tr '[:upper:]' '[:lower:]')
+                if [[ "$pkg_lower" == "$paid_lower" ]] || [[ "$paid_lower" == *"*" && "$pkg_lower" == "${paid_lower%\*}" ]]; then
+                  echo "::warning::Potential paid Python dependency detected: $line"
+                fi
+              done
+            done < backend/requirements.txt
+          fi
+
+      - name: Check for database connection strings in frontend code
+        run: |
+          echo "Scanning frontend for database credentials..."
+          
+          # These patterns should never appear in frontend code
+          FORBIDDEN_PATTERNS=(
+            "DATABASE_URL"
+            "SCHOLARZONE_DATABASE_URL"
+            "postgresql://"
+            "postgres://"
+            "mysql://"
+            "mongodb://"
+            "redis://"
+            "MONGODB_URI"
+            "REDIS_URL"
+            "NEON_DATABASE_URL"
+            "SUPABASE_URL"
+            "SUPABASE_KEY"
+            "PLANETSCALE_URL"
+            "TURSO_DATABASE_URL"
+          )
+          
+          VIOLATIONS=0
+          for pattern in "${FORBIDDEN_PATTERNS[@]}"; do
+            if grep -r "$pattern" frontend/src/ --include="*.js" --include="*.jsx" --include="*.ts" --include="*.tsx" 2>/dev/null; then
+              echo "::error::Forbidden pattern '$pattern' found in frontend code"
+              VIOLATIONS=$((VIOLATIONS + 1))
+            fi
+          done
+          
+          if [ $VIOLATIONS -gt 0 ]; then
+            echo "Found $VIOLATIONS violations"
+            exit 1
+          else
+            echo "No database credentials found in frontend code"
+          fi
+
+      - name: Check for API keys/secrets in frontend code
+        run: |
+          echo "Scanning for potential API keys/secrets in frontend..."
+          
+          # Patterns that might indicate hardcoded secrets
+          SECRET_PATTERNS=(
+            "sk_live_"
+            "sk_test_"
+            "pk_live_"
+            "pk_test_"
+            "Bearer "
+            "Authorization: "
+            "api_key"
+            "apikey"
+            "secret"
+            "SECRET_KEY"
+            "PRIVATE_KEY"
+            "ACCESS_TOKEN"
+            "REFRESH_TOKEN"
+          )
+          
+          WARNINGS=0
+          for pattern in "${SECRET_PATTERNS[@]}"; do
+            # Use grep with context to avoid false positives in comments/tests
+            if grep -r "$pattern" frontend/src/ --include="*.js" --include="*.jsx" --include="*.ts" --include="*.tsx" 2>/dev/null | grep -v ".test." | grep -v "node_modules" | grep -v "// " | grep -v "/*" | head -5; then
+              echo "::warning::Potential secret pattern '$pattern' found in frontend code"
+              WARNINGS=$((WARNINGS + 1))
+            fi
+          done
+          
+          echo "Secret scan complete. Warnings: $WARNINGS"
+
+      - name: Verify public catalogue works without database
+        run: |
+          echo "Verifying static catalogue build..."
+          
+          # Check that snapshot exists
+          if [ ! -f "frontend/public/scholarships-snapshot.json" ]; then
+            echo "::error::scholarships-snapshot.json not found"
+            exit 1
+          fi
+          
+          # Validate snapshot structure
+          node -e "
+          const fs = require('fs');
+          const snapshot = JSON.parse(fs.readFileSync('frontend/public/scholarships-snapshot.json', 'utf8'));
+          
+          if (!snapshot.scholarships || !Array.isArray(snapshot.scholarships)) {
+            throw new Error('Invalid snapshot: missing scholarships array');
+          }
+          if (snapshot.scholarships.length === 0) {
+            throw new Error('Invalid snapshot: empty scholarships array');
+          }
+          
+          // Check that snapshot has all required fields for static browsing
+          const required = ['id', 'title', 'country', 'degree', 'funding', 'deadline_date', 'status', 'verification_status', 'official_source_url', 'application_link', 'image_url'];
+          for (const s of snapshot.scholarships) {
+            for (const f of required) {
+              if (!(f in s)) throw new Error('Missing field ' + f + ' in scholarship ' + s.id);
+            }
+          }
+          
+          console.log('Snapshot validation passed:', snapshot.scholarships.length, 'records');
+          "
+          
+          # Check that sitemap exists and is valid
+          if [ ! -f "frontend/public/sitemap.xml" ]; then
+            echo "::error::sitemap.xml not found"
+            exit 1
+          fi
+          
+          echo "Static catalogue verification passed"
+
+      - name: Check for mandatory database requirement in public routes
+        run: |
+          echo "Checking that public routes don't require database..."
+          
+          # Public routes that should work without database
+          PUBLIC_ROUTES=(
+            "/"
+            "/scholarships"
+            "/scholarships/*"
+            "/countries"
+            "/match"
+            "/saved"
+            "/compare"
+          )
+          
+          # Check that frontend doesn't have mandatory API calls for public routes
+          # This is a heuristic - we check that staticScholarshipService is used
+          if ! grep -r "staticScholarshipService" frontend/src/ --include="*.js" --include="*.jsx" 2>/dev/null; then
+            echo "::warning::staticScholarshipService not found in frontend - static fallback may not be implemented"
+          else
+            echo "staticScholarshipService found - good"
+          fi
+          
+          # Check that scholarshipService has static-first mode
+          if ! grep -r "STATIC_CATALOGUE" frontend/src/services/scholarshipService.js 2>/dev/null; then
+            echo "::warning::STATIC_CATALOGUE flag not found in scholarshipService"
+          else
+            echo "Static-first mode implemented - good"
+          fi
+
+      - name: Document provider limits
+        run: |
+          echo "Documenting free tier limits for reference..."
+          cat > ZERO_PAID_LIMITS.md << 'EOF'
+# Zero-Paid Architecture - Provider Limits
+
+## GitHub Pages (Frontend Hosting)
+- **Build minutes**: Unlimited for public repos
+- **Storage**: 1 GB per repo (soft limit)
+- **Bandwidth**: 100 GB/month (soft limit)
+- **Custom domains**: Supported (free)
+- **HTTPS**: Automatic (free)
+- **Limitations**: Static sites only, no server-side code
+
+## Cloudflare Pages (Alternative Frontend Hosting)
+- **Build minutes**: 500/month free
+- **Build concurrency**: 1 concurrent build
+- **Storage**: Unlimited for assets
+- **Bandwidth**: Unlimited (fair use)
+- **Custom domains**: Supported (free)
+- **HTTPS**: Automatic (free)
+- **Functions**: 100,000 requests/day free (Pages Functions)
+- **Limitations**: Build time limit 20 min, 1 build at a time
+
+## GitHub Actions (CI/CD & Scheduled Jobs)
+- **Public repos**: Unlimited minutes
+- **Private repos**: 2,000 minutes/month free
+- **Concurrent jobs**: 20 (public), varies (private)
+- **Scheduled workflows**: Can be delayed by platform load, disabled after 60 days inactivity
+- **Artifact storage**: 90 days retention, 500 MB/repo
+- **Self-hosted runners**: Unlimited
+
+## Neon PostgreSQL (Database - Current)
+- **Free tier**: 0.5 GB storage, 190 compute hours/month
+- **Branching**: 10 branches
+- **Point-in-time restore**: 7 days
+- **Limitations**: Auto-suspend after 5 min inactivity, cold start ~1-5s
+- **Paid features**: Larger storage, more compute hours, no auto-suspend, read replicas
+
+## GitHub Container Registry / Docker Hub
+- **GHCR**: 500 MB free, then $0.008/GB/day
+- **Docker Hub**: 1 private repo free, rate limits on pulls
+
+## Cloudflare Workers (Alternative Backless API)
+- **Free tier**: 100,000 requests/day
+- **CPU time**: 10 ms/request
+- **Duration**: 30 seconds max
+- **KV storage**: 1 GB free
+- **D1 (SQLite)**: 5 GB free
+- **R2 (Object storage)**: 10 GB free
+
+## Resend (Email - Current)
+- **Free tier**: 3,000 emails/month
+- **Rate limit**: 2 requests/second
+- **Paid**: $20/month for 50,000 emails
+
+## Verdict
+- Frontend: GitHub Pages or Cloudflare Pages - both genuinely free for static sites
+- Database: Neon free tier has compute hour limits - static snapshot removes this dependency for public browsing
+- Backend API: Current host free tier sleeps - acceptable for admin/match features
+- Email: Resend free tier sufficient for verification emails
+- Scheduled maintenance: GitHub Actions cron - free but can be delayed/disabled
+EOF
+          cat ZERO_PAID_LIMITS.md

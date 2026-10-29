@@ -1,6 +1,20 @@
 const apiBaseUrl = (import.meta.env.VITE_API_BASE_URL || '/api').replace(/\/$/, '')
 
-// The API-independent catalogue. Imported here so the fallback is a
+/**
+ * Static-first mode: when true, the version-controlled snapshot is the
+ * primary source for public catalogue reads. The API is not called at all.
+ *
+ * This is controlled by VITE_STATIC_CATALOGUE=true at build time, or by
+ * setting localStorage.scholarzone.staticCatalogue = 'true' at runtime.
+ * When the snapshot loads successfully, public browsing never needs the
+ * database. A distinct "static mode" indicator is shown instead of the
+ * degraded "fallback" notice.
+ */
+const STATIC_CATALOGUE =
+  import.meta.env.VITE_STATIC_CATALOGUE === 'true' ||
+  (typeof window !== 'undefined' && window.localStorage.getItem('scholarzone.staticCatalogue') === 'true')
+
+// The API-independent catalogue. Imported here so the static source is a
 // property of this service rather than something each page has to remember
 // to do: a caller that asks for scholarships gets scholarships, and the
 // provenance travels with the result.
@@ -15,6 +29,16 @@ export class ScholarshipApiError extends Error {
     this.name = 'ScholarshipApiError'
     this.status = status
   }
+}
+
+function isRetryableError(error) {
+  // Network errors, timeouts, and 5xx are retryable
+  if (error instanceof TypeError && error.message.includes('fetch')) return true
+  if (error instanceof DOMException && error.name === 'AbortError') return false
+  if (error instanceof ScholarshipApiError) {
+    return error.status >= 500
+  }
+  return false
 }
 
 function normalizeScholarship(scholarship) {
@@ -123,6 +147,18 @@ function dedupe(key, run, signal) {
 }
 
 export async function fetchScholarships(query = {}, options) {
+  // Static-first: when enabled, the snapshot is the primary source.
+  // The API is not called at all for public catalogue reads.
+  if (STATIC_CATALOGUE) {
+    const key = `list:${JSON.stringify(query, Object.keys(query).sort())}`
+    const send = () => fetchScholarshipsFromSnapshot(query).then((fallback) => ({
+      ...fallback,
+      fromSnapshot: true,
+      staticMode: true,
+    }))
+    return dedupe(key, send, options?.signal)
+  }
+
   // The key is the resolved query, so two callers asking for the same page
   // share a request and two callers asking for different pages do not.
   const key = `list:${JSON.stringify(query, Object.keys(query).sort())}`
@@ -132,13 +168,15 @@ export async function fetchScholarships(query = {}, options) {
         items: Array.isArray(payload.items) ? payload.items.map(normalizeScholarship) : [],
         pagination: payload.pagination,
       }))
-      // The API is the source of truth. When it cannot answer at all, the
-      // catalogue is still readable from the version-controlled snapshot,
-      // so browsing does not stop just because the database is —
-      // and the caller is told it is reading the snapshot, because a
-      // directory that quietly changes its provenance is worse than one
-      // that announces it.
+      // The API is the source of truth. When it cannot answer due to a
+      // transient failure (network, timeout, 5xx), the catalogue is still
+      // readable from the version-controlled snapshot, so browsing does not
+      // stop just because the database is down — and the caller is told it is
+      // reading the snapshot. Client errors (4xx) do NOT trigger fallback;
+      // they represent invalid requests or genuinely missing resources that
+      // the snapshot should not paper over.
       .catch(async (error) => {
+        if (!isRetryableError(error)) throw error
         const fallback = await fetchScholarshipsFromSnapshot(query)
         if (!fallback || fallback.items.length === 0) throw error
         return { ...fallback, fromSnapshot: true }
@@ -148,18 +186,58 @@ export async function fetchScholarships(query = {}, options) {
 }
 
 export async function fetchScholarshipById(id, options) {
+  // Static-first: try snapshot first for detail pages too.
+  if (STATIC_CATALOGUE) {
+    const snapshot = await fetchScholarshipsFromSnapshot({ limit: 1000 })
+    const record = snapshot.items.find((s) => String(s.id) === String(id))
+    if (record) return normalizeScholarship(record)
+    // In static mode, a missing ID is a clear not-found — never fall through to API.
+    throw new ScholarshipApiError('Scholarship not found', 404)
+  }
   const payload = await request(`/scholarships/${encodeURIComponent(id)}`, undefined, options)
   return normalizeScholarship(payload)
 }
 
 export async function fetchScholarshipStats(options) {
+  if (STATIC_CATALOGUE) {
+    return dedupe('stats', async () => {
+      const fallback = await fetchScholarshipStatsFromSnapshot()
+      if (!fallback || fallback.total === 0) throw new Error('Empty snapshot stats')
+      return { ...fallback, fromSnapshot: true, staticMode: true }
+    }, options?.signal)
+  }
+
   return dedupe('stats', async () => {
     try {
       return await request('/scholarships/stats')
     } catch (error) {
+      if (!isRetryableError(error)) throw error
       const fallback = await fetchScholarshipStatsFromSnapshot()
       if (!fallback || fallback.total === 0) throw error
       return { ...fallback, fromSnapshot: true }
     }
   }, options?.signal)
+}
+
+/**
+ * Enable or disable static-first catalogue mode at runtime.
+ * Persists to localStorage so the preference survives page loads.
+ * When enabled, public browsing uses the version-controlled snapshot
+ * exclusively and never calls the database-backed API.
+ */
+export function setStaticCatalogueMode(enabled) {
+  if (typeof window !== 'undefined') {
+    if (enabled) {
+      window.localStorage.setItem('scholarzone.staticCatalogue', 'true')
+    } else {
+      window.localStorage.removeItem('scholarzone.staticCatalogue')
+    }
+  }
+}
+
+/**
+ * Check if static-first catalogue mode is currently active.
+ */
+export function isStaticCatalogueMode() {
+  return STATIC_CATALOGUE
 }

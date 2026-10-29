@@ -21,6 +21,8 @@ class Scholarship(Base):
     )
 
     id: Mapped[int] = mapped_column(Integer, primary_key=True)
+    # Legacy ID from master snapshot for backward URL compatibility
+    legacy_id: Mapped[int | None] = mapped_column(Integer, nullable=True, unique=True, index=True)
     title: Mapped[str] = mapped_column(String(255), nullable=False, index=True)
     country: Mapped[str] = mapped_column(String(120), nullable=False, index=True)
     degree: Mapped[str] = mapped_column(String(255), nullable=False, index=True)

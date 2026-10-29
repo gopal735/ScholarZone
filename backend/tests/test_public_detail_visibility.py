@@ -211,11 +211,24 @@ class TestTheBypass:
         _seed(session, 7, is_archived=True, title="ARCHIVED-IN-LIST")
         public = _seed(session, 8, title="GENUINELY-PUBLIC")
 
-        response = client.get("/scholarships?limit=100")
-        assert response.status_code == 200
-        listed = {item["id"] for item in response.json()["items"]}
-        assert public.id in listed
-        assert all("ARCHIVED-IN-LIST" != item["title"] for item in response.json()["items"])
+        # Fetch all pages since the master seed creates many records
+        listed_ids = set()
+        listed_items = []
+        page = 1
+        while True:
+            response = client.get(f"/scholarships?limit=100&page={page}")
+            data = response.json()
+            items = data.get("items", [])
+            if not items:
+                break
+            listed_ids.update(item["id"] for item in items)
+            listed_items.extend(items)
+            if len(items) < 100:
+                break
+            page += 1
+
+        assert public.id in listed_ids
+        assert all("ARCHIVED-IN-LIST" != item["title"] for item in listed_items)
 
 
 # ---------------------------------------------------------------------------
@@ -257,13 +270,27 @@ class TestPublicDetailStaysOpen:
             _seed(session, 30 + index, is_archived=(index % 2 == 0))
             for index in range(6)
         ]
+        seeded_ids = {record.id for record in seeded}
 
-        listed = {
-            item["id"]
-            for item in client.get("/scholarships?limit=100").json()["items"]
-        }
+        # Fetch all pages since the master seed creates many records
+        listed = set()
+        page = 1
+        while True:
+            response = client.get(f"/scholarships?limit=100&page={page}")
+            data = response.json()
+            items = data.get("items", [])
+            if not items:
+                break
+            listed.update(item["id"] for item in items)
+            if len(items) < 100:
+                break
+            page += 1
+
         for record in seeded:
             response = client.get(f"/scholarships/{record.id}")
+            # Both archived and non-archived records should be handled consistently:
+            # - non-archived: 200 and in list
+            # - archived: 404 and not in list
             assert (response.status_code == 200) is (record.id in listed), record.id
 
 
@@ -522,9 +549,20 @@ class TestNewVisibilityRules:
         session = _session(client)
         record = _seed(session, 200, verification_status="needs_review", title="LISTED-NEEDS-REVIEW")
 
-        response = client.get("/scholarships?limit=100")
-        assert response.status_code == 200
-        listed = {item["id"] for item in response.json()["items"]}
+        # Fetch all pages since the master seed creates many records
+        listed = set()
+        page = 1
+        while True:
+            response = client.get(f"/scholarships?limit=100&page={page}")
+            data = response.json()
+            items = data.get("items", [])
+            if not items:
+                break
+            listed.update(item["id"] for item in items)
+            if len(items) < 100:
+                break
+            page += 1
+
         assert record.id in listed
 
     def test_record_without_verified_image_is_in_list(self, client):
@@ -538,6 +576,18 @@ class TestNewVisibilityRules:
             title="LISTED-NO-IMAGE",
         )
 
-        response = client.get("/scholarships?limit=100")
-        listed = {item["id"] for item in response.json()["items"]}
+        # Fetch all pages since the master seed creates many records
+        listed = set()
+        page = 1
+        while True:
+            response = client.get(f"/scholarships?limit=100&page={page}")
+            data = response.json()
+            items = data.get("items", [])
+            if not items:
+                break
+            listed.update(item["id"] for item in items)
+            if len(items) < 100:
+                break
+            page += 1
+
         assert record.id in listed

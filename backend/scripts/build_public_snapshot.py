@@ -176,8 +176,10 @@ def _compute_stats(records: list[Scholarship]) -> dict[str, int]:
         if target is not None:
             days = (target - today).days
             if days < 0:
-                continue
-            if days <= 60:
+                # Past deadline - do not count in deadline-specific stats,
+                # but continue to count funding, image, source independently
+                pass
+            elif days <= 60:
                 closing_soon += 1
             else:
                 upcoming += 1

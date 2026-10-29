@@ -18,22 +18,13 @@ from ..services.scholarship_image_verifier import _VALID_SOURCE_TYPES, is_valid_
 
 logger = logging.getLogger(__name__)
 
-#: Image columns this mapper may write. ``image_kind`` is deliberately absent
-#: from that set: kinds are produced by the image pipeline (``image_validator``,
-#: ``do_logos``, ``image_coverage_runner``) and ingestion has no producer
-#: semantics for them, so mapping it here would fabricate trust evidence.
-#:
-#: It is still accepted as a field, validated against the same vocabulary and
-#: then not persisted, because research and verification payloads carry the
-#: kind alongside the source URL and rejecting the key would make the record
-#: format unusable for its own pipeline. The distinction is enforced by
-#: :meth:`to_persistence_fields`, which is the single place that decides what
-#: reaches a column - the model accepting it is not the same as storing it.
+#: Image columns this mapper may write.
 IMAGE_PERSISTENCE_FIELDS = frozenset(
     {
         "image_url",
         "image_source_url",
         "image_source_type",
+        "image_kind",
         "image_verified_at",
         "image_alt_text",
     }
@@ -81,12 +72,12 @@ class ScholarshipIngestionRecord(BaseModel):
     image_source_type: str | None = None
     image_verified_at: date | None = None
     image_alt_text: str | None = Field(default=None, max_length=512)
-    # Accepted and validated, then never persisted: see IMAGE_PERSISTENCE_FIELDS.
     image_kind: str | None = None
 
     # Migration-only metadata: never stored as scholarship content.
     legacy_titles: tuple[str, ...] = ()
     preferred_id: int | None = Field(default=None, ge=1)
+    legacy_id: int | None = Field(default=None, ge=1)
 
     @field_validator("official_source_url")
     @classmethod
@@ -296,6 +287,7 @@ class ScholarshipIngestionRecord(BaseModel):
             "image_url": "image_url",
             "image_source_url": "image_source_url",
             "image_source_type": "image_source_type",
+            "image_kind": "image_kind",
             "image_verified_at": "image_verified_at",
             "image_alt_text": "image_alt_text",
         }
@@ -334,6 +326,10 @@ class ScholarshipIngestionRecord(BaseModel):
         # correct it.
         if fields.get("deadline_precision") is None:
             fields["deadline_precision"] = "varies"
+
+        # Persist legacy_id for backward URL compatibility (not in IMAGE_PERSISTENCE_FIELDS)
+        if self.legacy_id is not None:
+            fields["legacy_id"] = self.legacy_id
 
         return fields
 
@@ -443,8 +439,12 @@ def upsert_verified_scholarships(
             if record.funding_type is None:
                 raise ValueError("funding_type is required when inserting a new scholarship record")
             if record.preferred_id is not None and session.get(Scholarship, record.preferred_id) is None:
+                # Use explicit INSERT with explicit ID to avoid SQLAlchemy insertmanyvalues issues
+                from sqlalchemy import insert
                 persistence_fields["id"] = record.preferred_id
-            session.add(Scholarship(**persistence_fields))
+                session.execute(insert(Scholarship).values(**persistence_fields))
+            else:
+                session.add(Scholarship(**persistence_fields))
             created_count += 1
             continue
 
