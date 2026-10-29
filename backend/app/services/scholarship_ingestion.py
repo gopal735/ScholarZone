@@ -287,6 +287,7 @@ class ScholarshipIngestionRecord(BaseModel):
             "image_url": "image_url",
             "image_source_url": "image_source_url",
             "image_source_type": "image_source_type",
+            "image_kind": "image_kind",
             "image_verified_at": "image_verified_at",
             "image_alt_text": "image_alt_text",
         }
