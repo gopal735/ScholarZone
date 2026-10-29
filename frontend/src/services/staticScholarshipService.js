@@ -138,6 +138,20 @@ function statusOf(record) {
   return { key: 'open', label: STATUS_LABELS.open, className: 'open' }
 }
 
+/** Extract deadline month (1-12) from a record, or null if not available. */
+function getDeadlineMonth(record) {
+  const dateStr = record.deadline_date || record.deadline
+  if (!dateStr) return null
+  const timestamp = Date.parse(dateStr)
+  if (Number.isNaN(timestamp)) return null
+  return new Date(timestamp).getMonth() + 1
+}
+
+/** Get status key from a record (open, closing-soon, closed, upcoming). */
+function getStatusKey(record) {
+  return statusOf(record).key
+}
+
 const DEGREE_WORDS = {
   bachelor: ['bachelor', 'undergraduate'],
   master: ['master'],
@@ -186,18 +200,61 @@ function matchesFunding(label, value) {
 function sortRecords(records, sortBy) {
   const sorted = [...records]
   switch (sortBy) {
-    case 'az':
-      return sorted.sort((a, b) => a.title.localeCompare(b.title))
-    case 'deadline':
+    case 'recommended': {
+      // Rank by verification status (active first), then by status order
+      const STATUS_ORDER = { open: 0, 'closing-soon': 1, closed: 2, upcoming: 3 }
+      return sorted.sort((a, b) => {
+        const aVerified = a.verification_status === 'active' ? 1 : 0
+        const bVerified = b.verification_status === 'active' ? 1 : 0
+        if (bVerified !== aVerified) return bVerified - aVerified
+        const aStatus = getStatusKey(a)
+        const bStatus = getStatusKey(b)
+        return (STATUS_ORDER[aStatus] ?? 99) - (STATUS_ORDER[bStatus] ?? 99)
+      })
+    }
+    case 'recently-added':
+    case 'recently-updated':
+      return sorted.sort((a, b) => {
+        const left = a.updated_at ? new Date(a.updated_at).getTime() : -Infinity
+        const right = b.updated_at ? new Date(b.updated_at).getTime() : -Infinity
+        return right - left
+      })
+    case 'deadline-soon':
+    case 'deadline-earliest':
       return sorted.sort((a, b) => {
         const left = a.deadline_date ? new Date(a.deadline_date).getTime() : Infinity
         const right = b.deadline_date ? new Date(b.deadline_date).getTime() : Infinity
         return left - right
       })
+    case 'deadline-latest':
+      return sorted.sort((a, b) => {
+        const left = a.deadline_date ? new Date(a.deadline_date).getTime() : -Infinity
+        const right = b.deadline_date ? new Date(b.deadline_date).getTime() : -Infinity
+        return right - left
+      })
     case 'fully-funded':
       return sorted.sort((a, b) => Number(Boolean(b.fully_funded)) - Number(Boolean(a.fully_funded)))
+    case 'name-asc':
+      return sorted.sort((a, b) => a.title.localeCompare(b.title))
+    case 'name-desc':
+      return sorted.sort((a, b) => b.title.localeCompare(a.title))
+    case 'az':
+      // Legacy alias for name-asc
+      return sorted.sort((a, b) => a.title.localeCompare(b.title))
+    case 'deadline':
+      // Legacy alias for deadline-earliest
+      return sorted.sort((a, b) => {
+        const left = a.deadline_date ? new Date(a.deadline_date).getTime() : Infinity
+        const right = b.deadline_date ? new Date(b.deadline_date).getTime() : Infinity
+        return left - right
+      })
     default:
-      return sorted
+      // Default: recently updated (most recent first)
+      return sorted.sort((a, b) => {
+        const left = a.updated_at ? new Date(a.updated_at).getTime() : -Infinity
+        const right = b.updated_at ? new Date(b.updated_at).getTime() : -Infinity
+        return right - left
+      })
   }
 }
 
@@ -231,6 +288,8 @@ export function toScholarship(record) {
     duration: record.duration,
     application_period: record.application_period,
     program_type: record.program_type,
+    updated_at: record.updated_at,
+    fully_funded: record.fully_funded === true || record.funding_type === 'Fully Funded',
     // Derived by the same rule the live directory uses, so a card in the
     // fallback reads exactly like a card served by the API.
     statusInfo: statusOf(record),
@@ -249,6 +308,8 @@ export async function fetchScholarshipsFromSnapshot(query = {}) {
     country = 'All',
     degree = 'All',
     funding = 'All',
+    deadline_month = 'All',
+    status = 'All',
     sort = 'default',
     page = 1,
     limit = PAGE_SIZE,
@@ -259,7 +320,7 @@ export async function fetchScholarshipsFromSnapshot(query = {}) {
   const needle = String(search).trim().toLowerCase()
   if (needle) {
     records = records.filter((record) =>
-      [record.title, record.country, record.description, record.funding]
+      [record.title, record.country, record.degree, record.description, record.funding]
         .filter(Boolean)
         .some((field) => field.toLowerCase().includes(needle))
     )
@@ -273,6 +334,13 @@ export async function fetchScholarshipsFromSnapshot(query = {}) {
   }
   if (funding && funding !== 'All') {
     records = records.filter((record) => matchesFunding(record.funding, funding))
+  }
+  if (deadline_month && deadline_month !== 'All') {
+    const targetMonth = Number(deadline_month)
+    records = records.filter((record) => getDeadlineMonth(record) === targetMonth)
+  }
+  if (status && status !== 'All') {
+    records = records.filter((record) => getStatusKey(record) === status)
   }
 
   records = sortRecords(records, sort)
@@ -310,4 +378,15 @@ export async function fetchScholarshipStatsFromSnapshot() {
     fullyFunded: stats.fully_funded ?? fullyFunded,
     verified: stats.verified_active ?? verified,
   }
+}
+
+/**
+ * Look up a single scholarship by ID from the snapshot.
+ * Returns the normalized record or null if not found.
+ */
+export async function fetchScholarshipByIdFromSnapshot(id) {
+  const snapshot = await loadScholarshipSnapshot()
+  const record = snapshot.scholarships.find((s) => String(s.id) === String(id))
+  if (!record) return null
+  return toScholarship(record)
 }
