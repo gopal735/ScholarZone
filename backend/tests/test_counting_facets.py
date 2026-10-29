@@ -34,7 +34,7 @@ from app.services.counting.facets import (
     region_for_country,
 )
 
-from .test_matching_v2 import make_facts, score, strong_profile
+from test_matching_v2 import make_facts, score, strong_profile
 
 from app.services.matching.types import MatchProfileRequest
 
@@ -151,7 +151,7 @@ class TestCountryFacet:
 
 
 def facts_deadline():
-    from .test_matching_v2 import AS_OF
+    from test_matching_v2 import AS_OF
 
     return AS_OF
 
@@ -353,7 +353,7 @@ class TestFieldFacet:
         """
         from app.services.matching.engine import score_record
         from app.services.matching.normalize import normalise_profile
-        from .test_matching_v2 import AS_OF
+        from test_matching_v2 import AS_OF
 
         facts = make_facts(id=1, program_type=None, official_details={})
         result = score_record(normalise_profile(strong_profile()), facts, AS_OF)

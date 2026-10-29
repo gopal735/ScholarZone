@@ -55,7 +55,7 @@ from app.services.counting.temporal import (
 )
 from app.services.counting.types import CountUniverse, ProvenanceKind
 
-from .test_matching_v2 import AS_OF, make_facts, score, strong_profile
+from test_matching_v2 import AS_OF, make_facts, score, strong_profile
 
 
 COUNTRIES = ["Germany", "France", "India", "Canada", "Brazil"]
