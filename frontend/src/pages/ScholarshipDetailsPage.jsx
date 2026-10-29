@@ -247,9 +247,20 @@ export default function ScholarshipDetailsPage() {
        already answers 404 for an unknown path, but a client-side navigation to
        a bad id renders inside a live page with status 200, and Google can index
        that as a thin duplicate. Saying noindex here is the honest signal in
-       both cases; it is removed as soon as a real record renders. */
+       both cases; it is removed as soon as a real record renders.
+
+       States:
+       - loading: initial fetch in progress, no data yet. Do not emit noindex
+         (the initial index.html carries index,follow and removing it without
+         a replacement would leave no signal; default is index,follow).
+       - fallback: valid scholarship loaded from the version-controlled snapshot.
+         This is real public data and must be indexable.
+       - success: valid scholarship loaded from the API. Indexable.
+       - missing: genuinely not found (404). Emit noindex.
+       - error: failed to load AND no fallback data available. Emit noindex. */
     document.querySelectorAll('[data-sz-seo]').forEach(el => el.remove())
-    if (loadState !== 'success' || !scholarship) {
+    const isGenuinelyMissing = loadState === 'missing' || (loadState === 'error' && !scholarship)
+    if (isGenuinelyMissing) {
       document.title = 'Scholarship · ScholarZone'
       const noindex = document.createElement('meta')
       noindex.name = 'robots'
