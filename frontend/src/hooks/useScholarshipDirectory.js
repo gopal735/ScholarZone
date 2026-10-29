@@ -12,7 +12,8 @@ const DIRECTORY_LIMIT = 100
 export function useScholarshipDirectory() {
   const [scholarships, setScholarships] = useState([])
   const [isLoading, setIsLoading] = useState(true)
-  const [isUsingFallback, setIsUsingFallback] = useState(false)
+  const [isUsingSnapshot, setIsUsingSnapshot] = useState(false)
+  const [isUsingLocalFallback, setIsUsingLocalFallback] = useState(false)
   const [fromSnapshot, setFromSnapshot] = useState(false)
   const [staticMode, setStaticMode] = useState(false)
   const [error, setError] = useState(null)
@@ -27,17 +28,16 @@ export function useScholarshipDirectory() {
         }
 
         setScholarships(directory.items)
-        // A snapshot answer resolves successfully but is still a fallback:
-        // the API did not serve this page. The three flags are set together
-        // so a caller never has to infer provenance from an error that did
-        // not happen.
+        // The API is the primary source; a snapshot answer is a valid
+        // fallback, not an error. Local hardcoded data is the last resort.
         const isSnapshot = Boolean(directory.fromSnapshot)
         const isStatic = Boolean(directory.staticMode)
         setFromSnapshot(isSnapshot)
         setStaticMode(isStatic)
         // Static mode is a deliberate architectural choice, not a failure.
         // Only treat as "fallback" when we actually fell back due to API failure.
-        setIsUsingFallback(isSnapshot && !isStatic)
+        setIsUsingSnapshot(isSnapshot && !isStatic)
+        setIsUsingLocalFallback(false)
         setError(null)
       })
       .catch((error) => {
@@ -46,7 +46,8 @@ export function useScholarshipDirectory() {
         }
 
         setScholarships(fallbackScholarships)
-        setIsUsingFallback(true)
+        setIsUsingSnapshot(false)
+        setIsUsingLocalFallback(true)
         setFromSnapshot(false)
         setStaticMode(false)
         setError(error)
@@ -60,5 +61,5 @@ export function useScholarshipDirectory() {
     return () => controller.abort()
   }, [])
 
-  return { scholarships, isLoading, isUsingFallback, fromSnapshot, staticMode, error }
+  return { scholarships, isLoading, isUsingSnapshot, isUsingLocalFallback, fromSnapshot, staticMode, error }
 }

@@ -8,7 +8,7 @@ import { CANONICAL_ORIGIN } from '../services/canonicalOrigin'
 export default function ScholarshipsPage() {
   const [searchParams] = useSearchParams()
   const countryParam = searchParams.get('country') || undefined
-  const { isUsingFallback, staticMode, fromSnapshot } = useScholarshipDirectory()
+  const { isUsingLocalFallback } = useScholarshipDirectory()
 
   // Every variant of this route - country, degree, funding, search, sort,
   // status, page - is the same catalogue at a different offset. The clean URL is
@@ -125,27 +125,9 @@ export default function ScholarshipsPage() {
           </div>
         </div>
         <ScholarshipList initialCountry={countryParam} />
-        {staticMode && (
-          <div className="scholarships-page__static-notice" role="status">
-            <span>
-              <svg viewBox="0 0 24 24" aria-hidden="true" style={{width: 16, height: 16, marginRight: 6, verticalAlign: 'middle'}}>
-                <path fill="currentColor" d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/>
-              </svg>
-              Browsing the static public catalogue. No database connection required.{' '}
-              {fromSnapshot && (
-                <>
-                  Data from version-controlled snapshot generated at build time.{' '}
-                  <a href="https://github.com/gopal735/ScholarZone/actions/workflows/catalogue-snapshot.yml" target="_blank" rel="noopener noreferrer">
-                    View generation workflow
-                  </a>
-                </>
-              )}
-            </span>
-          </div>
-        )}
-        {isUsingFallback && !staticMode && (
+        {isUsingLocalFallback && (
           <div className="scholarships-page__fallback-notice" role="status">
-            <span>⚠️ Live directory unavailable — showing local data.</span>
+            <span>⚠️ Live directory and snapshot unavailable — showing minimal local data.</span>
           </div>
         )}
       </div>

@@ -58,7 +58,9 @@ jobs:
 
       - name: Install Node.js dependencies
         working-directory: frontend
-        run: npm ci
+        run: |
+          npm ci
+          npx eslint --version
 
       - name: Create local SQLite database for snapshot generation
         working-directory: backend
