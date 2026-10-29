@@ -43,7 +43,7 @@ from app.services import supervisor_render  # noqa: E402
 from app.services.supervisor_discovery import discover_for_scholarship  # noqa: E402
 from app.services.supervisor_jsdetect import classify_shell  # noqa: E402
 from app.services.supervisor_source import RenderBudget  # noqa: E402
-from support_local_js_directory import LocalDirectoryServer  # noqa: E402
+from .support_local_js_directory import LocalDirectoryServer  # noqa: E402
 
 playwright = pytest.importorskip(
     "playwright.async_api", reason="No browser driver installed; rendering cannot be proven."
