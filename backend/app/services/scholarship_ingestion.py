@@ -81,12 +81,12 @@ class ScholarshipIngestionRecord(BaseModel):
     image_source_type: str | None = None
     image_verified_at: date | None = None
     image_alt_text: str | None = Field(default=None, max_length=512)
-    # Accepted and validated, then never persisted: see IMAGE_PERSISTENCE_FIELDS.
     image_kind: str | None = None
 
     # Migration-only metadata: never stored as scholarship content.
     legacy_titles: tuple[str, ...] = ()
     preferred_id: int | None = Field(default=None, ge=1)
+    legacy_id: int | None = Field(default=None, ge=1)
 
     @field_validator("official_source_url")
     @classmethod
@@ -296,6 +296,7 @@ class ScholarshipIngestionRecord(BaseModel):
             "image_url": "image_url",
             "image_source_url": "image_source_url",
             "image_source_type": "image_source_type",
+            "image_kind": "image_kind",
             "image_verified_at": "image_verified_at",
             "image_alt_text": "image_alt_text",
         }
@@ -334,6 +335,10 @@ class ScholarshipIngestionRecord(BaseModel):
         # correct it.
         if fields.get("deadline_precision") is None:
             fields["deadline_precision"] = "varies"
+
+        # Persist legacy_id for backward URL compatibility (not in IMAGE_PERSISTENCE_FIELDS)
+        if self.legacy_id is not None:
+            fields["legacy_id"] = self.legacy_id
 
         return fields
 

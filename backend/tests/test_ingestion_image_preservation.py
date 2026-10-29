@@ -346,7 +346,8 @@ class TestMapperContractDirectly:
         assert fields["image_url"] == NEW_URL
         assert fields["image_alt_text"] == "New"
 
-    def test_mapper_never_emits_image_kind(self):
+    def test_mapper_emits_image_kind(self):
+        """The mapper now persists image_kind so the snapshot retains classification."""
         fields = _ingestion_record(
             image_url=NEW_URL,
             image_source_url=NEW_SOURCE,
@@ -355,7 +356,8 @@ class TestMapperContractDirectly:
             image_kind="program_image",
             image_verified_at=date(2026, 10, 1),
         ).to_persistence_fields(date(2026, 10, 1))
-        assert "image_kind" not in fields
+        assert "image_kind" in fields
+        assert fields["image_kind"] == "program_image"
 
     def test_explicit_null_non_image_field_is_still_honoured(self):
         """The guard is scoped to images; other fields keep their semantics."""

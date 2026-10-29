@@ -93,9 +93,22 @@ def seed_scholarships(session: Session) -> int:
 
 
 def seed_database() -> int:
+    import sys
+    from pathlib import Path
     from .database import get_session_factory
 
+    # Add backend root to path for scripts import
+    BACKEND_ROOT = Path(__file__).resolve().parents[1]
+    if str(BACKEND_ROOT) not in sys.path:
+        sys.path.insert(0, str(BACKEND_ROOT))
+
+    from scripts.seed_real_scholarships import main as seed_real_scholarships_main
+
     with get_session_factory()() as session:
-        bootstrap_created = seed_scholarships(session)
-        verified_created, _ = upsert_verified_scholarships(session, VERIFIED_SCHOLARSHIPS)
-        return bootstrap_created + verified_created
+        # Use the comprehensive seed script that loads master IDs for legacy_id
+        seed_real_scholarships_main()
+        # Count total records after seeding
+        from .models import Scholarship
+        from sqlalchemy import func, select
+        total = session.scalar(select(func.count()).select_from(Scholarship))
+        return total

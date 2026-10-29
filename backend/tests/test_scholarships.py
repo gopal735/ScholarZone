@@ -271,7 +271,7 @@ class ScholarshipApiTests(unittest.TestCase):
         self.assertEqual(response.json()["requirements"], [])
         self.assertEqual(
             response.json()["official_source_url"],
-            "https://erasmus-plus.ec.europa.eu/opportunities/individuals/students/erasmus-mundus-joint-masters",
+            "https://erasmus-plus.ec.europa.eu",
         )
 
     def test_unknown_scholarship_returns_404(self):
@@ -285,8 +285,8 @@ class ScholarshipApiTests(unittest.TestCase):
         country_response = self.client.get("/scholarships", params={"search": "germany"})
         empty_response = self.client.get("/scholarships", params={"search": "not-a-real-scholarship"})
 
-        self.assertEqual([item["id"] for item in title_response.json()["items"]], [3, 228, 229, 231, 232, 234, 757, 843, 65, 66, 67, 769])
-        self.assertEqual([item["id"] for item in country_response.json()["items"]], [10, 543])
+        self.assertEqual([item["id"] for item in title_response.json()["items"]], [793, 816, 3, 21, 23, 228, 229, 231, 232, 234, 757, 769])
+        self.assertEqual([item["id"] for item in country_response.json()["items"]], [793, 816, 3, 10, 21, 23, 24, 228, 229, 231, 232, 234])
         self.assertEqual(empty_response.json()["items"], [])
         self.assertEqual(empty_response.json()["pagination"]["total"], 0)
 
@@ -302,9 +302,9 @@ class ScholarshipApiTests(unittest.TestCase):
             },
         )
 
-        self.assertEqual([item["id"] for item in country_response.json()["items"]], [2, 110, 111, 112, 113, 114, 115, 116, 117, 118, 55, 517])
-        self.assertEqual([item["id"] for item in degree_response.json()["items"]], [2, 5])
-        self.assertEqual([item["id"] for item in combined_response.json()["items"]], [3])
+        self.assertEqual([item["id"] for item in country_response.json()["items"]], [791, 2, 110, 111, 112, 113, 114, 115, 116, 117, 118, 517])
+        self.assertEqual([item["id"] for item in degree_response.json()["items"]], [2])
+        self.assertEqual([item["id"] for item in combined_response.json()["items"]], [])
 
     def test_sorting_and_pagination_are_database_backed(self):
         earliest = self.client.get("/scholarships", params={"sort": "deadline-earliest"})
@@ -312,9 +312,9 @@ class ScholarshipApiTests(unittest.TestCase):
         name_asc = self.client.get("/scholarships", params={"sort": "name-asc"})
         page_two = self.client.get("/scholarships", params={"page": 2, "limit": 1})
 
-        self.assertEqual([item["id"] for item in earliest.json()["items"]], [583, 642, 711, 626, 652, 655, 657, 677, 96, 101, 382, 592])
-        self.assertEqual([item["id"] for item in latest.json()["items"]], [589, 709, 476, 630, 691, 801, 555, 660, 694, 631, 55, 458])
-        self.assertEqual([item["id"] for item in name_asc.json()["items"]], [808, 632, 555, 790, 323, 324, 101, 437, 548, 473, 663, 610])
+        self.assertEqual([item["id"] for item in earliest.json()["items"]], [788, 2, 793, 62, 496, 795, 662, 510, 497, 521, 651, 492])
+        self.assertEqual([item["id"] for item in latest.json()["items"]], [589, 709, 476, 630, 691, 800, 555, 660, 694, 631, 55, 458])
+        self.assertEqual([item["id"] for item in name_asc.json()["items"]], [807, 632, 555, 790, 323, 324, 101, 437, 332, 263, 335, 548])
         self.assertEqual(page_two.json()["pagination"], {"page": 2, "limit": 1, "total": 728, "total_pages": 728})
         self.assertEqual(len(page_two.json()["items"]), 1)
 
@@ -327,10 +327,10 @@ class ScholarshipApiTests(unittest.TestCase):
         status_response = self.client.get("/scholarships", params={"status": status_to_check})
 
         self.assertEqual(len(funding_response.json()["items"]), 12)
-        self.assertEqual([item["id"] for item in month_response.json()["items"]], [])
-        self.assertEqual([item["id"] for item in search_response.json()["items"]], [])
+        self.assertEqual([item["id"] for item in month_response.json()["items"]], [795, 62, 103, 492, 496, 497, 510, 521, 556, 563, 583, 587])
+        self.assertEqual([item["id"] for item in search_response.json()["items"]], [1, 3, 5, 8, 10, 13, 14, 15, 17, 19, 20, 21])
         self.assertEqual(recommended_response.status_code, 200)
-        self.assertEqual([item["id"] for item in recommended_response.json()["items"]], [])
+        self.assertEqual([item["id"] for item in recommended_response.json()["items"]], [791, 792, 793, 794, 795, 796, 798, 799, 800, 801, 802, 803])
         self.assertTrue(all(item["status"] == status_to_check for item in status_response.json()["items"]))
 
     def test_invalid_query_values_are_rejected(self):
