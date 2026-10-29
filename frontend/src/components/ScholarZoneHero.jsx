@@ -109,7 +109,7 @@ function HeroShowcase({ scholarship, ref, onPointerMove, onPointerLeave, dark })
   )
 }
 export default function ScholarZoneHero() {
-  const { scholarships, isLoading, isUsingSnapshot, isUsingLocalFallback, error } =
+  const { scholarships, isLoading, isUsingLocalFallback, error } =
     useScholarshipDirectory()
   const { theme: researchTheme } = useResearchTheme()
   const navigate = useNavigate()
