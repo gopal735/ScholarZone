@@ -117,6 +117,60 @@ def load_master_recovered(json_path: Path, master_by_url: dict[str, int], verifi
     return records
 
 
+def _seed_catalogue(session, master_id_map, verified_urls, additional_urls, canonical_urls):
+    """Core seeding logic that returns (created_count, updated_count)."""
+    # Debug: check what's in the database initially (should be empty)
+    from sqlalchemy import select
+    existing_ids = session.scalars(select(Scholarship.id)).all()
+    print(f"DEBUG: IDs in DB initially: {sorted(existing_ids)}")
+
+    previous_ids = {
+        source_url: session.scalar(
+            select(Scholarship.id).where(Scholarship.official_source_url == source_url)
+        )
+        for source_url in RESULT_URLS
+    }
+    
+    additional_filtered = [s for s in ADDITIONAL_VERIFIED_SCHOLARSHIPS if s.official_source_url not in verified_urls]
+
+    # Load master recovered scholarships from JSON FIRST (to reserve original IDs)
+    json_path = BACKEND_ROOT / "data" / "master_recovered_scholarships.json"
+    master_recovered_filtered = []
+    if json_path.exists():
+        master_recovered = load_master_recovered(json_path, master_id_map, verified_urls, additional_urls)
+        # Filter out records already in canonical catalogue
+        master_recovered_filtered = [r for r in master_recovered if r.official_source_url not in canonical_urls]
+        print(f"Master recovered: {len(master_recovered_filtered)} new (reserving original IDs)")
+    else:
+        print("Master recovered JSON not found, skipping")
+
+    # Apply master IDs to VERIFIED and ADDITIONAL records
+    verified_updated = 0
+    additional_updated = 0
+    for s in VERIFIED_SCHOLARSHIPS:
+        if s.official_source_url in master_id_map:
+            preferred = master_id_map[s.official_source_url]
+            if preferred not in {2, 3}:  # Reserved IDs
+                s.preferred_id = master_id_map[s.official_source_url]
+                verified_updated += 1
+    for s in ADDITIONAL_VERIFIED_SCHOLARSHIPS:
+        if s.official_source_url in master_id_map:
+            preferred = master_id_map[s.official_source_url]
+            if preferred not in {2, 3}:
+                s.preferred_id = master_id_map[s.official_source_url]
+                additional_updated += 1
+    print(f"Applied master IDs: {verified_updated} VERIFIED, {additional_updated} ADDITIONAL records updated")
+
+    # Build canonical catalogue: MASTER RECOVERED first (to reserve original IDs), then VERIFIED, then ADDITIONAL
+    additional_filtered = [s for s in ADDITIONAL_VERIFIED_SCHOLARSHIPS if s.official_source_url not in {s.official_source_url for s in VERIFIED_SCHOLARSHIPS}]
+    canonical_catalogue = master_recovered_filtered + list(VERIFIED_SCHOLARSHIPS) + additional_filtered
+
+    print(f"Canonical catalogue: {len(master_recovered_filtered)} RECOVERED + {len(VERIFIED_SCHOLARSHIPS)} VERIFIED + {len(additional_filtered)} ADDITIONAL = {len(canonical_catalogue)} total")
+
+    created_count, updated_count = upsert_verified_scholarships(session, canonical_catalogue)
+    return created_count, updated_count
+
+
 def main() -> None:
     # Load master ID map for backward compatibility
     master_id_map = _load_master_id_map()
@@ -125,58 +179,20 @@ def main() -> None:
 
     init_database()
     with get_session_factory()() as session:
-        # Debug: check what's in the database initially (should be empty)
-        from sqlalchemy import select
-        existing_ids = session.scalars(select(Scholarship.id)).all()
-        print(f"DEBUG: IDs in DB initially: {sorted(existing_ids)}")
-
+        verified_urls = {s.official_source_url for s in VERIFIED_SCHOLARSHIPS}
+        additional_urls = {s.official_source_url for s in ADDITIONAL_VERIFIED_SCHOLARSHIPS}
+        canonical_urls = verified_urls | additional_urls
+        
+        # Get previous IDs for RESULT_URLS before seeding
         previous_ids = {
             source_url: session.scalar(
                 select(Scholarship.id).where(Scholarship.official_source_url == source_url)
             )
             for source_url in RESULT_URLS
         }
-        # Build canonical catalogue: VERIFIED first (takes precedence), then ADDITIONAL
-        verified_urls = {s.official_source_url for s in VERIFIED_SCHOLARSHIPS}
-        additional_urls = {s.official_source_url for s in ADDITIONAL_VERIFIED_SCHOLARSHIPS}
-        additional_filtered = [s for s in ADDITIONAL_VERIFIED_SCHOLARSHIPS if s.official_source_url not in verified_urls]
-
-        # Load master recovered scholarships from JSON FIRST (to reserve original IDs)
-        json_path = BACKEND_ROOT / "data" / "master_recovered_scholarships.json"
-        master_recovered_filtered = []
-        if json_path.exists():
-            master_recovered = load_master_recovered(json_path, master_id_map, verified_urls, additional_urls)
-            # Filter out records already in canonical catalogue
-            canonical_urls = verified_urls | {s.official_source_url for s in ADDITIONAL_VERIFIED_SCHOLARSHIPS}
-            master_recovered_filtered = [r for r in master_recovered if r.official_source_url not in canonical_urls]
-            print(f"Master recovered: {len(master_recovered_filtered)} new (reserving original IDs)")
-        else:
-            print("Master recovered JSON not found, skipping")
-
-        # Apply master IDs to VERIFIED and ADDITIONAL records
-        verified_updated = 0
-        additional_updated = 0
-        for s in VERIFIED_SCHOLARSHIPS:
-            if s.official_source_url in master_id_map:
-                preferred = master_id_map[s.official_source_url]
-                if preferred not in {2, 3}:  # Reserved IDs
-                    s.preferred_id = master_id_map[s.official_source_url]
-                    verified_updated += 1
-        for s in ADDITIONAL_VERIFIED_SCHOLARSHIPS:
-            if s.official_source_url in master_id_map:
-                preferred = master_id_map[s.official_source_url]
-                if preferred not in {2, 3}:
-                    s.preferred_id = master_id_map[s.official_source_url]
-                    additional_updated += 1
-        print(f"Applied master IDs: {verified_updated} VERIFIED, {additional_updated} ADDITIONAL records updated")
-
-        # Build canonical catalogue: MASTER RECOVERED first (to reserve original IDs), then VERIFIED, then ADDITIONAL
-        additional_filtered = [s for s in ADDITIONAL_VERIFIED_SCHOLARSHIPS if s.official_source_url not in {s.official_source_url for s in VERIFIED_SCHOLARSHIPS}]
-        canonical_catalogue = master_recovered_filtered + list(VERIFIED_SCHOLARSHIPS) + additional_filtered
-
-        print(f"Canonical catalogue: {len(master_recovered_filtered)} RECOVERED + {len(VERIFIED_SCHOLARSHIPS)} VERIFIED + {len(additional_filtered)} ADDITIONAL = {len(canonical_catalogue)} total")
-
-        created_count, updated_count = upsert_verified_scholarships(session, canonical_catalogue)
+        
+        created_count, updated_count = _seed_catalogue(session, master_id_map, verified_urls, additional_urls, canonical_urls)
+        
         resulting_rows = session.scalars(
             select(Scholarship)
             .where(Scholarship.official_source_url.in_(RESULT_URLS))

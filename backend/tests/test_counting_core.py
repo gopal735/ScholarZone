@@ -43,7 +43,7 @@ from app.services.counting.core import (
 )
 from app.services.counting.types import CountBasis, CountUniverse, IntegrityStatus
 
-from test_matching_v2 import AS_OF, make_facts, score, strong_profile
+from .test_matching_v2 import AS_OF, make_facts, score, strong_profile
 
 from app.services.matching.types import (
     EligibilityStatus,

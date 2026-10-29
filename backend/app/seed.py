@@ -102,13 +102,20 @@ def seed_database() -> int:
     if str(BACKEND_ROOT) not in sys.path:
         sys.path.insert(0, str(BACKEND_ROOT))
 
-    from scripts.seed_real_scholarships import main as seed_real_scholarships_main
+    from scripts.seed_real_scholarships import _seed_catalogue, _load_master_id_map
+    from app.data.verified_scholarships import VERIFIED_SCHOLARSHIPS
+    from app.data.additional_scholarships import ADDITIONAL_VERIFIED_SCHOLARSHIPS
+
+    master_id_map = _load_master_id_map()
+    if master_id_map:
+        print(f"Loaded {len(master_id_map)} master IDs for backward compatibility")
 
     with get_session_factory()() as session:
-        # Use the comprehensive seed script that loads master IDs for legacy_id
-        seed_real_scholarships_main()
-        # Count total records after seeding
-        from .models import Scholarship
-        from sqlalchemy import func, select
-        total = session.scalar(select(func.count()).select_from(Scholarship))
-        return total
+        verified_urls = {s.official_source_url for s in VERIFIED_SCHOLARSHIPS}
+        additional_urls = {s.official_source_url for s in ADDITIONAL_VERIFIED_SCHOLARSHIPS}
+        canonical_urls = verified_urls | additional_urls
+        
+        created_count, updated_count = _seed_catalogue(session, master_id_map, verified_urls, additional_urls, canonical_urls)
+        
+        print(f"Created {created_count} scholarship record(s); updated {updated_count} record(s).")
+        return created_count
