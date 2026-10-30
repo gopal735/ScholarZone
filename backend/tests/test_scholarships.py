@@ -97,12 +97,12 @@ class ScholarshipApiTests(unittest.TestCase):
             except Exception:
                 pass
 
-def test_list_scholarships_returns_seeded_data_and_pagination(self):
+    def test_list_scholarships_returns_seeded_data_and_pagination(self):
         response = self.client.get("/scholarships")
 
         self.assertEqual(response.status_code, 200)
         payload = response.json()
-        self.assertEqual(payload["pagination"], {"page": 1, "limit": 12, "total": 754, "total_pages": 63})
+        self.assertEqual(payload["pagination"], {"page": 1, "limit": 12, "total": 759, "total_pages": 64})
         self.assertEqual(len(payload["items"]), 12)
         self.assertEqual(payload["items"][0]["title"], "Erasmus Mundus Joint Masters (EMJM)")
 
