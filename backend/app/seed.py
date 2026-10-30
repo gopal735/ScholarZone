@@ -105,6 +105,7 @@ def seed_database() -> int:
     from scripts.seed_real_scholarships import _seed_catalogue, _load_master_id_map
     from app.data.verified_scholarships import VERIFIED_SCHOLARSHIPS
     from app.data.additional_scholarships import ADDITIONAL_VERIFIED_SCHOLARSHIPS
+    from app.seed import refresh_scholarship_statuses
 
     master_id_map = _load_master_id_map()
     if master_id_map:
@@ -116,6 +117,14 @@ def seed_database() -> int:
         canonical_urls = verified_urls | additional_urls
         
         created_count, updated_count = _seed_catalogue(session, master_id_map, verified_urls, additional_urls, canonical_urls)
+        
+        # Evaluate lifecycle statuses for all records
+        status_changes = refresh_scholarship_statuses(session)
+        if status_changes:
+            print(f"Lifecycle status changes: {status_changes}")
+        
+        # Ensure lifecycle changes are persisted
+        session.commit()
         
         print(f"Created {created_count} scholarship record(s); updated {updated_count} record(s).")
         return created_count

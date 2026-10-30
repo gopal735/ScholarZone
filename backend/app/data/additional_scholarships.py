@@ -5614,7 +5614,7 @@ CZECH_GOV_SCHOLARSHIPS_CORRECTED = (
         degree_levels="Master's (Czech/English), PhD (English), Research stays",
         funding_type="Fully Funded",
         deadline="CLOSED — 30 September 2026 (23:59 CET) for 2027/28 academic year",
-        deadline_date=None,
+        deadline_date=date(2026, 9, 30),
         deadline_precision="exact",
         eligibility_summary=(
             "Citizens of eligible developing countries (including Bangladesh) with bilateral agreements. "
