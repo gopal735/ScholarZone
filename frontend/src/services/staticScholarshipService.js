@@ -296,7 +296,7 @@ export function toScholarship(record) {
     official_updates_url: record.official_updates_url,
     selection_notes: record.selection_notes,
     program_type: record.program_type,
-    fully_funded: record.fully_funded === true || record.funding_type === 'Fully Funded',
+    fully_funded: record.fully_funded === true,
     funding_amount: record.funding_amount,
     funding_currency: record.funding_currency,
     funding_period: record.funding_period,
