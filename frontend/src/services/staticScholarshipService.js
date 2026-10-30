@@ -309,7 +309,6 @@ export function toScholarship(record) {
     application_method: record.application_method,
     best_fit: record.best_fit,
     notes: record.notes,
-    next_verification_due: record.next_verification_due,
     updated_at: record.updated_at,
     // Academic eligibility
     departments: record.departments,

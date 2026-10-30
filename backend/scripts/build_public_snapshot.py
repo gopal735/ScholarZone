@@ -116,7 +116,6 @@ PUBLIC_COLUMNS: tuple[str, ...] = (
     "application_method",
     "best_fit",
     "notes",
-    "next_verification_due",
     "updated_at",
     # Academic eligibility
     "departments",
