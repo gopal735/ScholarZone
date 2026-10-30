@@ -454,6 +454,12 @@ const description = readText(scholarship.description)
   const verification = buildVerificationRecord(scholarship)
   const verificationState = verificationLabel(scholarship.verification_status)
 
+  // Academic eligibility fields
+  const departments = readList(scholarship.departments)
+  const eligibleFields = readList(scholarship.eligible_fields)
+  const eligibleProgrammes = readList(scholarship.eligible_programmes)
+  const academicProvenance = scholarship.academic_provenance || {}
+
   // Funding & coverage fields
   const fundingAmount = scholarship.funding_amount
   const fundingCurrency = scholarship.funding_currency
@@ -658,38 +664,27 @@ const description = readText(scholarship.description)
                 <dd>{travelCoverage ? 'Covered' : 'Not covered'}</dd>
               </>
             )}
-            {duration && (
-              <>
-                <dt>Duration</dt>
-                <dd>{duration}</dd>
-              </>
-            )}
-            {applicationPeriod && (
-              <>
-                <dt>Application period</dt>
-                <dd>{applicationPeriod}</dd>
-              </>
-            )}
-            {programType && (
-              <>
-                <dt>Programme type</dt>
-                <dd>{programType}</dd>
-              </>
-            )}
-          </dl>
-        </DetailBlock>
-      )}
-
-      {/* 02 — QUICK FACTS */}
-      <DetailBlock
-        id="facts"
-        index="01"
-        eyebrow="At a glance"
-        title="Key information"
-        className="sz-detail__block--facts"
-      >
-        <KeyValueGrid entries={quickFacts} />
-      </DetailBlock>
+{duration && (
+                <>
+                  <dt>Duration</dt>
+                  <dd>{duration}</dd>
+                </>
+              )}
+              {applicationPeriod && (
+                <>
+                  <dt>Application period</dt>
+                  <dd>{applicationPeriod}</dd>
+                </>
+              )}
+              {programType && (
+                <>
+                  <dt>Programme type</dt>
+                  <dd>{programType}</dd>
+                </>
+              )}
+            </dl>
+          </DetailBlock>
+        )}
 
       {/* 03 — ABOUT */}
       <DetailBlock
@@ -735,6 +730,56 @@ const description = readText(scholarship.description)
             <p className="sz-detail__lead">{eligibilitySummary}</p>
           ) : null}
           <DetailList items={eligibility} />
+        </DetailBlock>
+      )}
+
+      {/* 05b — ACADEMIC ELIGIBILITY (Departments, Fields, Programmes) */}
+      {(departments.length > 0 || eligibleFields.length > 0 || eligibleProgrammes.length > 0) && (
+        <DetailBlock
+          id="academic-eligibility"
+          index="03b"
+          eyebrow="Academic scope"
+          title="Departments & fields"
+          className="sz-detail__block--prose"
+        >
+          {departments.length > 0 && (
+            <div className="sz-detail__academic-section">
+              <h4 className="sz-detail__academic-subtitle">Departments</h4>
+              <DetailList items={departments} />
+              {academicProvenance.departments === 'inferred' && (
+                <p className="sz-detail__prose sz-detail__prose--muted">
+                  Departments inferred from programme structure; confirm with the awarding body.
+                </p>
+              )}
+            </div>
+          )}
+          {eligibleFields.length > 0 && (
+            <div className="sz-detail__academic-section">
+              <h4 className="sz-detail__academic-subtitle">Eligible fields of study</h4>
+              <DetailList items={eligibleFields} />
+              {academicProvenance.eligible_fields === 'inferred' && (
+                <p className="sz-detail__prose sz-detail__prose--muted">
+                  Fields inferred from programme description; confirm with the awarding body.
+                </p>
+              )}
+            </div>
+          )}
+          {eligibleProgrammes.length > 0 && (
+            <div className="sz-detail__academic-section">
+              <h4 className="sz-detail__academic-subtitle">Specific programmes</h4>
+              <DetailList items={eligibleProgrammes} />
+              {academicProvenance.eligible_programmes === 'inferred' && (
+                <p className="sz-detail__prose sz-detail__prose--muted">
+                  Programme names inferred from official sources; confirm exact eligibility.
+                </p>
+              )}
+            </div>
+          )}
+          {(departments.length === 0 && eligibleFields.length === 0 && eligibleProgrammes.length === 0) && (
+            <p className="sz-detail__prose sz-detail__prose--muted">
+              No specific department or field restrictions confirmed from official sources.
+            </p>
+          )}
         </DetailBlock>
       )}
 

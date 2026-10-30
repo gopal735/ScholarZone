@@ -104,6 +104,16 @@ class Scholarship(Base):
     best_fit: Mapped[str | None] = mapped_column(Text, nullable=True)
 
     # ------------------------------------------------------------------
+    # Academic eligibility - structured fields for departments, fields, programmes.
+    # Separated from the generic eligibility list so that programme-specific
+    # and field-level information can be queried and displayed distinctly.
+    departments: Mapped[list[str]] = mapped_column(JSON, nullable=False, default=list)
+    eligible_fields: Mapped[list[str]] = mapped_column(JSON, nullable=False, default=list)
+    eligible_programmes: Mapped[list[str]] = mapped_column(JSON, nullable=False, default=list)
+    # Provenance for academic fields: what was confirmed vs inferred.
+    academic_provenance: Mapped[dict | None] = mapped_column(JSON, nullable=True)
+
+    # ------------------------------------------------------------------
     # Award economics, separated.
     #
     # ``funding`` is a 120-character label and cannot distinguish "CAD 40,000 a

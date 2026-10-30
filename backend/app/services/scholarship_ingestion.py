@@ -69,6 +69,12 @@ class ScholarshipIngestionRecord(BaseModel):
     notes: str | None = None
     description: str | None = None
 
+    # Academic eligibility
+    departments: list[str] | None = None
+    eligible_fields: list[str] | None = None
+    eligible_programmes: list[str] | None = None
+    academic_provenance: dict | None = None
+
     # Award economics
     funding_amount: float | None = None
     funding_currency: str | None = None
@@ -296,6 +302,11 @@ class ScholarshipIngestionRecord(BaseModel):
             "best_fit": "best_fit",
             "notes": "notes",
             "description": "description",
+            # Academic eligibility
+            "departments": "departments",
+            "eligible_fields": "eligible_fields",
+            "eligible_programmes": "eligible_programmes",
+            "academic_provenance": "academic_provenance",
             # Award economics
             "funding_amount": "funding_amount",
             "funding_currency": "funding_currency",

@@ -22,6 +22,11 @@ export default function ScholarshipCard({ scholarship, index = 0, onOpenDetails 
   const monogramInitial = getMonogramInitial(scholarship?.title)
   const verifiedOn = scholarship.last_verified_at || null
 
+  // Academic eligibility fields
+  const departments = readList(scholarship.departments)
+  const eligibleFields = readList(scholarship.eligible_fields)
+  const eligibleProgrammes = readList(scholarship.eligible_programmes)
+
   // Helper functions for expanded section
   const description = readText(scholarship.description)
   const eligibility = readList(scholarship.eligibility)
@@ -188,6 +193,37 @@ export default function ScholarshipCard({ scholarship, index = 0, onOpenDetails 
           <dt>Level</dt>
           <dd>{scholarship.degree}</dd>
         </div>
+        {(departments.length > 0 || eligibleFields.length > 0 || eligibleProgrammes.length > 0) && (
+          <div className="scholarship-card__detail scholarship-card__detail--academic">
+            <dt>Academic scope</dt>
+            <dd className="scholarship-card__academic-preview">
+              {departments.length > 0 && (
+                <span className="scholarship-card__academic-item">
+                  <span className="scholarship-card__academic-label">Departments:</span>
+                  {departments.slice(0, 2).map((d, i) => (
+                    <span key={i} className="scholarship-card__academic-value">{d}{departments.length > 2 && i === 1 ? ` +${departments.length - 2} more` : ''}</span>
+                  ))}
+                </span>
+              )}
+              {eligibleFields.length > 0 && (
+                <span className="scholarship-card__academic-item">
+                  <span className="scholarship-card__academic-label">Fields:</span>
+                  {eligibleFields.slice(0, 2).map((f, i) => (
+                    <span key={i} className="scholarship-card__academic-value">{f}{eligibleFields.length > 2 && i === 1 ? ` +${eligibleFields.length - 2} more` : ''}</span>
+                  ))}
+                </span>
+              )}
+              {eligibleProgrammes.length > 0 && (
+                <span className="scholarship-card__academic-item">
+                  <span className="scholarship-card__academic-label">Programmes:</span>
+                  {eligibleProgrammes.slice(0, 1).map((p, i) => (
+                    <span key={i} className="scholarship-card__academic-value">{p}{eligibleProgrammes.length > 1 ? ` +${eligibleProgrammes.length - 1} more` : ''}</span>
+                  ))}
+                </span>
+              )}
+            </dd>
+          </div>
+        )}
       </dl>
 
       {/* Expandable details section */}
@@ -336,6 +372,43 @@ export default function ScholarshipCard({ scholarship, index = 0, onOpenDetails 
                     <li key={idx}>{item}</li>
                   ))}
                 </ul>
+              )}
+            </section>
+          )}
+
+          {/* Academic Eligibility (Departments, Fields, Programmes) */}
+          {(departments.length > 0 || eligibleFields.length > 0 || eligibleProgrammes.length > 0) && (
+            <section className="scholarship-card__expanded-section">
+              <h4 className="scholarship-card__expanded-title">Academic eligibility</h4>
+              {departments.length > 0 && (
+                <div className="scholarship-card__expanded-subsection">
+                  <h5>Departments</h5>
+                  <ul>
+                    {departments.map((item, idx) => (
+                      <li key={idx}>{item}</li>
+                    ))}
+                  </ul>
+                </div>
+              )}
+              {eligibleFields.length > 0 && (
+                <div className="scholarship-card__expanded-subsection">
+                  <h5>Eligible fields of study</h5>
+                  <ul>
+                    {eligibleFields.map((item, idx) => (
+                      <li key={idx}>{item}</li>
+                    ))}
+                  </ul>
+                </div>
+              )}
+              {eligibleProgrammes.length > 0 && (
+                <div className="scholarship-card__expanded-subsection">
+                  <h5>Specific programmes</h5>
+                  <ul>
+                    {eligibleProgrammes.map((item, idx) => (
+                      <li key={idx}>{item}</li>
+                    ))}
+                  </ul>
+                </div>
               )}
             </section>
           )}

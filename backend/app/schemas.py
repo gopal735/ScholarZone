@@ -198,6 +198,11 @@ class ScholarshipDetailResponse(ScholarshipResponse):
     best_fit: str | None = None
     last_verified_date: date | None = None
     notes: str | None = None
+    # Academic eligibility
+    departments: list[str] = Field(default_factory=list)
+    eligible_fields: list[str] = Field(default_factory=list)
+    eligible_programmes: list[str] = Field(default_factory=list)
+    academic_provenance: dict | None = None
     # Award economics
     description: str | None = None
     funding_amount: float | None = None

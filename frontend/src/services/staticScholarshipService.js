@@ -287,6 +287,7 @@ export function toScholarship(record) {
     image_alt_text: record.image_alt_text,
     eligibility: record.eligibility,
     benefits: record.benefits,
+    coverage: record.coverage,
     requirements: record.requirements,
     documents: record.documents,
     region: record.region,
@@ -310,6 +311,11 @@ export function toScholarship(record) {
     notes: record.notes,
     next_verification_due: record.next_verification_due,
     updated_at: record.updated_at,
+    // Academic eligibility
+    departments: record.departments,
+    eligible_fields: record.eligible_fields,
+    eligible_programmes: record.eligible_programmes,
+    academic_provenance: record.academic_provenance,
     // Derived by the same rule the live directory uses, so a card in the
     // fallback reads exactly like a card served by the API.
     statusInfo: statusOf(record),

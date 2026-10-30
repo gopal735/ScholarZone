@@ -204,6 +204,11 @@ def _upgrade_postgresql_schema(engine: Engine) -> None:
             "auto_delete_candidate_since": "TIMESTAMPTZ",
             # Operator override, checked before every other condition.
             "deletion_protected": "BOOLEAN NOT NULL DEFAULT FALSE",
+            # Academic eligibility - structured fields for departments, fields, programmes
+            "departments": "JSON",
+            "eligible_fields": "JSON",
+            "eligible_programmes": "JSON",
+            "academic_provenance": "JSON",
         }
         for name, definition in additions.items():
             if name not in columns:
@@ -387,6 +392,7 @@ def _migrate_fully_funded_to_nullable_sqlite(connection) -> None:
     """
     Properly migrate fully_funded column from NOT NULL to nullable in SQLite.
     Preserves all data, indexes, triggers, constraints, foreign keys, and autoincrement.
+    Uses the actual current table schema rather than a hardcoded one.
     """
     # 1. Get all indexes on the scholarships table
     indexes = connection.execute(text("""
@@ -403,106 +409,83 @@ def _migrate_fully_funded_to_nullable_sqlite(connection) -> None:
     # 3. Get all foreign key constraints
     fkeys = connection.execute(text("PRAGMA foreign_key_list(scholarships)")).fetchall()
     
-    # 4. Create new table with correct schema (fully_funded nullable)
-    connection.execute(text("""
-        CREATE TABLE scholarships_new (
-            id INTEGER PRIMARY KEY AUTOINCREMENT,
-            name VARCHAR(255) NOT NULL,
-            country VARCHAR(120) NOT NULL,
-            degree VARCHAR(120) NOT NULL,
-            funding VARCHAR(120),
-            deadline VARCHAR(255),
-            deadline_date DATE,
-            deadline_precision VARCHAR(32),
-            status VARCHAR(20) NOT NULL DEFAULT 'open',
-            verification_status VARCHAR(20) NOT NULL DEFAULT 'active',
-            last_verified_at DATE,
-            last_verified_date DATE,
-            region VARCHAR(255),
-            duration TEXT,
-            application_period TEXT,
-            official_source VARCHAR(255),
-            official_source_url VARCHAR(2048),
-            catalogue_url VARCHAR(2048),
-            official_updates_url VARCHAR(2048),
-            application_link VARCHAR(2048),
-            image_url VARCHAR(2048),
-            image_source_url VARCHAR(2048),
-            image_source_type VARCHAR(32),
-            image_kind VARCHAR(32),
-            image_verified_at DATETIME,
-            image_alt_text VARCHAR(512),
-            image_evaluation_status VARCHAR(32),
-            image_evaluated_at DATETIME,
-            eligibility JSON NOT NULL DEFAULT '[]',
-            eligibility_summary TEXT,
-            benefits JSON NOT NULL DEFAULT '[]',
-            coverage JSON NOT NULL DEFAULT '[]',
-            requirements JSON NOT NULL DEFAULT '[]',
-            documents JSON NOT NULL DEFAULT '[]',
-            english_requirement TEXT,
-            application_method JSON NOT NULL DEFAULT '[]',
-            selection_notes TEXT,
-            program_type VARCHAR(255),
-            best_fit TEXT,
-            notes TEXT,
-            next_verification_due DATE,
-            verified_by VARCHAR(120),
-            verification_notes TEXT,
-            is_archived BOOLEAN NOT NULL DEFAULT FALSE,
-            archived_at DATETIME,
-            archived_reason VARCHAR(120),
-            funding_amount NUMERIC(12, 2),
-            funding_currency VARCHAR(8),
-            funding_period VARCHAR(64),
-            tuition_coverage BOOLEAN,
-            living_cost_coverage BOOLEAN,
-            travel_coverage BOOLEAN,
-            fully_funded BOOLEAN,
-            official_details JSON,
-            applicant_utility JSON,
-            programme_verification JSON,
-            auto_delete_candidate_since DATETIME,
-            deletion_protected BOOLEAN NOT NULL DEFAULT FALSE
-        )
-    """))
+    # 3b. Get the current max ID to preserve autoincrement sequence
+    max_id_row = connection.execute(text("SELECT MAX(id) FROM scholarships")).fetchone()
+    max_id = max_id_row[0] if max_id_row and max_id_row[0] is not None else 0
     
-    # 5. Copy all data
-    connection.execute(text("INSERT INTO scholarships_new SELECT * FROM scholarships"))
+    # 4. Get the current table schema (column definitions)
+    table_info = connection.execute(text("PRAGMA table_info(scholarships)")).fetchall()
     
-    # 5b. Verify data integrity
+    # 5. Build the new table CREATE statement dynamically from actual schema
+    # Only change: make fully_funded nullable (notnull=0)
+    columns_sql = []
+    for col in table_info:
+        # col: (cid, name, type, notnull, dflt_value, pk)
+        col_name = col[1]
+        col_type = col[2]
+        col_notnull = col[3]
+        col_default = col[4]
+        col_pk = col[5]
+        
+        if col_name == "fully_funded":
+            # Make fully_funded nullable - remove NOT NULL constraint
+            notnull_clause = ""
+        else:
+            notnull_clause = " NOT NULL" if col_notnull else ""
+        
+        default_clause = f" DEFAULT {col_default}" if col_default is not None else ""
+        pk_clause = " PRIMARY KEY" if col_pk else ""
+        
+        # Handle AUTOINCREMENT for id column
+        autoinc_clause = " AUTOINCREMENT" if col_name == "id" and col_pk else ""
+        
+        columns_sql.append(f"{col_name} {col_type}{notnull_clause}{default_clause}{pk_clause}{autoinc_clause}")
+    
+    create_sql = f"CREATE TABLE scholarships_new (\n    " + ",\n    ".join(columns_sql) + "\n)"
+    connection.execute(text(create_sql))
+    
+    # 6. Copy all data with explicit column list (handles column order)
+    column_names = [col[1] for col in table_info]
+    columns_list = ", ".join(column_names)
+    connection.execute(text(f"INSERT INTO scholarships_new ({columns_list}) SELECT {columns_list} FROM scholarships"))
+    
+    # 6b. Verify data integrity
     old_count = connection.execute(text("SELECT COUNT(*) FROM scholarships")).scalar()
     new_count = connection.execute(text("SELECT COUNT(*) FROM scholarships_new")).scalar()
     if old_count != new_count:
         raise RuntimeError(f"Data copy failed: old={old_count}, new={new_count}")
     
-    # 5c. Verify foreign key integrity
+    # 6c. Verify foreign key integrity
     fk_check = connection.execute(text("PRAGMA foreign_key_check(scholarships_new)")).fetchall()
     if fk_check:
         raise RuntimeError(f"Foreign key check failed after copy: {fk_check}")
     
-    # 6. Drop old table
+    # 7. Drop old table
     connection.execute(text("DROP TABLE scholarships"))
     
-    # 7. Rename new table
+    # 8. Rename new table
     connection.execute(text("ALTER TABLE scholarships_new RENAME TO scholarships"))
     
-    # 8. Recreate all indexes
+    # 8b. Restore sqlite_sequence to preserve autoincrement
+    if max_id > 0:
+        connection.execute(text("UPDATE sqlite_sequence SET seq = :seq WHERE name = 'scholarships'"), {"seq": max_id})
+    
+    # 9. Recreate all indexes
     for name, sql in indexes:
         if sql:  # Some indexes might not have SQL (auto-created)
             connection.execute(text(sql))
     
-    # 9. Recreate all triggers
+    # 10. Recreate all triggers
     for name, sql in triggers:
         if sql:
             connection.execute(text(sql))
     
-    # 10. Verify foreign key integrity after rename
+    # 11. Verify foreign key integrity after rename
     fk_check = connection.execute(text("PRAGMA foreign_key_check(scholarships)")).fetchall()
     if fk_check:
         raise RuntimeError(f"Foreign key check failed after rename: {fk_check}")
     
-    # 11. Verify NOT NULL constraint is removed
+    # 12. Verify NOT NULL constraint is removed for fully_funded
     pragma_result = connection.execute(text("PRAGMA table_info(scholarships)")).fetchall()
     for row in pragma_result:
         if row[1] == "fully_funded" and row[3] == 1:
@@ -587,6 +570,11 @@ def _upgrade_sqlite_schema(engine: Engine) -> None:
         # Automatic garbage collection of closed records; see the model.
         "auto_delete_candidate_since": "DATETIME",
         "deletion_protected": "BOOLEAN NOT NULL DEFAULT FALSE",
+        # Academic eligibility - structured fields for departments, fields, programmes
+        "departments": "JSON NOT NULL DEFAULT '[]'",
+        "eligible_fields": "JSON NOT NULL DEFAULT '[]'",
+        "eligible_programmes": "JSON NOT NULL DEFAULT '[]'",
+        "academic_provenance": "JSON",
     }
 
     with engine.begin() as connection:

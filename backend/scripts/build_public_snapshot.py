@@ -88,6 +88,7 @@ PUBLIC_COLUMNS: tuple[str, ...] = (
     "application_link",
     "eligibility",
     "benefits",
+    "coverage",
     "requirements",
     "documents",
     "region",
@@ -117,6 +118,11 @@ PUBLIC_COLUMNS: tuple[str, ...] = (
     "notes",
     "next_verification_due",
     "updated_at",
+    # Academic eligibility
+    "departments",
+    "eligible_fields",
+    "eligible_programmes",
+    "academic_provenance",
 )
 
 #: Research enrichment tables. Listed so the exclusion is explicit and a
