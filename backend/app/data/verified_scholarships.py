@@ -243,11 +243,12 @@ VERIFIED_SCHOLARSHIPS = (
         description=(
             "DAAD (German Academic Exchange Service) is the world's largest funding organisation for international "
             "academic exchange. DAAD supports over 100,000 German and international students and researchers annually "
-            "through 100+ individually funded programmes. DAAD scholarships do not have to be paid back. They usually "
-            "consist of a monthly scholarship payment (currently EUR 992 for students and EUR 1,300 for doctoral/PhD "
-            "students) and a flat-rate travel allowance. In many cases, DAAD also provides health, accident and personal "
-            "liability insurance. Depending on the scholarship programme, there are also additional benefits such as "
-            "a one-off research allowance, family benefits or funds for language courses."
+            "through 100+ individually funded programmes. DAAD scholarships do not have to be paid back. As of February "
+            "2026, the monthly stipend is EUR 992 for Master's students and EUR 1,400 for doctoral/PhD candidates. A flat-rate "
+            "travel allowance is also provided. In many cases, DAAD also provides health, accident and personal liability "
+            "insurance. Depending on the scholarship programme, there are also additional benefits such as a one-off research "
+            "allowance, family benefits or funds for language courses. Not all DAAD programmes cover tuition - applicants "
+            "must verify tuition coverage per individual programme on the DAAD Funding Guide database."
         ),
         funding_amount=None,  # Varies by programme: EUR 992 (Master's) to EUR 1,300 (PhD)
         funding_currency="EUR",
@@ -441,14 +442,17 @@ VERIFIED_SCHOLARSHIPS = (
         description=(
             "The MEXT (Monbukagakusho) Scholarship is the Japanese Government Scholarship offered by the Ministry of "
             "Education, Culture, Sports, Science and Technology (MEXT). It supports international students for "
-            "undergraduate, master's, and doctoral studies in Japan. The scholarship includes full tuition, a monthly "
-            "stipend (approx. 117,000-148,000 JPY depending on level), round-trip economy airfare, and 6 months to "
-            "1 year of Japanese language training. The scholarship is offered through multiple tracks: Research Student "
-            "(leads to Master's/PhD), Undergraduate, Teacher Training, Japanese Studies, College of Technology, and "
-            "Specialized Training College. There are two application paths for Bangladeshi applicants: (1) Embassy "
-            "Recommendation - apply via Bangladesh Ministry of Education SHED portal, screened by Embassy of Japan "
+            "undergraduate, master's, and doctoral studies in Japan. Stipends vary by track: Undergraduate students "
+            "receive JPY 117,000/month (per the 2027 undergraduate guideline); Research Students (Master's/PhD) receive "
+            "JPY 148,000/month; Teacher Training and Japanese Studies students receive JPY 148,000/month; College of "
+            "Technology students receive JPY 117,000/month. All tracks include full tuition, round-trip economy airfare, "
+            "and 6 months to 1 year of Japanese language training. The scholarship is offered through multiple tracks: "
+            "Research Student (leads to Master's/PhD), Undergraduate, Teacher Training, Japanese Studies, College of "
+            "Technology, and Specialized Training College. There are two application paths for Bangladeshi applicants: (1) "
+            "Embassy Recommendation - apply via Bangladesh Ministry of Education SHED portal, screened by Embassy of Japan "
             "Dhaka (written exam + interview); (2) University Recommendation - apply directly to a Japanese university "
-            "which recommends to MEXT."
+            "which recommends to MEXT. Stipend rates per the 2027 MEXT guidelines; verify current rates at "
+            "studyinjapan.go.jp."
         ),
         funding_amount=None,  # Varies by programme/track: JPY 117,000-148,000
         funding_currency="JPY",

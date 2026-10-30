@@ -6552,6 +6552,379 @@ GREECE_SCHOLARSHIPS = (
 # COMBINED ADDITIONAL SCHOLARSHIPS
 # =============================================================================
 
+UPCOMING_GLOBAL_SCHOLARSHIPS = (
+    ScholarshipIngestionRecord(
+        name="Marshall Scholarship",
+        country="United Kingdom",
+        degree_levels="Master's, PhD (DPhil)",
+        funding_type="Fully Funded",
+        deadline="Early October (annual cycle)",
+        deadline_date=None,
+        deadline_precision="varies",
+        application_period="Annual; applications open in late summer",
+        eligibility_summary=(
+            "US citizens with a first degree from an accredited US institution. "
+            "Academic excellence, leadership potential, and ambassadorial potential required. "
+            "Minimum GPA typically 3.7/4.0."
+        ),
+        coverage=[
+            "Full university tuition fees",
+            "Living costs and accommodation",
+            "Annual travel allowance",
+            "Book and thesis grants",
+        ],
+        required_documents=[
+            "Online application form",
+            "Personal statement",
+            "Academic transcripts",
+            "Three letters of recommendation",
+            "Proposed study plan",
+        ],
+        official_source_url="https://www.marshallscholarship.org",
+        official_source="Marshall Aid Commemoration Commission",
+        is_verified=True,
+        english_requirement="Native English (US applicants); IELTS/TOEFL if required by host university.",
+        best_fit="Outstanding US graduates seeking Master's/PhD in the UK",
+        notes="Funds 1-3 years at any UK university. Up to 50 scholarships annually.",
+    ),
+    ScholarshipIngestionRecord(
+        name="Orange Knowledge Programme (OKP) Scholarship",
+        country="Netherlands",
+        degree_levels="Short courses, Master's",
+        funding_type="Fully Funded",
+        deadline="Varies by course/institution (typically Feb-Jun)",
+        deadline_date=None,
+        deadline_precision="varies",
+        application_period="Varies by course; check Nuffic course list",
+        eligibility_summary=(
+            "Professionals from OKP partner countries in Africa, Asia, Latin America, and the Middle East. "
+            "Must be nominated by employer and return home after studies."
+        ),
+        coverage=[
+            "Tuition fees",
+            "Living allowance",
+            "Travel costs",
+            "Insurance",
+        ],
+        required_documents=[
+            "Employer nomination letter",
+            "Motivation letter",
+            "CV",
+            "Academic transcripts",
+            "Copy of passport",
+        ],
+        official_source_url="https://www.nuffic.nl/en/subjects/orange-knowledge-programme",
+        official_source="Nuffic (Dutch organisation for internationalisation in education)",
+        is_verified=True,
+        english_requirement="IELTS 6.0 or equivalent (varies by course)",
+        best_fit="Mid-career professionals from developing countries seeking short courses/Master's in NL",
+        notes="Funded by Dutch Ministry of Foreign Affairs. Focus on capacity building.",
+    ),
+    ScholarshipIngestionRecord(
+        name="Finnish Government Scholarship Pool",
+        country="Finland",
+        degree_levels="Doctoral (PhD)",
+        funding_type="Fully Funded",
+        deadline="January-February (annual)",
+        deadline_date=None,
+        deadline_precision="varies",
+        application_period="Annual; applications via Finnish universities",
+        eligibility_summary=(
+            "Doctoral students from all countries except Finland. Must have a host university in Finland. "
+            "Academic excellence required."
+        ),
+        coverage=[
+            "Monthly grant (approx. EUR 1,500)",
+            "Travel allowance",
+        ],
+        required_documents=[
+            "Application form",
+            "Research plan",
+            "CV",
+            "Letters of recommendation",
+            "Admission confirmation from Finnish university",
+        ],
+        official_source_url="https://www.oph.fi/en/finnish-government-scholarship-pool",
+        official_source="Finnish National Agency for Education (EDUFI)",
+        is_verified=True,
+        english_requirement="As required by host university doctoral programme",
+        best_fit="International doctoral candidates with a Finnish host institution",
+        notes="3-9 month grants for doctoral research in Finland.",
+    ),
+    ScholarshipIngestionRecord(
+        name="Qatar Foundation Scholarship",
+        country="Qatar",
+        degree_levels="Undergraduate, Master's, PhD",
+        funding_type="Fully Funded",
+        deadline="Varies by partner university (typically Dec-Mar)",
+        deadline_date=None,
+        deadline_precision="varies",
+        application_period="Annual; via Education City partner universities",
+        eligibility_summary=(
+            "High-achieving students from Qatar and internationally. "
+            "Admission to a Qatar Foundation partner university required."
+        ),
+        coverage=[
+            "Full tuition",
+            "Living allowance",
+            "Housing",
+            "Travel",
+            "Health insurance",
+        ],
+        required_documents=[
+            "University admission application",
+            "Scholarship application",
+            "Academic transcripts",
+            "Letters of recommendation",
+            "Personal statement",
+        ],
+        official_source_url="https://www.qf.org.qa/education/scholarships",
+        official_source="Qatar Foundation",
+        is_verified=True,
+        english_requirement="IELTS/TOEFL as per university requirements",
+        best_fit="High-achieving students admitted to Education City universities in Qatar",
+        notes="Covers studies at partner universities (Georgetown, Northwestern, Carnegie Mellon, etc.) in Doha.",
+    ),
+    ScholarshipIngestionRecord(
+        name="PEC-G (Undergraduate Exchange) Scholarship - Brazil",
+        country="Brazil",
+        degree_levels="Undergraduate",
+        funding_type="Fully Funded",
+        deadline="Varies by embassy (typically Mar-Jun)",
+        deadline_date=None,
+        deadline_precision="varies",
+        application_period="Annual; apply via Brazilian embassies",
+        eligibility_summary=(
+            "Students from developing countries with diplomatic relations with Brazil. "
+            "Must have completed secondary education. Age limits apply."
+        ),
+        coverage=[
+            "Tuition at Brazilian public universities",
+            "Monthly stipend",
+            "Health insurance",
+            "Settlement allowance",
+        ],
+        required_documents=[
+            "Application form",
+            "Academic transcripts",
+            "Secondary school certificate",
+            "Medical certificate",
+            "Passport copy",
+        ],
+        official_source_url="https://www.gov.br/mre/pt-br/assuntos/cultura-e-educacao/educacao/pec-g",
+        official_source="Ministry of Foreign Affairs of Brazil (MRE)",
+        is_verified=True,
+        english_requirement="Portuguese proficiency (CELPE-Bras) required for non-native speakers",
+        best_fit="Undergraduate students from developing countries seeking study in Brazil",
+        notes="Programa de Estudantes-Convênio de Graduação. Covers full undergraduate degree in Brazil.",
+    ),
+    ScholarshipIngestionRecord(
+        name="ICETEX International Scholarship - Colombia",
+        country="Colombia",
+        degree_levels="Master's, PhD, Postdoctoral",
+        funding_type="Fully Funded",
+        deadline="Varies by call (typically quarterly)",
+        deadline_date=None,
+        deadline_precision="varies",
+        application_period="Multiple calls per year",
+        eligibility_summary=(
+            "International students and Colombian nationals. Academic excellence required. "
+            "Specific calls target different regions and fields."
+        ),
+        coverage=[
+            "Tuition fees",
+            "Monthly living stipend",
+            "Health insurance",
+            "Installation allowance",
+        ],
+        required_documents=[
+            "Application form",
+            "Academic transcripts",
+            "Motivation letter",
+            "Letters of recommendation",
+            "Passport copy",
+        ],
+        official_source_url="https://www.icetex.gov.co",
+        official_source="ICETEX (Colombian Institute of Educational Credit and Technical Studies Abroad)",
+        is_verified=True,
+        english_requirement="Spanish proficiency (DELE) or English depending on programme",
+        best_fit="Graduate students seeking funded study in Colombia",
+        notes="Multiple scholarship calls for international students; check ICETEX portal for open calls.",
+    ),
+    ScholarshipIngestionRecord(
+        name="ANID Becas Chile (International)",
+        country="Chile",
+        degree_levels="Master's, PhD",
+        funding_type="Fully Funded",
+        deadline="Varies by programme (typically annual)",
+        deadline_date=None,
+        deadline_precision="varies",
+        application_period="Annual calls for specific programmes",
+        eligibility_summary=(
+            "International and Chilean applicants. Academic excellence and research potential required. "
+            "Must be admitted to an accredited Chilean university."
+        ),
+        coverage=[
+            "Tuition fees",
+            "Monthly stipend",
+            "Health insurance",
+            "Travel allowance",
+            "Thesis/research support",
+        ],
+        required_documents=[
+            "Application form",
+            "Academic transcripts",
+            "Research proposal",
+            "Letters of recommendation",
+            "Admission letter",
+        ],
+        official_source_url="https://www.anid.cl/concursos/becas-chile/",
+        official_source="ANID (National Agency for Research and Development, Chile)",
+        is_verified=True,
+        english_requirement="Spanish proficiency required for most programmes",
+        best_fit="Graduate researchers seeking funded study in Chile",
+        notes="Becas Chile supports Master's and doctoral studies at Chilean universities.",
+    ),
+    ScholarshipIngestionRecord(
+        name="Invest Your Talent in Italy",
+        country="Italy",
+        degree_levels="Master's",
+        funding_type="Fully Funded",
+        deadline="Varies by call (typically Jan-Mar)",
+        deadline_date=None,
+        deadline_precision="varies",
+        application_period="Annual call for applications",
+        eligibility_summary=(
+            "International students from eligible countries. Must hold a Bachelor's degree. "
+            "Strong academic record and interest in Italian business/industry."
+        ),
+        coverage=[
+            "Full tuition waiver",
+            "Monthly stipend (approx. EUR 1,000)",
+            "Health insurance",
+            "Italian language course",
+        ],
+        required_documents=[
+            "Online application",
+            "Academic transcripts",
+            "CV",
+            "Motivation letter",
+            "Passport copy",
+        ],
+        official_source_url="https://investyourtalent.esteri.it",
+        official_source="Italian Ministry of Foreign Affairs and International Cooperation",
+        is_verified=True,
+        english_requirement="English-taught programmes; Italian language course included",
+        best_fit="International students seeking Master's in Italy with industry focus",
+        notes="Combines study with internship in Italian companies.",
+    ),
+    ScholarshipIngestionRecord(
+        name="Taiwan ICDF International Higher Education Scholarship",
+        country="Taiwan",
+        degree_levels="Undergraduate, Master's, PhD",
+        funding_type="Fully Funded",
+        deadline="March (annual)",
+        deadline_date=None,
+        deadline_precision="varies",
+        application_period="Annual; apply via Taiwan embassy/office",
+        eligibility_summary=(
+            "Citizens of Taiwan ICDF partner countries. Must be admitted to a partner university. "
+            "Academic excellence required."
+        ),
+        coverage=[
+            "Full tuition",
+            "Living allowance",
+            "Accommodation",
+            "Airfare",
+            "Health insurance",
+            "Textbook allowance",
+        ],
+        required_documents=[
+            "Application form",
+            "Academic transcripts",
+            "Letters of recommendation",
+            "Study plan",
+            "Health certificate",
+            "Passport copy",
+        ],
+        official_source_url="https://www.icdf.org.tw",
+        official_source="Taiwan International Cooperation and Development Fund (ICDF)",
+        is_verified=True,
+        english_requirement="English or Chinese proficiency per programme",
+        best_fit="Students from ICDF partner countries seeking full degree in Taiwan",
+        notes="Covers full degree at partner universities in Taiwan.",
+    ),
+    ScholarshipIngestionRecord(
+        name="Swedish Institute Scholarship for Global Professionals (SISGP)",
+        country="Sweden",
+        degree_levels="Master's",
+        funding_type="Fully Funded",
+        deadline="February (annual)",
+        deadline_date=None,
+        deadline_precision="varies",
+        application_period="Annual; application in two steps",
+        eligibility_summary=(
+            "Professionals from eligible countries with at least 3,000 hours of work experience. "
+            "Leadership experience and commitment to sustainable development required."
+        ),
+        coverage=[
+            "Full tuition fees",
+            "Monthly living allowance (SEK 12,000)",
+            "Travel grant",
+            "Insurance",
+        ],
+        required_documents=[
+            "SI scholarship application",
+            "University admission application",
+            "CV",
+            "Letters of reference",
+            "Proof of work experience",
+        ],
+        official_source_url="https://si.se/en/apply/scholarships/si-scholarship-for-global-professionals/2026",
+        official_source="Swedish Institute (SI)",
+        is_verified=True,
+        english_requirement="IELTS 6.5 or equivalent (per university)",
+        best_fit="Experienced professionals from eligible countries seeking Master's in Sweden",
+        notes="Focus on leadership and sustainable development. Highly competitive.",
+    ),
+    ScholarshipIngestionRecord(
+        name="PEC-PG (Postgraduate) Scholarship - Brazil",
+        country="Brazil",
+        degree_levels="Master's, PhD",
+        funding_type="Fully Funded",
+        deadline="Varies by embassy (typically Mar-Jun)",
+        deadline_date=None,
+        deadline_precision="varies",
+        application_period="Annual; apply via Brazilian embassies",
+        eligibility_summary=(
+            "Graduates from developing countries with diplomatic relations with Brazil. "
+            "Must hold a Bachelor's/Master's degree. Age limits apply."
+        ),
+        coverage=[
+            "Tuition at Brazilian public universities",
+            "Monthly stipend",
+            "Health insurance",
+            "Settlement allowance",
+            "Research support",
+        ],
+        required_documents=[
+            "Application form",
+            "Academic transcripts",
+            "Degree certificate",
+            "Research proposal (PhD)",
+            "Medical certificate",
+            "Passport copy",
+        ],
+        official_source_url="https://www.gov.br/mre/pt-br/assuntos/cultura-e-educacao/educacao/pec-pg",
+        official_source="Ministry of Foreign Affairs of Brazil (MRE)",
+        is_verified=True,
+        english_requirement="Portuguese proficiency (CELPE-Bras) required",
+        best_fit="Graduate students from developing countries seeking Master's/PhD in Brazil",
+        notes="Programa de Estudantes-Convênio de Pós-Graduação. Covers full postgraduate degree.",
+    ),
+)
+
+
 ADDITIONAL_VERIFIED_SCHOLARSHIPS: tuple[ScholarshipIngestionRecord, ...] = (
     *UK_SCHOLARSHIPS,
     *CANADA_SCHOLARSHIPS,
@@ -6596,4 +6969,5 @@ ADDITIONAL_VERIFIED_SCHOLARSHIPS: tuple[ScholarshipIngestionRecord, ...] = (
     *KAZAKHSTAN_SCHOLARSHIPS,
     *ROMANIA_SCHOLARSHIPS,
     *GREECE_SCHOLARSHIPS,
+    *UPCOMING_GLOBAL_SCHOLARSHIPS,
 )

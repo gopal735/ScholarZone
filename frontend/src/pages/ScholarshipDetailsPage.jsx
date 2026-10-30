@@ -437,7 +437,7 @@ export default function ScholarshipDetailsPage() {
     try { return new URL(applyUrl).hostname.replace(/^www\./, '') } catch { return null }
   })()
 
-  const description = readText(scholarship.description)
+const description = readText(scholarship.description)
   const quickFacts = buildQuickFacts(scholarship)
   const benefits = readList(scholarship.benefits)
   const coverage = readList(scholarship.coverage)
@@ -447,12 +447,35 @@ export default function ScholarshipDetailsPage() {
   const documents = readList(scholarship.documents) || readList(scholarship.required_documents)
   const applicationMethod = readList(scholarship.application_method)
   const englishRequirement = readText(scholarship.english_requirement)
-const bestFit = readText(scholarship.best_fit)
+  const bestFit = readText(scholarship.best_fit)
   const selectionNotes = readText(scholarship.selection_notes)
   const notes = readText(scholarship.notes)
   const officialLinks = buildOfficialLinks(scholarship)
   const verification = buildVerificationRecord(scholarship)
   const verificationState = verificationLabel(scholarship.verification_status)
+
+  // Funding & coverage fields
+  const fundingAmount = scholarship.funding_amount
+  const fundingCurrency = scholarship.funding_currency
+  const fundingPeriod = scholarship.funding_period
+  const fullyFunded = scholarship.fully_funded
+  const tuitionCoverage = scholarship.tuition_coverage
+  const livingCostCoverage = scholarship.living_cost_coverage
+  const travelCoverage = scholarship.travel_coverage
+  const duration = readText(scholarship.duration)
+  const applicationPeriod = readText(scholarship.application_period)
+  const programType = readText(scholarship.program_type)
+
+  // Compute whether to show funding section
+  const showFunding = (
+    (fundingAmount !== null && fundingAmount !== undefined) ||
+    fundingCurrency || fundingPeriod ||
+    fullyFunded !== null && fullyFunded !== undefined ||
+    tuitionCoverage !== null && tuitionCoverage !== undefined ||
+    livingCostCoverage !== null && livingCostCoverage !== undefined ||
+    travelCoverage !== null && travelCoverage !== undefined ||
+    duration || applicationPeriod || programType
+  )
 
   return (
     <article className="sz-detail">
@@ -580,6 +603,82 @@ const bestFit = readText(scholarship.best_fit)
           </a>
         ) : null}
       </Reveal>
+
+      {/* 02 — QUICK FACTS */}
+      <DetailBlock
+        id="facts"
+        index="01"
+        eyebrow="At a glance"
+        title="Key information"
+        className="sz-detail__block--facts"
+      >
+        <KeyValueGrid entries={quickFacts} />
+      </DetailBlock>
+
+      {/* 02b — FUNDING & COVERAGE */}
+      {showFunding && (
+        <DetailBlock
+          id="funding"
+          index="02"
+          eyebrow="Award economics"
+          title="Funding & coverage"
+          className="sz-detail__block--prose"
+        >
+          <dl className="sz-detail__funding-facts">
+            {fullyFunded !== null && fullyFunded !== undefined && (
+              <>
+                <dt>Fully funded</dt>
+                <dd>{fullyFunded === true ? 'Yes' : fullyFunded === false ? 'No' : 'Not confirmed'}</dd>
+              </>
+            )}
+            {(fundingAmount !== null && fundingAmount !== undefined) && (
+              <>
+                <dt>Amount</dt>
+                <dd>
+                  {Number(fundingAmount).toLocaleString()} {fundingCurrency || ''}
+                  {fundingPeriod ? ` / ${fundingPeriod}` : ''}
+                </dd>
+              </>
+            )}
+            {tuitionCoverage !== null && tuitionCoverage !== undefined && (
+              <>
+                <dt>Tuition</dt>
+                <dd>{tuitionCoverage ? 'Covered' : 'Not covered'}</dd>
+              </>
+            )}
+            {livingCostCoverage !== null && livingCostCoverage !== undefined && (
+              <>
+                <dt>Living costs</dt>
+                <dd>{livingCostCoverage ? 'Covered' : 'Not covered'}</dd>
+              </>
+            )}
+            {travelCoverage !== null && travelCoverage !== undefined && (
+              <>
+                <dt>Travel</dt>
+                <dd>{travelCoverage ? 'Covered' : 'Not covered'}</dd>
+              </>
+            )}
+            {duration && (
+              <>
+                <dt>Duration</dt>
+                <dd>{duration}</dd>
+              </>
+            )}
+            {applicationPeriod && (
+              <>
+                <dt>Application period</dt>
+                <dd>{applicationPeriod}</dd>
+              </>
+            )}
+            {programType && (
+              <>
+                <dt>Programme type</dt>
+                <dd>{programType}</dd>
+              </>
+            )}
+          </dl>
+        </DetailBlock>
+      )}
 
       {/* 02 — QUICK FACTS */}
       <DetailBlock
