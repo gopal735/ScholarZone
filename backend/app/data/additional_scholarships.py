@@ -4729,7 +4729,8 @@ SAUDI_ARABIA_SCHOLARSHIPS = (
         notes=(
             "Largest Saudi government scholarship program. Tracks include: Bachelor's, Master's, PhD, "
             "Postdoctoral Fellowships, Medical Residency/Fellowship, and Language Training. "
-            "Managed through the Safeer portal. Must maintain satisfactory academic progress."
+            "Managed through the Safeer portal. Must maintain satisfactory academic progress. "
+            "RESTRICTED TO SAUDI CITIZENS ONLY."
         ),
     ),
     ScholarshipIngestionRecord(
@@ -4963,7 +4964,7 @@ RUSSIA_SCHOLARSHIPS = (
             "Two pathways: (1) Open Doors International Olympiad - compete online, winners get "
             "tuition-free admission to any participating university; (2) Government quota - apply "
             "through Russian embassy/consulate in your country. Preparatory Russian language "
-            "program (1 year) available if needed."
+            "program (1 year) available if needed. FOR INTERNATIONAL (NON-RUSSIAN) CITIZENS ONLY."
         ),
     ),
     ScholarshipIngestionRecord(
@@ -5097,10 +5098,11 @@ ISRAEL_SCHOLARSHIPS = (
             "Research proposal required."
         ),
         coverage=[
-            "Full tuition waiver",
-            "Monthly stipend: USD 1,000-1,500 (Master's) / USD 1,500-2,000 (PhD)",
+            "Full tuition waiver (with 4+ scholarship portions)",
+            "Monthly stipend: NIS 1,101–1,522 per portion (April 2026 rates); "
+            "typical award 3–6 portions/month = ~NIS 3,300–9,132 (~USD 900–2,500)",
             "Health insurance",
-            "On-campus housing (subsidized)",
+            "On-campus housing (subsidized; ~NIS 1,250/month for international students)",
             "Conference travel fund: USD 1,500/year",
             "Relocation allowance (one-time)",
         ],
@@ -5108,15 +5110,20 @@ ISRAEL_SCHOLARSHIPS = (
         official_source="Technion — Israel Institute of Technology",
         is_verified=True,
         best_fit="Top STEM researchers seeking fully funded graduate studies at Israel's premier tech university",
-        notes="Israel's MIT equivalent. World-class in engineering, computer science, and sciences. "
-            "All PhD students typically receive full funding packages.",
+        notes=(
+            "Israel's MIT equivalent. World-class in engineering, computer science, and sciences. "
+            "Scholarships awarded in 'portions' (1–6/month) by academic unit. "
+            "Tuition waiver proportional to portions: 1 portion = 25%, 4+ = 100%. "
+            "All PhD students typically receive full funding packages. "
+            "NIS rates effective April 2026 per Graduate School table."
+        ),
     ),
     ScholarshipIngestionRecord(
         name="Weizmann Institute of Science International PhD Program",
         country="Israel",
-        degree_levels="PhD (Direct PhD for exceptional Master's graduates)",
+        degree_levels="PhD (Direct PhD for exceptional Master's graduates); MSc also available",
         funding_type="Fully Funded",
-        deadline="Typically December–March for Fall intake",
+        deadline="Typically December–March for Fall intake; PhD applications year-round",
         deadline_date=None,
         deadline_precision="varies",
         eligibility_summary=(
@@ -5126,10 +5133,11 @@ ISRAEL_SCHOLARSHIPS = (
         ),
         coverage=[
             "Full tuition waiver",
-            "Monthly stipend: ~USD 2,000 (among highest globally)",
+            "Monthly stipend: NIS 7,000 (MSc) / NIS 9,000 (PhD regular) / NIS 10,800 (PhD after candidacy) "
+            "(~USD 1,850 / 2,400 / 2,900 at current rates)",
             "Health insurance",
             "Free on-campus housing",
-            "Annual conference travel budget: USD 2,500",
+            "Annual conference travel budget: USD 4,250 (paid in two installments)",
             "Relocation and settling-in allowance",
             "Family support for students with dependents",
         ],
@@ -5137,34 +5145,48 @@ ISRAEL_SCHOLARSHIPS = (
         official_source="Weizmann Institute of Science",
         is_verified=True,
         best_fit="Elite researchers in natural and exact sciences seeking world-class PhD funding",
-        notes="One of the world's top research institutes. All PhD students fully funded with generous stipends. "
-            "Multidisciplinary environment with no teaching obligations.",
+        notes=(
+            "One of the world's top research institutes. All MSc/PhD students fully funded with guaranteed stipends. "
+            "MSc: NIS 7,000/month for 24 months. PhD: NIS 9,000/month for 4.5 years (max 60 months), "
+            "increasing to NIS 10,800 after candidacy exam. "
+            "Multidisciplinary environment with no teaching obligations. "
+            "Stipend rates per Feinberg Graduate School 2025–2026 policy. "
+            "Official fellowship page: https://www.weizmann.ac.il/wsos/fellowship-aid/phd-students"
+        ),
+        legacy_titles=("Weizmann Institute of Science International PhD Program",),
     ),
     ScholarshipIngestionRecord(
-        name="Tel Aviv University International Scholarships",
+        name="Tel Aviv University Lowy International Scholarship Fund",
         country="Israel",
-        degree_levels="Bachelor's, Master's, PhD",
-        funding_type="Partial to Fully Funded",
-        deadline="Varies by program (typically March–June)",
+        degree_levels="Bachelor's, Master's",
+        funding_type="Partial (Tuition Only)",
+        deadline="Varies by program (typically March–June for Fall intake)",
         deadline_date=None,
         deadline_precision="varies",
         eligibility_summary=(
-            "All nationalities. Academic excellence. English-taught programs: TOEFL ≥ 89 or IELTS ≥ 6.5. "
-            "Merit-based scholarships for international students. "
-            "Need-based grants also available."
+            "All nationalities. Admitted to a TAU Lowy International School degree program. "
+            "Merit-based; must participate in Student Ambassador Club. "
+            "Does not cover living expenses."
         ),
         coverage=[
-            "Tuition remission: 25-100% based on merit/need",
-            "Monthly living stipend for full scholarship recipients",
-            "Health insurance",
-            "On-campus housing priority",
-            "Excellence awards for top students",
+            "Tuition fee reduction (amount varies; tuition-only award)",
+            "No monthly stipend or living allowance",
+            "Health insurance not included",
         ],
         official_source_url="https://international.tau.ac.il/scholarships",
-        official_source="Tel Aviv University",
+        official_source="Tel Aviv University — Lowy International School",
         is_verified=True,
-        best_fit="International students seeking high-quality education at Israel's largest university",
-        notes="Israel's largest university. Wide range of English-taught programs. Strong industry connections.",
+        best_fit="Admitted international students seeking tuition support at TAU",
+        notes=(
+            "The Lowy International Scholarship Fund covers TUITION FEES ONLY — no living stipend. "
+            "Separate award categories exist: PhD/postdoctoral fellowships (faculty-funded), "
+            "regional awards (e.g., Canadian, Ukrainian, Asian), "
+            "Research Excellence Program for Asia (RExPA), and sports scholarships. "
+            "PhD students typically funded through faculty research grants, not Lowy Fund. "
+            "Check 'Tuition-Free & Funded Programs' page for fully funded degree options. "
+            "Scholarship portal: https://international.tau.ac.il/scholarship_programs"
+        ),
+        legacy_titles=("Tel Aviv University International Scholarships", "Tel Aviv University Lowy International Scholarship Fund",),
     ),
 )
 # =============================================================================
@@ -5181,7 +5203,7 @@ KAZAKHSTAN_SCHOLARSHIPS = (
         deadline_date=None,
         deadline_precision="varies",
         eligibility_summary=(
-            "Kazakhstan citizens only. Age limits: Master's ≤ 30, PhD ≤ 35, Postdoc ≤ 40. "
+            "Kazakhstan citizens ONLY. Age limits: Master's ≤ 30, PhD ≤ 35, Postdoc ≤ 40. "
             "GPA ≥ 3.5/4.0 or equivalent. IELTS ≥ 6.5 or TOEFL ≥ 84. "
             "Must return to Kazakhstan and work for 5 years after graduation. "
             "Priority fields: STEM, medicine, education, management, law, agriculture, digitalization."
@@ -5200,9 +5222,12 @@ KAZAKHSTAN_SCHOLARSHIPS = (
         official_source="Bolashak Program, Ministry of Science and Higher Education, Republic of Kazakhstan",
         is_verified=True,
         best_fit="Kazakh citizens seeking fully funded graduate studies at top global universities",
-        notes="Kazakhstan's flagship presidential scholarship. Over 15,000 alumni since 1993. "
+        notes=(
+            "Kazakhstan's flagship presidential scholarship. Over 15,000 alumni since 1993. "
             "Competitive selection with testing, interviews, and psychological assessment. "
-            "Must study at pre-approved top universities worldwide.",
+            "Must study at pre-approved top universities worldwide. "
+            "RESTRICTED TO KAZAKHSTAN CITIZENS ONLY. 5-year return-to-work obligation."
+        ),
     ),
     ScholarshipIngestionRecord(
         name="Nazarbayev University (NU) Graduate Scholarships",
@@ -5277,7 +5302,8 @@ ROMANIA_SCHOLARSHIPS = (
             "Age limits: Bachelor's ≤ 25, Master's ≤ 30, PhD ≤ 35. "
             "Good academic record. Romanian language proficiency required (preparatory year included). "
             "Fields: all except Medicine/Dentistry/Pharmacy (separate programs). "
-            "Must not have previously received Romanian government scholarship."
+            "Must not have previously received Romanian government scholarship. "
+            "EU citizens NOT eligible for this programme."
         ),
         coverage=[
             "Full tuition waiver",
@@ -5290,15 +5316,17 @@ ROMANIA_SCHOLARSHIPS = (
         official_source="Ministry of Foreign Affairs, Romania",
         is_verified=True,
         best_fit="Non-EU citizens seeking fully funded degrees with Romanian language immersion",
-        notes="Apply through Romanian diplomatic missions in your country. "
+        notes=(
+            "Apply through Romanian diplomatic missions in your country. "
             "Preparatory year covers Romanian language and field-specific vocabulary. "
-            "Program has been running for 50+ years.",
+            "Program has been running for 50+ years. FOR NON-EU CITIZENS ONLY."
+        ),
     ),
     ScholarshipIngestionRecord(
         name="University of Bucharest International Scholarships",
         country="Romania",
         degree_levels="Bachelor's, Master's, PhD",
-        funding_type="Partial to Fully Funded",
+        funding_type="Partial",
         deadline="Varies by faculty (typically May–July)",
         deadline_date=None,
         deadline_precision="varies",
@@ -5306,11 +5334,12 @@ ROMANIA_SCHOLARSHIPS = (
             "All nationalities. Strong academic record. "
             "Romanian language proficiency or preparatory year. "
             "English-taught programs available in some faculties (IELTS/TOEFL required). "
-            "Merit-based scholarships for top international students."
+            "Merit-based tuition reductions for top international students. "
+            "No monthly stipend for most awards; Erasmus+ mobility grants available separately."
         ),
         coverage=[
             "Tuition reduction: 50-100% for merit scholarship recipients",
-            "Monthly stipend for full scholarship holders",
+            "No monthly stipend (tuition-only awards)",
             "Dormitory accommodation priority",
             "Health insurance",
             "Erasmus+ mobility opportunities",
@@ -5318,8 +5347,12 @@ ROMANIA_SCHOLARSHIPS = (
         official_source_url="https://admitere.unibuc.ro/en/international-students/scholarships/",
         official_source="University of Bucharest",
         is_verified=True,
-        best_fit="High-achieving international students at Romania's top university",
-        notes="Romania's highest-ranked university. Strong in humanities, sciences, and social sciences.",
+        best_fit="High-achieving international students at Romania's top university (tuition support only)",
+        notes=(
+            "Romania's highest-ranked university. Strong in humanities, sciences, and social sciences. "
+            "Scholarships are tuition reductions only — no living stipend. "
+            "Erasmus+ grants available for exchange mobility."
+        ),
     ),
     ScholarshipIngestionRecord(
         name="Babes-Bolyai University (UBB) International Scholarships",
@@ -5333,10 +5366,12 @@ ROMANIA_SCHOLARSHIPS = (
             "All nationalities. Academic merit. "
             "Programs taught in Romanian, Hungarian, English, French, German. "
             "Language requirements vary by language of instruction. "
-            "Merit scholarships for top-ranked international applicants."
+            "Merit-based tuition fee reductions for top-ranked international applicants. "
+            "No monthly stipend; Erasmus+ and bilateral exchange grants available separately."
         ),
         coverage=[
             "Tuition fee reduction: up to 50% for merit scholarships",
+            "No monthly stipend (tuition-only awards)",
             "Dormitory accommodation",
             "Health insurance",
             "Erasmus+ and bilateral exchange opportunities",
@@ -5344,9 +5379,13 @@ ROMANIA_SCHOLARSHIPS = (
         official_source_url="https://www.ubbcluj.ro/en/admissions/international-students/scholarships/",
         official_source="Babeș-Bolyai University (Cluj-Napoca)",
         is_verified=True,
-        best_fit="Multilingual students seeking quality education in a multicultural environment",
-        notes="Largest university in Romania. Multicultural environment (Romanian, Hungarian, German lines). "
-            "Many English-taught programs at Master's level.",
+        best_fit="Multilingual students seeking tuition support at Romania's largest university",
+        notes=(
+            "Largest university in Romania. Multicultural environment (Romanian, Hungarian, German lines). "
+            "Many English-taught programs at Master's level. "
+            "Scholarships are tuition reductions only — no living stipend. "
+            "Erasmus+ and bilateral exchange grants available for mobility."
+        ),
     ),
 )
 # =============================================================================
@@ -5357,35 +5396,43 @@ GREECE_SCHOLARSHIPS = (
     ScholarshipIngestionRecord(
         name="IKY (State Scholarships Foundation) Fellowships for Postgraduate Studies",
         country="Greece",
-        degree_levels="Master's, PhD",
+        degree_levels="Master's, PhD, Postdoctoral",
         funding_type="Fully Funded",
-        deadline="Annual cycle; typically March–April",
+        deadline="Varies by programme (typically March–April for annual cycles)",
         deadline_date=None,
         deadline_precision="varies",
         eligibility_summary=(
-            "Greek citizens and citizens of EU/EEA countries, plus specific bilateral agreements. "
-            "For non-EU: check bilateral agreements (Greece has agreements with many countries). "
-            "Academic excellence. Age limits may apply. "
-            "Greek language proficiency required for Greek-taught programs."
+            "PRIMARY ELIGIBILITY: Greek citizens and citizens of EU/EEA countries. "
+            "Non-EU nationals ONLY eligible through specific bilateral agreements "
+            "(e.g., IKY-Fulbright for U.S., IKYDA for Germany, Greek-French cooperation). "
+            "No general scholarship programme for non-EU nationals without bilateral agreement. "
+            "Academic excellence required. Age limits may apply. "
+            "Greek language proficiency required for Greek-taught programmes."
         ),
         coverage=[
-            "Monthly stipend: EUR 600-800 depending on level",
+            "Monthly stipend: EUR 600–800 depending on level and programme",
             "Health insurance",
-            "Research allowance",
-            "Travel allowance (for research abroad)",
+            "Research allowance (programme-dependent)",
+            "Travel allowance for research abroad (programme-dependent)",
         ],
         official_source_url="https://www.iky.gr/en/scholarships/",
         official_source="State Scholarships Foundation (IKY), Greece",
         is_verified=True,
-        best_fit="Greek and EU/EEA citizens; non-EU under bilateral agreements",
-        notes="Main Greek government scholarship body. Also administers Erasmus+ for Greece. "
-            "Check specific bilateral agreement between Greece and your country.",
+        best_fit="Greek/EU citizens; non-EU ONLY under specific bilateral agreements (check your country)",
+        notes=(
+            "Main Greek government scholarship body. Also administers Erasmus+ for Greece. "
+            "NO general programme for non-EU nationals. "
+            "Specific bilateral programmes: IKY-Fulbright (U.S. PhD candidates), "
+            "IKYDA (Germany/Greece research teams), Greek-French Master 2 cooperation, "
+            "Max Weber (Germany), Theodorideio/Chrysovergi bequests (Greek citizens abroad). "
+            "Foreign nationals must check if their country has an active bilateral agreement with IKY."
+        ),
     ),
     ScholarshipIngestionRecord(
         name="National and Kapodistrian University of Athens (NKUA) Scholarships",
         country="Greece",
         degree_levels="Bachelor's, Master's, PhD",
-        funding_type="Partial to Fully Funded",
+        funding_type="Partial (Tuition Only)",
         deadline="Varies by program (typically June–September)",
         deadline_date=None,
         deadline_precision="varies",
@@ -5393,11 +5440,12 @@ GREECE_SCHOLARSHIPS = (
             "All nationalities. Academic excellence. "
             "Greek language proficiency for Greek-taught programs. "
             "English-taught Master's programs available (IELTS/TOEFL required). "
-            "Merit scholarships for international students in English-taught programs."
+            "Merit-based tuition fee waivers for international students in English-taught programs. "
+            "No monthly stipend awarded by university."
         ),
         coverage=[
             "Tuition fee waivers (full or partial) for merit scholars",
-            "Monthly stipend for full scholarship recipients",
+            "No monthly stipend (tuition-only awards)",
             "Student housing priority",
             "Health insurance",
             "Erasmus+ mobility grants",
@@ -5405,37 +5453,55 @@ GREECE_SCHOLARSHIPS = (
         official_source_url="https://en.uoa.gr/studies/scholarships/",
         official_source="National and Kapodistrian University of Athens",
         is_verified=True,
-        best_fit="International students at Greece's oldest and most prestigious university",
-        notes="Greece's top-ranked university. Growing number of English-taught Master's programs. "
-            "Strong in humanities, law, medicine, and natural sciences.",
+        best_fit="International students at Greece's oldest university (tuition support only)",
+        notes=(
+            "Greece's top-ranked university. Growing number of English-taught Master's programs. "
+            "Strong in humanities, law, medicine, and natural sciences. "
+            "Scholarships are tuition fee waivers only — no living stipend. "
+            "Erasmus+ mobility grants available for exchange."
+        ),
     ),
     ScholarshipIngestionRecord(
-        name="Aristotle University of Thessaloniki (AUTH) Scholarships",
+        name="Aristotle University of Thessaloniki (AUTH) International Scholarships",
         country="Greece",
         degree_levels="Bachelor's, Master's, PhD",
-        funding_type="Partial to Fully Funded",
-        deadline="Varies by faculty (typically June–September)",
+        funding_type="Partial",
+        deadline="Varies by faculty and scholarship category (typically June–September)",
         deadline_date=None,
         deadline_precision="varies",
         eligibility_summary=(
-            "All nationalities. Academic merit. "
-            "Greek language proficiency or English-taught programs (IELTS ≥ 6.0). "
-            "Merit-based scholarships for international students. "
-            "Special scholarships for Balkan region students."
+            "RESTRICTED ELIGIBILITY — NOT a general merit scholarship for all international students. "
+            "Specific categories only:\n"
+            "1. Alien students of non-Greek origin in 2nd/3rd cycle (Master's/PhD) — limited slots.\n"
+            "2. Alien students from SE Europe with Modern Greek Studies background (\"Al. Delmouzou\").\n"
+            "3. Alien students for Greek language/culture programme (School of Modern Greek Language).\n"
+            "4. Postgraduate students from Haiti (\"Aristotle\" scholarship).\n"
+            "5. Researchers from Latin America/Africa (Coimbra Group scholarship).\n"
+            "6. Financial aid for enrolled alien students of non-Greek origin.\n"
+            "Greek language proficiency or English-taught programmes (IELTS ≥ 6.0). "
+            "CERN scholarships for AUTH students only. "
+            "Reciprocal scholarships for AUTH undergraduates only."
         ),
         coverage=[
-            "Tuition reduction: up to 100% for top merit scholars",
-            "Monthly stipend for full scholarship holders",
-            "Dormitory accommodation",
-            "Health insurance",
-            "Research funding for PhD candidates",
+            "Monthly stipend: €450/month for eligible foreign nationals (per official rate)",
+            "Tuition fee waiver for Erasmus+ exchange students only",
+            "Dormitory accommodation (limited, not guaranteed)",
+            "Health insurance (emergency only for some categories)",
+            "Research funding for PhD candidates (category-specific)",
         ],
-        official_source_url="https://www.auth.gr/en/studies/scholarships/",
+        official_source_url="https://www.auth.gr/en/scholarships-en",
         official_source="Aristotle University of Thessaloniki",
         is_verified=True,
-        best_fit="Students seeking quality education at Greece's largest university",
-        notes="Largest university in Greece and Balkans. Strong in engineering, health sciences, and agriculture. "
-            "Special scholarship programs for students from Balkan countries.",
+        best_fit="Specific categories only: SE Europe Modern Greek Studies grads, Haiti postgrads, "
+            "Latin America/Africa researchers, enrolled alien students — NOT general international applicants",
+        notes=(
+            "Largest university in Greece and Balkans. Strong in engineering, health sciences, agriculture. "
+            "Scholarships are category-specific with strict nationality/origin restrictions. "
+            "NO universal merit scholarship for all international students. "
+            "Monthly rate €450 per European Funding Guide (last verified April 2026). "
+            "Erasmus+ exchange covers tuition only. "
+            "Check Department of Studies page for current open calls and exact eligibility."
+        ),
     ),
 )
 # =============================================================================

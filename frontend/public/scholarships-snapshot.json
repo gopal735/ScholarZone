@@ -1,9 +1,9 @@
 {
  "meta":{
-  "generated_at":"2026-10-30T05:44:17.565283+00:00",
+  "generated_at":"2026-10-30T07:04:29.605061+00:00",
   "source_database":"scholarzone.db",
-  "source_record_count":753,
-  "public_record_count":753,
+  "source_record_count":754,
+  "public_record_count":754,
   "excluded":{
    "closed":0,
    "archived":0,
@@ -17,15 +17,15 @@
   ]
  },
  "stats":{
-  "total":753,
+  "total":754,
   "countries":64,
-  "open":753,
+  "open":754,
   "closing_soon":31,
   "upcoming":15,
-  "verified_active":753,
+  "verified_active":754,
   "fully_funded":0,
   "with_image":5,
-  "with_official_source":753
+  "with_official_source":754
  },
  "scholarships":[
   {
@@ -63,7 +63,7 @@
    "image_alt_text":"Erasmus Mundus Joint Masters students on a European university campus",
    "fully_funded":false,
    "next_verification_due":null,
-   "updated_at":"2026-10-30T05:44:04",
+   "updated_at":"2026-10-30T06:08:58",
    "funding_type":"Fully Funded",
    "name":"Erasmus Mundus Joint Masters (EMJM)"
   },
@@ -117,7 +117,7 @@
    "image_alt_text":"ICCR Scholarship banner showing international students",
    "fully_funded":false,
    "next_verification_due":null,
-   "updated_at":"2026-10-30T05:44:04",
+   "updated_at":"2026-10-30T06:08:58",
    "funding_type":"Fully Funded",
    "name":"ICCR Scholarship (Suborno Jayanti Scheme)"
   },
@@ -166,7 +166,7 @@
    "image_alt_text":"DAAD scholarship recipients at a German university campus",
    "fully_funded":false,
    "next_verification_due":null,
-   "updated_at":"2026-10-30T05:44:04",
+   "updated_at":"2026-10-30T06:08:58",
    "funding_type":"Fully Funded",
    "name":"DAAD Scholarship"
   },
@@ -212,7 +212,7 @@
    "image_alt_text":"Global Korea Scholarship (GKS) students at a Korean university",
    "fully_funded":false,
    "next_verification_due":null,
-   "updated_at":"2026-10-30T05:44:04",
+   "updated_at":"2026-10-30T06:08:58",
    "funding_type":"Fully Funded",
    "name":"Global Korea Scholarship (GKS)"
   },
@@ -262,7 +262,7 @@
    "image_alt_text":"MEXT scholarship students at a Japanese university",
    "fully_funded":false,
    "next_verification_due":null,
-   "updated_at":"2026-10-30T05:44:04",
+   "updated_at":"2026-10-30T06:08:58",
    "funding_type":"Fully Funded",
    "name":"MEXT (Monbukagakusho) Scholarship"
   },
@@ -29826,7 +29826,7 @@
    "image_alt_text":null,
    "fully_funded":false,
    "next_verification_due":null,
-   "updated_at":"2026-10-30T05:44:04",
+   "updated_at":"2026-10-30T06:04:59",
    "funding_type":"Fully Funded",
    "name":"King Abdullah Scholarship Program (KASP)"
   },
@@ -30177,7 +30177,7 @@
    "image_alt_text":null,
    "fully_funded":false,
    "next_verification_due":null,
-   "updated_at":"2026-10-30T05:44:04",
+   "updated_at":"2026-10-30T06:04:59",
    "funding_type":"Fully Funded",
    "name":"Russian Government Scholarship (Open Doors / Olympiad)"
   },
@@ -30373,10 +30373,10 @@
    "application_link":"https://graduate.technion.ac.il/scholarships",
    "eligibility":[],
    "benefits":[
-    "Full tuition waiver",
-    "Monthly stipend: USD 1,000-1,500 (Master's) / USD 1,500-2,000 (PhD)",
+    "Full tuition waiver (with 4+ scholarship portions)",
+    "Monthly stipend: NIS 1,101–1,522 per portion (April 2026 rates); typical award 3–6 portions/month = ~NIS 3,300–9,132 (~USD 900–2,500)",
     "Health insurance",
-    "On-campus housing (subsidized)",
+    "On-campus housing (subsidized; ~NIS 1,250/month for international students)",
     "Conference travel fund: USD 1,500/year",
     "Relocation allowance (one-time)"
    ],
@@ -30395,7 +30395,7 @@
    "image_alt_text":null,
    "fully_funded":false,
    "next_verification_due":null,
-   "updated_at":"2026-10-30T05:44:04",
+   "updated_at":"2026-10-30T06:04:59",
    "funding_type":"Fully Funded",
    "name":"Technion — Israel Institute of Technology Graduate Scholarships"
   },
@@ -30403,12 +30403,12 @@
    "id":1261,
    "title":"Weizmann Institute of Science International PhD Program",
    "country":"Israel",
-   "degree":"PhD (Direct PhD for exceptional Master's graduates)",
+   "degree":"PhD (Direct PhD for exceptional Master's graduates); MSc also available",
    "funding":"Fully Funded",
    "description":null,
    "deadline_date":null,
-   "deadline":"Typically December–March for Fall intake",
-   "deadline_display":"Typically December–March for Fall intake",
+   "deadline":"Typically December–March for Fall intake; PhD applications year-round",
+   "deadline_display":"Typically December–March for Fall intake; PhD applications year-round",
    "deadline_precision":"varies",
    "status":"open",
    "verification_status":"active",
@@ -30418,10 +30418,10 @@
    "eligibility":[],
    "benefits":[
     "Full tuition waiver",
-    "Monthly stipend: ~USD 2,000 (among highest globally)",
+    "Monthly stipend: NIS 7,000 (MSc) / NIS 9,000 (PhD regular) / NIS 10,800 (PhD after candidacy) (~USD 1,850 / 2,400 / 2,900 at current rates)",
     "Health insurance",
     "Free on-campus housing",
-    "Annual conference travel budget: USD 2,500",
+    "Annual conference travel budget: USD 4,250 (paid in two installments)",
     "Relocation and settling-in allowance",
     "Family support for students with dependents"
    ],
@@ -30440,20 +30440,20 @@
    "image_alt_text":null,
    "fully_funded":false,
    "next_verification_due":null,
-   "updated_at":"2026-10-30T05:44:04",
+   "updated_at":"2026-10-30T06:08:58",
    "funding_type":"Fully Funded",
    "name":"Weizmann Institute of Science International PhD Program"
   },
   {
    "id":1262,
-   "title":"Tel Aviv University International Scholarships",
+   "title":"Tel Aviv University Lowy International Scholarship Fund",
    "country":"Israel",
-   "degree":"Bachelor's, Master's, PhD",
-   "funding":"Partial to Fully Funded",
+   "degree":"Bachelor's, Master's",
+   "funding":"Partial (Tuition Only)",
    "description":null,
    "deadline_date":null,
-   "deadline":"Varies by program (typically March–June)",
-   "deadline_display":"Varies by program (typically March–June)",
+   "deadline":"Varies by program (typically March–June for Fall intake)",
+   "deadline_display":"Varies by program (typically March–June for Fall intake)",
    "deadline_precision":"varies",
    "status":"open",
    "verification_status":"active",
@@ -30462,11 +30462,9 @@
    "application_link":"https://international.tau.ac.il/scholarships",
    "eligibility":[],
    "benefits":[
-    "Tuition remission: 25-100% based on merit/need",
-    "Monthly living stipend for full scholarship recipients",
-    "Health insurance",
-    "On-campus housing priority",
-    "Excellence awards for top students"
+    "Tuition fee reduction (amount varies; tuition-only award)",
+    "No monthly stipend or living allowance",
+    "Health insurance not included"
    ],
    "requirements":[],
    "region":null,
@@ -30483,9 +30481,9 @@
    "image_alt_text":null,
    "fully_funded":false,
    "next_verification_due":null,
-   "updated_at":"2026-10-30T05:44:04",
-   "funding_type":"Partial to Fully Funded",
-   "name":"Tel Aviv University International Scholarships"
+   "updated_at":"2026-10-30T06:08:58",
+   "funding_type":"Partial (Tuition Only)",
+   "name":"Tel Aviv University Lowy International Scholarship Fund"
   },
   {
    "id":1263,
@@ -30529,7 +30527,7 @@
    "image_alt_text":null,
    "fully_funded":false,
    "next_verification_due":null,
-   "updated_at":"2026-10-30T05:44:04",
+   "updated_at":"2026-10-30T06:04:59",
    "funding_type":"Fully Funded",
    "name":"Bolashak International Scholarship"
   },
@@ -30659,7 +30657,7 @@
    "image_alt_text":null,
    "fully_funded":false,
    "next_verification_due":null,
-   "updated_at":"2026-10-30T05:44:04",
+   "updated_at":"2026-10-30T06:04:59",
    "funding_type":"Fully Funded",
    "name":"Romanian Government Scholarship (Ministry of Foreign Affairs)"
   },
@@ -30668,7 +30666,7 @@
    "title":"University of Bucharest International Scholarships",
    "country":"Romania",
    "degree":"Bachelor's, Master's, PhD",
-   "funding":"Partial to Fully Funded",
+   "funding":"Partial",
    "description":null,
    "deadline_date":null,
    "deadline":"Varies by faculty (typically May–July)",
@@ -30682,7 +30680,7 @@
    "eligibility":[],
    "benefits":[
     "Tuition reduction: 50-100% for merit scholarship recipients",
-    "Monthly stipend for full scholarship holders",
+    "No monthly stipend (tuition-only awards)",
     "Dormitory accommodation priority",
     "Health insurance",
     "Erasmus+ mobility opportunities"
@@ -30702,8 +30700,8 @@
    "image_alt_text":null,
    "fully_funded":false,
    "next_verification_due":null,
-   "updated_at":"2026-10-30T05:44:04",
-   "funding_type":"Partial to Fully Funded",
+   "updated_at":"2026-10-30T06:04:59",
+   "funding_type":"Partially Funded",
    "name":"University of Bucharest International Scholarships"
   },
   {
@@ -30725,6 +30723,7 @@
    "eligibility":[],
    "benefits":[
     "Tuition fee reduction: up to 50% for merit scholarships",
+    "No monthly stipend (tuition-only awards)",
     "Dormitory accommodation",
     "Health insurance",
     "Erasmus+ and bilateral exchange opportunities"
@@ -30744,7 +30743,7 @@
    "image_alt_text":null,
    "fully_funded":false,
    "next_verification_due":null,
-   "updated_at":"2026-10-30T05:44:04",
+   "updated_at":"2026-10-30T06:04:59",
    "funding_type":"Partially Funded",
    "name":"Babes-Bolyai University (UBB) International Scholarships"
   },
@@ -30752,12 +30751,12 @@
    "id":1269,
    "title":"IKY (State Scholarships Foundation) Fellowships for Postgraduate Studies",
    "country":"Greece",
-   "degree":"Master's, PhD",
+   "degree":"Master's, PhD, Postdoctoral",
    "funding":"Fully Funded",
    "description":null,
    "deadline_date":null,
-   "deadline":"Annual cycle; typically March–April",
-   "deadline_display":"Annual cycle; typically March–April",
+   "deadline":"Varies by programme (typically March–April for annual cycles)",
+   "deadline_display":"Varies by programme (typically March–April for annual cycles)",
    "deadline_precision":"varies",
    "status":"open",
    "verification_status":"active",
@@ -30766,10 +30765,10 @@
    "application_link":"https://www.iky.gr/en/scholarships",
    "eligibility":[],
    "benefits":[
-    "Monthly stipend: EUR 600-800 depending on level",
+    "Monthly stipend: EUR 600–800 depending on level and programme",
     "Health insurance",
-    "Research allowance",
-    "Travel allowance (for research abroad)"
+    "Research allowance (programme-dependent)",
+    "Travel allowance for research abroad (programme-dependent)"
    ],
    "requirements":[],
    "region":null,
@@ -30786,7 +30785,7 @@
    "image_alt_text":null,
    "fully_funded":false,
    "next_verification_due":null,
-   "updated_at":"2026-10-30T05:44:04",
+   "updated_at":"2026-10-30T06:04:59",
    "funding_type":"Fully Funded",
    "name":"IKY (State Scholarships Foundation) Fellowships for Postgraduate Studies"
   },
@@ -30795,7 +30794,7 @@
    "title":"National and Kapodistrian University of Athens (NKUA) Scholarships",
    "country":"Greece",
    "degree":"Bachelor's, Master's, PhD",
-   "funding":"Partial to Fully Funded",
+   "funding":"Partial (Tuition Only)",
    "description":null,
    "deadline_date":null,
    "deadline":"Varies by program (typically June–September)",
@@ -30809,7 +30808,7 @@
    "eligibility":[],
    "benefits":[
     "Tuition fee waivers (full or partial) for merit scholars",
-    "Monthly stipend for full scholarship recipients",
+    "No monthly stipend (tuition-only awards)",
     "Student housing priority",
     "Health insurance",
     "Erasmus+ mobility grants"
@@ -30829,8 +30828,8 @@
    "image_alt_text":null,
    "fully_funded":false,
    "next_verification_due":null,
-   "updated_at":"2026-10-30T05:44:04",
-   "funding_type":"Partial to Fully Funded",
+   "updated_at":"2026-10-30T06:04:59",
+   "funding_type":"Partial (Tuition Only)",
    "name":"National and Kapodistrian University of Athens (NKUA) Scholarships"
   },
   {
@@ -30875,6 +30874,49 @@
    "updated_at":"2026-10-30T05:44:04",
    "funding_type":"Partial to Fully Funded",
    "name":"Aristotle University of Thessaloniki (AUTH) Scholarships"
+  },
+  {
+   "id":1274,
+   "title":"Aristotle University of Thessaloniki (AUTH) International Scholarships",
+   "country":"Greece",
+   "degree":"Bachelor's, Master's, PhD",
+   "funding":"Partial",
+   "description":null,
+   "deadline_date":null,
+   "deadline":"Varies by faculty and scholarship category (typically June–September)",
+   "deadline_display":"Varies by faculty and scholarship category (typically June–September)",
+   "deadline_precision":"varies",
+   "status":"open",
+   "verification_status":"active",
+   "last_verified_at":"2026-10-30",
+   "official_source_url":"https://www.auth.gr/en/scholarships-en",
+   "application_link":"https://www.auth.gr/en/scholarships-en",
+   "eligibility":[],
+   "benefits":[
+    "Monthly stipend: €450/month for eligible foreign nationals (per official rate)",
+    "Tuition fee waiver for Erasmus+ exchange students only",
+    "Dormitory accommodation (limited, not guaranteed)",
+    "Health insurance (emergency only for some categories)",
+    "Research funding for PhD candidates (category-specific)"
+   ],
+   "requirements":[],
+   "region":null,
+   "duration":null,
+   "application_period":null,
+   "catalogue_url":null,
+   "official_updates_url":null,
+   "selection_notes":null,
+   "program_type":null,
+   "image_url":null,
+   "image_source_url":null,
+   "image_source_type":null,
+   "image_verified_at":null,
+   "image_alt_text":null,
+   "fully_funded":false,
+   "next_verification_due":null,
+   "updated_at":"2026-10-30T06:04:59",
+   "funding_type":"Partially Funded",
+   "name":"Aristotle University of Thessaloniki (AUTH) International Scholarships"
   }
  ]
 }
