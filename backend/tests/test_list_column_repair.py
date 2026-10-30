@@ -162,10 +162,17 @@ class TestTheRule:
             requirements = ["fine"]
             documents = ["fine"]
             application_method = ["fine"]
+            # Academic fields - should be normalized too
+            departments = None
+            eligible_fields = None
+            eligible_programmes = None
 
         assert normalize_list_columns(Row()) == {
             "benefits": ["needs reshaping"],
             "coverage": [],
+            "departments": [],
+            "eligible_fields": [],
+            "eligible_programmes": [],
         }
 
 

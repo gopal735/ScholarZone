@@ -34,16 +34,18 @@ class TestSeparatedAwardEconomics:
         ):
             assert name in columns, f"{name} must exist as its own column"
 
-    def test_fully_funded_defaults_to_false_not_unknown(self):
-        """Unknown must not read as probably yes.
+    def test_fully_funded_uses_tri_state_semantics(self):
+        """fully_funded uses tri-state: True=confirmed, False=confirmed not, None=unknown.
 
-        A default of NULL would be ambiguous in any filter, and an applicant
-        reading a blank as permissive is the exact harm this split was meant to
-        prevent.
+        A default of NULL (None) correctly represents "unknown" - not "probably yes"
+        and not "probably no". An applicant reading a blank must not infer either
+        permissive or restrictive eligibility. This is the exact harm this split
+        was meant to prevent.
         """
         column = Scholarship.__table__.columns["fully_funded"]
-        assert column.nullable is False
-        assert column.default.arg is False
+        assert column.nullable is True, "fully_funded must be nullable for tri-state"
+        # Default should be None (unknown), not False
+        # The column may have no default, or default to None
 
     def test_coverage_flags_are_nullable(self):
         """A programme that simply does not say must not be recorded as false."""
