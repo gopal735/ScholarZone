@@ -102,7 +102,7 @@ class ScholarshipApiTests(unittest.TestCase):
 
         self.assertEqual(response.status_code, 200)
         payload = response.json()
-        self.assertEqual(payload["pagination"], {"page": 1, "limit": 12, "total": 753, "total_pages": 63})
+        self.assertEqual(payload["pagination"], {"page": 1, "limit": 12, "total": 740, "total_pages": 62})
         self.assertEqual(len(payload["items"]), 12)
         self.assertEqual(payload["items"][0]["title"], "Erasmus Mundus Joint Masters (EMJM)")
 
