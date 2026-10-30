@@ -347,11 +347,12 @@ class ScholarshipIngestionRecord(BaseModel):
         if fields.get("deadline_precision") is None:
             fields["deadline_precision"] = "varies"
 
-        # Compute fully_funded from funding_type if not explicitly provided.
-        # A record is only "fully funded" when the official label is exactly
-        # "Fully Funded" - not "Partial", not "Tuition", not "Stipend".
-        if fields.get("fully_funded") is None and fields.get("funding") is not None:
-            fields["fully_funded"] = fields["funding"] == "Fully Funded"
+        # Compute fully_funded from funding_type ONLY when the field was omitted (not provided at all).
+        # Do not override an explicit None (which means "unknown/unconfirmed").
+        # Only "Fully Funded" (exact match) is classified as fully funded = True.
+        # All other funding labels (including ambiguous ones like "Partial to Full") remain None (unknown).
+        if "fully_funded" not in self.model_fields_set and fields.get("funding") is not None:
+            fields["fully_funded"] = fields["funding"] == "Fully Funded" or None
 
         # Persist legacy_id for backward URL compatibility (not in IMAGE_PERSISTENCE_FIELDS)
         if self.legacy_id is not None:
