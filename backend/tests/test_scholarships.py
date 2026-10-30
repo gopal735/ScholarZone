@@ -420,6 +420,9 @@ class ScholarshipApiTests(unittest.TestCase):
             created = session.scalar(self.__class__.select(self.Scholarship).where(self.Scholarship.official_source_url == test_url))
             self.assertIsNotNone(created)
             self.assertEqual(created.fully_funded, True)
+            # Clean up
+            session.delete(created)
+            session.commit()
 
     def test_fully_funded_tri_state_explicit_none_preserved(self):
         """Test that explicit fully_funded=None is preserved (not computed)."""
@@ -439,6 +442,9 @@ class ScholarshipApiTests(unittest.TestCase):
             created = session.scalar(self.__class__.select(self.Scholarship).where(self.Scholarship.official_source_url == test_url))
             self.assertIsNotNone(created)
             self.assertIsNone(created.fully_funded)
+            # Clean up
+            session.delete(created)
+            session.commit()
 
     def test_fully_funded_tri_state_partial_to_full_unknown(self):
         """Test that ambiguous 'Partial to Full' funding label results in None."""
@@ -457,6 +463,9 @@ class ScholarshipApiTests(unittest.TestCase):
             created = session.scalar(self.__class__.select(self.Scholarship).where(self.Scholarship.official_source_url == test_url))
             self.assertIsNotNone(created)
             self.assertIsNone(created.fully_funded)
+            # Clean up
+            session.delete(created)
+            session.commit()
 
     def test_fully_funded_tri_state_other_funding_types_unknown(self):
         """Test that other non-Fully-Funded labels result in None (unknown)."""
@@ -477,6 +486,9 @@ class ScholarshipApiTests(unittest.TestCase):
                     created = session.scalar(self.__class__.select(self.Scholarship).where(self.Scholarship.official_source_url == test_url))
                     self.assertIsNotNone(created)
                     self.assertIsNone(created.fully_funded, f"Funding '{funding_label}' should have fully_funded=None")
+                    # Clean up
+                    session.delete(created)
+                    session.commit()
 
     def test_fully_funded_snapshot_mapping_preserves_tri_state(self):
         """Test that staticScholarshipService.toScholarship preserves tri-state."""

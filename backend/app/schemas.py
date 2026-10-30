@@ -198,6 +198,15 @@ class ScholarshipDetailResponse(ScholarshipResponse):
     best_fit: str | None = None
     last_verified_date: date | None = None
     notes: str | None = None
+    # Award economics
+    description: str | None = None
+    funding_amount: float | None = None
+    funding_currency: str | None = None
+    funding_period: str | None = None
+    tuition_coverage: bool | None = None
+    living_cost_coverage: bool | None = None
+    travel_coverage: bool | None = None
+    fully_funded: bool | None = None
 
     @field_validator(*LIST_COLUMNS, "required_documents", mode="before")
     @classmethod

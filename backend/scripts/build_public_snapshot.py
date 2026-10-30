@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 """Rebuild the public scholarship snapshot from the local verified database.
 
 Why this exists
@@ -36,8 +38,7 @@ Run
     backend/.venv/Scripts/python.exe backend/scripts/build_public_snapshot.py
 """
 
-from __future__ import annotations
-
+from decimal import Decimal
 import argparse
 import json
 import sys
@@ -137,6 +138,9 @@ def _jsonable(value: Any) -> Any:
     """
     if isinstance(value, (date, datetime)):
         return value.isoformat()
+    if isinstance(value, Decimal):
+        # Convert Decimal to float for JSON serialization
+        return float(value)
     return value
 
 
