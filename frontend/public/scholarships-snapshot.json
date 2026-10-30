@@ -1,6 +1,6 @@
 {
  "meta":{
-  "generated_at":"2026-10-30T11:01:16.349632+00:00",
+  "generated_at":"2026-10-30T11:33:31.730295+00:00",
   "source_database":"scholarzone.db",
   "source_record_count":759,
   "public_record_count":740,
@@ -84,7 +84,7 @@
    "best_fit":"Accessible for average-CGPA applicants with a strong personal motivation/story - no fixed CGPA cutoff, evaluated more holistically than most government scholarships",
    "notes":"This is a category of 50+ separate Joint Master's programmes (each its own university consortium), not one application. Applicants pick and apply directly to specific joint-programme(s) via the Erasmus Mundus Catalogue on erasmus-plus.ec.europa.eu. Deadlines are set per-programme.",
    "next_verification_due":null,
-   "updated_at":"2026-10-30T11:01:05",
+   "updated_at":"2026-10-30T11:33:06",
    "funding_type":"Fully Funded",
    "name":"Erasmus Mundus Joint Masters (EMJM)"
   },
@@ -160,7 +160,7 @@
    "best_fit":"Best for Master's/PhD applicants who already have a specific field/programme in mind - not one unified scholarship, requires researching individual programme listings",
    "notes":"DAAD is NOT a single scholarship - it is a database of 100+ separately funded programmes, each with its own eligibility/deadline/coverage. Figures above are current as of 2025/26. Must check the specific programme on DAAD's Funding Guide database (daad.de), filtered by Bangladesh + degree level, before advising a user. Funded by the German Federal Foreign Office.",
    "next_verification_due":null,
-   "updated_at":"2026-10-30T11:01:05",
+   "updated_at":"2026-10-30T11:33:06",
    "funding_type":"Fully Funded",
    "name":"DAAD Scholarship"
   },
@@ -233,7 +233,7 @@
    "best_fit":"Students seeking fully funded undergraduate opportunities in South Korea.",
    "notes":"Formerly known as KGSP. Current official name is Global Korea Scholarship (GKS). Applicants must verify yearly announcements from the official Study in Korea website.",
    "next_verification_due":null,
-   "updated_at":"2026-10-30T11:01:05",
+   "updated_at":"2026-10-30T11:33:06",
    "funding_type":"Fully Funded",
    "name":"Global Korea Scholarship (GKS)"
   },
@@ -309,7 +309,7 @@
    "best_fit":"Strong fit for academically strong STEM applicants comfortable with a written entrance exam, not just document review",
    "notes":"Two distinct application paths for a Bangladeshi UG applicant: (1) Embassy Recommendation - apply via the Bangladesh Ministry of Education SHED portal, screened by the Embassy of Japan Dhaka (written exam + interview in Baridhara); (2) University Recommendation - apply directly to a specific Japanese university, which then recommends the candidate to MEXT (eligibility/deadline set by that university). Clarify which path a user means before giving deadline information.",
    "next_verification_due":null,
-   "updated_at":"2026-10-30T11:01:05",
+   "updated_at":"2026-10-30T11:33:06",
    "funding_type":"Fully Funded",
    "name":"MEXT (Monbukagakusho) Scholarship"
   },

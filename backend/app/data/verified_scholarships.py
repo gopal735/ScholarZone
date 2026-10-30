@@ -1526,9 +1526,9 @@ VERIFIED_SCHOLARSHIPS = (
             "academically, network extensively, experience UK culture, and build lasting positive relationships "
             "with the UK."
         ),
-        funding_amount=0.0,  # Not a fixed stipend amount - covers full costs
-        funding_currency="GBP",
-        funding_period="programme",
+        funding_amount=None,  # No fixed stipend amount published; covers full costs (tuition, living, travel)
+        funding_currency=None,
+        funding_period=None,
         tuition_coverage=True,
         living_cost_coverage=True,
         travel_coverage=True,

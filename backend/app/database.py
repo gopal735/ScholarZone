@@ -185,14 +185,14 @@ def _upgrade_postgresql_schema(engine: Engine) -> None:
             "funding_amount": "NUMERIC(12, 2)",
             "funding_currency": "VARCHAR(8)",
             "funding_period": "VARCHAR(64)",
-# Tri-state, not a boolean: many programmes simply do not say.
-        # A false here would be a claim the awarding body never made.
-        "tuition_coverage": "BOOLEAN",
-        "living_cost_coverage": "BOOLEAN",
-        "travel_coverage": "BOOLEAN",
-        # Tri-state: True = confirmed fully funded, False = confirmed not fully funded,
-        # None = unknown/not confirmed. No default, so existing rows read as unknown.
-        "fully_funded": "BOOLEAN",
+            # Tri-state, not a boolean: many programmes simply do not say.
+            # A false here would be a claim the awarding body never made.
+            "tuition_coverage": "BOOLEAN",
+            "living_cost_coverage": "BOOLEAN",
+            "travel_coverage": "BOOLEAN",
+            # Tri-state: True = confirmed fully funded, False = confirmed not fully funded,
+            # None = unknown/not confirmed. No default, so existing rows read as unknown.
+            "fully_funded": "BOOLEAN",
             # Structured detail, split by origin so published rules and derived
             # guidance are never stored as the same kind of fact.
             "official_details": "JSON",
@@ -208,6 +208,18 @@ def _upgrade_postgresql_schema(engine: Engine) -> None:
         for name, definition in additions.items():
             if name not in columns:
                 connection.execute(text(f"ALTER TABLE scholarships ADD COLUMN IF NOT EXISTS {name} {definition}"))
+
+        # Migration: fully_funded column constraint change (NOT NULL DEFAULT FALSE -> nullable)
+        # Only run if column exists with old constraint
+        if "fully_funded" in columns:
+            try:
+                connection.execute(text("ALTER TABLE scholarships ALTER COLUMN fully_funded DROP NOT NULL"))
+            except Exception:
+                pass  # Constraint may already be dropped
+            try:
+                connection.execute(text("ALTER TABLE scholarships ALTER COLUMN fully_funded DROP DEFAULT"))
+            except Exception:
+                pass  # Default may already be dropped
 
         # deadline_display was varchar(255), which is shorter than the deadline
         # wording some official pages publish. Seven researched programmes were
@@ -444,6 +456,91 @@ def _upgrade_sqlite_schema(engine: Engine) -> None:
         for name, definition in additions.items():
             if name not in columns:
                 connection.execute(text(f"ALTER TABLE scholarships ADD COLUMN {name} {definition}"))
+
+        # Migration: fully_funded column constraint change (NOT NULL DEFAULT FALSE -> nullable)
+        # SQLite doesn't support ALTER COLUMN directly, so we check if column exists with old constraint
+        if "fully_funded" in columns:
+            try:
+                # Check if column has NOT NULL constraint
+                pragma_result = connection.execute(text("PRAGMA table_info(scholarships)")).fetchall()
+                for row in pragma_result:
+                    if row[1] == "fully_funded" and row[3] == 1:  # notnull = 1
+                        # Need to rebuild table to remove NOT NULL constraint
+                        # This is a safe operation as we preserve all data
+                        connection.execute(text("""
+                            CREATE TABLE scholarships_new AS 
+                            SELECT * FROM scholarships
+                        """))
+                        connection.execute(text("DROP TABLE scholarships"))
+                        connection.execute(text("""
+                            CREATE TABLE scholarships (
+                                id INTEGER PRIMARY KEY AUTOINCREMENT,
+                                name VARCHAR(255) NOT NULL,
+                                country VARCHAR(120) NOT NULL,
+                                degree VARCHAR(120) NOT NULL,
+                                funding VARCHAR(120),
+                                deadline VARCHAR(255),
+                                deadline_date DATE,
+                                deadline_precision VARCHAR(32),
+                                status VARCHAR(20) NOT NULL DEFAULT 'open',
+                                verification_status VARCHAR(20) NOT NULL DEFAULT 'active',
+                                last_verified_at DATE,
+                                last_verified_date DATE,
+                                region VARCHAR(255),
+                                duration TEXT,
+                                application_period TEXT,
+                                official_source VARCHAR(255),
+                                official_source_url VARCHAR(2048),
+                                catalogue_url VARCHAR(2048),
+                                official_updates_url VARCHAR(2048),
+                                application_link VARCHAR(2048),
+                                image_url VARCHAR(2048),
+                                image_source_url VARCHAR(2048),
+                                image_source_type VARCHAR(32),
+                                image_kind VARCHAR(32),
+                                image_verified_at DATETIME,
+                                image_alt_text VARCHAR(512),
+                                image_evaluation_status VARCHAR(32),
+                                image_evaluated_at DATETIME,
+                                eligibility JSON NOT NULL DEFAULT '[]',
+                                eligibility_summary TEXT,
+                                benefits JSON NOT NULL DEFAULT '[]',
+                                coverage JSON NOT NULL DEFAULT '[]',
+                                requirements JSON NOT NULL DEFAULT '[]',
+                                documents JSON NOT NULL DEFAULT '[]',
+                                english_requirement TEXT,
+                                application_method JSON NOT NULL DEFAULT '[]',
+                                selection_notes TEXT,
+                                program_type VARCHAR(255),
+                                best_fit TEXT,
+                                notes TEXT,
+                                next_verification_due DATE,
+                                verified_by VARCHAR(120),
+                                verification_notes TEXT,
+                                is_archived BOOLEAN NOT NULL DEFAULT FALSE,
+                                archived_at DATETIME,
+                                archived_reason VARCHAR(120),
+                                funding_amount NUMERIC(12, 2),
+                                funding_currency VARCHAR(8),
+                                funding_period VARCHAR(64),
+                                tuition_coverage BOOLEAN,
+                                living_cost_coverage BOOLEAN,
+                                travel_coverage BOOLEAN,
+                                fully_funded BOOLEAN,
+                                official_details JSON,
+                                applicant_utility JSON,
+                                programme_verification JSON,
+                                auto_delete_candidate_since DATETIME,
+                                deletion_protected BOOLEAN NOT NULL DEFAULT FALSE
+                            )
+                        """))
+                        connection.execute(text("""
+                            INSERT INTO scholarships SELECT * FROM scholarships_new
+                        """))
+                        connection.execute(text("DROP TABLE scholarships_new"))
+                        break
+            except Exception:
+                pass  # If migration fails, leave as-is
 
         connection.execute(text("CREATE INDEX IF NOT EXISTS ix_scholarships_status ON scholarships (status)"))
         connection.execute(text("CREATE INDEX IF NOT EXISTS ix_scholarships_status_deadline ON scholarships (status, deadline_date)"))
