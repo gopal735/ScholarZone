@@ -249,7 +249,7 @@ VERIFIED_SCHOLARSHIPS = (
             "liability insurance. Depending on the scholarship programme, there are also additional benefits such as "
             "a one-off research allowance, family benefits or funds for language courses."
         ),
-        funding_amount=992.0,  # EUR for Master's (base stipend)
+        funding_amount=None,  # Varies by programme: EUR 992 (Master's) to EUR 1,300 (PhD)
         funding_currency="EUR",
         funding_period="monthly",
         tuition_coverage=True,
@@ -450,7 +450,7 @@ VERIFIED_SCHOLARSHIPS = (
             "Dhaka (written exam + interview); (2) University Recommendation - apply directly to a Japanese university "
             "which recommends to MEXT."
         ),
-        funding_amount=148000.0,
+        funding_amount=None,  # Varies by programme/track: JPY 117,000-148,000
         funding_currency="JPY",
         funding_period="monthly",
         tuition_coverage=True,

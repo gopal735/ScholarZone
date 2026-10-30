@@ -185,15 +185,14 @@ def _upgrade_postgresql_schema(engine: Engine) -> None:
             "funding_amount": "NUMERIC(12, 2)",
             "funding_currency": "VARCHAR(8)",
             "funding_period": "VARCHAR(64)",
-            # Tri-state, not a boolean: many programmes simply do not say.
-            # A false here would be a claim the awarding body never made.
-            "tuition_coverage": "BOOLEAN",
-            "living_cost_coverage": "BOOLEAN",
-            "travel_coverage": "BOOLEAN",
-            # NOT NULL with a default, so an existing row reads as "not
-            # established as fully funded" rather than NULL, which would be
-            # ambiguous in a filter.
-            "fully_funded": "BOOLEAN NOT NULL DEFAULT FALSE",
+# Tri-state, not a boolean: many programmes simply do not say.
+        # A false here would be a claim the awarding body never made.
+        "tuition_coverage": "BOOLEAN",
+        "living_cost_coverage": "BOOLEAN",
+        "travel_coverage": "BOOLEAN",
+        # Tri-state: True = confirmed fully funded, False = confirmed not fully funded,
+        # None = unknown/not confirmed. No default, so existing rows read as unknown.
+        "fully_funded": "BOOLEAN",
             # Structured detail, split by origin so published rules and derived
             # guidance are never stored as the same kind of fact.
             "official_details": "JSON",
@@ -428,10 +427,9 @@ def _upgrade_sqlite_schema(engine: Engine) -> None:
         "tuition_coverage": "BOOLEAN",
         "living_cost_coverage": "BOOLEAN",
         "travel_coverage": "BOOLEAN",
-        # NOT NULL with a default, so an existing row reads as "not
-        # established as fully funded" rather than NULL, which would be
-        # ambiguous in a filter.
-        "fully_funded": "BOOLEAN NOT NULL DEFAULT FALSE",
+        # Tri-state: True = confirmed fully funded, False = confirmed not fully funded,
+        # None = unknown/not confirmed. No default, so existing rows read as unknown.
+        "fully_funded": "BOOLEAN",
         # Structured detail, split by origin so published rules and derived
         # guidance are never stored as the same kind of fact.
         "official_details": "JSON",
