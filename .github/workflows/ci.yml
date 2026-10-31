@@ -516,12 +516,19 @@ jobs:
             sleep 1
           done
 
-      - name: Run PostgreSQL migration test
+- name: Run PostgreSQL migration test
         run: |
           cd backend
-          python scripts/test_postgresql_migration.py
+          python scripts/test_postgresql_migration.py 2>&1 | tee postgresql_test.log
         env:
-          SCHOLARZONE_DATABASE_URL: postgresql://test:test@localhost:5432/scholarzone_test
+          SCHOLARZONE_DATABASE_URL: postgresql://test:test@localhost:5432/scholarzone_test?sslmode=disable
           SCHOLARZONE_ENVIRONMENT: test
+
+      - name: Upload PostgreSQL test logs
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: postgresql-migration-test-logs
+          path: backend/postgresql_test.log
 
     
