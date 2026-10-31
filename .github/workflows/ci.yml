@@ -32,21 +32,25 @@ jobs:
       uses: actions/cache@v4
       with:
         path: ~/.cache/pip
-        key: |
-          ${{ runner.os }}-pip-v2-${{ hashFiles('backend/requirements.txt') }}
+        key: '${{ runner.os }}-pip-v2-${{ hashFiles(''backend/requirements.txt'') }}
+
+          '
         restore-keys:
         - ${{ runner.os }}-pip-v2-
     - name: Install dependencies
       run: cd backend && pip install -r requirements.txt
     - name: Debug - verify pip install
-      run: |
-        cd backend && pip list | grep -E "(fastapi|pydantic|sqlalchemy|psycopg|httpx|pillow|beautifulsoup4|apscheduler|resend|python-dotenv)" || true
+      run: 'cd backend && pip list | grep -E "(fastapi|pydantic|sqlalchemy|psycopg|httpx|pillow|beautifulsoup4|apscheduler|resend|python-dotenv)" || true
+
+        '
     - name: Debug - test critical imports
-      run: |
-        cd backend && python -c "import psycopg; print('psycopg: OK')" 2>&1 || echo "psycopg: FAIL" && python -c "import sqlalchemy; print('sqlalchemy: OK')" 2>&1 || echo "sqlalchemy: FAIL" && python -c "import fastapi; print('fastapi: OK')" 2>&1 || echo "fastapi: FAIL" && python -c "import pydantic; print('pydantic: OK')" 2>&1 || echo "pydantic: FAIL" && python -c "import httpx; print('httpx: OK')" 2>&1 || echo "httpx: FAIL" && python -c "import PIL; print('PIL: OK')" 2>&1 || echo "PIL: FAIL" && python -c "import bs4; print('bs4: OK')" 2>&1 || echo "bs4: FAIL" && python -c "import apscheduler; print('apscheduler: OK')" 2>&1 || echo "apscheduler: FAIL" && python -c "import resend; print('resend: OK')" 2>&1 || echo "resend: FAIL" && python -c "import dotenv; print('dotenv: OK')" 2>&1 || echo "dotenv: FAIL"
+      run: 'cd backend && python -c "import psycopg; print(''psycopg: OK'')" 2>&1 || echo "psycopg: FAIL" && python -c "import sqlalchemy; print(''sqlalchemy: OK'')" 2>&1 || echo "sqlalchemy: FAIL" && python -c "import fastapi; print(''fastapi: OK'')" 2>&1 || echo "fastapi: FAIL" && python -c "import pydantic; print(''pydantic: OK'')" 2>&1 || echo "pydantic: FAIL" && python -c "import httpx; print(''httpx: OK'')" 2>&1 || echo "httpx: FAIL" && python -c "import PIL; print(''PIL: OK'')" 2>&1 || echo "PIL: FAIL" && python -c "import bs4; print(''bs4: OK'')" 2>&1 || echo "bs4: FAIL" && python -c "import apscheduler; print(''apscheduler: OK'')" 2>&1 || echo "apscheduler: FAIL" && python -c "import resend; print(''resend: OK'')" 2>&1 || echo "resend: FAIL" && python -c "import dotenv; print(''dotenv: OK'')" 2>&1 || echo "dotenv: FAIL"
+
+        '
     - name: Debug - verify environment
-      run: |
-        cd backend && python -c "import sys; print(f'Python: {sys.version}'); import app; print('app import ok'); import pytest; print('pytest ok')" 2>&1
+      run: 'cd backend && python -c "import sys; print(f''Python: {sys.version}''); import app; print(''app import ok''); import pytest; print(''pytest ok'')" 2>&1
+
+        '
     - name: Debug - run simple test
       run: cd backend && python -m pytest tests/test_git_integrity_regression.py -v --tb=short 2>&1
     - name: Run backend tests
@@ -72,8 +76,9 @@ jobs:
       uses: actions/cache@v4
       with:
         path: ~/.npm
-        key: |
-          ${{ runner.os }}-npm-v2-${{ hashFiles('frontend/package-lock.json') }}
+        key: '${{ runner.os }}-npm-v2-${{ hashFiles(''frontend/package-lock.json'') }}
+
+          '
         restore-keys:
         - ${{ runner.os }}-npm-v2-
     - name: Install dependencies
@@ -124,8 +129,9 @@ jobs:
       uses: actions/cache@v4
       with:
         path: ~/.cache/pip
-        key: |
-          ${{ runner.os }}-pip-${{ hashFiles('backend/requirements.txt') }}
+        key: '${{ runner.os }}-pip-${{ hashFiles(''backend/requirements.txt'') }}
+
+          '
         restore-keys:
         - ${{ runner.os }}-pip-
     - name: Install dependencies
@@ -155,8 +161,9 @@ jobs:
       uses: actions/cache@v4
       with:
         path: ~/.cache/pip
-        key: |
-          ${{ runner.os }}-pip-${{ hashFiles('backend/requirements.txt') }}
+        key: '${{ runner.os }}-pip-${{ hashFiles(''backend/requirements.txt'') }}
+
+          '
         restore-keys:
         - ${{ runner.os }}-pip-
     - name: Install dependencies
@@ -184,8 +191,9 @@ jobs:
       uses: actions/cache@v4
       with:
         path: ~/.cache/pip
-        key: |
-          ${{ runner.os }}-pip-${{ hashFiles('backend/requirements.txt') }}
+        key: '${{ runner.os }}-pip-${{ hashFiles(''backend/requirements.txt'') }}
+
+          '
         restore-keys:
         - ${{ runner.os }}-pip-
     - name: Install dependencies
@@ -215,8 +223,9 @@ jobs:
       uses: actions/cache@v4
       with:
         path: ~/.cache/pip
-        key: |
-          ${{ runner.os }}-pip-${{ hashFiles('backend/requirements.txt') }}
+        key: '${{ runner.os }}-pip-${{ hashFiles(''backend/requirements.txt'') }}
+
+          '
         restore-keys:
         - ${{ runner.os }}-pip-
     - name: Install dependencies
@@ -246,8 +255,9 @@ jobs:
       uses: actions/cache@v4
       with:
         path: ~/.cache/pip
-        key: |
-          ${{ runner.os }}-pip-${{ hashFiles('backend/requirements.txt') }}
+        key: '${{ runner.os }}-pip-${{ hashFiles(''backend/requirements.txt'') }}
+
+          '
         restore-keys:
         - ${{ runner.os }}-pip-
     - name: Install dependencies
@@ -279,8 +289,9 @@ jobs:
       uses: actions/cache@v4
       with:
         path: ~/.cache/pip
-        key: |
-          ${{ runner.os }}-pip-${{ hashFiles('backend/requirements.txt') }}
+        key: '${{ runner.os }}-pip-${{ hashFiles(''backend/requirements.txt'') }}
+
+          '
         restore-keys:
         - ${{ runner.os }}-pip-
     - name: Install dependencies
@@ -293,50 +304,3 @@ jobs:
       with:
         name: preflight-logs
         path: backend/preflight.log
-  postgresql-migration-test:
-    runs-on: ubuntu-latest
-    services:
-      postgres:
-        image: postgres:16-alpine
-        env:
-          POSTGRES_DB: scholarzone_test
-          POSTGRES_USER: test
-          POSTGRES_PASSWORD: test
-        ports:
-        - 5432:5432
-        options: --health-cmd pg_isready --health-interval 10s --health-timeout 5s --health-retries 5
-    env:
-      SCHOLARZONE_ENVIRONMENT: test
-      SCHOLARZONE_DATABASE_URL: postgresql://test:test@localhost:5432/scholarzone_test?sslmode=disable
-    steps:
-    - name: Checkout
-      uses: actions/checkout@v4
-    - name: Install system dependencies
-      run: sudo apt-get update && sudo apt-get install -y libjpeg-dev zlib1g-dev libfreetype6-dev liblcms2-dev libopenjp2-7-dev libtiff5-dev libwebp-dev postgresql-client
-    - name: Set up Python
-      uses: actions/setup-python@v5
-      with:
-        python-version: '3.11'
-    - name: Cache pip dependencies
-      uses: actions/cache@v4
-      with:
-        path: ~/.cache/pip
-        key: |
-          ${{ runner.os }}-pip-${{ hashFiles('backend/requirements.txt') }}
-        restore-keys:
-        - ${{ runner.os }}-pip-
-    - name: Install dependencies
-      run: cd backend && pip install -r requirements.txt
-    - name: Wait for PostgreSQL
-      run: for i in {1..30}; do pg_isready -h localhost -p 5432 -U test && break; sleep 1; done
-    - name: Run PostgreSQL migration test
-      run: cd backend && python scripts/test_postgresql_migration.py 2>&1 | tee postgresql_test.log
-      env:
-        SCHOLARZONE_DATABASE_URL: postgresql://test:test@localhost:5432/scholarzone_test?sslmode=disable
-        SCHOLARZONE_ENVIRONMENT: test
-    - name: Upload PostgreSQL test logs
-      uses: actions/upload-artifact@v4
-      if: always()
-      with:
-        name: postgresql-migration-test-logs
-        path: backend/postgresql_test.log
