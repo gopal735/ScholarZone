@@ -1,8 +1,6 @@
 name: Minimal CI Test
 
 on:
-  push:
-    branches: [main, master, fix/deep-scholarship-data-and-card-restoration]
   pull_request:
     branches: [main, master]
 
