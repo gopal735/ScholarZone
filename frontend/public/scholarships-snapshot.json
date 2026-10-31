@@ -1,6 +1,6 @@
 {
  "meta":{
-  "generated_at":"2026-10-30T20:09:44.461768+00:00",
+  "generated_at":"2026-10-31T15:37:18.672744+00:00",
   "source_database":"scholarzone.db",
   "source_record_count":770,
   "public_record_count":751,
@@ -34,7 +34,7 @@
    "country":"EU (multiple)",
    "degree":"PG only (Joint Master's)",
    "funding":"Fully Funded",
-   "description":null,
+   "description":"Erasmus Mundus Joint Masters (EMJM) are prestigious international master's programmes jointly designed and delivered by a consortium of at least three higher education institutions from three different countries, of which at least two must be EU Member States. The EU provides funding for both running these programmes and offering competitive scholarships to the best students worldwide. Students study in at least two different countries and graduate with either a joint degree or multiple degree certificates from partner universities.",
    "deadline_date":null,
    "deadline":"Varies by consortium/programme - typically Dec-Feb for a Sept/Oct intake; no single central deadline",
    "deadline_display":"Varies by consortium/programme - typically Dec-Feb for a Sept/Oct intake; no single central deadline",
@@ -43,31 +43,49 @@
    "verification_status":"active",
    "last_verified_at":"2026-10-30",
    "last_verified_date":"2026-10-30",
-   "official_source":"European Commission (Erasmus+)",
-   "official_source_url":"https://erasmus-plus.ec.europa.eu",
+   "official_source":"European Commission / EACEA",
+   "official_source_url":"https://erasmus-plus.ec.europa.eu/opportunities/individuals/students/erasmus-mundus-joint-masters",
    "application_link":"https://erasmus-plus.ec.europa.eu",
-   "eligibility":[],
+   "eligibility":[
+    "Bachelor's degree or equivalent",
+    "Enrollment in EMJM programme",
+    "Willingness to study in at least two different countries",
+    "Strong academic results"
+   ],
    "benefits":[
-    "Full tuition, approx. EUR 1,400/month stipend, travel allowance, installation allowance (exact figures vary slightly by consortium)"
+    "Full tuition waiver",
+    "Monthly stipend of €1,400 (max 24 months)",
+    "Travel and visa cost contribution",
+    "Health and accident insurance",
+    "Installation allowance"
    ],
    "coverage":[
-    "Full tuition, approx. EUR 1,400/month stipend, travel allowance, installation allowance (exact figures vary slightly by consortium)"
+    "tuition fees",
+    "monthly living allowance",
+    "travel and visa costs",
+    "insurance",
+    "installation costs"
    ],
-   "requirements":[],
+   "requirements":[
+    "Bachelor's degree",
+    "Language proficiency (programme-dependent)",
+    "Admission to EMJM consortium programme"
+   ],
    "documents":[
-    "Academic transcripts/certificates (Bachelor's, HSC, SSC)",
-    "CV",
+    "Degree certificate",
+    "Transcripts",
+    "Language test certificates",
     "Motivation letter",
-    "2 recommendation letters (typical)",
-    "Proof of English proficiency"
+    "CV",
+    "Recommendation letters"
    ],
    "region":null,
-   "duration":null,
-   "application_period":"Varies by consortium/programme - typically Dec-Feb for a Sept/Oct intake; no single central deadline",
+   "duration":"1-2 academic years (60, 90, or 120 ECTS)",
+   "application_period":"Typically October-January for programmes starting following academic year",
    "catalogue_url":null,
    "official_updates_url":null,
-   "selection_notes":null,
-   "program_type":null,
+   "selection_notes":"Competitive selection by consortium; geographical balance considered (max 10% from same nationality)",
+   "program_type":"Erasmus Mundus Joint Master",
    "image_url":"https://erasmus-plus.ec.europa.eu/sites/default/files/styles/hero_desktop/public/2025-01/emjm_students_european_campus.jpg",
    "image_source_url":"https://erasmus-plus.ec.europa.eu/opportunities/individuals/students/erasmus-mundus-joint-masters",
    "image_source_type":"official_scholarship",
@@ -75,22 +93,46 @@
    "image_verified_at":"2025-06-26T00:00:00",
    "image_alt_text":"Erasmus Mundus Joint Masters students on a European university campus",
    "fully_funded":true,
-   "funding_amount":null,
-   "funding_currency":null,
-   "funding_period":null,
-   "tuition_coverage":null,
-   "living_cost_coverage":null,
-   "travel_coverage":null,
+   "funding_amount":1400.0,
+   "funding_currency":"EUR",
+   "funding_period":"monthly",
+   "tuition_coverage":true,
+   "living_cost_coverage":true,
+   "travel_coverage":true,
    "eligibility_summary":"Bachelor's degree (3-4 years) in a relevant field, or final-year students may apply if the programme allows (must graduate before the program starts). No fixed CGPA requirement - selection weighs motivation, relevant background, and clarity of goals more heavily than grades.",
-   "english_requirement":"IELTS/TOEFL, OR a Medium of Instruction (MOI) certificate from a prior English-medium degree - accepted by many (not all) programmes as a substitute for a test score",
-   "application_method":[],
+   "english_requirement":"Programme-dependent (typically IELTS 6.5+ or equivalent)",
+   "application_method":"Apply directly to the EMJM consortium",
    "best_fit":"Accessible for average-CGPA applicants with a strong personal motivation/story - no fixed CGPA cutoff, evaluated more holistically than most government scholarships",
    "notes":"This is a category of 50+ separate Joint Master's programmes (each its own university consortium), not one application. Applicants pick and apply directly to specific joint-programme(s) via the Erasmus Mundus Catalogue on erasmus-plus.ec.europa.eu. Deadlines are set per-programme.",
-   "updated_at":"2026-10-30T12:15:34",
+   "updated_at":"2026-10-31T15:19:56.740219",
    "departments":[],
    "eligible_fields":[],
-   "eligible_programmes":[],
-   "academic_provenance":null,
+   "eligible_programmes":[
+    "All EMJM catalogue programmes"
+   ],
+   "academic_provenance":{
+    "departments":{
+     "status":"officially_unrestricted",
+     "source_urls":[
+      "https://erasmus-plus.ec.europa.eu/opportunities/individuals/students/erasmus-mundus-joint-masters"
+     ],
+     "verified_at":"2026-10-31"
+    },
+    "eligible_fields":{
+     "status":"officially_unrestricted",
+     "source_urls":[
+      "https://erasmus-plus.ec.europa.eu/opportunities/individuals/students/erasmus-mundus-joint-masters"
+     ],
+     "verified_at":"2026-10-31"
+    },
+    "eligible_programmes":{
+     "status":"confirmed",
+     "source_urls":[
+      "https://www.eacea.ec.europa.eu/erasmus-mundus/catalogue_en"
+     ],
+     "verified_at":"2026-10-31"
+    }
+   },
    "funding_type":"Fully Funded",
    "name":"Erasmus Mundus Joint Masters (EMJM)"
   },
@@ -118,16 +160,17 @@
     "Exact GPA/academic requirements are set per individual programme, not centrally by DAAD"
    ],
    "benefits":[
-    "Monthly stipend: EUR 992 (Master's) / EUR 1,300 (PhD/doctoral) - figures current as of 2025/26",
-    "Health, accident, and personal liability insurance",
-    "Travel allowance (upon application only)",
-    "Annual study/research allowance: EUR 460"
+    "€992/month (Master's)",
+    "€1,400/month (PhD)",
+    "Health insurance",
+    "Travel allowance",
+    "Tuition waiver (programme-dependent)"
    ],
    "coverage":[
-    "Monthly stipend: EUR 992 (Master's) / EUR 1,300 (PhD/doctoral) - figures current as of 2025/26",
-    "Health, accident, and personal liability insurance",
-    "Travel allowance (upon application only)",
-    "Annual study/research allowance: EUR 460"
+    "Monthly stipend",
+    "Health insurance",
+    "Travel allowance",
+    "Tuition waiver (programme-dependent)"
    ],
    "requirements":[
     "Depends on programme - many require IELTS/TOEFL for English-taught programmes",
@@ -171,11 +214,33 @@
    ],
    "best_fit":"Best for Master's/PhD applicants who already have a specific field/programme in mind - not one unified scholarship, requires researching individual programme listings",
    "notes":"DAAD is NOT a single scholarship - it is a database of 100+ separately funded programmes, each with its own eligibility/deadline/coverage. Figures above are current as of 2025/26. Must check the specific programme on DAAD's Funding Guide database (daad.de), filtered by Bangladesh + degree level, before advising a user. Funded by the German Federal Foreign Office.",
-   "updated_at":"2026-10-30T12:15:34",
+   "updated_at":"2026-10-31T15:19:56.740689",
    "departments":[],
    "eligible_fields":[],
    "eligible_programmes":[],
-   "academic_provenance":null,
+   "academic_provenance":{
+    "departments":{
+     "status":"officially_unrestricted",
+     "source_urls":[
+      "https://www.daad.de/en/study-and-research-in-germany/scholarships/"
+     ],
+     "verified_at":"2026-10-31"
+    },
+    "eligible_fields":{
+     "status":"officially_unrestricted",
+     "source_urls":[
+      "https://www.daad.de/en/study-and-research-in-germany/scholarships/"
+     ],
+     "verified_at":"2026-10-31"
+    },
+    "eligible_programmes":{
+     "status":"partially_completed",
+     "source_urls":[
+      "https://www.daad.de/en/study-and-research-in-germany/scholarships/"
+     ],
+     "verified_at":"2026-10-31"
+    }
+   },
    "funding_type":"Fully Funded",
    "name":"DAAD Scholarship"
   },
@@ -203,10 +268,20 @@
     "Undergraduate applicants usually have age and CGPA requirements that change each cycle."
    ],
    "benefits":[
-    "Round-trip airfare; tuition support; Korean language training; monthly stipend; settlement allowance; medical insurance and other official benefits depending on track."
+    "Full tuition",
+    "Monthly stipend 900,000 KRW",
+    "Round-trip airfare",
+    "Korean language training",
+    "Settlement allowance",
+    "Medical insurance"
    ],
    "coverage":[
-    "Round-trip airfare; tuition support; Korean language training; monthly stipend; settlement allowance; medical insurance and other official benefits depending on track."
+    "Full tuition (NIIED up to 5M KRW/semester, university covers excess)",
+    "Monthly stipend 900,000 KRW",
+    "Round-trip airfare",
+    "Korean language training (14.4M KRW/year)",
+    "Settlement allowance (200,000 KRW)",
+    "Medical insurance"
    ],
    "requirements":[
     "English test scores are not mandatory.",
@@ -250,11 +325,37 @@
    ],
    "best_fit":"Students seeking fully funded undergraduate opportunities in South Korea.",
    "notes":"Formerly known as KGSP. Current official name is Global Korea Scholarship (GKS). Applicants must verify yearly announcements from the official Study in Korea website.",
-   "updated_at":"2026-10-30T12:15:34",
+   "updated_at":"2026-10-31T15:19:56.740913",
    "departments":[],
    "eligible_fields":[],
-   "eligible_programmes":[],
-   "academic_provenance":null,
+   "eligible_programmes":[
+    "GKS Graduate Degree",
+    "GKS Undergraduate Degree",
+    "GKS Non-degree Exchange"
+   ],
+   "academic_provenance":{
+    "departments":{
+     "status":"officially_unrestricted",
+     "source_urls":[
+      "https://www.studyinkorea.go.kr/en/plan/scholarship.do"
+     ],
+     "verified_at":"2026-10-31"
+    },
+    "eligible_fields":{
+     "status":"officially_unrestricted",
+     "source_urls":[
+      "https://www.studyinkorea.go.kr/en/plan/scholarship.do"
+     ],
+     "verified_at":"2026-10-31"
+    },
+    "eligible_programmes":{
+     "status":"confirmed",
+     "source_urls":[
+      "https://www.studyinkorea.go.kr/en/plan/scholarship.do"
+     ],
+     "verified_at":"2026-10-31"
+    }
+   },
    "funding_type":"Fully Funded",
    "name":"Global Korea Scholarship (GKS)"
   },
@@ -281,10 +382,17 @@
     "Undergraduate: age 17-25 as of April 1 of scholarship year, completed 11-12 years of schooling"
    ],
    "benefits":[
-    "Full tuition, monthly stipend approx. 117,000-148,000 JPY (undergraduate is at the lower end), round-trip economy airfare Dhaka-Japan, 6 months-1 year Japanese language training included"
+    "Full tuition",
+    "Round-trip airfare",
+    "Research: ¥148,000/month",
+    "Undergraduate: ¥117,000/month",
+    "Regional allowance ¥2,000-3,000"
    ],
    "coverage":[
-    "Full tuition, monthly stipend approx. 117,000-148,000 JPY (undergraduate is at the lower end), round-trip economy airfare Dhaka-Japan, 6 months-1 year Japanese language training included"
+    "Full tuition",
+    "Round-trip airfare",
+    "Monthly stipend (track-specific)",
+    "Regional allowance (where applicable)"
    ],
    "requirements":[
     "Application Form (use current year's MEXT form)",
@@ -332,11 +440,40 @@
    ],
    "best_fit":"Strong fit for academically strong STEM applicants comfortable with a written entrance exam, not just document review",
    "notes":"Two distinct application paths for a Bangladeshi UG applicant: (1) Embassy Recommendation - apply via the Bangladesh Ministry of Education SHED portal, screened by the Embassy of Japan Dhaka (written exam + interview in Baridhara); (2) University Recommendation - apply directly to a specific Japanese university, which then recommends the candidate to MEXT (eligibility/deadline set by that university). Clarify which path a user means before giving deadline information.",
-   "updated_at":"2026-10-30T12:15:34",
+   "updated_at":"2026-10-31T15:19:56.741148",
    "departments":[],
    "eligible_fields":[],
-   "eligible_programmes":[],
-   "academic_provenance":null,
+   "eligible_programmes":[
+    "Research Students (Master/PhD)",
+    "Undergraduate Students",
+    "Teacher Training",
+    "Japanese Studies",
+    "College of Technology",
+    "Young Leaders Program (YLP)"
+   ],
+   "academic_provenance":{
+    "departments":{
+     "status":"officially_unrestricted",
+     "source_urls":[
+      "https://www.studyinjapan.go.jp/en/planning/scholarships/about-scholarships"
+     ],
+     "verified_at":"2026-10-31"
+    },
+    "eligible_fields":{
+     "status":"officially_unrestricted",
+     "source_urls":[
+      "https://www.studyinjapan.go.jp/en/planning/scholarships/about-scholarships"
+     ],
+     "verified_at":"2026-10-31"
+    },
+    "eligible_programmes":{
+     "status":"confirmed",
+     "source_urls":[
+      "https://www.studyinjapan.go.jp/en/planning/scholarships/about-scholarships"
+     ],
+     "verified_at":"2026-10-31"
+    }
+   },
    "funding_type":"Fully Funded",
    "name":"MEXT (Monbukagakusho) Scholarship"
   },

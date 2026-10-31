@@ -67,7 +67,7 @@ class ScholarshipQuery(BaseModel):
 class ScholarshipResponse(BaseModel):
     """Frontend-compatible scholarship list item."""
 
-    model_config = ConfigDict(from_attributes=True)
+    model_config = ConfigDict(from_attributes=True, extra='ignore')
 
     @field_validator("status", mode="before")
     @classmethod
@@ -156,6 +156,39 @@ class ScholarshipResponse(BaseModel):
     travel_coverage: bool | None = None
     coverage: list[str] = Field(default_factory=list)
 
+    # Additional public fields for list API (needed by Card and Detail Page)
+    description: str | None = None
+    region: str | None = None
+    duration: str | None = None
+    application_period: str | None = None
+    official_source: str | None = None
+    catalogue_url: str | None = None
+    official_updates_url: str | None = None
+    application_link: str | None = None
+    image_url: str | None = None
+    image_source_url: str | None = None
+    image_source_type: str | None = None
+    image_kind: str | None = None
+    image_verified_at: datetime | None = None
+    image_alt_text: str | None = None
+    eligibility: list[str] = Field(default_factory=list)
+    eligibility_summary: str | None = None
+    benefits: list[str] = Field(default_factory=list)
+    requirements: list[str] = Field(default_factory=list)
+    documents: list[str] = Field(default_factory=list)
+    english_requirement: str | None = None
+    application_method: list[str] = Field(default_factory=list)
+    selection_notes: str | None = None
+    program_type: str | None = None
+    best_fit: str | None = None
+    last_verified_date: date | None = None
+    notes: str | None = None
+    image_source_url: str | None = None
+    image_verified_at: datetime | None = None
+    image_alt_text: str | None = None
+    last_verified_date: date | None = None
+    notes: str | None = None
+
     @field_validator("verification_status", mode="before")
     @classmethod
     def _absent_status_is_uncertain(cls, value):
@@ -184,6 +217,11 @@ class ScholarshipResponse(BaseModel):
         "eligible_fields",
         "eligible_programmes",
         "coverage",
+        "eligibility",
+        "benefits",
+        "requirements",
+        "documents",
+        "application_method",
     )
 
     @field_validator(*LIST_RESPONSE_LIST_COLUMNS, mode="before")
