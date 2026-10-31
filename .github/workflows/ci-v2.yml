@@ -1,6 +1,6 @@
 name: ScholarZone CI v2
 
-on:
+'on':
   pull_request:
     branches: [main, master]
   workflow_dispatch:
