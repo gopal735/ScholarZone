@@ -9,7 +9,7 @@ import os
 import sys
 
 # Set up environment
-os.environ['SCHOLARZONE_DATABASE_URL'] = 'postgresql://test:test@localhost:5432/scholarzone_test'
+os.environ['SCHOLARZONE_DATABASE_URL'] = 'postgresql://test:test@localhost:5432/scholarzone_test?sslmode=disable'
 os.environ['SCHOLARZONE_ENVIRONMENT'] = 'test'
 
 # Add backend to path
@@ -46,7 +46,7 @@ def test_postgresql_migration():
     
     # 2. Run migration
     print("\n2. Running migration...")
-    engine = create_engine('postgresql://test:test@localhost:5432/scholarzone_test')
+    engine = create_engine('postgresql://test:test@localhost:5432/scholarzone_test?sslmode=disable')
     with engine.connect() as conn:
         _upgrade_postgresql_schema(conn)
         conn.commit()
@@ -113,7 +113,7 @@ def test_postgresql_migration():
     
     # 5. Test idempotency
     print("\n5. Testing idempotency...")
-    engine = create_engine('postgresql://test:test@localhost:5432/scholarzone_test')
+    engine = create_engine('postgresql://test:test@localhost:5432/scholarzone_test?sslmode=disable')
     with engine.connect() as conn:
         _upgrade_postgresql_schema(conn)
         conn.commit()
@@ -132,7 +132,7 @@ if __name__ == '__main__':
     from sqlalchemy import create_engine, text, inspect
     
     # Set environment
-    os.environ['SCHOLARZONE_DATABASE_URL'] = 'postgresql://test:test@localhost:5432/scholarzone_test'
+    os.environ['SCHOLARZONE_DATABASE_URL'] = 'postgresql://test:test@localhost:5432/scholarzone_test?sslmode=disable'
     os.environ['SCHOLARZONE_ENVIRONMENT'] = 'test'
     
     # Import after env vars set
