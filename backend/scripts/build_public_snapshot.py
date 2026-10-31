@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 """Rebuild the public scholarship snapshot from the local verified database.
 
 Why this exists
@@ -36,8 +38,7 @@ Run
     backend/.venv/Scripts/python.exe backend/scripts/build_public_snapshot.py
 """
 
-from __future__ import annotations
-
+from decimal import Decimal
 import argparse
 import json
 import sys
@@ -81,11 +82,15 @@ PUBLIC_COLUMNS: tuple[str, ...] = (
     "status",
     "verification_status",
     "last_verified_at",
+    "last_verified_date",
+    "official_source",
     "official_source_url",
     "application_link",
     "eligibility",
     "benefits",
+    "coverage",
     "requirements",
+    "documents",
     "region",
     "duration",
     "application_period",
@@ -96,11 +101,27 @@ PUBLIC_COLUMNS: tuple[str, ...] = (
     "image_url",
     "image_source_url",
     "image_source_type",
+    "image_kind",
     "image_verified_at",
     "image_alt_text",
     "fully_funded",
-    "next_verification_due",
+    "funding_amount",
+    "funding_currency",
+    "funding_period",
+    "tuition_coverage",
+    "living_cost_coverage",
+    "travel_coverage",
+    "eligibility_summary",
+    "english_requirement",
+    "application_method",
+    "best_fit",
+    "notes",
     "updated_at",
+    # Academic eligibility
+    "departments",
+    "eligible_fields",
+    "eligible_programmes",
+    "academic_provenance",
 )
 
 #: Research enrichment tables. Listed so the exclusion is explicit and a
@@ -122,6 +143,9 @@ def _jsonable(value: Any) -> Any:
     """
     if isinstance(value, (date, datetime)):
         return value.isoformat()
+    if isinstance(value, Decimal):
+        # Convert Decimal to float for JSON serialization
+        return float(value)
     return value
 
 

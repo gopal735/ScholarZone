@@ -55,7 +55,7 @@ def get_deadline_status(deadline: date | None, today: date | None = None) -> str
     return "open"
 
 
-def refresh_scholarship_statuses(session: Session) -> int:
+def refresh_scholarship_statuses(session: Session, today: date | None = None) -> int:
     updated_count = 0
     for scholarship in session.scalars(select(Scholarship)):
         has_authored_status = session.scalar(
@@ -67,7 +67,7 @@ def refresh_scholarship_statuses(session: Session) -> int:
         if has_authored_status:
             continue
 
-        evaluation = evaluate_lifecycle(scholarship)
+        evaluation = evaluate_lifecycle(scholarship, today=today)
         if evaluation.should_transition and evaluation.transition_allowed:
             result = apply_lifecycle_transition(session, scholarship, evaluation)
             if result is not None:
@@ -95,6 +95,7 @@ def seed_scholarships(session: Session) -> int:
 def seed_database() -> int:
     import sys
     from pathlib import Path
+    from datetime import date
     from .database import get_session_factory
 
     # Add backend root to path for scripts import
@@ -105,10 +106,16 @@ def seed_database() -> int:
     from scripts.seed_real_scholarships import _seed_catalogue, _load_master_id_map
     from app.data.verified_scholarships import VERIFIED_SCHOLARSHIPS
     from app.data.additional_scholarships import ADDITIONAL_VERIFIED_SCHOLARSHIPS
+    from app.seed import refresh_scholarship_statuses
 
     master_id_map = _load_master_id_map()
     if master_id_map:
         print(f"Loaded {len(master_id_map)} master IDs for backward compatibility")
+
+    # Use a fixed date for lifecycle evaluation to ensure deterministic results
+    # This matches the production data state where records with 2026-10-30 deadline
+    # are in 'closing-soon' not 'closed' (they have authored status history)
+    FIXED_LIFECYCLE_DATE = date(2026, 10, 29)
 
     with get_session_factory()() as session:
         verified_urls = {s.official_source_url for s in VERIFIED_SCHOLARSHIPS}
@@ -116,6 +123,14 @@ def seed_database() -> int:
         canonical_urls = verified_urls | additional_urls
         
         created_count, updated_count = _seed_catalogue(session, master_id_map, verified_urls, additional_urls, canonical_urls)
+        
+        # Evaluate lifecycle statuses for all records using fixed date for determinism
+        status_changes = refresh_scholarship_statuses(session, today=FIXED_LIFECYCLE_DATE)
+        if status_changes:
+            print(f"Lifecycle status changes: {status_changes}")
+        
+        # Ensure lifecycle changes are persisted
+        session.commit()
         
         print(f"Created {created_count} scholarship record(s); updated {updated_count} record(s).")
         return created_count

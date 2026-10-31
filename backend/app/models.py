@@ -104,6 +104,16 @@ class Scholarship(Base):
     best_fit: Mapped[str | None] = mapped_column(Text, nullable=True)
 
     # ------------------------------------------------------------------
+    # Academic eligibility - structured fields for departments, fields, programmes.
+    # Separated from the generic eligibility list so that programme-specific
+    # and field-level information can be queried and displayed distinctly.
+    departments: Mapped[list[str]] = mapped_column(JSON, nullable=False, default=list)
+    eligible_fields: Mapped[list[str]] = mapped_column(JSON, nullable=False, default=list)
+    eligible_programmes: Mapped[list[str]] = mapped_column(JSON, nullable=False, default=list)
+    # Provenance for academic fields: what was confirmed vs inferred.
+    academic_provenance: Mapped[dict | None] = mapped_column(JSON, nullable=True)
+
+    # ------------------------------------------------------------------
     # Award economics, separated.
     #
     # ``funding`` is a 120-character label and cannot distinguish "CAD 40,000 a
@@ -112,10 +122,11 @@ class Scholarship(Base):
     # serious financial mistake, so the amount, its currency, its period and
     # what it actually covers are stored apart from the label.
     #
-    # ``fully_funded`` is deliberately conservative: it is true only when an
-    # official source states that tuition, living costs and required expenses are
-    # covered. A fixed stipend is not full funding, and the default is therefore
-    # false rather than unknown, because unknown reads as "probably yes".
+    # ``fully_funded`` is a tri-state field:
+    #   True  = officially confirmed fully funded (tuition + living + required expenses)
+    #   False = officially confirmed NOT fully funded (partial, stipend, tuition-only, etc.)
+    #   None  = unknown / not confirmed by official source
+    # The default is None (unknown) to avoid false assumptions.
     # ------------------------------------------------------------------
     funding_amount: Mapped[float | None] = mapped_column(Numeric(12, 2), nullable=True)
     funding_currency: Mapped[str | None] = mapped_column(String(8), nullable=True)
@@ -123,7 +134,7 @@ class Scholarship(Base):
     tuition_coverage: Mapped[bool | None] = mapped_column(Boolean, nullable=True)
     living_cost_coverage: Mapped[bool | None] = mapped_column(Boolean, nullable=True)
     travel_coverage: Mapped[bool | None] = mapped_column(Boolean, nullable=True)
-    fully_funded: Mapped[bool] = mapped_column(Boolean, nullable=False, default=False)
+    fully_funded: Mapped[bool | None] = mapped_column(Boolean, nullable=True, default=None)
 
     # ------------------------------------------------------------------
     # Structured programme detail, kept apart from the scalar columns above.

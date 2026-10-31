@@ -2,7 +2,7 @@ name: Zero-Paid Dependency Guard
 
 on:
   push:
-    branches: [master]
+    branches: [master, fix/deep-scholarship-data-and-card-restoration]
     paths:
       - 'frontend/**'
       - 'backend/**'

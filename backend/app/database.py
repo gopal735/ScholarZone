@@ -190,10 +190,9 @@ def _upgrade_postgresql_schema(engine: Engine) -> None:
             "tuition_coverage": "BOOLEAN",
             "living_cost_coverage": "BOOLEAN",
             "travel_coverage": "BOOLEAN",
-            # NOT NULL with a default, so an existing row reads as "not
-            # established as fully funded" rather than NULL, which would be
-            # ambiguous in a filter.
-            "fully_funded": "BOOLEAN NOT NULL DEFAULT FALSE",
+            # Tri-state: True = confirmed fully funded, False = confirmed not fully funded,
+            # None = unknown/not confirmed. No default, so existing rows read as unknown.
+            "fully_funded": "BOOLEAN",
             # Structured detail, split by origin so published rules and derived
             # guidance are never stored as the same kind of fact.
             "official_details": "JSON",
@@ -205,10 +204,38 @@ def _upgrade_postgresql_schema(engine: Engine) -> None:
             "auto_delete_candidate_since": "TIMESTAMPTZ",
             # Operator override, checked before every other condition.
             "deletion_protected": "BOOLEAN NOT NULL DEFAULT FALSE",
+            # Academic eligibility - structured fields for departments, fields, programmes
+            "departments": "JSON",
+            "eligible_fields": "JSON",
+            "eligible_programmes": "JSON",
+            "academic_provenance": "JSON",
         }
         for name, definition in additions.items():
             if name not in columns:
                 connection.execute(text(f"ALTER TABLE scholarships ADD COLUMN IF NOT EXISTS {name} {definition}"))
+
+        # Migration: fully_funded column constraint change (NOT NULL DEFAULT FALSE -> nullable)
+        # Only run if column exists with old constraint
+        if "fully_funded" in columns:
+            # Check if NOT NULL constraint exists
+            has_not_null = connection.execute(text("""
+                SELECT 1 FROM information_schema.columns
+                WHERE table_name = 'scholarships' 
+                AND column_name = 'fully_funded'
+                AND is_nullable = 'NO'
+            """)).scalar()
+            if has_not_null:
+                connection.execute(text("ALTER TABLE scholarships ALTER COLUMN fully_funded DROP NOT NULL"))
+            
+            # Check if DEFAULT exists
+            has_default = connection.execute(text("""
+                SELECT 1 FROM information_schema.columns
+                WHERE table_name = 'scholarships' 
+                AND column_name = 'fully_funded'
+                AND column_default IS NOT NULL
+            """)).scalar()
+            if has_default:
+                connection.execute(text("ALTER TABLE scholarships ALTER COLUMN fully_funded DROP DEFAULT"))
 
         # deadline_display was varchar(255), which is shorter than the deadline
         # wording some official pages publish. Seven researched programmes were
@@ -361,6 +388,158 @@ def _validate_postgresql_schema(engine: Engine) -> None:
     logger.info("[SCHEMA VALIDATION] STATUS: VALID")
 
 
+def _migrate_fully_funded_to_nullable_sqlite(connection) -> None:
+    """
+    Properly migrate fully_funded column from NOT NULL to nullable in SQLite.
+    Preserves the EXACT original schema including:
+    - All columns with their exact definitions
+    - All table-level constraints (PRIMARY KEY, UNIQUE, CHECK, FOREIGN KEY)
+    - All indexes (explicit and implicit)
+    - All triggers
+    - AUTOINCREMENT behavior and sqlite_sequence high-water mark
+    - Child table foreign key references
+    Only changes: fully_funded column nullability (NOT NULL -> nullable)
+    
+    NOTE: This function runs inside an active transaction (from engine.begin()).
+    SQLite's PRAGMA foreign_keys cannot be changed inside an active transaction -
+    it only affects new connections after the current transaction commits.
+    The migration works by recreating the table with the modified schema,
+    which preserves FK enforcement for subsequent connections.
+    """
+    # 1. Check if migration is already done (idempotency)
+    pragma_result = connection.execute(text("PRAGMA table_info(scholarships)")).fetchall()
+    for row in pragma_result:
+        if row[1] == "fully_funded" and row[3] == 0:
+            # Already nullable, nothing to do
+            return
+
+    # 2. Get the exact original CREATE TABLE SQL
+    create_table_result = connection.execute(text("""
+        SELECT sql FROM sqlite_master 
+        WHERE type = 'table' AND name = 'scholarships'
+    """)).fetchone()
+    
+    if not create_table_result or not create_table_result[0]:
+        raise RuntimeError("Could not find scholarships table definition")
+    
+    original_create_sql = create_table_result[0]
+    
+    # 3. Modify the CREATE TABLE SQL to make fully_funded nullable
+    # The original has: "fully_funded <type> NOT NULL" or similar
+    # We need to remove NOT NULL from fully_funded column only
+    import re
+    
+    # Find the fully_funded column definition and remove NOT NULL
+    # Pattern matches: fully_funded <type> NOT NULL (followed by DEFAULT, comma, ), CONSTRAINT, etc.)
+    modified_create_sql = re.sub(
+        r'(fully_funded\s+\w+\s+)NOT NULL\s*(?=\s*(?:DEFAULT|,|\)|CONSTRAINT|PRIMARY KEY|UNIQUE|CHECK))',
+        r'\1',
+        original_create_sql,
+        flags=re.IGNORECASE
+    )
+    
+    # Verify the modification worked
+    if "fully_funded" in modified_create_sql:
+        # Check if NOT NULL is still on fully_funded
+        ff_section = modified_create_sql[modified_create_sql.lower().find("fully_funded"):]
+        # Find the end of the column definition (comma, closing paren, or CONSTRAINT)
+        end_pos = len(ff_section)
+        for marker in [',', ')', 'CONSTRAINT']:
+            pos = ff_section.upper().find(marker)
+            if pos != -1 and pos < end_pos:
+                end_pos = pos
+        ff_section = ff_section[:end_pos]
+        if "NOT NULL" in ff_section.upper():
+            raise RuntimeError(f"Failed to remove NOT NULL from fully_funded column. Column def: {ff_section}")
+    
+    # 4. Get all indexes on the scholarships table
+    indexes = connection.execute(text("""
+        SELECT name, sql FROM sqlite_master 
+        WHERE type = 'index' AND tbl_name = 'scholarships' AND sql IS NOT NULL
+    """)).fetchall()
+    
+    # 5. Get all triggers on the scholarships table
+    triggers = connection.execute(text("""
+        SELECT name, sql FROM sqlite_master 
+        WHERE type = 'trigger' AND tbl_name = 'scholarships'
+    """)).fetchall()
+    
+    # 6. Get the current sqlite_sequence value (high-water mark)
+    seq_row = connection.execute(text('SELECT seq FROM sqlite_sequence WHERE name = "scholarships"')).fetchone()
+    current_seq = seq_row[0] if seq_row else None
+    
+    # 7. Get child tables that reference scholarships (to verify they still work)
+    child_tables = connection.execute(text("""
+        SELECT name, sql FROM sqlite_master 
+        WHERE type = 'table' AND sql LIKE '%REFERENCES scholarships%'
+    """)).fetchall()
+    
+    # NOTE: Do NOT use PRAGMA foreign_keys = OFF/ON here.
+    # This function runs inside an active transaction from engine.begin().
+    # SQLite's PRAGMA foreign_keys setting cannot be changed inside a transaction
+    # - it only takes effect on new connections after the current transaction commits.
+    # The table recreation approach naturally preserves FK enforcement for new connections.
+    
+    # 8. Create new table with modified schema
+    new_table_sql = modified_create_sql.replace("CREATE TABLE scholarships", "CREATE TABLE scholarships_new")
+    connection.execute(text(new_table_sql))
+    
+    # 9. Copy all data with explicit column list
+    # Get column names from PRAGMA table_info
+    table_info = connection.execute(text("PRAGMA table_info(scholarships)")).fetchall()
+    column_names = [col[1] for col in table_info]
+    columns_list = ", ".join(column_names)
+    connection.execute(text(f'INSERT INTO scholarships_new ({columns_list}) SELECT {columns_list} FROM scholarships'))
+    
+    # 10. Verify data integrity
+    old_count = connection.execute(text("SELECT COUNT(*) FROM scholarships")).scalar()
+    new_count = connection.execute(text("SELECT COUNT(*) FROM scholarships_new")).scalar()
+    if old_count != new_count:
+        raise RuntimeError(f"Data copy failed: old={old_count}, new={new_count}")
+    
+    # 11. Verify foreign key integrity on new table
+    fk_check = connection.execute(text("PRAGMA foreign_key_check(scholarships_new)")).fetchall()
+    if fk_check:
+        raise RuntimeError(f"Foreign key check failed after copy: {fk_check}")
+    
+    # 12. Drop old table
+    connection.execute(text("DROP TABLE scholarships"))
+    
+    # 13. Rename new table
+    connection.execute(text("ALTER TABLE scholarships_new RENAME TO scholarships"))
+    
+    # 14. Restore sqlite_sequence high-water mark
+    if current_seq is not None:
+        connection.execute(text('UPDATE sqlite_sequence SET seq = :seq WHERE name = "scholarships"'), {"seq": current_seq})
+    
+    # 15. Recreate all indexes
+    for name, sql in indexes:
+        if sql:
+            connection.execute(text(sql))
+    
+    # 16. Recreate all triggers
+    for name, sql in triggers:
+        if sql:
+            connection.execute(text(sql))
+    
+    # 16b. Verify foreign key integrity after migration (on this connection)
+    fk_check = connection.execute(text("PRAGMA foreign_key_check(scholarships)")).fetchall()
+    if fk_check:
+        raise RuntimeError(f"Foreign key check failed after migration: {fk_check}")
+    
+    # 17. Verify NOT NULL constraint is removed for fully_funded
+    pragma_result = connection.execute(text("PRAGMA table_info(scholarships)")).fetchall()
+    for row in pragma_result:
+        if row[1] == "fully_funded" and row[3] == 1:
+            raise RuntimeError("Migration failed: fully_funded still has NOT NULL constraint")
+    
+    # 18. Verify child table references still work
+    for table_name, _ in child_tables:
+        fk_check = connection.execute(text(f'PRAGMA foreign_key_check("{table_name}")')).fetchall()
+        if fk_check:
+            raise RuntimeError(f"Child table {table_name} foreign key check failed: {fk_check}")
+
+
 def _upgrade_sqlite_schema(engine: Engine) -> None:
     """Keep the lightweight local database compatible as fields are added.
 
@@ -428,10 +607,9 @@ def _upgrade_sqlite_schema(engine: Engine) -> None:
         "tuition_coverage": "BOOLEAN",
         "living_cost_coverage": "BOOLEAN",
         "travel_coverage": "BOOLEAN",
-        # NOT NULL with a default, so an existing row reads as "not
-        # established as fully funded" rather than NULL, which would be
-        # ambiguous in a filter.
-        "fully_funded": "BOOLEAN NOT NULL DEFAULT FALSE",
+        # Tri-state: True = confirmed fully funded, False = confirmed not fully funded,
+        # None = unknown/not confirmed. No default, so existing rows read as unknown.
+        "fully_funded": "BOOLEAN",
         # Structured detail, split by origin so published rules and derived
         # guidance are never stored as the same kind of fact.
         "official_details": "JSON",
@@ -440,12 +618,29 @@ def _upgrade_sqlite_schema(engine: Engine) -> None:
         # Automatic garbage collection of closed records; see the model.
         "auto_delete_candidate_since": "DATETIME",
         "deletion_protected": "BOOLEAN NOT NULL DEFAULT FALSE",
+        # Academic eligibility - structured fields for departments, fields, programmes
+        "departments": "JSON NOT NULL DEFAULT '[]'",
+        "eligible_fields": "JSON NOT NULL DEFAULT '[]'",
+        "eligible_programmes": "JSON NOT NULL DEFAULT '[]'",
+        "academic_provenance": "JSON",
     }
 
     with engine.begin() as connection:
         for name, definition in additions.items():
             if name not in columns:
                 connection.execute(text(f"ALTER TABLE scholarships ADD COLUMN {name} {definition}"))
+
+        # Migration: fully_funded column constraint change (NOT NULL DEFAULT FALSE -> nullable)
+        # SQLite doesn't support ALTER COLUMN directly, so we check if column exists with old constraint
+        if "fully_funded" in columns:
+            # Check if column has NOT NULL constraint
+            pragma_result = connection.execute(text("PRAGMA table_info(scholarships)")).fetchall()
+            for row in pragma_result:
+                if row[1] == "fully_funded" and row[3] == 1:  # notnull = 1
+                    # Need to rebuild table to remove NOT NULL constraint
+                    # Preserve all indexes, triggers, constraints, foreign keys
+                    _migrate_fully_funded_to_nullable_sqlite(connection)
+                    break
 
         connection.execute(text("CREATE INDEX IF NOT EXISTS ix_scholarships_status ON scholarships (status)"))
         connection.execute(text("CREATE INDEX IF NOT EXISTS ix_scholarships_status_deadline ON scholarships (status, deadline_date)"))
