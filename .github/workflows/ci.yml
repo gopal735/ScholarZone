@@ -463,3 +463,154 @@ jobs:
         with:
           name: preflight-logs
           path: backend/preflight.log
+
+  postgresql-migration-test:
+    runs-on: ubuntu-latest
+    services:
+      postgres:
+        image: postgres:16-alpine
+        env:
+          POSTGRES_DB: scholarzone_test
+          POSTGRES_USER: test
+          POSTGRES_PASSWORD: test
+        ports: ['5432:5432']
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+    env:
+      SCHOLARZONE_ENVIRONMENT: test
+      DATABASE_URL: postgresql://test:test@localhost:5432/scholarzone_test
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Install system dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y libjpeg-dev zlib1g-dev libfreetype6-dev liblcms2-dev libopenjp2-7-dev libtiff5-dev libwebp-dev postgresql-client
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Cache pip dependencies
+        uses: actions/cache@v4
+        with:
+          path: ~/.cache/pip
+          key: ${{ runner.os }}-pip-${{ hashFiles('backend/requirements.txt') }}
+          restore-keys: |
+            ${{ runner.os }}-pip-
+
+      - name: Install dependencies
+        run: |
+          cd backend
+          pip install -r requirements.txt
+
+      - name: Wait for PostgreSQL
+        run: |
+          for i in {1..30}; do
+            pg_isready -h localhost -p 5432 -U test && break
+            sleep 1
+          done
+
+      - name: Run PostgreSQL migration test
+        run: |
+          cd backend
+          python -c "
+import os
+os.environ['SCHOLARZONE_DATABASE_URL'] = 'postgresql://test:test@localhost:5432/scholarzone_test'
+os.environ['SCHOLARZONE_ENVIRONMENT'] = 'test'
+
+from app.database import reset_database_connections, init_database, get_session_factory, _upgrade_postgresql_schema
+from app.models import Scholarship
+from sqlalchemy import create_engine, text, inspect
+
+reset_database_connections()
+init_database()
+
+factory = get_session_factory()
+with factory() as session:
+    # Check initial state - fully_funded should be NOT NULL DEFAULT FALSE
+    cols = inspect(session.bind).get_columns('scholarships')
+    for col in cols:
+        if col['name'] == 'fully_funded':
+            print(f'Initial: {col}')
+            assert col['nullable'] is False, 'fully_funded should be NOT NULL initially'
+            assert col['default'] is not None, 'fully_funded should have DEFAULT initially'
+            break
+
+    # Run migration
+    engine = create_engine('postgresql://test:test@localhost:5432/scholarzone_test')
+    with engine.connect() as conn:
+        _upgrade_postgresql_schema(conn)
+        conn.commit()
+
+    # Verify migration
+    with factory() as session2:
+        cols = inspect(session2.bind).get_columns('scholarships')
+        for col in cols:
+            if col['name'] == 'fully_funded':
+                print(f'After migration: {col}')
+                assert col['nullable'] is True, 'fully_funded should be nullable after migration'
+                break
+
+    # Test NULL insert
+    with factory() as session3:
+        s = Scholarship(
+            title='Test PG NULL',
+            country='Test',
+            degree='Master',
+            funding='Test',
+            fully_funded=None
+        )
+        session3.add(s)
+        session3.commit()
+        result = session3.query(Scholarship).filter_by(title='Test PG NULL').first()
+        assert result.fully_funded is None
+        print('NULL insert: PASS')
+
+    # Test True insert
+    with factory() as session4:
+        s = Scholarship(
+            title='Test PG True',
+            country='Test',
+            degree='Master',
+            funding='Test',
+            fully_funded=True
+        )
+        session4.add(s)
+        session4.commit()
+        result = session4.query(Scholarship).filter_by(title='Test PG True').first()
+        assert result.fully_funded is True
+        print('True insert: PASS')
+
+    # Test False insert
+    with factory() as session5:
+        s = Scholarship(
+            title='Test PG False',
+            country='Test',
+            degree='Master',
+            funding='Test',
+            fully_funded=False
+        )
+        session5.add(s)
+        session5.commit()
+        result = session5.query(Scholarship).filter_by(title='Test PG False').first()
+        assert result.fully_funded is False
+        print('False insert: PASS')
+
+    # Test idempotency
+    engine = create_engine('postgresql://test:test@localhost:5432/scholarzone_test')
+    with engine.connect() as conn:
+        _upgrade_postgresql_schema(conn)
+        conn.commit()
+    print('Idempotent migration: PASS')
+
+    print('ALL POSTGRESQL MIGRATION TESTS PASSED')
+"
+        env:
+          SCHOLARZONE_DATABASE_URL: postgresql://test:test@localhost:5432/scholarzone_test
+          SCHOLARZONE_ENVIRONMENT: test
