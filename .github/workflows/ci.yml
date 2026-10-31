@@ -35,17 +35,21 @@ jobs:
       uses: actions/cache@v4
       with:
         path: ~/.cache/pip
-        key: ${{ runner.os }}-pip-v2-${{ hashFiles('backend/requirements.txt') }}
+        key: |-
+          ${{ runner.os }}-pip-v2-${{ hashFiles('backend/requirements.txt') }}
         restore-keys:
         - ${{ runner.os }}-pip-v2-
     - name: Install dependencies
       run: cd backend && pip install -r requirements.txt
     - name: Debug - verify pip install
-      run: cd backend && pip list | grep -E "(fastapi|pydantic|sqlalchemy|psycopg|httpx|pillow|beautifulsoup4|apscheduler|resend|python-dotenv)" || true
+      run: |-
+        cd backend && pip list | grep -E "(fastapi|pydantic|sqlalchemy|psycopg|httpx|pillow|beautifulsoup4|apscheduler|resend|python-dotenv)" || true
     - name: Debug - test critical imports
-      run: 'cd backend && python -c "import psycopg; print(''psycopg: OK'')" 2>&1 || echo "psycopg: FAIL" && python -c "import sqlalchemy; print(''sqlalchemy: OK'')" 2>&1 || echo "sqlalchemy: FAIL" && python -c "import fastapi; print(''fastapi: OK'')" 2>&1 || echo "fastapi: FAIL" && python -c "import pydantic; print(''pydantic: OK'')" 2>&1 || echo "pydantic: FAIL" && python -c "import httpx; print(''httpx: OK'')" 2>&1 || echo "httpx: FAIL" && python -c "import PIL; print(''PIL: OK'')" 2>&1 || echo "PIL: FAIL" && python -c "import bs4; print(''bs4: OK'')" 2>&1 || echo "bs4: FAIL" && python -c "import apscheduler; print(''apscheduler: OK'')" 2>&1 || echo "apscheduler: FAIL" && python -c "import resend; print(''resend: OK'')" 2>&1 || echo "resend: FAIL" && python -c "import dotenv; print(''dotenv: OK'')" 2>&1 || echo "dotenv: FAIL"'
+      run: |-
+        cd backend && python -c "import psycopg; print('psycopg: OK')" 2>&1 || echo "psycopg: FAIL" && python -c "import sqlalchemy; print('sqlalchemy: OK')" 2>&1 || echo "sqlalchemy: FAIL" && python -c "import fastapi; print('fastapi: OK')" 2>&1 || echo "fastapi: FAIL" && python -c "import pydantic; print('pydantic: OK')" 2>&1 || echo "pydantic: FAIL" && python -c "import httpx; print('httpx: OK')" 2>&1 || echo "httpx: FAIL" && python -c "import PIL; print('PIL: OK')" 2>&1 || echo "PIL: FAIL" && python -c "import bs4; print('bs4: OK')" 2>&1 || echo "bs4: FAIL" && python -c "import apscheduler; print('apscheduler: OK')" 2>&1 || echo "apscheduler: FAIL" && python -c "import resend; print('resend: OK')" 2>&1 || echo "resend: FAIL" && python -c "import dotenv; print('dotenv: OK')" 2>&1 || echo "dotenv: FAIL"
     - name: Debug - verify environment
-      run: 'cd backend && python -c "import sys; print(f''Python: {sys.version}''); import app; print(''app import ok''); import pytest; print(''pytest ok'')" 2>&1'
+      run: |-
+        cd backend && python -c "import sys; print(f'Python: {sys.version}'); import app; print('app import ok'); import pytest; print('pytest ok')" 2>&1
     - name: Debug - run simple test
       run: cd backend && python -m pytest tests/test_git_integrity_regression.py -v --tb=short 2>&1
     - name: Run backend tests
@@ -71,7 +75,8 @@ jobs:
       uses: actions/cache@v4
       with:
         path: ~/.npm
-        key: ${{ runner.os }}-npm-v2-${{ hashFiles('frontend/package-lock.json') }}
+        key: |-
+          ${{ runner.os }}-npm-v2-${{ hashFiles('frontend/package-lock.json') }}
         restore-keys:
         - ${{ runner.os }}-npm-v2-
     - name: Install dependencies
@@ -122,7 +127,8 @@ jobs:
       uses: actions/cache@v4
       with:
         path: ~/.cache/pip
-        key: ${{ runner.os }}-pip-${{ hashFiles('backend/requirements.txt') }}
+        key: |-
+          ${{ runner.os }}-pip-${{ hashFiles('backend/requirements.txt') }}
         restore-keys:
         - ${{ runner.os }}-pip-
     - name: Install dependencies
@@ -152,7 +158,8 @@ jobs:
       uses: actions/cache@v4
       with:
         path: ~/.cache/pip
-        key: ${{ runner.os }}-pip-${{ hashFiles('backend/requirements.txt') }}
+        key: |-
+          ${{ runner.os }}-pip-${{ hashFiles('backend/requirements.txt') }}
         restore-keys:
         - ${{ runner.os }}-pip-
     - name: Install dependencies
@@ -180,7 +187,8 @@ jobs:
       uses: actions/cache@v4
       with:
         path: ~/.cache/pip
-        key: ${{ runner.os }}-pip-${{ hashFiles('backend/requirements.txt') }}
+        key: |-
+          ${{ runner.os }}-pip-${{ hashFiles('backend/requirements.txt') }}
         restore-keys:
         - ${{ runner.os }}-pip-
     - name: Install dependencies
@@ -210,7 +218,8 @@ jobs:
       uses: actions/cache@v4
       with:
         path: ~/.cache/pip
-        key: ${{ runner.os }}-pip-${{ hashFiles('backend/requirements.txt') }}
+        key: |-
+          ${{ runner.os }}-pip-${{ hashFiles('backend/requirements.txt') }}
         restore-keys:
         - ${{ runner.os }}-pip-
     - name: Install dependencies
@@ -240,7 +249,8 @@ jobs:
       uses: actions/cache@v4
       with:
         path: ~/.cache/pip
-        key: ${{ runner.os }}-pip-${{ hashFiles('backend/requirements.txt') }}
+        key: |-
+          ${{ runner.os }}-pip-${{ hashFiles('backend/requirements.txt') }}
         restore-keys:
         - ${{ runner.os }}-pip-
     - name: Install dependencies
@@ -272,7 +282,8 @@ jobs:
       uses: actions/cache@v4
       with:
         path: ~/.cache/pip
-        key: ${{ runner.os }}-pip-${{ hashFiles('backend/requirements.txt') }}
+        key: |-
+          ${{ runner.os }}-pip-${{ hashFiles('backend/requirements.txt') }}
         restore-keys:
         - ${{ runner.os }}-pip-
     - name: Install dependencies
@@ -313,7 +324,8 @@ jobs:
       uses: actions/cache@v4
       with:
         path: ~/.cache/pip
-        key: ${{ runner.os }}-pip-${{ hashFiles('backend/requirements.txt') }}
+        key: |-
+          ${{ runner.os }}-pip-${{ hashFiles('backend/requirements.txt') }}
         restore-keys:
         - ${{ runner.os }}-pip-
     - name: Install dependencies
