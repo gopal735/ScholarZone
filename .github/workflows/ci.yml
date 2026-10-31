@@ -4,10 +4,12 @@ name: ScholarZone CI
     branches:
     - main
     - master
+    - fix/deep-scholarship-data-and-card-restoration
   push:
     branches:
     - main
     - master
+    - fix/deep-scholarship-data-and-card-restoration
   workflow_dispatch: {}
 defaults:
   run:
@@ -23,8 +25,7 @@ jobs:
       with:
         fetch-depth: 0
     - name: Install system dependencies
-      run: |-
-        sudo apt-get update && sudo apt-get install -y libjpeg-dev zlib1g-dev libfreetype6-dev liblcms2-dev libopenjp2-7-dev libtiff5-dev libwebp-dev
+      run: sudo apt-get update && sudo apt-get install -y libjpeg-dev zlib1g-dev libfreetype6-dev liblcms2-dev libopenjp2-7-dev libtiff5-dev libwebp-dev
     - name: Set up Python
       uses: actions/setup-python@v5
       with:
@@ -33,27 +34,29 @@ jobs:
       uses: actions/cache@v4
       with:
         path: ~/.cache/pip
-        key: |
-          ${{ runner.os }}-pip-v2-${{ hashFiles('backend/requirements.txt') }}
+        key: '${{ runner.os }}-pip-v2-${{ hashFiles(''backend/requirements.txt'') }}
+
+          '
         restore-keys:
         - ${{ runner.os }}-pip-v2-
     - name: Install dependencies
       run: cd backend && pip install -r requirements.txt
     - name: Debug - verify pip install
-      run: |
-        cd backend && pip list | grep -E "(fastapi|pydantic|sqlalchemy|psycopg|httpx|pillow|beautifulsoup4|apscheduler|resend|python-dotenv)" || true
+      run: 'cd backend && pip list | grep -E "(fastapi|pydantic|sqlalchemy|psycopg|httpx|pillow|beautifulsoup4|apscheduler|resend|python-dotenv)" || true
+
+        '
     - name: Debug - test critical imports
-      run: |
-        cd backend && python -c "import psycopg; print('psycopg: OK')" 2>&1 || echo "psycopg: FAIL" && python -c "import sqlalchemy; print('sqlalchemy: OK')" 2>&1 || echo "sqlalchemy: FAIL" && python -c "import fastapi; print('fastapi: OK')" 2>&1 || echo "fastapi: FAIL" && python -c "import pydantic; print('pydantic: OK')" 2>&1 || echo "pydantic: FAIL" && python -c "import httpx; print('httpx: OK')" 2>&1 || echo "httpx: FAIL" && python -c "import PIL; print('PIL: OK')" 2>&1 || echo "PIL: FAIL" && python -c "import bs4; print('bs4: OK')" 2>&1 || echo "bs4: FAIL" && python -c "import apscheduler; print('apscheduler: OK')" 2>&1 || echo "apscheduler: FAIL" && python -c "import resend; print('resend: OK')" 2>&1 || echo "resend: FAIL" && python -c "import dotenv; print('dotenv: OK')" 2>&1 || echo "dotenv: FAIL"
+      run: 'cd backend && python -c "import psycopg; print(''psycopg: OK'')" 2>&1 || echo "psycopg: FAIL" && python -c "import sqlalchemy; print(''sqlalchemy: OK'')" 2>&1 || echo "sqlalchemy: FAIL" && python -c "import fastapi; print(''fastapi: OK'')" 2>&1 || echo "fastapi: FAIL" && python -c "import pydantic; print(''pydantic: OK'')" 2>&1 || echo "pydantic: FAIL" && python -c "import httpx; print(''httpx: OK'')" 2>&1 || echo "httpx: FAIL" && python -c "import PIL; print(''PIL: OK'')" 2>&1 || echo "PIL: FAIL" && python -c "import bs4; print(''bs4: OK'')" 2>&1 || echo "bs4: FAIL" && python -c "import apscheduler; print(''apscheduler: OK'')" 2>&1 || echo "apscheduler: FAIL" && python -c "import resend; print(''resend: OK'')" 2>&1 || echo "resend: FAIL" && python -c "import dotenv; print(''dotenv: OK'')" 2>&1 || echo "dotenv: FAIL"
+
+        '
     - name: Debug - verify environment
-      run: |
-        cd backend && python -c "import sys; print(f'Python: {sys.version}'); import app; print('app import ok'); import pytest; print('pytest ok')" 2>&1
+      run: 'cd backend && python -c "import sys; print(f''Python: {sys.version}''); import app; print(''app import ok''); import pytest; print(''pytest ok'')" 2>&1
+
+        '
     - name: Debug - run simple test
-      run: |-
-        cd backend && python -m pytest tests/test_git_integrity_regression.py -v --tb=short 2>&1
+      run: cd backend && python -m pytest tests/test_git_integrity_regression.py -v --tb=short 2>&1
     - name: Run backend tests
-      run: |-
-        cd backend && set -o pipefail && python -m pytest tests/ --tb=short 2>&1 | tee pytest.log
+      run: cd backend && set -o pipefail && python -m pytest tests/ --tb=short 2>&1 | tee pytest.log
     - name: Upload test results
       uses: actions/upload-artifact@v4
       if: failure()
@@ -75,8 +78,9 @@ jobs:
       uses: actions/cache@v4
       with:
         path: ~/.npm
-        key: |
-          ${{ runner.os }}-npm-v2-${{ hashFiles('frontend/package-lock.json') }}
+        key: '${{ runner.os }}-npm-v2-${{ hashFiles(''frontend/package-lock.json'') }}
+
+          '
         restore-keys:
         - ${{ runner.os }}-npm-v2-
     - name: Install dependencies
@@ -118,8 +122,7 @@ jobs:
     - name: Checkout
       uses: actions/checkout@v4
     - name: Install system dependencies
-      run: |-
-        sudo apt-get update && sudo apt-get install -y libjpeg-dev zlib1g-dev libfreetype6-dev liblcms2-dev libopenjp2-7-dev libtiff5-dev libwebp-dev
+      run: sudo apt-get update && sudo apt-get install -y libjpeg-dev zlib1g-dev libfreetype6-dev liblcms2-dev libopenjp2-7-dev libtiff5-dev libwebp-dev
     - name: Set up Python
       uses: actions/setup-python@v5
       with:
@@ -128,15 +131,15 @@ jobs:
       uses: actions/cache@v4
       with:
         path: ~/.cache/pip
-        key: |
-          ${{ runner.os }}-pip-${{ hashFiles('backend/requirements.txt') }}
+        key: '${{ runner.os }}-pip-${{ hashFiles(''backend/requirements.txt'') }}
+
+          '
         restore-keys:
         - ${{ runner.os }}-pip-
     - name: Install dependencies
       run: cd backend && pip install -r requirements.txt
     - name: Run import smoke test
-      run: |-
-        cd backend && python scripts/import_smoke_test.py 2>&1 | tee import_smoke_test.log
+      run: cd backend && python scripts/import_smoke_test.py 2>&1 | tee import_smoke_test.log
     - name: Upload smoke test logs
       uses: actions/upload-artifact@v4
       if: failure()
@@ -160,15 +163,15 @@ jobs:
       uses: actions/cache@v4
       with:
         path: ~/.cache/pip
-        key: |
-          ${{ runner.os }}-pip-${{ hashFiles('backend/requirements.txt') }}
+        key: '${{ runner.os }}-pip-${{ hashFiles(''backend/requirements.txt'') }}
+
+          '
         restore-keys:
         - ${{ runner.os }}-pip-
     - name: Install dependencies
       run: cd backend && pip install -r requirements.txt
     - name: Run git integrity check
-      run: |-
-        python backend/scripts/git_integrity_check.py 2>&1 | tee backend/git_integrity.log
+      run: python backend/scripts/git_integrity_check.py 2>&1 | tee backend/git_integrity.log
     - name: Upload integrity logs
       uses: actions/upload-artifact@v4
       if: failure()
@@ -190,8 +193,9 @@ jobs:
       uses: actions/cache@v4
       with:
         path: ~/.cache/pip
-        key: |
-          ${{ runner.os }}-pip-${{ hashFiles('backend/requirements.txt') }}
+        key: '${{ runner.os }}-pip-${{ hashFiles(''backend/requirements.txt'') }}
+
+          '
         restore-keys:
         - ${{ runner.os }}-pip-
     - name: Install dependencies
@@ -212,8 +216,7 @@ jobs:
     - name: Checkout
       uses: actions/checkout@v4
     - name: Install system dependencies
-      run: |-
-        sudo apt-get update && sudo apt-get install -y libjpeg-dev zlib1g-dev libfreetype6-dev liblcms2-dev libopenjp2-7-dev libtiff5-dev libwebp-dev
+      run: sudo apt-get update && sudo apt-get install -y libjpeg-dev zlib1g-dev libfreetype6-dev liblcms2-dev libopenjp2-7-dev libtiff5-dev libwebp-dev
     - name: Set up Python
       uses: actions/setup-python@v5
       with:
@@ -222,15 +225,15 @@ jobs:
       uses: actions/cache@v4
       with:
         path: ~/.cache/pip
-        key: |
-          ${{ runner.os }}-pip-${{ hashFiles('backend/requirements.txt') }}
+        key: '${{ runner.os }}-pip-${{ hashFiles(''backend/requirements.txt'') }}
+
+          '
         restore-keys:
         - ${{ runner.os }}-pip-
     - name: Install dependencies
       run: cd backend && pip install -r requirements.txt
     - name: Run schema compat check
-      run: |-
-        cd backend && python scripts/schema_compat_check.py 2>&1 | tee schema_compat_check.log
+      run: cd backend && python scripts/schema_compat_check.py 2>&1 | tee schema_compat_check.log
     - name: Upload schema compat logs
       uses: actions/upload-artifact@v4
       if: failure()
@@ -245,8 +248,7 @@ jobs:
     - name: Checkout
       uses: actions/checkout@v4
     - name: Install system dependencies
-      run: |-
-        sudo apt-get update && sudo apt-get install -y libjpeg-dev zlib1g-dev libfreetype6-dev liblcms2-dev libopenjp2-7-dev libtiff5-dev libwebp-dev
+      run: sudo apt-get update && sudo apt-get install -y libjpeg-dev zlib1g-dev libfreetype6-dev liblcms2-dev libopenjp2-7-dev libtiff5-dev libwebp-dev
     - name: Set up Python
       uses: actions/setup-python@v5
       with:
@@ -255,18 +257,17 @@ jobs:
       uses: actions/cache@v4
       with:
         path: ~/.cache/pip
-        key: |
-          ${{ runner.os }}-pip-${{ hashFiles('backend/requirements.txt') }}
+        key: '${{ runner.os }}-pip-${{ hashFiles(''backend/requirements.txt'') }}
+
+          '
         restore-keys:
         - ${{ runner.os }}-pip-
     - name: Install dependencies
       run: cd backend && pip install -r requirements.txt
     - name: Build Docker image
-      run: |-
-        cd backend && docker build -t scholarzone-api:${{ github.sha }} -t scholarzone-api:latest .
+      run: cd backend && docker build -t scholarzone-api:${{ github.sha }} -t scholarzone-api:latest .
     - name: Run artifact smoke test
-      run: |-
-        cd backend && python scripts/artifact_smoke_test.py 2>&1 | tee artifact_smoke_test.log
+      run: cd backend && python scripts/artifact_smoke_test.py 2>&1 | tee artifact_smoke_test.log
     - name: Upload smoke test logs
       uses: actions/upload-artifact@v4
       if: failure()
@@ -281,8 +282,7 @@ jobs:
     - name: Checkout
       uses: actions/checkout@v4
     - name: Install system dependencies
-      run: |-
-        sudo apt-get update && sudo apt-get install -y libjpeg-dev zlib1g-dev libfreetype6-dev liblcms2-dev libopenjp2-7-dev libtiff5-dev libwebp-dev
+      run: sudo apt-get update && sudo apt-get install -y libjpeg-dev zlib1g-dev libfreetype6-dev liblcms2-dev libopenjp2-7-dev libtiff5-dev libwebp-dev
     - name: Set up Python
       uses: actions/setup-python@v5
       with:
@@ -291,8 +291,9 @@ jobs:
       uses: actions/cache@v4
       with:
         path: ~/.cache/pip
-        key: |
-          ${{ runner.os }}-pip-${{ hashFiles('backend/requirements.txt') }}
+        key: '${{ runner.os }}-pip-${{ hashFiles(''backend/requirements.txt'') }}
+
+          '
         restore-keys:
         - ${{ runner.os }}-pip-
     - name: Install dependencies
