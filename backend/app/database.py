@@ -399,6 +399,12 @@ def _migrate_fully_funded_to_nullable_sqlite(connection) -> None:
     - AUTOINCREMENT behavior and sqlite_sequence high-water mark
     - Child table foreign key references
     Only changes: fully_funded column nullability (NOT NULL -> nullable)
+    
+    NOTE: This function runs inside an active transaction (from engine.begin()).
+    SQLite's PRAGMA foreign_keys cannot be changed inside an active transaction -
+    it only affects new connections after the current transaction commits.
+    The migration works by recreating the table with the modified schema,
+    which preserves FK enforcement for subsequent connections.
     """
     # 1. Check if migration is already done (idempotency)
     pragma_result = connection.execute(text("PRAGMA table_info(scholarships)")).fetchall()
@@ -468,76 +474,70 @@ def _migrate_fully_funded_to_nullable_sqlite(connection) -> None:
         WHERE type = 'table' AND sql LIKE '%REFERENCES scholarships%'
     """)).fetchall()
     
-    # 8. Begin migration - disable foreign keys temporarily
-    connection.execute(text("PRAGMA foreign_keys = OFF"))
+    # NOTE: Do NOT use PRAGMA foreign_keys = OFF/ON here.
+    # This function runs inside an active transaction from engine.begin().
+    # SQLite's PRAGMA foreign_keys setting cannot be changed inside a transaction
+    # - it only takes effect on new connections after the current transaction commits.
+    # The table recreation approach naturally preserves FK enforcement for new connections.
     
-    try:
-        # 9. Create new table with modified schema
-        new_table_sql = modified_create_sql.replace("CREATE TABLE scholarships", "CREATE TABLE scholarships_new")
-        connection.execute(text(new_table_sql))
-        
-        # 10. Copy all data with explicit column list
-        # Get column names from PRAGMA table_info
-        table_info = connection.execute(text("PRAGMA table_info(scholarships)")).fetchall()
-        column_names = [col[1] for col in table_info]
-        columns_list = ", ".join(column_names)
-        connection.execute(text(f'INSERT INTO scholarships_new ({columns_list}) SELECT {columns_list} FROM scholarships'))
-        
-        # 11. Verify data integrity
-        old_count = connection.execute(text("SELECT COUNT(*) FROM scholarships")).scalar()
-        new_count = connection.execute(text("SELECT COUNT(*) FROM scholarships_new")).scalar()
-        if old_count != new_count:
-            raise RuntimeError(f"Data copy failed: old={old_count}, new={new_count}")
-        
-        # 12. Verify foreign key integrity on new table
-        fk_check = connection.execute(text("PRAGMA foreign_key_check(scholarships_new)")).fetchall()
+    # 8. Create new table with modified schema
+    new_table_sql = modified_create_sql.replace("CREATE TABLE scholarships", "CREATE TABLE scholarships_new")
+    connection.execute(text(new_table_sql))
+    
+    # 9. Copy all data with explicit column list
+    # Get column names from PRAGMA table_info
+    table_info = connection.execute(text("PRAGMA table_info(scholarships)")).fetchall()
+    column_names = [col[1] for col in table_info]
+    columns_list = ", ".join(column_names)
+    connection.execute(text(f'INSERT INTO scholarships_new ({columns_list}) SELECT {columns_list} FROM scholarships'))
+    
+    # 10. Verify data integrity
+    old_count = connection.execute(text("SELECT COUNT(*) FROM scholarships")).scalar()
+    new_count = connection.execute(text("SELECT COUNT(*) FROM scholarships_new")).scalar()
+    if old_count != new_count:
+        raise RuntimeError(f"Data copy failed: old={old_count}, new={new_count}")
+    
+    # 11. Verify foreign key integrity on new table
+    fk_check = connection.execute(text("PRAGMA foreign_key_check(scholarships_new)")).fetchall()
+    if fk_check:
+        raise RuntimeError(f"Foreign key check failed after copy: {fk_check}")
+    
+    # 12. Drop old table
+    connection.execute(text("DROP TABLE scholarships"))
+    
+    # 13. Rename new table
+    connection.execute(text("ALTER TABLE scholarships_new RENAME TO scholarships"))
+    
+    # 14. Restore sqlite_sequence high-water mark
+    if current_seq is not None:
+        connection.execute(text('UPDATE sqlite_sequence SET seq = :seq WHERE name = "scholarships"'), {"seq": current_seq})
+    
+    # 15. Recreate all indexes
+    for name, sql in indexes:
+        if sql:
+            connection.execute(text(sql))
+    
+    # 16. Recreate all triggers
+    for name, sql in triggers:
+        if sql:
+            connection.execute(text(sql))
+    
+    # 16b. Verify foreign key integrity after migration (on this connection)
+    fk_check = connection.execute(text("PRAGMA foreign_key_check(scholarships)")).fetchall()
+    if fk_check:
+        raise RuntimeError(f"Foreign key check failed after migration: {fk_check}")
+    
+    # 17. Verify NOT NULL constraint is removed for fully_funded
+    pragma_result = connection.execute(text("PRAGMA table_info(scholarships)")).fetchall()
+    for row in pragma_result:
+        if row[1] == "fully_funded" and row[3] == 1:
+            raise RuntimeError("Migration failed: fully_funded still has NOT NULL constraint")
+    
+    # 18. Verify child table references still work
+    for table_name, _ in child_tables:
+        fk_check = connection.execute(text(f'PRAGMA foreign_key_check("{table_name}")')).fetchall()
         if fk_check:
-            raise RuntimeError(f"Foreign key check failed after copy: {fk_check}")
-        
-        # 13. Drop old table
-        connection.execute(text("DROP TABLE scholarships"))
-        
-        # 14. Rename new table
-        connection.execute(text("ALTER TABLE scholarships_new RENAME TO scholarships"))
-        
-        # 15. Restore sqlite_sequence high-water mark
-        if current_seq is not None:
-            connection.execute(text('UPDATE sqlite_sequence SET seq = :seq WHERE name = "scholarships"'), {"seq": current_seq})
-        
-        # 16. Recreate all indexes
-        for name, sql in indexes:
-            if sql:
-                connection.execute(text(sql))
-        
-        # 17. Recreate all triggers
-        for name, sql in triggers:
-            if sql:
-                connection.execute(text(sql))
-        
-        # 18. Re-enable foreign keys
-        connection.execute(text("PRAGMA foreign_keys = ON"))
-        
-        # 19. Verify foreign key integrity after migration
-        fk_check = connection.execute(text("PRAGMA foreign_key_check(scholarships)")).fetchall()
-        if fk_check:
-            raise RuntimeError(f"Foreign key check failed after migration: {fk_check}")
-        
-        # 20. Verify NOT NULL constraint is removed for fully_funded
-        pragma_result = connection.execute(text("PRAGMA table_info(scholarships)")).fetchall()
-        for row in pragma_result:
-            if row[1] == "fully_funded" and row[3] == 1:
-                raise RuntimeError("Migration failed: fully_funded still has NOT NULL constraint")
-        
-        # 21. Verify child table references still work
-        for table_name, _ in child_tables:
-            fk_check = connection.execute(text(f'PRAGMA foreign_key_check("{table_name}")')).fetchall()
-            if fk_check:
-                raise RuntimeError(f"Child table {table_name} foreign key check failed: {fk_check}")
-        
-    except Exception as e:
-        # On error, try to re-enable foreign keys
-        connection.execute(text("PRAGMA foreign_keys = ON"))
-        raise
+            raise RuntimeError(f"Child table {table_name} foreign key check failed: {fk_check}")
 
 
 def _upgrade_sqlite_schema(engine: Engine) -> None:
