@@ -33,11 +33,9 @@ jobs:
       uses: actions/cache@v4
       with:
         path: ~/.cache/pip
-        key: '${{ runner.os }}-pip-v2-${{ hashFiles(''backend/requirements.txt'') }}
-
-          '
-        restore-keys:
-        - ${{ runner.os }}-pip-v2-
+        key: ${{ runner.os }}-pip-v2-${{ hashFiles('backend/requirements.txt') }}
+        restore-keys: |
+          Linux-pip-v2-
     - name: Install dependencies
       run: cd backend && pip install -r requirements.txt
     - name: Debug - verify pip install
@@ -77,11 +75,9 @@ jobs:
       uses: actions/cache@v4
       with:
         path: ~/.npm
-        key: '${{ runner.os }}-npm-v2-${{ hashFiles(''frontend/package-lock.json'') }}
-
-          '
-        restore-keys:
-        - ${{ runner.os }}-npm-v2-
+        key: ${{ runner.os }}-npm-v2-${{ hashFiles('frontend/package-lock.json') }}
+        restore-keys: |
+          Linux-npm-v2-
     - name: Install dependencies
       run: cd frontend && npm install
     - name: Run frontend lint
@@ -130,11 +126,9 @@ jobs:
       uses: actions/cache@v4
       with:
         path: ~/.cache/pip
-        key: '${{ runner.os }}-pip-${{ hashFiles(''backend/requirements.txt'') }}
-
-          '
-        restore-keys:
-        - ${{ runner.os }}-pip-
+        key: ${{ runner.os }}-pip-${{ hashFiles('backend/requirements.txt') }}
+        restore-keys: |
+          Linux-pip-
     - name: Install dependencies
       run: cd backend && pip install -r requirements.txt
     - name: Run import smoke test
@@ -162,11 +156,9 @@ jobs:
       uses: actions/cache@v4
       with:
         path: ~/.cache/pip
-        key: '${{ runner.os }}-pip-${{ hashFiles(''backend/requirements.txt'') }}
-
-          '
-        restore-keys:
-        - ${{ runner.os }}-pip-
+        key: ${{ runner.os }}-pip-${{ hashFiles('backend/requirements.txt') }}
+        restore-keys: |
+          Linux-pip-
     - name: Install dependencies
       run: cd backend && pip install -r requirements.txt
     - name: Run git integrity check
@@ -192,11 +184,9 @@ jobs:
       uses: actions/cache@v4
       with:
         path: ~/.cache/pip
-        key: '${{ runner.os }}-pip-${{ hashFiles(''backend/requirements.txt'') }}
-
-          '
-        restore-keys:
-        - ${{ runner.os }}-pip-
+        key: ${{ runner.os }}-pip-${{ hashFiles('backend/requirements.txt') }}
+        restore-keys: |
+          Linux-pip-
     - name: Install dependencies
       run: cd backend && pip install -r requirements.txt
     - name: Run env config check
@@ -224,11 +214,9 @@ jobs:
       uses: actions/cache@v4
       with:
         path: ~/.cache/pip
-        key: '${{ runner.os }}-pip-${{ hashFiles(''backend/requirements.txt'') }}
-
-          '
-        restore-keys:
-        - ${{ runner.os }}-pip-
+        key: ${{ runner.os }}-pip-${{ hashFiles('backend/requirements.txt') }}
+        restore-keys: |
+          Linux-pip-
     - name: Install dependencies
       run: cd backend && pip install -r requirements.txt
     - name: Run schema compat check
@@ -256,11 +244,9 @@ jobs:
       uses: actions/cache@v4
       with:
         path: ~/.cache/pip
-        key: '${{ runner.os }}-pip-${{ hashFiles(''backend/requirements.txt'') }}
-
-          '
-        restore-keys:
-        - ${{ runner.os }}-pip-
+        key: ${{ runner.os }}-pip-${{ hashFiles('backend/requirements.txt') }}
+        restore-keys: |
+          Linux-pip-
     - name: Install dependencies
       run: cd backend && pip install -r requirements.txt
     - name: Build Docker image
@@ -290,11 +276,9 @@ jobs:
       uses: actions/cache@v4
       with:
         path: ~/.cache/pip
-        key: '${{ runner.os }}-pip-${{ hashFiles(''backend/requirements.txt'') }}
-
-          '
-        restore-keys:
-        - ${{ runner.os }}-pip-
+        key: ${{ runner.os }}-pip-${{ hashFiles('backend/requirements.txt') }}
+        restore-keys: |
+          Linux-pip-
     - name: Install dependencies
       run: cd backend && pip install -r requirements.txt
     - name: Run preflight

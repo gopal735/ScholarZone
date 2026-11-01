@@ -2,8 +2,15 @@ name: ScholarZone CI v2
 'on':
   pull_request:
     branches:
-    - main
-    - master
+      - main
+      - master
+      - fix/deep-scholarship-data-and-card-restoration
+  push:
+    branches:
+      - main
+      - master
+      - fix/deep-scholarship-data-and-card-restoration
+  workflow_dispatch:
 jobs:
   backend-tests:
     runs-on: ubuntu-latest
@@ -25,8 +32,8 @@ jobs:
       with:
         path: ~/.cache/pip
         key: ${{ runner.os }}-pip-v2-${{ hashFiles('backend/requirements.txt') }}
-        restore-keys:
-        - ${{ runner.os }}-pip-v2-
+        restore-keys: |
+          Linux-pip-v2-
     - name: Install dependencies
       run: cd backend && pip install -r requirements.txt
     - name: Debug - verify pip install
@@ -34,9 +41,7 @@ jobs:
     - name: Debug - test critical imports
       run: bash scripts/debug_imports.sh
     - name: Debug - verify environment
-      run: 'cd backend && python -c "import sys; print(f''Python: {sys.version}''); import app; print(''app import ok''); import pytest; print(''pytest ok'')" 2>&1
-
-        '
+      run: 'cd backend && python -c "import sys; print(f\"Python: {sys.version}\"); import app; print(\"app import ok\"); import pytest; print(\"pytest ok\")" 2>&1'
     - name: Debug - run simple test
       run: cd backend && python -m pytest tests/test_git_integrity_regression.py -v --tb=short 2>&1
     - name: Run backend tests
