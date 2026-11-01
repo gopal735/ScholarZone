@@ -59,8 +59,7 @@
   "sections": {
     "education_costs": {
       "tuition_fees": {
-        "public": {
-          "bachelor": {
+"public": {
             "bachelor": {
               "as_of": "2025-26",
               "colliding_values": [
@@ -95,7 +94,6 @@
               "value_status": "UNIVERSITY_OFFICIAL"
             }
           }
-        }
       }
     },
     "residency": {
