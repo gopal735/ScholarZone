@@ -113,6 +113,7 @@ def create_legacy_schema(engine):
         """))
         
         # Insert historical rows with True/False values
+        # Columns: eligibility, benefits, coverage, requirements, documents, application_method, departments, eligible_fields, eligible_programmes (9 JSON) + fully_funded (1 BOOLEAN) = 10 values
         conn.execute(text("""
             INSERT INTO scholarships (
                 legacy_id, title, country, degree, funding, description,
@@ -126,7 +127,7 @@ def create_legacy_schema(engine):
                 NULL, NULL, 'unknown', 'open',
                 FALSE, FALSE, FALSE, 'active',
                 NOW(), NOW(), '[]', '[]', '[]',
-                '[]', '[]', '[]', '[]', '[]', '[]', '[]', TRUE
+                '[]', '[]', '[]', '[]', '[]', '[]', TRUE
             )
         """))
         conn.execute(text("""
@@ -142,7 +143,7 @@ def create_legacy_schema(engine):
                 NULL, NULL, 'unknown', 'open',
                 FALSE, FALSE, FALSE, 'active',
                 NOW(), NOW(), '[]', '[]', '[]',
-                '[]', '[]', '[]', '[]', '[]', '[]', '[]', FALSE
+                '[]', '[]', '[]', '[]', '[]', '[]', FALSE
             )
         """))
         conn.execute(text("INSERT INTO child_table (scholarship_id) VALUES (1)"))
