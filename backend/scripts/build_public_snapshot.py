@@ -121,6 +121,8 @@ PUBLIC_COLUMNS: tuple[str, ...] = (
     "eligible_fields",
     "eligible_programmes",
     "academic_provenance",
+    # Structured funding details
+    "funding_details",
 )
 
 #: Research enrichment tables. Listed so the exclusion is explicit and a

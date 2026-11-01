@@ -188,6 +188,8 @@ class ScholarshipResponse(BaseModel):
     image_alt_text: str | None = None
     last_verified_date: date | None = None
     notes: str | None = None
+    # Structured funding details per programme/track
+    funding_details: list[dict] | None = None
 
     @field_validator("verification_status", mode="before")
     @classmethod

@@ -221,27 +221,44 @@ def test_true_false_inserts(engine):
 
 
 def test_null_insert(engine):
-    """Test that NULL can be inserted after migration (PostgreSQL only)."""
+    """Test that NULL can be inserted and retrieved as NULL after migration (PostgreSQL only)."""
     if not is_postgresql(engine):
         print("[SKIP] NULL insert test only for PostgreSQL")
         return
     
-    Session = sessionmaker(bind=engine)
-    session = Session()
-    try:
-        # Test NULL insert - only works if column is nullable
-        sch = Scholarship(title="Test NULL", country="Test")
-        # Don't set fully_funded, should default to None
-        session.add(sch)
-        session.commit()
+    # Use raw SQL to bypass ORM server_default and test actual database behavior
+    with engine.begin() as conn:
+        # Insert with explicit NULL for fully_funded
+        conn.execute(text("""
+            INSERT INTO scholarships (title, country, fully_funded)
+            VALUES ('Test NULL Insert', 'Test', NULL)
+        """))
         
-        result = session.query(Scholarship).filter(Scholarship.title == "Test NULL").first()
+        # Verify the row was inserted and fully_funded is actually NULL
+        result = conn.execute(text("""
+            SELECT id, title, fully_funded FROM scholarships 
+            WHERE title = 'Test NULL Insert'
+        """)).fetchone()
+        
         assert result is not None, "NULL insert failed - row not found"
-        # Note: SQLAlchemy ORM with server_default="false" might set False
-        # The key test is that it doesn't raise an error
-        print("[PASS] NULL insert works after migration (PostgreSQL)")
-    finally:
-        session.close()
+        assert result[2] is None, f"Expected NULL for fully_funded, got {result[2]}"
+        print(f"[PASS] NULL insert and retrieval verified: id={result[0]}, fully_funded={result[2]}")
+        
+        # Also test inserting with DEFAULT keyword (should also be NULL since default was dropped)
+        conn.execute(text("""
+            INSERT INTO scholarships (title, country, fully_funded)
+            VALUES ('Test DEFAULT', 'Test', DEFAULT)
+        """))
+        
+        result = conn.execute(text("""
+            SELECT id, title, fully_funded FROM scholarships 
+            WHERE title = 'Test DEFAULT'
+        """)).fetchone()
+        
+        assert result is not None, "DEFAULT insert failed - row not found"
+        # After migration, DEFAULT should be NULL (no default)
+        assert result[2] is None, f"Expected NULL for fully_funded with DEFAULT, got {result[2]}"
+        print(f"[PASS] DEFAULT insert resolves to NULL: id={result[0]}, fully_funded={result[2]}")
 
 
 def test_idempotency(engine):

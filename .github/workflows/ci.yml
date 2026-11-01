@@ -290,6 +290,40 @@ jobs:
         name: preflight-logs
         path: backend/preflight.log
 
+  snapshot-id-validation:
+    name: Snapshot ID Validation
+    runs-on: ubuntu-latest
+    env:
+      SCHOLARZONE_ENVIRONMENT: test
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v4
+      with:
+        fetch-depth: 0
+    - name: Install system dependencies
+      run: sudo apt-get update && sudo apt-get install -y libjpeg-dev zlib1g-dev libfreetype6-dev liblcms2-dev libopenjp2-7-dev libtiff5-dev libwebp-dev
+    - name: Set up Python
+      uses: actions/setup-python@v5
+      with:
+        python-version: '3.11'
+    - name: Cache pip dependencies
+      uses: actions/cache@v4
+      with:
+        path: ~/.cache/pip
+        key: ${{ runner.os }}-pip-${{ hashFiles('backend/requirements.txt') }}
+        restore-keys: |
+          Linux-pip-
+    - name: Install dependencies
+      run: cd backend && pip install -r requirements.txt
+    - name: Run snapshot ID validation
+      run: python backend/scripts/validate_snapshot_ids.py 2>&1 | tee snapshot_id_validation.log
+    - name: Upload validation logs
+      uses: actions/upload-artifact@v4
+      if: failure()
+      with:
+        name: snapshot-id-validation-logs
+        path: backend/snapshot_id_validation.log
+
   postgresql-migration-test:
     name: PostgreSQL Migration Integration Test
     runs-on: ubuntu-latest

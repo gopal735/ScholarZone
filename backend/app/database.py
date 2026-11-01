@@ -193,6 +193,8 @@ def _upgrade_postgresql_schema(engine: Engine) -> None:
             # Tri-state: True = confirmed fully funded, False = confirmed not fully funded,
             # None = unknown/not confirmed. No default, so existing rows read as unknown.
             "fully_funded": "BOOLEAN",
+            # Structured funding details per programme/track (JSON array)
+            "funding_details": "JSON",
             # Structured detail, split by origin so published rules and derived
             # guidance are never stored as the same kind of fact.
             "official_details": "JSON",
@@ -641,6 +643,8 @@ def _upgrade_sqlite_schema(engine: Engine) -> None:
         # Tri-state: True = confirmed fully funded, False = confirmed not fully funded,
         # None = unknown/not confirmed. No default, so existing rows read as unknown.
         "fully_funded": "BOOLEAN",
+        # Structured funding details per programme/track (JSON array)
+        "funding_details": "JSON",
         # Structured detail, split by origin so published rules and derived
         # guidance are never stored as the same kind of fact.
         "official_details": "JSON",

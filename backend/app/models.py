@@ -137,6 +137,14 @@ class Scholarship(Base):
     fully_funded: Mapped[bool | None] = mapped_column(Boolean, nullable=True, default=None)
 
     # ------------------------------------------------------------------
+    # Structured funding details per programme/track.
+    # Each entry represents one official funding track with its own economics.
+    # This replaces the single funding_amount/currency/period fields for
+    # programmes with multiple tracks (e.g., Erasmus Mundus, DAAD, MEXT).
+    # ------------------------------------------------------------------
+    funding_details: Mapped[list[dict] | None] = mapped_column(JSON, nullable=True)
+
+    # ------------------------------------------------------------------
     # Structured programme detail, kept apart from the scalar columns above.
     #
     # A scholarship's official rules do not fit a fixed set of columns: which
