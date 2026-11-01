@@ -321,7 +321,8 @@ def main():
     print("PostgreSQL Migration Integration Test")
     print("=" * 60)
     
-    engine = create_engine('postgresql://test:test@localhost:5432/scholarzone_test?sslmode=disable')
+    # Use postgresql+psycopg:// for psycopg v3 driver (SQLAlchemy 2.0 defaults to psycopg2)
+    engine = create_engine('postgresql+psycopg://test:test@localhost:5432/scholarzone_test?sslmode=disable')
     
     try:
         # Test connection
