@@ -174,8 +174,8 @@ def run_migration(engine):
     # Import the migration function
     from app.database import _upgrade_postgresql_schema
     
-    with engine.begin() as conn:
-        _upgrade_postgresql_schema(conn)
+    # _upgrade_postgresql_schema expects an engine and manages its own transaction
+    _upgrade_postgresql_schema(engine)
     print("  ✓ Migration executed")
 
 
@@ -295,8 +295,8 @@ def test_idempotency(engine):
     """Test migration is idempotent."""
     print("\n7. Testing idempotency...")
     from app.database import _upgrade_postgresql_schema
-    with engine.begin() as conn:
-        _upgrade_postgresql_schema(conn)
+    # _upgrade_postgresql_schema expects an engine and manages its own transaction
+    _upgrade_postgresql_schema(engine)
     print("  ✓ Idempotent migration: PASS")
 
 
@@ -306,8 +306,7 @@ def test_migration_failure_rollback(engine):
     from app.database import _upgrade_postgresql_schema
     # The migration should be idempotent and safe to re-run
     # This is more of a sanity check that re-running doesn't break
-    with engine.begin() as conn:
-        _upgrade_postgresql_schema(conn)
+    _upgrade_postgresql_schema(engine)
     # Verify schema still correct
     with engine.connect() as conn:
         cols = inspect(conn).get_columns('scholarships')
