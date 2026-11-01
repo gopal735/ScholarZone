@@ -10,7 +10,6 @@ name: ScholarZone CI
     - main
     - master
     - fix/deep-scholarship-data-and-card-restoration
-  workflow_dispatch: {}
 defaults:
   run:
     shell: bash
