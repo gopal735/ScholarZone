@@ -315,6 +315,8 @@ export function toScholarship(record) {
     eligible_fields: record.eligible_fields,
     eligible_programmes: record.eligible_programmes,
     academic_provenance: record.academic_provenance,
+    // Structured funding details per programme/track
+    funding_details: record.funding_details,
     // Derived by the same rule the live directory uses, so a card in the
     // fallback reads exactly like a card served by the API.
     statusInfo: statusOf(record),
@@ -391,7 +393,7 @@ export async function fetchScholarshipStatsFromSnapshot() {
   const stats = snapshot.stats || {}
   const records = snapshot.scholarships
   const fullyFunded = records.filter(
-    (record) => record.fully_funded === true || record.funding_type === 'Fully Funded'
+    (record) => record.fully_funded === true
   ).length
   const verified = records.filter(
     (record) => record.verification_status === 'active'

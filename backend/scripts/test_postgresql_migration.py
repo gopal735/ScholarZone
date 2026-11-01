@@ -126,10 +126,10 @@ def insert_historical_data(engine):
     session = Session()
     try:
         scholarships_data = [
-            {"title": "Full Funded Scholarship", "country": "Germany", "fully_funded": True},
-            {"title": "Partial Funded Scholarship", "country": "France", "fully_funded": False},
-            {"title": "Another Full Funded", "country": "USA", "fully_funded": True},
-            {"title": "No Funding Info", "country": "UK", "fully_funded": False},
+            {"title": "Full Funded Scholarship", "country": "Germany", "degree": "PhD", "funding": "Full", "deadline_precision": "month", "status": "open", "verification_status": "active", "is_verified": True, "fully_funded": True},
+            {"title": "Partial Funded Scholarship", "country": "France", "degree": "Masters", "funding": "Partial", "deadline_precision": "month", "status": "open", "verification_status": "active", "is_verified": True, "fully_funded": False},
+            {"title": "Another Full Funded", "country": "USA", "degree": "PhD", "funding": "Full", "deadline_precision": "month", "status": "open", "verification_status": "active", "is_verified": True, "fully_funded": True},
+            {"title": "No Funding Info", "country": "UK", "degree": "Bachelor", "funding": "Unknown", "deadline_precision": "month", "status": "open", "verification_status": "unverified", "is_verified": False, "fully_funded": False},
         ]
         for data in scholarships_data:
             sch = Scholarship(**data)
@@ -205,9 +205,9 @@ def test_true_false_inserts(engine):
     Session = sessionmaker(bind=engine)
     session = Session()
     try:
-        sch1 = Scholarship(title="Test TRUE", country="Test", fully_funded=True)
+        sch1 = Scholarship(title="Test TRUE", country="Test", degree="PhD", funding="Test", deadline_precision="month", status="open", verification_status="unverified", is_verified=False, fully_funded=True)
         session.add(sch1)
-        sch2 = Scholarship(title="Test FALSE", country="Test", fully_funded=False)
+        sch2 = Scholarship(title="Test FALSE", country="Test", degree="PhD", funding="Test", deadline_precision="month", status="open", verification_status="unverified", is_verified=False, fully_funded=False)
         session.add(sch2)
         session.commit()
         
@@ -228,10 +228,11 @@ def test_null_insert(engine):
     
     # Use raw SQL to bypass ORM server_default and test actual database behavior
     with engine.begin() as conn:
-        # Insert with explicit NULL for fully_funded
+        # Insert with explicit NULL for fully_funded - include all required NOT NULL columns
         conn.execute(text("""
-            INSERT INTO scholarships (title, country, fully_funded)
-            VALUES ('Test NULL Insert', 'Test', NULL)
+            INSERT INTO scholarships (title, country, degree, funding, deadline_precision, status, 
+                verification_status, is_verified, fully_funded)
+            VALUES ('Test NULL Insert', 'Test', 'PhD', 'Test', 'month', 'open', 'unverified', FALSE, NULL)
         """))
         
         # Verify the row was inserted and fully_funded is actually NULL
@@ -246,8 +247,9 @@ def test_null_insert(engine):
         
         # Also test inserting with DEFAULT keyword (should also be NULL since default was dropped)
         conn.execute(text("""
-            INSERT INTO scholarships (title, country, fully_funded)
-            VALUES ('Test DEFAULT', 'Test', DEFAULT)
+            INSERT INTO scholarships (title, country, degree, funding, deadline_precision, status, 
+                verification_status, is_verified, fully_funded)
+            VALUES ('Test DEFAULT', 'Test', 'PhD', 'Test', 'month', 'open', 'unverified', FALSE, DEFAULT)
         """))
         
         result = conn.execute(text("""
