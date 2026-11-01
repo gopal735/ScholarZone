@@ -69,6 +69,13 @@ DEFAULT_OUTPUT = REPO_ROOT / "frontend" / "public" / "scholarships-snapshot.json
 #: The columns that form the public contract, in the order the frontend's
 #: snapshot reader expects. Anything not listed here is not written — which
 #: is how "no internal fields" is enforced rather than promised.
+#: INTERNAL FIELDS EXCLUDED: last_verified_at, last_verified_date, is_verified,
+#: image_source_url, image_source_type, image_kind, image_verified_at,
+#: image_alt_text, updated_at, created_at, legacy_id, verification_notes,
+#: verified_by, next_verification_due, is_archived, archived_at, archived_reason,
+#: auto_delete_candidate_since, deletion_protected, official_details,
+#: applicant_utility, programme_verification, image_evaluation_status,
+#: image_evaluated_at
 PUBLIC_COLUMNS: tuple[str, ...] = (
     "id",
     "title",
@@ -81,8 +88,6 @@ PUBLIC_COLUMNS: tuple[str, ...] = (
     "deadline_precision",
     "status",
     "verification_status",
-    "last_verified_at",
-    "last_verified_date",
     "official_source",
     "official_source_url",
     "application_link",
@@ -99,11 +104,6 @@ PUBLIC_COLUMNS: tuple[str, ...] = (
     "selection_notes",
     "program_type",
     "image_url",
-    "image_source_url",
-    "image_source_type",
-    "image_kind",
-    "image_verified_at",
-    "image_alt_text",
     "fully_funded",
     "funding_amount",
     "funding_currency",
@@ -116,7 +116,6 @@ PUBLIC_COLUMNS: tuple[str, ...] = (
     "application_method",
     "best_fit",
     "notes",
-    "updated_at",
     # Academic eligibility
     "departments",
     "eligible_fields",
