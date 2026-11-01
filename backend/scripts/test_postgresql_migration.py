@@ -291,6 +291,11 @@ def main():
     db_url = os.environ.get("SCHOLARZONE_DATABASE_URL", "sqlite:///:memory:")
     print(f"Testing against: {db_url.split('@')[0]}...")
     
+    # For PostgreSQL, use psycopg v3 driver
+    if db_url.startswith("postgresql://") and not db_url.startswith("postgresql+psycopg://"):
+        db_url = db_url.replace("postgresql://", "postgresql+psycopg://", 1)
+        print(f"Using psycopg v3 driver: {db_url.split('@')[0]}...")
+    
     engine = create_engine(db_url, connect_args={"check_same_thread": False} if "sqlite" in db_url else {})
     
     try:
