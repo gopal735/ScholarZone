@@ -398,7 +398,7 @@ def _migrate_fully_funded_to_nullable_sqlite(connection) -> None:
     - All triggers
     - AUTOINCREMENT behavior and sqlite_sequence high-water mark
     - Child table foreign key references
-    Only changes: fully_funded column nullability (NOT NULL -> nullable)
+    Only changes: fully_funded column nullability (NOT NULL -> nullable) AND remove DEFAULT FALSE
     
     NOTE: This function runs inside an active transaction (from engine.begin()).
     SQLite's PRAGMA foreign_keys cannot be changed inside an active transaction -
@@ -424,25 +424,48 @@ def _migrate_fully_funded_to_nullable_sqlite(connection) -> None:
     
     original_create_sql = create_table_result[0]
     
-    # 3. Modify the CREATE TABLE SQL to make fully_funded nullable
-    # The original has: "fully_funded <type> NOT NULL" or similar
-    # We need to remove NOT NULL from fully_funded column only
+    # 3. Modify the CREATE TABLE SQL to make fully_funded nullable AND remove DEFAULT FALSE
+    # The original has: "fully_funded <type> NOT NULL DEFAULT FALSE" or similar
+    # We need to remove both NOT NULL and DEFAULT FALSE from fully_funded column only
     import re
     
-    # Find the fully_funded column definition and remove NOT NULL
-    # Pattern matches: fully_funded <type> NOT NULL (followed by DEFAULT, comma, ), CONSTRAINT, etc.)
+    # Find the fully_funded column definition and remove NOT NULL and DEFAULT FALSE
+    # Pattern matches: fully_funded <type> NOT NULL DEFAULT FALSE (followed by comma, ), CONSTRAINT, etc.)
     modified_create_sql = re.sub(
-        r'(fully_funded\s+\w+\s+)NOT NULL\s*(?=\s*(?:DEFAULT|,|\)|CONSTRAINT|PRIMARY KEY|UNIQUE|CHECK))',
+        r'(fully_funded\s+\w+\s+)NOT NULL\s+DEFAULT\s+FALSE\s*(?=\s*(?:,|\)|CONSTRAINT|PRIMARY KEY|UNIQUE|CHECK))',
         r'\1',
         original_create_sql,
         flags=re.IGNORECASE
     )
     
-    # Verify the modification worked
+    # Also handle case where NOT NULL and DEFAULT are separate (order may vary)
     if "fully_funded" in modified_create_sql:
-        # Check if NOT NULL is still on fully_funded
         ff_section = modified_create_sql[modified_create_sql.lower().find("fully_funded"):]
-        # Find the end of the column definition (comma, closing paren, or CONSTRAINT)
+        end_pos = len(ff_section)
+        for marker in [',', ')', 'CONSTRAINT']:
+            pos = ff_section.upper().find(marker)
+            if pos != -1 and pos < end_pos:
+                end_pos = pos
+        ff_section = ff_section[:end_pos]
+        if "NOT NULL" in ff_section.upper() or "DEFAULT FALSE" in ff_section.upper():
+            # Try removing NOT NULL only
+            modified_create_sql = re.sub(
+                r'(fully_funded\s+\w+\s+)NOT NULL\s*(?=\s*(?:DEFAULT|,|\)|CONSTRAINT|PRIMARY KEY|UNIQUE|CHECK))',
+                r'\1',
+                modified_create_sql,
+                flags=re.IGNORECASE
+            )
+            # Then remove DEFAULT FALSE
+            modified_create_sql = re.sub(
+                r'(fully_funded\s+\w+(?:\s+\w+)*\s+)DEFAULT\s+FALSE\s*(?=\s*(?:,|\)|CONSTRAINT|PRIMARY KEY|UNIQUE|CHECK))',
+                r'\1',
+                modified_create_sql,
+                flags=re.IGNORECASE
+            )
+    
+    # Final verification
+    if "fully_funded" in modified_create_sql:
+        ff_section = modified_create_sql[modified_create_sql.lower().find("fully_funded"):]
         end_pos = len(ff_section)
         for marker in [',', ')', 'CONSTRAINT']:
             pos = ff_section.upper().find(marker)
@@ -451,6 +474,8 @@ def _migrate_fully_funded_to_nullable_sqlite(connection) -> None:
         ff_section = ff_section[:end_pos]
         if "NOT NULL" in ff_section.upper():
             raise RuntimeError(f"Failed to remove NOT NULL from fully_funded column. Column def: {ff_section}")
+        if "DEFAULT FALSE" in ff_section.upper():
+            raise RuntimeError(f"Failed to remove DEFAULT FALSE from fully_funded column. Column def: {ff_section}")
     
     # 4. Get all indexes on the scholarships table
     indexes = connection.execute(text("""
@@ -533,7 +558,13 @@ def _migrate_fully_funded_to_nullable_sqlite(connection) -> None:
         if row[1] == "fully_funded" and row[3] == 1:
             raise RuntimeError("Migration failed: fully_funded still has NOT NULL constraint")
     
-    # 18. Verify child table references still work
+    # 18. Verify DEFAULT is removed for fully_funded
+    pragma_result = connection.execute(text("PRAGMA table_info(scholarships)")).fetchall()
+    for row in pragma_result:
+        if row[1] == "fully_funded" and row[4] is not None and "FALSE" in str(row[4]).upper():
+            raise RuntimeError(f"Migration failed: fully_funded still has DEFAULT FALSE: {row[4]}")
+    
+    # 19. Verify child table references still work
     for table_name, _ in child_tables:
         fk_check = connection.execute(text(f'PRAGMA foreign_key_check("{table_name}")')).fetchall()
         if fk_check:

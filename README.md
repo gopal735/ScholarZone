@@ -1,711 +1,148 @@
-<div align="center">
+actionlint
+==========
+[![CI Status][ci-badge]][ci]
+[![API Document][apidoc-badge]][apidoc]
 
-# ScholarZone
+[actionlint][repo] is a static checker for GitHub Actions workflow files. [Try it online!][playground]
 
-### Verified Scholarships. Trusted Information. Better Decisions.
+Features:
 
-<img src="docs/assets/hero.svg" alt="ScholarZone: official source to field extraction to confidence gate" width="100%">
+- **Syntax check for workflow files** to check unexpected or missing keys following [workflow syntax][syntax-doc]
+- **Strong type check for `${{ }}` expressions** to catch several semantic errors like access to not existing property,
+  type mismatches, ...
+- **Actions usage check** to check that inputs at `with:` and outputs in `steps.{id}.outputs` are correct
+- **Reusable workflow check** to check inputs/outputs/secrets of reusable workflows and workflow calls
+- **[shellcheck][] and [pyflakes][] integrations** for scripts at `run:`
+- **Security checks**; [script injection][script-injection-doc] by untrusted inputs, hard-coded credentials
+- **Other several useful checks**; [glob syntax][filter-pattern-doc] validation, dependencies check for `needs:`,
+  runner label validation, cron syntax validation, ...
 
-**ScholarZone discovers, verifies, and maintains scholarship data from official sources — with field-level provenance, immutable audit history, and human review wherever confidence is low.**
+See the [full list][checks] of checks done by actionlint.
 
-[Repository](https://github.com/gopal735/ScholarZone) · [Report an Issue](https://github.com/gopal735/ScholarZone/issues) · [API Reference](#api-reference) · [Deployment](#deployment)
+<img src="https://github.com/rhysd/ss/blob/master/actionlint/main.gif?raw=true" alt="actionlint reports 7 errors" width="806" height="492"/>
 
-</div>
+**Example of broken workflow:**
 
----
-
-## Contents
-
-- [Overview](#overview)
-- [Why ScholarZone](#why-scholarzone)
-- [Dataset Snapshot](#dataset-snapshot)
-- [Architecture](#architecture)
-- [Verification Pipeline](#verification-pipeline)
-- [Image Pipeline](#image-pipeline)
-- [Trust Model](#trust-model)
-- [Technology](#technology)
-- [Features](#features)
-- [Engineering](#engineering)
-- [API Reference](#api-reference)
-- [Local Development](#local-development)
-- [Configuration](#configuration)
-- [Repository Structure](#repository-structure)
-- [Deployment](#deployment)
-- [Project Status](#project-status)
-- [Roadmap](#roadmap)
-- [Contributing](#contributing)
-- [License](#license)
-
----
-
-## Overview
-
-Finding a scholarship usually means reading dozens of unmaintained pages, guessing which figures are still current, and discovering too late that a deadline or a link has changed. Most aggregators copy listings wholesale, so an error introduced once keeps propagating.
-
-ScholarZone treats every listing as a claim that has to be re-checked against its primary source, on a schedule, field by field.
-
-The platform is two services:
-
-- **Frontend** — a React single-page application for browsing, filtering, comparing, and shortlisting opportunities.
-- **Backend** — a FastAPI service exposing a REST API, an autonomous verification engine, a discovery pipeline, and an admin review dashboard.
-
-What makes it different is the maintenance model rather than the interface: listings are not static rows, they are continuously re-validated records with a full history of what changed, when, and against which source URL.
-
----
-
-## Why ScholarZone
-
-| Principle | What it means in practice |
-| :--- | :--- |
-| **Source-first** | Opportunities are ranked by primary official sources, not third-party aggregators that copy from each other. |
-| **Field-level verification** | Each field is checked independently against the official page, so one bad value does not invalidate an entire listing. |
-| **Immutable audit trail** | Every applied change is recorded with old value, new value, source URL, confidence, and timestamp. |
-| **Human in the loop** | Identity conflicts, low-confidence findings, and third-party sources are routed to review instead of being applied silently. |
-| **Scheduled maintenance** | Verification runs on a fixed 12-hour cycle, so listings decay slowly rather than rotting between manual checks. |
-| **Honest imagery** | Images are discovered only where they exist officially, and never fabricated to fill a gap. |
-
----
-
-## Dataset Snapshot
-
-The figures below are a **local snapshot taken from a development database**, not a service-level guarantee. Counts change as discovery, verification, and lifecycle transitions run.
-
-| Metric | Snapshot value |
-| :--- | ---: |
-| Scholarships | 487 |
-| Countries represented | 29 |
-| Verification history rows | 209 |
-| Reviews | 859 |
-| Discovery candidates (pending) | 17 |
-| Approved sources | 20 |
-
----
-
-## Architecture
-
-<img src="docs/assets/architecture.svg" alt="ScholarZone architecture: React SPA on GitHub Pages, FastAPI backend on SnapDeploy, PostgreSQL on Neon, driven by GitHub Actions" width="100%">
-
-Three tiers, deployed independently:
-
-| Tier | Technology | Hosting |
-| :--- | :--- | :--- |
-| Frontend | React 19 + Vite, static build | GitHub Pages |
-| Backend | FastAPI, Python 3.11, Docker (`python:3.11-slim`) | SnapDeploy containers |
-| Database | PostgreSQL (Neon), 13 SQLAlchemy models | Neon |
-
-Automation sits alongside them. GitHub Actions runs backend tests and frontend lint on every push, deploys the frontend, verifies the production backend, and every twelve hours runs the maintenance worker **directly against Neon**, in-process, with no API server involved:
-
-```
-Requests                       Maintenance (every 12h)
-   │                                    │
-   ▼                                    ▼
-GitHub Pages ──► SnapDeploy API ──► Neon PostgreSQL
-                        ▲                ▲
-                        │                │
-                  (frontend only)   direct Python worker
-                                     runs in GitHub Actions
+```yaml
+on:
+  push:
+    branch: main
+    tags:
+      - 'v\d+'
+jobs:
+  test:
+    strategy:
+      matrix:
+        os: [macos-latest, linux-latest]
+    runs-on: ${{ matrix.os }}
+    steps:
+      - run: echo "Checking commit '${{ github.event.head_commit.message }}'"
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node_version: 18.x
+      - uses: actions/cache@v4
+        with:
+          path: ~/.npm
+          key: ${{ matrix.platform }}-node-${{ hashFiles('**/package-lock.json') }}
+        if: ${{ github.repository.permissions.admin == true }}
+      - run: npm install && npm test
 ```
 
-The separation matters. SnapDeploy Free containers sleep, and a wake is not
-guaranteed, so a scheduled run that depended on the container being awake
-depended on a platform behaviour nobody controls — and verification is exactly
-the job that matters most when nobody is looking. The maintenance worker
-imports the same service layer the API uses and opens its own database
-connection, so a scheduled run and an operator-triggered run cannot drift
-apart, and SnapDeploy is used only to serve the frontend.
-
-### Data model
-
-Fifteen models back the platform. The load-bearing ones:
-
-| Model | Role |
-| :--- | :--- |
-| `Scholarship` | Core record, with verification status and next-due date |
-| `ScholarshipVerificationHistory` | Append-only record of every applied field change |
-| `ScholarshipReview` | Human review queue with approve / reject outcome |
-| `ApprovedSource` | Registry of official sources cleared for crawling |
-| `SourceHealth` | Per-source success and failure counts |
-| `DiscoveryCandidate` | Newly found opportunities awaiting review |
-| `ContentFingerprintRecord` | Idempotency and duplicate-detection ledger for images |
-| `MaintenanceCursor` | Durable per-stage progress marker, so scheduled runs advance |
-| `MaintenanceRun` | One row per maintenance run: status, stage results, counts |
-| `KnowledgeNode` / `KnowledgeEdge` | Knowledge-graph structures for relationship exploration |
-
-<details>
-<summary>Remaining models</summary>
-
-`ScholarshipFetchAttempt`, `ScholarshipSnapshot`, `ImageReview`, `ScholarshipRestoreRecord`.
-
-</details>
-
----
-
-## Verification Pipeline
-
-<img src="docs/assets/verification-flow.svg" alt="Verification pipeline: official source, fetch and extract, validate, confidence gate, then auto-apply with audit trail or human review" width="100%">
-
-A scheduled job triggers a bounded run over due scholarships:
-
-1. **Trigger** — GitHub Actions calls the authenticated `POST /internal/verify/trigger` endpoint.
-2. **Authorise** — the request must carry the `X-Verification-Secret` header. Triggers are rate-limited to one per 60 seconds; rapid or concurrent requests receive `429`.
-3. **Schedule** — `SchedulerEngine` runs a bounded `ThreadPoolExecutor` with 4 workers over a batch, then shuts down cleanly.
-4. **Fetch and extract** — each candidate's official page is retrieved and parsed into structured fields with evidence attached.
-5. **Diff** — extracted values are compared field by field against the stored record.
-6. **Gate** — the confidence assigned to each field decides the outcome.
-7. **Persist** — approved changes are written together with their history row.
-
-### Confidence levels
-
-| Level | Meaning | Outcome |
-| :--- | :--- | :--- |
-| `HIGH` | Field matches the official source | Applied automatically |
-| `MEDIUM` | Partial match | Recorded, flagged for review |
-| `LOW` | Weak or conflicting evidence | Routed to human review |
-| `HUMAN_REVIEW` | Requires an explicit decision | Held until reviewed |
-
-Fatal signals are handled distinctly: a `401` or `404` on the health endpoint is a configuration error and fails the run immediately, while `403` (edge block), `503` (cold start or database not ready), and connection failures are treated as transient and retried.
-
-### Cold-start handling
-
-Production runs on containers that scale to zero, so the first request after an idle period pays the wake-up cost. The workflow probes `/health` on a backoff schedule of **10s, 20s, 30s, 45s, 60s, 90s, 120s, 120s, 180s** — a 675-second total budget — and verifies readiness after the final sleep before declaring the budget exhausted. The verification trigger is only sent once readiness is confirmed, so a request is never fired into a container that is still booting.
-
-Country-level discovery runs after each successful round, recording candidates for review and transitioning listings through `active` / `needs_review` / `inactive`.
-
----
-
-## Image Pipeline
-
-<img src="docs/assets/image-pipeline.svg" alt="Image pipeline: official page crawl to candidates, validation, scoring, then high auto-persist, medium human review, low reject, with frontend fallback" width="100%">
-
-Most listings have no official artwork, and inventing some would misrepresent the source. ScholarZone only uses imagery that genuinely exists on the official domain.
-
-**Resolution order:** `PROGRAM_IMAGE` → `OFFICIAL_BANNER` → `OFFICIAL_LOGO` → `NULL`, with the frontend rendering a clean placeholder when nothing valid exists.
-
-### Validation layers
-
-- **Non-content rejection** — filters banners, placeholders, logos, social icons, and Open Graph thumbnails.
-- **Dimension floors** — minimum 200px, with a 500px minimum for cover imagery.
-- **Aspect ratio** — rejects anything outside a 0.2 to 5.0 ratio.
-- **Duplicate detection** — rejects near-duplicate images across listings.
-- **Official-domain check** — the candidate must originate from the scholarship's own official domain.
-
-### Outcome by confidence
-
-| Confidence | Action |
-| :--- | :--- |
-| `HIGH` | Persisted automatically via `POST /internal/images/verify`, with an idempotent fingerprint record |
-| `MEDIUM` | Held for human review |
-| `LOW` | Rejected |
-
-Verified images are never silently overwritten by a lower-confidence candidate.
-
----
-
-## Trust Model
-
-Provenance is the point of the system, so it is enforced at four levels:
-
-- **Official-domain checking** — a listing is only considered verified against a source cleared in `ApprovedSource`, and images must come from that same domain.
-- **Per-field evidence** — every applied value carries the source URL it was derived from, not just a record-level link.
-- **Append-only history** — `ScholarshipVerificationHistory` records old value, new value, source, confidence, and timestamp. History rows are written, never updated.
-- **Idempotency** — fingerprint records and rate limits prevent duplicate application of the same change or image.
-
-`SourceHealth` tracks per-source success and failure counts, allowing sources that repeatedly fail to be deprioritised in discovery rather than retried indefinitely.
-
----
-
-## Technology
-
-<img src="docs/assets/tech-stack.svg" alt="Technology stack grouped into frontend, backend, and infrastructure" width="100%">
-
-| Layer | Technology | Version |
-| :--- | :--- | :--- |
-| UI | React | 19.2.8 |
-| Routing | react-router-dom | 7.18.2 |
-| Build | Vite | 8.2.0 |
-| Animation | motion | 13.1.1 |
-| Linting | ESLint | 10.8.0 |
-| Runtime | Python | 3.11 |
-| API | FastAPI | 0.141.1 |
-| ASGI server | Uvicorn | 0.52.1 |
-| ORM | SQLAlchemy | 2.0 |
-| Driver | psycopg | v3 |
-| Validation | Pydantic | 2.13.4 |
-| HTTP client | HTTPX | >=0.27 |
-| Parsing | BeautifulSoup4 | latest |
-| Imaging | Pillow | latest |
-| Email | Resend | latest |
-| Tests | pytest | latest |
-| Database | PostgreSQL (Neon) | managed |
-| Containers | Docker (`python:3.11-slim`) | single-stage |
-
----
-
-## Features
-
-### Discovery and exploration
-Country-level discovery finds candidate opportunities from approved official sources and records them as `DiscoveryCandidate` rows for review. A country explorer shows live per-country counts alongside destination cards. Listings can be filtered by country, degree, funding type, deadline month, and status, and sorted by recommendation, recency, deadline, funding, or name.
-
-### Verification
-Field-level verification with `active` / `needs_review` / `inactive` status, last-verified timestamps, and next-due scheduling. An append-only history records every applied change, and conflicts route into a review queue with approve and reject actions.
-
-### Image discovery
-Same-domain crawling to a maximum depth of 2, context-aware candidate extraction, layered validation, confidence scoring, and idempotent persistence for approved imagery.
-
-### Reviews and provenance
-Every verified value is traceable to the source URL it came from. A review workflow captures human decisions on uncertain fields as durable records rather than transient state.
-
-### Comparison and shortlisting
-Up to four scholarships can be compared side by side on country, degree, funding, and deadline. Saved scholarships are stored device-locally, with no account required.
-
-### Scheduled automation
-
-A 12-hour GitHub Actions cron runs `python -m app.jobs.scholarzone_maintenance`,
-which connects straight to Neon. **It does not wake, call, or depend on the
-SnapDeploy container**, and it needs no running web server.
-
-Stages run in dependency order, and each one is bounded, resumable and
-idempotent:
-
-| Stage | What it does | Depends on |
-| :--- | :--- | :--- |
-| `verify` | Re-checks due records, selected by staleness priority, and processes due retries | — |
-| `enrich` | Fills empty fields from the record's official source, from a durable cursor | `verify` |
-| `images` | Covers records that have not reached a terminal image outcome | `verify` |
-| `discover` | Finds new opportunities in countries already represented | `verify` |
-| `quarantine` | Structurally checks records for "this is not a scholarship" | — |
-
-`quarantine` deliberately has no prerequisite. It runs on its own durable
-cursor and costs a fraction of a second per batch, so it sweeps the whole valid
-catalogue every cycle regardless of where enrichment happens to be.
-
-### Cost control
-
-Every stage is limited per run, concurrency is capped, already-complete records
-are skipped rather than re-fetched, and records that reached a terminal image
-outcome are not crawled again.
-
-**Verification priority is calculated in a fixed number of queries.** Scoring
-used to issue five aggregates per candidate, so filling a queue of 100 issued
-500 round-trips to Neon. The signals are unchanged — same weights, same
-arithmetic, same ranking — but they are now collected for the whole batch in
-five grouped queries and scored in memory. Measured: 10 candidates 50 → 5
-queries, 100 candidates 500 → 5.
-
-**The image stage probes each domain once per run.** Reachability is a property
-of a domain, not of a page, so the preflight verdict is cached per domain for
-the life of a run and shared across the many records that point at the same
-provider. The cache is not persisted, because a domain that was unreachable an
-hour ago may be reachable now. A separate plan-only mode reports scope with no
-network request at all, so a maintenance dry run no longer spends nine minutes
-crawling to produce a number nobody can act on.
-
-**Metrics.** Each run prints a compact block and stores the same numbers in
-`MaintenanceRun`: records scanned, changed, skipped, source failures, retries,
-review items created, per-stage runtime, and total runtime. This is not a
-monitoring service and does not phone home; it is the existing log, made
-greppable.
-
-### Safety layers
-
-Two capabilities run as decision layers rather than as their own expensive
-stages, because that is where they are useful and where they cost nothing:
-
-- **One shared anomaly gate** (`app/services/mutation_safety_gate.py`) decides
-  every automatic mutation, whether the proposal came from verification or
-  from enrichment. A change rated HIGH or CRITICAL — a deadline moving
-  backwards, a funding value collapsing, a value oscillating between runs — is
-  never written automatically; it is routed to the existing review queue
-  instead, keyed so a repeated run cannot create duplicate reviews. The gate
-  is a pure function over the change: no query, no fetch, no paid service. It
-  can only ever *reduce* automatic mutation, and it **fails closed** — if the
-  detector itself raises, the mutation is held for review rather than waved
-  through. Enrichment previously had no gate at all, so a source page that
-  moved a deadline backwards was merged silently.
-- **Catalogue quarantine** is the structural gate. It runs on its own cursor,
-  independent of enrichment, requires three independent signals, deletes
-  nothing, writes every decision to the review queue with its evidence, is
-  idempotent, and needs no network. It deliberately does *not* depend on
-  enrichment having reached a record: the earlier coupling meant a record
-  discovered today was never assessed until the enrichment cursor happened to
-  get to it, which is exactly where new records arrive.
-
-  **New records are also assessed in the same cycle.** A cursor sweep cannot
-  cover discovery output: a record inserted this run has the highest id in the
-  catalogue while the quarantine cursor is still in the middle, so junk would
-  sit in the public directory for roughly 49 runs. That is how `id 490
-  "Ministry of Education (MOE)"` and `id 491 "Home - Erasmus+"` — both bare
-  site roots with every content field empty — reached production. The discovery
-  stage now reports the ids it created and assesses them immediately, while the
-  routine sweep still covers the legacy catalogue.
-
-### Public directory quality gate
-
-A scholarship is listed publicly only if it is **verified** and carries an
-**image that passed image validation** (a non-null `image_url` alone is not
-enough — a rejected image must not satisfy the gate). Quarantined records stay
-excluded regardless.
-
-This is a real trade-off and the numbers are worth stating plainly. Of 487
-valid records, roughly 170 are hidden by the image requirement: about 107
-because the provider's site was unreachable from the crawler, 41 because the
-official page genuinely has no findable image, and 23 whose image candidates
-were all rejected. The first group is not a quality judgement about those
-scholarships — it is our own crawler being unable to reach the page.
-
-Both conditions are settings, so the trade-off is reversible without a code
-change:
-
-| Setting | Default | Effect when true |
-| :--- | :--- | :--- |
-| `SCHOLARZONE_PUBLIC_REQUIRE_VERIFIED` | `true` | Only verified records are listed |
-| `SCHOLARZONE_PUBLIC_REQUIRE_VERIFIED_IMAGE` | `true` | Only records with a validated image are listed |
-
-The homepage statistics apply the same conditions as the directory, so the
-advertised total can never contradict the list.
-
-Beneath the detector sit `change_impact_staleness` and `evidence_arbitration`;
-they are reached through it rather than reimplemented.
-
-If a stage fails, the stages that depend on it are skipped rather than run on
-stale state, and **the process exits non-zero** so the workflow is recorded as
-failed. A stage exception means something structural broke — the database, a
-missing table, a bad import — and it is never reported as a successful run.
-Per-record source failures are different: an unreachable provider is counted
-as a metric and does not fail the run, because that is a data outcome, not a
-broken job.
-
-**Progress is durable.** The `enrich` stage takes its batch from a
-`MaintenanceCursor` row in the same database, not from the Actions cache. The
-previous design selected `ORDER BY id LIMIT 60` with no cursor at all, so every
-run re-enriched the same first records forever while the tail of the catalogue
-was never reached — and it reported success while doing it. The cursor
-advances monotonically and wraps when the catalogue is exhausted, which turns
-repeated runs into a round-robin sweep: every record is revisited on a bounded
-cadence, and a failed batch is re-selected next run rather than skipped.
-
-Useful flags: `--stage` (repeatable), `--limit`, `--workers`, `--dry-run`
-(reads and reports the plan, writes nothing).
-
-**Cost control.** See the resource notes above; per-run cost is bounded and
-recorded in `MaintenanceRun` so usage can be measured rather than guessed.
-
-**Honest platform limits.** GitHub-hosted scheduled workflows can be delayed by platform load, and public repositories can have them disabled after long inactivity. Neither is something this repository can work around. The worker is designed so that a delayed, skipped, cancelled or repeated run leaves the catalogue consistent and simply continues from the cursor.
-
-### Admin dashboard
-A control surface for the verification queue, metric cards, search and filter, and verify and flag actions, backed by a dedicated image review interface.
-
----
-
-## Engineering
-
-### Test suite
-
-- **78** test files under `backend/tests/`
-- **3036** tests
-
-The suite exercises the verification engine, image validation and discovery, the discovery pipeline, lifecycle transitions, source health, schema compatibility, API endpoints, and the autonomous maintenance path.
-
-`tests/test_autonomous_maintenance.py` is worth calling out. It pins the properties this architecture depends on rather than the current implementation: that consecutive maintenance runs advance through the catalogue instead of re-selecting the same ids, that the cursor survives a process restart, that a failed stage exits non-zero, that production refuses a non-PostgreSQL database, that no workflow or module references the SnapDeploy wake endpoint, that the worker neither needs a server nor receives the API secrets, and that the scheduled runtime matches the backend runtime.
-
-### CI
-
-`.github/workflows/ci.yml` runs on every push and covers:
-
-- backend tests via pytest
-- frontend lint via ESLint
-- schema compatibility checks
-- smoke tests against the running application
-
-Frontend deployment, production backend verification, and the scheduled verification cycle each run in their own workflow.
-
----
-
-## API Reference
-
-The backend exposes a FastAPI application, **ScholarZone API** (version 1.0.0). Swagger documentation is available at `/docs` outside production only, and is disabled in production. ReDoc is always disabled.
-
-Production base URL: `https://scholarzone-api-2ee2d.containers.snapdeploy.app`
-
-| Method | Path | Purpose |
-| :--- | :--- | :--- |
-| `GET` | `/` | Welcome message |
-| `GET` | `/health` | Health check — `200` when ready, `503` if the database is not |
-| `GET` | `/scholarships` | List, filter, sort, and paginate scholarships |
-| `GET` | `/scholarships/{id}` | Scholarship details |
-| `POST` | `/internal/verify/trigger` | Trigger a verification round (authenticated) |
-| `POST` | `/internal/discover/trigger` | Trigger country-level discovery (authenticated) |
-| `POST` | `/internal/images/verify` | Persist verified images (authenticated) |
-| `GET` | `/admin/queue` | Verification review queue |
-
-All `/internal` endpoints require the `X-Verification-Secret` header to match the configured `SCHOLARZONE_VERIFICATION_SECRET`.
-
-### One secret currently guards two different surfaces
-
-`SCHOLARZONE_ADMIN_SECRET` has never been set in production, so `config.py` falls back to it:
+**actionlint reports 7 errors:**
 
 ```
-admin_secret = SCHOLARZONE_ADMIN_SECRET or SCHOLARZONE_VERIFICATION_SECRET
+test.yaml:3:5: unexpected key "branch" for "push" section. expected one of "branches", "branches-ignore", "paths", "paths-ignore", "tags", "tags-ignore", "types", "workflows" [syntax-check]
+  |
+3 |     branch: main
+  |     ^~~~~~~
+test.yaml:5:11: character '\' is invalid for branch and tag names. only special characters [, ?, +, *, \, ! can be escaped with \. see `man git-check-ref-format` for more details. note that regular expression is unavailable. note: filter pattern syntax is explained at https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions#filter-pattern-cheat-sheet [glob]
+  |
+5 |       - 'v\d+'
+  |           ^~~~
+test.yaml:10:28: label "linux-latest" is unknown. available labels are "windows-latest", "windows-latest-8-cores", "windows-2025", "windows-2025-vs2026", windows-2022", "windows-11-arm", "ubuntu-slim", "ubuntu-latest", "ubuntu-latest-4-cores", "ubuntu-latest-8-cores", "ubuntu-latest-16-cores", "ubuntu-24.04", "ubuntu-24.04-arm", "ubuntu-22.04", "ubuntu-22.04-arm", "macos-latest", "macos-latest-xlarge", "macos-latest-large", "macos-26-intel", "macos-26-xlarge", "macos-26-large", "macos-26", "macos-15-intel", "macos-15-xlarge", "macos-15-large", "macos-15", "macos-14-xlarge", "macos-14-large", "macos-14", "self-hosted", "x64", "arm", "arm64", "linux", "macos", "windows". if it is a custom label for self-hosted runner, set list of labels in actionlint.yaml config file [runner-label]
+   |
+10 |         os: [macos-latest, linux-latest]
+   |                            ^~~~~~~~~~~~~
+test.yaml:13:41: "github.event.head_commit.message" is potentially untrusted. avoid using it directly in inline scripts. instead, pass it through an environment variable. see https://docs.github.com/en/actions/reference/security/secure-use#good-practices-for-mitigating-script-injection-attacks for more details [expression]
+   |
+13 |       - run: echo "Checking commit '${{ github.event.head_commit.message }}'"
+   |                                         ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+test.yaml:17:11: input "node_version" is not defined in action "actions/setup-node@v4". available inputs are "always-auth", "architecture", "cache", "cache-dependency-path", "check-latest", "node-version", "node-version-file", "registry-url", "scope", "token" [action]
+   |
+17 |           node_version: 18.x
+   |           ^~~~~~~~~~~~~
+test.yaml:21:20: property "platform" is not defined in object type {os: string} [expression]
+   |
+21 |           key: ${{ matrix.platform }}-node-${{ hashFiles('**/package-lock.json') }}
+   |                    ^~~~~~~~~~~~~~~
+test.yaml:22:17: receiver of object dereference "permissions" must be type of object but got "string" [expression]
+   |
+22 |         if: ${{ github.repository.permissions.admin == true }}
+   |                 ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 ```
 
-The practical consequence is that `SCHOLARZONE_VERIFICATION_SECRET` is not only the verification
-credential, it is *also* the entire admin credential — roughly fourteen admin endpoints across the
-admin verification, image review, dashboard and scholarship debug routers authenticate against it.
-Rotating the verification secret therefore rotates the admin login as a side effect, and any operator
-who has memorised the current value is locked out when it changes.
+## Quick start
 
-This is recorded rather than fixed, because splitting the two would mean introducing a second
-credential and re-provisioning it across every consumer — a migration with real breakage potential
-for a system that currently works. The recommended follow-up, when it is worth doing deliberately:
+Install `actionlint` command by downloading [the released binary][releases] or by Homebrew or by `go install`. See
+[the installation document][install] for more details like how to manage the command with several package managers
+or run via Docker container.
 
-1. Set `SCHOLARZONE_ADMIN_SECRET` to its own random value.
-2. Distribute it to the admin operators and to `admin-auth-check.yml`, which already prefers it.
-3. Only then treat the two variables as independent.
-
-Until that happens, treat any change to `SCHOLARZONE_VERIFICATION_SECRET` as a change to both
-credentials at once, and change the value in the Vercel project and the GitHub repository secret
-together — a deployment that serves a new value while either store still holds the old one fails
-closed, which is the correct behaviour but an avoidable outage.
-
-`GET /internal/auth-check` is the deployment gate's credential proof. It is guarded by the same
-`_verify_secret` as the rest of the verification surface and returns a fixed literal, so the gate
-now fails when the secret is wrong instead of passing unconditionally.
-
-### Trigger responses
-
-| Status | Meaning |
-| :--- | :--- |
-| `202` | Round accepted and running |
-| `429` | Rate-limited; a round is already in progress or too recent |
-| `401` / `403` | Authentication failure — the run fails |
-| `503` | Service unavailable, typically cold start or database not ready |
-
----
-
-## Local Development
-
-### Prerequisites
-
-- Python 3.11+
-- Node.js 18+ and npm
-- PostgreSQL, or SQLite for local development
-
-### Backend
-
-```bash
-cd backend
-pip install -r requirements.txt
-cp .env.example .env
-uvicorn app.main:app --reload --host 0.0.0.0 --port 8000
+```sh
+go install github.com/rhysd/actionlint/cmd/actionlint@latest
 ```
 
-The API is then available at `http://localhost:8000`, with Swagger docs at `/docs`.
+Basically all you need to do is run the `actionlint` command in your repository. actionlint automatically detects workflows and
+checks errors. actionlint focuses on finding out mistakes. It tries to catch errors as much as possible and make false positives
+as minimal as possible.
 
-### Frontend
-
-```bash
-cd frontend
-npm install
-npm run dev
+```sh
+actionlint
 ```
 
-### Seeding
+Another option to try actionlint is [the online playground][playground]. Your browser can run actionlint through WebAssembly.
 
-Outside production the database is seeded on startup from `data/verified_scholarships.py` (DAAD, ICCR, and curated entries). In production seeding is skipped and the database is populated by migration.
+See [the usage document][usage] for more details.
 
----
+## Documents
 
-## Configuration
+- [Checks][checks]: Full list of all checks done by actionlint with example inputs, outputs, and playground links.
+- [Installation][install]: Installation instructions. Prebuilt binaries, a Docker image, building from source, a download script
+  (for CI), supports by several package managers are available.
+- [Usage][usage]: How to use `actionlint` command locally or on GitHub Actions, the online playground, an official Docker image,
+  and integrations with reviewdog, Problem Matchers, super-linter, pre-commit, VS Code.
+- [Configuration][config]: How to configure actionlint behavior. Currently, the labels of self-hosted runners, the configuration
+  variables, and ignore patterns of errors for each file paths can be set.
+- [Go API][api]: How to use actionlint as Go library.
+- [References][refs]: Links to resources.
 
-| Variable | Required | Description |
-| :--- | :---: | :--- |
-| `DATABASE_URL` | Yes | Database URL — PostgreSQL in production, SQLite in dev and test |
-| `ENVIRONMENT` | Yes | `development`, `test`, or `production` |
-| `SCHOLARZONE_VERIFICATION_SECRET` | Yes (production) | Shared secret for verification trigger endpoints, **and** — while `SCHOLARZONE_ADMIN_SECRET` is unset — the admin credential as well. See the coupling note below |
-| `VERIFICATION_SECRET` | Yes | Alias used by the verification router |
-| `ALLOWED_ORIGINS` | No | Comma-separated CORS allowlist |
-| `MIN_IMAGE_DIMENSION` | No | Minimum image dimension in pixels (default 200) |
-| `MIN_COVER` | No | Minimum cover image dimension (default 500) |
-| `NON_CONTENT_REJECTION_THRESHOLD` | No | Non-content scoring threshold (default 1.5) |
-| `RESEND_API_KEY` | No | Resend API key for email delivery |
-| `VITE_API_URL` | Frontend | Backend API base URL |
+## Bug reporting
 
-`config.py` rejects SQLite URLs when `ENVIRONMENT=production`, which keeps production pinned to PostgreSQL.
+When you see some bugs or false positives, it is helpful to [file a new issue][issue-form] with a minimal example
+of input. Giving me some feedbacks like feature requests or ideas of additional checks is also welcome.
 
----
-
-## Repository Structure
-
-```
-ScholarZone/
-├── frontend/                     # React + Vite SPA
-│   └── src/
-│       ├── components/           # Reusable UI, including ScholarshipImage
-│       ├── pages/                # Route-level pages
-│       ├── hooks/                # Custom hooks
-│       └── lib/                  # API client and utilities
-├── backend/
-│   ├── app/
-│   │   ├── main.py               # FastAPI entry point
-│   │   ├── models.py             # 15 SQLAlchemy models
-│   │   ├── schemas.py            # Pydantic schemas
-│   │   ├── routers/              # scholarships, verification, discovery, admin
-│   │   ├── jobs/                 # scholarzone_maintenance: the scheduled worker
-│   │   ├── scheduler_v2.py       # Verification engine
-│   │   ├── services/             # Discovery, images, reviews, source health, cursor
-│   ├── tests/                    # 78 test files, 3036 tests
-│   ├── Dockerfile                # Single-stage python:3.11-slim
-│   ├── render.yaml               # Alternative deployment config, not production
-│   └── requirements.txt
-├── docs/                         # Product, design, API, and architecture docs
-│   └── assets/                   # README diagrams
-├── data/                         # Seed data (DAAD, ICCR, curated)
-├── .github/workflows/            # ci, frontend, deploy, verification-cron
-└── README.md
-```
-
----
-
-## Deployment
-
-### Frontend
-
-Built with `vite build` and published to GitHub Pages by `.github/workflows/frontend.yml`.
-
-### Backend
-
-Production runs on **SnapDeploy containers**, not Render. A `backend/render.yaml` file exists as an alternative deployment configuration, but it is not the active production platform. The container is a single-stage Docker build on `python:3.11-slim` with a health check every 30 seconds, and `.github/workflows/deploy.yml` verifies the production deployment after pushes.
-
-### Database
-
-PostgreSQL on Neon in production; SQLite for development and testing. Production databases are populated by migration rather than by seeding.
-
-### Scheduled maintenance
-
-`.github/workflows/verification-cron.yml` runs on `7 */12 * * *` — every 12 hours at minute 7, deliberately off the hour. Rounds are grouped under a concurrency group so overlapping runs cannot occur.
-
-The job checks out the repository, installs `backend/requirements.txt` on **Python 3.11** (the same runtime as CI and the deployed API), and runs the worker in-process against Neon. It receives exactly two settings:
-
-| Setting | Why |
-| :--- | :--- |
-| `SCHOLARZONE_DATABASE_URL` | The Neon connection string |
-| `SCHOLARZONE_ENVIRONMENT=production` | Without it the config layer falls back to a local SQLite file and the job would quietly maintain the wrong database |
-
-It does **not** receive `SCHOLARZONE_VERIFICATION_SECRET` or `SCHOLARZONE_ADMIN_SECRET`. Those guard HTTP endpoints in `app/routers`; the worker imports no router and makes no HTTP call, so passing them would grant the job credentials it cannot use. The worker also refuses to start if production mode does not resolve to a PostgreSQL URL, and exits non-zero if any stage fails.
-
-The legacy `app/scheduler.py` APScheduler module has been deleted along with the dependency: nothing in the application imported it, and it existed only behind a test stub. The intelligent verification engine in `app/scheduler_v2.py` and `app/services/scheduler_engine.py` is preserved and is what the worker actually calls.
-
-### Failure handling and retry
-
-A stage failure makes the process exit non-zero, so a broken run is never
-recorded as a green workflow. On top of that the workflow retries **once**,
-and only when the run failed.
-
-- **Transient** — a temporary Neon connection failure, an SSL or timeout error,
-  a name-resolution or gateway problem. Retrying is reasonable because the next
-  attempt may genuinely differ.
-- **Fatal** — a missing secret, invalid production configuration, a broken
-  import, a schema or migration failure, a code error. These are never
-  improved by running again.
-
-The worker prints a **failure classification** block (`transient` / `fatal` /
-`unknown`) so a human can tell immediately whether waiting would have helped.
-GitHub Actions cannot branch on log text, so the retry job itself fires on any
-non-zero exit; a fatal failure will therefore cost one redundant attempt. That
-is a deliberate trade: the exit-code contract stays exactly as it was, and the
-cost is bounded at one run rather than a loop.
-
-There is no internal retry loop — the worker never re-runs a stage. A retry is
-a fresh process against a durable cursor, so it resumes rather than redoes, and
-each attempt writes its own `MaintenanceRun` row tagged with the attempt
-number. The concurrency group is shared by both jobs, so a retry can never
-overlap the next scheduled run or a manual dispatch.
-
-**Known limitation:** a stage failure costs up to 24 hours before the next
-scheduled cycle. GitHub cron has no retry semantics, so recovery is a manual
-dispatch.
-
-### Cost and platform limits
-
-Free by design, not free by guarantee. The architecture introduces no paid AI or API dependency, no paid Always-On hosting, and no paid monitoring service. What is genuinely free: GitHub Pages, GitHub-hosted standard runners, the SnapDeploy free container for API hosting, and the Neon free tier.
-
-What remains outside this repository's control:
-
-- **GitHub scheduled workflows can be delayed** by platform load, and on a public repository they **can be disabled after long inactivity**. The cursor design means a missed run is caught up rather than lost.
-- **SnapDeploy Free containers sleep.** The first request after idle can return `503` while the container starts. This no longer affects maintenance, but it still affects public page loads; the frontend retries.
-- **Neon free tiers have compute-hour and storage limits.** Per-run cost is bounded and recorded in `MaintenanceRun`, so usage can be measured rather than guessed.
-- **Official source availability is not guaranteed.** Providers return 403, or change their pages, or go offline. Blocked sources are recorded as data outcomes, not silently treated as verified.
-
----
-
-## Project Status
-
-### Implemented
-
-Scholarship browsing, filtering, sorting, and detail views; country explorer with live counts; side-by-side comparison of up to four scholarships; device-local shortlisting; field-level verification engine; append-only audit trail; human review with approve and reject; same-domain image discovery and layered validation; source health tracking; country-level discovery; lifecycle management; admin dashboard and image review; authentication pages; scheduled verification via GitHub Actions; Resend email integration; telemetry event recording.
-
-### In production
-
-Frontend on GitHub Pages, backend on SnapDeploy, PostgreSQL on Neon, and a 12-hour maintenance cycle running directly against Neon from GitHub Actions.
-
-### Autonomous vs. library-only
-
-Most services in `app/services/` are reached by the maintenance worker or the API and genuinely run on a schedule. A smaller set is **library-only**: implemented, tested, and imported by nothing at runtime. They are not autonomous, and are listed here so that nobody reads their test coverage as evidence that a scheduled job exists:
-
-`confidence_decay`, `content_fingerprinting`, `counterfactual_safety`, `dependency_graph`, `entity_resolution`, `feedback_calibration`, `freshness_governance`, `information_gain_scheduler`, `knowledge_graph`, `scholarship_recovery`, `self_healing_verification`, `source_adapter`, `source_adapter_executor`, `source_repair`, `source_resolver`, `telemetry_decorators`, `verification_cost_optimizer`, `verification_intelligence`, `email_service`.
-
-A feature is autonomous only when trigger → execution → persistence → failure handling → recurrence all exist. A function, a workflow file, an HTTP endpoint, or a passing test is not evidence of that.
-
-**Why these particular ones stay library-only.** The audit found that 19 of the 22 write nothing to the database and touch no network — they are pure decision functions, which is good, but a pure function with no caller has no effect on the catalogue. Running them as standalone stages would add cost without adding behaviour. They were left alone because:
-
-- **`knowledge_graph`** materialises `KnowledgeNode` / `KnowledgeEdge`, but no API route or page reads them. Materialising nightly would write rows nothing reads.
-- **`content_fingerprinting`** is a consumer of fingerprints, and nothing in production generates them. The table is empty, so "has this source changed?" would always answer "no data".
-- **`feedback_calibration`** calibrates thresholds from human decisions. The production review history is far too small to calibrate against, and acting on a bad calibration would silently change verification behaviour.
-- **`self_healing_verification`**, **`source_repair`**, **`source_resolver`**, **`source_adapter*`** all reach the network, and repair mutates `official_source_url` — the trust anchor of a record. Auto-repairing a source without human review is exactly the "uncertain intelligence silently mutating trusted data" case the rules forbid.
-- **`scholarship_recovery`** restores records from history, which is a destructive-class operation.
-- **`counterfactual_safety`**, **`dependency_graph`**, **`confidence_decay`**, **`freshness_governance`**, **`information_gain_scheduler`**, **`verification_cost_optimizer`** are all *priority-shaping* layers. Wiring them into the verification queue would multiply the per-record aggregate queries that enqueueing already performs, and the batch cost is the current open item. They are the natural next candidates once that fan-out is collapsed into grouped queries.
-- **`entity_resolution`** duplicates the deduplication discovery already performs.
-- **`verification_intelligence`** produces human-readable explanations with no production consumer.
-- **`telemetry_decorators`** and **`email_service`** are utility code: no scheduled entry point, and the latter needs a third-party API key.
-
-### Open items
-
-- Verification priority scoring still issues a small number of per-record aggregate queries while enqueuing a batch. The batch size bounds the cost, but the fan-out is not yet collapsed into grouped queries.
-- Admin route gating is not yet applied to every admin page.
-- Directory pagination is not yet implemented.
-- Search Console is not connected, so indexing status is unverified.
-
-### Not implemented
-
-Multi-language localisation, direct integration with scholarship application portals, and mobile native applications.
-
----
-
-## Roadmap
-
-**Near term** — collapse the verification priority query fan-out; apply route gating to all admin pages; implement directory pagination; add a recurring cleanup stage for telemetry and fingerprint rows.
-
-**Medium term** — widen country-level discovery coverage; improve image confidence precision with additional signals; add knowledge-graph exploration; strengthen source-health reporting.
-
-**Long term** — multi-language listings; integration with official application portals; mobile applications; recommendation ranking.
-
----
-
-## Contributing
-
-Contributions are welcome.
-
-1. Fork the repository and create a feature branch.
-2. Follow the [local development](#local-development) setup.
-3. Match existing code conventions.
-4. Run the backend suite: `pytest` in `backend/`.
-5. Run frontend lint: `npm run lint` in `frontend/`.
-6. Open a pull request describing the change.
-
-Use conventional commit messages (`feat:`, `fix:`, `docs:`). Do not commit secrets, tokens, or credentials.
-
----
+See the [contribution guide](./CONTRIBUTING.md) for more details.
 
 ## License
 
-This project is licensed under the terms of the repository `LICENSE` file. That file is currently empty and a license should be added before public distribution.
+actionlint is distributed under [the MIT license](./LICENSE.txt).
+
+[ci-badge]: https://github.com/rhysd/actionlint/actions/workflows/ci.yaml/badge.svg
+[ci]: https://github.com/rhysd/actionlint/actions/workflows/ci.yaml
+[apidoc-badge]: https://pkg.go.dev/badge/github.com/rhysd/actionlint.svg
+[apidoc]: https://pkg.go.dev/github.com/rhysd/actionlint
+[repo]: https://github.com/rhysd/actionlint
+[playground]: https://rhysd.github.io/actionlint/
+[shellcheck]: https://github.com/koalaman/shellcheck
+[pyflakes]: https://github.com/PyCQA/pyflakes
+[syntax-doc]: https://docs.github.com/en/actions/reference/workflow-syntax-for-github-actions
+[filter-pattern-doc]: https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions#filter-pattern-cheat-sheet
+[script-injection-doc]: https://docs.github.com/en/actions/reference/security/secure-use#good-practices-for-mitigating-script-injection-attacks
+[releases]: https://github.com/rhysd/actionlint/releases
+[checks]: https://github.com/rhysd/actionlint/blob/v1.7.12/docs/checks.md
+[install]: https://github.com/rhysd/actionlint/blob/v1.7.12/docs/install.md
+[usage]: https://github.com/rhysd/actionlint/blob/v1.7.12/docs/usage.md
+[config]: https://github.com/rhysd/actionlint/blob/v1.7.12/docs/config.md
+[api]: https://github.com/rhysd/actionlint/blob/v1.7.12/docs/api.md
+[refs]: https://github.com/rhysd/actionlint/blob/v1.7.12/docs/reference.md
+[issue-form]: https://github.com/rhysd/actionlint/issues/new
