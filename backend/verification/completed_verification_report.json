@@ -1,0 +1,1007 @@
+{
+  "verified_count": 32,
+  "total_findings": 442,
+  "issues": {
+    "source_url_not_in_sources_checked": [
+      {
+        "id": 3,
+        "finding": "funding_source",
+        "source_url": "https://www2.daad.de/deutschland/stipendium/datenbank/en/21148-scholarship-database/?detail=50026200"
+      },
+      {
+        "id": 3,
+        "finding": "master_studies_value",
+        "source_url": "https://www2.daad.de/deutschland/stipendium/datenbank/en/21148-scholarship-database/?detail=50026200"
+      },
+      {
+        "id": 3,
+        "finding": "master_duration",
+        "source_url": "https://www2.daad.de/deutschland/stipendium/datenbank/en/21148-scholarship-database/?detail=50026200"
+      },
+      {
+        "id": 3,
+        "finding": "master_eligibility",
+        "source_url": "https://www2.daad.de/deutschland/stipendium/datenbank/en/21148-scholarship-database/?detail=50026200"
+      },
+      {
+        "id": 3,
+        "finding": "epos_objective",
+        "source_url": "https://www2.daad.de/deutschland/stipendium/datenbank/en/21148-scholarship-database/?detail=50076777"
+      },
+      {
+        "id": 3,
+        "finding": "epos_value",
+        "source_url": "https://www2.daad.de/deutschland/stipendium/datenbank/en/21148-scholarship-database/?detail=50076777"
+      },
+      {
+        "id": 3,
+        "finding": "epos_duration",
+        "source_url": "https://www2.daad.de/deutschland/stipendium/datenbank/en/21148-scholarship-database/?detail=50076777"
+      },
+      {
+        "id": 3,
+        "finding": "epos_eligibility",
+        "source_url": "https://www2.daad.de/deutschland/stipendium/datenbank/en/21148-scholarship-database/?detail=50076777"
+      },
+      {
+        "id": 3,
+        "finding": "helmut_schmidt",
+        "source_url": "https://www2.daad.de/deutschland/stipendium/datenbank/en/21148-scholarship-database/?detail=50026397"
+      },
+      {
+        "id": 3,
+        "finding": "architecture_programme",
+        "source_url": "https://www2.daad.de/deutschland/stipendium/datenbank/en/21148-scholarship-database/?detail=57135744"
+      },
+      {
+        "id": 3,
+        "finding": "fine_art_programme",
+        "source_url": "https://www2.daad.de/deutschland/stipendium/datenbank/en/21148-scholarship-database/?detail=57135742"
+      },
+      {
+        "id": 3,
+        "finding": "music_programme",
+        "source_url": "https://www2.daad.de/deutschland/stipendium/datenbank/en/21148-scholarship-database/?detail=57135743"
+      },
+      {
+        "id": 3,
+        "finding": "performing_arts_programme",
+        "source_url": "https://www2.daad.de/deutschland/stipendium/datenbank/en/21148-scholarship-database/?detail=50109971"
+      },
+      {
+        "id": 3,
+        "finding": "research_grants",
+        "source_url": "https://www.daad-bangladesh.org/en/studying-in-germany/phd-studies/research-grants-in-germany-for-phd-scholars"
+      },
+      {
+        "id": 3,
+        "finding": "summer_courses",
+        "source_url": "https://www.daad-bangladesh.org/en/studying-in-germany/daad-scholarships"
+      },
+      {
+        "id": 3,
+        "finding": "tuition_not_covered",
+        "source_url": "https://www.daad.de/en/study-and-research-in-germany/scholarships/important-information-for-scholarship-applicants/"
+      },
+      {
+        "id": 3,
+        "finding": "language_support",
+        "source_url": "https://www2.daad.de/deutschland/stipendium/datenbank/en/21148-scholarship-database/?detail=50026200"
+      },
+      {
+        "id": 3,
+        "finding": "application_deadline",
+        "source_url": "https://www2.daad.de/deutschland/stipendium/datenbank/en/21148-scholarship-database/?detail=50026200"
+      },
+      {
+        "id": 3,
+        "finding": "selection_criteria",
+        "source_url": "https://www2.daad.de/deutschland/stipendium/datenbank/en/21148-scholarship-database/?detail=50026200"
+      },
+      {
+        "id": 5,
+        "finding": "past_exams",
+        "source_url": "https://www.studyinjapan.go.jp/en/planning/scholarships/mext-scholarships/examination.html"
+      },
+      {
+        "id": 5,
+        "finding": "jaasso_scholarships",
+        "source_url": "https://www.studyinjapan.go.jp/en/planning/scholarships/jasso-scholarships/"
+      },
+      {
+        "id": 5,
+        "finding": "mext_guidelines_2027",
+        "source_url": "https://www.mext.go.jp/a_menu/koutou/ryugaku/boshu/1415352_00008.htm"
+      },
+      {
+        "id": 5,
+        "finding": "ylp_grips",
+        "source_url": "https://www.grips.ac.jp/en/education/inter_programs/leader"
+      },
+      {
+        "id": 21,
+        "finding": "funding_source",
+        "source_url": "https://www2.daad.de/deutschland/stipendium/datenbank/en/21148-scholarship-database/?detail=50026200"
+      },
+      {
+        "id": 21,
+        "finding": "master_studies_value",
+        "source_url": "https://www2.daad.de/deutschland/stipendium/datenbank/en/21148-scholarship-database/?detail=50026200"
+      },
+      {
+        "id": 21,
+        "finding": "master_duration",
+        "source_url": "https://www2.daad.de/deutschland/stipendium/datenbank/en/21148-scholarship-database/?detail=50026200"
+      },
+      {
+        "id": 21,
+        "finding": "master_eligibility",
+        "source_url": "https://www2.daad.de/deutschland/stipendium/datenbank/en/21148-scholarship-database/?detail=50026200"
+      },
+      {
+        "id": 21,
+        "finding": "epos_objective",
+        "source_url": "https://www2.daad.de/deutschland/stipendium/datenbank/en/21148-scholarship-database/?detail=50076777"
+      },
+      {
+        "id": 21,
+        "finding": "epos_value",
+        "source_url": "https://www2.daad.de/deutschland/stipendium/datenbank/en/21148-scholarship-database/?detail=50076777"
+      },
+      {
+        "id": 21,
+        "finding": "epos_duration",
+        "source_url": "https://www2.daad.de/deutschland/stipendium/datenbank/en/21148-scholarship-database/?detail=50076777"
+      },
+      {
+        "id": 21,
+        "finding": "epos_eligibility",
+        "source_url": "https://www2.daad.de/deutschland/stipendium/datenbank/en/21148-scholarship-database/?detail=50076777"
+      },
+      {
+        "id": 21,
+        "finding": "helmut_schmidt",
+        "source_url": "https://www2.daad.de/deutschland/stipendium/datenbank/en/21148-scholarship-database/?detail=50026397"
+      },
+      {
+        "id": 21,
+        "finding": "architecture_programme",
+        "source_url": "https://www2.daad.de/deutschland/stipendium/datenbank/en/21148-scholarship-database/?detail=57135744"
+      },
+      {
+        "id": 21,
+        "finding": "fine_art_programme",
+        "source_url": "https://www2.daad.de/deutschland/stipendium/datenbank/en/21148-scholarship-database/?detail=57135742"
+      },
+      {
+        "id": 21,
+        "finding": "music_programme",
+        "source_url": "https://www2.daad.de/deutschland/stipendium/datenbank/en/21148-scholarship-database/?detail=57135743"
+      },
+      {
+        "id": 21,
+        "finding": "performing_arts_programme",
+        "source_url": "https://www2.daad.de/deutschland/stipendium/datenbank/en/21148-scholarship-database/?detail=50109971"
+      },
+      {
+        "id": 21,
+        "finding": "research_grants",
+        "source_url": "https://www.daad-bangladesh.org/en/studying-in-germany/phd-studies/research-grants-in-germany-for-phd-scholars"
+      },
+      {
+        "id": 21,
+        "finding": "summer_courses",
+        "source_url": "https://www.daad-bangladesh.org/en/studying-in-germany/daad-scholarships"
+      },
+      {
+        "id": 21,
+        "finding": "tuition_not_covered",
+        "source_url": "https://www.daad.de/en/study-and-research-in-germany/scholarships/important-information-for-scholarship-applicants/"
+      },
+      {
+        "id": 21,
+        "finding": "language_support",
+        "source_url": "https://www2.daad.de/deutschland/stipendium/datenbank/en/21148-scholarship-database/?detail=50026200"
+      },
+      {
+        "id": 21,
+        "finding": "application_deadline",
+        "source_url": "https://www2.daad.de/deutschland/stipendium/datenbank/en/21148-scholarship-database/?detail=50026200"
+      },
+      {
+        "id": 21,
+        "finding": "selection_criteria",
+        "source_url": "https://www2.daad.de/deutschland/stipendium/datenbank/en/21148-scholarship-database/?detail=50026200"
+      },
+      {
+        "id": 23,
+        "finding": "funding_source",
+        "source_url": "https://www2.daad.de/deutschland/stipendium/datenbank/en/21148-scholarship-database/?detail=50026200"
+      },
+      {
+        "id": 23,
+        "finding": "master_studies_value",
+        "source_url": "https://www2.daad.de/deutschland/stipendium/datenbank/en/21148-scholarship-database/?detail=50026200"
+      },
+      {
+        "id": 23,
+        "finding": "master_duration",
+        "source_url": "https://www2.daad.de/deutschland/stipendium/datenbank/en/21148-scholarship-database/?detail=50026200"
+      },
+      {
+        "id": 23,
+        "finding": "master_eligibility",
+        "source_url": "https://www2.daad.de/deutschland/stipendium/datenbank/en/21148-scholarship-database/?detail=50026200"
+      },
+      {
+        "id": 23,
+        "finding": "epos_objective",
+        "source_url": "https://www2.daad.de/deutschland/stipendium/datenbank/en/21148-scholarship-database/?detail=50076777"
+      },
+      {
+        "id": 23,
+        "finding": "epos_value",
+        "source_url": "https://www2.daad.de/deutschland/stipendium/datenbank/en/21148-scholarship-database/?detail=50076777"
+      },
+      {
+        "id": 23,
+        "finding": "epos_duration",
+        "source_url": "https://www2.daad.de/deutschland/stipendium/datenbank/en/21148-scholarship-database/?detail=50076777"
+      },
+      {
+        "id": 23,
+        "finding": "epos_eligibility",
+        "source_url": "https://www2.daad.de/deutschland/stipendium/datenbank/en/21148-scholarship-database/?detail=50076777"
+      },
+      {
+        "id": 23,
+        "finding": "helmut_schmidt",
+        "source_url": "https://www2.daad.de/deutschland/stipendium/datenbank/en/21148-scholarship-database/?detail=50026397"
+      },
+      {
+        "id": 23,
+        "finding": "architecture_programme",
+        "source_url": "https://www2.daad.de/deutschland/stipendium/datenbank/en/21148-scholarship-database/?detail=57135744"
+      },
+      {
+        "id": 23,
+        "finding": "fine_art_programme",
+        "source_url": "https://www2.daad.de/deutschland/stipendium/datenbank/en/21148-scholarship-database/?detail=57135742"
+      },
+      {
+        "id": 23,
+        "finding": "music_programme",
+        "source_url": "https://www2.daad.de/deutschland/stipendium/datenbank/en/21148-scholarship-database/?detail=57135743"
+      },
+      {
+        "id": 23,
+        "finding": "performing_arts_programme",
+        "source_url": "https://www2.daad.de/deutschland/stipendium/datenbank/en/21148-scholarship-database/?detail=50109971"
+      },
+      {
+        "id": 23,
+        "finding": "research_grants",
+        "source_url": "https://www.daad-bangladesh.org/en/studying-in-germany/phd-studies/research-grants-in-germany-for-phd-scholars"
+      },
+      {
+        "id": 23,
+        "finding": "summer_courses",
+        "source_url": "https://www.daad-bangladesh.org/en/studying-in-germany/daad-scholarships"
+      },
+      {
+        "id": 23,
+        "finding": "tuition_not_covered",
+        "source_url": "https://www.daad.de/en/study-and-research-in-germany/scholarships/important-information-for-scholarship-applicants/"
+      },
+      {
+        "id": 23,
+        "finding": "language_support",
+        "source_url": "https://www2.daad.de/deutschland/stipendium/datenbank/en/21148-scholarship-database/?detail=50026200"
+      },
+      {
+        "id": 23,
+        "finding": "application_deadline",
+        "source_url": "https://www2.daad.de/deutschland/stipendium/datenbank/en/21148-scholarship-database/?detail=50026200"
+      },
+      {
+        "id": 23,
+        "finding": "selection_criteria",
+        "source_url": "https://www2.daad.de/deutschland/stipendium/datenbank/en/21148-scholarship-database/?detail=50026200"
+      },
+      {
+        "id": 228,
+        "finding": "funding_source",
+        "source_url": "https://www2.daad.de/deutschland/stipendium/datenbank/en/21148-scholarship-database/?detail=50026200"
+      },
+      {
+        "id": 228,
+        "finding": "master_studies_value",
+        "source_url": "https://www2.daad.de/deutschland/stipendium/datenbank/en/21148-scholarship-database/?detail=50026200"
+      },
+      {
+        "id": 228,
+        "finding": "master_duration",
+        "source_url": "https://www2.daad.de/deutschland/stipendium/datenbank/en/21148-scholarship-database/?detail=50026200"
+      },
+      {
+        "id": 228,
+        "finding": "master_eligibility",
+        "source_url": "https://www2.daad.de/deutschland/stipendium/datenbank/en/21148-scholarship-database/?detail=50026200"
+      },
+      {
+        "id": 228,
+        "finding": "epos_objective",
+        "source_url": "https://www2.daad.de/deutschland/stipendium/datenbank/en/21148-scholarship-database/?detail=50076777"
+      },
+      {
+        "id": 228,
+        "finding": "epos_value",
+        "source_url": "https://www2.daad.de/deutschland/stipendium/datenbank/en/21148-scholarship-database/?detail=50076777"
+      },
+      {
+        "id": 228,
+        "finding": "epos_duration",
+        "source_url": "https://www2.daad.de/deutschland/stipendium/datenbank/en/21148-scholarship-database/?detail=50076777"
+      },
+      {
+        "id": 228,
+        "finding": "epos_eligibility",
+        "source_url": "https://www2.daad.de/deutschland/stipendium/datenbank/en/21148-scholarship-database/?detail=50076777"
+      },
+      {
+        "id": 228,
+        "finding": "helmut_schmidt",
+        "source_url": "https://www2.daad.de/deutschland/stipendium/datenbank/en/21148-scholarship-database/?detail=50026397"
+      },
+      {
+        "id": 228,
+        "finding": "architecture_programme",
+        "source_url": "https://www2.daad.de/deutschland/stipendium/datenbank/en/21148-scholarship-database/?detail=57135744"
+      },
+      {
+        "id": 228,
+        "finding": "fine_art_programme",
+        "source_url": "https://www2.daad.de/deutschland/stipendium/datenbank/en/21148-scholarship-database/?detail=57135742"
+      },
+      {
+        "id": 228,
+        "finding": "music_programme",
+        "source_url": "https://www2.daad.de/deutschland/stipendium/datenbank/en/21148-scholarship-database/?detail=57135743"
+      },
+      {
+        "id": 228,
+        "finding": "performing_arts_programme",
+        "source_url": "https://www2.daad.de/deutschland/stipendium/datenbank/en/21148-scholarship-database/?detail=50109971"
+      },
+      {
+        "id": 228,
+        "finding": "research_grants",
+        "source_url": "https://www.daad-bangladesh.org/en/studying-in-germany/phd-studies/research-grants-in-germany-for-phd-scholars"
+      },
+      {
+        "id": 228,
+        "finding": "summer_courses",
+        "source_url": "https://www.daad-bangladesh.org/en/studying-in-germany/daad-scholarships"
+      },
+      {
+        "id": 228,
+        "finding": "tuition_not_covered",
+        "source_url": "https://www.daad.de/en/study-and-research-in-germany/scholarships/important-information-for-scholarship-applicants/"
+      },
+      {
+        "id": 228,
+        "finding": "language_support",
+        "source_url": "https://www2.daad.de/deutschland/stipendium/datenbank/en/21148-scholarship-database/?detail=50026200"
+      },
+      {
+        "id": 228,
+        "finding": "application_deadline",
+        "source_url": "https://www2.daad.de/deutschland/stipendium/datenbank/en/21148-scholarship-database/?detail=50026200"
+      },
+      {
+        "id": 228,
+        "finding": "selection_criteria",
+        "source_url": "https://www2.daad.de/deutschland/stipendium/datenbank/en/21148-scholarship-database/?detail=50026200"
+      },
+      {
+        "id": 229,
+        "finding": "funding_source",
+        "source_url": "https://www2.daad.de/deutschland/stipendium/datenbank/en/21148-scholarship-database/?detail=50026200"
+      },
+      {
+        "id": 229,
+        "finding": "master_studies_value",
+        "source_url": "https://www2.daad.de/deutschland/stipendium/datenbank/en/21148-scholarship-database/?detail=50026200"
+      },
+      {
+        "id": 229,
+        "finding": "master_duration",
+        "source_url": "https://www2.daad.de/deutschland/stipendium/datenbank/en/21148-scholarship-database/?detail=50026200"
+      },
+      {
+        "id": 229,
+        "finding": "master_eligibility",
+        "source_url": "https://www2.daad.de/deutschland/stipendium/datenbank/en/21148-scholarship-database/?detail=50026200"
+      },
+      {
+        "id": 229,
+        "finding": "epos_objective",
+        "source_url": "https://www2.daad.de/deutschland/stipendium/datenbank/en/21148-scholarship-database/?detail=50076777"
+      },
+      {
+        "id": 229,
+        "finding": "epos_value",
+        "source_url": "https://www2.daad.de/deutschland/stipendium/datenbank/en/21148-scholarship-database/?detail=50076777"
+      },
+      {
+        "id": 229,
+        "finding": "epos_duration",
+        "source_url": "https://www2.daad.de/deutschland/stipendium/datenbank/en/21148-scholarship-database/?detail=50076777"
+      },
+      {
+        "id": 229,
+        "finding": "epos_eligibility",
+        "source_url": "https://www2.daad.de/deutschland/stipendium/datenbank/en/21148-scholarship-database/?detail=50076777"
+      },
+      {
+        "id": 229,
+        "finding": "helmut_schmidt",
+        "source_url": "https://www2.daad.de/deutschland/stipendium/datenbank/en/21148-scholarship-database/?detail=50026397"
+      },
+      {
+        "id": 229,
+        "finding": "architecture_programme",
+        "source_url": "https://www2.daad.de/deutschland/stipendium/datenbank/en/21148-scholarship-database/?detail=57135744"
+      },
+      {
+        "id": 229,
+        "finding": "fine_art_programme",
+        "source_url": "https://www2.daad.de/deutschland/stipendium/datenbank/en/21148-scholarship-database/?detail=57135742"
+      },
+      {
+        "id": 229,
+        "finding": "music_programme",
+        "source_url": "https://www2.daad.de/deutschland/stipendium/datenbank/en/21148-scholarship-database/?detail=57135743"
+      },
+      {
+        "id": 229,
+        "finding": "performing_arts_programme",
+        "source_url": "https://www2.daad.de/deutschland/stipendium/datenbank/en/21148-scholarship-database/?detail=50109971"
+      },
+      {
+        "id": 229,
+        "finding": "research_grants",
+        "source_url": "https://www.daad-bangladesh.org/en/studying-in-germany/phd-studies/research-grants-in-germany-for-phd-scholars"
+      },
+      {
+        "id": 229,
+        "finding": "summer_courses",
+        "source_url": "https://www.daad-bangladesh.org/en/studying-in-germany/daad-scholarships"
+      },
+      {
+        "id": 229,
+        "finding": "tuition_not_covered",
+        "source_url": "https://www.daad.de/en/study-and-research-in-germany/scholarships/important-information-for-scholarship-applicants/"
+      },
+      {
+        "id": 229,
+        "finding": "language_support",
+        "source_url": "https://www2.daad.de/deutschland/stipendium/datenbank/en/21148-scholarship-database/?detail=50026200"
+      },
+      {
+        "id": 229,
+        "finding": "application_deadline",
+        "source_url": "https://www2.daad.de/deutschland/stipendium/datenbank/en/21148-scholarship-database/?detail=50026200"
+      },
+      {
+        "id": 229,
+        "finding": "selection_criteria",
+        "source_url": "https://www2.daad.de/deutschland/stipendium/datenbank/en/21148-scholarship-database/?detail=50026200"
+      },
+      {
+        "id": 230,
+        "finding": "funding_source",
+        "source_url": "https://www2.daad.de/deutschland/stipendium/datenbank/en/21148-scholarship-database/?detail=50026200"
+      },
+      {
+        "id": 230,
+        "finding": "master_studies_value",
+        "source_url": "https://www2.daad.de/deutschland/stipendium/datenbank/en/21148-scholarship-database/?detail=50026200"
+      },
+      {
+        "id": 230,
+        "finding": "master_duration",
+        "source_url": "https://www2.daad.de/deutschland/stipendium/datenbank/en/21148-scholarship-database/?detail=50026200"
+      },
+      {
+        "id": 230,
+        "finding": "master_eligibility",
+        "source_url": "https://www2.daad.de/deutschland/stipendium/datenbank/en/21148-scholarship-database/?detail=50026200"
+      },
+      {
+        "id": 230,
+        "finding": "epos_objective",
+        "source_url": "https://www2.daad.de/deutschland/stipendium/datenbank/en/21148-scholarship-database/?detail=50076777"
+      },
+      {
+        "id": 230,
+        "finding": "epos_value",
+        "source_url": "https://www2.daad.de/deutschland/stipendium/datenbank/en/21148-scholarship-database/?detail=50076777"
+      },
+      {
+        "id": 230,
+        "finding": "epos_duration",
+        "source_url": "https://www2.daad.de/deutschland/stipendium/datenbank/en/21148-scholarship-database/?detail=50076777"
+      },
+      {
+        "id": 230,
+        "finding": "epos_eligibility",
+        "source_url": "https://www2.daad.de/deutschland/stipendium/datenbank/en/21148-scholarship-database/?detail=50076777"
+      },
+      {
+        "id": 230,
+        "finding": "helmut_schmidt",
+        "source_url": "https://www2.daad.de/deutschland/stipendium/datenbank/en/21148-scholarship-database/?detail=50026397"
+      },
+      {
+        "id": 230,
+        "finding": "architecture_programme",
+        "source_url": "https://www2.daad.de/deutschland/stipendium/datenbank/en/21148-scholarship-database/?detail=57135744"
+      },
+      {
+        "id": 230,
+        "finding": "fine_art_programme",
+        "source_url": "https://www2.daad.de/deutschland/stipendium/datenbank/en/21148-scholarship-database/?detail=57135742"
+      },
+      {
+        "id": 230,
+        "finding": "music_programme",
+        "source_url": "https://www2.daad.de/deutschland/stipendium/datenbank/en/21148-scholarship-database/?detail=57135743"
+      },
+      {
+        "id": 230,
+        "finding": "performing_arts_programme",
+        "source_url": "https://www2.daad.de/deutschland/stipendium/datenbank/en/21148-scholarship-database/?detail=50109971"
+      },
+      {
+        "id": 230,
+        "finding": "research_grants",
+        "source_url": "https://www.daad-bangladesh.org/en/studying-in-germany/phd-studies/research-grants-in-germany-for-phd-scholars"
+      },
+      {
+        "id": 230,
+        "finding": "summer_courses",
+        "source_url": "https://www.daad-bangladesh.org/en/studying-in-germany/daad-scholarships"
+      },
+      {
+        "id": 230,
+        "finding": "tuition_not_covered",
+        "source_url": "https://www.daad.de/en/study-and-research-in-germany/scholarships/important-information-for-scholarship-applicants/"
+      },
+      {
+        "id": 230,
+        "finding": "language_support",
+        "source_url": "https://www2.daad.de/deutschland/stipendium/datenbank/en/21148-scholarship-database/?detail=50026200"
+      },
+      {
+        "id": 230,
+        "finding": "application_deadline",
+        "source_url": "https://www2.daad.de/deutschland/stipendium/datenbank/en/21148-scholarship-database/?detail=50026200"
+      },
+      {
+        "id": 230,
+        "finding": "selection_criteria",
+        "source_url": "https://www2.daad.de/deutschland/stipendium/datenbank/en/21148-scholarship-database/?detail=50026200"
+      },
+      {
+        "id": 236,
+        "finding": "past_exams",
+        "source_url": "https://www.studyinjapan.go.jp/en/planning/scholarships/mext-scholarships/examination.html"
+      },
+      {
+        "id": 236,
+        "finding": "jaasso_scholarships",
+        "source_url": "https://www.studyinjapan.go.jp/en/planning/scholarships/jasso-scholarships/"
+      },
+      {
+        "id": 236,
+        "finding": "mext_guidelines_2027",
+        "source_url": "https://www.mext.go.jp/a_menu/koutou/ryugaku/boshu/1415352_00008.htm"
+      },
+      {
+        "id": 236,
+        "finding": "ylp_grips",
+        "source_url": "https://www.grips.ac.jp/en/education/inter_programs/leader"
+      },
+      {
+        "id": 237,
+        "finding": "past_exams",
+        "source_url": "https://www.studyinjapan.go.jp/en/planning/scholarships/mext-scholarships/examination.html"
+      },
+      {
+        "id": 237,
+        "finding": "jaasso_scholarships",
+        "source_url": "https://www.studyinjapan.go.jp/en/planning/scholarships/jasso-scholarships/"
+      },
+      {
+        "id": 237,
+        "finding": "mext_guidelines_2027",
+        "source_url": "https://www.mext.go.jp/a_menu/koutou/ryugaku/boshu/1415352_00008.htm"
+      },
+      {
+        "id": 237,
+        "finding": "ylp_grips",
+        "source_url": "https://www.grips.ac.jp/en/education/inter_programs/leader"
+      },
+      {
+        "id": 239,
+        "finding": "past_exams",
+        "source_url": "https://www.studyinjapan.go.jp/en/planning/scholarships/mext-scholarships/examination.html"
+      },
+      {
+        "id": 239,
+        "finding": "jaasso_scholarships",
+        "source_url": "https://www.studyinjapan.go.jp/en/planning/scholarships/jasso-scholarships/"
+      },
+      {
+        "id": 239,
+        "finding": "mext_guidelines_2027",
+        "source_url": "https://www.mext.go.jp/a_menu/koutou/ryugaku/boshu/1415352_00008.htm"
+      },
+      {
+        "id": 239,
+        "finding": "ylp_grips",
+        "source_url": "https://www.grips.ac.jp/en/education/inter_programs/leader"
+      },
+      {
+        "id": 514,
+        "finding": "past_exams",
+        "source_url": "https://www.studyinjapan.go.jp/en/planning/scholarships/mext-scholarships/examination.html"
+      },
+      {
+        "id": 514,
+        "finding": "jaasso_scholarships",
+        "source_url": "https://www.studyinjapan.go.jp/en/planning/scholarships/jasso-scholarships/"
+      },
+      {
+        "id": 514,
+        "finding": "mext_guidelines_2027",
+        "source_url": "https://www.mext.go.jp/a_menu/koutou/ryugaku/boshu/1415352_00008.htm"
+      },
+      {
+        "id": 514,
+        "finding": "ylp_grips",
+        "source_url": "https://www.grips.ac.jp/en/education/inter_programs/leader"
+      },
+      {
+        "id": 515,
+        "finding": "past_exams",
+        "source_url": "https://www.studyinjapan.go.jp/en/planning/scholarships/mext-scholarships/examination.html"
+      },
+      {
+        "id": 515,
+        "finding": "jaasso_scholarships",
+        "source_url": "https://www.studyinjapan.go.jp/en/planning/scholarships/jasso-scholarships/"
+      },
+      {
+        "id": 515,
+        "finding": "mext_guidelines_2027",
+        "source_url": "https://www.mext.go.jp/a_menu/koutou/ryugaku/boshu/1415352_00008.htm"
+      },
+      {
+        "id": 515,
+        "finding": "ylp_grips",
+        "source_url": "https://www.grips.ac.jp/en/education/inter_programs/leader"
+      },
+      {
+        "id": 757,
+        "finding": "funding_source",
+        "source_url": "https://www2.daad.de/deutschland/stipendium/datenbank/en/21148-scholarship-database/?detail=50026200"
+      },
+      {
+        "id": 757,
+        "finding": "master_studies_value",
+        "source_url": "https://www2.daad.de/deutschland/stipendium/datenbank/en/21148-scholarship-database/?detail=50026200"
+      },
+      {
+        "id": 757,
+        "finding": "master_duration",
+        "source_url": "https://www2.daad.de/deutschland/stipendium/datenbank/en/21148-scholarship-database/?detail=50026200"
+      },
+      {
+        "id": 757,
+        "finding": "master_eligibility",
+        "source_url": "https://www2.daad.de/deutschland/stipendium/datenbank/en/21148-scholarship-database/?detail=50026200"
+      },
+      {
+        "id": 757,
+        "finding": "epos_objective",
+        "source_url": "https://www2.daad.de/deutschland/stipendium/datenbank/en/21148-scholarship-database/?detail=50076777"
+      },
+      {
+        "id": 757,
+        "finding": "epos_value",
+        "source_url": "https://www2.daad.de/deutschland/stipendium/datenbank/en/21148-scholarship-database/?detail=50076777"
+      },
+      {
+        "id": 757,
+        "finding": "epos_duration",
+        "source_url": "https://www2.daad.de/deutschland/stipendium/datenbank/en/21148-scholarship-database/?detail=50076777"
+      },
+      {
+        "id": 757,
+        "finding": "epos_eligibility",
+        "source_url": "https://www2.daad.de/deutschland/stipendium/datenbank/en/21148-scholarship-database/?detail=50076777"
+      },
+      {
+        "id": 757,
+        "finding": "helmut_schmidt",
+        "source_url": "https://www2.daad.de/deutschland/stipendium/datenbank/en/21148-scholarship-database/?detail=50026397"
+      },
+      {
+        "id": 757,
+        "finding": "architecture_programme",
+        "source_url": "https://www2.daad.de/deutschland/stipendium/datenbank/en/21148-scholarship-database/?detail=57135744"
+      },
+      {
+        "id": 757,
+        "finding": "fine_art_programme",
+        "source_url": "https://www2.daad.de/deutschland/stipendium/datenbank/en/21148-scholarship-database/?detail=57135742"
+      },
+      {
+        "id": 757,
+        "finding": "music_programme",
+        "source_url": "https://www2.daad.de/deutschland/stipendium/datenbank/en/21148-scholarship-database/?detail=57135743"
+      },
+      {
+        "id": 757,
+        "finding": "performing_arts_programme",
+        "source_url": "https://www2.daad.de/deutschland/stipendium/datenbank/en/21148-scholarship-database/?detail=50109971"
+      },
+      {
+        "id": 757,
+        "finding": "research_grants",
+        "source_url": "https://www.daad-bangladesh.org/en/studying-in-germany/phd-studies/research-grants-in-germany-for-phd-scholars"
+      },
+      {
+        "id": 757,
+        "finding": "summer_courses",
+        "source_url": "https://www.daad-bangladesh.org/en/studying-in-germany/daad-scholarships"
+      },
+      {
+        "id": 757,
+        "finding": "tuition_not_covered",
+        "source_url": "https://www.daad.de/en/study-and-research-in-germany/scholarships/important-information-for-scholarship-applicants/"
+      },
+      {
+        "id": 757,
+        "finding": "language_support",
+        "source_url": "https://www2.daad.de/deutschland/stipendium/datenbank/en/21148-scholarship-database/?detail=50026200"
+      },
+      {
+        "id": 757,
+        "finding": "application_deadline",
+        "source_url": "https://www2.daad.de/deutschland/stipendium/datenbank/en/21148-scholarship-database/?detail=50026200"
+      },
+      {
+        "id": 757,
+        "finding": "selection_criteria",
+        "source_url": "https://www2.daad.de/deutschland/stipendium/datenbank/en/21148-scholarship-database/?detail=50026200"
+      },
+      {
+        "id": 769,
+        "finding": "funding_source",
+        "source_url": "https://www2.daad.de/deutschland/stipendium/datenbank/en/21148-scholarship-database/?detail=50026200"
+      },
+      {
+        "id": 769,
+        "finding": "master_studies_value",
+        "source_url": "https://www2.daad.de/deutschland/stipendium/datenbank/en/21148-scholarship-database/?detail=50026200"
+      },
+      {
+        "id": 769,
+        "finding": "master_duration",
+        "source_url": "https://www2.daad.de/deutschland/stipendium/datenbank/en/21148-scholarship-database/?detail=50026200"
+      },
+      {
+        "id": 769,
+        "finding": "master_eligibility",
+        "source_url": "https://www2.daad.de/deutschland/stipendium/datenbank/en/21148-scholarship-database/?detail=50026200"
+      },
+      {
+        "id": 769,
+        "finding": "epos_objective",
+        "source_url": "https://www2.daad.de/deutschland/stipendium/datenbank/en/21148-scholarship-database/?detail=50076777"
+      },
+      {
+        "id": 769,
+        "finding": "epos_value",
+        "source_url": "https://www2.daad.de/deutschland/stipendium/datenbank/en/21148-scholarship-database/?detail=50076777"
+      },
+      {
+        "id": 769,
+        "finding": "epos_duration",
+        "source_url": "https://www2.daad.de/deutschland/stipendium/datenbank/en/21148-scholarship-database/?detail=50076777"
+      },
+      {
+        "id": 769,
+        "finding": "epos_eligibility",
+        "source_url": "https://www2.daad.de/deutschland/stipendium/datenbank/en/21148-scholarship-database/?detail=50076777"
+      },
+      {
+        "id": 769,
+        "finding": "helmut_schmidt",
+        "source_url": "https://www2.daad.de/deutschland/stipendium/datenbank/en/21148-scholarship-database/?detail=50026397"
+      },
+      {
+        "id": 769,
+        "finding": "architecture_programme",
+        "source_url": "https://www2.daad.de/deutschland/stipendium/datenbank/en/21148-scholarship-database/?detail=57135744"
+      },
+      {
+        "id": 769,
+        "finding": "fine_art_programme",
+        "source_url": "https://www2.daad.de/deutschland/stipendium/datenbank/en/21148-scholarship-database/?detail=57135742"
+      },
+      {
+        "id": 769,
+        "finding": "music_programme",
+        "source_url": "https://www2.daad.de/deutschland/stipendium/datenbank/en/21148-scholarship-database/?detail=57135743"
+      },
+      {
+        "id": 769,
+        "finding": "performing_arts_programme",
+        "source_url": "https://www2.daad.de/deutschland/stipendium/datenbank/en/21148-scholarship-database/?detail=50109971"
+      },
+      {
+        "id": 769,
+        "finding": "research_grants",
+        "source_url": "https://www.daad-bangladesh.org/en/studying-in-germany/phd-studies/research-grants-in-germany-for-phd-scholars"
+      },
+      {
+        "id": 769,
+        "finding": "summer_courses",
+        "source_url": "https://www.daad-bangladesh.org/en/studying-in-germany/daad-scholarships"
+      },
+      {
+        "id": 769,
+        "finding": "tuition_not_covered",
+        "source_url": "https://www.daad.de/en/study-and-research-in-germany/scholarships/important-information-for-scholarship-applicants/"
+      },
+      {
+        "id": 769,
+        "finding": "language_support",
+        "source_url": "https://www2.daad.de/deutschland/stipendium/datenbank/en/21148-scholarship-database/?detail=50026200"
+      },
+      {
+        "id": 769,
+        "finding": "application_deadline",
+        "source_url": "https://www2.daad.de/deutschland/stipendium/datenbank/en/21148-scholarship-database/?detail=50026200"
+      },
+      {
+        "id": 769,
+        "finding": "selection_criteria",
+        "source_url": "https://www2.daad.de/deutschland/stipendium/datenbank/en/21148-scholarship-database/?detail=50026200"
+      },
+      {
+        "id": 1239,
+        "finding": "funding_source",
+        "source_url": "https://www2.daad.de/deutschland/stipendium/datenbank/en/21148-scholarship-database/?detail=50026200"
+      },
+      {
+        "id": 1239,
+        "finding": "master_studies_value",
+        "source_url": "https://www2.daad.de/deutschland/stipendium/datenbank/en/21148-scholarship-database/?detail=50026200"
+      },
+      {
+        "id": 1239,
+        "finding": "master_duration",
+        "source_url": "https://www2.daad.de/deutschland/stipendium/datenbank/en/21148-scholarship-database/?detail=50026200"
+      },
+      {
+        "id": 1239,
+        "finding": "master_eligibility",
+        "source_url": "https://www2.daad.de/deutschland/stipendium/datenbank/en/21148-scholarship-database/?detail=50026200"
+      },
+      {
+        "id": 1239,
+        "finding": "epos_objective",
+        "source_url": "https://www2.daad.de/deutschland/stipendium/datenbank/en/21148-scholarship-database/?detail=50076777"
+      },
+      {
+        "id": 1239,
+        "finding": "epos_value",
+        "source_url": "https://www2.daad.de/deutschland/stipendium/datenbank/en/21148-scholarship-database/?detail=50076777"
+      },
+      {
+        "id": 1239,
+        "finding": "epos_duration",
+        "source_url": "https://www2.daad.de/deutschland/stipendium/datenbank/en/21148-scholarship-database/?detail=50076777"
+      },
+      {
+        "id": 1239,
+        "finding": "epos_eligibility",
+        "source_url": "https://www2.daad.de/deutschland/stipendium/datenbank/en/21148-scholarship-database/?detail=50076777"
+      },
+      {
+        "id": 1239,
+        "finding": "helmut_schmidt",
+        "source_url": "https://www2.daad.de/deutschland/stipendium/datenbank/en/21148-scholarship-database/?detail=50026397"
+      },
+      {
+        "id": 1239,
+        "finding": "architecture_programme",
+        "source_url": "https://www2.daad.de/deutschland/stipendium/datenbank/en/21148-scholarship-database/?detail=57135744"
+      },
+      {
+        "id": 1239,
+        "finding": "fine_art_programme",
+        "source_url": "https://www2.daad.de/deutschland/stipendium/datenbank/en/21148-scholarship-database/?detail=57135742"
+      },
+      {
+        "id": 1239,
+        "finding": "music_programme",
+        "source_url": "https://www2.daad.de/deutschland/stipendium/datenbank/en/21148-scholarship-database/?detail=57135743"
+      },
+      {
+        "id": 1239,
+        "finding": "performing_arts_programme",
+        "source_url": "https://www2.daad.de/deutschland/stipendium/datenbank/en/21148-scholarship-database/?detail=50109971"
+      },
+      {
+        "id": 1239,
+        "finding": "research_grants",
+        "source_url": "https://www.daad-bangladesh.org/en/studying-in-germany/phd-studies/research-grants-in-germany-for-phd-scholars"
+      },
+      {
+        "id": 1239,
+        "finding": "summer_courses",
+        "source_url": "https://www.daad-bangladesh.org/en/studying-in-germany/daad-scholarships"
+      },
+      {
+        "id": 1239,
+        "finding": "tuition_not_covered",
+        "source_url": "https://www.daad.de/en/study-and-research-in-germany/scholarships/important-information-for-scholarship-applicants/"
+      },
+      {
+        "id": 1239,
+        "finding": "language_support",
+        "source_url": "https://www2.daad.de/deutschland/stipendium/datenbank/en/21148-scholarship-database/?detail=50026200"
+      },
+      {
+        "id": 1239,
+        "finding": "application_deadline",
+        "source_url": "https://www2.daad.de/deutschland/stipendium/datenbank/en/21148-scholarship-database/?detail=50026200"
+      },
+      {
+        "id": 1239,
+        "finding": "selection_criteria",
+        "source_url": "https://www2.daad.de/deutschland/stipendium/datenbank/en/21148-scholarship-database/?detail=50026200"
+      },
+      {
+        "id": 1240,
+        "finding": "past_exams",
+        "source_url": "https://www.studyinjapan.go.jp/en/planning/scholarships/mext-scholarships/examination.html"
+      },
+      {
+        "id": 1240,
+        "finding": "jaasso_scholarships",
+        "source_url": "https://www.studyinjapan.go.jp/en/planning/scholarships/jasso-scholarships/"
+      },
+      {
+        "id": 1240,
+        "finding": "mext_guidelines_2027",
+        "source_url": "https://www.mext.go.jp/a_menu/koutou/ryugaku/boshu/1415352_00008.htm"
+      },
+      {
+        "id": 1240,
+        "finding": "ylp_grips",
+        "source_url": "https://www.grips.ac.jp/en/education/inter_programs/leader"
+      }
+    ],
+    "missing_value_field": [],
+    "missing_source_url_field": [],
+    "missing_verified_date_field": [],
+    "duplicate_finding_keys": []
+  }
+}

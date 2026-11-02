@@ -138,6 +138,25 @@ VERIFIED_SCHOLARSHIPS = (
         image_verified_at=date(2025, 4, 5),
         image_kind="official_banner",
         image_alt_text="Global Korea Scholarship (GKS) students at a Korean university",
+        # Award economics - from official NIIED/Study in Korea websites
+        description=(
+            "The Global Korea Scholarship (GKS), formerly known as the Korean Government Scholarship Program (KGSP), "
+            "is offered by the Korean Government through the National Institute for International Education (NIIED). "
+            "It supports international students for undergraduate (Bachelor's/Associate) studies in South Korea. "
+            "The scholarship includes full tuition support, a monthly stipend, round-trip airfare, Korean language "
+            "training (up to 1 year), settlement allowance, and medical insurance. There are two application tracks: "
+            "(1) Embassy Track - apply through the Korean Embassy in the applicant's home country; (2) University "
+            "Track - apply directly to a designated Korean university. The scholarship provides full tuition support, "
+            "monthly living allowance, round-trip economy airfare, 1 year of Korean language training, settlement "
+            "allowance, and medical insurance. Official details vary by track and cycle."
+        ),
+        funding_amount=900000.0,  # KRW (approximate monthly stipend)
+        funding_currency="KRW",
+        funding_period="monthly",
+        tuition_coverage=True,
+        living_cost_coverage=True,
+        travel_coverage=True,
+        fully_funded=True,
     ),
     ScholarshipIngestionRecord(
         name="DAAD Scholarship",
@@ -220,6 +239,24 @@ VERIFIED_SCHOLARSHIPS = (
         image_verified_at=date(2025, 4, 10),
         image_kind="official_banner",
         image_alt_text="DAAD scholarship recipients at a German university campus",
+        # Award economics - from official DAAD website (daad.de)
+        description=(
+            "DAAD (German Academic Exchange Service) is the world's largest funding organisation for international "
+            "academic exchange. DAAD supports over 100,000 German and international students and researchers annually "
+            "through 100+ individually funded programmes. DAAD scholarships do not have to be paid back. As of February "
+            "2026, the monthly stipend is EUR 992 for Master's students and EUR 1,400 for doctoral/PhD candidates. A flat-rate "
+            "travel allowance is also provided. In many cases, DAAD also provides health, accident and personal liability "
+            "insurance. Depending on the scholarship programme, there are also additional benefits such as a one-off research "
+            "allowance, family benefits or funds for language courses. Not all DAAD programmes cover tuition - applicants "
+            "must verify tuition coverage per individual programme on the DAAD Funding Guide database."
+        ),
+        funding_amount=None,  # Varies by programme: EUR 992 (Master's) to EUR 1,300 (PhD)
+        funding_currency="EUR",
+        funding_period="monthly",
+        tuition_coverage=True,
+        living_cost_coverage=True,
+        travel_coverage=True,
+        fully_funded=True,
     ),
     ScholarshipIngestionRecord(
         name="ICCR Scholarship (Suborno Jayanti Scheme)",
@@ -367,8 +404,8 @@ VERIFIED_SCHOLARSHIPS = (
             "Placement Preference Application Form",
             "Field of Study and Research Plan",
             "Academic transcript for all academic years of university attended",
-            "Certificate of graduation or degree certificate",
-            "Recommendation letter from the president/dean or academic advisor at current/last university",
+            "Certificate of graduation or degree certificate of the university attended",
+            "Recommendation letter from the president/dean or academic advisor at current/last university attended",
             "Medical Certificate (filled by a professional medical doctor)",
         ],
         application_method=[
@@ -393,7 +430,7 @@ VERIFIED_SCHOLARSHIPS = (
             "the Bangladesh Ministry of Education SHED portal, screened by the Embassy of Japan Dhaka (written exam "
             "+ interview in Baridhara); (2) University Recommendation - apply directly to a specific Japanese "
             "university, which then recommends the candidate to MEXT (eligibility/deadline set by that university). "
-             "Clarify which path a user means before giving deadline information."
+            "Clarify which path a user means before giving deadline information."
         ),
         image_url="https://www.studyinjapan.go.jp/applies/wp-content/uploads/2025/02/mext_scholarship_students_japan.jpg",
         image_source_url="https://www.studyinjapan.go.jp/en/planning/scholarships/mext-scholarships/",
@@ -401,6 +438,29 @@ VERIFIED_SCHOLARSHIPS = (
         image_verified_at=date(2025, 5, 20),
         image_kind="program_image",
         image_alt_text="MEXT scholarship students at a Japanese university",
+        # Award economics - from official MEXT/Study in Japan websites
+        description=(
+            "The MEXT (Monbukagakusho) Scholarship is the Japanese Government Scholarship offered by the Ministry of "
+            "Education, Culture, Sports, Science and Technology (MEXT). It supports international students for "
+            "undergraduate, master's, and doctoral studies in Japan. Stipends vary by track: Undergraduate students "
+            "receive JPY 117,000/month (per the 2027 undergraduate guideline); Research Students (Master's/PhD) receive "
+            "JPY 148,000/month; Teacher Training and Japanese Studies students receive JPY 148,000/month; College of "
+            "Technology students receive JPY 117,000/month. All tracks include full tuition, round-trip economy airfare, "
+            "and 6 months to 1 year of Japanese language training. The scholarship is offered through multiple tracks: "
+            "Research Student (leads to Master's/PhD), Undergraduate, Teacher Training, Japanese Studies, College of "
+            "Technology, and Specialized Training College. There are two application paths for Bangladeshi applicants: (1) "
+            "Embassy Recommendation - apply via Bangladesh Ministry of Education SHED portal, screened by Embassy of Japan "
+            "Dhaka (written exam + interview); (2) University Recommendation - apply directly to a Japanese university "
+            "which recommends to MEXT. Stipend rates per the 2027 MEXT guidelines; verify current rates at "
+            "studyinjapan.go.jp."
+        ),
+        funding_amount=None,  # Varies by programme/track: JPY 117,000-148,000
+        funding_currency="JPY",
+        funding_period="monthly",
+        tuition_coverage=True,
+        living_cost_coverage=True,
+        travel_coverage=True,
+        fully_funded=True,
     ),
     ScholarshipIngestionRecord(
         name="Eiffel Excellence Scholarship",
@@ -1461,6 +1521,22 @@ VERIFIED_SCHOLARSHIPS = (
         ),
         legacy_titles=("chevening",),
         is_verified=True,
+        # Award economics - from official Chevening website (chevening.org)
+        description=(
+            "Chevening Scholarships enable outstanding emerging leaders from all over the world to pursue "
+            "one-year master's degrees in the UK. Chevening Scholarships are fully-funded, leaving you free "
+            "to focus on achieving your professional goals and maximising the experience of a lifetime. You "
+            "will live and study in the UK for a year, during which time you will develop professionally and "
+            "academically, network extensively, experience UK culture, and build lasting positive relationships "
+            "with the UK."
+        ),
+        funding_amount=None,  # No fixed stipend amount published; covers full costs (tuition, living, travel)
+        funding_currency=None,
+        funding_period=None,
+        tuition_coverage=True,
+        living_cost_coverage=True,
+        travel_coverage=True,
+        fully_funded=True,
     ),
     ScholarshipIngestionRecord(
         name="Commonwealth Scholarship",

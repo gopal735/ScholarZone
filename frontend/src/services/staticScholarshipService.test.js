@@ -631,4 +631,211 @@ describe('staticScholarshipService', () => {
       expect(result.id).toBe(1)
     })
   })
+
+  describe('toScholarship funding_details mapping', () => {
+    const fundingDetailsSnapshot = {
+      meta: {
+        generated_at: '2026-10-09T12:41:37.970162Z',
+        source_database: 'scholarzone.db',
+        source_record_count: 1,
+        public_record_count: 1,
+        excluded: { closed: 0, archived: 0, quarantined: 0 },
+        excluded_union: 0,
+        schema_version: '1.0',
+        visibility_predicate: 'status != closed AND is_archived = false AND verification_status != quarantined',
+      },
+      stats: {
+        total: 1,
+        countries: 1,
+        open: 1,
+        closing_soon: 0,
+        upcoming: 0,
+        verified_active: 1,
+        fully_funded: 1,
+        with_image: 1,
+        with_official_source: 1,
+      },
+      scholarships: [
+        {
+          id: 1,
+          title: 'Test Scholarship with Funding Details',
+          name: 'Test Scholarship with Funding Details',
+          country: 'Germany',
+          degree: 'Master',
+          funding: 'Fully Funded',
+          deadline: '2027-12-31',
+          deadline_date: '2027-12-31',
+          deadline_precision: 'exact',
+          status: 'open',
+          verified: true,
+          last_verified_at: '2026-10-01',
+          verification_status: 'active',
+          official_source_url: 'https://example.com/1',
+          updated_at: '2026-10-01T00:00:00',
+          image_url: 'https://example.com/image1.jpg',
+          image_source_type: 'official_university',
+          image_kind: 'official_logo',
+          description: 'Test description',
+          funding_details: [
+            {
+              programme: 'DAAD Master Studies',
+              track_name: 'All Academic Disciplines',
+              amount: 992,
+              currency: 'EUR',
+              payment_period: 'month',
+              tuition_coverage: false,
+              living_cost_coverage: true,
+              accommodation_coverage: false,
+              travel_coverage: true,
+              insurance_coverage: true,
+              other_coverage: null,
+              duration: '10-24 months',
+              conditions: 'First degree completed within last 6 years',
+              official_source_url: 'https://www2.daad.de/detail/50026200',
+              verification_date: '2026-11-01',
+            },
+            {
+              programme: 'DAAD EPOS',
+              track_name: 'Development-Related Postgraduate',
+              amount: 992,
+              currency: 'EUR',
+              payment_period: 'month',
+              tuition_coverage: false,
+              living_cost_coverage: true,
+              accommodation_coverage: false,
+              travel_coverage: true,
+              insurance_coverage: true,
+              other_coverage: null,
+              duration: '12-24 months',
+              conditions: 'Professional experience required',
+              official_source_url: 'https://www2.daad.de/detail/50076777',
+              verification_date: '2026-11-01',
+            },
+          ],
+        },
+      ],
+    }
+
+    beforeEach(() => {
+      clearSnapshotCache()
+      const fetchMock = vi.fn(async () => ({ ok: true, json: async () => fundingDetailsSnapshot }))
+      vi.stubGlobal('fetch', fetchMock)
+    })
+
+    afterEach(() => {
+      vi.unstubAllGlobals()
+    })
+
+    it('maps funding_details array to scholarship object', async () => {
+      const result = await fetchScholarshipByIdFromSnapshot(1)
+      expect(result).not.toBeNull()
+      expect(result.funding_details).toBeDefined()
+      expect(Array.isArray(result.funding_details)).toBe(true)
+      expect(result.funding_details.length).toBe(2)
+    })
+
+    it('normalizes track fields correctly', async () => {
+      const result = await fetchScholarshipByIdFromSnapshot(1)
+      const track1 = result.funding_details[0]
+      expect(track1.programme).toBe('DAAD Master Studies')
+      expect(track1.track_name).toBe('All Academic Disciplines')
+      expect(track1.amount).toBe(992)
+      expect(track1.currency).toBe('EUR')
+      expect(track1.payment_period).toBe('month')
+      expect(track1.tuition_coverage).toBe(false)
+      expect(track1.living_cost_coverage).toBe(true)
+      expect(track1.accommodation_coverage).toBe(false)
+      expect(track1.travel_coverage).toBe(true)
+      expect(track1.insurance_coverage).toBe(true)
+      expect(track1.duration).toBe('10-24 months')
+      expect(track1.conditions).toBe('First degree completed within last 6 years')
+      expect(track1.official_source_url).toBe('https://www2.daad.de/detail/50026200')
+      // readDate formats as "1 Nov 2026"
+      expect(track1.verification_date).toBe('1 Nov 2026')
+    })
+
+    it('handles multiple tracks with different amounts', async () => {
+      const result = await fetchScholarshipByIdFromSnapshot(1)
+      const track1 = result.funding_details[0]
+      const track2 = result.funding_details[1]
+      expect(track1.programme).toBe('DAAD Master Studies')
+      expect(track2.programme).toBe('DAAD EPOS')
+      expect(track1.track_name).toBe('All Academic Disciplines')
+      expect(track2.track_name).toBe('Development-Related Postgraduate')
+    })
+
+    it('handles missing funding_details gracefully', async () => {
+      const noFundingSnapshot = {
+        ...fundingDetailsSnapshot,
+        scholarships: [
+          {
+            ...fundingDetailsSnapshot.scholarships[0],
+            id: 2,
+            funding_details: null,
+          },
+        ],
+      }
+      clearSnapshotCache()
+      const fetchMock = vi.fn(async () => ({ ok: true, json: async () => noFundingSnapshot }))
+      vi.stubGlobal('fetch', fetchMock)
+
+      const result = await fetchScholarshipByIdFromSnapshot(2)
+      expect(result.funding_details).toEqual([])
+    })
+
+    it('handles empty funding_details array', async () => {
+      const emptyFundingSnapshot = {
+        ...fundingDetailsSnapshot,
+        scholarships: [
+          {
+            ...fundingDetailsSnapshot.scholarships[0],
+            id: 3,
+            funding_details: [],
+          },
+        ],
+      }
+      clearSnapshotCache()
+      const fetchMock = vi.fn(async () => ({ ok: true, json: async () => emptyFundingSnapshot }))
+      vi.stubGlobal('fetch', fetchMock)
+
+      const result = await fetchScholarshipByIdFromSnapshot(3)
+      expect(result.funding_details).toEqual([])
+    })
+
+    it('filters out malformed track entries', async () => {
+      const malformedSnapshot = {
+        ...fundingDetailsSnapshot,
+        scholarships: [
+          {
+            ...fundingDetailsSnapshot.scholarships[0],
+            id: 4,
+            funding_details: [
+              { programme: 'Valid Track', amount: 100, currency: 'USD' },
+              null,
+              'not an object',
+              { track_name: 'No programme but has track', amount: 50 },
+              {},
+            ],
+          },
+        ],
+      }
+      clearSnapshotCache()
+      const fetchMock = vi.fn(async () => ({ ok: true, json: async () => malformedSnapshot }))
+      vi.stubGlobal('fetch', fetchMock)
+
+      const result = await fetchScholarshipByIdFromSnapshot(4)
+      // Should only include entries with meaningful content
+      expect(result.funding_details.length).toBe(2)
+      expect(result.funding_details[0].programme).toBe('Valid Track')
+      expect(result.funding_details[1].track_name).toBe('No programme but has track')
+    })
+
+    it('renders official_source_url as valid URL', async () => {
+      const result = await fetchScholarshipByIdFromSnapshot(1)
+      const track1 = result.funding_details[0]
+      expect(track1.official_source_url).toBe('https://www2.daad.de/detail/50026200')
+      // Verify it's a valid URL format
+      expect(() => new URL(track1.official_source_url)).not.toThrow()
+    })
+  })
 })

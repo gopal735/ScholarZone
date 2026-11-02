@@ -67,6 +67,23 @@ class ScholarshipIngestionRecord(BaseModel):
     program_type: str | None = Field(default=None, max_length=255)
     best_fit: str | None = None
     notes: str | None = None
+    description: str | None = None
+
+    # Academic eligibility
+    departments: list[str] | None = None
+    eligible_fields: list[str] | None = None
+    eligible_programmes: list[str] | None = None
+    academic_provenance: dict | None = None
+
+    # Award economics
+    funding_amount: float | None = None
+    funding_currency: str | None = None
+    funding_period: str | None = None
+    tuition_coverage: bool | None = None
+    living_cost_coverage: bool | None = None
+    travel_coverage: bool | None = None
+    fully_funded: bool | None = None
+
     image_url: str | None = None
     image_source_url: str | None = None
     image_source_type: str | None = None
@@ -284,6 +301,20 @@ class ScholarshipIngestionRecord(BaseModel):
             "program_type": "program_type",
             "best_fit": "best_fit",
             "notes": "notes",
+            "description": "description",
+            # Academic eligibility
+            "departments": "departments",
+            "eligible_fields": "eligible_fields",
+            "eligible_programmes": "eligible_programmes",
+            "academic_provenance": "academic_provenance",
+            # Award economics
+            "funding_amount": "funding_amount",
+            "funding_currency": "funding_currency",
+            "funding_period": "funding_period",
+            "tuition_coverage": "tuition_coverage",
+            "living_cost_coverage": "living_cost_coverage",
+            "travel_coverage": "travel_coverage",
+            "fully_funded": "fully_funded",
             "image_url": "image_url",
             "image_source_url": "image_source_url",
             "image_source_type": "image_source_type",
@@ -326,6 +357,13 @@ class ScholarshipIngestionRecord(BaseModel):
         # correct it.
         if fields.get("deadline_precision") is None:
             fields["deadline_precision"] = "varies"
+
+        # Compute fully_funded from funding_type ONLY when the field was omitted (not provided at all).
+        # Do not override an explicit None (which means "unknown/unconfirmed").
+        # Only "Fully Funded" (exact match) is classified as fully funded = True.
+        # All other funding labels (including ambiguous ones like "Partial to Full") remain None (unknown).
+        if "fully_funded" not in self.model_fields_set and fields.get("funding") is not None:
+            fields["fully_funded"] = fields["funding"] == "Fully Funded" or None
 
         # Persist legacy_id for backward URL compatibility (not in IMAGE_PERSISTENCE_FIELDS)
         if self.legacy_id is not None:

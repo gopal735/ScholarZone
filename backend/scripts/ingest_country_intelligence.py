@@ -195,11 +195,26 @@ PLACEHOLDER_MARKERS = (
 )
 
 
+FREE_TEXT_FIELDS = frozenset({
+    "notes",
+    "evidence_limitations",
+    "assumptions",
+    "raw_extract",
+})
+
+
 def _find_placeholders(node: Any, path: str = "") -> list[str]:
-    """Every placeholder-looking string in a document, with its path."""
+    """Every placeholder-looking string in a document, with its path.
+
+    Free-text research fields (notes, evidence_limitations, assumptions, raw_extract)
+    are excluded because they contain honest disclaimers and limitations written by
+    researchers, not placeholder values that would be published as figures.
+    """
     found: list[str] = []
     if isinstance(node, Mapping):
         for key, value in node.items():
+            if key in FREE_TEXT_FIELDS:
+                continue
             found.extend(_find_placeholders(value, f"{path}.{key}" if path else str(key)))
     elif isinstance(node, list):
         for index, value in enumerate(node):

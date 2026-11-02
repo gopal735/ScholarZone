@@ -14,6 +14,7 @@ import {
   readDate,
   readList,
   readText,
+  readFundingDetails,
   verificationLabel,
 } from '../utils/scholarshipDetail'
 import './ScholarshipDetailsPage.css'
@@ -437,7 +438,7 @@ export default function ScholarshipDetailsPage() {
     try { return new URL(applyUrl).hostname.replace(/^www\./, '') } catch { return null }
   })()
 
-  const description = readText(scholarship.description)
+const description = readText(scholarship.description)
   const quickFacts = buildQuickFacts(scholarship)
   const benefits = readList(scholarship.benefits)
   const coverage = readList(scholarship.coverage)
@@ -447,12 +448,45 @@ export default function ScholarshipDetailsPage() {
   const documents = readList(scholarship.documents) || readList(scholarship.required_documents)
   const applicationMethod = readList(scholarship.application_method)
   const englishRequirement = readText(scholarship.english_requirement)
-const bestFit = readText(scholarship.best_fit)
+  const bestFit = readText(scholarship.best_fit)
   const selectionNotes = readText(scholarship.selection_notes)
   const notes = readText(scholarship.notes)
   const officialLinks = buildOfficialLinks(scholarship)
   const verification = buildVerificationRecord(scholarship)
   const verificationState = verificationLabel(scholarship.verification_status)
+
+  // Academic eligibility fields
+  const departments = readList(scholarship.departments)
+  const eligibleFields = readList(scholarship.eligible_fields)
+  const eligibleProgrammes = readList(scholarship.eligible_programmes)
+  const academicProvenance = scholarship.academic_provenance || {}
+
+  // Funding & coverage fields
+  const fundingAmount = scholarship.funding_amount
+  const fundingCurrency = scholarship.funding_currency
+  const fundingPeriod = scholarship.funding_period
+  const fullyFunded = scholarship.fully_funded
+  const tuitionCoverage = scholarship.tuition_coverage
+  const livingCostCoverage = scholarship.living_cost_coverage
+  const travelCoverage = scholarship.travel_coverage
+  const duration = readText(scholarship.duration)
+  const applicationPeriod = readText(scholarship.application_period)
+  const programType = readText(scholarship.program_type)
+
+  // Structured funding details (track-specific)
+  const fundingDetails = readFundingDetails(scholarship.funding_details)
+
+  // Compute whether to show funding section
+  const showFunding = (
+    (fundingAmount !== null && fundingAmount !== undefined) ||
+    fundingCurrency || fundingPeriod ||
+    fullyFunded !== null && fullyFunded !== undefined ||
+    tuitionCoverage !== null && tuitionCoverage !== undefined ||
+    livingCostCoverage !== null && livingCostCoverage !== undefined ||
+    travelCoverage !== null && travelCoverage !== undefined ||
+    duration || applicationPeriod || programType ||
+    fundingDetails.length > 0
+  )
 
   return (
     <article className="sz-detail">
@@ -592,7 +626,177 @@ const bestFit = readText(scholarship.best_fit)
         <KeyValueGrid entries={quickFacts} />
       </DetailBlock>
 
-      {/* 03 — ABOUT */}
+      {/* 02b — FUNDING & COVERAGE */}
+      {showFunding && (
+        <DetailBlock
+          id="funding"
+          index="02"
+          eyebrow="Award economics"
+          title="Funding & coverage"
+          className="sz-detail__block--prose"
+        >
+          <dl className="sz-detail__funding-facts">
+            {fullyFunded !== null && fullyFunded !== undefined && (
+              <>
+                <dt>Fully funded</dt>
+                <dd>{fullyFunded === true ? 'Yes' : fullyFunded === false ? 'No' : 'Not confirmed'}</dd>
+              </>
+            )}
+            {(fundingAmount !== null && fundingAmount !== undefined) && (
+              <>
+                <dt>Amount</dt>
+                <dd>
+                  {Number(fundingAmount).toLocaleString()} {fundingCurrency || ''}
+                  {fundingPeriod ? ` / ${fundingPeriod}` : ''}
+                </dd>
+              </>
+            )}
+            {tuitionCoverage !== null && tuitionCoverage !== undefined && (
+              <>
+                <dt>Tuition</dt>
+                <dd>{tuitionCoverage ? 'Covered' : 'Not covered'}</dd>
+              </>
+            )}
+            {livingCostCoverage !== null && livingCostCoverage !== undefined && (
+              <>
+                <dt>Living costs</dt>
+                <dd>{livingCostCoverage ? 'Covered' : 'Not covered'}</dd>
+              </>
+            )}
+            {travelCoverage !== null && travelCoverage !== undefined && (
+              <>
+                <dt>Travel</dt>
+                <dd>{travelCoverage ? 'Covered' : 'Not covered'}</dd>
+              </>
+            )}
+{duration && (
+                <>
+                  <dt>Duration</dt>
+                  <dd>{duration}</dd>
+                </>
+              )}
+              {applicationPeriod && (
+                <>
+                  <dt>Application period</dt>
+                  <dd>{applicationPeriod}</dd>
+                </>
+              )}
+              {programType && (
+                <>
+                  <dt>Programme type</dt>
+                  <dd>{programType}</dd>
+                </>
+              )}
+            </dl>
+</DetailBlock>
+        )}
+
+        {/* 02c — FUNDING DETAILS BY TRACK (structured funding_details) */}
+        {fundingDetails.length > 0 && (
+          <DetailBlock
+            id="funding-details"
+            index="02b"
+            eyebrow="Award economics"
+            title="Funding details by track"
+            className="sz-detail__block--prose"
+          >
+            {fundingDetails.map((track, trackIdx) => (
+              <div key={trackIdx} className="sz-detail__funding-track">
+                {(track.programme || track.track_name) && (
+                  <h4 className="sz-detail__funding-track-title">
+                    {track.programme || ''}{track.programme && track.track_name ? ' — ' : ''}{track.track_name || ''}
+                  </h4>
+                )}
+                <dl className="sz-detail__funding-facts">
+                  {track.amount != null && track.currency && (
+                    <>
+                      <dt>Amount</dt>
+                      <dd>
+                        {Number(track.amount).toLocaleString()} {track.currency}
+                        {track.payment_period ? ` / ${track.payment_period}` : ''}
+                      </dd>
+                    </>
+                  )}
+                  {track.amount != null && !track.currency && (
+                    <>
+                      <dt>Amount</dt>
+                      <dd>
+                        {Number(track.amount).toLocaleString()}
+                        {track.payment_period ? ` / ${track.payment_period}` : ''}
+                      </dd>
+                    </>
+                  )}
+                  {track.tuition_coverage != null && (
+                    <>
+                      <dt>Tuition</dt>
+                      <dd>{track.tuition_coverage ? 'Covered' : 'Not covered'}</dd>
+                    </>
+                  )}
+                  {track.living_cost_coverage != null && (
+                    <>
+                      <dt>Living costs</dt>
+                      <dd>{track.living_cost_coverage ? 'Covered' : 'Not covered'}</dd>
+                    </>
+                  )}
+                  {track.accommodation_coverage != null && (
+                    <>
+                      <dt>Accommodation</dt>
+                      <dd>{track.accommodation_coverage ? 'Covered' : 'Not covered'}</dd>
+                    </>
+                  )}
+                  {track.travel_coverage != null && (
+                    <>
+                      <dt>Travel</dt>
+                      <dd>{track.travel_coverage ? 'Covered' : 'Not covered'}</dd>
+                    </>
+                  )}
+                  {track.insurance_coverage != null && (
+                    <>
+                      <dt>Insurance</dt>
+                      <dd>{track.insurance_coverage ? 'Covered' : 'Not covered'}</dd>
+                    </>
+                  )}
+                  {track.other_coverage != null && (
+                    <>
+                      <dt>Other benefits</dt>
+                      <dd>{track.other_coverage ? 'Covered' : 'Not covered'}</dd>
+                    </>
+                  )}
+                  {track.duration && (
+                    <>
+                      <dt>Duration</dt>
+                      <dd>{track.duration}</dd>
+                    </>
+                  )}
+                  {track.conditions && (
+                    <>
+                      <dt>Conditions</dt>
+                      <dd>{track.conditions}</dd>
+                    </>
+                  )}
+                  {track.official_source_url && (
+                    <>
+                      <dt>Official source</dt>
+                      <dd>
+                        <a href={track.official_source_url} target="_blank" rel="noreferrer" className="sz-detail__text-link">
+                          View source <span aria-hidden="true">↗</span>
+                        </a>
+                      </dd>
+                    </>
+                  )}
+                  {track.verification_date && (
+                    <>
+                      <dt>Verified</dt>
+                      <dd>{track.verification_date}</dd>
+                    </>
+                  )}
+                </dl>
+              </div>
+            ))}
+          </DetailBlock>
+        )}
+
+        {/* 03 — ABOUT */}
       <DetailBlock
         id="about"
         index="02"
@@ -636,6 +840,56 @@ const bestFit = readText(scholarship.best_fit)
             <p className="sz-detail__lead">{eligibilitySummary}</p>
           ) : null}
           <DetailList items={eligibility} />
+        </DetailBlock>
+      )}
+
+      {/* 05b — ACADEMIC ELIGIBILITY (Departments, Fields, Programmes) */}
+      {(departments.length > 0 || eligibleFields.length > 0 || eligibleProgrammes.length > 0) && (
+        <DetailBlock
+          id="academic-eligibility"
+          index="03b"
+          eyebrow="Academic scope"
+          title="Departments & fields"
+          className="sz-detail__block--prose"
+        >
+          {departments.length > 0 && (
+            <div className="sz-detail__academic-section">
+              <h4 className="sz-detail__academic-subtitle">Departments</h4>
+              <DetailList items={departments} />
+              {academicProvenance.departments === 'inferred' && (
+                <p className="sz-detail__prose sz-detail__prose--muted">
+                  Departments inferred from programme structure; confirm with the awarding body.
+                </p>
+              )}
+            </div>
+          )}
+          {eligibleFields.length > 0 && (
+            <div className="sz-detail__academic-section">
+              <h4 className="sz-detail__academic-subtitle">Eligible fields of study</h4>
+              <DetailList items={eligibleFields} />
+              {academicProvenance.eligible_fields === 'inferred' && (
+                <p className="sz-detail__prose sz-detail__prose--muted">
+                  Fields inferred from programme description; confirm with the awarding body.
+                </p>
+              )}
+            </div>
+          )}
+          {eligibleProgrammes.length > 0 && (
+            <div className="sz-detail__academic-section">
+              <h4 className="sz-detail__academic-subtitle">Specific programmes</h4>
+              <DetailList items={eligibleProgrammes} />
+              {academicProvenance.eligible_programmes === 'inferred' && (
+                <p className="sz-detail__prose sz-detail__prose--muted">
+                  Programme names inferred from official sources; confirm exact eligibility.
+                </p>
+              )}
+            </div>
+          )}
+          {(departments.length === 0 && eligibleFields.length === 0 && eligibleProgrammes.length === 0) && (
+            <p className="sz-detail__prose sz-detail__prose--muted">
+              No specific department or field restrictions confirmed from official sources.
+            </p>
+          )}
         </DetailBlock>
       )}
 

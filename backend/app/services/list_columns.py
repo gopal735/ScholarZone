@@ -49,6 +49,9 @@ LIST_COLUMNS: tuple[str, ...] = (
     "requirements",
     "documents",
     "application_method",
+    "departments",
+    "eligible_fields",
+    "eligible_programmes",
 )
 
 

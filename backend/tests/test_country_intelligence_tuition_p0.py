@@ -651,25 +651,21 @@ class TestBachelorPathShape:
         assert node["source_ids"] == ["xx-legacy"], "lineage was lost in the re-shape"
         assert node["note"].startswith("a reviewed hand-curated figure")
 
-    #: Countries whose canonical file ingestion currently refuses to regenerate, so
-    #: the shared merge fix cannot reach them. This is **not** the P0-B defect - the
-    #: malformed path in these files was produced by that defect and will be repaired
-    #: the moment ingestion can rebuild the file. The blocker is separate and
-    #: pre-existing: ``_find_placeholders`` scans every string in a raw artifact,
-    #: including free-text prose, and a researcher's honest *disclaimer* containing
-    #: the word "placeholder" rejects the entire country before anything is written.
+    #: Countries whose canonical file ingestion previously refused to regenerate.
+    #: The blocker was a pre-existing defect in _find_placeholders that scanned
+    #: every string in a raw artifact, including free-text prose, and a researcher's
+    #: honest disclaimer containing the word "placeholder" rejected the entire country.
     #:
-    #: US/030_net_monthly_income.json says "the underlying gross wage here is a
+    #: US/030_net_monthly_income.json said "the underlying gross wage here is a
     #: placeholder: no BLS graduate-specific wage was established in this pass". Its
     #: four claim values are real and derive from a verbatim IRS Publication 15-T
-    #: extract. The guard cannot tell a disclosure from a placeholder, so the country
-    #: is dropped and its file keeps the shape the merge bug left behind.
+    #: extract. The guard could not tell a disclosure from a placeholder.
     #:
-    #: Left as a named set rather than worked around: hand-editing US.json would
-    #: violate the rule that generated canonical JSON is never edited to paper over a
-    #: pipeline defect, and narrowing the placeholder guard is a different contract
-    #: that was explicitly ruled out of scope for this change.
-    UNREBUILDABLE_COUNTRIES = frozenset({"US"})
+    #: This is now fixed by excluding free-text research fields (notes,
+    #: evidence_limitations, assumptions, raw_extract) from placeholder scanning.
+    #: The set is kept empty as documentation that no countries are currently
+    #: unrebuildable.
+    UNREBUILDABLE_COUNTRIES = frozenset()
 
     def _doubled_bachelor_paths(self) -> list[str]:
         corpus = BACKEND / "config" / "country_intelligence"
@@ -692,20 +688,16 @@ class TestBachelorPathShape:
         ]
         assert not offenders, "doubled bachelor paths remain: " + "; ".join(offenders)
 
-    @pytest.mark.xfail(
-        strict=True,
-        reason=(
-            "P0-B is fixed at the shared contract and repairs 12 of the 13 affected "
-            "countries. US is the 13th and cannot be rebuilt yet: a pre-existing, "
-            "independently-diagnosed defect in _find_placeholders rejects the whole "
-            "country because a research note contains the word 'placeholder' in a "
-            "disclaimer. strict=True so that fixing the blocker turns this into a "
-            "hard failure that forces the marker to be removed, rather than leaving a "
-            "malformed path in the corpus unnoticed."
-        ),
-    )
     def test_the_shipped_corpus_has_no_doubled_bachelor_path(self):
-        """The full Phase 8 invariant across every country in the corpus."""
+        """The full Phase 8 invariant across every country in the corpus.
+
+        P0-B was fixed at the shared contract and repairs 12 of the 13 affected
+        countries. US was the 13th and could not be rebuilt due to a pre-existing
+        defect in _find_placeholders that rejected the whole country because a
+        research note contained the word 'placeholder' in a disclaimer. That defect
+        is now fixed by excluding free-text research fields (notes, evidence_limitations,
+        assumptions, raw_extract) from placeholder scanning.
+        """
         offenders = self._doubled_bachelor_paths()
         assert not offenders, "doubled bachelor paths remain: " + "; ".join(offenders)
 

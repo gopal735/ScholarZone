@@ -266,6 +266,38 @@ export function imageFitMode(imageKind) {
     : 'cover'
 }
 
+/** Normalises a nullable array of funding detail objects. */
+export function readFundingDetails(value) {
+  if (!Array.isArray(value)) return []
+  const out = []
+  for (const entry of value) {
+    if (!entry || typeof entry !== 'object') continue
+    // Normalize each track
+    const track = {
+      programme: readText(entry.programme) || readText(entry.program_name) || readText(entry.track),
+      track_name: readText(entry.track_name) || readText(entry.name) || readText(entry.title),
+      amount: entry.amount != null ? entry.amount : null,
+      currency: readText(entry.currency),
+      payment_period: readText(entry.payment_period) || readText(entry.period),
+      tuition_coverage: entry.tuition_coverage != null ? entry.tuition_coverage : null,
+      living_cost_coverage: entry.living_cost_coverage != null ? entry.living_cost_coverage : null,
+      accommodation_coverage: entry.accommodation_coverage != null ? entry.accommodation_coverage : null,
+      travel_coverage: entry.travel_coverage != null ? entry.travel_coverage : null,
+      insurance_coverage: entry.insurance_coverage != null ? entry.insurance_coverage : null,
+      other_coverage: entry.other_coverage != null ? entry.other_coverage : null,
+      duration: readText(entry.duration),
+      conditions: readText(entry.conditions),
+      official_source_url: readUrl(entry.official_source_url) || readUrl(entry.source_url),
+      verification_date: readDate(entry.verification_date),
+    }
+    // Only include if there's meaningful content
+    if (track.programme || track.track_name || track.amount != null || track.currency || track.tuition_coverage != null) {
+      out.push(track)
+    }
+  }
+  return out
+}
+
 export function detailImage(scholarship) {
   const url = readUrl(scholarship?.image_url)
   if (!url) return null

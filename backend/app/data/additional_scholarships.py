@@ -5505,8 +5505,1425 @@ GREECE_SCHOLARSHIPS = (
     ),
 )
 # =============================================================================
+# GAP-FILL ADDITIONS (Audit-Corrected)
+# =============================================================================
+
+# --- TÜRKİYE SCHOLARSHIPS (Split into distinct programmes) ---
+
+TURKIYE_FULLTIME_SCHOLARSHIPS = (
+    ScholarshipIngestionRecord(
+        name="Türkiye Scholarships — Full-Time Degree Programmes",
+        country="Turkey",
+        degree_levels="Associate, Bachelor's, Master's, PhD, Art",
+        funding_type="Fully Funded",
+        deadline="10 January – 20 February annually",
+        deadline_date=None,
+        deadline_precision="annual",
+        eligibility_summary=(
+            "Citizens of all countries except Turkey. Minimum academic achievement: 70% for Associate/Bachelor's, "
+            "75% for Master's, 90% for Health Sciences (Medicine/Dentistry/Pharmacy — NOT covered). "
+            "Age limits: Under 21 (Associate/Bachelor's), under 30 (Master's), under 35 (PhD). "
+            "Graduates or those graduating by August. Not currently enrolled in Turkish universities at same level. "
+            "Apply via Türkiye Scholarships Application System (TBBS)."
+        ),
+        coverage=[
+            "Full tuition fee waiver",
+            "Monthly stipend: ~6,500 TRY (Undergraduate), ~9,500 TRY (Master's), ~13,000 TRY (PhD)",
+            "Free accommodation in state university dormitories",
+            "Health insurance (General Health Insurance - GSS)",
+            "Turkish language course (1 year)",
+            "One-time round-trip flight ticket",
+            "Residence permit exemption",
+        ],
+        official_source_url="https://turkiyeburslari.gov.tr/fulltimeprograms",
+        official_source="Presidency for Turks Abroad and Related Communities (YTB)",
+        is_verified=True,
+        best_fit="International students seeking fully funded full-time degrees in Turkey (Jan–Feb annual cycle)",
+    ),
+)
+
+TURKIYE_SHORTTERM_SCHOLARSHIPS = (
+    ScholarshipIngestionRecord(
+        name="Türkiye Scholarships — Short-Term Programmes (Success & Research)",
+        country="Turkey",
+        degree_levels="Bachelor's, Master's, PhD, PhD holders, Postdocs, Researchers",
+        funding_type="Partial (Stipend only)",
+        deadline="Success: Oct–Nov annually (results Dec); Research: rolling year-round (quarterly assessment)",
+        deadline_date=None,
+        deadline_precision="varies",
+        eligibility_summary=(
+            "TWO DISTINCT PROGRAMMES ON SAME PORTAL: "
+            "1) SUCCESS SCHOLARSHIP: Currently enrolled international students at Turkish universities (self-funded) "
+            "with outstanding GPA. Not for new applicants. Monthly stipend only: ~3,500 TRY (UG), ~5,000 TRY (Master's), "
+            "~6,500 TRY (PhD). Duration: 1 academic year. Apply Oct–Nov via TBBS. "
+            "2) RESEARCH SCHOLARSHIP: PhD holders/candidates at dissertation stage, researchers, academics seeking "
+            "cooperation with Turkish universities. Monthly stipend: ~37,000 TRY. Duration: 3–12 months. "
+            "Rolling applications year-round; assessed quarterly. Apply via TBBS. "
+            "NEITHER programme covers tuition, accommodation, flight, or health insurance."
+        ),
+        coverage=[
+            "Success: Monthly stipend only (~3,500–6,500 TRY by level); 1 year renewable",
+            "Research: Monthly stipend ~37,000 TRY; 3–12 months",
+            "No tuition waiver, no accommodation, no flight ticket, no health insurance for either programme",
+        ],
+        official_source_url="https://turkiyeburslari.gov.tr/shorttermprograms",
+        official_source="Presidency for Turks Abroad and Related Communities (YTB)",
+        is_verified=True,
+        best_fit="Currently enrolled students in Turkey (Success) OR PhD holders/researchers for short stays (Research)",
+    ),
+)
+
+# --- STIPENDIUM HUNGARICUM (Corrected: recurring, next call not yet announced) ---
+
+STIPENDIUM_HUNGARICUM_CORRECTED = (
+    ScholarshipIngestionRecord(
+        name="Stipendium Hungaricum Scholarship Programme",
+        country="Hungary",
+        degree_levels="Bachelor's, Master's, One-tier Master's, PhD, Postdoctoral, Non-degree",
+        funding_type="Fully Funded",
+        deadline="Annual call (typically January–February for September intake); 2027/28 call NOT YET ANNOUNCED",
+        deadline_date=None,
+        deadline_precision="varies",
+        eligibility_summary=(
+            "Citizens of partner countries (including Bangladesh) applying through the Sending Partner in their home country. "
+            "Must not have Hungarian citizenship. Age and academic requirements vary by program level. "
+            "Apply via the Stipendium Hungaricum online system through the designated Sending Partner. "
+            "CURRENT STATUS: 2026/27 cycle open; 2027/28 cycle not yet announced (as of 2026-10-30)."
+        ),
+        coverage=[
+            "Full tuition fee waiver",
+            "Monthly stipend: HUF 140,000 (Bachelor's/Master's), HUF 180,000 (PhD first phase), HUF 250,000 (PhD second phase)",
+            "Free accommodation in university dormitory OR HUF 40,000/month housing contribution",
+            "Health insurance coverage",
+            "No flight ticket provided",
+        ],
+        official_source_url="https://stipendiumhungaricum.hu/apply_call/",
+        official_source="Tempus Public Foundation (operated by Hungarian Government)",
+        is_verified=True,
+        best_fit="International students including Bangladeshis for fully funded degrees in Hungary (recurring annual)",
+        notes="Recurring programme; next application cycle (2027/28) not yet officially announced. Monitor stipendiumhungaricum.hu for updates.",
+    ),
+)
+
+# --- CZECH GOVERNMENT SCHOLARSHIPS (Corrected: 2027/28 call EXPIRED Sep 30 2026) ---
+
+CZECH_GOV_SCHOLARSHIPS_CORRECTED = (
+    ScholarshipIngestionRecord(
+        name="Czech Government Scholarships — Developing Countries (2027/28 Call EXPIRED)",
+        country="Czech Republic",
+        degree_levels="Master's (Czech/English), PhD (English), Research stays",
+        funding_type="Fully Funded",
+        deadline="CLOSED — 30 September 2026 (23:59 CET) for 2027/28 academic year",
+        deadline_date=date(2026, 9, 30),
+        deadline_precision="exact",
+        eligibility_summary=(
+            "Citizens of eligible developing countries (including Bangladesh) with bilateral agreements. "
+            "Must apply through the Czech Embassy in country of origin. "
+            "Programs for full-degree studies or research stays at Czech public universities. "
+            "Czech language preparatory course included for Czech-medium programs. "
+            "CURRENT STATUS: 2027/28 application period was 21 Aug – 30 Sep 2026 (CLOSED). Next call expected Aug–Sep 2027 for 2028/29."
+        ),
+        coverage=[
+            "Full tuition fee waiver",
+            "Monthly stipend: ~16,000–20,000 CZK (varies by level and program)",
+            "Czech language preparatory course (1 year for Czech-medium)",
+            "Health insurance",
+            "One-time round-trip airfare",
+            "Accommodation in university dormitories (subject to availability)",
+        ],
+        official_source_url="https://msmt.gov.cz/en/scholarships/government-scholarships-developing-countries",
+        official_source="Ministry of Education, Youth and Sports (MEYS) / DZS",
+        is_verified=True,
+        best_fit="Developing country nationals for degree studies in Czech Republic (2027/28 call expired)",
+        notes="2027/28 call closed 30 Sep 2026. Next call expected Aug–Sep 2027. Marked as closed/expired in catalogue.",
+    ),
+)
+
+# --- SLOVAKIA NSP (Corrected: mobility-only, Oct 31 2026 deadline) ---
+
+SLOVAKIA_NSP_CORRECTED = (
+    ScholarshipIngestionRecord(
+        name="National Scholarship Programme of the Slovak Republic (NSP) — Mobility Only",
+        country="Slovakia",
+        degree_levels="Master's (2nd level only), PhD, University Teachers, Researchers, Artists",
+        funding_type="Fully Funded",
+        deadline="31 October 2026 (16:00 CET) — winter semester 2026/27 mobility stays",
+        deadline_date=None,
+        deadline_precision="exact",
+        eligibility_summary=(
+            "MOBILITY ONLY — NOT for full-degree studies. "
+            "A) Master's students: enrolled at university outside Slovakia, completed ≥2.5 years, accepted by Slovak HEI for study mobility (1–2 semesters). "
+            "B) PhD students: enrolled in PhD outside Slovakia, accepted by Slovak HEI/research institute for research/artistic mobility (1–10 months). "
+            "C) University teachers/researchers/artists: invited by eligible Slovak institution. "
+            "Citizens of any country except Slovakia. Apply via online NSP system (www.scholarships.sk)."
+        ),
+        coverage=[
+            "Students: €400/month (Master's), €500/month (PhD)",
+            "University teachers/researchers/artists: €580–1,000/month based on level",
+            "Travel grant: €250–1,000 based on country of origin",
+            "Health insurance (for scholarship holders)",
+            "Tuition fee waiver at host institution",
+        ],
+        official_source_url="https://www.scholarships.sk/en/main/programme-terms-and-conditions/foreign-applicants",
+        official_source="SAIA / Ministry of Education, Research, Development and Youth of the Slovak Republic",
+        is_verified=True,
+        best_fit="Master's/PhD students and researchers for academic MOBILITY stays in Slovakia (not full degrees)",
+        notes="Next deadline: 31 Oct 2026 for winter semester. Spring semester deadline: 30 Apr 2027. NOT for full-degree enrolment.",
+    ),
+)
+
+# --- CHINA CSC (Corrected: Bangladesh bilateral programme exists, current call not publicly confirmed) ---
+
+CHINA_CSC_CORRECTED = (
+    ScholarshipIngestionRecord(
+        name="Chinese Government Scholarship (CSC) — Campus China",
+        country="China",
+        degree_levels="Bachelor's, Master's, PhD, General Scholar, Senior Scholar, Chinese Language",
+        funding_type="Fully Funded",
+        deadline="Annual cycle (typically January–April for September intake; varies by programme type)",
+        deadline_date=None,
+        deadline_precision="varies",
+        eligibility_summary=(
+            "Non-Chinese citizens in good health. Age limits: <25 (Bachelor's), <35 (Master's), <40 (PhD), <45 (General/Senior Scholar). "
+            "Three types: Type A (Bilateral Program), Type B (University Program), Type C (Designated Programs). "
+            "Bangladesh IS eligible under Type A Bilateral Programme (apply via Chinese Embassy in Dhaka). "
+            "CURRENT STATUS: 2026/27 bilateral call for Bangladesh not yet publicly confirmed on campuschina.org; monitor Chinese Embassy Dhaka announcements. "
+            "University-specific (Type B) calls vary by institution."
+        ),
+        coverage=[
+            "Full tuition fee waiver",
+            "Monthly stipend: CNY 2,500 (Bachelor's), CNY 3,000 (Master's), CNY 3,500 (PhD), CNY 1,700 (Language/General)",
+            "Comprehensive medical insurance (CNY 800/year)",
+            "On-campus accommodation (or off-campus subsidy)",
+            "One-time settlement allowance (CNY 1,500 for new students)",
+        ],
+        official_source_url="https://www.campuschina.org/",
+        official_source="China Scholarship Council (CSC) / Ministry of Education",
+        is_verified=True,
+        best_fit="International students including Bangladeshis for fully funded degrees in China (Bangladesh bilateral: monitor Embassy)",
+        notes="Bangladesh eligible under Type A Bilateral Programme. Current call status for Bangladesh not publicly confirmed on campuschina.org; verify with Chinese Embassy in Dhaka.",
+    ),
+)
+
+# --- ERNST MACH GRANT (Corrected: research-only, not full-degree, Dec 1 2026 deadline) ---
+
+ERNST_MACH_GRANT_CORRECTED = (
+    ScholarshipIngestionRecord(
+        name="Ernst Mach Grant — Worldwide (Research Stays Only)",
+        country="Austria",
+        degree_levels="Postgraduates, PhD students, PhD holders, Postdocs (RESEARCH STAYS ONLY)",
+        funding_type="Partial (Supplementary grant for research stays)",
+        deadline="1 December 2026 (for stays starting 2027); calls typically Mar, Jul, Nov",
+        deadline_date=None,
+        deadline_precision="varies",
+        eligibility_summary=(
+            "Citizens of all countries except Austria. Fields: Natural Sciences, Technical Sciences, Human Medicine, "
+            "Health Sciences, Agricultural Sciences, Social Sciences, Humanities, Arts. "
+            "NOT for full-degree enrolment — only 1–9 month research stays at Austrian institutions. "
+            "Must not have studied/researched in Austria >6 months in last 5 years. "
+            "Apply via OeAD online system (scholarships.at). Next deadline: 1 Dec 2026."
+        ),
+        coverage=[
+            "Monthly grant rate: €1,300",
+            "Assistance with accommodation and health insurance (costs borne by scholar)",
+            "Tuition fee waiver at public universities (subject to rectorate approval, for research stays only)",
+            "OeAD student housing available (limited, apply separately)",
+            "Travel allowance for non-European developing countries (up to €1,200)",
+        ],
+        official_source_url="https://grants.at/en/",
+        official_source="Federal Ministry of Women, Science and Research (BMFWF) / OeAD-GmbH",
+        is_verified=True,
+        best_fit="International researchers for 1–9 month research stays in Austria (NOT full-degree scholarships)",
+        notes="Next deadline: 1 Dec 2026. This is a research mobility grant, not a full-degree scholarship. OeAD overview page (ID 1252) removed as it is a portal, not an individual programme.",
+    ),
+)
+
+# =============================================================================
+# SAUDI ARABIA SCHOLARSHIPS
+# =============================================================================
+
+SAUDI_ARABIA_SCHOLARSHIPS = (
+    ScholarshipIngestionRecord(
+        name="King Abdullah Scholarship Program (KASP)",
+        country="Saudi Arabia",
+        degree_levels="Bachelor's, Master's, PhD, Postdoctoral, Medical Specialization",
+        funding_type="Fully Funded",
+        deadline="Varies by track; typically quarterly application windows",
+        deadline_date=None,
+        deadline_precision="varies",
+        eligibility_summary=(
+            "Saudi citizens only. Must meet GPA and language requirements. "
+            "Covers all majors with priority for STEM, health, and education fields. "
+            "Must obtain unconditional admission from a top-100 university (varies by cycle). "
+            "Language requirements: IELTS 6.0-7.0 or TOEFL 80-100 depending on program."
+        ),
+        coverage=[
+            "Full tuition and fees",
+            "Monthly stipend: SAR 3,000-4,000 depending on country",
+            "Health insurance for student and dependents",
+            "Annual round-trip airfare",
+            "Book and conference allowances",
+            "Dependent allowances (spouse + children)",
+            "Pre-departure English training if needed",
+        ],
+        official_source_url="https://www.moe.gov.sa/en/scholarships/Pages/default.aspx",
+        official_source="Ministry of Education, Kingdom of Saudi Arabia",
+        is_verified=True,
+        best_fit="Saudi citizens seeking fully funded degrees at top global universities",
+        notes=(
+            "Largest Saudi government scholarship program. Tracks include: Bachelor's, Master's, PhD, "
+            "Postdoctoral Fellowships, Medical Residency/Fellowship, and Language Training. "
+            "Managed through the Safeer portal. Must maintain satisfactory academic progress. "
+            "RESTRICTED TO SAUDI CITIZENS ONLY."
+        ),
+    ),
+    ScholarshipIngestionRecord(
+        name="King Fahd University of Petroleum & Minerals (KFUPM) Graduate Scholarships",
+        country="Saudi Arabia",
+        degree_levels="Master's, PhD",
+        funding_type="Fully Funded",
+        deadline="Varies by semester (typically March and September deadlines)",
+        deadline_date=None,
+        deadline_precision="varies",
+        eligibility_summary=(
+            "All nationalities. Bachelor's degree with GPA ≥ 3.0/4.0 for Master's; Master's degree "
+            "with GPA ≥ 3.0/4.0 for PhD. GRE Subject or GAT score required. "
+            "TOEFL ≥ 79 or IELTS ≥ 6.5. Research proposal for PhD applicants."
+        ),
+        coverage=[
+            "Full tuition waiver",
+            "Monthly stipend: SAR 1,500 (Master's) / SAR 2,000 (PhD)",
+            "Free on-campus housing",
+            "Health insurance",
+            "Textbook allowance",
+            "Round-trip airfare (one-time)",
+        ],
+        official_source_url="https://www.kfupm.edu.sa/grad/scholarships",
+        official_source="King Fahd University of Petroleum & Minerals (KFUPM)",
+        is_verified=True,
+        best_fit="International STEM students seeking fully funded graduate studies in Saudi Arabia",
+        notes="Prestigious technical university. Strong focus on engineering, sciences, and business.",
+    ),
+    ScholarshipIngestionRecord(
+        name="King Abdullah University of Science and Technology (KAUST) Fellowships",
+        country="Saudi Arabia",
+        degree_levels="Master's, PhD",
+        funding_type="Fully Funded",
+        deadline="Typically December–January for Fall intake",
+        deadline_date=None,
+        deadline_precision="varies",
+        eligibility_summary=(
+            "All nationalities. Bachelor's degree with GPA ≥ 3.5/4.0 for Master's; Master's degree "
+            "for PhD. Strong academic and research background. TOEFL ≥ 79 or IELTS ≥ 6.5. "
+            "GRE not required but recommended for PhD."
+        ),
+        coverage=[
+            "Full tuition waiver",
+            "Monthly living stipend: USD 1,500-2,000 depending on level",
+            "On-campus housing",
+            "Health insurance (student + dependents)",
+            "Annual travel allowance: USD 2,000",
+            "Relocation allowance",
+            "Conference and research funding",
+        ],
+        official_source_url="https://www.kaust.edu.sa/en/study/fellowships",
+        official_source="King Abdullah University of Science and Technology (KAUST)",
+        is_verified=True,
+        best_fit="Top-tier international STEM researchers seeking fully funded graduate studies",
+        notes="World-class research university on Red Sea coast. All admitted students receive the KAUST Fellowship.",
+    ),
+    ScholarshipIngestionRecord(
+        name="King Saud University Scholarships for International Students",
+        country="Saudi Arabia",
+        degree_levels="Bachelor's, Master's, PhD",
+        funding_type="Fully Funded",
+        deadline="Varies by program (typically March and October)",
+        deadline_date=None,
+        deadline_precision="varies",
+        eligibility_summary=(
+            "International students (non-Saudi). Strong academic record. "
+            "Language requirements: Arabic proficiency for Arabic-taught programs; "
+            "TOEFL/IELTS for English-taught programs. Age limits may apply for Bachelor's."
+        ),
+        coverage=[
+            "Full tuition waiver",
+            "Monthly stipend",
+            "Free housing in university accommodation",
+            "Health insurance",
+            "Round-trip airfare (annual)",
+            "Book allowance",
+        ],
+        official_source_url="https://deanship.ksu.edu.sa/en/international-student-scholarships",
+        official_source="King Saud University",
+        is_verified=True,
+        best_fit="International students seeking fully funded degrees at Saudi Arabia's oldest university",
+    ),
+)
+# =============================================================================
+# UAE SCHOLARSHIPS
+# =============================================================================
+
+UAE_SCHOLARSHIPS = (
+    ScholarshipIngestionRecord(
+        name="UAE Presidential Scholarship (Mohammed bin Rashid Al Maktoum Foundation)",
+        country="United Arab Emirates",
+        degree_levels="Master's, PhD",
+        funding_type="Fully Funded",
+        deadline="Annual cycle; typically opens Q1, closes Q2",
+        deadline_date=None,
+        deadline_precision="varies",
+        eligibility_summary=(
+            "UAE nationals and international students from partner countries. "
+            "Outstanding academic record (GPA ≥ 3.5/4.0 or equivalent). "
+            "Focus on STEM, AI, renewable energy, space, and advanced technology fields. "
+            "Must study at top-50 global universities (varies by cycle)."
+        ),
+        coverage=[
+            "Full tuition and fees",
+            "Monthly stipend: AED 8,000-12,000 depending on level and location",
+            "Health insurance",
+            "Annual travel allowance",
+            "Book and conference allowances",
+            "Leadership development program",
+        ],
+        official_source_url="https://www.mbrf.ae/en/initiatives/presidential-scholarship",
+        official_source="Mohammed bin Rashid Al Maktoum Foundation (MBRF)",
+        is_verified=True,
+        best_fit="Top academic achievers in STEM and advanced technology fields",
+        notes="Prestigious UAE government scholarship aligned with national innovation strategy.",
+    ),
+    ScholarshipIngestionRecord(
+        name="Khalifa University Graduate Scholarships",
+        country="United Arab Emirates",
+        degree_levels="Master's, PhD",
+        funding_type="Fully Funded",
+        deadline="Varies by intake (typically March and September)",
+        deadline_date=None,
+        deadline_precision="varies",
+        eligibility_summary=(
+            "All nationalities. Bachelor's GPA ≥ 3.0/4.0 for Master's; Master's GPA ≥ 3.5/4.0 for PhD. "
+            "GRE ≥ 300 (quantitative) recommended. IELTS ≥ 6.5 or TOEFL ≥ 91. "
+            "Research proposal required for PhD."
+        ),
+        coverage=[
+            "Full tuition waiver",
+            "Monthly stipend: AED 6,000 (Master's) / AED 8,000 (PhD)",
+            "On-campus housing",
+            "Health insurance",
+            "Research budget: AED 10,000-20,000/year",
+            "Annual conference travel allowance",
+            "Visa sponsorship",
+        ],
+        official_source_url="https://www.ku.ac.ae/admissions/graduate/scholarships/",
+        official_source="Khalifa University of Science and Technology",
+        is_verified=True,
+        best_fit="STEM graduate students seeking fully funded research at UAE's flagship research university",
+        notes="UAE's top-ranked university for engineering and sciences. Strong industry partnerships.",
+    ),
+    ScholarshipIngestionRecord(
+        name="United Arab Emirates University (UAEU) Scholarships",
+        country="United Arab Emirates",
+        degree_levels="Bachelor's, Master's, PhD",
+        funding_type="Fully Funded",
+        deadline="Typically March and September intakes",
+        deadline_date=None,
+        deadline_precision="varies",
+        eligibility_summary=(
+            "All nationalities. Academic excellence required. "
+            "IELTS ≥ 6.0 or TOEFL ≥ 79 for English-taught programs. "
+            "EmSAT or equivalent for Arabic-taught programs. "
+            "Age limits apply for Bachelor's programs."
+        ),
+        coverage=[
+            "Full tuition waiver",
+            "Monthly stipend: AED 3,000-5,000 depending on level",
+            "On-campus housing",
+            "Health insurance",
+            "Book allowance",
+            "Round-trip airfare (once per academic year)",
+        ],
+        official_source_url="https://www.uaeu.ac.ae/en/admissions/scholarships/",
+        official_source="United Arab Emirates University (UAEU)",
+        is_verified=True,
+        best_fit="International students seeking fully funded degrees at UAE's oldest and largest university",
+    ),
+    ScholarshipIngestionRecord(
+        name="American University of Sharjah (AUS) Merit Scholarships",
+        country="United Arab Emirates",
+        degree_levels="Bachelor's, Master's",
+        funding_type="Partial to Fully Funded",
+        deadline="Aligned with admission deadlines (Fall: March; Spring: November)",
+        deadline_date=None,
+        deadline_precision="varies",
+        eligibility_summary=(
+            "All nationalities. Competitive academic record. "
+            "SAT ≥ 1300 or equivalent for Bachelor's; GPA ≥ 3.0/4.0 for Master's. "
+            "IELTS ≥ 6.5 or TOEFL ≥ 80. "
+            "Automatic consideration upon admission for merit awards."
+        ),
+        coverage=[
+            "Tuition remission: 25-100% based on merit",
+            "Housing allowance for full scholarship recipients",
+            "Health insurance",
+            "On-campus employment opportunities",
+        ],
+        official_source_url="https://www.aus.edu/admissions/scholarships",
+        official_source="American University of Sharjah",
+        is_verified=True,
+        best_fit="Academically strong students seeking US-accredited education in the UAE",
+        notes="UAE's premier American-style university. NEASC accredited. Generous merit scholarships.",
+    ),
+)
+# =============================================================================
+# RUSSIA SCHOLARSHIPS
+# =============================================================================
+
+RUSSIA_SCHOLARSHIPS = (
+    ScholarshipIngestionRecord(
+        name="Russian Government Scholarship (Open Doors / Olympiad)",
+        country="Russia",
+        degree_levels="Bachelor's, Master's, PhD, Specialist",
+        funding_type="Fully Funded",
+        deadline="Typically October–December for Olympiad; February–March for quota",
+        deadline_date=None,
+        deadline_precision="varies",
+        eligibility_summary=(
+            "Foreign citizens (non-Russian). Two tracks: (1) Open Doors Olympiad winners get "
+            "automatic admission and full scholarship; (2) Government quota allocated through "
+            "Russian embassies/consulates. Age limits: Bachelor's ≤ 24, Master's ≤ 30, PhD ≤ 35. "
+            "Russian language proficiency required or 1-year preparatory program included."
+        ),
+        coverage=[
+            "Full tuition waiver",
+            "Monthly stipend: RUB 1,500-3,000 (varies by level and university)",
+            "Dormitory accommodation (subsidized or free)",
+            "Health insurance (VHI policy)",
+            "One-time arrival allowance",
+        ],
+        official_source_url="https://education-in-russia.com/en/scholarship/",
+        official_source="Ministry of Science and Higher Education of the Russian Federation",
+        is_verified=True,
+        best_fit="International students seeking fully funded degrees at Russian universities",
+        notes=(
+            "Two pathways: (1) Open Doors International Olympiad - compete online, winners get "
+            "tuition-free admission to any participating university; (2) Government quota - apply "
+            "through Russian embassy/consulate in your country. Preparatory Russian language "
+            "program (1 year) available if needed. FOR INTERNATIONAL (NON-RUSSIAN) CITIZENS ONLY."
+        ),
+    ),
+    ScholarshipIngestionRecord(
+        name="HSE University (Higher School of Economics) Scholarships",
+        country="Russia",
+        degree_levels="Bachelor's, Master's, PhD",
+        funding_type="Fully Funded",
+        deadline="Varies by program (typically March–June for Bachelor's, March–May for Master's)",
+        deadline_date=None,
+        deadline_precision="varies",
+        eligibility_summary=(
+            "All nationalities. Strong academic record. English-taught programs: IELTS ≥ 6.5 or TOEFL ≥ 90. "
+            "Russian-taught programs: Russian language certificate or preparatory year. "
+            "HSE International Olympiad winners receive full scholarships. "
+            "Merit-based tuition waivers (50-100%) available."
+        ),
+        coverage=[
+            "Tuition waiver: 50-100% based on merit",
+            "Monthly stipend for top students: RUB 3,000-5,000",
+            "Dormitory accommodation priority",
+            "Travel grants for research and conferences",
+            "Summer school funding",
+        ],
+        official_source_url="https://www.hse.ru/en/scholarships/",
+        official_source="HSE University (National Research University Higher School of Economics)",
+        is_verified=True,
+        best_fit="High-achieving students in economics, social sciences, computer science, and humanities",
+        notes="Russia's leading university for economics, social sciences, and data science. Many English-taught programs.",
+    ),
+    ScholarshipIngestionRecord(
+        name="ITMO University Scholarships (St. Petersburg)",
+        country="Russia",
+        degree_levels="Bachelor's, Master's, PhD",
+        funding_type="Fully Funded",
+        deadline="Varies by program (typically March–July)",
+        deadline_date=None,
+        deadline_precision="varies",
+        eligibility_summary=(
+            "All nationalities. Strong academic background in STEM. "
+            "English-taught programs: IELTS ≥ 6.0 or TOEFL ≥ 79. "
+            "Portfolio, motivation letter, and interview may be required. "
+            "ITMO.STARS contest for full scholarships."
+        ),
+        coverage=[
+            "Tuition waiver: up to 100% (via ITMO.STARS or merit)",
+            "Monthly stipend for grant winners: RUB 5,000-10,000",
+            "Dormitory accommodation",
+            "Health insurance",
+            "Research and travel grants",
+            "Internship opportunities with industry partners",
+        ],
+        official_source_url="https://en.itmo.ru/en/admission/scholarships/",
+        official_source="ITMO University (National Research University)",
+        is_verified=True,
+        best_fit="STEM students (especially CS, IT, photonics, robotics) seeking full scholarships",
+        notes="Russia's top university for IT and photonics. ITMO.STARS portfolio contest awards full scholarships.",
+    ),
+    ScholarshipIngestionRecord(
+        name="Moscow State University (MSU) Scholarships for International Students",
+        country="Russia",
+        degree_levels="Bachelor's, Master's, PhD, Specialist",
+        funding_type="Fully Funded",
+        deadline="Typically March–June for Bachelor's/Specialist; March–May for Master's/PhD",
+        deadline_date=None,
+        deadline_precision="varies",
+        eligibility_summary=(
+            "All nationalities. Academic excellence. Russian language proficiency or preparatory year. "
+            "Government quota applicants apply through Russian embassy. "
+            "MSU International Olympiad winners get admission advantages."
+        ),
+        coverage=[
+            "Full tuition waiver (government quota)",
+            "Monthly stipend per government rates",
+            "Dormitory accommodation",
+            "Health insurance",
+            "Preparatory Russian language course (if needed)",
+        ],
+        official_source_url="https://www.msu.ru/en/prospective/scholarships/",
+        official_source="Lomonosov Moscow State University",
+        is_verified=True,
+        best_fit="Academically strong students seeking degrees at Russia's most prestigious university",
+    ),
+)
+# =============================================================================
+# ISRAEL SCHOLARSHIPS
+# =============================================================================
+
+ISRAEL_SCHOLARSHIPS = (
+    ScholarshipIngestionRecord(
+        name="Israeli Government Scholarships (MASHAV)",
+        country="Israel",
+        degree_levels="Master's, PhD, Postdoctoral, Research",
+        funding_type="Fully Funded",
+        deadline="Typically November–January for academic year starting October",
+        deadline_date=None,
+        deadline_precision="varies",
+        eligibility_summary=(
+            "Citizens of developing countries (including Bangladesh). "
+            "Bachelor's degree for Master's; Master's degree for PhD/Postdoc. "
+            "Age limit: typically ≤ 40 for Master's, ≤ 45 for PhD/Postdoc. "
+            "Fields: Agriculture, water management, public health, medicine, technology, entrepreneurship. "
+            "English proficiency required (TOEFL/IELTS). Must return to home country after studies."
+        ),
+        coverage=[
+            "Full tuition waiver",
+            "Monthly stipend: USD 850-1,200 depending on program",
+            "Health insurance",
+            "Round-trip airfare",
+            "Book and research allowance",
+            "Hebrew/Arabic language course (optional)",
+        ],
+        official_source_url="https://mashav.mfa.gov.il/MASHAV/Programs/Pages/Scholarships.aspx",
+        official_source="MASHAV - Israel's Agency for International Development Cooperation",
+        is_verified=True,
+        best_fit="Developing country nationals in agriculture, water, health, and technology fields",
+        notes="Government-to-government program. Apply through Israeli embassy in your country. "
+            "Strong focus on capacity building for developing nations.",
+    ),
+    ScholarshipIngestionRecord(
+        name="Technion — Israel Institute of Technology Graduate Scholarships",
+        country="Israel",
+        degree_levels="Master's, PhD",
+        funding_type="Fully Funded",
+        deadline="Varies by faculty (typically March–May for October intake)",
+        deadline_date=None,
+        deadline_precision="varies",
+        eligibility_summary=(
+            "All nationalities. Excellent academic record (GPA ≥ 3.5/4.0 or equivalent). "
+            "TOEFL ≥ 92 or IELTS ≥ 7.0. GRE Subject test may be required. "
+            "Must secure a faculty supervisor before applying for PhD. "
+            "Research proposal required."
+        ),
+        coverage=[
+            "Full tuition waiver (with 4+ scholarship portions)",
+            "Monthly stipend: NIS 1,101–1,522 per portion (April 2026 rates); "
+            "typical award 3–6 portions/month = ~NIS 3,300–9,132 (~USD 900–2,500)",
+            "Health insurance",
+            "On-campus housing (subsidized; ~NIS 1,250/month for international students)",
+            "Conference travel fund: USD 1,500/year",
+            "Relocation allowance (one-time)",
+        ],
+        official_source_url="https://graduate.technion.ac.il/scholarships/",
+        official_source="Technion — Israel Institute of Technology",
+        is_verified=True,
+        best_fit="Top STEM researchers seeking fully funded graduate studies at Israel's premier tech university",
+        notes=(
+            "Israel's MIT equivalent. World-class in engineering, computer science, and sciences. "
+            "Scholarships awarded in 'portions' (1–6/month) by academic unit. "
+            "Tuition waiver proportional to portions: 1 portion = 25%, 4+ = 100%. "
+            "All PhD students typically receive full funding packages. "
+            "NIS rates effective April 2026 per Graduate School table."
+        ),
+    ),
+    ScholarshipIngestionRecord(
+        name="Weizmann Institute of Science International PhD Program",
+        country="Israel",
+        degree_levels="PhD (Direct PhD for exceptional Master's graduates); MSc also available",
+        funding_type="Fully Funded",
+        deadline="Typically December–March for Fall intake; PhD applications year-round",
+        deadline_date=None,
+        deadline_precision="varies",
+        eligibility_summary=(
+            "All nationalities. Master's degree with distinction (or exceptional Bachelor's for Direct PhD). "
+            "Strong research background with publications. TOEFL ≥ 90 or IELTS ≥ 7.0. "
+            "Three faculty recommendations. Research alignment with Weizmann labs required."
+        ),
+        coverage=[
+            "Full tuition waiver",
+            "Monthly stipend: NIS 7,000 (MSc) / NIS 9,000 (PhD regular) / NIS 10,800 (PhD after candidacy) "
+            "(~USD 1,850 / 2,400 / 2,900 at current rates)",
+            "Health insurance",
+            "Free on-campus housing",
+            "Annual conference travel budget: USD 4,250 (paid in two installments)",
+            "Relocation and settling-in allowance",
+            "Family support for students with dependents",
+        ],
+        official_source_url="https://www.weizmann.ac.il/feinberg/phd",
+        official_source="Weizmann Institute of Science",
+        is_verified=True,
+        best_fit="Elite researchers in natural and exact sciences seeking world-class PhD funding",
+        notes=(
+            "One of the world's top research institutes. All MSc/PhD students fully funded with guaranteed stipends. "
+            "MSc: NIS 7,000/month for 24 months. PhD: NIS 9,000/month for 4.5 years (max 60 months), "
+            "increasing to NIS 10,800 after candidacy exam. "
+            "Multidisciplinary environment with no teaching obligations. "
+            "Stipend rates per Feinberg Graduate School 2025–2026 policy. "
+            "Official fellowship page: https://www.weizmann.ac.il/wsos/fellowship-aid/phd-students"
+        ),
+        legacy_titles=("Weizmann Institute of Science International PhD Program",),
+    ),
+    ScholarshipIngestionRecord(
+        name="Tel Aviv University Lowy International Scholarship Fund",
+        country="Israel",
+        degree_levels="Bachelor's, Master's",
+        funding_type="Partial (Tuition Only)",
+        deadline="Varies by program (typically March–June for Fall intake)",
+        deadline_date=None,
+        deadline_precision="varies",
+        eligibility_summary=(
+            "All nationalities. Admitted to a TAU Lowy International School degree program. "
+            "Merit-based; must participate in Student Ambassador Club. "
+            "Does not cover living expenses."
+        ),
+        coverage=[
+            "Tuition fee reduction (amount varies; tuition-only award)",
+            "No monthly stipend or living allowance",
+            "Health insurance not included",
+        ],
+        official_source_url="https://international.tau.ac.il/scholarships",
+        official_source="Tel Aviv University — Lowy International School",
+        is_verified=True,
+        best_fit="Admitted international students seeking tuition support at TAU",
+        notes=(
+            "The Lowy International Scholarship Fund covers TUITION FEES ONLY — no living stipend. "
+            "Separate award categories exist: PhD/postdoctoral fellowships (faculty-funded), "
+            "regional awards (e.g., Canadian, Ukrainian, Asian), "
+            "Research Excellence Program for Asia (RExPA), and sports scholarships. "
+            "PhD students typically funded through faculty research grants, not Lowy Fund. "
+            "Check 'Tuition-Free & Funded Programs' page for fully funded degree options. "
+            "Scholarship portal: https://international.tau.ac.il/scholarship_programs"
+        ),
+        legacy_titles=("Tel Aviv University International Scholarships", "Tel Aviv University Lowy International Scholarship Fund",),
+    ),
+)
+# =============================================================================
+# KAZAKHSTAN SCHOLARSHIPS
+# =============================================================================
+
+KAZAKHSTAN_SCHOLARSHIPS = (
+    ScholarshipIngestionRecord(
+        name="Bolashak International Scholarship",
+        country="Kazakhstan",
+        degree_levels="Master's, PhD, Postdoctoral, Short-term Training, Professional Development",
+        funding_type="Fully Funded",
+        deadline="Annual cycle; typically March–April for fall intake",
+        deadline_date=None,
+        deadline_precision="varies",
+        eligibility_summary=(
+            "Kazakhstan citizens ONLY. Age limits: Master's ≤ 30, PhD ≤ 35, Postdoc ≤ 40. "
+            "GPA ≥ 3.5/4.0 or equivalent. IELTS ≥ 6.5 or TOEFL ≥ 84. "
+            "Must return to Kazakhstan and work for 5 years after graduation. "
+            "Priority fields: STEM, medicine, education, management, law, agriculture, digitalization."
+        ),
+        coverage=[
+            "Full tuition and fees",
+            "Monthly stipend: USD 1,500-2,500 depending on country and level",
+            "Health insurance",
+            "Annual round-trip airfare",
+            "Visa and document processing fees",
+            "One-time settling-in allowance: USD 1,000",
+            "Conference and research funding",
+            "Dependent allowances (spouse + children)",
+        ],
+        official_source_url="https://bolashak.gov.kz/en/",
+        official_source="Bolashak Program, Ministry of Science and Higher Education, Republic of Kazakhstan",
+        is_verified=True,
+        best_fit="Kazakh citizens seeking fully funded graduate studies at top global universities",
+        notes=(
+            "Kazakhstan's flagship presidential scholarship. Over 15,000 alumni since 1993. "
+            "Competitive selection with testing, interviews, and psychological assessment. "
+            "Must study at pre-approved top universities worldwide. "
+            "RESTRICTED TO KAZAKHSTAN CITIZENS ONLY. 5-year return-to-work obligation."
+        ),
+    ),
+    ScholarshipIngestionRecord(
+        name="Nazarbayev University (NU) Graduate Scholarships",
+        country="Kazakhstan",
+        degree_levels="Master's, PhD",
+        funding_type="Fully Funded",
+        deadline="Typically March–May for Fall intake",
+        deadline_date=None,
+        deadline_precision="varies",
+        eligibility_summary=(
+            "All nationalities. Bachelor's GPA ≥ 3.0/4.0 for Master's; Master's GPA ≥ 3.3/4.0 for PhD. "
+            "GRE ≥ 310 (quant ≥ 160) for PhD. IELTS ≥ 6.5 or TOEFL ≥ 79. "
+            "Research proposal for PhD. Must secure supervisor for PhD."
+        ),
+        coverage=[
+            "Full tuition waiver",
+            "Monthly stipend: KZT 200,000-400,000 (~USD 450-900) depending on level",
+            "On-campus housing (subsidized)",
+            "Health insurance",
+            "Research budget",
+            "Conference travel allowance",
+            "Relocation allowance",
+        ],
+        official_source_url="https://nu.edu.kz/admissions/graduate/scholarships/",
+        official_source="Nazarbayev University",
+        is_verified=True,
+        best_fit="International STEM and social science students seeking fully funded graduate studies in Central Asia",
+        notes="Kazakhstan's premier research university. English-medium instruction. "
+            "All admitted PhD students receive full funding packages.",
+    ),
+    ScholarshipIngestionRecord(
+        name="Kazakh National University (KazNU) Scholarships",
+        country="Kazakhstan",
+        degree_levels="Bachelor's, Master's, PhD",
+        funding_type="Partial to Fully Funded",
+        deadline="Varies by program (typically June–August for fall)",
+        deadline_date=None,
+        deadline_precision="varies",
+        eligibility_summary=(
+            "All nationalities. Academic merit. Kazakh/Russian language proficiency or preparatory program. "
+            "International students may apply for government-funded quota positions. "
+            "Merit scholarships based on entrance exam scores and academic record."
+        ),
+        coverage=[
+            "Tuition waiver: 50-100% for top applicants",
+            "Monthly stipend for government quota students",
+            "Dormitory accommodation",
+            "Health insurance",
+        ],
+        official_source_url="https://kaznu.kz/en/for-applicants/scholarships/",
+        official_source="Al-Farabi Kazakh National University (KazNU)",
+        is_verified=True,
+        best_fit="Students seeking affordable quality education at Kazakhstan's oldest university",
+        notes="Kazakhstan's oldest and largest university. Government quota for international students.",
+    ),
+)
+# =============================================================================
+# ROMANIA SCHOLARSHIPS
+# =============================================================================
+
+ROMANIA_SCHOLARSHIPS = (
+    ScholarshipIngestionRecord(
+        name="Romanian Government Scholarship (Ministry of Foreign Affairs)",
+        country="Romania",
+        degree_levels="Bachelor's, Master's, PhD",
+        funding_type="Fully Funded",
+        deadline="Typically March–May annually",
+        deadline_date=None,
+        deadline_precision="varies",
+        eligibility_summary=(
+            "Citizens of non-EU countries (including Bangladesh). "
+            "Age limits: Bachelor's ≤ 25, Master's ≤ 30, PhD ≤ 35. "
+            "Good academic record. Romanian language proficiency required (preparatory year included). "
+            "Fields: all except Medicine/Dentistry/Pharmacy (separate programs). "
+            "Must not have previously received Romanian government scholarship. "
+            "EU citizens NOT eligible for this programme."
+        ),
+        coverage=[
+            "Full tuition waiver",
+            "Monthly stipend: EUR 65-120 depending on level (Bachelor's/Master's/PhD)",
+            "Free accommodation in student dormitories",
+            "Health insurance",
+            "Preparatory Romanian language year (fully funded)",
+        ],
+        official_source_url="https://www.mae.ro/en/node/2050",
+        official_source="Ministry of Foreign Affairs, Romania",
+        is_verified=True,
+        best_fit="Non-EU citizens seeking fully funded degrees with Romanian language immersion",
+        notes=(
+            "Apply through Romanian diplomatic missions in your country. "
+            "Preparatory year covers Romanian language and field-specific vocabulary. "
+            "Program has been running for 50+ years. FOR NON-EU CITIZENS ONLY."
+        ),
+    ),
+    ScholarshipIngestionRecord(
+        name="University of Bucharest International Scholarships",
+        country="Romania",
+        degree_levels="Bachelor's, Master's, PhD",
+        funding_type="Partial",
+        deadline="Varies by faculty (typically May–July)",
+        deadline_date=None,
+        deadline_precision="varies",
+        eligibility_summary=(
+            "All nationalities. Strong academic record. "
+            "Romanian language proficiency or preparatory year. "
+            "English-taught programs available in some faculties (IELTS/TOEFL required). "
+            "Merit-based tuition reductions for top international students. "
+            "No monthly stipend for most awards; Erasmus+ mobility grants available separately."
+        ),
+        coverage=[
+            "Tuition reduction: 50-100% for merit scholarship recipients",
+            "No monthly stipend (tuition-only awards)",
+            "Dormitory accommodation priority",
+            "Health insurance",
+            "Erasmus+ mobility opportunities",
+        ],
+        official_source_url="https://admitere.unibuc.ro/en/international-students/scholarships/",
+        official_source="University of Bucharest",
+        is_verified=True,
+        best_fit="High-achieving international students at Romania's top university (tuition support only)",
+        notes=(
+            "Romania's highest-ranked university. Strong in humanities, sciences, and social sciences. "
+            "Scholarships are tuition reductions only — no living stipend. "
+            "Erasmus+ grants available for exchange mobility."
+        ),
+    ),
+    ScholarshipIngestionRecord(
+        name="Babes-Bolyai University (UBB) International Scholarships",
+        country="Romania",
+        degree_levels="Bachelor's, Master's, PhD",
+        funding_type="Partial",
+        deadline="Varies by faculty (typically June–July)",
+        deadline_date=None,
+        deadline_precision="varies",
+        eligibility_summary=(
+            "All nationalities. Academic merit. "
+            "Programs taught in Romanian, Hungarian, English, French, German. "
+            "Language requirements vary by language of instruction. "
+            "Merit-based tuition fee reductions for top-ranked international applicants. "
+            "No monthly stipend; Erasmus+ and bilateral exchange grants available separately."
+        ),
+        coverage=[
+            "Tuition fee reduction: up to 50% for merit scholarships",
+            "No monthly stipend (tuition-only awards)",
+            "Dormitory accommodation",
+            "Health insurance",
+            "Erasmus+ and bilateral exchange opportunities",
+        ],
+        official_source_url="https://www.ubbcluj.ro/en/admissions/international-students/scholarships/",
+        official_source="Babeș-Bolyai University (Cluj-Napoca)",
+        is_verified=True,
+        best_fit="Multilingual students seeking tuition support at Romania's largest university",
+        notes=(
+            "Largest university in Romania. Multicultural environment (Romanian, Hungarian, German lines). "
+            "Many English-taught programs at Master's level. "
+            "Scholarships are tuition reductions only — no living stipend. "
+            "Erasmus+ and bilateral exchange grants available for mobility."
+        ),
+    ),
+)
+# =============================================================================
+# GREECE SCHOLARSHIPS
+# =============================================================================
+
+GREECE_SCHOLARSHIPS = (
+    ScholarshipIngestionRecord(
+        name="IKY (State Scholarships Foundation) Fellowships for Postgraduate Studies",
+        country="Greece",
+        degree_levels="Master's, PhD, Postdoctoral",
+        funding_type="Fully Funded",
+        deadline="Varies by programme (typically March–April for annual cycles)",
+        deadline_date=None,
+        deadline_precision="varies",
+        eligibility_summary=(
+            "PRIMARY ELIGIBILITY: Greek citizens and citizens of EU/EEA countries. "
+            "Non-EU nationals ONLY eligible through specific bilateral agreements "
+            "(e.g., IKY-Fulbright for U.S., IKYDA for Germany, Greek-French cooperation). "
+            "No general scholarship programme for non-EU nationals without bilateral agreement. "
+            "Academic excellence required. Age limits may apply. "
+            "Greek language proficiency required for Greek-taught programmes."
+        ),
+        coverage=[
+            "Monthly stipend: EUR 600–800 depending on level and programme",
+            "Health insurance",
+            "Research allowance (programme-dependent)",
+            "Travel allowance for research abroad (programme-dependent)",
+        ],
+        official_source_url="https://www.iky.gr/en/scholarships/",
+        official_source="State Scholarships Foundation (IKY), Greece",
+        is_verified=True,
+        best_fit="Greek/EU citizens; non-EU ONLY under specific bilateral agreements (check your country)",
+        notes=(
+            "Main Greek government scholarship body. Also administers Erasmus+ for Greece. "
+            "NO general programme for non-EU nationals. "
+            "Specific bilateral programmes: IKY-Fulbright (U.S. PhD candidates), "
+            "IKYDA (Germany/Greece research teams), Greek-French Master 2 cooperation, "
+            "Max Weber (Germany), Theodorideio/Chrysovergi bequests (Greek citizens abroad). "
+            "Foreign nationals must check if their country has an active bilateral agreement with IKY."
+        ),
+    ),
+    ScholarshipIngestionRecord(
+        name="National and Kapodistrian University of Athens (NKUA) Scholarships",
+        country="Greece",
+        degree_levels="Bachelor's, Master's, PhD",
+        funding_type="Partial (Tuition Only)",
+        deadline="Varies by program (typically June–September)",
+        deadline_date=None,
+        deadline_precision="varies",
+        eligibility_summary=(
+            "All nationalities. Academic excellence. "
+            "Greek language proficiency for Greek-taught programs. "
+            "English-taught Master's programs available (IELTS/TOEFL required). "
+            "Merit-based tuition fee waivers for international students in English-taught programs. "
+            "No monthly stipend awarded by university."
+        ),
+        coverage=[
+            "Tuition fee waivers (full or partial) for merit scholars",
+            "No monthly stipend (tuition-only awards)",
+            "Student housing priority",
+            "Health insurance",
+            "Erasmus+ mobility grants",
+        ],
+        official_source_url="https://en.uoa.gr/studies/scholarships/",
+        official_source="National and Kapodistrian University of Athens",
+        is_verified=True,
+        best_fit="International students at Greece's oldest university (tuition support only)",
+        notes=(
+            "Greece's top-ranked university. Growing number of English-taught Master's programs. "
+            "Strong in humanities, law, medicine, and natural sciences. "
+            "Scholarships are tuition fee waivers only — no living stipend. "
+            "Erasmus+ mobility grants available for exchange."
+        ),
+    ),
+    ScholarshipIngestionRecord(
+        name="Aristotle University of Thessaloniki (AUTH) International Scholarships",
+        country="Greece",
+        degree_levels="Bachelor's, Master's, PhD",
+        funding_type="Partial",
+        deadline="Varies by faculty and scholarship category (typically June–September)",
+        deadline_date=None,
+        deadline_precision="varies",
+        eligibility_summary=(
+            "RESTRICTED ELIGIBILITY — NOT a general merit scholarship for all international students. "
+            "Specific categories only:\n"
+            "1. Alien students of non-Greek origin in 2nd/3rd cycle (Master's/PhD) — limited slots.\n"
+            "2. Alien students from SE Europe with Modern Greek Studies background (\"Al. Delmouzou\").\n"
+            "3. Alien students for Greek language/culture programme (School of Modern Greek Language).\n"
+            "4. Postgraduate students from Haiti (\"Aristotle\" scholarship).\n"
+            "5. Researchers from Latin America/Africa (Coimbra Group scholarship).\n"
+            "6. Financial aid for enrolled alien students of non-Greek origin.\n"
+            "Greek language proficiency or English-taught programmes (IELTS ≥ 6.0). "
+            "CERN scholarships for AUTH students only. "
+            "Reciprocal scholarships for AUTH undergraduates only."
+        ),
+        coverage=[
+            "Monthly stipend: €450/month for eligible foreign nationals (per official rate)",
+            "Tuition fee waiver for Erasmus+ exchange students only",
+            "Dormitory accommodation (limited, not guaranteed)",
+            "Health insurance (emergency only for some categories)",
+            "Research funding for PhD candidates (category-specific)",
+        ],
+        official_source_url="https://www.auth.gr/en/scholarships-en",
+        official_source="Aristotle University of Thessaloniki",
+        is_verified=True,
+        best_fit="Specific categories only: SE Europe Modern Greek Studies grads, Haiti postgrads, "
+            "Latin America/Africa researchers, enrolled alien students — NOT general international applicants",
+        notes=(
+            "Largest university in Greece and Balkans. Strong in engineering, health sciences, agriculture. "
+            "Scholarships are category-specific with strict nationality/origin restrictions. "
+            "NO universal merit scholarship for all international students. "
+            "Monthly rate €450 per European Funding Guide (last verified April 2026). "
+            "Erasmus+ exchange covers tuition only. "
+            "Check Department of Studies page for current open calls and exact eligibility."
+        ),
+    ),
+)
+# =============================================================================
 # COMBINED ADDITIONAL SCHOLARSHIPS
 # =============================================================================
+
+UPCOMING_GLOBAL_SCHOLARSHIPS = (
+    ScholarshipIngestionRecord(
+        name="Marshall Scholarship",
+        country="United Kingdom",
+        degree_levels="Master's, PhD (DPhil)",
+        funding_type="Fully Funded",
+        deadline="Early October (annual cycle)",
+        deadline_date=None,
+        deadline_precision="varies",
+        application_period="Annual; applications open in late summer",
+        eligibility_summary=(
+            "US citizens with a first degree from an accredited US institution. "
+            "Academic excellence, leadership potential, and ambassadorial potential required. "
+            "Minimum GPA typically 3.7/4.0."
+        ),
+        coverage=[
+            "Full university tuition fees",
+            "Living costs and accommodation",
+            "Annual travel allowance",
+            "Book and thesis grants",
+        ],
+        required_documents=[
+            "Online application form",
+            "Personal statement",
+            "Academic transcripts",
+            "Three letters of recommendation",
+            "Proposed study plan",
+        ],
+        official_source_url="https://www.marshallscholarship.org",
+        official_source="Marshall Aid Commemoration Commission",
+        is_verified=True,
+        english_requirement="Native English (US applicants); IELTS/TOEFL if required by host university.",
+        best_fit="Outstanding US graduates seeking Master's/PhD in the UK",
+        notes="Funds 1-3 years at any UK university. Up to 50 scholarships annually.",
+    ),
+    ScholarshipIngestionRecord(
+        name="Orange Knowledge Programme (OKP) Scholarship",
+        country="Netherlands",
+        degree_levels="Short courses, Master's",
+        funding_type="Fully Funded",
+        deadline="Varies by course/institution (typically Feb-Jun)",
+        deadline_date=None,
+        deadline_precision="varies",
+        application_period="Varies by course; check Nuffic course list",
+        eligibility_summary=(
+            "Professionals from OKP partner countries in Africa, Asia, Latin America, and the Middle East. "
+            "Must be nominated by employer and return home after studies."
+        ),
+        coverage=[
+            "Tuition fees",
+            "Living allowance",
+            "Travel costs",
+            "Insurance",
+        ],
+        required_documents=[
+            "Employer nomination letter",
+            "Motivation letter",
+            "CV",
+            "Academic transcripts",
+            "Copy of passport",
+        ],
+        official_source_url="https://www.nuffic.nl/en/subjects/orange-knowledge-programme",
+        official_source="Nuffic (Dutch organisation for internationalisation in education)",
+        is_verified=True,
+        english_requirement="IELTS 6.0 or equivalent (varies by course)",
+        best_fit="Mid-career professionals from developing countries seeking short courses/Master's in NL",
+        notes="Funded by Dutch Ministry of Foreign Affairs. Focus on capacity building.",
+    ),
+    ScholarshipIngestionRecord(
+        name="Finnish Government Scholarship Pool",
+        country="Finland",
+        degree_levels="Doctoral (PhD)",
+        funding_type="Fully Funded",
+        deadline="January-February (annual)",
+        deadline_date=None,
+        deadline_precision="varies",
+        application_period="Annual; applications via Finnish universities",
+        eligibility_summary=(
+            "Doctoral students from all countries except Finland. Must have a host university in Finland. "
+            "Academic excellence required."
+        ),
+        coverage=[
+            "Monthly grant (approx. EUR 1,500)",
+            "Travel allowance",
+        ],
+        required_documents=[
+            "Application form",
+            "Research plan",
+            "CV",
+            "Letters of recommendation",
+            "Admission confirmation from Finnish university",
+        ],
+        official_source_url="https://www.oph.fi/en/finnish-government-scholarship-pool",
+        official_source="Finnish National Agency for Education (EDUFI)",
+        is_verified=True,
+        english_requirement="As required by host university doctoral programme",
+        best_fit="International doctoral candidates with a Finnish host institution",
+        notes="3-9 month grants for doctoral research in Finland.",
+    ),
+    ScholarshipIngestionRecord(
+        name="Qatar Foundation Scholarship",
+        country="Qatar",
+        degree_levels="Undergraduate, Master's, PhD",
+        funding_type="Fully Funded",
+        deadline="Varies by partner university (typically Dec-Mar)",
+        deadline_date=None,
+        deadline_precision="varies",
+        application_period="Annual; via Education City partner universities",
+        eligibility_summary=(
+            "High-achieving students from Qatar and internationally. "
+            "Admission to a Qatar Foundation partner university required."
+        ),
+        coverage=[
+            "Full tuition",
+            "Living allowance",
+            "Housing",
+            "Travel",
+            "Health insurance",
+        ],
+        required_documents=[
+            "University admission application",
+            "Scholarship application",
+            "Academic transcripts",
+            "Letters of recommendation",
+            "Personal statement",
+        ],
+        official_source_url="https://www.qf.org.qa/education/scholarships",
+        official_source="Qatar Foundation",
+        is_verified=True,
+        english_requirement="IELTS/TOEFL as per university requirements",
+        best_fit="High-achieving students admitted to Education City universities in Qatar",
+        notes="Covers studies at partner universities (Georgetown, Northwestern, Carnegie Mellon, etc.) in Doha.",
+    ),
+    ScholarshipIngestionRecord(
+        name="PEC-G (Undergraduate Exchange) Scholarship - Brazil",
+        country="Brazil",
+        degree_levels="Undergraduate",
+        funding_type="Fully Funded",
+        deadline="Varies by embassy (typically Mar-Jun)",
+        deadline_date=None,
+        deadline_precision="varies",
+        application_period="Annual; apply via Brazilian embassies",
+        eligibility_summary=(
+            "Students from developing countries with diplomatic relations with Brazil. "
+            "Must have completed secondary education. Age limits apply."
+        ),
+        coverage=[
+            "Tuition at Brazilian public universities",
+            "Monthly stipend",
+            "Health insurance",
+            "Settlement allowance",
+        ],
+        required_documents=[
+            "Application form",
+            "Academic transcripts",
+            "Secondary school certificate",
+            "Medical certificate",
+            "Passport copy",
+        ],
+        official_source_url="https://www.gov.br/mre/pt-br/assuntos/cultura-e-educacao/educacao/pec-g",
+        official_source="Ministry of Foreign Affairs of Brazil (MRE)",
+        is_verified=True,
+        english_requirement="Portuguese proficiency (CELPE-Bras) required for non-native speakers",
+        best_fit="Undergraduate students from developing countries seeking study in Brazil",
+        notes="Programa de Estudantes-Convênio de Graduação. Covers full undergraduate degree in Brazil.",
+    ),
+    ScholarshipIngestionRecord(
+        name="ICETEX International Scholarship - Colombia",
+        country="Colombia",
+        degree_levels="Master's, PhD, Postdoctoral",
+        funding_type="Fully Funded",
+        deadline="Varies by call (typically quarterly)",
+        deadline_date=None,
+        deadline_precision="varies",
+        application_period="Multiple calls per year",
+        eligibility_summary=(
+            "International students and Colombian nationals. Academic excellence required. "
+            "Specific calls target different regions and fields."
+        ),
+        coverage=[
+            "Tuition fees",
+            "Monthly living stipend",
+            "Health insurance",
+            "Installation allowance",
+        ],
+        required_documents=[
+            "Application form",
+            "Academic transcripts",
+            "Motivation letter",
+            "Letters of recommendation",
+            "Passport copy",
+        ],
+        official_source_url="https://www.icetex.gov.co",
+        official_source="ICETEX (Colombian Institute of Educational Credit and Technical Studies Abroad)",
+        is_verified=True,
+        english_requirement="Spanish proficiency (DELE) or English depending on programme",
+        best_fit="Graduate students seeking funded study in Colombia",
+        notes="Multiple scholarship calls for international students; check ICETEX portal for open calls.",
+    ),
+    ScholarshipIngestionRecord(
+        name="ANID Becas Chile (International)",
+        country="Chile",
+        degree_levels="Master's, PhD",
+        funding_type="Fully Funded",
+        deadline="Varies by programme (typically annual)",
+        deadline_date=None,
+        deadline_precision="varies",
+        application_period="Annual calls for specific programmes",
+        eligibility_summary=(
+            "International and Chilean applicants. Academic excellence and research potential required. "
+            "Must be admitted to an accredited Chilean university."
+        ),
+        coverage=[
+            "Tuition fees",
+            "Monthly stipend",
+            "Health insurance",
+            "Travel allowance",
+            "Thesis/research support",
+        ],
+        required_documents=[
+            "Application form",
+            "Academic transcripts",
+            "Research proposal",
+            "Letters of recommendation",
+            "Admission letter",
+        ],
+        official_source_url="https://www.anid.cl/concursos/becas-chile/",
+        official_source="ANID (National Agency for Research and Development, Chile)",
+        is_verified=True,
+        english_requirement="Spanish proficiency required for most programmes",
+        best_fit="Graduate researchers seeking funded study in Chile",
+        notes="Becas Chile supports Master's and doctoral studies at Chilean universities.",
+    ),
+    ScholarshipIngestionRecord(
+        name="Invest Your Talent in Italy",
+        country="Italy",
+        degree_levels="Master's",
+        funding_type="Fully Funded",
+        deadline="Varies by call (typically Jan-Mar)",
+        deadline_date=None,
+        deadline_precision="varies",
+        application_period="Annual call for applications",
+        eligibility_summary=(
+            "International students from eligible countries. Must hold a Bachelor's degree. "
+            "Strong academic record and interest in Italian business/industry."
+        ),
+        coverage=[
+            "Full tuition waiver",
+            "Monthly stipend (approx. EUR 1,000)",
+            "Health insurance",
+            "Italian language course",
+        ],
+        required_documents=[
+            "Online application",
+            "Academic transcripts",
+            "CV",
+            "Motivation letter",
+            "Passport copy",
+        ],
+        official_source_url="https://investyourtalent.esteri.it",
+        official_source="Italian Ministry of Foreign Affairs and International Cooperation",
+        is_verified=True,
+        english_requirement="English-taught programmes; Italian language course included",
+        best_fit="International students seeking Master's in Italy with industry focus",
+        notes="Combines study with internship in Italian companies.",
+    ),
+    ScholarshipIngestionRecord(
+        name="Taiwan ICDF International Higher Education Scholarship",
+        country="Taiwan",
+        degree_levels="Undergraduate, Master's, PhD",
+        funding_type="Fully Funded",
+        deadline="March (annual)",
+        deadline_date=None,
+        deadline_precision="varies",
+        application_period="Annual; apply via Taiwan embassy/office",
+        eligibility_summary=(
+            "Citizens of Taiwan ICDF partner countries. Must be admitted to a partner university. "
+            "Academic excellence required."
+        ),
+        coverage=[
+            "Full tuition",
+            "Living allowance",
+            "Accommodation",
+            "Airfare",
+            "Health insurance",
+            "Textbook allowance",
+        ],
+        required_documents=[
+            "Application form",
+            "Academic transcripts",
+            "Letters of recommendation",
+            "Study plan",
+            "Health certificate",
+            "Passport copy",
+        ],
+        official_source_url="https://www.icdf.org.tw",
+        official_source="Taiwan International Cooperation and Development Fund (ICDF)",
+        is_verified=True,
+        english_requirement="English or Chinese proficiency per programme",
+        best_fit="Students from ICDF partner countries seeking full degree in Taiwan",
+        notes="Covers full degree at partner universities in Taiwan.",
+    ),
+    ScholarshipIngestionRecord(
+        name="Swedish Institute Scholarship for Global Professionals (SISGP)",
+        country="Sweden",
+        degree_levels="Master's",
+        funding_type="Fully Funded",
+        deadline="February (annual)",
+        deadline_date=None,
+        deadline_precision="varies",
+        application_period="Annual; application in two steps",
+        eligibility_summary=(
+            "Professionals from eligible countries with at least 3,000 hours of work experience. "
+            "Leadership experience and commitment to sustainable development required."
+        ),
+        coverage=[
+            "Full tuition fees",
+            "Monthly living allowance (SEK 12,000)",
+            "Travel grant",
+            "Insurance",
+        ],
+        required_documents=[
+            "SI scholarship application",
+            "University admission application",
+            "CV",
+            "Letters of reference",
+            "Proof of work experience",
+        ],
+        official_source_url="https://si.se/en/apply/scholarships/si-scholarship-for-global-professionals/2026",
+        official_source="Swedish Institute (SI)",
+        is_verified=True,
+        english_requirement="IELTS 6.5 or equivalent (per university)",
+        best_fit="Experienced professionals from eligible countries seeking Master's in Sweden",
+        notes="Focus on leadership and sustainable development. Highly competitive.",
+    ),
+    ScholarshipIngestionRecord(
+        name="PEC-PG (Postgraduate) Scholarship - Brazil",
+        country="Brazil",
+        degree_levels="Master's, PhD",
+        funding_type="Fully Funded",
+        deadline="Varies by embassy (typically Mar-Jun)",
+        deadline_date=None,
+        deadline_precision="varies",
+        application_period="Annual; apply via Brazilian embassies",
+        eligibility_summary=(
+            "Graduates from developing countries with diplomatic relations with Brazil. "
+            "Must hold a Bachelor's/Master's degree. Age limits apply."
+        ),
+        coverage=[
+            "Tuition at Brazilian public universities",
+            "Monthly stipend",
+            "Health insurance",
+            "Settlement allowance",
+            "Research support",
+        ],
+        required_documents=[
+            "Application form",
+            "Academic transcripts",
+            "Degree certificate",
+            "Research proposal (PhD)",
+            "Medical certificate",
+            "Passport copy",
+        ],
+        official_source_url="https://www.gov.br/mre/pt-br/assuntos/cultura-e-educacao/educacao/pec-pg",
+        official_source="Ministry of Foreign Affairs of Brazil (MRE)",
+        is_verified=True,
+        english_requirement="Portuguese proficiency (CELPE-Bras) required",
+        best_fit="Graduate students from developing countries seeking Master's/PhD in Brazil",
+        notes="Programa de Estudantes-Convênio de Pós-Graduação. Covers full postgraduate degree.",
+    ),
+)
+
 
 ADDITIONAL_VERIFIED_SCHOLARSHIPS: tuple[ScholarshipIngestionRecord, ...] = (
     *UK_SCHOLARSHIPS,
@@ -5538,6 +6955,13 @@ ADDITIONAL_VERIFIED_SCHOLARSHIPS: tuple[ScholarshipIngestionRecord, ...] = (
     *POLAND_SCHOLARSHIPS,
     *CZECH_REPUBLIC_SCHOLARSHIPS,
     *PORTUGAL_SCHOLARSHIPS,
+    *TURKIYE_FULLTIME_SCHOLARSHIPS,
+    *TURKIYE_SHORTTERM_SCHOLARSHIPS,
+    *STIPENDIUM_HUNGARICUM_CORRECTED,
+    *CZECH_GOV_SCHOLARSHIPS_CORRECTED,
+    *SLOVAKIA_NSP_CORRECTED,
+    *CHINA_CSC_CORRECTED,
+    *ERNST_MACH_GRANT_CORRECTED,
     *SAUDI_ARABIA_SCHOLARSHIPS,
     *UAE_SCHOLARSHIPS,
     *RUSSIA_SCHOLARSHIPS,
@@ -5545,4 +6969,5 @@ ADDITIONAL_VERIFIED_SCHOLARSHIPS: tuple[ScholarshipIngestionRecord, ...] = (
     *KAZAKHSTAN_SCHOLARSHIPS,
     *ROMANIA_SCHOLARSHIPS,
     *GREECE_SCHOLARSHIPS,
+    *UPCOMING_GLOBAL_SCHOLARSHIPS,
 )
