@@ -897,19 +897,41 @@ def test_sqlite_migration_injected_failure_rollback():
     6. The database remains usable after a failed migration
     7. SQLAlchemy event listeners trace BEGIN/COMMIT/ROLLBACK
 
-    IMPORTANT: The migration has TWO separate transaction scopes:
-    - _upgrade_maintenance_slot_schema() - opens its own engine.begin()
-    - _upgrade_sqlite_schema() - opens its own engine.begin()
-
-    NOTE: SQLite DDL rollback requires explicit BEGIN EXCLUSIVE TRANSACTION.
-    SQLAlchemy's engine.begin() uses Python sqlite3's implicit transaction
-    management which only wraps DML, not DDL. This test uses a raw sqlite3
-    connection with explicit transaction for the failure injection to verify
-    that the migration's SQL statements support proper rollback.
+    Key technical approach:
+    - Monkeypatches SQLite dialect's do_begin to emit BEGIN IMMEDIATE
+      (SQLite requires explicit BEGIN IMMEDIATE/EXCLUSIVE for transactional DDL)
+    - Uses SQLAlchemy's after_cursor_execute event to count real DDL executions
+      from the ACTUAL _upgrade_sqlite_schema() and inject failure after 2+ DDLs
+    - Lets the actual migration transaction unwind naturally via rollback
+    - Verifies exact pre/post state equality using capture_complete_db_state()
     """
-    import sqlite3
+    import tempfile
+    from pathlib import Path
+    from sqlalchemy import create_engine, event, text
+    from sqlalchemy.engine import Connection
     
-    with temp_db() as engine:
+    # Create temp database with isolation_level=None to ensure DDL is transactional
+    # SQLite's default implicit transaction only wraps DML; explicit BEGIN required for DDL
+    with tempfile.NamedTemporaryFile(suffix='.db', delete=False) as f:
+        db_path = f.name
+    
+    try:
+        # Create engine with default settings
+        engine = create_engine(f'sqlite:///{db_path}', connect_args={"check_same_thread": False})
+        
+        # Monkeypatch the dialect to emit BEGIN IMMEDIATE for proper DDL rollback
+        # SQLite requires explicit BEGIN IMMEDIATE/EXCLUSIVE for transactional DDL
+        from sqlalchemy.dialects.sqlite import pysqlite
+        original_do_begin = pysqlite.SQLiteDialect_pysqlite.do_begin
+        
+        def immediate_do_begin(self, dbapi_connection):
+            # Use exec_driver_sql to bypass SQLAlchemy's transaction state
+            cursor = dbapi_connection.cursor()
+            cursor.execute("BEGIN IMMEDIATE")
+            cursor.close()
+        
+        pysqlite.SQLiteDialect_pysqlite.do_begin = immediate_do_begin
+        
         # ============================================================
         # SETUP: Create pre-migration schema with data
         # ============================================================
@@ -943,169 +965,72 @@ def test_sqlite_migration_injected_failure_rollback():
             transaction_events.append(("ROLLBACK", id(conn)))
 
         # ============================================================
-        # INJECT FAILURE USING EXPLICIT SQLITE TRANSACTION
+        # INJECT FAILURE USING SQLAlchemy's after_cursor_execute EVENT
         # 
-        # SQLAlchemy's engine.begin() doesn't emit explicit BEGIN for DDL
-        # in SQLite (Python sqlite3 only wraps DML in implicit transactions).
-        # To verify EXACT rollback, we execute the migration steps manually
-        # within an explicit raw sqlite3 transaction, injecting failure at
-        # the 3rd ALTER TABLE on scholarships.
+        # This fires AFTER each statement executes, within the transaction context.
+        # Count real DDL executions from the ACTUAL _upgrade_sqlite_schema()
+        # and inject failure after at least 2 successful DDL statements.
+        # This calls the REAL migration function, not manually reconstructed ALTER TABLEs.
         # ============================================================
-        # Get the database path from the engine
-        db_path = str(engine.url).replace("sqlite:///", "")
-        
-        # Connect with raw sqlite3 for explicit transaction control
-        raw_conn = sqlite3.connect(db_path)
-        raw_conn.execute("PRAGMA foreign_keys = ON")
-        
-        # Track ALTER TABLE count for failure injection
-        alter_count = [0]
+        ddl_count = [0]
         failure_injected = [False]
         
-        # Execute migration steps up to the failure point within explicit transaction
-        try:
-            raw_conn.execute("BEGIN EXCLUSIVE TRANSACTION")
+        # Track which connection is the migration connection
+        migration_conn_id = [None]
+
+        @event.listens_for(engine, "before_cursor_execute")
+        def on_before_cursor_execute(conn, cursor, statement, parameters, context, executemany):
+            # Capture the connection ID when the migration transaction begins
+            # We detect the migration by checking if it's a DDL statement
+            pass
+
+        @event.listens_for(engine, "after_cursor_execute")
+        def on_after_cursor_execute(conn, cursor, statement, parameters, context, executemany):
+            sql_text = statement.strip().upper()
             
-            # Get columns that need to be added (from _upgrade_sqlite_schema additions dict)
-            # We only test the ALTER TABLE steps for scholarships table
-            additions = {
-                "status": "VARCHAR(20) NOT NULL DEFAULT 'open'",
-                "last_verified_at": "DATE",
-                "last_verified_date": "DATE",
-                "region": "VARCHAR(255)",
-                "duration": "TEXT",
-                "application_period": "TEXT",
-                "official_source": "VARCHAR(255)",
-                "official_source_url": "VARCHAR(2048)",
-                "catalogue_url": "VARCHAR(2048)",
-                "official_updates_url": "VARCHAR(2048)",
-                "application_link": "VARCHAR(2048)",
-                "image_url": "VARCHAR(2048)",
-                "image_source_url": "VARCHAR(2048)",
-                "image_source_type": "VARCHAR(32)",
-                "image_kind": "VARCHAR(32)",
-                "image_verified_at": "DATETIME",
-                "image_alt_text": "VARCHAR(512)",
-                "image_evaluation_status": "VARCHAR(32)",
-                "image_evaluated_at": "DATETIME",
-                "eligibility": "JSON NOT NULL DEFAULT '[]'",
-                "eligibility_summary": "TEXT",
-                "benefits": "JSON NOT NULL DEFAULT '[]'",
-                "coverage": "JSON NOT NULL DEFAULT '[]'",
-                "requirements": "JSON NOT NULL DEFAULT '[]'",
-                "documents": "JSON NOT NULL DEFAULT '[]'",
-                "english_requirement": "TEXT",
-                "application_method": "JSON NOT NULL DEFAULT '[]'",
-                "selection_notes": "TEXT",
-                "program_type": "VARCHAR(255)",
-                "best_fit": "TEXT",
-                "notes": "TEXT",
-                "verification_status": "TEXT NOT NULL DEFAULT 'active'",
-                "next_verification_due": "DATE",
-                "verified_by": "VARCHAR(120)",
-                "verification_notes": "TEXT",
-                "is_archived": "BOOLEAN NOT NULL DEFAULT FALSE",
-                "archived_at": "DATETIME",
-                "archived_reason": "VARCHAR(120)",
-                "funding_amount": "NUMERIC(12, 2)",
-                "funding_currency": "VARCHAR(8)",
-                "funding_period": "VARCHAR(64)",
-                "tuition_coverage": "BOOLEAN",
-                "living_cost_coverage": "BOOLEAN",
-                "travel_coverage": "BOOLEAN",
-                "fully_funded": "BOOLEAN",
-                "funding_details": "JSON",
-                "official_details": "JSON",
-                "applicant_utility": "JSON",
-                "programme_verification": "JSON",
-                "auto_delete_candidate_since": "DATETIME",
-                "deletion_protected": "BOOLEAN NOT NULL DEFAULT FALSE",
-                "departments": "JSON NOT NULL DEFAULT '[]'",
-                "eligible_fields": "JSON NOT NULL DEFAULT '[]'",
-                "eligible_programmes": "JSON NOT NULL DEFAULT '[]'",
-                "academic_provenance": "JSON",
-            }
+            # Count DDL statements: ALTER TABLE, CREATE TABLE, CREATE INDEX, DROP TABLE, etc.
+            is_ddl = sql_text.startswith(('ALTER TABLE', 'CREATE TABLE', 'CREATE INDEX', 
+                                           'DROP TABLE', 'CREATE TRIGGER', 'CREATE VIEW'))
             
-            # Check which columns already exist
-            existing_cols = set()
-            for row in raw_conn.execute("PRAGMA table_info(scholarships)").fetchall():
-                existing_cols.add(row[1])
-            
-            # Execute ALTER TABLE for missing columns, fail on 3rd scholarships ALTER TABLE
-            for name, definition in additions.items():
-                if name not in existing_cols:
-                    alter_count[0] += 1
-                    print(f"Executing ALTER TABLE #{alter_count[0]}: ADD COLUMN {name} {definition}")
-                    raw_conn.execute(f"ALTER TABLE scholarships ADD COLUMN {name} {definition}")
-                    if alter_count[0] == 3:
-                        # Inject failure at 3rd ALTER TABLE
-                        raise Exception("Injected migration failure at 3rd ALTER TABLE in _upgrade_sqlite_schema")
-            
-            # If we get here without failure, commit (should not happen in this test)
-            raw_conn.execute("COMMIT")
-            failure_injected[0] = False
-            
-        except Exception as e:
-            if "Injected migration failure" in str(e):
-                failure_injected[0] = True
-                raw_conn.execute("ROLLBACK")
-            else:
-                raw_conn.execute("ROLLBACK")
-                raise
-        finally:
-            raw_conn.close()
-        
-        assert failure_injected[0], "Failure should have been injected at 3rd ALTER TABLE"
-        assert alter_count[0] == 3, f"Expected 3 ALTER TABLEs before failure, got {alter_count[0]}"
-
-        # ============================================================
-        # VERIFY TRANSACTION ROLLBACK OCCURRED (SQLAlchemy events)
-        # 
-        # Note: The failure injection above uses raw sqlite3 with explicit
-        # transaction for EXACT rollback verification (SQLite DDL requires
-        # explicit BEGIN). SQLAlchemy's engine.begin() doesn't emit explicit
-        # BEGIN for DDL, so we separately verify SQLAlchemy events fire when
-        # the actual migration function is called.
-        # ============================================================
-        # Verify SQLAlchemy events by calling migration with early failure
-        transaction_events = []
-
-        @event.listens_for(engine, "begin")
-        def on_begin(conn):
-            transaction_events.append(("BEGIN", id(conn)))
-
-        @event.listens_for(engine, "commit")
-        def on_commit(conn):
-            transaction_events.append(("COMMIT", id(conn)))
-
-        @event.listens_for(engine, "rollback")
-        def on_rollback(conn):
-            transaction_events.append(("ROLLBACK", id(conn)))
-
-        # Monkeypatch to fail on FIRST execute to verify events fire
-        from sqlalchemy.engine import Connection
-        original_execute = Connection.execute
-
-        def early_failing_execute(self, statement, *args, **kwargs):
-            raise Exception("Early failure to verify SQLAlchemy events")
-
-        Connection.execute = early_failing_execute
+            if is_ddl:
+                ddl_count[0] += 1
+                print(f"DDL #{ddl_count[0]} executed: {statement[:100]}")
+                
+                # Capture the migration connection ID
+                if migration_conn_id[0] is None:
+                    migration_conn_id[0] = id(conn)
+                
+                # Inject failure after at least 2 DDL statements
+                if ddl_count[0] >= 2 and not failure_injected[0]:
+                    failure_injected[0] = True
+                    # Raise exception to trigger rollback - this will be caught by the
+                    # migration's engine.begin() context manager
+                    raise Exception(f"Injected migration failure after {ddl_count[0]} DDL statements in _upgrade_sqlite_schema")
 
         try:
             _upgrade_sqlite_schema(engine)
+            assert False, "Migration should have raised an exception due to injected failure"
         except Exception as e:
-            assert "Early failure" in str(e)
-        finally:
-            Connection.execute = original_execute
+            assert "Injected migration failure" in str(e), f"Wrong exception: {e}"
 
+        # Remove event listeners to avoid affecting subsequent operations
+        event.remove(engine, "after_cursor_execute", on_after_cursor_execute)
+        event.remove(engine, "before_cursor_execute", on_before_cursor_execute)
+
+        assert failure_injected[0], "Failure should have been injected during migration"
+        assert ddl_count[0] >= 2, f"Expected at least 2 DDL statements before failure, got {ddl_count[0]}"
+
+        # ============================================================
+        # VERIFY TRANSACTION ROLLBACK OCCURRED (SQLAlchemy events)
+        # ============================================================
         begin_count = sum(1 for e, _ in transaction_events if e == "BEGIN")
         commit_count = sum(1 for e, _ in transaction_events if e == "COMMIT")
         rollback_count = sum(1 for e, _ in transaction_events if e == "ROLLBACK")
         
-        print(f"SQLAlchemy Transaction events (from actual migration call): {transaction_events}")
+        print(f"SQLAlchemy Transaction events: {transaction_events}")
         print(f"BEGIN={begin_count}, COMMIT={commit_count}, ROLLBACK={rollback_count}")
         
-        # SQLAlchemy events should show transaction activity
+        # SQLAlchemy events should show transaction activity with rollback
         assert begin_count >= 1, f"Expected at least 1 BEGIN event, got {begin_count}"
         assert rollback_count >= 1, f"Expected at least 1 ROLLBACK event, got {rollback_count}"
         assert commit_count == 0, f"Expected 0 COMMIT events (should have rolled back), got {commit_count}"
@@ -1167,6 +1092,13 @@ def test_sqlite_migration_injected_failure_rollback():
             assert t in actual_tables, f"Expected table {t} missing after successful migration"
 
         print("Injected failure rollback test PASSED with EXACT state equality!")
+        
+    finally:
+        # Restore original dialect do_begin
+        from sqlalchemy.dialects.sqlite import pysqlite
+        pysqlite.SQLiteDialect_pysqlite.do_begin = original_do_begin
+        engine.dispose()
+        Path(db_path).unlink(missing_ok=True)
 
 
 def test_sqlite_migration_index_sql_strict():
