@@ -4,9 +4,9 @@
 **Branch:** fix/deep-scholarship-data-and-card-restoration
 **PR:** #66
 **Initial HEAD (this execution):** 2f416ff
-**Tested Implementation SHA:** 947b509 (last implementation commit before documentation updates)
-**Documentation Commit SHA:** 7b17317601bb172c3ef23c530067cd07902e3902 (this commit)
-**Live PR HEAD:** 7b17317601bb172c3ef23c530067cd07902e3902 (advances with each doc commit)
+**Tested Implementation SHA:** e3137e2fea42a0b9852de10d30f1d777a3a4bb9c (current HEAD with all fixes)
+**Documentation Commit SHA:** (recorded in Git metadata after this commit)
+**Live PR HEAD:** e3137e2fea42a0b9852de10d30f1d777a3a4bb9c
 **Base SHA:** dff6993d8c655277ec619744dc46c8047bbfc596
 **Date:** 2026-11-02
 
@@ -216,15 +216,15 @@ All verified blockers have been resolved with verified evidence. The multi-agent
 3. ✅ Trigger SQL preservation (test_trigger + audit trigger)
 4. ✅ Real foreign-key enforcement (child_table FK with PRAGMA foreign_keys=ON)
 5. ✅ **SQLite DDL transactional rollback demonstrated** (raw sqlite3 test proves CREATE TABLE, ALTER TABLE, CREATE INDEX roll back in explicit transaction)
-6. ✅ **Injected failure with EXACT full-schema rollback verified** (failure injected at 3rd ALTER TABLE in raw sqlite3 explicit transaction mirroring `_upgrade_sqlite_schema` steps; complete database state captured before/after via `capture_complete_db_state()`; `assert_db_state_equal()` confirms identical sqlite_master, table_xinfo, foreign_keys, index_details, trigger_sql, view_sql, check_constraints, unique_constraints, sqlite_sequence, table_data, pragma_state, foreign_key_check)
+6. ✅ **Injected failure with EXACT full-schema rollback verified** (calls ACTUAL `_upgrade_sqlite_schema(engine)` with application migration engine; uses SQLAlchemy `after_cursor_execute` event to count real DDL executions and inject failure after 2+ successful DDL statements; migration engine uses `isolation_level=None` + engine-specific `begin` event listener that emits `BEGIN IMMEDIATE` for transactional DDL; `assert_db_state_equal()` confirms identical sqlite_master, table_xinfo, foreign_keys, index_details, trigger_sql, view_sql, check_constraints, unique_constraints, sqlite_sequence, table_data, pragma_state, foreign_key_check)
 7. ✅ sqlite_sequence high-water mark verification (sequence never decreases)
 8. ✅ Idempotency of second run (no schema drift)
 
-**Key Finding:** SQLite DOES support transactional DDL rollback when using explicit transactions (`BEGIN EXCLUSIVE TRANSACTION` / `ROLLBACK`). The migration uses `engine.begin()` for transaction scope. The strengthened injected-failure test now calls the ACTUAL `_upgrade_sqlite_schema(engine)` function directly, using SQLAlchemy's `after_cursor_execute` event to count real DDL executions and inject failure after at least 2 successful DDL statements. The test verifies exact full-schema rollback equality via `capture_complete_db_state()` and `assert_db_state_equal()`, capturing all persistent schema objects, column definitions, indexes, triggers, constraints, sequence values, and table data. SQLAlchemy event listeners confirm BEGIN/ROLLBACK events fire when the actual migration function encounters an error and rolls back naturally.
+**Key Finding:** SQLite DOES support transactional DDL rollback when using explicit transactions (`BEGIN IMMEDIATE` / `ROLLBACK`). The application now configures a dedicated migration engine (`_get_migration_engine()`) with `isolation_level=None` and an engine-scoped `begin` event listener that emits `BEGIN IMMEDIATE`, ensuring all DDL in `_upgrade_sqlite_schema()` runs inside a real transaction. The strengthened injected-failure test uses this actual application migration engine, verifying exact full-schema rollback equality. SQLAlchemy event listeners confirm BEGIN/ROLLBACK events fire when the actual migration function encounters an error and rolls back naturally.
 
 **Transaction Boundaries:** The migration has TWO separate transaction scopes:
 - `_upgrade_maintenance_slot_schema()` - opens its own `engine.begin()`
-- `_upgrade_sqlite_schema()` - opens its own `engine.begin()`
+- `_upgrade_sqlite_schema()` - opens its own `engine.begin()` on the migration engine
 The injected-failure test captures state after the first migration and verifies rollback within the second transaction scope.
 
 ---
@@ -327,11 +327,12 @@ The injected-failure test captures state after the first migration and verifies 
 
 **PR #66:** https://github.com/gopal735/ScholarZone/pull/66 (OPEN, NOT MERGED)
 
-**Tested Implementation SHA:** 7b17317601bb172c3ef23c530067cd07902e3902 (current HEAD with all fixes including strengthened SQLite rollback test)
+**Tested Implementation SHA:** e3137e2fea42a0b9852de10d30f1d777a3a4bb9c (current HEAD with all fixes including strengthened SQLite rollback test using actual application engine)
 **Documentation Commit SHA:** (recorded in Git metadata after this commit)
-**Live PR HEAD:** 7b17317601bb172c3ef23c530067cd07902e3902
+**Live PR HEAD:** e3137e2fea42a0b9852de10d30f1d777a3a4bb9c
 
 **Commits in this PR (since initial HEAD 2f416ff):**
+- e3137e2 fix: strengthen SQLite migration rollback test with actual application engine; complete research ledger audit; update final report
 - 7b17317 fix: strengthen SQLite migration rollback test with exact schema equality; update final report with accurate PARTIAL research status
 - d6496ea docs: update FINAL_COMPLETION_REPORT.md with verified final HEAD 265e043 and correct CI run URLs
 - 265e043 Update FINAL_COMPLETION_REPORT.md with verified final HEAD and accurate gate statuses
@@ -352,9 +353,9 @@ The injected-failure test captures state after the first migration and verifies 
 - 28c5ba2 Remove redundant ci-v2.yml workflow
 - b80c7cf Fix workflow YAML syntax for actionlint
 
-**All Required Checks Passing:** All CI jobs SUCCESS on live PR HEAD 7b17317601bb172c3ef23c530067cd07902e3902
+**All Required Checks Passing:** All CI jobs SUCCESS on live PR HEAD e3137e2fea42a0b9852de10d30f1d777a3a4bb9c
 
-**Exact Check-Run Summary (Push CI - run 41490451862):**
+**Exact Check-Run Summary (Push CI - run 41499357076):**
 - backend-tests: SUCCESS
 - frontend-tests: SUCCESS
 - frontend-lint: SUCCESS
@@ -372,15 +373,13 @@ The injected-failure test captures state after the first migration and verifies 
 - Zero-Paid Dependency Guard: SUCCESS
 - Netlify/Vercel: NEUTRAL (external checks)
 
-**Exact Check-Run Summary (Pull Request CI - run 41490463129):**
+**Exact Check-Run Summary (Pull Request CI - run 41499367185):**
 Same jobs as push, all SUCCESS
 
-**Push CI URL:** https://github.com/gopal735/ScholarZone/actions/runs/41490451862
-**Pull Request CI URL:** https://github.com/gopal735/ScholarZone/actions/runs/41490463129
+**Push CI URL:** https://github.com/gopal735/ScholarZone/actions/runs/41499357076
+**Pull Request CI URL:** https://github.com/gopal735/ScholarZone/actions/runs/41499367185
 
 ---
-
-## VERIFICATION COMMANDS
 
 ## VERIFICATION COMMANDS
 

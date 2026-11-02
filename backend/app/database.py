@@ -5,7 +5,7 @@ from collections.abc import Generator
 from functools import lru_cache
 from pathlib import Path
 
-from sqlalchemy import Engine, create_engine, inspect, text
+from sqlalchemy import Engine, create_engine, inspect, text, event
 from sqlalchemy.orm import Session, sessionmaker
 
 from .core.config import get_settings
@@ -64,6 +64,46 @@ def get_engine() -> Engine:
     return create_engine(database_url, **engine_kwargs)
 
 
+def _get_migration_engine() -> Engine:
+    """
+    Get an engine configured for migrations with explicit SQLite transaction behavior.
+    
+    SQLite's default implicit transaction only wraps DML; explicit BEGIN IMMEDIATE
+    is required for DDL statements (ALTER TABLE, CREATE INDEX, etc.) to be
+    rolled back on error. This creates a dedicated engine with isolation_level=None
+    and an engine-specific event listener that emits BEGIN IMMEDIATE.
+    
+    For in-memory databases (:memory:), returns the standard engine because
+    each connection to :memory: creates a separate database instance.
+    """
+    database_url = get_settings().database_url
+    _enforce_test_isolation(database_url)
+    
+    if not database_url.startswith("sqlite"):
+        # For PostgreSQL, use the standard engine
+        return get_engine()
+    
+    # For in-memory SQLite, each connection is a separate database.
+    # The migration engine must be the same as the main engine to share the database.
+    if database_url == "sqlite:///:memory:" or database_url == "sqlite:///:memory:":
+        return get_engine()
+    
+    connect_args = {"check_same_thread": False}
+    engine_kwargs: dict = {"connect_args": connect_args, "pool_pre_ping": True, "isolation_level": None}
+    
+    engine = create_engine(database_url, **engine_kwargs)
+    
+    # Install engine-specific event listener to emit BEGIN IMMEDIATE
+    # This is scoped to this engine only, avoiding conflicts with other connections
+    @event.listens_for(engine, "begin")
+    def _do_begin_immediate(conn):
+        # Execute BEGIN IMMEDIATE to start a real transaction that supports DDL rollback
+        # Use exec_driver_sql to bypass SQLAlchemy's transaction state
+        conn.exec_driver_sql("BEGIN IMMEDIATE")
+    
+    return engine
+
+
 @lru_cache
 def get_session_factory() -> sessionmaker[Session]:
     return sessionmaker(bind=get_engine(), autoflush=False, autocommit=False, expire_on_commit=False)
@@ -90,7 +130,12 @@ def init_database() -> None:
     # idempotent DDL.
     _upgrade_maintenance_slot_schema(engine)
     if engine.dialect.name == "sqlite":
-        _upgrade_sqlite_schema(engine)
+        # Use migration engine with explicit transaction behavior for DDL rollback
+        migration_engine = _get_migration_engine()
+        try:
+            _upgrade_sqlite_schema(migration_engine)
+        finally:
+            migration_engine.dispose()
     elif engine.dialect.name == "postgresql":
         _upgrade_postgresql_schema(engine)
         _validate_postgresql_schema(engine)
