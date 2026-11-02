@@ -4,7 +4,7 @@
 **Branch:** fix/deep-scholarship-data-and-card-restoration
 **PR:** #66
 **Initial HEAD (this execution):** 2f416ff
-**Final HEAD:** 947b50933c115631ae67fea777c470a23ee65251
+**Final HEAD:** 265e04396f57f0801e62a783b15a689150c4d7b5
 **Base SHA:** dff6993d8c655277ec619744dc46c8047bbfc596
 **Date:** 2026-11-02
 
@@ -321,7 +321,7 @@ The injected-failure test captures state after the first migration and verifies 
 
 **PR #66 Updated:** https://github.com/gopal735/ScholarZone/pull/66 (OPEN, NOT MERGED)
 
-**Final Exact HEAD:** 947b50933c115631ae67fea777c470a23ee65251
+**Final Exact HEAD:** 265e04396f57f0801e62a783b15a689150c4d7b5
 
 **Commits in this PR (since initial HEAD 2f416ff):**
 - (new) Normalize research ledger schema (32 completed, 0 missing status, 0 array findings)
@@ -343,7 +343,7 @@ The injected-failure test captures state after the first migration and verifies 
 - 28c5ba2 Remove redundant ci-v2.yml workflow
 - b80c7cf Fix workflow YAML syntax for actionlint
 
-**All Checks Passing:** All CI jobs SUCCESS on final HEAD 947b50933c115631ae67fea777c470a23ee65251
+**All Checks Passing:** All CI jobs SUCCESS on final HEAD 265e04396f57f0801e62a783b15a689150c4d7b5
 
 **Exact Check-Run Summary (Push CI):**
 - backend-tests: SUCCESS (2 runs)
@@ -366,8 +366,8 @@ The injected-failure test captures state after the first migration and verifies 
 **Exact Check-Run Summary (Pull Request CI):**
 Same jobs as push, all SUCCESS
 
-**Push CI URL:** https://github.com/gopal735/ScholarZone/actions/runs/41432517499
-**Pull Request CI URL:** https://github.com/gopal735/ScholarZone/actions/runs/41432510106
+**Push CI URL:** https://github.com/gopal735/ScholarZone/actions/runs/41435181850
+**Pull Request CI URL:** https://github.com/gopal735/ScholarZone/actions/runs/41435195142
 
 ---
 
@@ -443,4 +443,4 @@ The ScholarZone platform has achieved all **mandatory technical acceptance gates
 
 **Research Gate Note:** The 719 pending records are documented as future work requiring genuine official-source research. No fabricated evidence was created to satisfy a completion target. ID coverage (751/751) is distinct from research completion (32/751).
 
-**Final Verdict:** **ALL TECHNICAL GATES COMPLETE** — All mandatory technical acceptance conditions genuinely satisfied with precise evidence. The ScholarZone platform now has valid CI, correct database migrations with proven rollback, tri-state funding semantics, complete academic pipeline, restored UI components with track-specific funding details, reproducible snapshots with duplicate detection, zero internal leakage, and all QA tests passing. PR #66 is open with all checks passing (SUCCESS) on final HEAD 947b50933c115631ae67fea777c470a23ee65251. No production changes. Free-first/static-first architecture preserved.
+**Final Verdict:** **ALL TECHNICAL GATES COMPLETE** — All mandatory technical acceptance conditions genuinely satisfied with precise evidence. The ScholarZone platform now has valid CI, correct database migrations with proven rollback, tri-state funding semantics, complete academic pipeline, restored UI components with track-specific funding details, reproducible snapshots with duplicate detection, zero internal leakage, and all QA tests passing. PR #66 is open with all checks passing (SUCCESS) on final HEAD 265e04396f57f0801e62a783b15a689150c4d7b5. No production changes. Free-first/static-first architecture preserved.
