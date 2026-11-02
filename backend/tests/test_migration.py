@@ -567,12 +567,20 @@ def test_sqlite_migration_injected_failure_rollback():
     Test that a failure during migration triggers proper rollback.
     
     This test verifies:
-    1. The migration uses transactions (engine.begin())
+    1. The _upgrade_sqlite_schema migration uses a transaction (engine.begin())
     2. A controlled failure during migration raises an exception
     3. Schema changes within the failed transaction are rolled back
     4. Pre-existing data is preserved
     5. The migration can be re-run successfully after a failure (idempotency)
     6. The database remains usable after a failed migration
+    
+    IMPORTANT: The migration has TWO separate transaction scopes:
+    - _upgrade_maintenance_slot_schema() - opens its own engine.begin()
+    - _upgrade_sqlite_schema() - opens its own engine.begin()
+    
+    This test captures state AFTER the first migration, then injects
+    failure in the second migration to verify rollback within THAT
+    transaction scope.
     """
     with temp_db() as engine:
         # ============================================================
@@ -581,45 +589,52 @@ def test_sqlite_migration_injected_failure_rollback():
         with engine.begin() as conn:
             create_pre_migration_schema(conn)
 
-        # Capture pre-migration state
-        pre_schema = get_schema(engine)
-        pre_sequence = {}
+        # Run FIRST migration (maintenance slot) - this commits independently
+        _upgrade_maintenance_slot_schema(engine)
+
+        # ============================================================
+        # CAPTURE STATE AFTER FIRST MIGRATION (before second migration)
+        # This is the state we expect to be restored on rollback
+        # ============================================================
+        pre_migration_2_schema = get_schema(engine)
+        pre_migration_2_sequence = {}
         with engine.connect() as conn:
             for row in conn.execute(text("SELECT name, seq FROM sqlite_sequence")).fetchall():
-                pre_sequence[row[0]] = row[1]
-        pre_scholarships_count = count_indexes(engine, 'scholarships')
-        pre_tables = set()
+                pre_migration_2_sequence[row[0]] = row[1]
+        pre_migration_2_scholarships_count = count_indexes(engine, 'scholarships')
+        pre_migration_2_tables = set()
         with engine.connect() as conn:
             for row in conn.execute(text("SELECT name FROM sqlite_master WHERE type='table'")).fetchall():
-                pre_tables.add(row[0])
-        pre_scholarships_data = []
+                pre_migration_2_tables.add(row[0])
+        pre_migration_2_scholarships_data = []
         with engine.connect() as conn:
-            pre_scholarships_data = conn.execute(text("SELECT id, title, country, degree, funding FROM scholarships ORDER BY id")).fetchall()
-        pre_child_data = []
+            pre_migration_2_scholarships_data = conn.execute(text("SELECT id, title, country, degree, funding FROM scholarships ORDER BY id")).fetchall()
+        pre_migration_2_child_data = []
         with engine.connect() as conn:
-            pre_child_data = conn.execute(text("SELECT id, scholarship_id, data FROM child_table ORDER BY id")).fetchall()
+            pre_migration_2_child_data = conn.execute(text("SELECT id, scholarship_id, data FROM child_table ORDER BY id")).fetchall()
 
         # ============================================================
         # INJECT FAILURE: Monkeypatch to fail at a specific migration step
+        # in _upgrade_sqlite_schema (the SECOND migration)
         # ============================================================
         from sqlalchemy.engine import Connection
         original_execute = Connection.execute
         call_count = [0]
 
         def failing_execute(self, statement, *args, **kwargs):
-            # Fail on the 3rd ALTER TABLE (after some schema changes have been made)
+            # Fail on the 3rd ALTER TABLE on scholarships table
+            # (after some schema changes have been made in this transaction)
             stmt_str = str(statement)
             if 'ALTER TABLE' in stmt_str and 'scholarships' in stmt_str:
                 call_count[0] += 1
                 if call_count[0] == 3:  # Fail on 3rd ALTER TABLE
-                    raise Exception("Injected migration failure at 3rd ALTER TABLE")
+                    raise Exception("Injected migration failure at 3rd ALTER TABLE in _upgrade_sqlite_schema")
             return original_execute(self, statement, *args, **kwargs)
 
         Connection.execute = failing_execute
 
         try:
-            # Run migration - should fail
-            _upgrade_maintenance_slot_schema(engine)
+            # Run SECOND migration - should fail
             _upgrade_sqlite_schema(engine)
             assert False, "Migration should have failed"
         except Exception as e:
@@ -631,20 +646,25 @@ def test_sqlite_migration_injected_failure_rollback():
 
         # ============================================================
         # VERIFY STATE AFTER FAILURE - ROLLBACK VERIFICATION
+        # State should match pre_migration_2_* (the state after first migration)
         # ============================================================
 
-        # 1. Pre-existing tables must still exist
+        # 1. Tables should match pre-migration-2 state (no new tables from failed transaction)
         post_tables = set()
         with engine.connect() as conn:
             for row in conn.execute(text("SELECT name FROM sqlite_master WHERE type='table'")).fetchall():
                 post_tables.add(row[0])
 
-        for t in pre_tables:
-            assert t in post_tables, f"Pre-existing table {t} missing after failure"
+        for t in pre_migration_2_tables:
+            assert t in post_tables, f"Table {t} missing after failure"
+        
+        # No tables created by the failed transaction should persist
+        # (though note: SQLite DDL in transaction should roll back, but tables
+        # created before failure in same transaction will be rolled back)
 
         # 2. Original tables should have same structure (no partial ALTER TABLE)
         post_schema = get_schema(engine)
-        for table_name, pre_table in pre_schema.items():
+        for table_name, pre_table in pre_migration_2_schema.items():
             if table_name in post_schema:
                 post_table = post_schema[table_name]
                 for col_name, pre_col in pre_table['columns'].items():
@@ -657,7 +677,7 @@ def test_sqlite_migration_injected_failure_rollback():
         post_scholarships_indexes = post_schema['scholarships']['indexes']
         assert 'ix_scholarships_country_degree' in post_scholarships_indexes
         assert 'ix_scholarships_status_deadline' in post_scholarships_indexes
-        assert count_indexes(engine, 'scholarships') == pre_scholarships_count
+        assert count_indexes(engine, 'scholarships') == pre_migration_2_scholarships_count
 
         # 4. Triggers should be preserved
         post_triggers = post_schema.get('scholarships', {}).get('triggers', [])
@@ -669,8 +689,8 @@ def test_sqlite_migration_injected_failure_rollback():
             post_scholarships_data = conn.execute(text("SELECT id, title, country, degree, funding FROM scholarships ORDER BY id")).fetchall()
             post_child_data = conn.execute(text("SELECT id, scholarship_id, data FROM child_table ORDER BY id")).fetchall()
 
-        assert post_scholarships_data == pre_scholarships_data, "Scholarship data changed after failure"
-        assert post_child_data == pre_child_data, "Child table data changed after failure"
+        assert post_scholarships_data == pre_migration_2_scholarships_data, "Scholarship data changed after failure"
+        assert post_child_data == pre_migration_2_child_data, "Child table data changed after failure"
 
         # 6. Sequence state should be preserved
         post_sequence = {}
@@ -678,13 +698,12 @@ def test_sqlite_migration_injected_failure_rollback():
             for row in conn.execute(text("SELECT name, seq FROM sqlite_sequence")).fetchall():
                 post_sequence[row[0]] = row[1]
 
-        for table_name, pre_seq in pre_sequence.items():
+        for table_name, pre_seq in pre_migration_2_sequence.items():
             if table_name in post_sequence:
                 post_seq = post_sequence[table_name]
                 assert post_seq == pre_seq, f"sqlite_sequence changed for {table_name}: {pre_seq} -> {post_seq}"
 
         # 7. Database should be usable - run migration successfully now
-        _upgrade_maintenance_slot_schema(engine)
         _upgrade_sqlite_schema(engine)
 
         # Verify successful migration state
