@@ -30,7 +30,18 @@ def load_snapshot_ids() -> set[int]:
         raise FileNotFoundError(f"Snapshot not found at {SNAPSHOT_PATH}")
     with SNAPSHOT_PATH.open("r", encoding="utf-8") as f:
         data: dict[str, Any] = json.load(f)
-    return {item["id"] for item in data.get("scholarships", [])}
+    scholarships = data.get("scholarships", [])
+    # Check for duplicate IDs before converting to set
+    ids_list = [item["id"] for item in scholarships]
+    seen = set()
+    duplicates = set()
+    for id_val in ids_list:
+        if id_val in seen:
+            duplicates.add(id_val)
+        seen.add(id_val)
+    if duplicates:
+        raise ValueError(f"Snapshot contains duplicate IDs: {sorted(duplicates)}")
+    return set(ids_list)
 
 
 def load_sitemap_ids() -> set[int]:
@@ -39,7 +50,17 @@ def load_sitemap_ids() -> set[int]:
         raise FileNotFoundError(f"Sitemap not found at {SITEMAP_PATH}")
     content = SITEMAP_PATH.read_text(encoding="utf-8")
     pattern = r"/scholarships/(\d+)"
-    return {int(match) for match in re.findall(pattern, content)}
+    ids_list = [int(match) for match in re.findall(pattern, content)]
+    # Check for duplicate IDs before converting to set
+    seen = set()
+    duplicates = set()
+    for id_val in ids_list:
+        if id_val in seen:
+            duplicates.add(id_val)
+        seen.add(id_val)
+    if duplicates:
+        raise ValueError(f"Sitemap contains duplicate IDs: {sorted(duplicates)}")
+    return set(ids_list)
 
 
 def load_ledger_ids() -> set[int]:

@@ -1,3 +1,5 @@
+import { readFundingDetails } from '../utils/scholarshipDetail'
+
 /* ═══════════════════════════════════════════════════════════════════
    Static scholarship service — the API-independent catalogue
 
@@ -315,8 +317,8 @@ export function toScholarship(record) {
     eligible_fields: record.eligible_fields,
     eligible_programmes: record.eligible_programmes,
     academic_provenance: record.academic_provenance,
-    // Structured funding details per programme/track
-    funding_details: record.funding_details,
+    // Structured funding details per programme/track (normalized)
+    funding_details: readFundingDetails(record.funding_details),
     // Derived by the same rule the live directory uses, so a card in the
     // fallback reads exactly like a card served by the API.
     statusInfo: statusOf(record),

@@ -14,6 +14,7 @@ import {
   readDate,
   readList,
   readText,
+  readFundingDetails,
   verificationLabel,
 } from '../utils/scholarshipDetail'
 import './ScholarshipDetailsPage.css'
@@ -472,6 +473,9 @@ const description = readText(scholarship.description)
   const applicationPeriod = readText(scholarship.application_period)
   const programType = readText(scholarship.program_type)
 
+  // Structured funding details (track-specific)
+  const fundingDetails = readFundingDetails(scholarship.funding_details)
+
   // Compute whether to show funding section
   const showFunding = (
     (fundingAmount !== null && fundingAmount !== undefined) ||
@@ -480,7 +484,8 @@ const description = readText(scholarship.description)
     tuitionCoverage !== null && tuitionCoverage !== undefined ||
     livingCostCoverage !== null && livingCostCoverage !== undefined ||
     travelCoverage !== null && travelCoverage !== undefined ||
-    duration || applicationPeriod || programType
+    duration || applicationPeriod || programType ||
+    fundingDetails.length > 0
   )
 
   return (
@@ -683,10 +688,115 @@ const description = readText(scholarship.description)
                 </>
               )}
             </dl>
+</DetailBlock>
+        )}
+
+        {/* 02c — FUNDING DETAILS BY TRACK (structured funding_details) */}
+        {fundingDetails.length > 0 && (
+          <DetailBlock
+            id="funding-details"
+            index="02b"
+            eyebrow="Award economics"
+            title="Funding details by track"
+            className="sz-detail__block--prose"
+          >
+            {fundingDetails.map((track, trackIdx) => (
+              <div key={trackIdx} className="sz-detail__funding-track">
+                {(track.programme || track.track_name) && (
+                  <h4 className="sz-detail__funding-track-title">
+                    {track.programme || ''}{track.programme && track.track_name ? ' — ' : ''}{track.track_name || ''}
+                  </h4>
+                )}
+                <dl className="sz-detail__funding-facts">
+                  {track.amount != null && track.currency && (
+                    <>
+                      <dt>Amount</dt>
+                      <dd>
+                        {Number(track.amount).toLocaleString()} {track.currency}
+                        {track.payment_period ? ` / ${track.payment_period}` : ''}
+                      </dd>
+                    </>
+                  )}
+                  {track.amount != null && !track.currency && (
+                    <>
+                      <dt>Amount</dt>
+                      <dd>
+                        {Number(track.amount).toLocaleString()}
+                        {track.payment_period ? ` / ${track.payment_period}` : ''}
+                      </dd>
+                    </>
+                  )}
+                  {track.tuition_coverage != null && (
+                    <>
+                      <dt>Tuition</dt>
+                      <dd>{track.tuition_coverage ? 'Covered' : 'Not covered'}</dd>
+                    </>
+                  )}
+                  {track.living_cost_coverage != null && (
+                    <>
+                      <dt>Living costs</dt>
+                      <dd>{track.living_cost_coverage ? 'Covered' : 'Not covered'}</dd>
+                    </>
+                  )}
+                  {track.accommodation_coverage != null && (
+                    <>
+                      <dt>Accommodation</dt>
+                      <dd>{track.accommodation_coverage ? 'Covered' : 'Not covered'}</dd>
+                    </>
+                  )}
+                  {track.travel_coverage != null && (
+                    <>
+                      <dt>Travel</dt>
+                      <dd>{track.travel_coverage ? 'Covered' : 'Not covered'}</dd>
+                    </>
+                  )}
+                  {track.insurance_coverage != null && (
+                    <>
+                      <dt>Insurance</dt>
+                      <dd>{track.insurance_coverage ? 'Covered' : 'Not covered'}</dd>
+                    </>
+                  )}
+                  {track.other_coverage != null && (
+                    <>
+                      <dt>Other benefits</dt>
+                      <dd>{track.other_coverage ? 'Covered' : 'Not covered'}</dd>
+                    </>
+                  )}
+                  {track.duration && (
+                    <>
+                      <dt>Duration</dt>
+                      <dd>{track.duration}</dd>
+                    </>
+                  )}
+                  {track.conditions && (
+                    <>
+                      <dt>Conditions</dt>
+                      <dd>{track.conditions}</dd>
+                    </>
+                  )}
+                  {track.official_source_url && (
+                    <>
+                      <dt>Official source</dt>
+                      <dd>
+                        <a href={track.official_source_url} target="_blank" rel="noreferrer" className="sz-detail__text-link">
+                          View source <span aria-hidden="true">↗</span>
+                        </a>
+                      </dd>
+                    </>
+                  )}
+                  {track.verification_date && (
+                    <>
+                      <dt>Verified</dt>
+                      <dd>{track.verification_date}</dd>
+                    </>
+                  )}
+                </dl>
+              </div>
+            ))}
           </DetailBlock>
         )}
 
-      {/* 03 — ABOUT */}
+        {/* 03 — ABOUT */}
       <DetailBlock
         id="about"
         index="02"

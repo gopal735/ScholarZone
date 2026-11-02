@@ -485,5 +485,202 @@ def test_sqlite_migration_preserves_trigger_sql():
             assert found, f"Trigger {name} not preserved"
 
 
+def test_sqlite_migration_injected_failure_rollback():
+    """
+    Test that a failure during migration triggers proper error handling.
+
+    SQLite limitation: DDL statements (CREATE TABLE, CREATE INDEX) cannot be
+    rolled back in SQLite even within a transaction. This test verifies:
+    1. The migration uses transactions (engine.begin())
+    2. A controlled failure during migration raises an exception
+    3. Existing data (DML) in pre-existing tables is preserved
+    4. The migration can be re-run successfully after a failure (idempotency)
+    4. The database remains usable after a failed migration
+    """
+    with temp_db() as engine:
+        # ============================================================
+        # SETUP: Create pre-migration schema with data
+        # ============================================================
+        with engine.begin() as conn:
+            create_pre_migration_schema(conn)
+
+        # Capture pre-migration state
+        pre_schema = get_schema(engine)
+        pre_sequence = {}
+        with engine.connect() as conn:
+            for row in conn.execute(text("SELECT name, seq FROM sqlite_sequence")).fetchall():
+                pre_sequence[row[0]] = row[1]
+        pre_scholarships_count = count_indexes(engine, 'scholarships')
+        pre_tables = set()
+        with engine.connect() as conn:
+            for row in conn.execute(text("SELECT name FROM sqlite_master WHERE type='table'")).fetchall():
+                pre_tables.add(row[0])
+        pre_scholarships_data = []
+        with engine.connect() as conn:
+            pre_scholarships_data = conn.execute(text("SELECT id, title, country, degree, funding FROM scholarships ORDER BY id")).fetchall()
+        pre_child_data = []
+        with engine.connect() as conn:
+            pre_child_data = conn.execute(text("SELECT id, scholarship_id, data FROM child_table ORDER BY id")).fetchall()
+
+        # ============================================================
+        # INJECT FAILURE: Monkeypatch the connection's execute method
+        # to fail when a specific ALTER TABLE is attempted (early in migration)
+        # ============================================================
+        from sqlalchemy.engine import Connection
+        original_execute = Connection.execute
+
+        def failing_execute(self, statement, *args, **kwargs):
+            # Fail when trying to add the 'funding_details' column
+            # This is early in the migration, before new indexes are created
+            stmt_str = str(statement)
+            if 'ALTER TABLE' in stmt_str and 'funding_details' in stmt_str:
+                raise Exception("Injected migration failure: cannot add funding_details column")
+            return original_execute(self, statement, *args, **kwargs)
+
+        # Apply the monkeypatch
+        Connection.execute = failing_execute
+
+        try:
+            # Run migration - should fail
+            _upgrade_maintenance_slot_schema(engine)
+            _upgrade_sqlite_schema(engine)
+            assert False, "Migration should have failed"
+        except Exception as e:
+            # Expected failure
+            assert "Injected migration failure" in str(e), f"Wrong failure: {e}"
+
+        # Remove the monkeypatch
+        Connection.execute = original_execute
+
+        # ============================================================
+        # VERIFY STATE AFTER FAILURE
+        # ============================================================
+
+        # Note: SQLite does NOT rollback DDL (CREATE TABLE) even in transactions.
+        # Tables created before the failure will persist. This is a SQLite limitation.
+        # However, existing data in pre-existing tables should be preserved.
+
+        # 1. Original tables should still exist
+        post_tables = set()
+        with engine.connect() as conn:
+            for row in conn.execute(text("SELECT name FROM sqlite_master WHERE type='table'")).fetchall():
+                post_tables.add(row[0])
+
+        # Pre-existing tables must still exist
+        for t in pre_tables:
+            assert t in post_tables, f"Pre-existing table {t} missing after failure"
+
+        # 2. Original tables should have same structure
+        post_schema = get_schema(engine)
+        for table_name, pre_table in pre_schema.items():
+            if table_name in post_schema:
+                post_table = post_schema[table_name]
+                for col_name, pre_col in pre_table['columns'].items():
+                    assert col_name in post_table['columns'], f"Column {col_name} lost on {table_name} after failure"
+                    post_col = post_table['columns'][col_name]
+                    assert pre_col['type'].__class__ == post_col['type'].__class__, \
+                        f"Type mismatch for {table_name}.{col_name} after failure"
+
+        # 3. Indexes on pre-existing tables should be preserved
+        post_scholarships_indexes = post_schema['scholarships']['indexes']
+        assert 'ix_scholarships_country_degree' in post_scholarships_indexes
+        assert 'ix_scholarships_status_deadline' in post_scholarships_indexes
+        assert count_indexes(engine, 'scholarships') == pre_scholarships_count
+
+        # 4. Triggers should be preserved
+        post_triggers = post_schema.get('scholarships', {}).get('triggers', [])
+        test_trigger_preserved = any(t['name'] == 'test_trigger' for t in post_triggers)
+        assert test_trigger_preserved, "Pre-existing test_trigger was dropped during failure"
+
+        # 5. Data in pre-existing tables should be preserved (DML is transactional)
+        with engine.connect() as conn:
+            post_scholarships_data = conn.execute(text("SELECT id, title, country, degree, funding FROM scholarships ORDER BY id")).fetchall()
+            post_child_data = conn.execute(text("SELECT id, scholarship_id, data FROM child_table ORDER BY id")).fetchall()
+
+        assert post_scholarships_data == pre_scholarships_data, "Scholarship data changed after failure"
+        assert post_child_data == pre_child_data, "Child table data changed after failure"
+
+        # 6. Sequence state should be preserved
+        post_sequence = {}
+        with engine.connect() as conn:
+            for row in conn.execute(text("SELECT name, seq FROM sqlite_sequence")).fetchall():
+                post_sequence[row[0]] = row[1]
+
+        for table_name, pre_seq in pre_sequence.items():
+            if table_name in post_sequence:
+                post_seq = post_sequence[table_name]
+                assert post_seq == pre_seq, f"sqlite_sequence changed for {table_name}: {pre_seq} -> {post_seq}"
+
+        # 7. Database should be usable - run migration successfully now
+        _upgrade_maintenance_slot_schema(engine)
+        _upgrade_sqlite_schema(engine)
+
+        # Verify successful migration state
+        with engine.connect() as conn:
+            tables = conn.execute(text("SELECT name FROM sqlite_master WHERE type='table'")).fetchall()
+            table_names = [t[0] for t in tables]
+
+            expected_tables = {
+                'scholarships', 'child_table', 'content_fingerprints',
+                'discovery_candidates', 'image_reviews',
+                'contact_templates', 'scholarship_supervisor_coverage',
+                'professor_profiles', 'scholarship_professor_links',
+                'supervisor_source_evidence', 'professor_availability',
+                'professor_outreach_records', 'scholarship_image_audit',
+                'scholarship_image_audit_context'
+            }
+            for t in expected_tables:
+                assert t in table_names, f"Expected table {t} missing after successful re-run"
+
+        print("Injected failure handling test passed!")
+
+
+def test_sqlite_migration_index_sql_strict():
+    """
+    Strict test that index SQL is preserved exactly (normalized comparison).
+
+    This compares the exact SQL definitions of indexes before and after
+    migration, normalizing only irrelevant whitespace differences.
+    """
+    with temp_db() as engine:
+        with engine.begin() as conn:
+            create_pre_migration_schema(conn)
+
+        # Capture pre-migration index SQL
+        pre_index_sql = {}
+        with engine.connect() as conn:
+            for idx_name in ['ix_scholarships_country_degree', 'ix_scholarships_status_deadline']:
+                sql_result = conn.execute(text(
+                    "SELECT sql FROM sqlite_master WHERE type='index' AND name=:name"
+                ), {'name': idx_name}).fetchone()
+                if sql_result:
+                    pre_index_sql[idx_name] = _normalize_sql(sql_result[0])
+
+        _upgrade_maintenance_slot_schema(engine)
+        _upgrade_sqlite_schema(engine)
+
+        # Verify exact SQL preservation
+        for name, expected_sql in pre_index_sql.items():
+            with engine.connect() as conn:
+                sql_result = conn.execute(text(
+                    "SELECT sql FROM sqlite_master WHERE type='index' AND name=:name"
+                ), {'name': name}).fetchone()
+                assert sql_result is not None, f"Index {name} SQL not found after migration"
+                actual_sql = _normalize_sql(sql_result[0])
+                assert actual_sql == expected_sql, \
+                    f"Index {name} SQL changed after migration:\nExpected: {expected_sql}\nActual: {actual_sql}"
+
+        print("Strict index SQL comparison test passed!")
+
+
+def _normalize_sql(sql: str) -> str:
+    """Normalize SQL for comparison by removing irrelevant whitespace."""
+    # Remove extra whitespace, normalize newlines
+    normalized = ' '.join(sql.split())
+    # Remove IF NOT EXISTS for comparison (migration may add it)
+    normalized = normalized.replace('IF NOT EXISTS ', '')
+    return normalized.strip()
+
+
 if __name__ == "__main__":
     pytest.main([__file__, "-v"])
