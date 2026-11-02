@@ -2,6 +2,7 @@
 
 from contextlib import contextmanager
 from pathlib import Path
+import os
 
 import pytest
 from sqlalchemy import create_engine, inspect, text
@@ -485,17 +486,93 @@ def test_sqlite_migration_preserves_trigger_sql():
             assert found, f"Trigger {name} not preserved"
 
 
+def test_sqlite_ddl_transactional_rollback():
+    """
+    Demonstrate that SQLite supports transactional DDL rollback.
+    
+    This test uses a raw sqlite3 connection to prove that DDL statements
+    (CREATE TABLE, ALTER TABLE, CREATE INDEX) CAN be rolled back when
+    executed within an explicit transaction.
+    """
+    import sqlite3
+    import tempfile
+    import os
+    
+    with tempfile.NamedTemporaryFile(suffix='.db', delete=False) as f:
+        db_path = f.name
+    
+    try:
+        conn = sqlite3.connect(db_path)
+        conn.execute("PRAGMA foreign_keys = ON")
+        
+        # Create initial schema
+        conn.execute("""
+            CREATE TABLE test_table (
+                id INTEGER PRIMARY KEY,
+                name TEXT NOT NULL
+            )
+        """)
+        conn.execute("CREATE INDEX idx_test_name ON test_table (name)")
+        conn.execute("INSERT INTO test_table (name) VALUES ('initial')")
+        conn.commit()
+        
+        # Verify initial state
+        tables_before = conn.execute(
+            "SELECT name FROM sqlite_master WHERE type='table'"
+        ).fetchall()
+        indexes_before = conn.execute(
+            "SELECT name FROM sqlite_master WHERE type='index' AND name='idx_test_name'"
+        ).fetchall()
+        data_before = conn.execute("SELECT * FROM test_table").fetchall()
+        
+        # Begin explicit transaction and perform DDL
+        conn.execute("BEGIN EXCLUSIVE TRANSACTION")
+        try:
+            conn.execute("CREATE TABLE new_table (id INTEGER PRIMARY KEY)")
+            conn.execute("ALTER TABLE test_table ADD COLUMN new_col TEXT")
+            conn.execute("CREATE INDEX idx_new ON new_table (id)")
+            # Inject failure
+            raise Exception("Injected DDL failure")
+        except Exception:
+            conn.execute("ROLLBACK")
+        
+        # Verify rollback - new table should not exist, column should not exist
+        tables_after = conn.execute(
+            "SELECT name FROM sqlite_master WHERE type='table'"
+        ).fetchall()
+        indexes_after = conn.execute(
+            "SELECT name FROM sqlite_master WHERE type='index' AND name='idx_test_name'"
+        ).fetchall()
+        data_after = conn.execute("SELECT * FROM test_table").fetchall()
+        
+        # Check columns
+        cols = conn.execute("PRAGMA table_info(test_table)").fetchall()
+        col_names = [c[1] for c in cols]
+        
+        assert len(tables_after) == len(tables_before), "Table count changed after rollback"
+        assert 'new_table' not in [t[0] for t in tables_after], "New table persisted after rollback"
+        assert len(indexes_after) == len(indexes_before), "Index count changed after rollback"
+        assert 'new_col' not in col_names, "ALTER TABLE column persisted after rollback"
+        assert data_after == data_before, "Data changed after rollback"
+        
+        print("SQLite DDL transactional rollback verified!")
+        
+    finally:
+        conn.close()
+        os.unlink(db_path)
+
+
 def test_sqlite_migration_injected_failure_rollback():
     """
-    Test that a failure during migration triggers proper error handling.
-
-    SQLite limitation: DDL statements (CREATE TABLE, CREATE INDEX) cannot be
-    rolled back in SQLite even within a transaction. This test verifies:
+    Test that a failure during migration triggers proper rollback.
+    
+    This test verifies:
     1. The migration uses transactions (engine.begin())
     2. A controlled failure during migration raises an exception
-    3. Existing data (DML) in pre-existing tables is preserved
-    4. The migration can be re-run successfully after a failure (idempotency)
-    4. The database remains usable after a failed migration
+    3. Schema changes within the failed transaction are rolled back
+    4. Pre-existing data is preserved
+    5. The migration can be re-run successfully after a failure (idempotency)
+    6. The database remains usable after a failed migration
     """
     with temp_db() as engine:
         # ============================================================
@@ -523,21 +600,21 @@ def test_sqlite_migration_injected_failure_rollback():
             pre_child_data = conn.execute(text("SELECT id, scholarship_id, data FROM child_table ORDER BY id")).fetchall()
 
         # ============================================================
-        # INJECT FAILURE: Monkeypatch the connection's execute method
-        # to fail when a specific ALTER TABLE is attempted (early in migration)
+        # INJECT FAILURE: Monkeypatch to fail at a specific migration step
         # ============================================================
         from sqlalchemy.engine import Connection
         original_execute = Connection.execute
+        call_count = [0]
 
         def failing_execute(self, statement, *args, **kwargs):
-            # Fail when trying to add the 'funding_details' column
-            # This is early in the migration, before new indexes are created
+            # Fail on the 3rd ALTER TABLE (after some schema changes have been made)
             stmt_str = str(statement)
-            if 'ALTER TABLE' in stmt_str and 'funding_details' in stmt_str:
-                raise Exception("Injected migration failure: cannot add funding_details column")
+            if 'ALTER TABLE' in stmt_str and 'scholarships' in stmt_str:
+                call_count[0] += 1
+                if call_count[0] == 3:  # Fail on 3rd ALTER TABLE
+                    raise Exception("Injected migration failure at 3rd ALTER TABLE")
             return original_execute(self, statement, *args, **kwargs)
 
-        # Apply the monkeypatch
         Connection.execute = failing_execute
 
         try:
@@ -553,24 +630,19 @@ def test_sqlite_migration_injected_failure_rollback():
         Connection.execute = original_execute
 
         # ============================================================
-        # VERIFY STATE AFTER FAILURE
+        # VERIFY STATE AFTER FAILURE - ROLLBACK VERIFICATION
         # ============================================================
 
-        # Note: SQLite does NOT rollback DDL (CREATE TABLE) even in transactions.
-        # Tables created before the failure will persist. This is a SQLite limitation.
-        # However, existing data in pre-existing tables should be preserved.
-
-        # 1. Original tables should still exist
+        # 1. Pre-existing tables must still exist
         post_tables = set()
         with engine.connect() as conn:
             for row in conn.execute(text("SELECT name FROM sqlite_master WHERE type='table'")).fetchall():
                 post_tables.add(row[0])
 
-        # Pre-existing tables must still exist
         for t in pre_tables:
             assert t in post_tables, f"Pre-existing table {t} missing after failure"
 
-        # 2. Original tables should have same structure
+        # 2. Original tables should have same structure (no partial ALTER TABLE)
         post_schema = get_schema(engine)
         for table_name, pre_table in pre_schema.items():
             if table_name in post_schema:
@@ -592,7 +664,7 @@ def test_sqlite_migration_injected_failure_rollback():
         test_trigger_preserved = any(t['name'] == 'test_trigger' for t in post_triggers)
         assert test_trigger_preserved, "Pre-existing test_trigger was dropped during failure"
 
-        # 5. Data in pre-existing tables should be preserved (DML is transactional)
+        # 5. Data in pre-existing tables should be preserved
         with engine.connect() as conn:
             post_scholarships_data = conn.execute(text("SELECT id, title, country, degree, funding FROM scholarships ORDER BY id")).fetchall()
             post_child_data = conn.execute(text("SELECT id, scholarship_id, data FROM child_table ORDER BY id")).fetchall()
@@ -632,7 +704,7 @@ def test_sqlite_migration_injected_failure_rollback():
             for t in expected_tables:
                 assert t in table_names, f"Expected table {t} missing after successful re-run"
 
-        print("Injected failure handling test passed!")
+        print("Injected failure rollback test passed!")
 
 
 def test_sqlite_migration_index_sql_strict():
