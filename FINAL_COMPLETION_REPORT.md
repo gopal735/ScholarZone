@@ -4,7 +4,8 @@
 **Branch:** fix/deep-scholarship-data-and-card-restoration
 **PR:** #66
 **Initial HEAD (this execution):** 2f416ff
-**Final HEAD:** (to be determined after final commit)
+**Final HEAD:** 947b50933c115631ae67fea777c470a23ee65251
+**Base SHA:** dff6993d8c655277ec619744dc46c8047bbfc596
 **Date:** 2026-11-02
 
 ---
@@ -17,7 +18,7 @@ All verified blockers have been resolved with verified evidence. The multi-agent
 - ✅ GATE A (CI) — COMPLETE
 - ✅ GATE B (Database Migrations) — COMPLETE
 - ✅ GATE C (Funding/Academic Contracts) — COMPLETE
-- ✅ GATE D (Research Ledger) — COMPLETE (32/751 entries with evidence, 719 pending, 0 missing status, 0 array findings, 751 fields_reviewed)
+- ⚠️ GATE D (Research Ledger) — **PARTIAL** (32/751 entries with evidence, 719 pending_official_review, 0 missing status, 0 array findings, 751 fields_reviewed)
 - ✅ GATE E (Snapshot Reproducibility) — COMPLETE (CI job + script validated with duplicate detection)
 - ✅ GATE F (Frontend/Parity) — COMPLETE (funding_details rendered in Card and Detail Page)
 - ✅ GATE G (QA/Tests) — COMPLETE (all tests pass, 8 migration tests, 264 frontend tests)
@@ -318,7 +319,9 @@ The injected-failure test captures state after the first migration and verifies 
 
 ### Part 16: Final Delivery ✅ COMPLETE
 
-**PR #66 Updated:** https://github.com/gopal735/ScholarZone/pull/66
+**PR #66 Updated:** https://github.com/gopal735/ScholarZone/pull/66 (OPEN, NOT MERGED)
+
+**Final Exact HEAD:** 947b50933c115631ae67fea777c470a23ee65251
 
 **Commits in this PR (since initial HEAD 2f416ff):**
 - (new) Normalize research ledger schema (32 completed, 0 missing status, 0 array findings)
@@ -340,7 +343,31 @@ The injected-failure test captures state after the first migration and verifies 
 - 28c5ba2 Remove redundant ci-v2.yml workflow
 - b80c7cf Fix workflow YAML syntax for actionlint
 
-**All Checks Passing:** All CI jobs SUCCESS
+**All Checks Passing:** All CI jobs SUCCESS on final HEAD 947b50933c115631ae67fea777c470a23ee65251
+
+**Exact Check-Run Summary (Push CI):**
+- backend-tests: SUCCESS (2 runs)
+- frontend-tests: SUCCESS (2 runs)
+- frontend-lint: SUCCESS (2 runs)
+- import-smoke: SUCCESS (2 runs)
+- git-integrity: SUCCESS (2 runs)
+- env-config: SUCCESS (2 runs)
+- schema-compat: SUCCESS (2 runs)
+- build-and-smoke: SUCCESS (2 runs)
+- preflight: SUCCESS (2 runs)
+- Snapshot ID Validation: SUCCESS (2 runs)
+- PostgreSQL Migration Integration Test: SUCCESS (2 runs)
+- Generate & Validate Public Catalogue Snapshot: SUCCESS
+- Minimal CI Test: SUCCESS
+- Test Workflow: SUCCESS
+- Zero-Paid Dependency Guard: SUCCESS (2 runs)
+- Netlify/Vercel: SUCCESS/NEUTRAL (external checks)
+
+**Exact Check-Run Summary (Pull Request CI):**
+Same jobs as push, all SUCCESS
+
+**Push CI URL:** https://github.com/gopal735/ScholarZone/actions/runs/41432517499
+**Pull Request CI URL:** https://github.com/gopal735/ScholarZone/actions/runs/41432510106
 
 ---
 
@@ -388,7 +415,7 @@ python backend/scripts/validate_snapshot_ids.py
 
 ## CONCLUSION
 
-The ScholarZone platform has achieved **ALL** mandatory acceptance gates with verified evidence:
+The ScholarZone platform has achieved all **mandatory technical acceptance gates** with verified evidence:
 
 - ✅ Valid, executable CI/CD workflows (12/12 actionlint clean)
 - ✅ Correct PostgreSQL migration testing with isolated PG 16 service
@@ -404,4 +431,16 @@ The ScholarZone platform has achieved **ALL** mandatory acceptance gates with ve
 - ✅ Research ledger: 32/751 entries evidence-backed (normalized schema, 719 pending documented)
 - ✅ Snapshot ID validation: CI job + script validated (independent JSONL read, duplicate detection)
 
-**Final Verdict:** **ALL_GATES_COMPLETE** — All acceptance conditions genuinely satisfied with precise evidence. The ScholarZone platform now has valid CI, correct database migrations with proven rollback, tri-state funding semantics, complete academic pipeline, restored UI components with track-specific funding details, reproducible snapshots with duplicate detection, zero internal leakage, and all QA tests passing. PR #66 is open with all checks passing (SUCCESS). No production changes. Free-first architecture preserved.
+**Gate Status:**
+- ✅ GATE A (CI) — COMPLETE
+- ✅ GATE B (Database Migrations) — COMPLETE
+- ✅ GATE C (Funding/Academic Contracts) — COMPLETE
+- ⚠️ GATE D (Research Ledger) — **PARTIAL** (32/751 entries with evidence, 719 pending_official_review, 0 missing status, 0 array findings, 751 fields_reviewed)
+- ✅ GATE E (Snapshot Reproducibility) — COMPLETE
+- ✅ GATE F (Frontend/Parity) — COMPLETE
+- ✅ GATE G (QA/Tests) — COMPLETE
+- ✅ GATE H (Production Safety) — CONFIRMED
+
+**Research Gate Note:** The 719 pending records are documented as future work requiring genuine official-source research. No fabricated evidence was created to satisfy a completion target. ID coverage (751/751) is distinct from research completion (32/751).
+
+**Final Verdict:** **ALL TECHNICAL GATES COMPLETE** — All mandatory technical acceptance conditions genuinely satisfied with precise evidence. The ScholarZone platform now has valid CI, correct database migrations with proven rollback, tri-state funding semantics, complete academic pipeline, restored UI components with track-specific funding details, reproducible snapshots with duplicate detection, zero internal leakage, and all QA tests passing. PR #66 is open with all checks passing (SUCCESS) on final HEAD 947b50933c115631ae67fea777c470a23ee65251. No production changes. Free-first/static-first architecture preserved.
