@@ -64,9 +64,9 @@ def get_engine() -> Engine:
     return create_engine(database_url, **engine_kwargs)
 
 
-def _get_migration_engine() -> Engine:
+def _create_migration_engine(database_url: str) -> Engine:
     """
-    Get an engine configured for migrations with explicit SQLite transaction behavior.
+    Create a migration engine with explicit SQLite transaction behavior.
     
     SQLite's default implicit transaction only wraps DML; explicit BEGIN IMMEDIATE
     is required for DDL statements (ALTER TABLE, CREATE INDEX, etc.) to be
@@ -76,17 +76,23 @@ def _get_migration_engine() -> Engine:
     For in-memory databases (:memory:), returns the standard engine because
     each connection to :memory: creates a separate database instance.
     """
-    database_url = get_settings().database_url
-    _enforce_test_isolation(database_url)
+    # Apply the same URL transformations as get_engine()
+    if database_url.startswith("postgresql://"):
+        database_url = "postgresql+psycopg://" + database_url[len("postgresql://"):]
     
     if not database_url.startswith("sqlite"):
-        # For PostgreSQL, use the standard engine
-        return get_engine()
+        # For PostgreSQL, use the standard engine configuration
+        connect_args = {"connect_timeout": 10}
+        if "sslmode=" not in database_url:
+            database_url += ("&" if "?" in database_url else "?") + "sslmode=require"
+        engine_kwargs: dict = {"connect_args": connect_args, "pool_pre_ping": True, "pool_timeout": 10}
+        return create_engine(database_url, **engine_kwargs)
     
     # For in-memory SQLite, each connection is a separate database.
     # The migration engine must be the same as the main engine to share the database.
-    if database_url == "sqlite:///:memory:" or database_url == "sqlite:///:memory:":
-        return get_engine()
+    if database_url in ("sqlite:///:memory:", "sqlite:///:memory:"):
+        connect_args = {"check_same_thread": False}
+        return create_engine(database_url, connect_args=connect_args, pool_pre_ping=True)
     
     connect_args = {"check_same_thread": False}
     engine_kwargs: dict = {"connect_args": connect_args, "pool_pre_ping": True, "isolation_level": None}
@@ -102,6 +108,23 @@ def _get_migration_engine() -> Engine:
         conn.exec_driver_sql("BEGIN IMMEDIATE")
     
     return engine
+
+
+def _get_migration_engine() -> Engine:
+    """
+    Get an engine configured for migrations with explicit SQLite transaction behavior.
+    
+    SQLite's default implicit transaction only wraps DML; explicit BEGIN IMMEDIATE
+    is required for DDL statements (ALTER TABLE, CREATE INDEX, etc.) to be
+    rolled back on error. This creates a dedicated engine with isolation_level=None
+    and an engine-specific event listener that emits BEGIN IMMEDIATE.
+    
+    For in-memory databases (:memory:), returns the standard engine because
+    each connection to :memory: creates a separate database instance.
+    """
+    database_url = get_settings().database_url
+    _enforce_test_isolation(database_url)
+    return _create_migration_engine(database_url)
 
 
 @lru_cache
@@ -130,12 +153,19 @@ def init_database() -> None:
     # idempotent DDL.
     _upgrade_maintenance_slot_schema(engine)
     if engine.dialect.name == "sqlite":
-        # Use migration engine with explicit transaction behavior for DDL rollback
-        migration_engine = _get_migration_engine()
-        try:
+        # For in-memory SQLite, each connection is a separate database.
+        # Use the same engine for migrations to share the database.
+        database_url = get_settings().database_url
+        if database_url in ("sqlite:///:memory:", "sqlite:///:memory:"):
+            migration_engine = engine
             _upgrade_sqlite_schema(migration_engine)
-        finally:
-            migration_engine.dispose()
+        else:
+            # Use migration engine with explicit transaction behavior for DDL rollback
+            migration_engine = _get_migration_engine()
+            try:
+                _upgrade_sqlite_schema(migration_engine)
+            finally:
+                migration_engine.dispose()
     elif engine.dialect.name == "postgresql":
         _upgrade_postgresql_schema(engine)
         _validate_postgresql_schema(engine)

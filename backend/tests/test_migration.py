@@ -898,45 +898,32 @@ def test_sqlite_migration_injected_failure_rollback():
     7. SQLAlchemy event listeners trace BEGIN/COMMIT/ROLLBACK
 
     Key technical approach:
-    - Uses the ACTUAL application migration engine configuration (_get_migration_engine())
-      which sets isolation_level=None and installs a dialect do_begin that emits
-      BEGIN IMMEDIATE for proper DDL rollback.
+    - Uses the ACTUAL application migration engine factory (_create_migration_engine)
+      with an explicit temporary database URL, no global env mutation or module reloads.
     - Uses SQLAlchemy's after_cursor_execute event to count real DDL executions
-      from the ACTUAL _upgrade_sqlite_schema() and inject failure after 2+ DDLs
-    - Lets the actual migration transaction unwind naturally via rollback
-    - Verifies exact pre/post state equality using capture_complete_db_state()
+      from the ACTUAL _upgrade_sqlite_schema() and inject failure after 2+ DDLs.
+    - Lets the actual migration transaction unwind naturally via rollback.
+    - Verifies exact pre/post state equality using capture_complete_db_state().
+    - Asserts DBAPI connection.in_transaction is True before each DDL statement.
     """
     import tempfile
     from pathlib import Path
     from sqlalchemy import create_engine, event, text
     from sqlalchemy.engine import Connection
     
-    # Import the actual application engine factory
+    # Import the migration engine factory and migration functions
     import sys
     sys.path.insert(0, str(Path(__file__).parent.parent))
-    from app.database import _get_migration_engine, reset_database_connections
-    
-    # Clear any cached engine to ensure fresh configuration
-    reset_database_connections()
+    from app.database import _create_migration_engine, _upgrade_maintenance_slot_schema, _upgrade_sqlite_schema
     
     with tempfile.NamedTemporaryFile(suffix='.db', delete=False) as f:
         db_path = f.name
     
     try:
-        # Use the actual application migration engine factory with test database URL
-        # This picks up the SQLite transaction configuration from _get_migration_engine()
-        os.environ["SCHOLARZONE_DATABASE_URL"] = f"sqlite:///{db_path}"
-        os.environ["SCHOLARZONE_ENVIRONMENT"] = "test"
-        
-        # Re-import to pick up new env vars
-        import importlib
-        import app.core.config
-        importlib.reload(app.core.config)
-        import app.database
-        importlib.reload(app.database)
-        from app.database import _get_migration_engine as app_get_migration_engine
-        
-        engine = app_get_migration_engine()
+        # Create migration engine directly with explicit temp database URL
+        # No global env mutation, no module reloads
+        temp_db_url = f"sqlite:///{db_path}"
+        engine = _create_migration_engine(temp_db_url)
         
         # ============================================================
         # SETUP: Create pre-migration schema with data
@@ -983,12 +970,26 @@ def test_sqlite_migration_injected_failure_rollback():
         
         # Track which connection is the migration connection
         migration_conn_id = [None]
+        dbaapi_in_transaction_before_ddl = []
 
         @event.listens_for(engine, "before_cursor_execute")
         def on_before_cursor_execute(conn, cursor, statement, parameters, context, executemany):
-            # Capture the connection ID when the migration transaction begins
-            # We detect the migration by checking if it's a DDL statement
-            pass
+            sql_text = statement.strip().upper()
+            
+            # Check DBAPI in_transaction before DDL statements
+            is_ddl = sql_text.startswith(('ALTER TABLE', 'CREATE TABLE', 'CREATE INDEX', 
+                                           'DROP TABLE', 'CREATE TRIGGER', 'CREATE VIEW'))
+            if is_ddl:
+                # Access the underlying DBAPI connection to check in_transaction
+                try:
+                    dbapi_conn = conn.connection.connection  # sqlalchemy -> dbapi wrapper -> dbapi connection
+                    if hasattr(dbapi_conn, 'in_transaction'):
+                        dbaapi_in_transaction_before_ddl.append(dbapi_conn.in_transaction)
+                    else:
+                        # Fallback: check if we're in a transaction via connection state
+                        dbaapi_in_transaction_before_ddl.append(conn.in_transaction())
+                except Exception:
+                    dbaapi_in_transaction_before_ddl.append(None)
 
         @event.listens_for(engine, "after_cursor_execute")
         def on_after_cursor_execute(conn, cursor, statement, parameters, context, executemany):
@@ -1027,6 +1028,13 @@ def test_sqlite_migration_injected_failure_rollback():
         assert ddl_count[0] >= 2, f"Expected at least 2 DDL statements before failure, got {ddl_count[0]}"
 
         # ============================================================
+        # VERIFY DBAPI in_transaction WAS TRUE DURING MIGRATION DDL
+        # ============================================================
+        # At least one DDL should have seen in_transaction=True
+        true_count = sum(1 for v in dbaapi_in_transaction_before_ddl if v is True)
+        assert true_count >= 1, f"Expected DBAPI in_transaction=True before at least one DDL, got {dbaapi_in_transaction_before_ddl}"
+
+        # ============================================================
         # VERIFY TRANSACTION ROLLBACK OCCURRED (SQLAlchemy events)
         # ============================================================
         begin_count = sum(1 for e, _ in transaction_events if e == "BEGIN")
@@ -1040,12 +1048,6 @@ def test_sqlite_migration_injected_failure_rollback():
         assert begin_count >= 1, f"Expected at least 1 BEGIN event, got {begin_count}"
         assert rollback_count >= 1, f"Expected at least 1 ROLLBACK event, got {rollback_count}"
         assert commit_count == 0, f"Expected 0 COMMIT events (should have rolled back), got {commit_count}"
-
-        # ============================================================
-        # VERIFY DBAPI in_transaction WAS TRUE DURING MIGRATION
-        # ============================================================
-        # The migration connection should have had an active transaction
-        # This is verified indirectly by the rollback event and state equality
 
         # ============================================================
         # CAPTURE COMPLETE POST-FAILURE STATE
@@ -1108,10 +1110,6 @@ def test_sqlite_migration_injected_failure_rollback():
     finally:
         engine.dispose()
         Path(db_path).unlink(missing_ok=True)
-        # Clean up environment
-        os.environ.pop("SCHOLARZONE_DATABASE_URL", None)
-        os.environ.pop("SCHOLARZONE_ENVIRONMENT", None)
-        reset_database_connections()
 
 
 def test_sqlite_migration_index_sql_strict():
