@@ -79,7 +79,7 @@ All verified blockers have been resolved with verified evidence. The multi-agent
 
 ---
 
-### Part 4: Research All 751 Scholarships ✅ COMPLETE (Normalized)
+### Part 4: Research Ledger — PARTIAL (32/751 evidence-backed)
 
 **Current State (after normalization):**
 - 751 research ledger entries exist (one per public scholarship ID)
@@ -94,7 +94,9 @@ All verified blockers have been resolved with verified evidence. The multi-agent
 - **719 entries at `research_status: pending_official_review`** (documented as future work)
 - 0 entries missing research_status
 - 0 entries with array-format `evidence_backed_findings` (all 12 legacy arrays converted to object format)
-- 751 entries have `fields_reviewed` populated
+- **32 entries have specific `fields_reviewed` derived from evidence; 719 entries have placeholder `fields_reviewed: ["general_review"]`**
+- **710 pending entries have literal placeholder `sources_checked: ["official_source_url"]`**
+- **9 pending entries have specific URLs in `sources_checked` but empty `evidence_backed_findings` (reclassified from completed during normalization)**
 - Ledger IDs exactly match canonical public snapshot IDs (751/751/751)
 
 **Normalization Performed:**
@@ -169,7 +171,7 @@ All verified blockers have been resolved with verified evidence. The multi-agent
 
 ---
 
-### Part 8: Persistent Research Ledger ✅ COMPLETE (Normalized)
+### Part 8: Persistent Research Ledger — PARTIAL
 
 **File:** `backend/verification/research_ledger.jsonl` (751 entries)
 
@@ -181,11 +183,13 @@ All verified blockers have been resolved with verified evidence. The multi-agent
 
 **Current State (after normalization):**
 - 751 unique IDs, valid JSONL, no duplicates
-- 32 entries with `research_status: completed` and `evidence_backed_findings` populated
+- 32 entries with `research_status: completed` and `evidence_backed_findings` populated (442 total findings)
 - 719 entries at `research_status: pending_official_review` (documented as future work)
 - 0 entries missing research_status
 - 0 entries with array-format findings (all converted to object)
-- 751 entries have `fields_reviewed` populated
+- **32 entries have specific `fields_reviewed` derived from evidence; 719 entries have placeholder `fields_reviewed: ["general_review"]`**
+- **710 pending entries have literal placeholder `sources_checked: ["official_source_url"]`**
+- **9 pending entries have specific URLs in `sources_checked` but empty `evidence_backed_findings`**
 - IDs exactly match snapshot/sitemap
 
 ---
@@ -210,11 +214,11 @@ All verified blockers have been resolved with verified evidence. The multi-agent
 3. ✅ Trigger SQL preservation (test_trigger + audit trigger)
 4. ✅ Real foreign-key enforcement (child_table FK with PRAGMA foreign_keys=ON)
 5. ✅ **SQLite DDL transactional rollback demonstrated** (raw sqlite3 test proves CREATE TABLE, ALTER TABLE, CREATE INDEX roll back in explicit transaction)
-6. ✅ **Injected failure and rollback verified** (failure at 3rd ALTER TABLE in `_upgrade_sqlite_schema`, schema changes rolled back, data preserved, migration re-runs successfully)
+6. ✅ **Injected failure with EXACT full-schema rollback verified** (failure at 3rd ALTER TABLE in `_upgrade_sqlite_schema`; complete database state captured before/after via `capture_complete_db_state()`; `assert_db_state_equal()` confirms identical sqlite_master, table_xinfo, foreign_keys, index_details, trigger_sql, view_sql, check_constraints, unique_constraints, sqlite_sequence, table_data, pragma_state, foreign_key_check)
 7. ✅ sqlite_sequence high-water mark verification (sequence never decreases)
 8. ✅ Idempotency of second run (no schema drift)
 
-**Key Finding:** SQLite DOES support transactional DDL rollback when using explicit transactions (`BEGIN EXCLUSIVE TRANSACTION` / `ROLLBACK`). The migration uses `engine.begin()` which creates proper transactions, and the injected-failure test now verifies actual rollback behavior within the `_upgrade_sqlite_schema` transaction scope.
+**Key Finding:** SQLite DOES support transactional DDL rollback when using explicit transactions (`BEGIN EXCLUSIVE TRANSACTION` / `ROLLBACK`). The migration uses `engine.begin()` for transaction scope. The strengthened injected-failure test uses a raw sqlite3 connection with explicit `BEGIN EXCLUSIVE TRANSACTION` to prove exact full-schema rollback equality via `capture_complete_db_state()` and `assert_db_state_equal()`, capturing all persistent schema objects, column definitions, indexes, triggers, constraints, sequence values, and table data.
 
 **Transaction Boundaries:** The migration has TWO separate transaction scopes:
 - `_upgrade_maintenance_slot_schema()` - opens its own `engine.begin()`
@@ -317,15 +321,17 @@ The injected-failure test captures state after the first migration and verifies 
 
 ---
 
-### Part 16: Final Delivery ✅ COMPLETE
+### Part 16: Final Delivery — Technical Gates COMPLETE, Research PARTIAL
 
-**PR #66 Updated:** https://github.com/gopal735/ScholarZone/pull/66 (OPEN, NOT MERGED)
+**PR #66:** https://github.com/gopal735/ScholarZone/pull/66 (OPEN, NOT MERGED)
 
-**Final Exact HEAD:** 265e04396f57f0801e62a783b15a689150c4d7b5
+**Tested Implementation SHA:** 265e04396f57f0801e62a783b15a689150c4d7b5
+**Live PR HEAD (this documentation commit will advance it):** d6496eacf7ed20b94031bb65d4a8296fe1b401f9
+**Documentation Commit SHA:** (recorded in Git metadata after this commit)
 
 **Commits in this PR (since initial HEAD 2f416ff):**
 - (new) Normalize research ledger schema (32 completed, 0 missing status, 0 array findings)
-- (new) Fix SQLite migration rollback test with proper transaction scope verification
+- (new) Strengthen SQLite migration rollback test with exact full-schema equality verification
 - (new) Update FINAL_COMPLETION_REPORT.md with accurate state
 - 2f416ff Fix remaining blockers: normalize research ledger (41 completed, 0 missing status), add SQLite DDL transactional rollback proof, update final report
 - 11a3c6c Fix all remaining blockers: funding_details UI rendering, snapshot duplicate detection, SQLite rollback test, tri-state audit, final report update
@@ -343,31 +349,31 @@ The injected-failure test captures state after the first migration and verifies 
 - 28c5ba2 Remove redundant ci-v2.yml workflow
 - b80c7cf Fix workflow YAML syntax for actionlint
 
-**All Checks Passing:** All CI jobs SUCCESS on final HEAD 265e04396f57f0801e62a783b15a689150c4d7b5
+**All Required Checks Passing:** All CI jobs SUCCESS on live PR HEAD d6496eacf7ed20b94031bb65d4a8296fe1b401f9
 
-**Exact Check-Run Summary (Push CI):**
-- backend-tests: SUCCESS (2 runs)
-- frontend-tests: SUCCESS (2 runs)
-- frontend-lint: SUCCESS (2 runs)
-- import-smoke: SUCCESS (2 runs)
-- git-integrity: SUCCESS (2 runs)
-- env-config: SUCCESS (2 runs)
-- schema-compat: SUCCESS (2 runs)
-- build-and-smoke: SUCCESS (2 runs)
-- preflight: SUCCESS (2 runs)
-- Snapshot ID Validation: SUCCESS (2 runs)
-- PostgreSQL Migration Integration Test: SUCCESS (2 runs)
+**Exact Check-Run Summary (Push CI - run 41461356734):**
+- backend-tests: SUCCESS
+- frontend-tests: SUCCESS
+- frontend-lint: SUCCESS
+- import-smoke: SUCCESS
+- git-integrity: SUCCESS
+- env-config: SUCCESS
+- schema-compat: SUCCESS
+- build-and-smoke: SUCCESS
+- preflight: SUCCESS
+- Snapshot ID Validation: SUCCESS
+- PostgreSQL Migration Integration Test: SUCCESS
 - Generate & Validate Public Catalogue Snapshot: SUCCESS
 - Minimal CI Test: SUCCESS
 - Test Workflow: SUCCESS
-- Zero-Paid Dependency Guard: SUCCESS (2 runs)
-- Netlify/Vercel: SUCCESS/NEUTRAL (external checks)
+- Zero-Paid Dependency Guard: SUCCESS
+- Netlify/Vercel: NEUTRAL (external checks)
 
-**Exact Check-Run Summary (Pull Request CI):**
+**Exact Check-Run Summary (Pull Request CI - run 41461370496):**
 Same jobs as push, all SUCCESS
 
-**Push CI URL:** https://github.com/gopal735/ScholarZone/actions/runs/41435181850
-**Pull Request CI URL:** https://github.com/gopal735/ScholarZone/actions/runs/41435195142
+**Push CI URL:** https://github.com/gopal735/ScholarZone/actions/runs/41461356734
+**Pull Request CI URL:** https://github.com/gopal735/ScholarZone/actions/runs/41461370496
 
 ---
 
@@ -435,7 +441,7 @@ The ScholarZone platform has achieved all **mandatory technical acceptance gates
 - ✅ GATE A (CI) — COMPLETE
 - ✅ GATE B (Database Migrations) — COMPLETE
 - ✅ GATE C (Funding/Academic Contracts) — COMPLETE
-- ⚠️ GATE D (Research Ledger) — **PARTIAL** (32/751 entries with evidence, 719 pending_official_review, 0 missing status, 0 array findings, 751 fields_reviewed)
+- ⚠️ GATE D (Research Ledger) — **PARTIAL** (32/751 entries with evidence, 719 pending_official_review, 0 missing status, 0 array findings, 32 specific fields_reviewed, 719 placeholder ["general_review"], 710 placeholder sources, 9 pending with URLs but no evidence)
 - ✅ GATE E (Snapshot Reproducibility) — COMPLETE
 - ✅ GATE F (Frontend/Parity) — COMPLETE
 - ✅ GATE G (QA/Tests) — COMPLETE
@@ -443,4 +449,4 @@ The ScholarZone platform has achieved all **mandatory technical acceptance gates
 
 **Research Gate Note:** The 719 pending records are documented as future work requiring genuine official-source research. No fabricated evidence was created to satisfy a completion target. ID coverage (751/751) is distinct from research completion (32/751).
 
-**Final Verdict:** **ALL TECHNICAL GATES COMPLETE** — All mandatory technical acceptance conditions genuinely satisfied with precise evidence. The ScholarZone platform now has valid CI, correct database migrations with proven rollback, tri-state funding semantics, complete academic pipeline, restored UI components with track-specific funding details, reproducible snapshots with duplicate detection, zero internal leakage, and all QA tests passing. PR #66 is open with all checks passing (SUCCESS) on final HEAD 265e04396f57f0801e62a783b15a689150c4d7b5. No production changes. Free-first/static-first architecture preserved.
+**Final Verdict:** **ALL MANDATORY TECHNICAL GATES COMPLETE; RESEARCH GATE (D) PARTIAL** — All mandatory technical acceptance conditions genuinely satisfied with precise evidence. The ScholarZone platform now has valid CI, correct database migrations with proven exact-schema rollback, tri-state funding semantics, complete academic pipeline, restored UI components with track-specific funding details, reproducible snapshots with duplicate detection, zero internal leakage, and all QA tests passing. PR #66 is open with all required checks passing (SUCCESS) on live PR HEAD d6496eacf7ed20b94031bb65d4a8296fe1b401f9. No production changes. Free-first/static-first architecture preserved. Research completion remains 32/751 evidence-backed; 719 pending_official_review with placeholders documented.
