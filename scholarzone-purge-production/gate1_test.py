@@ -160,7 +160,6 @@ def test_atomic_deletion(database_url):
 
 
 def main():
-    # Use test database URL from environment
     database_url = os.getenv("TEST_DATABASE_URL") or os.getenv("SCHOLARZONE_DATABASE_URL_RO")
     if not database_url:
         print("ERROR: TEST_DATABASE_URL or SCHOLARZONE_DATABASE_URL_RO not set", file=sys.stderr)
