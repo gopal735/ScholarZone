@@ -24,7 +24,7 @@ This repository is published on GitHub **solely for portfolio demonstration and 
 
 ### GitHub Platform Functionality
 
-Per GitHub's Terms of Service Section D.5, by submitting User-Generated Content (including public repositories) to GitHub, the copyright holder grants GitHub a worldwide, non-exclusive, royalty-free license to use, display, perform, reproduce, and distribute such Content solely for the purpose of providing the Service. This license allows any GitHub user to **view** the repository and use GitHub's built-in **fork** UI action as part of the Service's standard functionality. This platform-limited license does not constitute a general license grant — the forked copy and any derivative works remain subject to the same proprietary terms and carry no permission for reuse, modification, redistribution, deployment, or commercial use outside of GitHub's Service.
+Per GitHub's Terms of Service Section D.5, by submitting User-Generated Content (including public repositories) to GitHub, the copyright holder grants GitHub a worldwide, non-exclusive, royalty-free license to use, display, perform, reproduce, and distribute such Content solely for the purpose of providing the Service. This license allows any GitHub user to **view** the repository and use GitHub's built-in **fork** UI action as part of the Service's standard functionality. This platform-limited license does not constitute a general license grant — the forked copy and any derivative works created within the Service remain subject to the same proprietary terms and carry no permission for reuse, modification, redistribution, deployment, or commercial use outside of GitHub's Service.
 
 ### Requesting Permission
 
@@ -41,7 +41,7 @@ This project incorporates third-party libraries, frameworks, and assets under th
 
 - **Runtime dependencies** listed in `frontend/package.json` and `backend/requirements.txt`
 - **Development dependencies** (build tools, test frameworks, linters, etc.)
-- **External APIs and services** (Neon PostgreSQL, Resend, GitHub Actions, Cloudflare Pages, GitHub Pages, SnapDeploy, etc.)
+- **External APIs and services** (Neon PostgreSQL, Resend, GitHub Actions, Cloudflare Pages, Vercel, SnapDeploy, etc.)
 - **Open-source libraries** used as building blocks (React, FastAPI, SQLAlchemy, Vite, Vitest, etc.)
 - **Publicly available scholarship data** sourced from official university and government publications
 - **Fonts, icons, and design assets** from their respective creators
@@ -52,7 +52,7 @@ All third-party code retains its original license. See `THIRD_PARTY_NOTICES.md` 
 
 ## Data and Content
 
-Scholarship listings, descriptions, deadlines, and eligibility criteria are **aggregated from public official sources** (university websites, government portals, EU programme pages, etc.). ScholarZone does not claim copyright over factual scholarship data. Source attribution is maintained in the dataset via `official_source` and `official_source_url` fields.
+Scholarship listings, descriptions, deadlines, and eligibility criteria are **aggregated from public official sources** (university websites, government portals, EU programme pages, etc.). ScholarZone does not claim copyright over factual scholarship data. Source attribution is maintained in the dataset via `official_source` and `official_source_url` fields where available.
 
 ---
 
@@ -64,7 +64,7 @@ By hosting this repository on GitHub, the copyright holder grants GitHub the rig
 
 ## Enforcement
 
-Unauthorized use, reproduction, distribution, deployment, or creation of derivative works may constitute copyright infringement under applicable law (including but not limited to the U.S. Copyright Act, EU Copyright Directive, and international treaties). The copyright holder reserves all legal rights and remedies.
+Unauthorized use, reproduction, distribution, deployment, or creation of derivative works outside GitHub's Service may constitute copyright infringement under applicable law (including but not limited to the U.S. Copyright Act, EU Copyright Directive, and international treaties). The copyright holder reserves all legal rights and remedies.
 
 ---
 

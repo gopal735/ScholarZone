@@ -9,7 +9,7 @@
 
 ## 🎯 Project Purpose
 
-ScholarZone is a global scholarship discovery platform that helps students find official-source-informed scholarship opportunities worldwide. Built with a **static-first architecture**, the public catalogue operates entirely without a database connection — serving **770 public scholarship records** from a version-controlled JSON snapshot deployed to GitHub Pages.
+ScholarZone is a global scholarship discovery platform that helps students find official-source-informed scholarship opportunities worldwide. Built with a **static-first architecture**, the public catalogue operates entirely without a live database or API connection — serving **770 public scholarship records** from a version-controlled JSON snapshot deployed to Vercel.
 
 ### Key Differentiators
 
@@ -17,8 +17,8 @@ ScholarZone is a global scholarship discovery platform that helps students find 
 |--------|----------|
 | **Architecture** | Static-first: public browsing does not require a live database or API connection |
 | **Data Integrity** | Reproducible CI pipeline regenerates snapshot from canonical sources |
-| **Verification** | Every record links to official source URL; `last_verified_at` tracked |
-| **Cost Model** | Zero-paid dependencies for public browsing (GitHub Pages + Actions) |
+| **Verification** | Records link to official source URLs; `last_verified_at` tracked where available |
+| **Cost Model** | Zero-paid dependencies for public browsing (Vercel + GitHub Actions) |
 | **Match Engine** | Deterministic, arithmetic-only fit scoring — no ML, no LLMs |
 
 ---
@@ -56,7 +56,8 @@ ScholarZone is a global scholarship discovery platform that helps students find 
 
 ### Admin & Maintenance
 - **Image Review** — Approve/reject scholarship images with provenance
-- **Automated Maintenance** — GitHub Actions cron for verification, snapshot regeneration, expired cycle purge
+- **Automated Maintenance** — GitHub Actions cron for verification, snapshot regeneration
+- **Expired-Cycle Purge** — 7-gate preflight workflow (manual dispatch; production validation pending)
 - **Build Provenance** — Embedded git SHA in deployed artefacts for deployment verification
 
 ---
@@ -87,12 +88,12 @@ ScholarZone is a global scholarship discovery platform that helps students find 
 ### Infrastructure & CI/CD
 | Service | Purpose |
 |---------|---------|
-| GitHub Pages | Frontend hosting (static, unlimited for public repos) |
-| GitHub Actions | CI/CD, scheduled maintenance, snapshot generation |
-| SnapDeploy | Backend API hosting (container, sleeps after 30min idle) |
-| Neon PostgreSQL | Database (0.5 GB free, 190 compute hrs/mo) |
-| Resend | Email verification (3,000/mo free) |
-| Cloudflare Pages | Evaluated alternative for frontend (configured, not active) |
+| **Vercel** | Frontend hosting (static, automatic deployments) |
+| **GitHub Actions** | CI/CD, scheduled maintenance, snapshot generation |
+| **SnapDeploy** | Backend API hosting (container, sleeps after 30min idle) |
+| **Neon PostgreSQL** | Database (0.5 GB free, 190 compute hrs/mo) |
+| **Resend** | Email verification (3,000/mo free) |
+| **Cloudflare Pages** | Evaluated alternative for frontend (configured, not active) |
 
 ### Data Pipeline
 - **Canonical Source**: `backend/app/data/verified_scholarships.py` (ingestion records with official_source_url)
@@ -106,7 +107,7 @@ ScholarZone is a global scholarship discovery platform that helps students find 
 
 ```
 ┌─────────────────────────────────────────────────────────────────┐
-│                        GITHUB PAGES                             │
+│                          VERCEL                                 │
 │  ┌─────────────────────────────────────────────────────────┐   │
 │  │  frontend/dist (static build)                           │   │
 │  │  ├── index.html                                         │   │
@@ -133,7 +134,7 @@ ScholarZone is a global scholarship discovery platform that helps students find 
 │ • catalogue-snapshot.yml│   │ • POST /scholarships/   │
 │ • zero-paid-guard.yml   │   │   match                 │
 │ • verification-cron.yml │   │ • /dashboard/*          │
-│ • purge-preflight.yml   │   │ • /applications/*       │
+│                         │   │ • /applications/*       │
 │                         │   │ • /mentor/*             │
 │                         │   │ • /admin/*              │
 └─────────────────────────┘   └─────────────────────────┘
@@ -152,7 +153,7 @@ ScholarZone is a global scholarship discovery platform that helps students find 
 1. **Ingestion** → `verified_scholarships.py` (manual curation with official_source_url)
 2. **Seed** → `scripts/seed_real_scholarships.py` → Neon PostgreSQL
 3. **Snapshot** → `scripts/build_public_snapshot.py` → `scholarships-snapshot.json` (CI)
-4. **Deploy** → GitHub Pages serves snapshot + static build
+4. **Deploy** → Vercel serves snapshot + static build
 5. **Browse** → Frontend reads snapshot directly (no API call)
 6. **Match** → API queries Neon, runs pure engine, returns scored results
 
@@ -164,10 +165,10 @@ The public catalogue requires **zero paid services**:
 
 | Component | Provider | Cost |
 |-----------|----------|------|
-| Frontend Hosting | GitHub Pages | Free (unlimited public) |
+| Frontend Hosting | Vercel | Free (static, personal hobby tier) |
 | CI/CD | GitHub Actions | Free (unlimited public) |
 | Snapshot Storage | Git repo (LFS not needed) | Free |
-| CDN | GitHub Pages edge | Free |
+| CDN | Vercel edge | Free |
 | SSL/TLS | Automatic | Free |
 
 **Backend API** (match, dashboard, admin) uses paid-tier services but is **not required for public browsing**:
@@ -283,9 +284,9 @@ SECRET_KEY=...
 | `catalogue-snapshot.yml` | Push to master (backend/) | Regenerate & validate snapshot |
 | `zero-paid-guard.yml` | Push/PR | Scan for paid deps, secrets in frontend |
 | `verification-cron.yml` | Schedule (daily) | Run verification worker |
-| `production-purge-preflight.yml` | Manual/Schedule | Safe expired-cycle purge (7 gates) |
+| `production-purge-preflight.yml` | Manual dispatch | Safe expired-cycle purge (7 gates; preflight, production validation pending) |
 | `frontend.yml` | Push/PR (frontend/) | Frontend-specific checks |
-| `deploy.yml` | Push to master | Deploy to GitHub Pages + SnapDeploy |
+| `deploy.yml` | Push to master | Deploy to Vercel + SnapDeploy |
 
 > **Note**: Test counts above reflect local verification. Remote GitHub Actions status should be checked via the Actions tab for the latest run results.
 

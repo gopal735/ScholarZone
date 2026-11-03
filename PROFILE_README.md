@@ -21,12 +21,12 @@
 
 **Frontend:** React 19, React Router 7, Vite 8, Vitest, Motion, Three.js  
 **Backend:** FastAPI 0.141, SQLAlchemy 2.0, PostgreSQL (Neon), Pydantic 2, Uvicorn  
-**Infrastructure:** GitHub Pages (frontend), GitHub Actions (CI/CD + cron), SnapDeploy (API), Resend (email)  
+**Infrastructure:** **Vercel** (frontend), GitHub Actions (CI/CD + cron), SnapDeploy (API), Resend (email)  
 **Data:** Reproducible snapshot pipeline (770 records), deterministic match engine (7 dimensions, no ML)
 
 ### Key Technical Achievements
 
-- **Static-First Architecture** — Public catalogue serves 770 public scholarship records from a version-controlled JSON snapshot on GitHub Pages; zero database, zero API calls for browsing
+- **Static-First Architecture** — Public catalogue serves 770 public scholarship records from a version-controlled JSON snapshot on Vercel; zero database, zero API calls for browsing
 - **Deterministic Match Engine** — Arithmetic-only fit scoring (Academic 25%, Field 20%, Funding 20%, Requirements 15%, Language 10%, Preference 5%, Timing 5%); same inputs → byte-identical output; no clock, randomness, or network in scoring path
 - **Eligibility Gate** — Three-verdict hard gate (`ELIGIBLE` / `NEEDS_VERIFICATION` / `INELIGIBLE`) runs before any scoring; structural separation prevents fit-score influence
 - **Zero-Paid Guard** — CI workflow scans for 80+ paid-only dependencies, database strings in frontend, API keys in frontend code
