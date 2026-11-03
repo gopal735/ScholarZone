@@ -1,15 +1,17 @@
-import { useRef } from 'react'
+import { useRef, useState } from 'react'
 import { Link } from 'react-router-dom'
 import ScholarshipImage from './ScholarshipImage'
 import ScholarshipActions from './ScholarshipActions'
 import SupervisorCta from './SupervisorCta'
 import { getDeadlineLabel, getLastVerifiedLabel, getScholarshipStatus, matchesDegreeFilter, matchesFundingFilter } from '../utils/scholarshipPresentation'
 import { getConfirmedOfficialLogo, getMonogramInitial } from '../utils/scholarshipLogos'
+import { readText, readList, readUrl, readFundingDetails } from '../utils/scholarshipDetail'
 import './ScholarshipCard.css'
 
 export default function ScholarshipCard({ scholarship, index = 0, onOpenDetails }) {
   const deadlineStatus = getScholarshipStatus(scholarship)
   const cardRef = useRef(null)
+  const [isExpanded, setIsExpanded] = useState(false)
 
   const verificationState = scholarship.verification_status || 'needs_review'
   const isVerified = verificationState === 'active'
@@ -19,6 +21,46 @@ export default function ScholarshipCard({ scholarship, index = 0, onOpenDetails 
   const hasOfficialLogo = Boolean(officialLogo)
   const monogramInitial = getMonogramInitial(scholarship?.title)
   const verifiedOn = scholarship.last_verified_at || null
+
+  // Academic eligibility fields
+  const departments = readList(scholarship.departments)
+  const eligibleFields = readList(scholarship.eligible_fields)
+  const eligibleProgrammes = readList(scholarship.eligible_programmes)
+
+  // Helper functions for expanded section
+  const description = readText(scholarship.description)
+  const eligibility = readList(scholarship.eligibility)
+  const eligibilitySummary = readText(scholarship.eligibility_summary)
+  const benefits = readList(scholarship.benefits)
+  const coverage = readList(scholarship.coverage)
+  const requirements = readList(scholarship.requirements)
+  const documents = readList(scholarship.documents) || readList(scholarship.required_documents)
+  const applicationMethod = readList(scholarship.application_method)
+  const selectionNotes = readText(scholarship.selection_notes)
+  const englishRequirement = readText(scholarship.english_requirement)
+  const fundingAmount = scholarship.funding_amount
+  const fundingCurrency = scholarship.funding_currency
+  const fundingPeriod = scholarship.funding_period
+  const fullyFunded = scholarship.fully_funded
+  const tuitionCoverage = scholarship.tuition_coverage
+  const livingCostCoverage = scholarship.living_cost_coverage
+  const travelCoverage = scholarship.travel_coverage
+  const duration = readText(scholarship.duration)
+  const applicationPeriod = readText(scholarship.application_period)
+  const programType = readText(scholarship.program_type)
+  const officialSourceUrl = readUrl(scholarship.official_source_url)
+  const catalogueUrl = readUrl(scholarship.catalogue_url)
+  const officialUpdatesUrl = readUrl(scholarship.official_updates_url)
+  const applicationLink = readUrl(scholarship.application_link)
+
+  // Structured funding details (track-specific)
+  const fundingDetails = readFundingDetails(scholarship.funding_details)
+
+  const toggleExpand = (e) => {
+    e.preventDefault()
+    e.stopPropagation()
+    setIsExpanded(!isExpanded)
+  }
 
   /* The pointer-driven light — the gloss band, the spotlight and the 3D
      tilt — is attached once at the shell level by usePremiumPointer,
@@ -154,7 +196,421 @@ export default function ScholarshipCard({ scholarship, index = 0, onOpenDetails 
           <dt>Level</dt>
           <dd>{scholarship.degree}</dd>
         </div>
+        {(departments.length > 0 || eligibleFields.length > 0 || eligibleProgrammes.length > 0) && (
+          <div className="scholarship-card__detail scholarship-card__detail--academic">
+            <dt>Academic scope</dt>
+            <dd className="scholarship-card__academic-preview">
+              {departments.length > 0 && (
+                <span className="scholarship-card__academic-item">
+                  <span className="scholarship-card__academic-label">Departments:</span>
+                  {departments.slice(0, 2).map((d, i) => (
+                    <span key={i} className="scholarship-card__academic-value">{d}{departments.length > 2 && i === 1 ? ` +${departments.length - 2} more` : ''}</span>
+                  ))}
+                </span>
+              )}
+              {eligibleFields.length > 0 && (
+                <span className="scholarship-card__academic-item">
+                  <span className="scholarship-card__academic-label">Fields:</span>
+                  {eligibleFields.slice(0, 2).map((f, i) => (
+                    <span key={i} className="scholarship-card__academic-value">{f}{eligibleFields.length > 2 && i === 1 ? ` +${eligibleFields.length - 2} more` : ''}</span>
+                  ))}
+                </span>
+              )}
+              {eligibleProgrammes.length > 0 && (
+                <span className="scholarship-card__academic-item">
+                  <span className="scholarship-card__academic-label">Programmes:</span>
+                  {eligibleProgrammes.slice(0, 1).map((p, i) => (
+                    <span key={i} className="scholarship-card__academic-value">{p}{eligibleProgrammes.length > 1 ? ` +${eligibleProgrammes.length - 1} more` : ''}</span>
+                  ))}
+                </span>
+              )}
+            </dd>
+          </div>
+        )}
       </dl>
+
+      {/* Expandable details section */}
+      <button
+        type="button"
+        className={`scholarship-card__expand-btn ${isExpanded ? 'scholarship-card__expand-btn--open' : ''}`}
+        onClick={toggleExpand}
+        aria-expanded={isExpanded}
+        aria-controls={`scholarship-details-${scholarship.id}`}
+      >
+        <span className="scholarship-card__expand-label">
+          {isExpanded ? 'Show less' : 'Show details'}
+        </span>
+        <svg className="scholarship-card__expand-icon" viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M7 10l5 5 5-5" stroke="currentColor" strokeWidth="2" fill="none" strokeLinecap="round" strokeLinejoin="round" />
+        </svg>
+      </button>
+
+      <div
+        id={`scholarship-details-${scholarship.id}`}
+        className={`scholarship-card__expanded ${isExpanded ? 'scholarship-card__expanded--open' : ''}`}
+        role="region"
+        aria-labelledby={`scholarship-title-${scholarship.id}`}
+        hidden={!isExpanded}
+      >
+        <div className="scholarship-card__expanded-inner">
+          {/* Description */}
+          {description && (
+            <section className="scholarship-card__expanded-section">
+              <h4 className="scholarship-card__expanded-title">Description</h4>
+              <p className="scholarship-card__expanded-text">{description}</p>
+            </section>
+          )}
+
+          {/* Programme info */}
+          {(programType || duration || applicationPeriod) && (
+            <section className="scholarship-card__expanded-section">
+              <h4 className="scholarship-card__expanded-title">Programme</h4>
+              <dl className="scholarship-card__expanded-facts">
+                {programType && (
+                  <>
+                    <dt>Type</dt>
+                    <dd>{programType}</dd>
+                  </>
+                )}
+                {duration && (
+                  <>
+                    <dt>Duration</dt>
+                    <dd>{duration}</dd>
+                  </>
+                )}
+                {applicationPeriod && (
+                  <>
+                    <dt>Application period</dt>
+                    <dd>{applicationPeriod}</dd>
+                  </>
+                )}
+              </dl>
+            </section>
+          )}
+
+{/* Funding details */}
+          {((fundingAmount !== null && fundingAmount !== undefined) ||
+            fundingCurrency || fundingPeriod || (fullyFunded !== null && fullyFunded !== undefined) ||
+            (tuitionCoverage !== null && tuitionCoverage !== undefined) ||
+            (livingCostCoverage !== null && livingCostCoverage !== undefined) ||
+            (travelCoverage !== null && travelCoverage !== undefined)
+          ) && (
+            <section className="scholarship-card__expanded-section">
+              <h4 className="scholarship-card__expanded-title">Funding</h4>
+              <dl className="scholarship-card__expanded-facts">
+                {fullyFunded !== null && fullyFunded !== undefined && (
+                  <>
+                    <dt>Fully funded</dt>
+                    <dd>{fullyFunded === true ? 'Yes' : fullyFunded === false ? 'No' : 'Not confirmed'}</dd>
+                  </>
+                )}
+                {fundingAmount !== null && fundingAmount !== undefined && (
+                  <>
+                    <dt>Amount</dt>
+                    <dd>
+                      {fundingAmount.toLocaleString()} {fundingCurrency || ''}
+                      {fundingPeriod ? ` / ${fundingPeriod}` : ''}
+                    </dd>
+                  </>
+                )}
+                {tuitionCoverage !== null && tuitionCoverage !== undefined && (
+                  <>
+                    <dt>Tuition</dt>
+                    <dd>{tuitionCoverage ? 'Covered' : 'Not covered'}</dd>
+                  </>
+                )}
+                {livingCostCoverage !== null && livingCostCoverage !== undefined && (
+                  <>
+                    <dt>Living costs</dt>
+                    <dd>{livingCostCoverage ? 'Covered' : 'Not covered'}</dd>
+                  </>
+                )}
+                {travelCoverage !== null && travelCoverage !== undefined && (
+                  <>
+                    <dt>Travel</dt>
+                    <dd>{travelCoverage ? 'Covered' : 'Not covered'}</dd>
+                  </>
+                )}
+              </dl>
+            </section>
+          )}
+
+          {/* Benefits & Coverage */}
+          {(benefits.length > 0 || coverage.length > 0) && (
+            <section className="scholarship-card__expanded-section">
+              <h4 className="scholarship-card__expanded-title">Benefits & Coverage</h4>
+              {benefits.length > 0 && (
+                <div className="scholarship-card__expanded-list">
+                  <h5>Benefits</h5>
+                  <ul>
+                    {benefits.map((benefit, idx) => (
+                      <li key={idx}>{benefit}</li>
+                    ))}
+                  </ul>
+                </div>
+              )}
+              {coverage.length > 0 && (
+                <div className="scholarship-card__expanded-list">
+                  <h5>Coverage</h5>
+                  <ul>
+                    {coverage.map((item, idx) => (
+                      <li key={idx}>{item}</li>
+                    ))}
+                  </ul>
+                </div>
+              )}
+            </section>
+          )}
+
+          {/* Structured Funding Details (Track-specific) */}
+          {fundingDetails.length > 0 && (
+            <section className="scholarship-card__expanded-section">
+              <h4 className="scholarship-card__expanded-title">Funding details by track</h4>
+              {fundingDetails.map((track, trackIdx) => (
+                <div key={trackIdx} className="scholarship-card__funding-track">
+                  {(track.programme || track.track_name) && (
+                    <h5 className="scholarship-card__funding-track-title">
+                      {track.programme || ''}{track.programme && track.track_name ? ' — ' : ''}{track.track_name || ''}
+                    </h5>
+                  )}
+                  <dl className="scholarship-card__expanded-facts">
+                    {track.amount != null && track.currency && (
+                      <>
+                        <dt>Amount</dt>
+                        <dd>
+                          {Number(track.amount).toLocaleString()} {track.currency}
+                          {track.payment_period ? ` / ${track.payment_period}` : ''}
+                        </dd>
+                      </>
+                    )}
+                    {track.amount != null && !track.currency && (
+                      <>
+                        <dt>Amount</dt>
+                        <dd>
+                          {Number(track.amount).toLocaleString()}
+                          {track.payment_period ? ` / ${track.payment_period}` : ''}
+                        </dd>
+                      </>
+                    )}
+                    {track.tuition_coverage != null && (
+                      <>
+                        <dt>Tuition</dt>
+                        <dd>{track.tuition_coverage ? 'Covered' : 'Not covered'}</dd>
+                      </>
+                    )}
+                    {track.living_cost_coverage != null && (
+                      <>
+                        <dt>Living costs</dt>
+                        <dd>{track.living_cost_coverage ? 'Covered' : 'Not covered'}</dd>
+                      </>
+                    )}
+                    {track.accommodation_coverage != null && (
+                      <>
+                        <dt>Accommodation</dt>
+                        <dd>{track.accommodation_coverage ? 'Covered' : 'Not covered'}</dd>
+                      </>
+                    )}
+                    {track.travel_coverage != null && (
+                      <>
+                        <dt>Travel</dt>
+                        <dd>{track.travel_coverage ? 'Covered' : 'Not covered'}</dd>
+                      </>
+                    )}
+                    {track.insurance_coverage != null && (
+                      <>
+                        <dt>Insurance</dt>
+                        <dd>{track.insurance_coverage ? 'Covered' : 'Not covered'}</dd>
+                      </>
+                    )}
+                    {track.other_coverage != null && (
+                      <>
+                        <dt>Other benefits</dt>
+                        <dd>{track.other_coverage ? 'Covered' : 'Not covered'}</dd>
+                      </>
+                    )}
+                    {track.duration && (
+                      <>
+                        <dt>Duration</dt>
+                        <dd>{track.duration}</dd>
+                      </>
+                    )}
+                    {track.conditions && (
+                      <>
+                        <dt>Conditions</dt>
+                        <dd>{track.conditions}</dd>
+                      </>
+                    )}
+                    {track.official_source_url && (
+                      <>
+                        <dt>Official source</dt>
+                        <dd>
+                          <a href={track.official_source_url} target="_blank" rel="noopener noreferrer" className="scholarship-card__link">
+                            <span>View source</span>
+                            <span aria-hidden="true">↗</span>
+                          </a>
+                        </dd>
+                      </>
+                    )}
+                    {track.verification_date && (
+                      <>
+                        <dt>Verified</dt>
+                        <dd>{track.verification_date}</dd>
+                      </>
+                    )}
+                  </dl>
+                </div>
+              ))}
+            </section>
+          )}
+
+          {/* Eligibility */}
+          {(eligibilitySummary || eligibility.length > 0) && (
+            <section className="scholarship-card__expanded-section">
+              <h4 className="scholarship-card__expanded-title">Eligibility</h4>
+              {eligibilitySummary && (
+                <p className="scholarship-card__expanded-text">{eligibilitySummary}</p>
+              )}
+              {eligibility.length > 0 && (
+                <ul className="scholarship-card__expanded-list">
+                  {eligibility.map((item, idx) => (
+                    <li key={idx}>{item}</li>
+                  ))}
+                </ul>
+              )}
+            </section>
+          )}
+
+          {/* Academic Eligibility (Departments, Fields, Programmes) */}
+          {(departments.length > 0 || eligibleFields.length > 0 || eligibleProgrammes.length > 0) && (
+            <section className="scholarship-card__expanded-section">
+              <h4 className="scholarship-card__expanded-title">Academic eligibility</h4>
+              {departments.length > 0 && (
+                <div className="scholarship-card__expanded-subsection">
+                  <h5>Departments</h5>
+                  <ul>
+                    {departments.map((item, idx) => (
+                      <li key={idx}>{item}</li>
+                    ))}
+                  </ul>
+                </div>
+              )}
+              {eligibleFields.length > 0 && (
+                <div className="scholarship-card__expanded-subsection">
+                  <h5>Eligible fields of study</h5>
+                  <ul>
+                    {eligibleFields.map((item, idx) => (
+                      <li key={idx}>{item}</li>
+                    ))}
+                  </ul>
+                </div>
+              )}
+              {eligibleProgrammes.length > 0 && (
+                <div className="scholarship-card__expanded-subsection">
+                  <h5>Specific programmes</h5>
+                  <ul>
+                    {eligibleProgrammes.map((item, idx) => (
+                      <li key={idx}>{item}</li>
+                    ))}
+                  </ul>
+                </div>
+              )}
+            </section>
+          )}
+
+          {/* Requirements & Documents */}
+          {(requirements.length > 0 || documents.length > 0) && (
+            <section className="scholarship-card__expanded-section">
+              <h4 className="scholarship-card__expanded-title">Requirements</h4>
+              {requirements.length > 0 && (
+                <ul className="scholarship-card__expanded-list">
+                  {requirements.map((item, idx) => (
+                    <li key={idx}>{item}</li>
+                  ))}
+                </ul>
+              )}
+              {documents.length > 0 && (
+                <div className="scholarship-card__expanded-subsection">
+                  <h5>Documents</h5>
+                  <ul>
+                    {documents.map((item, idx) => (
+                      <li key={idx}>{item}</li>
+                    ))}
+                  </ul>
+                </div>
+              )}
+            </section>
+          )}
+
+          {/* English requirement */}
+          {englishRequirement && (
+            <section className="scholarship-card__expanded-section">
+              <h4 className="scholarship-card__expanded-title">English requirement</h4>
+              <p className="scholarship-card__expanded-text">{englishRequirement}</p>
+            </section>
+          )}
+
+          {/* Application method */}
+          {applicationMethod.length > 0 && (
+            <section className="scholarship-card__expanded-section">
+              <h4 className="scholarship-card__expanded-title">How to apply</h4>
+              <ol className="scholarship-card__expanded-list scholarship-card__expanded-list--ordered">
+                {applicationMethod.map((step, idx) => (
+                  <li key={idx}>{step}</li>
+                ))}
+              </ol>
+            </section>
+          )}
+
+          {/* Selection notes */}
+          {selectionNotes && (
+            <section className="scholarship-card__expanded-section">
+              <h4 className="scholarship-card__expanded-title">Selection</h4>
+              <p className="scholarship-card__expanded-text">{selectionNotes}</p>
+            </section>
+          )}
+
+          {/* Official links */}
+          {(officialSourceUrl || catalogueUrl || officialUpdatesUrl || applicationLink) && (
+            <section className="scholarship-card__expanded-section">
+              <h4 className="scholarship-card__expanded-title">Official sources</h4>
+              <ul className="scholarship-card__expanded-links">
+                {officialSourceUrl && (
+                  <li>
+                    <a href={officialSourceUrl} target="_blank" rel="noopener noreferrer" className="scholarship-card__link">
+                      <span>Official source</span>
+                      <span aria-hidden="true">↗</span>
+                    </a>
+                  </li>
+                )}
+                {catalogueUrl && (
+                  <li>
+                    <a href={catalogueUrl} target="_blank" rel="noopener noreferrer" className="scholarship-card__link">
+                      <span>Programme catalogue</span>
+                      <span aria-hidden="true">↗</span>
+                    </a>
+                  </li>
+                )}
+                {officialUpdatesUrl && (
+                  <li>
+                    <a href={officialUpdatesUrl} target="_blank" rel="noopener noreferrer" className="scholarship-card__link">
+                      <span>Updates & announcements</span>
+                      <span aria-hidden="true">↗</span>
+                    </a>
+                  </li>
+                )}
+                {applicationLink && (
+                  <li>
+                    <a href={applicationLink} target="_blank" rel="noopener noreferrer" className="scholarship-card__link scholarship-card__link--apply">
+                      <span>Apply now</span>
+                      <span aria-hidden="true">↗</span>
+                    </a>
+                  </li>
+                )}
+              </ul>
+            </section>
+          )}
+        </div>
+      </div>
 
       {/* The reference's fit meter: a raised accent bar inside a sunken
           track, with the count beside it in tabular figures. The bar is the

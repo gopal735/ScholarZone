@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 """Rebuild the public scholarship snapshot from the local verified database.
 
 Why this exists
@@ -36,8 +38,7 @@ Run
     backend/.venv/Scripts/python.exe backend/scripts/build_public_snapshot.py
 """
 
-from __future__ import annotations
-
+from decimal import Decimal
 import argparse
 import json
 import sys
@@ -68,6 +69,13 @@ DEFAULT_OUTPUT = REPO_ROOT / "frontend" / "public" / "scholarships-snapshot.json
 #: The columns that form the public contract, in the order the frontend's
 #: snapshot reader expects. Anything not listed here is not written — which
 #: is how "no internal fields" is enforced rather than promised.
+#: INTERNAL FIELDS EXCLUDED: last_verified_at, last_verified_date, is_verified,
+#: image_source_url, image_source_type, image_kind, image_verified_at,
+#: image_alt_text, updated_at, created_at, legacy_id, verification_notes,
+#: verified_by, next_verification_due, is_archived, archived_at, archived_reason,
+#: auto_delete_candidate_since, deletion_protected, official_details,
+#: applicant_utility, programme_verification, image_evaluation_status,
+#: image_evaluated_at
 PUBLIC_COLUMNS: tuple[str, ...] = (
     "id",
     "title",
@@ -80,12 +88,14 @@ PUBLIC_COLUMNS: tuple[str, ...] = (
     "deadline_precision",
     "status",
     "verification_status",
-    "last_verified_at",
+    "official_source",
     "official_source_url",
     "application_link",
     "eligibility",
     "benefits",
+    "coverage",
     "requirements",
+    "documents",
     "region",
     "duration",
     "application_period",
@@ -94,13 +104,25 @@ PUBLIC_COLUMNS: tuple[str, ...] = (
     "selection_notes",
     "program_type",
     "image_url",
-    "image_source_url",
-    "image_source_type",
-    "image_verified_at",
-    "image_alt_text",
     "fully_funded",
-    "next_verification_due",
-    "updated_at",
+    "funding_amount",
+    "funding_currency",
+    "funding_period",
+    "tuition_coverage",
+    "living_cost_coverage",
+    "travel_coverage",
+    "eligibility_summary",
+    "english_requirement",
+    "application_method",
+    "best_fit",
+    "notes",
+    # Academic eligibility
+    "departments",
+    "eligible_fields",
+    "eligible_programmes",
+    "academic_provenance",
+    # Structured funding details
+    "funding_details",
 )
 
 #: Research enrichment tables. Listed so the exclusion is explicit and a
@@ -122,6 +144,9 @@ def _jsonable(value: Any) -> Any:
     """
     if isinstance(value, (date, datetime)):
         return value.isoformat()
+    if isinstance(value, Decimal):
+        # Convert Decimal to float for JSON serialization
+        return float(value)
     return value
 
 

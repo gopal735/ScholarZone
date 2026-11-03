@@ -2,7 +2,7 @@
 
 from datetime import date, datetime
 from enum import Enum
-from typing import Literal
+from typing import ClassVar, Literal
 
 from pydantic import (
     AliasChoices,
@@ -67,7 +67,7 @@ class ScholarshipQuery(BaseModel):
 class ScholarshipResponse(BaseModel):
     """Frontend-compatible scholarship list item."""
 
-    model_config = ConfigDict(from_attributes=True)
+    model_config = ConfigDict(from_attributes=True, extra='ignore')
 
     @field_validator("status", mode="before")
     @classmethod
@@ -141,6 +141,55 @@ class ScholarshipResponse(BaseModel):
     image_url: str | None = None
     image_source_type: str | None = None
     image_kind: str | None = None
+    # Academic eligibility
+    departments: list[str] = Field(default_factory=list)
+    eligible_fields: list[str] = Field(default_factory=list)
+    eligible_programmes: list[str] = Field(default_factory=list)
+    academic_provenance: dict | None = None
+    # Funding details
+    fully_funded: bool | None = None
+    funding_amount: float | None = None
+    funding_currency: str | None = None
+    funding_period: str | None = None
+    tuition_coverage: bool | None = None
+    living_cost_coverage: bool | None = None
+    travel_coverage: bool | None = None
+    coverage: list[str] = Field(default_factory=list)
+
+    # Additional public fields for list API (needed by Card and Detail Page)
+    description: str | None = None
+    region: str | None = None
+    duration: str | None = None
+    application_period: str | None = None
+    official_source: str | None = None
+    catalogue_url: str | None = None
+    official_updates_url: str | None = None
+    application_link: str | None = None
+    image_url: str | None = None
+    image_source_url: str | None = None
+    image_source_type: str | None = None
+    image_kind: str | None = None
+    image_verified_at: datetime | None = None
+    image_alt_text: str | None = None
+    eligibility: list[str] = Field(default_factory=list)
+    eligibility_summary: str | None = None
+    benefits: list[str] = Field(default_factory=list)
+    requirements: list[str] = Field(default_factory=list)
+    documents: list[str] = Field(default_factory=list)
+    english_requirement: str | None = None
+    application_method: list[str] = Field(default_factory=list)
+    selection_notes: str | None = None
+    program_type: str | None = None
+    best_fit: str | None = None
+    last_verified_date: date | None = None
+    notes: str | None = None
+    image_source_url: str | None = None
+    image_verified_at: datetime | None = None
+    image_alt_text: str | None = None
+    last_verified_date: date | None = None
+    notes: str | None = None
+    # Structured funding details per programme/track
+    funding_details: list[dict] | None = None
 
     @field_validator("verification_status", mode="before")
     @classmethod
@@ -163,6 +212,41 @@ class ScholarshipResponse(BaseModel):
         """
         self.verified = public_verified_from_status(self.verification_status)
         return self
+
+    # Fields that exist in ScholarshipResponse and need list normalization
+    LIST_RESPONSE_LIST_COLUMNS: ClassVar[tuple[str, ...]] = (
+        "departments",
+        "eligible_fields",
+        "eligible_programmes",
+        "coverage",
+        "eligibility",
+        "benefits",
+        "requirements",
+        "documents",
+        "application_method",
+    )
+
+    @field_validator(*LIST_RESPONSE_LIST_COLUMNS, mode="before")
+    @classmethod
+    def _normalise_legacy_list_shape(cls, value):
+        """Accept the shape the JSON column has historically been allowed to hold.
+
+        A bare string in one of these columns is a real, complete sentence that
+        was filed in the wrong container. Returning it as a one-element list is
+        the honest reading: the text is published exactly as stored, and the
+        contract stops being the thing that fails an applicant with a 500.
+
+        Anything that is not a list or a string is returned untouched so Pydantic
+        reports the real type error. Coercing a number or an object into a list
+        of strings would invent the sentence it never had.
+        """
+        if value is None:
+            return []
+        if isinstance(value, list):
+            return value
+        if isinstance(value, str):
+            return [value] if value.strip() else []
+        return value
 
 
 class ScholarshipDetailResponse(ScholarshipResponse):
@@ -198,6 +282,20 @@ class ScholarshipDetailResponse(ScholarshipResponse):
     best_fit: str | None = None
     last_verified_date: date | None = None
     notes: str | None = None
+    # Academic eligibility
+    departments: list[str] = Field(default_factory=list)
+    eligible_fields: list[str] = Field(default_factory=list)
+    eligible_programmes: list[str] = Field(default_factory=list)
+    academic_provenance: dict | None = None
+    # Award economics
+    description: str | None = None
+    funding_amount: float | None = None
+    funding_currency: str | None = None
+    funding_period: str | None = None
+    tuition_coverage: bool | None = None
+    living_cost_coverage: bool | None = None
+    travel_coverage: bool | None = None
+    fully_funded: bool | None = None
 
     @field_validator(*LIST_COLUMNS, "required_documents", mode="before")
     @classmethod

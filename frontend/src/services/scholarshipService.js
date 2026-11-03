@@ -1,18 +1,32 @@
 const apiBaseUrl = (import.meta.env.VITE_API_BASE_URL || '/api').replace(/\/$/, '')
 
 /**
- * Static-first mode: when true, the version-controlled snapshot is the
- * primary source for public catalogue reads. The API is not called at all.
+ * Determine if static-first catalogue mode should be enabled.
  *
- * This is controlled by VITE_STATIC_CATALOGUE=true at build time, or by
- * setting localStorage.scholarzone.staticCatalogue = 'true' at runtime.
- * When the snapshot loads successfully, public browsing never needs the
- * database. A distinct "static mode" indicator is shown instead of the
- * degraded "fallback" notice.
+ * Priority order:
+ * 1. Explicit build-time flag: VITE_STATIC_CATALOGUE=true enables, =false disables
+ * 2. Runtime override via localStorage (setStaticCatalogueMode)
+ * 3. Production default: enabled for production builds (mode === 'production')
+ *    when no explicit flag is set.
+ *
+ * This function is called on every public read so runtime changes via
+ * setStaticCatalogueMode take effect without a page reload.
  */
-const STATIC_CATALOGUE =
-  import.meta.env.VITE_STATIC_CATALOGUE === 'true' ||
-  (typeof window !== 'undefined' && window.localStorage.getItem('scholarzone.staticCatalogue') === 'true')
+function getStaticCatalogueMode() {
+  const buildFlag = import.meta.env.VITE_STATIC_CATALOGUE
+  if (buildFlag === 'true') return true
+  if (buildFlag === 'false') return false
+
+  // Runtime override via localStorage
+  if (typeof window !== 'undefined') {
+    const runtime = window.localStorage.getItem('scholarzone.staticCatalogue')
+    if (runtime === 'true') return true
+    if (runtime === 'false') return false
+  }
+
+  // Production default: static-first for production builds
+  return import.meta.env.PROD === true || import.meta.env.MODE === 'production'
+}
 
 // The API-independent catalogue. Imported here so the static source is a
 // property of this service rather than something each page has to remember
@@ -21,6 +35,7 @@ const STATIC_CATALOGUE =
 import {
   fetchScholarshipsFromSnapshot,
   fetchScholarshipStatsFromSnapshot,
+  fetchScholarshipByIdFromSnapshot,
 } from './staticScholarshipService'
 
 export class ScholarshipApiError extends Error {
@@ -149,7 +164,7 @@ function dedupe(key, run, signal) {
 export async function fetchScholarships(query = {}, options) {
   // Static-first: when enabled, the snapshot is the primary source.
   // The API is not called at all for public catalogue reads.
-  if (STATIC_CATALOGUE) {
+  if (getStaticCatalogueMode()) {
     const key = `list:${JSON.stringify(query, Object.keys(query).sort())}`
     const send = () => fetchScholarshipsFromSnapshot(query).then((fallback) => ({
       ...fallback,
@@ -187,19 +202,28 @@ export async function fetchScholarships(query = {}, options) {
 
 export async function fetchScholarshipById(id, options) {
   // Static-first: try snapshot first for detail pages too.
-  if (STATIC_CATALOGUE) {
-    const snapshot = await fetchScholarshipsFromSnapshot({ limit: 1000 })
-    const record = snapshot.items.find((s) => String(s.id) === String(id))
+  if (getStaticCatalogueMode()) {
+    const record = await fetchScholarshipByIdFromSnapshot(id)
     if (record) return normalizeScholarship(record)
     // In static mode, a missing ID is a clear not-found — never fall through to API.
     throw new ScholarshipApiError('Scholarship not found', 404)
   }
-  const payload = await request(`/scholarships/${encodeURIComponent(id)}`, undefined, options)
-  return normalizeScholarship(payload)
+
+  // Non-static mode: try API first, fall back to snapshot on transient failures.
+  try {
+    const payload = await request(`/scholarships/${encodeURIComponent(id)}`, undefined, options)
+    return normalizeScholarship(payload)
+  } catch (error) {
+    // AbortError and 4xx errors never trigger fallback
+    if (!isRetryableError(error)) throw error
+    const record = await fetchScholarshipByIdFromSnapshot(id)
+    if (!record) throw error
+    return { ...normalizeScholarship(record), fromSnapshot: true }
+  }
 }
 
 export async function fetchScholarshipStats(options) {
-  if (STATIC_CATALOGUE) {
+  if (getStaticCatalogueMode()) {
     return dedupe('stats', async () => {
       const fallback = await fetchScholarshipStatsFromSnapshot()
       if (!fallback || fallback.total === 0) throw new Error('Empty snapshot stats')
@@ -224,20 +248,22 @@ export async function fetchScholarshipStats(options) {
  * Persists to localStorage so the preference survives page loads.
  * When enabled, public browsing uses the version-controlled snapshot
  * exclusively and never calls the database-backed API.
+ * Pass true to enable, false to explicitly disable (overriding production default).
  */
 export function setStaticCatalogueMode(enabled) {
   if (typeof window !== 'undefined') {
     if (enabled) {
       window.localStorage.setItem('scholarzone.staticCatalogue', 'true')
     } else {
-      window.localStorage.removeItem('scholarzone.staticCatalogue')
+      window.localStorage.setItem('scholarzone.staticCatalogue', 'false')
     }
   }
 }
 
 /**
  * Check if static-first catalogue mode is currently active.
+ * Re-evaluates on each call so runtime changes take effect immediately.
  */
 export function isStaticCatalogueMode() {
-  return STATIC_CATALOGUE
+  return getStaticCatalogueMode()
 }
