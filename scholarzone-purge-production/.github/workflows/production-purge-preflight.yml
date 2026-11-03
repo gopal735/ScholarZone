@@ -1,0 +1,169 @@
+# Production Purge Preflight Gates
+# Secure CI workflow for Gates 2, 3, 4 verification
+
+name: Production Purge Preflight Gates
+# Secure preflight verification for production scholarship purge.
+# Executes Gates 2 (Identity), 3 (Dependencies), and 4 (Backup) via secure CI.
+# Uses protected environments with environment-scoped secrets and least-privilege roles.
+# MANUAL TRIGGER ONLY - no production writes.
+
+on:
+  workflow_dispatch:
+    inputs:
+      gate:
+        description: "Which gate to execute"
+        required: true
+        type: choice
+        options:
+          - "gate2-identity"
+          - "gate3-dependencies"
+          - "gate4-backup"
+          - "all"
+      confirm_environment:
+        description: "Confirm this runs against PRODUCTION Neon database"
+        required: true
+        type: boolean
+
+permissions:
+  contents: read
+  actions: read
+  checks: write
+  id-token: write  # For OIDC if needed
+
+concurrency:
+  group: production-purge-preflight
+  cancel-in-progress: false
+
+jobs:
+  gate2-identity:
+    name: Gate 2 - Production Identity Verification
+    if: github.event.inputs.gate == 'gate2-identity' || github.event.inputs.gate == 'all'
+    environment:
+      name: production-readonly
+      url: https://console.neon.tech
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    permissions:
+      contents: read
+      id-token: write
+    env:
+      SCHOLARZONE_DATABASE_URL_RO: ${{ secrets.SCHOLARZONE_DATABASE_URL_RO }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: pip install psycopg2-binary --quiet
+
+      - name: Verify Production Identity
+        id: identity
+        run: python .github/scripts/gate2_identity.py
+
+      - name: Upload Gate 2 Results
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: gate2-identity-result
+          path: gate2_result.json
+          retention-days: 7
+
+  gate3-dependencies:
+    name: Gate 3 - Production Dependencies Verification
+    if: github.event.inputs.gate == 'gate3-dependencies' || github.event.inputs.gate == 'all'
+    environment: production-readonly
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    env:
+      SCHOLARZONE_DATABASE_URL_RO: ${{ secrets.SCHOLARZONE_DATABASE_URL_RO }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: pip install psycopg2-binary --quiet
+
+      - name: Verify Production Dependencies
+        id: deps
+        run: python .github/scripts/gate3_dependencies.py
+
+      - name: Upload Gate 3 Results
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: gate3-dependencies-result
+          path: gate3_result.json
+          retention-days: 7
+
+  gate4-backup:
+    name: Gate 4 - Production Backup & Verification
+    if: github.event.inputs.gate == 'gate4-backup' || github.event.inputs.gate == 'all'
+    environment:
+      name: production-backup
+      url: https://console.neon.tech
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    env:
+      SCHOLARZONE_DATABASE_URL_BACKUP: ${{ secrets.SCHOLARZONE_DATABASE_URL_BACKUP }}
+      GPG_RECIPIENT: ${{ secrets.GPG_RECIPIENT }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+
+      - name: Install PostgreSQL client and GPG
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq postgresql-client gnupg > /dev/null 2>&1
+
+      - name: Verify Neon PITR & Create Encrypted Backup
+        id: backup
+        run: python .github/scripts/gate4_backup.py
+
+      - name: Upload Gate 4 Results (encrypted backup excluded)
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: gate4-backup-result
+          path: |
+            gate4_result.json
+            *.sha256
+          retention-days: 30
+
+  summary:
+    name: Summary & Gate Status
+    if: always()
+    runs-on: ubuntu-latest
+    needs: [gate2-identity, gate3-dependencies, gate4-backup]
+    steps:
+      - name: Download all artifacts
+        uses: actions/download-artifact@v4
+        with:
+          path: artifacts
+
+      - name: Generate Final Report
+        run: python .github/scripts/summary.py
+
+      - name: Upload Summary
+        uses: actions/upload-artifact@v4
+        with:
+          name: preflight-summary
+          path: |
+            artifacts/gate2_result.json
+            artifacts/gate3_result.json
+            artifacts/gate4_result.json
+          retention-days: 30
