@@ -22,6 +22,10 @@ Without prior written permission from the copyright holder, no permission is gra
 
 This repository is published on GitHub **solely for portfolio demonstration and code review purposes** under GitHub's Terms of Service. Publication does not constitute a license grant.
 
+### GitHub Platform Functionality
+
+Per GitHub's Terms of Service, public repositories allow any GitHub user to **view** the repository and use GitHub's built-in **fork** UI action. This platform functionality does not constitute a license grant — the forked copy remains subject to the same proprietary terms and carries no permission for reuse, modification, redistribution, deployment, or commercial use.
+
 ### Requesting Permission
 
 For any use beyond viewing this repository on GitHub, contact the copyright holder:

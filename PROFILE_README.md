@@ -12,8 +12,8 @@
 
 | Aspect | Details |
 |--------|---------|
-| **Role** | Sole developer — architecture, backend, frontend, infrastructure, data pipeline |
-| **Purpose** | Help students worldwide discover 770+ verified scholarships with official source provenance |
+| **Role** | Developer — architecture, backend, frontend, infrastructure, data pipeline |
+| **Purpose** | Help students worldwide discover 770 public scholarship records with official source provenance |
 | **Live Demo** | https://scholarzone-fwzj.vercel.app |
 | **Architecture** | Static-first public catalogue (zero-paid), API-backed match engine |
 
@@ -26,7 +26,7 @@
 
 ### Key Technical Achievements
 
-- **Static-First Architecture** — Public catalogue serves 770 scholarships from a version-controlled JSON snapshot on GitHub Pages; zero database, zero API calls for browsing
+- **Static-First Architecture** — Public catalogue serves 770 public scholarship records from a version-controlled JSON snapshot on GitHub Pages; zero database, zero API calls for browsing
 - **Deterministic Match Engine** — Arithmetic-only fit scoring (Academic 25%, Field 20%, Funding 20%, Requirements 15%, Language 10%, Preference 5%, Timing 5%); same inputs → byte-identical output; no clock, randomness, or network in scoring path
 - **Eligibility Gate** — Three-verdict hard gate (`ELIGIBLE` / `NEEDS_VERIFICATION` / `INELIGIBLE`) runs before any scoring; structural separation prevents fit-score influence
 - **Zero-Paid Guard** — CI workflow scans for 80+ paid-only dependencies, database strings in frontend, API keys in frontend code
@@ -34,11 +34,11 @@
 - **Build Provenance** — Embedded git SHA in deployed artefacts; `/health` endpoint verifies deployment identity
 - **Production Purge Preflight** — 7-gate safety protocol for automated expired-cycle deletion (atomicity, identity, dependencies, backup, evidence, cycle model, git safety)
 
-### Verified Metrics (From CI)
+### Local Test Results (Not Remote CI)
 
-- **770** public scholarship records (65 countries, 234 fully funded)
-- **211** frontend tests passing (Vitest)
-- **233+** backend tests passing (pytest)
+- **264** frontend tests passing (Vitest, local)
+- **117** backend matching engine tests passing (pytest, local)
+- **118** backend visibility + matching API tests passing (pytest, local)
 - **0** paid dependencies in public browse path
 - **~2.1 MB** snapshot, **~153 KB** gzipped JS bundle
 
