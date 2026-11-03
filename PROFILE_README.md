@@ -32,7 +32,7 @@
 - **Zero-Paid Guard** — CI workflow scans for 80+ paid-only dependencies, database strings in frontend, API keys in frontend code
 - **Reproducible Data Pipeline** — CI regenerates snapshot from canonical `verified_scholarships.py` on every backend change; validates structure, counts, exclusions
 - **Build Provenance** — Embedded git SHA in deployed artefacts; `/health` endpoint verifies deployment identity
-- **Production Purge Preflight** — 7-gate safety protocol for automated expired-cycle deletion (atomicity, identity, dependencies, backup, evidence, cycle model, git safety)
+- **Production Purge Preflight** — 7-gate safety protocol for automated expired-cycle deletion (atomicity, identity, dependencies, backup, evidence, cycle model, git safety); **preflight work with production validation pending**
 
 ### Local Test Results (Not Remote CI)
 

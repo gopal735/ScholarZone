@@ -9,13 +9,13 @@
 
 ## 🎯 Project Purpose
 
-ScholarZone is a global scholarship discovery platform that helps students find verified scholarship opportunities worldwide. Built with a **static-first architecture**, the public catalogue operates entirely without a database connection — serving **770 public scholarship records** from a version-controlled JSON snapshot deployed to GitHub Pages.
+ScholarZone is a global scholarship discovery platform that helps students find official-source-informed scholarship opportunities worldwide. Built with a **static-first architecture**, the public catalogue operates entirely without a database connection — serving **770 public scholarship records** from a version-controlled JSON snapshot deployed to GitHub Pages.
 
 ### Key Differentiators
 
 | Aspect | Approach |
 |--------|----------|
-| **Architecture** | Static-first: public browsing works offline via committed snapshot |
+| **Architecture** | Static-first: public browsing does not require a live database or API connection |
 | **Data Integrity** | Reproducible CI pipeline regenerates snapshot from canonical sources |
 | **Verification** | Every record links to official source URL; `last_verified_at` tracked |
 | **Cost Model** | Zero-paid dependencies for public browsing (GitHub Pages + Actions) |

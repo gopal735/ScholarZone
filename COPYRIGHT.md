@@ -24,7 +24,7 @@ This repository is published on GitHub **solely for portfolio demonstration and 
 
 ### GitHub Platform Functionality
 
-Per GitHub's Terms of Service, public repositories allow any GitHub user to **view** the repository and use GitHub's built-in **fork** UI action. This platform functionality does not constitute a license grant — the forked copy remains subject to the same proprietary terms and carries no permission for reuse, modification, redistribution, deployment, or commercial use.
+Per GitHub's Terms of Service Section D.5, by submitting User-Generated Content (including public repositories) to GitHub, the copyright holder grants GitHub a worldwide, non-exclusive, royalty-free license to use, display, perform, reproduce, and distribute such Content solely for the purpose of providing the Service. This license allows any GitHub user to **view** the repository and use GitHub's built-in **fork** UI action as part of the Service's standard functionality. This platform-limited license does not constitute a general license grant — the forked copy and any derivative works remain subject to the same proprietary terms and carry no permission for reuse, modification, redistribution, deployment, or commercial use outside of GitHub's Service.
 
 ### Requesting Permission
 
@@ -58,7 +58,7 @@ Scholarship listings, descriptions, deadlines, and eligibility criteria are **ag
 
 ## GitHub Terms of Service
 
-By hosting this repository on GitHub, the copyright holder grants GitHub the rights necessary to operate the service (per [GitHub Terms of Service Section D](https://docs.github.com/en/site-policy/github-terms/github-terms-of-service#d-user-generated-content)). This does not extend permissions to other users beyond what GitHub's platform functionality provides (viewing, forking UI action without license grant, etc.).
+By hosting this repository on GitHub, the copyright holder grants GitHub the rights necessary to operate the Service (per [GitHub Terms of Service Section D](https://docs.github.com/en/site-policy/github-terms/github-terms-of-service#d-user-generated-content), specifically Section D.5). This license allows GitHub to host, display, and distribute the Content as part of the Service, and enables GitHub users to view and fork the repository within the Service. This does not extend permissions to other users beyond what GitHub's platform functionality provides (viewing, forking UI action within the Service — no license grant for off-platform reuse, modification, redistribution, deployment, or commercial use).
 
 ---
 
