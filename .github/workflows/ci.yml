@@ -50,6 +50,8 @@ jobs:
       run: 'cd backend && python -c "import sys; print(f''Python: {sys.version}''); import app; print(''app import ok''); import pytest; print(''pytest ok'')" 2>&1
 
         '
+    - name: Debug - verify pytest-asyncio
+      run: cd backend && python -c "import pytest_asyncio; print('pytest_asyncio: OK')" 2>&1 || echo "pytest_asyncio: FAIL - reinstalling" && pip install pytest-asyncio>=0.23,<1
     - name: Debug - run simple test
       run: cd backend && python -m pytest tests/test_git_integrity_regression.py -v --tb=short 2>&1
     - name: Run backend tests
