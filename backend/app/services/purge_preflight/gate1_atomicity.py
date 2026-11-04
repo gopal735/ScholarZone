@@ -43,7 +43,7 @@ IDEMPOTENCY_TEST_IDS = [9101, 9102, 9103]  # Synthetic IDs for idempotency test
 
 # Primary test uses its own synthetic ID range
 PRIMARY_TEST_ID_BASE = 80000
-PRIMARY_TEST_IDS = [PRIMARY_TEST_ID_BASE + i for i in range(35)]  # 80000-80034 (35 IDs)
+PRIMARY_TEST_IDS = [PRIMARY_TEST_ID_BASE + i for i in range(34)]  # 80000-80033 (34 IDs, matches manifest)
 
 # Allowlisted disposable database configurations
 # Only these host/database combinations are permitted for Gate 1
@@ -538,7 +538,7 @@ def main() -> int:
     """CLI entry point for Gate 1."""
     print("=== GATE 1: ATOMICITY AND ROLLBACK ===")
     print(f"Canonical Target IDs (reference only, NEVER used as fixtures): {CANONICAL_TARGET_IDS}")
-    print(f"Primary test synthetic IDs (80000+): {PRIMARY_TEST_IDS[:5]}... (35 total)")
+    print(f"Primary test synthetic IDs (80000+): {PRIMARY_TEST_IDS[:5]}... (34 total)")
     print(f"Rollback test synthetic IDs: {ROLLBACK_TEST_IDS}")
     print(f"Idempotency test synthetic IDs: {IDEMPOTENCY_TEST_IDS}")
     print()

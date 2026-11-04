@@ -40,6 +40,8 @@ jobs:
           Linux-pip-v2-
     - name: Install dependencies
       run: cd backend && pip install -r requirements.txt
+    - name: Install purge preflight test dependencies
+      run: cd backend && pip install -r requirements-purge-preflight.txt
     - name: Debug - verify pip install
       run: |
         cd backend && pip list | grep -E "(fastapi|pydantic|sqlalchemy|psycopg|httpx|pillow|beautifulsoup4|apscheduler|resend|python-dotenv)" || true
@@ -105,6 +107,8 @@ jobs:
         python-version: '3.11'
     - name: Install dependencies
       run: cd backend && pip install -r requirements.txt
+    - name: Install purge preflight test dependencies
+      run: cd backend && pip install -r requirements-purge-preflight.txt
     - name: Wait for PostgreSQL to be ready
       run: |
         for i in {1..30}; do
@@ -469,6 +473,8 @@ jobs:
           Linux-pip-
     - name: Install dependencies
       run: cd backend && pip install -r requirements.txt
+    - name: Install purge preflight test dependencies
+      run: cd backend && pip install -r requirements-purge-preflight.txt
     - name: Wait for PostgreSQL to be ready
       run: |
         for i in {1..30}; do
