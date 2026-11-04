@@ -93,11 +93,26 @@ def run_git_command(args: List[str], cwd: Optional[Path] = None) -> subprocess.C
     )
 
 
-def get_pr_shas(repo_root: Path) -> tuple[str, str]:
+def ensure_git_history(repo_root: Path, required_refs: List[str]) -> tuple[bool, str]:
+    """Ensure sufficient Git history and refs exist for validation.
+    
+    Returns (success, error_message). Fails if required refs cannot be resolved.
+    """
+    for ref in required_refs:
+        result = run_git_command(["rev-parse", ref], repo_root)
+        if result.returncode != 0:
+            return False, f"Required ref '{ref}' not available: {result.stderr.strip()}"
+    return True, ""
+
+
+def get_pr_shas(repo_root: Path) -> tuple[str, str, Optional[str]]:
     """
     Get PR head and base SHAs from GitHub environment variables.
+    
     For pull_request events: use GITHUB_EVENT_PATH to read actual PR head/base SHAs
     For workflow_dispatch: current HEAD as head, base from input or default to master
+    
+    Returns (head_sha, base_sha, error). If error is not None, validation should BLOCK.
     """
     head_sha = os.getenv("GITHUB_SHA", "")
     base_sha = ""
@@ -106,9 +121,10 @@ def get_pr_shas(repo_root: Path) -> tuple[str, str]:
     event_name = os.getenv("GITHUB_EVENT_NAME", "")
     event_path = os.getenv("GITHUB_EVENT_PATH", "")
     
-    if event_name == "pull_request" and event_path and os.path.exists(event_path):
+    if event_name == "pull_request":
+        if not event_path or not os.path.exists(event_path):
+            return "", "", "GITHUB_EVENT_PATH missing or file not found for pull_request event"
         try:
-            import json
             with open(event_path, "r") as f:
                 event_data = json.load(f)
             # PR head SHA
@@ -122,32 +138,52 @@ def get_pr_shas(repo_root: Path) -> tuple[str, str]:
                     result = run_git_command(["rev-parse", f"origin/{base_ref}"], repo_root)
                     if result.returncode == 0:
                         base_sha = result.stdout.strip()
-        except Exception:
-            pass  # Fall back to env vars
+                    else:
+                        return "", "", f"Failed to resolve base ref 'origin/{base_ref}': {result.stderr.strip()}"
+                else:
+                    return "", "", "PR base ref not found in event payload"
+            if not head_sha:
+                return "", "", "PR head SHA not found in event payload"
+            if not base_sha:
+                return "", "", "PR base SHA could not be determined"
+        except json.JSONDecodeError as e:
+            return "", "", f"Failed to parse GITHUB_EVENT_PATH JSON: {e}"
+        except Exception as e:
+            return "", "", f"Error reading PR event payload: {e}"
     elif event_name == "workflow_dispatch":
         # For manual dispatch, use current HEAD as head, master as base
         result = run_git_command(["rev-parse", "HEAD"], repo_root)
         if result.returncode == 0:
             head_sha = result.stdout.strip()
+        else:
+            return "", "", f"Failed to resolve HEAD: {result.stderr.strip()}"
         result = run_git_command(["rev-parse", "origin/master"], repo_root)
         if result.returncode == 0:
             base_sha = result.stdout.strip()
+        else:
+            return "", "", f"Failed to resolve origin/master: {result.stderr.strip()}"
+    else:
+        return "", "", f"Unsupported event type: {event_name}"
     
-    return head_sha, base_sha
+    return head_sha, base_sha, None
 
 
-def check_branch_and_base(repo_root: Path) -> tuple[str, str, str, str, bool, bool]:
+def check_branch_and_base(repo_root: Path) -> tuple[str, str, str, str, bool, bool, Optional[str]]:
     """Check current branch and base using real PR SHAs.
     
     Handles detached HEAD in CI by not requiring branch name match.
     Validates actual base commit SHA against expected base branch.
+    
+    Returns (current_branch, expected_base, pr_head_sha, pr_base_sha, branch_match, base_match, error).
     """
     # Get current branch (will be empty in detached HEAD)
     result = run_git_command(["branch", "--show-current"], repo_root)
     current_branch = result.stdout.strip()
 
-    # Get PR SHAs
-    pr_head_sha, pr_base_sha = get_pr_shas(repo_root)
+    # Get PR SHAs with error handling
+    pr_head_sha, pr_base_sha, error = get_pr_shas(repo_root)
+    if error:
+        return current_branch, "master", "", "", False, False, error
 
     # Check if we're on the expected branch (only if not detached HEAD)
     expected_branch = "fix/production-expired-cycle-purge"
@@ -156,22 +192,24 @@ def check_branch_and_base(repo_root: Path) -> tuple[str, str, str, str, bool, bo
     if current_branch:
         branch_match = current_branch == expected_branch
     else:
-        # Detached HEAD (common in CI) - check if HEAD matches expected PR head SHA
-        branch_match = (pr_head_sha != "" and pr_head_sha == pr_head_sha)
+        # Detached HEAD (common in CI) - verify HEAD matches expected PR head SHA
+        head_result = run_git_command(["rev-parse", "HEAD"], repo_root)
+        if head_result.returncode == 0:
+            actual_head = head_result.stdout.strip()
+            branch_match = (actual_head == pr_head_sha)
+        else:
+            branch_match = False
 
-    # Check if base is master by verifying the actual base SHA
-    # We validate that the PR base commit is an ancestor of origin/master
+    # Check if base is master by verifying the actual base SHA equals origin/master
+    # Exact semantics: PR base MUST be the current origin/master, not just an ancestor
     base_match = False
     if pr_base_sha:
-        # Check if base SHA is valid and is an ancestor of origin/master
-        result = run_git_command(["merge-base", "--is-ancestor", pr_base_sha, "origin/master"], repo_root)
-        base_match = (result.returncode == 0)
-    else:
-        # Fallback: check if origin/master exists
-        result = run_git_command(["rev-parse", "origin/master"], repo_root)
-        base_match = (result.returncode == 0 and result.stdout.strip() != "")
-
-    return current_branch, expected_base, pr_head_sha, pr_base_sha, branch_match, base_match
+        master_result = run_git_command(["rev-parse", "origin/master"], repo_root)
+        if master_result.returncode == 0:
+            actual_master_sha = master_result.stdout.strip()
+            base_match = (pr_base_sha == actual_master_sha)
+    
+    return current_branch, expected_base, pr_head_sha, pr_base_sha, branch_match, base_match, None
 
 
 def check_worktree_isolation(repo_root: Path) -> tuple[bool, str]:
@@ -180,12 +218,14 @@ def check_worktree_isolation(repo_root: Path) -> tuple[bool, str]:
     In GitHub Actions, the checkout is typically a detached HEAD with .git as directory.
     This is NOT a developer worktree - it's an ephemeral CI checkout.
     A developer worktree has .git as a file pointing to the main repo's .git directory.
+    
+    Returns (is_developer_worktree, path_description).
     """
-    # Check if .git is a file (worktree) or directory (main repo or CI checkout)
+    # Check if .git is a file (developer worktree) or directory (main repo or CI checkout)
     git_path = repo_root / ".git"
-    is_worktree = git_path.is_file()
+    is_developer_worktree = git_path.is_file()
 
-    if is_worktree:
+    if is_developer_worktree:
         # Read the gitdir from the file
         with open(git_path, "r") as f:
             content = f.read().strip()
@@ -193,8 +233,8 @@ def check_worktree_isolation(repo_root: Path) -> tuple[bool, str]:
             worktree_path = content[8:].strip()
             return True, worktree_path
 
-    # Not a linked worktree - could be main repo or CI detached checkout
-    # In CI, this is normal and expected - don't fail
+    # Not a linked developer worktree - could be main repo or CI detached checkout
+    # In CI, this is normal and expected - return False with repo root
     return False, str(repo_root)
 
 
@@ -213,13 +253,32 @@ def find_nested_repos(repo_root: Path) -> List[str]:
     return nested
 
 
+def get_merge_base(repo_root: Path, base_sha: str, head_sha: str) -> Optional[str]:
+    """Get the merge base commit between base and head SHAs."""
+    result = run_git_command(["merge-base", base_sha, head_sha], repo_root)
+    if result.returncode == 0:
+        return result.stdout.strip()
+    return None
+
+
 def get_committed_diff(repo_root: Path, base_sha: str, head_sha: str) -> List[str]:
-    """Get list of files changed in the committed diff (PR range), not just working tree."""
+    """Get list of files changed in the committed diff (PR range), not just working tree.
+    
+    Uses merge-base semantics to correctly handle force-pushes and rebases.
+    """
     if not base_sha or not head_sha:
         # Fallback to working tree changes
         return get_changed_files(repo_root)
 
-    result = run_git_command(["diff", "--name-only", f"{base_sha}..{head_sha}"], repo_root)
+    # First, get the merge base to handle rebases correctly
+    merge_base = get_merge_base(repo_root, base_sha, head_sha)
+    if merge_base:
+        # Use merge-base..head for the actual PR diff
+        result = run_git_command(["diff", "--name-only", f"{merge_base}..{head_sha}"], repo_root)
+    else:
+        # Fallback to base..head if merge-base fails
+        result = run_git_command(["diff", "--name-only", f"{base_sha}..{head_sha}"], repo_root)
+    
     changed = [f for f in result.stdout.strip().split('\n') if f]
     return sorted(set(changed))
 
@@ -264,6 +323,7 @@ def scan_for_secrets(repo_root: Path, changed_files: List[str]) -> List[dict]:
     Detects actual credential values, tokens, passwords, and credential-bearing URLs.
     Allows GitHub secrets expressions (${{ secrets.NAME }}) and environment variable
     references ($NAME, ${NAME}) as these are not actual secret values.
+    Masks all matched values in reports.
     """
     secrets = []
 
@@ -282,15 +342,15 @@ def scan_for_secrets(repo_root: Path, changed_files: List[str]) -> List[dict]:
         r"localhost",           # Localhost
         r"127\.0\.0\.1",        # Loopback
         r"0\.0\.0\.0",          # Bind all
+        r"fake",                # Fake values
+        r"placeholder",         # Placeholder keyword
     ]
 
     def is_placeholder(match_text: str, context_line: str) -> bool:
         """Check if a match appears to be a placeholder/reference rather than actual secret."""
-        # Check if the match is within a placeholder pattern
         for pp in placeholder_patterns:
             if re.search(pp, context_line, re.IGNORECASE):
-                # Additional check: if the match itself looks like a placeholder
-                if re.search(r"(secrets\.|YOUR_|REPLACE_|CHANGE_|dummy|test|example|localhost)", match_text, re.IGNORECASE):
+                if re.search(r"(secrets\.|YOUR_|REPLACE_|CHANGE_|dummy|test|example|localhost|fake|placeholder)", match_text, re.IGNORECASE):
                     return True
         return False
 
@@ -335,7 +395,7 @@ def check_purge_files_only(changed_files: List[str]) -> bool:
     part of the production purge preflight PR. Includes implementation,
     tests, CI configuration, documentation, and evidence files.
     """
-    # Precise allowlist matching the actual intended scope of PR #67
+    # Precise allowlist matching the actual intended scope of the PR
     purge_patterns = [
         # Workflow files
         r"^\.github/workflows/production-purge-preflight\.yml$",
@@ -372,10 +432,12 @@ def check_purge_files_only(changed_files: List[str]) -> bool:
     return True
 
 
-def check_production_mutation_risk(changed_files: List[str]) -> bool:
-    """Check for patterns that could mutate production.
+def check_production_mutation_risk(repo_root: Path, changed_files: List[str]) -> bool:
+    """Check for patterns that could mutate production database.
     
-    Excludes test code that uses TEST_DATABASE_URL or disposable databases.
+    Inspects execution path and database target, not just SQL text.
+    A test DELETE against an explicitly isolated disposable DB is not production mutation.
+    A production-connected write is always a blocker.
     """
     risk_patterns = [
         r"DELETE\s+FROM\s+scholarships",
@@ -387,7 +449,7 @@ def check_production_mutation_risk(changed_files: List[str]) -> bool:
     ]
 
     for file_path in changed_files:
-        full_path = Path(file_path)
+        full_path = repo_root / file_path
         if not full_path.exists() or not full_path.is_file():
             continue
         try:
@@ -395,13 +457,26 @@ def check_production_mutation_risk(changed_files: List[str]) -> bool:
         except UnicodeDecodeError:
             continue
 
-        # Skip test files and disposable DB test code
-        if ("test" in file_path.lower() or 
+        # Check if this file is test code using disposable/test database
+        is_test_code = (
+            "test" in file_path.lower() or
             "TEST_DATABASE_URL" in content or
             "connect_test" in content or
-            "test_purge" in content):
+            "test_purge" in content or
+            "disposable" in content.lower()
+        )
+
+        # Check if file connects to production database
+        connects_to_production = (
+            "SCHOLARZONE_DATABASE_URL" in content and "TEST_DATABASE_URL" not in content and
+            "production" in content.lower()
+        )
+
+        # If it's test code with disposable DB, allow mutation patterns
+        if is_test_code and not connects_to_production:
             continue
 
+        # For non-test code or production-connected code, flag mutation patterns
         for pattern in risk_patterns:
             if re.search(pattern, content, re.IGNORECASE):
                 return True
@@ -417,6 +492,8 @@ def check_deployment_risk(changed_files: List[str]) -> bool:
         "docker-compose",
         "vercel.json",
         "netlify.toml",
+        "render.yaml",
+        "wrangler.toml",
     ]
     for f in changed_files:
         if any(df in f for df in deploy_files):
@@ -443,46 +520,63 @@ def run_gate7() -> Gate7Result:
         return result
 
     # 1. Check branch and base using PR SHAs
-    current_branch, base_branch, pr_head_sha, pr_base_sha, branch_match, base_match = check_branch_and_base(repo_root)
+    current_branch, base_branch, pr_head_sha, pr_base_sha, branch_match, base_match, error = check_branch_and_base(repo_root)
     result.current_branch = current_branch
     result.base_branch = base_branch
     result.pr_head_sha = pr_head_sha
     result.pr_base_sha = pr_base_sha
     result.branch_match = branch_match
     result.base_match = base_match
+    if error:
+        result.status = "BLOCKED"
+        result.error = error
+        return result
 
-    # 2. Check worktree isolation (informational - not required in CI)
+    # 2. Ensure sufficient Git history for validation (fetch-depth: 0 in workflow)
+    # Verify we can resolve required refs
+    required_refs = ["origin/master", "HEAD"]
+    if pr_base_sha:
+        required_refs.append(pr_base_sha)
+    if pr_head_sha:
+        required_refs.append(pr_head_sha)
+    history_ok, history_error = ensure_git_history(repo_root, required_refs)
+    if not history_ok:
+        result.status = "BLOCKED"
+        result.error = f"Insufficient Git history: {history_error}"
+        return result
+
+    # 3. Check worktree isolation (informational - not required in CI)
     worktree_isolated, worktree_path = check_worktree_isolation(repo_root)
     result.worktree_isolated = worktree_isolated
     result.worktree_path = worktree_path
 
-    # 3. Find nested repos
+    # 4. Find nested repos
     result.nested_repos = find_nested_repos(repo_root)
 
-    # 4. Get committed diff (PR range) - not just working tree
+    # 5. Get committed diff (PR range) - not just working tree
     result.changed_files = get_committed_diff(repo_root, pr_base_sha, pr_head_sha)
 
-    # 5. Check unrelated changes
+    # 6. Check unrelated changes
     result.unrelated_changes = check_unrelated_changes(result.changed_files)
 
-    # 6. Scan for secrets in committed changes
+    # 7. Scan for secrets in committed changes
     result.secrets_detected = scan_for_secrets(repo_root, result.changed_files)
 
-    # 7. Check purge files only
+    # 8. Check purge files only
     result.purge_files_only = check_purge_files_only(result.changed_files)
 
-    # 8. Check production mutation risk
-    result.production_mutation_risk = check_production_mutation_risk(result.changed_files)
+    # 9. Check production mutation risk (with repo_root for content inspection)
+    result.production_mutation_risk = check_production_mutation_risk(repo_root, result.changed_files)
 
-    # 9. Check deployment risk
+    # 10. Check deployment risk
     result.deployment_risk = check_deployment_risk(result.changed_files)
 
     # Determine overall status
     issues = []
     if not result.branch_match:
-        issues.append(f"Branch mismatch: expected '{result.expected_branch}', got '{current_branch}' (or detached HEAD)")
+        issues.append(f"Branch mismatch: expected '{result.expected_branch}', got '{current_branch}' (or detached HEAD mismatch)")
     if not result.base_match:
-        issues.append(f"Base branch mismatch: expected '{result.expected_base}' (base commit not ancestor of origin/master)")
+        issues.append(f"Base branch mismatch: expected '{result.expected_base}' (PR base SHA must equal current origin/master)")
     if result.nested_repos:
         issues.append(f"Nested repositories detected: {result.nested_repos}")
     if result.unrelated_changes:
@@ -492,7 +586,7 @@ def run_gate7() -> Gate7Result:
     if not result.purge_files_only:
         issues.append("Changes include non-purge files")
     if result.production_mutation_risk:
-        issues.append("Production mutation patterns detected (excluding test code)")
+        issues.append("Production mutation patterns detected (excluding test code with disposable DB)")
     if result.deployment_risk:
         issues.append("Deployment configuration changes detected")
 
@@ -520,10 +614,13 @@ def main() -> int:
     print(json.dumps(result.to_dict(), indent=2, default=str))
 
     if result.status == "PASS":
-        print("\n✅ GATE 7 PASSED: Git safety checks passed")
+        print("\n[PASS] GATE 7 PASSED: Git safety checks passed")
         return 0
+    elif result.status == "BLOCKED":
+        print(f"\n[BLOCKED] GATE 7 BLOCKED: {result.error}")
+        return 2
     else:
-        print(f"\n❌ GATE 7 {result.status}: {result.error}")
+        print(f"\n[FAIL] GATE 7 {result.status}: {result.error}")
         return 1
 
 

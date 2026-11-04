@@ -391,7 +391,7 @@ jobs:
 
       - name: Generate Final Report
         run: |
-          python .github/scripts/summary.py artifacts ${{ github.sha }} ${{ github.run_id }} ${{ github.run_number }}
+          python .github/scripts/summary.py artifacts ${{ github.sha }} ${{ github.run_id }} ${{ github.run_number }} ${{ github.run_attempt }} ${{ github.workflow }}
 
       - name: Upload Summary
         uses: actions/upload-artifact@v4
