@@ -796,18 +796,28 @@ def test_gate7_secret_detection_patterns():
     import re
 
     test_cases = [
-        ("SCHOLARZONE_DATABASE_URL=postgresql://user:pass@host/db", "Database URL"),
-        ("postgresql://user:password@localhost:5432/db", "PostgreSQL connection with password"),
-        ("GPG_RECIPIENT=test@example.com", "GPG recipient"),
-        ("EXPECTED_NEON_PROJECT_ID=abc123", "Neon project ID"),
-        ("ghp_abcdefghijklmnopqrstuvwxyz123456789012", "GitHub token"),
+        ("postgresql://user:password@localhost:5432/db", "PostgreSQL connection string with embedded password"),
+        ("mysql://user:password@localhost:3306/db", "MySQL connection string with embedded password"),
+        ("mongodb://user:password@localhost:27017/db", "MongoDB connection string with embedded password"),
+        ("redis://user:password@localhost:6379/db", "Redis connection string with embedded password"),
+        ("ghp_abcdefghijklmnopqrstuvwxyz123456789012", "GitHub token (ghp_ or ghs_)"),
+        ("ghs_abcdefghijklmnopqrstuvwxyz123456789012", "GitHub token (ghp_ or ghs_)"),
+        ("sk_abcdefghijklmnopqrstuvwxyz12345678", "OpenAI/API key (sk_ prefix)"),
+        ("xoxb-DUMMY-TOKEN-PLACEHOLDER", "Slack bot token"),
+        ("xoxp-DUMMY-TOKEN-PLACEHOLDER", "Slack user token"),
+        ("AKIA1234567890123456", "AWS access key ID"),
+        ("dGVzdCBzZWNyZXQgdmFsdWUgdGhhdCBpcyBsb25nIGVub3VnaA==", "Potential base64 encoded secret (AWS secret, etc.)"),
+        ("-----BEGIN RSA PRIVATE KEY-----\n...", "Private key in PEM format"),
+        ("-----BEGIN EC PRIVATE KEY-----\n...", "Private key in PEM format"),
+        ("-----BEGIN OPENSSH PRIVATE KEY-----\n...", "Private key in PEM format"),
+        ("abcdef1234567890abcdef1234567890abcdef12", "Potential GPG fingerprint or SHA1 hash (40 hex chars)"),
     ]
 
     for content, expected_type in test_cases:
         found = False
         for pattern, desc in SECRET_PATTERNS:
             if re.search(pattern, content):
-                assert desc == expected_type
+                assert desc == expected_type, f"Pattern '{desc}' != expected '{expected_type}' for content: {content}"
                 found = True
                 break
         assert found, f"Should detect {expected_type} in: {content}"
@@ -817,12 +827,31 @@ def test_gate7_purge_files_only_check():
     """Test purge-only file scope check."""
     from app.services.purge_preflight.gate7_git_safety import check_purge_files_only
 
-    # Only purge files
+    # Only purge files - using exact paths that match the new patterns
     purge_files = [
+        ".github/workflows/production-purge-preflight.yml",
+        ".github/workflows/ci.yml",
+        "backend/app/services/purge_preflight/gate1_atomicity.py",
+        "backend/app/services/purge_preflight/gate2_identity.py",
+        "backend/app/services/purge_preflight/gate3_dependencies.py",
+        "backend/app/services/purge_preflight/gate4_backup.py",
+        "backend/app/services/purge_preflight/gate5_classification.py",
+        "backend/app/services/purge_preflight/gate6_cycle_validation.py",
+        "backend/app/services/purge_preflight/gate7_git_safety.py",
+        "backend/app/services/purge_preflight/manifest.py",
+        "backend/app/services/purge_preflight/config.py",
+        "backend/app/services/purge_preflight/database.py",
+        "backend/app/services/purge_preflight/summary.py",
         ".github/scripts/gate1_atomicity.py",
         ".github/scripts/gate2_identity.py",
-        ".github/workflows/production-purge-preflight.yml",
-        "backend/app/services/purge_preflight/gate1_atomicity.py",
+        ".github/scripts/gate3_dependencies.py",
+        ".github/scripts/gate4_backup.py",
+        ".github/scripts/gate5_classification.py",
+        ".github/scripts/gate6_cycle_validation.py",
+        ".github/scripts/gate7_git_safety.py",
+        ".github/scripts/purge_manifest.py",
+        ".github/scripts/summary.py",
+        ".github/scripts/check_preflight_status.py",
         "backend/tests/test_purge_preflight.py",
         "backend/scripts/validate_snapshot_ids.py",
     ]

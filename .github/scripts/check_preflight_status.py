@@ -18,11 +18,9 @@ def main():
     if s['overall_status'] == 'ALL_PREFLIGHT_GATES_COMPLETE':
         print('SUCCESS: All gates passed')
         return 0
-    elif s['overall_status'] == 'INCOMPLETE_MISSING_GATES':
-        print('WARNING: Some gates were skipped')
-        return 0
     else:
-        print('FAILURE: Preflight failed')
+        # INCOMPLETE_MISSING_GATES and FAILED_GATES_PRESENT are both failures
+        print('FAILURE: Preflight incomplete or failed')
         return 1
 
 if __name__ == '__main__':

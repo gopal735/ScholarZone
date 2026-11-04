@@ -321,14 +321,12 @@ def main(artifacts_dir: str = "artifacts", commit_sha: str = "", run_id: str = "
 
     # Exit code based on overall status
     # ALL_PREFLIGHT_GATES_COMPLETE = 0 (success)
-    # INCOMPLETE_MISSING_GATES = 0 (not a failure - just incomplete)
+    # INCOMPLETE_MISSING_GATES = 1 (failure - mandatory gates missing)
     # FAILED_GATES_PRESENT = 1 (failure)
     if summary.overall_status == "ALL_PREFLIGHT_GATES_COMPLETE":
         return 0
-    elif summary.overall_status == "INCOMPLETE_MISSING_GATES":
-        # Not a failure - just incomplete
-        return 0
     else:
+        # Any incomplete or failed mandatory gate is a failure
         return 1
 
 

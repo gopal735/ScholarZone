@@ -5,11 +5,13 @@ name: ScholarZone CI
     - main
     - master
     - fix/deep-scholarship-data-and-card-restoration
+    - fix/production-expired-cycle-purge
   push:
     branches:
     - main
     - master
     - fix/deep-scholarship-data-and-card-restoration
+    - fix/production-expired-cycle-purge
 defaults:
   run:
     shell: bash
@@ -18,6 +20,22 @@ jobs:
     runs-on: ubuntu-latest
     env:
       SCHOLARZONE_ENVIRONMENT: test
+      # Disposable PostgreSQL for Gate 1 integration test
+      TEST_DATABASE_URL: postgresql://test:test@localhost:5432/test_purge
+    services:
+      postgres:
+        image: postgres:16
+        env:
+          POSTGRES_DB: test_purge
+          POSTGRES_USER: test
+          POSTGRES_PASSWORD: test
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd="pg_isready -U test -d test_purge"
+          --health-interval=10s
+          --health-timeout=5s
+          --health-retries=5
     steps:
     - name: Checkout
       uses: actions/checkout@v4
@@ -62,6 +80,50 @@ jobs:
       with:
         name: backend-tests-logs
         path: backend/pytest.log
+
+  # Gate 1 Integration Test with Disposable PostgreSQL
+  gate1-integration:
+    name: Gate 1 - Atomicity Integration Test
+    runs-on: ubuntu-latest
+    needs: [backend-tests]
+    env:
+      TEST_DATABASE_URL: postgresql://test:test@localhost:5432/test_purge
+      SCHOLARZONE_ENVIRONMENT: test
+    services:
+      postgres:
+        image: postgres:16
+        env:
+          POSTGRES_DB: test_purge
+          POSTGRES_USER: test
+          POSTGRES_PASSWORD: test
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd="pg_isready -U test -d test_purge"
+          --health-interval=10s
+          --health-timeout=5s
+          --health-retries=5
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install dependencies
+        run: cd backend && pip install -r requirements.txt
+      - name: Run Gate 1 Integration Test
+        run: |
+          cd backend
+          python -m pytest tests/test_purge_preflight.py::test_gate1_integration_with_disposable_db -v --tb=short
+      - name: Upload Gate 1 integration results
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: gate1-integration-results
+          path: backend/gate1_result.json
   frontend-lint:
     runs-on: ubuntu-latest
     steps:

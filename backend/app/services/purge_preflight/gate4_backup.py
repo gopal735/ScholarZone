@@ -110,12 +110,91 @@ def verify_gpg_fingerprint(gpg_recipient: str, expected_fingerprint: str) -> tup
         return False, None
 
 
-def verify_gpg_key_lifecycle(gpg_recipient: str) -> tuple[bool, dict]:
+def generate_synthetic_gpg_keys(gpg_recipient: str) -> tuple[bool, str, str]:
+    """
+    Generate synthetic GPG key pair for CI testing.
+    
+    Returns:
+        Tuple of (success, public_key_armor, private_key_armor)
+    """
+    try:
+        # Generate a batch key with no passphrase for CI testing
+        batch_config = f"""
+            %echo Generating synthetic GPG key for CI testing
+            Key-Type: RSA
+            Key-Length: 2048
+            Subkey-Type: RSA
+            Subkey-Length: 2048
+            Name-Real: CI Test Key
+            Name-Comment: ScholarZone CI Synthetic Key
+            Name-Email: {gpg_recipient}
+            Expire-Date: 1d
+            Passphrase:
+            %commit
+            %echo Done
+        """
+        
+        # Write batch config to temp file
+        with tempfile.NamedTemporaryFile(mode='w', suffix='.gpg-batch', delete=False) as f:
+            f.write(batch_config)
+            batch_file = f.name
+        
+        try:
+            # Generate key
+            result = subprocess.run(
+                ["gpg", "--batch", "--generate-key", batch_file],
+                capture_output=True, text=True, timeout=60
+            )
+            if result.returncode != 0:
+                return False, "", f"Key generation failed: {result.stderr}"
+        finally:
+            os.unlink(batch_file)
+        
+        # Export public key
+        pub_result = subprocess.run(
+            ["gpg", "--armor", "--export", gpg_recipient],
+            capture_output=True, text=True, timeout=30
+        )
+        
+        # Export private key
+        sec_result = subprocess.run(
+            ["gpg", "--armor", "--export-secret-keys", gpg_recipient],
+            capture_output=True, text=True, timeout=30
+        )
+        
+        if pub_result.returncode == 0 and sec_result.returncode == 0:
+            return True, pub_result.stdout, sec_result.stdout
+        else:
+            return False, "", f"Key export failed: pub={pub_result.returncode}, sec={sec_result.returncode}"
+    except Exception as e:
+        return False, "", f"Key generation exception: {e}"
+
+
+def verify_gpg_key_lifecycle(gpg_recipient: str, is_ci: bool = False) -> tuple[bool, dict]:
     """
     Verify GPG key lifecycle - public/private key pair exists and matches.
     For CI, generates synthetic key pair for roundtrip testing.
     """
     try:
+        # Check if we're in CI and need to generate synthetic keys
+        if is_ci:
+            # Check if keys already exist
+            pub_check = subprocess.run(
+                ["gpg", "--list-keys", "--with-colons", gpg_recipient],
+                capture_output=True, text=True, timeout=10
+            )
+            sec_check = subprocess.run(
+                ["gpg", "--list-secret-keys", "--with-colons", gpg_recipient],
+                capture_output=True, text=True, timeout=10
+            )
+            
+            if pub_check.returncode != 0 or sec_check.returncode != 0:
+                # Generate synthetic keys
+                print("Generating synthetic GPG keys for CI...")
+                success, pub_key, sec_key = generate_synthetic_gpg_keys(gpg_recipient)
+                if not success:
+                    return False, {"error": f"Failed to generate synthetic keys: {sec_key}"}
+        
         # Check public key
         pub_result = subprocess.run(
             ["gpg", "--list-keys", "--with-colons", gpg_recipient],
@@ -138,8 +217,8 @@ def verify_gpg_key_lifecycle(gpg_recipient: str) -> tuple[bool, dict]:
         }
 
         return has_public and has_private, details
-    except Exception:
-        return False, {"error": "GPG key lifecycle check failed"}
+    except Exception as e:
+        return False, {"error": f"GPG key lifecycle check failed: {e}"}
 
 
 def run_pg_dump(database_url: str, output_file: str) -> subprocess.CompletedProcess:
@@ -396,7 +475,8 @@ def run_gate4(
 
         # === STEP 2: Verify GPG key lifecycle ===
         print("=== GPG KEY LIFECYCLE VERIFICATION ===")
-        lifecycle_verified, lifecycle_details = verify_gpg_key_lifecycle(gpg_config.recipient)
+        is_ci = os.getenv("GITHUB_ACTIONS") == "true"
+        lifecycle_verified, lifecycle_details = verify_gpg_key_lifecycle(gpg_config.recipient, is_ci)
         result.gpg_key_lifecycle_verified = lifecycle_verified
         if not lifecycle_verified:
             result.status = "FAIL"
