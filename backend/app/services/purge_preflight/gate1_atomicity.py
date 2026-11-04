@@ -549,9 +549,22 @@ def main() -> int:
 
     # Load config - will fail if TEST_DATABASE_URL not set
     try:
-        from .config import load_config
-        config = load_config()
-        db_config = config.database
+        from .config import DatabaseConfig
+        
+        # Gate 1 only needs TEST_DATABASE_URL - minimal config
+        test_url = os.getenv("TEST_DATABASE_URL")
+        if not test_url:
+            raise ValueError("TEST_DATABASE_URL not set")
+        
+        db_config = DatabaseConfig(
+            readonly_url="",  # Not used by Gate 1
+            backup_url="",    # Not used by Gate 1
+            test_url=test_url,
+            expected_neon_project_id="",  # Not used by Gate 1
+            expected_neon_branch_id="",
+            expected_neon_branch_name="",
+            expected_database_name="",
+        )
     except ValueError as e:
         print(f"CONFIGURATION ERROR: {e}", file=sys.stderr)
         print("Gate 1 requires TEST_DATABASE_URL to be set to a disposable PostgreSQL instance.", file=sys.stderr)

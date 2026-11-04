@@ -1,5 +1,9 @@
 #!/usr/bin/env python3
-"""Verify application models and production database schema are compatible."""
+"""Verify application models and production database schema are compatible.
+
+This check validates that IF tables exist, they are compatible with models.
+A fresh database with no tables returns EMPTY (migration needed), not PASS.
+"""
 
 import os
 import sys
@@ -53,9 +57,15 @@ def main() -> int:
     all_ok = True
     scholarships_exists = "scholarships" in db_cols
 
+    # Check if database is empty (no tables at all)
+    if not db_cols:
+        print("SCHEMA COMPATIBILITY: EMPTY - no tables found, migration needed")
+        return 0
+
     for table, cols in model_cols.items():
         if table not in db_cols:
-            print(f"[WARN] Table {table} not found in database (will be created by startup migration)")
+            print(f"[FAIL] Table {table} not found in database")
+            all_ok = False
             continue
         missing_in_db = cols - db_cols[table]
         extra_in_db = db_cols[table] - cols
@@ -70,9 +80,8 @@ def main() -> int:
             )
 
     if not scholarships_exists:
-        print("\n[WARN] scholarships table does not exist yet - schema migration has not run")
-        print("  This is expected for a fresh database. The startup migration will create tables.")
-        print("  Image field checks skipped until tables exist.")
+        print("\n[FAIL] scholarships table not found in database")
+        all_ok = False
     else:
         scholarships_db = db_cols.get("scholarships", set())
         for field in REQUIRED_IMAGE_FIELDS:
