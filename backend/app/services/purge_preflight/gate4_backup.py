@@ -374,15 +374,23 @@ def run_gate4(
         # === STEP 8: RESTORE TEST ===
         print("=== RESTORE TEST ===")
         restore_db = f"restore_test_{datetime.datetime.utcnow().strftime('%Y%m%d_%H%M%S')}"
-
-        # Build connection URL for restore database
-        # Extract base URL and replace database name
-        base_url = accessor.config.backup_url
-        if base_url.endswith('/'):
-            base_url = base_url[:-1]
-        # Replace the database name in the URL
-        restore_url = base_url.rsplit('/', 1)[0] + '/' + restore_db
-
+        
+        # Use a local disposable PostgreSQL for restore testing
+        # NEVER use the production backup URL for restore - that's a security violation
+        # The CI workflow provisions a disposable PostgreSQL service for this
+        restore_host = os.getenv("RESTORE_TEST_PGHOST", "localhost")
+        restore_port = int(os.getenv("RESTORE_TEST_PGPORT", "5432"))
+        restore_user = os.getenv("RESTORE_TEST_PGUSER", "postgres")
+        restore_password = os.getenv("RESTORE_TEST_PGPASSWORD", "postgres")
+        
+        restore_url = f"postgresql://{restore_user}:{restore_password}@{restore_host}:{restore_port}/{restore_db}"
+        
+        # Verify this is NOT a production URL
+        if "neon.tech" in restore_url or "production" in restore_url.lower():
+            result.status = "FAIL"
+            result.error = f"SECURITY VIOLATION: Restore URL points to production: {restore_url}"
+            return result
+        
         if not create_test_database(restore_db):
             result.status = "FAIL"
             result.error = "Failed to create restore test database"

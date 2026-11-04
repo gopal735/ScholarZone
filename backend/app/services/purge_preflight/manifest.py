@@ -107,7 +107,7 @@ class TargetRecord:
 # Classification mapping - derived from actual record evidence
 # This MUST be validated against real database records in Gate 5
 EXPECTED_CLASSIFICATIONS = {
-    # CLOSED: 19 records - application cycle definitively ended
+    # CLOSED: 18 records - application cycle definitively ended
     2: ClassificationCategory.CLOSED,
     62: ClassificationCategory.CLOSED,
     103: ClassificationCategory.CLOSED,

@@ -101,8 +101,9 @@ def check_branch_and_base(repo_root: Path) -> tuple[str, str, bool, bool]:
 
     branch_match = current_branch == expected_branch
 
-    # Check if base is master (or origin/master)
-    base_match = True  # We'll verify by checking merge base exists
+    # Check if base is master by verifying merge-base with origin/master exists and is valid
+    result = run_git_command(["rev-parse", "origin/master"], repo_root)
+    base_match = (result.returncode == 0 and result.stdout.strip() != "")
 
     return current_branch, expected_base, branch_match, base_match
 
@@ -266,12 +267,23 @@ def check_deployment_risk(changed_files: List[str]) -> bool:
     return False
 
 
+def get_repo_root() -> Path:
+    """Get the repository root using git rev-parse --show-toplevel."""
+    result = run_git_command(["rev-parse", "--show-toplevel"])
+    if result.returncode != 0:
+        raise RuntimeError(f"Failed to find repository root: {result.stderr}")
+    return Path(result.stdout.strip())
+
+
 def run_gate7() -> Gate7Result:
     """Execute Gate 7: Git Safety Verification."""
     result = Gate7Result()
-    repo_root = Path(__file__).resolve().parents[3]  # backend/app/services/purge_preflight -> repo root
-
     try:
+        repo_root = get_repo_root()
+    except RuntimeError as e:
+        result.status = "ERROR"
+        result.error = str(e)
+        return result
         # 1. Check branch and base
         current_branch, base_branch, branch_match, base_match = check_branch_and_base(repo_root)
         result.current_branch = current_branch
