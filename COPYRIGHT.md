@@ -24,11 +24,13 @@ This repository is published on GitHub **solely for portfolio demonstration and 
 
 ### GitHub Platform Functionality
 
-Per GitHub's Terms of Service Section D.5, by submitting User-Generated Content (including public repositories) to GitHub, the copyright holder grants GitHub a worldwide, non-exclusive, royalty-free license to use, display, perform, reproduce, and distribute such Content solely for the purpose of providing the Service. This license allows any GitHub user to **view** the repository and use GitHub's built-in **fork** UI action as part of the Service's standard functionality. This platform-limited license does not constitute a general license grant — the forked copy and any derivative works created within the Service remain subject to the same proprietary terms and carry no permission for reuse, modification, redistribution, deployment, or commercial use outside of GitHub's Service.
+Per GitHub's Terms of Service Section D.5, by submitting User-Generated Content (including public repositories) to GitHub, the copyright holder grants GitHub a worldwide, non-exclusive, royalty-free license to use, display, perform, reproduce, and distribute such Content solely for the purpose of providing the Service. This license allows any GitHub user to **view** the repository and use GitHub's built-in **fork** UI action as part of the Service's standard functionality.
+
+**Important:** Within GitHub's Service, the forked copy and any derivative works are governed by GitHub's Terms of Service, which permit viewing, forking, and other platform-native functionality. The proprietary terms in this notice apply to uses **outside** of GitHub's Service. No permission is granted for reuse, modification, redistribution, deployment, or commercial use of the software outside of GitHub's Service.
 
 ### Requesting Permission
 
-For any use beyond viewing this repository on GitHub, contact the copyright holder:
+For any use beyond viewing this repository on GitHub or using GitHub's native fork functionality, contact the copyright holder:
 
 - **GitHub**: [gopal735](https://github.com/gopal735)
 - **Repository**: [gopal735/ScholarZone](https://github.com/gopal735/ScholarZone)
