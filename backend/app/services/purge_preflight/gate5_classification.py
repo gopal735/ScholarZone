@@ -30,6 +30,7 @@ from .manifest import (
 )
 from .database import DatabaseAccessor, create_accessor
 from .config import DatabaseConfig, PreflightConfig, load_config
+from .metadata import save_result_with_metadata
 
 
 @dataclass
@@ -203,9 +204,8 @@ def main() -> int:
 
     result = run_gate5(accessor, CANONICAL_TARGET_IDS)
 
-    # Save results
-    with open("gate5_result.json", "w") as f:
-        json.dump(result.to_dict(), f, indent=2, default=str)
+    # Save results with metadata
+    save_result_with_metadata(result.to_dict(), "gate5", "gate5_result.json")
 
     print("\n=== GATE 5 RESULT ===")
     print(json.dumps(result.to_dict(), indent=2, default=str))
