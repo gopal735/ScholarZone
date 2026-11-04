@@ -798,13 +798,16 @@ def run_gate4(
 
         # === STEP 2: Verify GPG key lifecycle ===
         print("=== GPG KEY LIFECYCLE VERIFICATION ===")
-        is_ci = os.getenv("GITHUB_ACTIONS") == "true"
-        lifecycle_verified, lifecycle_details = verify_gpg_key_lifecycle(gpg_config.recipient, is_ci)
+        test_mode = is_test_mode()
+        lifecycle_verified, lifecycle_details = verify_gpg_key_lifecycle(gpg_config.recipient, gpg_config.expected_fingerprint, test_mode)
         result.gpg_key_lifecycle_verified = lifecycle_verified
         if not lifecycle_verified:
             result.status = "FAIL"
             result.error = f"GPG key lifecycle verification failed: {lifecycle_details}"
             return result
+        # Store gpg_home from lifecycle details for test mode encryption/decryption
+        gpg_home = lifecycle_details.get("gpg_home") if lifecycle_details else None
+        result.test_mode = test_mode
         print(f"✅ GPG key lifecycle verified: {lifecycle_details}")
 
         # === STEP 3: PITR Status (Neon-specific) - MANDATORY ===
@@ -851,7 +854,7 @@ def run_gate4(
         # === STEP 6: Encrypt backup ===
         print("=== BACKUP ENCRYPTION ===")
         print(f"Encrypting for recipient: {gpg_config.recipient}")
-        run_gpg_encrypt(backup_file, encrypted_file, gpg_config.recipient)
+        run_gpg_encrypt(backup_file, encrypted_file, gpg_config.recipient, gpg_home)
         print("✅ Backup encrypted")
 
         # Verify encrypted file exists and is non-empty
@@ -908,7 +911,7 @@ def run_gate4(
         try:
             # Decrypt backup
             print("Decrypting backup...")
-            run_gpg_decrypt(encrypted_file, decrypted_file)
+            run_gpg_decrypt(encrypted_file, decrypted_file, gpg_home)
             print("✅ Backup decrypted")
 
             # Restore into test database
@@ -940,6 +943,10 @@ def run_gate4(
             # Clean up decrypted file
             if os.path.exists(decrypted_file):
                 os.unlink(decrypted_file)
+            # Clean up test mode GPG home
+            if test_mode and gpg_home and os.path.exists(gpg_home):
+                cleanup_temp_gpg_home(gpg_home)
+                print("✅ Test mode GPG home cleaned up")
 
         # === STEP 10: Clean up unencrypted backup ===
         if os.path.exists(backup_file):
@@ -949,7 +956,15 @@ def run_gate4(
         # === STEP 11: Production backup storage policy verification ===
         # Verify encrypted backup artifact path matches expected pattern
         # This ensures no casual upload of production backups to CI artifacts
-        result.production_backup_policy_verified = True  # Policy enforced by workflow
+        # Check: encrypted file exists, has .gpg extension, checksum file exists
+        policy_verified = (
+            os.path.exists(encrypted_file)
+            and encrypted_file.endswith(".gpg")
+            and os.path.exists(checksum_file)
+        )
+        result.production_backup_policy_verified = policy_verified
+        if not policy_verified:
+            result.cleanup_errors.append("Production backup storage policy check failed")
 
         # === FINAL GATE RESULT ===
         # Gate 4 passes ONLY if ALL requirements satisfied

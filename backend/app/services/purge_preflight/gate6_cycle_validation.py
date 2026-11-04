@@ -29,6 +29,7 @@ from typing import Optional
 from .manifest import CANONICAL_TARGET_IDS, TARGET_ID_SET, EvidenceRecord
 from .database import DatabaseAccessor, create_accessor
 from .config import DatabaseConfig, PreflightConfig, load_config
+from .metadata import save_result_with_metadata
 
 
 @dataclass
@@ -330,9 +331,8 @@ def main() -> int:
 
     result = run_gate6(accessor, CANONICAL_TARGET_IDS)
 
-    # Save results
-    with open("gate6_result.json", "w") as f:
-        json.dump(result.to_dict(), f, indent=2, default=str)
+    # Save results with metadata
+    save_result_with_metadata(result.to_dict(), "gate6", "gate6_result.json")
 
     print("\n=== GATE 6 RESULT ===")
     print(json.dumps(result.to_dict(), indent=2, default=str))

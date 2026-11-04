@@ -24,6 +24,8 @@ from dataclasses import dataclass, asdict
 from pathlib import Path
 from typing import Optional, List
 
+from .metadata import save_result_with_metadata
+
 
 @dataclass
 class Gate7Result:
@@ -606,9 +608,8 @@ def main() -> int:
 
     result = run_gate7()
 
-    # Save results
-    with open("gate7_result.json", "w") as f:
-        json.dump(result.to_dict(), f, indent=2, default=str)
+    # Save results with metadata
+    save_result_with_metadata(result.to_dict(), "gate7", "gate7_result.json")
 
     print("\n=== GATE 7 RESULT ===")
     print(json.dumps(result.to_dict(), indent=2, default=str))
