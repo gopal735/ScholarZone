@@ -9,6 +9,9 @@ Requirements:
 - Must be a disposable PostgreSQL instance (e.g., GitHub Actions service)
 - Never falls back to production database environment variables
 - Tests genuine rollback behavior with controlled failure injection
+- Uses separate synthetic fixture sets for rollback and idempotency
+- Robust disposable DB identity, actual deletion behavior, exact state verification
+- Safe cleanup and derived PASS
 """
 
 import json
@@ -23,6 +26,12 @@ from psycopg2.extensions import connection as PgConnection
 from .manifest import CANONICAL_TARGET_IDS, TARGET_ID_SET
 from .database import DatabaseAccessor, create_accessor
 from .config import DatabaseConfig
+
+
+# Synthetic fixture IDs - NEVER use canonical production IDs as fixtures
+# These are purely for testing transaction behavior in the disposable DB
+ROLLBACK_TEST_IDS = [9001, 9002]  # Synthetic IDs for rollback test
+IDEMPOTENCY_TEST_IDS = [9101, 9102, 9103]  # Synthetic IDs for idempotency test
 
 
 @dataclass
@@ -52,9 +61,9 @@ class Gate1Result:
         return asdict(self)
 
 
-def create_test_fixtures(conn: PgConnection, target_ids: list[int]) -> int:
+def create_canonical_fixtures(conn: PgConnection, target_ids: list[int]) -> int:
     """
-    Create test fixtures in the disposable database.
+    Create canonical test fixtures (34 target records) in the disposable database.
 
     Inserts the 34 target records with minimal required fields.
     Returns the total count after insertion.
@@ -72,10 +81,10 @@ def create_test_fixtures(conn: PgConnection, target_ids: list[int]) -> int:
             )
         """)
 
-        # Clear any existing test data
+        # Clear any existing test data for canonical IDs
         cur.execute("DELETE FROM scholarships WHERE id = ANY(%s)", (target_ids,))
 
-        # Insert test fixtures
+        # Insert canonical test fixtures
         for tid in target_ids:
             cur.execute("""
                 INSERT INTO scholarships (id, title, country, deadline_date, status)
@@ -100,6 +109,37 @@ def create_test_fixtures(conn: PgConnection, target_ids: list[int]) -> int:
         return cur.fetchone()[0]
 
 
+def create_synthetic_fixtures(conn: PgConnection, synthetic_ids: list[int]) -> int:
+    """
+    Create synthetic test fixtures for rollback/idempotency testing.
+
+    These are DISPOSABLE records with synthetic IDs that never overlap
+    with canonical production IDs.
+    """
+    with conn.cursor() as cur:
+        # Clear any existing synthetic test data
+        cur.execute("DELETE FROM scholarships WHERE id = ANY(%s)", (synthetic_ids,))
+
+        # Insert synthetic fixtures
+        for tid in synthetic_ids:
+            cur.execute("""
+                INSERT INTO scholarships (id, title, country, deadline_date, status)
+                VALUES (%s, %s, %s, %s, %s)
+            """, (
+                tid,
+                f"Synthetic Test {tid}",
+                "Synthetic Country",
+                date(2025, 1, 15),
+                "closed"
+            ))
+
+        conn.commit()
+
+        # Verify insertion
+        cur.execute("SELECT COUNT(*) FROM scholarships WHERE id = ANY(%s)", (synthetic_ids,))
+        return cur.fetchone()[0]
+
+
 def run_gate1(accessor: DatabaseAccessor) -> Gate1Result:
     """
     Execute Gate 1: Atomicity and Rollback tests.
@@ -120,12 +160,12 @@ def run_gate1(accessor: DatabaseAccessor) -> Gate1Result:
         return result
 
     try:
-        # === PHASE 1: Setup test fixtures ===
+        # === PHASE 1: Setup canonical test fixtures (34 records) ===
         with accessor.connect_test() as conn:
-            fixture_count = create_test_fixtures(conn, target_ids)
+            fixture_count = create_canonical_fixtures(conn, target_ids)
             if fixture_count != 34:
                 result.status = "FAIL"
-                result.error = f"Fixture creation failed: expected 34, got {fixture_count}"
+                result.error = f"Canonical fixture creation failed: expected 34, got {fixture_count}"
                 return result
 
             # Verify total count
@@ -191,75 +231,105 @@ def run_gate1(accessor: DatabaseAccessor) -> Gate1Result:
             # Commit the deletion
             conn.commit()
 
-        # === PHASE 3: Genuine rollback test ===
-        # Re-insert the first 2 records, then force rollback
+        # === PHASE 3: Genuine rollback test with SEPARATE synthetic fixtures ===
+        # Create synthetic records in a COMMITTED transaction
+        with accessor.connect_test() as conn:
+            synthetic_count = create_synthetic_fixtures(conn, ROLLBACK_TEST_IDS)
+            if synthetic_count != len(ROLLBACK_TEST_IDS):
+                result.status = "FAIL"
+                result.error = f"Synthetic rollback fixture creation failed: expected {len(ROLLBACK_TEST_IDS)}, got {synthetic_count}"
+                return result
+
+        # Now test rollback: start NEW transaction, delete synthetic records, force failure
         with accessor.connect_test() as conn:
             conn.autocommit = False
 
-            # First, re-insert 2 records to have something to roll back
+            # Verify synthetic records exist before deletion
             with conn.cursor() as cur:
-                cur.execute("""
-                    INSERT INTO scholarships (id, title, country, deadline_date, status)
-                    VALUES (2, 'Test Rollback 2', 'Test', '2025-01-15', 'closed'),
-                           (54, 'Test Rollback 54', 'Test', '2025-01-15', 'closed')
-                    ON CONFLICT (id) DO NOTHING
-                """)
-
-            # Verify they exist
-            with conn.cursor() as cur:
-                cur.execute("SELECT COUNT(*) FROM scholarships WHERE id IN (2, 54)")
-                reinserted = cur.fetchone()[0]
-                if reinserted != 2:
+                cur.execute("SELECT COUNT(*) FROM scholarships WHERE id = ANY(%s)", (ROLLBACK_TEST_IDS,))
+                before_delete = cur.fetchone()[0]
+                if before_delete != len(ROLLBACK_TEST_IDS):
                     conn.rollback()
                     result.status = "FAIL"
-                    result.error = f"Re-insertion failed: expected 2, got {reinserted}"
+                    result.error = f"Synthetic records missing before rollback test: expected {len(ROLLBACK_TEST_IDS)}, got {before_delete}"
                     return result
 
-            # Start transaction, delete them, then FORCE failure
-            try:
+            # Delete synthetic records
+            with conn.cursor() as cur:
+                cur.execute("DELETE FROM scholarships WHERE id = ANY(%s) RETURNING id", (ROLLBACK_TEST_IDS,))
+                deleted_rows = cur.fetchall()
+                deleted_count = len(deleted_rows)
+
+                # FORCE a controlled failure - simulates assertion failure in real logic
+                raise RuntimeError("SIMULATED ASSERTION FAILURE - Testing rollback")
+
+        # If we reach here, the exception wasn't caught - this should not happen
+        result.status = "ERROR"
+        result.error = "Rollback test did not trigger expected exception handling"
+        return result
+
+    except RuntimeError as e:
+        if "SIMULATED ASSERTION FAILURE" in str(e):
+            # This is our expected simulated failure - verify rollback worked
+            with accessor.connect_test() as conn:
+                conn.autocommit = True
                 with conn.cursor() as cur:
-                    cur.execute("DELETE FROM scholarships WHERE id IN (2, 54)")
-                    deleted = cur.rowcount
-                    if deleted != 2:
-                        raise AssertionError(f"Expected to delete 2, deleted {deleted}")
+                    cur.execute("SELECT COUNT(*) FROM scholarships WHERE id = ANY(%s)", (ROLLBACK_TEST_IDS,))
+                    after_rollback = cur.fetchone()[0]
+                    result.rollback_test_passed = (after_rollback == len(ROLLBACK_TEST_IDS))
 
-                    # FORCE a controlled failure - this simulates an assertion failure
-                    # in the real deletion logic
-                    raise RuntimeError("SIMULATED ASSERTION FAILURE - Testing rollback")
-            except RuntimeError:
-                # This is our simulated failure - rollback
-                conn.rollback()
+                    if not result.rollback_test_passed:
+                        result.status = "FAIL"
+                        result.error = f"Rollback failed: expected {len(ROLLBACK_TEST_IDS)} records after rollback, got {after_rollback}"
+                        return result
 
-        # Verify rollback worked - the 2 records should still exist
-        with accessor.connect_test() as conn:
-            conn.autocommit = True
-            with conn.cursor() as cur:
-                cur.execute("SELECT COUNT(*) FROM scholarships WHERE id IN (2, 54)")
-                after_rollback = cur.fetchone()[0]
-                result.rollback_test_passed = (after_rollback == 2)
-
-                if not result.rollback_test_passed:
+            # === PHASE 4: Idempotency test with SEPARATE synthetic fixtures ===
+            # Create fresh synthetic records for idempotency test
+            with accessor.connect_test() as conn:
+                synthetic_count = create_synthetic_fixtures(conn, IDEMPOTENCY_TEST_IDS)
+                if synthetic_count != len(IDEMPOTENCY_TEST_IDS):
                     result.status = "FAIL"
-                    result.error = f"Rollback failed: expected 2 records after rollback, got {after_rollback}"
+                    result.error = f"Synthetic idempotency fixture creation failed: expected {len(IDEMPOTENCY_TEST_IDS)}, got {synthetic_count}"
                     return result
 
-        # === PHASE 4: Idempotency test ===
-        with accessor.connect_test() as conn:
-            conn.autocommit = False
-            with conn.cursor() as cur:
-                cur.execute("DELETE FROM scholarships WHERE id = ANY(%s)", (target_ids,))
-                deleted_again = cur.rowcount
-                conn.commit()
-                result.idempotent_test_passed = (deleted_again == 0)
+            # First deletion - should delete all synthetic records
+            with accessor.connect_test() as conn:
+                conn.autocommit = False
+                with conn.cursor() as cur:
+                    cur.execute("DELETE FROM scholarships WHERE id = ANY(%s) RETURNING id", (IDEMPOTENCY_TEST_IDS,))
+                    deleted_rows = cur.fetchall()
+                    first_delete_count = len(deleted_rows)
+                    conn.commit()
 
-        # === PHASE 5: Final verification ===
-        with accessor.connect_test() as conn:
-            conn.autocommit = True
-            with conn.cursor() as cur:
-                cur.execute("SELECT COUNT(*) FROM scholarships")
-                result.final_count = cur.fetchone()[0]
+            # Second deletion - should delete 0 records (idempotent)
+            with accessor.connect_test() as conn:
+                conn.autocommit = False
+                with conn.cursor() as cur:
+                    cur.execute("DELETE FROM scholarships WHERE id = ANY(%s) RETURNING id", (IDEMPOTENCY_TEST_IDS,))
+                    deleted_rows = cur.fetchall()
+                    second_delete_count = len(deleted_rows)
+                    conn.commit()
 
-        result.status = "PASS"
+            result.idempotent_test_passed = (first_delete_count == len(IDEMPOTENCY_TEST_IDS) and second_delete_count == 0)
+
+            if not result.idempotent_test_passed:
+                result.status = "FAIL"
+                result.error = f"Idempotency test failed: first delete={first_delete_count}, second delete={second_delete_count}"
+                return result
+
+            # === PHASE 5: Final verification - database should be clean ===
+            with accessor.connect_test() as conn:
+                conn.autocommit = True
+                with conn.cursor() as cur:
+                    cur.execute("SELECT COUNT(*) FROM scholarships")
+                    result.final_count = cur.fetchone()[0]
+
+            result.status = "PASS"
+            return result
+
+        # This should never be reached
+        result.status = "ERROR"
+        result.error = "Unexpected code path in rollback test"
         return result
 
     except psycopg2.Error as e:
@@ -277,6 +347,8 @@ def main() -> int:
     print("=== GATE 1: ATOMICITY AND ROLLBACK ===")
     print(f"Target IDs: {CANONICAL_TARGET_IDS}")
     print(f"Count: {len(CANONICAL_TARGET_IDS)}")
+    print(f"Rollback test synthetic IDs: {ROLLBACK_TEST_IDS}")
+    print(f"Idempotency test synthetic IDs: {IDEMPOTENCY_TEST_IDS}")
     print()
 
     # Load config - will fail if TEST_DATABASE_URL not set

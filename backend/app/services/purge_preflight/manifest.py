@@ -3,6 +3,14 @@ Canonical Target Manifest for Production Purge Preflight
 
 This module defines the single source of truth for the 34 target records
 to be purged. All gates must use these IDs - no duplicate lists allowed.
+
+Classification Categories:
+- CLOSED: Application cycle definitively ended, deadline past, status closed/archived
+- CLOSING_SOON: Application cycle ending or recently ended (within grace period)
+- EVERGREEN: No specific deadline (recurring/rolling programme) - CANNOT purge
+- UNKNOWN: Insufficient data to determine status - CANNOT purge
+- BLOCKED: Explicitly blocked from purge (e.g., future deadline, active cycle) - CANNOT purge
+- STATUS_DEADLINE_CONFLICT: Past deadline but status shows open/active - REQUIRES REVIEW
 """
 
 from dataclasses import dataclass
@@ -54,7 +62,39 @@ class ClassificationCategory(str, Enum):
     """Classification categories for target records."""
     CLOSED = "closed"
     CLOSING_SOON = "closing-soon"
+    EVERGREEN = "evergreen"
+    UNKNOWN = "unknown"
     BLOCKED = "blocked"
+    STATUS_DEADLINE_CONFLICT = "status-deadline-conflict"
+
+
+@dataclass(frozen=True)
+class EvidenceRecord:
+    """Evidence record for cycle validation - Gate 6 requirement."""
+    official_domain: str
+    official_url: str
+    source_title: str
+    deadline: Optional[date]
+    deadline_precision: str  # "day", "month", "unknown"
+    supporting_excerpt: str  # Relevant excerpt from official source
+    excerpt_hash: str  # SHA256 hash of excerpt for integrity
+    retrieval_date: date
+    reviewer: str
+    decision: str  # "EXPIRED_VERIFIED", "NOT_EXPIRED", "EVERGREEN", "CONFLICT", "INSUFFICIENT_EVIDENCE"
+
+    def to_dict(self) -> dict:
+        return {
+            "official_domain": self.official_domain,
+            "official_url": self.official_url,
+            "source_title": self.source_title,
+            "deadline": self.deadline.isoformat() if self.deadline else None,
+            "deadline_precision": self.deadline_precision,
+            "supporting_excerpt": self.supporting_excerpt,
+            "excerpt_hash": self.excerpt_hash,
+            "retrieval_date": self.retrieval_date.isoformat(),
+            "reviewer": self.reviewer,
+            "decision": self.decision,
+        }
 
 
 @dataclass(frozen=True)
@@ -70,19 +110,21 @@ class TargetRecord:
     country: str
     programme: str
     application_cycle: str
-    deadline: date
+    deadline: Optional[date]
     deadline_precision: str  # "day", "month", "unknown"
     current_status: str
     is_evergreen: bool
     official_source_url: str
     expiration_reason: str  # Human-readable justification
     classification: ClassificationCategory
+    # Evidence for Gate 6 validation
+    evidence: Optional[EvidenceRecord] = None
 
     def is_expired(self, reference_date: Optional[date] = None) -> bool:
         """Check if this record's application cycle has expired."""
         if reference_date is None:
             reference_date = date.today()
-        if self.is_evergreen:
+        if self.is_evergreen or self.deadline is None:
             return False
         return self.deadline < reference_date
 
@@ -94,20 +136,23 @@ class TargetRecord:
             "country": self.country,
             "programme": self.programme,
             "application_cycle": self.application_cycle,
-            "deadline": self.deadline.isoformat(),
+            "deadline": self.deadline.isoformat() if self.deadline else None,
             "deadline_precision": self.deadline_precision,
             "current_status": self.current_status,
             "is_evergreen": self.is_evergreen,
             "official_source_url": self.official_source_url,
             "expiration_reason": self.expiration_reason,
             "classification": self.classification.value,
+            "evidence": self.evidence.to_dict() if self.evidence else None,
         }
 
 
 # Classification mapping - derived from actual record evidence
 # This MUST be validated against real database records in Gate 5
+# CLOSED: 18 records - application cycle definitively ended
+# CLOSING_SOON: 16 records - cycle ending or recently ended
 EXPECTED_CLASSIFICATIONS = {
-    # CLOSED: 18 records - application cycle definitively ended
+    # CLOSED: 18 records
     2: ClassificationCategory.CLOSED,
     62: ClassificationCategory.CLOSED,
     103: ClassificationCategory.CLOSED,
@@ -128,7 +173,7 @@ EXPECTED_CLASSIFICATIONS = {
     1278: ClassificationCategory.CLOSED,
     # Note: 496 and 497 are unique IDs, not duplicates
 
-    # CLOSING_SOON: 15 records - cycle ending or recently ended
+    # CLOSING_SOON: 16 records
     54: ClassificationCategory.CLOSING_SOON,
     59: ClassificationCategory.CLOSING_SOON,
     382: ClassificationCategory.CLOSING_SOON,
@@ -138,7 +183,7 @@ EXPECTED_CLASSIFICATIONS = {
     624: ClassificationCategory.CLOSING_SOON,
     626: ClassificationCategory.CLOSING_SOON,
     642: ClassificationCategory.CLOSING_SOON,
-    651: ClassificationCategory.CLOSING_SOON,  # Fu Jen Catholic University - verified
+    651: ClassificationCategory.CLOSING_SOON,
     652: ClassificationCategory.CLOSING_SOON,
     655: ClassificationCategory.CLOSING_SOON,
     657: ClassificationCategory.CLOSING_SOON,
@@ -186,6 +231,21 @@ def validate_classifications(classifications: dict[int, ClassificationCategory])
         if key in seen:
             errors.append(f"Duplicate classification entry: {tid}={cat.value}")
         seen.add(key)
+
+    # Verify counts match expectation
+    closed_count = sum(1 for v in classifications.values() if v == ClassificationCategory.CLOSED)
+    closing_soon_count = sum(1 for v in classifications.values() if v == ClassificationCategory.CLOSING_SOON)
+    blocked_count = sum(1 for v in classifications.values() if v in (
+        ClassificationCategory.BLOCKED, ClassificationCategory.EVERGREEN,
+        ClassificationCategory.UNKNOWN, ClassificationCategory.STATUS_DEADLINE_CONFLICT
+    ))
+
+    if closed_count != 18:
+        errors.append(f"Expected 18 CLOSED records, got {closed_count}")
+    if closing_soon_count != 16:
+        errors.append(f"Expected 16 CLOSING_SOON records, got {closing_soon_count}")
+    if blocked_count > 0:
+        errors.append(f"Found {blocked_count} blocked/non-purgeable records - cannot purge")
 
     return errors
 

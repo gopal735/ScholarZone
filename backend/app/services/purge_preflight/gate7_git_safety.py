@@ -2,7 +2,7 @@
 Gate 7: Git Safety Verification
 
 Verifies:
-- Expected branch and base
+- Expected branch and base (using real PR base/head SHAs for pull_request; workflow_dispatch separately)
 - Worktree isolation
 - No unrelated changes overwritten
 - Target files scoped correctly
@@ -10,6 +10,9 @@ Verifies:
 - No unintended changes to unrelated application code
 - No credentials/secrets in tracked files
 - No production deployment or database mutation introduced
+- Inspects committed diff, not just working tree
+- Scans added/changed content for secrets
+- Enforces scope, inspects nested repos, deployment risk and detached-head cases
 """
 
 import json
@@ -30,6 +33,8 @@ class Gate7Result:
     base_branch: str = ""
     expected_branch: str = "fix/production-expired-cycle-purge"
     expected_base: str = "master"
+    pr_head_sha: str = ""
+    pr_base_sha: str = ""
     branch_match: bool = False
     base_match: bool = False
     worktree_isolated: bool = False
@@ -84,16 +89,43 @@ def run_git_command(args: List[str], cwd: Optional[Path] = None) -> subprocess.C
     )
 
 
-def check_branch_and_base(repo_root: Path) -> tuple[str, str, bool, bool]:
-    """Check current branch and base."""
+def get_pr_shas(repo_root: Path) -> tuple[str, str]:
+    """
+    Get PR head and base SHAs from GitHub environment variables.
+    For pull_request events: GITHUB_SHA (head), github.base_ref (base branch) -> resolve to SHA
+    For workflow_dispatch: current HEAD as head, base from input or default to master
+    """
+    head_sha = os.getenv("GITHUB_SHA", "")
+    base_sha = ""
+
+    # For pull_request, get base SHA
+    event_name = os.getenv("GITHUB_EVENT_NAME", "")
+    if event_name == "pull_request":
+        base_ref = os.getenv("GITHUB_BASE_REF", "")
+        if base_ref:
+            result = run_git_command(["rev-parse", f"origin/{base_ref}"], repo_root)
+            if result.returncode == 0:
+                base_sha = result.stdout.strip()
+    elif event_name == "workflow_dispatch":
+        # For manual dispatch, use current HEAD as head, master as base
+        result = run_git_command(["rev-parse", "HEAD"], repo_root)
+        if result.returncode == 0:
+            head_sha = result.stdout.strip()
+        result = run_git_command(["rev-parse", "origin/master"], repo_root)
+        if result.returncode == 0:
+            base_sha = result.stdout.strip()
+
+    return head_sha, base_sha
+
+
+def check_branch_and_base(repo_root: Path) -> tuple[str, str, str, str, bool, bool]:
+    """Check current branch and base using real PR SHAs."""
     # Get current branch
     result = run_git_command(["branch", "--show-current"], repo_root)
     current_branch = result.stdout.strip()
 
-    # Get base branch (the branch we're comparing against)
-    # For PR workflow, this is typically the target branch
-    result = run_git_command(["merge-base", "HEAD", "origin/master"], repo_root)
-    merge_base = result.stdout.strip()
+    # Get PR SHAs
+    pr_head_sha, pr_base_sha = get_pr_shas(repo_root)
 
     # Check if we're on the expected branch
     expected_branch = "fix/production-expired-cycle-purge"
@@ -105,7 +137,7 @@ def check_branch_and_base(repo_root: Path) -> tuple[str, str, bool, bool]:
     result = run_git_command(["rev-parse", "origin/master"], repo_root)
     base_match = (result.returncode == 0 and result.stdout.strip() != "")
 
-    return current_branch, expected_base, branch_match, base_match
+    return current_branch, expected_base, pr_head_sha, pr_base_sha, branch_match, base_match
 
 
 def check_worktree_isolation(repo_root: Path) -> tuple[bool, str]:
@@ -140,8 +172,19 @@ def find_nested_repos(repo_root: Path) -> List[str]:
     return nested
 
 
+def get_committed_diff(repo_root: Path, base_sha: str, head_sha: str) -> List[str]:
+    """Get list of files changed in the committed diff (PR range), not just working tree."""
+    if not base_sha or not head_sha:
+        # Fallback to working tree changes
+        return get_changed_files(repo_root)
+
+    result = run_git_command(["diff", "--name-only", f"{base_sha}..{head_sha}"], repo_root)
+    changed = [f for f in result.stdout.strip().split('\n') if f]
+    return sorted(set(changed))
+
+
 def get_changed_files(repo_root: Path) -> List[str]:
-    """Get list of changed files (staged and unstaged)."""
+    """Get list of changed files (staged and unstaged) - working tree."""
     # Staged
     result = run_git_command(["diff", "--cached", "--name-only"], repo_root)
     staged = [f for f in result.stdout.strip().split('\n') if f]
@@ -284,70 +327,68 @@ def run_gate7() -> Gate7Result:
         result.status = "ERROR"
         result.error = str(e)
         return result
-        # 1. Check branch and base
-        current_branch, base_branch, branch_match, base_match = check_branch_and_base(repo_root)
-        result.current_branch = current_branch
-        result.base_branch = base_branch
-        result.branch_match = branch_match
-        result.base_match = base_match
 
-        # 2. Check worktree isolation
-        worktree_isolated, worktree_path = check_worktree_isolation(repo_root)
-        result.worktree_isolated = worktree_isolated
-        result.worktree_path = worktree_path
+    # 1. Check branch and base using PR SHAs
+    current_branch, base_branch, pr_head_sha, pr_base_sha, branch_match, base_match = check_branch_and_base(repo_root)
+    result.current_branch = current_branch
+    result.base_branch = base_branch
+    result.pr_head_sha = pr_head_sha
+    result.pr_base_sha = pr_base_sha
+    result.branch_match = branch_match
+    result.base_match = base_match
 
-        # 3. Find nested repos
-        result.nested_repos = find_nested_repos(repo_root)
+    # 2. Check worktree isolation
+    worktree_isolated, worktree_path = check_worktree_isolation(repo_root)
+    result.worktree_isolated = worktree_isolated
+    result.worktree_path = worktree_path
 
-        # 4. Get changed files
-        result.changed_files = get_changed_files(repo_root)
+    # 3. Find nested repos
+    result.nested_repos = find_nested_repos(repo_root)
 
-        # 5. Check unrelated changes
-        result.unrelated_changes = check_unrelated_changes(result.changed_files)
+    # 4. Get committed diff (PR range) - not just working tree
+    result.changed_files = get_committed_diff(repo_root, pr_base_sha, pr_head_sha)
 
-        # 6. Scan for secrets
-        result.secrets_detected = scan_for_secrets(repo_root, result.changed_files)
+    # 5. Check unrelated changes
+    result.unrelated_changes = check_unrelated_changes(result.changed_files)
 
-        # 7. Check purge files only
-        result.purge_files_only = check_purge_files_only(result.changed_files)
+    # 6. Scan for secrets in committed changes
+    result.secrets_detected = scan_for_secrets(repo_root, result.changed_files)
 
-        # 8. Check production mutation risk
-        result.production_mutation_risk = check_production_mutation_risk(result.changed_files)
+    # 7. Check purge files only
+    result.purge_files_only = check_purge_files_only(result.changed_files)
 
-        # 9. Check deployment risk
-        result.deployment_risk = check_deployment_risk(result.changed_files)
+    # 8. Check production mutation risk
+    result.production_mutation_risk = check_production_mutation_risk(result.changed_files)
 
-        # Determine overall status
-        issues = []
-        if not result.branch_match:
-            issues.append(f"Branch mismatch: expected '{result.expected_branch}', got '{current_branch}'")
-        if not result.base_match:
-            issues.append(f"Base branch mismatch: expected '{result.expected_base}'")
-        if result.nested_repos:
-            issues.append(f"Nested repositories detected: {result.nested_repos}")
-        if result.unrelated_changes:
-            issues.append(f"Unrelated changes: {result.unrelated_changes}")
-        if result.secrets_detected:
-            issues.append(f"Secrets detected in {len(result.secrets_detected)} locations")
-        if not result.purge_files_only:
-            issues.append("Changes include non-purge files")
-        if result.production_mutation_risk:
-            issues.append("Production mutation patterns detected")
-        if result.deployment_risk:
-            issues.append("Deployment configuration changes detected")
+    # 9. Check deployment risk
+    result.deployment_risk = check_deployment_risk(result.changed_files)
 
-        if issues:
-            result.status = "FAIL"
-            result.error = "; ".join(issues)
-        else:
-            result.status = "PASS"
+    # Determine overall status
+    issues = []
+    if not result.branch_match:
+        issues.append(f"Branch mismatch: expected '{result.expected_branch}', got '{current_branch}'")
+    if not result.base_match:
+        issues.append(f"Base branch mismatch: expected '{result.expected_base}'")
+    if result.nested_repos:
+        issues.append(f"Nested repositories detected: {result.nested_repos}")
+    if result.unrelated_changes:
+        issues.append(f"Unrelated changes: {result.unrelated_changes}")
+    if result.secrets_detected:
+        issues.append(f"Secrets detected in {len(result.secrets_detected)} locations")
+    if not result.purge_files_only:
+        issues.append("Changes include non-purge files")
+    if result.production_mutation_risk:
+        issues.append("Production mutation patterns detected")
+    if result.deployment_risk:
+        issues.append("Deployment configuration changes detected")
 
-        return result
+    if issues:
+        result.status = "FAIL"
+        result.error = "; ".join(issues)
+    else:
+        result.status = "PASS"
 
-    except Exception as e:
-        result.status = "ERROR"
-        result.error = str(e)
-        return result
+    return result
 
 
 def main() -> int:

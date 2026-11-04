@@ -168,12 +168,12 @@ def determine_gate_status(result: dict) -> str:
         return "UNKNOWN"
 
 
-def generate_summary(artifacts_dir: Path, commit_sha: str = "") -> PreflightSummary:
+def generate_summary(artifacts_dir: Path, commit_sha: str = "", run_id: str = "", run_number: str = "") -> PreflightSummary:
     """Generate complete preflight summary."""
     summary = PreflightSummary(
         workflow=os.getenv("GITHUB_WORKFLOW", "unknown"),
-        run_id=os.getenv("GITHUB_RUN_ID", "unknown"),
-        run_number=int(os.getenv("GITHUB_RUN_NUMBER", "0")),
+        run_id=run_id or os.getenv("GITHUB_RUN_ID", "unknown"),
+        run_number=int(run_number or os.getenv("GITHUB_RUN_NUMBER", "0")),
         commit_sha=commit_sha or os.getenv("GITHUB_SHA", "")[:12],
         trigger=os.getenv("GITHUB_EVENT_NAME", "unknown"),
         timestamp=datetime.utcnow().isoformat() + "Z",
@@ -306,20 +306,23 @@ def save_summary(summary: PreflightSummary, output_path: Path) -> None:
         json.dump(asdict(summary), f, indent=2, default=str)
 
 
-def main(artifacts_dir: str = "artifacts", commit_sha: str = "") -> int:
+def main(artifacts_dir: str = "artifacts", commit_sha: str = "", run_id: str = "", run_number: str = "") -> int:
     """CLI entry point for summary generation."""
     artifacts_path = Path(artifacts_dir)
     if not artifacts_path.exists():
         print(f"Artifacts directory not found: {artifacts_dir}", file=sys.stderr)
         return 1
 
-    summary = generate_summary(artifacts_path, commit_sha)
+    summary = generate_summary(artifacts_path, commit_sha, run_id, run_number)
     print_summary(summary)
 
     # Save summary
     save_summary(summary, Path("preflight_summary.json"))
 
     # Exit code based on overall status
+    # ALL_PREFLIGHT_GATES_COMPLETE = 0 (success)
+    # INCOMPLETE_MISSING_GATES = 0 (not a failure - just incomplete)
+    # FAILED_GATES_PRESENT = 1 (failure)
     if summary.overall_status == "ALL_PREFLIGHT_GATES_COMPLETE":
         return 0
     elif summary.overall_status == "INCOMPLETE_MISSING_GATES":
@@ -330,7 +333,9 @@ def main(artifacts_dir: str = "artifacts", commit_sha: str = "") -> int:
 
 
 if __name__ == "__main__":
-    # Allow artifacts dir and commit SHA as args
+    # Allow artifacts dir, commit SHA, run_id, run_number as args
     artifacts = sys.argv[1] if len(sys.argv) > 1 else "artifacts"
     sha = sys.argv[2] if len(sys.argv) > 2 else ""
-    raise SystemExit(main(artifacts, sha))
+    run_id = sys.argv[3] if len(sys.argv) > 3 else ""
+    run_number = sys.argv[4] if len(sys.argv) > 4 else ""
+    raise SystemExit(main(artifacts, sha, run_id, run_number))

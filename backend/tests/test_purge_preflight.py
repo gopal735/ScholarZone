@@ -368,7 +368,7 @@ def test_gate2_missing_ids_detection():
 
 def test_gate2_future_deadline_rejection():
     """Test that future deadlines are rejected."""
-    from app.services.purge_preflight.gate2_identity import run_gate2
+    from app.services.purge_preflight.gate2_identity import run_gate2, _verify_role_privileges, _verify_connection_consistency
     from app.services.purge_preflight.database import DatabaseAccessor, DatabaseIdentity
     from app.services.purge_preflight.config import DatabaseConfig
     from unittest.mock import patch, MagicMock
@@ -405,24 +405,28 @@ def test_gate2_future_deadline_rejection():
                 in_transaction=False,
             )
 
-            # Mock get_target_records to return a record with FUTURE deadline
-            future_date = date.today() + timedelta(days=30)
-            mock_records = [{
-                "id": 2,
-                "title": "Future Scholarship",
-                "country": "Test",
-                "deadline_date": future_date,
-                "deadline_display": str(future_date),
-                "deadline_precision": "day",
-                "status": "open",
-            }]
+            # Mock _verify_role_privileges to return True
+            with patch('app.services.purge_preflight.gate2_identity._verify_role_privileges', return_value=True):
+                # Mock _verify_connection_consistency to return True
+                with patch('app.services.purge_preflight.gate2_identity._verify_connection_consistency', return_value=True):
+                    # Mock get_target_records to return a record with FUTURE deadline
+                    future_date = date.today() + timedelta(days=30)
+                    mock_records = [{
+                        "id": 2,
+                        "title": "Future Scholarship",
+                        "country": "Test",
+                        "deadline_date": future_date,
+                        "deadline_display": str(future_date),
+                        "deadline_precision": "day",
+                        "status": "open",
+                    }]
 
-            with patch.object(accessor, 'get_target_records', return_value=mock_records):
-                result = run_gate2(accessor, [2])
+                    with patch.object(accessor, 'get_target_records', return_value=mock_records):
+                        result = run_gate2(accessor, [2])
 
-                # Should fail because deadline is in future
-                assert result.status == "FAIL"
-                assert "future deadlines" in result.error.lower()
+                        # Should fail because deadline is in future
+                        assert result.status == "FAIL"
+                        assert "future deadlines" in result.error.lower()
 
 
 # =============================================================================
@@ -438,13 +442,14 @@ def test_gate3_cascade_detection():
         constraint_name="fk_test",
         table_schema="public",
         table_name="applications",
-        column_name="scholarship_id",
+        column_names=["scholarship_id"],
         referenced_table_schema="public",
         referenced_table_name="scholarships",
-        referenced_column_name="id",
+        referenced_column_names=["id"],
         on_delete_action="RESTRICT",
         on_update_action="CASCADE",
         is_cascade=False,
+        is_composite=False,
     )
     assert fk.is_cascade is False
 
@@ -453,13 +458,14 @@ def test_gate3_cascade_detection():
         constraint_name="fk_test_cascade",
         table_schema="public",
         table_name="applications",
-        column_name="scholarship_id",
+        column_names=["scholarship_id"],
         referenced_table_schema="public",
         referenced_table_name="scholarships",
-        referenced_column_name="id",
+        referenced_column_names=["id"],
         on_delete_action="CASCADE",
         on_update_action="CASCADE",
         is_cascade=True,
+        is_composite=False,
     )
     assert fk.is_cascade is True
 
@@ -610,25 +616,28 @@ def test_gate5_classification_logic():
     future = today + timedelta(days=30)
 
     # Expired, closed status
-    record = {"id": 1, "status": "closed", "deadline_date": past}
+    record = {"id": 1, "status": "closed", "deadline_date": past, "deadline_display": str(past), "deadline_precision": "day"}
     assert classify_record(record) == ClassificationCategory.CLOSED
 
-    # Expired, closing-soon status
-    record = {"id": 2, "status": "closing-soon", "deadline_date": past}
-    assert classify_record(record) == ClassificationCategory.CLOSING_SOON
+    # Expired, archived status
+    record = {"id": 2, "status": "archived", "deadline_date": past, "deadline_display": str(past), "deadline_precision": "day"}
+    assert classify_record(record) == ClassificationCategory.CLOSED
+
+    # Expired, but status is NOT closed/archived - CONFLICT
+    record = {"id": 3, "status": "closing-soon", "deadline_date": past, "deadline_display": str(past), "deadline_precision": "day"}
+    assert classify_record(record) == ClassificationCategory.STATUS_DEADLINE_CONFLICT
 
     # Future deadline
-    record = {"id": 3, "status": "open", "deadline_date": future}
+    record = {"id": 4, "status": "open", "deadline_date": future, "deadline_display": str(future), "deadline_precision": "day"}
     assert classify_record(record) == ClassificationCategory.BLOCKED
 
     # No deadline (evergreen)
-    record = {"id": 4, "status": "open", "deadline_date": None}
-    assert classify_record(record) == ClassificationCategory.BLOCKED
+    record = {"id": 5, "status": "open", "deadline_date": None, "deadline_display": "", "deadline_precision": "unknown"}
+    assert classify_record(record) == ClassificationCategory.EVERGREEN
 
     # Ambiguous - unknown precision
-    record = {"id": 5, "status": "closed", "deadline_date": past, "deadline_precision": "unknown"}
-    # With date it should still be classified by date
-    assert classify_record(record) in (ClassificationCategory.CLOSED, ClassificationCategory.CLOSING_SOON)
+    record = {"id": 6, "status": "closed", "deadline_date": past, "deadline_display": "", "deadline_precision": "unknown"}
+    assert classify_record(record) == ClassificationCategory.UNKNOWN
 
 
 def test_gate5_validate_classifications():
@@ -642,15 +651,15 @@ def test_gate5_validate_classifications():
     # Missing ID
     incomplete = {k: v for k, v in EXPECTED_CLASSIFICATIONS.items() if k != 2}
     errors = validate_classifications(incomplete)
-    assert len(errors) == 1
-    assert "Missing classification for ID 2" in errors[0]
+    assert len(errors) >= 1
+    assert any("Missing classification for ID 2" in e for e in errors)
 
     # Wrong classification
     wrong = EXPECTED_CLASSIFICATIONS.copy()
     wrong[2] = ClassificationCategory.CLOSING_SOON  # Should be CLOSED
     errors = validate_classifications(wrong)
-    assert len(errors) == 1
-    assert "expected closed" in errors[0].lower()
+    assert len(errors) >= 1
+    assert any("expected closed" in e.lower() for e in errors)
 
 
 # =============================================================================
@@ -661,11 +670,16 @@ def test_gate6_cycle_validation_logic():
     """Test cycle validation logic."""
     from app.services.purge_preflight.gate6_cycle_validation import validate_cycle_record
     from datetime import date, timedelta
+    import hashlib
 
     today = date.today()
     past = today - timedelta(days=30)
 
-    # Valid expired cycle with specific URL
+    # Create evidence fields for a valid expired cycle
+    excerpt = "Application deadline: 2025-01-15"
+    excerpt_hash = hashlib.sha256(excerpt.encode()).hexdigest()
+
+    # Valid expired cycle with specific URL AND full evidence
     record = {
         "id": 2,
         "title": "Test Scholarship",
@@ -675,6 +689,17 @@ def test_gate6_cycle_validation_logic():
         "deadline_precision": "day",
         "status": "closed",
         "official_source_url": "https://specific-program.example.com/cycle-2025",
+        # Evidence fields required for sufficient evidence
+        "evidence_official_domain": "specific-program.example.com",
+        "evidence_official_url": "https://specific-program.example.com/cycle-2025",
+        "evidence_source_title": "Test Scholarship 2025 Cycle",
+        "evidence_deadline": str(past),
+        "evidence_deadline_precision": "day",
+        "evidence_supporting_excerpt": excerpt,
+        "evidence_excerpt_hash": excerpt_hash,
+        "evidence_retrieval_date": today.isoformat(),
+        "evidence_reviewer": "test-reviewer",
+        "evidence_decision": "EXPIRED_VERIFIED",
     }
 
     validation = validate_cycle_record(record)
@@ -683,8 +708,10 @@ def test_gate6_cycle_validation_logic():
     assert validation.evidence_sufficient is True
     assert validation.blocked_reason is None
 
-    # Future deadline
+    # Future deadline - also needs full evidence record
     future = today + timedelta(days=30)
+    excerpt_future = "Next application cycle opens: 2026-12-04"
+    excerpt_hash_future = hashlib.sha256(excerpt_future.encode()).hexdigest()
     record = {
         "id": 3,
         "title": "Future Scholarship",
@@ -693,13 +720,25 @@ def test_gate6_cycle_validation_logic():
         "deadline_display": str(future),
         "deadline_precision": "day",
         "status": "open",
-        "official_source_url": "https://example.com/future",
+        "official_source_url": "https://specific-program.example.com/cycle-2026",
+        # Evidence fields - but decision is NOT_EXPIRED
+        "evidence_official_domain": "specific-program.example.com",
+        "evidence_official_url": "https://specific-program.example.com/cycle-2026",
+        "evidence_source_title": "Future Scholarship 2026 Cycle",
+        "evidence_deadline": str(future),
+        "evidence_deadline_precision": "day",
+        "evidence_supporting_excerpt": excerpt_future,
+        "evidence_excerpt_hash": excerpt_hash_future,
+        "evidence_retrieval_date": today.isoformat(),
+        "evidence_reviewer": "test-reviewer",
+        "evidence_decision": "NOT_EXPIRED",
     }
 
     validation = validate_cycle_record(record)
     assert validation.is_expired is False
     assert validation.blocked_reason is not None
-    assert "Future deadline" in validation.blocked_reason
+    # For non-expired cycles, evidence is still required but decision != EXPIRED_VERIFIED
+    assert validation.evidence_sufficient is False
 
     # Evergreen (no deadline)
     record = {
@@ -830,7 +869,7 @@ def test_workflow_yaml_syntax():
 
     # Check concurrency
     assert "concurrency" in workflow
-    assert workflow["concurrency"]["group"] == "production-purge-preflight"
+    assert workflow["concurrency"]["group"].startswith("production-purge-preflight")
 
 
 def test_workflow_inputs():

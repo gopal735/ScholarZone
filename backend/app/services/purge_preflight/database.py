@@ -40,13 +40,14 @@ class ForeignKeyInfo:
     constraint_name: str
     table_schema: str
     table_name: str
-    column_name: str
+    column_names: list[str]  # Supports composite FKs
     referenced_table_schema: str
     referenced_table_name: str
-    referenced_column_name: str
+    referenced_column_names: list[str]  # Supports composite FKs
     on_delete_action: str
     on_update_action: str
     is_cascade: bool
+    is_composite: bool
 
 
 @dataclass(frozen=True)
@@ -215,7 +216,10 @@ class DatabaseAccessor:
             return [dict(row) for row in cur.fetchall()]
 
     def get_all_foreign_keys(self, conn: PgConnection) -> list[ForeignKeyInfo]:
-        """Discover ALL foreign keys referencing scholarships.id."""
+        """Discover ALL foreign keys referencing scholarships.id.
+
+        Handles composite foreign keys by grouping columns by constraint.
+        """
         with conn.cursor(cursor_factory=RealDictCursor) as cur:
             cur.execute("""
                 SELECT
@@ -223,6 +227,7 @@ class DatabaseAccessor:
                     tc.table_schema,
                     tc.table_name,
                     kcu.column_name,
+                    kcu.ordinal_position,
                     ccu.table_schema as referenced_table_schema,
                     ccu.table_name as referenced_table_name,
                     ccu.column_name as referenced_column_name,
@@ -242,49 +247,113 @@ class DatabaseAccessor:
                   AND ccu.table_name = 'scholarships'
                   AND ccu.column_name = 'id'
                   AND ccu.table_schema = 'public'
-                ORDER BY tc.table_schema, tc.table_name, kcu.column_name
+                ORDER BY tc.table_schema, tc.table_name, tc.constraint_name, kcu.ordinal_position
             """)
-            return [
-                ForeignKeyInfo(
-                    constraint_name=row["constraint_name"],
-                    table_schema=row["table_schema"],
-                    table_name=row["table_name"],
-                    column_name=row["column_name"],
-                    referenced_table_schema=row["referenced_table_schema"],
-                    referenced_table_name=row["referenced_table_name"],
-                    referenced_column_name=row["referenced_column_name"],
-                    on_delete_action=row["on_delete_action"],
-                    on_update_action=row["on_update_action"],
-                    is_cascade=row["on_delete_action"] == "CASCADE",
+
+            # Group by constraint to handle composite FKs
+            from collections import defaultdict
+            fk_groups = defaultdict(list)
+            for row in cur.fetchall():
+                fk_groups[row["constraint_name"]].append(row)
+
+            results = []
+            for constraint_name, rows in fk_groups.items():
+                first_row = rows[0]
+                column_names = [r["column_name"] for r in rows]
+                referenced_column_names = [r["referenced_column_name"] for r in rows]
+                is_composite = len(column_names) > 1
+
+                results.append(
+                    ForeignKeyInfo(
+                        constraint_name=constraint_name,
+                        table_schema=first_row["table_schema"],
+                        table_name=first_row["table_name"],
+                        column_names=column_names,
+                        referenced_table_schema=first_row["referenced_table_schema"],
+                        referenced_table_name=first_row["referenced_table_name"],
+                        referenced_column_names=referenced_column_names,
+                        on_delete_action=first_row["on_delete_action"],
+                        on_update_action=first_row["on_update_action"],
+                        is_cascade=first_row["on_delete_action"] == "CASCADE",
+                        is_composite=is_composite,
+                    )
                 )
-                for row in cur.fetchall()
-            ]
+
+            return results
 
     def count_references(
         self,
         conn: PgConnection,
-        table_name: str,
-        column_name: str,
+        fk: ForeignKeyInfo,
         target_ids: list[int]
     ) -> int:
         """
-        Count references to target IDs in a specific table/column.
+        Count references to target IDs in a specific table/column(s).
 
+        Handles both single-column and composite foreign keys.
         Uses parameterized query with safe identifier quoting.
         """
         if not target_ids:
             return 0
 
         # Safely quote identifiers
-        quoted_table = self._quote_identifier(table_name)
-        quoted_column = self._quote_identifier(column_name)
+        quoted_table = self._quote_identifier(fk.table_name)
+        quoted_columns = [self._quote_identifier(col) for col in fk.column_names]
 
         placeholders = ','.join(['%s'] * len(target_ids))
-        query = f"SELECT COUNT(*) FROM {quoted_table} WHERE {quoted_column} = ANY(%s)"
+
+        if fk.is_composite:
+            # For composite FK: (col1, col2, ...) IN ((id1, id2, ...), ...)
+            # We need to check if ANY target_id tuple matches
+            # Since we're checking references to scholarships.id (single column),
+            # and the FK is composite, we need to check if any of the target_ids
+            # appear in the referencing column that maps to scholarships.id
+            # For simplicity, we check the first referenced column (which maps to id)
+            # But actually, for a composite FK referencing scholarships(id),
+            # only one column maps to id, the others map to other columns
+            # We'll check the column that corresponds to the 'id' reference
+            idx = fk.referenced_column_names.index('id') if 'id' in fk.referenced_column_names else 0
+            quoted_column = quoted_columns[idx]
+            query = f"SELECT COUNT(*) FROM {quoted_table} WHERE {quoted_column} = ANY(%s)"
+        else:
+            quoted_column = quoted_columns[0]
+            query = f"SELECT COUNT(*) FROM {quoted_table} WHERE {quoted_column} = ANY(%s)"
 
         with conn.cursor() as cur:
             cur.execute(query, (tuple(target_ids),))
             return cur.fetchone()[0]
+
+    def count_references_per_target(
+        self,
+        conn: PgConnection,
+        fk: ForeignKeyInfo,
+        target_ids: list[int]
+    ) -> dict[int, int]:
+        """
+        Count references for EACH target ID individually.
+
+        Returns dict mapping target_id -> count for this FK.
+        """
+        if not target_ids:
+            return {}
+
+        quoted_table = self._quote_identifier(fk.table_name)
+
+        if fk.is_composite:
+            idx = fk.referenced_column_names.index('id') if 'id' in fk.referenced_column_names else 0
+            quoted_column = self._quote_identifier(fk.column_names[idx])
+        else:
+            quoted_column = self._quote_identifier(fk.column_names[0])
+
+        results = {}
+        with conn.cursor() as cur:
+            for tid in target_ids:
+                cur.execute(
+                    f"SELECT COUNT(*) FROM {quoted_table} WHERE {quoted_column} = %s",
+                    (tid,)
+                )
+                results[tid] = cur.fetchone()[0]
+        return results
 
     def count_all_references(
         self,
@@ -296,8 +365,38 @@ class DatabaseAccessor:
         results = {}
 
         for fk in fks:
-            count = self.count_references(conn, fk.table_name, fk.column_name, target_ids)
-            results[f"{fk.table_name}.{fk.column_name}"] = count
+            count = self.count_references(conn, fk, target_ids)
+            if fk.is_composite:
+                key = f"{fk.table_name}.({','.join(fk.column_names)})"
+            else:
+                key = f"{fk.table_name}.{fk.column_names[0]}"
+            results[key] = count
+
+        return results
+
+    def count_all_references_per_target(
+        self,
+        conn: PgConnection,
+        target_ids: list[int]
+    ) -> dict[int, dict[str, int]]:
+        """
+        Count references for EACH target ID across ALL referencing tables.
+
+        Returns:
+            dict mapping target_id -> {fk_key -> count}
+        """
+        fks = self.get_all_foreign_keys(conn)
+        results = {tid: {} for tid in target_ids}
+
+        for fk in fks:
+            if fk.is_composite:
+                key = f"{fk.table_name}.({','.join(fk.column_names)})"
+            else:
+                key = f"{fk.table_name}.{fk.column_names[0]}"
+
+            per_target = self.count_references_per_target(conn, fk, target_ids)
+            for tid, count in per_target.items():
+                results[tid][key] = count
 
         return results
 
