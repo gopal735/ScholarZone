@@ -506,45 +506,26 @@ def upload_to_durable_storage(
             return True, remote_encrypted_path, remote_checksum_path, local_checksum, checksum_checksum, None
             
         elif provider == "azure":
-            # Azure CLI: Use authenticated session (az login) or service principal
-            # DO NOT pass --account-key in command arguments
-            # NEVER pass client_secret in command arguments - use stdin for secret
-            # Prefer GitHub Actions OIDC with Azure login action, or managed identity
+            # Azure CLI: Use pre-authenticated session (GitHub Actions OIDC via azure/login)
+            # or managed identity. NEVER use client secret in argv, stdin, or env.
+            # Prefer GitHub Actions OIDC authentication via azure/login action.
+            # If not pre-authenticated, try managed identity. Fail closed if neither works.
             env = os.environ.copy()
             
-            # Check if already authenticated
+            # Check if already authenticated (OIDC via azure/login would pre-authenticate)
             auth_check = subprocess.run(
                 ["az", "account", "show"],
                 capture_output=True, text=True, timeout=30, env=env
             )
             
             if auth_check.returncode != 0:
-                # Not authenticated - try service principal from env vars
-                # Use environment variables for credentials, NOT command arguments
-                client_id = os.getenv("AZURE_CLIENT_ID")
-                tenant_id = os.getenv("AZURE_TENANT_ID")
-                client_secret = os.getenv("AZURE_CLIENT_SECRET")
-                
-                if client_id and tenant_id and client_secret:
-                    # Pass credentials via environment variables, NOT command line
-                    env["AZURE_CLIENT_ID"] = client_id
-                    env["AZURE_TENANT_ID"] = tenant_id
-                    # Use --password-stdin to pass secret via stdin, NOT command line or env
-                    login_result = subprocess.run(
-                        ["az", "login", "--service-principal", "-u", client_id, "--tenant", tenant_id, "--password-stdin"],
-                        input=client_secret,
-                        capture_output=True, text=True, timeout=60, env=env
-                    )
-                    if login_result.returncode != 0:
-                        return False, None, None, None, None, f"Azure service principal login failed: {login_result.stderr}"
-                else:
-                    # Try managed identity (no credentials needed)
-                    login_result = subprocess.run(
-                        ["az", "login", "--identity"],
-                        capture_output=True, text=True, timeout=60, env=env
-                    )
-                    if login_result.returncode != 0:
-                        return False, None, None, None, None, "Azure authentication required: set AZURE_CLIENT_ID/TENANT_ID/CLIENT_SECRET (via env vars) or use managed identity"
+                # Not authenticated - try managed identity
+                login_result = subprocess.run(
+                    ["az", "login", "--identity"],
+                    capture_output=True, text=True, timeout=60, env=env
+                )
+                if login_result.returncode != 0:
+                    return False, None, None, None, None, "Azure authentication required: pre-authenticate via GitHub Actions OIDC (azure/login) or use managed identity. Client secret authentication is not supported."
             
             # Upload encrypted file - NO credentials in command args
             result = subprocess.run(
@@ -639,43 +620,24 @@ def download_from_durable_storage(
             return True, run_sha256sum(local_path)
             
         elif provider == "azure":
-            # Azure CLI: Use authenticated session - NO credentials in command args
-            # NEVER pass client_secret in command arguments - use stdin for secret
+            # Azure CLI: Use pre-authenticated session (GitHub Actions OIDC via azure/login)
+            # or managed identity. NEVER use client secret in argv, stdin, or env.
             env = os.environ.copy()
             
-            # Check if already authenticated
+            # Check if already authenticated (OIDC via azure/login would pre-authenticate)
             auth_check = subprocess.run(
                 ["az", "account", "show"],
                 capture_output=True, text=True, timeout=30, env=env
             )
             
             if auth_check.returncode != 0:
-                # Not authenticated - try service principal from env vars
-                # Use environment variables for credentials, NOT command arguments
-                client_id = os.getenv("AZURE_CLIENT_ID")
-                tenant_id = os.getenv("AZURE_TENANT_ID")
-                client_secret = os.getenv("AZURE_CLIENT_SECRET")
-                
-                if client_id and tenant_id and client_secret:
-                    # Pass credentials via environment variables, NOT command line
-                    env["AZURE_CLIENT_ID"] = client_id
-                    env["AZURE_TENANT_ID"] = tenant_id
-                    # Use --password-stdin to pass secret via stdin, NOT command line or env
-                    login_result = subprocess.run(
-                        ["az", "login", "--service-principal", "-u", client_id, "--tenant", tenant_id, "--password-stdin"],
-                        input=client_secret,
-                        capture_output=True, text=True, timeout=60, env=env
-                    )
-                    if login_result.returncode != 0:
-                        return False, None
-                else:
-                    # Try managed identity (no credentials needed)
-                    login_result = subprocess.run(
-                        ["az", "login", "--identity"],
-                        capture_output=True, text=True, timeout=60, env=env
-                    )
-                    if login_result.returncode != 0:
-                        return False, None
+                # Not authenticated - try managed identity
+                login_result = subprocess.run(
+                    ["az", "login", "--identity"],
+                    capture_output=True, text=True, timeout=60, env=env
+                )
+                if login_result.returncode != 0:
+                    return False, None
             
             # Download file - NO credentials in command args
             result = subprocess.run(
@@ -1285,6 +1247,7 @@ def _query_neon_api_for_pitr(api_key: str, project_id: str, branch_id: str) -> d
     Parses project-level history_retention_seconds.
     Requires at least 604800 seconds (7 days).
     Never defaults missing pitr_enabled to True.
+    Does not rely on undocumented branch.pitr_enabled field.
     
     Returns dict with success, history_retention_seconds, pitr_enabled, or error.
     """
@@ -1311,8 +1274,8 @@ def _query_neon_api_for_pitr(api_key: str, project_id: str, branch_id: str) -> d
                     return {"success": False, "error": "API response missing project history_retention_seconds"}
                 
                 # Step 2: Get branches from the branches endpoint with pagination
+                # Use documented pagination - check for next_page or page parameter
                 branch_found = False
-                branch_pitr_enabled = None
                 page = 1
                 max_pages = 10  # Safety limit
                 
@@ -1334,11 +1297,14 @@ def _query_neon_api_for_pitr(api_key: str, project_id: str, branch_id: str) -> d
                             for branch in branches:
                                 if branch.get("id") == branch_id:
                                     branch_found = True
-                                    # Branch may have its own pitr_enabled override
-                                    branch_pitr_enabled = branch.get("pitr_enabled")
                                     break
                             
                             if branch_found:
+                                break
+                            
+                            # Check for pagination - Neon API may use page-based or cursor-based
+                            # If branches list is empty or shorter than page size, we're done
+                            if len(branches) < 20:  # Default page size assumption
                                 break
                             
                             page += 1
@@ -1352,16 +1318,15 @@ def _query_neon_api_for_pitr(api_key: str, project_id: str, branch_id: str) -> d
                 if history_retention_seconds is None:
                     return {"success": False, "error": "API response missing project history_retention_seconds"}
                 
-                # Determine PITR enabled status:
-                # - If branch has explicit pitr_enabled, use it
-                # - Otherwise, DO NOT default to True - return UNVERIFIED
-                if branch_pitr_enabled is None:
-                    return {"success": False, "error": f"Branch {branch_id} missing pitr_enabled field in API response"}
+                # PITR is enabled if project has history_retention_seconds > 0
+                # and the branch exists in the project
+                # Do NOT rely on branch.pitr_enabled (undocumented)
+                pitr_enabled = history_retention_seconds > 0
                 
                 return {
                     "success": True,
                     "history_retention_seconds": history_retention_seconds,
-                    "pitr_enabled": branch_pitr_enabled,
+                    "pitr_enabled": pitr_enabled,
                 }
             else:
                 return {"success": False, "error": f"API returned status {response.status}"}
