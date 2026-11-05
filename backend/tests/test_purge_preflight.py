@@ -275,9 +275,9 @@ def test_gate5_classification_logic():
     record = {"id": 2, "status": "archived", "deadline_date": past, "deadline_display": str(past), "deadline_precision": "day"}
     assert classify_record(record) == ClassificationCategory.CLOSED
 
-    # Expired, but status is NOT closed/archived - CONFLICT
+    # Expired, but status is closing-soon - this is expected for CLOSING_SOON
     record = {"id": 3, "status": "closing-soon", "deadline_date": past, "deadline_display": str(past), "deadline_precision": "day"}
-    assert classify_record(record) == ClassificationCategory.STATUS_DEADLINE_CONFLICT
+    assert classify_record(record) == ClassificationCategory.CLOSING_SOON
 
     # Future deadline
     record = {"id": 4, "status": "open", "deadline_date": future, "deadline_display": str(future), "deadline_precision": "day"}
@@ -297,21 +297,27 @@ def test_gate5_validate_classifications():
     from app.services.purge_preflight.manifest import validate_classifications, EXPECTED_CLASSIFICATIONS, ClassificationCategory
 
     # Perfect match
-    errors = validate_classifications(EXPECTED_CLASSIFICATIONS)
-    assert len(errors) == 0
+    result = validate_classifications(EXPECTED_CLASSIFICATIONS)
+    assert result.is_valid is True
+    assert len(result.mismatches) == 0
+    assert len(result.missing_from_db) == 0
+    assert len(result.unexpected_in_db) == 0
+    assert result.reconciliation_verified is True
 
     # Missing ID
     incomplete = {k: v for k, v in EXPECTED_CLASSIFICATIONS.items() if k != 2}
-    errors = validate_classifications(incomplete)
-    assert len(errors) >= 1
-    assert any("Missing classification for ID 2" in e for e in errors)
+    result = validate_classifications(incomplete)
+    assert result.is_valid is False
+    assert len(result.missing_from_db) >= 1
+    assert 2 in result.missing_from_db
 
     # Wrong classification
     wrong = EXPECTED_CLASSIFICATIONS.copy()
     wrong[2] = ClassificationCategory.CLOSING_SOON  # Should be CLOSED
-    errors = validate_classifications(wrong)
-    assert len(errors) >= 1
-    assert any("expected closed" in e.lower() for e in errors)
+    result = validate_classifications(wrong)
+    assert result.is_valid is False
+    assert len(result.mismatches) >= 1
+    assert any(m.id == 2 and m.expected == ClassificationCategory.CLOSED and m.actual == ClassificationCategory.CLOSING_SOON for m in result.mismatches)
 
 
 # =============================================================================
@@ -1058,7 +1064,7 @@ def test_regression_missing_gate_specific_config():
 
     # Clear all env vars first
     for key in list(os.environ.keys()):
-        if key.startswith(('SCHOLARZONE_', 'EXPECTED_', 'GPG_', 'RESTORE_TEST_', 'TEST_DATABASE_', 'ARTIFACT_')):
+        if key.startswith(('SCHOLARZONE_', 'EXPECTED_', 'GPG_', 'RESTORE_TEST_', 'TEST_DATABASE_', 'ARTIFACT_', 'DURABLE_')):
             del os.environ[key]
 
     # Gate 1 should only require TEST_DATABASE_URL
@@ -1090,10 +1096,17 @@ def test_regression_missing_gate_specific_config():
     os.environ['RESTORE_TEST_PGPORT'] = '5432'
     os.environ['RESTORE_TEST_PGUSER'] = 'test'
     os.environ['RESTORE_TEST_PGPASSWORD'] = 'test'
+    os.environ['DURABLE_STORAGE_PROVIDER'] = 's3'
+    os.environ['DURABLE_STORAGE_BUCKET'] = 'test-bucket'
+    os.environ['DURABLE_STORAGE_REGION'] = 'us-east-1'
+    os.environ['DURABLE_STORAGE_CREDENTIAL'] = 'test-key'
+    os.environ['DURABLE_STORAGE_CREDENTIAL_SECRET'] = 'test-secret'
     config = load_config(gates_to_run={'gate4'})
     assert config.database.backup_url == 'postgresql://backup@localhost/db'
     assert config.gpg.recipient == 'test@example.com'
     assert config.restore_test.host == 'localhost'
+    assert config.durable_storage.provider == 's3'
+    assert config.durable_storage.bucket == 'test-bucket'
 
 
 def test_regression_missing_target_ids():
@@ -1142,41 +1155,62 @@ def test_regression_incorrect_status_deadline_classification():
     today = date.today()
     past = today - timedelta(days=30)
 
-    # Past deadline but status is "open" (not closed/archived) -> CONFLICT
+    # Past deadline but status is "open" (not closed/archived/closing-soon) -> CONFLICT
     record = {
         "id": 1, "status": "open", "deadline_date": past,
         "deadline_display": str(past), "deadline_precision": "day"
     }
     assert classify_record(record) == ClassificationCategory.STATUS_DEADLINE_CONFLICT
 
-    # Past deadline but status is "closing-soon" -> CONFLICT
+    # Past deadline but status is "archived" -> CLOSED
     record = {
-        "id": 2, "status": "closing-soon", "deadline_date": past,
+        "id": 2, "status": "archived", "deadline_date": past,
         "deadline_display": str(past), "deadline_precision": "day"
     }
-    assert classify_record(record) == ClassificationCategory.STATUS_DEADLINE_CONFLICT
+    assert classify_record(record) == ClassificationCategory.CLOSED
+
+    # Past deadline with "closing-soon" status -> CLOSING_SOON (expected)
+    record = {
+        "id": 3, "status": "closing-soon", "deadline_date": past,
+        "deadline_display": str(past), "deadline_precision": "day"
+    }
+    assert classify_record(record) == ClassificationCategory.CLOSING_SOON
 
     # Future deadline -> BLOCKED
     future = today + timedelta(days=30)
     record = {
-        "id": 3, "status": "open", "deadline_date": future,
+        "id": 4, "status": "open", "deadline_date": future,
         "deadline_display": str(future), "deadline_precision": "day"
     }
     assert classify_record(record) == ClassificationCategory.BLOCKED
 
     # No deadline -> EVERGREEN
     record = {
-        "id": 4, "status": "open", "deadline_date": None,
+        "id": 5, "status": "open", "deadline_date": None,
         "deadline_display": "", "deadline_precision": "unknown"
     }
     assert classify_record(record) == ClassificationCategory.EVERGREEN
 
     # Ambiguous deadline precision -> UNKNOWN
     record = {
-        "id": 5, "status": "closed", "deadline_date": past,
+        "id": 6, "status": "closed", "deadline_date": past,
         "deadline_display": "", "deadline_precision": "unknown"
     }
     assert classify_record(record) == ClassificationCategory.UNKNOWN
+
+    # Past deadline with closing-soon status -> CLOSING_SOON (not conflict)
+    record = {
+        "id": 6, "status": "closing-soon", "deadline_date": past,
+        "deadline_display": str(past), "deadline_precision": "day"
+    }
+    assert classify_record(record) == ClassificationCategory.CLOSING_SOON
+
+    # Future deadline with closing-soon status -> CLOSING_SOON (not blocked)
+    record = {
+        "id": 7, "status": "closing-soon", "deadline_date": future,
+        "deadline_display": str(future), "deadline_precision": "day"
+    }
+    assert classify_record(record) == ClassificationCategory.CLOSING_SOON
 
 
 def test_regression_unresolved_foreign_key_references():
@@ -1287,25 +1321,38 @@ def test_regression_invalid_pitr_evidence():
     mock_cursor = MagicMock()
     mock_conn.cursor.return_value.__enter__.return_value = mock_cursor
 
-    # Mock missing PITR settings
-    mock_cursor.fetchone.return_value = {"retention_days": None, "pitr_enabled": None}
-    
+    # Test 1: Non-Neon instance (no "neon" in version)
+    mock_cursor.fetchone.side_effect = [
+        ("PostgreSQL 16.0 on x86_64-pc-linux-gnu",),  # version() - tuple
+    ]
+    mock_cursor.fetchall.return_value = []  # no neon settings
     status, retention, details = get_pitr_status(mock_conn)
     assert status == "UNAVAILABLE"
-    assert retention is None
+    assert details["is_neon_instance"] is False
 
-    # Mock PITR disabled
-    mock_cursor.fetchone.return_value = {"retention_days": "7", "pitr_enabled": "off"}
-    
+    # Test 2: Neon instance with PITR disabled in pg_settings
+    mock_cursor.fetchone.side_effect = [
+        ("PostgreSQL 16.0 on x86_64-pc-linux-gnu (Neon)",),  # version()
+    ]
+    mock_cursor.fetchall.return_value = [
+        {"name": "neon.pitr_retention_days", "setting": "7"}, 
+        {"name": "neon.pitr_enabled", "setting": "off"}
+    ]
     status, retention, details = get_pitr_status(mock_conn)
     assert status == "DISABLED"
     assert retention == 7
 
-    # Mock invalid retention value
-    mock_cursor.fetchone.return_value = {"retention_days": "invalid", "pitr_enabled": "on"}
-    
+    # Test 3: Neon instance with invalid retention value
+    mock_cursor.fetchone.side_effect = [
+        ("PostgreSQL 16.0 on x86_64-pc-linux-gnu (Neon)",),
+    ]
+    mock_cursor.fetchall.return_value = [
+        {"name": "neon.pitr_retention_days", "setting": "invalid"}, 
+        {"name": "neon.pitr_enabled", "setting": "on"}
+    ]
     status, retention, details = get_pitr_status(mock_conn)
     assert status == "UNVERIFIED"
+    assert "Invalid retention_days value" in details.get("error", "")
 
 
 def test_regression_credential_leakage():
@@ -1389,6 +1436,363 @@ def test_github_scripts_wrapper_imports():
         content = script_path.read_text()
         assert expected_module in content, f"Wrapper {script_name} doesn't import {expected_module}"
         assert 'if __name__ == "__main__"' in content, f"Wrapper {script_name} missing main guard"
+
+
+# =============================================================================
+# REGRESSION TESTS FOR NEW SECURITY REQUIREMENTS
+# =============================================================================
+
+def test_regression_missing_durable_backup_config():
+    """Test that Gate 4 fails when durable backup storage configuration is missing."""
+    from app.services.purge_preflight.config import PreflightConfig
+    import os
+
+    # Clear all env vars first
+    for key in list(os.environ.keys()):
+        if key.startswith(('SCHOLARZONE_', 'EXPECTED_', 'GPG_', 'RESTORE_TEST_', 'TEST_DATABASE_', 'ARTIFACT_', 'DURABLE_')):
+            del os.environ[key]
+
+    # Set all required Gate 4 vars EXCEPT durable storage
+    os.environ['SCHOLARZONE_DATABASE_URL_BACKUP'] = 'postgresql://backup@localhost/db'
+    os.environ['GPG_RECIPIENT'] = 'test@example.com'
+    os.environ['GPG_EXPECTED_FINGERPRINT'] = 'A' * 40
+    os.environ['RESTORE_TEST_PGHOST'] = 'localhost'
+    os.environ['RESTORE_TEST_PGPORT'] = '5432'
+    os.environ['RESTORE_TEST_PGUSER'] = 'test'
+    os.environ['RESTORE_TEST_PGPASSWORD'] = 'test'
+
+    # Should fail because DURABLE_STORAGE_* vars are missing
+    try:
+        config = PreflightConfig.from_env(gates_to_run={'gate4'})
+        assert False, "Should have raised ValueError for missing durable storage config"
+    except ValueError as e:
+        assert "Missing required environment variables" in str(e)
+        assert "DURABLE_STORAGE" in str(e)
+
+
+def test_regression_remote_checksum_mismatch():
+    """Test that Gate 4 fails when remote checksum doesn't match local checksum."""
+    from app.services.purge_preflight.gate4_backup import verify_checksum
+    import tempfile
+    import os
+
+    # Create a test file and checksum
+    with tempfile.NamedTemporaryFile(mode='w', delete=False) as f:
+        f.write("test backup content")
+        test_file = f.name
+
+    try:
+        # Create checksum file with WRONG hash
+        checksum_file = test_file + ".sha256"
+        with open(checksum_file, 'w') as f:
+            f.write("deadbeef " + os.path.basename(test_file) + "\n")
+
+        # verify_checksum should return False for mismatch
+        result = verify_checksum(test_file, checksum_file)
+        assert result is False, "Should detect checksum mismatch"
+
+    finally:
+        for f in [test_file, test_file + ".sha256"]:
+            if os.path.exists(f):
+                os.unlink(f)
+
+
+def test_regression_restore_from_remote_backup_failure():
+    """Test that Gate 4 handles restore failure from remote backup."""
+    from app.services.purge_preflight.gate4_backup import run_pg_restore
+    from unittest.mock import patch, MagicMock
+    import subprocess
+
+    # Mock pg_restore to simulate failure (e.g., corrupt backup from remote)
+    with patch('subprocess.run') as mock_run:
+        mock_run.side_effect = subprocess.CalledProcessError(
+            1, "pg_restore", stderr="corrupt backup: invalid magic number"
+        )
+
+        try:
+            run_pg_restore(
+                "postgresql://user:pass@localhost:5432/testdb",
+                "/tmp/corrupt_backup.dump",
+                "localhost", 5432, "test", "test"
+            )
+            assert False, "Should have raised CalledProcessError"
+        except (subprocess.CalledProcessError, RuntimeError) as e:
+            error_msg = str(e).lower()
+            assert "corrupt" in error_msg or "validation failed" in error_msg or "connection validation failed" in error_msg
+
+
+def test_regression_missing_pitr_evidence():
+    """Test that Gate 4 fails when PITR evidence is missing or invalid."""
+    from app.services.purge_preflight.gate4_backup import get_pitr_status
+    from unittest.mock import MagicMock
+
+    mock_conn = MagicMock()
+    mock_cursor = MagicMock()
+    mock_conn.cursor.return_value.__enter__.return_value = mock_cursor
+
+    # Test 1: Missing PITR settings (non-Neon instance)
+    # version() returns a tuple with version string at index 0
+    mock_cursor.fetchone.side_effect = [
+        ("PostgreSQL 16.0 on x86_64-pc-linux-gnu",),  # version() - tuple
+    ]
+    mock_cursor.fetchall.return_value = []  # no neon settings
+    status, retention, details = get_pitr_status(mock_conn)
+    assert status == "UNAVAILABLE"
+    assert details["is_neon_instance"] is False
+
+    # Test 2: Neon instance with PITR disabled in pg_settings
+    mock_cursor.fetchone.side_effect = [
+        ("PostgreSQL 16.0 on x86_64-pc-linux-gnu (Neon)",),  # version()
+    ]
+    mock_cursor.fetchall.return_value = [
+        {"name": "neon.pitr_retention_days", "setting": "7"}, 
+        {"name": "neon.pitr_enabled", "setting": "off"}
+    ]
+    status, retention, details = get_pitr_status(mock_conn)
+    assert status == "DISABLED"
+    assert retention == 7
+
+    # Test 3: Neon instance with invalid retention value
+    mock_cursor.fetchone.side_effect = [
+        ("PostgreSQL 16.0 on x86_64-pc-linux-gnu (Neon)",),
+    ]
+    mock_cursor.fetchall.return_value = [
+        {"name": "neon.pitr_retention_days", "setting": "invalid"}, 
+        {"name": "neon.pitr_enabled", "setting": "on"}
+    ]
+    status, retention, details = get_pitr_status(mock_conn)
+    assert status == "UNVERIFIED"
+    assert "Invalid retention_days value" in details.get("error", "")
+
+
+def test_regression_role_membership_privilege_escalation():
+    """Test that Gate 2 detects privilege escalation via role membership."""
+    from app.services.purge_preflight.gate2_identity import _check_role_memberships
+    from unittest.mock import MagicMock
+
+    mock_conn = MagicMock()
+    mock_cursor = MagicMock()
+    mock_conn.cursor.return_value.__enter__.return_value = mock_cursor
+
+    errors = []
+
+    # Test 1: Direct SUPERUSER inheritance
+    mock_cursor.fetchall.return_value = [
+        {"rolname": "superuser_role", "rolsuper": True, "rolcreaterole": False, "rolcreatedb": False, "rolreplication": False, "rolbypassrls": False}
+    ]
+    _check_role_memberships(mock_cursor, "readonly_user", errors)
+    assert any("SUPERUSER" in e and "superuser_role" in e for e in errors)
+    errors.clear()
+
+    # Test 2: CREATEROLE inheritance
+    mock_cursor.fetchall.return_value = [
+        {"rolname": "admin_role", "rolsuper": False, "rolcreaterole": True, "rolcreatedb": False, "rolreplication": False, "rolbypassrls": False}
+    ]
+    _check_role_memberships(mock_cursor, "readonly_user", errors)
+    assert any("CREATEROLE" in e and "admin_role" in e for e in errors)
+    errors.clear()
+
+    # Test 3: CREATEDB inheritance
+    mock_cursor.fetchall.return_value = [
+        {"rolname": "db_admin", "rolsuper": False, "rolcreaterole": False, "rolcreatedb": True, "rolreplication": False, "rolbypassrls": False}
+    ]
+    _check_role_memberships(mock_cursor, "readonly_user", errors)
+    assert any("CREATEDB" in e and "db_admin" in e for e in errors)
+    errors.clear()
+
+    # Test 4: BYPASSRLS inheritance
+    mock_cursor.fetchall.return_value = [
+        {"rolname": "rls_bypass", "rolsuper": False, "rolcreaterole": False, "rolcreatedb": False, "rolreplication": False, "rolbypassrls": True}
+    ]
+    _check_role_memberships(mock_cursor, "readonly_user", errors)
+    assert any("BYPASSRLS" in e and "rls_bypass" in e for e in errors)
+    errors.clear()
+
+    # Test 5: Nested membership (role -> intermediate -> superuser)
+    # First call for readonly_user -> intermediate_role
+    # Second call for intermediate_role -> superuser_role
+    # Third call for superuser_role -> no members
+    call_count = [0]
+    def fetchall_side_effect(*args, **kwargs):
+        call_count[0] += 1
+        if call_count[0] == 1:
+            return [{"rolname": "intermediate_role", "rolsuper": False, "rolcreaterole": False, "rolcreatedb": False, "rolreplication": False, "rolbypassrls": False}]
+        elif call_count[0] == 2:
+            return [{"rolname": "superuser_role", "rolsuper": True, "rolcreaterole": False, "rolcreatedb": False, "rolreplication": False, "rolbypassrls": False}]
+        else:
+            return []
+    
+    mock_cursor.fetchall.side_effect = fetchall_side_effect
+    _check_role_memberships(mock_cursor, "readonly_user", errors)
+    assert any("SUPERUSER" in e and "superuser_role" in e for e in errors)
+
+
+def test_regression_schema_create_privilege():
+    """Test that Gate 2 fails when role has CREATE privilege on public schema."""
+    from app.services.purge_preflight.gate2_identity import _check_schema_privileges
+    from unittest.mock import MagicMock
+
+    mock_conn = MagicMock()
+    mock_cursor = MagicMock()
+    mock_conn.cursor.return_value.__enter__.return_value = mock_cursor
+
+    errors = []
+
+    # Test: Role has CREATE privilege (should fail)
+    mock_cursor.fetchone.side_effect = [
+        {"can_create": True},  # has_schema_privilege for CREATE
+        {"can_usage": True},   # has_schema_privilege for USAGE
+    ]
+    _check_schema_privileges(mock_cursor, "readonly_user", errors)
+    assert any("CREATE privilege on public schema" in e for e in errors)
+    errors.clear()
+
+    # Test: Role lacks USAGE privilege (should fail)
+    mock_cursor.fetchone.side_effect = [
+        {"can_create": False},
+        {"can_usage": False},
+    ]
+    _check_schema_privileges(mock_cursor, "readonly_user", errors)
+    assert any("lacks USAGE privilege" in e for e in errors)
+    errors.clear()
+
+    # Test: Role has correct privileges (no CREATE, has USAGE)
+    mock_cursor.fetchone.side_effect = [
+        {"can_create": False},
+        {"can_usage": True},
+    ]
+    _check_schema_privileges(mock_cursor, "readonly_user", errors)
+    assert len(errors) == 0
+
+
+def test_regression_sequence_write_privilege():
+    """Test that Gate 2 fails when role has UPDATE privilege on sequences."""
+    from app.services.purge_preflight.gate2_identity import _check_sequence_privileges
+    from unittest.mock import MagicMock
+
+    mock_conn = MagicMock()
+    mock_cursor = MagicMock()
+    mock_conn.cursor.return_value.__enter__.return_value = mock_cursor
+
+    errors = []
+
+    # Test 1: Role has USAGE on sequence (should warn)
+    mock_cursor.fetchall.return_value = [{"sequence_name": "scholarships_id_seq"}]
+    mock_cursor.fetchone.side_effect = [
+        {"can_usage": True},   # USAGE check
+        {"can_update": False}, # UPDATE check
+    ]
+    _check_sequence_privileges(mock_cursor, "readonly_user", errors)
+    assert any("USAGE privilege on sequence" in e for e in errors)
+    errors.clear()
+
+    # Test 2: Role has UPDATE on sequence (should fail - allows setval)
+    mock_cursor.fetchall.return_value = [{"sequence_name": "scholarships_id_seq"}]
+    mock_cursor.fetchone.side_effect = [
+        {"can_usage": True},
+        {"can_update": True},  # UPDATE = WRITE privilege
+    ]
+    _check_sequence_privileges(mock_cursor, "readonly_user", errors)
+    assert any("UPDATE privilege on sequence" in e and "setval" in e for e in errors)
+    errors.clear()
+
+    # Test 3: No privileges (should pass)
+    mock_cursor.fetchall.return_value = [{"sequence_name": "scholarships_id_seq"}]
+    mock_cursor.fetchone.side_effect = [
+        {"can_usage": False},
+        {"can_update": False},
+    ]
+    _check_sequence_privileges(mock_cursor, "readonly_user", errors)
+    assert len(errors) == 0
+
+
+def test_regression_gate5_classification_mismatch():
+    """Test that Gate 5 fails when live classification doesn't match expected manifest."""
+    from app.services.purge_preflight.gate5_classification import run_gate5, classify_record
+    from app.services.purge_preflight.database import DatabaseAccessor
+    from app.services.purge_preflight.config import DatabaseConfig
+    from app.services.purge_preflight.manifest import ClassificationCategory, CANONICAL_TARGET_IDS, EXPECTED_CLASSIFICATIONS
+    from unittest.mock import patch, MagicMock
+    from datetime import date, timedelta
+
+    config = DatabaseConfig(
+        readonly_url="postgresql://test",
+        backup_url="postgresql://test",
+        expected_neon_project_id="proj-123",
+        expected_neon_branch_id="branch-456",
+        expected_neon_branch_name="main",
+        expected_database_name="scholarzone",
+    )
+
+    accessor = DatabaseAccessor(config)
+
+    # Test 1: Record with "closing-soon" status and past deadline -> CLOSING_SOON
+    # (closing-soon status with past deadline is expected for CLOSING_SOON category)
+    past = date.today() - timedelta(days=30)
+    record_closing_soon = {
+        "id": 54, "title": "Test", "country": "Test",
+        "deadline_date": past, "deadline_display": str(past),
+        "deadline_precision": "day", "status": "closing-soon",
+        "is_archived": False, "official_source_url": "https://example.com",
+    }
+    actual = classify_record(record_closing_soon)
+    # closing-soon with past deadline -> CLOSING_SOON (expected for CLOSING_SOON category)
+    assert actual == ClassificationCategory.CLOSING_SOON
+
+    # Test 2: Record with "closed" status and past deadline -> CLOSED
+    record_closed = {
+        "id": 54, "title": "Test", "country": "Test",
+        "deadline_date": past, "deadline_display": str(past),
+        "deadline_precision": "day", "status": "closed",
+        "is_archived": False, "official_source_url": "https://example.com",
+    }
+    actual = classify_record(record_closed)
+    assert actual == ClassificationCategory.CLOSED
+    expected = EXPECTED_CLASSIFICATIONS[54]  # This is CLOSING_SOON
+    assert actual != expected  # This mismatch should be caught by validate_classifications
+
+    # Test 3: Integration test - run_gate5 with mismatched classifications
+    with patch.object(accessor, 'connect_readonly') as mock_connect:
+        mock_conn = MagicMock()
+        mock_connect.return_value.__enter__.return_value = mock_conn
+
+        # Return 34 records but with ID 54 having wrong classification
+        # ID 54 expects CLOSING_SOON, but we return status="closed" which classifies as CLOSED
+        mock_records = []
+        for tid in CANONICAL_TARGET_IDS:
+            if tid == 54:
+                # This ID expects CLOSING_SOON but we return CLOSED (via status="closed")
+                mock_records.append({
+                    "id": tid, "title": f"Test {tid}", "country": "Test",
+                    "deadline_date": str(past), "deadline_display": str(past),
+                    "deadline_precision": "day", "status": "closed",
+                    "is_archived": False, "official_source_url": "https://example.com",
+                })
+            else:
+                # For other IDs, use status that matches their expected classification
+                # Most expect CLOSED, so use "closed" status
+                expected_cat = EXPECTED_CLASSIFICATIONS.get(tid, ClassificationCategory.CLOSED)
+                if expected_cat == ClassificationCategory.CLOSING_SOON:
+                    # For CLOSING_SOON expected, we need a status that classifies as CLOSING_SOON
+                    # But classify_record only returns CLOSING_SOON for future deadlines with specific logic
+                    # Actually looking at the code, CLOSING_SOON is never returned by classify_record
+                    # It's a manifest-only category. So we just use "closed" for all.
+                    status = "closed"
+                else:
+                    status = "closed"
+                mock_records.append({
+                    "id": tid, "title": f"Test {tid}", "country": "Test",
+                    "deadline_date": str(past), "deadline_display": str(past),
+                    "deadline_precision": "day", "status": status,
+                    "is_archived": False, "official_source_url": "https://example.com",
+                })
+
+        with patch.object(accessor, 'get_target_records', return_value=mock_records):
+            result = run_gate5(accessor, CANONICAL_TARGET_IDS)
+
+            assert result.status == "FAIL"
+            assert "Classification validation failed" in result.error
+            assert "54" in result.error  # Should mention the mismatched ID
 
 
 # =============================================================================

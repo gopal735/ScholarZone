@@ -8,7 +8,7 @@ Each gate requires only the credentials and configuration it actually needs:
 - Gate 1 (Atomicity): TEST_DATABASE_URL only (disposable test DB)
 - Gate 2 (Identity): SCHOLARZONE_DATABASE_URL_RO + identity vars
 - Gate 3 (Dependencies): SCHOLARZONE_DATABASE_URL_RO + identity vars
-- Gate 4 (Backup): SCHOLARZONE_DATABASE_URL_BACKUP + GPG vars + RESTORE_TEST_* vars
+- Gate 4 (Backup): SCHOLARZONE_DATABASE_URL_BACKUP + GPG vars + RESTORE_TEST_* vars + DURABLE_STORAGE_* vars
 - Gate 5 (Classification): SCHOLARZONE_DATABASE_URL_RO + identity vars
 - Gate 6 (Cycle Validation): SCHOLARZONE_DATABASE_URL_RO + identity vars
 - Gate 7 (Git Safety): No database config needed
@@ -60,11 +60,29 @@ class RestoreTestConfig:
 
 
 @dataclass(frozen=True)
+class DurableStorageConfig:
+    """Durable external backup storage configuration (Gate 4 only)."""
+    # Supported: s3, gcs, azure
+    provider: str = ""
+    # S3: bucket name, GCS: bucket name, Azure: container name
+    bucket: str = ""
+    # S3: region, GCS: location, Azure: account name
+    region: str = ""
+    # S3: access_key_id, GCS: service_account_json path, Azure: account key
+    credential: str = ""
+    # S3: secret_access_key (if not in credential), GCS: N/A, Azure: N/A
+    credential_secret: str = ""
+    # Optional: object prefix/prefix path
+    prefix: str = "purge-preflight-backups/"
+
+
+@dataclass(frozen=True)
 class PreflightConfig:
     """Complete preflight configuration."""
     database: DatabaseConfig
     gpg: GPGConfig
     restore_test: RestoreTestConfig
+    durable_storage: DurableStorageConfig
     gates: dict[str, GateConfig] = field(default_factory=dict)
     artifact_retention_days: int = 30
 
@@ -73,7 +91,7 @@ class PreflightConfig:
         "gate1": {"TEST_DATABASE_URL"},
         "gate2": {"SCHOLARZONE_DATABASE_URL_RO", "EXPECTED_NEON_PROJECT_ID", "EXPECTED_NEON_BRANCH_ID", "EXPECTED_NEON_BRANCH_NAME", "EXPECTED_DATABASE_NAME"},
         "gate3": {"SCHOLARZONE_DATABASE_URL_RO", "EXPECTED_NEON_PROJECT_ID", "EXPECTED_NEON_BRANCH_ID", "EXPECTED_NEON_BRANCH_NAME", "EXPECTED_DATABASE_NAME"},
-        "gate4": {"SCHOLARZONE_DATABASE_URL_BACKUP", "GPG_RECIPIENT", "GPG_EXPECTED_FINGERPRINT", "RESTORE_TEST_PGHOST", "RESTORE_TEST_PGPORT", "RESTORE_TEST_PGUSER", "RESTORE_TEST_PGPASSWORD"},
+        "gate4": {"SCHOLARZONE_DATABASE_URL_BACKUP", "GPG_RECIPIENT", "GPG_EXPECTED_FINGERPRINT", "RESTORE_TEST_PGHOST", "RESTORE_TEST_PGPORT", "RESTORE_TEST_PGUSER", "RESTORE_TEST_PGPASSWORD", "DURABLE_STORAGE_PROVIDER", "DURABLE_STORAGE_BUCKET", "DURABLE_STORAGE_REGION", "DURABLE_STORAGE_CREDENTIAL", "DURABLE_STORAGE_CREDENTIAL_SECRET"},
         "gate5": {"SCHOLARZONE_DATABASE_URL_RO", "EXPECTED_NEON_PROJECT_ID", "EXPECTED_NEON_BRANCH_ID", "EXPECTED_NEON_BRANCH_NAME", "EXPECTED_DATABASE_NAME"},
         "gate6": {"SCHOLARZONE_DATABASE_URL_RO", "EXPECTED_NEON_PROJECT_ID", "EXPECTED_NEON_BRANCH_ID", "EXPECTED_NEON_BRANCH_NAME", "EXPECTED_DATABASE_NAME"},
         "gate7": set(),  # No environment variables required
@@ -86,6 +104,14 @@ class PreflightConfig:
         if len(fingerprint) != 40 or not all(c in "0123456789ABCDEFabcdef" for c in fingerprint):
             raise ValueError(f"GPG_EXPECTED_FINGERPRINT must be 40 hex characters, got: {fingerprint}")
         return fingerprint.upper()
+
+    @classmethod
+    def _validate_durable_storage_provider(cls, provider: str) -> str:
+        """Validate durable storage provider."""
+        provider = provider.strip().lower()
+        if provider not in ("s3", "gcs", "azure"):
+            raise ValueError(f"DURABLE_STORAGE_PROVIDER must be one of: s3, gcs, azure, got: {provider}")
+        return provider
 
     @classmethod
     def _get_required_vars(cls, gates_to_run: Optional[Set[str]] = None) -> Set[str]:
@@ -115,7 +141,9 @@ class PreflightConfig:
         - Gates 2,3,5,6: SCHOLARZONE_DATABASE_URL_RO, EXPECTED_NEON_PROJECT_ID, EXPECTED_NEON_BRANCH_ID,
                          EXPECTED_NEON_BRANCH_NAME, EXPECTED_DATABASE_NAME
         - Gate 4: SCHOLARZONE_DATABASE_URL_BACKUP, GPG_RECIPIENT, GPG_EXPECTED_FINGERPRINT,
-                  RESTORE_TEST_PGHOST, RESTORE_TEST_PGPORT, RESTORE_TEST_PGUSER, RESTORE_TEST_PGPASSWORD
+                  RESTORE_TEST_PGHOST, RESTORE_TEST_PGPORT, RESTORE_TEST_PGUSER, RESTORE_TEST_PGPASSWORD,
+                  DURABLE_STORAGE_PROVIDER, DURABLE_STORAGE_BUCKET, DURABLE_STORAGE_REGION,
+                  DURABLE_STORAGE_CREDENTIAL, DURABLE_STORAGE_CREDENTIAL_SECRET
         - Gate 7: (none)
 
         Raises:
@@ -157,6 +185,19 @@ class PreflightConfig:
                 password=os.getenv("RESTORE_TEST_PGPASSWORD", ""),
             )
 
+        # Build durable storage config (only if Gate 4 is running)
+        durable_storage = DurableStorageConfig()
+        if gates_to_run is None or "gate4" in gates_to_run:
+            provider = cls._validate_durable_storage_provider(os.getenv("DURABLE_STORAGE_PROVIDER", ""))
+            durable_storage = DurableStorageConfig(
+                provider=provider,
+                bucket=os.getenv("DURABLE_STORAGE_BUCKET", ""),
+                region=os.getenv("DURABLE_STORAGE_REGION", ""),
+                credential=os.getenv("DURABLE_STORAGE_CREDENTIAL", ""),
+                credential_secret=os.getenv("DURABLE_STORAGE_CREDENTIAL_SECRET", ""),
+                prefix=os.getenv("DURABLE_STORAGE_PREFIX", "purge-preflight-backups/"),
+            )
+
         # Gate configs with defaults
         gates = {
             "gate1": GateConfig(enabled=True, timeout_seconds=120),
@@ -172,6 +213,7 @@ class PreflightConfig:
             database=db_config,
             gpg=gpg_config,
             restore_test=restore_test,
+            durable_storage=durable_storage,
             gates=gates,
             artifact_retention_days=int(os.getenv("ARTIFACT_RETENTION_DAYS", "30")),
         )

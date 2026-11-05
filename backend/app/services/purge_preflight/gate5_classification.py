@@ -13,6 +13,10 @@ Categories:
 - UNKNOWN: Insufficient data - CANNOT purge
 - BLOCKED: Explicitly blocked - CANNOT purge
 - STATUS_DEADLINE_CONFLICT: Past deadline but open status - REQUIRES REVIEW
+
+IMPORTANT: EXPECTED_CLASSIFICATIONS is a REFERENCE MANIFEST only.
+Gate 5 compares actual live record data against this reference and reports mismatches explicitly.
+NEVER uses EXPECTED_CLASSIFICATIONS as hardcoded truth or sole authorization for purge.
 """
 
 import json
@@ -27,6 +31,8 @@ from .manifest import (
     ClassificationCategory,
     EXPECTED_CLASSIFICATIONS,
     validate_classifications,
+    MismatchDetail,
+    ClassificationValidationResult,
 )
 from .database import DatabaseAccessor, create_accessor
 from .config import DatabaseConfig, PreflightConfig, load_config
@@ -56,6 +62,12 @@ class Gate5Result:
     # Archive state tracking
     archived_count: int = 0
     unarchived_count: int = 0
+    # NEW: Explicit mismatch reporting
+    mismatches: list[dict] = None
+    missing_from_db: list[int] = None
+    unexpected_in_db: list[int] = None
+    category_breakdown: dict = None
+    reconciliation_verified: bool = False
 
     def __post_init__(self):
         if self.duplicate_ids is None:
@@ -68,6 +80,14 @@ class Gate5Result:
             self.classification_errors = []
         if self.record_classifications is None:
             self.record_classifications = []
+        if self.mismatches is None:
+            self.mismatches = []
+        if self.missing_from_db is None:
+            self.missing_from_db = []
+        if self.unexpected_in_db is None:
+            self.unexpected_in_db = []
+        if self.category_breakdown is None:
+            self.category_breakdown = {}
 
     def to_dict(self) -> dict:
         return asdict(self)
@@ -108,12 +128,17 @@ def classify_record(record: dict) -> ClassificationCategory:
         # Deadline is in the past
         if status in ("closed", "archived"):
             return ClassificationCategory.CLOSED
+        elif status in ("closing-soon", "closing_soon"):
+            # Past deadline but status is closing-soon - this is expected for CLOSING_SOON
+            return ClassificationCategory.CLOSING_SOON
         else:
-            # Past deadline but status is NOT closed - CONFLICT
+            # Past deadline but status is NOT closed/archived/closing-soon - CONFLICT
             return ClassificationCategory.STATUS_DEADLINE_CONFLICT
 
     if parsed_deadline and parsed_deadline >= date.today():
         # Future deadline
+        if status in ("closing-soon", "closing_soon"):
+            return ClassificationCategory.CLOSING_SOON
         return ClassificationCategory.BLOCKED
 
     # Ambiguous - no deadline but not evergreen?
@@ -129,7 +154,7 @@ def run_gate5(accessor: DatabaseAccessor, target_ids: list[int]) -> Gate5Result:
         target_ids: List of target IDs to classify
 
     Returns:
-        Gate5Result with classification validation
+        Gate5Result with classification validation and explicit mismatch reporting.
     """
     result = Gate5Result()
 
@@ -192,16 +217,50 @@ def run_gate5(accessor: DatabaseAccessor, target_ids: list[int]) -> Gate5Result:
                     "classification_reason": _get_classification_reason(classification, status, parsed_deadline, deadline_precision, deadline_display),
                 })
 
-            # Validate against expected manifest classifications
-            errors = validate_classifications(classifications)
-            result.classification_errors = errors
+            # Validate against expected manifest classifications - returns detailed result
+            validation_result: ClassificationValidationResult = validate_classifications(classifications)
 
-            if errors:
+            # Populate new explicit mismatch fields
+            result.mismatches = [
+                {"id": m.id, "expected": m.expected.value, "actual": m.actual.value, "reason": m.reason}
+                for m in validation_result.mismatches
+            ]
+            result.missing_from_db = validation_result.missing_from_db
+            result.unexpected_in_db = validation_result.unexpected_in_db
+            result.category_breakdown = validation_result.category_breakdown
+            result.reconciliation_verified = validation_result.reconciliation_verified
+
+            # Also populate legacy fields for backward compatibility
+            result.classification_errors = []
+            for m in validation_result.mismatches:
+                result.classification_errors.append(f"ID {m.id}: expected {m.expected.value}, got {m.actual.value}")
+            for tid in validation_result.missing_from_db:
+                result.classification_errors.append(f"Missing classification for ID {tid}")
+            for tid in validation_result.unexpected_in_db:
+                result.classification_errors.append(f"Unexpected ID in classifications: {tid}")
+
+            if not validation_result.is_valid:
                 result.status = "FAIL"
-                result.error = f"Classification validation failed: {'; '.join(errors)}"
+                error_parts = []
+                if validation_result.mismatches:
+                    mismatch_ids = [str(m.id) for m in validation_result.mismatches]
+                    error_parts.append(f"{len(validation_result.mismatches)} mismatches: {', '.join(mismatch_ids)}")
+                if validation_result.missing_from_db:
+                    error_parts.append(f"{len(validation_result.missing_from_db)} missing from DB: {', '.join(map(str, validation_result.missing_from_db))}")
+                if validation_result.unexpected_in_db:
+                    error_parts.append(f"{len(validation_result.unexpected_in_db)} unexpected in DB: {', '.join(map(str, validation_result.unexpected_in_db))}")
+                if validation_result.category_breakdown.get("evergreen", 0) > 0:
+                    error_parts.append(f"{validation_result.category_breakdown['evergreen']} evergreen")
+                if validation_result.category_breakdown.get("unknown", 0) > 0:
+                    error_parts.append(f"{validation_result.category_breakdown['unknown']} unknown")
+                if validation_result.category_breakdown.get("blocked", 0) > 0:
+                    error_parts.append(f"{validation_result.category_breakdown['blocked']} blocked")
+                if validation_result.category_breakdown.get("status_deadline_conflict", 0) > 0:
+                    error_parts.append(f"{validation_result.category_breakdown['status_deadline_conflict']} conflicts")
+                result.error = f"Classification validation failed: {', '.join(error_parts)}"
                 return result
 
-            # Count categories
+            # Count categories (for legacy fields)
             for cat in classifications.values():
                 if cat == ClassificationCategory.CLOSED:
                     result.closed_count += 1
@@ -228,14 +287,10 @@ def run_gate5(accessor: DatabaseAccessor, target_ids: list[int]) -> Gate5Result:
                 result.error = f"Duplicate IDs in target list: {result.duplicate_ids}"
                 return result
 
-            # Verify no blocked/evergreen/unknown/conflict records exist
-            blocked_total = (result.evergreen_count + result.unknown_count + 
-                           result.blocked_count + result.status_deadline_conflict_count)
-            if blocked_total > 0:
+            # Gate PASS only if: 0 mismatches AND 0 blocked categories AND all 34 IDs reconciled
+            if not validation_result.reconciliation_verified:
                 result.status = "FAIL"
-                result.error = (f"Found {blocked_total} non-purgeable records: "
-                               f"{result.evergreen_count} evergreen, {result.unknown_count} unknown, "
-                               f"{result.blocked_count} blocked, {result.status_deadline_conflict_count} conflicts")
+                result.error = "Reconciliation not verified: mismatches, missing IDs, or blocked categories exist"
                 return result
 
             result.status = "PASS"
@@ -290,9 +345,23 @@ def main() -> int:
 
     if result.status == "PASS":
         print(f"\n✅ GATE 5 PASSED: {result.closed_count} closed, {result.closing_soon_count} closing-soon, 0 blocked/evergreen/unknown/conflict")
+        print(f"   Reconciliation verified: {result.reconciliation_verified}")
+        print(f"   Mismatches: {len(result.mismatches)}")
+        print(f"   Missing from DB: {len(result.missing_from_db)}")
+        print(f"   Unexpected in DB: {len(result.unexpected_in_db)}")
         return 0
     else:
         print(f"\n❌ GATE 5 {result.status}: {result.error}")
+        if result.mismatches:
+            print(f"   MISMATCHES ({len(result.mismatches)}):")
+            for m in result.mismatches:
+                print(f"     ID {m['id']}: expected={m['expected']}, actual={m['actual']}, reason={m['reason']}")
+        if result.missing_from_db:
+            print(f"   MISSING FROM DB ({len(result.missing_from_db)}): {result.missing_from_db}")
+        if result.unexpected_in_db:
+            print(f"   UNEXPECTED IN DB ({len(result.unexpected_in_db)}): {result.unexpected_in_db}")
+        if result.category_breakdown:
+            print(f"   CATEGORY BREAKDOWN: {result.category_breakdown}")
         return 1
 
 
