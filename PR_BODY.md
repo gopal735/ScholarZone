@@ -3,15 +3,16 @@
 Post-merge security and correctness remediation of the production purge preflight system introduced by PR #67.
 
 **Base SHA (PR #67 merge)**: 885ce34e378d9057fb8ae7ca459fbd0caf907758
-**Current HEAD**: f79a81e53e6ef2dfb85ec040f660cb22fd894a3a
+**Current HEAD**: a1ad5bdbdd8eaada90a5587b023d4fab917cc7ca
 **Branch**: fix/preflight-remediation-67
 **PR**: #71
 
-## Changes (14 files)
+## Changes (15 files)
 
 | File | Description |
 |------|-------------|
-| `.github/workflows/ci.yml` | PostgreSQL 16/18 matrix testing for schema-compat, preflight, postgresql-migration-test, gate1-integration |
+| `.github/workflows/ci.yml` | PostgreSQL 16/18 matrix testing for schema-compat, preflight, postgresql-migration-test, gate1-integration, gate2-integration |
+| `.github/workflows/production-purge-preflight.yml` | Azure OIDC auth via azure/login, all Gate 4 vars mapped (DURABLE_STORAGE_*, NEON_API_KEY, Azure OIDC identifiers) |
 | `backend/app/services/purge_preflight/config.py` | Gate-specific config isolation via `GATE_REQUIREMENTS` mapping; `from_env(gates_to_run)` validates only needed vars; added `DurableStorageConfig` |
 | `backend/app/services/purge_preflight/gate1_atomicity.py` | Gate 1 config loading via `load_config(gates_to_run={"gate1"})` |
 | `backend/app/services/purge_preflight/gate2_identity.py` | Comprehensive least-privilege audit: ALL schemas, recursive role memberships (admin_option, inherit_option, set_option), sequences, functions with SECURITY DEFINER/mutating detection, catalog accessibility, chain limits; uses `pg_has_role()` for SET ROLE; dynamic SQL/indirect call detection via pg_depend |
@@ -22,14 +23,14 @@ Post-merge security and correctness remediation of the production purge prefligh
 | `backend/app/services/purge_preflight/gate7_git_safety.py` | Gate 7 config loading via `load_config(gates_to_run={"gate7"})` |
 | `backend/app/services/purge_preflight/purge_manifest.py` | Gate 2 config for manifest generation |
 | `backend/app/services/purge_preflight/manifest.py` | EXPECTED_CLASSIFICATIONS as reference manifest; `ClassificationValidationResult` with detailed mismatch reporting |
-| `backend/tests/test_purge_preflight.py` | **33 new regression tests** (total 56 functions, 64 pytest items): Free/Launch/Scale PITR, missing durable backup, remote checksum mismatch, restore from remote failure, missing PITR, role membership escalation (nested, set_option, inherit_option), schema CREATE, sequence UPDATE, Gate 5 mismatch, Azure credential safety, dynamic SQL/indirect call detection, SECURITY DEFINER search_path, trigger functions, C function uncertainty, Neon API contract (project, branches, pagination, auth, 404, connection errors) |
+| `backend/tests/test_purge_preflight.py` | **33 new regression tests** (total 64 functions, 64 pytest items): Free/Launch/Scale PITR, missing durable backup, remote checksum mismatch, restore from remote failure, missing PITR, role membership escalation (nested, set_option, inherit_option), schema CREATE, sequence UPDATE, Gate 5 mismatch, Azure credential safety, dynamic SQL/indirect call detection, SECURITY DEFINER search_path, trigger functions, C function uncertainty, Neon API contract (project, branches, cursor pagination, auth, 404, connection errors) |
+| `backend/scripts/init_gate2_test_db.py` | Gate 2 integration test DB initialization (resilient to permission errors) |
 | `REMEDIATION_SUMMARY.md` | Complete remediation documentation |
 | `PR_BODY.md` | This file |
 
 ## Test Evidence
 
-- **61 passed, 3 skipped** (integration tests require TEST_DATABASE_URL or SCHOLARZONE_DATABASE_URL_RO) - `test_purge_preflight.py`
-- **38 passed** - `test_purge_closed.py` + `test_purge_image_safety.py`
+- **99 passed, 3 skipped** (integration tests require TEST_DATABASE_URL or SCHOLARZONE_DATABASE_URL_RO) - `test_purge_preflight.py` (64 items), `test_purge_closed.py` (15), `test_purge_image_safety.py` (11)
 - CI workflow syntax test verifies PostgreSQL 16/18 matrix
 
 ## CI Verification Required
@@ -39,8 +40,9 @@ Matrix jobs to verify:
 - preflight (PG16, PG18) ✅
 - postgresql-migration-test (PG16, PG18) ✅
 - gate1-integration (PG16, PG18) ✅
+- gate2-integration (PG16, PG18) ✅
 
-**Latest CI Run**: https://github.com/gopal735/ScholarZone/actions/runs/42073994019 (HEAD: f79a81e) - ALL GREEN
+**Latest CI Run**: https://github.com/gopal735/ScholarZone/actions/runs/42088424274 (HEAD: a1ad5bd) - ALL GREEN
 
 ## Safety Boundaries Maintained
 
