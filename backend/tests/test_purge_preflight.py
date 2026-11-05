@@ -1322,32 +1322,26 @@ def test_regression_invalid_pitr_evidence():
     mock_conn.cursor.return_value.__enter__.return_value = mock_cursor
 
     # Test 1: Non-Neon instance (no "neon" in version)
-    mock_cursor.fetchone.side_effect = [
-        ("PostgreSQL 16.0 on x86_64-pc-linux-gnu",),  # version() - tuple
-    ]
+    mock_cursor.fetchone.return_value = ("PostgreSQL 16.0 on x86_64-pc-linux-gnu",)
     mock_cursor.fetchall.return_value = []  # no neon settings
     status, retention, details = get_pitr_status(mock_conn)
     assert status == "UNAVAILABLE"
     assert details["is_neon_instance"] is False
 
-    # Test 2: Neon instance with PITR disabled in pg_settings
-    mock_cursor.fetchone.side_effect = [
-        ("PostgreSQL 16.0 on x86_64-pc-linux-gnu (Neon)",),  # version()
-    ]
+    # Test 2: Neon instance but PITR disabled
+    mock_cursor.fetchone.return_value = ("PostgreSQL 16.0 on x86_64-pc-linux-gnu (Neon)",)
     mock_cursor.fetchall.return_value = [
-        {"name": "neon.pitr_retention_days", "setting": "7"}, 
+        {"name": "neon.pitr_retention_days", "setting": "7"},
         {"name": "neon.pitr_enabled", "setting": "off"}
     ]
     status, retention, details = get_pitr_status(mock_conn)
     assert status == "DISABLED"
     assert retention == 7
 
-    # Test 3: Neon instance with invalid retention value
-    mock_cursor.fetchone.side_effect = [
-        ("PostgreSQL 16.0 on x86_64-pc-linux-gnu (Neon)",),
-    ]
+    # Test 3: Invalid retention value
+    mock_cursor.fetchone.return_value = ("PostgreSQL 16.0 on x86_64-pc-linux-gnu (Neon)",)
     mock_cursor.fetchall.return_value = [
-        {"name": "neon.pitr_retention_days", "setting": "invalid"}, 
+        {"name": "neon.pitr_retention_days", "setting": "invalid"},
         {"name": "neon.pitr_enabled", "setting": "on"}
     ]
     status, retention, details = get_pitr_status(mock_conn)
