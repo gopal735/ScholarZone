@@ -26,7 +26,7 @@
 
 ### Key Technical Achievements
 
-- **Static-First Architecture** — Public catalogue serves 770 public scholarship records from a version-controlled JSON snapshot on Vercel; zero database, zero API calls for browsing
+- **Static-First Architecture** — Public catalogue serves 770 public scholarship records from a version-controlled JSON snapshot; zero database, zero API calls for browsing
 - **Deterministic Match Engine** — Arithmetic-only fit scoring (Academic 25%, Field 20%, Funding 20%, Requirements 15%, Language 10%, Preference 5%, Timing 5%); same inputs → byte-identical output; no clock, randomness, or network in scoring path
 - **Eligibility Gate** — Three-verdict hard gate (`ELIGIBLE` / `NEEDS_VERIFICATION` / `INELIGIBLE`) runs before any scoring; structural separation prevents fit-score influence
 - **Zero-Paid Guard** — CI workflow scans for 80+ paid-only dependencies, database strings in frontend, API keys in frontend code

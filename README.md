@@ -9,7 +9,7 @@
 
 ## 🎯 Project Purpose
 
-ScholarZone is a global scholarship discovery platform that helps students find official-source-informed scholarship opportunities worldwide. Built with a **static-first architecture**, the public catalogue operates entirely without a live database or API connection — serving **770 public scholarship records** from a version-controlled JSON snapshot deployed to Vercel.
+ScholarZone is a global scholarship discovery platform that helps students find official-source-informed scholarship opportunities worldwide. Built with a **static-first architecture**, the public catalogue operates entirely without a live database or API connection — serving **770 public scholarship records** from a version-controlled JSON snapshot.
 
 ### Key Differentiators
 
@@ -31,7 +31,7 @@ ScholarZone is a global scholarship discovery platform that helps students find 
 - **Country Explorer** — Browse scholarships by country (65 countries)
 - **Compare** — Side-by-side comparison of up to 4 scholarships (localStorage)
 - **Saved Scholarships** — Personal bookmarking (localStorage)
-- **Sitemap & SEO** — Auto-generated `sitemap.xml` (770 URLs), JSON-LD structured data, canonical URLs, meta tags
+- **Sitemap & SEO** — Auto-generated `sitemap.xml` (772 URLs: 770 scholarship + 2 static), JSON-LD structured data, canonical URLs, meta tags
 
 ### Match Engine (API-Backed, Deterministic)
 - **POST `/api/scholarships/match`** — Scores a student profile against all scholarships

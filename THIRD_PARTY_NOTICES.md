@@ -114,7 +114,7 @@ The following external services are used by ScholarZone. They are not software d
 - **Neon PostgreSQL** — Managed PostgreSQL database hosting
 - **Resend** — Transactional email service
 - **GitHub Actions** — CI/CD platform
-- **Vercel** — Static site hosting (current frontend deployment)
+- **Vercel** — Static site hosting (configured for frontend, not deployed)
 - **SnapDeploy** — Container hosting (backend API, evaluated)
 - **Cloudflare Pages** — Static site hosting (evaluated alternative)
 
