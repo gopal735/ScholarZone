@@ -151,7 +151,7 @@ def create_schema_and_data(conn):
                     %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s,
                     %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s,
                     %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s,
-                    %s, %s, %s, %s, %s
+                    %s, %s, %s, %s, %s, %s
                 ) ON CONFLICT (id) DO NOTHING
             """, (
                 tid,
