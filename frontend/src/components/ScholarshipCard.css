@@ -401,6 +401,61 @@
   letter-spacing: 0.06em;
 }
 
+/* Deadline countdown */
+.scholarship-card__countdown {
+  display: inline-block;
+  margin-left: var(--space-3);
+  font-size: 0.75rem;
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+}
+
+.scholarship-card__countdown.lifecycle-closing-soon {
+  color: var(--warning);
+}
+
+.scholarship-card__countdown.lifecycle-open {
+  color: var(--success);
+}
+
+.scholarship-card__countdown.lifecycle-opening {
+  color: var(--accent);
+}
+
+/* Opening countdown */
+.scholarship-card__opening-countdown {
+  display: inline-block;
+  margin-left: var(--space-3);
+  font-size: 0.75rem;
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+  color: var(--accent);
+}
+
+/* Opening/Upcoming/Closed hints */
+.scholarship-card__opening-hint,
+.scholarship-card__upcoming-hint,
+.scholarship-card__closed-hint {
+  display: inline-block;
+  margin-left: var(--space-3);
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: var(--text-muted);
+}
+
+.scholarship-card__opening-hint {
+  color: var(--accent);
+}
+
+.scholarship-card__upcoming-hint {
+  color: var(--info);
+}
+
+.scholarship-card__closed-hint {
+  color: var(--danger);
+}
+
+/* Closing soon deadline detail */
 .scholarship-card__detail--closing-soon.scholarship-card__detail--deadline {
   background: var(--warning-soft);
   border-color: var(--warning-border);

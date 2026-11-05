@@ -1,8 +1,10 @@
-import { useEffect, useMemo, useState } from 'react'
+import { useEffect, useMemo, useRef, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { useScholarshipDirectory } from '../hooks/useScholarshipDirectory'
+import { useScholarshipStats } from '../hooks/useScholarshipStats'
 import { useSavedScholarships } from '../hooks/useSavedScholarships'
 import { getConfirmedOfficialLogo, getMonogramInitial } from '../utils/scholarshipLogos'
+import { classifyLifecycle, formatCountdown, formatOpeningCountdown } from '../utils/lifecycle'
 import './HomePage.css'
 
 const SAMPLE_GOAL = "I'm from Bangladesh and want a fully funded Master's in Computer Science in Europe. I have IELTS 7."
@@ -10,25 +12,7 @@ const SAMPLE_GOAL = "I'm from Bangladesh and want a fully funded Master's in Com
 const EUROPE_COUNTRIES = ['Germany', 'Europe', 'UK', 'United Kingdom', 'France', 'Sweden', 'Netherlands', 'Norway', 'Denmark', 'Finland', 'Austria', 'Belgium', 'Poland', 'Hungary', 'Czech Republic', 'Portugal', 'Spain', 'Italy', 'Switzerland', 'Ireland']
 
 const FLAGSHIP_PROGRAMMES = [
-  {
-    id: 1001,
-    title: 'MEXT Scholarship',
-    country: 'Japan',
-    degree: "Bachelor's, Master's, PhD",
-    funding: 'Fully Funded',
-    levels: ["Bachelor's", "Master's", 'PhD'],
-    isFull: true,
-    coverage: 'Tuition, monthly allowance (¥144,000+) and round-trip airfare from the Japanese government.',
-    officialUrl: 'https://www.studyinjapan.go.jp/en/planning/scholarship/mext-scholarship/',
-    provider: 'Ministry of Education, Culture, Sports, Science and Technology Japan',
-    verified: true,
-    image_url: 'https://www.studyinjapan.go.jp/en/assets/images/common/logo_mext_en.svg',
-    image_source_url: 'https://www.studyinjapan.go.jp/en/about/logo/index.htm',
-    image_source_type: 'official_provider',
-    image_kind: 'official_logo',
-    image_verified_at: '2025-06-26T00:00:00',
-    image_alt_text: 'MEXT Ministry of Education, Culture, Sports, Science and Technology (Japan) official logo',
-  },
+  // Verified programmes from the canonical snapshot (verification_status === 'active')
   {
     id: 1002,
     title: 'DAAD Scholarship',
@@ -86,6 +70,27 @@ const FLAGSHIP_PROGRAMMES = [
     image_verified_at: '',
     image_alt_text: '',
   },
+  // Editorial examples — not matched to canonical snapshot records
+  {
+    id: 1001,
+    title: 'MEXT Scholarship',
+    country: 'Japan',
+    degree: "Bachelor's, Master's, PhD",
+    funding: 'Fully Funded',
+    levels: ["Bachelor's", "Master's", 'PhD'],
+    isFull: true,
+    coverage: 'Tuition, monthly allowance (¥144,000+) and round-trip airfare from the Japanese government.',
+    officialUrl: 'https://www.studyinjapan.go.jp/en/planning/scholarship/mext-scholarship/',
+    provider: 'Ministry of Education, Culture, Sports, Science and Technology Japan',
+    verified: false,
+    editorialNote: 'Editorial example — not yet matched to canonical verified record',
+    image_url: 'https://www.studyinjapan.go.jp/en/assets/images/common/logo_mext_en.svg',
+    image_source_url: 'https://www.studyinjapan.go.jp/en/about/logo/index.htm',
+    image_source_type: 'official_provider',
+    image_kind: 'official_logo',
+    image_verified_at: '2025-06-26T00:00:00',
+    image_alt_text: 'MEXT Ministry of Education, Culture, Sports, Science and Technology (Japan) official logo',
+  },
   {
     id: 1005,
     title: 'Australia Awards',
@@ -97,7 +102,8 @@ const FLAGSHIP_PROGRAMMES = [
     coverage: 'Full tuition fees, return air travel, establishment allowance, and contribution to living expenses (CLE).',
     officialUrl: 'https://www.dfat.gov.au/people-to-people/australia-awards',
     provider: 'Department of Foreign Affairs and Trade (DFAT) Australia',
-    verified: true,
+    verified: false,
+    editorialNote: 'Editorial example — not yet matched to canonical verified record',
     image_url: '',
     image_source_url: '',
     image_source_type: '',
@@ -116,7 +122,8 @@ const FLAGSHIP_PROGRAMMES = [
     coverage: 'Full tuition, monthly stipend, health insurance, and international travel for graduate study in the United States.',
     officialUrl: 'https://bd.usembassy.gov/education-culture/student-exchange-programs/fulbright-foreign-student-program/',
     provider: 'U.S. Department of State / US Embassy Dhaka',
-    verified: true,
+    verified: false,
+    editorialNote: 'Editorial example — not yet matched to canonical verified record',
     image_url: 'https://us.fulbrightonline.org/templates/us/images/iie_logo.png',
     image_source_url: 'https://us.fulbrightonline.org',
     image_source_type: 'official_provider',
@@ -135,7 +142,8 @@ const FLAGSHIP_PROGRAMMES = [
     coverage: 'Full university tuition, free accommodation, monthly allowance, 1-year Turkish course and airfare.',
     officialUrl: 'https://www.turkiyeburslari.gov.tr/',
     provider: 'Presidency for Turks Abroad and Related Communities (YTB)',
-    verified: true,
+    verified: false,
+    editorialNote: 'Editorial example — not yet matched to canonical verified record',
     image_url: '',
     image_source_url: '',
     image_source_type: '',
@@ -154,7 +162,8 @@ const FLAGSHIP_PROGRAMMES = [
     coverage: "Joint master's degree across 2+ European countries with tuition waiver and €1,400 monthly living allowance.",
     officialUrl: 'https://erasmus-plus.ec.europa.eu/opportunities/opportunities-for-individuals/students/erasmus-mundus-joint-masters',
     provider: 'European Commission',
-    verified: true,
+    verified: false,
+    editorialNote: 'Editorial example — not yet matched to canonical verified record',
     image_url: '',
     image_source_url: '',
     image_source_type: '',
@@ -311,6 +320,7 @@ function flagFor(country) {
 
 export default function HomePage() {
   const { scholarships: directoryScholarships, staticMode } = useScholarshipDirectory()
+  const { stats } = useScholarshipStats()
   const { savedIds, toggleSaved } = useSavedScholarships()
 
   // Natural Language Goal State
@@ -371,6 +381,8 @@ export default function HomePage() {
   // UI Interactive States
   const [planDrawerOpen, setPlanDrawerOpen] = useState(false)
   const [selectedSheetItem, setSelectedSheetItem] = useState(null)
+  const sheetRef = useRef(null)
+  const previousFocusRef = useRef(null)
   const [toast, setToast] = useState({ show: false, message: '', undo: null })
   const [userPlans, setUserPlans] = useState(() => {
     try {
@@ -413,6 +425,55 @@ export default function HomePage() {
       void e
     }
   }, [goalText])
+
+  // Details sheet accessibility: focus management, Escape key, body scroll lock
+  useEffect(() => {
+    if (selectedSheetItem) {
+      // Store the previously focused element to restore later
+      previousFocusRef.current = document.activeElement
+
+      // Prevent body scroll
+      document.body.style.overflow = 'hidden'
+
+      // Focus the close button after a brief delay to allow render
+      const timeoutId = setTimeout(() => {
+        if (sheetRef.current) {
+          const closeBtn = sheetRef.current.querySelector('button[aria-label="Close details"]')
+          if (closeBtn) closeBtn.focus()
+        }
+      }, 50)
+
+      // Handle Escape key
+      const handleKeyDown = (e) => {
+        if (e.key === 'Escape') {
+          setSelectedSheetItem(null)
+        }
+      }
+      window.addEventListener('keydown', handleKeyDown)
+
+      // Focus trap: keep focus within the sheet
+      const handleFocus = (e) => {
+        if (sheetRef.current && !sheetRef.current.contains(e.target)) {
+          e.stopPropagation()
+          const closeBtn = sheetRef.current.querySelector('button[aria-label="Close details"]')
+          if (closeBtn) closeBtn.focus()
+        }
+      }
+      document.addEventListener('focus', handleFocus, true)
+
+      return () => {
+        clearTimeout(timeoutId)
+        window.removeEventListener('keydown', handleKeyDown)
+        document.removeEventListener('focus', handleFocus, true)
+        // Restore body scroll
+        document.body.style.overflow = ''
+        // Restore focus to the trigger element
+        if (previousFocusRef.current && typeof previousFocusRef.current.focus === 'function') {
+          previousFocusRef.current.focus()
+        }
+      }
+    }
+  }, [selectedSheetItem])
 
   // Combine flagship scholarships with directory for maximum data richness
   const allScholarships = useMemo(() => {
@@ -503,6 +564,36 @@ export default function HomePage() {
   const savedCount = useMemo(() => {
     return allScholarships.filter((s) => savedIds.includes(s.id) || savedIds.includes(String(s.id))).length
   }, [allScholarships, savedIds])
+
+  // Group scholarships by lifecycle for sectioned display
+  const scholarshipsByLifecycle = useMemo(() => {
+    const groups = {
+      opening: [],
+      upcoming: [],
+      open: [],
+      closing_soon: [],
+      closed: [],
+      unknown: [],
+    }
+    matchedScholarships.forEach((s) => {
+      const lifecycle = classifyLifecycle(s)
+      if (Object.hasOwn(groups, lifecycle.status)) {
+        groups[lifecycle.status].push({ ...s, lifecycle })
+      } else {
+        groups.unknown.push({ ...s, lifecycle })
+      }
+    })
+    return groups
+  }, [matchedScholarships])
+
+  // Lifecycle section order and labels
+  const LIFECYCLE_SECTIONS = [
+    { key: 'opening', label: 'Opening Soon', icon: '📅', emptyMessage: 'No scholarships opening soon.' },
+    { key: 'upcoming', label: 'Upcoming', icon: '⏳', emptyMessage: 'No upcoming scholarships.' },
+    { key: 'open', label: 'Open for Applications', icon: '✓', emptyMessage: 'No open scholarships match your filters.' },
+    { key: 'closing_soon', label: 'Closing Soon', icon: '⚠', emptyMessage: 'No scholarships closing soon.' },
+    { key: 'closed', label: 'Closed', icon: '🔒', emptyMessage: 'No closed scholarships match your filters.' },
+  ]
 
   // Trigger Toast
   const triggerToast = (msg, undoCallback) => {
@@ -600,6 +691,22 @@ export default function HomePage() {
                 Write your goal in one sentence. ScholarZone checks it against the catalogue and shows what fits.
               </p>
 
+              {/* Dual-Entry Banner */}
+              <div className="sz-hero-actions-banner">
+                <div className="sz-hero-badge-pill">
+                  <span className="sz-pulse-dot" />
+                  <span>
+                    {stats && stats.verified
+                      ? `${stats.verified}+ Verified International Scholarships`
+                      : 'Verified International Scholarships'}
+                  </span>
+                </div>
+                <Link to="/match" className="sz-hero-match-link">
+                  <span>Match with GPA & IELTS</span>
+                  <span className="sz-hero-match-sparkle">✨ Try Smart Match</span>
+                </Link>
+              </div>
+
               {/* Natural Language Goal Panel */}
               <div className="panel">
                 <label htmlFor="goal">Describe your goal</label>
@@ -669,25 +776,48 @@ export default function HomePage() {
                 </div>
 
                 <div className="ex">
-                  <span>Try</span>
+                  <span>Instant filters:</span>
                   <button
                     type="button"
-                    onClick={() => setGoalText("I want a fully funded Master's in Europe.")}
+                    onClick={() => {
+                      setGoalText("I want a fully funded Master's in Europe.")
+                      setManualFunding('Fully funded')
+                      setManualLevel("Master's")
+                    }}
                   >
-                    Master's in Europe
+                    🌟 Fully Funded Master's
                   </button>
                   <button
                     type="button"
-                    onClick={() => setGoalText('I want a fully funded PhD in Japan.')}
+                    onClick={() => {
+                      setGoalText('I want a fully funded PhD in Japan.')
+                      setManualLevel('PhD')
+                      setSelectedCountry('Japan')
+                    }}
                   >
-                    PhD in Japan
+                    🇯🇵 PhD in Japan
                   </button>
                   <button
                     type="button"
-                    onClick={() => setGoalText("I want a Bachelor's degree in Türkiye.")}
+                    onClick={() => {
+                      setGoalText("I want a Bachelor's degree.")
+                      setManualLevel("Bachelor's")
+                    }}
                   >
-                    Bachelor's in Türkiye
+                    🎓 Bachelor's
                   </button>
+                  <button
+                    type="button"
+                    onClick={() => {
+                      setGoalText("I want a scholarship in Germany.")
+                      setSelectedCountry('Germany')
+                    }}
+                  >
+                    🇩🇪 Germany
+                  </button>
+                  <Link to="/scholarships?funding=Fully+Funded" className="ex-link">
+                    All in Directory &rarr;
+                  </Link>
                 </div>
 
                 <p className="hint" role="status">
@@ -978,91 +1108,254 @@ export default function HomePage() {
                 Nothing fits this exact combination. Remove a tag above or reset filters to widen your search.
               </p>
             ) : (
-              matchedScholarships.map((s, index) => {
-                const isSaved = savedIds.includes(s.id) || savedIds.includes(String(s.id))
-                const officialLogo = getConfirmedOfficialLogo(s)
-                const monogramInitial = getMonogramInitial(s.title)
+              <>
+                {LIFECYCLE_SECTIONS.map((section) => {
+                  const items = scholarshipsByLifecycle[section.key]
+                  if (items.length === 0) return null
+                  return (
+                    <section key={section.key} className="lifecycle-section" aria-labelledby={`section-${section.key}`}>
+                      <header className="lifecycle-section__header">
+                        <h2 id={`section-${section.key}`} className="lifecycle-section__title">
+                          <span className="lifecycle-section__icon" aria-hidden="true">{section.icon}</span>
+                          {section.label}
+                          <span className="lifecycle-section__count">{items.length}</span>
+                        </h2>
+                      </header>
+                      <div className="lifecycle-section__grid">
+                        {items.map((s, index) => {
+                          const isSaved = savedIds.includes(s.id) || savedIds.includes(String(s.id))
+                          const officialLogo = getConfirmedOfficialLogo(s)
+                          const monogramInitial = getMonogramInitial(s.title)
+                          const lifecycle = s.lifecycle
+                          const deadlineCountdown = lifecycle.showCountdown && lifecycle.daysUntilDeadline !== null
+                            ? formatCountdown(lifecycle.daysUntilDeadline, lifecycle.isExactDeadline)
+                            : null
+                          const openingCountdown = lifecycle.showOpeningDate && lifecycle.daysUntilOpening !== null
+                            ? formatOpeningCountdown(lifecycle.daysUntilOpening, lifecycle.isExactOpening)
+                            : null
 
-                return (
-                  <article
-                    key={s.id}
-                    className={`sc ${s.matchPercent < 100 ? 'part' : ''}`}
-                    style={{ '--n': index }}
-                  >
-                    <div className="top">
-                      {/* Logo Box: Confirmed official provider logo if verified, or neutral monogram fallback */}
-                      <div className="mono" aria-label={officialLogo ? `${s.title} official logo` : undefined}>
-                        {officialLogo ? (
-                          <img
-                            src={officialLogo.url}
-                            alt={officialLogo.altText}
-                            className="sc-logo-img"
-                            onError={(e) => {
-                              e.currentTarget.style.display = 'none'
-                              if (e.currentTarget.nextSibling) e.currentTarget.nextSibling.style.display = 'block'
-                            }}
-                          />
-                        ) : null}
-                        <span
-                          className="sc-mono-letter"
-                          style={{ display: officialLogo ? 'none' : 'block' }}
-                        >
-                          {monogramInitial}
-                        </span>
+                          return (
+                            <article
+                              key={s.id}
+                              className={`sc ${s.matchPercent < 100 ? 'part' : ''}`}
+                              style={{ '--n': index }}
+                            >
+                              <div className="top">
+                                <div className="mono" aria-label={officialLogo ? `${s.title} official logo` : undefined}>
+                                  {officialLogo ? (
+                                    <img
+                                      src={officialLogo.url}
+                                      alt={officialLogo.altText}
+                                      className="sc-logo-img"
+                                      onError={(e) => {
+                                        e.currentTarget.style.display = 'none'
+                                        if (e.currentTarget.nextSibling) e.currentTarget.nextSibling.style.display = 'block'
+                                      }}
+                                    />
+                                  ) : null}
+                                  <span
+                                    className="sc-mono-letter"
+                                    style={{ display: officialLogo ? 'none' : 'block' }}
+                                  >
+                                    {monogramInitial}
+                                  </span>
+                                </div>
+
+                                <div style={{ flex: 1, minWidth: 0 }}>
+                                  <h3>{s.title}</h3>
+                                  <p className="w">
+                                    <span>{flagFor(s.country)}</span>
+                                    {s.country}
+                                  </p>
+                                </div>
+
+                                <button
+                                  type="button"
+                                  className="dtl"
+                                  onClick={() => setSelectedSheetItem(s)}
+                                >
+                                  Details
+                                </button>
+                              </div>
+
+                              <p className="cv">{s.coverage}</p>
+
+                              <div className="tags">
+                                <span className={s.isFull ? 'f' : ''}>{s.funding}</span>
+                                {s.levels.map((lvl) => (
+                                  <span key={lvl}>{lvl}</span>
+                                ))}
+                              </div>
+
+                              <div className="sc-lifecycle">
+                                <span className={`lifecycle-badge lifecycle-badge--inline ${lifecycle.className}`}>
+                                  {lifecycle.label}
+                                </span>
+                                {deadlineCountdown && (
+                                  <span className={`lifecycle-countdown ${lifecycle.className}`}>
+                                    {deadlineCountdown}
+                                  </span>
+                                )}
+                                {openingCountdown && (
+                                  <span className={`lifecycle-opening-countdown ${lifecycle.className}`}>
+                                    {openingCountdown}
+                                  </span>
+                                )}
+                                {lifecycle.status === 'opening' && lifecycle.openingDate && (
+                                  <span className="lifecycle-opening-hint">
+                                    Opens {lifecycle.openingDate.toLocaleDateString('en-GB', { month: 'short', day: 'numeric' })}
+                                  </span>
+                                )}
+                                {lifecycle.status === 'upcoming' && lifecycle.openingDate && (
+                                  <span className="lifecycle-upcoming-hint">
+                                    Opens {lifecycle.openingDate.toLocaleDateString('en-GB', { month: 'short', day: 'numeric', year: 'numeric' })}
+                                  </span>
+                                )}
+                                {lifecycle.status === 'closed' && (
+                                  <span className="lifecycle-closed-hint">
+                                    Cycle ended
+                                  </span>
+                                )}
+                              </div>
+
+                              <div className="fit">
+                                <span>
+                                  {s.totalCriteria > 1
+                                    ? `Matches ${s.matchScore} of ${s.totalCriteria}`
+                                    : 'All criteria'}
+                                </span>
+                                <i>
+                                  <s style={{ width: `${s.matchPercent}%` }} />
+                                </i>
+                                <button
+                                  type="button"
+                                  className="save"
+                                  aria-pressed={isSaved}
+                                  onClick={() => handleToggleSave(s)}
+                                >
+                                  {isSaved ? 'Saved' : 'Save'}
+                                </button>
+                              </div>
+                            </article>
+                          )
+                        })}
                       </div>
+                    </section>
+                  )
+                })}
+                {scholarshipsByLifecycle.unknown.length > 0 && (
+                  <section className="lifecycle-section" aria-labelledby="section-unknown">
+                    <header className="lifecycle-section__header">
+                      <h2 id="section-unknown" className="lifecycle-section__title">
+                        <span className="lifecycle-section__icon" aria-hidden="true">?</span>
+                        Status Unknown
+                        <span className="lifecycle-section__count">{scholarshipsByLifecycle.unknown.length}</span>
+                      </h2>
+                    </header>
+                    <div className="lifecycle-section__grid">
+                      {scholarshipsByLifecycle.unknown.map((s, index) => {
+                        const isSaved = savedIds.includes(s.id) || savedIds.includes(String(s.id))
+                        const officialLogo = getConfirmedOfficialLogo(s)
+                        const monogramInitial = getMonogramInitial(s.title)
+                        const lifecycle = classifyLifecycle(s)
+                        const deadlineCountdown = lifecycle.showCountdown && lifecycle.daysUntilDeadline !== null
+                          ? formatCountdown(lifecycle.daysUntilDeadline, lifecycle.isExactDeadline)
+                          : null
 
-                      <div style={{ flex: 1, minWidth: 0 }}>
-                        <h3>{s.title}</h3>
-                        <p className="w">
-                          <span>{flagFor(s.country)}</span>
-                          {s.country}
-                        </p>
-                      </div>
+                        return (
+                          <article
+                            key={s.id}
+                            className={`sc ${s.matchPercent < 100 ? 'part' : ''}`}
+                            style={{ '--n': index }}
+                          >
+                            <div className="top">
+                              <div className="mono" aria-label={officialLogo ? `${s.title} official logo` : undefined}>
+                                {officialLogo ? (
+                                  <img
+                                    src={officialLogo.url}
+                                    alt={officialLogo.altText}
+                                    className="sc-logo-img"
+                                    onError={(e) => {
+                                      e.currentTarget.style.display = 'none'
+                                      if (e.currentTarget.nextSibling) e.currentTarget.nextSibling.style.display = 'block'
+                                    }}
+                                  />
+                                ) : null}
+                                <span
+                                  className="sc-mono-letter"
+                                  style={{ display: officialLogo ? 'none' : 'block' }}
+                                >
+                                  {monogramInitial}
+                                </span>
+                              </div>
 
-                      <button
-                        type="button"
-                        className="dtl"
-                        onClick={() => setSelectedSheetItem(s)}
-                      >
-                        Details
-                      </button>
+                              <div style={{ flex: 1, minWidth: 0 }}>
+                                <h3>{s.title}</h3>
+                                <p className="w">
+                                  <span>{flagFor(s.country)}</span>
+                                  {s.country}
+                                </p>
+                              </div>
+
+                              <button
+                                type="button"
+                                className="dtl"
+                                onClick={() => setSelectedSheetItem(s)}
+                              >
+                                Details
+                              </button>
+                            </div>
+
+                            <p className="cv">{s.coverage}</p>
+
+                            <div className="tags">
+                              <span className={s.isFull ? 'f' : ''}>{s.funding}</span>
+                              {s.levels.map((lvl) => (
+                                <span key={lvl}>{lvl}</span>
+                              ))}
+                            </div>
+
+                            <div className="sc-lifecycle">
+                              <span className={`lifecycle-badge lifecycle-badge--inline ${lifecycle.className}`}>
+                                {lifecycle.label}
+                              </span>
+                              {deadlineCountdown && (
+                                <span className={`lifecycle-countdown ${lifecycle.className}`}>
+                                  {deadlineCountdown}
+                                </span>
+                              )}
+                            </div>
+
+                            <div className="fit">
+                              <span>
+                                {s.totalCriteria > 1
+                                  ? `Matches ${s.matchScore} of ${s.totalCriteria}`
+                                  : 'All criteria'}
+                              </span>
+                              <i>
+                                <s style={{ width: `${s.matchPercent}%` }} />
+                              </i>
+                              <button
+                                type="button"
+                                className="save"
+                                aria-pressed={isSaved}
+                                onClick={() => handleToggleSave(s)}
+                              >
+                                {isSaved ? 'Saved' : 'Save'}
+                              </button>
+                            </div>
+                          </article>
+                        )
+                      })}
                     </div>
-
-                    <p className="cv">{s.coverage}</p>
-
-                    <div className="tags">
-                      <span className={s.isFull ? 'f' : ''}>{s.funding}</span>
-                      {s.levels.map((lvl) => (
-                        <span key={lvl}>{lvl}</span>
-                      ))}
-                    </div>
-
-                    <div className="fit">
-                      <span>
-                        {s.totalCriteria > 1
-                          ? `Matches ${s.matchScore} of ${s.totalCriteria}`
-                          : 'All criteria'}
-                      </span>
-                      <i>
-                        <s style={{ width: `${s.matchPercent}%` }} />
-                      </i>
-                      <button
-                        type="button"
-                        className="save"
-                        aria-pressed={isSaved}
-                        onClick={() => handleToggleSave(s)}
-                      >
-                        {isSaved ? 'Saved' : 'Save'}
-                      </button>
-                    </div>
-                  </article>
-                )
-              })
+                  </section>
+                )}
+              </>
             )}
           </div>
 
           <p className="hint" style={{ maxWidth: '75ch', marginTop: '24px' }}>
-            Showing verified international programmes for students from Bangladesh. Always confirm specific degree prerequisites, deadlines and attested documents on each official page.
+            Showing a curated selection of international programmes. Verified records are marked; editorial examples are noted. Always confirm specific degree prerequisites, deadlines and attested documents on each official page.
           </p>
         </div>
       </section>
@@ -1085,9 +1378,12 @@ export default function HomePage() {
           <p className="lead">Compare, write and track without switching tools.</p>
 
           <div className="bento">
-            <div className="tl t1">
-              <h3>Match</h3>
-              <p>Programmes ranked by how many of your criteria they meet.</p>
+            <Link to="/match" className="tl t1 tl--interactive">
+              <div className="tl__header">
+                <h3>Smart Eligibility Matcher</h3>
+                <span className="tl__tag">Live 2.0</span>
+              </div>
+              <p>Programmes ranked by your GPA, IELTS score, citizenship and target degree.</p>
               <div className="mb">
                 <span>Chevening</span>
                 <i><s style={{ width: '100%' }} /></i>
@@ -1099,54 +1395,74 @@ export default function HomePage() {
                 <em>3/3</em>
               </div>
               <div className="mb">
-                <span>DAAD</span>
-                <i><s style={{ width: '66%' }} /></i>
-                <em>2/3</em>
+                <span>DAAD Germany</span>
+                <i><s style={{ width: '85%' }} /></i>
+                <em>Fit</em>
               </div>
               <div className="mb">
-                <span>MEXT</span>
-                <i><s style={{ width: '66%' }} /></i>
-                <em>2/3</em>
+                <span>MEXT Japan</span>
+                <i><s style={{ width: '75%' }} /></i>
+                <em>Fit</em>
               </div>
-              <div className="mb">
-                <span>Fulbright</span>
-                <i><s style={{ width: '66%' }} /></i>
-                <em>2/3</em>
-              </div>
-              <div className="mb">
-                <span>Türkiye</span>
-                <i><s style={{ width: '66%' }} /></i>
-                <em>2/3</em>
-              </div>
-            </div>
+              <span className="tl__action-btn">Calculate My Eligibility &rarr;</span>
+            </Link>
 
-            <div className="tl t2">
-              <h3>Compare</h3>
-              <p>Side by side funding.</p>
+            <Link to="/compare" className="tl t2 tl--interactive">
+              <div className="tl__header">
+                <h3>Side-by-Side Compare</h3>
+                <span className="tl__tag">Decision Support</span>
+              </div>
+              <p>Compare tuition coverage, living stipends, airfare and deadlines side by side.</p>
               <div className="cols">
-                <s style={{ height: '70%' }} />
                 <s style={{ height: '100%' }} />
+                <s style={{ height: '75%' }} />
                 <s style={{ height: '48%' }} />
               </div>
-            </div>
+              <span className="tl__action-btn">Open Compare Table &rarr;</span>
+            </Link>
 
-            <div className="tl t3">
-              <h3>Statement coach</h3>
-              <p>Guidance per section.</p>
-              <div className="sk" />
-              <div className="sk" style={{ width: '80%' }} />
-              <div className="sk" style={{ width: '55%' }} />
-            </div>
-
-            <div className="tl t4">
-              <h3>Applications</h3>
-              <p>Know where every application stands.</p>
-              <div className="kb">
-                <span>Saved · {savedCount}</span>
-                <span>Writing · 2</span>
-                <span className="g">Submitted · 1</span>
+            <Link to="/mentor" className="tl t3 tl--interactive">
+              <div className="tl__header">
+                <h3>Grounded Scholarship Mentor</h3>
+                <span className="tl__tag">Data-Driven Coach</span>
               </div>
-            </div>
+              <p>Personalized guidance for Statements of Purpose, CVs, and interview prep.</p>
+              <div className="tl__prompt-pills">
+                <span>&ldquo;Review my DAAD motivation letter&rdquo;</span>
+                <span>&ldquo;Draft professor inquiry email&rdquo;</span>
+              </div>
+              <span className="tl__action-btn">Ask Grounded Mentor &rarr;</span>
+            </Link>
+
+            <Link to="/applications" className="tl t4 tl--interactive">
+              <div className="tl__header">
+                <h3>Application Workspace</h3>
+                <span className="tl__tag">Kanban Tracker</span>
+              </div>
+              <p>Manage documents, task checklists, and deadline countdowns in one workspace.</p>
+              <div className="kb">
+                <span>Saved &middot; {savedCount}</span>
+                <span>Writing &middot; 2</span>
+                <span className="g">Submitted &middot; 1</span>
+              </div>
+              <span className="tl__action-btn">Open Applications &rarr;</span>
+            </Link>
+
+            <Link to="/countries" className="tl t5 tl--interactive">
+              <div className="tl__header">
+                <h3>Study Destinations & Living Costs</h3>
+                <span className="tl__tag">Country Guides</span>
+              </div>
+              <p>Compare average monthly living costs, tuition rules, and post-study work visas across 20+ countries.</p>
+              <div className="tl__dest-chips">
+                <span>🇯🇵 Japan &middot; &yen;144k/mo</span>
+                <span>🇩🇪 Germany &middot; &euro;934/mo</span>
+                <span>🇬🇧 UK &middot; 2yr Visa</span>
+                <span>🇺🇸 USA &middot; OPT</span>
+                <span>🇦🇺 Australia &middot; CLE</span>
+              </div>
+              <span className="tl__action-btn">Explore Destinations &rarr;</span>
+            </Link>
           </div>
         </div>
       </section>
@@ -1467,18 +1783,33 @@ export default function HomePage() {
           </div>
 
           <div id="steps">
-            <div className="step on">
-              <h3>Tell us your goal</h3>
-              <p>Write it in your own words. We turn it into degree level, funding and country criteria.</p>
-            </div>
-            <div className="step on">
-              <h3>See what fits</h3>
-              <p>Programmes are ranked by how many of your criteria they meet. Remove a tag to widen the search.</p>
-            </div>
-            <div className="step on">
-              <h3>Prepare and track</h3>
-              <p>Write your statement section by section, then follow every application to the deadline.</p>
-            </div>
+            <Link to="/scholarships" className="step on step--link">
+              <span className="step-num">01 / Discover</span>
+              <h3>Explore Verified Programmes</h3>
+              <p>
+                Filter {stats && stats.total ? `${stats.total}+` : '770+'} international scholarships by degree, country, and funding tier.
+                Verified records are marked; always confirm details on the official portal.
+              </p>
+              <span className="step-arrow">Explore Directory &rarr;</span>
+            </Link>
+            <Link to="/match" className="step on step--link">
+              <span className="step-num">02 / Match</span>
+              <h3>Check Exact Eligibility</h3>
+              <p>Evaluate your CGPA, IELTS score, citizenship, and study plans against official published criteria.</p>
+              <span className="step-arrow">Find My Matches &rarr;</span>
+            </Link>
+            <Link to="/mentor" className="step on step--link">
+              <span className="step-num">03 / Prepare</span>
+              <h3>Coach with Grounded Mentor</h3>
+              <p>Craft competitive Statements of Purpose and structure inquiry emails for prospective university supervisors.</p>
+              <span className="step-arrow">Ask Grounded Mentor &rarr;</span>
+            </Link>
+            <Link to="/applications" className="step on step--link">
+              <span className="step-num">04 / Track</span>
+              <h3>Manage to Submission</h3>
+              <p>Keep your document checklist, task deadlines, and application status organized in one calm workspace.</p>
+              <span className="step-arrow">Open Workspace &rarr;</span>
+            </Link>
           </div>
         </div>
       </section>
@@ -1486,22 +1817,20 @@ export default function HomePage() {
       {/* ── 05. CALL TO ACTION (#end) ─────────────────────────────────── */}
       <section id="end">
         <div className="wrap">
-          <h2>Start with one sentence about your goal.</h2>
+          <h2>Start with your profile or browse open scholarships.</h2>
           <div className="cta2">
-            <span className="hw">It only takes one sentence</span>
+            <span className="hw">Free, verified, student-first</span>
             <svg className="ar" viewBox="0 0 40 60" aria-hidden="true">
               <path d="M20 4C8 20 32 30 20 52M12 44 20 54 28 44" />
             </svg>
-            <a
-              className="btn"
-              href="#top"
-              onClick={(e) => {
-                e.preventDefault()
-                document.getElementById('top')?.scrollIntoView({ behavior: 'smooth' })
-              }}
-            >
-              Try the match
-            </a>
+            <div style={{ display: 'flex', gap: '12px', flexWrap: 'wrap', justifyContent: 'center' }}>
+              <Link className="btn" to="/match">
+                Find My Matches ✨
+              </Link>
+              <Link className="btn ghost" to="/scholarships">
+                Browse Directory
+              </Link>
+            </div>
           </div>
         </div>
       </section>
@@ -1511,15 +1840,18 @@ export default function HomePage() {
         <div>
           <span className="fb">ScholarZone</span>
           <p>
-            Scholarship search, planning and application support, designed for students and researchers from Bangladesh.
+            Scholarship search, planning and application support, designed for students and researchers.
           </p>
         </div>
         <div className="fn">
-          <a href="#top">Match</a>
-          <a href="#tools">Toolkit</a>
-          <a href="#learn">Learn</a>
-          <a href="#how">How it works</a>
-          <Link to="/scholarships">Full Catalogue</Link>
+          <Link to="/scholarships">Directory</Link>
+          <Link to="/match">Smart Match</Link>
+          <Link to="/countries">Destinations</Link>
+          <Link to="/applications">Applications</Link>
+          <Link to="/mentor">Grounded Mentor</Link>
+          <Link to="/compare">Compare</Link>
+          <Link to="/saved">Shortlist</Link>
+          <Link to="/dashboard">Dashboard</Link>
         </div>
         <p className="f3">
           Curated international directory with verified guidelines. Always confirm eligibility, funding allowances and deadlines on each awarding body’s official portal. © 2026 ScholarZone.
@@ -1535,6 +1867,7 @@ export default function HomePage() {
 
       {selectedSheetItem && (
         <aside
+          ref={sheetRef}
           className="sheet open"
           role="dialog"
           aria-modal="true"

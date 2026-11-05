@@ -3,6 +3,7 @@ import ScholarshipCard from './ScholarshipCard'
 import { scholarships } from '../data/scholarships'
 import { fetchScholarships } from '../services/scholarshipService'
 import { getScholarshipStatus, matchesDegreeFilter, matchesFundingFilter } from '../utils/scholarshipPresentation'
+import { classifyLifecycle, LIFECYCLE } from '../utils/lifecycle'
 import './ScholarshipList.css'
 
 const PAGE_SIZE = 12
@@ -95,7 +96,7 @@ function getLocalDeadlineMonth(scholarship) {
   return timestamp === null ? null : new Date(timestamp).getMonth() + 1
 }
 
-function filterLocalScholarships(items, { search, country, degree, funding, deadlineMonth, status, sortBy }) {
+function filterLocalScholarships(items, { search, country, degree, funding, deadlineMonth, status, lifecycleFilter, sortBy }) {
   const normalizedSearch = search.trim().toLowerCase()
   const filteredItems = items.filter((scholarship) => {
     const title = typeof scholarship.title === 'string' ? scholarship.title : ''
@@ -105,14 +106,14 @@ function filterLocalScholarships(items, { search, country, degree, funding, dead
       .toLowerCase()
     const matchSearch = searchableText.includes(normalizedSearch)
     const matchCountry = country === 'All' || scholarship.country === country
-    // The same aspect matching the API applies, so the fallback and the
-    // live directory never disagree about which rows a filter selects.
     const matchDegree = matchesDegreeFilter(scholarship.degree, degree)
     const matchFunding = matchesFundingFilter(scholarship.funding, funding)
     const matchDeadlineMonth = deadlineMonth === 'All' || getLocalDeadlineMonth(scholarship) === Number(deadlineMonth)
     const matchStatus = status === 'All' || getScholarshipStatus(scholarship).className === status
+    const lifecycle = classifyLifecycle(scholarship)
+    const matchLifecycle = lifecycleFilter === 'All' || lifecycle.status === lifecycleFilter
 
-    return matchSearch && matchCountry && matchDegree && matchFunding && matchDeadlineMonth && matchStatus
+    return matchSearch && matchCountry && matchDegree && matchFunding && matchDeadlineMonth && matchStatus && matchLifecycle
   })
 
   return sortLocalScholarships(filteredItems, sortBy)
@@ -144,6 +145,7 @@ export default function ScholarshipList({ items, initialCountry }) {
   const [funding, setFunding] = useState('All')
   const [deadlineMonth, setDeadlineMonth] = useState('All')
   const [status, setStatus] = useState('All')
+  const [lifecycleFilter, setLifecycleFilter] = useState('All')
   const [sortBy, setSortBy] = useState('recommended')
   const [page, setPage] = useState(1)
   const [requestVersion, setRequestVersion] = useState(0)
@@ -154,8 +156,8 @@ export default function ScholarshipList({ items, initialCountry }) {
   const requestIdRef = useRef(0)
 
   const localResults = useMemo(
-    () => filterLocalScholarships(localItems, { search, country, degree, funding, deadlineMonth, status, sortBy }),
-    [localItems, search, country, degree, funding, deadlineMonth, status, sortBy],
+    () => filterLocalScholarships(localItems, { search, country, degree, funding, deadlineMonth, status, lifecycleFilter, sortBy }),
+    [localItems, search, country, degree, funding, deadlineMonth, status, lifecycleFilter, sortBy],
   )
 
   useEffect(() => {
@@ -222,7 +224,7 @@ export default function ScholarshipList({ items, initialCountry }) {
     }
   }, [country, deadlineMonth, degree, funding, isDirectory, page, requestVersion, search, sortBy, status])
 
-  const hasActiveControls = Boolean(search) || country !== 'All' || degree !== 'All' || funding !== 'All' || deadlineMonth !== 'All' || status !== 'All' || sortBy !== 'recommended'
+  const hasActiveControls = Boolean(search) || country !== 'All' || degree !== 'All' || funding !== 'All' || deadlineMonth !== 'All' || status !== 'All' || lifecycleFilter !== 'All' || sortBy !== 'recommended'
   const isInitialLoading = isDirectory && loadState === 'loading' && apiDirectory.items.length === 0
   const isRefreshing = isDirectory && loadState === 'refreshing'
   const isUsingFallback = isDirectory && loadState === 'fallback'
@@ -258,6 +260,7 @@ export default function ScholarshipList({ items, initialCountry }) {
     setFunding('All')
     setDeadlineMonth('All')
     setStatus('All')
+    setLifecycleFilter('All')
     setSortBy('recommended')
     setPage(1)
   }
@@ -328,10 +331,25 @@ export default function ScholarshipList({ items, initialCountry }) {
               }}
             >
               <option value="All">All countries</option>
-              <option value="India">India</option>
-              <option value="Germany">Germany</option>
+              <option value="Australia">Australia</option>
+              <option value="Austria">Austria</option>
+              <option value="Canada">Canada</option>
+              <option value="China">China</option>
               <option value="Europe">Europe</option>
+              <option value="France">France</option>
+              <option value="Germany">Germany</option>
+              <option value="India">India</option>
+              <option value="Italy">Italy</option>
+              <option value="Japan">Japan</option>
+              <option value="Netherlands">Netherlands</option>
+              <option value="Singapore">Singapore</option>
               <option value="South Korea">South Korea</option>
+              <option value="Spain">Spain</option>
+              <option value="Sweden">Sweden</option>
+              <option value="Switzerland">Switzerland</option>
+              <option value="Taiwan">Taiwan</option>
+              <option value="UK">United Kingdom</option>
+              <option value="USA">United States</option>
             </select>
           </div>
 
@@ -439,6 +457,135 @@ export default function ScholarshipList({ items, initialCountry }) {
           {hasActiveControls && (
             <button type="button" className="filter-reset" onClick={resetControls}>
               Reset all
+            </button>
+          )}
+        </div>
+
+        {/* Lifecycle Filter Tabs */}
+        <div className="lifecycle-filter-tabs" role="tablist" aria-label="Filter by application lifecycle">
+          {[
+            { value: 'All', label: 'All Lifecycles' },
+            { value: LIFECYCLE.OPENING, label: 'Opening Soon' },
+            { value: LIFECYCLE.UPCOMING, label: 'Upcoming' },
+            { value: LIFECYCLE.OPEN, label: 'Open' },
+            { value: LIFECYCLE.CLOSING_SOON, label: 'Closing Soon' },
+            { value: LIFECYCLE.CLOSED, label: 'Closed' },
+          ].map((tab) => (
+            <button
+              key={tab.value}
+              type="button"
+              role="tab"
+              aria-selected={lifecycleFilter === tab.value}
+              className={`lifecycle-tab ${lifecycleFilter === tab.value ? 'is-active' : ''} lifecycle-tab--${tab.value}`}
+              onClick={() => {
+                setLifecycleFilter((l) => (l === tab.value ? 'All' : tab.value))
+                setPage(1)
+              }}
+            >
+              {tab.label}
+            </button>
+          ))}
+        </div>
+
+        {/* Student Quick-Filter Pills */}
+        <div className="sz-quick-pills" role="toolbar" aria-label="Student quick filters">
+          <button
+            type="button"
+            className={`sz-quick-pill ${funding === 'Fully Funded' ? 'is-active' : ''}`}
+            onClick={() => {
+              setFunding((f) => (f === 'Fully Funded' ? 'All' : 'Fully Funded'))
+              setPage(1)
+            }}
+          >
+            🌟 Fully Funded
+          </button>
+          <button
+            type="button"
+            className={`sz-quick-pill ${degree === 'Master' ? 'is-active' : ''}`}
+            onClick={() => {
+              setDegree((d) => (d === 'Master' ? 'All' : 'Master'))
+              setPage(1)
+            }}
+          >
+            🎓 Master's
+          </button>
+          <button
+            type="button"
+            className={`sz-quick-pill ${degree === 'PhD' ? 'is-active' : ''}`}
+            onClick={() => {
+              setDegree((d) => (d === 'PhD' ? 'All' : 'PhD'))
+              setPage(1)
+            }}
+          >
+            🔬 PhD
+          </button>
+          <button
+            type="button"
+            className={`sz-quick-pill ${degree === 'Bachelor' ? 'is-active' : ''}`}
+            onClick={() => {
+              setDegree((d) => (d === 'Bachelor' ? 'All' : 'Bachelor'))
+              setPage(1)
+            }}
+          >
+            🏛️ Bachelor's
+          </button>
+          <button
+            type="button"
+            className={`sz-quick-pill ${country === 'Germany' ? 'is-active' : ''}`}
+            onClick={() => {
+              setCountry((c) => (c === 'Germany' ? 'All' : 'Germany'))
+              setPage(1)
+            }}
+          >
+            🇩🇪 Germany
+          </button>
+          <button
+            type="button"
+            className={`sz-quick-pill ${country === 'Japan' ? 'is-active' : ''}`}
+            onClick={() => {
+              setCountry((c) => (c === 'Japan' ? 'All' : 'Japan'))
+              setPage(1)
+            }}
+          >
+            🇯🇵 Japan
+          </button>
+          <button
+            type="button"
+            className={`sz-quick-pill ${country === 'UK' ? 'is-active' : ''}`}
+            onClick={() => {
+              setCountry((c) => (c === 'UK' ? 'All' : 'UK'))
+              setPage(1)
+            }}
+          >
+            🇬🇧 UK
+          </button>
+          <button
+            type="button"
+            className={`sz-quick-pill ${country === 'USA' ? 'is-active' : ''}`}
+            onClick={() => {
+              setCountry((c) => (c === 'USA' ? 'All' : 'USA'))
+              setPage(1)
+            }}
+          >
+            🇺🇸 USA
+          </button>
+          <button
+            type="button"
+            className={`sz-quick-pill ${status === 'closing-soon' ? 'is-active' : ''}`}
+            onClick={() => {
+              setStatus((s) => (s === 'closing-soon' ? 'All' : 'closing-soon'))
+              setPage(1)
+            }}
+          >
+            ⏰ Closing Soon
+          </button>
+          {hasActiveControls && (
+            <button
+              type="button"
+              className="sz-quick-pill sz-quick-pill--reset"
+              onClick={resetControls}
+            >
+              🔄 Reset All
             </button>
           )}
         </div>
