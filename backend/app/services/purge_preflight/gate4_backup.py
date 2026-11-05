@@ -508,7 +508,7 @@ def upload_to_durable_storage(
         elif provider == "azure":
             # Azure CLI: Use authenticated session (az login) or service principal
             # DO NOT pass --account-key in command arguments
-            # NEVER pass client_secret in command arguments - use environment variables
+            # NEVER pass client_secret in command arguments - use stdin for secret
             # Prefer GitHub Actions OIDC with Azure login action, or managed identity
             env = os.environ.copy()
             
@@ -529,11 +529,10 @@ def upload_to_durable_storage(
                     # Pass credentials via environment variables, NOT command line
                     env["AZURE_CLIENT_ID"] = client_id
                     env["AZURE_TENANT_ID"] = tenant_id
-                    env["AZURE_CLIENT_SECRET"] = client_secret
-                    # Use --password-stdin or environment variable for secret
-                    # az login --service-principal reads AZURE_CLIENT_SECRET from env
+                    # Use --password-stdin to pass secret via stdin, NOT command line or env
                     login_result = subprocess.run(
-                        ["az", "login", "--service-principal", "-u", client_id, "--tenant", tenant_id],
+                        ["az", "login", "--service-principal", "-u", client_id, "--tenant", tenant_id, "--password-stdin"],
+                        input=client_secret,
                         capture_output=True, text=True, timeout=60, env=env
                     )
                     if login_result.returncode != 0:
@@ -641,7 +640,7 @@ def download_from_durable_storage(
             
         elif provider == "azure":
             # Azure CLI: Use authenticated session - NO credentials in command args
-            # NEVER pass client_secret in command arguments - use environment variables
+            # NEVER pass client_secret in command arguments - use stdin for secret
             env = os.environ.copy()
             
             # Check if already authenticated
@@ -658,12 +657,13 @@ def download_from_durable_storage(
                 client_secret = os.getenv("AZURE_CLIENT_SECRET")
                 
                 if client_id and tenant_id and client_secret:
+                    # Pass credentials via environment variables, NOT command line
                     env["AZURE_CLIENT_ID"] = client_id
                     env["AZURE_TENANT_ID"] = tenant_id
-                    env["AZURE_CLIENT_SECRET"] = client_secret
-                    # Use --password-stdin or environment variable for secret
+                    # Use --password-stdin to pass secret via stdin, NOT command line or env
                     login_result = subprocess.run(
-                        ["az", "login", "--service-principal", "-u", client_id, "--tenant", tenant_id],
+                        ["az", "login", "--service-principal", "-u", client_id, "--tenant", tenant_id, "--password-stdin"],
+                        input=client_secret,
                         capture_output=True, text=True, timeout=60, env=env
                     )
                     if login_result.returncode != 0:
@@ -709,14 +709,21 @@ def restore_from_durable_backup(
     gpg_recipient: str,
     gpg_home: Optional[str],
     restore_test: "RestoreTestConfig",
-    target_ids: list[int]
+    target_ids: list[int],
+    expected_encrypted_checksum: str,
+    expected_checksum_checksum: str
 ) -> tuple[bool, dict]:
     """
     Full restore test from durable storage copy.
     
     Downloads encrypted backup and checksum from durable storage,
-    verifies checksum of downloaded files against expected checksums,
+    verifies checksum of downloaded files against PRE-COMPUTED expected checksums
+    (not trusting the downloaded checksum file as source of truth),
     decrypts, restores to test database, verifies data.
+    
+    Args:
+        expected_encrypted_checksum: Pre-computed SHA256 of encrypted file (before upload)
+        expected_checksum_checksum: Pre-computed SHA256 of checksum file (before upload)
     
     Returns:
         Tuple of (success, details_dict)
@@ -740,30 +747,35 @@ def restore_from_durable_backup(
             return False, details
         print("✅ Checksum downloaded")
         
-        # Step 3: Verify checksum of downloaded encrypted file against expected checksum from checksum sidecar
-        print("Verifying downloaded encrypted file checksum...")
-        with open(local_checksum_file, "r") as f:
-            expected_encrypted_checksum = f.read().strip().split()[0]
-        
+        # Step 3: Verify checksum of downloaded encrypted file against PRE-COMPUTED expected checksum
+        # This is the INDEPENDENT verification - we don't trust the downloaded checksum file
+        print("Verifying downloaded encrypted file checksum against pre-computed expected value...")
         if downloaded_encrypted_checksum != expected_encrypted_checksum:
             details["error"] = f"Encrypted file checksum mismatch: expected {expected_encrypted_checksum}, got {downloaded_encrypted_checksum}"
             details["downloaded_checksum"] = downloaded_encrypted_checksum
             details["expected_checksum"] = expected_encrypted_checksum
             return False, details
-        print(f"✅ Encrypted file checksum verified: {downloaded_encrypted_checksum}")
+        print(f"✅ Encrypted file checksum verified independently: {downloaded_encrypted_checksum}")
         
-        # Step 4: Verify checksum file integrity (checksum of checksum file)
-        # The checksum file itself should have a known checksum
-        # We verify the downloaded checksum file matches what we uploaded
-        print("Verifying checksum file integrity...")
-        # The checksum file contains the expected encrypted file checksum
-        # We verify the downloaded checksum file's content matches the expected encrypted checksum
+        # Step 4: Verify checksum file integrity against PRE-COMPUTED expected checksum
+        # This ensures the checksum manifest itself wasn't tampered with
+        print("Verifying checksum file integrity against pre-computed expected value...")
+        if downloaded_checksum_checksum != expected_checksum_checksum:
+            details["error"] = f"Checksum file checksum mismatch: expected {expected_checksum_checksum}, got {downloaded_checksum_checksum}"
+            details["downloaded_checksum"] = downloaded_checksum_checksum
+            details["expected_checksum"] = expected_checksum_checksum
+            return False, details
+        print(f"✅ Checksum file integrity verified independently: {downloaded_checksum_checksum}")
+        
+        # Step 5: Verify checksum file content matches expected encrypted checksum
+        # This ensures the checksum file content is consistent
+        print("Verifying checksum file content...")
         with open(local_checksum_file, "r") as f:
             checksum_file_content = f.read().strip()
         if checksum_file_content.split()[0] != expected_encrypted_checksum:
             details["error"] = f"Checksum file content mismatch: expected {expected_encrypted_checksum}"
             return False, details
-        print("✅ Checksum file integrity verified")
+        print("✅ Checksum file content verified")
         
         # Step 5: Decrypt the downloaded backup
         print("Decrypting downloaded backup...")
@@ -1265,12 +1277,13 @@ def _query_neon_api_for_pitr(api_key: str, project_id: str, branch_id: str) -> d
     """
     Query Neon API for authoritative PITR configuration.
     
-    Uses the documented Neon project details endpoint:
-    GET /projects/{project_id}
+    Uses the documented Neon endpoints:
+    1. GET /projects/{project_id} - Read project.history_retention_seconds
+    2. GET /projects/{project_id}/branches - Find the exact configured branch ID with pagination
     
-    Parses the documented project response for history_retention_seconds.
     Verifies project identity and confirms the configured branch belongs to that project.
-    Does not read project-level retention from branch.history_retention_seconds.
+    Parses project-level history_retention_seconds.
+    Requires at least 604800 seconds (7 days).
     Never defaults missing pitr_enabled to True.
     
     Returns dict with success, history_retention_seconds, pitr_enabled, or error.
@@ -1294,16 +1307,43 @@ def _query_neon_api_for_pitr(api_key: str, project_id: str, branch_id: str) -> d
                 # Parse project-level history_retention_seconds (authoritative)
                 history_retention_seconds = project.get("history_retention_seconds")
                 
-                # Verify branch belongs to this project
-                branches = project.get("branches", [])
+                if history_retention_seconds is None:
+                    return {"success": False, "error": "API response missing project history_retention_seconds"}
+                
+                # Step 2: Get branches from the branches endpoint with pagination
                 branch_found = False
                 branch_pitr_enabled = None
-                for branch in branches:
-                    if branch.get("id") == branch_id:
-                        branch_found = True
-                        # Branch may have its own pitr_enabled override
-                        branch_pitr_enabled = branch.get("pitr_enabled", True)
-                        break
+                page = 1
+                max_pages = 10  # Safety limit
+                
+                while page <= max_pages:
+                    branches_url = f"https://console.neon.tech/api/v2/projects/{project_id}/branches?page={page}"
+                    branches_req = urllib.request.Request(branches_url)
+                    branches_req.add_header("Authorization", f"Bearer {api_key}")
+                    branches_req.add_header("Accept", "application/json")
+                    
+                    with urllib.request.urlopen(branches_req, timeout=30) as branches_response:
+                        if branches_response.status == 200:
+                            branches_data = json.loads(branches_response.read().decode())
+                            branches = branches_data.get("branches", [])
+                            
+                            if not branches:
+                                # No more branches
+                                break
+                            
+                            for branch in branches:
+                                if branch.get("id") == branch_id:
+                                    branch_found = True
+                                    # Branch may have its own pitr_enabled override
+                                    branch_pitr_enabled = branch.get("pitr_enabled")
+                                    break
+                            
+                            if branch_found:
+                                break
+                            
+                            page += 1
+                        else:
+                            return {"success": False, "error": f"Branches API returned status {branches_response.status}"}
                 
                 if not branch_found:
                     return {"success": False, "error": f"Branch {branch_id} not found in project {project_id}"}
@@ -1314,16 +1354,14 @@ def _query_neon_api_for_pitr(api_key: str, project_id: str, branch_id: str) -> d
                 
                 # Determine PITR enabled status:
                 # - If branch has explicit pitr_enabled, use it
-                # - Otherwise, project default is True if history_retention_seconds > 0
+                # - Otherwise, DO NOT default to True - return UNVERIFIED
                 if branch_pitr_enabled is None:
-                    pitr_enabled = history_retention_seconds > 0
-                else:
-                    pitr_enabled = branch_pitr_enabled
+                    return {"success": False, "error": f"Branch {branch_id} missing pitr_enabled field in API response"}
                 
                 return {
                     "success": True,
                     "history_retention_seconds": history_retention_seconds,
-                    "pitr_enabled": pitr_enabled,
+                    "pitr_enabled": branch_pitr_enabled,
                 }
             else:
                 return {"success": False, "error": f"API returned status {response.status}"}
@@ -1591,6 +1629,11 @@ def run_gate4(
         durable_checksum = os.path.join(temp_dir, f"durable_{os.path.basename(checksum_file)}")
         durable_decrypted = os.path.join(temp_dir, f"durable_{os.path.basename(backup_file)}.decrypted")
 
+        # Use the pre-computed checksums for INDEPENDENT verification
+        # These were computed locally BEFORE upload and are the trusted source of truth
+        expected_encrypted_checksum = result.sha256_hash  # sha256 of encrypted file computed locally
+        expected_checksum_checksum = run_sha256sum(checksum_file)  # sha256 of checksum file computed locally
+
         durable_restore_success, durable_restore_details = restore_from_durable_backup(
             remote_encrypted_path,
             remote_checksum_path,
@@ -1601,7 +1644,9 @@ def run_gate4(
             gpg_config.recipient,
             gpg_home,
             restore_test,
-            target_ids
+            target_ids,
+            expected_encrypted_checksum,
+            expected_checksum_checksum
         )
         result.restore_from_durable_verified = durable_restore_success
         result.remote_checksum_verified = durable_restore_success  # Verified during restore

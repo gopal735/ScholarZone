@@ -3,7 +3,7 @@
 Post-merge security and correctness remediation of the production purge preflight system introduced by PR #67.
 
 **Base SHA (PR #67 merge)**: 885ce34e378d9057fb8ae7ca459fbd0caf907758
-**Current HEAD**: 7b3ad90ed4bc3c28848433baf4e13a08b1f96a78
+**Current HEAD**: d3b9b3d26995b9d77601fe557cadc896233c563a
 **Branch**: fix/preflight-remediation-67
 **PR**: #71
 
@@ -14,9 +14,9 @@ Post-merge security and correctness remediation of the production purge prefligh
 | `.github/workflows/ci.yml` | PostgreSQL 16/18 matrix testing for schema-compat, preflight, postgresql-migration-test, gate1-integration |
 | `backend/app/services/purge_preflight/config.py` | Gate-specific config isolation via `GATE_REQUIREMENTS` mapping; `from_env(gates_to_run)` validates only needed vars; added `DurableStorageConfig` |
 | `backend/app/services/purge_preflight/gate1_atomicity.py` | Gate 1 config loading via `load_config(gates_to_run={"gate1"})` |
-| `backend/app/services/purge_preflight/gate2_identity.py` | Comprehensive least-privilege audit: ALL schemas, recursive role memberships (admin_option, inherit_option, set_option), sequences, functions, catalog accessibility, chain limits; uses `pg_has_role()` for SET ROLE |
+| `backend/app/services/purge_preflight/gate2_identity.py` | Comprehensive least-privilege audit: ALL schemas, recursive role memberships (admin_option, inherit_option, set_option), sequences, functions with SECURITY DEFINER/mutating detection, catalog accessibility, chain limits; uses `pg_has_role()` for SET ROLE |
 | `backend/app/services/purge_preflight/gate3_dependencies.py` | Added `referencing_tables` and `target_ids_with_references` for exact table names and per-target reference counts |
-| `backend/app/services/purge_preflight/gate4_backup.py` | Credential-safe pg_dump/pg_restore (PGPASSWORD); GPG key lifecycle; Neon PITR via project API (no 7-day fallback); Durable storage (S3/GCS/Azure) with upload/download/checksum/restore verification; Azure authenticated session via env vars (no secrets in command args) |
+| `backend/app/services/purge_preflight/gate4_backup.py` | Credential-safe pg_dump/pg_restore (PGPASSWORD); GPG key lifecycle; Neon PITR via project API + branches endpoint with pagination (no 7-day fallback); Durable storage (S3/GCS/Azure) with independent sidecar authentication, Azure authenticated session via stdin (no secrets in command args) |
 | `backend/app/services/purge_preflight/gate5_classification.py` | Explicit mismatch reporting, 34-ID reconciliation, EXPECTED_CLASSIFICATIONS as reference manifest only; per-record evidence provenance |
 | `backend/app/services/purge_preflight/gate6_cycle_validation.py` | Gate 6 config loading via `load_config(gates_to_run={"gate6"})` |
 | `backend/app/services/purge_preflight/gate7_git_safety.py` | Gate 7 config loading via `load_config(gates_to_run={"gate7"})` |
@@ -40,7 +40,7 @@ Matrix jobs to verify:
 - postgresql-migration-test (PG16, PG18) ✅
 - gate1-integration (PG16, PG18) ✅
 
-**Latest CI Run**: https://github.com/gopal735/ScholarZone/actions/runs/42071097550 (Run #620) - ALL GREEN
+**Latest CI Run**: https://github.com/gopal735/ScholarZone/actions/runs/42073994019 (HEAD: d3b9b3d) - ALL GREEN
 
 ## Safety Boundaries Maintained
 
@@ -49,7 +49,7 @@ Matrix jobs to verify:
 - No production purge executed
 - No secrets in source code or logs (PGPASSWORD used)
 - Disposable databases for all integration tests
-- Credentials never in command line (including Azure)
+- Credentials never in command line (including Azure - uses --password-stdin)
 
 ## Remaining Owner Actions
 

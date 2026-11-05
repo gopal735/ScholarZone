@@ -2,16 +2,16 @@
 
 ## Base Information
 - **Base SHA (PR #67 merge)**: 885ce34e378d9057fb8ae7ca459fbd0caf907758
-- **Current HEAD**: 7b3ad90ed4bc3c28848433baf4e13a08b1f96a78
+- **Current HEAD**: d3b9b3d26995b9d77601fe557cadc896233c563a
 - **Branch**: fix/preflight-remediation-67
 - **PR**: #71
 
 ## Files Changed (14)
 1. `backend/app/services/purge_preflight/config.py` - Gate-specific configuration isolation + `DurableStorageConfig`
 2. `backend/app/services/purge_preflight/gate1_atomicity.py` - Gate 1 config loading
-3. `backend/app/services/purge_preflight/gate2_identity.py` - Comprehensive least-privilege audit (ALL schemas, recursive role memberships with admin_option/inherit_option/set_option, sequences, functions, catalog accessibility, chain limits, pg_has_role for SET ROLE)
+3. `backend/app/services/purge_preflight/gate2_identity.py` - Comprehensive least-privilege audit (ALL schemas, recursive role memberships with admin_option/inherit_option/set_option, sequences, functions with SECURITY DEFINER/mutating detection, catalog accessibility, chain limits, pg_has_role for SET ROLE)
 4. `backend/app/services/purge_preflight/gate3_dependencies.py` - Detailed FK dependency reporting
-5. `backend/app/services/purge_preflight/gate4_backup.py` - Credential-safe pg_dump/pg_restore, GPG lifecycle, Neon PITR via project API (no 7-day fallback), Durable storage (S3/GCS/Azure) with full upload/download/checksum/restore verification, Azure authenticated session (no secrets in command args)
+5. `backend/app/services/purge_preflight/gate4_backup.py` - Credential-safe pg_dump/pg_restore, GPG lifecycle, Neon PITR via project API + branches endpoint with pagination (no 7-day fallback), Durable storage (S3/GCS/Azure) with independent sidecar authentication, Azure authenticated session via stdin (no secrets in command args)
 6. `backend/app/services/purge_preflight/gate5_classification.py` - Explicit mismatch reporting, 34-ID reconciliation, EXPECTED_CLASSIFICATIONS as reference manifest
 7. `backend/app/services/purge_preflight/gate6_cycle_validation.py` - Gate 6 config loading
 8. `backend/app/services/purge_preflight/gate7_git_safety.py` - Gate 7 config loading
@@ -39,7 +39,7 @@
 - Added `RestoreTestConfig` and `DurableStorageConfig` dataclasses
 
 ### 2. DATABASE LEAST PRIVILEGE (gate2_identity.py)
-**Problem**: The `scholarzone_readonly` role was assumed safe merely because of its name. No verification of superuser, createrole, createdb, replication, bypassrls, or table-level write privileges. Only checked public schema.
+**Problem**: The `scholarzone_readonly` role was assumed safe merely because of its name. No verification of superuser, createrole, createdb, replication, bypassrls, or table-level write privileges. Only checked public schema. Function privilege audit flagged every routine with EXECUTE as error without distinguishing harmless routines.
 
 **Fix**: Enhanced `_verify_role_privileges()` to comprehensively check across ALL schemas:
 - Role attributes: SUPERUSER, CREATEROLE, CREATEDB, REPLICATION, BYPASSRLS (all must be FALSE)
@@ -50,7 +50,10 @@
 - Membership chain traversal limit (max 10 levels) with cycle detection
 - Schema privileges: CREATE must be FALSE, USAGE must be TRUE on ALL schemas
 - Sequence privileges: USAGE and UPDATE (setval) must be FALSE on ALL sequences in ALL schemas
-- Function/routine EXECUTE privileges: All flagged for audit on ALL schemas
+- **Function/routine EXECUTE privileges**: 
+  - **SECURITY DEFINER** routines flagged as potential privilege escalation
+  - **Mutating routines** (INSERT/UPDATE/DELETE/TRUNCATE) flagged as data modification risk
+  - Harmless PUBLIC EXECUTE read-only functions (SECURITY INVOKER, non-mutating) allowed
 - **SET ROLE exposure**: Uses `pg_has_role(current_user, role_oid, 'SET')` - correct PostgreSQL function
 - Catalog accessibility: Verifies all required system catalogs are queryable (fail closed if not)
 - Fail closed on any inaccessible catalog or incomplete privilege check
@@ -90,14 +93,15 @@
 - No durable backup storage verification
 - Remote checksum verification was local-only
 - Azure CLI passed client_secret in command arguments
+- Checksum sidecar verification compared file to itself (no independent authentication)
 
 **Fix**:
 - `run_pg_dump()` and `run_pg_restore()` parse URL and use `PGPASSWORD` env var + explicit `-h/-p/-U/-d` flags (credentials never in command line)
 - **Neon PITR Verification**: 
   - Requires `neon.project_id` and `neon.branch_id` settings to confirm Neon instance
-  - Queries Neon API (`NEON_API_KEY`) via **project details endpoint** `GET /projects/{project_id}`
-  - Parses **project-level `history_retention_seconds`** as authoritative source
-  - Verifies branch belongs to project, reads branch `pitr_enabled` if present
+  - Queries Neon API (`NEON_API_KEY`) via **project details endpoint** `GET /projects/{project_id}` for `history_retention_seconds`
+  - Queries **branches endpoint** `GET /projects/{project_id}/branches` with **pagination** to find exact branch ID
+  - Verifies branch belongs to project, reads branch `pitr_enabled` (never defaults to True)
   - Falls back to `pg_settings` for `neon.pitr_*` only if API unavailable
   - Converts seconds to days correctly (ceiling division)
   - Requires ≥7 days (604800 seconds) retention
@@ -107,10 +111,11 @@
 - **GPG Key Lifecycle**: Verifies both public and private key fingerprints match pinned value; test mode generates synthetic keys in isolated GNUPGHOME
 - **Durable Storage (S3/GCS/Azure)**:
   - Upload: `aws s3 cp` / `gsutil cp` / `az storage blob upload --auth-mode login` (NO account keys in command args)
-  - **Azure**: Uses authenticated session via environment variables (`AZURE_CLIENT_ID/TENANT_ID/CLIENT_SECRET`), **NEVER passes client_secret in command arguments**; prefers managed identity
+  - **Azure**: Uses authenticated session via `--password-stdin` for client secret, **NEVER passes client_secret in command arguments**; prefers managed identity
   - Download: Returns checksum of downloaded file for independent verification
   - Restore from durable: Full upload→download→checksum→decrypt→restore→verify path
-  - `remote_checksum_verified` depends on independently verified remote object content (downloaded file checksum vs uploaded checksum sidecar)
+  - **Independent Sidecar Authentication**: Pre-computed checksums (encrypted file + checksum file) stored as trusted source; downloaded files verified against pre-computed values, NOT against downloaded checksum file
+  - `remote_checksum_verified` depends on independently verified remote object content (downloaded file checksum vs pre-computed expected checksum)
   - Fail closed if remote storage unavailable
   - Tests for missing objects, corrupted downloads, checksum mismatch, failed restore, provider auth errors
   - Disposable restore database always cleaned up
@@ -146,7 +151,7 @@
 18. `test_regression_schema_create_privilege` - CREATE privilege on any schema
 19. `test_regression_sequence_write_privilege` - USAGE/UPDATE on sequences
 20. `test_regression_gate5_classification_mismatch` - Live classification vs expected manifest mismatch
-21. `test_regression_azure_credential_safety` - Azure CLI uses env vars for credentials, no secrets in command args
+21. `test_regression_azure_credential_safety` - Azure CLI uses --password-stdin for credentials, no secrets in command args
 
 ---
 
@@ -159,7 +164,7 @@ All tests pass:
 ---
 
 ## CI Run Links
-- **Latest CI Run**: https://github.com/gopal735/ScholarZone/actions/runs/42071097550 (Run #620)
+- **Latest CI Run**: https://github.com/gopal735/ScholarZone/actions/runs/42073994019 (HEAD: d3b9b3d)
 - **All PG16/PG18 matrix jobs PASSED**:
   - Schema Compatibility (PG16, PG18)
   - Preflight (PG16, PG18)
@@ -190,7 +195,7 @@ All tests pass:
 ## Final Verdict
 
 ### CI_VERIFIED ✅
-All unit/regression tests pass. CI pipeline tests against PostgreSQL 16 and 18. Latest run #620 all green.
+All unit/regression tests pass. CI pipeline tests against PostgreSQL 16 and 18. Latest run (42073994019) all green.
 
 ### PRODUCTION_PREFLIGHT_VERIFIED ⏳
 Pending: Requires production secrets configuration and successful workflow_dispatch execution against production Neon database.

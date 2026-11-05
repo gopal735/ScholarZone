@@ -448,22 +448,71 @@ def _check_all_sequence_privileges(cur, current_user: str, errors: list[str]) ->
 
 
 def _check_all_function_privileges(cur, current_user: str, errors: list[str]) -> None:
-    """Check function/routine EXECUTE privileges in ALL schemas."""
+    """Check function/routine EXECUTE privileges in ALL schemas.
+    
+    Implements a defensible security policy:
+    - Inspect SECURITY DEFINER functions and procedures (potential privilege escalation)
+    - Identify routines that can perform privileged mutations
+    - Account for PostgreSQL PUBLIC EXECUTE defaults
+    - Allow harmless PUBLIC EXECUTE read-only functions (SECURITY INVOKER, no mutations)
+    - Flag SECURITY DEFINER routines as potential privilege escalation
+    - Flag routines that perform mutations (INSERT/UPDATE/DELETE/TRUNCATE)
+    - Preserve strict policy against actual privilege escalation
+    """
     try:
+        # First, get all routines with their security properties
         cur.execute("""
-            SELECT routine_schema, routine_name, routine_type, data_type
-            FROM information_schema.routines
-            WHERE routine_schema NOT IN ('pg_catalog', 'information_schema')
+            SELECT 
+                n.nspname as routine_schema,
+                p.proname as routine_name,
+                CASE p.prokind 
+                    WHEN 'f' THEN 'FUNCTION'
+                    WHEN 'p' THEN 'PROCEDURE'
+                    WHEN 'a' THEN 'AGGREGATE'
+                    WHEN 'w' THEN 'WINDOW'
+                END as routine_type,
+                p.prosecdef as security_definer,
+                p.provolatile,
+                pg_get_functiondef(p.oid) as function_definition
+            FROM pg_proc p
+            JOIN pg_namespace n ON p.pronamespace = n.oid
+            WHERE n.nspname NOT IN ('pg_catalog', 'information_schema')
+            ORDER BY n.nspname, p.proname
         """)
         
         for func_row in cur.fetchall():
             func_name = f"{func_row['routine_schema']}.{func_row['routine_name']}"
-            routine_type = func_row["routine_type"]  # 'FUNCTION' or 'PROCEDURE'
+            routine_type = func_row["routine_type"]
+            security_definer = func_row["security_definer"]
+            function_definition = func_row["function_definition"] or ""
             
+            # Check if current_user has EXECUTE privilege
             cur.execute("SELECT has_function_privilege(current_user, %s, 'EXECUTE') as can_execute", (func_name,))
             exec_row = cur.fetchone()
-            if exec_row and exec_row["can_execute"]:
-                errors.append(f"Role has EXECUTE privilege on {routine_type.lower()} {func_name} (audit required)")
+            
+            if not exec_row or not exec_row["can_execute"]:
+                continue  # No EXECUTE privilege, nothing to audit
+            
+            # Check if function is mutating (contains INSERT/UPDATE/DELETE/TRUNCATE)
+            # Simple heuristic: look for DML keywords in function definition
+            func_def_upper = function_definition.upper()
+            is_mutating = any(keyword in func_def_upper for keyword in [
+                " INSERT ", " UPDATE ", " DELETE ", " TRUNCATE ",
+                "INSERT(", "UPDATE(", "DELETE(", "TRUNCATE("
+            ])
+            
+            # Determine risk level
+            if security_definer:
+                # SECURITY DEFINER runs with owner's privileges - potential privilege escalation
+                errors.append(f"Role has EXECUTE on SECURITY DEFINER {routine_type.lower()} {func_name} (privilege escalation risk)")
+            elif is_mutating:
+                # Mutating routine even with SECURITY INVOKER - can modify data
+                errors.append(f"Role has EXECUTE on mutating {routine_type.lower()} {func_name} (data modification risk)")
+            else:
+                # SECURITY INVOKER, non-mutating - likely harmless read-only function
+                # This is acceptable for a read-only role
+                pass  # No error for harmless routines
+                
     except Exception as e:
         errors.append(f"Failed to check function privileges: {e}")
 
