@@ -1241,7 +1241,7 @@ def _query_neon_api_for_pitr(api_key: str, project_id: str, branch_id: str) -> d
     
     Uses the documented Neon endpoints:
     1. GET /projects/{project_id} - Read project.history_retention_seconds
-    2. GET /projects/{project_id}/branches - Find the exact configured branch ID with pagination
+    2. GET /projects/{project_id}/branches - Find the exact configured branch ID with cursor-based pagination
     
     Verifies project identity and confirms the configured branch belongs to that project.
     Parses project-level history_retention_seconds.
@@ -1273,14 +1273,19 @@ def _query_neon_api_for_pitr(api_key: str, project_id: str, branch_id: str) -> d
                 if history_retention_seconds is None:
                     return {"success": False, "error": "API response missing project history_retention_seconds"}
                 
-                # Step 2: Get branches from the branches endpoint with pagination
-                # Use documented pagination - check for next_page or page parameter
+                # Step 2: Get branches from the branches endpoint with cursor-based pagination
+                # Neon API uses cursor-based pagination: response includes pagination.next cursor
                 branch_found = False
-                page = 1
+                cursor = None
                 max_pages = 10  # Safety limit
+                page = 0
                 
-                while page <= max_pages:
-                    branches_url = f"https://console.neon.tech/api/v2/projects/{project_id}/branches?page={page}"
+                while page < max_pages:
+                    # Build URL with cursor if available
+                    branches_url = f"https://console.neon.tech/api/v2/projects/{project_id}/branches"
+                    if cursor:
+                        branches_url += f"?cursor={urllib.parse.quote(cursor)}"
+                    
                     branches_req = urllib.request.Request(branches_url)
                     branches_req.add_header("Authorization", f"Bearer {api_key}")
                     branches_req.add_header("Accept", "application/json")
@@ -1302,9 +1307,12 @@ def _query_neon_api_for_pitr(api_key: str, project_id: str, branch_id: str) -> d
                             if branch_found:
                                 break
                             
-                            # Check for pagination - Neon API may use page-based or cursor-based
-                            # If branches list is empty or shorter than page size, we're done
-                            if len(branches) < 20:  # Default page size assumption
+                            # Get next cursor from pagination
+                            pagination = branches_data.get("pagination", {})
+                            cursor = pagination.get("next")
+                            
+                            if not cursor:
+                                # No more pages
                                 break
                             
                             page += 1

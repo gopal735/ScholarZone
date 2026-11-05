@@ -457,6 +457,11 @@ def _check_all_function_privileges(cur, current_user: str, errors: list[str]) ->
     - Allow harmless PUBLIC EXECUTE read-only functions (SECURITY INVOKER, no mutations)
     - Flag SECURITY DEFINER routines as potential privilege escalation
     - Flag routines that perform mutations (INSERT/UPDATE/DELETE/TRUNCATE)
+    - Detect dynamic SQL (EXECUTE, PREPARE) that may hide mutations
+    - Inspect function call dependencies (pg_depend) for indirect mutating calls
+    - Check for trigger functions that may perform mutations
+    - Check for SECURITY DEFINER with mutable search_path
+    - Conservative fail-closed: if uncertain about mutation capability, flag as potential risk
     - Preserve strict policy against actual privilege escalation
     """
     try:
@@ -473,6 +478,7 @@ def _check_all_function_privileges(cur, current_user: str, errors: list[str]) ->
                 END as routine_type,
                 p.prosecdef as security_definer,
                 p.provolatile,
+                p.oid as routine_oid,
                 pg_get_functiondef(p.oid) as function_definition
             FROM pg_proc p
             JOIN pg_namespace n ON p.pronamespace = n.oid
@@ -480,10 +486,27 @@ def _check_all_function_privileges(cur, current_user: str, errors: list[str]) ->
             ORDER BY n.nspname, p.proname
         """)
         
-        for func_row in cur.fetchall():
+        all_routines = cur.fetchall()
+        
+        # Build call dependency graph from pg_depend
+        call_dependencies = _build_call_dependency_graph(cur)
+        
+        # Get trigger functions
+        trigger_function_oids = _get_trigger_function_oids(cur)
+        
+        # Pre-compute mutating status for all routines
+        routine_mutating_cache = {}
+        for func_row in all_routines:
+            routine_oid = func_row["routine_oid"]
+            routine_mutating_cache[routine_oid] = _analyze_routine_for_mutations(
+                cur, func_row, call_dependencies, trigger_function_oids, routine_mutating_cache
+            )
+        
+        for func_row in all_routines:
             func_name = f"{func_row['routine_schema']}.{func_row['routine_name']}"
             routine_type = func_row["routine_type"]
             security_definer = func_row["security_definer"]
+            routine_oid = func_row["routine_oid"]
             function_definition = func_row["function_definition"] or ""
             
             # Check if current_user has EXECUTE privilege
@@ -493,28 +516,254 @@ def _check_all_function_privileges(cur, current_user: str, errors: list[str]) ->
             if not exec_row or not exec_row["can_execute"]:
                 continue  # No EXECUTE privilege, nothing to audit
             
-            # Check if function is mutating (contains INSERT/UPDATE/DELETE/TRUNCATE)
-            # Simple heuristic: look for DML keywords in function definition
-            func_def_upper = function_definition.upper()
-            is_mutating = any(keyword in func_def_upper for keyword in [
-                " INSERT ", " UPDATE ", " DELETE ", " TRUNCATE ",
-                "INSERT(", "UPDATE(", "DELETE(", "TRUNCATE("
-            ])
+            # Get mutation analysis results
+            analysis = routine_mutating_cache.get(routine_oid, {})
+            is_mutating = analysis.get("is_mutating", False)
+            has_dynamic_sql = analysis.get("has_dynamic_sql", False)
+            has_indirect_mutation = analysis.get("has_indirect_mutation", False)
+            is_trigger_function = analysis.get("is_trigger_function", False)
+            search_path_risk = analysis.get("search_path_risk", False)
+            uncertain = analysis.get("uncertain", False)
+            risk_reasons = analysis.get("risk_reasons", [])
             
-            # Determine risk level
+            # Determine risk level - FAIL CLOSED on any risk or uncertainty
             if security_definer:
                 # SECURITY DEFINER runs with owner's privileges - potential privilege escalation
-                errors.append(f"Role has EXECUTE on SECURITY DEFINER {routine_type.lower()} {func_name} (privilege escalation risk)")
-            elif is_mutating:
-                # Mutating routine even with SECURITY INVOKER - can modify data
-                errors.append(f"Role has EXECUTE on mutating {routine_type.lower()} {func_name} (data modification risk)")
+                reasons = ["SECURITY DEFINER (privilege escalation risk)"]
+                if search_path_risk:
+                    reasons.append("mutable search_path")
+                if has_dynamic_sql:
+                    reasons.append("dynamic SQL (EXECUTE/PREPARE)")
+                if has_indirect_mutation:
+                    reasons.append("indirect mutating calls")
+                if is_trigger_function:
+                    reasons.append("trigger function")
+                if uncertain:
+                    reasons.append("uncertain mutation capability (fail-closed)")
+                errors.append(f"Role has EXECUTE on SECURITY DEFINER {routine_type.lower()} {func_name} ({'; '.join(reasons)})")
+            elif is_mutating or has_dynamic_sql or has_indirect_mutation or is_trigger_function or search_path_risk or uncertain:
+                # Any mutation risk or uncertainty - fail closed
+                reasons = []
+                if is_mutating:
+                    reasons.append("direct DML mutations")
+                if has_dynamic_sql:
+                    reasons.append("dynamic SQL (EXECUTE/PREPARE)")
+                if has_indirect_mutation:
+                    reasons.append("indirect mutating calls")
+                if is_trigger_function:
+                    reasons.append("trigger function")
+                if search_path_risk:
+                    reasons.append("mutable search_path")
+                if uncertain:
+                    reasons.append("uncertain mutation capability (fail-closed)")
+                errors.append(f"Role has EXECUTE on risky {routine_type.lower()} {func_name} ({'; '.join(reasons)})")
             else:
-                # SECURITY INVOKER, non-mutating - likely harmless read-only function
-                # This is acceptable for a read-only role
+                # SECURITY INVOKER, non-mutating, no dynamic SQL, no indirect mutations, not a trigger, certain - likely harmless
                 pass  # No error for harmless routines
                 
     except Exception as e:
         errors.append(f"Failed to check function privileges: {e}")
+
+
+def _build_call_dependency_graph(cur) -> dict[int, set[int]]:
+    """Build a call dependency graph from pg_depend.
+    
+    Returns a mapping from routine OID to set of called routine OIDs.
+    """
+    dependencies = {}
+    try:
+        # pg_depend records dependencies between objects
+        # classid = pg_proc (1255), objid = routine OID, refclassid = pg_proc, refobjid = called routine OID
+        # deptype = 'n' for normal dependency
+        cur.execute("""
+            SELECT d.objid as caller_oid, d.refobjid as callee_oid
+            FROM pg_depend d
+            WHERE d.classid = 'pg_proc'::regclass
+            AND d.refclassid = 'pg_proc'::regclass
+            AND d.deptype = 'n'
+        """)
+        for row in cur.fetchall():
+            caller = row["caller_oid"]
+            callee = row["callee_oid"]
+            if caller not in dependencies:
+                dependencies[caller] = set()
+            dependencies[caller].add(callee)
+    except Exception:
+        # If we can't query pg_depend, return empty graph (conservative: no indirect call detection)
+        pass
+    return dependencies
+
+
+def _get_trigger_function_oids(cur) -> set[int]:
+    """Get OIDs of functions that are used as triggers."""
+    trigger_oids = set()
+    try:
+        # pg_trigger.tgfoid references the trigger function
+        cur.execute("SELECT DISTINCT tgfoid FROM pg_trigger WHERE tgfoid != 0")
+        for row in cur.fetchall():
+            trigger_oids.add(row["tgfoid"])
+    except Exception:
+        pass
+    return trigger_oids
+
+
+def _analyze_routine_for_mutations(
+    cur,
+    func_row: dict,
+    call_dependencies: dict[int, set[int]],
+    trigger_function_oids: set[int],
+    routine_mutating_cache: dict[int, dict]
+) -> dict:
+    """Analyze a routine for mutation capabilities.
+    
+    Returns a dict with keys:
+    - is_mutating: direct DML in function body
+    - has_dynamic_sql: uses EXECUTE, PREPARE, or dynamic SQL construction
+    - has_indirect_mutation: calls other mutating functions (transitive)
+    - is_trigger_function: is a trigger function
+    - search_path_risk: SECURITY DEFINER with mutable search_path
+    - uncertain: cannot determine mutation status (fail-closed)
+    - risk_reasons: list of specific risk identifiers
+    """
+    routine_oid = func_row["routine_oid"]
+    function_definition = func_row["function_definition"] or ""
+    security_definer = func_row["security_definer"]
+    routine_type = func_row["routine_type"]
+    
+    result = {
+        "is_mutating": False,
+        "has_dynamic_sql": False,
+        "has_indirect_mutation": False,
+        "is_trigger_function": routine_oid in trigger_function_oids,
+        "search_path_risk": False,
+        "uncertain": False,
+        "risk_reasons": []
+    }
+    
+    func_def_upper = function_definition.upper()
+    
+    # 1. Check for direct DML mutations
+    dml_keywords = [
+        " INSERT ", " UPDATE ", " DELETE ", " TRUNCATE ",
+        "INSERT(", "UPDATE(", "DELETE(", "TRUNCATE("
+    ]
+    # Also check for MERGE (PostgreSQL 15+)
+    if " MERGE " in func_def_upper or "MERGE(" in func_def_upper:
+        result["is_mutating"] = True
+        result["risk_reasons"].append("MERGE")
+    elif any(keyword in func_def_upper for keyword in dml_keywords):
+        result["is_mutating"] = True
+        result["risk_reasons"].append("direct DML")
+    
+    # 2. Check for dynamic SQL patterns
+    has_execute = " EXECUTE " in func_def_upper and "EXECUTE FUNCTION" not in func_def_upper and "EXECUTE PROCEDURE" not in func_def_upper
+    dynamic_sql_construction_patterns = [
+        " PREPARE ",           # PREPARE statement
+        " EXECUTE IMMEDIATE ", # EXECUTE IMMEDIATE (PL/pgSQL)
+        "FORMAT(",             # format() function often used for dynamic SQL
+        "QUOTE_IDENT(",        # quote_ident() used in dynamic SQL
+        "QUOTE_LITERAL(",      # quote_literal() used in dynamic SQL
+        "QUOTE_NULLABLE(",     # quote_nullable() used in dynamic SQL
+    ]
+    has_dynamic_construction = any(pattern in func_def_upper for pattern in dynamic_sql_construction_patterns)
+    
+    if has_execute:
+        result["has_dynamic_sql"] = True
+        result["risk_reasons"].append("EXECUTE statement")
+    if has_dynamic_construction:
+        result["has_dynamic_sql"] = True
+        result["risk_reasons"].append("dynamic SQL construction")
+    
+    # 3. Check for SECURITY DEFINER with mutable search_path
+    if security_definer:
+        # Check if function has SET search_path in its definition
+        # SECURITY DEFINER functions without fixed search_path are risky
+        if "SET SEARCH_PATH" not in func_def_upper and "SET search_path" not in func_def_upper:
+            # Check pg_proc.proconfig for search_path setting
+            try:
+                cur.execute("""
+                    SELECT proconfig FROM pg_proc WHERE oid = %s
+                """, (routine_oid,))
+                row = cur.fetchone()
+                proconfig = row["proconfig"] if row else None
+                has_search_path_config = False
+                if proconfig:
+                    for config_item in proconfig:
+                        if config_item.startswith("search_path="):
+                            has_search_path_config = True
+                            break
+                if not has_search_path_config:
+                    result["search_path_risk"] = True
+                    result["risk_reasons"].append("SECURITY DEFINER without fixed search_path")
+            except Exception:
+                # If we can't check, assume risk (fail closed)
+                result["search_path_risk"] = True
+                result["risk_reasons"].append("SECURITY DEFINER search_path unverifiable")
+    
+    # 4. Check for indirect mutations via call dependencies (transitive closure)
+    # Use memoized recursion to avoid infinite loops
+    visited = set()
+    
+    def check_indirect_mutation(oid: int, depth: int = 0) -> bool:
+        if depth > 20:  # Prevent infinite recursion
+            return True  # Fail closed on deep recursion
+        if oid in visited:
+            return False  # Already checked this path
+        visited.add(oid)
+        
+        # Check direct callees
+        callees = call_dependencies.get(oid, set())
+        for callee_oid in callees:
+            # Check if callee is mutating (from cache or recursive analysis)
+            callee_analysis = routine_mutating_cache.get(callee_oid)
+            if callee_analysis is not None:
+                if callee_analysis.get("is_mutating") or callee_analysis.get("has_dynamic_sql") or callee_analysis.get("has_indirect_mutation"):
+                    return True
+            else:
+                # Callee not in our cache (maybe in pg_catalog or not yet processed)
+                # Conservative: check if it's a known mutating system function
+                try:
+                    cur.execute("""
+                        SELECT proname, prosecdef, provolatile
+                        FROM pg_proc WHERE oid = %s
+                    """, (callee_oid,))
+                    callee_row = cur.fetchone()
+                    if callee_row:
+                        # Volatile functions with security definer are suspicious
+                        if callee_row["prosecdef"] and callee_row["provolatile"] == 'v':
+                            return True
+                        # Known mutating system functions
+                        mutating_names = {"pg_sleep", "pg_advisory_lock", "pg_advisory_xact_lock"}
+                        if callee_row["proname"] in mutating_names:
+                            return True
+                except Exception:
+                    pass
+                # Recursively check callee's callees
+                if check_indirect_mutation(callee_oid, depth + 1):
+                    return True
+        return False
+    
+    if check_indirect_mutation(routine_oid):
+        result["has_indirect_mutation"] = True
+        result["risk_reasons"].append("indirect mutating calls")
+    
+# 5. Conservative fail-closed: if we cannot determine with certainty, flag as uncertain
+    # This happens when:
+    # - Function body is not accessible (e.g., C functions without source)
+    # - Dynamic SQL detected but cannot be fully analyzed
+    # - Complex control flow that may conditionally mutate
+    if not result["is_mutating"] and not result["has_dynamic_sql"] and not result["has_indirect_mutation"]:
+        # Check if function definition is empty or minimal (C functions, etc.)
+        if not function_definition.strip() or "LANGUAGE C" in func_def_upper or "LANGUAGE INTERNAL" in func_def_upper:
+            result["uncertain"] = True
+            result["risk_reasons"].append("C/internal function - mutation capability unknown")
+        # Check for volatile functions that might have side effects
+        elif func_row.get("provolatile") == 'v' and "RETURN" in func_def_upper and "SELECT" not in func_def_upper:
+            # Volatile function that doesn't obviously just SELECT - uncertain
+            result["uncertain"] = True
+            result["risk_reasons"].append("volatile function with unclear side effects")
+
+    return result
 
 
 def _check_set_role_exposure(cur, current_user: str, errors: list[str]) -> None:

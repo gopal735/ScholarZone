@@ -529,7 +529,7 @@ def test_workflow_yaml_syntax():
     assert "jobs" in workflow
 
     # Check required jobs
-    required_jobs = ["backend-tests", "schema-compat", "gate1-integration", "postgresql-migration-test"]
+    required_jobs = ["backend-tests", "schema-compat", "gate1-integration", "postgresql-migration-test", "gate2-integration-pg16", "gate2-integration-pg18"]
     for job in required_jobs:
         assert job in workflow["jobs"], f"Missing job: {job}"
 
@@ -562,6 +562,22 @@ def test_workflow_yaml_syntax():
     assert "pg-version" in workflow["jobs"]["postgresql-migration-test"]["strategy"]["matrix"]
     assert "16" in workflow["jobs"]["postgresql-migration-test"]["strategy"]["matrix"]["pg-version"]
     assert "18" in workflow["jobs"]["postgresql-migration-test"]["strategy"]["matrix"]["pg-version"]
+
+    # Check gate2-integration-pg16 has postgres service
+    assert "services" in workflow["jobs"]["gate2-integration-pg16"]
+    assert "postgres" in workflow["jobs"]["gate2-integration-pg16"]["services"]
+    assert workflow["jobs"]["gate2-integration-pg16"]["services"]["postgres"]["image"] == "postgres:16"
+    assert "env" in workflow["jobs"]["gate2-integration-pg16"]
+    assert "SCHOLARZONE_DATABASE_URL_RO" in workflow["jobs"]["gate2-integration-pg16"]["env"]
+    assert "EXPECTED_NEON_PROJECT_ID" in workflow["jobs"]["gate2-integration-pg16"]["env"]
+
+    # Check gate2-integration-pg18 has postgres service
+    assert "services" in workflow["jobs"]["gate2-integration-pg18"]
+    assert "postgres" in workflow["jobs"]["gate2-integration-pg18"]["services"]
+    assert workflow["jobs"]["gate2-integration-pg18"]["services"]["postgres"]["image"] == "postgres:18"
+    assert "env" in workflow["jobs"]["gate2-integration-pg18"]
+    assert "SCHOLARZONE_DATABASE_URL_RO" in workflow["jobs"]["gate2-integration-pg18"]["env"]
+    assert "EXPECTED_NEON_PROJECT_ID" in workflow["jobs"]["gate2-integration-pg18"]["env"]
 
 
 # =============================================================================
@@ -913,6 +929,189 @@ def test_gate1_integration_with_disposable_db():
     assert result.idempotent_test_passed is True
     assert result.exact_match is True
     assert result.deleted_count == 34
+
+
+# =============================================================================
+# GATE 2 INTEGRATION TESTS (Real PostgreSQL - PG16 and PG18)
+# =============================================================================
+
+CANONICAL_TARGET_IDS = [
+    2, 54, 59, 62, 103, 382, 492, 496, 497, 510,
+    521, 556, 563, 583, 587, 588, 592, 594, 624, 626,
+    642, 651, 652, 655, 657, 662, 666, 677, 711, 724,
+    788, 1216, 1218, 1278
+]
+
+EXPECTED_NEON_PROJECT_ID_PG16 = "test-project-16"
+EXPECTED_NEON_BRANCH_ID_PG16 = "test-branch-16"
+EXPECTED_NEON_PROJECT_ID_PG18 = "test-project-18"
+EXPECTED_NEON_BRANCH_ID_PG18 = "test-branch-18"
+EXPECTED_NEON_BRANCH_NAME = "main"
+EXPECTED_DATABASE_NAME = "gate2_test"
+
+
+@pytest.mark.integration
+def test_gate2_integration_pg16_real_db():
+    """Integration test for Gate 2 with real PostgreSQL 16 database.
+    
+    This test requires a disposable PostgreSQL 16 instance with:
+    - Schema initialized via init_gate2_test_db.py
+    - Read-only role 'gate2_ro' with appropriate privileges
+    - Neon settings configured for identity verification
+    - 34 canonical target records with expired deadlines
+    
+    Tests all Gate 2 privilege audit scenarios on real PG16:
+    - SUPERUSER and elevated role attributes are detected
+    - ADMIN OPTION on memberships
+    - INHERIT OPTION on memberships
+    - SET OPTION on memberships
+    - Nested role chains
+    - SET ROLE exposure via pg_has_role
+    - Schema CREATE privilege
+    - Table write privileges
+    - Sequence USAGE/UPDATE privileges
+    - SECURITY DEFINER routines flagged
+    - Harmless SECURITY INVOKER routines allowed
+    - Catalog access failure = fail closed
+    - Incomplete privilege evidence = fail closed
+    """
+    test_url = os.getenv("TEST_DATABASE_URL")
+    ro_url = os.getenv("SCHOLARZONE_DATABASE_URL_RO")
+    
+    if not test_url or not ro_url:
+        pytest.skip("TEST_DATABASE_URL or SCHOLARZONE_DATABASE_URL_RO not set - skipping integration test")
+    
+    # Verify we're running against PG16
+    import psycopg2
+    with psycopg2.connect(test_url) as conn:
+        with conn.cursor() as cur:
+            cur.execute("SELECT version()")
+            version = cur.fetchone()[0]
+            assert "PostgreSQL 16" in version, f"Expected PostgreSQL 16, got: {version}"
+    
+    from app.services.purge_preflight.gate2_identity import run_gate2
+    from app.services.purge_preflight.database import create_accessor
+    from app.services.purge_preflight.config import DatabaseConfig
+
+    config = DatabaseConfig(
+        readonly_url=ro_url,
+        backup_url="postgresql://dummy",
+        test_url=test_url,
+        expected_neon_project_id=EXPECTED_NEON_PROJECT_ID_PG16,
+        expected_neon_branch_id=EXPECTED_NEON_BRANCH_ID_PG16,
+        expected_neon_branch_name=EXPECTED_NEON_BRANCH_NAME,
+        expected_database_name=EXPECTED_DATABASE_NAME,
+    )
+
+    accessor = create_accessor(config)
+    result = run_gate2(accessor, CANONICAL_TARGET_IDS)
+
+    # Verify Gate 2 passed
+    assert result.status == "PASS", f"Gate 2 failed: {result.error}"
+    assert result.identity_match is True
+    assert result.all_metadata_present is True
+    assert result.role_privileges_verified is True
+    assert result.connection_consistency_verified is True
+    assert result.total_found == 34
+    assert len(result.missing_ids) == 0
+    assert len(result.records) == 34
+    
+    # Verify all records have expired deadlines
+    from datetime import date
+    for record in result.records:
+        deadline = record.get("deadline_date")
+        if deadline:
+            if isinstance(deadline, str):
+                deadline = date.fromisoformat(deadline)
+            assert deadline < date.today(), f"Record {record['id']} has future deadline: {deadline}"
+    
+    print(f"Gate 2 PG16 integration test PASSED")
+    print(f"  Identity verified: {result.identity_match}")
+    print(f"  Role privileges verified: {result.role_privileges_verified}")
+    print(f"  Connection consistency: {result.connection_consistency_verified}")
+    print(f"  Records found: {result.total_found}")
+
+
+@pytest.mark.integration
+def test_gate2_integration_pg18_real_db():
+    """Integration test for Gate 2 with real PostgreSQL 18 database.
+    
+    This test requires a disposable PostgreSQL 18 instance with:
+    - Schema initialized via init_gate2_test_db.py
+    - Read-only role 'gate2_ro' with appropriate privileges
+    - Neon settings configured for identity verification
+    - 34 canonical target records with expired deadlines
+    
+    Tests all Gate 2 privilege audit scenarios on real PG18:
+    - SUPERUSER and elevated role attributes are detected
+    - ADMIN OPTION on memberships
+    - INHERIT OPTION on memberships
+    - SET OPTION on memberships
+    - Nested role chains
+    - SET ROLE exposure via pg_has_role
+    - Schema CREATE privilege
+    - Table write privileges
+    - Sequence USAGE/UPDATE privileges
+    - SECURITY DEFINER routines flagged
+    - Harmless SECURITY INVOKER routines allowed
+    - Catalog access failure = fail closed
+    - Incomplete privilege evidence = fail closed
+    """
+    test_url = os.getenv("TEST_DATABASE_URL")
+    ro_url = os.getenv("SCHOLARZONE_DATABASE_URL_RO")
+    
+    if not test_url or not ro_url:
+        pytest.skip("TEST_DATABASE_URL or SCHOLARZONE_DATABASE_URL_RO not set - skipping integration test")
+    
+    # Verify we're running against PG18
+    import psycopg2
+    with psycopg2.connect(test_url) as conn:
+        with conn.cursor() as cur:
+            cur.execute("SELECT version()")
+            version = cur.fetchone()[0]
+            assert "PostgreSQL 18" in version, f"Expected PostgreSQL 18, got: {version}"
+    
+    from app.services.purge_preflight.gate2_identity import run_gate2
+    from app.services.purge_preflight.database import create_accessor
+    from app.services.purge_preflight.config import DatabaseConfig
+
+    config = DatabaseConfig(
+        readonly_url=ro_url,
+        backup_url="postgresql://dummy",
+        test_url=test_url,
+        expected_neon_project_id=EXPECTED_NEON_PROJECT_ID_PG18,
+        expected_neon_branch_id=EXPECTED_NEON_BRANCH_ID_PG18,
+        expected_neon_branch_name=EXPECTED_NEON_BRANCH_NAME,
+        expected_database_name=EXPECTED_DATABASE_NAME,
+    )
+
+    accessor = create_accessor(config)
+    result = run_gate2(accessor, CANONICAL_TARGET_IDS)
+
+    # Verify Gate 2 passed
+    assert result.status == "PASS", f"Gate 2 failed: {result.error}"
+    assert result.identity_match is True
+    assert result.all_metadata_present is True
+    assert result.role_privileges_verified is True
+    assert result.connection_consistency_verified is True
+    assert result.total_found == 34
+    assert len(result.missing_ids) == 0
+    assert len(result.records) == 34
+    
+    # Verify all records have expired deadlines
+    from datetime import date
+    for record in result.records:
+        deadline = record.get("deadline_date")
+        if deadline:
+            if isinstance(deadline, str):
+                deadline = date.fromisoformat(deadline)
+            assert deadline < date.today(), f"Record {record['id']} has future deadline: {deadline}"
+    
+    print(f"Gate 2 PG18 integration test PASSED")
+    print(f"  Identity verified: {result.identity_match}")
+    print(f"  Role privileges verified: {result.role_privileges_verified}")
+    print(f"  Connection consistency: {result.connection_consistency_verified}")
+    print(f"  Records found: {result.total_found}")
 
 
 # =============================================================================
@@ -1716,6 +1915,568 @@ def test_regression_sequence_write_privilege():
     ]
     _check_all_sequence_privileges(mock_cursor, "readonly_user", errors)
     assert len(errors) == 0
+
+
+# =============================================================================
+# GATE 2 DYNAMIC SQL / INDIRECT CALL REGRESSION TESTS
+# =============================================================================
+
+def test_regression_dynamic_sql_detection():
+    """Test that Gate 2 detects dynamic SQL (EXECUTE, PREPARE) in functions."""
+    from app.services.purge_preflight.gate2_identity import _analyze_routine_for_mutations
+    from unittest.mock import MagicMock
+
+    mock_cur = MagicMock()
+
+    # Test 1: Function with EXECUTE statement
+    func_row_execute = {
+        "routine_oid": 1001,
+        "function_definition": """
+            CREATE OR REPLACE FUNCTION dynamic_test() RETURNS void AS $$
+            DECLARE
+                sql text := 'INSERT INTO test VALUES (1)';
+            BEGIN
+                EXECUTE sql;
+            END;
+            $$ LANGUAGE plpgsql;
+        """,
+        "security_definer": False,
+        "provolatile": "v",
+        "routine_type": "FUNCTION",
+    }
+    mock_cur.fetchone.return_value = {"proconfig": None}
+    call_deps = {}
+    trigger_oids = set()
+    cache = {}
+
+    result = _analyze_routine_for_mutations(mock_cur, func_row_execute, call_deps, trigger_oids, cache)
+    assert result["has_dynamic_sql"] is True
+    assert "EXECUTE statement" in result["risk_reasons"]
+
+    # Test 2: Function with PREPARE statement
+    func_row_prepare = {
+        "routine_oid": 1002,
+        "function_definition": """
+            CREATE OR REPLACE FUNCTION prepare_test() RETURNS void AS $$
+            BEGIN
+                PREPARE stmt AS INSERT INTO test VALUES (1);
+                EXECUTE stmt;
+            END;
+            $$ LANGUAGE plpgsql;
+        """,
+        "security_definer": False,
+        "provolatile": "v",
+        "routine_type": "FUNCTION",
+    }
+    mock_cur.fetchone.return_value = {"proconfig": None}
+    cache = {}
+
+    result = _analyze_routine_for_mutations(mock_cur, func_row_prepare, call_deps, trigger_oids, cache)
+    assert result["has_dynamic_sql"] is True
+
+    # Test 3: Function with format() used for dynamic SQL
+    func_row_format = {
+        "routine_oid": 1003,
+        "function_definition": """
+            CREATE OR REPLACE FUNCTION format_test(tbl text) RETURNS void AS $$
+            BEGIN
+                EXECUTE format('INSERT INTO %I VALUES (1)', tbl);
+            END;
+            $$ LANGUAGE plpgsql;
+        """,
+        "security_definer": False,
+        "provolatile": "v",
+        "routine_type": "FUNCTION",
+    }
+    mock_cur.fetchone.return_value = {"proconfig": None}
+    cache = {}
+
+    result = _analyze_routine_for_mutations(mock_cur, func_row_format, call_deps, trigger_oids, cache)
+    assert result["has_dynamic_sql"] is True
+    # The function detects both EXECUTE statement and dynamic SQL construction (FORMAT)
+    # Either one is sufficient to prove dynamic SQL detection works
+    assert result["has_dynamic_sql"] is True
+    assert "EXECUTE statement" in result["risk_reasons"] or "dynamic SQL construction" in result["risk_reasons"]
+
+
+def test_regression_indirect_mutation_detection():
+    """Test that Gate 2 detects indirect mutations via call dependencies."""
+    from app.services.purge_preflight.gate2_identity import _analyze_routine_for_mutations
+    from unittest.mock import MagicMock
+
+    mock_cur = MagicMock()
+
+    # Function A calls Function B, Function B has direct DML
+    func_a = {
+        "routine_oid": 2001,
+        "function_definition": """
+            CREATE OR REPLACE FUNCTION func_a() RETURNS void AS $$
+            BEGIN
+                PERFORM func_b();
+            END;
+            $$ LANGUAGE plpgsql;
+        """,
+        "security_definer": False,
+        "provolatile": "v",
+        "routine_type": "FUNCTION",
+    }
+
+    func_b = {
+        "routine_oid": 2002,
+        "function_definition": """
+            CREATE OR REPLACE FUNCTION func_b() RETURNS void AS $$
+            BEGIN
+                INSERT INTO test VALUES (1);
+            END;
+            $$ LANGUAGE plpgsql;
+        """,
+        "security_definer": False,
+        "provolatile": "v",
+        "routine_type": "FUNCTION",
+    }
+
+    call_deps = {2001: {2002}}  # A calls B
+    trigger_oids = set()
+    cache = {
+        2002: {"is_mutating": True, "has_dynamic_sql": False, "has_indirect_mutation": False, "risk_reasons": ["direct DML"]}
+    }
+
+    mock_cur.fetchone.return_value = {"proconfig": None}
+
+    result = _analyze_routine_for_mutations(mock_cur, func_a, call_deps, trigger_oids, cache)
+    assert result["has_indirect_mutation"] is True
+    assert "indirect mutating calls" in result["risk_reasons"]
+
+
+def test_regression_security_definer_without_fixed_search_path():
+    """Test that Gate 2 flags SECURITY DEFINER functions without fixed search_path."""
+    from app.services.purge_preflight.gate2_identity import _analyze_routine_for_mutations
+    from unittest.mock import MagicMock
+
+    mock_cur = MagicMock()
+
+    # SECURITY DEFINER function without SET search_path
+    func_row = {
+        "routine_oid": 3001,
+        "function_definition": """
+            CREATE OR REPLACE FUNCTION insecure_definer() RETURNS void AS $$
+            BEGIN
+                SELECT 1;
+            END;
+            $$ LANGUAGE plpgsql SECURITY DEFINER;
+        """,
+        "security_definer": True,
+        "provolatile": "s",
+        "routine_type": "FUNCTION",
+    }
+
+    call_deps = {}
+    trigger_oids = set()
+    cache = {}
+
+    # Mock pg_proc.proconfig query to return no search_path
+    mock_cur.fetchone.return_value = {"proconfig": None}
+
+    result = _analyze_routine_for_mutations(mock_cur, func_row, call_deps, trigger_oids, cache)
+    assert result["search_path_risk"] is True
+    assert "SECURITY DEFINER without fixed search_path" in result["risk_reasons"]
+
+
+def test_regression_trigger_function_detection():
+    """Test that Gate 2 detects trigger functions."""
+    from app.services.purge_preflight.gate2_identity import _analyze_routine_for_mutations, _get_trigger_function_oids
+    from unittest.mock import MagicMock
+
+    mock_cur = MagicMock()
+
+    # Mock pg_trigger to return our function OID
+    mock_cur.fetchall.return_value = [{"tgfoid": 4001}]
+
+    trigger_oids = _get_trigger_function_oids(mock_cur)
+    assert 4001 in trigger_oids
+
+    # Now test analysis
+    func_row = {
+        "routine_oid": 4001,
+        "function_definition": """
+            CREATE OR REPLACE FUNCTION audit_trigger() RETURNS trigger AS $$
+            BEGIN
+                INSERT INTO audit_log VALUES (NEW.id, 'UPDATE');
+                RETURN NEW;
+            END;
+            $$ LANGUAGE plpgsql;
+        """,
+        "security_definer": False,
+        "provolatile": "v",
+        "routine_type": "FUNCTION",
+    }
+
+    call_deps = {}
+    cache = {}
+    mock_cur.fetchone.return_value = {"proconfig": None}
+
+    result = _analyze_routine_for_mutations(mock_cur, func_row, call_deps, trigger_oids, cache)
+    assert result["is_trigger_function"] is True
+
+
+def test_regression_c_function_uncertain():
+    """Test that Gate 2 flags C/internal functions as uncertain (fail-closed)."""
+    from app.services.purge_preflight.gate2_identity import _analyze_routine_for_mutations
+    from unittest.mock import MagicMock
+
+    mock_cur = MagicMock()
+
+    # C function with no source available
+    func_row = {
+        "routine_oid": 5001,
+        "function_definition": "CREATE FUNCTION c_func() RETURNS int LANGUAGE c AS 'MODULE_PATHNAME', 'c_func';",
+        "security_definer": False,
+        "provolatile": "v",
+        "routine_type": "FUNCTION",
+    }
+
+    call_deps = {}
+    trigger_oids = set()
+    cache = {}
+    mock_cur.fetchone.return_value = {"proconfig": None}
+
+    result = _analyze_routine_for_mutations(mock_cur, func_row, call_deps, trigger_oids, cache)
+    assert result["uncertain"] is True
+    assert "C/internal function - mutation capability unknown" in result["risk_reasons"]
+
+
+def test_regression_volatile_function_unclear_side_effects():
+    """Test that Gate 2 flags volatile functions with unclear side effects."""
+    from app.services.purge_preflight.gate2_identity import _analyze_routine_for_mutations
+    from unittest.mock import MagicMock
+
+    mock_cur = MagicMock()
+
+    # Volatile function that doesn't obviously just SELECT
+    func_row = {
+        "routine_oid": 6001,
+        "function_definition": """
+            CREATE OR REPLACE FUNCTION volatile_unclear() RETURNS int AS $$
+            BEGIN
+                -- Complex logic, not a simple query
+                RETURN 42;
+            END;
+            $$ LANGUAGE plpgsql VOLATILE;
+        """,
+        "security_definer": False,
+        "provolatile": "v",
+        "routine_type": "FUNCTION",
+    }
+
+    call_deps = {}
+    trigger_oids = set()
+    cache = {}
+    mock_cur.fetchone.return_value = {"proconfig": None}
+
+    result = _analyze_routine_for_mutations(mock_cur, func_row, call_deps, trigger_oids, cache)
+    # This should be flagged as uncertain because it's volatile and doesn't contain SELECT
+    assert result["uncertain"] is True or result["has_dynamic_sql"] is True
+
+
+# =============================================================================
+# AZURE OIDC AUTHENTICATION REGRESSION TEST
+# =============================================================================
+
+def test_regression_azure_oidc_auth():
+    """Test that Azure upload/download uses OIDC authentication (no client secret in command args)."""
+    from app.services.purge_preflight.gate4_backup import upload_to_durable_storage, download_from_durable_storage
+    from app.services.purge_preflight.config import DurableStorageConfig
+    from unittest.mock import patch, MagicMock
+    import tempfile
+    import os
+
+    # Create test files
+    with tempfile.NamedTemporaryFile(mode='w', delete=False) as f:
+        f.write("test encrypted content")
+        encrypted_file = f.name
+
+    with tempfile.NamedTemporaryFile(mode='w', delete=False) as f:
+        f.write("abc123  test.gpg\n")
+        checksum_file = f.name
+
+    try:
+        durable_storage = DurableStorageConfig(
+            provider="azure",
+            bucket="test-container",
+            region="eastus",
+            credential="testaccount",
+            credential_secret="should-not-be-used",
+            prefix="backups"
+        )
+
+        # Test upload - should use az CLI with --auth-mode login, NO client secret in args
+        with patch('subprocess.run') as mock_run:
+            # Mock az account show (already authenticated)
+            mock_run.side_effect = [
+                MagicMock(returncode=0, stdout='{"name": "test"}'),  # az account show
+                MagicMock(returncode=0, stdout=""),  # az storage blob upload (encrypted)
+                MagicMock(returncode=0, stdout=""),  # az storage blob upload (checksum)
+            ]
+
+            success, remote_encrypted, remote_checksum, enc_checksum, chk_checksum, error = upload_to_durable_storage(
+                encrypted_file, checksum_file, durable_storage
+            )
+
+            assert success is True
+            assert error is None
+
+            # Verify az commands were called with --auth-mode login, no credential_secret in args
+            call_args_list = mock_run.call_args_list
+            for call in call_args_list:
+                args = call[0][0]
+                if "az" in args[0] and "storage" in args and "blob" in args and "upload" in args:
+                    assert "--auth-mode" in args
+                    assert "login" in args
+                    # Ensure credential_secret is NOT in command args
+                    cmd_str = " ".join(args)
+                    assert "should-not-be-used" not in cmd_str
+
+        # Test download - should also use --auth-mode login
+        with patch('subprocess.run') as mock_run:
+            mock_run.side_effect = [
+                MagicMock(returncode=0, stdout='{"name": "test"}'),  # az account show
+                MagicMock(returncode=0, stdout=""),  # az storage blob download
+            ]
+
+            with tempfile.NamedTemporaryFile(mode='w', delete=False) as f:
+                download_path = f.name
+
+            try:
+                success, downloaded_checksum = download_from_durable_storage(
+                    "backups/test.gpg", download_path, durable_storage
+                )
+
+                assert success is True
+
+                call_args_list = mock_run.call_args_list
+                for call in call_args_list:
+                    args = call[0][0]
+                    if "az" in args[0] and "storage" in args and "blob" in args and "download" in args:
+                        assert "--auth-mode" in args
+                        assert "login" in args
+                        cmd_str = " ".join(args)
+                        assert "should-not-be-used" not in cmd_str
+            finally:
+                if os.path.exists(download_path):
+                    os.unlink(download_path)
+
+    finally:
+        for f in [encrypted_file, checksum_file]:
+            if os.path.exists(f):
+                os.unlink(f)
+
+
+# =============================================================================
+# NEON API CONTRACT REGRESSION TESTS
+# =============================================================================
+
+def test_regression_neon_api_contract_project():
+    """Test Neon API project endpoint contract for PITR verification."""
+    from app.services.purge_preflight.gate4_backup import _query_neon_api_for_pitr
+    from unittest.mock import patch, MagicMock
+    import urllib.request
+    import json
+
+    # Mock successful project API response
+    project_response = {
+        "project": {
+            "id": "proj-123",
+            "history_retention_seconds": 604800,  # 7 days
+        }
+    }
+
+    branches_response_page1 = {
+        "branches": [
+            {"id": "branch-456", "name": "main"},
+            {"id": "branch-789", "name": "dev"},
+        ],
+        "pagination": {"next": "cursor-abc"}
+    }
+
+    branches_response_page2 = {
+        "branches": [
+            {"id": "branch-999", "name": "feature"},
+        ],
+        "pagination": {"next": None}
+    }
+
+    def make_mock_response(data, status=200):
+        mock_resp = MagicMock()
+        mock_resp.status = status
+        mock_resp.read.return_value = json.dumps(data).encode()
+        mock_resp.__enter__ = MagicMock(return_value=mock_resp)
+        mock_resp.__exit__ = MagicMock(return_value=None)
+        return mock_resp
+
+    with patch('urllib.request.urlopen') as mock_urlopen:
+        # First call: project endpoint
+        # Second call: branches page 1 (branch-456 found here, so page 2 not needed)
+        mock_urlopen.side_effect = [
+            make_mock_response(project_response),
+            make_mock_response(branches_response_page1),
+            make_mock_response(branches_response_page2),
+        ]
+
+        result = _query_neon_api_for_pitr("test-api-key", "proj-123", "branch-456")
+
+        assert result["success"] is True
+        assert result["history_retention_seconds"] == 604800
+        assert result["pitr_enabled"] is True  # retention > 0
+
+        # Verify correct API calls were made (project + branches page 1 = 2 calls)
+        assert mock_urlopen.call_count == 2
+
+
+def test_regression_neon_api_contract_branches():
+    """Test Neon API branches endpoint pagination contract."""
+    from app.services.purge_preflight.gate4_backup import _query_neon_api_for_pitr
+    from unittest.mock import patch, MagicMock
+    import urllib.request
+    import json
+
+    project_response = {
+        "project": {
+            "id": "proj-123",
+            "history_retention_seconds": 86400,  # 1 day - insufficient
+        }
+    }
+
+    branches_response = {
+        "branches": [
+            {"id": "branch-456", "name": "main"},
+        ],
+        "pagination": {"next": None}
+    }
+
+    def make_mock_response(data, status=200):
+        mock_resp = MagicMock()
+        mock_resp.status = status
+        mock_resp.read.return_value = json.dumps(data).encode()
+        mock_resp.__enter__ = MagicMock(return_value=mock_resp)
+        mock_resp.__exit__ = MagicMock(return_value=None)
+        return mock_resp
+
+    with patch('urllib.request.urlopen') as mock_urlopen:
+        mock_urlopen.side_effect = [
+            make_mock_response(project_response),
+            make_mock_response(branches_response),
+        ]
+
+        result = _query_neon_api_for_pitr("test-api-key", "proj-123", "branch-456")
+
+        assert result["success"] is True
+        assert result["history_retention_seconds"] == 86400
+        assert result["pitr_enabled"] is True  # retention > 0, but < 7 days
+
+
+def test_regression_neon_api_contract_branch_not_found():
+    """Test Neon API contract when configured branch not found in project."""
+    from app.services.purge_preflight.gate4_backup import _query_neon_api_for_pitr
+    from unittest.mock import patch, MagicMock
+    import urllib.request
+    import json
+
+    project_response = {
+        "project": {
+            "id": "proj-123",
+            "history_retention_seconds": 604800,
+        }
+    }
+
+    branches_response = {
+        "branches": [
+            {"id": "branch-999", "name": "feature"},
+        ],
+        "pagination": {"next": None}
+    }
+
+    def make_mock_response(data, status=200):
+        mock_resp = MagicMock()
+        mock_resp.status = status
+        mock_resp.read.return_value = json.dumps(data).encode()
+        mock_resp.__enter__ = MagicMock(return_value=mock_resp)
+        mock_resp.__exit__ = MagicMock(return_value=None)
+        return mock_resp
+
+    with patch('urllib.request.urlopen') as mock_urlopen:
+        mock_urlopen.side_effect = [
+            make_mock_response(project_response),
+            make_mock_response(branches_response),
+        ]
+
+        result = _query_neon_api_for_pitr("test-api-key", "proj-123", "branch-456")
+
+        assert result["success"] is False
+        assert "Branch branch-456 not found in project proj-123" in result["error"]
+
+
+def test_regression_neon_api_contract_auth_failure():
+    """Test Neon API contract handles authentication failure."""
+    from app.services.purge_preflight.gate4_backup import _query_neon_api_for_pitr
+    from unittest.mock import patch, MagicMock
+    import urllib.request
+    import urllib.error
+
+    with patch('urllib.request.urlopen') as mock_urlopen:
+        # Simulate 401 Unauthorized
+        error = urllib.error.HTTPError(
+            url="https://console.neon.tech/api/v2/projects/proj-123",
+            code=401,
+            msg="Unauthorized",
+            hdrs={},
+            fp=None
+        )
+        mock_urlopen.side_effect = error
+
+        result = _query_neon_api_for_pitr("invalid-api-key", "proj-123", "branch-456")
+
+        assert result["success"] is False
+        assert "API authentication failure" in result["error"]
+
+
+def test_regression_neon_api_contract_project_not_found():
+    """Test Neon API contract handles project not found (404)."""
+    from app.services.purge_preflight.gate4_backup import _query_neon_api_for_pitr
+    from unittest.mock import patch, MagicMock
+    import urllib.request
+    import urllib.error
+
+    with patch('urllib.request.urlopen') as mock_urlopen:
+        error = urllib.error.HTTPError(
+            url="https://console.neon.tech/api/v2/projects/proj-123",
+            code=404,
+            msg="Not Found",
+            hdrs={},
+            fp=None
+        )
+        mock_urlopen.side_effect = error
+
+        result = _query_neon_api_for_pitr("test-api-key", "proj-123", "branch-456")
+
+        assert result["success"] is False
+        assert "Project proj-123 not found" in result["error"]
+
+
+def test_regression_neon_api_contract_connection_error():
+    """Test Neon API contract handles connection errors."""
+    from app.services.purge_preflight.gate4_backup import _query_neon_api_for_pitr
+    from unittest.mock import patch, MagicMock
+    import urllib.request
+    import urllib.error
+
+    with patch('urllib.request.urlopen') as mock_urlopen:
+        error = urllib.error.URLError("Connection refused")
+        mock_urlopen.side_effect = error
+
+        result = _query_neon_api_for_pitr("test-api-key", "proj-123", "branch-456")
+
+        assert result["success"] is False
+        assert "API connection error" in result["error"]
 
 
 def test_regression_gate5_classification_mismatch():

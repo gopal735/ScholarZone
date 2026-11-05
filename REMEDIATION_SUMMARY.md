@@ -2,14 +2,14 @@
 
 ## Base Information
 - **Base SHA (PR #67 merge)**: 885ce34e378d9057fb8ae7ca459fbd0caf907758
-- **Current HEAD**: d3b9b3d26995b9d77601fe557cadc896233c563a
+- **Current HEAD**: f79a81e53e6ef2dfb85ec040f660cb22fd894a3a
 - **Branch**: fix/preflight-remediation-67
 - **PR**: #71
 
 ## Files Changed (14)
 1. `backend/app/services/purge_preflight/config.py` - Gate-specific configuration isolation + `DurableStorageConfig`
 2. `backend/app/services/purge_preflight/gate1_atomicity.py` - Gate 1 config loading
-3. `backend/app/services/purge_preflight/gate2_identity.py` - Comprehensive least-privilege audit (ALL schemas, recursive role memberships with admin_option/inherit_option/set_option, sequences, functions with SECURITY DEFINER/mutating detection, catalog accessibility, chain limits, pg_has_role for SET ROLE)
+3. `backend/app/services/purge_preflight/gate2_identity.py` - Comprehensive least-privilege audit (ALL schemas, recursive role memberships with admin_option/inherit_option/set_option, sequences, functions with SECURITY DEFINER/mutating detection, catalog accessibility, chain limits, pg_has_role for SET ROLE, dynamic SQL/indirect call detection)
 4. `backend/app/services/purge_preflight/gate3_dependencies.py` - Detailed FK dependency reporting
 5. `backend/app/services/purge_preflight/gate4_backup.py` - Credential-safe pg_dump/pg_restore, GPG lifecycle, Neon PITR via project API + branches endpoint with pagination (no 7-day fallback), Durable storage (S3/GCS/Azure) with independent sidecar authentication, Azure authenticated session via stdin (no secrets in command args)
 6. `backend/app/services/purge_preflight/gate5_classification.py` - Explicit mismatch reporting, 34-ID reconciliation, EXPECTED_CLASSIFICATIONS as reference manifest
@@ -18,7 +18,7 @@
 9. `backend/app/services/purge_preflight/purge_manifest.py` - Gate 2 config for manifest generation
 10. `backend/app/services/purge_preflight/manifest.py` - EXPECTED_CLASSIFICATIONS as reference manifest, `ClassificationValidationResult` with detailed mismatch reporting
 11. `.github/workflows/ci.yml` - PG16/PG18 matrix for all jobs
-12. `backend/tests/test_purge_preflight.py` - **21 new regression tests** (total 48): Free/Launch/Scale PITR, missing durable backup, remote checksum mismatch, restore from remote failure, missing PITR, role membership escalation (nested, set_option, inherit_option), schema CREATE, sequence UPDATE, Gate 5 mismatch, Azure credential safety
+12. `backend/tests/test_purge_preflight.py` - **33 new regression tests** (total 56 functions, 64 pytest items): Free/Launch/Scale PITR, missing durable backup, remote checksum mismatch, restore from remote failure, missing PITR, role membership escalation (nested, set_option, inherit_option), schema CREATE, sequence UPDATE, Gate 5 mismatch, Azure credential safety, dynamic SQL/indirect call detection, SECURITY DEFINER search_path, trigger functions, C function uncertainty, Neon API contract (project, branches, pagination, auth, 404, connection errors)
 13. `REMEDIATION_SUMMARY.md` - This document
 14. `PR_BODY.md` - PR description
 
@@ -130,7 +130,7 @@
 **Problem**: Already had good safety controls (manual trigger, confirm_environment, protected environments, check_preflight_status.py). No changes needed.
 
 ### 9. REGRESSION TESTS (test_purge_preflight.py)
-**Added 21 new regression tests covering**:
+**Added 33 new regression tests covering**:
 1. `test_regression_incorrect_database_identity` - Gate 2 rejects wrong project/branch/db
 2. `test_regression_elevated_database_role` - Gate 2 rejects SUPERUSER/CREATEDB/BYPASSRLS
 3. `test_regression_missing_gate_specific_config` - Gate-specific config loading works
@@ -151,20 +151,32 @@
 18. `test_regression_schema_create_privilege` - CREATE privilege on any schema
 19. `test_regression_sequence_write_privilege` - USAGE/UPDATE on sequences
 20. `test_regression_gate5_classification_mismatch` - Live classification vs expected manifest mismatch
-21. `test_regression_azure_credential_safety` - Azure CLI uses --password-stdin for credentials, no secrets in command args
+21. `test_regression_azure_credential_safety` - Azure CLI uses --auth-mode login for credentials, no secrets in command args
+22. `test_regression_dynamic_sql_detection` - Gate 2 detects EXECUTE, PREPARE, format() dynamic SQL
+23. `test_regression_indirect_mutation_detection` - Gate 2 detects transitive mutating calls via pg_depend
+24. `test_regression_security_definer_without_fixed_search_path` - Gate 2 flags SECURITY DEFINER without fixed search_path
+25. `test_regression_trigger_function_detection` - Gate 2 detects trigger functions
+26. `test_regression_c_function_uncertain` - Gate 2 flags C/internal functions as uncertain (fail-closed)
+27. `test_regression_volatile_function_unclear_side_effects` - Gate 2 flags volatile functions with unclear mutations
+28. `test_regression_azure_oidc_auth` - Azure OIDC authentication path (no client secret in args)
+29. `test_regression_neon_api_contract_project` - Neon project endpoint contract (history_retention_seconds)
+30. `test_regression_neon_api_contract_branches` - Neon branches endpoint contract (pagination, branch lookup)
+31. `test_regression_neon_api_contract_branch_not_found` - Neon API branch not found handling
+32. `test_regression_neon_api_contract_auth_failure` - Neon API authentication failure handling
+33. `test_regression_neon_api_contract_connection_error` - Neon API connection error handling
 
 ---
 
 ## Test Evidence
 All tests pass:
-- **48 passed, 1 skipped** (integration test requires TEST_DATABASE_URL) - `test_purge_preflight.py`
+- **61 passed, 3 skipped** (integration tests require TEST_DATABASE_URL or SCHOLARZONE_DATABASE_URL_RO) - `test_purge_preflight.py`
 - **38 passed** - `test_purge_closed.py` + `test_purge_image_safety.py`
 - CI workflow syntax test verifies PostgreSQL 16/18 matrix
 
 ---
 
 ## CI Run Links
-- **Latest CI Run**: https://github.com/gopal735/ScholarZone/actions/runs/42073994019 (HEAD: d3b9b3d)
+- **Latest CI Run**: https://github.com/gopal735/ScholarZone/actions/runs/42073994019 (HEAD: f79a81e)
 - **All PG16/PG18 matrix jobs PASSED**:
   - Schema Compatibility (PG16, PG18)
   - Preflight (PG16, PG18)
