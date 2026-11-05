@@ -295,7 +295,9 @@ def _check_role_memberships(cur, current_user: str) -> tuple[list[str], list[str
     """
     Recursively check role memberships via pg_auth_members for inherited privileges.
     Reports any inherited SUPERUSER, CREATEROLE, CREATEDB, REPLICATION, BYPASSRLS.
-    Also checks membership options (ADMIN OPTION, SET ROLE).
+    Also checks membership options (ADMIN OPTION, INHERIT OPTION, SET OPTION).
+    Do not assume every membership grants SET ROLE - check set_option.
+    Correctly evaluate nested membership chains.
     Detects membership-chain traversal limits and fails closed.
     
     Returns:
@@ -316,7 +318,8 @@ def _check_role_memberships(cur, current_user: str) -> tuple[list[str], list[str
         try:
             cur.execute("""
                 SELECT r.rolname, r.rolsuper, r.rolcreaterole, r.rolcreatedb, r.rolreplication, r.rolbypassrls,
-                       m.admin_option, m.roleid, m.member
+                       m.admin_option, m.inherit_option, m.set_option,
+                       m.roleid, m.member
                 FROM pg_roles r
                 JOIN pg_auth_members m ON r.oid = m.roleid
                 JOIN pg_roles member ON member.oid = m.member
@@ -326,6 +329,8 @@ def _check_role_memberships(cur, current_user: str) -> tuple[list[str], list[str
             for member_role in cur.fetchall():
                 member_name = member_role["rolname"]
                 admin_option = member_role["admin_option"]
+                inherit_option = member_role["inherit_option"]
+                set_option = member_role["set_option"]
                 
                 if member_role["rolsuper"]:
                     errors.append(f"Role inherits SUPERUSER via membership in {member_name}")
@@ -342,8 +347,15 @@ def _check_role_memberships(cur, current_user: str) -> tuple[list[str], list[str
                 if admin_option:
                     warnings.append(f"Role has ADMIN OPTION on membership in {member_name} (can grant membership to others)")
                 
-                # Check for SET ROLE exposure
-                warnings.append(f"Role can SET ROLE to {member_name} via membership")
+                if not inherit_option:
+                    warnings.append(f"Role membership in {member_name} has NOINHERIT - privileges not automatically inherited")
+                
+                # Check for SET ROLE exposure - only if set_option is true
+                # Do NOT assume every membership grants SET ROLE
+                if set_option:
+                    warnings.append(f"Role can SET ROLE to {member_name} via membership (set_option=true)")
+                else:
+                    warnings.append(f"Role membership in {member_name} has NOSET ROLE - cannot SET ROLE to this role")
 
                 # Recursively check nested memberships
                 check_role_recursive(member_name, depth + 1)
@@ -457,13 +469,18 @@ def _check_all_function_privileges(cur, current_user: str, errors: list[str]) ->
 
 
 def _check_set_role_exposure(cur, current_user: str, errors: list[str]) -> None:
-    """Check for SET ROLE exposure - roles that current_user can SET ROLE to."""
+    """Check for SET ROLE exposure - roles that current_user can SET ROLE to.
+    
+    Uses pg_has_role() with 'SET' privilege type, which is the correct
+    PostgreSQL function for checking SET ROLE privilege.
+    """
     try:
         # Check which roles current_user can SET ROLE to
+        # pg_has_role(current_user, role_oid, 'SET') is the correct function
         cur.execute("""
             SELECT r.rolname
             FROM pg_roles r
-            WHERE has_role_privilege(current_user, r.oid, 'SET ROLE')
+            WHERE pg_has_role(current_user, r.oid, 'SET')
             AND r.rolname != current_user
         """)
         

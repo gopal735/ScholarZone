@@ -2,23 +2,23 @@
 
 ## Base Information
 - **Base SHA (PR #67 merge)**: 885ce34e378d9057fb8ae7ca459fbd0caf907758
-- **Current HEAD**: 95aff8419ad62f950ebe2c92f7d0252f4e751e51
+- **Current HEAD**: 7b3ad90ed4bc3c28848433baf4e13a08b1f96a78
 - **Branch**: fix/preflight-remediation-67
 - **PR**: #71
 
-## Files Changed (14 files)
-1. `backend/app/services/purge_preflight/config.py` - Gate-specific configuration isolation + DurableStorageConfig
+## Files Changed (14)
+1. `backend/app/services/purge_preflight/config.py` - Gate-specific configuration isolation + `DurableStorageConfig`
 2. `backend/app/services/purge_preflight/gate1_atomicity.py` - Gate 1 config loading
-3. `backend/app/services/purge_preflight/gate2_identity.py` - Comprehensive least-privilege audit (all schemas, role memberships, sequences, functions, SET ROLE)
+3. `backend/app/services/purge_preflight/gate2_identity.py` - Comprehensive least-privilege audit (ALL schemas, recursive role memberships with admin_option/inherit_option/set_option, sequences, functions, catalog accessibility, chain limits, pg_has_role for SET ROLE)
 4. `backend/app/services/purge_preflight/gate3_dependencies.py` - Detailed FK dependency reporting
-5. `backend/app/services/purge_preflight/gate4_backup.py` - Credential-safe pg_dump/pg_restore, GPG lifecycle, Neon PITR via API/pg_settings, Durable storage (S3/GCS/Azure) with upload/download/checksum/restore verification
+5. `backend/app/services/purge_preflight/gate4_backup.py` - Credential-safe pg_dump/pg_restore, GPG lifecycle, Neon PITR via project API (no 7-day fallback), Durable storage (S3/GCS/Azure) with full upload/download/checksum/restore verification, Azure authenticated session (no secrets in command args)
 6. `backend/app/services/purge_preflight/gate5_classification.py` - Explicit mismatch reporting, 34-ID reconciliation, EXPECTED_CLASSIFICATIONS as reference manifest
 7. `backend/app/services/purge_preflight/gate6_cycle_validation.py` - Gate 6 config loading
 8. `backend/app/services/purge_preflight/gate7_git_safety.py` - Gate 7 config loading
 9. `backend/app/services/purge_preflight/purge_manifest.py` - Gate 2 config for manifest generation
-10. `backend/app/services/purge_preflight/manifest.py` - EXPECTED_CLASSIFICATIONS documented as reference manifest, detailed mismatch reporting
-11. `.github/workflows/ci.yml` - PostgreSQL 16/18 matrix testing for all jobs
-12. `backend/tests/test_purge_preflight.py` - 21 new regression tests (total 48 tests)
+10. `backend/app/services/purge_preflight/manifest.py` - EXPECTED_CLASSIFICATIONS as reference manifest, `ClassificationValidationResult` with detailed mismatch reporting
+11. `.github/workflows/ci.yml` - PG16/PG18 matrix for all jobs
+12. `backend/tests/test_purge_preflight.py` - **21 new regression tests** (total 48): Free/Launch/Scale PITR, missing durable backup, remote checksum mismatch, restore from remote failure, missing PITR, role membership escalation (nested, set_option, inherit_option), schema CREATE, sequence UPDATE, Gate 5 mismatch, Azure credential safety
 13. `REMEDIATION_SUMMARY.md` - This document
 14. `PR_BODY.md` - PR description
 
@@ -46,12 +46,12 @@
 - Table-level privileges: INSERT, UPDATE, DELETE, TRUNCATE on ALL tables in ALL schemas (all must be FALSE)
 - SELECT privilege on scholarships table (must be TRUE)
 - Transaction read-only enforcement: `default_transaction_read_only = on`
-- Role memberships: Recursive check via pg_auth_members for inherited privileges (SUPERUSER, CREATEROLE, CREATEDB, REPLICATION, BYPASSRLS) with ADMIN OPTION detection
+- Role memberships: Recursive check via pg_auth_members for inherited privileges (SUPERUSER, CREATEROLE, CREATEDB, REPLICATION, BYPASSRLS) with **admin_option, inherit_option, set_option** detection
 - Membership chain traversal limit (max 10 levels) with cycle detection
 - Schema privileges: CREATE must be FALSE, USAGE must be TRUE on ALL schemas
 - Sequence privileges: USAGE and UPDATE (setval) must be FALSE on ALL sequences in ALL schemas
 - Function/routine EXECUTE privileges: All flagged for audit on ALL schemas
-- SET ROLE exposure: Detects any role current_user can SET ROLE to
+- **SET ROLE exposure**: Uses `pg_has_role(current_user, role_oid, 'SET')` - correct PostgreSQL function
 - Catalog accessibility: Verifies all required system catalogs are queryable (fail closed if not)
 - Fail closed on any inaccessible catalog or incomplete privilege check
 
@@ -89,25 +89,31 @@
 - PITR verification used Neon GUCs but had unconditional 7-day fallback
 - No durable backup storage verification
 - Remote checksum verification was local-only
+- Azure CLI passed client_secret in command arguments
 
 **Fix**:
 - `run_pg_dump()` and `run_pg_restore()` parse URL and use `PGPASSWORD` env var + explicit `-h/-p/-U/-d` flags (credentials never in command line)
 - **Neon PITR Verification**: 
   - Requires `neon.project_id` and `neon.branch_id` settings to confirm Neon instance
-  - Queries Neon API (`NEON_API_KEY`) for authoritative `history_retention_seconds` and `pitr_enabled`
-  - Falls back to `pg_settings` for `neon.pitr_retention_days` and `neon.pitr_enabled` only if API unavailable
+  - Queries Neon API (`NEON_API_KEY`) via **project details endpoint** `GET /projects/{project_id}`
+  - Parses **project-level `history_retention_seconds`** as authoritative source
+  - Verifies branch belongs to project, reads branch `pitr_enabled` if present
+  - Falls back to `pg_settings` for `neon.pitr_*` only if API unavailable
   - Converts seconds to days correctly (ceiling division)
-  - Requires ≥7 days retention if that's the declared backup policy
-  - Returns UNVERIFIED if no authoritative evidence (no API, no pg_settings)
+  - Requires ≥7 days (604800 seconds) retention
+  - Returns UNVERIFIED if no authoritative evidence
   - **NEVER** infers production PITR from server version string alone
+  - **NEVER** defaults missing `pitr_enabled` to True
 - **GPG Key Lifecycle**: Verifies both public and private key fingerprints match pinned value; test mode generates synthetic keys in isolated GNUPGHOME
 - **Durable Storage (S3/GCS/Azure)**:
   - Upload: `aws s3 cp` / `gsutil cp` / `az storage blob upload --auth-mode login` (NO account keys in command args)
-  - Azure: Uses authenticated session (`az login --identity` or service principal via env vars), never `--account-key` in command line
+  - **Azure**: Uses authenticated session via environment variables (`AZURE_CLIENT_ID/TENANT_ID/CLIENT_SECRET`), **NEVER passes client_secret in command arguments**; prefers managed identity
   - Download: Returns checksum of downloaded file for independent verification
   - Restore from durable: Full upload→download→checksum→decrypt→restore→verify path
   - `remote_checksum_verified` depends on independently verified remote object content (downloaded file checksum vs uploaded checksum sidecar)
   - Fail closed if remote storage unavailable
+  - Tests for missing objects, corrupted downloads, checksum mismatch, failed restore, provider auth errors
+  - Disposable restore database always cleaned up
 - `get_pitr_status()` returns 3-tuple (status, retention_days, details) - fixed tuple unpacking in run_gate4()
 
 ### 7. POSTGRESQL COMPATIBILITY (ci.yml)
@@ -136,11 +142,11 @@
 14. `test_regression_remote_checksum_mismatch` - Checksum mismatch detection
 15. `test_regression_restore_from_remote_backup_failure` - Restore from corrupt remote backup
 16. `test_regression_missing_pitr_evidence` - Gate 4 fails when PITR evidence missing/invalid
-17. `test_regression_role_membership_privilege_escalation` - Inherited SUPERUSER/CREATEROLE/CREATEDB/BYPASSRLS, nested membership
+17. `test_regression_role_membership_privilege_escalation` - Inherited SUPERUSER/CREATEROLE/CREATEDB/BYPASSRLS, nested membership, **set_option, inherit_option, admin_option**
 18. `test_regression_schema_create_privilege` - CREATE privilege on any schema
 19. `test_regression_sequence_write_privilege` - USAGE/UPDATE on sequences
 20. `test_regression_gate5_classification_mismatch` - Live classification vs expected manifest mismatch
-21. `test_regression_azure_credential_safety` - Azure CLI uses authenticated session, no keys in args
+21. `test_regression_azure_credential_safety` - Azure CLI uses env vars for credentials, no secrets in command args
 
 ---
 
@@ -153,8 +159,13 @@ All tests pass:
 ---
 
 ## CI Run Links
-- PR #71: https://github.com/gopal735/ScholarZone/pull/71
-- CI Run: https://github.com/gopal735/ScholarZone/actions/runs/42064234658 (PG16/PG18 matrix)
+- **Latest CI Run**: https://github.com/gopal735/ScholarZone/actions/runs/42071097550 (Run #620)
+- **All PG16/PG18 matrix jobs PASSED**:
+  - Schema Compatibility (PG16, PG18)
+  - Preflight (PG16, PG18)
+  - PostgreSQL Migration Integration Test (PG16, PG18)
+  - Gate 1 Integration (PG16, PG18)
+  - backend-tests, frontend-tests, git-integrity, env-config, build-and-smoke, import-smoke, Snapshot ID Validation
 
 ---
 
@@ -168,8 +179,8 @@ All tests pass:
    - `RESTORE_TEST_PGHOST`, `RESTORE_TEST_PGPORT`, `RESTORE_TEST_PGUSER`, `RESTORE_TEST_PGPASSWORD`
    - `DURABLE_STORAGE_PROVIDER` (s3|gcs|azure), `DURABLE_STORAGE_BUCKET`, `DURABLE_STORAGE_REGION`, `DURABLE_STORAGE_CREDENTIAL`, `DURABLE_STORAGE_CREDENTIAL_SECRET`
    - `NEON_API_KEY` (for authoritative PITR verification)
-   - `AZURE_CLIENT_ID`, `AZURE_TENANT_ID`, `AZURE_CLIENT_SECRET` (for Azure auth)
-3. **Verify Neon PITR**: Confirm `neon.pitr_enabled=on` and `history_retention_seconds` ≥ 604800 (7 days) on production branch via Neon API
+   - `AZURE_CLIENT_ID`, `AZURE_TENANT_ID`, `AZURE_CLIENT_SECRET` (via GitHub Actions secrets, for Azure auth)
+3. **Verify Neon PITR**: Confirm `history_retention_seconds` ≥ 604800 (7 days) on production branch via Neon API project endpoint
 4. **GPG Key Setup**: Import production GPG public/private key pair matching `GPG_EXPECTED_FINGERPRINT`
 5. **Run Full Preflight**: Execute `production-purge-preflight.yml` with `gate: all` and `confirm_environment: true`
 6. **Review Results**: Verify all 7 gates PASS and `check_preflight_status.py` returns SUCCESS
@@ -179,7 +190,7 @@ All tests pass:
 ## Final Verdict
 
 ### CI_VERIFIED ✅
-All unit and regression tests pass. CI pipeline tests against PostgreSQL 16 and 18.
+All unit/regression tests pass. CI pipeline tests against PostgreSQL 16 and 18. Latest run #620 all green.
 
 ### PRODUCTION_PREFLIGHT_VERIFIED ⏳
 Pending: Requires production secrets configuration and successful workflow_dispatch execution against production Neon database.
@@ -205,4 +216,5 @@ Owner must configure environments, secrets, GPG keys, and verify PITR before pre
 - ✅ No deployment or merge
 - ✅ Disposable databases used for all integration tests
 - ✅ Credentials use PGPASSWORD env var, never in command line
-- ✅ Azure credentials use authenticated session, never in command line
+- ✅ Azure credentials use environment variables, never in command line
+- ✅ Neon API key used only via environment variable

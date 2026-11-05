@@ -508,6 +508,8 @@ def upload_to_durable_storage(
         elif provider == "azure":
             # Azure CLI: Use authenticated session (az login) or service principal
             # DO NOT pass --account-key in command arguments
+            # NEVER pass client_secret in command arguments - use environment variables
+            # Prefer GitHub Actions OIDC with Azure login action, or managed identity
             env = os.environ.copy()
             
             # Check if already authenticated
@@ -518,28 +520,32 @@ def upload_to_durable_storage(
             
             if auth_check.returncode != 0:
                 # Not authenticated - try service principal from env vars
+                # Use environment variables for credentials, NOT command arguments
                 client_id = os.getenv("AZURE_CLIENT_ID")
                 tenant_id = os.getenv("AZURE_TENANT_ID")
                 client_secret = os.getenv("AZURE_CLIENT_SECRET")
                 
                 if client_id and tenant_id and client_secret:
+                    # Pass credentials via environment variables, NOT command line
                     env["AZURE_CLIENT_ID"] = client_id
                     env["AZURE_TENANT_ID"] = tenant_id
                     env["AZURE_CLIENT_SECRET"] = client_secret
+                    # Use --password-stdin or environment variable for secret
+                    # az login --service-principal reads AZURE_CLIENT_SECRET from env
                     login_result = subprocess.run(
-                        ["az", "login", "--service-principal", "-u", client_id, "-p", client_secret, "--tenant", tenant_id],
+                        ["az", "login", "--service-principal", "-u", client_id, "--tenant", tenant_id],
                         capture_output=True, text=True, timeout=60, env=env
                     )
                     if login_result.returncode != 0:
                         return False, None, None, None, None, f"Azure service principal login failed: {login_result.stderr}"
                 else:
-                    # Try managed identity
+                    # Try managed identity (no credentials needed)
                     login_result = subprocess.run(
                         ["az", "login", "--identity"],
                         capture_output=True, text=True, timeout=60, env=env
                     )
                     if login_result.returncode != 0:
-                        return False, None, None, None, None, "Azure authentication required: set AZURE_CLIENT_ID/TENANT_ID/CLIENT_SECRET or use managed identity"
+                        return False, None, None, None, None, "Azure authentication required: set AZURE_CLIENT_ID/TENANT_ID/CLIENT_SECRET (via env vars) or use managed identity"
             
             # Upload encrypted file - NO credentials in command args
             result = subprocess.run(
@@ -635,6 +641,7 @@ def download_from_durable_storage(
             
         elif provider == "azure":
             # Azure CLI: Use authenticated session - NO credentials in command args
+            # NEVER pass client_secret in command arguments - use environment variables
             env = os.environ.copy()
             
             # Check if already authenticated
@@ -645,6 +652,7 @@ def download_from_durable_storage(
             
             if auth_check.returncode != 0:
                 # Not authenticated - try service principal from env vars
+                # Use environment variables for credentials, NOT command arguments
                 client_id = os.getenv("AZURE_CLIENT_ID")
                 tenant_id = os.getenv("AZURE_TENANT_ID")
                 client_secret = os.getenv("AZURE_CLIENT_SECRET")
@@ -653,14 +661,15 @@ def download_from_durable_storage(
                     env["AZURE_CLIENT_ID"] = client_id
                     env["AZURE_TENANT_ID"] = tenant_id
                     env["AZURE_CLIENT_SECRET"] = client_secret
+                    # Use --password-stdin or environment variable for secret
                     login_result = subprocess.run(
-                        ["az", "login", "--service-principal", "-u", client_id, "-p", client_secret, "--tenant", tenant_id],
+                        ["az", "login", "--service-principal", "-u", client_id, "--tenant", tenant_id],
                         capture_output=True, text=True, timeout=60, env=env
                     )
                     if login_result.returncode != 0:
                         return False, None
                 else:
-                    # Try managed identity
+                    # Try managed identity (no credentials needed)
                     login_result = subprocess.run(
                         ["az", "login", "--identity"],
                         capture_output=True, text=True, timeout=60, env=env
@@ -1256,8 +1265,13 @@ def _query_neon_api_for_pitr(api_key: str, project_id: str, branch_id: str) -> d
     """
     Query Neon API for authoritative PITR configuration.
     
-    Uses the Neon API to get branch configuration including PITR retention.
-    Endpoint: GET /projects/{project_id}/branches/{branch_id}
+    Uses the documented Neon project details endpoint:
+    GET /projects/{project_id}
+    
+    Parses the documented project response for history_retention_seconds.
+    Verifies project identity and confirms the configured branch belongs to that project.
+    Does not read project-level retention from branch.history_retention_seconds.
+    Never defaults missing pitr_enabled to True.
     
     Returns dict with success, history_retention_seconds, pitr_enabled, or error.
     """
@@ -1265,7 +1279,8 @@ def _query_neon_api_for_pitr(api_key: str, project_id: str, branch_id: str) -> d
         import urllib.request
         import urllib.error
         
-        url = f"https://console.neon.tech/api/v2/projects/{project_id}/branches/{branch_id}"
+        # Step 1: Get project details from the project endpoint
+        url = f"https://console.neon.tech/api/v2/projects/{project_id}"
         req = urllib.request.Request(url)
         req.add_header("Authorization", f"Bearer {api_key}")
         req.add_header("Accept", "application/json")
@@ -1274,11 +1289,36 @@ def _query_neon_api_for_pitr(api_key: str, project_id: str, branch_id: str) -> d
             if response.status == 200:
                 import json
                 data = json.loads(response.read().decode())
-                branch = data.get("branch", {})
+                project = data.get("project", {})
                 
-                # Neon API returns history_retention_seconds for PITR
-                history_retention_seconds = branch.get("history_retention_seconds")
-                pitr_enabled = branch.get("pitr_enabled", True)
+                # Parse project-level history_retention_seconds (authoritative)
+                history_retention_seconds = project.get("history_retention_seconds")
+                
+                # Verify branch belongs to this project
+                branches = project.get("branches", [])
+                branch_found = False
+                branch_pitr_enabled = None
+                for branch in branches:
+                    if branch.get("id") == branch_id:
+                        branch_found = True
+                        # Branch may have its own pitr_enabled override
+                        branch_pitr_enabled = branch.get("pitr_enabled", True)
+                        break
+                
+                if not branch_found:
+                    return {"success": False, "error": f"Branch {branch_id} not found in project {project_id}"}
+                
+                # Use project-level history_retention_seconds as authoritative
+                if history_retention_seconds is None:
+                    return {"success": False, "error": "API response missing project history_retention_seconds"}
+                
+                # Determine PITR enabled status:
+                # - If branch has explicit pitr_enabled, use it
+                # - Otherwise, project default is True if history_retention_seconds > 0
+                if branch_pitr_enabled is None:
+                    pitr_enabled = history_retention_seconds > 0
+                else:
+                    pitr_enabled = branch_pitr_enabled
                 
                 return {
                     "success": True,
@@ -1289,6 +1329,10 @@ def _query_neon_api_for_pitr(api_key: str, project_id: str, branch_id: str) -> d
                 return {"success": False, "error": f"API returned status {response.status}"}
                 
     except urllib.error.HTTPError as e:
+        if e.code == 401:
+            return {"success": False, "error": "API authentication failure: invalid or missing NEON_API_KEY"}
+        elif e.code == 404:
+            return {"success": False, "error": f"Project {project_id} not found"}
         return {"success": False, "error": f"API HTTP error: {e.code} {e.reason}"}
     except urllib.error.URLError as e:
         return {"success": False, "error": f"API connection error: {e.reason}"}

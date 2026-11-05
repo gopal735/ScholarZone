@@ -1575,7 +1575,7 @@ def test_regression_role_membership_privilege_escalation():
     mock_cursor = MagicMock()
     mock_conn.cursor.return_value.__enter__.return_value = mock_cursor
     mock_cursor.fetchall.return_value = [
-        {"rolname": "superuser_role", "rolsuper": True, "rolcreaterole": False, "rolcreatedb": False, "rolreplication": False, "rolbypassrls": False, "admin_option": False}
+        {"rolname": "superuser_role", "rolsuper": True, "rolcreaterole": False, "rolcreatedb": False, "rolreplication": False, "rolbypassrls": False, "admin_option": False, "inherit_option": True, "set_option": True}
     ]
     errors, warnings = _check_role_memberships(mock_cursor, "readonly_user")
     assert any("SUPERUSER" in e and "superuser_role" in e for e in errors)
@@ -1587,7 +1587,7 @@ def test_regression_role_membership_privilege_escalation():
     mock_cursor = MagicMock()
     mock_conn.cursor.return_value.__enter__.return_value = mock_cursor
     mock_cursor.fetchall.return_value = [
-        {"rolname": "admin_role", "rolsuper": False, "rolcreaterole": True, "rolcreatedb": False, "rolreplication": False, "rolbypassrls": False, "admin_option": False}
+        {"rolname": "admin_role", "rolsuper": False, "rolcreaterole": True, "rolcreatedb": False, "rolreplication": False, "rolbypassrls": False, "admin_option": False, "inherit_option": True, "set_option": True}
     ]
     errors, warnings = _check_role_memberships(mock_cursor, "readonly_user")
     assert any("CREATEROLE" in e and "admin_role" in e for e in errors)
@@ -1599,7 +1599,7 @@ def test_regression_role_membership_privilege_escalation():
     mock_cursor = MagicMock()
     mock_conn.cursor.return_value.__enter__.return_value = mock_cursor
     mock_cursor.fetchall.return_value = [
-        {"rolname": "db_admin", "rolsuper": False, "rolcreaterole": False, "rolcreatedb": True, "rolreplication": False, "rolbypassrls": False, "admin_option": False}
+        {"rolname": "db_admin", "rolsuper": False, "rolcreaterole": False, "rolcreatedb": True, "rolreplication": False, "rolbypassrls": False, "admin_option": False, "inherit_option": True, "set_option": True}
     ]
     errors, warnings = _check_role_memberships(mock_cursor, "readonly_user")
     assert any("CREATEDB" in e and "db_admin" in e for e in errors)
@@ -1611,7 +1611,7 @@ def test_regression_role_membership_privilege_escalation():
     mock_cursor = MagicMock()
     mock_conn.cursor.return_value.__enter__.return_value = mock_cursor
     mock_cursor.fetchall.return_value = [
-        {"rolname": "rls_bypass", "rolsuper": False, "rolcreaterole": False, "rolcreatedb": False, "rolreplication": False, "rolbypassrls": True, "admin_option": False}
+        {"rolname": "rls_bypass", "rolsuper": False, "rolcreaterole": False, "rolcreatedb": False, "rolreplication": False, "rolbypassrls": True, "admin_option": False, "inherit_option": True, "set_option": True}
     ]
     errors, warnings = _check_role_memberships(mock_cursor, "readonly_user")
     assert any("BYPASSRLS" in e and "rls_bypass" in e for e in errors)
@@ -1628,8 +1628,8 @@ def test_regression_role_membership_privilege_escalation():
     # Call 2: intermediate_role -> superuser_role  
     # Call 3: superuser_role -> no members (empty list)
     mock_cursor.fetchall.side_effect = [
-        [{"rolname": "intermediate_role", "rolsuper": False, "rolcreaterole": False, "rolcreatedb": False, "rolreplication": False, "rolbypassrls": False, "admin_option": False}],
-        [{"rolname": "superuser_role", "rolsuper": True, "rolcreaterole": False, "rolcreatedb": False, "rolreplication": False, "rolbypassrls": False, "admin_option": False}],
+        [{"rolname": "intermediate_role", "rolsuper": False, "rolcreaterole": False, "rolcreatedb": False, "rolreplication": False, "rolbypassrls": False, "admin_option": False, "inherit_option": True, "set_option": True}],
+        [{"rolname": "superuser_role", "rolsuper": True, "rolcreaterole": False, "rolcreatedb": False, "rolreplication": False, "rolbypassrls": False, "admin_option": False, "inherit_option": True, "set_option": True}],
         [],  # No further members
     ]
     errors, warnings = _check_role_memberships(mock_cursor, "readonly_user")
