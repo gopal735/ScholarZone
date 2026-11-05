@@ -190,23 +190,66 @@ export function getDaysDifference(targetDate) {
  * This prevents marking a scholarship as CLOSED if a future cycle exists.
  */
 export function hasVerifiedFutureCycle(scholarship) {
-  // Check for explicit future cycle indicators in application_period
-  if (scholarship.application_period && typeof scholarship.application_period === 'string') {
-    const period = scholarship.application_period.toLowerCase();
-    // Look for future year mentions beyond current year
-    const currentYear = new Date().getFullYear();
-    const futureYearPattern = new RegExp(`\\b(${currentYear + 1}|${currentYear + 2}|\\d{4}-\\d{2}-\\d{2})\\b`);
-    if (futureYearPattern.test(period) && 
-        (period.includes('202') || period.includes('opens') || period.includes('cycle'))) {
-      return true;
-    }
-  }
+  const now = new Date();
+  now.setHours(0, 0, 0, 0);
   
   // Check for explicit opening_date in future
   if (scholarship.opening_date) {
     const openingDays = getDaysDifference(scholarship.opening_date);
     if (openingDays !== null && openingDays > 0) {
       return true;
+    }
+  }
+  
+  // Check for explicit future cycle indicators in application_period
+  if (scholarship.application_period && typeof scholarship.application_period === 'string') {
+    const period = scholarship.application_period;
+    
+    // Pattern: "opens YYYY-MM-DD" or "opens DD Month YYYY"
+    const opensPattern = /opens?\s+(?:on\s+)?(\d{4}-\d{2}-\d{2}|\d{1,2}\s+\w+\s+\d{4})/i;
+    const match = period.match(opensPattern);
+    if (match) {
+      const parsed = new Date(match[1] + 'T00:00:00Z');
+      if (!isNaN(parsed.getTime()) && parsed > now) {
+        return true;
+      }
+    }
+    
+    // Pattern: "2027 cycle: call opens 2027-01-01"
+    const cyclePattern = /(\d{4})\s+cycle:?.*?opens?\s+(\d{4}-\d{2}-\d{2})/i;
+    const cycleMatch = period.match(cyclePattern);
+    if (cycleMatch) {
+      const parsed = new Date(cycleMatch[2] + 'T00:00:00Z');
+      if (!isNaN(parsed.getTime()) && parsed > now) {
+        return true;
+      }
+    }
+    
+    // Pattern: "call opens Month YYYY" or "applications open Month YYYY"
+    const monthYearPattern = /(?:call|applications?)\s+opens?\s+(\w+\s+\d{4})/i;
+    const monthMatch = period.match(monthYearPattern);
+    if (monthMatch) {
+      const parsed = new Date(monthMatch[1] + ' 00:00:00Z');
+      if (!isNaN(parsed.getTime()) && parsed > now) {
+        return true;
+      }
+    }
+    
+    // Pattern: "re-opens in early December" or "opens in early February"
+    const qualitativePattern = /(?:re-)?opens?\s+in\s+(early|mid|late)\s+(\w+)/i;
+    const qualMatch = period.match(qualitativePattern);
+    if (qualMatch) {
+      const monthMap = { january: 0, february: 1, march: 2, april: 3, may: 4, june: 5,
+                         july: 6, august: 7, september: 8, october: 9, november: 10, december: 11 };
+      const month = monthMap[qualMatch[2].toLowerCase()];
+      if (month !== undefined) {
+        const year = new Date().getFullYear();
+        const day = qualMatch[1] === 'early' ? 5 : qualMatch[1] === 'mid' ? 15 : 25;
+        const parsed = new Date(Date.UTC(year, month, day));
+        if (parsed > now) {
+          return true;
+        }
+      }
     }
   }
   

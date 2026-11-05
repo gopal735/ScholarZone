@@ -170,9 +170,11 @@ function SettingsPanel({
               <small>Downloads a quantized model (~60MB) to run inference in your browser. Works offline, no data leaves your device.</small>
             </span>
           </label>
-          {localAIEnabled && (
+          {localAIEnabled && aiStatus.localAIModelReady ? (
             <div className="setting-status">✓ Model ready</div>
-          )}
+          ) : localAIEnabled ? (
+            <div className="setting-status">⚠ Not implemented (placeholder only)</div>
+          ) : null}
         </div>
 
         <div className="setting-item">
