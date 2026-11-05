@@ -22,43 +22,14 @@ REQUIRED_IMAGE_FIELDS = {
     "image_source_url",
 }
 
-# All tables that must exist in a fully initialized schema
-REQUIRED_TABLES = {
-    # Core scholarship tables
-    "scholarships",
-    "scholarship_verification_history",
-    "scholarship_reviews",
-    "scholarship_fetch_attempts",
-    "scholarship_snapshots",
-    "scholarship_restore_records",
-    # Discovery & knowledge tables
-    "approved_sources",
-    "source_health",
-    "knowledge_nodes",
-    "knowledge_edges",
-    "discovery_candidates",
-    "image_reviews",
-    "content_fingerprints",
-    # Maintenance tables
-    "maintenance_runs",
-    "maintenance_slots",
-    "maintenance_cursors",
-    # Supervisor tables
-    "scholarship_supervisor_coverage",
-    "professor_profiles",
-    "scholarship_professor_links",
-    "supervisor_source_evidence",
-    "professor_availability",
-    "contact_templates",
-    "professor_outreach_records",
-    # User/dashboard tables
-    "users",
-    "user_sessions",
-    "student_profiles",
-    "saved_scholarships",
-    "application_records",
-    "application_checklist_items",
-}
+def _get_required_tables() -> set[str]:
+    """Get all table names from SQLAlchemy models (including supervisor models)."""
+    from app.models import Base
+    import app.models_supervisor  # noqa: F401 - registers supervisor tables with Base.metadata
+    return set(Base.metadata.tables.keys())
+
+
+REQUIRED_TABLES = _get_required_tables()
 
 
 def get_model_columns() -> dict[str, set[str]]:

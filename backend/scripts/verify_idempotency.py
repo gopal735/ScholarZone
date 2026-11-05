@@ -3,13 +3,16 @@
 
 import os
 import sys
+from pathlib import Path
 
-# Set environment variables
-os.environ['SCHOLARZONE_DATABASE_URL'] = 'postgresql://test:test@localhost:5435/schema_compat_test?sslmode=disable'
-os.environ['SCHOLARZONE_ENVIRONMENT'] = 'test'
+# Use environment variable if provided, otherwise default to schema_compat_test
+os.environ.setdefault('SCHOLARZONE_DATABASE_URL', 'postgresql://test:test@localhost:5435/schema_compat_test?sslmode=disable')
+os.environ.setdefault('SCHOLARZONE_ENVIRONMENT', 'test')
 
-# Add backend to path
-sys.path.insert(0, '/home/runner/work/ScholarZone/ScholarZone/backend')
+# Add backend to path - use relative path from script location
+BACKEND_DIR = Path(__file__).parent.parent
+if str(BACKEND_DIR) not in sys.path:
+    sys.path.insert(0, str(BACKEND_DIR))
 
 from app.database import init_database
 
