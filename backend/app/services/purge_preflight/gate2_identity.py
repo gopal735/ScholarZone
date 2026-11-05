@@ -50,6 +50,7 @@ class Gate2Result:
     records: list[dict] = None
     # Additional verification fields
     role_privileges_verified: bool = False
+    role_privilege_errors: list[str] = None
     connection_consistency_verified: bool = False
     all_metadata_present: bool = False
     status: str = "PENDING"
@@ -62,6 +63,8 @@ class Gate2Result:
             self.missing_ids = []
         if self.records is None:
             self.records = []
+        if self.role_privilege_errors is None:
+            self.role_privilege_errors = []
 
     def to_dict(self) -> dict:
         return asdict(self)
@@ -123,11 +126,12 @@ def run_gate2(accessor: DatabaseAccessor, target_ids: list[int]) -> Gate2Result:
                 return result
 
             # 4. Verify role privileges - ensure read-only role has only SELECT
-            role_privileges_ok = _verify_role_privileges(conn, identity.current_user)
+            role_privileges_ok, privilege_errors = _verify_role_privileges(conn, identity.current_user)
             result.role_privileges_verified = role_privileges_ok
+            result.role_privilege_errors = privilege_errors
             if not role_privileges_ok:
                 result.status = "FAIL"
-                result.error = "Role privileges verification failed: read-only role has unexpected privileges"
+                result.error = "Role privileges verification failed: " + "; ".join(privilege_errors)
                 return result
 
             # 5. Verify connection target consistency
@@ -177,14 +181,42 @@ def run_gate2(accessor: DatabaseAccessor, target_ids: list[int]) -> Gate2Result:
         return result
 
 
-def _verify_role_privileges(conn, current_user: str) -> bool:
+def _verify_role_privileges(conn, current_user: str) -> tuple[bool, list[str]]:
     """
     Verify the connected role has only read-only privileges.
-    Checks that the role cannot INSERT/UPDATE/DELETE on scholarships table.
+
+    Comprehensive check for least-privilege role:
+    - Must NOT have superuser, createrole, createdb, replication, bypassrls
+    - Must NOT have INSERT, UPDATE, DELETE, TRUNCATE on any table
+    - Must have SELECT on scholarships table
+    - Must enforce transaction read-only (default_transaction_read_only = on)
+
+    Returns:
+        Tuple of (is_valid, list_of_errors)
     """
+    errors = []
+
     try:
         with conn.cursor() as cur:
-            # Check role membership and privileges
+            # 1. Check role attributes (superuser, createrole, createdb, replication, bypassrls)
+            cur.execute("""
+                SELECT rolsuper, rolcreaterole, rolcreatedb, rolreplication, rolbypassrls
+                FROM pg_roles WHERE rolname = current_user
+            """)
+            role_attrs = cur.fetchone()
+            if role_attrs:
+                if role_attrs["rolsuper"]:
+                    errors.append("Role has SUPERUSER attribute")
+                if role_attrs["rolcreaterole"]:
+                    errors.append("Role has CREATEROLE attribute")
+                if role_attrs["rolcreatedb"]:
+                    errors.append("Role has CREATEDB attribute")
+                if role_attrs["rolreplication"]:
+                    errors.append("Role has REPLICATION attribute")
+                if role_attrs["rolbypassrls"]:
+                    errors.append("Role has BYPASSRLS attribute")
+
+            # 2. Check table-level privileges on scholarships
             cur.execute("""
                 SELECT has_table_privilege(current_user, 'scholarships', 'INSERT') as can_insert,
                        has_table_privilege(current_user, 'scholarships', 'UPDATE') as can_update,
@@ -196,18 +228,52 @@ def _verify_role_privileges(conn, current_user: str) -> bool:
             row = cur.fetchone()
 
             # Read-only role should NOT have write privileges
-            if row["can_insert"] or row["can_update"] or row["can_delete"] or row["can_truncate"]:
-                return False
+            if row["can_insert"]:
+                errors.append("Role has INSERT privilege on scholarships")
+            if row["can_update"]:
+                errors.append("Role has UPDATE privilege on scholarships")
+            if row["can_delete"]:
+                errors.append("Role has DELETE privilege on scholarships")
+            if row["can_truncate"]:
+                errors.append("Role has TRUNCATE privilege on scholarships")
 
             # Should have SELECT privilege
             cur.execute("SELECT has_table_privilege(current_user, 'scholarships', 'SELECT') as can_select")
             select_row = cur.fetchone()
             if not select_row["can_select"]:
-                return False
+                errors.append("Role lacks SELECT privilege on scholarships")
 
-        return True
-    except Exception:
-        return False
+            # 3. Check transaction read-only enforcement
+            cur.execute("SHOW default_transaction_read_only")
+            ro_result = cur.fetchone()
+            if ro_result and ro_result["default_transaction_read_only"] != "on":
+                errors.append("default_transaction_read_only is not ON")
+
+            # 4. Check for any write privileges on other tables in public schema
+            cur.execute("""
+                SELECT table_name,
+                       has_table_privilege(current_user, table_name, 'INSERT') as can_insert,
+                       has_table_privilege(current_user, table_name, 'UPDATE') as can_update,
+                       has_table_privilege(current_user, table_name, 'DELETE') as can_delete,
+                       has_table_privilege(current_user, table_name, 'TRUNCATE') as can_truncate
+                FROM information_schema.tables
+                WHERE table_schema = 'public' AND table_type = 'BASE TABLE'
+            """)
+            for table_row in cur.fetchall():
+                table_name = table_row["table_name"]
+                if table_row["can_insert"]:
+                    errors.append(f"Role has INSERT privilege on {table_name}")
+                if table_row["can_update"]:
+                    errors.append(f"Role has UPDATE privilege on {table_name}")
+                if table_row["can_delete"]:
+                    errors.append(f"Role has DELETE privilege on {table_name}")
+                if table_row["can_truncate"]:
+                    errors.append(f"Role has TRUNCATE privilege on {table_name}")
+
+    except Exception as e:
+        errors.append(f"Privilege check failed: {e}")
+
+    return (len(errors) == 0, errors)
 
 
 def _verify_connection_consistency(conn, config: DatabaseConfig) -> bool:
@@ -251,7 +317,7 @@ def main() -> int:
     print()
 
     try:
-        config = load_config()
+        config = load_config(gates_to_run={"gate2"})
         accessor = create_accessor(config.database)
     except ValueError as e:
         print(f"CONFIGURATION ERROR: {e}", file=sys.stderr)

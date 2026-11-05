@@ -316,15 +316,27 @@ def verify_gpg_key_lifecycle(gpg_recipient: str, expected_fingerprint: str, test
 
 
 def run_pg_dump(database_url: str, output_file: str) -> subprocess.CompletedProcess:
-    """Run pg_dump with custom format and compression."""
+    """Run pg_dump with custom format and compression.
+    
+    Uses PGPASSWORD environment variable to avoid credentials in command line.
+    """
+    # Parse database URL to extract connection parameters
+    parsed = parse_database_url(database_url)
+    env = os.environ.copy()
+    env["PGPASSWORD"] = parsed["password"]
+    
     return subprocess.run([
-        "pg_dump", database_url,
+        "pg_dump",
+        "-h", parsed["host"],
+        "-p", str(parsed["port"]),
+        "-U", parsed["user"],
+        "-d", parsed["database"],
         "--format=custom",
         "--compress=9",
         "--no-owner",
         "--no-privileges",
         "--file=" + output_file
-    ], check=True, capture_output=True, text=True, timeout=300)
+    ], check=True, capture_output=True, text=True, timeout=300, env=env)
 
 
 def run_pg_restore_list(backup_file: str) -> subprocess.CompletedProcess:
@@ -499,7 +511,8 @@ def validate_restore_connection_identity(restore_url: str, expected_host: str, e
 def run_pg_restore(database_url: str, backup_file: str, host: str, port: int, user: str, password: str) -> subprocess.CompletedProcess:
     """Restore backup into database using explicit connection parameters.
     
-    Validates that the database_url matches the explicit host/port/user before proceeding.
+    Uses PGPASSWORD environment variable and explicit host/port/user/dbname
+    to avoid credentials in command line.
     """
     # Validate connection identity
     is_valid, error = validate_restore_connection_identity(database_url, host, port, user)
@@ -509,7 +522,11 @@ def run_pg_restore(database_url: str, backup_file: str, host: str, port: int, us
     env = os.environ.copy()
     env["PGPASSWORD"] = password
     return subprocess.run([
-        "pg_restore", "--dbname=" + database_url,
+        "pg_restore",
+        "-h", host,
+        "-p", str(port),
+        "-U", user,
+        "-d", database_url.split("/")[-1].split("?")[0],  # Extract database name
         "--no-owner", "--no-privileges",
         backup_file
     ], check=True, capture_output=True, text=True, timeout=300, env=env)
@@ -746,6 +763,7 @@ def get_pitr_status(conn) -> tuple[str, Optional[int], dict]:
 def run_gate4(
     accessor: DatabaseAccessor,
     gpg_config: GPGConfig,
+    restore_test: "RestoreTestConfig",
     target_ids: list[int]
 ) -> Gate4Result:
     """
@@ -754,6 +772,7 @@ def run_gate4(
     Args:
         accessor: DatabaseAccessor with backup production connection
         gpg_config: GPG configuration with pinned fingerprint
+        restore_test: Restore test database configuration
         target_ids: List of target IDs to verify in backup
 
     Returns:
@@ -763,18 +782,16 @@ def run_gate4(
     result.gpg_recipient = gpg_config.recipient
     result.timestamp = datetime.datetime.utcnow().isoformat() + "Z"
 
-    # Restore test connection parameters - MUST be explicitly configured
-    restore_host = os.getenv("RESTORE_TEST_PGHOST")
-    restore_port = os.getenv("RESTORE_TEST_PGPORT")
-    restore_user = os.getenv("RESTORE_TEST_PGUSER")
-    restore_password = os.getenv("RESTORE_TEST_PGPASSWORD")
+    # Restore test connection parameters - from validated config
+    restore_host = restore_test.host
+    restore_port = restore_test.port
+    restore_user = restore_test.user
+    restore_password = restore_test.password
 
-    if not all([restore_host, restore_port, restore_user, restore_password]):
+    if not all([restore_host, restore_user, restore_password]):
         result.status = "FAIL"
-        result.error = "RESTORE_TEST_PG* environment variables not fully configured. Must provide explicit host, port, user, password for disposable restore database."
+        result.error = "Restore test configuration incomplete. Must provide explicit host, port, user, password for disposable restore database."
         return result
-
-    restore_port = int(restore_port)
 
     # Temporary directory for backup files
     temp_dir = tempfile.mkdtemp(prefix="purge_backup_")
@@ -1028,13 +1045,13 @@ def main() -> int:
     print()
 
     try:
-        config = load_config()
+        config = load_config(gates_to_run={"gate4"})
         accessor = create_accessor(config.database)
     except ValueError as e:
         print(f"CONFIGURATION ERROR: {e}", file=sys.stderr)
         return 1
 
-    result = run_gate4(accessor, config.gpg, CANONICAL_TARGET_IDS)
+    result = run_gate4(accessor, config.gpg, config.restore_test, CANONICAL_TARGET_IDS)
 
     # Save results with metadata
     save_result_with_metadata(result.to_dict(), "gate4", "gate4_result.json")

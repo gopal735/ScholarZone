@@ -606,6 +606,14 @@ def main() -> int:
     print("=== GATE 7: GIT SAFETY VERIFICATION ===")
     print()
 
+    # Gate 7 doesn't need database config - just load empty config for gate7
+    try:
+        from .config import load_config
+        config = load_config(gates_to_run={"gate7"})
+    except ValueError as e:
+        print(f"CONFIGURATION ERROR: {e}", file=sys.stderr)
+        return 1
+
     result = run_gate7()
 
     # Save results with metadata

@@ -547,24 +547,16 @@ def main() -> int:
     print("      Gate 3 covers FK dependency behavior on real production schema.")
     print()
 
-    # Load config - will fail if TEST_DATABASE_URL not set
+    # Load config - Gate 1 only needs TEST_DATABASE_URL
     try:
-        from .config import DatabaseConfig
+        from .config import DatabaseConfig, load_config
         
         # Gate 1 only needs TEST_DATABASE_URL - minimal config
-        test_url = os.getenv("TEST_DATABASE_URL")
-        if not test_url:
-            raise ValueError("TEST_DATABASE_URL not set")
+        config = load_config(gates_to_run={"gate1"})
+        db_config = config.database
         
-        db_config = DatabaseConfig(
-            readonly_url="",  # Not used by Gate 1
-            backup_url="",    # Not used by Gate 1
-            test_url=test_url,
-            expected_neon_project_id="",  # Not used by Gate 1
-            expected_neon_branch_id="",
-            expected_neon_branch_name="",
-            expected_database_name="",
-        )
+        if not db_config.test_url:
+            raise ValueError("TEST_DATABASE_URL not set")
     except ValueError as e:
         print(f"CONFIGURATION ERROR: {e}", file=sys.stderr)
         print("Gate 1 requires TEST_DATABASE_URL to be set to a disposable PostgreSQL instance.", file=sys.stderr)

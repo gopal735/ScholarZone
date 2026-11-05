@@ -51,6 +51,11 @@ class Gate5Result:
     classification_errors: list[str] = None
     status: str = "PENDING"
     error: Optional[str] = None
+    # Detailed per-record classification
+    record_classifications: list[dict] = None
+    # Archive state tracking
+    archived_count: int = 0
+    unarchived_count: int = 0
 
     def __post_init__(self):
         if self.duplicate_ids is None:
@@ -61,6 +66,8 @@ class Gate5Result:
             self.unexpected_ids = []
         if self.classification_errors is None:
             self.classification_errors = []
+        if self.record_classifications is None:
+            self.record_classifications = []
 
     def to_dict(self) -> dict:
         return asdict(self)
@@ -136,14 +143,56 @@ def run_gate5(accessor: DatabaseAccessor, target_ids: list[int]) -> Gate5Result:
                 result.error = f"Expected 34 records, got {len(records)}"
                 return result
 
-            # Classify each record
+            # Classify each record and build detailed report
             classifications = {}
             for record in records:
                 rec_id = record["id"]
                 classification = classify_record(record)
                 classifications[rec_id] = classification
 
-            # Validate against expected
+                # Track archive state
+                is_archived = record.get("is_archived", False)
+                if is_archived:
+                    result.archived_count += 1
+                else:
+                    result.unarchived_count += 1
+
+                # Build detailed classification record
+                status = record.get("status", "").lower()
+                deadline = record.get("deadline_date")
+                deadline_precision = record.get("deadline_precision", "unknown")
+                deadline_display = record.get("deadline_display", "")
+                official_source_url = record.get("official_source_url", "")
+                evidence_provenance = "database_record"  # Classification derived from DB record
+
+                # Parse deadline for reporting
+                parsed_deadline = None
+                if deadline and isinstance(deadline, str):
+                    try:
+                        parsed_deadline = date.fromisoformat(deadline)
+                    except ValueError:
+                        pass
+                elif isinstance(deadline, date):
+                    parsed_deadline = deadline
+
+                result.record_classifications.append({
+                    "id": rec_id,
+                    "title": record.get("title", ""),
+                    "country": record.get("country", ""),
+                    "classification": classification.value,
+                    "status": status,
+                    "deadline_date": parsed_deadline.isoformat() if parsed_deadline else None,
+                    "deadline_display": deadline_display,
+                    "deadline_precision": deadline_precision,
+                    "is_archived": is_archived,
+                    "archived_at": str(record.get("archived_at")) if record.get("archived_at") else None,
+                    "archived_reason": record.get("archived_reason"),
+                    "official_source_url": official_source_url,
+                    "evidence_provenance": evidence_provenance,
+                    "classification_reason": _get_classification_reason(classification, status, parsed_deadline, deadline_precision, deadline_display),
+                })
+
+            # Validate against expected manifest classifications
             errors = validate_classifications(classifications)
             result.classification_errors = errors
 
@@ -179,6 +228,16 @@ def run_gate5(accessor: DatabaseAccessor, target_ids: list[int]) -> Gate5Result:
                 result.error = f"Duplicate IDs in target list: {result.duplicate_ids}"
                 return result
 
+            # Verify no blocked/evergreen/unknown/conflict records exist
+            blocked_total = (result.evergreen_count + result.unknown_count + 
+                           result.blocked_count + result.status_deadline_conflict_count)
+            if blocked_total > 0:
+                result.status = "FAIL"
+                result.error = (f"Found {blocked_total} non-purgeable records: "
+                               f"{result.evergreen_count} evergreen, {result.unknown_count} unknown, "
+                               f"{result.blocked_count} blocked, {result.status_deadline_conflict_count} conflicts")
+                return result
+
             result.status = "PASS"
             return result
 
@@ -186,6 +245,25 @@ def run_gate5(accessor: DatabaseAccessor, target_ids: list[int]) -> Gate5Result:
         result.status = "ERROR"
         result.error = str(e)
         return result
+
+
+def _get_classification_reason(classification: ClassificationCategory, status: str, 
+                                deadline: Optional[date], deadline_precision: str, 
+                                deadline_display: str) -> str:
+    """Generate human-readable classification reason."""
+    if classification == ClassificationCategory.CLOSED:
+        return f"Status '{status}' with past deadline {deadline} (precision: {deadline_precision})"
+    elif classification == ClassificationCategory.CLOSING_SOON:
+        return f"Status '{status}' with recent/ending deadline {deadline} (display: {deadline_display})"
+    elif classification == ClassificationCategory.EVERGREEN:
+        return "No deadline - recurring/rolling programme"
+    elif classification == ClassificationCategory.UNKNOWN:
+        return f"Ambiguous deadline (precision: {deadline_precision}, display: '{deadline_display}')"
+    elif classification == ClassificationCategory.BLOCKED:
+        return f"Future deadline: {deadline}"
+    elif classification == ClassificationCategory.STATUS_DEADLINE_CONFLICT:
+        return f"Past deadline {deadline} but status is '{status}' (not closed/archived)"
+    return "Unknown classification"
 
 
 def main() -> int:
@@ -196,7 +274,7 @@ def main() -> int:
     print()
 
     try:
-        config = load_config()
+        config = load_config(gates_to_run={"gate5"})
         accessor = create_accessor(config.database)
     except ValueError as e:
         print(f"CONFIGURATION ERROR: {e}", file=sys.stderr)
