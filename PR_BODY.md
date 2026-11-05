@@ -22,7 +22,7 @@ Post-merge security and correctness remediation of the production purge prefligh
 | `backend/app/services/purge_preflight/gate7_git_safety.py` | Gate 7 config loading via `load_config(gates_to_run={"gate7"})` |
 | `backend/app/services/purge_preflight/purge_manifest.py` | Gate 2 config for manifest generation |
 | `backend/app/services/purge_preflight/manifest.py` | EXPECTED_CLASSIFICATIONS as reference manifest; `ClassificationValidationResult` with detailed mismatch reporting |
-| `backend/tests/test_purge_preflight.py` | **29 new regression tests** (total 61): Free/Launch/Scale PITR, missing durable backup, remote checksum mismatch, restore from remote failure, missing PITR, role membership escalation (nested, set_option, inherit_option), schema CREATE, sequence UPDATE, Gate 5 mismatch, Azure credential safety, dynamic SQL/indirect call detection, SECURITY DEFINER search_path, trigger functions, C function uncertainty, Neon API contract (project, branches, pagination, auth, 404, connection errors) |
+| `backend/tests/test_purge_preflight.py` | **33 new regression tests** (total 56 functions, 64 pytest items): Free/Launch/Scale PITR, missing durable backup, remote checksum mismatch, restore from remote failure, missing PITR, role membership escalation (nested, set_option, inherit_option), schema CREATE, sequence UPDATE, Gate 5 mismatch, Azure credential safety, dynamic SQL/indirect call detection, SECURITY DEFINER search_path, trigger functions, C function uncertainty, Neon API contract (project, branches, pagination, auth, 404, connection errors) |
 | `REMEDIATION_SUMMARY.md` | Complete remediation documentation |
 | `PR_BODY.md` | This file |
 
