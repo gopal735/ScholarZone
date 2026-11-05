@@ -3,7 +3,7 @@
 This script ensures that the three canonical sources of public scholarship IDs
 are perfectly in sync:
   - snapshot IDs: frontend/public/scholarships-snapshot.json
-  - sitemap scholarship IDs: frontend/public/sitemap.xml (only /scholarships/{id} URLs)
+  - sitemap IDs: frontend/public/sitemap.xml
   - ledger IDs: backend/verification/research_ledger.jsonl
 
 DATA CONTRACT:
@@ -24,7 +24,6 @@ import re
 import sys
 from pathlib import Path
 from typing import Any
-
 
 REPO_ROOT = Path(__file__).resolve().parents[2]
 SNAPSHOT_PATH = REPO_ROOT / "frontend" / "public" / "scholarships-snapshot.json"
@@ -88,7 +87,7 @@ def load_ledger_ids() -> set[int]:
     if not LEDGER_PATH.exists():
         raise FileNotFoundError(f"Research ledger not found at {LEDGER_PATH}")
     ids = set()
-    with LEDGER_PATH.open("r", encoding="utf-8") as f:
+    with LEDGER_PATH.open("r", encoding="utf-8-sig") as f:
         for line_num, line in enumerate(f, 1):
             line = line.strip()
             if not line:
