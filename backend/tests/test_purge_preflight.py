@@ -1321,16 +1321,21 @@ def test_regression_invalid_pitr_evidence():
     mock_cursor = MagicMock()
     mock_conn.cursor.return_value.__enter__.return_value = mock_cursor
 
-    # Test 1: Non-Neon instance (no "neon" in version)
+    # Test 1: Non-Neon instance (missing neon.project_id)
     mock_cursor.fetchone.return_value = ("PostgreSQL 16.0 on x86_64-pc-linux-gnu",)
     mock_cursor.fetchall.return_value = []  # no neon settings
     status, retention, details = get_pitr_status(mock_conn)
     assert status == "UNAVAILABLE"
     assert details["is_neon_instance"] is False
 
-    # Test 2: Neon instance but PITR disabled
-    mock_cursor.fetchone.return_value = ("PostgreSQL 16.0 on x86_64-pc-linux-gnu (Neon)",)
+    # Test 2: Neon instance (has project_id) but PITR disabled in pg_settings
+    # First fetchone returns version, second returns neon settings
+    mock_cursor.fetchone.side_effect = [
+        ("PostgreSQL 16.0 on x86_64-pc-linux-gnu (Neon)",),  # version()
+    ]
     mock_cursor.fetchall.return_value = [
+        {"name": "neon.project_id", "setting": "proj-123"},
+        {"name": "neon.branch_id", "setting": "branch-456"},
         {"name": "neon.pitr_retention_days", "setting": "7"},
         {"name": "neon.pitr_enabled", "setting": "off"}
     ]
@@ -1339,8 +1344,12 @@ def test_regression_invalid_pitr_evidence():
     assert retention == 7
 
     # Test 3: Invalid retention value
-    mock_cursor.fetchone.return_value = ("PostgreSQL 16.0 on x86_64-pc-linux-gnu (Neon)",)
+    mock_cursor.fetchone.side_effect = [
+        ("PostgreSQL 16.0 on x86_64-pc-linux-gnu (Neon)",),
+    ]
     mock_cursor.fetchall.return_value = [
+        {"name": "neon.project_id", "setting": "proj-123"},
+        {"name": "neon.branch_id", "setting": "branch-456"},
         {"name": "neon.pitr_retention_days", "setting": "invalid"},
         {"name": "neon.pitr_enabled", "setting": "on"}
     ]
@@ -1524,21 +1533,18 @@ def test_regression_missing_pitr_evidence():
     mock_cursor = MagicMock()
     mock_conn.cursor.return_value.__enter__.return_value = mock_cursor
 
-    # Test 1: Missing PITR settings (non-Neon instance)
-    # version() returns a tuple with version string at index 0
-    mock_cursor.fetchone.side_effect = [
-        ("PostgreSQL 16.0 on x86_64-pc-linux-gnu",),  # version() - tuple
-    ]
+    # Test 1: Missing PITR settings (non-Neon instance - missing neon.project_id)
+    mock_cursor.fetchone.return_value = ("PostgreSQL 16.0 on x86_64-pc-linux-gnu",)
     mock_cursor.fetchall.return_value = []  # no neon settings
     status, retention, details = get_pitr_status(mock_conn)
     assert status == "UNAVAILABLE"
     assert details["is_neon_instance"] is False
 
     # Test 2: Neon instance with PITR disabled in pg_settings
-    mock_cursor.fetchone.side_effect = [
-        ("PostgreSQL 16.0 on x86_64-pc-linux-gnu (Neon)",),  # version()
-    ]
+    mock_cursor.fetchone.return_value = ("PostgreSQL 16.0 on x86_64-pc-linux-gnu (Neon)",)
     mock_cursor.fetchall.return_value = [
+        {"name": "neon.project_id", "setting": "proj-123"},
+        {"name": "neon.branch_id", "setting": "branch-456"},
         {"name": "neon.pitr_retention_days", "setting": "7"}, 
         {"name": "neon.pitr_enabled", "setting": "off"}
     ]
@@ -1547,10 +1553,10 @@ def test_regression_missing_pitr_evidence():
     assert retention == 7
 
     # Test 3: Neon instance with invalid retention value
-    mock_cursor.fetchone.side_effect = [
-        ("PostgreSQL 16.0 on x86_64-pc-linux-gnu (Neon)",),
-    ]
+    mock_cursor.fetchone.return_value = ("PostgreSQL 16.0 on x86_64-pc-linux-gnu (Neon)",)
     mock_cursor.fetchall.return_value = [
+        {"name": "neon.project_id", "setting": "proj-123"},
+        {"name": "neon.branch_id", "setting": "branch-456"},
         {"name": "neon.pitr_retention_days", "setting": "invalid"}, 
         {"name": "neon.pitr_enabled", "setting": "on"}
     ]
@@ -1564,66 +1570,75 @@ def test_regression_role_membership_privilege_escalation():
     from app.services.purge_preflight.gate2_identity import _check_role_memberships
     from unittest.mock import MagicMock
 
+    # Test 1: Direct SUPERUSER inheritance
     mock_conn = MagicMock()
     mock_cursor = MagicMock()
     mock_conn.cursor.return_value.__enter__.return_value = mock_cursor
-
-    errors = []
-
-    # Test 1: Direct SUPERUSER inheritance
     mock_cursor.fetchall.return_value = [
-        {"rolname": "superuser_role", "rolsuper": True, "rolcreaterole": False, "rolcreatedb": False, "rolreplication": False, "rolbypassrls": False}
+        {"rolname": "superuser_role", "rolsuper": True, "rolcreaterole": False, "rolcreatedb": False, "rolreplication": False, "rolbypassrls": False, "admin_option": False}
     ]
-    _check_role_memberships(mock_cursor, "readonly_user", errors)
+    errors, warnings = _check_role_memberships(mock_cursor, "readonly_user")
     assert any("SUPERUSER" in e and "superuser_role" in e for e in errors)
     errors.clear()
+    warnings.clear()
 
     # Test 2: CREATEROLE inheritance
+    mock_conn = MagicMock()
+    mock_cursor = MagicMock()
+    mock_conn.cursor.return_value.__enter__.return_value = mock_cursor
     mock_cursor.fetchall.return_value = [
-        {"rolname": "admin_role", "rolsuper": False, "rolcreaterole": True, "rolcreatedb": False, "rolreplication": False, "rolbypassrls": False}
+        {"rolname": "admin_role", "rolsuper": False, "rolcreaterole": True, "rolcreatedb": False, "rolreplication": False, "rolbypassrls": False, "admin_option": False}
     ]
-    _check_role_memberships(mock_cursor, "readonly_user", errors)
+    errors, warnings = _check_role_memberships(mock_cursor, "readonly_user")
     assert any("CREATEROLE" in e and "admin_role" in e for e in errors)
     errors.clear()
+    warnings.clear()
 
     # Test 3: CREATEDB inheritance
+    mock_conn = MagicMock()
+    mock_cursor = MagicMock()
+    mock_conn.cursor.return_value.__enter__.return_value = mock_cursor
     mock_cursor.fetchall.return_value = [
-        {"rolname": "db_admin", "rolsuper": False, "rolcreaterole": False, "rolcreatedb": True, "rolreplication": False, "rolbypassrls": False}
+        {"rolname": "db_admin", "rolsuper": False, "rolcreaterole": False, "rolcreatedb": True, "rolreplication": False, "rolbypassrls": False, "admin_option": False}
     ]
-    _check_role_memberships(mock_cursor, "readonly_user", errors)
+    errors, warnings = _check_role_memberships(mock_cursor, "readonly_user")
     assert any("CREATEDB" in e and "db_admin" in e for e in errors)
     errors.clear()
+    warnings.clear()
 
     # Test 4: BYPASSRLS inheritance
+    mock_conn = MagicMock()
+    mock_cursor = MagicMock()
+    mock_conn.cursor.return_value.__enter__.return_value = mock_cursor
     mock_cursor.fetchall.return_value = [
-        {"rolname": "rls_bypass", "rolsuper": False, "rolcreaterole": False, "rolcreatedb": False, "rolreplication": False, "rolbypassrls": True}
+        {"rolname": "rls_bypass", "rolsuper": False, "rolcreaterole": False, "rolcreatedb": False, "rolreplication": False, "rolbypassrls": True, "admin_option": False}
     ]
-    _check_role_memberships(mock_cursor, "readonly_user", errors)
+    errors, warnings = _check_role_memberships(mock_cursor, "readonly_user")
     assert any("BYPASSRLS" in e and "rls_bypass" in e for e in errors)
     errors.clear()
+    warnings.clear()
 
     # Test 5: Nested membership (role -> intermediate -> superuser)
-    # First call for readonly_user -> intermediate_role
-    # Second call for intermediate_role -> superuser_role
-    # Third call for superuser_role -> no members
-    call_count = [0]
-    def fetchall_side_effect(*args, **kwargs):
-        call_count[0] += 1
-        if call_count[0] == 1:
-            return [{"rolname": "intermediate_role", "rolsuper": False, "rolcreaterole": False, "rolcreatedb": False, "rolreplication": False, "rolbypassrls": False}]
-        elif call_count[0] == 2:
-            return [{"rolname": "superuser_role", "rolsuper": True, "rolcreaterole": False, "rolcreatedb": False, "rolreplication": False, "rolbypassrls": False}]
-        else:
-            return []
+    mock_conn = MagicMock()
+    mock_cursor = MagicMock()
+    mock_conn.cursor.return_value.__enter__.return_value = mock_cursor
     
-    mock_cursor.fetchall.side_effect = fetchall_side_effect
-    _check_role_memberships(mock_cursor, "readonly_user", errors)
+    # Use side_effect with a list that has enough elements for all recursive calls
+    # Call 1: readonly_user -> intermediate_role
+    # Call 2: intermediate_role -> superuser_role  
+    # Call 3: superuser_role -> no members (empty list)
+    mock_cursor.fetchall.side_effect = [
+        [{"rolname": "intermediate_role", "rolsuper": False, "rolcreaterole": False, "rolcreatedb": False, "rolreplication": False, "rolbypassrls": False, "admin_option": False}],
+        [{"rolname": "superuser_role", "rolsuper": True, "rolcreaterole": False, "rolcreatedb": False, "rolreplication": False, "rolbypassrls": False, "admin_option": False}],
+        [],  # No further members
+    ]
+    errors, warnings = _check_role_memberships(mock_cursor, "readonly_user")
     assert any("SUPERUSER" in e and "superuser_role" in e for e in errors)
 
 
 def test_regression_schema_create_privilege():
-    """Test that Gate 2 fails when role has CREATE privilege on public schema."""
-    from app.services.purge_preflight.gate2_identity import _check_schema_privileges
+    """Test that Gate 2 fails when role has CREATE privilege on any schema."""
+    from app.services.purge_preflight.gate2_identity import _check_all_schema_privileges
     from unittest.mock import MagicMock
 
     mock_conn = MagicMock()
@@ -1632,36 +1647,39 @@ def test_regression_schema_create_privilege():
 
     errors = []
 
-    # Test: Role has CREATE privilege (should fail)
+    # Test: Role has CREATE privilege on public schema (should fail)
+    mock_cursor.fetchall.return_value = [{"schema_name": "public"}]
     mock_cursor.fetchone.side_effect = [
-        {"can_create": True},  # has_schema_privilege for CREATE
-        {"can_usage": True},   # has_schema_privilege for USAGE
+        {"can_create": True},   # has_schema_privilege for CREATE
+        {"can_usage": True},    # has_schema_privilege for USAGE
     ]
-    _check_schema_privileges(mock_cursor, "readonly_user", errors)
-    assert any("CREATE privilege on public schema" in e for e in errors)
+    _check_all_schema_privileges(mock_cursor, "readonly_user", errors)
+    assert any("CREATE privilege on schema public" in e for e in errors)
     errors.clear()
 
-    # Test: Role lacks USAGE privilege (should fail)
+    # Test: Role lacks USAGE privilege on public schema (should fail)
+    mock_cursor.fetchall.return_value = [{"schema_name": "public"}]
     mock_cursor.fetchone.side_effect = [
         {"can_create": False},
         {"can_usage": False},
     ]
-    _check_schema_privileges(mock_cursor, "readonly_user", errors)
-    assert any("lacks USAGE privilege" in e for e in errors)
+    _check_all_schema_privileges(mock_cursor, "readonly_user", errors)
+    assert any("lacks USAGE privilege on schema public" in e for e in errors)
     errors.clear()
 
     # Test: Role has correct privileges (no CREATE, has USAGE)
+    mock_cursor.fetchall.return_value = [{"schema_name": "public"}]
     mock_cursor.fetchone.side_effect = [
         {"can_create": False},
         {"can_usage": True},
     ]
-    _check_schema_privileges(mock_cursor, "readonly_user", errors)
+    _check_all_schema_privileges(mock_cursor, "readonly_user", errors)
     assert len(errors) == 0
 
 
 def test_regression_sequence_write_privilege():
     """Test that Gate 2 fails when role has UPDATE privilege on sequences."""
-    from app.services.purge_preflight.gate2_identity import _check_sequence_privileges
+    from app.services.purge_preflight.gate2_identity import _check_all_sequence_privileges
     from unittest.mock import MagicMock
 
     mock_conn = MagicMock()
@@ -1670,33 +1688,33 @@ def test_regression_sequence_write_privilege():
 
     errors = []
 
-    # Test 1: Role has USAGE on sequence (should warn)
-    mock_cursor.fetchall.return_value = [{"sequence_name": "scholarships_id_seq"}]
+    # Test 1: Role has USAGE on sequence (should fail)
+    mock_cursor.fetchall.return_value = [{"sequence_schema": "public", "sequence_name": "scholarships_id_seq"}]
     mock_cursor.fetchone.side_effect = [
         {"can_usage": True},   # USAGE check
         {"can_update": False}, # UPDATE check
     ]
-    _check_sequence_privileges(mock_cursor, "readonly_user", errors)
-    assert any("USAGE privilege on sequence" in e for e in errors)
+    _check_all_sequence_privileges(mock_cursor, "readonly_user", errors)
+    assert any("USAGE privilege on sequence public.scholarships_id_seq" in e for e in errors)
     errors.clear()
 
     # Test 2: Role has UPDATE on sequence (should fail - allows setval)
-    mock_cursor.fetchall.return_value = [{"sequence_name": "scholarships_id_seq"}]
+    mock_cursor.fetchall.return_value = [{"sequence_schema": "public", "sequence_name": "scholarships_id_seq"}]
     mock_cursor.fetchone.side_effect = [
         {"can_usage": True},
         {"can_update": True},  # UPDATE = WRITE privilege
     ]
-    _check_sequence_privileges(mock_cursor, "readonly_user", errors)
-    assert any("UPDATE privilege on sequence" in e and "setval" in e for e in errors)
+    _check_all_sequence_privileges(mock_cursor, "readonly_user", errors)
+    assert any("UPDATE privilege on sequence public.scholarships_id_seq" in e and "setval" in e for e in errors)
     errors.clear()
 
     # Test 3: No privileges (should pass)
-    mock_cursor.fetchall.return_value = [{"sequence_name": "scholarships_id_seq"}]
+    mock_cursor.fetchall.return_value = [{"sequence_schema": "public", "sequence_name": "scholarships_id_seq"}]
     mock_cursor.fetchone.side_effect = [
         {"can_usage": False},
         {"can_update": False},
     ]
-    _check_sequence_privileges(mock_cursor, "readonly_user", errors)
+    _check_all_sequence_privileges(mock_cursor, "readonly_user", errors)
     assert len(errors) == 0
 
 
