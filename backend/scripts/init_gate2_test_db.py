@@ -191,7 +191,8 @@ def create_schema_and_data(conn):
                 None,
                 None, None, None, None, None,
                 None, None, None, None, None,
-                None, None, None
+                None, None, None, None, None,
+                None, None, None, None
             ))
         
         print(f"Inserted {len(CANONICAL_TARGET_IDS)} test records")
