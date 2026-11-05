@@ -1,52 +1,64 @@
 import { useEffect, useState } from 'react'
 import { fetchScholarshipStats } from '../services/scholarshipService'
 
-const EMPTY_STATS = {
-  total: 0,
-  countries: 0,
-  open: 0,
-  closing_soon: 0,
-  upcoming: 0,
-  verified_active: 0,
-  fully_funded: 0,
-  with_image: 0,
-  with_official_source: 0,
+/**
+ * Normalize scholarship stats from both API and static snapshot.
+ * 
+ * API returns: verified_active, fully_funded
+ * Static snapshot returns: verified, fullyFunded (mapped from verified_active, fully_funded)
+ * 
+ * This hook normalizes to a consistent internal format:
+ * - verified (number)
+ * - fullyFunded (number)
+ * - total (number)
+ * - countries (number)
+ * - open (number)
+ * - closingSoon (number)
+ * - upcoming (number)
+ */
+function normalizeStats(rawStats) {
+  if (!rawStats) return null
+  
+  return {
+    total: rawStats.total ?? 0,
+    countries: rawStats.countries ?? 0,
+    open: rawStats.open ?? 0,
+    closingSoon: rawStats.closing_soon ?? rawStats.closingSoon ?? 0,
+    upcoming: rawStats.upcoming ?? 0,
+    closed: rawStats.closed ?? 0,
+    verified: rawStats.verified ?? rawStats.verified_active ?? 0,
+    fullyFunded: rawStats.fullyFunded ?? rawStats.fully_funded ?? 0,
+    withImage: rawStats.with_image ?? rawStats.withImage ?? 0,
+    withOfficialSource: rawStats.with_official_source ?? rawStats.withOfficialSource ?? 0,
+  }
 }
 
-/**
-  * Fetches live scholarship statistics from GET /scholarships/stats.
- *
- * Exposes three intentional states:
- *   - 'loading'  : request in flight, no data yet
- *   - 'success'  : stats populated from the API
- *   - 'error'    : API unreachable or failed — stats stay at EMPTY_STATS
- *
- * On error we never fall back to hardcoded values; the UI renders a neutral
- * unavailable state instead.
- */
 export function useScholarshipStats() {
-  const [stats, setStats] = useState(EMPTY_STATS)
-  const [status, setStatus] = useState('loading')
+  const [stats, setStats] = useState(null)
+  const [isLoading, setIsLoading] = useState(true)
   const [error, setError] = useState(null)
 
   useEffect(() => {
-    const controller = new AbortController()
+    let cancelled = false
 
-    fetchScholarshipStats({ signal: controller.signal })
-      .then((payload) => {
-        if (controller.signal.aborted) return
-        setStats({ ...EMPTY_STATS, ...payload })
-        setStatus('success')
+    fetchScholarshipStats()
+      .then((data) => {
+        if (!cancelled) {
+          setStats(normalizeStats(data))
+          setIsLoading(false)
+        }
       })
       .catch((err) => {
-        if (controller.signal.aborted) return
-        setError(err)
-        setStats(EMPTY_STATS)
-        setStatus('error')
+        if (!cancelled) {
+          setError(err)
+          setIsLoading(false)
+        }
       })
 
-    return () => controller.abort()
+    return () => {
+      cancelled = true
+    }
   }, [])
 
-  return { stats, status, error, isLoading: status === 'loading', isReady: status === 'success', isUnavailable: status === 'error' }
+  return { stats, isLoading, error }
 }

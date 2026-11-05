@@ -1,0 +1,413 @@
+# Production Purge Preflight Gates
+# Secure CI workflow for Gates 1-7 verification
+# Executes all gates via secure CI with protected environments.
+# MANUAL TRIGGER ONLY - no production writes.
+
+name: Production Purge Preflight Gates
+
+"on":
+  workflow_dispatch:
+    inputs:
+      gate:
+        description: "Which gate to execute"
+        required: true
+        type: choice
+        options:
+          - "gate1-atomicity"
+          - "gate2-identity"
+          - "gate3-dependencies"
+          - "gate4-backup"
+          - "gate5-classification"
+          - "gate6-cycle-validation"
+          - "gate7-git-safety"
+          - "all"
+      confirm_environment:
+        description: "Confirm this runs against PRODUCTION Neon database (for gates 2-6)"
+        required: true
+        type: boolean
+
+permissions:
+  contents: read
+  actions: read
+  checks: write
+  id-token: write
+
+concurrency:
+  group: production-purge-preflight-${{ github.ref }}-${{ github.sha }}
+  cancel-in-progress: false
+
+jobs:
+  gate1-atomicity:
+    name: Gate 1 - Atomicity and Rollback
+    if: github.event.inputs.gate == 'gate1-atomicity' || github.event.inputs.gate == 'all'
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    # Gate 1 uses ONLY a disposable PostgreSQL service - NO production credentials
+    services:
+      postgres:
+        image: postgres:16
+        env:
+          POSTGRES_DB: test_purge
+          POSTGRES_USER: test
+          POSTGRES_PASSWORD: test
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd="pg_isready -U test -d test_purge"
+          --health-interval=10s
+          --health-timeout=5s
+          --health-retries=5
+    env:
+      TEST_DATABASE_URL: postgresql://test:test@localhost:5432/test_purge
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: |
+          pip install psycopg2-binary --quiet
+          pip install -r backend/requirements.txt --quiet
+
+      - name: Verify Atomicity and Rollback
+        id: atomicity
+        run: python .github/scripts/gate1_atomicity.py
+
+      - name: Upload Gate 1 Results
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: gate1-atomicity-result
+          path: gate1_result.json
+          retention-days: 7
+
+  gate2-identity:
+    name: Gate 2 - Production Identity Verification
+    if: github.event.inputs.gate == 'gate2-identity' || github.event.inputs.gate == 'all'
+    environment:
+      name: production-readonly
+      url: https://console.neon.tech
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    permissions:
+      contents: read
+      id-token: write
+    # Enforce confirm_environment for production-connected gates
+    env:
+      SCHOLARZONE_DATABASE_URL_RO: ${{ secrets.SCHOLARZONE_DATABASE_URL_RO }}
+      EXPECTED_NEON_PROJECT_ID: ${{ secrets.EXPECTED_NEON_PROJECT_ID }}
+      EXPECTED_NEON_BRANCH_ID: ${{ secrets.EXPECTED_NEON_BRANCH_ID }}
+      EXPECTED_NEON_BRANCH_NAME: ${{ secrets.EXPECTED_NEON_BRANCH_NAME }}
+      EXPECTED_DATABASE_NAME: ${{ secrets.EXPECTED_DATABASE_NAME }}
+    steps:
+      - name: Verify confirm_environment
+        if: github.event.inputs.confirm_environment != 'true'
+        run: |
+          echo "ERROR: confirm_environment must be true for production-connected gates"
+          exit 1
+
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: |
+          pip install psycopg2-binary --quiet
+          pip install -r backend/requirements.txt --quiet
+
+      - name: Verify Production Identity
+        id: identity
+        run: python .github/scripts/gate2_identity.py
+
+      - name: Upload Gate 2 Results
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: gate2-identity-result
+          path: gate2_result.json
+          retention-days: 7
+
+  gate3-dependencies:
+    name: Gate 3 - Production Dependencies Verification
+    if: github.event.inputs.gate == 'gate3-dependencies' || github.event.inputs.gate == 'all'
+    environment: production-readonly
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    env:
+      SCHOLARZONE_DATABASE_URL_RO: ${{ secrets.SCHOLARZONE_DATABASE_URL_RO }}
+      EXPECTED_NEON_PROJECT_ID: ${{ secrets.EXPECTED_NEON_PROJECT_ID }}
+      EXPECTED_NEON_BRANCH_ID: ${{ secrets.EXPECTED_NEON_BRANCH_ID }}
+      EXPECTED_NEON_BRANCH_NAME: ${{ secrets.EXPECTED_NEON_BRANCH_NAME }}
+      EXPECTED_DATABASE_NAME: ${{ secrets.EXPECTED_DATABASE_NAME }}
+    steps:
+      - name: Verify confirm_environment
+        if: github.event.inputs.confirm_environment != 'true'
+        run: |
+          echo "ERROR: confirm_environment must be true for production-connected gates"
+          exit 1
+
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: |
+          pip install psycopg2-binary --quiet
+          pip install -r backend/requirements.txt --quiet
+
+      - name: Verify Production Dependencies
+        id: deps
+        run: python .github/scripts/gate3_dependencies.py
+
+      - name: Upload Gate 3 Results
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: gate3-dependencies-result
+          path: gate3_result.json
+          retention-days: 7
+
+  gate4-backup:
+    name: Gate 4 - Production Backup & Verification
+    if: github.event.inputs.gate == 'gate4-backup' || github.event.inputs.gate == 'all'
+    environment:
+      name: production-backup
+      url: https://console.neon.tech
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    # Provide explicit restore test database connection parameters
+    env:
+      SCHOLARZONE_DATABASE_URL_BACKUP: ${{ secrets.SCHOLARZONE_DATABASE_URL_BACKUP }}
+      GPG_RECIPIENT: ${{ secrets.GPG_RECIPIENT }}
+      GPG_EXPECTED_FINGERPRINT: ${{ secrets.GPG_EXPECTED_FINGERPRINT }}
+      EXPECTED_NEON_PROJECT_ID: ${{ secrets.EXPECTED_NEON_PROJECT_ID }}
+      EXPECTED_NEON_BRANCH_ID: ${{ secrets.EXPECTED_NEON_BRANCH_ID }}
+      EXPECTED_NEON_BRANCH_NAME: ${{ secrets.EXPECTED_NEON_BRANCH_NAME }}
+      EXPECTED_DATABASE_NAME: ${{ secrets.EXPECTED_DATABASE_NAME }}
+      RESTORE_TEST_PGHOST: ${{ secrets.RESTORE_TEST_PGHOST }}
+      RESTORE_TEST_PGPORT: ${{ secrets.RESTORE_TEST_PGPORT }}
+      RESTORE_TEST_PGUSER: ${{ secrets.RESTORE_TEST_PGUSER }}
+      RESTORE_TEST_PGPASSWORD: ${{ secrets.RESTORE_TEST_PGPASSWORD }}
+    steps:
+      - name: Verify confirm_environment
+        if: github.event.inputs.confirm_environment != 'true'
+        run: |
+          echo "ERROR: confirm_environment must be true for production-connected gates"
+          exit 1
+
+      - name: Verify restore test environment variables
+        run: |
+          if [ -z "${{ secrets.RESTORE_TEST_PGHOST }}" ] || [ -z "${{ secrets.RESTORE_TEST_PGPORT }}" ] || [ -z "${{ secrets.RESTORE_TEST_PGUSER }}" ] || [ -z "${{ secrets.RESTORE_TEST_PGPASSWORD }}" ]; then
+            echo "ERROR: RESTORE_TEST_PG* secrets not configured"
+            exit 1
+          fi
+
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+
+      - name: Install PostgreSQL client and GPG
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq postgresql-client gnupg > /dev/null 2>&1
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: pip install -r backend/requirements.txt --quiet
+
+      - name: Verify Neon PITR & Create Encrypted Backup
+        id: backup
+        run: python .github/scripts/gate4_backup.py
+
+      - name: Upload Gate 4 Results (encrypted backup excluded)
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: gate4-backup-result
+          path: |
+            gate4_result.json
+            *.sha256
+          retention-days: 30
+
+  gate5-classification:
+    name: Gate 5 - Target Classification Validation
+    if: github.event.inputs.gate == 'gate5-classification' || github.event.inputs.gate == 'all'
+    environment: production-readonly
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    env:
+      SCHOLARZONE_DATABASE_URL_RO: ${{ secrets.SCHOLARZONE_DATABASE_URL_RO }}
+      EXPECTED_NEON_PROJECT_ID: ${{ secrets.EXPECTED_NEON_PROJECT_ID }}
+      EXPECTED_NEON_BRANCH_ID: ${{ secrets.EXPECTED_NEON_BRANCH_ID }}
+      EXPECTED_NEON_BRANCH_NAME: ${{ secrets.EXPECTED_NEON_BRANCH_NAME }}
+      EXPECTED_DATABASE_NAME: ${{ secrets.EXPECTED_DATABASE_NAME }}
+    steps:
+      - name: Verify confirm_environment
+        if: github.event.inputs.confirm_environment != 'true'
+        run: |
+          echo "ERROR: confirm_environment must be true for production-connected gates"
+          exit 1
+
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: |
+          pip install psycopg2-binary --quiet
+          pip install -r backend/requirements.txt --quiet
+
+      - name: Validate Target Classification
+        id: classification
+        run: python .github/scripts/gate5_classification.py
+
+      - name: Upload Gate 5 Results
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: gate5-classification-result
+          path: gate5_result.json
+          retention-days: 7
+
+  gate6-cycle-validation:
+    name: Gate 6 - Application Cycle Validation
+    if: github.event.inputs.gate == 'gate6-cycle-validation' || github.event.inputs.gate == 'all'
+    environment: production-readonly
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    env:
+      SCHOLARZONE_DATABASE_URL_RO: ${{ secrets.SCHOLARZONE_DATABASE_URL_RO }}
+      EXPECTED_NEON_PROJECT_ID: ${{ secrets.EXPECTED_NEON_PROJECT_ID }}
+      EXPECTED_NEON_BRANCH_ID: ${{ secrets.EXPECTED_NEON_BRANCH_ID }}
+      EXPECTED_NEON_BRANCH_NAME: ${{ secrets.EXPECTED_NEON_BRANCH_NAME }}
+      EXPECTED_DATABASE_NAME: ${{ secrets.EXPECTED_DATABASE_NAME }}
+    steps:
+      - name: Verify confirm_environment
+        if: github.event.inputs.confirm_environment != 'true'
+        run: |
+          echo "ERROR: confirm_environment must be true for production-connected gates"
+          exit 1
+
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: |
+          pip install psycopg2-binary --quiet
+          pip install -r backend/requirements.txt --quiet
+
+      - name: Validate Application Cycles
+        id: cycle
+        run: python .github/scripts/gate6_cycle_validation.py
+
+      - name: Upload Gate 6 Results
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: gate6-cycle-validation-result
+          path: gate6_result.json
+          retention-days: 7
+
+  gate7-git-safety:
+    name: Gate 7 - Git Safety Verification
+    if: github.event.inputs.gate == 'gate7-git-safety' || github.event.inputs.gate == 'all'
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    permissions:
+      contents: read
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0  # Full history for git safety checks
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: pip install -r backend/requirements.txt --quiet
+
+      - name: Verify Git Safety
+        id: gitsafety
+        run: python .github/scripts/gate7_git_safety.py
+
+      - name: Upload Gate 7 Results
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: gate7-git-safety-result
+          path: gate7_result.json
+          retention-days: 7
+
+  summary:
+    name: Summary & Gate Status
+    if: always()
+    runs-on: ubuntu-latest
+    # Always run summary even when jobs fail or are skipped
+    needs: [gate1-atomicity, gate2-identity, gate3-dependencies, gate4-backup, gate5-classification, gate6-cycle-validation, gate7-git-safety]
+    steps:
+      - name: Download all artifacts
+        uses: actions/download-artifact@v4
+        with:
+          path: artifacts
+
+      - name: Generate Final Report
+        run: |
+          python .github/scripts/summary.py artifacts ${{ github.sha }} ${{ github.run_id }} ${{ github.run_number }} ${{ github.run_attempt }} ${{ github.workflow }}
+
+      - name: Upload Summary
+        uses: actions/upload-artifact@v4
+        with:
+          name: preflight-summary
+          path: |
+            artifacts/gate1_result.json
+            artifacts/gate2_result.json
+            artifacts/gate3_result.json
+            artifacts/gate4_result.json
+            artifacts/gate5_result.json
+            artifacts/gate6_result.json
+            artifacts/gate7_result.json
+            preflight_summary.json
+          retention-days: 30
+
+      - name: Check Overall Status
+        run: python .github/scripts/check_preflight_status.py
+        # This will exit non-zero if any mandatory gate failed or is missing

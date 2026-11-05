@@ -5,11 +5,13 @@ name: ScholarZone CI
     - main
     - master
     - fix/deep-scholarship-data-and-card-restoration
+    - fix/production-expired-cycle-purge
   push:
     branches:
     - main
     - master
     - fix/deep-scholarship-data-and-card-restoration
+    - fix/production-expired-cycle-purge
 defaults:
   run:
     shell: bash
@@ -38,18 +40,29 @@ jobs:
           Linux-pip-v2-
     - name: Install dependencies
       run: cd backend && pip install -r requirements.txt
+    - name: Install purge preflight test dependencies
+      run: cd backend && pip install -r requirements-purge-preflight.txt
     - name: Debug - verify pip install
-      run: 'cd backend && pip list | grep -E "(fastapi|pydantic|sqlalchemy|psycopg|httpx|pillow|beautifulsoup4|apscheduler|resend|python-dotenv)" || true
-
-        '
+      run: |
+        cd backend && pip list | grep -E "(fastapi|pydantic|sqlalchemy|psycopg|httpx|pillow|beautifulsoup4|apscheduler|resend|python-dotenv)" || true
     - name: Debug - test critical imports
-      run: 'cd backend && python -c "import psycopg; print(''psycopg: OK'')" 2>&1 || echo "psycopg: FAIL" && python -c "import sqlalchemy; print(''sqlalchemy: OK'')" 2>&1 || echo "sqlalchemy: FAIL" && python -c "import fastapi; print(''fastapi: OK'')" 2>&1 || echo "fastapi: FAIL" && python -c "import pydantic; print(''pydantic: OK'')" 2>&1 || echo "pydantic: FAIL" && python -c "import httpx; print(''httpx: OK'')" 2>&1 || echo "httpx: FAIL" && python -c "import PIL; print(''PIL: OK'')" 2>&1 || echo "PIL: FAIL" && python -c "import bs4; print(''bs4: OK'')" 2>&1 || echo "bs4: FAIL" && python -c "import apscheduler; print(''apscheduler: OK'')" 2>&1 || echo "apscheduler: FAIL" && python -c "import resend; print(''resend: OK'')" 2>&1 || echo "resend: FAIL" && python -c "import dotenv; print(''dotenv: OK'')" 2>&1 || echo "dotenv: FAIL"
-
-        '
+      run: |
+        cd backend && python -c "import psycopg; print('psycopg: OK')" 2>&1 || echo "psycopg: FAIL"
+        python -c "import sqlalchemy; print('sqlalchemy: OK')" 2>&1 || echo "sqlalchemy: FAIL"
+        python -c "import fastapi; print('fastapi: OK')" 2>&1 || echo "fastapi: FAIL"
+        python -c "import pydantic; print('pydantic: OK')" 2>&1 || echo "pydantic: FAIL"
+        python -c "import httpx; print('httpx: OK')" 2>&1 || echo "httpx: FAIL"
+        python -c "import PIL; print('PIL: OK')" 2>&1 || echo "PIL: FAIL"
+        python -c "import bs4; print('bs4: OK')" 2>&1 || echo "bs4: FAIL"
+        python -c "import apscheduler; print('apscheduler: OK')" 2>&1 || echo "apscheduler: FAIL"
+        python -c "import resend; print('resend: OK')" 2>&1 || echo "resend: FAIL"
+        python -c "import dotenv; print('dotenv: OK')" 2>&1 || echo "dotenv: FAIL"
     - name: Debug - verify environment
-      run: 'cd backend && python -c "import sys; print(f''Python: {sys.version}''); import app; print(''app import ok''); import pytest; print(''pytest ok'')" 2>&1
-
-        '
+      run: |
+        cd backend && python -c "import sys; print(f'Python: {sys.version}'); import app; print('app import ok'); import pytest; print('pytest ok')" 2>&1
+    - name: Debug - verify pytest-asyncio
+      run: |
+        cd backend && python -c "import pytest_asyncio; print('pytest_asyncio: OK')" 2>&1 || echo "pytest_asyncio: FAIL - reinstalling" && pip install 'pytest-asyncio>=0.23,<1'
     - name: Debug - run simple test
       run: cd backend && python -m pytest tests/test_git_integrity_regression.py -v --tb=short 2>&1
     - name: Run backend tests
@@ -60,6 +73,88 @@ jobs:
       with:
         name: backend-tests-logs
         path: backend/pytest.log
+
+  # Gate 1 Integration Test with Disposable PostgreSQL (AUTHORITATIVE)
+  gate1-integration:
+    name: Gate 1 - Atomicity Integration Test
+    runs-on: ubuntu-latest
+    needs: [backend-tests]
+    env:
+      TEST_DATABASE_URL: postgresql://test:test@localhost:5433/test_purge
+      SCHOLARZONE_ENVIRONMENT: test
+    services:
+      postgres:
+        image: postgres:16
+        env:
+          POSTGRES_DB: test_purge
+          POSTGRES_USER: test
+          POSTGRES_PASSWORD: test
+        ports:
+          - 5433:5432
+        options: >-
+          --health-cmd="pg_isready -U test -d test_purge"
+          --health-interval=10s
+          --health-timeout=5s
+          --health-retries=5
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v4
+      with:
+        fetch-depth: 0
+    - name: Set up Python
+      uses: actions/setup-python@v5
+      with:
+        python-version: '3.11'
+    - name: Install dependencies
+      run: cd backend && pip install -r requirements.txt
+    - name: Install purge preflight test dependencies
+      run: cd backend && pip install -r requirements-purge-preflight.txt
+    - name: Wait for PostgreSQL to be ready
+      run: |
+        for i in {1..30}; do
+          if pg_isready -h localhost -p 5433 -U test -d test_purge; then
+            echo "PostgreSQL is ready"
+            break
+          fi
+          echo "Waiting for PostgreSQL... ($i/30)"
+          sleep 2
+        done
+    - name: Run Gate 1 Integration Test
+      run: |
+        cd backend
+        # Run the pytest integration test (marked @pytest.mark.integration)
+        python -m pytest tests/test_purge_preflight.py::test_gate1_integration_with_disposable_db -v --tb=short 2>&1 | tee gate1_integration_test.log
+        # Also run the CLI to generate gate1_result.json artifact
+        python -m app.services.purge_preflight.gate1_atomicity 2>&1 | tee -a gate1_integration_test.log
+    - name: Verify Gate 1 test executed (not skipped)
+      run: |
+        cd backend
+        if grep -q "SKIPPED" gate1_integration_test.log; then
+          echo "ERROR: Gate 1 integration test was SKIPPED - TEST_DATABASE_URL may not be set correctly"
+          cat gate1_integration_test.log
+          exit 1
+        fi
+        if ! grep -q "PASSED\|PASS" gate1_integration_test.log; then
+          echo "ERROR: Gate 1 integration test did not pass"
+          cat gate1_integration_test.log
+          exit 1
+        fi
+        echo "Gate 1 integration test executed and passed"
+    - name: Upload Gate 1 integration results
+      uses: actions/upload-artifact@v4
+      if: always()
+      with:
+        name: gate1-integration-results
+        path: |
+          backend/gate1_result.json
+          backend/gate1_integration_test.log
+    - name: Upload Gate 1 logs on failure
+      uses: actions/upload-artifact@v4
+      if: failure()
+      with:
+        name: gate1-integration-failure-logs
+        path: backend/gate1_integration_test.log
+
   frontend-lint:
     runs-on: ubuntu-latest
     steps:
@@ -81,13 +176,14 @@ jobs:
     - name: Install dependencies
       run: cd frontend && npm install
     - name: Run frontend lint
-      run: cd frontend && npm run lint
+      run: cd frontend && npm run lint 2>&1 | tee eslint.log
     - name: Upload lint results
       uses: actions/upload-artifact@v4
       if: failure()
       with:
         name: frontend-lint-logs
         path: frontend/eslint.log
+
   frontend-tests:
     runs-on: ubuntu-latest
     steps:
@@ -99,6 +195,13 @@ jobs:
         node-version: '20'
         cache: npm
         cache-dependency-path: frontend/package-lock.json
+    - name: Cache npm dependencies
+      uses: actions/cache@v4
+      with:
+        path: ~/.npm
+        key: ${{ runner.os }}-npm-v2-${{ hashFiles('frontend/package-lock.json') }}
+        restore-keys: |
+          Linux-npm-v2-
     - name: Install dependencies
       run: cd frontend && npm ci
     - name: Run frontend tests
@@ -109,6 +212,7 @@ jobs:
       with:
         name: frontend-test-logs
         path: frontend/vitest.log
+
   import-smoke:
     runs-on: ubuntu-latest
     env:
@@ -139,6 +243,7 @@ jobs:
       with:
         name: import-smoke-logs
         path: backend/import_smoke_test.log
+
   git-integrity:
     runs-on: ubuntu-latest
     env:
@@ -169,6 +274,7 @@ jobs:
       with:
         name: git-integrity-logs
         path: backend/git_integrity.log
+
   env-config:
     runs-on: ubuntu-latest
     env:
@@ -197,15 +303,31 @@ jobs:
       with:
         name: env-config-logs
         path: backend/env_config_check.log
+
   schema-compat:
     runs-on: ubuntu-latest
+    services:
+      postgres:
+        image: postgres:16
+        env:
+          POSTGRES_DB: schema_compat_test
+          POSTGRES_USER: test
+          POSTGRES_PASSWORD: test
+        ports:
+          - 5435:5432
+        options: >-
+          --health-cmd="pg_isready -U test -d schema_compat_test"
+          --health-interval=10s
+          --health-timeout=5s
+          --health-retries=5
     env:
       SCHOLARZONE_ENVIRONMENT: test
+      SCHOLARZONE_DATABASE_URL: postgresql://test:test@localhost:5435/schema_compat_test?sslmode=disable
     steps:
     - name: Checkout
       uses: actions/checkout@v4
     - name: Install system dependencies
-      run: sudo apt-get update && sudo apt-get install -y libjpeg-dev zlib1g-dev libfreetype6-dev liblcms2-dev libopenjp2-7-dev libtiff5-dev libwebp-dev
+      run: sudo apt-get update && sudo apt-get install -y libjpeg-dev zlib1g-dev libfreetype6-dev liblcms2-dev libopenjp2-7-dev libtiff5-dev libwebp-dev postgresql-client
     - name: Set up Python
       uses: actions/setup-python@v5
       with:
@@ -219,14 +341,36 @@ jobs:
           Linux-pip-
     - name: Install dependencies
       run: cd backend && pip install -r requirements.txt
+    - name: Install purge preflight test dependencies
+      run: cd backend && pip install -r requirements-purge-preflight.txt
+    - name: Wait for PostgreSQL to be ready
+      run: |
+        for i in {1..30}; do
+          if pg_isready -h localhost -p 5435 -U test -d schema_compat_test; then
+            echo "PostgreSQL is ready"
+            break
+          fi
+          echo "Waiting for PostgreSQL... ($i/30)"
+          sleep 2
+        done
+    - name: Initialize database schema
+      run: |
+        cd backend
+        python scripts/init_schema.py
     - name: Run schema compat check
       run: cd backend && python scripts/schema_compat_check.py 2>&1 | tee schema_compat_check.log
+    - name: Verify initialization idempotency
+      run: |
+        cd backend
+        python scripts/verify_idempotency.py
+    - name: Run schema compat check again (idempotency)
+      run: cd backend && python scripts/schema_compat_check.py 2>&1 | tee schema_compat_check_idempotency.log
     - name: Upload schema compat logs
       uses: actions/upload-artifact@v4
-      if: failure()
+      if: always()
       with:
         name: schema-compat-logs
-        path: backend/schema_compat_check.log
+        path: backend/schema_compat_check*.log
   build-and-smoke:
     runs-on: ubuntu-latest
     env:
@@ -259,15 +403,31 @@ jobs:
       with:
         name: build-and-smoke-logs
         path: backend/artifact_smoke_test.log
+
   preflight:
     runs-on: ubuntu-latest
+    services:
+      postgres:
+        image: postgres:16
+        env:
+          POSTGRES_DB: preflight_test
+          POSTGRES_USER: test
+          POSTGRES_PASSWORD: test
+        ports:
+          - 5436:5432
+        options: >-
+          --health-cmd="pg_isready -U test -d preflight_test"
+          --health-interval=10s
+          --health-timeout=5s
+          --health-retries=5
     env:
       SCHOLARZONE_ENVIRONMENT: test
+      SCHOLARZONE_DATABASE_URL: postgresql://test:test@localhost:5436/preflight_test?sslmode=disable
     steps:
     - name: Checkout
       uses: actions/checkout@v4
     - name: Install system dependencies
-      run: sudo apt-get update && sudo apt-get install -y libjpeg-dev zlib1g-dev libfreetype6-dev liblcms2-dev libopenjp2-7-dev libtiff5-dev libwebp-dev
+      run: sudo apt-get update && sudo apt-get install -y libjpeg-dev zlib1g-dev libfreetype6-dev liblcms2-dev libopenjp2-7-dev libtiff5-dev libwebp-dev postgresql-client
     - name: Set up Python
       uses: actions/setup-python@v5
       with:
@@ -281,11 +441,27 @@ jobs:
           Linux-pip-
     - name: Install dependencies
       run: cd backend && pip install -r requirements.txt
+    - name: Install purge preflight test dependencies
+      run: cd backend && pip install -r requirements-purge-preflight.txt
+    - name: Wait for PostgreSQL to be ready
+      run: |
+        for i in {1..30}; do
+          if pg_isready -h localhost -p 5436 -U test -d preflight_test; then
+            echo "PostgreSQL is ready"
+            break
+          fi
+          echo "Waiting for PostgreSQL... ($i/30)"
+          sleep 2
+        done
+    - name: Initialize database schema
+      run: |
+        cd backend
+        python scripts/init_schema.py
     - name: Run preflight
       run: python backend/scripts/preflight.py 2>&1 | tee backend/preflight.log
     - name: Upload preflight logs
       uses: actions/upload-artifact@v4
-      if: failure()
+      if: always()
       with:
         name: preflight-logs
         path: backend/preflight.log
@@ -316,10 +492,10 @@ jobs:
     - name: Install dependencies
       run: cd backend && pip install -r requirements.txt
     - name: Run snapshot ID validation
-      run: python backend/scripts/validate_snapshot_ids.py 2>&1 | tee snapshot_id_validation.log
+      run: python backend/scripts/validate_snapshot_ids.py 2>&1 | tee backend/snapshot_id_validation.log
     - name: Upload validation logs
       uses: actions/upload-artifact@v4
-      if: failure()
+      if: always()
       with:
         name: snapshot-id-validation-logs
         path: backend/snapshot_id_validation.log
@@ -335,7 +511,7 @@ jobs:
           POSTGRES_PASSWORD: test
           POSTGRES_DB: scholarzone_test
         ports:
-          - 5432:5432
+          - 5434:5432
         options: >-
           --health-cmd="pg_isready -U test -d scholarzone_test"
           --health-interval=10s
@@ -343,7 +519,7 @@ jobs:
           --health-retries=5
     env:
       SCHOLARZONE_ENVIRONMENT: test
-      SCHOLARZONE_DATABASE_URL: postgresql://test:test@localhost:5432/scholarzone_test?sslmode=disable
+      SCHOLARZONE_DATABASE_URL: postgresql://test:test@localhost:5434/scholarzone_test?sslmode=disable
     steps:
     - name: Checkout
       uses: actions/checkout@v4
@@ -364,10 +540,12 @@ jobs:
           Linux-pip-
     - name: Install dependencies
       run: cd backend && pip install -r requirements.txt
+    - name: Install purge preflight test dependencies
+      run: cd backend && pip install -r requirements-purge-preflight.txt
     - name: Wait for PostgreSQL to be ready
       run: |
         for i in {1..30}; do
-          if pg_isready -h localhost -p 5432 -U test -d scholarzone_test; then
+          if pg_isready -h localhost -p 5434 -U test -d scholarzone_test; then
             echo "PostgreSQL is ready"
             break
           fi
@@ -378,7 +556,7 @@ jobs:
       run: cd backend && python scripts/test_postgresql_migration.py 2>&1 | tee postgresql_migration_test.log
     - name: Upload migration test logs
       uses: actions/upload-artifact@v4
-      if: failure()
+      if: always()
       with:
         name: postgresql-migration-test-logs
         path: backend/postgresql_migration_test.log
