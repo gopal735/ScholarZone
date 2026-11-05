@@ -14,14 +14,14 @@
 |--------|---------|
 | **Role** | Developer — architecture, backend, frontend, infrastructure, data pipeline |
 | **Purpose** | Help students worldwide discover 770 public scholarship records with official source provenance |
-| **Live Demo** | https://scholarzone-fwzj.vercel.app |
+| **Live Demo** | Not deployed (Vercel: DEPLOYMENT_NOT_FOUND; SnapDeploy: sleeping) |
 | **Architecture** | Static-first public catalogue (zero-paid), API-backed match engine |
 
 ### Tech Stack (Real, Verified)
 
 **Frontend:** React 19, React Router 7, Vite 8, Vitest, Motion, Three.js  
 **Backend:** FastAPI 0.141, SQLAlchemy 2.0, PostgreSQL (Neon), Pydantic 2, Uvicorn  
-**Infrastructure:** **Vercel** (frontend), GitHub Actions (CI/CD + cron), SnapDeploy (API), Resend (email)  
+**Infrastructure:** **Vercel** (configured, not deployed — frontend), GitHub Actions (CI/CD + cron), SnapDeploy (configured, sleeping — API), Resend (email)  
 **Data:** Reproducible snapshot pipeline (770 records), deterministic match engine (7 dimensions, no ML)
 
 ### Key Technical Achievements
@@ -56,7 +56,7 @@
 ## 📫 Contact
 
 - **GitHub:** [@gopal735](https://github.com/gopal735)
-- **ScholarZone:** [gopal735/ScholarZone](https://github.com/gopal735/ScholarZone) | [Live Demo](https://scholarzone-fwzj.vercel.app)
+- **ScholarZone:** [gopal735/ScholarZone](https://github.com/gopal735/ScholarZone) | **Not deployed** (Vercel: DEPLOYMENT_NOT_FOUND; SnapDeploy: sleeping)
 
 ---
 

@@ -86,14 +86,14 @@ ScholarZone is a global scholarship discovery platform that helps students find 
 | pytest | — | Testing |
 
 ### Infrastructure & CI/CD
-| Service | Purpose |
-|---------|---------|
-| **Vercel** | Frontend hosting (static, automatic deployments) |
-| **GitHub Actions** | CI/CD, scheduled maintenance, snapshot generation |
-| **SnapDeploy** | Backend API hosting (container, sleeps after 30min idle) |
-| **Neon PostgreSQL** | Database (0.5 GB free, 190 compute hrs/mo) |
-| **Resend** | Email verification (3,000/mo free) |
-| **Cloudflare Pages** | Evaluated alternative for frontend (configured, not active) |
+| Service | Purpose | Status |
+|---------|---------|--------|
+| **Vercel** | Frontend hosting (static, automatic deployments) | Configured, not deployed |
+| **GitHub Actions** | CI/CD, scheduled maintenance, snapshot generation | Active |
+| **SnapDeploy** | Backend API hosting (container, sleeps after 30min idle) | Configured, sleeping |
+| **Neon PostgreSQL** | Database (0.5 GB free, 190 compute hrs/mo) | Active |
+| **Resend** | Email verification (3,000/mo free) | Active |
+| **Cloudflare Pages** | Evaluated alternative for frontend (configured, not active) | Configured, not deployed |
 
 ### Data Pipeline
 - **Canonical Source**: `backend/app/data/verified_scholarships.py` (ingestion records with official_source_url)
@@ -109,7 +109,7 @@ ScholarZone is a global scholarship discovery platform that helps students find 
 ┌─────────────────────────────────────────────────────────────────┐
 │                          VERCEL                                 │
 │  ┌─────────────────────────────────────────────────────────┐   │
-│  │  frontend/dist (static build)                           │   │
+│  │  frontend/dist (static build) — NOT DEPLOYED            │   │
 │  │  ├── index.html                                         │   │
 │  │  ├── assets/ (JS, CSS, immutable cache)                 │   │
 │  │  ├── scholarships-snapshot.json  ← 770 records, 2.1 MB  │   │
@@ -124,9 +124,9 @@ ScholarZone is a global scholarship discovery platform that helps students find 
 │  │  • fetchScholarshipByIdFromSnapshot()                    │   │
 │  └─────────────────────────────────────────────────────────┘   │
 └─────────────────────────────────────────────────────────────────┘
-                            │
-              ┌─────────────┴─────────────┐
-              ▼                           ▼
+                             │
+               ┌─────────────┴─────────────┐
+               ▼                           ▼
 ┌─────────────────────────┐   ┌─────────────────────────┐
 │   GITHUB ACTIONS        │   │   SNAPDEPLOY (API)      │
 │   (CI/CD + CRON)        │   │   FastAPI + PostgreSQL  │
@@ -148,12 +148,18 @@ ScholarZone is a global scholarship discovery platform that helps students find 
 └─────────────────────────────────────────────────────────────────┘
 ```
 
+> **Note**: The above architecture represents the **intended** design. Currently:
+> - Frontend is **not deployed** to Vercel (DEPLOYMENT_NOT_FOUND at scholarzone.vercel.app)
+> - SnapDeploy backend is **sleeping** (returns wake page, not API)
+> - Vercel backend deployment is **stale** (revision f085b718 from Oct 6, not current master)
+> - The live production frontend is **not deployed** to any provider
+
 ### Data Flow
 
 1. **Ingestion** → `verified_scholarships.py` (manual curation with official_source_url)
 2. **Seed** → `scripts/seed_real_scholarships.py` → Neon PostgreSQL
 3. **Snapshot** → `scripts/build_public_snapshot.py` → `scholarships-snapshot.json` (CI)
-4. **Deploy** → Vercel serves snapshot + static build
+4. **Deploy** → Vercel serves snapshot + static build (configured, not deployed)
 5. **Browse** → Frontend reads snapshot directly (no API call)
 6. **Match** → API queries Neon, runs pure engine, returns scored results
 
@@ -303,7 +309,7 @@ cd backend && pytest -v
 
 ## 📸 Screenshots
 
-> *Screenshots to be added. Current deployment: https://scholarzone-fwzj.vercel.app*
+> *Screenshots to be added. Frontend not deployed; Vercel backend at https://scholarzone-fwzj.vercel.app (stale, revision f085b718). SnapDeploy backend sleeping.*
 
 | View | Description |
 |------|-------------|
