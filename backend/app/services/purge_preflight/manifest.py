@@ -11,6 +11,11 @@ Classification Categories:
 - UNKNOWN: Insufficient data to determine status - CANNOT purge
 - BLOCKED: Explicitly blocked from purge (e.g., future deadline, active cycle) - CANNOT purge
 - STATUS_DEADLINE_CONFLICT: Past deadline but status shows open/active - REQUIRES REVIEW
+
+IMPORTANT: EXPECTED_CLASSIFICATIONS is a REFERENCE MANIFEST only.
+It documents the expected classification based on evidence at time of manifest creation.
+Gate 5 MUST compare actual live record data against this reference and report mismatches explicitly.
+NEVER use EXPECTED_CLASSIFICATIONS as hardcoded truth or sole authorization for purge.
 """
 
 from dataclasses import dataclass
@@ -147,8 +152,10 @@ class TargetRecord:
         }
 
 
-# Classification mapping - derived from actual record evidence
-# This MUST be validated against real database records in Gate 5
+# Classification mapping - REFERENCE MANIFEST only
+# This documents expected classifications based on evidence at manifest creation time.
+# Gate 5 MUST validate against actual live database records and report mismatches explicitly.
+# NEVER use this as hardcoded truth or sole authorization for purge operations.
 # CLOSED: 18 records - application cycle definitively ended
 # CLOSING_SOON: 16 records - cycle ending or recently ended
 EXPECTED_CLASSIFICATIONS = {
@@ -200,54 +207,113 @@ def get_expected_classification(record_id: int) -> ClassificationCategory:
     return EXPECTED_CLASSIFICATIONS[record_id]
 
 
-def validate_classifications(classifications: dict[int, ClassificationCategory]) -> list[str]:
+@dataclass(frozen=True)
+class MismatchDetail:
+    """Detailed mismatch between expected and actual classification."""
+    id: int
+    expected: ClassificationCategory
+    actual: ClassificationCategory
+    reason: str
+
+
+@dataclass(frozen=True)
+class ClassificationValidationResult:
+    """Result of classification validation with detailed mismatch reporting."""
+    is_valid: bool
+    mismatches: list[MismatchDetail]
+    missing_from_db: list[int]
+    unexpected_in_db: list[int]
+    category_breakdown: dict[str, int]
+    reconciliation_verified: bool
+
+
+def validate_classifications(classifications: dict[int, ClassificationCategory]) -> ClassificationValidationResult:
     """
     Validate classification mapping against canonical expectations.
 
     Returns:
-        List of error messages (empty if valid).
+        ClassificationValidationResult with detailed mismatch information.
+        NEVER hides mismatches - all discrepancies are explicitly reported.
     """
-    errors = []
+    mismatches = []
+    missing_from_db = []
+    unexpected_in_db = []
 
     # Check all canonical IDs have classifications
     for tid in CANONICAL_TARGET_IDS:
         if tid not in classifications:
-            errors.append(f"Missing classification for ID {tid}")
+            missing_from_db.append(tid)
         elif classifications[tid] != EXPECTED_CLASSIFICATIONS[tid]:
-            errors.append(
-                f"ID {tid}: expected {EXPECTED_CLASSIFICATIONS[tid].value}, "
-                f"got {classifications[tid].value}"
-            )
+            mismatches.append(MismatchDetail(
+                id=tid,
+                expected=EXPECTED_CLASSIFICATIONS[tid],
+                actual=classifications[tid],
+                reason=f"Expected {EXPECTED_CLASSIFICATIONS[tid].value}, got {classifications[tid].value}"
+            ))
 
     # Check for extra IDs
     for tid in classifications:
         if tid not in TARGET_ID_SET:
-            errors.append(f"Unexpected ID in classifications: {tid}")
+            unexpected_in_db.append(tid)
 
     # Check for duplicates in values (should not happen with dict)
     seen = set()
     for tid, cat in classifications.items():
         key = (tid, cat)
         if key in seen:
-            errors.append(f"Duplicate classification entry: {tid}={cat.value}")
+            mismatches.append(MismatchDetail(
+                id=tid,
+                expected=EXPECTED_CLASSIFICATIONS.get(tid, ClassificationCategory.UNKNOWN),
+                actual=cat,
+                reason=f"Duplicate classification entry: {tid}={cat.value}"
+            ))
         seen.add(key)
 
-    # Verify counts match expectation
-    closed_count = sum(1 for v in classifications.values() if v == ClassificationCategory.CLOSED)
-    closing_soon_count = sum(1 for v in classifications.values() if v == ClassificationCategory.CLOSING_SOON)
-    blocked_count = sum(1 for v in classifications.values() if v in (
-        ClassificationCategory.BLOCKED, ClassificationCategory.EVERGREEN,
-        ClassificationCategory.UNKNOWN, ClassificationCategory.STATUS_DEADLINE_CONFLICT
-    ))
+    # Category breakdown
+    category_breakdown = {
+        "closed": sum(1 for v in classifications.values() if v == ClassificationCategory.CLOSED),
+        "closing_soon": sum(1 for v in classifications.values() if v == ClassificationCategory.CLOSING_SOON),
+        "evergreen": sum(1 for v in classifications.values() if v == ClassificationCategory.EVERGREEN),
+        "unknown": sum(1 for v in classifications.values() if v == ClassificationCategory.UNKNOWN),
+        "blocked": sum(1 for v in classifications.values() if v == ClassificationCategory.BLOCKED),
+        "status_deadline_conflict": sum(1 for v in classifications.values() if v == ClassificationCategory.STATUS_DEADLINE_CONFLICT),
+        "total": len(classifications),
+    }
 
-    if closed_count != 18:
-        errors.append(f"Expected 18 CLOSED records, got {closed_count}")
-    if closing_soon_count != 16:
-        errors.append(f"Expected 16 CLOSING_SOON records, got {closing_soon_count}")
-    if blocked_count > 0:
-        errors.append(f"Found {blocked_count} blocked/non-purgeable records - cannot purge")
+    # Verify counts match expectation (reference only - not hardcoded truth)
+    expected_closed = 18
+    expected_closing_soon = 16
 
-    return errors
+    reconciliation_verified = (
+        len(mismatches) == 0 and
+        len(missing_from_db) == 0 and
+        len(unexpected_in_db) == 0 and
+        category_breakdown["closed"] == expected_closed and
+        category_breakdown["closing_soon"] == expected_closing_soon and
+        category_breakdown["evergreen"] == 0 and
+        category_breakdown["unknown"] == 0 and
+        category_breakdown["blocked"] == 0 and
+        category_breakdown["status_deadline_conflict"] == 0
+    )
+
+    is_valid = (
+        len(mismatches) == 0 and
+        len(missing_from_db) == 0 and
+        len(unexpected_in_db) == 0 and
+        category_breakdown["evergreen"] == 0 and
+        category_breakdown["unknown"] == 0 and
+        category_breakdown["blocked"] == 0 and
+        category_breakdown["status_deadline_conflict"] == 0
+    )
+
+    return ClassificationValidationResult(
+        is_valid=is_valid,
+        mismatches=mismatches,
+        missing_from_db=missing_from_db,
+        unexpected_in_db=unexpected_in_db,
+        category_breakdown=category_breakdown,
+        reconciliation_verified=reconciliation_verified,
+    )
 
 
 # Validate on import

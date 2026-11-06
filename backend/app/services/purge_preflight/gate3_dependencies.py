@@ -45,6 +45,9 @@ class Gate3Result:
     safe_to_delete: bool = False
     status: str = "PENDING"
     error: Optional[str] = None
+    # Detailed reporting
+    referencing_tables: list[dict] = None
+    target_ids_with_references: dict[int, list[str]] = None
 
     def __post_init__(self):
         if self.fk_metadata is None:
@@ -57,6 +60,10 @@ class Gate3Result:
             self.per_target_reference_counts = {}
         if self.inspection_errors is None:
             self.inspection_errors = []
+        if self.referencing_tables is None:
+            self.referencing_tables = []
+        if self.target_ids_with_references is None:
+            self.target_ids_with_references = {}
 
     def to_dict(self) -> dict:
         return asdict(self)
@@ -116,6 +123,8 @@ def run_gate3(accessor: DatabaseAccessor, target_ids: list[int]) -> Gate3Result:
             reference_counts = {}
             total_refs = 0
             inspection_errors = []
+            referencing_tables = []
+            target_ids_with_references = {tid: [] for tid in target_ids}
 
             for fk in fk_metadata:
                 try:
@@ -126,6 +135,25 @@ def run_gate3(accessor: DatabaseAccessor, target_ids: list[int]) -> Gate3Result:
                         key = f"{fk.table_name}.{fk.column_names[0]}"
                     reference_counts[key] = count
                     total_refs += count
+
+                    # Build referencing tables detail
+                    referencing_tables.append({
+                        "table_name": fk.table_name,
+                        "column_names": fk.column_names,
+                        "constraint_name": fk.constraint_name,
+                        "on_delete": fk.on_delete_action,
+                        "on_update": fk.on_update_action,
+                        "is_cascade": fk.is_cascade,
+                        "is_composite": fk.is_composite,
+                        "aggregate_reference_count": count,
+                    })
+
+                    # Track per-target references
+                    per_target = accessor.count_references_per_target(conn, fk, target_ids)
+                    for tid, cnt in per_target.items():
+                        if cnt > 0:
+                            target_ids_with_references[tid].append(key)
+
                 except Exception as e:
                     if fk.is_composite:
                         key = f"{fk.table_name}.({','.join(fk.column_names)})"
@@ -139,6 +167,10 @@ def run_gate3(accessor: DatabaseAccessor, target_ids: list[int]) -> Gate3Result:
             result.reference_counts = reference_counts
             result.total_references_to_targets = total_refs
             result.inspection_errors = inspection_errors
+            result.referencing_tables = referencing_tables
+
+            # Remove target IDs with no references for cleaner output
+            result.target_ids_with_references = {tid: tables for tid, tables in target_ids_with_references.items() if tables}
 
             # 4. Per-target reference counts (detailed breakdown)
             try:
@@ -210,7 +242,7 @@ def main() -> int:
     print()
 
     try:
-        config = load_config()
+        config = load_config(gates_to_run={"gate3"})
         accessor = create_accessor(config.database)
     except ValueError as e:
         print(f"CONFIGURATION ERROR: {e}", file=sys.stderr)

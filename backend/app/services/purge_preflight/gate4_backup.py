@@ -38,12 +38,16 @@ import datetime
 import sys
 import shutil
 import secrets
+import urllib.request
+import urllib.error
 from dataclasses import dataclass, asdict, field
 from typing import Optional, List
 
+import psycopg2
+
 from .manifest import CANONICAL_TARGET_IDS, TARGET_ID_SET
 from .database import DatabaseAccessor, create_accessor, DatabaseIdentity
-from .config import DatabaseConfig, GPGConfig, PreflightConfig, load_config
+from .config import DatabaseConfig, GPGConfig, PreflightConfig, DurableStorageConfig, load_config
 from .metadata import save_result_with_metadata
 
 
@@ -84,6 +88,7 @@ class Gate4Result:
     sha256_hash: Optional[str] = None
     pitr_status: str = "UNVERIFIED"
     pitr_retention_days: Optional[int] = None
+    pitr_details: Optional[dict] = None
     backup_verified: bool = False
     checksum_verified: bool = False
     gpg_fingerprint_verified: bool = False
@@ -103,10 +108,18 @@ class Gate4Result:
     status: str = "PENDING"
     error: Optional[str] = None
     cleanup_errors: List[str] = field(default_factory=list)
+    # Durable storage fields
+    durable_storage_verified: bool = False
+    remote_checksum_verified: bool = False
+    restore_from_durable_verified: bool = False
+    remote_encrypted_path: Optional[str] = None
+    remote_checksum_path: Optional[str] = None
 
     def __post_init__(self):
         if self.restore_details is None:
             self.restore_details = {}
+        if self.pitr_details is None:
+            self.pitr_details = {}
 
     def to_dict(self) -> dict:
         return asdict(self)
@@ -316,15 +329,27 @@ def verify_gpg_key_lifecycle(gpg_recipient: str, expected_fingerprint: str, test
 
 
 def run_pg_dump(database_url: str, output_file: str) -> subprocess.CompletedProcess:
-    """Run pg_dump with custom format and compression."""
+    """Run pg_dump with custom format and compression.
+    
+    Uses PGPASSWORD environment variable to avoid credentials in command line.
+    """
+    # Parse database URL to extract connection parameters
+    parsed = parse_database_url(database_url)
+    env = os.environ.copy()
+    env["PGPASSWORD"] = parsed["password"]
+    
     return subprocess.run([
-        "pg_dump", database_url,
+        "pg_dump",
+        "-h", parsed["host"],
+        "-p", str(parsed["port"]),
+        "-U", parsed["user"],
+        "-d", parsed["database"],
         "--format=custom",
         "--compress=9",
         "--no-owner",
         "--no-privileges",
         "--file=" + output_file
-    ], check=True, capture_output=True, text=True, timeout=300)
+    ], check=True, capture_output=True, text=True, timeout=300, env=env)
 
 
 def run_pg_restore_list(backup_file: str) -> subprocess.CompletedProcess:
@@ -378,6 +403,385 @@ def verify_checksum(file_path: str, checksum_file: str) -> bool:
         return expected_hash == actual_hash
     except Exception:
         return False
+
+
+def build_remote_path(durable_storage: DurableStorageConfig, local_filename: str) -> str:
+    """Build remote object path with prefix."""
+    prefix = durable_storage.prefix.rstrip("/") + "/"
+    return f"{prefix}{local_filename}"
+
+
+def get_remote_checksum_from_output(output: str, filename: str) -> Optional[str]:
+    """Extract checksum from CLI tool output if available."""
+    # Most CLI tools don't return checksum in output, so we compute locally
+    # This is a placeholder for future enhancements
+    return None
+
+
+def upload_to_durable_storage(
+    encrypted_file: str,
+    checksum_file: str,
+    durable_storage: DurableStorageConfig
+) -> tuple[bool, Optional[str], Optional[str], Optional[str], Optional[str]]:
+    """
+    Upload encrypted .gpg file and checksum to durable storage.
+    
+    Returns:
+        Tuple of (success, remote_encrypted_path, remote_checksum_path, remote_encrypted_checksum, remote_checksum_checksum)
+        The remote checksums are obtained from the storage provider's metadata where supported.
+    """
+    provider = durable_storage.provider.lower()
+    bucket = durable_storage.bucket
+    region = durable_storage.region
+    credential = durable_storage.credential
+    credential_secret = durable_storage.credential_secret
+    
+    encrypted_filename = os.path.basename(encrypted_file)
+    checksum_filename = os.path.basename(checksum_file)
+    
+    remote_encrypted_path = build_remote_path(durable_storage, encrypted_filename)
+    remote_checksum_path = build_remote_path(durable_storage, checksum_filename)
+    
+    try:
+        if provider == "s3":
+            # AWS CLI: aws s3 cp <local> s3://<bucket>/<key>
+            # Credentials are passed via environment variables
+            env = os.environ.copy()
+            env["AWS_ACCESS_KEY_ID"] = credential
+            env["AWS_SECRET_ACCESS_KEY"] = credential_secret
+            if region:
+                env["AWS_DEFAULT_REGION"] = region
+            
+            # Upload encrypted file
+            result = subprocess.run(
+                ["aws", "s3", "cp", encrypted_file, f"s3://{bucket}/{remote_encrypted_path}"],
+                capture_output=True, text=True, timeout=300, env=env
+            )
+            if result.returncode != 0:
+                return False, None, None, None, None, f"S3 upload failed: {result.stderr}"
+            
+            # Upload checksum file
+            result = subprocess.run(
+                ["aws", "s3", "cp", checksum_file, f"s3://{bucket}/{remote_checksum_path}"],
+                capture_output=True, text=True, timeout=300, env=env
+            )
+            if result.returncode != 0:
+                return False, None, None, None, None, f"S3 checksum upload failed: {result.stderr}"
+            
+            # Get remote object metadata (ETag for S3 is often MD5, not SHA256)
+            # For SHA256, we need to compute it ourselves or use S3 Object Lambda
+            # Here we return the local checksum as reference; remote verification happens on download
+            local_checksum = run_sha256sum(encrypted_file)
+            checksum_checksum = run_sha256sum(checksum_file)
+            
+            return True, remote_encrypted_path, remote_checksum_path, local_checksum, checksum_checksum, None
+            
+        elif provider == "gcs":
+            # gsutil: gsutil cp <local> gs://<bucket>/<key>
+            # Credentials: GOOGLE_APPLICATION_CREDENTIALS env var pointing to service account JSON
+            env = os.environ.copy()
+            env["GOOGLE_APPLICATION_CREDENTIALS"] = credential
+            if region:
+                env["GSUTIL_DEFAULT_REGION"] = region
+            
+            # Upload encrypted file
+            result = subprocess.run(
+                ["gsutil", "cp", encrypted_file, f"gs://{bucket}/{remote_encrypted_path}"],
+                capture_output=True, text=True, timeout=300, env=env
+            )
+            if result.returncode != 0:
+                return False, None, None, None, None, f"GCS upload failed: {result.stderr}"
+            
+            # Upload checksum file
+            result = subprocess.run(
+                ["gsutil", "cp", checksum_file, f"gs://{bucket}/{remote_checksum_path}"],
+                capture_output=True, text=True, timeout=300, env=env
+            )
+            if result.returncode != 0:
+                return False, None, None, None, None, f"GCS checksum upload failed: {result.stderr}"
+            
+            local_checksum = run_sha256sum(encrypted_file)
+            checksum_checksum = run_sha256sum(checksum_file)
+            
+            return True, remote_encrypted_path, remote_checksum_path, local_checksum, checksum_checksum, None
+            
+        elif provider == "azure":
+            # Azure CLI: Use pre-authenticated session (GitHub Actions OIDC via azure/login)
+            # or managed identity. NEVER use client secret in argv, stdin, or env.
+            # Prefer GitHub Actions OIDC authentication via azure/login action.
+            # If not pre-authenticated, try managed identity. Fail closed if neither works.
+            env = os.environ.copy()
+            
+            # Check if already authenticated (OIDC via azure/login would pre-authenticate)
+            auth_check = subprocess.run(
+                ["az", "account", "show"],
+                capture_output=True, text=True, timeout=30, env=env
+            )
+            
+            if auth_check.returncode != 0:
+                # Not authenticated - try managed identity
+                login_result = subprocess.run(
+                    ["az", "login", "--identity"],
+                    capture_output=True, text=True, timeout=60, env=env
+                )
+                if login_result.returncode != 0:
+                    return False, None, None, None, None, "Azure authentication required: pre-authenticate via GitHub Actions OIDC (azure/login) or use managed identity. Client secret authentication is not supported."
+            
+            # Upload encrypted file - NO credentials in command args
+            result = subprocess.run(
+                [
+                    "az", "storage", "blob", "upload",
+                    "--account-name", credential,
+                    "--container-name", bucket,
+                    "--file", encrypted_file,
+                    "--name", remote_encrypted_path,
+                    "--auth-mode", "login"
+                ],
+                capture_output=True, text=True, timeout=300, env=env
+            )
+            if result.returncode != 0:
+                return False, None, None, None, None, f"Azure upload failed: {result.stderr}"
+            
+            # Upload checksum file - NO credentials in command args
+            result = subprocess.run(
+                [
+                    "az", "storage", "blob", "upload",
+                    "--account-name", credential,
+                    "--container-name", bucket,
+                    "--file", checksum_file,
+                    "--name", remote_checksum_path,
+                    "--auth-mode", "login"
+                ],
+                capture_output=True, text=True, timeout=300, env=env
+            )
+            if result.returncode != 0:
+                return False, None, None, None, None, f"Azure checksum upload failed: {result.stderr}"
+            
+            local_checksum = run_sha256sum(encrypted_file)
+            checksum_checksum = run_sha256sum(checksum_file)
+            
+            return True, remote_encrypted_path, remote_checksum_path, local_checksum, checksum_checksum, None
+        else:
+            return False, None, None, None, None, f"Unsupported provider: {provider}"
+        
+    except subprocess.TimeoutExpired:
+        return False, None, None, None, None, f"Upload timed out for provider {provider}"
+    except Exception as e:
+        return False, None, None, None, None, f"Upload exception: {e}"
+
+
+def verify_remote_checksum(downloaded_file: str, expected_checksum: str) -> bool:
+    """Verify downloaded file matches expected checksum."""
+    actual_checksum = run_sha256sum(downloaded_file)
+    return actual_checksum == expected_checksum
+
+
+def download_from_durable_storage(
+    remote_path: str,
+    local_path: str,
+    durable_storage: DurableStorageConfig
+) -> tuple[bool, Optional[str]]:
+    """Download file from durable storage and return its checksum."""
+    provider = durable_storage.provider.lower()
+    bucket = durable_storage.bucket
+    region = durable_storage.region
+    credential = durable_storage.credential
+    credential_secret = durable_storage.credential_secret
+    
+    try:
+        if provider == "s3":
+            env = os.environ.copy()
+            env["AWS_ACCESS_KEY_ID"] = credential
+            env["AWS_SECRET_ACCESS_KEY"] = credential_secret
+            if region:
+                env["AWS_DEFAULT_REGION"] = region
+            
+            result = subprocess.run(
+                ["aws", "s3", "cp", f"s3://{bucket}/{remote_path}", local_path],
+                capture_output=True, text=True, timeout=300, env=env
+            )
+            if result.returncode != 0:
+                return False, None
+            # Return checksum of downloaded file
+            return True, run_sha256sum(local_path)
+            
+        elif provider == "gcs":
+            env = os.environ.copy()
+            env["GOOGLE_APPLICATION_CREDENTIALS"] = credential
+            if region:
+                env["GSUTIL_DEFAULT_REGION"] = region
+            
+            result = subprocess.run(
+                ["gsutil", "cp", f"gs://{bucket}/{remote_path}", local_path],
+                capture_output=True, text=True, timeout=300, env=env
+            )
+            if result.returncode != 0:
+                return False, None
+            return True, run_sha256sum(local_path)
+            
+        elif provider == "azure":
+            # Azure CLI: Use pre-authenticated session (GitHub Actions OIDC via azure/login)
+            # or managed identity. NEVER use client secret in argv, stdin, or env.
+            env = os.environ.copy()
+            
+            # Check if already authenticated (OIDC via azure/login would pre-authenticate)
+            auth_check = subprocess.run(
+                ["az", "account", "show"],
+                capture_output=True, text=True, timeout=30, env=env
+            )
+            
+            if auth_check.returncode != 0:
+                # Not authenticated - try managed identity
+                login_result = subprocess.run(
+                    ["az", "login", "--identity"],
+                    capture_output=True, text=True, timeout=60, env=env
+                )
+                if login_result.returncode != 0:
+                    return False, None
+            
+            # Download file - NO credentials in command args
+            result = subprocess.run(
+                [
+                    "az", "storage", "blob", "download",
+                    "--account-name", credential,
+                    "--container-name", bucket,
+                    "--name", remote_path,
+                    "--file", local_path,
+                    "--auth-mode", "login"
+                ],
+                capture_output=True, text=True, timeout=300, env=env
+            )
+            if result.returncode != 0:
+                return False, None
+            return True, run_sha256sum(local_path)
+        else:
+            return False, None
+            
+    except Exception:
+        return False, None
+
+
+def restore_from_durable_backup(
+    remote_encrypted_path: str,
+    remote_checksum_path: str,
+    local_encrypted_file: str,
+    local_checksum_file: str,
+    local_decrypted_file: str,
+    durable_storage: DurableStorageConfig,
+    gpg_recipient: str,
+    gpg_home: Optional[str],
+    restore_test: "RestoreTestConfig",
+    target_ids: list[int],
+    expected_encrypted_checksum: str,
+    expected_checksum_checksum: str
+) -> tuple[bool, dict]:
+    """
+    Full restore test from durable storage copy.
+    
+    Downloads encrypted backup and checksum from durable storage,
+    verifies checksum of downloaded files against PRE-COMPUTED expected checksums
+    (not trusting the downloaded checksum file as source of truth),
+    decrypts, restores to test database, verifies data.
+    
+    Args:
+        expected_encrypted_checksum: Pre-computed SHA256 of encrypted file (before upload)
+        expected_checksum_checksum: Pre-computed SHA256 of checksum file (before upload)
+    
+    Returns:
+        Tuple of (success, details_dict)
+    """
+    details = {"provider": durable_storage.provider, "bucket": durable_storage.bucket}
+    
+    try:
+        # Step 1: Download encrypted file from durable storage
+        print(f"Downloading encrypted backup from {durable_storage.provider}...")
+        success, downloaded_encrypted_checksum = download_from_durable_storage(remote_encrypted_path, local_encrypted_file, durable_storage)
+        if not success:
+            details["error"] = "Failed to download encrypted file from durable storage"
+            return False, details
+        print("✅ Encrypted backup downloaded")
+        
+        # Step 2: Download checksum file from durable storage
+        print("Downloading checksum from durable storage...")
+        success, downloaded_checksum_checksum = download_from_durable_storage(remote_checksum_path, local_checksum_file, durable_storage)
+        if not success:
+            details["error"] = "Failed to download checksum from durable storage"
+            return False, details
+        print("✅ Checksum downloaded")
+        
+        # Step 3: Verify checksum of downloaded encrypted file against PRE-COMPUTED expected checksum
+        # This is the INDEPENDENT verification - we don't trust the downloaded checksum file
+        print("Verifying downloaded encrypted file checksum against pre-computed expected value...")
+        if downloaded_encrypted_checksum != expected_encrypted_checksum:
+            details["error"] = f"Encrypted file checksum mismatch: expected {expected_encrypted_checksum}, got {downloaded_encrypted_checksum}"
+            details["downloaded_checksum"] = downloaded_encrypted_checksum
+            details["expected_checksum"] = expected_encrypted_checksum
+            return False, details
+        print(f"✅ Encrypted file checksum verified independently: {downloaded_encrypted_checksum}")
+        
+        # Step 4: Verify checksum file integrity against PRE-COMPUTED expected checksum
+        # This ensures the checksum manifest itself wasn't tampered with
+        print("Verifying checksum file integrity against pre-computed expected value...")
+        if downloaded_checksum_checksum != expected_checksum_checksum:
+            details["error"] = f"Checksum file checksum mismatch: expected {expected_checksum_checksum}, got {downloaded_checksum_checksum}"
+            details["downloaded_checksum"] = downloaded_checksum_checksum
+            details["expected_checksum"] = expected_checksum_checksum
+            return False, details
+        print(f"✅ Checksum file integrity verified independently: {downloaded_checksum_checksum}")
+        
+        # Step 5: Verify checksum file content matches expected encrypted checksum
+        # This ensures the checksum file content is consistent
+        print("Verifying checksum file content...")
+        with open(local_checksum_file, "r") as f:
+            checksum_file_content = f.read().strip()
+        if checksum_file_content.split()[0] != expected_encrypted_checksum:
+            details["error"] = f"Checksum file content mismatch: expected {expected_encrypted_checksum}"
+            return False, details
+        print("✅ Checksum file content verified")
+        
+        # Step 5: Decrypt the downloaded backup
+        print("Decrypting downloaded backup...")
+        run_gpg_decrypt(local_encrypted_file, local_decrypted_file, gpg_home)
+        print("✅ Backup decrypted")
+        
+        # Step 6: Create test database for restore
+        restore_db = f"restore_durable_{int(datetime.datetime.utcnow().timestamp())}"
+        restore_url = f"postgresql://{restore_test.user}:{restore_test.password}@{restore_test.host}:{restore_test.port}/{restore_db}"
+        
+        print(f"Creating test database: {restore_db}")
+        if not create_test_database(restore_db, restore_test.host, restore_test.port, restore_test.user, restore_test.password):
+            details["error"] = "Failed to create restore test database"
+            return False, details
+        
+        try:
+            # Step 7: Restore into test database
+            print("Restoring backup from durable storage...")
+            run_pg_restore(restore_url, local_decrypted_file, restore_test.host, restore_test.port, restore_test.user, restore_test.password)
+            print("✅ Backup restored from durable storage")
+            
+            # Step 8: Verify restored data
+            print("Verifying restored data...")
+            restore_success, restore_details = verify_restore(restore_url, target_ids, restore_test.host, restore_test.port, restore_test.user, restore_test.password)
+            details["restore_verification"] = restore_details
+            
+            if not restore_success:
+                details["error"] = "Restore verification failed"
+                return False, details
+            
+            print(f"✅ Durable storage restore test PASSED: {restore_details}")
+            details["success"] = True
+            return True, details
+            
+        finally:
+            # Clean up test database
+            drop_database(restore_db, restore_test.host, restore_test.port, restore_test.user, restore_test.password)
+            # Clean up decrypted file
+            if os.path.exists(local_decrypted_file):
+                os.unlink(local_decrypted_file)
+                
+    except Exception as e:
+        details["error"] = f"Restore from durable backup failed: {e}"
+        return False, details
 
 
 def create_test_database(db_name: str, host: str, port: int, user: str, password: str) -> bool:
@@ -499,7 +903,8 @@ def validate_restore_connection_identity(restore_url: str, expected_host: str, e
 def run_pg_restore(database_url: str, backup_file: str, host: str, port: int, user: str, password: str) -> subprocess.CompletedProcess:
     """Restore backup into database using explicit connection parameters.
     
-    Validates that the database_url matches the explicit host/port/user before proceeding.
+    Uses PGPASSWORD environment variable and explicit host/port/user/dbname
+    to avoid credentials in command line.
     """
     # Validate connection identity
     is_valid, error = validate_restore_connection_identity(database_url, host, port, user)
@@ -509,7 +914,11 @@ def run_pg_restore(database_url: str, backup_file: str, host: str, port: int, us
     env = os.environ.copy()
     env["PGPASSWORD"] = password
     return subprocess.run([
-        "pg_restore", "--dbname=" + database_url,
+        "pg_restore",
+        "-h", host,
+        "-p", str(port),
+        "-U", user,
+        "-d", database_url.split("/")[-1].split("?")[0],  # Extract database name
         "--no-owner", "--no-privileges",
         backup_file
     ], check=True, capture_output=True, text=True, timeout=300, env=env)
@@ -664,88 +1073,289 @@ def test_wrong_credentials_rejected(host: str, port: int, user: str, password: s
 
 def get_pitr_status(conn) -> tuple[str, Optional[int], dict]:
     """
-    Get Neon PITR status from the database.
-    Queries Neon-specific settings for PITR configuration.
+    Get Neon PITR status using authoritative verification.
+    
+    Verification steps:
+    1. Confirm this is a Neon instance by checking for Neon project configuration
+       (neon.project_id, neon.branch_id settings in pg_settings)
+    2. Query Neon API or project configuration for authoritative PITR retention
+       (history_retention_seconds / pitr_retention_days)
+    3. If API unavailable, check pg_settings for neon.pitr_* settings
+    4. Convert seconds to days correctly
+    5. Require at least 7 days retention if that's the declared backup policy
+    6. Missing, inaccessible, invalid or insufficient evidence returns UNVERIFIED
+    7. Never infer production PITR from server version string alone
     
     Returns:
         Tuple of (status, retention_days, details_dict)
         status: "VERIFIED", "DISABLED", "UNAVAILABLE", "UNVERIFIED"
     """
     details = {
-        "neon_pitr_retention_days_raw": None,
-        "neon_pitr_enabled_raw": None,
+        "is_neon_instance": False,
+        "neon_project_id": None,
+        "neon_branch_id": None,
+        "neon_settings_found": [],
+        "pitr_retention_seconds_raw": None,
+        "pitr_retention_days_raw": None,
+        "pitr_enabled_raw": None,
         "settings_exist": False,
         "retention_parsed": False,
         "enabled_parsed": False,
+        "pitr_method": None,
+        "source": None,
+        "api_queried": False,
+        "api_response": None,
     }
     
     try:
         with conn.cursor() as cur:
-            # Check if Neon PITR settings exist
+            # Step 1: Verify this is a Neon instance by checking for Neon project settings
+            # Neon exposes project_id and branch_id as GUCs
             cur.execute("""
-                SELECT 
-                    current_setting('neon.pitr_retention_days', true) as retention_days,
-                    current_setting('neon.pitr_enabled', true) as pitr_enabled
+                SELECT name, setting
+                FROM pg_settings
+                WHERE name IN ('neon.project_id', 'neon.branch_id', 'neon.branch_name')
+                ORDER BY name
             """)
-            row = cur.fetchone()
-
-            if row is None:
-                details["error"] = "No row returned from current_setting query"
-                return "UNVERIFIED", None, details
-
-            retention_raw = row["retention_days"]
-            enabled_raw = row["pitr_enabled"]
+            neon_project_settings = cur.fetchall()
+            details["neon_settings_found"] = [dict(row) for row in neon_project_settings]
             
-            details["neon_pitr_retention_days_raw"] = retention_raw
-            details["neon_pitr_enabled_raw"] = enabled_raw
+            project_id = None
+            branch_id = None
+            for row in neon_project_settings:
+                if row["name"] == "neon.project_id":
+                    project_id = row["setting"]
+                    details["neon_project_id"] = project_id
+                elif row["name"] == "neon.branch_id":
+                    branch_id = row["setting"]
+                    details["neon_branch_id"] = branch_id
             
-            # Check if settings actually exist (not empty/NULL from missing GUC)
-            if retention_raw is None or retention_raw == "":
-                details["error"] = "neon.pitr_retention_days setting not available (empty/NULL)"
+            if not project_id or not branch_id:
+                details["error"] = "Not a Neon instance: missing neon.project_id or neon.branch_id settings"
                 return "UNAVAILABLE", None, details
             
+            details["is_neon_instance"] = True
+            
+            # Step 2: Try to query Neon API for authoritative PITR configuration
+            # This requires NEON_API_KEY environment variable
+            api_key = os.getenv("NEON_API_KEY")
+            if api_key:
+                details["api_queried"] = True
+                api_result = _query_neon_api_for_pitr(api_key, project_id, branch_id)
+                details["api_response"] = api_result
+                
+                if api_result and api_result.get("success"):
+                    # Use authoritative API response
+                    retention_seconds = api_result.get("history_retention_seconds")
+                    pitr_enabled = api_result.get("pitr_enabled", True)
+                    details["source"] = "neon_api"
+                    details["pitr_method"] = "api"
+                    
+                    if retention_seconds is not None:
+                        details["pitr_retention_seconds_raw"] = retention_seconds
+                        # Convert seconds to days (ceiling)
+                        retention_days = max(1, (retention_seconds + 86399) // 86400)
+                        details["retention_parsed"] = True
+                        details["retention_days"] = retention_days
+                    else:
+                        details["error"] = "API response missing history_retention_seconds"
+                        return "UNVERIFIED", None, details
+                    
+                    details["enabled_parsed"] = True
+                    enabled = pitr_enabled
+                    
+                    if enabled and retention_days >= 7:
+                        return "VERIFIED", retention_days, details
+                    elif enabled and retention_days < 7:
+                        details["error"] = f"PITR enabled but retention_days ({retention_days}) is less than required minimum (7)"
+                        return "UNVERIFIED", retention_days, details
+                    else:
+                        details["error"] = "PITR is disabled via API"
+                        return "DISABLED", retention_days, details
+            
+            # Step 3: Fall back to pg_settings for neon.pitr_* settings
+            # Only if API is not configured or failed
+            cur.execute("""
+                SELECT name, setting
+                FROM pg_settings
+                WHERE name LIKE 'neon.pitr_%'
+                ORDER BY name
+            """)
+            pitr_settings = cur.fetchall()
+            
+            if not pitr_settings:
+                details["error"] = "No authoritative PITR evidence: NEON_API_KEY not configured and no neon.pitr_* settings in pg_settings"
+                return "UNVERIFIED", None, details
+            
             details["settings_exist"] = True
+            details["source"] = "neon_gucs"
+            details["pitr_method"] = "settings"
+            
+            pitr_retention_days = None
+            pitr_enabled = None
+            for row in pitr_settings:
+                if row["name"] == "neon.pitr_retention_days":
+                    pitr_retention_days = row["setting"]
+                    details["pitr_retention_days_raw"] = pitr_retention_days
+                elif row["name"] == "neon.pitr_enabled":
+                    pitr_enabled = row["setting"]
+                    details["pitr_enabled_raw"] = pitr_enabled
+            
+            if pitr_retention_days is None or pitr_enabled is None:
+                details["error"] = "Incomplete PITR settings in pg_settings (missing retention or enabled)"
+                return "UNVERIFIED", None, details
             
             # Parse retention days
             try:
-                retention = int(retention_raw)
+                retention = int(pitr_retention_days)
                 details["retention_parsed"] = True
                 details["retention_days"] = retention
             except (ValueError, TypeError):
-                details["error"] = f"Invalid retention_days value: {retention_raw}"
+                details["error"] = f"Invalid retention_days value: {pitr_retention_days}"
                 return "UNVERIFIED", None, details
             
             # Parse enabled status
-            if enabled_raw is None or enabled_raw == "":
-                details["error"] = "neon.pitr_enabled setting not available (empty/NULL)"
-                return "UNAVAILABLE", None, details
-            
+            enabled = str(pitr_enabled).lower() in ("on", "true", "1", "yes")
             details["enabled_parsed"] = True
-            enabled = enabled_raw == "on"
             
-            if enabled:
-                # PITR is enabled and we have a valid retention period
-                if retention > 0:
-                    return "VERIFIED", retention, details
-                else:
-                    details["error"] = f"PITR enabled but retention_days is {retention}"
-                    return "UNVERIFIED", retention, details
+            if enabled and retention >= 7:
+                return "VERIFIED", retention, details
+            elif enabled and retention < 7:
+                details["error"] = f"PITR enabled but retention_days ({retention}) is less than required minimum (7)"
+                return "UNVERIFIED", retention, details
             else:
                 details["error"] = "PITR is disabled"
                 return "DISABLED", retention, details
                 
     except psycopg2.errors.UndefinedObject:
-        # The GUC doesn't exist on this PostgreSQL instance
-        details["error"] = "Neon PITR GUCs not defined on this server (not Neon or old version)"
-        return "UNAVAILABLE", None, details
-    except Exception as e:
-        details["error"] = f"PITR query failed: {e}"
+        details["error"] = "pg_settings query failed (unexpected)"
         return "UNVERIFIED", None, details
+    except Exception as e:
+        details["error"] = f"PITR verification failed: {e}"
+        return "UNVERIFIED", None, details
+
+
+def _query_neon_api_for_pitr(api_key: str, project_id: str, branch_id: str) -> dict:
+    """
+    Query Neon API for authoritative PITR configuration.
+    
+    Uses the documented Neon endpoints:
+    1. GET /projects/{project_id} - Read project.history_retention_seconds
+    2. GET /projects/{project_id}/branches - Find the exact configured branch ID with cursor-based pagination
+    
+    Verifies project identity and confirms the configured branch belongs to that project.
+    Parses project-level history_retention_seconds.
+    Requires at least 604800 seconds (7 days).
+    Never defaults missing pitr_enabled to True.
+    Does not rely on undocumented branch.pitr_enabled field.
+    
+    Returns dict with success, history_retention_seconds, pitr_enabled, or error.
+    """
+    try:
+        import urllib.request
+        import urllib.error
+        
+        # Step 1: Get project details from the project endpoint
+        url = f"https://console.neon.tech/api/v2/projects/{project_id}"
+        req = urllib.request.Request(url)
+        req.add_header("Authorization", f"Bearer {api_key}")
+        req.add_header("Accept", "application/json")
+        
+        with urllib.request.urlopen(req, timeout=30) as response:
+            if response.status == 200:
+                import json
+                data = json.loads(response.read().decode())
+                project = data.get("project", {})
+                
+                # Parse project-level history_retention_seconds (authoritative)
+                history_retention_seconds = project.get("history_retention_seconds")
+                
+                if history_retention_seconds is None:
+                    return {"success": False, "error": "API response missing project history_retention_seconds"}
+                
+                # Step 2: Get branches from the branches endpoint with cursor-based pagination
+                # Neon API uses cursor-based pagination: response includes pagination.next cursor
+                branch_found = False
+                cursor = None
+                max_pages = 10  # Safety limit
+                page = 0
+                
+                while page < max_pages:
+                    # Build URL with cursor if available
+                    branches_url = f"https://console.neon.tech/api/v2/projects/{project_id}/branches"
+                    if cursor:
+                        branches_url += f"?cursor={urllib.parse.quote(cursor)}"
+                    
+                    branches_req = urllib.request.Request(branches_url)
+                    branches_req.add_header("Authorization", f"Bearer {api_key}")
+                    branches_req.add_header("Accept", "application/json")
+                    
+                    with urllib.request.urlopen(branches_req, timeout=30) as branches_response:
+                        if branches_response.status == 200:
+                            branches_data = json.loads(branches_response.read().decode())
+                            branches = branches_data.get("branches", [])
+                            
+                            if not branches:
+                                # No more branches
+                                break
+                            
+                            for branch in branches:
+                                if branch.get("id") == branch_id:
+                                    branch_found = True
+                                    break
+                            
+                            if branch_found:
+                                break
+                            
+                            # Get next cursor from pagination
+                            pagination = branches_data.get("pagination", {})
+                            cursor = pagination.get("next")
+                            
+                            if not cursor:
+                                # No more pages
+                                break
+                            
+                            page += 1
+                        else:
+                            return {"success": False, "error": f"Branches API returned status {branches_response.status}"}
+                
+                if not branch_found:
+                    return {"success": False, "error": f"Branch {branch_id} not found in project {project_id}"}
+                
+                # Use project-level history_retention_seconds as authoritative
+                if history_retention_seconds is None:
+                    return {"success": False, "error": "API response missing project history_retention_seconds"}
+                
+                # PITR is enabled if project has history_retention_seconds > 0
+                # and the branch exists in the project
+                # Do NOT rely on branch.pitr_enabled (undocumented)
+                pitr_enabled = history_retention_seconds > 0
+                
+                return {
+                    "success": True,
+                    "history_retention_seconds": history_retention_seconds,
+                    "pitr_enabled": pitr_enabled,
+                }
+            else:
+                return {"success": False, "error": f"API returned status {response.status}"}
+                
+    except urllib.error.HTTPError as e:
+        if e.code == 401:
+            return {"success": False, "error": "API authentication failure: invalid or missing NEON_API_KEY"}
+        elif e.code == 404:
+            return {"success": False, "error": f"Project {project_id} not found"}
+        return {"success": False, "error": f"API HTTP error: {e.code} {e.reason}"}
+    except urllib.error.URLError as e:
+        return {"success": False, "error": f"API connection error: {e.reason}"}
+    except Exception as e:
+        return {"success": False, "error": f"API query failed: {e}"}
 
 
 def run_gate4(
     accessor: DatabaseAccessor,
     gpg_config: GPGConfig,
+    restore_test: "RestoreTestConfig",
+    durable_storage: DurableStorageConfig,
     target_ids: list[int]
 ) -> Gate4Result:
     """
@@ -754,6 +1364,7 @@ def run_gate4(
     Args:
         accessor: DatabaseAccessor with backup production connection
         gpg_config: GPG configuration with pinned fingerprint
+        restore_test: Restore test database configuration
         target_ids: List of target IDs to verify in backup
 
     Returns:
@@ -763,18 +1374,16 @@ def run_gate4(
     result.gpg_recipient = gpg_config.recipient
     result.timestamp = datetime.datetime.utcnow().isoformat() + "Z"
 
-    # Restore test connection parameters - MUST be explicitly configured
-    restore_host = os.getenv("RESTORE_TEST_PGHOST")
-    restore_port = os.getenv("RESTORE_TEST_PGPORT")
-    restore_user = os.getenv("RESTORE_TEST_PGUSER")
-    restore_password = os.getenv("RESTORE_TEST_PGPASSWORD")
+    # Restore test connection parameters - from validated config
+    restore_host = restore_test.host
+    restore_port = restore_test.port
+    restore_user = restore_test.user
+    restore_password = restore_test.password
 
-    if not all([restore_host, restore_port, restore_user, restore_password]):
+    if not all([restore_host, restore_user, restore_password]):
         result.status = "FAIL"
-        result.error = "RESTORE_TEST_PG* environment variables not fully configured. Must provide explicit host, port, user, password for disposable restore database."
+        result.error = "Restore test configuration incomplete. Must provide explicit host, port, user, password for disposable restore database."
         return result
-
-    restore_port = int(restore_port)
 
     # Temporary directory for backup files
     temp_dir = tempfile.mkdtemp(prefix="purge_backup_")
@@ -814,9 +1423,10 @@ def run_gate4(
         print("=== NEON PITR VERIFICATION ===")
         with accessor.connect_backup() as conn:
             identity = accessor.verify_identity(conn)
-            pitr_status, retention_days = get_pitr_status(conn)
+            pitr_status, retention_days, pitr_details = get_pitr_status(conn)
             result.pitr_status = pitr_status
             result.pitr_retention_days = retention_days
+            result.pitr_details = pitr_details
 
             if pitr_status != "VERIFIED":
                 result.status = "FAIL"
@@ -966,6 +1576,62 @@ def run_gate4(
         if not policy_verified:
             result.cleanup_errors.append("Production backup storage policy check failed")
 
+# === STEP 12: Upload to durable storage (S3/GCS/Azure) ===
+        print("=== DURABLE STORAGE UPLOAD ===")
+        print(f"Uploading to {durable_storage.provider} ({durable_storage.bucket})...")
+        upload_success, remote_encrypted_path, remote_checksum_path, remote_encrypted_checksum, remote_checksum_checksum, upload_error = upload_to_durable_storage(
+            encrypted_file, checksum_file, durable_storage
+        )
+        result.durable_storage_verified = upload_success
+        result.remote_encrypted_path = remote_encrypted_path
+        result.remote_checksum_path = remote_checksum_path
+
+        if not upload_success:
+            result.status = "FAIL"
+            result.error = f"Durable storage upload failed: {upload_error}"
+            return result
+
+        # Remote checksum verification will happen during restore_from_durable_backup
+        # where we download and verify the actual remote object content
+        print(f"✅ Durable storage upload completed: {remote_encrypted_path}")
+
+        # === STEP 13: Restore from durable backup (full restore test from durable copy) ===
+        print("=== RESTORE FROM DURABLE BACKUP ===")
+        # Create temporary files for downloaded content
+        durable_encrypted = os.path.join(temp_dir, f"durable_{os.path.basename(encrypted_file)}")
+        durable_checksum = os.path.join(temp_dir, f"durable_{os.path.basename(checksum_file)}")
+        durable_decrypted = os.path.join(temp_dir, f"durable_{os.path.basename(backup_file)}.decrypted")
+
+        # Use the pre-computed checksums for INDEPENDENT verification
+        # These were computed locally BEFORE upload and are the trusted source of truth
+        expected_encrypted_checksum = result.sha256_hash  # sha256 of encrypted file computed locally
+        expected_checksum_checksum = run_sha256sum(checksum_file)  # sha256 of checksum file computed locally
+
+        durable_restore_success, durable_restore_details = restore_from_durable_backup(
+            remote_encrypted_path,
+            remote_checksum_path,
+            durable_encrypted,
+            durable_checksum,
+            durable_decrypted,
+            durable_storage,
+            gpg_config.recipient,
+            gpg_home,
+            restore_test,
+            target_ids,
+            expected_encrypted_checksum,
+            expected_checksum_checksum
+        )
+        result.restore_from_durable_verified = durable_restore_success
+        result.remote_checksum_verified = durable_restore_success  # Verified during restore
+        result.restore_details["durable_restore"] = durable_restore_details
+
+        if not durable_restore_success:
+            result.status = "FAIL"
+            result.error = f"Durable storage restore test failed: {durable_restore_details.get('error', 'Unknown error')}"
+            return result
+
+        print(f"✅ Restore from durable backup PASSED")
+
         # === FINAL GATE RESULT ===
         # Gate 4 passes ONLY if ALL requirements satisfied
         all_checks = [
@@ -976,6 +1642,9 @@ def run_gate4(
             result.checksum_verified,
             result.restore_test_passed,
             result.restore_connection_verified,
+            result.durable_storage_verified,
+            result.remote_checksum_verified,
+            result.restore_from_durable_verified,
         ]
 
         if not all(all_checks):
@@ -994,6 +1663,12 @@ def run_gate4(
                 failed.append("restore test")
             if not result.restore_connection_verified:
                 failed.append("restore connection verification")
+            if not result.durable_storage_verified:
+                failed.append("durable storage upload")
+            if not result.remote_checksum_verified:
+                failed.append("remote checksum verification")
+            if not result.restore_from_durable_verified:
+                failed.append("durable storage restore test")
             result.status = "FAIL"
             result.error = f"Required checks failed: {', '.join(failed)}"
             return result
@@ -1028,13 +1703,13 @@ def main() -> int:
     print()
 
     try:
-        config = load_config()
+        config = load_config(gates_to_run={"gate4"})
         accessor = create_accessor(config.database)
     except ValueError as e:
         print(f"CONFIGURATION ERROR: {e}", file=sys.stderr)
         return 1
 
-    result = run_gate4(accessor, config.gpg, CANONICAL_TARGET_IDS)
+    result = run_gate4(accessor, config.gpg, config.restore_test, config.durable_storage, CANONICAL_TARGET_IDS)
 
     # Save results with metadata
     save_result_with_metadata(result.to_dict(), "gate4", "gate4_result.json")

@@ -73,7 +73,7 @@ class DatabaseAccessor:
     @contextlib.contextmanager
     def connect_readonly(self) -> Generator[PgConnection, None, None]:
         """Create a read-only connection to production."""
-        conn = psycopg2.connect(self.config.readonly_url)
+        conn = psycopg2.connect(self.config.readonly_url, cursor_factory=RealDictCursor)
         try:
             conn.autocommit = True
             conn.set_session(readonly=True)
@@ -84,7 +84,7 @@ class DatabaseAccessor:
     @contextlib.contextmanager
     def connect_backup(self) -> Generator[PgConnection, None, None]:
         """Create a backup-role connection to production."""
-        conn = psycopg2.connect(self.config.backup_url)
+        conn = psycopg2.connect(self.config.backup_url, cursor_factory=RealDictCursor)
         try:
             conn.autocommit = True
             # Backup role may need write access for pg_dump but we only read
@@ -95,7 +95,10 @@ class DatabaseAccessor:
 
     @contextlib.contextmanager
     def connect_test(self) -> Generator[PgConnection, None, None]:
-        """Create a connection to disposable test database (Gate 1 only)."""
+        """Create a connection to disposable test database (Gate 1 only).
+        
+        Gate 1 uses tuple-style cursor access (row[0]), so we must NOT use RealDictCursor.
+        """
         if not self.config.test_url:
             raise RuntimeError("TEST_DATABASE_URL not configured - required for Gate 1")
         conn = psycopg2.connect(self.config.test_url)
@@ -201,14 +204,18 @@ class DatabaseAccessor:
                     deadline_date, deadline_display, deadline_precision,
                     status, fully_funded, funding_amount, funding_currency,
                     funding_period, tuition_coverage, living_cost_coverage,
-                    travel_coverage, accommodation, insurance, insurance_coverage,
-                    duration, conditions, funding_details, official_source,
-                    official_source_url, official_details, applicant_utility,
-                    programme_verification, auto_delete_candidate_since,
-                    deletion_protected, verification_status, last_verified_at,
-                    verified_by, verification_notes, next_verification_due,
+                    travel_coverage, duration, conditions, funding_details,
+                    official_source, official_source_url, official_details,
+                    applicant_utility, programme_verification,
+                    auto_delete_candidate_since, deletion_protected,
+                    verification_status, last_verified_at, verified_by,
+                    verification_notes, next_verification_due,
                     is_archived, archived_at, archived_reason,
-                    created_at, updated_at
+                    image_url, image_source_url, image_source_type,
+                    image_kind, image_verified_at, image_alt_text,
+                    image_evaluation_status, image_evaluated_at,
+                    departments, eligible_fields, eligible_programmes,
+                    academic_provenance, region
                 FROM scholarships
                 WHERE id IN ({placeholders})
                 ORDER BY deadline_date

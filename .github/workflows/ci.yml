@@ -76,15 +76,19 @@ jobs:
 
   # Gate 1 Integration Test with Disposable PostgreSQL (AUTHORITATIVE)
   gate1-integration:
-    name: Gate 1 - Atomicity Integration Test
+    name: Gate 1 - Atomicity Integration Test (PostgreSQL ${{ matrix.pg-version }})
     runs-on: ubuntu-latest
     needs: [backend-tests]
+    strategy:
+      matrix:
+        pg-version: ['16', '18']
+      fail-fast: false
     env:
       TEST_DATABASE_URL: postgresql://test:test@localhost:5433/test_purge
       SCHOLARZONE_ENVIRONMENT: test
     services:
       postgres:
-        image: postgres:16
+        image: postgres:${{ matrix.pg-version }}
         env:
           POSTGRES_DB: test_purge
           POSTGRES_USER: test
@@ -113,7 +117,7 @@ jobs:
       run: |
         for i in {1..30}; do
           if pg_isready -h localhost -p 5433 -U test -d test_purge; then
-            echo "PostgreSQL is ready"
+            echo "PostgreSQL ${{ matrix.pg-version }} is ready"
             break
           fi
           echo "Waiting for PostgreSQL... ($i/30)"
@@ -144,7 +148,7 @@ jobs:
       uses: actions/upload-artifact@v4
       if: always()
       with:
-        name: gate1-integration-results
+        name: gate1-integration-results-pg${{ matrix.pg-version }}
         path: |
           backend/gate1_result.json
           backend/gate1_integration_test.log
@@ -152,7 +156,7 @@ jobs:
       uses: actions/upload-artifact@v4
       if: failure()
       with:
-        name: gate1-integration-failure-logs
+        name: gate1-integration-failure-logs-pg${{ matrix.pg-version }}
         path: backend/gate1_integration_test.log
 
   frontend-lint:
@@ -305,10 +309,15 @@ jobs:
         path: backend/env_config_check.log
 
   schema-compat:
+    name: Schema Compatibility (PostgreSQL ${{ matrix.pg-version }})
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        pg-version: ['16', '18']
+      fail-fast: false
     services:
       postgres:
-        image: postgres:16
+        image: postgres:${{ matrix.pg-version }}
         env:
           POSTGRES_DB: schema_compat_test
           POSTGRES_USER: test
@@ -347,7 +356,7 @@ jobs:
       run: |
         for i in {1..30}; do
           if pg_isready -h localhost -p 5435 -U test -d schema_compat_test; then
-            echo "PostgreSQL is ready"
+            echo "PostgreSQL ${{ matrix.pg-version }} is ready"
             break
           fi
           echo "Waiting for PostgreSQL... ($i/30)"
@@ -369,7 +378,7 @@ jobs:
       uses: actions/upload-artifact@v4
       if: always()
       with:
-        name: schema-compat-logs
+        name: schema-compat-logs-pg${{ matrix.pg-version }}
         path: backend/schema_compat_check*.log
   build-and-smoke:
     runs-on: ubuntu-latest
@@ -405,10 +414,15 @@ jobs:
         path: backend/artifact_smoke_test.log
 
   preflight:
+    name: Preflight (PostgreSQL ${{ matrix.pg-version }})
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        pg-version: ['16', '18']
+      fail-fast: false
     services:
       postgres:
-        image: postgres:16
+        image: postgres:${{ matrix.pg-version }}
         env:
           POSTGRES_DB: preflight_test
           POSTGRES_USER: test
@@ -447,7 +461,7 @@ jobs:
       run: |
         for i in {1..30}; do
           if pg_isready -h localhost -p 5436 -U test -d preflight_test; then
-            echo "PostgreSQL is ready"
+            echo "PostgreSQL ${{ matrix.pg-version }} is ready"
             break
           fi
           echo "Waiting for PostgreSQL... ($i/30)"
@@ -463,7 +477,7 @@ jobs:
       uses: actions/upload-artifact@v4
       if: always()
       with:
-        name: preflight-logs
+        name: preflight-logs-pg${{ matrix.pg-version }}
         path: backend/preflight.log
 
   snapshot-id-validation:
@@ -501,11 +515,15 @@ jobs:
         path: backend/snapshot_id_validation.log
 
   postgresql-migration-test:
-    name: PostgreSQL Migration Integration Test
+    name: PostgreSQL Migration Integration Test (PostgreSQL ${{ matrix.pg-version }})
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        pg-version: ['16', '18']
+      fail-fast: false
     services:
       postgres:
-        image: postgres:16
+        image: postgres:${{ matrix.pg-version }}
         env:
           POSTGRES_USER: test
           POSTGRES_PASSWORD: test
@@ -546,7 +564,7 @@ jobs:
       run: |
         for i in {1..30}; do
           if pg_isready -h localhost -p 5434 -U test -d scholarzone_test; then
-            echo "PostgreSQL is ready"
+            echo "PostgreSQL ${{ matrix.pg-version }} is ready"
             break
           fi
           echo "Waiting for PostgreSQL... ($i/30)"
@@ -558,5 +576,199 @@ jobs:
       uses: actions/upload-artifact@v4
       if: always()
       with:
-        name: postgresql-migration-test-logs
+        name: postgresql-migration-test-logs-pg${{ matrix.pg-version }}
         path: backend/postgresql_migration_test.log
+
+  # Gate 2 Integration Test with Disposable PostgreSQL (PG16)
+  gate2-integration-pg16:
+    name: Gate 2 - Identity Integration Test (PostgreSQL 16)
+    runs-on: ubuntu-latest
+    needs: [backend-tests]
+    env:
+      SCHOLARZONE_ENVIRONMENT: test
+      TEST_DATABASE_URL: postgresql://test:test@localhost:5437/gate2_test
+      SCHOLARZONE_DATABASE_URL_RO: postgresql://gate2_ro:test@localhost:5437/gate2_test?sslmode=disable
+      EXPECTED_NEON_PROJECT_ID: "test-project-16"
+      EXPECTED_NEON_BRANCH_ID: "test-branch-16"
+      EXPECTED_NEON_BRANCH_NAME: "main"
+      EXPECTED_DATABASE_NAME: "gate2_test"
+    services:
+      postgres:
+        image: postgres:16
+        env:
+          POSTGRES_DB: gate2_test
+          POSTGRES_USER: test
+          POSTGRES_PASSWORD: test
+        ports:
+          - 5437:5432
+        options: >-
+          --health-cmd="pg_isready -U test -d gate2_test"
+          --health-interval=10s
+          --health-timeout=5s
+          --health-retries=5
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v4
+      with:
+        fetch-depth: 0
+    - name: Install system dependencies
+      run: sudo apt-get update && sudo apt-get install -y libjpeg-dev zlib1g-dev libfreetype6-dev liblcms2-dev libopenjp2-7-dev libtiff5-dev libwebp-dev postgresql-client
+    - name: Set up Python
+      uses: actions/setup-python@v5
+      with:
+        python-version: '3.11'
+    - name: Cache pip dependencies
+      uses: actions/cache@v4
+      with:
+        path: ~/.cache/pip
+        key: ${{ runner.os }}-pip-v2-${{ hashFiles('backend/requirements.txt') }}
+        restore-keys: |
+          Linux-pip-v2-
+    - name: Install dependencies
+      run: cd backend && pip install -r requirements.txt
+    - name: Install purge preflight test dependencies
+      run: cd backend && pip install -r requirements-purge-preflight.txt
+    - name: Wait for PostgreSQL to be ready
+      run: |
+        for i in {1..30}; do
+          if pg_isready -h localhost -p 5437 -U test -d gate2_test; then
+            echo "PostgreSQL 16 is ready"
+            break
+          fi
+          echo "Waiting for PostgreSQL... ($i/30)"
+          sleep 2
+        done
+    - name: Initialize database schema and test data
+      run: |
+        cd backend
+        python scripts/init_gate2_test_db.py 2>&1 | tee gate2_init_test.log
+    - name: Run Gate 2 Integration Test
+      run: |
+        cd backend
+        python -m pytest tests/test_purge_preflight.py::test_gate2_integration_pg16_real_db -v --tb=short 2>&1 | tee gate2_integration_pg16_test.log
+    - name: Verify Gate 2 test executed (not skipped)
+      run: |
+        cd backend
+        if grep -q "SKIPPED" gate2_integration_pg16_test.log; then
+          echo "ERROR: Gate 2 integration test was SKIPPED"
+          cat gate2_integration_pg16_test.log
+          exit 1
+        fi
+        if ! grep -q "PASSED\|PASS" gate2_integration_pg16_test.log; then
+          echo "ERROR: Gate 2 integration test did not pass"
+          cat gate2_integration_pg16_test.log
+          exit 1
+        fi
+        echo "Gate 2 integration test (PG16) executed and passed"
+    - name: Upload Gate 2 integration results
+      uses: actions/upload-artifact@v4
+      if: always()
+      with:
+        name: gate2-integration-results-pg16
+        path: |
+          backend/gate2_result.json
+          backend/gate2_integration_pg16_test.log
+          backend/gate2_init_test.log
+    - name: Upload Gate 2 logs on failure
+      uses: actions/upload-artifact@v4
+      if: failure()
+      with:
+        name: gate2-integration-failure-logs-pg16
+        path: backend/gate2_integration_pg16_test.log
+
+  # Gate 2 Integration Test with Disposable PostgreSQL (PG18)
+  gate2-integration-pg18:
+    name: Gate 2 - Identity Integration Test (PostgreSQL 18)
+    runs-on: ubuntu-latest
+    needs: [backend-tests]
+    env:
+      SCHOLARZONE_ENVIRONMENT: test
+      TEST_DATABASE_URL: postgresql://test:test@localhost:5438/gate2_test
+      SCHOLARZONE_DATABASE_URL_RO: postgresql://gate2_ro:test@localhost:5438/gate2_test?sslmode=disable
+      EXPECTED_NEON_PROJECT_ID: "test-project-18"
+      EXPECTED_NEON_BRANCH_ID: "test-branch-18"
+      EXPECTED_NEON_BRANCH_NAME: "main"
+      EXPECTED_DATABASE_NAME: "gate2_test"
+    services:
+      postgres:
+        image: postgres:18
+        env:
+          POSTGRES_DB: gate2_test
+          POSTGRES_USER: test
+          POSTGRES_PASSWORD: test
+        ports:
+          - 5438:5432
+        options: >-
+          --health-cmd="pg_isready -U test -d gate2_test"
+          --health-interval=10s
+          --health-timeout=5s
+          --health-retries=5
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v4
+      with:
+        fetch-depth: 0
+    - name: Install system dependencies
+      run: sudo apt-get update && sudo apt-get install -y libjpeg-dev zlib1g-dev libfreetype6-dev liblcms2-dev libopenjp2-7-dev libtiff5-dev libwebp-dev postgresql-client
+    - name: Set up Python
+      uses: actions/setup-python@v5
+      with:
+        python-version: '3.11'
+    - name: Cache pip dependencies
+      uses: actions/cache@v4
+      with:
+        path: ~/.cache/pip
+        key: ${{ runner.os }}-pip-v2-${{ hashFiles('backend/requirements.txt') }}
+        restore-keys: |
+          Linux-pip-v2-
+    - name: Install dependencies
+      run: cd backend && pip install -r requirements.txt
+    - name: Install purge preflight test dependencies
+      run: cd backend && pip install -r requirements-purge-preflight.txt
+    - name: Wait for PostgreSQL to be ready
+      run: |
+        for i in {1..30}; do
+          if pg_isready -h localhost -p 5438 -U test -d gate2_test; then
+            echo "PostgreSQL 18 is ready"
+            break
+          fi
+          echo "Waiting for PostgreSQL... ($i/30)"
+          sleep 2
+        done
+    - name: Initialize database schema and test data
+      run: |
+        cd backend
+        python scripts/init_gate2_test_db.py 2>&1 | tee gate2_init_test.log
+    - name: Run Gate 2 Integration Test
+      run: |
+        cd backend
+        python -m pytest tests/test_purge_preflight.py::test_gate2_integration_pg18_real_db -v --tb=short 2>&1 | tee gate2_integration_pg18_test.log
+    - name: Verify Gate 2 test executed (not skipped)
+      run: |
+        cd backend
+        if grep -q "SKIPPED" gate2_integration_pg18_test.log; then
+          echo "ERROR: Gate 2 integration test was SKIPPED"
+          cat gate2_integration_pg18_test.log
+          exit 1
+        fi
+        if ! grep -q "PASSED\|PASS" gate2_integration_pg18_test.log; then
+          echo "ERROR: Gate 2 integration test did not pass"
+          cat gate2_integration_pg18_test.log
+          exit 1
+        fi
+        echo "Gate 2 integration test (PG18) executed and passed"
+    - name: Upload Gate 2 integration results
+      uses: actions/upload-artifact@v4
+      if: always()
+      with:
+        name: gate2-integration-results-pg18
+        path: |
+          backend/gate2_result.json
+          backend/gate2_integration_pg18_test.log
+          backend/gate2_init_test.log
+    - name: Upload Gate 2 logs on failure
+      uses: actions/upload-artifact@v4
+      if: failure()
+      with:
+        name: gate2-integration-failure-logs-pg18
+        path: backend/gate2_integration_pg18_test.log

@@ -85,7 +85,7 @@ def main() -> int:
     print()
 
     try:
-        config = load_config()
+        config = load_config(gates_to_run={"gate2"})  # Uses readonly connection like gate2
         accessor = create_accessor(config.database)
     except ValueError as e:
         print(f"CONFIGURATION ERROR: {e}", file=sys.stderr)

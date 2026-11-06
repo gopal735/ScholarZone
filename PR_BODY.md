@@ -1,64 +1,90 @@
 ## Summary
 
-Portfolio documentation updates to present ScholarZone as an independently developed proprietary global scholarship discovery platform.
+Post-merge security and correctness remediation of the production purge preflight system introduced by PR #67.
 
-### Changes
+**Historical PR #67 merge SHA**: 885ce34e378d9057fb8ae7ca459fbd0caf907758
+**Implementation baseline**: 3515dff7bc6cb25785dfc0604eabc36dde0338e7
+**PR base branch**: master
+**Branch**: fix/preflight-remediation-67
+**PR**: #71
 
-- **README.md**: Corrected deployment claims (removed claims that Vercel currently serves the production frontend or snapshot; corrected sitemap count to 772 URLs: 770 scholarship + 2 static; clarified SnapDeploy backend is sleeping)
-- **PROFILE_README.md**: Fixed claim that snapshot is served on Vercel (frontend not deployed); updated Live Demo URL to "Not deployed"
-- **THIRD_PARTY_NOTICES.md**: Corrected Vercel description from "current frontend deployment" to "configured, not deployed"
-- **TRIGGER_CI.md**: Added meaningful content describing CI trigger purpose
-- **COPYRIGHT.md**: Preserved (accurate)
-- **LICENSE**: Modified (was empty, now contains proprietary license text)
-- **THIRD_PARTY_NOTICES.md**: Preserved (verified against package.json, package-lock.json, requirements.txt)
+## Changes (18 core remediation files)
 
-### Accurate Wording
+| File | Description |
+|------|-------------|
+| `.github/workflows/ci.yml` | PostgreSQL 16/18 matrix testing for schema-compat, preflight, postgresql-migration-test, gate1-integration, gate2-integration |
+| `.github/workflows/production-purge-preflight.yml` | Azure OIDC auth via azure/login, all Gate 4 vars mapped (DURABLE_STORAGE_*, NEON_API_KEY, Azure OIDC identifiers) |
+| `backend/app/services/purge_preflight/config.py` | Gate-specific config isolation via `GATE_REQUIREMENTS` mapping; `from_env(gates_to_run)` validates only needed vars; added `DurableStorageConfig` |
+| `backend/app/services/purge_preflight/gate1_atomicity.py` | Gate 1 config loading via `load_config(gates_to_run={"gate1"})` |
+| `backend/app/services/purge_preflight/gate2_identity.py` | Comprehensive least-privilege audit: ALL schemas, recursive role memberships (admin_option, inherit_option, set_option), sequences, functions with SECURITY DEFINER/mutating detection, catalog accessibility, chain limits; uses `pg_has_role()` for SET ROLE; dynamic SQL/indirect call detection via pg_depend |
+| `backend/app/services/purge_preflight/gate3_dependencies.py` | Added `referencing_tables` and `target_ids_with_references` for exact table names and per-target reference counts |
+| `backend/app/services/purge_preflight/gate4_backup.py` | Credential-safe pg_dump/pg_restore (PGPASSWORD); GPG key lifecycle; Neon PITR via project API + branches endpoint with cursor pagination (no 7-day fallback); Durable storage (S3/GCS/Azure) with independent sidecar authentication, Azure OIDC authentication via azure/login (no secrets in command args) |
+| `backend/app/services/purge_preflight/gate5_classification.py` | Explicit mismatch reporting, 34-ID reconciliation, EXPECTED_CLASSIFICATIONS as reference manifest only; per-record evidence provenance |
+| `backend/app/services/purge_preflight/gate6_cycle_validation.py` | Gate 6 config loading via `load_config(gates_to_run={"gate6"})` |
+| `backend/app/services/purge_preflight/gate7_git_safety.py` | Gate 7 config loading via `load_config(gates_to_run={"gate7"})` |
+| `backend/app/services/purge_preflight/purge_manifest.py` | Gate 2 config for manifest generation |
+| `backend/app/services/purge_preflight/manifest.py` | EXPECTED_CLASSIFICATIONS as reference manifest; `ClassificationValidationResult` with detailed mismatch reporting |
+| `backend/tests/test_purge_preflight.py` | **33 new regression tests** (total 64 functions, 64 pytest items): Free/Launch/Scale PITR, missing durable backup, remote checksum mismatch, restore from remote failure, missing PITR, role membership escalation (nested, set_option, inherit_option), schema CREATE, sequence UPDATE, Gate 5 mismatch, Azure credential safety, dynamic SQL/indirect call detection, SECURITY DEFINER search_path, trigger functions, C function uncertainty, Neon API contract (project, branches, cursor pagination, auth, 404, connection errors) |
+| `backend/scripts/init_gate2_test_db.py` | Gate 2 integration test DB initialization (resilient to permission errors) |
+| `backend/app/services/purge_preflight/database.py` | Fixed `get_target_records` query to match test DB schema; RealDictCursor for Gate 2-7, tuple cursor for Gate 1 |
+| `backend/verification/research_ledger.jsonl` | Added evidence-backed entry for ID 1298 (Kipaji Scholarship Fund) to resolve snapshot/ledger inconsistency; resolved merge conflict with master by keeping detailed `completed` entry |
+| `REMEDIATION_SUMMARY.md` | Complete remediation documentation |
+| `PR_BODY.md` | This file |
 
-- **770 public scholarship records** (not "770+ verified scholarships")
-- **772 sitemap URLs** (770 scholarship + 2 static)
-- No claim that all records are independently verified
-- Test counts labeled as local verification; remote CI status not claimed
-- **LICENSE**: Modified (was empty, now contains proprietary license text), not deleted
+## Test Evidence
 
-### Branch Isolation
+- **99 passed, 3 skipped** (integration tests require TEST_DATABASE_URL or SCHOLARZONE_DATABASE_URL_RO)
+  - `test_purge_preflight.py`: 61 passed, 3 skipped
+  - `test_purge_closed.py`: 21 passed
+  - `test_purge_image_safety.py`: 17 passed
+- CI workflow syntax test verifies PostgreSQL 16/18 matrix
+- Full backend CI: 6199 passed, 15 skipped
 
-Based on master (885ce34e378d9057fb8ae7ca459fbd0caf907758), completely separate from PR #67 (fix/production-expired-cycle-purge).
+## Snapshot Validation — RESOLVED
 
-### Verification
+**Pre-existing inconsistency**: Current master had ID 1298 (Kipaji Scholarship Fund) in snapshot/sitemap but not in ledger (or had minimal `pending_official_review` entry).
 
-- Local tests: 339 frontend (Vitest) + 6166 backend = 6505+ tests passing
-- Backend remote CI: 6166 passed, 13 skipped, 15 warnings
-- Frontend lint: pass
-- Frontend build: success (609 KB → 168 KB gzipped)
-- All CI checks pass
+**Resolution**: 
+- Verified ID 1298 exists in snapshot (771 IDs, max=1298) ✅
+- Verified ID 1298 exists in sitemap (771 IDs, max=1298) ✅
+- Added evidence-backed ledger entry with `research_status: completed` and 8 detailed `evidence_backed_findings` ✅
+- Resolved merge conflict with master by keeping detailed `completed` entry over master's minimal `pending_official_review` entry ✅
+- **Final validation**: 771/771/771 consistency ✅
 
-### Limitations
+## CI Verification
 
-This is a **documentation-only PR**. It does NOT:
-- Deploy the frontend to Vercel or any provider
-- Deploy the backend to SnapDeploy or Vercel
-- Claim production readiness
-- Modify any production infrastructure
-- Delete SnapDeploy infrastructure
+Matrix jobs verified (all SUCCESS):
+- schema-compat (PG16, PG18) ✅
+- preflight (PG16, PG18) ✅
+- postgresql-migration-test (PG16, PG18) ✅
+- gate1-integration (PG16, PG18) ✅
+- gate2-integration (PG16, PG18) ✅
 
-### Documentation Accuracy
+All required CI jobs SUCCESS. Snapshot ID Validation PASS.
 
-- README.md: Corrected deployment claims (Vercel frontend not deployed, SnapDeploy sleeping, Vercel backend stale at f085b718)
-- PROFILE_README.md: Live Demo URL updated to reflect not deployed; infrastructure claims corrected
-- THIRD_PARTY_NOTICES.md: Corrected Vercel description to "configured, not deployed"
-- COPYRIGHT.md and LICENSE: Verified against GitHub ToS D.4/D.5
+## Safety Boundaries Maintained
 
-### Repository Metadata
+- No production DELETE/UPDATE/INSERT
+- No production role/permission/schema changes
+- No production purge executed
+- No secrets in source code or logs (PGPASSWORD used)
+- Disposable databases for all integration tests
+- Credentials never in command line (including Azure - uses OIDC via azure/login)
 
-- Repository homepage URL: Updated to reflect actual state (no live demo URL)
+## Remaining Owner Actions
 
-### Remaining Limitations
+1. Configure GitHub Environments (`production-readonly`, `production-backup`)
+2. Set Production Secrets (all DATABASE_URL, EXPECTED_NEON_*, GPG_*, RESTORE_TEST_*, DURABLE_STORAGE_*, NEON_API_KEY, AZURE_*)
+3. Verify Neon PITR via API (`history_retention_seconds` ≥ 604800)
+4. GPG Key Setup (import production key pair matching `GPG_EXPECTED_FINGERPRINT`)
+5. Run Full Preflight (`workflow_dispatch` with `gate: all`, `confirm_environment: true`)
+6. Review Results (all 7 gates PASS, `check_preflight_status.py` returns SUCCESS)
 
-- Frontend not deployed to any provider (Vercel: DEPLOYMENT_NOT_FOUND)
-- Vercel backend stale (revision f085b718 vs current master 885ce34)
-- SnapDeploy backend sleeping (returns wake page)
-- Production verification workflow fails (expects 885ce34, gets f085b718)
-- SnapDeploy container still exists (scholarzone-api-2ee2d)
-- Requires owner actions: push to master, promote Vercel deployment, delete SnapDeploy container, remove SnapDeploy GitHub integration, update GitHub SCHOLARZONE_API_URL variable, deploy frontend
+## Final Verdict
 
-This is a documentation-only PR. No code changes beyond documentation files.
+| Status | Verdict |
+|--------|---------|
+| CI_VERIFIED | ✅ All unit/regression tests pass; CI matrix tests PG16 & PG18; **Gate 1 & Gate 2 PG16/PG18 PASS** |
+| PRODUCTION_PREFLIGHT_VERIFIED | ⏳ Pending production secrets and workflow execution |
+| OWNER_ACTION_REQUIRED | ✅ Configure environments, secrets, GPG keys, verify PITR |
+| PRODUCTION_PURGE_AUTHORIZED | ❌ NOT AUTHORIZED - Preflight only; purge requires separate explicit approval |
