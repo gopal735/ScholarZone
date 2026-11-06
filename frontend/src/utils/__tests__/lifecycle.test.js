@@ -1,9 +1,9 @@
 import { describe, it, expect } from 'vitest'
-import {
-  classifyLifecycle,
-  parseDate,
-  parseOpeningDateFromPeriod,
-  getDaysDifference,
+import { 
+  classifyLifecycle, 
+  parseDate, 
+  parseOpeningDateFromPeriod, 
+  getDaysDifference, 
   hasVerifiedFutureCycle,
   formatCountdown,
   formatOpeningCountdown,
@@ -14,47 +14,47 @@ describe('Lifecycle Classification', () => {
   const today = new Date()
   today.setHours(0, 0, 0, 0)
   const todayUTC = new Date(Date.UTC(today.getFullYear(), today.getMonth(), today.getDate()))
-
+  
   const tomorrow = new Date(today)
   tomorrow.setDate(tomorrow.getDate() + 1)
   const tomorrowUTC = new Date(todayUTC)
   tomorrowUTC.setUTCDate(tomorrowUTC.getUTCDate() + 1)
-
+  
   const in15Days = new Date(today)
   in15Days.setDate(in15Days.getDate() + 15)
   const in15DaysUTC = new Date(todayUTC)
   in15DaysUTC.setUTCDate(in15DaysUTC.getUTCDate() + 15)
-
+  
   const in30Days = new Date(today)
   in30Days.setDate(in30Days.getDate() + 30)
   const in30DaysUTC = new Date(todayUTC)
   in30DaysUTC.setUTCDate(in30DaysUTC.getUTCDate() + 30)
-
+  
   const in31Days = new Date(today)
   in31Days.setDate(in31Days.getDate() + 31)
   const in31DaysUTC = new Date(todayUTC)
   in31DaysUTC.setUTCDate(in31DaysUTC.getUTCDate() + 31)
-
+  
   const in60Days = new Date(today)
   in60Days.setDate(in60Days.getDate() + 60)
   const in60DaysUTC = new Date(todayUTC)
   in60DaysUTC.setUTCDate(in60DaysUTC.getUTCDate() + 60)
-
+  
   const in61Days = new Date(today)
   in61Days.setDate(in61Days.getDate() + 61)
   const in61DaysUTC = new Date(todayUTC)
   in61DaysUTC.setUTCDate(in61DaysUTC.getUTCDate() + 61)
-
+  
   const yesterday = new Date(today)
   yesterday.setDate(yesterday.getDate() - 1)
   const yesterdayUTC = new Date(todayUTC)
   yesterdayUTC.setUTCDate(yesterdayUTC.getUTCDate() - 1)
-
+  
   const lastMonth = new Date(today)
   lastMonth.setMonth(lastMonth.getMonth() - 1)
   const lastMonthUTC = new Date(todayUTC)
   lastMonthUTC.setUTCMonth(lastMonthUTC.getUTCMonth() - 1)
-
+  
   const nextYear = new Date(today)
   nextYear.setFullYear(nextYear.getFullYear() + 1)
   const nextYearUTC = new Date(todayUTC)
@@ -220,8 +220,8 @@ describe('Lifecycle Classification', () => {
     })
 
     it('does NOT return CLOSED for archived WITH verified future cycle', () => {
-      const scholarship = {
-        is_archived: true,
+      const scholarship = { 
+        is_archived: true, 
         deadline_date: fmt(lastMonthUTC),
         application_period: '2027 cycle opens 2027-01-01'
       }
@@ -231,8 +231,8 @@ describe('Lifecycle Classification', () => {
     })
 
     it('does NOT return CLOSED for past deadline WITH verified future cycle', () => {
-      const scholarship = {
-        status: 'open',
+      const scholarship = { 
+        status: 'open', 
         deadline_date: fmt(lastMonthUTC),
         opening_date: fmt(nextYearUTC)
       }
@@ -409,16 +409,16 @@ describe('Lifecycle Classification', () => {
 
   describe('Precedence order', () => {
     it('CLOSED takes precedence over CLOSING_SOON', () => {
-      const scholarship = {
-        status: 'closed',
-        deadline_date: fmt(tomorrowUTC)
+      const scholarship = { 
+        status: 'closed', 
+        deadline_date: fmt(tomorrowUTC) 
       }
       const result = classifyLifecycle(scholarship)
       expect(result.status).toBe(LIFECYCLE.CLOSED)
     })
 
     it('UPCOMING takes precedence over CLOSING_SOON (future opening supersedes deadline)', () => {
-      const scholarship = {
+      const scholarship = { 
         opening_date: fmt(in61DaysUTC),
         deadline_date: fmt(in15DaysUTC)
       }
@@ -427,7 +427,7 @@ describe('Lifecycle Classification', () => {
     })
 
     it('UPCOMING takes precedence over OPENING', () => {
-      const scholarship = {
+      const scholarship = { 
         opening_date: fmt(in61DaysUTC),
         deadline_date: fmt(in61DaysUTC)
       }
@@ -436,7 +436,7 @@ describe('Lifecycle Classification', () => {
     })
 
     it('OPENING takes precedence over OPEN', () => {
-      const scholarship = {
+      const scholarship = { 
         status: 'open',
         opening_date: fmt(in15DaysUTC),
         deadline_date: fmt(nextYearUTC)

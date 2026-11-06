@@ -1,21 +1,36 @@
-/* Full-width, persistent navigation keeps the product tools one click away. */
+/* Full-width persistent navigation */
 .sz-nav-header.nav {
   position: sticky;
   top: 0;
   left: 0;
+  transform: none;
   z-index: 100;
   width: 100%;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: clamp(12px, 2vw, 32px);
-  min-height: 68px;
-  padding: 8px clamp(20px, 3.2vw, 56px);
-  background: color-mix(in srgb, var(--surface-raised, #fff) 94%, transparent);
-  border-bottom: 1px solid var(--border, rgba(20, 19, 15, 0.12));
-  box-shadow: 0 2px 8px rgba(20, 19, 15, 0.04);
-  backdrop-filter: blur(16px) saturate(1.2);
-  -webkit-backdrop-filter: blur(16px) saturate(1.2);
+  gap: 12px;
+  padding: 8px clamp(12px, 2vw, 24px);
+  border-radius: 0;
+  background: var(--cardbg, #ffffff) padding-box,
+              linear-gradient(color-mix(in srgb, var(--bg, #f7f5f0) 90%, transparent), color-mix(in srgb, var(--bg, #f7f5f0) 90%, transparent)) padding-box,
+              linear-gradient(150deg, var(--edge1, rgba(27,42,74,0.08)), var(--edge2, rgba(196,164,74,0.3)) 50%, var(--edge1, rgba(27,42,74,0.08))) border-box;
+  backdrop-filter: blur(20px) saturate(1.4);
+  -webkit-backdrop-filter: blur(20px) saturate(1.4);
+  border: 1px solid transparent;
+  box-shadow: var(--drop, 0 12px 32px -4px rgba(27,42,74,0.08)), inset 0 1px 0 var(--edge1, rgba(255,255,255,0.4));
+  animation: none;
+}
+
+@keyframes navDrop {
+  from {
+    opacity: 0;
+    transform: translate(-50%, -18px);
+  }
+  to {
+    opacity: 1;
+    transform: translate(-50%, 0);
+  }
 }
 
 .sz-nav-header .logo {
@@ -68,8 +83,7 @@
 .desktop-nav a {
   text-decoration: none;
   color: var(--mute, #556070);
-  min-height: 44px;
-  padding: 8px 10px;
+  padding: 7px 11px;
   border-radius: 999px;
   display: inline-flex;
   align-items: center;

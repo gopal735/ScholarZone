@@ -1,0 +1,6 @@
+# Purge Preflight Test Dependencies
+# These are required for the purge preflight gate modules that use psycopg2 directly.
+# The main application uses psycopg v3 (psycopg[binary]), but the preflight
+# modules use psycopg2 directly for disposable PostgreSQL integration tests.
+
+psycopg2-binary>=2.9,<3

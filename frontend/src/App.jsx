@@ -2,6 +2,9 @@ import { lazy } from 'react'
 import { Routes, Route, Navigate } from 'react-router-dom'
 import Layout from './components/Layout'
 import HomePage from './pages/HomePage'
+import { useScrollReveal } from './hooks/useScrollReveal'
+import './App.css'
+
 const ScholarshipsPage = lazy(() => import('./pages/ScholarshipsPage'))
 const MatchPage = lazy(() => import('./pages/MatchPage'))
 const ScholarshipDetailsPage = lazy(() => import('./pages/ScholarshipDetailsPage'))
@@ -14,8 +17,6 @@ const ApplicationsPage = lazy(() => import('./pages/ApplicationsPage'))
 const CountryPage = lazy(() => import('./pages/CountryPage'))
 const UnifiedAIPage = lazy(() => import('./pages/UnifiedAIPage'))
 const NotFoundPage = lazy(() => import('./pages/NotFoundPage'))
-import { useScrollReveal } from './hooks/useScrollReveal'
-import './App.css'
 
 function App() {
   // Sections and cards arrive as they enter view. Runs on the route change

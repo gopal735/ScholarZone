@@ -37,14 +37,14 @@ export function useLifecycleCounts(scholarships) {
       open: 0,
       unknown: 0,
     };
-
+    
     scholarships.forEach((scholarship) => {
       const lifecycle = classifyLifecycle(scholarship);
       if (Object.hasOwn(counts, lifecycle.status)) {
         counts[lifecycle.status]++;
       }
     });
-
+    
     return counts;
   }, [scholarships]);
 }

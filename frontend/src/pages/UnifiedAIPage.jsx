@@ -1,11 +1,11 @@
 import { useEffect, useRef, useState } from 'react'
 import { Link } from 'react-router-dom'
-import {
-  askUnifiedAI,
-  getAIStatus,
-  formatUnifiedResponse,
+import { 
+  askUnifiedAI, 
+  getAIStatus, 
+  formatUnifiedResponse, 
   setLocalAIEnabled,
-  isLocalAIEnabled
+  isLocalAIEnabled 
 } from '../services/unifiedAI'
 import { MentorRateLimitedError, MentorValidationError, MentorUnavailableError } from '../services/mentorService'
 import './UnifiedAIPage.css'
@@ -38,7 +38,7 @@ function WelcomeScreen({ onSuggestionClick }) {
         <div className="welcome-icon">🎓</div>
         <h2>How can I help with your scholarship search?</h2>
         <p>Ask me about scholarships, eligibility, deadlines, funding, applications, or anything else.</p>
-
+        
         <div className="suggested-categories">
           {Object.entries(
             SUGGESTED_PROMPTS.reduce((acc, item) => {
@@ -48,10 +48,10 @@ function WelcomeScreen({ onSuggestionClick }) {
             }, {})
           ).map(([category, prompts]) => (
             <div key={category} className="prompt-category">
-              <div className="category-header" style={{
-                background: CATEGORY_COLORS[category]?.bg,
+              <div className="category-header" style={{ 
+                background: CATEGORY_COLORS[category]?.bg, 
                 color: CATEGORY_COLORS[category]?.text,
-                borderColor: CATEGORY_COLORS[category]?.border
+                borderColor: CATEGORY_COLORS[category]?.border 
               }}>
                 {category}
               </div>
@@ -89,7 +89,7 @@ function MessageList({ messages, messagesEndRef }) {
               </span>
             )}
             <div className="message-text" dangerouslySetInnerHTML={{ __html: message.content.replace(/\n/g, '<br>') }} />
-
+            
             {message.sources && message.sources.length > 0 && (
               <div className="message-sources">
                 <strong>Sources:</strong>
@@ -109,7 +109,7 @@ function MessageList({ messages, messagesEndRef }) {
                 </ul>
               </div>
             )}
-
+            
             {message.error && (
               <div className="message-error">
                 <p>{message.error.message}</p>
@@ -143,21 +143,21 @@ function LoadingIndicator({ activeMode }) {
   )
 }
 
-function SettingsPanel({
-  showSettings,
-  setShowSettings,
-  localAIEnabled,
+function SettingsPanel({ 
+  showSettings, 
+  setShowSettings, 
+  localAIEnabled, 
   handleLocalAIToggle,
   aiStatus,
   mentorOverview
 }) {
   if (!showSettings) return null
-
+  
   return (
     <div className="ai-settings-panel" role="dialog" aria-label="AI Settings">
       <div className="settings-content">
         <h3>AI Configuration</h3>
-
+        
         <div className="setting-item">
           <label className="setting-label">
             <input
@@ -170,15 +170,17 @@ function SettingsPanel({
               <small>Downloads a quantized model (~60MB) to run inference in your browser. Works offline, no data leaves your device.</small>
             </span>
           </label>
-          {localAIEnabled && (
+          {localAIEnabled && aiStatus.localAIModelReady ? (
             <div className="setting-status">✓ Model ready</div>
-          )}
+          ) : localAIEnabled ? (
+            <div className="setting-status">⚠ Not implemented (placeholder only)</div>
+          ) : null}
         </div>
 
         <div className="setting-item">
           <label className="setting-label">
             <strong>Remote AI (Free Tier)</strong>
-            <small>Uses free Hugging Face Inference API (30k req/month). Requires backend proxy.</small>
+            <small>Uses free Hugging Face Inference API (quota-limited). Requires backend proxy.</small>
           </label>
           <div className="setting-status">
             {aiStatus.remoteAI ? '✓ Available' : '✗ Unavailable (backend proxy not configured)'}
@@ -217,7 +219,7 @@ function Header({ mentorOverview, getModeBadge, showSettings, setShowSettings })
       <div className="unified-ai-title">
         <h1>ScholarZone AI Assistant</h1>
         <p className="unified-ai-subtitle">
-          {mentorOverview
+          {mentorOverview 
             ? 'Personalized scholarship guidance from your profile and records'
             : 'Scholarship discovery, comparison, eligibility & application guidance'}
         </p>
@@ -227,16 +229,16 @@ function Header({ mentorOverview, getModeBadge, showSettings, setShowSettings })
           {getModeBadge().text}
         </span>
         {!mentorOverview && (
-          <button
-            type="button"
+          <button 
+            type="button" 
             className="sign-in-prompt"
             onClick={() => window.location.href = '/login?redirect=/assistant'}
           >
             Sign in for personalized Mentor
           </button>
         )}
-        <button
-          type="button"
+        <button 
+          type="button" 
           className="settings-btn"
           onClick={() => setShowSettings(!showSettings)}
           aria-expanded={showSettings}
@@ -252,8 +254,8 @@ function Header({ mentorOverview, getModeBadge, showSettings, setShowSettings })
 function Disclaimer({ activeMode }) {
   return (
     <div className="unified-ai-disclaimer" role="note">
-      <strong>Important:</strong>
-      {activeMode !== 'grounded'
+      <strong>Important:</strong> 
+      {activeMode !== 'grounded' 
         ? 'This AI assistant uses a large language model. Answers may contain inaccuracies. Always verify scholarship details on official provider websites. Source citations are provided where available.'
         : 'Running in grounded mode. Answers are composed from verified ScholarZone scholarship records — not generated by an LLM. No AI inference is taking place.'}
     </div>
@@ -284,7 +286,7 @@ function InputForm({ input, setInput, isLoading, mentorOverview, onSubmit, input
         id="ai-input"
         value={input}
         onChange={(e) => setInput(e.target.value)}
-        placeholder={mentorOverview
+        placeholder={mentorOverview 
           ? 'Ask about your scholarships, applications, or get personalized guidance...'
           : 'Ask about scholarships... (e.g., "Find fully funded Master\'s in Germany with October deadlines")'}
         rows={1}
@@ -296,8 +298,8 @@ function InputForm({ input, setInput, isLoading, mentorOverview, onSubmit, input
           }
         }}
       />
-      <button
-        type="submit"
+      <button 
+        type="submit" 
         disabled={!input.trim() || isLoading}
         className="send-btn"
         aria-label="Send question"
@@ -314,9 +316,9 @@ function Footer() {
   return (
     <footer className="unified-ai-footer">
       <p>
-        <Link to="/scholarships">Browse Directory</Link> ·
-        <Link to="/match">Check Eligibility</Link> ·
-        <Link to="/compare">Compare Scholarships</Link> ·
+        <Link to="/scholarships">Browse Directory</Link> · 
+        <Link to="/match">Check Eligibility</Link> · 
+        <Link to="/compare">Compare Scholarships</Link> · 
         <Link to="/applications">Application Workspace</Link>
       </p>
       <p className="privacy-note">
@@ -341,7 +343,7 @@ export default function UnifiedAIPage() {
     const status = await getAIStatus()
     setAiStatus(status)
     setLocalAIEnabledState(isLocalAIEnabled())
-
+    
     try {
       const { fetchMentorOverview } = await import('../services/mentorService')
       const overview = await fetchMentorOverview()
@@ -373,8 +375,8 @@ export default function UnifiedAIPage() {
     setInput('')
     setIsLoading(true)
 
-    setMessages(prev => [...prev, {
-      role: 'user',
+    setMessages(prev => [...prev, { 
+      role: 'user', 
       content: userMessage,
       timestamp: Date.now()
     }])
@@ -473,15 +475,15 @@ export default function UnifiedAIPage() {
 
   return (
     <div className="unified-ai-page">
-      <Header
-        mentorOverview={mentorOverview}
-        aiStatus={aiStatus}
+      <Header 
+        mentorOverview={mentorOverview} 
+        aiStatus={aiStatus} 
         getModeBadge={getModeBadge}
         showSettings={showSettings}
         setShowSettings={setShowSettings}
       />
       {showSettings && (
-        <SettingsPanel
+        <SettingsPanel 
           showSettings={showSettings}
           setShowSettings={setShowSettings}
           localAIEnabled={localAIEnabled}
@@ -491,9 +493,9 @@ export default function UnifiedAIPage() {
         />
       )}
       <Disclaimer activeMode={aiStatus.activeMode} />
-      <ChatArea
-        messages={messages}
-        isLoading={isLoading}
+      <ChatArea 
+        messages={messages} 
+        isLoading={isLoading} 
         activeMode={aiStatus.activeMode}
         messagesEndRef={messagesEndRef}
         onSuggestionClick={handleSuggestionClick}

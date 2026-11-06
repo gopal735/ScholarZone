@@ -193,16 +193,16 @@ export default function ScholarshipCard({ scholarship, index = 0, onOpenDetails 
             {getDeadlineLabel(scholarship)}
             {lifecycle.showCountdown && lifecycle.daysUntilDeadline !== null && (
               <span className={`scholarship-card__countdown ${lifecycle.className}`}>
-                {lifecycle.daysUntilDeadline === 0 ? 'Deadline today' :
-                 lifecycle.daysUntilDeadline === 1 ? '1 day left' :
+                {lifecycle.daysUntilDeadline === 0 ? 'Deadline today' : 
+                 lifecycle.daysUntilDeadline === 1 ? '1 day left' : 
                  `${lifecycle.daysUntilDeadline} days left`}
               </span>
             )}
             {lifecycle.showOpeningDate && lifecycle.daysUntilOpening !== null && (
               <span className={`scholarship-card__opening-countdown ${lifecycle.className}`}>
-                {lifecycle.daysUntilOpening === 0 ? 'Opens today' :
-                 lifecycle.daysUntilOpening === 1 ? 'Opens tomorrow' :
-                 lifecycle.daysUntilOpening <= 7 ? `Opens in ${lifecycle.daysUntilOpening} days` :
+                {lifecycle.daysUntilOpening === 0 ? 'Opens today' : 
+                 lifecycle.daysUntilOpening === 1 ? 'Opens tomorrow' : 
+                 lifecycle.daysUntilOpening <= 7 ? `Opens in ${lifecycle.daysUntilOpening} days` : 
                  `Opens in ${lifecycle.daysUntilOpening} days`}
               </span>
             )}

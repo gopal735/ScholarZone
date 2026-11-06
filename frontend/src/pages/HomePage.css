@@ -126,7 +126,7 @@ h2 {
 
 /* ── Hero Section ──────────────────────────────────────────────── */
 #top {
-  padding-top: clamp(44px, 6vw, 80px);
+  padding-top: clamp(28px, 4vw, 56px);
   overflow: hidden;
 }
 
@@ -1137,37 +1137,37 @@ button.pill:active {
     color: #fde68a;
     border-color: #a16207;
   }
-
+  
   .sc-lifecycle .lifecycle-badge--inline.lifecycle-upcoming {
     background: linear-gradient(135deg, #1e3a5f 0%, #1e40af 100%);
     color: #93c5fd;
     border-color: #3b82f6;
   }
-
+  
   .sc-lifecycle .lifecycle-badge--inline.lifecycle-closing-soon {
     background: linear-gradient(135deg, #7f1d1d 0%, #991b1b 100%);
     color: #fca5a5;
     border-color: #ef4444;
   }
-
+  
   .sc-lifecycle .lifecycle-badge--inline.lifecycle-closed {
     background: linear-gradient(135deg, #374151 0%, #4b5563 100%);
     color: #9ca3af;
     border-color: #6b7280;
   }
-
+  
   .sc-lifecycle .lifecycle-badge--inline.lifecycle-open {
     background: linear-gradient(135deg, #14532d 0%, #166534 100%);
     color: #86efac;
     border-color: #22c55e;
   }
-
+  
   .sc-lifecycle .lifecycle-badge--inline.lifecycle-unknown {
     background: linear-gradient(135deg, #1f2937 0%, #374151 100%);
     color: #6b7280;
     border-color: #4b5563;
   }
-
+  
   .sc-lifecycle .lifecycle-opening-hint,
   .sc-lifecycle .lifecycle-upcoming-hint,
   .sc-lifecycle .lifecycle-closed-hint {
@@ -1225,7 +1225,7 @@ button.pill:active {
   .lifecycle-section__grid {
     grid-template-columns: 1fr;
   }
-
+  
   .lifecycle-section__title {
     font-size: var(--fs-md);
   }

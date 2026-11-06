@@ -12,11 +12,12 @@ Requirements:
 - ON DELETE behavior
 - ON UPDATE behavior
 - CASCADE detection
-- Reference counts for every target ID
-- Reference counts for every referencing table
+- Reference counts for every target ID (per-target)
+- Reference counts for every referencing table (aggregate)
 - Safe dynamic SQL identifier quoting
 - No untrusted string concatenation for table or column names
 - Fails closed on any inspection error
+- Disposable PostgreSQL tests for single/composite FK cases
 """
 
 import json
@@ -27,6 +28,7 @@ from typing import Optional
 from .manifest import CANONICAL_TARGET_IDS, TARGET_ID_SET
 from .database import DatabaseAccessor, create_accessor, ForeignKeyInfo
 from .config import DatabaseConfig, PreflightConfig, load_config
+from .metadata import save_result_with_metadata
 
 
 @dataclass
@@ -37,6 +39,7 @@ class Gate3Result:
     cascade_fk_count: int = 0
     cascade_details: list[dict] = None
     reference_counts: dict[str, int] = None
+    per_target_reference_counts: dict[int, dict[str, int]] = None
     total_references_to_targets: int = 0
     inspection_errors: list[str] = None
     safe_to_delete: bool = False
@@ -50,6 +53,8 @@ class Gate3Result:
             self.cascade_details = []
         if self.reference_counts is None:
             self.reference_counts = {}
+        if self.per_target_reference_counts is None:
+            self.per_target_reference_counts = {}
         if self.inspection_errors is None:
             self.inspection_errors = []
 
@@ -79,13 +84,14 @@ def run_gate3(accessor: DatabaseAccessor, target_ids: list[int]) -> Gate3Result:
                     "constraint_name": fk.constraint_name,
                     "table_schema": fk.table_schema,
                     "table_name": fk.table_name,
-                    "column_name": fk.column_name,
+                    "column_names": fk.column_names,
                     "referenced_table_schema": fk.referenced_table_schema,
                     "referenced_table_name": fk.referenced_table_name,
-                    "referenced_column_name": fk.referenced_column_name,
+                    "referenced_column_names": fk.referenced_column_names,
                     "on_delete": fk.on_delete_action,
                     "on_update": fk.on_update_action,
                     "is_cascade": fk.is_cascade,
+                    "is_composite": fk.is_composite,
                 }
                 for fk in fk_metadata
             ]
@@ -97,9 +103,10 @@ def run_gate3(accessor: DatabaseAccessor, target_ids: list[int]) -> Gate3Result:
                 {
                     "constraint_name": fk.constraint_name,
                     "table_name": fk.table_name,
-                    "column_name": fk.column_name,
+                    "column_names": fk.column_names,
                     "on_delete": fk.on_delete_action,
                     "on_update": fk.on_update_action,
+                    "is_composite": fk.is_composite,
                 }
                 for fk in cascade_fks
             ]
@@ -112,31 +119,41 @@ def run_gate3(accessor: DatabaseAccessor, target_ids: list[int]) -> Gate3Result:
 
             for fk in fk_metadata:
                 try:
-                    count = accessor.count_references(
-                        conn,
-                        fk.table_name,
-                        fk.column_name,
-                        target_ids
-                    )
-                    key = f"{fk.table_name}.{fk.column_name}"
+                    count = accessor.count_references(conn, fk, target_ids)
+                    if fk.is_composite:
+                        key = f"{fk.table_name}.({','.join(fk.column_names)})"
+                    else:
+                        key = f"{fk.table_name}.{fk.column_names[0]}"
                     reference_counts[key] = count
                     total_refs += count
                 except Exception as e:
-                    error_msg = f"Failed to inspect {fk.table_name}.{fk.column_name}: {e}"
+                    if fk.is_composite:
+                        key = f"{fk.table_name}.({','.join(fk.column_names)})"
+                    else:
+                        key = f"{fk.table_name}.{fk.column_names[0]}"
+                    error_msg = f"Failed to inspect {key}: {e}"
                     inspection_errors.append(error_msg)
                     # Mark as error - will fail closed
-                    reference_counts[f"{fk.table_name}.{fk.column_name}"] = -1
+                    reference_counts[key] = -1
 
             result.reference_counts = reference_counts
             result.total_references_to_targets = total_refs
             result.inspection_errors = inspection_errors
 
-            # 4. Determine safe_to_delete - STRICT REQUIREMENTS
+            # 4. Per-target reference counts (detailed breakdown)
+            try:
+                per_target = accessor.count_all_references_per_target(conn, target_ids)
+                result.per_target_reference_counts = per_target
+            except Exception as e:
+                inspection_errors.append(f"Per-target reference count failed: {e}")
+                # Will fail closed due to inspection_errors
+
+            # 5. Determine safe_to_delete - STRICT REQUIREMENTS
             # - Complete metadata discovery (no errors)
             # - Successful inspection of all relevant tables
             # - No unknown references (all counts >= 0)
             # - No CASCADE behavior
-            # - Zero references to target IDs
+            # - Zero references to target IDs (aggregate AND per-target)
             # - No inspection errors
 
             has_inspection_errors = len(inspection_errors) > 0
@@ -144,11 +161,20 @@ def run_gate3(accessor: DatabaseAccessor, target_ids: list[int]) -> Gate3Result:
             has_cascade = result.cascade_fk_count > 0
             has_references = total_refs > 0
 
+            # Also check per-target: no target should have any references
+            has_per_target_refs = False
+            if result.per_target_reference_counts:
+                for tid, refs in result.per_target_reference_counts.items():
+                    if any(count > 0 for count in refs.values()):
+                        has_per_target_refs = True
+                        break
+
             result.safe_to_delete = (
                 not has_inspection_errors
                 and not has_unknown_references
                 and not has_cascade
                 and not has_references
+                and not has_per_target_refs
             )
 
             if not result.safe_to_delete:
@@ -160,7 +186,9 @@ def run_gate3(accessor: DatabaseAccessor, target_ids: list[int]) -> Gate3Result:
                 if has_cascade:
                     reasons.append(f"{result.cascade_fk_count} CASCADE FKs")
                 if has_references:
-                    reasons.append(f"{total_refs} references to targets")
+                    reasons.append(f"{total_refs} aggregate references to targets")
+                if has_per_target_refs:
+                    reasons.append("per-target references found")
                 result.status = "FAIL"
                 result.error = "Safe to delete: NO - " + "; ".join(reasons)
                 return result
@@ -190,9 +218,8 @@ def main() -> int:
 
     result = run_gate3(accessor, CANONICAL_TARGET_IDS)
 
-    # Save results
-    with open("gate3_result.json", "w") as f:
-        json.dump(result.to_dict(), f, indent=2, default=str)
+    # Save results with metadata
+    save_result_with_metadata(result.to_dict(), "gate3", "gate3_result.json")
 
     print("\n=== GATE 3 RESULT ===")
     print(json.dumps(result.to_dict(), indent=2, default=str))

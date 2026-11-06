@@ -6,19 +6,30 @@ Distinguishes recurring programmes from expired cycles.
 Identifies evergreen opportunities.
 Rejects future deadlines.
 Rejects ambiguous dates.
-Validates official-source evidence.
+Validates official-source evidence with FULL requirements:
+- Exact cycle identifier
+- Official domain/URL
+- Source title
+- Deadline with precision
+- Supporting excerpt with hash
+- Retrieval date
+- Reviewer identity
+- Decision
+
 Never treats a generic programme homepage as proof that a specific application cycle has expired.
 """
 
 import json
+import hashlib
 import sys
 from dataclasses import dataclass, asdict
 from datetime import date
 from typing import Optional
 
-from .manifest import CANONICAL_TARGET_IDS, TARGET_ID_SET
+from .manifest import CANONICAL_TARGET_IDS, TARGET_ID_SET, EvidenceRecord
 from .database import DatabaseAccessor, create_accessor
 from .config import DatabaseConfig, PreflightConfig, load_config
+from .metadata import save_result_with_metadata
 
 
 @dataclass
@@ -34,8 +45,9 @@ class CycleValidationResult:
     is_evergreen: bool
     is_expired: bool
     official_source_url: str
-    evidence_sufficient: bool
-    expiration_reason: str
+    evidence: Optional[dict] = None
+    evidence_sufficient: bool = False
+    expiration_reason: str = ""
     blocked_reason: Optional[str] = None
 
 
@@ -49,6 +61,7 @@ class Gate6Result:
     future_deadlines: int = 0
     ambiguous_dates: int = 0
     insufficient_evidence: int = 0
+    status_deadline_conflicts: int = 0
     validations: list[dict] = None
     blocked_ids: list[int] = None
     status: str = "PENDING"
@@ -69,6 +82,7 @@ def validate_cycle_record(record: dict, reference_date: Optional[date] = None) -
     Validate a single record's application cycle expiration.
 
     This is REAL validation - not a placeholder.
+    Requires full evidence record for expired cycles.
     """
     if reference_date is None:
         reference_date = date.today()
@@ -94,7 +108,6 @@ def validate_cycle_record(record: dict, reference_date: Optional[date] = None) -
             parsed_deadline = deadline
 
     # Determine if evergreen
-    # Evergreen = no deadline OR deadline precision is "unknown" with recurring programme
     is_evergreen = parsed_deadline is None
 
     # Check for ambiguous dates
@@ -127,12 +140,64 @@ def validate_cycle_record(record: dict, reference_date: Optional[date] = None) -
         days_past = (reference_date - parsed_deadline).days
         expiration_reason = f"Application deadline {parsed_deadline} passed {days_past} days ago"
 
-    # Verify official source evidence
-    # A generic homepage is NOT sufficient - need cycle-specific evidence
+    # Verify official source evidence - FULL REQUIREMENTS
     evidence_sufficient = False
-    if official_source_url:
-        # Check if URL looks like a specific cycle page vs generic homepage
-        # Use regex to match generic homepage patterns
+    evidence = None
+
+    if official_source_url and is_expired:
+        # For expired cycles, we need FULL evidence record
+        # Check if evidence fields exist in record (from research_ledger or manual input)
+        evidence_fields = [
+            "evidence_official_domain",
+            "evidence_official_url",
+            "evidence_source_title",
+            "evidence_deadline",
+            "evidence_deadline_precision",
+            "evidence_supporting_excerpt",
+            "evidence_excerpt_hash",
+            "evidence_retrieval_date",
+            "evidence_reviewer",
+            "evidence_decision",
+        ]
+
+        # Check if all evidence fields are present
+        all_present = all(record.get(field) is not None for field in evidence_fields)
+
+        if all_present:
+            # Verify excerpt hash matches
+            excerpt = record.get("evidence_supporting_excerpt", "")
+            expected_hash = record.get("evidence_excerpt_hash", "")
+            actual_hash = hashlib.sha256(excerpt.encode()).hexdigest()
+
+            if actual_hash == expected_hash:
+                # Verify decision is EXPIRED_VERIFIED
+                if record.get("evidence_decision") == "EXPIRED_VERIFIED":
+                    evidence_sufficient = True
+                    evidence = {
+                        "official_domain": record.get("evidence_official_domain"),
+                        "official_url": record.get("evidence_official_url"),
+                        "source_title": record.get("evidence_source_title"),
+                        "deadline": record.get("evidence_deadline"),
+                        "deadline_precision": record.get("evidence_deadline_precision"),
+                        "supporting_excerpt": excerpt,
+                        "excerpt_hash": expected_hash,
+                        "retrieval_date": record.get("evidence_retrieval_date"),
+                        "reviewer": record.get("evidence_reviewer"),
+                        "decision": record.get("evidence_decision"),
+                    }
+                else:
+                    blocked_reason = f"Evidence decision not EXPIRED_VERIFIED: {record.get('evidence_decision')}"
+                    evidence_sufficient = False
+            else:
+                blocked_reason = "Evidence excerpt hash mismatch - integrity check failed"
+                evidence_sufficient = False
+        else:
+            missing = [f for f in evidence_fields if record.get(f) is None]
+            blocked_reason = f"Insufficient evidence - missing fields: {missing}"
+            evidence_sufficient = False
+    elif official_source_url and not is_expired:
+        # For non-expired cycles, check if URL is cycle-specific
+        # But preserve specific blocked_reason if already set (e.g., evergreen, future deadline)
         import re
         generic_patterns = [
             r"^https?://erasmus-plus\.ec\.europa\.eu/?$",
@@ -142,16 +207,25 @@ def validate_cycle_record(record: dict, reference_date: Optional[date] = None) -
             r"^https?://www\.campusfrance\.org/?$",
         ]
         is_generic = any(re.match(pattern, official_source_url) for pattern in generic_patterns)
-        # For now, we accept the official source but flag if it's generic
-        evidence_sufficient = not is_generic
+
+        # Only override blocked_reason if it's not already set with a specific reason
+        # (e.g., "Evergreen programme", "Future deadline:", "Ambiguous")
+        specific_reasons = ["Evergreen programme", "Future deadline:", "Ambiguous"]
+        has_specific_reason = any(reason in (blocked_reason or "") for reason in specific_reasons)
+
         if is_generic:
-            blocked_reason = blocked_reason or "Generic programme homepage (not cycle-specific)"
+            if not has_specific_reason:
+                blocked_reason = "Generic programme homepage (not cycle-specific)"
+            evidence_sufficient = False
+        else:
+            if not has_specific_reason:
+                blocked_reason = "Full evidence record required for cycle validation"
             evidence_sufficient = False
 
     return CycleValidationResult(
         id=rec_id,
         title=title,
-        programme=title,  # Use title as programme identifier
+        programme=title,
         country=country,
         application_cycle=deadline_display or "Unknown",
         deadline=parsed_deadline.isoformat() if parsed_deadline else None,
@@ -159,6 +233,7 @@ def validate_cycle_record(record: dict, reference_date: Optional[date] = None) -
         is_evergreen=is_evergreen,
         is_expired=is_expired,
         official_source_url=official_source_url,
+        evidence=evidence,
         evidence_sufficient=evidence_sufficient,
         expiration_reason=expiration_reason,
         blocked_reason=blocked_reason,
@@ -199,7 +274,6 @@ def run_gate6(accessor: DatabaseAccessor, target_ids: list[int]) -> Gate6Result:
                 if validation.is_evergreen:
                     result.evergreen_programmes += 1
                 if validation.deadline and not validation.is_expired and not validation.is_evergreen:
-                    # Future deadline
                     from datetime import date
                     try:
                         dl = date.fromisoformat(validation.deadline)
@@ -211,6 +285,8 @@ def run_gate6(accessor: DatabaseAccessor, target_ids: list[int]) -> Gate6Result:
                     result.ambiguous_dates += 1
                 if not validation.evidence_sufficient:
                     result.insufficient_evidence += 1
+                if validation.blocked_reason and "STATUS_DEADLINE_CONFLICT" in str(validation.blocked_reason):
+                    result.status_deadline_conflicts += 1
 
             result.total_records = len(records)
 
@@ -223,6 +299,11 @@ def run_gate6(accessor: DatabaseAccessor, target_ids: list[int]) -> Gate6Result:
             if result.expired_cycles != 34:
                 result.status = "FAIL"
                 result.error = f"Only {result.expired_cycles}/34 records have verified expired cycles"
+                return result
+
+            if result.insufficient_evidence > 0:
+                result.status = "FAIL"
+                result.error = f"{result.insufficient_evidence} records lack sufficient evidence"
                 return result
 
             result.status = "PASS"
@@ -250,15 +331,14 @@ def main() -> int:
 
     result = run_gate6(accessor, CANONICAL_TARGET_IDS)
 
-    # Save results
-    with open("gate6_result.json", "w") as f:
-        json.dump(result.to_dict(), f, indent=2, default=str)
+    # Save results with metadata
+    save_result_with_metadata(result.to_dict(), "gate6", "gate6_result.json")
 
     print("\n=== GATE 6 RESULT ===")
     print(json.dumps(result.to_dict(), indent=2, default=str))
 
     if result.status == "PASS":
-        print(f"\n✅ GATE 6 PASSED: All {result.expired_cycles} records have verified expired cycles")
+        print(f"\n✅ GATE 6 PASSED: All {result.expired_cycles} records have verified expired cycles with full evidence")
         return 0
     else:
         print(f"\n❌ GATE 6 {result.status}: {result.error}")

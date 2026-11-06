@@ -183,12 +183,12 @@
     padding: 3px 8px;
     font-size: 0.68rem;
   }
-
+  
   .lifecycle-badge-container.detailed .lifecycle-badge {
     padding: 5px 12px;
     font-size: 0.72rem;
   }
-
+  
   .lifecycle-countdown {
     font-size: 0.68rem;
   }
@@ -201,31 +201,31 @@
     color: #fde68a;
     border-color: #a16207;
   }
-
+  
   .lifecycle-upcoming {
     background: linear-gradient(135deg, #1e3a5f 0%, #1e40af 100%);
     color: #93c5fd;
     border-color: #3b82f6;
   }
-
+  
   .lifecycle-closing-soon {
     background: linear-gradient(135deg, #7f1d1d 0%, #991b1b 100%);
     color: #fca5a5;
     border-color: #ef4444;
   }
-
+  
   .lifecycle-closed {
     background: linear-gradient(135deg, #374151 0%, #4b5563 100%);
     color: #9ca3af;
     border-color: #6b7280;
   }
-
+  
   .lifecycle-open {
     background: linear-gradient(135deg, #14532d 0%, #166534 100%);
     color: #86efac;
     border-color: #22c55e;
   }
-
+  
   .lifecycle-unknown {
     background: linear-gradient(135deg, #1f2937 0%, #374151 100%);
     color: #6b7280;

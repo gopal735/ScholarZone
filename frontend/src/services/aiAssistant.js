@@ -1,9 +1,9 @@
 /**
  * AI Assistant Service
- *
+ * 
  * Connects to the ScholarZone AI backend endpoint.
  * If no AI backend is configured, falls back to grounded retrieval from local data.
- *
+ * 
  * Backend API contract (when AI is enabled):
  * POST /api/ai/assistant
  * Body: { question: string, context?: { scholarships?: number[], userProfile?: object } }
@@ -72,7 +72,7 @@ export async function askAIAssistant(request) {
 
     if (!response.ok) {
       const errorData = await response.json().catch(() => ({}));
-
+      
       if (response.status === 429) {
         throw { error: 'AI service quota exceeded. Please try again later.', code: 'QUOTA_EXCEEDED', retryable: true };
       }
@@ -82,12 +82,12 @@ export async function askAIAssistant(request) {
       if (response.status >= 500) {
         throw { error: 'AI service error. Please try again.', code: 'SERVER_ERROR', retryable: true };
       }
-
+      
       throw { error: errorData.error || 'AI request failed.', code: 'SERVER_ERROR', retryable: false };
     }
 
     const data = await response.json();
-
+    
     // Validate response structure
     if (!data.answer || !Array.isArray(data.sources)) {
       throw { error: 'Invalid AI response format.', code: 'SERVER_ERROR', retryable: false };
@@ -105,12 +105,12 @@ export async function askAIAssistant(request) {
     if (error && typeof error === 'object' && 'code' in error) {
       throw error;
     }
-
+    
     // Network error or timeout
     if (error instanceof DOMException && error.name === 'AbortError') {
       throw { error: 'AI request timed out. Please try again.', code: 'TIMEOUT', retryable: true };
     }
-
+    
     // Network error - fall back to grounded
     console.warn('AI Assistant unavailable, falling back to grounded retrieval:', error);
     return groundedFallback(request.question);
@@ -124,18 +124,18 @@ export async function askAIAssistant(request) {
 async function groundedFallback(question) {
   // Import dynamically to avoid circular dependencies
   const { fetchScholarships } = await import('./scholarshipService');
-
+  
   // Simple keyword extraction for scholarship search
   const keywords = extractKeywords(question);
-
+  
   try {
     const directory = await fetchScholarships({
       search: keywords.join(' '),
       limit: 5,
     });
-
+    
     const scholarships = directory.items || [];
-
+    
     if (scholarships.length === 0) {
       return {
         answer: "I couldn't find specific scholarships matching your question in the ScholarZone catalogue. Try browsing the directory with broader filters, or ask about general application guidance.",
@@ -143,7 +143,7 @@ async function groundedFallback(question) {
         grounded: true,
       };
     }
-
+    
     // Compose a grounded answer from scholarship data
     const answer = composeGroundedAnswer(question, scholarships);
     const sources = scholarships.map(s => ({
@@ -152,7 +152,7 @@ async function groundedFallback(question) {
       title: s.title,
       url: s.official_source_url || s.official_url,
     }));
-
+    
     return {
       answer,
       sources,
@@ -203,7 +203,7 @@ function extractKeywords(question) {
     "can't", "cannot", "couldn't", "mustn't", "let's", "that's", "who's",
     "what's", "here's", "there's", "when's", "where's", "why's", "how's"
   ]);
-
+  
   return question
     .toLowerCase()
     .replace(/[^\w\s]/g, ' ')
@@ -217,28 +217,28 @@ function extractKeywords(question) {
  */
 function composeGroundedAnswer(question, scholarships) {
   const lowerQuestion = question.toLowerCase();
-
+  
   // Check question type and compose appropriate answer
   if (lowerQuestion.includes('compare') || lowerQuestion.includes('difference') || lowerQuestion.includes('vs')) {
     return composeComparisonAnswer(scholarships);
   }
-
+  
   if (lowerQuestion.includes('deadline') || lowerQuestion.includes('when') || lowerQuestion.includes('closing') || lowerQuestion.includes('open')) {
     return composeDeadlineAnswer(scholarships);
   }
-
+  
   if (lowerQuestion.includes('eligib') || lowerQuestion.includes('qualify') || lowerQuestion.includes('require') || lowerQuestion.includes('gpa') || lowerQuestion.includes('ielts') || lowerQuestion.includes('score')) {
     return composeEligibilityAnswer(scholarships);
   }
-
+  
   if (lowerQuestion.includes('apply') || lowerQuestion.includes('application') || lowerQuestion.includes('document') || lowerQuestion.includes('sop') || lowerQuestion.includes('statement') || lowerQuestion.includes('essay') || lowerQuestion.includes('reference') || lowerQuestion.includes('letter')) {
     return composeApplicationAnswer(scholarships);
   }
-
+  
   if (lowerQuestion.includes('fund') || lowerQuestion.includes('money') || lowerQuestion.includes('stipend') || lowerQuestion.includes('tuition') || lowerQuestion.includes('cost') || lowerQuestion.includes('coverage') || lowerQuestion.includes('fully funded')) {
     return composeFundingAnswer(scholarships);
   }
-
+  
   // General answer
   return composeGeneralAnswer(scholarships);
 }
@@ -249,7 +249,7 @@ function composeGeneralAnswer(scholarships) {
     `Based on the ScholarZone catalogue, here are relevant scholarships for your question:`,
     '',
   ];
-
+  
   top.forEach((s, i) => {
     lines.push(`${i + 1}. **${s.title}** (${s.country}) — ${s.funding}`);
     if (s.degree) lines.push(`   Degree: ${s.degree}`);
@@ -257,7 +257,7 @@ function composeGeneralAnswer(scholarships) {
     if (s.official_source_url) lines.push(`   Official: ${s.official_source_url}`);
     lines.push('');
   });
-
+  
   lines.push('Answers are grounded in ScholarZone data. Always verify details on the official provider website.');
   return lines.join('\n');
 }
@@ -265,7 +265,7 @@ function composeGeneralAnswer(scholarships) {
 function composeComparisonAnswer(scholarships) {
   const top = scholarships.slice(0, 4);
   const lines = ['Here is a comparison of the top matching scholarships:', ''];
-
+  
   top.forEach((s, i) => {
     lines.push(`**${i + 1}. ${s.title}** (${s.country})`);
     lines.push(`   Funding: ${s.funding}`);
@@ -274,19 +274,19 @@ function composeComparisonAnswer(scholarships) {
     if (s.deadline) lines.push(`   Deadline: ${s.deadline}`);
     lines.push('');
   });
-
+  
   lines.push('Use the Compare page (/compare) for detailed side-by-side analysis.');
   return lines.join('\n');
 }
 
 function composeDeadlineAnswer(scholarships) {
   const lines = ['Application deadlines for matching scholarships:', ''];
-
+  
   scholarships.slice(0, 5).forEach(s => {
     const deadline = s.deadline || s.deadline_display || 'Not specified';
     lines.push(`• **${s.title}** (${s.country}): ${deadline}`);
   });
-
+  
   lines.push('');
   lines.push('Deadlines are subject to change. Always confirm on the official website before applying.');
   return lines.join('\n');
@@ -294,7 +294,7 @@ function composeDeadlineAnswer(scholarships) {
 
 function composeEligibilityAnswer(scholarships) {
   const lines = ['Eligibility information from ScholarZone records:', ''];
-
+  
   scholarships.slice(0, 3).forEach(s => {
     lines.push(`**${s.title}** (${s.country})`);
     if (s.eligibility && Array.isArray(s.eligibility)) {
@@ -305,14 +305,14 @@ function composeEligibilityAnswer(scholarships) {
     if (s.english_requirement) lines.push(`   English: ${s.english_requirement}`);
     lines.push('');
   });
-
+  
   lines.push('Eligibility criteria vary by programme and track. Check the official page for complete requirements.');
   return lines.join('\n');
 }
 
 function composeApplicationAnswer(scholarships) {
   const lines = ['Application guidance based on ScholarZone records:', ''];
-
+  
   scholarships.slice(0, 3).forEach(s => {
     lines.push(`**${s.title}** (${s.country})`);
     if (s.application_method && Array.isArray(s.application_method)) {
@@ -324,14 +324,14 @@ function composeApplicationAnswer(scholarships) {
     if (s.application_link) lines.push(`   Apply: ${s.application_link}`);
     lines.push('');
   });
-
+  
   lines.push('For personalized document coaching, use the Grounded Mentor (/mentor) after signing in.');
   return lines.join('\n');
 }
 
 function composeFundingAnswer(scholarships) {
   const lines = ['Funding details from ScholarZone records:', ''];
-
+  
   scholarships.slice(0, 4).forEach(s => {
     lines.push(`**${s.title}** (${s.country}) — ${s.funding}`);
     if (s.coverage) {
@@ -349,7 +349,7 @@ function composeFundingAnswer(scholarships) {
     }
     lines.push('');
   });
-
+  
   lines.push('Funding details are from official sources. Always confirm exact amounts and conditions on the provider website.');
   return lines.join('\n');
 }

@@ -1,6 +1,6 @@
 /**
  * Scholarship Lifecycle Classification
- *
+ * 
  * Classifies scholarships into six lifecycle categories based on available data:
  * - OPENING: Application opening date is approaching within the configured window
  * - UPCOMING: Future cycle - opening date is in the future and outside the opening window
@@ -8,7 +8,7 @@
  * - CLOSING_SOON: Applications are open and the verified deadline is approaching
  * - CLOSED: The current cycle has ended and no verified future cycle supersedes it
  * - UNKNOWN: Dates are missing, ambiguous or contradictory
- *
+ * 
  * Precedence (highest first):
  * 1. CLOSED (explicit status, is_archived, or deadline passed with no future cycle)
  * 2. CLOSING_SOON (deadline within CLOSING_SOON_THRESHOLD_DAYS)
@@ -16,7 +16,7 @@
  * 4. OPENING (opening_date within OPENING_WINDOW_DAYS)
  * 5. OPEN (default for active scholarships with valid deadline)
  * 6. UNKNOWN (missing critical dates)
- *
+ * 
  * Configurable thresholds:
  * - CLOSING_SOON_THRESHOLD_DAYS: days before deadline to show "Closing Soon" (default: 30)
  * - OPENING_WINDOW_DAYS: days before opening date to show "Opening Soon" (default: 60)
@@ -111,7 +111,7 @@ export function parseOpeningDateFromPeriod(scholarship) {
   }
 
   const period = scholarship.application_period;
-
+  
   // Pattern: "opens YYYY-MM-DD" or "opens DD Month YYYY"
   const opensPattern = /opens?\s+(?:on\s+)?(\d{4}-\d{2}-\d{2}|\d{1,2}\s+\w+\s+\d{4})/i;
   const match = period.match(opensPattern);
@@ -174,13 +174,13 @@ export function parseOpeningDateFromPeriod(scholarship) {
  */
 export function getDaysDifference(targetDate) {
   if (!targetDate) return null;
-
+  
   const today = new Date();
   today.setHours(0, 0, 0, 0);
-
+  
   const target = new Date(targetDate);
   target.setHours(0, 0, 0, 0);
-
+  
   const diffMs = target.getTime() - today.getTime();
   return Math.ceil(diffMs / (1000 * 60 * 60 * 24));
 }
@@ -190,18 +190,9 @@ export function getDaysDifference(targetDate) {
  * This prevents marking a scholarship as CLOSED if a future cycle exists.
  */
 export function hasVerifiedFutureCycle(scholarship) {
-  // Check for explicit future cycle indicators in application_period
-  if (scholarship.application_period && typeof scholarship.application_period === 'string') {
-    const period = scholarship.application_period.toLowerCase();
-    // Look for future year mentions beyond current year
-    const currentYear = new Date().getFullYear();
-    const futureYearPattern = new RegExp(`\\b(${currentYear + 1}|${currentYear + 2}|\\d{4}-\\d{2}-\\d{2})\\b`);
-    if (futureYearPattern.test(period) &&
-        (period.includes('202') || period.includes('opens') || period.includes('cycle'))) {
-      return true;
-    }
-  }
-
+  const now = new Date();
+  now.setHours(0, 0, 0, 0);
+  
   // Check for explicit opening_date in future
   if (scholarship.opening_date) {
     const openingDays = getDaysDifference(scholarship.opening_date);
@@ -209,14 +200,66 @@ export function hasVerifiedFutureCycle(scholarship) {
       return true;
     }
   }
-
+  
+  // Check for explicit future cycle indicators in application_period
+  if (scholarship.application_period && typeof scholarship.application_period === 'string') {
+    const period = scholarship.application_period;
+    
+    // Pattern: "opens YYYY-MM-DD" or "opens DD Month YYYY"
+    const opensPattern = /opens?\s+(?:on\s+)?(\d{4}-\d{2}-\d{2}|\d{1,2}\s+\w+\s+\d{4})/i;
+    const match = period.match(opensPattern);
+    if (match) {
+      const parsed = new Date(match[1] + 'T00:00:00Z');
+      if (!isNaN(parsed.getTime()) && parsed > now) {
+        return true;
+      }
+    }
+    
+    // Pattern: "2027 cycle: call opens 2027-01-01"
+    const cyclePattern = /(\d{4})\s+cycle:?.*?opens?\s+(\d{4}-\d{2}-\d{2})/i;
+    const cycleMatch = period.match(cyclePattern);
+    if (cycleMatch) {
+      const parsed = new Date(cycleMatch[2] + 'T00:00:00Z');
+      if (!isNaN(parsed.getTime()) && parsed > now) {
+        return true;
+      }
+    }
+    
+    // Pattern: "call opens Month YYYY" or "applications open Month YYYY"
+    const monthYearPattern = /(?:call|applications?)\s+opens?\s+(\w+\s+\d{4})/i;
+    const monthMatch = period.match(monthYearPattern);
+    if (monthMatch) {
+      const parsed = new Date(monthMatch[1] + ' 00:00:00Z');
+      if (!isNaN(parsed.getTime()) && parsed > now) {
+        return true;
+      }
+    }
+    
+    // Pattern: "re-opens in early December" or "opens in early February"
+    const qualitativePattern = /(?:re-)?opens?\s+in\s+(early|mid|late)\s+(\w+)/i;
+    const qualMatch = period.match(qualitativePattern);
+    if (qualMatch) {
+      const monthMap = { january: 0, february: 1, march: 2, april: 3, may: 4, june: 5,
+                         july: 6, august: 7, september: 8, october: 9, november: 10, december: 11 };
+      const month = monthMap[qualMatch[2].toLowerCase()];
+      if (month !== undefined) {
+        const year = new Date().getFullYear();
+        const day = qualMatch[1] === 'early' ? 5 : qualMatch[1] === 'mid' ? 15 : 25;
+        const parsed = new Date(Date.UTC(year, month, day));
+        if (parsed > now) {
+          return true;
+        }
+      }
+    }
+  }
+  
   return false;
 }
 
 /**
  * Main lifecycle classification function.
  * Returns an object with all UI-relevant information.
- *
+ * 
  * Precedence (highest first):
  * 1. CLOSED (explicit status, is_archived, or deadline passed WITHOUT verified future cycle)
  * 2. UPCOMING (explicit status === 'upcoming' OR opening_date in future beyond window)
@@ -229,7 +272,7 @@ export function classifyLifecycle(scholarship) {
   // Parse dates
   const { date: deadlineDate, isExact: deadlineExact } = parseDate(scholarship, 'deadline');
   const { date: openingDate, isExact: openingExact } = parseDate(scholarship, 'opening');
-
+  
   // Fallback: try to extract opening date from application_period
   let effectiveOpeningDate = openingDate;
   let effectiveOpeningExact = openingExact;
@@ -445,7 +488,7 @@ export function getLifecycleBadge(scholarship) {
  */
 export function formatCountdown(daysUntil, isExact) {
   if (daysUntil === null) return null;
-
+  
   if (daysUntil < 0) return 'Deadline passed';
   if (daysUntil === 0) return 'Deadline today';
   if (daysUntil === 1) return '1 day left';
@@ -460,7 +503,7 @@ export function formatCountdown(daysUntil, isExact) {
  */
 export function formatOpeningCountdown(daysUntil, isExact) {
   if (daysUntil === null) return null;
-
+  
   if (daysUntil < 0) return 'Opened';
   if (daysUntil === 0) return 'Opens today';
   if (daysUntil === 1) return 'Opens tomorrow';

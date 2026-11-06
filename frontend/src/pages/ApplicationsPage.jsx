@@ -133,7 +133,7 @@ export default function ApplicationsPage() {
                 Browse scholarships
               </Link>
             </div>
-
+            
             <div className="applications-page__preview-features" style={{ marginTop: '36px', textAlign: 'left', display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))', gap: '14px' }}>
               <div className="preview-card" style={{ padding: '16px', borderRadius: '10px', background: 'var(--well, rgba(27,42,74,0.04))', border: '1px solid var(--line, rgba(27,42,74,0.1))' }}>
                 <strong style={{ display: 'block', marginBottom: '4px', color: 'var(--text-primary, #1b2a4a)' }}>📌 Stage Tracker</strong>

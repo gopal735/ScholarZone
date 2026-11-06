@@ -666,7 +666,6 @@ export default function HomePage() {
   const marqueeText = useMemo(() => {
     return allScholarships.slice(0, 10).map((s) => s.title).join('  ·  ')
   }, [allScholarships])
-
   return (
     <div className="sz-home-editorial">
       {/* ── 01. HERO SECTION ────────────────────────────────────────── */}
@@ -700,7 +699,7 @@ export default function HomePage() {
                   <span className="sz-pulse-dot" />
                   <span>
                     {stats && stats.verified
-                      ? `${stats.verified}+ Verified International Scholarships`
+                      ? `${stats.verified} Verified International Scholarships`
                       : 'Verified International Scholarships'}
                   </span>
                 </div>
@@ -1790,7 +1789,7 @@ export default function HomePage() {
               <span className="step-num">01 / Discover</span>
               <h3>Explore Verified Programmes</h3>
               <p>
-                Filter international scholarships by degree, country, and funding tier.
+                Filter {stats && stats.total ? `${stats.total}+` : 'international'} scholarships by degree, country, and funding tier.
                 Verified records are marked; confirm eligibility and deadlines on the official portal.
               </p>
               <span className="step-arrow">Explore Directory &rarr;</span>

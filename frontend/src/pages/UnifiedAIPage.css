@@ -605,71 +605,71 @@
     background: var(--accent);
     color: var(--ink);
   }
-
+  
   .message--assistant .message-content {
     background: var(--cardbg);
     border-color: var(--line);
   }
-
+  
   .suggested-prompt {
     background: var(--cardbg);
     border-color: var(--line);
     color: var(--ink);
   }
-
+  
   .suggested-prompt:hover {
     background: var(--well);
   }
-
+  
   .message-error {
     background: #7f1d1d;
     border-color: #ef4444;
     color: #fca5a5;
   }
-
+  
   .retry-btn {
     background: var(--cardbg);
     border-color: #ef4444;
     color: #fca5a5;
   }
-
+  
   .retry-btn:hover {
     background: var(--well);
   }
-
+  
   .unified-ai-input textarea {
     background: var(--cardbg);
     border-color: var(--line);
     color: var(--ink);
   }
-
+  
   .send-btn {
     background: var(--accent);
     color: var(--ink);
   }
-
+  
   .ai-settings-panel {
     background: var(--cardbg);
     border-left-color: var(--line);
   }
-
+  
   .settings-content h3 {
     color: var(--ink);
   }
-
+  
   .setting-label {
     color: var(--ink);
   }
-
+  
   .setting-text strong {
     color: var(--ink);
   }
-
+  
   .close-settings {
     background: var(--accent);
     color: var(--ink);
   }
-
+  
   .close-settings:hover {
     background: var(--accent);
   }
@@ -680,34 +680,34 @@
   .unified-ai-page {
     padding: var(--space-4) var(--gutter);
   }
-
+  
   .unified-ai-header {
     flex-direction: column;
     align-items: stretch;
   }
-
+  
   .unified-ai-title h1 {
     font-size: var(--fs-xl);
   }
-
+  
   .message-content {
     max-width: 100%;
   }
-
+  
   .suggested-categories {
     grid-template-columns: 1fr;
   }
-
+  
   .unified-ai-input {
     flex-direction: column;
   }
-
+  
   .send-btn {
     width: 100%;
     border-radius: var(--radius-panel);
     height: 48px;
   }
-
+  
   .ai-settings-panel {
     width: 100vw;
   }

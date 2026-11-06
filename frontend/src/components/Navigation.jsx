@@ -35,11 +35,11 @@ export default function Navigation() {
   }, [])
 
   const navItems = [
-    { to: '/scholarships', label: 'Directory', desc: 'Browse verified opportunities' },
-    { to: '/match', label: 'Smart match', desc: 'Check eligibility by GPA & IELTS' },
-    { to: '/countries', label: 'Destinations', desc: 'Living costs & country guides' },
+    { to: '/scholarships', label: 'Scholarships', desc: 'Browse verified opportunities' },
+    { to: '/match', label: 'Smart Match', badge: '✨', desc: 'Check eligibility by GPA & IELTS' },
+    { to: '/countries', label: 'Countries', desc: 'Living costs & country guides' },
     { to: '/applications', label: 'Applications', desc: 'Track tasks, SOPs & deadlines' },
-    { to: '/assistant', label: 'AI guide', desc: 'Scholarship discovery, comparison & guidance' },
+    { to: '/assistant', label: 'AI Guide', badge: '🤖', desc: 'Scholarship discovery, comparison & guidance' },
     {
       to: '/compare',
       label: 'Compare',
@@ -48,7 +48,7 @@ export default function Navigation() {
     },
     {
       to: '/saved',
-      label: 'Shortlist',
+      label: 'Saved',
       count: savedIds.length,
       desc: 'Saved bookmarks for fast access',
     },
@@ -56,7 +56,7 @@ export default function Navigation() {
 
   return (
     <>
-      <header className="sz-nav-header nav" role="banner">
+      <header className="sz-nav-header nav">
         <NavLink to="/" className="logo" aria-label="ScholarZone Home">
           <i>
             <svg viewBox="0 0 24 24" aria-hidden="true">

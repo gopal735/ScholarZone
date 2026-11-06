@@ -3,10 +3,10 @@ import { fetchScholarshipStats } from '../services/scholarshipService'
 
 /**
  * Normalize scholarship stats from both API and static snapshot.
- *
+ * 
  * API returns: verified_active, fully_funded
  * Static snapshot returns: verified, fullyFunded (mapped from verified_active, fully_funded)
- *
+ * 
  * This hook normalizes to a consistent internal format:
  * - verified (number)
  * - fullyFunded (number)
@@ -18,7 +18,7 @@ import { fetchScholarshipStats } from '../services/scholarshipService'
  */
 function normalizeStats(rawStats) {
   if (!rawStats) return null
-
+  
   return {
     total: rawStats.total ?? 0,
     countries: rawStats.countries ?? 0,

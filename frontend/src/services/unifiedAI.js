@@ -1,9 +1,9 @@
 /**
  * Unified AI Service
- *
- * Merges Mentor (personalized, authenticated) and AI Assistant (public, discovery)
+ * 
+ * Merges Mentor (personalized, authenticated) and AI Assistant (public, discovery) 
  * into a single interface with mode detection.
- *
+ * 
  * Modes:
  * - 'grounded': Deterministic retrieval from ScholarZone records (always works)
  * - 'mentor': Authenticated, personalized guidance using backend composer (requires login)
@@ -17,6 +17,7 @@ import { askAIAssistant, checkAIAvailability, isAIEnabled, setAIEnabled } from '
 // Re-export for backward compatibility
 export { askMentor, MentorUnauthenticatedError, MentorRateLimitedError, MentorValidationError, MentorUnavailableError, fetchMentorOverview }
 export { askAIAssistant, checkAIAvailability, isAIEnabled, setAIEnabled, isLocalAIEnabled }
+export { checkLocalAIModelReady }
 
 export const AI_MODE = {
   GROUNDED: 'grounded',
@@ -36,11 +37,11 @@ export function getAIMode() {
  * based on authentication state and AI availability.
  */
 export async function askUnifiedAI(message, options = {}) {
-  const {
-    mode = 'auto',
-    signal,
+  const { 
+    mode = 'auto', 
+    signal, 
     context = {},
-    conversationHistory = []
+    conversationHistory = [] 
   } = options
 
   // Auto-detect best mode
@@ -79,14 +80,26 @@ export async function getAIStatus() {
   const mentorAvailable = await checkMentorAccess()
   const aiAvailable = await checkAIAvailability()
   const localAIEnabled = isLocalAIEnabled()
-
+  
+  // Local AI requires actual model loading capability (Transformers.js)
+  // Currently not implemented - returns false until Transformers.js is integrated
+  const localAIModelReady = await checkLocalAIModelReady()
+  
   return {
     mentor: mentorAvailable,
     remoteAI: aiAvailable,
-    localAI: localAIEnabled,
+    localAI: localAIEnabled && localAIModelReady,
+    localAIEnabled: localAIEnabled,
+    localAIModelReady,
     grounded: true, // Always available
-    activeMode: mentorAvailable ? 'mentor' : (localAIEnabled ? 'local_ai' : (aiAvailable ? 'remote_ai' : 'grounded')),
+    activeMode: mentorAvailable ? 'mentor' : (localAIEnabled && localAIModelReady ? 'local_ai' : (aiAvailable ? 'remote_ai' : 'grounded')),
   }
+}
+
+async function checkLocalAIModelReady() {
+  // Transformers.js not yet implemented - returns false
+  // When implemented, this would check if the model is actually loaded
+  return false
 }
 
 async function checkMentorAccess() {
