@@ -137,6 +137,98 @@ h2 {
   align-items: center;
 }
 
+.hero-learning {
+  padding: clamp(22px, 3vw, 34px);
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  background: linear-gradient(145deg, var(--surface), var(--surface-accent));
+  box-shadow: var(--drop), inset 0 1px 0 var(--edge1);
+}
+
+.hero-learning__eyebrow {
+  margin: 0 0 10px;
+  color: var(--acc);
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.hero-learning h2 {
+  max-width: 20ch;
+  margin: 0;
+  color: var(--ink);
+  font-family: Newsreader, Georgia, serif;
+  font-size: clamp(1.55rem, 2.5vw, 2.1rem);
+  font-weight: 500;
+  line-height: 1.13;
+  letter-spacing: -0.035em;
+}
+
+.hero-learning__intro {
+  max-width: 48ch;
+  margin: 12px 0 20px;
+  color: var(--mute);
+  line-height: 1.6;
+}
+
+.hero-learning__steps {
+  display: grid;
+  gap: 0;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.hero-learning__steps li {
+  display: grid;
+  grid-template-columns: 34px minmax(0, 1fr);
+  gap: 12px;
+  padding: 14px 0;
+  border-top: 1px solid var(--line);
+}
+
+.hero-learning__steps li > span {
+  display: grid;
+  width: 30px;
+  height: 30px;
+  place-items: center;
+  border-radius: 50%;
+  background: color-mix(in srgb, var(--acc) 12%, var(--cardbg));
+  color: var(--acc);
+  font-size: 0.75rem;
+  font-weight: 700;
+}
+
+.hero-learning__steps strong {
+  display: block;
+  color: var(--ink);
+  font-size: 0.98rem;
+}
+
+.hero-learning__steps p {
+  margin: 3px 0 0;
+  color: var(--mute);
+  font-size: 0.88rem;
+  line-height: 1.5;
+}
+
+.hero-learning__link {
+  display: inline-flex;
+  min-height: 44px;
+  align-items: center;
+  gap: 8px;
+  margin-top: 12px;
+  color: var(--acc);
+  font-weight: 650;
+  text-decoration: none;
+}
+
+.hero-learning__link:hover {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
 /* Goal Panel */
 .panel {
   position: relative;
@@ -710,6 +802,35 @@ kbd {
   gap: 8px;
 }
 
+.sc-apply-check {
+  display: flex;
+  min-height: 44px;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  margin: 0;
+  padding: 8px 10px;
+  border: 1px solid color-mix(in srgb, var(--acc) 24%, var(--line));
+  border-radius: 9px;
+  background: var(--surface-accent);
+  color: var(--acc);
+  font-size: 0.82rem;
+  font-weight: 600;
+  line-height: 1.4;
+  text-decoration: none;
+  overflow-wrap: anywhere;
+}
+
+.sc-apply-check[href]:hover {
+  border-color: var(--acc);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.sc-apply-check span {
+  flex: none;
+}
+
 .fl {
   font-size: 0.72rem;
   font-weight: 600;
@@ -926,8 +1047,6 @@ button.pill:active {
   flex-direction: column;
   gap: 12px;
   transition: transform 0.25s ease-out, box-shadow 0.3s, border-color 0.3s;
-  animation: rise 0.7s cubic-bezier(0.2, 0.7, 0.2, 1) backwards;
-  animation-delay: calc(var(--n) * 70ms);
 }
 
 .sc:hover {
@@ -1470,35 +1589,6 @@ button.pill:active {
   font-size: 0.82rem;
   color: var(--mute);
   margin: 18px 0 22px;
-}
-
-/* ── Marquee ───────────────────────────────────────────────────── */
-.mq {
-  overflow: hidden;
-  position: relative;
-  z-index: 1;
-  padding: 26px 0;
-  border-block: 1px solid var(--line);
-  -webkit-mask-image: linear-gradient(90deg, transparent, #000 12%, #000 88%, transparent);
-  mask-image: linear-gradient(90deg, transparent, #000 12%, #000 88%, transparent);
-}
-
-.mq div {
-  display: flex;
-  gap: 56px;
-  width: max-content;
-  animation: mq 34s linear infinite;
-  font-weight: 500;
-  font-size: 1.05rem;
-  letter-spacing: -0.01em;
-  color: var(--mute);
-  white-space: nowrap;
-}
-
-@keyframes mq {
-  to {
-    transform: translateX(-50%);
-  }
 }
 
 /* ── Section 02: Toolkit (Bento Grid) ──────────────────────────── */
@@ -2340,43 +2430,7 @@ button.pill:active {
   max-width: none;
 }
 
-/* ── Route scroll tracker & Toasts & Reel ──────────────────────── */
-.route {
-  position: fixed;
-  left: 22px;
-  top: 112px;
-  bottom: 96px;
-  width: 2px;
-  z-index: 4;
-  background: repeating-linear-gradient(to bottom, var(--line) 0 4px, transparent 4px 10px);
-  pointer-events: none;
-}
-
-.route b {
-  position: absolute;
-  left: 0;
-  top: 0;
-  width: 2px;
-  background: var(--acc);
-}
-
-.route i {
-  position: absolute;
-  left: -5px;
-  width: 12px;
-  height: 12px;
-  margin-top: -6px;
-  border-radius: 50%;
-  background: radial-gradient(circle at 32% 28%, #fff, var(--hl) 60%, #9a6d16);
-  box-shadow: 0 0 0 4px color-mix(in srgb, var(--hl) 22%, transparent), 0 4px 8px rgba(0, 0, 0, 0.35);
-}
-
-@media (max-width: 1180px) {
-  .route {
-    display: none;
-  }
-}
-
+/* Toasts & Reel */
 .toast {
   position: fixed;
   left: 20px;
@@ -2487,18 +2541,6 @@ button.pill:active {
   opacity: 0.18;
 }
 
-/* Top progress line */
-#pg {
-  position: fixed;
-  top: 0;
-  left: 0;
-  height: 2.5px;
-  width: 0;
-  background: linear-gradient(90deg, var(--acc), var(--acc2));
-  z-index: 130;
-  transition: width 0.1s ease-out;
-}
-
 /* Cursor glow */
 .glow {
   position: fixed;
@@ -2518,12 +2560,6 @@ button.pill:active {
 @media (max-width: 900px) {
   .hero2 {
     grid-template-columns: 1fr;
-  }
-  .gl {
-    max-width: 380px;
-    margin: 0 auto;
-    grid-row: 1;
-    height: 400px;
   }
   .bento {
     grid-template-columns: 1fr 1fr;

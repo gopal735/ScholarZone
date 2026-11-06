@@ -330,43 +330,4 @@
     animation: none !important;
     will-change: auto;
   }
-
-  /* The read-progress rule is a scroll-linked animation like any other.
-     It carries no information that the page does not already show, so
-     it is removed rather than exempt. */
-  .site-header::before {
-    animation: none !important;
-    transform: scaleX(1);
-    opacity: 0.2;
-  }
-}
-
-/* ── Scroll-linked navigation state ─────────────────────────────
-   A read-progress rule across the top of the bar. It is driven by a
-   CSS scroll timeline, so it costs nothing per frame and needs no
-   scroll listener — the property it animates is transform, which keeps
-   the whole thing on the compositor. */
-@supports (animation-timeline: scroll()) {
-  .site-header::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    right: 0;
-    left: 0;
-    z-index: 1;
-    height: 1px;
-    background: var(--accent);
-    opacity: 0.5;
-    transform: scaleX(0);
-    transform-origin: left center;
-    animation: sz-scroll-progress linear both;
-    animation-timeline: scroll(root block);
-    pointer-events: none;
-  }
-
-  @keyframes sz-scroll-progress {
-    to {
-      transform: scaleX(1);
-    }
-  }
 }

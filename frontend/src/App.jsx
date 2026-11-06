@@ -2,7 +2,6 @@ import { lazy } from 'react'
 import { Routes, Route, Navigate } from 'react-router-dom'
 import Layout from './components/Layout'
 import HomePage from './pages/HomePage'
-import { useScrollReveal } from './hooks/useScrollReveal'
 import './App.css'
 
 const ScholarshipsPage = lazy(() => import('./pages/ScholarshipsPage'))
@@ -19,11 +18,6 @@ const UnifiedAIPage = lazy(() => import('./pages/UnifiedAIPage'))
 const NotFoundPage = lazy(() => import('./pages/NotFoundPage'))
 
 function App() {
-  // Sections and cards arrive as they enter view. Runs on the route change
-  // too, so navigating to the catalogue reveals the new page's content rather
-  // than waiting for a scroll event that will never come.
-  useScrollReveal()
-
   return (
     <Routes>
       <Route element={<Layout />}>

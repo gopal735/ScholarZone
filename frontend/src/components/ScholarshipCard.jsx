@@ -1,19 +1,18 @@
-import { useRef, useState } from 'react'
+import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import ScholarshipImage from './ScholarshipImage'
 import ScholarshipActions from './ScholarshipActions'
 import SupervisorCta from './SupervisorCta'
 import LifecycleBadge from './LifecycleBadge'
-import { getDeadlineLabel, getLastVerifiedLabel, getScholarshipStatus, matchesDegreeFilter, matchesFundingFilter } from '../utils/scholarshipPresentation'
+import { getDeadlineLabel, getLastVerifiedLabel, getScholarshipStatus } from '../utils/scholarshipPresentation'
 import { getConfirmedOfficialLogo, getMonogramInitial } from '../utils/scholarshipLogos'
 import { readText, readList, readUrl, readFundingDetails } from '../utils/scholarshipDetail'
 import { classifyLifecycle } from '../utils/lifecycle'
 import './ScholarshipCard.css'
 
-export default function ScholarshipCard({ scholarship, index = 0, onOpenDetails }) {
+export default function ScholarshipCard({ scholarship, onOpenDetails }) {
   const deadlineStatus = getScholarshipStatus(scholarship)
   const lifecycle = classifyLifecycle(scholarship)
-  const cardRef = useRef(null)
   const [isExpanded, setIsExpanded] = useState(false)
 
   const verificationState = scholarship.verification_status || 'needs_review'
@@ -69,37 +68,37 @@ export default function ScholarshipCard({ scholarship, index = 0, onOpenDetails 
     setIsExpanded(!isExpanded)
   }
 
-  /* The pointer-driven light — the gloss band, the spotlight and the 3D
-     tilt — is attached once at the shell level by usePremiumPointer,
-     exactly as the reference's single document listener does it. This
-     component keeps no pointer state of its own: one listener measuring
-     only the card under the cursor beats twelve listeners each
-     re-measuring on every move event. The ref is kept for local
-     behaviour, and the entrance stagger is driven by --n. */
-
-  /* The card's own "how well does this fit" answer. The reference's bar
-     is driven by the number of criteria a row meets out of the criteria
-     in play; the app has the same thing available — funding certainty,
-     level breadth, deadline proximity, and whether the record is
-     verified — so the meter states a real ratio rather than a decoration.
-     A fully-funded, open, verified programme scores all four. */
-  const criteria = [
-    matchesFundingFilter(scholarship.funding, 'Fully Funded'),
-    !(scholarship.deadline_precision === 'month'),
-    matchesDegreeFilter(scholarship.degree, 'Bachelor'),
-    isVerified,
+  const applicationChecks = [
+    {
+      label: 'Eligibility details',
+      isReady: Boolean(
+        eligibilitySummary
+        || eligibility?.length
+        || requirements?.length
+        || departments.length
+        || eligibleFields.length
+        || eligibleProgrammes.length,
+      ),
+      readyText: 'Listed',
+      missingText: 'Check criteria',
+    },
+    {
+      label: 'Exact deadline',
+      isReady: scholarship.deadline_precision === 'exact' && Boolean(lifecycle.deadlineDate),
+      readyText: 'Listed',
+      missingText: 'Confirm date',
+    },
+    {
+      label: 'Official verification',
+      isReady: isVerified,
+      readyText: 'Verified',
+      missingText: 'Review source',
+    },
   ]
-  const fitCount = criteria.filter(Boolean).length
-  const fitTotal = criteria.length
-  const fitLabel = `Fit ${fitCount}/${fitTotal}`
-  const fitValue = String(fitCount)
-  const fitPercent = Math.round((fitCount / fitTotal) * 100)
 
   return (
     <article
-      ref={cardRef}
-      className={`scholarship-card p-card p-rise scholarship-card--${deadlineStatus.className}`}
-      style={{ '--n': index ?? 0 }}
+      className={`scholarship-card p-card scholarship-card--${deadlineStatus.className}`}
     >
       <span className="scholarship-card__edge" aria-hidden="true" />
 
@@ -650,20 +649,16 @@ export default function ScholarshipCard({ scholarship, index = 0, onOpenDetails 
         </div>
       </div>
 
-      {/* The reference's fit meter: a raised accent bar inside a sunken
-          track, with the count beside it in tabular figures. The bar is the
-          one element that carries the "how well this matches" number, and
-          it is drawn rather than written because a length against a known
-          full width is read before a percentage is. */}
-      <div className="scholarship-card__fit p-mb">
-        <span className="scholarship-card__fit-label p-mb__label">
-          {fitLabel}
-        </span>
-        <span className="p-track">
-          <span className="p-track__fill" style={{ '--w': `${fitPercent}%` }} />
-        </span>
-        <em className="p-mb__value">{fitValue}</em>
-      </div>
+      <section className="scholarship-card__checks" aria-label="Application checks">
+        {applicationChecks.map((check) => (
+          <div className="scholarship-card__check" key={check.label}>
+            <span>{check.label}</span>
+            <strong className={check.isReady ? 'is-ready' : ''}>
+              {check.isReady ? check.readyText : check.missingText}
+            </strong>
+          </div>
+        ))}
+      </section>
 
       <div className="scholarship-card__footer">
         <SupervisorCta scholarshipId={scholarship.id} />
