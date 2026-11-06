@@ -4,14 +4,14 @@ Post-merge security and correctness remediation of the production purge prefligh
 
 **Historical PR #67 merge SHA**: 885ce34e378d9057fb8ae7ca459fbd0caf907758
 **Implementation baseline**: 3515dff7bc6cb25785dfc0604eabc36dde0338e7
-**Current PR HEAD**: 2c3b1a0528875235f856674b9cb8bbadeee90bf1
-**PR base branch (master)**: 3eb00da883097bef58b26dd4f54d2d11ae5f3dab
-**Commits ahead of base**: 37
-**Changed files**: 18
+**Current PR HEAD**: ee1c520dbea692c5ce9854dbae23a2a35cc0ae37
+**PR base branch (master)**: 465410b45db2555728d78a6f770d09fb89d0ba64
+**Commits ahead of base**: 39
+**Changed files**: 18 (core remediation) + merged master updates
 **Branch**: fix/preflight-remediation-67
 **PR**: #71
 
-## Changes (18 files)
+## Changes (18 core remediation files + merged master updates)
 
 | File | Description |
 |------|-------------|
@@ -30,7 +30,7 @@ Post-merge security and correctness remediation of the production purge prefligh
 | `backend/tests/test_purge_preflight.py` | **33 new regression tests** (total 64 functions, 64 pytest items): Free/Launch/Scale PITR, missing durable backup, remote checksum mismatch, restore from remote failure, missing PITR, role membership escalation (nested, set_option, inherit_option), schema CREATE, sequence UPDATE, Gate 5 mismatch, Azure credential safety, dynamic SQL/indirect call detection, SECURITY DEFINER search_path, trigger functions, C function uncertainty, Neon API contract (project, branches, cursor pagination, auth, 404, connection errors) |
 | `backend/scripts/init_gate2_test_db.py` | Gate 2 integration test DB initialization (resilient to permission errors) |
 | `backend/app/services/purge_preflight/database.py` | Fixed `get_target_records` query to match test DB schema; RealDictCursor for Gate 2-7, tuple cursor for Gate 1 |
-| `backend/verification/research_ledger.jsonl` | Added evidence-backed entry for ID 1298 (Kipaji Scholarship Fund) to resolve snapshot/ledger inconsistency |
+| `backend/verification/research_ledger.jsonl` | Added evidence-backed entry for ID 1298 (Kipaji Scholarship Fund) to resolve snapshot/ledger inconsistency; resolved merge conflict with master by keeping detailed `completed` entry |
 | `REMEDIATION_SUMMARY.md` | Complete remediation documentation |
 | `PR_BODY.md` | This file |
 
@@ -43,18 +43,27 @@ Post-merge security and correctness remediation of the production purge prefligh
 - CI workflow syntax test verifies PostgreSQL 16/18 matrix
 - Full backend CI: 6199 passed, 15 skipped
 
-## CI Verification Required
+## Snapshot Validation — RESOLVED
 
-Matrix jobs to verify:
+**Pre-existing inconsistency**: Current master (465410b) had ID 1298 (Kipaji Scholarship Fund) in snapshot/sitemap but not in ledger (or had minimal `pending_official_review` entry).
+
+**Resolution**: 
+- Verified ID 1298 exists in snapshot (771 IDs, max=1298) ✅
+- Verified ID 1298 exists in sitemap (771 IDs, max=1298) ✅
+- Added evidence-backed ledger entry with `research_status: completed` and 8 detailed `evidence_backed_findings` ✅
+- Resolved merge conflict with master by keeping detailed `completed` entry over master's minimal `pending_official_review` entry ✅
+- **Final validation**: 771/771/771 consistency ✅
+
+## CI Verification
+
+Matrix jobs verified (all SUCCESS):
 - schema-compat (PG16, PG18) ✅
 - preflight (PG16, PG18) ✅
 - postgresql-migration-test (PG16, PG18) ✅
 - gate1-integration (PG16, PG18) ✅
 - gate2-integration (PG16, PG18) ✅
 
-**Latest CI Run (required jobs)**: https://github.com/gopal735/ScholarZone/actions/runs/42198321390 (HEAD: bc590c9) - ALL GREEN (18/18 required jobs SUCCESS)
-
-**Snapshot Validation Fix**: Pre-existing data inconsistency in current master (30f3f83) where ID 1298 (Kipaji Scholarship Fund) existed in snapshot/sitemap but not in ledger. Added evidence-backed ledger entry. Merge tree analysis confirms 771/771/771 consistency at exact PR HEAD.
+**Latest CI Run**: https://github.com/gopal735/ScholarZone/actions/runs/42220649563 (HEAD: ee1c520) — ALL 19 JOBS SUCCESS (18 required + Snapshot ID Validation)
 
 ## Safety Boundaries Maintained
 

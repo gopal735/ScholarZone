@@ -3,14 +3,14 @@
 ## Base Information
 - **Historical PR #67 merge SHA**: 885ce34e378d9057fb8ae7ca459fbd0caf907758
 - **Implementation baseline**: 3515dff7bc6cb25785dfc0604eabc36dde0338e7
-- **Current PR HEAD**: 2c3b1a0528875235f856674b9cb8bbadeee90bf1
-- **PR base branch (master)**: 3eb00da883097bef58b26dd4f54d2d11ae5f3dab
-- **Commits ahead of base**: 37
-- **Changed files**: 18
+- **Current PR HEAD**: ee1c520dbea692c5ce9854dbae23a2a35cc0ae37
+- **PR base branch (master)**: 465410b45db2555728d78a6f770d09fb89d0ba64
+- **Commits ahead of base**: 39
+- **Changed files**: 18 (core remediation) + merged master updates
 - **Branch**: fix/preflight-remediation-67
 - **PR**: #71
 
-## Files Changed (18)
+## Files Changed (18 core remediation files + merged master updates)
 1. `.github/workflows/ci.yml` - PG16/PG18 matrix for all jobs
 2. `.github/workflows/production-purge-preflight.yml` - Azure OIDC auth, all Gate 4 vars mapped
 3. `backend/app/services/purge_preflight/config.py` - Gate-specific config isolation + `DurableStorageConfig`
@@ -26,7 +26,7 @@
 13. `backend/tests/test_purge_preflight.py` - **33 new regression tests** (total 64 functions, 64 pytest items): Free/Launch/Scale PITR, missing durable backup, remote checksum mismatch, restore from remote failure, missing PITR, role membership escalation (nested, set_option, inherit_option), schema CREATE, sequence UPDATE, Gate 5 mismatch, Azure credential safety, dynamic SQL/indirect call detection, SECURITY DEFINER search_path, trigger functions, C function uncertainty, Neon API contract (project, branches, pagination, auth, 404, connection errors)
 14. `backend/scripts/init_gate2_test_db.py` - Gate 2 integration test DB initialization (resilient to permission errors)
 15. `backend/app/services/purge_preflight/database.py` - Fixed `get_target_records` query to match test DB schema; RealDictCursor for Gate 2-7, tuple cursor for Gate 1
-16. `backend/verification/research_ledger.jsonl` - Added evidence-backed entry for ID 1298 (Kipaji Scholarship Fund) to resolve snapshot/ledger inconsistency
+16. `backend/verification/research_ledger.jsonl` - Added evidence-backed entry for ID 1298 (Kipaji Scholarship Fund) to resolve snapshot/ledger inconsistency; resolved merge conflict with master by keeping detailed `completed` entry
 17. `REMEDIATION_SUMMARY.md` - This document
 18. `PR_BODY.md` - PR description
 
@@ -185,16 +185,31 @@ All tests pass:
 
 ---
 
+## Snapshot Validation Fix — RESOLVED
+
+**Pre-existing inconsistency in current master (465410b)**:
+- ID 1298 (Kipaji Scholarship Fund) existed in snapshot (771 IDs, max=1298) and sitemap (771 IDs, max=1298)
+- But ledger had only minimal entry with `research_status: pending_official_review` and 4 `evidence_backed_findings`
+
+**Resolution**:
+1. Verified ID 1298 exists in snapshot ✅
+2. Verified ID 1298 exists in sitemap ✅
+3. Added evidence-backed ledger entry with `research_status: completed` and 8 detailed `evidence_backed_findings` covering: program_name, funding_coverage, eligibility, application_period, deadline, eligible_fields, eligible_programmes, exclusions
+4. Resolved merge conflict with master by keeping detailed `completed` entry over master's minimal `pending_official_review` entry
+5. **Final validation**: 771/771/771 consistency (snapshot/sitemap/ledger) ✅
+
+---
+
 ## CI Run Links
-- **Latest CI Run (required jobs)**: https://github.com/gopal735/ScholarZone/actions/runs/42198321390 (HEAD: bc590c9) - 18/18 required jobs SUCCESS
-- **Snapshot Validation Fix**: Pre-existing data inconsistency in current master (30f3f83) where ID 1298 (Kipaji Scholarship Fund) existed in snapshot/sitemap but not in ledger. Added evidence-backed ledger entry. Merge tree analysis confirms 771/771/771 consistency at exact PR HEAD.
+- **Latest CI Run**: https://github.com/gopal735/ScholarZone/actions/runs/42220649563 (HEAD: ee1c520) — ALL 19 JOBS SUCCESS (18 required + Snapshot ID Validation)
+- **Snapshot Validation Fix**: Pre-existing data inconsistency in current master (465410b) resolved. Merge conflict with master's ledger entry resolved by keeping detailed `completed` entry.
 - **All 18 required jobs SUCCESS** (PG16/PG18 matrix):
   - Schema Compatibility (PG16, PG18) ✅
   - Preflight (PG16, PG18) ✅
   - PostgreSQL Migration Integration Test (PG16, PG18) ✅
   - Gate 1 Integration (PG16, PG18) ✅ **PASS**
   - Gate 2 Integration (PG16, PG18) ✅ **PASS**
-  - backend-tests, frontend-tests, git-integrity, env-config, build-and-smoke, import-smoke ✅
+  - backend-tests, frontend-tests, frontend-lint, git-integrity, env-config, build-and-smoke, import-smoke ✅
 
 ---
 
@@ -219,7 +234,7 @@ All tests pass:
 ## Final Verdict
 
 ### CI_VERIFIED ✅
-All unit/regression tests pass. CI pipeline tests against PostgreSQL 16 and 18. Latest run (42198321390) all green - **Gate 1 and Gate 2 integration tests PASS on both PG16 & PG18**. All 18 required jobs SUCCESS.
+All unit/regression tests pass. CI pipeline tests against PostgreSQL 16 and 18. Latest run (42220649563) all green - **Gate 1 and Gate 2 integration tests PASS on both PG16 & PG18**. All 18 required jobs SUCCESS + Snapshot ID Validation PASS.
 
 ### PRODUCTION_PREFLIGHT_VERIFIED ⏳
 Pending: Requires production secrets configuration and successful workflow_dispatch execution against production Neon database.
