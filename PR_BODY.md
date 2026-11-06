@@ -3,10 +3,11 @@
 Post-merge security and correctness remediation of the production purge preflight system introduced by PR #67.
 
 **Historical PR #67 merge SHA**: 885ce34e378d9057fb8ae7ca459fbd0caf907758
-**Implementation baseline (pre-docs)**: 3515dff7bc6cb25785dfc0604eabc36dde0338e7
-**Current PR HEAD (with docs sync)**: 975c5d1e605043231481f7fae88f1606fb17d451
+**Implementation baseline**: 3515dff7bc6cb25785dfc0604eabc36dde0338e7
+**Current PR HEAD**: 64967337cc74645a0590f60603c85114722f9931
 **PR base branch (master)**: 3eb00da883097bef58b26dd4f54d2d11ae5f3dab
-**Commits ahead of base**: 23
+**Commits ahead of base**: 24
+**Changed files**: 17
 **Branch**: fix/preflight-remediation-67
 **PR**: #71
 
@@ -34,7 +35,10 @@ Post-merge security and correctness remediation of the production purge prefligh
 
 ## Test Evidence
 
-- **99 passed, 3 skipped** (integration tests require TEST_DATABASE_URL or SCHOLARZONE_DATABASE_URL_RO) - `test_purge_preflight.py` (64 items), `test_purge_closed.py` (15), `test_purge_image_safety.py` (11)
+- **99 passed, 3 skipped** (integration tests require TEST_DATABASE_URL or SCHOLARZONE_DATABASE_URL_RO)
+  - `test_purge_preflight.py`: 61 passed, 3 skipped
+  - `test_purge_closed.py`: 21 passed
+  - `test_purge_image_safety.py`: 17 passed
 - CI workflow syntax test verifies PostgreSQL 16/18 matrix
 - Full backend CI: 6199 passed, 15 skipped
 
@@ -47,7 +51,7 @@ Matrix jobs to verify:
 - gate1-integration (PG16, PG18) ✅
 - gate2-integration (PG16, PG18) ✅
 
-**Latest CI Run**: https://github.com/gopal735/ScholarZone/actions/runs/42192467129 (HEAD: 975c5d1) - ALL GREEN (18/18 required jobs SUCCESS)
+**Latest CI Run**: https://github.com/gopal735/ScholarZone/actions/runs/42194529854 (HEAD: 6496733) - ALL GREEN (18/18 required jobs SUCCESS)
 
 ## Safety Boundaries Maintained
 

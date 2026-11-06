@@ -2,10 +2,11 @@
 
 ## Base Information
 - **Historical PR #67 merge SHA**: 885ce34e378d9057fb8ae7ca459fbd0caf907758
-- **Implementation baseline (pre-docs)**: 3515dff7bc6cb25785dfc0604eabc36dde0338e7
-- **Current PR HEAD (with docs sync)**: 975c5d1e605043231481f7fae88f1606fb17d451
+- **Implementation baseline**: 3515dff7bc6cb25785dfc0604eabc36dde0338e7
+- **Current PR HEAD**: 64967337cc74645a0590f60603c85114722f9931
 - **PR base branch (master)**: 3eb00da883097bef58b26dd4f54d2d11ae5f3dab
-- **Commits ahead of base**: 23
+- **Commits ahead of base**: 24
+- **Changed files**: 17
 - **Branch**: fix/preflight-remediation-67
 - **PR**: #71
 
@@ -175,13 +176,16 @@
 
 ## Test Evidence
 All tests pass:
-- **99 passed, 3 skipped** (integration tests require TEST_DATABASE_URL or SCHOLARZONE_DATABASE_URL_RO) - `test_purge_preflight.py` (64 items), `test_purge_closed.py` (15), `test_purge_image_safety.py` (11)
+- **99 passed, 3 skipped** (integration tests require TEST_DATABASE_URL or SCHOLARZONE_DATABASE_URL_RO)
+  - `test_purge_preflight.py`: 61 passed, 3 skipped
+  - `test_purge_closed.py`: 21 passed
+  - `test_purge_image_safety.py`: 17 passed
 - CI workflow syntax test verifies PostgreSQL 16/18 matrix
 
 ---
 
 ## CI Run Links
-- **Latest CI Run**: https://github.com/gopal735/ScholarZone/actions/runs/42192467129 (HEAD: 975c5d1)
+- **Latest CI Run**: https://github.com/gopal735/ScholarZone/actions/runs/42194529854 (HEAD: 6496733)
 - **All 18 required jobs SUCCESS** (PG16/PG18 matrix):
   - Schema Compatibility (PG16, PG18) ✅
   - Preflight (PG16, PG18) ✅
@@ -213,7 +217,7 @@ All tests pass:
 ## Final Verdict
 
 ### CI_VERIFIED ✅
-All unit/regression tests pass. CI pipeline tests against PostgreSQL 16 and 18. Latest run (42192467129) all green - **Gate 1 and Gate 2 integration tests PASS on both PG16 & PG18**. All 18 required jobs SUCCESS.
+All unit/regression tests pass. CI pipeline tests against PostgreSQL 16 and 18. Latest run (42194529854) all green - **Gate 1 and Gate 2 integration tests PASS on both PG16 & PG18**. All 18 required jobs SUCCESS.
 
 ### PRODUCTION_PREFLIGHT_VERIFIED ⏳
 Pending: Requires production secrets configuration and successful workflow_dispatch execution against production Neon database.
