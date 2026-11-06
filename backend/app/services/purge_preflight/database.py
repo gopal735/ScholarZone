@@ -73,7 +73,7 @@ class DatabaseAccessor:
     @contextlib.contextmanager
     def connect_readonly(self) -> Generator[PgConnection, None, None]:
         """Create a read-only connection to production."""
-        conn = psycopg2.connect(self.config.readonly_url)
+        conn = psycopg2.connect(self.config.readonly_url, cursor_factory=RealDictCursor)
         try:
             conn.autocommit = True
             conn.set_session(readonly=True)
@@ -84,7 +84,7 @@ class DatabaseAccessor:
     @contextlib.contextmanager
     def connect_backup(self) -> Generator[PgConnection, None, None]:
         """Create a backup-role connection to production."""
-        conn = psycopg2.connect(self.config.backup_url)
+        conn = psycopg2.connect(self.config.backup_url, cursor_factory=RealDictCursor)
         try:
             conn.autocommit = True
             # Backup role may need write access for pg_dump but we only read
@@ -98,7 +98,7 @@ class DatabaseAccessor:
         """Create a connection to disposable test database (Gate 1 only)."""
         if not self.config.test_url:
             raise RuntimeError("TEST_DATABASE_URL not configured - required for Gate 1")
-        conn = psycopg2.connect(self.config.test_url)
+        conn = psycopg2.connect(self.config.test_url, cursor_factory=RealDictCursor)
         try:
             conn.autocommit = False  # Explicit transaction control for Gate 1
             yield conn
