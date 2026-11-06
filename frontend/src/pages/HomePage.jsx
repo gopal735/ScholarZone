@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useRef, useState } from 'react'
+import { Fragment, useEffect, useMemo, useRef, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { useScholarshipDirectory } from '../hooks/useScholarshipDirectory'
 import { useScholarshipStats } from '../hooks/useScholarshipStats'
@@ -8,6 +8,7 @@ import { classifyLifecycle, formatCountdown, formatOpeningCountdown } from '../u
 import './HomePage.css'
 
 const SAMPLE_GOAL = "I'm from Bangladesh and want a fully funded Master's in Computer Science in Europe. I have IELTS 7."
+const HERO_HEADLINE_WORDS = 'Scholarships you can actually apply for.'.split(' ')
 
 const EUROPE_COUNTRIES = ['Germany', 'Europe', 'UK', 'United Kingdom', 'France', 'Sweden', 'Netherlands', 'Norway', 'Denmark', 'Finland', 'Austria', 'Belgium', 'Poland', 'Hungary', 'Czech Republic', 'Portugal', 'Spain', 'Italy', 'Switzerland', 'Ireland']
 
@@ -665,7 +666,6 @@ export default function HomePage() {
   const marqueeText = useMemo(() => {
     return allScholarships.slice(0, 10).map((s) => s.title).join('  ·  ')
   }, [allScholarships])
-
   return (
     <div className="sz-home-editorial">
       {/* ── 01. HERO SECTION ────────────────────────────────────────── */}
@@ -677,14 +677,16 @@ export default function HomePage() {
                 <b>01</b>Scholarship finder for Bangladesh
               </p>
               <h1>
-                {'Scholarships you can actually apply for.'.split(' ').map((word, i) => (
-                  <span
-                    key={i}
-                    className={`w ${word.toLowerCase() === 'actually' ? 'it' : ''}`}
-                    style={{ '--i': i }}
-                  >
-                    {word}{' '}
-                  </span>
+                {HERO_HEADLINE_WORDS.map((word, i) => (
+                  <Fragment key={`${word}-${i}`}>
+                    <span
+                      className={`w ${word.toLowerCase() === 'actually' ? 'it' : ''}`}
+                      style={{ '--i': i }}
+                    >
+                      {word}
+                    </span>
+                    {i < HERO_HEADLINE_WORDS.length - 1 ? ' ' : null}
+                  </Fragment>
                 ))}
               </h1>
               <p className="lead">
@@ -697,7 +699,7 @@ export default function HomePage() {
                   <span className="sz-pulse-dot" />
                   <span>
                     {stats && stats.verified
-                      ? `${stats.verified}+ Verified International Scholarships`
+                      ? `${stats.verified} Verified International Scholarships`
                       : 'Verified International Scholarships'}
                   </span>
                 </div>
@@ -1787,8 +1789,8 @@ export default function HomePage() {
               <span className="step-num">01 / Discover</span>
               <h3>Explore Verified Programmes</h3>
               <p>
-                Filter {stats && stats.total ? `${stats.total}+` : '770+'} international scholarships by degree, country, and funding tier.
-                Verified records are marked; always confirm details on the official portal.
+                Filter {stats && stats.total ? `${stats.total}+` : 'international'} scholarships by degree, country, and funding tier.
+                Verified records are marked; confirm eligibility and deadlines on the official portal.
               </p>
               <span className="step-arrow">Explore Directory &rarr;</span>
             </Link>

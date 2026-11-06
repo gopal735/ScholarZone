@@ -1,20 +1,22 @@
+import { lazy } from 'react'
 import { Routes, Route, Navigate } from 'react-router-dom'
 import Layout from './components/Layout'
 import HomePage from './pages/HomePage'
-import ScholarshipsPage from './pages/ScholarshipsPage'
-import MatchPage from './pages/MatchPage'
-import ScholarshipDetailsPage from './pages/ScholarshipDetailsPage'
-import LoginPage from './pages/LoginPage'
-import RegisterPage from './pages/RegisterPage'
-import SavedScholarshipsPage from './pages/SavedScholarshipsPage'
-import ComparePage from './pages/ComparePage'
-import DashboardPage from './pages/DashboardPage'
-import ApplicationsPage from './pages/ApplicationsPage'
-import CountryPage from './pages/CountryPage'
-import UnifiedAIPage from './pages/UnifiedAIPage'
-import NotFoundPage from './pages/NotFoundPage'
 import { useScrollReveal } from './hooks/useScrollReveal'
 import './App.css'
+
+const ScholarshipsPage = lazy(() => import('./pages/ScholarshipsPage'))
+const MatchPage = lazy(() => import('./pages/MatchPage'))
+const ScholarshipDetailsPage = lazy(() => import('./pages/ScholarshipDetailsPage'))
+const LoginPage = lazy(() => import('./pages/LoginPage'))
+const RegisterPage = lazy(() => import('./pages/RegisterPage'))
+const SavedScholarshipsPage = lazy(() => import('./pages/SavedScholarshipsPage'))
+const ComparePage = lazy(() => import('./pages/ComparePage'))
+const DashboardPage = lazy(() => import('./pages/DashboardPage'))
+const ApplicationsPage = lazy(() => import('./pages/ApplicationsPage'))
+const CountryPage = lazy(() => import('./pages/CountryPage'))
+const UnifiedAIPage = lazy(() => import('./pages/UnifiedAIPage'))
+const NotFoundPage = lazy(() => import('./pages/NotFoundPage'))
 
 function App() {
   // Sections and cards arrive as they enter view. Runs on the route change

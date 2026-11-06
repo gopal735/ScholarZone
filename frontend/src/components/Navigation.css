@@ -1,17 +1,17 @@
-/* Floating pill navigation bar */
+/* Full-width persistent navigation */
 .sz-nav-header.nav {
-  position: fixed;
-  top: calc(env(safe-area-inset-top, 0px) + 12px);
-  left: 50%;
-  transform: translateX(-50%);
+  position: sticky;
+  top: 0;
+  left: 0;
+  transform: none;
   z-index: 100;
-  width: min(1180px, calc(100% - 24px));
+  width: 100%;
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 12px;
-  padding: 8px 14px 8px 18px;
-  border-radius: 18px;
+  padding: 8px clamp(12px, 2vw, 24px);
+  border-radius: 0;
   background: var(--cardbg, #ffffff) padding-box,
               linear-gradient(color-mix(in srgb, var(--bg, #f7f5f0) 90%, transparent), color-mix(in srgb, var(--bg, #f7f5f0) 90%, transparent)) padding-box,
               linear-gradient(150deg, var(--edge1, rgba(27,42,74,0.08)), var(--edge2, rgba(196,164,74,0.3)) 50%, var(--edge1, rgba(27,42,74,0.08))) border-box;
@@ -19,7 +19,7 @@
   -webkit-backdrop-filter: blur(20px) saturate(1.4);
   border: 1px solid transparent;
   box-shadow: var(--drop, 0 12px 32px -4px rgba(27,42,74,0.08)), inset 0 1px 0 var(--edge1, rgba(255,255,255,0.4));
-  animation: navDrop 0.8s 0.05s cubic-bezier(0.2, 0.7, 0.2, 1) both;
+  animation: none;
 }
 
 @keyframes navDrop {

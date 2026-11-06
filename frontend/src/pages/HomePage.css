@@ -23,7 +23,7 @@ section {
 }
 
 .wrap {
-  max-width: var(--sz-container-narrow);
+  max-width: var(--sz-container);
   margin: 0 auto;
 }
 
@@ -126,7 +126,7 @@ h2 {
 
 /* ── Hero Section ──────────────────────────────────────────────── */
 #top {
-  padding-top: clamp(120px, 13vw, 170px);
+  padding-top: clamp(28px, 4vw, 56px);
   overflow: hidden;
 }
 
