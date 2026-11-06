@@ -127,7 +127,7 @@ describe('ScholarshipList filters and sorting', () => {
     expect(resultCount()).toBe(1)
     fireEvent.change(screen.getByLabelText('Status'), { target: { value: 'All' } })
 
-    fireEvent.click(screen.getByRole('button', { name: 'Status Unknown' }))
+    fireEvent.click(screen.getByRole('button', { name: 'Check deadline' }))
     expect(resultCount()).toBe(1)
     fireEvent.click(screen.getByRole('button', { name: 'Reset all' }))
     expect(resultCount()).toBe(5)

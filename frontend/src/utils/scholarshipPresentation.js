@@ -6,7 +6,7 @@ const statusMetadata = {
   closed: { label: 'Closed', className: 'closed' },
   opening: { label: 'Opening soon', className: 'opening' },
   upcoming: { label: 'Upcoming', className: 'upcoming' },
-  unknown: { label: 'Status unknown', className: 'unknown' },
+  unknown: { label: 'Check deadline', className: 'unknown' },
 }
 
 export function getScholarshipStatus(scholarship) {
@@ -16,7 +16,7 @@ export function getScholarshipStatus(scholarship) {
 }
 
 export function getDeadlineLabel(scholarship) {
-  return scholarship.deadline || scholarship.deadline_date || 'Deadline to be confirmed'
+  return scholarship.deadline || scholarship.deadline_date || 'Not listed; check official source'
 }
 
 export function getLastVerifiedLabel(value) {

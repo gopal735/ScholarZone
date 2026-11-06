@@ -1243,8 +1243,8 @@ export default function HomePage() {
                   <section className="lifecycle-section" aria-labelledby="section-unknown">
                     <header className="lifecycle-section__header">
                       <h2 id="section-unknown" className="lifecycle-section__title">
-                        <span className="lifecycle-section__icon" aria-hidden="true">?</span>
-                        Status Unknown
+                        <span className="lifecycle-section__icon" aria-hidden="true">i</span>
+                        Check deadline
                         <span className="lifecycle-section__count">{scholarshipsByLifecycle.unknown.length}</span>
                       </h2>
                     </header>
