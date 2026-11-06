@@ -3,7 +3,7 @@ import ScholarshipCard from './ScholarshipCard'
 import { scholarships } from '../data/scholarships'
 import { fetchScholarshipsByLifecycle } from '../services/scholarshipService'
 import { getScholarshipStatus, matchesDegreeFilter, matchesFundingFilter } from '../utils/scholarshipPresentation'
-import { classifyLifecycle, LIFECYCLE } from '../utils/lifecycle'
+import { classifyLifecycle, LIFECYCLE, parseDate } from '../utils/lifecycle'
 import './ScholarshipList.css'
 
 const PAGE_SIZE = 12
@@ -51,6 +51,11 @@ function sortLocalScholarships(items, sortBy) {
           return Number(second.scholarship.verification_status === 'active') - Number(first.scholarship.verification_status === 'active')
             || STATUS_ORDER[getScholarshipStatus(first.scholarship).className] - STATUS_ORDER[getScholarshipStatus(second.scholarship).className]
         case 'recently-added':
+          return compareNullableTimestamps(
+            toValidTimestamp(first.scholarship.created_at),
+            toValidTimestamp(second.scholarship.created_at),
+            'desc',
+          )
         case 'recently-updated':
           return compareNullableTimestamps(
             toValidTimestamp(first.scholarship.updated_at || first.scholarship.created_at),
@@ -92,8 +97,8 @@ function sortLocalScholarships(items, sortBy) {
 }
 
 function getLocalDeadlineMonth(scholarship) {
-  const timestamp = toValidTimestamp(scholarship.deadline_date || scholarship.deadline)
-  return timestamp === null ? null : new Date(timestamp).getMonth() + 1
+  const parsedDeadline = parseDate(scholarship, 'deadline').date
+  return parsedDeadline ? parsedDeadline.getUTCMonth() + 1 : null
 }
 
 function filterLocalScholarships(items, { search, country, degree, funding, deadlineMonth, status, lifecycleFilter, sortBy }) {
@@ -413,9 +418,12 @@ export default function ScholarshipList({ items, initialCountry }) {
               }}
             >
               <option value="All">Any month</option>
-              <option value="1">January</option>
-              <option value="4">April</option>
-              <option value="10">October</option>
+              {[
+                'January', 'February', 'March', 'April', 'May', 'June',
+                'July', 'August', 'September', 'October', 'November', 'December',
+              ].map((month, index) => (
+                <option key={month} value={index + 1}>{month}</option>
+              ))}
             </select>
           </div>
 
@@ -436,7 +444,7 @@ export default function ScholarshipList({ items, initialCountry }) {
             </select>
           </div>
 
-          <div className={`filter-control filter-sort ${sortBy !== 'default' ? 'is-active' : ''}`}>
+          <div className={`filter-control filter-sort ${sortBy !== 'recommended' ? 'is-active' : ''}`}>
             <label htmlFor="scholarship-sort">Sort by</label>
             <select
               className="p-sel"

@@ -7,7 +7,6 @@ import { getConfirmedOfficialLogo, getMonogramInitial } from '../utils/scholarsh
 import { classifyLifecycle, formatCountdown, formatOpeningCountdown } from '../utils/lifecycle'
 import './HomePage.css'
 
-const SAMPLE_GOAL = "I'm from Bangladesh and want a fully funded Master's in Computer Science in Europe. I have IELTS 7."
 const HERO_HEADLINE_WORDS = 'Scholarships you can actually apply for.'.split(' ')
 
 const EUROPE_COUNTRIES = ['Germany', 'Europe', 'UK', 'United Kingdom', 'France', 'Sweden', 'Netherlands', 'Norway', 'Denmark', 'Finland', 'Austria', 'Belgium', 'Poland', 'Hungary', 'Czech Republic', 'Portugal', 'Spain', 'Italy', 'Switzerland', 'Ireland']
@@ -325,13 +324,7 @@ export default function HomePage() {
   const { savedIds, toggleSaved } = useSavedScholarships()
 
   // Natural Language Goal State
-  const [goalText, setGoalText] = useState(() => {
-    try {
-      return localStorage.getItem('sz-goal') || SAMPLE_GOAL
-    } catch {
-      return SAMPLE_GOAL
-    }
-  })
+  const [goalText, setGoalText] = useState('')
 
   // Parse natural language input
   const parseGoal = (text) => {
@@ -417,15 +410,6 @@ export default function HomePage() {
       ielts: removedCriteria.ielts ? null : p.ielts,
     }
   }, [goalText, removedCriteria])
-
-  // Sync to local storage
-  useEffect(() => {
-    try {
-      localStorage.setItem('sz-goal', goalText)
-    } catch (e) {
-      void e
-    }
-  }, [goalText])
 
   // Details sheet accessibility: focus management, Escape key, body scroll lock
   useEffect(() => {
@@ -715,8 +699,11 @@ export default function HomePage() {
                 <textarea
                   id="goal"
                   value={goalText}
-                  onChange={(e) => setGoalText(e.target.value)}
-                  placeholder="I'm from Bangladesh and want a fully funded Master's in Computer Science in Europe. I have IELTS 7."
+                  onChange={(e) => {
+                    setGoalText(e.target.value)
+                    setRemovedCriteria({})
+                  }}
+                  placeholder="Type your study level, subject, or preferred country..."
                 />
 
                 <div className="prow">
@@ -732,7 +719,10 @@ export default function HomePage() {
                     type="button"
                     onClick={() => {
                       setGoalText('')
-                      setRemovedCriteria({ lv: true, full: true, rg: true, ielts: true })
+                      setRemovedCriteria({})
+                      setManualLevel('Any')
+                      setManualFunding('Any')
+                      setSelectedCountry('Any')
                     }}
                   >
                     Clear
@@ -783,6 +773,7 @@ export default function HomePage() {
                     type="button"
                     onClick={() => {
                       setGoalText("I want a fully funded Master's in Europe.")
+                      setRemovedCriteria({})
                       setManualFunding('Fully funded')
                       setManualLevel("Master's")
                     }}
@@ -793,6 +784,7 @@ export default function HomePage() {
                     type="button"
                     onClick={() => {
                       setGoalText('I want a fully funded PhD in Japan.')
+                      setRemovedCriteria({})
                       setManualLevel('PhD')
                       setSelectedCountry('Japan')
                     }}
@@ -803,6 +795,7 @@ export default function HomePage() {
                     type="button"
                     onClick={() => {
                       setGoalText("I want a Bachelor's degree.")
+                      setRemovedCriteria({})
                       setManualLevel("Bachelor's")
                     }}
                   >
@@ -812,6 +805,7 @@ export default function HomePage() {
                     type="button"
                     onClick={() => {
                       setGoalText("I want a scholarship in Germany.")
+                      setRemovedCriteria({})
                       setSelectedCountry('Germany')
                     }}
                   >

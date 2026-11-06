@@ -270,6 +270,7 @@ describe('staticScholarshipService', () => {
           last_verified_at: '2026-10-01',
           verification_status: 'active',
           official_source_url: 'https://example.com/1',
+          created_at: '2026-09-01T00:00:00',
           updated_at: '2026-10-01T00:00:00',
           image_url: 'https://example.com/image1.jpg',
           image_source_type: 'official_university',
@@ -293,6 +294,7 @@ describe('staticScholarshipService', () => {
           last_verified_at: null,
           verification_status: 'needs_review',
           official_source_url: 'https://example.com/2',
+          created_at: '2026-10-07T00:00:00',
           updated_at: '2026-10-02T00:00:00',
           image_url: null,
           image_source_type: null,
@@ -316,6 +318,7 @@ describe('staticScholarshipService', () => {
           last_verified_at: '2026-10-03',
           verification_status: 'active',
           official_source_url: 'https://example.com/3',
+          created_at: '2026-09-03T00:00:00',
           updated_at: '2026-10-03T00:00:00',
           image_url: null,
           image_source_type: null,
@@ -339,6 +342,7 @@ describe('staticScholarshipService', () => {
           last_verified_at: '2026-10-04',
           verification_status: 'active',
           official_source_url: 'https://example.com/4',
+          created_at: '2026-09-04T00:00:00',
           updated_at: '2026-10-04T00:00:00',
           image_url: null,
           image_source_type: null,
@@ -362,6 +366,7 @@ describe('staticScholarshipService', () => {
           last_verified_at: '2026-10-05',
           verification_status: 'active',
           official_source_url: 'https://example.com/5',
+          created_at: '2026-09-05T00:00:00',
           updated_at: '2026-10-05T00:00:00',
           image_url: null,
           image_source_type: null,
@@ -425,6 +430,25 @@ describe('staticScholarshipService', () => {
       expect(result.items[0].id).toBe(5)
     })
 
+    it('filters month-precision deadlines using the shared date parser', async () => {
+      clearSnapshotCache()
+      const monthOnlySnapshot = {
+        ...extendedSnapshot,
+        scholarships: [{
+          ...extendedSnapshot.scholarships[0],
+          id: 6,
+          deadline: 'December 2027',
+          deadline_date: '2027-12',
+          deadline_precision: 'month',
+        }],
+      }
+      vi.stubGlobal('fetch', vi.fn(async () => ({ ok: true, json: async () => monthOnlySnapshot })))
+
+      const result = await fetchScholarshipsFromSnapshot({ deadline_month: '12' })
+
+      expect(result.items.map((item) => item.id)).toEqual([6])
+    })
+
     it('filters by status', async () => {
       const result = await fetchScholarshipsFromSnapshot({ status: 'closed' })
       expect(result.items.length).toBe(1)
@@ -473,9 +497,30 @@ describe('staticScholarshipService', () => {
       expect(result.items[1].id).toBe(4)
     })
 
-    it('supports recently-added sort (alias for recently-updated)', async () => {
+    it('supports recently-added sort by creation date', async () => {
       const result = await fetchScholarshipsFromSnapshot({ sort: 'recently-added' })
-      expect(result.items[0].id).toBe(5)
+      expect(result.items[0].id).toBe(2)
+    })
+
+    it('does not classify a deadline 45 days away as closing soon', async () => {
+      clearSnapshotCache()
+      const deadline = new Date(Date.now() + 45 * 24 * 60 * 60 * 1000).toISOString().slice(0, 10)
+      const snapshotWithLaterDeadline = {
+        ...extendedSnapshot,
+        scholarships: [{
+          ...extendedSnapshot.scholarships[0],
+          id: 6,
+          deadline,
+          deadline_date: deadline,
+          deadline_precision: 'exact',
+          status: 'open',
+        }],
+      }
+      vi.stubGlobal('fetch', vi.fn(async () => ({ ok: true, json: async () => snapshotWithLaterDeadline })))
+
+      const result = await fetchScholarshipsFromSnapshot({ status: 'closing-soon' })
+
+      expect(result.items).toEqual([])
     })
 
     it('supports deadline-earliest sort', async () => {
