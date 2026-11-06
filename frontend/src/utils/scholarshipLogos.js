@@ -1,3 +1,5 @@
+import officialProviderLogos from '../data/officialProviderLogos.json'
+
 /**
  * scholarshipLogos.js — Official Provider Logo & Provenance Validation
  *
@@ -22,31 +24,32 @@ export function getConfirmedOfficialLogo(scholarship) {
   }
 
   const imageUrl = scholarship.image_url || scholarship.imageUrl
-
-  if (!imageUrl || typeof imageUrl !== 'string' || !imageUrl.trim()) {
-    return null
-  }
-
-  const trimmedUrl = imageUrl.trim()
-
-  // Provenance check: must be a validated official provider asset
   const imageKind = scholarship.image_kind || scholarship.imageKind
   const sourceType = scholarship.image_source_type || scholarship.imageSourceType
-  const isVerifiedSource =
-    imageKind === 'official_logo' ||
-    sourceType === 'official_provider' ||
-    sourceType === 'official_scholarship' ||
-    Boolean(scholarship.image_verified_at)
 
-  if (isVerifiedSource) {
+  // A verified image or official scholarship page can still be a banner or
+  // programme photo. Only explicit logo metadata identifies an identity mark.
+  if (
+    typeof imageUrl === 'string' &&
+    imageUrl.trim() &&
+    (imageKind === 'official_logo' || sourceType === 'official_page_logo')
+  ) {
     return {
-      url: trimmedUrl,
+      url: imageUrl.trim(),
       altText: scholarship.image_alt_text || `${scholarship.title || 'Scholarship'} official provider logo`,
     }
   }
 
-  // If provenance is not confirmed, do not claim it as an official logo
-  return null
+  const sourceUrl = scholarship.official_source_url || scholarship.officialSourceUrl
+  if (typeof sourceUrl !== 'string') return null
+
+  try {
+    const host = new URL(sourceUrl).hostname.toLowerCase().replace(/^www\./, '')
+    const logo = officialProviderLogos[host]
+    return logo ? { url: logo.url, altText: logo.altText || `${scholarship.title || 'Scholarship'} provider logo` } : null
+  } catch {
+    return null
+  }
 }
 
 /**

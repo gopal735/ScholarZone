@@ -645,6 +645,12 @@
   border-color: #d1d5db;
 }
 
+.lifecycle-tab--unknown.is-active {
+  background: var(--surface-subtle, #f3f4f6);
+  color: var(--text-secondary, #4b5563);
+  border-color: var(--border-strong, #9ca3af);
+}
+
 /* All Lifecycles (default) */
 .lifecycle-tab--All.is-active {
   background: var(--ink, #1b2a4a);

@@ -279,6 +279,18 @@
   line-height: 1.4;
 }
 
+.scholarship-card__summary {
+  display: -webkit-box;
+  margin: var(--space-3) 0 0;
+  overflow: hidden;
+  color: var(--text-secondary);
+  font-size: var(--text-sm);
+  line-height: 1.55;
+  overflow-wrap: anywhere;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+}
+
 /* ── Fit meter ────────────────────────────────────────────────────
    The reference's ``.fit``: a raised accent bar inside a sunken track,
    with the count beside it in tabular figures. ``margin-top: auto``
@@ -385,6 +397,53 @@
   overflow-wrap: anywhere;
 }
 
+.scholarship-card__academic-preview {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: var(--space-2);
+}
+
+.scholarship-card__academic-item {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 5px;
+}
+
+.scholarship-card__academic-label {
+  color: var(--text-muted);
+  font-size: var(--text-xs);
+  font-weight: 600;
+}
+
+.scholarship-card__academic-values {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: 4px;
+}
+
+.scholarship-card__academic-value {
+  display: inline-flex;
+  max-width: 100%;
+  padding: 3px 8px;
+  color: var(--text-secondary);
+  font-size: var(--text-xs);
+  font-weight: 600;
+  line-height: 1.4;
+  overflow-wrap: anywhere;
+  background: var(--surface-subtle);
+  border: 1px solid var(--sz-glass-edge-soft);
+  border-radius: var(--radius-pill);
+}
+
+.scholarship-card__academic-value--more {
+  color: var(--text-muted);
+  background: transparent;
+}
+
 /* The deadline is the scan anchor, so it reads as a labelled panel of
    its own surface — a small well inside the card. */
 .scholarship-card__detail--deadline {
@@ -401,10 +460,21 @@
   letter-spacing: 0.06em;
 }
 
+.scholarship-card__detail--deadline dd {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  align-items: baseline;
+  gap: 4px 10px;
+}
+
+.scholarship-card__deadline-label {
+  overflow-wrap: anywhere;
+}
+
 /* Deadline countdown */
 .scholarship-card__countdown {
   display: inline-block;
-  margin-left: var(--space-3);
   font-size: 0.75rem;
   font-weight: 600;
   font-variant-numeric: tabular-nums;
@@ -425,7 +495,6 @@
 /* Opening countdown */
 .scholarship-card__opening-countdown {
   display: inline-block;
-  margin-left: var(--space-3);
   font-size: 0.75rem;
   font-weight: 600;
   font-variant-numeric: tabular-nums;
@@ -437,7 +506,6 @@
 .scholarship-card__upcoming-hint,
 .scholarship-card__closed-hint {
   display: inline-block;
-  margin-left: var(--space-3);
   font-size: 0.75rem;
   font-weight: 500;
   color: var(--text-muted);
@@ -598,41 +666,23 @@
 
 /* ── Expanded section ────────────────────────────────────────────── */
 .scholarship-card__expanded {
-  overflow: hidden;
-  max-height: 0;
-  opacity: 0;
-  transition: max-height var(--duration-normal) var(--timing-smooth), opacity var(--duration-fast) var(--timing-smooth);
+  opacity: 1;
   border-top: 1px solid var(--sz-glass-edge-soft);
   margin-top: var(--space-3);
 }
 
-.scholarship-card__expanded--open {
-  max-height: 1000px; /* Large enough for all content */
-  opacity: 1;
-}
-
 .scholarship-card__expanded-inner {
+  display: grid;
+  gap: var(--space-3);
   padding: var(--space-5) var(--space-6) var(--space-4);
-  animation: slideDown var(--duration-normal) var(--timing-smooth);
-}
-
-@keyframes slideDown {
-  from {
-    opacity: 0;
-    transform: translateY(-8px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
 }
 
 .scholarship-card__expanded-section {
-  margin-bottom: var(--space-5);
-}
-
-.scholarship-card__expanded-section:last-child {
-  margin-bottom: 0;
+  min-width: 0;
+  padding: var(--space-4);
+  background: var(--surface-subtle);
+  border: 1px solid var(--sz-glass-edge-soft);
+  border-radius: var(--radius-sm);
 }
 
 .scholarship-card__expanded-title {
@@ -649,6 +699,7 @@
   color: var(--text-secondary);
   font-size: var(--text-sm);
   line-height: 1.6;
+  overflow-wrap: anywhere;
 }
 
 .scholarship-card__expanded-facts {
@@ -673,6 +724,7 @@
   font-size: var(--text-sm);
   font-weight: 500;
   line-height: 1.5;
+  overflow-wrap: anywhere;
 }
 
 .scholarship-card__expanded-list {
@@ -809,6 +861,11 @@
 
   .scholarship-card__footer {
     padding: var(--space-4) var(--space-5) var(--space-5);
+  }
+
+  .scholarship-card__expanded-inner {
+    padding-right: var(--space-5);
+    padding-left: var(--space-5);
   }
 }
 
