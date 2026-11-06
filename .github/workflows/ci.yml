@@ -519,6 +519,57 @@ jobs:
         ls -la backend/verification/research_ledger.jsonl
         head -c 500 backend/verification/research_ledger.jsonl
         echo ""
+        echo "=== Script path ==="
+        echo "REPO_ROOT from script: $(python -c "from pathlib import Path; print(Path('backend/scripts/validate_snapshot_ids.py').resolve().parents[2])")"
+        echo "PWD: $(pwd)"
+        echo "=== Snapshot IDs from script ==="
+        python -c "
+from pathlib import Path
+import json
+REPO_ROOT = Path('backend/scripts/validate_snapshot_ids.py').resolve().parents[2]
+SNAPSHOT_PATH = REPO_ROOT / 'frontend' / 'public' / 'scholarships-snapshot.json'
+with SNAPSHOT_PATH.open('r', encoding='utf-8') as f:
+    data = json.load(f)
+ids = [item['id'] for item in data.get('scholarships', [])]
+print(f'Count: {len(ids)}')
+print(f'Max: {max(ids) if ids else 0}')
+print(f'1298 in snapshot: {1298 in ids}')
+print(f'Last 5: {sorted(ids)[-5:]}')
+"
+        echo "=== Sitemap IDs from script ==="
+        python -c "
+from pathlib import Path
+import re
+REPO_ROOT = Path('backend/scripts/validate_snapshot_ids.py').resolve().parents[2]
+SITEMAP_PATH = REPO_ROOT / 'frontend' / 'public' / 'sitemap.xml'
+content = SITEMAP_PATH.read_text(encoding='utf-8')
+ids = [int(match) for match in re.findall(r'/scholarships/(\d+)', content)]
+print(f'Count: {len(ids)}')
+print(f'Max: {max(ids) if ids else 0}')
+print(f'1298 in sitemap: {1298 in ids}')
+print(f'Last 5: {sorted(ids)[-5:]}')
+"
+        echo "=== Ledger IDs from script ==="
+        python -c "
+from pathlib import Path
+import json
+REPO_ROOT = Path('backend/scripts/validate_snapshot_ids.py').resolve().parents[2]
+LEDGER_PATH = REPO_ROOT / 'backend' / 'verification' / 'research_ledger.jsonl'
+ids = set()
+with LEDGER_PATH.open('r', encoding='utf-8-sig') as f:
+    for line in f:
+        line = line.strip()
+        if not line:
+            continue
+        record = json.loads(line)
+        scholarship_id = record.get('scholarship_id') or record.get('id')
+        if scholarship_id is not None:
+            ids.add(scholarship_id)
+print(f'Count: {len(ids)}')
+print(f'Max: {max(ids) if ids else 0}')
+print(f'1298 in ledger: {1298 in ids}')
+print(f'Last 5: {sorted(ids)[-5:]}')
+"
     - name: Run snapshot ID validation
       run: python backend/scripts/validate_snapshot_ids.py 2>&1 | tee backend/snapshot_id_validation.log
     - name: Upload validation logs
