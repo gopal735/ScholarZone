@@ -201,14 +201,18 @@ class DatabaseAccessor:
                     deadline_date, deadline_display, deadline_precision,
                     status, fully_funded, funding_amount, funding_currency,
                     funding_period, tuition_coverage, living_cost_coverage,
-                    travel_coverage, accommodation, insurance, insurance_coverage,
-                    duration, conditions, funding_details, official_source,
-                    official_source_url, official_details, applicant_utility,
-                    programme_verification, auto_delete_candidate_since,
-                    deletion_protected, verification_status, last_verified_at,
-                    verified_by, verification_notes, next_verification_due,
+                    travel_coverage, duration, conditions, funding_details,
+                    official_source, official_source_url, official_details,
+                    applicant_utility, programme_verification,
+                    auto_delete_candidate_since, deletion_protected,
+                    verification_status, last_verified_at, verified_by,
+                    verification_notes, next_verification_due,
                     is_archived, archived_at, archived_reason,
-                    created_at, updated_at
+                    image_url, image_source_url, image_source_type,
+                    image_kind, image_verified_at, image_alt_text,
+                    image_evaluation_status, image_evaluated_at,
+                    departments, eligible_fields, eligible_programmes,
+                    academic_provenance, region
                 FROM scholarships
                 WHERE id IN ({placeholders})
                 ORDER BY deadline_date
