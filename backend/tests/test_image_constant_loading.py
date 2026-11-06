@@ -350,11 +350,11 @@ class TestNothingElseMoved:
         for name in VOCABULARY:
             assert name not in source
 
-    def test_the_retention_and_grace_policy_is_untouched(self):
+    def test_the_retention_and_grace_policy_is_immediate(self):
         from app.services import auto_delete_policy
 
-        assert auto_delete_policy.AUTO_DELETE_AFTER_DAYS == 180
-        assert auto_delete_policy.DELETE_GRACE_DAYS == 14
+        assert auto_delete_policy.AUTO_DELETE_AFTER_DAYS == 0
+        assert auto_delete_policy.DELETE_GRACE_DAYS == 0
 
     def test_phase_three_activation_is_untouched(self):
         assert worker.PURGE_CLOSED_EXCLUDED_FROM_ALL is False

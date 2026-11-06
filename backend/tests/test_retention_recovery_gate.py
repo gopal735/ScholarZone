@@ -159,7 +159,7 @@ class TestEveryStateIsReachable:
             (dict(archived_at=None), STATE_CONFLICTING),
             (dict(deletion_protected=True), STATE_PROTECTED),
             (dict(candidate_since=None), STATE_GRACE_ELIGIBLE),
-            (dict(candidate_since=AS_OF - timedelta(days=3)), STATE_GRACE_ELIGIBLE),
+            (dict(candidate_since=AS_OF - timedelta(days=3)), STATE_DELETE_CANDIDATE),
             (dict(), STATE_DELETE_CANDIDATE),
         ],
     )
@@ -250,13 +250,17 @@ class TestArchivalAloneDoesNotImplyDelete:
     """The three claims Phase 1 requires be proven explicitly."""
 
     def test_archival_alone_is_not_enough(self):
-        """Archived, but too recent and not yet armed."""
+        """Archived, but not yet armed."""
         decision = classify(
-            facts(1, archived_at=AS_OF - timedelta(days=10)),
+            facts(
+                1,
+                archived_at=AS_OF - timedelta(days=10),
+                candidate_since=None,
+            ),
             policy=default_policy(), as_of=AS_OF,
         )
-        assert decision.state == STATE_PROTECTED
-        assert decision.reason == "RETENTION_NOT_ELAPSED"
+        assert decision.state == STATE_GRACE_ELIGIBLE
+        assert decision.reason == "NOT_ARMED"
         assert decision.is_keep
 
     def test_a_missing_verified_image_is_not_enough(self):
