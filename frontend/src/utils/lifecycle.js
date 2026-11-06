@@ -286,6 +286,21 @@ export function hasVerifiedFutureCycle(scholarship) {
       }
     }
   }
+
+  const cycleText = [
+    scholarship.application_period,
+    scholarship.deadline_display,
+    scholarship.deadline,
+  ]
+    .filter((value) => typeof value === 'string')
+    .join(' ')
+  const recurringCycle =
+    /\b(annually|annual|every year|each year|per year|yearly|rounds? per year)\b/i.test(cycleText)
+  const namesMonth =
+    /\b(january|february|march|april|may|june|july|august|september|october|november|december)\b/i.test(cycleText)
+  if (recurringCycle && namesMonth) {
+    return true
+  }
   
   return false;
 }
@@ -391,6 +406,24 @@ export function classifyLifecycle(scholarship) {
     };
   }
 
+  if (scholarship.status === 'closed' && hasFutureCycle) {
+    return {
+      status: LIFECYCLE.UPCOMING,
+      label: LIFECYCLE_LABELS[LIFECYCLE.UPCOMING],
+      description: LIFECYCLE_DESCRIPTIONS[LIFECYCLE.UPCOMING],
+      deadlineDate,
+      openingDate: effectiveOpeningDate,
+      daysUntilDeadline,
+      daysUntilOpening,
+      isExactDeadline: deadlineExact,
+      isExactOpening: effectiveOpeningExact,
+      className: LIFECYCLE_CLASSES[LIFECYCLE.UPCOMING],
+      showCountdown: false,
+      showApplyCTA: false,
+      showOpeningDate: effectiveOpeningDate !== null,
+    };
+  }
+
   // 4. Check for UPCOMING based on opening date in future (outside window)
   // This must come BEFORE CLOSING_SOON check because a future opening supersedes a past deadline
   if (effectiveOpeningDate && daysUntilOpening !== null && daysUntilOpening > OPENING_WINDOW_DAYS) {
@@ -446,6 +479,24 @@ export function classifyLifecycle(scholarship) {
       showCountdown: false,
       showApplyCTA: false,
       showOpeningDate: true,
+    };
+  }
+
+  if (deadlineDate && daysUntilDeadline !== null && daysUntilDeadline < 0 && hasFutureCycle) {
+    return {
+      status: LIFECYCLE.UPCOMING,
+      label: LIFECYCLE_LABELS[LIFECYCLE.UPCOMING],
+      description: LIFECYCLE_DESCRIPTIONS[LIFECYCLE.UPCOMING],
+      deadlineDate,
+      openingDate: effectiveOpeningDate,
+      daysUntilDeadline,
+      daysUntilOpening,
+      isExactDeadline: deadlineExact,
+      isExactOpening: effectiveOpeningExact,
+      className: LIFECYCLE_CLASSES[LIFECYCLE.UPCOMING],
+      showCountdown: false,
+      showApplyCTA: false,
+      showOpeningDate: effectiveOpeningDate !== null,
     };
   }
 

@@ -97,12 +97,12 @@ class TestCollection:
         finally:
             session.close()
 
-    def test_a_freshly_closed_record_is_not_a_candidate(self, session_factory):
+    def test_a_freshly_closed_record_is_immediately_a_candidate(self, session_factory):
         session = session_factory()
         try:
             make_closed(session, 1, days=3)
             decisions = {d.id: d for d in collect(session, now=NOW)}
-            assert decisions[1].verdict == "INSUFFICIENT_RETENTION_EVIDENCE"
+            assert decisions[1].verdict == "AUTO_DELETE_CANDIDATE"
             assert decisions[1].eligible_ids is False
         finally:
             session.close()

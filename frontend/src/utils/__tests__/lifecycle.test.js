@@ -211,6 +211,13 @@ describe('Lifecycle Classification', () => {
       const result = hasVerifiedFutureCycle(scholarship)
       expect(result).toBe(false)
     })
+
+    it('recognises a documented recurring schedule as a future cycle', () => {
+      const scholarship = {
+        deadline_display: 'Three calls annually: March 15, July 15, November 15',
+      }
+      expect(hasVerifiedFutureCycle(scholarship)).toBe(true)
+    })
   })
 
   describe('classifyLifecycle - CLOSED', () => {
@@ -252,6 +259,16 @@ describe('Lifecycle Classification', () => {
       const result = classifyLifecycle(scholarship)
       expect(result.status).not.toBe(LIFECYCLE.CLOSED)
       expect([LIFECYCLE.UPCOMING, LIFECYCLE.OPENING]).toContain(result.status)
+    })
+
+    it('keeps a closed current round visible as upcoming when a recurring cycle is documented', () => {
+      const scholarship = {
+        status: 'closed',
+        deadline_date: fmt(lastMonthUTC),
+        deadline_display: 'Three calls annually: March 15, July 15, November 15',
+      }
+      const result = classifyLifecycle(scholarship)
+      expect(result.status).toBe(LIFECYCLE.UPCOMING)
     })
   })
 

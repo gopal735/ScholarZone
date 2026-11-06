@@ -50,6 +50,7 @@ import json
 import logging
 import os
 import re
+import subprocess
 import sys
 import time
 from dataclasses import dataclass, field
@@ -85,10 +86,10 @@ STAGE_ORDER = (
 # It was False-proofed through rollout: the collector shipped with deletion
 # unreachable from the schedule, Phase 2 observed arming unattended across a full
 # cycle with `deleted = 0` and `candidate_since_set = 0`, and only then was this
-# flipped. Nothing about the deletion itself changed. The stage still selects
-# nothing but records that passed the SAFE_DELETE policy, the retention period, a
-# grace period that spans earlier cycles, and a re-decision inside the deleting
-# transaction. What changed is only whether the schedule is allowed to ask.
+# flipped. The deletion still requires every SAFE_DELETE condition and a
+# re-decision inside the deleting transaction. The minimum retention and grace
+# periods are now zero, so eligible closed records can be removed in the same
+# maintenance run.
 #
 # The flag is asserted against the real selection in main() rather than trusted,
 # so a refactor that silently re-excludes the stage fails a test rather than
@@ -110,6 +111,47 @@ ARMING_STAGE = "auto_delete_candidate"
 CLOSED_STATUSES = frozenset(
     {"closed", "expired", "discontinued", "retired", "withdrawn"}
 )
+
+
+def _classify_lifecycle(records: list[dict]) -> dict[int, str]:
+    """Use the frontend lifecycle contract for maintenance decisions."""
+    if not records:
+        return {}
+
+    classifier = """
+import { classifyLifecycle } from './frontend/src/utils/lifecycle.js';
+let input = '';
+for await (const chunk of process.stdin) input += chunk;
+const rows = JSON.parse(input);
+process.stdout.write(JSON.stringify(rows.map((row) => ({
+  id: row.id,
+  status: classifyLifecycle(row).status,
+}))));
+"""
+    repo_root = Path(__file__).resolve().parents[3]
+    completed = subprocess.run(
+        ["node", "--input-type=module", "-e", classifier],
+        cwd=repo_root,
+        input=json.dumps(records, default=str),
+        capture_output=True,
+        check=False,
+        text=True,
+    )
+    if completed.returncode:
+        raise RuntimeError(
+            "Frontend lifecycle classification failed: "
+            f"{completed.stderr.strip() or completed.returncode}"
+        )
+
+    try:
+        classified = json.loads(completed.stdout)
+    except json.JSONDecodeError as error:
+        raise RuntimeError("Frontend lifecycle classifier returned invalid JSON.") from error
+
+    if not isinstance(classified, list) or len(classified) != len(records):
+        raise RuntimeError("Frontend lifecycle classifier returned an incomplete result.")
+    return {int(item["id"]): str(item["status"]) for item in classified}
+
 
 # Tables that reference scholarships and must go with the parent row.
 #
@@ -1178,15 +1220,12 @@ choices=["verify", "worklist", "inventory", "enrich", "programme_details", "imag
         return detail
 
     def do_archive() -> dict:
-        """Archive records whose published deadline has passed.
+        """Archive records the public lifecycle contract classifies as closed.
 
-        A scholarship with a closing date in the past is not an opportunity, and
-        leaving it in the public directory sends applicants to a form that no
-        longer accepts anything. Archiving is therefore a one-way flag, set from
-        the date rather than by hand, and it is separate from ``status``:
-        status flips back to open when a new cycle is published, and an archived
-        record should not silently reappear because somebody re-derived its
-        status.
+        The frontend classifier accounts for explicit status, parsed deadlines,
+        and verified future cycles. Using it here prevents an expired round from
+        remaining public while preserving programmes with a documented next
+        cycle.
 
         The record itself is never deleted. Its history, its verification trail
         and any inbound link survive, so an archived scholarship can be
@@ -1195,7 +1234,7 @@ choices=["verify", "worklist", "inventory", "enrich", "programme_details", "imag
         Safe to re-run: an already-archived record is excluded, so the work does
         not repeat and the reported count settles at zero.
         """
-        from datetime import date, datetime, timedelta, timezone
+        from datetime import date, datetime, timezone
 
         from sqlalchemy import select
 
@@ -1208,19 +1247,34 @@ choices=["verify", "worklist", "inventory", "enrich", "programme_details", "imag
             rows = session.scalars(
                 select(Scholarship).where(
                     Scholarship.is_archived.is_(False),
-                    Scholarship.deadline_date.isnot(None),
-                    Scholarship.deadline_date < today,
                 )
             ).all()
+            classified = _classify_lifecycle(
+                [
+                    {
+                        "id": row.id,
+                        "status": row.status,
+                        "is_archived": row.is_archived,
+                        "deadline_date": row.deadline_date,
+                        "deadline_display": row.deadline_display,
+                        "deadline_precision": row.deadline_precision,
+                        "application_period": row.application_period,
+                    }
+                    for row in rows
+                ]
+            )
+            closed_rows = [row for row in rows if classified[row.id] == "closed"]
             if args.dry_run:
                 session.rollback()
             else:
-                for row in rows:
+                for row in closed_rows:
                     row.is_archived = True
                     row.archived_at = now
-                    row.archived_reason = f"deadline passed on {row.deadline_date.isoformat()}"
-                    # Status is derived from the same date, so leaving it open
-                    # would make a filter on status contradict the archive.
+                    row.archived_reason = (
+                        f"deadline passed on {row.deadline_date.isoformat()}"
+                        if row.deadline_date
+                        else "lifecycle classified closed"
+                    )
                     row.status = "closed"
                 session.commit()
         finally:
@@ -1228,11 +1282,14 @@ choices=["verify", "worklist", "inventory", "enrich", "programme_details", "imag
 
         detail = {
             "as_of": today.isoformat(),
-            "archived": 0 if args.dry_run else len(rows),
-            "would_archive": len(rows),
+            "archived": 0 if args.dry_run else len(closed_rows),
+            "would_archive": len(closed_rows),
+            "future_cycles_preserved": sum(
+                1 for row in rows if classified[row.id] != "closed"
+            ),
         }
         if not args.dry_run:
-            recorder.record_counts({"archive_archived": len(rows)})
+            recorder.record_counts({"archive_archived": len(closed_rows)})
         return detail
 
     
@@ -1675,12 +1732,11 @@ choices=["verify", "worklist", "inventory", "enrich", "programme_details", "imag
     def do_auto_delete_candidate() -> dict:
         """Stage one of the closed-record collector: arm, never delete.
 
-        A record that holds every SAFE_DELETE condition gets a grace clock
-        started. The clock is cleared the moment any condition stops holding, so
-        a record that is reopened, re-verified, reviewed or referenced between
-        two cycles serves the whole grace period again. That is why the clock is
-        persisted rather than derived: nothing already on the row can tell a
-        reopen-and-reclose apart from never having reopened.
+        A record that holds every SAFE_DELETE condition gets its candidate
+        timestamp. The deletion stage runs immediately afterwards, with no
+        retention or grace wait, and rechecks every condition before deleting.
+        If a record is reopened, re-verified, reviewed or referenced between
+        stages, the candidate is cleared or the final deletion is refused.
 
         This stage writes only that timestamp. It deletes nothing, so it is safe
         to run on every cycle, and it is the read-only audit the deletion stage
@@ -1715,18 +1771,15 @@ choices=["verify", "worklist", "inventory", "enrich", "programme_details", "imag
         record being archived *or* the deadline merely having passed, with no
         retention period, no grace period, no dependency blocking and no
         revalidation between choosing a row and deleting it. A programme that
-        closed the previous day was eligible for permanent deletion.
-
-        What it does now is narrow by design:
+        closed the previous day was eligible for permanent deletion. It now
+        deletes immediately when all of the following checks pass:
 
         * selection comes from :func:`app.services.auto_delete_collector.collect`,
           which is the SAFE_DELETE policy, so a record is only a candidate after
           holding every condition - closed, archived, non-public, not active or
-          needing review, no dependency that must survive, and closed for at
-          least the retention period;
-        * the grace period has already elapsed, because arming happened in an
-          earlier cycle of ``auto_delete_candidate`` and any condition failing
-          in between cleared the clock;
+          needing review, no dependency that must survive;
+        * retention and grace periods are zero; ``auto_delete_candidate`` arms
+          the row immediately before this stage;
         * every id is re-decided inside the transaction under a row lock, and one
           that no longer qualifies is aborted on its own rather than deleted on
           a stale decision;

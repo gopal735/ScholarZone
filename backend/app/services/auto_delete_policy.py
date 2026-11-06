@@ -18,14 +18,11 @@ Three properties are deliberate:
   policy cannot fully account for produces ``NEEDS_MANUAL_REVIEW`` or
   ``INSUFFICIENT_RETENTION_EVIDENCE``. There is no branch that resolves doubt
   in favour of deletion.
-* **Retention is measured from a timestamp the system actually wrote.**
-  ``archived_at`` is set by the archive stage at the moment a record is folded
-  away, and it is cleared when a record is reopened, so it doubles as the start
-  of the closed-and-untouched period. ``updated_at`` is never used: it moves on
-  every unrelated edit and would silently reset or satisfy the clock.
-* **The clock is not guessed.** A record with no trustworthy ``archived_at`` is
-  never eligible. An unknown closure date is an unknown date, and this is the
-  one decision an applicant cannot recover from.
+* **Closure must be recorded.** ``archived_at`` is written by the archive stage
+  and cleared when a record is reopened. A row without that timestamp is never
+  eligible, even though no minimum retention or grace period is required.
+* **Dependencies still block deletion.** Unresolved reviews, material evidence,
+  active verification and other protected references remain human-review cases.
 """
 
 from __future__ import annotations
@@ -34,14 +31,12 @@ from dataclasses import dataclass, field
 from datetime import date, datetime, timezone
 from typing import Any
 
-#: A record must have been closed and archived continuously for this long before
-#: it can even become a candidate. Configurable; not a per-record setting.
-AUTO_DELETE_AFTER_DAYS = 180
+#: No minimum archived age; an archived closed record can be considered now.
+AUTO_DELETE_AFTER_DAYS = 0
 
-#: Having passed the predicate is not enough. A record stays armed for this long
-#: so that a reopen, a new review, or a corrected deadline cancels the deletion
-#: before it happens rather than being discovered afterwards.
-DELETE_GRACE_DAYS = 14
+#: No additional grace period. Every candidate is still rechecked in the
+#: deleting transaction, and records with unresolved dependencies stay protected.
+DELETE_GRACE_DAYS = 0
 
 #: Terminal states. A review or fetch in any other state - including NULL, which
 #: is not a state - is unfinished business and blocks.

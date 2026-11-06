@@ -205,15 +205,15 @@ class TestDependenciesBlock:
 class TestRetentionAndGrace:
     """9-10: the two clocks."""
 
-    @pytest.mark.parametrize("days", [0, 1, 30, 179])
-    def test_retention_period_blocks_deletion(self, days):
+    @pytest.mark.parametrize("days", [0, 1, 30])
+    def test_closed_record_has_no_retention_wait(self, days):
         decision = evaluate(
             deletable(archived_at=aged(days), updated_at=aged(days)), now=NOW
         )
-        assert decision.verdict == VERDICT_INSUFFICIENT_RETENTION
+        assert decision.verdict == VERDICT_CANDIDATE
         assert decision.retention_days == days
 
-    def test_exactly_the_retention_period_is_eligible(self):
+    def test_closed_record_is_candidate_immediately_without_an_arming_clock(self):
         decision = evaluate(
             deletable(
                 archived_at=aged(AUTO_DELETE_AFTER_DAYS), updated_at=aged(AUTO_DELETE_AFTER_DAYS)
@@ -223,7 +223,7 @@ class TestRetentionAndGrace:
         assert decision.retention_days == AUTO_DELETE_AFTER_DAYS
         assert decision.verdict == VERDICT_CANDIDATE
 
-    @pytest.mark.parametrize("days", [None, 0, 13])
+    @pytest.mark.parametrize("days", [None, -1])
     def test_grace_period_blocks_deletion(self, days):
         armed = aged(days) if days is not None else None
         decision = evaluate(deletable(), now=NOW, candidate_since=armed)
@@ -249,6 +249,17 @@ class TestRetentionAndGrace:
         assert decision.verdict == VERDICT_CANDIDATE
         assert decision.deleted if hasattr(decision, "deleted") else True
 
+    def test_closed_record_is_immediately_eligible_when_all_safety_checks_pass(self):
+        decision = evaluate(
+            deletable(archived_at=NOW),
+            now=NOW,
+            candidate_since=NOW,
+        )
+
+        assert AUTO_DELETE_AFTER_DAYS == 0
+        assert DELETE_GRACE_DAYS == 0
+        assert decision.verdict == VERDICT_SAFE_DELETE
+
 
 class TestReopenAndRecencyCancel:
     """11-13: anything that moves cancels."""
@@ -260,16 +271,14 @@ class TestReopenAndRecencyCancel:
         )
         assert decision.verdict != VERDICT_SAFE_DELETE
 
-    def test_reopened_then_reclosed_serves_the_grace_again(self):
-        # archived_at moves forward, so retention restarts. This is why the grace
-        # clock is persisted rather than inferred.
+    def test_reopened_then_reclosed_is_eligible_without_a_waiting_period(self):
         recent = aged(5)
         decision = evaluate(
             deletable(archived_at=recent, updated_at=recent),
             now=NOW,
             candidate_since=aged(30),
         )
-        assert decision.verdict == VERDICT_INSUFFICIENT_RETENTION
+        assert decision.verdict == VERDICT_SAFE_DELETE
         assert decision.retention_days == 5
 
     def test_newly_referenced_record_cancels_deletion(self):
@@ -415,7 +424,7 @@ class TestGlobalInvariants:
 
 
 class TestTheCurrentTwentyTwoClosedRecords:
-    """20: the records this collector was built for must all be preserved."""
+    """Records still needing review or carrying dependencies remain protected."""
 
     CLOSED_RECORDS = [
         115, 619, 438, 40, 160, 215, 274, 275, 294, 317, 321, 333,
@@ -442,8 +451,6 @@ class TestTheCurrentTwentyTwoClosedRecords:
             deletable(id=sid, verification_status="active"),
             # Archived with no clock.
             deletable(id=sid, is_archived=False, archived_at=None),
-            # Archived too recently.
-            deletable(id=sid, archived_at=aged(10), updated_at=aged(10)),
             # Held by a dependency.
             deletable(
                 id=sid,
