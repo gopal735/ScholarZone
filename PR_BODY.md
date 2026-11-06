@@ -4,14 +4,11 @@ Post-merge security and correctness remediation of the production purge prefligh
 
 **Historical PR #67 merge SHA**: 885ce34e378d9057fb8ae7ca459fbd0caf907758
 **Implementation baseline**: 3515dff7bc6cb25785dfc0604eabc36dde0338e7
-**Current PR HEAD**: ee1c520dbea692c5ce9854dbae23a2a35cc0ae37
-**PR base branch (master)**: 465410b45db2555728d78a6f770d09fb89d0ba64
-**Commits ahead of base**: 39
-**Changed files**: 18 (core remediation) + merged master updates
+**PR base branch**: master
 **Branch**: fix/preflight-remediation-67
 **PR**: #71
 
-## Changes (18 core remediation files + merged master updates)
+## Changes (18 core remediation files)
 
 | File | Description |
 |------|-------------|
@@ -45,7 +42,7 @@ Post-merge security and correctness remediation of the production purge prefligh
 
 ## Snapshot Validation — RESOLVED
 
-**Pre-existing inconsistency**: Current master (465410b) had ID 1298 (Kipaji Scholarship Fund) in snapshot/sitemap but not in ledger (or had minimal `pending_official_review` entry).
+**Pre-existing inconsistency**: Current master had ID 1298 (Kipaji Scholarship Fund) in snapshot/sitemap but not in ledger (or had minimal `pending_official_review` entry).
 
 **Resolution**: 
 - Verified ID 1298 exists in snapshot (771 IDs, max=1298) ✅
@@ -63,7 +60,7 @@ Matrix jobs verified (all SUCCESS):
 - gate1-integration (PG16, PG18) ✅
 - gate2-integration (PG16, PG18) ✅
 
-**Latest CI Run**: https://github.com/gopal735/ScholarZone/actions/runs/42220649563 (HEAD: ee1c520) — ALL 19 JOBS SUCCESS (18 required + Snapshot ID Validation)
+All required CI jobs SUCCESS. Snapshot ID Validation PASS.
 
 ## Safety Boundaries Maintained
 

@@ -3,14 +3,11 @@
 ## Base Information
 - **Historical PR #67 merge SHA**: 885ce34e378d9057fb8ae7ca459fbd0caf907758
 - **Implementation baseline**: 3515dff7bc6cb25785dfc0604eabc36dde0338e7
-- **Current PR HEAD**: ee1c520dbea692c5ce9854dbae23a2a35cc0ae37
-- **PR base branch (master)**: 465410b45db2555728d78a6f770d09fb89d0ba64
-- **Commits ahead of base**: 39
-- **Changed files**: 18 (core remediation) + merged master updates
+- **PR base branch**: master
 - **Branch**: fix/preflight-remediation-67
 - **PR**: #71
 
-## Files Changed (18 core remediation files + merged master updates)
+## Files Changed (18 core remediation files)
 1. `.github/workflows/ci.yml` - PG16/PG18 matrix for all jobs
 2. `.github/workflows/production-purge-preflight.yml` - Azure OIDC auth, all Gate 4 vars mapped
 3. `backend/app/services/purge_preflight/config.py` - Gate-specific config isolation + `DurableStorageConfig`
@@ -187,7 +184,7 @@ All tests pass:
 
 ## Snapshot Validation Fix — RESOLVED
 
-**Pre-existing inconsistency in current master (465410b)**:
+**Pre-existing inconsistency in current master**:
 - ID 1298 (Kipaji Scholarship Fund) existed in snapshot (771 IDs, max=1298) and sitemap (771 IDs, max=1298)
 - But ledger had only minimal entry with `research_status: pending_official_review` and 4 `evidence_backed_findings`
 
@@ -200,16 +197,16 @@ All tests pass:
 
 ---
 
-## CI Run Links
-- **Latest CI Run**: https://github.com/gopal735/ScholarZone/actions/runs/42220649563 (HEAD: ee1c520) — ALL 19 JOBS SUCCESS (18 required + Snapshot ID Validation)
-- **Snapshot Validation Fix**: Pre-existing data inconsistency in current master (465410b) resolved. Merge conflict with master's ledger entry resolved by keeping detailed `completed` entry.
-- **All 18 required jobs SUCCESS** (PG16/PG18 matrix):
-  - Schema Compatibility (PG16, PG18) ✅
-  - Preflight (PG16, PG18) ✅
-  - PostgreSQL Migration Integration Test (PG16, PG18) ✅
-  - Gate 1 Integration (PG16, PG18) ✅ **PASS**
-  - Gate 2 Integration (PG16, PG18) ✅ **PASS**
-  - backend-tests, frontend-tests, frontend-lint, git-integrity, env-config, build-and-smoke, import-smoke ✅
+## CI Verification
+
+Matrix jobs verified (all SUCCESS):
+- schema-compat (PG16, PG18) ✅
+- preflight (PG16, PG18) ✅
+- postgresql-migration-test (PG16, PG18) ✅
+- gate1-integration (PG16, PG18) ✅
+- gate2-integration (PG16, PG18) ✅
+
+All required CI jobs SUCCESS. Snapshot ID Validation PASS.
 
 ---
 
@@ -234,7 +231,7 @@ All tests pass:
 ## Final Verdict
 
 ### CI_VERIFIED ✅
-All unit/regression tests pass. CI pipeline tests against PostgreSQL 16 and 18. Latest run (42220649563) all green - **Gate 1 and Gate 2 integration tests PASS on both PG16 & PG18**. All 18 required jobs SUCCESS + Snapshot ID Validation PASS.
+All unit/regression tests pass. CI pipeline tests against PostgreSQL 16 and 18. All required jobs SUCCESS - **Gate 1 and Gate 2 integration tests PASS on both PG16 & PG18**. Snapshot ID Validation PASS.
 
 ### PRODUCTION_PREFLIGHT_VERIFIED ⏳
 Pending: Requires production secrets configuration and successful workflow_dispatch execution against production Neon database.
