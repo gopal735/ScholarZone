@@ -26,20 +26,23 @@ from __future__ import annotations
 
 import json
 import os
+import subprocess
 import sys
 from collections import Counter
-from datetime import date, datetime, timezone
+from datetime import datetime, timezone
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 os.environ.setdefault("SCHOLARZONE_ENVIRONMENT", "production")
 
 from sqlalchemy import func, or_, select, text  # noqa: E402
+from sqlalchemy.orm import load_only  # noqa: E402
 
 from app.database import get_session_factory  # noqa: E402
 from app.models import (  # noqa: E402
     ContentFingerprintRecord,
     DiscoveryCandidate,
+    ApplicationRecord,
     ImageReview,
     KnowledgeEdge,
     KnowledgeNode,
@@ -49,6 +52,7 @@ from app.models import (  # noqa: E402
     ScholarshipReview,
     ScholarshipSnapshot,
     ScholarshipVerificationHistory,
+    SavedScholarship,
 )
 from app.repositories.scholarships import public_visibility_conditions  # noqa: E402
 from app.verification_contract import (  # noqa: E402
@@ -79,6 +83,85 @@ MATERIAL_CHANGE_TYPES = (
 
 #: A change_type written by the verifier to say "we looked and nothing moved".
 UNINFORMATIVE_CHANGE_TYPES = ("unchanged",)
+
+# The production audit needs only these scholarship fields. Loading the whole ORM
+# entity also selects optional compatibility columns such as ``legacy_id`` that
+# may not exist yet in an older production schema.
+AUDIT_SCHOLARSHIP_FIELDS = (
+    Scholarship.id,
+    Scholarship.title,
+    Scholarship.verification_status,
+    Scholarship.is_verified,
+    Scholarship.is_archived,
+    Scholarship.archived_reason,
+    Scholarship.status,
+    Scholarship.deadline_date,
+    Scholarship.deadline_display,
+    Scholarship.deadline_precision,
+    Scholarship.application_period,
+    Scholarship.official_source_url,
+    Scholarship.catalogue_url,
+    Scholarship.verification_notes,
+    Scholarship.official_details,
+    Scholarship.created_at,
+    Scholarship.last_verified_at,
+)
+
+
+def _audit_scholarships():
+    return select(Scholarship).options(load_only(*AUDIT_SCHOLARSHIP_FIELDS))
+
+
+def _classify_lifecycle(rows) -> dict[int, dict]:
+    """Use the frontend's classifier so audit candidates match the UI exactly."""
+    frontend_rows = [
+        {
+            "id": row.id,
+            "status": getattr(row, "status", None),
+            "is_archived": bool(getattr(row, "is_archived", False)),
+            "deadline_date": getattr(row, "deadline_date", None),
+            "deadline_display": getattr(row, "deadline_display", None),
+            "deadline": getattr(row, "deadline", None)
+            or getattr(row, "deadline_display", None),
+            "deadline_precision": getattr(row, "deadline_precision", None),
+            "application_period": getattr(row, "application_period", None),
+        }
+        for row in rows
+    ]
+    classifier = """
+import { classifyLifecycle } from './frontend/src/utils/lifecycle.js';
+let input = '';
+for await (const chunk of process.stdin) input += chunk;
+const rows = JSON.parse(input);
+const result = rows.map((row) => {
+  const lifecycle = classifyLifecycle(row);
+  return {
+    id: row.id,
+    status: lifecycle.status,
+    daysUntilDeadline: lifecycle.daysUntilDeadline,
+  };
+});
+process.stdout.write(JSON.stringify(result));
+"""
+    repo_root = Path(__file__).resolve().parents[2]
+    completed = subprocess.run(
+        ["node", "--input-type=module", "-e", classifier],
+        cwd=repo_root,
+        input=json.dumps(frontend_rows, default=str),
+        capture_output=True,
+        check=False,
+        text=True,
+    )
+    if completed.returncode:
+        raise RuntimeError(
+            "Frontend lifecycle classification failed: "
+            f"{completed.stderr.strip() or completed.returncode}"
+        )
+    try:
+        result = json.loads(completed.stdout)
+    except json.JSONDecodeError as error:
+        raise RuntimeError("Frontend lifecycle classifier returned invalid JSON.") from error
+    return {item["id"]: item for item in result}
 
 
 def _count(session, model, column, scholarship_id: int) -> int:
@@ -255,6 +338,12 @@ def gather(session, row: Scholarship, public_ids: set[int]) -> dict:
         "discovery_candidates": _count(
             session, DiscoveryCandidate, DiscoveryCandidate.matched_scholarship_id, sid
         ),
+        "saved_scholarships": _count(
+            session, SavedScholarship, SavedScholarship.scholarship_id, sid
+        ),
+        "application_records": _count(
+            session, ApplicationRecord, ApplicationRecord.scholarship_id, sid
+        ),
         "knowledge_nodes": _knowledge_refs(session, node_ids),
         "knowledge_edges": _edge_refs(session, node_ids),
         "content_fingerprints": _fingerprint_refs(session, row),
@@ -314,6 +403,8 @@ def classify(rec: dict) -> tuple[str, list[str]]:
         "snapshots": d["snapshots"],
         "restore_records": d["restore_records"],
         "discovery_candidates": d["discovery_candidates"],
+        "saved_scholarships": d["saved_scholarships"],
+        "application_records": d["application_records"],
         "knowledge_nodes": d["knowledge_nodes"],
         "knowledge_edges": d["knowledge_edges"],
         "content_fingerprints": d["content_fingerprints"],
@@ -383,28 +474,36 @@ def main() -> int:
     public_ids = set(session.scalars(public_stmt).all())
     public_total = len(public_ids)
 
-    closed_rows = session.scalars(
-        select(Scholarship)
-        .where(Scholarship.status.in_(CLOSED_STATUSES))
-        .order_by(Scholarship.id)
+    scholarship_rows = session.scalars(
+        _audit_scholarships().order_by(Scholarship.id)
     ).all()
-
-    today = date.today()
-    deadline_passed = [
-        r
-        for r in session.scalars(select(Scholarship).where(Scholarship.deadline_date.isnot(None))).all()
-        if r.deadline_date and r.deadline_date < today
+    lifecycle_details = _classify_lifecycle(scholarship_rows)
+    lifecycle_closed_rows = [
+        row
+        for row in scholarship_rows
+        if lifecycle_details[row.id]["status"] == "closed"
     ]
-    deadline_passed_ids = {r.id for r in deadline_passed}
-    closed_ids = {r.id for r in closed_rows}
 
+    raw_closed_count = sum(
+        1 for row in scholarship_rows
+        if (row.status or "").strip().lower() in CLOSED_STATUSES
+    )
+    deadline_passed_count = sum(
+        1
+        for details in lifecycle_details.values()
+        if details["daysUntilDeadline"] is not None
+        and details["daysUntilDeadline"] < 0
+    )
     records = []
-    for row in closed_rows:
+    for row in lifecycle_closed_rows:
         rec = gather(session, row, public_ids)
         label, reasons = classify(rec)
         rec["classification"] = label
         rec["reasons"] = reasons
-        rec["deadline_passed"] = row.id in deadline_passed_ids
+        days_until_deadline = lifecycle_details[row.id]["daysUntilDeadline"]
+        rec["deadline_passed"] = (
+            days_until_deadline is not None and days_until_deadline < 0
+        )
         records.append(rec)
 
     buckets: dict[str, list[int]] = {}
@@ -412,15 +511,15 @@ def main() -> int:
         buckets.setdefault(rec["classification"], []).append(rec["id"])
 
     print("=" * 78)
-    print("CLOSED RECORD AUDIT - READ ONLY")
+    print("LIFECYCLE-CLOSED RECORD AUDIT - READ ONLY")
     print(f"generated_at: {datetime.now(timezone.utc).isoformat()}")
     print("=" * 78)
     print(f"storage_rows            : {storage_total}")
     print(f"public_universe         : {public_total}")
     print(f"storage_only            : {storage_total - public_total}")
-    print(f"records_with_status_closed: {len(closed_rows)}")
-    print(f"records_with_past_deadline: {len(deadline_passed_ids)}")
-    print(f"closed_by_status_but_deadline_future: {len(closed_ids - deadline_passed_ids)}")
+    print(f"records_with_status_closed: {raw_closed_count}")
+    print(f"records_with_lifecycle_closed: {len(lifecycle_closed_rows)}")
+    print(f"records_with_past_deadline: {deadline_passed_count}")
     print("")
 
     print("-" * 78)
@@ -455,8 +554,9 @@ def main() -> int:
         "storage_rows": storage_total,
         "public_universe": public_total,
         "storage_only": storage_total - public_total,
-        "closed_status_count": len(closed_rows),
-        "past_deadline_count": len(deadline_passed_ids),
+        "closed_status_count": raw_closed_count,
+        "lifecycle_closed_count": len(lifecycle_closed_rows),
+        "past_deadline_count": deadline_passed_count,
         "buckets": {k: sorted(v) for k, v in buckets.items()},
         "records": records,
     }
