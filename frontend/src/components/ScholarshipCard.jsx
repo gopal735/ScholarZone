@@ -3,13 +3,16 @@ import { Link } from 'react-router-dom'
 import ScholarshipImage from './ScholarshipImage'
 import ScholarshipActions from './ScholarshipActions'
 import SupervisorCta from './SupervisorCta'
+import LifecycleBadge from './LifecycleBadge'
 import { getDeadlineLabel, getLastVerifiedLabel, getScholarshipStatus, matchesDegreeFilter, matchesFundingFilter } from '../utils/scholarshipPresentation'
 import { getConfirmedOfficialLogo, getMonogramInitial } from '../utils/scholarshipLogos'
 import { readText, readList, readUrl, readFundingDetails } from '../utils/scholarshipDetail'
+import { classifyLifecycle } from '../utils/lifecycle'
 import './ScholarshipCard.css'
 
 export default function ScholarshipCard({ scholarship, index = 0, onOpenDetails }) {
   const deadlineStatus = getScholarshipStatus(scholarship)
+  const lifecycle = classifyLifecycle(scholarship)
   const cardRef = useRef(null)
   const [isExpanded, setIsExpanded] = useState(false)
 
@@ -100,7 +103,7 @@ export default function ScholarshipCard({ scholarship, index = 0, onOpenDetails 
 
       <div className="scholarship-card__header">
         <div className="scholarship-card__topline">
-          <span className={`scholarship-card__status scholarship-card__status--${deadlineStatus.className}`}>{deadlineStatus.label}</span>
+          <LifecycleBadge scholarship={scholarship} lifecycle={lifecycle} size="default" />
           <span className="p-tag scholarship-card__badge">{scholarship.funding}</span>
         </div>
 
@@ -186,7 +189,39 @@ export default function ScholarshipCard({ scholarship, index = 0, onOpenDetails 
       <dl className="scholarship-card__details">
         <div className={`scholarship-card__detail scholarship-card__detail--deadline scholarship-card__detail--${deadlineStatus.className}`}>
           <dt>Deadline</dt>
-          <dd>{getDeadlineLabel(scholarship)}</dd>
+          <dd>
+            {getDeadlineLabel(scholarship)}
+            {lifecycle.showCountdown && lifecycle.daysUntilDeadline !== null && (
+              <span className={`scholarship-card__countdown ${lifecycle.className}`}>
+                {lifecycle.daysUntilDeadline === 0 ? 'Deadline today' :
+                 lifecycle.daysUntilDeadline === 1 ? '1 day left' :
+                 `${lifecycle.daysUntilDeadline} days left`}
+              </span>
+            )}
+            {lifecycle.showOpeningDate && lifecycle.daysUntilOpening !== null && (
+              <span className={`scholarship-card__opening-countdown ${lifecycle.className}`}>
+                {lifecycle.daysUntilOpening === 0 ? 'Opens today' :
+                 lifecycle.daysUntilOpening === 1 ? 'Opens tomorrow' :
+                 lifecycle.daysUntilOpening <= 7 ? `Opens in ${lifecycle.daysUntilOpening} days` :
+                 `Opens in ${lifecycle.daysUntilOpening} days`}
+              </span>
+            )}
+            {lifecycle.status === 'opening' && lifecycle.openingDate && (
+              <span className="scholarship-card__opening-hint">
+                Opens {lifecycle.openingDate.toLocaleDateString('en-GB', { month: 'short', day: 'numeric' })}
+              </span>
+            )}
+            {lifecycle.status === 'upcoming' && lifecycle.openingDate && (
+              <span className="scholarship-card__upcoming-hint">
+                Opens {lifecycle.openingDate.toLocaleDateString('en-GB', { month: 'short', day: 'numeric', year: 'numeric' })}
+              </span>
+            )}
+            {lifecycle.status === 'closed' && (
+              <span className="scholarship-card__closed-hint">
+                Cycle ended
+              </span>
+            )}
+          </dd>
         </div>
         <div className="scholarship-card__detail">
           <dt>Location</dt>

@@ -120,11 +120,34 @@ export default function ApplicationsPage() {
       <div className="applications-page">
         <div className="applications-page__inner">
           <div className="empty-state" data-testid="applications-signed-out">
-            <h1>Your applications</h1>
-            <p>Sign in to track the scholarships you are applying to.</p>
-            <Link to="/login" className="sz-btn sz-btn--primary">
-              Sign in
-            </Link>
+            <span className="page-eyebrow">Application Workspace</span>
+            <h1>Manage every scholarship application from start to finish.</h1>
+            <p>
+              Sign in to unlock your personal application workspace. Track task checklists, Statement of Purpose drafts, referee requests, and deadline countdowns in one focused pipeline.
+            </p>
+            <div style={{ display: 'flex', gap: '12px', justifyContent: 'center', marginTop: '18px', flexWrap: 'wrap' }}>
+              <Link to="/login" className="sz-btn sz-btn--primary">
+                Sign in
+              </Link>
+              <Link to="/scholarships" className="sz-btn sz-btn--secondary">
+                Browse scholarships
+              </Link>
+            </div>
+
+            <div className="applications-page__preview-features" style={{ marginTop: '36px', textAlign: 'left', display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))', gap: '14px' }}>
+              <div className="preview-card" style={{ padding: '16px', borderRadius: '10px', background: 'var(--well, rgba(27,42,74,0.04))', border: '1px solid var(--line, rgba(27,42,74,0.1))' }}>
+                <strong style={{ display: 'block', marginBottom: '4px', color: 'var(--text-primary, #1b2a4a)' }}>📌 Stage Tracker</strong>
+                <p style={{ fontSize: '0.82rem', color: 'var(--text-muted, #556070)', margin: 0, lineHeight: 1.5 }}>Move applications across Saved, Preparing Documents, Submitted, Interview, and Offer stages.</p>
+              </div>
+              <div className="preview-card" style={{ padding: '16px', borderRadius: '10px', background: 'var(--well, rgba(27,42,74,0.04))', border: '1px solid var(--line, rgba(27,42,74,0.1))' }}>
+                <strong style={{ display: 'block', marginBottom: '4px', color: 'var(--text-primary, #1b2a4a)' }}>✅ Smart Task Checklist</strong>
+                <p style={{ fontSize: '0.82rem', color: 'var(--text-muted, #556070)', margin: 0, lineHeight: 1.5 }}>Pre-loaded tasks: Motivation letters, LORs, IELTS verification, and certified transcripts.</p>
+              </div>
+              <div className="preview-card" style={{ padding: '16px', borderRadius: '10px', background: 'var(--well, rgba(27,42,74,0.04))', border: '1px solid var(--line, rgba(27,42,74,0.1))' }}>
+                <strong style={{ display: 'block', marginBottom: '4px', color: 'var(--text-primary, #1b2a4a)' }}>⏳ Urgent Deadline Alerts</strong>
+                <p style={{ fontSize: '0.82rem', color: 'var(--text-muted, #556070)', margin: 0, lineHeight: 1.5 }}>Live countdown timers notify you of upcoming round closures before it is too late.</p>
+              </div>
+            </div>
           </div>
         </div>
       </div>

@@ -264,10 +264,10 @@
      mobile gutters across fifteen pages, ranging from 20px to 52px,
      because each page added its own padding inside .app-content. */
   --gutter: var(--space-6);
-  --section-gap: clamp(64px, 8vw, 120px);
-  --section-gap-sm: clamp(48px, 6vw, 80px);
-  --section-lead: clamp(48px, 7vw, 88px);
-  --section-lead-sm: clamp(32px, 5vw, 56px);
+  --section-gap: clamp(48px, 6vw, 88px);
+  --section-gap-sm: clamp(36px, 5vw, 64px);
+  --section-lead: clamp(40px, 6vw, 72px);
+  --section-lead-sm: clamp(28px, 4vw, 48px);
 
   /* ── Radius ───────────────────────────────────────────────────
      The reference's material is a soft, rounded paper stock: cards at

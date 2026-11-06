@@ -1,14 +1,14 @@
 .scholarships-page {
   position: relative;
   min-height: 100vh;
-  padding: var(--space-12) var(--space-6) var(--space-16);
+  padding: var(--space-6) var(--space-6) var(--space-12);
   background: var(--page-bg);
 }
 
 .scholarships-page__content {
   position: relative;
   z-index: 1;
-  max-width: 1200px;
+  max-width: var(--grid-max);
   margin: 0 auto;
 }
 

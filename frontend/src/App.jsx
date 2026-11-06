@@ -1,18 +1,19 @@
-import { Routes, Route } from 'react-router-dom'
+import { lazy } from 'react'
+import { Routes, Route, Navigate } from 'react-router-dom'
 import Layout from './components/Layout'
 import HomePage from './pages/HomePage'
-import ScholarshipsPage from './pages/ScholarshipsPage'
-import MatchPage from './pages/MatchPage'
-import ScholarshipDetailsPage from './pages/ScholarshipDetailsPage'
-import LoginPage from './pages/LoginPage'
-import RegisterPage from './pages/RegisterPage'
-import SavedScholarshipsPage from './pages/SavedScholarshipsPage'
-import ComparePage from './pages/ComparePage'
-import DashboardPage from './pages/DashboardPage'
-import ApplicationsPage from './pages/ApplicationsPage'
-import MentorPage from './pages/MentorPage'
-import CountryPage from './pages/CountryPage'
-import NotFoundPage from './pages/NotFoundPage'
+const ScholarshipsPage = lazy(() => import('./pages/ScholarshipsPage'))
+const MatchPage = lazy(() => import('./pages/MatchPage'))
+const ScholarshipDetailsPage = lazy(() => import('./pages/ScholarshipDetailsPage'))
+const LoginPage = lazy(() => import('./pages/LoginPage'))
+const RegisterPage = lazy(() => import('./pages/RegisterPage'))
+const SavedScholarshipsPage = lazy(() => import('./pages/SavedScholarshipsPage'))
+const ComparePage = lazy(() => import('./pages/ComparePage'))
+const DashboardPage = lazy(() => import('./pages/DashboardPage'))
+const ApplicationsPage = lazy(() => import('./pages/ApplicationsPage'))
+const CountryPage = lazy(() => import('./pages/CountryPage'))
+const UnifiedAIPage = lazy(() => import('./pages/UnifiedAIPage'))
+const NotFoundPage = lazy(() => import('./pages/NotFoundPage'))
 import { useScrollReveal } from './hooks/useScrollReveal'
 import './App.css'
 
@@ -44,10 +45,10 @@ function App() {
         <Route path="/applications" element={<ApplicationsPage />} />
         {/* The workspace itself, so a refresh or a shared link lands on it. */}
         <Route path="/applications/:applicationId" element={<ApplicationsPage />} />
-        {/* The mentor. Like the dashboard and the workspace, it resolves its own
-            access state from the server session rather than wrapping the route in
-            a client-side guard that could only trust a browser-supplied value. */}
-        <Route path="/mentor" element={<MentorPage />} />
+        {/* Unified AI Assistant - merges Mentor and AI Assistant */}
+        <Route path="/assistant" element={<UnifiedAIPage />} />
+        {/* Redirect legacy /mentor to /assistant */}
+        <Route path="/mentor" element={<Navigate to="/assistant" replace />} />
         <Route path="/compare" element={<ComparePage />} />
         <Route path="*" element={<NotFoundPage />} />
       </Route>
