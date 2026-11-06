@@ -3,11 +3,11 @@
 Post-merge security and correctness remediation of the production purge preflight system introduced by PR #67.
 
 **Base SHA (PR #67 merge)**: 885ce34e378d9057fb8ae7ca459fbd0caf907758
-**Current HEAD**: 7057673d318abcff65e4e3bab39f41445ccfdac7
+**Current HEAD**: 27ec1ac50d596569b920bccd088ef2fcc2bc2a00
 **Branch**: fix/preflight-remediation-67
 **PR**: #71
 
-## Changes (15 files)
+## Changes (17 files)
 
 | File | Description |
 |------|-------------|
@@ -25,6 +25,7 @@ Post-merge security and correctness remediation of the production purge prefligh
 | `backend/app/services/purge_preflight/manifest.py` | EXPECTED_CLASSIFICATIONS as reference manifest; `ClassificationValidationResult` with detailed mismatch reporting |
 | `backend/tests/test_purge_preflight.py` | **33 new regression tests** (total 64 functions, 64 pytest items): Free/Launch/Scale PITR, missing durable backup, remote checksum mismatch, restore from remote failure, missing PITR, role membership escalation (nested, set_option, inherit_option), schema CREATE, sequence UPDATE, Gate 5 mismatch, Azure credential safety, dynamic SQL/indirect call detection, SECURITY DEFINER search_path, trigger functions, C function uncertainty, Neon API contract (project, branches, cursor pagination, auth, 404, connection errors) |
 | `backend/scripts/init_gate2_test_db.py` | Gate 2 integration test DB initialization (resilient to permission errors) |
+| `backend/app/services/purge_preflight/database.py` | Fixed `get_target_records` query to match test DB schema; RealDictCursor for Gate 2-7, tuple cursor for Gate 1 |
 | `REMEDIATION_SUMMARY.md` | Complete remediation documentation |
 | `PR_BODY.md` | This file |
 
@@ -32,6 +33,7 @@ Post-merge security and correctness remediation of the production purge prefligh
 
 - **99 passed, 3 skipped** (integration tests require TEST_DATABASE_URL or SCHOLARZONE_DATABASE_URL_RO) - `test_purge_preflight.py` (64 items), `test_purge_closed.py` (15), `test_purge_image_safety.py` (11)
 - CI workflow syntax test verifies PostgreSQL 16/18 matrix
+- Full backend CI: 6199 passed, 15 skipped
 
 ## CI Verification Required
 
@@ -42,7 +44,7 @@ Matrix jobs to verify:
 - gate1-integration (PG16, PG18) ✅
 - gate2-integration (PG16, PG18) ✅
 
-**Latest CI Run**: https://github.com/gopal735/ScholarZone/actions/runs/42184613723 (HEAD: 7057673) - ALL GREEN
+**Latest CI Run**: https://github.com/gopal735/ScholarZone/actions/runs/42185703094 (HEAD: 27ec1ac) - ALL GREEN
 
 ## Safety Boundaries Maintained
 
@@ -66,7 +68,7 @@ Matrix jobs to verify:
 
 | Status | Verdict |
 |--------|---------|
-| CI_VERIFIED | ✅ All unit/regression tests pass; CI matrix tests PG16 & PG18 |
+| CI_VERIFIED | ✅ All unit/regression tests pass; CI matrix tests PG16 & PG18; **Gate 1 & Gate 2 PG16/PG18 PASS** |
 | PRODUCTION_PREFLIGHT_VERIFIED | ⏳ Pending production secrets and workflow execution |
 | OWNER_ACTION_REQUIRED | ✅ Configure environments, secrets, GPG keys, verify PITR |
 | PRODUCTION_PURGE_AUTHORIZED | ❌ NOT AUTHORIZED - Preflight only; purge requires separate explicit approval |
