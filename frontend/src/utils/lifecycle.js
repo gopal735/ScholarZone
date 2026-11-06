@@ -37,7 +37,7 @@ const LIFECYCLE_LABELS = {
   [LIFECYCLE.CLOSING_SOON]: 'Closing Soon',
   [LIFECYCLE.CLOSED]: 'Closed',
   [LIFECYCLE.OPEN]: 'Open',
-  [LIFECYCLE.UNKNOWN]: 'Status Unknown',
+  [LIFECYCLE.UNKNOWN]: 'Check deadline',
 };
 
 const LIFECYCLE_DESCRIPTIONS = {
@@ -46,7 +46,7 @@ const LIFECYCLE_DESCRIPTIONS = {
   [LIFECYCLE.CLOSING_SOON]: 'Deadline approaching. Apply now.',
   [LIFECYCLE.CLOSED]: 'This application cycle has ended.',
   [LIFECYCLE.OPEN]: 'Accepting applications.',
-  [LIFECYCLE.UNKNOWN]: 'Deadline information not available.',
+  [LIFECYCLE.UNKNOWN]: 'A confirmed application deadline is not available. Check the official source before applying.',
 };
 
 const LIFECYCLE_CLASSES = {
@@ -72,9 +72,10 @@ export function parseDate(scholarship, fieldName) {
   // Prefer explicit ISO date fields
   const explicitField = fieldName === 'opening' ? 'opening_date' : 'deadline_date';
   if (scholarship[explicitField]) {
-    // Parse as UTC to avoid timezone issues
-    const parsed = new Date(scholarship[explicitField] + 'T00:00:00Z');
-    if (!isNaN(parsed.getTime())) {
+    const parsed = parseLifecycleDate(scholarship[explicitField], {
+      monthOnly: fieldName === 'deadline' && scholarship.deadline_precision === 'month',
+    });
+    if (parsed && !isNaN(parsed.getTime())) {
       return { date: parsed, isExact: scholarship.deadline_precision === 'exact' };
     }
   }
@@ -82,22 +83,57 @@ export function parseDate(scholarship, fieldName) {
   // Fallback to display fields
   const displayField = fieldName === 'opening' ? 'opening_display' : 'deadline_display';
   if (scholarship[displayField] && typeof scholarship[displayField] === 'string') {
-    // Parse as UTC if it's an ISO date
-    const parsed = new Date(scholarship[displayField] + (scholarship[displayField].includes('T') ? '' : 'T00:00:00Z'));
-    if (!isNaN(parsed.getTime())) {
+    const parsed = parseLifecycleDate(scholarship[displayField], {
+      monthOnly: fieldName === 'deadline' && scholarship.deadline_precision === 'month',
+    });
+    if (parsed && !isNaN(parsed.getTime())) {
       return { date: parsed, isExact: scholarship.deadline_precision === 'exact' };
     }
   }
 
   // Fallback to legacy deadline field
   if (fieldName !== 'opening' && scholarship.deadline && typeof scholarship.deadline === 'string') {
-    const parsed = new Date(scholarship.deadline + (scholarship.deadline.includes('T') ? '' : 'T00:00:00Z'));
-    if (!isNaN(parsed.getTime())) {
+    const parsed = parseLifecycleDate(scholarship.deadline, {
+      monthOnly: scholarship.deadline_precision === 'month',
+    });
+    if (parsed && !isNaN(parsed.getTime())) {
       return { date: parsed, isExact: scholarship.deadline_precision === 'exact' };
     }
   }
 
   return { date: null, isExact: false };
+}
+
+function parseLifecycleDate(value, { monthOnly = false } = {}) {
+  if (typeof value !== 'string' || !value.trim()) return null;
+  const text = value.trim();
+  const isoMonth = /^(\d{4})-(\d{2})$/.exec(text);
+  const namedMonth = /^([a-z]+\s+\d{4})$/i.exec(text);
+  let parsed;
+
+  if (isoMonth) {
+    parsed = new Date(`${text}-01T00:00:00Z`);
+    monthOnly = true;
+  } else if (namedMonth) {
+    const [monthName, year] = namedMonth[1].split(/\s+/);
+    const monthIndex = [
+      'january', 'february', 'march', 'april', 'may', 'june',
+      'july', 'august', 'september', 'october', 'november', 'december',
+    ].indexOf(monthName.toLowerCase());
+    if (monthIndex === -1) return null;
+    parsed = new Date(Date.UTC(Number(year), monthIndex, 1));
+    monthOnly = true;
+  } else if (/^\d{4}-\d{2}-\d{2}$/.test(text)) {
+    parsed = new Date(`${text}T00:00:00Z`);
+  } else {
+    parsed = new Date(text);
+  }
+
+  if (Number.isNaN(parsed.getTime())) return null;
+  if (monthOnly) {
+    parsed.setUTCMonth(parsed.getUTCMonth() + 1, 0);
+  }
+  return parsed;
 }
 
 /**
@@ -176,12 +212,10 @@ export function getDaysDifference(targetDate) {
   if (!targetDate) return null;
   
   const today = new Date();
-  today.setHours(0, 0, 0, 0);
-  
+  const todayStart = Date.UTC(today.getUTCFullYear(), today.getUTCMonth(), today.getUTCDate());
   const target = new Date(targetDate);
-  target.setHours(0, 0, 0, 0);
-  
-  const diffMs = target.getTime() - today.getTime();
+  const targetStart = Date.UTC(target.getUTCFullYear(), target.getUTCMonth(), target.getUTCDate());
+  const diffMs = targetStart - todayStart;
   return Math.ceil(diffMs / (1000 * 60 * 60 * 24));
 }
 

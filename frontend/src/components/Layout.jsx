@@ -1,22 +1,22 @@
-import { useEffect, useState, useRef } from 'react'
+import { Suspense, useEffect, useLayoutEffect, useState } from 'react'
 import { Outlet, useLocation } from 'react-router-dom'
-import Navigation from './Navigation'
 import { usePremiumPointer } from '../hooks/usePremiumPointer'
+import Navigation from './Navigation'
 
 export default function Layout() {
-  const [scrollPct, setScrollPct] = useState(0)
   const location = useLocation()
+  const [scrollPct, setScrollPct] = useState(0)
 
   usePremiumPointer()
 
-  // Track page scroll for the top progress bar and vertical route indicator
   useEffect(() => {
     const handleScroll = () => {
       const scrollHeight = document.documentElement.scrollHeight - window.innerHeight
-      if (scrollHeight > 0) {
-        const pct = Math.min(100, Math.max(0, (window.scrollY / scrollHeight) * 100))
-        setScrollPct(pct)
-      }
+      setScrollPct(
+        scrollHeight > 0
+          ? Math.min(100, Math.max(0, (window.scrollY / scrollHeight) * 100))
+          : 0,
+      )
     }
 
     window.addEventListener('scroll', handleScroll, { passive: true })
@@ -24,25 +24,14 @@ export default function Layout() {
     return () => window.removeEventListener('scroll', handleScroll)
   }, [location.pathname])
 
-  // Pointer follower glow
-  const glowRef = useRef(null)
-  useEffect(() => {
-    const handlePointerMove = (e) => {
-      if (glowRef.current) {
-        glowRef.current.style.transform = `translate(${e.clientX}px, ${e.clientY}px)`
-      }
-    }
-    window.addEventListener('pointermove', handlePointerMove, { passive: true })
-    return () => window.removeEventListener('pointermove', handlePointerMove)
-  }, [])
+  useLayoutEffect(() => {
+    if (!location.hash) window.scrollTo(0, 0)
+  }, [location.pathname, location.hash])
 
   return (
     <div className="app-shell">
-      {/* Top Reading Scroll Progress Bar */}
       <div id="pg" style={{ width: `${scrollPct}%` }} aria-hidden="true" />
-
-      {/* Floating Pointer Glow Light */}
-      <div className="glow" id="glow" ref={glowRef} aria-hidden="true" />
+      <div className="p-glow" aria-hidden="true" />
 
       {/* Academic Sketches SVG Symbol Library */}
       <svg width="0" height="0" style={{ position: 'absolute' }} aria-hidden="true">
@@ -84,17 +73,18 @@ export default function Layout() {
         </defs>
       </svg>
 
-      {/* Floating navigation header */}
+      {/* Persistent navigation header */}
       <Navigation />
 
-      {/* Vertical left route line with golden travel bead */}
       <div className="route" aria-hidden="true">
         <b style={{ height: `${scrollPct}%` }} />
         <i style={{ top: `${scrollPct}%` }} />
       </div>
 
       <main className="app-content">
-        <Outlet />
+        <Suspense fallback={<div className="page-loading" role="status">Loading page…</div>}>
+          <Outlet />
+        </Suspense>
       </main>
     </div>
   )

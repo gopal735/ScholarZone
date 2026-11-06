@@ -34,6 +34,10 @@ export default function ScholarshipCard({ scholarship, index = 0, onOpenDetails 
   const description = readText(scholarship.description)
   const eligibility = readList(scholarship.eligibility)
   const eligibilitySummary = readText(scholarship.eligibility_summary)
+  const cardSummary = (description || eligibilitySummary || '').replace(/\s+/g, ' ').trim()
+  const summaryPreview = cardSummary.length > 180
+    ? `${cardSummary.slice(0, 177).trimEnd()}…`
+    : cardSummary
   const benefits = readList(scholarship.benefits)
   const coverage = readList(scholarship.coverage)
   const requirements = readList(scholarship.requirements)
@@ -134,7 +138,7 @@ export default function ScholarshipCard({ scholarship, index = 0, onOpenDetails 
             </span>
           </div>
           <div className="scholarship-card__heading">
-            <h2>{scholarship.title}</h2>
+            <h2 id={`scholarship-title-${scholarship.id}`}>{scholarship.title}</h2>
             <p className="scholarship-card__where">{scholarship.country}</p>
           </div>
           {onOpenDetails && (
@@ -173,6 +177,10 @@ export default function ScholarshipCard({ scholarship, index = 0, onOpenDetails 
           <p className="scholarship-card__provider">{scholarship.provider}</p>
         )}
 
+        {summaryPreview && (
+          <p className="scholarship-card__summary">{summaryPreview}</p>
+        )}
+
         <div className="scholarship-card__signals">
           <span className={isVerified ? 'p-tag scholarship-card__verified' : 'p-tag scholarship-card__unverified'}>
             <svg viewBox="0 0 24 24" aria-hidden="true">
@@ -190,7 +198,7 @@ export default function ScholarshipCard({ scholarship, index = 0, onOpenDetails 
         <div className={`scholarship-card__detail scholarship-card__detail--deadline scholarship-card__detail--${deadlineStatus.className}`}>
           <dt>Deadline</dt>
           <dd>
-            {getDeadlineLabel(scholarship)}
+            <span className="scholarship-card__deadline-label">{getDeadlineLabel(scholarship)}</span>
             {lifecycle.showCountdown && lifecycle.daysUntilDeadline !== null && (
               <span className={`scholarship-card__countdown ${lifecycle.className}`}>
                 {lifecycle.daysUntilDeadline === 0 ? 'Deadline today' : 
@@ -235,30 +243,25 @@ export default function ScholarshipCard({ scholarship, index = 0, onOpenDetails 
           <div className="scholarship-card__detail scholarship-card__detail--academic">
             <dt>Academic scope</dt>
             <dd className="scholarship-card__academic-preview">
-              {departments.length > 0 && (
-                <span className="scholarship-card__academic-item">
-                  <span className="scholarship-card__academic-label">Departments:</span>
-                  {departments.slice(0, 2).map((d, i) => (
-                    <span key={i} className="scholarship-card__academic-value">{d}{departments.length > 2 && i === 1 ? ` +${departments.length - 2} more` : ''}</span>
-                  ))}
+              {[
+                { label: 'Departments', values: departments, limit: 2 },
+                { label: 'Fields', values: eligibleFields, limit: 2 },
+                { label: 'Programmes', values: eligibleProgrammes, limit: 1 },
+              ].filter(({ values }) => values.length > 0).map(({ label, values, limit }) => (
+                <span key={label} className="scholarship-card__academic-item">
+                  <span className="scholarship-card__academic-label">{label}</span>
+                  <span className="scholarship-card__academic-values">
+                    {values.slice(0, limit).map((value) => (
+                      <span key={value} className="scholarship-card__academic-value">{value}</span>
+                    ))}
+                    {values.length > limit && (
+                      <span className="scholarship-card__academic-value scholarship-card__academic-value--more">
+                        +{values.length - limit} more
+                      </span>
+                    )}
+                  </span>
                 </span>
-              )}
-              {eligibleFields.length > 0 && (
-                <span className="scholarship-card__academic-item">
-                  <span className="scholarship-card__academic-label">Fields:</span>
-                  {eligibleFields.slice(0, 2).map((f, i) => (
-                    <span key={i} className="scholarship-card__academic-value">{f}{eligibleFields.length > 2 && i === 1 ? ` +${eligibleFields.length - 2} more` : ''}</span>
-                  ))}
-                </span>
-              )}
-              {eligibleProgrammes.length > 0 && (
-                <span className="scholarship-card__academic-item">
-                  <span className="scholarship-card__academic-label">Programmes:</span>
-                  {eligibleProgrammes.slice(0, 1).map((p, i) => (
-                    <span key={i} className="scholarship-card__academic-value">{p}{eligibleProgrammes.length > 1 ? ` +${eligibleProgrammes.length - 1} more` : ''}</span>
-                  ))}
-                </span>
-              )}
+              ))}
             </dd>
           </div>
         )}

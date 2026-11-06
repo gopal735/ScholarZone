@@ -37,6 +37,7 @@ import {
   fetchScholarshipStatsFromSnapshot,
   fetchScholarshipByIdFromSnapshot,
 } from './staticScholarshipService'
+import { classifyLifecycle, LIFECYCLE } from '../utils/lifecycle'
 
 export class ScholarshipApiError extends Error {
   constructor(message, status) {
@@ -198,6 +199,88 @@ export async function fetchScholarships(query = {}, options) {
       })
 
   return dedupe(key, send, options?.signal)
+}
+
+/**
+ * Lifecycle states are derived from cycle dates rather than stored as one
+ * database status. Fetch all pages before filtering so results and pagination
+ * describe the complete matching catalogue, not just the current API page.
+ */
+export async function fetchScholarshipsByLifecycle(query = {}, lifecycle = 'All', options) {
+  const page = Number(query.page) || 1
+  const limit = Number(query.limit) || 12
+  const lifecycleForStatus = {
+    open: LIFECYCLE.OPEN,
+    'closing-soon': LIFECYCLE.CLOSING_SOON,
+    closed: LIFECYCLE.CLOSED,
+  }[query.status]
+  const targetLifecycle = lifecycle === 'All' ? lifecycleForStatus || lifecycle : lifecycle
+
+  if (lifecycle !== 'All' && lifecycleForStatus && lifecycle !== lifecycleForStatus) {
+    return {
+      items: [],
+      pagination: { page, limit, total: 0, total_pages: 1 },
+    }
+  }
+
+  if (!targetLifecycle || targetLifecycle === 'All') {
+    return fetchScholarships(query, options)
+  }
+
+  const filters = { ...query }
+  delete filters.page
+  delete filters.limit
+  delete filters.lifecycle
+  const apiFilters = {
+    ...filters,
+    status: lifecycleForStatus ? undefined : filters.status,
+  }
+  const firstPage = await fetchScholarships({ ...apiFilters, page: 1, limit: 100 }, options)
+
+  if (firstPage.fromSnapshot) {
+    const snapshot = await fetchScholarshipsFromSnapshot({
+      ...apiFilters,
+      lifecycle: targetLifecycle,
+      page,
+      limit,
+    })
+    return {
+      ...snapshot,
+      fromSnapshot: true,
+      ...(firstPage.staticMode ? { staticMode: true } : {}),
+    }
+  }
+
+  const totalPages = firstPage.pagination?.total_pages || 1
+  const remainingPages = await Promise.all(
+    Array.from({ length: Math.max(0, totalPages - 1) }, (_, index) =>
+      fetchScholarships({ ...apiFilters, page: index + 2, limit: 100 }, options),
+    ),
+  )
+
+  if (remainingPages.some((result) => result.fromSnapshot)) {
+    const snapshot = await fetchScholarshipsFromSnapshot({
+      ...apiFilters,
+      lifecycle: targetLifecycle,
+      page,
+      limit,
+    })
+    return { ...snapshot, fromSnapshot: true }
+  }
+
+  const allItems = [firstPage, ...remainingPages].flatMap((result) => result.items)
+  const matches = allItems.filter((scholarship) => classifyLifecycle(scholarship).status === targetLifecycle)
+  const total = matches.length
+
+  return {
+    items: matches.slice((page - 1) * limit, page * limit),
+    pagination: {
+      page,
+      limit,
+      total,
+      total_pages: Math.max(1, Math.ceil(total / limit)),
+    },
+  }
 }
 
 export async function fetchScholarshipById(id, options) {

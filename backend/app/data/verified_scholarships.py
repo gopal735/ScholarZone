@@ -2817,5 +2817,128 @@ VERIFIED_SCHOLARSHIPS = (
         is_verified=True,
         last_verified_date=date(2026, 8, 31),
     ),
+    ScholarshipIngestionRecord(
+        name="Kipaji Scholarship Fund (University of Twente)",
+        country="Netherlands",
+        degree_levels="Master's",
+        funding_type="Partial",
+        official_source_url="https://www.utwente.nl/en/education/scholarship-finder/kipaji-scholarship/",
+        official_source="University of Twente",
+        deadline="1 April 2027",
+        deadline_date=date(2027, 4, 1),
+        deadline_precision="exact",
+        application_period=(
+            "For eligible University of Twente Master's programmes starting in September 2027. "
+            "Applicants must also apply for the University of Twente Scholarship (UTS)."
+        ),
+        eligibility_summary=(
+            "Prospective Master's students with nationality from a country listed on the official Kipaji page "
+            "(including Bangladesh), who meet UTS requirements and have a BSc from their home or neighbouring "
+            "country. Applicants must receive a partial UTS award; current University of Twente students and "
+            "Master's students in the Faculty of Geo-Information Science and Earth Observation (ITC) are excluded."
+        ),
+        eligibility=[
+            "Nationality must be from the official Kipaji eligible-country list; Bangladesh is included.",
+            "Meet all University of Twente Scholarship (UTS) requirements.",
+            "Have obtained a BSc in the home country or a neighbouring country; a BSc from the University of Twente does not qualify.",
+            "Receive a partial University of Twente Scholarship.",
+            "Have good pre-master programme grades (average of 8) if applicable.",
+            "Submit a motivation explaining how the studies will enhance scientific capacity or entrepreneurship in the home country.",
+            "Not be a current University of Twente student.",
+            "Master's programmes at the Faculty of Geo-Information Science and Earth Observation (ITC) are excluded.",
+        ],
+        coverage=[
+            "Up to EUR 12,000 toward study-related expenses.",
+            "The award is additional to UTS and may bring the combined scholarship package to a full scholarship.",
+            "Tuition fees are not paid directly by the Kipaji Scholarship.",
+        ],
+        required_documents=[
+            "University of Twente Scholarship application.",
+            "Motivation letter stating interest in Kipaji consideration.",
+            "Additional motivation letter if requested by the programme faculty.",
+        ],
+        official_updates_url=(
+            "https://www.utwente.nl/en/education/scholarship-finder/university-of-twente-scholarship/"
+        ),
+        region="Europe",
+        departments=[
+            "Behavioural, Management and Social Sciences",
+            "Electrical Engineering, Mathematics and Computer Science",
+            "Engineering Technology",
+            "Science and Technology",
+        ],
+        eligible_fields=[
+            "Applied mathematics and data science",
+            "Physics and semiconductor science",
+            "Biomedical and health sciences",
+            "Business, management and information technology",
+            "Chemical sciences and engineering",
+            "Civil, construction and industrial engineering",
+            "Communication, education and European studies",
+            "Computer science, embedded systems and robotics",
+            "Environmental, energy and water technology",
+            "Electrical engineering and nanotechnology",
+            "Industrial design and interaction technology",
+            "Mechanical engineering",
+            "Philosophy of science, technology and society",
+            "Psychology and public administration",
+            "Technical medicine",
+        ],
+        eligible_programmes=[
+            "Applied Mathematics",
+            "Applied Physics",
+            "Biomedical Engineering",
+            "Business Administration",
+            "Business Information Technology",
+            "Chemical Science & Engineering",
+            "Civil Engineering & Management",
+            "Communication Science",
+            "Computer Science",
+            "Construction Management & Engineering",
+            "Educational Science & Technology",
+            "Electrical Engineering",
+            "Embedded Systems",
+            "Environmental & Energy Management",
+            "European Studies",
+            "Health Sciences",
+            "Industrial Design Engineering",
+            "Industrial Engineering & Management",
+            "Interaction Technology",
+            "Mechanical Engineering",
+            "Nanotechnology",
+            "Philosophy of Science, Technology & Society",
+            "Psychology",
+            "Public Administration",
+            "Robotics",
+            "Science Education",
+            "Sustainable Energy Technology",
+            "Technical Medicine",
+            "Water Technology",
+        ],
+        application_method=[
+            "Apply for the University of Twente Scholarship by 1 April 2027.",
+            "State Kipaji interest in the UTS motivation letter; there is no separate Kipaji application.",
+            "The programme faculty nominates eligible UTS recipients for Kipaji consideration.",
+        ],
+        best_fit=(
+            "Talented prospective University of Twente Master's students from the official Kipaji eligible-country list "
+            "who need additional support for study-related costs."
+        ),
+        notes=(
+            "Official Kipaji page lists a 1 April 2027 deadline, a maximum award of EUR 12,000, and eligible Master's "
+            "programmes. The award is an additional scholarship for UTS recipients, not a standalone tuition waiver."
+        ),
+        academic_provenance={
+            "source_urls": [
+                "https://www.utwente.nl/en/education/scholarship-finder/kipaji-scholarship/",
+                "https://www.utwente.nl/en/education/scholarship-finder/university-of-twente-scholarship/",
+            ],
+            "verified_on": "2026-11-06",
+            "programme_scope": "Official Kipaji page; ITC Master's programmes are excluded.",
+        },
+        tuition_coverage=False,
+        funding_amount=12000,
+        funding_currency="EUR",
+        is_verified=True,
+    ),
 )
-

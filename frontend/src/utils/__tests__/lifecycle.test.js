@@ -90,6 +90,19 @@ describe('Lifecycle Classification', () => {
       expect(result.date).toEqual(new Date(fmt(in30DaysUTC) + 'T00:00:00Z'))
     })
 
+    it('parses month-only deadlines through the end of that month', () => {
+      const scholarship = { deadline_date: '2027-02-01', deadline_precision: 'month' }
+      const result = parseDate(scholarship, 'deadline')
+      expect(result.date).toEqual(new Date('2027-02-28T00:00:00Z'))
+      expect(result.isExact).toBe(false)
+    })
+
+    it('parses month and year deadline labels', () => {
+      const scholarship = { deadline_display: 'October 2027', deadline_precision: 'month' }
+      const result = parseDate(scholarship, 'deadline')
+      expect(result.date).toEqual(new Date('2027-10-31T00:00:00Z'))
+    })
+
     it('returns null for missing dates', () => {
       const scholarship = {}
       const result = parseDate(scholarship, 'deadline')
@@ -333,6 +346,8 @@ describe('Lifecycle Classification', () => {
       const scholarship = { status: 'unknown' }
       const result = classifyLifecycle(scholarship)
       expect(result.status).toBe(LIFECYCLE.UNKNOWN)
+      expect(result.label).toBe('Check deadline')
+      expect(result.description).toMatch(/official source before applying/)
     })
 
     it('returns UNKNOWN for missing deadline and opening_date', () => {

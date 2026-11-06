@@ -1,4 +1,6 @@
 import { readFundingDetails } from '../utils/scholarshipDetail'
+import { classifyLifecycle, parseDate } from '../utils/lifecycle'
+import { getScholarshipStatus } from '../utils/scholarshipPresentation'
 
 /* ═══════════════════════════════════════════════════════════════════
    Static scholarship service — the API-independent catalogue
@@ -118,40 +120,20 @@ export function clearSnapshotCache() {
 
 const PAGE_SIZE = 12
 
-const STATUS_LABELS = {
-  open: 'Open',
-  closed: 'Closed',
-  upcoming: 'Upcoming',
-}
-
 function statusOf(record) {
-  const today = new Date()
-  const deadline = record.deadline_date ? new Date(record.deadline_date) : null
-
-  if (record.status === 'closed') return { key: 'closed', label: STATUS_LABELS.closed, className: 'closed' }
-  if (deadline && !Number.isNaN(deadline.getTime()) && deadline < today) {
-    return { key: 'closed', label: STATUS_LABELS.closed, className: 'closed' }
-  }
-  if (deadline && !Number.isNaN(deadline.getTime())) {
-    const days = Math.ceil((deadline - today) / (24 * 60 * 60 * 1000))
-    if (days <= 60) return { key: 'closing-soon', label: `Closing in ${days}d`, className: 'closing-soon' }
-  }
-  if (record.status === 'upcoming') return { key: 'upcoming', label: STATUS_LABELS.upcoming, className: 'upcoming' }
-  return { key: 'open', label: STATUS_LABELS.open, className: 'open' }
+  const lifecycle = classifyLifecycle(record)
+  return { key: lifecycle.status.replace('_', '-'), ...getScholarshipStatus(record) }
 }
 
 /** Extract deadline month (1-12) from a record, or null if not available. */
 function getDeadlineMonth(record) {
-  const dateStr = record.deadline_date || record.deadline
-  if (!dateStr) return null
-  const timestamp = Date.parse(dateStr)
-  if (Number.isNaN(timestamp)) return null
-  return new Date(timestamp).getMonth() + 1
+  const parsedDeadline = parseDate(record, 'deadline').date
+  return parsedDeadline ? parsedDeadline.getUTCMonth() + 1 : null
 }
 
 /** Get status key from a record (open, closing-soon, closed, upcoming). */
 function getStatusKey(record) {
-  return statusOf(record).key
+  return statusOf(record).className
 }
 
 const DEGREE_WORDS = {
@@ -215,6 +197,11 @@ function sortRecords(records, sortBy) {
       })
     }
     case 'recently-added':
+      return sorted.sort((a, b) => {
+        const left = a.created_at ? new Date(a.created_at).getTime() : -Infinity
+        const right = b.created_at ? new Date(b.created_at).getTime() : -Infinity
+        return right - left
+      })
     case 'recently-updated':
       return sorted.sort((a, b) => {
         const left = a.updated_at ? new Date(a.updated_at).getTime() : -Infinity
@@ -311,6 +298,7 @@ export function toScholarship(record) {
     application_method: record.application_method,
     best_fit: record.best_fit,
     notes: record.notes,
+    created_at: record.created_at,
     updated_at: record.updated_at,
     // Academic eligibility
     departments: record.departments,
@@ -339,6 +327,7 @@ export async function fetchScholarshipsFromSnapshot(query = {}) {
     funding = 'All',
     deadline_month = 'All',
     status = 'All',
+    lifecycle = 'All',
     sort = 'default',
     page = 1,
     limit = PAGE_SIZE,
@@ -370,6 +359,9 @@ export async function fetchScholarshipsFromSnapshot(query = {}) {
   }
   if (status && status !== 'All') {
     records = records.filter((record) => getStatusKey(record) === status)
+  }
+  if (lifecycle && lifecycle !== 'All') {
+    records = records.filter((record) => classifyLifecycle(record).status === lifecycle)
   }
 
   records = sortRecords(records, sort)
