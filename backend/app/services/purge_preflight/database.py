@@ -95,10 +95,13 @@ class DatabaseAccessor:
 
     @contextlib.contextmanager
     def connect_test(self) -> Generator[PgConnection, None, None]:
-        """Create a connection to disposable test database (Gate 1 only)."""
+        """Create a connection to disposable test database (Gate 1 only).
+        
+        Gate 1 uses tuple-style cursor access (row[0]), so we must NOT use RealDictCursor.
+        """
         if not self.config.test_url:
             raise RuntimeError("TEST_DATABASE_URL not configured - required for Gate 1")
-        conn = psycopg2.connect(self.config.test_url, cursor_factory=RealDictCursor)
+        conn = psycopg2.connect(self.config.test_url)
         try:
             conn.autocommit = False  # Explicit transaction control for Gate 1
             yield conn
