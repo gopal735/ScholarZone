@@ -4,9 +4,9 @@ Post-merge security and correctness remediation of the production purge prefligh
 
 **Historical PR #67 merge SHA**: 885ce34e378d9057fb8ae7ca459fbd0caf907758
 **Implementation baseline**: 3515dff7bc6cb25785dfc0604eabc36dde0338e7
-**Current PR HEAD**: bc590c95c26ad33bf4d42cf23c349111700c7933
+**Current PR HEAD**: 00dfd8c9664f57d67f6011c8c8cd51a079c325a0
 **PR base branch (master)**: 3eb00da883097bef58b26dd4f54d2d11ae5f3dab
-**Commits ahead of base**: 24
+**Commits ahead of base**: 27
 **Changed files**: 17
 **Branch**: fix/preflight-remediation-67
 **PR**: #71
@@ -51,7 +51,9 @@ Matrix jobs to verify:
 - gate1-integration (PG16, PG18) ✅
 - gate2-integration (PG16, PG18) ✅
 
-**Latest CI Run**: https://github.com/gopal735/ScholarZone/actions/runs/42198321390 (HEAD: bc590c9) - ALL GREEN (18/18 required jobs SUCCESS)
+**Latest CI Run (required jobs)**: https://github.com/gopal735/ScholarZone/actions/runs/42198321390 (HEAD: bc590c9) - ALL GREEN (18/18 required jobs SUCCESS)
+
+**Exact-head CI Run**: https://github.com/gopal735/ScholarZone/actions/runs/42200248539 (HEAD: 00dfd8c) - 18/18 required jobs SUCCESS; Snapshot ID Validation (optional) FAILS
 
 ## Safety Boundaries Maintained
 
