@@ -646,8 +646,8 @@ export default function ScholarshipList({ items, initialCountry }) {
         </div>
       ) : (
         <div className="scholarship-grid" aria-busy={isRefreshing}>
-          {currentItems.map((scholarship, index) => (
-            <ScholarshipCard key={scholarship.id} scholarship={scholarship} index={index} />
+          {currentItems.map((scholarship) => (
+            <ScholarshipCard key={scholarship.id} scholarship={scholarship} />
           ))}
         </div>
       )}

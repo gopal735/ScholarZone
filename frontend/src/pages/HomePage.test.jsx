@@ -34,6 +34,28 @@ describe('HomePage goal finder defaults', () => {
     expect(screen.getByRole('combobox', { name: 'Country' })).toHaveValue('Any')
   })
 
+  it('teaches students what to verify before saving a scholarship', () => {
+    const { container } = render(
+      <MemoryRouter>
+        <HomePage />
+      </MemoryRouter>,
+    )
+
+    const guide = screen.getByRole('complementary', {
+      name: 'Read every opportunity with confidence.',
+    })
+    expect(within(guide).getAllByRole('listitem')).toHaveLength(3)
+    expect(within(guide).getByText('Who can apply?')).toBeInTheDocument()
+    expect(within(guide).getByText('What does funding cover?')).toBeInTheDocument()
+    expect(within(guide).getByText('When is the real deadline?')).toBeInTheDocument()
+    expect(container.querySelector('.mq')).not.toBeInTheDocument()
+
+    const scholarshipCard = container.querySelector('.sc')
+    expect(within(scholarshipCard).getByText('No filters applied')).toBeInTheDocument()
+    expect(within(scholarshipCard).getByRole('link', { name: /check eligibility and deadline/i }))
+      .toHaveAttribute('target', '_blank')
+  })
+
   it('clears goal criteria and manual filters together', () => {
     render(
       <MemoryRouter>

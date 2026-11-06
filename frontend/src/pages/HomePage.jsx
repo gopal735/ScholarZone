@@ -1,4 +1,4 @@
-import { Fragment, useEffect, useMemo, useRef, useState } from 'react'
+import { useEffect, useMemo, useRef, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { useScholarshipDirectory } from '../hooks/useScholarshipDirectory'
 import { useScholarshipStats } from '../hooks/useScholarshipStats'
@@ -6,8 +6,6 @@ import { useSavedScholarships } from '../hooks/useSavedScholarships'
 import { getConfirmedOfficialLogo, getMonogramInitial } from '../utils/scholarshipLogos'
 import { classifyLifecycle, formatCountdown, formatOpeningCountdown } from '../utils/lifecycle'
 import './HomePage.css'
-
-const HERO_HEADLINE_WORDS = 'Scholarships you can actually apply for.'.split(' ')
 
 const EUROPE_COUNTRIES = ['Germany', 'Europe', 'UK', 'United Kingdom', 'France', 'Sweden', 'Netherlands', 'Norway', 'Denmark', 'Finland', 'Austria', 'Belgium', 'Poland', 'Hungary', 'Czech Republic', 'Portugal', 'Spain', 'Italy', 'Switzerland', 'Ireland']
 
@@ -395,9 +393,6 @@ export default function HomePage() {
   const [selectedQuizOption, setSelectedQuizOption] = useState(null)
   const [quizFeedback, setQuizFeedback] = useState('')
 
-  // 3D Tilt for Hero Stack
-  const [stackTilt, setStackTilt] = useState({ rx: 0, ry: 0 })
-
   const [removedCriteria, setRemovedCriteria] = useState({})
 
   // Derived Parsed Filter Criteria
@@ -634,22 +629,6 @@ export default function HomePage() {
     return () => window.removeEventListener('keydown', handleKeyDown)
   }, [])
 
-  // 3D Tilt on hero stack
-  const handleStackPointerMove = (e) => {
-    const stack = e.currentTarget.getBoundingClientRect()
-    const x = (e.clientX - (stack.left + stack.width / 2)) / stack.width
-    const y = (e.clientY - (stack.top + stack.height / 2)) / stack.height
-    setStackTilt({ rx: -y * 10, ry: x * 12 })
-  }
-
-  const handleStackPointerLeave = () => {
-    setStackTilt({ rx: 0, ry: 0 })
-  }
-
-  // Marquee string
-  const marqueeText = useMemo(() => {
-    return allScholarships.slice(0, 10).map((s) => s.title).join('  ·  ')
-  }, [allScholarships])
   return (
     <div className="sz-home-editorial">
       {/* ── 01. HERO SECTION ────────────────────────────────────────── */}
@@ -660,19 +639,7 @@ export default function HomePage() {
               <p className="eb">
                 <b>01</b>Scholarship finder for Bangladesh
               </p>
-              <h1>
-                {HERO_HEADLINE_WORDS.map((word, i) => (
-                  <Fragment key={`${word}-${i}`}>
-                    <span
-                      className={`w ${word.toLowerCase() === 'actually' ? 'it' : ''}`}
-                      style={{ '--i': i }}
-                    >
-                      {word}
-                    </span>
-                    {i < HERO_HEADLINE_WORDS.length - 1 ? ' ' : null}
-                  </Fragment>
-                ))}
-              </h1>
+              <h1>Scholarships you can actually apply for.</h1>
               <p className="lead">
                 Write your goal in one sentence. ScholarZone checks it against the catalogue and shows what fits.
               </p>
@@ -822,121 +789,39 @@ export default function HomePage() {
               </div>
             </div>
 
-            {/* 3D Paper Stack Graphic */}
-            <div className="gl" aria-hidden="true">
-              <div
-                className="stack"
-                onPointerMove={handleStackPointerMove}
-                onPointerLeave={handleStackPointerLeave}
-                style={{
-                  '--rx': `${stackTilt.rx.toFixed(2)}deg`,
-                  '--ry': `${stackTilt.ry.toFixed(2)}deg`,
-                }}
-              >
-                <i className="pen" aria-hidden="true">
-                  <s className="pe" />
-                  <s className="pf" />
-                  <s className="pb" />
-                  <s className="pw" />
-                  <s className="pg-tip" />
-                </i>
-
-                {/* Sheet A: Routes from Dhaka */}
-                <div className="sh a">
-                  <svg className="rt" viewBox="0 0 600 520" role="img" aria-label="Routes from Dhaka to destinations">
-                    <defs>
-                      <mask id="m0">
-                        <path className="mk" style={{ '--i': 0 }} pathLength="1" d="M190 320Q165 195 235 100" />
-                      </mask>
-                      <mask id="m1">
-                        <path className="mk" style={{ '--i': 1 }} pathLength="1" d="M190 320Q225 185 310 92" />
-                      </mask>
-                      <mask id="m2">
-                        <path className="mk" style={{ '--i': 2 }} pathLength="1" d="M190 320Q225 250 305 190" />
-                      </mask>
-                      <mask id="m3">
-                        <path className="mk" style={{ '--i': 3 }} pathLength="1" d="M190 320Q345 235 505 215" />
-                      </mask>
-                      <mask id="m4">
-                        <path className="mk" style={{ '--i': 4 }} pathLength="1" d="M190 320Q310 440 470 442" />
-                      </mask>
-                    </defs>
-                    <path className="dots" mask="url(#m0)" d="M190 320Q165 195 235 100" />
-                    <path className="dots" mask="url(#m1)" d="M190 320Q225 185 310 92" />
-                    <path className="dots" mask="url(#m2)" d="M190 320Q225 250 305 190" />
-                    <path className="dots" mask="url(#m3)" d="M190 320Q345 235 505 215" />
-                    <path className="dots" mask="url(#m4)" d="M190 320Q310 440 470 442" />
-                    <circle className="pin" cx="235" cy="100" r="7" />
-                    <text className="pl" x="227" y="88" textAnchor="end">London</text>
-                    <circle className="pin" cx="310" cy="92" r="7" />
-                    <text className="pl" x="316" y="80" textAnchor="start">Berlin</text>
-                    <circle className="pin" cx="305" cy="190" r="7" />
-                    <text className="pl" x="315" y="194" textAnchor="start">Istanbul</text>
-                    <circle className="pin" cx="505" cy="215" r="7" />
-                    <text className="pl" x="499" y="201" textAnchor="end">Tokyo</text>
-                    <circle className="pin" cx="470" cy="442" r="7" />
-                    <text className="pl" x="478" y="458" textAnchor="start">Sydney</text>
-                    <circle className="home" cx="190" cy="320" r="9" />
-                    <text className="pl" style={{ fill: 'var(--ink)' }} x="190" y="352" textAnchor="middle">
-                      Dhaka
-                    </text>
-                  </svg>
-                </div>
-
-                {/* Sheet B: Application Checklist */}
-                <div className="sh b">
-                  <i className="tp" />
-                  <h4>My checklist</h4>
-                  <ul>
-                    <li>
-                      <svg className="tk" viewBox="0 0 20 20">
-                        <path d="M3 11 8 16 17 4" />
-                      </svg>
-                      IELTS result
-                    </li>
-                    <li>
-                      <svg className="tk" viewBox="0 0 20 20">
-                        <path d="M3 11 8 16 17 4" />
-                      </svg>
-                      Transcripts
-                    </li>
-                    <li>
-                      <svg className="tk" viewBox="0 0 20 20">
-                        <path d="M3 11 8 16 17 4" />
-                      </svg>
-                      Recommendations
-                    </li>
-                    <li>
-                      <svg className="tk" viewBox="0 0 20 20">
-                        <path d="M3 11 8 16 17 4" />
-                      </svg>
-                      Statement of purpose
-                    </li>
-                    <li>
-                      <span className="tk o" />
-                      Passport copy
-                    </li>
-                  </ul>
-                </div>
-
-                {/* Sheet C: Award Certificate */}
-                <div className="sh c">
-                  <div className="cb">
-                    <small>SCHOLARSHIP AWARD</small>
-                    <p className="nm">Your Name Here</p>
-                    <span className="ul" />
-                    <p className="ds">Your next chapter starts with one application.</p>
+            <aside className="hero-learning" aria-labelledby="hero-learning-title">
+              <p className="hero-learning__eyebrow">A simple way to shortlist</p>
+              <h2 id="hero-learning-title">Read every opportunity with confidence.</h2>
+              <p className="hero-learning__intro">
+                Before you save a programme, check these three things on its official page.
+              </p>
+              <ol className="hero-learning__steps">
+                <li>
+                  <span aria-hidden="true">01</span>
+                  <div>
+                    <strong>Who can apply?</strong>
+                    <p>Check citizenship, degree level and academic requirements.</p>
                   </div>
-                  <div className="seal">
-                    <b>SZ</b>
+                </li>
+                <li>
+                  <span aria-hidden="true">02</span>
+                  <div>
+                    <strong>What does funding cover?</strong>
+                    <p>Separate tuition, living costs, travel and insurance.</p>
                   </div>
-                  <div className="rib">
-                    <s />
-                    <s />
+                </li>
+                <li>
+                  <span aria-hidden="true">03</span>
+                  <div>
+                    <strong>When is the real deadline?</strong>
+                    <p>A month-only date is not an exact day. Confirm it before planning.</p>
                   </div>
-                </div>
-              </div>
-            </div>
+                </li>
+              </ol>
+              <a className="hero-learning__link" href="#learn">
+                Learn how to compare awards <span aria-hidden="true">?</span>
+              </a>
+            </aside>
           </div>
 
           {/* ── Refine Results Filters Bar ────────────────────────────── */}
@@ -1118,7 +1003,7 @@ export default function HomePage() {
                         </h2>
                       </header>
                       <div className="lifecycle-section__grid">
-                        {items.map((s, index) => {
+                        {items.map((s) => {
                           const isSaved = savedIds.includes(s.id) || savedIds.includes(String(s.id))
                           const officialLogo = getConfirmedOfficialLogo(s)
                           const monogramInitial = getMonogramInitial(s.title)
@@ -1134,7 +1019,6 @@ export default function HomePage() {
                             <article
                               key={s.id}
                               className={`sc ${s.matchPercent < 100 ? 'part' : ''}`}
-                              style={{ '--n': index }}
                             >
                               <div className="top">
                                 <div className="mono" aria-label={officialLogo ? `${s.title} official logo` : undefined}>
@@ -1214,15 +1098,36 @@ export default function HomePage() {
                                 )}
                               </div>
 
+                              {s.officialUrl ? (
+                                <a
+                                  className="sc-apply-check"
+                                  href={s.officialUrl}
+                                  target="_blank"
+                                  rel="noopener noreferrer"
+                                  aria-label={`Check eligibility and deadline for ${s.title} on the official page`}
+                                >
+                                  Check eligibility &amp; deadline on official page
+                                  <span aria-hidden="true">↗</span>
+                                </a>
+                              ) : (
+                                <p className="sc-apply-check">
+                                  Before applying, confirm eligibility and deadline on the official page.
+                                </p>
+                              )}
+
                               <div className="fit">
                                 <span>
                                   {s.totalCriteria > 1
-                                    ? `Matches ${s.matchScore} of ${s.totalCriteria}`
-                                    : 'All criteria'}
+                                    ? `Matches ${s.matchScore} of ${s.totalCriteria} filters`
+                                    : s.matchScore > 0
+                                      ? 'Matches selected filter'
+                                      : 'No filters applied'}
                                 </span>
-                                <i>
-                                  <s style={{ width: `${s.matchPercent}%` }} />
-                                </i>
+                                {s.matchScore > 0 && (
+                                  <i aria-hidden="true">
+                                    <s style={{ width: `${s.matchPercent}%` }} />
+                                  </i>
+                                )}
                                 <button
                                   type="button"
                                   className="save"
@@ -1249,7 +1154,7 @@ export default function HomePage() {
                       </h2>
                     </header>
                     <div className="lifecycle-section__grid">
-                      {scholarshipsByLifecycle.unknown.map((s, index) => {
+                      {scholarshipsByLifecycle.unknown.map((s) => {
                         const isSaved = savedIds.includes(s.id) || savedIds.includes(String(s.id))
                         const officialLogo = getConfirmedOfficialLogo(s)
                         const monogramInitial = getMonogramInitial(s.title)
@@ -1262,7 +1167,6 @@ export default function HomePage() {
                           <article
                             key={s.id}
                             className={`sc ${s.matchPercent < 100 ? 'part' : ''}`}
-                            style={{ '--n': index }}
                           >
                             <div className="top">
                               <div className="mono" aria-label={officialLogo ? `${s.title} official logo` : undefined}>
@@ -1322,15 +1226,36 @@ export default function HomePage() {
                               )}
                             </div>
 
+                            {s.officialUrl ? (
+                              <a
+                                className="sc-apply-check"
+                                href={s.officialUrl}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                aria-label={`Check eligibility and deadline for ${s.title} on the official page`}
+                              >
+                                Check eligibility &amp; deadline on official page
+                                <span aria-hidden="true">↗</span>
+                              </a>
+                            ) : (
+                              <p className="sc-apply-check">
+                                Before applying, confirm eligibility and deadline on the official page.
+                              </p>
+                            )}
+
                             <div className="fit">
                               <span>
                                 {s.totalCriteria > 1
-                                  ? `Matches ${s.matchScore} of ${s.totalCriteria}`
-                                  : 'All criteria'}
+                                  ? `Matches ${s.matchScore} of ${s.totalCriteria} filters`
+                                  : s.matchScore > 0
+                                    ? 'Matches selected filter'
+                                    : 'No filters applied'}
                               </span>
-                              <i>
-                                <s style={{ width: `${s.matchPercent}%` }} />
-                              </i>
+                              {s.matchScore > 0 && (
+                                <i aria-hidden="true">
+                                  <s style={{ width: `${s.matchPercent}%` }} />
+                                </i>
+                              )}
                               <button
                                 type="button"
                                 className="save"
@@ -1355,14 +1280,6 @@ export default function HomePage() {
           </p>
         </div>
       </section>
-
-      {/* ── Marquee Ticker ───────────────────────────────────────────── */}
-      <div className="mq" aria-hidden="true">
-        <div>
-          <span>{marqueeText} · </span>
-          <span>{marqueeText} · </span>
-        </div>
-      </div>
 
       {/* ── 02. TOOLKIT (Bento Grid) ─────────────────────────────────── */}
       <section id="tools">
