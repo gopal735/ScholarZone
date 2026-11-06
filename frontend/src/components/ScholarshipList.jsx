@@ -482,7 +482,7 @@ export default function ScholarshipList({ items, initialCountry }) {
             { value: LIFECYCLE.UPCOMING, label: 'Upcoming' },
             { value: LIFECYCLE.OPEN, label: 'Open' },
             { value: LIFECYCLE.CLOSING_SOON, label: 'Closing Soon' },
-            { value: LIFECYCLE.UNKNOWN, label: 'Status Unknown' },
+            { value: LIFECYCLE.UNKNOWN, label: 'Check deadline' },
             { value: LIFECYCLE.CLOSED, label: 'Closed' },
           ].map((tab) => (
             <button

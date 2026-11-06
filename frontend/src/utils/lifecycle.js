@@ -37,7 +37,7 @@ const LIFECYCLE_LABELS = {
   [LIFECYCLE.CLOSING_SOON]: 'Closing Soon',
   [LIFECYCLE.CLOSED]: 'Closed',
   [LIFECYCLE.OPEN]: 'Open',
-  [LIFECYCLE.UNKNOWN]: 'Status Unknown',
+  [LIFECYCLE.UNKNOWN]: 'Check deadline',
 };
 
 const LIFECYCLE_DESCRIPTIONS = {
@@ -46,7 +46,7 @@ const LIFECYCLE_DESCRIPTIONS = {
   [LIFECYCLE.CLOSING_SOON]: 'Deadline approaching. Apply now.',
   [LIFECYCLE.CLOSED]: 'This application cycle has ended.',
   [LIFECYCLE.OPEN]: 'Accepting applications.',
-  [LIFECYCLE.UNKNOWN]: 'Deadline information not available.',
+  [LIFECYCLE.UNKNOWN]: 'A confirmed application deadline is not available. Check the official source before applying.',
 };
 
 const LIFECYCLE_CLASSES = {

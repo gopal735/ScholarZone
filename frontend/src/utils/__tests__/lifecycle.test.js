@@ -346,6 +346,8 @@ describe('Lifecycle Classification', () => {
       const scholarship = { status: 'unknown' }
       const result = classifyLifecycle(scholarship)
       expect(result.status).toBe(LIFECYCLE.UNKNOWN)
+      expect(result.label).toBe('Check deadline')
+      expect(result.description).toMatch(/official source before applying/)
     })
 
     it('returns UNKNOWN for missing deadline and opening_date', () => {

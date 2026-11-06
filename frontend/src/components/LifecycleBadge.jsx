@@ -24,6 +24,7 @@ export function LifecycleBadge({
         data-lifecycle={displayLifecycle.status}
         data-days-until={displayLifecycle.daysUntilDeadline}
         data-days-until-opening={displayLifecycle.daysUntilOpening}
+        title={displayLifecycle.description}
       >
         {displayLifecycle.label}
       </span>
