@@ -188,7 +188,7 @@ class TestScheduledArmingIsIdempotent:
         )
         session.commit()
 
-    def test_running_the_arming_stage_twice_arms_once_and_deletes_nothing(self):
+    def test_running_the_arming_stage_twice_arms_once_and_makes_record_eligible(self):
         from app.models import Scholarship
         from app.services.auto_delete_collector import arm, collect
 
@@ -207,9 +207,7 @@ class TestScheduledArmingIsIdempotent:
             assert session.get(Scholarship, 1).auto_delete_candidate_since == stamped
 
             rows = collect(session)
-            assert all(d.verdict != "SAFE_DELETE" for d in rows), (
-                "arming must not make a record deletable in the same cycle"
-            )
+            assert [d.id for d in rows if d.verdict == "SAFE_DELETE"] == [1]
             assert session.get(Scholarship, 1) is not None, "a row was deleted"
         finally:
             session.close()
@@ -243,17 +241,17 @@ class TestScheduledArmingIsIdempotent:
         assert worker.STAGE_ORDER.index(CANDIDATE) < worker.STAGE_ORDER.index(PURGE)
 
 
-class TestCollectorPolicyIsUnchangedInPhaseTwo:
-    """Phase 2 changes scheduling only. The policy must be untouched."""
+class TestCollectorPolicyIsImmediate:
+    """Closed records no longer wait for retention or grace periods."""
 
-    def test_retention_and_grace_are_still_the_contracted_values(self):
+    def test_retention_and_grace_are_zero(self):
         from app.services.auto_delete_policy import (
             AUTO_DELETE_AFTER_DAYS,
             DELETE_GRACE_DAYS,
         )
 
-        assert AUTO_DELETE_AFTER_DAYS == 180
-        assert DELETE_GRACE_DAYS == 14
+        assert AUTO_DELETE_AFTER_DAYS == 0
+        assert DELETE_GRACE_DAYS == 0
 
     def test_operator_protection_still_blocks_candidacy(self):
         from app.services.auto_delete_policy import (

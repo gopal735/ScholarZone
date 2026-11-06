@@ -120,4 +120,6 @@ class TestRetirementReconciliation:
         # flag prefix proves the retire stage is what hid a record and that it is
         # therefore safe to restore.
         assert 'archived_reason = "programme discontinued"' in source
-        assert 'archived_reason = f"deadline passed on' in source
+        archive_stage = source.split("def do_archive", 1)[1].split("def ", 1)[0]
+        assert 'classified[row.id] == "closed"' in archive_stage
+        assert '"lifecycle classified closed"' in archive_stage

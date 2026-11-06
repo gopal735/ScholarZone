@@ -73,6 +73,27 @@ class TestProductionDatabaseSafety:
 
 
 class TestWorkerSurface:
+    def test_archive_classifier_preserves_a_documented_recurring_cycle(self):
+        classified = worker._classify_lifecycle(
+            [
+                {
+                    "id": 1,
+                    "status": "open",
+                    "deadline_date": "2000-01-01",
+                },
+                {
+                    "id": 2,
+                    "status": "open",
+                    "deadline_date": "2000-01-01",
+                    "deadline_display": (
+                        "Three calls annually: March 15, July 15, November 15"
+                    ),
+                },
+            ]
+        )
+
+        assert classified == {1: "closed", 2: "upcoming"}
+
     def test_every_advertised_stage_is_selectable(self):
         """The stages named in the workflow must be the stages the CLI accepts."""
         source = open(worker.__file__, encoding="utf-8").read()

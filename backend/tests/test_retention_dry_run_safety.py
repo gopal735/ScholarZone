@@ -489,14 +489,13 @@ class TestUncertainRecordsStayKept:
         assert ids["unknown"] not in candidates
         assert report["summary"]["states"]["UNKNOWN"] >= 1
 
-    def test_the_grace_record_is_eligible_but_not_a_candidate(self, session):
+    def test_the_armed_record_is_a_candidate_with_zero_day_grace(self, session):
         ids = seed(session)
         report = dry_run(session, as_of=AS_OF, run_id="keep-2", policy=DELETING)
         states = report["summary"]["states"]
         candidates = {c["scholarship_id"] for c in report["delete_candidates"]}
-        assert states.get("GRACE_ELIGIBLE", 0) >= 1
-        assert report["summary"]["grace_eligible"] >= 1
-        assert ids["grace"] not in candidates
+        assert states.get("DELETE_CANDIDATE", 0) >= 2
+        assert ids["grace"] in candidates
 
     def test_the_evidence_record_is_not_a_candidate(self, session):
         ids = seed(session)
@@ -504,16 +503,19 @@ class TestUncertainRecordsStayKept:
         candidates = {c["scholarship_id"] for c in report["delete_candidates"]}
         assert ids["with_evidence"] not in candidates
 
-    def test_only_the_fully_qualified_record_is_a_candidate(self, session):
+    def test_all_fully_qualified_records_are_candidates(self, session):
         ids = seed(session)
         report = dry_run(session, as_of=AS_OF, run_id="keep-4", policy=DELETING)
-        assert [c["scholarship_id"] for c in report["delete_candidates"]] == [ids["candidate"]]
+        assert [c["scholarship_id"] for c in report["delete_candidates"]] == [
+            ids["candidate"],
+            ids["grace"],
+        ]
 
 
 class TestGraceClockIsDeterministic:
     @pytest.mark.parametrize(
         "days_armed, expected_state",
-        [(0, "GRACE_ELIGIBLE"), (13, "GRACE_ELIGIBLE"), (14, "DELETE_CANDIDATE"), (400, "DELETE_CANDIDATE")],
+        [(0, "DELETE_CANDIDATE"), (13, "DELETE_CANDIDATE"), (14, "DELETE_CANDIDATE"), (400, "DELETE_CANDIDATE")],
     )
     def test_the_clock_resolves_on_a_fixed_boundary(self, session, tmp_path, days_armed, expected_state):
         row = Scholarship(

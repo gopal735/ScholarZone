@@ -284,18 +284,19 @@ class TestPreservePrecedence:
         assert reopened.reason == "NOT_ARCHIVED"
         assert "quality gate" in reopened.detail
 
-    def test_retention_not_elapsed_keeps_the_record(self):
+    def test_zero_day_retention_allows_an_otherwise_safe_record_immediately(self):
         decision = decide(archived_at=AS_OF - timedelta(days=179))
-        assert decision.bucket == BUCKET_PROTECTED
-        assert decision.reason == "RETENTION_NOT_ELAPSED"
+        assert decision.decision == DECISION_DELETE
+        assert decision.bucket == BUCKET_DELETE
 
     def test_retention_elapsed_on_the_boundary_is_deletable(self):
         decision = decide(archived_at=AS_OF - timedelta(days=180))
         assert decision.decision == DECISION_DELETE
 
-    def test_grace_not_elapsed_keeps_the_record(self):
+    def test_zero_day_grace_allows_an_armed_record_immediately(self):
         decision = decide(candidate_since=AS_OF - timedelta(days=13))
-        assert decision.reason == "GRACE_NOT_ELAPSED"
+        assert decision.decision == DECISION_DELETE
+        assert decision.bucket == BUCKET_DELETE
 
     def test_not_armed_keeps_the_record(self):
         decision = decide(candidate_since=None)

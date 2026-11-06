@@ -208,8 +208,8 @@ def arm(
 
     The grace clock starts here, and it is cleared the moment any condition stops
     holding. That is the whole point of persisting it: a record that reopens and
-    re-closes between two cycles must serve the full grace period again, and
-    nothing already on the row can tell that happened.
+    re-closes is evaluated from its new archive timestamp, and nothing
+    already on the row can tell that happened.
     """
     from app.models import Scholarship
 

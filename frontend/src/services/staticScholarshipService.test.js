@@ -6,6 +6,7 @@ import {
   getSnapshotUrl,
   assertSnapshotShape,
   fetchScholarshipsFromSnapshot,
+  fetchScholarshipStatsFromSnapshot,
   fetchScholarshipByIdFromSnapshot,
 } from './staticScholarshipService.js'
 
@@ -390,7 +391,7 @@ describe('staticScholarshipService', () => {
 
     it('filters by search across title, country, degree, description, and funding', async () => {
       const result = await fetchScholarshipsFromSnapshot({ search: 'master' })
-      expect(result.items.length).toBe(2)
+      expect(result.items.length).toBe(1)
       expect(result.items.every(s => s.degree.toLowerCase().includes('master'))).toBe(true)
     })
 
@@ -414,7 +415,7 @@ describe('staticScholarshipService', () => {
 
     it('filters by degree using aspect matching', async () => {
       const result = await fetchScholarshipsFromSnapshot({ degree: 'Master' })
-      expect(result.items.length).toBe(2)
+      expect(result.items.length).toBe(1)
       expect(result.items.every(s => s.degree.toLowerCase().includes('master'))).toBe(true)
     })
 
@@ -451,8 +452,39 @@ describe('staticScholarshipService', () => {
 
     it('filters by status', async () => {
       const result = await fetchScholarshipsFromSnapshot({ status: 'closed' })
-      expect(result.items.length).toBe(1)
-      expect(result.items[0].id).toBe(4)
+      expect(result.items).toEqual([])
+      expect(result.pagination.total).toBe(0)
+    })
+
+    it('does not expose expired records classified as closed', async () => {
+      clearSnapshotCache()
+      const expiredSnapshot = {
+        ...extendedSnapshot,
+        scholarships: [{
+          ...extendedSnapshot.scholarships[0],
+          id: 6,
+          title: 'Expired Scholarship',
+          deadline: '2000-01-01',
+          deadline_date: '2000-01-01',
+          status: 'open',
+        }],
+      }
+      vi.stubGlobal('fetch', vi.fn(async () => ({ ok: true, json: async () => expiredSnapshot })))
+
+      const result = await fetchScholarshipsFromSnapshot()
+      expect(result.items).toEqual([])
+      expect(result.pagination.total).toBe(0)
+    })
+
+    it('counts only visible records in snapshot statistics', async () => {
+      const stats = await fetchScholarshipStatsFromSnapshot()
+
+      expect(stats).toEqual({
+        total: 4,
+        countries: 3,
+        fullyFunded: 2,
+        verified: 3,
+      })
     })
 
     it('filters by derived lifecycle before paginating the snapshot', async () => {
@@ -494,7 +526,7 @@ describe('staticScholarshipService', () => {
     it('supports recently-updated sort (newest first)', async () => {
       const result = await fetchScholarshipsFromSnapshot({ sort: 'recently-updated' })
       expect(result.items[0].id).toBe(5) // Most recent updated_at
-      expect(result.items[1].id).toBe(4)
+      expect(result.items[1].id).toBe(3)
     })
 
     it('supports recently-added sort by creation date', async () => {
@@ -550,13 +582,13 @@ describe('staticScholarshipService', () => {
     it('supports name-asc sort', async () => {
       const result = await fetchScholarshipsFromSnapshot({ sort: 'name-asc' })
       expect(result.items[0].title).toBe('Another Scholarship')
-      expect(result.items[4].title).toBe('Test Scholarship 2')
+      expect(result.items[3].title).toBe('Test Scholarship 2')
     })
 
     it('supports name-desc sort', async () => {
       const result = await fetchScholarshipsFromSnapshot({ sort: 'name-desc' })
       expect(result.items[0].title).toBe('Test Scholarship 2')
-      expect(result.items[4].title).toBe('Another Scholarship')
+      expect(result.items[3].title).toBe('Another Scholarship')
     })
 
     it('supports az sort (legacy alias for name-asc)', async () => {
@@ -574,8 +606,8 @@ describe('staticScholarshipService', () => {
       expect(result.items.length).toBe(2)
       expect(result.pagination.page).toBe(1)
       expect(result.pagination.limit).toBe(2)
-      expect(result.pagination.total).toBe(5)
-      expect(result.pagination.total_pages).toBe(3)
+      expect(result.pagination.total).toBe(4)
+      expect(result.pagination.total_pages).toBe(2)
     })
 
     it('returns correct total count and pages for filtered results', async () => {
@@ -686,6 +718,24 @@ describe('staticScholarshipService', () => {
       const result = await fetchScholarshipByIdFromSnapshot('1')
       expect(result).not.toBeNull()
       expect(result.id).toBe(1)
+    })
+
+    it('does not return records classified as closed', async () => {
+      clearSnapshotCache()
+      const closedSnapshot = {
+        ...mockSnapshot,
+        scholarships: [
+          ...mockSnapshot.scholarships,
+          {
+            ...mockSnapshot.scholarships[0],
+            id: 3,
+            status: 'closed',
+          },
+        ],
+      }
+      vi.stubGlobal('fetch', vi.fn(async () => ({ ok: true, json: async () => closedSnapshot })))
+
+      await expect(fetchScholarshipByIdFromSnapshot(3)).resolves.toBeNull()
     })
   })
 

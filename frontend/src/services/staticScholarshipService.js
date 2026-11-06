@@ -313,6 +313,12 @@ export function toScholarship(record) {
   }
 }
 
+function getPublicSnapshotRecords(snapshot) {
+  return snapshot.scholarships
+    .filter((record) => classifyLifecycle(record).status !== 'closed')
+    .map(toScholarship)
+}
+
 /**
  * Read the catalogue from the snapshot with the live directory's query
  * semantics. Returns the same paginated envelope the API returns, so a
@@ -333,7 +339,7 @@ export async function fetchScholarshipsFromSnapshot(query = {}) {
     limit = PAGE_SIZE,
   } = query
 
-  let records = snapshot.scholarships.map(toScholarship)
+  let records = getPublicSnapshotRecords(snapshot)
 
   const needle = String(search).trim().toLowerCase()
   if (needle) {
@@ -384,8 +390,7 @@ export async function fetchScholarshipsFromSnapshot(query = {}) {
 /** The snapshot's headline figures, for the home page's live indicator. */
 export async function fetchScholarshipStatsFromSnapshot() {
   const snapshot = await loadScholarshipSnapshot()
-  const stats = snapshot.stats || {}
-  const records = snapshot.scholarships
+  const records = getPublicSnapshotRecords(snapshot)
   const fullyFunded = records.filter(
     (record) => record.fully_funded === true
   ).length
@@ -394,10 +399,10 @@ export async function fetchScholarshipStatsFromSnapshot() {
   ).length
 
   return {
-    total: stats.total ?? records.length,
-    countries: stats.countries ?? 0,
-    fullyFunded: stats.fully_funded ?? fullyFunded,
-    verified: stats.verified_active ?? verified,
+    total: records.length,
+    countries: new Set(records.map((record) => record.country).filter(Boolean)).size,
+    fullyFunded,
+    verified,
   }
 }
 
@@ -409,5 +414,6 @@ export async function fetchScholarshipByIdFromSnapshot(id) {
   const snapshot = await loadScholarshipSnapshot()
   const record = snapshot.scholarships.find((s) => String(s.id) === String(id))
   if (!record) return null
+  if (classifyLifecycle(record).status === 'closed') return null
   return toScholarship(record)
 }

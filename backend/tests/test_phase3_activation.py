@@ -10,8 +10,7 @@ Two families:
 * **reachability** - what the scheduler can select, in what order, and what that
   implies when a future refactor changes the selection logic;
 * **safety** - that reaching the delete stage still deletes nothing unless a
-  record passed the policy, the retention period, a grace period spanning an
-  earlier cycle, and a re-decision inside the deleting transaction.
+  record passed the policy and a re-decision inside the deleting transaction.
 
 The second family is deliberately mostly negative. A delete that happens when it
 should not is the failure this whole feature exists to prevent, and every test
@@ -225,32 +224,28 @@ def backdate_grace(session, sid, days=DELETE_GRACE_DAYS):
     session.commit()
 
 
-class TestGraceAndPolicyStillGate:
-    def test_7_a_newly_armed_record_cannot_be_deleted_in_the_same_cycle(self, factory, tmp_path):
+class TestImmediateDeletionStillRequiresThePolicy:
+    def test_7_a_newly_armed_record_can_be_deleted_in_the_same_cycle(self, factory, tmp_path):
         from app.models import Scholarship
 
         session = factory()
         try:
             closed_row(session, 1)
             report = arm_and_purge(session, tmp_path / "a.json")
-            assert report["deleted"] == [], (
-                "a record armed in this cycle was deleted without serving the grace period"
-            )
-            assert session.get(Scholarship, 1) is not None
+            assert report["deleted"] == [1]
+            assert session.get(Scholarship, 1) is None
         finally:
             session.close()
 
-    @pytest.mark.parametrize("days", [0, 1, 13])
-    def test_8_grace_under_fourteen_days_cannot_be_deleted(self, factory, tmp_path, days):
+    def test_8_no_grace_period_is_required_after_arming(self, factory, tmp_path):
         from app.models import Scholarship
 
         session = factory()
         try:
             closed_row(session, 1)
-            backdate_grace(session, 1, days=days)
             report = arm_and_purge(session, tmp_path / "a.json")
-            assert report["deleted"] == []
-            assert session.get(Scholarship, 1) is not None
+            assert report["deleted"] == [1]
+            assert session.get(Scholarship, 1) is None
         finally:
             session.close()
 
@@ -263,10 +258,9 @@ class TestGraceAndPolicyStillGate:
             {"deletion_protected": True},
             {"is_archived": False, "archived_at": None},
             {"status": "open"},
-            {"days": 10},
         ],
     )
-    def test_9_any_failed_condition_blocks_even_after_grace(
+    def test_9_any_failed_condition_blocks_immediate_deletion(
         self, factory, tmp_path, override
     ):
         from app.models import Scholarship
@@ -434,11 +428,11 @@ class TestGraceAndPolicyStillGate:
         assert report.error
 
 
-# ------------------------------------------------------- policy unchanged
-class TestThePolicyIsUntouchedByActivation:
-    def test_retention_and_grace_are_still_the_contracted_values(self):
-        assert AUTO_DELETE_AFTER_DAYS == 180
-        assert DELETE_GRACE_DAYS == 14
+# ------------------------------------------------------- immediate policy
+class TestThePolicyIsImmediateButStillSafe:
+    def test_retention_and_grace_are_zero(self):
+        assert AUTO_DELETE_AFTER_DAYS == 0
+        assert DELETE_GRACE_DAYS == 0
 
     def test_safe_delete_is_still_structurally_impossible_when_a_check_fails(self):
         # One false check, with everything else satisfied and the grace served.
