@@ -505,6 +505,20 @@ jobs:
           Linux-pip-
     - name: Install dependencies
       run: cd backend && pip install -r requirements.txt
+    - name: Debug snapshot file
+      run: |
+        echo "=== Snapshot file ==="
+        ls -la frontend/public/scholarships-snapshot.json
+        head -c 500 frontend/public/scholarships-snapshot.json
+        echo ""
+        echo "=== Sitemap file ==="
+        ls -la frontend/public/sitemap.xml
+        head -c 500 frontend/public/sitemap.xml
+        echo ""
+        echo "=== Ledger file ==="
+        ls -la backend/verification/research_ledger.jsonl
+        head -c 500 backend/verification/research_ledger.jsonl
+        echo ""
     - name: Run snapshot ID validation
       run: python backend/scripts/validate_snapshot_ids.py 2>&1 | tee backend/snapshot_id_validation.log
     - name: Upload validation logs
