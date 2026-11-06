@@ -2,7 +2,7 @@
 
 ## Base Information
 - **Base SHA (PR #67 merge)**: 885ce34e378d9057fb8ae7ca459fbd0caf907758
-- **Current HEAD**: 27ec1ac50d596569b920bccd088ef2fcc2bc2a00
+- **Current HEAD**: 3515dff7bc6cb25785dfc0604eabc36dde0338e7
 - **Branch**: fix/preflight-remediation-67
 - **PR**: #71
 
@@ -17,13 +17,13 @@
 8. `backend/app/services/purge_preflight/gate5_classification.py` - Explicit mismatch reporting, 34-ID reconciliation, EXPECTED_CLASSIFICATIONS as reference manifest
 9. `backend/app/services/purge_preflight/gate6_cycle_validation.py` - Gate 6 config loading
 10. `backend/app/services/purge_preflight/gate7_git_safety.py` - Gate 7 config loading
-10. `backend/app/services/purge_preflight/purge_manifest.py` - Gate 2 config for manifest generation
-11. `backend/app/services/purge_preflight/manifest.py` - EXPECTED_CLASSIFICATIONS as reference manifest, `ClassificationValidationResult` with detailed mismatch reporting
-11. `.github/workflows/ci.yml` - PG16/PG18 matrix for all jobs
-11. `backend/tests/test_purge_preflight.py` - **33 new regression tests** (total 64 functions, 64 pytest items): Free/Launch/Scale PITR, missing durable backup, remote checksum mismatch, restore from remote failure, missing PITR, role membership escalation (nested, set_option, inherit_option), schema CREATE, sequence UPDATE, Gate 5 mismatch, Azure credential safety, dynamic SQL/indirect call detection, SECURITY DEFINER search_path, trigger functions, C function uncertainty, Neon API contract (project, branches, pagination, auth, 404, connection errors)
-12. `backend/scripts/init_gate2_test_db.py` - Gate 2 integration test DB initialization (resilient to permission errors)
-12. `REMEDIATION_SUMMARY.md` - This document
-13. `PR_BODY.md` - PR description
+11. `backend/app/services/purge_preflight/purge_manifest.py` - Gate 2 config for manifest generation
+12. `backend/app/services/purge_preflight/manifest.py` - EXPECTED_CLASSIFICATIONS as reference manifest, `ClassificationValidationResult` with detailed mismatch reporting
+13. `backend/tests/test_purge_preflight.py` - **33 new regression tests** (total 64 functions, 64 pytest items): Free/Launch/Scale PITR, missing durable backup, remote checksum mismatch, restore from remote failure, missing PITR, role membership escalation (nested, set_option, inherit_option), schema CREATE, sequence UPDATE, Gate 5 mismatch, Azure credential safety, dynamic SQL/indirect call detection, SECURITY DEFINER search_path, trigger functions, C function uncertainty, Neon API contract (project, branches, pagination, auth, 404, connection errors)
+14. `backend/scripts/init_gate2_test_db.py` - Gate 2 integration test DB initialization (resilient to permission errors)
+15. `backend/app/services/purge_preflight/database.py` - Fixed `get_target_records` query to match test DB schema; RealDictCursor for Gate 2-7, tuple cursor for Gate 1
+16. `REMEDIATION_SUMMARY.md` - This document
+17. `PR_BODY.md` - PR description
 
 ---
 
@@ -178,7 +178,7 @@ All tests pass:
 ---
 
 ## CI Run Links
-- **Latest CI Run**: https://github.com/gopal735/ScholarZone/actions/runs/42185703094 (HEAD: 27ec1ac)
+- **Latest CI Run**: https://github.com/gopal735/ScholarZone/actions/runs/42188753387 (HEAD: 3515dff)
 - **All 18 required jobs SUCCESS** (PG16/PG18 matrix):
   - Schema Compatibility (PG16, PG18) ✅
   - Preflight (PG16, PG18) ✅
@@ -210,7 +210,7 @@ All tests pass:
 ## Final Verdict
 
 ### CI_VERIFIED ✅
-All unit/regression tests pass. CI pipeline tests against PostgreSQL 16 and 18. Latest run (42185703094) all green - **Gate 1 and Gate 2 integration tests PASS on both PG16 & PG18**. All 18 required jobs SUCCESS.
+All unit/regression tests pass. CI pipeline tests against PostgreSQL 16 and 18. Latest run (42188753387) all green - **Gate 1 and Gate 2 integration tests PASS on both PG16 & PG18**. All 18 required jobs SUCCESS.
 
 ### PRODUCTION_PREFLIGHT_VERIFIED ⏳
 Pending: Requires production secrets configuration and successful workflow_dispatch execution against production Neon database.
