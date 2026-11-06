@@ -1,33 +1,18 @@
+import { classifyLifecycle, LIFECYCLE } from './lifecycle'
+
 const statusMetadata = {
   open: { label: 'Open', className: 'open' },
   'closing-soon': { label: 'Closing soon', className: 'closing-soon' },
   closed: { label: 'Closed', className: 'closed' },
-}
-
-function getDerivedStatus(deadlineDate) {
-  if (!deadlineDate) {
-    return 'open'
-  }
-
-  const deadline = new Date(`${deadlineDate}T00:00:00`)
-  if (Number.isNaN(deadline.getTime())) {
-    return 'open'
-  }
-
-  const today = new Date()
-  today.setHours(0, 0, 0, 0)
-  if (deadline < today) {
-    return 'closed'
-  }
-
-  const closingSoonThreshold = new Date(today)
-  closingSoonThreshold.setDate(today.getDate() + 30)
-  return deadline <= closingSoonThreshold ? 'closing-soon' : 'open'
+  opening: { label: 'Opening soon', className: 'opening' },
+  upcoming: { label: 'Upcoming', className: 'upcoming' },
+  unknown: { label: 'Status unknown', className: 'unknown' },
 }
 
 export function getScholarshipStatus(scholarship) {
-  const status = scholarship.status || getDerivedStatus(scholarship.deadline_date)
-  return statusMetadata[status] || statusMetadata.open
+  const lifecycle = classifyLifecycle(scholarship)
+  const status = lifecycle.status.replace('_', '-')
+  return statusMetadata[status] || statusMetadata[LIFECYCLE.UNKNOWN]
 }
 
 export function getDeadlineLabel(scholarship) {

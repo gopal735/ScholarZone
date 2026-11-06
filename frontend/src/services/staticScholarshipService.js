@@ -1,4 +1,5 @@
 import { readFundingDetails } from '../utils/scholarshipDetail'
+import { classifyLifecycle } from '../utils/lifecycle'
 
 /* ═══════════════════════════════════════════════════════════════════
    Static scholarship service — the API-independent catalogue
@@ -339,6 +340,7 @@ export async function fetchScholarshipsFromSnapshot(query = {}) {
     funding = 'All',
     deadline_month = 'All',
     status = 'All',
+    lifecycle = 'All',
     sort = 'default',
     page = 1,
     limit = PAGE_SIZE,
@@ -370,6 +372,9 @@ export async function fetchScholarshipsFromSnapshot(query = {}) {
   }
   if (status && status !== 'All') {
     records = records.filter((record) => getStatusKey(record) === status)
+  }
+  if (lifecycle && lifecycle !== 'All') {
+    records = records.filter((record) => classifyLifecycle(record).status === lifecycle)
   }
 
   records = sortRecords(records, sort)

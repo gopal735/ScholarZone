@@ -431,6 +431,18 @@ describe('staticScholarshipService', () => {
       expect(result.items[0].id).toBe(4)
     })
 
+    it('filters by derived lifecycle before paginating the snapshot', async () => {
+      const result = await fetchScholarshipsFromSnapshot({
+        lifecycle: 'closing_soon',
+        page: 1,
+        limit: 1,
+      })
+
+      expect(result.items.map((item) => item.id)).toEqual([5])
+      expect(result.pagination.total).toBe(1)
+      expect(result.pagination.page).toBe(1)
+    })
+
     it('filters by status closing-soon', async () => {
       const result = await fetchScholarshipsFromSnapshot({ status: 'closing-soon' })
       expect(result.items.length).toBe(1)

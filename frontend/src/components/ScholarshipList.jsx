@@ -1,14 +1,14 @@
 import { useEffect, useMemo, useRef, useState } from 'react'
 import ScholarshipCard from './ScholarshipCard'
 import { scholarships } from '../data/scholarships'
-import { fetchScholarships } from '../services/scholarshipService'
+import { fetchScholarshipsByLifecycle } from '../services/scholarshipService'
 import { getScholarshipStatus, matchesDegreeFilter, matchesFundingFilter } from '../utils/scholarshipPresentation'
 import { classifyLifecycle, LIFECYCLE } from '../utils/lifecycle'
 import './ScholarshipList.css'
 
 const PAGE_SIZE = 12
 const SEARCH_DEBOUNCE_MS = 250
-const STATUS_ORDER = { open: 0, 'closing-soon': 1, closed: 2 }
+const STATUS_ORDER = { open: 0, opening: 1, upcoming: 2, 'closing-soon': 3, closed: 4, unknown: 5 }
 
 function toValidTimestamp(value) {
   if (typeof value !== 'string' || value.trim() === '') {
@@ -109,8 +109,12 @@ function filterLocalScholarships(items, { search, country, degree, funding, dead
     const matchDegree = matchesDegreeFilter(scholarship.degree, degree)
     const matchFunding = matchesFundingFilter(scholarship.funding, funding)
     const matchDeadlineMonth = deadlineMonth === 'All' || getLocalDeadlineMonth(scholarship) === Number(deadlineMonth)
-    const matchStatus = status === 'All' || getScholarshipStatus(scholarship).className === status
     const lifecycle = classifyLifecycle(scholarship)
+    const matchStatus = status === 'All' || (
+      status === 'closed'
+        ? lifecycle.status === LIFECYCLE.CLOSED
+        : getScholarshipStatus(scholarship).className === status
+    )
     const matchLifecycle = lifecycleFilter === 'All' || lifecycle.status === lifecycleFilter
 
     return matchSearch && matchCountry && matchDegree && matchFunding && matchDeadlineMonth && matchStatus && matchLifecycle
@@ -175,7 +179,7 @@ export default function ScholarshipList({ items, initialCountry }) {
       setApiError('')
 
       try {
-        const directory = await fetchScholarships(
+        const directory = await fetchScholarshipsByLifecycle(
           {
             search,
             country,
@@ -187,6 +191,7 @@ export default function ScholarshipList({ items, initialCountry }) {
             page,
             limit: PAGE_SIZE,
           },
+          lifecycleFilter,
           { signal: controller.signal },
         )
 
@@ -222,7 +227,7 @@ export default function ScholarshipList({ items, initialCountry }) {
       window.clearTimeout(timer)
       controller.abort()
     }
-  }, [country, deadlineMonth, degree, funding, isDirectory, page, requestVersion, search, sortBy, status])
+  }, [country, deadlineMonth, degree, funding, isDirectory, lifecycleFilter, page, requestVersion, search, sortBy, status])
 
   const hasActiveControls = Boolean(search) || country !== 'All' || degree !== 'All' || funding !== 'All' || deadlineMonth !== 'All' || status !== 'All' || lifecycleFilter !== 'All' || sortBy !== 'recommended'
   const isInitialLoading = isDirectory && loadState === 'loading' && apiDirectory.items.length === 0
@@ -462,20 +467,20 @@ export default function ScholarshipList({ items, initialCountry }) {
         </div>
 
         {/* Lifecycle Filter Tabs */}
-        <div className="lifecycle-filter-tabs" role="tablist" aria-label="Filter by application lifecycle">
+        <div className="lifecycle-filter-tabs" role="group" aria-label="Filter by application lifecycle">
           {[
             { value: 'All', label: 'All Lifecycles' },
             { value: LIFECYCLE.OPENING, label: 'Opening Soon' },
             { value: LIFECYCLE.UPCOMING, label: 'Upcoming' },
             { value: LIFECYCLE.OPEN, label: 'Open' },
             { value: LIFECYCLE.CLOSING_SOON, label: 'Closing Soon' },
+            { value: LIFECYCLE.UNKNOWN, label: 'Status Unknown' },
             { value: LIFECYCLE.CLOSED, label: 'Closed' },
           ].map((tab) => (
             <button
               key={tab.value}
               type="button"
-              role="tab"
-              aria-selected={lifecycleFilter === tab.value}
+              aria-pressed={lifecycleFilter === tab.value}
               className={`lifecycle-tab ${lifecycleFilter === tab.value ? 'is-active' : ''} lifecycle-tab--${tab.value}`}
               onClick={() => {
                 setLifecycleFilter((l) => (l === tab.value ? 'All' : tab.value))
