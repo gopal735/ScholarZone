@@ -182,7 +182,7 @@ def create_schema_and_data(conn):
                 None,
                 False,
                 "verified",
-                past_date,
+past_date,
                 "test-verifier",
                 "Test verification notes",
                 past_date + timedelta(days=365),
@@ -191,8 +191,7 @@ def create_schema_and_data(conn):
                 None,
                 None, None, None, None, None,
                 None, None, None, None, None,
-                None, None, None, None, None,
-                None, None, None, None
+                None, None, None
             ))
         
         print(f"Inserted {len(CANONICAL_TARGET_IDS)} test records")
