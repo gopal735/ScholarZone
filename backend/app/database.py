@@ -241,6 +241,8 @@ def _upgrade_postgresql_schema(engine: Engine) -> None:
 
         columns = {column["name"] for column in inspect(engine).get_columns("scholarships")}
         additions = {
+            # Backward-compatible URL slugs for legacy links.
+            "legacy_id": "INTEGER UNIQUE",
             "image_url": "VARCHAR(2048)",
             "image_source_url": "VARCHAR(2048)",
             "image_source_type": "VARCHAR(32)",
@@ -662,78 +664,82 @@ def _upgrade_sqlite_schema(engine: Engine) -> None:
 
     columns = {column["name"] for column in inspect(engine).get_columns("scholarships")}
     additions = {
-        "status": "VARCHAR(20) NOT NULL DEFAULT 'open'",
-        "last_verified_at": "DATE",
-        "last_verified_date": "DATE",
-        "region": "VARCHAR(255)",
-        "duration": "TEXT",
-        "application_period": "TEXT",
-        "official_source": "VARCHAR(255)",
-        "official_source_url": "VARCHAR(2048)",
-        "catalogue_url": "VARCHAR(2048)",
-        "official_updates_url": "VARCHAR(2048)",
-        "application_link": "VARCHAR(2048)",
-        "image_url": "VARCHAR(2048)",
-        "image_source_url": "VARCHAR(2048)",
-        "image_source_type": "VARCHAR(32)",
-        "image_kind": "VARCHAR(32)",
-        "image_verified_at": "DATETIME",
-        "image_alt_text": "VARCHAR(512)",
-        "image_evaluation_status": "VARCHAR(32)",
-        "image_evaluated_at": "DATETIME",
-        "eligibility": "JSON NOT NULL DEFAULT '[]'",
-        "eligibility_summary": "TEXT",
-        "benefits": "JSON NOT NULL DEFAULT '[]'",
-        "coverage": "JSON NOT NULL DEFAULT '[]'",
-        "requirements": "JSON NOT NULL DEFAULT '[]'",
-        "documents": "JSON NOT NULL DEFAULT '[]'",
-        "english_requirement": "TEXT",
-        "application_method": "JSON NOT NULL DEFAULT '[]'",
-        "selection_notes": "TEXT",
-        "program_type": "VARCHAR(255)",
-        "best_fit": "TEXT",
-        "notes": "TEXT",
-        "verification_status": "TEXT NOT NULL DEFAULT 'active'",
-        "next_verification_due": "DATE",
-        "verified_by": "VARCHAR(120)",
-        "verification_notes": "TEXT",
-        # Mirrors of the PostgreSQL additions above. ``is_archived`` was the
-        # load-bearing omission: ``public_visibility_conditions`` filters on
-        # ``is_archived.is_(False)``, so its absence made every public list,
-        # stats and detail query raise OperationalError on SQLite. NOT NULL with
-        # a default, so existing rows read as correctly un-archived rather than
-        # NULL, which the predicate would exclude.
-        "is_archived": "BOOLEAN NOT NULL DEFAULT FALSE",
-        "archived_at": "DATETIME",
-        "archived_reason": "VARCHAR(120)",
-        # Award economics, separated from the short ``funding`` label. See the
-        # model for why a stipend must not read as full funding.
-        "funding_amount": "NUMERIC(12, 2)",
-        "funding_currency": "VARCHAR(8)",
-        "funding_period": "VARCHAR(64)",
-        # Tri-state, not a boolean: many programmes simply do not say.
-        "tuition_coverage": "BOOLEAN",
-        "living_cost_coverage": "BOOLEAN",
-        "travel_coverage": "BOOLEAN",
-        # Tri-state: True = confirmed fully funded, False = confirmed not fully funded,
-        # None = unknown/not confirmed. No default, so existing rows read as unknown.
-        "fully_funded": "BOOLEAN",
-        # Structured funding details per programme/track (JSON array)
-        "funding_details": "JSON",
-        # Structured detail, split by origin so published rules and derived
-        # guidance are never stored as the same kind of fact.
-        "official_details": "JSON",
-        "applicant_utility": "JSON",
-        "programme_verification": "JSON",
-        # Automatic garbage collection of closed records; see the model.
-        "auto_delete_candidate_since": "DATETIME",
-        "deletion_protected": "BOOLEAN NOT NULL DEFAULT FALSE",
-        # Academic eligibility - structured fields for departments, fields, programmes
-        "departments": "JSON NOT NULL DEFAULT '[]'",
-        "eligible_fields": "JSON NOT NULL DEFAULT '[]'",
-        "eligible_programmes": "JSON NOT NULL DEFAULT '[]'",
-        "academic_provenance": "JSON",
-    }
+            # Backward-compatible URL slugs for legacy links.
+            # SQLite doesn't support adding UNIQUE column via ALTER TABLE,
+            # so we add it as a regular column first, then create unique index.
+            "legacy_id": "INTEGER",
+            "status": "VARCHAR(20) NOT NULL DEFAULT 'open'",
+            "last_verified_at": "DATE",
+            "last_verified_date": "DATE",
+            "region": "VARCHAR(255)",
+            "duration": "TEXT",
+            "application_period": "TEXT",
+            "official_source": "VARCHAR(255)",
+            "official_source_url": "VARCHAR(2048)",
+            "catalogue_url": "VARCHAR(2048)",
+            "official_updates_url": "VARCHAR(2048)",
+            "application_link": "VARCHAR(2048)",
+            "image_url": "VARCHAR(2048)",
+            "image_source_url": "VARCHAR(2048)",
+            "image_source_type": "VARCHAR(32)",
+            "image_kind": "VARCHAR(32)",
+            "image_verified_at": "DATETIME",
+            "image_alt_text": "VARCHAR(512)",
+            "image_evaluation_status": "VARCHAR(32)",
+            "image_evaluated_at": "DATETIME",
+            "eligibility": "JSON NOT NULL DEFAULT '[]'",
+            "eligibility_summary": "TEXT",
+            "benefits": "JSON NOT NULL DEFAULT '[]'",
+            "coverage": "JSON NOT NULL DEFAULT '[]'",
+            "requirements": "JSON NOT NULL DEFAULT '[]'",
+            "documents": "JSON NOT NULL DEFAULT '[]'",
+            "english_requirement": "TEXT",
+            "application_method": "JSON NOT NULL DEFAULT '[]'",
+            "selection_notes": "TEXT",
+            "program_type": "VARCHAR(255)",
+            "best_fit": "TEXT",
+            "notes": "TEXT",
+            "verification_status": "TEXT NOT NULL DEFAULT 'active'",
+            "next_verification_due": "DATE",
+            "verified_by": "VARCHAR(120)",
+            "verification_notes": "TEXT",
+            # Mirrors of the PostgreSQL additions above. ``is_archived`` was the
+            # load-bearing omission: ``public_visibility_conditions`` filters on
+            # ``is_archived.is_(False)``, so its absence made every public list,
+            # stats and detail query raise OperationalError on SQLite. NOT NULL with
+            # a default, so existing rows read as correctly un-archived rather than
+            # NULL, which the predicate would exclude.
+            "is_archived": "BOOLEAN NOT NULL DEFAULT FALSE",
+            "archived_at": "DATETIME",
+            "archived_reason": "VARCHAR(120)",
+            # Award economics, separated from the short ``funding`` label. See the
+            # model for why a stipend must not read as full funding.
+            "funding_amount": "NUMERIC(12, 2)",
+            "funding_currency": "VARCHAR(8)",
+            "funding_period": "VARCHAR(64)",
+            # Tri-state, not a boolean: many programmes simply do not say.
+            "tuition_coverage": "BOOLEAN",
+            "living_cost_coverage": "BOOLEAN",
+            "travel_coverage": "BOOLEAN",
+            # Tri-state: True = confirmed fully funded, False = confirmed not fully funded,
+            # None = unknown/not confirmed. No default, so existing rows read as unknown.
+            "fully_funded": "BOOLEAN",
+            # Structured funding details per programme/track (JSON array)
+            "funding_details": "JSON",
+            # Structured detail, split by origin so published rules and derived
+            # guidance are never stored as the same kind of fact.
+            "official_details": "JSON",
+            "applicant_utility": "JSON",
+            "programme_verification": "JSON",
+            # Automatic garbage collection of closed records; see the model.
+            "auto_delete_candidate_since": "DATETIME",
+            "deletion_protected": "BOOLEAN NOT NULL DEFAULT FALSE",
+            # Academic eligibility - structured fields for departments, fields, programmes
+            "departments": "JSON NOT NULL DEFAULT '[]'",
+            "eligible_fields": "JSON NOT NULL DEFAULT '[]'",
+            "eligible_programmes": "JSON NOT NULL DEFAULT '[]'",
+            "academic_provenance": "JSON",
+        }
 
     with engine.begin() as connection:
         for name, definition in additions.items():
@@ -762,6 +768,11 @@ def _upgrade_sqlite_schema(engine: Engine) -> None:
                 "ON scholarships (status, is_archived, deletion_protected)"
             )
         )
+        # Unique index for legacy_id (added as non-unique column first, then unique index)
+        connection.execute(text(
+            "CREATE UNIQUE INDEX IF NOT EXISTS ux_scholarships_legacy_id "
+            "ON scholarships (legacy_id)"
+        ))
 
         _create_content_fingerprints_table(connection)
         _upgrade_discovery_candidates_table(connection)

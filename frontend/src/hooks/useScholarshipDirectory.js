@@ -1,5 +1,4 @@
 import { useEffect, useState } from 'react'
-import { scholarships as fallbackScholarships } from '../data/scholarships'
 import { fetchScholarships } from '../services/scholarshipService'
 
 const DIRECTORY_LIMIT = 100
@@ -8,7 +7,7 @@ const DIRECTORY_LIMIT = 100
    collections and its marquee all draw from this, so it needs enough rows
    to fill those and no more — a bigger limit costs a larger response on
    the first paint for content the visitor has to scroll to reach anyway.
- */
+*/
 export function useScholarshipDirectory() {
   const [scholarships, setScholarships] = useState([])
   const [isLoading, setIsLoading] = useState(true)
@@ -45,9 +44,10 @@ export function useScholarshipDirectory() {
           return
         }
 
-        setScholarships(fallbackScholarships)
+        // No local fallback - snapshot is the only fallback
+        setScholarships([])
         setIsUsingSnapshot(false)
-        setIsUsingLocalFallback(true)
+        setIsUsingLocalFallback(false)
         setFromSnapshot(false)
         setStaticMode(false)
         setError(error)

@@ -3,15 +3,17 @@ import logging
 import os
 import re
 import sys
+import time
 from threading import Lock, Thread
 
-from fastapi import FastAPI, HTTPException, Request
+from fastapi import FastAPI, HTTPException, Request, Response
 from fastapi.exceptions import RequestValidationError
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import JSONResponse
 from sqlalchemy import text
 
 from .core.config import get_settings
+from .core.rate_limit import public_api_limiter, public_stats_limiter, RateLimitExceeded
 from .build_provenance import ProvenanceError, read_embedded_revision
 from . import build_provenance
 from .database import close_database, get_engine, init_database
@@ -169,6 +171,48 @@ if allowed_origins:
         allow_headers=["Accept", "Content-Type"],
     )
 
+# Public API rate limiting middleware
+@app.middleware("http")
+async def rate_limit_middleware(request: Request, call_next):
+    """Rate limiting for public API endpoints.
+    
+    Applies generous limits to /scholarships and /scholarships/stats endpoints.
+    Other endpoints (private, health, etc.) are not rate limited.
+    """
+    path = request.url.path
+    
+    # Skip rate limiting for non-public paths
+    if not (path.startswith("/scholarships") or path.startswith("/api/scholarships")):
+        return await call_next(request)
+    
+    # Skip rate limiting for health check
+    if path in ("/health", "/"):
+        return await call_next(request)
+    
+    # Determine which limiter to use
+    if path.endswith("/stats") or path.endswith("/api/scholarships/stats"):
+        limiter = public_stats_limiter
+    else:
+        limiter = public_api_limiter
+    
+    # Use client IP as key (respecting X-Forwarded-For for proxied requests)
+    client_ip = request.headers.get("x-forwarded-for", request.client.host if request.client else "unknown")
+    if "," in client_ip:
+        client_ip = client_ip.split(",")[0].strip()
+    key = f"{client_ip}:{path}"
+    
+    try:
+        limiter.check(key)
+    except RateLimitExceeded as e:
+        return JSONResponse(
+            status_code=429,
+            content={"detail": "Rate limit exceeded. Please try again later."},
+            headers={"Retry-After": str(e.retry_after_seconds)},
+        )
+    
+    return await call_next(request)
+
+
 # Added last so it runs outermost: it has to see the path as the platform sent
 # it, before anything else inspects it.
 app.add_middleware(StripApiPrefix)
@@ -325,42 +369,4 @@ app.include_router(countries_router)
 
 
 
-@app.get("/debug/fix-null-lists")
-def debug_fix_null_lists_main():
-    # This writes to the production database, on a GET, with no authentication.
-    # That was survivable only while the API was not internet-facing from a
-    # platform anyone could reach; on a public serverless runtime it is an
-    # unauthenticated write endpoint. It is reachable outside production only.
-    if get_settings().environment == "production":
-        raise HTTPException(status_code=404, detail="Not found.")
-    from sqlalchemy import text
-    from app.database import get_session_factory
-    session_factory = get_session_factory()
-    session = session_factory()
-    try:
-        null_eligibility = session.execute(
-            text("SELECT id FROM scholarships WHERE eligibility IS NULL")
-        ).fetchall()
-        null_application_method = session.execute(
-            text("SELECT id FROM scholarships WHERE application_method IS NULL")
-        ).fetchall()
 
-        fixed = []
-        for row in null_eligibility + null_application_method:
-            sid = row[0]
-            from app.models import Scholarship
-            scholarship = session.get(Scholarship, sid)
-            if scholarship.eligibility is None:
-                scholarship.eligibility = []
-            if scholarship.application_method is None:
-                scholarship.application_method = []
-            fixed.append(sid)
-
-        session.commit()
-        return {
-            "fixed_ids": fixed,
-            "null_eligibility_count": len(null_eligibility),
-            "null_application_method_count": len(null_application_method),
-        }
-    finally:
-        session.close()

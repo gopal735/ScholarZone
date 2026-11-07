@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from 'react'
 import { Link } from 'react-router-dom'
+import DOMPurify from 'dompurify'
 import { 
   askUnifiedAI, 
   getAIStatus, 
@@ -88,7 +89,7 @@ function MessageList({ messages, messagesEndRef }) {
                 {message.label}
               </span>
             )}
-            <div className="message-text" dangerouslySetInnerHTML={{ __html: message.content.replace(/\n/g, '<br>') }} />
+            <div className="message-text" dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(message.content.replace(/\n/g, '<br>')) }} />
             
             {message.sources && message.sources.length > 0 && (
               <div className="message-sources">

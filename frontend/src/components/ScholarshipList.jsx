@@ -1,6 +1,5 @@
 import { useEffect, useMemo, useRef, useState } from 'react'
 import ScholarshipCard from './ScholarshipCard'
-import { scholarships } from '../data/scholarships'
 import { fetchScholarshipsByLifecycle } from '../services/scholarshipService'
 import { getScholarshipStatus, matchesDegreeFilter, matchesFundingFilter } from '../utils/scholarshipPresentation'
 import { classifyLifecycle, LIFECYCLE, parseDate } from '../utils/lifecycle'
@@ -147,7 +146,7 @@ function LoadingCards() {
 
 export default function ScholarshipList({ items, initialCountry }) {
   const isDirectory = !Array.isArray(items)
-  const localItems = Array.isArray(items) ? items : scholarships
+  const localItems = Array.isArray(items) ? items : []
   const [search, setSearch] = useState('')
   const [country, setCountry] = useState(initialCountry ?? 'All')
   const [degree, setDegree] = useState('All')

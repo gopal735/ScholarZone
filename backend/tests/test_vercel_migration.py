@@ -250,20 +250,21 @@ class TestRoutePreservation:
 
 class TestPublicApiStaysBounded:
     def test_debug_write_route_is_not_reachable_in_production(self, app_module, monkeypatch):
-        """It writes to the production database on a GET, unauthenticated."""
-        import dataclasses
+        """The debug write endpoint was removed; it must not be reachable."""
+        import app.main as main_module
+        from starlette.testclient import TestClient
+        from app.main import app
 
-        from fastapi import HTTPException
-
-        real_settings = app_module.get_settings()
-        monkeypatch.setattr(
-            app_module,
-            "get_settings",
-            lambda: dataclasses.replace(real_settings, environment="production"),
+        # The function should no longer exist
+        assert not hasattr(main_module, "debug_fix_null_lists_main"), (
+            "debug_fix_null_lists_main should have been removed"
         )
-        with pytest.raises(HTTPException) as excinfo:
-            app_module.debug_fix_null_lists_main()
-        assert excinfo.value.status_code == 404
+
+        # The route should not be registered
+        with TestClient(app) as client:
+            for method in ("GET", "POST", "PATCH", "DELETE"):
+                response = client.request(method, "/scholarships/debug/fix-null-lists")
+                assert response.status_code == 404, f"{method} /debug/fix-null-lists should return 404"
 
     def test_no_crawl_or_batch_job_is_triggered_by_an_api_request(self):
         """Heavy maintenance must stay in GitHub Actions, never in a request."""

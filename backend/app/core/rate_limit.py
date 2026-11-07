@@ -81,6 +81,10 @@ supervisor_read_limiter = InProcessRateLimiter(limit=120, window_seconds=60)
 draft_limiter = InProcessRateLimiter(limit=20, window_seconds=60)
 outreach_write_limiter = InProcessRateLimiter(limit=60, window_seconds=60)
 
+#: Public API rate limiter - generous limits to avoid false positives
+public_api_limiter = InProcessRateLimiter(limit=300, window_seconds=60)
+public_stats_limiter = InProcessRateLimiter(limit=60, window_seconds=60)
+
 
 __all__ = [
     "InProcessRateLimiter",
@@ -88,4 +92,6 @@ __all__ = [
     "draft_limiter",
     "outreach_write_limiter",
     "supervisor_read_limiter",
+    "public_api_limiter",
+    "public_stats_limiter",
 ]

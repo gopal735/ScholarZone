@@ -13,6 +13,7 @@ Provides private, authenticated endpoints for:
 from __future__ import annotations
 
 import logging
+import secrets
 from datetime import date, datetime, timezone
 from typing import Any
 
@@ -46,7 +47,8 @@ def _verify_admin_secret(provided_secret: str | None) -> bool:
         return False
     if provided_secret is None:
         return False
-    return provided_secret == expected
+    # Use constant-time comparison to prevent timing attacks
+    return secrets.compare_digest(provided_secret, expected)
 
 
 @router.get("/dashboard")
