@@ -215,13 +215,19 @@ def test_stored_data_survives_the_schema_change(client):
         ("GET", "/scholarships/verification-queue"),
         ("PATCH", "/scholarships/1/verify"),
         ("GET", "/scholarships/debug/raw/1"),
-        ("GET", "/scholarships/debug/fix-null-lists"),
     ],
 )
 def test_anonymous_and_invalid_secret_are_refused(client, method, path):
     assert client.request(method, path, json={} if method != "GET" else None).status_code == 401
     bad = {"X-Admin-Secret": "not-the-secret"}
     assert client.request(method, path, json={} if method != "GET" else None, headers=bad).status_code == 401
+
+
+def test_debug_fix_null_lists_route_is_removed(client):
+    """The debug write endpoint was removed; it must not be reachable."""
+    for method in ("GET", "POST", "PATCH", "DELETE"):
+        response = client.request(method, "/scholarships/debug/fix-null-lists")
+        assert response.status_code == 404, f"{method} /debug/fix-null-lists should return 404"
 
 
 @pytest.mark.parametrize(

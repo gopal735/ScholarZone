@@ -146,7 +146,7 @@ function LoadingCards() {
 
 export default function ScholarshipList({ items, initialCountry }) {
   const isDirectory = !Array.isArray(items)
-  const localItems = Array.isArray(items) ? items : scholarships
+  const localItems = Array.isArray(items) ? items : []
   const [search, setSearch] = useState('')
   const [country, setCountry] = useState(initialCountry ?? 'All')
   const [degree, setDegree] = useState('All')
