@@ -42,12 +42,12 @@ describe('HomePage goal finder defaults', () => {
     )
 
     const guide = screen.getByRole('complementary', {
-      name: 'Read every opportunity with confidence.',
+      name: 'A stronger application starts with three checks.',
     })
     expect(within(guide).getAllByRole('listitem')).toHaveLength(3)
-    expect(within(guide).getByText('Who can apply?')).toBeInTheDocument()
-    expect(within(guide).getByText('What does funding cover?')).toBeInTheDocument()
-    expect(within(guide).getByText('When is the real deadline?')).toBeInTheDocument()
+    expect(within(guide).getByText('Check your fit')).toBeInTheDocument()
+    expect(within(guide).getByText('Read the funding')).toBeInTheDocument()
+    expect(within(guide).getByText('Verify the deadline')).toBeInTheDocument()
     expect(container.querySelector('.mq')).not.toBeInTheDocument()
 
     const scholarshipCard = container.querySelector('.sc')
