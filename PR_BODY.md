@@ -12,7 +12,7 @@ Complete system remediation addressing all P0/P1 defects across security, data i
 
 ### Data Integrity Fixes (P0)
 - **Fully funded contract**: Set 211 records to `fully_funded=NULL` where `tuition_coverage!=True` or `living_cost_coverage!=True`. Only 3 records retain `fully_funded=true` (DAAD, GKS, MEXT - all have both coverages).
-- **Excluded region records**: Archived 40 records from Middle East (18), Latin America (22), Caribbean (1) with `archived_reason='excluded_region'`.
+- **Excluded region records**: Archived 40 records from Middle East (17), Latin America (22), Caribbean (1) with `archived_reason='excluded_region'`.
 - **Legacy ID migration gap**: Added `legacy_id` column to SQLite/PostgreSQL upgrade paths with unique index.
 - **Hardcoded fallback data**: Removed `FLAGSHIP_PROGRAMMES` (8 records), `fallbackScholarships` (4 records), `scholarships.js` (17 records) - now fully dynamic from snapshot.
 
@@ -23,13 +23,13 @@ Complete system remediation addressing all P0/P1 defects across security, data i
 - Updated HomePage test to match new `hero-guide` accessible name
 
 ### Data Reconciliation
-- **Restored 44 records** with `fully_funded=NULL` (no tuition/living coverage evidence) - 1 skipped (ID 785 duplicate URL)
-- **Archived 40 excluded-region records** (Middle East 18, Latin America 22, Caribbean 1) - 4 African records restored (Egypt 2, Morocco 1, Algeria 1)
+- **Restored 43 records** with `fully_funded=NULL` (no tuition/living coverage evidence) - 1 skipped (ID 785 duplicate URL)
+- **Archived 40 excluded-region records** (Middle East 17, Latin America 22, Caribbean 1)
 - **Added 54 new records** (IDs 1299–1352: Europe gaps, North America, Top-Tier Asia-Pacific)
-- **Final state**: 784 public records, 63 countries, 3 fully funded, 781 null, 0 false
+- **Final state**: 784 public records, 66 countries, 3 fully funded, 781 null, 0 false
 
 ### Pipeline
-- Rebuilt snapshot: 784 public records, 63 countries
+- Rebuilt snapshot: 784 public records, 66 countries
 - Rebuilt sitemap: 786 URLs (784 scholarship + 2 index)
 - All core tests passing: 365 frontend, 71 backend core, 106 extended backend
 - Research ledger updated: 825 entries covering all 784 public IDs + 40 archived + research-only
@@ -55,10 +55,10 @@ Complete system remediation addressing all P0/P1 defects across security, data i
 
 ## Reconciliation Summary
 
-| Metric | Base (3f5ab9d) | Final (4f7a5d6) |
-|--------|----------------|-----------------|
+| Metric | Base (3f5ab9d) | Final (0817d25e) |
+|--------|----------------|------------------|
 | Public Records | 771 | 784 |
-| Countries | 65 | 63 |
+| Countries | 65 | 66 |
 | Fully Funded (true) | 234 | 3 |
 | Fully Funded (null) | 537 | 781 |
 | Fully Funded (false) | 0 | 0 |
@@ -67,23 +67,18 @@ Complete system remediation addressing all P0/P1 defects across security, data i
 
 ### Reconciliation Equation
 ```
-771 base - 40 archived - 1 duplicate skipped + 54 new = 784 final
+771 base - 41 removed + 54 added = 784 final
 ```
 
-### 40 Archived Records (Excluded Regions)
-- Middle East (18): Israel (4), Qatar (2), Saudi Arabia (4), UAE (4), Turkey (3), Morocco (0 - restored), Algeria (0 - restored)
-- Latin America (22): Mexico (4), Chile (8), Colombia (3), Argentina (3), Brazil (4)
+### Archived Records (40 - Excluded Regions)
+- Middle East (17): Israel (4), Qatar (2), Saudi Arabia (4), UAE (4), Turkey (3)
+- Latin America (22): Argentina (3), Brazil (4), Chile (8), Colombia (3), Mexico (4)
 - Caribbean (1): Barbados (1)
 
-### 4 Restored African Records (Africa is INCLUDED in scope)
-- Egypt (2): ID 678, 724
-- Morocco (1): ID 674
-- Algeria (1): ID 713
-
-### 44 Restored Records (fully_funded=NULL)
+### Restored Records (43 - fully_funded=NULL)
 All restored from base snapshot with `fully_funded=NULL` (no tuition/living coverage evidence). 1 skipped (ID 785 - duplicate URL).
 
-### 54 New Records (IDs 1299-1352)
+### New Records Added (54 - IDs 1299-1352)
 Europe gaps (10), North America (5), Japan (5), South Korea (5), Singapore (3), Australia (3), New Zealand (2), China (3), Taiwan (3), Hong Kong (4), UK (1), Italy (2), France (1), Germany (1), Austria (3), Canada (2)
 
 ### Fully Funded Contract
@@ -102,7 +97,7 @@ Europe gaps (10), North America (5), Japan (5), South Korea (5), Singapore (3), 
 
 ---
 
-**Final HEAD**: `4f7a5d64d28e1c70b0fa022dc499450511584057`  
+**Final HEAD**: `0817d25e615ef0bf3d0dc6618edfa2957d585a45`  
 **Base SHA**: `3f5ab9dd4990dc0b7db8e96a8555b5584ba7e514`  
 **PR**: #78 (https://github.com/gopal735/ScholarZone/pull/78)  
 **Branch**: `fix/complete-system-remediation-2026-11-07`
