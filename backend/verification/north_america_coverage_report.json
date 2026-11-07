@@ -1,0 +1,154 @@
+{
+  "research_date": "2026-11-07",
+  "region": "North America",
+  "countries_covered": ["United States", "Canada"],
+  "total_programmes_researched": 10,
+  "by_country": {
+    "United States": 5,
+    "Canada": 5
+  },
+  "by_status": {
+    "OPEN": 6,
+    "CLOSED": 1,
+    "DISCONTINUED": 2,
+    "PENDING_OFFICIAL_REVIEW": 1
+  },
+  "by_funding_type": {
+    "Fully Funded (Government)": 2,
+    "Need-Based Grants (University)": 3,
+    "Merit-Based (University)": 2,
+    "Discontinued": 2,
+    "To Be Confirmed": 1
+  },
+  "official_source_evidence_coverage": {
+    "with_official_source_url": 10,
+    "with_multiple_sources_checked": 10,
+    "evidence_backed_fields_total": 78,
+    "fields_not_established_total": 12
+  },
+  "programmes_summary": [
+    {
+      "canonical_title": "Fulbright Foreign Student Program",
+      "country": "United States",
+      "status": "OPEN",
+      "cycle": "2027-2028",
+      "funding_type": "Fully Funded (Government)",
+      "official_source": "fulbright.state.gov",
+      "deadline": "Country-specific (Jun-Dec 2026)",
+      "degree_level": "Master's, Visiting Researcher"
+    },
+    {
+      "canonical_title": "Fulbright FLTA Program",
+      "country": "United States",
+      "status": "PENDING_OFFICIAL_REVIEW",
+      "cycle": "2027-2028 (to be confirmed)",
+      "funding_type": "Fully Funded (Government)",
+      "official_source": "fulbright.state.gov/flta",
+      "deadline": "Not confirmed",
+      "degree_level": "Non-degree"
+    },
+    {
+      "canonical_title": "Harvard College International Student Financial Aid",
+      "country": "United States",
+      "status": "OPEN",
+      "cycle": "2027-2028",
+      "funding_type": "Need-Based Grants (University)",
+      "official_source": "college.harvard.edu/financial-aid",
+      "deadline": "REA Nov 1 2026, RD Feb 1 2027",
+      "degree_level": "Undergraduate"
+    },
+    {
+      "canonical_title": "Stanford Knight-Hennessy Scholars",
+      "country": "United States",
+      "status": "CLOSED (2027 cohort)",
+      "cycle": "2028 cohort opens Summer 2027",
+      "funding_type": "Fully Funded (University)",
+      "official_source": "knight-hennessy.stanford.edu",
+      "deadline": "Closed Oct 6 2026 for 2027",
+      "degree_level": "Graduate (Master's/PhD)"
+    },
+    {
+      "canonical_title": "MIT Undergraduate Need-Based Financial Aid for International Students",
+      "country": "United States",
+      "status": "OPEN",
+      "cycle": "2027-2028",
+      "funding_type": "Need-Based Grants (University)",
+      "official_source": "sfs.mit.edu",
+      "deadline": "EA Nov 30 2026, RA Feb 15 2027",
+      "degree_level": "Undergraduate"
+    },
+    {
+      "canonical_title": "Vanier Canada Graduate Scholarships",
+      "country": "Canada",
+      "status": "DISCONTINUED",
+      "cycle": "DISCONTINUED (replaced by CGRS-D)",
+      "funding_type": "Discontinued",
+      "official_source": "vanier.gc.ca",
+      "deadline": "N/A - last competition Fall 2024",
+      "degree_level": "Doctoral"
+    },
+    {
+      "canonical_title": "Banting Postdoctoral Fellowships",
+      "country": "Canada",
+      "status": "DISCONTINUED",
+      "cycle": "DISCONTINUED (replaced by CPRA)",
+      "funding_type": "Discontinued",
+      "official_source": "banting.fellowships-bourses.gc.ca",
+      "deadline": "N/A - last competition 2024",
+      "degree_level": "Postdoctoral"
+    },
+    {
+      "canonical_title": "Lester B. Pearson International Student Scholarship (U Toronto)",
+      "country": "Canada",
+      "status": "OPEN",
+      "cycle": "2027-2028",
+      "funding_type": "Fully Funded (University)",
+      "official_source": "future.utoronto.ca/pearson",
+      "deadline": "Nomination Oct 9, Admission Oct 16, Application Nov 6 2026",
+      "degree_level": "Undergraduate"
+    },
+    {
+      "canonical_title": "McGill University Entrance Scholarships",
+      "country": "Canada",
+      "status": "OPEN",
+      "cycle": "2027-2028",
+      "funding_type": "Merit-Based (University)",
+      "official_source": "mcgill.ca/studentaid",
+      "deadline": "Varies (per Scholarships Calendar 2026-27)",
+      "degree_level": "Undergraduate"
+    },
+    {
+      "canonical_title": "University of Alberta International Entrance Scholarships",
+      "country": "Canada",
+      "status": "OPEN",
+      "cycle": "2027-2028",
+      "funding_type": "Merit/Need-Based (University)",
+      "official_source": "ualberta.ca/admissions/scholarships",
+      "deadline": "Opens Oct 1 2026, Closes Jan 10/Feb 15 2027",
+      "degree_level": "Undergraduate"
+    }
+  ],
+  "missing_uncertain_fields": [
+    "Fulbright FLTA - 2027-28 cycle deadline and application status",
+    "Vanier CGS - CGRS-D replacement programme details and deadlines",
+    "Banting Postdoc - CPRA replacement programme details and deadlines",
+    "McGill - Exact Major Entrance Scholarship deadline for 2027 entry",
+    "McGill - Number of Major scholarships available",
+    "U Alberta - Exact number of President's Distinction scholarships",
+    "Harvard - Exact 2027-28 cost of attendance (2026-27 published)",
+    "MIT - Exact 2027-28 cost of attendance",
+    "Stanford KHS - 2028 cohort exact opening date",
+    "Fulbright - Exact stipend amounts by country for 2027-28",
+    "Fulbright - Quota per country for 2027-28",
+    "Pearson - Exact number of scholarships for 2027-28"
+  ],
+  "recommendations": {
+    "add_to_catalogue": 6,
+    "update_existing": 0,
+    "reject": 4,
+    "notes": "Add: Fulbright Foreign Student, Harvard Aid, MIT Aid, Pearson, McGill Entrance, U Alberta International. Reject: Vanier CGS (discontinued), Banting (discontinued). Defer: Stanford KHS (2027 closed, 2028 not open), Fulbright FLTA (cycle unconfirmed)."
+  },
+  "ledger_entries_created": 10,
+  "research_ledger_file": "backend/verification/research_ledger_north_america.jsonl",
+  "base_sha": "606e233199ce8a2b279f35e5afd5d974efe3efe6"
+}

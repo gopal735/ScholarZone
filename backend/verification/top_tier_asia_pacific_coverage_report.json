@@ -1,0 +1,60 @@
+{
+  "report_date": "2026-11-07",
+  "region": "Asia-Pacific",
+  "total_discovered": 32,
+  "by_country": {
+    "Japan": 5,
+    "South Korea": 5,
+    "Singapore": 4,
+    "Australia": 4,
+    "New Zealand": 3,
+    "China": 3,
+    "Taiwan": 3,
+    "Hong Kong": 3
+  },
+  "by_status": {
+    "Open": 22,
+    "Upcoming": 7,
+    "Mixed": 1,
+    "Limited": 1
+  },
+  "by_funding_type": {
+    "Government": 7,
+    "University": 18,
+    "Government Agency": 2,
+    "Municipal Government": 1,
+    "Corporate Foundation": 1,
+    "Foundation": 1,
+    "International Organization": 1
+  },
+  "by_level": {
+    "Bachelor's": 20,
+    "Master's": 24,
+    "PhD": 25,
+    "Postgraduate Certificate/Diploma": 1,
+    "Language Study (non-degree)": 1
+  },
+  "official_source_evidence_coverage": {
+    "with_official_url": 32,
+    "with_retrieval_date": 32,
+    "percentage": 100
+  },
+  "missing_uncertain_fields": {
+    "exact_deadline_confirmed": 28,
+    "exact_open_date_confirmed": 26,
+    "funding_amount_exact": 24,
+    "eligibility_details_complete": 29
+  },
+  "countries_with_coverage": 8,
+  "priority_gaps_addressed": [
+    "Japan top 5 programs",
+    "South Korea top 5 programs",
+    "Singapore top 4 programs",
+    "Australia top 4 programs",
+    "New Zealand top 3 programs",
+    "China top 3 programs",
+    "Taiwan top 3 programs",
+    "Hong Kong top 3 programs"
+  ],
+  "notes": "All programmes have CURRENTLY OPEN or OFFICIALLY ANNOUNCED FUTURE cycles. Samsung Dream Scholarship is nomination-based for partner universities, not direct application. Destination Australia federal funding ended July 2024 but some universities continue with own funding. Huayu Enrichment Scholarship is language-only (non-degree). HKSAR Government Scholarship Fund applications are via individual universities. HKPFS and HKU Presidential PhD are highly competitive flagship programmes."
+}

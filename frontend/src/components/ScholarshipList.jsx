@@ -1,6 +1,5 @@
 import { useEffect, useMemo, useRef, useState } from 'react'
 import ScholarshipCard from './ScholarshipCard'
-import { scholarships } from '../data/scholarships'
 import { fetchScholarshipsByLifecycle } from '../services/scholarshipService'
 import { getScholarshipStatus, matchesDegreeFilter, matchesFundingFilter } from '../utils/scholarshipPresentation'
 import { classifyLifecycle, LIFECYCLE, parseDate } from '../utils/lifecycle'

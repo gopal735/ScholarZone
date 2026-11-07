@@ -27,7 +27,7 @@ describe('HomePage goal finder defaults', () => {
       </MemoryRouter>,
     )
 
-    expect(screen.getByRole('textbox', { name: 'Describe your goal' })).toHaveValue('')
+    expect(screen.getByRole('textbox', { name: /Describe your goal/ })).toHaveValue('')
     expect(container.querySelectorAll('.chip')).toHaveLength(0)
     expect(screen.getAllByRole('button', { name: 'Any', exact: true })).toHaveLength(2)
     expect(screen.getAllByRole('button', { name: 'Any', exact: true }).every((button) => button.getAttribute('aria-pressed') === 'true')).toBe(true)
@@ -70,11 +70,24 @@ describe('HomePage goal finder defaults', () => {
 
     fireEvent.click(screen.getByRole('button', { name: 'Clear', exact: true }))
 
-    expect(screen.getByRole('textbox', { name: 'Describe your goal' })).toHaveValue('')
+    expect(screen.getByRole('textbox', { name: /Describe your goal/ })).toHaveValue('')
     expect(screen.getByRole('combobox', { name: 'Country' })).toHaveValue('Any')
     expect(within(screen.getByRole('group', { name: 'Level' })).getByRole('button', { name: 'Any' }))
       .toHaveAttribute('aria-pressed', 'true')
     expect(within(screen.getByRole('group', { name: 'Funding' })).getByRole('button', { name: 'Any' }))
       .toHaveAttribute('aria-pressed', 'true')
+  })
+
+  it('shows the bilingual application guide without a moving scholarship ticker', () => {
+    const { container } = render(
+      <MemoryRouter>
+        <HomePage />
+      </MemoryRouter>,
+    )
+
+    expect(screen.getByRole('heading', { name: 'A stronger application starts with three checks.' })).toBeInTheDocument()
+    expect(screen.getByText('আপনার যোগ্যতা, লক্ষ্য ও সময়সীমার সঙ্গে মানানসই বৃত্তি খুঁজুন।')).toBeInTheDocument()
+    expect(screen.getByText('Read the funding')).toBeInTheDocument()
+    expect(container.querySelector('.mq')).not.toBeInTheDocument()
   })
 })

@@ -11,7 +11,7 @@
         "mtu-tuition-fees"
       ],
       "checked_at": "2026-10-05",
-      "field": "us.education_costs.tuition_fees.public.bachelor.bachelor",
+      "field": "us.education_costs.tuition_fees.public.bachelor",
       "reason": "2 archived figures reach this one corpus field, so the schema cannot yet publish them separately: 44504 USD per year (mtu-tuition-fees); 63019 USD per year (mtu-tuition-fees). These are distinct figures for one topic, not necessarily a contradiction between sources. No average was computed and no single value was chosen between them; the first is shown with the rest attached under colliding_values. Splitting the topic in TOPIC_PATHS is the reviewed fix."
     },
     {
@@ -45,6 +45,14 @@
     },
     {
       "attempted_sources": [
+        "https://www.ssa.gov/oact/cola/cbb.html"
+      ],
+      "checked_at": "2026-10-05",
+      "field": "us.us-fica-rate-001",
+      "reason": "Archived figure recorded, but it is not a currency figure and its topic's primary field holds money. It is stored as a related figure rather than as a cost. Statement: The OASDI tax rate for wages paid in 2026 is set by statute at 6.2 percent for employees and 6.2 percent for employers, each, up to the $184,500 contribution base."
+    },
+    {
+      "attempted_sources": [
         "https://www.uscis.gov/green-card/green-card-eligibility-categories"
       ],
       "checked_at": "2026-10-05",
@@ -53,47 +61,87 @@
     }
   ],
   "research": {
-    "evidence_artifact_count": 5,
+    "evidence_artifact_count": 7,
     "researched_at": "2026-10-05"
   },
   "sections": {
+    "career": {
+      "average_starting_salary": {
+        "gross_monthly": {
+          "as_of": "2026",
+          "currency": "USD",
+          "note": "The Social Security (OASDI) contribution and benefit base for earnings in 2026 is $184,500, which is the ceiling on the earnings subject to the 6.2% Social Security payroll tax.",
+          "per": "year",
+          "related_figures": {
+            "us-fica-rate-001": {
+              "as_of": "2026",
+              "descriptive": true,
+              "note": "The OASDI tax rate for wages paid in 2026 is set by statute at 6.2 percent for employees and 6.2 percent for employers, each, up to the $184,500 contribution base.",
+              "source_ids": [
+                "us-ssa-contribution-base-fica-2026"
+              ],
+              "value": 6.2,
+              "value_status": "OFFICIAL_GOVERNMENT"
+            }
+          },
+          "source_ids": [
+            "us-ssa-contribution-base-fica-2026"
+          ],
+          "value": 184500,
+          "value_status": "OFFICIAL_GOVERNMENT"
+        }
+      },
+      "net_monthly_income": {
+        "month": {
+          "as_of": "2026",
+          "currency": "USD",
+          "note": "This figure describes gross (before-tax) income, not take-home pay. It was filed on the net topic and has been demoted rather than published, because break-even must compare money out against money that actually reaches the worker. Using gross here would roughly halve the reported months in most European countries.",
+          "per": "month",
+          "source_ids": [
+            "us-irs-p15t-federal-fica-2026"
+          ],
+          "value": null,
+          "value_status": "UNKNOWN"
+        }
+      }
+    },
     "education_costs": {
       "tuition_fees": {
-"public": {
-            "bachelor": {
-              "as_of": "2025-26",
-              "colliding_values": [
-                {
-                  "as_of": "2025-26",
-                  "currency": "USD",
-                  "per": "year",
-                  "source_ids": [
-                    "mtu-tuition-fees"
-                  ],
-                  "statement": "Michigan Technological University charges non-Michigan-resident undergraduates USD 44,504 in tuition per year.",
-                  "value": 44504
-                },
-                {
-                  "as_of": "2025-26",
-                  "currency": "USD",
-                  "per": "year",
-                  "source_ids": [
-                    "mtu-tuition-fees"
-                  ],
-                  "statement": "Michigan Technological University's estimated annual undergraduate budget for a non-resident, including tuition, fees, housing and food, books and materials, personal expenses and transportation, totals USD 63,019.",
-                  "value": 63019
-                }
-              ],
-              "currency": "USD",
-              "note": "Michigan Technological University charges non-Michigan-resident undergraduates USD 44,504 in tuition per year.",
-              "per": "year",
-              "source_ids": [
-                "mtu-tuition-fees"
-              ],
-              "value": 44504,
-              "value_status": "UNIVERSITY_OFFICIAL"
-            }
+        "public": {
+          "bachelor": {
+            "as_of": "2025-26",
+            "colliding_values": [
+              {
+                "as_of": "2025-26",
+                "currency": "USD",
+                "per": "year",
+                "source_ids": [
+                  "mtu-tuition-fees"
+                ],
+                "statement": "Michigan Technological University charges non-Michigan-resident undergraduates USD 44,504 in tuition per year.",
+                "value": 44504
+              },
+              {
+                "as_of": "2025-26",
+                "currency": "USD",
+                "per": "year",
+                "source_ids": [
+                  "mtu-tuition-fees"
+                ],
+                "statement": "Michigan Technological University's estimated annual undergraduate budget for a non-resident, including tuition, fees, housing and food, books and materials, personal expenses and transportation, totals USD 63,019.",
+                "value": 63019
+              }
+            ],
+            "currency": "USD",
+            "note": "Michigan Technological University charges non-Michigan-resident undergraduates USD 44,504 in tuition per year.",
+            "per": "year",
+            "source_ids": [
+              "mtu-tuition-fees"
+            ],
+            "value": 44504,
+            "value_status": "UNIVERSITY_OFFICIAL"
           }
+        }
       }
     },
     "residency": {
@@ -154,6 +202,30 @@
       "source_type": "UNIVERSITY_OFFICIAL",
       "title": "bachelor_tuition evidence",
       "url": "https://www.mtu.edu/admissions/financial/tuition/"
+    },
+    {
+      "archived": true,
+      "as_of": "2026 tax year",
+      "confidence": null,
+      "id": "us-irs-p15t-federal-fica-2026",
+      "notes": null,
+      "publisher": "Internal Revenue Service (IRS), Publication 15-T (2026)",
+      "retrieved_at": "2026-10-05",
+      "source_type": "OFFICIAL_GOVERNMENT",
+      "title": "net_monthly_income evidence",
+      "url": "https://www.irs.gov/pub/irs-pdf/p15t.pdf"
+    },
+    {
+      "archived": true,
+      "as_of": "2026",
+      "confidence": null,
+      "id": "us-ssa-contribution-base-fica-2026",
+      "notes": null,
+      "publisher": "Social Security Administration (SSA), Office of the Chief Actuary",
+      "retrieved_at": "2026-10-05",
+      "source_type": "OFFICIAL_GOVERNMENT",
+      "title": "gross_monthly_income evidence",
+      "url": "https://www.ssa.gov/oact/cola/cbb.html"
     },
     {
       "archived": true,

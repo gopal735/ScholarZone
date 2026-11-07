@@ -151,37 +151,4 @@ def debug_raw_scholarship(
     return raw
 
 
-@router.get("/debug/fix-null-lists", dependencies=[Depends(require_admin_secret)])
-def debug_fix_null_lists(
-    session: Session = Depends(get_db),
-):
-    """Administrator-only, and it writes.
-
-    This committed a database change on an anonymous GET. Beyond the missing
-    secret, a repair of that shape belongs behind an explicit decision rather
-    than something a crawler can trigger.
-    """
-    from sqlalchemy import text
-    null_eligibility = session.execute(
-        text("SELECT id FROM scholarships WHERE eligibility IS NULL")
-    ).fetchall()
-    null_application_method = session.execute(
-        text("SELECT id FROM scholarships WHERE application_method IS NULL")
-    ).fetchall()
-
-    fixed = []
-    for row in null_eligibility + null_application_method:
-        sid = row[0]
-        scholarship = session.get(Scholarship, sid)
-        if scholarship.eligibility is None:
-            scholarship.eligibility = []
-        if scholarship.application_method is None:
-            scholarship.application_method = []
-        fixed.append(sid)
-
-    session.commit()
-    return {
-        "fixed_ids": fixed,
-        "null_eligibility_count": len(null_eligibility),
-        "null_application_method_count": len(null_application_method),
-    } 
+ 
