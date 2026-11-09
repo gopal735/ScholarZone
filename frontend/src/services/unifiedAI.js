@@ -12,11 +12,11 @@
  */
 
 import { askMentor, MentorUnauthenticatedError, MentorRateLimitedError, MentorValidationError, MentorUnavailableError, fetchMentorOverview } from './mentorService'
-import { askAIAssistant, checkAIAvailability, isAIEnabled, setAIEnabled } from './aiAssistant'
+import { askAIAssistant, checkAIAvailability, isLocalAIEnabled } from './aiAssistant'
 
 // Re-export for backward compatibility
 export { askMentor, MentorUnauthenticatedError, MentorRateLimitedError, MentorValidationError, MentorUnavailableError, fetchMentorOverview }
-export { askAIAssistant, checkAIAvailability, isAIEnabled, setAIEnabled, isLocalAIEnabled }
+export { askAIAssistant, checkAIAvailability, isLocalAIEnabled }
 export { checkLocalAIModelReady }
 
 export const AI_MODE = {
@@ -85,6 +85,12 @@ export async function getAIStatus() {
   // Currently not implemented - returns false until Transformers.js is integrated
   const localAIModelReady = await checkLocalAIModelReady()
   
+  // Mode priority: mentor > grounded (always available) > local/remote (not implemented)
+  let activeMode = 'grounded'
+  if (mentorAvailable) activeMode = 'mentor'
+  else if (localAIEnabled && localAIModelReady) activeMode = 'local_ai'
+  else if (aiAvailable) activeMode = 'remote_ai'
+  
   return {
     mentor: mentorAvailable,
     remoteAI: aiAvailable,
@@ -92,7 +98,7 @@ export async function getAIStatus() {
     localAIEnabled: localAIEnabled,
     localAIModelReady,
     grounded: true, // Always available
-    activeMode: mentorAvailable ? 'mentor' : (localAIEnabled && localAIModelReady ? 'local_ai' : (aiAvailable ? 'remote_ai' : 'grounded')),
+    activeMode,
   }
 }
 
@@ -106,14 +112,6 @@ async function checkMentorAccess() {
   try {
     await fetchMentorOverview({ signal: AbortSignal.timeout(2000) })
     return true
-  } catch {
-    return false
-  }
-}
-
-function isLocalAIEnabled() {
-  try {
-    return localStorage.getItem('sz-local-ai-enabled') === 'true'
   } catch {
     return false
   }

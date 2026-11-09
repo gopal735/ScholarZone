@@ -2,44 +2,34 @@
  * AI Assistant Service
  * 
  * Connects to the ScholarZone AI backend endpoint.
- * If no AI backend is configured, falls back to grounded retrieval from local data.
+ * Falls back to grounded retrieval from local data only when backend is unavailable.
  * 
- * Backend API contract (when AI is enabled):
+ * Backend API contract:
  * POST /api/ai/assistant
  * Body: { question: string, context?: { scholarships?: number[], userProfile?: object } }
  * Response: { answer: string, sources: Array<{ type: 'scholarship'|'general', id: string|number, title: string }>, grounded: boolean }
  */
 
-const AI_ENDPOINT = '/api/ai/assistant';
+const apiBaseUrl = (import.meta.env.VITE_API_BASE_URL || '/api').replace(/\/$/, '')
 
-let aiEnabled = false;
-
-export function setAIEnabled(enabled) {
-  aiEnabled = enabled;
-}
-
-export function isAIEnabled() {
-  return aiEnabled;
-}
-
-/**
- * Check if local AI (on-device) is enabled by user.
- */
-export function isLocalAIEnabled() {
-  try {
-    return localStorage.getItem('sz-local-ai-enabled') === 'true'
-  } catch {
-    return false
-  }
-}
+const AI_ENDPOINT = `${apiBaseUrl}/ai/assistant`;
+const AI_HEALTH_ENDPOINT = `${apiBaseUrl}/ai/health`;
 
 /**
  * Check if AI backend is available by calling a health endpoint.
+ * Verifies the response is JSON (not HTML from SPA fallback).
  */
 export async function checkAIAvailability() {
   try {
-    const response = await fetch('/api/ai/health', { method: 'HEAD' });
-    return response.ok;
+    const response = await fetch(AI_HEALTH_ENDPOINT, { 
+      method: 'GET',
+      headers: { Accept: 'application/json' },
+    });
+    if (!response.ok) return false;
+    const contentType = response.headers.get('content-type') || '';
+    if (!contentType.includes('application/json')) return false;
+    const data = await response.json();
+    return data.status === 'ok' && data.service === 'ai-assistant';
   } catch {
     return false;
   }
@@ -47,25 +37,31 @@ export async function checkAIAvailability() {
 
 /**
  * Send a question to the AI Assistant.
- * Falls back to grounded retrieval if AI is not available.
+ * Falls back to grounded retrieval only when backend is genuinely unavailable.
  */
-export async function askAIAssistant(request) {
-  // If AI is not enabled, use grounded fallback
-  if (!aiEnabled) {
-    return groundedFallback(request.question);
-  }
-
+export async function askAIAssistant(request, { signal } = {}) {
   try {
     const controller = new AbortController();
     const timeoutId = setTimeout(() => controller.abort(), 30000); // 30 second timeout
+
+    // Combine signals if provided
+    let combinedSignal = controller.signal;
+    if (signal) {
+      if (signal.aborted) {
+        clearTimeout(timeoutId);
+        throw new DOMException('Aborted', 'AbortError');
+      }
+      combinedSignal = AbortSignal.any([controller.signal, signal]);
+    }
 
     const response = await fetch(AI_ENDPOINT, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
+        Accept: 'application/json',
       },
       body: JSON.stringify(request),
-      signal: controller.signal,
+      signal: combinedSignal,
     });
 
     clearTimeout(timeoutId);
@@ -81,6 +77,9 @@ export async function askAIAssistant(request) {
       }
       if (response.status >= 500) {
         throw { error: 'AI service error. Please try again.', code: 'SERVER_ERROR', retryable: true };
+      }
+      if (response.status === 422) {
+        throw { error: errorData.detail || 'Invalid request.', code: 'VALIDATION_ERROR', retryable: false };
       }
       
       throw { error: errorData.error || 'AI request failed.', code: 'SERVER_ERROR', retryable: false };
@@ -114,6 +113,17 @@ export async function askAIAssistant(request) {
     // Network error - fall back to grounded
     console.warn('AI Assistant unavailable, falling back to grounded retrieval:', error);
     return groundedFallback(request.question);
+  }
+}
+
+/**
+ * Check if local AI (on-device) is enabled by user.
+ */
+export function isLocalAIEnabled() {
+  try {
+    return localStorage.getItem('sz-local-ai-enabled') === 'true'
+  } catch {
+    return false
   }
 }
 
