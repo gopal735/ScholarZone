@@ -1,0 +1,241 @@
+{
+  "report_date": "2026-11-09",
+  "total_pairs": 5,
+  "pairs": [
+    {
+      "pair_id": 1,
+      "canonical_title": "Lund University Global Scholarship",
+      "country": "Sweden",
+      "ids": [183, 753],
+      "records": [
+        {
+          "catalogue_id": 183,
+          "title": "Lund University Global Scholarship",
+          "official_source_url": "https://www.lunduniversity.lu.se/study/admission-degree-studies/scholarships-and-awards/lund-university-global-scholarship",
+          "application_url": "https://www.lunduniversity.lu.se/study/admission-degree-studies/scholarships-and-awards/lund-university-global-scholarship",
+          "status": "open",
+          "fully_funded": null,
+          "funding": "Partial",
+          "degree": "Master's, PhD",
+          "region": null
+        },
+        {
+          "catalogue_id": 753,
+          "title": "Lund University Global Scholarship",
+          "official_source_url": "https://www.lunduniversity.lu.se/admissions/scholarships-and-awards/lund-university-global-scholarship",
+          "application_url": "https://www.lunduniversity.lu.se/admissions/scholarships-and-awards/lund-university-global-scholarship",
+          "status": "open",
+          "fully_funded": null,
+          "funding": "Partial",
+          "degree": "Bachelor's, Master's",
+          "region": null
+        }
+      ],
+      "evidence_same_programme": "Same university, same programme name, same country, same funding type, same degree levels. Different URL paths on same domain (lunduniversity.lu.se).",
+      "recommended_canonical_id": 183,
+      "recommended_resolution": "MERGE - Keep ID 183 as canonical, archive ID 753, consolidate URL references",
+      "foreign_key_dependencies": {
+        "183": {
+          "scholarship_supervisor_coverage": 1,
+          "scholarships": 1
+        },
+        "753": {
+          "scholarship_supervisor_coverage": 1,
+          "scholarships": 1
+        }
+      },
+      "confidence": "HIGH",
+      "manual_review_required": true
+    },
+    {
+      "pair_id": 2,
+      "canonical_title": "Copenhagen Business School Danish Government Scholarship",
+      "country": "Denmark",
+      "ids": [270, 1244],
+      "records": [
+        {
+          "catalogue_id": 270,
+          "title": "Copenhagen Business School Danish Government Scholarship",
+          "official_source_url": "https://www.cbs.dk/study-programmes/master-programmes/double-degree",
+          "application_url": "https://www.cbs.dk/study-programmes/master-programmes/double-degree",
+          "status": "open",
+          "fully_funded": null,
+          "funding": "Partial",
+          "degree": "Master's, PhD",
+          "region": null
+        },
+        {
+          "catalogue_id": 1244,
+          "title": "Copenhagen Business School Danish Government Scholarship",
+          "official_source_url": "https://www.cbs.dk/en/education/master/programmes-and-admission/fees-and-funding",
+          "application_url": "https://www.cbs.dk/en/education/master/programmes-and-admission/fees-and-funding",
+          "status": "open",
+          "fully_funded": null,
+          "funding": "Partial to Full",
+          "degree": "Master's (MSc)",
+          "region": null
+        }
+      ],
+      "evidence_same_programme": "Same university (CBS), same programme name, same country, same funding type, same degree. Different URL paths on same domain (cbs.dk).",
+      "recommended_canonical_id": 270,
+      "recommended_resolution": "MERGE - Keep ID 270 as canonical, archive ID 1244, consolidate URL references",
+      "foreign_key_dependencies": {
+        "270": {
+          "scholarship_supervisor_coverage": 1,
+          "scholarships": 1
+        },
+        "1244": {
+          "scholarship_supervisor_coverage": 1,
+          "scholarships": 1
+        }
+      },
+      "confidence": "HIGH",
+      "manual_review_required": true
+    },
+    {
+      "pair_id": 3,
+      "canonical_title": "University of Copenhagen Danish Government Scholarship",
+      "country": "Denmark",
+      "ids": [271, 760],
+      "records": [
+        {
+          "catalogue_id": 271,
+          "title": "University of Copenhagen Danish Government Scholarship",
+          "official_source_url": "https://www.ku.dk/studies/admission/scholarships-for-full-degree-students",
+          "application_url": "https://www.ku.dk/studies/admission/scholarships-for-full-degree-students",
+          "status": "open",
+          "fully_funded": null,
+          "funding": "Partial",
+          "degree": "Master's, PhD",
+          "region": null
+        },
+        {
+          "catalogue_id": 760,
+          "title": "University of Copenhagen Danish Government Scholarship",
+          "official_source_url": "https://www.ku.dk/studies/masters/application-and-admission/scholarships",
+          "application_url": "https://www.ku.dk/studies/masters/application-and-admission/scholarships",
+          "status": "open",
+          "fully_funded": null,
+          "funding": "Partial",
+          "degree": "Master's",
+          "region": null
+        }
+      ],
+      "evidence_same_programme": "Same university (KU), same programme name, same country, same funding type, same degree levels. Different URL paths on same domain (ku.dk).",
+      "recommended_canonical_id": 271,
+      "recommended_resolution": "MERGE - Keep ID 271 as canonical, archive ID 760, consolidate URL references",
+      "foreign_key_dependencies": {
+        "271": {
+          "scholarship_supervisor_coverage": 2,
+          "scholarships": 1
+        },
+        "760": {
+          "scholarship_supervisor_coverage": 2,
+          "scholarships": 1
+        }
+      },
+      "confidence": "HIGH",
+      "manual_review_required": true
+    },
+    {
+      "pair_id": 4,
+      "canonical_title": "Stipendium Hungaricum Scholarship Programme",
+      "country": "Hungary",
+      "ids": [285, 1277],
+      "records": [
+        {
+          "catalogue_id": 285,
+          "title": "Stipendium Hungaricum Scholarship Programme",
+          "official_source_url": "https://stipendiumhungaricum.hu",
+          "application_url": "https://stipendiumhungaricum.hu",
+          "status": "open",
+          "fully_funded": true,
+          "funding": "Fully Funded",
+          "degree": "Bachelor's, Master's, One-tier Master's, Doctoral, Non-degree",
+          "region": null
+        },
+        {
+          "catalogue_id": 1277,
+          "title": "Stipendium Hungaricum Scholarship Programme",
+          "official_source_url": "https://stipendiumhungaricum.hu/apply_call",
+          "application_url": "https://stipendiumhungaricum.hu/apply_call",
+          "status": "open",
+          "fully_funded": true,
+          "funding": "Fully Funded",
+          "degree": "Bachelor's, Master's, One-tier Master's, PhD, Postdoctoral, Non-degree",
+          "region": null
+        }
+      ],
+      "evidence_same_programme": "Same programme name, same country, same official domain (stipendiumhungaricum.hu). One is root domain, one is /apply_call path. Same funding, same degree levels.",
+      "recommended_canonical_id": 285,
+      "recommended_resolution": "MERGE - Keep ID 285 as canonical, archive ID 1277, consolidate URL references",
+      "foreign_key_dependencies": {
+        "285": {
+          "scholarship_image_audit": 1,
+          "scholarship_supervisor_coverage": 1,
+          "scholarships": 1
+        },
+        "1277": {
+          "scholarship_supervisor_coverage": 1,
+          "scholarships": 1
+        }
+      },
+      "confidence": "HIGH",
+      "manual_review_required": true
+    },
+    {
+      "pair_id": 5,
+      "canonical_title": "Fulbright Foreign Student Program",
+      "country": "United States",
+      "ids": [1217, 1309],
+      "records": [
+        {
+          "catalogue_id": 1217,
+          "title": "Fulbright Foreign Student Program",
+          "official_source_url": "https://foreign.fulbrightonline.org",
+          "application_url": "https://foreign.fulbrightonline.org",
+          "status": "open",
+          "fully_funded": true,
+          "funding": "Fully Funded",
+          "degree": "Master's, PhD, Research",
+          "region": "World Top Demand"
+        },
+        {
+          "catalogue_id": 1309,
+          "title": "Fulbright Foreign Student Program",
+          "official_source_url": "https://fulbright.state.gov",
+          "application_url": "https://fulbright.state.gov",
+          "status": "open",
+          "fully_funded": null,
+          "funding": "Partial Funding",
+          "degree": "Bachelor's, Master's, PhD",
+          "region": "North America"
+        }
+      ],
+      "evidence_same_programme": "Same programme name, same country, same funding, same degree. Both are official Fulbright domains (foreign.fulbrightonline.org is the application portal, fulbright.state.gov is the official programme page).",
+      "recommended_canonical_id": 1217,
+      "recommended_resolution": "MERGE - Keep ID 1217 (application portal) as canonical, archive ID 1309 (programme info page), consolidate both URLs in official_source_url and application_link fields",
+      "foreign_key_dependencies": {
+        "1217": {
+          "scholarship_supervisor_coverage": 1,
+          "scholarships": 1
+        },
+        "1309": {
+          "scholarship_supervisor_coverage": 1,
+          "scholarships": 1
+        }
+      },
+      "confidence": "MEDIUM",
+      "manual_review_required": true,
+      "notes": "Different domains (foreign.fulbrightonline.org vs fulbright.state.gov), different fully_funded values, different degree levels, different regions. These may represent different entry points for the same programme but require careful review before merge."
+    }
+  ],
+  "summary": {
+    "total_pairs": 5,
+    "total_records_affected": 10,
+    "confirmed_duplicates": 4,
+    "manual_review_required": 1,
+    "foreign_key_check_required": true,
+    "total_fk_references": 20
+  }
+}
