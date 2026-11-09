@@ -1,1 +1,5 @@
+# Proxy API requests to Vercel backend before SPA fallback
+# The actual backend URL should be configured in Netlify dashboard as environment variable
+/api/*  https://scholarzone-backend.vercel.app/api/:splat  200
+
 /*    /index.html   200

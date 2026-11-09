@@ -6,7 +6,7 @@ import {
   isLocalAIEnabled,
   setLocalAIEnabled
 } from '../unifiedAI'
-import { askAIAssistant, checkAIAvailability, setAIEnabled } from '../aiAssistant'
+import { askAIAssistant, checkAIAvailability } from '../aiAssistant'
 
 describe('AI Provider Claims', () => {
   beforeEach(() => {
@@ -56,15 +56,13 @@ describe('AI Provider Claims', () => {
       expect(available).toBe(false)
     })
 
-    it('askAIAssistant falls back to grounded retrieval when AI not enabled', async () => {
-      setAIEnabled(false)
+    it('askAIAssistant falls back to grounded retrieval when backend unavailable', async () => {
       const response = await askAIAssistant({ question: 'test question' })
       expect(response.grounded).toBe(true)
       expect(response.sources).toBeDefined()
     })
 
     it('does not claim generative AI when using grounded fallback', async () => {
-      setAIEnabled(false)
       const response = await askAIAssistant({ question: 'test question' })
       // Grounded fallback should be clearly labeled
       expect(response.grounded).toBe(true)
@@ -104,9 +102,6 @@ describe('AI Provider Claims', () => {
   describe('Bengali Support', () => {
     it('extractKeywords handles Bengali characters', async () => {
       // This test documents current limitation - no Bengali stopwords
-      const { askAIAssistant } = await import('../aiAssistant')
-      // The grounded fallback uses English stopwords only
-      // Bengali queries would work but with reduced accuracy
       const response = await askAIAssistant({ question: 'জার্মানিতে পূর্ণ মুদ্রাবৃত্তি মাস্টার স্কলারশিপ' })
       expect(response.grounded).toBe(true)
     })
@@ -114,7 +109,6 @@ describe('AI Provider Claims', () => {
 
   describe('No Mandatory Paid Provider', () => {
     it('works without any AI enabled (grounded fallback always available)', async () => {
-      setAIEnabled(false)
       localStorage.removeItem('sz-local-ai-enabled')
       
       const status = await getAIStatus()
@@ -123,7 +117,6 @@ describe('AI Provider Claims', () => {
     })
 
     it('does not require paid LLM API for basic functionality', async () => {
-      setAIEnabled(false)
       const response = await askAIAssistant({ question: 'Find scholarships in Germany' })
       expect(response.grounded).toBe(true)
       expect(response.sources.length).toBeGreaterThanOrEqual(0)

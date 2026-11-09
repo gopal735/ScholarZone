@@ -3,6 +3,15 @@
   publish = "dist"
 
 [[redirects]]
+  # Proxy API requests to Vercel backend before SPA fallback
+  # The actual backend URL should be configured in Netlify dashboard as environment variable
+  from = "/api/*"
+  to = "https://scholarzone-backend.vercel.app/api/:splat"
+  status = 200
+  force = true
+  headers = {X-Forwarded-Proto = "https"}
+
+[[redirects]]
   from = "/*"
   to = "/index.html"
   status = 200
