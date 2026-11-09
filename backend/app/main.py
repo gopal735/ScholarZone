@@ -28,6 +28,7 @@ from .routers.applications import router as applications_router
 from .routers.mentor import router as mentor_router
 from .routers.supervisors import router as supervisors_router
 from .routers.countries import router as countries_router
+from .routers.ai_assistant import router as ai_assistant_router
 from .services.application_workspace import WorkspaceError
 from .seed import seed_database
 
@@ -363,6 +364,8 @@ app.include_router(applications_router)
 # dependent on scan order, which is the same discipline the match router uses
 # for /scholarships/match.
 app.include_router(mentor_router)
+# The AI assistant is public and read-only, registered after mentor
+app.include_router(ai_assistant_router)
 
 app.include_router(countries_router)
 
