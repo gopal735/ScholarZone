@@ -1,5 +1,5 @@
-﻿import { useCallback, useMemo, useState } from 'react'
-import { useParams } from 'react-router-dom'
+﻿import { useCallback, useMemo, useState, useEffect } from 'react'
+import { useParams, useNavigate } from 'react-router-dom'
 import { useJourney } from '../hooks/useJourney.js'
 import { useJourneyI18n, LANGUAGE_MODES } from '../i18n/useJourneyI18n.js'
 import {
@@ -49,19 +49,31 @@ const MODULES = {
 export function JourneyPage() {
   const { t, both, mode } = useJourneyI18n()
   const { state, setLanguage, storage } = useJourney()
-  /**
-   * The active step is initialised from the URL, so a reader can be sent to
-   * "the timeline" rather than to the top of a workspace they then have to find
-   * their way through. The URL is the starting point only: the stepper owns the
-   * state afterwards, because a workspace that rewrites its address bar on every
-   * click spends its time fighting the router.
-   *
-   * An unknown segment falls back to the first step rather than rendering
-   * nothing, so a stale link still lands somewhere useful.
-   */
+  const navigate = useNavigate()
   const { stepId: stepIdParam } = useParams()
+
+  // Use URL as source of truth for active step
   const initialStep = JOURNEY_STEPS.some((step) => step.id === stepIdParam) ? stepIdParam : JOURNEY_STEPS[0].id
   const [activeStepId, setActiveStepId] = useState(initialStep)
+
+  // Sync URL when activeStepId changes (but not on initial mount)
+  useEffect(() => {
+    if (activeStepId !== stepIdParam) {
+      navigate(`/bangladesh-journey/${activeStepId}`, { replace: false })
+    }
+  }, [activeStepId, navigate, stepIdParam])
+
+  // Sync local state when URL changes (e.g., browser back/forward, direct link)
+  useEffect(() => {
+    const urlStep = JOURNEY_STEPS.some((step) => step.id === stepIdParam) ? stepIdParam : JOURNEY_STEPS[0].id
+    if (urlStep !== activeStepId) {
+      // Use setTimeout to avoid synchronous setState in effect
+      const timer = setTimeout(() => {
+        setActiveStepId(urlStep)
+      }, 0)
+      return () => clearTimeout(timer)
+    }
+  }, [stepIdParam, activeStepId])
 
   const completion = useMemo(() => overallCompletion(state), [state])
   const summary = useMemo(() => checklistSummary(state), [state])
