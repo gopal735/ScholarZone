@@ -38,6 +38,7 @@ export default function Navigation() {
     { to: '/scholarships', label: 'Scholarships', desc: 'Browse verified opportunities' },
     { to: '/match', label: 'Smart Match', badge: '✨', desc: 'Check eligibility by GPA & IELTS' },
     { to: '/countries', label: 'Countries', desc: 'Living costs & country guides' },
+    { to: '/bangladesh-journey', label: 'BD Journey', badge: '🇧🇩', desc: '7-step applicant workspace' },
     { to: '/applications', label: 'Applications', desc: 'Track tasks, SOPs & deadlines' },
     { to: '/assistant', label: 'AI Guide', badge: '🤖', desc: 'Scholarship discovery, comparison & guidance' },
     {
