@@ -177,17 +177,20 @@ if allowed_origins:
 async def rate_limit_middleware(request: Request, call_next):
     """Rate limiting for public API endpoints.
     
-    Applies generous limits to /scholarships and /scholarships/stats endpoints.
+    Applies generous limits to /scholarships, /scholarships/stats, and /api/ai endpoints.
     Other endpoints (private, health, etc.) are not rate limited.
     """
     path = request.url.path
     
     # Skip rate limiting for non-public paths
-    if not (path.startswith("/scholarships") or path.startswith("/api/scholarships")):
+    is_scholarships = path.startswith("/scholarships") or path.startswith("/api/scholarships")
+    is_ai = path.startswith("/api/ai/") or path.startswith("/ai/")
+    
+    if not (is_scholarships or is_ai):
         return await call_next(request)
     
-    # Skip rate limiting for health check
-    if path in ("/health", "/"):
+    # Skip rate limiting for health check endpoints
+    if path in ("/health", "/", "/api/health", "/ai/health", "/api/ai/health"):
         return await call_next(request)
     
     # Determine which limiter to use

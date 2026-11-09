@@ -15,6 +15,7 @@ from app.database import get_db
 from app.main import app
 from app.models import Base, Scholarship
 from app.services.mentor.guards import MAX_MESSAGE_LENGTH
+from app.core.rate_limit import RateLimitExceeded
 
 TODAY = __import__('datetime').date.today()
 FUTURE_DEADLINE = TODAY + __import__('datetime').timedelta(days=60)
@@ -246,3 +247,124 @@ class TestAIAssistantSources:
         body = response.json()
         # Should limit to 5 sources
         assert len(body["sources"]) <= 5
+
+
+class TestAIAssistantRateLimit:
+    """Rate limiting tests for the AI Assistant public endpoints."""
+
+    def test_requests_below_limit_succeed(self, client, db):
+        """Requests within the rate limit should succeed."""
+        make_scholarship(db)
+        
+        # Make several requests within the limit (public_api_limiter allows 300/min)
+        for _ in range(5):
+            response = client.post(
+                "/api/ai/assistant",
+                json={"question": "Test question"},
+            )
+            assert response.status_code == 200
+
+    def test_health_endpoint_not_rate_limited(self, client):
+        """Health endpoint should not be rate limited."""
+        # Make many requests to health endpoint
+        for _ in range(10):
+            response = client.get("/api/ai/health")
+            assert response.status_code == 200
+
+    def test_exceeding_limit_returns_429(self, client, db):
+        """Requests exceeding the rate limit should return 429."""
+        make_scholarship(db)
+        
+        # Use a test-specific limiter with a low limit
+        from app.core.rate_limit import public_api_limiter
+        public_api_limiter.reset()
+        
+        # Set a very low limit for this test by temporarily replacing the limiter
+        original_limit = public_api_limiter._limit
+        public_api_limiter._limit = 2
+        
+        try:
+            # First two requests should succeed
+            response1 = client.post("/api/ai/assistant", json={"question": "Q1"})
+            assert response1.status_code == 200
+            
+            response2 = client.post("/api/ai/assistant", json={"question": "Q2"})
+            assert response2.status_code == 200
+            
+            # Third request should be rate limited
+            response3 = client.post("/api/ai/assistant", json={"question": "Q3"})
+            assert response3.status_code == 429
+            assert "Rate limit exceeded" in response3.json()["detail"]
+            assert "Retry-After" in response3.headers
+            assert int(response3.headers["Retry-After"]) >= 1
+        finally:
+            # Restore original limit
+            public_api_limiter._limit = original_limit
+            public_api_limiter.reset()
+
+    def test_retry_after_header_present(self, client, db):
+        """429 response should include Retry-After header."""
+        make_scholarship(db)
+        
+        from app.core.rate_limit import public_api_limiter
+        public_api_limiter.reset()
+        original_limit = public_api_limiter._limit
+        public_api_limiter._limit = 1
+        
+        try:
+            # First request succeeds
+            response1 = client.post("/api/ai/assistant", json={"question": "Q1"})
+            assert response1.status_code == 200
+            
+            # Second request gets 429
+            response2 = client.post("/api/ai/assistant", json={"question": "Q2"})
+            assert response2.status_code == 429
+            assert "Retry-After" in response2.headers
+            retry_after = int(response2.headers["Retry-After"])
+            assert retry_after >= 1
+            assert retry_after <= 60  # window is 60 seconds
+        finally:
+            public_api_limiter._limit = original_limit
+            public_api_limiter.reset()
+
+    def test_independent_client_keys(self, client, db):
+        """Different client IPs should have independent rate limits."""
+        make_scholarship(db)
+        
+        from app.core.rate_limit import public_api_limiter
+        public_api_limiter.reset()
+        original_limit = public_api_limiter._limit
+        public_api_limiter._limit = 1
+        
+        try:
+            # Request from first "client" (simulated via different path to avoid IP collision in test)
+            # In real scenario, different IPs would have different limits
+            # Here we test the limiter directly
+            public_api_limiter.check("client1:/api/ai/assistant")
+            with pytest.raises(RateLimitExceeded):
+                public_api_limiter.check("client1:/api/ai/assistant")
+            
+            # Client 2 should still work
+            public_api_limiter.check("client2:/api/ai/assistant")
+        finally:
+            public_api_limiter._limit = original_limit
+            public_api_limiter.reset()
+
+    def test_health_endpoint_behavior(self, client):
+        """Health endpoint should always return 200 regardless of rate limit."""
+        from app.core.rate_limit import public_api_limiter
+        public_api_limiter.reset()
+        original_limit = public_api_limiter._limit
+        public_api_limiter._limit = 1
+        
+        try:
+            # Exhaust the limit
+            client.post("/api/ai/assistant", json={"question": "Q1"})
+            
+            # Health should still work
+            response = client.get("/api/ai/health")
+            assert response.status_code == 200
+            assert response.json()["status"] == "ok"
+        finally:
+            public_api_limiter._limit = original_limit
+            public_api_limiter.reset()
