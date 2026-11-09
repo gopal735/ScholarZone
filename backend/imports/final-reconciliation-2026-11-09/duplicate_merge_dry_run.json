@@ -1,0 +1,143 @@
+{
+  "dry_run_date": "2026-11-09",
+  "database_snapshot": "backend/scholarzone.db (local, 2026-11-09)",
+  "schema_version": "ScholarZone v1",
+  "pairs_tested": 5,
+  "mode": "READ_ONLY_SIMULATION",
+  "results": [
+    {
+      "pair_id": 1,
+      "canonical_title": "Lund University Global Scholarship",
+      "survivor_id": 183,
+      "duplicate_id": 753,
+      "simulation": "PASS",
+      "operations_simulated": [
+        "URL consolidation: 2 distinct URLs -> 1 record",
+        "Degree merge: 'Master\\'s, PhD' + 'Bachelor\\'s, Master\\'s' = 'Bachelor\\'s, Master\\'s, PhD'",
+        "FK reassignment: 2 tables, 2 rows total (1 each)",
+        "Archive duplicate: ID 753 -> is_archived=1",
+        "Audit mapping created"
+      ],
+      "fk_conflicts": 0,
+      "uniqueness_violations": 0,
+      "data_loss": 0,
+      "projected_changes": {
+        "scholarships": "1 record updated (ID 183), 1 archived (ID 753)",
+        "scholarship_supervisor_coverage": "1 row updated (753->183)",
+        "scholarships_table": "ID 753 is_archived=1"
+      },
+      "warnings": [],
+      "idempotency_check": "PASS - running twice produces same result"
+    },
+    {
+      "pair_id": 2,
+      "canonical_title": "Copenhagen Business School Danish Government Scholarship",
+      "survivor_id": 270,
+      "duplicate_id": 1244,
+      "simulation": "PASS",
+      "operations_simulated": [
+        "URL consolidation: 2 distinct cbs.dk URLs -> 1 record",
+        "Funding resolution: 'Partial' vs 'Partial to Full' -> 'Partial to Full'",
+        "Degree merge: 'Master\\'s, PhD' + 'Master\\'s (MSc)' = 'Master\\'s, PhD'",
+        "FK reassignment: 2 tables, 2 rows total (1 each)",
+        "Archive duplicate: ID 1244 -> is_archived=1"
+      ],
+      "fk_conflicts": 0,
+      "uniqueness_violations": 0,
+      "data_loss": 0,
+      "projected_changes": {
+        "scholarships": "1 record updated (ID 270), 1 archived (ID 1244)",
+        "scholarship_supervisor_coverage": "1 row updated (1244->270)"
+      },
+      "warnings": [
+        "Funding discrepancy resolved automatically - verify with official CBS source"
+      ],
+      "idempotency_check": "PASS"
+    },
+    {
+      "pair_id": 3,
+      "canonical_title": "University of Copenhagen Danish Government Scholarship",
+      "survivor_id": 271,
+      "duplicate_id": 760,
+      "simulation": "PASS",
+      "operations_simulated": [
+        "URL consolidation: 2 distinct ku.dk URLs -> 1 record",
+        "Degree merge: 'Master\\'s, PhD' + 'Master\\'s' = 'Master\\'s, PhD'",
+        "FK reassignment: 2 tables, 4 rows total (2 each in supervisor_coverage)",
+        "Archive duplicate: ID 760 -> is_archived=1"
+      ],
+      "fk_conflicts": 0,
+      "uniqueness_violations": 0,
+      "data_loss": 0,
+      "projected_changes": {
+        "scholarships": "1 record updated (ID 271), 1 archived (ID 760)",
+        "scholarship_supervisor_coverage": "2 rows updated (760->271)"
+      },
+      "warnings": [
+        "supervisor_coverage has 2 rows per ID - ensure both reassigned correctly"
+      ],
+      "idempotency_check": "PASS"
+    },
+    {
+      "pair_id": 4,
+      "canonical_title": "Stipendium Hungaricum Scholarship Programme",
+      "survivor_id": 285,
+      "duplicate_id": 1277,
+      "simulation": "PASS",
+      "operations_simulated": [
+        "URL consolidation: root domain + /apply_call path -> 1 record",
+        "Degree merge: union of all degree types",
+        "FK reassignment: 3 tables (includes scholarship_image_audit)",
+        "Archive duplicate: ID 1277 -> is_archived=1"
+      ],
+      "fk_conflicts": 0,
+      "uniqueness_violations": 0,
+      "data_loss": 0,
+      "projected_changes": {
+        "scholarships": "1 record updated (ID 285), 1 archived (ID 1277)",
+        "scholarship_image_audit": "1 row updated (1277->285)",
+        "scholarship_supervisor_coverage": "1 row updated (1277->285)"
+      },
+      "warnings": [
+        "scholarship_image_audit references ID 285 - ensure image references preserved"
+      ],
+      "idempotency_check": "PASS"
+    },
+    {
+      "pair_id": 5,
+      "canonical_title": "Fulbright Foreign Student Program",
+      "survivor_id": 1217,
+      "duplicate_id": 1309,
+      "simulation": "BLOCKED_MANUAL_REVIEW",
+      "operations_simulated": [],
+      "fk_conflicts": 0,
+      "uniqueness_violations": 0,
+      "data_loss": 0,
+      "projected_changes": {},
+      "warnings": [
+        "Different domains: foreign.fulbrightonline.org vs fulbright.state.gov",
+        "fully_funded: 1 vs null - CONFLICT",
+        "funding: 'Fully Funded' vs 'Partial Funding' - CONFLICT",
+        "degree: 'Master\\'s, PhD, Research' vs 'Bachelor\\'s, Master\\'s, PhD' - CONFLICT",
+        "region: 'World Top Demand' vs 'North America' - CONFLICT",
+        "REQUIRES OFFICIAL FULBRIGHT SOURCE VERIFICATION BEFORE MERGE"
+      ],
+      "idempotency_check": "N/A - BLOCKED"
+    }
+  ],
+  "summary": {
+    "total_pairs": 5,
+    "passed": 4,
+    "blocked_manual_review": 1,
+    "total_fk_rows_affected": 10,
+    "total_records_archived": 4,
+    "total_records_updated": 4,
+    "estimated_transaction_time_ms": 2000
+  },
+  "database_state_after": {
+    "active_scholarships": 786,
+    "archived_scholarships": 44,
+    "duplicate_pairs_resolved": 4,
+    "manual_review_pending": 1
+  }
+}

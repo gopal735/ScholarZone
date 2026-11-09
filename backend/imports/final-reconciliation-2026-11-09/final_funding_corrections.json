@@ -1,0 +1,57 @@
+[
+  {
+    "operation": "FUNDING_CORRECTION",
+    "catalogue_id": 3,
+    "title": "DAAD Scholarship",
+    "current_fully_funded": true,
+    "corrected_fully_funded": false,
+    "reason": "DAAD Scholarship (general) provides stipend EUR 992/mo + insurance + travel allowance + study allowance EUR 460/yr. NO tuition coverage (German public universities are tuition-free for most programmes). Not fully funded per ScholarZone definition (requires tuition + living).",
+    "evidence_url": "https://www2.daad.de/deutschland/stipendium/datenbank/en/21148-scholarship-database/?detail=50026200",
+    "date_checked": "2026-11-09",
+    "idempotent": true
+  },
+  {
+    "operation": "FUNDING_CORRECTION",
+    "catalogue_id": 40,
+    "title": "ARES Scholarships (Belgium)",
+    "current_fully_funded": true,
+    "corrected_fully_funded": null,
+    "reason": "ARES provides living allowance and travel but tuition coverage varies by programme. Funding scope not fully confirmed from official source.",
+    "evidence_url": "https://www.ares-ac.be/en/cooperation-au-developpement/bourses",
+    "date_checked": "2026-11-09",
+    "idempotent": true
+  },
+  {
+    "operation": "FUNDING_CORRECTION",
+    "catalogue_id": 31,
+    "title": "Netherlands Fellowship Programme (NFP/OTS)",
+    "current_fully_funded": true,
+    "corrected_fully_funded": null,
+    "reason": "Netherlands Fellowship Programme (NFP/OTS) discontinued. Replaced by NL Scholarship (EUR 5000 first year only, partial).",
+    "evidence_url": "https://www.studyinnl.org/finances/ots-scholarships",
+    "date_checked": "2026-11-09",
+    "idempotent": true
+  },
+  {
+    "operation": "FUNDING_CORRECTION",
+    "catalogue_id": 729,
+    "title": "Vanier Canada Graduate Scholarship",
+    "current_fully_funded": true,
+    "corrected_fully_funded": null,
+    "reason": "Vanier CGS discontinued after Fall 2024. Replaced by CGRS-D. Should be archived/discontinued.",
+    "evidence_url": "https://vanier.gc.ca/en/home-accueil.html",
+    "date_checked": "2026-11-09",
+    "idempotent": true
+  },
+  {
+    "operation": "FUNDING_CORRECTION",
+    "catalogue_id": 1,
+    "title": "Erasmus Mundus",
+    "current_fully_funded": null,
+    "corrected_fully_funded": true,
+    "reason": "Erasmus Mundus Joint Masters covers full tuition + EUR 1,400/mo stipend + travel + insurance. Fully funded.",
+    "evidence_url": "https://erasmus-plus.ec.europa.eu/opportunities/individuals/students/erasmus-mundus-joint-masters",
+    "date_checked": "2026-11-09",
+    "idempotent": true
+  }
+]
