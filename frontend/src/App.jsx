@@ -2,7 +2,6 @@ import { lazy, Suspense } from 'react'
 import { Routes, Route, Navigate } from 'react-router-dom'
 import Layout from './components/Layout'
 import HomePage from './pages/HomePage'
-import { JourneyProvider } from './features/journey/state/JourneyProvider.jsx'
 import './App.css'
 
 const ScholarshipsPage = lazy(() => import('./pages/ScholarshipsPage'))
@@ -18,17 +17,7 @@ const CountryPage = lazy(() => import('./pages/CountryPage'))
 const UnifiedAIPage = lazy(() => import('./pages/UnifiedAIPage'))
 const NotFoundPage = lazy(() => import('./pages/NotFoundPage'))
 const BangladeshJourneyPage = lazy(() => import('./features/journey/components/JourneyPage'))
-
-/** Wraps the journey page in its provider so useJourney() works. */
-function JourneyRouteWrapper() {
-  return (
-    <JourneyProvider>
-      <Suspense fallback={<div className="journey-loading" role="status" aria-live="polite">Loading journey…</div>}>
-        <BangladeshJourneyPage />
-      </Suspense>
-    </JourneyProvider>
-  )
-}
+const JourneyRoutes = lazy(() => import('./features/journey/components/JourneyRoutes'))
 
 function App() {
   return (
@@ -58,15 +47,17 @@ function App() {
         {/* Redirect legacy /mentor to /assistant */}
         <Route path="/mentor" element={<Navigate to="/assistant" replace />} />
         <Route path="/compare" element={<ComparePage />} />
-        {/* Bangladesh Applicant Journey - wrapped in JourneyProvider for useJourney() */}
+        {/* Bangladesh Applicant Journey - shared JourneyProvider via parent route with Outlet */}
         <Route
-          path="/bangladesh-journey"
-          element={<JourneyRouteWrapper />}
-        />
-        <Route
-          path="/bangladesh-journey/:stepId"
-          element={<JourneyRouteWrapper />}
-        />
+          element={
+            <Suspense fallback={<div className="journey-loading" role="status" aria-live="polite">Loading journey…</div>}>
+              <JourneyRoutes />
+            </Suspense>
+          }
+        >
+          <Route index path="/bangladesh-journey" element={<BangladeshJourneyPage />} />
+          <Route path="/bangladesh-journey/:stepId" element={<BangladeshJourneyPage />} />
+        </Route>
         {/* Legacy alias redirect */}
         <Route path="/journey" element={<Navigate to="/bangladesh-journey" replace />} />
         <Route path="/journey/*" element={<Navigate to="/bangladesh-journey" replace />} />

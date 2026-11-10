@@ -115,25 +115,30 @@ export function JourneyProvider({ children }) {
   /**
    * Flush any pending write immediately. Returns true on success.
    * Safe to call multiple times.
+   *
+   * Always persists the current state, regardless of whether a debounce
+   * timer is pending. This ensures explicit flushes (e.g., on route exit,
+   * pagehide, or user action) save the latest data even if the timer
+   * already fired or was never set.
    */
   const doFlush = useCallback(() => {
+    // Clear any pending debounce timer since we're flushing now
     if (pendingTimerRef.current) {
       window.clearTimeout(pendingTimerRef.current)
       pendingTimerRef.current = null
-      try {
-        saveJourneyState(state)
-        lastWriteRef.current = new Date().toISOString()
-        setStorageProblem(null)
-        setStorageAvailable(true)
-        setLastSavedAt(lastWriteRef.current)
-        return true
-      } catch (error) {
-        setStorageProblem(error?.reason === 'quota-exceeded' ? 'quota-exceeded' : 'unavailable')
-        setStorageAvailable(false)
-        return false
-      }
     }
-    return true
+    try {
+      saveJourneyState(state)
+      lastWriteRef.current = new Date().toISOString()
+      setStorageProblem(null)
+      setStorageAvailable(true)
+      setLastSavedAt(lastWriteRef.current)
+      return true
+    } catch (error) {
+      setStorageProblem(error?.reason === 'quota-exceeded' ? 'quota-exceeded' : 'unavailable')
+      setStorageAvailable(false)
+      return false
+    }
   }, [state])
 
   /**
@@ -153,9 +158,9 @@ export function JourneyProvider({ children }) {
 
   /** Persist immediately, reporting failure rather than swallowing it. */
   const flushPendingWrite = useCallback(() => {
-    cancelPendingWrite()
+    // Always flush the current state, don't just cancel and return
     return doFlush()
-  }, [cancelPendingWrite, doFlush])
+  }, [doFlush])
 
   /**
    * Flush pending writes when the page is about to unload or become hidden.
@@ -175,6 +180,10 @@ export function JourneyProvider({ children }) {
     const handleVisibilityChange = () => {
       if (document.visibilityState === 'hidden') {
         handlePageHide()
+      } else if (document.visibilityState === 'visible') {
+        // Reset the flush flag when page becomes visible again,
+        // so subsequent edits followed by pagehide will flush.
+        flushedOnUnmountRef.current = false
       }
     }
 
@@ -201,10 +210,13 @@ export function JourneyProvider({ children }) {
   useEffect(() => {
     if (isJourneyRoute) return
     // We're leaving the journey routes - flush any pending writes
-    if (!flushedOnUnmountRef.current) {
-      flushedOnUnmountRef.current = true
+    // Don't skip if we already flushed for visibility change; route exit
+    // is a separate lifecycle event that must also persist latest state.
+    // Use setTimeout to avoid synchronous setState in effect (lint rule).
+    const timer = setTimeout(() => {
       doFlush()
-    }
+    }, 0)
+    return () => clearTimeout(timer)
   }, [isJourneyRoute, doFlush])
 
   /**
