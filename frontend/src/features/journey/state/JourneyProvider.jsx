@@ -1,4 +1,5 @@
 ﻿import { useCallback, useEffect, useMemo, useReducer, useRef, useState } from 'react'
+import { useLocation } from 'react-router-dom'
 import { JourneyContext } from './journeyContext.js'
 import { ACTIONS, journeyReducer } from './journeyReducer.js'
 import {
@@ -32,6 +33,9 @@ const PERSIST_DEBOUNCE_MS = 400
  *    reload of an older tab from reverting a newer edit.
  */
 export function JourneyProvider({ children }) {
+  const location = useLocation()
+  const isJourneyRoute = location.pathname.startsWith('/bangladesh-journey')
+  
   /**
    * The one-time storage read.
    *
@@ -63,6 +67,8 @@ export function JourneyProvider({ children }) {
    * not recreate the key the student just emptied.
    */
   const suppressPersistRef = useRef(false)
+  /** Track if we've already flushed on unmount to avoid double-flush. */
+  const flushedOnUnmountRef = useRef(false)
 
   /* Persist, debounced. A failed write leaves the state on screen and raises a
      notice; it never reverts what the student just entered. */
@@ -107,6 +113,30 @@ export function JourneyProvider({ children }) {
   }, [state])
 
   /**
+   * Flush any pending write immediately. Returns true on success.
+   * Safe to call multiple times.
+   */
+  const doFlush = useCallback(() => {
+    if (pendingTimerRef.current) {
+      window.clearTimeout(pendingTimerRef.current)
+      pendingTimerRef.current = null
+      try {
+        saveJourneyState(state)
+        lastWriteRef.current = new Date().toISOString()
+        setStorageProblem(null)
+        setStorageAvailable(true)
+        setLastSavedAt(lastWriteRef.current)
+        return true
+      } catch (error) {
+        setStorageProblem(error?.reason === 'quota-exceeded' ? 'quota-exceeded' : 'unavailable')
+        setStorageAvailable(false)
+        return false
+      }
+    }
+    return true
+  }, [state])
+
+  /**
    * Cancel a pending write without performing it.
    *
    * Deliberately does not write the current state first. A write would be
@@ -124,19 +154,58 @@ export function JourneyProvider({ children }) {
   /** Persist immediately, reporting failure rather than swallowing it. */
   const flushPendingWrite = useCallback(() => {
     cancelPendingWrite()
-    try {
-      saveJourneyState(state)
-      lastWriteRef.current = new Date().toISOString()
-      setStorageProblem(null)
-      setStorageAvailable(true)
-      setLastSavedAt(lastWriteRef.current)
-      return true
-    } catch (error) {
-      setStorageProblem(error?.reason === 'quota-exceeded' ? 'quota-exceeded' : 'unavailable')
-      setStorageAvailable(false)
-      return false
+    return doFlush()
+  }, [cancelPendingWrite, doFlush])
+
+  /**
+   * Flush pending writes when the page is about to unload or become hidden.
+   * This prevents data loss when the user closes the tab, navigates away,
+   * or switches tabs within the debounce window.
+   */
+  useEffect(() => {
+    if (typeof window === 'undefined') return undefined
+
+    const handlePageHide = () => {
+      if (!flushedOnUnmountRef.current) {
+        flushedOnUnmountRef.current = true
+        doFlush()
+      }
     }
-  }, [cancelPendingWrite, state])
+
+    const handleVisibilityChange = () => {
+      if (document.visibilityState === 'hidden') {
+        handlePageHide()
+      }
+    }
+
+    const handleBeforeUnload = () => {
+      handlePageHide()
+    }
+
+    window.addEventListener('pagehide', handlePageHide)
+    document.addEventListener('visibilitychange', handleVisibilityChange)
+    window.addEventListener('beforeunload', handleBeforeUnload)
+
+    return () => {
+      window.removeEventListener('pagehide', handlePageHide)
+      document.removeEventListener('visibilitychange', handleVisibilityChange)
+      window.removeEventListener('beforeunload', handleBeforeUnload)
+    }
+  }, [doFlush])
+
+  /**
+   * Flush pending writes when navigating away from journey routes.
+   * This ensures data is saved even if the user navigates to another page
+   * within the app (not a full page unload).
+   */
+  useEffect(() => {
+    if (isJourneyRoute) return
+    // We're leaving the journey routes - flush any pending writes
+    if (!flushedOnUnmountRef.current) {
+      flushedOnUnmountRef.current = true
+      doFlush()
+    }
+  }, [isJourneyRoute, doFlush])
 
   /**
    * Reflect the display mode on the document, because the page is Bangla-first
