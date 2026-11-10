@@ -12,8 +12,19 @@ was executed.
 - **Branch:** `feat/final-scholarship-catalogue-reconciliation`
 - **Base SHA:** `5b28ceef0480a4bd6612d1cf08c26e8629bea285`
 - **Pre-remediation HEAD:** `dec6dbcd65ffe98da42f0e6fff665c3c840ce04a`
+- **Remediation HEAD:** `406d0794b653503624dacf00481aebfc2bab87ca`
 - **Package status:** `BLOCKED`
 - **Production import authorized:** `false`
+
+## Exact-HEAD CI
+
+- **Commit:** `406d0794b653503624dacf00481aebfc2bab87ca`
+- **ScholarZone CI:** SUCCESS — https://github.com/gopal735/ScholarZone/actions/runs/42791774270
+- **Minimal CI Test:** SUCCESS — https://github.com/gopal735/ScholarZone/actions/runs/42791774309
+- **Catalogue Snapshot Generation:** SUCCESS — https://github.com/gopal735/ScholarZone/actions/runs/42791774315
+- **All PR checks:** SUCCESS (backend-tests, Gate 1/2 on PostgreSQL 16 and 18,
+  migration, preflight, schema compatibility, frontend, snapshot, import-smoke,
+  zero-paid guard)
 
 ## What changed
 
@@ -124,9 +135,15 @@ probes, source DB SHA unchanged. **PostgreSQL simulation is UNAVAILABLE** — no
 disposable DSN, PostgreSQL client/server, or Docker is available; this is not
 reported as a pass.
 
+### Tests
+
+`backend/tests/test_final_reconciliation_package.py` passes (3 tests):
+package passes semantic validation, self-test catches every mutation, canonical
+insert file is empty, and legacy archive is non-importable.
+
 ## Why this PR remains BLOCKED
 
-1. Vanier CGS and NFP/OTS lifecycle proposals still lacks DIRECT evidence.
+1. Vanier CGS and NFP/OTS lifecycle proposals still lack DIRECT evidence.
 2. PostgreSQL duplicate-merge simulation is unavailable.
 3. No duplicate merge has been executed; 4 archive-only plans await owner approval.
 4. Six new-insert candidates remain blocked.
@@ -134,10 +151,10 @@ reported as a pass.
 
 ## Test plan
 
-- [ ] `python backend/imports/final-reconciliation-2026-11-09/validate_semantics.py`
-- [ ] `python backend/imports/final-reconciliation-2026-11-09/validate_semantics.py --self-test`
-- [ ] `pytest backend/tests/test_final_reconciliation_package.py`
-- [ ] Exact-HEAD CI workflow passes (see `CI_EVIDENCE.md`)
+- [x] `python backend/imports/final-reconciliation-2026-11-09/validate_semantics.py`
+- [x] `python backend/imports/final-reconciliation-2026-11-09/validate_semantics.py --self-test`
+- [x] `pytest backend/tests/test_final_reconciliation_package.py`
+- [x] Exact-HEAD CI workflow passes
 
 ## Safety
 
