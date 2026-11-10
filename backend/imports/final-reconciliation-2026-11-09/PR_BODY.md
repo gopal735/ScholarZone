@@ -12,14 +12,14 @@ was executed.
 - **Branch:** `feat/final-scholarship-catalogue-reconciliation`
 - **Base SHA:** `5b28ceef0480a4bd6612d1cf08c26e8629bea285`
 - **Pre-remediation HEAD:** `dec6dbcd65ffe98da42f0e6fff665c3c840ce04a`
-- **Remediation HEAD:** `406d0794b653503624dacf00481aebfc2bab87ca`
+- **Latest verified remediation HEAD:** `14c6d02527898a8b72e195e87b03a107ee41b600`
 - **Package status:** `BLOCKED`
 - **Production import authorized:** `false`
 
 ## Exact-HEAD CI
 
-- **Commit:** `406d0794b653503624dacf00481aebfc2bab87ca`
-- **ScholarZone CI:** SUCCESS — https://github.com/gopal735/ScholarZone/actions/runs/42791774270
+- **Commit:** `14c6d02527898a8b72e195e87b03a107ee41b600`
+- **ScholarZone CI:** SUCCESS — https://github.com/gopal735/ScholarZone/actions/runs/42793582692 — 18/18 jobs passed
 - **Minimal CI Test:** SUCCESS — https://github.com/gopal735/ScholarZone/actions/runs/42791774309
 - **Catalogue Snapshot Generation:** SUCCESS — https://github.com/gopal735/ScholarZone/actions/runs/42791774315
 - **All PR checks:** SUCCESS (backend-tests, Gate 1/2 on PostgreSQL 16 and 18,

@@ -41,18 +41,27 @@ client/server, or Docker). Not a pass.
 
 ## Exact-HEAD CI
 
-The authoritative exact-HEAD result is the GitHub Actions workflow run attached
-to the latest commit on PR #81. A green run on an earlier commit is not accepted
-as exact-HEAD evidence.
+**Latest verified remediation commit:** `14c6d02527898a8b72e195e87b03a107ee41b600`
 
-To verify after pushing:
+**Exact-HEAD ScholarZone CI run:** `42793582692` — SUCCESS
+https://github.com/gopal735/ScholarZone/actions/runs/42793582692
 
-```bash
-git rev-parse HEAD
-gh pr checks 81 --watch
-gh run list --branch feat/final-scholarship-catalogue-reconciliation --limit 1
-```
+**Result:** 18/18 jobs passed (backend-tests, Gate 1/2 PostgreSQL 16 and 18,
+migration, preflight, schema compatibility, frontend, snapshot, import-smoke,
+zero-paid guard, git-integrity, env-config).
 
-Record the remediation commit SHA, workflow run URL, and conclusion in the PR
-conversation when the run finishes. Local validation above is necessary but is
-not a substitute for exact-HEAD CI.
+**Backend tests:** 6,204 passed, 15 skipped.
+
+**Reconciliation package tests:** `backend/tests/test_final_reconciliation_package.py`
+— 3 passed.
+
+**Distinction:** The 18/18 CI jobs include PostgreSQL CI compatibility jobs
+(migration, preflight, schema compatibility on PostgreSQL 16 and 18). These are
+CI environment compatibility checks, not the package's PostgreSQL
+duplicate-merge simulation, which remains **UNAVAILABLE** (no disposable DSN,
+PostgreSQL client/server, or Docker in this local environment) and is not
+reported as a pass.
+
+The old checks at pre-remediation HEAD passed before this remediation. They do
+not validate the rewritten package, which is why exact-HEAD CI is required.
+Local validation is necessary but is not a substitute for exact-HEAD CI.

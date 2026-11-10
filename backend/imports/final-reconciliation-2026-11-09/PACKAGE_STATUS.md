@@ -7,6 +7,8 @@
 **Branch:** `feat/final-scholarship-catalogue-reconciliation`
 **Base SHA:** `5b28ceef0480a4bd6612d1cf08c26e8629bea285`
 **Pre-remediation HEAD:** `dec6dbcd65ffe98da42f0e6fff665c3c840ce04a`
+**Latest verified remediation HEAD:** `14c6d02527898a8b72e195e87b03a107ee41b600`
+**Exact-HEAD CI run:** `42793582692` — SUCCESS — https://github.com/gopal735/ScholarZone/actions/runs/42793582692 — 18/18 jobs passed
 
 ## Approved and excluded
 
