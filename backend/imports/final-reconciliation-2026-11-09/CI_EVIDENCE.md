@@ -41,12 +41,13 @@ client/server, or Docker). Not a pass.
 
 ## Exact-HEAD CI
 
-**Code HEAD tested:** `33cedd69d8a777a6c92e39d2d2718d9699a443f7`
-**Documentation-only commit (current HEAD):** `e5f358cb7b90abf3677aa0f705d886acacdb4104` — no code or package-data change
+**Code HEAD tested:** `33cedd69d8a777a6c92e39d2d2718d9699a443f7` (CI run #699: `42800155446`, SUCCESS, 18/18 jobs)
+**Documentation-only commit (current HEAD):** `4755225f76c76722856fc8e7241a94210a4e60bb` (no code or package-data change)
+**Documentation-only commit (previous):** `e5f358cb7b90abf3677aa0f705d886acacdb4104` (no code or package-data change; CI run `42802802211`, SUCCESS, 18/18 jobs)
 **Latest verified remediation commit:** `14c6d02527898a8b72e195e87b03a107ee41b600` (historical remediation evidence)
 
-**Exact-HEAD ScholarZone CI run #699:** SUCCESS — https://github.com/gopal735/ScholarZone/actions/runs/42800155446
-**ScholarZone CI for documentation commit:** SUCCESS — https://github.com/gopal735/ScholarZone/actions/runs/42802802211
+**Exact-HEAD ScholarZone CI run #699:** SUCCESS — https://github.com/gopal735/ScholarZone/actions/runs/42800155446 (validates code HEAD `33cedd69d8a777a6c92e39d2d2718d9699a443f7`)
+**ScholarZone CI run #701:** SUCCESS — https://github.com/gopal735/ScholarZone/actions/runs/42804492704 (validates documentation-only commit `4755225f76c76722856fc8e7241a94210a4e60bb`, 18/18 jobs)
 
 **Result:** 18/18 jobs passed (backend-tests, Gate 1/2 PostgreSQL 16 and 18,
 migration, preflight, schema compatibility, frontend, snapshot, import-smoke,
