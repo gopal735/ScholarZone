@@ -6,8 +6,8 @@
   "plans_approved_for_execution": 0,
   "owner_approval_required": true,
   "summary": {
-    "total_pairs": 5,
-    "merge_ready_for_owner_review": 4,
+    "total_pairs": 6,
+    "merge_ready_for_owner_review": 5,
     "blocked_manual_review": 1,
     "plans_approved_for_execution": 0,
     "plans_executed": 0,
@@ -931,6 +931,70 @@
       },
       "risk_level": "MEDIUM",
       "estimated_duration_ms": 0,
+      "requires_owner_approval": true
+    },
+    {
+      "pair_id": 6,
+      "classification": "MERGE_READY_FOR_OWNER_REVIEW",
+      "confidence": "HIGH",
+      "canonical_id": 645,
+      "duplicate_id": 654,
+      "canonical_record": {
+        "id": 645,
+        "title": "TaiwanICDF Scholarship Program (International Higher Education Scholarship Program), TaiwanICDF",
+        "country": "Taiwan",
+        "degree": "Master's, PhD",
+        "funding": "Partial",
+        "status": "open",
+        "is_archived": false,
+        "official_source_url": "https://www.icdf.org.tw/wSite/ct?ctNode=31562&mp=2&xItem=12505",
+        "application_link": "https://www.icdf.org.tw/wSite/ct?ctNode=31562&mp=2&xItem=12505"
+      },
+      "duplicate_record": {
+        "id": 654,
+        "title": "TaiwanICDF Scholarship Program (Taiwan International Cooperation and Development Fund International",
+        "country": "Taiwan",
+        "degree": "Master's, PhD",
+        "funding": "Partial",
+        "status": "open",
+        "is_archived": false,
+        "official_source_url": "https://www.icdf.org.tw/wSite/ct?xItem=12505&ctNode=31562&mp=2",
+        "application_link": "https://www.icdf.org.tw/wSite/ct?xItem=12505&ctNode=31562&mp=2"
+      },
+      "evidence_same_programme": "Same normalized official source URL (query parameter order differs only), same country (Taiwan), same degree (Master's, PhD), same funding (Partial). Duplicate title is truncated version of canonical title.",
+      "matching_strategy": "exact_normalized_url_and_title_and_country",
+      "conflicts": [
+        {
+          "field": "title",
+          "canonical": "TaiwanICDF Scholarship Program (International Higher Education Scholarship Program), TaiwanICDF",
+          "duplicate": "TaiwanICDF Scholarship Program (Taiwan International Cooperation and Development Fund International",
+          "resolution": "Duplicate title is truncated; canonical title is retained. No title rewrite in archive-only plan."
+        }
+      ],
+      "fk_dependency_rows": {
+        "scholarship_supervisor_coverage": 1
+      },
+      "unique_collision_if_reassigned": true,
+      "archive_only_sql": "UPDATE scholarships SET is_archived = 1, archived_at = COALESCE(archived_at, :execution_timestamp), archived_reason = :archived_reason WHERE id = :duplicate_id AND is_archived = 0",
+      "sql_parameters": {
+        "execution_timestamp": "EXECUTION_TIMESTAMP",
+        "archived_reason": "Duplicate of ID 645 (TaiwanICDF Scholarship Program); archive-only 2026-11-10",
+        "duplicate_id": 654
+      },
+      "expected_rows_affected": 1,
+      "count_impact": {
+        "total_unchanged": true,
+        "active_decrement": 1,
+        "archived_increment": 1
+      },
+      "rollback": "Restore is_archived, archived_at, archived_reason to pre-state. No scholarship row is deleted.",
+      "execution": {
+        "status": "NOT_EXECUTED",
+        "approved_for_execution": false,
+        "execution_gate": "OWNER_APPROVAL_REQUIRED"
+      },
+      "risk_level": "LOW",
+      "estimated_duration_ms": 50,
       "requires_owner_approval": true
     }
   ],

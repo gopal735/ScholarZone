@@ -156,6 +156,40 @@
         "unique_collision_prevented_fk_reassignment": true
       },
       "result": "PASS"
+    },
+    {
+      "pair_id": 6,
+      "canonical_id": 645,
+      "duplicate_id": 654,
+      "pre_state": {
+        "duplicate_is_archived": false,
+        "duplicate_status": "open",
+        "duplicate_official_source_url": "https://www.icdf.org.tw/wSite/ct?xItem=12505&ctNode=31562&mp=2",
+        "canonical_is_archived": false
+      },
+      "operation": "ARCHIVE_DUPLICATE",
+      "rows_affected": 1,
+      "post_state": {
+        "duplicate_is_archived": true,
+        "duplicate_status": "open",
+        "duplicate_archived_at": "2026-11-10T00:00:00+00:00",
+        "duplicate_archived_reason": "Duplicate of ID 645 (TaiwanICDF Scholarship Program); archive-only 2026-11-10",
+        "duplicate_official_source_url": "https://www.icdf.org.tw/wSite/ct?xItem=12505&ctNode=31562&mp=2",
+        "canonical_is_archived": false
+      },
+      "checks": {
+        "rows_affected_1": true,
+        "duplicate_is_archived": true,
+        "duplicate_status_unchanged": true,
+        "duplicate_archived_reason_set": true,
+        "duplicate_official_source_url_unchanged": true,
+        "duplicate_funding_unchanged": true,
+        "duplicate_degree_unchanged": true,
+        "duplicate_region_unchanged": true,
+        "canonical_row_unchanged": true,
+        "unique_collision_prevented_fk_reassignment": true
+      },
+      "result": "PASS"
     }
   ],
   "uniqueness_collision_tests": [
@@ -206,14 +240,26 @@
       "actual_result": "UNIQUE_COLLISION",
       "error": "UNIQUE constraint failed: scholarship_supervisor_coverage.scholarship_id",
       "rows_reassigned": 0
+    },
+    {
+      "pair_id": 6,
+      "table": "scholarship_supervisor_coverage",
+      "attempted_reassignment": {
+        "from": 654,
+        "to": 645
+      },
+      "expected_result": "UNIQUE_COLLISION",
+      "actual_result": "UNIQUE_COLLISION",
+      "error": "UNIQUE constraint failed: scholarship_supervisor_coverage.scholarship_id",
+      "rows_reassigned": 0
     }
   ],
   "aggregate": {
-    "pairs_tested": 4,
-    "pairs_passed": 4,
+    "pairs_tested": 5,
+    "pairs_passed": 5,
     "pairs_failed": 0,
-    "pairs_archived": 4,
-    "collisions_detected": 4,
+    "pairs_archived": 5,
+    "collisions_detected": 5,
     "rows_deleted": 0,
     "url_writes": 0,
     "funding_writes": 0,
@@ -231,8 +277,8 @@
     "active_before": 830,
     "archived_before": 0,
     "total_after": 830,
-    "active_after": 826,
-    "archived_after": 4,
+    "active_after": 825,
+    "archived_after": 5,
     "status_distribution_before": {
       "closed": 6,
       "closing-soon": 4,
@@ -248,8 +294,8 @@
   },
   "database_state_after_dry_run": {
     "total": 830,
-    "active": 826,
-    "archived": 4,
+    "active": 825,
+    "archived": 5,
     "status_distribution": {
       "closed": 6,
       "closing-soon": 4,
@@ -261,6 +307,6 @@
     "The simulation ran on an isolated SQLite copy, not on PostgreSQL.",
     "SQLite locking and constraint-error text differ from PostgreSQL; the UNIQUE collision outcome should be reconfirmed on PostgreSQL.",
     "No audit row was inserted because scholarship_restore_records requires source/target version IDs and is not a merge-audit table.",
-    "The four archive-only plans were not executed against the source database."
+    "The five archive-only plans were not executed against the source database."
   ]
 }
