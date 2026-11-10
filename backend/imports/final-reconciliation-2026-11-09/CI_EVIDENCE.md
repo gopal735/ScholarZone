@@ -42,10 +42,11 @@ client/server, or Docker). Not a pass.
 ## Exact-HEAD CI
 
 **Code HEAD tested:** `33cedd69d8a777a6c92e39d2d2718d9699a443f7`
-**Documentation-only commit:** created by this sync (no code or package-data change)
+**Documentation-only commit (current HEAD):** `e5f358cb7b90abf3677aa0f705d886acacdb4104` — no code or package-data change
 **Latest verified remediation commit:** `14c6d02527898a8b72e195e87b03a107ee41b600` (historical remediation evidence)
 
 **Exact-HEAD ScholarZone CI run #699:** SUCCESS — https://github.com/gopal735/ScholarZone/actions/runs/42800155446
+**ScholarZone CI for documentation commit:** SUCCESS — https://github.com/gopal735/ScholarZone/actions/runs/42802802211
 
 **Result:** 18/18 jobs passed (backend-tests, Gate 1/2 PostgreSQL 16 and 18,
 migration, preflight, schema compatibility, frontend, snapshot, import-smoke,

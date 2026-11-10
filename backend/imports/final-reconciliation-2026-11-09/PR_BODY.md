@@ -20,9 +20,8 @@ was executed.
 
 ## Exact-HEAD CI
 
-- **Code HEAD tested:** `33cedd69d8a777a6c92e39d2d2718d9699a443f7`
-- **Documentation-only commit:** this sync (no code, JSON, or business-logic change)
-- **ScholarZone CI run #699:** SUCCESS — https://github.com/gopal735/ScholarZone/actions/runs/42800155446 — 18/18 jobs passed
+- **Code HEAD tested:** `33cedd69d8a777a6c92e39d2d2718d9699a443f7` (CI run #699: `42800155446`, SUCCESS, 18/18 jobs)
+- **Documentation-only commit (current HEAD):** `e5f358c` — no code, JSON, or business-logic change; CI run `42802802211` SUCCESS, 18/18 jobs
 - **Frontend tests:** 486/486 passed, 25/25 test files
 - **Minimal CI Test:** SUCCESS — https://github.com/gopal735/ScholarZone/actions/runs/42791774309
 - **Catalogue Snapshot Generation:** SUCCESS — https://github.com/gopal735/ScholarZone/actions/runs/42791774315

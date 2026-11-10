@@ -7,10 +7,9 @@
 **Branch:** `feat/final-scholarship-catalogue-reconciliation`
 **Base SHA:** `5b28ceef0480a4bd6612d1cf08c26e8629bea285`
 **Pre-remediation HEAD:** `dec6dbcd65ffe98da42f0e6fff665c3c840ce04a`
-**Current code HEAD:** `33cedd69d8a777a6c92e39d2d2718d9699a443f7` (tested by CI run #699)
-**Documentation-only commit:** created by this sync (no code or package-data change)
+**Current code HEAD:** `33cedd69d8a777a6c92e39d2d2718d9699a443f7` (tested by CI run #699: `42800155446`, SUCCESS, 18/18 jobs)
+**Documentation-only commit (current HEAD):** `e5f358c` — no code or package-data change; CI run `42802802211` SUCCESS, 18/18 jobs
 **Latest verified remediation commit:** `14c6d02527898a8b72e195e87b03a107ee41b600` (historical remediation evidence)
-**Exact-HEAD CI run #699:** SUCCESS — https://github.com/gopal735/ScholarZone/actions/runs/42800155446 — 18/18 jobs passed
 **Frontend tests:** 486/486 passed, 25/25 test files
 
 ## Approved and excluded
