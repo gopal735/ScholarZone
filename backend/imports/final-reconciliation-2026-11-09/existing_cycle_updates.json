@@ -1,0 +1,203 @@
+[
+  {
+    "operation": "EXISTING_CYCLE_UPDATE",
+    "catalogue_id": 1,
+    "canonical_name": "Erasmus Mundus Joint Masters (EMJM)",
+    "current_catalogue_title": "Erasmus Mundus",
+    "changes": [
+      {
+        "field": "title",
+        "research": "Erasmus Mundus Joint Masters (EMJM)",
+        "catalogue": "Erasmus Mundus"
+      }
+    ],
+    "official_source_url": "https://erasmus-plus.ec.europa.eu/opportunities/individuals/students/erasmus-mundus-joint-masters",
+    "date_checked": "2026-11-09"
+  },
+  {
+    "operation": "EXISTING_CYCLE_UPDATE",
+    "catalogue_id": 516,
+    "canonical_name": "GKS (Global Korea Scholarship) Program - Graduate Degree Programs",
+    "current_catalogue_title": "GKS (Global Korea Scholarship) Program - Undergraduate Degree Programs",
+    "changes": [
+      {
+        "field": "title",
+        "research": "GKS (Global Korea Scholarship) Program - Graduate Degree Programs",
+        "catalogue": "GKS (Global Korea Scholarship) Program - Undergraduate Degree Programs"
+      }
+    ],
+    "official_source_url": "https://www.studyinkorea.go.kr/en/plan/scholarship.do",
+    "date_checked": "2026-11-09"
+  },
+  {
+    "operation": "EXISTING_CYCLE_UPDATE",
+    "catalogue_id": 231,
+    "canonical_name": "Postgraduate Studies - Architecture",
+    "current_catalogue_title": "DAAD Postgraduate Studies in the Field of Architecture",
+    "changes": [
+      {
+        "field": "title",
+        "research": "Postgraduate Studies - Architecture",
+        "catalogue": "DAAD Postgraduate Studies in the Field of Architecture"
+      }
+    ],
+    "official_source_url": "https://www2.daad.de/deutschland/stipendium/datenbank/en/21148-scholarship-database/?detail=57135744",
+    "date_checked": "2026-11-09"
+  },
+  {
+    "operation": "EXISTING_CYCLE_UPDATE",
+    "catalogue_id": 232,
+    "canonical_name": "Postgraduate Studies - Fine Art/Design/Film",
+    "current_catalogue_title": "DAAD Postgraduate Studies in the Fields of Fine Art, Design, Visual Communication and Film",
+    "changes": [
+      {
+        "field": "title",
+        "research": "Postgraduate Studies - Fine Art/Design/Film",
+        "catalogue": "DAAD Postgraduate Studies in the Fields of Fine Art, Design, Visual Communication and Film"
+      }
+    ],
+    "official_source_url": "https://www2.daad.de/deutschland/stipendium/datenbank/en/21148-scholarship-database/?detail=57135742",
+    "date_checked": "2026-11-09"
+  },
+  {
+    "operation": "EXISTING_CYCLE_UPDATE",
+    "catalogue_id": 234,
+    "canonical_name": "Postgraduate Studies - Performing Arts",
+    "current_catalogue_title": "DAAD Postgraduate Studies in the Field of Performing Arts",
+    "changes": [
+      {
+        "field": "title",
+        "research": "Postgraduate Studies - Performing Arts",
+        "catalogue": "DAAD Postgraduate Studies in the Field of Performing Arts"
+      }
+    ],
+    "official_source_url": "https://www2.daad.de/deutschland/stipendium/datenbank/en/21148-scholarship-database/?detail=50109971",
+    "date_checked": "2026-11-09"
+  },
+  {
+    "operation": "EXISTING_CYCLE_UPDATE",
+    "catalogue_id": 1312,
+    "canonical_name": "Stanford Knight-Hennessy Scholars Program",
+    "current_catalogue_title": "Knight-Hennessy Scholars",
+    "changes": [
+      {
+        "field": "title",
+        "research": "Stanford Knight-Hennessy Scholars Program",
+        "catalogue": "Knight-Hennessy Scholars"
+      }
+    ],
+    "official_source_url": "https://knight-hennessy.stanford.edu",
+    "date_checked": "2026-11-09"
+  },
+  {
+    "operation": "EXISTING_CYCLE_UPDATE",
+    "catalogue_id": 1336,
+    "canonical_name": "Huayu Enrichment Scholarship (HES)",
+    "current_catalogue_title": "Taiwan Scholarship 2027",
+    "changes": [
+      {
+        "field": "title",
+        "research": "Huayu Enrichment Scholarship (HES)",
+        "catalogue": "Taiwan Scholarship 2027"
+      }
+    ],
+    "official_source_url": "https://taiwanscholarship.moe.gov.tw",
+    "date_checked": "2026-11-09"
+  },
+  {
+    "operation": "EXISTING_CYCLE_UPDATE",
+    "catalogue_id": 1,
+    "canonical_name": "Erasmus Mundus",
+    "cycle_update": "2027 intake: 37 new programmes added, deadline Dec 2026-Jan 2027",
+    "official_source_url": "https://erasmus-plus.ec.europa.eu/opportunities/individuals/students/erasmus-mundus-joint-masters",
+    "date_checked": "2026-11-09"
+  },
+  {
+    "operation": "EXISTING_CYCLE_UPDATE",
+    "catalogue_id": 3,
+    "canonical_name": "DAAD Scholarship",
+    "cycle_update": "2027/28 cycle: deadlines updated annually Q2",
+    "official_source_url": "https://www.daad.de",
+    "date_checked": "2026-11-09"
+  },
+  {
+    "operation": "EXISTING_CYCLE_UPDATE",
+    "catalogue_id": 23,
+    "canonical_name": "DAAD Development-Related Postgraduate Courses (EPOS)",
+    "cycle_update": "2027/28 cycle: opens Aug 2026, deadline Mar 2027",
+    "official_source_url": "https://www2.daad.de/deutschland/stipendium/datenbank/en/21148-scholarship-database/?detail=50076777",
+    "date_checked": "2026-11-09"
+  },
+  {
+    "operation": "EXISTING_CYCLE_UPDATE",
+    "catalogue_id": 4,
+    "canonical_name": "Global Korea Scholarship (GKS)",
+    "cycle_update": "2027 cycle: separate UG/Grad tracks confirmed",
+    "official_source_url": "https://www.studyinkorea.go.kr",
+    "date_checked": "2026-11-09"
+  },
+  {
+    "operation": "EXISTING_CYCLE_UPDATE",
+    "catalogue_id": 5,
+    "canonical_name": "MEXT (Monbukagakusho) Scholarship",
+    "cycle_update": "2027 cycle: Embassy recommendation Apr-May 2026",
+    "official_source_url": "https://www.studyinjapan.go.jp",
+    "date_checked": "2026-11-09"
+  },
+  {
+    "operation": "EXISTING_CYCLE_UPDATE",
+    "catalogue_id": 30,
+    "canonical_name": "Australia Awards Scholarships",
+    "cycle_update": "2027 cycle: country-specific dates",
+    "official_source_url": "https://www.dfat.gov.au/people-to-people/australia-awards/australia-awards-scholarships",
+    "date_checked": "2026-11-09"
+  },
+  {
+    "operation": "EXISTING_CYCLE_UPDATE",
+    "catalogue_id": 32,
+    "canonical_name": "Swedish Institute Scholarship",
+    "cycle_update": "2027 cycle: opens Feb 2027, closes Feb 2027",
+    "official_source_url": "https://si.se/en/apply/scholarships",
+    "date_checked": "2026-11-09"
+  },
+  {
+    "operation": "EXISTING_CYCLE_UPDATE",
+    "catalogue_id": 33,
+    "canonical_name": "Chinese Government Scholarship (CSC)",
+    "cycle_update": "2027 cycle: Type A/B, embassy deadlines",
+    "official_source_url": "https://www.campuschina.org",
+    "date_checked": "2026-11-09"
+  },
+  {
+    "operation": "EXISTING_CYCLE_UPDATE",
+    "catalogue_id": 34,
+    "canonical_name": "Taiwan Scholarship Program",
+    "cycle_update": "2027 cycle: opens Feb 2027",
+    "official_source_url": "https://www.edutwscholarship.moe.gov.tw",
+    "date_checked": "2026-11-09"
+  },
+  {
+    "operation": "EXISTING_CYCLE_UPDATE",
+    "catalogue_id": 36,
+    "canonical_name": "MAECI Italian Government Scholarship",
+    "cycle_update": "2027/28 cycle: expected Nov 2026-Mar 2027",
+    "official_source_url": "https://www.esteri.it/en/opportunita/borse-di-studio",
+    "date_checked": "2026-11-09"
+  },
+  {
+    "operation": "EXISTING_CYCLE_UPDATE",
+    "catalogue_id": 40,
+    "canonical_name": "ARES Scholarships (Belgium)",
+    "cycle_update": "2027/28 cycle: closed for 2026",
+    "official_source_url": "https://www.ares-ac.be/en/cooperation-au-developpement/bourses",
+    "date_checked": "2026-11-09"
+  },
+  {
+    "operation": "EXISTING_CYCLE_UPDATE",
+    "catalogue_id": 41,
+    "canonical_name": "AECID Spanish Government Scholarship",
+    "cycle_update": "2027/28 cycle: multiple sub-programmes",
+    "official_source_url": "https://www.aecid.es/es/becas-y-lectorados",
+    "date_checked": "2026-11-09"
+  }
+]
