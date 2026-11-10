@@ -1,161 +1,138 @@
 {
-  "reconciliation_date": "2026-11-09",
-  "database_source": "backend/scholarzone.db (local SQLite, 3.1 MB)",
-  "schema_version": "ScholarZone v1 (models.py)",
-  "record_counts": {
-    "total_scholarships": 830,
-    "active_is_archived_false": 790,
-    "archived_is_archived_true": 40,
+  "reconciliation_date": "2026-11-10",
+  "database_source": "backend/scholarzone.db (local SQLite, read-only introspection)",
+  "database_sha256": "c4737c7fce02c719caed1c4f95de0b2ded926e2a84c4bcbda16cddfb9b8a3adb",
+  "schema_version": "ScholarZone v1 (backend/app/models.py)",
+  "baseline": {
+    "total": 830,
+    "active": 830,
+    "archived": 0,
     "status_distribution": {
-      "open": 821,
       "closed": 6,
-      "closing-soon": 3
-    }
+      "closing-soon": 4,
+      "open": 820
+    },
+    "archived_status_distribution": {}
   },
-  "target_operations": {
+  "approved_operations": {
     "new_inserts": 0,
-    "cycle_updates": 18,
-    "funding_corrections": 5,
-    "lifecycle_corrections": 2,
-    "duplicate_merges_proposed": 4,
-    "duplicate_manual_review": 1,
-    "blocked_candidates": 6
+    "cycle_updates": 11,
+    "funding_corrections": 2,
+    "lifecycle_corrections": 0,
+    "total": 13
   },
-  "affected_records": {
-    "cycle_update_ids": [
+  "excluded_pending_operations": {
+    "cycle_updates": 7,
+    "funding_corrections": 3,
+    "lifecycle_corrections": 2,
+    "total": 12
+  },
+  "duplicate_reconciliation": {
+    "pairs": 5,
+    "merge_ready_for_owner_review": 4,
+    "blocked_manual_review": 1,
+    "plans_approved_for_execution": 0,
+    "plans_executed": 0,
+    "archive_only_plans": 4,
+    "duplicate_archives_if_approved": 4,
+    "record_deletions": 0,
+    "merge_ready_pair_ids": [
       1,
+      2,
       3,
-      4,
-      5,
-      23,
-      30,
-      32,
-      33,
-      34,
-      36,
-      40,
-      41,
-      231,
-      232,
-      234,
-      516,
-      1312,
-      1336
+      4
     ],
-    "funding_correction_ids": [
-      3,
-      40,
-      31,
-      729,
-      1
+    "blocked_pair_ids": [
+      5
     ],
-    "lifecycle_correction_ids": [
-      729,
-      31
-    ],
-    "duplicate_survivor_ids": [
-      183,
-      270,
-      271,
-      285,
-      1217
-    ],
-    "duplicate_archive_ids": [
-      753,
-      1244,
-      760,
-      1277,
-      1309
-    ],
-    "blocked_research_ids": [
-      175,
-      360,
-      383,
-      384,
-      423,
-      556
+    "fulbright_pair": {
+      "pair_id": 5,
+      "canonical_id": 1217,
+      "duplicate_id": 1309,
+      "status": "BLOCKED_MANUAL_REVIEW"
+    },
+    "fk_rows_reassigned_in_plan": 0,
+    "duplicate_side_fk_rows_all_pairs": 5,
+    "duplicate_side_fk_rows_merge_ready_pairs": 4,
+    "duplicate_side_fk_rows_blocked_fulbright": 1,
+    "unique_collisions_if_merge_ready_reassigned": 4,
+    "unique_collisions_if_all_pairs_reassigned": 5
+  },
+  "lifecycle_proposals": {
+    "proposed_archives": 2,
+    "approved_archives": 0,
+    "approval_status": "NOT_APPROVED_PENDING_RESEARCH",
+    "operation_ids": [
+      "LIFECYCLE-729",
+      "LIFECYCLE-31"
     ]
   },
-  "foreign_key_impact": {
-    "tables_affected": [
-      "scholarship_supervisor_coverage",
-      "scholarship_snapshots",
-      "discovery_candidates",
-      "application_records",
-      "saved_scholarships",
-      "scholarship_verification_history",
-      "scholarship_reviews",
-      "scholarship_fetch_attempts",
-      "scholarship_professor_links",
-      "official_contacts",
-      "professor_outreach_records",
-      "application_checklist_items",
-      "supervisor_source_evidence",
-      "scholarship_image_audit"
-    ],
-    "total_fk_rows_to_reassign": 20,
-    "archived_records_preserved": 4
-  },
-  "projected_state": {
-    "before": {
-      "active": 790,
-      "archived": 40,
-      "duplicate_pairs": 5
+  "projected_states": {
+    "after_approved_subset": {
+      "total": 830,
+      "active": 830,
+      "archived": 0,
+      "status_distribution": {
+        "closed": 6,
+        "closing-soon": 4,
+        "open": 820
+      },
+      "description": "After the 11 cycle updates and 2 funding corrections only. No inserts, archives, or duplicate merges."
     },
-    "after_corrections_only": {
-      "active": 790,
-      "archived": 42,
-      "duplicate_pairs": 5,
-      "description": "After 5 funding + 2 lifecycle corrections; no duplicate merges executed"
+    "after_approved_plus_lifecycle_proposals": {
+      "total": 830,
+      "active": 828,
+      "archived": 2,
+      "status_distribution": {
+        "closed": 8,
+        "closing-soon": 4,
+        "open": 818
+      },
+      "description": "If the 2 PENDING_RESEARCH lifecycle proposals were later approved. Duplicate merges still not executed."
     },
-    "after_corrections_plus_lifecycle": {
-      "active": 788,
-      "archived": 44,
-      "duplicate_pairs": 5,
-      "description": "After lifecycle archival (Vanier, NFP/OTS); no duplicate merges executed"
-    },
-    "after_full_proposed": {
-      "active": 786,
-      "archived": 44,
-      "duplicate_pairs": 1,
-      "description": "After all corrections, lifecycle archival, and 4 duplicate merges (Fulbright blocked)"
-    },
-    "net_change": {
-      "active": -4,
-      "archived": 4,
-      "duplicate_pairs_resolved": 4
+    "after_approved_plus_lifecycle_plus_4_duplicate_archives": {
+      "total": 830,
+      "active": 824,
+      "archived": 6,
+      "status_distribution": {
+        "closed": 8,
+        "closing-soon": 4,
+        "open": 818
+      },
+      "description": "If lifecycle proposals and the 4 archive-only duplicate plans were all approved. Fulbright remains blocked. Duplicate archives do not change status."
     }
+  },
+  "archive_accounting": {
+    "lifecycle_archives": 2,
+    "duplicate_archives": 4,
+    "total_archives": 6,
+    "total_equals_active_plus_archived": true,
+    "no_double_counting": true
+  },
+  "fk_reconciliation": {
+    "declared_fk_tables": 14,
+    "declared_fk_references": 14,
+    "append_only_non_fk_tables": 1,
+    "total_fk_reference_rows_for_pair_ids": 10,
+    "duplicate_side_fk_rows": 5,
+    "safe_reassignments": 0,
+    "rows_reassigned_in_plan": 0,
+    "collisions_in_plan": 0
   },
   "validation": {
-    "schema_compliance": "PASS",
-    "unique_constraints": "PASS (official_source_url unique)",
-    "foreign_key_integrity": "PASS (simulated)",
-    "idempotency": "PASS",
-    "data_loss": 0,
-    "historical_preservation": "PASS (archive instead of delete)"
-  },
-  "evidence_coverage": {
-    "operations_with_direct_evidence": 13,
-    "operations_with_pending_evidence": 12,
-    "total_source_evidence_records": 95,
-    "evidence_gaps": [
-      "8 cycle updates from pending research (Australia Awards, SI, CSC, Taiwan, MAECI, ARES, AECID)",
-      "4 funding corrections from pending research (ARES, NFP/OTS, Vanier)",
-      "2 lifecycle corrections from pending research (Vanier, NFP/OTS)"
-    ]
-  },
-  "pending_research": {
-    "total_pending": 738,
-    "catalogue_matches": 688,
-    "new_candidates": 46,
-    "blocked_in_package": 6,
-    "requires_verification": 734
+    "baseline_total_equals_active_plus_archived": true,
+    "status_distribution_sums_to_total": true,
+    "approved_operation_count_matches_files": true,
+    "pending_operation_count_matches_mapping": true,
+    "duplicate_plan_counts_match_fk_report": true,
+    "duplicate_dry_run_matches_plan": true,
+    "projected_counts_consistent": true,
+    "no_lifecycle_duplicate_double_counting": true
   },
   "recommendations": [
-    "Complete official verification for 46 new candidates before import",
-    "Resolve 8 pending cycle updates with official sources",
-    "Verify funding corrections for ARES, NFP/OTS, Vanier with Tier 1 sources",
-    "Obtain owner approval for duplicate merges (4 approved, 1 manual review)",
-    "Complete foreign key dependency check on staging before production"
+    "Keep the package blocked until Vanier CGS and NFP/OTS lifecycle evidence is captured as DIRECT.",
+    "Run the duplicate archive-only plans on an isolated PostgreSQL instance before any execution.",
+    "Do not import from this package without explicit owner authorization.",
+    "Treat the 6 new-insert candidates as blocked research, not approved records."
   ]
 }

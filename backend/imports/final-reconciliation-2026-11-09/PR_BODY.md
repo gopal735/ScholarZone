@@ -1,103 +1,156 @@
 ## Summary
 
-Complete system remediation addressing all P0/P1 defects across security, data integrity, architecture, and UX.
+This PR replaces the earlier reconciliation package with a **blocked review
+package** for the final scholarship catalogue reconciliation. It corrects the
+lifecycle model contract, duplicate/FK handling, evidence scope, canonical file
+set, projected counts, validation, and documentation.
 
-## Changes
+**This is a review package. It is not production import authorization.** No
+production database was written, no migration was run, and no duplicate merge
+was executed.
 
-### Security Fixes (P0)
-- **Removed unauthenticated DB write endpoints** (`/debug/fix-null-lists` in `main.py` and `scholarships.py`)
-- **Added rate limiting middleware** for public API: 300 req/min general, 60 req/min for stats endpoints
-- **Fixed timing attack** in admin auth: changed `==` to `secrets.compare_digest()`
-- **Fixed XSS in AI chat** (`UnifiedAIPage.jsx:91`): added `DOMPurify.sanitize()` before `dangerouslySetInnerHTML`
+- **Branch:** `feat/final-scholarship-catalogue-reconciliation`
+- **Base SHA:** `5b28ceef0480a4bd6612d1cf08c26e8629bea285`
+- **Pre-remediation HEAD:** `dec6dbcd65ffe98da42f0e6fff665c3c840ce04a`
+- **Package status:** `BLOCKED`
+- **Production import authorized:** `false`
 
-### Data Integrity Fixes (P0)
-- **Fully funded contract**: Set 211 records to `fully_funded=NULL` where `tuition_coverage!=True` or `living_cost_coverage!=True`. Only 3 records retain `fully_funded=true` (DAAD, GKS, MEXT - all have both coverages).
-- **Excluded region records**: Archived 40 records from Middle East (17), Latin America (22), Caribbean (1) with `archived_reason='excluded_region'`.
-- **Legacy ID migration gap**: Added `legacy_id` column to SQLite/PostgreSQL upgrade paths with unique index.
-- **Hardcoded fallback data**: Removed `FLAGSHIP_PROGRAMMES` (8 records), `fallbackScholarships` (4 records), `scholarships.js` (17 records) - now fully dynamic from snapshot.
+## What changed
 
-### Frontend/UX Fixes (P1/P2)
-- Replaced `hero-learning` with new bilingual `hero-guide` component (English + Bengali)
-- Removed 3D tilt, marquee, hardcoded `FLAGSHIP_PROGRAMMES`
-- Added `Fragment` import, fixed JSX syntax errors
-- Updated HomePage test to match new `hero-guide` accessible name
+### Canonical package
 
-### Data Reconciliation
-- **Restored 43 records** with `fully_funded=NULL` (no tuition/living coverage evidence) - 1 skipped (ID 785 duplicate URL)
-- **Archived 40 excluded-region records** (Middle East 17, Latin America 22, Caribbean 1)
-- **Added 54 new records** (IDs 1299–1352: Europe gaps, North America, Top-Tier Asia-Pacific)
-- **Final state**: 784 public records, 66 countries, 3 fully funded, 781 null, 0 false
+The authoritative package is
+`backend/imports/final-reconciliation-2026-11-09/`.
 
-### Pipeline
-- Rebuilt snapshot: 784 public records, 66 countries
-- Rebuilt sitemap: 786 URLs (784 scholarship + 2 index)
-- All core tests passing: 365 frontend, 71 backend core, 106 extended backend
-- Research ledger updated: 825 entries covering all 784 public IDs + 40 archived + research-only
+| File | Records | Importable | Purpose |
+|---|---:|---|---|
+| `final_import_ready_scholarships.json` | 0 | yes | Canonical insert file; empty by design |
+| `final_existing_cycle_updates.json` | 11 | yes | Approved cycle updates, all DIRECT evidence |
+| `final_funding_corrections.json` | 2 | yes | Approved funding corrections, all DIRECT evidence |
+| `final_lifecycle_corrections.json` | 2 | no | PENDING_RESEARCH proposals, not approved |
+| `final_source_evidence.json` | 13 | no | DIRECT evidence registry |
+| `operation_evidence_mapping.json` | 25 | no | 13 approved + 12 excluded pending |
+| `blocked_records.json` | 6 | no | Blocked insert candidates |
+| `duplicate_merge_plan.json` | 5 pairs | no | 4 archive-only plans, 1 blocked Fulbright pair |
+| `duplicate_fk_dependency_report.json` | 14 tables | no | Actual FK introspection |
+| `duplicate_merge_dry_run.json` | 4 pairs | no | Isolated SQLite simulation |
+| `final_database_reconciliation.json` | 1 | no | Before/after counts with archive accounting |
+| `final_reconciliation_manifest.json` | 1 | no | Manifest and hashes |
 
-## Test Results
+The eight old unprefixed files were moved to `legacy/import-files/` and marked
+`SUPERSEDED` / `importable=false`. `legacy/README.md` states that the archive is
+not importable.
 
-| Suite | Passed | Skipped | Failed |
-|-------|--------|---------|--------|
-| Frontend (22 files) | 365 | 0 | 0 |
-| Backend Core (71 tests) | 71 | 0 | 0 |
-| Backend Extended (106 tests) | 106 | 7 | 0 |
-| Lint (Frontend) | 0 errors | 1 warning | 0 |
-| Snapshot Validation | ✅ Passed (784 records) | — | — |
-| Sitemap Validation | ✅ Passed (786 URLs) | — | — |
+### Lifecycle contract
 
-## Safety Confirmations
-✅ No production DB writes  
-✅ No production purge  
-✅ No secrets changes  
-✅ No deployment  
-✅ No master push/merge  
-✅ No destructive Git operations  
+Lifecycle proposals now use the real `Scholarship` model contract:
 
-## Reconciliation Summary
+- `status="closed"`,
+- `is_archived=true`,
+- explicit `archived_reason`,
+- `archived_at` policy: preserve existing value, or set at execution when null.
 
-| Metric | Base (3f5ab9d) | Final (5c5a1457b0da7a952fc3216bf28ffa5669988ce3) |
-|--------|----------------|------------------|
-| Public Records | 771 | 784 |
-| Countries | 65 | 66 |
-| Fully Funded (true) | 234 | 3 |
-| Fully Funded (null) | 537 | 781 |
-| Fully Funded (false) | 0 | 0 |
-| Archived (excluded) | 0 | 40 |
-| Sitemap URLs | 773 | 786 |
+The unsupported `discontinued` status and the legacy `corrected_status` field
+are gone. Vanier CGS (729) and NFP/OTS (31) remain `PENDING_RESEARCH`,
+`approved_for_import=false`, and are excluded from all approved counts.
 
-### Reconciliation Equation
+### Evidence
+
+Exactly **13 operations** are approved: 11 cycle updates (`CYCLE-1, 3, 4, 5,
+23, 231, 232, 234, 516, 1312, 1336`) and 2 funding corrections (`FUND-3`,
+`FUND-1`). Each has a scalar https source URL, an exact supported claim, an ISO
+8601 retrieval date, and a matching evidence reference.
+
+The original CYCLE-516 title claim ("Graduate") was unsupported and is replaced
+with a supported `degree` change. FUND-3 also sets `tuition_coverage=false` so
+that `fully_funded=false` is internally consistent.
+
+The other **12 operations** are `PENDING_RESEARCH` and excluded. The six new
+inserts are blocked and are not part of this package.
+
+### Duplicate and FK remediation
+
+- 5 pairs total: 4 `MERGE_READY_FOR_OWNER_REVIEW`, 1 `BLOCKED_MANUAL_REVIEW`
+  (Fulbright canonical 1217 / duplicate 1309).
+- Archive-only plans: only `is_archived`, `archived_at`, and `archived_reason`
+  are written for one duplicate row.
+- No deletions, URL writes, funding/degree/region/status resolution, or FK
+  reassignment.
+- Actual introspection: **14 dependent tables, 14 FK references, 10 reference
+  rows** across the 5 pair IDs (5 duplicate-side: 4 merge-ready + 1 Fulbright).
+- `scholarship_supervisor_coverage` has `UNIQUE(scholarship_id)`; all four
+  merge-ready pairs would collide on reassignment, so duplicate-side coverage
+  rows stay with the archived duplicate.
+- `scholarship_image_audit` is append-only, has no FK, and is never reassigned.
+- The old 13-table / 20-reference claim was incorrect and is superseded.
+
+### Counts
+
+| State | Total | Active | Archived | Status distribution |
+|---|---:|---:|---:|---|
+| Baseline | 830 | 830 | 0 | open 820, closed 6, closing-soon 4 |
+| After approved subset | 830 | 830 | 0 | open 820, closed 6, closing-soon 4 |
+| After approved + lifecycle proposals | 830 | 828 | 2 | open 818, closed 8, closing-soon 4 |
+| After approved + lifecycle + 4 duplicate archives | 830 | 824 | 6 | open 818, closed 8, closing-soon 4 |
+
+Lifecycle archives (2) and duplicate archives (4) are counted separately:
+6 = 2 + 4, with no double counting. Total = active + archived at every step.
+
+### Validation
+
+`backend/imports/final-reconciliation-2026-11-09/validate_semantics.py` fails on:
+
+- unsupported lifecycle status or missing archive fields,
+- approved operation without DIRECT evidence,
+- PENDING_RESEARCH operation marked approved,
+- unsafe URL arrays or URL writes,
+- incomplete FK map or inconsistent FK totals,
+- contradictory canonical/legacy files,
+- inconsistent projected counts or manifest hashes.
+
+Local results:
+
+```text
+python validate_semantics.py
+semantic_validation = PASS, error_count = 0, package_status = BLOCKED
+
+python validate_semantics.py --self-test
+SELF-TEST PASSED: 10 mutation checks caught.
 ```
-771 base - 41 removed + 54 added = 784 final
-```
 
-### Archived Records (40 - Excluded Regions)
-- Middle East (17): Israel (4), Qatar (2), Saudi Arabia (4), UAE (4), Turkey (3)
-- Latin America (22): Argentina (3), Brazil (4), Chile (8), Colombia (3), Mexico (4)
-- Caribbean (1): Barbados (1)
+The duplicate simulation ran on an isolated SQLite copy: 4/4 pairs passed,
+830/830/0 → 830/826/4, coverage 830 → 830, 0 URL arrays, 4/4 UNIQUE collision
+probes, source DB SHA unchanged. **PostgreSQL simulation is UNAVAILABLE** — no
+disposable DSN, PostgreSQL client/server, or Docker is available; this is not
+reported as a pass.
 
-### Restored Records (43 - fully_funded=NULL)
-All restored from base snapshot with `fully_funded=NULL` (no tuition/living coverage evidence). 1 skipped (ID 785 - duplicate URL).
+## Why this PR remains BLOCKED
 
-### New Records Added (54 - IDs 1299-1352)
-Europe gaps (10), North America (5), Japan (5), South Korea (5), Singapore (3), Australia (3), New Zealand (2), China (3), Taiwan (3), Hong Kong (4), UK (1), Italy (2), France (1), Germany (1), Austria (3), Canada (2)
+1. Vanier CGS and NFP/OTS lifecycle proposals still lacks DIRECT evidence.
+2. PostgreSQL duplicate-merge simulation is unavailable.
+3. No duplicate merge has been executed; 4 archive-only plans await owner approval.
+4. Six new-insert candidates remain blocked.
+5. This is a review package, not production import authorization.
 
-### Fully Funded Contract
-- `true` (3): DAAD (DE), GKS (KR), MEXT (JP) — only with `tuition_coverage=True` AND `living_cost_coverage=True`
-- `false` (0): None
-- `null` (781): All others — evidence missing or insufficient
+## Test plan
 
-## Safety Confirmations
-✅ No production DB writes  
-✅ No production purge  
-✅ No secrets changes  
-✅ No deployment  
-✅ No master push/merge  
-✅ No destructive Git operations  
-✅ Existing user work preserved  
+- [ ] `python backend/imports/final-reconciliation-2026-11-09/validate_semantics.py`
+- [ ] `python backend/imports/final-reconciliation-2026-11-09/validate_semantics.py --self-test`
+- [ ] `pytest backend/tests/test_final_reconciliation_package.py`
+- [ ] Exact-HEAD CI workflow passes (see `CI_EVIDENCE.md`)
 
----
+## Safety
 
-**Final HEAD**: `5c5a1457b0da7a952fc3216bf28ffa5669988ce3`  
-**Base SHA**: `3f5ab9dd4990dc0b7db8e96a8555b5584ba7e514`  
-**PR**: #78 (https://github.com/gopal735/ScholarZone/pull/78)  
-**Branch**: `fix/complete-system-remediation-2026-11-07`
+- No production database writes
+- No production migration
+- No duplicate merge execution
+- No scholarship record deletion
+- No unrelated feature changes
+- PR must not be merged on the basis of this package alone
+
+## References
+
+- Package: `backend/imports/final-reconciliation-2026-11-09/`
+- Status: `backend/imports/final-reconciliation-2026-11-09/PACKAGE_STATUS.md`
+- CI evidence: `backend/imports/final-reconciliation-2026-11-09/CI_EVIDENCE.md`
+- PR: #81

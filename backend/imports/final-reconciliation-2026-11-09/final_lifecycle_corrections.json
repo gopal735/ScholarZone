@@ -1,30 +1,95 @@
-[
-  {
-    "operation": "LIFECYCLE_CORRECTION",
-    "catalogue_id": 729,
-    "canonical_name": "Vanier Canada Graduate Scholarship",
-    "current_status": "open",
-    "corrected_status": "discontinued",
-    "replacement_programme": "CGRS-D (Canada Graduate Research Scholarship - Doctoral)",
-    "reason": "Vanier CGS discontinued after Fall 2024 final competition. Official source confirms no further competitions. Replaced by CGRS-D.",
-    "evidence_url": "https://vanier.gc.ca/en/home-accueil.html",
-    "date_checked": "2026-11-09",
-    "idempotent": true,
-    "preserve_historical_record": true,
-    "archive_instead_of_delete": true
+{
+  "package_status": "BLOCKED",
+  "approval_status": "NOT_APPROVED_PENDING_RESEARCH",
+  "approved_for_import": false,
+  "operation_count": 2,
+  "schema_contract": {
+    "status": {
+      "declared_type": "String(20)",
+      "allowed_values": [
+        "open",
+        "upcoming",
+        "closing-soon",
+        "closed"
+      ],
+      "proposed_value": "closed"
+    },
+    "is_archived": {
+      "declared_type": "Boolean",
+      "proposed_value": true
+    },
+    "archived_at": {
+      "declared_type": "DateTime(timezone=True), nullable",
+      "policy": "Preserve existing; set at execution only when null."
+    },
+    "archived_reason": {
+      "declared_type": "String(120)",
+      "required_when_is_archived": true,
+      "max_length": 120
+    }
   },
-  {
-    "operation": "LIFECYCLE_CORRECTION",
-    "catalogue_id": 31,
-    "canonical_name": "Netherlands Fellowship Programme (NFP/OTS)",
-    "current_status": "open",
-    "corrected_status": "discontinued",
-    "replacement_programme": "NL Scholarship",
-    "reason": "Netherlands Fellowship Programme (NFP/OTS) discontinued. Replaced by NL Scholarship.",
-    "evidence_url": "https://www.studyinnl.org/finances/ots-scholarships",
-    "date_checked": "2026-11-09",
-    "idempotent": true,
-    "preserve_historical_record": true,
-    "archive_instead_of_delete": true
-  }
-]
+  "operations": [
+    {
+      "operation": "LIFECYCLE_CORRECTION",
+      "operation_id": "LIFECYCLE-729",
+      "catalogue_id": 729,
+      "canonical_name": "Vanier Canada Graduate Scholarship",
+      "current_fields": {
+        "status": "open",
+        "is_archived": false,
+        "archived_at": null,
+        "archived_reason": null
+      },
+      "proposed_fields": {
+        "status": "closed",
+        "is_archived": true,
+        "archived_at": {
+          "action": "PRESERVE_EXISTING",
+          "when_null": "SET_AT_EXECUTION_TIMESTAMP"
+        },
+        "archived_reason": "Programme discontinued after the Fall 2024 competition; successor is CGRS-D"
+      },
+      "archived_at_policy": "Preserve any existing archived_at value; set the execution timestamp only when archived_at is null. Never clear an existing archive timestamp.",
+      "successor_programme": "Canada Graduate Research Scholarship - Doctoral (CGRS-D)",
+      "official_source_url": "https://vanier.gc.ca",
+      "evidence_status": "PENDING_RESEARCH",
+      "evidence_ref": null,
+      "approved_for_import": false,
+      "idempotent": true,
+      "preserve_historical_record": true,
+      "archive_instead_of_delete": true,
+      "blocking_reason": "No DIRECT evidence record exists in the approved 13-operation evidence set. Re-open the official page, capture an exact discontinuation quote, and add a DIRECT evidence record before approval."
+    },
+    {
+      "operation": "LIFECYCLE_CORRECTION",
+      "operation_id": "LIFECYCLE-31",
+      "catalogue_id": 31,
+      "canonical_name": "Netherlands Fellowship Programme (NFP/OTS)",
+      "current_fields": {
+        "status": "open",
+        "is_archived": false,
+        "archived_at": null,
+        "archived_reason": null
+      },
+      "proposed_fields": {
+        "status": "closed",
+        "is_archived": true,
+        "archived_at": {
+          "action": "PRESERVE_EXISTING",
+          "when_null": "SET_AT_EXECUTION_TIMESTAMP"
+        },
+        "archived_reason": "Programme discontinued; successor is the NL Scholarship"
+      },
+      "archived_at_policy": "Preserve any existing archived_at value; set the execution timestamp only when archived_at is null. Never clear an existing archive timestamp.",
+      "successor_programme": "NL Scholarship",
+      "official_source_url": "https://www.studyinnl.org/finances/ots-scholarships",
+      "evidence_status": "PENDING_RESEARCH",
+      "evidence_ref": null,
+      "approved_for_import": false,
+      "idempotent": true,
+      "preserve_historical_record": true,
+      "archive_instead_of_delete": true,
+      "blocking_reason": "No DIRECT evidence record exists in the approved 13-operation evidence set. Re-open the official page, capture an exact discontinuation quote, and add a DIRECT evidence record before approval."
+    }
+  ]
+}

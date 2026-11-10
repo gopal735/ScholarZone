@@ -1,1645 +1,381 @@
 {
-  "mapping_date": "2026-11-09",
+  "mapping_date": "2026-11-10",
   "total_operations": 25,
+  "approved_operations": 13,
+  "pending_operations": 12,
+  "direct_evidence_operations": 13,
+  "pending_research_operations": 12,
   "operations": [
     {
       "operation_type": "EXISTING_CYCLE_UPDATE",
+      "operation_id": "CYCLE-1",
       "catalogue_id": 1,
       "canonical_name": "Erasmus Mundus Joint Masters (EMJM)",
-      "changed_fields": [
+      "changes": [
         {
           "field": "title",
-          "research": "Erasmus Mundus Joint Masters (EMJM)",
-          "catalogue": "Erasmus Mundus"
+          "before": "Erasmus Mundus",
+          "after": "Erasmus Mundus Joint Masters (EMJM)",
+          "evidence_ref": "EV-CYCLE-1"
         }
       ],
-      "official_source_url": "https://erasmus-plus.ec.europa.eu/opportunities/individuals/students/erasmus-mundus-joint-masters",
-      "claims": {
-        "cycle_update": "2027 intake: 37 new programmes added, deadline Dec 2026-Jan 2027"
-      },
-      "evidence_items": [
-        {
-          "field": "programme_type",
-          "value": "Erasmus Mundus Joint Masters (EMJM)",
-          "source_url": "https://erasmus-plus.ec.europa.eu/opportunities/individuals/students/erasmus-mundus-joint-masters",
-          "verified_date": "2026-11-01",
-          "directly_supports": true
-        },
-        {
-          "field": "scholarship_coverage",
-          "value": "Full scholarships cover participation costs, travel, visa, and living allowance",
-          "source_url": "https://erasmus-plus.ec.europa.eu/opportunities/individuals/students/erasmus-mundus-joint-masters",
-          "verified_date": "2026-11-01",
-          "directly_supports": true
-        },
-        {
-          "field": "duration",
-          "value": "1 to 2 academic years (60, 90 or 120 ECTS credits)",
-          "source_url": "https://erasmus-plus.ec.europa.eu/opportunities/individuals/students/erasmus-mundus-joint-masters",
-          "verified_date": "2026-11-01",
-          "directly_supports": true
-        },
-        {
-          "field": "degree_awarded",
-          "value": "Joint degree (single certificate from at least 2 institutions) or multiple degrees (at least 2 certificates)",
-          "source_url": "https://erasmus-plus.ec.europa.eu/opportunities/individuals/students/erasmus-mundus-joint-masters",
-          "verified_date": "2026-11-01",
-          "directly_supports": true
-        },
-        {
-          "field": "application_period",
-          "value": "Typically October to January for courses starting following academic year",
-          "source_url": "https://erasmus-plus.ec.europa.eu/opportunities/individuals/students/erasmus-mundus-joint-masters",
-          "verified_date": "2026-11-01",
-          "directly_supports": true
-        },
-        {
-          "field": "eligibility",
-          "value": "Bachelor's degree or final year of bachelor studies; equivalent learning recognised by national legislation",
-          "source_url": "https://erasmus-plus.ec.europa.eu/opportunities/individuals/students/erasmus-mundus-joint-masters",
-          "verified_date": "2026-11-01",
-          "directly_supports": true
-        },
-        {
-          "field": "consortium_structure",
-          "value": "At least 3 institutions from 3 different countries, plus associated partners",
-          "source_url": "https://erasmus-plus.ec.europa.eu/opportunities/individuals/students/erasmus-mundus-joint-masters",
-          "verified_date": "2026-11-01",
-          "directly_supports": true
-        },
-        {
-          "field": "catalogue_url",
-          "value": "https://www.eacea.ec.europa.eu/scholarships/erasmus-mundus-catalogue_en",
-          "source_url": "https://www.eacea.ec.europa.eu/scholarships/erasmus-mundus-catalogue_en",
-          "verified_date": "2026-11-01",
-          "directly_supports": true
-        },
-        {
-          "field": "num_programmes",
-          "value": "218 programmes in current catalogue",
-          "source_url": "https://www.eacea.ec.europa.eu/scholarships/erasmus-mundus-catalogue_en",
-          "verified_date": "2026-11-01",
-          "directly_supports": true
-        },
-        {
-          "field": "fields_of_study",
-          "value": "Agro, Art, Chemistry, Economic Sciences, Education, Environmental/Geosciences, Geo, History, Information Science/Engineering, IT, Med, Law, Life Sciences, Literature, Mathematics, Physics, Political Science, Psychology, Social Sciences/Humanities",
-          "source_url": "https://www.eacea.ec.europa.eu/scholarships/erasmus-mundus-catalogue_en",
-          "verified_date": "2026-11-01",
-          "directly_supports": true
-        },
-        {
-          "field": "last_updated",
-          "value": "26 June 2025 (Erasmus+ page)",
-          "source_url": "https://erasmus-plus.ec.europa.eu/opportunities/individuals/students/erasmus-mundus-joint-masters",
-          "verified_date": "2026-11-01",
-          "directly_supports": true
-        }
-      ],
-      "evidence_retrieval_date": "2026-11-09",
-      "evidence_record_ids": [
-        1,
-        1,
-        1,
-        1,
-        1,
-        1,
-        1,
-        1,
-        1,
-        1,
-        1
-      ],
-      "source_independently_reopened": true,
+      "evidence_ref": "EV-CYCLE-1",
       "final_evidence_status": "DIRECT",
-      "notes": "Direct evidence from completed research"
+      "approved_for_import": true
     },
     {
       "operation_type": "EXISTING_CYCLE_UPDATE",
+      "operation_id": "CYCLE-3",
       "catalogue_id": 3,
       "canonical_name": "DAAD Scholarship",
-      "changed_fields": [
-        "cycle_info"
-      ],
-      "official_source_url": "https://www.daad.de",
-      "claims": {
-        "cycle_update": "2027/28 cycle: deadlines updated annually Q2"
-      },
-      "evidence_items": [
+      "changes": [
         {
-          "field": "programme_overview",
-          "value": "DAAD scholarship database with 148 funding options for international students and researchers",
-          "source_url": "https://www.daad.de/en/study-and-research-in-germany/scholarships/",
-          "verified_date": "2026-11-01",
-          "directly_supports": true
-        },
-        {
-          "field": "funding_source",
-          "value": "German Federal Foreign Office",
-          "source_url": "https://www2.daad.de/deutschland/stipendium/datenbank/en/21148-scholarship-database/?detail=50026200",
-          "verified_date": "2026-11-01",
-          "directly_supports": true
-        },
-        {
-          "field": "master_studies_value",
-          "value": "Monthly payment 992 euros, health/accident/liability insurance, travel allowance (on application), annual study allowance 460 euros",
-          "source_url": "https://www2.daad.de/deutschland/stipendium/datenbank/en/21148-scholarship-database/?detail=50026200",
-          "verified_date": "2026-11-01",
-          "directly_supports": true
-        },
-        {
-          "field": "master_duration",
-          "value": "10 to 24 months depending on programme length (up to standard period of study, max 24 months)",
-          "source_url": "https://www2.daad.de/deutschland/stipendium/datenbank/en/21148-scholarship-database/?detail=50026200",
-          "verified_date": "2026-11-01",
-          "directly_supports": true
-        },
-        {
-          "field": "master_eligibility",
-          "value": "First degree (Bachelor's/Diplom) completed by funding start; degree not older than 6 years; not resident in Germany >15 months",
-          "source_url": "https://www2.daad.de/deutschland/stipendium/datenbank/en/21148-scholarship-database/?detail=50026200",
-          "verified_date": "2026-11-01",
-          "directly_supports": true
-        },
-        {
-          "field": "epos_objective",
-          "value": "Development-oriented postgraduate study programmes for specialists from developing/newly industrialised countries",
-          "source_url": "https://www2.daad.de/deutschland/stipendium/datenbank/en/21148-scholarship-database/?detail=50076777",
-          "verified_date": "2026-11-01",
-          "directly_supports": true
-        },
-        {
-          "field": "epos_value",
-          "value": "992 euros/month (graduates) or 1,300 euros/month (doctoral, 1,400 from Feb 2026); insurance; travel allowance",
-          "source_url": "https://www2.daad.de/deutschland/stipendium/datenbank/en/21148-scholarship-database/?detail=50076777",
-          "verified_date": "2026-11-01",
-          "directly_supports": true
-        },
-        {
-          "field": "epos_duration",
-          "value": "12 to 42 months depending on study programme",
-          "source_url": "https://www2.daad.de/deutschland/stipendium/datenbank/en/21148-scholarship-database/?detail=50076777",
-          "verified_date": "2026-11-01",
-          "directly_supports": true
-        },
-        {
-          "field": "epos_eligibility",
-          "value": "At least 2 years professional experience; Bachelor's (4-year); above-average results (upper third); language skills",
-          "source_url": "https://www2.daad.de/deutschland/stipendium/datenbank/en/21148-scholarship-database/?detail=50076777",
-          "verified_date": "2026-11-01",
-          "directly_supports": true
-        },
-        {
-          "field": "helmut_schmidt",
-          "value": "Master's Scholarships for Public Policy and Good Governance (PPGG)",
-          "source_url": "https://www2.daad.de/deutschland/stipendium/datenbank/en/21148-scholarship-database/?detail=50026397",
-          "verified_date": "2026-11-01",
-          "directly_supports": true
-        },
-        {
-          "field": "architecture_programme",
-          "value": "Postgraduate studies in Architecture, Interior Design, Monument Conservation, Urban Design, Landscape Architecture; 10-24 months; 992 euros/month",
-          "source_url": "https://www2.daad.de/deutschland/stipendium/datenbank/en/21148-scholarship-database/?detail=57135744",
-          "verified_date": "2026-11-01",
-          "directly_supports": true
-        },
-        {
-          "field": "fine_art_programme",
-          "value": "Postgraduate studies in Fine Art, Design, Visual Communication, Film; Master's 10-24 months or complementary 12 months; 992 euros/month",
-          "source_url": "https://www2.daad.de/deutschland/stipendium/datenbank/en/21148-scholarship-database/?detail=57135742",
-          "verified_date": "2026-11-01",
-          "directly_supports": true
-        },
-        {
-          "field": "music_programme",
-          "value": "Postgraduate studies in Music at German colleges of music; 2-4 semesters (10-24 months); 992 euros/month; requires artistic portfolio",
-          "source_url": "https://www2.daad.de/deutschland/stipendium/datenbank/en/21148-scholarship-database/?detail=57135743",
-          "verified_date": "2026-11-01",
-          "directly_supports": true
-        },
-        {
-          "field": "performing_arts_programme",
-          "value": "Postgraduate studies in Performing Arts; detail ID 50109971",
-          "source_url": "https://www2.daad.de/deutschland/stipendium/datenbank/en/21148-scholarship-database/?detail=50109971",
-          "verified_date": "2026-11-01",
-          "directly_supports": true
-        },
-        {
-          "field": "research_grants",
-          "value": "Research Grants for Doctoral Candidates and Young Academics; detail ID 50018884",
-          "source_url": "https://www.daad-bangladesh.org/en/studying-in-germany/phd-studies/research-grants-in-germany-for-phd-scholars",
-          "verified_date": "2026-11-01",
-          "directly_supports": true
-        },
-        {
-          "field": "summer_courses",
-          "value": "DAAD University Summer Courses Scholarship",
-          "source_url": "https://www.daad-bangladesh.org/en/studying-in-germany/daad-scholarships",
-          "verified_date": "2026-11-01",
-          "directly_supports": true
-        },
-        {
-          "field": "tuition_not_covered",
-          "value": "DAAD does not cover tuition fees",
-          "source_url": "https://www.daad.de/en/study-and-research-in-germany/scholarships/important-information-for-scholarship-applicants/",
-          "verified_date": "2026-11-01",
-          "directly_supports": true
-        },
-        {
-          "field": "language_support",
-          "value": "Online language course fees; German language course (2,4,6 months) before study; TestDaF/DSH fee reimbursement",
-          "source_url": "https://www2.daad.de/deutschland/stipendium/datenbank/en/21148-scholarship-database/?detail=50026200",
-          "verified_date": "2026-11-01",
-          "directly_supports": true
-        },
-        {
-          "field": "application_deadline",
-          "value": "Applications typically 1 June to annual deadline; portal opens during application period",
-          "source_url": "https://www2.daad.de/deutschland/stipendium/datenbank/en/21148-scholarship-database/?detail=50026200",
-          "verified_date": "2026-11-01",
-          "directly_supports": true
-        },
-        {
-          "field": "selection_criteria",
-          "value": "Academic qualification, quality of study project, potential of applicant, equal opportunities",
-          "source_url": "https://www2.daad.de/deutschland/stipendium/datenbank/en/21148-scholarship-database/?detail=50026200",
-          "verified_date": "2026-11-01",
-          "directly_supports": true
+          "field": "application_period",
+          "before": "Varies by programme - typically Sept-Nov for a Oct/Nov deadline; check DAAD database per programme",
+          "after": "Application deadlines are updated annually in the second quarter; applications are possible between 1 June and the stated application deadline.",
+          "evidence_ref": "EV-CYCLE-3"
         }
       ],
-      "evidence_retrieval_date": "2026-11-09",
-      "evidence_record_ids": [
-        3,
-        3,
-        3,
-        3,
-        3,
-        3,
-        3,
-        3,
-        3,
-        3,
-        3,
-        3,
-        3,
-        3,
-        3,
-        3,
-        3,
-        3,
-        3,
-        3
-      ],
-      "source_independently_reopened": true,
+      "evidence_ref": "EV-CYCLE-3",
       "final_evidence_status": "DIRECT",
-      "notes": "Direct evidence from completed research"
+      "approved_for_import": true
     },
     {
       "operation_type": "EXISTING_CYCLE_UPDATE",
+      "operation_id": "CYCLE-4",
       "catalogue_id": 4,
       "canonical_name": "Global Korea Scholarship (GKS)",
-      "changed_fields": [
-        "cycle_info"
-      ],
-      "official_source_url": "https://www.studyinkorea.go.kr",
-      "claims": {
-        "cycle_update": "2027 cycle: separate UG/Grad tracks confirmed"
-      },
-      "evidence_items": [
+      "changes": [
         {
-          "field": "program_name",
-          "value": "GKS (Global Korea Scholarship) Program - Undergraduate Degree Programs",
-          "source_url": "https://www.studyinkorea.go.kr/en/plan/scholarship.do",
-          "verified_date": "2026-10-01",
-          "directly_supports": true
-        },
-        {
-          "field": "funding_coverage",
-          "value": "Airfare, Korean language training fees, tuition, monthly allowances",
-          "source_url": "https://www.studyinkorea.go.kr/en/plan/scholarship.do",
-          "verified_date": "2026-10-01",
-          "directly_supports": true
-        },
-        {
-          "field": "selection_quota",
-          "value": "286 total: Embassy Track 156 (General 88, Overseas Koreans 7, R-GKS 61), University Track 130 (UIC 100, Associate Degree 30)",
-          "source_url": "https://www.studyinkorea.go.kr/en/plan/scholarship.do",
-          "verified_date": "2026-10-01",
-          "directly_supports": true
-        },
-        {
-          "field": "application_tracks",
-          "value": "Embassy Track (General, Overseas Korean, R-GKS) and University Track (UIC, Associate Degree)",
-          "source_url": "https://www.studyinkorea.go.kr/en/plan/scholarship.do",
-          "verified_date": "2026-10-01",
-          "directly_supports": true
-        },
-        {
-          "field": "eligibility_nationality",
-          "value": "Applicant and both parents must hold non-Korean citizenship",
-          "source_url": "https://www.studyinkorea.go.kr/en/plan/scholarship.do",
-          "verified_date": "2026-10-01",
-          "directly_supports": true
-        },
-        {
-          "field": "eligibility_age",
-          "value": "Under 25 years of age as of the applicable year",
-          "source_url": "https://www.studyinkorea.go.kr/en/plan/scholarship.do",
-          "verified_date": "2026-10-01",
-          "directly_supports": true
-        },
-        {
-          "field": "eligibility_academic",
-          "value": "Cumulative score 80%+ or top 20% of class or required CGPA threshold",
-          "source_url": "https://www.studyinkorea.go.kr/en/plan/scholarship.do",
-          "verified_date": "2026-10-01",
-          "directly_supports": true
-        },
-        {
-          "field": "application_period_embassy",
-          "value": "September",
-          "source_url": "https://www.studyinkorea.go.kr/en/plan/scholarship.do",
-          "verified_date": "2026-10-01",
-          "directly_supports": true
-        },
-        {
-          "field": "application_period_university",
-          "value": "September - November",
-          "source_url": "https://www.studyinkorea.go.kr/en/plan/scholarship.do",
-          "verified_date": "2026-10-01",
-          "directly_supports": true
-        },
-        {
-          "field": "selection_timeline",
-          "value": "Announcement Sept, Application Sept-Nov, Screening Oct-Dec, Results Dec",
-          "source_url": "https://www.studyinkorea.go.kr/en/plan/scholarship.do",
-          "verified_date": "2026-10-01",
-          "directly_supports": true
+          "field": "degree",
+          "before": "UG (Bachelor's/Associate)",
+          "after": "Undergraduate Degrees (including Associate Degree), Graduate Degrees (Master's and Doctoral Degrees)",
+          "evidence_ref": "EV-CYCLE-4"
         }
       ],
-      "evidence_retrieval_date": "2026-11-09",
-      "evidence_record_ids": [],
-      "source_independently_reopened": true,
+      "evidence_ref": "EV-CYCLE-4",
       "final_evidence_status": "DIRECT",
-      "notes": "Direct evidence from completed research"
+      "approved_for_import": true
     },
     {
       "operation_type": "EXISTING_CYCLE_UPDATE",
+      "operation_id": "CYCLE-5",
       "catalogue_id": 5,
       "canonical_name": "MEXT (Monbukagakusho) Scholarship",
-      "changed_fields": [
-        "cycle_info"
-      ],
-      "official_source_url": "https://www.studyinjapan.go.jp",
-      "claims": {
-        "cycle_update": "2027 cycle: Embassy recommendation Apr-May 2026"
-      },
-      "evidence_items": [
+      "changes": [
         {
-          "field": "programme_name",
-          "value": "Japanese Government (MEXT) Scholarship",
-          "source_url": "https://www.studyinjapan.go.jp/en/planning/scholarships/mext-scholarships/",
-          "verified_date": "2026-11-01",
-          "directly_supports": true
-        },
-        {
-          "field": "seven_types",
-          "value": "Research, Teacher Training, Undergraduate, Japanese Studies, College of Technology, Specialized Training College, Young Leaders Program (YLP)",
-          "source_url": "https://www.studyinjapan.go.jp/en/planning/scholarships/mext-scholarships/",
-          "verified_date": "2026-11-01",
-          "directly_supports": true
-        },
-        {
-          "field": "research_students",
-          "value": "Under 35; Master's/Doctoral eligible; 143,000-145,000 JPY/month; tuition exempt; travel allowance; duration: irregular 2yrs or regular course + 6mo Japanese if needed",
-          "source_url": "https://www.studyinjapan.go.jp/en/planning/scholarships/mext-scholarships/",
-          "verified_date": "2026-11-01",
-          "directly_supports": true
-        },
-        {
-          "field": "teacher_training",
-          "value": "Under 35; college/teacher training grad; 5+ years teaching experience; 117,000 JPY/month; up to 1.5yrs + Japanese training",
-          "source_url": "https://www.studyinjapan.go.jp/en/planning/scholarships/mext-scholarships/",
-          "verified_date": "2026-11-01",
-          "directly_supports": true
-        },
-        {
-          "field": "undergraduate",
-          "value": "Under 25; 12 years schooling; 117,000 JPY/month; 5yrs including Japanese training (7yrs for med/dentistry/pharmacy/vet); tuition exempt; travel allowance",
-          "source_url": "https://www.studyinjapan.go.jp/en/planning/scholarships/mext-scholarships/",
-          "verified_date": "2026-11-01",
-          "directly_supports": true
-        },
-        {
-          "field": "japanese_studies",
-          "value": "Age 18-29; enrolled in Japanese language/culture programme abroad; 117,000 JPY/month; 1 academic year; tuition exempt; travel allowance",
-          "source_url": "https://www.studyinjapan.go.jp/en/planning/scholarships/mext-scholarships/",
-          "verified_date": "2026-11-01",
-          "directly_supports": true
-        },
-        {
-          "field": "college_technology",
-          "value": "Under 25; 11+ years education; 117,000 JPY/month; 4yrs including Japanese (4.5yrs merchant marine); transfer to 3rd year; tuition exempt; travel allowance",
-          "source_url": "https://www.studyinjapan.go.jp/en/planning/scholarships/mext-scholarships/",
-          "verified_date": "2026-11-01",
-          "directly_supports": true
-        },
-        {
-          "field": "specialized_training",
-          "value": "Under 25; 12 years schooling; 117,000 JPY/month; 3yrs including Japanese training; tuition exempt; travel allowance",
-          "source_url": "https://www.studyinjapan.go.jp/en/planning/scholarships/mext-scholarships/",
-          "verified_date": "2026-11-01",
-          "directly_supports": true
-        },
-        {
-          "field": "young_leaders",
-          "value": "Under 40; university/college grads with work experience; young public administrators; Master's at GRIPS; 1 year; tuition exempt; travel allowance",
-          "source_url": "https://www.studyinjapan.go.jp/en/planning/scholarships/mext-scholarships/",
-          "verified_date": "2026-11-01",
-          "directly_supports": true
-        },
-        {
-          "field": "embassy_recommendation",
-          "value": "Recruitment and initial screening by Japanese embassy/consulate; requirements vary by country; all documents/interviews at embassy",
-          "source_url": "https://www.studyinjapan.go.jp/en/planning/scholarships/mext-scholarships/",
-          "verified_date": "2026-11-01",
-          "directly_supports": true
-        },
-        {
-          "field": "university_recommendation",
-          "value": "Japanese universities recruit based on exchange agreements; recommend to MEXT; arrival Sep/Oct or Mar/Apr; not all universities have quotas",
-          "source_url": "https://www.studyinjapan.go.jp/en/planning/scholarships/mext-scholarships/",
-          "verified_date": "2026-11-01",
-          "directly_supports": true
-        },
-        {
-          "field": "exam_requirements",
-          "value": "Research: Japanese+English; Teacher: Japanese+English; Undergrad: Japanese+English+Math+Science; Japanese Studies: Japanese; College Tech: Japanese+English+Math+Physics/Chem; Specialized: Japanese+English+Math",
-          "source_url": "https://www.studyinjapan.go.jp/en/planning/scholarships/mext-scholarships/",
-          "verified_date": "2026-11-01",
-          "directly_supports": true
-        },
-        {
-          "field": "past_exams",
-          "value": "Past qualifying exam questions available at: https://www.studyinjapan.go.jp/en/planning/scholarships/mext-scholarships/examination.html",
-          "source_url": "https://www.studyinjapan.go.jp/en/planning/scholarships/mext-scholarships/examination.html",
-          "verified_date": "2026-11-01",
-          "directly_supports": true
-        },
-        {
-          "field": "jaasso_scholarships",
-          "value": "JASSO Honors Scholarship for privately financed international students; separate from MEXT",
-          "source_url": "https://www.studyinjapan.go.jp/en/planning/scholarships/jasso-scholarships/",
-          "verified_date": "2026-11-01",
-          "directly_supports": true
-        },
-        {
-          "field": "official_portal",
-          "value": "https://www.studyinjapan.go.jp (JASSO, MEXT, MOFA official site)",
-          "source_url": "https://www.studyinjapan.go.jp",
-          "verified_date": "2026-11-01",
-          "directly_supports": true
-        },
-        {
-          "field": "mext_guidelines_2027",
-          "value": "2027 Application guidelines for Research students: https://www.mext.go.jp/a_menu/koutou/ryugaku/boshu/1415352_00008.htm",
-          "source_url": "https://www.mext.go.jp/a_menu/koutou/ryugaku/boshu/1415352_00008.htm",
-          "verified_date": "2026-11-01",
-          "directly_supports": true
-        },
-        {
-          "field": "ylp_grips",
-          "value": "Young Leaders' Program at GRIPS School of Government and School of Local Governance",
-          "source_url": "https://www.grips.ac.jp/en/education/inter_programs/leader",
-          "verified_date": "2026-11-01",
-          "directly_supports": true
+          "field": "degree",
+          "before": "UG/PG/PhD - separate application tracks: Undergraduate, Research Student (leads to Master's/PhD), Teacher Training, Japanese Studies, College of Technology",
+          "after": "Research students, Teacher training students, Undergraduate students, Japanese studies students, College of technology students, Specialized training college students, Young Leaders Program (YLP) students",
+          "evidence_ref": "EV-CYCLE-5"
         }
       ],
-      "evidence_retrieval_date": "2026-11-09",
-      "evidence_record_ids": [
-        5,
-        5,
-        5,
-        5,
-        5,
-        5,
-        5,
-        5,
-        5,
-        5,
-        5,
-        5,
-        5,
-        5,
-        5,
-        5,
-        5
-      ],
-      "source_independently_reopened": true,
+      "evidence_ref": "EV-CYCLE-5",
       "final_evidence_status": "DIRECT",
-      "notes": "Direct evidence from completed research"
+      "approved_for_import": true
     },
     {
       "operation_type": "EXISTING_CYCLE_UPDATE",
+      "operation_id": "CYCLE-23",
       "catalogue_id": 23,
       "canonical_name": "DAAD Development-Related Postgraduate Courses (EPOS)",
-      "changed_fields": [
-        "cycle_info"
-      ],
-      "official_source_url": "https://www.daad.de/epos",
-      "claims": {
-        "cycle_update": "2027/28 cycle: opens Aug 2026, deadline Mar 2027"
-      },
-      "evidence_items": [
-        {
-          "field": "programme_overview",
-          "value": "DAAD scholarship database with 148 funding options for international students and researchers",
-          "source_url": "https://www.daad.de/en/study-and-research-in-germany/scholarships/",
-          "verified_date": "2026-11-01",
-          "directly_supports": true
-        },
-        {
-          "field": "funding_source",
-          "value": "German Federal Foreign Office",
-          "source_url": "https://www2.daad.de/deutschland/stipendium/datenbank/en/21148-scholarship-database/?detail=50026200",
-          "verified_date": "2026-11-01",
-          "directly_supports": true
-        },
-        {
-          "field": "master_studies_value",
-          "value": "Monthly payment 992 euros, health/accident/liability insurance, travel allowance (on application), annual study allowance 460 euros",
-          "source_url": "https://www2.daad.de/deutschland/stipendium/datenbank/en/21148-scholarship-database/?detail=50026200",
-          "verified_date": "2026-11-01",
-          "directly_supports": true
-        },
-        {
-          "field": "master_duration",
-          "value": "10 to 24 months depending on programme length (up to standard period of study, max 24 months)",
-          "source_url": "https://www2.daad.de/deutschland/stipendium/datenbank/en/21148-scholarship-database/?detail=50026200",
-          "verified_date": "2026-11-01",
-          "directly_supports": true
-        },
-        {
-          "field": "master_eligibility",
-          "value": "First degree (Bachelor's/Diplom) completed by funding start; degree not older than 6 years; not resident in Germany >15 months",
-          "source_url": "https://www2.daad.de/deutschland/stipendium/datenbank/en/21148-scholarship-database/?detail=50026200",
-          "verified_date": "2026-11-01",
-          "directly_supports": true
-        },
-        {
-          "field": "epos_objective",
-          "value": "Development-oriented postgraduate study programmes for specialists from developing/newly industrialised countries",
-          "source_url": "https://www2.daad.de/deutschland/stipendium/datenbank/en/21148-scholarship-database/?detail=50076777",
-          "verified_date": "2026-11-01",
-          "directly_supports": true
-        },
-        {
-          "field": "epos_value",
-          "value": "992 euros/month (graduates) or 1,300 euros/month (doctoral, 1,400 from Feb 2026); insurance; travel allowance",
-          "source_url": "https://www2.daad.de/deutschland/stipendium/datenbank/en/21148-scholarship-database/?detail=50076777",
-          "verified_date": "2026-11-01",
-          "directly_supports": true
-        },
-        {
-          "field": "epos_duration",
-          "value": "12 to 42 months depending on study programme",
-          "source_url": "https://www2.daad.de/deutschland/stipendium/datenbank/en/21148-scholarship-database/?detail=50076777",
-          "verified_date": "2026-11-01",
-          "directly_supports": true
-        },
-        {
-          "field": "epos_eligibility",
-          "value": "At least 2 years professional experience; Bachelor's (4-year); above-average results (upper third); language skills",
-          "source_url": "https://www2.daad.de/deutschland/stipendium/datenbank/en/21148-scholarship-database/?detail=50076777",
-          "verified_date": "2026-11-01",
-          "directly_supports": true
-        },
-        {
-          "field": "helmut_schmidt",
-          "value": "Master's Scholarships for Public Policy and Good Governance (PPGG)",
-          "source_url": "https://www2.daad.de/deutschland/stipendium/datenbank/en/21148-scholarship-database/?detail=50026397",
-          "verified_date": "2026-11-01",
-          "directly_supports": true
-        },
-        {
-          "field": "architecture_programme",
-          "value": "Postgraduate studies in Architecture, Interior Design, Monument Conservation, Urban Design, Landscape Architecture; 10-24 months; 992 euros/month",
-          "source_url": "https://www2.daad.de/deutschland/stipendium/datenbank/en/21148-scholarship-database/?detail=57135744",
-          "verified_date": "2026-11-01",
-          "directly_supports": true
-        },
-        {
-          "field": "fine_art_programme",
-          "value": "Postgraduate studies in Fine Art, Design, Visual Communication, Film; Master's 10-24 months or complementary 12 months; 992 euros/month",
-          "source_url": "https://www2.daad.de/deutschland/stipendium/datenbank/en/21148-scholarship-database/?detail=57135742",
-          "verified_date": "2026-11-01",
-          "directly_supports": true
-        },
-        {
-          "field": "music_programme",
-          "value": "Postgraduate studies in Music at German colleges of music; 2-4 semesters (10-24 months); 992 euros/month; requires artistic portfolio",
-          "source_url": "https://www2.daad.de/deutschland/stipendium/datenbank/en/21148-scholarship-database/?detail=57135743",
-          "verified_date": "2026-11-01",
-          "directly_supports": true
-        },
-        {
-          "field": "performing_arts_programme",
-          "value": "Postgraduate studies in Performing Arts; detail ID 50109971",
-          "source_url": "https://www2.daad.de/deutschland/stipendium/datenbank/en/21148-scholarship-database/?detail=50109971",
-          "verified_date": "2026-11-01",
-          "directly_supports": true
-        },
-        {
-          "field": "research_grants",
-          "value": "Research Grants for Doctoral Candidates and Young Academics; detail ID 50018884",
-          "source_url": "https://www.daad-bangladesh.org/en/studying-in-germany/phd-studies/research-grants-in-germany-for-phd-scholars",
-          "verified_date": "2026-11-01",
-          "directly_supports": true
-        },
-        {
-          "field": "summer_courses",
-          "value": "DAAD University Summer Courses Scholarship",
-          "source_url": "https://www.daad-bangladesh.org/en/studying-in-germany/daad-scholarships",
-          "verified_date": "2026-11-01",
-          "directly_supports": true
-        },
-        {
-          "field": "tuition_not_covered",
-          "value": "DAAD does not cover tuition fees",
-          "source_url": "https://www.daad.de/en/study-and-research-in-germany/scholarships/important-information-for-scholarship-applicants/",
-          "verified_date": "2026-11-01",
-          "directly_supports": true
-        },
-        {
-          "field": "language_support",
-          "value": "Online language course fees; German language course (2,4,6 months) before study; TestDaF/DSH fee reimbursement",
-          "source_url": "https://www2.daad.de/deutschland/stipendium/datenbank/en/21148-scholarship-database/?detail=50026200",
-          "verified_date": "2026-11-01",
-          "directly_supports": true
-        },
-        {
-          "field": "application_deadline",
-          "value": "Applications typically 1 June to annual deadline; portal opens during application period",
-          "source_url": "https://www2.daad.de/deutschland/stipendium/datenbank/en/21148-scholarship-database/?detail=50026200",
-          "verified_date": "2026-11-01",
-          "directly_supports": true
-        },
-        {
-          "field": "selection_criteria",
-          "value": "Academic qualification, quality of study project, potential of applicant, equal opportunities",
-          "source_url": "https://www2.daad.de/deutschland/stipendium/datenbank/en/21148-scholarship-database/?detail=50026200",
-          "verified_date": "2026-11-01",
-          "directly_supports": true
-        }
-      ],
-      "evidence_retrieval_date": "2026-11-09",
-      "evidence_record_ids": [
-        23,
-        23,
-        23,
-        23,
-        23,
-        23,
-        23,
-        23,
-        23,
-        23,
-        23,
-        23,
-        23,
-        23,
-        23,
-        23,
-        23,
-        23,
-        23,
-        23
-      ],
-      "source_independently_reopened": true,
-      "final_evidence_status": "DIRECT",
-      "notes": "Direct evidence from completed research"
-    },
-    {
-      "operation_type": "EXISTING_CYCLE_UPDATE",
-      "catalogue_id": 30,
-      "canonical_name": "Australia Awards Scholarships",
-      "changed_fields": [
-        "cycle_info"
-      ],
-      "official_source_url": "https://www.dfat.gov.au/people-to-people/australia-awards/australia-awards-scholarships",
-      "claims": {
-        "cycle_update": "2027 cycle: country-specific dates"
-      },
-      "evidence_items": [],
-      "evidence_retrieval_date": "2026-11-09",
-      "evidence_record_ids": [],
-      "source_independently_reopened": false,
-      "final_evidence_status": "PENDING_RESEARCH",
-      "notes": "Based on pending research; requires official source verification"
-    },
-    {
-      "operation_type": "EXISTING_CYCLE_UPDATE",
-      "catalogue_id": 32,
-      "canonical_name": "Swedish Institute Scholarship",
-      "changed_fields": [
-        "cycle_info"
-      ],
-      "official_source_url": "https://si.se/en/apply/scholarships",
-      "claims": {
-        "cycle_update": "2027 cycle: opens Feb 2027, closes Feb 2027"
-      },
-      "evidence_items": [],
-      "evidence_retrieval_date": "2026-11-09",
-      "evidence_record_ids": [],
-      "source_independently_reopened": false,
-      "final_evidence_status": "PENDING_RESEARCH",
-      "notes": "Based on pending research; requires official source verification"
-    },
-    {
-      "operation_type": "EXISTING_CYCLE_UPDATE",
-      "catalogue_id": 33,
-      "canonical_name": "Chinese Government Scholarship (CSC)",
-      "changed_fields": [
-        "cycle_info"
-      ],
-      "official_source_url": "https://www.campuschina.org",
-      "claims": {
-        "cycle_update": "2027 cycle: Type A/B, embassy deadlines"
-      },
-      "evidence_items": [],
-      "evidence_retrieval_date": "2026-11-09",
-      "evidence_record_ids": [],
-      "source_independently_reopened": false,
-      "final_evidence_status": "PENDING_RESEARCH",
-      "notes": "Based on pending research; requires official source verification"
-    },
-    {
-      "operation_type": "EXISTING_CYCLE_UPDATE",
-      "catalogue_id": 34,
-      "canonical_name": "Taiwan Scholarship Program",
-      "changed_fields": [
-        "cycle_info"
-      ],
-      "official_source_url": "https://www.edutwscholarship.moe.gov.tw",
-      "claims": {
-        "cycle_update": "2027 cycle: opens Feb 2027"
-      },
-      "evidence_items": [],
-      "evidence_retrieval_date": "2026-11-09",
-      "evidence_record_ids": [],
-      "source_independently_reopened": false,
-      "final_evidence_status": "PENDING_RESEARCH",
-      "notes": "Based on pending research; requires official source verification"
-    },
-    {
-      "operation_type": "EXISTING_CYCLE_UPDATE",
-      "catalogue_id": 36,
-      "canonical_name": "MAECI Italian Government Scholarship",
-      "changed_fields": [
-        "cycle_info"
-      ],
-      "official_source_url": "https://www.esteri.it/en/opportunita/borse-di-studio",
-      "claims": {
-        "cycle_update": "2027/28 cycle: expected Nov 2026-Mar 2027"
-      },
-      "evidence_items": [],
-      "evidence_retrieval_date": "2026-11-09",
-      "evidence_record_ids": [],
-      "source_independently_reopened": false,
-      "final_evidence_status": "PENDING_RESEARCH",
-      "notes": "Based on pending research; requires official source verification"
-    },
-    {
-      "operation_type": "EXISTING_CYCLE_UPDATE",
-      "catalogue_id": 40,
-      "canonical_name": "ARES Scholarships (Belgium)",
-      "changed_fields": [
-        "cycle_info"
-      ],
-      "official_source_url": "https://www.ares-ac.be/en/cooperation-au-developpement/bourses",
-      "claims": {
-        "cycle_update": "2027/28 cycle: closed for 2026"
-      },
-      "evidence_items": [],
-      "evidence_retrieval_date": "2026-11-09",
-      "evidence_record_ids": [],
-      "source_independently_reopened": false,
-      "final_evidence_status": "PENDING_RESEARCH",
-      "notes": "Based on pending research; requires official source verification"
-    },
-    {
-      "operation_type": "EXISTING_CYCLE_UPDATE",
-      "catalogue_id": 41,
-      "canonical_name": "AECID Spanish Government Scholarship",
-      "changed_fields": [
-        "cycle_info"
-      ],
-      "official_source_url": "https://www.aecid.es/es/becas-y-lectorados",
-      "claims": {
-        "cycle_update": "2027/28 cycle: multiple sub-programmes"
-      },
-      "evidence_items": [],
-      "evidence_retrieval_date": "2026-11-09",
-      "evidence_record_ids": [],
-      "source_independently_reopened": false,
-      "final_evidence_status": "PENDING_RESEARCH",
-      "notes": "Based on pending research; requires official source verification"
-    },
-    {
-      "operation_type": "EXISTING_CYCLE_UPDATE",
-      "catalogue_id": 231,
-      "canonical_name": "Postgraduate Studies - Architecture",
-      "changed_fields": [
-        {
-          "field": "title",
-          "research": "Postgraduate Studies - Architecture",
-          "catalogue": "DAAD Postgraduate Studies in the Field of Architecture"
-        }
-      ],
-      "official_source_url": "https://www2.daad.de/deutschland/stipendium/datenbank/en/21148-scholarship-database/?detail=57135744",
-      "claims": {
-        "cycle_update": [
-          {
-            "field": "title",
-            "research": "Postgraduate Studies - Architecture",
-            "catalogue": "DAAD Postgraduate Studies in the Field of Architecture"
-          }
-        ]
-      },
-      "evidence_items": [
-        {
-          "field": "monthly_stipend",
-          "value": null,
-          "source_url": "https://www2.daad.de/deutschland/stipendium/datenbank/en/21148-scholarship-database/?detail=57135744",
-          "verified_date": "2026-11-01",
-          "directly_supports": true
-        }
-      ],
-      "evidence_retrieval_date": "2026-11-09",
-      "evidence_record_ids": [
-        231
-      ],
-      "source_independently_reopened": true,
-      "final_evidence_status": "DIRECT",
-      "notes": "Direct evidence from completed research"
-    },
-    {
-      "operation_type": "EXISTING_CYCLE_UPDATE",
-      "catalogue_id": 232,
-      "canonical_name": "Postgraduate Studies - Fine Art/Design/Film",
-      "changed_fields": [
-        {
-          "field": "title",
-          "research": "Postgraduate Studies - Fine Art/Design/Film",
-          "catalogue": "DAAD Postgraduate Studies in the Fields of Fine Art, Design, Visual Communication and Film"
-        }
-      ],
-      "official_source_url": "https://www2.daad.de/deutschland/stipendium/datenbank/en/21148-scholarship-database/?detail=57135742",
-      "claims": {
-        "cycle_update": [
-          {
-            "field": "title",
-            "research": "Postgraduate Studies - Fine Art/Design/Film",
-            "catalogue": "DAAD Postgraduate Studies in the Fields of Fine Art, Design, Visual Communication and Film"
-          }
-        ]
-      },
-      "evidence_items": [
-        {
-          "field": "monthly_stipend",
-          "value": null,
-          "source_url": "https://www2.daad.de/deutschland/stipendium/datenbank/en/21148-scholarship-database/?detail=57135742",
-          "verified_date": "2026-11-01",
-          "directly_supports": true
-        }
-      ],
-      "evidence_retrieval_date": "2026-11-09",
-      "evidence_record_ids": [
-        232
-      ],
-      "source_independently_reopened": true,
-      "final_evidence_status": "DIRECT",
-      "notes": "Direct evidence from completed research"
-    },
-    {
-      "operation_type": "EXISTING_CYCLE_UPDATE",
-      "catalogue_id": 234,
-      "canonical_name": "Postgraduate Studies - Performing Arts",
-      "changed_fields": [
-        {
-          "field": "title",
-          "research": "Postgraduate Studies - Performing Arts",
-          "catalogue": "DAAD Postgraduate Studies in the Field of Performing Arts"
-        }
-      ],
-      "official_source_url": "https://www2.daad.de/deutschland/stipendium/datenbank/en/21148-scholarship-database/?detail=50109971",
-      "claims": {
-        "cycle_update": [
-          {
-            "field": "title",
-            "research": "Postgraduate Studies - Performing Arts",
-            "catalogue": "DAAD Postgraduate Studies in the Field of Performing Arts"
-          }
-        ]
-      },
-      "evidence_items": [
-        {
-          "field": "monthly_stipend",
-          "value": null,
-          "source_url": "https://www2.daad.de/deutschland/stipendium/datenbank/en/21148-scholarship-database/?detail=50109971",
-          "verified_date": "2026-11-01",
-          "directly_supports": true
-        }
-      ],
-      "evidence_retrieval_date": "2026-11-09",
-      "evidence_record_ids": [
-        234
-      ],
-      "source_independently_reopened": true,
-      "final_evidence_status": "DIRECT",
-      "notes": "Direct evidence from completed research"
-    },
-    {
-      "operation_type": "EXISTING_CYCLE_UPDATE",
-      "catalogue_id": 516,
-      "canonical_name": "GKS (Global Korea Scholarship) Program - Graduate Degree Programs",
-      "changed_fields": [
-        {
-          "field": "title",
-          "research": "GKS (Global Korea Scholarship) Program - Graduate Degree Programs",
-          "catalogue": "GKS (Global Korea Scholarship) Program - Undergraduate Degree Programs"
-        }
-      ],
-      "official_source_url": "https://www.studyinkorea.go.kr/en/plan/scholarship.do",
-      "claims": {
-        "cycle_update": [
-          {
-            "field": "title",
-            "research": "GKS (Global Korea Scholarship) Program - Graduate Degree Programs",
-            "catalogue": "GKS (Global Korea Scholarship) Program - Undergraduate Degree Programs"
-          }
-        ]
-      },
-      "evidence_items": [
-        {
-          "field": "program_name",
-          "value": "GKS (Global Korea Scholarship) Program - Undergraduate Degree Programs",
-          "source_url": "https://www.studyinkorea.go.kr/en/plan/scholarship.do",
-          "verified_date": "2026-10-01",
-          "directly_supports": true
-        },
-        {
-          "field": "funding_coverage",
-          "value": "Airfare, Korean language training fees, tuition, monthly allowances",
-          "source_url": "https://www.studyinkorea.go.kr/en/plan/scholarship.do",
-          "verified_date": "2026-10-01",
-          "directly_supports": true
-        },
+      "changes": [
         {
           "field": "duration",
-          "value": "Korean language training (1 year) + associate degree (2-3 years) or bachelor's degree (4-6 years)",
-          "source_url": "https://www.studyinkorea.go.kr/en/plan/scholarship.do",
-          "verified_date": "2026-10-01",
-          "directly_supports": true
-        },
-        {
-          "field": "selection_quota",
-          "value": "286 total: Embassy Track 156 (General 88, Overseas Koreans 7, R-GKS 61), University Track 130 (UIC 100, Associate Degree 30)",
-          "source_url": "https://www.studyinkorea.go.kr/en/plan/scholarship.do",
-          "verified_date": "2026-10-01",
-          "directly_supports": true
-        },
-        {
-          "field": "application_tracks",
-          "value": "Embassy Track (General, Overseas Korean, R-GKS) and University Track (UIC, Associate Degree)",
-          "source_url": "https://www.studyinkorea.go.kr/en/plan/scholarship.do",
-          "verified_date": "2026-10-01",
-          "directly_supports": true
-        },
-        {
-          "field": "eligibility_nationality",
-          "value": "Applicant and both parents must hold non-Korean citizenship",
-          "source_url": "https://www.studyinkorea.go.kr/en/plan/scholarship.do",
-          "verified_date": "2026-10-01",
-          "directly_supports": true
-        },
-        {
-          "field": "eligibility_age",
-          "value": "Under 25 years of age as of the applicable year",
-          "source_url": "https://www.studyinkorea.go.kr/en/plan/scholarship.do",
-          "verified_date": "2026-10-01",
-          "directly_supports": true
-        },
-        {
-          "field": "eligibility_education",
-          "value": "Associate: high school graduate/expected; Bachelor's: high school or associate degree graduate/expected",
-          "source_url": "https://www.studyinkorea.go.kr/en/plan/scholarship.do",
-          "verified_date": "2026-10-01",
-          "directly_supports": true
-        },
-        {
-          "field": "eligibility_academic",
-          "value": "Cumulative score 80%+ or top 20% of class or required CGPA threshold",
-          "source_url": "https://www.studyinkorea.go.kr/en/plan/scholarship.do",
-          "verified_date": "2026-10-01",
-          "directly_supports": true
-        },
-        {
-          "field": "university_limits_embassy_general",
-          "value": "Up to 3 universities including at least 1 Type B",
-          "source_url": "https://www.studyinkorea.go.kr/en/plan/scholarship.do",
-          "verified_date": "2026-10-01",
-          "directly_supports": true
-        },
-        {
-          "field": "university_limits_embassy_rgks",
-          "value": "Up to 2 Type B universities",
-          "source_url": "https://www.studyinkorea.go.kr/en/plan/scholarship.do",
-          "verified_date": "2026-10-01",
-          "directly_supports": true
-        },
-        {
-          "field": "application_period_embassy",
-          "value": "September",
-          "source_url": "https://www.studyinkorea.go.kr/en/plan/scholarship.do",
-          "verified_date": "2026-10-01",
-          "directly_supports": true
-        },
-        {
-          "field": "application_period_university",
-          "value": "September - November",
-          "source_url": "https://www.studyinkorea.go.kr/en/plan/scholarship.do",
-          "verified_date": "2026-10-01",
-          "directly_supports": true
-        },
-        {
-          "field": "selection_timeline",
-          "value": "Announcement Sept, Application Sept-Nov, Screening Oct-Dec, Results Dec",
-          "source_url": "https://www.studyinkorea.go.kr/en/plan/scholarship.do",
-          "verified_date": "2026-10-01",
-          "directly_supports": true
-        },
-        {
-          "field": "application_portal_embassy",
-          "value": "https://www.studyinkorea.go.kr (Embassy Track only)",
-          "source_url": "https://www.studyinkorea.go.kr/en/plan/scholarship.do",
-          "verified_date": "2026-10-01",
-          "directly_supports": true
-        },
-        {
-          "field": "official_contact",
-          "value": "gksniied@korea.kr; NIIED, 191 Jeongjail-ro, Bundang-gu, Seongnam-si, Gyeonggi-do 13557, Korea; Tel: +82-2-3668-1490/1491",
-          "source_url": "https://www.studyinkorea.go.kr/en/plan/scholarship.do",
-          "verified_date": "2026-10-01",
-          "directly_supports": true
+          "before": null,
+          "after": "12 to 42 months (dependent on study programme)",
+          "evidence_ref": "EV-CYCLE-23"
         }
       ],
-      "evidence_retrieval_date": "2026-11-09",
-      "evidence_record_ids": [
-        516,
-        516,
-        516,
-        516,
-        516,
-        516,
-        516,
-        516,
-        516,
-        516,
-        516,
-        516,
-        516,
-        516,
-        516,
-        516
-      ],
-      "source_independently_reopened": true,
+      "evidence_ref": "EV-CYCLE-23",
       "final_evidence_status": "DIRECT",
-      "notes": "Direct evidence from completed research"
+      "approved_for_import": true
     },
     {
       "operation_type": "EXISTING_CYCLE_UPDATE",
+      "operation_id": "CYCLE-231",
+      "catalogue_id": 231,
+      "canonical_name": "Study Scholarships - Postgraduate Studies in the Field of Architecture",
+      "changes": [
+        {
+          "field": "title",
+          "before": "DAAD Postgraduate Studies in the Field of Architecture",
+          "after": "Study Scholarships - Postgraduate Studies in the Field of Architecture",
+          "evidence_ref": "EV-CYCLE-231"
+        }
+      ],
+      "evidence_ref": "EV-CYCLE-231",
+      "final_evidence_status": "DIRECT",
+      "approved_for_import": true
+    },
+    {
+      "operation_type": "EXISTING_CYCLE_UPDATE",
+      "operation_id": "CYCLE-232",
+      "catalogue_id": 232,
+      "canonical_name": "Study Scholarships - Postgraduate Studies in the Fields of Fine Art, Design, Visual Communication and Film",
+      "changes": [
+        {
+          "field": "title",
+          "before": "DAAD Postgraduate Studies in the Fields of Fine Art, Design, Visual Communication and Film",
+          "after": "Study Scholarships - Postgraduate Studies in the Fields of Fine Art, Design, Visual Communication and Film",
+          "evidence_ref": "EV-CYCLE-232"
+        }
+      ],
+      "evidence_ref": "EV-CYCLE-232",
+      "final_evidence_status": "DIRECT",
+      "approved_for_import": true
+    },
+    {
+      "operation_type": "EXISTING_CYCLE_UPDATE",
+      "operation_id": "CYCLE-234",
+      "catalogue_id": 234,
+      "canonical_name": "Study Scholarships - Postgraduate Studies in the Field of the Performing Arts",
+      "changes": [
+        {
+          "field": "title",
+          "before": "DAAD Postgraduate Studies in the Field of Performing Arts",
+          "after": "Study Scholarships - Postgraduate Studies in the Field of the Performing Arts",
+          "evidence_ref": "EV-CYCLE-234"
+        }
+      ],
+      "evidence_ref": "EV-CYCLE-234",
+      "final_evidence_status": "DIRECT",
+      "approved_for_import": true
+    },
+    {
+      "operation_type": "EXISTING_CYCLE_UPDATE",
+      "operation_id": "CYCLE-516",
+      "catalogue_id": 516,
+      "canonical_name": "GKS (Global Korea Scholarship) Program - Undergraduate Degree Programs",
+      "changes": [
+        {
+          "field": "degree",
+          "before": "Undergraduate",
+          "after": "Undergraduate Degrees (including Associate Degree)",
+          "evidence_ref": "EV-CYCLE-516"
+        }
+      ],
+      "evidence_ref": "EV-CYCLE-516",
+      "final_evidence_status": "DIRECT",
+      "approved_for_import": true
+    },
+    {
+      "operation_type": "EXISTING_CYCLE_UPDATE",
+      "operation_id": "CYCLE-1312",
       "catalogue_id": 1312,
-      "canonical_name": "Stanford Knight-Hennessy Scholars Program",
-      "changed_fields": [
+      "canonical_name": "Knight-Hennessy Scholars at Stanford University",
+      "changes": [
         {
           "field": "title",
-          "research": "Stanford Knight-Hennessy Scholars Program",
-          "catalogue": "Knight-Hennessy Scholars"
+          "before": "Knight-Hennessy Scholars",
+          "after": "Knight-Hennessy Scholars at Stanford University",
+          "evidence_ref": "EV-CYCLE-1312"
         }
       ],
-      "official_source_url": "https://knight-hennessy.stanford.edu",
-      "claims": {
-        "cycle_update": [
-          {
-            "field": "title",
-            "research": "Stanford Knight-Hennessy Scholars Program",
-            "catalogue": "Knight-Hennessy Scholars"
-          }
-        ]
-      },
-      "evidence_items": [
-        {
-          "field": "status",
-          "value": "open",
-          "source_url": "https://knight-hennessy.stanford.edu",
-          "verified_date": "2026-11-07",
-          "directly_supports": true
-        },
-        {
-          "field": "fully_funded",
-          "value": null,
-          "source_url": "https://knight-hennessy.stanford.edu",
-          "verified_date": "2026-11-07",
-          "directly_supports": true
-        },
-        {
-          "field": "tuition_coverage",
-          "value": null,
-          "source_url": "https://knight-hennessy.stanford.edu",
-          "verified_date": "2026-11-07",
-          "directly_supports": true
-        },
-        {
-          "field": "living_cost_coverage",
-          "value": null,
-          "source_url": "https://knight-hennessy.stanford.edu",
-          "verified_date": "2026-11-07",
-          "directly_supports": true
-        }
-      ],
-      "evidence_retrieval_date": "2026-11-09",
-      "evidence_record_ids": [
-        1312,
-        1312,
-        1312,
-        1312
-      ],
-      "source_independently_reopened": true,
+      "evidence_ref": "EV-CYCLE-1312",
       "final_evidence_status": "DIRECT",
-      "notes": "Direct evidence from completed research"
+      "approved_for_import": true
     },
     {
       "operation_type": "EXISTING_CYCLE_UPDATE",
+      "operation_id": "CYCLE-1336",
       "catalogue_id": 1336,
-      "canonical_name": "Huayu Enrichment Scholarship (HES)",
-      "changed_fields": [
+      "canonical_name": "Huayu Enrichment Scholarship Program",
+      "changes": [
         {
           "field": "title",
-          "research": "Huayu Enrichment Scholarship (HES)",
-          "catalogue": "Taiwan Scholarship 2027"
+          "before": "Taiwan Scholarship 2027",
+          "after": "Huayu Enrichment Scholarship Program",
+          "evidence_ref": "EV-CYCLE-1336"
         }
       ],
-      "official_source_url": "https://taiwanscholarship.moe.gov.tw",
-      "claims": {
-        "cycle_update": [
-          {
-            "field": "title",
-            "research": "Huayu Enrichment Scholarship (HES)",
-            "catalogue": "Taiwan Scholarship 2027"
-          }
-        ]
-      },
-      "evidence_items": [
-        {
-          "field": "status",
-          "value": "open",
-          "source_url": "https://taiwanscholarship.moe.gov.tw",
-          "verified_date": "2026-11-07",
-          "directly_supports": true
-        },
-        {
-          "field": "fully_funded",
-          "value": null,
-          "source_url": "https://taiwanscholarship.moe.gov.tw",
-          "verified_date": "2026-11-07",
-          "directly_supports": true
-        },
-        {
-          "field": "tuition_coverage",
-          "value": null,
-          "source_url": "https://taiwanscholarship.moe.gov.tw",
-          "verified_date": "2026-11-07",
-          "directly_supports": true
-        },
-        {
-          "field": "living_cost_coverage",
-          "value": null,
-          "source_url": "https://taiwanscholarship.moe.gov.tw",
-          "verified_date": "2026-11-07",
-          "directly_supports": true
-        }
-      ],
-      "evidence_retrieval_date": "2026-11-09",
-      "evidence_record_ids": [
-        1336,
-        1336,
-        1336,
-        1336
-      ],
-      "source_independently_reopened": true,
+      "evidence_ref": "EV-CYCLE-1336",
       "final_evidence_status": "DIRECT",
-      "notes": "Direct evidence from completed research"
+      "approved_for_import": true
     },
     {
       "operation_type": "FUNDING_CORRECTION",
+      "operation_id": "FUND-3",
       "catalogue_id": 3,
       "canonical_name": "DAAD Scholarship",
-      "changed_fields": [
-        "fully_funded"
-      ],
-      "official_source_url": "https://www2.daad.de/deutschland/stipendium/datenbank/en/21148-scholarship-database/?detail=50026200",
-      "claims": {
-        "current_fully_funded": true,
-        "corrected_fully_funded": false,
-        "reason": "DAAD Scholarship (general) provides stipend EUR 992/mo + insurance + travel allowance + study allowance EUR 460/yr. NO tuition coverage (German public universities are tuition-free for most programmes). Not fully funded per ScholarZone definition (requires tuition + living)."
-      },
-      "evidence_items": [
+      "changes": [
         {
-          "field": "programme_overview",
-          "value": "DAAD scholarship database with 148 funding options for international students and researchers",
-          "source_url": "https://www.daad.de/en/study-and-research-in-germany/scholarships/",
-          "verified_date": "2026-11-01",
-          "directly_supports": true
+          "field": "tuition_coverage",
+          "before": true,
+          "after": false,
+          "evidence_ref": "EV-FUND-3"
         },
         {
-          "field": "funding_source",
-          "value": "German Federal Foreign Office",
-          "source_url": "https://www2.daad.de/deutschland/stipendium/datenbank/en/21148-scholarship-database/?detail=50026200",
-          "verified_date": "2026-11-01",
-          "directly_supports": true
+          "field": "fully_funded",
+          "before": true,
+          "after": false,
+          "evidence_ref": "EV-FUND-3"
         },
         {
-          "field": "master_studies_value",
-          "value": "Monthly payment 992 euros, health/accident/liability insurance, travel allowance (on application), annual study allowance 460 euros",
-          "source_url": "https://www2.daad.de/deutschland/stipendium/datenbank/en/21148-scholarship-database/?detail=50026200",
-          "verified_date": "2026-11-01",
-          "directly_supports": true
-        },
-        {
-          "field": "master_duration",
-          "value": "10 to 24 months depending on programme length (up to standard period of study, max 24 months)",
-          "source_url": "https://www2.daad.de/deutschland/stipendium/datenbank/en/21148-scholarship-database/?detail=50026200",
-          "verified_date": "2026-11-01",
-          "directly_supports": true
-        },
-        {
-          "field": "master_eligibility",
-          "value": "First degree (Bachelor's/Diplom) completed by funding start; degree not older than 6 years; not resident in Germany >15 months",
-          "source_url": "https://www2.daad.de/deutschland/stipendium/datenbank/en/21148-scholarship-database/?detail=50026200",
-          "verified_date": "2026-11-01",
-          "directly_supports": true
-        },
-        {
-          "field": "epos_objective",
-          "value": "Development-oriented postgraduate study programmes for specialists from developing/newly industrialised countries",
-          "source_url": "https://www2.daad.de/deutschland/stipendium/datenbank/en/21148-scholarship-database/?detail=50076777",
-          "verified_date": "2026-11-01",
-          "directly_supports": true
-        },
-        {
-          "field": "epos_value",
-          "value": "992 euros/month (graduates) or 1,300 euros/month (doctoral, 1,400 from Feb 2026); insurance; travel allowance",
-          "source_url": "https://www2.daad.de/deutschland/stipendium/datenbank/en/21148-scholarship-database/?detail=50076777",
-          "verified_date": "2026-11-01",
-          "directly_supports": true
-        },
-        {
-          "field": "epos_duration",
-          "value": "12 to 42 months depending on study programme",
-          "source_url": "https://www2.daad.de/deutschland/stipendium/datenbank/en/21148-scholarship-database/?detail=50076777",
-          "verified_date": "2026-11-01",
-          "directly_supports": true
-        },
-        {
-          "field": "epos_eligibility",
-          "value": "At least 2 years professional experience; Bachelor's (4-year); above-average results (upper third); language skills",
-          "source_url": "https://www2.daad.de/deutschland/stipendium/datenbank/en/21148-scholarship-database/?detail=50076777",
-          "verified_date": "2026-11-01",
-          "directly_supports": true
-        },
-        {
-          "field": "helmut_schmidt",
-          "value": "Master's Scholarships for Public Policy and Good Governance (PPGG)",
-          "source_url": "https://www2.daad.de/deutschland/stipendium/datenbank/en/21148-scholarship-database/?detail=50026397",
-          "verified_date": "2026-11-01",
-          "directly_supports": true
-        },
-        {
-          "field": "architecture_programme",
-          "value": "Postgraduate studies in Architecture, Interior Design, Monument Conservation, Urban Design, Landscape Architecture; 10-24 months; 992 euros/month",
-          "source_url": "https://www2.daad.de/deutschland/stipendium/datenbank/en/21148-scholarship-database/?detail=57135744",
-          "verified_date": "2026-11-01",
-          "directly_supports": true
-        },
-        {
-          "field": "fine_art_programme",
-          "value": "Postgraduate studies in Fine Art, Design, Visual Communication, Film; Master's 10-24 months or complementary 12 months; 992 euros/month",
-          "source_url": "https://www2.daad.de/deutschland/stipendium/datenbank/en/21148-scholarship-database/?detail=57135742",
-          "verified_date": "2026-11-01",
-          "directly_supports": true
-        },
-        {
-          "field": "music_programme",
-          "value": "Postgraduate studies in Music at German colleges of music; 2-4 semesters (10-24 months); 992 euros/month; requires artistic portfolio",
-          "source_url": "https://www2.daad.de/deutschland/stipendium/datenbank/en/21148-scholarship-database/?detail=57135743",
-          "verified_date": "2026-11-01",
-          "directly_supports": true
-        },
-        {
-          "field": "performing_arts_programme",
-          "value": "Postgraduate studies in Performing Arts; detail ID 50109971",
-          "source_url": "https://www2.daad.de/deutschland/stipendium/datenbank/en/21148-scholarship-database/?detail=50109971",
-          "verified_date": "2026-11-01",
-          "directly_supports": true
-        },
-        {
-          "field": "research_grants",
-          "value": "Research Grants for Doctoral Candidates and Young Academics; detail ID 50018884",
-          "source_url": "https://www.daad-bangladesh.org/en/studying-in-germany/phd-studies/research-grants-in-germany-for-phd-scholars",
-          "verified_date": "2026-11-01",
-          "directly_supports": true
-        },
-        {
-          "field": "summer_courses",
-          "value": "DAAD University Summer Courses Scholarship",
-          "source_url": "https://www.daad-bangladesh.org/en/studying-in-germany/daad-scholarships",
-          "verified_date": "2026-11-01",
-          "directly_supports": true
-        },
-        {
-          "field": "tuition_not_covered",
-          "value": "DAAD does not cover tuition fees",
-          "source_url": "https://www.daad.de/en/study-and-research-in-germany/scholarships/important-information-for-scholarship-applicants/",
-          "verified_date": "2026-11-01",
-          "directly_supports": true
-        },
-        {
-          "field": "language_support",
-          "value": "Online language course fees; German language course (2,4,6 months) before study; TestDaF/DSH fee reimbursement",
-          "source_url": "https://www2.daad.de/deutschland/stipendium/datenbank/en/21148-scholarship-database/?detail=50026200",
-          "verified_date": "2026-11-01",
-          "directly_supports": true
-        },
-        {
-          "field": "application_deadline",
-          "value": "Applications typically 1 June to annual deadline; portal opens during application period",
-          "source_url": "https://www2.daad.de/deutschland/stipendium/datenbank/en/21148-scholarship-database/?detail=50026200",
-          "verified_date": "2026-11-01",
-          "directly_supports": true
-        },
-        {
-          "field": "selection_criteria",
-          "value": "Academic qualification, quality of study project, potential of applicant, equal opportunities",
-          "source_url": "https://www2.daad.de/deutschland/stipendium/datenbank/en/21148-scholarship-database/?detail=50026200",
-          "verified_date": "2026-11-01",
-          "directly_supports": true
+          "field": "funding",
+          "before": "Fully Funded",
+          "after": "Partially Funded (stipend, insurance, travel; tuition not covered)",
+          "evidence_ref": "EV-FUND-3"
         }
       ],
-      "evidence_retrieval_date": "2026-11-09",
-      "evidence_record_ids": [
-        3,
-        3,
-        3,
-        3,
-        3,
-        3,
-        3,
-        3,
-        3,
-        3,
-        3,
-        3,
-        3,
-        3,
-        3,
-        3,
-        3,
-        3,
-        3,
-        3
-      ],
-      "source_independently_reopened": true,
+      "evidence_ref": "EV-FUND-3",
       "final_evidence_status": "DIRECT",
-      "notes": "Direct evidence from completed research"
+      "approved_for_import": true
     },
     {
       "operation_type": "FUNDING_CORRECTION",
-      "catalogue_id": 40,
-      "canonical_name": "ARES Scholarships (Belgium)",
-      "changed_fields": [
-        "fully_funded"
-      ],
-      "official_source_url": "https://www.ares-ac.be/en/cooperation-au-developpement/bourses",
-      "claims": {
-        "current_fully_funded": true,
-        "corrected_fully_funded": null,
-        "reason": "ARES provides living allowance and travel but tuition coverage varies by programme. Funding scope not fully confirmed from official source."
-      },
-      "evidence_items": [],
-      "evidence_retrieval_date": "2026-11-09",
-      "evidence_record_ids": [],
-      "source_independently_reopened": false,
-      "final_evidence_status": "PENDING_RESEARCH",
-      "notes": "Based on pending research; requires official source verification"
-    },
-    {
-      "operation_type": "FUNDING_CORRECTION",
-      "catalogue_id": 31,
-      "canonical_name": "Netherlands Fellowship Programme (NFP/OTS)",
-      "changed_fields": [
-        "fully_funded"
-      ],
-      "official_source_url": "https://www.studyinnl.org/finances/ots-scholarships",
-      "claims": {
-        "current_fully_funded": true,
-        "corrected_fully_funded": null,
-        "reason": "Netherlands Fellowship Programme (NFP/OTS) discontinued. Replaced by NL Scholarship (EUR 5000 first year only, partial)."
-      },
-      "evidence_items": [],
-      "evidence_retrieval_date": "2026-11-09",
-      "evidence_record_ids": [],
-      "source_independently_reopened": false,
-      "final_evidence_status": "PENDING_RESEARCH",
-      "notes": "Based on pending research; requires official source verification"
-    },
-    {
-      "operation_type": "FUNDING_CORRECTION",
-      "catalogue_id": 729,
-      "canonical_name": "Vanier Canada Graduate Scholarship",
-      "changed_fields": [
-        "fully_funded"
-      ],
-      "official_source_url": "https://vanier.gc.ca/en/home-accueil.html",
-      "claims": {
-        "current_fully_funded": true,
-        "corrected_fully_funded": null,
-        "reason": "Vanier CGS discontinued after Fall 2024. Replaced by CGRS-D. Should be archived/discontinued."
-      },
-      "evidence_items": [],
-      "evidence_retrieval_date": "2026-11-09",
-      "evidence_record_ids": [],
-      "source_independently_reopened": false,
-      "final_evidence_status": "PENDING_RESEARCH",
-      "notes": "Based on pending research; requires official source verification"
-    },
-    {
-      "operation_type": "FUNDING_CORRECTION",
+      "operation_id": "FUND-1",
       "catalogue_id": 1,
       "canonical_name": "Erasmus Mundus",
-      "changed_fields": [
-        "fully_funded"
-      ],
-      "official_source_url": "https://erasmus-plus.ec.europa.eu/opportunities/individuals/students/erasmus-mundus-joint-masters",
-      "claims": {
-        "current_fully_funded": null,
-        "corrected_fully_funded": true,
-        "reason": "Erasmus Mundus Joint Masters covers full tuition + EUR 1,400/mo stipend + travel + insurance. Fully funded."
-      },
-      "evidence_items": [
+      "changes": [
         {
-          "field": "programme_type",
-          "value": "Erasmus Mundus Joint Masters (EMJM)",
-          "source_url": "https://erasmus-plus.ec.europa.eu/opportunities/individuals/students/erasmus-mundus-joint-masters",
-          "verified_date": "2026-11-01",
-          "directly_supports": true
+          "field": "fully_funded",
+          "before": null,
+          "after": true,
+          "evidence_ref": "EV-FUND-1"
         },
         {
-          "field": "scholarship_coverage",
-          "value": "Full scholarships cover participation costs, travel, visa, and living allowance",
-          "source_url": "https://erasmus-plus.ec.europa.eu/opportunities/individuals/students/erasmus-mundus-joint-masters",
-          "verified_date": "2026-11-01",
-          "directly_supports": true
-        },
-        {
-          "field": "duration",
-          "value": "1 to 2 academic years (60, 90 or 120 ECTS credits)",
-          "source_url": "https://erasmus-plus.ec.europa.eu/opportunities/individuals/students/erasmus-mundus-joint-masters",
-          "verified_date": "2026-11-01",
-          "directly_supports": true
-        },
-        {
-          "field": "degree_awarded",
-          "value": "Joint degree (single certificate from at least 2 institutions) or multiple degrees (at least 2 certificates)",
-          "source_url": "https://erasmus-plus.ec.europa.eu/opportunities/individuals/students/erasmus-mundus-joint-masters",
-          "verified_date": "2026-11-01",
-          "directly_supports": true
-        },
-        {
-          "field": "application_period",
-          "value": "Typically October to January for courses starting following academic year",
-          "source_url": "https://erasmus-plus.ec.europa.eu/opportunities/individuals/students/erasmus-mundus-joint-masters",
-          "verified_date": "2026-11-01",
-          "directly_supports": true
-        },
-        {
-          "field": "eligibility",
-          "value": "Bachelor's degree or final year of bachelor studies; equivalent learning recognised by national legislation",
-          "source_url": "https://erasmus-plus.ec.europa.eu/opportunities/individuals/students/erasmus-mundus-joint-masters",
-          "verified_date": "2026-11-01",
-          "directly_supports": true
-        },
-        {
-          "field": "consortium_structure",
-          "value": "At least 3 institutions from 3 different countries, plus associated partners",
-          "source_url": "https://erasmus-plus.ec.europa.eu/opportunities/individuals/students/erasmus-mundus-joint-masters",
-          "verified_date": "2026-11-01",
-          "directly_supports": true
-        },
-        {
-          "field": "catalogue_url",
-          "value": "https://www.eacea.ec.europa.eu/scholarships/erasmus-mundus-catalogue_en",
-          "source_url": "https://www.eacea.ec.europa.eu/scholarships/erasmus-mundus-catalogue_en",
-          "verified_date": "2026-11-01",
-          "directly_supports": true
-        },
-        {
-          "field": "num_programmes",
-          "value": "218 programmes in current catalogue",
-          "source_url": "https://www.eacea.ec.europa.eu/scholarships/erasmus-mundus-catalogue_en",
-          "verified_date": "2026-11-01",
-          "directly_supports": true
-        },
-        {
-          "field": "fields_of_study",
-          "value": "Agro, Art, Chemistry, Economic Sciences, Education, Environmental/Geosciences, Geo, History, Information Science/Engineering, IT, Med, Law, Life Sciences, Literature, Mathematics, Physics, Political Science, Psychology, Social Sciences/Humanities",
-          "source_url": "https://www.eacea.ec.europa.eu/scholarships/erasmus-mundus-catalogue_en",
-          "verified_date": "2026-11-01",
-          "directly_supports": true
-        },
-        {
-          "field": "last_updated",
-          "value": "26 June 2025 (Erasmus+ page)",
-          "source_url": "https://erasmus-plus.ec.europa.eu/opportunities/individuals/students/erasmus-mundus-joint-masters",
-          "verified_date": "2026-11-01",
-          "directly_supports": true
+          "field": "funding",
+          "before": "EUR 1,400/month + tuition + travel",
+          "after": "Fully Funded (participation costs + travel/visa + living allowance)",
+          "evidence_ref": "EV-FUND-1"
         }
       ],
-      "evidence_retrieval_date": "2026-11-09",
-      "evidence_record_ids": [
-        1,
-        1,
-        1,
-        1,
-        1,
-        1,
-        1,
-        1,
-        1,
-        1,
-        1
-      ],
-      "source_independently_reopened": true,
+      "evidence_ref": "EV-FUND-1",
       "final_evidence_status": "DIRECT",
-      "notes": "Direct evidence from completed research"
+      "approved_for_import": true
     },
     {
-      "operation_type": "LIFECYCLE_CORRECTION",
-      "catalogue_id": 729,
-      "canonical_name": "Vanier Canada Graduate Scholarship",
-      "changed_fields": [
-        "is_archived",
-        "archived_at",
-        "archived_reason",
-        "status"
-      ],
-      "official_source_url": "https://vanier.gc.ca/en/home-accueil.html",
-      "claims": {
-        "current_status": "open",
-        "corrected_is_archived": true,
-        "archived_reason": "",
-        "replacement_programme": "CGRS-D (Canada Graduate Research Scholarship - Doctoral)"
-      },
-      "evidence_items": [],
-      "evidence_retrieval_date": "2026-11-09",
-      "evidence_record_ids": [],
-      "source_independently_reopened": false,
+      "operation_type": "EXISTING_CYCLE_UPDATE",
+      "operation_id": "PENDING-EXISTING-30",
+      "catalogue_id": 30,
+      "canonical_name": "Australia Awards Scholarships",
+      "changes": [],
+      "evidence_ref": null,
       "final_evidence_status": "PENDING_RESEARCH",
-      "notes": "Based on pending research; requires official source verification"
+      "approved_for_import": false,
+      "exclusion_reason": "No DIRECT evidence record in the approved research set; excluded from the approved import files."
     },
     {
-      "operation_type": "LIFECYCLE_CORRECTION",
+      "operation_type": "EXISTING_CYCLE_UPDATE",
+      "operation_id": "PENDING-EXISTING-32",
+      "catalogue_id": 32,
+      "canonical_name": "Swedish Institute Scholarship",
+      "changes": [],
+      "evidence_ref": null,
+      "final_evidence_status": "PENDING_RESEARCH",
+      "approved_for_import": false,
+      "exclusion_reason": "No DIRECT evidence record in the approved research set; excluded from the approved import files."
+    },
+    {
+      "operation_type": "EXISTING_CYCLE_UPDATE",
+      "operation_id": "PENDING-EXISTING-33",
+      "catalogue_id": 33,
+      "canonical_name": "Chinese Government Scholarship (CSC)",
+      "changes": [],
+      "evidence_ref": null,
+      "final_evidence_status": "PENDING_RESEARCH",
+      "approved_for_import": false,
+      "exclusion_reason": "No DIRECT evidence record in the approved research set; excluded from the approved import files."
+    },
+    {
+      "operation_type": "EXISTING_CYCLE_UPDATE",
+      "operation_id": "PENDING-EXISTING-34",
+      "catalogue_id": 34,
+      "canonical_name": "Taiwan Scholarship Program",
+      "changes": [],
+      "evidence_ref": null,
+      "final_evidence_status": "PENDING_RESEARCH",
+      "approved_for_import": false,
+      "exclusion_reason": "No DIRECT evidence record in the approved research set; excluded from the approved import files."
+    },
+    {
+      "operation_type": "EXISTING_CYCLE_UPDATE",
+      "operation_id": "PENDING-EXISTING-36",
+      "catalogue_id": 36,
+      "canonical_name": "MAECI Italian Government Scholarship",
+      "changes": [],
+      "evidence_ref": null,
+      "final_evidence_status": "PENDING_RESEARCH",
+      "approved_for_import": false,
+      "exclusion_reason": "No DIRECT evidence record in the approved research set; excluded from the approved import files."
+    },
+    {
+      "operation_type": "EXISTING_CYCLE_UPDATE",
+      "operation_id": "PENDING-EXISTING-40",
+      "catalogue_id": 40,
+      "canonical_name": "ARES Scholarships (Belgium)",
+      "changes": [],
+      "evidence_ref": null,
+      "final_evidence_status": "PENDING_RESEARCH",
+      "approved_for_import": false,
+      "exclusion_reason": "No DIRECT evidence record in the approved research set; excluded from the approved import files."
+    },
+    {
+      "operation_type": "EXISTING_CYCLE_UPDATE",
+      "operation_id": "PENDING-EXISTING-41",
+      "catalogue_id": 41,
+      "canonical_name": "AECID Spanish Government Scholarship",
+      "changes": [],
+      "evidence_ref": null,
+      "final_evidence_status": "PENDING_RESEARCH",
+      "approved_for_import": false,
+      "exclusion_reason": "No DIRECT evidence record in the approved research set; excluded from the approved import files."
+    },
+    {
+      "operation_type": "FUNDING_CORRECTION",
+      "operation_id": "PENDING-FUNDING-40",
+      "catalogue_id": 40,
+      "canonical_name": "ARES Scholarships (Belgium)",
+      "changes": [],
+      "evidence_ref": null,
+      "final_evidence_status": "PENDING_RESEARCH",
+      "approved_for_import": false,
+      "exclusion_reason": "No DIRECT evidence record in the approved research set; excluded from the approved import files."
+    },
+    {
+      "operation_type": "FUNDING_CORRECTION",
+      "operation_id": "PENDING-FUNDING-31",
       "catalogue_id": 31,
       "canonical_name": "Netherlands Fellowship Programme (NFP/OTS)",
-      "changed_fields": [
-        "is_archived",
-        "archived_at",
-        "archived_reason",
-        "status"
-      ],
-      "official_source_url": "https://www.studyinnl.org/finances/ots-scholarships",
-      "claims": {
-        "current_status": "open",
-        "corrected_is_archived": true,
-        "archived_reason": "",
-        "replacement_programme": "NL Scholarship"
-      },
-      "evidence_items": [],
-      "evidence_retrieval_date": "2026-11-09",
-      "evidence_record_ids": [],
-      "source_independently_reopened": false,
+      "changes": [],
+      "evidence_ref": null,
       "final_evidence_status": "PENDING_RESEARCH",
-      "notes": "Based on pending research; requires official source verification"
+      "approved_for_import": false,
+      "exclusion_reason": "No DIRECT evidence record in the approved research set; excluded from the approved import files."
+    },
+    {
+      "operation_type": "FUNDING_CORRECTION",
+      "operation_id": "PENDING-FUNDING-729",
+      "catalogue_id": 729,
+      "canonical_name": "Vanier Canada Graduate Scholarship",
+      "changes": [],
+      "evidence_ref": null,
+      "final_evidence_status": "PENDING_RESEARCH",
+      "approved_for_import": false,
+      "exclusion_reason": "No DIRECT evidence record in the approved research set; excluded from the approved import files."
+    },
+    {
+      "operation_type": "LIFECYCLE_CORRECTION",
+      "operation_id": "PENDING-LIFECYCLE-729",
+      "catalogue_id": 729,
+      "canonical_name": "Vanier Canada Graduate Scholarship",
+      "changes": [],
+      "evidence_ref": null,
+      "final_evidence_status": "PENDING_RESEARCH",
+      "approved_for_import": false,
+      "exclusion_reason": "No DIRECT evidence record in the approved research set; excluded from the approved import files."
+    },
+    {
+      "operation_type": "LIFECYCLE_CORRECTION",
+      "operation_id": "PENDING-LIFECYCLE-31",
+      "catalogue_id": 31,
+      "canonical_name": "Netherlands Fellowship Programme (NFP/OTS)",
+      "changes": [],
+      "evidence_ref": null,
+      "final_evidence_status": "PENDING_RESEARCH",
+      "approved_for_import": false,
+      "exclusion_reason": "No DIRECT evidence record in the approved research set; excluded from the approved import files."
     }
   ]
 }

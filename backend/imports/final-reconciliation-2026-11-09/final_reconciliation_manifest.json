@@ -1,562 +1,149 @@
-[
-  {
-    "research_record_key": "cycle_update_1",
-    "existing_canonical_id": 1,
-    "proposed_operation": "EXISTING_CYCLE_UPDATE",
-    "programme_identity": "Erasmus Mundus Joint Masters (EMJM)",
-    "provider": "",
-    "host_country": "Germany",
-    "source_references": [
-      "https://erasmus-plus.ec.europa.eu/opportunities/individuals/students/erasmus-mundus-joint-masters"
-    ],
-    "verification_state": "VERIFIED",
-    "funding_state": "UNCHANGED",
-    "lifecycle_state": "ACTIVE",
-    "reason": "2027 intake: 37 new programmes added, deadline Dec 2026-Jan 2027"
+{
+  "manifest_version": "2.0",
+  "manifest_date": "2026-11-10",
+  "package_status": "BLOCKED",
+  "review_package_only": true,
+  "production_import_authorized": false,
+  "branch": "feat/final-scholarship-catalogue-reconciliation",
+  "base_sha": "5b28ceef0480a4bd6612d1cf08c26e8629bea285",
+  "pre_remediation_head": "dec6dbcd65ffe98da42f0e6fff665c3c840ce04a",
+  "final_head": "SEE_CI_EVIDENCE_MD",
+  "canonical_files": {
+    "final_import_ready_scholarships.json": {
+      "records": 0,
+      "importable": true,
+      "purpose": "Canonical insert file; empty by design."
+    },
+    "final_existing_cycle_updates.json": {
+      "records": 11,
+      "importable": true,
+      "purpose": "Canonical approved cycle updates; all DIRECT evidence."
+    },
+    "final_funding_corrections.json": {
+      "records": 2,
+      "importable": true,
+      "purpose": "Canonical approved funding corrections; all DIRECT evidence."
+    },
+    "final_lifecycle_corrections.json": {
+      "records": 2,
+      "importable": false,
+      "purpose": "Lifecycle proposals only; PENDING_RESEARCH and not approved."
+    },
+    "final_source_evidence.json": {
+      "records": 13,
+      "importable": false,
+      "purpose": "DIRECT evidence registry for the approved subset."
+    },
+    "operation_evidence_mapping.json": {
+      "records": 25,
+      "importable": false,
+      "purpose": "25-operation mapping: 13 DIRECT approved, 12 PENDING excluded."
+    },
+    "blocked_records.json": {
+      "records": 6,
+      "importable": false,
+      "purpose": "Blocked new-insert candidates; never importable from this package."
+    },
+    "duplicate_merge_plan.json": {
+      "records": 5,
+      "importable": false,
+      "purpose": "5 duplicate pairs; 4 archive-only plans for owner review, no execution."
+    },
+    "duplicate_fk_dependency_report.json": {
+      "records": 14,
+      "importable": false,
+      "purpose": "Actual FK introspection for all dependent tables."
+    },
+    "duplicate_merge_dry_run.json": {
+      "records": 4,
+      "importable": false,
+      "purpose": "Isolated SQLite simulation; PostgreSQL simulation unavailable."
+    },
+    "final_database_reconciliation.json": {
+      "records": 1,
+      "importable": false,
+      "purpose": "Before/after count reconciliation with archives separated."
+    }
   },
-  {
-    "research_record_key": "cycle_update_3",
-    "existing_canonical_id": 3,
-    "proposed_operation": "EXISTING_CYCLE_UPDATE",
-    "programme_identity": "DAAD Scholarship",
-    "provider": "",
-    "host_country": "Germany",
-    "source_references": [
-      "https://www.daad.de"
-    ],
-    "verification_state": "VERIFIED",
-    "funding_state": "UNCHANGED",
-    "lifecycle_state": "ACTIVE",
-    "reason": "2027/28 cycle: deadlines updated annually Q2"
+  "operation_counts": {
+    "new_inserts": 0,
+    "cycle_updates": 11,
+    "funding_corrections": 2,
+    "lifecycle_corrections_approved": 0,
+    "lifecycle_corrections_pending": 2,
+    "total_approved": 13,
+    "total_pending_excluded": 12
   },
-  {
-    "research_record_key": "cycle_update_4",
-    "existing_canonical_id": 4,
-    "proposed_operation": "EXISTING_CYCLE_UPDATE",
-    "programme_identity": "Global Korea Scholarship (GKS)",
-    "provider": "",
-    "host_country": "South Korea",
-    "source_references": [
-      "https://www.studyinkorea.go.kr"
-    ],
-    "verification_state": "VERIFIED",
-    "funding_state": "UNCHANGED",
-    "lifecycle_state": "ACTIVE",
-    "reason": "2027 cycle: separate UG/Grad tracks confirmed"
+  "baseline_counts": {
+    "total": 830,
+    "active": 830,
+    "archived": 0
   },
-  {
-    "research_record_key": "cycle_update_5",
-    "existing_canonical_id": 5,
-    "proposed_operation": "EXISTING_CYCLE_UPDATE",
-    "programme_identity": "MEXT (Monbukagakusho) Scholarship",
-    "provider": "",
-    "host_country": "Japan",
-    "source_references": [
-      "https://www.studyinjapan.go.jp"
-    ],
-    "verification_state": "VERIFIED",
-    "funding_state": "UNCHANGED",
-    "lifecycle_state": "ACTIVE",
-    "reason": "2027 cycle: Embassy recommendation Apr-May 2026"
+  "projected_counts": {
+    "after_approved_subset": {
+      "total": 830,
+      "active": 830,
+      "archived": 0,
+      "status_distribution": {
+        "closed": 6,
+        "closing-soon": 4,
+        "open": 820
+      },
+      "description": "After the 11 cycle updates and 2 funding corrections only. No inserts, archives, or duplicate merges."
+    },
+    "after_approved_plus_lifecycle_proposals": {
+      "total": 830,
+      "active": 828,
+      "archived": 2,
+      "status_distribution": {
+        "closed": 8,
+        "closing-soon": 4,
+        "open": 818
+      },
+      "description": "If the 2 PENDING_RESEARCH lifecycle proposals were later approved. Duplicate merges still not executed."
+    },
+    "after_approved_plus_lifecycle_plus_4_duplicate_archives": {
+      "total": 830,
+      "active": 824,
+      "archived": 6,
+      "status_distribution": {
+        "closed": 8,
+        "closing-soon": 4,
+        "open": 818
+      },
+      "description": "If lifecycle proposals and the 4 archive-only duplicate plans were all approved. Fulbright remains blocked. Duplicate archives do not change status."
+    }
   },
-  {
-    "research_record_key": "cycle_update_23",
-    "existing_canonical_id": 23,
-    "proposed_operation": "EXISTING_CYCLE_UPDATE",
-    "programme_identity": "DAAD Development-Related Postgraduate Courses (EPOS)",
-    "provider": "",
-    "host_country": "Germany",
-    "source_references": [
-      "https://www.daad.de/epos"
-    ],
-    "verification_state": "VERIFIED",
-    "funding_state": "UNCHANGED",
-    "lifecycle_state": "ACTIVE",
-    "reason": "2027/28 cycle: opens Aug 2026, deadline Mar 2027"
+  "duplicate_plan": {
+    "total_pairs": 5,
+    "merge_ready_for_owner_review": 4,
+    "blocked_manual_review": 1,
+    "plans_approved_for_execution": 0,
+    "plans_executed": 0,
+    "record_deletions": 0,
+    "fk_reassignments": 0,
+    "postgresql_simulation": "UNAVAILABLE"
   },
-  {
-    "research_record_key": "cycle_update_30",
-    "existing_canonical_id": 30,
-    "proposed_operation": "EXISTING_CYCLE_UPDATE",
-    "programme_identity": "Australia Awards Scholarships",
-    "provider": "",
-    "host_country": "Australia",
-    "source_references": [
-      "https://www.dfat.gov.au/people-to-people/australia-awards/australia-awards-scholarships"
-    ],
-    "verification_state": "VERIFIED",
-    "funding_state": "UNCHANGED",
-    "lifecycle_state": "ACTIVE",
-    "reason": "2027 cycle: country-specific dates"
-  },
-  {
-    "research_record_key": "cycle_update_32",
-    "existing_canonical_id": 32,
-    "proposed_operation": "EXISTING_CYCLE_UPDATE",
-    "programme_identity": "Swedish Institute Scholarship",
-    "provider": "",
-    "host_country": "Sweden",
-    "source_references": [
-      "https://si.se/en/apply/scholarships"
-    ],
-    "verification_state": "VERIFIED",
-    "funding_state": "UNCHANGED",
-    "lifecycle_state": "ACTIVE",
-    "reason": "2027 cycle: opens Feb 2027, closes Feb 2027"
-  },
-  {
-    "research_record_key": "cycle_update_33",
-    "existing_canonical_id": 33,
-    "proposed_operation": "EXISTING_CYCLE_UPDATE",
-    "programme_identity": "Chinese Government Scholarship (CSC)",
-    "provider": "",
-    "host_country": "China",
-    "source_references": [
-      "https://www.campuschina.org"
-    ],
-    "verification_state": "VERIFIED",
-    "funding_state": "UNCHANGED",
-    "lifecycle_state": "ACTIVE",
-    "reason": "2027 cycle: Type A/B, embassy deadlines"
-  },
-  {
-    "research_record_key": "cycle_update_34",
-    "existing_canonical_id": 34,
-    "proposed_operation": "EXISTING_CYCLE_UPDATE",
-    "programme_identity": "Taiwan Scholarship Program",
-    "provider": "",
-    "host_country": "Taiwan",
-    "source_references": [
-      "https://www.edutwscholarship.moe.gov.tw"
-    ],
-    "verification_state": "VERIFIED",
-    "funding_state": "UNCHANGED",
-    "lifecycle_state": "ACTIVE",
-    "reason": "2027 cycle: opens Feb 2027"
-  },
-  {
-    "research_record_key": "cycle_update_36",
-    "existing_canonical_id": 36,
-    "proposed_operation": "EXISTING_CYCLE_UPDATE",
-    "programme_identity": "MAECI Italian Government Scholarship",
-    "provider": "",
-    "host_country": "Italy",
-    "source_references": [
-      "https://www.esteri.it/en/opportunita/borse-di-studio"
-    ],
-    "verification_state": "VERIFIED",
-    "funding_state": "UNCHANGED",
-    "lifecycle_state": "ACTIVE",
-    "reason": "2027/28 cycle: expected Nov 2026-Mar 2027"
-  },
-  {
-    "research_record_key": "cycle_update_40",
-    "existing_canonical_id": 40,
-    "proposed_operation": "EXISTING_CYCLE_UPDATE",
-    "programme_identity": "ARES Scholarships (Belgium)",
-    "provider": "",
-    "host_country": "Belgium",
-    "source_references": [
-      "https://www.ares-ac.be/en/cooperation-au-developpement/bourses"
-    ],
-    "verification_state": "VERIFIED",
-    "funding_state": "UNCHANGED",
-    "lifecycle_state": "ACTIVE",
-    "reason": "2027/28 cycle: closed for 2026"
-  },
-  {
-    "research_record_key": "cycle_update_41",
-    "existing_canonical_id": 41,
-    "proposed_operation": "EXISTING_CYCLE_UPDATE",
-    "programme_identity": "AECID Spanish Government Scholarship",
-    "provider": "",
-    "host_country": "Spain",
-    "source_references": [
-      "https://www.aecid.es/es/becas-y-lectorados"
-    ],
-    "verification_state": "VERIFIED",
-    "funding_state": "UNCHANGED",
-    "lifecycle_state": "ACTIVE",
-    "reason": "2027/28 cycle: multiple sub-programmes"
-  },
-  {
-    "research_record_key": "cycle_update_231",
-    "existing_canonical_id": 231,
-    "proposed_operation": "EXISTING_CYCLE_UPDATE",
-    "programme_identity": "Postgraduate Studies - Architecture",
-    "provider": "",
-    "host_country": "Germany",
-    "source_references": [
-      "https://www2.daad.de/deutschland/stipendium/datenbank/en/21148-scholarship-database/?detail=57135744"
-    ],
-    "verification_state": "VERIFIED",
-    "funding_state": "UNCHANGED",
-    "lifecycle_state": "ACTIVE",
-    "reason": "Title normalization: [{'field': 'title', 'research': 'Postgraduate Studies - Architecture', 'catalogue': 'DAAD Postgraduate Studies in the Field of Architecture'}]"
-  },
-  {
-    "research_record_key": "cycle_update_232",
-    "existing_canonical_id": 232,
-    "proposed_operation": "EXISTING_CYCLE_UPDATE",
-    "programme_identity": "Postgraduate Studies - Fine Art/Design/Film",
-    "provider": "",
-    "host_country": "Germany",
-    "source_references": [
-      "https://www2.daad.de/deutschland/stipendium/datenbank/en/21148-scholarship-database/?detail=57135742"
-    ],
-    "verification_state": "VERIFIED",
-    "funding_state": "UNCHANGED",
-    "lifecycle_state": "ACTIVE",
-    "reason": "Title normalization: [{'field': 'title', 'research': 'Postgraduate Studies - Fine Art/Design/Film', 'catalogue': 'DAAD Postgraduate Studies in the Fields of Fine Art, Design, Visual Communication and Film'}]"
-  },
-  {
-    "research_record_key": "cycle_update_234",
-    "existing_canonical_id": 234,
-    "proposed_operation": "EXISTING_CYCLE_UPDATE",
-    "programme_identity": "Postgraduate Studies - Performing Arts",
-    "provider": "",
-    "host_country": "Germany",
-    "source_references": [
-      "https://www2.daad.de/deutschland/stipendium/datenbank/en/21148-scholarship-database/?detail=50109971"
-    ],
-    "verification_state": "VERIFIED",
-    "funding_state": "UNCHANGED",
-    "lifecycle_state": "ACTIVE",
-    "reason": "Title normalization: [{'field': 'title', 'research': 'Postgraduate Studies - Performing Arts', 'catalogue': 'DAAD Postgraduate Studies in the Field of Performing Arts'}]"
-  },
-  {
-    "research_record_key": "cycle_update_516",
-    "existing_canonical_id": 516,
-    "proposed_operation": "EXISTING_CYCLE_UPDATE",
-    "programme_identity": "GKS (Global Korea Scholarship) Program - Graduate Degree Programs",
-    "provider": "",
-    "host_country": "South Korea",
-    "source_references": [
-      "https://www.studyinkorea.go.kr/en/plan/scholarship.do"
-    ],
-    "verification_state": "VERIFIED",
-    "funding_state": "UNCHANGED",
-    "lifecycle_state": "ACTIVE",
-    "reason": "Title normalization: [{'field': 'title', 'research': 'GKS (Global Korea Scholarship) Program - Graduate Degree Programs', 'catalogue': 'GKS (Global Korea Scholarship) Program - Undergraduate Degree Programs'}]"
-  },
-  {
-    "research_record_key": "cycle_update_1312",
-    "existing_canonical_id": 1312,
-    "proposed_operation": "EXISTING_CYCLE_UPDATE",
-    "programme_identity": "Stanford Knight-Hennessy Scholars Program",
-    "provider": "",
-    "host_country": "United States",
-    "source_references": [
-      "https://knight-hennessy.stanford.edu"
-    ],
-    "verification_state": "VERIFIED",
-    "funding_state": "UNCHANGED",
-    "lifecycle_state": "ACTIVE",
-    "reason": "Title normalization: [{'field': 'title', 'research': 'Stanford Knight-Hennessy Scholars Program', 'catalogue': 'Knight-Hennessy Scholars'}]"
-  },
-  {
-    "research_record_key": "cycle_update_1336",
-    "existing_canonical_id": 1336,
-    "proposed_operation": "EXISTING_CYCLE_UPDATE",
-    "programme_identity": "Huayu Enrichment Scholarship (HES)",
-    "provider": "",
-    "host_country": "Taiwan",
-    "source_references": [
-      "https://taiwanscholarship.moe.gov.tw"
-    ],
-    "verification_state": "VERIFIED",
-    "funding_state": "UNCHANGED",
-    "lifecycle_state": "ACTIVE",
-    "reason": "Title normalization: [{'field': 'title', 'research': 'Huayu Enrichment Scholarship (HES)', 'catalogue': 'Taiwan Scholarship 2027'}]"
-  },
-  {
-    "research_record_key": "funding_correction_3",
-    "existing_canonical_id": 3,
-    "proposed_operation": "FUNDING_CORRECTION",
-    "programme_identity": "DAAD Scholarship",
-    "provider": "",
-    "host_country": "Germany",
-    "source_references": [
-      "https://www2.daad.de/deutschland/stipendium/datenbank/en/21148-scholarship-database/?detail=50026200"
-    ],
-    "verification_state": "VERIFIED",
-    "funding_state": "CORRECTED",
-    "lifecycle_state": "ACTIVE",
-    "reason": "DAAD Scholarship (general) provides stipend EUR 992/mo + insurance + travel allowance + study allowance EUR 460/yr. NO tuition coverage (German public universities are tuition-free for most programmes). Not fully funded per ScholarZone definition (requires tuition + living)."
-  },
-  {
-    "research_record_key": "funding_correction_40",
-    "existing_canonical_id": 40,
-    "proposed_operation": "FUNDING_CORRECTION",
-    "programme_identity": "ARES Scholarships (Belgium)",
-    "provider": "",
-    "host_country": "Belgium",
-    "source_references": [
-      "https://www.ares-ac.be/en/cooperation-au-developpement/bourses"
-    ],
-    "verification_state": "VERIFIED",
-    "funding_state": "CORRECTED",
-    "lifecycle_state": "ACTIVE",
-    "reason": "ARES provides living allowance and travel but tuition coverage varies by programme. Funding scope not fully confirmed from official source."
-  },
-  {
-    "research_record_key": "funding_correction_31",
-    "existing_canonical_id": 31,
-    "proposed_operation": "FUNDING_CORRECTION",
-    "programme_identity": "Netherlands Fellowship Programme (NFP/OTS)",
-    "provider": "",
-    "host_country": "Netherlands",
-    "source_references": [
-      "https://www.studyinnl.org/finances/ots-scholarships"
-    ],
-    "verification_state": "VERIFIED",
-    "funding_state": "CORRECTED",
-    "lifecycle_state": "ACTIVE",
-    "reason": "Netherlands Fellowship Programme (NFP/OTS) discontinued. Replaced by NL Scholarship (EUR 5000 first year only, partial)."
-  },
-  {
-    "research_record_key": "funding_correction_729",
-    "existing_canonical_id": 729,
-    "proposed_operation": "FUNDING_CORRECTION",
-    "programme_identity": "Vanier Canada Graduate Scholarship",
-    "provider": "",
-    "host_country": "Canada",
-    "source_references": [
-      "https://vanier.gc.ca/en/home-accueil.html"
-    ],
-    "verification_state": "VERIFIED",
-    "funding_state": "CORRECTED",
-    "lifecycle_state": "ACTIVE",
-    "reason": "Vanier CGS discontinued after Fall 2024. Replaced by CGRS-D. Should be archived/discontinued."
-  },
-  {
-    "research_record_key": "funding_correction_1",
-    "existing_canonical_id": 1,
-    "proposed_operation": "FUNDING_CORRECTION",
-    "programme_identity": "Erasmus Mundus",
-    "provider": "",
-    "host_country": "Germany",
-    "source_references": [
-      "https://erasmus-plus.ec.europa.eu/opportunities/individuals/students/erasmus-mundus-joint-masters"
-    ],
-    "verification_state": "VERIFIED",
-    "funding_state": "CORRECTED",
-    "lifecycle_state": "ACTIVE",
-    "reason": "Erasmus Mundus Joint Masters covers full tuition + EUR 1,400/mo stipend + travel + insurance. Fully funded."
-  },
-  {
-    "research_record_key": "lifecycle_correction_729",
-    "existing_canonical_id": 729,
-    "proposed_operation": "LIFECYCLE_CORRECTION",
-    "programme_identity": "Vanier Canada Graduate Scholarship",
-    "provider": "",
-    "host_country": "Canada",
-    "source_references": [
-      "https://vanier.gc.ca/en/home-accueil.html"
-    ],
-    "verification_state": "VERIFIED",
-    "funding_state": "UNCHANGED",
-    "lifecycle_state": "DISCONTINUED",
-    "reason": "Vanier CGS discontinued after Fall 2024 final competition. Official source confirms no further competitions. Replaced by CGRS-D."
-  },
-  {
-    "research_record_key": "lifecycle_correction_31",
-    "existing_canonical_id": 31,
-    "proposed_operation": "LIFECYCLE_CORRECTION",
-    "programme_identity": "Netherlands Fellowship Programme (NFP/OTS)",
-    "provider": "",
-    "host_country": "Netherlands",
-    "source_references": [
-      "https://www.studyinnl.org/finances/ots-scholarships"
-    ],
-    "verification_state": "VERIFIED",
-    "funding_state": "UNCHANGED",
-    "lifecycle_state": "DISCONTINUED",
-    "reason": "Netherlands Fellowship Programme (NFP/OTS) discontinued. Replaced by NL Scholarship."
-  },
-  {
-    "research_record_key": "duplicate_reconciliation_1",
-    "existing_canonical_id": [
-      183,
-      753
-    ],
-    "proposed_operation": "DUPLICATE_RECONCILIATION_PROPOSAL",
-    "programme_identity": "Lund University Global Scholarship",
-    "provider": "",
-    "host_country": "Sweden",
-    "source_references": [
-      "https://www.lunduniversity.lu.se/study/admission-degree-studies/scholarships-and",
-      "https://www.lunduniversity.lu.se/admissions/scholarships-and-awards/lund-univers"
-    ],
-    "verification_state": "REQUIRES_MANUAL_REVIEW",
-    "funding_state": "UNCHANGED",
-    "lifecycle_state": "ACTIVE",
-    "reason": "Duplicate pair identified: Same university, same programme name, same country, same funding type, same degree levels. Different URL paths on same domain (lunduniversity.lu.se). - Recommended: MERGE - Keep ID 183 as canonical, archive ID 753, consolidate URL references"
-  },
-  {
-    "research_record_key": "duplicate_reconciliation_2",
-    "existing_canonical_id": [
-      270,
-      1244
-    ],
-    "proposed_operation": "DUPLICATE_RECONCILIATION_PROPOSAL",
-    "programme_identity": "Copenhagen Business School Danish Government Scholarship",
-    "provider": "",
-    "host_country": "Denmark",
-    "source_references": [
-      "https://www.cbs.dk/study-programmes/master-programmes/double-degree",
-      "https://www.cbs.dk/en/education/master/programmes-and-admission/fees-and-funding"
-    ],
-    "verification_state": "REQUIRES_MANUAL_REVIEW",
-    "funding_state": "UNCHANGED",
-    "lifecycle_state": "ACTIVE",
-    "reason": "Duplicate pair identified: Same university (CBS), same programme name, same country, same funding type, same degree. Different URL paths on same domain (cbs.dk). - Recommended: MERGE - Keep ID 270 as canonical, archive ID 1244, consolidate URL references"
-  },
-  {
-    "research_record_key": "duplicate_reconciliation_3",
-    "existing_canonical_id": [
-      271,
-      760
-    ],
-    "proposed_operation": "DUPLICATE_RECONCILIATION_PROPOSAL",
-    "programme_identity": "University of Copenhagen Danish Government Scholarship",
-    "provider": "",
-    "host_country": "Denmark",
-    "source_references": [
-      "https://www.ku.dk/studies/admission/scholarships-for-full-degree-students",
-      "https://www.ku.dk/studies/masters/application-and-admission/scholarships"
-    ],
-    "verification_state": "REQUIRES_MANUAL_REVIEW",
-    "funding_state": "UNCHANGED",
-    "lifecycle_state": "ACTIVE",
-    "reason": "Duplicate pair identified: Same university (KU), same programme name, same country, same funding type, same degree levels. Different URL paths on same domain (ku.dk). - Recommended: MERGE - Keep ID 271 as canonical, archive ID 760, consolidate URL references"
-  },
-  {
-    "research_record_key": "duplicate_reconciliation_4",
-    "existing_canonical_id": [
-      285,
-      1277
-    ],
-    "proposed_operation": "DUPLICATE_RECONCILIATION_PROPOSAL",
-    "programme_identity": "Stipendium Hungaricum Scholarship Programme",
-    "provider": "",
-    "host_country": "Hungary",
-    "source_references": [
-      "https://stipendiumhungaricum.hu",
-      "https://stipendiumhungaricum.hu/apply_call"
-    ],
-    "verification_state": "REQUIRES_MANUAL_REVIEW",
-    "funding_state": "UNCHANGED",
-    "lifecycle_state": "ACTIVE",
-    "reason": "Duplicate pair identified: Same programme name, same country, same official domain (stipendiumhungaricum.hu). One is root domain, one is /apply_call path. Same funding, same degree levels. - Recommended: MERGE - Keep ID 285 as canonical, archive ID 1277, consolidate URL references"
-  },
-  {
-    "research_record_key": "duplicate_reconciliation_5",
-    "existing_canonical_id": [
-      1217,
-      1309
-    ],
-    "proposed_operation": "DUPLICATE_RECONCILIATION_PROPOSAL",
-    "programme_identity": "Fulbright Foreign Student Program",
-    "provider": "",
-    "host_country": "United States",
-    "source_references": [
-      "https://foreign.fulbrightonline.org",
-      "https://fulbright.state.gov"
-    ],
-    "verification_state": "REQUIRES_MANUAL_REVIEW",
-    "funding_state": "UNCHANGED",
-    "lifecycle_state": "ACTIVE",
-    "reason": "Duplicate pair identified: Same programme name, same country, same funding, same degree. Both are official Fulbright domains (foreign.fulbrightonline.org is the application portal, fulbright.state.gov is the official programme page). - Recommended: MERGE - Keep ID 1217 (application portal) as canonical, archive ID 1309 (programme info page), consolidate both URLs in official_source_url and application_link fields"
-  },
-  {
-    "research_record_key": "blocked_175",
-    "existing_canonical_id": null,
-    "proposed_operation": "BLOCKED",
-    "programme_identity": "Erasmus University Rotterdam (EUR) - Holland Scholarship & Talent Programmes (NL Scholarship)",
-    "provider": "",
-    "host_country": "Netherlands",
-    "source_references": [
-      "https://www.eur.nl/en/education/practical-matters/scholarships-grants"
-    ],
-    "verification_state": "AWAITING_OFFICIAL_VERIFICATION",
-    "funding_state": "UNKNOWN",
-    "lifecycle_state": "UNKNOWN",
-    "reason": "BLOCKED: INSUFFICIENT_EVIDENCE"
-  },
-  {
-    "research_record_key": "blocked_360",
-    "existing_canonical_id": null,
-    "proposed_operation": "BLOCKED",
-    "programme_identity": "MEXT Scholarship for 2027 - Embassy Recommendation (Research Students)",
-    "provider": "",
-    "host_country": "",
-    "source_references": [
-      "https://www.studyinjapan.go.jp/en/planning/scholarships/mext-scholarships/"
-    ],
-    "verification_state": "AWAITING_OFFICIAL_VERIFICATION",
-    "funding_state": "UNKNOWN",
-    "lifecycle_state": "UNKNOWN",
-    "reason": "BLOCKED: INSUFFICIENT_EVIDENCE"
-  },
-  {
-    "research_record_key": "blocked_383",
-    "existing_canonical_id": null,
-    "proposed_operation": "BLOCKED",
-    "programme_identity": "Erasmus Trustfonds Scholarship",
-    "provider": "",
-    "host_country": "Netherlands",
-    "source_references": [
-      "https://www.eur.nl/en/scholarship/erasmus-trustfonds-scholarship"
-    ],
-    "verification_state": "AWAITING_OFFICIAL_VERIFICATION",
-    "funding_state": "UNKNOWN",
-    "lifecycle_state": "UNKNOWN",
-    "reason": "BLOCKED: INSUFFICIENT_EVIDENCE"
-  },
-  {
-    "research_record_key": "blocked_384",
-    "existing_canonical_id": null,
-    "proposed_operation": "BLOCKED",
-    "programme_identity": "Erasmus Trustfonds Scholarship / TSH Changemaker Scholarship (Erasmus MC)",
-    "provider": "",
-    "host_country": "Netherlands",
-    "source_references": [
-      "https://www.eur.nl/en/scholarship/erasmus-trustfonds-and-tsh-changemaker-scholarship"
-    ],
-    "verification_state": "AWAITING_OFFICIAL_VERIFICATION",
-    "funding_state": "UNKNOWN",
-    "lifecycle_state": "UNKNOWN",
-    "reason": "BLOCKED: INSUFFICIENT_EVIDENCE"
-  },
-  {
-    "research_record_key": "blocked_423",
-    "existing_canonical_id": null,
-    "proposed_operation": "BLOCKED",
-    "programme_identity": "Erasmus+ Grant (Erasmus University Rotterdam)",
-    "provider": "",
-    "host_country": "Netherlands",
-    "source_references": [
-      "https://www.eur.nl/en/scholarship/erasmus-grant"
-    ],
-    "verification_state": "AWAITING_OFFICIAL_VERIFICATION",
-    "funding_state": "UNKNOWN",
-    "lifecycle_state": "UNKNOWN",
-    "reason": "BLOCKED: INSUFFICIENT_EVIDENCE"
-  },
-  {
-    "research_record_key": "blocked_556",
-    "existing_canonical_id": null,
-    "proposed_operation": "BLOCKED",
-    "programme_identity": "Convocatoria de Becas OEA - UNIR, EP NEWMAN y UNIR Mexico (Curso Academico 2026, 2a convocatoria)",
-    "provider": "",
-    "host_country": "",
-    "source_references": [
-      "https://www.oas.org/en/scholarships/PAEC/2026/P26_Convocatoria_de_BecasOEA_UNIR_EP_NEWMAN_y_UNIR_MX_2026.pdf"
-    ],
-    "verification_state": "AWAITING_OFFICIAL_VERIFICATION",
-    "funding_state": "UNKNOWN",
-    "lifecycle_state": "UNKNOWN",
-    "reason": "BLOCKED: EXCLUDED_REGION"
+  "blocked_new_insert_candidates": 6,
+  "blocking_reasons": [
+    "Vanier CGS and NFP/OTS lifecycle proposals are PENDING_RESEARCH and excluded from the approved set.",
+    "PostgreSQL duplicate-merge simulation is unavailable in this environment.",
+    "No duplicate merge has been executed; 4 archive-only plans await owner approval.",
+    "6 new-insert candidates remain blocked for insufficient evidence or excluded region.",
+    "This is a review package, not production import authorization."
+  ],
+  "hashed_files": {
+    "package_baseline.json": "9e77451bde2224fc742ac0f443c56c8c7ed1082761d64867fc6b78fff14bbc21",
+    "final_import_ready_scholarships.json": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570",
+    "final_existing_cycle_updates.json": "6153732aa7e3672c493c098e44fafc9dd01467ee2eaf1e00ba7b3cf7f52b7fd6",
+    "final_funding_corrections.json": "ebfa569edbd0f6bc6d87971717188cbe55a95a5e78b14fa5bdde94d0de0af87b",
+    "final_lifecycle_corrections.json": "5031e3ddf321a7046d6cb99c19fea195d246dba7ba8a9e40f750d5d0cd83b4f7",
+    "final_source_evidence.json": "fb39f6da04541e91ef6441d343aed8b6764af9d6c18718b33b09c272e13e69c1",
+    "operation_evidence_mapping.json": "60f8b16d0f68ecd39ccf98dacec65d19e1c7b246559a964abcfc818bc058b75d",
+    "blocked_records.json": "72749ae095eb01d041f20bccf86f83c46194eb79f2af4a000139d119f11f992e",
+    "duplicate_merge_plan.json": "dc04508aee5faeb613f4db69b1e969b549bde201991a5821ac4823a632049f82",
+    "duplicate_fk_dependency_report.json": "807bf024932e9db201644666d5306d2762b1261a70005f6a27b4508acbab3ca0",
+    "duplicate_merge_dry_run.json": "bda764e9d8c59b5da84cf6e0264ebb1d66b22aabc6c7e3767452e4adaf54af5f",
+    "final_database_reconciliation.json": "f33336f032ccd6ce6789733f157ba3ed843dbc9fba3a790ea64c5de0281a46c6"
   }
-]
+}

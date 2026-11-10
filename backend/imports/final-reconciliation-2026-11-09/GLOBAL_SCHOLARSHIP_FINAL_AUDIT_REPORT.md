@@ -1,3 +1,11 @@
+> **SUPERSEDED / HISTORICAL — NOT PART OF THE PR #81 REVIEW PACKAGE.**
+>
+> This document predates the final reconciliation remediation and contains
+> obsolete counts, statuses, or references to earlier PRs. Do not use it for
+> import decisions or count reconciliation. The authoritative documents are
+> `FINAL_CATALOGUE_RECONCILIATION_REPORT.md`, `PACKAGE_STATUS.md`, and
+> `README.md` in this directory.
+
 # GLOBAL SCHOLARSHIP FINAL AUDIT REPORT
 **ScholarZone — gopal735/ScholarZone**  
 **Audit Date:** 2026-11-09 (Asia/Dhaka)  

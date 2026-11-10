@@ -1,251 +1,951 @@
 {
-  "merge_plan_date": "2026-11-09",
-  "total_pairs": 5,
-  "merge_strategy": "transactional_idempotent_auditable",
+  "plan_version": "2.0",
+  "plan_date": "2026-11-10",
+  "strategy": "ARCHIVE_ONLY_NO_DATA_REWRITE",
+  "execution_status": "NOT_EXECUTED",
+  "plans_approved_for_execution": 0,
+  "owner_approval_required": true,
+  "summary": {
+    "total_pairs": 5,
+    "merge_ready_for_owner_review": 4,
+    "blocked_manual_review": 1,
+    "plans_approved_for_execution": 0,
+    "plans_executed": 0,
+    "duplicate_archives_if_approved": 4,
+    "record_deletions": 0,
+    "url_writes": 0,
+    "funding_writes": 0,
+    "fk_reassignments": 0,
+    "status_changes": 0,
+    "merge_ready_pair_ids": [
+      1,
+      2,
+      3,
+      4
+    ],
+    "blocked_pair_ids": [
+      5
+    ],
+    "fulbright_pair": {
+      "pair_id": 5,
+      "canonical_id": 1217,
+      "duplicate_id": 1309,
+      "status": "BLOCKED_MANUAL_REVIEW"
+    }
+  },
+  "guarantees": {
+    "url_writes": 0,
+    "funding_writes": 0,
+    "degree_writes": 0,
+    "region_writes": 0,
+    "status_changes": 0,
+    "fk_reassignments": 0,
+    "record_deletions": 0,
+    "audit_rows_inserted": 0
+  },
   "prerequisites": [
-    "Backup database",
-    "Verify foreign key constraints",
-    "Owner approval for each pair",
-    "Test on staging environment"
+    "Owner approval for each pair, recorded outside this package.",
+    "A fresh database backup with verified restore procedure.",
+    "Run the archive-only statements on an isolated PostgreSQL copy and compare counts.",
+    "Confirm the canonical and duplicate official_source_url values are still distinct and scalar.",
+    "Confirm scholarship_supervisor_coverage still has UNIQUE(scholarship_id)."
   ],
   "pairs": [
     {
       "pair_id": 1,
-      "canonical_title": "Lund University Global Scholarship",
-      "survivor_id": 183,
+      "classification": "MERGE_READY_FOR_OWNER_REVIEW",
+      "confidence": "HIGH",
+      "canonical_id": 183,
       "duplicate_id": 753,
+      "canonical_record": {
+        "id": 183,
+        "title": "Lund University Global Scholarship",
+        "country": "Sweden",
+        "degree": "Master's, PhD",
+        "funding": "Partial",
+        "status": "open",
+        "is_archived": false,
+        "official_source_url": "https://www.lunduniversity.lu.se/study/admission-degree-studies/scholarships-and-awards/lund-university-global-scholarship",
+        "application_link": "https://www.lunduniversity.lu.se/study/admission-degree-studies/scholarships-and-awards/lund-university-global-scholarship"
+      },
+      "duplicate_record": {
+        "id": 753,
+        "title": "Lund University Global Scholarship",
+        "country": "Sweden",
+        "degree": "Bachelor's, Master's",
+        "funding": "Partial",
+        "status": "open",
+        "is_archived": false,
+        "official_source_url": "https://www.lunduniversity.lu.se/admissions/scholarships-and-awards/lund-university-global-scholarship",
+        "application_link": "https://www.lunduniversity.lu.se/admissions/scholarships-and-awards/lund-university-global-scholarship"
+      },
+      "evidence_same_programme": "Same university (Lund University), same programme title, same country (Sweden), same funding label (Partial), and official URL paths on the same lunduniversity.lu.se domain.",
+      "conflicts": [
+        {
+          "field": "degree",
+          "canonical": "Master's, PhD",
+          "duplicate": "Bachelor's, Master's",
+          "resolution": "Do not rewrite degree in an archive-only plan; owner review."
+        }
+      ],
+      "preconditions": [
+        {
+          "check": "canonical_exists",
+          "expected": true,
+          "actual": true
+        },
+        {
+          "check": "canonical_not_archived",
+          "expected": true,
+          "actual": true
+        },
+        {
+          "check": "duplicate_exists",
+          "expected": true,
+          "actual": true
+        },
+        {
+          "check": "duplicate_not_archived",
+          "expected": true,
+          "actual": true
+        },
+        {
+          "check": "distinct_ids",
+          "expected": true,
+          "actual": true
+        },
+        {
+          "check": "canonical_official_source_url_is_scalar",
+          "expected": true,
+          "actual": true
+        },
+        {
+          "check": "duplicate_official_source_url_is_scalar",
+          "expected": true,
+          "actual": true
+        },
+        {
+          "check": "official_source_urls_are_distinct",
+          "expected": true,
+          "actual": true
+        }
+      ],
       "operations": [
         {
           "step": 1,
-          "operation": "CONSOLIDATE_URLS",
-          "description": "Merge official_source_url and application_link from ID 753 into ID 183",
-          "sql": "UPDATE scholarships SET official_source_url = json_group_array(DISTINCT official_source_url), application_link = json_group_array(DISTINCT application_link) WHERE id = 183",
-          "validation": "Verify both URLs accessible"
+          "operation": "VERIFY_PRECONDITIONS",
+          "kind": "READ_ONLY",
+          "description": "Confirm both records exist, are active, have distinct scalar official_source_url values, and are not already archived.",
+          "preconditions": [
+            {
+              "check": "canonical_exists",
+              "expected": true,
+              "actual": true
+            },
+            {
+              "check": "canonical_not_archived",
+              "expected": true,
+              "actual": true
+            },
+            {
+              "check": "duplicate_exists",
+              "expected": true,
+              "actual": true
+            },
+            {
+              "check": "duplicate_not_archived",
+              "expected": true,
+              "actual": true
+            },
+            {
+              "check": "distinct_ids",
+              "expected": true,
+              "actual": true
+            },
+            {
+              "check": "canonical_official_source_url_is_scalar",
+              "expected": true,
+              "actual": true
+            },
+            {
+              "check": "duplicate_official_source_url_is_scalar",
+              "expected": true,
+              "actual": true
+            },
+            {
+              "check": "official_source_urls_are_distinct",
+              "expected": true,
+              "actual": true
+            }
+          ],
+          "expected_rows_affected": 0
         },
         {
           "step": 2,
-          "operation": "CONSOLIDATE_DEGREE",
-          "description": "Merge degree levels: 'Master's, PhD' + 'Bachelor's, Master's' = 'Bachelor's, Master's, PhD'",
-          "sql": "UPDATE scholarships SET degree = 'Bachelor\\'s, Master\\'s, PhD' WHERE id = 183",
-          "validation": "Check degree normalization"
+          "operation": "ARCHIVE_DUPLICATE",
+          "kind": "WRITE",
+          "description": "Archive the duplicate record only. Status, URL, funding, degree, region, and foreign keys are left untouched.",
+          "sql": "UPDATE scholarships SET is_archived = 1, archived_at = COALESCE(archived_at, :execution_timestamp), archived_reason = :archived_reason WHERE id = :duplicate_id AND is_archived = 0",
+          "parameters": {
+            "execution_timestamp": "EXECUTION_TIMESTAMP",
+            "archived_reason": "Duplicate of ID 183 (Lund University Global Scholarship); archive-only 2026-11-10",
+            "duplicate_id": 753
+          },
+          "writes_fields": [
+            "is_archived",
+            "archived_at",
+            "archived_reason"
+          ],
+          "expected_rows_affected": 1
         },
         {
           "step": 3,
-          "operation": "UPDATE_FOREIGN_KEYS",
-          "description": "Reassign all FK references from ID 753 to ID 183",
-          "tables": ["scholarship_supervisor_coverage", "scholarship_snapshots", "discovery_candidates", "application_records", "saved_scholarships", "scholarship_verification_history", "scholarship_reviews", "scholarship_fetch_attempts", "scholarship_professor_links", "official_contacts", "professor_outreach_records", "application_checklist_items", "supervisor_source_evidence"],
-          "sql_template": "UPDATE {table} SET scholarship_id = 183 WHERE scholarship_id = 753",
-          "validation": "Verify row counts preserved"
-        },
-        {
-          "step": 4,
-          "operation": "ARCHIVE_DUPLICATE",
-          "description": "Archive ID 753 instead of delete",
-          "sql": "UPDATE scholarships SET is_archived = 1, archived_at = datetime('now'), archived_reason = 'Duplicate of ID 183 (Lund University Global Scholarship) - merged 2026-11-09' WHERE id = 753",
-          "validation": "ID 753 is_archived = 1"
-        },
-        {
-          "step": 5,
-          "operation": "CREATE_AUDIT_MAPPING",
-          "description": "Record the merge in scholarship_restore_records",
-          "sql": "INSERT INTO scholarship_restore_records (operation_id, scholarship_id, source_version_id, target_version_id, operator, reason, restored_fields, outcome) VALUES ('merge_20261109_1', 753, NULL, 183, 'reconciliation', 'Merged duplicate into canonical ID 183', '{\"official_source_url\", \"application_link\", \"degree\"}', 'success')",
-          "validation": "Audit record created"
+          "operation": "VERIFY_POSTCONDITIONS",
+          "kind": "READ_ONLY",
+          "description": "Confirm the duplicate is archived, the canonical row is unchanged, the total row count is unchanged, and no URL or FK row was rewritten.",
+          "postconditions": [
+            "duplicate is_archived = 1",
+            "duplicate archived_reason is set",
+            "canonical record is byte-identical for all non-audit fields",
+            "scholarships total count is unchanged",
+            "scholarship_supervisor_coverage row count is unchanged",
+            "official_source_url is still a scalar and unique"
+          ],
+          "expected_rows_affected": 0
         }
       ],
-      "rollback_plan": "DELETE FROM scholarship_restore_records WHERE operation_id = 'merge_20261109_1'; UPDATE scholarships SET is_archived = 0 WHERE id = 753; UPDATE affected tables SET scholarship_id = 753 WHERE scholarship_id = 183 AND ...;",
-      "estimated_duration_ms": 500,
-      "risk_level": "LOW"
+      "fk_handling": {
+        "reassigned_rows": 0,
+        "preserved_duplicate_side_rows": 1,
+        "reason": "UNIQUE(scholarship_id) on scholarship_supervisor_coverage makes reassignment collide with the canonical coverage row. Keep the duplicate coverage row attached to the archived duplicate."
+      },
+      "rollback": "Restore the pre-state captured by VERIFY_PRECONDITIONS for is_archived, archived_at, and archived_reason. No scholarship row is ever deleted.",
+      "execution": {
+        "status": "NOT_EXECUTED",
+        "approved_for_execution": false,
+        "execution_gate": "OWNER_APPROVAL_REQUIRED"
+      },
+      "risk_level": "LOW",
+      "estimated_duration_ms": 50,
+      "requires_owner_approval": true
     },
     {
       "pair_id": 2,
-      "canonical_title": "Copenhagen Business School Danish Government Scholarship",
-      "survivor_id": 270,
+      "classification": "MERGE_READY_FOR_OWNER_REVIEW",
+      "confidence": "HIGH",
+      "canonical_id": 270,
       "duplicate_id": 1244,
+      "canonical_record": {
+        "id": 270,
+        "title": "Copenhagen Business School Danish Government Scholarship",
+        "country": "Denmark",
+        "degree": "Master's, PhD",
+        "funding": "Partial",
+        "status": "open",
+        "is_archived": false,
+        "official_source_url": "https://www.cbs.dk/study-programmes/master-programmes/double-degree",
+        "application_link": "https://www.cbs.dk/study-programmes/master-programmes/double-degree"
+      },
+      "duplicate_record": {
+        "id": 1244,
+        "title": "Copenhagen Business School Danish Government Scholarship",
+        "country": "Denmark",
+        "degree": "Master's (MSc)",
+        "funding": "Partial to Full",
+        "status": "open",
+        "is_archived": false,
+        "official_source_url": "https://www.cbs.dk/en/education/master/programmes-and-admission/fees-and-funding",
+        "application_link": "https://www.cbs.dk/en/education/master/programmes-and-admission/fees-and-funding"
+      },
+      "evidence_same_programme": "Same university (Copenhagen Business School), same programme title, same country (Denmark), and official URL paths on the same cbs.dk domain.",
+      "conflicts": [
+        {
+          "field": "funding",
+          "canonical": "Partial",
+          "duplicate": "Partial to Full",
+          "resolution": "Do not auto-resolve conflicting funding; owner review."
+        },
+        {
+          "field": "degree",
+          "canonical": "Master's, PhD",
+          "duplicate": "Master's (MSc)",
+          "resolution": "Do not rewrite degree in an archive-only plan; owner review."
+        }
+      ],
+      "preconditions": [
+        {
+          "check": "canonical_exists",
+          "expected": true,
+          "actual": true
+        },
+        {
+          "check": "canonical_not_archived",
+          "expected": true,
+          "actual": true
+        },
+        {
+          "check": "duplicate_exists",
+          "expected": true,
+          "actual": true
+        },
+        {
+          "check": "duplicate_not_archived",
+          "expected": true,
+          "actual": true
+        },
+        {
+          "check": "distinct_ids",
+          "expected": true,
+          "actual": true
+        },
+        {
+          "check": "canonical_official_source_url_is_scalar",
+          "expected": true,
+          "actual": true
+        },
+        {
+          "check": "duplicate_official_source_url_is_scalar",
+          "expected": true,
+          "actual": true
+        },
+        {
+          "check": "official_source_urls_are_distinct",
+          "expected": true,
+          "actual": true
+        }
+      ],
       "operations": [
         {
           "step": 1,
-          "operation": "CONSOLIDATE_URLS",
-          "description": "Merge URLs from ID 1244 into ID 270",
-          "validation": "Both cbs.dk URLs accessible"
+          "operation": "VERIFY_PRECONDITIONS",
+          "kind": "READ_ONLY",
+          "description": "Confirm both records exist, are active, have distinct scalar official_source_url values, and are not already archived.",
+          "preconditions": [
+            {
+              "check": "canonical_exists",
+              "expected": true,
+              "actual": true
+            },
+            {
+              "check": "canonical_not_archived",
+              "expected": true,
+              "actual": true
+            },
+            {
+              "check": "duplicate_exists",
+              "expected": true,
+              "actual": true
+            },
+            {
+              "check": "duplicate_not_archived",
+              "expected": true,
+              "actual": true
+            },
+            {
+              "check": "distinct_ids",
+              "expected": true,
+              "actual": true
+            },
+            {
+              "check": "canonical_official_source_url_is_scalar",
+              "expected": true,
+              "actual": true
+            },
+            {
+              "check": "duplicate_official_source_url_is_scalar",
+              "expected": true,
+              "actual": true
+            },
+            {
+              "check": "official_source_urls_are_distinct",
+              "expected": true,
+              "actual": true
+            }
+          ],
+          "expected_rows_affected": 0
         },
         {
           "step": 2,
-          "operation": "CONSOLIDATE_FUNDING",
-          "description": "Resolve funding discrepancy: 'Partial' vs 'Partial to Full' -> 'Partial to Full' (more complete)",
-          "validation": "Verify with official source"
+          "operation": "ARCHIVE_DUPLICATE",
+          "kind": "WRITE",
+          "description": "Archive the duplicate record only. Status, URL, funding, degree, region, and foreign keys are left untouched.",
+          "sql": "UPDATE scholarships SET is_archived = 1, archived_at = COALESCE(archived_at, :execution_timestamp), archived_reason = :archived_reason WHERE id = :duplicate_id AND is_archived = 0",
+          "parameters": {
+            "execution_timestamp": "EXECUTION_TIMESTAMP",
+            "archived_reason": "Duplicate of ID 270 (Copenhagen Business School Danish Government Scholarship); archive-only 2026-11-10",
+            "duplicate_id": 1244
+          },
+          "writes_fields": [
+            "is_archived",
+            "archived_at",
+            "archived_reason"
+          ],
+          "expected_rows_affected": 1
         },
         {
           "step": 3,
-          "operation": "CONSOLIDATE_DEGREE",
-          "description": "Merge degree: 'Master's, PhD' + 'Master's (MSc)' -> 'Master's, PhD'",
-          "validation": "Check degree normalization"
-        },
-        {
-          "step": 4,
-          "operation": "UPDATE_FOREIGN_KEYS",
-          "description": "Reassign FK from 1244 to 270",
-          "tables": ["scholarship_supervisor_coverage", "scholarship_snapshots", "discovery_candidates", "application_records", "saved_scholarships", "scholarship_verification_history", "scholarship_reviews", "scholarship_fetch_attempts", "scholarship_professor_links", "official_contacts", "professor_outreach_records", "application_checklist_items", "supervisor_source_evidence"],
-          "validation": "Row counts preserved"
-        },
-        {
-          "step": 5,
-          "operation": "ARCHIVE_DUPLICATE",
-          "description": "Archive ID 1244",
-          "validation": "ID 1244 is_archived = 1"
-        },
-        {
-          "step": 6,
-          "operation": "CREATE_AUDIT_MAPPING",
-          "description": "Record merge in scholarship_restore_records",
-          "validation": "Audit record created"
+          "operation": "VERIFY_POSTCONDITIONS",
+          "kind": "READ_ONLY",
+          "description": "Confirm the duplicate is archived, the canonical row is unchanged, the total row count is unchanged, and no URL or FK row was rewritten.",
+          "postconditions": [
+            "duplicate is_archived = 1",
+            "duplicate archived_reason is set",
+            "canonical record is byte-identical for all non-audit fields",
+            "scholarships total count is unchanged",
+            "scholarship_supervisor_coverage row count is unchanged",
+            "official_source_url is still a scalar and unique"
+          ],
+          "expected_rows_affected": 0
         }
       ],
-      "rollback_plan": "Standard rollback",
-      "estimated_duration_ms": 500,
-      "risk_level": "LOW"
+      "fk_handling": {
+        "reassigned_rows": 0,
+        "preserved_duplicate_side_rows": 1,
+        "reason": "UNIQUE(scholarship_id) on scholarship_supervisor_coverage makes reassignment collide with the canonical coverage row. Keep the duplicate coverage row attached to the archived duplicate."
+      },
+      "rollback": "Restore the pre-state captured by VERIFY_PRECONDITIONS for is_archived, archived_at, and archived_reason. No scholarship row is ever deleted.",
+      "execution": {
+        "status": "NOT_EXECUTED",
+        "approved_for_execution": false,
+        "execution_gate": "OWNER_APPROVAL_REQUIRED"
+      },
+      "risk_level": "LOW",
+      "estimated_duration_ms": 50,
+      "requires_owner_approval": true
     },
     {
       "pair_id": 3,
-      "canonical_title": "University of Copenhagen Danish Government Scholarship",
-      "survivor_id": 271,
+      "classification": "MERGE_READY_FOR_OWNER_REVIEW",
+      "confidence": "HIGH",
+      "canonical_id": 271,
       "duplicate_id": 760,
+      "canonical_record": {
+        "id": 271,
+        "title": "University of Copenhagen Danish Government Scholarship",
+        "country": "Denmark",
+        "degree": "Master's, PhD",
+        "funding": "Partial",
+        "status": "open",
+        "is_archived": false,
+        "official_source_url": "https://www.ku.dk/studies/admission/scholarships-for-full-degree-students",
+        "application_link": "https://www.ku.dk/studies/admission/scholarships-for-full-degree-students"
+      },
+      "duplicate_record": {
+        "id": 760,
+        "title": "University of Copenhagen Danish Government Scholarship",
+        "country": "Denmark",
+        "degree": "Master's",
+        "funding": "Partial",
+        "status": "open",
+        "is_archived": false,
+        "official_source_url": "https://www.ku.dk/studies/masters/application-and-admission/scholarships",
+        "application_link": "https://www.ku.dk/studies/masters/application-and-admission/scholarships"
+      },
+      "evidence_same_programme": "Same university (University of Copenhagen), same programme title, same country (Denmark), same funding label (Partial), and official URL paths on the same ku.dk domain.",
+      "conflicts": [
+        {
+          "field": "degree",
+          "canonical": "Master's, PhD",
+          "duplicate": "Master's",
+          "resolution": "Do not rewrite degree in an archive-only plan; owner review."
+        }
+      ],
+      "preconditions": [
+        {
+          "check": "canonical_exists",
+          "expected": true,
+          "actual": true
+        },
+        {
+          "check": "canonical_not_archived",
+          "expected": true,
+          "actual": true
+        },
+        {
+          "check": "duplicate_exists",
+          "expected": true,
+          "actual": true
+        },
+        {
+          "check": "duplicate_not_archived",
+          "expected": true,
+          "actual": true
+        },
+        {
+          "check": "distinct_ids",
+          "expected": true,
+          "actual": true
+        },
+        {
+          "check": "canonical_official_source_url_is_scalar",
+          "expected": true,
+          "actual": true
+        },
+        {
+          "check": "duplicate_official_source_url_is_scalar",
+          "expected": true,
+          "actual": true
+        },
+        {
+          "check": "official_source_urls_are_distinct",
+          "expected": true,
+          "actual": true
+        }
+      ],
       "operations": [
         {
           "step": 1,
-          "operation": "CONSOLIDATE_URLS",
-          "description": "Merge ku.dk URLs from ID 760 into ID 271",
-          "validation": "Both ku.dk URLs accessible"
+          "operation": "VERIFY_PRECONDITIONS",
+          "kind": "READ_ONLY",
+          "description": "Confirm both records exist, are active, have distinct scalar official_source_url values, and are not already archived.",
+          "preconditions": [
+            {
+              "check": "canonical_exists",
+              "expected": true,
+              "actual": true
+            },
+            {
+              "check": "canonical_not_archived",
+              "expected": true,
+              "actual": true
+            },
+            {
+              "check": "duplicate_exists",
+              "expected": true,
+              "actual": true
+            },
+            {
+              "check": "duplicate_not_archived",
+              "expected": true,
+              "actual": true
+            },
+            {
+              "check": "distinct_ids",
+              "expected": true,
+              "actual": true
+            },
+            {
+              "check": "canonical_official_source_url_is_scalar",
+              "expected": true,
+              "actual": true
+            },
+            {
+              "check": "duplicate_official_source_url_is_scalar",
+              "expected": true,
+              "actual": true
+            },
+            {
+              "check": "official_source_urls_are_distinct",
+              "expected": true,
+              "actual": true
+            }
+          ],
+          "expected_rows_affected": 0
         },
         {
           "step": 2,
-          "operation": "CONSOLIDATE_DEGREE",
-          "description": "Merge degree: 'Master's, PhD' + 'Master's' -> 'Master's, PhD'",
-          "validation": "Check degree normalization"
+          "operation": "ARCHIVE_DUPLICATE",
+          "kind": "WRITE",
+          "description": "Archive the duplicate record only. Status, URL, funding, degree, region, and foreign keys are left untouched.",
+          "sql": "UPDATE scholarships SET is_archived = 1, archived_at = COALESCE(archived_at, :execution_timestamp), archived_reason = :archived_reason WHERE id = :duplicate_id AND is_archived = 0",
+          "parameters": {
+            "execution_timestamp": "EXECUTION_TIMESTAMP",
+            "archived_reason": "Duplicate of ID 271 (University of Copenhagen Danish Government Scholarship); archive-only 2026-11-10",
+            "duplicate_id": 760
+          },
+          "writes_fields": [
+            "is_archived",
+            "archived_at",
+            "archived_reason"
+          ],
+          "expected_rows_affected": 1
         },
         {
           "step": 3,
-          "operation": "UPDATE_FOREIGN_KEYS",
-          "description": "Reassign FK from 760 to 271 (note: supervisor_coverage has 2 rows each)",
-          "tables": ["scholarship_supervisor_coverage", "scholarship_snapshots", "discovery_candidates", "application_records", "saved_scholarships", "scholarship_verification_history", "scholarship_reviews", "scholarship_fetch_attempts", "scholarship_professor_links", "official_contacts", "professor_outreach_records", "application_checklist_items", "supervisor_source_evidence"],
-          "validation": "Row counts preserved, handle 2 rows in supervisor_coverage"
-        },
-        {
-          "step": 4,
-          "operation": "ARCHIVE_DUPLICATE",
-          "description": "Archive ID 760",
-          "validation": "ID 760 is_archived = 1"
-        },
-        {
-          "step": 4,
-          "operation": "CREATE_AUDIT_MAPPING",
-          "description": "Record merge in scholarship_restore_records",
-          "validation": "Audit record created"
+          "operation": "VERIFY_POSTCONDITIONS",
+          "kind": "READ_ONLY",
+          "description": "Confirm the duplicate is archived, the canonical row is unchanged, the total row count is unchanged, and no URL or FK row was rewritten.",
+          "postconditions": [
+            "duplicate is_archived = 1",
+            "duplicate archived_reason is set",
+            "canonical record is byte-identical for all non-audit fields",
+            "scholarships total count is unchanged",
+            "scholarship_supervisor_coverage row count is unchanged",
+            "official_source_url is still a scalar and unique"
+          ],
+          "expected_rows_affected": 0
         }
       ],
-      "rollback_plan": "Standard rollback",
-      "estimated_duration_ms": 500,
-      "risk_level": "LOW"
+      "fk_handling": {
+        "reassigned_rows": 0,
+        "preserved_duplicate_side_rows": 1,
+        "reason": "UNIQUE(scholarship_id) on scholarship_supervisor_coverage makes reassignment collide with the canonical coverage row. Keep the duplicate coverage row attached to the archived duplicate."
+      },
+      "rollback": "Restore the pre-state captured by VERIFY_PRECONDITIONS for is_archived, archived_at, and archived_reason. No scholarship row is ever deleted.",
+      "execution": {
+        "status": "NOT_EXECUTED",
+        "approved_for_execution": false,
+        "execution_gate": "OWNER_APPROVAL_REQUIRED"
+      },
+      "risk_level": "LOW",
+      "estimated_duration_ms": 50,
+      "requires_owner_approval": true
     },
     {
       "pair_id": 4,
-      "canonical_title": "Stipendium Hungaricum Scholarship Programme",
-      "survivor_id": 285,
+      "classification": "MERGE_READY_FOR_OWNER_REVIEW",
+      "confidence": "HIGH",
+      "canonical_id": 285,
       "duplicate_id": 1277,
+      "canonical_record": {
+        "id": 285,
+        "title": "Stipendium Hungaricum Scholarship Programme",
+        "country": "Hungary",
+        "degree": "Bachelor's, Master's, One-tier Master's, Doctoral, Non-degree",
+        "funding": "Fully Funded",
+        "status": "open",
+        "is_archived": false,
+        "official_source_url": "https://stipendiumhungaricum.hu",
+        "application_link": "https://stipendiumhungaricum.hu"
+      },
+      "duplicate_record": {
+        "id": 1277,
+        "title": "Stipendium Hungaricum Scholarship Programme",
+        "country": "Hungary",
+        "degree": "Bachelor's, Master's, One-tier Master's, PhD, Postdoctoral, Non-degree",
+        "funding": "Fully Funded",
+        "status": "open",
+        "is_archived": false,
+        "official_source_url": "https://stipendiumhungaricum.hu/apply_call",
+        "application_link": "https://stipendiumhungaricum.hu/apply_call"
+      },
+      "evidence_same_programme": "Same programme title, same country (Hungary), same funding label (Fully Funded), and official URLs on the same stipendiumhungaricum.hu domain: root domain versus /apply_call path.",
+      "conflicts": [
+        {
+          "field": "degree",
+          "canonical": "Bachelor's, Master's, One-tier Master's, Doctoral, Non-degree",
+          "duplicate": "Bachelor's, Master's, One-tier Master's, PhD, Postdoctoral, Non-degree",
+          "resolution": "Do not rewrite degree in an archive-only plan; owner review."
+        }
+      ],
+      "preconditions": [
+        {
+          "check": "canonical_exists",
+          "expected": true,
+          "actual": true
+        },
+        {
+          "check": "canonical_not_archived",
+          "expected": true,
+          "actual": true
+        },
+        {
+          "check": "duplicate_exists",
+          "expected": true,
+          "actual": true
+        },
+        {
+          "check": "duplicate_not_archived",
+          "expected": true,
+          "actual": true
+        },
+        {
+          "check": "distinct_ids",
+          "expected": true,
+          "actual": true
+        },
+        {
+          "check": "canonical_official_source_url_is_scalar",
+          "expected": true,
+          "actual": true
+        },
+        {
+          "check": "duplicate_official_source_url_is_scalar",
+          "expected": true,
+          "actual": true
+        },
+        {
+          "check": "official_source_urls_are_distinct",
+          "expected": true,
+          "actual": true
+        }
+      ],
       "operations": [
         {
           "step": 1,
-          "operation": "CONSOLIDATE_URLS",
-          "description": "Merge root domain and /apply_call path into ID 285",
-          "validation": "Both stipendiumhungaricum.hu URLs accessible"
+          "operation": "VERIFY_PRECONDITIONS",
+          "kind": "READ_ONLY",
+          "description": "Confirm both records exist, are active, have distinct scalar official_source_url values, and are not already archived.",
+          "preconditions": [
+            {
+              "check": "canonical_exists",
+              "expected": true,
+              "actual": true
+            },
+            {
+              "check": "canonical_not_archived",
+              "expected": true,
+              "actual": true
+            },
+            {
+              "check": "duplicate_exists",
+              "expected": true,
+              "actual": true
+            },
+            {
+              "check": "duplicate_not_archived",
+              "expected": true,
+              "actual": true
+            },
+            {
+              "check": "distinct_ids",
+              "expected": true,
+              "actual": true
+            },
+            {
+              "check": "canonical_official_source_url_is_scalar",
+              "expected": true,
+              "actual": true
+            },
+            {
+              "check": "duplicate_official_source_url_is_scalar",
+              "expected": true,
+              "actual": true
+            },
+            {
+              "check": "official_source_urls_are_distinct",
+              "expected": true,
+              "actual": true
+            }
+          ],
+          "expected_rows_affected": 0
         },
         {
           "step": 2,
-          "operation": "CONSOLIDATE_DEGREE",
-          "description": "Merge degree lists, take union of all degree types",
-          "validation": "Check degree normalization"
+          "operation": "ARCHIVE_DUPLICATE",
+          "kind": "WRITE",
+          "description": "Archive the duplicate record only. Status, URL, funding, degree, region, and foreign keys are left untouched.",
+          "sql": "UPDATE scholarships SET is_archived = 1, archived_at = COALESCE(archived_at, :execution_timestamp), archived_reason = :archived_reason WHERE id = :duplicate_id AND is_archived = 0",
+          "parameters": {
+            "execution_timestamp": "EXECUTION_TIMESTAMP",
+            "archived_reason": "Duplicate of ID 285 (Stipendium Hungaricum Scholarship Programme); archive-only 2026-11-10",
+            "duplicate_id": 1277
+          },
+          "writes_fields": [
+            "is_archived",
+            "archived_at",
+            "archived_reason"
+          ],
+          "expected_rows_affected": 1
         },
         {
           "step": 3,
-          "operation": "UPDATE_FOREIGN_KEYS",
-          "description": "Reassign FK from 1277 to 285 (includes scholarship_image_audit)",
-          "tables": ["scholarship_image_audit", "scholarship_supervisor_coverage", "scholarship_snapshots", "discovery_candidates", "application_records", "saved_scholarships", "scholarship_verification_history", "scholarship_reviews", "scholarship_fetch_attempts", "scholarship_professor_links", "official_contacts", "professor_outreach_records", "application_checklist_items", "supervisor_source_evidence"],
-          "validation": "Row counts preserved, image_audit handled"
-        },
-        {
-          "step": 4,
-          "operation": "ARCHIVE_DUPLICATE",
-          "description": "Archive ID 1277",
-          "validation": "ID 1277 is_archived = 1"
-        },
-        {
-          "step": 5,
-          "operation": "CREATE_AUDIT_MAPPING",
-          "description": "Record merge in scholarship_restore_records",
-          "validation": "Audit record created"
+          "operation": "VERIFY_POSTCONDITIONS",
+          "kind": "READ_ONLY",
+          "description": "Confirm the duplicate is archived, the canonical row is unchanged, the total row count is unchanged, and no URL or FK row was rewritten.",
+          "postconditions": [
+            "duplicate is_archived = 1",
+            "duplicate archived_reason is set",
+            "canonical record is byte-identical for all non-audit fields",
+            "scholarships total count is unchanged",
+            "scholarship_supervisor_coverage row count is unchanged",
+            "official_source_url is still a scalar and unique"
+          ],
+          "expected_rows_affected": 0
         }
       ],
-      "rollback_plan": "Standard rollback",
-      "estimated_duration_ms": 500,
-      "risk_level": "LOW"
+      "fk_handling": {
+        "reassigned_rows": 0,
+        "preserved_duplicate_side_rows": 1,
+        "reason": "UNIQUE(scholarship_id) on scholarship_supervisor_coverage makes reassignment collide with the canonical coverage row. Keep the duplicate coverage row attached to the archived duplicate."
+      },
+      "rollback": "Restore the pre-state captured by VERIFY_PRECONDITIONS for is_archived, archived_at, and archived_reason. No scholarship row is ever deleted.",
+      "execution": {
+        "status": "NOT_EXECUTED",
+        "approved_for_execution": false,
+        "execution_gate": "OWNER_APPROVAL_REQUIRED"
+      },
+      "risk_level": "LOW",
+      "estimated_duration_ms": 50,
+      "requires_owner_approval": true
     },
     {
       "pair_id": 5,
-      "canonical_title": "Fulbright Foreign Student Program",
-      "survivor_id": 1217,
+      "classification": "BLOCKED_MANUAL_REVIEW",
+      "confidence": "MEDIUM",
+      "canonical_id": 1217,
       "duplicate_id": 1309,
+      "canonical_record": {
+        "id": 1217,
+        "title": "Fulbright Foreign Student Program",
+        "country": "United States",
+        "degree": "Master's, PhD, Research",
+        "funding": "Fully Funded",
+        "status": "open",
+        "is_archived": false,
+        "official_source_url": "https://foreign.fulbrightonline.org",
+        "application_link": "https://foreign.fulbrightonline.org"
+      },
+      "duplicate_record": {
+        "id": 1309,
+        "title": "Fulbright Foreign Student Program",
+        "country": "United States",
+        "degree": "Bachelor's, Master's, PhD",
+        "funding": "Partial Funding",
+        "status": "open",
+        "is_archived": false,
+        "official_source_url": "https://fulbright.state.gov",
+        "application_link": "https://fulbright.state.gov"
+      },
+      "evidence_same_programme": "Same programme title and country, but the two records use different official domains: foreign.fulbrightonline.org (application portal) and fulbright.state.gov (programme information).",
+      "conflicts": [
+        {
+          "field": "official_source_url",
+          "canonical": "https://foreign.fulbrightonline.org",
+          "duplicate": "https://fulbright.state.gov",
+          "resolution": "Blocked; do not write either URL to the other record."
+        },
+        {
+          "field": "funding",
+          "canonical": "Fully Funded",
+          "duplicate": "Partial Funding",
+          "resolution": "Blocked; do not auto-resolve funding."
+        },
+        {
+          "field": "degree",
+          "canonical": "Master's, PhD, Research",
+          "duplicate": "Bachelor's, Master's, PhD",
+          "resolution": "Blocked; owner must confirm programme scope."
+        },
+        {
+          "field": "region",
+          "canonical": "World Top Demand",
+          "duplicate": "North America",
+          "resolution": "Blocked; owner must confirm canonical region."
+        }
+      ],
+      "preconditions": [
+        {
+          "check": "canonical_exists",
+          "expected": true,
+          "actual": true
+        },
+        {
+          "check": "canonical_not_archived",
+          "expected": true,
+          "actual": true
+        },
+        {
+          "check": "duplicate_exists",
+          "expected": true,
+          "actual": true
+        },
+        {
+          "check": "duplicate_not_archived",
+          "expected": true,
+          "actual": true
+        },
+        {
+          "check": "distinct_ids",
+          "expected": true,
+          "actual": true
+        },
+        {
+          "check": "canonical_official_source_url_is_scalar",
+          "expected": true,
+          "actual": true
+        },
+        {
+          "check": "duplicate_official_source_url_is_scalar",
+          "expected": true,
+          "actual": true
+        },
+        {
+          "check": "official_source_urls_are_distinct",
+          "expected": true,
+          "actual": true
+        }
+      ],
       "operations": [
         {
           "step": 1,
           "operation": "REQUIRE_MANUAL_REVIEW",
-          "description": "Different domains, different fully_funded values, different degree, different region. Must verify with Fulbright program before merge.",
-          "validation": "Owner confirmation required"
-        },
-        {
-          "step": 2,
-          "operation": "CONSOLIDATE_URLS_IF_MERGE",
-          "description": "If approved, merge foreign.fulbrightonline.org (application) and fulbright.state.gov (programme info) into ID 1217",
-          "validation": "Both URLs accessible"
-        },
-        {
-          "step": 3,
-          "operation": "RESOLVE_FUNDING_DISCREPANCY",
-          "description": "ID 1217: fully_funded=1, Fully Funded | ID 1309: fully_funded=null, Partial Funding. Must verify with official Fulbright source.",
-          "validation": "Official source confirmation"
-        },
-        {
-          "step": 4,
-          "operation": "CONSOLIDATE_DEGREE",
-          "description": "ID 1217: Master's, PhD, Research | ID 1309: Bachelor's, Master's, PhD. Determine correct scope.",
-          "validation": "Official source confirmation"
-        },
-        {
-          "step": 5,
-          "operation": "RESOLVE_REGION",
-          "description": "ID 1217: World Top Demand | ID 1309: North America. Determine canonical region.",
-          "validation": "Official source confirmation"
-        },
-        {
-          "step": 6,
-          "operation": "UPDATE_FOREIGN_KEYS_IF_MERGE",
-          "description": "If merge approved, reassign FK from 1309 to 1217",
-          "tables": ["scholarship_supervisor_coverage", "scholarship_snapshots", "discovery_candidates", "application_records", "saved_scholarships", "scholarship_verification_history", "scholarship_reviews", "scholarship_fetch_attempts", "scholarship_professor_links", "official_contacts", "professor_outreach_records", "application_checklist_items", "supervisor_source_evidence"],
-          "validation": "Row counts preserved"
-        },
-        {
-          "step": 7,
-          "operation": "ARCHIVE_DUPLICATE_IF_MERGE",
-          "description": "If merge approved, archive ID 1309",
-          "validation": "ID 1309 is_archived = 1"
+          "kind": "READ_ONLY",
+          "description": "Do not archive, merge, or rewrite either Fulbright record. The programme owner must first confirm whether the two official domains describe the same opportunity.",
+          "preconditions": [
+            {
+              "check": "canonical_exists",
+              "expected": true,
+              "actual": true
+            },
+            {
+              "check": "canonical_not_archived",
+              "expected": true,
+              "actual": true
+            },
+            {
+              "check": "duplicate_exists",
+              "expected": true,
+              "actual": true
+            },
+            {
+              "check": "duplicate_not_archived",
+              "expected": true,
+              "actual": true
+            },
+            {
+              "check": "distinct_ids",
+              "expected": true,
+              "actual": true
+            },
+            {
+              "check": "canonical_official_source_url_is_scalar",
+              "expected": true,
+              "actual": true
+            },
+            {
+              "check": "duplicate_official_source_url_is_scalar",
+              "expected": true,
+              "actual": true
+            },
+            {
+              "check": "official_source_urls_are_distinct",
+              "expected": true,
+              "actual": true
+            }
+          ],
+          "blocking_reason": "Different official domains, funding values, degree scope, and region. The pair cannot be merged or archived until the Fulbright programme owner confirms whether the two records describe the same opportunity.",
+          "expected_rows_affected": 0
         }
       ],
-      "rollback_plan": "Standard rollback",
-      "estimated_duration_ms": 1000,
+      "fk_handling": {
+        "reassigned_rows": 0,
+        "preserved_duplicate_side_rows": 1,
+        "reason": "UNIQUE(scholarship_id) on scholarship_supervisor_coverage makes reassignment collide with the canonical coverage row. Keep the duplicate coverage row attached to the archived duplicate."
+      },
+      "rollback": "Restore the pre-state captured by VERIFY_PRECONDITIONS for is_archived, archived_at, and archived_reason. No scholarship row is ever deleted.",
+      "execution": {
+        "status": "NOT_EXECUTED",
+        "approved_for_execution": false,
+        "execution_gate": "OWNER_APPROVAL_REQUIRED"
+      },
       "risk_level": "MEDIUM",
+      "estimated_duration_ms": 0,
       "requires_owner_approval": true
     }
   ],
-  "execution_order": [1, 2, 3, 4, 5],
-  "total_estimated_duration_ms": 3000,
-  "transaction_mode": "single_transaction_per_pair",
-  "dry_run_default": true
+  "fulbright_block": {
+    "pair_id": 5,
+    "canonical_id": 1217,
+    "duplicate_id": 1309,
+    "classification": "BLOCKED_MANUAL_REVIEW",
+    "executable": false,
+    "reason": "Different official domains, funding values, degree scope, and region. The pair cannot be merged or archived until the Fulbright programme owner confirms whether the two records describe the same opportunity.",
+    "required_owner_decisions": [
+      "Confirm whether foreign.fulbrightonline.org and fulbright.state.gov describe the same opportunity.",
+      "Confirm the canonical funding classification.",
+      "Confirm the canonical degree scope.",
+      "Confirm the canonical region."
+    ]
+  }
 }

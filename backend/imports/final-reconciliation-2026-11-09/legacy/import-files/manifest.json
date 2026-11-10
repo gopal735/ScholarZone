@@ -1,0 +1,81 @@
+{
+  "archive": "legacy/import-files",
+  "package_status": "SUPERSEDED_ARCHIVE",
+  "importable": false,
+  "authoritative_package": "backend/imports/final-reconciliation-2026-11-09/",
+  "note": "These files are retained only for audit history. They are SUPERSEDED and must not be imported, merged, or used for counts.",
+  "files": [
+    {
+      "filename": "existing_cycle_updates.json",
+      "status": "SUPERSEDED",
+      "importable": false,
+      "superseded_by": "final_existing_cycle_updates.json",
+      "reason": "Unprefixed 19-record file mixed approved and pending cycle edits and included unsupported claims. Superseded by the evidence-backed 11-record approved file.",
+      "sha256": "c9a41c84dfbd583d37524dd931df9595bc163fb3aabfd4daf83fc31bc3bab906",
+      "location": "legacy/import-files/existing_cycle_updates.json"
+    },
+    {
+      "filename": "funding_corrections.json",
+      "status": "SUPERSEDED",
+      "importable": false,
+      "superseded_by": "final_funding_corrections.json",
+      "reason": "Unprefixed 5-record file included pending and contradictory funding changes. Superseded by the 2-record DIRECT-evidence file.",
+      "sha256": "21d17a9cabb34612e84db14bbd0fc332c247c1a481f0947a3d06c58ed87174b2",
+      "location": "legacy/import-files/funding_corrections.json"
+    },
+    {
+      "filename": "import_ready_scholarships.json",
+      "status": "SUPERSEDED",
+      "importable": false,
+      "superseded_by": "final_import_ready_scholarships.json",
+      "reason": "Old 6-record insert list is not import-ready; all 6 candidates are blocked. Superseded by the canonical empty insert file.",
+      "sha256": "57c65c2e436160fca0d8f0864cc2bfa152416cc4da9b018555aa044da683f3a7",
+      "location": "legacy/import-files/import_ready_scholarships.json"
+    },
+    {
+      "filename": "import_validation_report.json",
+      "status": "SUPERSEDED",
+      "importable": false,
+      "superseded_by": "final_import_validation_report.json",
+      "reason": "Old validation report predates semantic validation and reported unsupported insert counts. Superseded by the generated final validation report.",
+      "sha256": "c54d1db1998acde359c79dd36d6431a1ff5cf4ea4b47aa0f7fb401133ab5168f",
+      "location": "legacy/import-files/import_validation_report.json"
+    },
+    {
+      "filename": "discontinued_programmes.json",
+      "status": "SUPERSEDED",
+      "importable": false,
+      "superseded_by": "final_lifecycle_corrections.json",
+      "reason": "Used the unsupported discontinued status. Superseded by two PENDING_RESEARCH lifecycle proposals using closed plus archive fields.",
+      "sha256": "36605b8686bbd148b089ad09f4abd4a439b67d00b5feaaf0d84895d67d4f894e",
+      "location": "legacy/import-files/discontinued_programmes.json"
+    },
+    {
+      "filename": "reconciliation_manifest.json",
+      "status": "SUPERSEDED",
+      "importable": false,
+      "superseded_by": "final_reconciliation_manifest.json",
+      "reason": "Old 141-entry manifest described the superseded 6-insert/19-cycle package. Superseded by the current canonical manifest.",
+      "sha256": "7dbb40fe102f683b2a00cedf59277813c213edef4b42391846ab597d5af1c385",
+      "location": "legacy/import-files/reconciliation_manifest.json"
+    },
+    {
+      "filename": "source_evidence.json",
+      "status": "SUPERSEDED",
+      "importable": false,
+      "superseded_by": "final_source_evidence.json",
+      "reason": "Old 666-record research registry mixed pending and duplicate claims. Superseded by the 13-record DIRECT evidence registry.",
+      "sha256": "f3d5fbb94d273b629bfb30434f8de63758e8d81cdaaddc056b80a024e61c1eeb",
+      "location": "legacy/import-files/source_evidence.json"
+    },
+    {
+      "filename": "duplicate_reconciliation_report.json",
+      "status": "SUPERSEDED",
+      "importable": false,
+      "superseded_by": "duplicate_merge_plan.json",
+      "reason": "Old duplicate report proposed URL consolidation and funding resolution. Superseded by the archive-only duplicate merge plan.",
+      "sha256": "2a8bf0cb35af57cc67f7db53a0f6c4a2544dae57acd120596e7597ce91b39f3f",
+      "location": "legacy/import-files/duplicate_reconciliation_report.json"
+    }
+  ]
+}

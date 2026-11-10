@@ -1,241 +1,861 @@
 {
-  "report_date": "2026-11-09",
-  "total_pairs": 5,
+  "report_version": "2.0",
+  "report_date": "2026-11-10",
+  "database_source": "backend/scholarzone.db",
+  "database_sha256": "c4737c7fce02c719caed1c4f95de0b2ded926e2a84c4bcbda16cddfb9b8a3adb",
+  "introspection": {
+    "method": "PRAGMA foreign_key_list and PRAGMA index_list on the baseline SQLite database",
+    "scholarship_id_range": [
+      183,
+      1309
+    ],
+    "declared_fk_references": 14,
+    "note": "A table can declare more than one FK in the broader schema, but every dependent table in this database declares exactly one FK to scholarships.id."
+  },
+  "summary": {
+    "total_pairs": 5,
+    "declared_dependent_tables": 14,
+    "declared_fk_references": 14,
+    "tables_with_reference_rows_for_pair_ids": 1,
+    "total_fk_reference_rows_for_pair_ids": 10,
+    "canonical_side_fk_rows_for_pair_ids": 5,
+    "duplicate_side_fk_rows": 5,
+    "merge_ready_duplicate_side_fk_rows": 4,
+    "fulbright_duplicate_side_fk_rows": 1,
+    "safe_reassignments": 0,
+    "rows_to_reassign": 0,
+    "rows_preserved_on_archived_duplicates": 4,
+    "unique_collisions_if_merge_ready_reassigned": 4,
+    "unique_collisions_if_all_pairs_reassigned": 5,
+    "non_fk_append_only_tables": 1,
+    "non_fk_append_only_rows_for_pair_ids": 1,
+    "correction_note": "The previous report claimed 13 dependent tables and 20 foreign-key references. Direct introspection finds 14 dependent tables, 14 declared FK references, and 10 reference rows for these pair IDs, all in scholarship_supervisor_coverage. There is also 1 append-only non-FK scholarship_image_audit row on canonical ID 285."
+  },
+  "tables": [
+    {
+      "table": "application_records",
+      "column": "scholarship_id",
+      "references": "scholarships.id",
+      "on_update": "NO ACTION",
+      "on_delete": "NO ACTION",
+      "unique_constraints": [
+        {
+          "name": "sqlite_autoindex_application_records_1",
+          "columns": [
+            "user_id",
+            "scholarship_id"
+          ]
+        }
+      ],
+      "reference_rows_total": 0,
+      "reference_rows_by_pair": {
+        "1": {
+          "canonical_id": 183,
+          "canonical_rows": 0,
+          "duplicate_id": 753,
+          "duplicate_rows": 0
+        },
+        "2": {
+          "canonical_id": 270,
+          "canonical_rows": 0,
+          "duplicate_id": 1244,
+          "duplicate_rows": 0
+        },
+        "3": {
+          "canonical_id": 271,
+          "canonical_rows": 0,
+          "duplicate_id": 760,
+          "duplicate_rows": 0
+        },
+        "4": {
+          "canonical_id": 285,
+          "canonical_rows": 0,
+          "duplicate_id": 1277,
+          "duplicate_rows": 0
+        },
+        "5": {
+          "canonical_id": 1217,
+          "canonical_rows": 0,
+          "duplicate_id": 1309,
+          "duplicate_rows": 0
+        }
+      },
+      "duplicate_side_rows": 0,
+      "reassignment_assessment": "NO_ROWS_TO_REASSIGN",
+      "reason": "No rows reference any of the 10 duplicate-pair IDs in this table."
+    },
+    {
+      "table": "discovery_candidates",
+      "column": "matched_scholarship_id",
+      "references": "scholarships.id",
+      "on_update": "NO ACTION",
+      "on_delete": "NO ACTION",
+      "unique_constraints": [
+        {
+          "name": "sqlite_autoindex_discovery_candidates_1",
+          "columns": [
+            "discovery_hash"
+          ]
+        }
+      ],
+      "reference_rows_total": 0,
+      "reference_rows_by_pair": {
+        "1": {
+          "canonical_id": 183,
+          "canonical_rows": 0,
+          "duplicate_id": 753,
+          "duplicate_rows": 0
+        },
+        "2": {
+          "canonical_id": 270,
+          "canonical_rows": 0,
+          "duplicate_id": 1244,
+          "duplicate_rows": 0
+        },
+        "3": {
+          "canonical_id": 271,
+          "canonical_rows": 0,
+          "duplicate_id": 760,
+          "duplicate_rows": 0
+        },
+        "4": {
+          "canonical_id": 285,
+          "canonical_rows": 0,
+          "duplicate_id": 1277,
+          "duplicate_rows": 0
+        },
+        "5": {
+          "canonical_id": 1217,
+          "canonical_rows": 0,
+          "duplicate_id": 1309,
+          "duplicate_rows": 0
+        }
+      },
+      "duplicate_side_rows": 0,
+      "reassignment_assessment": "NO_ROWS_TO_REASSIGN",
+      "reason": "No rows reference any of the 10 duplicate-pair IDs in this table."
+    },
+    {
+      "table": "image_reviews",
+      "column": "scholarship_id",
+      "references": "scholarships.id",
+      "on_update": "NO ACTION",
+      "on_delete": "NO ACTION",
+      "unique_constraints": [],
+      "reference_rows_total": 0,
+      "reference_rows_by_pair": {
+        "1": {
+          "canonical_id": 183,
+          "canonical_rows": 0,
+          "duplicate_id": 753,
+          "duplicate_rows": 0
+        },
+        "2": {
+          "canonical_id": 270,
+          "canonical_rows": 0,
+          "duplicate_id": 1244,
+          "duplicate_rows": 0
+        },
+        "3": {
+          "canonical_id": 271,
+          "canonical_rows": 0,
+          "duplicate_id": 760,
+          "duplicate_rows": 0
+        },
+        "4": {
+          "canonical_id": 285,
+          "canonical_rows": 0,
+          "duplicate_id": 1277,
+          "duplicate_rows": 0
+        },
+        "5": {
+          "canonical_id": 1217,
+          "canonical_rows": 0,
+          "duplicate_id": 1309,
+          "duplicate_rows": 0
+        }
+      },
+      "duplicate_side_rows": 0,
+      "reassignment_assessment": "NO_ROWS_TO_REASSIGN",
+      "reason": "No rows reference any of the 10 duplicate-pair IDs in this table."
+    },
+    {
+      "table": "official_contacts",
+      "column": "scholarship_id",
+      "references": "scholarships.id",
+      "on_update": "NO ACTION",
+      "on_delete": "CASCADE",
+      "unique_constraints": [
+        {
+          "name": "uq_official_contact_scholarship_url",
+          "columns": [
+            "scholarship_id",
+            "official_contact_url"
+          ]
+        }
+      ],
+      "reference_rows_total": 0,
+      "reference_rows_by_pair": {
+        "1": {
+          "canonical_id": 183,
+          "canonical_rows": 0,
+          "duplicate_id": 753,
+          "duplicate_rows": 0
+        },
+        "2": {
+          "canonical_id": 270,
+          "canonical_rows": 0,
+          "duplicate_id": 1244,
+          "duplicate_rows": 0
+        },
+        "3": {
+          "canonical_id": 271,
+          "canonical_rows": 0,
+          "duplicate_id": 760,
+          "duplicate_rows": 0
+        },
+        "4": {
+          "canonical_id": 285,
+          "canonical_rows": 0,
+          "duplicate_id": 1277,
+          "duplicate_rows": 0
+        },
+        "5": {
+          "canonical_id": 1217,
+          "canonical_rows": 0,
+          "duplicate_id": 1309,
+          "duplicate_rows": 0
+        }
+      },
+      "duplicate_side_rows": 0,
+      "reassignment_assessment": "NO_ROWS_TO_REASSIGN",
+      "reason": "No rows reference any of the 10 duplicate-pair IDs in this table."
+    },
+    {
+      "table": "professor_outreach_records",
+      "column": "scholarship_id",
+      "references": "scholarships.id",
+      "on_update": "NO ACTION",
+      "on_delete": "NO ACTION",
+      "unique_constraints": [
+        {
+          "name": "sqlite_autoindex_professor_outreach_records_1",
+          "columns": [
+            "user_id",
+            "scholarship_id",
+            "professor_id"
+          ]
+        }
+      ],
+      "reference_rows_total": 0,
+      "reference_rows_by_pair": {
+        "1": {
+          "canonical_id": 183,
+          "canonical_rows": 0,
+          "duplicate_id": 753,
+          "duplicate_rows": 0
+        },
+        "2": {
+          "canonical_id": 270,
+          "canonical_rows": 0,
+          "duplicate_id": 1244,
+          "duplicate_rows": 0
+        },
+        "3": {
+          "canonical_id": 271,
+          "canonical_rows": 0,
+          "duplicate_id": 760,
+          "duplicate_rows": 0
+        },
+        "4": {
+          "canonical_id": 285,
+          "canonical_rows": 0,
+          "duplicate_id": 1277,
+          "duplicate_rows": 0
+        },
+        "5": {
+          "canonical_id": 1217,
+          "canonical_rows": 0,
+          "duplicate_id": 1309,
+          "duplicate_rows": 0
+        }
+      },
+      "duplicate_side_rows": 0,
+      "reassignment_assessment": "NO_ROWS_TO_REASSIGN",
+      "reason": "No rows reference any of the 10 duplicate-pair IDs in this table."
+    },
+    {
+      "table": "saved_scholarships",
+      "column": "scholarship_id",
+      "references": "scholarships.id",
+      "on_update": "NO ACTION",
+      "on_delete": "NO ACTION",
+      "unique_constraints": [
+        {
+          "name": "sqlite_autoindex_saved_scholarships_1",
+          "columns": [
+            "user_id",
+            "scholarship_id"
+          ]
+        }
+      ],
+      "reference_rows_total": 0,
+      "reference_rows_by_pair": {
+        "1": {
+          "canonical_id": 183,
+          "canonical_rows": 0,
+          "duplicate_id": 753,
+          "duplicate_rows": 0
+        },
+        "2": {
+          "canonical_id": 270,
+          "canonical_rows": 0,
+          "duplicate_id": 1244,
+          "duplicate_rows": 0
+        },
+        "3": {
+          "canonical_id": 271,
+          "canonical_rows": 0,
+          "duplicate_id": 760,
+          "duplicate_rows": 0
+        },
+        "4": {
+          "canonical_id": 285,
+          "canonical_rows": 0,
+          "duplicate_id": 1277,
+          "duplicate_rows": 0
+        },
+        "5": {
+          "canonical_id": 1217,
+          "canonical_rows": 0,
+          "duplicate_id": 1309,
+          "duplicate_rows": 0
+        }
+      },
+      "duplicate_side_rows": 0,
+      "reassignment_assessment": "NO_ROWS_TO_REASSIGN",
+      "reason": "No rows reference any of the 10 duplicate-pair IDs in this table."
+    },
+    {
+      "table": "scholarship_fetch_attempts",
+      "column": "scholarship_id",
+      "references": "scholarships.id",
+      "on_update": "NO ACTION",
+      "on_delete": "NO ACTION",
+      "unique_constraints": [],
+      "reference_rows_total": 0,
+      "reference_rows_by_pair": {
+        "1": {
+          "canonical_id": 183,
+          "canonical_rows": 0,
+          "duplicate_id": 753,
+          "duplicate_rows": 0
+        },
+        "2": {
+          "canonical_id": 270,
+          "canonical_rows": 0,
+          "duplicate_id": 1244,
+          "duplicate_rows": 0
+        },
+        "3": {
+          "canonical_id": 271,
+          "canonical_rows": 0,
+          "duplicate_id": 760,
+          "duplicate_rows": 0
+        },
+        "4": {
+          "canonical_id": 285,
+          "canonical_rows": 0,
+          "duplicate_id": 1277,
+          "duplicate_rows": 0
+        },
+        "5": {
+          "canonical_id": 1217,
+          "canonical_rows": 0,
+          "duplicate_id": 1309,
+          "duplicate_rows": 0
+        }
+      },
+      "duplicate_side_rows": 0,
+      "reassignment_assessment": "NO_ROWS_TO_REASSIGN",
+      "reason": "No rows reference any of the 10 duplicate-pair IDs in this table."
+    },
+    {
+      "table": "scholarship_professor_links",
+      "column": "scholarship_id",
+      "references": "scholarships.id",
+      "on_update": "NO ACTION",
+      "on_delete": "NO ACTION",
+      "unique_constraints": [
+        {
+          "name": "sqlite_autoindex_scholarship_professor_links_1",
+          "columns": [
+            "scholarship_id",
+            "professor_id",
+            "relationship_type"
+          ]
+        }
+      ],
+      "reference_rows_total": 0,
+      "reference_rows_by_pair": {
+        "1": {
+          "canonical_id": 183,
+          "canonical_rows": 0,
+          "duplicate_id": 753,
+          "duplicate_rows": 0
+        },
+        "2": {
+          "canonical_id": 270,
+          "canonical_rows": 0,
+          "duplicate_id": 1244,
+          "duplicate_rows": 0
+        },
+        "3": {
+          "canonical_id": 271,
+          "canonical_rows": 0,
+          "duplicate_id": 760,
+          "duplicate_rows": 0
+        },
+        "4": {
+          "canonical_id": 285,
+          "canonical_rows": 0,
+          "duplicate_id": 1277,
+          "duplicate_rows": 0
+        },
+        "5": {
+          "canonical_id": 1217,
+          "canonical_rows": 0,
+          "duplicate_id": 1309,
+          "duplicate_rows": 0
+        }
+      },
+      "duplicate_side_rows": 0,
+      "reassignment_assessment": "NO_ROWS_TO_REASSIGN",
+      "reason": "No rows reference any of the 10 duplicate-pair IDs in this table."
+    },
+    {
+      "table": "scholarship_restore_records",
+      "column": "scholarship_id",
+      "references": "scholarships.id",
+      "on_update": "NO ACTION",
+      "on_delete": "NO ACTION",
+      "unique_constraints": [
+        {
+          "name": "sqlite_autoindex_scholarship_restore_records_1",
+          "columns": [
+            "operation_id"
+          ]
+        }
+      ],
+      "reference_rows_total": 0,
+      "reference_rows_by_pair": {
+        "1": {
+          "canonical_id": 183,
+          "canonical_rows": 0,
+          "duplicate_id": 753,
+          "duplicate_rows": 0
+        },
+        "2": {
+          "canonical_id": 270,
+          "canonical_rows": 0,
+          "duplicate_id": 1244,
+          "duplicate_rows": 0
+        },
+        "3": {
+          "canonical_id": 271,
+          "canonical_rows": 0,
+          "duplicate_id": 760,
+          "duplicate_rows": 0
+        },
+        "4": {
+          "canonical_id": 285,
+          "canonical_rows": 0,
+          "duplicate_id": 1277,
+          "duplicate_rows": 0
+        },
+        "5": {
+          "canonical_id": 1217,
+          "canonical_rows": 0,
+          "duplicate_id": 1309,
+          "duplicate_rows": 0
+        }
+      },
+      "duplicate_side_rows": 0,
+      "reassignment_assessment": "NO_ROWS_TO_REASSIGN",
+      "reason": "No rows reference any of the 10 duplicate-pair IDs in this table."
+    },
+    {
+      "table": "scholarship_reviews",
+      "column": "scholarship_id",
+      "references": "scholarships.id",
+      "on_update": "NO ACTION",
+      "on_delete": "NO ACTION",
+      "unique_constraints": [
+        {
+          "name": "sqlite_autoindex_scholarship_reviews_1",
+          "columns": [
+            "scholarship_id",
+            "field_name",
+            "decision"
+          ]
+        }
+      ],
+      "reference_rows_total": 0,
+      "reference_rows_by_pair": {
+        "1": {
+          "canonical_id": 183,
+          "canonical_rows": 0,
+          "duplicate_id": 753,
+          "duplicate_rows": 0
+        },
+        "2": {
+          "canonical_id": 270,
+          "canonical_rows": 0,
+          "duplicate_id": 1244,
+          "duplicate_rows": 0
+        },
+        "3": {
+          "canonical_id": 271,
+          "canonical_rows": 0,
+          "duplicate_id": 760,
+          "duplicate_rows": 0
+        },
+        "4": {
+          "canonical_id": 285,
+          "canonical_rows": 0,
+          "duplicate_id": 1277,
+          "duplicate_rows": 0
+        },
+        "5": {
+          "canonical_id": 1217,
+          "canonical_rows": 0,
+          "duplicate_id": 1309,
+          "duplicate_rows": 0
+        }
+      },
+      "duplicate_side_rows": 0,
+      "reassignment_assessment": "NO_ROWS_TO_REASSIGN",
+      "reason": "No rows reference any of the 10 duplicate-pair IDs in this table."
+    },
+    {
+      "table": "scholarship_snapshots",
+      "column": "scholarship_id",
+      "references": "scholarships.id",
+      "on_update": "NO ACTION",
+      "on_delete": "NO ACTION",
+      "unique_constraints": [
+        {
+          "name": "sqlite_autoindex_scholarship_snapshots_1",
+          "columns": [
+            "scholarship_id",
+            "version_id"
+          ]
+        }
+      ],
+      "reference_rows_total": 0,
+      "reference_rows_by_pair": {
+        "1": {
+          "canonical_id": 183,
+          "canonical_rows": 0,
+          "duplicate_id": 753,
+          "duplicate_rows": 0
+        },
+        "2": {
+          "canonical_id": 270,
+          "canonical_rows": 0,
+          "duplicate_id": 1244,
+          "duplicate_rows": 0
+        },
+        "3": {
+          "canonical_id": 271,
+          "canonical_rows": 0,
+          "duplicate_id": 760,
+          "duplicate_rows": 0
+        },
+        "4": {
+          "canonical_id": 285,
+          "canonical_rows": 0,
+          "duplicate_id": 1277,
+          "duplicate_rows": 0
+        },
+        "5": {
+          "canonical_id": 1217,
+          "canonical_rows": 0,
+          "duplicate_id": 1309,
+          "duplicate_rows": 0
+        }
+      },
+      "duplicate_side_rows": 0,
+      "reassignment_assessment": "NO_ROWS_TO_REASSIGN",
+      "reason": "No rows reference any of the 10 duplicate-pair IDs in this table."
+    },
+    {
+      "table": "scholarship_supervisor_coverage",
+      "column": "scholarship_id",
+      "references": "scholarships.id",
+      "on_update": "NO ACTION",
+      "on_delete": "NO ACTION",
+      "unique_constraints": [
+        {
+          "name": "sqlite_autoindex_scholarship_supervisor_coverage_1",
+          "columns": [
+            "scholarship_id"
+          ]
+        }
+      ],
+      "reference_rows_total": 10,
+      "reference_rows_by_pair": {
+        "1": {
+          "canonical_id": 183,
+          "canonical_rows": 1,
+          "duplicate_id": 753,
+          "duplicate_rows": 1
+        },
+        "2": {
+          "canonical_id": 270,
+          "canonical_rows": 1,
+          "duplicate_id": 1244,
+          "duplicate_rows": 1
+        },
+        "3": {
+          "canonical_id": 271,
+          "canonical_rows": 1,
+          "duplicate_id": 760,
+          "duplicate_rows": 1
+        },
+        "4": {
+          "canonical_id": 285,
+          "canonical_rows": 1,
+          "duplicate_id": 1277,
+          "duplicate_rows": 1
+        },
+        "5": {
+          "canonical_id": 1217,
+          "canonical_rows": 1,
+          "duplicate_id": 1309,
+          "duplicate_rows": 1
+        }
+      },
+      "duplicate_side_rows": 5,
+      "reassignment_assessment": "UNSAFE_UNIQUE_COLLISION",
+      "reason": "Every scholarship has exactly one coverage row under UNIQUE(scholarship_id). Reassigning a duplicate-side row to the canonical row would collide with the canonical coverage row. Preserve the row on the archived duplicate instead."
+    },
+    {
+      "table": "scholarship_verification_history",
+      "column": "scholarship_id",
+      "references": "scholarships.id",
+      "on_update": "NO ACTION",
+      "on_delete": "NO ACTION",
+      "unique_constraints": [],
+      "reference_rows_total": 0,
+      "reference_rows_by_pair": {
+        "1": {
+          "canonical_id": 183,
+          "canonical_rows": 0,
+          "duplicate_id": 753,
+          "duplicate_rows": 0
+        },
+        "2": {
+          "canonical_id": 270,
+          "canonical_rows": 0,
+          "duplicate_id": 1244,
+          "duplicate_rows": 0
+        },
+        "3": {
+          "canonical_id": 271,
+          "canonical_rows": 0,
+          "duplicate_id": 760,
+          "duplicate_rows": 0
+        },
+        "4": {
+          "canonical_id": 285,
+          "canonical_rows": 0,
+          "duplicate_id": 1277,
+          "duplicate_rows": 0
+        },
+        "5": {
+          "canonical_id": 1217,
+          "canonical_rows": 0,
+          "duplicate_id": 1309,
+          "duplicate_rows": 0
+        }
+      },
+      "duplicate_side_rows": 0,
+      "reassignment_assessment": "NO_ROWS_TO_REASSIGN",
+      "reason": "No rows reference any of the 10 duplicate-pair IDs in this table."
+    },
+    {
+      "table": "supervisor_source_evidence",
+      "column": "scholarship_id",
+      "references": "scholarships.id",
+      "on_update": "NO ACTION",
+      "on_delete": "NO ACTION",
+      "unique_constraints": [
+        {
+          "name": "sqlite_autoindex_supervisor_source_evidence_1",
+          "columns": [
+            "professor_id",
+            "source_url",
+            "source_type"
+          ]
+        }
+      ],
+      "reference_rows_total": 0,
+      "reference_rows_by_pair": {
+        "1": {
+          "canonical_id": 183,
+          "canonical_rows": 0,
+          "duplicate_id": 753,
+          "duplicate_rows": 0
+        },
+        "2": {
+          "canonical_id": 270,
+          "canonical_rows": 0,
+          "duplicate_id": 1244,
+          "duplicate_rows": 0
+        },
+        "3": {
+          "canonical_id": 271,
+          "canonical_rows": 0,
+          "duplicate_id": 760,
+          "duplicate_rows": 0
+        },
+        "4": {
+          "canonical_id": 285,
+          "canonical_rows": 0,
+          "duplicate_id": 1277,
+          "duplicate_rows": 0
+        },
+        "5": {
+          "canonical_id": 1217,
+          "canonical_rows": 0,
+          "duplicate_id": 1309,
+          "duplicate_rows": 0
+        }
+      },
+      "duplicate_side_rows": 0,
+      "reassignment_assessment": "NO_ROWS_TO_REASSIGN",
+      "reason": "No rows reference any of the 10 duplicate-pair IDs in this table."
+    }
+  ],
+  "append_only_non_fk_tables": [
+    {
+      "table": "scholarship_image_audit",
+      "column": "scholarship_id",
+      "is_foreign_key": false,
+      "reference_rows_by_pair_id": {
+        "285": 1
+      },
+      "reference_rows_total": 1,
+      "reassignment_assessment": "APPEND_ONLY_CANNOT_REASSIGN",
+      "reason": "scholarship_image_audit has no FK to scholarships and its triggers forbid UPDATE and DELETE. Rows must never be reassigned or removed."
+    }
+  ],
   "pairs": [
     {
       "pair_id": 1,
-      "canonical_title": "Lund University Global Scholarship",
-      "country": "Sweden",
-      "ids": [183, 753],
-      "records": [
-        {
-          "catalogue_id": 183,
-          "title": "Lund University Global Scholarship",
-          "official_source_url": "https://www.lunduniversity.lu.se/study/admission-degree-studies/scholarships-and-awards/lund-university-global-scholarship",
-          "application_url": "https://www.lunduniversity.lu.se/study/admission-degree-studies/scholarships-and-awards/lund-university-global-scholarship",
-          "status": "open",
-          "fully_funded": null,
-          "funding": "Partial",
-          "degree": "Master's, PhD",
-          "region": null
-        },
-        {
-          "catalogue_id": 753,
-          "title": "Lund University Global Scholarship",
-          "official_source_url": "https://www.lunduniversity.lu.se/admissions/scholarships-and-awards/lund-university-global-scholarship",
-          "application_url": "https://www.lunduniversity.lu.se/admissions/scholarships-and-awards/lund-university-global-scholarship",
-          "status": "open",
-          "fully_funded": null,
-          "funding": "Partial",
-          "degree": "Bachelor's, Master's",
-          "region": null
-        }
+      "ids": [
+        183,
+        753
       ],
-      "evidence_same_programme": "Same university, same programme name, same country, same funding type, same degree levels. Different URL paths on same domain (lunduniversity.lu.se).",
-      "recommended_canonical_id": 183,
-      "recommended_resolution": "MERGE - Keep ID 183 as canonical, archive ID 753, consolidate URL references",
-      "foreign_key_dependencies": {
-        "183": {
-          "scholarship_supervisor_coverage": 1,
-          "scholarships": 1
-        },
-        "753": {
-          "scholarship_supervisor_coverage": 1,
-          "scholarships": 1
+      "canonical_id": 183,
+      "duplicate_id": 753,
+      "classification": "MERGE_READY_FOR_OWNER_REVIEW",
+      "duplicate_side_fk_rows": 1,
+      "safe_reassignments": 0,
+      "unique_collision_if_reassigned": true,
+      "tables_with_rows": {
+        "scholarship_supervisor_coverage": {
+          "canonical_id": 183,
+          "canonical_rows": 1,
+          "duplicate_id": 753,
+          "duplicate_rows": 1
         }
-      },
-      "confidence": "HIGH",
-      "manual_review_required": true
+      }
     },
     {
       "pair_id": 2,
-      "canonical_title": "Copenhagen Business School Danish Government Scholarship",
-      "country": "Denmark",
-      "ids": [270, 1244],
-      "records": [
-        {
-          "catalogue_id": 270,
-          "title": "Copenhagen Business School Danish Government Scholarship",
-          "official_source_url": "https://www.cbs.dk/study-programmes/master-programmes/double-degree",
-          "application_url": "https://www.cbs.dk/study-programmes/master-programmes/double-degree",
-          "status": "open",
-          "fully_funded": null,
-          "funding": "Partial",
-          "degree": "Master's, PhD",
-          "region": null
-        },
-        {
-          "catalogue_id": 1244,
-          "title": "Copenhagen Business School Danish Government Scholarship",
-          "official_source_url": "https://www.cbs.dk/en/education/master/programmes-and-admission/fees-and-funding",
-          "application_url": "https://www.cbs.dk/en/education/master/programmes-and-admission/fees-and-funding",
-          "status": "open",
-          "fully_funded": null,
-          "funding": "Partial to Full",
-          "degree": "Master's (MSc)",
-          "region": null
-        }
+      "ids": [
+        270,
+        1244
       ],
-      "evidence_same_programme": "Same university (CBS), same programme name, same country, same funding type, same degree. Different URL paths on same domain (cbs.dk).",
-      "recommended_canonical_id": 270,
-      "recommended_resolution": "MERGE - Keep ID 270 as canonical, archive ID 1244, consolidate URL references",
-      "foreign_key_dependencies": {
-        "270": {
-          "scholarship_supervisor_coverage": 1,
-          "scholarships": 1
-        },
-        "1244": {
-          "scholarship_supervisor_coverage": 1,
-          "scholarships": 1
+      "canonical_id": 270,
+      "duplicate_id": 1244,
+      "classification": "MERGE_READY_FOR_OWNER_REVIEW",
+      "duplicate_side_fk_rows": 1,
+      "safe_reassignments": 0,
+      "unique_collision_if_reassigned": true,
+      "tables_with_rows": {
+        "scholarship_supervisor_coverage": {
+          "canonical_id": 270,
+          "canonical_rows": 1,
+          "duplicate_id": 1244,
+          "duplicate_rows": 1
         }
-      },
-      "confidence": "HIGH",
-      "manual_review_required": true
+      }
     },
     {
       "pair_id": 3,
-      "canonical_title": "University of Copenhagen Danish Government Scholarship",
-      "country": "Denmark",
-      "ids": [271, 760],
-      "records": [
-        {
-          "catalogue_id": 271,
-          "title": "University of Copenhagen Danish Government Scholarship",
-          "official_source_url": "https://www.ku.dk/studies/admission/scholarships-for-full-degree-students",
-          "application_url": "https://www.ku.dk/studies/admission/scholarships-for-full-degree-students",
-          "status": "open",
-          "fully_funded": null,
-          "funding": "Partial",
-          "degree": "Master's, PhD",
-          "region": null
-        },
-        {
-          "catalogue_id": 760,
-          "title": "University of Copenhagen Danish Government Scholarship",
-          "official_source_url": "https://www.ku.dk/studies/masters/application-and-admission/scholarships",
-          "application_url": "https://www.ku.dk/studies/masters/application-and-admission/scholarships",
-          "status": "open",
-          "fully_funded": null,
-          "funding": "Partial",
-          "degree": "Master's",
-          "region": null
-        }
+      "ids": [
+        271,
+        760
       ],
-      "evidence_same_programme": "Same university (KU), same programme name, same country, same funding type, same degree levels. Different URL paths on same domain (ku.dk).",
-      "recommended_canonical_id": 271,
-      "recommended_resolution": "MERGE - Keep ID 271 as canonical, archive ID 760, consolidate URL references",
-      "foreign_key_dependencies": {
-        "271": {
-          "scholarship_supervisor_coverage": 2,
-          "scholarships": 1
-        },
-        "760": {
-          "scholarship_supervisor_coverage": 2,
-          "scholarships": 1
+      "canonical_id": 271,
+      "duplicate_id": 760,
+      "classification": "MERGE_READY_FOR_OWNER_REVIEW",
+      "duplicate_side_fk_rows": 1,
+      "safe_reassignments": 0,
+      "unique_collision_if_reassigned": true,
+      "tables_with_rows": {
+        "scholarship_supervisor_coverage": {
+          "canonical_id": 271,
+          "canonical_rows": 1,
+          "duplicate_id": 760,
+          "duplicate_rows": 1
         }
-      },
-      "confidence": "HIGH",
-      "manual_review_required": true
+      }
     },
     {
       "pair_id": 4,
-      "canonical_title": "Stipendium Hungaricum Scholarship Programme",
-      "country": "Hungary",
-      "ids": [285, 1277],
-      "records": [
-        {
-          "catalogue_id": 285,
-          "title": "Stipendium Hungaricum Scholarship Programme",
-          "official_source_url": "https://stipendiumhungaricum.hu",
-          "application_url": "https://stipendiumhungaricum.hu",
-          "status": "open",
-          "fully_funded": true,
-          "funding": "Fully Funded",
-          "degree": "Bachelor's, Master's, One-tier Master's, Doctoral, Non-degree",
-          "region": null
-        },
-        {
-          "catalogue_id": 1277,
-          "title": "Stipendium Hungaricum Scholarship Programme",
-          "official_source_url": "https://stipendiumhungaricum.hu/apply_call",
-          "application_url": "https://stipendiumhungaricum.hu/apply_call",
-          "status": "open",
-          "fully_funded": true,
-          "funding": "Fully Funded",
-          "degree": "Bachelor's, Master's, One-tier Master's, PhD, Postdoctoral, Non-degree",
-          "region": null
-        }
+      "ids": [
+        285,
+        1277
       ],
-      "evidence_same_programme": "Same programme name, same country, same official domain (stipendiumhungaricum.hu). One is root domain, one is /apply_call path. Same funding, same degree levels.",
-      "recommended_canonical_id": 285,
-      "recommended_resolution": "MERGE - Keep ID 285 as canonical, archive ID 1277, consolidate URL references",
-      "foreign_key_dependencies": {
-        "285": {
-          "scholarship_image_audit": 1,
-          "scholarship_supervisor_coverage": 1,
-          "scholarships": 1
-        },
-        "1277": {
-          "scholarship_supervisor_coverage": 1,
-          "scholarships": 1
+      "canonical_id": 285,
+      "duplicate_id": 1277,
+      "classification": "MERGE_READY_FOR_OWNER_REVIEW",
+      "duplicate_side_fk_rows": 1,
+      "safe_reassignments": 0,
+      "unique_collision_if_reassigned": true,
+      "tables_with_rows": {
+        "scholarship_supervisor_coverage": {
+          "canonical_id": 285,
+          "canonical_rows": 1,
+          "duplicate_id": 1277,
+          "duplicate_rows": 1
         }
-      },
-      "confidence": "HIGH",
-      "manual_review_required": true
+      }
     },
     {
       "pair_id": 5,
-      "canonical_title": "Fulbright Foreign Student Program",
-      "country": "United States",
-      "ids": [1217, 1309],
-      "records": [
-        {
-          "catalogue_id": 1217,
-          "title": "Fulbright Foreign Student Program",
-          "official_source_url": "https://foreign.fulbrightonline.org",
-          "application_url": "https://foreign.fulbrightonline.org",
-          "status": "open",
-          "fully_funded": true,
-          "funding": "Fully Funded",
-          "degree": "Master's, PhD, Research",
-          "region": "World Top Demand"
-        },
-        {
-          "catalogue_id": 1309,
-          "title": "Fulbright Foreign Student Program",
-          "official_source_url": "https://fulbright.state.gov",
-          "application_url": "https://fulbright.state.gov",
-          "status": "open",
-          "fully_funded": null,
-          "funding": "Partial Funding",
-          "degree": "Bachelor's, Master's, PhD",
-          "region": "North America"
-        }
+      "ids": [
+        1217,
+        1309
       ],
-      "evidence_same_programme": "Same programme name, same country, same funding, same degree. Both are official Fulbright domains (foreign.fulbrightonline.org is the application portal, fulbright.state.gov is the official programme page).",
-      "recommended_canonical_id": 1217,
-      "recommended_resolution": "MERGE - Keep ID 1217 (application portal) as canonical, archive ID 1309 (programme info page), consolidate both URLs in official_source_url and application_link fields",
-      "foreign_key_dependencies": {
-        "1217": {
-          "scholarship_supervisor_coverage": 1,
-          "scholarships": 1
-        },
-        "1309": {
-          "scholarship_supervisor_coverage": 1,
-          "scholarships": 1
+      "canonical_id": 1217,
+      "duplicate_id": 1309,
+      "classification": "BLOCKED_MANUAL_REVIEW",
+      "duplicate_side_fk_rows": 1,
+      "safe_reassignments": 0,
+      "unique_collision_if_reassigned": true,
+      "tables_with_rows": {
+        "scholarship_supervisor_coverage": {
+          "canonical_id": 1217,
+          "canonical_rows": 1,
+          "duplicate_id": 1309,
+          "duplicate_rows": 1
         }
-      },
-      "confidence": "MEDIUM",
-      "manual_review_required": true,
-      "notes": "Different domains (foreign.fulbrightonline.org vs fulbright.state.gov), different fully_funded values, different degree levels, different regions. These may represent different entry points for the same programme but require careful review before merge."
+      }
     }
-  ],
-  "summary": {
-    "total_pairs": 5,
-    "total_records_affected": 10,
-    "confirmed_duplicates": 4,
-    "manual_review_required": 1,
-    "foreign_key_check_required": true,
-    "total_fk_references": 20
-  }
+  ]
 }

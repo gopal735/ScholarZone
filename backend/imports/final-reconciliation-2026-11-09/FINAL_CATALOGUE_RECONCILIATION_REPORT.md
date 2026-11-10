@@ -1,396 +1,264 @@
-# FINAL CATALOGUE RECONCILIATION REPORT
-**ScholarZone — gopal735/ScholarZone**  
-**Reconciliation Date:** 2026-11-09 (Asia/Dhaka, UTC+6)  
-**Auditor:** Principal Scholarship-Data Researcher / Data-Quality Engineer / PostgreSQL Architect / Backend Engineer / Release Auditor  
+# Final Catalogue Reconciliation Report
 
----
+**Report date:** 2026-11-10
+**Branch:** `feat/final-scholarship-catalogue-reconciliation`
+**Base SHA:** `5b28ceef0480a4bd6612d1cf08c26e8629bea285`
+**Pre-remediation HEAD:** `dec6dbcd65ffe98da42f0e6fff665c3c840ce04a`
+**Package status:** **BLOCKED**
+**Production import authorized:** no
 
-## EXECUTIVE SUMMARY
+## 1. Executive summary
+
+The reconciliation package has been rebuilt from a read-only snapshot of the
+local SQLite database (`backend/scholarzone.db`). The canonical package now
+contains:
+
+- **0 new inserts** — the canonical insert file is empty by design,
+- **11 approved cycle updates**,
+- **2 approved funding corrections**,
+- **13 approved operations total**, every one backed by DIRECT evidence,
+- **12 PENDING_RESEARCH operations excluded** from the approved set,
+- **6 blocked new-insert candidates**,
+- **5 duplicate pairs** — 4 archive-only plans for owner review and 1 blocked
+  Fulbright pair,
+- **0 duplicate plans executed**, **0 deletions**, **0 URL writes**,
+  **0 funding writes**, and **0 FK reassignments**.
+
+The package remains BLOCKED. The approved subset is internally consistent, but
+lifecycle evidence is still pending, PostgreSQL duplicate simulation is
+unavailable, the duplicate plans have not been executed, and six insert
+candidates remain blocked.
+
+## 2. Baseline
+
+`package_baseline.json` is a committed snapshot of `backend/scholarzone.db` used
+to keep CI reproducible. The database file itself is gitignored.
 
 | Metric | Value |
-|--------|-------|
-| **Final Decision** | `RESEARCH_COMPLETE_WITH_MANUAL_REVIEW` |
-| **Repository** | gopal735/ScholarZone |
-| **Branch** | feat/final-scholarship-catalogue-reconciliation |
-| **Base** | origin/master (64aceba) |
-| **HEAD** | a1e783b |
-| **Total Research Entries** | 825 |
-| **Verified (completed)** | 87 |
-| **Pending Verification** | 738 |
-| **Approved Import Operations** | 25 (18 cycle + 5 funding + 2 lifecycle) |
-| **Blocked New Inserts** | 6 |
-| **Duplicate Pairs Proposed** | 5 |
-| **Projected Catalogue Count** | 789 active |
-
----
-
-## PHASE 1 — AUDIT ARTIFACT INSPECTION
-
-All 11 required artifacts located and validated:
-
-| Artifact | Path | Records | SHA256 (truncated) |
-|----------|------|---------|-------------------|
-| Verified Programmes | `verified_programmes.json` | 87 | a3f2... |
-| Import Ready (initial) | `import_ready_scholarships.json` | 6 | b7e4... |
-| Cycle Updates | `existing_cycle_updates.json` | 19 | c1d9... |
-| Funding Corrections | `funding_corrections.json` | 5 | d4e2... |
-| Discontinued Programmes | `discontinued_programmes.json` | 2 | e8f1... |
-| Verification Pending | `verification_pending.json` | 46 | f2a5... |
-| Source Evidence | `source_evidence.json` | 666 | a9b3... |
-| Reconciliation Manifest | `reconciliation_manifest.json` | 141 | c7d2... |
-| Import Validation | `import_validation_report.json` | 1 | e4f8... |
-| Final Audit Report | `GLOBAL_SCHOLARSHIP_FINAL_AUDIT_REPORT.md` | — | d1e9... |
-| Import Package README | `IMPORT_PACKAGE_README.md` | — | f6a4... |
-
----
-
-## PHASE 2 — COUNT RECONCILIATION
-
-### 2.1 Research Entry Partition (825 total)
-
-```
-825 total research_ledger.jsonl entries
-├── 87  completed (research_status=completed, evidence_backed_findings present)
-└── 738 pending (research_status=pending_official_review)
-    ├── 688 pending_matches (URL exists in catalogue, fields incomplete)
-    ├──  46 pending_new (unique URL not in catalogue)
-    └──   4 lifecycle_corrections (Vanier, NFP/OTS, Knight-Hennessy counted in pending)
-```
-
-**Reconciliation:** 738 pending = 688 matches + 46 new + 4 lifecycle. The "734 pending" in final decision = 738 - 4 lifecycle (handled separately).
-
-### 2.2 Import Package Partition
-
-| Operation Type | Count | Unique Catalogue IDs | Status |
-|----------------|-------|---------------------|--------|
-| NEW_INSERT | 0 | 0 | **BLOCKED** (all 6 candidates insufficient evidence) |
-| EXISTING_CYCLE_UPDATE | 18 | 18 | ✅ APPROVED |
-| FUNDING_CORRECTION | 5 | 5 | ✅ APPROVED |
-| LIFECYCLE_CORRECTION | 2 | 2 | ✅ APPROVED |
-| DUPLICATE_RECONCILIATION | 5 pairs | 10 | 📋 PROPOSAL ONLY |
-| BLOCKED | 6 | — | ❌ HELD |
-
-### 2.3 Operations Overlap (5 catalogue IDs with multiple operations)
-
-| Catalogue ID | Programme | Operations |
-|--------------|-----------|------------|
-| 1 | Erasmus Mundus | CYCLE_UPDATE (×2), FUNDING_CORRECTION |
-| 3 | DAAD Scholarship | CYCLE_UPDATE, FUNDING_CORRECTION |
-| 40 | ARES Scholarships | CYCLE_UPDATE, FUNDING_CORRECTION |
-| 31 | NFP/OTS | FUNDING_CORRECTION, LIFECYCLE_CORRECTION |
-| 729 | Vanier CGS | FUNDING_CORRECTION, LIFECYCLE_CORRECTION |
-
-**Resolution:** Operations are sequential (lifecycle → funding → cycle) and idempotent.
-
----
-
-## PHASE 3 — SOURCE EVIDENCE REVIEW
-
-### 3.1 Evidence Coverage for Import Operations
-
-| Catalogue ID | Programme | Research ID | Evidence Items | Key Evidence URLs |
-|--------------|-----------|-------------|----------------|-------------------|
-| 1 | Erasmus Mundus | 1 | 11 | erasmus-plus.ec.europa.eu |
-| 3 | DAAD Scholarship | 3 | 20 | daad.de (detail 50026200) |
-| 5 | MEXT | 5 | 17 | studyinjapan.go.jp |
-| 23 | DAAD EPOS | 23 | 20 | daad.de/epos |
-| 4 | GKS | 4 | 10 | studyinkorea.go.kr |
-| 30 | Australia Awards | 30 | 0* | dfat.gov.au |
-| 32 | Swedish Institute | 32 | 0* | si.se |
-| 33 | CSC | 33 | 0* | campuschina.org |
-| 34 | Taiwan Scholarship | 34 | 0* | taiwanscholarship.moe.gov.tw |
-| 36 | MAECI | 36 | 0* | esteri.it |
-| 40 | ARES | 40 | 0* | ares-ac.be |
-| 41 | AECID | 41 | 0* | aecid.es |
-| 231 | DAAD Architecture | 231 | 20 | daad.de (detail 57135744) |
-| 232 | DAAD Fine Art | 232 | 20 | daad.de (detail 57135742) |
-| 234 | DAAD Performing Arts | 234 | 20 | daad.de (detail 50109971) |
-| 516 | GKS Graduate | 516 | 10 | studyinkorea.go.kr |
-| 1312 | Knight-Hennessy | 1312 | 4 | knight-hennessy.stanford.edu |
-| 1336 | Huayu Enrichment | 1336 | 0* | taiwanscholarship.moe.gov.tw |
-
-*Records with 0 evidence items in `source_evidence.json` are from `pending_official_review` research entries. Their cycle updates are based on the reconciliation manifest mapping, not completed research.
-
-**Total source evidence in final package:** 95 records (for 10 completed research IDs).
-
-### 3.2 Evidence Gaps
-
-- 8 cycle updates lack direct source evidence in `source_evidence.json` (they're from pending research)
-- All 5 funding corrections have official evidence URLs
-- All 2 lifecycle corrections have official evidence URLs
-
----
-
-## PHASE 4 — NEW RECORDS REVIEW (6 candidates → 0 approved)
-
-| # | Programme | Status | Block Reason |
-|---|-----------|--------|--------------|
-| 1 | EUR Holland Scholarship & Talent (NL Scholarship) | BLOCKED | AWAITING_OFFICIAL_VERIFICATION, missing provider, missing fully_funded |
-| 2 | MEXT 2027 Embassy Recommendation | BLOCKED | AWAITING_OFFICIAL_VERIFICATION, missing provider, country, fully_funded |
-| 3 | Erasmus Trustfonds Scholarship | BLOCKED | AWAITING_OFFICIAL_VERIFICATION, missing provider, fully_funded |
-| 4 | Erasmus Trustfonds / TSH Changemaker | BLOCKED | AWAITING_OFFICIAL_VERIFICATION, missing provider, fully_funded |
-| 5 | Erasmus+ Grant (EUR) | BLOCKED | AWAITING_OFFICIAL_VERIFICATION, missing provider, fully_funded |
-| 6 | OAS-UNIR Mexico | BLOCKED | **EXCLUDED_REGION** (Latin America) + missing fields |
-
-**Conclusion:** No new records meet the import bar. All 6 require Tier 1 official verification before import.
-
----
-
-## PHASE 5 — CYCLE UPDATES REVIEW (18 approved)
-
-| ID | Programme | Update Type | Evidence |
-|----|-----------|-------------|----------|
-| 1 | Erasmus Mundus | Title normalization + 2027 intake (37 new programmes) | EACEA |
-| 3 | DAAD Scholarship | 2027/28 deadlines Q2 | DAAD |
-| 4 | GKS | Separate UG/Grad tracks | NIIED |
-| 5 | MEXT | Embassy Apr-May 2026 | MEXT/Study in Japan |
-| 23 | DAAD EPOS | Opens Aug 2026, deadline Mar 2027 | DAAD EPOS |
-| 30 | Australia Awards | Country-specific 2027 dates | DFAT |
-| 32 | Swedish Institute | Opens/closes Feb 2027 | SI |
-| 33 | CSC | Type A/B embassy deadlines | CSC |
-| 34 | Taiwan Scholarship | Opens Feb 2027 | MOE Taiwan |
-| 36 | MAECI | Nov 2026-Mar 2027 | MAECI |
-| 40 | ARES | Closed for 2026 | ARES |
-| 41 | AECID | Multiple sub-programmes | AECID |
-| 231 | DAAD Architecture | Title normalization | DAAD |
-| 232 | DAAD Fine Art | Title normalization | DAAD |
-| 234 | DAAD Performing Arts | Title normalization | DAAD |
-| 516 | GKS Graduate | Title correction (was UG) | NIIED |
-| 1312 | Knight-Hennessy | Title normalization | Stanford |
-| 1336 | Huayu Enrichment | Title correction (was Taiwan Scholarship) | MOE Taiwan |
-
-**All updates idempotent, preserve historical data.**
-
----
-
-## PHASE 6 — FUNDING CORRECTIONS REVIEW (5 approved)
-
-| ID | Programme | Before | After | Evidence | Justification |
-|----|-----------|--------|-------|----------|---------------|
-| 3 | DAAD Scholarship | `true` | `false` | DAAD detail 50026200 | Stipend EUR 992/mo + insurance + travel + EUR 460/yr study allowance. **NO tuition**. Not fully funded. |
-| 40 | ARES Scholarships | `true` | `null` | ares-ac.be | Tuition coverage varies by programme. Unknown. |
-| 31 | NFP/OTS | `true` | `null` | studyinnl.org | Programme discontinued. Replaced by NL Scholarship (EUR 5000/yr partial). |
-| 729 | Vanier CGS | `true` | `null` | vanier.gc.ca | Discontinued Fall 2024. Replaced by CGRS-D. |
-| 1 | Erasmus Mundus | `null` | `true` | EACEA | Full tuition + EUR 1,400/mo + travel + insurance. **Fully funded confirmed.** |
-
-**`fully_funded` semantics verified:**
-- `true` = official evidence confirms tuition + living fully covered
-- `false` = official evidence confirms significant costs NOT covered
-- `null` = official evidence insufficient to determine
-
----
-
-## PHASE 7 — LIFECYCLE CORRECTIONS REVIEW (2 approved)
-
-| ID | Programme | Before | After | Replacement | Evidence |
-|----|-----------|--------|-------|-------------|----------|
-| 729 | Vanier CGS | `open` | `discontinued` | CGRS-D | vanier.gc.ca (Fall 2024 final) |
-| 31 | NFP/OTS | `open` | `discontinued` | NL Scholarship | studyinnl.org |
-
-**Preservation:** Both specify `archive_instead_of_delete=true`, `preserve_historical_record=true`. No data deletion.
-
-**Note:** Knight-Hennessy (ID 1312) lifecycle correction in audit was for cycle closure (2027 cohort closed → 2028 upcoming), not programme discontinuation. Handled as cycle update.
-
----
-
-## PHASE 8 — DUPLICATE PAIR REVIEW (5 pairs → proposal only)
-
-| Pair | Programme | IDs | Recommended | Confidence | Manual Review |
-|------|-----------|-----|-------------|------------|---------------|
-| 1 | Lund University Global Scholarship | 183, 753 | Keep 183, archive 753 | HIGH | ✅ Required |
-| 2 | CBS Danish Government Scholarship | 270, 1244 | Keep 270, archive 1244 | HIGH | ✅ Required |
-| 3 | UCPH Danish Government Scholarship | 271, 760 | Keep 271, archive 760 | HIGH | ✅ Required |
-| 4 | Stipendium Hungaricum | 285, 1277 | Keep 285, archive 1277 | HIGH | ✅ Required |
-| 5 | Fulbright Foreign Student Program | 1217, 1309 | Keep 1217, archive 1309 | HIGH | ✅ Required |
-
-**Foreign key check required** before any merge (scholarship_snapshots, discovery_candidates, application_records).
-
----
-
-## PHASE 9 — FINAL IMPORT PACKAGE
-
-### Generated Files
-
-| File | Records | Purpose |
-|------|---------|---------|
-| `final_import_ready_scholarships.json` | 0 | Empty — no new inserts approved |
-| `final_existing_cycle_updates.json` | 18 | Approved cycle updates |
-| `final_funding_corrections.json` | 5 | Approved funding corrections |
-| `final_lifecycle_corrections.json` | 2 | Approved lifecycle corrections |
-| `duplicate_reconciliation_report.json` | 5 pairs | Proposal for manual reconciliation |
-| `blocked_records.json` | 6 | Held for future verification |
-| `final_source_evidence.json` | 95 | Evidence for approved operations |
-| `final_reconciliation_manifest.json` | 36 | Complete operation map |
-| `final_import_validation_report.json` | 1 | Validation results |
-
-### Import Order (Critical)
-
-1. **LIFECYCLE_CORRECTION** (2) — Archive Vanier, NFP/OTS first
-2. **FUNDING_CORRECTION** (5) — Apply funding fixes
-3. **EXISTING_CYCLE_UPDATE** (18) — Update cycle info
-4. **NEW_INSERT** (0) — None
-5. **DUPLICATE_RECONCILIATION** (5) — Manual, post-import
-
----
-
-## PHASE 10 — SAFE DRY RUN
-
-### Simulation Results (against local schema)
-
-| Check | Result |
-|-------|--------|
-| JSON parsing | ✅ PASS |
-| Schema compliance (models.py) | ✅ PASS |
-| Required fields | ✅ PASS |
-| URL format validation | ✅ PASS |
-| Duplicate canonical URLs | ✅ PASS (within operations) |
-| Duplicate catalogue IDs | ✅ PASS |
-| Foreign key integrity | ⚠️ PENDING_MANUAL_CHECK (duplicate merges) |
-| Historical data preservation | ✅ PASS (archive flags set) |
-| Idempotency | ✅ PASS (all marked) |
-| Unsupported field values | ✅ PASS |
-
-### Projected Catalogue State
-
-| Metric | Before | After | Delta |
-|--------|--------|-------|-------|
-| Active records | 790 | 789 | -1 |
-| Archived (discontinued) | 40 | 42 | +2 |
-| Duplicate pairs | 5 | 0* | -5 pairs |
-| *After manual reconciliation | | | |
-
----
-
-## PHASE 11 — CATALOGUE CONTRACT & DOWNSTREAM ARTIFACTS
-
-### Schema Inspection (models.py)
-
-The `Scholarship` model defines:
-- `fully_funded`: Boolean | Null (tri-state: true/false/null)
-- `status`: String(20) — open/upcoming/closing-soon/closed/discontinued
-- `is_archived`: Boolean — one-way archive flag
-- `official_source_url`: String(2048) — unique constraint
-- `funding_details`: JSON — per-track structured funding
-- `programme_verification`: JSON — what was checked
-
-### Downstream Artifacts (NOT regenerated)
-
-| Artifact | Status | Reason |
-|----------|--------|--------|
-| Public snapshot (`all_public_scholarships.json`) | **NOT REGENERATED** | Requires authoritative DB state |
-| Sitemap | **NOT REGENERATED** | Requires production DB |
-| Canonical ledger | **NOT REGENERATED** | Requires production DB |
-| Scholarship counts | **NOT PUBLISHED** | Pending owner review |
-
-**Do not publish counts from incomplete import.**
-
----
-
-## PHASE 12 — TEST & RELEASE GATES
-
-| Test | Command | Result |
-|------|---------|--------|
-| JSON Validation | `python -m json.tool final_*.json` | ✅ PASS (11 files) |
-| Schema Validation | Custom vs models.py | ✅ PASS |
-| URL Format | Regex validation | ✅ PASS |
-| Duplicate Detection | Title+Country normalization | ✅ PASS (5 pairs found) |
-| Funding Classification | Cross-ref with research | ✅ PASS (5 corrections) |
-| Lifecycle Check | Discontinued verification | ✅ PASS (2 confirmed) |
-| Import Dry Run | Simulation against schema | ✅ PASS |
-| ID Reconciliation | Catalogue ID mapping | ✅ PASS |
-| Foreign Key Check | Manual required | ⚠️ PENDING |
-| Backend Tests | `pytest backend/tests/` | ⏭️ SKIPPED (env) |
-| Frontend Tests | `npm test` | ⏭️ SKIPPED (env) |
-| Lint | `ruff check .` | ⏭️ SKIPPED (env) |
-
----
-
-## PHASE 13 — DEDICATED PR
-
-### Repository State
-
-```
-Repository: gopal735/ScholarZone
-Current Branch: feat/final-scholarship-catalogue-reconciliation
-Base Branch: origin/master (64aceba)
-HEAD SHA: a1e783b
-Working Tree: Clean (no uncommitted changes to tracked files)
+|---|---:|
+| Total scholarships | 830 |
+| Active | 830 |
+| Archived | 0 |
+| Status `open` | 820 |
+| Status `closed` | 6 |
+| Status `closing-soon` | 4 |
+| Database SHA256 | `c4737c7fce02c719caed1c4f95de0b2ded926e2a84c4bcbda16cddfb9b8a3adb` |
+| Database size | 3,121,152 bytes |
+
+## 3. Approved operations (13)
+
+### 3.1 Cycle updates (11)
+
+| Operation | ID | Field | Approved value |
+|---|---:|---|---|
+| CYCLE-1 | 1 | `title` | Erasmus Mundus Joint Masters (EMJM) |
+| CYCLE-3 | 3 | `application_period` | Annual second-quarter update; applications possible from 1 June to the stated deadline |
+| CYCLE-4 | 4 | `degree` | Undergraduate Degrees (including Associate Degree), Graduate Degrees (Master's and Doctoral Degrees) |
+| CYCLE-5 | 5 | `degree` | Research, teacher training, undergraduate, Japanese studies, college of technology, specialized training, and YLP students |
+| CYCLE-23 | 23 | `duration` | 12 to 42 months (dependent on study programme) |
+| CYCLE-231 | 231 | `title` | Study Scholarships - Postgraduate Studies in the Field of Architecture |
+| CYCLE-232 | 232 | `title` | Study Scholarships - Postgraduate Studies in the Fields of Fine Art, Design, Visual Communication and Film |
+| CYCLE-234 | 234 | `title` | Study Scholarships - Postgraduate Studies in the Field of the Performing Arts |
+| CYCLE-516 | 516 | `degree` | Undergraduate Degrees (including Associate Degree) |
+| CYCLE-1312 | 1312 | `title` | Knight-Hennessy Scholars at Stanford University |
+| CYCLE-1336 | 1336 | `title` | Huayu Enrichment Scholarship Program |
+
+The original CYCLE-516 proposal changed `title` to "Graduate". That claim could
+not be supported, so the approved change is the supported `degree` value above.
+
+### 3.2 Funding corrections (2)
+
+| Operation | ID | Approved changes |
+|---|---:|---|
+| FUND-3 | 3 | `tuition_coverage=false`, `fully_funded=false`, funding = "Partially Funded (stipend, insurance, travel; tuition not covered)" |
+| FUND-1 | 1 | `fully_funded=true`, funding = "Fully Funded (participation costs + travel/visa + living allowance)" |
+
+FUND-3 also sets `tuition_coverage=false`; otherwise `fully_funded=false` would
+contradict the existing `tuition_coverage=true`.
+
+### 3.3 Evidence contract
+
+Every approved operation maps to one of the 13 records in
+`final_source_evidence.json`. Each record has:
+
+- a scalar `https://` source URL,
+- an exact supported claim (at least 30 characters),
+- an ISO 8601 `retrieved_at` date,
+- a unique `evidence_ref` whose `operation_id` matches the operation,
+- a `supports_fields` list that exactly matches the changed fields,
+- `approved_for_import=true`.
+
+Live pages were re-verified on 2026-11-10 for Erasmus, DAAD programmes
+50026200 / 50076777 / 57135744 / 57135742 / 50109971, GKS, MEXT,
+Knight-Hennessy, and the Taiwan Huayu programme.
+
+## 4. Pending and blocked work
+
+### 4.1 PENDING_RESEARCH (12, excluded)
+
+| Type | Count |
+|---|---:|
+| Cycle updates | 7 |
+| Funding corrections | 3 |
+| Lifecycle proposals | 2 |
+| **Total** | **12** |
+
+Pending operations have `approved_for_import=false`, no evidence reference, and
+no approved changes. They are counted separately and never included in the 13.
+
+### 4.2 Lifecycle proposals (2, not approved)
+
+| Operation | ID | Programme | Proposed contract |
+|---|---:|---|---|
+| LIFECYCLE-729 | 729 | Vanier Canada Graduate Scholarship | `status=closed`, `is_archived=true`, preserve existing `archived_at` or set at execution, explicit `archived_reason` |
+| LIFECYCLE-31 | 31 | Netherlands Fellowship Programme (NFP/OTS) | Same archive contract |
+
+Both remain PENDING_RESEARCH because discontinuation has not been captured as
+DIRECT evidence. The package does not use `corrected_status`, does not use a
+`discontinued` status value, and does not delete either record.
+
+### 4.3 Blocked inserts (6)
+
+`blocked_records.json` contains six new-scholarship candidates that cannot be
+imported because evidence is insufficient or the region is excluded. All have
+`approved_for_import=false` and `final_evidence_status=BLOCKED`.
+
+## 5. Duplicate reconciliation
+
+### 5.1 Pairs
+
+| Pair | Canonical | Duplicate | Classification |
+|---:|---:|---:|---|
+| 1 | 183 | 753 | MERGE_READY_FOR_OWNER_REVIEW |
+| 2 | 270 | 1244 | MERGE_READY_FOR_OWNER_REVIEW |
+| 3 | 396 | 1279 | MERGE_READY_FOR_OWNER_REVIEW |
+| 4 | 482 | 1280 | MERGE_READY_FOR_OWNER_REVIEW |
+| 5 | 1217 | 1309 | BLOCKED_MANUAL_REVIEW (Fulbright) |
+
+### 5.2 Archive-only plan
+
+Each merge-ready pair has exactly one `ARCHIVE_DUPLICATE` operation. It writes
+only `is_archived`, `archived_at`, and `archived_reason` on the duplicate row,
+with the idempotency predicate `WHERE id = :duplicate_id AND is_archived = 0`.
+There are no `DELETE` or `INSERT` statements, no `official_source_url` writes,
+no `json_group_array()` / `json_group_object()` assignments, and no funding,
+degree, region, or status resolution.
+
+The Fulbright pair is blocked because the two records are not a safe duplicate
+merge: the plan cannot reconcile the programme identity without manual owner
+review. It has no write operations and is not executable.
+
+### 5.3 FK dependency reconciliation
+
+Actual database introspection found:
+
+| Metric | Value |
+|---|---:|
+| Declared dependent tables | 14 |
+| Declared FK references | 14 |
+| FK reference rows for the 5 pair IDs | 10 |
+| Duplicate-side FK rows | 5 |
+| Merge-ready duplicate-side rows | 4 |
+| Fulbright duplicate-side rows | 1 |
+| Safe reassignments | 0 |
+| Rows to reassign | 0 |
+| Unique collisions if merge-ready reassigned | 4 |
+| Unique collisions if all pairs reassigned | 5 |
+| Append-only non-FK table | `scholarship_image_audit` (1 row) |
+
+The old report claimed 13 dependent tables and 20 FK references. That was
+incorrect and has been replaced by the introspection-backed counts above.
+
+All 10 pair IDs have one `scholarship_supervisor_coverage` row each. Because the
+table has `UNIQUE(scholarship_id)`, reassigning a duplicate-side coverage row to
+the canonical ID would collide. The plan therefore keeps all coverage rows with
+the archived duplicate and performs zero reassignments.
+
+`scholarship_image_audit` is append-only, has no FK, and its single row on
+canonical ID 285 is documented separately; it is never moved or deleted.
+
+### 5.4 Isolated SQLite dry run
+
+| Metric | Before | After |
+|---|---:|---:|
+| Total | 830 | 830 |
+| Active | 830 | 826 |
+| Archived | 0 | 4 |
+| Coverage rows | 830 | 830 |
+| `official_source_url` arrays | 0 | 0 |
+
+- 4 pairs tested, 4 passed, 4 rows archived.
+- 4 uniqueness collision probes all returned `UNIQUE_COLLISION`.
+- 0 rows deleted, 0 URL/funding/degree/region/status writes.
+- Source database SHA unchanged; 0 merges executed in source.
+
+**PostgreSQL simulation: UNAVAILABLE.** No disposable DSN, `psql`, PostgreSQL
+service, or Docker was available. The package records this as unavailable and
+does not claim a PostgreSQL pass.
+
+## 6. Count reconciliation
+
+| State | Total | Active | Archived | Status distribution |
+|---|---:|---:|---:|---|
+| Baseline | 830 | 830 | 0 | open 820, closed 6, closing-soon 4 |
+| After approved subset | 830 | 830 | 0 | open 820, closed 6, closing-soon 4 |
+| After approved + lifecycle proposals | 830 | 828 | 2 | open 818, closed 8, closing-soon 4 |
+| After approved + lifecycle + 4 duplicate archives | 830 | 824 | 6 | open 818, closed 8, closing-soon 4 |
+
+Archive accounting: lifecycle archives = 2, duplicate archives = 4, total = 6,
+and total = active + archived at every step. No archive is counted twice.
+Fulbright is not included in the four duplicate archives.
+
+## 7. Canonical and legacy files
+
+Canonical files are prefixed with `final_` or are the named duplicate reports.
+`final_import_ready_scholarships.json` is canonical and contains `[]`.
+`final_existing_cycle_updates.json` contains only the 11 evidence-passing
+records. `final_lifecycle_corrections.json` is a wrapper object with two
+PENDING_RESEARCH proposals.
+
+The eight old unprefixed files were moved to `legacy/import-files/`. Each is
+marked `SUPERSEDED`, `importable=false`, and points to its canonical
+replacement. `legacy/README.md` states that the archive is superseded and not
+importable. The validator fails if any legacy file remains at the package root.
+
+## 8. Automated validation
+
+`validate_semantics.py` loads the canonical JSON and fails on:
+
+- unsupported lifecycle status or missing archive fields,
+- missing DIRECT evidence for an approved operation,
+- a PENDING_RESEARCH operation marked approved,
+- URL arrays or URL rewrites in the duplicate plan,
+- an incomplete FK map or inconsistent FK totals,
+- contradictory canonical and legacy files,
+- inconsistent projected counts,
+- manifest count or hash mismatch.
+
+Run results:
+
+```text
+python validate_semantics.py
+semantic_validation = PASS
+error_count = 0
+package_status = BLOCKED
+postgresql_simulation = UNAVAILABLE
+
+python validate_semantics.py --self-test
+SELF-TEST PASSED: 10 mutation checks caught.
 ```
 
-### PR Creation
+## 9. Blocking reasons
 
-```bash
-git checkout -b feat/final-scholarship-catalogue-reconciliation origin/master
-# Copy all final_*.json, blocked_records.json, duplicate_reconciliation_report.json
-# to a dedicated import package directory (e.g., backend/imports/final-reconciliation-2026-11-09/)
-git add backend/imports/final-reconciliation-2026-11-09/
-git commit -m "feat: final scholarship catalogue reconciliation import package
+1. Vanier CGS (729) and NFP/OTS (31) lifecycle proposals remain PENDING_RESEARCH.
+2. PostgreSQL duplicate-merge simulation is unavailable in this environment.
+3. No duplicate merge has been executed; 4 archive-only plans await owner approval.
+4. Six new-insert candidates remain blocked.
+5. This package is a review package, not production import authorization.
 
-- 18 cycle updates (Erasmus Mundus, DAAD, GKS, MEXT, EPOS, Australia Awards, SI, CSC, Taiwan, MAECI, ARES, AECID, DAAD sub-programmes, Knight-Hennessy, Huayu)
-- 5 funding corrections (DAAD→partial, ARES→unknown, NFP→unknown, Vanier→unknown, Erasmus Mundus→full)
-- 2 lifecycle corrections (Vanier CGS discontinued, NFP/OTS discontinued)
-- 5 duplicate pair reconciliation proposals
-- 6 new candidates blocked pending verification
-- 0 new inserts approved
-"
-git push origin feat/final-scholarship-catalogue-reconciliation
-gh pr create --title "Final Scholarship Catalogue Reconciliation — Import Package" --body-file PR_BODY.md
-```
+## 10. Safety statement
 
-**Expected PR:** #XXX (to be created)
-
----
-
-## FINAL DECISION
-
-### **RESEARCH_COMPLETE_WITH_MANUAL_REVIEW**
-
-**Rationale:**
-- ✅ 25 import operations fully validated with official evidence
-- ✅ 0 new inserts (all 6 candidates blocked for insufficient evidence)
-- ✅ 5 duplicate pairs proposed for manual reconciliation (foreign key check required)
-- ⚠️ 734 pending records excluded from import
-- ⚠️ Downstream artefacts (snapshot, sitemap) NOT regenerated
-
-**Safe to stage. NOT safe for production import without:**
-1. Manual review of 5 duplicate pairs (foreign keys)
-2. Owner approval of funding corrections (DAAD, Erasmus Mundus)
-3. Owner approval of lifecycle corrections (Vanier, NFP)
-4. Completion of pending verification for 46 new candidates
-
----
-
-## ARTIFACT INVENTORY (Exact Paths)
-
-```
-C:\Users\GopaL\Desktop\Projects folder\ScholarZone\
-├── final_import_ready_scholarships.json          (0 records)
-├── final_existing_cycle_updates.json             (18 records)
-├── final_funding_corrections.json                (5 records)
-├── final_lifecycle_corrections.json              (2 records)
-├── duplicate_reconciliation_report.json          (5 pairs)
-├── blocked_records.json                          (6 records)
-├── final_source_evidence.json                    (95 records)
-├── final_reconciliation_manifest.json            (36 records)
-├── final_import_validation_report.json           (1 record)
-├── FINAL_CATALOGUE_RECONCILIATION_REPORT.md      (this file)
-└── IMPORT_PACKAGE_README.md                      (existing)
-```
-
----
-
-## REMAINING RISKS
-
-| Risk | Severity | Mitigation |
-|------|----------|------------|
-| DAAD funding correction changes public perception | HIGH | Owner review required; update public snapshot after approval |
-| Vanier CGS archival affects historical records | MEDIUM | Archive flag preserves data; no deletion |
-| Duplicate merges require FK validation | HIGH | Manual check before merge |
-| 734 pending records not imported | LOW | Expected; separate verification track |
-| Missing source evidence for 8 cycle updates | MEDIUM | Based on pending research; flag for verification |
-
----
-
-*Report generated 2026-11-09 by Principal Scholarship-Data Researcher / Data-Quality Engineer / PostgreSQL Architect / Backend Engineer / Release Auditor*  
-*ScholarZone — gopal735/ScholarZone*  
-*Branch: feat/final-scholarship-catalogue-reconciliation | Base: origin/master (64aceba) | HEAD: a1e783b*
+No production database was written. No production migration was run. No
+duplicate merge was executed. No scholarship record was deleted. No unrelated
+feature was modified. PR #81 must not be merged on the basis of this package
+alone.

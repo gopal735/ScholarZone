@@ -1,114 +1,74 @@
 {
-  "validation_timestamp": "2026-11-09",
-  "schema_version": "ScholarZone canonical catalogue v1",
-  "total_records_in_package": 26,
-  "import_operations": {
-    "NEW_INSERT": 0,
-    "EXISTING_CYCLE_UPDATE": 18,
-    "FUNDING_CORRECTION": 5,
-    "LIFECYCLE_CORRECTION": 2,
-    "DUPLICATE_RECONCILIATION_PROPOSAL": 5,
-    "BLOCKED": 6
+  "validation_timestamp": "2026-11-10",
+  "validator_version": "2.0",
+  "package_status": "BLOCKED",
+  "review_package_only": true,
+  "production_import_authorized": false,
+  "semantic_validation": "PASS",
+  "json_files_loaded": 15,
+  "json_files": [
+    "blocked_records.json",
+    "duplicate_fk_dependency_report.json",
+    "duplicate_merge_dry_run.json",
+    "duplicate_merge_plan.json",
+    "final_database_reconciliation.json",
+    "final_existing_cycle_updates.json",
+    "final_funding_corrections.json",
+    "final_import_ready_scholarships.json",
+    "final_lifecycle_corrections.json",
+    "final_reconciliation_manifest.json",
+    "final_source_evidence.json",
+    "legacy/README.md",
+    "legacy/import-files/manifest.json",
+    "operation_evidence_mapping.json",
+    "package_baseline.json"
+  ],
+  "operation_counts": {
+    "approved_direct": 13,
+    "pending_research_excluded": 12,
+    "blocked_insert_candidates": 6,
+    "duplicate_pairs": 5,
+    "duplicate_merge_ready": 4,
+    "duplicate_blocked": 1
   },
-  "validations": {
-    "json_validity": {
-      "status": "PASS",
-      "details": "All final package files are valid JSON"
+  "counts": {
+    "baseline": {
+      "total": 830,
+      "active": 830,
+      "archived": 0,
+      "status_distribution": {
+        "open": 820,
+        "closed": 6,
+        "closing-soon": 4
+      }
     },
-    "schema_compliance": {
-      "status": "PASS",
-      "details": "All records conform to canonical catalogue contract (models.py)"
+    "after_approved_subset": {
+      "total": 830,
+      "active": 830,
+      "archived": 0
     },
-    "required_fields": {
-      "status": "PASS",
-      "details": "All required fields present in cycle updates, funding corrections, lifecycle corrections"
+    "after_lifecycle_proposals": {
+      "total": 830,
+      "active": 828,
+      "archived": 2
     },
-    "url_validity": {
-      "status": "WARNING",
-      "details": "URLs sourced from research ledger; not live-tested in this audit"
-    },
-    "duplicate_canonical_urls": {
-      "status": "PASS",
-      "details": "No duplicate official_source_url within import operations"
-    },
-    "duplicate_normalized_identity": {
-      "status": "WARNING",
-      "details": "5 duplicate pairs identified in existing catalogue (proposed for reconciliation, not auto-merged)"
-    },
-    "duplicate_ids": {
-      "status": "PASS",
-      "details": "No duplicate catalogue IDs in import operations"
-    },
-    "missing_source_evidence": {
-      "status": "PASS",
-      "details": "All import operations have source evidence from research ledger"
-    },
-    "unsupported_claims": {
-      "status": "PASS",
-      "details": "No unsupported claims in verified operations"
-    },
-    "date_validity": {
-      "status": "PASS",
-      "details": "All dates ISO 8601 format or null"
-    },
-    "deadline_consistency": {
-      "status": "PASS",
-      "details": "No contradictory deadline states"
-    },
-    "funding_consistency": {
-      "status": "PASS",
-      "details": "5 funding corrections address inconsistencies"
-    },
-    "country_taxonomy": {
-      "status": "PASS",
-      "details": "Countries match existing taxonomy"
-    },
-    "study_level_taxonomy": {
-      "status": "PASS",
-      "details": "Degree levels consistent"
-    },
-    "lifecycle_consistency": {
-      "status": "PASS",
-      "details": "2 lifecycle corrections address inconsistencies"
-    },
-    "successor_references": {
-      "status": "PASS",
-      "details": "Replacement programmes documented where applicable"
-    },
-    "existing_catalogue_duplicates": {
-      "status": "WARNING",
-      "details": "5 duplicate pairs identified; proposed for manual reconciliation"
-    },
-    "invalid_operations": {
-      "status": "PASS",
-      "details": "All operations valid types"
-    },
-    "foreign_key_integrity": {
-      "status": "PENDING_MANUAL_CHECK",
-      "details": "Requires manual foreign key check before duplicate merges"
-    },
-    "historical_data_preservation": {
-      "status": "PASS",
-      "details": "All lifecycle corrections specify archive_instead_of_delete=true"
-    },
-    "idempotency": {
-      "status": "PASS",
-      "details": "All operations marked idempotent=true"
+    "after_all_proposed": {
+      "total": 830,
+      "active": 824,
+      "archived": 6
     }
   },
-  "errors": 0,
-  "warnings": 3,
-  "info": 2,
-  "import_readiness": "RESEARCH_COMPLETE_WITH_MANUAL_REVIEW",
-  "dry_run_simulation": {
-    "total_evaluated": 26,
-    "new_inserts_accepted": 0,
-    "cycle_updates_accepted": 18,
-    "funding_corrections_accepted": 5,
-    "lifecycle_corrections_accepted": 2,
-    "duplicate_proposals": 5,
-    "blocked_excluded": 6,
-    "projected_active_catalogue_count": 789,
-    "validation_passed": true
-  }
+  "environment": {
+    "postgresql_simulation": "UNAVAILABLE",
+    "duplicate_plans_executed": 0
+  },
+  "blocking_reasons": [
+    "Vanier CGS and NFP/OTS lifecycle proposals remain PENDING_RESEARCH.",
+    "PostgreSQL duplicate-merge simulation is unavailable in this environment.",
+    "No duplicate merge has been executed; 4 archive-only plans await owner approval.",
+    "6 new-insert candidates remain blocked.",
+    "This package is a review package, not production import authorization."
+  ],
+  "errors": [],
+  "error_count": 0
 }

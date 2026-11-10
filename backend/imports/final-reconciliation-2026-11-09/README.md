@@ -1,379 +1,115 @@
-# ScholarZone
+# Final Scholarship Catalogue Reconciliation Package
 
-**Global Scholarship Discovery Platform** — An independently developed proprietary software project by Gopal (GitHub: [gopal735](https://github.com/gopal735)).
+**Package date:** 2026-11-10
+**Branch:** `feat/final-scholarship-catalogue-reconciliation`
+**Base SHA:** `5b28ceef0480a4bd6612d1cf08c26e8629bea285`
+**Pre-remediation HEAD:** `dec6dbcd65ffe98da42f0e6fff665c3c840ce04a`
+**Package status:** **BLOCKED**
+**Review package only:** yes
+**Production import authorized:** no
 
-> **Copyright © 2026 Gopal (GitHub: gopal735). All Rights Reserved.**  
-> This is proprietary software. No open-source license is granted. See [COPYRIGHT.md](COPYRIGHT.md) for full terms.
+This directory is the authoritative reconciliation package for PR #81. It is a
+review artefact, not an import authorization. Nothing here has been executed
+against a production database, and no duplicate merge has been run.
 
----
+## Canonical files
 
-## 🎯 Project Purpose
+| File | Records | Importable | Purpose |
+|---|---:|---|---|
+| `final_import_ready_scholarships.json` | 0 | yes | Canonical insert file; empty by design. |
+| `final_existing_cycle_updates.json` | 11 | yes | Approved cycle updates, all DIRECT evidence. |
+| `final_funding_corrections.json` | 2 | yes | Approved funding corrections, all DIRECT evidence. |
+| `final_lifecycle_corrections.json` | 2 | no | Proposals only; PENDING_RESEARCH, not approved. |
+| `final_source_evidence.json` | 13 | no | DIRECT evidence registry for the approved subset. |
+| `operation_evidence_mapping.json` | 25 | no | 13 approved operations + 12 excluded pending operations. |
+| `blocked_records.json` | 6 | no | Blocked new-insert candidates. |
+| `duplicate_merge_plan.json` | 5 pairs | no | 4 archive-only plans for owner review; 1 blocked Fulbright pair. |
+| `duplicate_fk_dependency_report.json` | 14 tables | no | Actual FK introspection for all dependent tables. |
+| `duplicate_merge_dry_run.json` | 4 pairs | no | Isolated SQLite simulation; PostgreSQL simulation unavailable. |
+| `final_database_reconciliation.json` | 1 | no | Before/after counts with archive accounting. |
+| `final_reconciliation_manifest.json` | 1 | no | Package manifest and file hashes. |
+| `final_import_validation_report.json` | 1 | no | Generated semantic-validation result. |
 
-ScholarZone is a global scholarship discovery platform that helps students find official-source-informed scholarship opportunities worldwide. Built with a **static-first architecture**, the public catalogue operates entirely without a live database or API connection — serving **770 public scholarship records** from a version-controlled JSON snapshot.
+`package_baseline.json` is the committed read-only snapshot of
+`backend/scholarzone.db` used by CI. The database file itself is gitignored.
 
-### Key Differentiators
+## Operation counts
 
-| Aspect | Approach |
-|--------|----------|
-| **Architecture** | Static-first: public browsing does not require a live database or API connection |
-| **Data Integrity** | Reproducible CI pipeline regenerates snapshot from canonical sources |
-| **Verification** | Records link to official source URLs; `last_verified_at` tracked where available |
-| **Cost Model** | Zero-paid dependencies for public browsing (Vercel + GitHub Actions) |
-| **Match Engine** | Deterministic, arithmetic-only fit scoring — no ML, no LLMs |
+- Approved: **13** — 11 cycle updates, 2 funding corrections, 0 inserts, 0 lifecycle archives.
+- Pending and excluded: **12** — 7 cycle, 3 funding, 2 lifecycle.
+- Blocked insert candidates: **6**.
+- Duplicate pairs: **5** — 4 merge-ready for owner review, 1 blocked (Fulbright 1217/1309).
+- Duplicate plans approved or executed: **0**.
 
----
+## Lifecycle contract
 
-## ✨ Implemented Features
+`final_lifecycle_corrections.json` uses the real `Scholarship` model contract:
 
-### Public Catalogue (Static-First, Zero Database)
-- **Scholarship Directory** — Filter by country, degree, funding, deadline month, status; full-text search; sortable; paginated (12/page)
-- **Scholarship Detail Pages** — Rich editorial layout with hero image, quick facts, funding breakdown, eligibility, requirements, documents, English requirements, application method, official sources, verification record
-- **Country Explorer** — Browse scholarships by country (65 countries)
-- **Compare** — Side-by-side comparison of up to 4 scholarships (localStorage)
-- **Saved Scholarships** — Personal bookmarking (localStorage)
-- **Sitemap & SEO** — Auto-generated `sitemap.xml` (772 URLs: 770 scholarship + 2 static), JSON-LD structured data, canonical URLs, meta tags
-
-### Match Engine (API-Backed, Deterministic)
-- **POST `/api/scholarships/match`** — Scores a student profile against all scholarships
-- **Eligibility Gate** — Three verdicts: `ELIGIBLE` / `NEEDS_VERIFICATION` / `INELIGIBLE` (hard gate, runs before scoring)
-- **Fit Scoring** — 7 weighted dimensions (Academic 25%, Field 20%, Funding 20%, Requirements 15%, Language 10%, Preference 5%, Timing 5%)
-- **Coverage & Sensitivity** — Reports measurable coverage % and mathematical sensitivity range
-- **Confidence Score** — Record trust (data completeness 35%, provenance 25%, requirement explicitness 25%, freshness 15%)
-- **Readiness Score** — Application actionability (eligibility certainty 30%, requirement completeness 20%, language 15%, application 15%, deadline 20%)
-- **Profile Strength** — Student input completeness (academic 25%, study goal 25%, language 20%, funding 20%, identity 10%)
-- **Deterministic** — Same inputs → byte-identical output; no clock, randomness, or network in scoring path
-- **Free-Text Parser** — Optional deterministic NLP for profile input (curated table lookup, no LLM)
-
-### Student Dashboard (Authenticated)
-- **Applications Workspace** — Track applications through stages (Draft → Submitted → Under Review → Decision)
-- **Saved Scholarships** — Persisted via API
-- **Match History** — Re-run previous profiles
-
-### Supervisor Discovery (Research Feature)
-- **Professor/Researcher Directory** — Academic contacts with official source provenance and evidence tracking
-- **Official Source Verification** — PDF extraction, page discovery, evidence tracking
-- **Verification Pipeline** — Multi-stage review with confidence scoring
-
-### Admin & Maintenance
-- **Image Review** — Approve/reject scholarship images with provenance
-- **Automated Maintenance** — GitHub Actions cron for verification, snapshot regeneration
-- **Expired-Cycle Purge** — 7-gate preflight workflow (manual dispatch; production validation pending)
-- **Build Provenance** — Embedded git SHA in deployed artefacts for deployment verification
-
----
-
-## 🏗 Technology Stack
-
-### Frontend
-| Technology | Version | Purpose |
-|------------|---------|---------|
-| React | 19.2.8 | UI framework |
-| React Router | 7.18.2 | Client-side routing |
-| Vite | 8.2.0 | Build tool & dev server |
-| Vitest | 5.0.3 | Unit/integration testing |
-| ESLint | 10.8.0 | Linting |
-| Motion | 13.5.1 | Animations |
-| Three.js | 0.160.0 | 3D hero background |
-
-### Backend
-| Technology | Version | Purpose |
-|------------|---------|---------|
-| FastAPI | 0.141.1 | API framework |
-| SQLAlchemy | 2.0.x | ORM |
-| PostgreSQL (Neon) | — | Primary database |
-| Pydantic | 2.13.4 | Validation & serialization |
-| Uvicorn | 0.52.1 | ASGI server |
-| pytest | — | Testing |
-
-### Infrastructure & CI/CD
-| Service | Purpose | Status |
-|---------|---------|--------|
-| **Vercel** | Frontend hosting (static, automatic deployments) | Configured, not deployed |
-| **GitHub Actions** | CI/CD, scheduled maintenance, snapshot generation | Active |
-| **SnapDeploy** | Backend API hosting (container, sleeps after 30min idle) | Configured, sleeping |
-| **Neon PostgreSQL** | Database (0.5 GB free, 190 compute hrs/mo) | Active |
-| **Resend** | Email verification (3,000/mo free) | Active |
-| **Cloudflare Pages** | Evaluated alternative for frontend (configured, not active) | Configured, not deployed |
-
-### Data Pipeline
-- **Canonical Source**: `backend/app/data/verified_scholarships.py` (ingestion records with official_source_url)
-- **Snapshot Generation**: `backend/scripts/build_public_snapshot.py` → `frontend/public/scholarships-snapshot.json`
-- **CI Workflow**: `.github/workflows/catalogue-snapshot.yml` (triggers on backend changes, validates, commits snapshot)
-- **Zero-Paid Guard**: `.github/workflows/zero-paid-guard.yml` (scans for paid-only dependencies, secrets in frontend)
-
----
-
-## 📊 Architecture Overview
-
-```
-┌─────────────────────────────────────────────────────────────────┐
-│                          VERCEL                                 │
-│  ┌─────────────────────────────────────────────────────────┐   │
-│  │  frontend/dist (static build) — NOT DEPLOYED            │   │
-│  │  ├── index.html                                         │   │
-│  │  ├── assets/ (JS, CSS, immutable cache)                 │   │
-│  │  ├── scholarships-snapshot.json  ← 770 records, 2.1 MB  │   │
-│  │  └── sitemap.xml                                         │   │
-│  └─────────────────────────────────────────────────────────┘   │
-│                            │                                    │
-│                            ▼                                    │
-│  ┌─────────────────────────────────────────────────────────┐   │
-│  │  Static-First Service (staticScholarshipService.js)     │   │
-│  │  • fetchScholarshipsFromSnapshot()  — filter, sort, page │   │
-│  │  • fetchScholarshipStatsFromSnapshot()                   │   │
-│  │  • fetchScholarshipByIdFromSnapshot()                    │   │
-│  └─────────────────────────────────────────────────────────┘   │
-└─────────────────────────────────────────────────────────────────┘
-                             │
-               ┌─────────────┴─────────────┐
-               ▼                           ▼
-┌─────────────────────────┐   ┌─────────────────────────┐
-│   GITHUB ACTIONS        │   │   SNAPDEPLOY (API)      │
-│   (CI/CD + CRON)        │   │   FastAPI + PostgreSQL  │
-│                         │   │                         │
-│ • catalogue-snapshot.yml│   │ • POST /scholarships/   │
-│ • zero-paid-guard.yml   │   │   match                 │
-│ • verification-cron.yml │   │ • /dashboard/*          │
-│                         │   │ • /applications/*       │
-│                         │   │ • /mentor/*             │
-│                         │   │ • /admin/*              │
-└─────────────────────────┘   └─────────────────────────┘
-              │                           │
-              ▼                           ▼
-┌─────────────────────────────────────────────────────────────────┐
-│                      NEON POSTGRESQL                            │
-│  • scholarships (770 public + research tables)                  │
-│  • supervisors, supervisor_reviews, supervisor_candidates       │
-│  • professors, applications, users, sessions                    │
-└─────────────────────────────────────────────────────────────────┘
+```json
+{
+  "status": "closed",
+  "is_archived": true,
+  "archived_at": {"action": "PRESERVE_EXISTING", "when_null": "SET_AT_EXECUTION_TIMESTAMP"},
+  "archived_reason": "..."
+}
 ```
 
-> **Note**: The above architecture represents the **intended** design. Currently:
-> - Frontend is **not deployed** to Vercel (DEPLOYMENT_NOT_FOUND at scholarzone.vercel.app)
-> - SnapDeploy backend is **sleeping** (returns wake page, not API)
-> - Vercel backend deployment is **stale** (revision f085b718 from Oct 6, not current master)
-> - The live production frontend is **not deployed** to any provider
+There is no `discontinued` status and no `corrected_status` field. The two
+proposals (Vanier CGS ID 729, NFP/OTS ID 31) remain PENDING_RESEARCH, are
+excluded from approved counts, and are not importable.
 
-### Data Flow
+## Duplicate policy
 
-1. **Ingestion** → `verified_scholarships.py` (manual curation with official_source_url)
-2. **Seed** → `scripts/seed_real_scholarships.py` → Neon PostgreSQL
-3. **Snapshot** → `scripts/build_public_snapshot.py` → `scholarships-snapshot.json` (CI)
-4. **Deploy** → Vercel serves snapshot + static build (configured, not deployed)
-5. **Browse** → Frontend reads snapshot directly (no API call)
-6. **Match** → API queries Neon, runs pure engine, returns scored results
+The duplicate plan is archive-only:
 
----
+- no record deletions,
+- no `official_source_url` writes,
+- no URL arrays or `json_group_array()` scalar assignments,
+- no funding, degree, region, or status resolution,
+- no FK reassignment.
 
-## 🔒 Zero-Paid Architecture (Public Browsing)
+All four merge-ready pairs have a `UNIQUE(scholarship_id)` collision in
+`scholarship_supervisor_coverage` if coverage rows were reassigned, so the rows
+stay attached to the archived duplicate. `scholarship_image_audit` is
+append-only, has no FK, and is never reassigned.
 
-The public catalogue requires **zero paid services**:
+## Count model
 
-| Component | Provider | Cost |
-|-----------|----------|------|
-| Frontend Hosting | Vercel | Free (static, personal hobby tier) |
-| CI/CD | GitHub Actions | Free (unlimited public) |
-| Snapshot Storage | Git repo (LFS not needed) | Free |
-| CDN | Vercel edge | Free |
-| SSL/TLS | Automatic | Free |
+| State | Total | Active | Archived | Status distribution |
+|---|---:|---:|---:|---|
+| Baseline | 830 | 830 | 0 | open 820, closed 6, closing-soon 4 |
+| After approved subset | 830 | 830 | 0 | open 820, closed 6, closing-soon 4 |
+| After approved + lifecycle proposals | 830 | 828 | 2 | open 818, closed 8, closing-soon 4 |
+| After approved + lifecycle + 4 duplicate archives | 830 | 824 | 6 | open 818, closed 8, closing-soon 4 |
 
-**Backend API** (match, dashboard, admin) uses paid-tier services but is **not required for public browsing**:
-- Neon PostgreSQL: 0.5 GB / 190 compute hrs free tier
-- SnapDeploy: 1 container free, sleeps after 30 min
-- Resend: 3,000 emails/mo free
+Lifecycle archives (2) and duplicate archives (4) are counted separately;
+6 = 2 + 4 with no double counting. Total always equals active + archived.
 
-See [ZERO_PAID_ARCHITECTURE_REPORT.md](ZERO_PAID_ARCHITECTURE_REPORT.md) and [ZERO_PAID_LIMITS.md](ZERO_PAID_LIMITS.md) for full analysis.
+## Reproduce
 
----
-
-## 📚 API Documentation
-
-### Public Endpoints (No Auth)
-
-| Endpoint | Method | Description |
-|----------|--------|-------------|
-| `/api/scholarships` | GET | Paginated list (query: search, country, degree, funding, deadline_month, status, sort, page, limit) |
-| `/api/scholarships/stats` | GET | Headline figures (total, countries, fully_funded, verified) |
-| `/api/scholarships/{id}` | GET | Single scholarship detail |
-| `/api/scholarships/match` | POST | Match engine — score profile against catalogue |
-| `/api/scholarships/match/profile-options` | GET | Curated form options (countries, degrees, fields, etc.) |
-| `/api/scholarships/match/parse-profile` | POST | Deterministic free-text profile parser |
-| `/api/countries` | GET | List countries with scholarship counts |
-| `/api/countries/{code}` | GET | Scholarships for a country |
-
-### Authenticated Endpoints (Session Cookie)
-
-| Endpoint | Method | Description |
-|----------|--------|-------------|
-| `/api/auth/register` | POST | Register |
-| `/api/auth/login` | POST | Login |
-| `/api/auth/me` | GET | Current user |
-| `/api/dashboard/*` | * | Student dashboard |
-| `/api/applications/*` | * | Application workspace |
-| `/api/mentor/*` | * | Mentor chat |
-| `/api/admin/*` | * | Admin review |
-
-### Internal Endpoints (Cron/Workers)
-
-| Endpoint | Method | Description |
-|----------|--------|-------------|
-| `/internal/verify/trigger` | POST | Trigger verification worker |
-| `/internal/purge/trigger` | POST | Trigger expired cycle purge |
-
----
-
-## 🚀 Setup & Development
-
-### Prerequisites
-- Node.js 20+
-- Python 3.11+
-- PostgreSQL (local or Neon)
-
-### Frontend
 ```bash
-cd frontend
-npm install
-npm run dev          # Dev server at localhost:5173
-npm run build        # Production build to dist/
-npm run test         # Vitest
-npm run lint         # ESLint
+cd backend/imports/final-reconciliation-2026-11-09
+python build_canonical_package.py --baseline-only
+python reconcile_duplicates.py
+python build_canonical_package.py
+python validate_semantics.py
+python validate_semantics.py --self-test
 ```
 
-### Backend
-```bash
-cd backend
-python -m venv .venv
-source .venv/bin/activate  # Windows: .venv\Scripts\activate
-pip install -r requirements.txt
-cp .env.example .env       # Configure DATABASE_URL, etc.
-python -m app.main         # Runs at localhost:8000
-pytest                     # Run tests
-```
+`build_canonical_package.py` reads `package_baseline.json`, not a live database.
+`reconcile_duplicates.py` requires the committed baseline and writes only
+package JSON, never the source database.
 
-### Environment Variables
+## Legacy files
 
-**Frontend** (`.env` or Vite config):
-```env
-VITE_API_BASE_URL=/api                    # Dev proxy
-VITE_API_BASE_URL=https://api.example.com # Production
-VITE_STATIC_CATALOGUE=true                # Enable static-first mode
-VITE_CANONICAL_ORIGIN=https://scholarzone.example.com
-```
+The eight unprefixed files from the superseded package were moved to
+`legacy/import-files/`. They are SUPERSEDED and not importable; see
+`legacy/README.md` and `legacy/import-files/manifest.json`.
 
-**Backend** (`.env`):
-```env
-DATABASE_URL=postgresql://user:pass@host/db
-ENVIRONMENT=development|production|test
-ALLOWED_ORIGINS=https://scholarzone.example.com,http://localhost:5173
-RESEND_API_KEY=re_...
-SECRET_KEY=...
-```
+## Why the package is blocked
 
----
-
-## 🧪 Tests & CI
-
-### Test Suites
-
-| Suite | Location | Tests (Local) | Coverage |
-|-------|----------|---------------|----------|
-| Frontend Unit | `frontend/src/**/*.test.{js,jsx}` | 264 | Components, hooks, services, utils |
-| Frontend Contracts | `frontend/src/*.test.js` | 30 | Sitemap, SEO, middleware |
-| Backend Matching Engine | `backend/tests/test_matching_engine.py` | 117 | Fit arithmetic, eligibility, determinism |
-| Backend Visibility + Matching API | `backend/tests/test_public_*.py, test_matching_api.py` | 118 | HTTP contract, CORS, visibility |
-
-### CI Workflows (`.github/workflows/`)
-
-| Workflow | Trigger | Purpose |
-|----------|---------|---------|
-| `ci.yml` | Push/PR | Lint, test, build (frontend + backend) |
-| `catalogue-snapshot.yml` | Push to master (backend/) | Regenerate & validate snapshot |
-| `zero-paid-guard.yml` | Push/PR | Scan for paid deps, secrets in frontend |
-| `verification-cron.yml` | Schedule (daily) | Run verification worker |
-| `production-purge-preflight.yml` | Manual dispatch | Safe expired-cycle purge (7 gates; preflight, production validation pending) |
-| `frontend.yml` | Push/PR (frontend/) | Frontend-specific checks |
-| `deploy.yml` | Push to master | Deploy to Vercel + SnapDeploy |
-
-> **Note**: Test counts above reflect local verification. Remote GitHub Actions status should be checked via the Actions tab for the latest run results.
-
-### Run Locally
-```bash
-# Frontend
-cd frontend && npm run test && npm run lint && npm run build
-
-# Backend
-cd backend && pytest -v
-```
-
----
-
-## 📸 Screenshots
-
-> *Screenshots to be added. Frontend not deployed; Vercel backend at https://scholarzone-fwzj.vercel.app (stale, revision f085b718). SnapDeploy backend sleeping.*
-
-| View | Description |
-|------|-------------|
-| Home Page | Hero with 3D graduation cap, featured scholarships, live stats |
-| Scholarships Directory | Filterable, sortable, paginated grid (12/page) |
-| Scholarship Detail | Editorial layout: hero, quick facts, funding, eligibility, verification |
-| Match Engine | Profile form → ranked results with fit bands, confidence, readiness |
-| Student Dashboard | Applications workspace, saved scholarships, match history |
-| Supervisor Discovery | Searchable academic directory with verification status |
-
----
-
-## 🗺 Roadmap
-
-### Near Term (v1.1)
-- [ ] Dark mode toggle (theme context exists, UI pending)
-- [ ] Offline-first Service Worker for static catalogue
-- [ ] Advanced search: multi-select filters, save search
-- [ ] Email alerts for new scholarships matching profile
-
-### Medium Term (v1.2)
-- [ ] University programme pages (reverse lookup: scholarships for programme X)
-- [ ] Deadline calendar view (monthly grid)
-- [ ] Export comparison to PDF/CSV
-- [ ] Multi-language UI (i18n framework)
-
-### Long Term (v2.0)
-- [ ] AI-assisted profile completion (local, deterministic — no external LLM calls)
-- [ ] Collaborative application workspace (shared drafts, mentor review)
-- [ ] Mobile app (React Native, same static snapshot)
-- [ ] Institutional partnership dashboard
-
----
-
-## 📄 Documentation
-
-| Document | Description |
-|----------|-------------|
-| [COPYRIGHT.md](COPYRIGHT.md) | Ownership & proprietary notice |
-| [ZERO_PAID_ARCHITECTURE_REPORT.md](ZERO_PAID_ARCHITECTURE_REPORT.md) | Static-first architecture & provider limits |
-| [ZERO_PAID_LIMITS.md](ZERO_PAID_LIMITS.md) | Provider free-tier limits table |
-| [CLOUDFLARE_PAGES_EVALUATION.md](CLOUDFLARE_PAGES_EVALUATION.md) | Cloudflare Pages config & analysis |
-| [backend/docs/scholarzone-match-engine.md](backend/docs/scholarzone-match-engine.md) | Match engine specification (696 lines) |
-| [backend/docs/SCHOLARSHIP_INGESTION.md](backend/docs/SCHOLARSHIP_INGESTION.md) | Data ingestion process |
-| [docs/operations/purge/](docs/operations/purge/) | Production purge preflight gates (7 gates) |
-| [FINAL_COMPLETION_REPORT.md](FINAL_COMPLETION_REPORT.md) | Final gate status & verification |
-
----
-
-## 👤 Author
-
-**Gopal** — Independent Software Developer  
-GitHub: [@gopal735](https://github.com/gopal735)  
-Repository: [gopal735/ScholarZone](https://github.com/gopal735/ScholarZone)
-
----
-
-## ⚖️ License & Ownership
-
-**This is proprietary software. No open-source license is granted.**
-
-- **Copyright © 2026 Gopal (GitHub: gopal735). All Rights Reserved.**
-- See [COPYRIGHT.md](COPYRIGHT.md) for full terms.
-- Third-party dependencies retain their original licenses (see `frontend/package.json`, `backend/requirements.txt`).
-- Scholarship data aggregated from public official sources; no copyright claimed over factual data.
-
-> Published on GitHub for portfolio demonstration and code review under GitHub Terms of Service. Publication does not constitute a license grant.
+1. Vanier CGS (729) and NFP/OTS (31) lifecycle proposals still lack DIRECT discontinuation evidence.
+2. PostgreSQL duplicate-merge simulation is unavailable in this environment.
+3. No duplicate merge has been executed; the 4 archive-only plans await owner approval.
+4. Six new-insert candidates remain blocked for insufficient evidence or excluded region.
+5. This is a review package, not production import authorization.
