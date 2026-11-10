@@ -1,0 +1,30 @@
+[
+  {
+    "operation": "LIFECYCLE_CORRECTION",
+    "catalogue_id": 729,
+    "canonical_name": "Vanier Canada Graduate Scholarship",
+    "current_status": "open",
+    "corrected_status": "discontinued",
+    "replacement_programme": "CGRS-D (Canada Graduate Research Scholarship - Doctoral)",
+    "reason": "Vanier CGS discontinued after Fall 2024 final competition. Official source confirms no further competitions. Replaced by CGRS-D.",
+    "evidence_url": "https://vanier.gc.ca/en/home-accueil.html",
+    "date_checked": "2026-11-09",
+    "idempotent": true,
+    "preserve_historical_record": true,
+    "archive_instead_of_delete": true
+  },
+  {
+    "operation": "LIFECYCLE_CORRECTION",
+    "catalogue_id": 31,
+    "canonical_name": "Netherlands Fellowship Programme (NFP/OTS)",
+    "current_status": "open",
+    "corrected_status": "discontinued",
+    "replacement_programme": "NL Scholarship",
+    "reason": "Netherlands Fellowship Programme (NFP/OTS) discontinued. Replaced by NL Scholarship.",
+    "evidence_url": "https://www.studyinnl.org/finances/ots-scholarships",
+    "date_checked": "2026-11-09",
+    "idempotent": true,
+    "preserve_historical_record": true,
+    "archive_instead_of_delete": true
+  }
+]

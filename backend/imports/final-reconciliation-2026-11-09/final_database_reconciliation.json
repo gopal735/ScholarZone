@@ -1,0 +1,161 @@
+{
+  "reconciliation_date": "2026-11-09",
+  "database_source": "backend/scholarzone.db (local SQLite, 3.1 MB)",
+  "schema_version": "ScholarZone v1 (models.py)",
+  "record_counts": {
+    "total_scholarships": 830,
+    "active_is_archived_false": 790,
+    "archived_is_archived_true": 40,
+    "status_distribution": {
+      "open": 821,
+      "closed": 6,
+      "closing-soon": 3
+    }
+  },
+  "target_operations": {
+    "new_inserts": 0,
+    "cycle_updates": 18,
+    "funding_corrections": 5,
+    "lifecycle_corrections": 2,
+    "duplicate_merges_proposed": 4,
+    "duplicate_manual_review": 1,
+    "blocked_candidates": 6
+  },
+  "affected_records": {
+    "cycle_update_ids": [
+      1,
+      3,
+      4,
+      5,
+      23,
+      30,
+      32,
+      33,
+      34,
+      36,
+      40,
+      41,
+      231,
+      232,
+      234,
+      516,
+      1312,
+      1336
+    ],
+    "funding_correction_ids": [
+      3,
+      40,
+      31,
+      729,
+      1
+    ],
+    "lifecycle_correction_ids": [
+      729,
+      31
+    ],
+    "duplicate_survivor_ids": [
+      183,
+      270,
+      271,
+      285,
+      1217
+    ],
+    "duplicate_archive_ids": [
+      753,
+      1244,
+      760,
+      1277,
+      1309
+    ],
+    "blocked_research_ids": [
+      175,
+      360,
+      383,
+      384,
+      423,
+      556
+    ]
+  },
+  "foreign_key_impact": {
+    "tables_affected": [
+      "scholarship_supervisor_coverage",
+      "scholarship_snapshots",
+      "discovery_candidates",
+      "application_records",
+      "saved_scholarships",
+      "scholarship_verification_history",
+      "scholarship_reviews",
+      "scholarship_fetch_attempts",
+      "scholarship_professor_links",
+      "official_contacts",
+      "professor_outreach_records",
+      "application_checklist_items",
+      "supervisor_source_evidence",
+      "scholarship_image_audit"
+    ],
+    "total_fk_rows_to_reassign": 20,
+    "archived_records_preserved": 4
+  },
+  "projected_state": {
+    "before": {
+      "active": 790,
+      "archived": 40,
+      "duplicate_pairs": 5
+    },
+    "after_corrections_only": {
+      "active": 790,
+      "archived": 42,
+      "duplicate_pairs": 5,
+      "description": "After 5 funding + 2 lifecycle corrections; no duplicate merges executed"
+    },
+    "after_corrections_plus_lifecycle": {
+      "active": 788,
+      "archived": 44,
+      "duplicate_pairs": 5,
+      "description": "After lifecycle archival (Vanier, NFP/OTS); no duplicate merges executed"
+    },
+    "after_full_proposed": {
+      "active": 786,
+      "archived": 44,
+      "duplicate_pairs": 1,
+      "description": "After all corrections, lifecycle archival, and 4 duplicate merges (Fulbright blocked)"
+    },
+    "net_change": {
+      "active": -4,
+      "archived": 4,
+      "duplicate_pairs_resolved": 4
+    }
+  },
+  "validation": {
+    "schema_compliance": "PASS",
+    "unique_constraints": "PASS (official_source_url unique)",
+    "foreign_key_integrity": "PASS (simulated)",
+    "idempotency": "PASS",
+    "data_loss": 0,
+    "historical_preservation": "PASS (archive instead of delete)"
+  },
+  "evidence_coverage": {
+    "operations_with_direct_evidence": 13,
+    "operations_with_pending_evidence": 12,
+    "total_source_evidence_records": 95,
+    "evidence_gaps": [
+      "8 cycle updates from pending research (Australia Awards, SI, CSC, Taiwan, MAECI, ARES, AECID)",
+      "4 funding corrections from pending research (ARES, NFP/OTS, Vanier)",
+      "2 lifecycle corrections from pending research (Vanier, NFP/OTS)"
+    ]
+  },
+  "pending_research": {
+    "total_pending": 738,
+    "catalogue_matches": 688,
+    "new_candidates": 46,
+    "blocked_in_package": 6,
+    "requires_verification": 734
+  },
+  "recommendations": [
+    "Complete official verification for 46 new candidates before import",
+    "Resolve 8 pending cycle updates with official sources",
+    "Verify funding corrections for ARES, NFP/OTS, Vanier with Tier 1 sources",
+    "Obtain owner approval for duplicate merges (4 approved, 1 manual review)",
+    "Complete foreign key dependency check on staging before production"
+  ]
+}
