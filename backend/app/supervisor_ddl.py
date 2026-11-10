@@ -261,6 +261,52 @@ NEW_TABLE_DDL: dict[str, dict[str, str]] = {
                 UNIQUE (user_id, scholarship_id, professor_id)
         """,
     },
+    "official_contacts": {
+        "postgresql": """
+            id INTEGER PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
+            scholarship_id INTEGER NOT NULL REFERENCES scholarships(id),
+            institution_name VARCHAR(255) NOT NULL,
+            department_name VARCHAR(255),
+            programme_name VARCHAR(255),
+            contact_type VARCHAR(64) NOT NULL DEFAULT 'programme_office',
+            contact_role VARCHAR(120),
+            published_contact_name VARCHAR(255),
+            official_email VARCHAR(320),
+            email_verified BOOLEAN NOT NULL DEFAULT FALSE,
+            official_contact_url VARCHAR(2048) NOT NULL,
+            evidence_source_url VARCHAR(2048) NOT NULL,
+            evidence_source_type VARCHAR(32) NOT NULL,
+            evidence_summary TEXT,
+            retrieved_at TIMESTAMPTZ NOT NULL,
+            verified_at TIMESTAMPTZ,
+            verification_status VARCHAR(24) NOT NULL DEFAULT 'unverified',
+            created_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),
+            updated_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),
+            CONSTRAINT uq_official_contact_scholarship_url UNIQUE (scholarship_id, official_contact_url)
+        """,
+        "sqlite": """
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            scholarship_id INTEGER NOT NULL REFERENCES scholarships(id),
+            institution_name VARCHAR(255) NOT NULL,
+            department_name VARCHAR(255),
+            programme_name VARCHAR(255),
+            contact_type VARCHAR(64) NOT NULL DEFAULT 'programme_office',
+            contact_role VARCHAR(120),
+            published_contact_name VARCHAR(255),
+            official_email VARCHAR(320),
+            email_verified BOOLEAN NOT NULL DEFAULT FALSE,
+            official_contact_url VARCHAR(2048) NOT NULL,
+            evidence_source_url VARCHAR(2048) NOT NULL,
+            evidence_source_type VARCHAR(32) NOT NULL,
+            evidence_summary TEXT,
+            retrieved_at DATETIME NOT NULL,
+            verified_at DATETIME,
+            verification_status VARCHAR(24) NOT NULL DEFAULT 'unverified',
+            created_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+            updated_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+            CONSTRAINT uq_official_contact_scholarship_url UNIQUE (scholarship_id, official_contact_url)
+        """,
+    },
 }
 
 #: Index definitions as ``name ON table (columns)``, without the CREATE prefix.
@@ -301,6 +347,11 @@ NEW_TABLE_INDEXES: dict[str, list[str]] = {
         "ix_outreach_user_follow_up ON professor_outreach_records (user_id, follow_up_due_at)",
         "ix_outreach_professor_id ON professor_outreach_records (professor_id)",
         "ix_outreach_scholarship_id ON professor_outreach_records (scholarship_id)",
+    ],
+    "official_contacts": [
+        "ix_official_contacts_scholarship_id ON official_contacts (scholarship_id)",
+        "ix_official_contacts_institution ON official_contacts (institution_name)",
+        "ix_official_contacts_verification ON official_contacts (verification_status)",
     ],
 }
 
