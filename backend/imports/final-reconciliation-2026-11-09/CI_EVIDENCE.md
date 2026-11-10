@@ -41,14 +41,17 @@ client/server, or Docker). Not a pass.
 
 ## Exact-HEAD CI
 
-**Latest verified remediation commit:** `14c6d02527898a8b72e195e87b03a107ee41b600`
+**Code HEAD tested:** `33cedd69d8a777a6c92e39d2d2718d9699a443f7`
+**Documentation-only commit:** created by this sync (no code or package-data change)
+**Latest verified remediation commit:** `14c6d02527898a8b72e195e87b03a107ee41b600` (historical remediation evidence)
 
-**Exact-HEAD ScholarZone CI run:** `42793582692` — SUCCESS
-https://github.com/gopal735/ScholarZone/actions/runs/42793582692
+**Exact-HEAD ScholarZone CI run #699:** SUCCESS — https://github.com/gopal735/ScholarZone/actions/runs/42800155446
 
 **Result:** 18/18 jobs passed (backend-tests, Gate 1/2 PostgreSQL 16 and 18,
 migration, preflight, schema compatibility, frontend, snapshot, import-smoke,
 zero-paid guard, git-integrity, env-config).
+
+**Frontend tests:** 486/486 passed, 25/25 test files.
 
 **Backend tests:** 6,204 passed, 15 skipped.
 
