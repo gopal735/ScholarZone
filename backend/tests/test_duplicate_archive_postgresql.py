@@ -259,7 +259,7 @@ def validate_disposable_database_url(test_url: str) -> tuple[bool, str]:
             return False, f"Host '{host}' not in allowed disposable hosts"
 
         db_name = parsed.path.lstrip("/") if parsed.path else ""
-        allowed_dbs = {"test", "test_purge", "pytest", "postgres", "duplicate_archive_test"}
+        allowed_dbs = {"test", "test_purge", "pytest", "postgres", "duplicate_archive_test", "test_duplicate_archive"}
         if db_name not in allowed_dbs:
             return False, f"Database '{db_name}' not in allowed disposable databases"
 
@@ -483,10 +483,10 @@ def test_pair_1_lund_university_archive(populated_db: PgConnection):
     with populated_db.cursor() as cur:
         cur.execute("""
             UPDATE scholarships
-            SET is_archived = 1,
+            SET is_archived = TRUE,
                 archived_at = COALESCE(archived_at, %s),
                 archived_reason = %s
-            WHERE id = %s AND is_archived = 0
+            WHERE id = %s AND is_archived = FALSE
         """, (datetime.utcnow(), archived_reason, duplicate_id))
         rows_affected = cur.rowcount
         populated_db.commit()
@@ -576,10 +576,10 @@ def test_idempotent_archive(populated_db: PgConnection):
     with populated_db.cursor() as cur:
         cur.execute("""
             UPDATE scholarships
-            SET is_archived = 1,
+            SET is_archived = TRUE,
                 archived_at = COALESCE(archived_at, %s),
                 archived_reason = %s
-            WHERE id = %s AND is_archived = 0
+            WHERE id = %s AND is_archived = FALSE
         """, (datetime.utcnow(), "Archive-only test", duplicate_id))
         first_rows = cur.rowcount
         populated_db.commit()
@@ -590,10 +590,10 @@ def test_idempotent_archive(populated_db: PgConnection):
     with populated_db.cursor() as cur:
         cur.execute("""
             UPDATE scholarships
-            SET is_archived = 1,
+            SET is_archived = TRUE,
                 archived_at = COALESCE(archived_at, %s),
                 archived_reason = %s
-            WHERE id = %s AND is_archived = 0
+            WHERE id = %s AND is_archived = FALSE
         """, (datetime.utcnow(), "Archive-only test idempotent", duplicate_id))
         second_rows = cur.rowcount
         populated_db.commit()
@@ -613,10 +613,10 @@ def test_transaction_rollback(populated_db: PgConnection):
     with populated_db.cursor() as cur:
         cur.execute("""
             UPDATE scholarships
-            SET is_archived = 1,
+            SET is_archived = TRUE,
                 archived_at = %s,
                 archived_reason = %s
-            WHERE id = %s AND is_archived = 0
+            WHERE id = %s AND is_archived = FALSE
         """, (datetime.utcnow(), "Rollback test", duplicate_id))
 
     # Verify within transaction (still open)
@@ -676,10 +676,10 @@ def test_all_five_pairs_archived(populated_db: PgConnection):
         with populated_db.cursor() as cur:
             cur.execute("""
                 UPDATE scholarships
-                SET is_archived = 1,
+                SET is_archived = TRUE,
                     archived_at = COALESCE(archived_at, %s),
                     archived_reason = %s
-                WHERE id = %s AND is_archived = 0
+                WHERE id = %s AND is_archived = FALSE
             """, (datetime.utcnow(), f"Duplicate of ID {canonical_id}; archive-only test", duplicate_id))
             rows_affected = cur.rowcount
         populated_db.commit()
@@ -719,10 +719,10 @@ def test_coverage_rows_preserved_on_archive(populated_db: PgConnection):
     with populated_db.cursor() as cur:
         cur.execute("""
             UPDATE scholarships
-            SET is_archived = 1,
+            SET is_archived = TRUE,
                 archived_at = %s,
                 archived_reason = %s
-            WHERE id = 753 AND is_archived = 0
+            WHERE id = 753 AND is_archived = FALSE
         """, (datetime.utcnow(), "Archive-only test coverage preservation"))
         populated_db.commit()
 
@@ -748,10 +748,10 @@ def test_projection_counts(populated_db: PgConnection):
         with populated_db.cursor() as cur:
             cur.execute("""
                 UPDATE scholarships
-                SET is_archived = 1,
+                SET is_archived = TRUE,
                     archived_at = COALESCE(archived_at, %s),
                     archived_reason = %s
-                WHERE id = %s AND is_archived = 0
+                WHERE id = %s AND is_archived = FALSE
             """, (datetime.utcnow(), f"Duplicate of ID {canonical_id}; projection test", duplicate_id))
         populated_db.commit()
 
