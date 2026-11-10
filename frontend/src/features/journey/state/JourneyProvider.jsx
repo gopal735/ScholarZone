@@ -1,4 +1,4 @@
-﻿import { useCallback, useEffect, useMemo, useReducer, useRef, useState } from 'react'
+import { useCallback, useEffect, useLayoutEffect, useMemo, useReducer, useRef, useState } from 'react'
 import { JourneyContext } from './journeyContext.js'
 import { ACTIONS, journeyReducer } from './journeyReducer.js'
 import {
@@ -50,7 +50,10 @@ export function JourneyProvider({ children }) {
 
   /** Always holds the latest state reference to prevent persisting stale closures. */
   const latestStateRef = useRef(state)
-  latestStateRef.current = state
+
+  useLayoutEffect(() => {
+    latestStateRef.current = state
+  }, [state])
 
   /** Tracks unpersisted edits that must be flushed on unmount/pagehide. */
   const isDirtyRef = useRef(false)
@@ -90,46 +93,16 @@ export function JourneyProvider({ children }) {
     }
   }, [])
 
-  /**
-   * Flush any pending write immediately.
-   * Returns true on success, false if failed or suppressed.
-   */
-  const doFlush = useCallback(() => {
-    if (pendingTimerRef.current) {
-      window.clearTimeout(pendingTimerRef.current)
-      pendingTimerRef.current = null
-    }
-    if (suppressPersistRef.current) {
-      return false
-    }
-    return performSave(latestStateRef.current)
-  }, [performSave])
-
-  /**
-   * Cancel a pending write without performing it.
-   */
-  const cancelPendingWrite = useCallback(() => {
-    if (pendingTimerRef.current) {
-      window.clearTimeout(pendingTimerRef.current)
-      pendingTimerRef.current = null
-    }
-    isDirtyRef.current = false
-  }, [])
-
-  /** Persist immediately, reporting failure rather than swallowing it. */
-  const flushPendingWrite = useCallback(() => {
-    return doFlush()
-  }, [doFlush])
-
-  /* Debounced persistence for edits while mounted. */
+  /* Persist, debounced. A failed write leaves the state on screen and raises a
+     notice; it never reverts what the student just entered. */
   useEffect(() => {
     if (state === bootstrap.state) return undefined
     if (suppressPersistRef.current) {
+      // The state is the deliberate result of a reset, and the store has already
+      // been emptied. Writing it back would recreate a key with no content.
       suppressPersistRef.current = false
       return undefined
     }
-
-    isDirtyRef.current = true
 
     if (pendingTimerRef.current) {
       window.clearTimeout(pendingTimerRef.current)
@@ -137,46 +110,41 @@ export function JourneyProvider({ children }) {
 
     pendingTimerRef.current = window.setTimeout(() => {
       pendingTimerRef.current = null
-      performSave(latestStateRef.current)
+      performSave(state)
     }, PERSIST_DEBOUNCE_MS)
 
     return () => {
       if (pendingTimerRef.current) {
         window.clearTimeout(pendingTimerRef.current)
         pendingTimerRef.current = null
+        // Flush latest state on unmount (route exit)
+        performSave(latestStateRef.current)
       }
     }
   }, [state, bootstrap.state, performSave])
 
   /**
-   * Unmount-safe flush: guarantees that latest state is flushed before the
-   * Provider is torn down when the student navigates away from journey routes.
+   * Flush any pending write immediately. Returns true on success.
+   * Safe to call multiple times.
    */
-  useEffect(() => {
-    isMountedRef.current = true
-    return () => {
-      isMountedRef.current = false
-      if (pendingTimerRef.current) {
-        window.clearTimeout(pendingTimerRef.current)
-        pendingTimerRef.current = null
-      }
-      if (isDirtyRef.current && !suppressPersistRef.current) {
-        performSave(latestStateRef.current)
-      }
+  const doFlush = useCallback(() => {
+    if (pendingTimerRef.current) {
+      window.clearTimeout(pendingTimerRef.current)
+      pendingTimerRef.current = null
     }
+    return performSave(latestStateRef.current)
   }, [performSave])
 
   /**
-   * Flush pending writes when the tab/page is about to unload or become hidden.
-   * Dispatches immediately to prevent data loss on tab close or backgrounding.
+   * Flush pending writes when the page is about to unload or become hidden.
+   * This prevents data loss when the user closes the tab, navigates away,
+   * or switches tabs within the debounce window.
    */
   useEffect(() => {
     if (typeof window === 'undefined') return undefined
 
     const handlePageHide = () => {
-      if (isDirtyRef.current && !suppressPersistRef.current) {
-        doFlush()
-      }
+      doFlush()
     }
 
     const handleVisibilityChange = () => {
@@ -199,6 +167,8 @@ export function JourneyProvider({ children }) {
       window.removeEventListener('beforeunload', handleBeforeUnload)
     }
   }, [doFlush])
+
+
 
   /**
    * Reflect the display mode on the document, because the page is Bangla-first
@@ -248,7 +218,10 @@ export function JourneyProvider({ children }) {
 
   const reset = useCallback(() => {
     // Cancel first so a queued debounce cannot restore the state just removed.
-    cancelPendingWrite()
+    if (pendingTimerRef.current) {
+      window.clearTimeout(pendingTimerRef.current)
+      pendingTimerRef.current = null
+    }
     const result = resetJourneyStorage()
     dispatch({ type: ACTIONS.RESET })
     // The post-reset state is the default document, which is what an empty store
@@ -259,16 +232,19 @@ export function JourneyProvider({ children }) {
       setStorageProblem('unavailable')
     }
     return result
-  }, [cancelPendingWrite])
+  }, [])
 
   const replaceDocument = useCallback(
     (document) => {
-      cancelPendingWrite()
+      if (pendingTimerRef.current) {
+        window.clearTimeout(pendingTimerRef.current)
+        pendingTimerRef.current = null
+      }
       const next = normalizeJourneyDocument(document)
       dispatch({ type: ACTIONS.HYDRATE, payload: next })
       return next
     },
-    [cancelPendingWrite],
+    [],
   )
 
   const value = useMemo(
@@ -284,10 +260,10 @@ export function JourneyProvider({ children }) {
       setLanguage,
       reset,
       replaceDocument,
-      flushPendingWrite,
+      flushPendingWrite: doFlush,
       exportJson: () => buildExport(state),
     }),
-    [state, storageAvailable, storageProblem, lastSavedAt, setLanguage, reset, replaceDocument, flushPendingWrite],
+    [state, storageAvailable, storageProblem, lastSavedAt, setLanguage, reset, replaceDocument, doFlush],
   )
 
   return <JourneyContext.Provider value={value}>{children}</JourneyContext.Provider>
