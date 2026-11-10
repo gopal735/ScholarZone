@@ -28,6 +28,7 @@ from app.models import (
     ScholarshipSnapshot,
     ScholarshipVerificationHistory,
 )
+import app.models_supervisor  # noqa: F401 - registers OfficialContact in Base.metadata
 from app.repositories.scholarships import public_visibility_conditions
 from app.services.counting.catalogue import catalogue_counts
 from app.services.retention_contract import (
@@ -206,7 +207,7 @@ class TestReferenceIntegrity:
         assert report["integrity_uncertain"] is False
         assert report["unclassified_relationships"] == []
         assert report["verdict"] == "ALL_RELATIONSHIPS_CLASSIFIED"
-        assert report["relationship_count"] == 13
+        assert report["relationship_count"] == 14
 
     def test_the_report_is_introspected_not_hardcoded(self):
         """A table added later must appear, or it is invisible to the audit."""
@@ -238,6 +239,7 @@ class TestReferenceIntegrity:
             "ScholarshipProfessorLink",
             "SupervisorSourceEvidence",
             "ProfessorOutreachRecord",
+            "OfficialContact",
         }
 
     @pytest.mark.parametrize(
