@@ -1,5 +1,5 @@
-﻿import { useCallback, useMemo, useState } from 'react'
-import { useParams } from 'react-router-dom'
+import { useCallback, useMemo } from 'react'
+import { useParams, useNavigate } from 'react-router-dom'
 import { useJourney } from '../hooks/useJourney.js'
 import { useJourneyI18n, LANGUAGE_MODES } from '../i18n/useJourneyI18n.js'
 import {
@@ -36,32 +36,18 @@ const MODULES = {
 /**
  * The journey page.
  *
- * The layout is a three-region document: the stepper on the left, the active
- * module in the middle, and a right rail carrying the next actions, the
- * checklist summary and the data tools. On a narrow viewport the rail moves
- * below the module rather than beside it, which is what keeps the module's own
- * controls full-width and touch-sized.
- *
- * Progress is read from `overallCompletion` over the same normalised document
- * the modules edit, so the header figure, the stepper rails and the side rail
- * cannot disagree — there is exactly one calculation and every surface reads it.
+ * URL is the source of truth for the active step so browser back/forward,
+ * direct links, and user navigation stay synchronized with rendered content.
  */
 export function JourneyPage() {
   const { t, both, mode } = useJourneyI18n()
   const { state, setLanguage, storage } = useJourney()
-  /**
-   * The active step is initialised from the URL, so a reader can be sent to
-   * "the timeline" rather than to the top of a workspace they then have to find
-   * their way through. The URL is the starting point only: the stepper owns the
-   * state afterwards, because a workspace that rewrites its address bar on every
-   * click spends its time fighting the router.
-   *
-   * An unknown segment falls back to the first step rather than rendering
-   * nothing, so a stale link still lands somewhere useful.
-   */
+  const navigate = useNavigate()
   const { stepId: stepIdParam } = useParams()
-  const initialStep = JOURNEY_STEPS.some((step) => step.id === stepIdParam) ? stepIdParam : JOURNEY_STEPS[0].id
-  const [activeStepId, setActiveStepId] = useState(initialStep)
+
+  const activeStepId = JOURNEY_STEPS.some((step) => step.id === stepIdParam)
+    ? stepIdParam
+    : JOURNEY_STEPS[0].id
 
   const completion = useMemo(() => overallCompletion(state), [state])
   const summary = useMemo(() => checklistSummary(state), [state])
@@ -80,13 +66,17 @@ export function JourneyPage() {
   const ActiveModule = MODULES[activeStep.id]
   const finishedSteps = summary.filter((row) => row.countable > 0 && row.complete === row.countable).length
 
-  const goToStep = useCallback((stepId) => {
-    setActiveStepId(stepId)
-    if (typeof document !== 'undefined') {
-      const node = document.getElementById('journey-main')
-      if (node && typeof node.focus === 'function') node.focus()
-    }
-  }, [])
+  const goToStep = useCallback(
+    (stepId) => {
+      if (stepId === activeStepId) return
+      navigate(`/bangladesh-journey/${stepId}`, { replace: false })
+      if (typeof document !== 'undefined') {
+        const node = document.getElementById('journey-main')
+        if (node && typeof node.focus === 'function') node.focus()
+      }
+    },
+    [activeStepId, navigate],
+  )
 
   const title = both('app.title')
   const tagline = both('app.tagline')

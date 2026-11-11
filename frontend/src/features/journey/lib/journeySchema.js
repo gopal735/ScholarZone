@@ -52,6 +52,7 @@ export const SOURCE_CATEGORIES = ['university', 'scholarship-provider', 'governm
 export const SOURCE_STATUSES = ['independently-verified', 'checked-by-me', 'unknown']
 export const LANGUAGE_MODES = ['bn', 'en', 'both']
 export const ENGLISH_TEST_STATUSES = ['not_taken', 'booked', 'taken', 'not_required']
+export const ELIGIBILITY_CRITERION_STATUSES = ['meets', 'does-not-meet', 'unknown', 'needs-review']
 
 /** True for one of a fixed set, else the fallback. */
 function oneOf(value, allowed, fallback) {
