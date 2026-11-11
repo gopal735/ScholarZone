@@ -1,4 +1,4 @@
-﻿import { useCallback, useEffect, useMemo, useReducer, useRef, useState } from 'react'
+﻿import { useCallback, useEffect, useLayoutEffect, useMemo, useReducer, useRef, useState } from 'react'
 import { JourneyContext } from './journeyContext.js'
 import { ACTIONS, journeyReducer } from './journeyReducer.js'
 import {
@@ -18,28 +18,18 @@ const PERSIST_DEBOUNCE_MS = 400
 /**
  * Provider for the Bangladesh Applicant Journey.
  *
- * Three responsibilities live here and nowhere else:
- *
- * 1. **Hydrating from storage exactly once.** The initial state comes from
- *    `loadJourneyState`, which normalises or falls back to defaults. A bad read
- *    becomes a `problem`, never a crash.
- * 2. **Debounced persistence with honest failure reporting.** A write that is
- *    refused is surfaced as `storageNotice` rather than swallowed, so the
- *    workspace can say "progress cannot be saved" instead of implying otherwise.
- * 3. **Cross-tab coherence.** The `storage` event is the only signal that
- *    another tab changed this feature's key. It is applied only when the payload
- *    is newer than the last write this tab performed, which is what stops a
- *    reload of an older tab from reverting a newer edit.
+ * Responsibilities:
+ * 1. Hydrating from storage once on mount.
+ * 2. Debounced persistence with honest failure reporting.
+ * 3. Unmount-safe persistence: latest state is saved synchronously when the
+ *    provider unmounts (e.g., navigating away from journey routes).
+ * 4. Visibility/pagehide persistence: flushes latest state when page is hidden
+ *    or about to unload.
+ * 5. Cross-tab coherence via storage events.
  */
 export function JourneyProvider({ children }) {
   /**
    * The one-time storage read.
-   *
-   * A lazy `useState` initialiser rather than a `useRef` populated during
-   * render: React's rules treat reading a ref during render as unsafe, and the
-   * provider would otherwise read the store twice under StrictMode while
-   * reporting the same values. The initialiser runs once, on mount, and its
-   * result is ordinary state afterwards.
    */
   const [bootstrap] = useState(() => {
     const loaded = loadJourneyState()
@@ -54,15 +44,54 @@ export function JourneyProvider({ children }) {
   const [storageProblem, setStorageProblem] = useState(bootstrap.problem)
   const [storageAvailable, setStorageAvailable] = useState(bootstrap.available)
   const [lastSavedAt, setLastSavedAt] = useState(null)
-  /** The timestamp of the most recent payload this tab observed, for cross-tab ordering. */
+
+  /** Tracks whether provider is currently mounted to guard setState in unmount paths. */
+  const isMountedRef = useRef(true)
+
+  /** Always holds the latest state reference to prevent persisting stale closures. */
+  const latestStateRef = useRef(state)
+
+  useLayoutEffect(() => {
+    latestStateRef.current = state
+  }, [state])
+
+  /** Tracks unpersisted edits that must be flushed on unmount/pagehide. */
+  const isDirtyRef = useRef(false)
+
+  /** Timestamp of most recent write by this tab, for cross-tab ordering. */
   const lastWriteRef = useRef(null)
   const pendingTimerRef = useRef(null)
+
   /**
    * Set when a deliberate action (reset) has just removed the stored data, so
-   * the effect that would otherwise write the resulting default document does
-   * not recreate the key the student just emptied.
+   * subsequent effects/unmount do not recreate the emptied key.
    */
   const suppressPersistRef = useRef(false)
+
+  /**
+   * Synchronously persists a document to storage and updates state/ref metadata.
+   * Safe to call during unmount (bypasses setState when unmounted).
+   */
+  const performSave = useCallback((stateToSave) => {
+    if (!stateToSave) return false
+    try {
+      saveJourneyState(stateToSave)
+      lastWriteRef.current = new Date().toISOString()
+      isDirtyRef.current = false
+      if (isMountedRef.current) {
+        setStorageProblem(null)
+        setStorageAvailable(true)
+        setLastSavedAt(lastWriteRef.current)
+      }
+      return true
+    } catch (error) {
+      if (isMountedRef.current) {
+        setStorageProblem(error?.reason === 'quota-exceeded' ? 'quota-exceeded' : 'unavailable')
+        setStorageAvailable(false)
+      }
+      return false
+    }
+  }, [])
 
   /* Persist, debounced. A failed write leaves the state on screen and raises a
      notice; it never reverts what the student just entered. */
@@ -79,64 +108,69 @@ export function JourneyProvider({ children }) {
       window.clearTimeout(pendingTimerRef.current)
     }
 
+    isDirtyRef.current = true
+
     pendingTimerRef.current = window.setTimeout(() => {
       pendingTimerRef.current = null
-      try {
-        saveJourneyState(state)
-        lastWriteRef.current = new Date().toISOString()
-        setStorageProblem(null)
-        setStorageAvailable(true)
-        setLastSavedAt(lastWriteRef.current)
-      } catch (error) {
-        // A steady inability to write is a notice, not an error state: the
-        // workspace stays usable and the student can still export.
-        setStorageProblem(error?.reason === 'quota-exceeded' ? 'quota-exceeded' : 'unavailable')
-        setStorageAvailable(false)
-      }
+      performSave(state)
     }, PERSIST_DEBOUNCE_MS)
 
     return () => {
       if (pendingTimerRef.current) {
         window.clearTimeout(pendingTimerRef.current)
         pendingTimerRef.current = null
+        // Only flush if we have unpersisted edits AND we're not suppressing (reset)
+        if (isDirtyRef.current && !suppressPersistRef.current) {
+          performSave(latestStateRef.current)
+        }
       }
     }
-    // `bootstrap.state` is a lazy-initialiser result that never changes, so it
-    // is stable across renders by construction rather than by the dep array.
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [state])
+  }, [state, bootstrap.state, performSave])
 
   /**
-   * Cancel a pending write without performing it.
-   *
-   * Deliberately does not write the current state first. A write would be
-   * pointless work, and a queued write firing after a delete would resurrect
-   * data the student just removed — the classic debounce race, where the old
-   * payload lands after the deliberate action.
+   * Flush any pending write immediately. Returns true on success.
+   * Safe to call multiple times.
    */
-  const cancelPendingWrite = useCallback(() => {
+  const doFlush = useCallback(() => {
     if (pendingTimerRef.current) {
       window.clearTimeout(pendingTimerRef.current)
       pendingTimerRef.current = null
     }
-  }, [])
+    return performSave(latestStateRef.current)
+  }, [performSave])
 
-  /** Persist immediately, reporting failure rather than swallowing it. */
-  const flushPendingWrite = useCallback(() => {
-    cancelPendingWrite()
-    try {
-      saveJourneyState(state)
-      lastWriteRef.current = new Date().toISOString()
-      setStorageProblem(null)
-      setStorageAvailable(true)
-      setLastSavedAt(lastWriteRef.current)
-      return true
-    } catch (error) {
-      setStorageProblem(error?.reason === 'quota-exceeded' ? 'quota-exceeded' : 'unavailable')
-      setStorageAvailable(false)
-      return false
+  /**
+   * Flush pending writes when the page is about to unload or become hidden.
+   * This prevents data loss when the user closes the tab, navigates away,
+   * or switches tabs within the debounce window.
+   */
+  useEffect(() => {
+    if (typeof window === 'undefined') return undefined
+
+    const handlePageHide = () => {
+      doFlush()
     }
-  }, [cancelPendingWrite, state])
+
+    const handleVisibilityChange = () => {
+      if (document.visibilityState === 'hidden') {
+        handlePageHide()
+      }
+    }
+
+    const handleBeforeUnload = () => {
+      handlePageHide()
+    }
+
+    window.addEventListener('pagehide', handlePageHide)
+    document.addEventListener('visibilitychange', handleVisibilityChange)
+    window.addEventListener('beforeunload', handleBeforeUnload)
+
+    return () => {
+      window.removeEventListener('pagehide', handlePageHide)
+      document.removeEventListener('visibilitychange', handleVisibilityChange)
+      window.removeEventListener('beforeunload', handleBeforeUnload)
+    }
+  }, [doFlush])
 
   /**
    * Reflect the display mode on the document, because the page is Bangla-first
@@ -186,7 +220,10 @@ export function JourneyProvider({ children }) {
 
   const reset = useCallback(() => {
     // Cancel first so a queued debounce cannot restore the state just removed.
-    cancelPendingWrite()
+    if (pendingTimerRef.current) {
+      window.clearTimeout(pendingTimerRef.current)
+      pendingTimerRef.current = null
+    }
     const result = resetJourneyStorage()
     dispatch({ type: ACTIONS.RESET })
     // The post-reset state is the default document, which is what an empty store
@@ -197,16 +234,19 @@ export function JourneyProvider({ children }) {
       setStorageProblem('unavailable')
     }
     return result
-  }, [cancelPendingWrite])
+  }, [])
 
   const replaceDocument = useCallback(
     (document) => {
-      cancelPendingWrite()
+      if (pendingTimerRef.current) {
+        window.clearTimeout(pendingTimerRef.current)
+        pendingTimerRef.current = null
+      }
       const next = normalizeJourneyDocument(document)
       dispatch({ type: ACTIONS.HYDRATE, payload: next })
       return next
     },
-    [cancelPendingWrite],
+    [],
   )
 
   const value = useMemo(
@@ -222,11 +262,19 @@ export function JourneyProvider({ children }) {
       setLanguage,
       reset,
       replaceDocument,
-      flushPendingWrite,
+      flushPendingWrite: doFlush,
       exportJson: () => buildExport(state),
     }),
-    [state, storageAvailable, storageProblem, lastSavedAt, setLanguage, reset, replaceDocument, flushPendingWrite],
+    [state, storageAvailable, storageProblem, lastSavedAt, setLanguage, reset, replaceDocument, doFlush],
   )
+
+  // Track mount state for setState guards
+  useEffect(() => {
+    isMountedRef.current = true
+    return () => {
+      isMountedRef.current = false
+    }
+  }, [])
 
   return <JourneyContext.Provider value={value}>{children}</JourneyContext.Provider>
 }
