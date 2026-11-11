@@ -22,7 +22,7 @@ const PERSIST_DEBOUNCE_MS = 400
  * 1. Hydrating from storage once on mount.
  * 2. Debounced persistence with honest failure reporting.
  * 3. Unmount-safe persistence: latest state is saved synchronously when the
- *    provider unmounts (e.g., navigating away from journey routes).
+ *    provider actually unmounts (e.g., navigating away from journey routes).
  * 4. Visibility/pagehide persistence: flushes latest state when page is hidden
  *    or about to unload.
  * 5. Cross-tab coherence via storage events.
@@ -108,20 +108,38 @@ export function JourneyProvider({ children }) {
       window.clearTimeout(pendingTimerRef.current)
     }
 
+    isDirtyRef.current = true
+
     pendingTimerRef.current = window.setTimeout(() => {
       pendingTimerRef.current = null
       performSave(state)
     }, PERSIST_DEBOUNCE_MS)
 
+    // Cleanup ONLY cancels the timer. Does NOT flush.
+    // Flushing on unmount is handled by a separate mount-only effect.
     return () => {
       if (pendingTimerRef.current) {
         window.clearTimeout(pendingTimerRef.current)
         pendingTimerRef.current = null
-        // Flush latest state on unmount (route exit)
-        performSave(latestStateRef.current)
       }
     }
   }, [state, bootstrap.state, performSave])
+
+  /**
+   * Provider unmount effect: flushes latest dirty state when the provider
+   * actually unmounts (e.g., navigating away from journey routes).
+   * This runs ONLY on unmount, not on state changes.
+   */
+  useEffect(() => {
+    isMountedRef.current = true
+    return () => {
+      isMountedRef.current = false
+      // Flush only if there are unpersisted edits and we're not suppressing (reset)
+      if (isDirtyRef.current && !suppressPersistRef.current) {
+        performSave(latestStateRef.current)
+      }
+    }
+  }, [performSave])
 
   /**
    * Flush any pending write immediately. Returns true on success.
@@ -167,8 +185,6 @@ export function JourneyProvider({ children }) {
       window.removeEventListener('beforeunload', handleBeforeUnload)
     }
   }, [doFlush])
-
-
 
   /**
    * Reflect the display mode on the document, because the page is Bangla-first
@@ -227,6 +243,7 @@ export function JourneyProvider({ children }) {
     // The post-reset state is the default document, which is what an empty store
     // means; writing it back would recreate a key the student just emptied.
     suppressPersistRef.current = true
+    isDirtyRef.current = false
     if (!result.ok && result.reason === 'unavailable') {
       setStorageAvailable(false)
       setStorageProblem('unavailable')
