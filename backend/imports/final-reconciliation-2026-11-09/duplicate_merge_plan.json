@@ -1,0 +1,251 @@
+{
+  "merge_plan_date": "2026-11-09",
+  "total_pairs": 5,
+  "merge_strategy": "transactional_idempotent_auditable",
+  "prerequisites": [
+    "Backup database",
+    "Verify foreign key constraints",
+    "Owner approval for each pair",
+    "Test on staging environment"
+  ],
+  "pairs": [
+    {
+      "pair_id": 1,
+      "canonical_title": "Lund University Global Scholarship",
+      "survivor_id": 183,
+      "duplicate_id": 753,
+      "operations": [
+        {
+          "step": 1,
+          "operation": "CONSOLIDATE_URLS",
+          "description": "Merge official_source_url and application_link from ID 753 into ID 183",
+          "sql": "UPDATE scholarships SET official_source_url = json_group_array(DISTINCT official_source_url), application_link = json_group_array(DISTINCT application_link) WHERE id = 183",
+          "validation": "Verify both URLs accessible"
+        },
+        {
+          "step": 2,
+          "operation": "CONSOLIDATE_DEGREE",
+          "description": "Merge degree levels: 'Master's, PhD' + 'Bachelor's, Master's' = 'Bachelor's, Master's, PhD'",
+          "sql": "UPDATE scholarships SET degree = 'Bachelor\\'s, Master\\'s, PhD' WHERE id = 183",
+          "validation": "Check degree normalization"
+        },
+        {
+          "step": 3,
+          "operation": "UPDATE_FOREIGN_KEYS",
+          "description": "Reassign all FK references from ID 753 to ID 183",
+          "tables": ["scholarship_supervisor_coverage", "scholarship_snapshots", "discovery_candidates", "application_records", "saved_scholarships", "scholarship_verification_history", "scholarship_reviews", "scholarship_fetch_attempts", "scholarship_professor_links", "official_contacts", "professor_outreach_records", "application_checklist_items", "supervisor_source_evidence"],
+          "sql_template": "UPDATE {table} SET scholarship_id = 183 WHERE scholarship_id = 753",
+          "validation": "Verify row counts preserved"
+        },
+        {
+          "step": 4,
+          "operation": "ARCHIVE_DUPLICATE",
+          "description": "Archive ID 753 instead of delete",
+          "sql": "UPDATE scholarships SET is_archived = 1, archived_at = datetime('now'), archived_reason = 'Duplicate of ID 183 (Lund University Global Scholarship) - merged 2026-11-09' WHERE id = 753",
+          "validation": "ID 753 is_archived = 1"
+        },
+        {
+          "step": 5,
+          "operation": "CREATE_AUDIT_MAPPING",
+          "description": "Record the merge in scholarship_restore_records",
+          "sql": "INSERT INTO scholarship_restore_records (operation_id, scholarship_id, source_version_id, target_version_id, operator, reason, restored_fields, outcome) VALUES ('merge_20261109_1', 753, NULL, 183, 'reconciliation', 'Merged duplicate into canonical ID 183', '{\"official_source_url\", \"application_link\", \"degree\"}', 'success')",
+          "validation": "Audit record created"
+        }
+      ],
+      "rollback_plan": "DELETE FROM scholarship_restore_records WHERE operation_id = 'merge_20261109_1'; UPDATE scholarships SET is_archived = 0 WHERE id = 753; UPDATE affected tables SET scholarship_id = 753 WHERE scholarship_id = 183 AND ...;",
+      "estimated_duration_ms": 500,
+      "risk_level": "LOW"
+    },
+    {
+      "pair_id": 2,
+      "canonical_title": "Copenhagen Business School Danish Government Scholarship",
+      "survivor_id": 270,
+      "duplicate_id": 1244,
+      "operations": [
+        {
+          "step": 1,
+          "operation": "CONSOLIDATE_URLS",
+          "description": "Merge URLs from ID 1244 into ID 270",
+          "validation": "Both cbs.dk URLs accessible"
+        },
+        {
+          "step": 2,
+          "operation": "CONSOLIDATE_FUNDING",
+          "description": "Resolve funding discrepancy: 'Partial' vs 'Partial to Full' -> 'Partial to Full' (more complete)",
+          "validation": "Verify with official source"
+        },
+        {
+          "step": 3,
+          "operation": "CONSOLIDATE_DEGREE",
+          "description": "Merge degree: 'Master's, PhD' + 'Master's (MSc)' -> 'Master's, PhD'",
+          "validation": "Check degree normalization"
+        },
+        {
+          "step": 4,
+          "operation": "UPDATE_FOREIGN_KEYS",
+          "description": "Reassign FK from 1244 to 270",
+          "tables": ["scholarship_supervisor_coverage", "scholarship_snapshots", "discovery_candidates", "application_records", "saved_scholarships", "scholarship_verification_history", "scholarship_reviews", "scholarship_fetch_attempts", "scholarship_professor_links", "official_contacts", "professor_outreach_records", "application_checklist_items", "supervisor_source_evidence"],
+          "validation": "Row counts preserved"
+        },
+        {
+          "step": 5,
+          "operation": "ARCHIVE_DUPLICATE",
+          "description": "Archive ID 1244",
+          "validation": "ID 1244 is_archived = 1"
+        },
+        {
+          "step": 6,
+          "operation": "CREATE_AUDIT_MAPPING",
+          "description": "Record merge in scholarship_restore_records",
+          "validation": "Audit record created"
+        }
+      ],
+      "rollback_plan": "Standard rollback",
+      "estimated_duration_ms": 500,
+      "risk_level": "LOW"
+    },
+    {
+      "pair_id": 3,
+      "canonical_title": "University of Copenhagen Danish Government Scholarship",
+      "survivor_id": 271,
+      "duplicate_id": 760,
+      "operations": [
+        {
+          "step": 1,
+          "operation": "CONSOLIDATE_URLS",
+          "description": "Merge ku.dk URLs from ID 760 into ID 271",
+          "validation": "Both ku.dk URLs accessible"
+        },
+        {
+          "step": 2,
+          "operation": "CONSOLIDATE_DEGREE",
+          "description": "Merge degree: 'Master's, PhD' + 'Master's' -> 'Master's, PhD'",
+          "validation": "Check degree normalization"
+        },
+        {
+          "step": 3,
+          "operation": "UPDATE_FOREIGN_KEYS",
+          "description": "Reassign FK from 760 to 271 (note: supervisor_coverage has 2 rows each)",
+          "tables": ["scholarship_supervisor_coverage", "scholarship_snapshots", "discovery_candidates", "application_records", "saved_scholarships", "scholarship_verification_history", "scholarship_reviews", "scholarship_fetch_attempts", "scholarship_professor_links", "official_contacts", "professor_outreach_records", "application_checklist_items", "supervisor_source_evidence"],
+          "validation": "Row counts preserved, handle 2 rows in supervisor_coverage"
+        },
+        {
+          "step": 4,
+          "operation": "ARCHIVE_DUPLICATE",
+          "description": "Archive ID 760",
+          "validation": "ID 760 is_archived = 1"
+        },
+        {
+          "step": 4,
+          "operation": "CREATE_AUDIT_MAPPING",
+          "description": "Record merge in scholarship_restore_records",
+          "validation": "Audit record created"
+        }
+      ],
+      "rollback_plan": "Standard rollback",
+      "estimated_duration_ms": 500,
+      "risk_level": "LOW"
+    },
+    {
+      "pair_id": 4,
+      "canonical_title": "Stipendium Hungaricum Scholarship Programme",
+      "survivor_id": 285,
+      "duplicate_id": 1277,
+      "operations": [
+        {
+          "step": 1,
+          "operation": "CONSOLIDATE_URLS",
+          "description": "Merge root domain and /apply_call path into ID 285",
+          "validation": "Both stipendiumhungaricum.hu URLs accessible"
+        },
+        {
+          "step": 2,
+          "operation": "CONSOLIDATE_DEGREE",
+          "description": "Merge degree lists, take union of all degree types",
+          "validation": "Check degree normalization"
+        },
+        {
+          "step": 3,
+          "operation": "UPDATE_FOREIGN_KEYS",
+          "description": "Reassign FK from 1277 to 285 (includes scholarship_image_audit)",
+          "tables": ["scholarship_image_audit", "scholarship_supervisor_coverage", "scholarship_snapshots", "discovery_candidates", "application_records", "saved_scholarships", "scholarship_verification_history", "scholarship_reviews", "scholarship_fetch_attempts", "scholarship_professor_links", "official_contacts", "professor_outreach_records", "application_checklist_items", "supervisor_source_evidence"],
+          "validation": "Row counts preserved, image_audit handled"
+        },
+        {
+          "step": 4,
+          "operation": "ARCHIVE_DUPLICATE",
+          "description": "Archive ID 1277",
+          "validation": "ID 1277 is_archived = 1"
+        },
+        {
+          "step": 5,
+          "operation": "CREATE_AUDIT_MAPPING",
+          "description": "Record merge in scholarship_restore_records",
+          "validation": "Audit record created"
+        }
+      ],
+      "rollback_plan": "Standard rollback",
+      "estimated_duration_ms": 500,
+      "risk_level": "LOW"
+    },
+    {
+      "pair_id": 5,
+      "canonical_title": "Fulbright Foreign Student Program",
+      "survivor_id": 1217,
+      "duplicate_id": 1309,
+      "operations": [
+        {
+          "step": 1,
+          "operation": "REQUIRE_MANUAL_REVIEW",
+          "description": "Different domains, different fully_funded values, different degree, different region. Must verify with Fulbright program before merge.",
+          "validation": "Owner confirmation required"
+        },
+        {
+          "step": 2,
+          "operation": "CONSOLIDATE_URLS_IF_MERGE",
+          "description": "If approved, merge foreign.fulbrightonline.org (application) and fulbright.state.gov (programme info) into ID 1217",
+          "validation": "Both URLs accessible"
+        },
+        {
+          "step": 3,
+          "operation": "RESOLVE_FUNDING_DISCREPANCY",
+          "description": "ID 1217: fully_funded=1, Fully Funded | ID 1309: fully_funded=null, Partial Funding. Must verify with official Fulbright source.",
+          "validation": "Official source confirmation"
+        },
+        {
+          "step": 4,
+          "operation": "CONSOLIDATE_DEGREE",
+          "description": "ID 1217: Master's, PhD, Research | ID 1309: Bachelor's, Master's, PhD. Determine correct scope.",
+          "validation": "Official source confirmation"
+        },
+        {
+          "step": 5,
+          "operation": "RESOLVE_REGION",
+          "description": "ID 1217: World Top Demand | ID 1309: North America. Determine canonical region.",
+          "validation": "Official source confirmation"
+        },
+        {
+          "step": 6,
+          "operation": "UPDATE_FOREIGN_KEYS_IF_MERGE",
+          "description": "If merge approved, reassign FK from 1309 to 1217",
+          "tables": ["scholarship_supervisor_coverage", "scholarship_snapshots", "discovery_candidates", "application_records", "saved_scholarships", "scholarship_verification_history", "scholarship_reviews", "scholarship_fetch_attempts", "scholarship_professor_links", "official_contacts", "professor_outreach_records", "application_checklist_items", "supervisor_source_evidence"],
+          "validation": "Row counts preserved"
+        },
+        {
+          "step": 7,
+          "operation": "ARCHIVE_DUPLICATE_IF_MERGE",
+          "description": "If merge approved, archive ID 1309",
+          "validation": "ID 1309 is_archived = 1"
+        }
+      ],
+      "rollback_plan": "Standard rollback",
+      "estimated_duration_ms": 1000,
+      "risk_level": "MEDIUM",
+      "requires_owner_approval": true
+    }
+  ],
+  "execution_order": [1, 2, 3, 4, 5],
+  "total_estimated_duration_ms": 3000,
+  "transaction_mode": "single_transaction_per_pair",
+  "dry_run_default": true
+}

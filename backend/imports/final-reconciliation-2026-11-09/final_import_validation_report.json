@@ -1,0 +1,114 @@
+{
+  "validation_timestamp": "2026-11-09",
+  "schema_version": "ScholarZone canonical catalogue v1",
+  "total_records_in_package": 26,
+  "import_operations": {
+    "NEW_INSERT": 0,
+    "EXISTING_CYCLE_UPDATE": 18,
+    "FUNDING_CORRECTION": 5,
+    "LIFECYCLE_CORRECTION": 2,
+    "DUPLICATE_RECONCILIATION_PROPOSAL": 5,
+    "BLOCKED": 6
+  },
+  "validations": {
+    "json_validity": {
+      "status": "PASS",
+      "details": "All final package files are valid JSON"
+    },
+    "schema_compliance": {
+      "status": "PASS",
+      "details": "All records conform to canonical catalogue contract (models.py)"
+    },
+    "required_fields": {
+      "status": "PASS",
+      "details": "All required fields present in cycle updates, funding corrections, lifecycle corrections"
+    },
+    "url_validity": {
+      "status": "WARNING",
+      "details": "URLs sourced from research ledger; not live-tested in this audit"
+    },
+    "duplicate_canonical_urls": {
+      "status": "PASS",
+      "details": "No duplicate official_source_url within import operations"
+    },
+    "duplicate_normalized_identity": {
+      "status": "WARNING",
+      "details": "5 duplicate pairs identified in existing catalogue (proposed for reconciliation, not auto-merged)"
+    },
+    "duplicate_ids": {
+      "status": "PASS",
+      "details": "No duplicate catalogue IDs in import operations"
+    },
+    "missing_source_evidence": {
+      "status": "PASS",
+      "details": "All import operations have source evidence from research ledger"
+    },
+    "unsupported_claims": {
+      "status": "PASS",
+      "details": "No unsupported claims in verified operations"
+    },
+    "date_validity": {
+      "status": "PASS",
+      "details": "All dates ISO 8601 format or null"
+    },
+    "deadline_consistency": {
+      "status": "PASS",
+      "details": "No contradictory deadline states"
+    },
+    "funding_consistency": {
+      "status": "PASS",
+      "details": "5 funding corrections address inconsistencies"
+    },
+    "country_taxonomy": {
+      "status": "PASS",
+      "details": "Countries match existing taxonomy"
+    },
+    "study_level_taxonomy": {
+      "status": "PASS",
+      "details": "Degree levels consistent"
+    },
+    "lifecycle_consistency": {
+      "status": "PASS",
+      "details": "2 lifecycle corrections address inconsistencies"
+    },
+    "successor_references": {
+      "status": "PASS",
+      "details": "Replacement programmes documented where applicable"
+    },
+    "existing_catalogue_duplicates": {
+      "status": "WARNING",
+      "details": "5 duplicate pairs identified; proposed for manual reconciliation"
+    },
+    "invalid_operations": {
+      "status": "PASS",
+      "details": "All operations valid types"
+    },
+    "foreign_key_integrity": {
+      "status": "PENDING_MANUAL_CHECK",
+      "details": "Requires manual foreign key check before duplicate merges"
+    },
+    "historical_data_preservation": {
+      "status": "PASS",
+      "details": "All lifecycle corrections specify archive_instead_of_delete=true"
+    },
+    "idempotency": {
+      "status": "PASS",
+      "details": "All operations marked idempotent=true"
+    }
+  },
+  "errors": 0,
+  "warnings": 3,
+  "info": 2,
+  "import_readiness": "RESEARCH_COMPLETE_WITH_MANUAL_REVIEW",
+  "dry_run_simulation": {
+    "total_evaluated": 26,
+    "new_inserts_accepted": 0,
+    "cycle_updates_accepted": 18,
+    "funding_corrections_accepted": 5,
+    "lifecycle_corrections_accepted": 2,
+    "duplicate_proposals": 5,
+    "blocked_excluded": 6,
+    "projected_active_catalogue_count": 789,
+    "validation_passed": true
+  }
+}
