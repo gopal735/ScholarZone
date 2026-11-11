@@ -108,6 +108,8 @@ export function JourneyProvider({ children }) {
       window.clearTimeout(pendingTimerRef.current)
     }
 
+    isDirtyRef.current = true
+
     pendingTimerRef.current = window.setTimeout(() => {
       pendingTimerRef.current = null
       performSave(state)
@@ -117,8 +119,10 @@ export function JourneyProvider({ children }) {
       if (pendingTimerRef.current) {
         window.clearTimeout(pendingTimerRef.current)
         pendingTimerRef.current = null
-        // Flush latest state on unmount (route exit)
-        performSave(latestStateRef.current)
+        // Only flush if we have unpersisted edits AND we're not suppressing (reset)
+        if (isDirtyRef.current && !suppressPersistRef.current) {
+          performSave(latestStateRef.current)
+        }
       }
     }
   }, [state, bootstrap.state, performSave])
@@ -167,8 +171,6 @@ export function JourneyProvider({ children }) {
       window.removeEventListener('beforeunload', handleBeforeUnload)
     }
   }, [doFlush])
-
-
 
   /**
    * Reflect the display mode on the document, because the page is Bangla-first
@@ -265,6 +267,14 @@ export function JourneyProvider({ children }) {
     }),
     [state, storageAvailable, storageProblem, lastSavedAt, setLanguage, reset, replaceDocument, doFlush],
   )
+
+  // Track mount state for setState guards
+  useEffect(() => {
+    isMountedRef.current = true
+    return () => {
+      isMountedRef.current = false
+    }
+  }, [])
 
   return <JourneyContext.Provider value={value}>{children}</JourneyContext.Provider>
 }

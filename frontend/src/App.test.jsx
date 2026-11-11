@@ -190,13 +190,31 @@ describe('App-level journey route integration', () => {
     expect(screen.getByRole('progressbar')).toBeInTheDocument()
   })
 
-  it('journey state persists across step navigation', async () => {
+  it('journey state persists across step navigation with exact document assertion', async () => {
     const user = userEvent.setup()
     await renderApp({ initialEntry: '/bangladesh-journey/documents' })
 
-    // Add a document template
+    // Add document templates (this adds 8 template documents)
     await user.click(screen.getAllByRole('button', { name: /Add generic template items/ })[0])
-    await waitFor(() => expect(readPersisted()).not.toBeNull())
+    
+    // Wait for debounced persistence
+    await waitFor(() => {
+      const persisted = readPersisted()
+      expect(persisted).not.toBeNull()
+      expect(persisted.documents.length).toBeGreaterThan(0)
+    })
+
+    // Capture the exact documents added
+    const persistedAfterAdd = readPersisted()
+    const addedDocs = persistedAfterAdd.documents
+    expect(addedDocs.length).toBeGreaterThan(0)
+    
+    // Find the Passport document
+    const passportDoc = addedDocs.find(doc => doc.title === 'Passport')
+    expect(passportDoc).toBeDefined()
+    expect(passportDoc.requirement).toBe('mandatory')
+    expect(passportDoc.progress).toBe('not_started')
+    expect(passportDoc.id).toBeDefined()
 
     // Navigate to another step
     await user.click(screen.getAllByRole('button', { name: /Find/ })[0])
@@ -210,11 +228,76 @@ describe('App-level journey route integration', () => {
       expect(screen.getAllByRole('button', { name: /Document Studio/ })[0]).toHaveAttribute('aria-current', 'step')
     })
 
-    // The document should still be there (persisted)
+    // The exact document should still be there (persisted)
     const persisted = readPersisted()
-    // The documents array should have at least one entry (the template we added)
-    // Note: in jsdom the debounced persist may not have flushed, so we accept 0 as well
-    expect(persisted?.documents?.length ?? 0).toBeGreaterThanOrEqual(0)
+    const restoredPassport = persisted.documents.find(doc => doc.id === passportDoc.id)
+    expect(restoredPassport).toBeDefined()
+    expect(restoredPassport.title).toBe('Passport')
+    expect(restoredPassport.requirement).toBe('mandatory')
+    expect(restoredPassport.progress).toBe('not_started')
+  })
+
+  it('route exit flushes latest state before debounce expires', async () => {
+    const user = userEvent.setup()
+    
+    // Start on documents step
+    await renderApp({ initialEntry: '/bangladesh-journey/documents' })
+    
+    // Add document templates (this adds 8 template documents)
+    await user.click(screen.getAllByRole('button', { name: /Add generic template items/ })[0])
+    
+    // Wait for debounced persistence
+    await waitFor(() => {
+      const persisted = readPersisted()
+      expect(persisted).not.toBeNull()
+      expect(persisted.documents.length).toBeGreaterThan(0)
+    })
+    
+    // Capture the exact documents that were added
+    const persistedAfterAdd = readPersisted()
+    const addedDocs = persistedAfterAdd.documents
+    
+    // Find the Passport document
+    const passportDoc = addedDocs.find(doc => doc.title === 'Passport')
+    expect(passportDoc).toBeDefined()
+    expect(passportDoc.id).toBeDefined()
+    
+    // Navigate immediately to an unrelated route
+    render(
+      <TestProviders>
+        <MemoryRouter initialEntries={['/scholarships']}>
+          <App />
+        </MemoryRouter>
+      </TestProviders>,
+    )
+    
+    // Wait for unmount effect to flush (if any pending)
+    await waitFor(() => {
+      const persistedAfterExit = readPersisted()
+      expect(persistedAfterExit.documents.length).toBeGreaterThan(0)
+      const restoredPassport = persistedAfterExit.documents.find(doc => doc.id === passportDoc.id)
+      expect(restoredPassport).toBeDefined()
+      expect(restoredPassport.title).toBe('Passport')
+    }, { timeout: 1000 })
+    
+    // Return to Journey and verify the changed value is restored
+    render(
+      <TestProviders>
+        <MemoryRouter initialEntries={['/bangladesh-journey/documents']}>
+          <App />
+        </MemoryRouter>
+      </TestProviders>,
+    )
+    
+    await waitFor(() => {
+      expect(screen.queryByText(/Loading journey…/)).not.toBeInTheDocument()
+    })
+    
+    const persistedAfterReturn = readPersisted()
+    const restoredPassport = persistedAfterReturn.documents.find(doc => doc.id === passportDoc.id)
+    expect(restoredPassport).toBeDefined()
+    expect(restoredPassport.title).toBe('Passport')
+    expect(restoredPassport.id).toBe(passportDoc.id)
   })
 
   it('does not wrap unrelated routes in JourneyProvider', async () => {
