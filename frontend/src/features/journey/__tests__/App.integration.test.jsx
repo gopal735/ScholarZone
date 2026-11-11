@@ -2,23 +2,14 @@
  * Integration tests for the Bangladesh Applicant Journey via the real App routes.
  *
  * These tests render the actual App route configuration (without lazy loading)
- * inside MemoryRouter to verify:
- * 1. /bangladesh-journey renders without context errors
- * 2. /bangladesh-journey/:stepId renders
- * 3. Navigation between steps preserves state
- * 4. Back/forward navigation works
- * 5. Navigation away before debounce expiry preserves data
- * 6. Returning to the Journey restores saved state
- * 7. Hidden -> visible -> edit -> pagehide flushes latest state
- * 8. Explicit flush persists even when timer was cancelled
- * 9. Reset does not recreate deleted data
- * 10. Other routes remain outside JourneyProvider
+ * inside MemoryRouter to verify provider boundaries, persistence lifecycle,
+ * real route-exit flush, browser history navigation, and reset behavior.
  */
 
 import { describe, expect, it, beforeEach, afterEach } from 'vitest'
 import { render, screen, waitFor, act, within } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
-import { MemoryRouter, Routes, Route, Outlet } from 'react-router-dom'
+import { MemoryRouter, Routes, Route, Outlet, useNavigate } from 'react-router-dom'
 import { JourneyProvider } from '../state/JourneyProvider.jsx'
 import { JourneyPage } from '../components/JourneyPage.jsx'
 import { STORAGE_KEY } from '../lib/journeySchema.js'
@@ -27,12 +18,11 @@ import { SavedScholarshipsProvider } from '../../../context/SavedScholarshipsCon
 import { CompareProvider } from '../../../context/CompareContext.jsx'
 import { ThemeProvider } from '../../../context/ThemeContext.jsx'
 
-/** Restores a working store after a test replaced it with a throwing accessor. */
 function restoreWorkingStorage() {
   try {
     Object.defineProperty(window, 'localStorage', {
       value: {
-        getItem: (key) => (key === null ? null : null),
+        getItem: () => null,
         setItem: () => {},
         removeItem: () => {},
         clear: () => {},
@@ -43,17 +33,15 @@ function restoreWorkingStorage() {
       writable: true,
     })
   } catch {
-    /* an unconfigurable store is not a condition this suite needs to repair */
+    /* ignore */
   }
 }
 
-/** Reads and normalises the persisted document. */
 function readPersisted() {
   const raw = window.localStorage.getItem(STORAGE_KEY)
   return raw === null ? null : JSON.parse(raw)
 }
 
-/** A stub store that a test can prime with content and inspect afterwards. */
 function installPrimedStorage(initial = {}) {
   const map = new Map(Object.entries(initial))
   const storage = {
@@ -61,8 +49,6 @@ function installPrimedStorage(initial = {}) {
     setItem: (key, value) => map.set(key, String(value)),
     removeItem: (key) => map.delete(key),
     clear: () => map.clear(),
-    raw: (key) => map.get(key) ?? null,
-    size: () => map.size,
   }
   Object.defineProperty(window, 'localStorage', {
     value: storage,
@@ -72,14 +58,14 @@ function installPrimedStorage(initial = {}) {
   return storage
 }
 
-/** Provider wrapper matching main.jsx stack (minus ErrorBoundary/RedirectHandler/BrowserRouter). */
-function Providers({ children }) {
+/** Global application providers at application boundary, outside JourneyProvider. */
+function Providers() {
   return (
     <ThemeProvider>
       <AuthProvider>
         <SavedScholarshipsProvider>
           <CompareProvider>
-            {children}
+            <Outlet />
           </CompareProvider>
         </SavedScholarshipsProvider>
       </AuthProvider>
@@ -87,39 +73,61 @@ function Providers({ children }) {
   )
 }
 
-/** App routes with journey provider at the correct level (non-lazy for testing). */
+/** JourneyProvider only around Bangladesh Journey routes (mirrors production). */
+function TestJourneyRoutes() {
+  return (
+    <JourneyProvider>
+      <Outlet />
+    </JourneyProvider>
+  )
+}
+
+function HistoryControls() {
+  const navigate = useNavigate()
+  return (
+    <nav aria-label="Test navigation controls">
+      <button type="button" onClick={() => navigate(-1)}>History back</button>
+      <button type="button" onClick={() => navigate(1)}>History forward</button>
+      <button type="button" onClick={() => navigate('/scholarships')}>Go scholarships</button>
+      <button type="button" onClick={() => navigate('/dashboard')}>Go dashboard</button>
+      <button type="button" onClick={() => navigate('/')}>Go home</button>
+      <button type="button" onClick={() => navigate('/bangladesh-journey/documents')}>Go journey documents</button>
+      <button type="button" onClick={() => navigate('/bangladesh-journey/costs')}>Go journey costs</button>
+    </nav>
+  )
+}
+
+/** Route hierarchy matches production App.jsx. */
 function TestAppRoutes() {
   return (
     <Routes>
-      <Route
-        element={
-          <Providers>
-            <JourneyProvider>
-              <Outlet />
-            </JourneyProvider>
-          </Providers>
-        }
-      >
-        <Route index path="/bangladesh-journey" element={<JourneyPage />} />
-        <Route path="/bangladesh-journey/:stepId" element={<JourneyPage />} />
-        <Route path="/scholarships" element={<div data-testid="scholarships-page">Scholarships</div>} />
+      <Route element={<Providers />}>
         <Route path="/" element={<div data-testid="home-page">Home</div>} />
+        <Route path="/scholarships" element={<div data-testid="scholarships-page">Scholarships</div>} />
         <Route path="/dashboard" element={<div data-testid="dashboard-page">Dashboard</div>} />
+        <Route element={<TestJourneyRoutes />}>
+          <Route index path="/bangladesh-journey" element={<JourneyPage />} />
+          <Route path="/bangladesh-journey/:stepId" element={<JourneyPage />} />
+        </Route>
       </Route>
     </Routes>
   )
 }
 
-/** Renders the test App routes with the given initial route. */
 function renderTestApp({ initialEntries = ['/bangladesh-journey'], resetStorage = true } = {}) {
-  if (resetStorage) {
-    installPrimedStorage({})
-  }
+  if (resetStorage) installPrimedStorage({})
   return render(
     <MemoryRouter initialEntries={initialEntries}>
+      <HistoryControls />
       <TestAppRoutes />
     </MemoryRouter>,
   )
+}
+
+function getCostLabelInput() {
+  const inputs = screen.getAllByLabelText(/^(Item|আইটেম)$/i)
+  const empty = inputs.find((el) => el.tagName === 'INPUT' && el.value === '')
+  return empty ?? inputs[inputs.length - 1]
 }
 
 beforeEach(() => {
@@ -145,222 +153,197 @@ describe('App integration: Journey routes render without context errors', () => 
   })
 })
 
-describe('App integration: Navigation between steps preserves state', () => {
-  it('navigating between steps via stepper keeps JourneyProvider state', async () => {
+describe('App integration: Correct provider boundaries', () => {
+  it('journey routes have provider context while sibling routes do not', () => {
+    renderTestApp({ initialEntries: ['/scholarships'] })
+    expect(screen.getByTestId('scholarships-page')).toBeInTheDocument()
+    expect(screen.queryByRole('progressbar')).not.toBeInTheDocument()
+  })
+
+  it('home and dashboard render outside JourneyProvider', () => {
+    renderTestApp({ initialEntries: ['/'] })
+    expect(screen.getByTestId('home-page')).toBeInTheDocument()
+    expect(screen.queryByRole('progressbar')).not.toBeInTheDocument()
+
+    renderTestApp({ initialEntries: ['/dashboard'] })
+    expect(screen.getByTestId('dashboard-page')).toBeInTheDocument()
+    expect(screen.queryByRole('progressbar')).not.toBeInTheDocument()
+  })
+})
+
+describe('App integration: Navigation between journey steps preserves state', () => {
+  it('step navigation keeps JourneyProvider state mounted', async () => {
     const user = userEvent.setup()
     renderTestApp({ initialEntries: ['/bangladesh-journey'] })
 
-    // Navigate to costs step first - stepper buttons have bilingual names like "বিডিটি খরচ পরিকল্পনাBDT Cost Planner"
     await user.click(screen.getAllByRole('button', { name: /বিডিটি খরচ|BDT Cost Planner/i })[0])
     await waitFor(() => {
       expect(screen.getAllByRole('button', { name: /বিডিটি খরচ|BDT Cost Planner/i })[0]).toHaveAttribute('aria-current', 'step')
     })
+    expect(screen.getByRole('progressbar')).toBeInTheDocument()
 
-    // Add a cost item - use Bangla/English bilingual name
     await user.click(screen.getAllByRole('button', { name: /খরচ যোগ|Add cost/i })[0])
-    await user.type(screen.getAllByRole('textbox')[0], 'Test Cost')
+    await user.type(getCostLabelInput(), 'Test Cost')
 
-    // Navigate to another step
     await user.click(screen.getAllByRole('button', { name: /নথি কর্মশালা|Document Studio/i })[0])
-    expect(await screen.findByText(/Document Studio/)).toBeInTheDocument()
+    await waitFor(() => {
+      expect(screen.getAllByRole('button', { name: /নথি কর্মশালা|Document Studio/i })[0]).toHaveAttribute('aria-current', 'step')
+    })
+    expect(screen.getByRole('progressbar')).toBeInTheDocument()
 
-    // Navigate back to costs - cost should still be there (in localStorage)
     await user.click(screen.getAllByRole('button', { name: /বিডিটি খরচ|BDT Cost Planner/i })[0])
     await waitFor(() => {
       const persisted = readPersisted()
       expect(persisted?.costs?.items).toHaveLength(1)
       expect(persisted?.costs?.items[0].label).toBe('Test Cost')
     })
-  })
-
-  it('URL changes when step changes', async () => {
-    const user = userEvent.setup()
-    renderTestApp({ initialEntries: ['/bangladesh-journey'] })
-
-    await user.click(screen.getAllByRole('button', { name: /পরবর্তী|Next/i })[0])
-    expect(screen.getAllByRole('button', { name: /পরবর্তী|Next/i })[0]).toHaveAttribute('aria-current', 'step')
-  })
+    expect(screen.getByRole('progressbar')).toBeInTheDocument()
+  }, 15000)
 })
 
-describe('App integration: Back/forward navigation works', () => {
-  it('browser back/forward navigates between journey steps', async () => {
+describe('App integration: Browser back/forward navigation', () => {
+  it('navigate(-1) and navigate(1) synchronize URL/step with provider mounted', async () => {
     const user = userEvent.setup()
     renderTestApp({ initialEntries: ['/bangladesh-journey'] })
 
-    // Navigate to documents step
     await user.click(screen.getAllByRole('button', { name: /নথি কর্মশালা|Document Studio/i })[0])
-    expect(screen.getAllByRole('button', { name: /নথি কর্মশালা|Document Studio/i })[0]).toHaveAttribute('aria-current', 'step')
-
-    // Navigate back to first step
-    await user.click(screen.getAllByRole('button', { name: /খুঁজুন|Find/i })[0])
-    expect(screen.getAllByRole('button', { name: /খুঁজুন|Find/i })[0]).toHaveAttribute('aria-current', 'step')
-  })
-})
-
-describe('App integration: Navigation away before debounce expiry preserves data', () => {
-  it('navigating to another route flushes pending writes', async () => {
-    const user = userEvent.setup()
-    renderTestApp({ initialEntries: ['/bangladesh-journey/costs'] })
-
-    // Add a cost (will be debounced)
-    await user.click(screen.getAllByRole('button', { name: /খরচ যোগ|Add cost/i })[0])
-    await user.type(screen.getAllByRole('textbox')[0], 'Urgent Cost')
-
-    // Don't wait for debounce - navigate away immediately
-    // This simulates the route-unmount flush
-    renderTestApp({ initialEntries: ['/scholarships'] })
-
-    // The data should have been flushed on route exit
-    // Note: In jsdom, the route-unmount effect runs synchronously
     await waitFor(() => {
-      const persisted = readPersisted()
-      expect(persisted?.costs?.items).toHaveLength(1)
-      expect(persisted?.costs?.items[0].label).toBe('Urgent Cost')
+      expect(screen.getAllByRole('button', { name: /নথি কর্মশালা|Document Studio/i })[0]).toHaveAttribute('aria-current', 'step')
     })
-  })
-})
+    expect(screen.getByRole('progressbar')).toBeInTheDocument()
 
-describe('App integration: Returning to Journey restores saved state', () => {
-  it('persisted state is rehydrated on return visit', async () => {
-    const user = userEvent.setup()
-    renderTestApp({ initialEntries: ['/bangladesh-journey/costs'] })
-
-    await user.click(screen.getAllByRole('button', { name: /খরচ যোগ|Add cost/i })[0])
-    await user.type(screen.getAllByRole('textbox')[0], 'Persisted Cost')
-    await waitFor(() => expect(readPersisted()?.costs?.items).toHaveLength(1))
-
-    // Save the persisted state BEFORE creating a new render
-    const savedState = JSON.stringify(readPersisted())
-
-    // Simulate page unload/rehydration by creating a new render
-    // The localStorage should still have the data (don't reset it)
-    const { unmount } = renderTestApp({ initialEntries: ['/bangladesh-journey/costs'] })
-    unmount()
-
-    // Create a fresh render without resetting localStorage
-    installPrimedStorage({
-      [STORAGE_KEY]: savedState
-    })
-    renderTestApp({ initialEntries: ['/bangladesh-journey/costs'], resetStorage: false })
-
-    // The cost should be restored - check localStorage
+    await user.click(screen.getByRole('button', { name: 'History back' }))
     await waitFor(() => {
-      const persisted = readPersisted()
-      expect(persisted?.costs?.items).toHaveLength(1)
-      expect(persisted?.costs?.items[0].label).toBe('Persisted Cost')
+      expect(screen.getAllByRole('button', { name: /খুঁজুন|Find/i })[0]).toHaveAttribute('aria-current', 'step')
     })
-  })
+    expect(screen.getByRole('progressbar')).toBeInTheDocument()
+
+    await user.click(screen.getByRole('button', { name: 'History forward' }))
+    await waitFor(() => {
+      expect(screen.getAllByRole('button', { name: /নথি কর্মশালা|Document Studio/i })[0]).toHaveAttribute('aria-current', 'step')
+    })
+    expect(screen.getByRole('progressbar')).toBeInTheDocument()
+  }, 15000)
 })
 
-describe('App integration: Visibility lifecycle flushes correctly', () => {
+describe('App integration: Real route-exit test with actual navigation', () => {
+  it('navigates away in same router before debounce, flushes on provider unmount, restores exact Passport document', async () => {
+    const user = userEvent.setup()
+    renderTestApp({ initialEntries: ['/bangladesh-journey/documents'] })
+
+    await user.click(screen.getAllByRole('button', { name: /টেমপ্লেট আইটেম|Add template/i })[0])
+
+    // Keep debounce pending (400ms). Passport must not be persisted yet.
+    expect(readPersisted()?.documents?.some((doc) => doc.title === 'Passport')).toBeFalsy()
+
+    await user.click(screen.getByRole('button', { name: 'Go scholarships' }))
+    await waitFor(() => {
+      expect(screen.getByTestId('scholarships-page')).toBeInTheDocument()
+    })
+    // Provider unmounted when leaving journey routes.
+    expect(screen.queryByRole('progressbar')).not.toBeInTheDocument()
+
+    // Check immediately without waiting for debounce: unmount flush must have written.
+    const persistedAfterExit = readPersisted()
+    expect(persistedAfterExit).not.toBeNull()
+    expect(persistedAfterExit.documents.length).toBeGreaterThan(0)
+    const passportDoc = persistedAfterExit.documents.find((doc) => doc.title === 'Passport')
+    expect(passportDoc).toBeDefined()
+    expect(typeof passportDoc.id).toBe('string')
+    expect(passportDoc.id.length).toBeGreaterThan(0)
+    expect(passportDoc.requirement).toBe('mandatory')
+    expect(passportDoc.progress).toBe('not_started')
+
+    await user.click(screen.getByRole('button', { name: 'History back' }))
+    await waitFor(() => {
+      expect(screen.getByRole('progressbar')).toBeInTheDocument()
+    })
+
+    const persistedAfterReturn = readPersisted()
+    const restoredPassport = persistedAfterReturn.documents.find((doc) => doc.id === passportDoc.id)
+    expect(restoredPassport).toBeDefined()
+    expect(restoredPassport.title).toBe('Passport')
+    expect(restoredPassport.requirement).toBe('mandatory')
+    expect(restoredPassport.progress).toBe('not_started')
+  }, 15000)
+})
+
+describe('App integration: Visibility and pagehide flush', () => {
   it('hidden -> visible -> edit -> pagehide flushes latest state', async () => {
     const user = userEvent.setup()
     renderTestApp({ initialEntries: ['/bangladesh-journey/costs'] })
 
-    // Initial save
     await user.click(screen.getAllByRole('button', { name: /খরচ যোগ|Add cost/i })[0])
-    await user.type(screen.getAllByRole('textbox')[0], 'First Cost')
-    await waitFor(() => expect(readPersisted()?.costs?.items).toHaveLength(1))
+    await user.type(getCostLabelInput(), 'First Cost')
+    await waitFor(() => expect(readPersisted()?.costs?.items).toHaveLength(1), 5000)
 
-    // Simulate visibility hidden
     act(() => {
       Object.defineProperty(document, 'visibilityState', { value: 'hidden', configurable: true })
       document.dispatchEvent(new Event('visibilitychange'))
     })
+    await waitFor(() => expect(readPersisted()?.costs?.items).toHaveLength(1), 5000)
 
-    // Wait for flush
-    await waitFor(() => {
-      const persisted = readPersisted()
-      expect(persisted?.costs?.items).toHaveLength(1)
-    })
-
-    // Simulate visibility visible again
     act(() => {
       Object.defineProperty(document, 'visibilityState', { value: 'visible', configurable: true })
       document.dispatchEvent(new Event('visibilitychange'))
     })
 
-    // Make another edit
     await user.click(screen.getAllByRole('button', { name: /খরচ যোগ|Add cost/i })[0])
-    await user.type(screen.getAllByRole('textbox')[0], 'Second Cost')
+    await user.type(getCostLabelInput(), 'Second Cost')
 
-    // Simulate pagehide (tab close)
     act(() => {
       window.dispatchEvent(new Event('pagehide'))
     })
 
-    // Both costs should be persisted
     await waitFor(() => {
       const persisted = readPersisted()
       expect(persisted?.costs?.items).toHaveLength(2)
       const labels = persisted.costs.items.map((i) => i.label)
       expect(labels).toContain('First Cost')
       expect(labels).toContain('Second Cost')
-    })
-  })
-})
-
-describe('App integration: Explicit flush persists even when timer was cancelled', () => {
-  it('flushPendingWrite saves current state regardless of debounce timer', async () => {
-    const user = userEvent.setup()
-    renderTestApp({ initialEntries: ['/bangladesh-journey/costs'] })
-
-    // Add a cost
-    await user.click(screen.getAllByRole('button', { name: /খরচ যোগ|Add cost/i })[0])
-    await user.type(screen.getAllByRole('textbox')[0], 'Explicit Flush Test')
-
-    // Navigate away (which calls flushPendingWrite internally)
-    renderTestApp({ initialEntries: ['/scholarships'] })
-
-    await waitFor(() => {
-      const persisted = readPersisted()
-      expect(persisted?.costs?.items).toHaveLength(1)
-      expect(persisted?.costs?.items[0].label).toBe('Explicit Flush Test')
-    })
-  })
+    }, 5000)
+  }, 15000)
 })
 
 describe('App integration: Reset does not recreate deleted data', () => {
-  it('reset removes journey key and does not write defaults back', async () => {
+  it('reset removes journey key and unmount/navigation does not recreate it', async () => {
     const user = userEvent.setup()
     renderTestApp({ initialEntries: ['/bangladesh-journey/documents'] })
 
-    // Add some data
     await user.click(screen.getAllByRole('button', { name: /টেমপ্লেট আইটেম|Add template/i })[0])
-    await waitFor(() => expect(readPersisted()).not.toBeNull())
+    await waitFor(() => expect(readPersisted()).not.toBeNull(), 5000)
 
-    // Reset
     await user.click(screen.getByRole('button', { name: /রিসেট|Reset journey/i }))
     await user.click(within(screen.getByRole('dialog')).getByRole('button', { name: /রিসেট|Reset journey data/i }))
 
     await waitFor(() => {
       expect(window.localStorage.getItem(STORAGE_KEY)).toBeNull()
-    })
+    }, 5000)
 
-    // The provider should not have written back the default document
-    // (suppressPersistRef prevents this)
-  })
+    await user.click(screen.getByRole('button', { name: 'Go scholarships' }))
+    await waitFor(() => expect(screen.getByTestId('scholarships-page')).toBeInTheDocument())
+
+    await waitFor(() => {
+      expect(window.localStorage.getItem(STORAGE_KEY)).toBeNull()
+    }, 1000)
+  }, 15000)
 })
 
-describe('App integration: Other routes remain outside JourneyProvider', () => {
-  it('non-journey routes do not have JourneyProvider context', () => {
-    // This test verifies that the JourneyProvider is only mounted
-    // for journey routes by checking that other routes render without
-    // the journey-specific UI elements
-    renderTestApp({ initialEntries: ['/scholarships'] })
-    expect(screen.getByTestId('scholarships-page')).toBeInTheDocument()
-    expect(screen.queryByRole('progressbar')).not.toBeInTheDocument()
-  })
+describe('App integration: Debounce behavior', () => {
+  it('state changes do not trigger synchronous writes; debounce persists later', async () => {
+    const user = userEvent.setup()
+    renderTestApp({ initialEntries: ['/bangladesh-journey/costs'] })
 
-  it('home page renders without journey provider', () => {
-    renderTestApp({ initialEntries: ['/'] })
-    expect(screen.getByTestId('home-page')).toBeInTheDocument()
-    expect(screen.queryByRole('progressbar')).not.toBeInTheDocument()
-  })
+    await user.click(screen.getAllByRole('button', { name: /খরচ যোগ|Add cost/i })[0])
+    await user.type(getCostLabelInput(), 'Test Cost')
 
-  it('dashboard renders without journey provider', () => {
-    renderTestApp({ initialEntries: ['/dashboard'] })
-    expect(screen.getByTestId('dashboard-page')).toBeInTheDocument()
-    expect(screen.queryByRole('progressbar')).not.toBeInTheDocument()
-  })
+    // Debounce is 400ms; no immediate synchronous write on state change.
+    expect(readPersisted()?.costs?.items?.length ?? 0).toBe(0)
+
+    await waitFor(() => {
+      const persisted = readPersisted()
+      expect(persisted?.costs?.items).toHaveLength(1)
+      expect(persisted?.costs?.items[0].label).toBe('Test Cost')
+    }, { timeout: 5000 })
+  }, 15000)
 })

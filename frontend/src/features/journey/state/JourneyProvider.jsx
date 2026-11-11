@@ -74,6 +74,7 @@ export function JourneyProvider({ children }) {
    */
   const performSave = useCallback((stateToSave) => {
     if (!stateToSave) return false
+    if (suppressPersistRef.current) return false
     try {
       saveJourneyState(stateToSave)
       lastWriteRef.current = new Date().toISOString()
@@ -94,48 +95,57 @@ export function JourneyProvider({ children }) {
   }, [])
 
   /* Persist, debounced. A failed write leaves the state on screen and raises a
-     notice; it never reverts what the student just entered. */
+     notice; it never reverts what the student just entered.
+
+     State-change cleanup cancels only the replaced timer. It must not flush
+     merely because state dependencies changed; debounce coalescing depends on
+     that. Actual unmount and page-lifecycle flushes are handled separately. */
   useEffect(() => {
     if (state === bootstrap.state) return undefined
+
     if (suppressPersistRef.current) {
-      // The state is the deliberate result of a reset, and the store has already
-      // been emptied. Writing it back would recreate a key with no content.
+      // The state change is the deliberate result of a reset: storage was
+      // already emptied. Consume suppression, clear dirty state, cancel any
+      // pending timer, and do not persist this transition.
       suppressPersistRef.current = false
+      isDirtyRef.current = false
+      if (pendingTimerRef.current) {
+        window.clearTimeout(pendingTimerRef.current)
+        pendingTimerRef.current = null
+      }
       return undefined
     }
 
     if (pendingTimerRef.current) {
       window.clearTimeout(pendingTimerRef.current)
+      pendingTimerRef.current = null
     }
 
     isDirtyRef.current = true
 
     pendingTimerRef.current = window.setTimeout(() => {
       pendingTimerRef.current = null
-      performSave(state)
+      performSave(latestStateRef.current)
     }, PERSIST_DEBOUNCE_MS)
 
     return () => {
       if (pendingTimerRef.current) {
         window.clearTimeout(pendingTimerRef.current)
         pendingTimerRef.current = null
-        // Only flush if we have unpersisted edits AND we're not suppressing (reset)
-        if (isDirtyRef.current && !suppressPersistRef.current) {
-          performSave(latestStateRef.current)
-        }
       }
     }
   }, [state, bootstrap.state, performSave])
 
   /**
    * Flush any pending write immediately. Returns true on success.
-   * Safe to call multiple times.
+   * Safe to call multiple times. Does not recreate storage after reset.
    */
   const doFlush = useCallback(() => {
     if (pendingTimerRef.current) {
       window.clearTimeout(pendingTimerRef.current)
       pendingTimerRef.current = null
     }
+    if (!isDirtyRef.current || suppressPersistRef.current) return false
     return performSave(latestStateRef.current)
   }, [performSave])
 
@@ -153,12 +163,12 @@ export function JourneyProvider({ children }) {
 
     const handleVisibilityChange = () => {
       if (document.visibilityState === 'hidden') {
-        handlePageHide()
+        doFlush()
       }
     }
 
     const handleBeforeUnload = () => {
-      handlePageHide()
+      doFlush()
     }
 
     window.addEventListener('pagehide', handlePageHide)
@@ -225,10 +235,11 @@ export function JourneyProvider({ children }) {
       pendingTimerRef.current = null
     }
     const result = resetJourneyStorage()
-    dispatch({ type: ACTIONS.RESET })
-    // The post-reset state is the default document, which is what an empty store
-    // means; writing it back would recreate a key the student just emptied.
+    // Mark clean/suppressed before dispatch so no pending or subsequent lifecycle
+    // flush can recreate the deleted key.
+    isDirtyRef.current = false
     suppressPersistRef.current = true
+    dispatch({ type: ACTIONS.RESET })
     if (!result.ok && result.reason === 'unavailable') {
       setStorageAvailable(false)
       setStorageProblem('unavailable')
@@ -236,18 +247,17 @@ export function JourneyProvider({ children }) {
     return result
   }, [])
 
-  const replaceDocument = useCallback(
-    (document) => {
-      if (pendingTimerRef.current) {
-        window.clearTimeout(pendingTimerRef.current)
-        pendingTimerRef.current = null
-      }
-      const next = normalizeJourneyDocument(document)
-      dispatch({ type: ACTIONS.HYDRATE, payload: next })
-      return next
-    },
-    [],
-  )
+  const replaceDocument = useCallback((document) => {
+    if (pendingTimerRef.current) {
+      window.clearTimeout(pendingTimerRef.current)
+      pendingTimerRef.current = null
+    }
+    isDirtyRef.current = false
+    suppressPersistRef.current = false
+    const next = normalizeJourneyDocument(document)
+    dispatch({ type: ACTIONS.HYDRATE, payload: next })
+    return next
+  }, [])
 
   const value = useMemo(
     () => ({
@@ -268,11 +278,24 @@ export function JourneyProvider({ children }) {
     [state, storageAvailable, storageProblem, lastSavedAt, setLanguage, reset, replaceDocument, doFlush],
   )
 
-  // Track mount state for setState guards
+  // Track mount state and flush dirty state on actual provider unmount only.
+  // This cleanup runs when the provider unmounts, not on state changes.
   useEffect(() => {
     isMountedRef.current = true
     return () => {
       isMountedRef.current = false
+      if (pendingTimerRef.current) {
+        window.clearTimeout(pendingTimerRef.current)
+        pendingTimerRef.current = null
+      }
+      if (isDirtyRef.current && !suppressPersistRef.current) {
+        try {
+          saveJourneyState(latestStateRef.current)
+          isDirtyRef.current = false
+        } catch {
+          // Cannot update React state after unmount; storage write is best-effort.
+        }
+      }
     }
   }, [])
 
