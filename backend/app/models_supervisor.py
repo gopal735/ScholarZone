@@ -368,7 +368,7 @@ class OfficialContact(Base):
     )
 
     id: Mapped[int] = mapped_column(Integer, primary_key=True)
-    scholarship_id: Mapped[int] = mapped_column(Integer, ForeignKey("scholarships.id"), nullable=False)
+    scholarship_id: Mapped[int] = mapped_column(Integer, ForeignKey("scholarships.id", ondelete="RESTRICT"), nullable=False)
     institution_name: Mapped[str] = mapped_column(String(255), nullable=False)
     department_name: Mapped[str | None] = mapped_column(String(255), nullable=True)
     programme_name: Mapped[str | None] = mapped_column(String(255), nullable=True)

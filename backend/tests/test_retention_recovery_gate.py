@@ -544,13 +544,14 @@ class TestManifestSemantics:
     def test_every_preserve_table_is_named_in_the_manifest(self):
         report = reference_integrity_report()
         assert report["integrity_uncertain"] is False
-        assert report["relationship_count"] == 13
+        assert report["relationship_count"] == 14
         assert set(PRESERVE_MODELS) == {
             "ScholarshipReview", "ScholarshipVerificationHistory", "ScholarshipSnapshot",
             "ScholarshipRestoreRecord", "ImageReview",
             "SavedScholarship", "ApplicationRecord",
             "ScholarshipSupervisorCoverage", "ScholarshipProfessorLink",
             "SupervisorSourceEvidence", "ProfessorOutreachRecord",
+            "OfficialContact",
         }
 
 

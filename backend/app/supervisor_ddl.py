@@ -264,7 +264,7 @@ NEW_TABLE_DDL: dict[str, dict[str, str]] = {
     "official_contacts": {
         "postgresql": """
             id INTEGER PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
-            scholarship_id INTEGER NOT NULL REFERENCES scholarships(id),
+            scholarship_id INTEGER NOT NULL REFERENCES scholarships(id) ON DELETE RESTRICT,
             institution_name VARCHAR(255) NOT NULL,
             department_name VARCHAR(255),
             programme_name VARCHAR(255),
@@ -286,7 +286,7 @@ NEW_TABLE_DDL: dict[str, dict[str, str]] = {
         """,
         "sqlite": """
             id INTEGER PRIMARY KEY AUTOINCREMENT,
-            scholarship_id INTEGER NOT NULL REFERENCES scholarships(id),
+            scholarship_id INTEGER NOT NULL REFERENCES scholarships(id) ON DELETE RESTRICT,
             institution_name VARCHAR(255) NOT NULL,
             department_name VARCHAR(255),
             programme_name VARCHAR(255),
