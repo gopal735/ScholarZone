@@ -18,7 +18,7 @@ import json
 import os
 import re
 import sys
-from datetime import datetime, timezone
+from datetime import date, datetime, timezone
 from pathlib import Path
 from typing import Any
 
@@ -411,21 +411,42 @@ def verify_backup_pitr_status(conn: Connection) -> dict[str, Any]:
         }
     }
     
-    # Check if environment indicates verification was done
-    backup_verified = os.environ.get("SCHOLARZONE_BACKUP_VERIFIED", "").lower() == "true"
-    restore_test_date = os.environ.get("SCHOLARZONE_RESTORE_TEST_DATE", "")
-    evidence_ref = os.environ.get("SCHOLARZONE_BACKUP_EVIDENCE_REF", "")
-    
-    if backup_verified:
+    # A configured boolean alone is not a sufficient gate. Require a recent,
+    # non-future restore test date and a traceable evidence reference before
+    # any DDL. This remains an operator attestation: automatic verification
+    # requires provider API access that this script does not have.
+    backup_verified = os.environ.get("SCHOLARZONE_BACKUP_VERIFIED", "").strip().lower() == "true"
+    restore_test_date = os.environ.get("SCHOLARZONE_RESTORE_TEST_DATE", "").strip()
+    evidence_ref = os.environ.get("SCHOLARZONE_BACKUP_EVIDENCE_REF", "").strip()
+    date_error = None
+    try:
+        restore_date = datetime.strptime(restore_test_date, "%Y-%m-%d").date()
+    except (TypeError, ValueError):
+        restore_date = None
+        date_error = "SCHOLARZONE_RESTORE_TEST_DATE must be a valid ISO date (YYYY-MM-DD)"
+
+    today = datetime.now(timezone.utc).date()
+    if restore_date and restore_date > today:
+        date_error = "SCHOLARZONE_RESTORE_TEST_DATE cannot be in the future"
+    elif restore_date and (today - restore_date).days > 30:
+        date_error = "restore test evidence is older than 30 days"
+
+    verified = backup_verified and restore_date is not None and bool(evidence_ref) and date_error is None
+    backup_info["details"].update({
+        "manual_attestation": True,
+        "verification_method": "operator_attestation",
+        "date_error": date_error,
+        "backup_verified": backup_verified,
+        "restore_test_date": restore_test_date,
+        "evidence_ref": evidence_ref,
+    })
+    if verified:
         backup_info["verified"] = True
-        backup_info["details"]["backup_verified"] = True
-        backup_info["details"]["restore_test_date"] = restore_test_date
-        backup_info["details"]["evidence_ref"] = evidence_ref
-        backup_info["details"]["note"] = "Backup/PITR verified via workflow attestation."
+        backup_info["details"]["note"] = "Backup/PITR prerequisites passed via operator attestation."
     else:
-        backup_info["details"]["backup_verified"] = False
-        backup_info["details"]["restore_test_date"] = restore_test_date
-        backup_info["details"]["evidence_ref"] = evidence_ref
+        backup_info["details"]["note"] = date_error or (
+            "SCHOLARZONE_BACKUP_VERIFIED must be true and backup evidence reference must be supplied"
+        )
     
     return backup_info
 
@@ -1061,18 +1082,23 @@ def main():
     
     args = parser.parse_args()
     
-    # Validate identity requirement for apply mode
-    if args.apply and not os.environ.get("SCHOLARZONE_EXPECTED_DB_IDENTIFIER"):
+    # Production apply needs both halves of the database identity. Requiring
+    # only the database name allowed the endpoint check in
+    # verify_database_identity() to become optional.
+    is_production = os.environ.get("SCHOLARZONE_ENVIRONMENT", "").lower() == "production"
+    database_url = os.environ.get("SCHOLARZONE_DATABASE_URL", "").strip().lower()
+    if args.apply and not os.environ.get("SCHOLARZONE_EXPECTED_DB_IDENTIFIER", "").strip():
         print("ERROR: --apply requires SCHOLARZONE_EXPECTED_DB_IDENTIFIER environment variable to be set", file=sys.stderr)
         print("This is a safety gate to prevent accidental migration to wrong database.", file=sys.stderr)
         sys.exit(1)
-    
-    # P0-3: Reject SQLite in production apply mode
-    is_production = os.environ.get("SCHOLARZONE_ENVIRONMENT", "").lower() == "production"
-    database_url = os.environ.get("SCHOLARZONE_DATABASE_URL", "")
-    if args.apply and is_production and database_url.startswith("sqlite"):
-        print("ERROR: --apply with SQLite is not allowed in production environment (SCHOLARZONE_ENVIRONMENT=production)", file=sys.stderr)
-        print("Use a PostgreSQL database for production migrations.", file=sys.stderr)
+    # Production schema changes are supported only on PostgreSQL. Reject all
+    # other URLs before opening a connection, including SQLite and unknown
+    # dialects.
+    if args.apply and is_production and not database_url.startswith(("postgresql://", "postgresql+")):
+        print("ERROR: production --apply requires a PostgreSQL database URL", file=sys.stderr)
+        sys.exit(1)
+    if args.apply and is_production and not os.environ.get("SCHOLARZONE_EXPECTED_DB_HOST", "").strip():
+        print("ERROR: production --apply requires SCHOLARZONE_EXPECTED_DB_HOST", file=sys.stderr)
         sys.exit(1)
     
     try:

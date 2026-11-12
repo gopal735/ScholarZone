@@ -23,6 +23,7 @@ import json
 import os
 import sys
 import tempfile
+from datetime import datetime, timedelta, timezone
 from pathlib import Path
 from unittest.mock import patch, MagicMock
 
@@ -434,7 +435,10 @@ class TestIdentityVerification:
                 "SCHOLARZONE_ENVIRONMENT": "test"
             }, clear=True):
                 engine = get_production_engine()
-                verify_production_database(engine)
+                try:
+                    verify_production_database(engine)
+                finally:
+                    engine.dispose()
     
     def test_correct_identity_passes(self, sqlite_engine):
         """Correct identity should pass."""
@@ -451,9 +455,12 @@ class TestIdentityVerification:
             "SCHOLARZONE_ENVIRONMENT": "test"
         }, clear=True):
             engine = get_production_engine()
-            result = verify_production_database(engine)
-            # SQLite doesn't verify host, so identity should be verified
-            assert result["identity"]["verified"] is True
+            try:
+                result = verify_production_database(engine)
+                # SQLite doesn't verify host, so identity should be verified
+                assert result["identity"]["verified"] is True
+            finally:
+                engine.dispose()
 
 
 # ============================================================
@@ -478,15 +485,41 @@ class TestBackupPITRGate:
         
         with patch.dict(os.environ, {
             "SCHOLARZONE_BACKUP_VERIFIED": "true",
-            "SCHOLARZONE_RESTORE_TEST_DATE": "2024-01-15",
-            "SCHOLARZONE_BACKUP_EVIDENCE_REF": "neon-backup-2024-01-15"
+            "SCHOLARZONE_RESTORE_TEST_DATE": datetime.now(timezone.utc).date().isoformat(),
+            "SCHOLARZONE_BACKUP_EVIDENCE_REF": "backup-restore-record-2026-11-13"
         }):
             with sqlite_engine.connect() as conn:
                 result = verify_backup_pitr_status(conn)
                 assert result["verified"] is True
                 assert result["details"]["backup_verified"] is True
-                assert result["details"]["restore_test_date"] == "2024-01-15"
-                assert result["details"]["evidence_ref"] == "neon-backup-2024-01-15"
+                assert result["details"]["restore_test_date"] == datetime.now(timezone.utc).date().isoformat()
+                assert result["details"]["evidence_ref"] == "backup-restore-record-2026-11-13"
+
+    @pytest.mark.parametrize("restore_date", [
+        "not-a-date",
+        (datetime.now(timezone.utc).date() + timedelta(days=1)).isoformat(),
+        (datetime.now(timezone.utc).date() - timedelta(days=31)).isoformat(),
+    ])
+    def test_stale_invalid_or_future_restore_evidence_fails(self, sqlite_engine, restore_date):
+        with patch.dict(os.environ, {
+            "SCHOLARZONE_BACKUP_VERIFIED": "true",
+            "SCHOLARZONE_RESTORE_TEST_DATE": restore_date,
+            "SCHOLARZONE_BACKUP_EVIDENCE_REF": "backup-restore-record",
+        }):
+            with sqlite_engine.connect() as conn:
+                result = verify_backup_pitr_status(conn)
+        assert result["verified"] is False
+        assert result["details"]["date_error"]
+
+    def test_missing_evidence_reference_fails(self, sqlite_engine):
+        with patch.dict(os.environ, {
+            "SCHOLARZONE_BACKUP_VERIFIED": "true",
+            "SCHOLARZONE_RESTORE_TEST_DATE": datetime.now(timezone.utc).date().isoformat(),
+            "SCHOLARZONE_BACKUP_EVIDENCE_REF": "",
+        }):
+            with sqlite_engine.connect() as conn:
+                result = verify_backup_pitr_status(conn)
+        assert result["verified"] is False
 
 
 # ============================================================
@@ -514,7 +547,7 @@ class TestTransactionRollback:
         # Set required environment variables for backup/PITR gate
         with patch.dict(os.environ, {
             "SCHOLARZONE_BACKUP_VERIFIED": "true",
-            "SCHOLARZONE_RESTORE_TEST_DATE": "2024-01-15",
+            "SCHOLARZONE_RESTORE_TEST_DATE": datetime.now(timezone.utc).date().isoformat(),
             "SCHOLARZONE_BACKUP_EVIDENCE_REF": "neon-backup-2024-01-15"
         }):
             # First apply
@@ -577,6 +610,37 @@ class TestCLIArguments:
         
         assert result.returncode != 0
         assert b"error" in result.stderr.lower() or b"unrecognized arguments" in result.stderr.lower()
+
+    @pytest.mark.parametrize(("database_url", "expected_error"), [
+        ("sqlite:///production.db", b"requires a postgresql database url"),
+        ("postgresql://user:pass@db.example.invalid/app", b"requires scholarzone_expected_db_host"),
+    ])
+    def test_production_apply_requires_postgresql_and_endpoint_identity(self, database_url, expected_error):
+        import subprocess
+
+        env = os.environ.copy()
+        for key in (
+            "SCHOLARZONE_DATABASE_URL", "SCHOLARZONE_ENVIRONMENT",
+            "SCHOLARZONE_EXPECTED_DB_IDENTIFIER", "SCHOLARZONE_EXPECTED_DB_HOST",
+            "SCHOLARZONE_BACKUP_VERIFIED", "SCHOLARZONE_RESTORE_TEST_DATE",
+            "SCHOLARZONE_BACKUP_EVIDENCE_REF", "TEST_POSTGRESQL_URL",
+        ):
+            env.pop(key, None)
+        env.update({
+            "SCHOLARZONE_ENVIRONMENT": "production",
+            "SCHOLARZONE_DATABASE_URL": database_url,
+            "SCHOLARZONE_EXPECTED_DB_IDENTIFIER": "app",
+            "PYTHONPATH": str(BACKEND_DIR),
+        })
+        result = subprocess.run(
+            [sys.executable, str(BACKEND_DIR / "migrate_schema.py"), "--apply"],
+            capture_output=True,
+            cwd=BACKEND_DIR,
+            env=env,
+        )
+        assert result.returncode != 0
+        assert expected_error in result.stderr.lower()
+        assert b"traceback" not in result.stderr.lower()
 
 
 # ============================================================
@@ -666,7 +730,7 @@ class TestFullMigrationScript:
         # Set required environment variables for backup/PITR gate
         with patch.dict(os.environ, {
             "SCHOLARZONE_BACKUP_VERIFIED": "true",
-            "SCHOLARZONE_RESTORE_TEST_DATE": "2024-01-15",
+            "SCHOLARZONE_RESTORE_TEST_DATE": datetime.now(timezone.utc).date().isoformat(),
             "SCHOLARZONE_BACKUP_EVIDENCE_REF": "neon-backup-2024-01-15"
         }):
             report = dry_run(sqlite_engine)

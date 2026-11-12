@@ -80,8 +80,8 @@ jobs:
             echo "ERROR: SCHOLARZONE_EXPECTED_DB_HOST secret not configured"
             exit 1
           fi
-          if [[ -z "${SCHOLARZONE_BACKUP_VERIFIED}" ]]; then
-            echo "ERROR: SCHOLARZONE_BACKUP_VERIFIED secret not configured"
+          if [[ "${SCHOLARZONE_BACKUP_VERIFIED,,}" != "true" ]]; then
+            echo "ERROR: SCHOLARZONE_BACKUP_VERIFIED must be explicitly set to true after operator verification"
             exit 1
           fi
           if [[ -z "${SCHOLARZONE_RESTORE_TEST_DATE}" ]]; then
@@ -93,24 +93,23 @@ jobs:
             exit 1
           fi
           
-          # Validate backup evidence freshness (e.g., restore test within last 30 days)
-          restore_date="${SCHOLARZONE_RESTORE_TEST_DATE}"
-          if [[ -n "${restore_date}" ]]; then
-            restore_epoch=$(date -d "${restore_date}" +%s 2>/dev/null || date -j -f "%Y-%m-%d" "${restore_date}" +%s 2>/dev/null)
-            if [[ -n "${restore_epoch}" ]]; then
-              now_epoch=$(date +%s)
-              days_diff=$(( (now_epoch - restore_epoch) / 86400 ))
-              if [[ ${days_diff} -gt 30 ]]; then
-                echo "WARNING: Restore test date is ${days_diff} days old (older than 30 days)"
-                echo "Consider performing a fresh restore test."
-              fi
-            fi
-          fi
-          
-          if [[ -z "${SCHOLARZONE_BACKUP_EVIDENCE_REF}" ]]; then
-            echo "ERROR: SCHOLARZONE_BACKUP_EVIDENCE_REF is empty"
-            exit 1
-          fi
+          python - <<'PY'
+          import os
+          from datetime import date, datetime, timedelta
+
+          raw = os.environ["SCHOLARZONE_RESTORE_TEST_DATE"]
+          try:
+              tested = datetime.strptime(raw, "%Y-%m-%d").date()
+          except ValueError:
+              raise SystemExit("ERROR: restore test date must use YYYY-MM-DD")
+          today = date.today()
+          if tested > today:
+              raise SystemExit("ERROR: restore test date cannot be in the future")
+          if today - tested > timedelta(days=30):
+              raise SystemExit("ERROR: restore test evidence must be no older than 30 days")
+          if not os.environ["SCHOLARZONE_BACKUP_EVIDENCE_REF"].strip():
+              raise SystemExit("ERROR: backup evidence reference must not be empty")
+          PY
           
           echo "Pre-apply validation passed."
 
