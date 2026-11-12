@@ -42,40 +42,25 @@ def _filter_key(value: str | None) -> str | None:
 #: PostgreSQL-compatible ASCII folding for common diacritics.
 #: This approximates Python's unicodedata.normalize("NFKD") + strip combining chars
 #: without requiring the unaccent extension.
+#: Uses a single TRANSLATE call per column to avoid nested REPLACE explosion.
 def _ascii_fold_sql(column):
-    """Build a SQL expression that ASCII-folds a text column for comparison."""
-    folded = func.lower(column)
-    # Common diacritics -> ASCII equivalents
-    folded = func.replace(folded, "ü", "u")
-    folded = func.replace(folded, "ö", "o")
-    folded = func.replace(folded, "ä", "a")
-    folded = func.replace(folded, "ß", "ss")
-    folded = func.replace(folded, "é", "e")
-    folded = func.replace(folded, "è", "e")
-    folded = func.replace(folded, "ê", "e")
-    folded = func.replace(folded, "ë", "e")
-    folded = func.replace(folded, "á", "a")
-    folded = func.replace(folded, "à", "a")
-    folded = func.replace(folded, "â", "a")
-    folded = func.replace(folded, "ã", "a")
-    folded = func.replace(folded, "å", "a")
-    folded = func.replace(folded, "í", "i")
-    folded = func.replace(folded, "ì", "i")
-    folded = func.replace(folded, "î", "i")
-    folded = func.replace(folded, "ï", "i")
-    folded = func.replace(folded, "ó", "o")
-    folded = func.replace(folded, "ò", "o")
-    folded = func.replace(folded, "ô", "o")
-    folded = func.replace(folded, "õ", "o")
-    folded = func.replace(folded, "ú", "u")
-    folded = func.replace(folded, "ù", "u")
-    folded = func.replace(folded, "û", "u")
-    folded = func.replace(folded, "ç", "c")
-    folded = func.replace(folded, "ñ", "n")
-    folded = func.replace(folded, "ğ", "g")
-    folded = func.replace(folded, "ş", "s")
-    folded = func.replace(folded, "ı", "i")
-    return folded
+    """Build a SQL expression that ASCII-folds a text column for comparison.
+    
+    Uses PostgreSQL TRANSLATE for efficient single-pass character mapping.
+    The from/to strings map each diacritic to its ASCII equivalent.
+    """
+    # TRANSLATE(from_chars, to_chars) - single-pass character replacement
+    # from_chars: all diacritics we want to replace
+    # to_chars:   corresponding ASCII replacements (same length)
+    from_chars = (
+        "üöäßéèêëáàâãåíìîïóòôõúùûçñğşı"
+        "ÜÖÄÉÈÊËÁÀÂÃÅÍÌÎÏÓÒÔÕÚÙÛÇÑĞŞİ"
+    )
+    to_chars = (
+        "uoasseeeeeaaaaaiiiiooooouuuucngsi"
+        "UOASSEEEEEAAAAAIIIOOOOOUUUUCNGSI"
+    )
+    return func.translate(func.lower(column), from_chars, to_chars)
 
 
 def _is_sqlite(session: Session) -> bool:
