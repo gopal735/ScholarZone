@@ -1094,7 +1094,7 @@ def test_sqlite_migration_injected_failure_rollback():
             'professor_profiles', 'scholarship_professor_links',
             'supervisor_source_evidence', 'professor_availability',
             'professor_outreach_records', 'scholarship_image_audit',
-            'scholarship_image_audit_context'
+            'scholarship_image_audit_context', 'official_contacts'
         }
         
         with engine.connect() as conn:

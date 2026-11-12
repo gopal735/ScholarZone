@@ -349,8 +349,52 @@ class ProfessorOutreachRecord(Base):
     )
 
 
+class OfficialContact(Base):
+    """An official institutional contact for a scholarship.
+
+    Used when a scholarship does not have a named professor pathway but does have
+    an official programme office, graduate admissions office, or department
+    coordinator that can be contacted. Never stores a person here - only offices.
+    """
+
+    __tablename__ = "official_contacts"
+    __table_args__ = (
+        UniqueConstraint(
+            "scholarship_id", "official_contact_url", name="uq_official_contact_scholarship_url"
+        ),
+        Index("ix_official_contacts_scholarship_id", "scholarship_id"),
+        Index("ix_official_contacts_institution", "institution_name"),
+        Index("ix_official_contacts_verification", "verification_status"),
+    )
+
+    id: Mapped[int] = mapped_column(Integer, primary_key=True)
+    scholarship_id: Mapped[int] = mapped_column(Integer, ForeignKey("scholarships.id", ondelete="RESTRICT"), nullable=False)
+    institution_name: Mapped[str] = mapped_column(String(255), nullable=False)
+    department_name: Mapped[str | None] = mapped_column(String(255), nullable=True)
+    programme_name: Mapped[str | None] = mapped_column(String(255), nullable=True)
+    contact_type: Mapped[str] = mapped_column(String(64), nullable=False, default="programme_office")
+    contact_role: Mapped[str | None] = mapped_column(String(120), nullable=True)
+    published_contact_name: Mapped[str | None] = mapped_column(String(255), nullable=True)
+    official_email: Mapped[str | None] = mapped_column(String(320), nullable=True)
+    email_verified: Mapped[bool] = mapped_column(Boolean, nullable=False, default=False)
+    official_contact_url: Mapped[str] = mapped_column(String(2048), nullable=False)
+    evidence_source_url: Mapped[str] = mapped_column(String(2048), nullable=False)
+    evidence_source_type: Mapped[str] = mapped_column(String(32), nullable=False)
+    evidence_summary: Mapped[str | None] = mapped_column(Text, nullable=True)
+    retrieved_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), nullable=False)
+    verified_at: Mapped[datetime | None] = mapped_column(DateTime(timezone=True), nullable=True)
+    verification_status: Mapped[str] = mapped_column(String(24), nullable=False, default="unverified")
+    created_at: Mapped[datetime] = mapped_column(
+        DateTime(timezone=True), nullable=False, server_default=func.now()
+    )
+    updated_at: Mapped[datetime] = mapped_column(
+        DateTime(timezone=True), nullable=False, server_default=func.now(), onupdate=func.now()
+    )
+
+
 __all__ = [
     "ContactTemplate",
+    "OfficialContact",
     "ProfessorAvailability",
     "ProfessorOutreachRecord",
     "ProfessorProfile",

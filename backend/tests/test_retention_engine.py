@@ -14,7 +14,7 @@ from datetime import date, datetime, timedelta, timezone
 from pathlib import Path
 
 import pytest
-from sqlalchemy import create_engine, func, select
+from sqlalchemy import create_engine, event, func, select
 from sqlalchemy.orm import sessionmaker
 
 from app.models import (
@@ -28,6 +28,7 @@ from app.models import (
     ScholarshipSnapshot,
     ScholarshipVerificationHistory,
 )
+import app.models_supervisor  # noqa: F401 - registers OfficialContact in Base.metadata
 from app.repositories.scholarships import public_visibility_conditions
 from app.services.counting.catalogue import catalogue_counts
 from app.services.retention_contract import (
@@ -131,6 +132,13 @@ def tmp_ledger(tmp_path) -> Path:
 @pytest.fixture()
 def session(tmp_path):
     engine = create_engine(f"sqlite:///{tmp_path / 'retention.db'}")
+
+    @event.listens_for(engine, "connect")
+    def _fk_on(dbapi_conn, _):
+        cursor = dbapi_conn.cursor()
+        cursor.execute("PRAGMA foreign_keys = ON")
+        cursor.close()
+
     factory = sessionmaker(bind=engine, autoflush=False, expire_on_commit=False)
     Base.metadata.create_all(bind=engine)
     db = factory()
@@ -206,7 +214,7 @@ class TestReferenceIntegrity:
         assert report["integrity_uncertain"] is False
         assert report["unclassified_relationships"] == []
         assert report["verdict"] == "ALL_RELATIONSHIPS_CLASSIFIED"
-        assert report["relationship_count"] == 13
+        assert report["relationship_count"] == 14
 
     def test_the_report_is_introspected_not_hardcoded(self):
         """A table added later must appear, or it is invisible to the audit."""
@@ -220,10 +228,11 @@ class TestReferenceIntegrity:
         """So the hazard is manual child removal, not the database cascading."""
         report = reference_integrity_report()
         assert report["cascade_deletes_declared"] == []
-        assert all(
-            r["database_enforcement"] == "NO ACTION / RESTRICT"
-            for r in report["relationships"]
-        )
+        # All relationships must enforce RESTRICT (either explicit or implicit NO ACTION).
+        # OfficialContact declares ondelete="RESTRICT" explicitly; others rely on
+        # SQLAlchemy's default NO ACTION, which PostgreSQL treats as RESTRICT.
+        allowed = {"NO ACTION / RESTRICT", "RESTRICT"}
+        assert all(r["database_enforcement"] in allowed for r in report["relationships"])
 
     def test_evidence_tables_are_preserved(self):
         assert set(PRESERVE_MODELS) == {
@@ -238,6 +247,7 @@ class TestReferenceIntegrity:
             "ScholarshipProfessorLink",
             "SupervisorSourceEvidence",
             "ProfessorOutreachRecord",
+            "OfficialContact",
         }
 
     @pytest.mark.parametrize(
@@ -346,6 +356,82 @@ class TestReferenceIntegrity:
         session.commit()
         deps = reference_dependencies(session, [row.id])[row.id]
         assert "DiscoveryCandidate:awaiting_match_decision" in deps
+
+    def test_official_contact_blocks_deletion_and_fk_is_restrict(self, session):
+        """OfficialContact is PRESERVE and its FK refuses parent deletion."""
+        from app.models_supervisor import OfficialContact
+        row = make_stale(session)
+        session.add(
+            OfficialContact(
+                scholarship_id=row.id,
+                institution_name="Test University",
+                department_name="Graduate Admissions",
+                programme_name="Master of Science",
+                contact_type="programme_office",
+                contact_role="Coordinator",
+                published_contact_name="Graduate Admissions Office",
+                official_email="admissions@test.edu",
+                email_verified=False,
+                official_contact_url="https://test.edu/admissions",
+                evidence_source_url="https://test.edu/admissions",
+                evidence_source_type="official_website",
+                evidence_summary="Official programme office contact",
+                retrieved_at=ANCIENT,
+                verified_at=None,
+                verification_status="unverified",
+            )
+        )
+        session.commit()
+
+        deps = reference_dependencies(session, [row.id])[row.id]
+        assert "OfficialContact" in deps
+
+        decision = next(d for d in scan(session, as_of=AS_OF) if d.scholarship_id == row.id)
+        assert decision.is_keep
+        assert decision.bucket == BUCKET_PROTECTED
+        assert decision.reason == "DEPENDENCY_MUST_SURVIVE"
+        assert "OfficialContact" in decision.detail
+
+        report = reference_integrity_report()
+        oc_rel = next(r for r in report["relationships"] if r["model"] == "OfficialContact")
+        assert oc_rel["database_enforcement"] == "RESTRICT"
+        assert oc_rel["disposition"] == "PRESERVE"
+
+    def test_official_contact_fk_prevents_parent_delete_at_database_level(self, session):
+        """The ON DELETE RESTRICT FK prevents deleting a scholarship with an OfficialContact."""
+        from app.models_supervisor import OfficialContact
+        from sqlalchemy import delete as sql_delete
+        row = make_stale(session)
+        session.add(
+            OfficialContact(
+                scholarship_id=row.id,
+                institution_name="Test University",
+                department_name="Graduate Admissions",
+                programme_name="Master of Science",
+                contact_type="programme_office",
+                contact_role="Coordinator",
+                published_contact_name="Graduate Admissions Office",
+                official_email="admissions@test.edu",
+                email_verified=False,
+                official_contact_url="https://test.edu/admissions",
+                evidence_source_url="https://test.edu/admissions",
+                evidence_source_type="official_website",
+                evidence_summary="Official programme office contact",
+                retrieved_at=ANCIENT,
+                verified_at=None,
+                verification_status="unverified",
+            )
+        )
+        session.commit()
+
+        with pytest.raises(Exception) as exc_info:
+            session.execute(sql_delete(Scholarship).where(Scholarship.id == row.id))
+            session.commit()
+        assert "FOREIGN KEY constraint failed" in str(exc_info.value) or "IntegrityError" in str(type(exc_info.value))
+
+        assert still_stored(session, row.id) is True
+        oc = session.query(OfficialContact).filter(OfficialContact.scholarship_id == row.id).first()
+        assert oc is not None
 
 
 # ---------------------------------------------------------------------------

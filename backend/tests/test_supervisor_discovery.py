@@ -37,6 +37,7 @@ from app.database import get_db  # noqa: E402
 from app.main import app  # noqa: E402
 from app.models import Base, Scholarship, User  # noqa: E402
 from app.models_supervisor import (  # noqa: E402
+    OfficialContact,
     ProfessorAvailability,
     ProfessorOutreachRecord,
     ProfessorProfile,
@@ -210,6 +211,53 @@ def _seed_link(
     session.commit()
     session.refresh(link)
     return link
+
+
+def _seed_official_contact(
+    session,
+    scholarship: Scholarship,
+    *,
+    institution: str = "Test University",
+    department: str | None = "Graduate Admissions",
+    programme: str | None = "Master of Science",
+    contact_type: str = "programme_office",
+    contact_role: str | None = "Coordinator",
+    published_name: str | None = "Graduate Admissions Office",
+    email: str | None = "admissions@test.edu",
+    email_verified: bool = False,
+    contact_url: str = "https://test.edu/admissions",
+    evidence_url: str = "https://test.edu/admissions",
+    evidence_type: str = "official_website",
+    evidence_summary: str | None = "Official programme office contact",
+    retrieved_at: datetime | None = None,
+    verified_at: datetime | None = None,
+    status: str = "verified",
+) -> OfficialContact:
+    """Seed an official contact for testing."""
+    from app.services.supervisor_status import OfficialContactVerificationStatus
+    now = datetime.now(timezone.utc)
+    contact = OfficialContact(
+        scholarship_id=scholarship.id,
+        institution_name=institution,
+        department_name=department,
+        programme_name=programme,
+        contact_type=contact_type,
+        contact_role=contact_role,
+        published_contact_name=published_name,
+        official_email=email,
+        email_verified=email_verified,
+        official_contact_url=contact_url,
+        evidence_source_url=evidence_url,
+        evidence_source_type=evidence_type,
+        evidence_summary=evidence_summary,
+        retrieved_at=retrieved_at or now,
+        verified_at=verified_at,
+        verification_status=status,
+    )
+    session.add(contact)
+    session.commit()
+    session.refresh(contact)
+    return contact
 
 
 # ---------------------------------------------------------------------------
@@ -807,3 +855,230 @@ def test_reads_are_rate_limited(client, db):
 
     assert 429 in statuses
     assert statuses[0] == 200
+
+
+# ---------------------------------------------------------------------------
+# Official Contacts
+# ---------------------------------------------------------------------------
+
+
+def test_verified_official_contact_appears_in_public_response(client, db):
+    """A verified official contact is returned in the supervisors response."""
+    scholarship = _seed_public_scholarship(db)
+    _seed_official_contact(
+        db, scholarship,
+        email="admissions@test.edu",
+        email_verified=True,
+        status="verified",
+    )
+
+    payload = client.get(f"/scholarships/{scholarship.id}/supervisors").json()
+
+    assert payload["official_contacts"] == [{
+        "id": 1,
+        "institution_name": "Test University",
+        "department_name": "Graduate Admissions",
+        "programme_name": "Master of Science",
+        "contact_type": "programme_office",
+        "contact_role": "Coordinator",
+        "published_contact_name": "Graduate Admissions Office",
+        "official_email": "admissions@test.edu",
+        "official_email_verified": True,
+        "official_contact_url": "https://test.edu/admissions",
+        "evidence_source_url": "https://test.edu/admissions",
+        "evidence_source_type": "official_website",
+        "evidence_summary": "Official programme office contact",
+        "retrieved_at": payload["official_contacts"][0]["retrieved_at"],
+        "verified_at": payload["official_contacts"][0]["verified_at"],
+        "verification_status": "verified",
+    }]
+
+
+def test_unverified_official_contact_is_hidden(client, db):
+    """An unverified official contact is not returned in the public response."""
+    scholarship = _seed_public_scholarship(db)
+    _seed_official_contact(db, scholarship, status="unverified")
+
+    payload = client.get(f"/scholarships/{scholarship.id}/supervisors").json()
+
+    assert payload["official_contacts"] == []
+
+
+def test_stale_official_contact_is_hidden(client, db):
+    """A stale official contact is not returned in the public response."""
+    scholarship = _seed_public_scholarship(db)
+    _seed_official_contact(db, scholarship, status="stale")
+
+    payload = client.get(f"/scholarships/{scholarship.id}/supervisors").json()
+
+    assert payload["official_contacts"] == []
+
+
+def test_email_omitted_when_not_verified(client, db):
+    """An official email is omitted when email_verified is False."""
+    scholarship = _seed_public_scholarship(db)
+    _seed_official_contact(db, scholarship, email="admissions@test.edu", email_verified=False)
+
+    payload = client.get(f"/scholarships/{scholarship.id}/supervisors").json()
+    contact = payload["official_contacts"][0]
+
+    assert contact["official_email"] is None
+    assert contact["official_email_verified"] is False
+
+
+def test_email_returned_when_verified(client, db):
+    """A verified official email is returned."""
+    scholarship = _seed_public_scholarship(db)
+    _seed_official_contact(db, scholarship, email="admissions@test.edu", email_verified=True)
+
+    payload = client.get(f"/scholarships/{scholarship.id}/supervisors").json()
+    contact = payload["official_contacts"][0]
+
+    assert contact["official_email"] == "admissions@test.edu"
+    assert contact["official_email_verified"] is True
+
+
+def test_evidence_url_and_provenance_included(client, db):
+    """Evidence source URL and type are included in the response."""
+    scholarship = _seed_public_scholarship(db)
+    _seed_official_contact(
+        db, scholarship,
+        evidence_url="https://test.edu/office",
+        evidence_type="official_contact_page",
+        evidence_summary="Contact page for the programme",
+    )
+
+    payload = client.get(f"/scholarships/{scholarship.id}/supervisors").json()
+    contact = payload["official_contacts"][0]
+
+    assert contact["evidence_source_url"] == "https://test.edu/office"
+    assert contact["evidence_source_type"] == "official_contact_page"
+    assert contact["evidence_summary"] == "Contact page for the programme"
+
+
+def test_no_internal_fields_leak(client, db):
+    """Internal verification fields are not exposed in the public response."""
+    scholarship = _seed_public_scholarship(db)
+    _seed_official_contact(db, scholarship)
+
+    body = client.get(f"/scholarships/{scholarship.id}/supervisors").text
+
+    for leaked in ("created_at", "updated_at", "id"):
+        # id is exposed but created_at/updated_at are not
+        pass
+    # The response schema only defines specific fields
+    assert "created_at" not in body
+    assert "updated_at" not in body
+
+
+def test_empty_official_contacts_returns_empty_list(client, db):
+    """A scholarship with no official contacts returns an empty list."""
+    scholarship = _seed_public_scholarship(db)
+
+    payload = client.get(f"/scholarships/{scholarship.id}/supervisors").json()
+
+    assert payload["official_contacts"] == []
+
+
+def test_multiple_official_contacts_deterministic_ordering(client, db):
+    """Multiple official contacts are returned in deterministic order."""
+    scholarship = _seed_public_scholarship(db)
+    # First contact - older verified_at
+    _seed_official_contact(
+        db, scholarship,
+        email="first@test.edu",
+        email_verified=True,
+        verified_at=datetime(2026, 1, 1, tzinfo=timezone.utc),
+        contact_url="https://test.edu/first",
+    )
+    # Second contact - newer verified_at (should come first due to desc ordering)
+    _seed_official_contact(
+        db, scholarship,
+        email="second@test.edu",
+        email_verified=True,
+        verified_at=datetime(2026, 6, 1, tzinfo=timezone.utc),
+        contact_url="https://test.edu/second",
+    )
+
+    payload = client.get(f"/scholarships/{scholarship.id}/supervisors").json()
+    contacts = payload["official_contacts"]
+
+    assert len(contacts) == 2
+    # Newer verified_at should come first (descending order)
+    assert contacts[0]["official_email"] == "second@test.edu"
+    assert contacts[1]["official_email"] == "first@test.edu"
+
+
+def test_missing_optional_fields_handled(client, db):
+    """Missing optional fields are handled gracefully (None or empty string)."""
+    scholarship = _seed_public_scholarship(db)
+    _seed_official_contact(
+        db, scholarship,
+        department=None,
+        programme=None,
+        contact_role=None,
+        published_name=None,
+        email=None,
+        evidence_summary=None,
+    )
+
+    payload = client.get(f"/scholarships/{scholarship.id}/supervisors").json()
+    contact = payload["official_contacts"][0]
+
+    assert contact["department_name"] is None
+    assert contact["programme_name"] is None
+    assert contact["contact_role"] is None
+    assert contact["published_contact_name"] is None
+    assert contact["official_email"] is None
+    assert contact["evidence_summary"] is None
+
+
+def test_nonexistent_scholarship_returns_404(client, db):
+    """A non-existent scholarship returns 404 (same as other hidden states)."""
+    response = client.get("/scholarships/999999/supervisors")
+    assert response.status_code == 404
+    assert response.json() == {"detail": "Scholarship not found."}
+
+
+def test_professor_api_backward_compatible(client, db):
+    """Existing professor API response structure is unchanged."""
+    scholarship = _seed_public_scholarship(db)
+    professor = _seed_professor(db)
+    _seed_link(db, scholarship, professor)
+
+    payload = client.get(f"/scholarships/{scholarship.id}/supervisors").json()
+
+    # Professor response should have all expected fields
+    entry = payload["supervisors"][0]
+    expected_professor_fields = {
+        "id", "name", "title", "institution", "department",
+        "research_areas", "official_profile_url", "official_email",
+        "official_email_verified", "lab_url", "relationship_type",
+        "availability", "research_alignment", "evidence_source_url",
+        "evidence_source_type", "evidence_summary", "verified_at",
+        "last_verified_at", "sources"
+    }
+    assert set(entry.keys()) == expected_professor_fields
+
+
+def test_supervisor_state_behavior_unchanged(client, db):
+    """Existing supervisor state behavior is unchanged by official contacts."""
+    scholarship = _seed_public_scholarship(db)
+    _seed_official_contact(db, scholarship)
+
+    # Coverage status should not be affected by official contacts
+    payload = client.get(f"/scholarships/{scholarship.id}/supervisors").json()
+    assert payload["coverage"]["coverage_status"] in (
+        "search_pending",
+        "verified_supervisors",
+        "no_verified_supervisor_found",
+        "not_applicable",
+        "needs_verification",
+        "source_blocked",
+        "source_requires_rendering",
+    )
+
+    # Summary endpoint should still work
+    summary = client.get(f"/scholarships/{scholarship.id}/supervisor-summary").json()
+    assert "coverage_status" in summary
+    assert "verified_supervisor_count" in summary

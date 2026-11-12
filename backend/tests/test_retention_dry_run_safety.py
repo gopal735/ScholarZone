@@ -23,6 +23,7 @@ from sqlalchemy import create_engine, event, select
 from sqlalchemy.orm import sessionmaker
 
 from app.models import Base, DiscoveryCandidate, ImageReview, Scholarship, ScholarshipReview
+import app.models_supervisor  # noqa: F401 - registers OfficialContact in Base.metadata
 from app.repositories.scholarships import public_visibility_conditions
 from app.services.counting.catalogue import catalogue_counts
 from app.services.retention_contract import RetentionPolicy, default_policy
@@ -335,6 +336,7 @@ class TestDryRunIssuesNoDestructiveStatement:
             "saved_scholarships", "application_records",
             "scholarship_supervisor_coverage", "scholarship_professor_links",
             "supervisor_source_evidence", "professor_outreach_records",
+            "official_contacts",
         }, sorted(tables_read)
 
     def test_bounded_statement_count(self, session, statements):
@@ -617,6 +619,7 @@ class TestImageAuditContextIsolation:
             "saved_scholarships", "application_records",
             "scholarship_supervisor_coverage", "scholarship_professor_links",
             "supervisor_source_evidence", "professor_outreach_records",
+            "official_contacts",
         ]
         for table in allowed_tables:
             sql = f"SELECT * FROM {table}"
@@ -678,6 +681,7 @@ class TestImageAuditContextIsolation:
             "saved_scholarships", "application_records",
             "scholarship_supervisor_coverage", "scholarship_professor_links",
             "supervisor_source_evidence", "professor_outreach_records",
+            "official_contacts",
         }
         assert unauthorized_table not in allowed
         assert not (tables_read <= allowed), (
