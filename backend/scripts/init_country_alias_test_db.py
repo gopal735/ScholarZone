@@ -13,14 +13,20 @@ from pathlib import Path
 # Add backend to path
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 
-from app.database import get_session_factory
-from app.models import Scholarship
-from sqlalchemy import text
-from datetime import date
-
 
 def init_country_alias_test_db():
     """Seed the database with test records for country alias testing."""
+    # Import after setting environment variables to ensure correct database URL resolution
+    from app.database import get_session_factory, init_database
+    from app.models import Scholarship
+    from sqlalchemy import text
+    from datetime import date
+    
+    # Initialize database schema first
+    print("Initializing database schema...")
+    init_database()
+    print("Database schema initialized.")
+    
     session_factory = get_session_factory()
     session = session_factory()
     
@@ -255,12 +261,21 @@ def init_country_alias_test_db():
 
 
 if __name__ == "__main__":
-    # Set test environment
+    # Set test environment BEFORE importing database module
+    # This must happen before database module is imported
     os.environ["SCHOLARZONE_ENVIRONMENT"] = "test"
     os.environ["SCHOLARZONE_DATABASE_URL"] = os.environ.get(
         "SCHOLARZONE_DATABASE_URL",
         "postgresql://test:test@localhost:5439/country_alias_test?sslmode=disable"
     )
+    
+    # Verify we're using a test database
+    db_url = os.environ["SCHOLARZONE_DATABASE_URL"]
+    if "country_alias_test" not in db_url:
+        raise RuntimeError(
+            f"SAFETY VIOLATION: This script must only run against the test database. "
+            f"Current URL: {db_url}"
+        )
     
     # Clear cached database connections
     from app.database import reset_database_connections
