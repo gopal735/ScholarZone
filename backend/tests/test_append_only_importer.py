@@ -19,12 +19,15 @@ Run with: python -m pytest backend/tests/test_append_only_importer.py -v
 """
 
 import json
+import os
 import tempfile
 import pytest
 from pathlib import Path
 from unittest.mock import MagicMock, patch
 from datetime import date
 from sqlalchemy import create_engine, select, func
+from sqlalchemy.engine import URL, make_url
+from sqlalchemy import text
 from sqlalchemy.orm import Session, sessionmaker
 from sqlalchemy.pool import StaticPool
 from sqlalchemy.exc import SQLAlchemyError
@@ -47,6 +50,8 @@ from append_only_importer import (
     ScholarshipIngestionRecord,
     Scholarship,
     validate_catalogue,
+    _acquire_import_serialization_lock,
+    IMPORT_SERIALIZATION_LOCK_KEY,
 )
 from app.database import get_engine
 from app.models import Base
@@ -284,6 +289,23 @@ class TestDatabaseFunctions:
 class TestImportRecords:
     """Tests for import_records function."""
 
+    def test_postgresql_transaction_lock_uses_stable_key(self):
+        from types import SimpleNamespace
+
+        session = MagicMock()
+        session.get_bind.return_value = SimpleNamespace(
+            dialect=SimpleNamespace(name="postgresql")
+        )
+        _acquire_import_serialization_lock(session)
+        statement, params = session.execute.call_args.args
+        assert "pg_advisory_xact_lock" in str(statement)
+        assert params == {"lock_key": IMPORT_SERIALIZATION_LOCK_KEY}
+
+    def test_non_postgresql_session_does_not_issue_advisory_sql(self, test_session):
+        test_session.execute = MagicMock(wraps=test_session.execute)
+        _acquire_import_serialization_lock(test_session)
+        test_session.execute.assert_not_called()
+
     def test_dry_run_no_write(self, test_session):
         records = [(make_record(i), f"TEST-{i:03d}") for i in range(3)]
         report = ImportReport()
@@ -516,6 +538,47 @@ class TestCLISafetyGates:
             with pytest.raises(SystemExit):
                 main()
 
+    def test_execute_requires_process_production_environment_and_postgresql(self, monkeypatch, capsys):
+        from append_only_importer import main
+
+        monkeypatch.setenv("SCHOLARZONE_ENVIRONMENT", "test")
+        monkeypatch.setenv("SCHOLARZONE_DATABASE_URL", "sqlite:///:memory:")
+        monkeypatch.setattr(
+            "append_only_importer.get_engine",
+            lambda: pytest.fail("database engine must not be opened for a rejected target"),
+        )
+        argv = [
+            "importer.py", "--execute", "--environment", "production",
+            "--expected-db-id", "disposable_test", "--expected-endpoint", "localhost:5432",
+            "--backup-attestation", "manual", "--operator-attestation", "verified by operator",
+            "--evidence-ref", "test-evidence",
+        ]
+        monkeypatch.setattr("sys.argv", argv)
+        with pytest.raises(SystemExit) as exc:
+            main()
+        assert exc.value.code == 2
+        assert "SCHOLARZONE_ENVIRONMENT=production" in capsys.readouterr().err
+
+    def test_execute_rejects_non_postgresql_even_with_production_flag(self, monkeypatch, capsys):
+        from append_only_importer import main
+
+        monkeypatch.setenv("SCHOLARZONE_ENVIRONMENT", "production")
+        monkeypatch.setenv("SCHOLARZONE_DATABASE_URL", "sqlite:///:memory:")
+        monkeypatch.setattr(
+            "append_only_importer.get_engine",
+            lambda: pytest.fail("database engine must not be opened for a rejected target"),
+        )
+        monkeypatch.setattr("sys.argv", [
+            "importer.py", "--execute", "--environment", "production",
+            "--expected-db-id", "disposable_test", "--expected-endpoint", "localhost:5432",
+            "--backup-attestation", "manual", "--operator-attestation", "verified by operator",
+            "--evidence-ref", "test-evidence",
+        ])
+        with pytest.raises(SystemExit) as exc:
+            main()
+        assert exc.value.code == 2
+        assert "postgresql://" in capsys.readouterr().err.lower()
+
 
 class TestDatabaseIdentity:
     """Tests for database identity verification."""
@@ -542,6 +605,69 @@ class TestDatabaseIdentity:
         ok, msg = verify_database_identity(test_engine, "wrong_db", "wrong_host:5432")
         assert ok is False
         assert "mismatch" in msg.lower()
+
+    def test_postgresql_identity_uses_configured_client_endpoint(self):
+        engine = MagicMock()
+        engine.dialect.name = "postgresql"
+        engine.url = URL.create(
+            "postgresql+psycopg2", username="test", password="secret",
+            host="db.example.test", port=6543, database="scholarzone_test",
+        )
+        conn = engine.connect.return_value.__enter__.return_value
+        conn.execute.return_value.first.return_value = ("scholarzone_test", "10.0.0.4", 5432)
+
+        identity = get_database_identity(engine)
+        ok, message = verify_database_identity(engine, "scholarzone_test", "db.example.test:6543")
+
+        assert identity["endpoint"] == "db.example.test:6543"
+        assert identity["server_endpoint"] == "10.0.0.4:5432"
+        assert ok is True
+        assert "db.example.test:6543" in message
+
+
+@pytest.mark.skipif(
+    not os.environ.get("TEST_POSTGRESQL_URL"),
+    reason="TEST_POSTGRESQL_URL not set; PostgreSQL lock integration requires the disposable CI service",
+)
+def test_postgresql_import_lock_serializes_concurrent_transactions():
+    """A second importer cannot pass the transaction lock until the first commits."""
+    url = os.environ["TEST_POSTGRESQL_URL"]
+    parsed = make_url(url)
+    if (parsed.host or "").lower() not in {"localhost", "127.0.0.1", "::1"}:
+        raise RuntimeError("TEST_POSTGRESQL_URL must target a loopback PostgreSQL service")
+    if "test" not in (parsed.database or "").lower():
+        raise RuntimeError("TEST_POSTGRESQL_URL database name must identify a disposable test database")
+
+    engine = create_engine(url, pool_size=2, max_overflow=0)
+    first = engine.connect()
+    second = engine.connect()
+    first_tx = first.begin()
+    second_tx = second.begin()
+    try:
+        first.execute(
+            text("SELECT pg_advisory_xact_lock(:lock_key)"),
+            {"lock_key": IMPORT_SERIALIZATION_LOCK_KEY},
+        )
+        acquired_while_held = second.execute(
+            text("SELECT pg_try_advisory_xact_lock(:lock_key)"),
+            {"lock_key": IMPORT_SERIALIZATION_LOCK_KEY},
+        ).scalar_one()
+        assert acquired_while_held is False
+
+        first_tx.commit()
+        acquired_after_commit = second.execute(
+            text("SELECT pg_try_advisory_xact_lock(:lock_key)"),
+            {"lock_key": IMPORT_SERIALIZATION_LOCK_KEY},
+        ).scalar_one()
+        assert acquired_after_commit is True
+    finally:
+        if first_tx.is_active:
+            first_tx.rollback()
+        if second_tx.is_active:
+            second_tx.rollback()
+        first.close()
+        second.close()
+        engine.dispose()
 
 
 class TestBackupAttestation:

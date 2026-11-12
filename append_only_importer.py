@@ -57,6 +57,8 @@ from app.services.scholarship_ingestion import (
     _fit_columns,
 )
 
+IMPORT_SERIALIZATION_LOCK_KEY = 1396918348
+
 
 class ImportReport:
     """Tracks import statistics and results."""
@@ -171,15 +173,27 @@ def get_database_identity(engine) -> dict[str, str]:
                 db_name = result[0] if result else "unknown"
                 host = result[1] if result and result[1] else "unknown"
                 port = result[2] if result and result[2] else "unknown"
+                # Compare against the configured client endpoint (the host and
+                # port the process actually connected to). inet_server_addr()
+                # is often a provider-internal IP and does not match the
+                # operator-supplied DNS endpoint shown in the CLI examples.
+                client_host = engine.url.host
+                client_port = engine.url.port or 5432
+                endpoint = f"{client_host}:{client_port}"
+                server_endpoint = f"{host}:{port}"
             elif dialect == "sqlite":
                 # SQLite doesn't have database name/host/port in the same way
                 db_name = "sqlite"
                 host = "localhost"
                 port = "0"
+                endpoint = f"{host}:{port}"
+                server_endpoint = endpoint
             else:
                 db_name = "unknown"
                 host = "unknown"
                 port = "unknown"
+                endpoint = f"{host}:{port}"
+                server_endpoint = endpoint
             
             # Sanitized URL
             url = str(engine.url)
@@ -193,7 +207,8 @@ def get_database_identity(engine) -> dict[str, str]:
                 "database": db_name,
                 "host": str(host),
                 "port": str(port),
-                "endpoint": f"{host}:{port}",
+                "endpoint": endpoint,
+                "server_endpoint": server_endpoint,
                 "sanitized_url": sanitized,
             }
     except Exception as e:
@@ -216,6 +231,20 @@ def verify_database_identity(engine, expected_db_id: str, expected_endpoint: str
         return False, f"Endpoint mismatch: expected '{expected_endpoint}', got '{identity['endpoint']}'"
     
     return True, f"Database identity verified: {identity['database']}@{identity['endpoint']}"
+
+
+def _acquire_import_serialization_lock(session: Session) -> None:
+    """Serialize importer executions for this catalogue until transaction end.
+
+    PostgreSQL advisory transaction locks coordinate independent importer
+    processes without changing the catalogue schema. Production execution is
+    PostgreSQL-only; SQLite test sessions remain lock-free.
+    """
+    if session.get_bind().dialect.name == "postgresql":
+        session.execute(
+            text("SELECT pg_advisory_xact_lock(:lock_key)"),
+            {"lock_key": IMPORT_SERIALIZATION_LOCK_KEY},
+        )
 
 
 def get_existing_usa_count(session: Session) -> int:
@@ -315,6 +344,19 @@ def import_records(
     # Also map by name as fallback
     validated_by_name = {r.name: cid for r, cid in record_pairs}
 
+    # Hold a transaction-scoped lock across the duplicate checks and inserts.
+    # Without it, concurrent importers can both observe a missing URL; the
+    # unique constraint prevents duplicate rows but turns one valid run into a
+    # failed all-or-nothing batch.
+    if not dry_run:
+        try:
+            _acquire_import_serialization_lock(session)
+        except Exception as e:
+            session.rollback()
+            report.record_error(f"Could not serialize importer transaction: {e}")
+            report.commit_succeeded = False
+            return []
+
     # Get existing URLs for fast duplicate check
     existing_urls = get_existing_urls(session)
 
@@ -345,6 +387,8 @@ def import_records(
         if record.funding_type is None:
             report.record_failed(record, "funding_type is required for new records", candidate_id)
             report.commit_succeeded = False
+            if not dry_run:
+                session.rollback()  # release the transaction-scoped serialization lock
             return []
 
         # Prepare persistence fields
@@ -355,11 +399,15 @@ def import_records(
             if dropped:
                 report.record_error(f"Record {record.name}: dropped over-long values: {', '.join(dropped)}")
                 report.commit_succeeded = False
+                if not dry_run:
+                    session.rollback()
                 return []
 
         except Exception as e:
             report.record_failed(record, f"Insert preparation failed: {e}", candidate_id)
             report.commit_succeeded = False
+            if not dry_run:
+                session.rollback()
             return []
 
         # Record is valid and not a duplicate - add to insert list
@@ -532,6 +580,19 @@ def main():
         # Validate operator attestation is not just "yes" or similar
         if args.operator_attestation.strip().lower() in ("y", "yes", "true", "1", "confirm"):
             parser.error("Operator attestation must be a descriptive statement, not just 'yes'")
+
+        # The command-line flag alone must not select a production target. The
+        # process configuration must also be production and resolve to
+        # PostgreSQL before an engine is opened or the confirmation prompt is
+        # shown.
+        try:
+            settings = get_settings()
+        except RuntimeError as exc:
+            parser.error(f"Invalid production database configuration: {exc}")
+        if settings.environment != "production":
+            parser.error("--execute requires SCHOLARZONE_ENVIRONMENT=production")
+        if not settings.database_url.lower().startswith(("postgresql://", "postgresql+")):
+            parser.error("--execute requires a PostgreSQL database URL")
 
     print("=" * 70)
     print("ScholarZone Append-Only Scholarship Importer")
