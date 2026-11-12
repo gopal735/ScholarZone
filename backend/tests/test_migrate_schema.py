@@ -45,6 +45,7 @@ from migrate_schema import (
     parse_foreign_keys,
     normalize_type,
     types_match,
+    defaults_match,
     normalize_on_delete,
     get_production_engine,
     verify_database_identity,
@@ -231,6 +232,10 @@ class TestTypeValidation:
     def test_timestamp_timezone(self):
         """Timestamp with timezone should match across dialects."""
         assert types_match("postgresql", "TIMESTAMPTZ", "TIMESTAMP WITH TIME ZONE")
+        from sqlalchemy.dialects.postgresql import TIMESTAMP
+
+        assert types_match("postgresql", "TIMESTAMPTZ", TIMESTAMP(timezone=True))
+        assert not types_match("postgresql", "TIMESTAMPTZ", TIMESTAMP(timezone=False))
         # SQLite stores TIMESTAMPTZ as NUMERIC (Unix timestamp)
         assert types_match("sqlite", "TIMESTAMPTZ", "NUMERIC")
         assert types_match("sqlite", "TIMESTAMP WITH TIME ZONE", "NUMERIC")
@@ -243,6 +248,11 @@ class TestTypeValidation:
     def test_numeric_decimal_alias(self):
         """NUMERIC should normalize to DECIMAL."""
         assert types_match("postgresql", "NUMERIC(10,2)", "DECIMAL(10,2)")
+
+    def test_postgresql_default_rendering_is_compared_semantically(self):
+        assert defaults_match("NOW()", "now()")
+        assert defaults_match("'programme_office'", "'programme_office'::character varying")
+        assert not defaults_match("'programme_office'", "'other_office'::character varying")
 
 
 # ============================================================

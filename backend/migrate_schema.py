@@ -743,11 +743,41 @@ def normalize_type(dialect: str, type_str: str) -> str:
     return type_str.strip()
 
 
-def types_match(dialect: str, expected_type: str, actual_type: str) -> bool:
+def types_match(dialect: str, expected_type: str, actual_type: Any) -> bool:
     """Check if types match with dialect awareness."""
     norm_expected = normalize_type(dialect, expected_type)
-    norm_actual = normalize_type(dialect, actual_type)
+    actual_text = str(actual_type)
+    # SQLAlchemy renders both PostgreSQL TIMESTAMP variants as ``TIMESTAMP``
+    # in str(); the timezone flag is the distinguishing schema detail.
+    if (
+        dialect == "postgresql"
+        and actual_text.upper().startswith("TIMESTAMP")
+        and getattr(actual_type, "timezone", False)
+    ):
+        actual_text = "TIMESTAMP WITH TIME ZONE"
+    norm_actual = normalize_type(dialect, actual_text)
     return norm_expected == norm_actual
+
+
+def defaults_match(expected: Any, actual: Any) -> bool:
+    """Compare defaults while normalizing harmless PostgreSQL rendering."""
+    if expected is None or actual is None:
+        return expected is actual
+
+    def canonical(value: Any) -> str:
+        rendered = re.sub(r"\s+", " ", str(value).strip())
+        if re.fullmatch(r"now\(\)(?:::timestamp(?: with time zone)?)?", rendered, re.IGNORECASE):
+            return "NOW()"
+        literal = re.fullmatch(
+            r"('(?:''|[^'])*')(?:\s*::\s*[a-z_][a-z_ ]*(?:\(\d+(?:,\s*\d+)?\))?)?",
+            rendered,
+            re.IGNORECASE,
+        )
+        if literal:
+            return literal.group(1)
+        return rendered
+
+    return canonical(expected) == canonical(actual)
 
 
 def get_all_indexes_with_pragma(conn: Connection, table_name: str) -> list[dict]:
@@ -841,7 +871,8 @@ def validate_schema_with_connection(conn: Connection) -> dict[str, Any]:
                 continue
             
             # Exact type matching (dialect-aware)
-            type_ok = types_match(dialect, expected_col["type"], str(actual_col.get("type", "")))
+            actual_type = actual_col.get("type", "")
+            type_ok = types_match(dialect, expected_col["type"], actual_type)
             
             # Check nullable
             expected_nullable = expected_col["nullable"]
@@ -870,16 +901,15 @@ def validate_schema_with_connection(conn: Connection) -> dict[str, Any]:
             # Default validation: both expected and actual must match exactly
             # If expected has a default, actual must have the same default
             # If expected has no default, actual must not have a default
-            if expected_default is not None:
-                if actual_default is None:
-                    default_ok = False  # Expected default but actual has none
-                else:
-                    # Normalize defaults for comparison
-                    default_ok = str(expected_default).strip("'") == str(actual_default).strip("'")
-            else:
-                # Expected no default
-                if actual_default is not None:
-                    default_ok = False  # Unexpected default
+            default_ok = defaults_match(expected_default, actual_default)
+
+            actual_type_label = str(actual_type)
+            if (
+                dialect == "postgresql"
+                and actual_type_label.upper().startswith("TIMESTAMP")
+                and getattr(actual_type, "timezone", False)
+            ):
+                actual_type_label = "TIMESTAMP WITH TIME ZONE"
             
             col_ok = type_ok and nullable_ok and pk_ok and unique_ok and default_ok
             if not col_ok:
@@ -889,7 +919,7 @@ def validate_schema_with_connection(conn: Connection) -> dict[str, Any]:
                 "status": "OK" if col_ok else "MISMATCH",
                 "expected": expected_col,
                 "actual": {
-                    "type": str(actual_col.get("type")),
+                    "type": actual_type_label,
                     "nullable": actual_nullable,
                     "primary_key": actual_pk_bool,
                     "unique": actual_unique,
