@@ -252,6 +252,9 @@ class TestTypeValidation:
     def test_postgresql_default_rendering_is_compared_semantically(self):
         assert defaults_match("NOW()", "now()")
         assert defaults_match("'programme_office'", "'programme_office'::character varying")
+        assert defaults_match(False, "false")
+        assert defaults_match(True, "TRUE")
+        assert not defaults_match(False, "true")
         assert not defaults_match("'programme_office'", "'other_office'::character varying")
 
 

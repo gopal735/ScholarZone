@@ -765,7 +765,11 @@ def defaults_match(expected: Any, actual: Any) -> bool:
         return expected is actual
 
     def canonical(value: Any) -> str:
+        if isinstance(value, bool):
+            return "TRUE" if value else "FALSE"
         rendered = re.sub(r"\s+", " ", str(value).strip())
+        if rendered.lower() in {"true", "false"}:
+            return rendered.upper()
         if re.fullmatch(r"now\(\)(?:::timestamp(?: with time zone)?)?", rendered, re.IGNORECASE):
             return "NOW()"
         literal = re.fullmatch(
