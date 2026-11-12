@@ -258,7 +258,9 @@ class TestMetrics:
                 requests_made=requests,
             )
 
-        runner = ImageCoverageRunner(session_factory, dry_run=True, max_workers=1, preflight_fn=ALLOW)
+        runner = ImageCoverageRunner(
+            session_factory, dry_run=True, max_workers=1, batch_size=1, preflight_fn=ALLOW
+        )
         with patch(
             "app.services.image_discovery_orchestrator.ImageDiscoveryOrchestrator.run",
             new=fake,
