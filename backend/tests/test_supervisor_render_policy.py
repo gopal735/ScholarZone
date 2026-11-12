@@ -711,3 +711,33 @@ def test_a_rendered_directory_is_recognised_as_a_directory():
 
 def test_the_infinite_scroll_fixture_is_a_directory():
     assert looks_like_directory_listing(INFINITE_SCROLL_DIRECTORY) is True
+
+
+def test_sync_coroutine_runner_supports_subprocess_transports():
+    """Playwright's driver process must work on the runner's selected event loop."""
+    import asyncio
+    import sys
+
+    async def spawn_child():
+        child = await asyncio.create_subprocess_exec(sys.executable, "-c", "pass")
+        return await child.wait()
+
+    assert render_module._run_coroutine(spawn_child()) == 0
+
+
+def test_browser_start_failure_is_reported_as_inconclusive(monkeypatch):
+    monkeypatch.setenv(render_module.RENDER_ENABLED_ENV, "true")
+    monkeypatch.setattr(render_module, "playwright_available", lambda: True)
+
+    async def fail_start(self):
+        raise RuntimeError("browser executable unavailable")
+
+    monkeypatch.setattr(render_module.PlaywrightRenderDriver, "start", fail_start)
+    observation = render_module.render_blocking(
+        "https://uni1.edu/directory",
+        budget=RenderBudget(total_seconds=5),
+        seed_host="uni1.edu",
+    )
+    assert observation.outcome == SourceOutcome.ERROR
+    assert observation.error_kind == RenderErrorKind.BROWSER_UNAVAILABLE
+    assert observation.detail == "RuntimeError"
