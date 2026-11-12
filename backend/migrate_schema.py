@@ -601,6 +601,18 @@ def apply_migration(engine: Engine, report: dict[str, Any]) -> dict[str, Any]:
     applied = {"tables_created": [], "indexes_created": [], "errors": []}
     validation = None
     
+    # PRE-APPLY SAFETY GATE: Verify backup/PITR status before any DDL
+    with engine.connect() as conn:
+        backup_status = verify_backup_pitr_status(conn)
+        if not backup_status["verified"]:
+            error_msg = "BACKUP/PITR VERIFICATION FAILED: " + json.dumps(backup_status, indent=2, default=str)
+            print(f"[ERROR] {error_msg}", file=sys.stderr)
+            raise RuntimeError(f"Backup/PITR gate failed: {error_msg}")
+        print(f"[INFO] Backup/PITR verification passed: {backup_status['details'].get('evidence_ref', 'unknown')}")
+    
+    applied = {"tables_created": [], "indexes_created": [], "errors": []}
+    validation = None
+    
     # Use a single transaction for all DDL AND validation
     with engine.begin() as conn:
         # Create tables
@@ -738,8 +750,8 @@ def get_all_indexes_with_pragma(conn: Connection, table_name: str) -> list[dict]
             })
         return indexes
     else:
-        # Use standard inspector for PostgreSQL
-        inspector = inspect(conn.engine)
+        # Use standard inspector for PostgreSQL on the CONNECTION (not engine) to see uncommitted DDL
+        inspector = inspect(conn)
         return [
             {
                 "name": i["name"],
@@ -755,10 +767,10 @@ def validate_schema_with_connection(conn: Connection) -> dict[str, Any]:
     
     This allows validation within the same transaction as DDL application.
     """
-    engine = conn.engine
-    inspector = inspect(engine)
+    # Use the connection directly for inspection to see uncommitted DDL
+    inspector = inspect(conn)
     existing_tables = set(inspector.get_table_names())
-    dialect = "postgresql" if engine.dialect.name == "postgresql" else "sqlite"
+    dialect = "postgresql" if conn.engine.dialect.name == "postgresql" else "sqlite"
     expected_schema = get_expected_schema(dialect)
     
     validation = {
@@ -799,7 +811,7 @@ def validate_schema_with_connection(conn: Connection) -> dict[str, Any]:
         # Column validation
         column_results = {}
         # Get primary key info once
-        pk_info = actual_pk.get("constrained_columns", [])
+        pk_info = inspector.get_pk_constraint(table_name).get("constrained_columns", [])
         for col_name, expected_col in expected_columns.items():
             actual_col = actual_columns.get(col_name)
             if not actual_col:
@@ -833,9 +845,20 @@ def validate_schema_with_connection(conn: Connection) -> dict[str, Any]:
             expected_default = expected_col.get("default")
             actual_default = actual_col.get("default")
             default_ok = True
-            if expected_default is not None and actual_default is not None:
-                # Normalize defaults for comparison
-                default_ok = str(expected_default).strip("'") == str(actual_default).strip("'")
+            
+            # Default validation: both expected and actual must match exactly
+            # If expected has a default, actual must have the same default
+            # If expected has no default, actual must not have a default
+            if expected_default is not None:
+                if actual_default is None:
+                    default_ok = False  # Expected default but actual has none
+                else:
+                    # Normalize defaults for comparison
+                    default_ok = str(expected_default).strip("'") == str(actual_default).strip("'")
+            else:
+                # Expected no default
+                if actual_default is not None:
+                    default_ok = False  # Unexpected default
             
             col_ok = type_ok and nullable_ok and pk_ok and unique_ok and default_ok
             if not col_ok:
@@ -924,7 +947,7 @@ def validate_schema_with_connection(conn: Connection) -> dict[str, Any]:
         # Foreign key validation with exact constrained/referred columns and ON DELETE
         fk_results = []
         actual_foreign_keys = inspector.get_foreign_keys(table_name)
-        dialect = "postgresql" if engine.dialect.name == "postgresql" else "sqlite"
+        dialect = "postgresql" if conn.engine.dialect.name == "postgresql" else "sqlite"
         
         for expected_fk in expected.get("foreign_keys", []):
             # Match by constrained columns AND referred table
@@ -1003,7 +1026,7 @@ def validate_schema_with_connection(conn: Connection) -> dict[str, Any]:
             "exists": True,
             "column_count": len(actual_columns),
             "columns": list(actual_columns.keys()),
-            "primary_key": actual_pk.get("constrained_columns", []),
+            "primary_key": inspector.get_pk_constraint(table_name).get("constrained_columns", []),
             "has_required_columns": table_ok,
         }
         
@@ -1042,6 +1065,14 @@ def main():
     if args.apply and not os.environ.get("SCHOLARZONE_EXPECTED_DB_IDENTIFIER"):
         print("ERROR: --apply requires SCHOLARZONE_EXPECTED_DB_IDENTIFIER environment variable to be set", file=sys.stderr)
         print("This is a safety gate to prevent accidental migration to wrong database.", file=sys.stderr)
+        sys.exit(1)
+    
+    # P0-3: Reject SQLite in production apply mode
+    is_production = os.environ.get("SCHOLARZONE_ENVIRONMENT", "").lower() == "production"
+    database_url = os.environ.get("SCHOLARZONE_DATABASE_URL", "")
+    if args.apply and is_production and database_url.startswith("sqlite"):
+        print("ERROR: --apply with SQLite is not allowed in production environment (SCHOLARZONE_ENVIRONMENT=production)", file=sys.stderr)
+        print("Use a PostgreSQL database for production migrations.", file=sys.stderr)
         sys.exit(1)
     
     try:

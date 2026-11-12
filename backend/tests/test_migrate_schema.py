@@ -511,18 +511,24 @@ class TestTransactionRollback:
         """Second apply should be idempotent (no-op)."""
         from migrate_schema import apply_migration, dry_run
         
-        # First apply
-        report1 = dry_run(sqlite_engine_with_supervisor)
-        result1 = apply_migration(sqlite_engine_with_supervisor, report1)
-        
-        # Second apply should be no-op
-        report2 = dry_run(sqlite_engine_with_supervisor)
-        assert len(report2["create_statements"]) == 0
-        assert len(report2["index_statements"]) == 0
-        
-        result2 = apply_migration(sqlite_engine_with_supervisor, report2)
-        assert len(result2["applied"]["tables_created"]) == 0
-        assert len(result2["applied"]["indexes_created"]) == 0
+        # Set required environment variables for backup/PITR gate
+        with patch.dict(os.environ, {
+            "SCHOLARZONE_BACKUP_VERIFIED": "true",
+            "SCHOLARZONE_RESTORE_TEST_DATE": "2024-01-15",
+            "SCHOLARZONE_BACKUP_EVIDENCE_REF": "neon-backup-2024-01-15"
+        }):
+            # First apply
+            report1 = dry_run(sqlite_engine_with_supervisor)
+            result1 = apply_migration(sqlite_engine_with_supervisor, report1)
+            
+            # Second apply should be no-op
+            report2 = dry_run(sqlite_engine_with_supervisor)
+            assert len(report2["create_statements"]) == 0
+            assert len(report2["index_statements"]) == 0
+            
+            result2 = apply_migration(sqlite_engine_with_supervisor, report2)
+            assert len(result2["applied"]["tables_created"]) == 0
+            assert len(result2["applied"]["indexes_created"]) == 0
 
 
 # ============================================================
@@ -657,8 +663,14 @@ class TestFullMigrationScript:
         """Successful apply should create missing tables."""
         from migrate_schema import dry_run, apply_migration
         
-        report = dry_run(sqlite_engine)
-        result = apply_migration(sqlite_engine, report)
+        # Set required environment variables for backup/PITR gate
+        with patch.dict(os.environ, {
+            "SCHOLARZONE_BACKUP_VERIFIED": "true",
+            "SCHOLARZONE_RESTORE_TEST_DATE": "2024-01-15",
+            "SCHOLARZONE_BACKUP_EVIDENCE_REF": "neon-backup-2024-01-15"
+        }):
+            report = dry_run(sqlite_engine)
+            result = apply_migration(sqlite_engine, report)
         
         assert result["mode"] == "apply"
         assert result["applied"]["errors"] == []
