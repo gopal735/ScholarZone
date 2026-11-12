@@ -13,6 +13,7 @@ run somewhere else.
 from __future__ import annotations
 
 import json
+import os
 import subprocess
 import sys
 import textwrap
@@ -63,7 +64,16 @@ def run_session(env_overrides: dict[str, str], *, cwd: Path | None = None) -> di
     script = BACKEND / "_isolation_probe.py"
     script.write_text(probe, encoding="utf-8")
     try:
-        env = {"PATH": "/usr/bin:/bin:/usr/local/bin", "SystemRoot": ""}
+        # Start with a minimal base environment, then add test overrides.
+        # Use os.environ as a base to ensure Windows socket initialization works,
+        # then apply test-specific overrides.
+        env = dict(os.environ)
+        env.update({
+            "PATH": os.environ.get("PATH", ""),
+            "SystemRoot": os.environ.get("SystemRoot", ""),
+            "TEMP": os.environ.get("TEMP", ""),
+            "TMP": os.environ.get("TMP", ""),
+        })
         env.update(env_overrides)
         proc = subprocess.run(
             [sys.executable, str(script), str(CONFTEST_DIR)],
@@ -150,6 +160,177 @@ class TestProductionIsRefused:
         # environment is exactly as the caller left it.
         assert out["result"]["database_url_at_refusal"] == FAKE_NEON_URL
         assert ":memory:" not in (out["result"]["database_url_at_refusal"] or "")
+
+
+class TestWorkingCatalogueIsRefused:
+    def test_the_working_database_is_refused(self):
+        out = run_session({
+            "SCHOLARZONE_DATABASE_URL": f"sqlite:///{BACKEND / 'scholarzone.db'}",
+        })
+        assert out["returncode"] == 3
+        assert out["result"]["raised"] == "UnsafeTestDatabaseTarget"
+        assert "scholarzone.db" in out["result"]["message"]
+
+    def test_a_relative_path_to_the_working_database_is_also_refused(self):
+        """The same file reached by a different spelling is still the same file.
+
+        `sqlite:///scholarzone.db` resolves against the backend directory, which
+        is where pytest runs. Comparing resolved paths rather than strings is the
+        only way to catch this.
+        """
+        out = run_session({"SCHOLARZONE_DATABASE_URL": "sqlite:///scholarzone.db"})
+        assert out["returncode"] == 3
+        assert out["result"]["raised"] == "UnsafeTestDatabaseTarget"
+
+    def test_a_different_sqlite_file_is_allowed(self):
+        """Isolation is about the working catalogue, not about SQLite.
+
+        A test that builds its own temporary file database is exactly the
+        legitimate integration case, and refusing it would push people towards
+        the opt-in for no reason.
+        """
+        with tempfile_tmp() as tmp:
+            out = run_session({
+                "SCHOLARZONE_DATABASE_URL": f"sqlite:///{tmp}",
+            })
+        assert out["returncode"] == 0, out["stderr"]
+        assert out["result"]["resolved_url"].endswith(Path(tmp).name)
+
+
+class TestControlledOptIn:
+    def test_the_opt_in_permits_a_deliberate_run_and_warns_loudly(self):
+        """A controlled integration run stays possible, and is never quiet."""
+        out = run_session({
+            "SCHOLARZONE_TEST_ALLOW_EXTERNAL_DB": "1",
+            "SCHOLARZONE_DATABASE_URL": FAKE_NEON_URL,
+        })
+        assert out["returncode"] == 0, out["stderr"]
+        assert "WARNING" in out["stderr"]
+        assert "SCHOLARZONE_TEST_ALLOW_EXTERNAL_DB" in out["stderr"]
+
+    def test_the_opt_in_does_not_silence_the_working_database(self):
+        """Opting in is allowed. Opting in quietly is not."""
+        out = run_session({
+            "SCHOLARZONE_TEST_ALLOW_EXTERNAL_DB": "yes",
+            "SCHOLARZONE_DATABASE_URL": f"sqlite:///{BACKEND / 'scholarzone.db'}",
+        })
+        assert out["returncode"] == 0, out["stderr"]
+        assert "WARNING" in out["stderr"]
+
+
+class TestDisposableGitHubActionsPGTarget:
+    """Tests for the narrow allow rule for the exact disposable GitHub Actions
+    PostgreSQL target used by country-alias integration tests."""
+
+    # The exact disposable target configuration
+    DISPOSABLE_PG_ENV = {
+        "GITHUB_ACTIONS": "true",
+        "SCHOLARZONE_ENVIRONMENT": "test",
+        "SCHOLARZONE_TEST_POSTGRES": "1",
+        "SCHOLARZONE_DATABASE_URL": "postgresql://test:test@localhost:5439/country_alias_test?sslmode=disable",
+        "SCHOLARZONE_POSTGRES_URL": "postgresql://test:test@localhost:5439/country_alias_test?sslmode=disable",
+    }
+
+    def test_exact_disposable_target_is_allowed(self):
+        """The exact disposable GitHub Actions PostgreSQL target is allowed."""
+        out = run_session(self.DISPOSABLE_PG_ENV)
+        assert out["returncode"] == 0, out["stderr"]
+        assert out["result"]["resolved_environment"] == "test"
+        assert "localhost:5439" in out["result"]["resolved_url"]
+        assert "country_alias_test" in out["result"]["resolved_url"]
+
+    def test_same_url_without_test_postgres_marker_is_rejected(self):
+        """Same URL without SCHOLARZONE_TEST_POSTGRES=1 is rejected."""
+        env = {k: v for k, v in self.DISPOSABLE_PG_ENV.items() if k != "SCHOLARZONE_TEST_POSTGRES"}
+        out = run_session(env)
+        assert out["returncode"] == 3
+        assert out["result"]["raised"] == "UnsafeTestDatabaseTarget"
+
+    def test_same_url_without_github_actions_is_rejected(self):
+        """Same URL without GITHUB_ACTIONS=true is rejected."""
+        env = {k: v for k, v in self.DISPOSABLE_PG_ENV.items() if k != "GITHUB_ACTIONS"}
+        out = run_session(env)
+        assert out["returncode"] == 3
+        assert out["result"]["raised"] == "UnsafeTestDatabaseTarget"
+
+    def test_wrong_hostname_is_rejected(self):
+        """Wrong hostname (e.g., ep-example.neon.tech) is rejected."""
+        env = {**self.DISPOSABLE_PG_ENV}
+        env["SCHOLARZONE_DATABASE_URL"] = "postgresql://test:test@ep-example.us-east-2.aws.neon.tech:5432/country_alias_test?sslmode=disable"
+        env["SCHOLARZONE_POSTGRES_URL"] = env["SCHOLARZONE_DATABASE_URL"]
+        out = run_session(env)
+        assert out["returncode"] == 3
+        assert out["result"]["raised"] == "UnsafeTestDatabaseTarget"
+
+    def test_wrong_port_is_rejected(self):
+        """Wrong port is rejected."""
+        env = {**self.DISPOSABLE_PG_ENV}
+        env["SCHOLARZONE_DATABASE_URL"] = "postgresql://test:test@localhost:5432/country_alias_test?sslmode=disable"
+        env["SCHOLARZONE_POSTGRES_URL"] = env["SCHOLARZONE_DATABASE_URL"]
+        out = run_session(env)
+        assert out["returncode"] == 3
+        assert out["result"]["raised"] == "UnsafeTestDatabaseTarget"
+
+    def test_wrong_database_name_is_rejected(self):
+        """Wrong database name is rejected."""
+        env = {**self.DISPOSABLE_PG_ENV}
+        env["SCHOLARZONE_DATABASE_URL"] = "postgresql://test:test@localhost:5439/wrong_db?sslmode=disable"
+        env["SCHOLARZONE_POSTGRES_URL"] = env["SCHOLARZONE_DATABASE_URL"]
+        out = run_session(env)
+        assert out["returncode"] == 3
+        assert out["result"]["raised"] == "UnsafeTestDatabaseTarget"
+
+    def test_wrong_username_is_rejected(self):
+        """Wrong username is rejected."""
+        env = {**self.DISPOSABLE_PG_ENV}
+        env["SCHOLARZONE_DATABASE_URL"] = "postgresql://wronguser:test@localhost:5439/country_alias_test?sslmode=disable"
+        env["SCHOLARZONE_POSTGRES_URL"] = env["SCHOLARZONE_DATABASE_URL"]
+        out = run_session(env)
+        assert out["returncode"] == 3
+        assert out["result"]["raised"] == "UnsafeTestDatabaseTarget"
+
+    def test_wrong_sslmode_is_rejected(self):
+        """Wrong sslmode is rejected."""
+        env = {**self.DISPOSABLE_PG_ENV}
+        env["SCHOLARZONE_DATABASE_URL"] = "postgresql://test:test@localhost:5439/country_alias_test?sslmode=require"
+        env["SCHOLARZONE_POSTGRES_URL"] = env["SCHOLARZONE_DATABASE_URL"]
+        out = run_session(env)
+        assert out["returncode"] == 3
+        assert out["result"]["raised"] == "UnsafeTestDatabaseTarget"
+
+    def test_postgres_url_mismatch_is_rejected(self):
+        """SCHOLARZONE_POSTGRES_URL must equal SCHOLARZONE_DATABASE_URL."""
+        env = {**self.DISPOSABLE_PG_ENV}
+        env["SCHOLARZONE_POSTGRES_URL"] = "postgresql://test:test@localhost:5439/different_db?sslmode=disable"
+        out = run_session(env)
+        assert out["returncode"] == 3
+        assert out["result"]["raised"] == "UnsafeTestDatabaseTarget"
+
+    def test_arbitrary_neon_url_with_marker_is_rejected(self):
+        """Arbitrary Neon URL with PostgreSQL test marker is rejected."""
+        env = {
+            "GITHUB_ACTIONS": "true",
+            "SCHOLARZONE_ENVIRONMENT": "test",
+            "SCHOLARZONE_TEST_POSTGRES": "1",
+            "SCHOLARZONE_DATABASE_URL": "postgresql://user:pass@ep-neon.us-east-2.aws.neon.tech/db?sslmode=require",
+            "SCHOLARZONE_POSTGRES_URL": "postgresql://user:pass@ep-neon.us-east-2.aws.neon.tech/db?sslmode=require",
+        }
+        out = run_session(env)
+        assert out["returncode"] == 3
+        assert out["result"]["raised"] == "UnsafeTestDatabaseTarget"
+
+    def test_production_mode_with_all_test_markers_is_rejected(self):
+        """Production mode with all test markers is still rejected."""
+        env = {
+            "GITHUB_ACTIONS": "true",
+            "SCHOLARZONE_ENVIRONMENT": "production",
+            "SCHOLARZONE_TEST_POSTGRES": "1",
+            "SCHOLARZONE_DATABASE_URL": "postgresql://test:test@localhost:5439/country_alias_test?sslmode=disable",
+            "SCHOLARZONE_POSTGRES_URL": "postgresql://test:test@localhost:5439/country_alias_test?sslmode=disable",
+        }
+        out = run_session(env)
+        assert out["returncode"] == 3
+        assert out["result"]["raised"] == "UnsafeTestDatabaseTarget"
 
 
 class TestWorkingCatalogueIsRefused:

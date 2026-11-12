@@ -1,6 +1,9 @@
 import os
 import sys
 from pathlib import Path
+from urllib.parse import parse_qs
+
+from sqlalchemy.engine.url import make_url
 
 BACKEND_DIR = Path(__file__).resolve().parents[1]
 TESTS_DIR = Path(__file__).resolve().parent
@@ -18,6 +21,78 @@ OPT_IN_VARIABLE = "SCHOLARZONE_TEST_ALLOW_EXTERNAL_DB"
 
 class UnsafeTestDatabaseTarget(RuntimeError):
     """A test run pointed at a database that must never be written by tests."""
+
+
+def _is_disposable_github_actions_pg_target(
+    database_url: str,
+    environment: str,
+    test_postgres: str,
+    postgres_url: str,
+    github_actions: str,
+) -> bool:
+    """
+    Check if the database target is the exact disposable GitHub Actions
+    PostgreSQL target used for country-alias integration tests.
+
+    Returns True ONLY when ALL conditions match exactly:
+    - Running in GitHub Actions (GITHUB_ACTIONS == "true")
+    - Test environment (SCHOLARZONE_ENVIRONMENT == "test")
+    - PostgreSQL test marker set (SCHOLARZONE_TEST_POSTGRES == "1")
+    - URL scheme is PostgreSQL
+    - Host is exactly localhost
+    - Port is exactly 5439
+    - Database name is exactly country_alias_test
+    - Username is exactly test
+    - sslmode is exactly disable
+    - SCHOLARZONE_POSTGRES_URL equals SCHOLARZONE_DATABASE_URL
+    """
+    # All conditions must be explicitly true
+    if github_actions != "true":
+        return False
+    if environment != "test":
+        return False
+    if test_postgres != "1":
+        return False
+
+    # Parse and validate the database URL
+    try:
+        url = make_url(database_url)
+    except Exception:
+        return False
+
+    if url.get_backend_name() != "postgresql":
+        return False
+
+    if url.host != "localhost":
+        return False
+
+    if url.port != 5439:
+        return False
+
+    if url.database != "country_alias_test":
+        return False
+
+    if url.username != "test":
+        return False
+
+    # Check sslmode query parameter
+    # url.query may be an immutabledict or dict-like object, not a string
+    query = url.query
+    if hasattr(query, 'get'):
+        sslmode = query.get("sslmode")
+    else:
+        # Fallback: parse the query string
+        query_string = str(query)
+        query = parse_qs(query_string)
+        sslmode = query.get("sslmode", [None])[0]
+    if sslmode != "disable":
+        return False
+
+    # Verify SCHOLARZONE_POSTGRES_URL equals SCHOLARZONE_DATABASE_URL
+    if postgres_url != database_url:
+        return False
+
+    return True
 
 
 def enforce_test_isolation(
@@ -43,9 +118,29 @@ def enforce_test_isolation(
     boundary that silently redirected would let the run pass against a
     database nobody chose, which is worse than a run that stops.
     """
-    environment = os.getenv("SCHOLARZONE_ENVIRONMENT", "test").strip().lower()
-    database_url = os.getenv("SCHOLARZONE_DATABASE_URL", "").strip()
+    # Use provided parameters if given, otherwise fall back to environment variables
+    env_environment = os.getenv("SCHOLARZONE_ENVIRONMENT", "test").strip().lower()
+    env_database_url = os.getenv("SCHOLARZONE_DATABASE_URL", "").strip()
+    environment = (environment or env_environment).strip().lower()
+    database_url = (database_url or env_database_url).strip()
     opt_in = os.getenv(OPT_IN_VARIABLE, "").strip()
+    test_postgres = os.getenv("SCHOLARZONE_TEST_POSTGRES", "").strip()
+    postgres_url = os.getenv("SCHOLARZONE_POSTGRES_URL", "").strip()
+    github_actions = os.getenv("GITHUB_ACTIONS", "").strip()
+
+    # First, check for the narrow disposable GitHub Actions PostgreSQL target
+    # This must be checked BEFORE the general PostgreSQL rejection
+    if _is_disposable_github_actions_pg_target(
+        database_url=database_url,
+        environment=environment,
+        test_postgres=test_postgres,
+        postgres_url=postgres_url,
+        github_actions=github_actions,
+    ):
+        # This is the exact disposable GitHub Actions PostgreSQL target
+        # Allow it to proceed without opt-in
+        return
+
     if opt_in:
         # Opting in is allowed. Opting in quietly is not: the run that has set
         # this variable is by definition pointed at something that outlives it,
@@ -97,7 +192,7 @@ def enforce_test_isolation(
 enforce_test_isolation()
 
 
-# NOTE: this file used to install a fake `app.scheduler` module. That module
+# NOTE: this file used to install a fake `app.scheduler` module. That module That module
 # was a legacy APScheduler entry point that nothing in the application ever
 # imported - it was dead, and APScheduler was not a production dependency - so
 # the stub, which existed only to stop the dead module from building a
@@ -106,7 +201,7 @@ enforce_test_isolation()
 # If a future test needs to prove something about a module that touches
 # get_session_factory() at import time, that is a signal the module should not
 # be doing that, not a signal to add a stub here.
-
+#
 # A test process is a test process whether or not the caller said so.
 #
 # This is the isolation boundary, and it has one job: a bare `pytest` run
@@ -137,7 +232,6 @@ if os.getenv("SCHOLARZONE_ENVIRONMENT") == "test" and not os.getenv("SCHOLARZONE
 # seed rows that carry no image: they predate the gate and were written to
 # exercise listing, pagination, sorting and filtering - not the gate itself.
 # Inventing image URLs for them would fabricate data just to satisfy a filter.
-#
 # The gate is therefore tested directly, and with the gate on, in
 # tests/test_public_quality_gate.py, which seeds the three states it cares
 # about explicitly.
@@ -145,6 +239,18 @@ os.environ.setdefault("SCHOLARZONE_PUBLIC_REQUIRE_VERIFIED", "false")
 os.environ.setdefault("SCHOLARZONE_PUBLIC_REQUIRE_VERIFIED_IMAGE", "false")
 
 import pytest
+
+
+@pytest.fixture(autouse=True, scope="session")
+def _enforce_test_isolation():
+    """Enforce test database isolation at the start of the test session.
+
+    This fixture runs once per test session, before any tests execute.
+    It enforces the test database isolation boundary, allowing the
+    disposable GitHub Actions PostgreSQL target while rejecting all
+    other PostgreSQL and working database targets.
+    """
+    enforce_test_isolation()
 
 
 @pytest.fixture(autouse=True)
