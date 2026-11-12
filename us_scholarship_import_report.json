@@ -43,7 +43,7 @@
     "total_database_records": 1385,
     "delta_total": 9,
     "delta_valid": 7,
-    "delta_valid_note": "Net increase in valid USA-hosted records = 62 - 55 = 7. Valid records inserted = 8, but one invalid record (ID 1381) was also inserted, so total USA records increased by 9."
+    "delta_valid_note": "Post-import valid USA-hosted = 62. Pre-import valid USA-hosted = 54 (55 total - 1 invalid: ID 394 Tilburg University Waiver, Dutch university misclassified as USA). Valid inserted = 8 (IDs 1378,1379,1380,1382-1386). Invalid inserted = 1 (ID 1381 McDonald). Net valid increase = 62 - 54 = 8. Delta_valid (using pre-import total 55 as baseline) = 62 - 55 = 7. The discrepancy of 1 between valid_inserted (8) and delta_valid (7) is explained by 1 pre-import invalid record (ID 394 Tilburg University Waiver, Dutch university misclassified as USA)."
   },
   "validation": {
     "schema_validation_passed": 8,
@@ -88,7 +88,7 @@
     "invalid_imported_count": 1,
     "snapshot_count": 8,
     "sitemap_count": 773,
-    "delta_valid_note": "Pre-import valid USA baseline = 55. Post-import valid USA = 62. Delta valid = 7 (62-55). Valid inserted = 8, but one invalid record also inserted (ID 1381)."
+    "delta_valid_note": "Pre-import valid USA baseline = 54 (55 total - 1 invalid: ID 394 Tilburg University Waiver). Post-import valid USA = 62. Delta valid (vs pre-import total 55) = 7. Valid inserted = 8. Invalid inserted = 1 (ID 1381 McDonald). Pre-import invalid = 1 (ID 394 Tilburg University Waiver)."
   },
   "corrections_applied": [
     "McDonald Fellowship 2027 at DB ID 1381: Identified as invalid (no 2027 round, Europe-only hosts, not USA-hosted). Pending controlled correction.",
