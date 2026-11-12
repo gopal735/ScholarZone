@@ -35,6 +35,7 @@ from ..models_supervisor import (
     ScholarshipProfessorLink,
     ScholarshipSupervisorCoverage,
     SupervisorSourceEvidence,
+    OfficialContact,
 )
 from ..repositories.scholarships import public_visibility_conditions
 from .supervisor_alignment import ResearchAlignment, align_research
@@ -43,6 +44,8 @@ from .supervisor_status import (
     NON_PUBLISHING_COVERAGE_STATUSES,
     PUBLIC_RELATIONSHIP_STATUSES,
     SupervisorCoverageStatus,
+    OfficialContactVerificationStatus,
+    PUBLIC_CONTACT_STATUSES,
 )
 
 logger = logging.getLogger(__name__)
@@ -52,7 +55,6 @@ logger = logging.getLogger(__name__)
 DEFAULT_SUPERVISOR_LIMIT = 50
 MAX_SUPERVISOR_LIMIT = 200
 
-
 class ScholarshipNotPublic(Exception):
     """The scholarship does not exist, or is not publicly visible.
 
@@ -60,7 +62,6 @@ class ScholarshipNotPublic(Exception):
     the existence of archived and quarantined records to anyone who can guess an
     id.
     """
-
 
 def get_public_scholarship_or_404(db: Session, scholarship_id: int) -> Scholarship:
     """Return the scholarship only if it is publicly visible.
@@ -78,7 +79,6 @@ def get_public_scholarship_or_404(db: Session, scholarship_id: int) -> Scholarsh
         raise ScholarshipNotPublic(scholarship_id)
     return row
 
-
 def get_coverage(db: Session, scholarship_id: int) -> ScholarshipSupervisorCoverage | None:
     """Return the coverage row, or ``None`` when discovery has not created one.
 
@@ -91,7 +91,6 @@ def get_coverage(db: Session, scholarship_id: int) -> ScholarshipSupervisorCover
         )
     ).scalar_one_or_none()
 
-
 def count_publishable_links(db: Session, scholarship_id: int) -> int:
     """Count relationships that may be shown publicly for this scholarship."""
     return db.execute(
@@ -102,7 +101,6 @@ def count_publishable_links(db: Session, scholarship_id: int) -> int:
             )
         )
     ).scalar_one()
-
 
 def _load_publishable_links(
     db: Session, scholarship_id: int, limit: int
@@ -124,7 +122,6 @@ def _load_publishable_links(
         ).scalars()
     )
 
-
 def _load_profiles(
     db: Session, professor_ids: list[int]
 ) -> dict[int, ProfessorProfile]:
@@ -134,7 +131,6 @@ def _load_profiles(
         select(ProfessorProfile).where(ProfessorProfile.id.in_(professor_ids))
     ).scalars()
     return {row.id: row for row in rows}
-
 
 def _load_availability(
     db: Session, professor_ids: list[int], now: datetime
@@ -167,7 +163,6 @@ def _load_availability(
         entries.sort(key=lambda item: item["scope"])
     return grouped
 
-
 def _load_sources(
     db: Session, professor_ids: list[int], link_ids: list[int]
 ) -> dict[int, list[dict]]:
@@ -198,6 +193,46 @@ def _load_sources(
         entries.sort(key=lambda item: (item["retrieved_at"] or "", item["source_url"]), reverse=True)
     return grouped
 
+def _load_official_contacts(
+    db: Session, scholarship_id: int
+) -> list[dict]:
+    """Load verified official contacts for a scholarship."""
+    rows = db.execute(
+        select(OfficialContact)
+        .where(
+            and_(
+                OfficialContact.scholarship_id == scholarship_id,
+                OfficialContact.verification_status.in_(PUBLIC_CONTACT_STATUSES),
+            )
+        )
+        .order_by(
+            OfficialContact.verified_at.desc().nullslast(),
+            OfficialContact.retrieved_at.desc(),
+            OfficialContact.id.asc(),
+        )
+    ).scalars()
+
+    contacts = []
+    for row in rows:
+        contacts.append({
+            "id": row.id,
+            "institution_name": row.institution_name,
+            "department_name": row.department_name,
+            "programme_name": row.programme_name,
+            "contact_type": row.contact_type,
+            "contact_role": row.contact_role,
+            "published_contact_name": row.published_contact_name,
+            "official_email": row.official_email if row.email_verified else None,
+            "official_email_verified": bool(row.email_verified),
+            "official_contact_url": row.official_contact_url,
+            "evidence_source_url": row.evidence_source_url,
+            "evidence_source_type": row.evidence_source_type,
+            "evidence_summary": row.evidence_summary,
+            "retrieved_at": _iso(row.retrieved_at),
+            "verified_at": _iso(row.verified_at),
+            "verification_status": row.verification_status,
+        })
+    return contacts
 
 def _iso(value: datetime | None) -> str | None:
     if value is None:
@@ -205,7 +240,6 @@ def _iso(value: datetime | None) -> str | None:
     if value.tzinfo is None:
         value = value.replace(tzinfo=timezone.utc)
     return value.isoformat()
-
 
 def coverage_public_state(
     coverage: ScholarshipSupervisorCoverage | None,
@@ -246,14 +280,13 @@ def coverage_public_state(
         state["discovery_pending"] = False
     return state
 
-
 def build_supervisor_list(
     db: Session,
     scholarship_id: int,
     interests: list[str] | None = None,
     limit: int = DEFAULT_SUPERVISOR_LIMIT,
-) -> tuple[dict, list[dict]]:
-    """Return ``(coverage, professors)`` for a publicly visible scholarship.
+) -> tuple[dict, list[dict], list[dict]]:
+    """Return ``(coverage, professors, official_contacts)`` for a publicly visible scholarship.
 
     Raises :class:`ScholarshipNotPublic` when the scholarship may not be read.
     """
@@ -268,6 +301,7 @@ def build_supervisor_list(
     profiles = _load_profiles(db, professor_ids)
     availability = _load_availability(db, professor_ids, now)
     sources = _load_sources(db, professor_ids, [link.id for link in links])
+    official_contacts = _load_official_contacts(db, scholarship_id)
 
     # The count is the total number of publishable relationships, not the length
     # of this page, so a capped list still reports the honest total.
@@ -313,15 +347,13 @@ def build_supervisor_list(
             }
         )
 
-    return coverage_public_state(coverage, publishable_count), professors
-
+    return coverage_public_state(coverage, publishable_count), professors, official_contacts
 
 def coverage_requires_discovery(coverage: ScholarshipSupervisorCoverage | None) -> bool:
     """Return whether this coverage state still owes the catalogue a search."""
     if coverage is None:
         return True
     return coverage.status in NON_PUBLISHING_COVERAGE_STATUSES
-
 
 __all__ = [
     "DEFAULT_SUPERVISOR_LIMIT",

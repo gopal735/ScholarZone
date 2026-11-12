@@ -77,6 +77,7 @@ from ..models_supervisor import (
     ScholarshipProfessorLink,
     ScholarshipSupervisorCoverage,
     SupervisorSourceEvidence,
+    OfficialContact,
 )
 from ..repositories.scholarships import public_visibility_conditions
 from .auto_delete_policy import (
@@ -271,6 +272,15 @@ REFERENCE_INTEGRITY: dict[str, dict[str, str]] = {
             "never a deletion candidate."
         ),
     },
+    "OfficialContact": {
+        "table": "official_contacts",
+        "disposition": "PRESERVE",
+        "rationale": (
+            "An official institutional contact for a scholarship. Removing the scholarship "
+            "would destroy the contact record, and the foreign key refuses the parent "
+            "delete. Any record carrying an official contact is never a deletion candidate."
+        ),
+    },
 }
 
 #: Models whose mere presence blocks deletion, because their rows are the record's
@@ -307,6 +317,7 @@ DEPENDENT_MODELS: Mapping[str, type] = {
     "ScholarshipProfessorLink": ScholarshipProfessorLink,
     "SupervisorSourceEvidence": SupervisorSourceEvidence,
     "ProfessorOutreachRecord": ProfessorOutreachRecord,
+    "OfficialContact": OfficialContact,
 }
 
 

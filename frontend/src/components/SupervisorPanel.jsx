@@ -325,6 +325,93 @@ function ProfessorCard({ professor, onTrack, tracked }) {
   )
 }
 
+/* An official institutional contact for a scholarship.
+ *
+ * Distinct from professor profiles - these are institutional offices and
+ * programme contacts, not individual academics. The verification gate is on
+ * the contact record itself, not on a person's email. */
+function OfficialContactCard({ contact }) {
+  return (
+    <article className="sz-official-contact">
+      <header className="sz-official-contact__header">
+        <div>
+          <h4 className="sz-official-contact__name">
+            {contact.published_contact_name || contact.institution_name}
+          </h4>
+          <p className="sz-official-contact__affiliation">
+            {[contact.institution_name, contact.department_name, contact.programme_name]
+              .filter(Boolean)
+              .join(' · ')}
+          </p>
+        </div>
+        <span className="sz-official-contact__type">
+          {contact.contact_type === 'programme_office'
+            ? 'Programme office'
+            : contact.contact_type.replace(/_/g, ' ')}
+          {contact.contact_role ? ` — ${contact.contact_role}` : ''}
+        </span>
+      </header>
+
+      <dl className="sz-official-contact__details">
+        <div>
+          <dt>Official contact page</dt>
+          <dd>
+            <a
+              href={contact.official_contact_url}
+              target="_blank"
+              rel="noreferrer noopener"
+              className="sz-official-contact__source-link"
+            >
+              View official contact page
+              <span className="sz-sr-only"> for {contact.institution_name}</span>
+            </a>
+          </dd>
+        </div>
+        <div>
+          <dt>Email</dt>
+          <dd>
+            {contact.official_email_verified && contact.official_email ? (
+              <>
+                <a href={`mailto:${contact.official_email}`}>{contact.official_email}</a>
+                <span className="sz-official-contact__verified-note">Published on the official page</span>
+              </>
+            ) : (
+              <span className="sz-official-contact__unverified-note">
+                No verified email. Use the official contact page.
+              </span>
+            )}
+          </dd>
+        </div>
+        {contact.evidence_source_url && contact.evidence_source_type && (
+          <div>
+            <dt>Source</dt>
+            <dd>
+              <a
+                href={contact.evidence_source_url}
+                target="_blank"
+                rel="noreferrer noopener"
+                className="sz-official-contact__source-link"
+              >
+                {contact.evidence_source_type.replace(/_/g, ' ')}
+              </a>
+              {contact.evidence_summary && (
+                <span className="sz-official-contact__evidence-summary">
+                  — {contact.evidence_summary}
+                </span>
+              )}
+              {contact.retrieved_at && (
+                <time dateTime={contact.retrieved_at}>
+                  Retrieved {contact.retrieved_at.slice(0, 10)}
+                </time>
+              )}
+            </dd>
+          </div>
+        )}
+      </dl>
+    </article>
+  )
+}
+
 /* The student's private tracker for this scholarship.
  *
  * Entirely separate from the public list above it: what is rendered here is the
@@ -542,6 +629,7 @@ export default function SupervisorPanel({ scholarshipId, initialState = 'loading
     ...professor,
     scholarshipId,
   }))
+  const officialContacts = payload?.official_contacts || []
 
   return (
     <section className="sz-supervisor-panel" aria-labelledby="sz-supervisor-heading">
@@ -658,6 +746,22 @@ export default function SupervisorPanel({ scholarshipId, initialState = 'loading
                     onTrack={handleTrack}
                     tracked={trackedIds.has(professor.id)}
                   />
+                ))}
+              </div>
+            </>
+          ) : null}
+
+          {officialContacts.length > 0 ? (
+            <>
+              <h4 className="sz-supervisor-panel__section-heading">Official Contacts</h4>
+              <p className="sz-supervisor-panel__intro">
+                Institutional offices and programme contacts published by the university.
+                These are distinct from individual academics and their verification is independent
+                of professor supervision data.
+              </p>
+              <div className="sz-supervisor-panel__list">
+                {officialContacts.map((contact) => (
+                  <OfficialContactCard key={contact.id} contact={contact} />
                 ))}
               </div>
             </>
