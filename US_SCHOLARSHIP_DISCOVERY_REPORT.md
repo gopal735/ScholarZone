@@ -340,9 +340,20 @@ All 8 valid USA-hosted imported records have:
 | Records Skipped (Duplicates) | 2 (AAUW ID 473, JJ/WBGSP ID 475) |
 | Records Failed | 0 |
 | Database USA Records (Pre-Import) | 55 |
+| Pre-Import Valid USA-Hosted | 54 (55 total - 1 invalid: ID 394 Tilburg University Waiver, Dutch university misclassified as USA) |
 | Database USA Records (Post-Import, actual) | 64 |
-| Database USA Records (Valid USA-hosted) | 62 (excluding McDonald ID 1381) |
-| Net New Valid USA Records | +7 |
+| Database USA Records (Valid USA-hosted) | 62 (excluding McDonald ID 1381 and pre-import ID 394) |
+| Net New Valid USA Records | +8 (62 - 54) |
+| Delta Valid (vs pre-import total 55) | +7 (62 - 55) |
+
+**Arithmetic Reconciliation:**
+- Pre-import valid USA-hosted: 54 (55 total - 1 invalid: ID 394 Tilburg University Waiver, Dutch university misclassified as USA)
+- Valid inserted: 8 (IDs 1378, 1379, 1380, 1382–1386)
+- Invalid inserted: 1 (ID 1381 McDonald)
+- Post-import valid USA-hosted: 54 + 8 = 62
+- Post-import total USA: 55 + 9 = 64
+- Delta valid (vs pre-import total 55): 62 - 55 = +7
+- Net valid increase (vs pre-import valid 54): 62 - 54 = +8
 
 ### 12.2 Historical Inserted Records (9 records at afda63a9)
 | DB ID | Candidate ID | Name | Validity |
@@ -387,12 +398,16 @@ All 8 valid USA-hosted imported records have:
 
 | Test Suite | Result |
 |------------|--------|
-| Backend ingestion/scholarship tests | 656 passed |
+| Backend (full suite) | 6,216 passed, 15 skipped |
 | Frontend vitest tests | 507 passed |
 | Frontend ESLint | 1 warning (pre-existing, no errors) |
-| Frontend Vite build | SUCCESS |
+| Frontend Vite build | SUCCESS (773 URLs in sitemap) |
 | Database schema validation | PASSED |
 | Import transaction rollback safety | VERIFIED |
+
+**Exact-Head CI:** Run #731 — https://github.com/gopal735/ScholarZone/actions/runs/43216189088
+
+> **Note:** Local frontend test run showed 506/507 passed (1 pre-existing flaky test in App.test.jsx). Exact-head CI Run #731 reports 507/507 passed.
 
 ---
 
