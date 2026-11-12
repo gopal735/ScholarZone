@@ -23,12 +23,14 @@ import json
 import os
 import sys
 import tempfile
+import uuid
 from datetime import datetime, timedelta, timezone
 from pathlib import Path
 from unittest.mock import patch, MagicMock
 
 import pytest
 from sqlalchemy import create_engine, text
+from sqlalchemy.engine import make_url
 
 # Add backend to path
 BACKEND_DIR = Path(__file__).parent.parent
@@ -657,15 +659,37 @@ class TestPostgreSQLIntegration:
     
     @pytest.fixture
     def pg_engine(self):
-        """Create engine for PostgreSQL test database."""
-        # This would be configured via environment in CI
+        """Use a unique schema on a local disposable PostgreSQL test database."""
         pg_url = os.environ.get("TEST_POSTGRESQL_URL")
         if not pg_url:
             pytest.skip("TEST_POSTGRESQL_URL not set")
-        
-        engine = create_engine(pg_url)
-        yield engine
-        engine.dispose()
+
+        parsed = make_url(pg_url)
+        if (parsed.host or "").lower() not in {"localhost", "127.0.0.1", "::1"}:
+            raise RuntimeError("TEST_POSTGRESQL_URL must target a loopback PostgreSQL service")
+        if "test" not in (parsed.database or "").lower():
+            raise RuntimeError("TEST_POSTGRESQL_URL database name must identify a disposable test database")
+
+        schema = f"migration_test_{uuid.uuid4().hex}"
+        admin_engine = create_engine(pg_url)
+        engine = None
+        schema_created = False
+        try:
+            with admin_engine.begin() as conn:
+                conn.execute(text(f'CREATE SCHEMA "{schema}"'))
+            schema_created = True
+            engine = create_engine(pg_url, connect_args={"options": f"-csearch_path={schema}"})
+            with engine.begin() as conn:
+                conn.execute(text("CREATE TABLE scholarships (id INTEGER PRIMARY KEY)"))
+                conn.execute(text("CREATE TABLE users (id INTEGER PRIMARY KEY)"))
+            yield engine
+        finally:
+            if engine is not None:
+                engine.dispose()
+            if schema_created:
+                with admin_engine.begin() as conn:
+                    conn.execute(text(f'DROP SCHEMA "{schema}" CASCADE'))
+            admin_engine.dispose()
     
     def test_postgresql_migration(self, pg_engine):
         """Test full migration cycle on PostgreSQL."""
