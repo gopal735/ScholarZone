@@ -470,10 +470,30 @@ class SupervisorCoverageResponse(BaseModel):
     discovery_pending: bool = False
 
 
+class OfficialContactResponse(BaseModel):
+    id: int
+    institution_name: str
+    department_name: str | None = None
+    programme_name: str | None = None
+    contact_type: str
+    contact_role: str | None = None
+    published_contact_name: str | None = None
+    official_email: str | None = None
+    official_email_verified: bool = False
+    official_contact_url: str
+    evidence_source_url: str
+    evidence_source_type: str
+    evidence_summary: str | None = None
+    retrieved_at: str
+    verified_at: str | None = None
+    verification_status: str
+
+
 class SupervisorListResponse(BaseModel):
     scholarship_id: int
     coverage: SupervisorCoverageResponse
     supervisors: list[ProfessorResponse] = []
+    official_contacts: list[OfficialContactResponse] = []
 
 
 class SupervisorSummaryResponse(BaseModel):

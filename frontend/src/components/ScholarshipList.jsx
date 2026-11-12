@@ -2,8 +2,9 @@ import { useEffect, useMemo, useRef, useState } from 'react'
 import ScholarshipCard from './ScholarshipCard'
 import { fetchScholarshipsByLifecycle } from '../services/scholarshipService'
 import { getScholarshipStatus, matchesDegreeFilter, matchesFundingFilter } from '../utils/scholarshipPresentation'
-import { classifyLifecycle, LIFECYCLE, parseDate } from '../utils/lifecycle'
+import { classifyLifecycle, LIFECYCLE } from '../utils/lifecycle'
 import { deriveAllFacets } from '../utils/filterFacets'
+import { canonicalCountry } from '../utils/countryTaxonomy'
 import './ScholarshipList.css'
 
 const PAGE_SIZE = 12
@@ -97,36 +98,43 @@ function sortLocalScholarships(items, sortBy) {
 }
 
 function getLocalDeadlineMonth(scholarship) {
-  const parsedDeadline = parseDate(scholarship, 'deadline').date
-  return parsedDeadline ? parsedDeadline.getUTCMonth() + 1 : null
-}
+    // Use deadline_date directly as authoritative source (YYYY-MM-DD or YYYY-MM)
+    if (scholarship.deadline_date) {
+      const match = scholarship.deadline_date.match(/^\d{4}-(\d{2})/)
+      if (match) {
+        return parseInt(match[1], 10)
+      }
+    }
+    return null
+  }
 
 function filterLocalScholarships(items, { search, country, degree, funding, deadlineMonth, status, lifecycleFilter, sortBy }) {
-  const normalizedSearch = search.trim().toLowerCase()
-  const filteredItems = items.filter((scholarship) => {
-    const title = typeof scholarship.title === 'string' ? scholarship.title : ''
-    const searchableText = [title, scholarship.country, scholarship.degree, scholarship.funding, scholarship.description]
-      .filter((value) => typeof value === 'string')
-      .join(' ')
-      .toLowerCase()
-    const matchSearch = searchableText.includes(normalizedSearch)
-    const matchCountry = country === 'All' || scholarship.country === country
-    const matchDegree = matchesDegreeFilter(scholarship.degree, degree)
-    const matchFunding = matchesFundingFilter(scholarship.funding, funding, scholarship.fully_funded)
-    const matchDeadlineMonth = deadlineMonth === 'All' || getLocalDeadlineMonth(scholarship) === Number(deadlineMonth)
-    const lifecycle = classifyLifecycle(scholarship)
-    const matchStatus = status === 'All' || (
-      status === 'closed'
-        ? lifecycle.status === LIFECYCLE.CLOSED
-        : getScholarshipStatus(scholarship).className === status
-    )
-    const matchLifecycle = lifecycleFilter === 'All' || lifecycle.status === lifecycleFilter
+    const normalizedSearch = search.trim().toLowerCase()
+    const canonicalFilterCountry = country !== 'All' ? canonicalCountry(country) : null
+    const filteredItems = items.filter((scholarship) => {
+      const title = typeof scholarship.title === 'string' ? scholarship.title : ''
+      const searchableText = [title, scholarship.country, scholarship.degree, scholarship.funding, scholarship.description]
+        .filter((value) => typeof value === 'string')
+        .join(' ')
+        .toLowerCase()
+      const matchSearch = searchableText.includes(normalizedSearch)
+      const matchCountry = country === 'All' || canonicalCountry(scholarship.country) === canonicalFilterCountry
+      const matchDegree = matchesDegreeFilter(scholarship.degree, degree)
+      const matchFunding = matchesFundingFilter(scholarship.funding, funding, scholarship.fully_funded)
+      const matchDeadlineMonth = deadlineMonth === 'All' || getLocalDeadlineMonth(scholarship) === Number(deadlineMonth)
+      const lifecycle = classifyLifecycle(scholarship)
+      const matchStatus = status === 'All' || (
+        status === 'closed'
+          ? lifecycle.status === LIFECYCLE.CLOSED
+          : getScholarshipStatus(scholarship).className === status
+      )
+      const matchLifecycle = lifecycleFilter === 'All' || lifecycle.status === lifecycleFilter
 
-    return matchSearch && matchCountry && matchDegree && matchFunding && matchDeadlineMonth && matchStatus && matchLifecycle
-  })
+      return matchSearch && matchCountry && matchDegree && matchFunding && matchDeadlineMonth && matchStatus && matchLifecycle
+    })
 
-  return sortLocalScholarships(filteredItems, sortBy)
-}
+    return sortLocalScholarships(filteredItems, sortBy)
+  }
 
 function LoadingCards() {
   return (

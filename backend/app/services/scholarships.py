@@ -17,7 +17,8 @@ from ..schemas import PaginationMetadata, ScholarshipListResponse, ScholarshipQu
 
 
 def get_scholarship_directory(session: Session, query: ScholarshipQuery) -> ScholarshipListResponse:
-    scholarships, total, facets = list_scholarships(session, query)
+    scholarships, total = list_scholarships(session, query)
+    facets = compute_facets(session)
 
     facets_obj = None
     if facets:

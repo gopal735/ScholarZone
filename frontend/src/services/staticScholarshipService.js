@@ -1,5 +1,5 @@
 import { readFundingDetails } from '../utils/scholarshipDetail'
-import { classifyLifecycle, parseDate } from '../utils/lifecycle'
+import { classifyLifecycle } from '../utils/lifecycle'
 import { getScholarshipStatus, matchesDegreeFilter, matchesFundingFilter } from '../utils/scholarshipPresentation'
 import { deriveAllFacets } from '../utils/filterFacets'
 import { canonicalCountry } from '../utils/countryTaxonomy'
@@ -129,18 +129,17 @@ function statusOf(record) {
 
 /** Extract deadline month (1-12) from a record, or null if not available. */
 function getDeadlineMonth(record) {
-  // Use deadline_date directly for month extraction to avoid timezone/precision issues
-  // The deadline_date is in ISO format (YYYY-MM-DD or YYYY-MM)
-  if (record.deadline_date) {
-    const match = record.deadline_date.match(/^\d{4}-(\d{2})/);
-    if (match) {
-      return parseInt(match[1], 10);
+    // Use deadline_date directly for month extraction to avoid timezone/precision issues
+    // The deadline_date is in ISO format (YYYY-MM-DD or YYYY-MM)
+    if (record.deadline_date) {
+      const match = record.deadline_date.match(/^\d{4}-(\d{2})/);
+      if (match) {
+        return parseInt(match[1], 10);
+      }
     }
+    // Missing or invalid deadline_date: no month match
+    return null
   }
-  // Fallback to parseDate for records without deadline_date
-  const parsedDeadline = parseDate(record, 'deadline').date
-  return parsedDeadline ? parsedDeadline.getUTCMonth() + 1 : null
-}
 
 /** Get status key from a record (open, closing-soon, closed, upcoming). */
 function getStatusKey(record) {

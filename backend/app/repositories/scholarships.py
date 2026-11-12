@@ -43,14 +43,15 @@ def _build_country_canonical_case(column):
     """Build a SQL CASE expression that maps stored country to canonical form.
     
     Mirrors the logic in canonical_country() from taxonomy.py.
+    Returns lowercase for consistent comparison.
     """
     # Build CASE WHEN conditions for each alias
     conditions = []
     for alias, canonical in COUNTRY_ALIASES.items():
         if canonical in (MULTIPLE,) or canonical in REGIONS:
             continue
-        # Match case-insensitive
-        conditions.append((func.lower(column) == alias.lower(), canonical))
+        # Match case-insensitive, return lowercase canonical for consistent comparison
+        conditions.append((func.lower(column) == alias.lower(), canonical.lower()))
     
     # Add special handling for common patterns that might not be in COUNTRY_ALIASES
     # but are handled by canonical_country's prefix matching
@@ -333,14 +334,17 @@ def _compute_funding_facets(session: Session) -> list[dict]:
 
     bucket_counts = Counter()
     for funding, fully_funded in rows:
+        # For Fully Funded, use the authoritative boolean - check this FIRST
+        # regardless of whether funding text exists
+        if fully_funded is True:
+            bucket_counts["fully funded"] += 1
+        
         if not funding:
             continue
         funding_lower = funding.lower()
         for bucket_key, (include, exclude) in FUNDING_FILTER_BUCKETS.items():
             if bucket_key == "fully funded":
-                # For Fully Funded, use the authoritative boolean
-                if fully_funded is True:
-                    bucket_counts[bucket_key] += 1
+                # Already handled above
                 continue
             if any(ex in funding_lower for ex in exclude):
                 continue
@@ -400,7 +404,7 @@ def compute_facets(session: Session) -> dict:
     }
 
 
-def list_scholarships(session: Session, query: ScholarshipQuery) -> tuple[list[Scholarship], int, dict | None]:
+def list_scholarships(session: Session, query: ScholarshipQuery) -> tuple[list[Scholarship], int]:
     conditions = _filter_conditions(query)
     total = session.scalar(select(func.count()).select_from(Scholarship).where(*conditions)) or 0
     offset = (query.page - 1) * query.limit
@@ -413,11 +417,7 @@ def list_scholarships(session: Session, query: ScholarshipQuery) -> tuple[list[S
     )
     items = list(session.scalars(statement))
 
-    # Always compute facets to ensure they're available on all pages
-    # The overhead is minimal since facets are computed from indexed columns
-    facets = compute_facets(session)
-
-    return items, total, facets
+    return items, total
 
 
 def get_scholarship_by_id(session: Session, scholarship_id: int) -> Scholarship | None:
