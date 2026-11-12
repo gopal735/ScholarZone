@@ -1,9 +1,12 @@
-# USA Scholarship Catalogue Expansion 2027+ — Discovery Report
+# USA Scholarship Catalogue Expansion 2027+ — Discovery Report (Corrected)
 
 **Run Date:** 2026-11-12 09:10:23 UTC (Asia/Dhaka)  
+**Correction Date:** 2026-11-12  
 **Branch:** feat/us-scholarship-catalogue-expansion-2027  
-**Base Branch:** master (latest origin/master)  
-**Repository:** gopal735/ScholarZone
+**Base Branch:** master (464dcc9802be1bd3d628e651cd33e3ae80129170)  
+**HEAD:** afda63a9b6cfa30402aea7fe8a46d0bb2f6d28d2  
+**Repository:** gopal735/ScholarZone  
+**PR:** #92 (open, unmerged)
 
 ---
 
@@ -48,27 +51,27 @@ International applicants eligible for study or research at institutions located 
 
 | Institution | Type | Programmes Found | Verification State |
 |-------------|------|------------------|-------------------|
-| AAUW (American Association of University Women) | Foundation | 1 | VERIFIED |
-| World Bank / Government of Japan | International Organization | 1 | VERIFIED |
-| East-West Center / University of Hawai'i | Institutional | 1 | VERIFIED |
-| Harvard Global Health Institute | University Institute | 1 | VERIFIED |
-| Yale Jackson School of Global Affairs | University Institute | 1 | VERIFIED |
-| MS International Federation | NGO | 1 | VERIFIED |
-| Illinois Wesleyan University | Liberal Arts College | 1 | VERIFIED |
-| Tulane University | Private Research University | 1 | VERIFIED |
-| University of Richmond | Liberal Arts University | 1 | VERIFIED |
-| Vanderbilt University | Private Research University | 1 | VERIFIED |
-| Emory University | Private Research University | 1 | VERIFIED |
-| Georgia Institute of Technology | Public Research University | 1 | VERIFIED |
-| Purdue University | Public Research University | 1 | VERIFIED |
-| Organization of American States | International Organization | 1 | VERIFIED |
-| Rotary International | NGO | 1 | VERIFIED |
-| Fulbright Program (various commissions) | Government | 1 | VERIFIED |
-| U.S. Department of State / IIE | Government | 1 | VERIFIED |
-| Stamps Scholars Program / 38 Partners | Foundation | 1 | VERIFIED |
+| AAUW (American Association of University Women) | Foundation | 1 | VERIFIED (CLOSED, duplicate DB ID 473) |
+| World Bank / Government of Japan | International Organization | 1 | VERIFIED (Multi-country, duplicate DB ID 475) |
+| East-West Center / University of Hawai'i | Institutional | 1 | VERIFIED (Imported DB ID 1378) |
+| Harvard Global Health Institute | University Institute | 1 | VERIFIED (Imported DB ID 1379, corrected: all gender identities) |
+| Yale Jackson School of Global Affairs | University Institute | 1 | VERIFIED (Imported DB ID 1380) |
+| MS International Federation | NGO | 1 | VERIFIED (EXCLUDED: no 2027 round, Europe-only) |
+| Illinois Wesleyan University | Liberal Arts College | 1 | VERIFIED (Imported DB ID 1381) |
+| Tulane University | Private Research University | 1 | VERIFIED (Imported DB ID 1382, PARTIALLY_CLOSED) |
+| University of Richmond | Liberal Arts University | 1 | VERIFIED (Imported DB ID 1383) |
+| Vanderbilt University | Private Research University | 1 | VERIFIED (Imported DB ID 1384) |
+| Emory University | Private Research University | 1 | VERIFIED (Imported DB ID 1385, dual deadlines) |
+| Georgia Institute of Technology | Public Research University | 1 | VERIFIED (Monitoring) |
+| Purdue University | Public Research University | 1 | VERIFIED (Monitoring) |
+| Organization of American States | International Organization | 1 | VERIFIED (Monitoring) |
+| Rotary International | NGO | 1 | VERIFIED (Monitoring) |
+| Fulbright Program (various commissions) | Government | 1 | VERIFIED (Monitoring) |
+| U.S. Department of State / IIE | Government | 1 | VERIFIED (Monitoring) |
+| Stamps Scholars Program / 38 Partners | Foundation | 1 | VERIFIED (Monitoring) |
 
 **Total Unique Institutions Researched:** 18  
-**Total Unique Scholarship Programmes Identified:** 18 (11 import-ready, 7 for future cycles/monitoring)
+**Total Unique Scholarship Programmes Identified:** 18 (7 imported, 4 excluded, 7 monitoring)
 
 ---
 
@@ -76,13 +79,13 @@ International applicants eligible for study or research at institutions located 
 
 | Academic Field | Programmes Found | Notes |
 |----------------|------------------|-------|
-| STEM (all disciplines) | 1 (AAUW - restricted) | AAUW 2027-28 limited to STEM only |
-| Development Studies / Economics / Public Policy | 2 (JJ/WBGSP, OAS) | JJ/WBGSP has 44 participating programs across 24 universities |
-| Global Health / Public Health | 2 (Harvard LEAD, Humphrey) | Harvard LEAD for women from LMICs; Humphrey for mid-career |
-| International Relations / Leadership | 3 (Yale WF, Rotary Peace, Fulbright) | Non-degree fellowships for mid-career leaders |
-| Multiple Sclerosis / Neuroscience | 1 (McDonald) | Postdoctoral research in Europe only |
-| All Undergraduate Fields | 6 (IWU, Tulane, Richmond, Vanderbilt, Emory, Georgia Tech/Purdue Stamps) | Broad coverage across liberal arts and research universities |
-| Asia-Pacific-US Relations | 1 (East-West Center) | Residential community + graduate study |
+| STEM (all disciplines) | 1 (AAUW - restricted) | AAUW 2027-28 limited to STEM only; deadline passed |
+| Development Studies / Economics / Public Policy | 1 (JJ/WBGSP - multi-country) | JJ/WBGSP has 44 participating programs across 24 universities in US, Europe, Africa, Oceania, Japan |
+| Global Health / Public Health | 1 (Harvard LEAD - all gender identities) | Harvard LEAD for LMICs (all gender identities); 10+ years exp |
+| International Relations / Leadership | 1 (Yale WF) | Non-degree fellowship for mid-career leaders |
+| Multiple Sclerosis / Neuroscience | 0 (McDonald excluded) | No 2027 round; Europe-only hosts; moved to 2028 monitoring |
+| All Undergraduate Fields | 5 (IWU, Tulane, Richmond, Vanderbilt, Emory) | Broad coverage across liberal arts and research universities |
+| Asia-Pacific-US Relations | 1 (East-West Center) | Residential community + graduate study at UH Mānoa |
 
 **Academic Provenance Completeness:** 100% of import-ready records have explicit department/field/programme mappings from official sources.
 
@@ -94,9 +97,9 @@ International applicants eligible for study or research at institutions located 
 For every candidate:
 1. Opened the underlying official HTTPS page
 2. Confirmed programme still exists
-3. Confirmed host institution and country (USA)
+3. Confirmed host institution and country (USA for imported records)
 4. Confirmed international eligibility
-5. Confirmed upcoming cycle or application status (OPEN/UPCOMING)
+5. Confirmed upcoming cycle or application status (OPEN/UPCOMING/CLOSED/PARTIALLY_CLOSED/UNKNOWN)
 6. Confirmed degree/academic level
 7. Confirmed funding components
 8. Confirmed eligible departments and fields
@@ -106,73 +109,79 @@ For every candidate:
 12. Preserved source URL for every material claim
 
 ### 4.2 Source Quality
-- **Official university pages:** 9 programmes
-- **Official foundation pages:** 2 programmes (AAUW, Stamps)
-- **Official government/international organization pages:** 5 programmes (World Bank, OAS, Fulbright, Humphrey, Rotary)
-- **Official NGO pages:** 2 programmes (MSIF, East-West Center)
+- **Official university pages:** 7 imported programmes
+- **Official foundation pages:** 1 imported programme (AAUW excluded)
+- **Official government/international organization pages:** 1 imported programme (JJ/WBGSP excluded as multi-country)
+- **Official NGO pages:** 0 imported programmes (McDonald excluded)
+- **Official institute pages:** 2 imported programmes (Harvard LEAD, Yale WF)
 
 **All 18 programmes verified via official HTTPS sources. Zero aggregator-only sources.**
 
 ---
 
-## 5. Candidate Totals
+## 5. Candidate Totals (Corrected)
 
 | Metric | Count |
 |--------|-------|
-| Total candidates researched | 18 |
-| Import-eligible (verified, upcoming/open, not duplicates) | 11 |
-| Future cycle / monitoring (2028-29, not yet open) | 7 |
-| Ineligible / closed | 0 |
-| Duplicate / excluded (already in codebase) | 28 existing USA records |
+| Total candidates researched | 11 (after removing 7 monitoring from original 18) |
+| Import-eligible (verified, upcoming/open, not duplicates, USA-hosted) | 7 |
+| Excluded - deadline passed | 1 (AAUW) |
+| Excluded - no 2027 round / not USA-hosted | 1 (McDonald) |
+| Excluded - multi-country / duplicate | 1 (JJ/WBGSP) |
+| Duplicate / excluded (already in database) | 2 (AAUW ID 473, JJ/WBGSP ID 475) |
+| Future cycle / monitoring (2028-29) | 7 |
 
-### 5.1 Import-Ready Records (11)
-| Candidate ID | Name | Status | Degree Level | Funding |
-|--------------|------|--------|--------------|---------|
-| US-2027-AAUW-001 | AAUW International Fellowships 2027-28 | UPCOMING | Master's, Doctoral | Fully Funded ($20-25k) |
-| US-2027-JJWBGSP-001 | JJ/WBGSP 2027 | UPCOMING | Master's | Fully Funded |
-| US-2027-EWC-001 | East-West Center Graduate Degree Fellowship 2027 | OPEN | Master's, Doctoral | Fully Funded |
-| US-2027-HARVARD-LEAD-001 | Harvard LEAD Fellowship 2027-28 | OPEN | Non-degree fellowship | Fully Funded |
-| US-2027-YALE-WF-001 | Yale World Fellows 2027 | OPEN | Non-degree fellowship | Fully Funded |
-| US-2027-MCDONALD-001 | McDonald Fellowships 2027 | UPCOMING | Postdoctoral | Fully Funded (~€55k/yr) |
-| US-2027-IWU-001 | Illinois Wesleyan International Scholarships 2027 | OPEN | Bachelor's | Merit ($16-38k/yr) |
-| US-2027-TULANE-001 | Tulane Global Scholarships 2027 | OPEN | Bachelor's | Merit (up to full COA) |
-| US-2027-RICHMOND-001 | Richmond Scholars Program 2027 | OPEN | Bachelor's | Fully Funded |
-| US-2027-VANDERBILT-001 | Vanderbilt Signature Scholarships 2027 | OPEN | Bachelor's | Fully Funded |
-| US-2027-EMORY-001 | Emory Scholar Programs 2027 | OPEN | Bachelor's | Partial to Full Merit |
+### 5.1 Imported Records (7)
+| DB ID | Candidate ID | Name | Status | Degree Level | Funding |
+|-------|--------------|------|--------|--------------|---------|
+| 1378 | US-2027-EWC-001 | East-West Center Graduate Degree Fellowship 2027 | OPEN | Master's, Doctoral | Fully Funded |
+| 1379 | US-2027-HARVARD-LEAD-001 | Harvard LEAD Fellowship 2027-28 | OPEN | Non-degree fellowship | Fully Funded |
+| 1380 | US-2027-YALE-WF-001 | Yale World Fellows 2027 | OPEN | Non-degree fellowship | Fully Funded |
+| 1381 | US-2027-IWU-001 | Illinois Wesleyan International Scholarships 2027 | OPEN | Bachelor's | Merit ($16-38k/yr) |
+| 1382 | US-2027-TULANE-001 | Tulane Global Scholarships 2027 | PARTIALLY_CLOSED | Bachelor's | Merit (up to full COA) |
+| 1383 | US-2027-RICHMOND-001 | Richmond Scholars Program 2027 | OPEN | Bachelor's | Fully Funded |
+| 1384 | US-2027-VANDERBILT-001 | Vanderbilt Signature Scholarships 2027 | OPEN | Bachelor's | Fully Funded |
+| 1385 | US-2027-EMORY-001 | Emory Scholar Programs 2027 | OPEN | Bachelor's | Partial to Full Merit |
 
-### 5.2 Future Cycle / Monitoring Records (7)
+### 5.2 Excluded Records (4)
+| Candidate ID | Name | Reason |
+|--------------|------|--------|
+| US-2027-AAUW-001 | AAUW International Fellowships 2027-28 | Deadline passed (Sept 17, 2026); CLOSED; duplicate DB ID 473 |
+| US-2027-JJWBGSP-001 | JJ/WBGSP 2027 | Multi-country (US, Europe, Africa, Oceania, Japan); duplicate DB ID 475 |
+| US-2027-MCDONALD-001 | McDonald Fellowships 2027 | No 2027 round; Europe-only hosts; not USA-hosted |
+| US-2027-HARVARD-LEAD-001 | Harvard LEAD Fellowship 2027-28 | **Imported** - eligibility corrected to all gender identities |
+
+### 5.3 Future Cycle / Monitoring Records (7)
 | Candidate ID | Name | Expected Opening | Notes |
 |--------------|------|------------------|-------|
-| US-2028-GATECH-STAMPS-001 | Georgia Tech Stamps President's Scholars | Oct/Nov 2026 (already open) | US citizens/permanent residents/UK only per catalog |
+| US-2028-GATECH-STAMPS-001 | Georgia Tech Stamps President's Scholars | Oct/Nov 2026 | US citizens/permanent residents/UK only per catalog |
 | US-2028-PURDUE-STAMPS-001 | Purdue Stamps Scholarship | Nov 2026 | US citizens/permanent residents per Purdue page |
 | US-2028-OAS-ASP-001 | OAS Academic Scholarship Program | Spring 2027 (by country) | Partial funding ($10k/yr cap), OAS members only |
 | US-2028-ROTARY-PEACE-001 | Rotary Peace Fellowship 2028-29 | Feb 2027 | Fully funded, 5+ years exp, master's at Duke/UNC |
 | US-2028-FULBRIGHT-001 | Fulbright Foreign Student 2028-29 | Aug 2027 | Country-specific commissions, fully funded varies |
 | US-2028-HUMPHREY-001 | Humphrey Fellowship 2028-29 | Spring/Summer 2027 | Mid-career, 5+ years exp, non-degree |
 | US-2028-STAMPS-NETWORK-001 | Stamps Scholars Network (38 partners) | Varies by partner | International eligibility varies by partner |
+| US-2028-MCDONALD-001 | McDonald Fellowships 2028 | 2028 | Next confirmed round; Europe-only hosts |
 
 ---
 
-## 6. Status Breakdown
+## 6. Status Breakdown (Imported Records)
 
 | Status | Count | Percentage |
 |--------|-------|------------|
-| OPEN | 7 | 63.6% |
-| UPCOMING | 4 | 36.4% |
-| UNKNOWN | 0 | 0% |
-| CLOSED | 0 | 0% |
+| OPEN | 6 | 75% |
+| PARTIALLY_CLOSED | 1 | 12.5% |
 
 ---
 
 ## 7. Duplicate / Excluded Records
 
-**Existing USA Records in Codebase:** 28 records across:
+**Existing USA Records in Codebase:** 30 records across:
 - `verified_scholarships.py`: 13 USA records
 - `additional_scholarships.py`: 15 USA records
+- `add_us_scholarships.py`: 12 entries (legacy seeds, subset)
 
 **Existing USA Records in Database:** 55 records (pre-seeded from codebase)
-
-**Legacy Seed Records (`add_us_scholarships.py`):** 12 entries (subset of the above)
 
 **Exclusion Logic Applied:**
 1. Normalized official source URL matching
@@ -183,18 +192,55 @@ For every candidate:
 6. Fuzzy title and source-domain matching
 7. Existing legacy aliases
 
-**Import Results:**
-- 9 import-ready records inserted as NEW (IDs 1378-1386)
+**Import Results (Corrected):**
+- 7 import-ready records inserted as NEW (DB IDs 1378-1385)
 - 2 import-ready records skipped as duplicates (AAUW ID 473, JJ/WBGSP ID 475 already in database)
+- 2 records excluded from import (McDonald: no 2027 round; AAUW: deadline passed)
+- 1 record corrected in-place (Harvard LEAD: gender-neutral eligibility)
+- 1 record reclassified (JJ/WBGSP: multi-country, not USA-only)
 - 7 future-cycle records on monitoring list
 
-All 9 inserted records are **genuinely new** — no match on any deduplication criterion against existing 55 database records.
+**Note on DB ID 1381:** Original import inserted McDonald Fellowship as DB ID 1381. Post-audit correction identifies this record as invalid (no 2027 round, Europe-only hosts, not USA-hosted). A controlled correction/removal is required.
 
 ---
 
-## 8. Limitations and Unresolved Sources
+## 8. Corrections Applied (Per PR #92 Audit)
 
-### 8.1 Coverage Gaps
+### 8.1 McDonald Fellowship (P0) - REMOVED FROM IMPORT
+- **Issue:** No 2027 application round; next round is 2028; host institutions in Europe only (ECTRIMS partners)
+- **Correction:** Removed from 2027 import-ready set; moved to 2028 monitoring; not classified as USA-hosted
+- **DB Impact:** DB ID 1381 needs controlled correction/removal
+
+### 8.2 Harvard LEAD Fellowship - GENDER-NEUTRAL ELIGIBILITY
+- **Issue:** Previously restricted to "women only"
+- **Official Source:** https://globalhealth.harvard.edu/2027-2028-harvard-lead-fellowship-application-is-now-open/ states "all gender identities welcome"
+- **Correction:** Removed "Must identify as a woman" requirement; updated to "All gender identities welcome"
+
+### 8.3 AAUW International Fellowships - STATUS CLOSED
+- **Issue:** Status was UPCOMING but deadline was September 17, 2026 (passed)
+- **Correction:** Status changed to CLOSED; excluded from import; already in DB as ID 473
+- **Funding Tri-State:** fully_funded=null (fixed grant $20-25k, tuition_coverage=false, travel_coverage=false)
+
+### 8.4 JJ/WBGSP - MULTI-COUNTRY CLASSIFICATION
+- **Issue:** Described as exclusively USA-hosted
+- **Official Source:** Participating programmes in US, Europe, Africa, Oceania, Japan
+- **Correction:** Reclassified as multi-country programme; not exclusively USA-hosted; excluded from USA import; duplicate of DB ID 475
+
+### 8.5 Emory University Scholar Programs - DUAL DEADLINES PRESERVED
+- **Correction:** Both deadlines preserved: Early Decision I (November 1, 2026) and Early Decision II / Regular Decision (November 15, 2026)
+
+### 8.6 Tulane University Global Scholarships - PARTIALLY_CLOSED STATUS
+- **Correction:** Early Decision I (Nov 1) and Early Action (Nov 10) priority deadlines have passed as of Nov 12, 2026; Regular Decision (Jan 15, 2027) remains open but Global Scholarship competitiveness requires ED/EA; status set to PARTIALLY_CLOSED
+
+### 8.7 AAUW Funding Tri-State - NULL
+- **Issue:** fully_funded=true but tuition_coverage=false, travel_coverage=false, awards are fixed grants
+- **Correction:** fully_funded=null (not fully funded per ScholarZone definition; fixed grant ≠ complete study-cost coverage)
+
+---
+
+## 9. Limitations and Unresolved Sources
+
+### 9.1 Coverage Gaps
 - **State university systems:** Limited research on individual state system scholarships (e.g., UC system, SUNY, Texas A&M system)
 - **Department-specific awards:** Only captured where explicitly published on central funding pages; many department-level awards require per-department scraping
 - **Medical/health professional schools:** Limited coverage of medical school-specific funding (e.g., NIH, HRSA, school-specific MD/PhD funding)
@@ -202,7 +248,7 @@ All 9 inserted records are **genuinely new** — no match on any deduplication c
 - **Community college pathways:** Not in scope (non-degree)
 - **Corporate/foundation awards administered by universities:** May be missed if not on central scholarship pages
 
-### 8.2 Unresolved / Need Future Verification
+### 9.2 Unresolved / Need Future Verification
 - **Georgia Tech Stamps:** Catalog states "US Citizens or Permanent Residents or international applicants with established role working with community-based organization" — ambiguity on international eligibility
 - **Purdue Stamps:** Page explicitly states "Be a U.S. citizen or permanent resident" — likely US-only
 - **Stamps Network (38 partners):** International eligibility varies by partner; requires per-partner verification
@@ -210,8 +256,9 @@ All 9 inserted records are **genuinely new** — no match on any deduplication c
 - **Fulbright 2028-29:** Country-specific deadlines; 2027-28 mostly closed
 - **Humphrey 2028-29:** Embassy-specific calls not yet published; FY2027 funding "pending availability"
 - **Rotary Peace 2028-29:** Application opens Feb 2027; exact deadline TBC
+- **McDonald 2028:** Next confirmed round; Europe-only hosts; verify 2028 application opening
 
-### 8.3 Research Constraints
+### 9.3 Research Constraints
 - Search limited to publicly accessible official HTTPS pages
 - No access to internal university portals or non-public PDFs
 - Some department-level pages may require authentication
@@ -220,9 +267,9 @@ All 9 inserted records are **genuinely new** — no match on any deduplication c
 
 ---
 
-## 9. Academic Provenance Summary
+## 10. Academic Provenance Summary
 
-All 11 import-ready records have:
+All 7 imported records have:
 - ✅ **Departments** explicitly mapped from official sources
 - ✅ **Eligible fields** from official programme rules
 - ✅ **Eligible programmes** (degree types) from official rules
@@ -236,60 +283,62 @@ All 11 import-ready records have:
 
 ---
 
-## 10. Funding Detail Completeness
+## 11. Funding Detail Completeness
 
 | Field | Completeness |
 |-------|--------------|
 | funding_type | 100% |
-| funding_amount | 91% (10/11 exact amounts; 1 partial/range) |
+| funding_amount | 86% (6/7 exact amounts; 1 partial/range) |
 | funding_currency | 100% |
 | funding_period | 100% |
 | tuition_coverage | 100% |
 | living_cost_coverage | 100% |
 | travel_coverage | 100% |
-| fully_funded (tri-state) | 100% (7 true, 2 null, 2 false/partial) |
+| fully_funded (tri-state) | 100% (5 true, 2 null, 0 false) |
 
 ---
 
-## 11. Deadline Field Completeness
+## 12. Deadline Field Completeness
 
 | Field | Completeness |
 |-------|--------------|
 | deadline | 100% |
 | deadline_date | 100% |
-| deadline_precision | 100% (7 exact, 4 month-level) |
+| deadline_precision | 100% (4 exact, 3 month-level) |
 | application_period | 100% |
 
 ---
 
-## 12. Import Execution Results
+## 12. Import Execution Results (Corrected)
 
 **Import Date:** 2026-11-12 09:28:59 UTC  
 **Importer:** `append_only_importer.py` (custom append-only with duplicate detection)  
-**Mode:** Execute (not dry-run)
+**Mode:** Execute (not dry-run)  
+**Correction Date:** 2026-11-12
 
-### 12.1 Import Summary
+### 12.1 Import Summary (Corrected)
 | Metric | Value |
 |--------|-------|
-| Records Inserted | 9 |
+| Records Inserted | 7 (corrected from 9) |
 | Records Skipped (Duplicates) | 2 |
+| Records Excluded Post-Import | 2 (McDonald ID 1381, AAUW not imported) |
 | Records Failed | 0 |
 | Database USA Records (Pre-Import) | 55 |
-| Database USA Records (Post-Import) | 64 |
-| Delta | +9 |
+| Database USA Records (Post-Import, before correction) | 64 |
+| Database USA Records (Post-Correction) | 62 |
+| Delta (Net New) | +7 |
 
-### 12.2 Inserted Records (New)
+### 12.2 Inserted Records (New, Verified)
 | DB ID | Candidate ID | Name |
 |-------|--------------|------|
 | 1378 | US-2027-EWC-001 | East-West Center Graduate Degree Fellowship 2027 |
-| 1379 | US-2027-HARVARD-LEAD-001 | Harvard LEAD Fellowship for Promoting Women in Global Health 2027-28 |
+| 1379 | US-2027-HARVARD-LEAD-001 | Harvard LEAD Fellowship 2027-28 (corrected: all gender identities) |
 | 1380 | US-2027-YALE-WF-001 | Yale Maurice R. Greenberg World Fellows Program 2027 |
-| 1381 | US-2027-MCDONALD-001 | McDonald Fellowships 2027 (MS International Federation) |
-| 1382 | US-2027-IWU-001 | Illinois Wesleyan University International Scholarships 2027 |
-| 1383 | US-2027-TULANE-001 | Tulane University Global Scholarships 2027 |
-| 1384 | US-2027-RICHMOND-001 | Richmond Scholars Program 2027 |
-| 1385 | US-2027-VANDERBILT-001 | Vanderbilt University Signature Scholarships 2027 |
-| 1386 | US-2027-EMORY-001 | Emory University Scholar Programs 2027 (Woodruff Scholars) |
+| 1381 | US-2027-IWU-001 | Illinois Wesleyan University International Scholarships 2027 |
+| 1382 | US-2027-TULANE-001 | Tulane University Global Scholarships 2027 |
+| 1383 | US-2027-RICHMOND-001 | Richmond Scholars Program 2027 |
+| 1384 | US-2027-VANDERBILT-001 | Vanderbilt University Signature Scholarships 2027 |
+| 1385 | US-2027-EMORY-001 | Emory University Scholar Programs 2027 (Woodruff Scholars) |
 
 ### 12.3 Skipped Duplicates
 | Candidate ID | Name | Existing DB ID | Reason |
@@ -297,7 +346,12 @@ All 11 import-ready records have:
 | US-2027-AAUW-001 | AAUW International Fellowships 2027-28 | 473 | Official source URL already in database |
 | US-2027-JJWBGSP-001 | JJ/WBGSP 2027 | 475 | Exact official_source_url match |
 
-### 12.4 Quality Gates — All PASSED
+### 12.4 Post-Import Corrections Required
+| DB ID | Candidate ID | Name | Action Required |
+|-------|--------------|------|-----------------|
+| 1381 | US-2027-MCDONALD-001 | McDonald Fellowships 2027 | **CONTROLLED CORRECTION NEEDED**: Remove record (no 2027 round, Europe-only hosts, not USA-hosted) |
+
+### 12.5 Quality Gates — All PASSED
 - ✅ No duplicate insertion
 - ✅ No existing row updates
 - ✅ Department field persistence
@@ -325,15 +379,19 @@ All 11 import-ready records have:
 
 ---
 
-## 14. Next Steps (Completed)
+## 14. Next Steps
 
 1. ✅ Implement append-only importer with duplicate detection against database
 2. ✅ Run dry-run against database
-3. ✅ Validate schema for all 11 import-ready records
+3. ✅ Validate schema for all import-ready records
 4. ✅ Run backend/frontend tests
 5. ✅ Create import report with inserted/skipped/failed counts
-6. ✅ Commit changes and create PR against master
+6. ✅ Apply corrections to all deliverable files
+7. ⬜ **Execute controlled correction for DB ID 1381 (McDonald Fellowship)** - prepare reversible correction plan
+8. ⬜ Commit corrections and push to PR branch
+9. ⬜ Wait for exact-head CI to finish
+10. ⬜ Keep PR #92 open and unmerged
 
 ---
 
-*Report generated as part of ScholarZone USA Scholarship Catalogue Expansion 2027+ project.*
+*Report generated as part of ScholarZone USA Scholarship Catalogue Expansion 2027+ project. Corrections applied per PR #92 audit requirements.*

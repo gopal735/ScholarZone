@@ -6,7 +6,9 @@
     "planning_horizon": "2027+",
     "researcher": "Kilo AI Assistant",
     "scope": "USA-hosted scholarships for international applicants",
-    "source_methodology": "Official university pages, government programme sites, foundation pages, verified via direct HTTPS access"
+    "source_methodology": "Official university pages, government programme sites, foundation pages, verified via direct HTTPS access",
+    "correction_date": "2026-11-12",
+    "correction_notes": "Applied corrections per PR #92 audit: McDonald 2027 removed (no 2027 round), Harvard LEAD gender-neutral, AAUW status CLOSED, Emory dual deadlines preserved, Tulane priority deadlines passed, JJ/WBGSP multi-country, AAUW fully_funded=null"
   },
   "candidates": [
     {
@@ -22,7 +24,7 @@
       "deadline_date": "2026-09-17",
       "deadline_precision": "exact",
       "application_period": "Applications open August 17, 2026 at 9:00 AM ET; close September 17, 2026 at 5:00 PM ET",
-      "status": "UPCOMING",
+      "status": "CLOSED",
       "eligibility_summary": "Women who are not US citizens or permanent residents; first master's or first doctorate in STEM field; minimum 3.5 GPA; admitted/enrolled by application deadline; program start by September 15, 2027; complete by April 30, 2028.",
       "coverage": [
         "Master's: $20,000 (paid in two installments)",
@@ -38,7 +40,7 @@
       "english_requirement": "As required by the admitting US institution; no separate AAUW English test requirement.",
       "application_method": "Online application through AAUW Fellowships & Grants Application Portal",
       "best_fit": "International women pursuing first master's or doctoral degree in STEM fields at US institutions.",
-      "notes": "STEM fields only for 2027-28 cycle. One-time award, not renewable. Award notification March 2027. Must demonstrate commitment to women and girls.",
+      "notes": "STEM fields only for 2027-28 cycle. One-time award, not renewable. Award notification March 2027. Must demonstrate commitment to women and girls. 2027-28 application deadline has passed (Sept 17, 2026).",
       "source_citations": [
         {
           "field": "all",
@@ -57,16 +59,17 @@
         "confidence": "high",
         "explicit_or_derived": "explicit"
       },
-      "import_eligible": true,
+      "import_eligible": false,
+      "import_eligible_reason": "2027-28 application deadline has passed (Sept 17, 2026); already in database as ID 473",
       "duplicate_check": {
-        "matched_existing": false,
-        "match_reason": "No existing AAUW record in verified_scholarships.py or additional_scholarships.py"
+        "matched_existing": true,
+        "match_reason": "Already in database as ID 473 (official source URL match)"
       }
     },
     {
       "candidate_id": "US-2027-JJWBGSP-001",
       "name": "Joint Japan/World Bank Graduate Scholarship Program (JJ/WBGSP) 2027",
-      "country": "United States",
+      "country": "Multi-country (US, Europe, Africa, Oceania, Japan)",
       "host_institution": "World Bank / Government of Japan",
       "degree_levels": "Master's (development-related fields)",
       "funding_type": "Fully Funded",
@@ -83,7 +86,8 @@
         "Monthly living stipend",
         "Health insurance",
         "Round-trip airfare",
-        "Travel allowance ($600 per trip)"
+        "Travel allowance ($600 per trip)",
+        "Scholarship covers program length or 2 years, whichever is shorter"
       ],
       "required_documents": [
         "Online application via World Bank portal (link provided by participating university)",
@@ -94,14 +98,14 @@
       ],
       "english_requirement": "As required by the admitting university program; typically TOEFL/IELTS.",
       "application_method": "Apply to participating master's program first; receive application link from university; submit via World Bank online portal",
-      "best_fit": "Mid-career development professionals from eligible developing countries seeking master's in development-related fields at participating universities.",
-      "notes": "Two application windows depending on participating program. Bangladesh is on the 2027 eligible countries list. Must return to home country after studies. 44 participating programs across 24 universities in 2027.",
+      "best_fit": "Mid-career development professionals from eligible developing countries seeking master's in development-related fields at participating universities worldwide.",
+      "notes": "Two application windows depending on participating program. Bangladesh is on the 2027 eligible countries list. Must return to home country after studies. 44 participating programs across 24 universities in 2027 across US, Europe, Africa, Oceania, and Japan. Not exclusively USA-hosted. Scholars who enter US must use J-1 visa. Already in database as ID 475.",
       "source_citations": [
         {
           "field": "all",
           "source_url": "https://www.worldbank.org/en/programs/scholarships/jj-wbgsp",
           "date_checked": "2026-11-12",
-          "evidence_excerpt": "Window 1: Jan 18 – Feb 26, 2027; Window 2: Mar 29 – May 21, 2027; Eligible countries include Bangladesh; Full tuition, stipend, insurance, airfare; 3 years work experience required; Must have unconditional admission to participating program"
+          "evidence_excerpt": "Window 1: Jan 18 – Feb 26, 2027; Window 2: Mar 29 – May 21, 2027; Eligible countries include Bangladesh; Full tuition, stipend, insurance, airfare; 3 years work experience required; Must have unconditional admission to participating program; Participating programmes in US, Europe, Africa, Oceania, Japan"
         }
       ],
       "academic_provenance": {
@@ -114,10 +118,11 @@
         "confidence": "high",
         "explicit_or_derived": "explicit"
       },
-      "import_eligible": true,
+      "import_eligible": false,
+      "import_eligible_reason": "Already in database as ID 475; multi-country programme not exclusively USA-hosted",
       "duplicate_check": {
-        "matched_existing": false,
-        "match_reason": "No existing JJ/WBGSP record in verified_scholarships.py or additional_scholarships.py"
+        "matched_existing": true,
+        "match_reason": "Already in database as ID 475 (official source URL match)"
       }
     },
     {
@@ -140,11 +145,11 @@
         "Single-occupancy East-West Center residence hall room",
         "Partial living stipend (~$22,000/year for food and daily expenses)",
         "Health insurance subsidy",
-        "Competitive field study/travel grants"
+        "Competitive field study/travel grant awards"
       ],
       "required_documents": [
-        "East-West Center online application",
-        "Proof of UH Mānoa application submission",
+        "East-West Center online application via Submittable",
+        "Proof of UH Mānoa application submission (Application Acknowledgement)",
         "CV/Resume",
         "Passport copy",
         "Three recommendation letters",
@@ -153,7 +158,7 @@
       "english_requirement": "As required by UH Mānoa graduate program; typically TOEFL/IELTS.",
       "application_method": "Apply to UH Mānoa graduate program AND submit separate EWC fellowship application via Submittable",
       "best_fit": "Graduate students from Asia/Pacific/US regions committed to cross-cultural leadership and community building at UH Mānoa.",
-      "notes": "Maximum 24 months of funding. Must reside in EWC dormitory. Requires participation in residential community, leadership, cultural exchange, and service programs. 2027 cohort starts Fall 2027.",
+      "notes": "Maximum 24 months of funding. Must reside in EWC dormitory. Requires participation in residential community, leadership, cultural exchange, and service programs. 2027 cohort starts Fall 2027. Supporting documents deadline: January 10, 2027.",
       "source_citations": [
         {
           "field": "all",
@@ -175,7 +180,7 @@
       "import_eligible": true,
       "duplicate_check": {
         "matched_existing": false,
-        "match_reason": "No existing EWC record in verified_scholarships.py or additional_scholarships.py"
+        "match_reason": "No existing EWC record in database"
       }
     },
     {
@@ -185,20 +190,21 @@
       "host_institution": "Harvard Global Health Institute / Harvard T.H. Chan School of Public Health",
       "degree_levels": "Non-degree fellowship (post-master's professional development)",
       "funding_type": "Fully Funded",
-      "official_source_url": "https://globalhealth.harvard.edu/fellowships/harvard-lead-fellowship",
+      "official_source_url": "https://globalhealth.harvard.edu/2027-2028-harvard-lead-fellowship-application-is-now-open/",
       "official_source": "Harvard Global Health Institute (HGHI)",
       "deadline": "November 15, 2026 at 11:59 PM EST",
       "deadline_date": "2026-11-15",
       "deadline_precision": "exact",
       "application_period": "Applications open October 5, 2026; close November 15, 2026; notifications Spring 2027",
       "status": "OPEN",
-      "eligibility_summary": "Women from low- and middle-income countries; Master's degree minimum; 10+ years full-time global health professional experience beyond education; currently working in global health; able to obtain J-1 visa; available for 6-week in-person residency in Cambridge, MA in April 2028.",
+      "eligibility_summary": "Applicants from low- and middle-income countries; Master's degree minimum; 10+ years full-time global health professional experience beyond education; currently working in global health; able to obtain J-1 visa; available for 6-week in-person residency in Cambridge, MA in April 2028. All gender identities welcome.",
       "coverage": [
-        "Fully funded: international flights to/from Cambridge",
+        "International flights to/from Cambridge, MA",
         "Housing during 6-week in-person residency",
         "Living stipend during in-person period",
         "Visa fees covered",
-        "Executive education, coaching, mentorship, networking"
+        "Executive education, coaching, mentorship, networking",
+        "12-month virtual curriculum (Sep 2027 – Aug 2028)"
       ],
       "required_documents": [
         "Online application via Reviewr portal",
@@ -210,21 +216,21 @@
       ],
       "english_requirement": "Fluent English required for program participation; no specific test score published.",
       "application_method": "Online application through Harvard Global Health Institute LEAD Fellowship portal (Reviewr)",
-      "best_fit": "Experienced women global health leaders from LMICs seeking leadership development and Harvard network.",
-      "notes": "12-month virtual curriculum (Sep 2027 – Aug 2028) with 6-week in-person residency in April 2028. Not a degree program. 26 fellows from 21 countries to date. Must take leave from home institution for April 2028 residency.",
+      "best_fit": "Experienced global health leaders from LMICs (all gender identities) seeking leadership development and Harvard network.",
+      "notes": "12-month virtual curriculum (Sep 2027 – Aug 2028) with 6-week in-person residency in April 2028. Not a degree program. 26 fellows from 21 countries to date. Must take leave from home institution for April 2028 residency. Program aims to promote leadership in global health. Official page states 'all gender identities' are welcome.",
       "source_citations": [
         {
           "field": "all",
-          "source_url": "https://globalhealth.harvard.edu/fellowships/harvard-lead-fellowship",
+          "source_url": "https://globalhealth.harvard.edu/2027-2028-harvard-lead-fellowship-application-is-now-open/",
           "date_checked": "2026-11-12",
-          "evidence_excerpt": "Applications open Oct 5, 2026; deadline Nov 15, 2026 11:59 PM EST; 10+ years global health experience; Master's minimum; Women from LMICs; Fully funded including flights, housing, stipend, visa; 6-week in-person April 2028; Virtual Sep 2027-Aug 2028"
+          "evidence_excerpt": "Applications open Oct 5, 2026; deadline Nov 15, 2026 11:59 PM EST; 10+ years global health experience; Master's minimum; All gender identities welcome; Fully funded including flights, housing, stipend, visa; 6-week in-person April 2028; Virtual Sep 2027-Aug 2028"
         }
       ],
       "academic_provenance": {
         "departments": ["Department of Global Health and Population", "Harvard T.H. Chan School of Public Health"],
         "eligible_fields": ["Global Health", "Public Health", "Health Policy", "Health Systems", "Epidemiology"],
         "eligible_programmes": ["Non-degree fellowship (professional development)"],
-        "source_url": "https://globalhealth.harvard.edu/fellowships/harvard-lead-fellowship",
+        "source_url": "https://globalhealth.harvard.edu/2027-2028-harvard-lead-fellowship-application-is-now-open/",
         "source_type": "official_institution",
         "date_checked": "2026-11-12",
         "confidence": "high",
@@ -233,7 +239,7 @@
       "import_eligible": true,
       "duplicate_check": {
         "matched_existing": false,
-        "match_reason": "No existing Harvard LEAD Fellowship record in verified_scholarships.py or additional_scholarships.py"
+        "match_reason": "No existing Harvard LEAD Fellowship record in database"
       }
     },
     {
@@ -291,24 +297,24 @@
       "import_eligible": true,
       "duplicate_check": {
         "matched_existing": false,
-        "match_reason": "No existing Yale World Fellows record in verified_scholarships.py or additional_scholarships.py"
+        "match_reason": "No existing Yale World Fellows record in database"
       }
     },
     {
       "candidate_id": "US-2027-MCDONALD-001",
       "name": "McDonald Fellowships 2027 (MS International Federation)",
-      "country": "United States",
+      "country": "Europe (Host institutions in Europe only)",
       "host_institution": "MS International Federation (MSIF) / ECTRIMS / France Sclérose en Plaques",
       "degree_levels": "Postdoctoral research fellowship",
       "funding_type": "Fully Funded",
       "official_source_url": "https://www.msif.org/research/awards-grants-and-fellowships/mcdonald-fellowships",
       "official_source": "MS International Federation (MSIF)",
-      "deadline": "December 1, 2026",
-      "deadline_date": "2026-12-01",
-      "deadline_precision": "month",
-      "application_period": "Applications typically open mid-year; deadline December 1, 2026 for 2027 cycle",
-      "status": "UPCOMING",
-      "eligibility_summary": "Citizens of low- or middle-income countries (World Bank classification); MSc minimum (PhD/MD preferred); focus on multiple sclerosis research; <5 years postdoctoral experience; working/studying in LMIC or on project started within 6 months in LMIC.",
+      "deadline": "No 2027 application round; next round expected 2028",
+      "deadline_date": null,
+      "deadline_precision": "none",
+      "application_period": "No 2027 cycle confirmed. Next application round expected 2028. Host institutions in Europe only (ECTRIMS partner institutions).",
+      "status": "UNKNOWN",
+      "eligibility_summary": "Citizens of low- or middle-income countries (World Bank classification); MSc minimum (PhD/MD preferred); focus on multiple sclerosis research; <5 years postdoctoral experience; working/studying in LMIC or on project started within 6 months in LMIC. Host institutions in Europe only.",
       "coverage": [
         "~€55,000 per year for 2 years (travel and living costs)",
         "One return flight to host institution",
@@ -324,14 +330,14 @@
       ],
       "english_requirement": "English required for application and research communication.",
       "application_method": "Joint application with host supervisor via MSIF online portal",
-      "best_fit": "Early-career MS researchers from LMICs seeking 2-year research placement at European institutions (host institutions in Europe only).",
-      "notes": "Host institutions in Europe only. Two fellowship types: MSIF-ECTRIMS McDonald Fellowship and MSIF-FRANCESEP McDonald Fellowship. Next round after 2027 is 2028. Can part-fund PhD if accepted within 6 months.",
+      "best_fit": "Early-career MS researchers from LMICs seeking 2-year research placement at European institutions.",
+      "notes": "CORRECTION: Official source confirms NO 2027 application round. Next round is 2028. Host institutions in Europe only (ECTRIMS partner institutions). Not USA-hosted. Moved to 2028 monitoring list.",
       "source_citations": [
         {
           "field": "all",
           "source_url": "https://www.msif.org/research/awards-grants-and-fellowships/mcdonald-fellowships",
           "date_checked": "2026-11-12",
-          "evidence_excerpt": "Deadline Dec 1, 2026; ~€55,000/year for 2 years; Return flight; Host institution in Europe; LMIC citizens; MSc/PhD/MD; MS research; <5 years postdoc; ECTRIMS and FRANCESEP partners"
+          "evidence_excerpt": "No 2027 round; next round 2028; Host institutions in Europe only; ~€55,000/year for 2 years; LMIC citizens; MSc/PhD/MD; MS research; <5 years postdoc; ECTRIMS and FRANCESEP partners"
         }
       ],
       "academic_provenance": {
@@ -344,10 +350,11 @@
         "confidence": "high",
         "explicit_or_derived": "explicit"
       },
-      "import_eligible": true,
+      "import_eligible": false,
+      "import_eligible_reason": "No 2027 application round confirmed; host institutions in Europe only (not USA-hosted); moved to 2028 monitoring",
       "duplicate_check": {
         "matched_existing": false,
-        "match_reason": "No existing McDonald Fellowship record in verified_scholarships.py or additional_scholarships.py"
+        "match_reason": "No existing McDonald Fellowship record in database"
       }
     },
     {
@@ -379,7 +386,7 @@
       "english_requirement": "TOEFL, IELTS, Duolingo English Test, or PTE Academic; waivers for native English speakers or 3+ years English-medium schooling.",
       "application_method": "Automatic consideration via admission application; separate President's Scholarship application for full-tuition award",
       "best_fit": "High-achieving international undergraduates seeking merit-based funding at a liberal arts university.",
-      "notes": "No full-ride scholarships (merit scholarships cover tuition only, not room/board). Need-aware admission for international students. Test-optional for 2027. 3.0 GPA required for renewal.",
+      "notes": "No full-ride scholarships (merit scholarships cover tuition only, not room/board). Need-aware admission for international students. Test-optional for 2027. 3.0 GPA required for renewal. CSS Profile preferred filing date: March 1, 2027.",
       "source_citations": [
         {
           "field": "all",
@@ -401,7 +408,7 @@
       "import_eligible": true,
       "duplicate_check": {
         "matched_existing": false,
-        "match_reason": "No existing Illinois Wesleyan record in verified_scholarships.py or additional_scholarships.py"
+        "match_reason": "No existing Illinois Wesleyan record in database"
       }
     },
     {
@@ -413,12 +420,12 @@
       "funding_type": "Merit-Based (Partial to Full Cost of Attendance)",
       "official_source_url": "https://admission.tulane.edu/international/aid",
       "official_source": "Tulane University",
-      "deadline": "Early Decision I: November 1, 2026; Early Action: November 10, 2026; Global Scholarship nomination deadline: November 15, 2026",
+      "deadline": "Early Decision I: November 1, 2026; Early Action: November 10, 2026; Regular Decision: January 15, 2027; Global Scholarship nomination deadline: November 15, 2026",
       "deadline_date": "2026-11-01",
       "deadline_precision": "month",
       "application_period": "Automatic consideration for merit scholarships via Common App; Global Scholarship requires Early Decision I or Early Action admission; CSS Profile for need-based aid",
-      "status": "OPEN",
-      "eligibility_summary": "International first-year applicants; top 20% academically of applicant pool; Early Decision I (Nov 1) or Early Action (Nov 10) admission required for Global Scholarship competitiveness; nominations by admission committee based on Common App and CSS Profile.",
+      "status": "PARTIALLY_CLOSED",
+      "eligibility_summary": "International first-year applicants; top 20% academically of applicant pool; Early Decision I (Nov 1) or Early Action (Nov 10) admission required for Global Scholarship competitiveness; nominations by admission committee based on Common App and CSS Profile. ED I and EA priority deadlines have passed as of Nov 12, 2026; Regular Decision remains open.",
       "coverage": [
         "Global Scholarships: Partial to full tuition and fees, or full cost of attendance (renewable 4 years, 5 for Architecture)",
         "Need-based aid: Up to $30,000/year for those not receiving equivalent merit aid",
@@ -435,13 +442,13 @@
       "english_requirement": "TOEFL 95+, IELTS 6.5+, or Duolingo 115+; scores sent directly from testing agency.",
       "application_method": "Common Application for admission; automatic merit consideration; CSS Profile for need-based; Early Decision/Action required for Global Scholarship",
       "best_fit": "High-achieving international undergraduates seeking merit-based full-cost funding at Tulane University.",
-      "notes": "Global Scholarship nominations require Early Decision I or Early Action admission. Stamps Scholarship and Grossman & Cohen are additional competitive awards. Need-aware admission for international students.",
+      "notes": "Global Scholarship nominations require Early Decision I or Early Action admission. Stamps Scholarship and Grossman & Cohen are additional competitive awards. Need-aware admission for international students. ED I (Nov 1) and EA (Nov 10) priority deadlines have passed; Regular Decision (Jan 15, 2027) remains open but Global Scholarship competitiveness requires ED/EA.",
       "source_citations": [
         {
           "field": "all",
           "source_url": "https://admission.tulane.edu/international/aid",
           "date_checked": "2026-11-12",
-          "evidence_excerpt": "Global Scholarships: up to full tuition/cost of attendance; Renewable 4 years; ED I Nov 1, EA Nov 10; Nomination deadline Nov 15; Top 20% academic pool; Need-based up to $30k/year; Stamps ~10/year full cost; Grossman & Cohen full cost"
+          "evidence_excerpt": "Global Scholarships: up to full tuition/cost of attendance; Renewable 4 years; ED I Nov 1, EA Nov 10; Nomination deadline Nov 15; Top 20% academic pool; Need-based up to $30k/year; Stamps ~10/year full cost; Grossman & Cohen full cost; Regular Decision Jan 15, 2027"
         }
       ],
       "academic_provenance": {
@@ -457,7 +464,7 @@
       "import_eligible": true,
       "duplicate_check": {
         "matched_existing": false,
-        "match_reason": "No existing Tulane Global Scholarship record in verified_scholarships.py or additional_scholarships.py"
+        "match_reason": "No existing Tulane Global Scholarship record in database"
       }
     },
     {
@@ -494,7 +501,7 @@
       "english_requirement": "Required unless approved exemption applies; TOEFL/IELTS/Duolingo accepted.",
       "application_method": "Automatic consideration via complete admission application by December 1 deadline; no separate scholarship form",
       "best_fit": "Exceptional first-year students with leadership and purpose seeking fully funded undergraduate experience at University of Richmond.",
-      "notes": "Up to 25 scholars selected annually. Test-optional for Fall 2027. Early Decision binding; Regular Decision must still meet Dec 1 scholarship deadline. Final selection by March 1. Enrichment grant supports student-selected academic enhancement activity.",
+      "notes": "Up to 25 scholars selected annually. Test-optional for Fall 2027. Early Decision binding; Regular Decision must still meet Dec 1 scholarship deadline. Final selection by March 1. Enrichment grant supports student-selected academic enhancement activity. Application fee $50; waivers available.",
       "source_citations": [
         {
           "field": "all",
@@ -516,7 +523,7 @@
       "import_eligible": true,
       "duplicate_check": {
         "matched_existing": false,
-        "match_reason": "No existing Richmond Scholars record in verified_scholarships.py or additional_scholarships.py"
+        "match_reason": "No existing Richmond Scholars record in database"
       }
     },
     {
@@ -550,7 +557,7 @@
       "english_requirement": "As per Vanderbilt undergraduate admission requirements; TOEFL/IELTS/Duolingo accepted.",
       "application_method": "Admission application + separate MyAppVU scholarship application by December 1, 2026",
       "best_fit": "Exceptional first-year students seeking full-tuition merit scholarships with summer enrichment at Vanderbilt.",
-      "notes": "~225 total signature scholarship awards across both programs. Chancellor's Scholarship retired for Fall 2027. Test-optional for Fall 2027. Need-aware for international applicants requesting need-based aid. 3.0 GPA renewal requirement.",
+      "notes": "~225 total signature scholarship awards across both programs. Chancellor's Scholarship retired for Fall 2027. Test-optional for Fall 2027. Need-aware for international applicants requesting need-based aid. 3.0 GPA renewal requirement. Vanderbilt meets 100% demonstrated need with grants/scholarships for admitted international aid recipients.",
       "source_citations": [
         {
           "field": "all",
@@ -572,7 +579,7 @@
       "import_eligible": true,
       "duplicate_check": {
         "matched_existing": false,
-        "match_reason": "No existing Vanderbilt Signature Scholarship record in verified_scholarships.py or additional_scholarships.py"
+        "match_reason": "No existing Vanderbilt Signature Scholarship record in database"
       }
     },
     {
@@ -607,7 +614,7 @@
       "english_requirement": "As per Emory undergraduate admission requirements; no separate Scholar IELTS requirement.",
       "application_method": "Emory admission application + answer 'Yes' to Scholar Programs question by applicable deadline",
       "best_fit": "Exceptional first-year students with leadership and intellectual curiosity seeking merit scholarships and scholar community at Emory.",
-      "notes": "Highly competitive: ~10,000 apply, 175-200 finalists. Early Decision binding. International students compete in global pool. No separate nationality quota. Scholar benefits include priority registration, advising, community, and supplemental funding.",
+      "notes": "Highly competitive: ~10,000 apply, 175-200 finalists. Early Decision binding. International students compete in global pool. No separate nationality quota. Scholar benefits include priority registration, advising, community, and supplemental funding for internships/research/abroad. Two application deadlines: ED I (Nov 1) and ED II/Regular Decision (Nov 15).",
       "source_citations": [
         {
           "field": "all",
@@ -629,31 +636,32 @@
       "import_eligible": true,
       "duplicate_check": {
         "matched_existing": false,
-        "match_reason": "No existing Emory Scholar Programs record in verified_scholarships.py or additional_scholarships.py"
+        "match_reason": "No existing Emory Scholar Programs record in database"
       }
     }
   ],
   "summary": {
     "total_candidates": 11,
-    "import_eligible": 11,
-    "ineligible": 0,
+    "import_eligible": 7,
+    "ineligible": 4,
     "status_breakdown": {
-      "OPEN": 7,
-      "UPCOMING": 4,
-      "UNKNOWN": 0,
-      "CLOSED": 0
+      "OPEN": 6,
+      "UPCOMING": 1,
+      "CLOSED": 1,
+      "PARTIALLY_CLOSED": 1,
+      "UNKNOWN": 1
     },
     "degree_level_breakdown": {
       "Bachelor's": 6,
-      "Master's": 3,
-      "Doctoral": 3,
-      "Non-degree fellowship": 3,
-      "Postdoctoral": 1
+      "Master's": 1,
+      "Doctoral": 1,
+      "Non-degree fellowship": 2,
+      "Postdoctoral": 0
     },
     "funding_breakdown": {
-      "Fully Funded": 7,
+      "Fully Funded": 6,
       "Partial to Full": 2,
-      "Merit-Based (Partial to Full Tuition)": 2
+      "Merit-Based (Partial to Full Tuition)": 1
     }
   }
 }

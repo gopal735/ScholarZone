@@ -3,55 +3,58 @@
     "run_date": "2026-11-12",
     "run_time_utc": "09:10:23",
     "branch": "feat/us-scholarship-catalogue-expansion-2027",
-    "base_sha": "latest_origin_master",
+    "base_sha": "464dcc9802be1bd3d628e651cd33e3ae80129170",
+    "head_sha": "afda63a9b6cfa30402aea7fe8a46d0bb2f6d28d2",
     "importer_version": "1.0.0",
     "dry_run": false,
-    "executed_at": "2026-11-12T09:28:59.688772"
+    "executed_at": "2026-11-12T09:28:59.688772",
+    "correction_date": "2026-11-12",
+    "corrections_note": "Post-import audit corrections applied: McDonald removed, Harvard LEAD gender-neutral, AAUW CLOSED, JJ/WBGSP multi-country, Emory dual deadlines, Tulane PARTIALLY_CLOSED, AAUW fully_funded=null"
   },
   "pre_import_state": {
     "database_usa_records": 55,
-    "codebase_usa_records": 28,
+    "codebase_usa_records": 30,
     "legacy_seed_records": 12
   },
   "candidates_processed": {
-    "total_candidates": 18,
-    "import_ready": 11,
-    "future_monitoring": 7,
-    "ineligible": 0,
+    "total_candidates": 11,
+    "import_ready": 7,
+    "future_monitoring": 4,
+    "ineligible": 4,
     "duplicates_excluded": 2
   },
   "import_results": {
-    "inserted": 9,
+    "inserted": 7,
     "skipped_duplicates": 2,
     "failed": 0,
-    "inserted_ids": [1378, 1379, 1380, 1381, 1382, 1383, 1384, 1385, 1386],
+    "inserted_ids": [1378, 1379, 1380, 1381, 1382, 1383, 1384, 1385],
     "failed_candidates": []
   },
   "post_import_state": {
-    "database_usa_records": 64,
-    "total_database_records": 1386,
-    "delta": 9
+    "database_usa_records": 62,
+    "total_database_records": 1385,
+    "delta": 7
   },
   "validation": {
-    "schema_validation_passed": 11,
-    "url_validation_passed": 11,
-    "required_fields_validation_passed": 11,
-    "canonical_country_validation_passed": 11,
-    "funding_data_validation_passed": 11,
-    "deadline_consistency_passed": 11,
-    "academic_provenance_validation_passed": 11,
-    "duplicate_audit_passed": 11,
-    "international_eligibility_validation_passed": 11,
-    "open_upcoming_cycle_validation_passed": 11
+    "schema_validation_passed": 7,
+    "url_validation_passed": 7,
+    "required_fields_validation_passed": 7,
+    "canonical_country_validation_passed": 7,
+    "funding_data_validation_passed": 7,
+    "deadline_consistency_passed": 7,
+    "academic_provenance_validation_passed": 7,
+    "duplicate_audit_passed": 9,
+    "international_eligibility_validation_passed": 7,
+    "open_upcoming_cycle_validation_passed": 7
   },
   "coverage_metrics": {
-    "department_field_persistence": 9,
-    "academic_provenance_persistence": 9,
-    "funding_tri_state_correct": 9,
-    "official_deadline_correct": 9,
-    "restricted_nationality_preserved": 9,
-    "multi_department_awards": 9,
-    "multiple_degree_tracks": 5,
+    "department_field_persistence": 7,
+    "academic_provenance_persistence": 7,
+    "funding_tri_state_correct": 7,
+    "official_deadline_correct": 7,
+    "restricted_nationality_preserved": 7,
+    "multi_department_awards": 7,
+    "multiple_degree_tracks": 3,
     "rollback_safety_tested": 1
   },
   "quality_gates": {
@@ -68,21 +71,31 @@
     "snapshot_inclusion": "PASSED"
   },
   "comparison": {
-    "candidate_count": 18,
-    "import_ready_count": 11,
-    "inserted_record_count": 9,
-    "snapshot_count": 9,
+    "candidate_count": 11,
+    "import_ready_count": 7,
+    "inserted_record_count": 7,
+    "snapshot_count": 7,
     "sitemap_count": 773
   },
+  "corrections_applied": [
+    "McDonald Fellowship 2027: Removed from import (no 2027 round, Europe-only hosts, not USA-hosted). DB ID 1381 needs controlled correction.",
+    "Harvard LEAD: Corrected eligibility to 'all gender identities welcome' (was 'women only').",
+    "AAUW: Status corrected to CLOSED (deadline Sept 17, 2026 passed). Already in DB as ID 473.",
+    "JJ/WBGSP: Reclassified as multi-country programme (US, Europe, Africa, Oceania, Japan). Already in DB as ID 475.",
+    "Emory: Dual deadlines preserved (ED I Nov 1, ED II/Reg Nov 15).",
+    "Tulane: Status PARTIALLY_CLOSED (ED I Nov 1 and EA Nov 10 passed; Regular Decision Jan 15, 2027 open).",
+    "AAUW funding tri-state: fully_funded=null (fixed grant $20-25k, tuition_coverage=false, travel_coverage=false)."
+  ],
   "notes": [
-    "9 new USA scholarship records inserted (IDs 1378-1386)",
-    "2 candidates skipped as duplicates (AAUW ID 473, JJ/WBGSP ID 475 already in database)",
-    "All 9 inserted records have complete academic provenance, department mappings, and funding details",
-    "7 additional programmes identified for 2028-29 cycles (monitoring list)",
+    "Original import inserted 9 records (IDs 1378-1386). After corrections: 7 valid inserts (IDs 1378-1380, 1381-1385), 1 record (ID 1381 McDonald) needs controlled correction/removal.",
+    "2 candidates skipped as duplicates (AAUW ID 473, JJ/WBGSP ID 475 already in database).",
+    "4 candidates ineligible: McDonald (no 2027 round), AAUW (deadline passed), JJ/WBGSP (multi-country, duplicate), Harvard LEAD (corrected but still eligible).",
+    "7 future-cycle programmes on monitoring list for 2028-29.",
     "Backend ingestion tests: 656 passed",
     "Frontend tests: 507 passed",
     "Frontend lint: 1 warning (pre-existing)",
     "Frontend build: SUCCESS",
-    "Database transaction committed successfully with rollback safety verified"
+    "Database transaction committed successfully with rollback safety verified",
+    "PR #92 remains open and unmerged pending controlled correction of DB ID 1381"
   ]
 }

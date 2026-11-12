@@ -1,29 +1,31 @@
 Existing_DB_ID,Existing_Programme_Name,Matched_Source_URL,Duplicate_Reason,Existing_Location
-1,Fulbright Foreign Student Program,https://foreign.fulbrightonline.org,Already in verified_scholarships.py (line 1427),verified_scholarships.py
-2,Hubert H. Humphrey Fellowship Program,https://www.humphreyfellowship.org,Already in verified_scholarships.py (line 2262) and add_us_scholarships.py,verified_scholarships.py & add_us_scholarships.py
-3,University of Miami Stamps Scholarship,https://admissions.miami.edu/undergraduate/financial-aid/scholarships/stamps/index.html,Already in verified_scholarships.py (line 2317) and add_us_scholarships.py,verified_scholarships.py & add_us_scholarships.py
-4,American University Emerging Global Leader Scholarship,https://www.american.edu/admissions/international/au-egls-apply.cfm,Already in verified_scholarships.py (line 2366) and add_us_scholarships.py,verified_scholarships.py & add_us_scholarships.py
-5,Jefferson Scholars Foundation Scholarship,https://www.jeffersonscholars.org/scholarships,Already in verified_scholarships.py (line 2416),verified_scholarships.py
-6,King-Morgridge Scholars Program,https://kmsp.wisc.edu/,Already in verified_scholarships.py (line 2465),verified_scholarships.py
-7,Brandeis University Wien International Scholarship,https://www.brandeis.edu/isso/programs/wien/index.html,Already in verified_scholarships.py (line 2513),verified_scholarships.py
-8,University of Minnesota Global Excellence Scholarship,https://admissions.tc.umn.edu/global-excellence-scholarships,Already in verified_scholarships.py (line 2554),verified_scholarships.py
-9,University of Iowa International Distinction in Education Award,https://admissions.uiowa.edu/scholarship/international-distinction-education-award-idea,Already in verified_scholarships.py (line 2596),verified_scholarships.py
-10,Clark University Global Scholars Program,https://www.clarku.edu/financial-aid/types/scholarships/,Already in verified_scholarships.py (line 2639),verified_scholarships.py
-11,Knight-Hennessy Scholars,https://knight-hennessy.stanford.edu/,Already in verified_scholarships.py (line 2682) and add_us_scholarships.py,verified_scholarships.py & add_us_scholarships.py
-12,Michigan State University International Merit Scholarships,https://admissions.msu.edu/cost-aid/scholarships/international,Already in verified_scholarships.py (line 2732),verified_scholarships.py
-13,University of Oregon International Cultural Service Program,https://isss.uoregon.edu/icsp,Already in verified_scholarships.py (line 2778),verified_scholarships.py
-14,Global Undergraduate Exchange Program (Global UGRAD),https://exchanges.state.gov/non-us/program/global-undergraduate-exchange-program-ugrad,Already in additional_scholarships.py (line 982),additional_scholarships.py
-15,Alan and Jane Handler Endowed Scholarship — University of Rochester,https://admissions.rochester.edu/handler-scholarship/,Already in additional_scholarships.py (line 1000),additional_scholarships.py
-16,Berea College Tuition Promise Scholarship,https://www.berea.edu/admissions/,Already in additional_scholarships.py (line 1017),additional_scholarships.py
-17,Karsh International Scholars Program — Duke University,https://ousf.duke.edu/merit-scholarships/karsh-international-scholars-program/,Already in additional_scholarships.py (line 1035),additional_scholarships.py
-18,Gabelli Presidential Scholars Program — Boston College,https://www.bc.edu/bc-web/academics/sites/gabelli-presidential-scholars-program.html,Already in additional_scholarships.py (line 1052),additional_scholarships.py
-19,Clark University Presidential Scholarship,https://www.clarku.edu/financial-aid/types/scholarships,Already in additional_scholarships.py (line 1068),additional_scholarships.py
-20,Simmons University Kotzen Scholarship,https://www.simmons.edu/undergraduate-admission/kotzen-scholarship,Already in additional_scholarships.py (line 1082),additional_scholarships.py
-21,Harvard University Financial Aid (International),https://college.harvard.edu/financial-aid/apply-financial-aid,Already in additional_scholarships.py (line 1096),additional_scholarships.py
-22,Yale University Need-Based Financial Aid (International),https://admissions.yale.edu/affordability,Already in additional_scholarships.py (line 1113),additional_scholarships.py
-23,Princeton University Financial Aid (International),https://admission.princeton.edu/apply/international-students,Already in additional_scholarships.py (line 1130),additional_scholarships.py
-24,Brown University Financial Aid (International),https://admission.brown.edu/tuition-aid/financial-aid/international-students,Already in additional_scholarships.py (line 1147),additional_scholarships.py
-25,Dartmouth College Financial Aid (International),https://admissions.dartmouth.edu/affordability/international-students,Already in additional_scholarships.py (line 1164),additional_scholarships.py
-26,Aga Khan Foundation International Scholarship Programme,https://akf.org/international-scholarship-programme/,Already in additional_scholarships.py (line 1181),additional_scholarships.py
-27,Rotary Peace Fellowships,https://www.rotary.org/en/our-programs/peace-fellowships,Already in additional_scholarships.py (line 1199),additional_scholarships.py
-28,#YouAreWelcomeHere Scholarship,https://www.youarewelcomehereusa.org/,Already in additional_scholarships.py (line 1213),additional_scholarships.py
+1,Fulbright Foreign Student Program,https://foreign.fulbrightonline.org,Already in verified_scholarships.py,verified_scholarships.py
+2,Hubert H. Humphrey Fellowship Program,https://www.humphreyfellowship.org,Already in verified_scholarships.py and add_us_scholarships.py,verified_scholarships.py & add_us_scholarships.py
+3,University of Miami Stamps Scholarship,https://admissions.miami.edu/undergraduate/financial-aid/scholarships/stamps/index.html,Already in verified_scholarships.py and add_us_scholarships.py,verified_scholarships.py & add_us_scholarships.py
+4,American University Emerging Global Leader Scholarship,https://www.american.edu/admissions/international/au-egls-apply.cfm,Already in verified_scholarships.py and add_us_scholarships.py,verified_scholarships.py & add_us_scholarships.py
+5,Jefferson Scholars Foundation Scholarship,https://www.jeffersonscholars.org/scholarships,Already in verified_scholarships.py,verified_scholarships.py
+6,King-Morgridge Scholars Program,https://kmsp.wisc.edu/,Already in verified_scholarships.py,verified_scholarships.py
+7,Brandeis University Wien International Scholarship,https://www.brandeis.edu/isso/programs/wien/index.html,Already in verified_scholarships.py,verified_scholarships.py
+8,University of Minnesota Global Excellence Scholarship,https://admissions.tc.umn.edu/global-excellence-scholarships,Already in verified_scholarships.py,verified_scholarships.py
+9,University of Iowa International Distinction in Education Award,https://admissions.uiowa.edu/scholarship/international-distinction-education-award-idea,Already in verified_scholarships.py,verified_scholarships.py
+10,Clark University Global Scholars Program,https://www.clarku.edu/financial-aid/types/scholarships/,Already in verified_scholarships.py,verified_scholarships.py
+11,Knight-Hennessy Scholars,https://knight-hennessy.stanford.edu/,Already in verified_scholarships.py and add_us_scholarships.py,verified_scholarships.py & add_us_scholarships.py
+12,Michigan State University International Merit Scholarships,https://admissions.msu.edu/cost-aid/scholarships/international,Already in verified_scholarships.py,verified_scholarships.py
+13,University of Oregon International Cultural Service Program,https://isss.uoregon.edu/icsp,Already in verified_scholarships.py,verified_scholarships.py
+14,Global Undergraduate Exchange Program (Global UGRAD),https://exchanges.state.gov/non-us/program/global-undergraduate-exchange-program-ugrad,Already in additional_scholarships.py,additional_scholarships.py
+15,Alan and Jane Handler Endowed Scholarship — University of Rochester,https://admissions.rochester.edu/handler-scholarship/,Already in additional_scholarships.py,additional_scholarships.py
+16,Berea College Tuition Promise Scholarship,https://www.berea.edu/admissions/,Already in additional_scholarships.py,additional_scholarships.py
+17,Karsh International Scholars Program — Duke University,https://ousf.duke.edu/merit-scholarships/karsh-international-scholars-program/,Already in additional_scholarships.py,additional_scholarships.py
+18,Gabelli Presidential Scholars Program — Boston College,https://www.bc.edu/bc-web/academics/sites/gabelli-presidential-scholars-program.html,Already in additional_scholarships.py,additional_scholarships.py
+19,Clark University Presidential Scholarship,https://www.clarku.edu/financial-aid/types/scholarships,Already in additional_scholarships.py,additional_scholarships.py
+20,Simmons University Kotzen Scholarship,https://www.simmons.edu/undergraduate-admission/kotzen-scholarship,Already in additional_scholarships.py,additional_scholarships.py
+21,Harvard University Financial Aid (International),https://college.harvard.edu/financial-aid/apply-financial-aid,Already in additional_scholarships.py,additional_scholarships.py
+22,Yale University Need-Based Financial Aid (International),https://admissions.yale.edu/affordability,Already in additional_scholarships.py,additional_scholarships.py
+23,Princeton University Financial Aid (International),https://admission.princeton.edu/apply/international-students,Already in additional_scholarships.py,additional_scholarships.py
+24,Brown University Financial Aid (International),https://admission.brown.edu/tuition-aid/financial-aid/international-students,Already in additional_scholarships.py,additional_scholarships.py
+25,Dartmouth College Financial Aid (International),https://admissions.dartmouth.edu/affordability/international-students,Already in additional_scholarships.py,additional_scholarships.py
+26,Aga Khan Foundation International Scholarship Programme,https://akf.org/international-scholarship-programme/,Already in additional_scholarships.py,additional_scholarships.py
+27,Rotary Peace Fellowships,https://www.rotary.org/en/our-programs/peace-fellowships,Already in additional_scholarships.py,additional_scholarships.py
+28,#YouAreWelcomeHere Scholarship,https://www.youarewelcomehereusa.org/,Already in additional_scholarships.py,additional_scholarships.py
+29,AAUW International Fellowships,https://www.aauw.org/resources/programs/fellowships-grants/aauw-international-fellowships/,Already in database (ID 473),Database
+30,Joint Japan/World Bank Graduate Scholarship Program (JJ/WBGSP),https://www.worldbank.org/en/programs/scholarships/jj-wbgsp,Already in database (ID 475),Database
