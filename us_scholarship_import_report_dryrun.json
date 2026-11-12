@@ -1,0 +1,89 @@
+{
+  "inserted_count": 9,
+  "skipped_duplicates_count": 2,
+  "failed_count": 0,
+  "error_count": 0,
+  "inserted": [
+    {
+      "candidate_id": "US-2027-EWC-001",
+      "name": "East-West Center Graduate Degree Fellowship 2027",
+      "official_source_url": "https://www.eastwestcenter.org/education/opportunities-study-and-scholarship",
+      "db_id": -1
+    },
+    {
+      "candidate_id": "US-2027-HARVARD-LEAD-001",
+      "name": "Harvard LEAD Fellowship for Promoting Women in Global Health 2027-28",
+      "official_source_url": "https://globalhealth.harvard.edu/fellowships/harvard-lead-fellowship",
+      "db_id": -1
+    },
+    {
+      "candidate_id": "US-2027-YALE-WF-001",
+      "name": "Yale Maurice R. Greenberg World Fellows Program 2027",
+      "official_source_url": "https://worldfellows.yale.edu/the-program/application",
+      "db_id": -1
+    },
+    {
+      "candidate_id": "US-2027-MCDONALD-001",
+      "name": "McDonald Fellowships 2027 (MS International Federation)",
+      "official_source_url": "https://www.msif.org/research/awards-grants-and-fellowships/mcdonald-fellowships",
+      "db_id": -1
+    },
+    {
+      "candidate_id": "US-2027-IWU-001",
+      "name": "Illinois Wesleyan University International Scholarships 2027",
+      "official_source_url": "https://www.iwu.edu/international/scholarships.html",
+      "db_id": -1
+    },
+    {
+      "candidate_id": "US-2027-TULANE-001",
+      "name": "Tulane University Global Scholarships 2027",
+      "official_source_url": "https://admission.tulane.edu/international/aid",
+      "db_id": -1
+    },
+    {
+      "candidate_id": "US-2027-RICHMOND-001",
+      "name": "Richmond Scholars Program 2027",
+      "official_source_url": "https://scholars.richmond.edu/prospective-scholars/index.html",
+      "db_id": -1
+    },
+    {
+      "candidate_id": "US-2027-VANDERBILT-001",
+      "name": "Vanderbilt University Signature Scholarships 2027 (Cornelius Vanderbilt & Ingram Scholars)",
+      "official_source_url": "https://www.vanderbilt.edu/scholarships",
+      "db_id": -1
+    },
+    {
+      "candidate_id": "US-2027-EMORY-001",
+      "name": "Emory University Scholar Programs 2027 (Woodruff Scholars)",
+      "official_source_url": "https://apply.emory.edu/financial-aid/scholar-program",
+      "db_id": -1
+    }
+  ],
+  "skipped_duplicates": [
+    {
+      "candidate_id": "US-2027-AAUW-001",
+      "name": "AAUW International Fellowships 2027-28",
+      "official_source_url": "https://www.aauw.org/resources/programs/fellowships-grants/aauw-international-fellowships",
+      "reason": "Official source URL already exists in database",
+      "existing_db_id": 473
+    },
+    {
+      "candidate_id": "US-2027-JJWBGSP-001",
+      "name": "Joint Japan/World Bank Graduate Scholarship Program (JJ/WBGSP) 2027",
+      "official_source_url": "https://www.worldbank.org/en/programs/scholarships/jj-wbgsp",
+      "reason": "Exact official_source_url match (ID: 475)",
+      "existing_db_id": 475
+    }
+  ],
+  "failed": [],
+  "errors": [],
+  "start_time": "2026-11-12T09:28:12.949651",
+  "end_time": "2026-11-12T09:28:13.002465",
+  "duration_seconds": 0.052814,
+  "import_summary": {
+    "total_candidates": 11,
+    "inserted_count": 9,
+    "skipped_duplicates_count": 2,
+    "failed_count": 0
+  }
+}

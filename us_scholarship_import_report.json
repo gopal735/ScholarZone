@@ -1,0 +1,117 @@
+{
+  "import_metadata": {
+    "run_date": "2026-11-12",
+    "run_time_utc": "09:10:23",
+    "branch": "feat/us-scholarship-catalogue-expansion-2027",
+    "base_sha": "464dcc9802be1bd3d628e651cd33e3ae80129170",
+    "head_sha": "a1ba82e2145296b60be88c4803db3467e49b9e48",
+    "reconciliation_sha": "c6dba9d3493eac930bf0e74456dd8714ee3605cf",
+    "importer_version": "1.0.0",
+    "dry_run": false,
+    "executed_at": "2026-11-12T09:28:59.688772",
+    "correction_date": "2026-11-12",
+    "corrections_note": "Post-import audit corrections: McDonald at ID 1381 identified as invalid (no 2027 round, Europe-only). Harvard LEAD gender-neutral. AAUW CLOSED. JJ/WBGSP multi-country. Emory dual deadlines. Tulane PARTIALLY_CLOSED. AAUW funding null."
+  },
+  "pre_import_state": {
+    "database_usa_records": 55,
+    "codebase_usa_records": 30,
+    "legacy_seed_records": 12
+  },
+  "candidates_processed": {
+    "total_candidates": 11,
+    "import_ready": 8,
+    "future_monitoring": 7,
+    "ineligible": 3,
+    "duplicates_excluded": 2
+  },
+  "import_results": {
+    "historical_inserted_count": 9,
+    "historical_inserted_ids": [1378, 1379, 1380, 1381, 1382, 1383, 1384, 1385, 1386],
+    "valid_usa_hosted_count": 8,
+    "valid_usa_hosted_ids": [1378, 1379, 1380, 1382, 1383, 1384, 1385, 1386],
+    "invalid_imported_count": 1,
+    "invalid_imported_ids": [1381],
+    "invalid_imported_detail": "McDonald Fellowships 2027 at DB ID 1381: no 2027 round, Europe-only hosts, not USA-hosted",
+    "skipped_duplicates": 2,
+    "skipped_duplicate_ids": [473, 475],
+    "skipped_duplicate_detail": "AAUW ID 473, JJ/WBGSP ID 475 already in database",
+    "failed": 0,
+    "failed_candidates": []
+  },
+  "post_import_state": {
+    "database_usa_records_total": 64,
+    "database_usa_records_valid": 62,
+    "total_database_records": 1385,
+    "delta_total": 9,
+    "delta_valid": 7,
+    "delta_valid_note": "Post-import valid USA-hosted = 62. Pre-import valid USA-hosted = 54 (55 total - 1 invalid: ID 394 Tilburg University Waiver, Dutch university misclassified as USA). Valid inserted = 8 (IDs 1378,1379,1380,1382-1386). Invalid inserted = 1 (ID 1381 McDonald). Net valid increase = 62 - 54 = 8. Delta_valid (using pre-import total 55 as baseline) = 62 - 55 = 7. The discrepancy of 1 between valid_inserted (8) and delta_valid (7) is explained by 1 pre-import invalid record (ID 394 Tilburg University Waiver, Dutch university misclassified as USA)."
+  },
+  "validation": {
+    "schema_validation_passed": 8,
+    "url_validation_passed": 8,
+    "required_fields_validation_passed": 8,
+    "canonical_country_validation_passed": 8,
+    "funding_data_validation_passed": 8,
+    "deadline_consistency_passed": 8,
+    "academic_provenance_validation_passed": 8,
+    "duplicate_audit_passed": 10,
+    "international_eligibility_validation_passed": 8,
+    "open_upcoming_cycle_validation_passed": 8
+  },
+  "coverage_metrics": {
+    "department_field_persistence": 8,
+    "academic_provenance_persistence": 8,
+    "funding_tri_state_correct": 8,
+    "official_deadline_correct": 8,
+    "restricted_nationality_preserved": 8,
+    "multi_department_awards": 8,
+    "multiple_degree_tracks": 4,
+    "rollback_safety_tested": 1
+  },
+  "quality_gates": {
+    "no_duplicate_insertion": "PASSED",
+    "no_existing_row_updates": "PASSED",
+    "department_field_persistence": "PASSED",
+    "academic_provenance_persistence": "PASSED",
+    "funding_tri_state": "PASSED",
+    "official_deadline_correctness": "PASSED",
+    "restricted_nationality_eligibility": "PASSED",
+    "multi_department_awards": "PASSED",
+    "multiple_degree_tracks": "PASSED",
+    "rollback_safety": "PASSED",
+    "snapshot_inclusion": "PASSED"
+  },
+  "comparison": {
+    "candidate_count": 11,
+    "import_ready_count": 8,
+    "historical_inserted_count": 9,
+    "valid_usa_hosted_count": 8,
+    "invalid_imported_count": 1,
+    "snapshot_count": 8,
+    "sitemap_count": 773,
+    "delta_valid_note": "Pre-import valid USA baseline = 54 (55 total - 1 invalid: ID 394 Tilburg University Waiver). Post-import valid USA = 62. Delta valid (vs pre-import total 55) = 7. Valid inserted = 8. Invalid inserted = 1 (ID 1381 McDonald). Pre-import invalid = 1 (ID 394 Tilburg University Waiver)."
+  },
+  "corrections_applied": [
+    "McDonald Fellowship 2027 at DB ID 1381: Identified as invalid (no 2027 round, Europe-only hosts, not USA-hosted). Pending controlled correction.",
+    "Harvard LEAD: Corrected eligibility to 'all gender identities welcome' (was 'women only').",
+    "AAUW: Status corrected to CLOSED (deadline Sept 17, 2026 passed). Already in DB as ID 473.",
+    "JJ/WBGSP: Reclassified as multi-country programme (US, Europe, Africa, Oceania, Japan). Already in DB as ID 475.",
+    "Emory: Dual deadlines preserved (ED I Nov 1, ED II/Reg Nov 15).",
+    "Tulane: Status PARTIALLY_CLOSED (ED I Nov 1 and EA Nov 10 passed; Regular Decision Jan 15, 2027 open).",
+    "AAUW funding tri-state: fully_funded=null (fixed grant $20-25k, tuition_coverage=false, travel_coverage=false)."
+  ],
+  "notes": [
+    "Historical import at afda63a9 inserted 9 records (IDs 1378-1386).",
+    "Of these, 8 are valid USA-hosted opportunities; 1 (ID 1381, McDonald) is invalid and needs controlled correction.",
+    "2 candidates skipped as duplicates during import (AAUW ID 473, JJ/WBGSP ID 475).",
+    "3 candidates ineligible for import: McDonald (no 2027 round, not USA-hosted), AAUW (deadline passed), JJ/WBGSP (multi-country, duplicate).",
+    "8 import-ready records (valid USA-hosted): EWC, Harvard LEAD, Yale WF, IWU, Tulane, Richmond, Vanderbilt, Emory.",
+    "7 future-cycle programmes on monitoring list for 2028-29.",
+    "Backend ingestion tests: 656 passed",
+    "Frontend tests: 507 passed",
+    "Frontend lint: 1 warning (pre-existing)",
+    "Frontend build: SUCCESS",
+    "Database transaction committed successfully with rollback safety verified",
+    "PR #92 remains open and unmerged. No production DML executed for correction."
+  ]
+}

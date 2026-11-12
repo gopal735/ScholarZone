@@ -1,0 +1,203 @@
+{
+  "research_batch_manifest": {
+    "batch_id": "US-2027-BATCH-001",
+    "run_date": "2026-11-12",
+    "run_time_utc": "09:10:23",
+    "timezone": "Asia/Dhaka",
+    "branch": "feat/us-scholarship-catalogue-expansion-2027",
+    "base_sha": "464dcc9802be1bd3d628e651cd33e3ae80129170",
+    "reconciliation_sha": "c6dba9d3493eac930bf0e74456dd8714ee3605cf",
+    "final_delivery_sha": "a1ba82e2145296b60be88c4803db3467e49b9e48",
+    "researcher": "Kilo AI Assistant",
+    "correction_date": "2026-11-12",
+    "corrections_applied": [
+      "McDonald 2027: imported at DB ID 1381 but INVALID (no 2027 round, Europe-only hosts, not USA-hosted); pending controlled correction",
+      "Harvard LEAD: corrected to gender-neutral eligibility (all gender identities)",
+      "AAUW: status CLOSED (deadline passed Sept 17, 2026), already in DB as ID 473",
+      "JJ/WBGSP: reclassified as multi-country (US, Europe, Africa, Oceania, Japan), already in DB as ID 475",
+      "Emory: dual deadlines preserved (ED I Nov 1, ED II/Reg Nov 15)",
+      "Tulane: status PARTIALLY_CLOSED (ED I Nov 1 and EA Nov 10 passed; Reg Dec Jan 15 open)",
+      "AAUW funding: fully_funded=null (fixed grant $20-25k, not full study-cost coverage)"
+    ]
+  },
+  "completed_sources": [
+    {
+      "source_id": "AAUW-2027",
+      "institution": "American Association of University Women",
+      "url": "https://www.aauw.org/resources/programs/fellowships-grants/aauw-international-fellowships/",
+      "date_checked": "2026-11-12",
+      "status": "VERIFIED",
+      "result": "EXCLUDED: CLOSED (deadline passed), duplicate DB ID 473",
+      "notes": "2027-28 deadline Sept 17, 2026 passed; fully_funded=null; women only"
+    },
+    {
+      "source_id": "JJWBGSP-2027",
+      "institution": "World Bank / Government of Japan",
+      "url": "https://www.worldbank.org/en/programs/scholarships/jj-wbgsp",
+      "date_checked": "2026-11-12",
+      "status": "VERIFIED",
+      "result": "EXCLUDED: Multi-country programme, duplicate DB ID 475",
+      "notes": "Participating programmes in US, Europe, Africa, Oceania, Japan; not exclusively USA-hosted"
+    },
+    {
+      "source_id": "EWC-2027",
+      "institution": "East-West Center / University of Hawai'i",
+      "url": "https://www.eastwestcenter.org/education/opportunities-study-and-scholarship",
+      "date_checked": "2026-11-12",
+      "status": "VERIFIED",
+      "result": "IMPORTED (DB ID 1378)",
+      "notes": "OPEN, deadline Dec 1, 2026; USA-hosted (Hawaii)"
+    },
+    {
+      "source_id": "HARVARD-LEAD-2027",
+      "institution": "Harvard Global Health Institute",
+      "url": "https://globalhealth.harvard.edu/2027-2028-harvard-lead-fellowship-application-is-now-open/",
+      "date_checked": "2026-11-12",
+      "status": "VERIFIED",
+      "result": "IMPORTED (DB ID 1379)",
+      "notes": "OPEN, deadline Nov 15, 2026; CORRECTED: all gender identities welcome"
+    },
+    {
+      "source_id": "YALE-WF-2027",
+      "institution": "Yale Jackson School of Global Affairs",
+      "url": "https://worldfellows.yale.edu/the-program/application",
+      "date_checked": "2026-11-12",
+      "status": "VERIFIED",
+      "result": "IMPORTED (DB ID 1380)",
+      "notes": "OPEN, deadline Dec 2, 2026"
+    },
+    {
+      "source_id": "MCDONALD-2027",
+      "institution": "MS International Federation",
+      "url": "https://www.msif.org/research/awards-grants-and-fellowships/mcdonald-fellowships",
+      "date_checked": "2026-11-12",
+      "status": "VERIFIED",
+      "result": "IMPORTED (DB ID 1381) — AUDIT FINDING: INVALID — no 2027 round, Europe-only hosts, not USA-hosted; pending controlled correction",
+      "notes": "Historical fact: inserted at DB ID 1381 during afda63a9 import. Post-audit finding: no 2027 round; host institutions in Europe only (ECTRIMS partners); not USA-hosted. Moved to 2028 monitoring; pending controlled correction."
+    },
+    {
+      "source_id": "IWU-2027",
+      "institution": "Illinois Wesleyan University",
+      "url": "https://www.iwu.edu/international/scholarships.html",
+      "date_checked": "2026-11-12",
+      "status": "VERIFIED",
+      "result": "IMPORTED (DB ID 1382)",
+      "notes": "OPEN, Early Action Nov 15, 2026"
+    },
+    {
+      "source_id": "TULANE-2027",
+      "institution": "Tulane University",
+      "url": "https://admission.tulane.edu/international/aid",
+      "date_checked": "2026-11-12",
+      "status": "VERIFIED",
+      "result": "IMPORTED (DB ID 1383)",
+      "notes": "PARTIALLY_CLOSED: ED I Nov 1 and EA Nov 10 passed; Regular Decision Jan 15, 2027 open"
+    },
+    {
+      "source_id": "RICHMOND-2027",
+      "institution": "University of Richmond",
+      "url": "https://scholars.richmond.edu/prospective-scholars/index.html",
+      "date_checked": "2026-11-12",
+      "status": "VERIFIED",
+      "result": "IMPORTED (DB ID 1384)",
+      "notes": "OPEN, deadline Dec 1, 2026"
+    },
+    {
+      "source_id": "VANDERBILT-2027",
+      "institution": "Vanderbilt University",
+      "url": "https://www.vanderbilt.edu/scholarships/",
+      "date_checked": "2026-11-12",
+      "status": "VERIFIED",
+      "result": "IMPORTED (DB ID 1385)",
+      "notes": "OPEN, deadline Dec 1, 2026"
+    },
+    {
+      "source_id": "EMORY-2027",
+      "institution": "Emory University",
+      "url": "https://apply.emory.edu/financial-aid/scholar-program",
+      "date_checked": "2026-11-12",
+      "status": "VERIFIED",
+      "result": "IMPORTED (DB ID 1386)",
+      "notes": "OPEN, dual deadlines: ED I Nov 1, ED II/Reg Nov 15, 2026"
+    }
+  ],
+  "monitoring_sources_2028": [
+    {
+      "source_id": "GATECH-STAMPS-2028",
+      "institution": "Georgia Institute of Technology",
+      "url": "https://stampsps.gatech.edu/",
+      "priority": "MEDIUM",
+      "notes": "Verify international eligibility (catalog mentions US/permanent residents/UK only)"
+    },
+    {
+      "source_id": "PURDUE-STAMPS-2028",
+      "institution": "Purdue University",
+      "url": "https://honors.purdue.edu/scholarship/stamps-scholars.php",
+      "priority": "MEDIUM",
+      "notes": "Page states US citizens/permanent residents only"
+    },
+    {
+      "source_id": "OAS-ASP-2028",
+      "institution": "Organization of American States",
+      "url": "https://www.oas.org/en/scholarships/Academic_Program_OAS.asp",
+      "priority": "MEDIUM",
+      "notes": "Partial funding ($10k/yr cap); OAS members only; Spring 2027 calls by country"
+    },
+    {
+      "source_id": "ROTARY-PEACE-2028",
+      "institution": "Rotary International",
+      "url": "https://www.rotary.org/en/get-involved/our-programs/peace-fellowships",
+      "priority": "HIGH",
+      "notes": "Application opens Feb 2027; deadline ~May 15, 2027; master's at Duke/UNC"
+    },
+    {
+      "source_id": "FULBRIGHT-2028",
+      "institution": "Fulbright Program (various commissions)",
+      "url": "https://apply.iie.org/ffsp2027",
+      "priority": "HIGH",
+      "notes": "2027-28 closed; 2028-29 opens Aug 2027; country-specific deadlines"
+    },
+    {
+      "source_id": "HUMPHREY-2028",
+      "institution": "U.S. Department of State / IIE",
+      "url": "https://www.humphreyfellowship.org/",
+      "priority": "HIGH",
+      "notes": "2027-28 closed; 2028-29 calls expected Spring/Summer 2027; FY2027 funding pending"
+    },
+    {
+      "source_id": "STAMPS-NETWORK-2028",
+      "institution": "Stamps Scholars Program / 38 Partners",
+      "url": "https://www.stampsscholars.org/",
+      "priority": "MEDIUM",
+      "notes": "International eligibility varies by partner; requires per-partner verification"
+    }
+  ],
+  "out_of_scope_followups": [
+    {
+      "source_id": "MCDONALD-2028",
+      "institution": "MS International Federation",
+      "url": "https://www.msif.org/research/awards-grants-and-fellowships/mcdonald-fellowships",
+      "priority": "HIGH",
+      "notes": "Europe-hosted (ECTRIMS partner institutions); out of USA-hosted catalogue scope. Next round 2028; verify 2028 application opening. DB ID 1381 (2027 insertion) pending controlled correction."
+    }
+  ],
+  "resume_instructions": {
+    "next_batch_id": "US-2028-BATCH-001",
+    "priority_sources": [
+      "Rotary Peace Fellowship 2028-29 (application opens Feb 2027)",
+      "Fulbright 2028-29 (country commissions open Aug 2027)",
+      "Humphrey Fellowship 2028-29 (embassy calls Spring 2027)",
+      "Georgia Tech Stamps (verify international eligibility)",
+      "Purdue Stamps (confirm US-only)",
+      "Stamps Network 38 partners (per-partner verification)"
+    ],
+    "coverage_gaps_to_address": [
+      "State university systems (UC, SUNY, Texas A&M, etc.)",
+      "Department-specific awards (per-department scraping)",
+      "Medical/health professional school funding (NIH, HRSA, MD/PhD)",
+      "Arts/design institutions (RISD, Pratt, Parsons, etc.)",
+      "Corporate/foundation awards administered by universities"
+    ],
+    "verification_protocol": "For each source: 1) Open official HTTPS page, 2) Confirm programme exists, 3) Confirm USA host country, 4) Confirm international eligibility, 5) Confirm 2028+ cycle, 6) Confirm degree level, 7) Confirm funding, 8) Confirm departments/fields, 9) Confirm deadlines, 10) Confirm application method, 11) Record date checked, 12) Preserve source URL"
+  }
+}

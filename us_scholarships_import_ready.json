@@ -1,0 +1,639 @@
+{
+  "import_ready_records": [
+    {
+      "candidate_id": "US-2027-EWC-001",
+      "name": "East-West Center Graduate Degree Fellowship 2027",
+      "country": "United States",
+      "region": "North America (Hawaii)",
+      "institution": "East-West Center / University of Hawai'i at Mānoa",
+      "degree_levels": "Master's, Doctoral",
+      "funding_type": "Fully Funded",
+      "official_source_url": "https://www.eastwestcenter.org/education/opportunities-study-and-scholarship",
+      "official_source": "East-West Center",
+      "deadline": "December 1, 2026 at 11:59 PM Hawaii Standard Time",
+      "deadline_date": "2026-12-01",
+      "deadline_precision": "exact",
+      "application_period": "Applications open August 16, 2026; close December 1, 2026; supporting documents by January 10, 2027",
+      "status": "OPEN",
+      "is_verified": true,
+      "last_verified_date": "2026-11-12",
+      "eligibility_summary": "Citizens/permanent residents of US, Pacific Region, Southeast Asia, South Asia, or East Asia (including Bangladesh, Japan, and many others); 4-year bachelor's degree or equivalent; minimum 3.0 GPA; admitted to UH Mānoa graduate program relevant to EWC goals.",
+      "eligibility": [
+        "Citizen or permanent resident of eligible country/region (US, Pacific, SE Asia, South Asia, East Asia)",
+        "4-year bachelor's degree or equivalent from accredited institution",
+        "Minimum 3.0 GPA (4.0 scale) in last 4 semesters/6 quarters of undergraduate and all post-baccalaureate work",
+        "Admitted to UH Mānoa graduate program relevant to EWC goals",
+        "Not already enrolled as classified graduate student at UH Mānoa (or must apply for admission)"
+      ],
+      "coverage": [
+        "General graduate tuition and fees (up to UH Mānoa post-baccalaureate rate)",
+        "Single-occupancy East-West Center residence hall room",
+        "Partial living stipend (~$22,000/year for food and daily expenses)",
+        "Health insurance subsidy",
+        "Competitive field study/travel grant awards"
+      ],
+      "required_documents": [
+        "East-West Center online application via Submittable",
+        "Proof of UH Mānoa application submission (Application Acknowledgement)",
+        "CV/Resume",
+        "Passport copy",
+        "Three recommendation letters",
+        "UH Statement of Objectives"
+      ],
+      "english_requirement": "As required by UH Mānoa graduate program; typically TOEFL/IELTS.",
+      "requirements": [
+        "Must reside in EWC dormitory (required for program participation)",
+        "Participate in residential community, leadership, cultural exchange, and service programs",
+        "Field of study must be relevant to East-West Center goals",
+        "Cannot postpone fellowship to another semester/year"
+      ],
+      "application_method": [
+        "Apply to UH Mānoa graduate program AND submit separate EWC fellowship application via Submittable"
+      ],
+      "selection_notes": "Selection based on academic merit, leadership potential, commitment to Asia-Pacific-US understanding, and fit with EWC mission. Competitive field study/travel grants available.",
+      "best_fit": "Graduate students from Asia/Pacific/US regions committed to cross-cultural leadership and community building at UH Mānoa.",
+      "notes": "Maximum 24 months of funding. Must reside in EWC dormitory. Requires participation in residential community, leadership, cultural exchange, and service programs. 2027 cohort starts Fall 2027. Supporting documents deadline: January 10, 2027.",
+      "program_type": "Institutional fellowship (graduate study + leadership development)",
+      "description": "The East-West Center Graduate Degree Fellowship combines graduate study at the University of Hawai'i at Mānoa with required East-West Center residential community building, educational, cultural, service, and leadership-development activities. The basic award covers general graduate tuition and fees, single-occupancy EWC residence hall room costs, and partial living stipend. Fellows live together in a multicultural residential community.",
+      "departments": ["All UH Mānoa graduate departments relevant to EWC goals"],
+      "eligible_fields": ["Fields relevant to East-West Center goals (Asia-Pacific-US relations, development, environment, governance, culture, health)"],
+      "eligible_programmes": ["Master's", "Doctoral"],
+      "academic_provenance": {
+        "source_urls": ["https://www.eastwestcenter.org/education/opportunities-study-and-scholarship"],
+        "verified_on": "2026-11-12",
+        "source_type": "official_institution",
+        "confidence": "high",
+        "explicit_or_derived": "explicit",
+        "evidence_excerpt": "Application deadline: December 1; Opens August 16; Supporting docs by January 10; Tuition, dormitory, partial stipend; Eligible regions: US, Pacific, SE Asia, South Asia, East Asia; 3.0 GPA minimum; 24 months max"
+      },
+      "funding_amount": 22000,
+      "funding_currency": "USD",
+      "funding_period": "annual",
+      "tuition_coverage": true,
+      "living_cost_coverage": true,
+      "travel_coverage": false,
+      "fully_funded": true,
+      "duration": "Up to 24 months (2 academic years)",
+      "nationality_restrictions": "Citizens/permanent residents of US, Pacific Region, Southeast Asia, South Asia, or East Asia"
+    },
+    {
+      "candidate_id": "US-2027-HARVARD-LEAD-001",
+      "name": "Harvard LEAD Fellowship for Promoting Women in Global Health 2027-28",
+      "country": "United States",
+      "region": "North America",
+      "institution": "Harvard Global Health Institute / Harvard T.H. Chan School of Public Health",
+      "degree_levels": "Non-degree fellowship (post-master's professional development)",
+      "funding_type": "Fully Funded",
+      "official_source_url": "https://globalhealth.harvard.edu/2027-2028-harvard-lead-fellowship-application-is-now-open/",
+      "official_source": "Harvard Global Health Institute (HGHI)",
+      "deadline": "November 15, 2026 at 11:59 PM EST",
+      "deadline_date": "2026-11-15",
+      "deadline_precision": "exact",
+      "application_period": "Applications open October 5, 2026; close November 15, 2026; notifications Spring 2027",
+      "status": "OPEN",
+      "is_verified": true,
+      "last_verified_date": "2026-11-12",
+      "eligibility_summary": "Applicants from low- and middle-income countries; Master's degree minimum; 10+ years full-time global health professional experience beyond education; currently working in global health; able to obtain J-1 visa; available for 6-week in-person residency in Cambridge, MA in April 2028. All gender identities welcome.",
+      "eligibility": [
+        "From low- or middle-income country",
+        "Minimum Master's degree in relevant field",
+        "10+ years full-time global health professional experience beyond education",
+        "Currently working full-time in global health",
+        "Able to obtain J-1 visa for travel to US in April 2028",
+        "Available for 6-week in-person residency in Cambridge, MA in April 2028",
+        "Must take leave of absence from home institution during in-residence period",
+        "Not participated in full-time fellowship ≥4 months in prior 2 years",
+        "All gender identities welcome"
+      ],
+      "coverage": [
+        "International flights to/from Cambridge, MA",
+        "Housing during 6-week in-person residency",
+        "Living stipend during in-person period",
+        "Visa fees covered",
+        "Executive education, coaching, mentorship, networking",
+        "12-month virtual curriculum (Sep 2027 – Aug 2028)"
+      ],
+      "required_documents": [
+        "Online application via Reviewr portal",
+        "CV/Resume",
+        "Personal statement",
+        "Three recommendation letters",
+        "Proof of Master's degree",
+        "Proof of professional experience"
+      ],
+      "english_requirement": "Fluent English required for program participation; no specific test score published.",
+      "requirements": [
+        "Substantial leadership experience and demonstrated leadership potential",
+        "Commitment to returning to LMIC after fellowship",
+        "Must take leave from home institution for April 2028 residency"
+      ],
+      "application_method": [
+        "Online application through Harvard Global Health Institute LEAD Fellowship portal (Reviewr)"
+      ],
+      "selection_notes": "Candidates notified in Spring 2027. Selection based on leadership experience, commitment to global health, and potential for impact. All gender identities welcome per official source.",
+      "best_fit": "Experienced global health leaders from LMICs (all gender identities) seeking leadership development and Harvard network.",
+      "notes": "12-month virtual curriculum (Sep 2027 – Aug 2028) with 6-week in-person residency in April 2028. Not a degree program. 26 fellows from 21 countries to date. Must take leave from home institution for April 2028 residency. Program aims to promote leadership in global health. Official page states 'all gender identities' are welcome.",
+      "program_type": "Leadership fellowship (non-degree)",
+      "description": "The Harvard LEAD Fellowship for Promoting Women in Global Health is a one-year fellowship designed to advance leadership skills among individuals from low- and middle-income countries. Offered by the Harvard Global Health Institute in collaboration with the Department of Global Health and Population at Harvard T.H. Chan School of Public Health. The program combines a 12-month virtual curriculum with a six-week in-person experience in Cambridge, Massachusetts in April 2028. All gender identities are welcome to apply.",
+      "departments": ["Department of Global Health and Population", "Harvard T.H. Chan School of Public Health"],
+      "eligible_fields": ["Global Health", "Public Health", "Health Policy", "Health Systems", "Epidemiology"],
+      "eligible_programmes": ["Non-degree fellowship (professional development)"],
+      "academic_provenance": {
+        "source_urls": ["https://globalhealth.harvard.edu/2027-2028-harvard-lead-fellowship-application-is-now-open/"],
+        "verified_on": "2026-11-12",
+        "source_type": "official_institution",
+        "confidence": "high",
+        "explicit_or_derived": "explicit",
+        "evidence_excerpt": "Applications open Oct 5, 2026; deadline Nov 15, 2026 11:59 PM EST; 10+ years global health experience; Master's minimum; All gender identities welcome; Fully funded including flights, housing, stipend, visa; 6-week in-person April 2028; Virtual Sep 2027-Aug 2028"
+      },
+      "funding_amount": null,
+      "funding_currency": "USD",
+      "funding_period": "program",
+      "tuition_coverage": false,
+      "living_cost_coverage": true,
+      "travel_coverage": true,
+      "fully_funded": true,
+      "duration": "12 months (Sep 2027 – Aug 2028)",
+      "nationality_restrictions": "Applicants from low- and middle-income countries (all gender identities)"
+    },
+    {
+      "candidate_id": "US-2027-YALE-WF-001",
+      "name": "Yale Maurice R. Greenberg World Fellows Program 2027",
+      "country": "United States",
+      "region": "North America",
+      "institution": "Yale Jackson School of Global Affairs / International Leadership Center",
+      "degree_levels": "Non-degree fellowship (mid-career leadership)",
+      "funding_type": "Fully Funded",
+      "official_source_url": "https://worldfellows.yale.edu/the-program/application",
+      "official_source": "Yale Jackson School of Global Affairs",
+      "deadline": "December 2, 2026 at 2:00 PM Eastern Time",
+      "deadline_date": "2026-12-02",
+      "deadline_precision": "exact",
+      "application_period": "Applications open for 2027 cohort; close December 2, 2026; decisions by end of April 2027; program runs mid-August to mid-December 2027",
+      "status": "OPEN",
+      "is_verified": true,
+      "last_verified_date": "2026-11-12",
+      "eligibility_summary": "Citizens of countries other than the United States (dual US citizens eligible with preference for work focused outside US); 5-25 years into professional career; demonstrated significant accomplishments at regional/national/international level; fluent English; able to reside full-time at Yale in New Haven for 4 months.",
+      "eligibility": [
+        "Citizen of a country other than the United States (dual US citizens eligible with preference for work focused outside US)",
+        "5-25 years into professional career",
+        "Demonstrated significant accomplishments at regional, national, or international level",
+        "Commitment to the good society and positive impact",
+        "Promise of future career in leadership and notable global impact",
+        "Special capacity for critical, creative, entrepreneurial, and strategic thinking",
+        "Fluent English (excellent command required)",
+        "Able to reside full-time at Yale in New Haven for entire program (mid-August to mid-December)"
+      ],
+      "coverage": [
+        "Taxable living stipend for New Haven",
+        "Furnished 1-2 bedroom apartment",
+        "Medical insurance",
+        "Round-trip travel from home country",
+        "Access to Yale facilities, faculty, and network"
+      ],
+      "required_documents": [
+        "Online application",
+        "CV/Resume",
+        "Personal statement",
+        "Three recommendation letters",
+        "Video statement",
+        "English proficiency demonstration"
+      ],
+      "english_requirement": "Excellent command of English essential; fluent English required for full participation.",
+      "requirements": [
+        "Not a degree program; no academic credit",
+        "Full-time residential commitment required",
+        "Letters of recommendation should be received by application deadline"
+      ],
+      "application_method": [
+        "Online application via Yale World Fellows application portal"
+      ],
+      "selection_notes": "Decisions by end of April 2027. ~16 fellows selected annually. Over 450 alumni from 100+ countries. Selection based on achievement, integrity, leadership potential, and commitment to positive impact.",
+      "best_fit": "Mid-career global leaders (5-25 years experience) from outside US seeking 4-month residential leadership development at Yale.",
+      "notes": "Not a degree program; no academic credit. ~16 fellows selected annually. Over 450 alumni from 100+ countries. Program runs mid-August to mid-December 2027. Dual US citizens eligible but preference for work focused outside US.",
+      "program_type": "Leadership fellowship (non-degree)",
+      "description": "Yale's flagship four-month, full-time residential program for extraordinary leaders from across the globe who serve, inspire and motivate others. The Maurice R. Greenberg World Fellows Program is a four-month, full-time residential program for leaders with demonstrated impact based out of Yale's International Leadership Center and housed within the Jackson School of Global Affairs. Each year, the Program selects a diverse cohort of World Fellows to spend four months together in residence at Yale University to grow intellectually, share knowledge, strengthen skills and expand networks.",
+      "departments": ["Yale Jackson School of Global Affairs", "International Leadership Center"],
+      "eligible_fields": ["All fields (leadership, public service, policy, entrepreneurship, arts, science, etc.)"],
+      "eligible_programmes": ["Non-degree fellowship (mid-career leadership)"],
+      "academic_provenance": {
+        "source_urls": ["https://worldfellows.yale.edu/the-program/application"],
+        "verified_on": "2026-11-12",
+        "source_type": "official_institution",
+        "confidence": "high",
+        "explicit_or_derived": "explicit",
+        "evidence_excerpt": "Applications for 2027 World Fellows program are open; Deadline: Dec 2, 2026 2:00 PM ET; 5-25 years career; Non-US citizens (dual OK); Fully funded: stipend, apartment, insurance, travel; 4 months mid-Aug to mid-Dec 2027; Not a degree program"
+      },
+      "funding_amount": null,
+      "funding_currency": "USD",
+      "funding_period": "program",
+      "tuition_coverage": false,
+      "living_cost_coverage": true,
+      "travel_coverage": true,
+      "fully_funded": true,
+      "duration": "4 months (mid-August to mid-December 2027)",
+      "nationality_restrictions": "Citizens of countries other than the United States (dual US citizens eligible with preference for work focused outside US)"
+    },
+    {
+      "candidate_id": "US-2027-IWU-001",
+      "name": "Illinois Wesleyan University International Scholarships 2027",
+      "country": "United States",
+      "region": "North America (Illinois)",
+      "institution": "Illinois Wesleyan University",
+      "degree_levels": "Bachelor's (undergraduate)",
+      "funding_type": "Merit-Based (Partial to Full Tuition)",
+      "official_source_url": "https://www.iwu.edu/international/scholarships.html",
+      "official_source": "Illinois Wesleyan University",
+      "deadline": "Early Action: November 15, 2026; Preferred International: March 15, 2027; President's Scholarship: February 15, 2027",
+      "deadline_date": "2026-11-15",
+      "deadline_precision": "month",
+      "application_period": "Automatic consideration via admission application; CSS Profile for need-based aid by March 1, 2027",
+      "status": "OPEN",
+      "is_verified": true,
+      "last_verified_date": "2026-11-12",
+      "eligibility_summary": "International first-year applicants (non-US citizens/permanent residents); strong academic achievement and test scores; automatic consideration for merit scholarships upon admission application; President's Scholarship requires separate application.",
+      "eligibility": [
+        "International first-year applicant (non-US citizen/permanent resident)",
+        "Strong academic achievement and test scores",
+        "Meet IWU admission requirements",
+        "For President's Scholarship: separate application required"
+      ],
+      "coverage": [
+        "Merit Scholarships: $16,000–$38,000 per year (renewable up to 4 years)",
+        "President's International Student Scholarships: Full tuition (2 awards/year, separate application, renewable 4 years)"
+      ],
+      "required_documents": [
+        "Common Application or IWU Application",
+        "High school transcripts",
+        "English proficiency scores (TOEFL/IELTS/Duolingo/PTE)",
+        "CSS Profile (for need-based aid, preferred by March 1)",
+        "President's Scholarship application (if applying)"
+      ],
+      "english_requirement": "TOEFL, IELTS, Duolingo English Test, or PTE Academic; waivers for native English speakers or 3+ years English-medium schooling.",
+      "requirements": [
+        "3.0 GPA required for renewal",
+        "No full-ride scholarships (merit scholarships cover tuition only, not room/board)",
+        "Need-aware admission for international students",
+        "Test-optional for 2027"
+      ],
+      "application_method": [
+        "Automatic consideration via admission application",
+        "Separate President's Scholarship application for full-tuition award"
+      ],
+      "selection_notes": "Merit scholarships automatically considered upon admission application. President's Scholarship: 2 awards/year, historically mid-February deadline, separate application required.",
+      "best_fit": "High-achieving international undergraduates seeking merit-based funding at a liberal arts university.",
+      "notes": "No full-ride scholarships (merit scholarships cover tuition only, not room/board). Need-aware admission for international students. Test-optional for 2027. 3.0 GPA required for renewal. CSS Profile preferred filing date: March 1, 2027.",
+      "program_type": "Institutional merit scholarship (undergraduate)",
+      "description": "Illinois Wesleyan University awards merit scholarships to qualified international applicants with outstanding academic achievement and test scores. Students can receive up to $38,000 per year in merit scholarships and are renewable for up to four years. Additionally, two full-tuition President's International Student Scholarships may be awarded each year to qualified international students. All students who complete the admissions application are automatically considered for scholarships.",
+      "departments": ["All undergraduate departments"],
+      "eligible_fields": ["All undergraduate fields of study"],
+      "eligible_programmes": ["Bachelor's (all undergraduate programs)"],
+      "academic_provenance": {
+        "source_urls": ["https://www.iwu.edu/international/scholarships.html"],
+        "verified_on": "2026-11-12",
+        "source_type": "official_institution",
+        "confidence": "high",
+        "explicit_or_derived": "explicit",
+        "evidence_excerpt": "Merit scholarships $16,000–$38,000/year renewable 4 years; President's Scholarship full tuition (2/year); Early Action Nov 15; Preferred International Mar 15; President's deadline Feb 15; CSS Profile Mar 1; Automatic consideration; No full ride"
+      },
+      "funding_amount": 38000,
+      "funding_currency": "USD",
+      "funding_period": "annual",
+      "tuition_coverage": true,
+      "living_cost_coverage": false,
+      "travel_coverage": false,
+      "fully_funded": null,
+      "duration": "4 years (renewable)",
+      "nationality_restrictions": "International students (non-US citizens/permanent residents)"
+    },
+    {
+      "candidate_id": "US-2027-TULANE-001",
+      "name": "Tulane University Global Scholarships 2027",
+      "country": "United States",
+      "region": "North America (Louisiana)",
+      "institution": "Tulane University",
+      "degree_levels": "Bachelor's (undergraduate)",
+      "funding_type": "Merit-Based (Partial to Full Cost of Attendance)",
+      "official_source_url": "https://admission.tulane.edu/international/aid",
+      "official_source": "Tulane University",
+      "deadline": "Early Decision I: November 1, 2026; Early Action: November 10, 2026; Regular Decision: January 15, 2027; Global Scholarship nomination deadline: November 15, 2026",
+      "deadline_date": "2026-11-01",
+      "deadline_precision": "month",
+      "application_period": "Automatic consideration for merit scholarships via Common App; Global Scholarship requires Early Decision I or Early Action admission; CSS Profile for need-based aid",
+      "status": "PARTIALLY_CLOSED",
+      "is_verified": true,
+      "last_verified_date": "2026-11-12",
+      "eligibility_summary": "International first-year applicants; top 20% academically of applicant pool; Early Decision I (Nov 1) or Early Action (Nov 10) admission required for Global Scholarship competitiveness; nominations by admission committee based on Common App and CSS Profile. ED I and EA priority deadlines have passed as of Nov 12, 2026; Regular Decision remains open.",
+      "eligibility": [
+        "International first-year applicant",
+        "Top 20% academically of applicant pool",
+        "Early Decision I (Nov 1) or Early Action (Nov 10) admission for Global Scholarship",
+        "Strong academic and extracurricular credentials",
+        "Maintain 3.0 GPA for renewal"
+      ],
+      "coverage": [
+        "Global Scholarships: Partial to full tuition and fees, or full cost of attendance (renewable 4 years, 5 for Architecture)",
+        "Need-based aid: Up to $30,000/year for those not receiving equivalent merit aid",
+        "Stamps Scholarship: Full cost of attendance (~10 students/year)",
+        "Grossman & Cohen Scholarship: Tuition, fees, housing, meals (~$400,000 over 4 years)"
+      ],
+      "required_documents": [
+        "Common Application",
+        "CSS Profile or Tulane Declaration & Certification of Finances",
+        "High school transcripts",
+        "English proficiency (TOEFL 95+, IELTS 6.5+, Duolingo 115+)",
+        "SAT/ACT (optional for 2027)"
+      ],
+      "english_requirement": "TOEFL 95+, IELTS 6.5+, or Duolingo 115+; scores sent directly from testing agency.",
+      "requirements": [
+        "Early Decision/Action required for Global Scholarship competitiveness",
+        "Need-aware admission for international students",
+        "3.0 GPA renewal requirement"
+      ],
+      "application_method": [
+        "Common Application for admission",
+        "Automatic merit consideration",
+        "CSS Profile for need-based",
+        "Early Decision/Action required for Global Scholarship"
+      ],
+      "selection_notes": "Global Scholarship nominations require Early Decision I or Early Action admission. Stamps Scholarship and Grossman & Cohen are additional competitive awards. Need-aware admission for international students. ED I (Nov 1) and EA (Nov 10) priority deadlines have passed; Regular Decision (Jan 15, 2027) remains open but Global Scholarship competitiveness requires ED/EA.",
+      "best_fit": "High-achieving international undergraduates seeking merit-based full-cost funding at Tulane University.",
+      "notes": "Global Scholarship nominations require Early Decision I or Early Action admission. Stamps Scholarship and Grossman & Cohen are additional competitive awards. Need-aware admission for international students. ED I (Nov 1) and EA (Nov 10) priority deadlines have passed; Regular Decision (Jan 15, 2027) remains open but Global Scholarship competitiveness requires ED/EA.",
+      "program_type": "Institutional merit scholarship (undergraduate)",
+      "description": "Tulane University offers a variety of generous need- and merit-based scholarship opportunities for international students. Tulane offers up to $30,000 in need-based financial aid to international students who qualify and who have not already been awarded that amount or more in merit scholarships. Global Scholarships are merit scholarships that may cover full tuition and fees or even full cost of attendance, renewable for 4 years. Applicants in the top 20% academically are most competitive. Students should submit Early Action (Nov 10) or Early Decision (Nov 1) application for admission to be competitive.",
+      "departments": ["All undergraduate schools"],
+      "eligible_fields": ["All undergraduate fields"],
+      "eligible_programmes": ["Bachelor's (all undergraduate programs)"],
+      "academic_provenance": {
+        "source_urls": ["https://admission.tulane.edu/international/aid"],
+        "verified_on": "2026-11-12",
+        "source_type": "official_institution",
+        "confidence": "high",
+        "explicit_or_derived": "explicit",
+        "evidence_excerpt": "Global Scholarships: up to full tuition/cost of attendance; Renewable 4 years; ED I Nov 1, EA Nov 10; Nomination deadline Nov 15; Top 20% academic pool; Need-based up to $30k/year; Stamps ~10/year full cost; Grossman & Cohen full cost; Regular Decision Jan 15, 2027"
+      },
+      "funding_amount": null,
+      "funding_currency": "USD",
+      "funding_period": "annual",
+      "tuition_coverage": true,
+      "living_cost_coverage": true,
+      "travel_coverage": false,
+      "fully_funded": null,
+      "duration": "4 years (renewable)",
+      "nationality_restrictions": "International students"
+    },
+    {
+      "candidate_id": "US-2027-RICHMOND-001",
+      "name": "Richmond Scholars Program 2027",
+      "country": "United States",
+      "region": "North America (Virginia)",
+      "institution": "University of Richmond",
+      "degree_levels": "Bachelor's (undergraduate)",
+      "funding_type": "Fully Funded",
+      "official_source_url": "https://scholars.richmond.edu/prospective-scholars/index.html",
+      "official_source": "University of Richmond",
+      "deadline": "December 1, 2026",
+      "deadline_date": "2026-12-01",
+      "deadline_precision": "month",
+      "application_period": "Complete admission application by December 1, 2026; no separate scholarship application; finalists interviewed by March 1",
+      "status": "OPEN",
+      "is_verified": true,
+      "last_verified_date": "2026-11-12",
+      "eligibility_summary": "First-year undergraduate applicants (domestic and international); academic achievement, engaged leadership, strong sense of purpose, investment in diverse/inclusive community; no separate scholarship application required.",
+      "eligibility": [
+        "First-year undergraduate applicant (domestic and international)",
+        "Academic achievement, engaged leadership, strong sense of purpose",
+        "Investment in diverse and inclusive campus community",
+        "Complete admission application by December 1, 2026",
+        "Test-optional for Fall 2027",
+        "Standardized test scores not required for Richmond Scholars consideration"
+      ],
+      "coverage": [
+        "Full tuition",
+        "University housing",
+        "Food/meal plan",
+        "One-time $5,500 enrichment grant",
+        "Priority course registration",
+        "Faculty mentoring",
+        "Dedicated programming"
+      ],
+      "required_documents": [
+        "Common Application or Coalition Application (via Scoir)",
+        "High school transcripts",
+        "Recommendation letters",
+        "Essays (including Richmond-specific prompts)",
+        "English proficiency (unless exempt)"
+      ],
+      "english_requirement": "Required unless approved exemption applies; TOEFL/IELTS/Duolingo accepted.",
+      "requirements": [
+        "Early Decision binding; Regular Decision must meet Dec 1 scholarship deadline",
+        "Final selection by March 1",
+        "Up to 25 scholars selected annually"
+      ],
+      "application_method": [
+        "Automatic consideration via complete admission application by December 1 deadline",
+        "No separate scholarship form"
+      ],
+      "selection_notes": "Finalists receive invitation to interview with faculty selection committee. Final selection completed by March 1. Test-optional for Fall 2027. Early Decision binding; Regular Decision must meet Dec 1 scholarship deadline.",
+      "best_fit": "Exceptional first-year students with leadership and purpose seeking fully funded undergraduate experience at University of Richmond.",
+      "notes": "Up to 25 scholars selected annually. Test-optional for Fall 2027. Early Decision binding; Regular Decision must still meet Dec 1 scholarship deadline. Final selection by March 1. Enrichment grant supports student-selected academic enhancement activity. Application fee $50; waivers available.",
+      "program_type": "Institutional merit scholarship (undergraduate)",
+      "description": "Richmond Scholars receive the University's most prestigious academic merit award, equal to full tuition plus food and housing. Scholars are defined by academic achievement, engaged leadership, strong sense of purpose, and investment in a diverse and inclusive campus community. The program values learning as part of a small, multi-disciplinary community and aims to assist future leaders as they begin to define and polish their personal and professional goals.",
+      "departments": ["All undergraduate schools (Arts & Sciences, Business, Leadership Studies, Law)"],
+      "eligible_fields": ["All undergraduate fields of study"],
+      "eligible_programmes": ["Bachelor's (all undergraduate programs)"],
+      "academic_provenance": {
+        "source_urls": ["https://scholars.richmond.edu/prospective-scholars/index.html"],
+        "verified_on": "2026-11-12",
+        "source_type": "official_institution",
+        "confidence": "high",
+        "explicit_or_derived": "explicit",
+        "evidence_excerpt": "Full tuition + housing + food; $5,500 enrichment grant; Up to 25 scholars; Deadline Dec 1, 2026; No separate application; Automatic via admission app; Test-optional; Finalists interviewed by Mar 1; Selection by Mar 1"
+      },
+      "funding_amount": null,
+      "funding_currency": "USD",
+      "funding_period": "annual",
+      "tuition_coverage": true,
+      "living_cost_coverage": true,
+      "travel_coverage": false,
+      "fully_funded": true,
+      "duration": "4 years (renewable)",
+      "nationality_restrictions": "Domestic and international first-year applicants"
+    },
+    {
+      "candidate_id": "US-2027-VANDERBILT-001",
+      "name": "Vanderbilt University Signature Scholarships 2027 (Cornelius Vanderbilt & Ingram Scholars)",
+      "country": "United States",
+      "region": "North America (Tennessee)",
+      "institution": "Vanderbilt University",
+      "degree_levels": "Bachelor's (undergraduate)",
+      "funding_type": "Fully Funded (Full Tuition + Summer Stipends)",
+      "official_source_url": "https://www.vanderbilt.edu/scholarships/",
+      "official_source": "Vanderbilt University",
+      "deadline": "December 1, 2026",
+      "deadline_date": "2026-12-01",
+      "deadline_precision": "month",
+      "application_period": "Admission application + separate scholarship application via MyAppVU by December 1, 2026; finalists interviewed; decisions late March 2027",
+      "status": "OPEN",
+      "is_verified": true,
+      "last_verified_date": "2026-11-12",
+      "eligibility_summary": "First-year undergraduate applicants (domestic and international); academic excellence, intellectual promise, leadership, meaningful extracurricular contributions; international students eligible for all merit scholarships.",
+      "eligibility": [
+        "First-year undergraduate applicant (domestic and international)",
+        "Academic excellence, intellectual promise, leadership",
+        "Meaningful contributions outside the classroom",
+        "International students eligible for all merit scholarships",
+        "Apply for admission + separate scholarship application via MyAppVU by Dec 1, 2026"
+      ],
+      "coverage": [
+        "Cornelius Vanderbilt Scholarship: Full tuition + one-time summer stipend",
+        "Ingram Scholars Program: Full tuition + required fees + value of on-campus housing + summer service stipend",
+        "Need-based aid meets 100% demonstrated need for admitted international aid recipients (grants/scholarships, no loans via Opportunity Vanderbilt)"
+      ],
+      "required_documents": [
+        "Common Application or Coalition Application",
+        "Separate scholarship application via MyAppVU (after admission application)",
+        "Scholarship essays (250-500 words)",
+        "High school transcripts",
+        "Recommendation letters",
+        "CSS Profile or ISFAA (for need-based aid, by round deadline)"
+      ],
+      "english_requirement": "As per Vanderbilt undergraduate admission requirements; TOEFL/IELTS/Duolingo accepted.",
+      "requirements": [
+        "~225 total signature scholarship awards across both programs",
+        "Chancellor's Scholarship retired for Fall 2027",
+        "Test-optional for Fall 2027",
+        "Need-aware for international applicants requesting need-based aid",
+        "3.0 GPA renewal requirement"
+      ],
+      "application_method": [
+        "Admission application + separate MyAppVU scholarship application by December 1, 2026"
+      ],
+      "selection_notes": "Finalists interviewed. Decisions late March 2027. ~225 total signature awards across Cornelius Vanderbilt and Ingram Scholars. Chancellor's Scholarship retired. Test-optional. Need-aware for international need-based aid.",
+      "best_fit": "Exceptional first-year students seeking full-tuition merit scholarships with summer enrichment at Vanderbilt.",
+      "notes": "~225 total signature scholarship awards across both programs. Chancellor's Scholarship retired for Fall 2027. Test-optional for Fall 2027. Need-aware for international applicants requesting need-based aid. 3.0 GPA renewal requirement. Vanderbilt meets 100% demonstrated need with grants/scholarships for admitted international aid recipients.",
+      "program_type": "Institutional merit scholarship (undergraduate)",
+      "description": "Vanderbilt University's signature merit scholarships for exceptional incoming first-year students. The Cornelius Vanderbilt Scholarship provides full tuition and a one-time summer stipend. The Ingram Scholars Program provides full tuition, required fees, the value of on-campus housing and a summer-service stipend. Both programs are highly competitive and require a separate scholarship application through MyAppVU after the admission application. International students are eligible for all merit scholarships.",
+      "departments": ["All four undergraduate schools (Arts & Science, Engineering, Peabody Education, Blair Music)"],
+      "eligible_fields": ["All undergraduate fields"],
+      "eligible_programmes": ["Bachelor's (all undergraduate programs)"],
+      "academic_provenance": {
+        "source_urls": ["https://www.vanderbilt.edu/scholarships/"],
+        "verified_on": "2026-11-12",
+        "source_type": "official_institution",
+        "confidence": "high",
+        "explicit_or_derived": "explicit",
+        "evidence_excerpt": "Cornelius Vanderbilt: full tuition + summer stipend; Ingram: full tuition + fees + housing value + summer service stipend; Deadline Dec 1, 2026; ~225 total signature awards; International eligible; Chancellor's retired; Test-optional; Need-aware for intl need-based; 3.0 GPA renewal"
+      },
+      "funding_amount": null,
+      "funding_currency": "USD",
+      "funding_period": "annual",
+      "tuition_coverage": true,
+      "living_cost_coverage": true,
+      "travel_coverage": false,
+      "fully_funded": true,
+      "duration": "4 years (renewable)",
+      "nationality_restrictions": "Domestic and international first-year applicants"
+    },
+    {
+      "candidate_id": "US-2027-EMORY-001",
+      "name": "Emory University Scholar Programs 2027 (Woodruff Scholars)",
+      "country": "United States",
+      "region": "North America (Georgia)",
+      "institution": "Emory University",
+      "degree_levels": "Bachelor's (undergraduate)",
+      "funding_type": "Partial to Full Merit-Based",
+      "official_source_url": "https://apply.emory.edu/financial-aid/scholar-program",
+      "official_source": "Emory University Office of Admission",
+      "deadline": "Early Decision I: November 1, 2026; Early Decision II & Regular Decision: November 15, 2026",
+      "deadline_date": "2026-11-01",
+      "deadline_precision": "month",
+      "application_period": "Admission application + answer 'Yes' to Scholar Programs question by deadline; finalists selected from ~10,000 applicants (175-200 finalists); decisions late March",
+      "status": "OPEN",
+      "is_verified": true,
+      "last_verified_date": "2026-11-12",
+      "eligibility_summary": "First-year, homeschooled, and international applicants (all citizenships); exceptional academic ability, leadership, intellectual curiosity, record of meaningful contribution; must select 'Yes' for Scholar Programs consideration on Emory application.",
+      "eligibility": [
+        "First-year, homeschooled, or international applicant (all citizenships)",
+        "Exceptional academic ability, leadership, intellectual curiosity",
+        "Record of meaningful contribution",
+        "Must answer 'Yes' to Scholar Programs question on Emory application",
+        "Apply by applicable deadline (ED I: Nov 1; ED II/Reg: Nov 15)"
+      ],
+      "coverage": [
+        "Partial to full merit scholarships (renewable up to 8 semesters)",
+        "Emory College Woodruff Scholars: merit scholarship + early course registration + exclusive programming + scholar community",
+        "Oxford College Woodruff Scholars: merit scholarship + early faculty mentorship + tight-knit community + smooth transition to Atlanta campus",
+        "Supplemental funding for unpaid internships, research, conference travel, study abroad"
+      ],
+      "required_documents": [
+        "Emory Application (Common App or Coalition)",
+        "Answer 'Yes' to Scholar Programs question",
+        "High school transcripts",
+        "Recommendation letters",
+        "Essays",
+        "English proficiency (unless exempt)"
+      ],
+      "english_requirement": "As per Emory undergraduate admission requirements; no separate Scholar IELTS requirement.",
+      "requirements": [
+        "Highly competitive: ~10,000 apply, 175-200 finalists",
+        "Early Decision binding",
+        "International students compete in global pool",
+        "No separate nationality quota",
+        "Scholar benefits include priority registration, advising, community, and supplemental funding"
+      ],
+      "application_method": [
+        "Emory admission application + answer 'Yes' to Scholar Programs question by applicable deadline"
+      ],
+      "selection_notes": "Selection administered by Office of Admission in partnership with Emory faculty. About 10,000 students apply, 175-200 selected as finalists. Decisions late March. Early Decision binding. International students compete in global pool. No separate nationality quota.",
+      "best_fit": "Exceptional first-year students with leadership and intellectual curiosity seeking merit scholarships and scholar community at Emory.",
+      "notes": "Highly competitive: ~10,000 apply, 175-200 finalists. Early Decision binding. International students compete in global pool. No separate nationality quota. Scholar benefits include priority registration, advising, community, and supplemental funding for internships/research/abroad. Two application deadlines: ED I (Nov 1) and ED II/Regular Decision (Nov 15).",
+      "program_type": "Institutional merit scholarship (undergraduate)",
+      "description": "Emory University Scholar Programs recognize exceptional incoming undergraduate students through merit-based scholarships and academic enrichment. The Woodruff Scholars Program at Emory College offers merit scholarships, early course registration, exclusive programming, and a close-knit scholars community. Oxford College Woodruff Scholars receive merit scholarships, early faculty mentorship, and a tight-knit community with smooth transition to Atlanta campus. Scholars may apply for funding to support unpaid domestic or international internships, research project expenses, and qualifying conference travel.",
+      "departments": ["Emory College of Arts and Sciences", "Oxford College", "Goizueta Business School", "Nell Hodgson Woodruff School of Nursing"],
+      "eligible_fields": ["All undergraduate fields"],
+      "eligible_programmes": ["Bachelor's (all undergraduate programs)"],
+      "academic_provenance": {
+        "source_urls": ["https://apply.emory.edu/financial-aid/scholar-program"],
+        "verified_on": "2026-11-12",
+        "source_type": "official_institution",
+        "confidence": "high",
+        "explicit_or_derived": "explicit",
+        "evidence_excerpt": "Woodruff Scholars: partial to full merit; Deadline ED I Nov 1, ED II/Reg Nov 15; Answer 'Yes' to Scholar question; ~10k applicants, 175-200 finalists; Renewable 8 semesters; Intl eligible; Supplemental funding for internships/research/abroad"
+      },
+      "funding_amount": null,
+      "funding_currency": "USD",
+      "funding_period": "annual",
+      "tuition_coverage": true,
+      "living_cost_coverage": true,
+      "travel_coverage": false,
+      "fully_funded": null,
+      "duration": "4 years (renewable up to 8 semesters)",
+      "nationality_restrictions": "All citizenships eligible (domestic and international)"
+    }
+  ],
+  "import_summary": {
+    "total_import_ready": 8,
+    "by_status": {
+      "OPEN": 7,
+      "PARTIALLY_CLOSED": 1
+    },
+    "by_degree_level": {
+      "Bachelor's": 5,
+      "Master's": 1,
+      "Doctoral": 1,
+      "Non-degree fellowship": 2
+    },
+    "by_funding": {
+      "Fully Funded": 5,
+      "Partial to Full": 1,
+      "Merit-Based (Partial to Full Tuition)": 1
+    },
+    "corrections_applied": [
+      "Harvard LEAD: gender-neutral eligibility (all gender identities)",
+      "Tulane: status PARTIALLY_CLOSED (ED/EA deadlines passed)",
+      "Emory: dual deadlines preserved (Nov 1 and Nov 15)",
+      "AAUW funding: fully_funded=null (fixed grant, not full study-cost coverage)"
+    ]
+  }
+}

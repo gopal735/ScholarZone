@@ -538,6 +538,7 @@ jobs:
     env:
       SCHOLARZONE_ENVIRONMENT: test
       SCHOLARZONE_DATABASE_URL: postgresql://test:test@localhost:5434/scholarzone_test?sslmode=disable
+      TEST_POSTGRESQL_URL: postgresql://test:test@localhost:5434/scholarzone_test?sslmode=disable
     steps:
     - name: Checkout
       uses: actions/checkout@v4
@@ -572,6 +573,8 @@ jobs:
         done
     - name: Run PostgreSQL migration test
       run: cd backend && python scripts/test_postgresql_migration.py 2>&1 | tee postgresql_migration_test.log
+    - name: Run append-only importer PostgreSQL concurrency test
+      run: cd backend && env -u SCHOLARZONE_DATABASE_URL python -m pytest tests/test_append_only_importer.py::test_postgresql_import_lock_serializes_concurrent_transactions -q -ra --tb=short
     - name: Upload migration test logs
       uses: actions/upload-artifact@v4
       if: always()
