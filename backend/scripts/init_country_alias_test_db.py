@@ -306,10 +306,8 @@ if __name__ == "__main__":
         )
     
     # Check sslmode query parameter
-    query_string = str(url.query)
-    from urllib.parse import parse_qs
-    query = parse_qs(query_string)
-    sslmode = query.get("sslmode", [None])[0]
+    # url.query is a dictionary-like object (ImmutableDict in SQLAlchemy)
+    sslmode = url.query.get("sslmode")
     if sslmode != "disable":
         raise RuntimeError(
             f"SAFETY VIOLATION: This script must only run with sslmode=disable. "

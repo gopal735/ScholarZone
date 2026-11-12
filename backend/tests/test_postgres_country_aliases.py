@@ -24,6 +24,7 @@ class TestPostgresCountryAliasMatching:
         import tempfile
         from pathlib import Path
         from starlette.testclient import TestClient
+        from unittest.mock import patch
         
         # Use PostgreSQL from environment
         pg_url = os.environ.get("SCHOLARZONE_POSTGRES_URL")
@@ -38,16 +39,14 @@ class TestPostgresCountryAliasMatching:
         from app.database import reset_database_connections
         reset_database_connections()
         
-        # Import app modules AFTER setting test environment
-        from app.main import app
-        from app.database import get_session_factory
-        from app.models import Scholarship
-        from app.seed import seed_database
-        from sqlalchemy import text
-        
-        # Patch seed_database to do nothing during test setup to avoid
-        # collisions with test data (canonical catalogue tries to insert id=15)
-        with patch("app.seed.seed_database", lambda: None):
+        # Patch seed_database BEFORE importing app.main to prevent
+        # canonical catalogue seeding during TestClient startup
+        with patch("app.main.seed_database", lambda: None):
+            # Import app modules AFTER setting test environment and patching
+            from app.main import app
+            from app.database import get_session_factory
+            from starlette.testclient import TestClient
+            
             # Create test client - this triggers lifespan which runs _run_init()
             # but seed_database is patched to do nothing
             client = TestClient(app)

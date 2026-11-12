@@ -64,16 +64,15 @@ def run_session(env_overrides: dict[str, str], *, cwd: Path | None = None) -> di
     script = BACKEND / "_isolation_probe.py"
     script.write_text(probe, encoding="utf-8")
     try:
-        # Start with a minimal base environment, then add test overrides.
-        # Use os.environ as a base to ensure Windows socket initialization works,
-        # then apply test-specific overrides.
-        env = dict(os.environ)
-        env.update({
+        # Start with a CLEAN base environment - only preserve required OS variables
+        # to ensure Windows socket initialization works, then apply test-specific overrides.
+        # Do NOT inherit SCHOLARZONE_* or GITHUB_ACTIONS from the parent process.
+        env = {
             "PATH": os.environ.get("PATH", ""),
             "SystemRoot": os.environ.get("SystemRoot", ""),
             "TEMP": os.environ.get("TEMP", ""),
             "TMP": os.environ.get("TMP", ""),
-        })
+        }
         env.update(env_overrides)
         proc = subprocess.run(
             [sys.executable, str(script), str(CONFTEST_DIR)],
