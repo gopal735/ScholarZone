@@ -72,7 +72,7 @@ jobs:
           SCHOLARZONE_ENVIRONMENT: production
         run: |
           cd backend
-          python migrate_schema.py 2>&1 | tee migrate_apply.log
+          python migrate_schema.py --apply 2>&1 | tee migrate_apply.log
 
       - name: Validate
         if: ${{ inputs.apply }}
