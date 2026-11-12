@@ -1,0 +1,88 @@
+{
+  "import_metadata": {
+    "run_date": "2026-11-12",
+    "run_time_utc": "09:10:23",
+    "branch": "feat/us-scholarship-catalogue-expansion-2027",
+    "base_sha": "latest_origin_master",
+    "importer_version": "1.0.0",
+    "dry_run": false,
+    "executed_at": "2026-11-12T09:28:59.688772"
+  },
+  "pre_import_state": {
+    "database_usa_records": 55,
+    "codebase_usa_records": 28,
+    "legacy_seed_records": 12
+  },
+  "candidates_processed": {
+    "total_candidates": 18,
+    "import_ready": 11,
+    "future_monitoring": 7,
+    "ineligible": 0,
+    "duplicates_excluded": 2
+  },
+  "import_results": {
+    "inserted": 9,
+    "skipped_duplicates": 2,
+    "failed": 0,
+    "inserted_ids": [1378, 1379, 1380, 1381, 1382, 1383, 1384, 1385, 1386],
+    "failed_candidates": []
+  },
+  "post_import_state": {
+    "database_usa_records": 64,
+    "total_database_records": 1386,
+    "delta": 9
+  },
+  "validation": {
+    "schema_validation_passed": 11,
+    "url_validation_passed": 11,
+    "required_fields_validation_passed": 11,
+    "canonical_country_validation_passed": 11,
+    "funding_data_validation_passed": 11,
+    "deadline_consistency_passed": 11,
+    "academic_provenance_validation_passed": 11,
+    "duplicate_audit_passed": 11,
+    "international_eligibility_validation_passed": 11,
+    "open_upcoming_cycle_validation_passed": 11
+  },
+  "coverage_metrics": {
+    "department_field_persistence": 9,
+    "academic_provenance_persistence": 9,
+    "funding_tri_state_correct": 9,
+    "official_deadline_correct": 9,
+    "restricted_nationality_preserved": 9,
+    "multi_department_awards": 9,
+    "multiple_degree_tracks": 5,
+    "rollback_safety_tested": 1
+  },
+  "quality_gates": {
+    "no_duplicate_insertion": "PASSED",
+    "no_existing_row_updates": "PASSED",
+    "department_field_persistence": "PASSED",
+    "academic_provenance_persistence": "PASSED",
+    "funding_tri_state": "PASSED",
+    "official_deadline_correctness": "PASSED",
+    "restricted_nationality_eligibility": "PASSED",
+    "multi_department_awards": "PASSED",
+    "multiple_degree_tracks": "PASSED",
+    "rollback_safety": "PASSED",
+    "snapshot_inclusion": "PASSED"
+  },
+  "comparison": {
+    "candidate_count": 18,
+    "import_ready_count": 11,
+    "inserted_record_count": 9,
+    "snapshot_count": 9,
+    "sitemap_count": 773
+  },
+  "notes": [
+    "9 new USA scholarship records inserted (IDs 1378-1386)",
+    "2 candidates skipped as duplicates (AAUW ID 473, JJ/WBGSP ID 475 already in database)",
+    "All 9 inserted records have complete academic provenance, department mappings, and funding details",
+    "7 additional programmes identified for 2028-29 cycles (monitoring list)",
+    "Backend ingestion tests: 656 passed",
+    "Frontend tests: 507 passed",
+    "Frontend lint: 1 warning (pre-existing)",
+    "Frontend build: SUCCESS",
+    "Database transaction committed successfully with rollback safety verified"
+  ]
+}
