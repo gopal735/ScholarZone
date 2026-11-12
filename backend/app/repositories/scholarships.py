@@ -1,11 +1,21 @@
 """Database queries for scholarship discovery."""
 
+from collections import Counter
 from sqlalchemy import case, func, or_, select
 from sqlalchemy.orm import Session
 
 from ..models import Scholarship
 from ..schemas import ScholarshipQuery, ScholarshipSort
-from ..services.taxonomy import degree_filter_bucket, funding_filter_bucket
+from ..services.taxonomy import (
+    COUNTRY_ALIASES,
+    DEGREE_FILTER_BUCKETS,
+    FUNDING_FILTER_BUCKETS,
+    MULTIPLE,
+    REGIONS,
+    canonical_country,
+    degree_filter_bucket,
+    funding_filter_bucket,
+)
 
 
 def _normalise_optional_filter(value: str | None) -> str | None:
@@ -172,7 +182,141 @@ def _sort_expressions(sort: ScholarshipSort):
     return _sort_expressions(ScholarshipSort.RECOMMENDED)
 
 
-def list_scholarships(session: Session, query: ScholarshipQuery) -> tuple[list[Scholarship], int]:
+def _compute_country_facets(session: Session) -> list[dict]:
+    """Compute country facets from all public records."""
+    conditions = public_visibility_conditions()
+    rows = session.scalars(
+        select(Scholarship.country).where(*conditions)
+    ).all()
+
+    counts = Counter()
+    for country in rows:
+        if not country:
+            continue
+        canonical = canonical_country(country)
+        if canonical and canonical != MULTIPLE and canonical not in REGIONS:
+            counts[canonical] += 1
+
+    return [
+        {"value": country, "label": country, "count": count}
+        for country, count in sorted(counts.items(), key=lambda x: x[0].lower())
+    ]
+
+
+def _compute_degree_facets(session: Session) -> list[dict]:
+    """Compute degree facets from all public records."""
+    conditions = public_visibility_conditions()
+    rows = session.scalars(
+        select(Scholarship.degree).where(*conditions)
+    ).all()
+
+    # Count occurrences of each degree bucket
+    bucket_counts = Counter()
+    for degree in rows:
+        if not degree:
+            continue
+        degree_lower = degree.lower()
+        for bucket_key, keywords in DEGREE_FILTER_BUCKETS.items():
+            if any(kw in degree_lower for kw in keywords):
+                bucket_counts[bucket_key] += 1
+
+    # Map bucket keys to display labels
+    bucket_labels = {
+        "bachelor": "Bachelor / Undergraduate",
+        "undergraduate": "Bachelor / Undergraduate",
+        "master": "Master",
+        "phd": "PhD / Doctoral",
+        "doctoral": "PhD / Doctoral",
+        "postgraduate": "Postgraduate",
+        "postdoc": "Postdoctoral",
+    }
+
+    # Merge bachelor/undergraduate counts
+    bachelor_count = bucket_counts.get("bachelor", 0) + bucket_counts.get("undergraduate", 0)
+
+    facets = []
+    if bachelor_count > 0:
+        facets.append({"value": "Bachelor", "label": "Bachelor / Undergraduate", "count": bachelor_count})
+    for key in ["master", "phd", "postgraduate", "postdoc"]:
+        count = bucket_counts.get(key, 0)
+        if count > 0:
+            facets.append({"value": key.capitalize(), "label": bucket_labels[key], "count": count})
+
+    return facets
+
+
+def _compute_funding_facets(session: Session) -> list[dict]:
+    """Compute funding facets from all public records."""
+    conditions = public_visibility_conditions()
+    rows = session.scalars(
+        select(Scholarship.funding).where(*conditions)
+    ).all()
+
+    bucket_counts = Counter()
+    for funding in rows:
+        if not funding:
+            continue
+        funding_lower = funding.lower()
+        for bucket_key, (include, exclude) in FUNDING_FILTER_BUCKETS.items():
+            if any(ex in funding_lower for ex in exclude):
+                continue
+            if any(inc in funding_lower for inc in include):
+                bucket_counts[bucket_key] += 1
+
+    bucket_labels = {
+        "fully funded": "Fully funded",
+        "partially funded": "Partial funding",
+        "tuition fee waiver": "Tuition waiver",
+        "stipend": "Stipend",
+        "research funding": "Research funding",
+        "need based": "Need-based",
+    }
+
+    facets = []
+    for key, label in bucket_labels.items():
+        count = bucket_counts.get(key, 0)
+        if count > 0:
+            facets.append({"value": key.title().replace(" ", " "), "label": label, "count": count})
+
+    return facets
+
+
+def _compute_deadline_month_facets(session: Session) -> list[dict]:
+    """Compute deadline month facets from all public records."""
+    conditions = public_visibility_conditions()
+    rows = session.scalars(
+        select(Scholarship.deadline_date).where(*conditions)
+    ).all()
+
+    counts = Counter()
+    for deadline_date in rows:
+        if deadline_date:
+            month = deadline_date.month
+            if 1 <= month <= 12:
+                counts[month] += 1
+
+    month_names = [
+        "", "January", "February", "March", "April", "May", "June",
+        "July", "August", "September", "October", "November", "December"
+    ]
+
+    return [
+        {"value": str(month), "label": month_names[month], "count": count}
+        for month, count in sorted(counts.items())
+    ]
+
+
+def compute_facets(session: Session) -> dict:
+    """Compute all filter facets from the public catalogue."""
+    return {
+        "country": _compute_country_facets(session),
+        "degree": _compute_degree_facets(session),
+        "funding": _compute_funding_facets(session),
+        "deadline_month": _compute_deadline_month_facets(session),
+    }
+
+
+def list_scholarships(session: Session, query: ScholarshipQuery) -> tuple[list[Scholarship], int, dict | None]:
     conditions = _filter_conditions(query)
     total = session.scalar(select(func.count()).select_from(Scholarship).where(*conditions)) or 0
     offset = (query.page - 1) * query.limit
@@ -183,7 +327,12 @@ def list_scholarships(session: Session, query: ScholarshipQuery) -> tuple[list[S
         .offset(offset)
         .limit(query.limit)
     )
-    return list(session.scalars(statement)), total
+    items = list(session.scalars(statement))
+
+    # Only compute facets for the first page to avoid overhead
+    facets = compute_facets(session) if query.page == 1 else None
+
+    return items, total, facets
 
 
 def get_scholarship_by_id(session: Session, scholarship_id: int) -> Scholarship | None:

@@ -92,14 +92,23 @@ export function matchesDegreeFilter(label, value) {
   return haystack === String(value).toLowerCase()
 }
 
-export function matchesFundingFilter(label, value) {
+export function matchesFundingFilter(label, value, fullyFunded) {
   if (value === 'All' || value === undefined || value === null) return true
-  const haystack = typeof label === 'string' ? label.toLowerCase() : ''
   const key = filterKey(value)
   const aspects = FUNDING_FILTER_ASPECTS[key] || FUNDING_FILTER_ASPECTS[filterKey(FUNDING_LABEL_ALIASES[String(value).toLowerCase().trim()] ?? '') || '']
+  
+  // Special handling for "Fully Funded" filter: respect the tri-state fully_funded field
+  // fully_funded: true = confirmed, false = explicitly not, null = unknown
+  if (key === 'fully funded') {
+    if (fullyFunded === true) return true
+    if (fullyFunded === false) return false
+    // If fully_funded is null/undefined, fall back to text matching
+  }
+  
   if (aspects) {
+    const haystack = typeof label === 'string' ? label.toLowerCase() : ''
     if (aspects.exclude.some((word) => haystack.includes(word))) return false
     return aspects.include.some((word) => haystack.includes(word))
   }
-  return haystack === String(value).toLowerCase()
+  return typeof label === 'string' ? label.toLowerCase() === String(value).toLowerCase() : false
 }

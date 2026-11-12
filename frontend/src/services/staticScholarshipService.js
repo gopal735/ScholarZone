@@ -1,6 +1,7 @@
 import { readFundingDetails } from '../utils/scholarshipDetail'
 import { classifyLifecycle, parseDate } from '../utils/lifecycle'
-import { getScholarshipStatus } from '../utils/scholarshipPresentation'
+import { getScholarshipStatus, matchesDegreeFilter, matchesFundingFilter } from '../utils/scholarshipPresentation'
+import { deriveAllFacets } from '../utils/filterFacets'
 
 /* ═══════════════════════════════════════════════════════════════════
    Static scholarship service — the API-independent catalogue
@@ -136,50 +137,8 @@ function getStatusKey(record) {
   return statusOf(record).className
 }
 
-const DEGREE_WORDS = {
-  bachelor: ['bachelor', 'undergraduate'],
-  master: ['master'],
-  phd: ['phd', 'ph.d', 'doctoral', 'doctorate'],
-  postgraduate: ['master', 'phd', 'postgraduate'],
-}
-
-const FUNDING_ASPECTS = {
-  'fully funded': { include: ['fully funded', 'fully-funded', 'full funding', 'full scholarship', 'full sponsorship'], exclude: ['partially', 'partial to full', 'various'] },
-  'partially funded': { include: ['partial'], exclude: [] },
-  'tuition fee waiver': { include: ['tuition', 'fee'], exclude: [] },
-  stipend: { include: ['stipend', 'stipendium', 'salary', 'fellowship'], exclude: [] },
-  'research funding': { include: ['research'], exclude: [] },
-  'need based': { include: ['need'], exclude: [] },
-}
-
-function filterKey(value) {
-  if (typeof value !== 'string') return null
-  const key = value.trim().toLowerCase().replace(/['’]/g, '').replace(/[-/]/g, ' ')
-  const normalised = key.split(/\s+/).filter(Boolean).join(' ')
-  if (!normalised || normalised === 'all') return null
-  return normalised.endsWith('s') && !normalised.endsWith('ss')
-    ? normalised.slice(0, -1)
-    : normalised
-}
-
-function matchesDegree(label, value) {
-  if (!value || value === 'All') return true
-  const words = DEGREE_WORDS[filterKey(value)]
-  const haystack = typeof label === 'string' ? label.toLowerCase() : ''
-  if (words) return words.some((word) => haystack.includes(word))
-  return haystack === String(value).toLowerCase()
-}
-
-function matchesFunding(label, value) {
-  if (!value || value === 'All') return true
-  const haystack = typeof label === 'string' ? label.toLowerCase() : ''
-  const aspects = FUNDING_ASPECTS[filterKey(value)]
-  if (aspects) {
-    if (aspects.exclude.some((word) => haystack.includes(word))) return false
-    return aspects.include.some((word) => haystack.includes(word))
-  }
-  return haystack === String(value).toLowerCase()
-}
+// Use shared filter matching functions from scholarshipPresentation
+// DEGREE_WORDS and FUNDING_ASPECTS are defined there to ensure consistency
 
 function sortRecords(records, sortBy) {
   const sorted = [...records]
@@ -339,7 +298,13 @@ export async function fetchScholarshipsFromSnapshot(query = {}) {
     limit = PAGE_SIZE,
   } = query
 
-  let records = getPublicSnapshotRecords(snapshot)
+  // Get all public records (before filtering) for facet computation
+  const allPublicRecords = getPublicSnapshotRecords(snapshot)
+
+  // Compute facets from the complete public catalogue
+  const facets = deriveAllFacets(allPublicRecords)
+
+  let records = allPublicRecords
 
   const needle = String(search).trim().toLowerCase()
   if (needle) {
@@ -354,10 +319,10 @@ export async function fetchScholarshipsFromSnapshot(query = {}) {
     records = records.filter((record) => record.country === country)
   }
   if (degree && degree !== 'All') {
-    records = records.filter((record) => matchesDegree(record.degree, degree))
+    records = records.filter((record) => matchesDegreeFilter(record.degree, degree))
   }
   if (funding && funding !== 'All') {
-    records = records.filter((record) => matchesFunding(record.funding, funding))
+    records = records.filter((record) => matchesFundingFilter(record.funding, funding, record.fully_funded))
   }
   if (deadline_month && deadline_month !== 'All') {
     const targetMonth = Number(deadline_month)
@@ -384,6 +349,7 @@ export async function fetchScholarshipsFromSnapshot(query = {}) {
       total,
       total_pages: Math.max(1, Math.ceil(total / (Number(limit) || PAGE_SIZE))),
     },
+    facets,
   }
 }
 

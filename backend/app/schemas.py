@@ -327,9 +327,23 @@ class PaginationMetadata(BaseModel):
     total_pages: int
 
 
+class FacetItem(BaseModel):
+    value: str
+    label: str
+    count: int
+
+
+class FilterFacets(BaseModel):
+    country: list[FacetItem] = []
+    degree: list[FacetItem] = []
+    funding: list[FacetItem] = []
+    deadline_month: list[FacetItem] = []
+
+
 class ScholarshipListResponse(BaseModel):
     items: list[ScholarshipResponse]
     pagination: PaginationMetadata
+    facets: FilterFacets | None = None
 
 
 class ScholarshipStatsResponse(BaseModel):

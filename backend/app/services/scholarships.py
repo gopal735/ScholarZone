@@ -11,12 +11,23 @@ from ..repositories.scholarships import (
     get_scholarship_by_id,
     list_scholarships,
     public_visibility_conditions,
+    compute_facets,
 )
-from ..schemas import PaginationMetadata, ScholarshipListResponse, ScholarshipQuery, ScholarshipVerificationUpdate
+from ..schemas import PaginationMetadata, ScholarshipListResponse, ScholarshipQuery, ScholarshipVerificationUpdate, FilterFacets, FacetItem
 
 
 def get_scholarship_directory(session: Session, query: ScholarshipQuery) -> ScholarshipListResponse:
-    scholarships, total = list_scholarships(session, query)
+    scholarships, total, facets = list_scholarships(session, query)
+
+    facets_obj = None
+    if facets:
+        facets_obj = FilterFacets(
+            country=[FacetItem(**f) for f in facets.get("country", [])],
+            degree=[FacetItem(**f) for f in facets.get("degree", [])],
+            funding=[FacetItem(**f) for f in facets.get("funding", [])],
+            deadline_month=[FacetItem(**f) for f in facets.get("deadline_month", [])],
+        )
+
     return ScholarshipListResponse(
         items=scholarships,
         pagination=PaginationMetadata(
@@ -25,6 +36,7 @@ def get_scholarship_directory(session: Session, query: ScholarshipQuery) -> Scho
             total=total,
             total_pages=ceil(total / query.limit) if total else 0,
         ),
+        facets=facets_obj,
     )
 
 

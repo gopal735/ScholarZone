@@ -183,6 +183,7 @@ export async function fetchScholarships(query = {}, options) {
       .then((payload) => ({
         items: Array.isArray(payload.items) ? payload.items.map(normalizeScholarship) : [],
         pagination: payload.pagination,
+        facets: payload.facets,
       }))
       // The API is the source of truth. When it cannot answer due to a
       // transient failure (network, timeout, 5xx), the catalogue is still
