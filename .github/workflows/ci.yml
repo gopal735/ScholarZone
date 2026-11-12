@@ -777,7 +777,6 @@ jobs:
   country-alias-integration:
     name: Country Alias Integration Test (PostgreSQL ${{ matrix.pg-version }})
     runs-on: ubuntu-latest
-    needs: [backend-tests]
     strategy:
       matrix:
         pg-version: ['16', '18']

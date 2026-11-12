@@ -231,7 +231,31 @@ class TestFailureIsolation:
 
 class TestMetrics:
     def test_blocked_and_unreachable_are_separate_from_no_image(self, session_factory):
-        _seed(session_factory, 3)
+        # Use different hosts for each record to avoid circuit-breaker interference
+        # The circuit breaker operates at domain level; using different domains
+        # ensures each record's outcome is independent.
+        hosts = ["daad.de", "ethz.ch", "bi.no"]
+        ids = []
+        s = session_factory()
+        try:
+            for i, host in enumerate(hosts):
+                row = Scholarship(
+                    title=f"Test Scholarship {i}",
+                    country="Germany",
+                    degree="Master",
+                    funding="Full",
+                    official_source="Org",
+                    official_source_url=f"https://www.{host}/scholarship-{i}",
+                    image_url=None,
+                    image_verified_at=None,
+                )
+                s.add(row)
+                s.commit()
+                s.refresh(row)
+                ids.append(row.id)
+        finally:
+            s.close()
+
         from app.services.image_discovery_orchestrator import (
             OrchestratorRunResult,
             TrustworthyImageStatus,
