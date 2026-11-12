@@ -666,9 +666,9 @@ class ScholarshipApiTests(unittest.TestCase):
         self.assertEqual(api_resp2.status_code, 200)
         api_data = api_resp2.json()
         us_facet = next((f for f in api_data["facets"]["country"] if f["value"] == "United States"), None)
-        if us_facet:
-            self.assertEqual(us_facet["count"], len(api_ids),
-                f"Facet count ({us_facet['count']}) must equal distinct matching IDs ({len(api_ids)})")
+        self.assertIsNotNone(us_facet, "United States facet must be present")
+        self.assertEqual(us_facet["count"], len(api_ids),
+            f"Facet count ({us_facet['count']}) must equal distinct matching IDs ({len(api_ids)})")
 
 if __name__ == "__main__":
     unittest.main()

@@ -217,28 +217,51 @@ class TestPostgresCountryAliasMatching:
         assert resp.status_code == 200
         data = resp.json()
         
-        # Check Turkey facet
+        # Check Turkey facet - must exist
         turkey_facet = next((f for f in data["facets"]["country"] if f["value"] == "Turkey"), None)
-        if turkey_facet:
-            facet_count = turkey_facet["count"]
-            
-            # Query all pages with Turkey filter
-            all_ids = set()
-            page = 1
-            while True:
-                page_resp = client.get("/scholarships", params={"country": "Turkey", "page": page, "limit": 50})
-                assert page_resp.status_code == 200
-                page_data = page_resp.json()
-                page_ids = {item["id"] for item in page_data["items"]}
-                if not page_ids:
-                    break
-                all_ids.update(page_ids)
-                if page >= page_data["pagination"]["total_pages"]:
-                    break
-                page += 1
-            
-            assert facet_count == len(all_ids), \
-                f"Turkey facet count ({facet_count}) must equal distinct matching IDs ({len(all_ids)})"
+        assert turkey_facet is not None, "Turkey facet must be present"
+        facet_count = turkey_facet["count"]
+        
+        # Query all pages with Turkey filter
+        all_ids = set()
+        page = 1
+        while True:
+            page_resp = client.get("/scholarships", params={"country": "Turkey", "page": page, "limit": 50})
+            assert page_resp.status_code == 200
+            page_data = page_resp.json()
+            page_ids = {item["id"] for item in page_data["items"]}
+            if not page_ids:
+                break
+            all_ids.update(page_ids)
+            if page >= page_data["pagination"]["total_pages"]:
+                break
+            page += 1
+        
+        assert facet_count == len(all_ids), \
+            f"Turkey facet count ({facet_count}) must equal distinct matching IDs ({len(all_ids)})"
+        
+        # Check United States facet - must exist
+        us_facet = next((f for f in data["facets"]["country"] if f["value"] == "United States"), None)
+        assert us_facet is not None, "United States facet must be present"
+        us_facet_count = us_facet["count"]
+        
+        # Query all pages with United States filter
+        all_us_ids = set()
+        page = 1
+        while True:
+            page_resp = client.get("/scholarships", params={"country": "United States", "page": page, "limit": 50})
+            assert page_resp.status_code == 200
+            page_data = page_resp.json()
+            page_ids = {item["id"] for item in page_data["items"]}
+            if not page_ids:
+                break
+            all_us_ids.update(page_ids)
+            if page >= page_data["pagination"]["total_pages"]:
+                break
+            page += 1
+        
+        assert us_facet_count == len(all_us_ids), \
+            f"United States facet count ({us_facet_count}) must equal distinct matching IDs ({len(all_us_ids)})"
 
     def test_deadline_parsing_valid_formats(self, postgres_client):
         """Test deadline parsing with valid exact and month-only formats."""

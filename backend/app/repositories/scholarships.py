@@ -48,19 +48,32 @@ def _ascii_fold_sql(column):
     
     Uses PostgreSQL TRANSLATE for efficient single-pass character mapping.
     The from/to strings map each diacritic to its ASCII equivalent.
+    Each character maps 1:1 (no multi-character expansions like ß→ss).
     """
     # TRANSLATE(from_chars, to_chars) - single-pass character replacement
-    # from_chars: all diacritics we want to replace
-    # to_chars:   corresponding ASCII replacements (same length)
-    from_chars = (
-        "üöäßéèêëáàâãåíìîïóòôõúùûçñğşı"
-        "ÜÖÄÉÈÊËÁÀÂÃÅÍÌÎÏÓÒÔÕÚÙÛÇÑĞŞİ"
-    )
-    to_chars = (
-        "uoasseeeeeaaaaaiiiiooooouuuucngsi"
-        "UOASSEEEEEAAAAAIIIOOOOOUUUUCNGSI"
-    )
-    return func.translate(func.lower(column), from_chars, to_chars)
+    # from_chars: all diacritics we want to replace (one character each)
+    # to_chars:   corresponding ASCII replacements (SAME LENGTH, one character each)
+    # 
+    # Lowercase (29 chars each):
+    from_chars_lower = "üöäßéèêëáàâãåíìîïóòôõúùûçñğşı"
+    to_chars_lower   = "uoaseeeeeaaaaaiiiiooooouuuucngsi"
+    #                          u o a s s e e e e e a a a a a i i i i o o o o o u u u u c n g s i
+    #                          ü ö ä ß é è ê ë á à â ã å í ì î ï ó ò ô õ ú ù û ç ñ ğ ş ı
+    
+    # Uppercase (29 chars each):
+    from_chars_upper = "ÜÖÄßÉÈÊËÁÀÂÃÅÍÌÎÏÓÒÔÕÚÙÛÇÑĞŞİ"
+    to_chars_upper   = "UOASSEEEEEAAAAAIIIOOOOOUUUUCNGSI"
+    #                          U O A S S E E E E E A A A A A I I I I O O O O O U U U U C N G S I
+    #                          Ü Ö Ä ß É È Ê Ë Á À Â Ã Å Í Ì Î Ï Ó Ò Ô Õ Ú Ù Û Ç Ñ Ğ Ş İ
+    
+    # Verify lengths match
+    assert len(from_chars_lower) == len(to_chars_lower), f"Lowercase mapping length mismatch: {len(from_chars_lower)} vs {len(to_chars_lower)}"
+    assert len(from_chars_upper) == len(to_chars_upper), f"Uppercase mapping length mismatch: {len(from_chars_upper)} vs {len(to_chars_upper)}"
+    
+    folded = func.lower(column)
+    folded = func.translate(folded, from_chars_lower, to_chars_lower)
+    folded = func.translate(folded, from_chars_upper, to_chars_upper)
+    return folded
 
 
 def _is_sqlite(session: Session) -> bool:

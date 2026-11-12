@@ -772,3 +772,100 @@ jobs:
       with:
         name: gate2-integration-failure-logs-pg18
         path: backend/gate2_integration_pg18_test.log
+
+  # PostgreSQL Country Alias Integration Tests (PG16 & PG18)
+  country-alias-integration:
+    name: Country Alias Integration Test (PostgreSQL ${{ matrix.pg-version }})
+    runs-on: ubuntu-latest
+    needs: [backend-tests]
+    strategy:
+      matrix:
+        pg-version: ['16', '18']
+      fail-fast: false
+    services:
+      postgres:
+        image: postgres:${{ matrix.pg-version }}
+        env:
+          POSTGRES_DB: country_alias_test
+          POSTGRES_USER: test
+          POSTGRES_PASSWORD: test
+        ports:
+          - 5439:5432
+        options: >-
+          --health-cmd="pg_isready -U test -d country_alias_test"
+          --health-interval=10s
+          --health-timeout=5s
+          --health-retries=5
+    env:
+      SCHOLARZONE_ENVIRONMENT: test
+      SCHOLARZONE_DATABASE_URL: postgresql://test:test@localhost:5439/country_alias_test?sslmode=disable
+      SCHOLARZONE_TEST_POSTGRES: "1"
+      SCHOLARZONE_POSTGRES_URL: postgresql://test:test@localhost:5439/country_alias_test?sslmode=disable
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v4
+      with:
+        fetch-depth: 0
+    - name: Install system dependencies
+      run: sudo apt-get update && sudo apt-get install -y libjpeg-dev zlib1g-dev libfreetype6-dev liblcms2-dev libopenjp2-7-dev libtiff5-dev libwebp-dev postgresql-client
+    - name: Set up Python
+      uses: actions/setup-python@v5
+      with:
+        python-version: '3.11'
+    - name: Cache pip dependencies
+      uses: actions/cache@v4
+      with:
+        path: ~/.cache/pip
+        key: ${{ runner.os }}-pip-v2-${{ hashFiles('backend/requirements.txt') }}
+        restore-keys: |
+          Linux-pip-v2-
+    - name: Install dependencies
+      run: cd backend && pip install -r requirements.txt
+    - name: Install purge preflight test dependencies
+      run: cd backend && pip install -r requirements-purge-preflight.txt
+    - name: Wait for PostgreSQL to be ready
+      run: |
+        for i in {1..30}; do
+          if pg_isready -h localhost -p 5439 -U test -d country_alias_test; then
+            echo "PostgreSQL ${{ matrix.pg-version }} is ready"
+            break
+          fi
+          echo "Waiting for PostgreSQL... ($i/30)"
+          sleep 2
+        done
+    - name: Initialize database schema and seed test data
+      run: |
+        cd backend
+        python scripts/init_country_alias_test_db.py 2>&1 | tee country_alias_init_test.log
+    - name: Run Country Alias Integration Tests
+      run: |
+        cd backend
+        python -m pytest tests/test_postgres_country_aliases.py -v --tb=short 2>&1 | tee country_alias_integration_test.log
+    - name: Verify Country Alias tests executed (not skipped)
+      run: |
+        cd backend
+        if grep -q "SKIPPED" country_alias_integration_test.log; then
+          echo "ERROR: Country alias integration tests were SKIPPED"
+          cat country_alias_integration_test.log
+          exit 1
+        fi
+        if ! grep -q "PASSED\|PASS" country_alias_integration_test.log; then
+          echo "ERROR: Country alias integration tests did not pass"
+          cat country_alias_integration_test.log
+          exit 1
+        fi
+        echo "Country alias integration tests (PG${{ matrix.pg-version }}) executed and passed"
+    - name: Upload Country Alias integration results
+      uses: actions/upload-artifact@v4
+      if: always()
+      with:
+        name: country-alias-integration-results-pg${{ matrix.pg-version }}
+        path: |
+          backend/country_alias_integration_test.log
+          backend/country_alias_init_test.log
+    - name: Upload Country Alias logs on failure
+      uses: actions/upload-artifact@v4
+      if: failure()
+      with:
+        name: country-alias-integration-failure-logs-pg${{ matrix.pg-version }}
+        path: backend/country_alias_integration_test.log
