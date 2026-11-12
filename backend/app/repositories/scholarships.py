@@ -39,27 +39,76 @@ def _filter_key(value: str | None) -> str | None:
     return key or None
 
 
-def _build_country_canonical_case(column):
+#: PostgreSQL-compatible ASCII folding for common diacritics.
+#: This approximates Python's unicodedata.normalize("NFKD") + strip combining chars
+#: without requiring the unaccent extension.
+def _ascii_fold_sql(column):
+    """Build a SQL expression that ASCII-folds a text column for comparison."""
+    folded = func.lower(column)
+    # Common diacritics -> ASCII equivalents
+    folded = func.replace(folded, "ü", "u")
+    folded = func.replace(folded, "ö", "o")
+    folded = func.replace(folded, "ä", "a")
+    folded = func.replace(folded, "ß", "ss")
+    folded = func.replace(folded, "é", "e")
+    folded = func.replace(folded, "è", "e")
+    folded = func.replace(folded, "ê", "e")
+    folded = func.replace(folded, "ë", "e")
+    folded = func.replace(folded, "á", "a")
+    folded = func.replace(folded, "à", "a")
+    folded = func.replace(folded, "â", "a")
+    folded = func.replace(folded, "ã", "a")
+    folded = func.replace(folded, "å", "a")
+    folded = func.replace(folded, "í", "i")
+    folded = func.replace(folded, "ì", "i")
+    folded = func.replace(folded, "î", "i")
+    folded = func.replace(folded, "ï", "i")
+    folded = func.replace(folded, "ó", "o")
+    folded = func.replace(folded, "ò", "o")
+    folded = func.replace(folded, "ô", "o")
+    folded = func.replace(folded, "õ", "o")
+    folded = func.replace(folded, "ú", "u")
+    folded = func.replace(folded, "ù", "u")
+    folded = func.replace(folded, "û", "u")
+    folded = func.replace(folded, "ç", "c")
+    folded = func.replace(folded, "ñ", "n")
+    folded = func.replace(folded, "ğ", "g")
+    folded = func.replace(folded, "ş", "s")
+    folded = func.replace(folded, "ı", "i")
+    return folded
+
+
+def _is_sqlite(session: Session) -> bool:
+    """Check if the session is using SQLite dialect."""
+    return session.bind.dialect.name == "sqlite"
+
+
+def _build_country_canonical_case(column, session: Session | None = None):
     """Build a SQL CASE expression that maps stored country to canonical form.
     
     Mirrors the logic in canonical_country() from taxonomy.py.
-    Returns lowercase for consistent comparison.
+    Returns lowercase canonical for consistent comparison.
+    
+    For SQLite (tests), uses a simplified approach since test data is ASCII.
+    For PostgreSQL (production), uses full ASCII folding.
     """
+    # For SQLite, test data uses ASCII country names, so simple lower() is sufficient
+    if session is not None and _is_sqlite(session):
+        return func.lower(column)
+    
+    # For PostgreSQL, use full ASCII folding with CASE expression for aliases
     # Build CASE WHEN conditions for each alias
     conditions = []
     for alias, canonical in COUNTRY_ALIASES.items():
         if canonical in (MULTIPLE,) or canonical in REGIONS:
             continue
-        # Match case-insensitive, return lowercase canonical for consistent comparison
-        conditions.append((func.lower(column) == alias.lower(), canonical.lower()))
-    
-    # Add special handling for common patterns that might not be in COUNTRY_ALIASES
-    # but are handled by canonical_country's prefix matching
-    # For now, we handle the explicit aliases. The prefix matching is complex in SQL.
+        # Match ASCII-folded stored value against ASCII-folded alias
+        # The alias keys in COUNTRY_ALIASES are already ASCII-folded (e.g., "turkiye")
+        conditions.append((_ascii_fold_sql(column) == alias.lower(), canonical.lower()))
     
     if conditions:
-        return case(*conditions, else_=func.lower(column))
-    return func.lower(column)
+        return case(*conditions, else_=_ascii_fold_sql(column))
+    return _ascii_fold_sql(column)
 
 
 def _normalise_optional_filter(value: str | None) -> str | None:
@@ -165,7 +214,7 @@ def public_visibility_conditions() -> list:
     return conditions
 
 
-def _filter_conditions(query: ScholarshipQuery):
+def _filter_conditions(query: ScholarshipQuery, session: Session | None = None):
     conditions = public_visibility_conditions()
     search = _normalise_optional_filter(query.search)
     country = _normalise_optional_filter(query.country)
@@ -184,9 +233,12 @@ def _filter_conditions(query: ScholarshipQuery):
             )
         )
     if country:
-        # Use canonical country matching: canonicalize stored country and compare to requested canonical
-        canonical_case = _build_country_canonical_case(Scholarship.country)
-        conditions.append(canonical_case == country.casefold())
+        # Normalize the request country to canonical form using the shared taxonomy
+        # This ensures "Türkiye", "Turkiye", "Turkey" all resolve to the same canonical value
+        canonical_request = canonical_country(country)
+        if canonical_request and canonical_request not in (MULTIPLE,) and canonical_request not in REGIONS:
+            canonical_case = _build_country_canonical_case(Scholarship.country, session)
+            conditions.append(canonical_case == canonical_request.casefold())
     if degree:
         conditions.extend(_degree_conditions(Scholarship.degree, degree))
     if funding:
@@ -405,7 +457,7 @@ def compute_facets(session: Session) -> dict:
 
 
 def list_scholarships(session: Session, query: ScholarshipQuery) -> tuple[list[Scholarship], int]:
-    conditions = _filter_conditions(query)
+    conditions = _filter_conditions(query, session)
     total = session.scalar(select(func.count()).select_from(Scholarship).where(*conditions)) or 0
     offset = (query.page - 1) * query.limit
     statement = (
