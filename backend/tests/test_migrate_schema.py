@@ -656,6 +656,16 @@ class TestPostgreSQLIntegration:
     These tests require a running PostgreSQL instance and are marked
     to be run separately in CI with appropriate services.
     """
+
+    @pytest.fixture(autouse=True)
+    def test_backup_attestation(self, monkeypatch):
+        """Supply synthetic, test-only backup evidence for disposable schemas."""
+        monkeypatch.setenv("SCHOLARZONE_BACKUP_VERIFIED", "true")
+        monkeypatch.setenv(
+            "SCHOLARZONE_RESTORE_TEST_DATE",
+            datetime.now(timezone.utc).date().isoformat(),
+        )
+        monkeypatch.setenv("SCHOLARZONE_BACKUP_EVIDENCE_REF", "disposable-postgresql-test")
     
     @pytest.fixture
     def pg_engine(self):
