@@ -229,13 +229,10 @@ def init_country_alias_test_db():
         
         for record_data in test_records:
             sch = Scholarship(
-                name=record_data["name"],
                 title=record_data["name"],
                 country=record_data["country"],
                 degree=record_data["degree_levels"],
-                degree_levels=record_data["degree_levels"],
                 funding=record_data["funding_type"],
-                funding_type=record_data["funding_type"],
                 official_source_url=record_data["official_source_url"],
                 deadline_date=record_data.get("deadline_date"),
                 deadline_precision=record_data.get("deadline_precision", "none"),
